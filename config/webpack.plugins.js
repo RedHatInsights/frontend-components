@@ -45,16 +45,6 @@ const CleanWebpackPlugin = new (require('clean-webpack-plugin'))(['dist']);
 plugins.push(CleanWebpackPlugin);
 
 /**
- * Generates html that shows an analysis of code bundles.
- *
- * @type {var}
- */
-const WebpackBundleAnalyzer = new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)({
-    openAnalyzer: false
-});
-plugins.push(WebpackBundleAnalyzer);
-
-/**
  * Selects the specific lodash functions.
  *
  * @type {var}

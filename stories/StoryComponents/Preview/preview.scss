@@ -1,0 +1,10 @@
+.preview__body {
+    border: 1px solid #eaeaea;
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.preview + .preview {
+    margin-top: 30px;
+}

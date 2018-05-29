@@ -1,17 +1,17 @@
 {
-  "name": "insights-frontend-components",
+  "name": "@red-hat-insights/insights-frontend-components",
   "version": "0.1.0",
   "main": "dist/index.html",
   "private": false,
   "publishConfig": {
-    "access": "restricted"
- },
+    "access": "public"
+  },
   "dependencies": {
+    "@patternfly/patternfly-next": "^1.0.3",
     "@storybook/cli": "^4.0.0-alpha.8",
     "classnames": "^2.2.5",
     "create-react-class": "^15.6.3",
-    "patternfly-react": "^2.3.4",
-    "@patternfly/patternfly-next": "^1.0.3"
+    "patternfly-react": "^2.3.4"
   },
   "sassIncludes": {
     "patternfly": "node_modules/patternfly/dist/sass",
