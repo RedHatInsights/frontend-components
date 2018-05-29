@@ -1,0 +1,11 @@
+@import './src/Utilities.scss';
+
+section.ins-l-content {
+  @include rem('padding', $global-padding);
+}
+
+section.ins-l-button-group {
+  > * { display: inline; }
+  * + * { @include rem('margin-left', 5px); }
+  @include rem('margin', $global-margin 0);
+}

@@ -1,0 +1,32 @@
+@import 'node_modules/@patternfly/patternfly-next/utilities/colors.scss';
+
+// Sample Colors
+$light: #e9e9e9;
+$medium: #393f44;
+$dark: #292e34;
+
+$primary: #39a5dc;
+$primary-dark: #0088ce;
+$primary-shadow: #00659c;
+
+$accent: #2A2E57;
+$accent-dark: #20253b;
+
+// --------- Patternfly colors ---------
+// {color} list, {level} list:
+//
+// $pf-color-{color}-{level}
+//
+// ===========================
+//
+// black, 100 - 1000
+// blue, 50, 100 - 700
+// cyan, 100 - 700
+// gold, 100 - 700
+// green, 100 - 700
+// light-blue, 100 - 700
+// light-green, 100 - 700
+// orange, 100 - 700
+// purple, 100 - 700
+//
+// example: $pf-color-black-200

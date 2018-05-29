@@ -1,0 +1,39 @@
+$pf-global--enable-font-overpass-cdn: true;
+@import 'patternfly_specific';
+@import '~@patternfly/patternfly-next/patternfly';
+@import './src/Utilities.scss';
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    font-family: 'Overpass', 'OpenSans';
+    text-rendering: optimizeLegibility;
+    display: grid;
+    grid-template-areas: 'topbar topbar'
+                          'sidenav content'
+                          'sidenav footer';
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr 9fr;
+
+    .topbar {
+      grid-area: topbar;
+    }
+
+    .footer {
+      grid-area: footer;
+    }
+
+    .sidenav {
+      grid-area: sidenav;
+    }
+
+    #root {
+      grid-area: content;
+    }
+}
+
+#root {
+  height: 100%;
+  background: #f5f5f5;
+}
