@@ -24,11 +24,10 @@ const webpack_config = {
         App: config.paths.entry
     },
     output: {
-        filename: 'js/[name].js',
+        filename: 'components/compiled/[name]/[name].js',
         path: config.paths.public,
         publicPath: '/insights',
-        chunkFilename: 'js/[name].js',
-        umdNamedDefine: true
+        chunkFilename: 'components/compiled/[name]/[name].js'
     },
     module: {
         rules: [{
@@ -63,21 +62,6 @@ const webpack_config = {
                 }
             }]
         }]
-    },
-    externals: {      
-        // Don't bundle react or react-dom      
-        react: {          
-            commonjs: "react",          
-            commonjs2: "react",          
-            amd: "React",          
-            root: "React"      
-        },      
-        "react-dom": {          
-            commonjs: "react-dom",          
-            commonjs2: "react-dom",          
-            amd: "ReactDOM",          
-            root: "ReactDOM"      
-        }  
     }
 };
 

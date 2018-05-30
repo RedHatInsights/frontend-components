@@ -45,6 +45,16 @@ const CleanWebpackPlugin = new (require('clean-webpack-plugin'))(['dist']);
 plugins.push(CleanWebpackPlugin);
 
 /**
+ * Generates html that shows an analysis of code bundles.
+ *
+ * @type {var}
+ */
+const WebpackBundleAnalyzer = new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)({
+    openAnalyzer: false
+});
+plugins.push(WebpackBundleAnalyzer);
+
+/**
  * Selects the specific lodash functions.
  *
  * @type {var}
@@ -67,8 +77,8 @@ const AggressiveSplittingPlugin = new webpack.optimize.AggressiveSplittingPlugin
  * Writes final css to file
  */
 const ExtractCssWebpackPlugin = new (require('mini-css-extract-plugin'))({
-    chunkFilename: 'css/[name].css',
-    filename: 'css/[name].css'
+    chunkFilename: 'components/compiled/[name]/[name].css',
+    filename: 'components/compiled/[name]/[name].css'
 });
 plugins.push(ExtractCssWebpackPlugin);
 
@@ -76,7 +86,8 @@ plugins.push(ExtractCssWebpackPlugin);
  * Copies files from the specified locations to the corresponding destinations.
  */
 const CopyFilesWebpackPlugin = new (require('copy-webpack-plugin'))([
-    {from: path.resolve(__dirname, '../static/images'), to: 'images'}
+    {from: path.resolve(__dirname, '../static/images'), to: 'images'},
+    {from: path.resolve(__dirname, '../src/PresentationalComponents'), to: 'components'}
 ]);
 plugins.push(CopyFilesWebpackPlugin);
 

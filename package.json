@@ -1,6 +1,6 @@
 {
   "name": "@red-hat-insights/insights-frontend-components",
-  "version": "0.1.6",
+  "version": "0.1.10",
   "main": "dist/index.html",
   "private": false,
   "publishConfig": {
@@ -71,6 +71,6 @@
     "build": "webpack --config config/webpack.config.js",
     "test": "webpack --config config/webpack-test.config.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "prepublish": "rm -rf ./dist && npm run build"
+    "prepublish": "rm -rf ./dist && npm run start"
   }
 }
