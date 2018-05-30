@@ -1,0 +1,18 @@
+.sb-main {
+    padding: 1rem 2rem;
+}
+
+.preview {
+
+    &__title {
+        font-weight: 600;
+        padding-bottom: .5rem;
+    }
+
+    &__body {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #eaeaea;
+    }
+
+}
