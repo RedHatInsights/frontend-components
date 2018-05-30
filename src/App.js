@@ -21,9 +21,3 @@ class App extends Component<Props, State> {
     }
 }
 
-/**
- * withRouter: https://reacttraining.com/react-router/web/api/withRouter
- * connect: https://github.com/reactjs/react-redux/blob/master/docs/api.md
- *          https://reactjs.org/docs/higher-order-components.html
- */
-export default withRouter(connect()(App));

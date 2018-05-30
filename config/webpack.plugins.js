@@ -24,18 +24,6 @@ const HtmlWebpackPlugin = new (require('html-webpack-plugin'))({
     filename: 'index.html',
     template: path.resolve(__dirname, '../src/index.html')
 });
-plugins.push(HtmlWebpackPlugin);
-
-/**
- * Source maps
- * @type {var}
- */
-const SourceMapsPlugin = new webpack.SourceMapDevToolPlugin({
-    test: /\.js/i,
-    exclude: /(node_modules|bower_components)/i,
-    filename: `sourcemaps/[name].js.map`
-});
-plugins.push(SourceMapsPlugin);
 
 /**
  * Cleans distribution folder.
@@ -67,16 +55,18 @@ const AggressiveSplittingPlugin = new webpack.optimize.AggressiveSplittingPlugin
  * Writes final css to file
  */
 const ExtractCssWebpackPlugin = new (require('mini-css-extract-plugin'))({
-    chunkFilename: 'css/[name].css',
-    filename: 'css/[name].css'
+    chunkFilename: 'components/Compiled/[name]/[name].css',
+    filename: 'components/Compiled/[name]/[name].css'
 });
+
 plugins.push(ExtractCssWebpackPlugin);
 
 /**
  * Copies files from the specified locations to the corresponding destinations.
  */
 const CopyFilesWebpackPlugin = new (require('copy-webpack-plugin'))([
-    {from: path.resolve(__dirname, '../static/images'), to: 'images'}
+    {from: path.resolve(__dirname, '../static/images'), to: 'images'},
+    {from: path.resolve(__dirname, '../src/PresentationalComponents'), to: 'components'}
 ]);
 plugins.push(CopyFilesWebpackPlugin);
 
