@@ -12,13 +12,15 @@ import './section.scss';
  *  Types = 'content'
  */
 
-export default props => {
+export default class SampleComponent extends React.Component {
 
+  render () {
     let sectionClasses = classNames(
-      { [`ins-l-${props.type}`]: props.type !== undefined }
+      { [`ins-l-${this.props.type}`]: this.props.type !== undefined }
     );
 
      return (
-        <section className={sectionClasses}> {props.children} </section>
+        <section className={sectionClasses}> {this.props.children} </section>
     );
+  }
 }

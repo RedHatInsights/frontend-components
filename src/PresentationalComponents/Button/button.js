@@ -14,21 +14,24 @@ import classNames from 'classnames';
  *  States = 'focused', 'active', 'disabled'
  */
 
-export default props => {
-
+class Button extends React.Component {
+  render () {
     let btnClasses = classNames(
       'pf-c-button',
-      { [`pf-is-${props.type}`]: props.type !== undefined },
-      { [`pf-is-${props.size}`]: props.size !== undefined },
+      { [`pf-is-${this.props.type}`]: this.props.type !== undefined },
+      { [`pf-is-${this.props.size}`]: this.props.size !== undefined },
       {
-        'pf-has-focus': props.state === 'focused',
-        [`pf-is-${props.state}`]: props.state === 'active' || props.state === 'disabled'
+        'pf-has-focus': this.props.state === 'focused',
+        [`pf-is-${this.props.state}`]: this.props.state === 'active' || this.props.state === 'disabled'
       }
     );
 
      return (
         <button
             className={btnClasses}
-            disabled={(props.state === 'disabled' ? 'true' : undefined)}> {props.children} </button>
+            disabled={(this.props.state === 'disabled' ? 'true' : undefined)}> {this.props.children} </button>
     );
+  }
 }
+
+export default Button;

@@ -7,8 +7,10 @@ import './page-header.scss';
  *
  * @param props the props given by the smart component.
  */
-export default props => {
+export default class PageHeader extends React.Component {
+  render () {
     return (
-        <header className='ins-p-page-header'> {props.children} </header>
+        <header className='ins-p-page-header'> {this.props.children} </header>
     );
+  }
 }

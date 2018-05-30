@@ -71,6 +71,6 @@
     "build": "webpack --config config/webpack.config.js",
     "test": "webpack --config config/webpack-test.config.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "prepublish": "rm -rf ./dist && npm run start"
+    "prepublish": "rm -rf ./dist && npm run build"
   }
 }

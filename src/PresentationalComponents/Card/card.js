@@ -7,8 +7,12 @@ import './card.scss';
  *
  * @param props the props given by the smart component.
  */
-export default props => {
+class Card extends React.Component {
+  render () {
     return (
-        <div className='card ins-c-card'> {props.children} </div>
+        <div className='card ins-c-card'> {this.props.children} </div>
     );
+  }
 }
+
+export default Card;

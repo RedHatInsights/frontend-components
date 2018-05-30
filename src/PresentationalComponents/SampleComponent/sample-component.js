@@ -8,9 +8,9 @@ import './sample-component.scss';
  * @param props the props given by the smart component.
  */
 export default class SampleComponent extends React.Component {
-    render(){
+    render () {
         return (
-            <span className='sample-component'> {props.children} </span>
+            <span className='sample-component'> {this.props.children} </span>
         );
     }
 }
