@@ -5,6 +5,7 @@ const entry = process.env.NODE_ENV === 'production' ?
 
 module.exports = {
     paths: {
+        build: path.resolve(__dirname, '../'),
         entry: entry,
         public: path.resolve(__dirname, '../dist'),
         src: path.resolve(__dirname, '../src'),

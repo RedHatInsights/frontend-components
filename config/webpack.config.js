@@ -15,7 +15,6 @@ const webpack_config = {
         filename: 'index.js',
         path: config.paths.public,
         publicPath: '/insights',
-        chunkFilename: 'components/Compiled/[name]/[name].js',
         libraryTarget: 'commonjs2',
         umdNamedDefine: true
     },
