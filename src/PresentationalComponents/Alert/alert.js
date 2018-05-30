@@ -15,13 +15,13 @@ class Alert extends React.Component {
     render () {
         let alertClasses = classNames(
         'pf-c-alert',
-        [`pf-is-${props.type}`]
+        [`pf-is-${this.props.type}`]
         );
 
         return (
-            <div className={alertClasses} role='alert'> {props.children} </div>
+            <div className={alertClasses} role='alert'> {this.props.children} </div>
         );
     }
 };
 
-export { Alert };
+export default Alert;
