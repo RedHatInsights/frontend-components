@@ -10,14 +10,18 @@ import classNames from 'classnames';
  *  Types = 'success', 'danger', 'warning', 'info'
  */
 
-export default props => {
+class Alert extends React.Component {
 
-    let alertClasses = classNames(
-      'pf-c-alert',
-      [`pf-is-${props.type}`]
-    );
+    render () {
+        let alertClasses = classNames(
+        'pf-c-alert',
+        [`pf-is-${this.props.type}`]
+        );
 
-     return (
-        <div className={alertClasses} role='alert'> {props.children} </div>
-    );
-}
+        return (
+            <div className={alertClasses} role='alert'> {this.props.children} </div>
+        );
+    }
+};
+
+export default Alert;

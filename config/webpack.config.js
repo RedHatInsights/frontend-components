@@ -8,26 +8,16 @@ const webpack_config = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     devtool: false,
     optimization: {
-        minimize: process.env.NODE_ENV === 'production',
-        splitChunks: {
-            cacheGroups: {
-                vendors: false,
-                commons: {
-                  test: /[\\/]node_modules[\\/]/,
-                  name: "vendor",
-                  chunks: "initial"
-                }
-            },
-        },
+        minimize: process.env.NODE_ENV === 'production'
     },
-    entry: {
-        App: config.paths.entry
-    },
+    entry: './src/index.js',
     output: {
-        filename: 'components/compiled/[name]/[name].js',
+        filename: 'index.js',
         path: config.paths.public,
         publicPath: '/insights',
-        chunkFilename: 'components/compiled/[name]/[name].js'
+        chunkFilename: 'components/Compiled/[name]/[name].js',
+        libraryTarget: 'commonjs2',
+        umdNamedDefine: true
     },
     module: {
         rules: [{

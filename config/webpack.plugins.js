@@ -24,18 +24,6 @@ const HtmlWebpackPlugin = new (require('html-webpack-plugin'))({
     filename: 'index.html',
     template: path.resolve(__dirname, '../src/index.html')
 });
-plugins.push(HtmlWebpackPlugin);
-
-/**
- * Source maps
- * @type {var}
- */
-const SourceMapsPlugin = new webpack.SourceMapDevToolPlugin({
-    test: /\.js/i,
-    exclude: /(node_modules|bower_components)/i,
-    filename: `sourcemaps/[name].js.map`
-});
-plugins.push(SourceMapsPlugin);
 
 /**
  * Cleans distribution folder.
@@ -80,6 +68,7 @@ const ExtractCssWebpackPlugin = new (require('mini-css-extract-plugin'))({
     chunkFilename: 'components/compiled/[name]/[name].css',
     filename: 'components/compiled/[name]/[name].css'
 });
+
 plugins.push(ExtractCssWebpackPlugin);
 
 /**
