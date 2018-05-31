@@ -13,6 +13,9 @@ React.js starter app for Red Hat Insights products that includes Patternfly 3 an
 - Travis is used to test the build for this code.
     - `npm test` will run the test
 
+# Documentation links
+ * Utils
+   * [Redux](doc/utils/redux.md)
 # Patternfly
 - This project imports Patternfly components:
     - [Patternfly React](https://github.com/patternfly/patternfly-react)

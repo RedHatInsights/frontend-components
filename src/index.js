@@ -10,4 +10,10 @@ export { default as Section } from './PresentationalComponents/Section/section.j
 export { default as SampleComponent } from './PresentationalComponents/SampleComponent/sample-component.js';
 export { default as Tabs } from './PresentationalComponents/Tabs/tabs.js';
 export { default as TabPane } from './PresentationalComponents/Tabs/tab-pane.js';
-export { default as ReducerRegistry, applyReducerHash, dispatchActionsToStore } from './Utilities/ReducerRegistry';
+export {
+    default as ReducerRegistry,
+    applyReducerHash,
+    dispatchActionsToStore,
+    reduxRegistery
+} from './Utilities/ReducerRegistry';
+export { default as MiddlewareListener } from './Utilities/MiddlewareListener';

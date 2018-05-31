@@ -1,5 +1,4 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
-import MiddlewareListener from './MiddlewareListener';
 
 export function applyReducerHash(reducerHash) {
     return function(state, action) {
@@ -27,11 +26,10 @@ export function dispatchActionsToStore(actions, store) {
  */
 class ReducerRegistry {
     constructor(initState = {}, middlewares = [], composeEnhancers = compose) {
-        this.listenerMiddleware = new MiddlewareListener();
         this.store = createStore(
-            (state = {}) => state,
+            (state = initState) => state,
             initState,
-            composeEnhancers(applyMiddleware(...[this.listenerMiddleware.getMiddleware(), ...middlewares]))
+            composeEnhancers(applyMiddleware(...middlewares))
         );
         this.reducers = {};
     }
@@ -49,23 +47,16 @@ class ReducerRegistry {
     }
 
     /**
-     * adds the reducers to the store.
-     *
-     * @param reducers object where a key maps to a reducer
-     */
-    changeListener(reducers) {
-        this.store.replaceReducer(combineReducers({...this.reducers, ...reducers}));
-    }
-
-    /**
-     * calls the function to add the new reducers to the store.
+     * Adds new reducers to the store
      *
      * @param newReducers the object of new reducers.
      */
     register(newReducers) {
         this.reducers = {...this.reducers, ...newReducers};
-        this.changeListener(this.reducers);
+        this.store.replaceReducer(combineReducers({...this.reducers}));
     }
 }
+
+export const reduxRegistery = new ReducerRegistry();
 
 export default ReducerRegistry;

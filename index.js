@@ -5507,7 +5507,7 @@ var MiddlewareListener = function () {
             };
             var listeners = [].concat((0, _toConsumableArray3.default)(this.listeners));
             for (var i = 0; i < listeners.length; i++) {
-                listeners[i].on === action && listeners[i].callback({ data: data, preventBubble: preventBubble });
+                listeners[i].on === action && listeners[i].hasOwnProperty('callback') && listeners[i].callback({ data: data, preventBubble: preventBubble });
             }
             return stopBubble;
         }
@@ -5532,6 +5532,7 @@ exports.default = MiddlewareListener;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.reduxRegistery = undefined;
 
 var _toConsumableArray2 = __webpack_require__(/*! babel-runtime/helpers/toConsumableArray */ "./node_modules/babel-runtime/helpers/toConsumableArray.js");
 
@@ -5557,10 +5558,6 @@ exports.applyReducerHash = applyReducerHash;
 exports.dispatchActionsToStore = dispatchActionsToStore;
 
 var _redux = __webpack_require__(/*! redux */ "redux");
-
-var _MiddlewareListener = __webpack_require__(/*! ./MiddlewareListener */ "./src/Utilities/MiddlewareListener.js");
-
-var _MiddlewareListener2 = _interopRequireDefault(_MiddlewareListener);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5597,11 +5594,10 @@ var ReducerRegistry = function () {
         var composeEnhancers = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _redux.compose;
         (0, _classCallCheck3.default)(this, ReducerRegistry);
 
-        this.listenerMiddleware = new _MiddlewareListener2.default();
         this.store = (0, _redux.createStore)(function () {
-            var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+            var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
             return state;
-        }, initState, composeEnhancers(_redux.applyMiddleware.apply(undefined, [this.listenerMiddleware.getMiddleware()].concat((0, _toConsumableArray3.default)(middlewares)))));
+        }, initState, composeEnhancers(_redux.applyMiddleware.apply(undefined, (0, _toConsumableArray3.default)(middlewares))));
         this.reducers = {};
     }
 
@@ -5622,19 +5618,7 @@ var ReducerRegistry = function () {
         }
 
         /**
-         * adds the reducers to the store.
-         *
-         * @param reducers object where a key maps to a reducer
-         */
-
-    }, {
-        key: 'changeListener',
-        value: function changeListener(reducers) {
-            this.store.replaceReducer((0, _redux.combineReducers)((0, _extends4.default)({}, this.reducers, reducers)));
-        }
-
-        /**
-         * calls the function to add the new reducers to the store.
+         * Adds new reducers to the store
          *
          * @param newReducers the object of new reducers.
          */
@@ -5643,11 +5627,13 @@ var ReducerRegistry = function () {
         key: 'register',
         value: function register(newReducers) {
             this.reducers = (0, _extends4.default)({}, this.reducers, newReducers);
-            this.changeListener(this.reducers);
+            this.store.replaceReducer((0, _redux.combineReducers)((0, _extends4.default)({}, this.reducers)));
         }
     }]);
     return ReducerRegistry;
 }();
+
+var reduxRegistery = exports.reduxRegistery = new ReducerRegistry();
 
 exports.default = ReducerRegistry;
 
@@ -5664,136 +5650,151 @@ exports.default = ReducerRegistry;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _alert = __webpack_require__(/*! ./PresentationalComponents/Alert/alert.js */ "./src/PresentationalComponents/Alert/alert.js");
 
 Object.defineProperty(exports, 'Alert', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_alert).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_alert).default;
+    }
 });
 
 var _button = __webpack_require__(/*! ./PresentationalComponents/Button/button.js */ "./src/PresentationalComponents/Button/button.js");
 
 Object.defineProperty(exports, 'Button', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_button).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_button).default;
+    }
 });
 
 var _card = __webpack_require__(/*! ./PresentationalComponents/Card/card.js */ "./src/PresentationalComponents/Card/card.js");
 
 Object.defineProperty(exports, 'Card', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_card).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_card).default;
+    }
 });
 
 var _cardContent = __webpack_require__(/*! ./PresentationalComponents/Card/card-content.js */ "./src/PresentationalComponents/Card/card-content.js");
 
 Object.defineProperty(exports, 'CardContent', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_cardContent).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_cardContent).default;
+    }
 });
 
 var _cardFooter = __webpack_require__(/*! ./PresentationalComponents/Card/card-footer.js */ "./src/PresentationalComponents/Card/card-footer.js");
 
 Object.defineProperty(exports, 'CardFooter', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_cardFooter).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_cardFooter).default;
+    }
 });
 
 var _cardHeader = __webpack_require__(/*! ./PresentationalComponents/Card/card-header.js */ "./src/PresentationalComponents/Card/card-header.js");
 
 Object.defineProperty(exports, 'CardHeader', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_cardHeader).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_cardHeader).default;
+    }
 });
 
 var _pageHeader = __webpack_require__(/*! ./PresentationalComponents/PageHeader/page-header.js */ "./src/PresentationalComponents/PageHeader/page-header.js");
 
 Object.defineProperty(exports, 'PageHeader', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_pageHeader).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_pageHeader).default;
+    }
 });
 
 var _pageHeaderTitle = __webpack_require__(/*! ./PresentationalComponents/PageHeader/page-header-title.js */ "./src/PresentationalComponents/PageHeader/page-header-title.js");
 
 Object.defineProperty(exports, 'PageHeaderTitle', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_pageHeaderTitle).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_pageHeaderTitle).default;
+    }
 });
 
 var _section = __webpack_require__(/*! ./PresentationalComponents/Section/section.js */ "./src/PresentationalComponents/Section/section.js");
 
 Object.defineProperty(exports, 'Section', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_section).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_section).default;
+    }
 });
 
 var _sampleComponent = __webpack_require__(/*! ./PresentationalComponents/SampleComponent/sample-component.js */ "./src/PresentationalComponents/SampleComponent/sample-component.js");
 
 Object.defineProperty(exports, 'SampleComponent', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_sampleComponent).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_sampleComponent).default;
+    }
 });
 
 var _tabs = __webpack_require__(/*! ./PresentationalComponents/Tabs/tabs.js */ "./src/PresentationalComponents/Tabs/tabs.js");
 
 Object.defineProperty(exports, 'Tabs', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_tabs).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_tabs).default;
+    }
 });
 
 var _tabPane = __webpack_require__(/*! ./PresentationalComponents/Tabs/tab-pane.js */ "./src/PresentationalComponents/Tabs/tab-pane.js");
 
 Object.defineProperty(exports, 'TabPane', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_tabPane).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_tabPane).default;
+    }
 });
 
 var _ReducerRegistry = __webpack_require__(/*! ./Utilities/ReducerRegistry */ "./src/Utilities/ReducerRegistry.js");
 
 Object.defineProperty(exports, 'ReducerRegistry', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_ReducerRegistry).default;
-  }
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_ReducerRegistry).default;
+    }
 });
 Object.defineProperty(exports, 'applyReducerHash', {
-  enumerable: true,
-  get: function get() {
-    return _ReducerRegistry.applyReducerHash;
-  }
+    enumerable: true,
+    get: function get() {
+        return _ReducerRegistry.applyReducerHash;
+    }
 });
 Object.defineProperty(exports, 'dispatchActionsToStore', {
-  enumerable: true,
-  get: function get() {
-    return _ReducerRegistry.dispatchActionsToStore;
-  }
+    enumerable: true,
+    get: function get() {
+        return _ReducerRegistry.dispatchActionsToStore;
+    }
+});
+Object.defineProperty(exports, 'reduxRegistery', {
+    enumerable: true,
+    get: function get() {
+        return _ReducerRegistry.reduxRegistery;
+    }
+});
+
+var _MiddlewareListener = __webpack_require__(/*! ./Utilities/MiddlewareListener */ "./src/Utilities/MiddlewareListener.js");
+
+Object.defineProperty(exports, 'MiddlewareListener', {
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_MiddlewareListener).default;
+    }
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

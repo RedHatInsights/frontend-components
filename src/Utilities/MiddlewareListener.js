@@ -28,7 +28,9 @@ class MiddlewareListener {
         const preventBubble = () => (stopBubble = true);
         const listeners = [...this.listeners];
         for (let i = 0; i < listeners.length; i++) {
-            listeners[i].on === action && listeners[i].callback({data, preventBubble});
+            listeners[i].on === action && 
+              listeners[i].hasOwnProperty('callback') &&
+              listeners[i].callback({data, preventBubble});
         }
         return stopBubble;
     }
