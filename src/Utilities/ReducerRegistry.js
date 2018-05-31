@@ -1,12 +1,24 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
-import promiseMiddleware from "redux-promise-middleware";
+import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
+import MiddlewareListener from './MiddlewareListener';
 
-/**
- * https://redux.js.org/basics/store
- * https://redux.js.org/api-reference/combinereducers
- * https://redux.js.org/api-reference/applymiddleware
- */
-const store = createStore(combineReducers({}), applyMiddleware(promiseMiddleware()));
+export function applyReducerHash(reducerHash) {
+    return function(state, action) {
+        let newState = state;
+
+        if (Object.prototype.hasOwnProperty.call(reducerHash, action.type)) {
+            newState = reducerHash[action.type](state, action);
+        }
+
+        return newState;
+    }
+}
+
+export function dispatchActionsToStore(actions, store) {
+    return Object.keys(actions).reduce((acc, curr) => ({
+        ...acc,
+        [curr]: (...passTrough) => store && store.dispatch(actions[curr](...passTrough)),
+    }), {})
+}
 
 /**
  * Class used to added reducers to the store during runtime.
@@ -14,12 +26,26 @@ const store = createStore(combineReducers({}), applyMiddleware(promiseMiddleware
  * http://nicolasgallagher.com/redux-modules-and-code-splitting/
  */
 class ReducerRegistry {
-    constructor() {
+    constructor(initState = {}, middlewares = [], composeEnhancers = compose) {
+        this.listenerMiddleware = new MiddlewareListener();
+        this.store = createStore(
+            (state = {}) => state,
+            initState,
+            composeEnhancers(applyMiddleware(...[this.listenerMiddleware.getMiddleware(), ...middlewares]))
+        );
         this.reducers = {};
     }
 
+    on(event, callback) {
+        this.listenerMiddleware.addNew({ on: event, callback });
+    }
+
+    getListenerMiddleware() {
+        return this.listenerMiddleware;
+    }
+
     getStore() {
-        return store;
+        return this.store;
     }
 
     /**
@@ -28,7 +54,7 @@ class ReducerRegistry {
      * @param reducers object where a key maps to a reducer
      */
     changeListener(reducers) {
-        store.replaceReducer(combineReducers({...this.reducers, ...reducers}));
+        this.store.replaceReducer(combineReducers({...this.reducers, ...reducers}));
     }
 
     /**
@@ -42,5 +68,4 @@ class ReducerRegistry {
     }
 }
 
-/* only need one instance of reducer registry */
-export default new ReducerRegistry();
+export default ReducerRegistry;
