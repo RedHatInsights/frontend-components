@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("redux"));
+		module.exports = factory(require("patternfly-react"), require("react"), require("redux"));
 	else if(typeof define === 'function' && define.amd)
-		define("InsightsComponentsRegistery", ["react", "redux"], factory);
+		define("InsightsComponentsRegistery", ["patternfly-react", "react", "redux"], factory);
 	else if(typeof exports === 'object')
-		exports["InsightsComponentsRegistery"] = factory(require("react"), require("redux"));
+		exports["InsightsComponentsRegistery"] = factory(require("patternfly-react"), require("react"), require("redux"));
 	else
-		root["InsightsComponentsRegistery"] = factory(root["React"], root["Redux"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_redux__) {
+		root["InsightsComponentsRegistery"] = factory(root["PFReact"], root["React"], root["Redux"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE_patternfly_react__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_redux__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -4656,6 +4656,71 @@ exports.default = Button;
 
 /***/ }),
 
+/***/ "./src/PresentationalComponents/Button/pf-button.js":
+/*!**********************************************************!*\
+  !*** ./src/PresentationalComponents/Button/pf-button.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _patternflyReact = __webpack_require__(/*! patternfly-react */ "patternfly-react");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// This is the Patternfly-3 version of buttons
+
+var PF3Button = function (_React$Component) {
+  (0, _inherits3.default)(PF3Button, _React$Component);
+
+  function PF3Button() {
+    (0, _classCallCheck3.default)(this, PF3Button);
+    return (0, _possibleConstructorReturn3.default)(this, (PF3Button.__proto__ || Object.getPrototypeOf(PF3Button)).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(PF3Button, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'special-patternfly' },
+        _react2.default.createElement(_patternflyReact.Button, this.props)
+      );
+    }
+  }]);
+  return PF3Button;
+}(_react2.default.Component);
+
+exports.default = PF3Button;
+
+/***/ }),
+
 /***/ "./src/PresentationalComponents/Card/card-content.js":
 /*!***********************************************************!*\
   !*** ./src/PresentationalComponents/Card/card-content.js ***!
@@ -5376,9 +5441,12 @@ var Tabs = createReactClass({
     },
     handleClick: function handleClick(index, event) {
         event.preventDefault();
-        this.setState({
-            selected: index
-        });
+
+        if (!this.props.children[index].props.disabled) {
+            this.setState({
+                selected: index
+            });
+        }
     },
 
     propTypes: {
@@ -5725,6 +5793,15 @@ Object.defineProperty(exports, 'PageHeaderTitle', {
     }
 });
 
+var _pfButton = __webpack_require__(/*! ./PresentationalComponents/Button/pf-button.js */ "./src/PresentationalComponents/Button/pf-button.js");
+
+Object.defineProperty(exports, 'PF3Button', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_pfButton).default;
+  }
+});
+
 var _section = __webpack_require__(/*! ./PresentationalComponents/Section/section.js */ "./src/PresentationalComponents/Section/section.js");
 
 Object.defineProperty(exports, 'Section', {
@@ -5798,6 +5875,33 @@ Object.defineProperty(exports, 'MiddlewareListener', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = {
+  Alert: Alert,
+  Button: Button,
+  Card: Card,
+  CardContent: CardContent,
+  CardFooter: CardFooter,
+  CardHeader: CardHeader,
+  PageHeader: PageHeader,
+  PageHeaderTitle: PageHeaderTitle,
+  PF3Button: PF3Button,
+  SampleComponent: SampleComponent,
+  Section: Section,
+  Tabs: Tabs,
+  TabPane: TabPane
+};
+
+/***/ }),
+
+/***/ "patternfly-react":
+/*!*************************************************************************************************************************!*\
+  !*** external {"commonjs":"patternfly-react","commonjs2":"patternfly-react","amd":"patternfly-react","root":"PFReact"} ***!
+  \*************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_patternfly_react__;
 
 /***/ }),
 

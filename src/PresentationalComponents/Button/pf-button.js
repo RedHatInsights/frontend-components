@@ -3,8 +3,14 @@
 import React from 'react';
 import { Button } from 'patternfly-react';
 
-export default props => (
-    <div className="special-patternfly">
-        <Button {...props}/>
-    </div>
-);
+class PF3Button extends React.Component {
+  render () {  
+    return (
+      <div className="special-patternfly">
+          <Button {...this.props}/>
+      </div>
+    );
+  }
+}
+
+export default PF3Button;

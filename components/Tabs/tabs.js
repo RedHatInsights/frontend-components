@@ -24,9 +24,12 @@ const Tabs = createReactClass({
     },
     handleClick (index, event) {
         event.preventDefault();
-        this.setState({
-            selected: index
-        });
+
+        if (!this.props.children[index].props.disabled) {
+            this.setState({
+                selected: index
+            });
+        }
     },
     propTypes: {
         selected: PropTypes.number,
