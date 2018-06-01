@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./webpack.common.js');
 const { resolve } = require('path');
 const pkg = require('../package.json');
+const { externals } = require('./build-constants');
 
 const webpack_config = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
@@ -14,8 +15,8 @@ const webpack_config = {
     output: {
         filename: 'index.js',
         path: config.paths.build,
-        publicPath: '/insights',
-        libraryTarget: 'commonjs2',
+        library: 'InsightsComponentsRegistery',
+        libraryTarget: 'umd',
         umdNamedDefine: true
     },
     module: {
@@ -51,7 +52,8 @@ const webpack_config = {
                 }
             }]
         }]
-    }
+    },
+    externals: externals,
 };
 
 module.exports = merge({},

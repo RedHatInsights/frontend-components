@@ -1,7 +1,7 @@
 {
   "name": "@red-hat-insights/insights-frontend-components",
   "version": "0.1.12",
-  "main": "dist/index.html",
+  "main": "index.js",
   "private": false,
   "publishConfig": {
     "access": "public"
