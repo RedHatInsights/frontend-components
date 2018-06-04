@@ -1,6 +1,5 @@
 import React from 'react';
-
-const createReactClass = require('create-react-class');
+import ReactCreateClass from 'create-react-class';
 
 const TabPane = createReactClass({
     displayName: 'Tab-Pane',

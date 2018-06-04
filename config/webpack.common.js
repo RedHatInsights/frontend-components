@@ -7,7 +7,7 @@ module.exports = {
     paths: {
         build: path.resolve(__dirname, '../'),
         entry: entry,
-        public: path.resolve(__dirname, '../dist'),
+        public: path.resolve(__dirname, '../'),
         src: path.resolve(__dirname, '../src'),
         presentationalComponents: path.resolve(__dirname, '../src/PresentationalComponents'),
         smartComponents: path.resolve(__dirname, '../src/SmartComponents'),

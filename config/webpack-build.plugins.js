@@ -55,8 +55,8 @@ const AggressiveSplittingPlugin = new webpack.optimize.AggressiveSplittingPlugin
  * Writes final css to file
  */
 const ExtractCssWebpackPlugin = new (require('mini-css-extract-plugin'))({
-    chunkFilename: 'components/compiled/[name]/[name].css',
-    filename: 'components/compiled/[name]/[name].css'
+    chunkFilename: '[name].css',
+    filename: '[id].css'
 });
 
 plugins.push(ExtractCssWebpackPlugin);
@@ -68,6 +68,6 @@ const CopyFilesWebpackPlugin = new (require('copy-webpack-plugin'))([
     {from: path.resolve(__dirname, '../static/images'), to: 'images'},
     {from: path.resolve(__dirname, '../src/PresentationalComponents'), to: 'components'}
 ]);
-plugins.push(CopyFilesWebpackPlugin);
+// plugins.push(CopyFilesWebpackPlugin);
 
 module.exports = { plugins: plugins };

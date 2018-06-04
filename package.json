@@ -1,17 +1,45 @@
 {
   "name": "@red-hat-insights/insights-frontend-components",
   "version": "0.1.12",
-  "main": "index.js",
+  "main": "dist/index.js",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "index.js",
+    "index.css",
+    "components/",
+    "Utilities/"
+  ],
   "dependencies": {
     "@patternfly/patternfly-next": "^1.0.3",
-    "@storybook/cli": "^4.0.0-alpha.8",
     "classnames": "^2.2.5",
     "create-react-class": "^15.6.3",
-    "patternfly-react": "^2.3.4"
+    "patternfly-react": "^2.3.4",
+    "d3": "^5.4.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-promise-middleware": "^5.1.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js|jsx}",
+      "!src/**/stories/*"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/setupTests.js"
+    ],
+    "roots": [
+      "<rootDir>/src/"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    }
   },
   "sassIncludes": {
     "patternfly": "node_modules/patternfly/dist/sass",
@@ -21,7 +49,11 @@
   "devDependencies": {
     "@patternfly/patternfly-next": "^1.0.2",
     "@storybook/addon-actions": "^3.4.6",
-    "@storybook/react": "^4.0.0-alpha.8",
+    "@storybook/addon-info": "^3.3.13",
+    "@storybook/addon-options": "^3.3.13",
+    "@storybook/addon-storysource": "^3.4.4",
+    "@storybook/addons": "^3.3.12",
+    "@storybook/react": "^3.4.6",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-dual-import": "^1.2.1",
@@ -38,23 +70,20 @@
     "copy-webpack-plugin": "^4.5.1",
     "cross-fetch": "^2.2.0",
     "css-loader": "^0.28.11",
-    "d3": "^5.4.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
     "file-loader": "^1.1.11",
     "glob": "^7.1.2",
     "html-webpack-plugin": "^3.0.4",
+    "jest": "^23.1.0",
     "lodash-webpack-plugin": "^0.11.5",
-    "material-ui": "^0.20.1",
     "mini-css-extract-plugin": "^0.4.0",
     "moment": "^2.22.1",
     "node-sass": "^4.9.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "redux-promise-middleware": "^5.1.1",
     "sass-loader": "^7.0.1",
     "source-map-loader": "^0.2.3",
+    "storybook": "^1.0.0",
     "style-loader": "^0.21.0",
     "topojson": "^3.0.2",
     "webpack": "^4.8.3",
@@ -62,15 +91,15 @@
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4",
     "webpack-visualizer-plugin": "^0.1.11",
-    "write-file-webpack-plugin": "^4.3.2"
+    "write-file-webpack-plugin": "^4.3.2",
+    "@storybook/addon-links": "^3.4.6"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --config config/webpack.config.js",
-    "prod": "webpack-dev-server --mode production --config config/webpack.config.js",
-    "server:ctr": "node src/server/generateServerKey.js",
+    "start": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
     "build": "webpack --config config/webpack-build.config.js",
-    "test": "webpack --config config/webpack-test.config.js",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
     "prepublish": "rm -rf ./dist && npm run build"
   }
 }

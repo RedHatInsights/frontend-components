@@ -1,7 +1,0 @@
-@import './src/Utilities.scss';
-
-.sample-component {
-  @include font-size(20px);
-  @include rem('margin', $global-margin);
-  display: block;
-}

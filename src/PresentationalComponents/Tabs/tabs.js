@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
-const createReactClass = require('create-react-class');
+import ReactCreateClass from 'create-react-class';
 
 /**
  * Component that accepts a list of Tabs from the children prop and a selected prop

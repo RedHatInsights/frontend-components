@@ -14,3 +14,5 @@ import './sample-page.scss';
 class SamplePage extends Component<RouteProps<any> & Props, State> {
     render() {}
 }
+
+export default SamplePage;

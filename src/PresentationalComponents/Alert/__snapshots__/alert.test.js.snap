@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert should render correctly 1`] = `
+<Alert
+  type="success"
+>
+  <div
+    className="pf-c-alert pf-is-success"
+    role="alert"
+  >
+     
+    Some text
+     
+  </div>
+</Alert>
+`;
+
+exports[`Alert should render correctly 2`] = `
+<Alert
+  type="danger"
+>
+  <div
+    className="pf-c-alert pf-is-danger"
+    role="alert"
+  >
+     
+    Some text
+     
+  </div>
+</Alert>
+`;
+
+exports[`Alert should render correctly 3`] = `
+<Alert
+  type="warning"
+>
+  <div
+    className="pf-c-alert pf-is-warning"
+    role="alert"
+  >
+     
+    Some text
+     
+  </div>
+</Alert>
+`;
+
+exports[`Alert should render correctly 4`] = `
+<Alert
+  type="info"
+>
+  <div
+    className="pf-c-alert pf-is-info"
+    role="alert"
+  >
+     
+    Some text
+     
+  </div>
+</Alert>
+`;
