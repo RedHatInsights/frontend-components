@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 import classNames from 'classnames';
 
@@ -12,7 +13,7 @@ import './section.scss';
  *  Types = 'content'
  */
 
-export default class SampleComponent extends React.Component {
+class Section extends React.Component {
 
   render () {
     let sectionClasses = classNames(
@@ -23,4 +24,10 @@ export default class SampleComponent extends React.Component {
         <section className={sectionClasses}> {this.props.children} </section>
     );
   }
-}
+};
+
+export default Section;
+
+Section.propTypes = {
+  children: propTypes.element.isRequired
+};

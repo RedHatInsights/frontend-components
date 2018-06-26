@@ -1,6 +1,6 @@
 {
   "name": "@red-hat-insights/insights-frontend-components",
-  "version": "0.1.12",
+  "version": "0.1.15",
   "main": "dist/index.js",
   "private": false,
   "publishConfig": {
@@ -13,11 +13,9 @@
     "Utilities/"
   ],
   "dependencies": {
-    "@patternfly/patternfly-next": "^1.0.3",
     "classnames": "^2.2.5",
-    "create-react-class": "^15.6.3",
-    "patternfly-react": "^2.3.4",
     "d3": "^5.4.0",
+    "prop-types": "^15.6.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
@@ -47,7 +45,7 @@
     "fontAwesome": "node_modules/patternfly/node_modules/font-awesome-sass/assets/stylesheets"
   },
   "devDependencies": {
-    "@patternfly/patternfly-next": "^1.0.2",
+    "@patternfly/patternfly-next": "^1.0.4",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-dual-import": "^1.2.1",

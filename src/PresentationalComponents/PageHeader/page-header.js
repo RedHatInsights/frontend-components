@@ -1,4 +1,6 @@
 import React from 'react';
+import propTypes from 'prop-types';
+
 import './page-header.scss';
 
 /**
@@ -7,10 +9,17 @@ import './page-header.scss';
  *
  * @param props the props given by the smart component.
  */
-export default class PageHeader extends React.Component {
+
+class PageHeader extends React.Component {
   render () {
     return (
         <header className='ins-p-page-header'> {this.props.children} </header>
     );
   }
-}
+};
+
+export default PageHeader;
+
+PageHeader.propTypes = {
+  children: propTypes.element.isRequired
+};
