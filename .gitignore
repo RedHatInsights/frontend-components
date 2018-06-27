@@ -14,8 +14,8 @@ yarn-debug.log*
 yarn-error.log*
 /index.js
 /index.css
-components/
-Utilities/
+/components/
+/Utilities/
 coverage
 .storybook
 
