@@ -16,6 +16,8 @@ React.js starter app for Red Hat Insights products that includes Patternfly 3 an
 # Documentation links
  * Utils
    * [Redux](doc/utils/redux.md)
+ * Contribution
+   * [Commit format](doc/contrib/commit_format.md)
 # Patternfly
 - This project imports Patternfly components:
     - [Patternfly React](https://github.com/patternfly/patternfly-react)
