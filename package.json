@@ -45,6 +45,7 @@
     "fontAwesome": "node_modules/patternfly/node_modules/font-awesome-sass/assets/stylesheets"
   },
   "devDependencies": {
+    "@khala/commit-analyzer-wildcard": "^1.0.0",
     "@patternfly/patternfly-next": "^1.0.4",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
@@ -74,6 +75,7 @@
     "moment": "^2.22.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "semantic-release": "^15.6.0",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
     "topojson": "^3.0.2",
@@ -89,6 +91,10 @@
     "build": "webpack --config config/webpack-build.config.js",
     "test": "jest",
     "prepublish": "rm -rf ./dist && npm run build",
-    "playground": "webpack-dev-server --config config/webpack-build.config.js --env.server=true"
+    "playground": "webpack-dev-server --config config/webpack-build.config.js --env.server=true",
+    "release": "semantic-release"
+  },
+  "release": {
+    "analyzeCommits": "@khala/commit-analyzer-wildcard/analyzer"
   }
 }
