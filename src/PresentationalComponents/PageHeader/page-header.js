@@ -21,5 +21,5 @@ class PageHeader extends React.Component {
 export default PageHeader;
 
 PageHeader.propTypes = {
-  children: propTypes.element.isRequired
+  children: propTypes.any.isRequired
 };

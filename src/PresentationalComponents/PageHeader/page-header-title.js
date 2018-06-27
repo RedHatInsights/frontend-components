@@ -13,7 +13,7 @@ import './page-header.scss';
 class PageHeaderTitle extends React.Component {
   render () {
     return (
-        <h1 className='ins-p-page-header__title'> {this.props.children} </h1>
+        <h1 className='ins-p-page-header__title'> {this.props.title} </h1>
     );
   }
 };
@@ -21,5 +21,5 @@ class PageHeaderTitle extends React.Component {
 export default PageHeaderTitle;
 
 PageHeaderTitle.propTypes = {
-  children: propTypes.element.isRequired
+  title: propTypes.string.isRequired
 };
