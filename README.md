@@ -5,7 +5,15 @@
 Red Hat Insights Components for applications in a React.js environment
 
 ## Usage
-npm: `npm install @red-hat-insights/insights-frontend-components`
+npm install: `npm install @red-hat-insights/insights-frontend-components`
+
+### Imports
+Component
+`import { Component } from 'node_modules/@red-hat-insights/insights-frontend-components`
+
+SCSS
+`@import '~@red-hat-insights/insights-frontend-components/index.css';`
+
 
 ## Development
 Create a component inside of the PresentationalComponent folder
