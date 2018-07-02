@@ -96,5 +96,16 @@
   },
   "release": {
     "analyzeCommits": "@khala/commit-analyzer-wildcard/analyzer"
-  }
+  },
+  "description": "Components for Red Hat Insights Applications",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedHatInsights/insights-frontend-components.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RedHatInsights/insights-frontend-components/issues"
+  },
+  "homepage": "https://github.com/RedHatInsights/insights-frontend-components#readme"
 }
