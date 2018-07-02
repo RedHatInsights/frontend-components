@@ -45,8 +45,10 @@
     "fontAwesome": "node_modules/patternfly/node_modules/font-awesome-sass/assets/stylesheets"
   },
   "devDependencies": {
-    "@khala/commit-analyzer-wildcard": "^1.0.0",
+    "@khala/commit-analyzer-wildcard": "^1.0.2",
     "@patternfly/patternfly-next": "^1.0.4",
+    "@semantic-release/git": "^6.0.1",
+    "@semantic-release/npm": "^3.3.4",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-dual-import": "^1.2.1",
@@ -95,7 +97,17 @@
     "release": "semantic-release"
   },
   "release": {
-    "analyzeCommits": "@khala/commit-analyzer-wildcard/analyzer"
+    "analyzeCommits": "@khala/commit-analyzer-wildcard/analyzer",
+    "prepare": [
+      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "package.json"
+        ],
+        "message": "Release of new version: ${nextRelease.version} <no> [skip ci]"
+      }
+    ]
   },
   "description": "Components for Red Hat Insights Applications",
   "repository": {
