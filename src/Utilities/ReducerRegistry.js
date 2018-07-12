@@ -1,14 +1,12 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 
-export function applyReducerHash(reducerHash) {
-    return function(state, action) {
-        let newState = state;
-
+export function applyReducerHash(reducerHash, initialState = {}) {
+    return function(state = initialState, action) {
         if (Object.prototype.hasOwnProperty.call(reducerHash, action.type)) {
-            newState = reducerHash[action.type](state, action);
+            return reducerHash[action.type](state, action);
         }
 
-        return newState;
+        return state;
     }
 }
 
