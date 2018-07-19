@@ -40,6 +40,7 @@ There is also a playground for any development
     * [Sample Component](doc/components/sample.md)
     * [Page Header](doc/components/page_header.md)
     * [Section](doc/components/section.md)
+    * [Pagination](doc/components/pagination.md)
 
 ## Conbribution
 ### Commit format

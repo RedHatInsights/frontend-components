@@ -9,3 +9,4 @@ export {
     reduxRegistery
 } from './Utilities/ReducerRegistry';
 export { default as MiddlewareListener } from './Utilities/MiddlewareListener';
+export * from './PresentationalComponents/Pagination';

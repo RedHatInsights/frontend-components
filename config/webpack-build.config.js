@@ -56,7 +56,8 @@ const webpack_config = (env) => {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: 'fonts/'
+                        outputPath: isServer ? 'fonts/' : '/insights/static/chrome/assets/fonts',
+                        emitFile: isServer ? true : false
                     }
                 }]
             }]
