@@ -41,6 +41,7 @@ There is also a playground for any development
     * [Page Header](doc/components/page_header.md)
     * [Section](doc/components/section.md)
     * [Pagination](doc/components/pagination.md)
+    * [Dropdown](doc/components/Dropdown.md)
 
 ## Conbribution
 ### Commit format

@@ -22,6 +22,13 @@ const pfReact = {
     root: 'PFReact',
 };
 
+const pfReactIcons = {
+    commonjs: '@patternfly/react-icons',
+    commonjs2: '@patternfly/react-icons',
+    amd: '@patternfly/react-icons',
+    root: 'PFReactIcons',
+}
+
 const pfReactCore = {
     commonjs: '@patternfly/react-core',
     commonjs2: '@patternfly/react-core',
@@ -78,6 +85,7 @@ module.exports = {
         'react-dom': reactDom,
         'react-redux': reactRedux,
         classnames: 'classnames',
-        '@patternfly/react-core': pfReactCore
+        '@patternfly/react-core': pfReactCore,
+        '@patternfly/react-icons': pfReactIcons
     },
 };
