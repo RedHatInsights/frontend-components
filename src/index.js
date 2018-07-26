@@ -12,3 +12,4 @@ export { default as MiddlewareListener } from './Utilities/MiddlewareListener';
 export * from './PresentationalComponents/Pagination';
 export * from './PresentationalComponents/SimpleTableFilter';
 export * from './PresentationalComponents/Input';
+export * from './PresentationalComponents/Table';

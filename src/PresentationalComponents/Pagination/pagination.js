@@ -45,8 +45,10 @@ class Pagination extends Component {
   render() {
     const { page = 1 } = this.props;
     const perPage = this.props.itemsPerPage || pager[0];
-    const lastIndex = page * perPage;
     const perPageOptions = this.props.perPageOptions || pager;
+    const lastPage = Math.ceil(this.props.numberOfItems / perPage);
+    const lastIndex = page === lastPage ? this.props.numberOfItems : page * perPage;
+    const firstIndex = page === 1 ? 1 : page * perPage - perPage;
     return (
       <div className="special-patternfly">
         <PaginationRow
@@ -54,11 +56,12 @@ class Pagination extends Component {
           pageInputValue={this.props.page || 1}
           viewType={this.props.viewType || 'table'}
           pagination={{ perPage, page, perPageOptions }}
-          amountOfPages={Math.ceil(this.props.numberOfItems / perPage)}
+          amountOfPages={lastPage}
           itemCount={this.props.numberOfItems}
-          itemsStart={lastIndex - perPage + 1}
+          itemsStart={firstIndex}
           pageSizeDropUp={this.props.direction === 'up'}
           itemsEnd={lastIndex}
+          onPerPageSelect={this.props.onPerPageSelect}
           onFirstPage={this.props.onFirstPage || this.defaultFirstPage}
           onLastPage={this.props.onLastPage || this.defaultLastPage}
           onPreviousPage={this.props.onPreviousPage || this.defaultPreviousPage}
@@ -75,7 +78,8 @@ Pagination.propTypes = {
   itemsPerPage: PropTypes.number,
   perPageOptions: PropTypes.arrayOf(PropTypes.number),
   numberOfItems: PropTypes.number.isRequired,
-  setPage: PropTypes.func
+  setPage: PropTypes.func,
+  onPerPageSelect: PropTypes.func
 }
 
 export default Pagination;

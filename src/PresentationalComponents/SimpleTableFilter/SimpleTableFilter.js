@@ -15,7 +15,7 @@ class SimpleFilter extends Component {
 
   onInputChange(event) {
     this.setState({ activeFilter: event.target.value });
-    this.props.hasOwnProperty('onFilterChange') && this.props.onFilterChange(this.state.activeFilter);
+    this.props.hasOwnProperty('onFilterChange') && this.props.onFilterChange(event.target.value);
   }
 
   onFilterSubmit() {

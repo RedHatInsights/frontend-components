@@ -16,10 +16,25 @@ class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.onDropdownClick = this.onDropdownClick.bind(this);
+    this.onDocClick = this.onDocClick.bind(this);
   }
 
-  onDropdownClick(event) {
-    if (event.target.classList.contains('pf-c-dropdown__toggle')) {
+  componentWillMount() {
+    document.addEventListener('mousedown', this.onDocClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.onDocClick);
+  }
+
+  onDocClick(event) {
+    if (this.ref && !this.ref.contains(event.target)) {
+      this.onDropdownClick(event, !this.props.isCollapsed);
+    }
+  }
+
+  onDropdownClick(event, toggleEvent = false) {
+    if (event.target.classList.contains('pf-c-dropdown__toggle') || toggleEvent) {
       this.props.onToggle && this.props.onToggle(event);
     } else if (event.target.classList.contains('pf-c-dropdown__menu-item')) {
       this.props.onSelect && this.props.onSelect(event);
@@ -53,7 +68,7 @@ class Dropdown extends Component {
     )
 
     return (
-      <div {...props} onClick={this.onDropdownClick} className={classes}>
+      <div {...props} onClick={this.onDropdownClick} className={classes} ref={ref => this.ref = ref}>
         <button className="pf-c-dropdown__toggle" aria-haspopup="true" aria-expanded={!isCollapsed}>
           {isKebab ?
              <i className="fas fa-ellipsis-v"></i>
