@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonVariant } from '@patternfly/react-core';
+import { Input } from '../Input';
 
 class SimpleFilter extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class SimpleFilter extends Component {
     } = this.props;
     return (
       <div className={`pf-c-input-group ${className}`} {...props}>
-        <input className="pf-c-form-control" type="text" placeholder={placeholder} onChange={this.onInputChange}/>
+        <Input placeholder={placeholder} onChange={this.onInputChange}/>
         {buttonTitle && <Button variant={ButtonVariant.secondary} onClick={this.onFilterSubmit}>{buttonTitle}</Button>}
       </div>
     )

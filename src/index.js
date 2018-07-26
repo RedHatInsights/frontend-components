@@ -10,3 +10,5 @@ export {
 } from './Utilities/ReducerRegistry';
 export { default as MiddlewareListener } from './Utilities/MiddlewareListener';
 export * from './PresentationalComponents/Pagination';
+export * from './PresentationalComponents/SimpleTableFilter';
+export * from './PresentationalComponents/Input';
