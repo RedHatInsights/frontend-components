@@ -63,7 +63,11 @@ class TableHeader extends Component {
     const { onSelectAll } = this.props;
     return (
       <th className='ins-empty-col' onClick={event => {
-        onSelectAll(event, event.target.checked)
+        const checkbox = event.target.querySelector('input') || event.target;
+        if (checkbox !== event.target) {
+          checkbox.checked = !checkbox.checked;
+        }
+        onSelectAll(event, checkbox.checked);
       }}>
         <input
               type="checkbox"

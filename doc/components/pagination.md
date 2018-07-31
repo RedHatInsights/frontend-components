@@ -22,5 +22,6 @@ This component is using paginationRow props and adds these on top of them
   itemsPerPage: PropTypes.number, // default to first per page options
   perPageOptions: PropTypes.arrayOf(PropTypes.number), // default to [10, 15, 20, 25, 50]
   numberOfItems: PropTypes.number.isRequired,
-  setPage: PropTypes.func // function callback when page change, argument will be new number of page
+  onSetPage: PropTypes.func // function callback when page change, argument will be new number of page
+  onPerPageSelect: PropTypes.func // function which is invoked on dropdown select for number of items per page
 }

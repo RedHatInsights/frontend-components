@@ -20,6 +20,10 @@ class Pagination extends Component {
   }
 
   setPage(page) {
+    const perPage = this.props.itemsPerPage || pager[0];
+    const maxPage = Math.ceil(this.props.numberOfItems / perPage);
+    page = isNaN(page) ? 1 : page;
+    page = page > maxPage ? maxPage : page;
     this.props.hasOwnProperty('onSetPage') ? this.props.onSetPage(page) : console.log(page);
   }
 
@@ -62,6 +66,7 @@ class Pagination extends Component {
           pageSizeDropUp={this.props.direction === 'up'}
           itemsEnd={lastIndex}
           onPerPageSelect={this.props.onPerPageSelect}
+          onPageInput={event => this.setPage(parseInt(event.target.value), 10)}
           onFirstPage={this.props.onFirstPage || this.defaultFirstPage}
           onLastPage={this.props.onLastPage || this.defaultLastPage}
           onPreviousPage={this.props.onPreviousPage || this.defaultPreviousPage}
@@ -78,7 +83,7 @@ Pagination.propTypes = {
   itemsPerPage: PropTypes.number,
   perPageOptions: PropTypes.arrayOf(PropTypes.number),
   numberOfItems: PropTypes.number.isRequired,
-  setPage: PropTypes.func,
+  onSetPage: PropTypes.func,
   onPerPageSelect: PropTypes.func
 }
 

@@ -42,6 +42,7 @@ There is also a playground for any development
     * [Section](doc/components/section.md)
     * [Pagination](doc/components/pagination.md)
     * [Dropdown](doc/components/Dropdown.md)
+    * [Table](doc/components/Table.md)
 
 ## Conbribution
 ### Commit format
