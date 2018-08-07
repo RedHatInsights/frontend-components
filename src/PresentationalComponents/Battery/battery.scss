@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'ins-battery';
+  src: url('./ins-battery.eot');
+  src: url('./ins-battery.eot?#iefix') format('embedded-opentype'),
+       url('./ins-battery.woff') format('woff'),
+       url('./ins-battery.ttf')  format('truetype');
+       font-weight: 700;
+       font-style: normal;
+}
+
+@mixin setBatteryFont() {
+  font-family: "ins-battery";
+  font-size: 15px;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+// Setting the icons
+.ins-battery-1, .ins-battery-low {
+  color: #3f9c35;
+  &:before {
+    @include setBatteryFont;
+    content: "\b0001";
+  }
+}
+
+.ins-battery-2, .ins-battery-medium {
+  color: #f0ab00;
+  &:before {
+    @include setBatteryFont;
+    content: "\b0002";
+  }
+}
+
+.ins-battery-3, .ins-battery-high {
+  color: #ec7a08;
+  &:before {
+    @include setBatteryFont;
+    content: "\b0003";
+  }
+}
+
+.ins-battery-4, .ins-battery-critical {
+  color: #cc0000;
+  &:before {
+    @include setBatteryFont;
+    content: "\b0004";
+  }
+}
