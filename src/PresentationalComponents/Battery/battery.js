@@ -14,19 +14,19 @@ import './battery.scss';
 
 const Battery = ({severity, label, labelHidden, className, ...props}) => {
     let severityClass = classNames(
-        { [`ins-battery-${this.props.severity}`]: this.props.severity !== undefined }
+        { [`ins-battery-${severity}`]: severity !== undefined }
     );
-    if(!this.props.labelHidden) {
+    if(!labelHidden) {
         return (
             <span className='ins-battery'>
                 <i className= { severityClass } />
-                <span className='label'> { this.props.label } </span>
+                <span className='label'> { label } </span>
             </span>
         );
     } else {
         return (
             <span className='ins-battery'>
-                <i className= { severityClass } aria-label= { this.props.label + ' ' + this.props.severity }/>
+                <i className= { severityClass } aria-label= { label + ' ' + severity }/>
             </span>
         );
     };
