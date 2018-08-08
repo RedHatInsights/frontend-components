@@ -11,7 +11,7 @@ export const SortDirection = {
 }
 
 const Table = ({
-  hasCheckbox = false,
+  hasCheckbox,
   sortBy = {},
   className,
   rows,
@@ -19,6 +19,8 @@ const Table = ({
   footer,
   onSort,
   hasIcon,
+  onRowClick,
+  onColClick,
   onItemSelect,
   ...props
 }) => {
@@ -38,7 +40,15 @@ const Table = ({
           onSort={onSort}
         />
       }
-      {rows && <TBody hasCheckbox={hasCheckbox} rows={rows} onItemSelect={onItemSelect}/>}
+      {rows &&
+        <TBody
+          hasCheckbox={hasCheckbox}
+          rows={rows}
+          onItemSelect={onItemSelect}
+          onRowClick={onRowClick}
+          onColClick={onColClick}
+        />
+      }
       {footer && <TFooter hasCheckbox={hasCheckbox} hasIcon={hasIcon} children={footer} colspan={header.length}/>}
     </table>
   )
@@ -52,11 +62,20 @@ Table.propTypes = {
     direction: PropTypes.oneOf(Object.keys(SortDirection))
   }),
   className: PropTypes.string,
-  rows: PropTypes.arrayOf(PropTypes.shape({cells: PropTypes.node})),
+  rows: PropTypes.any,
   header: PropTypes.arrayOf(PropTypes.node),
   footer: PropTypes.node,
   onSort: PropTypes.func,
-  onItemSelect: PropTypes.func
+  onItemSelect: PropTypes.func,
+  onColClick: PropTypes.func,
+  onRowClick: PropTypes.func,
+}
+
+Table.defaulProps = {
+  hasCheckbox: false,
+  onItemSelect: () => undefined,
+  onColClick: () => undefined,
+  onRowClick: () => undefined
 }
 
 export default Table;

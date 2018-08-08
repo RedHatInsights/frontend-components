@@ -36,6 +36,8 @@ export default () => (
   header: PropTypes.arrayOf(PropTypes.node), // table header
   footer: PropTypes.node, // table footer (usually Pagination)
   onSort: PropTypes.func, // function callback called when sorted by row
-  onItemSelect: PropTypes.func // function callback called when row selected
+  onItemSelect: PropTypes.func, // function callback called when row selected
+  onCellClick: PropTypes.func, // function callback called when cell clicked
+  onRowClick: PropTypes.func // function callback called when row clicked
 }
 ```

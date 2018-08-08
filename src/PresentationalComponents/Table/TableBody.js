@@ -28,7 +28,10 @@ class TableBody extends Component {
               className="pf-c-check"/>
           </td>
         }
-        {oneRow && oneRow.cells && oneRow.cells.map((col, cellKey) => this.createCol(col, key, cellKey))}
+        {oneRow &&
+          oneRow.cells &&
+          Object.keys(oneRow.cells).map((cellKey) => this.createCol(oneRow.cells[cellKey], key, cellKey))
+        }
       </tr>
     )
   } 
@@ -39,11 +42,14 @@ class TableBody extends Component {
       rows,
       hasCheckbox,
       onItemSelect,
+      onColClick,
+      onRowClick,
       ...props
     } = this.props;
+    console.log(rows);
     return (
       <tbody {...props}>
-        {rows && rows.map(this.createRow)}
+        {rows && Object.keys(rows).map((oneKey) => this.createRow(rows[oneKey], oneKey))}
       </tbody>
     )
   }
@@ -51,7 +57,7 @@ class TableBody extends Component {
 
 TableBody.propTypes = {
   hasCheckbox: PropTypes.bool,
-  rows: PropTypes.arrayOf(PropTypes.shape({cells: PropTypes.node, icon: PropTypes.node})),
+  rows: PropTypes.any,
   onItemSelect: PropTypes.func,
   onColClick: PropTypes.func,
   onRowClick: PropTypes.func,
