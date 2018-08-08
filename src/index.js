@@ -3,6 +3,7 @@ export { default as PageHeaderTitle } from './PresentationalComponents/PageHeade
 export { default as Section } from './PresentationalComponents/Section/section.js';
 export { default as SampleComponent } from './PresentationalComponents/SampleComponent/sample-component.js';
 export { default as Battery } from './PresentationalComponents/Battery/battery.js';
+export { default as Ansible } from './PresentationalComponents/Ansible/ansible.js';
 export {
     default as ReducerRegistry,
     applyReducerHash,
