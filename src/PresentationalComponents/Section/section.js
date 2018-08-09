@@ -1,6 +1,5 @@
 import React from 'react';
 import propTypes from 'prop-types';
-
 import classNames from 'classnames';
 
 import './section.scss';
@@ -13,22 +12,22 @@ import './section.scss';
  *  Types = 'content'
  */
 
-class Section extends React.Component {
+const Section = ({ type, children, className, ...props }) => {
 
-  render () {
     let sectionClasses = classNames(
-      { [`ins-l-${this.props.type}`]: this.props.type !== undefined }
+        className,
+        { [`ins-l-${type}`]: type !== undefined }
     );
 
      return (
-        <section className={sectionClasses}> {this.props.children} </section>
+        <section {...props} className={sectionClasses}> {children} </section>
     );
-  }
 };
 
 export default Section;
 
 Section.propTypes = {
   type: propTypes.string,
+  className: propTypes.string,
   children: propTypes.any.isRequired
 };
