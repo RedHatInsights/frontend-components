@@ -1,11 +1,12 @@
 @import '../../Utilities';
+
 i.Ansible {
     &.is-supported .st0{ fill:#08C0FC; }
     &.is-unsupported { 
         .st0, .st1, .st2 { fill:#d1d1d1; }
         cursor: not-allowed;
     }
-    svg { @include rem(height, 16px); }
+    svg { height: $ins-fontSize; }
 }
 
 h1 { display: inline; }

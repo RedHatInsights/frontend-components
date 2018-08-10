@@ -1,13 +1,13 @@
-@import './src/Utilities.scss';
+@import '../../Utilities';
 
 section.ins-l-content {
-  @include rem('padding', $ins-padding);
+  padding: $ins-padding;
 }
 
 section.ins-l-button-group {
   > * { display: inline; }
   * + * { @include rem('margin-left', 5px); }
-  @include rem('margin', $ins-margin 0);
+  @include rem('margin', 24px 0);
 }
 
 section.ins-l-icon-group {

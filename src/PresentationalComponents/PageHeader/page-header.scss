@@ -1,4 +1,4 @@
-@import './src/Utilities.scss';
+@import '../../Utilities.scss';
 
 .ins-p-page-header {
   display: flex;
@@ -6,10 +6,10 @@
   background: #fff;
   border-bottom: 1px solid #d1d1d1;
   margin: 0;
-  @include rem('padding', 20px $ins-padding);
+  padding: 20px $ins-padding;
 
   &__title {
-    @include font-size(18px);
+    font-size: $ins-fontSize;
     font-family: 'Overpass';
     margin: 0;
   }

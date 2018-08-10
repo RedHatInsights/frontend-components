@@ -1,7 +1,7 @@
-@import './src/Utilities.scss';
+@import '../../Utilities';
 
-.sample-component {
-  @include font-size(20px);
-  @include rem('margin', $ins-margin);
-  display: block;
-}
+// .sample-component {
+//   @include font-size(20px);
+//   @include rem('margin', $ins-margin);
+//   display: block;
+// }

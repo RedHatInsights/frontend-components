@@ -2,12 +2,12 @@
 @import 'node_modules/@patternfly/patternfly-next/patternfly-utilities.scss';
 
 // Spacing
-$ins-padding: $pf-global--space-size-root;
+$ins-padding: $pf-global--spacer--md;
 $ins-margin: $pf-global--spacer--xl;
 $ins-gutter: $pf-global--gutter;
 
 // Font Size
-$ins-fontSize: $pf-global--font-size-root;
+$ins-fontSize: $pf-global--FontSize--md;
 $ins-fontSize--sm: $pf-global--FontSize--sm;
 $ins-fontSize--xl: $pf-global--FontSize--xl;
 

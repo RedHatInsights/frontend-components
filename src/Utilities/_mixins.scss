@@ -3,7 +3,7 @@
 @mixin rem($property, $values) {
 
   // Create a couple of empty lists as output buffers.
-  $font-size: $ins-fontSize;
+  $font-size: 16px;
   $px-values: ();
   $rem-values: ();
 

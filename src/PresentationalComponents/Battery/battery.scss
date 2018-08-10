@@ -1,3 +1,5 @@
+@import '../../Utilities';
+
 @font-face {
   font-family: 'ins-battery';
   src: url('./ins-battery.eot');
@@ -10,7 +12,7 @@
 
 @mixin setBatteryFont() {
   font-family: "ins-battery";
-  font-size: 15px;
+  font-size: $ins-fontSize;
   speak: none;
   font-style: normal;
   font-weight: normal;
