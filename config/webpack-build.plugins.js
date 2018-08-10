@@ -61,8 +61,7 @@ const ExtractCssWebpackPlugin = new (require('mini-css-extract-plugin'))({
  * Copies files from the specified locations to the corresponding destinations.
  */
 const CopyFilesWebpackPlugin = new (require('copy-webpack-plugin'))([
-    {from: path.resolve(__dirname, '../static/images'), to: 'images'},
-    {from: path.resolve(__dirname, '../src/PresentationalComponents'), to: 'components'}
+    {from: 'src/Utilities/**/*.scss', to: 'Utilities', flatten: true}
 ]);
 
 module.exports = { buildPlugins: (env) => ({
@@ -71,6 +70,7 @@ module.exports = { buildPlugins: (env) => ({
         CleanWebpackPlugin,
         LodashWebpackPlugin,
         ExtractCssWebpackPlugin,
+        CopyFilesWebpackPlugin,
         ...env && env.server === 'true' ? [HtmlWebpackPlugin, HotModuleReplacementPlugin] : []
     ]
 }) };
