@@ -2,6 +2,6 @@
 
 .sample-component {
   @include font-size(20px);
-  @include rem('margin', $global-margin);
+  @include rem('margin', $ins-margin);
   display: block;
 }

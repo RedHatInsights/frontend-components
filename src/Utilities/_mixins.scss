@@ -3,7 +3,7 @@
 @mixin rem($property, $values) {
 
   // Create a couple of empty lists as output buffers.
-  $font-size: $global-font-size;
+  $font-size: $ins-fontSize;
   $px-values: ();
   $rem-values: ();
 
@@ -52,14 +52,14 @@
 // =================================================================/
 @mixin font-size($size, $line: $size * 1.4) {
   font-size: ($size);
-  font-size: ($size / $global-font-size) + rem;
+  font-size: ($size / $ins-fontSize) + rem;
 
   @if $line == 1 {
     line-height: 1;
 
   } @else if $line != null {
     line-height: $line;
-    line-height: ($line / $global-font-size) + rem;
+    line-height: ($line / $ins-fontSize) + rem;
   }
 }
 

@@ -6,7 +6,7 @@
   background: #fff;
   border-bottom: 1px solid #d1d1d1;
   margin: 0;
-  @include rem('padding', 20px $global-padding);
+  @include rem('padding', 20px $ins-padding);
 
   &__title {
     @include font-size(18px);

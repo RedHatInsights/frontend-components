@@ -1,6 +1,23 @@
-// Global Variables
+// Global Import
+@import 'node_modules/@patternfly/patternfly-next/patternfly-utilities.scss';
 
-$global-padding: 30px;
-$global-margin: 15px;
+// Spacing
+$ins-padding: $pf-global--space-size-root;
+$ins-margin: $pf-global--spacer--xl;
+$ins-gutter: $pf-global--gutter;
 
-$global-font-size: 14px;
+// Font Size
+$ins-fontSize: $pf-global--font-size-root;
+$ins-fontSize--sm: $pf-global--FontSize--sm;
+$ins-fontSize--xl: $pf-global--FontSize--xl;
+
+// Borders
+$ins-borderRadius: $pf-global--BorderRadius--sm;
+$ins-borderRadius--round: $pf-global--BorderRadius--lg;
+
+// Grid breakpoints
+$ins-break--xs: $pf-global--breakpoint--xs;
+$ins-break--sm: $pf-global--breakpoint--sm;
+$ins-break--md: $pf-global--breakpoint--md;
+$ins-break--lg: $pf-global--breakpoint--lg;
+$ins-break--xl: $pf-global--breakpoint--xl;
