@@ -1,3 +1,2 @@
 $pf-global--enable-font-overpass-cdn: true;
-@import 'node_modules/@patternfly/_fonts';
-@import './src/Utilities/_all';
+@import '~@patternfly-next/patternfly/patternfly';

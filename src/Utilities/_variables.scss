@@ -1,23 +1,20 @@
-// Global Import
-@import 'node_modules/@patternfly/patternfly-next/patternfly-utilities.scss';
-
 // Spacing
-$ins-padding: $pf-global--spacer--md;
-$ins-margin: $pf-global--spacer--xl;
-$ins-gutter: $pf-global--gutter;
+$ins-padding: var(--pf-global--spacer--md);
+$ins-margin: var(--pf-global--spacer--xl);
+$ins-gutter: var(--pf-global--gutter);
 
 // Font Size
-$ins-fontSize: $pf-global--FontSize--md;
-$ins-fontSize--sm: $pf-global--FontSize--sm;
-$ins-fontSize--xl: $pf-global--FontSize--xl;
+$ins-fontSize: var(--pf-global--FontSize--md);
+$ins-fontSize--sm: var(--pf-global--FontSize--sm);
+$ins-fontSize--xl: var(--pf-global--FontSize--xl);
 
 // Borders
-$ins-borderRadius: $pf-global--BorderRadius--sm;
-$ins-borderRadius--round: $pf-global--BorderRadius--lg;
+$ins-borderRadius: var(--pf-global--BorderRadius--sm);
+$ins-borderRadius--round: var(--pf-global--BorderRadius--lg);
 
 // Grid breakpoints
-$ins-break--xs: $pf-global--breakpoint--xs;
-$ins-break--sm: $pf-global--breakpoint--sm;
-$ins-break--md: $pf-global--breakpoint--md;
-$ins-break--lg: $pf-global--breakpoint--lg;
-$ins-break--xl: $pf-global--breakpoint--xl;
+$ins-break--xs: var(--pf-global--breakpoint--xs);
+$ins-break--sm: var(--pf-global--breakpoint--sm);
+$ins-break--md: var(--pf-global--breakpoint--md);
+$ins-break--lg: var(--pf-global--breakpoint--lg);
+$ins-break--xl: var(--pf-global--breakpoint--xl);
