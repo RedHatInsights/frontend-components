@@ -50,7 +50,7 @@ There is also a playground for any development
 
 #### Used formatter
 [Commit analyzer wildcard](https://github.com/karelhala/commit-analyzer-wildcard) is used for parsing commit messages so to trigger new release add one of these strings into your commit and new release is triggered
-* Major - `<MAJOR>`
-* Minor - `<MINOR>`
-* Bug - `<BUG>`
+* Major - `<x.x.x>` or `<x.x.?>` or `<x.?.x>` or `<x.?.?>`
+* Minor - `<?.x.x>` or `<?.x.?>`
+* Bug - `<?.?.x>`
 * No release - `<no>`
