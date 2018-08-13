@@ -6,6 +6,7 @@ $ins-gutter: var(--pf-global--gutter);
 // Font Size
 $ins-fontSize: var(--pf-global--FontSize--md);
 $ins-fontSize--sm: var(--pf-global--FontSize--sm);
+$ins-fontSize--lg: var(--pf-global--FontSize--lg);
 $ins-fontSize--xl: var(--pf-global--FontSize--xl);
 
 // Borders
@@ -18,3 +19,20 @@ $ins-break--sm: var(--pf-global--breakpoint--sm);
 $ins-break--md: var(--pf-global--breakpoint--md);
 $ins-break--lg: var(--pf-global--breakpoint--lg);
 $ins-break--xl: var(--pf-global--breakpoint--xl);
+
+// Colors
+$ins-color--red: var(--pf-global--danger-color--100);
+$ins-color--critical: $ins-color--red;
+
+$ins-color--orange: #ec7a08;
+$ins-color--high: $ins-color--orange;
+
+$ins-color--yellow: var(--pf-global--warning-color--100);
+$ins-color--medium: $ins-color--yellow;
+
+$ins-color--green: var(--pf-global--success-color--100);
+$ins-color--low: $ins-color--green;
+
+$ins-color--blue: var(--pf-c-alert--m-info__icon--BackgroundColor);
+
+$ins-color--gray: var(--pf-global--BackgroundColor--disabled);

@@ -4,12 +4,12 @@
   display: flex;
   align-items: center;
   background: #fff;
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid $ins-color--gray;
   margin: 0;
   padding: 20px $ins-padding;
 
   &__title {
-    font-size: $ins-fontSize;
+    font-size: $ins-fontSize--lg;
     font-family: 'Overpass';
     margin: 0;
   }

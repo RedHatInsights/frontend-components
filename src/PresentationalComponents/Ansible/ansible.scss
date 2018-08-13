@@ -1,9 +1,9 @@
 @import '../../Utilities';
 
 i.Ansible {
-    &.is-supported .st0{ fill:#08C0FC; }
+    &.is-supported .st0{ fill: $ins-color--blue; }
     &.is-unsupported { 
-        .st0, .st1, .st2 { fill:#d1d1d1; }
+        .st0, .st1, .st2 { fill: $ins-color--gray; }
         cursor: not-allowed;
     }
     svg { height: $ins-fontSize; }

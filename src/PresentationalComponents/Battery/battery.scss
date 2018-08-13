@@ -27,7 +27,7 @@
 
 // Setting the icons
 .ins-battery-1, .ins-battery-low {
-  color: #3f9c35;
+  color: $ins-color--low;
   &:before {
     @include setBatteryFont;
     content: "\b0001";
@@ -35,7 +35,7 @@
 }
 
 .ins-battery-2, .ins-battery-medium {
-  color: #f0ab00;
+  color: $ins-color--medium;
   &:before {
     @include setBatteryFont;
     content: "\b0002";
@@ -43,7 +43,7 @@
 }
 
 .ins-battery-3, .ins-battery-high {
-  color: #ec7a08;
+  color: $ins-color--high;
   &:before {
     @include setBatteryFont;
     content: "\b0003";
@@ -51,7 +51,7 @@
 }
 
 .ins-battery-4, .ins-battery-critical {
-  color: #cc0000;
+  color: $ins-color--critical;
   &:before {
     @include setBatteryFont;
     content: "\b0004";
