@@ -100,7 +100,17 @@
     "release": "semantic-release"
   },
   "release": {
-    "analyzeCommits": "@khala/commit-analyzer-wildcard/analyzer",
+    "analyzeCommits": [
+      {
+        "path": "@khala/commit-analyzer-wildcard/analyzer",
+        "patterns": {
+          "major": "<MAJOR>",
+          "minor": "<MINOR>",
+          "patch": "<BUG>",
+          "noRelease": "<no>"
+        } 
+      }
+    ],
     "prepare": [
       "@semantic-release/npm",
       {
