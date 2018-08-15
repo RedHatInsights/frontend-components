@@ -1,59 +1,38 @@
 @import '../../Utilities';
 
-@font-face {
-  font-family: 'ins-battery';
-  src: url('./ins-battery.eot');
-  src: url('./ins-battery.eot?#iefix') format('embedded-opentype'),
-       url('./ins-battery.woff') format('woff'),
-       url('./ins-battery.ttf')  format('truetype');
-       font-weight: 700;
-       font-style: normal;
-}
-
 @mixin setBatteryFont() {
-  font-family: "ins-battery";
-  font-size: $ins-fontSize;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
+  @include rem(height, 18px);
   line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 
 // Setting the icons
-.ins-battery-1, .ins-battery-low {
-  color: $ins-color--low;
-  &:before {
+.ins-battery-1, .ins-battery-low, .ins-battery-info {
+  svg {
     @include setBatteryFont;
-    content: "\b0001";
+    path { fill: $ins-color--low; }
   }
 }
 
-.ins-battery-2, .ins-battery-medium {
-  color: $ins-color--medium;
-  &:before {
+.ins-battery-2, .ins-battery-medium, .ins-battery-warn {
+  svg {
     @include setBatteryFont;
-    content: "\b0002";
+    path { fill: $ins-color--medium; }
   }
 }
 
-.ins-battery-3, .ins-battery-high {
-  color: $ins-color--high;
-  &:before {
+.ins-battery-3, .ins-battery-high, .ins-battery-error{
+  svg {
     @include setBatteryFont;
-    content: "\b0003";
+    path { fill: $ins-color--high; }
   }
 }
 
 .ins-battery-4, .ins-battery-critical {
-  color: $ins-color--critical;
-  &:before {
+  svg {
     @include setBatteryFont;
-    content: "\b0004";
+    path { fill: $ins-color--critical; }
   }
 }
+
+.ins-battery + .ins-battery { @include rem('margin-left', 10px); }

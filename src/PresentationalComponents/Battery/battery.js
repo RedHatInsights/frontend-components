@@ -3,33 +3,91 @@ import propTypes from 'prop-types';
 
 import classNames from 'classnames';
 
+import CriticalBattery from './criticalBattery';
+import HighBattery from './highBattery';
+import MediumBattery from './mediumBattery';
+import LowBattery from './lowBattery';
+
 import './battery.scss';
 
 /**
- * This is a dumb component that only recieves properties from a smart component.
- * Dumb components are usually functions and not classes.
- *
- * @param props the props given by the smart component.
+ * This is the battery component that generates a 'battery'
+ * which corresponds to a level 1-4
+ * 1 - low, green - best case scenario
+ * 2 - medium, yellow
+ * 3 - high, orange
+ * 4 - critical, red - worst case scenario
+ * Also accepts a label which can be made invisible
  */
 
-const Battery = ({severity, label, labelHidden, className, ...props}) => {
-    let severityClass = classNames(
+const Battery = ({ severity, label, labelHidden, className, ...props }) => {
+
+    let batteryWrapperClasses = classNames(
+        className,
+        'ins-battery'
+    );
+
+    let batteryClasses = classNames(
         { [`ins-battery-${severity}`]: severity !== undefined }
     );
-    if(!labelHidden) {
+
+    let ariaLabels = {};
+    if (labelHidden) {
+        ariaLabels = { ['aria-label']: severity + ' ' + label };
+    }
+
+    function generateBattery (severity, batteryClasses, ariaLabels) {
         return (
-            <span className='ins-battery'>
-                <i className= { severityClass } />
+            <i className= { batteryClasses } {...ariaLabels}>
+                <svg
+                    version="1.1"
+                    id="battery_svg"
+                    x="0px" y="0px"
+                    viewBox="0 0 448 512"
+                    style={{ enableBackground: 'new 0 0 448 512' }}
+                    shapeRendering= 'geometricpresision'>
+                    { batteryLevels(severity) }
+                </svg>
+            </i>
+        );
+    }
+
+    function batteryLevels (severity) {
+        switch (severity) {
+            case 'critical':
+            case 4:
+                return <CriticalBattery/>;
+            case 'high':
+            case 'error':
+            case 3:
+                return <HighBattery/>;
+            case 'medium':
+            case 'warn':
+            case 2:
+                return <MediumBattery/>;
+            case 'low':
+            case 'info':
+            case 1:
+                return <LowBattery/>;
+            default:
+                return null;
+        }
+    }
+
+    if (!labelHidden) {
+        return (
+            <span className= { batteryWrapperClasses }  { ...props }>
+                { generateBattery(severity, batteryClasses) }
                 <span className='label'> { label } </span>
             </span>
         );
     } else {
         return (
-            <span className='ins-battery'>
-                <i className= { severityClass } aria-label= { label + ' ' + severity }/>
+            <span className= { batteryWrapperClasses }  { ...props }>
+                { generateBattery(severity, batteryClasses, ariaLabels) }
             </span>
         );
-    };
+    }
 };
 
 export default Battery;

@@ -18,16 +18,23 @@ class YourCmp extends React.Component {
         <Section type='icon-group'>
             { /* Low/1 Severity */ }
             <Battery label='test' severity='low'/>
+            <Battery label='test' severity='info'/>
             <Battery label='test' severity='1'/>
+            <Battery label='test' severity={1}/>
             { /* Medium/2 Severity */ }
             <Battery label='test' severity='medium'/>
+            <Battery label='test' severity='warn'/>
             <Battery label='test' severity='2'/>
+            <Battery label='test' severity={2}/>
             { /* High/3 Severity */ }
             <Battery label='test' severity='high'/>
+            <Battery label='test' severity='error'/>
             <Battery label='test' severity='3'/>
+            <Battery label='test' severity={3}/>
             { /* Critical/4 Severity */ }
             <Battery label='test' severity='critical'/>
             <Battery label='test' severity='4'/>
+            <Battery label='test' severity={4}/>
 
             { /* Hidden Label */ }
             <Battery label='test' labelHidden severity='critical'/>
@@ -47,6 +54,7 @@ Battery
         propTypes.string.isRequired,
         propTypes.number.isRequired
     ]),
-    label: propTypes.string.isRequired
+    label: propTypes.string.isRequired,
+    labelHidden: propTypes.bool
 };
 ```
