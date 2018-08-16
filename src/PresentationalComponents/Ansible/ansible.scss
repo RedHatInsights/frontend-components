@@ -6,7 +6,7 @@ i.Ansible {
         .st0, .st1, .st2 { fill: $ins-color--gray; }
         cursor: not-allowed;
     }
-    svg { height: $ins-fontSize; }
+    svg { height: var(--pf-global--FontSize--xl); }
 }
 
 h1 { display: inline; }
