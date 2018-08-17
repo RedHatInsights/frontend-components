@@ -43,6 +43,7 @@ There is also a playground for any development
     * [Pagination](doc/components/pagination.md)
     * [Dropdown](doc/components/Dropdown.md)
     * [Table](doc/components/Table.md)
+    * [Breadcrumbs](doc/components/breadcrumbs.md)
 
 ## Conbribution
 ### Commit format
