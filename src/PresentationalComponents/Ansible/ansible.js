@@ -16,8 +16,8 @@ const Ansible = ({unsupported, className, ...props}) => {
 
     let ansibleLogoClass = classNames(
         'Ansible',
-        { [`is-supported`]: !unsupported },
-        { [`is-unsupported`]: unsupported }
+        { [`is-supported`]: !unsupported || unsupported === 0 },
+        { [`is-unsupported`]: unsupported || unsupported === 1 }
     );
 
     let unsupportedSlash;
@@ -54,5 +54,8 @@ const Ansible = ({unsupported, className, ...props}) => {
 export default Ansible;
 
 Ansible.propTypes = {
-    unsupported: propTypes.bool
+    unsupported: propTypes.oneOfType([
+        propTypes.bool,
+        propTypes.number
+    ]),
 };
