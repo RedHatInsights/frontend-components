@@ -61,6 +61,7 @@ const isDirectory = source => lstatSync(source).isDirectory();
 
 const getDirectories = (source, dest) =>
   readdirSync(source)
+    .filter(name => name.indexOf('utils') === -1)
     .map(name => {
       const key = `${dest}/${name}`;
       return {
@@ -72,7 +73,8 @@ const entries = {
     'Utilities/ReducerRegistry': './src/Utilities/ReducerRegistry.js',
     'Utilities/MiddlewareListener': './src/Utilities/MiddlewareListener.js',
     ...getDirectories('./src/PresentationalComponents', 'components'),
-    ...getDirectories('./src/SmartComponents', 'components')
+    ...getDirectories('./src/SmartComponents', 'components'),
+    ...getDirectories('./src/Charts', 'charts')
 }
 
 module.exports = {
@@ -86,6 +88,7 @@ module.exports = {
         'react-redux': reactRedux,
         classnames: 'classnames',
         '@patternfly/react-core': pfReactCore,
-        '@patternfly/react-icons': pfReactIcons
+        '@patternfly/react-icons': pfReactIcons,
+        d3: 'd3'
     },
 };

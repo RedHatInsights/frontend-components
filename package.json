@@ -16,7 +16,7 @@
     "@patternfly/react-core": "^1.5.0",
     "@patternfly/react-icons": "^2.3.0",
     "classnames": "^2.2.5",
-    "d3": "^5.4.0",
+    "d3": "^5.5.0",
     "patternfly-react": "^2.11.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.0",

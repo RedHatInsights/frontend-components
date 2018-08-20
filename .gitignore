@@ -16,6 +16,7 @@ yarn-error.log*
 /index.css
 /components/
 /Utilities/
+/charts/
 coverage
 .storybook
 
