@@ -18,3 +18,4 @@ export * from './PresentationalComponents/Dropdown';
 export * from './PresentationalComponents/Battery';
 export * from './PresentationalComponents/Breadcrumbs';
 export * from './Charts/Matrix';
+export * from './PresentationalComponents/TabLayout';
