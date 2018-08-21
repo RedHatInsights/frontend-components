@@ -71,6 +71,7 @@ const getDirectories = (source, dest) =>
     .reduce((acc, curr) => ({...acc, ...curr}), {})
 const entries = {
     'Utilities/ReducerRegistry': './src/Utilities/ReducerRegistry.js',
+    'Utilities/helpers': './src/Utilities/helpers.js',
     'Utilities/MiddlewareListener': './src/Utilities/MiddlewareListener.js',
     ...getDirectories('./src/PresentationalComponents', 'components'),
     ...getDirectories('./src/SmartComponents', 'components'),
