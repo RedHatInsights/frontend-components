@@ -34,5 +34,3 @@
     path { fill: $ins-color--critical; }
   }
 }
-
-.ins-battery + .ins-battery { @include rem('margin-left', 10px); }
