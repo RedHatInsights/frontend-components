@@ -1,0 +1,39 @@
+@import '../../Utilities';
+
+.c3-chart-arcs-background {
+    fill: #e0e0e0;
+}
+
+.ins-c-gauge {
+    .c3-chart-arcs-background, .c3-arc {
+        stroke: white;
+    }
+
+    .c3-target text {
+        font-weight: 700;
+    }
+}
+
+.ins-c-arc__critical {
+    .c3-arc {
+        fill: $ins-color--critical;
+    }
+}
+
+.ins-c-arc__high {
+    .c3-arc {
+        fill: $ins-color--high;
+    }
+}
+
+.ins-c-arc__medium {
+    .c3-arc {
+        fill: $ins-color--medium;
+    }
+}
+
+.ins-c-arc__low {
+    .c3-arc {
+        fill: $ins-color--low;
+    }
+}

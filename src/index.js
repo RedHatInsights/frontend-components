@@ -1,3 +1,4 @@
+
 export { default as PageHeader } from './PresentationalComponents/PageHeader/page-header.js';
 export { default as PageHeaderTitle } from './PresentationalComponents/PageHeader/page-header-title.js';
 export { default as Section } from './PresentationalComponents/Section/section.js';
@@ -17,5 +18,6 @@ export * from './PresentationalComponents/Table';
 export * from './PresentationalComponents/Dropdown';
 export * from './PresentationalComponents/Battery';
 export * from './PresentationalComponents/Breadcrumbs';
+export * from './Charts/Gauge';
 export * from './Charts/Matrix';
 export * from './PresentationalComponents/TabLayout';
