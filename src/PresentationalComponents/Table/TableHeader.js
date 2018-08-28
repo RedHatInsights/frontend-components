@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SortDirection } from './Table';
-import { AngleDownIcon, AngleUpIcon } from '@patternfly/react-icons';
+import { AngleDownIcon, AngleUpIcon, SortIcon } from '@patternfly/react-icons';
 
 class TableHeader extends Component {
-  static sortedByDirection(key, direction, sortBy) {
-    return key === sortBy.index && direction === sortBy.direction;
-  }
-
   constructor(props) {
     super(props);
     this.createCheckbox = this.createCheckbox.bind(this);
@@ -18,10 +14,15 @@ class TableHeader extends Component {
   }
 
   onHeadClick(event, key) {
-    const direction = this.props.sortBy &&
+    let direction;
+    if (this.props.sortBy.index === key) {
+      direction = this.props.sortBy &&
       this.props.sortBy.direction === SortDirection.up ?
       SortDirection.down :
       SortDirection.up;
+    } else {
+      direction = SortDirection.up;
+    }
     this.props.onSort && this.props.onSort(event, key, direction);
   }
 
@@ -33,11 +34,25 @@ class TableHeader extends Component {
     this.props.onSort && this.props.onSort(event, key, direction);
   }
 
-  createIcon(key, direction, Icon) {
+  createIcon(key) {
     const { sortBy } = this.props;
-    if(TableHeader.sortedByDirection(key, direction, sortBy) || sortBy.index !== key) {
-      return <Icon onClick={event => this.onDirectionClick(event, key, direction)} />;
+    if(sortBy.index === key) {
+      return <AngleUpIcon onClick={event => this.onDirectionClick(event, key, sortBy.direction)} />;
+    } else {
+      return <SortIcon onClick={event => this.onDirectionClick(event, key, SortDirection.up)} />;
     }
+  }
+
+  renderCol(col, key, hasSort = true) {
+    return (
+      <React.Fragment>
+        {col}
+        {hasSort && col && <span className="pf-c-table__sort-indicator">
+            {this.createIcon(key, SortDirection.up)}
+          </span>
+        }
+      </React.Fragment>
+    )
   }
 
   createHeader(col, key) {
@@ -45,8 +60,12 @@ class TableHeader extends Component {
       sortBy
     } = this.props;
     const classes = classnames(
-      key === sortBy.index && 'ins-sort-by',
-      TableHeader.sortedByDirection(key, SortDirection.up, sortBy) ? 'ins-sort-asc' : 'ins-sort-desc',
+      {
+        'pf-c-table__sort': col.hasOwnProperty('hasSort') ? col.hasSort : true,
+        'pf-m-blank': !col,
+        'pf-m-ascending': sortBy.index === key && SortDirection.up === sortBy.direction,
+        'pf-m-descending': sortBy.index === key && SortDirection.down === sortBy.direction
+      }
     )
     return (
       <th key={key} className={classes} onClick={event => this.onHeadClick(event, key)}>
@@ -62,7 +81,7 @@ class TableHeader extends Component {
   createCheckbox() {
     const { onSelectAll } = this.props;
     return (
-      <th className='ins-empty-col' onClick={event => {
+      <th className='pf-c-table__check pf-m-shrink' onClick={event => {
         const checkbox = event.target.querySelector('input') || event.target;
         if (checkbox !== event.target) {
           checkbox.checked = !checkbox.checked;

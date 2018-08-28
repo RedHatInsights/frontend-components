@@ -8,8 +8,28 @@ class TableBody extends Component {
     this.createCol = this.createCol.bind(this);
   }
   createCol(col, rowKey, key) {
+    const { cols } = this.props;
+    const current = Object.values(cols)[key];
+    let colData;
+    if (current) {
+      colData = current.hasOwnProperty('title') ? current.title : current;
+    }
+    let className = '';
+    if (col.hasOwnProperty('title')) {
+      className = col.className || className;
+      col = col.title;
+    }
     return (
-      <td key={key} onClick={(event) => this.props.onColClick && this.props.onColClick(event, rowKey, key)}>{col}</td>
+      <td key={key}
+        data-label={colData}
+        className={className}
+        onClick={(event) => {
+            this.props.onColClick && this.props.onColClick(event, rowKey, key);
+          }
+        }
+      >
+        {col}
+      </td>
     )
   }
 
@@ -18,8 +38,12 @@ class TableBody extends Component {
       <tr key={key} onClick={(event) => this.props.onRowClick && this.props.onRowClick(event, key)}>
         {this.props.hasCheckbox &&
           <td
-            className="ins-empty-col"
-            onClick={event => this.props.onItemSelect && this.props.onItemSelect(event, key, !!!oneRow.selected)}
+            className="pf-c-table__check pf-m-shrink"
+            onClick={event => {
+                event.stopPropagation();
+                this.props.onItemSelect && this.props.onItemSelect(event, key, !!!oneRow.selected)
+              }
+            }
           >
             <input
               checked={!!oneRow.selected}

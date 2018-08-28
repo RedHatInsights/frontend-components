@@ -29,7 +29,9 @@ const Table = ({
   }
 
   return (
-    <table {...props} className={classnames('ins-simple-table', className)}>
+    <table {...props} className={classnames('pf-c-table', className)}>
+      <caption class="pf-c-table__caption">
+      </caption>
       {header &&
         <THead
           onSelectAll={onAllRowsSelect}
@@ -42,6 +44,7 @@ const Table = ({
       }
       {rows &&
         <TBody
+          cols={header}
           hasCheckbox={hasCheckbox}
           rows={rows}
           onItemSelect={onItemSelect}
