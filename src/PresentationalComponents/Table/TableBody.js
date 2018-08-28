@@ -70,10 +70,14 @@ class TableBody extends Component {
       onRowClick,
       ...props
     } = this.props;
-    console.log(rows);
     return (
       <tbody {...props}>
-        {rows && Object.keys(rows).map((oneKey) => this.createRow(rows[oneKey], oneKey))}
+        {rows && Object.keys(rows).map(
+          (oneKey) => this.createRow(
+            rows[oneKey],
+            rows[oneKey].hasOwnProperty('id') ? rows[oneKey].id : oneKey
+          )
+        )}
       </tbody>
     )
   }

@@ -11,6 +11,7 @@ class TableHeader extends Component {
     this.createHeader = this.createHeader.bind(this);
     this.onDirectionClick = this.onDirectionClick.bind(this);
     this.onHeadClick = this.onHeadClick.bind(this);
+    this.renderCol = this.renderCol.bind(this);
   }
 
   onHeadClick(event, key) {
@@ -63,17 +64,24 @@ class TableHeader extends Component {
       {
         'pf-c-table__sort': col.hasOwnProperty('hasSort') ? col.hasSort : true,
         'pf-m-blank': !col,
+        'pf-m-fit-content': col.fitContent,
+        [`pf-m-width-${col.width}`]: col.width,
         'pf-m-ascending': sortBy.index === key && SortDirection.up === sortBy.direction,
         'pf-m-descending': sortBy.index === key && SortDirection.down === sortBy.direction
       }
     )
     return (
-      <th key={key} className={classes} onClick={event => this.onHeadClick(event, key)}>
-        {col}
-        <span className="ins-sort-icons">
-          {this.createIcon(key, SortDirection.up, AngleUpIcon)}
-          {this.createIcon(key, SortDirection.down, AngleDownIcon)}
-        </span>
+      <th
+        key={key}
+        className={classes}
+        onClick={event => this.onHeadClick(event, key)}
+        aria-sort={sortBy.index === key ? (SortDirection.up === sortBy.direction ? 'ascending' : 'descending') : 'none'}
+      >
+        {
+          typeof col === 'string' || col instanceof String ?
+          this.renderCol(col, key) :
+          this.renderCol(col.title, key, col.hasSort)
+        }
       </th>
     )
   }
@@ -112,7 +120,7 @@ class TableHeader extends Component {
         <tr>
           {hasCheckbox && this.createCheckbox()}
           {hasIcon && <th className='ins-empty-col'/>}
-          {cols && cols.map(this.createHeader)}
+          {cols && Object.keys(cols).map((cellKey) => this.createHeader(cols[cellKey], cellKey))}
         </tr>
       </thead>
     );
@@ -123,11 +131,11 @@ TableHeader.propTypes = {
   hasCheckbox: PropTypes.bool,
   hasIcon: PropTypes.bool,
   sortBy: PropTypes.shape({
-    index: PropTypes.number,
+    index: PropTypes.string,
     direction: PropTypes.oneOf(['up', 'down'])
   }),
   className: PropTypes.string,
-  cols: PropTypes.arrayOf(PropTypes.node),
+  cols: PropTypes.any,
   onSelectAll: PropTypes.func,
   onSort: PropTypes.func
 }

@@ -25,12 +25,14 @@ const Table = ({
   ...props
 }) => {
   const onAllRowsSelect = (event, selected) => {
-    rows.forEach((_oneRow, key) => onItemSelect(event, key, selected));
+    rows.forEach((oneRow, key) => {
+      onItemSelect(event, oneRow.id || key, selected);
+    });
   }
 
   return (
     <table {...props} className={classnames('pf-c-table', className)}>
-      <caption class="pf-c-table__caption">
+      <caption className="pf-c-table__caption">
       </caption>
       {header &&
         <THead
@@ -61,12 +63,12 @@ Table.propTypes = {
   hasCheckbox: PropTypes.bool,
   hasIcon: PropTypes.bool,
   sortBy: PropTypes.shape({
-    index: PropTypes.number,
+    index: PropTypes.string,
     direction: PropTypes.oneOf(Object.keys(SortDirection))
   }),
   className: PropTypes.string,
   rows: PropTypes.any,
-  header: PropTypes.arrayOf(PropTypes.node),
+  header: PropTypes.any,
   footer: PropTypes.node,
   onSort: PropTypes.func,
   onItemSelect: PropTypes.func,
