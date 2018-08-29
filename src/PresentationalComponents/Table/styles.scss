@@ -26,8 +26,10 @@
     }
   }
 
-  tfoot {
+  tfoot.ins-table-footer {
     td {
+      padding-left: 0px;
+      padding-right: 0px;
       padding: 0;
       .special-patternfly {
 

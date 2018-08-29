@@ -123,7 +123,7 @@ export default () => (
 ```
 
 #### Turn off sorting
-If you want to turn off sorting for some header column you will have to pass object instead of string
+If you want to turn off sorting for some header column you will have to pass object instead of string.
 ```JSX
 export default () => (
   <Table 
@@ -138,6 +138,9 @@ export default () => (
   />
 ) 
 ```
+
+Be awere that you can still force sorting by this column programaticall and user will see that the table is sorted by 
+such column, he however will have no chance to change the direction on this column.
 
 ### Props
 ```javascript
