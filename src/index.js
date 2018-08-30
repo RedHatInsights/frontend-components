@@ -20,4 +20,5 @@ export * from './PresentationalComponents/Battery';
 export * from './PresentationalComponents/Breadcrumbs';
 export * from './Charts/Gauge';
 export * from './Charts/Matrix';
+export * from './Charts/Donut';
 export * from './PresentationalComponents/TabLayout';

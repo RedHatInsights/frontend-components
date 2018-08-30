@@ -1,0 +1,68 @@
+@import '../../Utilities';
+
+.ins-c-donut{
+    display: inline-flex;
+    justify-content: center;
+}
+
+.ins-l-donut{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .ins-c-donut-hole {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        &--total__number {
+            @include rem('font-size', 24px);
+            font-weight: 500;
+        }
+        &--total__label {
+            @include rem('font-size', 20px);
+            font-weight: 300;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.ins-c-donut .c3-tooltip {
+    display: block;
+    background-color:#545454;
+    z-index: 3;
+    @include rem('padding', 10px 15px);
+    .name { font-weight: 700; }
+    td {
+        flex-direction: row;
+        font-size:13px;
+        color: #fff;
+    }
+    td + td { @include rem('padding-left', 20px); }
+}
+
+// with-legend
+.ins-l-donut__legend {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: center;
+    @include rem('margin-top', 15px);
+    &--item {
+        &:nth-of-type(even) { @include rem('margin-left', 15px); }
+        &:nth-of-type(odd) { @include rem('margin-right', 15px); }
+        cursor: pointer;
+    }
+
+    .badge-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .badge {
+        @include rem('height', 15px);
+        @include rem('width', 15px);
+        display: inline-block;
+        @include rem('margin-right', 10px);
+        &__number { @include rem(margin-left, 5px); }
+    }
+}
