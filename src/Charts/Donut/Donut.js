@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import * as c3 from 'c3';
-// import * as d3 from 'd3';
 import { select } from 'd3';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import './donut.scss';
 
 /**
  * Donut used for displaying statuses
  */
+
+const ConditionalLink = ({ condition, wrap, children }) => condition ? wrap(children) : children;
 
 class Donut extends Component {
 
@@ -84,9 +86,19 @@ class Donut extends Component {
                 {this.props.values && this.props.values.map(oneItem => (
                     <div key={oneItem}  data-id={oneItem[0]} className="donut ins-l-donut__legend--item">
                         <div className="badge-wrapper">
-                            <span className="badge"></span>
-                            <span className="badge__label">{oneItem[0]}</span>
-                            <span className="badge__number">({oneItem[1]})</span>
+                            {/* if this.props.link has a value, wrap the spans in a Link tag */}
+                            <ConditionalLink
+                                key={oneItem[0]}
+                                condition={ this.props.link }
+                                wrap={children =>
+                                    <Link to={`${this.props.link}${oneItem[0].toLowerCase()}`}>
+                                        {children}
+                                    </Link>
+                                }>
+                                <span className="badge"></span>
+                                <span className="badge__label">{oneItem[0]}</span>
+                                <span className="badge__number">({oneItem[1]})</span>
+                            </ConditionalLink>
                         </div>
                     </div>
                 ))}
@@ -127,7 +139,8 @@ Donut.propTypes = {
     values: propTypes.array,
     width: propTypes.number,
     totalLabel: propTypes.string,
-    withLegend: propTypes.bool
+    withLegend: propTypes.bool,
+    link: propTypes.array
 };
 
 Donut.defaultProps = {
