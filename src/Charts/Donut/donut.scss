@@ -26,18 +26,21 @@
     }
 }
 
-.ins-c-donut .c3-tooltip {
-    display: block;
-    background-color:#545454;
+.ins-c-donut .c3-tooltip-container{
     z-index: 3;
-    @include rem('padding', 10px 15px);
-    .name { font-weight: 700; }
-    td {
-        flex-direction: row;
-        font-size:13px;
-        color: #fff;
+    opacity: .9;
+    .c3-tooltip {
+        display: block;
+        background-color:#545454;
+        @include rem('padding', 10px 15px);
+        .name { font-weight: 700; }
+        td {
+            flex-direction: row;
+            font-size:13px;
+            color: #fff;
+        }
+        td + td { @include rem('padding-left', 20px); }
     }
-    td + td { @include rem('padding-left', 20px); }
 }
 
 // with-legend
