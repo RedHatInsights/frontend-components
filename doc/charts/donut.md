@@ -26,6 +26,19 @@ let DonutValues = [
 
 ```
 
+## Donut with Legend and Links
+
+```jsx
+
+const typeLink = ['/foo/'];
+
+// The link prop will append the label (value1, value2, value3, value4) to the typeLink const
+// in this case, you'll get the link /actions/value1 etc.
+
+<Donut values={DonutValues} link={typeLink} totalLabel='label for donut-hole' identifier='donut-identifier' withLegend/>;
+
+```
+
 ## Props
 
 ```JS
