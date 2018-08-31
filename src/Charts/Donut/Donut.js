@@ -140,7 +140,7 @@ Donut.propTypes = {
     width: propTypes.number,
     totalLabel: propTypes.string,
     withLegend: propTypes.bool,
-    link: propTypes.array
+    link: propTypes.string
 };
 
 Donut.defaultProps = {

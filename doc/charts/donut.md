@@ -30,7 +30,7 @@ let DonutValues = [
 
 ```jsx
 
-const typeLink = ['/foo/'];
+const typeLink = '/foo/';
 
 // The link prop will append the label (value1, value2, value3, value4) to the typeLink const
 // in this case, you'll get the link /actions/value1 etc.
