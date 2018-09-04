@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import * as c3 from 'c3';
+import { generate } from 'c3';
 import classNames from 'classnames';
 
 import './gauge.scss';
@@ -13,7 +13,17 @@ class Gauge extends Component {
 
     componentDidMount () {
         this._updateChart();
-    }    
+    }
+
+    componentDidUpdate(prevProps) {
+        if(this.props.value !== prevProps.value) {
+            this.gauge.load({
+                columns: [
+                    [this.props.label, this.props.value]
+                ]
+            })
+        }
+    }
 
     _updateChart () {
         let data = {
@@ -55,7 +65,7 @@ class Gauge extends Component {
             }
         };
 
-        let gauge = c3.generate(gaugeConfig);
+        this.gauge = generate(gaugeConfig);
     }
 
     render () {
@@ -87,7 +97,7 @@ export default Gauge;
  * generate random ID if one is not supplied
  */
 function generateId () {
-     let text = new Date().getTime() + Math.random().toString(36).slice(2);
+     let text = 'ins-gauge-' + new Date().getTime() + Math.random().toString(36).slice(2);
      return text;
 }
 
@@ -95,8 +105,8 @@ Gauge.propTypes = {
     className: propTypes.string,
     height: propTypes.number,
     identifier: propTypes.string,
-    label: propTypes.string,
-    value: propTypes.number,
+    label: propTypes.string.isRequired,
+    value: propTypes.number.isRequired,
     width: propTypes.number
 };
 

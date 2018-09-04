@@ -1,5 +1,5 @@
 const { lstatSync, readdirSync } = require('fs')
-const { join, resolve, extname } = require('path')
+const { join } = require('path')
 
 const react = {
     commonjs: 'react',
@@ -89,6 +89,7 @@ module.exports = {
         classnames: 'classnames',
         '@patternfly/react-core': pfReactCore,
         '@patternfly/react-icons': pfReactIcons,
-        d3: 'd3'
+        d3: 'd3',
+        c3: 'c3'
     },
 };

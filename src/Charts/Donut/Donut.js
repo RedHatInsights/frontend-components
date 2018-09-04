@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import * as c3 from 'c3';
+import { generate } from 'c3';
 import { select } from 'd3';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import isEqual from 'lodash/isEqual';
 
 import './donut.scss';
 
@@ -18,6 +19,15 @@ class Donut extends Component {
     componentDidMount () {
         this._updateChart();
     }
+
+    componentDidUpdate(prevProps) {
+        if(!isEqual(this.props.values, prevProps.values)) {
+            this.donut.load({
+                columns: this.props.values
+            })
+        }
+    }
+
 
     _updateChart () {
         let data = {
@@ -46,7 +56,7 @@ class Donut extends Component {
             }
         };
 
-        let donut = c3.generate(donutConfig);
+        this.donut = generate(donutConfig);
 
         /* eslint-disable */
         if (this.props.withLegend) {
@@ -127,7 +137,7 @@ export default Donut;
  */
 function generateId () {
 
-    let text = new Date().getTime() + Math.random().toString(36).slice(2);
+    let text = 'ins-donut-' + new Date().getTime() + Math.random().toString(36).slice(2);
 
     return text;
 }
@@ -136,7 +146,7 @@ Donut.propTypes = {
     className: propTypes.string,
     height: propTypes.number,
     identifier: propTypes.string,
-    values: propTypes.array,
+    values: propTypes.array.isRequired,
     width: propTypes.number,
     totalLabel: propTypes.string,
     withLegend: propTypes.bool,
