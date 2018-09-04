@@ -65,13 +65,13 @@ class Donut extends Component {
                 .selectAll('div.ins-l-donut__legend--item')
                 .each(function() {
                     select(this)
-                        .select('span').style('background-color', donut.color(this.getAttribute('data-id')));
+                        .select('span').style('background-color', this.donut.color(this.getAttribute('data-id')));
                     })
                     .on('mouseover', function () {
-                        donut.focus(this.getAttribute('data-id'));
+                        this.donut.focus(this.getAttribute('data-id'));
                     })
                     .on('mouseout', function () {
-                        donut.revert();
+                        this.donut.revert();
                     })
         }
         /* eslint-enable */
