@@ -1,11 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * This is a component that wraps the page
  */
 
-const Main = ({className, ...props}) => {
+const Main = ({className, children, ...props}) => {
 
     let mainClasses = classNames(
         className,
@@ -14,13 +15,14 @@ const Main = ({className, ...props}) => {
 
     return (
         <section { ...props } className={ mainClasses }>
-            {this.props.children}
+            { children }
         </section>
     );
 };
 
 export default Main;
 
-PageHeader.propTypes = {
-  children: propTypes.any.isRequired
+Main.propTypes = {
+    className: propTypes.string,
+    children: propTypes.any.isRequired
 };
