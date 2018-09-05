@@ -1,25 +1,26 @@
 import React from 'react';
 import propTypes from 'prop-types';
-
-import './page-header.scss';
+import classNames from 'classnames';
 
 /**
- * This is a dumb component that only recieves properties from a smart component.
- * Dumb components are usually functions and not classes.
- *
- * @param props the props given by the smart component.
+ * This is the title section of the pageHeader
  */
 
-class PageHeaderTitle extends React.Component {
-  render () {
-    return (
-        <h1 className='ins-p-page-header__title'> {this.props.title} </h1>
+const PageHeaderTitle = ({ className, title }) => {
+
+    let pageHeaderTitleClasses = classNames(
+        className,
+        'ins-p-page-header__title'
     );
-  }
+
+    return (
+        <h1 className={ pageHeaderTitleClasses }> { title } </h1>
+    );
 };
 
 export default PageHeaderTitle;
 
 PageHeaderTitle.propTypes = {
-  title: propTypes.string.isRequired
+    title: propTypes.string.isRequired,
+    className: propTypes.string
 };

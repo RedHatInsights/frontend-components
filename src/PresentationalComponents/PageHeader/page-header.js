@@ -1,25 +1,36 @@
 import React from 'react';
 import propTypes from 'prop-types';
-
-import './page-header.scss';
+import classNames from 'classnames';
 
 /**
- * This is a dumb component that only recieves properties from a smart component.
- * Dumb components are usually functions and not classes.
- *
- * @param props the props given by the smart component.
+ * This is a page header that mimics the patternfly layout for a header section
  */
 
-class PageHeader extends React.Component {
-  render () {
-    return (
-        <header className='ins-p-page-header'> {this.props.children} </header>
+const PageHeader = ({ className, children, style }) => {
+
+    let pageHeaderClasses = classNames(
+        className,
+        'pf-l-page__main-section',
+        [`pf-m-${style}`]
     );
-  }
+
+    return (
+        <section className={ pageHeaderClasses }>
+            <div className='pf-c-content'>
+                { children }
+            </div>
+        </section>
+    );
 };
 
 export default PageHeader;
 
 PageHeader.propTypes = {
-  children: propTypes.any.isRequired
+    children: propTypes.any.isRequired,
+    className: propTypes.string,
+    style: propTypes.oneOf(['light', 'dark-100', 'dark-200'])
+};
+
+PageHeader.defaultProps = {
+    style: 'light'
 };
