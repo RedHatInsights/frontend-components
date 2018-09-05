@@ -24,10 +24,27 @@ class Donut extends Component {
         if(!isEqual(this.props.values, prevProps.values)) {
             this.donut.load({
                 columns: this.props.values
-            })
+            });
+            this.updateLabels(this.donut);
         }
     }
 
+    updateLabels(donut) {
+        if (this.props.withLegend) {
+            select(this.legend)
+            .selectAll('div.ins-l-donut__legend--item')
+            .each(function() {
+                select(this)
+                .select('span').style('background-color', donut.color(this.getAttribute('data-id')));
+            })
+            .on('mouseover', function () {
+                donut.focus(this.getAttribute('data-id'));
+            })
+            .on('mouseout', function () {
+                donut.revert();
+            })
+        }
+    }
 
     _updateChart () {
         let data = {
@@ -58,23 +75,7 @@ class Donut extends Component {
 
         this.donut = generate(donutConfig);
 
-        /* eslint-disable */
-        if (this.props.withLegend) {
-
-            select(this.legend)
-                .selectAll('div.ins-l-donut__legend--item')
-                .each(function() {
-                    select(this)
-                        .select('span').style('background-color', this.donut.color(this.getAttribute('data-id')));
-                    })
-                    .on('mouseover', function () {
-                        this.donut.focus(this.getAttribute('data-id'));
-                    })
-                    .on('mouseout', function () {
-                        this.donut.revert();
-                    })
-        }
-        /* eslint-enable */
+        this.updateLabels(this.donut);
     }
 
     render () {
