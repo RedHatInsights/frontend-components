@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
+import { Title } from '@patternfly/react-core';
 
 /**
  * This is the title section of the pageHeader
@@ -9,12 +10,11 @@ import classNames from 'classnames';
 const PageHeaderTitle = ({ className, title }) => {
 
     let pageHeaderTitleClasses = classNames(
-        className,
-        'ins-p-page-header__title'
+        className
     );
 
     return (
-        <h1 className={ pageHeaderTitleClasses }> { title } </h1>
+        <Title size='2xl' className={ pageHeaderTitleClasses }> { title } </Title>
     );
 };
 

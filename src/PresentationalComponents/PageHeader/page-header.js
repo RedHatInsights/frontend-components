@@ -28,7 +28,7 @@ export default PageHeader;
 PageHeader.propTypes = {
     children: propTypes.any.isRequired,
     className: propTypes.string,
-    style: propTypes.oneOf(['light', 'dark-100', 'dark-200'])
+    style: propTypes.oneOf(['light', 'dark', 'dark-100', 'dark-200']).isRequired
 };
 
 PageHeader.defaultProps = {
