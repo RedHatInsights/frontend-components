@@ -1,39 +1,66 @@
 @import '../../Utilities';
+@import '~@patternfly/patternfly-next/sass-utilities/all';
 
-.c3-chart-arcs-background {
-    fill: #e0e0e0;
+
+// ==================================================================
+// Gauge
+// ==================================================================
+.ins-c-gauge {
+    --ins-c-gauge-critical--Fill:       var(--pf-global--danger-color--100);
+    --ins-c-gauge-high--Fill:           $ins-color--orange;
+    --ins-c-gauge-medium--Fill:         var(--pf-global--warning-color--100);
+    --ins-c-gauge-low--Fill:            var(--pf-global--success-color--100);
+
+    .c3-chart-arcs-background {
+        fill: #{$pf-color-black-500};
+        stroke: none;
+    }
 }
+
+
+// Modifier - positive
+// ==================================================================
+// if a fuller gauge is positive
 
 .ins-c-gauge {
-    .c3-chart-arcs-background, .c3-arc {
-        stroke: white;
+
+    &.ins-m-fill-level-1 .c3-arc {
+        fill: var(--ins-c-gauge-low--Fill);
     }
 
-    .c3-target text {
-        font-weight: 700;
+    &.ins-m-fill-level-2 .c3-arc {
+        fill: var(--ins-c-gauge-medium--Fill);
+    }
+
+    &.ins-m-fill-level-3 .c3-arc {
+        fill: var(--ins-c-gauge-high--Fill);
+    }
+
+    &.ins-m-fill-level-4 .c3-arc {
+        fill: var(--ins-c-gauge-critical--Fill);
     }
 }
 
-.ins-c-arc__critical {
-    .c3-arc {
-        fill: $ins-color--critical;
+// Modifier - negative
+// ==================================================================
+// if a fuller gauge is negative
+
+.ins-c-gauge.ins-m-negative {
+
+    &.ins-m-fill-level-1 .c3-arc {
+        fill: var(--ins-c-gauge-critical--Fill);
+    }
+
+    &.ins-m-fill-level-2 .c3-arc {
+        fill: var(--ins-c-gauge-high--Fill);
+    }
+
+    &.ins-m-fill-level-3 .c3-arc {
+        fill: var(--ins-c-gauge-medium--Fill);
+    }
+
+    &.ins-m-fill-level-4 .c3-arc {
+        fill: var(--ins-c-gauge-low--Fill);
     }
 }
 
-.ins-c-arc__high {
-    .c3-arc {
-        fill: $ins-color--high;
-    }
-}
-
-.ins-c-arc__medium {
-    .c3-arc {
-        fill: $ins-color--medium;
-    }
-}
-
-.ins-c-arc__low {
-    .c3-arc {
-        fill: $ins-color--low;
-    }
-}
