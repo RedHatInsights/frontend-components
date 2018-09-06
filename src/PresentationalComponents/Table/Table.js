@@ -26,7 +26,7 @@ const Table = ({
 }) => {
   const onAllRowsSelect = (event, selected) => {
     Object.keys(rows).forEach((oneRow, key) => {
-      onItemSelect(event, oneRow.hasOwdnProperty('id') ? oneRow.id : key, selected);
+      onItemSelect(event, oneRow.hasOwnProperty('id') ? oneRow.id : key, selected);
     });
   }
 
