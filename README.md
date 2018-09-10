@@ -41,8 +41,8 @@ There is also a playground for any development
     * [Page Header](doc/components/page_header.md)
     * [Section](doc/components/section.md)
     * [Pagination](doc/components/pagination.md)
-    * [Dropdown](doc/components/Dropdown.md)
-    * [Table](doc/components/Table.md)
+    * [Dropdown](doc/components/dropdown.md)
+    * [Table](doc/components/table.md)
     * [Breadcrumbs](doc/components/breadcrumbs.md)
 
 ## Conbribution
