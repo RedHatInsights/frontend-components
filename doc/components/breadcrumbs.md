@@ -12,7 +12,7 @@ import { Breadcrumbs } from '@red-hat-insights/insights-frontend-components';
 
 const yourCmp = () => (
   <Breadcrumbs
-    items={[title: 'something', navigate: 'somewhere']}
+    items={[{title: 'something', navigate: 'somewhere'}]}
     current="Place"
     onNavigate={(event, navigateTo, hops) => someFnc()}
   />
