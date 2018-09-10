@@ -5,6 +5,10 @@ import TBody from './TableBody';
 import TFooter from './TableFooter';
 import classnames from 'classnames';
 
+export const TableVariant = {
+  large: 'large'
+}
+
 export const SortDirection = {
   up: 'up',
   down: 'down'
@@ -22,6 +26,8 @@ const Table = ({
   onRowClick,
   onColClick,
   onItemSelect,
+  expandable,
+  onExpandClick,
   ...props
 }) => {
   const onAllRowsSelect = (event, selected) => {
@@ -31,11 +37,21 @@ const Table = ({
   }
 
   return (
-    <table {...props} className={classnames('pf-c-table', className)}>
+    <table
+      {...props}
+      className={
+        classnames(
+          'pf-c-table',
+          props.variant !== TableVariant.large && 'pf-m-compact',
+          className
+        )
+      }
+    >
       <caption className="pf-c-table__caption">
       </caption>
       {header &&
         <THead
+          expandable={expandable}
           onSelectAll={onAllRowsSelect}
           hasIcon={hasIcon}
           hasCheckbox={hasCheckbox}
@@ -46,7 +62,9 @@ const Table = ({
       }
       {rows &&
         <TBody
+          onExpandClick={onExpandClick}
           cols={header}
+          expandable={expandable}
           hasCheckbox={hasCheckbox}
           rows={rows}
           onItemSelect={onItemSelect}
@@ -54,13 +72,15 @@ const Table = ({
           onColClick={onColClick}
         />
       }
-      {footer && <TFooter hasCheckbox={hasCheckbox} hasIcon={hasIcon} children={footer} colspan={header.length}/>}
+      {footer && <TFooter hasCheckbox={hasCheckbox} expandable={expandable} hasIcon={hasIcon} children={footer} colspan={header.length}/>}
     </table>
   )
 }
 
 Table.propTypes = {
+  expandable: PropTypes.bool,
   hasCheckbox: PropTypes.bool,
+  variant: PropTypes.oneOf(Object.keys(TableVariant)),
   hasIcon: PropTypes.bool,
   sortBy: PropTypes.shape({
     index: PropTypes.string,
@@ -74,10 +94,12 @@ Table.propTypes = {
   onItemSelect: PropTypes.func,
   onColClick: PropTypes.func,
   onRowClick: PropTypes.func,
+  onExpandClick: PropTypes.func
 }
 
 Table.defaulProps = {
   hasCheckbox: false,
+  expandable: false,
   onItemSelect: () => undefined,
   onColClick: () => undefined,
   onRowClick: () => undefined

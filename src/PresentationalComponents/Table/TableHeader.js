@@ -112,12 +112,14 @@ class TableHeader extends Component {
       hasIcon,
       hasCheckbox,
       onSelectAll,
+      expandable,
       ...props
     } = this.props;
 
     return (
       <thead {...props} className={classnames(className)}>
         <tr>
+          {expandable && <th className='pf-c-table__check pf-m-shrink'></th>}
           {hasCheckbox && this.createCheckbox()}
           {hasIcon && <th className='ins-empty-col'/>}
           {cols && Object.keys(cols).map((cellKey) => this.createHeader(cols[cellKey], cellKey))}
@@ -129,6 +131,7 @@ class TableHeader extends Component {
 
 TableHeader.propTypes = {
   hasCheckbox: PropTypes.bool,
+  expandable: PropTypes.bool,
   hasIcon: PropTypes.bool,
   sortBy: PropTypes.shape({
     index: PropTypes.string,

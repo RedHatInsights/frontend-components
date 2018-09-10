@@ -2,6 +2,8 @@
 To use simple implementation of table component with basic styling use Table component. Please note that this table has
 limited range of functions - select, sort, pagination.
 
+If you are interested in treeview (expandable) table you can see the docs for it in [TreeviewTable](treeview-table.md).
+
 ### Usage
 To use this component simply import it and pass header, rows and if you want footer as well. Any of these props can be
 omitted.
@@ -17,7 +19,29 @@ export default () => (
       {cells: ['2-1', '2-2', '2-3']},
       {cells: ['3-1', '3-2', '3-3']}
     ]}
-    footer={<Pagination numberOfItems={3} />
+    footer={<Pagination numberOfItems={3} /> }
+  />
+) 
+
+```
+
+#### Table variants
+* Larger table columns
+
+```javascript
+import React from 'react';
+import { Table, Pagination, TableVariant } from '@red-hat-insight/insights-frontend-components';
+
+export default () => (
+  <Table 
+    header={['First', 'Second', 'Third']}
+    variant={TableVariant.large}
+    rows={[
+      {cells: ['1-1', '1-2', '1-3']},
+      {cells: ['2-1', '2-2', '2-3']},
+      {cells: ['3-1', '3-2', '3-3']}
+    ]}
+    footer={<Pagination numberOfItems={3} /> }
   />
 ) 
 
@@ -48,7 +72,7 @@ export default () => (
         ],
       }
     ]}
-    footer={<Pagination numberOfItems={3} />
+    footer={<Pagination numberOfItems={3} /> }
   />
 ) 
 ```
@@ -81,7 +105,7 @@ export default () => (
       {cells: ['2-1', '2-2', '2-3']},
       {cells: ['3-1', '3-2', '3-3']}
     ]}
-    footer={<Pagination numberOfItems={3} />
+    footer={<Pagination numberOfItems={3} /> }
   />
 ) 
 ```
@@ -100,7 +124,7 @@ export default () => (
         cells: ['one', 'two']
       }
     }}
-    footer={<Pagination numberOfItems={3} />
+    footer={<Pagination numberOfItems={3} /> }
   />
 ) 
 ```
@@ -117,7 +141,7 @@ export default () => (
       }
     ]
     }
-    footer={<Pagination numberOfItems={3} />
+    footer={<Pagination numberOfItems={3} /> }
   />
 ) 
 ```
@@ -134,7 +158,7 @@ export default () => (
       }
     ]
     }
-    footer={<Pagination numberOfItems={3} />
+    footer={<Pagination numberOfItems={3} /> }
   />
 ) 
 ```
@@ -145,6 +169,8 @@ such column, he however will have no chance to change the direction on this colu
 ### Props
 ```javascript
 {
+  expandable: PropTypes.bool, // enable expand actions for table
+  variant: PropTypes.oneOf(Object.keys(TableVariant)), // different table sizes
   hasCheckbox: PropTypes.bool, // show/hide checkbox in first cell
   sortBy: PropTypes.shape({
     index: PropTypes.number,
@@ -154,9 +180,10 @@ such column, he however will have no chance to change the direction on this colu
   rows: PropTypes.arrayOf(PropTypes.shape({cells: PropTypes.node})), // table body
   header: PropTypes.arrayOf(PropTypes.node), // table header
   footer: PropTypes.node, // table footer (usually Pagination)
-  onSort: PropTypes.func, // function callback called when sorted by row
-  onItemSelect: PropTypes.func, // function callback called when row selected
-  onCellClick: PropTypes.func, // function callback called when cell clicked
-  onRowClick: PropTypes.func // function callback called when row clicked
+  onSort: PropTypes.func(event, colKey, direction), // function callback called when sorted by row
+  onItemSelect: PropTypes.func(event, rowKey, isSelected), // function callback called when row selected
+  onColClick: PropTypes.func(event, rowKey, colKey), // function callback called when cell clicked
+  onRowClick: PropTypes.func(event, rowKey), // function callback called when row clicked
+  onExpandClick: PropTypes.func(event, row, rowKey) // function callback called when row is expanded
 }
 ```

@@ -13,9 +13,16 @@
   }
 
   &, td, th, tr {
-    padding: .5em;
     vertical-align: middle;
     border-bottom: 1px solid #ccc;
+  }
+
+  .pf-c-table__toggle {
+    vertical-align: baseline;
+
+    button {
+      cursor: pointer;
+    }
   }
 
   th.pf-m-ascending, th.pf-m-descending {
