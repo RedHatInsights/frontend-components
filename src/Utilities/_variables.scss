@@ -1,3 +1,5 @@
+@import '~@patternfly/patternfly-next/sass-utilities/all';
+
 // Spacing
 $ins-padding: var(--pf-global--spacer--lg);
 $ins-margin: var(--pf-global--spacer--xl);
@@ -14,11 +16,11 @@ $ins-borderRadius: var(--pf-global--BorderRadius--sm);
 $ins-borderRadius--round: var(--pf-global--BorderRadius--lg);
 
 // Grid breakpoints
-$ins-break--xs: var(--pf-global--breakpoint--xs);
-$ins-break--sm: var(--pf-global--breakpoint--sm);
-$ins-break--md: var(--pf-global--breakpoint--md);
-$ins-break--lg: var(--pf-global--breakpoint--lg);
-$ins-break--xl: var(--pf-global--breakpoint--xl);
+$ins-break--xs: $pf-global--breakpoint--xs;
+$ins-break--sm: $pf-global--breakpoint--sm;
+$ins-break--md: $pf-global--breakpoint--md;
+$ins-break--lg: $pf-global--breakpoint--lg;
+$ins-break--xl: $pf-global--breakpoint--xl;
 
 // Colors
 $ins-color--red: var(--pf-global--danger-color--100);
