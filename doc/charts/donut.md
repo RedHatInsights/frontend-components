@@ -26,6 +26,16 @@ let DonutValues = [
 
 ```
 
+## Donut with positioned Legend
+
+```jsx
+
+<Donut values={DonutValues} totalLabel='label for donut-hole' identifier='donut-identifier' withLegend legendPosition="top"/>;
+
+```
+
+Available positions: top, right, left, bottom (default).
+
 ## Donut with Legend and Links
 
 ```jsx
@@ -50,5 +60,6 @@ const typeLink = '/foo/';
     width: propTypes.number,
     totalLabel: propTypes.string,
     withLabel: propTypes.bool,
+    legendPosition: propTypes.oneOf(Object.keys(LegendPosition))
 }
 ```

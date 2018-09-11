@@ -8,6 +8,13 @@ import isEqual from 'lodash/isEqual';
 
 import './donut.scss';
 
+export const LegendPosition = {
+    right: 'right',
+    left: 'left',
+    top: 'top',
+    bottom: 'bottom'
+};
+
 /**
  * Donut used for displaying statuses
  */
@@ -85,6 +92,14 @@ class Donut extends Component {
             'ins-c-donut'
         );
 
+        const wrapperClasses = classNames({
+            'ins-l-donut-wrapper' : true,
+            'legend-right' : this.props.legendPosition === LegendPosition.right,
+            'legend-top' : this.props.legendPosition === LegendPosition.top,
+            'legend-left' : this.props.legendPosition === LegendPosition.left,
+            'legend-bottom' : this.props.legendPosition === LegendPosition.bottom
+        });
+
         let total = 0;
         for (let i = 0; i < this.props.values.length; i++) {
             total += this.props.values[i][1];
@@ -118,14 +133,16 @@ class Donut extends Component {
 
         return (
             <React.Fragment>
-                <div className='ins-l-donut'>
-                    <div id={this.props.identifier} className={donutClasses}></div>
-                    <div className='ins-c-donut-hole'>
-                        <span className='ins-c-donut-hole--total__number'>{total}</span>
-                        <span className='ins-c-donut-hole--total__label'>{this.props.totalLabel}</span>
+                <div className={wrapperClasses}>
+                    <div className='ins-l-donut'>
+                        <div id={this.props.identifier} className={donutClasses}></div>
+                        <div className='ins-c-donut-hole'>
+                            <span className='ins-c-donut-hole--total__number'>{total}</span>
+                            <span className='ins-c-donut-hole--total__label'>{this.props.totalLabel}</span>
+                        </div>
                     </div>
+                    {donutLegend}
                 </div>
-                {donutLegend}
             </React.Fragment>
         );
     }
@@ -143,6 +160,7 @@ function generateId () {
     return text;
 }
 
+
 Donut.propTypes = {
     className: propTypes.string,
     height: propTypes.number,
@@ -151,12 +169,14 @@ Donut.propTypes = {
     width: propTypes.number,
     totalLabel: propTypes.string,
     withLegend: propTypes.bool,
-    link: propTypes.string
+    link: propTypes.string,
+    legendPosition: propTypes.oneOf(Object.keys(LegendPosition))
 };
 
 Donut.defaultProps = {
     withLegend: false,
     height: 200,
     identifier: generateId(),
-    width: 200
+    width: 200,
+    legendPosition: 'bottom'
 };
