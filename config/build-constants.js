@@ -73,6 +73,7 @@ const entries = {
     'Utilities/ReducerRegistry': './src/Utilities/ReducerRegistry.js',
     'Utilities/helpers': './src/Utilities/helpers.js',
     'Utilities/MiddlewareListener': './src/Utilities/MiddlewareListener.js',
+    'Utilities/Registry': './src/Utilities/Registry.js',
     ...getDirectories('./src/PresentationalComponents', 'components'),
     ...getDirectories('./src/SmartComponents', 'components'),
     ...getDirectories('./src/Charts', 'charts')

@@ -9,9 +9,10 @@ export {
     default as ReducerRegistry,
     applyReducerHash,
     dispatchActionsToStore,
-    reduxRegistery
+    reduxRegistry,
 } from './Utilities/ReducerRegistry';
 export { default as MiddlewareListener } from './Utilities/MiddlewareListener';
+export { default as registry, getStoreFromRegistry } from './Utilities/Registry';
 export * from './PresentationalComponents/Pagination';
 export * from './PresentationalComponents/SimpleTableFilter';
 export * from './PresentationalComponents/Input';
