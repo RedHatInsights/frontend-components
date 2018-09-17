@@ -23,7 +23,8 @@ export function dispatchActionsToStore(actions, store) {
  * http://nicolasgallagher.com/redux-modules-and-code-splitting/
  */
 class ReducerRegistry {
-    constructor(initState = {}, middlewares = [], composeEnhancers = compose) {
+    constructor(initState = {}, middlewares = [], composeEnhancersDefault = compose) {
+      const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || composeEnhancersDefault;
         this.store = createStore(
             (state = initState) => state,
             initState,
