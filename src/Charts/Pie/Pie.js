@@ -6,22 +6,16 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import isEqual from 'lodash/isEqual';
 
-import './donut.scss';
-
-export const LegendPosition = {
-    right: 'right',
-    left: 'left',
-    top: 'top',
-    bottom: 'bottom'
-};
+import './pie.scss';
+import { LegendPosition } from '../Donut/Donut.js'
 
 /**
- * Donut used for displaying statuses
+ * Pie used for displaying statuses
  */
 
 const ConditionalLink = ({ condition, wrap, children }) => condition ? wrap(children) : children;
 
-class Donut extends Component {
+class Pie extends Component {
 
     componentDidMount () {
         this._updateChart();
@@ -29,37 +23,37 @@ class Donut extends Component {
 
     componentDidUpdate(prevProps) {
         if(!isEqual(this.props.values, prevProps.values)) {
-            this.donut.load({
+            this.pie.load({
                 columns: this.props.values
             });
-            this.updateLabels(this.donut);
+            this.updateLabels(this.pie);
         }
     }
 
-    updateLabels(donut) {
+    updateLabels(pie) {
         if (this.props.withLegend) {
             select(this.legend)
-            .selectAll('div.ins-l-donut__legend--item')
+            .selectAll('div.ins-l-pie__legend--item')
             .each(function() {
                 select(this)
-                .select('span').style('background-color', donut.color(this.getAttribute('data-id')));
+                .select('span').style('background-color', pie.color(this.getAttribute('data-id')));
             })
             .on('mouseover', function () {
-                donut.focus(this.getAttribute('data-id'));
+                pie.focus(this.getAttribute('data-id'));
             })
             .on('mouseout', function () {
-                donut.revert();
+                pie.revert();
             })
         }
     }
 
     _updateChart () {
         let data = {
-            type: 'donut',
+            type: 'pie',
             columns: this.props.values,
         };
 
-        let donutConfig = {
+        let pieConfig = {
             bindto: '#' + this.props.identifier,
             data,
             size: {
@@ -69,7 +63,7 @@ class Donut extends Component {
             legend: {
                 show: false
             },
-            donut: {
+            pie: {
                 width: 8,
                 label: {
                     show: false
@@ -77,37 +71,32 @@ class Donut extends Component {
             }
         };
 
-        this.donut = generate(donutConfig);
+        this.pie = generate(pieConfig);
 
-        this.updateLabels(this.donut);
+        this.updateLabels(this.pie);
     }
 
     render () {
 
-        const donutClasses = classNames(
+        const pieClasses = classNames(
             this.props.className,
-            'ins-c-donut'
+            'ins-c-pie'
         );
 
         const wrapperClasses = classNames({
-            'ins-l-donut-wrapper' : true,
+            'ins-l-pie-wrapper' : true,
             'legend-right' : this.props.legendPosition === LegendPosition.right,
             'legend-top' : this.props.legendPosition === LegendPosition.top,
             'legend-left' : this.props.legendPosition === LegendPosition.left,
             'legend-bottom' : this.props.legendPosition === LegendPosition.bottom
         });
 
-        let total = 0;
-        for (let i = 0; i < this.props.values.length; i++) {
-            total += this.props.values[i][1];
-        }
-
-        let donutLegend;
+        let pieLegend;
         if (this.props.withLegend) {
-            donutLegend =
-            <div className='ins-l-donut__legend' ref={ref => {this.legend = ref;}}>
+            pieLegend =
+            <div className='ins-l-pie__legend' ref={ref => {this.legend = ref;}}>
                 {this.props.values && this.props.values.map(oneItem => (
-                    <div key={oneItem}  data-id={oneItem[0]} className="donut ins-l-donut__legend--item">
+                    <div key={oneItem}  data-id={oneItem[0]} className="pie ins-l-pie__legend--item">
                         <div className="badge-wrapper">
                             {/* if this.props.link has a value, wrap the spans in a Link tag */}
                             <ConditionalLink
@@ -130,45 +119,40 @@ class Donut extends Component {
 
         return (
             <div className={wrapperClasses}>
-                <div className='ins-l-donut'>
-                    <div id={this.props.identifier} className={donutClasses}></div>
-                    <div className='ins-c-donut-hole'>
-                        <span className='ins-c-donut-hole--total__number'>{total}</span>
-                        <span className='ins-c-donut-hole--total__label'>{this.props.totalLabel}</span>
-                    </div>
+                <div className='ins-l-pie'>
+                    <div id={this.props.identifier} className={pieClasses}></div>
                 </div>
-                {donutLegend}
+                {pieLegend}
             </div>
         );
     }
 }
 
-export default Donut;
+export default Pie;
 
 /**
  * generate random ID if one is not supplied
  */
 function generateId () {
 
-    let text = 'ins-donut-' + new Date().getTime() + Math.random().toString(36).slice(2);
+    let text = 'ins-pie-' + new Date().getTime() + Math.random().toString(36).slice(2);
 
     return text;
 }
 
 
-Donut.propTypes = {
+Pie.propTypes = {
     className: propTypes.string,
     height: propTypes.number,
     identifier: propTypes.string,
     values: propTypes.array.isRequired,
     width: propTypes.number,
-    totalLabel: propTypes.string,
     withLegend: propTypes.bool,
     link: propTypes.string,
     legendPosition: propTypes.oneOf(Object.keys(LegendPosition))
 };
 
-Donut.defaultProps = {
+Pie.defaultProps = {
     withLegend: false,
     height: 200,
     identifier: generateId(),

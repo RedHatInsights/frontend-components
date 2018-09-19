@@ -23,5 +23,6 @@ export * from './PresentationalComponents/Breadcrumbs';
 export * from './Charts/Gauge';
 export * from './Charts/Matrix';
 export * from './Charts/Donut';
+export * from './Charts/Pie';
 export * from './PresentationalComponents/TabLayout';
 export { ACTION_TYPES as ASYNC_ACTIONS } from './redux/action-types.js';
