@@ -1,5 +1,5 @@
-$fa-font-path:   "~patternfly/node_modules/font-awesome/fonts/";
-@import "~patternfly/node_modules/font-awesome/scss/font-awesome.scss";
+$fa-font-path:   "~font-awesome-sass/assets/fonts/font-awesome/";
+@import "~font-awesome-sass/assets/stylesheets/font-awesome";
 
 .special-patternfly {
   $font-path: '~patternfly/dist/fonts/';
