@@ -8,6 +8,7 @@ node_modules
 
 # production
 dist
+/demo/assets
 
 npm-debug.log*
 yarn-debug.log*
@@ -19,7 +20,5 @@ yarn-error.log*
 /charts/
 coverage
 .storybook
-
-demo/
 
 .DS_Store

@@ -60,9 +60,14 @@ const ExtractCssWebpackPlugin = new (require('mini-css-extract-plugin'))({
 /**
  * Copies files from the specified locations to the corresponding destinations.
  */
-const CopyFilesWebpackPlugin = new (require('copy-webpack-plugin'))([
-    {from: 'src/Utilities/**/*.scss', to: 'Utilities', flatten: true}
-]);
+function copyFilesPlugin(env) {
+    return new (require('copy-webpack-plugin'))([
+        {from: 'src/Utilities/**/*.scss', to: 'Utilities', flatten: true},
+        {from: 'node_modules/@patternfly/patternfly-next/assets', to: 'demo/assets'}
+    ])
+}
+
+const CopyFilesWebpackPlugin = new (require('copy-webpack-plugin'));
 
 module.exports = { buildPlugins: (env) => ({
     plugins: [
@@ -70,7 +75,7 @@ module.exports = { buildPlugins: (env) => ({
         CleanWebpackPlugin,
         LodashWebpackPlugin,
         ExtractCssWebpackPlugin,
-        CopyFilesWebpackPlugin,
+        copyFilesPlugin(env),
         ...env && env.server === 'true' ? [HtmlWebpackPlugin, HotModuleReplacementPlugin] : []
     ]
 }) };
