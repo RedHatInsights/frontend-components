@@ -1,5 +1,7 @@
 .ins-matrix-chart {
+  margin-left: auto;
   svg {
+    overflow: visible;
     text.headline {
       font-weight: var(--pf-global--FontWeight--semi-bold);
     }
