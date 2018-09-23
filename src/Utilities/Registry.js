@@ -8,12 +8,12 @@ function init(initialState = {}, middleware = []) {
   return registry;
 }
 
-export default function(settings = {}) {
+export default function() {
   return function(target) {
-    target.prototype.registry = init(settings.initialState, settings.middleware);
+    target.prototype.getRegistry = () => registry;
   }
 }
 
-export function getStoreFromRegistry(initialState = {}, middleware = []) {
-  return init(initialState, middleware).getStore();
+export function getRegistry(initialState = {}, middleware = []) {
+  return init(initialState, middleware);
 }

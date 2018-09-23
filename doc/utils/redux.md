@@ -44,12 +44,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { getStoreFromRegistry } from '@red-hat-insights/insights-frontend-components';
+import { getRegistry } from '@red-hat-insights/insights-frontend-components/Utilities/Registry';
 import promiseMiddleware from 'redux-promise-middleware';
 import App from './App';
 
 ReactDOM.render(
-    <Provider store={getStoreFromRegistry({}, [promiseMiddleware()])}>
+    <Provider store={getStoreFromRegistry({}, [promiseMiddleware()]).getStore()}>
         <Router basename='/insights/platform/inventory'>
             <App />
         </Router>
@@ -61,10 +61,10 @@ ReactDOM.render(
 
  * Then you can use this decorator anywhere you want and you can access registry by calling `this.registry`.
 
- ```JSX
+```JSX
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@red-hat-insights/insights-frontend-components/Utilities/Registry';
 
 //We'll bind registry to this class
 @registryDecorator()
@@ -72,7 +72,7 @@ class SomeClass extends Component {
 
     componentDidMount () {
         //we'll register new reducer over here
-        this.registry.register({
+        this.getRegistry().register({
             someKey: (state, action) => ({...state})
         })
     }
