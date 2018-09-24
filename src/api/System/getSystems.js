@@ -27,7 +27,7 @@ export const getSystems = () => ({
  * @returns The piece of the state that the reducer mutates
  */
 const getSystemsReducer = (state = [], action) => {
-    switch(action.type) {
+    switch (action.type) {
         case `${GET_SYSTEMS}_FULFILLED`:
             return action.payload.resources;
         case `${GET_SYSTEMS}_REJECTED`:
@@ -43,4 +43,4 @@ const getSystemsReducer = (state = [], action) => {
  *
  *
  */
-ReducerRegistry.register({systems: getSystemsReducer});
+ReducerRegistry.register({ systems: getSystemsReducer });

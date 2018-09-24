@@ -23,7 +23,7 @@ describe('basic functions', () => {
 describe('bubble actions', () => {
     let mwListener;
     const mockedNext = jest.fn();
-    const mockedAction = {type: 'something', payload: {data: 'some data'}};
+    const mockedAction = { type: 'something', payload: { data: 'some data' }};
 
     beforeEach(() => {
         mwListener = new MiddlewareListener();
@@ -32,11 +32,11 @@ describe('bubble actions', () => {
     test('should stop', () => {
         mwListener.addNew({
             on: 'something',
-            callback: ({data, preventBubble}) => {
-                expect(data).toEqual({data: 'some data'});
+            callback: ({ data, preventBubble }) => {
+                expect(data).toEqual({ data: 'some data' });
                 preventBubble();
             }
-        })
+        });
         mwListener.getMiddleware()()(mockedNext)(mockedAction);
         expect(mockedNext.mock.calls[0][0].type).toBe('@@config/action-stopped');
     });
@@ -44,11 +44,11 @@ describe('bubble actions', () => {
     test('should NOT stop', () => {
         mwListener.addNew({
             on: 'something',
-            callback: ({data, preventBubble}) => {
-                expect(data).toEqual({data: 'some data'});
+            callback: ({ data, preventBubble }) => {
+                expect(data).toEqual({ data: 'some data' });
             }
-        })
+        });
         mwListener.getMiddleware()()(mockedNext)(mockedAction);
         expect(mockedNext.mock.calls[1][0].type).toBe('something');
     });
-})
+});

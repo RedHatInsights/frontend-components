@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import isEqual from 'lodash/isEqual';
 
 import './pie.scss';
-import { LegendPosition } from '../Donut/Donut.js'
+import { LegendPosition } from '../Donut/Donut.js';
 
 /**
  * Pie used for displaying statuses
@@ -22,7 +22,7 @@ class Pie extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(!isEqual(this.props.values, prevProps.values)) {
+        if (!isEqual(this.props.values, prevProps.values)) {
             this.pie.load({
                 columns: this.props.values
             });
@@ -43,14 +43,14 @@ class Pie extends Component {
             })
             .on('mouseout', function () {
                 pie.revert();
-            })
+            });
         }
     }
 
     _updateChart () {
         let data = {
             type: 'pie',
-            columns: this.props.values,
+            columns: this.props.values
         };
 
         let pieConfig = {
@@ -84,45 +84,45 @@ class Pie extends Component {
         );
 
         const wrapperClasses = classNames({
-            'ins-l-pie-wrapper' : true,
-            'legend-right' : this.props.legendPosition === LegendPosition.right,
-            'legend-top' : this.props.legendPosition === LegendPosition.top,
-            'legend-left' : this.props.legendPosition === LegendPosition.left,
-            'legend-bottom' : this.props.legendPosition === LegendPosition.bottom
+            'ins-l-pie-wrapper': true,
+            'legend-right': this.props.legendPosition === LegendPosition.right,
+            'legend-top': this.props.legendPosition === LegendPosition.top,
+            'legend-left': this.props.legendPosition === LegendPosition.left,
+            'legend-bottom': this.props.legendPosition === LegendPosition.bottom
         });
 
         let pieLegend;
         if (this.props.withLegend) {
             pieLegend =
-            <div className='ins-l-pie__legend' ref={ref => {this.legend = ref;}}>
-                {this.props.values && this.props.values.map(oneItem => (
-                    <div key={oneItem}  data-id={oneItem[0]} className="pie ins-l-pie__legend--item">
+            <div className='ins-l-pie__legend' ref={ ref => {this.legend = ref;} }>
+                { this.props.values && this.props.values.map(oneItem => (
+                    <div key={ oneItem }  data-id={ oneItem[0] } className="pie ins-l-pie__legend--item">
                         <div className="badge-wrapper">
-                            {/* if this.props.link has a value, wrap the spans in a Link tag */}
+                            { /* if this.props.link has a value, wrap the spans in a Link tag */ }
                             <ConditionalLink
-                                key={oneItem[0]}
+                                key={ oneItem[0] }
                                 condition={ this.props.link }
-                                wrap={children =>
-                                    <Link to={`${this.props.link}${oneItem[0].toLowerCase()}`}>
-                                        {children}
+                                wrap={ children =>
+                                    <Link to={ `${this.props.link}${oneItem[0].toLowerCase()}` }>
+                                        { children }
                                     </Link>
                                 }>
                                 <span className="badge"></span>
-                                <span className="badge__label">{oneItem[0]}</span>
-                                <span className="badge__number">({oneItem[1]})</span>
+                                <span className="badge__label">{ oneItem[0] }</span>
+                                <span className="badge__number">({ oneItem[1] })</span>
                             </ConditionalLink>
                         </div>
                     </div>
-                ))}
+                )) }
             </div>;
         }
 
         return (
-            <div className={wrapperClasses}>
+            <div className={ wrapperClasses }>
                 <div className='ins-l-pie'>
-                    <div id={this.props.identifier} className={pieClasses}></div>
+                    <div id={ this.props.identifier } className={ pieClasses }></div>
                 </div>
-                {pieLegend}
+                { pieLegend }
             </div>
         );
     }
@@ -139,7 +139,6 @@ function generateId () {
 
     return text;
 }
-
 
 Pie.propTypes = {
     className: propTypes.string,

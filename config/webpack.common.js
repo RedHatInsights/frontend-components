@@ -6,7 +6,7 @@ const entry = process.env.NODE_ENV === 'production' ?
 module.exports = {
     paths: {
         build: path.resolve(__dirname, '../'),
-        entry: entry,
+        entry,
         public: path.resolve(__dirname, '../'),
         src: path.resolve(__dirname, '../src'),
         presentationalComponents: path.resolve(__dirname, '../src/PresentationalComponents'),

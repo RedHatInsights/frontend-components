@@ -28,7 +28,7 @@ class Donut extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(!isEqual(this.props.values, prevProps.values)) {
+        if (!isEqual(this.props.values, prevProps.values)) {
             this.donut.load({
                 columns: this.props.values
             });
@@ -49,14 +49,14 @@ class Donut extends Component {
             })
             .on('mouseout', function () {
                 donut.revert();
-            })
+            });
         }
     }
 
     _updateChart () {
         let data = {
             type: 'donut',
-            columns: this.props.values,
+            columns: this.props.values
         };
 
         let donutConfig = {
@@ -90,11 +90,11 @@ class Donut extends Component {
         );
 
         const wrapperClasses = classNames({
-            'ins-l-donut-wrapper' : true,
-            'legend-right' : this.props.legendPosition === LegendPosition.right,
-            'legend-top' : this.props.legendPosition === LegendPosition.top,
-            'legend-left' : this.props.legendPosition === LegendPosition.left,
-            'legend-bottom' : this.props.legendPosition === LegendPosition.bottom
+            'ins-l-donut-wrapper': true,
+            'legend-right': this.props.legendPosition === LegendPosition.right,
+            'legend-top': this.props.legendPosition === LegendPosition.top,
+            'legend-left': this.props.legendPosition === LegendPosition.left,
+            'legend-bottom': this.props.legendPosition === LegendPosition.bottom
         });
 
         let total = 0;
@@ -105,39 +105,39 @@ class Donut extends Component {
         let donutLegend;
         if (this.props.withLegend) {
             donutLegend =
-            <div className='ins-l-donut__legend' ref={ref => {this.legend = ref;}}>
-                {this.props.values && this.props.values.map(oneItem => (
-                    <div key={oneItem}  data-id={oneItem[0]} className="donut ins-l-donut__legend--item">
+            <div className='ins-l-donut__legend' ref={ ref => {this.legend = ref;} }>
+                { this.props.values && this.props.values.map(oneItem => (
+                    <div key={ oneItem }  data-id={ oneItem[0] } className="donut ins-l-donut__legend--item">
                         <div className="badge-wrapper">
-                            {/* if this.props.link has a value, wrap the spans in a Link tag */}
+                            { /* if this.props.link has a value, wrap the spans in a Link tag */ }
                             <ConditionalLink
-                                key={oneItem[0]}
+                                key={ oneItem[0] }
                                 condition={ this.props.link }
-                                wrap={children =>
-                                    <Link to={`${this.props.link}${oneItem[0].toLowerCase()}`}>
-                                        {children}
+                                wrap={ children =>
+                                    <Link to={ `${this.props.link}${oneItem[0].toLowerCase()}` }>
+                                        { children }
                                     </Link>
                                 }>
                                 <span className="badge"></span>
-                                <span className="badge__label">{oneItem[0]}</span>
-                                <span className="badge__number">({oneItem[1]})</span>
+                                <span className="badge__label">{ oneItem[0] }</span>
+                                <span className="badge__number">({ oneItem[1] })</span>
                             </ConditionalLink>
                         </div>
                     </div>
-                ))}
+                )) }
             </div>;
         }
 
         return (
-            <div className={wrapperClasses}>
+            <div className={ wrapperClasses }>
                 <div className='ins-l-donut'>
-                    <div id={this.props.identifier} className={donutClasses}></div>
+                    <div id={ this.props.identifier } className={ donutClasses }></div>
                     <div className='ins-c-donut-hole'>
-                        <span className='ins-c-donut-hole--total__number'>{total}</span>
-                        <span className='ins-c-donut-hole--total__label'>{this.props.totalLabel}</span>
+                        <span className='ins-c-donut-hole--total__number'>{ total }</span>
+                        <span className='ins-c-donut-hole--total__label'>{ this.props.totalLabel }</span>
                     </div>
                 </div>
-                {donutLegend}
+                { donutLegend }
             </div>
         );
     }
@@ -154,7 +154,6 @@ function generateId () {
 
     return text;
 }
-
 
 Donut.propTypes = {
     className: propTypes.string,

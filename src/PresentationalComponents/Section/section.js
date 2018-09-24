@@ -19,15 +19,15 @@ const Section = ({ type, children, className, ...props }) => {
         { [`ins-l-${type}`]: type !== undefined }
     );
 
-     return (
-        <section {...props} className={sectionClasses}> {children} </section>
+    return (
+        <section { ...props } className={ sectionClasses }> { children } </section>
     );
 };
 
 export default Section;
 
 Section.propTypes = {
-  type: propTypes.string,
-  className: propTypes.string,
-  children: propTypes.any.isRequired
+    type: propTypes.string,
+    className: propTypes.string,
+    children: propTypes.any.isRequired
 };

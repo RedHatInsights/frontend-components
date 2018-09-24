@@ -11,33 +11,33 @@ const plugins = [];
  *
  * @type {var}
  */
-const WriteFileWebpackPlugin = new (require('write-file-webpack-plugin'))();
+const WriteFileWebpackPlugin = new(require('write-file-webpack-plugin'))();
 
 /**
  * Copys entry html to distribution folder
  *
  * @type {var}
  */
-const HtmlWebpackPlugin = new (require('html-webpack-plugin'))({
+const HtmlWebpackPlugin = new(require('html-webpack-plugin'))({
     title: 'Playground',
     template: path.resolve(__dirname, '../demo/index.html'),
-    chunks: ['demo']
+    chunks: [ 'demo' ]
 });
 
-const HotModuleReplacementPlugin = new (require('webpack').HotModuleReplacementPlugin)();
+const HotModuleReplacementPlugin = new(require('webpack').HotModuleReplacementPlugin)();
 
 /**
  * Cleans distribution folder.
  * @type {[type]}
  */
-const CleanWebpackPlugin = new (require('clean-webpack-plugin'))(['dist']);
+const CleanWebpackPlugin = new(require('clean-webpack-plugin'))([ 'dist' ]);
 
 /**
  * Selects the specific lodash functions.
  *
  * @type {var}
  */
-const LodashWebpackPlugin = new (require('lodash-webpack-plugin'))({ currying: true, flattening: true, placeholders: true });
+const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({ currying: true, flattening: true, placeholders: true });
 
 /**
  * Optimizes bundle size
@@ -52,7 +52,7 @@ const AggressiveSplittingPlugin = new webpack.optimize.AggressiveSplittingPlugin
 /**
  * Writes final css to file
  */
-const ExtractCssWebpackPlugin = new (require('mini-css-extract-plugin'))({
+const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
     chunkFilename: '[name].css',
     filename: '[id].css'
 });
@@ -61,13 +61,13 @@ const ExtractCssWebpackPlugin = new (require('mini-css-extract-plugin'))({
  * Copies files from the specified locations to the corresponding destinations.
  */
 function copyFilesPlugin(env) {
-    return new (require('copy-webpack-plugin'))([
-        {from: 'src/Utilities/**/*.scss', to: 'Utilities', flatten: true},
-        {from: 'node_modules/@patternfly/patternfly-next/assets', to: 'demo/assets'}
-    ])
+    return new(require('copy-webpack-plugin'))([
+        { from: 'src/Utilities/**/*.scss', to: 'Utilities', flatten: true },
+        { from: 'node_modules/@patternfly/patternfly-next/assets', to: 'demo/assets' }
+    ]);
 }
 
-const CopyFilesWebpackPlugin = new (require('copy-webpack-plugin'));
+const CopyFilesWebpackPlugin = new(require('copy-webpack-plugin'));
 
 module.exports = { buildPlugins: (env) => ({
     plugins: [
@@ -76,6 +76,6 @@ module.exports = { buildPlugins: (env) => ({
         LodashWebpackPlugin,
         ExtractCssWebpackPlugin,
         copyFilesPlugin(env),
-        ...env && env.server === 'true' ? [HtmlWebpackPlugin, HotModuleReplacementPlugin] : []
+        ...env && env.server === 'true' ? [ HtmlWebpackPlugin, HotModuleReplacementPlugin ] : []
     ]
 }) };

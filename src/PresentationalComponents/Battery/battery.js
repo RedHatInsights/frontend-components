@@ -38,13 +38,13 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
 
     function generateBattery (severity, batteryClasses, ariaLabels) {
         return (
-            <i className= { batteryClasses } {...ariaLabels}>
+            <i className= { batteryClasses } { ...ariaLabels }>
                 <svg
                     version="1.1"
                     id="battery_svg"
                     x="0px" y="0px"
                     viewBox="0 0 448 512"
-                    style={{ enableBackground: 'new 0 0 448 512' }}
+                    style={ { enableBackground: 'new 0 0 448 512' } }
                     shapeRendering= 'geometricpresision'>
                     { batteryLevels(severity) }
                 </svg>

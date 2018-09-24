@@ -6,10 +6,11 @@ cache:
 notifications:
   email: false
 node_js:
-- '8'
+- '10'
 install:
-  - npm install
+  - npm ci
 script:
   - npm test
+  - npm run lint
 after_success:
   - npm run release

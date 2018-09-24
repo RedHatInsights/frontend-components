@@ -11,7 +11,7 @@ const PageHeader = ({ className, children, style }) => {
     let pageHeaderClasses = classNames(
         className,
         'pf-l-page__main-section',
-        [`pf-m-${style}`]
+        [ `pf-m-${style}` ]
     );
 
     return (
@@ -28,7 +28,7 @@ export default PageHeader;
 PageHeader.propTypes = {
     children: propTypes.any.isRequired,
     className: propTypes.string,
-    style: propTypes.oneOf(['light', 'dark', 'dark-100', 'dark-200']).isRequired
+    style: propTypes.oneOf([ 'light', 'dark', 'dark-100', 'dark-200' ]).isRequired
 };
 
 PageHeader.defaultProps = {

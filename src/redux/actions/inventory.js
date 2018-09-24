@@ -14,19 +14,19 @@ export const loadEntity = id => ({
 export const selectEntity = (id, selected) => ({
     type: SELECT_ENTITY,
     payload: { id, selected }
-})
+});
 
 export const setSort = (key, direction) => ({
     type: CHANGE_SORT,
     payload: { key, direction }
-})
+});
 
 export const filterEntities = (key, filterString) => ({
     type: FILTER_ENTITIES,
     payload: { key, filterString }
-})
+});
 
 export const detailSelect = (appName) => ({
     type: APPLICATION_SELECTED,
     payload: { appName }
-})
+});

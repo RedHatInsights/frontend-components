@@ -1,5 +1,6 @@
 import React from 'react';
 import './sample-component.scss';
+import PropTypes from 'prop-types';
 
 /**
  * This is a dumb component that only recieves properties from a smart component.
@@ -10,7 +11,11 @@ import './sample-component.scss';
 export default class SampleComponent extends React.Component {
     render () {
         return (
-            <span className='sample-component'> {this.props.children} </span>
+            <span className='sample-component'> { this.props.children } </span>
         );
     }
 }
+
+SampleComponent.propTypes = {
+    children: PropTypes.node
+};

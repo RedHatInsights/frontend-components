@@ -13,7 +13,7 @@ const webpack_config = (env) => {
         optimization: {
             minimize: process.env.NODE_ENV === 'production'
         },
-        entry: { 
+        entry: {
             index: './src/index.js',
             ...entries,
             ...isServer ? {
@@ -31,23 +31,23 @@ const webpack_config = (env) => {
             rules: [{
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/i,
-                use: [{loader: "source-map-loader"}, {loader: 'babel-loader'}]
+                use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }]
             }, {
-               test: /\.s?[ac]ss$/,
+                test: /\.s?[ac]ss$/,
                 use: [
                     process.env.NODE_ENV === 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
                     {
-                        loader: "css-loader"
+                        loader: 'css-loader'
                     },
                     {
-                      loader: 'sass-loader',
-                      options: {
-                        includePaths: [
-                          ...Object.values(pkg.sassIncludes).map(includePath =>
-                            resolve(__dirname, `../${includePath}`)
-                          )
-                        ]
-                      }
+                        loader: 'sass-loader',
+                        options: {
+                            includePaths: [
+                                ...Object.values(pkg.sassIncludes).map(includePath =>
+                                    resolve(__dirname, `../${includePath}`)
+                                )
+                            ]
+                        }
                     }
                 ]
             }, {
@@ -70,8 +70,8 @@ const webpack_config = (env) => {
             noInfo: false,
             contentBase: './dist',
             hot: true,
-            clientLogLevel: 'none',
-          },
+            clientLogLevel: 'none'
+        }
     };
 };
 

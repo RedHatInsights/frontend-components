@@ -1,21 +1,20 @@
 const asyncActions = [
-  'LOAD_ENTITIES',
-  'LOAD_ENTITY'
+    'LOAD_ENTITIES',
+    'LOAD_ENTITY'
 ].reduce((acc, curr) => [
-  ... acc,
-  ...[curr, `${curr}_PENDING`, `${curr}_FULFILLED`, `${curr}_REJECTED`]
-], [])
-
+    ... acc,
+    ...[ curr, `${curr}_PENDING`, `${curr}_FULFILLED`, `${curr}_REJECTED` ]
+], []);
 
 export const ACTION_TYPES = [
     ...asyncActions
-  ]
-  .reduce((acc, curr) => {
+]
+.reduce((acc, curr) => {
     acc[curr] = curr;
     return acc;
-  },
-  {}
-)
+},
+{}
+);
 
 export const SELECT_ENTITY = 'SELECT_ENTITY';
 export const CHANGE_SORT = 'CHANGE_SORT';

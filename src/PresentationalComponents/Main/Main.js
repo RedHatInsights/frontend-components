@@ -6,8 +6,7 @@ import classNames from 'classnames';
  * This is a component that wraps the page
  */
 
-
-const Main = ({className, children, dark, ...props}) => {
+const Main = ({ className, children, dark, ...props }) => {
 
     let mainClasses = classNames(
         className,

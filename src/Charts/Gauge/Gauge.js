@@ -16,26 +16,26 @@ class Gauge extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(this.props.value !== prevProps.value) {
+        if (this.props.value !== prevProps.value) {
             this.gauge.load({
                 columns: [
-                    [this.props.label, this.props.value]
+                    [ this.props.label, this.props.value ]
                 ]
-            })
+            });
         }
     }
 
     _updateChart () {
         let data = {
-            type : 'gauge',
+            type: 'gauge',
             columns: [
-                [this.props.label, this.props.value]
+                [ this.props.label, this.props.value ]
             ]
         };
 
         let gaugeConfig = {
             bindto: '#' + this.props.identifier,
-            data: data,
+            data,
             size: {
                 width: this.props.width,
                 height: this.props.height
@@ -47,20 +47,20 @@ class Gauge extends Component {
                 fullCircle: true,
                 label: {
                     // hides value in center of gauge
-                    format: function () {
+                    format () {
                         return;
                     },
                     // hides min/max values of gauge
                     show: false
                 },
                 width: 4,
-                startingAngle: 2*Math.PI
+                startingAngle: 2 * Math.PI
             },
             // this just makes it so that we can add custom threshold colors. It does not
             // actually control the thresholds or the colors. It's more of a flag for us
             color: {
                 threshold: {
-                    values: [25, 50, 75, 100]
+                    values: [ 25, 50, 75, 100 ]
                 }
             }
         };
@@ -87,7 +87,7 @@ class Gauge extends Component {
         );
 
         return (
-            <div id={this.props.identifier} className={gaugeClasses}></div>
+            <div id={ this.props.identifier } className={ gaugeClasses }></div>
         );
     }
 }
@@ -98,8 +98,8 @@ export default Gauge;
  * generate random ID if one is not supplied
  */
 function generateId () {
-     let text = 'ins-gauge-' + new Date().getTime() + Math.random().toString(36).slice(2);
-     return text;
+    let text = 'ins-gauge-' + new Date().getTime() + Math.random().toString(36).slice(2);
+    return text;
 }
 
 Gauge.propTypes = {
