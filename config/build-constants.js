@@ -57,6 +57,13 @@ const reactRedux = {
     root: 'ReactRedux'
 };
 
+const ReactRouterDOM = {
+    commonjs: 'react-router-dom',
+    commonjs2: 'react-router-dom',
+    amd: 'react-router-dom',
+    root: 'ReactRouterDOM',
+}
+
 const isDirectory = source => lstatSync(source).isDirectory();
 
 const getDirectories = (source, dest) =>
@@ -92,6 +99,7 @@ module.exports = {
         '@patternfly/react-core': pfReactCore,
         '@patternfly/react-icons': pfReactIcons,
         d3: 'd3',
-        c3: 'c3'
-    }
+        c3: 'c3',
+        'react-router-dom': ReactRouterDOM
+    },
 };

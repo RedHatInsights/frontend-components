@@ -11,5 +11,10 @@ export function getEntities () {
 }
 
 export function getEntity (id) {
-    return getEntities().then(entities => entities.find(e => e.id === id));
+    return getEntities().then(entities => entities.find(e => e.id === id)).catch(
+        error => ({
+            error,
+            id
+        })
+    );
 }

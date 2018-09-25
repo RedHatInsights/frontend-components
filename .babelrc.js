@@ -8,5 +8,6 @@ module.exports = {
       require.resolve('babel-plugin-syntax-dynamic-import'),
       require.resolve('babel-plugin-lodash'),
       require.resolve('babel-plugin-transform-object-rest-spread')
-  ]
+  ],
+  ignore: 'node_modules'
 }

@@ -4,7 +4,7 @@ import entityDetailsReducer, { defaultState as entityDefault } from './inventory
 
 export { entitiesReducer, entityDetailsReducer };
 
-export function mergeWithEntities(additionalReducers = Function.prototype) {
+export function mergeWithEntities(additionalReducers = (state) => state) {
     return ({
         entities: (state, payload) => ({
             ...additionalReducers({
@@ -16,7 +16,7 @@ export function mergeWithEntities(additionalReducers = Function.prototype) {
     });
 }
 
-export function mergeWithDetail(additionalReducers = Function.prototype) {
+export function mergeWithDetail(additionalReducers = (state) => state) {
     return ({
         entityDetails: (state, payload) => ({
             ...additionalReducers({

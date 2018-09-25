@@ -5,7 +5,7 @@ This component is to show user from where he came and to easilly go back number 
 There are two components available for use `Breadcrumbs` and `ConnectedBreadcrumbs`
 
 ### Breadcrumbs
-Simplest component, you have to provide data which will be rendered, navigation and eerything.
+Simplest component, you have to provide data which will be rendered, navigation and everything.
 ```JSX
 import React from 'react'
 import { Breadcrumbs } from '@red-hat-insights/insights-frontend-components';

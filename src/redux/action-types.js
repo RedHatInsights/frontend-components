@@ -1,4 +1,4 @@
-const asyncActions = [
+const asyncInventory = [
     'LOAD_ENTITIES',
     'LOAD_ENTITY'
 ].reduce((acc, curr) => [
@@ -6,8 +6,18 @@ const asyncActions = [
     ...[ curr, `${curr}_PENDING`, `${curr}_FULFILLED`, `${curr}_REJECTED` ]
 ], []);
 
+export const INVENTORY_ACTION_TYPES = [
+    ...asyncInventory
+]
+.reduce((acc, curr) => {
+    acc[curr] = curr;
+    return acc;
+},
+{}
+);
+
 export const ACTION_TYPES = [
-    ...asyncActions
+    ...asyncInventory
 ]
 .reduce((acc, curr) => {
     acc[curr] = curr;

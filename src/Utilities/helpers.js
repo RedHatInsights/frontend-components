@@ -1,4 +1,3 @@
-import map from 'lodash/map';
 import merge from 'lodash/merge';
 import mapKeys from 'lodash/mapKeys';
 

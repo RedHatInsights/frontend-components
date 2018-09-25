@@ -1,9 +1,8 @@
 import { ACTION_TYPES, APPLICATION_SELECTED } from '../../action-types';
-import { applyReducerHash } from '../../../Utilities/ReducerRegistry';
 
 export const defaultState = { loaded: false };
 
-function entityDetailPending(state, payload) {
+function entityDetailPending(state) {
     return {
         ...state,
         loaded: false

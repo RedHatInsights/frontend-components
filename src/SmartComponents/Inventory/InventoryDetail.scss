@@ -1,0 +1,31 @@
+.ins-entity-detail {
+  .ins-entity-facts {
+    div {
+      span:first-child {
+        font-weight: var(--pf-global--FontWeight--bold);
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .ins-entity-tags {
+    svg {
+      position: relative;
+      top: 3px;
+    }
+  }
+
+  .ins-tab-layout {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ins-entity-detail {
+    .ins-entity-facts, .ins-entity-header {
+      div.pf-l-grid__item:nth-child(even) {
+        text-align: right;
+      }
+    }
+  }
+}

@@ -1,18 +1,20 @@
 import { ACTION_TYPES, SELECT_ENTITY, CHANGE_SORT, FILTER_ENTITIES } from '../../action-types';
 import { mergeArraysByKey } from '../../../Utilities/helpers';
 import { SortDirection } from '../../../PresentationalComponents/Table';
-import sortBy from 'lodash/sortBy';
+import get from 'lodash/get';
+import orderBy from 'lodash/orderBy';
 
 export const defaultState = { loaded: false };
 
 const defaultColumns = [
-    { key: 'display_name', title: 'System Name' },
-    { key: 'account', title: 'Account' }
+    { key: 'display_name', title: 'Name', composed: [ 'facts.release', 'display_name' ]},
+    { key: 'facts.last_seen', title: 'Last Seen' }
 ];
 
 function entitiesPending(state) {
     return {
         ...state,
+        columns: mergeArraysByKey([ state.columns, defaultColumns ], 'key'),
         loaded: false
     };
 }
@@ -32,14 +34,13 @@ function entitiesLoaded(state, { payload }) {
     return {
         ...state,
         loaded: true,
-        columns: mergeArraysByKey([ state.columns, defaultColumns ], 'key'),
         rows: entities,
         entities
     };
 }
 
 function selectEntity(state, { payload: { id, selected }}) {
-    const ents = [ ...state.rows ];
+    const ents = [ ...state.entities ];
     ents.find(entity => entity.id === id).selected = selected;
     return {
         ...state,
@@ -48,10 +49,14 @@ function selectEntity(state, { payload: { id, selected }}) {
 }
 
 function changeSort(state, { payload: { key, direction }}) {
-    const sortedRows = sortBy(state.entities, [ e => e[key] ]);
+    const sortedRows = orderBy(
+        state.entities,
+        [ e => get(e, key) ],
+        [ SortDirection.up === direction ? 'asc' : 'desc' ]
+    );
     return {
         ...state,
-        entities: SortDirection.up === direction ? sortedRows : sortedRows.reverse()
+        entities: sortedRows
     };
 }
 

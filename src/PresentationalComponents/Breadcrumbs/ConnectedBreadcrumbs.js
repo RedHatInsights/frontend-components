@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Breadcrumbs from './Breadcrumbs';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 class ConnectedBreadcrumbs extends Component {
     constructor(props) {

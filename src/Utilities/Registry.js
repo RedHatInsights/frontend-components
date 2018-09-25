@@ -1,5 +1,5 @@
 import ReducerRegistry from './ReducerRegistry';
-let registry;
+export let registry;
 
 function init(initialState = {}, middleware = []) {
     if (!registry) {

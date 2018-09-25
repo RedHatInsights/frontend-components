@@ -29,4 +29,5 @@ export const filterEntities = (key, filterString) => ({
 export const detailSelect = (appName) => ({
     type: APPLICATION_SELECTED,
     payload: { appName }
+
 });

@@ -1,0 +1,65 @@
+.ins-inventory-filter {
+  padding-bottom: 10px;
+}
+
+.ins-entity-table.pf-c-table {
+  margin-bottom: 15px;
+  tr {
+    cursor: pointer;
+  }
+
+  .ins-health-status div {
+    display: inline-block;
+    padding-right: 20px;
+
+    svg {
+      position: relative;
+      top: 2px;
+      left: -2px;
+    }
+  }
+
+  .pf-c-table__check {
+    position: relative;
+    left: -10px;
+    top: 3px;
+  }
+
+  .ins-composed-col {
+    :first-child {
+      color: var(--pf-c-button--m-disabled--Color);
+      font-size: var(--pf-global--FontSize--sm);
+    }
+
+    * {
+      color: var(--pf-global--info-color--100);
+      font-size: var(	--pf-global--FontSize--lg);
+    }
+  }
+
+  .ins-health-status div {
+    span:nth-child(2) {
+      color: var(--pf-global--info-color--100);
+      cursor: pointer;
+    }
+  }
+
+  .pf-c-table__action .pf-c-dropdown {
+    position: relative;
+    left: 10px;
+    top: 3px;
+  }
+}
+
+.ins-simple-table {
+  .ins-health-status div {
+    display: inline-block;
+    padding-right: 20px;
+
+    svg {
+      position: relative;
+      top: 2px;
+      left: -2px;
+    }
+  }
+}

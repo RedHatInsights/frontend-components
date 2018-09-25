@@ -22,6 +22,7 @@ class TableBody extends Component {
                 className={ classnames(col.className) }
                 colSpan={ col.colSpan }
                 onClick={ (event) => {
+                    col.stopPropagation && event.stopPropagation();
                     this.props.onColClick && this.props.onColClick(event, rowKey, key);
                 }
                 }
