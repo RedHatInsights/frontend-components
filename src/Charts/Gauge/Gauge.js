@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { generate } from 'c3';
 import classNames from 'classnames';
 
-import './gauge.scss';
+import './styles.scss';
 
 /**
  * Gauge used for displaying statuses

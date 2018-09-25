@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import isEqual from 'lodash/isEqual';
 
-import './pie.scss';
+import './styles.scss';
 import { LegendPosition } from '../Donut/Donut.js';
 
 /**

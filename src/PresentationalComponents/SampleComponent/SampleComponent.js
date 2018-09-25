@@ -1,5 +1,5 @@
 import React from 'react';
-import './sample-component.scss';
+import './styles.scss';
 import PropTypes from 'prop-types';
 
 /**

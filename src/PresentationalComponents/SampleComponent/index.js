@@ -1,1 +1,1 @@
-export { default as SampleComponent } from './sample-component.js';
+export { default as SampleComponent } from './SampleComponent.js';

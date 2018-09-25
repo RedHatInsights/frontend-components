@@ -1,5 +1,5 @@
-export { default as Battery } from './battery';
-export { default as CriticalBattery } from './criticalBattery';
-export { default as HighBattery } from './highBattery';
-export { default as MediumBattery } from './mediumBattery';
-export { default as LowBattery } from './lowBattery';
+export { default as Battery } from './Battery';
+export { default as CriticalBattery } from './CriticalBattery';
+export { default as HighBattery } from './HighBattery';
+export { default as MediumBattery } from './MediumBattery';
+export { default as LowBattery } from './LowBattery';

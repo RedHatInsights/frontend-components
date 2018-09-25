@@ -3,12 +3,12 @@ import propTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-import CriticalBattery from './criticalBattery';
-import HighBattery from './highBattery';
-import MediumBattery from './mediumBattery';
-import LowBattery from './lowBattery';
+import CriticalBattery from './CriticalBattery';
+import HighBattery from './HighBattery';
+import MediumBattery from './MediumBattery';
+import LowBattery from './LowBattery';
 
-import './battery.scss';
+import './styles.scss';
 
 /**
  * This is the battery component that generates a 'battery'

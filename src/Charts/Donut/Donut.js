@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import isEqual from 'lodash/isEqual';
 
-import './donut.scss';
+import './styles.scss';
 
 export const LegendPosition = {
     right: 'right',

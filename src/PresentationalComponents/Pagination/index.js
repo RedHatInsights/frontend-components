@@ -1,2 +1,2 @@
-export { default as Pagination, dropDirection } from './pagination';
-import './pagination.scss';
+export { default as Pagination, dropDirection } from './Pagination';
+import './styles.scss';
