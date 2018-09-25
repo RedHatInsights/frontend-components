@@ -1,0 +1,1072 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form renderer should render simple form with input and switch 1`] = `
+<FormRenderer
+  onSubmit={[MockFunction]}
+  schema={
+    Object {
+      "description": "A simple form example.",
+      "properties": Object {
+        "age": Object {
+          "title": "Age",
+          "type": "integer",
+        },
+        "bio": Object {
+          "title": "Bio",
+          "type": "string",
+        },
+        "firstName": Object {
+          "title": "First name",
+          "type": "string",
+        },
+        "lastName": Object {
+          "title": "Last name",
+          "type": "string",
+        },
+        "password": Object {
+          "minLength": 3,
+          "title": "Password",
+          "type": "string",
+        },
+        "telephone": Object {
+          "minLength": 10,
+          "title": "Telephone",
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "firstName",
+        "lastName",
+      ],
+      "title": "A registration form",
+      "type": "object",
+    }
+  }
+  uiSchema={
+    Object {
+      "age": Object {
+        "ui:description": "(earthian year)",
+        "ui:title": "Age of person",
+        "ui:widget": "updown",
+      },
+      "bio": Object {
+        "ui:widget": "textarea",
+      },
+      "firstName": Object {
+        "ui:autofocus": true,
+        "ui:emptyValue": "",
+      },
+      "password": Object {
+        "ui:help": "Hint: Make it strong!",
+        "ui:widget": "password",
+      },
+      "telephone": Object {
+        "ui:options": Object {
+          "inputType": "tel",
+        },
+      },
+    }
+  }
+>
+  <div
+    className="final-form-title"
+  >
+    <Title
+      className=""
+      size="3xl"
+    >
+      <h1
+        className="pf-c-title pf-m-3xl"
+      >
+        A registration form
+      </h1>
+    </Title>
+    <Title
+      className=""
+      size="lg"
+    >
+      <h1
+        className="pf-c-title pf-m-lg"
+      >
+        A simple form example.
+      </h1>
+    </Title>
+  </div>
+  <ReactFinalForm
+    initialValues={Object {}}
+    onSubmit={[MockFunction]}
+    render={[Function]}
+    subscription={
+      Object {
+        "pristine": true,
+        "submitting": true,
+      }
+    }
+  >
+    <form
+      className=".pf-c-form"
+    >
+      <Grid
+        className=""
+        gutter={null}
+        lg={null}
+        md={null}
+        sm={null}
+        span={null}
+        xl={null}
+      >
+        <div
+          className="pf-l-grid"
+        >
+          <GridItem
+            className=""
+            lg={null}
+            lgOffset={null}
+            lgRowSpan={null}
+            md={null}
+            mdOffset={null}
+            mdRowSpan={null}
+            offset={null}
+            rowSpan={null}
+            sm={null}
+            smOffset={null}
+            smRowSpan={null}
+            span={null}
+            xl={null}
+            xlOffset={null}
+            xlRowSpan={null}
+          >
+            <div
+              className="pf-l-grid__item"
+            >
+              <GridItem
+                className=""
+                key="firstName"
+                lg={null}
+                lgOffset={null}
+                lgRowSpan={null}
+                md={null}
+                mdOffset={null}
+                mdRowSpan={null}
+                offset={null}
+                rowSpan={null}
+                sm={12}
+                smOffset={null}
+                smRowSpan={null}
+                span={null}
+                xl={null}
+                xlOffset={null}
+                xlRowSpan={null}
+              >
+                <div
+                  className="pf-l-grid__item pf-m-12-col-on-sm"
+                >
+                  <Field
+                    autoFocus={true}
+                    component={[Function]}
+                    format={[Function]}
+                    isRequired={false}
+                    label="First name"
+                    name="firstName"
+                    parse={[Function]}
+                    type="text"
+                    validate={[Function]}
+                  >
+                    <TextField
+                      autoFocus={true}
+                      input={
+                        Object {
+                          "name": "firstName",
+                          "onBlur": [Function],
+                          "onChange": [Function],
+                          "onFocus": [Function],
+                          "value": "",
+                        }
+                      }
+                      isRequired={false}
+                      label="First name"
+                      meta={
+                        Object {
+                          "active": false,
+                          "data": Object {},
+                          "dirty": false,
+                          "dirtySinceLastSubmit": false,
+                          "error": "Required",
+                          "initial": undefined,
+                          "invalid": true,
+                          "pristine": true,
+                          "submitError": undefined,
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "touched": false,
+                          "valid": false,
+                          "visited": false,
+                        }
+                      }
+                      type="text"
+                    >
+                      <FinalFormField
+                        autoFocus={true}
+                        componentType="textField"
+                        input={
+                          Object {
+                            "name": "firstName",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "",
+                          }
+                        }
+                        isRequired={false}
+                        label="First name"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": "Required",
+                            "initial": undefined,
+                            "invalid": true,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": false,
+                            "visited": false,
+                          }
+                        }
+                        type="text"
+                      >
+                        <div
+                          className="pf-c-form__group"
+                        >
+                          <label
+                            className="pf-c-form__label "
+                          >
+                            First name
+                          </label>
+                          <TextInput
+                            aria-label={null}
+                            autoFocus={true}
+                            className=""
+                            id="firstName"
+                            isAlt={false}
+                            isDisabled={false}
+                            isReadOnly={false}
+                            isRequired={false}
+                            isValid={true}
+                            name="firstName"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            type="text"
+                            value=""
+                          >
+                            <input
+                              aria-invalid={false}
+                              aria-label={null}
+                              autoFocus={true}
+                              className="pf-c-form-control"
+                              disabled={false}
+                              id="firstName"
+                              name="firstName"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              readOnly={false}
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                          </TextInput>
+                        </div>
+                      </FinalFormField>
+                    </TextField>
+                  </Field>
+                </div>
+              </GridItem>
+              <GridItem
+                className=""
+                key="lastName"
+                lg={null}
+                lgOffset={null}
+                lgRowSpan={null}
+                md={null}
+                mdOffset={null}
+                mdRowSpan={null}
+                offset={null}
+                rowSpan={null}
+                sm={12}
+                smOffset={null}
+                smRowSpan={null}
+                span={null}
+                xl={null}
+                xlOffset={null}
+                xlRowSpan={null}
+              >
+                <div
+                  className="pf-l-grid__item pf-m-12-col-on-sm"
+                >
+                  <Field
+                    autoFocus={false}
+                    component={[Function]}
+                    format={[Function]}
+                    isRequired={false}
+                    label="Last name"
+                    name="lastName"
+                    parse={[Function]}
+                    type="text"
+                    validate={[Function]}
+                  >
+                    <TextField
+                      autoFocus={false}
+                      input={
+                        Object {
+                          "name": "lastName",
+                          "onBlur": [Function],
+                          "onChange": [Function],
+                          "onFocus": [Function],
+                          "value": "",
+                        }
+                      }
+                      isRequired={false}
+                      label="Last name"
+                      meta={
+                        Object {
+                          "active": false,
+                          "data": Object {},
+                          "dirty": false,
+                          "dirtySinceLastSubmit": false,
+                          "error": "Required",
+                          "initial": undefined,
+                          "invalid": true,
+                          "pristine": true,
+                          "submitError": undefined,
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "touched": false,
+                          "valid": false,
+                          "visited": false,
+                        }
+                      }
+                      type="text"
+                    >
+                      <FinalFormField
+                        autoFocus={false}
+                        componentType="textField"
+                        input={
+                          Object {
+                            "name": "lastName",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "",
+                          }
+                        }
+                        isRequired={false}
+                        label="Last name"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": "Required",
+                            "initial": undefined,
+                            "invalid": true,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": false,
+                            "visited": false,
+                          }
+                        }
+                        type="text"
+                      >
+                        <div
+                          className="pf-c-form__group"
+                        >
+                          <label
+                            className="pf-c-form__label "
+                          >
+                            Last name
+                          </label>
+                          <TextInput
+                            aria-label={null}
+                            autoFocus={false}
+                            className=""
+                            id="lastName"
+                            isAlt={false}
+                            isDisabled={false}
+                            isReadOnly={false}
+                            isRequired={false}
+                            isValid={true}
+                            name="lastName"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            type="text"
+                            value=""
+                          >
+                            <input
+                              aria-invalid={false}
+                              aria-label={null}
+                              autoFocus={false}
+                              className="pf-c-form-control"
+                              disabled={false}
+                              id="lastName"
+                              name="lastName"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              readOnly={false}
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                          </TextInput>
+                        </div>
+                      </FinalFormField>
+                    </TextField>
+                  </Field>
+                </div>
+              </GridItem>
+              <GridItem
+                className=""
+                key="age"
+                lg={null}
+                lgOffset={null}
+                lgRowSpan={null}
+                md={null}
+                mdOffset={null}
+                mdRowSpan={null}
+                offset={null}
+                rowSpan={null}
+                sm={12}
+                smOffset={null}
+                smRowSpan={null}
+                span={null}
+                xl={null}
+                xlOffset={null}
+                xlRowSpan={null}
+              >
+                <div
+                  className="pf-l-grid__item pf-m-12-col-on-sm"
+                >
+                  <Field
+                    autoFocus={false}
+                    component={[Function]}
+                    format={[Function]}
+                    label="Age"
+                    name="age"
+                    parse={[Function]}
+                    type="number"
+                    validate={[Function]}
+                  >
+                    <TextField
+                      autoFocus={false}
+                      input={
+                        Object {
+                          "name": "age",
+                          "onBlur": [Function],
+                          "onChange": [Function],
+                          "onFocus": [Function],
+                          "value": "",
+                        }
+                      }
+                      isRequired={false}
+                      label="Age"
+                      meta={
+                        Object {
+                          "active": false,
+                          "data": Object {},
+                          "dirty": false,
+                          "dirtySinceLastSubmit": false,
+                          "error": undefined,
+                          "initial": undefined,
+                          "invalid": false,
+                          "pristine": true,
+                          "submitError": undefined,
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "touched": false,
+                          "valid": true,
+                          "visited": false,
+                        }
+                      }
+                      type="number"
+                    >
+                      <FinalFormField
+                        autoFocus={false}
+                        componentType="textField"
+                        input={
+                          Object {
+                            "name": "age",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "",
+                          }
+                        }
+                        isRequired={false}
+                        label="Age"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": undefined,
+                            "initial": undefined,
+                            "invalid": false,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": true,
+                            "visited": false,
+                          }
+                        }
+                        type="number"
+                      >
+                        <div
+                          className="pf-c-form__group"
+                        >
+                          <label
+                            className="pf-c-form__label "
+                          >
+                            Age
+                          </label>
+                          <TextInput
+                            aria-label={null}
+                            autoFocus={false}
+                            className=""
+                            id="age"
+                            isAlt={false}
+                            isDisabled={false}
+                            isReadOnly={false}
+                            isRequired={false}
+                            isValid={true}
+                            name="age"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            type="number"
+                            value=""
+                          >
+                            <input
+                              aria-invalid={false}
+                              aria-label={null}
+                              autoFocus={false}
+                              className="pf-c-form-control"
+                              disabled={false}
+                              id="age"
+                              name="age"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              readOnly={false}
+                              required={false}
+                              type="number"
+                              value=""
+                            />
+                          </TextInput>
+                        </div>
+                      </FinalFormField>
+                    </TextField>
+                  </Field>
+                </div>
+              </GridItem>
+              <GridItem
+                className=""
+                key="bio"
+                lg={null}
+                lgOffset={null}
+                lgRowSpan={null}
+                md={null}
+                mdOffset={null}
+                mdRowSpan={null}
+                offset={null}
+                rowSpan={null}
+                sm={12}
+                smOffset={null}
+                smRowSpan={null}
+                span={null}
+                xl={null}
+                xlOffset={null}
+                xlRowSpan={null}
+              >
+                <div
+                  className="pf-l-grid__item pf-m-12-col-on-sm"
+                >
+                  <Field
+                    autoFocus={false}
+                    component={[Function]}
+                    format={[Function]}
+                    label="Bio"
+                    name="bio"
+                    parse={[Function]}
+                    validate={[Function]}
+                  >
+                    <TextareaField
+                      autoFocus={false}
+                      input={
+                        Object {
+                          "name": "bio",
+                          "onBlur": [Function],
+                          "onChange": [Function],
+                          "onFocus": [Function],
+                          "value": "",
+                        }
+                      }
+                      label="Bio"
+                      meta={
+                        Object {
+                          "active": false,
+                          "data": Object {},
+                          "dirty": false,
+                          "dirtySinceLastSubmit": false,
+                          "error": undefined,
+                          "initial": undefined,
+                          "invalid": false,
+                          "pristine": true,
+                          "submitError": undefined,
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "touched": false,
+                          "valid": true,
+                          "visited": false,
+                        }
+                      }
+                    >
+                      <FinalFormField
+                        autoFocus={false}
+                        componentType="textarea"
+                        input={
+                          Object {
+                            "name": "bio",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "",
+                          }
+                        }
+                        isRequired={false}
+                        label="Bio"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": undefined,
+                            "initial": undefined,
+                            "invalid": false,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": true,
+                            "visited": false,
+                          }
+                        }
+                      >
+                        <div
+                          className="pf-c-form__group"
+                        >
+                          <label
+                            className="pf-c-form__label "
+                          >
+                            Bio
+                          </label>
+                          <TextArea
+                            aria-label={null}
+                            autoFocus={false}
+                            className=""
+                            id="bio"
+                            isRequired={false}
+                            isValid={true}
+                            name="bio"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            value=""
+                          >
+                            <textarea
+                              aria-invalid={false}
+                              aria-label={null}
+                              autoFocus={false}
+                              className="pf-c-form-control"
+                              id="bio"
+                              name="bio"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              required={false}
+                              value=""
+                            />
+                          </TextArea>
+                        </div>
+                      </FinalFormField>
+                    </TextareaField>
+                  </Field>
+                </div>
+              </GridItem>
+              <GridItem
+                className=""
+                key="password"
+                lg={null}
+                lgOffset={null}
+                lgRowSpan={null}
+                md={null}
+                mdOffset={null}
+                mdRowSpan={null}
+                offset={null}
+                rowSpan={null}
+                sm={12}
+                smOffset={null}
+                smRowSpan={null}
+                span={null}
+                xl={null}
+                xlOffset={null}
+                xlRowSpan={null}
+              >
+                <div
+                  className="pf-l-grid__item pf-m-12-col-on-sm"
+                >
+                  <Field
+                    autoFocus={false}
+                    component={[Function]}
+                    format={[Function]}
+                    label="Password"
+                    name="password"
+                    parse={[Function]}
+                    type="password"
+                    validate={[Function]}
+                  >
+                    <TextField
+                      autoFocus={false}
+                      input={
+                        Object {
+                          "name": "password",
+                          "onBlur": [Function],
+                          "onChange": [Function],
+                          "onFocus": [Function],
+                          "value": "",
+                        }
+                      }
+                      isRequired={false}
+                      label="Password"
+                      meta={
+                        Object {
+                          "active": false,
+                          "data": Object {},
+                          "dirty": false,
+                          "dirtySinceLastSubmit": false,
+                          "error": undefined,
+                          "initial": undefined,
+                          "invalid": false,
+                          "pristine": true,
+                          "submitError": undefined,
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "touched": false,
+                          "valid": true,
+                          "visited": false,
+                        }
+                      }
+                      type="password"
+                    >
+                      <FinalFormField
+                        autoFocus={false}
+                        componentType="textField"
+                        input={
+                          Object {
+                            "name": "password",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "",
+                          }
+                        }
+                        isRequired={false}
+                        label="Password"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": undefined,
+                            "initial": undefined,
+                            "invalid": false,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": true,
+                            "visited": false,
+                          }
+                        }
+                        type="password"
+                      >
+                        <div
+                          className="pf-c-form__group"
+                        >
+                          <label
+                            className="pf-c-form__label "
+                          >
+                            Password
+                          </label>
+                          <TextInput
+                            aria-label={null}
+                            autoFocus={false}
+                            className=""
+                            id="password"
+                            isAlt={false}
+                            isDisabled={false}
+                            isReadOnly={false}
+                            isRequired={false}
+                            isValid={true}
+                            name="password"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            type="password"
+                            value=""
+                          >
+                            <input
+                              aria-invalid={false}
+                              aria-label={null}
+                              autoFocus={false}
+                              className="pf-c-form-control"
+                              disabled={false}
+                              id="password"
+                              name="password"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              readOnly={false}
+                              required={false}
+                              type="password"
+                              value=""
+                            />
+                          </TextInput>
+                        </div>
+                      </FinalFormField>
+                    </TextField>
+                  </Field>
+                </div>
+              </GridItem>
+              <GridItem
+                className=""
+                key="telephone"
+                lg={null}
+                lgOffset={null}
+                lgRowSpan={null}
+                md={null}
+                mdOffset={null}
+                mdRowSpan={null}
+                offset={null}
+                rowSpan={null}
+                sm={12}
+                smOffset={null}
+                smRowSpan={null}
+                span={null}
+                xl={null}
+                xlOffset={null}
+                xlRowSpan={null}
+              >
+                <div
+                  className="pf-l-grid__item pf-m-12-col-on-sm"
+                >
+                  <Field
+                    autoFocus={false}
+                    component={[Function]}
+                    format={[Function]}
+                    label="Telephone"
+                    name="telephone"
+                    parse={[Function]}
+                    type="text"
+                    validate={[Function]}
+                  >
+                    <TextField
+                      autoFocus={false}
+                      input={
+                        Object {
+                          "name": "telephone",
+                          "onBlur": [Function],
+                          "onChange": [Function],
+                          "onFocus": [Function],
+                          "value": "",
+                        }
+                      }
+                      isRequired={false}
+                      label="Telephone"
+                      meta={
+                        Object {
+                          "active": false,
+                          "data": Object {},
+                          "dirty": false,
+                          "dirtySinceLastSubmit": false,
+                          "error": undefined,
+                          "initial": undefined,
+                          "invalid": false,
+                          "pristine": true,
+                          "submitError": undefined,
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "touched": false,
+                          "valid": true,
+                          "visited": false,
+                        }
+                      }
+                      type="text"
+                    >
+                      <FinalFormField
+                        autoFocus={false}
+                        componentType="textField"
+                        input={
+                          Object {
+                            "name": "telephone",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "",
+                          }
+                        }
+                        isRequired={false}
+                        label="Telephone"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": undefined,
+                            "initial": undefined,
+                            "invalid": false,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": true,
+                            "visited": false,
+                          }
+                        }
+                        type="text"
+                      >
+                        <div
+                          className="pf-c-form__group"
+                        >
+                          <label
+                            className="pf-c-form__label "
+                          >
+                            Telephone
+                          </label>
+                          <TextInput
+                            aria-label={null}
+                            autoFocus={false}
+                            className=""
+                            id="telephone"
+                            isAlt={false}
+                            isDisabled={false}
+                            isReadOnly={false}
+                            isRequired={false}
+                            isValid={true}
+                            name="telephone"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            type="text"
+                            value=""
+                          >
+                            <input
+                              aria-invalid={false}
+                              aria-label={null}
+                              autoFocus={false}
+                              className="pf-c-form-control"
+                              disabled={false}
+                              id="telephone"
+                              name="telephone"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              readOnly={false}
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                          </TextInput>
+                        </div>
+                      </FinalFormField>
+                    </TextField>
+                  </Field>
+                </div>
+              </GridItem>
+            </div>
+          </GridItem>
+          <GridItem
+            className=""
+            lg={null}
+            lgOffset={null}
+            lgRowSpan={null}
+            md={null}
+            mdOffset={null}
+            mdRowSpan={null}
+            offset={null}
+            rowSpan={null}
+            sm={null}
+            smOffset={null}
+            smRowSpan={null}
+            span={null}
+            xl={null}
+            xlOffset={null}
+            xlRowSpan={null}
+          >
+            <div
+              className="pf-l-grid__item"
+            >
+              <Button
+                aria-label={null}
+                className=""
+                component="button"
+                id="form-renderer-submit"
+                isActive={false}
+                isBlock={false}
+                isDisabled={false}
+                isFocus={false}
+                isHover={false}
+                onClick={[Function]}
+                type="button"
+                variant="primary"
+              >
+                <button
+                  aria-disabled={null}
+                  aria-label={null}
+                  className="pf-c-button pf-m-primary"
+                  disabled={false}
+                  id="form-renderer-submit"
+                  onClick={[Function]}
+                  tabIndex={null}
+                  type="button"
+                >
+                  Submit
+                </button>
+              </Button>
+            </div>
+          </GridItem>
+        </div>
+      </Grid>
+    </form>
+  </ReactFinalForm>
+</FormRenderer>
+`;
