@@ -24,7 +24,7 @@ class Pagination extends Component {
         const maxPage = Math.ceil(this.props.numberOfItems / perPage);
         page = isNaN(page) ? 1 : page;
         page = page > maxPage ? maxPage : page;
-        this.props.hasOwnProperty('onSetPage') ? this.props.onSetPage(page) : console.log(page);
+        this.props.hasOwnProperty('onSetPage') && this.props.onSetPage(page);
     }
 
     defaultFirstPage() {

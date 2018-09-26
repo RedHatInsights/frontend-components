@@ -1,7 +1,4 @@
 {
-    "presets": ["./.babelrc.js"],
-    "ignore": [
-        "./index.js"
-    ]
+    "presets": ["./.babelrc.js"]
 }
   
