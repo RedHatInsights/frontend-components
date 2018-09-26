@@ -129,7 +129,7 @@ class Donut extends Component {
         }
 
         return (
-            <div className={ wrapperClasses }>
+            <div className={ wrapperClasses } widget-type='InsightsDonut' widget-id={ this.props.identifier }>
                 <div className='ins-l-donut'>
                     <div id={ this.props.identifier } className={ donutClasses }></div>
                     <div className='ins-c-donut-hole'>

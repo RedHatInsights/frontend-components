@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import { DataProps, ConfigProp, LabelsProp, ConfigDefaults, LabelsDefaults  } from './Props';
 import { select, event } from 'd3';
 import classnames from 'classnames';
@@ -82,7 +83,7 @@ class Matrix extends Component {
       labels
     } = this.props;
     return (
-      <div className="ins-matrix-chart">
+      <div identifier= { this.props.identifier } className="ins-matrix-chart" widget-type='InsightsMatrix' widget-id={ this.props.identifier }>
         <svg width={size} height={size} ref={ref => this.ref = ref}>
           <Axis size={gridSize} pad={pad} shift={shift}>
            {Object.values(data).map((oneSegment, key) => (
@@ -122,15 +123,25 @@ class Matrix extends Component {
   }
 }
 
+/**
+ * generate random ID if one is not supplied
+ */
+function generateId () {
+  let text = 'ins-gauge-' + new Date().getTime() + Math.random().toString(36).slice(2);
+  return text;
+}
+
 Matrix.propTypes = {
   data: DataProps.isRequired,
   config: ConfigProp,
-  labels: LabelsProp
+  labels: LabelsProp,
+  identifier: propTypes.string,
 };
 
 Matrix.defaultProps = {
   config: ConfigDefaults,
-  labels: LabelsDefaults
+  labels: LabelsDefaults,
+  identifier: generateId(),
 };
 
 export default Matrix;

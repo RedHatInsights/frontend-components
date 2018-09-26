@@ -87,7 +87,7 @@ class Gauge extends Component {
         );
 
         return (
-            <div id={ this.props.identifier } className={ gaugeClasses }></div>
+            <div id={ this.props.identifier } className={ gaugeClasses }  widget-type='InsightsGauge' widget-id={ this.props.identifier } ></div>
         );
     }
 }

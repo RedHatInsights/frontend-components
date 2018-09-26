@@ -118,7 +118,7 @@ class Pie extends Component {
         }
 
         return (
-            <div className={ wrapperClasses }>
+            <div className={ wrapperClasses } widget-type='InsightsPie' widget-id={ this.props.identifier } >
                 <div className='ins-l-pie'>
                     <div id={ this.props.identifier } className={ pieClasses }></div>
                 </div>

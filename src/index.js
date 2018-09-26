@@ -10,7 +10,6 @@ export * from './PresentationalComponents/Section';
 export * from './PresentationalComponents/SampleComponent';
 export * from './PresentationalComponents/Ansible';
 export * from './PresentationalComponents/Main';
-export * from './PresentationalComponents/PageHeader';
 export * from './PresentationalComponents/Pagination';
 export * from './PresentationalComponents/SimpleTableFilter';
 export * from './PresentationalComponents/Input';
