@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { lauraSchema2, lauraUiSchema, simple, uiSchemaSimple } from '../../demoData/formSchemas';
+import { lauraSchema2, lauraUiSchema, simple, uiSchemaSimple, nestedSchema, nestedUiSchema } from '../../demoData/formSchemas';
 import FormRenderer from '../../DataDrivenForm/formRenderer';
 
 describe('Form renderer', () => {
@@ -35,5 +35,18 @@ describe('Form renderer', () => {
 
     submitButton.simulate('click');
     expect(submit).toHaveBeenCalledWith({ name: 'Name', url: 'some.url' }, expect.any(Object));
+  });
+
+  it('should render form with array property', () => {
+    const wrapper = mount(<FormRenderer
+        schema={nestedSchema}
+        uiSchema={nestedUiSchema}
+        onSubmit={jest.fn()}
+        initialValues={{"tasks":[{"title":"task title","details":"task description"}],"title":"title"}}
+      />);
+    const addButton = wrapper.find('button#add-tasks');
+    addButton.simulate('click');
+    wrapper.update();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

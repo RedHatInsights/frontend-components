@@ -1,7 +1,878 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Form renderer should render form with array property 1`] = `
+<FormRenderer
+  initialValues={
+    Object {
+      "tasks": Array [
+        Object {
+          "details": "task description",
+          "title": "task title",
+        },
+      ],
+      "title": "title",
+    }
+  }
+  onSubmit={[MockFunction]}
+  schema={
+    Object {
+      "properties": Object {
+        "tasks": Object {
+          "items": Object {
+            "properties": Object {
+              "details": Object {
+                "description": "Enter the task details",
+                "title": "Task details",
+                "type": "string",
+              },
+              "done": Object {
+                "default": false,
+                "title": "Done?",
+                "type": "boolean",
+              },
+              "other-tasks": Object {
+                "items": Object {
+                  "properties": Object {
+                    "details": Object {
+                      "description": "Enter the task details",
+                      "title": "Task details",
+                      "type": "string",
+                    },
+                    "done": Object {
+                      "default": false,
+                      "title": "Done?",
+                      "type": "boolean",
+                    },
+                    "title": Object {
+                      "description": "A sample title",
+                      "title": "Title",
+                      "type": "string",
+                    },
+                  },
+                  "required": Array [
+                    "title",
+                  ],
+                  "type": "object",
+                },
+                "title": "Tasks",
+                "type": "array",
+              },
+              "title": Object {
+                "description": "A sample title",
+                "title": "Title",
+                "type": "string",
+              },
+            },
+            "required": Array [
+              "title",
+            ],
+            "type": "object",
+          },
+          "title": "Tasks",
+          "type": "array",
+        },
+        "title": Object {
+          "title": "Task list title",
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "title",
+      ],
+      "title": "A list of tasks",
+      "type": "object",
+    }
+  }
+  uiSchema={
+    Object {
+      "tasks": Object {
+        "items": Object {
+          "details": Object {
+            "ui:widget": "textarea",
+          },
+        },
+      },
+    }
+  }
+>
+  <div
+    className="final-form-title"
+  >
+    <Title
+      className=""
+      size="3xl"
+    >
+      <h1
+        className="pf-c-title pf-m-3xl"
+      >
+        A list of tasks
+      </h1>
+    </Title>
+  </div>
+  <ReactFinalForm
+    initialValues={
+      Object {
+        "tasks": Array [
+          Object {
+            "details": "task description",
+            "title": "task title",
+          },
+        ],
+        "title": "title",
+      }
+    }
+    mutators={
+      Object {
+        "insert": [Function],
+        "move": [Function],
+        "pop": [Function],
+        "push": [Function],
+        "remove": [Function],
+        "shift": [Function],
+        "swap": [Function],
+        "unshift": [Function],
+        "update": [Function],
+      }
+    }
+    onSubmit={[MockFunction]}
+    render={[Function]}
+    subscription={
+      Object {
+        "pristine": true,
+        "submitting": true,
+      }
+    }
+  >
+    <form
+      className=".pf-c-form"
+    >
+      <Grid
+        className=""
+        gutter={null}
+        lg={null}
+        md={null}
+        sm={null}
+        span={null}
+        xl={null}
+      >
+        <div
+          className="pf-l-grid"
+        >
+          <GridItem
+            className=""
+            lg={null}
+            lgOffset={null}
+            lgRowSpan={null}
+            md={null}
+            mdOffset={null}
+            mdRowSpan={null}
+            offset={null}
+            rowSpan={null}
+            sm={null}
+            smOffset={null}
+            smRowSpan={null}
+            span={null}
+            xl={null}
+            xlOffset={null}
+            xlRowSpan={null}
+          >
+            <div
+              className="pf-l-grid__item"
+            >
+              <GridItem
+                className=""
+                key="title"
+                lg={null}
+                lgOffset={null}
+                lgRowSpan={null}
+                md={null}
+                mdOffset={null}
+                mdRowSpan={null}
+                offset={null}
+                rowSpan={null}
+                sm={12}
+                smOffset={null}
+                smRowSpan={null}
+                span={null}
+                xl={null}
+                xlOffset={null}
+                xlRowSpan={null}
+              >
+                <div
+                  className="pf-l-grid__item pf-m-12-col-on-sm"
+                >
+                  <Field
+                    autoFocus={false}
+                    component={[Function]}
+                    format={[Function]}
+                    isRequired={false}
+                    key="title"
+                    label="Task list title"
+                    name="title"
+                    parse={[Function]}
+                    type="text"
+                    validate={[Function]}
+                  >
+                    <TextField
+                      autoFocus={false}
+                      input={
+                        Object {
+                          "name": "title",
+                          "onBlur": [Function],
+                          "onChange": [Function],
+                          "onFocus": [Function],
+                          "value": "title",
+                        }
+                      }
+                      isRequired={false}
+                      label="Task list title"
+                      meta={
+                        Object {
+                          "active": false,
+                          "data": Object {},
+                          "dirty": false,
+                          "dirtySinceLastSubmit": false,
+                          "error": undefined,
+                          "initial": "title",
+                          "invalid": false,
+                          "pristine": true,
+                          "submitError": undefined,
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "touched": false,
+                          "valid": true,
+                          "visited": false,
+                        }
+                      }
+                      type="text"
+                    >
+                      <FinalFormField
+                        autoFocus={false}
+                        componentType="textField"
+                        input={
+                          Object {
+                            "name": "title",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "title",
+                          }
+                        }
+                        isRequired={false}
+                        label="Task list title"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": undefined,
+                            "initial": "title",
+                            "invalid": false,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": true,
+                            "visited": false,
+                          }
+                        }
+                        type="text"
+                      >
+                        <div
+                          className="pf-c-form__group"
+                        >
+                          <label
+                            className="pf-c-form__label "
+                          >
+                            Task list title
+                          </label>
+                          <TextInput
+                            aria-label={null}
+                            autoFocus={false}
+                            className=""
+                            id="title"
+                            isAlt={false}
+                            isDisabled={false}
+                            isReadOnly={false}
+                            isRequired={false}
+                            isValid={true}
+                            name="title"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            type="text"
+                            value="title"
+                          >
+                            <input
+                              aria-invalid={false}
+                              aria-label={null}
+                              autoFocus={false}
+                              className="pf-c-form-control"
+                              disabled={false}
+                              id="title"
+                              name="title"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              readOnly={false}
+                              required={false}
+                              type="text"
+                              value="title"
+                            />
+                          </TextInput>
+                        </div>
+                      </FinalFormField>
+                    </TextField>
+                  </Field>
+                </div>
+              </GridItem>
+              <div
+                className="final-form-title"
+              >
+                <Title
+                  className=""
+                  size="3xl"
+                >
+                  <h1
+                    className="pf-c-title pf-m-3xl"
+                  >
+                    Tasks
+                  </h1>
+                </Title>
+              </div>
+              <button
+                id="add-tasks"
+                onClick={[Function]}
+                type="button"
+              >
+                Add 
+                tasks
+              </button>
+              <ReactFinalFormFieldArray(4.8.1)(1.0.6)
+                name="tasks"
+                render={[Function]}
+              >
+                <GridItem
+                  className=""
+                  key="tasks[0].title"
+                  lg={null}
+                  lgOffset={null}
+                  lgRowSpan={null}
+                  md={null}
+                  mdOffset={null}
+                  mdRowSpan={null}
+                  offset={null}
+                  rowSpan={null}
+                  sm={12}
+                  smOffset={null}
+                  smRowSpan={null}
+                  span={null}
+                  xl={null}
+                  xlOffset={null}
+                  xlRowSpan={null}
+                >
+                  <div
+                    className="pf-l-grid__item pf-m-12-col-on-sm"
+                  >
+                    <Field
+                      autoFocus={false}
+                      component={[Function]}
+                      format={[Function]}
+                      isRequired={false}
+                      key="tasks[0].title"
+                      label="Title"
+                      name="tasks[0].title"
+                      parse={[Function]}
+                      type="text"
+                      validate={[Function]}
+                    >
+                      <TextField
+                        autoFocus={false}
+                        input={
+                          Object {
+                            "name": "tasks[0].title",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "task title",
+                          }
+                        }
+                        isRequired={false}
+                        label="Title"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": undefined,
+                            "initial": "task title",
+                            "invalid": false,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": true,
+                            "visited": false,
+                          }
+                        }
+                        type="text"
+                      >
+                        <FinalFormField
+                          autoFocus={false}
+                          componentType="textField"
+                          input={
+                            Object {
+                              "name": "tasks[0].title",
+                              "onBlur": [Function],
+                              "onChange": [Function],
+                              "onFocus": [Function],
+                              "value": "task title",
+                            }
+                          }
+                          isRequired={false}
+                          label="Title"
+                          meta={
+                            Object {
+                              "active": false,
+                              "data": Object {},
+                              "dirty": false,
+                              "dirtySinceLastSubmit": false,
+                              "error": undefined,
+                              "initial": "task title",
+                              "invalid": false,
+                              "pristine": true,
+                              "submitError": undefined,
+                              "submitFailed": false,
+                              "submitSucceeded": false,
+                              "touched": false,
+                              "valid": true,
+                              "visited": false,
+                            }
+                          }
+                          type="text"
+                        >
+                          <div
+                            className="pf-c-form__group"
+                          >
+                            <label
+                              className="pf-c-form__label "
+                            >
+                              Title
+                            </label>
+                            <TextInput
+                              aria-label={null}
+                              autoFocus={false}
+                              className=""
+                              id="tasks[0].title"
+                              isAlt={false}
+                              isDisabled={false}
+                              isReadOnly={false}
+                              isRequired={false}
+                              isValid={true}
+                              name="tasks[0].title"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              type="text"
+                              value="task title"
+                            >
+                              <input
+                                aria-invalid={false}
+                                aria-label={null}
+                                autoFocus={false}
+                                className="pf-c-form-control"
+                                disabled={false}
+                                id="tasks[0].title"
+                                name="tasks[0].title"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                readOnly={false}
+                                required={false}
+                                type="text"
+                                value="task title"
+                              />
+                            </TextInput>
+                          </div>
+                        </FinalFormField>
+                      </TextField>
+                    </Field>
+                  </div>
+                </GridItem>
+                <GridItem
+                  className=""
+                  key="tasks[0].details"
+                  lg={null}
+                  lgOffset={null}
+                  lgRowSpan={null}
+                  md={null}
+                  mdOffset={null}
+                  mdRowSpan={null}
+                  offset={null}
+                  rowSpan={null}
+                  sm={12}
+                  smOffset={null}
+                  smRowSpan={null}
+                  span={null}
+                  xl={null}
+                  xlOffset={null}
+                  xlRowSpan={null}
+                >
+                  <div
+                    className="pf-l-grid__item pf-m-12-col-on-sm"
+                  >
+                    <Field
+                      autoFocus={false}
+                      component={[Function]}
+                      format={[Function]}
+                      key="tasks[0].details"
+                      label="Task details"
+                      name="tasks[0].details"
+                      parse={[Function]}
+                      validate={[Function]}
+                    >
+                      <TextareaField
+                        autoFocus={false}
+                        input={
+                          Object {
+                            "name": "tasks[0].details",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "task description",
+                          }
+                        }
+                        label="Task details"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": undefined,
+                            "initial": "task description",
+                            "invalid": false,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": true,
+                            "visited": false,
+                          }
+                        }
+                      >
+                        <FinalFormField
+                          autoFocus={false}
+                          componentType="textarea"
+                          input={
+                            Object {
+                              "name": "tasks[0].details",
+                              "onBlur": [Function],
+                              "onChange": [Function],
+                              "onFocus": [Function],
+                              "value": "task description",
+                            }
+                          }
+                          isRequired={false}
+                          label="Task details"
+                          meta={
+                            Object {
+                              "active": false,
+                              "data": Object {},
+                              "dirty": false,
+                              "dirtySinceLastSubmit": false,
+                              "error": undefined,
+                              "initial": "task description",
+                              "invalid": false,
+                              "pristine": true,
+                              "submitError": undefined,
+                              "submitFailed": false,
+                              "submitSucceeded": false,
+                              "touched": false,
+                              "valid": true,
+                              "visited": false,
+                            }
+                          }
+                        >
+                          <div
+                            className="pf-c-form__group"
+                          >
+                            <label
+                              className="pf-c-form__label "
+                            >
+                              Task details
+                            </label>
+                            <TextArea
+                              aria-label={null}
+                              autoFocus={false}
+                              className=""
+                              id="tasks[0].details"
+                              isRequired={false}
+                              isValid={true}
+                              name="tasks[0].details"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              value="task description"
+                            >
+                              <textarea
+                                aria-invalid={false}
+                                aria-label={null}
+                                autoFocus={false}
+                                className="pf-c-form-control"
+                                id="tasks[0].details"
+                                name="tasks[0].details"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                required={false}
+                                value="task description"
+                              />
+                            </TextArea>
+                          </div>
+                        </FinalFormField>
+                      </TextareaField>
+                    </Field>
+                  </div>
+                </GridItem>
+                <GridItem
+                  className=""
+                  key="tasks[0].done"
+                  lg={null}
+                  lgOffset={null}
+                  lgRowSpan={null}
+                  md={null}
+                  mdOffset={null}
+                  mdRowSpan={null}
+                  offset={null}
+                  rowSpan={null}
+                  sm={12}
+                  smOffset={null}
+                  smRowSpan={null}
+                  span={null}
+                  xl={null}
+                  xlOffset={null}
+                  xlRowSpan={null}
+                >
+                  <div
+                    className="pf-l-grid__item pf-m-12-col-on-sm"
+                  >
+                    <Field
+                      autoFocus={false}
+                      component={[Function]}
+                      format={[Function]}
+                      key="tasks[0].done"
+                      label="Done?"
+                      name="tasks[0].done"
+                      parse={[Function]}
+                      validate={[Function]}
+                    >
+                      <SwitchField
+                        autoFocus={false}
+                        input={
+                          Object {
+                            "name": "tasks[0].done",
+                            "onBlur": [Function],
+                            "onChange": [Function],
+                            "onFocus": [Function],
+                            "value": "",
+                          }
+                        }
+                        label="Done?"
+                        meta={
+                          Object {
+                            "active": false,
+                            "data": Object {},
+                            "dirty": false,
+                            "dirtySinceLastSubmit": false,
+                            "error": undefined,
+                            "initial": undefined,
+                            "invalid": false,
+                            "pristine": true,
+                            "submitError": undefined,
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "touched": false,
+                            "valid": true,
+                            "visited": false,
+                          }
+                        }
+                      >
+                        <FinalFormField
+                          autoFocus={false}
+                          componentType="switch"
+                          input={
+                            Object {
+                              "name": "tasks[0].done",
+                              "onBlur": [Function],
+                              "onChange": [Function],
+                              "onFocus": [Function],
+                              "value": "",
+                            }
+                          }
+                          isRequired={false}
+                          label="Done?"
+                          meta={
+                            Object {
+                              "active": false,
+                              "data": Object {},
+                              "dirty": false,
+                              "dirtySinceLastSubmit": false,
+                              "error": undefined,
+                              "initial": undefined,
+                              "invalid": false,
+                              "pristine": true,
+                              "submitError": undefined,
+                              "submitFailed": false,
+                              "submitSucceeded": false,
+                              "touched": false,
+                              "valid": true,
+                              "visited": false,
+                            }
+                          }
+                        >
+                          <div
+                            className="pf-c-form__group"
+                          >
+                            <label
+                              className="pf-c-form__label "
+                            >
+                              Done?
+                            </label>
+                            <Checkbox
+                              autoFocus={false}
+                              className=""
+                              id="tasks[0].done"
+                              isDisabled={false}
+                              isValid={true}
+                              name="tasks[0].done"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onFocus={[Function]}
+                              value={false}
+                            >
+                              <input
+                                aria-invalid={false}
+                                autoFocus={false}
+                                className="pf-c-check"
+                                disabled={false}
+                                id="tasks[0].done"
+                                name="tasks[0].done"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="checkbox"
+                                value={false}
+                              />
+                            </Checkbox>
+                          </div>
+                        </FinalFormField>
+                      </SwitchField>
+                    </Field>
+                  </div>
+                </GridItem>
+                <div
+                  className="final-form-title"
+                >
+                  <Title
+                    className=""
+                    size="3xl"
+                  >
+                    <h1
+                      className="pf-c-title pf-m-3xl"
+                    >
+                      Tasks
+                    </h1>
+                  </Title>
+                </div>
+                <button
+                  id="add-tasks[0].other-tasks"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Add 
+                  tasks[0].other-tasks
+                </button>
+                <ReactFinalFormFieldArray(4.8.1)(1.0.6)
+                  name="tasks[0].other-tasks"
+                  render={[Function]}
+                />
+                <button
+                  id="remove-tasks[0]-0"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Remove 
+                  tasks
+                </button>
+              </ReactFinalFormFieldArray(4.8.1)(1.0.6)>
+            </div>
+          </GridItem>
+          <GridItem
+            className=""
+            lg={null}
+            lgOffset={null}
+            lgRowSpan={null}
+            md={null}
+            mdOffset={null}
+            mdRowSpan={null}
+            offset={null}
+            rowSpan={null}
+            sm={null}
+            smOffset={null}
+            smRowSpan={null}
+            span={null}
+            xl={null}
+            xlOffset={null}
+            xlRowSpan={null}
+          >
+            <div
+              className="pf-l-grid__item"
+            >
+              <Button
+                aria-label={null}
+                className=""
+                component="button"
+                id="form-renderer-submit"
+                isActive={false}
+                isBlock={false}
+                isDisabled={false}
+                isFocus={false}
+                isHover={false}
+                onClick={[Function]}
+                type="button"
+                variant="primary"
+              >
+                <button
+                  aria-disabled={null}
+                  aria-label={null}
+                  className="pf-c-button pf-m-primary"
+                  disabled={false}
+                  id="form-renderer-submit"
+                  onClick={[Function]}
+                  tabIndex={null}
+                  type="button"
+                >
+                  Submit
+                </button>
+              </Button>
+            </div>
+          </GridItem>
+        </div>
+      </Grid>
+    </form>
+  </ReactFinalForm>
+</FormRenderer>
+`;
+
 exports[`Form renderer should render simple form with input and switch 1`] = `
 <FormRenderer
+  initialValues={Object {}}
   onSubmit={[MockFunction]}
   schema={
     Object {
@@ -94,6 +965,19 @@ exports[`Form renderer should render simple form with input and switch 1`] = `
   </div>
   <ReactFinalForm
     initialValues={Object {}}
+    mutators={
+      Object {
+        "insert": [Function],
+        "move": [Function],
+        "pop": [Function],
+        "push": [Function],
+        "remove": [Function],
+        "shift": [Function],
+        "swap": [Function],
+        "unshift": [Function],
+        "update": [Function],
+      }
+    }
     onSubmit={[MockFunction]}
     render={[Function]}
     subscription={
@@ -166,6 +1050,7 @@ exports[`Form renderer should render simple form with input and switch 1`] = `
                     component={[Function]}
                     format={[Function]}
                     isRequired={false}
+                    key="firstName"
                     label="First name"
                     name="firstName"
                     parse={[Function]}
@@ -314,6 +1199,7 @@ exports[`Form renderer should render simple form with input and switch 1`] = `
                     component={[Function]}
                     format={[Function]}
                     isRequired={false}
+                    key="lastName"
                     label="Last name"
                     name="lastName"
                     parse={[Function]}
@@ -461,6 +1347,7 @@ exports[`Form renderer should render simple form with input and switch 1`] = `
                     autoFocus={false}
                     component={[Function]}
                     format={[Function]}
+                    key="age"
                     label="Age"
                     name="age"
                     parse={[Function]}
@@ -608,6 +1495,7 @@ exports[`Form renderer should render simple form with input and switch 1`] = `
                     autoFocus={false}
                     component={[Function]}
                     format={[Function]}
+                    key="bio"
                     label="Bio"
                     name="bio"
                     parse={[Function]}
@@ -744,6 +1632,7 @@ exports[`Form renderer should render simple form with input and switch 1`] = `
                     autoFocus={false}
                     component={[Function]}
                     format={[Function]}
+                    key="password"
                     label="Password"
                     name="password"
                     parse={[Function]}
@@ -891,6 +1780,7 @@ exports[`Form renderer should render simple form with input and switch 1`] = `
                     autoFocus={false}
                     component={[Function]}
                     format={[Function]}
+                    key="telephone"
                     label="Telephone"
                     name="telephone"
                     parse={[Function]}
