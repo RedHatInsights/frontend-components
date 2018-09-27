@@ -5,6 +5,7 @@ import { select } from 'd3';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import isEqual from 'lodash/isEqual';
+import { generateID } from '../../functions/generateID.js';
 
 import './styles.scss';
 
@@ -145,16 +146,6 @@ class Donut extends Component {
 
 export default Donut;
 
-/**
- * generate random ID if one is not supplied
- */
-function generateId () {
-
-    let text = 'ins-donut-' + new Date().getTime() + Math.random().toString(36).slice(2);
-
-    return text;
-}
-
 Donut.propTypes = {
     className: propTypes.string,
     height: propTypes.number,
@@ -170,7 +161,7 @@ Donut.propTypes = {
 Donut.defaultProps = {
     withLegend: false,
     height: 200,
-    identifier: generateId(),
+    identifier: generateID('Donut'),
     width: 200,
     legendPosition: 'bottom'
 };

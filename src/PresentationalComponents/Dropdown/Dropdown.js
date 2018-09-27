@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { generateID } from '../../functions/generateID.js';
 
 import {
     Dropdown as PfDropdown,
@@ -29,6 +30,8 @@ const Dropdown = ({
 
     return (
         <PfDropdown
+            widget-type='InsightsDropdown'
+            widget-id={ generateID('Dropdown') }
             { ...props }
             className={ className }
             isPlain={ !hasArrow }

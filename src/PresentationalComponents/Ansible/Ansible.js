@@ -60,7 +60,7 @@ const Ansible = ({ unsupported, className, ...props }) => {
     ;
 
     return (
-        <i className={ ansibleLogoClass } { ...ariaLabels } { ...props }>
+        <i className={ ansibleLogoClass } { ...ariaLabels } { ...props } widget-type='InsightsAnsibleSupport'>
             <svg version="1.1" id="Layer_1" x="0px" y="0px"
                 viewBox="0 0 2032 2027.2" style={ { enableBackground: 'new 0 0 2032 2027.2' } }>
                 <path className="st0" d="M2030.8,1014.8c0,559.2-453.3,1012.4-1012.4,1012.4C459.2,2027.2,5.9,1574,5.9,1014.8

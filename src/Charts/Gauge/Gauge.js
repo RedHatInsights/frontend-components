@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { generate } from 'c3';
 import classNames from 'classnames';
+import { generateID } from '../../functions/generateID.js';
 
 import './styles.scss';
 
@@ -94,14 +95,6 @@ class Gauge extends Component {
 
 export default Gauge;
 
-/**
- * generate random ID if one is not supplied
- */
-function generateId () {
-    let text = 'ins-gauge-' + new Date().getTime() + Math.random().toString(36).slice(2);
-    return text;
-}
-
 Gauge.propTypes = {
     className: propTypes.string,
     height: propTypes.number,
@@ -114,7 +107,7 @@ Gauge.propTypes = {
 
 Gauge.defaultProps = {
     height: 200,
-    identifier: generateId(),
+    identifier: generateID('Gauge'),
     width: 200,
     flipFullColors: false
 };

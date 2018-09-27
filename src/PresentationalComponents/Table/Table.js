@@ -5,6 +5,8 @@ import TBody from './TableBody';
 import TFooter from './TableFooter';
 import classnames from 'classnames';
 
+import { generateID } from '../../functions/generateID.js';
+
 export const TableVariant = {
     large: 'large'
 };
@@ -46,6 +48,8 @@ const Table = ({
                     className
                 )
             }
+            widget-type='InsightsTable'
+            wiget-id={ generateID('Table') }
         >
             <caption className="pf-c-table__caption">
             </caption>

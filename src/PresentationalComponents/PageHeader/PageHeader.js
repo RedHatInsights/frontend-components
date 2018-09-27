@@ -19,7 +19,7 @@ const PageHeader = ({ className, children, ...props }) => {
         <ThemeContext.Consumer>
             { theme => {
                 return (
-                    <section className={ `${ pageHeaderClasses } pf-m-${ theme }` }>
+                    <section className={ `${ pageHeaderClasses } pf-m-${ theme }` } widget-type='InsightsPageHeader'>
                         <div className='pf-c-content'>
                             { children }
                         </div>

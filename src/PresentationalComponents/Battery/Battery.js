@@ -76,14 +76,14 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
 
     if (!labelHidden) {
         return (
-            <span className= { batteryWrapperClasses }  { ...props }>
+            <span className= { batteryWrapperClasses } { ...props } widget-type='InsightsBattery' widget-id={ label }>
                 { generateBattery(severity, batteryClasses) }
                 <span className='label'> { label } </span>
             </span>
         );
     } else {
         return (
-            <span className= { batteryWrapperClasses }  { ...props }>
+            <span className= { batteryWrapperClasses } { ...props } widget-type='InsightsBattery' widget-id={ label }>
                 { generateBattery(severity, batteryClasses, ariaLabels) }
             </span>
         );

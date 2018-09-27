@@ -14,7 +14,7 @@ const PageHeaderTitle = ({ className, title }) => {
     );
 
     return (
-        <Title size='2xl' className={ pageHeaderTitleClasses }> { title } </Title>
+        <Title size='2xl' className={ pageHeaderTitleClasses } widget-type='InsightsPageHeaderTitle'> { title } </Title>
     );
 };
 

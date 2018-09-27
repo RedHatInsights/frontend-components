@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import isEqual from 'lodash/isEqual';
 
+import { generateID } from '../../functions/generateID.js';
+
 import './styles.scss';
 import { LegendPosition } from '../Donut/Donut.js';
 
@@ -130,16 +132,6 @@ class Pie extends Component {
 
 export default Pie;
 
-/**
- * generate random ID if one is not supplied
- */
-function generateId () {
-
-    let text = 'ins-pie-' + new Date().getTime() + Math.random().toString(36).slice(2);
-
-    return text;
-}
-
 Pie.propTypes = {
     className: propTypes.string,
     height: propTypes.number,
@@ -154,7 +146,7 @@ Pie.propTypes = {
 Pie.defaultProps = {
     withLegend: false,
     height: 200,
-    identifier: generateId(),
+    identifier: generateID('Pie'),
     width: 200,
     legendPosition: 'bottom'
 };

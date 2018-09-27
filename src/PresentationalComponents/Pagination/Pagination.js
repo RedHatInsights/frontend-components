@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { PaginationRow } from 'patternfly-react';
 import PropTypes from 'prop-types';
 
+import { generateID } from '../../functions/generateID.js';
+
 export const dropDirection = {
     up: 'up',
     down: 'down'
@@ -54,7 +56,7 @@ class Pagination extends Component {
         const lastIndex = page === lastPage ? this.props.numberOfItems : page * perPage;
         const firstIndex = page === 1 ? 1 : page * perPage - perPage;
         return (
-            <div className="special-patternfly">
+            <div className="special-patternfly" widget-type='InsightsPagination'>
                 <PaginationRow
                     { ...this.props }
                     pageInputValue={ this.props.page || 1 }

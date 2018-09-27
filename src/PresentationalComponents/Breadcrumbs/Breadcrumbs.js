@@ -11,9 +11,9 @@ function upperCaseFirst(item)
 const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => (
     <React.Fragment>
         {
-            items.length > 0 && <ol { ...props } className={ classnames(className, 'ins-breadcrumbs') }>
+            items.length > 0 && <ol { ...props } className={ classnames(className, 'ins-breadcrumbs') } widget-type='InsightsBreadcrumbs'>
                 { items.map((oneLink, key) => (
-                    <li key={ oneLink.navigate }>
+                    <li key={ oneLink.navigate } data-key={ key }>
                         <a key={ oneLink.navigate }
                             onClick={ event => onNavigate(event, oneLink.navigate, items.length - key) }>
                             { upperCaseFirst(oneLink.title) }

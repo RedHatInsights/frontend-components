@@ -9,6 +9,8 @@ import Tooltip from './Tooltip';
 import Labels from './Labels';
 import NodeElement from './NodeElement';
 
+import { generateID } from '../../functions/generateID.js';
+
 import { calculateFragements, callOnSegmentData } from './utils';
 
 class Matrix extends Component {
@@ -123,14 +125,6 @@ class Matrix extends Component {
   }
 }
 
-/**
- * generate random ID if one is not supplied
- */
-function generateId () {
-  let text = 'ins-gauge-' + new Date().getTime() + Math.random().toString(36).slice(2);
-  return text;
-}
-
 Matrix.propTypes = {
   data: DataProps.isRequired,
   config: ConfigProp,
@@ -141,7 +135,7 @@ Matrix.propTypes = {
 Matrix.defaultProps = {
   config: ConfigDefaults,
   labels: LabelsDefaults,
-  identifier: generateId(),
+  identifier: generateID('Matrix'),
 };
 
 export default Matrix;
