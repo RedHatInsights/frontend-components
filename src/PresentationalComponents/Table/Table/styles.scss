@@ -21,7 +21,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
   --pf-c-table-tr--MarginTop:                                 var(--pf-global--spacer--sm);
   --pf-c-table-tr--BorderWidth:                               var(--pf-global--BorderWidth--md);
   --pf-c-table-tr--GridColumnGap:                             var(--pf-global--spacer--md);
-  --pf-c-table-tr--BorderColor:                               $pf-color-black-200;
+  --pf-c-table-tr--BorderColor:                               #{$pf-color-black-200};
 
   // Th
   --pf-c-table-th--FontSize:                                  var(--pf-global--FontSize--sm);

@@ -1,4 +1,5 @@
-@import './Table/sass-utilities/all';
+@import '~@patternfly/patternfly-next/sass-utilities/colors';
+@import '~@patternfly/patternfly-next/sass-utilities/scss-variables';
 @import './Table/styles.scss';
 
 .pf-c-table {
