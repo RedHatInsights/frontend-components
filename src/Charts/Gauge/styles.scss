@@ -7,7 +7,7 @@
 // ==================================================================
 .ins-c-gauge {
     --ins-c-gauge-critical--Fill:       var(--pf-global--danger-color--100);
-    --ins-c-gauge-high--Fill:           $ins-color--orange;
+    --ins-c-gauge-high--Fill:           var(--ins-color--orange);
     --ins-c-gauge-medium--Fill:         var(--pf-global--warning-color--100);
     --ins-c-gauge-low--Fill:            var(--pf-global--success-color--100);
 

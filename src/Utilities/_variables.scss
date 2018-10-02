@@ -1,5 +1,9 @@
 @import '~@patternfly/patternfly-next/sass-utilities/all';
 
+:root {
+    --ins-color--orange: #ec7a08;
+}
+
 // Spacing
 $ins-padding: var(--pf-global--spacer--lg);
 $ins-margin: var(--pf-global--spacer--xl);
@@ -26,7 +30,7 @@ $ins-break--xl: $pf-global--breakpoint--xl;
 $ins-color--red: var(--pf-global--danger-color--100);
 $ins-color--critical: $ins-color--red;
 
-$ins-color--orange: #ec7a08;
+$ins-color--orange: var(--ins-color--orange);
 $ins-color--high: $ins-color--orange;
 
 $ins-color--yellow: var(--pf-global--warning-color--100);
