@@ -15,7 +15,8 @@ const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => (
                 { items.map((oneLink, key) => (
                     <li key={ oneLink.navigate } data-key={ key }>
                         <a key={ oneLink.navigate }
-                            onClick={ event => onNavigate(event, oneLink.navigate, items.length - key) }>
+                            onClick={ event => onNavigate(event, oneLink.navigate, items.length - key) }
+                            aria-label={ oneLink.navigate }>
                             { upperCaseFirst(oneLink.title) }
                         </a>
                         <AngleRightIcon />
