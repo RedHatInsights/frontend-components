@@ -5,7 +5,7 @@ export {
     reduxRegistry,
 } from './Utilities/ReducerRegistry';
 export { default as MiddlewareListener } from './Utilities/MiddlewareListener';
-export { default as registry, getStoreFromRegistry } from './Utilities/Registry';
+export { default as registry, getRegistry } from './Utilities/Registry';
 export * from './PresentationalComponents/Section';
 export * from './PresentationalComponents/SampleComponent';
 export * from './PresentationalComponents/Ansible';

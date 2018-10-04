@@ -37,19 +37,19 @@ To enable registering reducers on the fly you may use reducer registry. There ar
 To use registry out of the box without some kind of coding we provide simple decorator
 (you'd have to install coresponding babel [plugin](http://babeljs.io/docs/en/babel-plugin-transform-decorators) and enable decorators).
 
- * First you have to initialize such registry by calling `getStoreFromRegistry` with initial state and some middlewares
+ * First you have to initialize such registry by calling `getRegistry` with initial state and some middlewares
 (both attributes are optional).
 ```JSX
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { getRegistry } from '@red-hat-insights/insights-frontend-components/Utilities/Registry';
+import { getRegistry } from '@red-hat-insights/insights-frontend-components';
 import promiseMiddleware from 'redux-promise-middleware';
 import App from './App';
 
 ReactDOM.render(
-    <Provider store={getStoreFromRegistry({}, [promiseMiddleware()]).getStore()}>
+    <Provider store={getRegistry({}, [promiseMiddleware()]).getStore()}>
         <Router basename='/insights/platform/inventory'>
             <App />
         </Router>
