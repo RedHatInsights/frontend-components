@@ -28,7 +28,7 @@ PresentationalComponents
 └───YourComponent
     ├─── index.js
     ├─── YourComponent.js
-    └─── styles.scss
+    └─── your-component.scss
 ```
 
 Build: `npm run build`

@@ -8,7 +8,7 @@ import isEqual from 'lodash/isEqual';
 
 import { generateID } from '../../functions/generateID.js';
 
-import './styles.scss';
+import './pie.scss';
 import { LegendPosition } from '../Donut/Donut.js';
 
 /**

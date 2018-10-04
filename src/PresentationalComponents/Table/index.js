@@ -1,4 +1,4 @@
-import './styles.scss';
+import './table.scss';
 
 export { default as Table, SortDirection, TableVariant } from './Table';
 export { default as TableHeader } from './TableHeader';

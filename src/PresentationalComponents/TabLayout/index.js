@@ -1,2 +1,2 @@
-export {default as TabLayout} from './TabLayout'
-import './styles.scss';
+export { default as TabLayout } from './TabLayout'
+import './tab-layout.scss';

@@ -4,7 +4,7 @@ import { generate } from 'c3';
 import classNames from 'classnames';
 import { generateID } from '../../functions/generateID.js';
 
-import './styles.scss';
+import './gauge.scss';
 
 /**
  * Gauge used for displaying statuses

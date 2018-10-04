@@ -8,7 +8,7 @@ import HighBattery from './HighBattery';
 import MediumBattery from './MediumBattery';
 import LowBattery from './LowBattery';
 
-import './styles.scss';
+import './battery.scss';
 
 /**
  * This is the battery component that generates a 'battery'

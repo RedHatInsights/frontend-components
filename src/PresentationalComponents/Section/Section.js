@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './styles.scss';
+import './section.scss';
 
 /**
  * This is a dumb component that only recieves properties from a smart component.

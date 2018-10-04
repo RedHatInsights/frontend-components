@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.scss';
+import './sample-component.scss';
 import PropTypes from 'prop-types';
 
 import { generateID } from '../../functions/generateID.js';

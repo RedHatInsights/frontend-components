@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import isEqual from 'lodash/isEqual';
 import { generateID } from '../../functions/generateID.js';
 
-import './styles.scss';
+import './donut.scss';
 
 export const LegendPosition = {
     right: 'right',

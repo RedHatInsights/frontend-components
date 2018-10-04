@@ -1,2 +1,2 @@
 export { default as Main } from './Main';
-import './styles.scss';
+import './main.scss';

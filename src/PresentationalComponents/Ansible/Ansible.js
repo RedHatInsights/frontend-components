@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-import './styles.scss';
+import './ansible.scss';
 
 /**
  * This is a dumb component that only recieves properties from a smart component.
