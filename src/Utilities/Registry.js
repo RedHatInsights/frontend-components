@@ -1,9 +1,9 @@
 import ReducerRegistry from './ReducerRegistry';
 export let registry;
 
-function init(initialState = {}, middleware = []) {
+function init(initialState = {}, middleware = [], composeEnhancersDefault) {
     if (!registry) {
-        registry = new ReducerRegistry(initialState, [ ...middleware ]);
+        registry = new ReducerRegistry(initialState, [ ...middleware ], composeEnhancersDefault);
     }
 
     return registry;
@@ -15,6 +15,6 @@ export default function() {
     }
 }
 
-export function getRegistry(initialState = {}, middleware = []) {
-    return init(initialState, middleware);
+export function getRegistry(initialState = {}, middleware = [], composeEnhancersDefault) {
+    return init(initialState, middleware, composeEnhancersDefault);
 }
