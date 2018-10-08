@@ -63,6 +63,9 @@ class Gauge extends Component {
                 threshold: {
                     values: [ 25, 50, 75, 100 ]
                 }
+            },
+            tooltip: {
+                show: false
             }
         };
 
