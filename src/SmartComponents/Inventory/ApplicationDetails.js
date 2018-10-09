@@ -5,7 +5,7 @@ import { TabLayout } from '../../PresentationalComponents/TabLayout';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import AppInfo from './AppInfo';
 import { detailSelect } from '../../redux/actions/inventory';
-import { routerParams } from '../../';
+import routerParams from '../../Utilities/RouterParams';
 
 class ApplicationDetails extends Component {
     constructor(props) {

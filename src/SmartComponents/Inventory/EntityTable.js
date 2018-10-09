@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { routerParams } from '../../';
+import routerParams from '../../Utilities/RouterParams';
 import { selectEntity, setSort } from '../../redux/actions/inventory';
 import { connect } from 'react-redux';
 import { Table } from '../../PresentationalComponents/Table';
