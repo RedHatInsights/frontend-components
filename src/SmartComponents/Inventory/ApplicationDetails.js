@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { TabLayout } from '../../PresentationalComponents/TabLayout';
-import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import AppInfo from './AppInfo';
+import { detailSelect } from '../../redux/actions/inventory';
+import { routerParams } from '../../';
 
 class ApplicationDetails extends Component {
     constructor(props) {
@@ -12,22 +14,23 @@ class ApplicationDetails extends Component {
     }
 
     onTabClick(_event, item) {
-        const { history, match: { url }} = this.props;
+        const { history, match: { url }, onDetailSelect } = this.props;
         history.push(`${url}/${item.name}`);
+        onDetailSelect && onDetailSelect(item.name);
     }
 
     render() {
-        const { match, activeApp, items } = this.props;
+        const { match: { path }, activeApp, items } = this.props;
         return (
             <React.Fragment>
                 {
                     items &&
-          <TabLayout items={ items } onTabClick={ this.onTabClick } active={ activeApp && activeApp.appName }>
-              <Switch>
-                  <Route exact path={ `${match.path}/:detail` } component={ AppInfo } />
-                  <Redirect to={ `${match.path}/overview` } />
-              </Switch>
-          </TabLayout>
+                    <TabLayout items={ items } onTabClick={ this.onTabClick } active={ activeApp && activeApp.appName }>
+                        <Switch>
+                            <Route exact path={ `${path}/:detail` } component={ AppInfo } />
+                            <Redirect to={ `${path}/overview` }/>
+                        </Switch>
+                    </TabLayout>
                 }
             </React.Fragment>
         );
@@ -43,7 +46,14 @@ ApplicationDetails.propTypes = {
     })),
     activeApp: PropTypes.shape({
         name: PropTypes.string
-    })
+    }),
+    onDetailSelect: PropTypes.func
+};
+
+ApplicationDetails.defaultProps = {
+    activeApp: {
+        appName: 'overview'
+    }
 };
 
 function stateToProps({ entityDetails: { activeApps, activeApp }}) {
@@ -53,4 +63,12 @@ function stateToProps({ entityDetails: { activeApps, activeApp }}) {
     };
 }
 
-export default withRouter(connect(stateToProps)(ApplicationDetails));
+function propsToDispatch(dispatch) {
+    return {
+        onDetailSelect: (application) => {
+            dispatch(detailSelect(application));
+        }
+    };
+}
+
+export default routerParams(connect(stateToProps, propsToDispatch)(ApplicationDetails));

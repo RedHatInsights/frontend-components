@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, withRouter, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { routerParams } from '../../';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail';
 
@@ -12,8 +13,8 @@ const Inventory = ({ match, noTable = false }) => {
     );
 };
 
-export default withRouter((Inventory));
+export default routerParams((Inventory));
 
 export function inventoryConnector() {
-    return withRouter(Inventory);
+    return routerParams(Inventory);
 }

@@ -5,13 +5,20 @@ function init(initialState = {}, middleware = [], composeEnhancersDefault) {
     if (!registry) {
         registry = new ReducerRegistry(initialState, [ ...middleware ], composeEnhancersDefault);
     }
-
+    registry.register({
+        routerData: (state, { type, payload }) => {
+            return ({
+                ...state,
+                ...type === '@@INSIGHTS-CORE/NAVIGATION' ? payload : {}
+            })
+        }
+    })
     return registry;
 }
 
 export default function() {
     return function(target) {
-      target.prototype.getRegistry = () => registry;
+      target.prototype.getRegistry = () => registry
     }
 }
 

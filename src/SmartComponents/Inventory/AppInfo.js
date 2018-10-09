@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { detailSelect } from '../../redux/actions/inventory';
+import { routerParams } from '../../';
 
 class AppInfo extends Component {
-    componentDidMount() {
-        const { match: { params }, onDetailSelect } = this.props;
-        onDetailSelect(params.detail);
-    }
     render () {
-        const { match, activeApps } = this.props;
-        const activeApp = activeApps.find(item => item.name === match.params.detail);
+        const { match: { params: { detail }}, activeApps } = this.props;
+        const activeApp = activeApps.find(item => item.name === detail);
         return (
             <div>
                 { activeApp.component ? <activeApp.component /> : 'missing component' }
@@ -21,18 +16,15 @@ class AppInfo extends Component {
 }
 
 AppInfo.propTypes = {
-    match: PropTypes.any,
-    activeApps: PropTypes.shape({
-        name: PropTypes.string
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            detail: PropTypes.string
+        })
     }),
-    onDetailSelect: PropTypes.func
+    activeApps: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string
+    }))
 };
 AppInfo.defaultProps = {};
 
-function propsToDispatch(dispatch) {
-    return {
-        onDetailSelect: (application) => dispatch(detailSelect(application))
-    };
-}
-
-export default withRouter(connect(({ entityDetails: { activeApps }}) => ({ activeApps }), propsToDispatch)(AppInfo));
+export default routerParams(connect(({ entityDetails: { activeApps }}) => ({ activeApps }))(AppInfo));

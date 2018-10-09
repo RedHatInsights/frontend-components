@@ -9,7 +9,7 @@
       color: var(--pf-global--link--Color);
 
       &.active {
-        border-bottom: 3px var(--pf-global--BorderColor--active) solid;
+        border-bottom: 3px var(--pf-global--link--Color) solid;
       }
 
       &:hover {

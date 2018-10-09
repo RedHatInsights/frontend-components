@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { routerParams } from '../../';
 import { selectEntity, setSort } from '../../redux/actions/inventory';
 import { connect } from 'react-redux';
 import { Table } from '../../PresentationalComponents/Table';
@@ -154,4 +154,4 @@ function mapStateToProps({ entities: { columns, entities, rows, loaded }}) {
     };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EntityTable));
+export default routerParams(connect(mapStateToProps, mapDispatchToProps)(EntityTable));

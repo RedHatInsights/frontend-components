@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@patternfly/react-core';
 import { loadEntity } from '../../redux/actions/inventory';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { routerParams } from '../../';
 import Entitydetail from './EntityDetail';
 import PropTypes from 'prop-types';
 import './InventoryDetail.scss';
@@ -32,7 +33,7 @@ InventoryDetail.propTypes = {
     root: PropTypes.string,
     match: PropTypes.any,
     entity: PropTypes.shape({
-        id: PropTypes.string
+        id: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
     }),
     loaded: PropTypes.bool,
     loadEntity: PropTypes.func
@@ -44,4 +45,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default withRouter(connect(({ entityDetails: { entity, loaded }}) => ({ entity, loaded }), mapDispatchToProps)(InventoryDetail));
+export default routerParams(connect(({ entityDetails: { entity, loaded }}) => ({ entity, loaded }), mapDispatchToProps)(InventoryDetail));
