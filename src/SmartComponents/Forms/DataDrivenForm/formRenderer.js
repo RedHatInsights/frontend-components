@@ -1,27 +1,21 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridItem, Button, Title } from '@patternfly/react-core';
+import { Grid, GridItem, Button } from '@patternfly/react-core';
 import { Form, Field } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import { FieldArray } from 'react-final-form-arrays';
 import componentMapper from './componentMapper';
 import validationMapper from './validationMapper';
-import { composeValidators } from '../Helpers/helpers';
+import { FormTitle, FormField, Select, BooleanGroup } from './formComponents';
+import { composeValidators, optionsMapper, componentArrayMapper } from '../Helpers/helpers';
 
-const setGlobalValidation = validators => validators.reduce((acc, accur) => ({ ...acc, [accur]: validationMapper('required') }), {});
+const setGlobalValidation = (validators = []) => validators.reduce((acc, accur) => ({ ...acc, [accur]: validationMapper('required') }), {});
 
-const renderTitle = (title, description) => (
-    <div className="final-form-title">
-        { title && <Fragment><Title size="3xl">{ title }</Title></Fragment> }
-        { description && <Title size="lg">{ description }</Title> }
-    </div>
-);
-
-const renderSingleField = props => (
-    <GridItem sm={ 12 } key={ props.key }>
-        <Field { ...props } />
-    </GridItem>
-);
+BooleanGroup.propTypes = {
+    type: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string
+};
 
 const prepareArrayProperties = ({
     properties,
@@ -34,14 +28,164 @@ const prepareArrayProperties = ({
     const globalValidators = setGlobalValidation(validators.map(field => `${fieldArrayName}.${field}`));
     Object.keys(properties).forEach(key => newProperties[`${fieldArrayName}.${key}`] = properties[key]);
     Object.keys(uiSchema).forEach(key => newUiSchema[`${fieldArrayName}.${key}`] = uiSchema[key]);
-    return [ newProperties, newUiSchema, globalValidators ];
+    return { properties: newProperties, uiSchema: newUiSchema, globalValidators };
 };
 
-const renderFields = (properties, uiSchema, globalValidators, options) => Object.keys(properties).map((key) => {
+const renderFieldArray = ({ items, key, push }) => {
+    const { component, type } = componentMapper(items.type);
+    const fieldProps = {
+        type,
+        component,
+        label: '',
+        placeholder: items.default
+    };
+    return (
+        <Fragment>
+            <FieldArray
+                name={ key }
+                render={ ({ fields }) => fields.map((name, index) => (
+                    <Fragment key={ `${name}-${index}` } >
+                        <FormField
+                            name={ name }
+                            { ...fieldProps }
+                        />
+                        <button type="button" onClick={ () =>fields.remove(index) } >Remove</button>
+                    </Fragment>
+                )) }
+            />
+            <button id={ `add-${key}` } type="button" onClick={ () => push(key) }>
+                    Add { key }
+            </button>
+        </Fragment>
+    );
+};
+
+renderFieldArray.propTypes = {
+    items: PropTypes.object.isRequired,
+    key: PropTypes.string.isRequired,
+    push: PropTypes.func
+};
+
+const renderChoiceList =  ({ items, key, uiSchema = {}}) => {
+    const { component, type } = componentMapper(items.type, uiSchema['ui:widget']);
+    return (<Field name={ key }>
+        { ({ input: value }) => {
+            const groupValues = value.value === '' ? [] : value.value;
+            return (
+                <BooleanGroup groupValues={ groupValues } type={ type } component={ component } name={ key } options={ items.enum } />
+            );} }
+    </Field>);
+};
+
+renderChoiceList.propTypes = {
+    items: PropTypes.object.isRequired,
+    key: PropTypes.string.isRequired,
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    uiSchema: PropTypes.object
+};
+
+const renderArrayList = ({ items, uiSchema, key, additionalItems, push }) => {
+    const startingIndex = items.length;
+    return (
+        <Fragment>
+            { items.map(({ type, title, ...rest }, index) => {
+                const fieldProps = {
+                    ...componentMapper(type, uiSchema.items && uiSchema.items[index]['ui:widget']),
+                    label: title,
+                    name: `${key}.${index}`,
+                    ...rest
+                };
+                if (fieldProps.type === 'select') {
+                    return <Select key={ `${key}-${title}` } { ...fieldProps } />;
+                }
+
+                return <FormField key={ `${key}-${title}` } { ...fieldProps } />;
+            }) }
+            <FieldArray
+                name={ key }
+                render={ ({ fields }) => fields.map((name, index) => {
+                    const fieldProps = {
+                        ...componentMapper(additionalItems.type, uiSchema.additionalItems['ui:widget']),
+                        label: additionalItems.title || '',
+                        name: `${key}.${index + startingIndex}`
+                    };
+                    return (
+                        <Fragment key={ `${name}-${name + startingIndex}` }>
+                            <FormField { ...fieldProps } />
+                            <button type="button" onClick={ () => fields.pop() } >Remove { index } { startingIndex }</button>
+                        </Fragment>
+                    );
+                }) }
+            />
+            <button id={ `add-${key}` } type="button" onClick={ () => push(key) }>
+                    Add addition field
+            </button>
+        </Fragment>
+    );
+};
+
+renderArrayList.propTypes = {
+    items: PropTypes.array,
+    uiSchema: PropTypes.object,
+    key: PropTypes.string,
+    additionalItems: PropTypes.object,
+    push: PropTypes.func
+};
+
+const renderArray = ({ items: { items, additionalItems, ...restItem }, uiSchema, key, ...rest }) => ({
+    choiceList: () => renderChoiceList({ items, key, uiSchema, ...rest }),
+    itemList: () => renderFieldArray({ items, key, ...rest, ...restItem }),
+    arrayList: () => renderArrayList({ items, uiSchema, key, additionalItems, ...rest }),
+    nestedList: () => undefined
+})[componentArrayMapper({ items })];
+
+const renderFields = ({ properties, uiSchema = {}, globalValidators = [], options }) => Object.keys(properties).map((key) => {
+    if ((properties[key].type === 'object')) {
+        return (
+            <Fragment key={ properties[key].title }>
+                { properties[key].title && <FormTitle title={ properties[key].title } description={ properties[key].description } /> }
+                { renderFields({ properties: properties[key].properties, uiSchema: uiSchema[key], options }) }
+            </Fragment>
+        );
+    }
+
+    if (properties[key].type === 'array' && !properties[key].items.properties && properties[key].items.type !== 'array') {
+        return (
+            <React.Fragment key={ key }>
+                { properties[key].title && <FormTitle title={ properties[key].title } description={ properties[key].description } /> }
+                { renderArray({ items: properties[key], key, push: options.push, uiSchema: uiSchema[key] && uiSchema[key]  })() }
+            </React.Fragment>
+        );
+    }
+
+    if (properties[key].type === 'array' && !properties[key].items.properties && properties[key].items.type === 'array') {
+        return (
+            <React.Fragment key={ key }>
+                { properties[key].title && <FormTitle title={ properties[key].title } description={ properties[key].description } /> }
+                <button id={ `add-${key}` } type="button" onClick={ () => options.push(key) }>
+                    Add { properties[key].title }
+                </button>
+                <FieldArray
+                    name={ key }
+                    render={ ({ fields }) => fields.map((name, index) => (
+                        <Fragment key={ `${name}-${index}` }>
+                            { renderFields({ properties: { [`${name}.${index}`]: {
+                                ...properties[key].items
+                            }}, uiSchema: uiSchema[key] && uiSchema[key].items, options  }) }
+                            <button id={ `remove-${name}-${index}` } type="button" onClick={ () => fields.remove(index) }>
+                                Remove { key }
+                            </button>
+                        </Fragment>
+                    )) }
+                />
+            </React.Fragment>
+        );
+    }
+
     if (properties[key].type === 'array') {
         return (
             <React.Fragment key={ key }>
-                { properties[key].title && renderTitle(properties[key].title) }
+                { properties[key].title && <FormTitle title={ properties[key].title } description={ properties[key].description } /> }
                 <button id={ `add-${key}` } type="button" onClick={ () => options.push(key) }>
                     Add { key }
                 </button>
@@ -49,13 +193,12 @@ const renderFields = (properties, uiSchema, globalValidators, options) => Object
                     name={ key }
                     render={ ({ fields }) =>  fields.map((name, index) => (
                         <React.Fragment key={ `${name}-${index}` }>
-                            { renderFields(...prepareArrayProperties({
+                            { renderFields({ ...prepareArrayProperties({
                                 properties: properties[key].items.properties,
                                 uiSchema: uiSchema[key] ? uiSchema[key].items : undefined,
                                 validators: properties[key].items.required,
                                 fieldArrayName: name
-                            }), { type: 'array', push: options.push }) }
-
+                            }), options: { type: 'array', push: options.push }}) }
                             <button id={ `remove-${name}-${index}` } type="button" onClick={ () => fields.remove(index) }>
                                 Remove { key }
                             </button>
@@ -66,19 +209,33 @@ const renderFields = (properties, uiSchema, globalValidators, options) => Object
         );
     }
 
-    const { component, type } = componentMapper(properties[key].type, uiSchema[key] ? uiSchema[key]['ui:widget'] : undefined);
+    const { component, type } = componentMapper(
+        properties[key].enum ? 'select' : properties[key].type,
+        uiSchema[key] ? uiSchema[key]['ui:widget'] : undefined
+    );
+    const widgetOptions = uiSchema[key] ? optionsMapper(uiSchema[key]) : {};
     const minLength = properties[key].minLength ? validationMapper('minLength')(properties[key].minLength) : undefined;
     const fieldProps = {
         key,
         name: key,
-        label: properties[key].title,
+        label: properties[key].title || key,
+        description: properties[key].description,
         component,
         type,
         validate: composeValidators(globalValidators[key] && globalValidators[key], minLength),
         autoFocus: options.autoFocus === key,
-        isRequired: globalValidators[key] && globalValidators[key].name === 'required'
+        isRequired: globalValidators[key] && globalValidators[key].name === 'required',
+        ...widgetOptions
     };
-    return renderSingleField(fieldProps);
+    if (type === 'select') {
+        return <Select { ...fieldProps } options={ properties[key].enum } optionsNames={ properties[key].enumNames } />;
+    }
+
+    if (properties[key].type === 'boolean') {
+        return <BooleanGroup type={ type } { ...fieldProps } />;
+    }
+
+    return <FormField key={ key } { ...fieldProps } />;
 });
 
 const createInitialValues = properties => {
@@ -99,43 +256,38 @@ class FormRenderer extends Component {
     }
 
     render() {
-        const { schema, uiSchema, onSubmit, initialValues } = this.props;
-        const {
-            title, description, properties, type
-        } = schema;
+        const { schema, uiSchema, onSubmit, initialValues, onCancel } = this.props;
+        const { title, description, properties, type } = schema;
         const { mounted, autoFocusField } = this.state;
         const globalValidators = setGlobalValidation(schema.required);
         return (
             <Fragment>
-                { title && renderTitle(title, description) }
+                { title && <FormTitle title={ title } description={ description } /> }
                 <Form
-                    subscription={ { submitting: true, pristine: true } }
-                    mutators={ {
-                        ...arrayMutators
-                    } }
+                    mutators={ { ...arrayMutators } }
                     onSubmit={ onSubmit }
-                    initialValues={ {
-                        ...createInitialValues(properties),
-                        ...initialValues
-                    } }
+                    subscription={ { pristine: true, submitting: true } }
+                    initialValues={ { ...createInitialValues(properties), ...initialValues } }
                     render={ ({ form: { focus, mutators: { push, remove }}, handleSubmit }) => {
-                        if (!mounted && autoFocusField) {
-                            focus(autoFocusField);
-                        }
-
+                        !mounted && autoFocusField && focus(autoFocusField);
                         return (
                             <form className=".pf-c-form">
                                 <Grid>
                                     <GridItem>
-                                        { renderFields(properties, uiSchema, globalValidators, {
-                                            autoFocus: autoFocusField,
-                                            type,
-                                            push,
-                                            remove
-                                        }) }
+                                        { renderFields({
+                                            properties,
+                                            uiSchema,
+                                            globalValidators,
+                                            options: {
+                                                autoFocus: autoFocusField,
+                                                type,
+                                                push,
+                                                remove
+                                            }}) }
                                     </GridItem>
                                     <GridItem>
-                                        <Button id="form-renderer-submit" variant="primary" onClick={ handleSubmit } >Submit</Button>
+                                        <Button id="form-renderer-submit" variant="primary" onClick={ handleSubmit }>Submit</Button>
+                                        { onCancel && <Button id="form-renderer-cancel" onClick={ onCancel }>Cancel</Button> }
                                     </GridItem>
                                 </Grid>
                             </form>
@@ -151,12 +303,14 @@ FormRenderer.propTypes = {
     schema: PropTypes.object.isRequired,
     uiSchema: PropTypes.object,
     onSubmit: PropTypes.func.isRequired,
-    initialValues: PropTypes.object
+    initialValues: PropTypes.object,
+    onCancel: PropTypes.func
 };
 
 FormRenderer.defaultProps = {
     uiSchema: {},
-    initialValues: {}
+    initialValues: {},
+    onCancel: undefined
 };
 
 export default FormRenderer;

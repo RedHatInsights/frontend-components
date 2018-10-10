@@ -1,5 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Final form fields Input group component should render input group with description 1`] = `
+<InputGroup
+  description="Input group description"
+>
+  <p>
+    Input group description
+  </p>
+  <h1>
+    Children of input group
+  </h1>
+</InputGroup>
+`;
+
+exports[`Final form fields Input group component should render input group with title 1`] = `
+<InputGroup
+  title="Input group title"
+>
+  <h3>
+    Input group title
+  </h3>
+  <h1>
+    Children of input group
+  </h1>
+</InputGroup>
+`;
+
+exports[`Final form fields Input group component should render input group with title and description 1`] = `
+<InputGroup
+  description="Input group description"
+  title="Input group title"
+>
+  <h3>
+    Input group title
+  </h3>
+  <p>
+    Input group description
+  </p>
+  <h1>
+    Children of input group
+  </h1>
+</InputGroup>
+`;
+
+exports[`Final form fields Input group component should render input group without title and description 1`] = `
+<InputGroup>
+  <h1>
+    Children of input group
+  </h1>
+</InputGroup>
+`;
+
 exports[`Final form fields Text field component should not render error message if the field was not touched 1`] = `
 <TextField
   input={

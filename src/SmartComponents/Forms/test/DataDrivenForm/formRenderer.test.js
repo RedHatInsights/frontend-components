@@ -1,13 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { lauraSchema2, lauraUiSchema, simple, uiSchemaSimple, nestedSchema, nestedUiSchema } from '../../demoData/formSchemas';
+import { lauraSchema2, lauraUiSchema, nestedSchema, nestedUiSchema, widgets, uiWidgets } from '../../demoData/formSchemas';
 import FormRenderer from '../../DataDrivenForm/formRenderer';
 
 describe('Form renderer', () => {
-  it('should render simple form with input and switch', () => {
+  it('should render all form widgets', () => {
+    /**
+     * Throws console error because of select component
+     * Will be removed once there is a PF-4 select component
+     */
     const submit = jest.fn();
-    const wrapper = mount(<FormRenderer schema={simple} uiSchema={uiSchemaSimple} onSubmit={submit} />);
+    const wrapper = mount(<FormRenderer schema={widgets} uiSchema={uiWidgets} onSubmit={submit} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
