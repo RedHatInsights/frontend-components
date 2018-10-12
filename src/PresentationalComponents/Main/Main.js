@@ -39,15 +39,28 @@ class Main extends Component {
                         { [`pf-m-${ theme }`]: theme  === 'dark' }
                     );
 
-                    return (
-                        <section { ...props }
-                            { ...dynamic }
-                            page-type={ staticPart.join('-') }
-                            className={ `${ classNames(className, 'pf-l-page__main-section') } ${ themeClasses }` }
-                        >
-                            { children }
-                        </section>
-                    );
+                    return {
+                        dark:
+                          <section { ...props }
+                              { ...dynamic }
+                              page-type={ staticPart.join('-') }
+                              className={ `${ classNames(className, 'pf-l-page__main-section') } ${ themeClasses }` }
+                          >
+                              { React.Children.map(children, child => {
+                                  return React.cloneElement(child, {
+                                      className: 'pf-m-dark'
+                                  });
+                              }) }
+                          </section>,
+                        light:
+                          <section { ...props }
+                              { ...dynamic }
+                              page-type={ staticPart.join('-') }
+                              className={ `${ classNames(className, 'pf-l-page__main-section') }` }
+                          >
+                              { children }
+                          </section>
+                    } [theme];
                 } }
             </ThemeContext.Consumer>
         );
