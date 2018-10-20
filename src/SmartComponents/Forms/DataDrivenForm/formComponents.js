@@ -47,3 +47,21 @@ export const  BooleanGroup = ({ type, title, description, ...rest }) => (
         <RadioGroup type={ type } { ...rest } />
     </InputGroup>
 );
+
+export const Condition = ({ when, is, children }) => {
+    const shouldRender = value => Array.isArray(is) ? !!is.find(item => item === value) : value === is;
+    return (
+        <Field name={ when } subscription={ { value: true } }>
+            { ({ input: { value }}) => shouldRender(value) ? children : null }
+        </Field>
+    );
+};
+
+Condition.propTypes = {
+    when: PropTypes.string.isRequired,
+    is: PropTypes.any,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired
+};

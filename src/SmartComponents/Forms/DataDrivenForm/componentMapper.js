@@ -3,6 +3,8 @@ import { TextField, TextareaField, SwitchField, RadioField, SelectField, Checkbo
 
 const typeMapper = (type = 'string') => ({
     string: { component: TextField, type: 'text' },
+    email: { component: TextField, type: 'text' },
+    uri: { component: TextField, type: 'text' },
     integer: { component: TextField, type: 'number' },
     number: { component: TextField, type: 'number' },
     updown: { component: TextField, type: 'number' },
