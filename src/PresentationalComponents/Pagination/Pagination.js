@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { PaginationRow } from 'patternfly-react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
 
 import { generateID } from '../../functions/generateID.js';
 
@@ -68,7 +69,7 @@ class Pagination extends Component {
                     pageSizeDropUp={ this.props.direction === 'up' }
                     itemsEnd={ lastIndex }
                     onPerPageSelect={ this.props.onPerPageSelect }
-                    onPageInput={ event => this.setPage(parseInt(event.target.value), 10) }
+                    onPageInput={ event => debounce(this.setPage(parseInt(event.target.value), 10), 100) }
                     onFirstPage={ this.props.onFirstPage || this.defaultFirstPage }
                     onLastPage={ this.props.onLastPage || this.defaultLastPage }
                     onPreviousPage={ this.props.onPreviousPage || this.defaultPreviousPage }
