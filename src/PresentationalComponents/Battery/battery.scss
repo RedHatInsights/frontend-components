@@ -34,3 +34,10 @@
     path { fill: $ins-color--critical; }
   }
 }
+
+.ins-battery-null {
+  svg {
+    @include setBatteryFont;
+    path { fill: #d7d7d7; }
+  }
+}
