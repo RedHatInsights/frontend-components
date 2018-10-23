@@ -2,8 +2,21 @@
 This component is designed to show list of all entities in static inventory and allow them to navigate to detail of
 each entity. In such detail user will see some basic static data alongside custom application details.
 
-This component is hot loaded via chrome, so any changes made to it will be automatically pulled by any application
-which uses it.
+This component is hot loaded via chrome, so any changes made to it will be automatically pulled by any application that uses it.
+
+# Notice!
+**When using this application do not use `Route` set to `exact`. It is designed as partial application and detail of inventory is loaded in same view as table and rest of your screen so it will break if not used in non-exact mode.**
+
+Imagine you have page registerd in router with system information and with list of active systems. And inside of this page you are loading inventory application:
+```JSX
+<Route exact path='/systems' component={ ActiveSystems }/>
+```
+
+Should be written as
+```JSX
+<Route path='/systems' component={ ActiveSystems }/>
+```
+
 ## Usage of hot loading
 To load such inventory via chrome just call `window.insights.loadInventory` with dependencies and wait for it to load
 all data.
@@ -22,14 +35,14 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
-import registryDecorator from '@red-hat-insights/insights-frontend-components/Utilities/Registry';
+import { registry } from '@red-hat-insights/insights-frontend-components';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inventoryCmp: <div>Loading...</div>
+      InventoryCmp: () => <div>Loading...</div>
     }
 
     this.fetchInventory();
@@ -49,13 +62,14 @@ class SomeCmp extends React.Component {
     });
 
     this.setState({
-      inventoryCmp: inventoryConnector()
+      InventoryCmp: inventoryConnector()
     })
   }
 
   render() {
+    const { InventoryCmp } = this.state;
     return (
-      <inventoryCmp />
+      <InventoryCmp />
     )
   }
 }
@@ -77,8 +91,9 @@ import * as reactIcons from '@patternfly/react-icons';
 class SomeCmp extends React.Component {
   //...
   render() {
+    const { InventoryCmp } = this.state;
     return (
-      <inventoryCmp noTable />
+      <InventoryCmp noTable />
       <reactRouterDom.Redirect to='/entity/1' />
     )
   }
@@ -116,7 +131,7 @@ class SomeCmp extends React.Component {
     }
 
     this.setState({
-      inventoryCmp: inventoryConnector()
+      InventoryCmp: inventoryConnector()
     })
   }
   //...
@@ -156,7 +171,7 @@ class SomeCmp extends React.Component {
     }
 
     this.setState({
-      inventoryCmp: inventoryConnector()
+      InventoryCmp: inventoryConnector()
     })
   }
   //...
@@ -214,7 +229,7 @@ class SomeCmp extends React.Component {
     });
 
     this.setState({
-      inventoryCmp: inventoryConnector()
+      InventoryCmp: inventoryConnector()
     })
   }
   //...
@@ -282,7 +297,7 @@ class SomeCmp extends React.Component {
     });
 
     this.setState({
-      inventoryCmp: inventoryConnector()
+      InventoryCmp: inventoryConnector()
     })
   }
   //...

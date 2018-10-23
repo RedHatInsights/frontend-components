@@ -7,8 +7,8 @@ import InventoryDetail from './InventoryDetail';
 const Inventory = ({ match, noTable = false }) => {
     return (
         <Switch>
-            { !noTable && <Route exact path={ match.path } component={ InventoryList } /> }
-            <Route path={ `${match.path}/:id` } render={ props => <InventoryDetail { ...props } root={ match.path } /> } />
+            { !noTable && <Route exact path={ match.url } component={ InventoryList } /> }
+            <Route path={ `${match.url}/:inventoryId` } render={ props => <InventoryDetail { ...props } root={ match.url } /> } />
         </Switch>
     );
 };
