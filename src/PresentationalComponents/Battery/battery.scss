@@ -5,39 +5,39 @@
   line-height: 1;
 }
 
+.ins-battery {
+  svg {
+    @include setBatteryFont;
+  }
+}
 
 // Setting the icons
 .ins-battery-1, .ins-battery-low, .ins-battery-info {
   svg {
-    @include setBatteryFont;
     path { fill: $ins-color--low; }
   }
 }
 
 .ins-battery-2, .ins-battery-medium, .ins-battery-warn {
   svg {
-    @include setBatteryFont;
     path { fill: $ins-color--medium; }
   }
 }
 
 .ins-battery-3, .ins-battery-high, .ins-battery-error{
   svg {
-    @include setBatteryFont;
     path { fill: $ins-color--high; }
   }
 }
 
 .ins-battery-4, .ins-battery-critical {
   svg {
-    @include setBatteryFont;
     path { fill: $ins-color--critical; }
   }
 }
 
-.ins-battery-null {
+.ins-battery-0, .ins-battery-null {
   svg {
-    @include setBatteryFont;
     path { fill: #d7d7d7; }
   }
 }
