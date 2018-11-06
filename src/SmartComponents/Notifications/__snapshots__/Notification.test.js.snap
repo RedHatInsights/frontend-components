@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification component should render correctly 1`] = `
+<Alert
+  action={null}
+  className="notification-item"
+  id="Foo"
+  title="Bar"
+  variant="success"
+>
+  description
+</Alert>
+`;
+
+exports[`Notification component should render correctly with dismiss button 1`] = `
+<Alert
+  action={
+    <Button
+      aria-label="close-notification"
+      className=""
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="plain"
+    >
+      <CloseIcon
+        color="currentColor"
+        size="sm"
+        title={null}
+      />
+    </Button>
+  }
+  className="notification-item"
+  id="Foo"
+  title="Bar"
+  variant="success"
+/>
+`;
+
+exports[`Notification component should render correctly withouth description 1`] = `
+<Alert
+  action={null}
+  className="notification-item"
+  id="Foo"
+  title="Bar"
+  variant="success"
+/>
+`;

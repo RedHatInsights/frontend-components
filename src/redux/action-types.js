@@ -30,3 +30,11 @@ export const SELECT_ENTITY = 'SELECT_ENTITY';
 export const CHANGE_SORT = 'CHANGE_SORT';
 export const FILTER_ENTITIES = 'FILTER_ENTITIES';
 export const APPLICATION_SELECTED = 'APPLICATION_SELECTED';
+
+/**
+ * Notifications actions
+ */
+const notificationsPrefix = '@@INSIGHTS-CORE/NOTIFICATIONS/';
+export const ADD_NOTIFICATION = `${notificationsPrefix}ADD_NOTIFICATION`;
+export const REMOVE_NOTIFICATION = `${notificationsPrefix}REMOVE_NOTIFICATION`;
+export const CLEAR_NOTIFICATIONS = `${notificationsPrefix}CLEAR_NOTIFICATIONS`;

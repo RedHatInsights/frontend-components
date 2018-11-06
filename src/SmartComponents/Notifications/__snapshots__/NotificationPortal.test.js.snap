@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification portal should render notifications given as direct props 1`] = `
+<Portal
+  containerInfo={<body />}
+>
+  <div
+    className="notifications-portal"
+  >
+    <Notification
+      description="Some meaningfull description"
+      dismissDelay={5000}
+      dismissable={true}
+      id="0"
+      key="0"
+      onDismiss={[Function]}
+      title="Notification title"
+      variant="success"
+    />
+  </div>
+</Portal>
+`;
+
+exports[`Notification portal should render notifications given as direct props over store notifications 1`] = `
+<Portal
+  containerInfo={<body />}
+>
+  <div
+    className="notifications-portal"
+  >
+    <Notification
+      description="Some meaningfull description"
+      dismissDelay={5000}
+      dismissable={true}
+      id="Direct notification"
+      key="Direct notification"
+      onDismiss={[Function]}
+      title="Notification title"
+      variant="success"
+    />
+  </div>
+</Portal>
+`;
+
+exports[`Notification portal should render notifications given from store 1`] = `
+<Portal
+  containerInfo={<body />}
+>
+  <div
+    className="notifications-portal"
+  >
+    <Notification
+      description="Some meaningfull description"
+      dismissDelay={5000}
+      dismissable={true}
+      id="0"
+      key="0"
+      onDismiss={[Function]}
+      title="Notification title"
+      variant="success"
+    />
+  </div>
+</Portal>
+`;
