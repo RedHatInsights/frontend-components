@@ -10,3 +10,4 @@ export {
   removeNotification,
   clearNotifications
 } from '../../redux/actions/notifications'
+export { default as notificationsMiddleware } from './notificationsMiddleware';
