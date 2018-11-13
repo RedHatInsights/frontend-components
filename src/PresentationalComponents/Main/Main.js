@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import ThemeContext from '../Dark/configContext';
+import toKebab from '../../functions/toKebab';
 
 /**
  * This is a component that wraps the page
@@ -15,7 +16,10 @@ class Main extends Component {
             const chromeState = insights.chrome.$internal.store.getState();
             return path.split('/').reduce((acc, curr) => {
                 if (curr.indexOf(':') === 0) {
-                    acc.dynamic =  { ...acc.dynamic, [`data-${curr.substr(1)}`]: params[curr.substr(1)] };
+                    acc.dynamic = {
+                        ...acc.dynamic,
+                        [`data-${toKebab(curr.substr(1))}`]: params[curr.substr(1)]
+                    };
                 } else {
                     acc.staticPart = [ ...acc.staticPart, ...curr !== '' ? [ curr ] : [] ];
                 }
