@@ -50,9 +50,12 @@ const createNotificationsMiddleware = (options = {}) => {
             noErrorOverride: meta && meta.noError,
             dispatchDefaultFailure: middlewareOptions.dispatchDefaultFailure
         })) {
+            const title = get(action.payload, middlewareOptions.errorTitleKey) || 'Error';
+            const description = typeof payload === 'string' ? action.payload : get(action.payload, middlewareOptions.errorDescriptionKey);
             dispatch(addNotification({
                 variant: 'danger',
-                title: get(action.payload, middlewareOptions.errorTitleKey), description: get(action.payload, middlewareOptions.errorDescriptionKey),
+                title,
+                description,
                 dismissable: true
             }));
         }

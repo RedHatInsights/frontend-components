@@ -2,11 +2,24 @@
   position: fixed;
   top: 0;
   right: 0;
-  margin: 30px;
-  width: 400px;
+}
+
+@media only screen and (max-width: 600px) {
+  .notifications-portal{
+    margin: 0;
+    width: initial;
+  }
+} 
+
+@media only screen and (min-width: 768px) {
+  .notifications-portal {
+    margin: 30px;
+    width: 708px;
+  }
 }
 
 .notification-item {
   position: relative;
   margin: 10px;
+  word-break: break-all;
 }
