@@ -8,7 +8,9 @@ const Inventory = ({ match, noTable = false }) => {
     return (
         <Switch>
             { !noTable && <Route exact path={ match.url } component={ InventoryList } /> }
-            <Route path={ `${match.url}/:inventoryId` } render={ props => <InventoryDetail { ...props } root={ match.url } /> } />
+            <Route path={ `${match.url}${match.url.substr(-1, 1) === '/' ? '' : '/'}:inventoryId` }
+                render={ props => <InventoryDetail { ...props } root={ match.url } /> }
+            />
         </Switch>
     );
 };

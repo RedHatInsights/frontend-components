@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Title, Grid, GridItem, Badge } from '@patternfly/react-core';
+import { Title, Grid, GridItem, Label } from '@patternfly/react-core';
 import { TimesIcon } from '@patternfly/react-icons';
 import { SyncAltIcon } from '@patternfly/react-icons';
 import { Dropdown, DropdownItem, DropdownPosition } from '../../PresentationalComponents/Dropdown';
@@ -29,7 +29,7 @@ class EntityDetails extends Component {
         });
     }
     render() {
-        const { loaded, entity, tags } = this.props;
+        const { loaded, entity } = this.props;
         const { actionCollapsed } = this.state;
         if (!loaded) {
             return (
@@ -61,7 +61,7 @@ class EntityDetails extends Component {
                                 Hostname:
                             </span>
                             <span>
-                                { this.getFact('display_name') }
+                                { this.getFact('facts.inventory.hostname') }
                             </span>
                         </div>
                         <div>
@@ -69,7 +69,7 @@ class EntityDetails extends Component {
                                 UUID:
                             </span>
                             <span>
-                                { this.getFact(`canonical_facts['machine-id']`) }
+                                { this.getFact(`canonical_facts['machine_id']`) }
                             </span>
                         </div>
                         <div>
@@ -77,7 +77,7 @@ class EntityDetails extends Component {
                                 System:
                             </span>
                             <span>
-                                { this.getFact('facts.release') }
+                                { this.getFact('facts.inventory.release') }
                             </span>
                         </div>
                     </GridItem>
@@ -87,7 +87,7 @@ class EntityDetails extends Component {
                                 Last Check-in:
                             </span>
                             <span>
-                                { this.getFact('facts.check_in') }
+                                { (new Date(this.getFact('updated'))).toLocaleString() }
                             </span>
                         </div>
                         <div>
@@ -95,17 +95,17 @@ class EntityDetails extends Component {
                                 Registered:
                             </span>
                             <span>
-                                { this.getFact('facts.registered') }
+                                { (new Date(this.getFact('created'))).toLocaleString() }
                             </span>
                         </div>
                     </GridItem>
                 </Grid>
                 <Grid className="ins-entity-tags">
-                    { tags && Object.values(tags).map((oneTag, key) => (
-                        <GridItem span={ 1 } key={ key }>
-                            <Badge>
-                                <TimesIcon />{ oneTag[0] }
-                            </Badge>
+                    { entity.tags && Object.values(entity.tags).map((oneTag, key) => (
+                        <GridItem span={ 1 } key={ key } data-key={ key } widget="tag">
+                            <Label isCompact>
+                                <TimesIcon />{ oneTag }
+                            </Label>
                         </GridItem>
                     )) }
                 </Grid>
@@ -117,8 +117,7 @@ class EntityDetails extends Component {
 
 EntityDetails.propTypes = {
     loaded: PropTypes.bool.isRequired,
-    entity: PropTypes.object,
-    tags: PropTypes.any
+    entity: PropTypes.object
 };
 
 export default connect(({ entityDetails }) => ({ ...entityDetails }))(EntityDetails);

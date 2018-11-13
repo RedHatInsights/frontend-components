@@ -13,7 +13,7 @@ function entityDetailLoaded(state, { payload }) {
     return {
         ...state,
         loaded: true,
-        entity: payload
+        entity: payload.results[0]
     };
 }
 

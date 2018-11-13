@@ -39,7 +39,7 @@ class Actions extends React.Component {
 
 Actions.propTypes = {
     item: PropTypes.shape({
-        id: PropTypes.number
+        id: PropTypes.string
     })
 };
 

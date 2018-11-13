@@ -11,8 +11,8 @@ import './InventoryDetail.scss';
 class InventoryDetail extends React.Component {
     componentDidMount() {
         const { match: { params: { inventoryId }}, entity, loaded } = this.props;
-        if (!entity || entity.id !== parseInt(inventoryId, 10) || !loaded) {
-            this.props.loadEntity(parseInt(inventoryId, 10));
+        if (!entity || entity.id !== inventoryId || !loaded) {
+            this.props.loadEntity(inventoryId);
         }
     }
 

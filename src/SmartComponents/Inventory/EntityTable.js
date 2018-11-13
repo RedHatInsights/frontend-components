@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import routerParams from '../../Utilities/RouterParams';
-import { selectEntity, setSort } from '../../redux/actions/inventory';
+import { selectEntity, setSort, detailSelect } from '../../redux/actions/inventory';
 import { connect } from 'react-redux';
 import { Table } from '../../PresentationalComponents/Table';
 import keyBy from 'lodash/keyBy';
@@ -23,8 +23,10 @@ class EntityTable extends React.Component {
     }
 
     onRowClick(_event, key, application) {
-        const { match: { path }, history } = this.props;
-        history.push(`${path}/${key}/${application ? application : ''}`);
+        const { match: { path }, history, onDetailSelect } = this.props;
+        const dilimeter = path.substr(-1, 1) === '/' ? '' : '/';
+        history.push(`${path}${dilimeter}${key}/${application ? application : ''}`);
+        onDetailSelect && onDetailSelect(application);
     }
 
     onItemSelect(_event, key, checked) {
@@ -43,17 +45,21 @@ class EntityTable extends React.Component {
         }
     }
 
-    renderCol(col, key, composed) {
+    renderCol(col, key, composed, isTime) {
         if (composed) {
             return (
                 <div className="ins-composed-col">
                     { composed.map(path => (
-                        <div key={ path }>
+                        <div key={ path } widget="col" data-key={ path }>
                             { get(col, path, 'unknown') || '\u00A0' }
                         </div>
                     )) }
                 </div>
             );
+        }
+
+        if (isTime) {
+            return (new Date(get(col, key, 'unknown'))).toLocaleString();
         }
 
         return get(col, key, 'unknown');
@@ -92,7 +98,7 @@ class EntityTable extends React.Component {
             id: oneItem.id,
             selected: oneItem.selected,
             cells: [
-                ...columns.map(oneCell => this.renderCol(oneItem, oneCell.key, oneCell.composed)),
+                ...columns.map(oneCell => this.renderCol(oneItem, oneCell.key, oneCell.composed, oneCell.isTime)),
                 this.healthColumn(oneItem),
                 this.actionsColumn(oneItem)
             ]
@@ -128,20 +134,23 @@ EntityTable.propTypes = {
     match: PropTypes.any,
     loaded: PropTypes.bool,
     entities: PropTypes.array,
-    selectEntity: PropTypes.func
+    selectEntity: PropTypes.func,
+    onDetailSelect: PropTypes.func
 };
 
 EntityTable.defaultProps = {
     loaded: false,
     columns: [],
     entities: [],
-    selectEntity: () => undefined
+    selectEntity: () => undefined,
+    onDetailSelect: () => undefined
 };
 
 function mapDispatchToProps(dispatch) {
     return {
         selectEntity: (id, isSelected) => dispatch(selectEntity(id, isSelected)),
-        setSort: (id, isSelected) => dispatch(setSort(id, isSelected))
+        setSort: (id, isSelected) => dispatch(setSort(id, isSelected)),
+        onDetailSelect: (name) => dispatch(detailSelect(name))
     };
 }
 

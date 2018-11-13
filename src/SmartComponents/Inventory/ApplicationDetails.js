@@ -21,11 +21,14 @@ class ApplicationDetails extends Component {
 
     render() {
         const { match: { path }, activeApp, items } = this.props;
+        const defaultApp = items && items[0] && items[0].name;
         return (
             <React.Fragment>
                 {
                     items &&
-                    <TabLayout items={ items } onTabClick={ this.onTabClick } active={ activeApp && activeApp.appName }>
+                    <TabLayout items={ items }
+                        onTabClick={ this.onTabClick }
+                        active={ activeApp && (activeApp.appName || defaultApp) }>
                         <Switch>
                             <Route exact path={ `${path}/:detail` } component={ AppInfo } />
                             <Redirect to={ `${path}/overview` }/>

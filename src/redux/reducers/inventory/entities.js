@@ -7,8 +7,8 @@ import orderBy from 'lodash/orderBy';
 export const defaultState = { loaded: false };
 
 const defaultColumns = [
-    { key: 'display_name', title: 'Name', composed: [ 'facts.release', 'display_name' ]},
-    { key: 'facts.last_seen', title: 'Last Seen' }
+    { key: 'display_name', title: 'Name', composed: [ 'facts[0].facts.hostname', 'display_name' ]},
+    { key: 'updated', title: 'Last Seen', isTime: true }
 ];
 
 function entitiesPending(state) {
@@ -30,12 +30,13 @@ function filterEntities(state, { payload: { key, filterString }}) {
 }
 
 function entitiesLoaded(state, { payload }) {
-    const entities = mergeArraysByKey([ state.rows, payload ]);
+    const entities = mergeArraysByKey([ state.rows, payload.results ]);
     return {
         ...state,
         loaded: true,
         rows: entities,
-        entities
+        entities,
+        count: payload.count
     };
 }
 
