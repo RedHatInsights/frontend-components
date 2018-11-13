@@ -51,7 +51,7 @@ const createNotificationsMiddleware = (options = {}) => {
             dispatchDefaultFailure: middlewareOptions.dispatchDefaultFailure
         })) {
             const title = get(action.payload, middlewareOptions.errorTitleKey) || 'Error';
-            const description = typeof payload === 'string' ? action.payload : get(action.payload, middlewareOptions.errorDescriptionKey);
+            const description = typeof action.payload === 'string' ? action.payload : get(action.payload, middlewareOptions.errorDescriptionKey);
             dispatch(addNotification({
                 variant: 'danger',
                 title,

@@ -9,16 +9,21 @@ describe('Notifications middleware', () => {
   let middlewares;
   let mockStore;
 
-  const requestMock = shouldFail => ({
-    type: 'FOO',
-    payload: new Promise((resolve, reject) => setTimeout(() => shouldFail ? reject({
+  const defaultReject = {
       title: 'Error title',
       detail: 'Longer detailed description of error message',
       body: {
-        title: 'Custom error title path',
-        description: 'Custom error descriptio path'
+          title: 'Custom error title path',
+          description: 'Custom error descriptio path'
       }
-    }) : resolve({ sucess: true }), 500))
+  }
+
+    const requestMock = (shouldFail, rejectBody = defaultReject) => ({
+    type: 'FOO',
+        payload: new Promise((resolve, reject) => 
+        setTimeout(() => 
+            shouldFail ? reject(rejectBody) : resolve({ sucess: true }), 500
+        ))
   });
 
   beforeEach(() => {
@@ -28,6 +33,28 @@ describe('Notifications middleware', () => {
     initialProps = {
       store: mockStore({})
     }
+  });
+
+  it('should dispatch danger with text from payload', () => {
+      const expectedActions = [
+          expect.objectContaining({
+              type: 'FOO_PENDING',
+          }), {
+              type: ADD_NOTIFICATION,
+              payload: {
+                  description: 'Longer detailed description of error message',
+                  dismissable: true,
+                  title: 'Error',
+                  variant: 'danger',
+              }
+          },
+          expect.objectContaining({
+              type: 'FOO_REJECTED'
+          })
+      ]
+      return initialProps.store.dispatch(requestMock(true, 'Longer detailed description of error message')).catch(() => {
+          expect(initialProps.store.getActions()).toEqual(expectedActions)
+      })
   });
 
   it('should not dispatch any default notification on promise success', () => {
