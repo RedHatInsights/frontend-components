@@ -50,6 +50,7 @@ There is also a playground for any development
   * [Dropdown](doc/components/dropdown.md)
   * [Table](doc/components/table.md)
   * [Breadcrumbs](doc/components/breadcrumbs.md)
+  * [Notifications](doc/components/notifications.md)
 
 ## Conbribution
 
