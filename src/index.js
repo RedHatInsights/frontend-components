@@ -21,6 +21,7 @@ export * from './PresentationalComponents/Breadcrumbs';
 export * from './PresentationalComponents/TabLayout';
 export * from './PresentationalComponents/Dark';
 export * from './PresentationalComponents/PageHeader';
+export * from './PresentationalComponents/Wizard';
 export * from './Charts/Gauge';
 export * from './Charts/Matrix';
 export * from './Charts/Donut';
