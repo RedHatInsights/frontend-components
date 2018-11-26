@@ -35,6 +35,8 @@ class Wizard extends Component {
 
     render() {
 
+        const { isLarge, title, className, isOpen, handleModalToggle, ...props } = this.props;
+
         const renderModalActions =  [
             <Button key="cancel" variant="secondary" onClick={ this.handleOnClose }>
             Cancel
@@ -50,11 +52,11 @@ class Wizard extends Component {
 
         return (
             <Modal
-                { ...this.props }
-                isLarge = { this.props.isLarge }
-                title= { this.props.title }
-                className= { this.props.className }
-                isOpen={ this.props.isOpen }
+                { ...props }
+                isLarge = { isLarge }
+                title= { title }
+                className= { className }
+                isOpen={ isOpen }
                 onClose={ this.handleOnClose }
                 actions={ renderModalActions }>
                 { this.props.content[this.state.currentStep] }
