@@ -17,6 +17,8 @@ Should be written as
 <Route path='/systems' component={ ActiveSystems }/>
 ```
 
+**These examples ount on using insight's registry, if you are using different make sure that you pass along correct one and don't use `registryDecorator`**
+
 ## Usage of hot loading
 To load such inventory via chrome just call `window.insights.loadInventory` with dependencies and wait for it to load
 all data.
@@ -24,10 +26,10 @@ all data.
 Expected dependencies is object with shape:
 ```JS
 {
-  react: React, //Whole react
-  reactRouterDom: reactRouterDom //React router dom { withRouter, Switch, Route, Redirect, Link } are required
-  reactIcons: reactIcons //PF icons { TimesIcon, SyncIcon, hieldAltIcon, DollarSignIcon, WrenchIcon, CertificateIcon } are required, but they might be changed and more will be needed in future
-  reactCore: reactCore //PF react core items, best is to import * and pass whole reactCore
+    react: React, //Whole react
+    reactRouterDom: reactRouterDom //React router dom { withRouter, Switch, Route, Redirect, Link } are required
+    reactIcons: reactIcons //PF icons { TimesIcon, SyncIcon, hieldAltIcon, DollarSignIcon, WrenchIcon, CertificateIcon } are required, but they might be changed and more will be needed in future
+    reactCore: reactCore //PF react core items, best is to import * and pass whole reactCore
 }
 ```
 ```JSX
@@ -35,43 +37,43 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
-import { registry } from '@red-hat-insights/insights-frontend-components';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      InventoryCmp: () => <div>Loading...</div>
+    constructor(props) {
+        super(props);
+        this.state = {
+            InventoryCmp: () => <div>Loading...</div>
+        }
+
+        this.fetchInventory();
     }
 
-    this.fetchInventory();
-  }
+    async fetchInventory() {
+        const { inventoryConnector, mergeWithEntities, mergeWithDetail } = await insights.loadInventory({
+            react: React,
+            reactRouterDom,
+            reactCore,
+            reactIcons
+        });
 
-  async fetchInventory() {
-    const { inventoryConnector, mergeWithEntities, mergeWithDetail } = await insights.loadInventory({
-      react: React,
-      reactRouterDom,
-      reactCore,
-      reactIcons
-    });
+        this.getRegistry().register({
+            ...mergeWithEntities(),
+            ...mergeWithDetail()
+        });
 
-    this.getRegistry().register({
-      ...mergeWithEntities(),
-      ...mergeWithDetail()
-    });
+        this.setState({
+            InventoryCmp: inventoryConnector()
+        })
+    }
 
-    this.setState({
-      InventoryCmp: inventoryConnector()
-    })
-  }
-
-  render() {
-    const { InventoryCmp } = this.state;
-    return (
-      <InventoryCmp />
-    )
-  }
+    render() {
+        const { InventoryCmp } = this.state;
+        return (
+            <InventoryCmp />
+        )
+    }
 }
 ```
 
@@ -87,93 +89,153 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
+@registryDecorator()
 class SomeCmp extends React.Component {
   //...
-  render() {
-    const { InventoryCmp } = this.state;
-    return (
-      <InventoryCmp noTable />
-      <reactRouterDom.Redirect to='/entity/1' />
-    )
-  }
+    render() {
+        const { InventoryCmp } = this.state;
+        return (
+            <InventoryCmp noTable />
+            <reactRouterDom.Redirect to='/entity/1' />
+        )
+    }
 }
 ```
-2) Calling some action when all entities are loaded - if you want to do something with fetched data, callback function will receive argument with shape `{data: data, stopBubble: () => boolean}`, where data is Promise with fetched data and stopBubble prevents from bubling to store.
+
+2) Passing array of prefetched items from different data source - if you want to fetch inventory information from another source and help inventory to fetch facts for only those items you can pass either array of (string) IDs or objects with ID and additional props.
+
 ```JSX
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import { hostData } from './api';
 
+@registryDecorator()
 class SomeCmp extends React.Component {
-  //...
-  async fetchInventory() {
-    const { inventoryConnector, mergeWithEntities, mergeWithDetail} = await insights.loadInventory({
-      react: React,
-      reactRouterDom,
-      reactCore,
-      reactIcons
-    });
+    constructor(props) {
+        super(props);
+        this.state = {
+            InventoryCmp: () => (<div>Loading...</div>)
+        }
 
-    this.getRegistry().register({
-      ...mergeWithEntities(),
-      ...mergeWithDetail()
-    });
-
-    this.entitiesListener = addNewListener({
-        actionType: INVENTORY_ACTION_TYPES.LOAD_ENTITIES,
-        callback: this.callSomeFunction
-    });
-
-    callSomeFunction({ data }) {
-      //Do something with data Promise
+        this.fetchInventory();
     }
 
-    this.setState({
-      InventoryCmp: inventoryConnector()
-    })
-  }
-  //...
+    async fetchInventory() {
+        // This can be data from server, redux data or just plain object.  
+        const hostEntities = await hostData(); // from server
+        // const hostEntities = this.props.hostEntities // from redux
+        // const hostEntities = [{ id: '12-56-r-g', some: 'another', myData: 'something specific' }] // objects with ID
+        // cons hostEntities = [ '12-56-r-g' ] // array with IDs
+        const { inventoryConnector, mergeWithEntities, mergeWithDetail } = await insights.loadInventory({
+            react: React,
+            reactRouterDom,
+            reactCore,
+            reactIcons
+        });
+
+        this.getRegistry().register({
+            ...mergeWithEntities(),
+            ...mergeWithDetail()
+        });
+
+        this.setState({
+            InventoryCmp: inventoryConnector(),
+            hostEntities: hostEntities
+        })
+    }
+
+    render() {
+        const { InventoryCmp, hostEntities } = this.state;
+        return (
+            <InventoryCmp items={ hostEntities } />
+        )
+    }
 }
 ```
 
-3) Calling some action when entity detail is loaded - if you want to get the ID of entity callback function will receive argument with promise with shape `{data: data, stopBubble: () => boolean}`, where data is Promise with ID of selected item and fetched data, stopBubble prevents from bubling to store.
+3) Calling some action when all entities are loaded - if you want to do something with fetched data, callback function will receive argument with shape `{data: data, stopBubble: () => boolean}`, where data is Promise with fetched data and stopBubble prevents from bubling to store.
 ```JSX
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
+@registryDecorator()
+class SomeCmp extends React.Component {
+    //...
+    async fetchInventory() {
+        const { inventoryConnector, mergeWithEntities, mergeWithDetail} = await insights.loadInventory({
+            react: React,
+            reactRouterDom,
+            reactCore,
+            reactIcons
+        });
+
+        this.getRegistry().register({
+            ...mergeWithEntities(),
+            ...mergeWithDetail()
+        });
+
+        this.entitiesListener = addNewListener({
+            actionType: INVENTORY_ACTION_TYPES.LOAD_ENTITIES,
+            callback: this.callSomeFunction
+        });
+
+        this.setState({
+            InventoryCmp: inventoryConnector()
+        })
+    }
+
+    callSomeFunction({ data }) {
+        //Do something with data Promise
+    }
+    //...
+}
+```
+
+4) Calling some action when entity detail is loaded - if you want to get the ID of entity callback function will receive argument with promise with shape `{data: data, stopBubble: () => boolean}`, where data is Promise with ID of selected item and fetched data, stopBubble prevents from bubling to store.
+```JSX
+import React from 'react';
+import * as reactRouterDom from 'react-router-dom';
+import * as reactCore from '@patternfly/react-core';
+import * as reactIcons from '@patternfly/react-icons';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+
+@registryDecorator()
 class SomeCmp extends React.Component {
   //...
-  async fetchInventory() {
-    const { inventoryConnector, mergeWithEntities, mergeWithDetail, INVENTORY_ACTION_TYPES } = await insights.loadInventory({
-      react: React,
-      reactRouterDom,
-      reactCore,
-      reactIcons
-    });
+    async fetchInventory() {
+        const { inventoryConnector, mergeWithEntities, mergeWithDetail, INVENTORY_ACTION_TYPES } = await insights.loadInventory({
+            react: React,
+            reactRouterDom,
+            reactCore,
+            reactIcons
+        });
 
-    this.getRegistry().register({
-      ...mergeWithEntities(),
-      ...mergeWithDetail()
-    });
+        this.getRegistry().register({
+            ...mergeWithEntities(),
+            ...mergeWithDetail()
+        });
 
-    this.entityListener = addNewListener({
-        actionType: INVENTORY_ACTION_TYPES.LOAD_ENTITY,
-        callback: this.callSomeOtherFunction
-        }
-    });
+        this.entityListener = addNewListener({
+            actionType: INVENTORY_ACTION_TYPES.LOAD_ENTITY,
+            callback: this.callSomeOtherFunction
+        });
+
+        this.setState({
+            InventoryCmp: inventoryConnector()
+        });
+    }
 
     callSomeOtherFunction({ data }) {
       //Do something with data Promise
     }
-
-    this.setState({
-      InventoryCmp: inventoryConnector()
-    })
-  }
   //...
 }
 ```
@@ -206,7 +268,9 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { listReducer } from './store/reducers';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
+@registryDecorator()
 class SomeCmp extends React.Component {
   //...
   async fetchInventory() {
@@ -269,37 +333,39 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { entityDetailReducer } from './store/reducers';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
+@registryDecorator()
 class SomeCmp extends React.Component {
-  //...
-  async fetchInventory() {
-    const {
-      inventoryConnector,
-      mergeWithEntities,
-      mergeWithDetail,
-      INVENTORY_ACTION_TYPES
-    } = await insights.loadInventory({
-      react: React,
-      reactRouterDom,
-      reactCore,
-      reactIcons
-    });
+    //...
+    async fetchInventory() {
+        const {
+            inventoryConnector,
+            mergeWithEntities,
+            mergeWithDetail,
+            INVENTORY_ACTION_TYPES
+        } = await insights.loadInventory({
+            react: React,
+            reactRouterDom,
+            reactCore,
+            reactIcons
+        });
 
-    this.getRegistry().register({
-      ...mergeWithEntities(),
-      ...mergeWithDetail(entityDetailReducer(INVENTORY_ACTION_TYPES))
-    });
+        this.getRegistry().register({
+            ...mergeWithEntities(),
+            ...mergeWithDetail(entityDetailReducer(INVENTORY_ACTION_TYPES))
+        });
 
-    this.entityListener = addNewListener({
-        actionType: INVENTORY_ACTION_TYPES.LOAD_ENTITY,
-        callback: this.props.fetchEntities
-        }
-    });
+        this.entityListener = addNewListener({
+            actionType: INVENTORY_ACTION_TYPES.LOAD_ENTITY,
+            callback: this.props.fetchEntities
+            }
+        });
 
-    this.setState({
-      InventoryCmp: inventoryConnector()
-    })
-  }
+        this.setState({
+            InventoryCmp: inventoryConnector()
+        })
+    }
   //...
 }
 ```
@@ -357,13 +423,13 @@ Let's assume that the store looks like
 Given store will look like
 ```JS
 {
-  someKey: {},
-  entities: {
-    columns: Array({key: String, title: String, composed: Array(String)})
-    loaded: Boolean
-    rows: Array({}),
-    entities: Array({})
-  }
+    someKey: {},
+    entities: {
+        columns: Array({key: String, title: String, composed: Array(String)})
+        loaded: Boolean
+        rows: Array({}),
+        entities: Array({})
+    }
 }
 ```
 * columns - each entry has `key`, `title` and `composed`. Composed is array of paths for multiple values, `key` is path to display value.
@@ -374,13 +440,13 @@ Given store will look like
 ### EntityDetails key
 ```JS
 {
-  someKey: {},
-  entityDetails: {
-    activeApp: {appName: String},
-    activeApps: Array({title: String, name: String, component: React.Component}),
-    entity: {},
-    tags: {key: Array(String)}
-  }
+    someKey: {},
+    entityDetails: {
+        activeApp: {appName: String},
+        activeApps: Array({title: String, name: String, component: React.Component}),
+        entity: {},
+        tags: {key: Array(String)}
+    }
 }
 ```
 * activeApp - name of active app.
@@ -392,3 +458,31 @@ Given store will look like
   * Last Check-in: TODO
   * Registered: TODO
 * tags - tags data
+
+### Mock data
+To add your own data to inventory you can do that by passing some specific data to inventory endpoint, please do this only on test server.
+
+```JS
+window.insights.chrome.auth.getUser().then(
+    data => fetch('/r/insights/platform/inventory/api/hosts', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "display_name": "Test computer",
+            "account": data.account_number,
+            "insights_id": "abc-1234",
+            {
+                "facts": {
+                    "hostname": "server01.redhat.com",
+                    "machine_id": "c1497de-0ec7-43bb-a8a6-35cabd59e0bf",
+                    "release": "Red Hat Enterprise Linux Server release 7.5 (Maipo)",
+                },
+                "namespace": "inventory"
+            }
+            "tags": ["ui/environment:some"]
+        })
+}));
+```

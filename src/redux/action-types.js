@@ -30,6 +30,7 @@ export const SELECT_ENTITY = 'SELECT_ENTITY';
 export const CHANGE_SORT = 'CHANGE_SORT';
 export const FILTER_ENTITIES = 'FILTER_ENTITIES';
 export const APPLICATION_SELECTED = 'APPLICATION_SELECTED';
+export const SHOW_ENTITIES = 'SHOW_ENTITIES';
 
 /**
  * Notifications actions

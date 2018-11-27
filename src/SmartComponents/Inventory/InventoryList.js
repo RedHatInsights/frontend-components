@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
 import { Button } from '@patternfly/react-core';
-import { loadEntities, filterEntities } from '../../redux/actions/inventory';
+import { loadEntities, filterEntities, showEntities } from '../../redux/actions/inventory';
 import { SimpleTableFilter } from '../../PresentationalComponents/SimpleTableFilter';
 import { Grid, GridItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
@@ -19,7 +19,7 @@ class InventoryList extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadEntities();
+        this.props.loadEntities(this.props.items);
     }
 
     render() {
@@ -50,12 +50,29 @@ class InventoryList extends React.Component {
 InventoryList.propTypes = {
     filterEntities: PropTypes.func,
     loadEntities: PropTypes.func,
+    items: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.shape({
+            id: PropTypes.string
+        })
+    ]),
     entites: PropTypes.arrayOf(PropTypes.any)
 };
 
 function mapDispatchToProps(dispatch) {
     return {
-        loadEntities: () => dispatch(loadEntities()),
+        loadEntities: (items = []) => {
+            const itemIds = items.reduce((acc, curr) => (
+                [
+                    ...acc,
+                    typeof curr === 'string' ? curr : curr.id
+                ]
+            ), []);
+            dispatch(loadEntities(itemIds));
+            dispatch(showEntities(items.map(oneItem => (
+                { ...typeof oneItem === 'string' ? { id: oneItem } : oneItem }
+            ))));
+        },
         filterEntities: (key = 'display_name', filterBy) => dispatch(filterEntities(key, filterBy))
     };
 }

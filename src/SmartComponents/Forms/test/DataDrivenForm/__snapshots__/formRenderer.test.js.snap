@@ -364,7 +364,6 @@ exports[`Form renderer should render all form widgets 1`] = `
                               autoFocus={false}
                               className=""
                               id="email"
-                              isAlt={false}
                               isDisabled={false}
                               isReadOnly={false}
                               isRequired={false}
@@ -521,7 +520,6 @@ exports[`Form renderer should render all form widgets 1`] = `
                               autoFocus={false}
                               className=""
                               id="uri"
-                              isAlt={false}
                               isDisabled={false}
                               isReadOnly={false}
                               isRequired={false}
@@ -711,6 +709,7 @@ exports[`Form renderer should render all form widgets 1`] = `
                                     autoFocus={false}
                                     className=""
                                     id="defaultCheckbox"
+                                    isChecked={null}
                                     isDisabled={false}
                                     isValid={true}
                                     name="defaultCheckbox"
@@ -719,19 +718,23 @@ exports[`Form renderer should render all form widgets 1`] = `
                                     onFocus={[Function]}
                                     value=""
                                   >
-                                    <input
-                                      aria-invalid={false}
-                                      autoFocus={false}
+                                    <div
                                       className="pf-c-check"
-                                      disabled={false}
-                                      id="defaultCheckbox"
-                                      name="defaultCheckbox"
-                                      onBlur={[Function]}
-                                      onChange={[Function]}
-                                      onFocus={[Function]}
-                                      type="checkbox"
-                                      value=""
-                                    />
+                                    >
+                                      <input
+                                        aria-invalid={false}
+                                        autoFocus={false}
+                                        className="pf-c-check__input"
+                                        disabled={false}
+                                        id="defaultCheckbox"
+                                        name="defaultCheckbox"
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        type="checkbox"
+                                        value=""
+                                      />
+                                    </div>
                                   </Checkbox>
                                 </div>
                               </FinalFormField>
@@ -895,6 +898,7 @@ exports[`Form renderer should render all form widgets 1`] = `
                                     checked={false}
                                     className=""
                                     id="radio"
+                                    isChecked={null}
                                     isDisabled={false}
                                     isValid={true}
                                     name="radio"
@@ -904,20 +908,24 @@ exports[`Form renderer should render all form widgets 1`] = `
                                     type="radio"
                                     value="Yes"
                                   >
-                                    <input
-                                      aria-invalid={false}
-                                      autoFocus={false}
-                                      checked={false}
+                                    <div
                                       className="pf-c-check"
-                                      disabled={false}
-                                      id="radio"
-                                      name="radio"
-                                      onBlur={[Function]}
-                                      onChange={[Function]}
-                                      onFocus={[Function]}
-                                      type="radio"
-                                      value="Yes"
-                                    />
+                                    >
+                                      <input
+                                        aria-invalid={false}
+                                        autoFocus={false}
+                                        checked={false}
+                                        className="pf-c-check__input"
+                                        disabled={false}
+                                        id="radio"
+                                        name="radio"
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        type="radio"
+                                        value="Yes"
+                                      />
+                                    </div>
                                   </Radio>
                                 </div>
                               </FinalFormField>
@@ -1050,6 +1058,7 @@ exports[`Form renderer should render all form widgets 1`] = `
                                     checked={false}
                                     className=""
                                     id="radio"
+                                    isChecked={null}
                                     isDisabled={false}
                                     isValid={true}
                                     name="radio"
@@ -1059,20 +1068,24 @@ exports[`Form renderer should render all form widgets 1`] = `
                                     type="radio"
                                     value="No"
                                   >
-                                    <input
-                                      aria-invalid={false}
-                                      autoFocus={false}
-                                      checked={false}
+                                    <div
                                       className="pf-c-check"
-                                      disabled={false}
-                                      id="radio"
-                                      name="radio"
-                                      onBlur={[Function]}
-                                      onChange={[Function]}
-                                      onFocus={[Function]}
-                                      type="radio"
-                                      value="No"
-                                    />
+                                    >
+                                      <input
+                                        aria-invalid={false}
+                                        autoFocus={false}
+                                        checked={false}
+                                        className="pf-c-check__input"
+                                        disabled={false}
+                                        id="radio"
+                                        name="radio"
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        type="radio"
+                                        value="No"
+                                      />
+                                    </div>
                                   </Radio>
                                 </div>
                               </FinalFormField>
@@ -1504,7 +1517,6 @@ exports[`Form renderer should render all form widgets 1`] = `
                               autoFocus={false}
                               className=""
                               id="defaultInput"
-                              isAlt={false}
                               isDisabled={false}
                               isReadOnly={false}
                               isRequired={false}
@@ -1806,7 +1818,6 @@ exports[`Form renderer should render all form widgets 1`] = `
                               autoFocus={false}
                               className=""
                               id="color"
-                              isAlt={false}
                               isDisabled={false}
                               isReadOnly={false}
                               isRequired={false}
@@ -2077,7 +2088,6 @@ exports[`Form renderer should render all form widgets 1`] = `
                               autoFocus={false}
                               className=""
                               id="disabled"
-                              isAlt={false}
                               isDisabled={true}
                               isReadOnly={false}
                               isRequired={false}
@@ -2238,7 +2248,6 @@ exports[`Form renderer should render all form widgets 1`] = `
                               autoFocus={false}
                               className=""
                               id="readonly"
-                              isAlt={false}
                               isDisabled={false}
                               isReadOnly={true}
                               isRequired={false}
@@ -2395,7 +2404,6 @@ exports[`Form renderer should render all form widgets 1`] = `
                               autoFocus={false}
                               className=""
                               id="widgetOptions"
-                              isAlt={false}
                               isDisabled={false}
                               isReadOnly={false}
                               isRequired={false}
@@ -3082,7 +3090,6 @@ exports[`Form renderer should render form with array property 1`] = `
                               autoFocus={false}
                               className=""
                               id="title"
-                              isAlt={false}
                               isDisabled={false}
                               isReadOnly={false}
                               isRequired={false}
@@ -3276,7 +3283,6 @@ exports[`Form renderer should render form with array property 1`] = `
                                 className=""
                                 description="A sample title"
                                 id="tasks[0].title"
-                                isAlt={false}
                                 isDisabled={false}
                                 isReadOnly={false}
                                 isRequired={false}
@@ -3594,6 +3600,7 @@ exports[`Form renderer should render form with array property 1`] = `
                                       autoFocus={false}
                                       className=""
                                       id="tasks[0].done"
+                                      isChecked={null}
                                       isDisabled={false}
                                       isValid={true}
                                       name="tasks[0].done"
@@ -3602,19 +3609,23 @@ exports[`Form renderer should render form with array property 1`] = `
                                       onFocus={[Function]}
                                       value=""
                                     >
-                                      <input
-                                        aria-invalid={false}
-                                        autoFocus={false}
+                                      <div
                                         className="pf-c-check"
-                                        disabled={false}
-                                        id="tasks[0].done"
-                                        name="tasks[0].done"
-                                        onBlur={[Function]}
-                                        onChange={[Function]}
-                                        onFocus={[Function]}
-                                        type="checkbox"
-                                        value=""
-                                      />
+                                      >
+                                        <input
+                                          aria-invalid={false}
+                                          autoFocus={false}
+                                          className="pf-c-check__input"
+                                          disabled={false}
+                                          id="tasks[0].done"
+                                          name="tasks[0].done"
+                                          onBlur={[Function]}
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          type="checkbox"
+                                          value=""
+                                        />
+                                      </div>
                                     </Checkbox>
                                   </div>
                                 </FinalFormField>

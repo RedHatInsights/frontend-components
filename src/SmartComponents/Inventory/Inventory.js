@@ -4,10 +4,13 @@ import routerParams from '../../Utilities/RouterParams';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail';
 
-const Inventory = ({ match, noTable = false }) => {
+const Inventory = ({ match, noTable = false, items = []}) => {
     return (
         <Switch>
-            { !noTable && <Route exact path={ match.url } component={ InventoryList } /> }
+            {
+                !noTable &&
+                <Route exact path={ match.url } render={ props => <InventoryList { ...props } items={ items } /> } />
+            }
             <Route path={ `${match.url}${match.url.substr(-1, 1) === '/' ? '' : '/'}:inventoryId` }
                 render={ props => <InventoryDetail { ...props } root={ match.url } /> }
             />

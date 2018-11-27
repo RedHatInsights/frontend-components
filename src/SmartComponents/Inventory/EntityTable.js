@@ -93,7 +93,7 @@ class EntityTable extends React.Component {
 
     render() {
         const { columns, entities, rows } = this.props;
-        const filteredData = entities || rows;
+        const filteredData = (entities || rows).filter(oneRow => oneRow.account);
         const data = filteredData.map(oneItem => ({
             id: oneItem.id,
             selected: oneItem.selected,

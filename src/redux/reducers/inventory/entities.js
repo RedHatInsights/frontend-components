@@ -1,4 +1,4 @@
-import { ACTION_TYPES, SELECT_ENTITY, CHANGE_SORT, FILTER_ENTITIES } from '../../action-types';
+import { ACTION_TYPES, SELECT_ENTITY, CHANGE_SORT, FILTER_ENTITIES, SHOW_ENTITIES } from '../../action-types';
 import { mergeArraysByKey } from '../../../Utilities/helpers';
 import { SortDirection } from '../../../PresentationalComponents/Table';
 import get from 'lodash/get';
@@ -64,6 +64,7 @@ function changeSort(state, { payload: { key, direction }}) {
 export default {
     [ACTION_TYPES.LOAD_ENTITIES_PENDING]: entitiesPending,
     [ACTION_TYPES.LOAD_ENTITIES_FULFILLED]: entitiesLoaded,
+    [SHOW_ENTITIES]: entitiesLoaded,
     [SELECT_ENTITY]: selectEntity,
     [CHANGE_SORT]: changeSort,
     [FILTER_ENTITIES]: filterEntities

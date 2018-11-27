@@ -13,8 +13,8 @@
     "Utilities/"
   ],
   "dependencies": {
-    "@patternfly/react-core": "^1.19.1",
-    "@patternfly/react-icons": "^2.5.2",
+    "@patternfly/react-core": "^1.36.0",
+    "@patternfly/react-icons": "^2.8.0",
     "bootstrap-sass": "^3.3.7",
     "c3": "^0.6.7",
     "classnames": "^2.2.5",

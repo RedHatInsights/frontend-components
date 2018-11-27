@@ -1,4 +1,4 @@
-export const INVENTORY_API_BASE = '/hosts';
+export const INVENTORY_API_BASE = '/r/insights/platform/inventory/api/hosts';
 
 /* eslint camelcase: off */
 function buildMock(i) {
@@ -34,7 +34,7 @@ function buildMock(i) {
                         utcoffset: '-0400'
                     }
                 },
-                namespace: 'insights'
+                namespace: 'inventory'
             }
         ],
         display_name: 'Red Hat Enterprise Linux 8'
@@ -63,8 +63,8 @@ const mapData = ({ results, ...data }) => ({
     }))
 });
 
-export function getEntities() {
-    return fetch(INVENTORY_API_BASE).then(r => {
+export function getEntities(items) {
+    return fetch(`${INVENTORY_API_BASE}${items.length !== 0 ? '/' + items : ''}`).then(r => {
         if (r.ok) {
             return r.json().then(mapData);
         }
