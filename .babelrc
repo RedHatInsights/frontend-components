@@ -1,4 +1,8 @@
 {
-    "presets": ["./.babelrc.js"]
+    "presets": ["./.babelrc.js"],
+    "plugins": [
+        "add-react-displayname", 
+        "transform-react-display-name"
+    ]
 }
   
