@@ -28,17 +28,17 @@ class Wizard extends Component {
     }
 
     // On modal close, reset currentStep back to the initial step, the call modalToggle(PF)
-    handleOnClose() {
+    handleOnClose(submit = false) {
         this.setState({ currentStep: 0 });
-        this.props.handleModalToggle && this.props.handleModalToggle();
+        this.props.onClose(submit);
     }
 
     render() {
 
-        const { isLarge, title, className, isOpen, handleModalToggle, ...props } = this.props;
+        const { isLarge, title, className, isOpen, ...props } = this.props;
 
         const renderModalActions =  [
-            <Button key="cancel" variant="secondary" onClick={ this.handleOnClose }>
+            <Button key="cancel" variant="secondary" onClick={ () => this.handleOnClose(false) }>
             Cancel
             </Button>,
             // Conditionally render 'previous' button if not on first page
@@ -47,7 +47,7 @@ class Wizard extends Component {
             // Conditionally render 'confirm' button if on last page
             this.state.currentStep < this.props.content.length - 1
                 ? <Button key="continue" variant="primary" onClick={ this.handleNextModalStep }> Continue </Button>
-                : <Button key="confirm" variant="primary" onClick={ this.handleOnClose }> Confirm </Button>
+                : <Button key="confirm" variant="primary" onClick={ () => this.handleOnClose(true) }> Confirm </Button>
         ];
 
         return (
@@ -57,7 +57,7 @@ class Wizard extends Component {
                 title= { title }
                 className= { className }
                 isOpen={ isOpen }
-                onClose={ this.handleOnClose }
+                onClose={ () => this.handleOnClose(false) }
                 actions={ renderModalActions }>
                 { this.props.content[this.state.currentStep] }
             </Modal>
@@ -70,8 +70,12 @@ Wizard.propTypes = {
     title: PropTypes.string,
     className: PropTypes.string,
     isOpen: PropTypes.any,
-    handleModalToggle: PropTypes.any,
-    content: PropTypes.array
+    content: PropTypes.array,
+    onClose: PropTypes.func
+};
+
+Wizard.defaultProps = {
+    onClose: f => f
 };
 
 export default Wizard;
