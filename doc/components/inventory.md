@@ -473,16 +473,17 @@ window.insights.chrome.auth.getUser().then(
         body: JSON.stringify({
             "display_name": "Test computer",
             "account": data.account_number,
-            "insights_id": "abc-1234",
-            {
-                "facts": {
-                    "hostname": "server01.redhat.com",
-                    "machine_id": "c1497de-0ec7-43bb-a8a6-35cabd59e0bf",
-                    "release": "Red Hat Enterprise Linux Server release 7.5 (Maipo)",
-                },
-                "namespace": "inventory"
-            }
-            "tags": ["ui/environment:some"]
+            "insights_id": "abc-123",
+            facts: [
+                {
+                    facts: {
+                        hostname: `server01.redhat.com`,
+                                machine_id: `c1497de-0ec7-43bb-a8a6-35cabd59e0bf`,
+                                release: 'Red Hat Enterprise Linux Server release 7.5 (Maipo)',
+                    },
+                    namespace: 'inventory'
+                }
+            ]
         })
 }));
 ```
