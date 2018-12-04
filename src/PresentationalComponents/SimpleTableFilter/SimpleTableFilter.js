@@ -52,6 +52,9 @@ class SimpleFilter extends Component {
             ...props
         } = this.props;
         const { isOpen, selected } = this.state;
+        const dropdownItems = options.items.map(oneItem =>
+            <DropdownItem key={ oneItem.value } data-key={ oneItem.value }>{ oneItem.title }</DropdownItem>
+        );
         return (
             <div className={ `pf-c-input-group ${className}` } { ...props }>
                 {
@@ -64,11 +67,8 @@ class SimpleFilter extends Component {
                       { (selected && selected.title) || options.title || 'Dropdown' }
                   </DropdownToggle>
               }
-          >
-              { options.items.map(oneItem =>
-                  <DropdownItem key={ oneItem.value } data-key={ oneItem.value }>{ oneItem.title }</DropdownItem>
-              ) }
-          </Dropdown>
+              dropdownItems={ dropdownItems }
+          />
                 }
                 <Input placeholder={ placeholder } onChange={ this.onInputChange }/>
                 {
