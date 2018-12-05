@@ -12,7 +12,13 @@ class InventoryDetail extends React.Component {
     componentDidMount() {
         const { match: { params: { inventoryId }}, entity, loaded } = this.props;
         if (!entity || entity.id !== inventoryId || !loaded) {
-            this.props.loadEntity(inventoryId);
+            this.props.loadEntity(
+                inventoryId,
+                {
+                    prefix: this.props.pathPrefix,
+                    base: this.props.apiBase
+                }
+            );
         }
     }
 
@@ -32,6 +38,8 @@ class InventoryDetail extends React.Component {
 InventoryDetail.propTypes = {
     root: PropTypes.string,
     match: PropTypes.any,
+    pathPrefix: PropTypes.number,
+    apiBase: PropTypes.string,
     entity: PropTypes.shape({
         id: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
     }),
@@ -41,7 +49,7 @@ InventoryDetail.propTypes = {
 
 function mapDispatchToProps(dispatch) {
     return {
-        loadEntity: (id) => dispatch(loadEntity(id))
+        loadEntity: (id, config) => dispatch(loadEntity(id))
     };
 }
 

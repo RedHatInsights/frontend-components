@@ -1,9 +1,9 @@
 import { ACTION_TYPES, SELECT_ENTITY, CHANGE_SORT, FILTER_ENTITIES, APPLICATION_SELECTED, SHOW_ENTITIES } from '../action-types';
-import { getEntity, getEntities } from '../../api/inventory';
+import { getEntities } from '../../api/inventory';
 
-export const loadEntities = (items = []) => ({
+export const loadEntities = (items = [], config) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
-    payload: getEntities(items)
+    payload: getEntities(items, config)
 });
 
 export const showEntities = (items = []) => ({
@@ -13,9 +13,9 @@ export const showEntities = (items = []) => ({
     }
 });
 
-export const loadEntity = id => ({
+export const loadEntity = (id, config) => ({
     type: ACTION_TYPES.LOAD_ENTITY,
-    payload: getEntity(id)
+    payload: getEntities(id, config)
 });
 
 export const selectEntity = (id, selected) => ({

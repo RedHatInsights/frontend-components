@@ -63,30 +63,22 @@ const mapData = ({ results, ...data }) => ({
     }))
 });
 
-export function getEntities(items) {
-    return fetch(`${INVENTORY_API_BASE}${items.length !== 0 ? '/' + items : ''}`).then(r => {
+export function getEntities(items, { prefix = 0, base = INVENTORY_API_BASE }) {
+    return fetch(
+        `${base}${items.length !== 0 ? '/' + items : ''}`,
+        {
+            headers: {
+                'x-rh-insights-use-path-prefix': prefix
+            }
+        }
+    ).then(r => {
         if (r.ok) {
             return r.json().then(mapData);
         }
 
         // TODO: remove me
         if (r.status === 404) {
-            return mapData(mockData());
-        }
-
-        throw new Error(`Unexpected response code ${r.status}`);
-    });
-}
-
-export function getEntity(id) {
-    return fetch(`${INVENTORY_API_BASE}/${id}`).then(r => {
-        if (r.ok) {
-            return r.json().then(mapData);
-        }
-
-        // TODO: remove me
-        if (r.status === 404) {
-            return mapData(mockData(id));
+            return mapData(mockData(items));
         }
 
         throw new Error(`Unexpected response code ${r.status}`);

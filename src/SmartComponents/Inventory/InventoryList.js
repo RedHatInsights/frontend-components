@@ -19,7 +19,13 @@ class InventoryList extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadEntities(this.props.items);
+        this.props.loadEntities(
+            this.props.items,
+            {
+                prefix: this.props.pathPrefix,
+                base: this.props.apiBase
+            }
+        );
     }
 
     render() {
@@ -50,6 +56,8 @@ class InventoryList extends React.Component {
 InventoryList.propTypes = {
     filterEntities: PropTypes.func,
     loadEntities: PropTypes.func,
+    pathPrefix: PropTypes.number,
+    apiBase: PropTypes.string,
     items: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.string),
         PropTypes.shape({
@@ -61,14 +69,14 @@ InventoryList.propTypes = {
 
 function mapDispatchToProps(dispatch) {
     return {
-        loadEntities: (items = []) => {
+        loadEntities: (items = [], config) => {
             const itemIds = items.reduce((acc, curr) => (
                 [
                     ...acc,
                     typeof curr === 'string' ? curr : curr.id
                 ]
             ), []);
-            dispatch(loadEntities(itemIds));
+            dispatch(loadEntities(itemIds, config));
             dispatch(showEntities(items.map(oneItem => (
                 { ...typeof oneItem === 'string' ? { id: oneItem } : oneItem }
             ))));
