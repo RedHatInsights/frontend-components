@@ -49,7 +49,7 @@ InventoryDetail.propTypes = {
 
 function mapDispatchToProps(dispatch) {
     return {
-        loadEntity: (id, config) => dispatch(loadEntity(id))
+        loadEntity: (id, config) => dispatch(loadEntity(id, config))
     };
 }
 
