@@ -52,7 +52,7 @@ class SimpleFilter extends Component {
             ...props
         } = this.props;
         const { isOpen, selected } = this.state;
-        const dropdownItems = options.items.map(oneItem =>
+        const dropdownItems = options && options.items.map(oneItem =>
             <DropdownItem key={ oneItem.value } data-key={ oneItem.value }>{ oneItem.title }</DropdownItem>
         );
         return (

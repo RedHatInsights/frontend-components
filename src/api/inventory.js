@@ -63,15 +63,8 @@ const mapData = ({ results, ...data }) => ({
     }))
 });
 
-export function getEntities(items, { prefix = 0, base = INVENTORY_API_BASE }) {
-    return fetch(
-        `${base}${items.length !== 0 ? '/' + items : ''}`,
-        {
-            headers: {
-                'x-rh-insights-use-path-prefix': prefix
-            }
-        }
-    ).then(r => {
+export function getEntities(items, { base = INVENTORY_API_BASE }) {
+    return fetch(`${base}${items.length !== 0 ? '/' + items : ''}`).then(r => {
         if (r.ok) {
             return r.json().then(mapData);
         }
