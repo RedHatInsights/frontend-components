@@ -1,8 +1,8 @@
 {
     "presets": ["./.babelrc.js"],
     "plugins": [
-        "add-react-displayname", 
-        "transform-react-display-name"
+        "add-react-displayname",
+        "transform-react-display-name",
+        "babel-plugin-transform-class-properties"
     ]
 }
-  
