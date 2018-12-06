@@ -43,6 +43,7 @@ class TableBody extends Component {
                         'pf-m-expanded': row.active
                     }) }
                     onClick={ event => this.props.onExpandClick && this.props.onExpandClick(event, row, key) }
+                    aria-label={ `Expand row ${key}` }
                 >
                     <AngleDownIcon />
                 </Button> }
