@@ -1,0 +1,7 @@
+@import '../../Utilities';
+
+.ins-c-remediation-modal {
+  .pf-c-modal-box__body {
+    > * + * { @include rem('margin-top', 20px); }
+  }
+}

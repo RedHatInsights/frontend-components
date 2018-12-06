@@ -52,6 +52,10 @@ There is also a playground for any development
   * [Breadcrumbs](doc/components/breadcrumbs.md)
   * [Notifications](doc/components/notifications.md)
 
+Hot-loadable components
+* [Inventory](doc/components/inventory.md)
+* [Remediations](doc/components/remediations.md)
+
 ## Conbribution
 
 ### Adding to index.js
