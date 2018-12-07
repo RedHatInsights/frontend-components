@@ -11,6 +11,50 @@ The component enables user flows like this:
 1. Once the user completes the wizard a new remediation is created in the Remediations application (or an existing one is altered).
     The user either stays within the Vulnerabilities application the whole time or may be redirected to the Remediations application upon creation
 
+## Hot-loading the Wizard using RemediationButton
+The recommended way of integrating Remediation Wizard is via `<RemediationButton/>` component.
+Here's what the usage looks like:
+
+```JSX
+    <RemediationButton dataProvider={this.dataProvider} />
+```
+
+`dataProvider` is a required parameter.
+This function is called when the button is clicked.
+This function is expected to sumarizes the choices made by the user so far (What CVE are they looking at? What systems did they check?).
+The wizard builds on information provided, combines it with information collected by wizard steps and eventually creates a new remediation.
+
+`dataProvider` may return a Promise.
+
+Here's an example of `dataProvider` implementation:
+
+```JSX
+    dataProvider () {
+        return {
+            issues: [{
+                id: `vulnerabilities:${this.state.cveName}`
+            }],
+            systems: [
+                '34b9f7d9-fc81-4e0f-bef0-c4b402a1510e' // TODO: use real system ids here based on selection in SystemsExposedTable
+            ]
+        };
+    }
+```
+
+In addition, an `onRemediationCreated` callback may be provided.
+This callback will be called when the wizard has been completed by the user and a new Remediation has been created.
+Information about the new Remediation is available under `result.remediation`.
+Optionally, if the application uses [Notifications component](https://github.com/RedHatInsights/insights-frontend-components/blob/master/doc/components/notifications.md) a notification informing of successful remediation creation is provided under `result.getNotification()`
+
+```JSX
+    onCreated (result) {
+        dispatchAction(addNotification(result.getNotification()));
+    }
+```
+
+## Hot-loading the Wizard directly
+Should the `<RemediationButton/>` component not fit for some reason Remediation Wizard can be used directly.
+
 The component is hot-loaded using Javacript API provided by [insights-chrome](https://github.com/redhatinsights/insights-chrome).
 The API is currently considered experimental thus the `experimental` namespace.
 
