@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@patternfly/react-core';
 import { loadEntity } from '../../redux/actions/inventory';
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import routerParams from '../../Utilities/RouterParams';
 import Entitydetail from './EntityDetail';
 import PropTypes from 'prop-types';
@@ -23,11 +23,11 @@ class InventoryDetail extends React.Component {
     }
 
     render() {
-        const { root } = this.props;
+        const { root, match: { params }} = this.props;
         return (
             <React.Fragment>
                 <Entitydetail />
-                <Link to={ root }>
+                <Link to={ generatePath(root, params) }>
                     <Button variant='primary'>Back</Button>
                 </Link>
             </React.Fragment>

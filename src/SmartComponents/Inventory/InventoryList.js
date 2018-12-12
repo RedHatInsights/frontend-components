@@ -11,15 +11,14 @@ import './InventoryList.scss';
 class InventoryList extends React.Component {
     constructor(props) {
         super(props);
-        this.filterEntities = this.filterEntities.bind(this);
     }
 
-    filterEntities(filterBy) {
+    filterEntities = (filterBy) => {
         this.props.filterEntities && this.props.filterEntities('display_name', filterBy);
     }
 
-    componentDidMount() {
-        this.props.loadEntities(
+    loadEntities = () => {
+        this.props.loadEntities && this.props.loadEntities(
             this.props.items,
             {
                 prefix: this.props.pathPrefix,
@@ -28,7 +27,12 @@ class InventoryList extends React.Component {
         );
     }
 
+    componentDidMount() {
+        this.loadEntities();
+    }
+
     render() {
+        const { showHealth, entites } = this.props;
         return (
             <React.Fragment>
                 <Grid guttter="sm" className="ins-inventory-list">
@@ -40,11 +44,11 @@ class InventoryList extends React.Component {
                         />
                     </GridItem>
                     <GridItem span={ 12 }>
-                        <InventoryEntityTable />
+                        <InventoryEntityTable showHealth={ showHealth }/>
                     </GridItem>
                     <GridItem span={ 1 }>
                         <div className='buttons'>
-                            <Button variant='primary' onClick={ this.props.entites }>Refresh</Button>
+                            <Button variant='primary' onClick={ this.loadEntities }>Refresh</Button>
                         </div>
                     </GridItem>
                 </Grid>
@@ -58,6 +62,7 @@ InventoryList.propTypes = {
     loadEntities: PropTypes.func,
     pathPrefix: PropTypes.number,
     apiBase: PropTypes.string,
+    showHealth: PropTypes.bool,
     items: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.string),
         PropTypes.shape({

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Title, Grid, GridItem, Label } from '@patternfly/react-core';
+import { Title, Grid, GridItem, Label, Dropdown, DropdownPosition, DropdownItem, DropdownToggle } from '@patternfly/react-core';
 import { TimesIcon } from '@patternfly/react-icons';
-import { SyncAltIcon } from '@patternfly/react-icons';
-import { Dropdown, DropdownItem, DropdownPosition } from '../../PresentationalComponents/Dropdown';
+import { List } from 'react-content-loader';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
@@ -12,29 +11,27 @@ class EntityDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            actionCollapsed: true
+            isOpen: false
         };
-        this.getFact = this.getFact.bind(this);
-        this.toggleActions = this.toggleActions.bind(this);
     }
 
-    getFact(path) {
+    getFact = (path) => {
         const { entity } = this.props;
         return get(entity, path, 'unknown');
     }
 
-    toggleActions(_event, collapsed) {
+    toggleActions = (collapsed) => {
         this.setState({
-            actionCollapsed: collapsed
+            isOpen: collapsed
         });
     }
     render() {
         const { loaded, entity } = this.props;
-        const { actionCollapsed } = this.state;
+        const { isOpen } = this.state;
         if (!loaded) {
             return (
                 <div>
-                    <SyncAltIcon/>
+                    <List/>
                 </div>
             );
         }
@@ -46,12 +43,15 @@ class EntityDetails extends Component {
                         <Title size='2xl'>{ entity.display_name }</Title>
                     </GridItem>
                     <GridItem md={ 6 }>
-                        <Dropdown title="Actions"
-                            isCollapsed={ actionCollapsed }
-                            onToggle={ this.toggleActions }
-                            position={ DropdownPosition.right }>
-                            <DropdownItem>Some action</DropdownItem>
-                        </Dropdown>
+                        <Dropdown
+                            onSelect={ this.onSelect }
+                            toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
+                            isOpen={ isOpen }
+                            position={ DropdownPosition.right }
+                            dropdownItems={ [
+                                <DropdownItem key="1">Some action</DropdownItem>
+                            ] }
+                        />
                     </GridItem>
                 </Grid>
                 <Grid className="ins-entity-facts">

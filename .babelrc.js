@@ -7,7 +7,10 @@ module.exports = {
       }],
       require.resolve('babel-plugin-syntax-dynamic-import'),
       require.resolve('babel-plugin-lodash'),
-      require.resolve('babel-plugin-transform-object-rest-spread')
+      require.resolve('babel-plugin-transform-object-rest-spread'),
+      require.resolve('babel-plugin-add-react-displayname'),
+      require.resolve('babel-plugin-transform-react-display-name'),
+      require.resolve('babel-plugin-transform-class-properties'),
   ],
   ignore: 'node_modules'
 }

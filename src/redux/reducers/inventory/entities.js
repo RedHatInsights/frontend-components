@@ -33,7 +33,7 @@ function entitiesLoaded(state, { payload }) {
     const entities = mergeArraysByKey([ state.rows, payload.results ]);
     return {
         ...state,
-        loaded: true,
+        loaded: payload.hasOwnProperty('loaded') ? payload.loaded : true,
         rows: entities,
         entities,
         count: payload.count
@@ -64,7 +64,12 @@ function changeSort(state, { payload: { key, direction }}) {
 export default {
     [ACTION_TYPES.LOAD_ENTITIES_PENDING]: entitiesPending,
     [ACTION_TYPES.LOAD_ENTITIES_FULFILLED]: entitiesLoaded,
-    [SHOW_ENTITIES]: entitiesLoaded,
+    [SHOW_ENTITIES]: (state, action) => entitiesLoaded(state, {
+        payload: {
+            ...action,
+            loaded: false
+        }
+    }),
     [SELECT_ENTITY]: selectEntity,
     [CHANGE_SORT]: changeSort,
     [FILTER_ENTITIES]: filterEntities

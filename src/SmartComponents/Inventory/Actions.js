@@ -1,46 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Dropdown, DropdownItem, DropdownPosition } from '../../PresentationalComponents/Dropdown';
+import React, { Component } from 'react';
+import { Dropdown, KebabToggle, DropdownItem, DropdownPosition } from '@patternfly/react-core';
 
-class Actions extends React.Component {
+export default class KebabDropdown extends Component {
     constructor(props) {
         super(props);
-        this.onToggle = this.onToggle.bind(this);
-        this.onSelect = this.onSelect.bind(this);
         this.state = {
-            isCollapsed: true
+            isOpen: false
         };
     }
 
-    onToggle(_event, collapsed) {
-        this.setState({ isCollapsed: collapsed });
-    }
+    onToggle = isOpen => {
+        this.setState({
+            isOpen
+        });
+    };
 
-    onSelect(event) {
-        event.stopPropagation();
-        this.setState({ isCollapsed: true });
-    }
+    onSelect = event => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    };
 
     render() {
+        const { isOpen } = this.state;
         return (
             <Dropdown
-                isKebab
-                position={ DropdownPosition.right }
-                isCollapsed={ this.state.isCollapsed }
-                title=""
                 onSelect={ this.onSelect }
-                onToggle={ this.onToggle }
-            >
-                <DropdownItem>First action</DropdownItem>
-            </Dropdown>
+                toggle={ <KebabToggle onToggle={ this.onToggle } /> }
+                isOpen={ isOpen }
+                position={ DropdownPosition.right }
+                isPlain
+                dropdownItems={ [
+                    <DropdownItem key="link">First action</DropdownItem>
+                ] }
+            />
         );
     }
 }
-
-Actions.propTypes = {
-    item: PropTypes.shape({
-        id: PropTypes.string
-    })
-};
-
-export default Actions;

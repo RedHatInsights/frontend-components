@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import routerParams from '../../Utilities/RouterParams';
 
 class AppInfo extends Component {
     render () {
-        const { match: { params: { detail }}, activeApps } = this.props;
-        const activeApp = activeApps.find(item => item.name === detail);
+        const { activeApps, active } = this.props;
+        const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
         return (
             <div>
                 { activeApp.component ? <activeApp.component /> : 'missing component' }
@@ -16,15 +15,19 @@ class AppInfo extends Component {
 }
 
 AppInfo.propTypes = {
-    match: PropTypes.shape({
-        params: PropTypes.shape({
-            detail: PropTypes.string
-        })
-    }),
     activeApps: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string
-    }))
+    })),
+    active: PropTypes.shape({
+        appName: PropTypes.string
+    })
 };
-AppInfo.defaultProps = {};
+AppInfo.defaultProps = {
+    activeApps: [],
+    active: {}
+};
 
-export default routerParams(connect(({ entityDetails: { activeApps }}) => ({ activeApps }))(AppInfo));
+export default connect(({ entityDetails: { activeApps, activeApp }}) => ({
+    activeApps,
+    active: activeApp
+}))(AppInfo);

@@ -10,10 +10,9 @@ import routerParams from '../../Utilities/RouterParams';
 class ApplicationDetails extends Component {
     constructor(props) {
         super(props);
-        this.onTabClick = this.onTabClick.bind(this);
     }
 
-    onTabClick(_event, item) {
+    onTabClick = (_event, item) => {
         const { history, match: { url }, onDetailSelect } = this.props;
         history.push(`${url}/${item.name}`);
         onDetailSelect && onDetailSelect(item.name);
@@ -21,17 +20,17 @@ class ApplicationDetails extends Component {
 
     render() {
         const { match: { path }, activeApp, items } = this.props;
-        const defaultApp = items && items[0] && items[0].name;
+        const defaultApp = (activeApp && activeApp.appName) || items && items[0] && items[0].name;
         return (
             <React.Fragment>
                 {
                     items &&
                     <TabLayout items={ items }
                         onTabClick={ this.onTabClick }
-                        active={ activeApp && (activeApp.appName || defaultApp) }>
+                        active={ defaultApp }>
+                        <AppInfo />
                         <Switch>
-                            <Route exact path={ `${path}/:detail` } component={ AppInfo } />
-                            <Redirect to={ `${path}/overview` }/>
+                            <Redirect to={ `${path}/${defaultApp}` }/>
                         </Switch>
                     </TabLayout>
                 }
@@ -54,9 +53,7 @@ ApplicationDetails.propTypes = {
 };
 
 ApplicationDetails.defaultProps = {
-    activeApp: {
-        appName: 'overview'
-    }
+    activeApp: {}
 };
 
 function stateToProps({ entityDetails: { activeApps, activeApp }}) {
