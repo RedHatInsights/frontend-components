@@ -115,7 +115,8 @@
     "prepublish": "rm -rf ./dist && npm run build",
     "playground": "webpack-dev-server --config config/webpack-build.config.js --env.server=true",
     "release": "semantic-release",
-    "lint": "eslint config src"
+    "lint": "eslint config src",
+    "watch": "webpack --watch --config config/webpack-build.config.js"
   },
   "release": {
     "analyzeCommits": "@khala/commit-analyzer-wildcard/analyzer",
