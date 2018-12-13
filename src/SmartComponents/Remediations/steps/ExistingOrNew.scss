@@ -1,0 +1,18 @@
+@import '../../../Utilities';
+
+.ins-c-existing-or-new {
+  .ins-c-existing-or-new--hidden {
+    display: none;
+  }
+
+  .ins-c-existing-or-new__existing {
+    .pf-c-check {
+      display: inline;
+    }
+
+    select.pf-c-form-control {
+      width: auto;
+      @include rem('margin-left', 20px);
+    }
+  }
+}
