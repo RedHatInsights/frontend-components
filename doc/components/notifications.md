@@ -240,3 +240,36 @@ notificationsMiddleware({
   errorDescriptionKey: 'body.description',
 })
 ```
+
+
+There might be also an situation when different APIs returns different error responses. You can configure multiple key paths to your error message.
+
+Lets say that our two endpoints have different error response structures:
+
+```javascript
+// Endpoint A
+{
+  errorTitle: 'Error',
+  errorDescription: 'Description'
+}
+// Endpoint B
+{
+  error: {
+    title: 'Error',
+    description: 'Description'
+  }
+}
+```
+
+We can tell the middleware that it should look for different keys in response:
+
+```javascript
+notificationsMiddleware({
+  errorTitleKey: ['errorTitle', 'error.title'],
+  errorDescriptionKey: ['errorDescription', 'error.description'],
+})
+```
+
+If you happen to have an error response that matches more paths, the first match will be chosen (order is equal to the order of items in array).
+
+

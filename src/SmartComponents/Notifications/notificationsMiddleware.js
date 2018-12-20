@@ -1,6 +1,28 @@
 
 import get from 'lodash/get';
+import has from 'lodash/has';
 import { addNotification } from '../../redux/actions/notifications';
+
+const prepareErrorMessage = (payload, errorTitleKey, errorDescriptionKey) => {
+    if (typeof payload === 'string') {
+        return {
+            title: 'Error',
+            description: payload
+        };
+    }
+
+    let titleKey = errorTitleKey;
+    if (Array.isArray(errorTitleKey)) {
+        titleKey = errorTitleKey.find(key => has(payload, key));
+    }
+
+    let descriptionKey = errorDescriptionKey;
+    if (Array.isArray(errorDescriptionKey)) {
+        descriptionKey = errorDescriptionKey.find(key => has(payload, key));
+    }
+
+    return { title: get(payload, titleKey) || 'Error', description: get(payload, descriptionKey) };
+};
 
 const shouldDispatchDefaultError = ({
     isRejected,
@@ -50,13 +72,10 @@ const createNotificationsMiddleware = (options = {}) => {
             noErrorOverride: meta && meta.noError,
             dispatchDefaultFailure: middlewareOptions.dispatchDefaultFailure
         })) {
-            const title = get(action.payload, middlewareOptions.errorTitleKey) || 'Error';
-            const description = typeof action.payload === 'string' ? action.payload : get(action.payload, middlewareOptions.errorDescriptionKey);
             dispatch(addNotification({
                 variant: 'danger',
-                title,
-                description,
-                dismissable: true
+                dismissable: true,
+                ...prepareErrorMessage(action.payload, middlewareOptions.errorTitleKey, middlewareOptions.errorDescriptionKey)
             }));
         }
 

@@ -330,4 +330,32 @@ describe('Notifications middleware', () => {
       expect(initialProps.store.getActions()).toEqual(expectedActions)
     })
   });
+
+  it('should select second message key from configuration', () => {
+    middlewares = [promiseMiddleware(), notificationsMiddleware({
+      errorTitleKey: ['body.title', 'fooKey'],
+      errorDescriptionKey: ['body.description', 'barKey']
+    })];
+    mockStore = configureStore(middlewares);
+    const store = mockStore({});
+    const expectedActions = expect.arrayContaining([
+      expect.objectContaining({
+        type: ADD_NOTIFICATION,
+        payload: {
+          variant: 'danger',
+          dismissable: true,
+          title: 'Second title option',
+          description: 'Second description option'
+        }
+      }),
+      expect.any(Object)
+    ]);
+
+    return store.dispatch(requestMock(true, {
+      fooKey: 'Second title option',
+      barKey: 'Second description option'
+    })).catch(() => {
+      expect(store.getActions()).toEqual(expectedActions)
+    })
+  });
 });
