@@ -13,44 +13,68 @@ Pass `expandable` to props and when user interacts with table you will be notifi
 `event`, `row`, `rowKey` arguments.
 
 ```JSX
-import React from 'react';
-import { Table, Pagination, TableVariant } from '@red-hat-insight/insights-frontend-components';
+import React, { Component } from 'react';
+import { Table, Pagination, TableVariant } from '@red-hat-insights/insights-frontend-components';
 
-export default () => (
-  <Table 
-    header={['First', 'Second', 'Third']}
-    onExpandClick={(event, row, rowKey) => onExpandClicked(event, row, rowKey)}
-    variant={TableVariant.large}
-    rows={[
-      {
-        children: [1]
-        isActive: false,
-        cells: ['1-1', '1-2', '1-3']
-      },
-      {
-        isOpen: false,
-        cells: [{ title: 'This text will span across whole table.' colSpan: 3}]
-      },
-      {
-        cells: ['3-1', '3-2', '3-3']
-      }
-    ]}
-    footer={<Pagination numberOfItems={3} />}
-  />
-) 
+class TreeViewTable extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rows: [
+        {
+          children: [1],
+          active: false,
+          cells: ['1-1', '1-2', '1-3']
+        },
+        {
+          isOpen: false,
+          cells: [{ title: 'This text will span across whole table.', colSpan: 3}]
+        },
+        {
+          cells: ['3-1', '3-2', '3-3']
+        }
+      ]
+    };
+    this.onExpandClicked = this.onExpandClicked.bind(this);
+  }
+
+  onExpandClicked(event, row, rowKey) {
+    const { rows } = this.state;
+    rows[rowKey].active = !row.active;
+    // or row.active = !row.active; both should function same
+    row.children.forEach(childKey => rows[childKey].isOpen = !rows[childKey].isOpen);
+    this.setState({ rows });
+  }
+
+  render() {
+    const { rows } = this.state;
+    return (
+      <Table 
+        header={['First', 'Second', 'Third']}
+        onExpandClick={(event, row, rowKey) => this.onExpandClicked(event, row, rowKey)}
+        expandable
+        variant={TableVariant.large}
+        rows={rows}
+        footer={<Pagination numberOfItems={3} />}
+      />
+    )
+  }
+}
+
+export default TreeViewTable;
 ```
 
 ### Data structure explained
 ```javascript
 rows = [
   {
-    children: [1] // row index
-    isActive: false, // bool to change if children rows are expanded or not
+    children: [1], // row index
+    active: false, // bool to change if children rows are expanded or not
     cells: ['1-1', '1-2', '1-3']
   },
   {
     isOpen: false, // bool to indicate if this row is expanded
-    cells: [{ title: 'This text will span across whole table.' colSpan: 3}]
+    cells: [{ title: 'This text will span across whole table.', colSpan: 3}]
   },
   {
     cells: ['3-1', '3-2', '3-3']
@@ -59,10 +83,10 @@ rows = [
 ```
 To indicate that some row is parent pass children array to it with keys (works both for arrays and objects). If you wnat
 to expand some parent you will indicate this by changing `isOpen` of such row to `true`. If you want to change chevron
-of opened parent you will set `isActive` to true.
+of opened parent you will set `active` to true.
 
 ### Sorting, filtering, pagination
-Since this component is based of Table you can do same things with it as with default table, just keep in mind that
+Since this component is based on Table you can do same things with it as with default table, just keep in mind that
 treeview table is using flat structure so you'll have to come up with more complex functions when you interact with the
 table.
 
