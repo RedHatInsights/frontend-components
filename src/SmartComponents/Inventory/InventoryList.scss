@@ -1,59 +1,104 @@
-.ins-inventory-filter {
-  padding-bottom: 10px;
+@import "~@patternfly/patternfly-next/utilities/Flex/flex.css";
+@import "~@patternfly/patternfly-next/utilities/Display/display.css";
+
+.ins-inventory-filters {
+    .ins-inventory-filter {
+        margin-left: 1em;
+
+        .pf-c-dropdown__menu {
+            max-height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            button.pf-m-disabled {
+                color: black;
+                font-weight: 800;
+            }
+
+            @for $i from 1 through 2 {
+                .ins-inventory-filter-#{$i} {
+                    margin-left: #{$i * 1.5}em;
+                }
+            }
+        }
+    }
+
+    .ins-inventory-total .ins-refresh {
+        margin-left: auto;
+    }
+}
+
+.pf-c-card__footer {
+    .content-view-pf-pagination.table-view-pf-pagination {
+        background: none;
+        border: 0px;
+
+        .pagination-pf-pagesize, .dropdown-toggle, .dropdown-menu, .pagination-pf-page {
+            font-size: var(--pf-global--FontSize--md)
+        }
+
+        .dropdown-toggle span.caret {
+            transform: rotate(180deg);
+        }
+
+        .pagination-pf-page {
+            padding-top: 5px;
+        }
+    }
 }
 
 .ins-entity-table.pf-c-table {
-  margin-bottom: 15px;
-  tr {
-    cursor: pointer;
-  }
-
-  .ins-health-status div {
-    display: inline-block;
-    padding-right: 20px;
-
-    svg {
-      position: relative;
-      top: 2px;
-      left: -2px;
-    }
-  }
-
-  .ins-composed-col {
-    :first-child {
-      color: var(--pf-c-button--m-disabled--Color);
-      font-size: var(--pf-global--FontSize--sm);
+    margin-bottom: 15px;
+    .ins-composed-col div:nth-child(2) {
+        cursor: pointer;
     }
 
-    * {
-      color: var(--pf-global--info-color--100);
-      font-size: var(	--pf-global--FontSize--lg);
-    }
-  }
+    .ins-health-status div {
+        display: inline-block;
+        padding-right: 20px;
 
-  .ins-health-status div {
-    span:nth-child(2) {
-      color: var(--pf-global--info-color--100);
-      cursor: pointer;
+        svg {
+            position: relative;
+            top: 2px;
+            left: -2px;
+        }
     }
-  }
 
-  .pf-c-table__action .pf-c-dropdown {
-    position: relative;
-    left: 10px;
-    top: 3px;
-  }
+    .ins-composed-col {
+        :first-child {
+            color: var(--pf-c-button--m-disabled--Color);
+            font-size: var(--pf-global--FontSize--sm);
+        }
+
+        * {
+            color: var(--pf-global--info-color--100);
+            font-size: var(	--pf-global--FontSize--lg);
+        }
+    }
+
+    .ins-health-status div {
+        span:nth-child(2) {
+            color: var(--pf-global--info-color--100);
+            cursor: pointer;
+        }
+    }
+
+    .pf-c-table__action .pf-c-dropdown {
+        position: relative;
+        left: 10px;
+        top: 3px;
+    }
 }
 
 .ins-simple-table {
-  .ins-health-status div {
-    display: inline-block;
-    padding-right: 20px;
+    .ins-health-status div {
+        display: inline-block;
+        padding-right: 20px;
 
-    svg {
-      position: relative;
-      top: 2px;
-      left: -2px;
+        svg {
+          position: relative;
+            top: 2px;
+            left: -2px;
+        }
     }
-  }
 }

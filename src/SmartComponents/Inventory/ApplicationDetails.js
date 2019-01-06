@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { TabLayout } from '../../PresentationalComponents/TabLayout';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import AppInfo from './AppInfo';
 import { detailSelect } from '../../redux/actions/inventory';
 import routerParams from '../../Utilities/RouterParams';

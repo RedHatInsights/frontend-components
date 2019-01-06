@@ -33,8 +33,8 @@ const Table = ({
     ...props
 }) => {
     const onAllRowsSelect = (event, selected) => {
-        Object.keys(rows).forEach((oneRow, key) => {
-            onItemSelect(event, oneRow.hasOwnProperty('id') ? oneRow.id : key, selected);
+        Object.keys(rows).forEach((oneRow) => {
+            onItemSelect(event, rows[oneRow].hasOwnProperty('id') ? rows[oneRow].id : oneRow, selected);
         });
     };
 

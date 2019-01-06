@@ -7,15 +7,13 @@ This component is hot loaded via chrome, so any changes made to it will be autom
 # Notice!
 **When using system detail do not use `Route` set to `exact`. It is designed as partial component and app details of inventory is loaded in same view so it will break if not used in non-exact mode.**
 
-Imagine you have page registerd in router with system information and want to show system detail, to show it DO NOT use it like this:
+You will need to register two routes (one for inventory table the other one for inventory detail) in this way
 ```JSX
-<Route exact path='/systems' component={ ActiveSystem }/>
+<Route exact path={'some/path/:itemId'} component={ItemPage} />
+<Route path={'some/path/:itemId/:inventoryId'} component={InventoryPage} />
 ```
 
-Should be written as:
-```JSX
-<Route path='/systems' component={ ActiveSystem }/>
-```
+Where `ItemPage` contains `InventoryTable` and `InventoryPage` has inventory detail. If back button is not working correctly you might want to consider adding `root` to Inventory detail so it picks correct props and maps them to URL.
 
 **These examples count on using insight's registry, if you are using different make sure that you pass along correct one and don't use `registryDecorator`**
 
@@ -29,6 +27,7 @@ Expected dependencies is object with shape:
     reactRouterDom: reactRouterDom //React router dom { withRouter, Switch, Route, Redirect, Link } are required
     reactIcons: reactIcons //PF icons { TimesIcon, SyncIcon, hieldAltIcon, DollarSignIcon, WrenchIcon, CertificateIcon } are required, but they might be changed and more will be needed in future
     reactCore: reactCore //PF react core items, best is to import * and pass whole reactCore
+    pfreact: pfreact // PF 3 react components - PaginationRow is currently used
 }
 ```
 
@@ -39,6 +38,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
 import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
 @registryDecorator()
@@ -57,7 +57,8 @@ class SomeCmp extends React.Component {
             react: React,
             reactRouterDom,
             reactCore,
-            reactIcons
+            reactIcons,
+            pfReact: { PaginationRow }
         });
 
         this.getRegistry().register({
@@ -84,6 +85,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
 import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
 @registryDecorator()
@@ -102,7 +104,8 @@ class SomeCmp extends React.Component {
             react: React,
             reactRouterDom,
             reactCore,
-            reactIcons
+            reactIcons,
+            pfReact: { PaginationRow }
         });
 
         this.getRegistry().register({
@@ -117,7 +120,7 @@ class SomeCmp extends React.Component {
     render() {
         const { InventoryCmp } = this.state;
         return (
-            <InventoryCmp />
+            <InventoryCmp root={'some/url/:someId'}/>
         )
     }
 }
@@ -136,6 +139,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
 import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 import { hostData } from './api';
 
@@ -160,7 +164,8 @@ class SomeCmp extends React.Component {
             react: React,
             reactRouterDom,
             reactCore,
-            reactIcons
+            reactIcons,
+            pfReact: { PaginationRow }
         });
 
         this.getRegistry().register({
@@ -188,6 +193,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
 import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
 @registryDecorator()
@@ -198,7 +204,8 @@ class SomeCmp extends React.Component {
             react: React,
             reactRouterDom,
             reactCore,
-            reactIcons
+            reactIcons,
+            pfReact: { PaginationRow }
         });
 
         this.getRegistry().register({
@@ -228,6 +235,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
 import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
 @registryDecorator()
@@ -238,7 +246,8 @@ class SomeCmp extends React.Component {
             react: React,
             reactRouterDom,
             reactCore,
-            reactIcons
+            reactIcons,
+            pfReact: { PaginationRow }
         });
 
         this.getRegistry().register({
@@ -259,6 +268,171 @@ class SomeCmp extends React.Component {
       //Do something with data Promise
     }
   //...
+}
+```
+
+### InventoryTable as tree
+Since inventory table is regular table you can pass additional data to it to be rendered as tree table with collapsible rows and some specific data in such row.
+
+To access store for dispatching events down to inventory you need to connect your component to redux using `connect` function and set store into context props.
+```JSX
+import React from 'react';
+import * as reactRouterDom from 'react-router-dom';
+import * as reactCore from '@patternfly/react-core';
+import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+
+@registryDecorator()
+class SomeCmp extends React.Component {
+    constructor(props, ctx) {
+        super(props, ctx);
+        this.state = {
+            InventoryCmp: () => <div>Loading...</div>,
+            items: [{
+                id: 'some-id',
+                children: [1], // please select some kind of more specific ID
+                active: false // to indicate that parent is not expanded
+            }, {
+                account: true, // since inventory table is checking if account is set
+                isOpen: false,
+                title: <div>Blaaa</div>, // What to show in expanded row
+            }]
+        }
+        this.onExpandClick = this.onExpandClick.bind(this);
+        this.fetchInventory();
+    }
+
+    async fetchInventory() {
+        const { inventoryConnector, mergeWithEntities } = await insights.loadInventory({
+            react: React,
+            reactRouterDom,
+            reactCore,
+            reactIcons,
+            pfReact: { PaginationRow }
+        });
+
+        this.getRegistry().register({
+            ...mergeWithEntities()
+        });
+
+        const { InventoryTable, updateEntities } = inventoryConnector();
+        this.updateEntities = updateEntities;
+
+        this.setState({
+            InventoryCmp: InventoryTable
+        })
+    }
+
+    onExpandClick(_cell, row, key) {
+        const { items } = this.state;
+        items.find(item => item.id === key).active = !row.active;
+        // Not ideal, but for the sake of example it's fine
+        row.children.forEach(child => {
+            items.find(item => item.id === child.id).isOpen = !row.active;
+        });
+        this.setState({
+            items
+        });
+        this.context.store.dispatch(this.updateEntities(items));
+    }
+
+    render() {
+        const { InventoryCmp, items } = this.state;
+        return (
+            <InventoryCmp items={items} expandable onExpandClick={this.onExpandClick} />
+        )
+    }
+}
+
+SomeCmp.contextTypes = {
+   store: propTypes.object
+};
+
+export default connect(() => ({}))(SomeCmp);
+```
+
+### Refresh on change (for example on filter)
+When user wants to update table, filter data (both trough filter select and textual filter) or you want to update visible items you can either update data in redux or use inventory ref and `onRefreshData` function.
+
+```JSX
+import React from 'react';
+import * as reactRouterDom from 'react-router-dom';
+import * as reactCore from '@patternfly/react-core';
+import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+
+@registryDecorator()
+class SomeCmp extends React.Component {
+    constructor(props, ctx) {
+        super(props, ctx);
+        this.inventory = React.createRef();
+        this.state = {
+            InventoryCmp: () => <div>Loading...</div>,
+            items: [] // some data
+        }
+        this.fetchInventory();
+    }
+
+    async fetchInventory() {
+        // ..
+    }
+
+    onRefresh(options) {
+        // Do something with this.state items and refresh data trough onRefreshData function
+        this.inventory.current && this.inventory.current.onRefreshData();
+    }
+
+    render() {
+        const { InventoryCmp, items } = this.state;
+        return (
+            <InventoryCmp items={items} ref={this.inventory} />
+        )
+    }
+}
+```
+
+### Additional filtering
+Inventory has some basic filters over name, system type and OS version. However if you want to add your own filters you can do that by passing filters. Also if you want to show some extra content in header just pass children and inventory will show them next to filters and refresh.
+
+You will be notified in `onRefresh` function about filter changes.
+```JSX
+import React from 'react';
+import * as reactRouterDom from 'react-router-dom';
+import * as reactCore from '@patternfly/react-core';
+import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+
+@registryDecorator()
+class SomeCmp extends React.Component {
+    constructor(props, ctx) {
+        super(props, ctx);
+        this.inventory = React.createRef();
+        this.state = {
+            InventoryCmp: () => <div>Loading...</div>
+        }
+        this.fetchInventory();
+    }
+
+    async fetchInventory() {
+        // ..
+    }
+
+    // options: { page, per_page, filters }
+    onRefresh(options) {
+        // do something with options
+    }
+
+    render() {
+        const { InventoryCmp } = this.state;
+        return (
+            <InventoryCmp ref={this.inventory} filters={[
+                { title: 'Some filter', value: 'some-filter', items: [{ title: 'First', value: 'first' }] }
+            ]} onRefresh={this.onRefresh}/>
+        )
+    }
 }
 ```
 
@@ -289,6 +463,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
 import { listReducer } from './store/reducers';
 import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
@@ -300,7 +475,8 @@ class SomeCmp extends React.Component {
       react: React,
       reactRouterDom,
       reactCore,
-      reactIcons
+      reactIcons,
+      pfReact: { PaginationRow }
     });
 
     this.getRegistry().register({
@@ -353,6 +529,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
 import { entityDetailReducer } from './store/reducers';
 import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
 
@@ -368,7 +545,8 @@ class SomeCmp extends React.Component {
             react: React,
             reactRouterDom,
             reactCore,
-            reactIcons
+            reactIcons,
+            pfReact: { PaginationRow }
         });
 
         this.getRegistry().register({

@@ -33,11 +33,12 @@ class SimpleFilter extends Component {
 
     onSelect(event) {
         const { options } = this.props;
+        const selected = options.items.find(oneItem => oneItem.value === event.target.getAttribute('data-key'));
         this.setState({
             isOpen: false,
-            selected: options.items.find(oneItem => oneItem.value === event.target.getAttribute('data-key'))
+            selected
         });
-        this.props.onOptionSelect && this.props.onOptionSelect(event);
+        this.props.onOptionSelect && this.props.onOptionSelect(event, selected);
     }
 
     render() {
@@ -52,25 +53,28 @@ class SimpleFilter extends Component {
             ...props
         } = this.props;
         const { isOpen, selected } = this.state;
-        const dropdownItems = options && options.items.map(oneItem =>
-            <DropdownItem key={ oneItem.value } data-key={ oneItem.value }>{ oneItem.title }</DropdownItem>
+        const dropdownItems = options && options.items && options.items.map(oneItem =>
+            <DropdownItem component="button" key={ oneItem.value } data-key={ oneItem.value }>{ oneItem.title }</DropdownItem>
         );
         return (
             <div className={ `pf-c-input-group ${className}` } { ...props }>
                 {
                     options &&
-          <Dropdown
-              onSelect={ this.onSelect }
-              isOpen={ isOpen }
-              toggle={
-                  <DropdownToggle onToggle={ this.onToggle }>
-                      { (selected && selected.title) || options.title || 'Dropdown' }
-                  </DropdownToggle>
-              }
-              dropdownItems={ dropdownItems }
-          />
+                    <Dropdown
+                        onSelect={ this.onSelect }
+                        isOpen={ isOpen }
+                        toggle={
+                            <DropdownToggle onToggle={ this.onToggle }>
+                                { (selected && selected.title) || options.title || 'Dropdown' }
+                            </DropdownToggle>
+                        }
+                        dropdownItems={ dropdownItems }
+                    />
                 }
-                <Input placeholder={ placeholder } onChange={ this.onInputChange }/>
+                <Input placeholder={ placeholder }
+                    onKeyPress={ event => event.key === 'Enter' && this.onInputChange(event) }
+                    onChange={ this.onInputChange }
+                />
                 {
                     buttonTitle &&
                     <Button variant={ ButtonVariant.secondary } onClick={ this.onFilterSubmit }>{ buttonTitle }</Button>

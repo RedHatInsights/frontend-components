@@ -9,20 +9,33 @@ import mapValues from 'lodash/mapValues';
 import TableActions from './Actions';
 import HealthStatus from './HealthStatus';
 import get from 'lodash/get';
+import ContentLoader from 'react-content-loader';
+import orderBy from 'lodash/orderBy';
+
+const RowLoader = props => (
+    <ContentLoader
+        height={ 20 }
+        width={ 480 }
+        { ...props }
+    >
+        <rect x="30" y="0" rx="3" ry="3" width="250" height="7" />
+        <rect x="300" y="0" rx="3" ry="3" width="70" height="7" />
+        <rect x="385" y="0" rx="3" ry="3" width="95" height="7" />
+        <rect x="50" y="12" rx="3" ry="3" width="80" height="7" />
+        <rect x="150" y="12" rx="3" ry="3" width="200" height="7" />
+        <rect x="360" y="12" rx="3" ry="3" width="120" height="7" />
+        <rect x="0" y="0" rx="0" ry="0" width="20" height="20" />
+    </ContentLoader>
+);
 
 class EntityTable extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            sortBy: {}
-        };
-    }
-
     onRowClick = (_event, key, application) => {
-        const { match: { url }, history, onDetailSelect } = this.props;
-        const dilimeter = url.substr(-1, 1) === '/' ? '' : '/';
-        history.push(`${url}${dilimeter}${key}/${application ? application : ''}`);
-        onDetailSelect && onDetailSelect(application);
+        const { match: { url }, history, onDetailSelect, loaded } = this.props;
+        if (loaded) {
+            const dilimeter = url.substr(-1, 1) === '/' ? '' : '/';
+            history.push(`${url}${dilimeter}${key}/${application ? application : ''}`);
+            onDetailSelect && onDetailSelect(application);
+        }
     }
 
     onItemSelect = (_event, key, checked) => {
@@ -32,30 +45,30 @@ class EntityTable extends React.Component {
     onSort = (_event, key, direction) => {
         if (key !== 'action' && key !== 'health') {
             this.props.setSort && this.props.setSort(key, direction);
-            this.setState({
-                sortBy: {
-                    index: key,
-                    direction
-                }
-            });
         }
     }
 
     renderCol = (col, key, composed, isTime) => {
-        if (composed) {
-            return (
-                <div className="ins-composed-col">
-                    { composed.map(path => (
-                        <div key={ path } widget="col" data-key={ path }>
-                            { get(col, path, 'unknown') || '\u00A0' }
-                        </div>
-                    )) }
-                </div>
-            );
-        }
+        if (!col.hasOwnProperty('isOpen')) {
+            if (composed) {
+                return (
+                    <div className="ins-composed-col">
+                        { composed.map(path => (
+                            <div key={ path }
+                                widget="col"
+                                data-key={ path }
+                                onClick={ event => this.onRowClick(event, col.id) }
+                            >
+                                { get(col, path, 'unknown') || '\u00A0' }
+                            </div>
+                        )) }
+                    </div>
+                );
+            }
 
-        if (isTime) {
-            return (new Date(get(col, key, 'unknown'))).toLocaleString();
+            if (isTime) {
+                return (new Date(get(col, key, 'unknown'))).toLocaleString();
+            }
         }
 
         return get(col, key, 'unknown');
@@ -87,21 +100,58 @@ class EntityTable extends React.Component {
         };
     }
 
-    render() {
-        const { columns, entities, rows, showHealth, loaded } = this.props;
-        const filteredData = (entities || rows).filter(oneRow => oneRow.account);
-        const data = filteredData.map(oneItem => ({
-            id: oneItem.id,
-            selected: oneItem.selected,
-            cells: [
-                ...columns.map(oneCell => this.renderCol(oneItem, oneCell.key, oneCell.composed, oneCell.isTime)),
-                ...showHealth ? [ this.healthColumn(oneItem) ] : [],
-                this.actionsColumn(oneItem)
-            ]
+    buildCells = (item) => {
+        const { columns, showHealth } = this.props;
+        let actions; let health; let cells;
+        if (!item.hasOwnProperty('isOpen')) {
+            actions = this.actionsColumn(item);
+            health = showHealth && this.healthColumn(item);
+            cells = columns.map(({ key, composed, isTime }) => this.renderCol(item, key, composed, isTime));
+        } else {
+            cells = [{
+                title: item.title,
+                colSpan: columns.length + 1 + showHealth
+            }];
+        }
+
+        return [
+            ...cells,
+            health,
+            actions
+        ].filter(Boolean);
+    }
+
+    createRows = () => {
+        const { sortBy, rows } = this.props;
+        const data = rows
+        .filter(oneRow => oneRow.account)
+        .map((oneItem) => ({
+            ...oneItem,
+            cells: this.buildCells(oneItem)
         }));
+        return sortBy ?
+            orderBy(
+                data,
+                [ e => get(e, sortBy.key) ],
+                [ sortBy.direction ]
+            ) :
+            data;
+    }
+
+    render() {
+        const { columns, showHealth, loaded, sortBy, expandable, onExpandClick } = this.props;
         return <Table
             className="pf-m-compact ins-entity-table"
-            sortBy={ this.state.sortBy }
+            expandable={ expandable }
+            onExpandClick={ onExpandClick }
+            sortBy={
+                sortBy ?
+                    {
+                        index: sortBy.key,
+                        direction: sortBy.direction === 'asc' ? 'up' : 'down'
+                    } :
+                    {}
+            }
             header={ columns && {
                 ...mapValues(keyBy(columns, item => item.key), item => item.title),
                 ...showHealth ? {
@@ -113,16 +163,26 @@ class EntityTable extends React.Component {
                 action: ''
             } }
             onSort={ this.onSort }
-            onRowClick={ this.onRowClick }
             onItemSelect={ this.onItemSelect }
-            hasCheckbox
-            rows={ loaded && data }
+            hasCheckbox={ loaded }
+            rows={
+                loaded ?
+                    this.createRows() :
+                    [ ...Array(5) ].map(() => ({
+                        cells: [{
+                            title: <RowLoader />,
+                            colSpan: columns.length + showHealth + 1
+                        }]
+                    }))
+            }
         />;
     }
 }
 
 EntityTable.propTypes = {
     history: PropTypes.any,
+    expandable: PropTypes.bool,
+    onExpandClick: PropTypes.func,
     setSort: PropTypes.func,
     rows: PropTypes.arrayOf(PropTypes.any),
     columns: PropTypes.arrayOf(PropTypes.shape({
@@ -132,7 +192,10 @@ EntityTable.propTypes = {
     showHealth: PropTypes.bool,
     match: PropTypes.any,
     loaded: PropTypes.bool,
-    entities: PropTypes.array,
+    sortBy: PropTypes.shape({
+        key: PropTypes.string,
+        direction: PropTypes.oneOf([ 'asc', 'desc' ])
+    }),
     selectEntity: PropTypes.func,
     onDetailSelect: PropTypes.func
 };
@@ -140,8 +203,10 @@ EntityTable.propTypes = {
 EntityTable.defaultProps = {
     loaded: false,
     showHealth: false,
+    expandable: false,
     columns: [],
-    entities: [],
+    rows: [],
+    onExpandClick: () => undefined,
     selectEntity: () => undefined,
     onDetailSelect: () => undefined
 };
@@ -154,12 +219,12 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({ entities: { columns, entities, rows, loaded }}) {
+function mapStateToProps({ entities: { columns, rows, loaded, sortBy }}) {
     return {
-        entities,
         columns,
         loaded,
-        rows
+        rows,
+        sortBy
     };
 }
 

@@ -1,4 +1,13 @@
-import { ACTION_TYPES, SELECT_ENTITY, CHANGE_SORT, FILTER_ENTITIES, APPLICATION_SELECTED, SHOW_ENTITIES } from '../action-types';
+import {
+    ACTION_TYPES,
+    SELECT_ENTITY,
+    CHANGE_SORT,
+    FILTER_ENTITIES,
+    APPLICATION_SELECTED,
+    SHOW_ENTITIES,
+    FILTER_SELECT,
+    UPDATE_ENTITIES
+} from '../action-types';
 import { getEntities } from '../../api/inventory';
 
 export const loadEntities = (items = [], config) => ({
@@ -11,6 +20,18 @@ export const showEntities = (items = []) => ({
     payload: {
         results: items
     }
+});
+
+export const updateEntities = (items = []) => ({
+    type: UPDATE_ENTITIES,
+    payload: {
+        results: items
+    }
+});
+
+export const filterSelect = (selectedItem) => ({
+    type: FILTER_SELECT,
+    payload: selectedItem
 });
 
 export const loadEntity = (id, config) => ({

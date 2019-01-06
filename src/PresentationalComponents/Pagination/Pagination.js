@@ -21,12 +21,12 @@ class Pagination extends Component {
         this.setPage = this.setPage.bind(this);
     }
 
-    setPage(page) {
+    setPage(page, debounce = false) {
         const perPage = this.props.itemsPerPage || pager[0];
         const maxPage = Math.ceil(this.props.numberOfItems / perPage);
         page = isNaN(page) ? 1 : page;
         page = page > maxPage ? maxPage : page;
-        this.props.hasOwnProperty('onSetPage') && this.props.onSetPage(page);
+        this.props.hasOwnProperty('onSetPage') && this.props.onSetPage(page, debounce);
     }
 
     defaultFirstPage() {
@@ -49,31 +49,36 @@ class Pagination extends Component {
     }
 
     render() {
-        const { page = 1 } = this.props;
+        let { page } = this.props;
         const perPage = this.props.itemsPerPage || pager[0];
         const perPageOptions = this.props.perPageOptions || pager;
         const lastPage = Math.ceil(this.props.numberOfItems / perPage);
-        const lastIndex = page === lastPage ? this.props.numberOfItems : page * perPage;
-        const firstIndex = page === 1 ? 1 : page * perPage - perPage;
+        let lastIndex = page === lastPage ? this.props.numberOfItems : page * perPage;
+        let firstIndex = page === 1 ? 1 : page * perPage - perPage;
+        if (this.props.numberOfItems === 0) {
+            lastIndex = 0;
+            firstIndex = 0;
+        }
+
         return (
             <div className="special-patternfly" widget-type='InsightsPagination'>
-                <PaginationRow
+                { PaginationRow && <PaginationRow
                     { ...this.props }
                     pageInputValue={ this.props.page || 1 }
                     viewType={ this.props.viewType || 'table' }
                     pagination={ { perPage, page, perPageOptions } }
-                    amountOfPages={ lastPage }
+                    amountOfPages={ lastPage || 1 }
                     itemCount={ this.props.numberOfItems }
                     itemsStart={ firstIndex }
                     pageSizeDropUp={ this.props.direction === 'up' }
                     itemsEnd={ lastIndex }
                     onPerPageSelect={ this.props.onPerPageSelect }
-                    onPageInput={ event => this.setPage(parseInt(event.target.value), 10) }
+                    onPageInput={ event => this.setPage(parseInt(event.target.value, 10), true) }
                     onFirstPage={ this.props.onFirstPage || this.defaultFirstPage }
                     onLastPage={ this.props.onLastPage || this.defaultLastPage }
                     onPreviousPage={ this.props.onPreviousPage || this.defaultPreviousPage }
                     onNextPage={ this.props.onNextPage || this.defaultNextPage }
-                />
+                /> }
             </div>
         );
     }
@@ -87,6 +92,10 @@ Pagination.propTypes = {
     numberOfItems: PropTypes.number.isRequired,
     onSetPage: PropTypes.func,
     onPerPageSelect: PropTypes.func
+};
+
+Pagination.defaultProps = {
+    page: 1
 };
 
 export default Pagination;

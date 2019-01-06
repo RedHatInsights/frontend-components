@@ -1,18 +1,64 @@
-import React from 'react';
+import React, { createContext, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import routerParams from '../../Utilities/RouterParams';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail';
+import { Filter } from './Filter';
+import Pagination from './Pagination';
+import { updateEntities } from '../../redux/actions/inventory';
+import { Card, CardBody, CardHeader, CardFooter } from '@patternfly/react-core';
 
-const InventoryTable = ({ items = [], pathPrefix = 0, apiBase, showHealth, ...props }) => (
-    <InventoryList
-        { ...props }
-        items={ items }
-        pathPrefix={ pathPrefix }
-        apiBase={ apiBase }
-        showHealth={ showHealth }
-    />
-);
+export const InventoryContext = createContext('inventory');
+
+class InventoryTable extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            onRefreshData: () => undefined,
+            onUpdateData: () => undefined
+        };
+    }
+
+    onRefreshData = (options) => {
+        const { onUpdateData } = this.state;
+        onUpdateData(options);
+    }
+
+    render() {
+        const { items = [], pathPrefix = 0, filters, apiBase, showHealth, onRefresh, ...props } = this.props;
+        return (
+            <InventoryContext.Provider value={ {
+                onRefreshData: this.state.onRefreshData,
+                onUpdateData: this.state.onUpdateData,
+                setRefresh: (onRefreshData) => this.setState({
+                    onRefreshData
+                }),
+                setUpdate: (onUpdateData) => this.setState({
+                    onUpdateData
+                })
+            } }>
+                <Card>
+                    <CardHeader>
+                        <Filter { ...props } filters={ filters } pathPrefix={ pathPrefix } apiBase={ apiBase } />
+                    </CardHeader>
+                    <CardBody>
+                        <InventoryList
+                            { ...props }
+                            onRefresh={ onRefresh }
+                            items={ items }
+                            pathPrefix={ pathPrefix }
+                            apiBase={ apiBase }
+                            showHealth={ showHealth }
+                        />
+                    </CardBody>
+                    <CardFooter>
+                        <Pagination />
+                    </CardFooter>
+                </Card>
+            </InventoryContext.Provider>
+        );
+    }
+}
 
 const InventoryItem = ({ root, pathPrefix = 0, apiBase, ...props }) => (
     <InventoryDetail { ...props } root={ root } pathPrefix={ pathPrefix } apiBase={ apiBase } />
@@ -40,8 +86,8 @@ export default routerParams((Inventory));
 
 export function inventoryConnector() {
     return {
+        updateEntities,
         InventoryTable,
-        InventoryDetail: InventoryItem,
-        Inventory: routerParams(Inventory)
+        InventoryDetail: InventoryItem
     };
 }
