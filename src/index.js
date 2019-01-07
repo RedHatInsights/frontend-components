@@ -29,3 +29,6 @@ export * from './Charts/Donut';
 export * from './Charts/Pie';
 export { ACTION_TYPES as ASYNC_ACTIONS } from './redux/action-types.js';
 export { default as RemediationButton } from './SmartComponents/Remediations/RemediationButton';
+
+/** Style imports */
+import './PresentationalComponents/Pagination/pagination.scss';
