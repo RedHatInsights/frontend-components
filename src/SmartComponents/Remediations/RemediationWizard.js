@@ -28,8 +28,8 @@ function updateRemediation (id, add, basePath) {
     }, basePath);
 }
 
-function createNotification (name, isNew) {
-    const verb = isNew ? 'created' : 'updated';
+function createNotification (name, isNewSwitch) {
+    const verb = isNewSwitch ? 'created' : 'updated';
     return {
         variant: 'success',
         title: `Remediation ${verb}`,
@@ -53,12 +53,27 @@ class RemediationWizard extends Component {
 
     openWizard = (data, basePath) => {
         const deferred = new Deferred();
-        this.setOpen({
-            deferred,
-            data,
-            basePath
+        this.setState({
+            open: {
+                deferred,
+                data,
+                basePath
+            },
+
+            isNewSwitch: true,
+            name: '',
+            existingRemediations: false,
+            selectedRemediation: false
         });
+
+        this.loadRemediations();
+
         return deferred.promise;
+    }
+
+    loadRemediations = async () => {
+        const { remediations: existingRemediations } = await api.getRemediations();
+        this.setState({ existingRemediations });
     }
 
     closeWizard = submitted => {
@@ -69,10 +84,10 @@ class RemediationWizard extends Component {
         }
 
         if (submitted) {
-            const { isNew } = this.step1.state;
+            const { isNewSwitch } = this.state;
             const { issues, systems } = this.state.open.data;
 
-            (isNew ? this.createRemediation : this.updateRemediation)({ issues, systems }, this.resolver(open.deferred));
+            (isNewSwitch ? this.createRemediation : this.updateRemediation)({ issues, systems }, this.resolver(open.deferred));
         } else {
             open.deferred.resolve(false);
         }
@@ -81,23 +96,23 @@ class RemediationWizard extends Component {
     }
 
     createRemediation = (add, resolver) => {
-        const name = this.step1.state.name || 'Unnamed remediation';
+        const name = this.state.name || 'Unnamed remediation';
 
         return api.createRemediation({ name, add }, this.state.open.basePath)
         .then(({ id }) => resolver(id, name, true));
     };
 
     updateRemediation = (add, resolver) => {
-        const { id, name } = this.step1.state.selectedRemediation;
+        const { id, name } = this.state.selectedRemediation;
 
         return api.patchRemediation(id, { add }, this.state.open.basePath)
         .then(() => resolver(id, name, false));
     };
 
-    resolver = deferred => (id, name, isNew) => {
+    resolver = deferred => (id, name, isNewSwitch) => {
         deferred.resolve({
             remediation: { id, name },
-            getNotification: () => createNotification(name, isNew)
+            getNotification: () => createNotification(name, isNewSwitch)
         });
     };
 
@@ -111,7 +126,7 @@ class RemediationWizard extends Component {
 
     render() {
         const steps = [
-            <ExistingOrNew key='RemediationNameStep' ref={ ref => this.step1 = ref }/>
+            <ExistingOrNew key='RemediationNameStep' state={ this.state } setState={ value => this.setState(value) }/>
         ];
 
         return (
