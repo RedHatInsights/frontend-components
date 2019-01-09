@@ -31,7 +31,8 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-promise-middleware": "^5.1.1"
+    "redux-promise-middleware": "^5.1.1",
+    "urijs": "^1.19.1"
   },
   "jest": {
     "collectCoverage": true,
