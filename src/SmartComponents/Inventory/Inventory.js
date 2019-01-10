@@ -25,7 +25,7 @@ class InventoryTable extends Component {
     }
 
     render() {
-        const { items = [], pathPrefix = 0, filters, apiBase, showHealth, onRefresh, ...props } = this.props;
+        const { items, pathPrefix = 0, filters, apiBase, showHealth, onRefresh, ...props } = this.props;
         return (
             <InventoryContext.Provider value={ {
                 onRefreshData: this.state.onRefreshData,

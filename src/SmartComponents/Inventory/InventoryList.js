@@ -13,7 +13,7 @@ class ContextInventoryList extends React.Component {
     }
 
     loadEntities = (options = {}, reload = true) => {
-        const { page, perPage, onRefresh } = this.props;
+        const { page, perPage, onRefresh, items } = this.props;
         options = {
             page: options.page || page,
             // eslint-disable-next-line camelcase
@@ -22,7 +22,7 @@ class ContextInventoryList extends React.Component {
         };
         reload && onRefresh(options);
         this.props.loadEntities && this.props.loadEntities(
-            this.props.items,
+            items,
             {
                 ...options,
                 prefix: this.props.pathPrefix,
