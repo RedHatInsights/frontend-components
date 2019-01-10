@@ -7,7 +7,7 @@ class AppInfo extends Component {
         const { activeApps, active } = this.props;
         const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
         return (
-            <div>
+            <div className={ `ins-active-app-${activeApp.name}` }>
                 { activeApp.component ? <activeApp.component /> : 'missing component' }
             </div>
         );

@@ -21,6 +21,6 @@ const PageHeaderTitle = ({ className, title }) => {
 export default PageHeaderTitle;
 
 PageHeaderTitle.propTypes = {
-    title: propTypes.string.isRequired,
+    title: propTypes.node.isRequired,
     className: propTypes.string
 };

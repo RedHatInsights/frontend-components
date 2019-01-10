@@ -1,5 +1,5 @@
 const { lstatSync, readdirSync } = require('fs');
-const { join } = require('path');
+const { join, parse } = require('path');
 
 const react = {
     commonjs: 'react',
@@ -76,6 +76,15 @@ const getDirectories = (source, dest) =>
         };
     })
     .reduce((acc, curr) => ({ ...acc, ...curr }), {});
+
+const getAllFiles = (source, dest) => 
+    readdirSync(source)
+    .filter(fileName => fileName !== 'index.js' && fileName.indexOf('.scss') === -1)
+    .reduce((acc, name) => ({
+        ...acc,
+        [`${dest}/${parse(name).name}`]: './' + join(source, name)
+    }), {});
+
 const entries = {
     'Utilities/ReducerRegistry': './src/Utilities/ReducerRegistry.js',
     'Utilities/helpers': './src/Utilities/helpers.js',
@@ -83,7 +92,8 @@ const entries = {
     'Utilities/Registry': './src/Utilities/Registry.js',
     ...getDirectories('./src/PresentationalComponents', 'components'),
     ...getDirectories('./src/SmartComponents', 'components'),
-    ...getDirectories('./src/Charts', 'charts')
+    ...getDirectories('./src/Charts', 'charts'),
+    ...getAllFiles('./src/SmartComponents/Inventory/applications', 'components')
 };
 
 module.exports = {
