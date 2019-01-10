@@ -79,7 +79,7 @@ const getDirectories = (source, dest) =>
 
 const getAllFiles = (source, dest) => 
     readdirSync(source)
-    .filter(fileName => fileName !== 'index.js' && fileName.indexOf('.scss') === -1)
+    .filter(fileName => fileName !== 'index.js' && parse(fileName).ext === 'js')
     .reduce((acc, name) => ({
         ...acc,
         [`${dest}/${parse(name).name}`]: './' + join(source, name)

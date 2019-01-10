@@ -1,0 +1,30 @@
+@import '../../../../Utilities/_variables';
+@import '../../../../Utilities/_mixins';
+
+.ins-empty-rule-cards div {
+    text-align: center;
+}
+
+.ins-c-rules-card {
+    .pf-c-card__header .pf-l-split__item:first-of-type {
+        white-space: nowrap;
+        @include rem('margin-right', 5px)
+    }
+    .ins-l-icon-group__with-major { display: inline; }
+    .space-between {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.ins-c-rules-card .pf-c-card__header div { font-weight: 600; }
+
+.ins-c-rules-card + .ins-c-rules-card {
+    margin-top: $ins-margin;
+}
+
+.ins-c-rules-card  a[disabled] {
+    cursor: not-allowed;
+    color: $ins-color--gray;
+    &:hover { text-decoration: none; }
+}
