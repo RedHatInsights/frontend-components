@@ -17,7 +17,7 @@ export default function validate (data) {
     assert(data.issues.length, 'Issues array must not be empty');
     data.issues.forEach(issue => {
         assert(typeof issue === 'object' && issue !== null, 'Issue must be an object');
-        checkKeys(issue, 'id');
+        checkKeys(issue, 'id', 'description');
     });
 
     assert(Array.isArray(data.systems), 'Systems must be an array');

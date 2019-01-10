@@ -3,11 +3,14 @@ import validate from './validator';
 function validData () {
     return {
         issues: [{
-            id: 'advisor:network_bond_opts_config_issue|NETWORK_BONDING_OPTS_DOUBLE_QUOTES_ISSUE'
+            id: 'advisor:network_bond_opts_config_issue|NETWORK_BONDING_OPTS_DOUBLE_QUOTES_ISSUE',
+            description: 'Bonding will not fail over to the backup link when bonding options are partially read'
         }, {
-            id: 'vulnerabilities:CVE_2017_6074_kernel|KERNEL_CVE_2017_6074'
+            id: 'vulnerabilities:CVE_2017_6074_kernel|KERNEL_CVE_2017_6074',
+            description: 'Kernel vulnerable to local privilege escalation via DCCP module (CVE-2017-6074)'
         }, {
-            id: 'vulnerabilities:CVE-2017-17713'
+            id: 'vulnerabilities:CVE-2017-17713',
+            description: 'CVE-2017-17713'
         }],
         systems: [
             '8e7d7f5f-160c-40cc-859c-a3e479007dce',

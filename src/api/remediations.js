@@ -41,3 +41,13 @@ export function getRemediations (basePath = API_BASE) {
     const uri = new URI(API_BASE).segment('remediations').toString();
     return fetch(uri).then(json);
 }
+
+export function getRemediation (id, basePath = API_BASE) {
+    const uri = new URI(API_BASE).segment('remediations').segment(id).toString();
+    return fetch(uri).then(json);
+}
+
+export function getResolutions (id, basePath = API_BASE) {
+    const uri = new URI(API_BASE).segment('resolutions').segment(id).toString();
+    return fetch(uri).then(json);
+}

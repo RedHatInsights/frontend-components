@@ -11,6 +11,9 @@ export function openWizard (data, basePath) {
         throw new Error('Wizard component not mounted');
     }
 
+    // TODO: for backwards compatibility; remove once apps are upgraded
+    data.issues.forEach(issue => issue.description = issue.description || issue.id);
+
     validate(data);
 
     return instance.openWizard(data, basePath);

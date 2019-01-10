@@ -32,7 +32,8 @@ Here's an example of `dataProvider` implementation:
     dataProvider () {
         return {
             issues: [{
-                id: `vulnerabilities:${this.state.cveName}`
+                id: `vulnerabilities:${this.state.cveName}`,
+                description: 'CVE-2017-17712'
             }],
             systems: [
                 '34b9f7d9-fc81-4e0f-bef0-c4b402a1510e' // TODO: use real system ids here based on selection in SystemsExposedTable

@@ -32,8 +32,13 @@ class Wizard extends Component {
 
     // On modal close, reset currentStep back to the initial step, the call modalToggle(PF)
     handleOnClose(submit = false) {
+        const result = this.props.onClose(submit);
+
+        if (result === false) {
+            return;
+        }
+
         this.setState({ currentStep: 0 });
-        this.props.onClose(submit);
     }
 
     render() {
