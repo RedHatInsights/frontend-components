@@ -11,6 +11,7 @@ import {
 
 import { Battery } from '../../../PresentationalComponents/Battery';
 import { RebootingIcon } from '@patternfly/react-icons';
+import './IssueResolutionStep.scss';
 
 function isSelectedByDefault ({ id }, index, issue, state) {
     const selected = state.selectedResolutions[issue.id];
@@ -25,7 +26,7 @@ function isSelectedByDefault ({ id }, index, issue, state) {
 function IssueResolutionStep (props) {
     return (
         <Stack gutter='sm'>
-            <StackItem><h1>{ props.state.issuesById[props.issue.id].description }</h1></StackItem>
+            <StackItem><h1 className='ins-m-text__bold'>{ props.state.issuesById[props.issue.id].description }</h1></StackItem>
             <StackItem><h2>Please review the available resolution steps and make your selection:</h2></StackItem>
             <StackItem>
                 <Form>
@@ -34,18 +35,20 @@ function IssueResolutionStep (props) {
                             <div className="ins-c-resolution-option" key={ resolution.id }>
                                 <Radio
                                     label={
-                                        <Stack className='ins-c-resolution-choice__details'>
-                                            <StackItem>{ resolution.description }</StackItem>
-                                            <StackItem>
-                                                <Battery label="Resolution risk" severity={ resolution.resolution_risk } />
-                                            </StackItem>
-                                            { resolution.needs_reboot &&
-                                                <StackItem className='ins-c-reboot'>
-                                                    <RebootingIcon/>
-                                                    <span>Needs Reboot</span>
+                                        <React.Fragment>
+                                            { resolution.description }
+                                            <Stack className='ins-c-resolution-choice__details'>
+                                                <StackItem>
+                                                    <Battery label="Resolution risk" severity={ resolution.resolution_risk } />
                                                 </StackItem>
-                                            }
-                                        </Stack>
+                                                { resolution.needs_reboot &&
+                                                    <StackItem className='ins-c-reboot'>
+                                                        <RebootingIcon/>
+                                                        <span>Needs Reboot</span>
+                                                    </StackItem>
+                                                }
+                                            </Stack>
+                                        </React.Fragment>
                                     }
                                     aria-label={ resolution.description }
                                     id={ resolution.id }

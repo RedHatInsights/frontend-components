@@ -4,4 +4,7 @@
   .pf-c-modal-box__body {
     > * + * { @include rem('margin-top', 20px); }
   }
+  .pf-c-check label { display: inline; }
+  .ins-m-text__accent { color: #c3c3c3; }
+  .ins-m-text__bold { font-weight: 500; }
 }

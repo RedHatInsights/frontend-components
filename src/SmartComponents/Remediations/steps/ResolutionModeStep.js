@@ -30,7 +30,7 @@ function ResolutionModeStep (props) {
     return (
         <Stack gutter='sm'>
             <StackItem>
-                <h1>
+                <h1 className='ins-m-text__bold'>
                     You have selected { issueCount } { actions(issueCount) } to be added to your remediation.&nbsp;
                     { tweakableCount } out of { issueCount } { actions(issueCount) } { allows(tweakableCount) }&nbsp;
                     you to choose from multiple resolution steps.

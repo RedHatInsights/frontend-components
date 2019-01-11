@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
 import { Table } from '../../../PresentationalComponents/Table';
+import './IssueTable.scss';
 
 function buildRows(issues, state, getResolution) {
     return issues.map(issue => {
@@ -40,6 +41,7 @@ function IssueTable(props) {
 
     return (
         <Table
+            className='ins-c-remediation-summary-table'
             header={ [
                 {
                     title: 'Action',
