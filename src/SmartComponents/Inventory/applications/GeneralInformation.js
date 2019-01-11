@@ -21,7 +21,7 @@ import './general-information.scss';
 class GeneralInformation extends Component {
     render() {
         const { entity } = this.props;
-        const facts = entity.facts.qpc || entity.facts.inventory;
+        const facts = entity.facts.qpc || entity.facts.inventory || entity.facts;
         const timeZone = new Date(entity.created).toString().split(' GMT').slice(1)[0];
         return (
             <Grid sm={ 6 } md={ 6 } lg={ 6 } gutter={ GutterSize.md }>
@@ -34,15 +34,15 @@ class GeneralInformation extends Component {
                             <CardBody>
                                 <Level>
                                     <LevelItem>Manufacturer:</LevelItem>
-                                    <LevelItem>{ facts.virtualized_type || 'Unknown' }</LevelItem>
+                                    <LevelItem>{ (facts && facts.virtualized_type) || 'Unknown' }</LevelItem>
                                 </Level>
                                 <Level>
                                     <LevelItem>Release:</LevelItem>
-                                    <LevelItem>{ facts.os_release || 'Unknown' }</LevelItem>
+                                    <LevelItem>{ (facts && facts.os_release) || 'Unknown' }</LevelItem>
                                 </Level>
                                 <Level>
                                     <LevelItem>Server Type:</LevelItem>
-                                    <LevelItem>{ facts.infrastructure_type || 'Unknown' }</LevelItem>
+                                    <LevelItem>{ (facts && facts.infrastructure_type) || 'Unknown' }</LevelItem>
                                 </Level>
                                 <Level>
                                     <LevelItem>Time Zone:</LevelItem>

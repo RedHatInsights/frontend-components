@@ -1,4 +1,4 @@
-import React, { createContext, Component } from 'react';
+import React, { createContext, Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import routerParams from '../../Utilities/RouterParams';
 import InventoryList from './InventoryList';
@@ -7,6 +7,7 @@ import { Filter } from './Filter';
 import Pagination from './Pagination';
 import { updateEntities } from '../../redux/actions/inventory';
 import { Card, CardBody, CardHeader, CardFooter } from '@patternfly/react-core';
+import AppInfo from './AppInfo';
 
 export const InventoryContext = createContext('inventory');
 
@@ -60,8 +61,15 @@ class InventoryTable extends Component {
     }
 }
 
-const InventoryItem = ({ root, pathPrefix = 0, apiBase, ...props }) => (
-    <InventoryDetail { ...props } root={ root } pathPrefix={ pathPrefix } apiBase={ apiBase } />
+const InventoryItem = ({ root, pathPrefix = 0, apiBase, useCard = false, hideBack = false, ...props }) => (
+    <InventoryDetail
+        { ...props }
+        root={ root }
+        pathPrefix={ pathPrefix }
+        apiBase={ apiBase }
+        useCard={ useCard }
+        hideBack={ hideBack }
+    />
 );
 
 const Inventory = ({ match, noTable = false, items = [], pathPrefix = 0, apiBase }) => {
@@ -85,9 +93,18 @@ const Inventory = ({ match, noTable = false, items = [], pathPrefix = 0, apiBase
 export default routerParams((Inventory));
 
 export function inventoryConnector() {
+    const InventoryDetail = (props) => (
+        <Fragment>
+            <InventoryItem { ...props } />
+            <AppInfo />
+        </Fragment>
+    );
+
     return {
         updateEntities,
         InventoryTable,
-        InventoryDetail: InventoryItem
+        AppInfo,
+        InventoryDetailHead: InventoryItem,
+        InventoryDetail
     };
 }

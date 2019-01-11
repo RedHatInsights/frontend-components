@@ -53,7 +53,7 @@ There is also a playground for any development
   * [Notifications](doc/components/notifications.md)
 
 Hot-loadable components
-* [Inventory](doc/components/inventory.md)
+* [Inventory](doc/components/inventory/inventory.md)
 * [Remediations](doc/components/remediations.md)
 
 ## Conbribution

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { TabLayout } from '../../PresentationalComponents/TabLayout';
 import { Switch, Redirect } from 'react-router-dom';
-import AppInfo from './AppInfo';
 import { detailSelect } from '../../redux/actions/inventory';
 import routerParams from '../../Utilities/RouterParams';
 
@@ -28,7 +27,6 @@ class ApplicationDetails extends Component {
                     <TabLayout items={ items }
                         onTabClick={ this.onTabClick }
                         active={ defaultApp }>
-                        <AppInfo />
                         <Switch>
                             <Redirect to={ `${path}/${defaultApp}` }/>
                         </Switch>

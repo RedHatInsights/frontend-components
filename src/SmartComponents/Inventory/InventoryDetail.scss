@@ -1,3 +1,35 @@
+.ins-inventory-detail.pf-l-page-header, .ins-inventory-detail.pf-c-page-header {
+    padding-bottom: 0px;
+
+    .ins-entity-detail {
+        .ins-tabs div {
+            border: 1px solid rgba(3,3,3,.32);
+            margin: 0;
+            padding: 5px;
+            margin-top: 3px;
+            color: inherit;
+            border-bottom: 0 !important;
+
+            &.active {
+                border-top: 3px var(--pf-global--link--Color) solid;
+                color: var(--pf-global--link--Color);
+                border-bottom: 0;
+                margin-top: 0;
+            }
+
+            &:hover {
+                color: var(--pf-global--link--Color--hover);
+                border-top: 3px var(--pf-global--link--Color--hover) solid;
+                border-bottom: 0;
+                margin-top: 0;
+            }
+        }
+        .ins-tab-content {
+            min-height: 0;
+        }
+    }
+}
+
 .ins-entity-detail {
   .ins-entity-facts {
     div {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -7,9 +7,11 @@ class AppInfo extends Component {
         const { activeApps, active } = this.props;
         const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
         return (
-            <div className={ `ins-active-app-${activeApp.name}` }>
-                { activeApp.component ? <activeApp.component /> : 'missing component' }
-            </div>
+            <Fragment>
+                { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>
+                    { activeApp.component ? <activeApp.component /> : 'missing component' }
+                </div> }
+            </Fragment>
         );
     }
 }

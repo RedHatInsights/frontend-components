@@ -23,19 +23,21 @@ class InventoryDetail extends React.Component {
     }
 
     render() {
-        const { root, match: { params }} = this.props;
+        const { root, match: { params }, useCard, hideBack } = this.props;
         return (
             <React.Fragment>
-                <Entitydetail />
-                <Link to={ generatePath(root, params) }>
+                <Entitydetail useCard={ useCard }/>
+                { !hideBack && <Link to={ generatePath(root, params) }>
                     <Button variant='primary'>Back</Button>
-                </Link>
+                </Link> }
             </React.Fragment>
         );
     }
 }
 
 InventoryDetail.propTypes = {
+    useCard: PropTypes.bool,
+    hideBack: PropTypes.bool,
     root: PropTypes.string,
     match: PropTypes.any,
     pathPrefix: PropTypes.number,

@@ -5,10 +5,10 @@ const mapData = ({ results = [], ...data }) => ({
     ...data,
     results: results.map(({ facts = {}, ...oneResult }) => ({
         ...oneResult,
-        facts: facts.reduce((acc, curr) => ({
-            ...acc,
-            [curr.namespace]: curr.facts
-        }), {})
+        facts: facts.flatMap(oneFact => Object.values(oneFact))
+        .reduce(
+            (acc, curr) => ({ ...acc, ...(typeof curr !== 'string') ? curr : {}}), {}
+        )
     }))
 });
 

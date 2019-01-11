@@ -1,7 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Title, Grid, GridItem, Label, Dropdown, DropdownPosition, DropdownItem, DropdownToggle } from '@patternfly/react-core';
-import { TimesIcon } from '@patternfly/react-icons';
+import {
+    Title,
+    Grid,
+    GridItem,
+    Dropdown,
+    DropdownPosition,
+    DropdownItem,
+    DropdownToggle,
+    Card,
+    CardBody,
+    CardHeader
+} from '@patternfly/react-core';
 import { BulletList } from 'react-content-loader';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
@@ -25,9 +35,91 @@ class EntityDetails extends Component {
             isOpen: collapsed
         });
     }
-    render() {
-        const { loaded, entity } = this.props;
+
+    generateTop = () => {
+        const { entity } = this.props;
         const { isOpen } = this.state;
+        return (
+            <Grid className="ins-entity-header">
+                <GridItem md={ 6 }>
+                    <Title size='2xl'>{ entity && entity.display_name }</Title>
+                </GridItem>
+                <GridItem md={ 6 }>
+                    <Dropdown
+                        onSelect={ this.onSelect }
+                        toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
+                        isOpen={ isOpen }
+                        position={ DropdownPosition.right }
+                        dropdownItems={ [
+                            <DropdownItem key="1">Some action</DropdownItem>
+                        ] }
+                    />
+                </GridItem>
+            </Grid>
+        );
+    }
+
+    generateFacts = () => {
+        return (
+            <Grid className="ins-entity-facts">
+                <GridItem md={ 6 }>
+                    <div>
+                        <span>
+                            Hostname:
+                        </span>
+                        <span>
+                            { this.getFact('fqdn') || 'Unknown' }
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            UUID:
+                        </span>
+                        <span>
+                            {
+                                this.getFact(`id`) ||
+                                'Unknown'
+                            }
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            System:
+                        </span>
+                        <span>
+                            {
+                                this.getFact('facts.inventory.release') ||
+                                this.getFact('facts.qpc.os_release') ||
+                                this.getFact('facts.os_release') ||
+                                'Unknown'
+                            }
+                        </span>
+                    </div>
+                </GridItem>
+                <GridItem md={ 6 }>
+                    <div>
+                        <span>
+                            Last Check-in:
+                        </span>
+                        <span>
+                            { (new Date(this.getFact('updated'))).toLocaleString() }
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Registered:
+                        </span>
+                        <span>
+                            { (new Date(this.getFact('created'))).toLocaleString() }
+                        </span>
+                    </div>
+                </GridItem>
+            </Grid>
+        );
+    }
+
+    render() {
+        const { loaded, useCard } = this.props;
         if (!loaded) {
             return (
                 <div>
@@ -38,75 +130,20 @@ class EntityDetails extends Component {
 
         return (
             <div className="ins-entity-detail">
-                <Grid className="ins-entity-header">
-                    <GridItem md={ 6 }>
-                        <Title size='2xl'>{ entity && entity.display_name }</Title>
-                    </GridItem>
-                    <GridItem md={ 6 }>
-                        <Dropdown
-                            onSelect={ this.onSelect }
-                            toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
-                            isOpen={ isOpen }
-                            position={ DropdownPosition.right }
-                            dropdownItems={ [
-                                <DropdownItem key="1">Some action</DropdownItem>
-                            ] }
-                        />
-                    </GridItem>
-                </Grid>
-                <Grid className="ins-entity-facts">
-                    <GridItem md={ 6 }>
-                        <div>
-                            <span>
-                                Hostname:
-                            </span>
-                            <span>
-                                { this.getFact('fqdn') || 'Unknown' }
-                            </span>
-                        </div>
-                        <div>
-                            <span>
-                                UUID:
-                            </span>
-                            <span>
-                                {
-                                    this.getFact(`id`) ||
-                                    'Unknown'
-                                }
-                            </span>
-                        </div>
-                        <div>
-                            <span>
-                                System:
-                            </span>
-                            <span>
-                                {
-                                    this.getFact('facts.inventory.release') ||
-                                    this.getFact('facts.qpc.os_release') ||
-                                    'Unknown'
-                                }
-                            </span>
-                        </div>
-                    </GridItem>
-                    <GridItem md={ 6 }>
-                        <div>
-                            <span>
-                                Last Check-in:
-                            </span>
-                            <span>
-                                { (new Date(this.getFact('updated'))).toLocaleString() }
-                            </span>
-                        </div>
-                        <div>
-                            <span>
-                                Registered:
-                            </span>
-                            <span>
-                                { (new Date(this.getFact('created'))).toLocaleString() }
-                            </span>
-                        </div>
-                    </GridItem>
-                </Grid>
+                { useCard ?
+                    <Card>
+                        <CardHeader>
+                            { this.generateTop() }
+                        </CardHeader>
+                        <CardBody>
+                            { this.generateFacts() }
+                        </CardBody>
+                    </Card> :
+                    <Fragment>
+                        { this.generateTop() }
+                        { this.generateFacts() }
+                    </Fragment>
+                }
                 { /* Since we do not have tags yet, let's ignore them for now
                     <Grid className="ins-entity-tags">
                         { entity && entity.tags && Object.values(entity.tags).map((oneTag, key) => (
@@ -126,11 +163,13 @@ class EntityDetails extends Component {
 
 EntityDetails.propTypes = {
     loaded: PropTypes.bool.isRequired,
-    entity: PropTypes.object
+    entity: PropTypes.object,
+    useCard: PropTypes.bool
 };
 
 EntityDetails.defualtProps = {
-    entity: {}
+    entity: {},
+    useCard: false
 };
 
 export default connect(({ entityDetails }) => ({ ...entityDetails }))(EntityDetails);
