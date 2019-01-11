@@ -22,13 +22,15 @@ export function getCveListBySystem({
     ].reduce((acc, curr) => ([ ...acc, curr && `${Object.keys(curr)[0]}=${Object.values(curr)[0]}` ]), [])
     .filter(Boolean)
     .join('&');
-    return fetch(`${BASE_ROUTE}${API_VERSION}/systems/${system}/cves?${query}`, {
-        method: 'GET'
-    }).then(res => {
-        if (!res.ok) {
-            throw res;
-        }
+    if (system) {
+        return fetch(`${BASE_ROUTE}${API_VERSION}/systems/${system}/cves?${query}`, {
+            method: 'GET'
+        }).then(res => {
+            if (!res.ok) {
+                throw res;
+            }
 
-        return res.json();
-    });
+            return res.json();
+        });
+    }
 }
