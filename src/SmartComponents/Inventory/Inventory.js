@@ -8,6 +8,7 @@ import Pagination from './Pagination';
 import { updateEntities } from '../../redux/actions/inventory';
 import { Card, CardBody, CardHeader, CardFooter } from '@patternfly/react-core';
 import AppInfo from './AppInfo';
+import { VulnerabilitiesStore } from '../../redux/reducers/inventory/vulnerabilities';
 
 export const InventoryContext = createContext('inventory');
 
@@ -105,6 +106,7 @@ export function inventoryConnector() {
         InventoryTable,
         AppInfo,
         InventoryDetailHead: InventoryItem,
-        InventoryDetail
+        InventoryDetail,
+        VulnerabilitiesStore
     };
 }

@@ -1,0 +1,36 @@
+.ins-active-app-vulnerabilities {
+    padding-top: 2em;
+}
+
+.cvetable-toolbar {
+  justify-content: space-between;
+  > div {
+    align-self: flex-end;
+  }
+}
+.space-between-toolbar-items {
+  > div {
+    margin-right: 5;
+    align-self: flex-end;
+    > form {
+      width: 150px;
+    }
+  }
+}
+
+.filterCVES {
+  min-width: 25%;
+  > div {
+    align-self: flex-end;
+  }
+}
+
+#download-report {
+  cursor: pointer;
+}
+.number-of-results {
+  display: inline-block;
+  min-width: 55px;
+  text-align: right;
+  margin-right: 5px;
+}
