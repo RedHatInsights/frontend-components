@@ -4,6 +4,7 @@ import mapKeys from 'lodash/mapKeys';
 import ContentLoader from 'react-content-loader';
 
 export const CSV_TYPE = 'text/csv;charset=utf-8;';
+export const JSON_TYPE = 'data:text/json;charset=utf-8,';
 
 export function mergeArraysByKey(arrays, key = 'id') {
     let mergedObject = merge(...arrays.map(row => mapKeys(row,  a => a && a[key])));

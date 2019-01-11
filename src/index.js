@@ -23,6 +23,7 @@ export * from './PresentationalComponents/Dark';
 export * from './PresentationalComponents/PageHeader';
 export * from './PresentationalComponents/Truncate';
 export * from './PresentationalComponents/Wizard';
+export * from './PresentationalComponents/DownloadButton';
 export * from './Charts/Gauge';
 export * from './Charts/Matrix';
 export * from './Charts/Donut';
