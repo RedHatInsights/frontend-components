@@ -39,12 +39,12 @@ function IssueResolutionStep (props) {
                                             { resolution.description }
                                             <Stack className='ins-c-resolution-choice__details'>
                                                 <StackItem>
-                                                    <Battery label="Resolution risk" severity={ resolution.resolution_risk } />
+                                                    <Battery label="Risk of Change" severity={ resolution.resolution_risk } />
                                                 </StackItem>
                                                 { resolution.needs_reboot &&
                                                     <StackItem className='ins-c-reboot'>
                                                         <RebootingIcon/>
-                                                        <span>Needs Reboot</span>
+                                                        <span>Reboot required</span>
                                                     </StackItem>
                                                 }
                                             </Stack>

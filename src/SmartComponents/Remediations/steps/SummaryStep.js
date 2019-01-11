@@ -48,6 +48,11 @@ function SummaryStep(props) {
             </StackItem>
             <StackItem>
                 <Stack gutter='sm'>
+                    <StackItem className='ins-m-text__accent'>
+                        {
+                            rebootNeeded ? <h1>System reboot is required</h1> : <h1>The remediation does not require reboot</h1>
+                        }
+                    </StackItem>
                     <StackItem>
                         <Switch
                             id="autoReboot"
@@ -57,11 +62,6 @@ function SummaryStep(props) {
                             isDisabled={ !rebootNeeded }
                             onChange={ value => props.onAutoRebootSwitch(value) }
                         />
-                    </StackItem>
-                    <StackItem className='ins-m-text__accent'>
-                        {
-                            rebootNeeded ? <h1>System reboot is required</h1> : <h1>The remediation does not require reboot</h1>
-                        }
                     </StackItem>
                 </Stack>
             </StackItem>
