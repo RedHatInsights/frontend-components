@@ -9,8 +9,8 @@ import {
     StackItem
 } from '@patternfly/react-core';
 
+import { Reboot } from '../../../PresentationalComponents/Reboot';
 import { Battery } from '../../../PresentationalComponents/Battery';
-import { RebootingIcon } from '@patternfly/react-icons';
 import './IssueResolutionStep.scss';
 
 function isSelectedByDefault ({ id }, index, issue, state) {
@@ -42,9 +42,8 @@ function IssueResolutionStep (props) {
                                                     <Battery label="Risk of Change" severity={ resolution.resolution_risk } />
                                                 </StackItem>
                                                 { resolution.needs_reboot &&
-                                                    <StackItem className='ins-c-reboot'>
-                                                        <RebootingIcon/>
-                                                        <span>Reboot required</span>
+                                                    <StackItem>
+                                                        <Reboot red/>
                                                     </StackItem>
                                                 }
                                             </Stack>
