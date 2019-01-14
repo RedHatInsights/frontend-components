@@ -11,6 +11,7 @@ import {
 import { Ansible } from '../../../../PresentationalComponents/Ansible';
 import { Battery } from '../../../../PresentationalComponents/Battery';
 import { Card, CardBody, CardHeader, Grid, GridItem, List, ListItem, Split, SplitItem } from '@patternfly/react-core';
+import ReactMarkdown from 'react-markdown/with-html';
 
 class ExpandableRulesCard extends React.Component {
     state = {
@@ -68,7 +69,7 @@ class ExpandableRulesCard extends React.Component {
                             <Card className='pf-t-light  pf-m-opaque-100'>
                                 <CardHeader> <ThumbsUpIcon /> Detected Issues</CardHeader>
                                 <CardBody>
-                                    <div>{ rule.reason }</div>
+                                    <ReactMarkdown source={ rule.reason } escapeHtml={ false }/>
                                 </CardBody>
                             </Card>
                         </GridItem>
@@ -88,7 +89,7 @@ class ExpandableRulesCard extends React.Component {
                             <List>
                                 { rule.more_info && (
                                     <ListItem>
-                                        <div>{ rule.more_info }</div>
+                                        <ReactMarkdown source={ rule.more_info } escapeHtml={ false }/>
                                     </ListItem>
                                 ) }
                                 <ListItem>
