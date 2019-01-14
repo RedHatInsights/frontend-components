@@ -24,6 +24,7 @@ export * from './PresentationalComponents/PageHeader';
 export * from './PresentationalComponents/Truncate';
 export * from './PresentationalComponents/Wizard';
 export * from './PresentationalComponents/DownloadButton';
+export * from './PresentationalComponents/Reboot';
 export * from './Charts/Gauge';
 export * from './Charts/Matrix';
 export * from './Charts/Donut';

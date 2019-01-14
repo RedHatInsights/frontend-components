@@ -1,0 +1,13 @@
+@import '../../Utilities';
+@import '@patternfly/patternfly-next/sass-utilities/colors.scss';
+
+.ins-c-reboot {
+    span {
+        // 4px because the battery icon is 1px bigger than the reboot icon
+        @include rem('margin-left', 4px);
+    }
+
+    &.ins-m-red {
+        span, svg { color: $pf-color-red-100; }
+    }
+}
