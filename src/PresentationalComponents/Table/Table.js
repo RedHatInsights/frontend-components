@@ -49,7 +49,6 @@ const Table = ({
                 )
             }
             widget-type='InsightsTable'
-            wiget-id={ generateID('Table') }
         >
             <caption className="pf-c-table__caption">
             </caption>
@@ -110,7 +109,8 @@ Table.defaulProps = {
     expandable: false,
     onItemSelect: () => undefined,
     onColClick: () => undefined,
-    onRowClick: () => undefined
+    onRowClick: () => undefined,
+    'widget-id': generateID('Table')
 };
 
 export default Table;
