@@ -73,7 +73,7 @@ const InventoryItem = ({ root, pathPrefix = 0, apiBase, useCard = false, hideBac
     />
 );
 
-const Inventory = ({ match, noTable = false, items = [], pathPrefix = 0, apiBase }) => {
+const Inventory = ({ match = {}, noTable = false, items, pathPrefix = 0, apiBase }) => {
     return (
         <Switch>
             {
@@ -84,7 +84,10 @@ const Inventory = ({ match, noTable = false, items = [], pathPrefix = 0, apiBase
             }
             <Route path={ `${match.url}${match.url.substr(-1, 1) === '/' ? '' : '/'}:inventoryId` }
                 render={ props => (
-                    <InventoryItem { ...props } root={ match.url } pathPrefix={ pathPrefix } apiBase={ apiBase } />
+                    <Fragment>
+                        <InventoryItem { ...props } root={ match.url } pathPrefix={ pathPrefix } apiBase={ apiBase } />
+                        <AppInfo />
+                    </Fragment>
                 ) }
             />
         </Switch>
@@ -101,12 +104,14 @@ export function inventoryConnector() {
         </Fragment>
     );
 
-    return {
-        updateEntities,
-        InventoryTable,
-        AppInfo,
-        InventoryDetailHead: InventoryItem,
-        InventoryDetail,
-        VulnerabilitiesStore
-    };
+    const connectedInventory = routerParams((Inventory));
+
+    connectedInventory.updateEntities = updateEntities;
+    connectedInventory.InventoryTable = InventoryTable;
+    connectedInventory.AppInfo = AppInfo;
+    connectedInventory.InventoryDetailHead = InventoryItem;
+    connectedInventory.InventoryDetail = InventoryDetail;
+    connectedInventory.VulnerabilitiesStore = VulnerabilitiesStore;
+
+    return connectedInventory;
 }

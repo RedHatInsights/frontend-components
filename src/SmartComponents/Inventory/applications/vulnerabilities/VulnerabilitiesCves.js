@@ -59,9 +59,9 @@ class VulnerabilitiesCves extends Component {
     }
 }
 
-function mapStateToProps({ VulnerabilitiesStore: { cveList }}) {
+function mapStateToProps({ VulnerabilitiesStore }) {
     return {
-        cveList
+        cveList: VulnerabilitiesStore && VulnerabilitiesStore.cveList
     };
 }
 
@@ -81,7 +81,10 @@ VulnerabilitiesCves.propTypes = {
 };
 
 VulnerabilitiesCves.defaultProps = {
-    dataMapper: () => undefined
+    dataMapper: () => undefined,
+    cveList: {
+        isLoading: true
+    }
 };
 
 export default connect(
