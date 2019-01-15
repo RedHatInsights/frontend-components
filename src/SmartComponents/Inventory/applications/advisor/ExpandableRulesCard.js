@@ -25,7 +25,9 @@ class ExpandableRulesCard extends React.Component {
         }
 
         if (this.props.kbaDetails !== prevProps.kbaDetails) {
-            this.setState({ kbaDetail: this.props.kbaDetails.filter(article => article.id === this.props.report.rule.node_id) });
+            this.setState({
+                kbaDetail: this.props.kbaDetails.filter(article => article.id === this.props.report.rule.node_id)[0]
+            });
         }
     }
 
@@ -81,10 +83,10 @@ class ExpandableRulesCard extends React.Component {
                                 </CardBody>
                             </Card>
                         </GridItem>
-                        <GridItem>
+                        { kbaDetail.view_uri && (<GridItem>
                             <LightbulbIcon /><strong>Related Knowledgebase articles: </strong>
                             <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle }</a>
-                        </GridItem>
+                        </GridItem>) }
                         <div>
                             <List>
                                 { rule.more_info && (

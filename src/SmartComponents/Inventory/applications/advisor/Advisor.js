@@ -27,15 +27,13 @@ class InventoryRuleList extends Component {
     async fetchEntityRules() {
         const { entity } = this.props;
         try {
-            fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports`).then(({ data }) => {
-                this.setState({
-                    inventoryReport: data,
-                    inventoryReportFetchStatus: 'fulfilled'
-                });
-                const kbaIds = data && data.active_reports.map(report => report.rule.node_id).join(` OR `);
-
-                this.fetchKbaDetails(kbaIds);
+            const data = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports`).then(data => data.json());
+            this.setState({
+                inventoryReport: data,
+                inventoryReportFetchStatus: 'fulfilled'
             });
+            const kbaIds = data && data.active_reports.map(report => report.rule.node_id).join(` OR `);
+            this.fetchKbaDetails(kbaIds);
         } catch (error) {
             this.props.addNotification({
                 variant: 'danger',
@@ -49,12 +47,11 @@ class InventoryRuleList extends Component {
         }
     }
 
-    fetchKbaDetails(kbaIds) {
+    async fetchKbaDetails(kbaIds) {
         try {
-            fetch(`/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`).then(({ data }) => {
-                this.setState({
-                    kbaDetails: data.response.docs
-                });
+            const data = await fetch(`/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`).then(data => data.json());
+            this.setState({
+                kbaDetails: data.response.docs
             });
         } catch (error) {
             this.props.addNotification({
