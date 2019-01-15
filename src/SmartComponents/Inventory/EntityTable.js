@@ -43,7 +43,7 @@ class EntityTable extends React.Component {
                                 data-key={ path }
                                 onClick={ event => this.onRowClick(event, col.id) }
                             >
-                                { get(col, path, 'unknown') || '\u00A0' }
+                                { get(col, path, 'Unknown') || '\u00A0' }
                             </div>
                         )) }
                     </div>
@@ -51,11 +51,11 @@ class EntityTable extends React.Component {
             }
 
             if (isTime) {
-                return (new Date(get(col, key, 'unknown'))).toLocaleString();
+                return (new Date(get(col, key, 'Unknown'))).toLocaleString();
             }
         }
 
-        return get(col, key, 'unknown');
+        return get(col, key, 'Unknown');
     }
 
     onHealthClicked = (event, _clickedOn, health, item) => {

@@ -12,9 +12,27 @@ import { SortDirection } from '../../../PresentationalComponents/Table';
 export const defaultState = { loaded: false };
 
 const defaultColumns = [
-    { key: 'display_name', title: 'Name', composed: [ 'facts.qpc.os_release', 'display_name' ]},
-    { key: 'updated', title: 'Last Seen', isTime: true }
+    { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ]},
+    { key: 'updated', title: 'Last Checked', isTime: true }
 ];
+
+const mapData = ({ results = [], ...data }) => ({
+    ...data,
+    results: results.map(({ facts = {}, ...oneResult }) => ({
+        ...oneResult,
+        facts: facts.flatMap(oneFact => Object.values(oneFact))
+        .map(item => typeof item !== 'string' ? ({
+            ...item,
+            // eslint-disable-next-line camelcase
+            os_release: item.os_release || item.release,
+            // eslint-disable-next-line camelcase
+            display_name: item.display_name || item.fqdn || item.id
+        }) : item)
+        .reduce(
+            (acc, curr) => ({ ...acc, ...(typeof curr !== 'string') ? curr : {}}), {}
+        )
+    }))
+});
 
 function entitiesPending(state) {
     return {
@@ -28,11 +46,10 @@ function entitiesPending(state) {
 
 // eslint-disable-next-line camelcase
 function entitiesLoaded(state, { payload: { results, per_page: perPage, page, count, total, loaded }}) {
-    const entities = mergeArraysByKey([ state.rows, results ]);
     return {
         ...state,
         loaded: loaded === undefined || loaded,
-        rows: entities,
+        rows: mergeArraysByKey([ state.rows, results ]).map(mapData),
         perPage: perPage !== undefined ? perPage : state.perPage,
         page: page !== undefined ? page : state.page,
         count: count !== undefined ? count : state.count,

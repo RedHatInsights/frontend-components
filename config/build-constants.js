@@ -110,6 +110,7 @@ module.exports = {
         '@patternfly/react-icons': pfReactIcons,
         d3: 'd3',
         c3: 'c3',
+        graphql: 'graphql',
         'react-router-dom': ReactRouterDOM
     },
 };
