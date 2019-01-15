@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { Checkbox, Form, FormGroup, Select, SelectOption, Toolbar, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
-import { DownloadIcon } from '@patternfly/react-icons';
 import routerParams from '../../../../Utilities/RouterParams';
 import { SimpleTableFilter } from '../../../../PresentationalComponents/SimpleTableFilter';
+import { DownloadButton } from '../../../../PresentationalComponents/DownloadButton';
 import debounce from 'lodash/debounce';
 import propTypes from 'prop-types';
 
@@ -50,7 +50,6 @@ class VulnerabilitiesCveTableToolbar extends Component {
 
     render() {
         const { showAllCheckbox, downloadReport, totalNumber } = this.props;
-
         return (
             <React.Fragment>
                 <Toolbar className="cvetable-toolbar ">
@@ -97,7 +96,7 @@ class VulnerabilitiesCveTableToolbar extends Component {
                     </ToolbarGroup>
                     <ToolbarGroup className="space-between-toolbar-items">
                         <ToolbarItem>
-                            <DownloadIcon id="download-report" size="lg" onClick={ downloadReport } />
+                            <DownloadButton onSelect={ downloadReport }/>
                         </ToolbarItem>
                         <ToolbarItem>
                             <div className="number-of-results">{ totalNumber }</div>

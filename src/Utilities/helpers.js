@@ -11,11 +11,12 @@ export function mergeArraysByKey(arrays, key = 'id') {
     return Object.values(mergedObject);
 }
 
-export function downloadFile(data, filename = `${new Date().toISOString()}.txt`, type = CSV_TYPE) {
+export function downloadFile(data, filename = `${new Date().toISOString()}`, format = CSV_TYPE) {
+    const type = format === 'json' ? JSON_TYPE : CSV_TYPE;
     const blob = new Blob([data], { type });
     const link = document.createElement('a');
     link.setAttribute('href', URL.createObjectURL(blob));
-    link.setAttribute('download', filename);
+    link.setAttribute('download', `${filename}.${format}`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link)
     link.click();

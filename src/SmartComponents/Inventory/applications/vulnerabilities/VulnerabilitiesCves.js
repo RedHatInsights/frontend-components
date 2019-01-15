@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Stack, StackItem } from '@patternfly/react-core';
-import { getCveListBySystem } from '../../../../api/vulnerabilities';
 import some from 'lodash/some';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -27,10 +26,15 @@ class VulnerabilitiesCves extends Component {
         fetchData && fetchData(() => this.props.fetchResource(this.state));
     }
 
-    downloadReport = () => {
-        // eslint-disable-next-line camelcase
-        getCveListBySystem({ ...this.state, page_size: 9999, data_format: 'csv' }).then(
-            ({ data }) => downloadFile(data)
+    downloadReport = (event, format) => {
+        const { fetchResource } = this.props;
+        const { payload } = fetchResource &&
+            // eslint-disable-next-line camelcase
+            fetchResource({ ...this.state, page_size: Number.MAX_SAFE_INTEGER, data_format: format });
+        payload && payload.then(({ data: response }) => {
+            const data = format === 'json' ? JSON.stringify(response) : response;
+            return downloadFile(data, undefined, format);
+        }
         );
     }
 
