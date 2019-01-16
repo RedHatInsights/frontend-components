@@ -8,10 +8,13 @@ import {
     BullseyeIcon,
     LightbulbIcon
 } from '@patternfly/react-icons';
-import { Ansible } from '../../../../PresentationalComponents/Ansible';
-import { Battery } from '../../../../PresentationalComponents/Battery';
 import { Card, CardBody, CardHeader, Grid, GridItem, List, ListItem, Split, SplitItem } from '@patternfly/react-core';
 import ReactMarkdown from 'react-markdown/with-html';
+
+import { Ansible } from '../../../../PresentationalComponents/Ansible';
+import { Battery } from '../../../../PresentationalComponents/Battery';
+import { Section } from '../../../../PresentationalComponents/Section';
+import '../../../../PresentationalComponents/Section/section.scss';
 
 class ExpandableRulesCard extends React.Component {
     state = {
@@ -58,12 +61,12 @@ class ExpandableRulesCard extends React.Component {
                             <Ansible unsupported={ !rule.has_playbook } />
                         </SplitItem>
                     </Split>
-                    <Split>
-                        <SplitItem> <Battery label='Impact' severity={ rule.impact.impact } /> </SplitItem>
-                        <SplitItem> <Battery label='Likelihood' severity={ rule.likelihood } /> </SplitItem>
-                        <SplitItem> <Battery label='Total Risk' severity={ rule.severity } /> </SplitItem>
-                        <SplitItem><Battery label='Risk Of Change' severity={ rule.resolution_risk } /></SplitItem>
-                    </Split>
+                    <Section type='icon-group__with-major'>
+                        <Battery label='Impact' severity={ rule.impact.impact } />
+                        <Battery label='Likelihood' severity={ rule.likelihood } />
+                        <Battery label='Total Risk' severity={ rule.severity } />
+                        <Battery label='Risk Of Change' severity={ report.resolution.resolution_risk.risk } />
+                    </Section>
                 </CardHeader>
                 { expanded && (<CardBody>
                     <Grid gutter='md' sm={ 12 }>
@@ -83,7 +86,7 @@ class ExpandableRulesCard extends React.Component {
                                 </CardBody>
                             </Card>
                         </GridItem>
-                        { kbaDetail.view_uri && (<GridItem>
+                        { kbaDetail && kbaDetail.view_uri && (<GridItem>
                             <LightbulbIcon /><strong>Related Knowledgebase articles: </strong>
                             <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle }</a>
                         </GridItem>) }

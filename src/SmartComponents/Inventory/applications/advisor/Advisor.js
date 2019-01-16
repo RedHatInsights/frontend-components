@@ -71,7 +71,7 @@ class InventoryRuleList extends Component {
         const { inventoryReport, expanded, kbaDetails } = this.state;
         return (
             <Fragment>
-                <div className="pf-u-display-flex pf-u-flex-direction-row-reverse">
+                <div className="pf-u-display-flex pf-u-flex-row-reverse">
                     <a onClick={ e => {
                         e.preventDefault();
                         this.expandAll(expanded);
