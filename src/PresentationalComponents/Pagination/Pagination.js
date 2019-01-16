@@ -62,7 +62,7 @@ class Pagination extends Component {
 
         return (
             <div className="special-patternfly" widget-type='InsightsPagination'>
-                { PaginationRow && <PaginationRow
+                { typeof PaginationRow !== 'undefined' && <PaginationRow
                     { ...this.props }
                     pageInputValue={ this.props.page || 1 }
                     viewType={ this.props.viewType || 'table' }
