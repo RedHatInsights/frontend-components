@@ -8,6 +8,7 @@ import {
 } from '../../action-types';
 import { mergeArraysByKey } from '../../../Utilities/helpers';
 import { SortDirection } from '../../../PresentationalComponents/Table';
+import flatMap from 'lodash/flatMap';
 
 export const defaultState = { loaded: false };
 
@@ -19,7 +20,7 @@ const defaultColumns = [
 export const mapData = ({ facts = {}, ...oneResult }) => ({
     ...oneResult,
     rawFacts: facts,
-    facts: facts.flatMap(oneFact => Object.values(oneFact))
+    facts: flatMap(facts, (oneFact => Object.values(oneFact)))
     .map(item => typeof item !== 'string' ? ({
         ...item,
         // eslint-disable-next-line camelcase

@@ -9,6 +9,7 @@ import { Pagination } from '../../../../PresentationalComponents/Pagination';
 import { SearchIcon } from '@patternfly/react-icons';
 import { Grid, GridItem, Text, TextVariants } from '@patternfly/react-core';
 import { RowLoader } from '../../../../Utilities/helpers';
+import flatMap from 'lodash/flatMap';
 
 /* eslint camelcase: off */
 const defaultState = {
@@ -35,7 +36,7 @@ class SystemRulesTable extends React.Component {
     }
 
     static rulesToRows(profileRules) {
-        return profileRules.flatMap(profileRule => profileRule.rules.flatMap((rule, i) => ([
+        return flatMap(profileRules, (profileRule => flatMap(profileRule.rules, ((rule, i) => ([
             {
                 children: [ i * 2 + 1 ],
                 cells: [
@@ -68,7 +69,7 @@ class SystemRulesTable extends React.Component {
                     }
                 ]
             }]
-        )));
+        )))));
     }
 
     setPage = (page) => {
