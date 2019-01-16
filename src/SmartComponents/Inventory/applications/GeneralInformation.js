@@ -102,14 +102,7 @@ GeneralInformation.propTypes = {
         created: PropTypes.string,
         // eslint-disable-next-line camelcase
         bios_uuid: PropTypes.string,
-        facts: PropTypes.oneOfType([
-            PropTypes.shape({
-                inventory: PropTypes.shape({})
-            }),
-            PropTypes.shape({
-                qpc: PropTypes.shape({})
-            })
-        ])
+        facts: PropTypes.object
     })
 };
 GeneralInformation.defaultProps = {

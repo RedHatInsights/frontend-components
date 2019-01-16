@@ -68,7 +68,7 @@ class EntityDetails extends Component {
                             Hostname:
                         </span>
                         <span>
-                            { this.getFact('fqdn') || 'Unknown' }
+                            { this.getFact('fqdn') || this.getFact('facts.hostname') || 'Unknown' }
                         </span>
                     </div>
                     <div>
@@ -88,9 +88,9 @@ class EntityDetails extends Component {
                         </span>
                         <span>
                             {
+                                this.getFact('facts.os_release') ||
                                 this.getFact('facts.inventory.release') ||
                                 this.getFact('facts.qpc.os_release') ||
-                                this.getFact('facts.os_release') ||
                                 'Unknown'
                             }
                         </span>

@@ -16,22 +16,20 @@ const defaultColumns = [
     { key: 'updated', title: 'Last Checked', isTime: true }
 ];
 
-const mapData = ({ results = [], ...data }) => ({
-    ...data,
-    results: results.map(({ facts = {}, ...oneResult }) => ({
-        ...oneResult,
-        facts: facts.flatMap(oneFact => Object.values(oneFact))
-        .map(item => typeof item !== 'string' ? ({
-            ...item,
-            // eslint-disable-next-line camelcase
-            os_release: item.os_release || item.release,
-            // eslint-disable-next-line camelcase
-            display_name: item.display_name || item.fqdn || item.id
-        }) : item)
-        .reduce(
-            (acc, curr) => ({ ...acc, ...(typeof curr !== 'string') ? curr : {}}), {}
-        )
-    }))
+export const mapData = ({ facts = {}, ...oneResult }) => ({
+    ...oneResult,
+    rawFacts: facts,
+    facts: facts.flatMap(oneFact => Object.values(oneFact))
+    .map(item => typeof item !== 'string' ? ({
+        ...item,
+        // eslint-disable-next-line camelcase
+        os_release: item.os_release || item.release,
+        // eslint-disable-next-line camelcase
+        display_name: item.display_name || item.fqdn || item.id
+    }) : item)
+    .reduce(
+        (acc, curr) => ({ ...acc, ...(typeof curr !== 'string') ? curr : {}}), {}
+    )
 });
 
 function entitiesPending(state) {
