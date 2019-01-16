@@ -9,6 +9,7 @@ import { filterSelect } from '../../../redux/actions/inventory';
 import { SyncAltIcon } from '@patternfly/react-icons';
 import { InventoryContext } from '../Inventory';
 import FilterItem from './FilterItem';
+import flatMap from 'lodash/flatMap';
 
 function generateFilters(filters = [], activeFilters) {
     const calculateFilter = (filter, { value }) => ({
@@ -17,16 +18,17 @@ function generateFilters(filters = [], activeFilters) {
         group: value
     });
 
-    return [
+    const allFilters = [
         ...filters,
         systemType,
         osVersion
-    ].flatMap(({ items, ...filter }) => ([
+    ];
+    return allFilters && flatMap(allFilters, ({ items, ...filter }) => ([
         {
             filter,
             isDisabled: true
         },
-        ...items ? items.flatMap(({ items: subItems, ...subFilter }) => ([
+        ...items ? flatMap(items, ({ items: subItems, ...subFilter }) => ([
             {
                 filter: {
                     ...calculateFilter(subFilter, filter),
