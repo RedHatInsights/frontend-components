@@ -8,7 +8,6 @@ import {
 } from '../../action-types';
 import { mergeArraysByKey } from '../../../Utilities/helpers';
 import { SortDirection } from '../../../PresentationalComponents/Table';
-import flatMap from 'lodash/flatMap';
 
 export const defaultState = { loaded: false };
 
@@ -16,22 +15,6 @@ const defaultColumns = [
     { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ]},
     { key: 'updated', title: 'Last Checked', isTime: true }
 ];
-
-export const mapData = ({ facts = {}, ...oneResult }) => ({
-    ...oneResult,
-    rawFacts: facts,
-    facts: flatMap(facts, (oneFact => Object.values(oneFact)))
-    .map(item => typeof item !== 'string' ? ({
-        ...item,
-        // eslint-disable-next-line camelcase
-        os_release: item.os_release || item.release,
-        // eslint-disable-next-line camelcase
-        display_name: item.display_name || item.fqdn || item.id
-    }) : item)
-    .reduce(
-        (acc, curr) => ({ ...acc, ...(typeof curr !== 'string') ? curr : {}}), {}
-    )
-});
 
 function entitiesPending(state) {
     return {
@@ -48,7 +31,7 @@ function entitiesLoaded(state, { payload: { results, per_page: perPage, page, co
     return {
         ...state,
         loaded: loaded === undefined || loaded,
-        rows: mergeArraysByKey([ state.rows, results ]).map(mapData),
+        rows: mergeArraysByKey([ state.rows, results ]),
         perPage: perPage !== undefined ? perPage : state.perPage,
         page: page !== undefined ? page : state.page,
         count: count !== undefined ? count : state.count,

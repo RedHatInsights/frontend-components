@@ -1,5 +1,4 @@
 import { ACTION_TYPES, APPLICATION_SELECTED } from '../../action-types';
-import { mapData } from './entities';
 
 export const defaultState = { loaded: false };
 
@@ -14,7 +13,7 @@ function entityDetailLoaded(state, { payload }) {
     return {
         ...state,
         loaded: true,
-        entity: payload.results.map(mapData)[0]
+        entity: payload.results[0]
     };
 }
 
