@@ -22,7 +22,7 @@ export function createCveListBySystem({ isLoading, ...rest }) {
                     </span>,
                     row.attributes.synopsis,
                     <span key={ `title-${row.id}` } title={ row.attributes.description }>{ row.attributes.description.substr(0, 199) }...</span>,
-                    row.attributes.cvss_score || 'N/A',
+                    row.attributes.cvss3_score || (row.attributes.cvss2_score && `${row.attributes.cvss2_score} (v2)`) || 'N/A',
                     new Date(row.attributes.public_date).toLocaleString()
                 ]
             })),

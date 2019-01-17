@@ -30,7 +30,7 @@ class VulnerabilitiesCves extends Component {
         const { fetchResource } = this.props;
         const { payload } = fetchResource &&
             // eslint-disable-next-line camelcase
-            fetchResource({ ...this.state, page_size: Number.MAX_SAFE_INTEGER, data_format: format });
+            fetchResource({ ...this.state, page_size: Number.MAX_SAFE_INTEGER, data_format: format, page: 1 });
         payload && payload.then(({ data: response }) => {
             const data = format === 'json' ? JSON.stringify(response) : response;
             return downloadFile(data, undefined, format);

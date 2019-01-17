@@ -10,7 +10,8 @@ export function getCveListBySystem({
     cvss_from: cvssFrom,
     cvss_to: cvssTo,
     filter,
-    data_format: dataFormat
+    data_format: dataFormat,
+    sort
 }) {
     const query = [
         page && { page },
@@ -18,7 +19,8 @@ export function getCveListBySystem({
         cvssFrom && { cvss_from: cvssFrom },
         cvssTo && { cvss_to: cvssTo },
         filter && { filter },
-        dataFormat && { data_format: dataFormat }
+        dataFormat && { data_format: dataFormat },
+        sort && { sort }
     ].reduce((acc, curr) => ([ ...acc, curr && `${Object.keys(curr)[0]}=${Object.values(curr)[0]}` ]), [])
     .filter(Boolean)
     .join('&');
