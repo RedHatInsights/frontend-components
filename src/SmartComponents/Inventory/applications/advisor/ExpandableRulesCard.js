@@ -74,7 +74,11 @@ class ExpandableRulesCard extends React.Component {
                             <Card className='pf-t-light  pf-m-opaque-100'>
                                 <CardHeader> <ThumbsUpIcon /> Detected Issues</CardHeader>
                                 <CardBody>
-                                    <ReactMarkdown source={ rule.reason } escapeHtml={ false }/>
+                                    {
+                                        typeof rule.reason === 'string' &&
+                                        Boolean(rule.reason) &&
+                                        <ReactMarkdown source={ rule.reason } escapeHtml={ false }/>
+                                    }
                                 </CardBody>
                             </Card>
                         </GridItem>
@@ -94,7 +98,11 @@ class ExpandableRulesCard extends React.Component {
                             <List>
                                 { rule.more_info && (
                                     <ListItem>
-                                        <ReactMarkdown source={ rule.more_info } escapeHtml={ false }/>
+                                        {
+                                            typeof rule.more_info === 'string' &&
+                                            Boolean(rule.more_info) &&
+                                            <ReactMarkdown source={ rule.more_info } escapeHtml={ false }/>
+                                        }
                                     </ListItem>
                                 ) }
                                 <ListItem>
