@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component should render checkbox 1`] = `
+<input
+  aria-label="checkbox"
+  className="pf-c-check"
+  type="checkbox"
+  widget-id="some-id"
+  widget-type="InsightsInput"
+/>
+`;
+
+exports[`Input component should render labeled input 1`] = `
+<label
+  className="pf-c-form__label"
+  htmlFor="some-name"
+>
+  <Input
+    id="some-name"
+    name="some-name"
+    type="text"
+    widget-id="some-id"
+  />
+   
+</label>
+`;
+
+exports[`Input component should render radio 1`] = `
+<input
+  aria-label="radio"
+  className="pf-c-check"
+  type="radio"
+  widget-id="some-id"
+  widget-type="InsightsInput"
+/>
+`;
+
+exports[`Input component should render text 1`] = `
+<input
+  aria-label="text"
+  className="pf-c-form-control"
+  type="text"
+  widget-id="some-id"
+  widget-type="InsightsInput"
+/>
+`;

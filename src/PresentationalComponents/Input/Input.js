@@ -10,7 +10,6 @@ const Input = ({ type = 'text', ariaLabel = type, className, ...props }) => {
     return (
         <input { ...props }
             widget-type='InsightsInput'
-            widget-id={ generateID('Input') }
             type={ type }
             aria-label={ ariaLabel }
             className={ classnames(classes, className) }
@@ -22,6 +21,10 @@ Input.propTypes = {
     type: PropTypes.string,
     className: PropTypes.string,
     ariaLabel: PropTypes.string
+};
+
+Input.defaultProps = {
+    'widget-id': generateID('Table')
 };
 
 export default Input;
