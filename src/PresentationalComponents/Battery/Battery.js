@@ -76,20 +76,16 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
         }
     }
 
-    if (!labelHidden) {
-        return (
-            <span className= { batteryWrapperClasses } { ...props } widget-type='InsightsBattery' widget-id={ label }>
-                { generateBattery(severity, batteryClasses) }
-                <span className='label'> { label } </span>
-            </span>
-        );
-    } else {
-        return (
-            <span className= { batteryWrapperClasses } { ...props } widget-type='InsightsBattery' widget-id={ label }>
-                { generateBattery(severity, batteryClasses, ariaLabels) }
-            </span>
-        );
-    }
+    return (
+        <span className={ batteryWrapperClasses } { ...props } widget-type='InsightsBattery' widget-id={ label }>
+            {
+                labelHidden ?
+                    generateBattery(severity, batteryClasses, ariaLabels) :
+                    generateBattery(severity, batteryClasses)
+            }
+            { !labelHidden && <span className='label'> { label } </span> }
+        </span>
+    );
 };
 
 export default Battery;

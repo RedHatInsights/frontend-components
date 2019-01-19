@@ -1,0 +1,479 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Battery component API should hide label 1`] = `
+<span
+  className="ins-battery"
+  widget-id="high"
+  widget-type="InsightsBattery"
+>
+  <i
+    aria-label="high high"
+    className="ins-battery-high"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <HighBattery />
+    </svg>
+  </i>
+</span>
+`;
+
+exports[`Battery component CriticalBattery 1`] = `
+<path
+  d="M16,212h416c8.8,0,16-7.2,16-16v-40c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,204.8,7.2,212,16,212z M16,372h416 c8.8,0,16-7.2,16-16v-40c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,364.8,7.2,372,16,372z M16,512h416c8.8,0,16-7.2,16-16v-40 c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,504.8,7.2,512,16,512z M16,72h416c8.8,0,16-7.2,16-16V16c0-8.8-7.2-16-16-16H16 C7.2,0,0,7.2,0,16v40C0,64.8,7.2,72,16,72z"
+/>
+`;
+
+exports[`Battery component HighBattery 1`] = `
+<path
+  d="M16,212h416c8.8,0,16-7.2,16-16v-40c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,204.8,7.2,212,16,212z M16,372h416 c8.8,0,16-7.2,16-16v-40c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,364.8,7.2,372,16,372z M16,512h416c8.8,0,16-7.2,16-16v-40 c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,504.8,7.2,512,16,512z"
+/>
+`;
+
+exports[`Battery component LowBattery 1`] = `
+<path
+  d="M16,512h416c8.8,0,16-7.2,16-16v-40c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,504.8,7.2,512,16,512z"
+/>
+`;
+
+exports[`Battery component MediumBattery 1`] = `
+<path
+  d="M16,372h416c8.8,0,16-7.2,16-16v-40c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,364.8,7.2,372,16,372z M16,512h416 c8.8,0,16-7.2,16-16v-40c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,504.8,7.2,512,16,512z"
+/>
+`;
+
+exports[`Battery component NullBattery 1`] = `
+<path
+  d="M16,212h416c8.8,0,16-7.2,16-16v-40c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,204.8,7.2,212,16,212z M16,372h416 c8.8,0,16-7.2,16-16v-40c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,364.8,7.2,372,16,372z M16,512h416c8.8,0,16-7.2,16-16v-40 c0-8.8-7.2-16-16-16H16c-8.8,0-16,7.2-16,16v40C0,504.8,7.2,512,16,512z M16,72h416c8.8,0,16-7.2,16-16V16c0-8.8-7.2-16-16-16H16 C7.2,0,0,7.2,0,16v40C0,64.8,7.2,72,16,72z"
+/>
+`;
+
+exports[`Battery component should render correctly CriticalBattery - 4 1`] = `
+<span
+  className="ins-battery"
+  widget-id="4"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-4"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <CriticalBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    4
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly CriticalBattery - critical 1`] = `
+<span
+  className="ins-battery"
+  widget-id="critical"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-critical"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <CriticalBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    critical
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly HighBattery - 3 1`] = `
+<span
+  className="ins-battery"
+  widget-id="3"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-3"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <HighBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    3
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly HighBattery - error 1`] = `
+<span
+  className="ins-battery"
+  widget-id="error"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-error"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <HighBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    error
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly HighBattery - high 1`] = `
+<span
+  className="ins-battery"
+  widget-id="high"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-high"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <HighBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    high
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly LowBattery - 1 1`] = `
+<span
+  className="ins-battery"
+  widget-id="1"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-1"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <LowBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    1
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly LowBattery - info 1`] = `
+<span
+  className="ins-battery"
+  widget-id="info"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-info"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <LowBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    info
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly LowBattery - low 1`] = `
+<span
+  className="ins-battery"
+  widget-id="low"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-low"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <LowBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    low
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly MediumBattery - 2 1`] = `
+<span
+  className="ins-battery"
+  widget-id="2"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-2"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <MediumBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    2
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly MediumBattery - medium 1`] = `
+<span
+  className="ins-battery"
+  widget-id="medium"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-medium"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <MediumBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    medium
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly MediumBattery - warn 1`] = `
+<span
+  className="ins-battery"
+  widget-id="warn"
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-warn"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <MediumBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+    warn
+     
+  </span>
+</span>
+`;
+
+exports[`Battery component should render correctly NullBatery, default 1`] = `
+<span
+  className="ins-battery"
+  widget-id=""
+  widget-type="InsightsBattery"
+>
+  <i
+    className="ins-battery-"
+  >
+    <svg
+      id="battery_svg"
+      shapeRendering="geometricpresision"
+      style={
+        Object {
+          "enableBackground": "new 0 0 448 512",
+        }
+      }
+      version="1.1"
+      viewBox="0 0 448 512"
+      x="0px"
+      y="0px"
+    >
+      <NullBattery />
+    </svg>
+  </i>
+  <span
+    className="label"
+  >
+     
+     
+  </span>
+</span>
+`;
