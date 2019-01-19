@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageHeader component should render 1`] = `
+<PageHeaderTitle>
+  <Title
+    className=""
+    size="2xl"
+    widget-type="InsightsPageHeaderTitle"
+  >
+    <h1
+      className="pf-c-title pf-m-2xl"
+      widget-type="InsightsPageHeaderTitle"
+    >
+       
+       
+    </h1>
+  </Title>
+</PageHeaderTitle>
+`;

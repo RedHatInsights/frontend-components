@@ -18,7 +18,7 @@ const PageHeader = ({ className, children, ...props }) => {
 
     return (
         <ThemeContext.Consumer>
-            { theme => {
+            { (theme = 'light') => {
 
                 let themeClasses = classNames(
                     { [`pf-m-${ theme }-200`]: theme  === 'dark' },
@@ -26,7 +26,7 @@ const PageHeader = ({ className, children, ...props }) => {
                 );
 
                 return (
-                    <section className={ `${ pageHeaderClasses } ${ themeClasses }` } widget-type='InsightsPageHeader'>
+                    <section { ...props } className={ `${ pageHeaderClasses } ${ themeClasses }` } widget-type='InsightsPageHeader'>
                         <div className='pf-c-content'>
                             { children }
                         </div>
