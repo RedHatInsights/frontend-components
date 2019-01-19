@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { PaginationRow } from 'patternfly-react';
 import PropTypes from 'prop-types';
 
-import { generateID } from '../../functions/generateID.js';
-
 export const dropDirection = {
     up: 'up',
     down: 'down'
@@ -12,46 +10,38 @@ export const dropDirection = {
 const pager = [ 10, 15, 20, 25, 50 ];
 
 class Pagination extends Component {
-    constructor(props) {
-        super(props);
-        this.defaultFirstPage = this.defaultFirstPage.bind(this);
-        this.defaultLastPage = this.defaultLastPage.bind(this);
-        this.defaultPreviousPage = this.defaultPreviousPage.bind(this);
-        this.defaultNextPage = this.defaultNextPage.bind(this);
-        this.setPage = this.setPage.bind(this);
-    }
-
-    setPage(page, debounce = false) {
+    setPage = (page, debounce = false) => {
+        const { page: currPage } = this.props;
         const perPage = this.props.itemsPerPage || pager[0];
         const maxPage = Math.ceil(this.props.numberOfItems / perPage);
-        page = isNaN(page) ? 1 : page;
-        page = page > maxPage ? maxPage : page;
+        page = isNaN(page) ? currPage : page;
+        page = page > maxPage ? maxPage : page < 0 ? 0 : page;
         this.props.hasOwnProperty('onSetPage') && this.props.onSetPage(page, debounce);
     }
 
-    defaultFirstPage() {
+    defaultFirstPage = () => {
         this.setPage(1);
     }
 
-    defaultLastPage() {
+    defaultLastPage = () => {
         const perPage = this.props.itemsPerPage || pager[0];
         this.setPage(Math.ceil(this.props.numberOfItems / perPage));
     }
 
-    defaultPreviousPage() {
+    defaultPreviousPage = () => {
         const { page = 1 } = this.props;
         this.setPage(page - 1);
     }
 
-    defaultNextPage() {
+    defaultNextPage = () => {
         const { page = 1 } = this.props;
         this.setPage(page + 1);
     }
 
     render() {
         let { page } = this.props;
-        const perPage = this.props.itemsPerPage || pager[0];
         const perPageOptions = this.props.perPageOptions || pager;
+        const perPage = this.props.itemsPerPage || perPageOptions[0];
         const lastPage = Math.ceil(this.props.numberOfItems / perPage);
         let lastIndex = page === lastPage ? this.props.numberOfItems : page * perPage;
         let firstIndex = page === 1 ? 1 : page * perPage - perPage;
@@ -91,7 +81,11 @@ Pagination.propTypes = {
     perPageOptions: PropTypes.arrayOf(PropTypes.number),
     numberOfItems: PropTypes.number.isRequired,
     onSetPage: PropTypes.func,
-    onPerPageSelect: PropTypes.func
+    onPerPageSelect: PropTypes.func,
+    onFirstPage: PropTypes.func,
+    onLastPage: PropTypes.func,
+    onPreviousPage: PropTypes.func,
+    onNextPage: PropTypes.func
 };
 
 Pagination.defaultProps = {

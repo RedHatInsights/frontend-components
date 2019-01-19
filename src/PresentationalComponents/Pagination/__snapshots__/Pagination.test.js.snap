@@ -1,0 +1,377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination component should render direction up 1`] = `
+<div
+  className="special-patternfly"
+  widget-type="InsightsPagination"
+>
+  <PaginationRow
+    amountOfPages={1}
+    baseClassName="content-view-pf-pagination"
+    className=""
+    direction="up"
+    dropdownButtonId="pagination-row-dropdown"
+    itemCount={10}
+    itemsEnd={10}
+    itemsStart={1}
+    messages={
+      Object {
+        "currentPage": "Current Page",
+        "firstPage": "First Page",
+        "lastPage": "Last Page",
+        "nextPage": "Next Page",
+        "of": "of",
+        "perPage": "per page",
+        "previousPage": "Previous Page",
+      }
+    }
+    numberOfItems={10}
+    onFirstPage={[Function]}
+    onLastPage={[Function]}
+    onNextPage={[Function]}
+    onPageInput={[Function]}
+    onPerPageSelect={[Function]}
+    onPreviousPage={[Function]}
+    onSubmit={[Function]}
+    page={1}
+    pageInputValue={1}
+    pageSizeDropUp={true}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 10,
+        "perPageOptions": Array [
+          10,
+          15,
+          20,
+          25,
+          50,
+        ],
+      }
+    }
+    viewType="table"
+  />
+</div>
+`;
+
+exports[`Pagination component should render empty page 1`] = `
+<div
+  className="special-patternfly"
+  widget-type="InsightsPagination"
+>
+  <PaginationRow
+    amountOfPages={1}
+    baseClassName="content-view-pf-pagination"
+    className=""
+    dropdownButtonId="pagination-row-dropdown"
+    itemCount={0}
+    itemsEnd={0}
+    itemsStart={0}
+    messages={
+      Object {
+        "currentPage": "Current Page",
+        "firstPage": "First Page",
+        "lastPage": "Last Page",
+        "nextPage": "Next Page",
+        "of": "of",
+        "perPage": "per page",
+        "previousPage": "Previous Page",
+      }
+    }
+    numberOfItems={0}
+    onFirstPage={[Function]}
+    onLastPage={[Function]}
+    onNextPage={[Function]}
+    onPageInput={[Function]}
+    onPerPageSelect={[Function]}
+    onPreviousPage={[Function]}
+    onSubmit={[Function]}
+    page={1}
+    pageInputValue={1}
+    pageSizeDropUp={false}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 10,
+        "perPageOptions": Array [
+          10,
+          15,
+          20,
+          25,
+          50,
+        ],
+      }
+    }
+    viewType="table"
+  />
+</div>
+`;
+
+exports[`Pagination component should render items per page 1`] = `
+<div
+  className="special-patternfly"
+  widget-type="InsightsPagination"
+>
+  <PaginationRow
+    amountOfPages={1}
+    baseClassName="content-view-pf-pagination"
+    className=""
+    dropdownButtonId="pagination-row-dropdown"
+    itemCount={10}
+    itemsEnd={10}
+    itemsPerPage={20}
+    itemsStart={1}
+    messages={
+      Object {
+        "currentPage": "Current Page",
+        "firstPage": "First Page",
+        "lastPage": "Last Page",
+        "nextPage": "Next Page",
+        "of": "of",
+        "perPage": "per page",
+        "previousPage": "Previous Page",
+      }
+    }
+    numberOfItems={10}
+    onFirstPage={[Function]}
+    onLastPage={[Function]}
+    onNextPage={[Function]}
+    onPageInput={[Function]}
+    onPerPageSelect={[Function]}
+    onPreviousPage={[Function]}
+    onSubmit={[Function]}
+    page={1}
+    pageInputValue={1}
+    pageSizeDropUp={false}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 20,
+        "perPageOptions": Array [
+          10,
+          15,
+          20,
+          25,
+          50,
+        ],
+      }
+    }
+    viewType="table"
+  />
+</div>
+`;
+
+exports[`Pagination component should render page last 1`] = `
+<div
+  className="special-patternfly"
+  widget-type="InsightsPagination"
+>
+  <PaginationRow
+    amountOfPages={3}
+    baseClassName="content-view-pf-pagination"
+    className=""
+    dropdownButtonId="pagination-row-dropdown"
+    itemCount={30}
+    itemsEnd={30}
+    itemsStart={20}
+    messages={
+      Object {
+        "currentPage": "Current Page",
+        "firstPage": "First Page",
+        "lastPage": "Last Page",
+        "nextPage": "Next Page",
+        "of": "of",
+        "perPage": "per page",
+        "previousPage": "Previous Page",
+      }
+    }
+    numberOfItems={30}
+    onFirstPage={[Function]}
+    onLastPage={[Function]}
+    onNextPage={[Function]}
+    onPageInput={[Function]}
+    onPerPageSelect={[Function]}
+    onPreviousPage={[Function]}
+    onSubmit={[Function]}
+    page={3}
+    pageInputValue={3}
+    pageSizeDropUp={false}
+    pagination={
+      Object {
+        "page": 3,
+        "perPage": 10,
+        "perPageOptions": Array [
+          10,
+          15,
+          20,
+          25,
+          50,
+        ],
+      }
+    }
+    viewType="table"
+  />
+</div>
+`;
+
+exports[`Pagination component should render page second 1`] = `
+<div
+  className="special-patternfly"
+  widget-type="InsightsPagination"
+>
+  <PaginationRow
+    amountOfPages={3}
+    baseClassName="content-view-pf-pagination"
+    className=""
+    dropdownButtonId="pagination-row-dropdown"
+    itemCount={30}
+    itemsEnd={20}
+    itemsStart={10}
+    messages={
+      Object {
+        "currentPage": "Current Page",
+        "firstPage": "First Page",
+        "lastPage": "Last Page",
+        "nextPage": "Next Page",
+        "of": "of",
+        "perPage": "per page",
+        "previousPage": "Previous Page",
+      }
+    }
+    numberOfItems={30}
+    onFirstPage={[Function]}
+    onLastPage={[Function]}
+    onNextPage={[Function]}
+    onPageInput={[Function]}
+    onPerPageSelect={[Function]}
+    onPreviousPage={[Function]}
+    onSubmit={[Function]}
+    page={2}
+    pageInputValue={2}
+    pageSizeDropUp={false}
+    pagination={
+      Object {
+        "page": 2,
+        "perPage": 10,
+        "perPageOptions": Array [
+          10,
+          15,
+          20,
+          25,
+          50,
+        ],
+      }
+    }
+    viewType="table"
+  />
+</div>
+`;
+
+exports[`Pagination component should render per page options 1`] = `
+<div
+  className="special-patternfly"
+  widget-type="InsightsPagination"
+>
+  <PaginationRow
+    amountOfPages={10}
+    baseClassName="content-view-pf-pagination"
+    className=""
+    dropdownButtonId="pagination-row-dropdown"
+    itemCount={10}
+    itemsEnd={1}
+    itemsStart={1}
+    messages={
+      Object {
+        "currentPage": "Current Page",
+        "firstPage": "First Page",
+        "lastPage": "Last Page",
+        "nextPage": "Next Page",
+        "of": "of",
+        "perPage": "per page",
+        "previousPage": "Previous Page",
+      }
+    }
+    numberOfItems={10}
+    onFirstPage={[Function]}
+    onLastPage={[Function]}
+    onNextPage={[Function]}
+    onPageInput={[Function]}
+    onPerPageSelect={[Function]}
+    onPreviousPage={[Function]}
+    onSubmit={[Function]}
+    page={1}
+    pageInputValue={1}
+    pageSizeDropUp={false}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 1,
+        "perPageOptions": Array [
+          1,
+          2,
+        ],
+      }
+    }
+    perPageOptions={
+      Array [
+        1,
+        2,
+      ]
+    }
+    viewType="table"
+  />
+</div>
+`;
+
+exports[`Pagination component should render required props 1`] = `
+<div
+  className="special-patternfly"
+  widget-type="InsightsPagination"
+>
+  <PaginationRow
+    amountOfPages={1}
+    baseClassName="content-view-pf-pagination"
+    className=""
+    dropdownButtonId="pagination-row-dropdown"
+    itemCount={10}
+    itemsEnd={10}
+    itemsStart={1}
+    messages={
+      Object {
+        "currentPage": "Current Page",
+        "firstPage": "First Page",
+        "lastPage": "Last Page",
+        "nextPage": "Next Page",
+        "of": "of",
+        "perPage": "per page",
+        "previousPage": "Previous Page",
+      }
+    }
+    numberOfItems={10}
+    onFirstPage={[Function]}
+    onLastPage={[Function]}
+    onNextPage={[Function]}
+    onPageInput={[Function]}
+    onPerPageSelect={[Function]}
+    onPreviousPage={[Function]}
+    onSubmit={[Function]}
+    page={1}
+    pageInputValue={1}
+    pageSizeDropUp={false}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 10,
+        "perPageOptions": Array [
+          10,
+          15,
+          20,
+          25,
+          50,
+        ],
+      }
+    }
+    viewType="table"
+  />
+</div>
+`;
