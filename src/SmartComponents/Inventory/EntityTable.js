@@ -127,7 +127,7 @@ class EntityTable extends React.Component {
     }
 
     render() {
-        const { columns, showHealth, loaded, sortBy, expandable, onExpandClick } = this.props;
+        const { columns, showHealth, loaded, sortBy, expandable, onExpandClick, hasCheckbox } = this.props;
         return <Table
             className="pf-m-compact ins-entity-table"
             expandable={ expandable }
@@ -152,7 +152,7 @@ class EntityTable extends React.Component {
             } }
             onSort={ this.onSort }
             onItemSelect={ this.onItemSelect }
-            hasCheckbox={ loaded }
+            hasCheckbox={ loaded && hasCheckbox }
             rows={
                 loaded ?
                     this.createRows() :
@@ -172,6 +172,7 @@ EntityTable.propTypes = {
     expandable: PropTypes.bool,
     onExpandClick: PropTypes.func,
     setSort: PropTypes.func,
+    hasCheckbox: PropTypes.bool,
     rows: PropTypes.arrayOf(PropTypes.any),
     columns: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string,
@@ -193,6 +194,7 @@ EntityTable.defaultProps = {
     loaded: false,
     showHealth: false,
     expandable: false,
+    hasCheckbox: true,
     columns: [],
     rows: [],
     onExpandClick: () => undefined,
