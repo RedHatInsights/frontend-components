@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { AngleRightIcon } from '@patternfly/react-icons';
 
-function upperCaseFirst(item)
-{
-    return item.charAt(0).toUpperCase() + item.slice(1);
-}
-
 const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => (
     <React.Fragment>
         {
@@ -15,18 +10,18 @@ const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => (
                 { items.map((oneLink, key) => (
                     <li key={ oneLink.navigate } data-key={ key }>
                         <a key={ oneLink.navigate }
-                            onClick={ event => onNavigate(event, oneLink.navigate, items.length - key) }
+                            onClick={ event => onNavigate(event, oneLink.navigate, key) }
                             aria-label={ oneLink.navigate }>
-                            { upperCaseFirst(oneLink.title) }
+                            { oneLink.title }
                         </a>
                         <AngleRightIcon />
                     </li>
                 )) }
 
                 { current &&
-        <li className="ins-active">
-            <span>{ upperCaseFirst(current) }</span>
-        </li>
+                    <li className="ins-active">
+                        <span>{ current }</span>
+                    </li>
                 }
             </ol>
         }
@@ -34,8 +29,11 @@ const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => (
 );
 
 Breadcrumbs.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.any),
-    current: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({
+        navigate: PropTypes.any,
+        title: PropTypes.node
+    })),
+    current: PropTypes.node,
     onNavigate: PropTypes.func
 };
 

@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs component should render correctly no current 1`] = `
+<Fragment>
+  <ol
+    className="ins-breadcrumbs"
+    widget-type="InsightsBreadcrumbs"
+  >
+    <li
+      data-key={0}
+      key="first"
+    >
+      <a
+        aria-label="first"
+        key="first"
+        onClick={[Function]}
+      >
+        First
+      </a>
+      <AngleRightIcon
+        color="currentColor"
+        size="sm"
+        title={null}
+      />
+    </li>
+    <li
+      data-key={1}
+      key="second"
+    >
+      <a
+        aria-label="second"
+        key="second"
+        onClick={[Function]}
+      >
+        <span>
+          Second
+        </span>
+      </a>
+      <AngleRightIcon
+        color="currentColor"
+        size="sm"
+        title={null}
+      />
+    </li>
+  </ol>
+</Fragment>
+`;
+
+exports[`Breadcrumbs component should render correctly no items 1`] = `<Fragment />`;
+
+exports[`Breadcrumbs component should render correctly with items and current item 1`] = `
+<Fragment>
+  <ol
+    className="ins-breadcrumbs"
+    widget-type="InsightsBreadcrumbs"
+  >
+    <li
+      data-key={0}
+      key="first"
+    >
+      <a
+        aria-label="first"
+        key="first"
+        onClick={[Function]}
+      >
+        First
+      </a>
+      <AngleRightIcon
+        color="currentColor"
+        size="sm"
+        title={null}
+      />
+    </li>
+    <li
+      data-key={1}
+      key="second"
+    >
+      <a
+        aria-label="second"
+        key="second"
+        onClick={[Function]}
+      >
+        <span>
+          Second
+        </span>
+      </a>
+      <AngleRightIcon
+        color="currentColor"
+        size="sm"
+        title={null}
+      />
+    </li>
+    <li
+      className="ins-active"
+    >
+      <span>
+        Something
+      </span>
+    </li>
+  </ol>
+</Fragment>
+`;
