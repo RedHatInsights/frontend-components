@@ -8,12 +8,11 @@ import toKebab from '../../functions/toKebab';
 /**
  * This is a component that wraps the page
  */
-
-class Main extends Component {
+export class Main extends Component {
     calculateLocation () {
         const { path, params } = this.props;
-        if (path) {
-            const chromeState = insights.chrome.$internal.store.getState();
+        const chromeState = insights && insights.chrome.$internal.store.getState();
+        if (path && chromeState) {
             return path.split('/').reduce((acc, curr) => {
                 if (curr.indexOf(':') === 0) {
                     acc.dynamic = {
@@ -37,7 +36,7 @@ class Main extends Component {
         const { dynamic, staticPart } = this.calculateLocation();
         return (
             <ThemeContext.Consumer>
-                { theme => {
+                { (theme = 'light') => {
 
                     let themeClasses = classNames(
                         { [`pf-m-${ theme }`]: theme  === 'dark' }
