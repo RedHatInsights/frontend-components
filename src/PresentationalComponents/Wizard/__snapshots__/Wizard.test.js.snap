@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wizard component should render correctly default 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        action="cancel"
+        aria-label={null}
+        className=""
+        component="button"
+        isActive={false}
+        isBlock={false}
+        isDisabled={false}
+        isFocus={false}
+        isHover={false}
+        onClick={[Function]}
+        type="button"
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+      false,
+      <Button
+        action="next"
+        aria-label={null}
+        className=""
+        component="button"
+        isActive={false}
+        isBlock={false}
+        isDisabled={false}
+        isFocus={false}
+        isHover={false}
+        onClick={[Function]}
+        type="button"
+        variant="primary"
+      >
+         Next 
+      </Button>,
+    ]
+  }
+  className="ins-c-wizard"
+  content={
+    Array [
+      <div
+        id="first"
+      >
+        First
+      </div>,
+      <div
+        id="second"
+      >
+        Second
+      </div>,
+      <div
+        id="third"
+      >
+        Third
+      </div>,
+      <div
+        id="fourth"
+      >
+        Fourth
+      </div>,
+    ]
+  }
+  hideTitle={false}
+  isLarge={false}
+  isOpen={true}
+  onClose={[Function]}
+  title="Some title"
+>
+  <div
+    id="first"
+  >
+    First
+  </div>
+</Modal>
+`;
+
+exports[`Wizard component should render correctly large 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        action="cancel"
+        aria-label={null}
+        className=""
+        component="button"
+        isActive={false}
+        isBlock={false}
+        isDisabled={false}
+        isFocus={false}
+        isHover={false}
+        onClick={[Function]}
+        type="button"
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+      false,
+      <Button
+        action="next"
+        aria-label={null}
+        className=""
+        component="button"
+        isActive={false}
+        isBlock={false}
+        isDisabled={false}
+        isFocus={false}
+        isHover={false}
+        onClick={[Function]}
+        type="button"
+        variant="primary"
+      >
+         Next 
+      </Button>,
+    ]
+  }
+  className="ins-c-wizard"
+  content={
+    Array [
+      <div
+        id="first"
+      >
+        First
+      </div>,
+      <div
+        id="second"
+      >
+        Second
+      </div>,
+      <div
+        id="third"
+      >
+        Third
+      </div>,
+      <div
+        id="fourth"
+      >
+        Fourth
+      </div>,
+    ]
+  }
+  hideTitle={false}
+  isLarge={true}
+  isOpen={true}
+  onClose={[Function]}
+  title="Some title"
+>
+  <div
+    id="first"
+  >
+    First
+  </div>
+</Modal>
+`;
+
+exports[`Wizard component should render correctly one page 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        action="cancel"
+        aria-label={null}
+        className=""
+        component="button"
+        isActive={false}
+        isBlock={false}
+        isDisabled={false}
+        isFocus={false}
+        isHover={false}
+        onClick={[Function]}
+        type="button"
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+      false,
+      <Button
+        action="confirm"
+        aria-label={null}
+        className=""
+        component="button"
+        isActive={false}
+        isBlock={false}
+        isDisabled={false}
+        isFocus={false}
+        isHover={false}
+        onClick={[Function]}
+        type="button"
+        variant="primary"
+      >
+         Confirm 
+      </Button>,
+    ]
+  }
+  className="ins-c-wizard"
+  content={
+    Array [
+      <div>
+        One
+      </div>,
+    ]
+  }
+  hideTitle={false}
+  isLarge={false}
+  isOpen={true}
+  onClose={[Function]}
+  title="Some title"
+>
+  <div>
+    One
+  </div>
+</Modal>
+`;
