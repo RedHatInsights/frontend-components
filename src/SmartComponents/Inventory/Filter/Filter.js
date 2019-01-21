@@ -87,6 +87,15 @@ class ContextFilter extends Component {
     }
 
     filterEntities = (value, selected) => {
+        const { columns } = this.props;
+        const filteredColumns = columns.filter(column => !column.isTime);
+        if (!selected) {
+            selected = filteredColumns && filteredColumns.length > 0 ? {
+                ...filteredColumns[0],
+                value: filteredColumns[0].key
+            } : undefined;
+        }
+
         if (selected) {
             const { onRefreshData } = this.props;
             const textualFilter = { value: selected.value, filter: value };
@@ -101,21 +110,24 @@ class ContextFilter extends Component {
     render() {
         const { columns, total, children, onRefreshData } = this.props;
         const { filterByString, isOpen, filters } = this.state;
+        const filteredColumns = columns && columns.filter(column => !column.isTime);
+        const placeholder = filterByString || (filteredColumns && filteredColumns.length > 0 && filteredColumns[0].title);
         return (
             <Grid guttter="sm" className="ins-inventory-filters">
                 <GridItem span={ 4 } className="ins-inventory-text-filter">
                     <SimpleTableFilter
-                        options={ {
-                            items: columns && columns.map(column => (
-                                !column.isTime && {
+                        options={
+                            filteredColumns && filteredColumns.length > 1 ? {
+                                title: columns[0].title,
+                                items: columns.map(column => ({
                                     ...column,
                                     value: column.key
-                                }
-                            )).filter(Boolean)
-                        } }
+                                }))
+                            } : undefined
+                        }
                         onOptionSelect={ this.onFilterByString }
                         onFilterChange={ this.filterEntities }
-                        placeholder={ `Find system by ${filterByString}` }
+                        placeholder={ `Find system by ${placeholder}` }
                         buttonTitle=""
                     />
                 </GridItem>
