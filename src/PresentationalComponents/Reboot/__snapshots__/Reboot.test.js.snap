@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reboot component should render correctly 1`] = `
+<span
+  className="ins-c-reboot"
+>
+  <RebootingIcon
+    color="currentColor"
+    size="sm"
+    title={null}
+  />
+  <span>
+    Needs Reboot
+  </span>
+</span>
+`;
+
+exports[`Reboot component should render correctly with red 1`] = `
+<span
+  className="ins-c-reboot ins-m-red"
+>
+  <RebootingIcon
+    color="currentColor"
+    size="sm"
+    title={null}
+  />
+  <span>
+    Needs Reboot
+  </span>
+</span>
+`;
