@@ -79,7 +79,9 @@ class RemediationWizard extends Component {
 
             resolutions: false,
             manualResolutionSelection: true,
-            selectedResolutions: {}
+            selectedResolutions: {},
+
+            errors: []
         });
 
         this.loadRemediations();
@@ -94,14 +96,21 @@ class RemediationWizard extends Component {
     }
 
     loadResolutions = async (issues) => {
+        const errors = [];
+
         const resolutions = await Promise.all(issues.map(issue => api.getResolutions(issue.id).catch (e => {
             if (e.statusCode === 404) {
+                errors.push(`Issue ${issue.id} does not have Ansible support`);
                 return null;
             }
 
             throw e;
         })));
-        this.setState({ resolutions: resolutions.filter(r => r) });
+
+        this.setState({
+            resolutions: resolutions.filter(r => r),
+            errors
+        });
     }
 
     closeWizard = submitted => {
@@ -112,7 +121,7 @@ class RemediationWizard extends Component {
         }
 
         if (submitted) {
-            if (!this.resolutionsLoaded() || !this.state.resolutions.length) {
+            if (!this.resolutionsLoaded() || this.state.errors.length) {
                 return false; // the wizard is not finished properly - do not let user submit it just yet
             }
 
@@ -258,8 +267,8 @@ class RemediationWizard extends Component {
         }
 
         // no valid resolutions
-        if (!this.state.resolutions.length) {
-            steps.push(<ErrorStep key='ErrorStep' message='The selection you made cannot be remediated at this moment. Please try again later.'/>);
+        if (this.state.errors.length) {
+            steps.push(<ErrorStep key='ErrorStep' errors={ this.state.errors }/>);
             return steps;
         }
 

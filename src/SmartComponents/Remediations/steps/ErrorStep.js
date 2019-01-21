@@ -3,14 +3,23 @@ import propTypes from 'prop-types';
 
 import './ErrorStep.scss';
 
-export default function ErrorStep ({ message = 'Error occured. Please try again later.' }) {
+export default function ErrorStep ({ errors }) {
     return (
-        <p className="ins-c-remediations-error-step">
-            { message }
-        </p>
+        <div className="ins-c-remediations-error-step">
+            <h1 className='ins-m-text__bold'>Unexpected error. Please try again later</h1>
+            <ul>
+                {
+                    errors.map((e, i) => <li key={ i }>{ e }</li>)
+                }
+            </ul>
+        </div>
     );
 }
 
 ErrorStep.propTypes = {
-    message: propTypes.string
+    errors: propTypes.array.isRequired
+};
+
+ErrorStep.defaultProps = {
+    errors: []
 };

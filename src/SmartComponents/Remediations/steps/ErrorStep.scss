@@ -1,3 +1,10 @@
+@import '../../../Utilities';
+
 .ins-c-remediations-error-step {
-    text-align: center;
+  ul {
+    list-style-type: disc;
+    li {
+      @include rem('margin-left', 20px);
+    }
+  }
 }
