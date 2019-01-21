@@ -13,7 +13,7 @@ export const defaultState = { loaded: false };
 
 const defaultColumns = [
     { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ]},
-    { key: 'updated', title: 'Last Checked', isTime: true }
+    { key: 'updated', title: 'Last Sync', isTime: true }
 ];
 
 function entitiesPending(state) {

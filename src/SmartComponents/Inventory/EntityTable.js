@@ -85,23 +85,23 @@ class EntityTable extends React.Component {
     }
 
     buildCells = (item) => {
-        const { columns, showHealth } = this.props;
+        const { columns, showHealth, showActions } = this.props;
         if (item.hasOwnProperty('isOpen')) {
             return [{
                 title: item.title,
-                colSpan: columns.length + 1 + showHealth
+                colSpan: columns.length + showActions + showHealth
             }];
         }
 
         return [
             ...columns.map(({ key, composed, isTime }) => this.renderCol(item, key, composed, isTime)),
             showHealth && this.healthColumn(item),
-            this.actionsColumn(item)
+            showActions && this.actionsColumn(item)
         ].filter(cell => cell !== false && cell !== undefined);
     }
 
     createRows = () => {
-        const { sortBy, rows, showHealth, columns, items } = this.props;
+        const { sortBy, rows, showHealth, columns, items, showActions } = this.props;
         const data = rows
         .filter(oneRow => oneRow.account)
         .map((oneItem) => ({
@@ -112,7 +112,7 @@ class EntityTable extends React.Component {
             return [{
                 cells: [{
                     title: 'There are no items in inventory. If that\'s incorrect, contact your administrator!',
-                    colSpan: columns.length + 1 + showHealth
+                    colSpan: columns.length + showActions + showHealth
                 }]
             }];
         }
@@ -127,7 +127,7 @@ class EntityTable extends React.Component {
     }
 
     render() {
-        const { columns, showHealth, loaded, sortBy, expandable, onExpandClick, hasCheckbox } = this.props;
+        const { columns, showHealth, loaded, sortBy, expandable, onExpandClick, hasCheckbox, showActions } = this.props;
         return <Table
             className="pf-m-compact ins-entity-table"
             expandable={ expandable }
@@ -148,7 +148,7 @@ class EntityTable extends React.Component {
                         hasSort: false
                     }
                 } : {},
-                action: ''
+                ...showActions ? { action: '' } : {}
             } }
             onSort={ this.onSort }
             onItemSelect={ this.onItemSelect }
@@ -159,7 +159,7 @@ class EntityTable extends React.Component {
                     [ ...Array(5) ].map(() => ({
                         cells: [{
                             title: <RowLoader />,
-                            colSpan: columns.length + showHealth + 1
+                            colSpan: columns.length + showHealth + showActions
                         }]
                     }))
             }
@@ -173,6 +173,7 @@ EntityTable.propTypes = {
     onExpandClick: PropTypes.func,
     setSort: PropTypes.func,
     hasCheckbox: PropTypes.bool,
+    showActions: PropTypes.bool,
     rows: PropTypes.arrayOf(PropTypes.any),
     columns: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string,
@@ -195,6 +196,7 @@ EntityTable.defaultProps = {
     showHealth: false,
     expandable: false,
     hasCheckbox: true,
+    showActions: false,
     columns: [],
     rows: [],
     onExpandClick: () => undefined,

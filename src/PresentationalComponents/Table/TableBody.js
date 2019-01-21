@@ -17,7 +17,7 @@ class TableBody extends Component {
 
         return (
             <td key={ key }
-                data-label={ current.hasOwnProperty('title') ? current.title : current }
+                data-label={ current && current.hasOwnProperty('title') ? current.title : current }
                 role={ this.props.expandable ? 'gridcell' : '' }
                 className={ classnames(col.className) }
                 colSpan={ col.colSpan }
