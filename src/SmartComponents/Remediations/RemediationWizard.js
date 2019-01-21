@@ -10,6 +10,7 @@ import ResolutionModeStep from './steps/ResolutionModeStep';
 import IssueResolutionStep from './steps/IssueResolutionStep';
 import SummaryStep from './steps/SummaryStep';
 import LoadingStep from './steps/LoadingStep';
+import ErrorStep from './steps/ErrorStep';
 
 import './RemediationWizard.scss';
 
@@ -93,8 +94,14 @@ class RemediationWizard extends Component {
     }
 
     loadResolutions = async (issues) => {
-        const resolutions = await Promise.all(issues.map(issue => api.getResolutions(issue.id)));
-        this.setState({ resolutions });
+        const resolutions = await Promise.all(issues.map(issue => api.getResolutions(issue.id).catch (e => {
+            if (e.statusCode === 404) {
+                return null;
+            }
+
+            throw e;
+        })));
+        this.setState({ resolutions: resolutions.filter(r => r) });
     }
 
     closeWizard = submitted => {
@@ -105,8 +112,8 @@ class RemediationWizard extends Component {
         }
 
         if (submitted) {
-            if (!this.resolutionsLoaded()) {
-                return; // the wizard is not finished properly - do not let user submit it just yet
+            if (!this.resolutionsLoaded() || !this.state.resolutions.length) {
+                return false; // the wizard is not finished properly - do not let user submit it just yet
             }
 
             const { isNewSwitch, manualResolutionSelection } = this.state;
@@ -231,6 +238,10 @@ class RemediationWizard extends Component {
     });
 
     buildSteps = () => {
+        if (!this.state.open) {
+            return [];
+        }
+
         const steps = [
             <ExistingOrNew
                 key='RemediationNameStep'
@@ -243,6 +254,12 @@ class RemediationWizard extends Component {
 
         if (!this.resolutionsLoaded() || !this.selectedRemediationLoaded()) {
             steps.push(<LoadingStep key='LoadingStep'/>);
+            return steps;
+        }
+
+        // no valid resolutions
+        if (!this.state.resolutions.length) {
+            steps.push(<ErrorStep key='ErrorStep' message='The selection you made cannot be remediated at this moment. Please try again later.'/>);
             return steps;
         }
 

@@ -4,7 +4,9 @@ const API_BASE = '/r/insights/platform/remediations/v1';
 
 function checkResponse (r) {
     if (!r.ok) {
-        throw new Error(`Unexpected response code ${r.status}`);
+        const error =  new Error(`Unexpected response code ${r.status}`);
+        error.statusCode = r.status;
+        throw error;
     }
 
     return r;
