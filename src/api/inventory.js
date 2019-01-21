@@ -59,7 +59,10 @@ export function getEntities(items, { base = INVENTORY_API_BASE, ...rest }) {
             if (r.ok) {
                 return r.json().then(({ results = [], ...data }) => ({
                     ...data,
-                    results: results.map(mapData)
+                    results: results.map(result => mapData({
+                        ...result,
+                        display_name: result.display_name || result.fqdn || result.id
+                    }))
                 }));
             }
 
