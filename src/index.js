@@ -8,7 +8,6 @@ export { default as MiddlewareListener } from './Utilities/MiddlewareListener';
 export { default as registry, getRegistry } from './Utilities/Registry';
 export { default as routerParams } from './Utilities/RouterParams';
 export * from './PresentationalComponents/Section';
-export * from './PresentationalComponents/SampleComponent';
 export * from './PresentationalComponents/Ansible';
 export * from './PresentationalComponents/Main';
 export * from './PresentationalComponents/Pagination';
