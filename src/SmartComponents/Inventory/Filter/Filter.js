@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Grid, GridItem, Button, Dropdown, DropdownToggle } from '@patternfly/react-core';
 import { SimpleTableFilter } from '../../../PresentationalComponents/SimpleTableFilter';
 import { connect } from 'react-redux';
-import osVersion  from './filters/os-version';
-import systemType from './filters/system-type';
 import { filterSelect } from '../../../redux/actions/inventory';
 import { SyncAltIcon } from '@patternfly/react-icons';
 import { InventoryContext } from '../Inventory';
@@ -19,9 +17,7 @@ function generateFilters(filters = [], activeFilters) {
     });
 
     const allFilters = [
-        ...filters,
-        systemType,
-        osVersion
+        ...filters
     ];
     return allFilters && flatMap(allFilters, ({ items, ...filter }) => ([
         {
@@ -124,7 +120,7 @@ class ContextFilter extends Component {
                     />
                 </GridItem>
                 <GridItem span={ 1 } className="ins-inventory-filter">
-                    <Dropdown
+                    { filters && filters.length > 0 && <Dropdown
                         isOpen={ isOpen }
                         dropdownItems={ filters.map((item, key) => (
                             <FilterItem
@@ -135,7 +131,7 @@ class ContextFilter extends Component {
                             />
                         )) }
                         toggle={ <DropdownToggle onToggle={ this.onToggle }>Filter</DropdownToggle> }
-                    />
+                    /> }
                 </GridItem>
                 <GridItem span={ 6 }>
                     { children }
