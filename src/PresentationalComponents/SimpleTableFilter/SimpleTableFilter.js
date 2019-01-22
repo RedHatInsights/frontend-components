@@ -4,57 +4,60 @@ import { Button, ButtonVariant, Dropdown, DropdownToggle, DropdownItem } from '@
 import { Input } from '../Input';
 
 class SimpleFilter extends Component {
-    constructor(props) {
-        super(props);
-        this.onInputChange = this.onInputChange.bind(this);
-        this.onFilterSubmit = this.onFilterSubmit.bind(this);
-        this.onToggle = this.onToggle.bind(this);
-        this.onSelect = this.onSelect.bind(this);
-        this.state = {
-            activeFilter: '',
-            isOpen: false
-        };
-    }
+    state = {
+        activeFilter: '',
+        isOpen: false
+    };
 
-    onToggle(isOpen) {
+    onToggle = (isOpen) => {
         this.setState({
             isOpen
         });
     }
 
-    onInputChange(event) {
+    onInputChange = (event) => {
         this.setState({ activeFilter: event.target.value });
-        this.props.hasOwnProperty('onFilterChange') && this.props.onFilterChange(event.target.value, this.state.selected);
+        this.props.onFilterChange(event.target.value, this.state.selected);
     }
 
-    onFilterSubmit() {
-        this.props.hasOwnProperty('onButtonClick') && this.props.onButtonClick(this.state.activeFilter, this.state.selected);
+    onFilterSubmit = () => {
+        this.props.onButtonClick(this.state.activeFilter, this.state.selected);
     }
 
-    onSelect(event) {
-        const { options } = this.props;
-        const selected = options.items.find(oneItem => oneItem.value === event.target.getAttribute('data-key'));
+    onFilterSelect = (event, oneItem) => {
         this.setState({
-            isOpen: false,
-            selected
+            selected: oneItem
         });
-        this.props.onOptionSelect && this.props.onOptionSelect(event, selected);
+        this.props.onOptionSelect(event, oneItem);
+    }
+
+    onSelect = () => {
+        this.setState({
+            isOpen: false
+        });
     }
 
     render() {
         const {
-            placeholder = 'Search items',
-            buttonTitle = 'Filter',
-            className = '',
+            placeholder,
+            buttonTitle,
+            className,
             onButtonClick,
             onOptionSelect,
             onFilterChange,
             options,
+            widgetId,
             ...props
         } = this.props;
         const { isOpen, selected } = this.state;
         const dropdownItems = options && options.items && options.items.map(oneItem =>
-            <DropdownItem component="button" key={ oneItem.value } data-key={ oneItem.value }>{ oneItem.title }</DropdownItem>
+            <DropdownItem component="button"
+                key={ oneItem.value }
+                onClick={ event => this.onFilterSelect(event, oneItem) }
+                data-key={ oneItem.value }
+            >
+                { oneItem.title }
+            </DropdownItem>
         );
         return (
             <div className={ `pf-c-input-group ${className}` } { ...props }>
@@ -73,11 +76,12 @@ class SimpleFilter extends Component {
                 }
                 <Input placeholder={ placeholder }
                     onKeyPress={ event => event.key === 'Enter' && this.onInputChange(event) }
+                    widget-id={ widgetId }
                     onChange={ this.onInputChange }
                 />
                 {
                     buttonTitle &&
-                    <Button variant={ ButtonVariant.secondary } onClick={ this.onFilterSubmit }>{ buttonTitle }</Button>
+                    <Button variant={ ButtonVariant.secondary } action="filter" onClick={ this.onFilterSubmit }>{ buttonTitle }</Button>
                 }
             </div>
         );
@@ -85,6 +89,7 @@ class SimpleFilter extends Component {
 }
 
 SimpleFilter.propTypes = {
+    widgetId: PropTypes.string,
     buttonTitle: PropTypes.string,
     placeholder: PropTypes.string,
     className: PropTypes.string,
@@ -98,6 +103,14 @@ SimpleFilter.propTypes = {
     onButtonClick: PropTypes.func,
     onFilterChange: PropTypes.func,
     onOptionSelect: PropTypes.func
+};
+
+SimpleFilter.defaultProps = {
+    placeholder: 'Search items',
+    buttonTitle: 'Filter',
+    onButtonClick: () => undefined,
+    onFilterChange: () => undefined,
+    onOptionSelect: () => undefined
 };
 
 export default SimpleFilter;

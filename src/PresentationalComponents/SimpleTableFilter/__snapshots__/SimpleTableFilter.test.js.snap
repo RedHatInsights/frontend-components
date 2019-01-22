@@ -1,0 +1,235 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimpleTableFilter component should render correctly with custom filter button 1`] = `
+<div
+  className="pf-c-input-group undefined"
+>
+  <Input
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Search items"
+    widget-id="filter"
+  />
+  <Button
+    action="filter"
+    aria-label={null}
+    className=""
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="secondary"
+  >
+    Custom title
+  </Button>
+</div>
+`;
+
+exports[`SimpleTableFilter component should render correctly with custom placeholder 1`] = `
+<div
+  className="pf-c-input-group undefined"
+>
+  <Input
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Custom placeholder"
+    widget-id="filter"
+  />
+  <Button
+    action="filter"
+    aria-label={null}
+    className=""
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="secondary"
+  >
+    Filter
+  </Button>
+</div>
+`;
+
+exports[`SimpleTableFilter component should render correctly with filter button 1`] = `
+<div
+  className="pf-c-input-group undefined"
+>
+  <Input
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Search items"
+    widget-id="filter"
+  />
+  <Button
+    action="filter"
+    aria-label={null}
+    className=""
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="secondary"
+  >
+    Filter
+  </Button>
+</div>
+`;
+
+exports[`SimpleTableFilter component should render correctly with filter opitons 1`] = `
+<div
+  className="pf-c-input-group undefined"
+>
+  <Dropdown
+    className=""
+    direction="down"
+    dropdownItems={
+      Array [
+        <Item
+          className=""
+          component="button"
+          data-key="one"
+          href="#"
+          isDisabled={false}
+          isHovered={false}
+          onClick={[Function]}
+        >
+          one
+        </Item>,
+      ]
+    }
+    isOpen={false}
+    isPlain={false}
+    onSelect={[Function]}
+    position="left"
+    toggle={
+      <DropdownToggle
+        className=""
+        iconComponent={[Function]}
+        id=""
+        isActive={false}
+        isFocused={false}
+        isHovered={false}
+        isOpen={false}
+        onToggle={[Function]}
+        parentRef={null}
+      >
+        Dropdown
+      </DropdownToggle>
+    }
+  />
+  <Input
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Search items"
+    widget-id="filter"
+  />
+  <Button
+    action="filter"
+    aria-label={null}
+    className=""
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="secondary"
+  >
+    Filter
+  </Button>
+</div>
+`;
+
+exports[`SimpleTableFilter component should render correctly with filter opitons and custom dropdown title 1`] = `
+<div
+  className="pf-c-input-group undefined"
+>
+  <Dropdown
+    className=""
+    direction="down"
+    dropdownItems={
+      Array [
+        <Item
+          className=""
+          component="button"
+          data-key="one"
+          href="#"
+          isDisabled={false}
+          isHovered={false}
+          onClick={[Function]}
+        >
+          one
+        </Item>,
+      ]
+    }
+    isOpen={false}
+    isPlain={false}
+    onSelect={[Function]}
+    position="left"
+    toggle={
+      <DropdownToggle
+        className=""
+        iconComponent={[Function]}
+        id=""
+        isActive={false}
+        isFocused={false}
+        isHovered={false}
+        isOpen={false}
+        onToggle={[Function]}
+        parentRef={null}
+      >
+        Filter by
+      </DropdownToggle>
+    }
+  />
+  <Input
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Search items"
+    widget-id="filter"
+  />
+  <Button
+    action="filter"
+    aria-label={null}
+    className=""
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="secondary"
+  >
+    Filter
+  </Button>
+</div>
+`;
+
+exports[`SimpleTableFilter component should render correctly without filter button 1`] = `
+<div
+  className="pf-c-input-group undefined"
+>
+  <Input
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Search items"
+    widget-id="filter"
+  />
+</div>
+`;
