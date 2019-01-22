@@ -11,20 +11,22 @@ import toKebab from '../../functions/toKebab';
 export class Main extends Component {
     calculateLocation () {
         const { path, params } = this.props;
-        const chromeState = insights && insights.chrome.$internal.store.getState();
-        if (path && chromeState) {
-            return path.split('/').reduce((acc, curr) => {
-                if (curr.indexOf(':') === 0) {
-                    acc.dynamic = {
-                        ...acc.dynamic,
-                        [`data-${toKebab(curr.substr(1))}`]: params[curr.substr(1)]
-                    };
-                } else {
-                    acc.staticPart = [ ...acc.staticPart, ...curr !== '' ? [ curr ] : [] ];
-                }
+        if (insights && insights.chrome && insights.chrome.$internal && insights.chrome.$internal.store) {
+            const chromeState = insights.chrome.$internal.store.getState();
+            if (path && chromeState) {
+                return path.split('/').reduce((acc, curr) => {
+                    if (curr.indexOf(':') === 0) {
+                        acc.dynamic = {
+                            ...acc.dynamic,
+                            [`data-${toKebab(curr.substr(1))}`]: params[curr.substr(1)]
+                        };
+                    } else {
+                        acc.staticPart = [ ...acc.staticPart, ...curr !== '' ? [ curr ] : [] ];
+                    }
 
-                return acc;
-            }, { staticPart: [ chromeState.chrome.appId ], dynamic: {}});
+                    return acc;
+                }, { staticPart: [ chromeState.chrome.appId ], dynamic: {}});
+            }
         }
 
         return {
