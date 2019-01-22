@@ -23,5 +23,9 @@ export default Skeleton;
 
 Skeleton.propTypes = {
     className: propTypes.string,
-    size: propTypes.oneOf([ 'xs', 'sm', 'md', 'lg' ])
+    size: propTypes.oneOf(Object.values(SkeletonSize))
+};
+
+Skeleton.defaultProps = {
+    size: SkeletonSize.md
 };
