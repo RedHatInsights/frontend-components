@@ -18,7 +18,7 @@ class InventoryRuleList extends Component {
         inventoryReportFetchStatus: 'pending',
         inventoryReport: {},
         kbaDetails: []
-    }
+    };
 
     componentDidMount() {
         this.fetchEntityRules();
@@ -27,7 +27,7 @@ class InventoryRuleList extends Component {
     async fetchEntityRules() {
         const { entity } = this.props;
         try {
-            const data = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports`).then(data => data.json());
+            const data = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports`).then(data => data.json()).catch(error => {throw error;});
             this.setState({
                 inventoryReport: data,
                 inventoryReportFetchStatus: 'fulfilled'
