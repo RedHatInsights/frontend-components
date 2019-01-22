@@ -8,7 +8,7 @@ const TabLayout = ({ children, items, classNames, active, onTabClick, ...props }
             { items.map(oneItem => (
                 <div key={ oneItem.name }
                     className={ classnames({ active: oneItem.name === active }) }
-                    onClick={ event => onTabClick && onTabClick(event, oneItem) }
+                    onClick={ event => onTabClick(event, oneItem) }
                     widget-type='InsightsTabsItem'
                     widget-id={ oneItem.name }
                 >
@@ -25,7 +25,7 @@ const TabLayout = ({ children, items, classNames, active, onTabClick, ...props }
 TabLayout.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string,
-        title: PropTypes.string
+        title: PropTypes.node
     })),
     children: PropTypes.node,
     classNames: PropTypes.string,
@@ -33,6 +33,9 @@ TabLayout.propTypes = {
     onTabClick: PropTypes.func
 };
 
-TabLayout.defaultProps = {};
+TabLayout.defaultProps = {
+    items: [],
+    onTabClick: () => undefined
+};
 
 export default TabLayout;
