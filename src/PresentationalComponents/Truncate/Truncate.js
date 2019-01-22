@@ -18,7 +18,7 @@ class Truncate extends React.Component {
     }
 
     toggleText (event) {
-        event.preventDefault();
+        event && event.preventDefault();
         this.setState({
             showText: !this.state.showText
         });
@@ -93,5 +93,6 @@ Truncate.propTypes = {
 Truncate.defaultProps = {
     length: 150,
     expandText: 'Read more',
-    collapseText: 'Collapse'
+    collapseText: 'Collapse',
+    text: ''
 };

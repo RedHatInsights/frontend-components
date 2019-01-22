@@ -1,0 +1,572 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Truncate component should render correctly block clicking on expand toggles to collapse 1`] = `
+<Stack
+  className="ins-c-truncate is-block"
+  component="div"
+  gutter={null}
+>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <span
+      widget-type="InsightsTruncateBlock"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
+    </span>
+  </StackItem>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <Button
+      aria-label={null}
+      className="ins-c-collapse-button"
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="link"
+    >
+      Custom collapse
+    </Button>
+  </StackItem>
+</Stack>
+`;
+
+exports[`Truncate component should render correctly block clicking on expand toggles to collapse 2`] = `
+<Stack
+  className="ins-c-truncate is-block"
+  component="div"
+  gutter={null}
+>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <span
+      widget-type="InsightsTruncateBlock"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
+    </span>
+  </StackItem>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <Button
+      aria-label={null}
+      className="ins-c-collapse-button"
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="link"
+    >
+      Custom collapse
+    </Button>
+  </StackItem>
+</Stack>
+`;
+
+exports[`Truncate component should render correctly block custom button titles 1`] = `
+<Stack
+  className="ins-c-truncate is-block"
+  component="div"
+  gutter={null}
+>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <span
+      widget-type="InsightsTruncateBlock"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
+    </span>
+  </StackItem>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <Button
+      aria-label={null}
+      className="ins-c-collapse-button"
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="link"
+    >
+      Custom collapse
+    </Button>
+  </StackItem>
+</Stack>
+`;
+
+exports[`Truncate component should render correctly block custom button titles 2`] = `
+<Stack
+  className="ins-c-truncate is-block"
+  component="div"
+  gutter={null}
+>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <span
+      widget-type="InsightsTruncateBlock"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
+    </span>
+  </StackItem>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <Button
+      aria-label={null}
+      className="ins-c-collapse-button"
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="link"
+    >
+      Custom collapse
+    </Button>
+  </StackItem>
+</Stack>
+`;
+
+exports[`Truncate component should render correctly block custom expande button 1`] = `
+<Stack
+  className="ins-c-truncate is-block"
+  component="div"
+  gutter={null}
+>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <span
+      widget-type="InsightsTruncateBlock"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+    </span>
+  </StackItem>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <Button
+      aria-label={null}
+      className="ins-c-expand-button"
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="link"
+    >
+      Custom expand
+    </Button>
+  </StackItem>
+</Stack>
+`;
+
+exports[`Truncate component should render correctly block custom expande button 2`] = `
+<Stack
+  className="ins-c-truncate is-block"
+  component="div"
+  gutter={null}
+>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <span
+      widget-type="InsightsTruncateBlock"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+    </span>
+  </StackItem>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <Button
+      aria-label={null}
+      className="ins-c-expand-button"
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="link"
+    >
+      Custom expand
+    </Button>
+  </StackItem>
+</Stack>
+`;
+
+exports[`Truncate component should render correctly block with short length 1`] = `
+<Stack
+  className="ins-c-truncate is-block"
+  component="div"
+  gutter={null}
+>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <span
+      widget-type="InsightsTruncateBlock"
+    >
+      Lo...
+    </span>
+  </StackItem>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <Button
+      aria-label={null}
+      className="ins-c-expand-button"
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="link"
+    >
+      Read more
+    </Button>
+  </StackItem>
+</Stack>
+`;
+
+exports[`Truncate component should render correctly block without length specified 1`] = `
+<Stack
+  className="ins-c-truncate is-block"
+  component="div"
+  gutter={null}
+>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <span
+      widget-type="InsightsTruncateBlock"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+    </span>
+  </StackItem>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <Button
+      aria-label={null}
+      className="ins-c-expand-button"
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="link"
+    >
+      Read more
+    </Button>
+  </StackItem>
+</Stack>
+`;
+
+exports[`Truncate component should render correctly inline clicking on expand toggles to collapse 1`] = `
+<Fragment>
+  <span
+    className="ins-c-truncate is-inline"
+    widget-type="InsightsTruncateInline"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
+  </span>
+  <Button
+    aria-label={null}
+    className="ins-c-collapse-button"
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="link"
+  >
+    Custom collapse
+  </Button>
+</Fragment>
+`;
+
+exports[`Truncate component should render correctly inline clicking on expand toggles to collapse 2`] = `
+<Fragment>
+  <span
+    className="ins-c-truncate is-inline"
+    widget-type="InsightsTruncateInline"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
+  </span>
+  <Button
+    aria-label={null}
+    className="ins-c-collapse-button"
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="link"
+  >
+    Custom collapse
+  </Button>
+</Fragment>
+`;
+
+exports[`Truncate component should render correctly inline custom button titles 1`] = `
+<Fragment>
+  <span
+    className="ins-c-truncate is-inline"
+    widget-type="InsightsTruncateInline"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
+  </span>
+  <Button
+    aria-label={null}
+    className="ins-c-collapse-button"
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="link"
+  >
+    Custom collapse
+  </Button>
+</Fragment>
+`;
+
+exports[`Truncate component should render correctly inline custom button titles 2`] = `
+<Fragment>
+  <span
+    className="ins-c-truncate is-inline"
+    widget-type="InsightsTruncateInline"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.
+  </span>
+  <Button
+    aria-label={null}
+    className="ins-c-collapse-button"
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="link"
+  >
+    Custom collapse
+  </Button>
+</Fragment>
+`;
+
+exports[`Truncate component should render correctly inline custom expande button 1`] = `
+<Fragment>
+  <span
+    className="ins-c-truncate is-inline"
+    widget-type="InsightsTruncateInline"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <Button
+    aria-label={null}
+    className="ins-c-expand-button"
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="link"
+  >
+    Custom expand
+  </Button>
+</Fragment>
+`;
+
+exports[`Truncate component should render correctly inline custom expande button 2`] = `
+<Fragment>
+  <span
+    className="ins-c-truncate is-inline"
+    widget-type="InsightsTruncateInline"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <Button
+    aria-label={null}
+    className="ins-c-expand-button"
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="link"
+  >
+    Custom expand
+  </Button>
+</Fragment>
+`;
+
+exports[`Truncate component should render correctly inline with short length 1`] = `
+<Stack
+  className="ins-c-truncate is-block"
+  component="div"
+  gutter={null}
+>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <span
+      widget-type="InsightsTruncateBlock"
+    >
+      Lo...
+    </span>
+  </StackItem>
+  <StackItem
+    className=""
+    isMain={false}
+  >
+    <Button
+      aria-label={null}
+      className="ins-c-expand-button"
+      component="button"
+      isActive={false}
+      isBlock={false}
+      isDisabled={false}
+      isFocus={false}
+      isHover={false}
+      onClick={[Function]}
+      type="button"
+      variant="link"
+    >
+      Read more
+    </Button>
+  </StackItem>
+</Stack>
+`;
+
+exports[`Truncate component should render correctly inline without length specified 1`] = `
+<Fragment>
+  <span
+    className="ins-c-truncate is-inline"
+    widget-type="InsightsTruncateInline"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+et dolore magna aliqua. Ut enim ad minim veniam, q...
+  </span>
+  <Button
+    aria-label={null}
+    className="ins-c-expand-button"
+    component="button"
+    isActive={false}
+    isBlock={false}
+    isDisabled={false}
+    isFocus={false}
+    isHover={false}
+    onClick={[Function]}
+    type="button"
+    variant="link"
+  >
+    Read more
+  </Button>
+</Fragment>
+`;
