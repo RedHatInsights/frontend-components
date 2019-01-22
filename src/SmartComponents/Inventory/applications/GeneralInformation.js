@@ -14,8 +14,6 @@ import {
     Level,
     LevelItem
 } from '@patternfly/react-core';
-import { Table } from '../../../PresentationalComponents/Table';
-import { Pagination } from '../../../PresentationalComponents/Pagination';
 import './general-information.scss';
 
 class GeneralInformation extends Component {
@@ -67,7 +65,7 @@ class GeneralInformation extends Component {
                         </Card>
                     </TextContent>
                 </GridItem>
-                <GridItem span={ 12 }>
+                { /* <GridItem span={ 12 }>
                     <TextContent>
                         <Card>
                             <CardHeader>
@@ -91,7 +89,7 @@ class GeneralInformation extends Component {
                             </CardBody>
                         </Card>
                     </TextContent>
-                </GridItem>
+                </GridItem> */ }
             </Grid>
         );
     }
