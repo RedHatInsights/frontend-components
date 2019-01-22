@@ -86,7 +86,11 @@ class ExpandableRulesCard extends React.Component {
                             <Card className='pf-t-light  pf-m-opaque-100'>
                                 <CardHeader> <BullseyeIcon /> Steps to resolve</CardHeader>
                                 <CardBody>
-                                    { report.resolution && <div>{ report.resolution.resolution }</div> }
+                                    {
+                                        Boolean(report.resolution) &&
+                                        typeof report.resolution.resolution === 'string' &&
+                                        <ReactMarkdown source={ report.resolution.resolution } escapeHtml={ false }/>
+                                    }
                                 </CardBody>
                             </Card>
                         </GridItem>
