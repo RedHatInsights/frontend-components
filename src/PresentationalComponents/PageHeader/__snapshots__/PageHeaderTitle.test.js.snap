@@ -4,6 +4,7 @@ exports[`PageHeader component should render 1`] = `
 <PageHeaderTitle>
   <Title
     className=""
+    headingLevel="h1"
     size="2xl"
     widget-type="InsightsPageHeaderTitle"
   >

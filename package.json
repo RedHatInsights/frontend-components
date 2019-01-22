@@ -13,7 +13,7 @@
     "Utilities/"
   ],
   "dependencies": {
-    "@patternfly/react-core": "^1.36.0",
+    "@patternfly/react-core": "^1.49.4",
     "@patternfly/react-icons": "^2.8.0",
     "apollo-boost": "^0.1.23",
     "bootstrap-sass": "^3.3.7",
@@ -108,7 +108,7 @@
     "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.9",
+    "webpack-dev-server": "^3.1.14",
     "webpack-visualizer-plugin": "^0.1.11",
     "write-file-webpack-plugin": "^4.4.0"
   },
