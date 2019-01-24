@@ -74,6 +74,10 @@
             color: var(--pf-global--info-color--100);
             font-size: var(	--pf-global--FontSize--lg);
         }
+
+        .ins-composed-col {
+            cursor: pointer;
+        }
     }
 
     .ins-health-status div {
