@@ -595,6 +595,38 @@ export function entitesDetailReducer(INVENTORY_ACTION_TYPES) {
 ```
 The most iportant part over here is the part of state `activeApps` which requires array of objects with `title` this will be displayed as tab, `name` this is to correctly navigate in router and `component` is optional with component which will be displayed as tab content.
 
+
+### Custom props to column
+Sometimes you might want to change size of each column to style the table properly. You can do this by adding `props` to columns
+```JS
+import { ACTION_TYPES } from '../constants';
+export function entityDetailReducer(INVENTORY_ACTIONS) {
+  return function(state, action) {
+    switch(action.type) {
+      case INVENTORY_ACTIONS.LOAD_ENTITY_FULFILLED: {
+        state.columns = [
+            {
+                key: 'some.compliacated.key',
+                title: 'Some title',
+                props: {
+                    width: 40
+                }
+            }, {
+                key: 'simple',
+                title: 'Another',
+                props: {
+                    width: 10
+                }
+            }
+        ]
+        return {...state}
+      }
+    }
+  }
+}
+```
+
+
 **Please write these application specific details in some place where others can benefit from your implementation.**
 
 ## Inventory actions

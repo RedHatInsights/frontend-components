@@ -141,7 +141,7 @@ class EntityTable extends React.Component {
                     {}
             }
             header={ columns && {
-                ...mapValues(keyBy(columns, item => item.key), item => item.title),
+                ...mapValues(keyBy(columns, item => item.key), item => ({ title: item.title, ...item.props })),
                 ...showHealth ? {
                     health: {
                         title: 'Health',
