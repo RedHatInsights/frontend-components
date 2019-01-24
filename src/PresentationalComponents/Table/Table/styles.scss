@@ -2,7 +2,7 @@
 
 $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 
-.pf-c-table {
+.pf-c-table.ins-c-table {
 
   /* stylelint-disable */
 
@@ -342,7 +342,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 }
 
 // Expandable row
-.pf-c-table__expandable-row {
+.ins-c-table .pf-c-table__expandable-row {
   border-bottom: 0 solid transparent;
   border-left: var(--pf-c-table__expandable-row--BorderLeftWidth) solid transparent;
   transition: var(--pf-c-table__expandable-row--Transition);
@@ -395,7 +395,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 }
 
 // Expandable table row
-.pf-c-table__expandable-row-content {
+.ins-c-table .pf-c-table__expandable-row-content {
   max-height: 0;
   padding-top: 0;
   padding-bottom: 0;
@@ -442,7 +442,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 }
 
 // Toggle table cell
-.pf-c-table__toggle {
+.ins-c-table .pf-c-table__toggle {
   vertical-align: baseline;
 
   // @mobile only
@@ -459,7 +459,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 }
 
 // Toggle button
-.pf-c-table .pf-m-toggle {
+.ins-c-table .pf-c-table .pf-m-toggle {
   > * {
     pointer-events: none;
     transition: var(--pf-c-table--m-toggle--Transition);
@@ -485,7 +485,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 }
 
 // Check table cell
-.pf-c-table__check {
+.ins-c-table .pf-c-table__check {
   .pf-c-table:not(.pf-m-compact) & {
     vertical-align: baseline;
   }
@@ -517,7 +517,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 }
 
 // Check table cell
-.pf-c-table__action {
+.ins-c-table .pf-c-table__action {
   vertical-align: middle;
 
   // @mobile only
@@ -536,7 +536,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 }
 
 // Table sort
-.pf-c-table__sort {
+.ins-c-table .pf-c-table__sort {
   &::selection {
     background-color: transparent;
   }
@@ -579,7 +579,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 }
 
 // Sort indicator
-.pf-c-table__sort-indicator {
+.ins-c-table .pf-c-table__sort-indicator {
   margin-left: var(--pf-c-table__sort-indicator--MarginLeft);
   color: var(--pf-c-table__sort-indicator--Color);
   pointer-events: none;
@@ -587,7 +587,7 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 
 // Icon inline
 // replace this when inline text with icon is in place
-.pf-c-table__icon-inline {
+.ins-c-table .pf-c-table__icon-inline {
   display: flex;
   align-items: center;
 
@@ -597,17 +597,17 @@ $pf-c-table--breakpoint--mobile: $pf-global--breakpoint--lg;
 }
 
 // Modifier - Wrap
-.pf-c-table .pf-m-wrap {
+.ins-c-table.pf-c-table .pf-m-wrap {
   white-space: normal;
 }
 
 // Modifier - Width
 /* stylelint-disable */
-.pf-c-table [class*="pf-m-width-"] {
+.ins-c-table.pf-c-table [class*="pf-m-width-"] {
   table-layout: fixed;
 }
 
-.pf-c-table .pf-m-width- {
+.ins-c-table.pf-c-table .pf-m-width- {
   &10 {
     width: 10%;
   }
