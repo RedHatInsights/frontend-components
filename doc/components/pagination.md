@@ -13,6 +13,55 @@ export default () => (
 
 This will redner pagination row with 100 items, first page and 10 items per page. If you want to change page pass umber as `page`props -> `<Pagination numberOfItems={100} page={3}/>`
 
+### Using debounce
+When user wants to change page by typing you should use some logic to submit page number after cerain amount of time. For this you can use [debounce](https://davidwalsh.name/javascript-debounce-function). If you don't want to code your own function we recommend using lodash [debounce](https://lodash.com/docs/4.17.11#debounce) and storing page returned from set page in state.
+
+```JSX
+import React, { Component } from 'react';
+import { Pagination } from '@red-hat-insights/insights-frontend-components/components/Pagination';
+import debounce from 'lodash/debounce';
+
+class SomeCmp extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: undefined
+        };
+
+        // This is the most important piece you should be interested in
+        this.changePage = debounce((pagination) => this.props.onRefreshData(pagination), 800);
+    }
+
+    onSetPage = (page, debounce) => {
+        const { onRefreshData } = this.props;
+        // This logic decides if you should store page in state or query your API directly
+        if (debounce) {
+            this.changePage(pagination);
+            this.setState({
+                page
+            });
+        } else {
+            onRefreshData(pagination);
+            this.setState({
+                page: undefined
+            });
+        }
+    }
+
+    render() {
+        const { total, page, perPage, loaded } = this.props;
+        const { page: statePage } = this.state;
+        return (
+            <Pagination
+                numberOfItems={ total }
+                page={ statePage || page }
+                onSetPage={ this.onSetPage }
+            />
+        );
+    }
+}
+```
+
 ### Props
 This component is using paginationRow props and adds these on top of them
 ```Javascript
