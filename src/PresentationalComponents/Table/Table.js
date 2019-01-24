@@ -44,6 +44,7 @@ const Table = ({
             className={
                 classnames(
                     'pf-c-table',
+                    'ins-c-table',
                     props.variant !== TableVariant.large && 'pf-m-compact',
                     className
                 )
