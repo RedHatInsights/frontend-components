@@ -1,3 +1,5 @@
+@import '../../Utilities.scss';
+
 .ins-inventory-detail.pf-l-page-header, .ins-inventory-detail.pf-c-page-header {
     padding-bottom: 0px;
 
@@ -33,10 +35,7 @@
 .ins-entity-detail {
   .ins-entity-facts {
     div {
-      span:first-child {
-        font-weight: var(--pf-global--FontWeight--bold);
-        margin-right: 15px;
-      }
+      span:first-child { @include rem('margin-right', 5px); }
     }
   }
 

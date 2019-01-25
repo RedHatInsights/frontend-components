@@ -38,13 +38,13 @@ class EntityDetails extends Component {
 
     generateTop = () => {
         const { entity } = this.props;
-        const { isOpen } = this.state;
+        // const { isOpen } = this.state;
         return (
             <Grid className="ins-entity-header">
                 <GridItem md={ 6 }>
                     <Title size='2xl'>{ entity && entity.display_name }</Title>
                 </GridItem>
-                <GridItem md={ 6 }>
+                { /* <GridItem md={ 6 }>
                     <Dropdown
                         onSelect={ this.onSelect }
                         toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
@@ -54,7 +54,7 @@ class EntityDetails extends Component {
                             <DropdownItem key="1">Some action</DropdownItem>
                         ] }
                     />
-                </GridItem>
+                </GridItem> */ }
             </Grid>
         );
     }
