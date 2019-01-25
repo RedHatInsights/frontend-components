@@ -1,15 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
-import {
-    ChevronRightIcon,
-    ChevronDownIcon,
-    ThumbsUpIcon,
-    BullseyeIcon,
-    LightbulbIcon
-} from '@patternfly/react-icons';
+import { BullseyeIcon, ChevronDownIcon, ChevronRightIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 import { Card, CardBody, CardHeader, Grid, GridItem, List, ListItem, Split, SplitItem } from '@patternfly/react-core';
-import ReactMarkdown from 'react-markdown/with-html';
+import ReactMarkdown from 'react-markdown';
+import doT from 'dot';
 
 import { Ansible } from '../../../../PresentationalComponents/Ansible';
 import { Battery } from '../../../../PresentationalComponents/Battery';
@@ -20,9 +15,9 @@ class ExpandableRulesCard extends React.Component {
     state = {
         expanded: true,
         kbaDetail: {}
-    }
+    };
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate (prevProps) {
         if (this.props.isExpanded !== prevProps.isExpanded) {
             this.setState({ expanded: this.props.isExpanded });
         }
@@ -36,13 +31,26 @@ class ExpandableRulesCard extends React.Component {
 
     toggleExpanded = () => {
         this.setState({ expanded: !this.state.expanded });
-    }
+    };
 
-    render() {
+    templateProcessor = (template, definitions) => {
+        const DOT_SETTINGS = { ...doT.templateSettings, varname: [ 'pydata' ], strip: false };
+
+        try {
+            const compiledDot = doT.template(template, DOT_SETTINGS)(JSON.parse(definitions));
+            return <ReactMarkdown escapeHtml={ false } source={ compiledDot }/>;
+        } catch (error) {
+            console.warn(error, definitions, template); // eslint-disable-line no-console
+            return <React.Fragment> Ouch. We were unable to correctly render this text, instead please enjoy the raw data.
+                <pre><code>{ template }</code></pre>
+            </React.Fragment>;
+        }
+    };
+
+    render () {
         const { report } = this.props;
         const rule = report.rule || report;
         const { expanded, kbaDetail } = this.state;
-
         let rulesCardClasses = classNames(
             'ins-c-rules-card',
             'pf-t-light',
@@ -53,62 +61,46 @@ class ExpandableRulesCard extends React.Component {
                 <CardHeader>
                     <Split onClick={ this.toggleExpanded }>
                         <SplitItem>
-                            { !expanded && <ChevronRightIcon /> } { expanded && <ChevronDownIcon /> }
+                            { !expanded && <ChevronRightIcon/> } { expanded && <ChevronDownIcon/> }
                         </SplitItem>
                         <SplitItem> { rule.category.name } &gt; </SplitItem>
                         <SplitItem isMain> { rule.description } </SplitItem>
                         <SplitItem>
-                            <Ansible unsupported={ !rule.has_playbook } />
+                            <Ansible unsupported={ !rule.has_playbook }/>
                         </SplitItem>
                     </Split>
                     <Section type='icon-group__with-major'>
-                        <Battery label='Impact' severity={ rule.impact.impact } />
-                        <Battery label='Likelihood' severity={ rule.likelihood } />
-                        <Battery label='Total Risk' severity={ rule.severity } />
-                        <Battery label='Risk Of Change' severity={ report.resolution.resolution_risk.risk } />
+                        <Battery label='Impact' severity={ rule.impact.impact }/>
+                        <Battery label='Likelihood' severity={ rule.likelihood }/>
+                        <Battery label='Total Risk' severity={ rule.severity }/>
+                        <Battery label='Risk Of Change' severity={ report.resolution.resolution_risk.risk }/>
                     </Section>
                 </CardHeader>
-                { expanded && (<CardBody>
+                { expanded && <CardBody>
                     <Grid gutter='md' sm={ 12 }>
                         <GridItem>
                             <Card className='pf-t-light  pf-m-opaque-100'>
-                                <CardHeader> <ThumbsUpIcon /> Detected Issues</CardHeader>
+                                <CardHeader> <ThumbsUpIcon/> Detected Issues</CardHeader>
                                 <CardBody>
-                                    {
-                                        typeof rule.reason === 'string' &&
-                                        Boolean(rule.reason) &&
-                                        <ReactMarkdown source={ rule.reason } escapeHtml={ false }/>
-                                    }
+                                    { rule.reason && this.templateProcessor(rule.reason, report.details) }
                                 </CardBody>
                             </Card>
                         </GridItem>
                         <GridItem>
                             <Card className='pf-t-light  pf-m-opaque-100'>
-                                <CardHeader> <BullseyeIcon /> Steps to resolve</CardHeader>
+                                <CardHeader> <BullseyeIcon/> Steps to resolve</CardHeader>
                                 <CardBody>
-                                    {
-                                        Boolean(report.resolution) &&
-                                        typeof report.resolution.resolution === 'string' &&
-                                        <ReactMarkdown source={ report.resolution.resolution } escapeHtml={ false }/>
-                                    }
+                                    { report.resolution && this.templateProcessor(report.resolution.resolution, report.details) }
                                 </CardBody>
                             </Card>
                         </GridItem>
-                        { kbaDetail && kbaDetail.view_uri && (<GridItem>
-                            <LightbulbIcon /><strong>Related Knowledgebase articles: </strong>
+                        { kbaDetail && kbaDetail.view_uri && <GridItem>
+                            <LightbulbIcon/><strong>Related Knowledgebase articles: </strong>
                             <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle }</a>
-                        </GridItem>) }
+                        </GridItem> }
                         <div>
                             <List>
-                                { rule.more_info && (
-                                    <ListItem>
-                                        {
-                                            typeof rule.more_info === 'string' &&
-                                            Boolean(rule.more_info) &&
-                                            <ReactMarkdown source={ rule.more_info } escapeHtml={ false }/>
-                                        }
-                                    </ListItem>
-                                ) }
+                                { rule.more_info && <ListItem>{ <ReactMarkdown source={ rule.more_info }/> }</ListItem> }
                                 <ListItem>
                                     { `To learn how to upgrade packages, see "` }
                                     <a href="https://access.redhat.com/solutions/9934" rel="noopener">What is yum and how do I use it?</a>
@@ -124,9 +116,7 @@ class ExpandableRulesCard extends React.Component {
                             </List>
                         </div>
                     </Grid>
-
-                </CardBody>)
-                }
+                </CardBody> }
             </Card>
         );
     }
