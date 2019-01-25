@@ -24,7 +24,7 @@ class ApplicationDetails extends Component {
             <React.Fragment>
                 {
                     items &&
-                    <TabLayout items={ items }
+                    <TabLayout items={ items.length > 1 ? items : undefined }
                         onTabClick={ this.onTabClick }
                         active={ defaultApp }>
                         <Switch>
