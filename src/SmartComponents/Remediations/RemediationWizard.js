@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import keyBy from 'lodash/keyBy';
+import transform from 'lodash/transform';
 
 import * as api from '../../api/remediations';
 import { Wizard } from '../../PresentationalComponents/Wizard';
@@ -96,21 +97,19 @@ class RemediationWizard extends Component {
     }
 
     loadResolutions = async (issues) => {
-        const errors = [];
+        const result = await api.getResolutionsBatch(issues.map(i => i.id));
 
-        const resolutions = await Promise.all(issues.map(issue => api.getResolutions(issue.id).catch (e => {
-            if (e.statusCode === 404) {
-                errors.push(`Issue ${issue.id} does not have Ansible support`);
-                return null;
+        const [ resolutions, errors ] = transform(result, ([ resolutions, errors ], value, key) => {
+            if (!value) {
+                errors.push(`Issue ${key} does not have Ansible support`);
+            } else {
+                resolutions.push(value);
             }
 
-            throw e;
-        })));
+            return [ resolutions, errors ];
+        }, [ [], [] ]);
 
-        this.setState({
-            resolutions: resolutions.filter(r => r),
-            errors
-        });
+        this.setState({ resolutions, errors });
     }
 
     closeWizard = submitted => {
