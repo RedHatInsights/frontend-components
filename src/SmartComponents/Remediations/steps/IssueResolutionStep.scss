@@ -1,7 +1,5 @@
 @import '../../../Utilities';
 
-.ins-c-resolution-choice__details {
-    .pf-l-stack__item {
-        @include rem('margin-left', 22px);
-    }
+.ins-c-resolution-option .pf-c-check{
+    align-items: baseline;
 }
