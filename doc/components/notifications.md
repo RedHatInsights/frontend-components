@@ -30,7 +30,7 @@ If you don't want to import css into your js files, you can also import it in on
 
 ```scss
 // in your App.scss
-@import 
+@import
 '~@red-hat-insights/insights-frontend-components/components/Notifications.css'
 ```
 
@@ -68,7 +68,7 @@ We provide additional options, that can help you control your notifications
 {
   title: string,
   variant: ['success', 'danger', 'info', 'warning'],
-  description: string?
+  description: node?
   dismissable: bool? // if is false, notification will disappear automatically after 5s, otherwise will show close button,
   dismissDelay: number? // time period after which alert disappears in ms. Default value is 5000
 }
@@ -133,7 +133,7 @@ You can add meta object with notifications property. In there you define your no
 export const asyncAction = data => ({
   type: 'FOO',
   payload: asyncHandler(data) // this function must return promise
-  meta: {    
+  meta: {
     notifications: {
       pending: {
         variant: 'info',
@@ -202,7 +202,7 @@ notificationsMiddleware({ dispatchDefaultFailure: false })
 export const asyncAction = data => ({
   type: 'FOO',
   payload: asyncHandler(data) // this function must return promise
-  meta: {    
+  meta: {
     noError: true, // turns of automatic notification
     notifications: {
       fulfilled: {

@@ -1,3 +1,5 @@
+/*global RELEASE:true*/
+
 import React, { Component } from 'react';
 import keyBy from 'lodash/keyBy';
 import transform from 'lodash/transform';
@@ -34,12 +36,15 @@ function updateRemediation (id, add, basePath) {
     }, basePath);
 }
 
-function createNotification (name, isNewSwitch) {
+function createNotification (id, name, isNewSwitch) {
     const verb = isNewSwitch ? 'created' : 'updated';
+    const isBeta = window.location.pathname.includes('insightsbeta');
+    const url = `/insights${ isBeta ? 'beta' : ''}/platform/remediations/${encodeURIComponent(id)}`;
+
     return {
         variant: 'success',
         title: `Remediation ${verb}`,
-        description: `Remediation ${name} has been ${verb}`,
+        description: <span><a href={ url } >{ name }</a> has been { verb }</span>,
         dismissDelay: 8000
     };
 }
@@ -156,7 +161,7 @@ class RemediationWizard extends Component {
     resolver = deferred => (id, name, isNewSwitch) => {
         deferred.resolve({
             remediation: { id, name },
-            getNotification: () => createNotification(name, isNewSwitch)
+            getNotification: () => createNotification(id, name, isNewSwitch)
         });
     };
 

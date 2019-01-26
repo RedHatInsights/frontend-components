@@ -57,7 +57,7 @@ Notification.propTypes = {
     id: PropTypes.string.isRequired,
     variant: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string,
+    description: PropTypes.node,
     dismissDelay: PropTypes.number
 };
 
