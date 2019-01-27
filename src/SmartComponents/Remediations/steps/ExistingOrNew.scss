@@ -6,9 +6,8 @@
   }
 
   .ins-c-existing-or-new__existing {
-    .pf-c-check {
-      display: inline;
-    }
+    display: flex;
+    flex-wrap: wrap;
 
     select.pf-c-form-control {
       width: auto;
