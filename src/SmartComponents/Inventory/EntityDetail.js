@@ -12,7 +12,7 @@ import {
     CardBody,
     CardHeader
 } from '@patternfly/react-core';
-import { BulletList } from 'react-content-loader';
+import { Skeleton, SkeletonSize } from '../../PresentationalComponents/Skeleton';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
@@ -37,12 +37,16 @@ class EntityDetails extends Component {
     }
 
     generateTop = () => {
-        const { entity } = this.props;
+        const { entity, loaded } = this.props;
         // const { isOpen } = this.state;
         return (
             <Grid className="ins-entity-header">
                 <GridItem md={ 6 }>
-                    <Title size='2xl'>{ entity && entity.display_name }</Title>
+                    {
+                        loaded ?
+                            <Title size='2xl'>{ entity && entity.display_name }</Title> :
+                            <Skeleton size={ SkeletonSize.md } />
+                    }
                 </GridItem>
                 { /* <GridItem md={ 6 }>
                     <Dropdown
@@ -60,6 +64,7 @@ class EntityDetails extends Component {
     }
 
     generateFacts = () => {
+        const { loaded } = this.props;
         return (
             <Grid className="ins-entity-facts">
                 <GridItem md={ 6 }>
@@ -68,7 +73,11 @@ class EntityDetails extends Component {
                             Hostname:
                         </span>
                         <span>
-                            { this.getFact('fqdn') || this.getFact('facts.hostname') || 'Unknown' }
+                            {
+                                loaded ?
+                                    this.getFact('fqdn') || this.getFact('facts.hostname') || 'Unknown' :
+                                    <Skeleton size={ SkeletonSize.xs } />
+                            }
                         </span>
                     </div>
                     <div>
@@ -77,8 +86,9 @@ class EntityDetails extends Component {
                         </span>
                         <span>
                             {
-                                this.getFact(`id`) ||
-                                'Unknown'
+                                loaded ?
+                                    this.getFact(`id`) || 'Unknown' :
+                                    <Skeleton size={ SkeletonSize.md } />
                             }
                         </span>
                     </div>
@@ -88,10 +98,12 @@ class EntityDetails extends Component {
                         </span>
                         <span>
                             {
-                                this.getFact('facts.os_release') ||
+                                loaded ?
+                                    this.getFact('facts.os_release') ||
                                 this.getFact('facts.inventory.release') ||
                                 this.getFact('facts.qpc.os_release') ||
-                                'Unknown'
+                                'Unknown' :
+                                    <Skeleton size={ SkeletonSize.md } />
                             }
                         </span>
                     </div>
@@ -102,7 +114,11 @@ class EntityDetails extends Component {
                             Last Check-in:
                         </span>
                         <span>
-                            { (new Date(this.getFact('updated'))).toLocaleString() }
+                            {
+                                loaded ?
+                                    (new Date(this.getFact('updated'))).toLocaleString() :
+                                    <Skeleton size={ SkeletonSize.sm } />
+                            }
                         </span>
                     </div>
                     <div>
@@ -110,7 +126,11 @@ class EntityDetails extends Component {
                             Registered:
                         </span>
                         <span>
-                            { (new Date(this.getFact('created'))).toLocaleString() }
+                            {
+                                loaded ?
+                                    (new Date(this.getFact('created'))).toLocaleString() :
+                                    <Skeleton size={ SkeletonSize.sm } />
+                            }
                         </span>
                     </div>
                 </GridItem>
@@ -119,14 +139,7 @@ class EntityDetails extends Component {
     }
 
     render() {
-        const { loaded, useCard } = this.props;
-        if (!loaded) {
-            return (
-                <div>
-                    <BulletList/>
-                </div>
-            );
-        }
+        const { useCard } = this.props;
 
         return (
             <div className="ins-entity-detail">

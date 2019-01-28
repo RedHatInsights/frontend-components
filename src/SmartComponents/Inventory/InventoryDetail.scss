@@ -35,7 +35,12 @@
 .ins-entity-detail {
   .ins-entity-facts {
     div {
+      @include rem('margin', 5px);
       span:first-child { @include rem('margin-right', 5px); }
+
+      .ins-c-skeleton {
+          display: inline-block;
+      }
     }
   }
 
