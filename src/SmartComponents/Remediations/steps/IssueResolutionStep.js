@@ -38,9 +38,11 @@ function IssueResolutionStep (props) {
                                         <React.Fragment>
                                             { resolution.description }
                                             <Stack className='ins-c-resolution-choice__details'>
+                                                { /*
                                                 <StackItem>
                                                     <Battery label="Risk of Change" severity={ resolution.resolution_risk } />
                                                 </StackItem>
+                                                */ }
                                                 { resolution.needs_reboot &&
                                                     <StackItem>
                                                         <Reboot red/>
