@@ -22,19 +22,6 @@ export function getMountedInstance () {
     return mountedInstance;
 }
 
-function createRemediation (name, add, basePath) {
-    return api.createRemediation({
-        name: name || 'Unnamed remediation',
-        add
-    }, basePath);
-}
-
-function updateRemediation (id, add, basePath) {
-    return api.updateRemediation(id, {
-        add
-    }, basePath);
-}
-
 function createNotification (id, name, isNewSwitch) {
     const verb = isNewSwitch ? 'created' : 'updated';
 
