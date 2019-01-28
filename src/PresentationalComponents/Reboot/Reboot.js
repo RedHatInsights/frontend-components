@@ -18,7 +18,7 @@ const Reboot = ({ red, className, ...props }) => {
     return (
         <span className={ rebootIconClasses } { ...props }>
             <RebootingIcon/>
-            <span>Needs Reboot</span>
+            <span>Reboot Required</span>
         </span>
     );
 };

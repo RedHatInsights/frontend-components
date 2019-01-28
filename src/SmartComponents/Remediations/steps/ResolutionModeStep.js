@@ -20,7 +20,7 @@ const allows = plural('allows', 'allow');
 const these = plural('this', 'these');
 
 const LABEL_RECOMMENDED = `Accept all recommended resolution steps for all actions. Some may require system reboot.
- You can disable automatic reboot in the next step or once the remediation is created.`;
+ You can disable automatic reboot in the next step or once the Playbook is created.`;
 
 function ResolutionModeStep (props) {
     const issueCount = props.state.resolutions.length;
@@ -31,7 +31,7 @@ function ResolutionModeStep (props) {
         <Stack gutter='sm'>
             <StackItem>
                 <h1 className='ins-m-text__bold'>
-                    You have selected { issueCount } { actions(issueCount) } to be added to your remediation.&nbsp;
+                    You have selected { issueCount } { actions(issueCount) } to be added to your Playbook.&nbsp;
                     { tweakableCount } out of { issueCount } { actions(issueCount) } { allows(tweakableCount) }&nbsp;
                     you to choose from multiple resolution steps.
                 </h1>

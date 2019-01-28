@@ -10,7 +10,7 @@ exports[`Reboot component should render correctly 1`] = `
     title={null}
   />
   <span>
-    Needs Reboot
+    Reboot Required
   </span>
 </span>
 `;
@@ -25,7 +25,7 @@ exports[`Reboot component should render correctly with red 1`] = `
     title={null}
   />
   <span>
-    Needs Reboot
+    Reboot Required
   </span>
 </span>
 `;

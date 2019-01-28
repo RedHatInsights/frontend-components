@@ -27,7 +27,7 @@ function createNotification (id, name, isNewSwitch) {
 
     return {
         variant: 'success',
-        title: `Remediation ${verb}`,
+        title: `Playbook ${verb}`,
         description: <span><a href={ remediationUrl(id) } >{ name }</a> has been { verb }</span>,
         dismissDelay: 8000
     };
@@ -129,7 +129,7 @@ class RemediationWizard extends Component {
     }
 
     createRemediation = (add, resolver) => {
-        const name = this.state.name || 'Unnamed remediation';
+        const name = this.state.name || 'Unnamed Playbook';
 
         return api.createRemediation({ name, add, auto_reboot: this.state.autoRebootSwitch }, this.state.open.basePath)
         .then(({ id }) => resolver(id, name, true));
