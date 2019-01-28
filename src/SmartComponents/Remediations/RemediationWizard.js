@@ -1,5 +1,3 @@
-/*global RELEASE:true*/
-
 import React, { Component } from 'react';
 import keyBy from 'lodash/keyBy';
 import transform from 'lodash/transform';
@@ -7,6 +5,7 @@ import transform from 'lodash/transform';
 import * as api from '../../api/remediations';
 import { Wizard } from '../../PresentationalComponents/Wizard';
 import Deferred from '../../Utilities/Deferred';
+import { remediationUrl } from './utils';
 
 import ExistingOrNew from './steps/ExistingOrNew';
 import ResolutionModeStep from './steps/ResolutionModeStep';
@@ -38,13 +37,11 @@ function updateRemediation (id, add, basePath) {
 
 function createNotification (id, name, isNewSwitch) {
     const verb = isNewSwitch ? 'created' : 'updated';
-    const isBeta = window.location.pathname.includes('insightsbeta');
-    const url = `/insights${ isBeta ? 'beta' : ''}/platform/remediations/${encodeURIComponent(id)}`;
 
     return {
         variant: 'success',
         title: `Remediation ${verb}`,
-        description: <span><a href={ url } >{ name }</a> has been { verb }</span>,
+        description: <span><a href={ remediationUrl(id) } >{ name }</a> has been { verb }</span>,
         dismissDelay: 8000
     };
 }
