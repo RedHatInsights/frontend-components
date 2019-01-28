@@ -55,7 +55,7 @@ export function getEntities(items, { base = INVENTORY_API_BASE, ...rest }) {
     let query = buildQuery(rest);
 
     return insights.chrome.auth.getUser().then(
-        () => fetch(`${base}${items.length !== 0 ? '/' + items : ''}${query}`).then(r => {
+        () => fetch(`${base}${items.length !== 0 ? '/' + items : ''}${query}`, { credentials: 'include' }).then(r => {
             if (r.ok) {
                 return r.json().then(({ results = [], ...data }) => ({
                     ...data,
