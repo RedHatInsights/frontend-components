@@ -37,7 +37,7 @@ class ExpandableRulesCard extends React.Component {
         const DOT_SETTINGS = { ...doT.templateSettings, varname: [ 'pydata' ], strip: false };
 
         try {
-            const compiledDot = doT.template(template, DOT_SETTINGS)(JSON.parse(definitions));
+            const compiledDot = doT.template(template, DOT_SETTINGS)(definitions);
             return <ReactMarkdown escapeHtml={ false } source={ compiledDot }/>;
         } catch (error) {
             console.warn(error, definitions, template); // eslint-disable-line no-console
