@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
-import { Checkbox, Form, FormGroup, Select, SelectOption, Toolbar, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
+import { Checkbox, Form, FormGroup, Select, SelectOption, Grid, GridItem } from '@patternfly/react-core';
 import routerParams from '../../../../Utilities/RouterParams';
 import { SimpleTableFilter } from '../../../../PresentationalComponents/SimpleTableFilter';
 import { DownloadButton } from '../../../../PresentationalComponents/DownloadButton';
@@ -22,88 +22,79 @@ class VulnerabilitiesCveTableToolbar extends Component {
             show_all: 'False'
         },
         toolbarConfig: {}
-    }
-    changeFilterValue = debounce(value => this.setState(
-        {
-            toolbarConfig: { ...this.state.toolbarConfig, filter: value }
-        },
-        this.apply
-    ), 400);
+    };
+    changeFilterValue = debounce(
+        value =>
+            this.setState(
+                {
+                    toolbarConfig: { ...this.state.toolbarConfig, filter: value }
+                },
+                this.apply
+            ),
+        400
+    );
 
     apply = () => this.props.apply(this.state.toolbarConfig);
 
     changeCVSSValue = (value, options) => {
         const target = options.find(item => item.value === value);
         this.setState({ toolbarConfig: { ...this.state.toolbarConfig, cvss_from: target.from, cvss_to: target.to }}, this.apply);
-    }
+    };
 
-    changeCheckboxValue = (value) => {
+    changeCheckboxValue = value => {
         this.setState({ toolbarConfig: { ...this.state.toolbarConfig, show_all: !value }}, this.apply);
-    }
+    };
 
-    getCVSSValue = (options) => {
-        const option = options.find(
-            item => item.from === this.state.toolbarConfig.cvss_from && item.to === this.state.toolbarConfig.cvss_to
-        );
+    getCVSSValue = options => {
+        const option = options.find(item => item.from === this.state.toolbarConfig.cvss_from && item.to === this.state.toolbarConfig.cvss_to);
         return option ? option.value : options[0].value;
-    }
+    };
 
     render() {
         const { showAllCheckbox, downloadReport, totalNumber } = this.props;
         return (
             <React.Fragment>
-                <Toolbar className="cvetable-toolbar ">
-                    <ToolbarGroup className="filterCVES space-between-toolbar-items">
-                        <ToolbarItem>
-                            <SimpleTableFilter onFilterChange={ (value) => this.changeFilterValue(value) } onButtonClick={ this.apply } />
-                        </ToolbarItem>
-                        <ToolbarItem>
-                            <Form>
-                                <FormGroup label="CVSS Base Score" fieldId="cvssScore">
-                                    <Select
-                                        id="cvssScore"
-                                        onChange={ value => this.changeCVSSValue(value, CVSSOptions) }
-                                        value={ this.getCVSSValue(CVSSOptions) }
-                                    >
-                                        { CVSSOptions.map((option, index) => (
-                                            <SelectOption
-                                                isDisabled={ option.disabled }
-                                                key={ index }
-                                                value={ option.value }
-                                                label={ option.label }
-                                            />
-                                        )) }
-                                    </Select>
-                                </FormGroup>
-                            </Form>
-                        </ToolbarItem>
-                    </ToolbarGroup>
-                    <ToolbarGroup>
-                        <ToolbarItem>
-                            { showAllCheckbox && (
-                                <React.Fragment>
-                                    <br />
-                                    <Checkbox
-                                        label="Hide CVEs that do not affect my inventory"
-                                        isChecked={ !this.state.toolbarConfig.show_all }
-                                        onChange={ state => this.changeCheckboxValue(state) }
-                                        aria-label="hide CVEs checkbox"
-                                        id="toolbar-cves-hide-check"
-                                    />
-                                </React.Fragment>
-                            ) }
-                        </ToolbarItem>
-                    </ToolbarGroup>
-                    <ToolbarGroup className="space-between-toolbar-items">
-                        <ToolbarItem>
-                            <DownloadButton onSelect={ downloadReport }/>
-                        </ToolbarItem>
-                        <ToolbarItem>
-                            <div className="number-of-results">{ totalNumber }</div>
-                            Results
-                        </ToolbarItem>
-                    </ToolbarGroup>
-                </Toolbar>
+                <Grid className="cvetable-toolbar" gutter={ 'md' }>
+                    <GridItem span={ 3 }>
+                        <SimpleTableFilter onFilterChange={ value => this.changeFilterValue(value) } buttonTitle={ null } />
+                    </GridItem>
+                    <GridItem span={ 2 }>
+                        <Form>
+                            <FormGroup label="CVSS Base Score" fieldId="cvssScore">
+                                <Select
+                                    id="cvssScore"
+                                    onChange={ value => this.changeCVSSValue(value, CVSSOptions) }
+                                    value={ this.getCVSSValue(CVSSOptions) }
+                                >
+                                    { CVSSOptions.map((option, index) => (
+                                        <SelectOption isDisabled={ option.disabled } key={ index } value={ option.value } label={ option.label } />
+                                    )) }
+                                </Select>
+                            </FormGroup>
+                        </Form>
+                    </GridItem>
+                    <GridItem span={ 1 } />
+                    <GridItem span={ 3 }>
+                        { showAllCheckbox && (
+                            <React.Fragment>
+                                <br />
+                                <Checkbox
+                                    label="Hide CVEs that do not affect my inventory"
+                                    isChecked={ !this.state.toolbarConfig.show_all }
+                                    onChange={ state => this.changeCheckboxValue(state) }
+                                    aria-label="hide CVEs checkbox"
+                                    id="toolbar-cves-hide-check"
+                                />
+                            </React.Fragment>
+                        ) }
+                    </GridItem>
+                    <GridItem span={ 1 } />
+                    <GridItem span={ 2 }>
+                        <DownloadButton onSelect={ downloadReport } />
+                        <div className="number-of-results">{ totalNumber }</div>
+                        Results
+                    </GridItem>
+                </Grid>
             </React.Fragment>
         );
     }
