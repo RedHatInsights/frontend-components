@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Modal, Button, Form } from '@patternfly/react-core';
+import { Modal, Button } from '@patternfly/react-core';
 
 import './wizard.scss';
 
@@ -32,6 +32,12 @@ class Wizard extends Component {
         }
 
         this.setState({ currentStep: 0 });
+    }
+
+    handleKeyPress = (event) => {
+        if (event.key === 'Enter' && this.props.isValidated === true) {
+            this.handleNextModalStep();
+        }
     }
 
     render() {
@@ -73,6 +79,7 @@ class Wizard extends Component {
         return (
             <Modal
                 { ...props }
+                onKeyPress={ this.handleKeyPress }
                 isLarge = { isLarge }
                 title= { title }
                 className= { wizardClasses }
