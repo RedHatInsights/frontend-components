@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { Modal, Button } from '@patternfly/react-core';
+import { Modal, Button, Form } from '@patternfly/react-core';
 
 import './wizard.scss';
 
@@ -36,7 +36,7 @@ class Wizard extends Component {
 
     render() {
 
-        const { isLarge, title, className, isOpen, ...props } = this.props;
+        const { isLarge, title, className, isOpen, isValidated, ...props } = this.props;
 
         const wizardClasses = classNames(
             'ins-c-wizard',
@@ -52,8 +52,22 @@ class Wizard extends Component {
                 <Button key="back" action="back" variant="secondary" onClick={ this.handlePreviousModalStep }> Back </Button>,
             // Conditionally render 'confirm' button if on last page
             this.state.currentStep < this.props.content.length - 1
-                ? <Button key="Next" action="next" variant="primary" onClick={ this.handleNextModalStep }> Next </Button>
-                : <Button key="confirm" action="confirm" variant="primary" onClick={ () => this.handleOnClose(true) }> Confirm </Button>
+                ? <Button
+                    key="Next"
+                    action="next"
+                    variant="primary"
+                    isDisabled={ !isValidated }
+                    onClick={ this.handleNextModalStep }>
+                        Next
+                </Button>
+                : <Button
+                    key="confirm"
+                    action="confirm"
+                    variant="primary"
+                    isDisabled={ !isValidated }
+                    onClick={ () => this.handleOnClose(true) }>
+                        Confirm
+                </Button>
         ];
 
         return (
@@ -72,6 +86,7 @@ class Wizard extends Component {
 }
 
 Wizard.propTypes = {
+    isValidated: PropTypes.bool,
     isLarge: PropTypes.bool,
     title: PropTypes.string,
     className: PropTypes.string,
