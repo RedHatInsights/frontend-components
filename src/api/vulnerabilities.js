@@ -26,7 +26,8 @@ export function getCveListBySystem({
     .join('&');
     if (system) {
         return fetch(`${BASE_ROUTE}${API_VERSION}/systems/${system}/cves?${query}`, {
-            method: 'GET'
+            method: 'GET',
+            credentials: 'include'
         }).then(res => {
             if (!res.ok) {
                 throw res;

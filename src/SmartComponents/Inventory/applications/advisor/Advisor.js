@@ -28,7 +28,8 @@ class InventoryRuleList extends Component {
         const { entity } = this.props;
         try {
             await insights.chrome.auth.getUser();
-            const data = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports`).then(data => data.json()).catch(error => {throw error;});
+            const data = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports`, { credentials: 'include' })
+            .then(data => data.json()).catch(error => { throw error; });
             this.setState({
                 inventoryReport: data,
                 inventoryReportFetchStatus: 'fulfilled'
@@ -50,7 +51,8 @@ class InventoryRuleList extends Component {
 
     async fetchKbaDetails(kbaIds) {
         try {
-            const data = await fetch(`/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`).then(data => data.json());
+            const data = await fetch(`/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`, { credentials: 'include' })
+            .then(data => data.json());
             this.setState({
                 kbaDetails: data.response.docs
             });
