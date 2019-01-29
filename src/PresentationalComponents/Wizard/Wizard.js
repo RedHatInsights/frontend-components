@@ -103,7 +103,8 @@ Wizard.propTypes = {
 };
 
 Wizard.defaultProps = {
-    onClose: f => f
+    onClose: f => f,
+    isValidated: true
 };
 
 export default Wizard;

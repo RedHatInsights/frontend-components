@@ -35,7 +35,7 @@ exports[`Wizard component should render correctly default 1`] = `
         type="button"
         variant="primary"
       >
-         Next 
+        Next
       </Button>,
     ]
   }
@@ -68,6 +68,7 @@ exports[`Wizard component should render correctly default 1`] = `
   isLarge={false}
   isOpen={true}
   onClose={[Function]}
+  onKeyPress={[Function]}
   title="Some title"
 >
   <div
@@ -113,7 +114,7 @@ exports[`Wizard component should render correctly large 1`] = `
         type="button"
         variant="primary"
       >
-         Next 
+        Next
       </Button>,
     ]
   }
@@ -146,6 +147,7 @@ exports[`Wizard component should render correctly large 1`] = `
   isLarge={true}
   isOpen={true}
   onClose={[Function]}
+  onKeyPress={[Function]}
   title="Some title"
 >
   <div
@@ -191,7 +193,7 @@ exports[`Wizard component should render correctly one page 1`] = `
         type="button"
         variant="primary"
       >
-         Confirm 
+        Confirm
       </Button>,
     ]
   }
@@ -207,6 +209,7 @@ exports[`Wizard component should render correctly one page 1`] = `
   isLarge={false}
   isOpen={true}
   onClose={[Function]}
+  onKeyPress={[Function]}
   title="Some title"
 >
   <div>
