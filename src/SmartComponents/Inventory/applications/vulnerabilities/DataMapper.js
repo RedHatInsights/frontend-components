@@ -1,5 +1,6 @@
 import React from 'react';
 import { SecurityIcon } from '@patternfly/react-icons';
+import { parseCvssScore } from '../../../../Utilities/helpers';
 
 const colorToImpact = {
     High: 'var(--pf-global--danger-color--100)',
@@ -22,7 +23,7 @@ export function createCveListBySystem({ isLoading, ...rest }) {
                     </span>,
                     row.attributes.synopsis,
                     <span key={ `title-${row.id}` } title={ row.attributes.description }>{ row.attributes.description.substr(0, 199) }...</span>,
-                    row.attributes.cvss3_score || (row.attributes.cvss2_score && `${row.attributes.cvss2_score} (v2)`) || 'N/A',
+                    parseCvssScore(row.attributes.cvss2_score, row.attributes.cvss3_score),
                     new Date(row.attributes.public_date).toLocaleString()
                 ]
             })),

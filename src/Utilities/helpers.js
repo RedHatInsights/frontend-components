@@ -23,6 +23,14 @@ export function downloadFile(data, filename = `${new Date().toISOString()}`, for
     document.body.removeChild(link);
 }
 
+export function parseCvssScore(cvssV2, cvssV3) {
+    return (
+        (cvssV3 && parseFloat(cvssV3).toFixed(2)) ||
+        (cvssV2 && `${parseFloat(cvssV2).toFixed(2)} (v2)`) ||
+        'N/A'
+    )
+}
+
 export const RowLoader = props => (
     <ContentLoader
         height={20}
