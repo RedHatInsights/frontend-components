@@ -75,7 +75,7 @@ class EntityDetails extends Component {
                         <span>
                             {
                                 loaded ?
-                                    this.getFact('fqdn') || this.getFact('facts.hostname') || 'Unknown' :
+                                    this.getFact('fqdn') || this.getFact('facts.hostname') || ' ' :
                                     <Skeleton size={ SkeletonSize.xs } />
                             }
                         </span>
@@ -87,7 +87,7 @@ class EntityDetails extends Component {
                         <span>
                             {
                                 loaded ?
-                                    this.getFact(`id`) || 'Unknown' :
+                                    this.getFact(`id`) || ' ' :
                                     <Skeleton size={ SkeletonSize.md } />
                             }
                         </span>
@@ -102,7 +102,7 @@ class EntityDetails extends Component {
                                     this.getFact('facts.os_release') ||
                                 this.getFact('facts.inventory.release') ||
                                 this.getFact('facts.qpc.os_release') ||
-                                'Unknown' :
+                                ' ' :
                                     <Skeleton size={ SkeletonSize.md } />
                             }
                         </span>

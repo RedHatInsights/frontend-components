@@ -32,15 +32,15 @@ class GeneralInformation extends Component {
                             <CardBody>
                                 <Level>
                                     <LevelItem>Manufacturer:</LevelItem>
-                                    <LevelItem>{ (facts && facts.virtualized_type) || 'Unknown' }</LevelItem>
+                                    <LevelItem>{ (facts && facts.virtualized_type) || ' ' }</LevelItem>
                                 </Level>
                                 <Level>
                                     <LevelItem>Release:</LevelItem>
-                                    <LevelItem>{ (facts && facts.os_release) || 'Unknown' }</LevelItem>
+                                    <LevelItem>{ (facts && facts.os_release) || ' ' }</LevelItem>
                                 </Level>
                                 <Level>
                                     <LevelItem>Server Type:</LevelItem>
-                                    <LevelItem>{ (facts && facts.infrastructure_type) || 'Unknown' }</LevelItem>
+                                    <LevelItem>{ (facts && facts.infrastructure_type) || ' ' }</LevelItem>
                                 </Level>
                                 <Level>
                                     <LevelItem>Time Zone:</LevelItem>
@@ -59,7 +59,7 @@ class GeneralInformation extends Component {
                             <CardBody>
                                 <Level>
                                     <LevelItem>UUID:</LevelItem>
-                                    <LevelItem>{ entity.bios_uuid || 'Unknown' }</LevelItem>
+                                    <LevelItem>{ entity.bios_uuid || ' ' }</LevelItem>
                                 </Level>
                             </CardBody>
                         </Card>
