@@ -108,44 +108,50 @@ class ContextFilter extends Component {
     }
 
     render() {
-        const { columns, total, children } = this.props;
+        const { columns, total, children, hasItems } = this.props;
         const { filterByString, isOpen, filters } = this.state;
         const filteredColumns = columns && columns.filter(column => !column.isTime);
         const placeholder = filterByString || (filteredColumns && filteredColumns.length > 0 && filteredColumns[0].title);
         return (
             <Grid guttter="sm" className="ins-inventory-filters">
-                <GridItem span={ 4 } className="ins-inventory-text-filter">
-                    <SimpleTableFilter
-                        options={
-                            filteredColumns && filteredColumns.length > 1 ? {
-                                title: columns[0].title,
-                                items: columns.map(column => ({
-                                    ...column,
-                                    value: column.key
-                                }))
-                            } : undefined
-                        }
-                        onOptionSelect={ this.onFilterByString }
-                        onFilterChange={ this.filterEntities }
-                        placeholder={ `Find system by ${placeholder}` }
-                        buttonTitle=""
-                    />
-                </GridItem>
-                <GridItem span={ 1 } className="ins-inventory-filter">
-                    { filters && filters.length > 0 && <Dropdown
-                        isOpen={ isOpen }
-                        dropdownItems={ filters.map((item, key) => (
-                            <FilterItem
-                                { ...item }
-                                key={ key }
-                                data-key={ key }
-                                onClick={ (event) => this.onFilterClick(event, item.filter, key) }
-                            />
-                        )) }
-                        toggle={ <DropdownToggle onToggle={ this.onToggle }>Filter</DropdownToggle> }
-                    /> }
-                </GridItem>
-                <GridItem span={ 6 }>
+                {
+                    !hasItems &&
+                    <GridItem span={ 4 } className="ins-inventory-text-filter">
+                        <SimpleTableFilter
+                            options={
+                                filteredColumns && filteredColumns.length > 1 ? {
+                                    title: columns[0].title,
+                                    items: columns.map(column => ({
+                                        ...column,
+                                        value: column.key
+                                    }))
+                                } : undefined
+                            }
+                            onOptionSelect={ this.onFilterByString }
+                            onFilterChange={ this.filterEntities }
+                            placeholder={ `Find system by ${placeholder}` }
+                            buttonTitle=""
+                        />
+                    </GridItem>
+                }
+                {
+                    filters && filters.length > 0 &&
+                    <GridItem span={ 1 } className="ins-inventory-filter">
+                        <Dropdown
+                            isOpen={ isOpen }
+                            dropdownItems={ filters.map((item, key) => (
+                                <FilterItem
+                                    { ...item }
+                                    key={ key }
+                                    data-key={ key }
+                                    onClick={ (event) => this.onFilterClick(event, item.filter, key) }
+                                />
+                            )) }
+                            toggle={ <DropdownToggle onToggle={ this.onToggle }>Filter</DropdownToggle> }
+                        />
+                    </GridItem>
+                }
+                <GridItem span={ hasItems ? 10 : 6 }>
                     { children }
                 </GridItem>
                 <GridItem span={ 1 } className="ins-inventory-total pf-u-display-flex pf-u-align-items-center">
@@ -189,7 +195,8 @@ Filter.propTypes = {
     activeFilters: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string,
         value: PropTypes.string
-    }))
+    })),
+    hasItems: PropTypes.bool
 };
 Filter.defaultProps = {
     filters: [],

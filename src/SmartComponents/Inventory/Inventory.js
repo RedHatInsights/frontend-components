@@ -41,7 +41,12 @@ class InventoryTable extends Component {
             } }>
                 <Card>
                     <CardHeader>
-                        <Filter { ...props } filters={ filters } pathPrefix={ pathPrefix } apiBase={ apiBase } />
+                        <Filter { ...props }
+                            hasItems={ items && items.length !== 0 }
+                            filters={ filters }
+                            pathPrefix={ pathPrefix }
+                            apiBase={ apiBase }
+                        />
                     </CardHeader>
                     <CardBody>
                         <InventoryList

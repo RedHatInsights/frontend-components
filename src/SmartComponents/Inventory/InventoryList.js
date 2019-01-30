@@ -103,14 +103,16 @@ function mapDispatchToProps(dispatch) {
                 console.error('Wrong shape of items, array with strings or objects with ID property required!');
             }
 
-            const itemIds = items.reduce((acc, curr) => (
+            const limitedItems = items.slice(config.page - 1 * config.per_page, config.per_page);
+
+            const itemIds = limitedItems.reduce((acc, curr) => (
                 [
                     ...acc,
                     curr && typeof curr === 'string' ? curr : curr.id
                 ]
             ), []).filter(Boolean);
             dispatch(loadEntities(itemIds, config));
-            dispatch(showEntities(items.map(oneItem => (
+            dispatch(showEntities(limitedItems.map(oneItem => (
                 { ...typeof oneItem === 'string' ? { id: oneItem } : oneItem }
             ))));
         }
