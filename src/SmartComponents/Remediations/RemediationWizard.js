@@ -61,7 +61,7 @@ class RemediationWizard extends Component {
 
             issuesById,
 
-            isValidated: false,
+            isValidated: true,
 
             isNewSwitch: true,
             name: '',

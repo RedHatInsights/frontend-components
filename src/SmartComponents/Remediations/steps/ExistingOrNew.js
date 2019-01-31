@@ -67,7 +67,6 @@ function ExistingOrNewStep(props) {
                     className={ isNewSwitch ? '' : 'ins-c-existing-or-new--hidden' }
                 >
                     <TextInput
-                        isRequired
                         type="text"
                         value={ name }
                         onChange={ props.onNameChange }
