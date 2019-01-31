@@ -3,13 +3,15 @@ import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { BullseyeIcon, ChevronDownIcon, ChevronRightIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 import { Card, CardBody, CardHeader, Grid, GridItem, List, ListItem, Split, SplitItem } from '@patternfly/react-core';
-import ReactMarkdown from 'react-markdown';
 import doT from 'dot';
+import sanitizeHtml from 'sanitize-html';
+import marked from 'marked';
 
 import { Ansible } from '../../../../PresentationalComponents/Ansible';
 import { Battery } from '../../../../PresentationalComponents/Battery';
 import { Section } from '../../../../PresentationalComponents/Section';
 import '../../../../PresentationalComponents/Section/section.scss';
+import './advisor.scss';
 
 class ExpandableRulesCard extends React.Component {
     state = {
@@ -35,10 +37,21 @@ class ExpandableRulesCard extends React.Component {
 
     templateProcessor = (template, definitions) => {
         const DOT_SETTINGS = { ...doT.templateSettings, varname: [ 'pydata' ], strip: false };
+        const sanitizeOptions = {
+            allowedAttributes: {
+                '*': [ 'style' ]
+            },
+            transformTags: {
+                ul: sanitizeHtml.simpleTransform('ul', { class: 'pf-c-list' })
+            }
+        };
 
         try {
-            const compiledDot = doT.template(template, DOT_SETTINGS)(definitions);
-            return <ReactMarkdown escapeHtml={ false } source={ compiledDot }/>;
+            const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
+            const compiledMd = marked(sanitizeHtml(compiledDot, sanitizeOptions));
+
+            console.warn(compiledMd.replace(`<ul>`, `<ul class="pf-c-list">`));
+            return <div dangerouslySetInnerHTML={ { __html: compiledMd.replace(`<ul>`, `<ul class="pf-c-list">`) } } />;
         } catch (error) {
             console.warn(error, definitions, template); // eslint-disable-line no-console
             return <React.Fragment> Ouch. We were unable to correctly render this text, instead please enjoy the raw data.
@@ -99,8 +112,8 @@ class ExpandableRulesCard extends React.Component {
                             <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle }</a>
                         </GridItem> }
                         <div>
+                            { rule.more_info && this.templateProcessor(rule.more_info) }
                             <List>
-                                { rule.more_info && <ListItem>{ <ReactMarkdown source={ rule.more_info }/> }</ListItem> }
                                 <ListItem>
                                     { `To learn how to upgrade packages, see "` }
                                     <a href="https://access.redhat.com/solutions/9934" rel="noopener">What is yum and how do I use it?</a>
