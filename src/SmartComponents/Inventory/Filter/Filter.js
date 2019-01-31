@@ -204,10 +204,10 @@ Filter.defaultProps = {
     onFilterSelect: () => undefined
 };
 
-function mapStateToProps({ entities: { columns, total, activeFilters }}) {
+function mapStateToProps({ entities: { columns, total, activeFilters }}, { totalItems }) {
     return {
         columns,
-        total,
+        total: totalItems || total,
         activeFilters
     };
 }

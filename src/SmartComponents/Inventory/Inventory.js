@@ -42,6 +42,7 @@ class InventoryTable extends Component {
                 <Card>
                     <CardHeader>
                         <Filter { ...props }
+                            totalItems={ items && items.length }
                             hasItems={ items && items.length !== 0 }
                             filters={ filters }
                             pathPrefix={ pathPrefix }
@@ -59,7 +60,7 @@ class InventoryTable extends Component {
                         />
                     </CardBody>
                     <CardFooter>
-                        <Pagination />
+                        <Pagination totalItems={ items && items.length } />
                     </CardFooter>
                 </Card>
             </InventoryContext.Provider>

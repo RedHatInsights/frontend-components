@@ -12,7 +12,10 @@ import { getEntities } from '../../api/inventory';
 
 export const loadEntities = (items = [], config) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
-    payload: getEntities(items, config)
+    payload: getEntities(items, config).then(results => ({
+        ...results,
+        page: config.itemsPage || results.page
+    }))
 });
 
 export const showEntities = (items = []) => ({

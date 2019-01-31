@@ -103,7 +103,12 @@ function mapDispatchToProps(dispatch) {
                 console.error('Wrong shape of items, array with strings or objects with ID property required!');
             }
 
-            const limitedItems = items.slice(config.page - 1 * config.per_page, config.per_page);
+            const limitedItems = items.slice((config.page - 1) * config.per_page, config.page * config.per_page);
+
+            if (limitedItems.length > 0) {
+                config.itemsPage = config.page;
+                config.page = 1;
+            }
 
             const itemIds = limitedItems.reduce((acc, curr) => (
                 [

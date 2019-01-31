@@ -88,9 +88,13 @@ FooterPagination.defaultProps = {
     onRefreshData: () => undefined
 };
 
-function stateToProps({ entities: { page, perPage, total, loaded, activeFilters }}) {
+function stateToProps({ entities: { page, perPage, total, loaded, activeFilters }}, { totalItems }) {
     return {
-        page, perPage, total, loaded, filters: activeFilters
+        page,
+        perPage,
+        total: totalItems || total,
+        loaded,
+        filters: activeFilters
     };
 }
 
