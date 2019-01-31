@@ -21,10 +21,16 @@ class ContextInventoryList extends React.Component {
             ...options
         };
         reload && onRefresh(options);
+        if (this.controller) {
+            this.controller.abort();
+        }
+
+        this.controller = new AbortController();
         this.props.loadEntities && this.props.loadEntities(
             items,
             {
                 ...options,
+                controller: this.controller,
                 prefix: this.props.pathPrefix,
                 base: this.props.apiBase
             }

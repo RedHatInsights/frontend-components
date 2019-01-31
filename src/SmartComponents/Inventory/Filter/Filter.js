@@ -4,10 +4,10 @@ import { Grid, GridItem, Button, Dropdown, DropdownToggle } from '@patternfly/re
 import { SimpleTableFilter } from '../../../PresentationalComponents/SimpleTableFilter';
 import { connect } from 'react-redux';
 import { filterSelect } from '../../../redux/actions/inventory';
-import { SyncAltIcon } from '@patternfly/react-icons';
 import { InventoryContext } from '../Inventory';
 import FilterItem from './FilterItem';
 import flatMap from 'lodash/flatMap';
+import debounce from 'lodash/debounce';
 
 function generateFilters(filters = [], activeFilters) {
     const calculateFilter = (filter, { value }) => ({
@@ -86,7 +86,7 @@ class ContextFilter extends Component {
         }, () => onRefreshData({ filters: this.props.activeFilters, page: 1 }));
     }
 
-    filterEntities = (value, selected) => {
+    filterEntities = debounce((value, selected) => {
         const { columns } = this.props;
         const filteredColumns = columns.filter(column => !column.isTime);
         if (!selected) {
@@ -105,7 +105,7 @@ class ContextFilter extends Component {
                 filters
             }, () => onRefreshData({ filters: this.props.activeFilters, page: 1 }));
         }
-    }
+    }, 800)
 
     render() {
         const { columns, total, children, hasItems } = this.props;
