@@ -11,6 +11,7 @@
 
     select.pf-c-form-control {
       width: auto;
+      @include rem('min-width', 100px);
       @include rem('margin-left', 20px);
     }
   }
