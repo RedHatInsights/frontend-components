@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
-import { Checkbox, Form, FormGroup, Select, SelectOption, Grid, GridItem } from '@patternfly/react-core';
+import { Checkbox, Form, FormGroup, FormSelect, FormSelectOption, Grid, GridItem } from '@patternfly/react-core';
 import routerParams from '../../../../Utilities/RouterParams';
 import { SimpleTableFilter } from '../../../../PresentationalComponents/SimpleTableFilter';
 import { DownloadButton } from '../../../../PresentationalComponents/DownloadButton';
@@ -61,15 +61,16 @@ class VulnerabilitiesCveTableToolbar extends Component {
                     <GridItem span={ 2 }>
                         <Form>
                             <FormGroup label="CVSS Base Score" fieldId="cvssScore">
-                                <Select
+                                <FormSelect
                                     id="cvssScore"
                                     onChange={ value => this.changeCVSSValue(value, CVSSOptions) }
                                     value={ this.getCVSSValue(CVSSOptions) }
                                 >
                                     { CVSSOptions.map((option, index) => (
-                                        <SelectOption isDisabled={ option.disabled } key={ index } value={ option.value } label={ option.label } />
+                                        <FormSelectOption isDisabled={ option.disabled }
+                                            key={ index } value={ option.value } label={ option.label } />
                                     )) }
-                                </Select>
+                                </FormSelect>
                             </FormGroup>
                         </Form>
                     </GridItem>

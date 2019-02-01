@@ -4,7 +4,6 @@ exports[`Notification component should render correctly 1`] = `
 <Alert
   action={null}
   className="notification-item"
-  closeButtonAriaLabel="Close"
   id="Foo"
   title="Bar"
   variant="success"
@@ -38,7 +37,6 @@ exports[`Notification component should render correctly with dismiss button 1`] 
     </Button>
   }
   className="notification-item"
-  closeButtonAriaLabel="Close"
   id="Foo"
   title="Bar"
   variant="success"
@@ -50,7 +48,6 @@ exports[`Notification component should render correctly withouth description 1`]
 <Alert
   action={null}
   className="notification-item"
-  closeButtonAriaLabel="Close"
   id="Foo"
   title="Bar"
   variant="success"
