@@ -25,6 +25,7 @@ export * from './PresentationalComponents/Wizard';
 export * from './PresentationalComponents/DownloadButton';
 export * from './PresentationalComponents/Reboot';
 export * from './PresentationalComponents/Skeleton';
+export * from './PresentationalComponents/TableToolbar';
 export * from './Charts/Gauge';
 export * from './Charts/Matrix';
 export * from './Charts/Donut';

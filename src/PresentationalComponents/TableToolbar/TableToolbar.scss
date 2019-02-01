@@ -1,0 +1,7 @@
+@import '../../Utilities';
+
+.ins-c-table__toolbar {
+    background: #fff;
+    border-bottom: 1px solid #ededed;
+    @include rem('padding', 24px);
+}
