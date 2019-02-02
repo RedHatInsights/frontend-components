@@ -135,7 +135,8 @@
       {
         "path": "@semantic-release/git",
         "assets": [
-          "package.json"
+          "package.json",
+          "package-lock.json"
         ],
         "message": "Release of new version: ${nextRelease.version} <no> [skip ci]"
       }
