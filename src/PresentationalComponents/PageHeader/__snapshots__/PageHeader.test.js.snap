@@ -3,7 +3,7 @@
 exports[`PageHeader component should render 1`] = `
 <PageHeader>
   <section
-    className="pf-l-page-header pf-l-page__main-section pf-m-light"
+    className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
     widget-type="InsightsPageHeader"
   >
     <div

@@ -13,7 +13,9 @@ const PageHeader = ({ className, children, ...props }) => {
     let pageHeaderClasses = classNames(
         className,
         'pf-l-page-header',
-        'pf-l-page__main-section'
+        'pf-c-page-header',
+        'pf-l-page__main-section',
+        'pf-c-page__main-section'
     );
 
     return (

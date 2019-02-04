@@ -49,7 +49,7 @@ export class Main extends Component {
                           <section { ...props }
                               { ...dynamic }
                               page-type={ staticPart.join('-') }
-                              className={ `${ classNames(className, 'pf-l-page__main-section') } ${ themeClasses }` }
+                              className={ `${ classNames(className, 'pf-l-page__main-section pf-c-page__main-section') } ${ themeClasses }` }
                           >
                               { React.Children.map(children, child => {
                                   return React.cloneElement(child, {
@@ -61,7 +61,7 @@ export class Main extends Component {
                           <section { ...props }
                               { ...dynamic }
                               page-type={ staticPart.join('-') }
-                              className={ `${ classNames(className, 'pf-l-page__main-section') }` }
+                              className={ `${ classNames(className, 'pf-l-page__main-section pf-c-page__main-section') }` }
                           >
                               { children }
                           </section>
