@@ -210,8 +210,7 @@ class RemediationWizard extends Component {
      * State manipulation
      */
     onNameChange = name => this.setState({
-        name,
-        isValidated: (name.length ? true : false)
+        name
     });
 
     onIsNewSwitch = isNewSwitch => this.setState({
@@ -303,7 +302,6 @@ class RemediationWizard extends Component {
         return (
             <Wizard
                 isLarge = { true }
-                isValidated = { this.state.isValidated }
                 title="Remediate with Ansible"
                 className='ins-c-remediation-modal'
                 onClose = { this.closeWizard }
