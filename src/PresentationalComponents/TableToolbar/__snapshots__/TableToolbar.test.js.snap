@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableToolbar component should render 1`] = `
+<div
+  className="ins-c-table__toolbar"
+>
+   
+  Some
+   
+</div>
+`;
