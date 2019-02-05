@@ -5,8 +5,8 @@ import {
     Form,
     FormGroup,
     Radio,
-    Select,
-    SelectOption,
+    FormSelect,
+    FormSelectOption,
     TextInput
 } from '@patternfly/react-core';
 
@@ -31,24 +31,24 @@ function ExistingOrNewStep(props) {
                         onChange={ () => props.onIsNewSwitch(false) }
                     />
 
-                    <Select
+                    <FormSelect
                         isDisabled={ isNewSwitch }
                         onChange={ props.onRemediationSelected }
                         value={ selectedRemediationId }
                         aria-label="Select an existing Playbook" >
                         {
                             !existingRemediations &&
-                            <SelectOption key="loading" value="loading" label="Loading…" />
+                            <FormSelectOption key="loading" value="loading" label="Loading…" />
                         }
                         {
                             existingRemediations && !existingRemediations.length &&
-                            <SelectOption key="empty" value="empty" label="No exising Playbooks" />
+                            <FormSelectOption key="empty" value="empty" label="No exising Playbooks" />
                         }
                         {
                             existingRemediations && existingRemediations.map(({ id, name }) =>
-                                <SelectOption key={ id } value={ id } label={ name } />)
+                                <FormSelectOption key={ id } value={ id } label={ name } />)
                         }
-                    </Select>
+                    </FormSelect>
                 </div>
 
                 <Radio
