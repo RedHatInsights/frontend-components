@@ -56,7 +56,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
     toggle={
       <DropdownToggle
         className=""
-        iconComponent={[Function]}
+        iconComponent={null}
         id=""
         isActive={false}
         isFocused={false}
@@ -66,9 +66,9 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         onToggle={[Function]}
         parentRef={null}
       >
-        <DownloadIcon
+        <FileExportIcon
           color="currentColor"
-          size="lg"
+          size="md"
           title={null}
         />
       </DropdownToggle>
@@ -80,7 +80,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       <DropdownToggle
         ariaHasPopup={true}
         className=""
-        iconComponent={[Function]}
+        iconComponent={null}
         id="pf-toggle-id-1"
         isActive={false}
         isFocused={false}
@@ -107,32 +107,17 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 <svg
                   aria-hidden="true"
                   fill="currentColor"
-                  height="2em"
+                  height="1.5em"
                   role="img"
-                  viewBox="0 0 512 512"
-                  width="2em"
+                  viewBox="0 0 576 512"
+                  width="1.5em"
                 >
                   <path
-                    d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                    d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zM192 336v-32c0-8.84 7.16-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.84 0-16-7.16-16-16zm379.05-28.02l-95.7-96.43c-10.06-10.14-27.36-3.01-27.36 11.27V288H384v64h63.99v65.18c0 14.28 17.29 21.41 27.36 11.27l95.7-96.42c6.6-6.66 6.6-17.4 0-24.05z"
                     transform=""
                   />
                 </svg>
               </span>
-              <svg
-                aria-hidden="true"
-                class="pf-c-dropdown__toggle-icon"
-                fill="currentColor"
-                height="1em"
-                role="img"
-                style="vertical-align: -0.125em;"
-                viewBox="0 0 320 512"
-                width="1em"
-              >
-                <path
-                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                  transform=""
-                />
-              </svg>
             </button>
             <ul
               aria-labelledby="pf-toggle-id-1"
@@ -208,32 +193,17 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   <svg
                     aria-hidden="true"
                     fill="currentColor"
-                    height="2em"
+                    height="1.5em"
                     role="img"
-                    viewBox="0 0 512 512"
-                    width="2em"
+                    viewBox="0 0 576 512"
+                    width="1.5em"
                   >
                     <path
-                      d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                      d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zM192 336v-32c0-8.84 7.16-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.84 0-16-7.16-16-16zm379.05-28.02l-95.7-96.43c-10.06-10.14-27.36-3.01-27.36 11.27V288H384v64h63.99v65.18c0 14.28 17.29 21.41 27.36 11.27l95.7-96.42c6.6-6.66 6.6-17.4 0-24.05z"
                       transform=""
                     />
                   </svg>
                 </span>
-                <svg
-                  aria-hidden="true"
-                  class="pf-c-dropdown__toggle-icon"
-                  fill="currentColor"
-                  height="1em"
-                  role="img"
-                  style="vertical-align: -0.125em;"
-                  viewBox="0 0 320 512"
-                  width="1em"
-                >
-                  <path
-                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                    transform=""
-                  />
-                </svg>
               </button>
               <ul
                 aria-labelledby="pf-toggle-id-1"
@@ -293,54 +263,27 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             <span
               className="pf-c-dropdown__toggle-text"
             >
-              <DownloadIcon
+              <FileExportIcon
                 color="currentColor"
-                size="lg"
+                size="md"
                 title={null}
               >
                 <svg
                   aria-hidden={true}
                   aria-labelledby={null}
                   fill="currentColor"
-                  height="2em"
+                  height="1.5em"
                   role="img"
-                  viewBox="0 0 512 512"
-                  width="2em"
+                  viewBox="0 0 576 512"
+                  width="1.5em"
                 >
                   <path
-                    d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                    d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zM192 336v-32c0-8.84 7.16-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.84 0-16-7.16-16-16zm379.05-28.02l-95.7-96.43c-10.06-10.14-27.36-3.01-27.36 11.27V288H384v64h63.99v65.18c0 14.28 17.29 21.41 27.36 11.27l95.7-96.42c6.6-6.66 6.6-17.4 0-24.05z"
                     transform=""
                   />
                 </svg>
-              </DownloadIcon>
+              </FileExportIcon>
             </span>
-            <CaretDownIcon
-              className="pf-c-dropdown__toggle-icon"
-              color="currentColor"
-              size="sm"
-              title={null}
-            >
-              <svg
-                aria-hidden={true}
-                aria-labelledby={null}
-                className="pf-c-dropdown__toggle-icon"
-                fill="currentColor"
-                height="1em"
-                role="img"
-                style={
-                  Object {
-                    "verticalAlign": "-0.125em",
-                  }
-                }
-                viewBox="0 0 320 512"
-                width="1em"
-              >
-                <path
-                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                  transform=""
-                />
-              </svg>
-            </CaretDownIcon>
           </button>
         </DropdownToggle>
       </DropdownToggle>
@@ -531,7 +474,7 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
   toggle={
     <DropdownToggle
       className=""
-      iconComponent={[Function]}
+      iconComponent={null}
       id=""
       isActive={false}
       isFocused={false}
@@ -541,9 +484,9 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
       onToggle={[Function]}
       parentRef={null}
     >
-      <DownloadIcon
+      <FileExportIcon
         color="currentColor"
-        size="lg"
+        size="md"
         title={null}
       />
     </DropdownToggle>
@@ -593,7 +536,7 @@ exports[`DownloadButton component should render custom items 1`] = `
   toggle={
     <DropdownToggle
       className=""
-      iconComponent={[Function]}
+      iconComponent={null}
       id=""
       isActive={false}
       isFocused={false}
@@ -603,9 +546,9 @@ exports[`DownloadButton component should render custom items 1`] = `
       onToggle={[Function]}
       parentRef={null}
     >
-      <DownloadIcon
+      <FileExportIcon
         color="currentColor"
-        size="lg"
+        size="md"
         title={null}
       />
     </DropdownToggle>

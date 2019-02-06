@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Dropdown, DropdownToggle, DropdownItem } from '@patternfly/react-core';
-import { DownloadIcon, IconSize } from '@patternfly/react-icons';
+import { FileExportIcon, IconSize } from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
 
 class DownloadButton extends Component {
@@ -28,8 +28,8 @@ class DownloadButton extends Component {
                 { ...props }
                 onSelect={ this.onSelect }
                 toggle={
-                    <DropdownToggle onToggle={ this.onToggle }>
-                        <DownloadIcon size={ IconSize.lg } />
+                    <DropdownToggle onToggle={ this.onToggle } iconComponent={ null } >
+                        <FileExportIcon size={ IconSize.md } />
                     </DropdownToggle>
                 }
                 isOpen={ isOpen }
