@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { BullseyeIcon, ChevronDownIcon, ChevronRightIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
-import { Card, CardBody, CardHeader, Grid, GridItem, List, ListItem, Split, SplitItem } from '@patternfly/react-core';
+import { Card, CardBody, CardHeader, Stack, StackItem, List, ListItem, Split, SplitItem } from '@patternfly/react-core';
 import doT from 'dot';
 import sanitizeHtml from 'sanitize-html';
 import marked from 'marked';
@@ -65,9 +65,8 @@ class ExpandableRulesCard extends React.Component {
         const rule = report.rule || report;
         const { expanded, kbaDetail } = this.state;
         let rulesCardClasses = classNames(
-            'ins-c-rules-card',
-            'pf-t-light',
-            'pf-m-opaque-100'
+            'ins-c-inventory-advisor__card',
+            'ins-c-rules-card'
         );
         return (
             <Card className={ rulesCardClasses } widget-type='InsightsRulesCard'>
@@ -90,27 +89,39 @@ class ExpandableRulesCard extends React.Component {
                     </Section>
                 </CardHeader>
                 { expanded && <CardBody>
-                    <Grid gutter='md' sm={ 12 }>
-                        <GridItem>
-                            <Card className='pf-t-light  pf-m-opaque-100'>
-                                <CardHeader> <ThumbsUpIcon/> Detected Issues</CardHeader>
+                    <Stack gutter='md'>
+                        <StackItem>
+                            <Card className='ins-m-card__flat'>
+                                <CardHeader>
+                                    <ThumbsUpIcon/>
+                                    <strong>Detected Issues</strong>
+                                </CardHeader>
                                 <CardBody>
                                     { rule.reason && this.templateProcessor(rule.reason, report.details) }
                                 </CardBody>
                             </Card>
-                        </GridItem>
-                        <GridItem>
-                            <Card className='pf-t-light  pf-m-opaque-100'>
-                                <CardHeader> <BullseyeIcon/> Steps to resolve</CardHeader>
+                        </StackItem>
+                        <StackItem>
+                            <Card className='ins-m-card__flat'>
+                                <CardHeader>
+                                    <BullseyeIcon/>
+                                    <strong>Steps to resolve</strong>
+                                </CardHeader>
                                 <CardBody>
                                     { report.resolution && this.templateProcessor(report.resolution.resolution, report.details) }
                                 </CardBody>
                             </Card>
-                        </GridItem>
-                        { kbaDetail && kbaDetail.view_uri && <GridItem>
-                            <LightbulbIcon/><strong>Related Knowledgebase articles: </strong>
-                            <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle }</a>
-                        </GridItem> }
+                        </StackItem>
+                        { kbaDetail && kbaDetail.view_uri && <StackItem>
+                            <Card className='ins-m-card__flat'>
+                                <CardHeader>
+                                    <LightbulbIcon/><strong>Related Knowledgebase articles: </strong>
+                                </CardHeader>
+                                <CardBody>
+                                    <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle }</a>
+                                </CardBody>
+                            </Card>
+                        </StackItem> }
                         <div>
                             { rule.more_info && this.templateProcessor(rule.more_info) }
                             <List>
@@ -128,7 +139,7 @@ class ExpandableRulesCard extends React.Component {
                                 </ListItem>
                             </List>
                         </div>
-                    </Grid>
+                    </Stack>
                 </CardBody> }
             </Card>
         );
