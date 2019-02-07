@@ -25,8 +25,8 @@ export function downloadFile(data, filename = `${new Date().toISOString()}`, for
 
 export function parseCvssScore(cvssV2, cvssV3) {
     return (
-        (cvssV3 && parseFloat(cvssV3).toFixed(2)) ||
-        (cvssV2 && `${parseFloat(cvssV2).toFixed(2)} (v2)`) ||
+        (cvssV3 && parseFloat(cvssV3).toFixed(1)) ||
+        (cvssV2 && `${parseFloat(cvssV2).toFixed(1)} (v2)`) ||
         'N/A'
     )
 }
