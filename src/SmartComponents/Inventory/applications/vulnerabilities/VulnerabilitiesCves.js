@@ -42,7 +42,7 @@ class VulnerabilitiesCves extends Component {
         const { cveList, header, showAllCheckbox, dataMapper } = this.props;
         const cves = dataMapper(cveList);
         return (
-            <Stack gutter="lg">
+            <Stack>
                 <StackItem>
                     <VulnerabilitiesCveTableToolbar
                         apply={ this.apply }

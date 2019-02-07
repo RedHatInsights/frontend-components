@@ -4,6 +4,7 @@ import { Checkbox, Form, FormGroup, FormSelect, FormSelectOption, Grid, GridItem
 import routerParams from '../../../../Utilities/RouterParams';
 import { SimpleTableFilter } from '../../../../PresentationalComponents/SimpleTableFilter';
 import { DownloadButton } from '../../../../PresentationalComponents/DownloadButton';
+import { TableToolbar } from '../../../../PresentationalComponents/TableToolbar';
 import debounce from 'lodash/debounce';
 import propTypes from 'prop-types';
 
@@ -53,7 +54,7 @@ class VulnerabilitiesCveTableToolbar extends Component {
     render() {
         const { showAllCheckbox, downloadReport, totalNumber } = this.props;
         return (
-            <React.Fragment>
+            <TableToolbar>
                 <Grid className="cvetable-toolbar" gutter={ 'md' }>
                     <GridItem span={ 3 }>
                         <SimpleTableFilter onFilterChange={ value => this.changeFilterValue(value) } buttonTitle={ null } />
@@ -96,7 +97,7 @@ class VulnerabilitiesCveTableToolbar extends Component {
                         Results
                     </GridItem>
                 </Grid>
-            </React.Fragment>
+            </TableToolbar>
         );
     }
 }
