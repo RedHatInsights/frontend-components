@@ -1,2 +1,2 @@
-export { default as Dark } from './Dark';
+export { default as Dark } from './DarkContext';
 export { default as DarkContext } from './configContext';

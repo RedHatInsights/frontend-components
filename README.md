@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/RedHatInsights/insights-frontend-components.svg?branch=master)](https://travis-ci.org/RedHatInsights/insights-chrome)
 [![npm version](https://badge.fury.io/js/%40red-hat-insights%2Finsights-frontend-components.svg)](https://badge.fury.io/js/%40red-hat-insights%2Finsights-frontend-components)
+[![codecov](https://codecov.io/gh/RedHatInsights/insights-frontend-components/branch/master/graph/badge.svg)](https://codecov.io/gh/RedHatInsights/insights-frontend-components)
 
 # insights-frontend-components
 

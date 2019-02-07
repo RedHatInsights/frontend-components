@@ -12,6 +12,7 @@ install:
 script:
   - npm test
   - npm run lint
+  - npm run coverage
 after_success:
   - npm install
   - npm run release
