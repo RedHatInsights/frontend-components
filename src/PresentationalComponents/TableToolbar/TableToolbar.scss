@@ -1,7 +1,10 @@
 @import '../../Utilities';
 
-.ins-c-table__toolbar {
+.ins-c-table__toolbar, .ins-c-table__toolbar-results {
     background: var(--pf-global--Color--light-100);
     border-bottom: 1px solid var(--pf-global--BorderColor--light-200);
-    @include rem('padding', 24px);
 }
+
+.ins-c-table__toolbar { @include rem('padding', 20px); }
+
+.ins-c-table__toolbar-results { @include rem('padding', 10px 20px); }

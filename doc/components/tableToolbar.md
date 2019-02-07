@@ -24,13 +24,34 @@ class YourCmp extends React.Component {
 }
 ```
 
+### Add results to the toolbar
+
+```JSX
+import React from 'react';
+import { TableToolbar } from '@redhat-insights/insights-frontent-components/';
+
+class YourCmp extends React.Component {
+  render() {
+    return (
+        <TableToolbar results={ number of results }>
+            // Whatever content you want inside the toolbar (search, buttons, etc)
+        </TableToolbar>
+        <Table>
+            // Table content
+        </Table>
+    )
+  }
+}
+```
+
 ## Props
 
 TableToolbar
 
 ```javascript
 {
-    className: propTypes.string
+    results: propTypes.number,
+    className: propTypes.string,
     children: propTypes.any
 };
 ```

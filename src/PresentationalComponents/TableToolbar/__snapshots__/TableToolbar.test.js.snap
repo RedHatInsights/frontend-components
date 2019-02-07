@@ -1,11 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TableToolbar component should render 1`] = `
-<div
-  className="ins-c-table__toolbar"
->
-   
-  Some
-   
-</div>
+<Fragment>
+  <div
+    className="ins-c-table__toolbar"
+  >
+     
+    Some
+  </div>
+</Fragment>
+`;
+
+exports[`TableToolbar component should render with results greater than 1 1`] = `
+<Fragment>
+  <div
+    className="ins-c-table__toolbar"
+  >
+     
+    Some
+  </div>
+  <div
+    className="ins-c-table__toolbar-results"
+  >
+    2 Results
+  </div>
+</Fragment>
+`;
+
+exports[`TableToolbar component should render with results of 0 1`] = `
+<Fragment>
+  <div
+    className="ins-c-table__toolbar"
+  >
+     
+    Some
+  </div>
+  <div
+    className="ins-c-table__toolbar-results"
+  >
+    0 Results
+  </div>
+</Fragment>
+`;
+
+exports[`TableToolbar component should render with results of 1 1`] = `
+<Fragment>
+  <div
+    className="ins-c-table__toolbar"
+  >
+     
+    Some
+  </div>
+  <div
+    className="ins-c-table__toolbar-results"
+  >
+    1 Result
+  </div>
+</Fragment>
 `;
