@@ -23,7 +23,7 @@ class VulnerabilitiesDetail extends Component {
                 <CardBody>
                     <VulnerabilitiesCves
                         header={ header }
-                        fetchResource={ params => fetchCveListBySystem({ ...params, system: entity.insights_id }) }
+                        fetchResource={ params => fetchCveListBySystem({ ...params, system: entity.id }) }
                         dataMapper={ createCveListBySystem }
                         showAllCheckbox={ false }
                     />
