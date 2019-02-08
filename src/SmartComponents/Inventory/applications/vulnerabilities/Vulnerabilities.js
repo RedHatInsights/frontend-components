@@ -5,14 +5,15 @@ import { fetchCveListBySystem } from '../../../../redux/actions/applications';
 import VulnerabilitiesCves from './VulnerabilitiesCves';
 import { Card, CardBody } from '@patternfly/react-core';
 import { createCveListBySystem } from './DataMapper';
+import { sortable, cellWidth } from '@patternfly/react-table';
 import './vulnerabilities.scss';
 
 const header = [
-    { title: 'Impact', key: 'impact', width: 5 },
-    { title: 'Name', key: 'synopsis', width: 10 },
-    { title: 'Description', key: 'description', width: 60, hasSort: false },
-    { title: 'CVSS Base Score', key: 'cvss_score', width: 5 },
-    { title: 'Publish date', key: 'public_date', width: 10 }
+    { title: '', key: 'impact', transforms: [ sortable, cellWidth(10) ]},
+    { title: 'Name', key: 'synopsis', transforms: [ sortable, cellWidth(10) ]},
+    { title: 'Description', key: 'description', transforms: [ cellWidth('max') ]},
+    { title: 'CVSS Base Score', key: 'cvss_score', transforms: [ sortable, cellWidth(10) ]},
+    { title: 'Publish date', key: 'public_date', transforms: [ sortable, cellWidth(10) ]}
 ];
 
 class VulnerabilitiesDetail extends Component {
@@ -26,6 +27,7 @@ class VulnerabilitiesDetail extends Component {
                         fetchResource={ params => fetchCveListBySystem({ ...params, system: entity.id }) }
                         dataMapper={ createCveListBySystem }
                         showAllCheckbox={ false }
+                        defaultSort='-public_date'
                     />
                 </CardBody>
             </Card>

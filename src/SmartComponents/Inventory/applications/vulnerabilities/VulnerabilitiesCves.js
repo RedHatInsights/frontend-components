@@ -9,10 +9,11 @@ import { downloadFile } from '../../../../Utilities/helpers';
 
 class VulnerabilitiesCves extends Component {
     componentDidMount() {
-        this.sendRequest();
+        const { defaultSort: sort } = this.props;
+        this.apply(sort && { sort });
     }
 
-    apply = (config) => {
+    apply = (config = {}) => {
         const toBeReset = [ 'filter', 'page_size', 'show_all' ];
         if (some(toBeReset.map(item => config.hasOwnProperty(item)), item => item === true)) {
             config.page = 1;
@@ -81,7 +82,8 @@ VulnerabilitiesCves.propTypes = {
     fetchResource: propTypes.func,
     header: propTypes.array,
     showAllCheckbox: propTypes.bool,
-    dataMapper: propTypes.func
+    dataMapper: propTypes.func,
+    defaultSort: propTypes.any
 };
 
 VulnerabilitiesCves.defaultProps = {
