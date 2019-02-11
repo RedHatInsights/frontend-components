@@ -84,7 +84,7 @@ class ExpandableRulesCard extends React.Component {
                     <Section type='icon-group__with-major'>
                         <Battery label='Impact' severity={ rule.impact.impact }/>
                         <Battery label='Likelihood' severity={ rule.likelihood }/>
-                        <Battery label='Total Risk' severity={ rule.severity }/>
+                        <Battery label='Total Risk' severity={ rule.total_risk }/>
                         <Battery label='Risk Of Change' severity={ report.resolution.resolution_risk.risk }/>
                     </Section>
                 </CardHeader>
