@@ -63,10 +63,12 @@ class YourCmp extends React.Component {
             <React.Fragment>
                 // Button to open the wizard
                 <Button variant='primary' onClick={ this.openWizard }> Open Wizard </Button>
+                // The confirmAction prop is optional. If not defined, the button on the last step will say "Confirm".
                 <Wizard
                     isLarge
                     title="Create Plan"
                     className='ins-c-plan-modal'
+                    confirmAction="Save"
                     onClose = { this.onClose }
                     isOpen= { isModalOpen }
                     content = { ModalStepContent }
@@ -86,6 +88,7 @@ Wizard
     isLarge: PropTypes.bool,
     title: PropTypes.string,
     className: PropTypes.string,
+    confirmAction: PropTypes.string,
     isOpen: PropTypes.any,
     onClose: PropTypes.func,
     content: PropTypes.array

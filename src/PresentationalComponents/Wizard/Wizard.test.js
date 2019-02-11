@@ -26,6 +26,16 @@ describe('Wizard component', () => {
             const wrapper = shallow(<Wizard content={[<div>One</div>]} title="Some title" isOpen />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
+
+        it('one page confirm button', () => {
+            const wrapper = mount(<Wizard content={[<div>One</div>]} title="Some title" isOpen />);
+            expect(wrapper.find('[action="confirm"]').first().text()).toBe('Confirm');
+        });
+
+        it('one page save button', () => {
+            const wrapper = mount(<Wizard content={[<div>One</div>]} confirmAction="Save" title="Some title" isOpen />);
+            expect(wrapper.find('[action="confirm"]').first().text()).toBe('Save');
+        });
     });
 
     describe('content change', () => {
