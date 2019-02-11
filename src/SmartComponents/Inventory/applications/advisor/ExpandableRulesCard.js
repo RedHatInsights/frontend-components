@@ -93,7 +93,7 @@ class ExpandableRulesCard extends React.Component {
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
-                                    <ThumbsUpIcon/>
+                                    <BullseyeIcon/>
                                     <strong>Detected Issues</strong>
                                 </CardHeader>
                                 <CardBody>
@@ -104,7 +104,7 @@ class ExpandableRulesCard extends React.Component {
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
-                                    <BullseyeIcon/>
+                                    <ThumbsUpIcon/>
                                     <strong>Steps to resolve</strong>
                                 </CardHeader>
                                 <CardBody>
