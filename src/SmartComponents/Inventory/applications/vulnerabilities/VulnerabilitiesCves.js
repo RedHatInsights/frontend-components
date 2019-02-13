@@ -40,7 +40,7 @@ class VulnerabilitiesCves extends Component {
     }
 
     render() {
-        const { cveList, header, showAllCheckbox, dataMapper } = this.props;
+        const { cveList, header, showAllCheckbox, dataMapper, showRemediationButton } = this.props;
         const cves = dataMapper(cveList);
         return (
             <Stack>
@@ -49,7 +49,10 @@ class VulnerabilitiesCves extends Component {
                         apply={ this.apply }
                         totalNumber={ cves.meta.total_items }
                         showAllCheckbox={ showAllCheckbox }
+                        showRemediationButton={ showRemediationButton }
                         downloadReport={ this.downloadReport }
+                        cves={ cves }
+                        entity={ this.props.entity }
                     />
                 </StackItem>
                 <StackItem>
@@ -82,8 +85,10 @@ VulnerabilitiesCves.propTypes = {
     fetchResource: propTypes.func,
     header: propTypes.array,
     showAllCheckbox: propTypes.bool,
+    showRemediationButton: propTypes.bool,
     dataMapper: propTypes.func,
-    defaultSort: propTypes.any
+    defaultSort: propTypes.any,
+    entity: propTypes.any
 };
 
 VulnerabilitiesCves.defaultProps = {

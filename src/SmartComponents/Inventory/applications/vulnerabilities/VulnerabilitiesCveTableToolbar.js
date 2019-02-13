@@ -7,6 +7,9 @@ import { DownloadButton } from '../../../../PresentationalComponents/DownloadBut
 import { TableToolbar } from '../../../../PresentationalComponents/TableToolbar';
 import debounce from 'lodash/debounce';
 import propTypes from 'prop-types';
+import RemediationButton from '../../../Remediations/RemediationButton';
+import { connect } from 'react-redux';
+import { addNotification } from '../../../Notifications';
 
 const CVSSOptions = [
     { value: 'all', label: 'All', disabled: false, from: '', to: '' },
@@ -51,8 +54,19 @@ class VulnerabilitiesCveTableToolbar extends Component {
         return option ? option.value : options[0].value;
     };
 
+    remediationProvider = () => {
+        if (!this.props.cves || this.props.cves.loading || !this.props.entity || !this.props.entity.id) {
+            return false;
+        }
+
+        return {
+            issues: this.props.cves.data.map(({ id }) => ({ id: `vulnerabilities:${id}`, description: id })),
+            systems: [ this.props.entity.id ]
+        };
+    }
+
     render() {
-        const { showAllCheckbox, downloadReport, totalNumber } = this.props;
+        const { showAllCheckbox, downloadReport, totalNumber, showRemediationButton } = this.props;
         return (
             <TableToolbar>
                 <Grid className="cvetable-toolbar" gutter={ 'md' }>
@@ -88,7 +102,15 @@ class VulnerabilitiesCveTableToolbar extends Component {
                                     id="toolbar-cves-hide-check"
                                 />
                             </React.Fragment>
-                        ) }
+                        )
+                        }
+                        {
+                            showRemediationButton &&
+                                <RemediationButton
+                                    dataProvider={ this.remediationProvider }
+                                    isDisabled={ this.remediationProvider() === false }
+                                    onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } />
+                        }
                     </GridItem>
                     <GridItem span={ 1 } />
                     <GridItem span={ 2 }>
@@ -106,15 +128,25 @@ VulnerabilitiesCveTableToolbar.propTypes = {
     CVETable: propTypes.any,
     apply: propTypes.func,
     showAllCheckbox: propTypes.bool,
+    showRemediationButton: propTypes.bool,
     totalNumber: propTypes.number,
-    downloadReport: propTypes.func
+    downloadReport: propTypes.func,
+    cves: propTypes.any,
+    entity: propTypes.object,
+    addNotification: propTypes.func.isRequired
 };
 
 VulnerabilitiesCveTableToolbar.defaultProps = {
     showAllCheckbox: false,
+    showRemediationButton: false,
     totalNumber: 0,
     apply: () => undefined,
     downloadReport: () => undefined
 };
 
-export default routerParams(VulnerabilitiesCveTableToolbar);
+export default connect(
+    null,
+    (dispatch) => ({
+        addNotification: notification => dispatch(addNotification(notification))
+    })
+)(routerParams(VulnerabilitiesCveTableToolbar));
