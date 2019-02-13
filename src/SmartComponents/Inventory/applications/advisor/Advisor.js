@@ -6,7 +6,7 @@ import '@patternfly/patternfly-next/utilities/Display/display.css';
 import '@patternfly/patternfly-next/utilities/Flex/flex.css';
 import { List } from 'react-content-loader';
 import ExpandableRulesCard from './ExpandableRulesCard';
-import { Card, CardBody, CardHeader } from '@patternfly/react-core';
+import { Card, CardBody, CardHeader, Level, LevelItem } from '@patternfly/react-core';
 import { CommentSlashIcon, FrownOpenIcon } from '@patternfly/react-icons';
 import { withRouter } from 'react-router-dom';
 import RemediationButton from '../../../Remediations/RemediationButton';
@@ -97,18 +97,22 @@ class InventoryRuleList extends Component {
 
         return (
             <Fragment>
-                <div className="pf-u-display-flex pf-u-flex-row-reverse ins-c-advisor-system-actions">
-                    <a onClick={ e => {
-                        e.preventDefault();
-                        this.expandAll(expanded);
-                    } } rel="noopener">
-                        { (expanded ? `Collapse All` : `Expand All`) }
-                    </a>
-                    <RemediationButton
-                        isDisabled={ !remediation }
-                        dataProvider={ () => remediation }
-                        onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } />
-                </div>
+                <Level>
+                    <LevelItem>
+                        <a onClick={ e => {
+                            e.preventDefault();
+                            this.expandAll(expanded);
+                        } } rel="noopener">
+                            { (expanded ? `Collapse All` : `Expand All`) }
+                        </a>
+                    </LevelItem>
+                    <LevelItem>
+                        <RemediationButton
+                            isDisabled={ !remediation }
+                            dataProvider={ () => remediation }
+                            onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } />
+                    </LevelItem>
+                </Level>
                 {
                     activeReports && activeReports.map((report, key) =>
                         <ExpandableRulesCard key={ key } report={ report } isExpanded={ expanded } kbaDetails={ kbaDetails }/>
