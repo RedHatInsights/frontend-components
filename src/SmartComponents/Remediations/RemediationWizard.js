@@ -61,7 +61,7 @@ class RemediationWizard extends Component {
 
             issuesById,
 
-            isValidated: true,
+            valid: true,
 
             isNewSwitch: true,
             name: '',
@@ -88,19 +88,23 @@ class RemediationWizard extends Component {
     }
 
     loadResolutions = async (issues) => {
-        const result = await api.getResolutionsBatch(issues.map(i => i.id));
+        try {
+            const result = await api.getResolutionsBatch(issues.map(i => i.id));
 
-        const [ resolutions, errors ] = transform(result, ([ resolutions, errors ], value, key) => {
-            if (!value) {
-                errors.push(`Issue ${key} does not have Ansible support`);
-            } else {
-                resolutions.push(value);
-            }
+            const [ resolutions, errors ] = transform(result, ([ resolutions, errors ], value, key) => {
+                if (!value) {
+                    errors.push(`Issue ${key} does not have Ansible support`);
+                } else {
+                    resolutions.push(value);
+                }
 
-            return [ resolutions, errors ];
-        }, [ [], [] ]);
+                return [ resolutions, errors ];
+            }, [ [], [] ]);
 
-        this.setState({ resolutions, errors });
+            this.setState({ resolutions, errors });
+        } catch (e) {
+            this.setState({ errors: [ 'Error obtaining resolution information. Please try again later.' ]});
+        }
     }
 
     closeWizard = submitted => {
@@ -239,6 +243,8 @@ class RemediationWizard extends Component {
         }
     });
 
+    onValidChange = valid => this.setState({ valid });
+
     buildSteps = () => {
         if (!this.state.open) {
             return [];
@@ -255,13 +261,13 @@ class RemediationWizard extends Component {
         ];
 
         if (!this.resolutionsLoaded() || !this.selectedRemediationLoaded()) {
-            steps.push(<LoadingStep key='LoadingStep'/>);
+            steps.push(<LoadingStep key='LoadingStep' onValidChange={ this.onValidChange }/>);
             return steps;
         }
 
         // no valid resolutions
         if (this.state.errors.length) {
-            steps.push(<ErrorStep key='ErrorStep' errors={ this.state.errors }/>);
+            steps.push(<ErrorStep key='ErrorStep' errors={ this.state.errors } onValidChange={ this.onValidChange }/>);
             return steps;
         }
 
@@ -303,11 +309,13 @@ class RemediationWizard extends Component {
         return (
             <Wizard
                 isLarge = { true }
+                isValidated={ this.state.valid }
                 title="Remediate with Ansible"
                 className='ins-c-remediation-modal'
                 onClose = { this.closeWizard }
                 isOpen= { this.state.open !== false }
                 content = { steps }
+                confirmAction={ this.state.isNewSwitch ? 'Create Playbook' : 'Update Playbook' }
             />
         );
     }
