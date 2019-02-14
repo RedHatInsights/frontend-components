@@ -117,9 +117,10 @@ class RemediationWizard extends Component {
 
             const { isNewSwitch, manualResolutionSelection } = this.state;
             const { systems } = this.state.open.data;
-            const issues = this.state.open.data.issues.map(({ id }) => ({
+            const issues = this.state.open.data.issues.map(({ id, systems }) => ({
                 id,
-                resolution: manualResolutionSelection ? this.getResolution(id).id : undefined
+                resolution: manualResolutionSelection ? this.getResolution(id).id : undefined,
+                systems
             }));
 
             (isNewSwitch ? this.createRemediation : this.updateRemediation)({ issues, systems }, this.resolver(open.deferred));

@@ -88,5 +88,38 @@ describe('validator', function () {
         expect(() => validate(data)).toThrow(TypeError);
     });
 
+    describe('per-issue system definitions', function () {
+        it('passed on per-issue system definition', () => {
+            validate({
+                issues: [{
+                    id: 'vulnerabilities:CVE-2017-17713',
+                    description: 'CVE-2017-17713',
+                    systems: [
+                        '8e7d7f5f-160c-40cc-859c-a3e479007dce'
+                    ]
+                }]
+            });
+        });
+
+        it('fails on no system definition', () => {
+            expect(() => validate({
+                issues: [{
+                    id: 'vulnerabilities:CVE-2017-17713',
+                    description: 'CVE-2017-17713'
+                }]
+            })).toThrow(TypeError);
+        });
+
+        it('fails on empty system list', () => {
+            expect(() => validate({
+                issues: [{
+                    id: 'vulnerabilities:CVE-2017-17713',
+                    description: 'CVE-2017-17713',
+                    systems: []
+                }]
+            })).toThrow(TypeError);
+        });
+    });
+
 });
 

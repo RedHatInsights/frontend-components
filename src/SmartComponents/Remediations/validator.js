@@ -4,23 +4,34 @@ function assert (test, msg) {
     }
 }
 
-function checkKeys(reference, ...keys) {
+function checkAllowedKeys(reference, ...keys) {
     Object.keys(reference).forEach(key => assert(keys.includes(key), `Unexpected key: ${key} Expected one of: ${keys}`));
+}
+
+function checkRequiredKeys(reference, ...keys) {
     keys.forEach(key => assert(reference.hasOwnProperty(key), `Required key missing: ${key}`));
+}
+
+function checkSystems (systems) {
+    assert(Array.isArray(systems), 'Systems must be an array');
+    assert(systems.length, 'Systems array must not be empty');
+    systems.forEach(system => assert(typeof system === 'string', 'System must be of type string'));
 }
 
 export default function validate (data) {
     assert(typeof data === 'object' && data !== null);
-    checkKeys(data, 'issues', 'systems');
+    checkAllowedKeys(data, 'issues', 'systems');
+    checkRequiredKeys(data, 'issues');
 
     assert(Array.isArray(data.issues), 'Issues must be an array');
     assert(data.issues.length, 'Issues array must not be empty');
     data.issues.forEach(issue => {
         assert(typeof issue === 'object' && issue !== null, 'Issue must be an object');
-        checkKeys(issue, 'id', 'description');
+        checkAllowedKeys(issue, 'id', 'description', 'systems');
+        checkRequiredKeys(issue, 'id', 'description');
+        issue.hasOwnProperty('systems') && checkSystems(issue.systems);
+        assert(issue.hasOwnProperty('systems') || data.hasOwnProperty('systems'), `No systems defined for ${issue.id}`);
     });
 
-    assert(Array.isArray(data.systems), 'Systems must be an array');
-    assert(data.systems.length, 'Systems array must not be empty');
-    data.systems.forEach(system => assert(typeof system === 'string', 'System must be of type string'));
+    data.hasOwnProperty('systems') && checkSystems(data.systems);
 }
