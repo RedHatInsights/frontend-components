@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import orderBy from 'lodash/orderBy';
 
-import { Table } from '../../../PresentationalComponents/Table';
+import { Table, TableHeader, TableBody, TableVariant, sortable } from '@patternfly/react-table';
 import './IssueTable.scss';
 
 function buildRows(issues, state, getResolution) {
@@ -10,10 +11,10 @@ function buildRows(issues, state, getResolution) {
         return {
             cells: [
                 state.issuesById[issue.id].description,
-                issueType(issue.id),
                 resolution.description,
                 resolution.needs_reboot ? 'true' : 'false',
-                getSystemCount(issue, state)
+                getSystemCount(issue, state),
+                issueType(issue.id)
             ]
         };
     });
@@ -21,7 +22,7 @@ function buildRows(issues, state, getResolution) {
 
 function issueType (id) {
     switch (id.split(':')[0]) {
-        case 'advisor': return 'Advisor';
+        case 'advisor': return 'Insights';
         case 'compliance': return 'Compliance';
         case 'vulnerabilities': return 'Vulnerability';
         default: return 'Unknown';
@@ -36,33 +37,53 @@ function getSystemCount (issue, state) {
     return state.open.data.systems.length;
 }
 
-function IssueTable(props) {
-    const rows = buildRows(props.issues, props.state, props.getResolution);
+class IssueTable extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            sortBy: 0,
+            sortDir: 'asc'
+        };
+    }
 
-    return (
-        <Table
-            className='ins-c-remediation-summary-table'
-            header={ [
-                {
-                    title: 'Action',
-                    hasSort: false
-                }, {
-                    title: 'Type',
-                    hasSort: false
-                }, {
-                    title: 'Resolution',
-                    hasSort: false
-                }, {
-                    title: 'Reboot Required',
-                    hasSort: false
-                }, {
-                    title: 'Systems',
-                    hasSort: false
-                }]
-            }
-            rows={ rows }
-        />
-    );
+    onSort = (event, sortBy, sortDir) => this.setState({ sortBy, sortDir });
+
+    render () {
+        const { sortBy, sortDir } = this.state;
+        const rows = buildRows(this.props.issues, this.props.state, this.props.getResolution);
+        const sorted = orderBy(rows, r => r.cells[sortBy], [ this.state.sortDir ]);
+
+        return (
+            <Table
+                aria-label='Actions'
+                className='ins-c-remediation-summary-table'
+                variant={ TableVariant.compact }
+                cells={ [
+                    {
+                        title: 'Action',
+                        transforms: [ sortable ]
+                    }, {
+                        title: 'Resolution'
+                    }, {
+                        title: 'Reboot Required',
+                        transforms: [ sortable ]
+                    }, {
+                        title: 'Systems',
+                        transforms: [ sortable ]
+                    }, {
+                        title: 'Type',
+                        transforms: [ sortable ]
+                    }]
+                }
+                rows={ sorted }
+                onSort={ this.onSort }
+                sortBy={ { index: sortBy, direction: sortDir } }
+            >
+                <TableHeader />
+                <TableBody />
+            </Table>
+        );
+    }
 }
 
 IssueTable.propTypes = {
