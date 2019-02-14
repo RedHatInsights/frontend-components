@@ -28,6 +28,10 @@
     }
 }
 
+.pf-c-card__body.ins-c-inventory-body {
+    overflow-x: auto;
+}
+
 .pf-c-card__footer {
     .content-view-pf-pagination.table-view-pf-pagination {
         background: none;

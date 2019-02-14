@@ -49,7 +49,7 @@ class InventoryTable extends Component {
                             apiBase={ apiBase }
                         />
                     </CardHeader>
-                    <CardBody>
+                    <CardBody className="ins-c-inventory-body">
                         <InventoryList
                             { ...props }
                             onRefresh={ onRefresh }
