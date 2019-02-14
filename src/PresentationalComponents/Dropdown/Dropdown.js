@@ -18,28 +18,31 @@ const Dropdown = ({
     isKebab,
     className,
     title,
-    hasArrow = true,
-    isCollapsed = true,
+    hasArrow,
+    isCollapsed,
     onSelect,
     children,
-    airaLabelledBy,
     onToggle,
+    widgetId,
     ...props
 }) => {
     const Toggle = isKebab ? KebabToggle : DropdownToggle;
-
+    console.warn('Dropdown from FE component shouldn\'t be used anymore. \
+Instead use http://patternfly-react.surge.sh/patternfly-4/components/dropdown#Dropdown from PF repository.');
+    const extraToggleProps = {
+        ...!hasArrow ? { iconComponent: null } : {}
+    };
     return (
         <PfDropdown
             widget-type='InsightsDropdown'
-            widget-id={ generateID('Dropdown') }
             { ...props }
             className={ className }
-            isPlain={ !hasArrow }
+            widget-id={ widgetId }
             position={ position }
             direction={ direction }
             onSelect={ onSelect }
             isOpen={ !isCollapsed }
-            toggle={ <Toggle onToggle={ isOpen => onToggle(undefined, !isOpen) }>{ title }</Toggle> }
+            toggle={ <Toggle { ...extraToggleProps } onToggle={ isOpen => onToggle(undefined, !isOpen) }>{ title }</Toggle> }
         >
             { children }
         </PfDropdown>
@@ -52,12 +55,19 @@ Dropdown.propTypes = {
     isKebab: PropTypes.bool,
     children: PropTypes.node,
     className: PropTypes.string,
-    title: PropTypes.string.isRequired,
+    title: PropTypes.node.isRequired,
     isCollapsed: PropTypes.bool,
     hasArrow: PropTypes.bool,
     onSelect: PropTypes.func,
-    airaLabelledBy: PropTypes.string,
-    onToggle: PropTypes.func
+    onToggle: PropTypes.func,
+    widgetId: PropTypes.string
+};
+
+Dropdown.defaultProps = {
+    widgetId: generateID('Dropdown'),
+    onToggle: () => undefined,
+    hasArrow: true,
+    isCollapsed: true
 };
 
 export default Dropdown;

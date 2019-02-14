@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown component should render correctly direction - down 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      Test
+    </DropdownToggle>
+  }
+  widget-id="test"
+  widget-type="InsightsDropdown"
+/>
+`;
+
+exports[`Dropdown component should render correctly direction - up 1`] = `
+<Dropdown
+  className=""
+  direction="up"
+  dropdownItems={Array []}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      Test
+    </DropdownToggle>
+  }
+  widget-id="test"
+  widget-type="InsightsDropdown"
+/>
+`;
+
+exports[`Dropdown component should render correctly is opened 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isOpen={true}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      Test
+    </DropdownToggle>
+  }
+  widget-id="test"
+  widget-type="InsightsDropdown"
+/>
+`;
+
+exports[`Dropdown component should render correctly isKebab 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <Kebab
+      aria-label="Actions"
+      className=""
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      Test
+    </Kebab>
+  }
+  widget-id="test"
+  widget-type="InsightsDropdown"
+/>
+`;
+
+exports[`Dropdown component should render correctly no arrow 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={null}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      Test
+    </DropdownToggle>
+  }
+  widget-id="test"
+  widget-type="InsightsDropdown"
+/>
+`;
+
+exports[`Dropdown component should render correctly no props 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      Test
+    </DropdownToggle>
+  }
+  widget-id="test"
+  widget-type="InsightsDropdown"
+/>
+`;
+
+exports[`Dropdown component should render correctly position - left 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      Test
+    </DropdownToggle>
+  }
+  widget-id="test"
+  widget-type="InsightsDropdown"
+/>
+`;
+
+exports[`Dropdown component should render correctly position - right 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="right"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      Test
+    </DropdownToggle>
+  }
+  widget-id="test"
+  widget-type="InsightsDropdown"
+/>
+`;
+
+exports[`Dropdown component should render correctly title as dom 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      <div>
+        something
+      </div>
+    </DropdownToggle>
+  }
+  widget-id="test"
+  widget-type="InsightsDropdown"
+/>
+`;

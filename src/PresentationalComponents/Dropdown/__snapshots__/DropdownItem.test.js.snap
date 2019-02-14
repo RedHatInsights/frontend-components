@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownItem component should render correctly disabled 1`] = `
+<Item
+  className=""
+  component="a"
+  href="#"
+  isDisabled={true}
+  isHovered={false}
+/>
+`;
+
+exports[`DropdownItem component should render correctly no props 1`] = `
+<Item
+  className=""
+  component="a"
+  href="#"
+  isDisabled={false}
+  isHovered={false}
+/>
+`;
+
+exports[`DropdownItem component should render correctly separator 1`] = `
+<Separator
+  className="fsf"
+  component="a"
+  href="#"
+  isDisabled={false}
+  isHovered={false}
+/>
+`;
