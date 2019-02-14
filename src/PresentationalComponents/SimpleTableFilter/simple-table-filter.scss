@@ -1,3 +1,16 @@
 @import '~@patternfly/patternfly-next/sass-utilities/all';
 @import '~@patternfly/patternfly-next/components/InputGroup/input-group.scss';
 @import '~@patternfly/patternfly-next/components/FormControl/form-control.scss';
+@import '../../Utilities';
+
+.pf-c-input-group.ins-c-filter {
+    &.ins-u-no-title input {
+        @include rem('padding-right', 35px);
+        @include rem('margin-right', -23px);
+    }
+    .ins-c-search-icon {
+        position: relative;
+        @include rem('left', -5px);
+        @include rem('top', 5px);
+    }
+}

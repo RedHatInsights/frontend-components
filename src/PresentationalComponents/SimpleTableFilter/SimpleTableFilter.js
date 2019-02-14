@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonVariant, Dropdown, DropdownToggle, DropdownItem } from '@patternfly/react-core';
 import { Input } from '../Input';
+import { SearchIcon } from '@patternfly/react-icons';
 
 class SimpleFilter extends Component {
     state = {
@@ -60,7 +61,7 @@ class SimpleFilter extends Component {
             </DropdownItem>
         );
         return (
-            <div className={ `pf-c-input-group ${className}` } { ...props }>
+            <div className={ `pf-c-input-group ins-c-filter ${!buttonTitle ? 'ins-u-no-title' : ''} ${className}` } { ...props }>
                 {
                     options &&
                     <Dropdown
@@ -79,6 +80,7 @@ class SimpleFilter extends Component {
                     widget-id={ widgetId }
                     onChange={ this.onInputChange }
                 />
+                { !buttonTitle && <SearchIcon size="md" className="ins-c-search-icon" /> }
                 {
                     buttonTitle &&
                     <Button variant={ ButtonVariant.secondary } action="filter" onClick={ this.onFilterSubmit }>{ buttonTitle }</Button>
@@ -106,6 +108,7 @@ SimpleFilter.propTypes = {
 };
 
 SimpleFilter.defaultProps = {
+    className: '',
     placeholder: 'Search items',
     buttonTitle: 'Filter',
     onButtonClick: () => undefined,

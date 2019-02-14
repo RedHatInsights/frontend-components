@@ -2,7 +2,7 @@
 
 exports[`SimpleTableFilter component should render correctly with custom filter button 1`] = `
 <div
-  className="pf-c-input-group undefined"
+  className="pf-c-input-group ins-c-filter  "
 >
   <Input
     onChange={[Function]}
@@ -31,7 +31,7 @@ exports[`SimpleTableFilter component should render correctly with custom filter 
 
 exports[`SimpleTableFilter component should render correctly with custom placeholder 1`] = `
 <div
-  className="pf-c-input-group undefined"
+  className="pf-c-input-group ins-c-filter  "
 >
   <Input
     onChange={[Function]}
@@ -60,7 +60,7 @@ exports[`SimpleTableFilter component should render correctly with custom placeho
 
 exports[`SimpleTableFilter component should render correctly with filter button 1`] = `
 <div
-  className="pf-c-input-group undefined"
+  className="pf-c-input-group ins-c-filter  "
 >
   <Input
     onChange={[Function]}
@@ -89,7 +89,7 @@ exports[`SimpleTableFilter component should render correctly with filter button 
 
 exports[`SimpleTableFilter component should render correctly with filter opitons 1`] = `
 <div
-  className="pf-c-input-group undefined"
+  className="pf-c-input-group ins-c-filter  "
 >
   <Dropdown
     className=""
@@ -157,7 +157,7 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
 
 exports[`SimpleTableFilter component should render correctly with filter opitons and custom dropdown title 1`] = `
 <div
-  className="pf-c-input-group undefined"
+  className="pf-c-input-group ins-c-filter  "
 >
   <Dropdown
     className=""
@@ -225,13 +225,19 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
 
 exports[`SimpleTableFilter component should render correctly without filter button 1`] = `
 <div
-  className="pf-c-input-group undefined"
+  className="pf-c-input-group ins-c-filter ins-u-no-title "
 >
   <Input
     onChange={[Function]}
     onKeyPress={[Function]}
     placeholder="Search items"
     widget-id="filter"
+  />
+  <SearchIcon
+    className="ins-c-search-icon"
+    color="currentColor"
+    size="md"
+    title={null}
   />
 </div>
 `;
