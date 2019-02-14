@@ -1,3 +1,5 @@
-.ins-c-remediations-loading-step {
-    text-align: center;
+@import '../../../Utilities';
+
+.ins-c-remediations-loading-step .ins-c-remediations-loading-step-main {
+    @include rem('min-height', 200px);
 }

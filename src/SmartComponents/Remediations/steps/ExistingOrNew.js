@@ -9,6 +9,7 @@ import {
     FormSelectOption,
     TextInput
 } from '@patternfly/react-core';
+import { Skeleton, SkeletonSize } from '../../../PresentationalComponents/Skeleton';
 
 import './ExistingOrNew.scss';
 
@@ -31,24 +32,22 @@ function ExistingOrNewStep(props) {
                         onChange={ () => props.onIsNewSwitch(false) }
                     />
 
-                    <FormSelect
-                        isDisabled={ isNewSwitch }
-                        onChange={ props.onRemediationSelected }
-                        value={ selectedRemediationId }
-                        aria-label="Select an existing Playbook" >
-                        {
-                            !existingRemediations &&
-                            <FormSelectOption key="loading" value="loading" label="Loading…" />
-                        }
-                        {
-                            existingRemediations && !existingRemediations.length &&
-                            <FormSelectOption key="empty" value="empty" label="No exising Playbooks" />
-                        }
-                        {
-                            existingRemediations && existingRemediations.map(({ id, name }) =>
-                                <FormSelectOption key={ id } value={ id } label={ name } />)
-                        }
-                    </FormSelect>
+                    {
+                        existingRemediations === false && <Skeleton size={ SkeletonSize.xs } />
+                    }
+                    {
+                        existingRemediations && existingRemediations.length &&
+                            <FormSelect
+                                isDisabled={ isNewSwitch }
+                                onChange={ props.onRemediationSelected }
+                                value={ selectedRemediationId }
+                                aria-label="Select an existing Playbook" >
+                                {
+                                    existingRemediations.map(({ id, name }) =>
+                                        <FormSelectOption key={ id } value={ id } label={ name } />)
+                                }
+                            </FormSelect>
+                    }
                 </div>
 
                 <Radio

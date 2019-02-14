@@ -9,9 +9,9 @@
     display: flex;
     flex-wrap: wrap;
 
-    select.pf-c-form-control {
+    select.pf-c-form-control, .ins-c-skeleton {
       width: auto;
-      @include rem('min-width', 100px);
+      @include rem('min-width', 200px);
       @include rem('margin-left', 20px);
     }
   }
