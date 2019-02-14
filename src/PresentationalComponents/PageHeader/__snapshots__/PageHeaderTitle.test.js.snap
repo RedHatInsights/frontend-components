@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageHeader component should render 1`] = `
-<PageHeaderTitle>
+<PageHeaderTitle
+  title="Something"
+>
   <Title
     className=""
     headingLevel="h1"
@@ -13,6 +15,7 @@ exports[`PageHeader component should render 1`] = `
       widget-type="InsightsPageHeaderTitle"
     >
        
+      Something
        
     </h1>
   </Title>
