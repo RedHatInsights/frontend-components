@@ -49,6 +49,7 @@
     "setupFiles": [
       "<rootDir>/config/setupTests.js"
     ],
+    "testEnvironment": "jsdom",
     "roots": [
       "<rootDir>/src/"
     ],
