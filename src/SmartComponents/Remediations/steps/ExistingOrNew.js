@@ -36,15 +36,16 @@ function ExistingOrNewStep(props) {
                         existingRemediations === false && <Skeleton size={ SkeletonSize.xs } />
                     }
                     {
-                        existingRemediations && existingRemediations.length &&
+                        existingRemediations &&
                             <FormSelect
                                 isDisabled={ isNewSwitch }
                                 onChange={ props.onRemediationSelected }
                                 value={ selectedRemediationId }
                                 aria-label="Select an existing Playbook" >
-                                {
-                                    existingRemediations.map(({ id, name }) =>
+                                { existingRemediations.length
+                                    ? existingRemediations.map(({ id, name }) =>
                                         <FormSelectOption key={ id } value={ id } label={ name } />)
+                                    :   <FormSelectOption key="empty" value="empty" label="No exising Playbooks" />
                                 }
                             </FormSelect>
                     }
