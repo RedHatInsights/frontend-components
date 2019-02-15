@@ -13,9 +13,9 @@ import { addNotification } from '../../../Notifications';
 
 const CVSSOptions = [
     { value: 'all', label: 'All', disabled: false, from: '', to: '' },
-    { value: '0to3', label: 'Lower than 3', disabled: false, from: '', to: 3 },
-    { value: '3to7', label: '3 - 7', disabled: false, from: 3, to: 7 },
-    { value: '7to10', label: '7 - 10', disabled: false, from: 7, to: 10 }
+    { value: 'from0less3', label: 'CVSS < 3.0', disabled: false, from: '', to: 2.999 },
+    { value: 'from3less7', label: 'CVSS >= 3.0 and CVSS < 7.0', disabled: false, from: 3, to: 6.999 },
+    { value: 'from7to10', label: 'CVSS >= 7.0 and CVSS <= 10.0', disabled: false, from: 7, to: 10 }
 ];
 
 class VulnerabilitiesCveTableToolbar extends Component {
