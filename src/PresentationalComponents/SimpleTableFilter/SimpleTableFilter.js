@@ -80,7 +80,7 @@ class SimpleFilter extends Component {
                     widget-id={ widgetId }
                     onChange={ this.onInputChange }
                 />
-                { !buttonTitle && <SearchIcon size="md" className="ins-c-search-icon" /> }
+                { !buttonTitle && <SearchIcon size="sm" className="ins-c-search-icon" /> }
                 {
                     buttonTitle &&
                     <Button variant={ ButtonVariant.secondary } action="filter" onClick={ this.onFilterSubmit }>{ buttonTitle }</Button>

@@ -9,8 +9,9 @@
         @include rem('margin-right', -23px);
     }
     .ins-c-search-icon {
+        color: var(--pf-global--secondary-color--100);
         position: relative;
         @include rem('left', -5px);
-        @include rem('top', 5px);
+        @include rem('top', 8px);
     }
 }

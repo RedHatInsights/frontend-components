@@ -236,7 +236,7 @@ exports[`SimpleTableFilter component should render correctly without filter butt
   <SearchIcon
     className="ins-c-search-icon"
     color="currentColor"
-    size="md"
+    size="sm"
     title={null}
   />
 </div>

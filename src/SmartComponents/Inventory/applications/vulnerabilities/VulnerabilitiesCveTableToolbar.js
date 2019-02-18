@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { addNotification } from '../../../Notifications';
 
 const CVSSOptions = [
-    { value: 'all', label: 'All', disabled: false, from: '', to: '' },
+    { value: 'all', label: 'CVSS Base Score: All', disabled: false, from: '', to: '' },
     { value: 'from0less3', label: 'CVSS < 3.0', disabled: false, from: '', to: 2.999 },
     { value: 'from3less7', label: 'CVSS >= 3.0 and CVSS < 7.0', disabled: false, from: 3, to: 6.999 },
     { value: 'from7to10', label: 'CVSS >= 7.0 and CVSS <= 10.0', disabled: false, from: 7, to: 10 }
@@ -71,11 +71,15 @@ class VulnerabilitiesCveTableToolbar extends Component {
             <TableToolbar>
                 <Grid className="cvetable-toolbar" gutter={ 'md' }>
                     <GridItem span={ 3 }>
-                        <SimpleTableFilter onFilterChange={ value => this.changeFilterValue(value) } buttonTitle={ null } />
+                        <SimpleTableFilter
+                            onFilterChange={ value => this.changeFilterValue(value) }
+                            buttonTitle={ null }
+                            placeholder="Find a CVE…"
+                        />
                     </GridItem>
-                    <GridItem span={ 2 }>
+                    <GridItem span={ 3 }>
                         <Form>
-                            <FormGroup label="CVSS Base Score" fieldId="cvssScore">
+                            <FormGroup fieldId="cvssScore">
                                 <FormSelect
                                     id="cvssScore"
                                     onChange={ value => this.changeCVSSValue(value, CVSSOptions) }
@@ -83,7 +87,8 @@ class VulnerabilitiesCveTableToolbar extends Component {
                                 >
                                     { CVSSOptions.map((option, index) => (
                                         <FormSelectOption isDisabled={ option.disabled }
-                                            key={ index } value={ option.value } label={ option.label } />
+                                            key={ index } value={ option.value } label={ option.label }
+                                        />
                                     )) }
                                 </FormSelect>
                             </FormGroup>
@@ -109,14 +114,13 @@ class VulnerabilitiesCveTableToolbar extends Component {
                                 <RemediationButton
                                     dataProvider={ this.remediationProvider }
                                     isDisabled={ this.remediationProvider() === false }
-                                    onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } />
+                                    onRemediationCreated={ result => this.props.addNotification(result.getNotification()) }
+                                />
                         }
                     </GridItem>
                     <GridItem span={ 1 } />
-                    <GridItem span={ 2 }>
+                    <GridItem span={ 1 }>
                         <DownloadButton onSelect={ downloadReport } />
-                        <div className="number-of-results">{ totalNumber }</div>
-                        Results
                     </GridItem>
                 </Grid>
             </TableToolbar>
