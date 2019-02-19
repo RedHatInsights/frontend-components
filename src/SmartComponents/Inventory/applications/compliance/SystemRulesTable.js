@@ -1,187 +1,374 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
+import * as remediationsApi from '../../../../api/remediations';
 import ComplianceRemediationButton from './ComplianceRemediationButton';
+import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import routerParams from '../../../../Utilities/RouterParams';
-import { Table } from '../../../../PresentationalComponents/Table';
-import { Input } from '../../../../PresentationalComponents/Input';
+import { Ansible } from '../../../../PresentationalComponents/Ansible';
 import { Pagination } from '../../../../PresentationalComponents/Pagination';
+import { TableToolbar } from '../../../../PresentationalComponents/TableToolbar';
+import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
 import { SearchIcon } from '@patternfly/react-icons';
-import { Grid, GridItem, Text, TextVariants } from '@patternfly/react-core';
+import { Checkbox, Level, LevelItem, Stack, StackItem } from '@patternfly/react-core';
 import { RowLoader } from '../../../../Utilities/helpers';
 import flatMap from 'lodash/flatMap';
+import './compliance.scss';
 
-/* eslint camelcase: off */
-const defaultState = {
-    openNodes: [],
-    page: 1,
-    itemsPerPage: 10,
-    rows: [],
-    calculated: false
-};
+const COMPLIANT_COLUMN = 3;
 
 class SystemRulesTable extends React.Component {
-    state = defaultState;
-
-    static getDerivedStateFromProps({ profileRules }, state) {
-        if (profileRules) {
-            return {
-                ...state,
-                calculated: true,
-                rows: state.calculated ? state.rows : SystemRulesTable.rulesToRows(profileRules)
-            };
-        }
-
-        return null;
+    constructor(props) {
+        super(props);
+        this.state = {
+            columns: [
+                { title: 'Rule', transforms: [ sortable ]},
+                { title: 'Policy', transforms: [ sortable ]},
+                { title: 'Severity', transforms: [ sortable ]},
+                { title: 'Passed', transforms: [ sortable ]},
+                { title: 'Remediation' }
+            ],
+            page: 1,
+            itemsPerPage: 10,
+            rows: [],
+            currentRows: [],
+            refIds: {},
+            sortBy: {}
+        };
     }
 
-    static rulesToRows(profileRules) {
-        return flatMap(profileRules, (profileRule => flatMap(profileRule.rules, ((rule, i) => ([
-            {
-                children: [ i * 2 + 1 ],
-                cells: [
-                    <Text key={ i } component={ TextVariants.a }>{ rule.title }</Text>,
-                    rule.ref_id,
-                    profileRule.profile,
-                    rule.severity,
-                    (rule.compliant ? <CheckCircleIcon style={ { color: '#92d400' } } /> :
-                        <ExclamationCircleIcon style={ { color: '#a30000' } } />)
-                ]
-            },
-            {
-                isOpen: false,
-                cells: [
-                    {
-                        title: <React.Fragment key={ i }>
-                            <div id='rule-description'>
-                                <b>Description</b>
-                                <br />
-                                <p>{ rule.description }</p>
-                            </div>
-                            <br />
-                            <div id='rule-rationale'>
-                                <b>Rationale</b>
-                                <br />
-                                <p>{ rule.rationale }</p>
-                            </div>
-                        </React.Fragment>,
-                        colSpan: 5
-                    }
-                ]
-            }]
-        )))));
+    setInitialCurrentRows() {
+        const { itemsPerPage } = this.state;
+        const { profileRules } = this.props;
+        const rowsRefIds = this.rulesToRows(profileRules);
+        this.currentRows(1, itemsPerPage, rowsRefIds).then((currentRows) => {
+            this.setState(() => (
+                {
+                    currentRows,
+                    rows: rowsRefIds.rows,
+                    refIds: rowsRefIds.refIds
+                }
+            ));
+        });
+    }
+
+    componentDidMount = () => {
+        this.setInitialCurrentRows();
+    }
+
+    componentDidUpdate = (prevProps) => {
+        if (this.props.profileRules !== prevProps.profileRules) {
+            this.setInitialCurrentRows();
+        }
+    }
+
+    changePage = (page, itemsPerPage) => {
+        this.currentRows(page, itemsPerPage).then((currentRows) => {
+            this.setState(() => (
+                {
+                    page,
+                    itemsPerPage,
+                    currentRows
+                }
+            ));
+        });
     }
 
     setPage = (page) => {
-        this.setState({
-            page,
-            openNodes: []
-        });
+        const { itemsPerPage } = this.state;
+        this.changePage(page, itemsPerPage);
     }
 
     setPerPage = (itemsPerPage) => {
-        this.setState({
-            itemsPerPage,
-            openNodes: []
-        });
+        const { page } = this.state;
+        this.changePage(page, itemsPerPage);
     }
 
-    currentRows = () => {
-        const { page, itemsPerPage, rows } = this.state;
-        return rows.slice(
-            (page - 1) * itemsPerPage * 2,
-            page * itemsPerPage * 2
-        );
+    isParent = (row) => {
+        return row.hasOwnProperty('isOpen');
     }
 
-    onItemSelect = (_event, key, selected) => {
-        let { rows, page, itemsPerPage } = this.state;
-        const firstIndex = (page - 1) * (itemsPerPage * 2);
-        rows[firstIndex + Number(key)].selected = selected;
-        this.setState({
-            rows
-        });
+    remediationAvailable = (remediationId) => {
+        return remediationId ? <Ansible/> : <Ansible unsupported />;
     }
 
-    onExpandClick = (_event, _row, rowKey) => {
-        let { rows, page, itemsPerPage, openNodes } = this.state;
-        const activeRow = rows[(page - 1) * (itemsPerPage * 2) + Number(rowKey)];
-        activeRow.active = !activeRow.active;
-        if (!activeRow.active) {
-            openNodes.splice(openNodes.indexOf(Number(rowKey) + 1), 1);
-        } else {
-            openNodes = [
-                ...openNodes,
-                Number(rowKey) + 1
-            ];
+    currentRows = (page, itemsPerPage, rowsRefIds) => {
+        const { rows, refIds } = (rowsRefIds) ? rowsRefIds : this.state;
+
+        if (!rows.length) {
+            // Avoid even making an empty request to the remediations API
+            return Promise.resolve([]);
         }
 
-        this.setState({
-            openNodes,
-            rows
+        const firstIndex = (page - 1) * itemsPerPage * 2;
+        const lastIndex = page * itemsPerPage * 2;
+        const newRows = rows.slice(firstIndex, lastIndex).flatMap(({ parent, ...row }) => ({
+            ...row,
+            ...((parent || parent === 0) ? parent > itemsPerPage ? { parent: parent % (itemsPerPage * 2) } : { parent } : {})
+        }));
+
+        const ruleIds = newRows.filter(row => row.hasOwnProperty('isOpen'))
+        .map(({ cells }) => `compliance:${refIds[cells[0]]}`);
+
+        return window.insights.chrome.auth.getUser()
+        .then(() => {
+            return remediationsApi.getResolutionsBatch(ruleIds)
+            .then((response) => {
+                if (!response.ok) {
+                    // If remediations doesn't respond, inject no fix available
+                    return {};
+                }
+
+                return response.json();
+            });
+        }).then(response => newRows.map(({ cells, ...row }) => ({
+            ...row,
+            cells: [
+                ...cells,
+                ...this.isParent(row, cells) ? [ this.remediationAvailable(response[`compliance:${refIds[cells[0]]}`]) ] : []
+            ]
+        })));
+    }
+
+    selectAll = (rows, selected) => {
+        return rows.map(row => (
+            {
+                ...row,
+                ...this.isParent(row) ? { selected } : {}
+            }
+        ));
+    }
+
+    onSelect = (_event, selected, key) => {
+        const { page, itemsPerPage } = this.state;
+        let { currentRows, rows } = this.state;
+        if (key === -1) {
+            rows = this.selectAll(rows, selected);
+            currentRows = this.selectAll(currentRows, selected);
+        } else {
+            // One rule was selected
+            const index = ((page - 1) * itemsPerPage * 2) + Number(key);
+            rows[index].selected = selected;
+            currentRows[key].selected = selected;
+        }
+
+        this.setState({ rows, currentRows });
+    }
+
+    calculateParent = ({ profile }, { title, severity, compliant }) => ({
+        isOpen: false,
+        cells: [
+            title,
+            profile,
+            severity,
+            (compliant ? <CheckCircleIcon className='ins-u-passed' /> :
+                <ExclamationCircleIcon className='ins-u-failed' />)
+        ]
+    })
+
+    calculateChild = ({ description, rationale }, key) => ({
+        parent: key * 2,
+        cells: [{
+            title: (
+                <React.Fragment key={ key }>
+                    <Stack id={ `rule-description-${key}` } gutter="md">
+                        <StackItem><b>Description</b></StackItem>
+                        <StackItem isMain>{ description }</StackItem>
+                    </Stack>
+                    <br/>
+                    <Stack id={ `rule-rationale-${key}` } gutter="md">
+                        <StackItem><b>Rationale</b></StackItem>
+                        <StackItem isMain>{ rationale }</StackItem>
+                    </Stack>
+                </React.Fragment>
+            ) }]
+    })
+
+    rulesToRows = (profileRules) => {
+        const refIds = {};
+        const rows = flatMap(profileRules, (profileRule) => flatMap(profileRule.rules, (rule, key) => {
+            refIds[rule.title] = rule.ref_id;
+            return [
+                this.calculateParent(profileRule, rule),
+                this.calculateChild(rule, key)
+            ];
+        }));
+        return { rows, refIds };
+    }
+
+    onCollapse = (_event, rowKey, isOpen) => {
+        const { rows, refIds } = this.state;
+        const key = ((this.state.page - 1) * this.state.itemsPerPage * 2) + Number(rowKey);
+        rows[key].isOpen = isOpen;
+        this.currentRows(this.state.page, this.state.itemsPerPage, { rows, refIds }).then((currentRows) => {
+            this.setState(() => ({ rows, currentRows }));
         });
     }
 
     selectedRules = () => {
-        return this.state.rows.filter(row => row.selected).map(row => row.cells[1]);
+        const { rows, refIds } = this.state;
+        return rows.filter(row => row.selected).map(row => refIds[row.cells[0]]);
+    }
+
+    // This takes both the row and its children (collapsible rows) and puts them into
+    // one element. It is used only so that the rows can be compared.
+    compressRows = (rows) => {
+        const compressedRows = [];
+        rows.forEach((row, i) => {
+            if (row.hasOwnProperty('isOpen')) {
+                compressedRows.push({ parent: row, child: rows[i + 1] });
+            }
+        });
+
+        return compressedRows;
+    }
+
+    uncompressRows(compressedRows) {
+        const originalRows = [];
+        compressedRows.forEach((compressedRow, i) => {
+            originalRows.push(compressedRow.parent);
+            if (compressedRow.child) {
+                let child = compressedRow.child;
+                child.parent = i * 2;
+                originalRows.push(child);
+            }
+        });
+        return originalRows;
+    }
+
+    onSort = (_event, index, direction) => {
+        // Original index is not the right column, as patternfly adds 1 because
+        // of the 'collapsible' button and 1 because of the checkbox.
+        let column = index - 2;
+        const { refIds, rows, page, itemsPerPage } = this.state;
+        const sortedRows = this.uncompressRows(
+            this.compressRows(rows).sort(
+                (a, b) => {
+                    if (direction === SortByDirection.asc) {
+                        if (column === COMPLIANT_COLUMN) {
+                            return a.parent.cells[column].props.className === b.parent.cells[column].props.className ? 0 :
+                                a.parent.cells[column].props.className < b.parent.cells[column].props.className ? 1 : -1;
+                        } else {
+                            return a.parent.cells[column].localeCompare(b.parent.cells[column]);
+                        }
+
+                    } else {
+                        if (column === COMPLIANT_COLUMN) {
+                            return a.parent.cells[column].props.className === b.parent.cells[column].props.className ? 0 :
+                                a.parent.cells[column].props.className > b.parent.cells[column].props.className ? 1 : -1;
+                        } else {
+                            return -a.parent.cells[column].localeCompare(b.parent.cells[column]);
+                        }
+                    }
+                }
+            )
+        );
+        this.currentRows(page, itemsPerPage, { rows: sortedRows, refIds }).then((currentRows) => {
+            this.setState(() => ({
+                currentRows,
+                sortBy: {
+                    index,
+                    direction
+                },
+                rows: sortedRows
+            }));
+        });
+    }
+
+    hidePassed = (checked) => {
+        const { rows, originalRows, refIds, page, itemsPerPage } = this.state;
+        if (checked) {
+            const onlyPassedRows = [];
+            rows.forEach((row, i) => {
+                if (row.hasOwnProperty('isOpen') && row.cells[COMPLIANT_COLUMN].props.className === 'ins-u-failed') {
+                    onlyPassedRows.push(row);
+                    if (!rows[i + 1].hasOwnProperty('isOpen')) {
+                        let child = rows[i + 1];
+                        child.parent = onlyPassedRows.length - 1;
+                        onlyPassedRows.push(child);
+                    }
+                }
+            });
+
+            this.currentRows(page, itemsPerPage, { rows: onlyPassedRows, refIds }).then((currentRows) => {
+                this.setState(() => ({
+                    currentRows,
+                    originalRows: rows,
+                    rows: onlyPassedRows
+                }));
+            });
+        } else {
+            this.currentRows(page, itemsPerPage, { rows: originalRows, refIds }).then((currentRows) => {
+                this.setState(() => ({
+                    currentRows,
+                    rows: originalRows
+                }));
+            });
+        }
     }
 
     render() {
-        const currentRows = this.currentRows();
+        const { sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
         const { loading } = this.props;
-        return (
-            <React.Fragment>
-                <Grid gutter="sm">
-                    <GridItem span={ 10 }>
-                        <Input
-                            id="search"
-                            type="text"
-                            style={ { width: '200px' } }
-                        />{ ' ' }
-                        <SearchIcon style={ { paddingTop: '4px' } } />
-                    </GridItem>
-                    <GridItem span={ 2 }>
-                        { !loading && <ComplianceRemediationButton selectedRules={ this.selectedRules() } /> }
-                    </GridItem>
-
-                    <GridItem span={ 12 }>
-                        <Table
-                            variant="large"
-                            header={ [ 'Rule', 'Reference ID', 'Policy', 'Severity', 'Passed' ] }
-                            hasCheckbox
-                            expandable
-                            onItemSelect={ this.onItemSelect }
-                            rows={ loading ? [ ...Array(10) ].map(() => ({
-                                cells: [{
-                                    title: <RowLoader />,
-                                    colSpan: 5
-                                }]
-                            })) : currentRows.map((oneRow, key) => ({
-                                ...oneRow,
-                                ...oneRow.hasOwnProperty('isOpen') ?
-                                    { isOpen: this.state.openNodes.indexOf(key) !== -1 } :
-                                    {}
-                            })
-                            ) }
-                            onExpandClick={ this.onExpandClick }
-                            footer={ <Pagination
-                                numberOfItems={ (this.state.rows.length - 2) / 2 }
-                                onPerPageSelect={ this.setPerPage }
-                                page={ this.state.page }
-                                onSetPage={ this.setPage }
-                                itemsPerPage={ this.state.itemsPerPage }
-                            /> }
-                        />
-                    </GridItem>
-                </Grid>
-            </React.Fragment>
-        );
+        if (loading) {
+            return (
+                <Table
+                    cells={ columns }
+                    rows={ [ ...Array(10) ].map(() => ({
+                        cells: [{
+                            title: <RowLoader />,
+                            colSpan: 5
+                        }]
+                    })) }>
+                    <TableHeader />
+                    <TableBody />
+                </Table>
+            );
+        } else {
+            return (
+                <React.Fragment>
+                    <TableToolbar>
+                        <Level gutter='md'>
+                            <LevelItem>
+                                <Checkbox onChange={ this.hidePassed } label={ 'Hide Passed Rules' } />
+                            </LevelItem>
+                            <LevelItem>
+                                { rows.length } results
+                            </LevelItem>
+                            <LevelItem>
+                                <ComplianceRemediationButton selectedRules={ this.selectedRules() } />
+                            </LevelItem>
+                        </Level>
+                    </TableToolbar>
+                    <Table
+                        cells={ columns }
+                        onCollapse={ this.onCollapse }
+                        onSort={ this.onSort }
+                        sortBy={ sortBy }
+                        onSelect={ this.onSelect }
+                        rows={ currentRows }>
+                        <TableHeader />
+                        <TableBody />
+                    </Table>
+                    <Pagination
+                        numberOfItems={ rows.length }
+                        onPerPageSelect={ this.setPerPage }
+                        page={ page }
+                        onSetPage={ this.setPage }
+                        itemsPerPage={ itemsPerPage }
+                    />
+                </React.Fragment>
+            );
+        }
     }
 }
 
 SystemRulesTable.propTypes = {
     profileRules: propTypes.array,
     loading: propTypes.bool
+};
+
+SystemRulesTable.defaultProps = {
+    profileRules: [{ rules: []}]
 };
 
 export default routerParams(SystemRulesTable);

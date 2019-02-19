@@ -6,16 +6,22 @@ import propTypes from 'prop-types';
 import { Instagram } from 'react-content-loader';
 
 class SystemPolicyCards extends React.Component {
+    systemPolicyCards() {
+        return this.props.policies.map(
+            (policy, i) =>
+                <GridItem sm={ 12 } md={ 12 } lg={ 6 } xl={ 4 } key={ i }>
+                    <SystemPolicyCard policy={ policy } />
+                </GridItem>
+        );
+    }
+
     render() {
-        const { policies, loading } = this.props;
+        const { loading } = this.props;
+
         return (
-            <div id="system_policy_cards">
+            <React.Fragment>
                 <Grid gutter='md'>
-                    { policies.map((policy, i) => (
-                        <GridItem span={ 4 } key={ i }>
-                            <SystemPolicyCard policy={ policy } />
-                        </GridItem>
-                    )) }
+                    { this.systemPolicyCards() }
                     { loading && [ ...Array(3) ].map((_item, i) => (
                         <GridItem span={ 4 } key={ i }>
                             <Card>
@@ -26,7 +32,7 @@ class SystemPolicyCards extends React.Component {
                         </GridItem>
                     )) }
                 </Grid>
-            </div>
+            </React.Fragment>
         );
     }
 }

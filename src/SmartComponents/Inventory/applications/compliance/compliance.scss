@@ -2,7 +2,22 @@
     text-align: center;
 }
 
-#remediation-button > button {
-    padding-left: 0.625rem;
-    padding-right: 0.625rem;
+.ins-c-policy-card {
+    font-size: var(--pf-global--FontSize--lg);
+}
+
+.ins-c-policy-card.ins-m-compliant {
+    color: var(--pf-global--success-color--100);
+}
+
+.ins-c-policy-card.ins-m-noncompliant {
+    color: var(--pf-global--danger-color--100);
+}
+
+.ins-u-passed {
+    color: var(--pf-global--success-color--100);
+}
+
+.ins-u-failed {
+    color: var(--pf-global--danger-color--100);
 }

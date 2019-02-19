@@ -1,59 +1,56 @@
 import React from 'react';
 import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
-import PropTypes from 'prop-types';
 import {
     Card,
-    CardHeader,
     CardBody,
     CardFooter,
     Text,
     TextContent,
     TextVariants
 } from '@patternfly/react-core';
-
-/* eslint camelcase: off */
+import PropTypes from 'prop-types';
 
 class SystemPolicyCard extends React.Component {
-    complianceIcon = (compliant) => {
-        if (compliant) {
-            return <div style={ { fontSize: 'large', color: '#92d400' } } id='policy_compliant'>
+    complianceIcon = () => {
+        const { policy: { compliant }} = this.props;
+
+        return compliant ?
+            <div className='ins-c-policy-card ins-m-compliant'>
                 <CheckCircleIcon /> Compliant
-            </div>;
-        } else {
-            return <div style={ { fontSize: 'large', color: '#a30000' } } id='policy_compliant'>
+            </div> :
+            <div className='ins-c-policy-card ins-m-noncompliant'>
                 <ExclamationCircleIcon/> Noncompliant
             </div>;
-        }
     }
 
     render() {
-        const { policy } = this.props;
+        /* eslint-disable camelcase */
+        const { policy: { name, compliant, ref_id, last_scanned, rules_passed, rules_failed }} = this.props;
         return (
             <Card>
                 <CardBody>
                     <TextContent>
-                        <Text style={ { marginBottom: '0px' } } component={ TextVariants.small }>External Policy</Text>
-                        <Text style={ { marginBottom: '0px' } } component={ TextVariants.medium }>{ policy.name }</Text>
+                        <Text style={ { marginBottom: '0' } } component={ TextVariants.small }>External Policy</Text>
+                        <Text style={ { marginTop: '0' } } component={ TextVariants.h4 }>{ name }</Text>
                     </TextContent>
-                    <TextContent>
-                        { this.complianceIcon(policy.compliant) }
-                        <Text component={ TextVariants.small }>
-                            { policy.rules_passed } of { policy.rules_passed + policy.rules_failed } passed
-                        </Text>
-                        <Text component={ TextVariants.medium }>
-                            Profile <br/>
-                            { policy.ref_id }
-                        </Text>
-                    </TextContent>
+                    { this.complianceIcon(compliant) }
+                    <Text component={ TextVariants.small }>
+                        { rules_passed } of { rules_passed + rules_failed } rules passed
+                    </Text>
+                    <Text component={ TextVariants.medium }>
+                        Profile <br/>
+                        { ref_id }
+                    </Text>
                 </CardBody>
                 <CardFooter>
                     <TextContent>
                         <Text component={ TextVariants.small }>
-                          Last scanned: { policy.last_scanned }
+                          Last scanned: { last_scanned }
                         </Text>
                     </TextContent>
                 </CardFooter>
             </Card>
+            /* eslint-disable camelcase */
         );
     };
 };
@@ -64,6 +61,7 @@ SystemPolicyCard.propTypes = {
         rules_failed: PropTypes.number,
         last_scanned: PropTypes.string,
         ref_id: PropTypes.string,
+        name: PropTypes.string,
         compliant: PropTypes.bool
     })
 };
