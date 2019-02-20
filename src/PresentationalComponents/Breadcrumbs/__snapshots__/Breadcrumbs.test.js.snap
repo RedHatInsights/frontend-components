@@ -1,102 +1,115 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumbs component should render correctly no current 1`] = `
-<Fragment>
-  <ol
-    className="ins-breadcrumbs"
-    widget-type="InsightsBreadcrumbs"
+<Breadcrumb
+  aria-label="breadcrumb"
+  className="ins-c-breadcrumbs"
+>
+  <BreadcrumbItem
+    className=""
+    component="a"
+    data-key={0}
+    isActive={false}
+    key="0"
+    target={null}
+    to={null}
   >
-    <li
-      data-key={0}
-      key="first"
+    <a
+      aria-label="first"
+      onClick={[Function]}
     >
-      <a
-        aria-label="first"
-        key="first"
-        onClick={[Function]}
-      >
-        First
-      </a>
-      <AngleRightIcon
-        color="currentColor"
-        size="sm"
-        title={null}
-      />
-    </li>
-    <li
-      data-key={1}
-      key="second"
-    >
-      <a
-        aria-label="second"
-        key="second"
-        onClick={[Function]}
-      >
-        <span>
-          Second
-        </span>
-      </a>
-      <AngleRightIcon
-        color="currentColor"
-        size="sm"
-        title={null}
-      />
-    </li>
-  </ol>
-</Fragment>
-`;
-
-exports[`Breadcrumbs component should render correctly no items 1`] = `<Fragment />`;
-
-exports[`Breadcrumbs component should render correctly with items and current item 1`] = `
-<Fragment>
-  <ol
-    className="ins-breadcrumbs"
-    widget-type="InsightsBreadcrumbs"
+      First
+    </a>
+  </BreadcrumbItem>
+  <BreadcrumbItem
+    className=""
+    component="a"
+    data-key={1}
+    isActive={false}
+    key="1"
+    target={null}
+    to={null}
   >
-    <li
-      data-key={0}
-      key="first"
-    >
-      <a
-        aria-label="first"
-        key="first"
-        onClick={[Function]}
-      >
-        First
-      </a>
-      <AngleRightIcon
-        color="currentColor"
-        size="sm"
-        title={null}
-      />
-    </li>
-    <li
-      data-key={1}
-      key="second"
-    >
-      <a
-        aria-label="second"
-        key="second"
-        onClick={[Function]}
-      >
-        <span>
-          Second
-        </span>
-      </a>
-      <AngleRightIcon
-        color="currentColor"
-        size="sm"
-        title={null}
-      />
-    </li>
-    <li
-      className="ins-active"
+    <a
+      aria-label="second"
+      onClick={[Function]}
     >
       <span>
-        Something
+        Second
       </span>
-    </li>
-  </ol>
-</Fragment>
+    </a>
+  </BreadcrumbItem>
+</Breadcrumb>
+`;
+
+exports[`Breadcrumbs component should render correctly no items 1`] = `
+<Breadcrumb
+  aria-label="breadcrumb"
+  className="ins-c-breadcrumbs"
+>
+  <BreadcrumbItem
+    className=""
+    component="a"
+    isActive={true}
+    target={null}
+    to={null}
+  >
+     
+    Something
+     
+  </BreadcrumbItem>
+</Breadcrumb>
+`;
+
+exports[`Breadcrumbs component should render correctly with items and current item 1`] = `
+<Breadcrumb
+  aria-label="breadcrumb"
+  className="ins-c-breadcrumbs"
+>
+  <BreadcrumbItem
+    className=""
+    component="a"
+    data-key={0}
+    isActive={false}
+    key="0"
+    target={null}
+    to={null}
+  >
+    <a
+      aria-label="first"
+      onClick={[Function]}
+    >
+      First
+    </a>
+  </BreadcrumbItem>
+  <BreadcrumbItem
+    className=""
+    component="a"
+    data-key={1}
+    isActive={false}
+    key="1"
+    target={null}
+    to={null}
+  >
+    <a
+      aria-label="second"
+      onClick={[Function]}
+    >
+      <span>
+        Second
+      </span>
+    </a>
+  </BreadcrumbItem>
+  <BreadcrumbItem
+    className=""
+    component="a"
+    isActive={true}
+    target={null}
+    to={null}
+  >
+     
+    Something
+     
+  </BreadcrumbItem>
+</Breadcrumb>
 `;

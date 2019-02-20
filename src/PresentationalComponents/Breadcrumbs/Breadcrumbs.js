@@ -1,32 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { AngleRightIcon } from '@patternfly/react-icons';
+import { Breadcrumb, BreadcrumbItem } from '@patternfly/react-core';
 
-const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => (
-    <React.Fragment>
-        {
-            items.length > 0 && <ol { ...props } className={ classnames(className, 'ins-breadcrumbs') } widget-type='InsightsBreadcrumbs'>
-                { items.map((oneLink, key) => (
-                    <li key={ oneLink.navigate } data-key={ key }>
-                        <a key={ oneLink.navigate }
-                            onClick={ event => onNavigate(event, oneLink.navigate, key) }
+const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => {
+    console.warn('Breadcrumbs from FE component shouldn\'t be used anymore. \
+Instead use http://patternfly-react.surge.sh/patternfly-4/components/breadcrumb#Breadcrumb from PF repository.');
+    return (
+        <Breadcrumb className={ classnames('ins-c-breadcrumbs', className) } { ...props }>
+            {
+                items.map((oneLink, key) => (
+                    <BreadcrumbItem key={ key } data-key={ key }>
+                        <a onClick={ event => onNavigate(event, oneLink.navigate, key) }
                             aria-label={ oneLink.navigate }>
                             { oneLink.title }
                         </a>
-                        <AngleRightIcon />
-                    </li>
-                )) }
-
-                { current &&
-                    <li className="ins-active">
-                        <span>{ current }</span>
-                    </li>
-                }
-            </ol>
-        }
-    </React.Fragment>
-);
+                    </BreadcrumbItem>
+                )
+                ) }
+            { current && <BreadcrumbItem isActive> { current } </BreadcrumbItem> }
+        </Breadcrumb>
+    );
+};
 
 Breadcrumbs.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
@@ -40,7 +35,8 @@ Breadcrumbs.propTypes = {
 Breadcrumbs.defaultProps = {
     items: [],
     current: null,
-    onNavigate: Function.prototype
+    onNavigate: Function.prototype,
+    className: ''
 };
 
 export default Breadcrumbs;
