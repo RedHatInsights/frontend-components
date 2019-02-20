@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Pagination, dropDirection } from '../../PresentationalComponents/Pagination';
+import { entitiesLoading } from '../../redux/actions/inventory';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { InventoryContext } from './Inventory';
@@ -14,11 +15,21 @@ class ContextFooterPagination extends Component {
             page: undefined
         };
 
-        this.changePage = debounce((pagination) => this.props.onRefreshData(pagination), 800);
+        this.changePage = debounce((pagination) => this.updatePagination(pagination), 800);
+    }
+
+    updatePagination = (pagination) => {
+        const { onRefreshData, onRefresh, dataLoading } = this.props;
+        if (onRefresh) {
+            dataLoading();
+            onRefresh(pagination);
+        } else {
+            onRefreshData(pagination);
+        }
     }
 
     onSetPage = (page, debounce) => {
-        const { perPage, filters, onRefreshData } = this.props;
+        const { perPage, filters } = this.props;
         // eslint-disable-next-line camelcase
         const pagination = { page, per_page: perPage, filters };
         if (debounce) {
@@ -27,7 +38,7 @@ class ContextFooterPagination extends Component {
                 page
             });
         } else {
-            onRefreshData(pagination);
+            this.updatePagination(pagination);
             this.setState({
                 page: undefined
             });
@@ -35,9 +46,9 @@ class ContextFooterPagination extends Component {
     }
 
     onPerPageSelect = (perPage) => {
-        const { page, filters, onRefreshData } = this.props;
+        const { page, filters } = this.props;
         // eslint-disable-next-line camelcase
-        onRefreshData({ page, per_page: perPage, filters });
+        this.updatePagination({ page, per_page: perPage, filters });
     }
 
     render() {
@@ -72,7 +83,8 @@ const FooterPagination = ({ ...props }) => (
 const propTypes = {
     perPage: PropTypes.number,
     total: PropTypes.number,
-    loaded: PropTypes.bool
+    loaded: PropTypes.bool,
+    onRefresh: PropTypes.func
 };
 
 ContextFooterPagination.propTypes = {
@@ -88,14 +100,23 @@ FooterPagination.defaultProps = {
     onRefreshData: () => undefined
 };
 
-function stateToProps({ entities: { page, perPage, total, loaded, activeFilters }}, { totalItems }) {
+function stateToProps(
+    { entities: { page, perPage, total, loaded, activeFilters }},
+    { totalItems, page: currPage, perPage: currPerPage })
+{
     return {
-        page,
-        perPage,
+        page: currPage || page,
+        perPage: currPerPage || perPage,
         total: totalItems || total,
         loaded,
         filters: activeFilters
     };
 }
 
-export default connect(stateToProps, null)(FooterPagination);
+function dispatchToProps(dispatch) {
+    return {
+        dataLoading: () => dispatch(entitiesLoading())
+    };
+}
+
+export default connect(stateToProps, dispatchToProps)(FooterPagination);

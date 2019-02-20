@@ -6,7 +6,8 @@ import {
     APPLICATION_SELECTED,
     SHOW_ENTITIES,
     FILTER_SELECT,
-    UPDATE_ENTITIES
+    UPDATE_ENTITIES,
+    ENTITIES_LOADING
 } from '../action-types';
 import { getEntities } from '../../api/inventory';
 
@@ -60,5 +61,9 @@ export const filterEntities = (key, filterString) => ({
 export const detailSelect = (appName) => ({
     type: APPLICATION_SELECTED,
     payload: { appName }
+});
 
+export const entitiesLoading = (isLoading = true) => ({
+    type: ENTITIES_LOADING,
+    payload: { isLoading }
 });

@@ -44,6 +44,13 @@ class ContextInventoryList extends React.Component {
         this.loadEntities();
     }
 
+    componentDidUpdate(prevProps) {
+        const { items } = this.props;
+        if (items && items.length !== 0 && JSON.stringify(items) !== JSON.stringify(prevProps.items)) {
+            this.loadEntities({}, false);
+        }
+    }
+
     render() {
         const { showHealth, ...props } = this.props;
         return (
@@ -131,6 +138,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-    ({ entities: { page, perPage }}) => ({ page, perPage }),
+    ({ entities: { page, perPage }}, { perPage: currPerPage }) => ({ page, perPage: currPerPage || perPage }),
     mapDispatchToProps
 )(InventoryList);

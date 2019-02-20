@@ -4,7 +4,8 @@ import {
     CHANGE_SORT,
     SHOW_ENTITIES,
     FILTER_SELECT,
-    UPDATE_ENTITIES
+    UPDATE_ENTITIES,
+    ENTITIES_LOADING
 } from '../../action-types';
 import { mergeArraysByKey } from '../../../Utilities/helpers';
 import { SortDirection } from '../../../PresentationalComponents/Table';
@@ -102,5 +103,6 @@ export default {
     }),
     [FILTER_SELECT]: selectFilter,
     [SELECT_ENTITY]: selectEntity,
-    [CHANGE_SORT]: changeSort
+    [CHANGE_SORT]: changeSort,
+    [ENTITIES_LOADING]: (state, { payload: { isLoading }}) => ({ ...state, loaded: !isLoading })
 };

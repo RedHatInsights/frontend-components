@@ -387,7 +387,57 @@ class SomeCmp extends React.Component {
     render() {
         const { InventoryCmp, items } = this.state;
         return (
-            <InventoryCmp items={items} ref={this.inventory} />
+            <InventoryCmp items={items} ref={this.inventory} onRefresh={this.onRefresh} />
+        )
+    }
+}
+```
+
+### Application pagination
+```JSX
+import React from 'react';
+import * as reactRouterDom from 'react-router-dom';
+import * as reactCore from '@patternfly/react-core';
+import * as reactIcons from '@patternfly/react-icons';
+import { PaginationRow } from 'patternfly-react';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+
+@registryDecorator()
+class SomeCmp extends React.Component {
+    constructor(props, ctx) {
+        // ..
+        // initial data can be static or from server
+        this.state = {
+            // ..
+            InventoryCmp: () => <div>Loading...</div>,
+            page: 1,
+            perPage: 25
+        }
+    }
+
+    async fetchInventory() {
+        // ..
+    }
+
+    onRefresh = (options) => {
+        // This will be called when user clicks on pagination
+        // Do something with these information
+        fetch(`/some/endpoint?page=${options.page}&count=${options.perPage}`).then(data => {
+            data.json().then(({ items, meta }) => {
+                this.setState({
+                    items,
+                    total: meta.total,
+                    page: meta.page,
+                    perPage: meta.count
+                });
+            });
+        });
+    }
+
+    render() {
+        const { InventoryCmp, items, page, perPage, total } = this.state;
+        return (
+            <InventoryCmp items={items} onRefresh={this.onRefresh} page={page} perPage={perPage} total={total} />
         )
     }
 }

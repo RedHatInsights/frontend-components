@@ -27,7 +27,18 @@ class InventoryTable extends Component {
     }
 
     render() {
-        const { items, pathPrefix = 0, filters, apiBase, showHealth, onRefresh, ...props } = this.props;
+        const {
+            items,
+            pathPrefix = 0,
+            filters,
+            apiBase,
+            showHealth,
+            onRefresh,
+            page,
+            perPage,
+            total,
+            ...props
+        } = this.props;
         return (
             <InventoryContext.Provider value={ {
                 onRefreshData: this.state.onRefreshData,
@@ -42,7 +53,7 @@ class InventoryTable extends Component {
                 <Card>
                     <CardHeader>
                         <Filter { ...props }
-                            totalItems={ items && items.length }
+                            totalItems={ total || (items && items.length) }
                             hasItems={ items && items.length !== 0 }
                             filters={ filters }
                             pathPrefix={ pathPrefix }
@@ -56,11 +67,17 @@ class InventoryTable extends Component {
                             items={ items }
                             pathPrefix={ pathPrefix }
                             apiBase={ apiBase }
+                            perPage={ perPage }
                             showHealth={ showHealth }
                         />
                     </CardBody>
                     <CardFooter>
-                        <Pagination totalItems={ items && items.length } />
+                        <Pagination
+                            totalItems={ total || (items && items.length) }
+                            page={ page }
+                            onRefresh={ onRefresh }
+                            perPage={ perPage }
+                        />
                     </CardFooter>
                 </Card>
             </InventoryContext.Provider>
