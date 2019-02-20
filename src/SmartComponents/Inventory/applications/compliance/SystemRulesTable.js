@@ -112,21 +112,14 @@ class SystemRulesTable extends React.Component {
         return window.insights.chrome.auth.getUser()
         .then(() => {
             return remediationsApi.getResolutionsBatch(ruleIds)
-            .then((response) => {
-                if (!response.ok) {
-                    // If remediations doesn't respond, inject no fix available
-                    return {};
-                }
-
-                return response.json();
-            });
-        }).then(response => newRows.map(({ cells, ...row }) => ({
-            ...row,
-            cells: [
-                ...cells,
-                ...this.isParent(row, cells) ? [ this.remediationAvailable(response[`compliance:${refIds[cells[0]]}`]) ] : []
-            ]
-        })));
+            .then(response => newRows.map(({ cells, ...row }) => ({
+                ...row,
+                cells: [
+                    ...cells,
+                    ...this.isParent(row, cells) ? [ this.remediationAvailable(response[`compliance:${refIds[cells[0]]}`]) ] : []
+                ]
+            })));
+        });
     }
 
     selectAll = (rows, selected) => {
