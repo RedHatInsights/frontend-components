@@ -1,10 +1,12 @@
-$fa-font-path:   "~font-awesome-sass/assets/fonts/font-awesome/";
-@import "~font-awesome-sass/assets/stylesheets/font-awesome";
+@import '~@patternfly/patternfly-next/components/Pagination/pagination.scss';
+@import '~@patternfly/patternfly-next/components/OptionsMenu/options-menu.scss';
 
-.special-patternfly {
-   $font-path: '~patternfly/dist/fonts/';
-   $img-path: '~patternfly/dist/img/';
-   $icon-font-path: '~patternfly/dist/fonts/';
-   @import '~patternfly/dist/sass/_patternfly.scss';
-   @import '~patternfly-react/dist/sass/_patternfly-react.scss';
+.ins-c-pagination-next .pf-c-options-menu {
+    .pf-c-dropdown__menu .pf-c-dropdown__menu-item {
+        display: flex;
+
+        .pf-c-options-menu__menu-item-icon {
+            padding-left: 0;
+        }
+    }
 }

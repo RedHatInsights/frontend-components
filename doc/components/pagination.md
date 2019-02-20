@@ -62,6 +62,9 @@ class SomeCmp extends Component {
 }
 ```
 
+### PF-next pagination
+If you do not like the look and feel of PF3 pagination you can use new pagination by passing `useNext` prop. 
+
 ### Props
 This component is using paginationRow props and adds these on top of them
 ```Javascript

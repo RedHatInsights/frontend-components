@@ -47,58 +47,74 @@ describe('Pagination component', () => {
             it('first page', () => {
                 const onSetPage = jest.fn();
                 const wrapper = mount(<Pagination numberOfItems={30} onSetPage={onSetPage} page={2} />);
-                wrapper.find('.pagination-pf-back a[title="First Page"]').first().simulate('click');
+                wrapper.find('[data-action="first-page"]').first().simulate('click');
                 expect(onSetPage.mock.calls[0][0]).toBe(1);
+                expect(onSetPage.mock.calls[0][1]).toBe(false);
             });
 
             it('last page', () => {
                 const onSetPage = jest.fn();
                 const wrapper = mount(<Pagination numberOfItems={30} onSetPage={onSetPage} page={2} />);
-                wrapper.find('.pagination-pf-forward a[title="Last Page"]').first().simulate('click');
+                wrapper.find('[data-action="last-page"]').first().simulate('click');
                 expect(onSetPage.mock.calls[0][0]).toBe(3);
+                expect(onSetPage.mock.calls[0][1]).toBe(false);
             });
 
             it('previous page', () => {
                 const onSetPage = jest.fn();
                 const wrapper = mount(<Pagination numberOfItems={30} onSetPage={onSetPage} page={2} />);
-                wrapper.find('.pagination-pf-back a[title="Previous Page"]').first().simulate('click');
+                wrapper.find('[data-action="previous-page"]').first().simulate('click');
                 expect(onSetPage.mock.calls[0][0]).toBe(1);
+                expect(onSetPage.mock.calls[0][1]).toBe(false);
             });
 
             it('next page', () => {
                 const onSetPage = jest.fn();
                 const wrapper = mount(<Pagination numberOfItems={30} onSetPage={onSetPage} page={2} />);
-                wrapper.find('.pagination-pf-forward a[title="Next Page"]').first().simulate('click');
+                wrapper.find('[data-action="next-page"]').first().simulate('click');
                 expect(onSetPage.mock.calls[0][0]).toBe(3);
+                expect(onSetPage.mock.calls[0][1]).toBe(false);
             });
 
             describe('input', () => {
                 it('number', () => {
                     const onSetPage = jest.fn();
-                    const wrapper = mount(<Pagination numberOfItems={30} onSetPage={onSetPage} page={2} />);
-                    wrapper.find('input.pagination-pf-page').first().simulate('change', { target: { value: '1' } });
+                    const wrapper = mount(<Pagination numberOfItems={30} onSetPage={onSetPage} page={3} />);
+                    const input = wrapper.find('input[data-action="set-page"]').first();
+                    input.getDOMNode().value = 1;
+                    input.simulate('change');
                     expect(onSetPage.mock.calls[0][0]).toBe(1);
+                    expect(onSetPage.mock.calls[0][1]).toBe(true);
                 });
 
                 it('large', () => {
                     const onSetPage = jest.fn();
                     const wrapper = mount(<Pagination numberOfItems={30} onSetPage={onSetPage} page={2} />);
-                    wrapper.find('input.pagination-pf-page').first().simulate('change', { target: { value: '150' } });
+                    const input = wrapper.find('input[data-action="set-page"]').first();
+                    input.getDOMNode().value = 150;
+                    input.simulate('change');
                     expect(onSetPage.mock.calls[0][0]).toBe(3);
+                    expect(onSetPage.mock.calls[0][1]).toBe(true);
                 });
 
                 it('string', () => {
                     const onSetPage = jest.fn();
                     const wrapper = mount(<Pagination numberOfItems={30} onSetPage={onSetPage} page={2} />);
-                    wrapper.find('input.pagination-pf-page').first().simulate('change', { target: { value: 'bad' } });
+                    const input = wrapper.find('input[data-action="set-page"]').first();
+                    input.getDOMNode().value = 'bad';
+                    input.simulate('change');
                     expect(onSetPage.mock.calls[0][0]).toBe(2);
+                    expect(onSetPage.mock.calls[0][1]).toBe(true);
                 });
 
                 it('negative page', () => {
                     const onSetPage = jest.fn();
                     const wrapper = mount(<Pagination numberOfItems={30} onSetPage={onSetPage} page={2} />);
-                    wrapper.find('input.pagination-pf-page').first().simulate('change', { target: { value: '-1' } });
+                    const input = wrapper.find('input[data-action="set-page"]').first();
+                    input.getDOMNode().value = -1;
+                    input.simulate('change');
                     expect(onSetPage.mock.calls[0][0]).toBe(0);
+                    expect(onSetPage.mock.calls[0][1]).toBe(true);
                 });
             });
         });
@@ -106,7 +122,9 @@ describe('Pagination component', () => {
         it('onPerPageSelect', () => {
             const onPerPageSelect = jest.fn();
             const wrapper = mount(<Pagination numberOfItems={30} onPerPageSelect={onPerPageSelect} />);
-            wrapper.find('[aria-labelledby="pagination-row-dropdown"] li a').at(2).simulate('click');
+            wrapper.find('.pf-c-options-menu__toggle-button').first().simulate('click');
+            wrapper.update();
+            wrapper.find('.pf-c-options-menu__toggle ul li button').at(2).simulate('click');
             expect(onPerPageSelect.mock.calls.length).toBe(1);
             expect(onPerPageSelect.mock.calls[0][0]).toBe(20);
         });
@@ -114,28 +132,28 @@ describe('Pagination component', () => {
         it('onFirstPage', () => {
             const onFirstPage = jest.fn();
             const wrapper = mount(<Pagination numberOfItems={30} onFirstPage={onFirstPage} page={2}/>);
-            wrapper.find('.pagination-pf-back a[title="First Page"]').first().simulate('click');
+            wrapper.find('[data-action="first-page"]').first().simulate('click');
             expect(onFirstPage.mock.calls.length).toBe(1);
         });
 
         it('onLastPage', () => {
             const onLastPage = jest.fn();
             const wrapper = mount(<Pagination numberOfItems={30} onLastPage={onLastPage} />);
-            wrapper.find('.pagination-pf-forward a[title="Last Page"]').first().simulate('click');
+            wrapper.find('[data-action="last-page"]').first().simulate('click');
             expect(onLastPage.mock.calls.length).toBe(1);
         });
 
         it('onPreviousPage', () => {
             const onPreviousPage = jest.fn();
             const wrapper = mount(<Pagination numberOfItems={30} onPreviousPage={onPreviousPage} page={2} />);
-            wrapper.find('.pagination-pf-back a[title="Previous Page"]').first().simulate('click');
+            wrapper.find('[data-action="previous-page"]').first().simulate('click');
             expect(onPreviousPage.mock.calls.length).toBe(1);
         });
 
         it('onNextPage', () => {
             const onNextPage = jest.fn();
             const wrapper = mount(<Pagination numberOfItems={30} onNextPage={onNextPage} page={2} />);
-            wrapper.find('.pagination-pf-forward a[title="Next Page"]').first().simulate('click');
+            wrapper.find('[data-action="next-page"]').first().simulate('click');
             expect(onNextPage.mock.calls.length).toBe(1);
         });
     });
