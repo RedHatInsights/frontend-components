@@ -318,7 +318,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             onClick={[Function]}
           >
             <DropdownItem
-              className="pf-c-dropdown__menu-item"
+              className=""
               component="button"
               context={
                 Object {
@@ -363,7 +363,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             onClick={[Function]}
           >
             <DropdownItem
-              className="pf-c-dropdown__menu-item"
+              className=""
               component="button"
               context={
                 Object {
@@ -407,7 +407,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             key=".$extra-1"
           >
             <DropdownItem
-              className="pf-c-dropdown__menu-item"
+              className=""
               component="button"
               context={
                 Object {

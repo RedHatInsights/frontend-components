@@ -2,7 +2,7 @@
 
 exports[`Breadcrumbs component should render correctly no current 1`] = `
 <Breadcrumb
-  aria-label="breadcrumb"
+  aria-label="Breadcrumb"
   className="ins-c-breadcrumbs"
 >
   <BreadcrumbItem
@@ -44,7 +44,7 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
 
 exports[`Breadcrumbs component should render correctly no items 1`] = `
 <Breadcrumb
-  aria-label="breadcrumb"
+  aria-label="Breadcrumb"
   className="ins-c-breadcrumbs"
 >
   <BreadcrumbItem
@@ -63,7 +63,7 @@ exports[`Breadcrumbs component should render correctly no items 1`] = `
 
 exports[`Breadcrumbs component should render correctly with items and current item 1`] = `
 <Breadcrumb
-  aria-label="breadcrumb"
+  aria-label="Breadcrumb"
   className="ins-c-breadcrumbs"
 >
   <BreadcrumbItem
