@@ -15,7 +15,7 @@
   "dependencies": {
     "@patternfly/react-core": "^1.51.4",
     "@patternfly/react-icons": "^2.8.0",
-    "@patternfly/react-table": "^0.4.18",
+    "@patternfly/react-table": "^1.0.16",
     "abortcontroller-polyfill": "^1.2.1",
     "apollo-boost": "^0.1.23",
     "bootstrap-sass": "^3.3.7",
@@ -30,7 +30,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.1",
     "react-apollo": "^2.3.3",
-    "react-dom": "^16.5.1",
+    "react-dom": "^16.8.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",

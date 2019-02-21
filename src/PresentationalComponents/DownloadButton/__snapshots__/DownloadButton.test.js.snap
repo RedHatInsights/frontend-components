@@ -109,6 +109,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   fill="currentColor"
                   height="1.5em"
                   role="img"
+                  style="vertical-align: -0.1875em;"
                   viewBox="0 0 576 512"
                   width="1.5em"
                 >
@@ -195,6 +196,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     fill="currentColor"
                     height="1.5em"
                     role="img"
+                    style="vertical-align: -0.1875em;"
                     viewBox="0 0 576 512"
                     width="1.5em"
                   >
@@ -274,6 +276,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   fill="currentColor"
                   height="1.5em"
                   role="img"
+                  style={
+                    Object {
+                      "verticalAlign": "-0.1875em",
+                    }
+                  }
                   viewBox="0 0 576 512"
                   width="1.5em"
                 >

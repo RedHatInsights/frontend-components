@@ -83,8 +83,9 @@ class VulnerabilitiesCveTable extends Component {
         const loader = [ ...Array(3) ].map(() => ({
             cells: [{
                 title: <RowLoader />,
-                props: { colSpan: '100%' }
-            }, ...[ ...Array(header.length - 1) ].map(() => ({ title: ' ', props: { style: { display: 'none' }}})) ]
+                props: {
+                    colSpan: header.length - 1 }
+            }]
         }));
         return (
             <Fragment>

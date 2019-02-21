@@ -76,7 +76,7 @@ describe('Wizard component', () => {
         it('should not call onClose X button', () => {
             const onClose = jest.fn();
             const wrapper = mount(<Wizard content={content} title="Some title" isOpen />);
-            wrapper.find('.pf-c-modal-box__close button').first().simulate('click');
+            wrapper.find('[aria-label="Close"]').first().simulate('click');
             expect(onClose.mock.calls.length).toBe(0);
         });
 
@@ -90,7 +90,7 @@ describe('Wizard component', () => {
         it('should call onClose X button', () => {
             const onClose = jest.fn();
             const wrapper = mount(<Wizard content={content} title="Some title" isOpen onClose={onClose}/>);
-            wrapper.find('.pf-c-modal-box__close button').first().simulate('click');
+            wrapper.find('[aria-label="Close"]').first().simulate('click');
             expect(onClose.mock.calls.length).toBe(1);
         });
 
