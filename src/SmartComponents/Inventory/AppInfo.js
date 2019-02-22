@@ -6,14 +6,14 @@ import { CardBody, Card } from '@patternfly/react-core';
 
 class AppInfo extends Component {
     render () {
-        const { activeApps, active } = this.props;
+        const { activeApps, active, loaded } = this.props;
         const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
         return (
             <Fragment>
                 { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>
                     { activeApp.component ? <activeApp.component /> : 'missing component' }
                 </div> }
-                { !activeApp && <Card>
+                { !loaded && <Card>
                     <CardBody>
                         <BulletList />
                     </CardBody>
@@ -29,14 +29,16 @@ AppInfo.propTypes = {
     })),
     active: PropTypes.shape({
         appName: PropTypes.string
-    })
+    }),
+    loaded: PropTypes.bool
 };
 AppInfo.defaultProps = {
     activeApps: [],
     active: {}
 };
 
-export default connect(({ entityDetails: { activeApps, activeApp }}) => ({
+export default connect(({ entityDetails: { activeApps, activeApp, loaded }}) => ({
     activeApps,
-    active: activeApp
+    active: activeApp,
+    loaded
 }))(AppInfo);
