@@ -45,7 +45,7 @@ const PaginationNav = ({
                 min="1"
                 data-action="set-page"
                 max={ amountOfPages }
-                style={ { width: `${lastPage.toString().length}rem` } }
+                style={ { width: `${lastPage.toString().length}rem`, minWidth: '3rem' } }
                 isReadOnly={ amountOfPages === 1 }
                 value={ page }
                 onChange={ (value, event) => {
