@@ -4,7 +4,7 @@
     background: var(--pf-global--Color--light-100);
     border-bottom: 1px solid var(--pf-global--BorderColor--light-200);
     @include rem('padding', 20px);
-    .is-centered {
+    &.is-centered {
         display: flex;
         justify-content: center;
     }
