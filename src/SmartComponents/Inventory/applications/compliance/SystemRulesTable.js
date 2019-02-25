@@ -199,7 +199,12 @@ class SystemRulesTable extends React.Component {
 
     selectedRules = () => {
         const { rows, refIds } = this.state;
-        return rows.filter(row => row.selected).map(row => refIds[row.cells[0]]);
+        return rows.filter(row => row.selected).map(row => ({
+            // We want to match this response with a similar response from GraphQL
+            // eslint-disable-next-line camelcase
+            ref_id: refIds[row.cells[0]],
+            title: row.cells[0] // This is the rule title, the description is too long
+        }));
     }
 
     // This takes both the row and its children (collapsible rows) and puts them into

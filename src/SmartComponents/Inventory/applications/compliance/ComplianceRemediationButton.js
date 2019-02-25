@@ -10,7 +10,8 @@ query FailedRulesForSystem($systemIdsQuery: String!){
     allSystems(search: $systemIdsQuery) {
         id,
         rule_objects_failed {
-            ref_id
+            ref_id,
+            title
         }
     }
 }
@@ -24,19 +25,26 @@ const FailedRulesQuery = graphql(GET_FAILED_RULES, {
 class ComplianceRemediationButton extends React.Component {
     constructor(props) {
         super(props);
-        this.dataProvider = this.dataProvider.bind(this);
     }
 
-    dataProvider() {
+    /* eslint-disable camelcase */
+    formatRule = ({ title, ref_id }, system) => ({
+        id: `compliance:${ref_id}`,
+        description: title,
+        systems: [
+            system
+        ]
+    })
+
+    dataProvider = () => {
         const { allSystems, selectedRules } = this.props;
-        /* eslint-disable camelcase */
         return allSystems.reduce((acc, { id, rule_objects_failed }) => ({
             systems: [ ...acc.systems, id ],
             issues: [
                 ...acc.issues,
                 ...selectedRules ?
-                    selectedRules.map(rule => ({ id: `compliance:${rule}` })) :
-                    rule_objects_failed.map(({ ref_id }) => ({ id: `compliance:${ref_id}` }))
+                    selectedRules.map(rule => this.formatRule(rule, id)) :
+                    rule_objects_failed.map(rule => this.formatRule(rule, id))
             ]
         }), { issues: [], systems: []});
         /* eslint-enable camelcase */
