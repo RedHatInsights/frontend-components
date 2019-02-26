@@ -2,7 +2,7 @@ export {
     default as ReducerRegistry,
     applyReducerHash,
     dispatchActionsToStore,
-    reduxRegistry,
+    reduxRegistry
 } from './Utilities/ReducerRegistry';
 export { default as MiddlewareListener } from './Utilities/MiddlewareListener';
 export { default as registry, getRegistry } from './Utilities/Registry';
@@ -18,6 +18,7 @@ export * from './PresentationalComponents/Table';
 export * from './PresentationalComponents/Dropdown';
 export * from './PresentationalComponents/Battery';
 export * from './PresentationalComponents/Breadcrumbs';
+export * from './PresentationalComponents/Shield';
 export * from './PresentationalComponents/TabLayout';
 export * from './PresentationalComponents/Dark';
 export * from './PresentationalComponents/PageHeader';
