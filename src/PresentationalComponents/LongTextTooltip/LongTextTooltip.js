@@ -33,8 +33,8 @@ class LongTextTooltip extends React.Component {
 LongTextTooltip.defaultProps = {
     content: '',
     maxLength: Infinity,
-    tooltipposition: 'top',
-    tooltipmaxwidth: '50vw'
+    tooltipPosition: 'top',
+    tooltipMaxWidth: '50vw'
 };
 
 LongTextTooltip.propTypes = {

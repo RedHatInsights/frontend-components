@@ -1,6 +1,6 @@
 # Shield
 
-Truncating long text and showing tooltip with full text variant above the truncated snippet.
+Truncating long text by characters number and showing tooltip with full text variant above the truncated snippet.
 
 ## Usage
 
@@ -12,7 +12,7 @@ import { LongTextTooltip } from '@red-hat-insights/insights-frontend-components'
 class YourCmp extends React.Component {
   render() {
     return (
-        <LongTextTooltip content={'Lorem ipsum'} maxLength={250} tooltipPosition={'top'} maxWidth={'50vw'} />
+        <LongTextTooltip content={'Lorem ipsum'} maxLength={200} tooltipPosition={'top'} tooltipMaxWidth={'50vw'} />
     )
   }
 }
