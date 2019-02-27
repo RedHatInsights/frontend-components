@@ -2,6 +2,7 @@
 
 # ide config
 .idea/
+.editorconfig
 
 # dependencies
 node_modules
