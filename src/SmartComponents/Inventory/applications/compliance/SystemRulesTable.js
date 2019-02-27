@@ -330,7 +330,7 @@ class SystemRulesTable extends React.Component {
                                 <Checkbox onChange={ this.hidePassed } label={ 'Hide Passed Rules' } />
                             </LevelItem>
                             <LevelItem>
-                                { rows.length } results
+                                { rows.length / 2 } results
                             </LevelItem>
                             <LevelItem>
                                 <ComplianceRemediationButton selectedRules={ this.selectedRules() } />
