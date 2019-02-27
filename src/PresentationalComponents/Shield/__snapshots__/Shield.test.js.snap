@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shield component should render where impact value is Critical 1`] = `
+<Fragment>
+  <span>
+    <SecurityIcon
+      aria-hidden="false"
+      aria-label="Critical"
+      color="var(--pf-global--danger-color--100)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is Low and title is Hello world 1`] = `
+<Fragment>
+  <span>
+    <SecurityIcon
+      aria-hidden="false"
+      aria-label="Hello world"
+      color="var(--pf-global--Color--200)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is Low and tooltipPrefix is Severity:  1`] = `
+<Fragment>
+  <span>
+    <SecurityIcon
+      aria-hidden="false"
+      aria-label="Severity: Low"
+      color="var(--pf-global--Color--200)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is Medium and tooltipPosition is bottom 1`] = `
+<Fragment>
+  <span>
+    <SecurityIcon
+      aria-hidden="false"
+      aria-label="Medium"
+      color="var(--pf-global--warning-color--100)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is Medium and tooltipPosition is notValid 1`] = `
+<Fragment>
+  <span>
+    <SecurityIcon
+      aria-hidden="false"
+      aria-label="Medium"
+      color="var(--pf-global--warning-color--100)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is NonExist 1`] = `
+<Fragment>
+  <span>
+    <QuestionIcon
+      aria-hidden="false"
+      aria-label="Unknown"
+      color="var(--pf-global--Color--200)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is empty string 1`] = `
+<Fragment>
+  <span>
+    <QuestionIcon
+      aria-hidden="false"
+      aria-label="Unknown"
+      color="var(--pf-global--Color--200)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is undefined 1`] = `
+<Fragment>
+  <span>
+    <QuestionIcon
+      aria-hidden="false"
+      aria-label="Unknown"
+      color="var(--pf-global--Color--200)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where title is Hello world 1`] = `
+<Fragment>
+  <span>
+    <QuestionIcon
+      aria-hidden="false"
+      aria-label="Hello world"
+      color="var(--pf-global--Color--200)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where title is Hello world and hasTooltip is true 1`] = `
+<Fragment>
+  <Tooltip
+    appendTo={[Function]}
+    className={null}
+    content={
+      <div>
+        Hello world
+      </div>
+    }
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    maxWidth="12.5rem"
+    position="top"
+    zIndex={9999}
+  >
+    <QuestionIcon
+      aria-hidden="false"
+      aria-label="Hello world"
+      color="var(--pf-global--Color--200)"
+      size="md"
+      title={null}
+    />
+  </Tooltip>
+</Fragment>
+`;
+
+exports[`Shield component should render without props 1`] = `
+<Fragment>
+  <span>
+    <QuestionIcon
+      aria-hidden="false"
+      aria-label="Unknown"
+      color="var(--pf-global--Color--200)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
