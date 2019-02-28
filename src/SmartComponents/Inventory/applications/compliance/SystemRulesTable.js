@@ -101,7 +101,7 @@ class SystemRulesTable extends React.Component {
 
         const firstIndex = (page - 1) * itemsPerPage * 2;
         const lastIndex = page * itemsPerPage * 2;
-        const newRows = rows.slice(firstIndex, lastIndex).flatMap(({ parent, ...row }) => ({
+        const newRows = flatMap(rows.slice(firstIndex, lastIndex), ({ parent, ...row }) => ({
             ...row,
             ...((parent || parent === 0) ? parent > itemsPerPage ? { parent: parent % (itemsPerPage * 2) } : { parent } : {})
         }));
