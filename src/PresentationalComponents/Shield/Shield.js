@@ -41,6 +41,7 @@ class Shield extends React.Component {
             <React.Fragment>
                 { this.props.hasTooltip === true ? (
                     <Tooltip
+                        { ...this.props }
                         position={ this.props.tooltipPosition }
                         content={ <div>{ this.props.tooltipPrefix + (this.props.title || badge.title) }</div> }
                     >
