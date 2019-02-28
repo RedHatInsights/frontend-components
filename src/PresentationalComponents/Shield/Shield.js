@@ -65,7 +65,10 @@ Shield.defaultProps = {
 };
 
 Shield.propTypes = {
-    impact: propTypes.string,
+    impact: propTypes.oneOfType([
+        propTypes.string,
+        propTypes.number
+    ]),
     hasTooltip: propTypes.bool,
     tooltipPosition: propTypes.string,
     tooltipPrefix: propTypes.string,

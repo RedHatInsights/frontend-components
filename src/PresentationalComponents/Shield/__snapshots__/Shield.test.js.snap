@@ -1,5 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Shield component should render where impact value is 1 1`] = `
+<Fragment>
+  <span>
+    <SecurityIcon
+      aria-hidden="false"
+      aria-label="Low"
+      color="var(--pf-global--Color--200)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is 2 1`] = `
+<Fragment>
+  <span>
+    <SecurityIcon
+      aria-hidden="false"
+      aria-label="Medium"
+      color="var(--pf-global--warning-color--100)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is 3 1`] = `
+<Fragment>
+  <span>
+    <SecurityIcon
+      aria-hidden="false"
+      aria-label="High"
+      color="#ec7a08"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
+exports[`Shield component should render where impact value is 4 1`] = `
+<Fragment>
+  <span>
+    <SecurityIcon
+      aria-hidden="false"
+      aria-label="Critical"
+      color="var(--pf-global--danger-color--100)"
+      size="md"
+      title={null}
+    />
+  </span>
+</Fragment>
+`;
+
 exports[`Shield component should render where impact value is Critical 1`] = `
 <Fragment>
   <span>
