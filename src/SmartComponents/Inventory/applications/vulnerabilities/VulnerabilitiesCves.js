@@ -34,9 +34,8 @@ class VulnerabilitiesCves extends Component {
             fetchResource({ ...this.state, page_size: Number.MAX_SAFE_INTEGER, data_format: format, page: 1 });
         payload && payload.then(({ data: response }) => {
             const data = format === 'json' ? JSON.stringify(response) : response;
-            return downloadFile(data, undefined, format);
-        }
-        );
+            return downloadFile(data, (`vulnerability_cves-${new Date().toISOString()}`), format);
+        });
     }
 
     render() {
