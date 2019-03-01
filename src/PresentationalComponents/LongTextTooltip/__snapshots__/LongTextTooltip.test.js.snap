@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LongTextTooltip component should render 1`] = `
+<LongTextTooltip
+  content=""
+  maxLength={Infinity}
+  tooltipMaxWidth="50vw"
+  tooltipPosition="top"
+>
+  <span />
+</LongTextTooltip>
+`;
+
+exports[`LongTextTooltip component should render content 1`] = `
+<LongTextTooltip
+  content="Lorem Impsum"
+  maxLength={Infinity}
+  tooltipMaxWidth="50vw"
+  tooltipPosition="top"
+>
+  <span>
+    Lorem Impsum
+  </span>
+</LongTextTooltip>
+`;
+
+exports[`LongTextTooltip component should render content tooltip in a different spot with different width 1`] = `
+<LongTextTooltip
+  content="Lorem Impsum"
+  maxLength={Infinity}
+  tooltipMaxWidth="10vw"
+  tooltipPosition="left"
+>
+  <span>
+    Lorem Impsum
+  </span>
+</LongTextTooltip>
+`;
+
+exports[`LongTextTooltip component should render content with maxLength 1`] = `
+<LongTextTooltip
+  content="Lorem Impsum"
+  maxLength={50}
+  tooltipMaxWidth="50vw"
+  tooltipPosition="top"
+>
+  <span>
+    Lorem Impsum
+  </span>
+</LongTextTooltip>
+`;
+
+exports[`LongTextTooltip component should render content with maxLength shorter than content 1`] = `
+<LongTextTooltip
+  content="Lorem Impsum"
+  maxLength={1}
+  tooltipMaxWidth="50vw"
+  tooltipPosition="top"
+>
+  <Tooltip
+    appendTo={[Function]}
+    className={null}
+    content={
+      <div>
+        Lorem Impsum
+      </div>
+    }
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    maxWidth="50vw"
+    position="top"
+    zIndex={9999}
+  >
+    <Tippy
+      animateFill={false}
+      appendTo={[Function]}
+      content={
+        <div
+          className="pf-c-tooltip"
+          role="tooltip"
+        >
+          <TooltipArrow
+            className={null}
+          />
+          <TooltipContent
+            className={null}
+          >
+            <div>
+              Lorem Impsum
+            </div>
+          </TooltipContent>
+        </div>
+      }
+      delay={
+        Array [
+          500,
+          500,
+        ]
+      }
+      distance={15}
+      flip={true}
+      lazy={true}
+      maxWidth="50vw"
+      onCreate={[Function]}
+      performance={true}
+      placement="top"
+      popperOptions={
+        Object {
+          "modifiers": Object {
+            "hide": Object {
+              "enabled": true,
+            },
+            "preventOverflow": Object {
+              "enabled": true,
+            },
+          },
+        }
+      }
+      theme="pf-tippy"
+      zIndex={9999}
+    >
+      <div>
+        …
+      </div>
+      <Portal
+        containerInfo={
+          <div>
+            <div
+              class="pf-c-tooltip"
+              role="tooltip"
+            >
+              <div
+                class="pf-c-tooltip__arrow"
+              />
+              <div
+                class="pf-c-tooltip__content"
+              >
+                <div>
+                  Lorem Impsum
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      >
+        <div
+          className="pf-c-tooltip"
+          role="tooltip"
+        >
+          <TooltipArrow
+            className={null}
+          >
+            <div
+              className="pf-c-tooltip__arrow"
+            />
+          </TooltipArrow>
+          <TooltipContent
+            className={null}
+          >
+            <div
+              className="pf-c-tooltip__content"
+            >
+              <div>
+                Lorem Impsum
+              </div>
+            </div>
+          </TooltipContent>
+        </div>
+      </Portal>
+    </Tippy>
+  </Tooltip>
+</LongTextTooltip>
+`;
+
+exports[`LongTextTooltip component should render tooltip in a different spot 1`] = `
+<LongTextTooltip
+  content="Lorem Impsum"
+  maxLength={Infinity}
+  tooltipMaxWidth="50vw"
+  tooltipPosition="bottom"
+>
+  <span>
+    Lorem Impsum
+  </span>
+</LongTextTooltip>
+`;
+
+exports[`LongTextTooltip component should render tooltip in a different spot 2`] = `
+<LongTextTooltip
+  content="Lorem Impsum"
+  maxLength={Infinity}
+  tooltipMaxWidth="50vw"
+  tooltipPosition="left"
+>
+  <span>
+    Lorem Impsum
+  </span>
+</LongTextTooltip>
+`;
+
+exports[`LongTextTooltip component should render tooltip in a different spot 3`] = `
+<LongTextTooltip
+  content="Lorem Impsum"
+  maxLength={Infinity}
+  tooltipMaxWidth="50vw"
+  tooltipPosition="right"
+>
+  <span>
+    Lorem Impsum
+  </span>
+</LongTextTooltip>
+`;

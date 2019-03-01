@@ -1,4 +1,4 @@
-# Shield
+# LongTextTooltip
 
 Truncating long text by characters number and showing tooltip with full text variant above the truncated snippet.
 
