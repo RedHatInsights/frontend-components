@@ -348,7 +348,7 @@ class SystemRulesTable extends React.Component {
                         <TableBody />
                     </Table>
                     <Pagination
-                        numberOfItems={ rows.length }
+                        numberOfItems={ rows.length / 2 }
                         onPerPageSelect={ this.setPerPage }
                         page={ page }
                         onSetPage={ this.setPage }
