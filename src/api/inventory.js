@@ -23,7 +23,7 @@ export const mapData = ({ facts = {}, ...oneResult }) => ({
 });
 
 function buildQuery({ per_page, page, filters }) {
-    const allowedFilters = [ 'display_name', 'fqdn' ];
+    const allowedFilters = [ 'hostname_or_id', 'fqdn' ];
     let query = [];
     const makeValue = (item, keyValue, keyFilter) => (
         allowedFilters.find(allowed => allowed === item[keyValue]) && `${item[keyValue]}=${item[keyFilter]}`

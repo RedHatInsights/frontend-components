@@ -88,7 +88,7 @@ class ContextFilter extends Component {
 
     filterEntities = debounce((value, selected) => {
         const { columns } = this.props;
-        const filteredColumns = columns.filter(column => !column.isTime);
+        const filteredColumns = columns.filter(column => !column.isTime).map(this.textualFilter);
         if (!selected) {
             selected = filteredColumns && filteredColumns.length > 0 ? {
                 ...filteredColumns[0],
@@ -107,15 +107,22 @@ class ContextFilter extends Component {
         }
     }, 800)
 
+    textualFilter = ({ key, ...column }) => {
+        return {
+            ...column,
+            key: key === 'display_name' ? 'hostname_or_id' : key
+        };
+    }
+
     render() {
-        const { columns, total, children, hasItems } = this.props;
+        const { columns, total, children, hasItems, activeFilters } = this.props;
         const { filterByString, isOpen, filters } = this.state;
-        const filteredColumns = columns && columns.filter(column => !column.isTime);
+        const filteredColumns = columns && columns.filter(column => !column.isTime).map(this.textualFilter);
         const placeholder = filterByString || (filteredColumns && filteredColumns.length > 0 && filteredColumns[0].title);
         return (
             <Grid guttter="sm" className="ins-inventory-filters">
                 {
-                    !hasItems &&
+                    (!hasItems && (total !== 0 || activeFilters.length !== 0)) &&
                     <GridItem span={ 4 } className="ins-inventory-text-filter">
                         <SimpleTableFilter
                             options={
@@ -123,7 +130,7 @@ class ContextFilter extends Component {
                                     title: columns[0].title,
                                     items: columns.map(column => ({
                                         ...column,
-                                        value: column.key
+                                        value: column.key === 'display_name' ? 'hostname_or_id' : column.key
                                     }))
                                 } : undefined
                             }
