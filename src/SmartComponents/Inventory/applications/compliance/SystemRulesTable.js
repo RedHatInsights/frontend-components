@@ -29,6 +29,7 @@ class SystemRulesTable extends React.Component {
             ],
             page: 1,
             itemsPerPage: 10,
+            hidePassedChecked: false,
             rows: [],
             currentRows: [],
             refIds: {},
@@ -38,7 +39,7 @@ class SystemRulesTable extends React.Component {
 
     setInitialCurrentRows() {
         const { itemsPerPage } = this.state;
-        const { profileRules } = this.props;
+        const { hidePassed, profileRules } = this.props;
         const rowsRefIds = this.rulesToRows(profileRules);
         this.currentRows(1, itemsPerPage, rowsRefIds).then((currentRows) => {
             this.setState(() => (
@@ -48,6 +49,9 @@ class SystemRulesTable extends React.Component {
                     refIds: rowsRefIds.refIds
                 }
             ));
+            if (hidePassed) {
+                this.hidePassed(true);
+            }
         });
     }
 
@@ -291,21 +295,23 @@ class SystemRulesTable extends React.Component {
                 this.setState(() => ({
                     currentRows,
                     originalRows: rows,
-                    rows: onlyPassedRows
+                    rows: onlyPassedRows,
+                    hidePassedChecked: checked
                 }));
             });
         } else {
             this.currentRows(page, itemsPerPage, { rows: originalRows, refIds }).then((currentRows) => {
                 this.setState(() => ({
                     currentRows,
-                    rows: originalRows
+                    rows: originalRows,
+                    hidePassedChecked: checked
                 }));
             });
         }
     }
 
     render() {
-        const { sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
+        const { sortBy, hidePassedChecked, rows, currentRows, columns, page, itemsPerPage } = this.state;
         const { loading } = this.props;
         if (loading) {
             return (
@@ -327,7 +333,7 @@ class SystemRulesTable extends React.Component {
                     <TableToolbar>
                         <Level gutter='md'>
                             <LevelItem>
-                                <Checkbox onChange={ this.hidePassed } label={ 'Hide Passed Rules' } />
+                                <Checkbox checked={ hidePassedChecked } onChange={ this.hidePassed } label={ 'Hide Passed Rules' } />
                             </LevelItem>
                             <LevelItem>
                                 { rows.length / 2 } results
@@ -362,7 +368,8 @@ class SystemRulesTable extends React.Component {
 
 SystemRulesTable.propTypes = {
     profileRules: propTypes.array,
-    loading: propTypes.bool
+    loading: propTypes.bool,
+    hidePassed: propTypes.bool
 };
 
 SystemRulesTable.defaultProps = {

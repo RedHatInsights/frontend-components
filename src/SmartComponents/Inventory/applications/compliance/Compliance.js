@@ -38,17 +38,18 @@ query System($systemId: String!){
 }
 `;
 
-const SystemQuery = ({ data, loading }) => (
+const SystemQuery = ({ data, loading, hidePassed }) => (
     <React.Fragment>
         <SystemPolicyCards policies={ data.system && data.system.profiles } loading={ loading } />
         <br/>
         <Card>
             <CardBody>
-                <SystemRulesTable profileRules={ data.system && data.system.profiles.map((profile) => ({
-                    profile: profile.name,
-                    rules: profile.rules
-                })) }
-                loading={ loading }
+                <SystemRulesTable hidePassed={ hidePassed }
+                    profileRules={ data.system && data.system.profiles.map((profile) => ({
+                        profile: profile.name,
+                        rules: profile.rules
+                    })) }
+                    loading={ loading }
                 />
             </CardBody>
         </Card>
@@ -76,14 +77,14 @@ class SystemDetails extends Component {
     }
 
     render() {
-        const { match: { params: { inventoryId }}, client } = this.props;
+        const { match: { params: { inventoryId }}, hidePassed, client } = this.props;
         return (
             <ApolloProvider client={ client }>
                 <Query query={ QUERY } variables={ { systemId: inventoryId } }>
                     { ({ data, error, loading }) => (
                         error ?
                             this.renderError(error) :
-                            <SystemQuery data={ data } error={ error } loading={ loading } />
+                            <SystemQuery hidePassed={ hidePassed } data={ data } error={ error } loading={ loading } />
                     ) }
                 </Query>
             </ApolloProvider>
@@ -97,7 +98,8 @@ SystemDetails.propTypes = {
             inventoryId: propTypes.string
         })
     }),
-    client: propTypes.object
+    client: propTypes.object,
+    hidePassed: propTypes.bool
 };
 
 SystemDetails.defaultProps = {
@@ -116,7 +118,8 @@ SystemQuery.propTypes = {
             profiles: propTypes.array
         })
     }),
-    loading: propTypes.bool
+    loading: propTypes.bool,
+    hidePassed: propTypes.bool
 };
 
 SystemQuery.defaultProps = {
