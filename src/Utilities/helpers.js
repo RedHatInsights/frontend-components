@@ -13,12 +13,12 @@ export function mergeArraysByKey(arrays, key = 'id') {
 
 export function downloadFile(data, filename = `${new Date().toISOString()}`, format = CSV_TYPE) {
     const type = format === 'json' ? JSON_TYPE : CSV_TYPE;
-    const blob = new Blob([data], { type });
+    const blob = new Blob([ data ], { type });
     const link = document.createElement('a');
     link.setAttribute('href', URL.createObjectURL(blob));
     link.setAttribute('download', `${filename}.${format}`);
     link.style.visibility = 'hidden';
-    document.body.appendChild(link)
+    document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 }
@@ -28,14 +28,20 @@ export function parseCvssScore(cvssV2, cvssV3) {
         (cvssV3 && parseFloat(cvssV3).toFixed(1)) ||
         (cvssV2 && `${parseFloat(cvssV2).toFixed(1)} (v2)`) ||
         'N/A'
-    )
+    );
+}
+
+export function processDate(dateString) {
+    const date = new Date(dateString);
+    const dateFormat = require('dateformat');
+    return (date instanceof Date && !isNaN(date) && dateFormat(date, 'dd mmm yyyy')) || 'N/A';
 }
 
 export const RowLoader = props => (
     <ContentLoader
-        height={20}
-        width={480}
-        {...props}
+        height={ 20 }
+        width={ 480 }
+        { ...props }
     >
         <rect x="30" y="0" rx="3" ry="3" width="250" height="7" />
         <rect x="300" y="0" rx="3" ry="3" width="70" height="7" />

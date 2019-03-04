@@ -1,3 +1,5 @@
+@import '../../../../Utilities/mixins';
+
 .ins-active-app-vulnerabilities {
     padding-top: 2em;
 }
@@ -28,9 +30,14 @@
 #download-report {
   cursor: pointer;
 }
+
 .number-of-results {
   display: inline-block;
   min-width: 55px;
   text-align: right;
   margin-right: 5px;
+}
+
+.table-header-icon {
+  @include rem('margin-right', 5px);
 }

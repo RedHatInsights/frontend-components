@@ -9,14 +9,6 @@ import { RowLoader } from '../../../../Utilities/helpers';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
 
 class VulnerabilitiesCveTable extends Component {
-    handleRedirect = key => {
-        const cve = key.name.title;
-        if (location.href.indexOf('vulnerability') !== -1) {
-            this.props.history.push('/cves/' + cve);
-        } else {
-            location.href = `${document.baseURI}platform/vulnerability/cves/${cve}`;
-        }
-    };
 
     changePage = page => this.props.apply({ page });
 
@@ -84,7 +76,7 @@ class VulnerabilitiesCveTable extends Component {
             cells: [{
                 title: <RowLoader />,
                 props: {
-                    colSpan: header.length - 1 }
+                    colSpan: header.length }
             }]
         }));
         return (
@@ -98,7 +90,7 @@ class VulnerabilitiesCveTable extends Component {
                     onSort={ this.sortColumn }
                 >
                     <TableHeader />
-                    <TableBody onRowClick={ (_event, key) => this.handleRedirect(key) }/>
+                    <TableBody/>
                 </Table>
                 { this.createPagination() }
                 { !cves.isLoading && cves.data.length === 0 && this.noCves() }

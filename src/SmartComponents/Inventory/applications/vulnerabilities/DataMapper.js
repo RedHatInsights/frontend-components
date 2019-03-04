@@ -1,15 +1,8 @@
 import React from 'react';
-import { SecurityIcon } from '@patternfly/react-icons';
-import { parseCvssScore } from '../../../../Utilities/helpers';
-
-const colorToImpact = {
-    High: 'var(--pf-global--danger-color--100)',
-    Important: 'var(--pf-global--danger-color--100)',
-    Medium: 'var(--pf-global--warning-color--100)',
-    Moderate: 'var(--pf-global--warning-color--100)',
-    Critical: 'var(--pf-global--danger-color--100)',
-    Low: 'var(--pf-global--BackgroundColor--disabled)'
-};
+import { Shield } from '../../../../PresentationalComponents/Shield';
+import { LongTextTooltip } from '../../../../PresentationalComponents/LongTextTooltip';
+import { parseCvssScore, processDate } from '../../../../Utilities/helpers';
+import { Link } from 'react-router-dom';
 
 export function createCveListBySystem({ isLoading, ...rest }) {
     if (!isLoading) {
@@ -18,13 +11,21 @@ export function createCveListBySystem({ isLoading, ...rest }) {
             data: data.map(row => ({
                 id: row.id,
                 cells: [
-                    <span key={ row.id }>
-                        <SecurityIcon size="md" color={ colorToImpact[row.attributes.impact] } />
-                    </span>,
-                    row.attributes.synopsis,
-                    <span key={ `title-${row.id}` } title={ row.attributes.description }>{ row.attributes.description.substr(0, 199) }...</span>,
+                    <Shield
+                        impact={ row.attributes.impact }
+                        hasTooltip={ true }
+                        tooltipPosition={ 'right' }
+                        key={ row.id.toString() }
+                    />,
+                    <span key={ row.id }>{ handleCVELink(row.attributes.synopsis) }</span>,
+                    <LongTextTooltip
+                        content={ row.attributes.description }
+                        tooltipMaxWidth={ '50vw' }
+                        entryDelay="1200"
+                        key={ row.id.toString() }
+                    />,
                     parseCvssScore(row.attributes.cvss2_score, row.attributes.cvss3_score),
-                    new Date(row.attributes.public_date).toLocaleString()
+                    processDate(row.attributes.public_date)
                 ]
             })),
             meta,
@@ -33,4 +34,13 @@ export function createCveListBySystem({ isLoading, ...rest }) {
     }
 
     return { data: [], meta: (rest.payload && rest.payload.meta) || {}, isLoading };
+}
+
+function handleCVELink(synopsis) {
+
+    if (location.href.indexOf('vulnerability') !== -1) {
+        return <Link to={ '/cves/' + synopsis }>{ synopsis }</Link>;
+    } else {
+        return <a href={ `${document.baseURI}platform/vulnerability/cves/${synopsis}` }>{ synopsis }</a>;
+    }
 }
