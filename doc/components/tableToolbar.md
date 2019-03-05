@@ -1,6 +1,6 @@
 # Table Toolbar
 
-Implementation of 'table toolbar' that can contain table actions
+Implementation of 'table toolbar' that can contain table actions. Simply a styled wrapper for Patternfly's Toolbar component
 
 ## Usage
 
@@ -8,13 +8,19 @@ Import TableToolbar and styles from this package.
 
 ```JSX
 import React from 'react';
-import { TableToolbar } from '@redhat-insights/insights-frontent-components/';
+import { TableToolbar } from '@redhat-insights/insights-frontent-components';
+import { ToolbarItem } from '@patternfly/react-core';
+
 
 class YourCmp extends React.Component {
   render() {
     return (
         <TableToolbar>
-            // Whatever content you want inside the toolbar (search, buttons, etc)
+            // Whatever content you want inside the toolbar (search, buttons, etc) can go in ToolbarItem
+            <ToolbarGroup>
+              <ToolbarItem> Foo </ToolbarItem>
+              <ToolbarItem> Bar </ToolbarItem>
+            </ToolbarGroup>
         </TableToolbar>
         <Table>
             // Table content

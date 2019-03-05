@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
-
+import { Toolbar } from '@patternfly/react-core';
 import classNames from 'classnames';
 
 import './TableToolbar.scss';
@@ -22,7 +22,7 @@ const TableToolbar = ({ results, className, children, ...props }) => {
 
     return (
         <Fragment>
-            <div className={ tableToolbarClasses } { ...props }> { children }</div>
+            <Toolbar className={ tableToolbarClasses } { ...props }> { children }</Toolbar>
             {
                 results >= 0 &&
                 <div className='ins-c-table__toolbar-results'>
