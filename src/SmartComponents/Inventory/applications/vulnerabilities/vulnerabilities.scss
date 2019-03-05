@@ -1,7 +1,7 @@
 @import '../../../../Utilities/mixins';
 
 .ins-active-app-vulnerabilities {
-    padding-top: 2em;
+  padding-top: 2em;
 }
 
 .cvetable-toolbar {
@@ -40,4 +40,26 @@
 
 .table-header-icon {
   @include rem('margin-right', 5px);
+}
+
+.status-dropdown-column {
+  padding: var(--pf-global--spacer--sm);
+  display: flex;
+  align-items: center;
+  border: transparent thin solid;
+  position: relative;
+  &:hover {
+    background-color: var(--pf-global--active-color--200);
+    border-color: var(--pf-global--BorderColor--light);
+    cursor: pointer;
+    > svg {
+      visibility: visible;
+    }
+  }
+  > svg {
+    visibility: hidden;
+    position: absolute;
+    top: var(--pf-global--spacer--sm);
+    right: var(--pf-global--spacer--sm);
+  }
 }

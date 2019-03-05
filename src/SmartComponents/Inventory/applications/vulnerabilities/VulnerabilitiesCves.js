@@ -6,10 +6,12 @@ import { connect } from 'react-redux';
 import VulnerabilitiesCveTable from './VulnerabilitiesCveTable';
 import VulnerabilitiesCveTableToolbar from './VulnerabilitiesCveTableToolbar';
 import { downloadFile } from '../../../../Utilities/helpers';
+import StatusDropdown from './StatusDropdown';
 
 class VulnerabilitiesCves extends Component {
     componentDidMount() {
         const { defaultSort: sort } = this.props;
+        StatusDropdown.setCallback(this.sendRequest);
         this.apply(sort && { sort });
     }
 

@@ -12,16 +12,13 @@ import './vulnerabilities.scss';
 const cvssBaseDescription = 'All CVEs use Common Vulnerability Scoring System v3 except where noted.';
 
 const header = [
-    { title: '', key: 'impact', transforms: [ sortable, cellWidth(10) ]},
+    { title: '', key: 'impact', transforms: [ sortable ]},
     { title: 'Name', key: 'synopsis', transforms: [ sortable, cellWidth(10) ]},
-    { title: 'Description', key: 'description', transforms: [ cellWidth('max') ]},
+    { title: 'Description', key: 'description', transforms: [ cellWidth(50) ]},
     {
         title: (
             <React.Fragment>
-                <Tooltip
-                    position="top"
-                    content={ <div>{ cvssBaseDescription }</div> }
-                >
+                <Tooltip position="top" content={ <div>{ cvssBaseDescription }</div> }>
                     <InfoCircleIcon className={ 'table-header-icon' } arial-label={ cvssBaseDescription } aria-hidden="false" />
                 </Tooltip>
                 { 'CVSS Base ' }
@@ -30,6 +27,7 @@ const header = [
         key: 'cvss_score',
         transforms: [ sortable, cellWidth(10) ]
     },
+    { title: 'Status', key: 'status', transforms: [ sortable, cellWidth(10) ]},
     { title: 'Publish Date', key: 'public_date', transforms: [ sortable, cellWidth(10) ]}
 ];
 
@@ -42,7 +40,7 @@ class VulnerabilitiesDetail extends Component {
                     <VulnerabilitiesCves
                         header={ header }
                         fetchResource={ params => fetchCveListBySystem({ ...params, system: entity.id }) }
-                        dataMapper={ createCveListBySystem }
+                        dataMapper={ params => createCveListBySystem({ ...params, systemId: entity.id }) }
                         showAllCheckbox={ false }
                         showRemediationButton={ true }
                         defaultSort='-public_date'
@@ -68,9 +66,8 @@ function mapStateToProps({ entityDetails: { entity }}) {
     };
 }
 
-;
-
 export default connect(
     mapStateToProps,
     null
 )(VulnerabilitiesDetail);
+

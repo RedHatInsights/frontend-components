@@ -3,10 +3,13 @@ import { Shield } from '../../../../PresentationalComponents/Shield';
 import { LongTextTooltip } from '../../../../PresentationalComponents/LongTextTooltip';
 import { parseCvssScore, processDate } from '../../../../Utilities/helpers';
 import { Link } from 'react-router-dom';
+import StatusDropdown from './StatusDropdown';
 
-export function createCveListBySystem({ isLoading, ...rest }) {
+export function createCveListBySystem({ isLoading, systemId, ...rest }) {
     if (!isLoading) {
-        const { payload: { data, meta }} = rest;
+        const {
+            payload: { data, meta }
+        } = rest;
         return {
             data: data.map(row => ({
                 id: row.id,
@@ -25,6 +28,14 @@ export function createCveListBySystem({ isLoading, ...rest }) {
                         key={ row.id.toString() }
                     />,
                     parseCvssScore(row.attributes.cvss2_score, row.attributes.cvss3_score),
+                    <span key={ row.attributes.synopsis }>
+                        <StatusDropdown
+                            currentStatusName={ row.attributes.status }
+                            systemId={ systemId }
+                            currentStatusId={ row.attributes.status_id }
+                            cveName={ row.attributes.synopsis }
+                        />
+                    </span>,
                     processDate(row.attributes.public_date)
                 ]
             })),

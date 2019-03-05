@@ -21,7 +21,8 @@ export function getCveListBySystem({
         filter && { filter },
         dataFormat && { data_format: dataFormat },
         sort && { sort }
-    ].reduce((acc, curr) => ([ ...acc, curr && `${Object.keys(curr)[0]}=${Object.values(curr)[0]}` ]), [])
+    ]
+    .reduce((acc, curr) => [ ...acc, curr && `${Object.keys(curr)[0]}=${Object.values(curr)[0]}` ], [])
     .filter(Boolean)
     .join('&');
     if (system) {
@@ -36,4 +37,36 @@ export function getCveListBySystem({
             return res.json();
         });
     }
+}
+
+export async function fetchStatusList() {
+    return fetch(`${BASE_ROUTE}${API_VERSION}/status`, {
+        method: 'GET',
+        credentials: 'include'
+    }).then(res => {
+        if (!res.ok) {
+            throw res;
+        }
+
+        return res.json();
+    });
+}
+
+export function changeSystemCveStatus(inventory_id, cve, status_id, callback) {
+    const body = { inventory_id, cve, status_id };
+    return fetch(`${BASE_ROUTE}${API_VERSION}/status`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    }).then(res => {
+        if (!res.ok) {
+            throw res;
+        }
+
+        return callback();
+    });
 }

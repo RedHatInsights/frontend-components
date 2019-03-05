@@ -47,3 +47,4 @@ export const CLEAR_NOTIFICATIONS = `${notificationsPrefix}CLEAR_NOTIFICATIONS`;
  * Application actions
  */
 export const CVE_FETCH_LIST = 'CVE_FETCH_LIST';
+export const SYSTEM_CVE_STATUS_LIST = 'SYSTEM_CVE_STATUS_LIST';
