@@ -1,5 +1,4 @@
 @import '../../Utilities';
-@import '@patternfly/patternfly-next/sass-utilities/colors.scss';
 
 .ins-c-reboot {
     span {
@@ -8,6 +7,6 @@
     }
 
     &.ins-m-red {
-        span, svg { color: $pf-color-red-100; }
+        span, svg { color: var(--pf-global--danger-color--100); }
     }
 }

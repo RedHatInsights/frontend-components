@@ -63,7 +63,7 @@ const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
 function copyFilesPlugin(env) {
     return new(require('copy-webpack-plugin'))([
         { from: 'src/Utilities/**/*.scss', to: 'Utilities', flatten: true },
-        { from: 'node_modules/@patternfly/patternfly-next/assets', to: 'demo/assets' }
+        { from: 'node_modules/@patternfly/patternfly/assets', to: 'demo/assets' }
     ]);
 }
 

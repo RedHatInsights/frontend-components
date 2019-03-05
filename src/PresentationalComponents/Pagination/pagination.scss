@@ -1,5 +1,6 @@
-@import '~@patternfly/patternfly-next/components/Pagination/pagination.scss';
-@import '~@patternfly/patternfly-next/components/OptionsMenu/options-menu.scss';
+@import '~@patternfly/patternfly/sass-utilities/_all.scss';
+@import '~@patternfly/patternfly/components/Pagination/pagination.scss';
+@import '~@patternfly/patternfly/components/OptionsMenu/options-menu.scss';
 
 .ins-c-pagination-next .pf-c-options-menu {
     .pf-c-dropdown__menu .pf-c-dropdown__menu-item {

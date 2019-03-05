@@ -1,9 +1,8 @@
 @import '../../../Utilities';
-@import '@patternfly/patternfly-next/sass-utilities/colors.scss';
 
 .ins-c-remediations-error-step {
   .ins-m-red {
-    color: $pf-color-red-100;
+    color: var(--pf-global--danger-color--100);
   }
 
   ul {
