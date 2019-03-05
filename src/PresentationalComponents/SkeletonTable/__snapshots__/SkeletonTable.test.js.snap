@@ -1,0 +1,731 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkeletonTable component should render correctly 1`] = `
+<Table
+  aria-label="Loading"
+  cells={
+    Array [
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+    ]
+  }
+  className=""
+  contentId="expanded-content"
+  dropdownDirection="down"
+  dropdownPosition="right"
+  expandId="expandable-toggle"
+  gridBreakPoint="grid-md"
+  onCollapse={null}
+  rowLabeledBy="simple-node"
+  rows={
+    Array [
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+    ]
+  }
+  variant={null}
+>
+  <TableHeader
+    className=""
+  />
+  <TableBody
+    className=""
+    onRowClick={[Function]}
+    rowKey="id"
+  />
+</Table>
+`;
+
+exports[`SkeletonTable component should render correctly with static columns 1`] = `
+<Table
+  aria-label="Loading"
+  cells={
+    Array [
+      "first",
+      "second",
+    ]
+  }
+  className=""
+  contentId="expanded-content"
+  dropdownDirection="down"
+  dropdownPosition="right"
+  expandId="expandable-toggle"
+  gridBreakPoint="grid-md"
+  onCollapse={null}
+  rowLabeledBy="simple-node"
+  rows={
+    Array [
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            size="md"
+          />,
+        },
+      ],
+    ]
+  }
+  variant={null}
+>
+  <TableHeader
+    className=""
+  />
+  <TableBody
+    className=""
+    onRowClick={[Function]}
+    rowKey="id"
+  />
+</Table>
+`;
+
+exports[`SkeletonTable component should render correctly without rows 1`] = `
+<Table
+  aria-label="Loading"
+  cells={
+    Array [
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+      Object {
+        "title": <Skeleton
+          size="sm"
+        />,
+      },
+    ]
+  }
+  className=""
+  contentId="expanded-content"
+  dropdownDirection="down"
+  dropdownPosition="right"
+  expandId="expandable-toggle"
+  gridBreakPoint="grid-md"
+  onCollapse={null}
+  rowLabeledBy="simple-node"
+  rows={Array []}
+  variant={null}
+>
+  <TableHeader
+    className=""
+  />
+  <TableBody
+    className=""
+    onRowClick={[Function]}
+    rowKey="id"
+  />
+</Table>
+`;
