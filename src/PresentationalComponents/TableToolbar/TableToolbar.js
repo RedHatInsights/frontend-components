@@ -13,10 +13,11 @@ function generateResults(results) {
     }
 }
 
-const TableToolbar = ({ results, className, children, ...props }) => {
+const TableToolbar = ({ isFooter, results, className, children, ...props }) => {
 
     const tableToolbarClasses = classNames(
         'ins-c-table__toolbar',
+        { [`ins-m-footer`]: isFooter },
         className
     );
 
@@ -36,7 +37,12 @@ const TableToolbar = ({ results, className, children, ...props }) => {
 export default TableToolbar;
 
 TableToolbar.propTypes = {
+    isFooter: propTypes.bool,
     results: propTypes.number,
     children: propTypes.any,
     className: propTypes.string
+};
+
+TableToolbar.defaultProps = {
+    isFooter: false
 };

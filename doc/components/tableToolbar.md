@@ -50,6 +50,26 @@ class YourCmp extends React.Component {
 }
 ```
 
+### Use the toolbar as a table footer
+
+```JSX
+import React from 'react';
+import { TableToolbar } from '@redhat-insights/insights-frontent-components/';
+
+class YourCmp extends React.Component {
+  render() {
+    return (
+        <Table>
+            // Table content
+        </Table>
+        <TableToolbar isFooter>
+            // Whatever content you want inside the footer
+        </TableToolbar>
+    )
+  }
+}
+```
+
 ## Props
 
 TableToolbar

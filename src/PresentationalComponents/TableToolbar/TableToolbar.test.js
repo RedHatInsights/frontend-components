@@ -23,4 +23,9 @@ describe('TableToolbar component', () => {
         const wrapper = shallow(<TableToolbar results={ 2 }>Some</TableToolbar>)
         expect(toJson(wrapper)).toMatchSnapshot();
     });
+
+    it('should render a footer', () => {
+        const wrapper = shallow(<TableToolbar isFooter>Footer</TableToolbar>)
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 })

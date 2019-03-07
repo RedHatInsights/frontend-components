@@ -11,6 +11,17 @@ exports[`TableToolbar component should render 1`] = `
 </Fragment>
 `;
 
+exports[`TableToolbar component should render a footer 1`] = `
+<Fragment>
+  <Toolbar
+    className="ins-c-table__toolbar ins-m-footer"
+  >
+     
+    Footer
+  </Toolbar>
+</Fragment>
+`;
+
 exports[`TableToolbar component should render with results greater than 1 1`] = `
 <Fragment>
   <Toolbar
