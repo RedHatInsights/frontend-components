@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import './TableToolbar.scss';
 
-function generateResults(results) {
+function generateCount(results) {
     if (results > 1 || results < 1) {
         return (`${results} Results`);
     } else {
@@ -13,7 +13,7 @@ function generateResults(results) {
     }
 }
 
-const TableToolbar = ({ isFooter, results, className, children, ...props }) => {
+const TableToolbar = ({ isFooter, results, className, selected, children, ...props }) => {
 
     const tableToolbarClasses = classNames(
         'ins-c-table__toolbar',
@@ -25,9 +25,14 @@ const TableToolbar = ({ isFooter, results, className, children, ...props }) => {
         <Fragment>
             <Toolbar className={ tableToolbarClasses } { ...props }> { children }</Toolbar>
             {
-                results >= 0 &&
+                (results >= 0 || selected >= 0) &&
                 <div className='ins-c-table__toolbar-results'>
-                    { generateResults(results) }
+                    { results >= 0 &&
+                        <span className='ins-c-table__toolbar-results-count'> { generateCount(results) } </span>
+                    }
+                    { selected >= 0 &&
+                        <span className='ins-c-table__toolbar-results-selected'> { selected } Selected </span>
+                    }
                 </div>
             }
         </Fragment>
@@ -40,7 +45,8 @@ TableToolbar.propTypes = {
     isFooter: propTypes.bool,
     results: propTypes.number,
     children: propTypes.any,
-    className: propTypes.string
+    className: propTypes.string,
+    selected: propTypes.number
 };
 
 TableToolbar.defaultProps = {

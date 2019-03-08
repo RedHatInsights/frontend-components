@@ -50,6 +50,26 @@ class YourCmp extends React.Component {
 }
 ```
 
+### Add selected count to the toolbar
+
+```JSX
+import React from 'react';
+import { TableToolbar } from '@redhat-insights/insights-frontent-components/';
+
+class YourCmp extends React.Component {
+  render() {
+    return (
+        <TableToolbar selected={ amount selected }>
+            // Whatever content you want inside the toolbar (search, buttons, etc)
+        </TableToolbar>
+        <Table>
+            // Table content
+        </Table>
+    )
+  }
+}
+```
+
 ### Use the toolbar as a table footer
 
 ```JSX
