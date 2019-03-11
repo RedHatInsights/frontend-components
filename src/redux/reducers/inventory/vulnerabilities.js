@@ -1,9 +1,10 @@
 import { applyReducerHash } from '../../../Utilities/ReducerRegistry';
 import { CVE_FETCH_LIST, SYSTEM_CVE_STATUS_LIST } from '../../action-types';
 
-function pendingVulnerabilities(state) {
+function pendingVulnerabilities(state, { meta }) {
     return {
         ...state,
+        timestamp: meta,
         cveList: {
             ...state.cveList,
             isLoading: true
@@ -11,14 +12,17 @@ function pendingVulnerabilities(state) {
     };
 }
 
-function fulfilledVulnerabilities(state, { payload }) {
-    return {
-        ...state,
-        cveList: {
-            payload,
-            isLoading: true
-        }
-    };
+function fulfilledVulnerabilities(state, { payload, meta }) {
+    if (meta >= state.timestamp) {
+        return {
+            ...state,
+            timestamp: meta,
+            cveList: {
+                payload,
+                isLoading: false
+            }
+        };
+    }
 }
 
 function pendingStatusList(state) {
@@ -49,6 +53,6 @@ export const VulnerabilitiesStore = applyReducerHash(
         [`${SYSTEM_CVE_STATUS_LIST}_FULFILLED`]: fulfilledStatusList
     },
     {
-        cveList: { isLoading: true }
+        cveList: { isLoading: true, meta: new Date() }
     }
 );
