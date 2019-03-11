@@ -9,6 +9,7 @@ import { RowLoader } from '../../../../Utilities/helpers';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
 
 class VulnerabilitiesCveTable extends Component {
+    state = { selectedCves: new Set() };
 
     changePage = page => this.props.apply({ page });
 
@@ -70,8 +71,24 @@ class VulnerabilitiesCveTable extends Component {
         );
     };
 
+    onSelect = (event, isSelected, rowId) => {
+        const { cves } = this.props;
+        const { selectedCves } = this.state;
+        if (rowId === -1) {
+            isSelected ? cves.data.forEach(cve => selectedCves.add(cve.id)) : cves.data.forEach(cve => selectedCves.delete(cve.id));
+        }
+        else {
+            const cveName = cves.data[rowId] && cves.data[rowId].id;
+            isSelected ? selectedCves.add(cveName) : selectedCves.delete(cveName);
+        }
+
+        this.setState(selectedCves, () => this.props.selectorHandler(selectedCves));
+    }
+
     render() {
         const { cves, header } = this.props;
+        const { selectedCves } = this.state;
+        const rows = cves.data.map(cve => (selectedCves.has(cve.id) && { ...cve, selected: true }) || cve);
         const loader = [ ...Array(3) ].map(() => ({
             cells: [{
                 title: <RowLoader />,
@@ -82,10 +99,10 @@ class VulnerabilitiesCveTable extends Component {
         return (
             <Fragment>
                 <Table
-
+                    onSelect={ this.props.isSelectable && this.onSelect }
                     variant={ TableVariant.compact }
                     cells={ header }
-                    rows={ cves.isLoading ? loader : cves.data.map(row => row.cells) }
+                    rows={ cves.isLoading ? loader : rows }
                     sortBy={ this.createSortBy(cves.meta.sort) }
                     onSort={ this.sortColumn }
                 >
@@ -103,6 +120,8 @@ VulnerabilitiesCveTable.propTypes = {
     cves: propTypes.any,
     header: propTypes.array,
     history: propTypes.object,
-    apply: propTypes.func
+    apply: propTypes.func,
+    selectorHandler: propTypes.func,
+    isSelectable: propTypes.bool
 };
 export default routerParams(VulnerabilitiesCveTable);

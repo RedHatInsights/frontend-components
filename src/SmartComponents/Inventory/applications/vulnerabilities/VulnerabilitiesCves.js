@@ -24,6 +24,10 @@ class VulnerabilitiesCves extends Component {
         this.setState({ ...this.state, ...config }, this.sendRequest);
     }
 
+    selectorHandler = (selectedCves) => {
+        this.setState({ ...this.state, selectedCves });
+    }
+
     sendRequest = () => {
         const { fetchData } = this.props;
         fetchData && fetchData(() => this.props.fetchResource(this.state));
@@ -53,14 +57,19 @@ class VulnerabilitiesCves extends Component {
                         showRemediationButton={ showRemediationButton }
                         downloadReport={ this.downloadReport }
                         cves={ cves }
+                        selectedCves={ this.state && this.state.selectedCves }
                         entity={ this.props.entity }
+
                     />
                 </StackItem>
                 <StackItem>
                     <VulnerabilitiesCveTable
                         header={ header }
                         cves={ cves }
+                        selectorHandler= { this.selectorHandler }
+                        isSelectable= { this.props.isSelectable }
                         apply={ this.apply }
+
                     />
                 </StackItem>
             </Stack>
@@ -89,11 +98,13 @@ VulnerabilitiesCves.propTypes = {
     showRemediationButton: propTypes.bool,
     dataMapper: propTypes.func,
     defaultSort: propTypes.any,
-    entity: propTypes.any
+    entity: propTypes.any,
+    isSelectable: propTypes.bool
 };
 
 VulnerabilitiesCves.defaultProps = {
     dataMapper: () => undefined,
+    isSelectable: false,
     cveList: {
         isLoading: true
     }

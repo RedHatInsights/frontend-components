@@ -45,6 +45,7 @@ class VulnerabilitiesDetail extends Component {
                         showRemediationButton={ true }
                         defaultSort='-public_date'
                         entity={ entity }
+                        isSelectable ={ true }
                     />
                 </CardBody>
             </Card>

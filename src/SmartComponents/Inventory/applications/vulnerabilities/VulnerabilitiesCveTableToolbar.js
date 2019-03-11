@@ -55,12 +55,12 @@ class VulnerabilitiesCveTableToolbar extends Component {
     };
 
     remediationProvider = () => {
-        if (!this.props.cves || this.props.cves.loading || !this.props.entity || !this.props.entity.id) {
+        if (!this.props.selectedCves || this.props.selectedCves.size === 0) {
             return false;
         }
 
         return {
-            issues: this.props.cves.data.map(({ id }) => ({ id: `vulnerabilities:${id}`, description: id })),
+            issues: [ ...this.props.selectedCves ].map((cve) => ({ id: `vulnerabilities:${cve}`, description: cve })),
             systems: [ this.props.entity.id ]
         };
     }
@@ -137,7 +137,8 @@ VulnerabilitiesCveTableToolbar.propTypes = {
     downloadReport: propTypes.func,
     cves: propTypes.any,
     entity: propTypes.object,
-    addNotification: propTypes.func.isRequired
+    addNotification: propTypes.func.isRequired,
+    selectedCves: propTypes.any
 };
 
 VulnerabilitiesCveTableToolbar.defaultProps = {
