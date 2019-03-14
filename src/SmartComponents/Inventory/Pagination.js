@@ -102,8 +102,7 @@ FooterPagination.defaultProps = {
 
 function stateToProps(
     { entities: { page, perPage, total, loaded, activeFilters }},
-    { totalItems, page: currPage, perPage: currPerPage })
-{
+    { totalItems, page: currPage, perPage: currPerPage }) {
     return {
         page: currPage || page,
         perPage: currPerPage || perPage,

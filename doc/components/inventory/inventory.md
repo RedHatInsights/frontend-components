@@ -352,6 +352,26 @@ SomeCmp.contextTypes = {
 export default connect(() => ({}))(SomeCmp);
 ```
 
+### Compact table
+If you want to include inventory table in smaller area you can pass attribute `variant` it is the same as in [PF4 table](http://patternfly-react.surge.sh/patternfly-4/components/table#Table)
+```JSX
+import React from 'react';
+import * as reactRouterDom from 'react-router-dom';
+import * as reactCore from '@patternfly/react-core';
+import * as reactIcons from '@patternfly/react-icons';
+import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+
+@registryDecorator()
+class SomeCmp extends React.Component {
+    //...
+    render() {
+        const { InventoryCmp, items } = this.state;
+        return (
+            <InventoryCmp variant={reactCore.TableVariant.compact} />
+        )
+    }
+}
+```
 ### Refresh on change (for example on filter)
 When user wants to update table, filter data (both trough filter select and textual filter) or you want to update visible items you can either update data in redux or use inventory ref and `onRefreshData` function.
 

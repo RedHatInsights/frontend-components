@@ -2,6 +2,8 @@
 @import "~@patternfly/patternfly/utilities/Display/display.css";
 
 .ins-inventory-filters {
+    width: 100%;
+
     .ins-inventory-filter {
         margin-left: 1em;
 
@@ -51,10 +53,14 @@
     }
 }
 
-.ins-entity-table.pf-c-table {
+.ins-c-entity-table.pf-c-table {
     margin-bottom: 15px;
     .ins-composed-col div:nth-child(2) {
+        color: var(--pf-global--link--Color);
         cursor: pointer;
+        &:hover {
+            color: var(--pf-global--link--Color--hover);
+        }
     }
 
     .ins-health-status div {

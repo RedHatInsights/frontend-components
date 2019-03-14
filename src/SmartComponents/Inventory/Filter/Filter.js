@@ -158,20 +158,8 @@ class ContextFilter extends Component {
                         />
                     </GridItem>
                 }
-                <GridItem span={ hasItems ? 10 : 6 }>
+                <GridItem span={ hasItems ? 12 : 7 }>
                     { children }
-                </GridItem>
-                <GridItem span={ 1 } className="ins-inventory-total pf-u-display-flex pf-u-align-items-center">
-                    { total > 0 && <div>{ total } result{ total > 1 && 's' }</div> }
-                    { /* <Button
-                        variant="plain"
-                        className="ins-refresh"
-                        title="Refresh"
-                        aria-label="Refresh"
-                        onClick={ _event => onRefreshData() }
-                    >
-                        <SyncAltIcon />
-                    </Button> */ }
                 </GridItem>
             </Grid>
         );

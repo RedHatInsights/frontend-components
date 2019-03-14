@@ -3,14 +3,10 @@ import PropTypes from 'prop-types';
 import routerParams from '../../Utilities/RouterParams';
 import { selectEntity, setSort, detailSelect } from '../../redux/actions/inventory';
 import { connect } from 'react-redux';
-import { Table } from '../../PresentationalComponents/Table';
-import keyBy from 'lodash/keyBy';
-import mapValues from 'lodash/mapValues';
-import TableActions from './Actions';
-import HealthStatus from './HealthStatus';
 import get from 'lodash/get';
-import { RowLoader } from '../../Utilities/helpers';
-import orderBy from 'lodash/orderBy';
+import { Table as PfTable, TableBody, TableHeader, TableGridBreakpoint, cellWidth, TableVariant } from '@patternfly/react-table';
+import { SkeletonTable } from '../../PresentationalComponents/SkeletonTable';
+import { EmptyTable } from '../../PresentationalComponents/EmptyTable';
 
 class EntityTable extends React.Component {
     onRowClick = (_event, key, application) => {
@@ -22,8 +18,9 @@ class EntityTable extends React.Component {
         }
     }
 
-    onItemSelect = (_event, key, checked) => {
-        this.props.selectEntity && this.props.selectEntity(key, checked);
+    onItemSelect = (_event, checked, rowId) => {
+        const { rows } = this.props;
+        this.props.selectEntity && this.props.selectEntity(rowId === -1 ? 0 : rows[rowId].id, checked);
     }
 
     onSort = (_event, key, direction) => {
@@ -58,116 +55,87 @@ class EntityTable extends React.Component {
         return get(col, key, ' ');
     }
 
-    onHealthClicked = (event, _clickedOn, health, item) => {
-        this.onRowClick(event, item.id, health.redirect);
-    }
-
-    healthColumn = (oneItem) => {
-        return {
-            title: <HealthStatus
-                items={ oneItem.health }
-                className="ins-health-status"
-                onHealthClicked={
-                    (event, clickedOn, health) => this.onHealthClicked(event, clickedOn, health, oneItem)
-                }
-            />,
-            className: 'pf-m-fit-content',
-            stopPropagation: true
-        };
-    }
-
-    actionsColumn = (oneItem) => {
-        return {
-            title: <TableActions item={ { id: oneItem.id } } />,
-            className: 'pf-c-table__action pf-m-shrink',
-            stopPropagation: true
-        };
-    }
-
     buildCells = (item) => {
-        const { columns, showHealth, showActions } = this.props;
+        const { columns } = this.props;
         if (item.hasOwnProperty('isOpen')) {
             return [{
-                title: item.title,
-                colSpan: columns.length + showActions + showHealth
+                title: item.title
             }];
         }
 
         return [
-            ...columns.map(({ key, composed, isTime }) => this.renderCol(item, key, composed, isTime)),
-            showHealth && this.healthColumn(item),
-            showActions && this.actionsColumn(item)
+            ...columns.map(({ key, composed, isTime }) => this.renderCol(item, key, composed, isTime))
         ].filter(cell => cell !== false && cell !== undefined);
     }
 
     createRows = () => {
-        const { sortBy, rows, showHealth, columns, items, showActions } = this.props;
-        const data = rows
-        .filter(oneRow => oneRow.account)
-        .map((oneItem) => ({
-            ...oneItem,
-            cells: this.buildCells(oneItem)
-        }));
-        if ((items && items.length === 0) || rows.length === 0) {
+        const { rows, columns, actions } = this.props;
+
+        if (rows.length === 0) {
             return [{
                 cells: [{
-                    title: 'There are no items in inventory. If that\'s incorrect, contact your administrator!',
-                    colSpan: columns.length + showActions + showHealth
+                    title: (
+                        <EmptyTable>
+                            There are no items in inventory. If that&apos;s incorrect, contact your administrator!
+                        </EmptyTable>
+                    ),
+                    props: {
+                        colSpan: columns.length + Boolean(actions)
+                    }
                 }]
             }];
         }
 
-        return sortBy ?
-            orderBy(
-                data,
-                [ e => get(e, sortBy.key) ],
-                [ sortBy.direction ]
-            ) :
-            data;
+        return rows
+        .map((oneItem) => ({
+            ...oneItem,
+            cells: this.buildCells(oneItem)
+        }));
+    }
+
+    createColumns = () => {
+        const { columns } = this.props;
+        return columns.map(({ props, transforms, ...oneCell }) => ({
+            ...oneCell,
+            ...props && props.width ? {
+                transforms: [
+                    ...transforms || [],
+                    cellWidth(props.width)
+                ]
+            } : { transforms: [ ...transforms || [] ]}
+        }));
     }
 
     render() {
-        const { columns, showHealth, loaded, sortBy, expandable, onExpandClick, hasCheckbox, showActions } = this.props;
-        return <Table
-            className="pf-m-compact ins-entity-table"
-            expandable={ expandable }
-            onExpandClick={ onExpandClick }
-            sortBy={
-                sortBy ?
-                    {
-                        index: sortBy.key,
-                        direction: sortBy.direction === 'asc' ? 'up' : 'down'
-                    } :
-                    {}
-            }
-            header={ columns && {
-                ...mapValues(keyBy(columns, item => item.key), item => ({ title: item.title, ...item.props })),
-                ...showHealth ? {
-                    health: {
-                        title: 'Health',
-                        hasSort: false
-                    }
-                } : {},
-                ...showActions ? { action: '' } : {}
-            } }
-            onSort={ this.onSort }
-            onItemSelect={ this.onItemSelect }
-            hasCheckbox={ loaded && hasCheckbox }
-            rows={
-                loaded ?
-                    this.createRows() :
-                    [ ...Array(5) ].map(() => ({
-                        cells: [{
-                            title: <RowLoader />,
-                            colSpan: columns.length + showHealth + showActions
-                        }]
-                    }))
-            }
-        />;
+        const { columns, loaded, expandable, onExpandClick, hasCheckbox, actions, variant } = this.props;
+        return (
+            <React.Fragment>
+                { loaded ?
+                    <PfTable
+                        variant={ variant }
+                        aria-label="Host inventory"
+                        cells={ this.createColumns() }
+                        rows={ this.createRows() }
+                        gridBreakPoint={ columns.length > 5 ? TableGridBreakpoint.gridLg : TableGridBreakpoint.gridMd }
+                        className="ins-c-entity-table"
+                        { ...{
+                            ...hasCheckbox ? { onSelect: this.onItemSelect } : {},
+                            ...expandable ? { onCollapse: onExpandClick } : {},
+                            ...actions ? { actions } : {}
+                        } }
+                    >
+                        <TableHeader />
+                        <TableBody />
+                    </PfTable> :
+                    <SkeletonTable colSize={ 2 } rowSize={ 15 } />
+                }
+            </React.Fragment>
+        );
     }
 }
 
 EntityTable.propTypes = {
+    variant: PropTypes.oneOf(Object.values(TableVariant)),
     history: PropTypes.any,
     expandable: PropTypes.bool,
     onExpandClick: PropTypes.func,

@@ -3,12 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import routerParams from '../../Utilities/RouterParams';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail';
-import { Filter } from './Filter';
 import Pagination from './Pagination';
 import { updateEntities } from '../../redux/actions/inventory';
-import { Card, CardBody, CardHeader, CardFooter } from '@patternfly/react-core';
 import AppInfo from './AppInfo';
 import { VulnerabilitiesStore } from '../../redux/reducers/inventory/vulnerabilities';
+import { Level, LevelItem } from '@patternfly/react-core';
+import EntityTableToolbar from './EntityTableToolbar';
 
 export const InventoryContext = createContext('inventory');
 
@@ -37,6 +37,7 @@ class InventoryTable extends Component {
             page,
             perPage,
             total,
+            children,
             ...props
         } = this.props;
         return (
@@ -50,36 +51,40 @@ class InventoryTable extends Component {
                     onUpdateData
                 })
             } }>
-                <Card>
-                    <CardHeader>
-                        <Filter { ...props }
-                            totalItems={ total || (items && items.length) }
-                            hasItems={ items && items.length !== 0 }
-                            filters={ filters }
-                            pathPrefix={ pathPrefix }
-                            apiBase={ apiBase }
-                        />
-                    </CardHeader>
-                    <CardBody className="ins-c-inventory-body">
-                        <InventoryList
-                            { ...props }
-                            onRefresh={ onRefresh }
-                            items={ items }
-                            pathPrefix={ pathPrefix }
-                            apiBase={ apiBase }
-                            perPage={ perPage }
-                            showHealth={ showHealth }
-                        />
-                    </CardBody>
-                    <CardFooter>
-                        <Pagination
-                            totalItems={ total || (items && items.length) }
-                            page={ page }
-                            onRefresh={ onRefresh }
-                            perPage={ perPage }
-                        />
-                    </CardFooter>
-                </Card>
+                <EntityTableToolbar
+                    { ...props }
+                    totalItems={ total || (items && items.length) }
+                    hasItems={ Boolean(items) }
+                    filters={ filters }
+                    pathPrefix={ pathPrefix }
+                    apiBase={ apiBase }
+                    page={ page }
+                    onRefresh={ onRefresh }
+                    perPage={ perPage }
+                >
+                    <Level>
+                        <LevelItem>
+                            { children }
+                        </LevelItem>
+                        <LevelItem>
+                            <Pagination
+                                totalItems={ total || (items && items.length) }
+                                page={ page }
+                                onRefresh={ onRefresh }
+                                perPage={ perPage }
+                            />
+                        </LevelItem>
+                    </Level>
+                </EntityTableToolbar>
+                <InventoryList
+                    { ...props }
+                    onRefresh={ onRefresh }
+                    items={ items }
+                    pathPrefix={ pathPrefix }
+                    apiBase={ apiBase }
+                    perPage={ perPage }
+                    showHealth={ showHealth }
+                />
             </InventoryContext.Provider>
         );
     }
