@@ -195,14 +195,8 @@ exports[`Shield component should render where title is Hello world and hasToolti
     enableFlip={true}
     entryDelay={500}
     exitDelay={500}
-    hasTooltip={true}
-    impact="N/A"
     maxWidth="12.5rem"
     position="top"
-    size="md"
-    title="Hello world"
-    tooltipPosition="top"
-    tooltipPrefix=""
     zIndex={9999}
   >
     <QuestionIcon

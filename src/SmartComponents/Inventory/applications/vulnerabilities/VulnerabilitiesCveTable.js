@@ -99,7 +99,8 @@ class VulnerabilitiesCveTable extends Component {
         return (
             <Fragment>
                 <Table
-                    onSelect={ this.props.isSelectable && this.onSelect }
+                    aria-label={ 'Vulnerability CVE table' }
+                    onSelect={ (this.props.isSelectable && this.onSelect) || undefined }
                     variant={ TableVariant.compact }
                     cells={ header }
                     rows={ cves.isLoading ? loader : rows }

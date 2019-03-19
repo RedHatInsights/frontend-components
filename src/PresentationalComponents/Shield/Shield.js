@@ -36,14 +36,15 @@ class Shield extends React.Component {
 
     render() {
         const badge = this.getColoredBadgeByImpact();
+        const { tooltipPosition, hasTooltip, tooltipPrefix, title, size, impact, ...rest } = this.props;
 
         return (
             <React.Fragment>
-                { this.props.hasTooltip === true ? (
+                { hasTooltip === true ? (
                     <Tooltip
-                        { ...this.props }
-                        position={ this.props.tooltipPosition }
-                        content={ <div>{ this.props.tooltipPrefix + (this.props.title || badge.title) }</div> }
+                        position={ tooltipPosition }
+                        content={ <div>{ tooltipPrefix + (title || badge.title) }</div> }
+                        { ...rest }
                     >
                         { badge.icon }
                     </Tooltip>

@@ -14,20 +14,14 @@ export function createCveListBySystem({ isLoading, systemId, ...rest }) {
             data: data.map(row => ({
                 id: row.id,
                 cells: [
-                    <Shield
-                        impact={ row.attributes.impact }
-                        hasTooltip={ true }
-                        tooltipPosition={ 'right' }
-                        key={ row.id.toString() }
-                    />,
+                    <span key={ row.id }>
+                        <Shield impact={ row.attributes.impact } tooltipPosition={ 'right' } hasTooltip={ true } />
+                    </span>,
                     <span key={ row.id }>{ handleCVELink(row.attributes.synopsis) }</span>,
-                    <LongTextTooltip
-                        content={ row.attributes.description }
-                        tooltipMaxWidth={ '50vw' }
-                        entryDelay="1200"
-                        key={ row.id.toString() }
-                    />,
-                    parseCvssScore(row.attributes.cvss2_score, row.attributes.cvss3_score),
+                    <span key={ row.id }>
+                        <LongTextTooltip content={ row.attributes.description } tooltipMaxWidth={ '50vw' } entryDelay={ 1200 } maxLength={ 200 } />
+                    </span>,
+                    <span key={ row.id }>{ parseCvssScore(row.attributes.cvss2_score, row.attributes.cvss3_score) }</span>,
                     <span key={ row.attributes.synopsis }>
                         <StatusDropdown
                             currentStatusName={ row.attributes.status }
@@ -36,7 +30,7 @@ export function createCveListBySystem({ isLoading, systemId, ...rest }) {
                             cveName={ row.attributes.synopsis }
                         />
                     </span>,
-                    processDate(row.attributes.public_date)
+                    <span key={ row.id }>{ processDate(row.attributes.public_date) }</span>
                 ]
             })),
             meta,
@@ -48,7 +42,6 @@ export function createCveListBySystem({ isLoading, systemId, ...rest }) {
 }
 
 function handleCVELink(synopsis) {
-
     if (location.href.indexOf('vulnerability') !== -1) {
         return <Link to={ '/cves/' + synopsis }>{ synopsis }</Link>;
     } else {
