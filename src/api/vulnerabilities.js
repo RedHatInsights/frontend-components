@@ -1,4 +1,4 @@
-const BASE_ROUTE = '/r/insights/platform/vulnerability/';
+const BASE_ROUTE = '/api/vulnerability/';
 const API_VERSION = 'v1';
 
 /* eslint-disable camelcase */
