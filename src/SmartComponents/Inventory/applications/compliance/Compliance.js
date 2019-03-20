@@ -11,7 +11,7 @@ import { Card, CardBody, CardHeader } from '@patternfly/react-core';
 import { NotEqualIcon } from '@patternfly/react-icons';
 import './compliance.scss';
 
-const COMPLIANCE_API_ROOT = '/r/insights/platform/compliance';
+const COMPLIANCE_API_ROOT = '/api/compliance';
 
 const QUERY = gql`
 query System($systemId: String!){

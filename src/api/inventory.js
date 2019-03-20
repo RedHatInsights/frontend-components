@@ -1,6 +1,6 @@
 import 'abortcontroller-polyfill/dist/polyfill-patch-fetch';
 import flatMap from 'lodash/flatMap';
-export const INVENTORY_API_BASE = '/r/insights/platform/inventory/api/v1/hosts';
+export const INVENTORY_API_BASE = '/api/inventory/v1/hosts';
 
 /* eslint camelcase: off */
 export const mapData = ({ facts = {}, ...oneResult }) => ({

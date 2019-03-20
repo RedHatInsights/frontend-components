@@ -1,6 +1,6 @@
 import URI from 'urijs';
 
-const API_BASE = '/r/insights/platform/remediations/v1';
+const API_BASE = '/api/remediations/v1';
 
 function checkResponse (r) {
     if (!r.ok) {

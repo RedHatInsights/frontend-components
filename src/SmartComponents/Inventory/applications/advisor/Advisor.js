@@ -13,7 +13,7 @@ import RemediationButton from '../../../Remediations/RemediationButton';
 
 import './advisor.scss';
 
-const SYSTEM_FETCH_URL = '/r/insights/platform/advisor/v1/system/';
+const SYSTEM_FETCH_URL = '/api/insights/v1/system/';
 
 class InventoryRuleList extends Component {
     state = {
