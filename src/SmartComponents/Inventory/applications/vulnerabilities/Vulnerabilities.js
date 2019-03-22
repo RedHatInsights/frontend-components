@@ -35,20 +35,16 @@ class VulnerabilitiesDetail extends Component {
     render() {
         const { entity } = this.props;
         return (
-            <Card>
-                <CardBody>
-                    <VulnerabilitiesCves
-                        header={ header }
-                        fetchResource={ params => fetchCveListBySystem({ ...params, system: entity.id }) }
-                        dataMapper={ params => createCveListBySystem({ ...params, systemId: entity.id }) }
-                        showAllCheckbox={ false }
-                        showRemediationButton={ true }
-                        defaultSort='-public_date'
-                        entity={ entity }
-                        isSelectable ={ true }
-                    />
-                </CardBody>
-            </Card>
+            <VulnerabilitiesCves
+                header={ header }
+                fetchResource={ params => fetchCveListBySystem({ ...params, system: entity.id }) }
+                dataMapper={ params => createCveListBySystem({ ...params, systemId: entity.id }) }
+                showAllCheckbox={ false }
+                showRemediationButton={ true }
+                defaultSort="-public_date"
+                entity={ entity }
+                isSelectable={ true }
+            />
         );
     }
 }
@@ -71,4 +67,3 @@ export default connect(
     mapStateToProps,
     null
 )(VulnerabilitiesDetail);
-

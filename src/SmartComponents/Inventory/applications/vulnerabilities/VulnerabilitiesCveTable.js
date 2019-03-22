@@ -7,6 +7,7 @@ import findIndex from 'lodash/findIndex';
 import propTypes from 'prop-types';
 import { RowLoader } from '../../../../Utilities/helpers';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
+import { TableToolbar } from '../../../../PresentationalComponents/TableToolbar';
 
 class VulnerabilitiesCveTable extends Component {
     state = { selectedCves: new Set() };
@@ -17,7 +18,8 @@ class VulnerabilitiesCveTable extends Component {
     setPageSize = pageSize => this.props.apply({ page_size: pageSize });
 
     sortColumn = (event, key, direction) => {
-        let columnName = this.props.header[key].key;
+        let columnMapping = this.props.isSelectable ? [{ key: 'checkbox' }, ...this.props.header ] : this.props.header;
+        let columnName = columnMapping[key].key;
         const { cves } = this.props;
         const currentSort = cves.meta.sort;
         const useDefault = currentSort && currentSort.substr(1) !== columnName;
@@ -45,9 +47,10 @@ class VulnerabilitiesCveTable extends Component {
 
     createSortBy = (value) => {
         if (value) {
+            let columnMapping = this.props.isSelectable ? [{ key: 'checkbox' }, ...this.props.header ] : this.props.header;
             let direction = value[0] === '+' ? SortByDirection.asc : SortByDirection.desc;
             value = value.replace(/^(-|\+)/, '');
-            const index = findIndex(this.props.header, item => item.key === value);
+            const index = findIndex(columnMapping, item => item.key === value);
             let sort = {
                 index,
                 direction
@@ -110,7 +113,9 @@ class VulnerabilitiesCveTable extends Component {
                     <TableHeader />
                     <TableBody/>
                 </Table>
-                { this.createPagination() }
+                <TableToolbar isFooter>
+                    { this.createPagination() }
+                </TableToolbar>
                 { !cves.isLoading && cves.data.length === 0 && this.noCves() }
             </Fragment>
         );

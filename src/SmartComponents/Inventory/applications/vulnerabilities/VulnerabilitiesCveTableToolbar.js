@@ -1,6 +1,18 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
-import { Checkbox, Form, FormGroup, FormSelect, FormSelectOption, Grid, GridItem } from '@patternfly/react-core';
+import {
+    Checkbox,
+    Form,
+    FormGroup,
+    FormSelect,
+    FormSelectOption,
+    Grid,
+    GridItem,
+    ToolbarGroup,
+    Dropdown,
+    KebabToggle,
+    DropdownItem
+} from '@patternfly/react-core';
 import routerParams from '../../../../Utilities/RouterParams';
 import { SimpleTableFilter } from '../../../../PresentationalComponents/SimpleTableFilter';
 import { DownloadButton } from '../../../../PresentationalComponents/DownloadButton';
@@ -10,6 +22,7 @@ import propTypes from 'prop-types';
 import RemediationButton from '../../../Remediations/RemediationButton';
 import { connect } from 'react-redux';
 import { addNotification } from '../../../Notifications';
+import { Pagination } from '../../../../PresentationalComponents/Pagination';
 
 const CVSSOptions = [
     { value: 'all', label: 'CVSS Base Score: All', disabled: false, from: '', to: '' },
@@ -19,38 +32,49 @@ const CVSSOptions = [
 ];
 
 class VulnerabilitiesCveTableToolbar extends Component {
-    state = {
-        defaultConfig: {
-            filter: '',
-            cvss_score: 'all',
-            show_all: 'False'
-        },
-        toolbarConfig: {}
-    };
+    state = { isKebabOpen: false };
+
     changeFilterValue = debounce(
         value =>
             this.setState(
                 {
-                    toolbarConfig: { ...this.state.toolbarConfig, filter: value }
+                    ...this.state,
+                    filter: value
                 },
                 this.apply
             ),
         400
     );
 
-    apply = () => this.props.apply(this.state.toolbarConfig);
+    onKebabToggle = isKebabOpen => {
+        this.setState({
+            isKebabOpen
+        });
+    };
+
+    onKebabSelect = event => {
+        this.setState({
+            isKebabOpen: !this.state.isKebabOpen
+        });
+    };
+
+    changePage = page => this.setState({ ...this.state, page }, this.apply);
+
+    setPageSize = pageSize => this.setState({ ...this.state, page_size: pageSize }, this.apply);
+
+    apply = () => this.props.apply(this.state);
 
     changeCVSSValue = (value, options) => {
         const target = options.find(item => item.value === value);
-        this.setState({ toolbarConfig: { ...this.state.toolbarConfig, cvss_from: target.from, cvss_to: target.to }}, this.apply);
+        this.setState({ ...this.state, cvss_from: target.from, cvss_to: target.to }, this.apply);
     };
 
     changeCheckboxValue = value => {
-        this.setState({ toolbarConfig: { ...this.state.toolbarConfig, show_all: !value }}, this.apply);
+        this.setState({ ...this.state, show_all: !value }, this.apply);
     };
 
     getCVSSValue = options => {
-        const option = options.find(item => item.from === this.state.toolbarConfig.cvss_from && item.to === this.state.toolbarConfig.cvss_to);
+        const option = options.find(item => item.from === this.state.cvss_from && item.to === this.state.cvss_to);
         return option ? option.value : options[0].value;
     };
 
@@ -60,69 +84,78 @@ class VulnerabilitiesCveTableToolbar extends Component {
         }
 
         return {
-            issues: [ ...this.props.selectedCves ].map((cve) => ({ id: `vulnerabilities:${cve}`, description: cve })),
+            issues: [ ...this.props.selectedCves ].map(cve => ({ id: `vulnerabilities:${cve}`, description: cve })),
             systems: [ this.props.entity.id ]
         };
-    }
+    };
 
     render() {
-        const { showAllCheckbox, downloadReport, totalNumber, showRemediationButton } = this.props;
+        const { showAllCheckbox, downloadReport, totalNumber, showRemediationButton, cves } = this.props;
+        const selectedCvesCount =
+            this.props.showRemediationButton === true ? (this.props.selectedCves && this.props.selectedCves.size) || 0 : undefined;
         return (
-            <TableToolbar>
-                <Grid className="cvetable-toolbar" gutter={ 'md' }>
-                    <GridItem span={ 3 }>
-                        <SimpleTableFilter
-                            onFilterChange={ value => this.changeFilterValue(value) }
-                            buttonTitle={ null }
-                            placeholder="Find a CVE…"
+            <TableToolbar className="pf-u-justify-content-space-between" results={ totalNumber } selected={ selectedCvesCount }>
+                <ToolbarGroup className="space-between-toolbar-items">
+                    <div>
+                        <SimpleTableFilter onFilterChange={ value => this.changeFilterValue(value) } buttonTitle={ null } placeholder="Find a CVE…" />
+                    </div>
+                    <div>
+                        <FormSelect
+                            id="cvssScore"
+                            onChange={ value => this.changeCVSSValue(value, CVSSOptions) }
+                            value={ this.getCVSSValue(CVSSOptions) }
+                        >
+                            { CVSSOptions.map((option, index) => (
+                                <FormSelectOption isDisabled={ option.disabled } key={ index } value={ option.value } label={ option.label } />
+                            )) }
+                        </FormSelect>
+                    </div>
+                    <div>
+                        <Dropdown
+                            onSelect={ this.onKebabSelect }
+                            toggle={ <KebabToggle onToggle={ this.onKebabToggle } /> }
+                            isOpen={ this.state.isKebabOpen }
+                            isPlain
+                            dropdownItems={ [
+                                <DropdownItem key="json" component="button" onClick={ () => downloadReport('json') }>
+                                    Export as JSON
+                                </DropdownItem>,
+                                <DropdownItem key="csv" component="button" onClick={ () => downloadReport('csv') }>
+                                    Export as CSV
+                                </DropdownItem>
+                            ] }
                         />
-                    </GridItem>
-                    <GridItem span={ 3 }>
-                        <Form>
-                            <FormGroup fieldId="cvssScore">
-                                <FormSelect
-                                    id="cvssScore"
-                                    onChange={ value => this.changeCVSSValue(value, CVSSOptions) }
-                                    value={ this.getCVSSValue(CVSSOptions) }
-                                >
-                                    { CVSSOptions.map((option, index) => (
-                                        <FormSelectOption isDisabled={ option.disabled }
-                                            key={ index } value={ option.value } label={ option.label }
-                                        />
-                                    )) }
-                                </FormSelect>
-                            </FormGroup>
-                        </Form>
-                    </GridItem>
-                    <GridItem span={ 1 } />
-                    <GridItem span={ 3 }>
-                        { showAllCheckbox && (
-                            <React.Fragment>
-                                <br />
-                                <Checkbox
-                                    label="Hide CVEs that do not affect my inventory"
-                                    isChecked={ !this.state.toolbarConfig.show_all }
-                                    onChange={ state => this.changeCheckboxValue(state) }
-                                    aria-label="hide CVEs checkbox"
-                                    id="toolbar-cves-hide-check"
-                                />
-                            </React.Fragment>
-                        )
-                        }
-                        {
-                            showRemediationButton &&
-                                <RemediationButton
-                                    dataProvider={ this.remediationProvider }
-                                    isDisabled={ this.remediationProvider() === false }
-                                    onRemediationCreated={ result => this.props.addNotification(result.getNotification()) }
-                                />
-                        }
-                    </GridItem>
-                    <GridItem span={ 1 } />
-                    <GridItem span={ 1 }>
-                        <DownloadButton onSelect={ downloadReport } />
-                    </GridItem>
-                </Grid>
+                    </div>
+                </ToolbarGroup>
+                { showAllCheckbox && (
+                    <ToolbarGroup>
+                        <Checkbox
+                            label="Hide CVEs that do not affect my inventory"
+                            isChecked={ !this.state.show_all }
+                            onChange={ state => this.changeCheckboxValue(state) }
+                            aria-label="hide CVEs checkbox"
+                            id="toolbar-cves-hide-check"
+                        />
+                    </ToolbarGroup>
+                ) }
+                { showRemediationButton && (
+                    <ToolbarGroup>
+                        <RemediationButton
+                            dataProvider={ this.remediationProvider }
+                            isDisabled={ this.remediationProvider() === false }
+                            onRemediationCreated={ result => this.props.addNotification(result.getNotification()) }
+                        />
+                    </ToolbarGroup>
+                ) }
+                <ToolbarGroup>
+                    <Pagination
+                        page={ cves.meta.page || 1 }
+                        numberOfItems={ cves.meta.total_items || 0 }
+                        itemsPerPage={ cves.meta.page_size || 50 }
+                        onSetPage={ page => this.changePage(page) }
+                        onPerPageSelect={ pageSize => this.setPageSize(pageSize) }
+                    />
+                </ToolbarGroup>
             </TableToolbar>
         );
     }
@@ -151,7 +184,7 @@ VulnerabilitiesCveTableToolbar.defaultProps = {
 
 export default connect(
     null,
-    (dispatch) => ({
+    dispatch => ({
         addNotification: notification => dispatch(addNotification(notification))
     })
 )(routerParams(VulnerabilitiesCveTableToolbar));
