@@ -5,7 +5,8 @@ import {
     SHOW_ENTITIES,
     FILTER_SELECT,
     UPDATE_ENTITIES,
-    ENTITIES_LOADING
+    ENTITIES_LOADING,
+    CLEAR_FILTERS
 } from '../../action-types';
 import { mergeArraysByKey } from '../../../Utilities/helpers';
 import { SortDirection } from '../../../PresentationalComponents/Table';
@@ -22,8 +23,14 @@ function entitiesPending(state) {
         ...state,
         columns: mergeArraysByKey([ defaultColumns, state.columns ], 'key'),
         rows: [],
-        activeFilters: [],
         loaded: false
+    };
+}
+
+function clearFilters(state) {
+    return {
+        ...state,
+        activeFilters: []
     };
 }
 
@@ -104,5 +111,6 @@ export default {
     [FILTER_SELECT]: selectFilter,
     [SELECT_ENTITY]: selectEntity,
     [CHANGE_SORT]: changeSort,
+    [CLEAR_FILTERS]: clearFilters,
     [ENTITIES_LOADING]: (state, { payload: { isLoading }}) => ({ ...state, loaded: !isLoading })
 };

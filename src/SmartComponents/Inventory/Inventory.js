@@ -70,6 +70,7 @@ class InventoryTable extends Component {
                             <Pagination
                                 totalItems={ total || (items && items.length) }
                                 page={ page }
+                                hasItems={ Boolean(items) }
                                 onRefresh={ onRefresh }
                                 perPage={ perPage }
                             />
@@ -78,6 +79,7 @@ class InventoryTable extends Component {
                 </EntityTableToolbar>
                 <InventoryList
                     { ...props }
+                    hasItems={ Boolean(items) }
                     onRefresh={ onRefresh }
                     items={ items }
                     pathPrefix={ pathPrefix }

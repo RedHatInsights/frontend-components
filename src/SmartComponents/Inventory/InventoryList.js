@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
-import { loadEntities, showEntities } from '../../redux/actions/inventory';
+import { loadEntities, showEntities, clearFilters } from '../../redux/actions/inventory';
 import { Grid, GridItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import './InventoryList.scss';
@@ -13,7 +13,7 @@ class ContextInventoryList extends React.Component {
     }
 
     loadEntities = (options = {}, reload = true) => {
-        const { page, perPage, onRefresh, items } = this.props;
+        const { page, perPage, onRefresh, items, hasItems } = this.props;
         options = {
             page: options.page || page,
             // eslint-disable-next-line camelcase
@@ -32,21 +32,23 @@ class ContextInventoryList extends React.Component {
                 ...options,
                 controller: this.controller,
                 prefix: this.props.pathPrefix,
-                base: this.props.apiBase
+                base: this.props.apiBase,
+                hasItems
             }
         );
     }
 
     componentDidMount() {
-        const { setRefresh, setUpdate } = this.props;
+        const { setRefresh, setUpdate, onClearFilters } = this.props;
         setRefresh && setRefresh(this.loadEntities);
         setUpdate && setUpdate((options) => this.loadEntities(options, false));
         this.loadEntities();
+        onClearFilters();
     }
 
     componentDidUpdate(prevProps) {
-        const { items } = this.props;
-        if (items && items.length !== 0 && JSON.stringify(items) !== JSON.stringify(prevProps.items)) {
+        const { items, hasItems } = this.props;
+        if (hasItems && JSON.stringify(items) !== JSON.stringify(prevProps.items)) {
             this.loadEntities({}, false);
         }
     }
@@ -111,6 +113,7 @@ InventoryList.propTypes = propTypes;
 
 function mapDispatchToProps(dispatch) {
     return {
+        onClearFilters: () => dispatch(clearFilters()),
         loadEntities: (items = [], config) => {
             if (!Array.isArray(items)) {
                 console.error('Wrong shape of items, array with strings or objects with ID property required!');

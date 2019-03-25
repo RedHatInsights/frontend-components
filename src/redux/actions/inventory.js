@@ -7,7 +7,8 @@ import {
     SHOW_ENTITIES,
     FILTER_SELECT,
     UPDATE_ENTITIES,
-    ENTITIES_LOADING
+    ENTITIES_LOADING,
+    CLEAR_FILTERS
 } from '../action-types';
 import { getEntities } from '../../api/inventory';
 
@@ -66,4 +67,8 @@ export const detailSelect = (appName) => ({
 export const entitiesLoading = (isLoading = true) => ({
     type: ENTITIES_LOADING,
     payload: { isLoading }
+});
+
+export const clearFilters = () => ({
+    type: CLEAR_FILTERS
 });

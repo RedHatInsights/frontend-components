@@ -34,6 +34,7 @@ export const APPLICATION_SELECTED = 'APPLICATION_SELECTED';
 export const SHOW_ENTITIES = 'SHOW_ENTITIES';
 export const FILTER_SELECT = 'FILTER_SELECT';
 export const ENTITIES_LOADING = 'ENTITIES_LOADING';
+export const CLEAR_FILTERS = 'CLEAR_FILTERS';
 
 /**
  * Notifications actions

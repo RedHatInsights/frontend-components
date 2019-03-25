@@ -24,10 +24,9 @@ EntityTableToolbar.propTypes = {
     apiBase: PropTypes.string
 };
 
-function mapStateToProps({ entities: { total }}, { totalItems, ...props }) {
+function mapStateToProps({ entities: { total }}, { totalItems, hasItems }) {
     return {
-        ...props,
-        total: totalItems || total
+        total: hasItems ? totalItems : total
     };
 }
 
