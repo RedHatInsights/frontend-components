@@ -30,7 +30,9 @@ class InventoryRuleList extends Component {
     }
 
     processRemediation (systemId, reports) {
-        const issues = reports.filter(r => r.rule.has_playbook).map(r => ({ id: `advisor:${r.rule.rule_id}`, description: r.rule.description }));
+        const issues = reports.filter(r => r.resolution.has_playbook).map(
+            r => ({ id: `advisor:${r.rule.rule_id}`, description: r.rule.description })
+        );
 
         return issues.length ?
             { issues, systems: [ systemId ]} :
@@ -41,7 +43,7 @@ class InventoryRuleList extends Component {
         const { entity } = this.props;
         try {
             await insights.chrome.auth.getUser();
-            const data = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports`, { credentials: 'include' })
+            const data = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports/`, { credentials: 'include' })
             .then(data => data.json()).catch(error => { throw error; });
             this.setState({
                 inventoryReport: data,
@@ -66,7 +68,7 @@ class InventoryRuleList extends Component {
 
     async fetchKbaDetails (kbaIds) {
         try {
-            const data = await fetch(`/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`, { credentials: 'include' })
+            const data = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`, { credentials: 'include' })
             .then(data => data.json());
             this.setState({
                 kbaDetails: data.response.docs
