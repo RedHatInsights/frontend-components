@@ -29,6 +29,7 @@ export * from './PresentationalComponents/Reboot';
 export * from './PresentationalComponents/Skeleton';
 export * from './PresentationalComponents/TableToolbar';
 export * from './PresentationalComponents/EmptyTable';
+export * from './PresentationalComponents/Spinner';
 export * from './Charts/Gauge';
 export * from './Charts/Matrix';
 export * from './Charts/Donut';
