@@ -1,7 +1,7 @@
 @import '../../Utilities';
 
 @mixin setBatteryFont() {
-  @include rem(height, 18px);
+  @include rem(height, 28px);
   line-height: 1;
 }
 
@@ -14,7 +14,7 @@
 // Setting the icons
 .ins-battery-1, .ins-battery-low, .ins-battery-info {
   svg {
-    path { fill: $ins-color--low; }
+    path { fill: $ins-color--gray; }
   }
 }
 
@@ -38,6 +38,6 @@
 
 .ins-battery-0, .ins-battery-null {
   svg {
-    path { fill: #d7d7d7; }
+    path { fill: $ins-color--gray; }
   }
 }

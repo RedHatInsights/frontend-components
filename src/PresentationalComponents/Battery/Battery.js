@@ -1,3 +1,4 @@
+/* eslint max-len: 0 */
 import React from 'react';
 import propTypes from 'prop-types';
 
@@ -46,6 +47,9 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
                     viewBox="0 0 448 512"
                     style={ { enableBackground: 'new 0 0 448 512' } }
                     shapeRendering= 'geometricpresision'>
+                    <path
+                        style={ { fill: 'none', fillOpacity: 1, stroke: '#969696', strokeWidth: 41.96378708, strokeLinejoin: 'round', strokeMiterlimit: 4, strokeDasharray: 'none', strokeDashoffset: 0, strokeOpacity: 1 } }
+                        d="m 144.16452,21.032222 h 159.67454 q 123.1748,0 123.1748,128.667868 v 212.64759 q 0,128.66788 -123.1748,128.66788 H 144.16452 q -123.174811,0 -123.174811,-128.66788 V 149.70009 q 0,-128.667868 123.174811,-128.667868 z" />
                     { batteryLevels(severity) }
                 </svg>
             </i>
