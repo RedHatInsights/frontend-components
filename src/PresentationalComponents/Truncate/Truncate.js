@@ -7,6 +7,8 @@ import { Button, Stack, StackItem } from '@patternfly/react-core';
 
 import './truncate.scss';
 
+import sanitizeHtml from 'sanitize-html';
+
 class Truncate extends React.Component {
 
     constructor(props) {
@@ -22,6 +24,10 @@ class Truncate extends React.Component {
         this.setState({
             showText: !this.state.showText
         });
+    }
+
+    dangerousHtml(text) {
+        return { __html: sanitizeHtml(text) };
     }
 
     render() {
@@ -56,9 +62,10 @@ class Truncate extends React.Component {
         if (this.props.inline) {
             return (
                 <React.Fragment>
-                    <span className={ truncateClasses } widget-type='InsightsTruncateInline'>
-                        { showText === false ? `${trimmedText}...` : this.props.text }
-                    </span>
+                    <span
+                        className={ truncateClasses }
+                        widget-type='InsightsTruncateInline'
+                        dangerouslySetInnerHTML={ this.dangerousHtml(showText === false ? `${trimmedText}...` : this.props.text) } />
                     { showText === false ? expandButton : collapseButton }
                 </React.Fragment>
             );
@@ -66,9 +73,9 @@ class Truncate extends React.Component {
             return (
                 <Stack className={ truncateClasses }>
                     <StackItem>
-                        <span widget-type='InsightsTruncateBlock'>
-                            { showText === false ? `${trimmedText}...` : this.props.text }
-                        </span>
+                        <span
+                            widget-type='InsightsTruncateBlock'
+                            dangerouslySetInnerHTML={ this.dangerousHtml(showText === false ? `${trimmedText}...` : this.props.text) } />
                     </StackItem>
                     <StackItem>
                         { showText === false ? expandButton : collapseButton }
