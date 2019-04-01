@@ -1,12 +1,15 @@
 @import '../../Utilities';
 
 @mixin setBatteryFont() {
+  position: relative;
   @include rem(height, 28px);
-  line-height: 1;
 }
 
-.ins-battery {
+i.ins-battery {
+  display: inline-block;
+  line-height: 0;
   svg {
+    position: relative;
     @include setBatteryFont;
   }
 }
