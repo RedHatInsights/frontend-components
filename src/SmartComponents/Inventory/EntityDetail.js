@@ -94,7 +94,7 @@ class EntityDetails extends Component {
                     </div>
                     <div>
                         <span>
-                            System:
+                            Operating system:
                         </span>
                         <span>
                             {
