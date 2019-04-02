@@ -1,7 +1,8 @@
 import React from 'react';
+import { renderToString } from 'react-dom/server';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
-import { BullseyeIcon, ChevronDownIcon, ChevronRightIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
+import { BullseyeIcon, ChevronDownIcon, ChevronRightIcon, LightbulbIcon, ThumbsUpIcon, ExternalLinkAltIcon } from '@patternfly/react-icons';
 import { Card, CardBody, CardHeader, Stack, StackItem, List, ListItem, Split, SplitItem } from '@patternfly/react-core';
 import doT from 'dot';
 import sanitizeHtml from 'sanitize-html';
@@ -45,13 +46,15 @@ class ExpandableRulesCard extends React.Component {
                 ul: sanitizeHtml.simpleTransform('ul', { class: 'pf-c-list' })
             }
         };
+        const externalLinkIcon = renderToString(<ExternalLinkAltIcon />);
 
         try {
             const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
             const compiledMd = marked(sanitizeHtml(compiledDot, sanitizeOptions));
 
-            console.warn(compiledMd.replace(`<ul>`, `<ul class="pf-c-list">`));
-            return <div dangerouslySetInnerHTML={ { __html: compiledMd.replace(`<ul>`, `<ul class="pf-c-list">`) } } />;
+            return <div dangerouslySetInnerHTML={ { __html: compiledMd
+            .replace(`<ul>`, `<ul class="pf-c-list">`)
+            .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`) } } />;
         } catch (error) {
             console.warn(error, definitions, template); // eslint-disable-line no-console
             return <React.Fragment> Ouch. We were unable to correctly render this text, instead please enjoy the raw data.
@@ -118,7 +121,7 @@ class ExpandableRulesCard extends React.Component {
                                     <LightbulbIcon/><strong>Related Knowledgebase articles: </strong>
                                 </CardHeader>
                                 <CardBody>
-                                    <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle }</a>
+                                    <a href={ `${kbaDetail.view_uri}` } rel="noopener">`${ kbaDetail.publishedTitle } <ExternalLinkAltIcon />`</a>
                                 </CardBody>
                             </Card>
                         </StackItem> }
@@ -126,16 +129,16 @@ class ExpandableRulesCard extends React.Component {
                             { rule.more_info && this.templateProcessor(rule.more_info) }
                             <List>
                                 <ListItem>
-                                    { `To learn how to upgrade packages, see "` }
-                                    <a href="https://access.redhat.com/solutions/9934" rel="noopener">What is yum and how do I use it?</a>
-                                    { `."` }
+                                    { `To learn how to upgrade packages, see ` }<a href="https://access.redhat.com/solutions/9934" rel="noopener">
+                                         What is yum and how do I use it? <ExternalLinkAltIcon />
+                                    </a>{ `.` }
                                 </ListItem>
                                 <ListItem>{ `The Customer Portal page for the ` }
-                                    <a href="https://access.redhat.com/security/" rel="noopener">Red Hat Security Team</a>
+                                    <a href="https://access.redhat.com/security/" rel="noopener">Red Hat Security Team <ExternalLinkAltIcon /></a>
                                     { ` contains more information about policies, procedures, and alerts for Red Hat Products.` }
                                 </ListItem>
                                 <ListItem>{ `The Security Team also maintains a frequently updated blog at ` }
-                                    <a href="https://securityblog.redhat.com" rel="noopener">securityblog.redhat.com</a>.
+                                    <a href="https://securityblog.redhat.com" rel="noopener">securityblog.redhat.com <ExternalLinkAltIcon /></a>.
                                 </ListItem>
                             </List>
                         </div>
