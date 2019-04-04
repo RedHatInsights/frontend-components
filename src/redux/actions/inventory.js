@@ -16,7 +16,7 @@ export const loadEntities = (items = [], config) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
     payload: getEntities(items, config).then(results => ({
         ...results,
-        page: config.itemsPage || results.page
+        page: config.itemsPage || (results && results.page)
     }))
 });
 

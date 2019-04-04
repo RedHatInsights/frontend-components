@@ -79,6 +79,11 @@ export function getEntities(items, { base = INVENTORY_API_BASE, controller, hasI
                 }
 
                 throw new Error(`Unexpected response code ${r.status}`);
+            })
+            .catch(error => {
+                if (!(error instanceof DOMException)) {
+                    throw error;
+                }
             });
         }
     );

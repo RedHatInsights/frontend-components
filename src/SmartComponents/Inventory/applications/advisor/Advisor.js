@@ -57,7 +57,7 @@ class InventoryRuleList extends Component {
             this.props.addNotification({
                 variant: 'danger',
                 dismissable: true,
-                title: '',
+                title: 'Rules Error',
                 description: 'Inventory item rule fetch failed.'
             });
             this.setState({
