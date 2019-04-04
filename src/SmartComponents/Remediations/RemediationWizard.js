@@ -83,7 +83,7 @@ class RemediationWizard extends Component {
     }
 
     loadRemediations = async () => {
-        const { remediations: existingRemediations } = await api.getRemediations();
+        const { data: existingRemediations } = await api.getRemediations();
         this.setState({ existingRemediations });
     }
 
