@@ -47,11 +47,11 @@ class InventoryRuleList extends Component {
             .then(data => data.json()).catch(error => { throw error; });
             this.setState({
                 inventoryReport: data,
-                activeReports: this.sortActiveReports(data.active_reports),
+                activeReports: this.sortActiveReports(data),
                 inventoryReportFetchStatus: 'fulfilled',
-                remediation: this.processRemediation(entity.id, data.active_reports)
+                remediation: this.processRemediation(entity.id, data)
             });
-            const kbaIds = data && data.active_reports.map(report => report.rule.node_id).join(` OR `);
+            const kbaIds = data.map(report => report.rule.node_id).join(` OR `);
             this.fetchKbaDetails(kbaIds);
         } catch (error) {
             this.props.addNotification({
@@ -136,13 +136,13 @@ class InventoryRuleList extends Component {
                     </Card>
                 ) }
                 { inventoryReportFetchStatus === 'fulfilled' && (
-                    activeReports ? this.buildRuleCards() :
+                    activeReports.length > 0 ? this.buildRuleCards() :
                         <Card className="ins-empty-rule-cards">
                             <CardHeader>
                                 <CommentSlashIcon size='lg'/>
                             </CardHeader>
                             <CardBody>
-                                No data available for configuration assessment at the moment.
+                                No data available for Insights at the moment.
                             </CardBody>
                         </Card>
                 ) }
