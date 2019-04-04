@@ -52,6 +52,7 @@ There is also a playground for any development
   * [Table](doc/components/table.md)
   * [Breadcrumbs](doc/components/breadcrumbs.md)
   * [Notifications](doc/components/notifications.md)
+  * [Filters](doc/components/filters.md)
 
 Hot-loadable components
 * [Inventory](doc/components/inventory/inventory.md)

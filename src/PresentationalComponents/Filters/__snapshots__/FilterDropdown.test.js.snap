@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterDropdown component should render 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+    >
+      Filters
+    </DropdownToggle>
+  }
+>
+  <div>
+    <div
+      className="filterTitle"
+      key="0"
+    >
+      <FilterInput
+        addRemoveFilters={[Function]}
+        aria-label=""
+        className={null}
+        currentPage={null}
+        filters={Object {}}
+        id="0"
+        key="check00"
+        label=""
+        param=""
+        type=""
+        value=""
+      />
+    </div>
+  </div>
+</Dropdown>
+`;

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterInput component should render a checkbox input 1`] = `
+<Checkbox
+  aria-label="label"
+  className=""
+  id="id"
+  isChecked={false}
+  isDisabled={false}
+  isValid={true}
+  label="label"
+  onChange={[Function]}
+  param="param"
+  value="value"
+/>
+`;
+
+exports[`FilterInput component should render a radio input 1`] = `
+<Radio
+  aria-label="label"
+  className=""
+  id="id"
+  isChecked={true}
+  isDisabled={false}
+  isValid={true}
+  label="label"
+  name="param"
+  onChange={[Function]}
+  param="param"
+  value="value"
+/>
+`;
