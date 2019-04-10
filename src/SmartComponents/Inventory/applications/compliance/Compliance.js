@@ -7,7 +7,21 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
-import { Card, CardBody, CardHeader } from '@patternfly/react-core';
+import { ClipboardCheckIcon } from '@patternfly/react-icons';
+import {
+    Card,
+    CardBody,
+    CardHeader,
+    Title,
+    Text,
+    TextContent,
+    TextVariants,
+    Button,
+    Bullseye,
+    EmptyState,
+    EmptyStateIcon,
+    EmptyStateBody
+} from '@patternfly/react-core';
 import { NotEqualIcon } from '@patternfly/react-icons';
 import './compliance.scss';
 
@@ -60,7 +74,37 @@ class SystemDetails extends Component {
 
     renderError = (error) => {
         const errorMsg = `Oops! Error loading System data: ${error}`;
-        return (
+        return (error.networkError && error.networkError.statusCode === 404) ?
+            <Bullseye>
+                <EmptyState>
+                    <EmptyStateIcon size="xl" title="Compliance" icon={ ClipboardCheckIcon } />
+                    <br/>
+                    <Title size="lg">Welcome to Compliance</Title>
+                    <EmptyStateBody>
+                        <TextContent>
+                            You have not uploaded any reports yet. Please generate a report using
+                            OpenSCAP:
+                            <Text component={ TextVariants.blockquote }>
+                                oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_standard
+                                --results scan.xml /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+                            </Text>
+                            and upload it using the following command:
+                            <Text component={ TextVariants.blockquote }>
+                                sudo insights-client --verbose --payload scan.xml
+                                --content-type application/vnd.redhat.compliance.something+tgz
+                            </Text>
+                        </TextContent>
+                    </EmptyStateBody>
+
+                    <Button
+                        variant="primary"
+                        component="a"
+                        target="_blank"
+                        href="https://www.open-scap.org/getting-started/">
+                        Get started with OpenSCAP
+                    </Button>
+                </EmptyState>
+            </Bullseye> :
             <Card className="ins-error-card">
                 <CardHeader>
                     <NotEqualIcon />
@@ -68,8 +112,7 @@ class SystemDetails extends Component {
                 <CardBody>
                     <div>{ errorMsg }</div>
                 </CardBody>
-            </Card>
-        );
+            </Card>;
     }
 
     render() {
