@@ -56,7 +56,7 @@ class StatusDropdown extends Component {
         const isLoaded = statusList && !statusList.isLoading;
         const dropdownItems = isLoaded && (
             <FormSelect value={ this.state.statusId } onChange={ this.onChange } id="change-status">
-                { statusList.payload.map(item => (
+                { statusList.payload.data.map(item => (
                     <FormSelectOption key={ item.id } value={ item.id } label={ item.name } />
                 )) }
             </FormSelect>
