@@ -9,16 +9,24 @@ export function getCveListBySystem({
     page_size: pageSize,
     cvss_from: cvssFrom,
     cvss_to: cvssTo,
+    public_from: publicFrom,
+    public_to: publicTo,
+    severity,
     filter,
+    status_id: statusId,
     data_format: dataFormat,
     sort
 }) {
-    const query = [
+    let query = [
         page && { page },
         pageSize && { page_size: pageSize },
         cvssFrom && { cvss_from: cvssFrom },
+        publicFrom && { public_from: publicFrom },
+        publicTo && { public_to: publicTo },
+        severity && { severity },
         cvssTo && { cvss_to: cvssTo },
         filter && { filter },
+        statusId && { status_id: statusId },
         dataFormat && { data_format: dataFormat },
         sort && { sort }
     ]
@@ -49,13 +57,15 @@ export async function fetchStatusList() {
     return fetch(`${BASE_ROUTE}${API_VERSION}/status`, {
         method: 'GET',
         credentials: 'include'
-    }).then(res => {
+    })
+    .then(res => {
         if (!res.ok) {
             throw res;
         }
 
         return res.json();
-    }).catch(error => {
+    })
+    .catch(error => {
         return error.json().then(error => {
             throw { title: 'Vulnerability Error', ...error.errors[0] };
         });

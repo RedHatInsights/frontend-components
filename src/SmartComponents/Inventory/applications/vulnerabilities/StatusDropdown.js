@@ -142,7 +142,7 @@ StatusDropdown.propTypes = {
     currentStatusId: propTypes.number,
     currentStatusName: propTypes.string,
     cveName: propTypes.string,
-    statusList: propTypes.array
+    statusList: propTypes.object
 };
 
 StatusDropdown.defaultProps = {

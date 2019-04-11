@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { downloadFile } from '../../../../Utilities/helpers';
-import { GenericError, NoVulnerabilityData } from './constants';
+import { GenericError, NoVulnerabilityData, CVSSOptions, PublicDateOptions } from './constants';
 import StatusDropdown from './StatusDropdown';
 import VulnerabilitiesCveTable from './VulnerabilitiesCveTable';
 import VulnerabilitiesCveTableToolbar from './VulnerabilitiesCveTableToolbar';
@@ -27,12 +27,26 @@ class VulnerabilitiesCves extends Component {
     };
 
     apply = (config = {}) => {
+        /* eslint-disable camelcase */
         const toBeReset = [ 'filter', 'page_size', 'show_all' ];
         if (some(toBeReset, item => config.hasOwnProperty(item) && config[item] !== this.state[item])) {
             config.page = 1;
         }
 
+        if (config.hasOwnProperty('cvss_filter')) {
+            let cvssEntry = CVSSOptions.find(item => item.value === config.cvss_filter);
+            config.cvss_from = cvssEntry.from;
+            config.cvss_to = cvssEntry.to;
+        }
+
+        if (config.hasOwnProperty('publish_date')) {
+            let publicEntry = PublicDateOptions.find(item => item.value === config.publish_date);
+            config.public_from = publicEntry.from && publicEntry.from.format('YYYY-MM-DD');
+            config.public_to = publicEntry.to && publicEntry.to.format('YYYY-MM-DD');
+        }
+
         this.setState({ ...this.state, ...config }, this.sendRequest);
+        /* eslint-enable camelcase */
     };
 
     selectorHandler = selectedCves => {
@@ -41,7 +55,10 @@ class VulnerabilitiesCves extends Component {
 
     sendRequest = () => {
         const { fetchData } = this.props;
-        fetchData && fetchData(() => this.props.fetchResource(this.state));
+        //TODO: need a better way of doing this
+        const showAllParam = this.state.hasOwnProperty('show_all') && !this.state.show_all;
+        // eslint-disable-next-line camelcase
+        fetchData && fetchData(() => this.props.fetchResource({ ...this.state, show_all: showAllParam }));
     };
 
     downloadReport = format => {

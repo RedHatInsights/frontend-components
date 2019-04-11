@@ -1,6 +1,7 @@
 import { Bullseye, Button, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
 import { CubesIcon } from '@patternfly/react-icons';
 import React from 'react';
+import moment from 'moment';
 
 // Reports that no CVEs were found after filtering results
 export const FilterNotFoundForCVE = (
@@ -88,8 +89,58 @@ export const GenericError = (
         <EmptyState>
             <EmptyStateIcon icon={ CubesIcon } />
             <Title headingLevel="h5" size="lg">
-            There was an error loading resources
+                There was an error loading resources
             </Title>
         </EmptyState>
     </Bullseye>
 );
+
+//CVSS Base score label to value
+export const CVSSOptions = [
+    { value: 'all', label: 'All' },
+    { value: 'less4', label: 'Less than 4', to: 3.999 },
+    { value: 'from4less6', label: '4 - 6', from: 4, to: 5.999 },
+    { value: 'from6to8', label: '6 - 8', from: 6, to: 7.999 },
+    { value: 'from8to10', label: '8 - 10', from: 8, to: 10 }
+];
+
+//Public date labels to value
+
+export const PublicDateOptions = [
+    { value: 'all', label: 'All' },
+    { value: 'last7', label: 'Last 7 days', from: moment().subtract(7, 'days') },
+    { value: 'last30', label: 'Last 30 days', from: moment().subtract(30, 'days') },
+    { value: 'last90', label: 'Last 90 days', from: moment().subtract(90, 'days') },
+    { value: 'lastYear', label: 'Last year', from: moment().subtract(1, 'years') },
+    { value: 'MoreThanYear', label: 'More than 1 year ago',  to: moment().subtract(1, 'years') }
+];
+
+// Filter categories
+export const filtersShowAll = {
+    type: 'checkbox',
+    title: '',
+    urlParam: 'show_all',
+    isChecked: true,
+    values: [{ label: 'Hide CVEs that do not affect my inventory', value: 'true' }]
+};
+
+export const filtersSeverity = {
+    type: 'checkbox',
+    title: 'Severity',
+    urlParam: 'severity',
+    values: [{ label: 'Critical', value: '7' }, { label: 'High', value: '5' }, { label: 'Medium', value: '4' }, { label: 'Low', value: '2' }]
+};
+
+export const filtersCVSSScore = {
+    type: 'radio',
+    title: 'CVSS Base',
+    urlParam: 'cvss_filter',
+    values: CVSSOptions.map(item => ({ label: item.label, value: item.value }))
+};
+
+export const filtersPublishDate = {
+    type: 'radio',
+    title: 'Publish date',
+    urlParam: 'publish_date',
+    values: PublicDateOptions.map(item => ({ label: item.label, value: item.value }))
+};

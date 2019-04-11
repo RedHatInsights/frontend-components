@@ -11,7 +11,8 @@ class FilterInput extends Component {
         const { type, filters, param, value } = this.props;
         switch (type) {
             case 'checkbox':
-                param in filters && filters[param].includes(value) ? this.setState({ checked: true }) : this.setState({ checked: false });
+                param in filters && filters[param] && filters[param].includes(value)
+                    ? this.setState({ checked: true }) : this.setState({ checked: false });
                 break;
         }
     }

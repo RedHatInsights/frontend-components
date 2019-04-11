@@ -62,8 +62,10 @@ class VulnerabilitiesCveTable extends Component {
 
     noCves = () => {
         const { cves, entity } = this.props;
-
-        if (cves.meta.filter) {
+        const filterFields = [ 'filter', 'cvss_from', 'cvss_to', 'public_from', 'public_to', 'severity', 'status_id' ].filter(
+            item => cves.meta.hasOwnProperty(item) && cves.meta[item]
+        );
+        if (filterFields.length !== 0) {
             return FilterNotFoundForCVE;
         } else if (entity) {
             return EmptyCVEListForSystem;
