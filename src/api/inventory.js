@@ -1,6 +1,11 @@
 import 'abortcontroller-polyfill/dist/polyfill-patch-fetch';
 import flatMap from 'lodash/flatMap';
-export const INVENTORY_API_BASE = '/api/inventory/v1/hosts';
+export const INVENTORY_API_BASE = '/api/inventory/v1';
+
+import instance from './interceptors';
+import { HostsApi } from '@redhat-cloud-services/host-inventory-client';
+
+const hosts = new HostsApi(undefined, INVENTORY_API_BASE, instance);
 
 /* eslint camelcase: off */
 export const mapData = ({ facts = {}, ...oneResult }) => ({
@@ -22,69 +27,34 @@ export const mapData = ({ facts = {}, ...oneResult }) => ({
     }
 });
 
-function buildQuery({ per_page, page, filters }) {
-    const allowedFilters = [ 'hostname_or_id', 'fqdn' ];
-    let query = [];
-    const makeValue = (item, keyValue, keyFilter) => (
-        allowedFilters.find(allowed => allowed === item[keyValue]) && `${item[keyValue]}=${item[keyFilter]}`
-    );
-    if (per_page || page) {
-        const params = { per_page, page };
-        query = [
-            ...query,
-            ...Object.keys(params).reduce(
-                (acc, curr) => [ ...acc, `${curr}=${params[curr]}` ], []
-            )
-        ];
+export function getEntities(items, { controller, hasItems, filters, per_page: perPage, page }) {
+    const hostnameOrId = filters ? filters.find(filter => filter.value === 'hostname_or_id') : undefined;
+
+    if (hasItems) {
+        return hosts.apiHostGetHostById(items, perPage, page, { cancelToken: controller && controller.token })
+        .then(({ results = [], ...data }) => ({
+            ...data,
+            results: results.map(result => mapData({
+                ...result,
+                display_name: result.display_name || result.fqdn || result.id
+            }))
+        }));
     }
 
-    if (filters) {
-        query = [
-            ...query,
-            ...Object.values(filters).reduce((acc, curr) => [
-                ...acc,
-                makeValue(curr, 'value', 'filter'),
-                makeValue(curr, 'group', 'value')
-            ], [])
-        ].filter(Boolean);
-    }
-
-    return query ? `?${query.join('&')}` : '';
-}
-
-export function getEntities(items, { base = INVENTORY_API_BASE, controller, hasItems, ...rest }) {
-    let query = buildQuery(rest);
-
-    return insights.chrome.auth.getUser().then(
-        () => {
-            if (hasItems && items / length === 0) {
-                return {};
-            }
-
-            return fetch(
-                `${base}${items.length !== 0 ? '/' + items : ''}${query}`,
-                {
-                    credentials: 'include',
-                    signal: controller && controller.signal
-                }
-            ).then(r => {
-                if (r.ok) {
-                    return r.json().then(({ results = [], ...data }) => ({
-                        ...data,
-                        results: results.map(result => mapData({
-                            ...result,
-                            display_name: result.display_name || result.fqdn || result.id
-                        }))
-                    }));
-                }
-
-                throw new Error(`Unexpected response code ${r.status}`);
-            })
-            .catch(error => {
-                if (!(error instanceof DOMException)) {
-                    throw error;
-                }
-            });
-        }
-    );
+    return hosts.apiHostGetHostList(
+        undefined,
+        undefined,
+        hostnameOrId,
+        undefined,
+        perPage,
+        page,
+        { cancelToken: controller && controller.token }
+    )
+    .then(({ results = [], ...data }) => ({
+        ...data,
+        results: results.map(result => mapData({
+            ...result,
+            display_name: result.display_name || result.fqdn || result.id
+        }))
+    }));
 }

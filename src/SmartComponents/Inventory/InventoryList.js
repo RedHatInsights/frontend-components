@@ -6,6 +6,7 @@ import { Grid, GridItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import './InventoryList.scss';
 import { InventoryContext } from './Inventory';
+import { CancelToken } from 'axios';
 
 class ContextInventoryList extends React.Component {
     constructor(props) {
@@ -22,10 +23,10 @@ class ContextInventoryList extends React.Component {
         };
         reload && onRefresh(options);
         if (this.controller) {
-            this.controller.abort();
+            this.controller.cancel('Get host items canceled by user.');
         }
 
-        this.controller = new AbortController();
+        this.controller = CancelToken.source();
         this.props.loadEntities && this.props.loadEntities(
             items,
             {
