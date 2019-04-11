@@ -12,6 +12,17 @@ function pendingVulnerabilities(state, { meta }) {
     };
 }
 
+function rejectedVulnerabilities(state, { meta, payload }) {
+    return {
+        ...state,
+        timestamp: meta,
+        cveList: {
+            payload: { errors: payload },
+            isLoading: false
+        }
+    };
+}
+
 function fulfilledVulnerabilities(state, { payload, meta }) {
     if (meta >= state.timestamp) {
         return {
@@ -48,6 +59,7 @@ function fulfilledStatusList(state, { payload }) {
 export const VulnerabilitiesStore = applyReducerHash(
     {
         [`${CVE_FETCH_LIST}_PENDING`]: pendingVulnerabilities,
+        [`${CVE_FETCH_LIST}_REJECTED`]: rejectedVulnerabilities,
         [`${CVE_FETCH_LIST}_FULFILLED`]: fulfilledVulnerabilities,
         [`${SYSTEM_CVE_STATUS_LIST}_PENDING`]: pendingStatusList,
         [`${SYSTEM_CVE_STATUS_LIST}_FULFILLED`]: fulfilledStatusList

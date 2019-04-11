@@ -8,10 +8,10 @@ import StatusDropdown from './StatusDropdown';
 export function createCveListBySystem({ isLoading, systemId, ...rest }) {
     if (!isLoading) {
         const {
-            payload: { data, meta }
+            payload: { data, meta, errors }
         } = rest;
         return {
-            data: data.map(row => ({
+            data: data && data.map(row => ({
                 id: row.id,
                 cells: [
                     <span key={ row.id }>
@@ -34,6 +34,7 @@ export function createCveListBySystem({ isLoading, systemId, ...rest }) {
                 ]
             })),
             meta,
+            errors,
             isLoading
         };
     }

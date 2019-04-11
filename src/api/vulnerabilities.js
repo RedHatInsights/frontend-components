@@ -29,13 +29,15 @@ export function getCveListBySystem({
         return fetch(`${BASE_ROUTE}${API_VERSION}/systems/${system}/cves?${query}`, {
             method: 'GET',
             credentials: 'include'
-        }).then(res => {
+        })
+        .then(res => {
             if (!res.ok) {
                 throw res;
             }
 
             return res.json();
-        }).catch(error => {
+        })
+        .catch(error => {
             return error.json().then(error => {
                 throw { title: 'Vulnerability Error', ...error.errors[0] };
             });

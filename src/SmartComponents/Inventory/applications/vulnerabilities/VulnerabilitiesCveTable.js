@@ -1,13 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import { Bullseye } from '@patternfly/react-core';
-import { Pagination } from '../../../../PresentationalComponents/Pagination';
-import routerParams from '../../../../Utilities/RouterParams';
-import { SortDirection, TableVariant } from '../../../../PresentationalComponents/Table';
+import { SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 import propTypes from 'prop-types';
-import { RowLoader } from '../../../../Utilities/helpers';
-import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
+import React, { Component, Fragment } from 'react';
+import { Pagination } from '../../../../PresentationalComponents/Pagination';
 import { TableToolbar } from '../../../../PresentationalComponents/TableToolbar';
+import { RowLoader } from '../../../../Utilities/helpers';
+import routerParams from '../../../../Utilities/RouterParams';
+import { EmptyCVEList, EmptyCVEListForSystem, FilterNotFoundForCVE } from './constants';
 
 class VulnerabilitiesCveTable extends Component {
     state = { selectedCves: new Set() };
@@ -45,7 +44,7 @@ class VulnerabilitiesCveTable extends Component {
         );
     };
 
-    createSortBy = (value) => {
+    createSortBy = value => {
         if (value) {
             let columnMapping = this.props.isSelectable ? [{ key: 'checkbox' }, ...this.props.header ] : this.props.header;
             let direction = value[0] === '+' ? SortByDirection.asc : SortByDirection.desc;
@@ -62,16 +61,15 @@ class VulnerabilitiesCveTable extends Component {
     };
 
     noCves = () => {
-        const { cves } = this.props;
-        return (
-            <Bullseye>
-                <b>
-                    { cves.meta.filter
-                        ? `None of your systems are currently exposed to any CVE matching filter " ${cves.meta.filter}"`
-                        : 'You are not exposed to any CVEss.' }
-                </b>
-            </Bullseye>
-        );
+        const { cves, entity } = this.props;
+
+        if (cves.meta.filter) {
+            return FilterNotFoundForCVE;
+        } else if (entity) {
+            return EmptyCVEListForSystem;
+        } else if (cves.data.length === 0) {
+            return EmptyCVEList;
+        }
     };
 
     onSelect = (event, isSelected, rowId) => {
@@ -79,44 +77,46 @@ class VulnerabilitiesCveTable extends Component {
         const { selectedCves } = this.state;
         if (rowId === -1) {
             isSelected ? cves.data.forEach(cve => selectedCves.add(cve.id)) : cves.data.forEach(cve => selectedCves.delete(cve.id));
-        }
-        else {
+        } else {
             const cveName = cves.data[rowId] && cves.data[rowId].id;
             isSelected ? selectedCves.add(cveName) : selectedCves.delete(cveName);
         }
 
         this.setState(selectedCves, () => this.props.selectorHandler(selectedCves));
-    }
+    };
 
     render() {
         const { cves, header } = this.props;
         const { selectedCves } = this.state;
         const rows = cves.data.map(cve => (selectedCves.has(cve.id) && { ...cve, selected: true }) || cve);
         const loader = [ ...Array(3) ].map(() => ({
-            cells: [{
-                title: <RowLoader />,
-                props: {
-                    colSpan: header.length }
-            }]
+            cells: [
+                {
+                    title: <RowLoader />,
+                    props: {
+                        colSpan: header.length
+                    }
+                }
+            ]
         }));
         return (
             <Fragment>
                 <Table
                     aria-label={ 'Vulnerability CVE table' }
                     onSelect={ (this.props.isSelectable && this.onSelect) || undefined }
-                    variant={ TableVariant.compact }
                     cells={ header }
                     rows={ cves.isLoading ? loader : rows }
                     sortBy={ this.createSortBy(cves.meta.sort) }
                     onSort={ this.sortColumn }
                 >
-                    <TableHeader />
-                    <TableBody/>
+                    { (!cves.isLoading && cves.data.length === 0 && this.noCves()) || (
+                        <div>
+                            <TableHeader />
+                            <TableBody />
+                            <TableToolbar isFooter>{ this.createPagination() }</TableToolbar>
+                        </div>
+                    ) }
                 </Table>
-                <TableToolbar isFooter>
-                    { this.createPagination() }
-                </TableToolbar>
-                { !cves.isLoading && cves.data.length === 0 && this.noCves() }
             </Fragment>
         );
     }
@@ -128,6 +128,7 @@ VulnerabilitiesCveTable.propTypes = {
     history: propTypes.object,
     apply: propTypes.func,
     selectorHandler: propTypes.func,
-    isSelectable: propTypes.bool
+    isSelectable: propTypes.bool,
+    entity: propTypes.object
 };
 export default routerParams(VulnerabilitiesCveTable);

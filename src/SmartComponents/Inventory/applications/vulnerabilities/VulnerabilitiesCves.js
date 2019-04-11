@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
 import { Stack, StackItem } from '@patternfly/react-core';
 import some from 'lodash/some';
 import propTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { downloadFile } from '../../../../Utilities/helpers';
+import { GenericError, NoVulnerabilityData } from './constants';
+import StatusDropdown from './StatusDropdown';
 import VulnerabilitiesCveTable from './VulnerabilitiesCveTable';
 import VulnerabilitiesCveTableToolbar from './VulnerabilitiesCveTableToolbar';
-import { downloadFile } from '../../../../Utilities/helpers';
-import StatusDropdown from './StatusDropdown';
 
 class VulnerabilitiesCves extends Component {
     componentDidMount() {
@@ -14,6 +15,16 @@ class VulnerabilitiesCves extends Component {
         StatusDropdown.setCallback(this.sendRequest);
         this.apply(sort && { sort });
     }
+
+    processError = error => {
+        const { status, title, detail } = error;
+        const statusCode = parseInt(status);
+        if (statusCode === 404 && this.props.entity) {
+            return NoVulnerabilityData;
+        } else {
+            return GenericError;
+        }
+    };
 
     apply = (config = {}) => {
         const toBeReset = [ 'filter', 'page_size', 'show_all' ];
@@ -49,31 +60,37 @@ class VulnerabilitiesCves extends Component {
     render() {
         const { cveList, header, showAllCheckbox, dataMapper, showRemediationButton } = this.props;
         const cves = dataMapper(cveList);
-        return (
-            <Stack>
-                <StackItem>
-                    <VulnerabilitiesCveTableToolbar
-                        apply={ this.apply }
-                        totalNumber={ cves.meta.total_items }
-                        showAllCheckbox={ showAllCheckbox }
-                        showRemediationButton={ showRemediationButton }
-                        downloadReport={ this.downloadReport }
-                        cves={ cves }
-                        selectedCves={ this.state && this.state.selectedCves }
-                        entity={ this.props.entity }
-                    />
-                </StackItem>
-                <StackItem>
-                    <VulnerabilitiesCveTable
-                        header={ header }
-                        cves={ cves }
-                        selectorHandler={ this.selectorHandler }
-                        isSelectable={ this.props.isSelectable }
-                        apply={ this.apply }
-                    />
-                </StackItem>
-            </Stack>
-        );
+        const { meta, errors } = cves;
+        if (!errors) {
+            return (
+                <Stack>
+                    <StackItem>
+                        <VulnerabilitiesCveTableToolbar
+                            apply={ this.apply }
+                            totalNumber={ meta.total_items }
+                            showAllCheckbox={ showAllCheckbox }
+                            showRemediationButton={ showRemediationButton }
+                            downloadReport={ this.downloadReport }
+                            cves={ cves }
+                            selectedCves={ this.state && this.state.selectedCves }
+                            entity={ this.props.entity }
+                        />
+                    </StackItem>
+                    <StackItem>
+                        <VulnerabilitiesCveTable
+                            header={ header }
+                            cves={ cves }
+                            selectorHandler={ this.selectorHandler }
+                            isSelectable={ this.props.isSelectable }
+                            apply={ this.apply }
+                            entity={ this.props.entity }
+                        />
+                    </StackItem>
+                </Stack>
+            );
+        } else {
+            return this.processError(errors);
+        }
     }
 }
 
