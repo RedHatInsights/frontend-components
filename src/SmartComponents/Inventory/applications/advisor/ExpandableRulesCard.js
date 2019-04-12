@@ -1,5 +1,4 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { BullseyeIcon, ChevronDownIcon, ChevronRightIcon, LightbulbIcon, ThumbsUpIcon, ExternalLinkAltIcon } from '@patternfly/react-icons';
@@ -46,7 +45,7 @@ class ExpandableRulesCard extends React.Component {
                 ul: sanitizeHtml.simpleTransform('ul', { class: 'pf-c-list' })
             }
         };
-        const externalLinkIcon = renderToString(<ExternalLinkAltIcon />);
+        const externalLinkIcon = '';
 
         try {
             const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
