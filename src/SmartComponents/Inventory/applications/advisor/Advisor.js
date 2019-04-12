@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
+import { addNotification } from '../../../Notifications';
 import '@patternfly/patternfly/utilities/Display/display.css';
 import '@patternfly/patternfly/utilities/Flex/flex.css';
 import { List } from 'react-content-loader';
@@ -169,7 +170,11 @@ const mapStateToProps = ({ entityDetails: { entity }}) => ({
     entity
 });
 
+const mapDispatchToProps = dispatch => ({
+    addNotification: data => dispatch(addNotification(data))
+});
+
 export default withRouter(connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(InventoryRuleList));
