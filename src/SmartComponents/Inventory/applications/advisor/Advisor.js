@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
-import { addNotification } from '../../../Notifications';
 import '@patternfly/patternfly/utilities/Display/display.css';
 import '@patternfly/patternfly/utilities/Flex/flex.css';
 import { List } from 'react-content-loader';
@@ -54,15 +53,10 @@ class InventoryRuleList extends Component {
             const kbaIds = data.map(report => report.rule.node_id).join(` OR `);
             this.fetchKbaDetails(kbaIds);
         } catch (error) {
-            this.props.addNotification({
-                variant: 'danger',
-                dismissable: true,
-                title: 'Rules Error',
-                description: 'Inventory item rule fetch failed.'
-            });
             this.setState({
                 inventoryReportFetchStatus: 'failed'
             });
+            console.warn(error, 'Entity rules fetch failed.');
         }
     }
 
@@ -74,12 +68,7 @@ class InventoryRuleList extends Component {
                 kbaDetails: data.response.docs
             });
         } catch (error) {
-            this.props.addNotification({
-                variant: 'danger',
-                dismissable: true,
-                title: '',
-                description: 'KBA fetch failed.'
-            });
+            console.warn(error, 'KBA detail fetch failed.');
         }
     }
 
@@ -146,13 +135,22 @@ class InventoryRuleList extends Component {
                             </CardBody>
                         </Card>
                 ) }
-                { inventoryReportFetchStatus === 'failed' && (
+                { inventoryReportFetchStatus === 'failed' && this.props.entity && (
                     <Card className="ins-empty-rule-cards">
                         <CardHeader>
                             <FrownOpenIcon size='lg'/>
                         </CardHeader>
                         <CardBody>
                             There was an error fetching rules list for this Entity. Please show your administrator this screen.
+                        </CardBody>
+                    </Card>
+                ) }   { inventoryReportFetchStatus === 'failed' && !this.props.entity && (
+                    <Card className="ins-empty-rule-cards">
+                        <CardHeader>
+                            <FrownOpenIcon size='lg'/>
+                        </CardHeader>
+                        <CardBody>
+                            This system can not be found or might no longer be registered to Red Hat Insights.
                         </CardBody>
                     </Card>
                 ) }
@@ -171,11 +169,7 @@ const mapStateToProps = ({ entityDetails: { entity }}) => ({
     entity
 });
 
-const mapDispatchToProps = dispatch => ({
-    addNotification: data => dispatch(addNotification(data))
-});
-
 export default withRouter(connect(
     mapStateToProps,
-    mapDispatchToProps
+    null
 )(InventoryRuleList));
