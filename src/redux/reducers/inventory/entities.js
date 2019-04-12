@@ -36,6 +36,10 @@ function clearFilters(state) {
 
 // eslint-disable-next-line camelcase
 function entitiesLoaded(state, { payload: { results, per_page: perPage, page, count, total, loaded }}) {
+    if (typeof page === 'undefined') {
+        return state;
+    }
+
     return {
         ...state,
         loaded: loaded === undefined || loaded,

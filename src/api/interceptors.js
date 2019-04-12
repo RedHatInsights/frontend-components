@@ -30,17 +30,14 @@ export function interceptor401(error) {
 }
 
 export function errorInterceptor(err) {
-    if (err.response && err.response.data && err.response.data.errors && err.response.data.errors.length) {
-        const error = err.response.data.errors[0];
-
-        if (error.details && error.details.name) {
-            throw new HttpError(`${error.title} (${error.details.name})`);
+    if (!axios.isCancel(err)) {
+        const errObject = { ...err };
+        if (errObject.response && errObject.response.data) {
+            throw errObject.response.data;
         }
 
-        throw new HttpError(error.title);
+        throw err;
     }
-
-    throw err;
 }
 
 const instance = axios.create();

@@ -1,5 +1,12 @@
 @import "~@patternfly/patternfly/utilities/Flex/flex.css";
 @import "~@patternfly/patternfly/utilities/Display/display.css";
+@import '../../Utilities';
+
+.ins-c-table__toolbar.ins-c-inventory__table--toolbar .pf-l-split {
+    width: 100%;
+
+    .pf-l-split__item:last-child { @include rem('min-width', 200px); }
+}
 
 .ins-inventory-filters {
     width: 100%;
@@ -53,8 +60,17 @@
     }
 }
 
+.ins-c-table__empty {
+    @include rem('margin', 75px);
+    border-bottom: none;
+
+    .pf-c-content {
+        text-align: center;
+    }
+}
+
 .ins-c-entity-table.pf-c-table {
-    margin-bottom: 15px;
+
     .ins-composed-col div:nth-child(2) {
         color: var(--pf-global--link--Color);
         cursor: pointer;

@@ -4,6 +4,7 @@ import routerParams from '../../Utilities/RouterParams';
 import { selectEntity, setSort, detailSelect } from '../../redux/actions/inventory';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
+import { TextContent, Text, TextVariants, Bullseye } from '@patternfly/react-core';
 import { Table as PfTable, TableBody, TableHeader, TableGridBreakpoint, cellWidth, TableVariant } from '@patternfly/react-table';
 import { SkeletonTable } from '../../PresentationalComponents/SkeletonTable';
 import { EmptyTable } from '../../PresentationalComponents/EmptyTable';
@@ -76,7 +77,16 @@ class EntityTable extends React.Component {
                 cells: [{
                     title: (
                         <EmptyTable>
-                            There are no items in inventory. If that&apos;s incorrect, contact your administrator!
+                            <Bullseye>
+                                <TextContent>
+                                    <Text component={ TextVariants.h1 }>
+                                        No matching systems found
+                                    </Text>
+                                    <Text component={ TextVariants.small }>
+                                        This filter criteria matches no systems. Try changing your filter settings.
+                                    </Text>
+                                </TextContent>
+                            </Bullseye>
                         </EmptyTable>
                     ),
                     props: {

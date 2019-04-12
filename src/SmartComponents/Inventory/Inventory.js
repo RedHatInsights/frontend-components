@@ -7,8 +7,8 @@ import Pagination from './Pagination';
 import { updateEntities } from '../../redux/actions/inventory';
 import AppInfo from './AppInfo';
 import { VulnerabilitiesStore } from '../../redux/reducers/inventory/vulnerabilities';
-import { Level, LevelItem } from '@patternfly/react-core';
 import EntityTableToolbar from './EntityTableToolbar';
+import { TableToolbar } from '../../PresentationalComponents/TableToolbar';
 
 export const InventoryContext = createContext('inventory');
 
@@ -61,21 +61,18 @@ class InventoryTable extends Component {
                     page={ page }
                     onRefresh={ onRefresh }
                     perPage={ perPage }
+                    pagination={
+                        <Pagination
+                            totalItems={ total || (items && items.length) }
+                            page={ page }
+                            hasItems={ Boolean(items) }
+                            onRefresh={ onRefresh }
+                            perPage={ perPage }
+                            direction="down"
+                        />
+                    }
                 >
-                    <Level>
-                        <LevelItem>
-                            { children }
-                        </LevelItem>
-                        <LevelItem>
-                            <Pagination
-                                totalItems={ total || (items && items.length) }
-                                page={ page }
-                                hasItems={ Boolean(items) }
-                                onRefresh={ onRefresh }
-                                perPage={ perPage }
-                            />
-                        </LevelItem>
-                    </Level>
+                    { children }
                 </EntityTableToolbar>
                 <InventoryList
                     { ...props }
@@ -87,6 +84,15 @@ class InventoryTable extends Component {
                     perPage={ perPage }
                     showHealth={ showHealth }
                 />
+                <TableToolbar isFooter>
+                    <Pagination
+                        totalItems={ total || (items && items.length) }
+                        page={ page }
+                        hasItems={ Boolean(items) }
+                        onRefresh={ onRefresh }
+                        perPage={ perPage }
+                    />
+                </TableToolbar>
             </InventoryContext.Provider>
         );
     }

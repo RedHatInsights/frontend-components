@@ -3,16 +3,45 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Filter } from './Filter';
 import { TableToolbar } from '../../PresentationalComponents/TableToolbar';
+import { Split, SplitItem } from '@patternfly/react-core';
+import { Skeleton, SkeletonSize } from '../../PresentationalComponents/Skeleton';
 
-const EntityTableToolbar = ({ total, page, onRefresh, perPage, filters, hasItems, pathPrefix, apiBase, ...props }) => (
-    <TableToolbar results={ total }>
-        <Filter { ...props }
-            hasItems={ hasItems }
-            filters={ filters }
-            pathPrefix={ pathPrefix }
-            apiBase={ apiBase }
-            totalItems={ total }
-        />
+const EntityTableToolbar = ({
+    total,
+    page,
+    onRefresh,
+    perPage,
+    filters,
+    hasItems,
+    pathPrefix,
+    apiBase,
+    children,
+    pagination,
+    loaded,
+    ...props
+}) => (
+    <TableToolbar results={ total } className="ins-c-inventory__table--toolbar">
+        <Split>
+            <SplitItem>
+                <Filter { ...props }
+                    hasItems={ hasItems }
+                    filters={ filters }
+                    pathPrefix={ pathPrefix }
+                    apiBase={ apiBase }
+                    totalItems={ total }
+                />
+            </SplitItem>
+            <SplitItem isMain>
+                { children }
+            </SplitItem>
+            <SplitItem>
+                {
+                    loaded ?
+                        pagination :
+                        <Skeleton size={ SkeletonSize.lg } />
+                }
+            </SplitItem>
+        </Split>
     </TableToolbar>
 );
 
@@ -24,9 +53,10 @@ EntityTableToolbar.propTypes = {
     apiBase: PropTypes.string
 };
 
-function mapStateToProps({ entities: { total }}, { totalItems, hasItems }) {
+function mapStateToProps({ entities: { total, loaded }}, { totalItems, hasItems }) {
     return {
-        total: hasItems ? totalItems : total
+        total: hasItems ? totalItems : total,
+        loaded
     };
 }
 

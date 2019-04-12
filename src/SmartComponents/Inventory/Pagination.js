@@ -52,7 +52,7 @@ class ContextFooterPagination extends Component {
     }
 
     render() {
-        const { total, page, perPage, loaded } = this.props;
+        const { total, page, perPage, loaded, direction } = this.props;
         const { page: statePage } = this.state;
         return (
             <Fragment>
@@ -62,7 +62,7 @@ class ContextFooterPagination extends Component {
                         perPageOptions={ perPageOptions }
                         page={ statePage || page }
                         itemsPerPage={ perPage }
-                        direction={ dropDirection.up }
+                        direction={ direction }
                         onSetPage={ this.onSetPage }
                         onPerPageSelect={ this.onPerPageSelect }
                     />
@@ -84,7 +84,8 @@ const propTypes = {
     perPage: PropTypes.number,
     total: PropTypes.number,
     loaded: PropTypes.bool,
-    onRefresh: PropTypes.func
+    onRefresh: PropTypes.func,
+    direction: PropTypes.string
 };
 
 ContextFooterPagination.propTypes = {
@@ -97,6 +98,7 @@ FooterPagination.propTypes = propTypes;
 FooterPagination.defaultProps = {
     total: 0,
     loaded: false,
+    direction: dropDirection.up,
     onRefreshData: () => undefined
 };
 
