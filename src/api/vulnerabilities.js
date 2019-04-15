@@ -75,7 +75,7 @@ export async function fetchStatusList() {
 export function changeSystemCveStatus(inventory_id, cve, status_id, callback) {
     const body = { inventory_id, cve, status_id };
     return fetch(`${BASE_ROUTE}${API_VERSION}/status`, {
-        method: 'POST',
+        method: 'PATCH',
         credentials: 'include',
         headers: {
             Accept: 'application/json',
