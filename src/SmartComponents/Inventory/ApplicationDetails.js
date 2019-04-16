@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TabLayout } from '../../PresentationalComponents/TabLayout';
-import { Switch, Redirect } from 'react-router-dom';
 import { detailSelect } from '../../redux/actions/inventory';
 import routerParams from '../../Utilities/RouterParams';
+import { Tabs, Tab } from '@patternfly/react-core';
 
 class ApplicationDetails extends Component {
     constructor(props) {
@@ -12,25 +11,29 @@ class ApplicationDetails extends Component {
     }
 
     onTabClick = (_event, item) => {
-        const { history, match: { url }, onDetailSelect } = this.props;
-        history.push(`${url}/${item.name}`);
-        onDetailSelect && onDetailSelect(item.name);
+        const { history, match: { url }, onDetailSelect, items } = this.props;
+        const activeItem = items.find(oneApp => oneApp.name === item);
+        history.push(`${url}/${activeItem.name}`);
+        onDetailSelect && onDetailSelect(activeItem.name);
     }
 
     render() {
-        const { match: { path }, activeApp, items } = this.props;
+        const { activeApp, items } = this.props;
         const defaultApp = (activeApp && activeApp.appName) || items && items[0] && items[0].name;
         return (
             <React.Fragment>
                 {
                     items &&
-                    <TabLayout items={ items.length > 1 ? items : undefined }
-                        onTabClick={ this.onTabClick }
-                        active={ defaultApp }>
-                        <Switch>
-                            <Redirect to={ `${path}/${defaultApp}` }/>
-                        </Switch>
-                    </TabLayout>
+                    <Tabs
+                        activeKey={ defaultApp }
+                        onSelect={ this.onTabClick }
+                        isFilled
+                        className="ins-c-inventory-detail__app-tabs"
+                    >
+                        { items.map((item, key) => (
+                            <Tab key={ key } eventKey={ item.name } title={ item.title }></Tab>
+                        )) }
+                    </Tabs>
                 }
             </React.Fragment>
         );

@@ -58,3 +58,5 @@ export function getEntities(items, { controller, hasItems, filters, per_page: pe
         }))
     }));
 }
+
+export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);

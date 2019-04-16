@@ -10,7 +10,7 @@ import {
     ENTITIES_LOADING,
     CLEAR_FILTERS
 } from '../action-types';
-import { getEntities } from '../../api/inventory';
+import { getEntities, getEntitySystemProfile } from '../../api/inventory';
 
 export const loadEntities = (items = [], config) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
@@ -71,4 +71,9 @@ export const entitiesLoading = (isLoading = true) => ({
 
 export const clearFilters = () => ({
     type: CLEAR_FILTERS
+});
+
+export const systemProfile = (itemId) => ({
+    type: ACTION_TYPES.LOAD_SYSTEM_PROFILE,
+    payload: getEntitySystemProfile(itemId, {})
 });

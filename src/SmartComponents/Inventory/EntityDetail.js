@@ -4,10 +4,6 @@ import {
     Title,
     Grid,
     GridItem,
-    Dropdown,
-    DropdownPosition,
-    DropdownItem,
-    DropdownToggle,
     Card,
     CardBody,
     CardHeader
@@ -70,18 +66,6 @@ class EntityDetails extends Component {
                 <GridItem md={ 6 }>
                     <div>
                         <span>
-                            Hostname:
-                        </span>
-                        <span>
-                            {
-                                loaded ?
-                                    this.getFact('fqdn') || this.getFact('facts.hostname') || ' ' :
-                                    <Skeleton size={ SkeletonSize.xs } />
-                            }
-                        </span>
-                    </div>
-                    <div>
-                        <span>
                             UUID:
                         </span>
                         <span>
@@ -94,41 +78,12 @@ class EntityDetails extends Component {
                     </div>
                     <div>
                         <span>
-                            Operating system:
-                        </span>
-                        <span>
-                            {
-                                loaded ?
-                                    this.getFact('facts.os_release') ||
-                                this.getFact('facts.inventory.release') ||
-                                this.getFact('facts.qpc.os_release') ||
-                                ' ' :
-                                    <Skeleton size={ SkeletonSize.md } />
-                            }
-                        </span>
-                    </div>
-                </GridItem>
-                <GridItem md={ 6 }>
-                    <div>
-                        <span>
-                            Last Check-in:
+                            Last seen:
                         </span>
                         <span>
                             {
                                 loaded ?
                                     (new Date(this.getFact('updated'))).toLocaleString() :
-                                    <Skeleton size={ SkeletonSize.sm } />
-                            }
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            Registered:
-                        </span>
-                        <span>
-                            {
-                                loaded ?
-                                    (new Date(this.getFact('created'))).toLocaleString() :
                                     <Skeleton size={ SkeletonSize.sm } />
                             }
                         </span>
