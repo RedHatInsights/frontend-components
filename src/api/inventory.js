@@ -30,8 +30,25 @@ export const mapData = ({ facts = {}, ...oneResult }) => ({
 export function getEntities(items, { controller, hasItems, filters, per_page: perPage, page }) {
     const hostnameOrId = filters ? filters.find(filter => filter.value === 'hostname_or_id') : undefined;
 
-    if (hasItems) {
+    if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, perPage, page, { cancelToken: controller && controller.token })
+        .then(({ results = [], ...data } = {}) => ({
+            ...data,
+            results: results.map(result => mapData({
+                ...result,
+                display_name: result.display_name || result.fqdn || result.id
+            }))
+        }));
+    } else if (!hasItems) {
+        return hosts.apiHostGetHostList(
+            undefined,
+            undefined,
+            hostnameOrId && hostnameOrId.filter,
+            undefined,
+            perPage,
+            page,
+            { cancelToken: controller && controller.token }
+        )
         .then(({ results = [], ...data } = {}) => ({
             ...data,
             results: results.map(result => mapData({
@@ -41,22 +58,13 @@ export function getEntities(items, { controller, hasItems, filters, per_page: pe
         }));
     }
 
-    return hosts.apiHostGetHostList(
-        undefined,
-        undefined,
-        hostnameOrId && hostnameOrId.filter,
-        undefined,
-        perPage,
-        page,
-        { cancelToken: controller && controller.token }
-    )
-    .then(({ results = [], ...data } = {}) => ({
-        ...data,
-        results: results.map(result => mapData({
-            ...result,
-            display_name: result.display_name || result.fqdn || result.id
-        }))
-    }));
+    return new Promise((res) => {
+        res({
+            page,
+            per_page: perPage,
+            results: []
+        });
+    });
 }
 
 export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);

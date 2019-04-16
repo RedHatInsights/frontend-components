@@ -36,7 +36,8 @@ function clearFilters(state) {
 
 // eslint-disable-next-line camelcase
 function entitiesLoaded(state, { payload: { results, per_page: perPage, page, count, total, loaded }}) {
-    if (typeof page === 'undefined') {
+    // Data are loaded and APi returned malicious data
+    if (loaded === undefined && (page === undefined || perPage === undefined)) {
         return state;
     }
 
