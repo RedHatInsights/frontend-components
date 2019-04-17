@@ -16,7 +16,8 @@ class InventoryDetail extends React.Component {
                 inventoryId,
                 {
                     prefix: this.props.pathPrefix,
-                    base: this.props.apiBase
+                    base: this.props.apiBase,
+                    hasItems: true
                 }
             );
         }
