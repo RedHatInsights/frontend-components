@@ -23,7 +23,7 @@ class ApplicationDetails extends Component {
         return (
             <React.Fragment>
                 {
-                    items &&
+                    items && items.length > 1 &&
                     <Tabs
                         activeKey={ defaultApp }
                         onSelect={ this.onTabClick }
