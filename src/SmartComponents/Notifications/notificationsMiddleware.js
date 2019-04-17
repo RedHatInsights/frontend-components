@@ -37,7 +37,7 @@ const createNotificationsMiddleware = (options = {}) => {
         pendingSuffix: '_PENDING',
         fulfilledSuffix: '_FULFILLED',
         rejectedSuffix: '_REJECTED',
-        autoDismiss: true,
+        autoDismiss: false,
         dismissDelay: 5000,
         errorTitleKey: 'title',
         errorDescriptionKey: 'detail'

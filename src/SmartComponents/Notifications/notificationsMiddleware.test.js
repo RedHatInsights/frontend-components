@@ -303,7 +303,8 @@ describe('Notifications middleware', () => {
         notifications: {
           rejected: {
             variant: 'warning',
-            title: 'custom error notification'
+            title: 'custom error notification',
+            dismissable: false,
           }
         }
       }
