@@ -11,7 +11,7 @@ export function createCveListBySystem({ isLoading, systemId, ...rest }) {
             payload: { data, meta, errors }
         } = rest;
         return {
-            data: data && data.map(row => ({
+            data: data && [ ...data.map(row => ({
                 id: row.id,
                 cells: [
                     <span key={ row.id }>
@@ -32,7 +32,7 @@ export function createCveListBySystem({ isLoading, systemId, ...rest }) {
                     </span>,
                     <span key={ row.id }>{ processDate(row.attributes.public_date) }</span>
                 ]
-            })),
+            })) ],
             meta,
             errors,
             isLoading
