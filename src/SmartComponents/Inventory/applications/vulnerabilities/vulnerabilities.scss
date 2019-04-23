@@ -13,7 +13,7 @@
 .space-between-toolbar-items {
   justify-content: space-between;
   > div:nth-child(1) {
-    flex:1.5;
+    flex: 1.5;
     padding-right: var(--pf-global--spacer--sm);
   }
   > div:nth-child(2) {
@@ -44,14 +44,10 @@
 }
 
 .status-dropdown-column {
-  padding: var(--pf-global--spacer--sm);
-  display: flex;
-  align-items: center;
-  border: transparent thin solid;
-  position: relative;
+  > svg {
+    color: var(--pf-global--primary-color--100)
+  }
   &:hover {
-    background-color: var(--pf-global--active-color--200);
-    border-color: var(--pf-global--BorderColor--light);
     cursor: pointer;
     > svg {
       visibility: visible;
@@ -59,9 +55,6 @@
   }
   > svg {
     visibility: hidden;
-    position: absolute;
-    top: var(--pf-global--spacer--sm);
-    right: var(--pf-global--spacer--sm);
   }
 }
 

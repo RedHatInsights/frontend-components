@@ -1,13 +1,12 @@
 import { Button, FormSelect, FormSelectOption, Modal, Stack, StackItem } from '@patternfly/react-core';
-import { EditIcon } from '@patternfly/react-icons';
+import { PencilAltIcon } from '@patternfly/react-icons';
+import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeSystemCveStatus } from '../../../../api/vulnerabilities';
-import { LongTextTooltip } from '../../../../PresentationalComponents/LongTextTooltip';
 import { Skeleton, SkeletonSize } from '../../../../PresentationalComponents/Skeleton';
 import { fetchSystemCveStatusList } from '../../../../redux/actions/applications';
 import { addNotification } from '../../../Notifications';
-import propTypes from 'prop-types';
 
 const notifications = {
     processing: {
@@ -38,7 +37,7 @@ class StatusDropdown extends Component {
     }
 
     onChange = value => {
-        this.setState({ statusId: value });
+        this.setState({ statusId: parseInt(value) });
     };
 
     handleModalToggle = () => {
@@ -92,7 +91,7 @@ class StatusDropdown extends Component {
                 actions={ actionButtons }
             >
                 <Stack>
-                    <StackItem>Status:</StackItem>
+                    <StackItem>Status</StackItem>
                     <StackItem>{ (isLoaded && dropdownItems) || <Skeleton size={ SkeletonSize.lg } /> }</StackItem>
                 </Stack>
             </Modal>
@@ -106,8 +105,7 @@ class StatusDropdown extends Component {
                         this.props.fetchStatusList();
                     } }
                 >
-                    <LongTextTooltip content={ currentStatusName } maxLength={ 25 } />
-                    <EditIcon />
+                    { currentStatusName } <PencilAltIcon size="sm"/>
                 </div>
                 { modal }
             </React.Fragment>

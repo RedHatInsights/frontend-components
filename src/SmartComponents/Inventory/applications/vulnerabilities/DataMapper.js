@@ -28,6 +28,7 @@ export function createCveListBySystem({ isLoading, systemId, ...rest }) {
                             systemId={ systemId }
                             currentStatusId={ row.attributes.status_id }
                             cveName={ row.attributes.synopsis }
+                            hasNotification={ true }
                         />
                     </span>,
                     <span key={ row.id }>{ processDate(row.attributes.public_date) }</span>
