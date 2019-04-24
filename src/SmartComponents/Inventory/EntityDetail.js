@@ -6,7 +6,13 @@ import {
     GridItem,
     Card,
     CardBody,
-    CardHeader
+    CardHeader,
+    SplitItem,
+    Split,
+    Dropdown,
+    DropdownItem,
+    DropdownPosition,
+    DropdownToggle
 } from '@patternfly/react-core';
 import { Skeleton, SkeletonSize } from '../../PresentationalComponents/Skeleton';
 import get from 'lodash/get';
@@ -14,12 +20,9 @@ import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
 
 class EntityDetails extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false
-        };
-    }
+    state = {
+        isOpen: false
+    };
 
     getFact = (path) => {
         const { entity } = this.props;
@@ -32,30 +35,50 @@ class EntityDetails extends Component {
         });
     }
 
+    onSelect = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    };
+
     generateTop = () => {
-        const { entity, loaded } = this.props;
-        // const { isOpen } = this.state;
+        const { entity, loaded, actions } = this.props;
+        const { isOpen } = this.state;
         return (
-            <Grid className="ins-entity-header">
-                <GridItem md={ 6 }>
+            <Split className="ins-c-inventory__detail--header">
+                <SplitItem isMain>
                     {
                         loaded ?
                             <Title size='2xl'>{ entity && entity.display_name }</Title> :
                             <Skeleton size={ SkeletonSize.md } />
                     }
-                </GridItem>
-                { /* <GridItem md={ 6 }>
-                    <Dropdown
-                        onSelect={ this.onSelect }
-                        toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
-                        isOpen={ isOpen }
-                        position={ DropdownPosition.right }
-                        dropdownItems={ [
-                            <DropdownItem key="1">Some action</DropdownItem>
-                        ] }
-                    />
-                </GridItem> */ }
-            </Grid>
+                </SplitItem>
+                {
+                    actions && actions.length > 0 && <SplitItem>
+                        {
+                            loaded ?
+                                <Dropdown
+                                    onSelect={ this.onSelect }
+                                    toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
+                                    isOpen={ isOpen }
+                                    position={ DropdownPosition.right }
+                                    dropdownItems={ [
+                                        actions.map((action, key) => (
+                                            <DropdownItem
+                                                key={ action.key || key }
+                                                component="button"
+                                                onClick={ (event) => action.onClick(event, action, action.key || key) }
+                                            >
+                                                { action.title }
+                                            </DropdownItem>
+                                        ))
+                                    ] }
+                                /> :
+                                <Skeleton size={ SkeletonSize.xl } />
+                        }
+                    </SplitItem>
+                }
+            </Split>
         );
     }
 
@@ -112,17 +135,6 @@ class EntityDetails extends Component {
                         { this.generateFacts() }
                     </Fragment>
                 }
-                { /* Since we do not have tags yet, let's ignore them for now
-                    <Grid className="ins-entity-tags">
-                        { entity && entity.tags && Object.values(entity.tags).map((oneTag, key) => (
-                            <GridItem span={ 1 } key={ key } data-key={ key } widget="tag">
-                                <Label isCompact>
-                                    <TimesIcon />{ oneTag }
-                                </Label>
-                            </GridItem>
-                        )) }
-                    </Grid>
-                 */ }
                 <ApplicationDetails />
             </div>
         );
@@ -132,12 +144,18 @@ class EntityDetails extends Component {
 EntityDetails.propTypes = {
     loaded: PropTypes.bool.isRequired,
     entity: PropTypes.object,
-    useCard: PropTypes.bool
+    useCard: PropTypes.bool,
+    actions: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.node,
+        onClick: PropTypes.func,
+        key: PropTypes.string
+    }))
 };
 
 EntityDetails.defualtProps = {
     entity: {},
-    useCard: false
+    useCard: false,
+    actions: []
 };
 
 export default connect(({ entityDetails }) => ({ ...entityDetails }))(EntityDetails);

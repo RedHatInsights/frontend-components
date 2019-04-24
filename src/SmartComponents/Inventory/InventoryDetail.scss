@@ -4,6 +4,10 @@
     padding-bottom: 0;
 }
 
+.ins-c-inventory__detail--header {
+    .pf-l-split__item:last-child { @include rem('min-width', 100px); }
+}
+
 .ins-c-inventory-detail__app-tabs ul {
     &:before {
         content: '';
