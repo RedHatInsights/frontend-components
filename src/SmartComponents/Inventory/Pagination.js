@@ -46,9 +46,9 @@ class ContextFooterPagination extends Component {
     }
 
     onPerPageSelect = (perPage) => {
-        const { page, filters } = this.props;
+        const { filters } = this.props;
         // eslint-disable-next-line camelcase
-        this.updatePagination({ page, per_page: perPage, filters });
+        this.updatePagination({ page: 1, per_page: perPage, filters });
     }
 
     render() {
