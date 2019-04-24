@@ -70,6 +70,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
     exitDelay={500}
     maxWidth="50vw"
     position="top"
+    trigger="mouseenter focus"
     zIndex={9999}
   >
     <Tippy
@@ -118,6 +119,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
         }
       }
       theme="pf-tippy"
+      trigger="mouseenter focus"
       zIndex={9999}
     >
       <div>

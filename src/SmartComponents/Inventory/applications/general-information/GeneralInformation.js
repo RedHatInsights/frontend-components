@@ -76,6 +76,7 @@ class GeneralInformation extends Component {
                     <CollectionCard handleClick={ this.handleModalToggle } />
                 </GridItem>
                 <Modal
+                    width={ 'initial' }
                     title={ modalTitle || '' }
                     isOpen={ isModalOpen }
                     onClose={ () => this.handleModalToggle() }

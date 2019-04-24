@@ -49,7 +49,7 @@ const LoadingCard = ({ title, isLoading, items }) => {
                     </Text>
                 </TextContent>
             </StackItem>
-            <StackItem isMain>
+            <StackItem isFilled>
                 <TextContent>
                     <TextList component={ TextListVariants.dl }>
                         { items.map((item, key) => (

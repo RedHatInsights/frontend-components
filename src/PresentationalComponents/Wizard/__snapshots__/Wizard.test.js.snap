@@ -39,6 +39,7 @@ exports[`Wizard component should render correctly default 1`] = `
       </Button>,
     ]
   }
+  ariaDescribedById=""
   className="ins-c-wizard"
   content={
     Array [
@@ -67,9 +68,11 @@ exports[`Wizard component should render correctly default 1`] = `
   hideTitle={false}
   isLarge={false}
   isOpen={true}
+  isSmall={false}
   onClose={[Function]}
   onKeyPress={[Function]}
   title="Some title"
+  width={null}
 >
   <div
     id="first"
@@ -118,6 +121,7 @@ exports[`Wizard component should render correctly large 1`] = `
       </Button>,
     ]
   }
+  ariaDescribedById=""
   className="ins-c-wizard"
   content={
     Array [
@@ -146,9 +150,11 @@ exports[`Wizard component should render correctly large 1`] = `
   hideTitle={false}
   isLarge={true}
   isOpen={true}
+  isSmall={false}
   onClose={[Function]}
   onKeyPress={[Function]}
   title="Some title"
+  width={null}
 >
   <div
     id="first"
@@ -197,6 +203,7 @@ exports[`Wizard component should render correctly one page 1`] = `
       </Button>,
     ]
   }
+  ariaDescribedById=""
   className="ins-c-wizard"
   content={
     Array [
@@ -208,9 +215,11 @@ exports[`Wizard component should render correctly one page 1`] = `
   hideTitle={false}
   isLarge={false}
   isOpen={true}
+  isSmall={false}
   onClose={[Function]}
   onKeyPress={[Function]}
   title="Some title"
+  width={null}
 >
   <div>
     One

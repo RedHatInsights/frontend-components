@@ -31,7 +31,7 @@ const EntityTableToolbar = ({
                     totalItems={ total }
                 />
             </SplitItem>
-            <SplitItem isMain>
+            <SplitItem isFilled>
                 { children }
             </SplitItem>
             <SplitItem>

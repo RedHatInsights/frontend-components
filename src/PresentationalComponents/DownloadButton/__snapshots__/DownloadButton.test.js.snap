@@ -101,9 +101,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               id="pf-toggle-id-1"
               type="button"
             >
-              <span
-                class="pf-c-dropdown__toggle-text"
-              >
+              <span>
                 <svg
                   aria-hidden="true"
                   fill="currentColor"
@@ -171,6 +169,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
           className=""
           id="pf-toggle-id-1"
           isActive={false}
+          isDisabled={false}
           isFocused={false}
           isHovered={false}
           isOpen={true}
@@ -188,9 +187,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 id="pf-toggle-id-1"
                 type="button"
               >
-                <span
-                  class="pf-c-dropdown__toggle-text"
-                >
+                <span>
                   <svg
                     aria-hidden="true"
                     fill="currentColor"
@@ -257,13 +254,14 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             aria-expanded={true}
             aria-haspopup={true}
             className="pf-c-dropdown__toggle pf-m-plain"
+            disabled={false}
             id="pf-toggle-id-1"
             onClick={[Function]}
             onKeyDown={[Function]}
             type="button"
           >
             <span
-              className="pf-c-dropdown__toggle-text"
+              className={null}
             >
               <FileExportIcon
                 color="currentColor"

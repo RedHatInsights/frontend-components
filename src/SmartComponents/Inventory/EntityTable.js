@@ -122,6 +122,7 @@ class EntityTable extends React.Component {
             <React.Fragment>
                 { loaded ?
                     <PfTable
+                        borders={ true }
                         variant={ variant }
                         aria-label="Host inventory"
                         cells={ this.createColumns() }

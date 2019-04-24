@@ -195,8 +195,9 @@ exports[`Shield component should render where title is Hello world and hasToolti
     enableFlip={true}
     entryDelay={500}
     exitDelay={500}
-    maxWidth="12.5rem"
+    maxWidth="18.75rem"
     position="top"
+    trigger="mouseenter focus"
     zIndex={9999}
   >
     <QuestionIcon

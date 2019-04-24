@@ -169,12 +169,12 @@ class SystemRulesTable extends React.Component {
                 <React.Fragment key={ key }>
                     <Stack id={ `rule-description-${key}` } gutter="md">
                         <StackItem><b>Description</b></StackItem>
-                        <StackItem isMain>{ description }</StackItem>
+                        <StackItem isFilled>{ description }</StackItem>
                     </Stack>
                     <br/>
                     <Stack id={ `rule-rationale-${key}` } gutter="md">
                         <StackItem><b>Rationale</b></StackItem>
-                        <StackItem isMain>{ rationale }</StackItem>
+                        <StackItem isFilled>{ rationale }</StackItem>
                     </Stack>
                 </React.Fragment>
             ) }]
