@@ -1,5 +1,7 @@
 @import '../../Utilities.scss';
 
+.ins-c-inventory__detail--edit { @include rem('min-width', 500px) }
+
 .ins-inventory-detail.pf-c-page-header.pf-c-page__main-section {
     padding-bottom: 0;
 }

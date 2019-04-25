@@ -5,7 +5,7 @@ export const INVENTORY_API_BASE = '/api/inventory/v1';
 import instance from './interceptors';
 import { HostsApi } from '@redhat-cloud-services/host-inventory-client';
 
-const hosts = new HostsApi(undefined, INVENTORY_API_BASE, instance);
+export const hosts = new HostsApi(undefined, INVENTORY_API_BASE, instance);
 
 /* eslint camelcase: off */
 export const mapData = ({ facts = {}, ...oneResult }) => ({
@@ -68,3 +68,4 @@ export function getEntities(items, { controller, hasItems, filters, per_page: pe
 }
 
 export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);
+
