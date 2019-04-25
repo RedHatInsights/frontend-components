@@ -29,9 +29,7 @@ const PageHeader = ({ className, children, ...props }) => {
 
                 return (
                     <section { ...props } className={ `${ pageHeaderClasses } ${ themeClasses }` } widget-type='InsightsPageHeader'>
-                        <div className='pf-c-content'>
-                            { children }
-                        </div>
+                        { children }
                     </section>
                 );
             } }

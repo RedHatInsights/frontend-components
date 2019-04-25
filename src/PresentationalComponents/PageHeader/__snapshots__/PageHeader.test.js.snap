@@ -6,11 +6,7 @@ exports[`PageHeader component should render 1`] = `
     className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
     widget-type="InsightsPageHeader"
   >
-    <div
-      className="pf-c-content"
-    >
-      Something
-    </div>
+    Something
   </section>
 </PageHeader>
 `;
