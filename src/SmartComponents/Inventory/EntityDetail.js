@@ -64,7 +64,7 @@ class EntityDetails extends Component {
         const { isOpen } = this.state;
         return (
             <Split className="ins-c-inventory__detail--header">
-                <SplitItem isMain>
+                <SplitItem isFilled>
                     {
                         loaded ?
                             <Title size='2xl'>{ entity && entity.display_name }</Title> :
