@@ -1,8 +1,8 @@
+import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import { SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 import propTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
-import { Pagination } from '../../../../PresentationalComponents/Pagination';
 import { TableToolbar } from '../../../../PresentationalComponents/TableToolbar';
 import { RowLoader } from '../../../../Utilities/helpers';
 import routerParams from '../../../../Utilities/RouterParams';
@@ -11,10 +11,10 @@ import { EmptyCVEList, EmptyCVEListForSystem, FilterNotFoundForCVE } from './con
 class VulnerabilitiesCveTable extends Component {
     state = { selectedCves: new Set() };
 
-    changePage = page => this.props.apply({ page });
+    changePage = (_event, pageNumber) => this.props.apply({ page: pageNumber });
 
     // eslint-disable-next-line camelcase
-    setPageSize = pageSize => this.props.apply({ page_size: pageSize });
+    setPageSize = (_event, perPage) => this.props.apply({ page_size: perPage });
 
     sortColumn = (event, key, direction) => {
         let columnMapping = this.props.isSelectable ? [{ key: 'checkbox' }, ...this.props.header ] : this.props.header;
@@ -36,10 +36,11 @@ class VulnerabilitiesCveTable extends Component {
         return (
             <Pagination
                 page={ meta.page || 1 }
-                numberOfItems={ meta.total_items || 0 }
-                itemsPerPage={ meta.page_size || 50 }
-                onSetPage={ page => this.changePage(page) }
-                onPerPageSelect={ pageSize => this.setPageSize(pageSize) }
+                itemCount={ meta.total_items || 0 }
+                perPage={ meta.page_size || 50 }
+                onSetPage={ this.changePage }
+                onPerPageSelect={ this.setPageSize }
+                variant={ PaginationVariant.bottom }
             />
         );
     };

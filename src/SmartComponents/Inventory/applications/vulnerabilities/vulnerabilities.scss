@@ -1,9 +1,5 @@
 @import "../../../../Utilities/mixins";
 
-.ins-active-app-vulnerabilities {
-  padding-top: 2em;
-}
-
 .cvetable-toolbar {
   justify-content: space-between;
   > div {
@@ -12,15 +8,15 @@
 }
 .space-between-toolbar-items {
   justify-content: space-between;
-  > div:nth-child(1) {
-    flex: 1.5;
-    padding-right: var(--pf-global--spacer--sm);
+}
+
+.vulnerability-toolbar-spacing {
+  justify-content: flex-start;
+  > div:first-child {
+      overflow: hidden;
   }
-  > div:nth-child(2) {
-    padding-left: var(--pf-global--spacer--sm);
-    flex: 1;
-  }
-  > div:nth-child(3) {
+  > div {
+      margin-right: var(--pf-global--spacer--sm);
   }
 }
 
@@ -45,7 +41,7 @@
 
 .status-dropdown-column {
   > svg {
-    color: var(--pf-global--primary-color--100)
+    color: var(--pf-global--primary-color--100);
   }
   &:hover {
     cursor: pointer;
@@ -62,4 +58,7 @@ td.pf-c-table__check {
   vertical-align: middle;
   padding-top: 0px !important;
   padding-bottom: 0px !important;
+}
+.pf-c-table tr > * {
+  vertical-align: middle !important;
 }

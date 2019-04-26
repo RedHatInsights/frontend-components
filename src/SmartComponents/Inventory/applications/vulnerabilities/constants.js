@@ -87,7 +87,7 @@ export const NoVulnerabilityData = (
 export const GenericError = (
     <Bullseye>
         <EmptyState>
-            <EmptyStateIcon icon={ CubesIcon } />
+            <EmptyStateIcon icon={ CubesIcon } color={ 'var(--pf-global--danger-color--100)' } />
             <Title headingLevel="h5" size="lg">
                 There was an error loading resources
             </Title>
@@ -112,7 +112,7 @@ export const PublicDateOptions = [
     { value: 'last30', label: 'Last 30 days', from: moment().subtract(30, 'days') },
     { value: 'last90', label: 'Last 90 days', from: moment().subtract(90, 'days') },
     { value: 'lastYear', label: 'Last year', from: moment().subtract(1, 'years') },
-    { value: 'MoreThanYear', label: 'More than 1 year ago',  to: moment().subtract(1, 'years') }
+    { value: 'MoreThanYear', label: 'More than 1 year ago', to: moment().subtract(1, 'years') }
 ];
 
 // Filter categories

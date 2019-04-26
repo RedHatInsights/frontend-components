@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { Stack, StackItem } from '@patternfly/react-core';
 import some from 'lodash/some';
 import propTypes from 'prop-types';
@@ -13,6 +14,7 @@ class VulnerabilitiesCves extends Component {
     componentDidMount() {
         const { defaultSort: sort } = this.props;
         StatusDropdown.setCallback(this.sendRequest);
+        this.setState({ show_all: 'true' });
         this.apply(sort && { sort });
     }
 
@@ -27,7 +29,6 @@ class VulnerabilitiesCves extends Component {
     };
 
     apply = (config = {}) => {
-        /* eslint-disable camelcase */
         const toBeReset = [ 'filter', 'page_size', 'show_all' ];
         if (some(toBeReset, item => config.hasOwnProperty(item) && config[item] !== this.state[item])) {
             config.page = 1;
@@ -46,7 +47,6 @@ class VulnerabilitiesCves extends Component {
         }
 
         this.setState({ ...this.state, ...config }, this.sendRequest);
-        /* eslint-enable camelcase */
     };
 
     selectorHandler = selectedCves => {
@@ -63,10 +63,7 @@ class VulnerabilitiesCves extends Component {
 
     downloadReport = format => {
         const { fetchResource } = this.props;
-        const { payload } =
-            fetchResource &&
-            // eslint-disable-next-line camelcase
-            fetchResource({ ...this.state, page_size: Number.MAX_SAFE_INTEGER, data_format: format, page: 1 });
+        const { payload } = fetchResource && fetchResource({ ...this.state, page_size: Number.MAX_SAFE_INTEGER, data_format: format, page: 1 });
         payload &&
             payload.then(({ data: response }) => {
                 const data = format === 'json' ? JSON.stringify(response) : response;

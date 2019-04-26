@@ -3,6 +3,7 @@ import { Tooltip } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
 import { impactList, colorList } from './consts';
+import './Shield.scss';
 
 class Shield extends React.Component {
     constructor(props) {
@@ -13,22 +14,26 @@ class Shield extends React.Component {
         const unknownLabel = 'Unknown';
         if (impactList.hasOwnProperty(this.props.impact)) {
             return {
-                icon: <SecurityIcon
-                    aria-hidden="false"
-                    aria-label={ this.props.tooltipPrefix + (this.props.title || impactList[this.props.impact].title) }
-                    size={ this.props.size }
-                    color={ impactList[this.props.impact].color }
-                />,
+                icon: (
+                    <SecurityIcon
+                        aria-hidden="false"
+                        aria-label={ this.props.tooltipPrefix + (this.props.title || impactList[this.props.impact].title) }
+                        size={ this.props.size }
+                        color={ impactList[this.props.impact].color }
+                    />
+                ),
                 title: impactList[this.props.impact].title
             };
         } else {
             return {
-                icon: <QuestionIcon
-                    aria-hidden="false"
-                    aria-label={ this.props.tooltipPrefix + (this.props.title || unknownLabel) }
-                    size={ this.props.size }
-                    color={ colorList.default }
-                />,
+                icon: (
+                    <QuestionIcon
+                        aria-hidden="false"
+                        aria-label={ this.props.tooltipPrefix + (this.props.title || unknownLabel) }
+                        size={ this.props.size }
+                        color={ colorList.default }
+                    />
+                ),
                 title: unknownLabel
             };
         }
@@ -36,18 +41,18 @@ class Shield extends React.Component {
 
     render() {
         const badge = this.getColoredBadgeByImpact();
-        const { tooltipPosition, hasTooltip, tooltipPrefix, title, size, impact, ...rest } = this.props;
+        const { tooltipPosition, hasTooltip, tooltipPrefix, title, size, impact, hasLabel, ...rest } = this.props;
 
         return (
             <React.Fragment>
                 { hasTooltip === true ? (
-                    <Tooltip
-                        position={ tooltipPosition }
-                        content={ <div>{ tooltipPrefix + (title || badge.title) }</div> }
-                        { ...rest }
-                    >
+                    <Tooltip position={ tooltipPosition } content={ <div>{ tooltipPrefix + (title || badge.title) }</div> } { ...rest }>
                         { badge.icon }
                     </Tooltip>
+                ) : hasLabel === true ? (
+                    <span className={ 'impact-shield-label' }>
+                        { badge.icon } { badge.title }
+                    </span>
                 ) : (
                     <span>{ badge.icon }</span>
                 ) }
@@ -62,19 +67,18 @@ Shield.defaultProps = {
     tooltipPosition: 'top',
     tooltipPrefix: '',
     title: '',
-    size: 'md'
+    size: 'md',
+    hasLabel: false
 };
 
 Shield.propTypes = {
-    impact: propTypes.oneOfType([
-        propTypes.string,
-        propTypes.number
-    ]),
+    impact: propTypes.oneOfType([ propTypes.string, propTypes.number ]),
     hasTooltip: propTypes.bool,
     tooltipPosition: propTypes.string,
     tooltipPrefix: propTypes.string,
     title: propTypes.string,
-    size: propTypes.string // sm, md, lg and xl
+    size: propTypes.string, // sm, md, lg and xl,
+    label: propTypes.bool
 };
 
 export default Shield;

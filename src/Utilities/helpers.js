@@ -2,12 +2,13 @@ import React from 'react';
 import merge from 'lodash/merge';
 import mapKeys from 'lodash/mapKeys';
 import ContentLoader from 'react-content-loader';
+import { Tooltip } from '@patternfly/react-core';
 
 export const CSV_TYPE = 'text/csv;charset=utf-8;';
 export const JSON_TYPE = 'data:text/json;charset=utf-8,';
 
 export function mergeArraysByKey(arrays, key = 'id') {
-    let mergedObject = merge(...arrays.map(row => mapKeys(row,  a => a && a[key])));
+    let mergedObject = merge(...arrays.map(row => mapKeys(row, a => a && a[key])));
     return Object.values(mergedObject);
 }
 
@@ -24,10 +25,19 @@ export function downloadFile(data, filename = `${new Date().toISOString()}`, for
 }
 
 export function parseCvssScore(cvssV2, cvssV3) {
+    const v2Tooltip = 'Prior to 2016 (approximately), CVEs were scored with Common Vulnerability Scoring System v2.';
+    const naTooltip = 'CVEs published before 2005 (approximately) did not have a CVSS Base Score.';
     return (
         (cvssV3 && parseFloat(cvssV3).toFixed(1)) ||
-        (cvssV2 && `${parseFloat(cvssV2).toFixed(1)} (v2)`) ||
-        'N/A'
+        (cvssV2 && (
+            <Tooltip content={ v2Tooltip } position={ 'left' }>
+                <span>{ `${parseFloat(cvssV2).toFixed(1)}` } (CVSSv2)</span>
+            </Tooltip>
+        )) || (
+            <Tooltip content={ naTooltip } position={ 'left' }>
+                <span>N/A</span>
+            </Tooltip>
+        )
     );
 }
 
@@ -38,11 +48,7 @@ export function processDate(dateString) {
 }
 
 export const RowLoader = props => (
-    <ContentLoader
-        height={ 20 }
-        width={ 480 }
-        { ...props }
-    >
+    <ContentLoader height={ 20 } width={ 480 } { ...props }>
         <rect x="30" y="0" rx="3" ry="3" width="250" height="7" />
         <rect x="300" y="0" rx="3" ry="3" width="70" height="7" />
         <rect x="385" y="0" rx="3" ry="3" width="95" height="7" />

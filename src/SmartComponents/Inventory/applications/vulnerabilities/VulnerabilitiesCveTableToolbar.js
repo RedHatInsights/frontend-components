@@ -1,18 +1,17 @@
 /* eslint-disable camelcase */
-import { Dropdown, DropdownItem, KebabToggle, ToolbarGroup } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, KebabToggle, Pagination, ToolbarGroup } from '@patternfly/react-core';
 import debounce from 'lodash/debounce';
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FilterDropdown } from '../../../../PresentationalComponents/Filters/';
-import { Pagination } from '../../../../PresentationalComponents/Pagination';
 import { SimpleTableFilter } from '../../../../PresentationalComponents/SimpleTableFilter';
 import { TableToolbar } from '../../../../PresentationalComponents/TableToolbar';
+import { fetchSystemCveStatusList } from '../../../../redux/actions/applications';
 import routerParams from '../../../../Utilities/RouterParams';
 import { addNotification } from '../../../Notifications';
 import RemediationButton from '../../../Remediations/RemediationButton';
 import { filtersCVSSScore, filtersPublishDate, filtersSeverity, filtersShowAll } from './constants';
-import { fetchSystemCveStatusList } from '../../../../redux/actions/applications';
 
 class VulnerabilitiesCveTableToolbar extends Component {
     state = { isKebabOpen: false, show_all: 'true', publish_date: 'all', cvss_filter: 'all' };
@@ -71,9 +70,9 @@ class VulnerabilitiesCveTableToolbar extends Component {
         }
     };
 
-    changePage = page => this.setState({ ...this.state, page }, this.apply);
+    changePage = (_event, pageNumber) => this.setState({ ...this.state, page: pageNumber }, this.apply);
 
-    setPageSize = pageSize => this.setState({ ...this.state, page_size: pageSize }, this.apply);
+    setPageSize = (_event, perPage) => this.setState({ ...this.state, page_size: perPage }, this.apply);
 
     apply = () => this.props.apply(this.state);
 
@@ -115,8 +114,8 @@ class VulnerabilitiesCveTableToolbar extends Component {
         const selectedCvesCount =
             this.props.showRemediationButton === true ? (this.props.selectedCves && this.props.selectedCves.size) || 0 : undefined;
         return (
-            <TableToolbar className="pf-u-justify-content-space-between" results={ totalNumber } selected={ selectedCvesCount }>
-                <ToolbarGroup className="space-between-toolbar-items">
+            <TableToolbar className="space-between-toolbar-items">
+                <ToolbarGroup className="vulnerability-toolbar-spacing">
                     <div>
                         <SimpleTableFilter onFilterChange={ value => this.changeFilterValue(value) } buttonTitle={ null } placeholder="Find a CVE…" />
                     </div>
@@ -134,6 +133,15 @@ class VulnerabilitiesCveTableToolbar extends Component {
                             ].filter(Boolean) }
                         />
                     </div>
+                    { showRemediationButton && (
+                        <div>
+                            <RemediationButton
+                                dataProvider={ this.remediationProvider }
+                                isDisabled={ this.remediationProvider() === false }
+                                onRemediationCreated={ result => this.props.addNotification(result.getNotification()) }
+                            />
+                        </div>
+                    ) }
                     <div>
                         <Dropdown
                             onSelect={ this.onKebabSelect }
@@ -151,22 +159,14 @@ class VulnerabilitiesCveTableToolbar extends Component {
                         />
                     </div>
                 </ToolbarGroup>
-                { showRemediationButton && (
-                    <ToolbarGroup>
-                        <RemediationButton
-                            dataProvider={ this.remediationProvider }
-                            isDisabled={ this.remediationProvider() === false }
-                            onRemediationCreated={ result => this.props.addNotification(result.getNotification()) }
-                        />
-                    </ToolbarGroup>
-                ) }
+
                 <ToolbarGroup>
                     <Pagination
                         page={ cves.meta.page || 1 }
-                        numberOfItems={ cves.meta.total_items || 0 }
-                        itemsPerPage={ cves.meta.page_size || 50 }
-                        onSetPage={ page => this.changePage(page) }
-                        onPerPageSelect={ pageSize => this.setPageSize(pageSize) }
+                        itemCount={ cves.meta.total_items || 0 }
+                        perPage={ cves.meta.page_size || 50 }
+                        onSetPage={ this.changePage }
+                        onPerPageSelect={ this.setPageSize }
                     />
                 </ToolbarGroup>
             </TableToolbar>
