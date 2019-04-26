@@ -22,7 +22,7 @@ export function createCveListBySystem({ isLoading, systemId, ...rest }) {
                         </span>,
 
                         <span key={ row.id }>{ processDate(row.attributes.public_date) }</span>,
-                        <span key={ row.id }>{ parseCvssScore(row.attributes.cvss2_score, row.attributes.cvss3_score) }</span>,
+                        <span key={ row.id }>{ parseCvssScore(row.attributes.cvss2_score, row.attributes.cvss3_score, true) }</span>,
                         <span key={ row.id }>
                             <Shield impact={ row.attributes.impact } tooltipPosition={ 'right' } hasLabel={ true } />
                         </span>,
