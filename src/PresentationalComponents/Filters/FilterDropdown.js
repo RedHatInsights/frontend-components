@@ -30,7 +30,11 @@ class FilterDropdown extends Component {
         const { isOpen } = this.state;
 
         return (
-            <Dropdown onSelect={ this.onSelect } toggle={ <DropdownToggle onToggle={ this.onToggle }>Filters</DropdownToggle> } isOpen={ isOpen }>
+            <Dropdown
+                className="ins-c-filter__dropdown"
+                onSelect={ this.onSelect }
+                toggle={ <DropdownToggle onToggle={ this.onToggle }>Filters</DropdownToggle> } isOpen={ isOpen }
+            >
                 <div>
                     { filterCategories.map(
                         (data, index) =>

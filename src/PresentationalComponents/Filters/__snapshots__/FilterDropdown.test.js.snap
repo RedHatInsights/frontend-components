@@ -2,7 +2,7 @@
 
 exports[`FilterDropdown component should render 1`] = `
 <Dropdown
-  className=""
+  className="ins-c-filter__dropdown"
   direction="down"
   dropdownItems={Array []}
   isOpen={false}
