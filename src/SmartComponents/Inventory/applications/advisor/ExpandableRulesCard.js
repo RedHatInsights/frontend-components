@@ -52,7 +52,7 @@ class ExpandableRulesCard extends React.Component {
             const compiledMd = marked(sanitizeHtml(compiledDot, sanitizeOptions));
 
             return <div dangerouslySetInnerHTML={ { __html: compiledMd
-            .replace(`<ul>`, `<ul class="pf-c-list">`)
+            .replace(/<ul>/gim, `<ul class="pf-c-list">`)
             .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`) } } />;
         } catch (error) {
             console.warn(error, definitions, template); // eslint-disable-line no-console
