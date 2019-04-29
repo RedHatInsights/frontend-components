@@ -1,6 +1,6 @@
 {
   "name": "@red-hat-insights/insights-frontend-components",
-  "version": "3.41.40",
+  "version": "3.41.41",
   "main": "dist/index.js",
   "private": false,
   "publishConfig": {
