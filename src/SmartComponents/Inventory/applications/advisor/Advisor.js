@@ -132,7 +132,7 @@ class InventoryRuleList extends Component {
                                 <CommentSlashIcon size='lg'/>
                             </CardHeader>
                             <CardBody>
-                                No data available for Insights at the moment.
+                                No issues reported by Insights for this system at the moment.
                             </CardBody>
                         </Card>
                 ) }
