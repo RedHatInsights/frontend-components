@@ -25,6 +25,18 @@ describe('Notification component', () => {
     const wrapper = shallow(<Notification {...initialProps} description={undefined}/>)
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+  
+  it('should render correctly with HTML description', () => {
+      const description = '<html><body><h1>Some text</h1><div>another</div></body><img src="some" /></html>';
+      const wrapper = shallow(<Notification {...initialProps} description={description} />)
+      expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+    it('should render correctly with HTML title', () => {
+        const title = '<html><body><h1>Some text</h1><div>another</div></body><img src="some" /></html>';
+        const wrapper = shallow(<Notification {...initialProps} title={title} />)
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 
   it('should render correctly with dismiss button', () => {
     const wrapper = shallow(<Notification {...initialProps} description={undefined} dismissable/>)

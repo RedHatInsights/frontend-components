@@ -30,10 +30,11 @@ class Notification extends Component {
     }
 
     render() {
-        const { description, dismissable, onDismiss, dismissDelay, ...rest } = this.props;
+        const { description, dismissable, onDismiss, dismissDelay, title, ...rest } = this.props;
         return (
             <Alert
                 className="notification-item"
+                title={ title && title.replace(/<\/?[^>]+(>|$)/g, '') }
                 { ...rest }
                 action={ dismissable ?
                     <Button
@@ -45,7 +46,7 @@ class Notification extends Component {
                     </Button> : null
                 }
             >
-                { description }
+                { description && description.replace(/<\/?[^>]+(>|$)/g, '') }
             </Alert>
         );
     }

@@ -13,6 +13,32 @@ exports[`Notification component should render correctly 1`] = `
 </Alert>
 `;
 
+exports[`Notification component should render correctly with HTML description 1`] = `
+<Alert
+  action={null}
+  className="notification-item"
+  id="Foo"
+  title="Bar"
+  variant="success"
+  variantLabel={null}
+>
+  Some textanother
+</Alert>
+`;
+
+exports[`Notification component should render correctly with HTML title 1`] = `
+<Alert
+  action={null}
+  className="notification-item"
+  id="Foo"
+  title="Some textanother"
+  variant="success"
+  variantLabel={null}
+>
+  description
+</Alert>
+`;
+
 exports[`Notification component should render correctly with dismiss button 1`] = `
 <Alert
   action={
