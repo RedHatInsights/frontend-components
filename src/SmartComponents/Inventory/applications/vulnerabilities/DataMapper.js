@@ -52,6 +52,6 @@ function handleCVELink(synopsis) {
     if (location.href.indexOf('vulnerability') !== -1) {
         return <Link to={ '/cves/' + synopsis }>{ synopsis }</Link>;
     } else {
-        return <a href={ `${document.baseURI}platform/vulnerability/cves/${synopsis}` }>{ synopsis }</a>;
+        return <a href={ `${document.baseURI}rhel/vulnerability/cves/${synopsis}` }>{ synopsis }</a>;
     }
 }
