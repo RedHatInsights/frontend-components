@@ -33,8 +33,13 @@ class SystemRulesTable extends React.Component {
             rows: [],
             currentRows: [],
             refIds: {},
+            profiles: {},
             sortBy: {}
         };
+
+    }
+    removeRefIdPrefix = (refId) => {
+        return refId.split('xccdf_org.ssgproject.content_profile_')[1];
     }
 
     setInitialCurrentRows() {
@@ -46,6 +51,7 @@ class SystemRulesTable extends React.Component {
                 {
                     currentRows,
                     rows: rowsRefIds.rows,
+                    profiles: rowsRefIds.profiles,
                     refIds: rowsRefIds.refIds
                 }
             ));
@@ -92,11 +98,11 @@ class SystemRulesTable extends React.Component {
     }
 
     remediationAvailable = (remediationId) => {
-        return remediationId ? <Ansible/> : <Ansible unsupported />;
+        return remediationId ? <Ansible/> : <Ansible unsupported={ true } />;
     }
 
     currentRows = (page, itemsPerPage, rowsRefIds) => {
-        const { rows, refIds } = (rowsRefIds) ? rowsRefIds : this.state;
+        const { rows, profiles, refIds } = (rowsRefIds) ? rowsRefIds : this.state;
 
         if (!rows.length) {
             // Avoid even making an empty request to the remediations API
@@ -111,7 +117,7 @@ class SystemRulesTable extends React.Component {
         }));
 
         const ruleIds = newRows.filter(row => row.hasOwnProperty('isOpen'))
-        .map(({ cells }) => `compliance:${refIds[cells[0]]}`);
+        .map(({ cells }) => `ssg:rhel7|${this.removeRefIdPrefix(profiles[cells[0]])}|${refIds[cells[0]]}`);
 
         return window.insights.chrome.auth.getUser()
         .then(() => {
@@ -120,7 +126,13 @@ class SystemRulesTable extends React.Component {
                 ...row,
                 cells: [
                     ...cells,
-                    ...this.isParent(row, cells) ? [ this.remediationAvailable(response[`compliance:${refIds[cells[0]]}`]) ] : []
+                    ...this.isParent(row, cells) ? [
+                        {
+                            title: this.remediationAvailable(
+                                response[`ssg:rhel7|${this.removeRefIdPrefix(profiles[cells[0]])}|${refIds[cells[0]]}`]
+                            )
+                        }
+                    ] : []
                 ]
             })));
         });
@@ -155,10 +167,10 @@ class SystemRulesTable extends React.Component {
         isOpen: false,
         cells: [
             title,
-            profile,
+            profile.name,
             severity,
-            (compliant ? <CheckCircleIcon className='ins-u-passed' /> :
-                <ExclamationCircleIcon className='ins-u-failed' />)
+            { title: (compliant ? <CheckCircleIcon className='ins-u-passed' /> :
+                <ExclamationCircleIcon className='ins-u-failed' />) }
         ]
     })
 
@@ -182,31 +194,34 @@ class SystemRulesTable extends React.Component {
 
     rulesToRows = (profileRules) => {
         const refIds = {};
+        const profiles = {};
         const rows = flatMap(profileRules, (profileRule) => flatMap(profileRule.rules, (rule, key) => {
+            profiles[rule.title] = profileRule.profile.refId;
             refIds[rule.title] = rule.ref_id;
             return [
                 this.calculateParent(profileRule, rule),
                 this.calculateChild(rule, key)
             ];
         }));
-        return { rows, refIds };
+        return { rows, refIds, profiles };
     }
 
     onCollapse = (_event, rowKey, isOpen) => {
-        const { rows, refIds } = this.state;
+        const { rows, profiles, refIds } = this.state;
         const key = ((this.state.page - 1) * this.state.itemsPerPage * 2) + Number(rowKey);
         rows[key].isOpen = isOpen;
-        this.currentRows(this.state.page, this.state.itemsPerPage, { rows, refIds }).then((currentRows) => {
+        this.currentRows(this.state.page, this.state.itemsPerPage, { rows, profiles, refIds }).then((currentRows) => {
             this.setState(() => ({ rows, currentRows }));
         });
     }
 
     selectedRules = () => {
-        const { rows, refIds } = this.state;
+        const { rows, profiles, refIds } = this.state;
         return rows.filter(row => row.selected).map(row => ({
             // We want to match this response with a similar response from GraphQL
             // eslint-disable-next-line camelcase
             ref_id: refIds[row.cells[0]],
+            profile: profiles[row.cells[0]],
             title: row.cells[0] // This is the rule title, the description is too long
         }));
     }
@@ -241,22 +256,22 @@ class SystemRulesTable extends React.Component {
         // Original index is not the right column, as patternfly adds 1 because
         // of the 'collapsible' button and 1 because of the checkbox.
         let column = index - 2;
-        const { refIds, rows, page, itemsPerPage } = this.state;
+        const { refIds, rows, page, profiles, itemsPerPage } = this.state;
         const sortedRows = this.uncompressRows(
             this.compressRows(rows).sort(
                 (a, b) => {
                     if (direction === SortByDirection.asc) {
                         if (column === COMPLIANT_COLUMN) {
-                            return a.parent.cells[column].props.className === b.parent.cells[column].props.className ? 0 :
-                                a.parent.cells[column].props.className < b.parent.cells[column].props.className ? 1 : -1;
+                            return a.parent.cells[column].title.props.className === b.parent.cells[column].title.props.className ? 0 :
+                                a.parent.cells[column].title.props.className < b.parent.cells[column].title.props.className ? 1 : -1;
                         } else {
                             return a.parent.cells[column].localeCompare(b.parent.cells[column]);
                         }
 
                     } else {
                         if (column === COMPLIANT_COLUMN) {
-                            return a.parent.cells[column].props.className === b.parent.cells[column].props.className ? 0 :
-                                a.parent.cells[column].props.className > b.parent.cells[column].props.className ? 1 : -1;
+                            return a.parent.cells[column].title.props.className === b.parent.cells[column].title.props.className ? 0 :
+                                a.parent.cells[column].title.props.className > b.parent.cells[column].title.props.className ? 1 : -1;
                         } else {
                             return -a.parent.cells[column].localeCompare(b.parent.cells[column]);
                         }
@@ -264,7 +279,7 @@ class SystemRulesTable extends React.Component {
                 }
             )
         );
-        this.currentRows(page, itemsPerPage, { rows: sortedRows, refIds }).then((currentRows) => {
+        this.currentRows(page, itemsPerPage, { rows: sortedRows, profiles, refIds }).then((currentRows) => {
             this.setState(() => ({
                 currentRows,
                 sortBy: {
@@ -277,11 +292,11 @@ class SystemRulesTable extends React.Component {
     }
 
     hidePassed = (checked) => {
-        const { rows, originalRows, refIds, page, itemsPerPage } = this.state;
+        const { rows, originalRows, profiles, refIds, page, itemsPerPage } = this.state;
         if (checked) {
             const onlyPassedRows = [];
             rows.forEach((row, i) => {
-                if (row.hasOwnProperty('isOpen') && row.cells[COMPLIANT_COLUMN].props.className === 'ins-u-failed') {
+                if (row.hasOwnProperty('isOpen') && row.cells[COMPLIANT_COLUMN].title.props.className === 'ins-u-failed') {
                     onlyPassedRows.push(row);
                     if (!rows[i + 1].hasOwnProperty('isOpen')) {
                         let child = rows[i + 1];
@@ -291,7 +306,7 @@ class SystemRulesTable extends React.Component {
                 }
             });
 
-            this.currentRows(page, itemsPerPage, { rows: onlyPassedRows, refIds }).then((currentRows) => {
+            this.currentRows(page, itemsPerPage, { rows: onlyPassedRows, profiles, refIds }).then((currentRows) => {
                 this.setState(() => ({
                     currentRows,
                     originalRows: rows,
@@ -300,7 +315,7 @@ class SystemRulesTable extends React.Component {
                 }));
             });
         } else {
-            this.currentRows(page, itemsPerPage, { rows: originalRows, refIds }).then((currentRows) => {
+            this.currentRows(page, itemsPerPage, { rows: originalRows, profiles, refIds }).then((currentRows) => {
                 this.setState(() => ({
                     currentRows,
                     rows: originalRows,
@@ -312,7 +327,8 @@ class SystemRulesTable extends React.Component {
 
     render() {
         const { sortBy, hidePassedChecked, rows, currentRows, columns, page, itemsPerPage } = this.state;
-        const { loading } = this.props;
+        const { loading, profileRules } = this.props;
+        const system = profileRules[0].system;
         if (loading) {
             return (
                 <Table
@@ -328,6 +344,7 @@ class SystemRulesTable extends React.Component {
                 </Table>
             );
         } else {
+            /* eslint-disable camelcase */
             return (
                 <React.Fragment>
                     <TableToolbar>
@@ -339,7 +356,9 @@ class SystemRulesTable extends React.Component {
                                 { rows.length / 2 } results
                             </LevelItem>
                             <LevelItem>
-                                <ComplianceRemediationButton selectedRules={ this.selectedRules() } />
+                                <ComplianceRemediationButton
+                                    allSystems={ [{ id: system, rule_objects_failed: []}] }
+                                    selectedRules={ this.selectedRules() } />
                             </LevelItem>
                         </Level>
                     </TableToolbar>
@@ -362,6 +381,7 @@ class SystemRulesTable extends React.Component {
                     />
                 </React.Fragment>
             );
+            /* eslint-enable camelcase */
         }
     }
 }
