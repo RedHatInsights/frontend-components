@@ -47,6 +47,10 @@ export function getCveListBySystem({
         })
         .catch(error => {
             return error.json().then(error => {
+                if (error.errors[0].status === '404') {
+                    return { errors: { status: 404, detail: 'No Vulnerability data' }};
+                }
+
                 throw { title: 'Vulnerability Error', ...error.errors[0] };
             });
         });
