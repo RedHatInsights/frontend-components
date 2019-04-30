@@ -6,6 +6,7 @@ import { Card, CardBody, CardHeader, Stack, StackItem, List, ListItem, Split, Sp
 import doT from 'dot';
 import sanitizeHtml from 'sanitize-html';
 import marked from 'marked';
+import ReactDOMServer from 'react-dom/server';
 
 import { Ansible } from '../../../../PresentationalComponents/Ansible';
 import { Battery } from '../../../../PresentationalComponents/Battery';
@@ -45,7 +46,7 @@ class ExpandableRulesCard extends React.Component {
                 ul: sanitizeHtml.simpleTransform('ul', { class: 'pf-c-list' })
             }
         };
-        const externalLinkIcon = '';
+        const externalLinkIcon = ReactDOMServer.renderToStaticMarkup(<ExternalLinkAltIcon />);
 
         try {
             const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
