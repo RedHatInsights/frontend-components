@@ -32,8 +32,8 @@ function ResolutionModeStep (props) {
             <StackItem>
                 <h1 className='ins-m-text__bold'>
                     You have selected { issueCount } { actions(issueCount) } to be added to your Playbook.&nbsp;
-                    { tweakableCount } out of { issueCount } { actions(issueCount) } { allows(tweakableCount) }&nbsp;
-                    you to choose from multiple resolution steps.
+                    { tweakableCount } out of { issueCount } { actions(issueCount) } { allows(tweakableCount) } you to choose
+                    from multiple resolution steps.
                 </h1>
             </StackItem>
             <StackItem>

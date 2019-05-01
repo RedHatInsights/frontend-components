@@ -4,6 +4,8 @@ import propTypes from 'prop-types';
 
 import {
     Form,
+    Label,
+    Split, SplitItem,
     Radio,
     Stack,
     StackItem
@@ -26,8 +28,19 @@ function isSelectedByDefault ({ id }, index, issue, state) {
 function IssueResolutionStep (props) {
     return (
         <Stack gutter='sm'>
-            <StackItem><h1 className='ins-m-text__bold'>{ props.state.issuesById[props.issue.id].description }</h1></StackItem>
-            <StackItem><h2>Please review the available resolution steps and make your selection:</h2></StackItem>
+            <StackItem>Please review the available resolution steps and make your selection:</StackItem>
+            <StackItem>
+                <Split gutter='sm'>
+                    <SplitItem>
+                        <Label>Action</Label>
+                    </SplitItem>
+                    <SplitItem isFilled>
+                        <h1 className='ins-m-text__bold'>{ props.state.issuesById[props.issue.id].description }</h1>
+                    </SplitItem>
+                </Split>
+
+            </StackItem>
+
             <StackItem>
                 <Form>
                     {

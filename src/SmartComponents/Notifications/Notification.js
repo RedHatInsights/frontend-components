@@ -46,7 +46,7 @@ class Notification extends Component {
                     </Button> : null
                 }
             >
-                { description && description.replace(/<\/?[^>]+(>|$)/g, '') }
+                { (typeof description === 'string') ? description.replace(/<\/?[^>]+(>|$)/g, '') : description }
             </Alert>
         );
     }

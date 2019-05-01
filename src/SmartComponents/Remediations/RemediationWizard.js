@@ -28,8 +28,8 @@ function createNotification (id, name, isNewSwitch) {
     return {
         variant: 'success',
         title: `Playbook ${verb}`,
-        description: <span><a href={ remediationUrl(id) } >{ name }</a> has been { verb }</span>,
-        dismissDelay: 8000
+        description: <span>You have succesfully { verb } <a href={ remediationUrl(id) } >{ name }</a>.</span>,
+        dismissable: true
     };
 }
 
@@ -315,7 +315,7 @@ class RemediationWizard extends Component {
                 onClose = { this.closeWizard }
                 isOpen= { this.state.open !== false }
                 content = { steps }
-                confirmAction={ this.state.isNewSwitch ? 'Create Playbook' : 'Update Playbook' }
+                confirmAction={ this.state.isNewSwitch ? 'Create' : 'Save' }
             />
         );
     }

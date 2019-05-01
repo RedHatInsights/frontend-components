@@ -37,27 +37,27 @@ function isAutoReboot (state) {
 
 function SummaryStep(props) {
 
-    const { autoRebootSwitch, autoRebootSwitchDisabled } = props.state;
+    const { name } = props.state;
     const rebootNeeded = isRebootNeeded(props.state, props.getResolution);
 
     return (
         <Stack gutter='sm'>
-            <StackItem><h1 className='ins-m-text__bold'>Remediation summary</h1></StackItem>
+            <StackItem><h1 className='ins-m-text__bold'>Playbook name: { name || 'Unnamed Playbook' }</h1></StackItem>
             <StackItem>
                 <IssueTable issues={ props.state.open.data.issues } state={ props.state } getResolution={ props.getResolution } />
             </StackItem>
             <StackItem>
                 <Stack gutter='sm'>
-                    <StackItem className='ins-m-text__accent'>
-                        {
-                            rebootNeeded ? <h1>System reboot is required</h1> : <h1>The remediation does not require reboot</h1>
-                        }
-                    </StackItem>
+                    {
+                        rebootNeeded ?
+                            <StackItem><h1 className='ins-m-text__bold'>System reboot is required</h1></StackItem> :
+                            <StackItem><h1 className='ins-m-text__accent'>System reboot is not required</h1></StackItem>
+                    }
                     <StackItem>
                         <Switch
                             id="autoReboot"
-                            aria-label="Auto Reboot"
-                            label="Auto Reboot"
+                            aria-label="Auto reboot"
+                            label="Auto reboot"
                             isChecked={ rebootNeeded ? isAutoReboot(props.state) : false }
                             isDisabled={ !rebootNeeded }
                             onChange={ value => props.onAutoRebootSwitch(value) }
