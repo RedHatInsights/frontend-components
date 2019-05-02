@@ -73,8 +73,8 @@ class InventoryRuleList extends Component {
         }
     }
 
-    sortActiveReports (activeReports) {
-        const reports = { ...activeReports };
+    sortActiveReports = (activeReports) => {
+        const reports = [ ...activeReports ];
         const activeRuleIndex = activeReports.findIndex(report => report.rule.rule_id === this.props.match.params.id);
         const activeReport = reports.splice(activeRuleIndex, 1);
 
