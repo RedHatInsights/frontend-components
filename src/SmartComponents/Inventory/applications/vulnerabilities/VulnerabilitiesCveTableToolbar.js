@@ -18,7 +18,12 @@ class VulnerabilitiesCveTableToolbar extends Component {
 
     componentDidMount() {
         this.props.entity && this.props.fetchStatusList();
+        const urlParams = new URLSearchParams(this.props.location.search);
+        const cvss_filter = urlParams.get('cvss_filter');
+        cvss_filter && this.setState({ ...this.state, cvss_filter }, this.apply);
+        cvss_filter && history.pushState(null, null, window.location.href.split('?')[0]);
     }
+
     changeFilterValue = debounce(
         value =>
             this.setState(
@@ -172,7 +177,8 @@ VulnerabilitiesCveTableToolbar.propTypes = {
     addNotification: propTypes.func.isRequired,
     selectedCves: propTypes.any,
     fetchStatusList: propTypes.func,
-    statusList: propTypes.object
+    statusList: propTypes.object,
+    location: propTypes.object
 };
 
 VulnerabilitiesCveTableToolbar.defaultProps = {
