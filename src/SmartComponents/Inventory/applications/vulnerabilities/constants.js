@@ -1,7 +1,7 @@
-import { Bullseye, Button, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
-import { CubesIcon } from '@patternfly/react-icons';
-import React from 'react';
+import { Bullseye, Button, Card, CardBody, CardHeader, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
+import { CubesIcon, FrownOpenIcon } from '@patternfly/react-icons';
 import moment from 'moment';
+import React from 'react';
 
 // Reports that no CVEs were found after filtering results
 export const FilterNotFoundForCVE = (
@@ -85,14 +85,12 @@ export const NoVulnerabilityData = (
 
 // Generic error
 export const GenericError = (
-    <Bullseye>
-        <EmptyState>
-            <EmptyStateIcon icon={ CubesIcon } color={ 'var(--pf-global--danger-color--100)' } />
-            <Title headingLevel="h5" size="lg">
-                There was an error loading resources
-            </Title>
-        </EmptyState>
-    </Bullseye>
+    <Card className="ins-empty-rule-cards">
+        <CardHeader>
+            <FrownOpenIcon size="lg" />
+        </CardHeader>
+        <CardBody>There was an error getting data. Reload the page and try again</CardBody>
+    </Card>
 );
 
 //CVSS Base score label to value

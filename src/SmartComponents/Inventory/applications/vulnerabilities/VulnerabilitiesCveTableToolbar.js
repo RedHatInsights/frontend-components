@@ -51,7 +51,7 @@ class VulnerabilitiesCveTableToolbar extends Component {
             newFilter = this.state[param] ? { [param]: `${this.state[param]},${value}` } : { [param]: value };
         }
 
-        this.setState({ ...this.state, ...newFilter }, this.apply);
+        this.setState({ ...this.state, ...newFilter, page: 1 }, this.apply);
     };
 
     removeFilter = (key, value) => {
@@ -63,32 +63,18 @@ class VulnerabilitiesCveTableToolbar extends Component {
         };
 
         if (newFilter.length !== 0) {
-            this.setState({ ...this.state, ...newFilter }, this.apply);
+            this.setState({ ...this.state, ...newFilter, page: 1 }, this.apply);
         } else {
             const filter = { ...this.state, [key]: undefined };
-            this.setState({ ...this.state, ...filter }, this.apply);
+            this.setState({ ...this.state, ...filter, page: 1 }, this.apply);
         }
     };
 
     changePage = (_event, pageNumber) => this.setState({ ...this.state, page: pageNumber }, this.apply);
 
-    setPageSize = (_event, perPage) => this.setState({ ...this.state, page_size: perPage }, this.apply);
+    setPageSize = (_event, perPage) => this.setState({ ...this.state, page_size: perPage, page: 1 }, this.apply);
 
     apply = () => this.props.apply(this.state);
-
-    changeCVSSValue = (value, options) => {
-        const target = options.find(item => item.value === value);
-        this.setState({ ...this.state, cvss_from: target.from, cvss_to: target.to }, this.apply);
-    };
-
-    changeCheckboxValue = value => {
-        this.setState({ ...this.state, show_all: !value }, this.apply);
-    };
-
-    getCVSSValue = options => {
-        const option = options.find(item => item.from === this.state.cvss_from && item.to === this.state.cvss_to);
-        return option ? option.value : options[0].value;
-    };
 
     remediationProvider = () => {
         if (!this.props.selectedCves || this.props.selectedCves.size === 0) {

@@ -14,7 +14,7 @@ class VulnerabilitiesCveTable extends Component {
     changePage = (_event, pageNumber) => this.props.apply({ page: pageNumber });
 
     // eslint-disable-next-line camelcase
-    setPageSize = (_event, perPage) => this.props.apply({ page_size: perPage });
+    setPageSize = (_event, perPage) => this.props.apply({ page_size: perPage, page: 1 });
 
     sortColumn = (event, key, direction) => {
         let columnMapping = this.props.isSelectable ? [{ key: 'checkbox' }, ...this.props.header ] : this.props.header;

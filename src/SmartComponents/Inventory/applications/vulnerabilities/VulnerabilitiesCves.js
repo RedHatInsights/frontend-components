@@ -29,11 +29,6 @@ class VulnerabilitiesCves extends Component {
     };
 
     apply = (config = {}) => {
-        const toBeReset = [ 'filter', 'page_size', 'show_all' ];
-        if (some(toBeReset, item => config.hasOwnProperty(item) && config[item] !== this.state[item])) {
-            config.page = 1;
-        }
-
         if (config.hasOwnProperty('cvss_filter')) {
             let cvssEntry = CVSSOptions.find(item => item.value === config.cvss_filter);
             config.cvss_from = cvssEntry.from;
