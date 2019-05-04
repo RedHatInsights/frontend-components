@@ -1,64 +1,66 @@
 @import "../../../../Utilities/mixins";
 
-.cvetable-toolbar {
-  justify-content: space-between;
-  > div {
-    align-self: flex-end;
-  }
-}
-.space-between-toolbar-items {
-  justify-content: space-between;
-}
-
-.vulnerability-toolbar-spacing {
-  justify-content: flex-start;
-  > div:first-child {
-      overflow: hidden;
-  }
-  > div {
-      margin-right: var(--pf-global--spacer--sm);
-  }
-}
-
-.pf-c-pagination.pf-m-footer.ins-c-pagination-next {
-  margin-left: auto;
-}
-
-#download-report {
-  cursor: pointer;
-}
-
-.number-of-results {
-  display: inline-block;
-  min-width: 55px;
-  text-align: right;
-  margin-right: 5px;
-}
-
-.table-header-icon {
-  @include rem("margin-right", 5px);
-}
-
-.status-dropdown-column {
-  > svg {
-    color: var(--pf-global--primary-color--100);
-  }
-  &:hover {
-    cursor: pointer;
-    > svg {
-      visibility: visible;
+.ins-active-app-vulnerabilities, .page__Vulnerabilities{
+  .cvetable-toolbar {
+    justify-content: space-between;
+    > div {
+      align-self: flex-end;
     }
   }
-  > svg {
-    visibility: hidden;
+  .space-between-toolbar-items {
+    justify-content: space-between;
   }
-}
 
-td.pf-c-table__check {
-  vertical-align: middle;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
-.pf-c-table tr > * {
-  vertical-align: middle !important;
+  .vulnerability-toolbar-spacing {
+    justify-content: flex-start;
+    > div:first-child {
+        overflow: hidden;
+    }
+    > div {
+        margin-right: var(--pf-global--spacer--sm);
+    }
+  }
+
+  .pf-c-pagination.pf-m-footer.ins-c-pagination-next {
+    margin-left: auto;
+  }
+
+  #download-report {
+    cursor: pointer;
+  }
+
+  .number-of-results {
+    display: inline-block;
+    min-width: 55px;
+    text-align: right;
+    margin-right: 5px;
+  }
+
+  .table-header-icon {
+    @include rem("margin-right", 5px);
+  }
+
+  .status-dropdown-column {
+    > svg {
+      color: var(--pf-global--primary-color--100);
+    }
+    &:hover {
+      cursor: pointer;
+      > svg {
+        visibility: visible;
+      }
+    }
+    > svg {
+      visibility: hidden;
+    }
+  }
+
+  td.pf-c-table__check {
+    vertical-align: middle;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .pf-c-table tr > * {
+    vertical-align: middle !important;
+  }
 }
