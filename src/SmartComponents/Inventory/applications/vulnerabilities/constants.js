@@ -78,7 +78,9 @@ export const NoVulnerabilityData = (
                 No vulnerability data
             </Title>
             <EmptyStateBody>Activate the Insights client for this system to report for vulnerabilities</EmptyStateBody>
-            <Button variant="primary">Learn about the insights client</Button>
+            <Button variant="primary" component="a" href="http://access.redhat.com/products/cloud-management-services-for-rhel#getstarted">
+                Learn about the Insights client
+            </Button>
         </EmptyState>
     </Bullseye>
 );
