@@ -21,7 +21,10 @@ function buildRows(issues, state, getResolution) {
             cells: [
                 state.issuesById[issue.id].description,
                 resolution.description,
-                { title: needsRebootCell(resolution.needs_reboot) },
+                {
+                    title: needsRebootCell(resolution.needs_reboot),
+                    value: resolution.needs_reboot
+                },
                 getSystemCount(issue, state),
                 issueType(issue.id)
             ]
@@ -32,7 +35,9 @@ function buildRows(issues, state, getResolution) {
 function issueType (id) {
     switch (id.split(':')[0]) {
         case 'advisor': return 'Insights';
-        case 'compliance': return 'Compliance';
+        case 'ssg':
+        case 'compliance':
+            return 'Compliance';
         case 'vulnerabilities': return 'Vulnerability';
         default: return 'Unknown';
     }
@@ -60,7 +65,14 @@ class IssueTable extends React.Component {
     render () {
         const { sortBy, sortDir } = this.state;
         const rows = buildRows(this.props.issues, this.props.state, this.props.getResolution);
-        const sorted = orderBy(rows, r => r.cells[sortBy], [ this.state.sortDir ]);
+        const sorted = orderBy(rows, r => {
+            const cell = r.cells[sortBy];
+            if (typeof cell === 'object') {
+                return cell.value;
+            }
+
+            return cell;
+        }, [ this.state.sortDir ]);
 
         return (
             <Table
