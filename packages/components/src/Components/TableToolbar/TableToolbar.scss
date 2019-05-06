@@ -1,0 +1,22 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
+
+:root {
+    --ins-c-table-toolbar--PaddingVertical: 16px;
+    --ins-c-table-toolbar--PaddingHorizontal: 32px;
+}
+
+.ins-c-table__toolbar, .ins-c-table__toolbar-results {
+    background: var(--pf-global--Color--light-100);
+    border-bottom: 1px solid var(--pf-global--BorderColor--light-200);
+    padding: var(--ins-c-table-toolbar--PaddingVertical) var(--ins-c-table-toolbar--PaddingHorizontal);
+}
+
+.ins-c-table__toolbar.ins-m-footer { border-top: 1px solid var(--pf-global--BorderColor--light-200); }
+
+.ins-c-table__toolbar-results { color: var(--pf-global--Color--200); }
+
+.ins-c-table__toolbar-results-count + .ins-c-table__toolbar-results-selected {
+    @include rem('margin-left', 15px);
+    @include rem('padding-left', 15px);
+    border-left: 2px solid var(--pf-global--BorderColor--light);
+}

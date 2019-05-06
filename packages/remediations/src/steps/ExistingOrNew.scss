@@ -1,0 +1,14 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
+
+.ins-c-existing-or-new {
+  .ins-c-existing-or-new__existing {
+    display: flex;
+    flex-wrap: wrap;
+
+    select.pf-c-form-control, .ins-c-skeleton {
+      width: auto;
+      @include rem('min-width', 300px);
+      @include rem('margin-left', 20px);
+    }
+  }
+}

@@ -21,5 +21,5 @@ yarn-error.log*
 /charts/
 coverage
 .storybook
-
+lerna-debug.log
 .DS_Store
