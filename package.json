@@ -1,165 +1,161 @@
 {
-  "name": "@redhat-cloud-services/frontend-components-root",
-  "version": "0.0.1",
-  "main": "dist/index.js",
-  "private": true,
-  "files": [
-    "index.js",
-    "index.css",
-    "components/",
-    "Utilities/"
-  ],
-  "dependencies": {
-    "@babel/core": "^7.4.3",
-    "@patternfly/react-core": "^3.2.6",
-    "@patternfly/react-icons": "^3.7.4",
-    "@patternfly/react-table": "^2.1.6",
-    "@redhat-cloud-services/host-inventory-client": "^1.0.12",
-    "abortcontroller-polyfill": "^1.2.1",
-    "apollo-boost": "^0.1.23",
-    "axios": "^0.18.0",
-    "bootstrap-sass": "^3.3.7",
-    "c3": "^0.6.7",
-    "classnames": "^2.2.5",
-    "d3": "^5.7.0",
-    "graphql": "^14.0.2",
-    "graphql-tag": "^2.10.0",
-    "marked": "^0.6.0",
-    "patternfly-react": "^2.19.1",
-    "prop-types": "^15.6.2",
-    "react": "^16.5.1",
-    "react-apollo": "^2.3.3",
-    "react-dom": "^16.5.1",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "react-truncate": "^2.4.0",
-    "redux": "^3.7.2",
-    "redux-promise-middleware": "^5.1.1",
-    "urijs": "^1.19.1"
-  },
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "<rootDir>/packages/**/src/**/*.js",
-      "!<rootDir>/packages/**/stories/*",
-      "!<rootDir>/packages/**/index.js",
-      "!<rootDir>/packages/**/*{c|C}ontext*.js"
+    "name": "@redhat-cloud-services/frontend-components-root",
+    "version": "0.0.1",
+    "main": "dist/index.js",
+    "private": true,
+    "files": [
+        "index.js",
+        "index.css",
+        "components/",
+        "Utilities/"
     ],
-    "setupFiles": [
-      "<rootDir>/config/setupTests.js"
-    ],
-    "testEnvironment": "jsdom",
-    "roots": [
-      "<rootDir>/packages/"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|scss)$": "identity-obj-proxy"
-    }
-  },
-  "sassIncludes": {
-    "patternfly": "node_modules/patternfly/dist/sass",
-    "bootstrap": "node_modules/bootstrap-sass/assets/stylesheets",
-    "fontAwesome": "node_modules/font-awesome-sass/assets/stylesheets"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/plugin-proposal-decorators": "^7.4.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-react-display-name": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.4.3",
-    "@khala/commit-analyzer-wildcard": "^1.0.2",
-    "@patternfly/patternfly": "^2.5.0",
-    "@semantic-release/git": "^6.0.2",
-    "@semantic-release/npm": "^5.1.7",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.1.0",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-lodash": "^3.3.2",
-    "babel-polyfill": "^6.26.0",
-    "clean-webpack-plugin": "^0.1.19",
-    "codecov": "^3.1.0",
-    "copy-webpack-plugin": "^4.5.1",
-    "cross-fetch": "^2.2.0",
-    "css-loader": "^2.1.1",
-    "dot": "^1.1.2",
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.12.1",
-    "enzyme-to-json": "^3.3.4",
-    "eslint": "^5.6.0",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-loader": "^2.1.0",
-    "eslint-plugin-react": "^7.11.1",
-    "file-loader": "^1.1.11",
-    "glob": "^7.1.3",
-    "html-webpack-plugin": "^4.0.0-alpha.2",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.7.1",
-    "lerna": "^3.13.4",
-    "lodash-webpack-plugin": "^0.11.5",
-    "mini-css-extract-plugin": "^0.4.2",
-    "node-sass": "^4.11.0",
-    "react-content-loader": "^3.4.1",
-    "redux-mock-store": "^1.5.3",
-    "sanitize-html": "^1.20.0",
-    "sass-loader": "^7.1.0",
-    "semantic-release": "^15.13.3",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "^0.21.0",
-    "topojson": "^3.0.2",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.4.5",
-    "webpack": "^4.20.2",
-    "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.14",
-    "webpack-visualizer-plugin": "^0.1.11",
-    "write-file-webpack-plugin": "^4.4.0"
-  },
-  "resolutions": {
-    "node-sass": "4.9.3"
-  },
-  "scripts": {
-    "clean": "lerna clean -y && rm -rf node_modules",
-    "bootstrap": "lerna bootstrap --hoist",
-    "start": "lerna run --parallel start",
-    "build": "lerna run build --no-private",
-    "test": "jest",
-    "coverage": "codecov",
-    "prepare": "npm run bootstrap && npm run build",
-    "playground": "lerna run --parallel start:dev",
-    "release": "semantic-release",
-    "lint": "eslint config packages/**/src/*.js",
-    "watch": "lerna exec --parallel --no-private -- npm run build -- --watch"
-  },
-  "release": {
-    "analyzeCommits": "@khala/commit-analyzer-wildcard/analyzer",
-    "prepare": [
-      "@semantic-release/npm",
-      {
-        "path": "@semantic-release/git",
-        "assets": [
-          "package.json",
-          "package-lock.json"
+    "dependencies": {
+        "@babel/core": "^7.4.3",
+        "@patternfly/react-core": "^3.2.6",
+        "@patternfly/react-icons": "^3.7.4",
+        "@patternfly/react-table": "^2.1.6",
+        "@redhat-cloud-services/host-inventory-client": "^1.0.12",
+        "abortcontroller-polyfill": "^1.2.1",
+        "apollo-boost": "^0.1.23",
+        "axios": "^0.18.0",
+        "bootstrap-sass": "^3.3.7",
+        "c3": "^0.6.7",
+        "classnames": "^2.2.5",
+        "d3": "^5.7.0",
+        "graphql": "^14.0.2",
+        "graphql-tag": "^2.10.0",
+        "marked": "^0.6.0",
+        "prop-types": "^15.6.2",
+        "react": "^16.5.1",
+        "react-apollo": "^2.3.3",
+        "react-dom": "^16.5.1",
+        "react-redux": "^5.0.7",
+        "react-router-dom": "^4.2.2",
+        "react-truncate": "^2.4.0",
+        "redux": "^3.7.2",
+        "redux-promise-middleware": "^5.1.1",
+        "urijs": "^1.19.1"
+    },
+    "jest": {
+        "coverageDirectory": "./coverage/",
+        "collectCoverage": true,
+        "collectCoverageFrom": [
+            "<rootDir>/packages/**/src/**/*.js",
+            "!<rootDir>/packages/**/stories/*",
+            "!<rootDir>/packages/**/index.js",
+            "!<rootDir>/packages/**/*{c|C}ontext*.js"
         ],
-        "message": "Release of new version: ${nextRelease.version} <no> [skip ci]"
-      }
-    ]
-  },
-  "description": "Components for Red Hat Cloud Services",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RedHatInsights/frontend-components.git"
-  },
-  "author": "",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/RedHatInsights/frontend-components/issues"
-  },
-  "homepage": "https://github.com/RedHatInsights/frontend-components#readme"
+        "setupFiles": [
+            "<rootDir>/config/setupTests.js"
+        ],
+        "testEnvironment": "jsdom",
+        "roots": [
+            "<rootDir>/packages/"
+        ],
+        "moduleNameMapper": {
+            "\\.(css|scss)$": "identity-obj-proxy"
+        }
+    },
+    "sassIncludes": {
+        "patternfly": "node_modules/patternfly/dist/sass",
+        "bootstrap": "node_modules/bootstrap-sass/assets/stylesheets",
+        "fontAwesome": "node_modules/font-awesome-sass/assets/stylesheets"
+    },
+    "devDependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-decorators": "^7.4.0",
+        "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+        "@babel/plugin-transform-react-display-name": "^7.2.0",
+        "@babel/plugin-transform-runtime": "^7.4.3",
+        "@babel/preset-env": "^7.4.3",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/runtime": "^7.4.3",
+        "@khala/commit-analyzer-wildcard": "^1.0.2",
+        "@khala/npm-release-monorepo": "^2.2.0",
+        "@khala/wildcard-release-notes": "^2.2.0",
+        "@patternfly/patternfly": "^2.5.0",
+        "@semantic-release/git": "^6.0.2",
+        "@semantic-release/npm": "^5.1.7",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-eslint": "^10.0.1",
+        "babel-jest": "^24.1.0",
+        "babel-loader": "^7.1.4",
+        "babel-plugin-lodash": "^3.3.2",
+        "babel-polyfill": "^6.26.0",
+        "clean-webpack-plugin": "^0.1.19",
+        "codecov": "^3.1.0",
+        "copy-webpack-plugin": "^4.5.1",
+        "cross-fetch": "^2.2.0",
+        "css-loader": "^2.1.1",
+        "dot": "^1.1.2",
+        "enzyme": "^3.6.0",
+        "enzyme-adapter-react-16": "^1.12.1",
+        "enzyme-to-json": "^3.3.4",
+        "eslint": "^5.6.0",
+        "eslint-config-prettier": "^3.1.0",
+        "eslint-loader": "^2.1.0",
+        "eslint-plugin-react": "^7.11.1",
+        "file-loader": "^1.1.11",
+        "glob": "^7.1.3",
+        "html-webpack-plugin": "^4.0.0-alpha.2",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^24.7.1",
+        "lerna": "^3.13.4",
+        "lodash-webpack-plugin": "^0.11.5",
+        "mini-css-extract-plugin": "^0.4.2",
+        "node-sass": "^4.11.0",
+        "react-content-loader": "^3.4.1",
+        "redux-mock-store": "^1.5.3",
+        "sanitize-html": "^1.20.0",
+        "sass-loader": "^7.1.0",
+        "semantic-release": "^15.13.3",
+        "source-map-loader": "^0.2.4",
+        "style-loader": "^0.21.0",
+        "topojson": "^3.0.2",
+        "ts-jest": "^24.0.2",
+        "typescript": "^3.4.5",
+        "webpack": "^4.20.2",
+        "webpack-bundle-analyzer": "^2.13.1",
+        "webpack-cli": "^3.1.1",
+        "webpack-dev-server": "^3.1.14",
+        "webpack-visualizer-plugin": "^0.1.11",
+        "write-file-webpack-plugin": "^4.4.0"
+    },
+    "resolutions": {
+        "node-sass": "4.9.3"
+    },
+    "scripts": {
+        "clean": "lerna clean -y && rm -rf node_modules",
+        "bootstrap": "lerna bootstrap --hoist",
+        "start": "lerna run --parallel start",
+        "build": "lerna run build --no-private",
+        "test": "jest",
+        "coverage": "codecov",
+        "prepare": "npm run bootstrap && npm run build",
+        "playground": "lerna run --parallel start:dev",
+        "release": "semantic-release",
+        "lint": "eslint config packages/**/src/*.js",
+        "watch": "lerna exec --parallel --no-private -- npm run build -- --watch"
+    },
+    "release": {
+        "monorepo": "./packages",
+        "plugins": [
+            "@khala/commit-analyzer-wildcard",
+            "@khala/npm-release-monorepo",
+            "@khala/wildcard-release-notes",
+            "@semantic-release/github"
+        ]
+    },
+    "description": "Components for Red Hat Cloud Services",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/RedHatInsights/frontend-components/issues"
+    },
+    "homepage": "https://github.com/RedHatInsights/frontend-components#readme"
 }

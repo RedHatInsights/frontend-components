@@ -1,7 +1,7 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-general-info",
     "version": "0.0.1",
-    "description": "",
+    "description": "System info detail for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
         "access": "public"

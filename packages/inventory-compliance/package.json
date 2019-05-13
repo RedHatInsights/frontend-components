@@ -1,7 +1,7 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-compliance",
     "version": "0.0.1",
-    "description": "",
+    "description": "Detail part of compliance for RedHat Cloud Services.",
     "main": "index.js",
     "publishConfig": {
         "access": "public"
