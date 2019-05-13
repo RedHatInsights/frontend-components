@@ -1,4 +1,6 @@
 # RedHat Cloud Services frontend components - remediations
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-remediations.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-remediations)
+
 This package exports components to show remediations dialog, button and also export API to be used directly trough this package.
 
 ## Installation

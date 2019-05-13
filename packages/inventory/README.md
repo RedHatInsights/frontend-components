@@ -1,4 +1,6 @@
 # RedHat Cloud Services frontend components - inventory
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory)
+
 This package is hot loaded via [insights-chrome](https://github.com/RedHatInsights/insights-chrome#readme) and exports new components for inventory table and detail. It also exports redux reducers and actions so usage is as simple as possible.
 
 ## Installation

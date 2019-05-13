@@ -1,4 +1,5 @@
 # RedHat Cloud Services frontend components - charts
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-charts.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-charts)
 
 This small package has a few chart components predefined to suit cloud services needs. These charts are built on top of D3 and C3 libraries.
 
