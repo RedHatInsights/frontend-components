@@ -1,7 +1,7 @@
 {
     "name": "@redhat-cloud-services/frontend-components-demo",
     "version": "0.0.1",
-    "description": "",
+    "description": "Demo package to test linked packages.",
     "main": "index.js",
     "private": true,
     "scripts": {

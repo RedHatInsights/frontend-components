@@ -57,11 +57,11 @@ class ExpandableRulesCard extends React.Component {
             const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
             const compiledMd = marked(sanitizeHtml(compiledDot, sanitizeOptions));
 
-            return <div dangerouslySetInnerHTML={{
+            return <div dangerouslySetInnerHTML={ {
                 __html: compiledMd
-                    .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
-                    .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`)
-            }} />;
+                .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
+                .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`)
+            } } />;
         } catch (error) {
             console.warn(error, definitions, template); // eslint-disable-line no-console
             return <React.Fragment> Ouch. We were unable to correctly render this text, instead please enjoy the raw data.

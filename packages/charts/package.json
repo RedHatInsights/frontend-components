@@ -1,7 +1,7 @@
 {
     "name": "@redhat-cloud-services/frontend-components-charts",
     "version": "0.0.1",
-    "description": "",
+    "description": "Charts for RedHat Cloud Services project.",
     "main": "dist/index.js",
     "publishConfig": {
         "access": "public"
