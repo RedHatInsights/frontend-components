@@ -1,4 +1,6 @@
 # RedHat Cloud Services frontend components - notifications
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-notifications.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-notifications)
+
 This package has portal component that shows toast notifications based on [PF4 alert component](https://v2.patternfly.org/documentation/core/components/alert).
 
 ## Installation

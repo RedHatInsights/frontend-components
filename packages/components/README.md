@@ -1,4 +1,6 @@
 # RedHat Cloud Services frontend components - components
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components)
+
 This package consists of shared components required by RedHat Cloud Services team.
 
 ## Installation

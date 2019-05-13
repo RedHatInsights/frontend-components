@@ -1,4 +1,6 @@
 # RedHat Cloud Services frontend components - inventory compliance
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory-compliance.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory-compliance)
+
 This package exports components to show compliance detail page, it has dependency on graphql to query server.
 
 ## Installation

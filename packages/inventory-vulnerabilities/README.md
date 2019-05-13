@@ -1,4 +1,6 @@
 # RedHat Cloud Services frontend components - inventory vulnerabilities
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory-vulnerabilities.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory-vulnerabilities)
+
 This package exports components to show rules CVE detail page.
 
 ## Installation

@@ -1,4 +1,6 @@
 # RedHat Cloud Services frontend components - inventory general info
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory-general-info.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory-general-info)
+
 This package exports components to show system info page and reducers with actions to fetch and store data.
 
 ## Installation
