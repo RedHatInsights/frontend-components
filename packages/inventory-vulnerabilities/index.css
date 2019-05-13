@@ -1,0 +1,50 @@
+.ins-active-app-vulnerabilities .cvetable-toolbar, .page__Vulnerabilities .cvetable-toolbar {
+  justify-content: space-between; }
+  .ins-active-app-vulnerabilities .cvetable-toolbar > div, .page__Vulnerabilities .cvetable-toolbar > div {
+    align-self: flex-end; }
+
+.ins-active-app-vulnerabilities .space-between-toolbar-items, .page__Vulnerabilities .space-between-toolbar-items {
+  justify-content: space-between; }
+
+.ins-active-app-vulnerabilities .vulnerability-toolbar-spacing, .page__Vulnerabilities .vulnerability-toolbar-spacing {
+  justify-content: flex-start; }
+  .ins-active-app-vulnerabilities .vulnerability-toolbar-spacing > div:first-child, .page__Vulnerabilities .vulnerability-toolbar-spacing > div:first-child {
+    overflow: hidden; }
+  .ins-active-app-vulnerabilities .vulnerability-toolbar-spacing > div, .page__Vulnerabilities .vulnerability-toolbar-spacing > div {
+    margin-right: var(--pf-global--spacer--sm); }
+
+.ins-active-app-vulnerabilities .pf-c-pagination.pf-m-footer.ins-c-pagination-next, .page__Vulnerabilities .pf-c-pagination.pf-m-footer.ins-c-pagination-next {
+  margin-left: auto; }
+
+.ins-active-app-vulnerabilities #download-report, .page__Vulnerabilities #download-report {
+  cursor: pointer; }
+
+.ins-active-app-vulnerabilities .number-of-results, .page__Vulnerabilities .number-of-results {
+  display: inline-block;
+  min-width: 55px;
+  text-align: right;
+  margin-right: 5px; }
+
+.ins-active-app-vulnerabilities .table-header-icon, .page__Vulnerabilities .table-header-icon {
+  margin-right: 5px;
+  margin-right: 0.3125rem; }
+
+.ins-active-app-vulnerabilities .status-dropdown-column > svg, .page__Vulnerabilities .status-dropdown-column > svg {
+  color: var(--pf-global--primary-color--100); }
+
+.ins-active-app-vulnerabilities .status-dropdown-column:hover, .page__Vulnerabilities .status-dropdown-column:hover {
+  cursor: pointer; }
+  .ins-active-app-vulnerabilities .status-dropdown-column:hover > svg, .page__Vulnerabilities .status-dropdown-column:hover > svg {
+    visibility: visible; }
+
+.ins-active-app-vulnerabilities .status-dropdown-column > svg, .page__Vulnerabilities .status-dropdown-column > svg {
+  visibility: hidden; }
+
+.ins-active-app-vulnerabilities td.pf-c-table__check, .page__Vulnerabilities td.pf-c-table__check {
+  vertical-align: middle;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important; }
+
+.ins-active-app-vulnerabilities .pf-c-table tr > *, .page__Vulnerabilities .pf-c-table tr > * {
+  vertical-align: middle !important; }
+

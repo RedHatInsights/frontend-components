@@ -1,0 +1,1130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification portal should render notifications given as direct props 1`] = `
+<Connect(Portal)
+  notifications={
+    Array [
+      Object {
+        "description": "Some meaningfull description",
+        "dismissable": true,
+        "id": "0",
+        "title": "Notification title",
+        "variant": "success",
+      },
+    ]
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Portal
+    notifications={
+      Array [
+        Object {
+          "description": "Some meaningfull description",
+          "dismissable": true,
+          "id": "0",
+          "title": "Notification title",
+          "variant": "success",
+        },
+      ]
+    }
+    removeNotification={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Portal
+      containerInfo={
+        <body>
+          <div
+            class="notifications-portal"
+          >
+            <div
+              aria-label="Success Alert"
+              class="pf-c-alert pf-m-success notification-item"
+              id="0"
+            >
+              <div
+                class="pf-c-alert__icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align: -0.125em;"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                    transform=""
+                  />
+                </svg>
+              </div>
+              <h4
+                class="pf-c-alert__title"
+              >
+                <span
+                  class="pf-u-screen-reader"
+                >
+                  Success alert:
+                </span>
+                Notification title
+              </h4>
+              <div
+                class="pf-c-alert__description"
+              >
+                <p>
+                  Some meaningfull description
+                </p>
+              </div>
+              <div
+                class="pf-c-alert__action notification-item"
+              >
+                <button
+                  aria-label="close-notification"
+                  class="pf-c-button pf-m-plain"
+                  title="Notification title"
+                  type="button"
+                  variantlabel="Success"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 64 731 1024"
+                    width="1em"
+                  >
+                    <path
+                      d="M96.464 804.571c-4.816-0.064-9.12-1.963-12.912-5.733l-77.815-77.815c-3.769-3.794-5.669-8.096-5.735-12.91-0.032-4.839 1.815-9.113 5.543-12.823l616.603-616.606c3.71-3.714 7.986-5.577 12.823-5.541 4.834 0.039 9.138 1.957 12.91 5.73l77.817 77.819c3.769 3.769 5.691 8.066 5.73 12.912 0.037 4.839-1.829 9.106-5.538 12.825l-616.606 616.599c-3.717 3.73-7.986 5.575-12.821 5.541zM622.144 799.031l-616.603-616.601c-3.726-3.717-5.577-7.989-5.536-12.827 0.059-4.843 1.959-9.143 5.728-12.914l77.817-77.817c3.792-3.774 8.096-5.691 12.91-5.728 4.837-0.039 9.106 1.824 12.821 5.536l616.599 616.608c3.717 3.712 5.579 7.989 5.543 12.823-0.041 4.814-1.959 9.118-5.728 12.91l-77.824 77.808c-3.767 3.778-8.073 5.678-12.907 5.744-4.834 0.034-9.104-1.815-12.818-5.541z"
+                      transform="rotate(180 0 512) scale(-1 1)"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="notifications-portal"
+          >
+            <div
+              aria-label="Success Alert"
+              class="pf-c-alert pf-m-success notification-item"
+              id="0"
+            >
+              <div
+                class="pf-c-alert__icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align: -0.125em;"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                    transform=""
+                  />
+                </svg>
+              </div>
+              <h4
+                class="pf-c-alert__title"
+              >
+                <span
+                  class="pf-u-screen-reader"
+                >
+                  Success alert:
+                </span>
+                Notification title
+              </h4>
+              <div
+                class="pf-c-alert__description"
+              >
+                <p>
+                  Some meaningfull description
+                </p>
+              </div>
+              <div
+                class="pf-c-alert__action notification-item"
+              >
+                <button
+                  aria-label="close-notification"
+                  class="pf-c-button pf-m-plain"
+                  title="Notification title"
+                  type="button"
+                  variantlabel="Success"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 64 731 1024"
+                    width="1em"
+                  >
+                    <path
+                      d="M96.464 804.571c-4.816-0.064-9.12-1.963-12.912-5.733l-77.815-77.815c-3.769-3.794-5.669-8.096-5.735-12.91-0.032-4.839 1.815-9.113 5.543-12.823l616.603-616.606c3.71-3.714 7.986-5.577 12.823-5.541 4.834 0.039 9.138 1.957 12.91 5.73l77.817 77.819c3.769 3.769 5.691 8.066 5.73 12.912 0.037 4.839-1.829 9.106-5.538 12.825l-616.606 616.599c-3.717 3.73-7.986 5.575-12.821 5.541zM622.144 799.031l-616.603-616.601c-3.726-3.717-5.577-7.989-5.536-12.827 0.059-4.843 1.959-9.143 5.728-12.914l77.817-77.817c3.792-3.774 8.096-5.691 12.91-5.728 4.837-0.039 9.106 1.824 12.821 5.536l616.599 616.608c3.717 3.712 5.579 7.989 5.543 12.823-0.041 4.814-1.959 9.118-5.728 12.91l-77.824 77.808c-3.767 3.778-8.073 5.678-12.907 5.744-4.834 0.034-9.104-1.815-12.818-5.541z"
+                      transform="rotate(180 0 512) scale(-1 1)"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+    >
+      <div
+        className="notifications-portal"
+      >
+        <Notification
+          description="Some meaningfull description"
+          dismissDelay={5000}
+          dismissable={true}
+          id="0"
+          key="0"
+          onDismiss={[Function]}
+          title="Notification title"
+          variant="success"
+        >
+          <Alert
+            action={
+              <Button
+                aria-label="close-notification"
+                className=""
+                component="button"
+                isActive={false}
+                isBlock={false}
+                isDisabled={false}
+                isFocus={false}
+                isHover={false}
+                onClick={[Function]}
+                type="button"
+                variant="plain"
+              >
+                <CloseIcon
+                  color="currentColor"
+                  size="sm"
+                  title={null}
+                />
+              </Button>
+            }
+            className="notification-item"
+            id="0"
+            title="Notification title"
+            variant="success"
+            variantLabel={null}
+          >
+            <div
+              aria-label="Success Alert"
+              className="pf-c-alert pf-m-success notification-item"
+              id="0"
+            >
+              <AlertIcon
+                className=""
+                variant="success"
+              >
+                <div
+                  className="pf-c-alert__icon"
+                >
+                  <CheckCircleIcon
+                    color="currentColor"
+                    size="sm"
+                    title={null}
+                  >
+                    <svg
+                      aria-hidden={true}
+                      aria-labelledby={null}
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      style={
+                        Object {
+                          "verticalAlign": "-0.125em",
+                        }
+                      }
+                      viewBox="0 0 512 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                        transform=""
+                      />
+                    </svg>
+                  </CheckCircleIcon>
+                </div>
+              </AlertIcon>
+              <h4
+                className="pf-c-alert__title"
+              >
+                <span
+                  className="pf-u-screen-reader"
+                >
+                  Success alert:
+                </span>
+                Notification title
+              </h4>
+              <div
+                className="pf-c-alert__description"
+              >
+                <p>
+                  Some meaningfull description
+                </p>
+              </div>
+              <div
+                className="pf-c-alert__action notification-item"
+              >
+                <Button
+                  aria-label="close-notification"
+                  className=""
+                  component="button"
+                  isActive={false}
+                  isBlock={false}
+                  isDisabled={false}
+                  isFocus={false}
+                  isHover={false}
+                  onClick={[Function]}
+                  title="Notification title"
+                  type="button"
+                  variant="plain"
+                  variantLabel="Success"
+                >
+                  <button
+                    aria-disabled={null}
+                    aria-label="close-notification"
+                    className="pf-c-button pf-m-plain"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex={null}
+                    title="Notification title"
+                    type="button"
+                    variantLabel="Success"
+                  >
+                    <CloseIcon
+                      color="currentColor"
+                      size="sm"
+                      title={null}
+                    >
+                      <svg
+                        aria-hidden={true}
+                        aria-labelledby={null}
+                        fill="currentColor"
+                        height="1em"
+                        role="img"
+                        style={
+                          Object {
+                            "verticalAlign": "-0.125em",
+                          }
+                        }
+                        viewBox="0 64 731 1024"
+                        width="1em"
+                      >
+                        <path
+                          d="M96.464 804.571c-4.816-0.064-9.12-1.963-12.912-5.733l-77.815-77.815c-3.769-3.794-5.669-8.096-5.735-12.91-0.032-4.839 1.815-9.113 5.543-12.823l616.603-616.606c3.71-3.714 7.986-5.577 12.823-5.541 4.834 0.039 9.138 1.957 12.91 5.73l77.817 77.819c3.769 3.769 5.691 8.066 5.73 12.912 0.037 4.839-1.829 9.106-5.538 12.825l-616.606 616.599c-3.717 3.73-7.986 5.575-12.821 5.541zM622.144 799.031l-616.603-616.601c-3.726-3.717-5.577-7.989-5.536-12.827 0.059-4.843 1.959-9.143 5.728-12.914l77.817-77.817c3.792-3.774 8.096-5.691 12.91-5.728 4.837-0.039 9.106 1.824 12.821 5.536l616.599 616.608c3.717 3.712 5.579 7.989 5.543 12.823-0.041 4.814-1.959 9.118-5.728 12.91l-77.824 77.808c-3.767 3.778-8.073 5.678-12.907 5.744-4.834 0.034-9.104-1.815-12.818-5.541z"
+                          transform="rotate(180 0 512) scale(-1 1)"
+                        />
+                      </svg>
+                    </CloseIcon>
+                  </button>
+                </Button>
+              </div>
+            </div>
+          </Alert>
+        </Notification>
+      </div>
+    </Portal>
+  </Portal>
+</Connect(Portal)>
+`;
+
+exports[`Notification portal should render notifications given as direct props over store notifications 1`] = `
+<Connect(Portal)
+  notifications={
+    Array [
+      Object {
+        "description": "Some meaningfull description",
+        "dismissable": true,
+        "id": "Direct notification",
+        "title": "Notification title",
+        "variant": "success",
+      },
+    ]
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Portal
+    notifications={
+      Array [
+        Object {
+          "description": "Some meaningfull description",
+          "dismissable": true,
+          "id": "Direct notification",
+          "title": "Notification title",
+          "variant": "success",
+        },
+      ]
+    }
+    removeNotification={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Portal
+      containerInfo={
+        <body>
+          <div
+            class="notifications-portal"
+          >
+            <div
+              aria-label="Success Alert"
+              class="pf-c-alert pf-m-success notification-item"
+              id="0"
+            >
+              <div
+                class="pf-c-alert__icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align: -0.125em;"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                    transform=""
+                  />
+                </svg>
+              </div>
+              <h4
+                class="pf-c-alert__title"
+              >
+                <span
+                  class="pf-u-screen-reader"
+                >
+                  Success alert:
+                </span>
+                Notification title
+              </h4>
+              <div
+                class="pf-c-alert__description"
+              >
+                <p>
+                  Some meaningfull description
+                </p>
+              </div>
+              <div
+                class="pf-c-alert__action notification-item"
+              >
+                <button
+                  aria-label="close-notification"
+                  class="pf-c-button pf-m-plain"
+                  title="Notification title"
+                  type="button"
+                  variantlabel="Success"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 64 731 1024"
+                    width="1em"
+                  >
+                    <path
+                      d="M96.464 804.571c-4.816-0.064-9.12-1.963-12.912-5.733l-77.815-77.815c-3.769-3.794-5.669-8.096-5.735-12.91-0.032-4.839 1.815-9.113 5.543-12.823l616.603-616.606c3.71-3.714 7.986-5.577 12.823-5.541 4.834 0.039 9.138 1.957 12.91 5.73l77.817 77.819c3.769 3.769 5.691 8.066 5.73 12.912 0.037 4.839-1.829 9.106-5.538 12.825l-616.606 616.599c-3.717 3.73-7.986 5.575-12.821 5.541zM622.144 799.031l-616.603-616.601c-3.726-3.717-5.577-7.989-5.536-12.827 0.059-4.843 1.959-9.143 5.728-12.914l77.817-77.817c3.792-3.774 8.096-5.691 12.91-5.728 4.837-0.039 9.106 1.824 12.821 5.536l616.599 616.608c3.717 3.712 5.579 7.989 5.543 12.823-0.041 4.814-1.959 9.118-5.728 12.91l-77.824 77.808c-3.767 3.778-8.073 5.678-12.907 5.744-4.834 0.034-9.104-1.815-12.818-5.541z"
+                      transform="rotate(180 0 512) scale(-1 1)"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="notifications-portal"
+          >
+            <div
+              aria-label="Success Alert"
+              class="pf-c-alert pf-m-success notification-item"
+              id="0"
+            >
+              <div
+                class="pf-c-alert__icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align: -0.125em;"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                    transform=""
+                  />
+                </svg>
+              </div>
+              <h4
+                class="pf-c-alert__title"
+              >
+                <span
+                  class="pf-u-screen-reader"
+                >
+                  Success alert:
+                </span>
+                Notification title
+              </h4>
+              <div
+                class="pf-c-alert__description"
+              >
+                <p>
+                  Some meaningfull description
+                </p>
+              </div>
+              <div
+                class="pf-c-alert__action notification-item"
+              >
+                <button
+                  aria-label="close-notification"
+                  class="pf-c-button pf-m-plain"
+                  title="Notification title"
+                  type="button"
+                  variantlabel="Success"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 64 731 1024"
+                    width="1em"
+                  >
+                    <path
+                      d="M96.464 804.571c-4.816-0.064-9.12-1.963-12.912-5.733l-77.815-77.815c-3.769-3.794-5.669-8.096-5.735-12.91-0.032-4.839 1.815-9.113 5.543-12.823l616.603-616.606c3.71-3.714 7.986-5.577 12.823-5.541 4.834 0.039 9.138 1.957 12.91 5.73l77.817 77.819c3.769 3.769 5.691 8.066 5.73 12.912 0.037 4.839-1.829 9.106-5.538 12.825l-616.606 616.599c-3.717 3.73-7.986 5.575-12.821 5.541zM622.144 799.031l-616.603-616.601c-3.726-3.717-5.577-7.989-5.536-12.827 0.059-4.843 1.959-9.143 5.728-12.914l77.817-77.817c3.792-3.774 8.096-5.691 12.91-5.728 4.837-0.039 9.106 1.824 12.821 5.536l616.599 616.608c3.717 3.712 5.579 7.989 5.543 12.823-0.041 4.814-1.959 9.118-5.728 12.91l-77.824 77.808c-3.767 3.778-8.073 5.678-12.907 5.744-4.834 0.034-9.104-1.815-12.818-5.541z"
+                      transform="rotate(180 0 512) scale(-1 1)"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="notifications-portal"
+          >
+            <div
+              aria-label="Success Alert"
+              class="pf-c-alert pf-m-success notification-item"
+              id="Direct notification"
+            >
+              <div
+                class="pf-c-alert__icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align: -0.125em;"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                    transform=""
+                  />
+                </svg>
+              </div>
+              <h4
+                class="pf-c-alert__title"
+              >
+                <span
+                  class="pf-u-screen-reader"
+                >
+                  Success alert:
+                </span>
+                Notification title
+              </h4>
+              <div
+                class="pf-c-alert__description"
+              >
+                <p>
+                  Some meaningfull description
+                </p>
+              </div>
+              <div
+                class="pf-c-alert__action notification-item"
+              >
+                <button
+                  aria-label="close-notification"
+                  class="pf-c-button pf-m-plain"
+                  title="Notification title"
+                  type="button"
+                  variantlabel="Success"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 64 731 1024"
+                    width="1em"
+                  >
+                    <path
+                      d="M96.464 804.571c-4.816-0.064-9.12-1.963-12.912-5.733l-77.815-77.815c-3.769-3.794-5.669-8.096-5.735-12.91-0.032-4.839 1.815-9.113 5.543-12.823l616.603-616.606c3.71-3.714 7.986-5.577 12.823-5.541 4.834 0.039 9.138 1.957 12.91 5.73l77.817 77.819c3.769 3.769 5.691 8.066 5.73 12.912 0.037 4.839-1.829 9.106-5.538 12.825l-616.606 616.599c-3.717 3.73-7.986 5.575-12.821 5.541zM622.144 799.031l-616.603-616.601c-3.726-3.717-5.577-7.989-5.536-12.827 0.059-4.843 1.959-9.143 5.728-12.914l77.817-77.817c3.792-3.774 8.096-5.691 12.91-5.728 4.837-0.039 9.106 1.824 12.821 5.536l616.599 616.608c3.717 3.712 5.579 7.989 5.543 12.823-0.041 4.814-1.959 9.118-5.728 12.91l-77.824 77.808c-3.767 3.778-8.073 5.678-12.907 5.744-4.834 0.034-9.104-1.815-12.818-5.541z"
+                      transform="rotate(180 0 512) scale(-1 1)"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+    >
+      <div
+        className="notifications-portal"
+      >
+        <Notification
+          description="Some meaningfull description"
+          dismissDelay={5000}
+          dismissable={true}
+          id="Direct notification"
+          key="Direct notification"
+          onDismiss={[Function]}
+          title="Notification title"
+          variant="success"
+        >
+          <Alert
+            action={
+              <Button
+                aria-label="close-notification"
+                className=""
+                component="button"
+                isActive={false}
+                isBlock={false}
+                isDisabled={false}
+                isFocus={false}
+                isHover={false}
+                onClick={[Function]}
+                type="button"
+                variant="plain"
+              >
+                <CloseIcon
+                  color="currentColor"
+                  size="sm"
+                  title={null}
+                />
+              </Button>
+            }
+            className="notification-item"
+            id="Direct notification"
+            title="Notification title"
+            variant="success"
+            variantLabel={null}
+          >
+            <div
+              aria-label="Success Alert"
+              className="pf-c-alert pf-m-success notification-item"
+              id="Direct notification"
+            >
+              <AlertIcon
+                className=""
+                variant="success"
+              >
+                <div
+                  className="pf-c-alert__icon"
+                >
+                  <CheckCircleIcon
+                    color="currentColor"
+                    size="sm"
+                    title={null}
+                  >
+                    <svg
+                      aria-hidden={true}
+                      aria-labelledby={null}
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      style={
+                        Object {
+                          "verticalAlign": "-0.125em",
+                        }
+                      }
+                      viewBox="0 0 512 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                        transform=""
+                      />
+                    </svg>
+                  </CheckCircleIcon>
+                </div>
+              </AlertIcon>
+              <h4
+                className="pf-c-alert__title"
+              >
+                <span
+                  className="pf-u-screen-reader"
+                >
+                  Success alert:
+                </span>
+                Notification title
+              </h4>
+              <div
+                className="pf-c-alert__description"
+              >
+                <p>
+                  Some meaningfull description
+                </p>
+              </div>
+              <div
+                className="pf-c-alert__action notification-item"
+              >
+                <Button
+                  aria-label="close-notification"
+                  className=""
+                  component="button"
+                  isActive={false}
+                  isBlock={false}
+                  isDisabled={false}
+                  isFocus={false}
+                  isHover={false}
+                  onClick={[Function]}
+                  title="Notification title"
+                  type="button"
+                  variant="plain"
+                  variantLabel="Success"
+                >
+                  <button
+                    aria-disabled={null}
+                    aria-label="close-notification"
+                    className="pf-c-button pf-m-plain"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex={null}
+                    title="Notification title"
+                    type="button"
+                    variantLabel="Success"
+                  >
+                    <CloseIcon
+                      color="currentColor"
+                      size="sm"
+                      title={null}
+                    >
+                      <svg
+                        aria-hidden={true}
+                        aria-labelledby={null}
+                        fill="currentColor"
+                        height="1em"
+                        role="img"
+                        style={
+                          Object {
+                            "verticalAlign": "-0.125em",
+                          }
+                        }
+                        viewBox="0 64 731 1024"
+                        width="1em"
+                      >
+                        <path
+                          d="M96.464 804.571c-4.816-0.064-9.12-1.963-12.912-5.733l-77.815-77.815c-3.769-3.794-5.669-8.096-5.735-12.91-0.032-4.839 1.815-9.113 5.543-12.823l616.603-616.606c3.71-3.714 7.986-5.577 12.823-5.541 4.834 0.039 9.138 1.957 12.91 5.73l77.817 77.819c3.769 3.769 5.691 8.066 5.73 12.912 0.037 4.839-1.829 9.106-5.538 12.825l-616.606 616.599c-3.717 3.73-7.986 5.575-12.821 5.541zM622.144 799.031l-616.603-616.601c-3.726-3.717-5.577-7.989-5.536-12.827 0.059-4.843 1.959-9.143 5.728-12.914l77.817-77.817c3.792-3.774 8.096-5.691 12.91-5.728 4.837-0.039 9.106 1.824 12.821 5.536l616.599 616.608c3.717 3.712 5.579 7.989 5.543 12.823-0.041 4.814-1.959 9.118-5.728 12.91l-77.824 77.808c-3.767 3.778-8.073 5.678-12.907 5.744-4.834 0.034-9.104-1.815-12.818-5.541z"
+                          transform="rotate(180 0 512) scale(-1 1)"
+                        />
+                      </svg>
+                    </CloseIcon>
+                  </button>
+                </Button>
+              </div>
+            </div>
+          </Alert>
+        </Notification>
+      </div>
+    </Portal>
+  </Portal>
+</Connect(Portal)>
+`;
+
+exports[`Notification portal should render notifications given from store 1`] = `
+<Connect(Portal)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Portal
+    notifications={
+      Array [
+        Object {
+          "description": "Some meaningfull description",
+          "dismissable": true,
+          "id": "0",
+          "title": "Notification title",
+          "variant": "success",
+        },
+      ]
+    }
+    removeNotification={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Portal
+      containerInfo={
+        <body>
+          <div
+            class="notifications-portal"
+          >
+            <div
+              aria-label="Success Alert"
+              class="pf-c-alert pf-m-success notification-item"
+              id="0"
+            >
+              <div
+                class="pf-c-alert__icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align: -0.125em;"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                    transform=""
+                  />
+                </svg>
+              </div>
+              <h4
+                class="pf-c-alert__title"
+              >
+                <span
+                  class="pf-u-screen-reader"
+                >
+                  Success alert:
+                </span>
+                Notification title
+              </h4>
+              <div
+                class="pf-c-alert__description"
+              >
+                <p>
+                  Some meaningfull description
+                </p>
+              </div>
+              <div
+                class="pf-c-alert__action notification-item"
+              >
+                <button
+                  aria-label="close-notification"
+                  class="pf-c-button pf-m-plain"
+                  title="Notification title"
+                  type="button"
+                  variantlabel="Success"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 64 731 1024"
+                    width="1em"
+                  >
+                    <path
+                      d="M96.464 804.571c-4.816-0.064-9.12-1.963-12.912-5.733l-77.815-77.815c-3.769-3.794-5.669-8.096-5.735-12.91-0.032-4.839 1.815-9.113 5.543-12.823l616.603-616.606c3.71-3.714 7.986-5.577 12.823-5.541 4.834 0.039 9.138 1.957 12.91 5.73l77.817 77.819c3.769 3.769 5.691 8.066 5.73 12.912 0.037 4.839-1.829 9.106-5.538 12.825l-616.606 616.599c-3.717 3.73-7.986 5.575-12.821 5.541zM622.144 799.031l-616.603-616.601c-3.726-3.717-5.577-7.989-5.536-12.827 0.059-4.843 1.959-9.143 5.728-12.914l77.817-77.817c3.792-3.774 8.096-5.691 12.91-5.728 4.837-0.039 9.106 1.824 12.821 5.536l616.599 616.608c3.717 3.712 5.579 7.989 5.543 12.823-0.041 4.814-1.959 9.118-5.728 12.91l-77.824 77.808c-3.767 3.778-8.073 5.678-12.907 5.744-4.834 0.034-9.104-1.815-12.818-5.541z"
+                      transform="rotate(180 0 512) scale(-1 1)"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+    >
+      <div
+        className="notifications-portal"
+      >
+        <Notification
+          description="Some meaningfull description"
+          dismissDelay={5000}
+          dismissable={true}
+          id="0"
+          key="0"
+          onDismiss={[Function]}
+          title="Notification title"
+          variant="success"
+        >
+          <Alert
+            action={
+              <Button
+                aria-label="close-notification"
+                className=""
+                component="button"
+                isActive={false}
+                isBlock={false}
+                isDisabled={false}
+                isFocus={false}
+                isHover={false}
+                onClick={[Function]}
+                type="button"
+                variant="plain"
+              >
+                <CloseIcon
+                  color="currentColor"
+                  size="sm"
+                  title={null}
+                />
+              </Button>
+            }
+            className="notification-item"
+            id="0"
+            title="Notification title"
+            variant="success"
+            variantLabel={null}
+          >
+            <div
+              aria-label="Success Alert"
+              className="pf-c-alert pf-m-success notification-item"
+              id="0"
+            >
+              <AlertIcon
+                className=""
+                variant="success"
+              >
+                <div
+                  className="pf-c-alert__icon"
+                >
+                  <CheckCircleIcon
+                    color="currentColor"
+                    size="sm"
+                    title={null}
+                  >
+                    <svg
+                      aria-hidden={true}
+                      aria-labelledby={null}
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      style={
+                        Object {
+                          "verticalAlign": "-0.125em",
+                        }
+                      }
+                      viewBox="0 0 512 512"
+                      width="1em"
+                    >
+                      <path
+                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                        transform=""
+                      />
+                    </svg>
+                  </CheckCircleIcon>
+                </div>
+              </AlertIcon>
+              <h4
+                className="pf-c-alert__title"
+              >
+                <span
+                  className="pf-u-screen-reader"
+                >
+                  Success alert:
+                </span>
+                Notification title
+              </h4>
+              <div
+                className="pf-c-alert__description"
+              >
+                <p>
+                  Some meaningfull description
+                </p>
+              </div>
+              <div
+                className="pf-c-alert__action notification-item"
+              >
+                <Button
+                  aria-label="close-notification"
+                  className=""
+                  component="button"
+                  isActive={false}
+                  isBlock={false}
+                  isDisabled={false}
+                  isFocus={false}
+                  isHover={false}
+                  onClick={[Function]}
+                  title="Notification title"
+                  type="button"
+                  variant="plain"
+                  variantLabel="Success"
+                >
+                  <button
+                    aria-disabled={null}
+                    aria-label="close-notification"
+                    className="pf-c-button pf-m-plain"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex={null}
+                    title="Notification title"
+                    type="button"
+                    variantLabel="Success"
+                  >
+                    <CloseIcon
+                      color="currentColor"
+                      size="sm"
+                      title={null}
+                    >
+                      <svg
+                        aria-hidden={true}
+                        aria-labelledby={null}
+                        fill="currentColor"
+                        height="1em"
+                        role="img"
+                        style={
+                          Object {
+                            "verticalAlign": "-0.125em",
+                          }
+                        }
+                        viewBox="0 64 731 1024"
+                        width="1em"
+                      >
+                        <path
+                          d="M96.464 804.571c-4.816-0.064-9.12-1.963-12.912-5.733l-77.815-77.815c-3.769-3.794-5.669-8.096-5.735-12.91-0.032-4.839 1.815-9.113 5.543-12.823l616.603-616.606c3.71-3.714 7.986-5.577 12.823-5.541 4.834 0.039 9.138 1.957 12.91 5.73l77.817 77.819c3.769 3.769 5.691 8.066 5.73 12.912 0.037 4.839-1.829 9.106-5.538 12.825l-616.606 616.599c-3.717 3.73-7.986 5.575-12.821 5.541zM622.144 799.031l-616.603-616.601c-3.726-3.717-5.577-7.989-5.536-12.827 0.059-4.843 1.959-9.143 5.728-12.914l77.817-77.817c3.792-3.774 8.096-5.691 12.91-5.728 4.837-0.039 9.106 1.824 12.821 5.536l616.599 616.608c3.717 3.712 5.579 7.989 5.543 12.823-0.041 4.814-1.959 9.118-5.728 12.91l-77.824 77.808c-3.767 3.778-8.073 5.678-12.907 5.744-4.834 0.034-9.104-1.815-12.818-5.541z"
+                          transform="rotate(180 0 512) scale(-1 1)"
+                        />
+                      </svg>
+                    </CloseIcon>
+                  </button>
+                </Button>
+              </div>
+            </div>
+          </Alert>
+        </Notification>
+      </div>
+    </Portal>
+  </Portal>
+</Connect(Portal)>
+`;
