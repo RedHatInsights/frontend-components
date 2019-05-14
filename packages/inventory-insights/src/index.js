@@ -1,1 +1,1 @@
-export * from './Insights';
+export { default as default } from './Insights';

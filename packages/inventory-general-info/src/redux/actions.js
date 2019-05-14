@@ -1,4 +1,4 @@
-import * as ACTION_TYPES from './action-types';
+import { ACTION_TYPES } from './action-types';
 import { getEntitySystemProfile, hosts } from '../api';
 
 export const systemProfile = (itemId) => ({
