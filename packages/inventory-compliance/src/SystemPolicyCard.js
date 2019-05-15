@@ -41,7 +41,7 @@ class SystemPolicyCard extends React.Component {
                 <CardBody>
                     <TextContent>
                         <Text style={ { marginBottom: '0' } } component={ TextVariants.small }>External Policy</Text>
-                        <Text style={ { marginTop: '0' } } component={ TextVariants.h4 }>{ name }</Text>
+                        <Text style={ { marginTop: '0' } } component={ TextVariants.h4 }>{ this.state.policy.name }</Text>
                     </TextContent>
                     { this.complianceIcon(this.state.policy.compliant) }
                     <Text component={ TextVariants.small }>

@@ -1,5 +1,6 @@
 !/index.js
 src/
 .babelrc
+babel.config.js
 doc/
 config/

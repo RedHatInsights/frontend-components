@@ -64,7 +64,7 @@ class ComplianceRemediationButton extends React.Component {
         allSystems.forEach(async (system) => {
             result.systems.push(system.id);
             if (selectedRules) {
-                result.issues.push(selectedRules.map(rule => this.formatRule(rule, this.removeRefIdPrefix(rule.profile), system.id)));
+                result.issues.push(this.rulesWithRemediations(selectedRules, system.id));
             } else {
                 result.issues.push(this.rulesWithRemediations(system.rule_objects_failed, system.id));
             }

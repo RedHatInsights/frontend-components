@@ -99,7 +99,7 @@ Parameters:
 * `composeEnhancers` - default to `compose` from redux library
 
 ```javascript
-import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
 import { middlewares } from './middlewareSettings';
 
 const reduxRegistry = new ReducerRegistry(initState, middlewares);

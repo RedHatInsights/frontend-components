@@ -1,5 +1,6 @@
 !dist
 src/
 .babelrc
+babel.config.js
 doc/
 config/
