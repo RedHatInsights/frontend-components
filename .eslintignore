@@ -4,6 +4,5 @@ demo/
 doc/
 images/
 node_modules/
-*.test.js
 
 src/SmartComponents/SamplePage/

@@ -17,7 +17,7 @@ function validData () {
             '1fb1e94d-aa02-4824-9307-b2aff9d788a3',
             '3c3d725e-cbf0-4dac-a40f-4e7f027bcdc9'
         ]
-    }
+    };
 }
 
 describe('validator', function () {
@@ -69,7 +69,7 @@ describe('validator', function () {
 
     it('fails when systems missing', () => {
         const data = validData();
-        delete data.systems
+        delete data.systems;
 
         expect(() => validate(data)).toThrow(TypeError);
     });
