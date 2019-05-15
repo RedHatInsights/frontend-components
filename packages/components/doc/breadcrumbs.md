@@ -8,7 +8,7 @@ There are two components available for use `Breadcrumbs` and `ConnectedBreadcrum
 Simplest component, you have to provide data which will be rendered, navigation and everything.
 ```JSX
 import React from 'react'
-import { Breadcrumbs } from '@red-hat-insights/insights-frontend-components';
+import { Breadcrumbs } from '@redhat-cloud-services/frontend-components';
 
 const yourCmp = () => (
   <Breadcrumbs
@@ -23,7 +23,7 @@ const yourCmp = () => (
 This component is connected directly to `react-dom-router` and is trying to guess where you've been and how to navigate there.
 ```JSX
 import React from 'react'
-import { ConnectedBreadcrumbs } from '@red-hat-insights/insights-frontend-components';
+import { ConnectedBreadcrumbs } from '@redhat-cloud-services/frontend-components';
 
 const yourCmp = () => (
   <ConnectedBreadcrumbs current="Place" />

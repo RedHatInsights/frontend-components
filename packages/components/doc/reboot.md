@@ -8,7 +8,7 @@ Import Reboot and styles from this package.
 
 ```JSX
 import React from 'react';
-import { Reboot } from '@redhat-insights/insights-frontent-components/';
+import { Reboot } from '@redhat-cloud-services/frontend-components';
 
 class YourCmp extends React.Component {
   render() {

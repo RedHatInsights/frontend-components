@@ -8,7 +8,7 @@ Import Spinner from this package.
 
 ```JSX
 import React from 'react';
-import { Spinner } from '@red-hat-insights/insights-frontend-components';
+import { Spinner } from '@redhat-cloud-services/frontend-components';
 
 class YourCmp extends React.Component {
   render() {

@@ -6,8 +6,8 @@ pass prop `type` and this component will decide which classes to apply.
 Import Input component and it's styles, pass which type you want to use (defaults to `text`) and use as you'd use basic
 HTML `input`.
 ```javascript
-import { Input } from '@redhat-insights/insights-frontend-components/components/Input';
-import '@redhat-insights/insights-frontend-components/components/Input.css'
+import { Input } from '@redhat-cloud-services/frontend-components';
+import '@redhat-cloud-services/frontend-components/components/Input.css'
 import React from 'react';
 
 const MyCmp = () => (

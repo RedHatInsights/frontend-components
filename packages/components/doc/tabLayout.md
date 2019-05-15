@@ -7,7 +7,7 @@ Best usecase might be with router
 ```JSX
 import react from 'react'
 import { Route, withRouter } from 'react-dom-router';
-import { TabLayout } from '@red-hat-insights/insights-frontend-components'`
+import { TabLayout } from '@redhat-cloud-services/frontend-components';
 import { SomeCmp } from './SomeCmp';
 
 class YourCmp extends React.Component {

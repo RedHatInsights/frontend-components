@@ -10,7 +10,7 @@ Import Shield from this package.
 
 ```JSX
 import React from 'react';
-import { Shield } from '@red-hat-insights/insights-frontend-components';
+import { Shield } from '@redhat-cloud-services/frontend-components';
 
 class YourCmp extends React.Component {
   render() {

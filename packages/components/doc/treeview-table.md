@@ -14,7 +14,7 @@ Pass `expandable` to props and when user interacts with table you will be notifi
 
 ```JSX
 import React, { Component } from 'react';
-import { Table, Pagination, TableVariant } from '@red-hat-insights/insights-frontend-components';
+import { Table, Pagination, TableVariant } from '@redhat-cloud-services/frontend-components';
 
 class TreeViewTable extends Component {
   constructor(props) {
