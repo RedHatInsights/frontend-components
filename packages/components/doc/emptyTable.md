@@ -8,7 +8,7 @@ Import EmptyTable and styles from this package.
 
 ```JSX
 import React from 'react';
-import { EmptyTable } from '@redhat-insights/insights-frontent-components/';
+import { EmptyTable } from '@redhat-cloud-services/frontend-components';
 
 class YourCmp extends React.Component {
   render() {
@@ -25,7 +25,7 @@ class YourCmp extends React.Component {
 
 ```JSX
 import React from 'react';
-import { EmptyTable } from '@redhat-insights/insights-frontent-components/';
+import { EmptyTable } from '@redhat-cloud-services/frontend-components';
 
 class YourCmp extends React.Component {
   render() {

@@ -39,7 +39,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -86,7 +86,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -140,7 +140,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 import { hostData } from './api';
 
 @registryDecorator()
@@ -194,7 +194,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -236,7 +236,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -281,7 +281,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -359,7 +359,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -381,7 +381,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -420,7 +420,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -473,7 +473,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -517,7 +517,7 @@ You'll want to split the reducers from your app logic in our example we have all
 If you are going to change rows or entities in store, please use `mergeArraysByKey` function which helps you with merging both current state and new payload together so you don't loose any of it.
 * `src/store/reducers.js` - let's use `applyReducerHash` to demonstrate how to use such function
 ```JS
-import { applyReducerHash } from '@red-hat-insights/insights-frontend-components/Utilities/ReducerRegistry';
+import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
 import { ACTION_TYPES } from '../constants';
 export const listReducer = applyReducerHash({
   [ACTION_TYPES.GET_ENTITIES_FULFILLED]: (state, payload) => {
@@ -535,7 +535,7 @@ import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
 import { listReducer } from './store/reducers';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -601,7 +601,7 @@ import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import { PaginationRow } from 'patternfly-react';
 import { entityDetailReducer } from './store/reducers';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class SomeCmp extends React.Component {
@@ -641,7 +641,7 @@ If you want to display some information in entity detail you have option to do s
 
 We'll use our reducers file and add some application to it
 ```JS
-import { Overview } from '@red-hat-insights/insights-frontend-components';
+import { Overview } from '@redhat-cloud-services/frontend-components';
 
 function enableApplications(state) {
   return {

@@ -10,7 +10,7 @@ Supports `<Main>` and `<PageHeader>`
 
 ```JSX
 import React from 'react';
-import { Dark } from '@redhat-insights/insights-frontent-components/';
+import { Dark } from '@redhat-cloud-services/frontend-components';
 
 class YourCmp extends React.Component {
     render() {

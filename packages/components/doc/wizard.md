@@ -11,7 +11,7 @@ import React from 'react';
 
 // Import Components
 import { Button } from '@patternfly/react-core';
-import { Wizard } from '@redhat-insights/insights-frontent-components/';
+import { Wizard } from '@redhat-cloud-services/frontend-components';
 
 // Import your steps for the wizard
 // These are just components that will render in the modal body section

@@ -1,5 +1,5 @@
 # RedHat Cloud Services frontend components - utils
-[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-utils.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-utils)
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-utilities.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-utilities)
 
 This package exports common functions to be used in other packages.
 
@@ -14,7 +14,7 @@ With yarn
 yarn add @redhat-cloud-services/frontend-components-inventory-remediations
 ```
 
-This package is dependent on [@redhat-cloud-services/frontend-components-utilities](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components-utilities) and [@redhat-cloud-services/frontend-components](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components) it will automatically install them trough direct dependencies.
+This package is dependent on [@redhat-cloud-services/frontend-components](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components) it will automatically installed trough direct dependencies.
 
 ## Documentation Links
 

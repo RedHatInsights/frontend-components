@@ -8,7 +8,7 @@ Import Truncate and styles from this package.
 
 ```JSX
 import React from 'react';
-import { Truncate } from '@redhat-insights/insights-frontent-components/';
+import { Truncate } from '@redhat-cloud-services/frontend-components';
 
 class YourCmp extends React.Component {
   render() {

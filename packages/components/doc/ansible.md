@@ -8,7 +8,7 @@ Import Ansible and styles from this package.
 
 ```JSX
 import React from 'react';
-import { Ansible } from '@redhat-insights/insights-frontent-components/';
+import { Ansible } from '@redhat-cloud-services/frontend-components';
 
 class YourCmp extends React.Component {
   render() {

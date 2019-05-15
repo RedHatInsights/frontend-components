@@ -8,7 +8,7 @@ Import LongTextTooltip from this package.
 
 ```JSX
 import React from 'react';
-import { LongTextTooltip } from '@red-hat-insights/insights-frontend-components';
+import { LongTextTooltip } from '@redhat-cloud-services/frontend-components';
 class YourCmp extends React.Component {
   render() {
     return (

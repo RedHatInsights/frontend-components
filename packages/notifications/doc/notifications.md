@@ -9,11 +9,11 @@ You can use notifications without the middleware. For that you will need the `No
 ```JSX
 import React, { Fragment } from 'react'
 import { Provider } from 'react-redux'
-import { getRegistry } from '@red-hat-insights/insights-frontend-components/'
-import { NotificationsPortal, notifications } from '@red-hat-insights/insights-frontend-components/components/Notifications'
+import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import { NotificationsPortal, notifications } from from '@redhat-cloud-services/frontend-components-notifications';
 
 // you also need styles for the component
-import '@red-hat-insights/insights-frontend-components/components/Notifications.css'
+import '@redhat-cloud-services/frontend-components-notifications/index.css';
 
 const registry = getRegistry()
 registry.register({ notifications })
@@ -30,8 +30,7 @@ If you don't want to import css into your js files, you can also import it in on
 
 ```scss
 // in your App.scss
-@import
-'~@red-hat-insights/insights-frontend-components/components/Notifications.css'
+@import '~@redhat-cloud-services/frontend-components-notifications/index.css';
 ```
 
 This will add the container for notifications in your app. To add notifications, you can simply dispatch `addNotification` action somewhere in your app.
@@ -39,7 +38,7 @@ This will add the container for notifications in your app. To add notifications,
 ```JSX
 import React from 'react';
 import { connect } from 'react-redux'
-import { addNotification } from '@red-hat-insights/insights-frontend-components/components/Notifications'
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 
 const MagicButton = ({ addNotification }) => (
   <button
@@ -84,12 +83,12 @@ There are 3 supported actions for notifications:
 in most of the cases you should be fine with just `addNotification` and `clearNotifications`. We advise not to use `removeNotification` and use default behaviour.
 
 ```javascript
-import { addNotification, removeNotification, clearNotifications } from '@red-hat-insights/insights-frontend-components/components/Notifications'
+import { , removeNotification, clearNotificationsaddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 ```
 
 You can also acces the action types for these actions.
 ```javascript
-import { ADD_NOTIFICATION, REMOVE_NOTIFICATION, CLEAR_NOTIFICATIONS } from '@red-hat-insights/insights-frontend-components/components/Notifications'
+import { ADD_NOTIFICATION, REMOVE_NOTIFICATION, CLEAR_NOTIFICATIONS } from '@redhat-cloud-services/frontend-components-notifications';
 ```
 
 ## Notifications middleware
@@ -109,8 +108,8 @@ Like in the basic example, you must add your reducer and notifications container
 
 ```JSX
 import promiseMiddleware from 'redux-promise-middleware'
-import { getRegistry } from '@red-hat-insights/insights-frontend-components/'
-import { ..., notificationsMiddleware } from '@red-hat-insights/insights-frontend-components/components/Notifications'
+import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import { ..., notificationsMiddleware } from '@redhat-cloud-services/frontend-components-notifications';
 
 const registry = getRegistry({}, [promiseMiddleware(), notificationsMiddleware()]);
 registry.register({ notifications })

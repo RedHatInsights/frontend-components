@@ -96,7 +96,7 @@ Here, both Vulnerability issues will be applied to systems `34b9f7d9-fc81-4e0f-b
 In addition, an `onRemediationCreated` callback may be provided.
 This callback will be called when the wizard has been completed by the user and a new Remediation has been created.
 Information about the new Remediation is available under `result.remediation`.
-Optionally, if the application uses [Notifications component](https://github.com/RedHatInsights/insights-frontend-components/blob/master/doc/components/notifications.md) a notification informing of successful remediation creation is provided under `result.getNotification()`
+Optionally, if the application uses [Notifications component](https://github.com/RedHatInsights/frontend-components/blob/master/packages/notifications/doc/notifications.md) a notification informing of successful remediation creation is provided under `result.getNotification()`
 
 ```JSX
     onCreated (result) {

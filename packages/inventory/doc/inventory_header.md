@@ -11,12 +11,13 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './inventory.scss';
-import { PageHeader, Main, routerParams, Breadcrumbs } from '@red-hat-insights/insights-frontend-components';
+import { PageHeader, Main, Breadcrumbs } from '@redhat-cloud-services/frontend-components';
+import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import { entitesDetailReducer } from '../store';
 import * as actions from '../actions';
 import { Grid, GridItem } from '@patternfly/react-core';
 import { asyncInventoryLoader } from '../components/inventory/AsyncInventory';
-import { registry as registryDecorator } from '@red-hat-insights/insights-frontend-components';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
 class Inventory extends Component {

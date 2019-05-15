@@ -4,7 +4,7 @@ Currently this repository works as a proxy to expose [pf3@paginationRow](https:/
 ### Usage
 Just import this component wherever you want to use it and pass `numberOfItems` as props. 
 ```javascript
-import { Pagination } from '@red-hat-insights/insights-frontend-components/components/Pagination';
+import { Pagination } from '@redhat-cloud-services/frontend-components/components/Pagination';
 
 export default () => (
   <Pagination numberOfItems={100} />
@@ -18,7 +18,7 @@ When user wants to change page by typing you should use some logic to submit pag
 
 ```JSX
 import React, { Component } from 'react';
-import { Pagination } from '@red-hat-insights/insights-frontend-components/components/Pagination';
+import { Pagination } from '@redhat-cloud-services/frontend-components/components/Pagination';
 import debounce from 'lodash/debounce';
 
 class SomeCmp extends Component {
