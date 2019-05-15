@@ -153,8 +153,10 @@ class SystemRulesTable extends React.Component {
         } else {
             // One rule was selected
             const index = ((page - 1) * itemsPerPage * 2) + Number(key);
-            rows[index].selected = selected;
-            currentRows[key].selected = selected;
+            if (!currentRows[index].cells[4].title.props.unsupported) {
+                rows[index].selected = selected;
+                currentRows[key].selected = selected;
+            }
         }
 
         this.setState({ rows, currentRows });
@@ -213,12 +215,13 @@ class SystemRulesTable extends React.Component {
     }
 
     selectedRules = () => {
-        const { rows, profiles, refIds } = this.state;
-        return rows.filter(row => row.selected).map(row => ({
+        const { currentRows, profiles, refIds } = this.state;
+        return currentRows.filter(row => row.selected && !row.cells[4].title.props.unsupported).map(row => ({
             // We want to match this response with a similar response from GraphQL
-            // eslint-disable-next-line camelcase
+            /* eslint-disable camelcase */
             ref_id: refIds[row.cells[0]],
-            profile: profiles[row.cells[0]],
+            profiles: [{ ref_id: profiles[row.cells[0]] }],
+            /* eslint-enable camelcase */
             title: row.cells[0] // This is the rule title, the description is too long
         }));
     }
