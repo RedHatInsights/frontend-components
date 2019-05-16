@@ -8,8 +8,8 @@ import { operatingSystem } from './selectors';
 const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (
     <LoadingCard
         title="Operating System"
-        isLoading={!detailLoaded}
-        items={[
+        isLoading={ !detailLoaded }
+        items={ [
             { title: 'Release', value: systemInfo.release },
             { title: 'Kernel release', value: systemInfo.kernelRelease },
             { title: 'Architecture', value: systemInfo.architecture },
@@ -25,7 +25,7 @@ const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (
                     );
                 }
             }
-        ]}
+        ] }
     />
 );
 

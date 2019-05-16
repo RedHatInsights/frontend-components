@@ -18,8 +18,8 @@ function enabledRepos(repositories) {
 
 const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<LoadingCard
     title="Configuration"
-    isLoading={!detailLoaded}
-    items={[
+    isLoading={ !detailLoaded }
+    items={ [
         {
             title: 'Installed packages',
             value: configuration.packages ? `${configuration.packages.length} packages` : 0,
@@ -64,7 +64,7 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
                 );
             }
         }
-    ]}
+    ] }
 />);
 
 ConfigurationCard.propTypes = {

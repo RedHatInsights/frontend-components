@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import { CubesIcon } from '@patternfly/react-icons';
 
 const MessageState = ({ children, icon, iconStyle, text, title, variant }) => (
-    <EmptyState variant={variant}>
-        <EmptyStateIcon style={iconStyle} icon={icon} size="lg" />
+    <EmptyState variant={ variant }>
+        <EmptyStateIcon style={ iconStyle } icon={ icon } size="lg" />
         <Title headingLevel="h5" size="lg">
-            {title}
+            { title }
         </Title>
-        <EmptyStateBody style={{ marginBottom: '16px' }}>
-            {text}
+        <EmptyStateBody style={ { marginBottom: '16px' } }>
+            { text }
         </EmptyStateBody>
-        {children}
+        { children }
     </EmptyState>
 );
 
