@@ -24,7 +24,7 @@ import { global_success_color_200 } from '@patternfly/react-tokens';
 import { withRouter } from 'react-router-dom';
 import MessageState from './MessageState';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
-import { TableToolbar, Section, Battery} from '@redhat-cloud-services/frontend-components';
+import { TableToolbar, Section, Battery } from '@redhat-cloud-services/frontend-components';
 
 import './insights.scss';
 import ReportDetails from './ReportDetails';

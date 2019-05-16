@@ -52,8 +52,8 @@ class EntityDetails extends Component {
                 <SplitItem isFilled>
                     {
                         loaded ?
-                            <Title size='2xl'>{entity && entity.display_name}</Title> :
-                            <Skeleton size={SkeletonSize.md} />
+                            <Title size='2xl'>{ entity && entity.display_name }</Title> :
+                            <Skeleton size={ SkeletonSize.md } />
                     }
                 </SplitItem>
                 {
@@ -61,22 +61,22 @@ class EntityDetails extends Component {
                         {
                             loaded ?
                                 actions && actions.length > 0 && <Dropdown
-                                    onSelect={this.onSelect}
-                                    toggle={<DropdownToggle onToggle={this.toggleActions}>Actions</DropdownToggle>}
-                                    isOpen={isOpen}
-                                    position={DropdownPosition.right}
-                                    dropdownItems={[...(actions ?
+                                    onSelect={ this.onSelect }
+                                    toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
+                                    isOpen={ isOpen }
+                                    position={ DropdownPosition.right }
+                                    dropdownItems={ [ ...(actions ?
                                         actions.map((action, key) => (
                                             <DropdownItem
-                                                key={action.key || key}
+                                                key={ action.key || key }
                                                 component="button"
-                                                onClick={(event) => action.onClick(event, action, action.key || key)}
+                                                onClick={ (event) => action.onClick(event, action, action.key || key) }
                                             >
-                                                {action.title}
+                                                { action.title }
                                             </DropdownItem>)
-                                        ) : [])]}
+                                        ) : []) ] }
                                 /> :
-                                <Skeleton size={SkeletonSize.xl} />
+                                <Skeleton size={ SkeletonSize.xl } />
                         }
                     </SplitItem>
                 }
@@ -88,7 +88,7 @@ class EntityDetails extends Component {
         const { loaded } = this.props;
         return (
             <Grid className="ins-entity-facts">
-                <GridItem md={6}>
+                <GridItem md={ 6 }>
                     <div>
                         <span>
                             UUID:
@@ -97,7 +97,7 @@ class EntityDetails extends Component {
                             {
                                 loaded ?
                                     this.getFact(`id`) || ' ' :
-                                    <Skeleton size={SkeletonSize.md} />
+                                    <Skeleton size={ SkeletonSize.md } />
                             }
                         </span>
                     </div>
@@ -109,7 +109,7 @@ class EntityDetails extends Component {
                             {
                                 loaded ?
                                     (new Date(this.getFact('updated'))).toLocaleString() :
-                                    <Skeleton size={SkeletonSize.sm} />
+                                    <Skeleton size={ SkeletonSize.sm } />
                             }
                         </span>
                     </div>
@@ -123,18 +123,18 @@ class EntityDetails extends Component {
 
         return (
             <div className="ins-entity-detail">
-                {useCard ?
+                { useCard ?
                     <Card>
                         <CardHeader>
-                            {this.generateTop()}
+                            { this.generateTop() }
                         </CardHeader>
                         <CardBody>
-                            {this.generateFacts()}
+                            { this.generateFacts() }
                         </CardBody>
                     </Card> :
                     <Fragment>
-                        {this.generateTop()}
-                        {this.generateFacts()}
+                        { this.generateTop() }
+                        { this.generateFacts() }
                     </Fragment>
                 }
                 <ApplicationDetails />

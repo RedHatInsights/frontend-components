@@ -12,10 +12,10 @@ import './insights.scss';
 
 class ReportDetails extends React.Component {
     templateProcessor = (template, definitions) => {
-        const DOT_SETTINGS = { ...doT.templateSettings, varname: ['pydata'], strip: false };
+        const DOT_SETTINGS = { ...doT.templateSettings, varname: [ 'pydata' ], strip: false };
         const sanitizeOptions = {
             allowedAttributes: {
-                '*': ['style']
+                '*': [ 'style' ]
             },
             transformTags: {
                 ul: sanitizeHtml.simpleTransform('ul', { class: 'pf-c-list' })
@@ -27,15 +27,15 @@ class ReportDetails extends React.Component {
             const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
             const compiledMd = marked(sanitizeHtml(compiledDot, sanitizeOptions));
 
-            return <div dangerouslySetInnerHTML={{
+            return <div dangerouslySetInnerHTML={ {
                 __html: compiledMd
-                    .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
-                    .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`)
-            }} />;
+                .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
+                .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`)
+            } } />;
         } catch (error) {
             console.warn(error, definitions, template); // eslint-disable-line no-console
             return <React.Fragment> Ouch. We were unable to correctly render this text, instead please enjoy the raw data.
-                <pre><code>{template}</code></pre>
+                <pre><code>{ template }</code></pre>
             </React.Fragment>;
         }
     };
@@ -48,9 +48,9 @@ class ReportDetails extends React.Component {
             'ins-c-rules-card'
         );
         return (
-            <Card style={{ boxShadow: 'none' }}>
+            <Card style={ { boxShadow: 'none' } }>
                 <CardBody>
-                    <Stack className={rulesCardClasses} widget-type='InsightsRulesCard' gutter='md'>
+                    <Stack className={ rulesCardClasses } widget-type='InsightsRulesCard' gutter='md'>
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
@@ -58,7 +58,7 @@ class ReportDetails extends React.Component {
                                     <strong> Detected issues</strong>
                                 </CardHeader>
                                 <CardBody>
-                                    {rule.reason && this.templateProcessor(rule.reason, report.details)}
+                                    { rule.reason && this.templateProcessor(rule.reason, report.details) }
                                 </CardBody>
                             </Card>
                         </StackItem>
@@ -69,40 +69,40 @@ class ReportDetails extends React.Component {
                                     <strong> Steps to resolve</strong>
                                 </CardHeader>
                                 <CardBody>
-                                    {report.resolution && this.templateProcessor(report.resolution.resolution, report.details)}
+                                    { report.resolution && this.templateProcessor(report.resolution.resolution, report.details) }
                                 </CardBody>
                             </Card>
                         </StackItem>
-                        {kbaDetail && kbaDetail.view_uri && <StackItem>
+                        { kbaDetail && kbaDetail.view_uri && <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
                                     <LightbulbIcon /><strong> Related Knowledgebase article: </strong>
                                 </CardHeader>
                                 <CardBody>
-                                    <a href={`${kbaDetail.view_uri}`} rel="noopener">{kbaDetail.publishedTitle} <ExternalLinkAltIcon /></a>
+                                    <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle } <ExternalLinkAltIcon /></a>
                                 </CardBody>
                             </Card>
-                        </StackItem>}
+                        </StackItem> }
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
                                     <InfoCircleIcon /><strong> Additional info:</strong>
                                 </CardHeader>
                                 <CardBody>
-                                    {rule.more_info && this.templateProcessor(rule.more_info)}
-                                    <List style={{ fontSize: 'inherit' }}>
+                                    { rule.more_info && this.templateProcessor(rule.more_info) }
+                                    <List style={ { fontSize: 'inherit' } }>
                                         <ListItem>
-                                            {`To learn how to upgrade packages, see `}<a href="https://access.redhat.com/solutions/9934"
+                                            { `To learn how to upgrade packages, see ` }<a href="https://access.redhat.com/solutions/9934"
                                                 rel="noopener">
                                                 What is yum and how do I use it? <ExternalLinkAltIcon />
-                                            </a>{`.`}
+                                            </a>{ `.` }
                                         </ListItem>
-                                        <ListItem>{`The Customer Portal page for the `}
+                                        <ListItem>{ `The Customer Portal page for the ` }
                                             <a href="https://access.redhat.com/security/" rel="noopener">Red Hat Security Team
-                                                <ExternalLinkAltIcon /></a> {` contains more information about policies, procedures, and alerts for
+                                                <ExternalLinkAltIcon /></a> { ` contains more information about policies, procedures, and alerts for
                                                 Red Hat Products.` }
                                         </ListItem>
-                                        <ListItem>{`The Security Team also maintains a frequently updated blog at `}
+                                        <ListItem>{ `The Security Team also maintains a frequently updated blog at ` }
                                             <a href="https://securityblog.redhat.com"
                                                 rel="noopener">securityblog.redhat.com <ExternalLinkAltIcon /></a>.
                                         </ListItem>

@@ -53,19 +53,19 @@ class SystemCard extends Component {
             <Fragment>
                 <LoadingCard
                     title="System properties"
-                    isLoading={!detailLoaded}
-                    items={[
+                    isLoading={ !detailLoaded }
+                    items={ [
                         {
                             title: 'Host name', value: entity.fqdn, size: 'md'
                         },
                         {
                             title: 'Display name', value: (
                                 <Fragment>
-                                    {entity.display_name}
+                                    { entity.display_name }
                                     <a
                                         className="ins-c-inventory__detail--action"
-                                        href={`${window.location.href}/display_name`}
-                                        onClick={this.onShowDisplayModal}
+                                        href={ `${window.location.href}/display_name` }
+                                        onClick={ this.onShowDisplayModal }
                                     >
                                         <PencilAltIcon />
                                     </a>
@@ -75,11 +75,11 @@ class SystemCard extends Component {
                         {
                             title: 'Ansible hostname', value: (
                                 <Fragment>
-                                    {this.getAnsibleHost()}
+                                    { this.getAnsibleHost() }
                                     <a
                                         className="ins-c-inventory__detail--action"
-                                        href={`${window.location.href}/ansible_name`}
-                                        onClick={this.onShowAnsibleModal}
+                                        href={ `${window.location.href}/ansible_name` }
+                                        onClick={ this.onShowAnsibleModal }
                                     >
                                         <PencilAltIcon />
                                     </a>
@@ -98,23 +98,23 @@ class SystemCard extends Component {
                                 handleClick('Storage', diskMapper(properties.storage));
                             }
                         }
-                    ]}
+                    ] }
                 />
                 <TextInputModal
-                    isOpen={isDisplayNameModalOpen}
+                    isOpen={ isDisplayNameModalOpen }
                     title='Edit name'
-                    value={entity && entity.display_name}
+                    value={ entity && entity.display_name }
                     ariaLabel='Host inventory display name'
-                    onCancel={this.onCancel}
-                    onSubmit={this.onSubmit(setDisplayName)}
+                    onCancel={ this.onCancel }
+                    onSubmit={ this.onSubmit(setDisplayName) }
                 />
                 <TextInputModal
-                    isOpen={isAnsibleHostModalOpen}
+                    isOpen={ isAnsibleHostModalOpen }
                     title='Edit Ansible host'
-                    value={entity && this.getAnsibleHost()}
+                    value={ entity && this.getAnsibleHost() }
                     ariaLabel='Ansible host'
-                    onCancel={this.onCancel}
-                    onSubmit={this.onSubmit(setAnsibleHost)}
+                    onCancel={ this.onCancel }
+                    onSubmit={ this.onSubmit(setAnsibleHost) }
                 />
             </Fragment>
         );
