@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-insights",
-    "version": "0.0.3",
+    "version": "0.0.5",
     "description": "Rules detail page for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -20,10 +20,18 @@
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-insights#readme",
-    "dependencies": {
+    "peerDependencies": {
         "@patternfly/react-core": "^3.2.6",
         "@patternfly/react-icons": "^3.7.4",
         "@patternfly/react-table": "^2.1.6",
+        "prop-types": "^15.6.2",
+        "react": "^16.5.1",
+        "react-dom": "^16.5.1",
+        "react-content-loader": "^3.4.1",
+        "react-redux": "^5.0.7",
+        "react-router-dom": "^4.2.2"
+    },
+    "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-notifications": "*",
         "@redhat-cloud-services/frontend-components-remediations": "*",
@@ -31,12 +39,6 @@
         "dot": "^1.1.2",
         "marked": "^0.6.0",
         "moment": "^2.24.0",
-        "prop-types": "^15.6.2",
-        "react": "^16.5.1",
-        "react-dom": "^16.5.1",
-        "react-content-loader": "^3.4.1",
-        "react-redux": "^5.0.7",
-        "react-router-dom": "^4.2.2",
         "sanitize-html": "^1.20.0"
     }
 }

@@ -14,16 +14,18 @@ export const propertiesSelector = ({
     storage: disk_devices
 });
 
-export const subscriptionsSelector = ({
-    installed_products,
-    subscription_status,
-    subscription_auto_attach,
-    repositories
+export const operatingSystem = ({
+    arch,
+    os_release,
+    os_kernel_version,
+    last_boot_time,
+    kernel_modules
 } = {}) => ({
-    rhProducts: installed_products,
-    status: subscription_status,
-    autoAttached: subscription_auto_attach,
-    repositories
+    release: os_release,
+    kernelRelease: os_kernel_version,
+    architecture: arch,
+    bootTime: last_boot_time,
+    kernelModules: kernel_modules
 });
 
 export const biosSelector = ({
@@ -53,11 +55,13 @@ export const infrastructureSelector = ({
 export const configurationSelector = ({
     installed_packages,
     enabled_services,
-    running_processes
+    running_processes,
+    repositories
 } = {}) => ({
     packages: installed_packages,
     services: enabled_services,
-    processes: running_processes
+    processes: running_processes,
+    repositories
 });
 
 export const collectionInformationSelector = ({

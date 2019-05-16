@@ -19,7 +19,6 @@ import get from 'lodash/get';
 import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
 import { editDisplayName, editAnsibleHost, loadEntity } from './redux/actions';
-import TextInputModal from './TextInputModal';
 
 class EntityDetails extends Component {
     state = {
@@ -33,8 +32,6 @@ class EntityDetails extends Component {
         return get(entity, path, undefined);
     }
 
-    getAnsibleHost = () => this.getFact('ansible_host') || this.getFact('fqdn') || this.getFact('id');
-
     toggleActions = (collapsed) => {
         this.setState({
             isOpen: collapsed
@@ -47,18 +44,6 @@ class EntityDetails extends Component {
         });
     };
 
-    openModal = modal => () => this.setState({ [`is${modal}ModalOpen`]: true });
-
-    onSubmit = (fn) => (value) => {
-        const { entity } = this.props;
-        fn(entity.id, value);
-        this.onCancel();
-    }
-
-    onCancel = () => {
-        this.setState({ isDisplayNameModalOpen: false, isAnsibleHostModalOpen: false });
-    }
-
     generateTop = () => {
         const { entity, loaded, actions } = this.props;
         const { isOpen } = this.state;
@@ -67,46 +52,31 @@ class EntityDetails extends Component {
                 <SplitItem isFilled>
                     {
                         loaded ?
-                            <Title size='2xl'>{ entity && entity.display_name }</Title> :
-                            <Skeleton size={ SkeletonSize.md } />
+                            <Title size='2xl'>{entity && entity.display_name}</Title> :
+                            <Skeleton size={SkeletonSize.md} />
                     }
                 </SplitItem>
                 {
                     <SplitItem>
                         {
                             loaded ?
-                                <Dropdown
-                                    onSelect={ this.onSelect }
-                                    toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
-                                    isOpen={ isOpen }
-                                    position={ DropdownPosition.right }
-                                    dropdownItems={ [
-                                        <DropdownItem
-                                            key="1"
-                                            component="button"
-                                            onClick={ this.openModal('DisplayName') }>
-                                            Edit name
-                                        </DropdownItem>,
-                                        <DropdownItem
-                                            key="2"
-                                            component="button"
-                                            onClick={ this.openModal('AnsibleHost') }>
-                                            Edit Ansible host
-                                        </DropdownItem>,
-                                        ...(actions ?
-                                            actions.map((action, key) => (
-                                                <DropdownItem
-                                                    key={ action.key || key }
-                                                    component="button"
-                                                    onClick={ (event) => action.onClick(event, action, action.key || key) }
-                                                >
-                                                    { action.title }
-                                                </DropdownItem>)
-                                            ) : []
-                                        )
-                                    ] }
+                                actions && actions.length > 0 && <Dropdown
+                                    onSelect={this.onSelect}
+                                    toggle={<DropdownToggle onToggle={this.toggleActions}>Actions</DropdownToggle>}
+                                    isOpen={isOpen}
+                                    position={DropdownPosition.right}
+                                    dropdownItems={[...(actions ?
+                                        actions.map((action, key) => (
+                                            <DropdownItem
+                                                key={action.key || key}
+                                                component="button"
+                                                onClick={(event) => action.onClick(event, action, action.key || key)}
+                                            >
+                                                {action.title}
+                                            </DropdownItem>)
+                                        ) : [])]}
                                 /> :
-                                <Skeleton size={ SkeletonSize.xl } />
+                                <Skeleton size={SkeletonSize.xl} />
                         }
                     </SplitItem>
                 }
@@ -118,31 +88,7 @@ class EntityDetails extends Component {
         const { loaded } = this.props;
         return (
             <Grid className="ins-entity-facts">
-                <GridItem md={ 6 }>
-                    <div>
-                        <span>
-                            Hostname:
-                        </span>
-                        <span>
-                            {
-                                loaded ?
-                                    this.getFact('fqdn') || ' ' :
-                                    <Skeleton size={ SkeletonSize.md } />
-                            }
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            Ansible host:
-                        </span>
-                        <span>
-                            {
-                                loaded ?
-                                    this.getAnsibleHost() :
-                                    <Skeleton size={ SkeletonSize.md } />
-                            }
-                        </span>
-                    </div>
+                <GridItem md={6}>
                     <div>
                         <span>
                             UUID:
@@ -151,7 +97,7 @@ class EntityDetails extends Component {
                             {
                                 loaded ?
                                     this.getFact(`id`) || ' ' :
-                                    <Skeleton size={ SkeletonSize.md } />
+                                    <Skeleton size={SkeletonSize.md} />
                             }
                         </span>
                     </div>
@@ -163,7 +109,7 @@ class EntityDetails extends Component {
                             {
                                 loaded ?
                                     (new Date(this.getFact('updated'))).toLocaleString() :
-                                    <Skeleton size={ SkeletonSize.sm } />
+                                    <Skeleton size={SkeletonSize.sm} />
                             }
                         </span>
                     </div>
@@ -173,43 +119,25 @@ class EntityDetails extends Component {
     }
 
     render() {
-        const { useCard, entity } = this.props;
-        const { isDisplayNameModalOpen, isAnsibleHostModalOpen } = this.state;
+        const { useCard } = this.props;
 
         return (
             <div className="ins-entity-detail">
-                { useCard ?
+                {useCard ?
                     <Card>
                         <CardHeader>
-                            { this.generateTop() }
+                            {this.generateTop()}
                         </CardHeader>
                         <CardBody>
-                            { this.generateFacts() }
+                            {this.generateFacts()}
                         </CardBody>
                     </Card> :
                     <Fragment>
-                        { this.generateTop() }
-                        { this.generateFacts() }
+                        {this.generateTop()}
+                        {this.generateFacts()}
                     </Fragment>
                 }
                 <ApplicationDetails />
-
-                <TextInputModal
-                    isOpen={ isDisplayNameModalOpen }
-                    title='Edit name'
-                    value= { entity && entity.display_name }
-                    ariaLabel='Host inventory display name'
-                    onCancel={ this.onCancel }
-                    onSubmit={ this.onSubmit(this.props.setDisplayName) }
-                />
-                <TextInputModal
-                    isOpen={ isAnsibleHostModalOpen }
-                    title='Edit Ansible host'
-                    value= { entity && this.getAnsibleHost() }
-                    ariaLabel='Ansible host'
-                    onCancel={ this.onCancel }
-                    onSubmit={ this.onSubmit(this.props.setAnsibleHost) }
-                />
             </div>
         );
     }

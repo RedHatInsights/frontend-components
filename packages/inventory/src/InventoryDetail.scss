@@ -10,6 +10,10 @@
     .pf-l-split__item:last-child { @include rem('min-width', 100px); }
 }
 
+.ins-c-inventory__detail--action {
+    padding-left: var(--pf-global--spacer--sm);
+}
+
 .ins-c-inventory-detail__app-tabs ul {
     &:before {
         content: '';
@@ -32,6 +36,8 @@
   .ins-entity-facts {
     div {
       @include rem('margin', 5px);
+      margin-left: 0;
+
       span:first-child { @include rem('margin-right', 5px); }
 
       .ins-c-skeleton {
