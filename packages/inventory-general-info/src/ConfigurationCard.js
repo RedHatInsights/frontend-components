@@ -2,13 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoadingCard from './LoadingCard';
-import { generalMapper } from './dataMapper';
+import { generalMapper, repositoriesMapper } from './dataMapper';
 import { configurationSelector } from './selectors';
+
+function enabledRepos(repositories) {
+    if (repositories) {
+        return [
+            repositories.enabled.length > 0 && `${repositories.enabled.length} enabled`,
+            repositories.disabled.length > 0 && `${repositories.disabled.length} disabled`
+        ].filter(Boolean).join(' / ');
+    }
+
+    return 0;
+}
 
 const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<LoadingCard
     title="Configuration"
-    isLoading={ !detailLoaded }
-    items={ [
+    isLoading={!detailLoaded}
+    items={[
         {
             title: 'Installed packages',
             value: configuration.packages ? `${configuration.packages.length} packages` : 0,
@@ -41,8 +52,19 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
                     generalMapper(configuration.processes, 'Process name')
                 );
             }
+        },
+        {
+            title: 'Repositories',
+            value: enabledRepos(configuration.repositories),
+            target: 'repositories',
+            onClick: () => {
+                handleClick(
+                    'Repositories',
+                    repositoriesMapper(configuration.repositories)
+                );
+            }
         }
-    ] }
+    ]}
 />);
 
 ConfigurationCard.propTypes = {
@@ -51,7 +73,14 @@ ConfigurationCard.propTypes = {
     configuration: PropTypes.shape({
         packages: PropTypes.arrayOf(PropTypes.string),
         services: PropTypes.arrayOf(PropTypes.string),
-        processes: PropTypes.arrayOf(PropTypes.string)
+        processes: PropTypes.arrayOf(PropTypes.string),
+        repositories: PropTypes.arrayOf(PropTypes.shape({
+            // eslint-disable-next-line camelcase
+            base_url: PropTypes.string,
+            name: PropTypes.string,
+            enabled: PropTypes.bool,
+            gpgcheck: PropTypes.bool
+        }))
     })
 };
 ConfigurationCard.defaultProps = {

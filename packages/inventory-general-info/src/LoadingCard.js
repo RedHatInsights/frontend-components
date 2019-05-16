@@ -62,7 +62,7 @@ const LoadingCard = ({ title, isLoading, items }) => {
                                     { !isLoading && (
                                         item.onClick ?
                                             <Clickable item={ item }/> :
-                                            item.value
+                                            (item.value || 'N/A')
                                     ) }
                                 </TextListItem>
                             </Fragment>

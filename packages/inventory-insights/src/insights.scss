@@ -73,3 +73,15 @@
         th { text-align: left !important; }
     }
 }
+
+.batterySectionOverrides{
+    margin-top: 16px;
+}
+
+.smallFontSizeOverride{
+    font-size: $ins-fontSize--sm;
+}
+
+.successColorOverride{
+    color: var(--pf-global--success-color--200)
+}

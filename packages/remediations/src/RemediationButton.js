@@ -1,5 +1,6 @@
 import React from 'react';
 import * as ReactCore from '@patternfly/react-core';
+import * as pfReactTable from '@patternfly/react-table';
 
 import propTypes from 'prop-types';
 
@@ -20,7 +21,8 @@ class RemediationButton extends React.Component {
     componentDidMount() {
         getLoader()({
             react: React,
-            reactCore: ReactCore
+            reactCore: ReactCore,
+            pfReactTable
         }).then(remediations => this.setState({ remediations }));
     }
 

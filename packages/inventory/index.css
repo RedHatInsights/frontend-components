@@ -731,6 +731,9 @@ button:focus {
   min-width: 100px;
   min-width: 6.25rem; }
 
+.ins-c-inventory__detail--action {
+  padding-left: var(--pf-global--spacer--sm); }
+
 .ins-c-inventory-detail__app-tabs ul:before {
   content: '';
   border-right: 1px solid var(--pf-c-tabs__item--BorderColor); }
@@ -746,7 +749,8 @@ button:focus {
 
 .ins-entity-detail .ins-entity-facts div {
   margin: 5px;
-  margin: 0.3125rem; }
+  margin: 0.3125rem;
+  margin-left: 0; }
   .ins-entity-detail .ins-entity-facts div span:first-child {
     margin-right: 5px;
     margin-right: 0.3125rem; }

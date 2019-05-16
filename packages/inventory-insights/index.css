@@ -1,40 +1,6 @@
 :root {
   --ins-color--orange: #ec7a08; }
 
-button:focus {
-  outline: none; }
-
-section.ins-l-content {
-  padding: var(--pf-global--spacer--lg); }
-
-section.ins-l-button-group {
-  margin: 24px 0px;
-  margin: 1.5rem 0rem; }
-
-section.ins-l-button-group > * {
-  display: inline; }
-
-section.ins-l-button-group * + * {
-  margin-left: 5px;
-  margin-left: 0.3125rem; }
-
-section.ins-l-icon-group * + * {
-  margin-left: 10px; }
-
-section.ins-l-icon-group__with-major * + * {
-  margin-left: 7.5px; }
-
-section.ins-l-icon-group__with-major .ins-battery:last-of-type {
-  padding-left: 15px;
-  border-left: 2px solid #eaeaea; }
-
-section.ins-l-icon-group__with-major .ins-battery:last-of-type span.label {
-  font-weight: 500;
-  margin: 0 10px; }
-
-:root {
-  --ins-color--orange: #ec7a08; }
-
 .ins-empty-rule-cards div {
   text-align: center; }
 
@@ -115,4 +81,47 @@ section.ins-l-icon-group__with-major .ins-battery:last-of-type span.label {
     background: white !important; }
   .ins-c-inventory-advisor__card table th {
     text-align: left !important; }
+
+.batterySectionOverrides {
+  margin-top: 16px; }
+
+.smallFontSizeOverride {
+  font-size: var(--pf-global--FontSize--sm); }
+
+.successColorOverride {
+  color: var(--pf-global--success-color--200); }
+
+:root {
+  --ins-color--orange: #ec7a08; }
+
+button:focus {
+  outline: none; }
+
+section.ins-l-content {
+  padding: var(--pf-global--spacer--lg); }
+
+section.ins-l-button-group {
+  margin: 24px 0px;
+  margin: 1.5rem 0rem; }
+
+section.ins-l-button-group > * {
+  display: inline; }
+
+section.ins-l-button-group * + * {
+  margin-left: 5px;
+  margin-left: 0.3125rem; }
+
+section.ins-l-icon-group * + * {
+  margin-left: 10px; }
+
+section.ins-l-icon-group__with-major * + * {
+  margin-left: 7.5px; }
+
+section.ins-l-icon-group__with-major .ins-battery:last-of-type {
+  padding-left: 15px;
+  border-left: 2px solid #eaeaea; }
+
+section.ins-l-icon-group__with-major .ins-battery:last-of-type span.label {
+  font-weight: 500;
+  margin: 0 10px; }
 

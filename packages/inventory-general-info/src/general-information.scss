@@ -1,5 +1,4 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
-
 .ins-active-app-general_information {
     .pf-c-content {
         .pf-l-level div:first-child {
@@ -15,7 +14,7 @@
 }
 
 .pf-c-modal-box .pf-c-table {
-    white-space:nowrap;
+    white-space: nowrap;
 
     .ins-c-inventory__detail--up {
         fill: var(--pf-global--success-color--100);
@@ -37,4 +36,16 @@
 
 .ins-c-inventory__detail--dialog {
     @include rem('min-width', 350px);
+
+    .pf-c-table {
+        th, th button, td {
+            padding-left: 0 !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+  .pf-c-modal-box .pf-c-table {
+      white-space: normal;
+  }
 }

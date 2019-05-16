@@ -24,4 +24,10 @@ button:focus {
 .ins-c-inventory__detail--dialog {
   min-width: 350px;
   min-width: 21.875rem; }
+  .ins-c-inventory__detail--dialog .pf-c-table th, .ins-c-inventory__detail--dialog .pf-c-table th button, .ins-c-inventory__detail--dialog .pf-c-table td {
+    padding-left: 0 !important; }
+
+@media only screen and (max-width: 768px) {
+  .pf-c-modal-box .pf-c-table {
+    white-space: normal; } }
 
