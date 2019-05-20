@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { Pagination, dropDirection } from '@redhat-cloud-services/frontend-components';
+import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import { entitiesLoading } from './redux/actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { InventoryContext } from './Inventory';
 import debounce from 'lodash/debounce';
-
-const perPageOptions = [ 10, 20, 50, 100 ];
 
 class ContextFooterPagination extends Component {
     constructor(props) {
@@ -28,11 +26,11 @@ class ContextFooterPagination extends Component {
         }
     }
 
-    onSetPage = (page, debounce) => {
+    onSetPage = (event, page) => {
         const { perPage, filters } = this.props;
         // eslint-disable-next-line camelcase
         const pagination = { page, per_page: perPage, filters };
-        if (debounce) {
+        if (event.target.matches('input')) {
             this.changePage(pagination);
             this.setState({
                 page
@@ -45,23 +43,26 @@ class ContextFooterPagination extends Component {
         }
     }
 
-    onPerPageSelect = (perPage) => {
+    onPerPageSelect = (_event, perPage) => {
         const { filters } = this.props;
         // eslint-disable-next-line camelcase
         this.updatePagination({ page: 1, per_page: perPage, filters });
     }
 
     render() {
-        const { total, page, perPage, loaded, direction } = this.props;
+        const { total, page, perPage, loaded, direction, isFull } = this.props;
         const { page: statePage } = this.state;
+        const extra = isFull ? {
+            variant: PaginationVariant.bottom
+        } : {};
         return (
             <Fragment>
                 { loaded && (
                     <Pagination
-                        numberOfItems={ total }
-                        perPageOptions={ perPageOptions }
+                        { ...extra }
+                        itemCount={ total }
                         page={ statePage || page }
-                        itemsPerPage={ perPage }
+                        perPage={ perPage }
                         direction={ direction }
                         onSetPage={ this.onSetPage }
                         onPerPageSelect={ this.onPerPageSelect }
@@ -84,6 +85,7 @@ const propTypes = {
     perPage: PropTypes.number,
     total: PropTypes.number,
     loaded: PropTypes.bool,
+    isFull: PropTypes.bool,
     onRefresh: PropTypes.func,
     direction: PropTypes.string
 };
@@ -98,19 +100,21 @@ FooterPagination.propTypes = propTypes;
 FooterPagination.defaultProps = {
     total: 0,
     loaded: false,
+    isFull: false,
     direction: 'up',
     onRefreshData: () => undefined
 };
 
 function stateToProps(
     { entities: { page, perPage, total, loaded, activeFilters }},
-    { totalItems, page: currPage, perPage: currPerPage, hasItems }) {
+    { totalItems, page: currPage, perPage: currPerPage, hasItems, isFull }) {
     return {
         page: hasItems ? currPage : page,
         perPage: hasItems ? currPerPage : perPage,
         total: hasItems ? totalItems : total,
         loaded,
-        filters: activeFilters
+        filters: activeFilters,
+        isFull
     };
 }
 

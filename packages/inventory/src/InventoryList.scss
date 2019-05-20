@@ -2,10 +2,13 @@
 @import "~@patternfly/patternfly/utilities/Display/display.css";
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
 
-.ins-c-table__toolbar.ins-c-inventory__table--toolbar .pf-l-split {
-    width: 100%;
+.ins-c-table__toolbar.ins-c-inventory__table--toolbar {
+    .pf-c-pagination__nav-page-select input { @include rem('min-width', 75px); }
+    .pf-l-split {
+        width: 100%;
 
-    .pf-l-split__item:last-child { @include rem('min-width', 200px); }
+        .pf-l-split__item:last-child { @include rem('min-width', 200px); }
+    }
 }
 
 .ins-inventory-filters {

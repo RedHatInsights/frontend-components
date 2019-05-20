@@ -83,8 +83,9 @@ class InventoryTable extends Component {
                     perPage={ perPage }
                     showHealth={ showHealth }
                 />
-                <TableToolbar isFooter>
+                <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                     <Pagination
+                        isFull
                         totalItems={ total || (items && items.length) }
                         page={ page }
                         hasItems={ Boolean(items) }
