@@ -628,6 +628,10 @@
 button:focus {
   outline: none; }
 
+.ins-c-table__toolbar.ins-c-inventory__table--toolbar .pf-c-pagination__nav-page-select input {
+  min-width: 75px;
+  min-width: 4.6875rem; }
+
 .ins-c-table__toolbar.ins-c-inventory__table--toolbar .pf-l-split {
   width: 100%; }
   .ins-c-table__toolbar.ins-c-inventory__table--toolbar .pf-l-split .pf-l-split__item:last-child {
