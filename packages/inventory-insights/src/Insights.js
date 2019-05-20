@@ -62,7 +62,6 @@ class InventoryRuleList extends Component {
             const kbaIds = data.map(report => report.rule.node_id).join(` OR `);
             const kbaDetails = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
                 { credentials: 'include' }).then(data => data.json());
-            console.error(kbaDetails)
             this.setState({
                 rows: this.buildRows(this.sortActiveReports(data), kbaDetails.response.docs),
                 inventoryReportFetchStatus: 'fulfilled',
