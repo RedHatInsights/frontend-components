@@ -60,9 +60,10 @@ class InventoryRuleList extends Component {
             const data = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports/`, { credentials: 'include' })
             .then(data => data.json()).catch(error => { throw error; });
             const kbaIds = data.map(report => report.rule.node_id).join(` OR `);
-            const kbaDetails = (await this.fetchKbaDetails(kbaIds)).response.docs;
+            const kbaDetails = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
+                { credentials: 'include' }).then(data => data.json());
             this.setState({
-                rows: this.buildRows(this.sortActiveReports(data), kbaDetails),
+                rows: this.buildRows(this.sortActiveReports(data), kbaDetails.response.docs),
                 inventoryReportFetchStatus: 'fulfilled',
                 remediation: this.processRemediation(entity.id, data)
             });
@@ -71,15 +72,6 @@ class InventoryRuleList extends Component {
                 inventoryReportFetchStatus: 'failed'
             });
             console.warn(error, 'Entity rules fetch failed.');
-        }
-    }
-
-    fetchKbaDetails (kbaIds) {
-        try {
-            return fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`, { credentials: 'include' })
-            .then(data => data.json());
-        } catch (error) {
-            console.warn(error, 'KBA detail fetch failed.');
         }
     }
 
