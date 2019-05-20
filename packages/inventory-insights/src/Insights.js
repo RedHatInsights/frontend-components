@@ -57,15 +57,16 @@ class InventoryRuleList extends Component {
         const { entity } = this.props;
         try {
             await insights.chrome.auth.getUser();
-            const data = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports/`, { credentials: 'include' })
-            .then(data => data.json()).catch(error => { throw error; });
-            const kbaIds = data.map(report => report.rule.node_id).join(` OR `);
-            const kbaDetails = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
-                { credentials: 'include' }).then(data => data.json());
+            const reportsFetch = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports/`, { credentials: 'include' });
+            const reportsData = await reportsFetch.json();
+            const kbaIds = reportsData.map(report => report.rule.node_id).join(` OR `);
+            const kbaDetailsFetch = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
+                { credentials: 'include' });
+            const kbaDetailsData = await kbaDetailsFetch.json();
             this.setState({
-                rows: this.buildRows(this.sortActiveReports(data), kbaDetails.response.docs),
+                rows: this.buildRows(this.sortActiveReports(reportsData), kbaDetailsData.response.docs),
                 inventoryReportFetchStatus: 'fulfilled',
-                remediation: this.processRemediation(entity.id, data)
+                remediation: this.processRemediation(entity.id, reportsData)
             });
         } catch (error) {
             this.setState({
