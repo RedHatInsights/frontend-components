@@ -59,7 +59,7 @@ class InventoryRuleList extends Component {
             await insights.chrome.auth.getUser();
             const reportsFetch = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports/`, { credentials: 'include' });
             const reportsData = await reportsFetch.json();
-            const kbaIds = reportsData.map(report => report.rule.node_id).join(` OR `);
+            const kbaIds = reportsData.map(report => report.rule.node_id).filter(x => x).join(` OR `);
             const kbaDetailsFetch = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
                 { credentials: 'include' });
             const kbaDetailsData = await kbaDetailsFetch.json();
