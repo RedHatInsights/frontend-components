@@ -120,7 +120,7 @@ class EntityTable extends React.Component {
         return (
             <React.Fragment>
                 { loaded ?
-                    <PfTable
+                    PfTable && <PfTable
                         borders={ true }
                         variant={ variant }
                         aria-label="Host inventory"
@@ -145,7 +145,7 @@ class EntityTable extends React.Component {
 }
 
 EntityTable.propTypes = {
-    variant: PropTypes.oneOf(Object.values(TableVariant)),
+    variant: PropTypes.oneOf(Object.values(TableVariant || {})),
     history: PropTypes.any,
     expandable: PropTypes.bool,
     onExpandClick: PropTypes.func,
