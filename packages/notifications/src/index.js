@@ -1,5 +1,5 @@
 export { default as NotificationsPortal } from './NotificationPortal';
-export { default as notifications } from './redux/reducers/notifications';
+export { default as notifications, notificationsReducers } from './redux/reducers/notifications';
 export {
     ADD_NOTIFICATION,
     REMOVE_NOTIFICATION,
