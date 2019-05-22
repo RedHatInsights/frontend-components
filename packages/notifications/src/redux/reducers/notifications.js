@@ -26,4 +26,4 @@ export const notificationsReducers = {
     [CLEAR_NOTIFICATIONS]: clearNotifications
 }
 
-export default applyReducerHash(notificationsReducers);
+export default applyReducerHash(notificationsReducers, defaultState);
