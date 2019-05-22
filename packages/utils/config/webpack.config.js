@@ -9,7 +9,6 @@ module.exports = (env) => ({
         minimize: process.env.NODE_ENV === 'production'
     },
     entry: {
-        AsyncComponent: './src/AsyncComponent.js',
         ReducerRegistry: './src/ReducerRegistry.js',
         helpers: './src/helpers.js',
         MiddlewareListener: './src/MiddlewareListener.js',

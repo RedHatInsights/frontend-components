@@ -6,6 +6,9 @@ import { Tooltip } from '@patternfly/react-core';
 
 export const CSV_TYPE = 'text/csv;charset=utf-8;';
 export const JSON_TYPE = 'data:text/json;charset=utf-8,';
+const monthMap = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
+];
 
 export function mergeArraysByKey(arrays, key = 'id') {
     let mergedObject = merge(...arrays.map(row => mapKeys(row, a => a && a[key])));
@@ -43,8 +46,13 @@ export function parseCvssScore(cvssV2, cvssV3, withLabels = false) {
 
 export function processDate(dateString) {
     const date = new Date(dateString);
-    const dateFormat = require('dateformat');
-    return (date instanceof Date && !isNaN(date) && dateFormat(date, 'dd mmm yyyy')) || 'N/A';
+    const month = monthMap[date.getMonth()];
+    const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+    if (!month || isNaN(day)) {
+        return 'N/A';
+    }
+
+    return `${day} ${month} ${date.getFullYear()}`;
 }
 
 export const RowLoader = props => (
