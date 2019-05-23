@@ -133,7 +133,7 @@ class ContextFilter extends Component {
                             }
                             onOptionSelect={ this.onFilterByString }
                             onFilterChange={ this.filterEntities }
-                            placeholder={ `Find system by ${placeholder.toLowerCase()}` }
+                        placeholder={`Find system by ${placeholder && placeholder.toLowerCase()}` }
                             buttonTitle=""
                         />
                 }
