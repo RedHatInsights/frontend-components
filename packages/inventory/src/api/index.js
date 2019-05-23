@@ -31,7 +31,7 @@ export function getEntities(items, { controller, hasItems, filters, per_page: pe
     const hostnameOrId = filters ? filters.find(filter => filter.value === 'hostname_or_id') : undefined;
 
     if (hasItems && items.length > 0) {
-        return hosts.apiHostGetHostById(items, perPage, page, { cancelToken: controller && controller.token })
+        return hosts.apiHostGetHostById(items, undefined, perPage, page, { cancelToken: controller && controller.token })
             .then(({ results = [], ...data } = {}) => ({
                 ...data,
                 results: results.map(result => mapData({
@@ -44,6 +44,7 @@ export function getEntities(items, { controller, hasItems, filters, per_page: pe
             undefined,
             undefined,
             hostnameOrId && hostnameOrId.filter,
+            undefined,
             undefined,
             perPage,
             page,
