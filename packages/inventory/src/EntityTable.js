@@ -4,8 +4,21 @@ import routerParams from '@redhat-cloud-services/frontend-components-utilities/f
 import { selectEntity, setSort, detailSelect } from './redux/actions';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
-import { TextContent, Text, TextVariants, Bullseye } from '@patternfly/react-core';
-import { Table as PfTable, TableBody, TableHeader, TableGridBreakpoint, cellWidth, TableVariant } from '@patternfly/react-table';
+import {
+    Title,
+    EmptyStateBody,
+    Bullseye,
+    EmptyState,
+    EmptyStateVariant
+} from '@patternfly/react-core';
+import {
+    Table as PfTable,
+    TableBody,
+    TableHeader,
+    TableGridBreakpoint,
+    cellWidth,
+    TableVariant
+} from '@patternfly/react-table';
 import { SkeletonTable, EmptyTable } from '@redhat-cloud-services/frontend-components';
 
 class EntityTable extends React.Component {
@@ -48,7 +61,12 @@ class EntityTable extends React.Component {
             }
 
             if (isTime) {
-                return (new Date(get(col, key, ' '))).toLocaleString();
+                const [ day, date, month, year, time ] = new Date(get(col, key, ' ')).toUTCString().split(' ');
+                if (date && month && year && time) {
+                    return `${date} ${month} ${year}, ${time.split(':').slice(0, 2).join(':')} UTC`;
+                }
+
+                return 'Invalid Date';
             }
         }
 
@@ -77,14 +95,14 @@ class EntityTable extends React.Component {
                     title: (
                         <EmptyTable>
                             <Bullseye>
-                                <TextContent>
-                                    <Text component={ TextVariants.h1 }>
+                                <EmptyState variant={ EmptyStateVariant.full }>
+                                    <Title headingLevel="h5" size="lg">
                                         No matching systems found
-                                    </Text>
-                                    <Text component={ TextVariants.small }>
-                                        This filter criteria matches no systems. Try changing your filter settings.
-                                    </Text>
-                                </TextContent>
+                                    </Title>
+                                    <EmptyStateBody>
+                                        This filter criteria matches no systems. <br /> Try changing your filter settings.
+                                    </EmptyStateBody>
+                                </EmptyState>
                             </Bullseye>
                         </EmptyTable>
                     ),
@@ -116,7 +134,7 @@ class EntityTable extends React.Component {
     }
 
     render() {
-        const { columns, loaded, expandable, onExpandClick, hasCheckbox, actions, variant } = this.props;
+        const { rows, columns, loaded, expandable, onExpandClick, hasCheckbox, actions, variant } = this.props;
         return (
             <React.Fragment>
                 { loaded ?
@@ -129,13 +147,17 @@ class EntityTable extends React.Component {
                         gridBreakPoint={ columns.length > 5 ? TableGridBreakpoint.gridLg : TableGridBreakpoint.gridMd }
                         className="ins-c-entity-table"
                         { ...{
-                            ...hasCheckbox ? { onSelect: this.onItemSelect } : {},
+                            ...hasCheckbox && rows.length !== 0 ? { onSelect: this.onItemSelect } : {},
                             ...expandable ? { onCollapse: onExpandClick } : {},
                             ...actions ? { actions } : {}
                         } }
                     >
                         <TableHeader />
-                        <TableBody />
+                        <TableBody onRowClick={ (event, { selected }, { rowIndex }) => {
+                            if (hasCheckbox && event.target.matches('td')) {
+                                this.onItemSelect(event, !selected, rowIndex);
+                            }
+                        } } />
                     </PfTable> :
                     <SkeletonTable colSize={ 2 } rowSize={ 15 } />
                 }
