@@ -4,9 +4,9 @@ import * as remediationsApi from '@redhat-cloud-services/frontend-components-rem
 import ComplianceRemediationButton from './ComplianceRemediationButton';
 import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
-import { Ansible, Pagination, TableToolbar } from '@redhat-cloud-services/frontend-components';
+import { Ansible, TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
-import { Checkbox, Level, LevelItem, Stack, StackItem } from '@patternfly/react-core';
+import { Checkbox, Level, LevelItem, Stack, StackItem, Pagination, PaginationVariant } from '@patternfly/react-core';
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import flatMap from 'lodash/flatMap';
 import './compliance.scss';
@@ -80,12 +80,12 @@ class SystemRulesTable extends React.Component {
         });
     }
 
-    setPage = (page) => {
+    setPage = (_event, page) => {
         const { itemsPerPage } = this.state;
         this.changePage(page, itemsPerPage);
     }
 
-    setPerPage = (itemsPerPage) => {
+    setPerPage = (_event, itemsPerPage) => {
         const { page } = this.state;
         this.changePage(page, itemsPerPage);
     }
@@ -372,13 +372,17 @@ class SystemRulesTable extends React.Component {
                         <TableHeader />
                         <TableBody />
                     </Table>
-                    <Pagination
-                        numberOfItems={ rows.length / 2 }
-                        onPerPageSelect={ this.setPerPage }
-                        page={ page }
-                        onSetPage={ this.setPage }
-                        itemsPerPage={ itemsPerPage }
-                    />
+                    <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
+                        <Pagination
+                            page={ page }
+                            itemCount={ rows.length / 2 }
+                            dropDirection='up'
+                            onSetPage={ this.setPage }
+                            onPerPageSelect={ this.setPerPage }
+                            perPage={ itemsPerPage }
+                            variant={ PaginationVariant.bottom }
+                        />
+                    </TableToolbar>
                 </React.Fragment>
             );
             /* eslint-enable camelcase */
