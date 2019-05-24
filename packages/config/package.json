@@ -1,14 +1,10 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config",
-    "version": "0.0.1",
+    "version": "0.0.6",
     "description": "Config plugins and settings for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
         "access": "public"
-    },
-    "scripts": {
-        "build": "webpack --config webpack.config.js",
-        "start": "webpack --watch --config webpack.config.js"
     },
     "repository": {
         "type": "git",
@@ -21,5 +17,26 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme",
     "dependencies": {
+        "babel-loader": "^8.0.6",
+        "clean-webpack-plugin": "^2.0.2",
+        "connect-history-api-fallback": "^1.6.0",
+        "copy-webpack-plugin": "^5.0.3",
+        "css-loader": "^2.1.1",
+        "eslint-loader": "^2.1.2",
+        "file-loader": "^3.0.1",
+        "git-revision-webpack-plugin": "^3.0.3",
+        "html-replace-webpack-plugin": "^2.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "koa-connect": "^2.0.1",
+        "lodash-webpack-plugin": "^0.11.5",
+        "mini-css-extract-plugin": "^0.6.0",
+        "node-sass": "^4.12.0",
+        "sass-loader": "^7.1.0",
+        "source-map-loader": "^0.2.4",
+        "style-loader": "^0.23.1",
+        "webpack-dev-server": "^3.4.1",
+        "webpack-hot-client": "^4.1.1",
+        "webpack-serve": "1.0.2",
+        "write-file-webpack-plugin": "^4.5.0"
     }
 }
