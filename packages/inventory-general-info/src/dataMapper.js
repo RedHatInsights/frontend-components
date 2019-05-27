@@ -11,8 +11,8 @@ import {
 import { sortable } from '@patternfly/react-table';
 
 const statusHelper = {
-    DOWN: <OutlinedArrowAltCircleUpIcon className="ins-c-inventory__detail--up" />,
-    UP: <OutlinedArrowAltCircleDownIcon className="ins-c-inventory__detail--down" />
+    UP: <OutlinedArrowAltCircleUpIcon className="ins-c-inventory__detail--up" />,
+    DOWN: <OutlinedArrowAltCircleDownIcon className="ins-c-inventory__detail--down" />
 };
 
 const enabledHelper = {
