@@ -6,7 +6,8 @@ module.exports = ({
     port,
     publicPath,
     appEntry,
-    rootFolder
+    rootFolder,
+    https
 }) => {
     return {
         mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
@@ -64,7 +65,8 @@ module.exports = ({
             contentBase: `${rootFolder}/dist`,
             hot: true,
             port: port || 8002,
-            https: false,
+            https: https || false,
+            inline: true,
             disableHostCheck: true,
             historyApiFallback: true
         },

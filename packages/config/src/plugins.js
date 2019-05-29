@@ -1,4 +1,4 @@
-const { SourceMapDevToolPlugin } = require('webpack');
+const { SourceMapDevToolPlugin, HotModuleReplacementPlugin } = require('webpack');
 
 const WriteFileWebpackPlugin = new(require('write-file-webpack-plugin'))();
 const SourceMapsPlugin = new SourceMapDevToolPlugin({
@@ -17,6 +17,7 @@ const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
     filename: 'css/[name].css'
 });
 const CleanWebpackPlugin = new(require('clean-webpack-plugin'))();
+const WebpackHotModuleReplacement = new HotModuleReplacementPlugin();
 
 module.exports = ({
     rootFolder,
@@ -43,6 +44,7 @@ module.exports = ({
         },
         ...replacePlugin || []
     ]);
+
     return [
         WriteFileWebpackPlugin,
         SourceMapsPlugin,
@@ -51,6 +53,7 @@ module.exports = ({
         CleanWebpackPlugin,
         HtmlWebpackPlugin,
         CopyFilesWebpackPlugin,
-        HtmlReplaceWebpackPlugin
+        HtmlReplaceWebpackPlugin,
+        WebpackHotModuleReplacement
     ];
 };
