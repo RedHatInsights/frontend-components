@@ -19,5 +19,5 @@ This package is dependent on [@redhat-cloud-services/frontend-components-utiliti
 ## Documentation Links
 
 * Components
-  * [inventory](doc/inventory.md)
-  * [inventory](doc/inventory_header.md)
+  * [inventory](https://github.com/RedHatInsights/frontend-components/blob/master/packages/inventory/doc/inventory.md)
+  * [inventory_header](https://github.com/RedHatInsights/frontend-components/blob/master/packages/inventory/doc/inventory_header.md)
