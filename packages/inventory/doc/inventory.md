@@ -280,7 +280,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
-import { PaginationRow } from 'patternfly-react';
+import * as pfReactTable from '@patternfly/react-table';
 import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
@@ -309,7 +309,7 @@ class SomeCmp extends React.Component {
             reactRouterDom,
             reactCore,
             reactIcons,
-            pfReact: { PaginationRow }
+            pfReactTable
         });
 
         this.getRegistry().register({
@@ -359,6 +359,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import * as pfReactTable from '@patternfly/react-table';
 import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
@@ -380,7 +381,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
-import { PaginationRow } from 'patternfly-react';
+import * as pfReactTable from '@patternfly/react-table';
 import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
@@ -419,7 +420,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
-import { PaginationRow } from 'patternfly-react';
+import * as pfReactTable from '@patternfly/react-table';
 import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
@@ -472,7 +473,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
-import { PaginationRow } from 'patternfly-react';
+import * as pfReactTable from '@patternfly/react-table';
 import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
 @registryDecorator()
@@ -533,7 +534,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
-import { PaginationRow } from 'patternfly-react';
+import * as pfReactTable from '@patternfly/react-table';
 import { listReducer } from './store/reducers';
 import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
@@ -546,7 +547,7 @@ class SomeCmp extends React.Component {
       reactRouterDom,
       reactCore,
       reactIcons,
-      pfReact: { PaginationRow }
+      pfReactTable
     });
 
     this.getRegistry().register({
@@ -599,7 +600,7 @@ import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
-import { PaginationRow } from 'patternfly-react';
+import * as pfReactTable from '@patternfly/react-table';
 import { entityDetailReducer } from './store/reducers';
 import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
 
@@ -616,7 +617,7 @@ class SomeCmp extends React.Component {
             reactRouterDom,
             reactCore,
             reactIcons,
-            pfReact: { PaginationRow }
+            pfReactTable
         });
 
         this.getRegistry().register({
