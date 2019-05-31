@@ -66,3 +66,17 @@ export const RowLoader = props => (
         <rect x="0" y="0" rx="0" ry="0" width="20" height="20" />
     </ContentLoader>
 );
+
+export function getBaseName(pathname) {
+    let release = '/';
+    const pathName = pathname.split('/');
+
+    pathName.shift();
+
+    if (pathName[0] === 'beta') {
+        pathName.shift();
+        release = `/beta/`;
+    }
+
+    return `${release}${pathName[0]}/${pathName[1]}`;
+}
