@@ -35,7 +35,7 @@
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-notifications": "*",
         "@redhat-cloud-services/frontend-components-remediations": "*",
-        "@redhat-cloud-services/frontend-components-utilities": "*",
+        "@redhat-cloud-services/frontend-components-utilities": "~0.0.7",
         "dot": "^1.1.2",
         "marked": "^0.6.0",
         "moment": "^2.24.0",
