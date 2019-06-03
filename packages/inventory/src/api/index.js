@@ -7,6 +7,36 @@ import { HostsApi } from '@redhat-cloud-services/host-inventory-client';
 
 export const hosts = new HostsApi(undefined, INVENTORY_API_BASE, instance);
 
+const hostListMapper = ({
+    displayName,
+    fqdn,
+    hostnameOrId,
+    insightsId,
+    branchId,
+    perPage,
+    page
+}) => ([
+    displayName,
+    fqdn,
+    hostnameOrId,
+    insightsId,
+    branchId,
+    perPage,
+    page
+]);
+
+const hostByIdMapper = ({
+    items,
+    branchId,
+    perPage,
+    page
+}) => ([
+    items,
+    branchId,
+    perPage,
+    page
+])
+
 /* eslint camelcase: off */
 export const mapData = ({ facts = {}, ...oneResult }) => ({
     ...oneResult,
@@ -31,7 +61,13 @@ export function getEntities(items, { controller, hasItems, filters, per_page: pe
     const hostnameOrId = filters ? filters.find(filter => filter.value === 'hostname_or_id') : undefined;
 
     if (hasItems && items.length > 0) {
-        return hosts.apiHostGetHostById(items, undefined, perPage, page, { cancelToken: controller && controller.token })
+        return hosts.apiHostGetHostById(
+            ...hostByIdMapper({
+                items,
+                perPage,
+                page
+            }),
+            { cancelToken: controller && controller.token })
             .then(({ results = [], ...data } = {}) => ({
                 ...data,
                 results: results.map(result => mapData({
@@ -41,15 +77,12 @@ export function getEntities(items, { controller, hasItems, filters, per_page: pe
             }));
     } else if (!hasItems) {
         return hosts.apiHostGetHostList(
-            undefined,
-            undefined,
-            hostnameOrId && hostnameOrId.filter,
-            undefined,
-            undefined,
-            perPage,
-            page,
-            { cancelToken: controller && controller.token }
-        )
+            ...hostListMapper({
+                hostnameOrId: hostnameOrId && hostnameOrId.filter,
+                perPage,
+                page
+            }),
+            { cancelToken: controller && controller.token })
             .then(({ results = [], ...data } = {}) => ({
                 ...data,
                 results: results.map(result => mapData({
