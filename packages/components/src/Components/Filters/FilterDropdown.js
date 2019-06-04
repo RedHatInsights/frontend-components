@@ -76,7 +76,7 @@ FilterDropdown.propTypes = {
             urlParam: PropTypes.string,
             values: PropTypes.arrayOf(
                 PropTypes.shape({
-                    label: PropTypes.string,
+                    label: PropTypes.node,
                     value: PropTypes.any
                 })
             )
