@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedRelative } from 'react-intl';
 import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import Truncate from 'react-truncate';
 import {
@@ -39,31 +40,31 @@ class SystemPolicyCard extends React.Component {
         return (
             <Card>
                 <CardBody>
-                    <TextContent>
-                        <Text style={ { marginBottom: '0' } } component={ TextVariants.small }>External Policy</Text>
-                        <Text style={ { marginTop: '0' } } component={ TextVariants.h4 }>{ this.state.policy.name }</Text>
+                    <TextContent style={ { marginBottom: 'var(--pf-global--spacer--md)' } } >
+                        <Text style={ { marginBottom: '0' } } component={ TextVariants.small }>External policy</Text>
+                        <Text style={ { marginTop: '0', marginBottom: '0' } } component={ TextVariants.h4 }>{ this.state.policy.name }</Text>
                     </TextContent>
-                    { this.complianceIcon(this.state.policy.compliant) }
-                    <Text component={ TextVariants.small }>
-                        { this.state.policy.rules_passed } of { this.state.policy.rules_passed + this.state.policy.rules_failed } rules passed
-                    </Text>
-                    <Text
-                        component={ TextVariants.medium }
-                        onMouseEnter={ this.onMouseover.bind(this) }
-                        onMouseLeave={ this.onMouseout.bind(this) }
-                        style={ { wordWrap: 'break-word' } }
-                    >
-                        Profile <br/>
-                        { this.state.refIdTruncated }
+                    <div style={ { marginBottom: 'var(--pf-global--spacer--md)' } } >
+                        { this.complianceIcon(this.state.policy.compliant) }
+                        <Text component={ TextVariants.small }>
+                            { this.state.policy.rules_passed } of { this.state.policy.rules_passed + this.state.policy.rules_failed } rules passed
+                        </Text>
+                    </div>
+                    <div style={ { marginBottom: 'var(--pf-global--spacer--md)' } } >
+                        <Text
+                            component={ TextVariants.medium }
+                            onMouseEnter={ this.onMouseover.bind(this) }
+                            onMouseLeave={ this.onMouseout.bind(this) }
+                            style={ { wordWrap: 'break-word' } }
+                        >
+                            Profile <br/>
+                            { this.state.refIdTruncated }
+                        </Text>
+                    </div>
+                    <Text style={ { marginBottom: '0' } } component={ TextVariants.small }>
+                      Last scanned: <FormattedRelative value={ Date.parse(this.state.policy.last_scanned) } />
                     </Text>
                 </CardBody>
-                <CardFooter>
-                    <TextContent>
-                        <Text component={ TextVariants.small }>
-                          Last scanned: { this.state.policy.last_scanned }
-                        </Text>
-                    </TextContent>
-                </CardFooter>
             </Card>
             /* eslint-disable camelcase */
         );
