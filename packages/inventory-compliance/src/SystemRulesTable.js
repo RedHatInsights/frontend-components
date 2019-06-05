@@ -6,7 +6,7 @@ import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons'
 import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import { Ansible, TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
-import { Checkbox, Level, LevelItem, Stack, StackItem, Pagination, PaginationVariant } from '@patternfly/react-core';
+import { Checkbox, Level, LevelItem, Stack, StackItem, Pagination, PaginationVariant, Text, TextVariants } from '@patternfly/react-core';
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import flatMap from 'lodash/flatMap';
 import './compliance.scss';
@@ -189,15 +189,20 @@ class SystemRulesTable extends React.Component {
         cells: [{
             title: (
                 <React.Fragment key={ key }>
-                    <Stack id={ `rule-description-${key}` } gutter="md">
-                        <StackItem><b>Description</b></StackItem>
-                        <StackItem isFilled>{ description }</StackItem>
-                    </Stack>
-                    <br/>
-                    <Stack id={ `rule-rationale-${key}` } gutter="md">
-                        <StackItem><b>Rationale</b></StackItem>
-                        <StackItem isFilled>{ rationale }</StackItem>
-                    </Stack>
+                    <div style={ { marginTop: 'var(--pf-global--spacer--lg)' } }>
+                        <Stack id={ `rule-description-${key}` } style={ { marginBottom: 'var(--pf-global--spacer--lg)' } }>
+                            <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
+                                <Text component={ TextVariants.h5 }><b>Description</b></Text>
+                            </StackItem>
+                            <StackItem isFilled>{ description }</StackItem>
+                        </Stack>
+                        <Stack id={ `rule-rationale-${key}` } style={ { marginBottom: 'var(--pf-global--spacer--lg)' } }>
+                            <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
+                                <Text component={ TextVariants.h5 }><b>Rationale</b></Text>
+                            </StackItem>
+                            <StackItem isFilled>{ rationale }</StackItem>
+                        </Stack>
+                    </div>
                 </React.Fragment>
             ) }]
     })
