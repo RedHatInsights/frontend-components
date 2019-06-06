@@ -14,6 +14,7 @@ import RulesComplianceFilter from './RulesComplianceFilter';
 
 const COMPLIANT_COLUMN = 3;
 const SEVERITY_COLUMN = 2;
+const POLICY_COLUMN = 1;
 
 class SystemRulesTable extends React.Component {
     constructor(props) {
@@ -31,6 +32,7 @@ class SystemRulesTable extends React.Component {
             rows: [],
             hidePassed: false,
             severity: [],
+            policy: [],
             currentRows: [],
             refIds: {},
             profiles: {},
@@ -302,6 +304,22 @@ class SystemRulesTable extends React.Component {
         });
     }
 
+    filterByPolicy = (policy, rows) => {
+        const filteredRows = [];
+        rows.forEach((row, i) => {
+            if (row.hasOwnProperty('isOpen') && policy.includes(row.cells[POLICY_COLUMN])) {
+                filteredRows.push(row);
+                if (!rows[i + 1].hasOwnProperty('isOpen')) {
+                    let child = rows[i + 1];
+                    child.parent = filteredRows.length - 1;
+                    filteredRows.push(child);
+                }
+            }
+        });
+
+        return filteredRows;
+    }
+
     filterBySeverity = (severity, rows) => {
         const filteredRows = [];
         rows.forEach((row, i) => {
@@ -340,7 +358,7 @@ class SystemRulesTable extends React.Component {
         }
     }
 
-    filteredRows = (passedRows, severityRows, hidePassed, severity) => {
+    filteredRows = (passedRows, severityRows, policyRows, hidePassed, severity, policy) => {
         let result;
 
         if (severity.length > 0 && hidePassed) {
@@ -353,14 +371,21 @@ class SystemRulesTable extends React.Component {
             result = passedRows;
         }
 
+        if (policy.length > 0 && result.length > 0) {
+            result = result.filter(row => policyRows.includes(row));
+        } else if (policy.length > 0 && result.length === 0) {
+            result = policyRows;
+        }
+
         return result;
     }
 
-    updateFilter = (hidePassed, severity) => {
+    updateFilter = (hidePassed, severity, policy) => {
         const { originalRows, profiles, refIds, page, itemsPerPage } = this.state;
         const passedRows = this.hidePassed(hidePassed, originalRows);
         const severityRows = this.filterBySeverity(severity, originalRows);
-        const filteredRows = this.filteredRows(passedRows, severityRows, hidePassed, severity);
+        const policyRows = this.filterByPolicy(policy, originalRows);
+        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, hidePassed, severity, policy);
 
         this.currentRows(
             page,
@@ -373,7 +398,8 @@ class SystemRulesTable extends React.Component {
                 currentRows,
                 rows: filteredRows,
                 hidePassed,
-                severity
+                severity,
+                policy
             }));
         });
     }
