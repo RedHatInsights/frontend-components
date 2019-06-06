@@ -111,4 +111,20 @@ describe('Notification portal', () => {
         wrapper.find(Notification).find('button').simulate('click');
         expect(dismiss).toHaveBeenCalledWith('store notification');
     });
+
+    it('should sender pagination', () => {
+        const modifiedStore = mockStore({
+            notifications: [ ...new Array(20) ].map((_item, key) => ({
+                id: `store notification ${key}`,
+                variant: 'success',
+                title: 'Notification title',
+                description: 'Some meaningfull description',
+                dismissable: true
+            }))
+        });
+        const clearNotifications = jest.fn();
+        const wrapper = mount(<NotificationsPortal { ...initialProps } store={ modifiedStore } clearNotifications={ clearNotifications } />);
+        wrapper.find('.ins-c-pagination__clear-all').last().simulate('click');
+        expect(clearNotifications).toHaveBeenCalled();
+    });
 });
