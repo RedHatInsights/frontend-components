@@ -10,8 +10,10 @@ import { Checkbox, Level, LevelItem, Stack, StackItem, Pagination, PaginationVar
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import flatMap from 'lodash/flatMap';
 import './compliance.scss';
+import RulesComplianceFilter from './RulesComplianceFilter';
 
 const COMPLIANT_COLUMN = 3;
+const SEVERITY_COLUMN = 2;
 
 class SystemRulesTable extends React.Component {
     constructor(props) {
@@ -26,8 +28,9 @@ class SystemRulesTable extends React.Component {
             ],
             page: 1,
             itemsPerPage: 10,
-            hidePassedChecked: false,
             rows: [],
+            hidePassed: false,
+            severity: [],
             currentRows: [],
             refIds: {},
             profiles: {},
@@ -40,20 +43,21 @@ class SystemRulesTable extends React.Component {
     }
 
     setInitialCurrentRows() {
-        const { itemsPerPage } = this.state;
-        const { hidePassed, profileRules } = this.props;
+        const { hidePassed, itemsPerPage } = this.state;
+        const { profileRules, rows } = this.props;
         const rowsRefIds = this.rulesToRows(profileRules);
         this.currentRows(1, itemsPerPage, rowsRefIds).then((currentRows) => {
             this.setState(() => (
                 {
                     currentRows,
+                    originalRows: rowsRefIds.rows,
                     rows: rowsRefIds.rows,
                     profiles: rowsRefIds.profiles,
                     refIds: rowsRefIds.refIds
                 }
             ));
             if (hidePassed) {
-                this.hidePassed(true);
+                this.hidePassed(hidePassed, rows);
             }
         });
     }
@@ -106,11 +110,18 @@ class SystemRulesTable extends React.Component {
             return Promise.resolve([]);
         }
 
+        if (rows.length < itemsPerPage * 2) { itemsPerPage = rows.length / 2; }
+
         const firstIndex = (page - 1) * itemsPerPage * 2;
         const lastIndex = page * itemsPerPage * 2;
         const newRows = flatMap(rows.slice(firstIndex, lastIndex), ({ parent, ...row }) => ({
             ...row,
-            ...((parent || parent === 0) ? parent > itemsPerPage ? { parent: parent % (itemsPerPage * 2) } : { parent } : {})
+            ...(
+                (parent || parent === 0) ? parent > itemsPerPage ?
+                    { parent: parent % (itemsPerPage * 2) } :
+                    { parent } :
+                    {}
+            )
         }));
 
         const ruleIds = newRows.filter(row => row.hasOwnProperty('isOpen'))
@@ -291,42 +302,84 @@ class SystemRulesTable extends React.Component {
         });
     }
 
-    hidePassed = (checked) => {
-        const { rows, originalRows, profiles, refIds, page, itemsPerPage } = this.state;
+    filterBySeverity = (severity, rows) => {
+        const filteredRows = [];
+        rows.forEach((row, i) => {
+            if (row.hasOwnProperty('isOpen') && severity.includes(row.cells[SEVERITY_COLUMN])) {
+                filteredRows.push(row);
+                if (!rows[i + 1].hasOwnProperty('isOpen')) {
+                    let child = rows[i + 1];
+                    child.parent = filteredRows.length - 1;
+                    filteredRows.push(child);
+                }
+            }
+        });
+
+        return filteredRows;
+    }
+
+    hidePassed = (checked, rows) => {
+        const { originalRows } = this.state;
+
         if (checked) {
-            const onlyPassedRows = [];
+            const filteredRows = [];
             rows.forEach((row, i) => {
                 if (row.hasOwnProperty('isOpen') && row.cells[COMPLIANT_COLUMN].title.props.className === 'ins-u-failed') {
-                    onlyPassedRows.push(row);
+                    filteredRows.push(row);
                     if (!rows[i + 1].hasOwnProperty('isOpen')) {
                         let child = rows[i + 1];
-                        child.parent = onlyPassedRows.length - 1;
-                        onlyPassedRows.push(child);
+                        child.parent = filteredRows.length - 1;
+                        filteredRows.push(child);
                     }
                 }
             });
 
-            this.currentRows(page, itemsPerPage, { rows: onlyPassedRows, profiles, refIds }).then((currentRows) => {
-                this.setState(() => ({
-                    currentRows,
-                    originalRows: rows,
-                    rows: onlyPassedRows,
-                    hidePassedChecked: checked
-                }));
-            });
+            return filteredRows;
         } else {
-            this.currentRows(page, itemsPerPage, { rows: originalRows, profiles, refIds }).then((currentRows) => {
-                this.setState(() => ({
-                    currentRows,
-                    rows: originalRows,
-                    hidePassedChecked: checked
-                }));
-            });
+            return originalRows;
         }
     }
 
+    filteredRows = (passedRows, severityRows, hidePassed, severity) => {
+        let result;
+
+        if (severity.length > 0 && hidePassed) {
+            result = passedRows.filter(row => severityRows.includes(row));
+        } else if (hidePassed && severity.length === 0) {
+            result = passedRows;
+        } else if (severity.length > 0 && !hidePassed) {
+            result = severityRows;
+        } else {
+            result = passedRows;
+        }
+
+        return result;
+    }
+
+    updateFilter = (hidePassed, severity) => {
+        const { originalRows, profiles, refIds, page, itemsPerPage } = this.state;
+        const passedRows = this.hidePassed(hidePassed, originalRows);
+        const severityRows = this.filterBySeverity(severity, originalRows);
+        const filteredRows = this.filteredRows(passedRows, severityRows, hidePassed, severity);
+
+        this.currentRows(
+            page,
+            itemsPerPage,
+            {
+                rows: filteredRows, profiles, refIds
+            }
+        ).then((currentRows) => {
+            this.setState(() => ({
+                currentRows,
+                rows: filteredRows,
+                hidePassed,
+                severity
+            }));
+        });
+    }
+
     render() {
-        const { sortBy, hidePassedChecked, rows, currentRows, columns, page, itemsPerPage } = this.state;
+        const { sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
         const { loading, profileRules } = this.props;
         const system = profileRules[0].system;
         if (loading) {
@@ -350,7 +403,9 @@ class SystemRulesTable extends React.Component {
                     <TableToolbar>
                         <Level gutter='md'>
                             <LevelItem>
-                                <Checkbox checked={ hidePassedChecked } onChange={ this.hidePassed } label={ 'Hide Passed Rules' } />
+                                <RulesComplianceFilter
+                                    availablePolicies={ profileRules.map(profile => profile.profile) }
+                                    updateFilter={ this.updateFilter } />
                             </LevelItem>
                             <LevelItem>
                                 { rows.length / 2 } results
@@ -393,7 +448,9 @@ class SystemRulesTable extends React.Component {
 SystemRulesTable.propTypes = {
     profileRules: propTypes.array,
     loading: propTypes.bool,
-    hidePassed: propTypes.bool
+    hidePassed: propTypes.bool,
+    severity: propTypes.array,
+    rows: propTypes.array
 };
 
 SystemRulesTable.defaultProps = {
