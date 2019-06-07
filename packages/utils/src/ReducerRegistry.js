@@ -33,14 +33,6 @@ class ReducerRegistry {
         this.reducers = {};
     }
 
-    on(event, callback) {
-        this.listenerMiddleware.addNew({ on: event, callback });
-    }
-
-    getListenerMiddleware() {
-        return this.listenerMiddleware;
-    }
-
     getStore() {
         return this.store;
     }
