@@ -189,8 +189,8 @@ class SystemRulesTable extends React.Component {
         cells: [{
             title: (
                 <React.Fragment key={ key }>
-                    <div style={ { marginTop: 'var(--pf-global--spacer--lg)' } }>
-                        <Stack id={ `rule-description-${key}` } style={ { marginBottom: 'var(--pf-global--spacer--lg)' } }>
+                    <div className='margin-top-lg'>
+                        <Stack id={ `rule-description-${key}` } className='margin-bottom-lg'>
                             <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
                                 <Text component={ TextVariants.h5 }><b>Description</b></Text>
                             </StackItem>

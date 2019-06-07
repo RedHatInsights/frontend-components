@@ -40,28 +40,28 @@ class SystemPolicyCard extends React.Component {
         return (
             <Card>
                 <CardBody>
-                    <TextContent style={ { marginBottom: 'var(--pf-global--spacer--md)' } } >
-                        <Text style={ { marginBottom: '0' } } component={ TextVariants.small }>External policy</Text>
-                        <Text style={ { marginTop: '0', marginBottom: '0' } } component={ TextVariants.h4 }>{ this.state.policy.name }</Text>
+                    <TextContent className='margin-bottom-md'>
+                        <Text className='margin-bottom-none' component={ TextVariants.small }>External policy</Text>
+                        <Text className='margin-bottom-top-none' component={ TextVariants.h4 }>{ this.state.policy.name }</Text>
                     </TextContent>
-                    <div style={ { marginBottom: 'var(--pf-global--spacer--md)' } } >
+                    <div className='margin-bottom-md' >
                         { this.complianceIcon(this.state.policy.compliant) }
                         <Text component={ TextVariants.small }>
                             { this.state.policy.rules_passed } of { this.state.policy.rules_passed + this.state.policy.rules_failed } rules passed
                         </Text>
                     </div>
-                    <div style={ { marginBottom: 'var(--pf-global--spacer--md)' } } >
+                    <div className='margin-bottom-md' >
                         <Text
                             component={ TextVariants.medium }
                             onMouseEnter={ this.onMouseover.bind(this) }
                             onMouseLeave={ this.onMouseout.bind(this) }
-                            style={ { wordWrap: 'break-word' } }
+                            className='wrap-break-word'
                         >
                             Profile <br/>
                             { this.state.refIdTruncated }
                         </Text>
                     </div>
-                    <Text style={ { marginBottom: '0' } } component={ TextVariants.small }>
+                    <Text className='margin-bottom-none' component={ TextVariants.small }>
                       Last scanned: <FormattedRelative value={ Date.parse(this.state.policy.last_scanned) } />
                     </Text>
                 </CardBody>
