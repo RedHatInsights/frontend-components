@@ -17,7 +17,13 @@ const HotModuleReplacementPlugin = new(require('webpack').HotModuleReplacementPl
  *
  * @type {var}
  */
-const LodashWebpackPlugin = new (require('lodash-webpack-plugin'))({ currying: true, flattening: true, placeholders: true, paths: true });
+const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({
+    currying: true,
+    flattening: true,
+    placeholders: true,
+    paths: true,
+    shorthands: true
+});
 
 /**
  * Writes final css to file
@@ -27,11 +33,13 @@ const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
     filename: '[id].css'
 });
 
-module.exports = { buildPlugins: (env) => ({
-    plugins: [
-        WriteFileWebpackPlugin,
-        LodashWebpackPlugin,
-        ExtractCssWebpackPlugin,
-        ...env && env.server === 'true' ? [ HtmlWebpackPlugin, HotModuleReplacementPlugin ] : []
-    ]
-}) };
+module.exports = {
+    buildPlugins: (env) => ({
+        plugins: [
+            WriteFileWebpackPlugin,
+            LodashWebpackPlugin,
+            ExtractCssWebpackPlugin,
+            ...env && env.server === 'true' ? [ HtmlWebpackPlugin, HotModuleReplacementPlugin ] : []
+        ]
+    })
+};
