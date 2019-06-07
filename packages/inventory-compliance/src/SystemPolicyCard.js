@@ -53,8 +53,8 @@ class SystemPolicyCard extends React.Component {
                     <div className='margin-bottom-md' >
                         <Text
                             component={ TextVariants.medium }
-                            onMouseEnter={ this.onMouseover.bind(this) }
-                            onMouseLeave={ this.onMouseout.bind(this) }
+                            onMouseEnter={ this.onMouseover }
+                            onMouseLeave={ this.onMouseout }
                             className='wrap-break-word'
                         >
                             Profile <br/>
