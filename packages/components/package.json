@@ -27,7 +27,7 @@
         "prop-types": "^15.6.2",
         "react": "^16.5.1",
         "react-dom": "^16.5.1",
-        "react-content-loader": "^3.4.1",
+        "react-content-loader": ">=3.4.1",
         "react-redux": "^5.0.7",
         "react-router-dom": "^4.2.2"
     },
