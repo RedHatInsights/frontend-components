@@ -112,7 +112,7 @@ describe('Notification portal', () => {
         expect(dismiss).toHaveBeenCalledWith('store notification');
     });
 
-    it('should sender pagination', () => {
+    it('should render pagination', () => {
         const modifiedStore = mockStore({
             notifications: [ ...new Array(20) ].map((_item, key) => ({
                 id: `store notification ${key}`,
