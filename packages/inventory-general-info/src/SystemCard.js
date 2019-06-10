@@ -5,8 +5,9 @@ import LoadingCard from './LoadingCard';
 import { diskMapper } from './dataMapper';
 import { PencilAltIcon } from '@patternfly/react-icons';
 import { propertiesSelector } from './selectors';
-import { editDisplayName, editAnsibleHost, loadEntity } from './redux/actions';
+import { editDisplayName, editAnsibleHost, systemProfile } from './redux/actions';
 import TextInputModal from './TextInputModal';
+import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory/actions';
 
 class SystemCard extends Component {
     state = {
@@ -156,6 +157,7 @@ SystemCard.defaultProps = {
 function mapDispatchToProps(dispatch) {
     const reloadWrapper = (id, event) => {
         event.payload.then(data => {
+            dispatch(systemProfile(id, { hasItems: true }));
             dispatch(loadEntity(id, { hasItems: true }));
             return data;
         });

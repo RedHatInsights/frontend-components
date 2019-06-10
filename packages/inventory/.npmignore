@@ -1,4 +1,5 @@
 !/index.js
+!/actions.js
 src/
 .babelrc
 babel.config.js
