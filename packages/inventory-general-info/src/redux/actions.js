@@ -8,7 +8,7 @@ export const systemProfile = (itemId) => ({
 
 export const editDisplayName = (id, value) => ({
     type: ACTION_TYPES.SET_DISPLAY_NAME,
-    payload: hosts.apiHostPatchHost(id, { display_name: value }), // eslint-disable-line camelcase
+    payload: hosts.apiHostPatchById([id], { display_name: value }), // eslint-disable-line camelcase
     meta: {
         notifications: {
             fulfilled: {
@@ -22,7 +22,7 @@ export const editDisplayName = (id, value) => ({
 
 export const editAnsibleHost = (id, value) => ({
     type: ACTION_TYPES.SET_ANSIBLE_HOST,
-    payload: hosts.apiHostPatchHost(id, { ansible_host: value }), // eslint-disable-line camelcase
+    payload: hosts.apiHostPatchById([id], { ansible_host: value }), // eslint-disable-line camelcase
     meta: {
         notifications: {
             fulfilled: {
