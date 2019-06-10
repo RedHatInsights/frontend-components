@@ -36,6 +36,7 @@ exports[`Notification portal should render notifications given as direct props 1
         },
       ]
     }
+    onClearAll={[Function]}
     removeNotification={[Function]}
     store={
       Object {
@@ -416,6 +417,7 @@ exports[`Notification portal should render notifications given as direct props o
         },
       ]
     }
+    onClearAll={[Function]}
     removeNotification={[Function]}
     store={
       Object {
@@ -856,6 +858,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
         },
       ]
     }
+    onClearAll={[Function]}
     removeNotification={[Function]}
     store={
       Object {

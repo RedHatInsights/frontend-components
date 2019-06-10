@@ -129,14 +129,14 @@
         "clean": "lerna clean -y && rm -rf node_modules",
         "bootstrap": "lerna bootstrap --hoist",
         "start": "lerna run --parallel start",
-        "build": "lerna run build --no-private --ignore=@redhat-cloud-services/frontend-components-build",
+        "build": "lerna run build --no-private --ignore=@redhat-cloud-services/frontend-components-config",
         "test": "jest",
         "coverage": "codecov",
         "prepare": "npm run bootstrap && npm run build",
         "playground": "lerna run --parallel start:dev",
         "release": "semantic-release",
         "lint": "eslint config packages/**/src/*.js",
-        "watch": "lerna exec --parallel --ignore=@redhat-cloud-services/frontend-components-build --no-private -- npm run build -- --watch"
+        "watch": "lerna exec --parallel --ignore=@redhat-cloud-services/frontend-components-config --no-private -- npm run build -- --watch"
     },
     "release": {
         "monorepo": "./packages",
