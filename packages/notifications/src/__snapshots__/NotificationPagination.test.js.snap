@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification Pagination component should render correctly 1`] = `
+<Card
+  className="notification-item"
+  component="article"
+>
+  <CardBody
+    className=""
+    component="div"
+    isFilled={true}
+  >
+    <Level
+      className=""
+      gutter={null}
+    >
+      <LevelItem>
+        <Button
+          aria-label={null}
+          className="ins-c-pagination__clear-all"
+          component="button"
+          isActive={false}
+          isBlock={false}
+          isDisabled={false}
+          isFocus={false}
+          isHover={false}
+          onClick={[Function]}
+          type="button"
+          variant="link"
+        >
+          Clear all
+        </Button>
+      </LevelItem>
+      <LevelItem>
+        <Pagination
+          dropDirection="down"
+          itemCount={10}
+          onFirstClick={[Function]}
+          onLastClick={[Function]}
+          onNextClick={[Function]}
+          onPageInput={[Function]}
+          onPerPageSelect={[Function]}
+          onPreviousClick={[Function]}
+          onSetPage={[Function]}
+          page={1}
+          perPage={5}
+          perPageOptions={
+            Array [
+              Object {
+                "title": "5",
+                "value": 5,
+              },
+            ]
+          }
+          titles={
+            Object {
+              "items": "Notifications",
+            }
+          }
+          toggleTemplate={[Function]}
+          variant="bottom"
+          widgetId="pagination-options-menu"
+        />
+      </LevelItem>
+    </Level>
+  </CardBody>
+</Card>
+`;
