@@ -8,6 +8,7 @@ class RulesComplianceFilter extends React.Component {
         this.state = {
             hidePassed: props.hidePassed,
             severity: props.severity,
+            policy: props.policy,
             filterCategories: [
                 {
                     type: 'radio', title: 'Passed', urlParam: 'hidePassed', values: [
@@ -22,35 +23,46 @@ class RulesComplianceFilter extends React.Component {
                         { label: 'Low', value: 'low' },
                         { label: 'Unknown', value: 'unknown' }
                     ]
-                }
+                },
+                ...props.availablePolicies.length > 1 ? [
+                    {
+                        type: 'checkbox', title: 'Policy', urlParam: 'policy',
+                        values: props.availablePolicies.map(policy => ({
+                            label: policy.name, value: policy.name
+                        }))
+                    }
+                ] : []
             ]
         };
     };
 
     updateInventory = () => {
         const { updateFilter } = this.props;
-        const { hidePassed, severity } = this.state;
-        updateFilter(hidePassed, severity);
+        const { hidePassed, severity, policy } = this.state;
+        updateFilter(hidePassed, severity, policy);
     }
 
     addFilter = (filterName, selectedValue) => {
-        const { hidePassed, severity } = this.state;
+        const { hidePassed, severity, policy } = this.state;
 
         if (filterName === 'hidePassed') {
             this.setState({ hidePassed: selectedValue }, this.updateInventory);
         } else if (filterName === 'severity') {
-            severity.push(selectedValue);
-            this.setState({ severity }, this.updateInventory);
+            this.setState({ severity: [ ...severity, selectedValue ]}, this.updateInventory);
+        } else if (filterName === 'policy') {
+            this.setState({ policy: [ ...policy, selectedValue ]}, this.updateInventory);
         }
     }
 
     removeFilter = (filterName, selectedValue) => {
-        const { hidePassed, severity } = this.state;
+        const { hidePassed, policy, severity } = this.state;
 
         if (filterName === 'hidePassed') {
             this.setState({ hidePassed: selectedValue }, this.updateInventory);
         } else if (filterName === 'severity') {
             this.setState({ severity: severity.filter((value) => value !== selectedValue) }, this.updateInventory);
+        } else if (filterName === 'policy') {
+            this.setState({ policy: policy.filter((value) => value !== selectedValue) }, this.updateInventory);
         }
     }
 
@@ -68,14 +80,16 @@ class RulesComplianceFilter extends React.Component {
 
 RulesComplianceFilter.propTypes = {
     updateFilter: propTypes.function,
-    hidePassed: propTypes.array,
+    hidePassed: propTypes.boolean,
     severity: propTypes.array,
-    availablePolicies: propTypes.array
+    availablePolicies: propTypes.array,
+    policy: propTypes.array
 };
 
 RulesComplianceFilter.defaultProps = {
     hidePassed: false,
-    severity: []
+    severity: [],
+    policy: []
 };
 
 export default RulesComplianceFilter;
