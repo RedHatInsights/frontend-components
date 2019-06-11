@@ -28,11 +28,19 @@ export function getCveListBySystem(apiProps) {
         Object.keys(apiProps).forEach(key => (apiProps[key] === undefined || apiProps[key] === '') && delete apiProps[key]);
         const params = parameterNames.map(item => apiProps[item]);
         return api.getCveListBySystem(system, ...params).catch(err => {
-            if (err && err.status === '404') {
-                return { errors: err };
+            let shouldFail = true;
+            err &&
+                err.errors &&
+                [ ...err.errors ].forEach(item => {
+                    if (item.status === '404') {
+                        shouldFail = false;
+                    }
+                });
+            if (shouldFail) {
+                throw err.errors;
+            } else {
+                return err;
             }
-
-            throw err;
         });
     }
 }

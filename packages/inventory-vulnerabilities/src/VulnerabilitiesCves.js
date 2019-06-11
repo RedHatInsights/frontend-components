@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 import { Stack, StackItem } from '@patternfly/react-core';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
-import { GenericError, NoVulnerabilityData, CVSSOptions, PublicDateOptions } from './constants';
+import { CVSSOptions, GenericError, NoVulnerabilityData, PublicDateOptions } from './constants';
 import StatusDropdown from './StatusDropdown';
 import VulnerabilitiesCveTable from './VulnerabilitiesCveTable';
 import VulnerabilitiesCveTableToolbar from './VulnerabilitiesCveTableToolbar';
@@ -17,13 +17,15 @@ class VulnerabilitiesCves extends Component {
         this.apply(sort && { sort });
     }
 
-    processError = error => {
-        const { status, title, detail } = error;
-        const statusCode = parseInt(status);
-        if (statusCode === 404 && this.props.entity) {
-            return NoVulnerabilityData;
-        } else {
-            return GenericError;
+    processError = errors => {
+        for (let error of errors) {
+            const { status, title, detail } = error;
+            const statusCode = parseInt(status);
+            if (statusCode === 404 && this.props.entity) {
+                return NoVulnerabilityData;
+            } else {
+                return GenericError;
+            }
         }
     };
 
