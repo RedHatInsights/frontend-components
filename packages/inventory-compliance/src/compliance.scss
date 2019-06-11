@@ -21,3 +21,40 @@
 .ins-u-failed {
     color: var(--pf-global--danger-color--100);
 }
+
+.margin-bottom {
+    &-none {
+        margin-bottom: 0;
+    }
+
+    &-sm {
+        margin-bottom: var(--pf-global--spacer--sm);
+    }
+
+    &-md {
+        margin-bottom: var(--pf-global--spacer--md);
+    }
+
+    &-lg {
+        margin-bottom: var(--pf-global--spacer--lg);
+    }
+}
+
+.margin-top {
+    &-none {
+        margin-top: 0;
+    }
+
+    &-lg {
+        margin-top: var(--pf-global--spacer--lg);
+    }
+}
+
+.margin-bottom-top-none {
+    @extend .margin-top-none;
+    @extend .margin-bottom-none;
+}
+
+.wrap-break-word {
+    word-wrap: break-word;
+}
