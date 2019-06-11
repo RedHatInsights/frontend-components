@@ -38,7 +38,7 @@ class InventoryRuleList extends Component {
         inventoryReportFetchStatus: 'pending',
         rows: [],
         cols: [
-            'Description',
+            { title: 'Description', transforms: [ sortable ]},
             { title: 'Added', transforms: [ sortable, cellWidth(15) ]},
             { title: 'Total risk', transforms: [ sortable ]},
             { title: 'Risk of change', transforms: [ sortable ]},
@@ -222,6 +222,7 @@ class InventoryRuleList extends Component {
     onSort = (_event, index, direction) => {
         const { activeReports, kbaDetailsData, filters, searchValue } = this.state;
         const sortedReports = {
+            1: sortBy(activeReports, [ result => result.rule.description ]),
             2: sortBy(activeReports, [ result => result.rule.publish_date ]),
             3: sortBy(activeReports, [ result => result.rule.total_risk ]),
             4: sortBy(activeReports, [ result => result.resolution.resolution_risk.risk ]),
