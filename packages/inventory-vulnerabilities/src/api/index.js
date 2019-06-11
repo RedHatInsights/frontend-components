@@ -27,7 +27,13 @@ export function getCveListBySystem(apiProps) {
     if (apiProps && system) {
         Object.keys(apiProps).forEach(key => (apiProps[key] === undefined || apiProps[key] === '') && delete apiProps[key]);
         const params = parameterNames.map(item => apiProps[item]);
-        return api.getCveListBySystem(system, ...params);
+        return api.getCveListBySystem(system, ...params).catch(err => {
+            if (err && err.status === '404') {
+                return { errors: err };
+            }
+
+            throw err;
+        });
     }
 }
 
