@@ -98,10 +98,9 @@ export const GenericError = (
 //CVSS Base score label to value
 export const CVSSOptions = [
     { value: 'all', label: 'All' },
-    { value: 'less4', label: 'Less than 4', to: 3.999 },
-    { value: 'from4less6', label: '4 - 6', from: 4, to: 5.999 },
-    { value: 'from6to8', label: '6 - 8', from: 6, to: 7.999 },
-    { value: 'from8to10', label: '8 - 10', from: 8, to: 10 }
+    { value: 'less3', label: '0.0 - 2.9', to: 2.999 },
+    { value: 'from3to6', label: '3.0 - 6.9', from: 3, to: 6.999 },
+    { value: 'from6to8', label: '7.0 - 10.0', from: 7, to: 10 }
 ];
 
 //Public date labels to value

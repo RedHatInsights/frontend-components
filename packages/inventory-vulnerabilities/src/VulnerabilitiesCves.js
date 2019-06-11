@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 import { Stack, StackItem } from '@patternfly/react-core';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
-import { GenericError, NoVulnerabilityData, CVSSOptions, PublicDateOptions } from './constants';
+import { CVSSOptions, GenericError, NoVulnerabilityData, PublicDateOptions } from './constants';
 import StatusDropdown from './StatusDropdown';
 import VulnerabilitiesCveTable from './VulnerabilitiesCveTable';
 import VulnerabilitiesCveTableToolbar from './VulnerabilitiesCveTableToolbar';
@@ -30,6 +30,11 @@ class VulnerabilitiesCves extends Component {
     apply = (config = {}) => {
         if (config.hasOwnProperty('cvss_filter')) {
             let cvssEntry = CVSSOptions.find(item => item.value === config.cvss_filter);
+            if (!cvssEntry) {
+                let values = config.cvss_filter.split(/[^0-9]+/).filter(item => parseFloat(item));
+                cvssEntry = { value: config.cvss_filter, from: values[0], to: values[1] };
+            }
+
             config.cvss_from = cvssEntry.from;
             config.cvss_to = cvssEntry.to;
         }

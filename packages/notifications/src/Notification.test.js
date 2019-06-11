@@ -21,6 +21,11 @@ describe('Notification component', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('pagination should render correctly', () => {
+        const wrapper = shallow(<Notification { ...initialProps } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     it('should render correctly withouth description', () => {
         const wrapper = shallow(<Notification { ...initialProps } description={ undefined }/>);
         expect(toJson(wrapper)).toMatchSnapshot();
