@@ -1,11 +1,11 @@
 import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import { SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
-import findIndex from 'lodash/findIndex';
-import propTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
+import findIndex from 'lodash/findIndex';
+import propTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
 import { EmptyCVEList, EmptyCVEListForSystem, FilterNotFoundForCVE } from './constants';
 
 class VulnerabilitiesCveTable extends Component {
@@ -113,13 +113,13 @@ class VulnerabilitiesCveTable extends Component {
                     onSort={ this.sortColumn }
                 >
                     { (!cves.isLoading && cves.data.length === 0 && this.noCves()) || (
-                        <div>
+                        <Fragment>
                             <TableHeader />
                             <TableBody />
-                            <TableToolbar isFooter>{ this.createPagination() }</TableToolbar>
-                        </div>
+                        </Fragment>
                     ) }
                 </Table>
+                <TableToolbar>{ this.createPagination() }</TableToolbar>
             </Fragment>
         );
     }

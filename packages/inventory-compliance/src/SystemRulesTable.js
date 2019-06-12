@@ -6,12 +6,15 @@ import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons'
 import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import { Ansible, TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
-import { Checkbox, Level, LevelItem, Stack, StackItem, Pagination, PaginationVariant } from '@patternfly/react-core';
+import { Checkbox, Level, LevelItem, Stack, StackItem, Pagination, PaginationVariant, Text, TextVariants } from '@patternfly/react-core';
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import flatMap from 'lodash/flatMap';
 import './compliance.scss';
+import RulesComplianceFilter from './RulesComplianceFilter';
 
 const COMPLIANT_COLUMN = 3;
+const SEVERITY_COLUMN = 2;
+const POLICY_COLUMN = 1;
 
 class SystemRulesTable extends React.Component {
     constructor(props) {
@@ -26,8 +29,10 @@ class SystemRulesTable extends React.Component {
             ],
             page: 1,
             itemsPerPage: 10,
-            hidePassedChecked: false,
             rows: [],
+            hidePassed: false,
+            severity: [],
+            policy: [],
             currentRows: [],
             refIds: {},
             profiles: {},
@@ -40,20 +45,21 @@ class SystemRulesTable extends React.Component {
     }
 
     setInitialCurrentRows() {
-        const { itemsPerPage } = this.state;
-        const { hidePassed, profileRules } = this.props;
+        const { hidePassed, itemsPerPage } = this.state;
+        const { profileRules, rows } = this.props;
         const rowsRefIds = this.rulesToRows(profileRules);
         this.currentRows(1, itemsPerPage, rowsRefIds).then((currentRows) => {
             this.setState(() => (
                 {
                     currentRows,
+                    originalRows: rowsRefIds.rows,
                     rows: rowsRefIds.rows,
                     profiles: rowsRefIds.profiles,
                     refIds: rowsRefIds.refIds
                 }
             ));
             if (hidePassed) {
-                this.hidePassed(true);
+                this.hidePassed(hidePassed, rows);
             }
         });
     }
@@ -106,11 +112,18 @@ class SystemRulesTable extends React.Component {
             return Promise.resolve([]);
         }
 
+        if (rows.length < itemsPerPage * 2) { itemsPerPage = rows.length / 2; }
+
         const firstIndex = (page - 1) * itemsPerPage * 2;
         const lastIndex = page * itemsPerPage * 2;
         const newRows = flatMap(rows.slice(firstIndex, lastIndex), ({ parent, ...row }) => ({
             ...row,
-            ...((parent || parent === 0) ? parent > itemsPerPage ? { parent: parent % (itemsPerPage * 2) } : { parent } : {})
+            ...(
+                (parent || parent === 0) ? parent > itemsPerPage ?
+                    { parent: parent % (itemsPerPage * 2) } :
+                    { parent } :
+                    {}
+            )
         }));
 
         const ruleIds = newRows.filter(row => row.hasOwnProperty('isOpen'))
@@ -178,15 +191,20 @@ class SystemRulesTable extends React.Component {
         cells: [{
             title: (
                 <React.Fragment key={ key }>
-                    <Stack id={ `rule-description-${key}` } gutter="md">
-                        <StackItem><b>Description</b></StackItem>
-                        <StackItem isFilled>{ description }</StackItem>
-                    </Stack>
-                    <br/>
-                    <Stack id={ `rule-rationale-${key}` } gutter="md">
-                        <StackItem><b>Rationale</b></StackItem>
-                        <StackItem isFilled>{ rationale }</StackItem>
-                    </Stack>
+                    <div className='margin-top-lg'>
+                        <Stack id={ `rule-description-${key}` } className='margin-bottom-lg'>
+                            <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
+                                <Text component={ TextVariants.h5 }><b>Description</b></Text>
+                            </StackItem>
+                            <StackItem isFilled>{ description }</StackItem>
+                        </Stack>
+                        <Stack id={ `rule-rationale-${key}` } style={ { marginBottom: 'var(--pf-global--spacer--lg)' } }>
+                            <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
+                                <Text component={ TextVariants.h5 }><b>Rationale</b></Text>
+                            </StackItem>
+                            <StackItem isFilled>{ rationale }</StackItem>
+                        </Stack>
+                    </div>
                 </React.Fragment>
             ) }]
     })
@@ -291,42 +309,108 @@ class SystemRulesTable extends React.Component {
         });
     }
 
-    hidePassed = (checked) => {
-        const { rows, originalRows, profiles, refIds, page, itemsPerPage } = this.state;
+    filterByPolicy = (policy, rows) => {
+        const filteredRows = [];
+        rows.forEach((row, i) => {
+            if (row.hasOwnProperty('isOpen') && policy.includes(row.cells[POLICY_COLUMN])) {
+                filteredRows.push(row);
+                if (!rows[i + 1].hasOwnProperty('isOpen')) {
+                    let child = rows[i + 1];
+                    child.parent = filteredRows.length - 1;
+                    filteredRows.push(child);
+                }
+            }
+        });
+
+        return filteredRows;
+    }
+
+    filterBySeverity = (severity, rows) => {
+        const filteredRows = [];
+        rows.forEach((row, i) => {
+            if (row.hasOwnProperty('isOpen') && severity.includes(row.cells[SEVERITY_COLUMN])) {
+                filteredRows.push(row);
+                if (!rows[i + 1].hasOwnProperty('isOpen')) {
+                    let child = rows[i + 1];
+                    child.parent = filteredRows.length - 1;
+                    filteredRows.push(child);
+                }
+            }
+        });
+
+        return filteredRows;
+    }
+
+    hidePassed = (checked, rows) => {
+        const { originalRows } = this.state;
+
         if (checked) {
-            const onlyPassedRows = [];
+            const filteredRows = [];
             rows.forEach((row, i) => {
                 if (row.hasOwnProperty('isOpen') && row.cells[COMPLIANT_COLUMN].title.props.className === 'ins-u-failed') {
-                    onlyPassedRows.push(row);
+                    filteredRows.push(row);
                     if (!rows[i + 1].hasOwnProperty('isOpen')) {
                         let child = rows[i + 1];
-                        child.parent = onlyPassedRows.length - 1;
-                        onlyPassedRows.push(child);
+                        child.parent = filteredRows.length - 1;
+                        filteredRows.push(child);
                     }
                 }
             });
 
-            this.currentRows(page, itemsPerPage, { rows: onlyPassedRows, profiles, refIds }).then((currentRows) => {
-                this.setState(() => ({
-                    currentRows,
-                    originalRows: rows,
-                    rows: onlyPassedRows,
-                    hidePassedChecked: checked
-                }));
-            });
+            return filteredRows;
         } else {
-            this.currentRows(page, itemsPerPage, { rows: originalRows, profiles, refIds }).then((currentRows) => {
-                this.setState(() => ({
-                    currentRows,
-                    rows: originalRows,
-                    hidePassedChecked: checked
-                }));
-            });
+            return originalRows;
         }
     }
 
+    filteredRows = (passedRows, severityRows, policyRows, hidePassed, severity, policy) => {
+        let result;
+
+        if (severity.length > 0 && hidePassed) {
+            result = passedRows.filter(row => severityRows.includes(row));
+        } else if (hidePassed && severity.length === 0) {
+            result = passedRows;
+        } else if (severity.length > 0 && !hidePassed) {
+            result = severityRows;
+        } else {
+            result = passedRows;
+        }
+
+        if (policy.length > 0 && result.length > 0) {
+            result = result.filter(row => policyRows.includes(row));
+        } else if (policy.length > 0 && result.length === 0) {
+            result = policyRows;
+        }
+
+        return result;
+    }
+
+    updateFilter = (hidePassed, severity, policy) => {
+        const { originalRows, profiles, refIds, page, itemsPerPage } = this.state;
+        const passedRows = this.hidePassed(hidePassed, originalRows);
+        const severityRows = this.filterBySeverity(severity, originalRows);
+        const policyRows = this.filterByPolicy(policy, originalRows);
+        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, hidePassed, severity, policy);
+
+        this.currentRows(
+            page,
+            itemsPerPage,
+            {
+                rows: filteredRows, profiles, refIds
+            }
+        ).then((currentRows) => {
+            this.setState(() => ({
+                currentRows,
+                rows: filteredRows,
+                hidePassed,
+                severity,
+                policy
+            }));
+        });
+    }
+
     render() {
-        const { sortBy, hidePassedChecked, rows, currentRows, columns, page, itemsPerPage } = this.state;
+        const { sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
         const { loading, profileRules } = this.props;
         const system = profileRules[0].system;
         if (loading) {
@@ -350,7 +434,9 @@ class SystemRulesTable extends React.Component {
                     <TableToolbar>
                         <Level gutter='md'>
                             <LevelItem>
-                                <Checkbox checked={ hidePassedChecked } onChange={ this.hidePassed } label={ 'Hide Passed Rules' } />
+                                <RulesComplianceFilter
+                                    availablePolicies={ profileRules.map(profile => profile.profile) }
+                                    updateFilter={ this.updateFilter } />
                             </LevelItem>
                             <LevelItem>
                                 { rows.length / 2 } results
@@ -393,7 +479,9 @@ class SystemRulesTable extends React.Component {
 SystemRulesTable.propTypes = {
     profileRules: propTypes.array,
     loading: propTypes.bool,
-    hidePassed: propTypes.bool
+    hidePassed: propTypes.bool,
+    severity: propTypes.array,
+    rows: propTypes.array
 };
 
 SystemRulesTable.defaultProps = {

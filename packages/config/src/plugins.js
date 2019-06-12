@@ -10,7 +10,8 @@ const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({
     currying: true,
     flattening: true,
     placeholders: true,
-    paths: true
+    paths: true,
+    shorthands: true
 });
 const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
     chunkFilename: 'css/[name].css',

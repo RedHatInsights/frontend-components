@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Notification component pagination should render correctly 1`] = `
+<Alert
+  action={null}
+  className="notification-item"
+  id="Foo"
+  title="Bar"
+  variant="success"
+  variantLabel={null}
+>
+  description
+</Alert>
+`;
+
 exports[`Notification component should render correctly 1`] = `
 <Alert
   action={null}

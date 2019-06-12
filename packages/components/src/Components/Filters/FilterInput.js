@@ -71,7 +71,7 @@ FilterInput.propTypes = {
     className: PropTypes.string,
     currentPage: PropTypes.string,
     id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.node.isRequired,
     param: PropTypes.string,
     value: PropTypes.any,
     filters: PropTypes.object,
