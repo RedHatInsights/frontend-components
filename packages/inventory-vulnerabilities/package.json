@@ -35,6 +35,7 @@
         "@redhat-cloud-services/frontend-components-notifications": "*",
         "@redhat-cloud-services/frontend-components-remediations": "*",
         "@redhat-cloud-services/frontend-components-utilities": "~0.0.7",
+        "@redhat-cloud-services/vulnerabilities-client": "^1.0.17",
         "moment": "^2.24.0"
     }
 }
