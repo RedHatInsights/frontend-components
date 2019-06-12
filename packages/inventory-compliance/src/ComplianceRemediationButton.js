@@ -31,7 +31,14 @@ class ComplianceRemediationButton extends React.Component {
     }
 
     removeRefIdPrefix = (ref_id) => {
-        return ref_id.split('xccdf_org.ssgproject.content_profile_')[1];
+        const splitRefId = ref_id.split('xccdf_org.ssgproject.content_profile_')[1];
+        if (splitRefId) {
+            return splitRefId;
+        } else {
+            // Sometimes the reports contain IDs like "stig-rhel7-disa" which we can pass
+            // directly
+            return ref_id;
+        }
     }
 
     rulesWithRemediations = (rules, system_id) => {
