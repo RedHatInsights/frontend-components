@@ -20,8 +20,8 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-charts": "*",
-        "@redhat-cloud-services/frontend-components-inventory": "~0.0.12",
-        "@redhat-cloud-services/frontend-components-inventory-general-info": "*",
+        "@redhat-cloud-services/frontend-components-inventory": ">=0.0.14",
+        "@redhat-cloud-services/frontend-components-inventory-general-info": ">=0.0.8",
         "@redhat-cloud-services/frontend-components-inventory-compliance": "*",
         "@redhat-cloud-services/frontend-components-inventory-insights": "*",
         "@redhat-cloud-services/frontend-components-inventory-vulnerabilities": "*",
