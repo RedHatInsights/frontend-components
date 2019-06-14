@@ -16,3 +16,24 @@
 .ins-u-failed {
   color: var(--pf-global--danger-color--100); }
 
+.margin-bottom-none, .margin-bottom-top-none {
+  margin-bottom: 0; }
+
+.margin-bottom-sm {
+  margin-bottom: var(--pf-global--spacer--sm); }
+
+.margin-bottom-md {
+  margin-bottom: var(--pf-global--spacer--md); }
+
+.margin-bottom-lg {
+  margin-bottom: var(--pf-global--spacer--lg); }
+
+.margin-top-none, .margin-bottom-top-none {
+  margin-top: 0; }
+
+.margin-top-lg {
+  margin-top: var(--pf-global--spacer--lg); }
+
+.wrap-break-word {
+  word-wrap: break-word; }
+
