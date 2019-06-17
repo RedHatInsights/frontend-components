@@ -1,6 +1,7 @@
 !/index.js
 !/RemediationButton.js
 !/remediationsApi.js
+!/index.css
 src/
 .babelrc
 babel.config.js
