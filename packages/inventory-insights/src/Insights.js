@@ -74,16 +74,13 @@ class InventoryRuleList extends Component {
             await insights.chrome.auth.getUser();
             const reportsFetch = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports/`, { credentials: 'include' });
             const reportsData = await reportsFetch.json();
-            const kbaIds = reportsData.map(report => report.rule.node_id).filter(x => x).join(` OR `);
-            const kbaDetailsFetch = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
-                { credentials: 'include' });
-            const kbaDetailsData = await kbaDetailsFetch.json();
+            const activeRuleFirstReportsData = this.activeRuleFirst(reportsData);
+            this.fetchKbaDetails(activeRuleFirstReportsData);
             this.setState({
-                rows: this.buildRows(this.activeRuleFirst(reportsData), kbaDetailsData.response.docs, filters, searchValue),
+                rows: this.buildRows(activeRuleFirstReportsData, {}, filters, searchValue, true),
                 inventoryReportFetchStatus: 'fulfilled',
                 remediation: this.processRemediation(entity.id, reportsData),
-                activeReports: reportsData,
-                kbaDetailsData: kbaDetailsData.response.docs
+                activeReports: activeRuleFirstReportsData
             });
         } catch (error) {
             this.setState({
@@ -92,6 +89,19 @@ class InventoryRuleList extends Component {
             console.warn(error, 'Entity rules fetch failed.');
         }
     }
+
+    fetchKbaDetails = async (reportsData) => {
+        const { filters, searchValue } = this.state;
+        const kbaIds = reportsData.map(report => report.rule.node_id).filter(x => x).join(` OR `);
+        const kbaDetailsFetch = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
+            { credentials: 'include' });
+        const kbaDetailsData = (await kbaDetailsFetch.json()).response.docs;
+        this.setState({
+            kbaDetailsData,
+            rows: this.buildRows(reportsData, kbaDetailsData, filters, searchValue)
+
+        });
+    };
 
     activeRuleFirst = (activeReports) => {
         const reports = [ ...activeReports ];
@@ -109,10 +119,10 @@ class InventoryRuleList extends Component {
         });
     };
 
-    buildRows = (activeReports, kbaDetails, filters, searchValue) => {
+    buildRows = (activeReports, kbaDetails, filters, searchValue, kbaLoading = false) => {
         const rows = flatten(activeReports.map((value, key) => {
             const rule = value.rule;
-            const kbaDetail = kbaDetails.filter(article => article.id === value.rule.node_id)[0] || {};
+            const kbaDetail = Object.keys(kbaDetails).length ? kbaDetails.filter(article => article.id === value.rule.node_id)[0] : {};
             const reportRow = [
                 {
                     isOpen: true,
@@ -152,7 +162,7 @@ class InventoryRuleList extends Component {
                     parent: key,
                     fullWidth: true,
                     cells: [{
-                        title: <ReportDetails key={ `child-${key}` } report={ value } kbaDetail={ kbaDetail }/>
+                        title: <ReportDetails key={ `child-${key}` } report={ value } kbaDetail={ kbaDetail } kbaLoading={ kbaLoading }/>
                     }]
                 }
             ];

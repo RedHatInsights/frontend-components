@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { BullseyeIcon, ExternalLinkAltIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
@@ -6,6 +6,7 @@ import { Card, CardBody, CardHeader, List, ListItem, Stack, StackItem } from '@p
 import doT from 'dot';
 import sanitizeHtml from 'sanitize-html';
 import marked from 'marked';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
 
 import '@redhat-cloud-services/frontend-components/components/Section.css';
 import './insights.scss';
@@ -47,7 +48,7 @@ class ReportDetails extends React.Component {
     };
 
     render () {
-        const { report, kbaDetail } = this.props;
+        const { report, kbaDetail, kbaLoading } = this.props;
         const rule = report.rule || report;
         let rulesCardClasses = classNames(
             'ins-c-inventory-advisor__card',
@@ -79,16 +80,18 @@ class ReportDetails extends React.Component {
                                 </CardBody>
                             </Card>
                         </StackItem>
-                        { kbaDetail && kbaDetail.view_uri && <StackItem>
+                        <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
                                     <LightbulbIcon/><strong> Related Knowledgebase article: </strong>
                                 </CardHeader>
                                 <CardBody>
-                                    <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle } <ExternalLinkAltIcon/></a>
+                                    { kbaDetail && kbaDetail.view_uri ?
+                                        <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle } <ExternalLinkAltIcon/></a>
+                                        : kbaLoading ? <Skeleton size={ SkeletonSize.sm }/> : <Fragment>No related Knowledgebase article.</Fragment> }
                                 </CardBody>
                             </Card>
-                        </StackItem> }
+                        </StackItem>
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
@@ -127,10 +130,11 @@ export default ReportDetails;
 
 ReportDetails.defaultProps = {
     report: {},
-    kbaDetail: ''
+    kbaDetail: {}
 };
 
 ReportDetails.propTypes = {
     report: propTypes.object,
-    kbaDetail: propTypes.object
+    kbaDetail: propTypes.object,
+    kbaLoading: propTypes.bool
 };
