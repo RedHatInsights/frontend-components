@@ -34,18 +34,18 @@ query System($systemId: String!){
         name
         profiles {
             name
-            ref_id
-            compliant(system_id: $systemId)
-            rules_failed(system_id: $systemId)
-            rules_passed(system_id: $systemId)
-            last_scanned(system_id: $systemId)
+            refId
+            compliant(systemId: $systemId)
+            rulesFailed(systemId: $systemId)
+            rulesPassed(systemId: $systemId)
+            lastScanned(systemId: $systemId)
             rules {
                 title
                 severity
                 rationale
-                ref_id
+                refId
                 description
-                compliant(system_id: $systemId)
+                compliant(systemId: $systemId)
             }
         }
 	}
