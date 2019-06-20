@@ -14,11 +14,13 @@ class ContextInventoryList extends React.Component {
     }
 
     loadEntities = (options = {}, reload = true) => {
-        const { page, perPage, onRefresh, items, hasItems } = this.props;
+        const { page, perPage, onRefresh, items, hasItems, sortBy } = this.props;
         options = {
             page: options.page || page,
             // eslint-disable-next-line camelcase
             per_page: options.per_page || perPage,
+            orderBy: sortBy && sortBy.key,
+            orderDirection: sortBy && sortBy.direction.toUpperCase(),
             ...options
         };
         reload && onRefresh(options);
@@ -48,8 +50,10 @@ class ContextInventoryList extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { items, hasItems } = this.props;
+        const { items, hasItems, sortBy } = this.props;
         if (hasItems && JSON.stringify(items) !== JSON.stringify(prevProps.items)) {
+            this.loadEntities({}, false);
+        } else if (!hasItems && JSON.stringify(prevProps.sortBy) !== JSON.stringify(sortBy)) {
             this.loadEntities({}, false);
         }
     }
@@ -77,6 +81,10 @@ const propTypes = {
     page: PropTypes.number,
     perPage: PropTypes.number,
     onRefresh: PropTypes.func,
+    sortBy: PropTypes.shape({
+        key: PropTypes.string,
+        direction: PropTypes.string
+    }),
     items: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.string),
         PropTypes.shape({
@@ -142,6 +150,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-    ({ entities: { page, perPage }}, { perPage: currPerPage }) => ({ page, perPage: currPerPage || perPage }),
+    ({ entities: { page, perPage, sortBy }}, { perPage: currPerPage }) => ({ page, perPage: currPerPage || perPage, sortBy }),
     mapDispatchToProps
 )(InventoryList);

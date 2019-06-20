@@ -17,7 +17,8 @@ import {
     TableHeader,
     TableGridBreakpoint,
     cellWidth,
-    TableVariant
+    TableVariant,
+    sortable
 } from '@patternfly/react-table';
 import { SkeletonTable, EmptyTable } from '@redhat-cloud-services/frontend-components';
 
@@ -120,21 +121,38 @@ class EntityTable extends React.Component {
         }));
     }
 
+    buildTransforms = (props, transforms, hasItems) => {
+        return ([
+            ...transforms || [],
+            ...props && props.width ? [ cellWidth(props.width) ] : [],
+            ...hasItems ? [] : [ sortable ]
+        ]);
+    }
+
     createColumns = () => {
-        const { columns } = this.props;
+        const { columns, hasItems } = this.props;
         return columns.map(({ props, transforms, ...oneCell }) => ({
             ...oneCell,
-            ...props && props.width ? {
-                transforms: [
-                    ...transforms || [],
-                    cellWidth(props.width)
-                ]
-            } : { transforms: [ ...transforms || [] ]}
+            transforms: [
+                ...this.buildTransforms(props, transforms, hasItems) || []
+            ]
         }));
     }
 
     render() {
-        const { rows, columns, loaded, expandable, onExpandClick, hasCheckbox, actions, variant } = this.props;
+        const {
+            rows,
+            columns,
+            loaded,
+            expandable,
+            onExpandClick,
+            hasCheckbox,
+            actions,
+            variant,
+            sortBy,
+            hasItems
+        } = this.props;
+        const cells = loaded && this.createColumns();
         return (
             <React.Fragment>
                 { loaded ?
@@ -142,10 +160,15 @@ class EntityTable extends React.Component {
                         borders={ true }
                         variant={ variant }
                         aria-label="Host inventory"
-                        cells={ this.createColumns() }
+                        cells={ cells }
                         rows={ this.createRows() }
                         gridBreakPoint={ columns.length > 5 ? TableGridBreakpoint.gridLg : TableGridBreakpoint.gridMd }
                         className="ins-c-entity-table"
+                        onSort={ (event, index, direction) => this.onSort(event, cells[index].key, direction) }
+                        sortBy={ {
+                            index: cells.findIndex(item => sortBy && sortBy.key === item.key),
+                            direction: sortBy && sortBy.direction
+                        } }
                         { ...{
                             ...hasCheckbox && rows.length !== 0 ? { onSelect: this.onItemSelect } : {},
                             ...expandable ? { onCollapse: onExpandClick } : {},
@@ -174,6 +197,7 @@ EntityTable.propTypes = {
     setSort: PropTypes.func,
     hasCheckbox: PropTypes.bool,
     showActions: PropTypes.bool,
+    hasItems: PropTypes.bool,
     rows: PropTypes.arrayOf(PropTypes.any),
     columns: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string,
@@ -207,7 +231,7 @@ EntityTable.defaultProps = {
 function mapDispatchToProps(dispatch) {
     return {
         selectEntity: (id, isSelected) => dispatch(selectEntity(id, isSelected)),
-        setSort: (id, isSelected) => dispatch(setSort(id, isSelected)),
+        setSort: (id, sortDirection) => dispatch(setSort(id, sortDirection)),
         onDetailSelect: (name) => dispatch(detailSelect(name))
     };
 }
