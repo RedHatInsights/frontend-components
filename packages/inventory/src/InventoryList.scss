@@ -77,6 +77,7 @@
     .ins-composed-col div:nth-child(2) {
         color: var(--pf-global--link--Color);
         word-wrap: break-word;
+        word-break:break-all;
         cursor: pointer;
         &:hover {
             color: var(--pf-global--link--Color--hover);

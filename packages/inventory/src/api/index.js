@@ -27,11 +27,19 @@ export const mapData = ({ facts = {}, ...oneResult }) => ({
     }
 });
 
-export function getEntities(items, { controller, hasItems, filters, per_page: perPage, page }) {
+export function getEntities(items, {
+    controller,
+    hasItems,
+    filters,
+    per_page: perPage,
+    page,
+    orderBy = 'updated',
+    orderDirection = 'DESC'
+}) {
     const hostnameOrId = filters ? filters.find(filter => filter.value === 'hostname_or_id') : undefined;
 
     if (hasItems && items.length > 0) {
-        return hosts.apiHostGetHostById(items, undefined, perPage, page, { cancelToken: controller && controller.token })
+        return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
             .then(({ results = [], ...data } = {}) => ({
                 ...data,
                 results: results.map(result => mapData({
@@ -48,6 +56,8 @@ export function getEntities(items, { controller, hasItems, filters, per_page: pe
             undefined,
             perPage,
             page,
+            orderBy,
+            orderDirection,
             { cancelToken: controller && controller.token }
         )
             .then(({ results = [], ...data } = {}) => ({

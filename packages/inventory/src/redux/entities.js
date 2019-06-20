@@ -9,13 +9,12 @@ import {
     CLEAR_FILTERS
 } from './action-types';
 import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
-import { SortDirection } from '@patternfly/react-table';
 
 export const defaultState = { loaded: false };
 
 const defaultColumns = [
     { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ]},
-    { key: 'updated', title: 'Last sync', isTime: true }
+    { key: 'updated', title: 'Last sync', isTime: true, props: { width: 25 } }
 ];
 
 function entitiesPending(state) {
@@ -68,13 +67,12 @@ function selectEntity(state, { payload: { id, selected }}) {
 }
 
 function changeSort(state, { payload: { key, direction }}) {
-    const sortBy = {
-        key,
-        direction: SortDirection.up === direction ? 'asc' : 'desc'
-    };
     return {
         ...state,
-        sortBy
+        sortBy: {
+            key,
+            direction
+        }
     };
 }
 
