@@ -29,7 +29,7 @@ export const FilterNotFoundForCVE = (
                     <TextList>
                         <TextListItem>The criteria/filters you’ve specified result in no/zero CVEs being reported in your environment</TextListItem>
                     </TextList>
-                    If you think a CVE that matches this criteria does apply to Red Hat, or would like more information, please contact the{ ' ' }
+                    If you think a CVE that matches this criteria does apply to Red Hat, or would like more information, please contact{ ' ' }
                     <a href="https://access.redhat.com/security/team/contact/" target="__blank" rel="noopener noreferrer">
                         Red Hat Product Security <ExternalLinkAltIcon />
                     </a>
@@ -54,7 +54,7 @@ export const EmptyCVEListForSystem = (
                         <TextListItem>No published CVEs affect this system</TextListItem>
                         <TextListItem>You have opted out of reporting on a reported CVE</TextListItem>
                     </TextList>
-                    If you think this system has applicable CVEs, or would like more information, please contact the{ ' ' }
+                    If you think this system has applicable CVEs, or would like more information, please contact{ ' ' }
                     <a href="https://access.redhat.com/security/team/contact/" target="__blank" rel="noopener noreferrer">
                         Red Hat Product Security <ExternalLinkAltIcon />
                     </a>
@@ -79,7 +79,7 @@ export const EmptyCVEList = (
                         <TextListItem>No published CVEs affect these systems</TextListItem>
                         <TextListItem>You have opted out of reporting on a reported CVE</TextListItem>
                     </TextList>
-                    If you think this system has applicable CVEs, or would like more information, please contact the{ ' ' }
+                    If you think this system has applicable CVEs, or would like more information, please contact{ ' ' }
                     <a href="https://access.redhat.com/security/team/contact/" target="__blank" rel="noopener noreferrer">
                         Red Hat Product Security <ExternalLinkAltIcon />
                     </a>
