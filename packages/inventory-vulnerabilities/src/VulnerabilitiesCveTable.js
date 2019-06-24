@@ -111,6 +111,7 @@ class VulnerabilitiesCveTable extends Component {
                     rows={ cves.isLoading ? loader : rows }
                     sortBy={ this.createSortBy(cves.meta.sort) }
                     onSort={ this.sortColumn }
+                    gridBreakPoint={ 'grid-lg' }
                 >
                     { (!cves.isLoading && cves.data.length === 0 && this.noCves()) || (
                         <Fragment>
