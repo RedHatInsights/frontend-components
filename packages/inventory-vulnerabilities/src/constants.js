@@ -1,5 +1,18 @@
-import { Bullseye, Button, Card, CardBody, CardHeader, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
-import { CubesIcon, FrownOpenIcon } from '@patternfly/react-icons';
+import {
+    Bullseye,
+    Button,
+    Card,
+    CardBody,
+    CardHeader,
+    EmptyState,
+    EmptyStateBody,
+    EmptyStateIcon,
+    TextContent,
+    TextList,
+    TextListItem,
+    Title
+} from '@patternfly/react-core';
+import { CubesIcon, ExternalLinkAltIcon, FrownOpenIcon } from '@patternfly/react-icons';
 import moment from 'moment';
 import React from 'react';
 
@@ -34,16 +47,20 @@ export const EmptyCVEListForSystem = (
             <Title headingLevel="h5" size="lg">
                 No CVEs reported for this system
             </Title>
-            <Title headingLevel="h4" size="md">
-                This may be for one of the following reasons:
-            </Title>
-            <EmptyStateBody>
-                <ul>
-                    <li>No published CVEs affect this system</li>
-                    <li>You have opted out of reporting on a reported CVE</li>
-                    <li>If you think this system has applicable CVEs, or would like more information, please contact the Security Response Team.</li>
-                </ul>
-            </EmptyStateBody>
+            <TextContent>
+                <EmptyStateBody>
+                    This may be for one of the following reasons:
+                    <TextList>
+                        <TextListItem>No published CVEs affect this system</TextListItem>
+                        <TextListItem>You have opted out of reporting on a reported CVE</TextListItem>
+                    </TextList>
+                    If you think this system has applicable CVEs, or would like more information, please contact the{ ' ' }
+                    <a href="https://access.redhat.com/security/team/contact/" target="__blank" rel="noopener noreferrer">
+                        Red Hat Product Security <ExternalLinkAltIcon />
+                    </a>
+                    .
+                </EmptyStateBody>
+            </TextContent>
         </EmptyState>
     </Bullseye>
 );
