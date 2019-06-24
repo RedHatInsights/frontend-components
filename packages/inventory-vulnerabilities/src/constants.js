@@ -72,16 +72,20 @@ export const EmptyCVEList = (
             <Title headingLevel="h5" size="lg">
                 No CVEs reported for connected systems
             </Title>
-            <Title headingLevel="h4" size="md">
-                This may be for one of the following reasons:
-            </Title>
-            <EmptyStateBody>
-                <ul>
-                    <li>No published CVEs affect these systems</li>
-                    <li>You have opted out of reporting on a reported CVE</li>
-                    <li>If you think this system has applicable CVEs, or would like more information, please contact the Security Response Team.</li>
-                </ul>
-            </EmptyStateBody>
+            <TextContent>
+                <EmptyStateBody>
+                    This may be for one of the following reasons:
+                    <TextList>
+                        <TextListItem>No published CVEs affect these systems</TextListItem>
+                        <TextListItem>You have opted out of reporting on a reported CVE</TextListItem>
+                    </TextList>
+                    If you think this system has applicable CVEs, or would like more information, please contact the{ ' ' }
+                    <a href="https://access.redhat.com/security/team/contact/" target="__blank" rel="noopener noreferrer">
+                        Red Hat Product Security <ExternalLinkAltIcon />
+                    </a>
+                    .
+                </EmptyStateBody>
+            </TextContent>
         </EmptyState>
     </Bullseye>
 );
