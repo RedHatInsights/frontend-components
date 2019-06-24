@@ -23,19 +23,19 @@ export const FilterNotFoundForCVE = (
             <Title headingLevel="h5" size="lg">
                 No matching CVEs found
             </Title>
-            <Title headingLevel="h4" size="md">
-                This may be for one of the following reasons:
-            </Title>
-            <EmptyStateBody>
-                <ul>
-                    <li> The criteria/filters you’ve specified result in no/zero CVEs being reported in your environment</li>
-                    <li>
-                        If you think a CVE that matches this criteria does apply to Red Hat, or would like more information, please contact the
-                        Security Response Team
-                    </li>
-                    <li>In addition, the MITRE CVE dictionary may provide information about your CVE</li>
-                </ul>
-            </EmptyStateBody>
+            <TextContent>
+                <EmptyStateBody>
+                    This may be for one of the following reasons:
+                    <TextList>
+                        <TextListItem>The criteria/filters you’ve specified result in no/zero CVEs being reported in your environment</TextListItem>
+                    </TextList>
+                    If you think a CVE that matches this criteria does apply to Red Hat, or would like more information, please contact the{ ' ' }
+                    <a href="https://access.redhat.com/security/team/contact/" target="__blank" rel="noopener noreferrer">
+                        Red Hat Product Security <ExternalLinkAltIcon />
+                    </a>
+                    .
+                </EmptyStateBody>
+            </TextContent>
         </EmptyState>
     </Bullseye>
 );
