@@ -1,5 +1,18 @@
-import { Bullseye, Button, Card, CardBody, CardHeader, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
-import { CubesIcon, FrownOpenIcon } from '@patternfly/react-icons';
+import {
+    Bullseye,
+    Button,
+    Card,
+    CardBody,
+    CardHeader,
+    EmptyState,
+    EmptyStateBody,
+    EmptyStateIcon,
+    TextContent,
+    TextList,
+    TextListItem,
+    Title
+} from '@patternfly/react-core';
+import { CubesIcon, ExternalLinkAltIcon, FrownOpenIcon } from '@patternfly/react-icons';
 import moment from 'moment';
 import React from 'react';
 
@@ -10,19 +23,19 @@ export const FilterNotFoundForCVE = (
             <Title headingLevel="h5" size="lg">
                 No matching CVEs found
             </Title>
-            <Title headingLevel="h4" size="md">
-                This may be for one of the following reasons:
-            </Title>
-            <EmptyStateBody>
-                <ul>
-                    <li> The criteria/filters you’ve specified result in no/zero CVEs being reported in your environment</li>
-                    <li>
-                        If you think a CVE that matches this criteria does apply to Red Hat, or would like more information, please contact the
-                        Security Response Team
-                    </li>
-                    <li>In addition, the MITRE CVE dictionary may provide information about your CVE</li>
-                </ul>
-            </EmptyStateBody>
+            <TextContent>
+                <EmptyStateBody>
+                    This may be for one of the following reasons:
+                    <TextList>
+                        <TextListItem>The criteria/filters you’ve specified result in no/zero CVEs being reported in your environment</TextListItem>
+                    </TextList>
+                    If you think a CVE that matches this criteria does apply to Red Hat, or would like more information, please contact{ ' ' }
+                    <a href="https://access.redhat.com/security/team/contact/" target="__blank" rel="noopener noreferrer">
+                        Red Hat Product Security <ExternalLinkAltIcon />
+                    </a>
+                    .
+                </EmptyStateBody>
+            </TextContent>
         </EmptyState>
     </Bullseye>
 );
@@ -34,16 +47,20 @@ export const EmptyCVEListForSystem = (
             <Title headingLevel="h5" size="lg">
                 No CVEs reported for this system
             </Title>
-            <Title headingLevel="h4" size="md">
-                This may be for one of the following reasons:
-            </Title>
-            <EmptyStateBody>
-                <ul>
-                    <li>No published CVEs affect this system</li>
-                    <li>You have opted out of reporting on a reported CVE</li>
-                    <li>If you think this system has applicable CVEs, or would like more information, please contact the Security Response Team.</li>
-                </ul>
-            </EmptyStateBody>
+            <TextContent>
+                <EmptyStateBody>
+                    This may be for one of the following reasons:
+                    <TextList>
+                        <TextListItem>No published CVEs affect this system</TextListItem>
+                        <TextListItem>You have opted out of reporting on a reported CVE</TextListItem>
+                    </TextList>
+                    If you think this system has applicable CVEs, or would like more information, please contact{ ' ' }
+                    <a href="https://access.redhat.com/security/team/contact/" target="__blank" rel="noopener noreferrer">
+                        Red Hat Product Security <ExternalLinkAltIcon />
+                    </a>
+                    .
+                </EmptyStateBody>
+            </TextContent>
         </EmptyState>
     </Bullseye>
 );
@@ -55,16 +72,20 @@ export const EmptyCVEList = (
             <Title headingLevel="h5" size="lg">
                 No CVEs reported for connected systems
             </Title>
-            <Title headingLevel="h4" size="md">
-                This may be for one of the following reasons:
-            </Title>
-            <EmptyStateBody>
-                <ul>
-                    <li>No published CVEs affect these systems</li>
-                    <li>You have opted out of reporting on a reported CVE</li>
-                    <li>If you think this system has applicable CVEs, or would like more information, please contact the Security Response Team.</li>
-                </ul>
-            </EmptyStateBody>
+            <TextContent>
+                <EmptyStateBody>
+                    This may be for one of the following reasons:
+                    <TextList>
+                        <TextListItem>No published CVEs affect these systems</TextListItem>
+                        <TextListItem>You have opted out of reporting on a reported CVE</TextListItem>
+                    </TextList>
+                    If you think this system has applicable CVEs, or would like more information, please contact{ ' ' }
+                    <a href="https://access.redhat.com/security/team/contact/" target="__blank" rel="noopener noreferrer">
+                        Red Hat Product Security <ExternalLinkAltIcon />
+                    </a>
+                    .
+                </EmptyStateBody>
+            </TextContent>
         </EmptyState>
     </Bullseye>
 );

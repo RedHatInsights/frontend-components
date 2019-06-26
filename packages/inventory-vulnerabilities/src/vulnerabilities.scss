@@ -1,6 +1,7 @@
-@import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_mixins';
+@import "~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_mixins";
 
-.ins-active-app-vulnerabilities, .page__Vulnerabilities{
+.ins-active-app-vulnerabilities,
+.page__Vulnerabilities {
   .cvetable-toolbar {
     justify-content: space-between;
     > div {
@@ -14,10 +15,10 @@
   .vulnerability-toolbar-spacing {
     justify-content: flex-start;
     > div:first-child {
-        overflow: hidden;
+      overflow: hidden;
     }
     > div {
-        margin-right: var(--pf-global--spacer--sm);
+      margin-right: var(--pf-global--spacer--sm);
     }
   }
 
@@ -62,5 +63,15 @@
   }
   .pf-c-table tr > * {
     vertical-align: middle !important;
+  }
+
+  p.pf-c-empty-state__body {
+    ul {
+      margin-top: 0px;
+      margin-bottom: var(--pf-global--spacer--sm);
+      li {
+        margin-top: 0px;
+      }
+    }
   }
 }
