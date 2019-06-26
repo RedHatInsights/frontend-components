@@ -148,7 +148,7 @@ export const filtersSeverity = {
     type: 'checkbox',
     title: 'Severity',
     urlParam: 'severity',
-    values: [{ label: 'Critical', value: '7' }, { label: 'High', value: '5' }, { label: 'Medium', value: '4' }, { label: 'Low', value: '2' }]
+    values: [{ label: 'Critical', value: '7' }, { label: 'Important', value: '5' }, { label: 'Moderate', value: '4' }, { label: 'Low', value: '2' }]
 };
 
 export const filtersCVSSScore = {
