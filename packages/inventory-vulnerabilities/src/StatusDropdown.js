@@ -1,25 +1,16 @@
 import { Button, FormSelect, FormSelectOption, Modal, Stack, StackItem } from '@patternfly/react-core';
 import { PencilAltIcon } from '@patternfly/react-icons';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeSystemCveStatus } from './api';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
-import { fetchSystemCveStatusList } from './redux/actions';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import { changeSystemCveStatusAction, fetchSystemCveStatusList } from './redux/actions';
 
 const notifications = {
-    processing: {
-        variant: 'info',
-        title: 'Status change is processing'
-    },
     success: {
         variant: 'success',
         title: 'Status change done!'
-    },
-    fail: {
-        variant: 'danger',
-        title: 'Status change failed!'
     }
 };
 
@@ -69,12 +60,9 @@ class StatusDropdown extends Component {
                     key="confirm"
                     variant="primary"
                     onClick={ () => {
-                        this.createNotification('processing');
-                        changeSystemCveStatus(systemId, cveName, this.state.statusId, StatusDropdown.updateRef)
-                        .then(() => this.createNotification('success'))
-                        .catch(() => {
-                            this.createNotification('fail');
-                        });
+                        this.props
+                        .changeStatus(systemId, cveName, this.state.statusId, StatusDropdown.updateRef)
+                        .then(() => this.createNotification('success'));
                         this.handleModalToggle();
                     } }
                 >
@@ -105,7 +93,7 @@ class StatusDropdown extends Component {
                         this.props.fetchStatusList();
                     } }
                 >
-                    { currentStatusName } <PencilAltIcon size="sm"/>
+                    { currentStatusName } <PencilAltIcon size="sm" />
                 </div>
                 { modal }
             </React.Fragment>
@@ -122,7 +110,8 @@ function mapStateToProps({ VulnerabilitiesStore }) {
 const mapDispatchToProps = dispatch => {
     return {
         fetchStatusList: () => dispatch(fetchSystemCveStatusList()),
-        addNotification: data => dispatch(addNotification(data))
+        addNotification: data => dispatch(addNotification(data)),
+        changeStatus: (inventoryId, cve, statusId, callback) => dispatch(changeSystemCveStatusAction(inventoryId, cve, statusId, callback))
     };
 };
 
@@ -140,7 +129,8 @@ StatusDropdown.propTypes = {
     currentStatusId: propTypes.number,
     currentStatusName: propTypes.string,
     cveName: propTypes.string,
-    statusList: propTypes.object
+    statusList: propTypes.object,
+    changeStatus: propTypes.func
 };
 
 StatusDropdown.defaultProps = {

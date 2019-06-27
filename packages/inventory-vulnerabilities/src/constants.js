@@ -116,6 +116,14 @@ export const GenericError = (
     </Card>
 );
 
+// Read-only mode notification text
+export const ReadOnlyNotification = {
+    title: 'Changes not saved',
+    detail:
+        ' The application is temporarily in read-only mode due to normal system maintenance.\
+    Please try again later. Check status.redhat.com for more information.'
+};
+
 //CVSS Base score label to value
 export const CVSSOptions = [
     { value: 'all', label: 'All' },
