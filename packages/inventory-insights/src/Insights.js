@@ -167,7 +167,7 @@ class InventoryRuleList extends Component {
                 }
             ];
 
-            const isValidSearchValue = searchValue.length === 0 || rule.description.search(new RegExp(searchValue, 'i')) !== -1;
+            const isValidSearchValue = searchValue.length === 0 || rule.description.toLowerCase().includes(searchValue.toLowerCase());
             const isValidFilterValue = Object.keys(filters).length === 0 || Object.keys(filters).map((key) => {
                 const filterValues = filters[key];
                 const rowValue = {
