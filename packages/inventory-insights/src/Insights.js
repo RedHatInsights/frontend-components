@@ -44,7 +44,6 @@ class InventoryRuleList extends Component {
             { title: 'Risk of change', transforms: [ sortable ]},
             { title: <span className='ansibleCol'>{ ANSIBLE_ICON } Ansible</span>, transforms: [ sortable ]}
         ],
-        remediation: false,
         isKebabOpen: false,
         sortBy: {},
         activeReports: [],
@@ -55,16 +54,6 @@ class InventoryRuleList extends Component {
 
     componentDidMount () {
         this.fetchEntityRules();
-    }
-
-    processRemediation (systemId, reports) {
-        const issues = reports.filter(r => r.resolution.has_playbook).map(
-            r => ({ id: `advisor:${r.rule.rule_id}`, description: r.rule.description })
-        );
-
-        return issues.length ?
-            { issues, systems: [ systemId ]} :
-            false;
     }
 
     async fetchEntityRules () {
@@ -79,7 +68,6 @@ class InventoryRuleList extends Component {
             this.setState({
                 rows: this.buildRows(activeRuleFirstReportsData, {}, filters, searchValue, true),
                 inventoryReportFetchStatus: 'fulfilled',
-                remediation: this.processRemediation(entity.id, reportsData),
                 activeReports: activeRuleFirstReportsData
             });
         } catch (error) {
@@ -122,9 +110,12 @@ class InventoryRuleList extends Component {
     buildRows = (activeReports, kbaDetails, filters, searchValue, kbaLoading = false) => {
         const rows = flatten(activeReports.map((value, key) => {
             const rule = value.rule;
+            const resolution = value.resolution;
             const kbaDetail = Object.keys(kbaDetails).length ? kbaDetails.filter(article => article.id === value.rule.node_id)[0] : {};
             const reportRow = [
                 {
+                    rule,
+                    resolution,
                     isOpen: true,
                     cells: [
                         { title: <div> { rule.description }</div> },
@@ -146,13 +137,13 @@ class InventoryRuleList extends Component {
                                 <Battery
                                     label='Risk of change'
                                     labelHidden
-                                    severity={ value.resolution.resolution_risk.risk }
+                                    severity={ resolution.resolution_risk.risk }
                                 />
                             </div>
                         },
                         {
                             title: <div className='pf-m-center ' key={ key }>
-                                { value.resolution.has_playbook &&
+                                { resolution.has_playbook &&
                                 <CheckIcon className='successColorOverride'/> }
                             </div>
                         }
@@ -275,8 +266,29 @@ class InventoryRuleList extends Component {
         this.setState({ searchValue: value, rows });
     };
 
+    onSelect = (event, isSelected, rowId) => {
+        this.setState({
+            rows: this.state.rows .map((oneRow, rowKey) => (rowId === -1 || rowKey === rowId) ? { ...oneRow, selected: isSelected } : { ...oneRow })
+        });
+    };
+
+    getSelectedItems = (rows) => rows.filter(entity => entity.selected);
+
+    processRemediation = () => {
+        const { rows } = this.state;
+        const selectedRows = this.getSelectedItems(rows);
+        const playbookRows = selectedRows.filter(r => r.resolution && r.resolution.has_playbook);
+        const issues = playbookRows.map(
+            r => ({ id: `advisor:${r.rule.rule_id}`, description: r.rule.description })
+        );
+
+        return issues.length ?
+            { issues, systems: [ this.props.entity.id ]} :
+            false;
+    };
+
     render () {
-        const { remediation, inventoryReportFetchStatus, rows, cols, sortBy, filters, searchValue, activeReports } = this.state;
+        const { inventoryReportFetchStatus, rows, cols, sortBy, filters, searchValue, activeReports } = this.state;
         const results = rows ? rows.length / 2 : 0;
         return <Fragment>
             { inventoryReportFetchStatus === 'pending' ||
@@ -303,8 +315,8 @@ class InventoryRuleList extends Component {
                     </ToolbarItem>
                     <ToolbarItem className="pf-u-mr-md">
                         <RemediationButton
-                            isDisabled={ !remediation }
-                            dataProvider={ () => remediation }
+                            isDisabled={ this.getSelectedItems(rows).length === 0  }
+                            dataProvider={ this.processRemediation }
                             onRemediationCreated={ result => this.props.addNotification(result.getNotification()) }/>
                     </ToolbarItem>
                     <ToolbarItem>{ this.buildKebab() }</ToolbarItem>
@@ -324,7 +336,8 @@ class InventoryRuleList extends Component {
             ) }
             { inventoryReportFetchStatus === 'fulfilled' && (activeReports.length > 0 ?
                 <Fragment><Table aria-label={ 'rule-table' } onCollapse={ this.handleOnCollapse } rows={ rows } cells={ cols } sortBy={ sortBy }
-                    onSort={ this.onSort }>
+                    onSort={ this.onSort }
+                    onSelect={ this.onSelect }>
                     <TableHeader/>
                     <TableBody/>
                 </Table>
