@@ -131,7 +131,7 @@ class SystemRulesTable extends React.Component {
 
         return window.insights.chrome.auth.getUser()
         .then(() => {
-            return remediationsApi.getResolutionsBatch(ruleIds)
+            return remediationsApi.getResolutionsBatch(ruleIds).catch(e => newRows)
             .then(response => newRows.map(({ cells, ...row }) => ({
                 ...row,
                 cells: [
