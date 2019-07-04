@@ -53,7 +53,8 @@
             "<rootDir>/packages/"
         ],
         "moduleNameMapper": {
-            "\\.(css|scss)$": "identity-obj-proxy"
+            "\\.(css|scss)$": "identity-obj-proxy",
+            "^lodash-es$": "lodash"
         }
     },
     "sassIncludes": {
