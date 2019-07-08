@@ -214,7 +214,7 @@ class SystemRulesTable extends React.Component {
         const profiles = {};
         const rows = flatMap(profileRules, (profileRule) => flatMap(profileRule.rules, (rule, key) => {
             profiles[rule.title] = profileRule.profile.refId;
-            refIds[rule.title] = rule.ref_id;
+            refIds[rule.title] = rule.refId;
             return [
                 this.calculateParent(profileRule, rule),
                 this.calculateChild(rule, key)
@@ -447,6 +447,14 @@ class SystemRulesTable extends React.Component {
                                     selectedRules={ this.selectedRules() } />
                             </LevelItem>
                         </Level>
+                        <Pagination
+                            page={ page }
+                            itemCount={ rows.length / 2 }
+                            dropDirection='down'
+                            onSetPage={ this.setPage }
+                            onPerPageSelect={ this.setPerPage }
+                            perPage={ itemsPerPage }
+                        />
                     </TableToolbar>
                     <Table
                         cells={ columns }
