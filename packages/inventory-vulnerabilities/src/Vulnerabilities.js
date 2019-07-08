@@ -1,26 +1,35 @@
+import { Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { classNames, sortable } from '@patternfly/react-table';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { fetchCveListBySystem } from './redux/actions';
-import VulnerabilitiesCves from './VulnerabilitiesCves';
-import { TextContent, TextVariants, Text } from '@patternfly/react-core';
 import { createCveListBySystem } from './DataMapper';
-import { sortable, cellWidth } from '@patternfly/react-table';
+import { fetchCveListBySystem } from './redux/actions';
 import './vulnerabilities.scss';
+import VulnerabilitiesCves from './VulnerabilitiesCves';
 
 const cvssBaseDescription = 'All CVEs use Common Vulnerability Scoring System v3 except where noted.';
 
 const header = [
-    { title: 'Name', key: 'synopsis', transforms: [ sortable, cellWidth(10) ]},
-    { title: 'Description', key: 'description', transforms: [ cellWidth(45) ]},
-    { title: 'Publish date', key: 'public_date', transforms: [ sortable, cellWidth(10) ]},
+    { title: 'Name', key: 'synopsis', transforms: [ sortable, classNames('col-width-10') ]},
+    {
+        title: 'Description',
+        key: 'description',
+        transforms: [ classNames('col-width-description') ],
+        columnTransforms: [ classNames('hide-description') ]
+    },
+    {
+        title: 'Publish date',
+        key: 'public_date',
+        transforms: [ classNames('col-width-10') ]
+    },
     {
         title: 'CVSS base ',
         key: 'cvss_score',
-        transforms: [ sortable, cellWidth(10) ]
+        transforms: [ sortable, classNames('col-width-10') ]
     },
-    { title: 'Severity', key: 'impact', transforms: [ sortable, cellWidth(10) ]},
-    { title: 'Status', key: 'status', transforms: [ sortable ]}
+    { title: 'Severity', key: 'impact', transforms: [ sortable, classNames('col-width-10') ]},
+    { title: 'Status', key: 'status', transforms: [ sortable, classNames('col-width-15') ]}
 ];
 
 class VulnerabilitiesDetail extends Component {

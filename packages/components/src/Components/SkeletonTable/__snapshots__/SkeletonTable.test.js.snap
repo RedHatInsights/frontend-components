@@ -40,6 +40,8 @@ exports[`SkeletonTable component should render correctly 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   onCollapse={null}
+  onExpand={null}
+  role="grid"
   rowLabeledBy="simple-node"
   rows={
     Array [
@@ -480,6 +482,8 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   onCollapse={null}
+  onExpand={null}
+  role="grid"
   rowLabeledBy="simple-node"
   rows={
     Array [
@@ -718,6 +722,8 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   onCollapse={null}
+  onExpand={null}
+  role="grid"
   rowLabeledBy="simple-node"
   rows={Array []}
   variant={null}
