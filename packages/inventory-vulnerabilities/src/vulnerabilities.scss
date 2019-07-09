@@ -10,15 +10,28 @@
   }
   .space-between-toolbar-items {
     justify-content: space-between;
+    flex-wrap: nowrap;
+    > div {
+      flex-wrap: nowrap;
+    }
   }
 
   .vulnerability-toolbar-spacing {
     justify-content: flex-start;
-    > div:first-child {
-      overflow: hidden;
-    }
-    > div {
+    > div:not(:last-child) {
       margin-right: var(--pf-global--spacer--sm);
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    .pf-c-pagination:not(.pf-m-footer) .pf-c-options-menu,
+    .pf-c-pagination:not(.pf-m-footer) .pf-c-pagination__nav {
+      display: none;
+      visibility: hidden;
+    }
+    .pf-c-pagination__total-items {
+      display: flex;
+      visibility: visible;
     }
   }
 
@@ -73,5 +86,36 @@
         margin-top: 0px;
       }
     }
+  }
+
+  .hide-description {
+    @media (max-width: 1400px) and (min-width: 992px) {
+      --pf-hidden-visible--Display: var(--pf-hidden-visible--hidden--Display);
+      --pf-hidden-visible--Visibility: var(
+        --pf-hidden-visible--hidden--Visibility
+      );
+    }
+  }
+  .remediation-btn-sml {
+    @media (min-width: 1400px) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+  .remediation-btn-lg {
+    @media (max-width: 1400px) {
+      display: none;
+      visibility: none;
+    }
+  }
+
+  .col-width-10 {
+    min-width: 10%;
+  }
+  .col-width-15 {
+    min-width: 15%;
+  }
+  .col-width-description {
+    min-width: 35%;
   }
 }

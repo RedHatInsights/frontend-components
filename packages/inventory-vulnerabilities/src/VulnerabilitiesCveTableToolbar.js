@@ -1,15 +1,15 @@
 /* eslint-disable camelcase */
 import { Dropdown, DropdownItem, KebabToggle, Pagination, ToolbarGroup } from '@patternfly/react-core';
+import { FilterDropdown, SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
+import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import debounce from 'lodash/debounce';
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FilterDropdown, SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
-import { fetchSystemCveStatusList } from './redux/actions';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
-import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import { filtersCVSSScore, filtersPublishDate, filtersSeverity, filtersShowAll } from './constants';
+import { fetchSystemCveStatusList } from './redux/actions';
 
 class VulnerabilitiesCveTableToolbar extends Component {
     state = { isKebabOpen: false, show_all: 'true', publish_date: 'all', cvss_filter: 'all' };
@@ -128,7 +128,10 @@ class VulnerabilitiesCveTableToolbar extends Component {
                                 dataProvider={ this.remediationProvider }
                                 isDisabled={ this.remediationProvider() === false }
                                 onRemediationCreated={ result => this.props.addNotification(result.getNotification()) }
-                            />
+                            >
+                                <span className={ 'remediation-btn-lg' }>Remediate with Ansible</span>
+                                <span className={ 'remediation-btn-sml' }>Remediate</span>
+                            </RemediationButton>
                         </div>
                     ) }
                     <div>

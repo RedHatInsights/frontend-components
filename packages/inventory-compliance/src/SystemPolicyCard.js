@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 class SystemPolicyCard extends React.Component {
     constructor(policy) {
         super(policy);
-        this.state = { refIdTruncated: <Truncate lines={ 1 }>{ policy.policy.ref_id }</Truncate>, ...policy };
+        this.state = { refIdTruncated: <Truncate lines={ 1 }>{ policy.policy.refId }</Truncate>, ...policy };
     }
 
     complianceIcon = () => {
@@ -29,11 +29,11 @@ class SystemPolicyCard extends React.Component {
     }
 
     onMouseover = () => {
-        this.setState({ refIdTruncated: this.state.policy.ref_id });
+        this.setState({ refIdTruncated: this.state.policy.refId });
     }
 
     onMouseout = () => {
-        this.setState({ refIdTruncated: <Truncate lines={ 1 }>{ this.state.policy.ref_id }</Truncate> });
+        this.setState({ refIdTruncated: <Truncate lines={ 1 }>{ this.state.policy.refId }</Truncate> });
     }
 
     render() {
@@ -47,7 +47,7 @@ class SystemPolicyCard extends React.Component {
                     <div className='margin-bottom-md' >
                         { this.complianceIcon(this.state.policy.compliant) }
                         <Text component={ TextVariants.small }>
-                            { this.state.policy.rules_passed } of { this.state.policy.rules_passed + this.state.policy.rules_failed } rules passed
+                            { this.state.policy.rulesPassed } of { this.state.policy.rulesPassed + this.state.policy.rulesFailed } rules passed
                         </Text>
                     </div>
                     <div className='margin-bottom-md' >
@@ -62,7 +62,7 @@ class SystemPolicyCard extends React.Component {
                         </Text>
                     </div>
                     <Text className='margin-bottom-none' component={ TextVariants.small }>
-                      Last scanned: <FormattedRelative value={ Date.parse(this.state.policy.last_scanned) } />
+                      Last scanned: <FormattedRelative value={ Date.parse(this.state.policy.lastScanned) } />
                     </Text>
                 </CardBody>
             </Card>
@@ -73,10 +73,10 @@ class SystemPolicyCard extends React.Component {
 
 SystemPolicyCard.propTypes = {
     policy: PropTypes.shape({
-        rules_passed: PropTypes.number,
-        rules_failed: PropTypes.number,
-        last_scanned: PropTypes.string,
-        ref_id: PropTypes.string,
+        rulesPassed: PropTypes.number,
+        rulesFailed: PropTypes.number,
+        lastScanned: PropTypes.string,
+        refId: PropTypes.string,
         name: PropTypes.string,
         compliant: PropTypes.bool
     })

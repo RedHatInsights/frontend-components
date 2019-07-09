@@ -59,7 +59,7 @@ const SystemQuery = ({ data, loading, hidePassed }) => (
         <SystemRulesTable hidePassed={ hidePassed }
             profileRules={ data.system && data.system.profiles.map((profile) => ({
                 system: data.system.id,
-                profile: { refId: profile.ref_id, name: profile.name },
+                profile: { refId: profile.refId, name: profile.name },
                 rules: profile.rules
             })) }
             loading={ loading }

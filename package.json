@@ -13,7 +13,7 @@
         "@babel/core": "^7.4.3",
         "@patternfly/react-core": "^3.2.6",
         "@patternfly/react-icons": "^3.7.4",
-        "@patternfly/react-table": "^2.1.6",
+        "@patternfly/react-table": "^2.13.18",
         "@redhat-cloud-services/host-inventory-client": "1.0.18",
         "abortcontroller-polyfill": "^1.2.1",
         "apollo-boost": "^0.1.23",
@@ -53,7 +53,8 @@
             "<rootDir>/packages/"
         ],
         "moduleNameMapper": {
-            "\\.(css|scss)$": "identity-obj-proxy"
+            "\\.(css|scss)$": "identity-obj-proxy",
+            "^lodash-es$": "lodash"
         }
     },
     "sassIncludes": {
