@@ -312,7 +312,7 @@ class SystemRulesTable extends React.Component {
     filterByPolicy = (policy, rows) => {
         const filteredRows = [];
         rows.forEach((row, i) => {
-            if (row.hasOwnProperty('isOpen') && policy.includes(row.cells[POLICY_COLUMN])) {
+            if (row.hasOwnProperty('isOpen') && policy.includes(row.cells[POLICY_COLUMN].toLowerCase())) {
                 filteredRows.push(row);
                 if (!rows[i + 1].hasOwnProperty('isOpen')) {
                     let child = rows[i + 1];
@@ -457,6 +457,7 @@ class SystemRulesTable extends React.Component {
                         />
                     </TableToolbar>
                     <Table
+                        className='compliance-rules-table'
                         cells={ columns }
                         onCollapse={ this.onCollapse }
                         onSort={ this.onSort }
