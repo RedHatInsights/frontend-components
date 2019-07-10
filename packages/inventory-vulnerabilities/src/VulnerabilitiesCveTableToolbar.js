@@ -7,6 +7,7 @@ import DownloadReportKebab from './Components/DownloadReportKebab';
 import Filters from './Components/Filters';
 import PaginationWrapper from './Components/PaginationWrapper';
 import Remediation from './Components/Remediation';
+import SelectAllCheckbox from './Components/SelectAllCheckbox';
 import { CVETableContext } from './VulnerabilitiesCves';
 
 class CveToolbarWithContext extends Component {
@@ -14,9 +15,11 @@ class CveToolbarWithContext extends Component {
         const { showAllCheckbox, showRemediationButton, entity, context } = this.props;
         const { cves, params, methods } = context;
         const { selectedCves } = params;
+        const selectedCvesCount = this.props.showRemediationButton === true ? (selectedCves && selectedCves.size) || 0 : undefined;
         return (
             <TableToolbar className="space-between-toolbar-items">
                 <ToolbarGroup className="vulnerability-toolbar-spacing">
+                    <SelectAllCheckbox selectedItems={ selectedCvesCount } />
                     <Filters apply={ methods.apply } showStatusList={ Boolean(entity) } showAllCheckbox={ showAllCheckbox } />
                     { showRemediationButton && <Remediation systemId={ entity.id } selectedCves={ selectedCves } /> }
                     <DownloadReportKebab downloadReport={ methods.downloadReport } />
