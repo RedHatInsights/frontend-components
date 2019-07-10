@@ -21,7 +21,7 @@ const header = [
     {
         title: 'Publish date',
         key: 'public_date',
-        transforms: [ classNames('col-width-10') ]
+        transforms: [ sortable, classNames('col-width-10') ]
     },
     {
         title: 'CVSS base ',

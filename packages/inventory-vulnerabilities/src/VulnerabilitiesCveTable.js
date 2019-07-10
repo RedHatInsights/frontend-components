@@ -2,7 +2,6 @@ import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import { SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import findIndex from 'lodash/findIndex';
 import propTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
@@ -135,4 +134,4 @@ VulnerabilitiesCveTable.propTypes = {
     isSelectable: propTypes.bool,
     entity: propTypes.object
 };
-export default routerParams(VulnerabilitiesCveTable);
+export default VulnerabilitiesCveTable;
