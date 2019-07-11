@@ -2,6 +2,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import flatten from 'lodash/flatten';
+import { connect } from 'react-redux';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 
 class ComplianceRemediationButton extends React.Component {
     constructor(props) {
@@ -85,7 +87,7 @@ class ComplianceRemediationButton extends React.Component {
     /* eslint-enable camelcase */
 
     render() {
-        const { allSystems, selectedRules } = this.props;
+        const { addNotification, allSystems, selectedRules } = this.props;
 
         return (
             <React.Fragment>
@@ -93,6 +95,7 @@ class ComplianceRemediationButton extends React.Component {
                     isDisabled={ (allSystems.length === 0 || allSystems[0].rule_objects_failed.length === 0) &&
                         selectedRules.length === 0
                     }
+                    onRemediationCreated={ result => addNotification(result.getNotification()) }
                     dataProvider={ this.dataProvider }
                 />
             </React.Fragment>
@@ -102,11 +105,17 @@ class ComplianceRemediationButton extends React.Component {
 
 ComplianceRemediationButton.propTypes = {
     selectedRules: propTypes.array,
-    allSystems: propTypes.array // Prop coming from data.allSystems GraphQL query
+    allSystems: propTypes.array, // Prop coming from data.allSystems GraphQL query
+    addNotification: propTypes.func
 };
 
 ComplianceRemediationButton.defaultProps = {
     allSystems: []
 };
 
-export default ComplianceRemediationButton;
+export default connect(
+    () => ({}),
+    dispatch => ({
+        addNotification: notification => dispatch(addNotification(notification))
+    })
+)(ComplianceRemediationButton);
