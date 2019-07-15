@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddSourceButton renders correctly 1`] = `
+<Fragment>
+  <Button
+    onClick={[Function]}
+    variant="primary"
+  >
+    Add a source
+  </Button>
+  <AddSourceWizard
+    afterSuccess={[Function]}
+    isOpen={false}
+    onClose={[Function]}
+    successfulMessage="Your source has been successfully added."
+  />
+</Fragment>
+`;
