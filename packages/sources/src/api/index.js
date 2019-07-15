@@ -74,13 +74,15 @@ export function doCreateSource(formData, sourceTypes) {
     return getSourcesApi().createSource(sourceData).then((sourceDataOut) => {
         const { scheme, host, port, path } = urlOrHost(formData);
 
+        const endPointPort = parseInt(port, 10);
+
         const endpointData = {
             default: true,
-            source_id: parseInt(sourceDataOut.id, 10),
+            source_id: String(parseInt(sourceDataOut.id, 10)),
             role: formData.role,
             scheme,
             host,
-            port: parseInt(port, 10),
+            port: isNaN(endPointPort) ? undefined : endPointPort,
             path,
             verify_ssl: formData.verify_ssl,
             certificate_authority: formData.certificate_authority
@@ -88,7 +90,7 @@ export function doCreateSource(formData, sourceTypes) {
 
         return getSourcesApi().createEndpoint(endpointData).then((endpointDataOut) => {
             const authenticationData = {
-                resource_id: parseInt(endpointDataOut.id, 10),
+                resource_id: String(parseInt(endpointDataOut.id, 10)),
                 resource_type: 'Endpoint',
                 username: formData.user_name,
                 password: formData.token || formData.password,
