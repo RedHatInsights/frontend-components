@@ -21,6 +21,11 @@
     > div:not(:last-child) {
       margin-right: var(--pf-global--spacer--sm);
     }
+    .pf-c-dropdown {
+      .pf-m-split-button input {
+        margin: 10px;
+      }
+    }
   }
 
   @media screen and (max-width: 1100px) {

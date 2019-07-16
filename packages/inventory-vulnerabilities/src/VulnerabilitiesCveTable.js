@@ -83,7 +83,8 @@ class VulnerabilitiesCveTableWithContext extends Component {
     onSelect = (event, isSelected, rowId) => {
         const { context } = this.props;
         const { cves, methods } = context;
-        methods.selectCves(cves, isSelected, rowId);
+        const cveName = cves.data[rowId] && cves.data[rowId].id;
+        methods.selectCves(isSelected, cveName);
     };
 
     render() {

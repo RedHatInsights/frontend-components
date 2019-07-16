@@ -52,16 +52,17 @@ class VulnerabilitiesCves extends Component {
         this.setState({ ...this.state, ...config }, this.sendRequest);
     };
 
-    selectCves = (cves, isSelected, rowId) => {
-        const { selectedCves } = this.state;
-        if (rowId === -1) {
-            isSelected ? cves.data.forEach(cve => selectedCves.add(cve.id)) : cves.data.forEach(cve => selectedCves.delete(cve.id));
+    selectCves = (isSelected, cveNames) => {
+        let { selectedCves } = this.state;
+        if (cveNames) {
+            [].concat(cveNames).forEach(cveName => {
+                isSelected ? selectedCves.add(cveName) : selectedCves.delete(cveName);
+            });
         } else {
-            const cveName = cves.data[rowId] && cves.data[rowId].id;
-            isSelected ? selectedCves.add(cveName) : selectedCves.delete(cveName);
+            selectedCves = new Set();
         }
 
-        this.setState({ ...this.state, selectedCves });
+        this.setState({ ...this.state, selectedCves: new Set(selectedCves) });
     };
 
     sendRequest = () => {
@@ -84,13 +85,13 @@ class VulnerabilitiesCves extends Component {
     };
 
     render() {
-        const { cveList, header, showAllCheckbox, dataMapper, showRemediationButton } = this.props;
+        const { cveList, header, showAllCheckbox, dataMapper, showRemediationButton, fetchResource } = this.props;
         const { apply, downloadReport, selectCves } = this;
         const cves = dataMapper(cveList);
         const { meta, errors } = cves;
         if (!errors) {
             return (
-                <CVETableContext.Provider value={ { cves, params: this.state, methods: { apply, downloadReport, selectCves }} }>
+                <CVETableContext.Provider value={ { cves, params: this.state, methods: { apply, downloadReport, selectCves, fetchResource }} }>
                     <Stack>
                         <StackItem>
                             <VulnerabilitiesCveTableToolbar

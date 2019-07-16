@@ -19,7 +19,14 @@ class CveToolbarWithContext extends Component {
         return (
             <TableToolbar className="space-between-toolbar-items">
                 <ToolbarGroup className="vulnerability-toolbar-spacing">
-                    <SelectAllCheckbox selectedItems={ selectedCvesCount } />
+                    { showRemediationButton && (
+                        <SelectAllCheckbox
+                            selectedItems={ selectedCvesCount }
+                            selectorHandler={ methods.selectCves }
+                            cves={ cves }
+                            fetchResource={ methods.fetchResource }
+                        />
+                    ) }
                     <Filters apply={ methods.apply } showStatusList={ Boolean(entity) } showAllCheckbox={ showAllCheckbox } />
                     { showRemediationButton && <Remediation systemId={ entity.id } selectedCves={ selectedCves } /> }
                     <DownloadReportKebab downloadReport={ methods.downloadReport } />
