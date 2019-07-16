@@ -12,7 +12,7 @@ import VulnerabilitiesCveTableToolbar from './VulnerabilitiesCveTableToolbar';
 export const CVETableContext = React.createContext({});
 
 class VulnerabilitiesCves extends Component {
-    state = {};
+    state = { selectedCves: new Set() };
 
     componentDidMount() {
         const { defaultSort: sort } = this.props;
@@ -52,8 +52,16 @@ class VulnerabilitiesCves extends Component {
         this.setState({ ...this.state, ...config }, this.sendRequest);
     };
 
-    selectorHandler = selectedCves => {
-        this.setState({ ...this.state, selectedCves: new Set(selectedCves) });
+    selectCves = (cves, isSelected, rowId) => {
+        const { selectedCves } = this.state;
+        if (rowId === -1) {
+            isSelected ? cves.data.forEach(cve => selectedCves.add(cve.id)) : cves.data.forEach(cve => selectedCves.delete(cve.id));
+        } else {
+            const cveName = cves.data[rowId] && cves.data[rowId].id;
+            isSelected ? selectedCves.add(cveName) : selectedCves.delete(cveName);
+        }
+
+        this.setState({ ...this.state, selectedCves });
     };
 
     sendRequest = () => {
@@ -77,12 +85,12 @@ class VulnerabilitiesCves extends Component {
 
     render() {
         const { cveList, header, showAllCheckbox, dataMapper, showRemediationButton } = this.props;
-        const { apply, downloadReport } = this;
+        const { apply, downloadReport, selectCves } = this;
         const cves = dataMapper(cveList);
         const { meta, errors } = cves;
         if (!errors) {
             return (
-                <CVETableContext.Provider value={ { cves, params: this.state, methods: { apply, downloadReport }} }>
+                <CVETableContext.Provider value={ { cves, params: this.state, methods: { apply, downloadReport, selectCves }} }>
                     <Stack>
                         <StackItem>
                             <VulnerabilitiesCveTableToolbar
@@ -92,14 +100,7 @@ class VulnerabilitiesCves extends Component {
                             />
                         </StackItem>
                         <StackItem>
-                            <VulnerabilitiesCveTable
-                                header={ header }
-                                cves={ cves }
-                                selectorHandler={ this.selectorHandler }
-                                isSelectable={ this.props.isSelectable }
-                                apply={ this.apply }
-                                entity={ this.props.entity }
-                            />
+                            <VulnerabilitiesCveTable header={ header } isSelectable={ this.props.isSelectable } entity={ this.props.entity } />
                         </StackItem>
                     </Stack>
                 </CVETableContext.Provider>
