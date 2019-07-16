@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { FilterDropdown } from '@redhat-cloud-services/frontend-components';
+import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
 
 class RulesComplianceFilter extends React.Component {
     constructor(props) {
@@ -18,9 +19,9 @@ class RulesComplianceFilter extends React.Component {
                 },
                 {
                     type: 'checkbox', title: 'Severity', urlParam: 'severity', values: [
-                        { label: 'High', value: 'high' },
-                        { label: 'Medium', value: 'medium' },
-                        { label: 'Low', value: 'low' },
+                        { label: HIGH_SEVERITY, value: 'high' },
+                        { label: MEDIUM_SEVERITY, value: 'medium' },
+                        { label: LOW_SEVERITY, value: 'low' },
                         { label: 'Unknown', value: 'unknown' }
                     ]
                 },
