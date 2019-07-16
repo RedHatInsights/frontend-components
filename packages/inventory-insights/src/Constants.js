@@ -7,7 +7,7 @@ export const ANSIBLE_ICON = <svg version="1.1" id="ansible_icon" width="18px" he
         className="st0"/>
 </svg>;
 
-export const SYSTEM_FETCH_URL = '/api/insights/v1/system/';
+export const BASE_FETCH_URL = '/api/insights/v1/';
 
 export const FILTER_CATEGORIES = [
     {
