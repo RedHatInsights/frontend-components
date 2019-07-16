@@ -17,14 +17,14 @@ class ReportDetails extends React.Component {
         const sanitizeOptions = {
             allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, '*': [ 'style' ]},
             transformTags: {
-                ul (tagName, attribs) {
+                ul(tagName, attribs) {
                     return {
                         tagName: 'ul',
                         attribs: { class: 'pf-c-list' }
                     };
                 }
             },
-            textFilter (text) {
+            textFilter(text) {
                 return text.replace(/&amp;/g, '&').replace(/&gt;/g, '>').replace(/&lt;/g, '<');
             }
         };
@@ -37,8 +37,9 @@ class ReportDetails extends React.Component {
             return <div dangerouslySetInnerHTML={ {
                 __html: compiledMd
                 .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
+                .replace(/<a>/gim, `<a> rel="noopener noreferrer" target="_blank"`)
                 .replace(/<\/a>/gim, ` ${externalLinkIcon}</a>`)
-            } }/>;
+            } } />;
         } catch (error) {
             console.warn(error, definitions, template); // eslint-disable-line no-console
             return <React.Fragment> Ouch. We were unable to correctly render this text, instead please enjoy the raw data.
@@ -47,7 +48,7 @@ class ReportDetails extends React.Component {
         }
     };
 
-    render () {
+    render() {
         const { report, kbaDetail, kbaLoading } = this.props;
         const rule = report.rule || report;
         let rulesCardClasses = classNames(
@@ -61,7 +62,7 @@ class ReportDetails extends React.Component {
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
-                                    <BullseyeIcon/>
+                                    <BullseyeIcon />
                                     <strong> Detected issues</strong>
                                 </CardHeader>
                                 <CardBody>
@@ -72,7 +73,7 @@ class ReportDetails extends React.Component {
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
-                                    <ThumbsUpIcon/>
+                                    <ThumbsUpIcon />
                                     <strong> Steps to resolve</strong>
                                 </CardHeader>
                                 <CardBody>
@@ -83,37 +84,42 @@ class ReportDetails extends React.Component {
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
-                                    <LightbulbIcon/><strong> Related Knowledgebase article: </strong>
+                                    <LightbulbIcon /><strong> Related Knowledgebase article: </strong>
                                 </CardHeader>
                                 <CardBody>
                                     { kbaDetail && kbaDetail.view_uri ?
-                                        <a href={ `${kbaDetail.view_uri}` } rel="noopener">{ kbaDetail.publishedTitle } <ExternalLinkAltIcon/></a>
-                                        : kbaLoading ? <Skeleton size={ SkeletonSize.sm }/> : <Fragment>No related Knowledgebase article.</Fragment> }
+                                        <a rel="noopener noreferrer" target="_blank" href={ `${kbaDetail.view_uri}` }>
+                                            { kbaDetail.publishedTitle } <ExternalLinkAltIcon />
+                                        </a>
+                                        : kbaLoading ? <Skeleton size={ SkeletonSize.sm } />
+                                            : <Fragment>No related Knowledgebase article.</Fragment> }
                                 </CardBody>
                             </Card>
                         </StackItem>
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
-                                    <InfoCircleIcon/><strong> Additional info:</strong>
+                                    <InfoCircleIcon /><strong> Additional info:</strong>
                                 </CardHeader>
                                 <CardBody>
                                     { rule.more_info && this.templateProcessor(rule.more_info) }
                                     <List style={ { fontSize: 'inherit' } }>
                                         <ListItem>
-                                            { `To learn how to upgrade packages, see ` }<a href="https://access.redhat.com/solutions/9934"
-                                                rel="noopener">
-                                            What is yum and how do I use it? <ExternalLinkAltIcon/>
+                                            { `To learn how to upgrade packages, see ` }
+                                            <a rel="noopener noreferrer" target="_blank" href="https://access.redhat.com/solutions/9934">
+                                                What is yum and how do I use it? <ExternalLinkAltIcon />
                                             </a>{ `.` }
                                         </ListItem>
                                         <ListItem>{ `The Customer Portal page for the ` }
-                                            <a href="https://access.redhat.com/security/" rel="noopener">Red Hat Security Team
-                                                <ExternalLinkAltIcon/></a> { ` contains more information about policies, procedures, and alerts for
+                                            <a rel="noopener noreferrer" target="_blank" href="https://access.redhat.com/security/">
+                                                Red Hat Security Team <ExternalLinkAltIcon />
+                                            </a> { ` contains more information about policies, procedures, and alerts for
                                                 Red Hat Products.` }
                                         </ListItem>
                                         <ListItem>{ `The Security Team also maintains a frequently updated blog at ` }
-                                            <a href="https://securityblog.redhat.com"
-                                                rel="noopener">securityblog.redhat.com <ExternalLinkAltIcon/></a>.
+                                            <a rel="noopener noreferrer" target="_blank" href="https://securityblog.redhat.com">
+                                                securityblog.redhat.com <ExternalLinkAltIcon />
+                                            </a>.
                                         </ListItem>
                                     </List>
                                 </CardBody>
