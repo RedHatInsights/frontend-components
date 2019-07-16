@@ -50,7 +50,8 @@ class Filters extends Component {
             this.setState(
                 {
                     ...this.state,
-                    filter: value
+                    filter: value,
+                    page: 1
                 },
                 this.apply
             ),
