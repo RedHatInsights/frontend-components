@@ -18,15 +18,15 @@ export const FILTER_CATEGORIES = [
     }, {
         type: 'checkbox', title: 'Total risk', urlParam: 'total_risk', values: [
             { label: 'Critical', value: '4' },
-            { label: 'High', value: '3' },
-            { label: 'Medium', value: '2' },
+            { label: 'Important', value: '3' },
+            { label: 'Moderate', value: '2' },
             { label: 'Low', value: '1' }
         ]
     }, {
         type: 'checkbox', title: 'Risk of change', urlParam: 'risk', values: [
             { label: 'Critical', value: '4' },
-            { label: 'High', value: '3' },
-            { label: 'Medium', value: '2' },
+            { label: 'Important', value: '3' },
+            { label: 'Moderate', value: '2' },
             { label: 'Low', value: '1' }
         ]
     }
