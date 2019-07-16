@@ -19,7 +19,7 @@ import {
     ToolbarGroup,
     ToolbarItem
 } from '@patternfly/react-core';
-import { CheckIcon, SearchIcon, TimesCircleIcon } from '@patternfly/react-icons';
+import { CheckIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon  } from '@patternfly/react-icons';
 import { cellWidth, sortable, SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
 import { filter, flatten, sortBy } from 'lodash';
 import { global_success_color_200 } from '@patternfly/react-tokens';
@@ -30,7 +30,7 @@ import { Battery, FilterDropdown, TableToolbar } from '@redhat-cloud-services/fr
 
 import './insights.scss';
 import ReportDetails from './ReportDetails';
-import { ANSIBLE_ICON, FILTER_CATEGORIES, SYSTEM_FETCH_URL } from './Constants';
+import { ANSIBLE_ICON, FILTER_CATEGORIES, BASE_FETCH_URL } from './Constants';
 import MessageState from './MessageState';
 
 class InventoryRuleList extends Component {
@@ -49,19 +49,31 @@ class InventoryRuleList extends Component {
         activeReports: [],
         kbaDetailsData: [],
         filters: {},
-        searchValue: ''
+        searchValue: '',
+        accountSettings: {}
     };
 
-    componentDidMount () {
+    componentDidMount() {
+        this.fetchAccountSettings();
         this.fetchEntityRules();
     }
 
-    async fetchEntityRules () {
+    async fetchAccountSettings() {
+        try {
+            const settingsFetch = await fetch(`${BASE_FETCH_URL}account_setting`, { credentials: 'include' });
+            const accountSettings = await settingsFetch.json();
+            this.setState({ accountSettings });
+        } catch (error) {
+            console.warn(error, 'Account settings fetch failed.');
+        }
+    }
+
+    async fetchEntityRules() {
         const { entity } = this.props;
         const { filters, searchValue } = this.state;
         try {
             await insights.chrome.auth.getUser();
-            const reportsFetch = await fetch(`${SYSTEM_FETCH_URL}${entity.id}/reports/`, { credentials: 'include' });
+            const reportsFetch = await fetch(`${BASE_FETCH_URL}system/${entity.id}/reports/`, { credentials: 'include' });
             const reportsData = await reportsFetch.json();
             const activeRuleFirstReportsData = this.activeRuleFirst(reportsData);
             this.fetchKbaDetails(activeRuleFirstReportsData);
@@ -144,7 +156,7 @@ class InventoryRuleList extends Component {
                         {
                             title: <div className='pf-m-center ' key={ key }>
                                 { resolution.has_playbook &&
-                                <CheckIcon className='successColorOverride'/> }
+                                    <CheckIcon className='successColorOverride' /> }
                             </div>
                         }
                     ]
@@ -153,7 +165,7 @@ class InventoryRuleList extends Component {
                     parent: key,
                     fullWidth: true,
                     cells: [{
-                        title: <ReportDetails key={ `child-${key}` } report={ value } kbaDetail={ kbaDetail } kbaLoading={ kbaLoading }/>
+                        title: <ReportDetails key={ `child-${key}` } report={ value } kbaDetail={ kbaDetail } kbaLoading={ kbaLoading } />
                     }]
                 }
             ];
@@ -206,7 +218,7 @@ class InventoryRuleList extends Component {
             onToggle={ this.onKebabToggle }
             onSelect={ this.onKebabSelect }
             position={ DropdownPosition.right }
-            toggle={ <KebabToggle onToggle={ this.onKebabToggle }/> }
+            toggle={ <KebabToggle onToggle={ this.onKebabToggle } /> }
             isOpen={ isKebabOpen }
             isPlain
             dropdownItems={ [
@@ -268,7 +280,7 @@ class InventoryRuleList extends Component {
 
     onSelect = (event, isSelected, rowId) => {
         this.setState({
-            rows: this.state.rows .map((oneRow, rowKey) => (rowId === -1 || rowKey === rowId) ? { ...oneRow, selected: isSelected } : { ...oneRow })
+            rows: this.state.rows.map((oneRow, rowKey) => (rowId === -1 || rowKey === rowId) ? { ...oneRow, selected: isSelected } : { ...oneRow })
         });
     };
 
@@ -287,76 +299,91 @@ class InventoryRuleList extends Component {
             false;
     };
 
-    render () {
-        const { inventoryReportFetchStatus, rows, cols, sortBy, filters, searchValue, activeReports } = this.state;
+    render() {
+        const { inventoryReportFetchStatus, rows, cols, sortBy, filters, searchValue, activeReports, accountSettings } = this.state;
         const results = rows ? rows.length / 2 : 0;
+        const satelliteManaged = this.props.entity.satellite_id; // system is managed by satellite
+        const satelliteShowHosts = accountSettings.show_satellite_hosts; // setting to show satellite managed systems
+        const hideResultsSatelliteManaged = !satelliteShowHosts && satelliteManaged;
+
         return <Fragment>
             { inventoryReportFetchStatus === 'pending' ||
-            inventoryReportFetchStatus === 'fulfilled' &&
-            <TableToolbar className='pf-u-justify-content-space-between'>
-                <ToolbarGroup>
-                    <ToolbarItem className="pf-u-mr-md">
-                        <InputGroup>
-                            <TextInput name='search-input' id='inventory-insights-search-input' type='search' value={ searchValue }
-                                aria-label='inventory-insights-search-input' placeholder='Find a rule...' onChange={ this.onInputChange }
+                (inventoryReportFetchStatus === 'fulfilled' && hideResultsSatelliteManaged) ?
+                <></>
+                : <TableToolbar className='pf-u-justify-content-space-between'>
+                    <ToolbarGroup>
+                        <ToolbarItem className="pf-u-mr-md">
+                            <InputGroup>
+                                <TextInput name='search-input' id='inventory-insights-search-input' type='search' value={ searchValue }
+                                    aria-label='inventory-insights-search-input' placeholder='Find a rule...' onChange={ this.onInputChange }
+                                />
+                                <Button variant={ ButtonVariant.tertiary } aria-label='search button for search input'>
+                                    <SearchIcon />
+                                </Button>
+                            </InputGroup>
+                        </ToolbarItem>
+                        <ToolbarItem className="pf-u-mr-md">
+                            <FilterDropdown
+                                filters={ filters }
+                                addFilter={ this.onFilterChange }
+                                removeFilter={ this.onFilterChange }
+                                filterCategories={ FILTER_CATEGORIES }
                             />
-                            <Button variant={ ButtonVariant.tertiary } aria-label='search button for search input'>
-                                <SearchIcon/>
-                            </Button>
-                        </InputGroup>
-                    </ToolbarItem>
-                    <ToolbarItem className="pf-u-mr-md">
-                        <FilterDropdown
-                            filters={ filters }
-                            addFilter={ this.onFilterChange }
-                            removeFilter={ this.onFilterChange }
-                            filterCategories={ FILTER_CATEGORIES }
-                        />
-                    </ToolbarItem>
-                    <ToolbarItem className="pf-u-mr-md">
-                        <RemediationButton
-                            isDisabled={ this.getSelectedItems(rows).length === 0  }
-                            dataProvider={ this.processRemediation }
-                            onRemediationCreated={ result => this.props.addNotification(result.getNotification()) }/>
-                    </ToolbarItem>
-                    <ToolbarItem>{ this.buildKebab() }</ToolbarItem>
-                </ToolbarGroup>
-                <ToolbarGroup>
-                    <ToolbarItem>
-                        { results === 1 ? `${results} rule` : `${results} rules` }
-                    </ToolbarItem>
-                </ToolbarGroup>
-            </TableToolbar> }
+                        </ToolbarItem>
+                        <ToolbarItem className="pf-u-mr-md">
+                            <RemediationButton
+                                isDisabled={ this.getSelectedItems(rows).length === 0 }
+                                dataProvider={ this.processRemediation }
+                                onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } />
+                        </ToolbarItem>
+                        <ToolbarItem>{ this.buildKebab() }</ToolbarItem>
+                    </ToolbarGroup>
+                    <ToolbarGroup>
+                        <ToolbarItem>
+                            { results === 1 ? `${results} rule` : `${results} rules` }
+                        </ToolbarItem>
+                    </ToolbarGroup>
+                </TableToolbar> }
             { inventoryReportFetchStatus === 'pending' && (
                 <Card>
                     <CardBody>
-                        <List/>
+                        <List />
                     </CardBody>
                 </Card>
             ) }
-            { inventoryReportFetchStatus === 'fulfilled' && (activeReports.length > 0 ?
-                <Fragment><Table aria-label={ 'rule-table' } onCollapse={ this.handleOnCollapse } rows={ rows } cells={ cols } sortBy={ sortBy }
-                    onSort={ this.onSort }
-                    onSelect={ this.onSelect }>
-                    <TableHeader/>
-                    <TableBody/>
-                </Table>
-                { results === 0 &&
-                        <MessageState icon={ TimesCircleIcon } title='No matching systems found'
-                            text={ `This filter criteria matches no rules. Try changing your filter settings.` }/>
-                }
-                </Fragment>
+            { inventoryReportFetchStatus === 'fulfilled' && hideResultsSatelliteManaged ?
+                <MessageState icon={ PficonSatelliteIcon } title='Satellite managed system'
+                    text={ <span key='satellite managed system'>Insights results can not be displayed for this host, as the &quot;Hide
+                    Satellite Managed Systems&quot; setting has been enabled by an org admin.<br/>For more information on this setting
+                    and how to modify it,
+                    <a href='https://access.redhat.com/solutions/4281761' rel="noopener"> Please visit this Knowledgebase Article
+                        <ExternalLinkAltIcon />
+                    </a>.</span> } />
                 :
-                <Card>
-                    <CardBody>
-                        <MessageState icon={ CheckIcon } iconStyle={ { color: global_success_color_200.value } } title='No rule hits'
-                            text={ `No known rules affect this system` }/>
-                    </CardBody></Card>
-            ) }
+                (activeReports.length > 0 ?
+                    <Fragment><Table aria-label={ 'rule-table' } onCollapse={ this.handleOnCollapse } rows={ rows } cells={ cols } sortBy={ sortBy }
+                        onSort={ this.onSort }
+                        onSelect={ this.onSelect }>
+                        <TableHeader />
+                        <TableBody />
+                    </Table>
+                    { results === 0 &&
+                            <MessageState icon={ TimesCircleIcon } title='No matching systems found'
+                                text={ `This filter criteria matches no rules. Try changing your filter settings.` } />
+                    }
+                    </Fragment>
+                    :
+                    <Card>
+                        <CardBody>
+                            <MessageState icon={ CheckIcon } iconStyle={ { color: global_success_color_200.value } } title='No rule hits'
+                                text={ `No known rules affect this system` } />
+                        </CardBody></Card>
+                )
+            }
             { inventoryReportFetchStatus === 'failed' && this.props.entity &&
-            <MessageState icon={ TimesCircleIcon } title='Error getting rules'
-                text={ this.props.entity ? `There was an error fetching rules list for this entity. Refresh your page to try again.`
-                    : `This entity can not be found or might no longer be registered to Red Hat Insights.` }/>
+                <MessageState icon={ TimesCircleIcon } title='Error getting rules'
+                    text={ this.props.entity ? `There was an error fetching rules list for this entity. Refresh your page to try again.`
+                        : `This entity can not be found or might no longer be registered to Red Hat Insights.` } />
 
             }
         </Fragment>;
