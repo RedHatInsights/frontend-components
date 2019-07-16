@@ -4,9 +4,24 @@ import * as remediationsApi from '@redhat-cloud-services/frontend-components-rem
 import ComplianceRemediationButton from './ComplianceRemediationButton';
 import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
-import { Ansible, TableToolbar } from '@redhat-cloud-services/frontend-components';
+import { Ansible, EmptyTable, TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
-import { Checkbox, Level, LevelItem, Stack, StackItem, Pagination, PaginationVariant, Text, TextVariants } from '@patternfly/react-core';
+import {
+    Bullseye,
+    Checkbox,
+    EmptyState,
+    EmptyStateBody,
+    EmptyStateVariant,
+    Level,
+    LevelItem,
+    Stack,
+    StackItem,
+    Pagination,
+    PaginationVariant,
+    Text,
+    TextVariants,
+    Title
+} from '@patternfly/react-core';
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import flatMap from 'lodash/flatMap';
 import './compliance.scss';
@@ -15,6 +30,27 @@ import RulesComplianceFilter from './RulesComplianceFilter';
 const COMPLIANT_COLUMN = 3;
 const SEVERITY_COLUMN = 2;
 const POLICY_COLUMN = 1;
+const emptyRows = [{
+    cells: [{
+        title: (
+            <EmptyTable>
+                <Bullseye>
+                    <EmptyState variant={ EmptyStateVariant.full }>
+                        <Title headingLevel="h5" size="lg">
+                                No matching rules found
+                        </Title>
+                        <EmptyStateBody>
+                                This filter criteria matches no rules. <br /> Try changing your filter settings.
+                        </EmptyStateBody>
+                    </EmptyState>
+                </Bullseye>
+            </EmptyTable>
+        ),
+        props: {
+            colSpan: 5
+        }
+    }]
+}];
 
 class SystemRulesTable extends React.Component {
     constructor(props) {
@@ -411,8 +447,8 @@ class SystemRulesTable extends React.Component {
 
     render() {
         const { sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
-        const { loading, profileRules } = this.props;
-        const system = profileRules[0].system;
+        const { system, loading, profileRules } = this.props;
+
         if (loading) {
             return (
                 <Table
@@ -462,8 +498,8 @@ class SystemRulesTable extends React.Component {
                         onCollapse={ this.onCollapse }
                         onSort={ this.onSort }
                         sortBy={ sortBy }
-                        onSelect={ this.onSelect }
-                        rows={ currentRows }>
+                        onSelect={ (currentRows.length !== 0) && this.onSelect }
+                        rows={ (currentRows.length === 0) ? emptyRows : currentRows }>
                         <TableHeader />
                         <TableBody />
                     </Table>
@@ -490,7 +526,8 @@ SystemRulesTable.propTypes = {
     loading: propTypes.bool,
     hidePassed: propTypes.bool,
     severity: propTypes.array,
-    rows: propTypes.array
+    rows: propTypes.array,
+    system: propTypes.object
 };
 
 SystemRulesTable.defaultProps = {
