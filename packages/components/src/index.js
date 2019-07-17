@@ -6,7 +6,6 @@ export * from './Components/Pagination';
 export * from './Components/SimpleTableFilter';
 export * from './Components/Input';
 export * from './Components/Table';
-export * from './Components/Dropdown';
 export * from './Components/Battery';
 export * from './Components/Breadcrumbs';
 export * from './Components/Shield';

@@ -28,16 +28,8 @@ laborum.",
     isFilled={false}
   >
     <Button
-      aria-label={null}
       className="ins-c-collapse-button"
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="link"
     >
       Custom collapse
@@ -74,16 +66,8 @@ laborum.",
     isFilled={false}
   >
     <Button
-      aria-label={null}
       className="ins-c-collapse-button"
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="link"
     >
       Custom collapse
@@ -120,16 +104,8 @@ laborum.",
     isFilled={false}
   >
     <Button
-      aria-label={null}
       className="ins-c-collapse-button"
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="link"
     >
       Custom collapse
@@ -166,16 +142,8 @@ laborum.",
     isFilled={false}
   >
     <Button
-      aria-label={null}
       className="ins-c-collapse-button"
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="link"
     >
       Custom collapse
@@ -209,16 +177,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     isFilled={false}
   >
     <Button
-      aria-label={null}
       className="ins-c-expand-button"
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="link"
     >
       Custom expand
@@ -252,16 +212,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     isFilled={false}
   >
     <Button
-      aria-label={null}
       className="ins-c-expand-button"
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="link"
     >
       Custom expand
@@ -294,16 +246,8 @@ exports[`Truncate component should render correctly block with short length 1`] 
     isFilled={false}
   >
     <Button
-      aria-label={null}
       className="ins-c-expand-button"
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="link"
     >
       Read more
@@ -337,16 +281,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     isFilled={false}
   >
     <Button
-      aria-label={null}
       className="ins-c-expand-button"
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="link"
     >
       Read more
@@ -371,16 +307,8 @@ laborum.",
     widget-type="InsightsTruncateInline"
   />
   <Button
-    aria-label={null}
     className="ins-c-collapse-button"
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="link"
   >
     Custom collapse
@@ -404,16 +332,8 @@ laborum.",
     widget-type="InsightsTruncateInline"
   />
   <Button
-    aria-label={null}
     className="ins-c-collapse-button"
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="link"
   >
     Custom collapse
@@ -437,16 +357,8 @@ laborum.",
     widget-type="InsightsTruncateInline"
   />
   <Button
-    aria-label={null}
     className="ins-c-collapse-button"
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="link"
   >
     Custom collapse
@@ -470,16 +382,8 @@ laborum.",
     widget-type="InsightsTruncateInline"
   />
   <Button
-    aria-label={null}
     className="ins-c-collapse-button"
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="link"
   >
     Custom collapse
@@ -500,16 +404,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     widget-type="InsightsTruncateInline"
   />
   <Button
-    aria-label={null}
     className="ins-c-expand-button"
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="link"
   >
     Custom expand
@@ -530,16 +426,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     widget-type="InsightsTruncateInline"
   />
   <Button
-    aria-label={null}
     className="ins-c-expand-button"
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="link"
   >
     Custom expand
@@ -571,16 +459,8 @@ exports[`Truncate component should render correctly inline with short length 1`]
     isFilled={false}
   >
     <Button
-      aria-label={null}
       className="ins-c-expand-button"
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="link"
     >
       Read more
@@ -602,16 +482,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     widget-type="InsightsTruncateInline"
   />
   <Button
-    aria-label={null}
     className="ins-c-expand-button"
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="link"
   >
     Read more

@@ -2,17 +2,11 @@
 
 exports[`Breadcrumbs component should render correctly no current 1`] = `
 <Breadcrumb
-  aria-label="Breadcrumb"
   className="ins-c-breadcrumbs"
 >
   <BreadcrumbItem
-    className=""
-    component="a"
     data-key={0}
-    isActive={false}
     key="0"
-    target={null}
-    to={null}
   >
     <a
       aria-label="first"
@@ -22,13 +16,8 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
     </a>
   </BreadcrumbItem>
   <BreadcrumbItem
-    className=""
-    component="a"
     data-key={1}
-    isActive={false}
     key="1"
-    target={null}
-    to={null}
   >
     <a
       aria-label="second"
@@ -44,15 +33,10 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
 
 exports[`Breadcrumbs component should render correctly no items 1`] = `
 <Breadcrumb
-  aria-label="Breadcrumb"
   className="ins-c-breadcrumbs"
 >
   <BreadcrumbItem
-    className=""
-    component="a"
     isActive={true}
-    target={null}
-    to={null}
   >
      
     Something
@@ -63,17 +47,11 @@ exports[`Breadcrumbs component should render correctly no items 1`] = `
 
 exports[`Breadcrumbs component should render correctly with items and current item 1`] = `
 <Breadcrumb
-  aria-label="Breadcrumb"
   className="ins-c-breadcrumbs"
 >
   <BreadcrumbItem
-    className=""
-    component="a"
     data-key={0}
-    isActive={false}
     key="0"
-    target={null}
-    to={null}
   >
     <a
       aria-label="first"
@@ -83,13 +61,8 @@ exports[`Breadcrumbs component should render correctly with items and current it
     </a>
   </BreadcrumbItem>
   <BreadcrumbItem
-    className=""
-    component="a"
     data-key={1}
-    isActive={false}
     key="1"
-    target={null}
-    to={null}
   >
     <a
       aria-label="second"
@@ -101,11 +74,7 @@ exports[`Breadcrumbs component should render correctly with items and current it
     </a>
   </BreadcrumbItem>
   <BreadcrumbItem
-    className=""
-    component="a"
     isActive={true}
-    target={null}
-    to={null}
   >
      
     Something

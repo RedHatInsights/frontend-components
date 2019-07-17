@@ -3,29 +3,16 @@
 exports[`Notification Pagination component should render correctly 1`] = `
 <Card
   className="notification-item"
-  component="article"
 >
-  <CardBody
-    className=""
-    component="div"
-    isFilled={true}
-  >
+  <CardBody>
     <Level
       className=""
       gutter={null}
     >
       <LevelItem>
         <Button
-          aria-label={null}
           className="ins-c-pagination__clear-all"
-          component="button"
-          isActive={false}
-          isBlock={false}
-          isDisabled={false}
-          isFocus={false}
-          isHover={false}
           onClick={[Function]}
-          type="button"
           variant="link"
         >
           Clear all
@@ -33,8 +20,11 @@ exports[`Notification Pagination component should render correctly 1`] = `
       </LevelItem>
       <LevelItem>
         <Pagination
+          className=""
           dropDirection="down"
           itemCount={10}
+          itemsEnd={null}
+          itemsStart={null}
           onFirstClick={[Function]}
           onLastClick={[Function]}
           onNextClick={[Function]}

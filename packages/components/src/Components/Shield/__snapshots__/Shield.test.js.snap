@@ -186,15 +186,17 @@ exports[`Shield component should render where title is Hello world and hasToolti
 <Fragment>
   <Tooltip
     appendTo={[Function]}
-    className={null}
+    className=""
     content={
       <div>
         Hello world
       </div>
     }
+    distance={15}
     enableFlip={true}
     entryDelay={500}
     exitDelay={500}
+    isAppLauncher={false}
     maxWidth="18.75rem"
     position="top"
     trigger="mouseenter focus"
