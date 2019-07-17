@@ -21,7 +21,7 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/charts#readme",
     "peerDependencies": {
-        "@patternfly/react-core": "^3.2.6",
+        "@patternfly/react-core": ">=3.2.6",
         "@patternfly/react-icons": "^3.7.4",
         "prop-types": "^15.6.2",
         "react": "^16.5.1",
