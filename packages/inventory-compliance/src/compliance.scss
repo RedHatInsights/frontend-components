@@ -59,6 +59,6 @@
     word-wrap: break-word;
 }
 
-.compliance-rules-table {
+.compliance-rules-table td[data-label=Severity] {
     text-transform: capitalize;
 }
