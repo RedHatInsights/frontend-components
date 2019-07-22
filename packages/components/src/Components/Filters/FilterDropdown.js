@@ -26,14 +26,14 @@ class FilterDropdown extends Component {
     };
 
     render() {
-        const { hideCategories, filters, filterCategories } = this.props;
+        const { hideCategories, filters, filterCategories, label } = this.props;
         const { isOpen } = this.state;
 
         return (
             <Dropdown
                 className="ins-c-filter__dropdown"
                 onSelect={ this.onSelect }
-                toggle={ <DropdownToggle onToggle={ this.onToggle }>Filters</DropdownToggle> } isOpen={ isOpen }
+                toggle={ <DropdownToggle onToggle={ this.onToggle }>{ label }</DropdownToggle> } isOpen={ isOpen }
             >
                 <div>
                     { filterCategories.map(
@@ -81,14 +81,16 @@ FilterDropdown.propTypes = {
                 })
             )
         })
-    )
+    ),
+    label: PropTypes.string
 };
 
 FilterDropdown.defaultProps = {
     addFilter: Function.prototype,
     removeFilter: Function.prototype,
     hideCategories: [],
-    filters: {}
+    filters: {},
+    label: "Filters"
 };
 
 export default FilterDropdown;
