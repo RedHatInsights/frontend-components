@@ -21,9 +21,9 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-vulnerabilities#readme",
     "peerDependencies": {
-        "@patternfly/react-core": "^3.2.6",
-        "@patternfly/react-icons": "^3.7.4",
-        "@patternfly/react-table": "^2.1.6",
+        "@patternfly/react-core": ">=3.2.6",
+        "@patternfly/react-icons": ">=3.7.4",
+        "@patternfly/react-table": ">=2.1.6",
         "prop-types": "^15.6.2",
         "react": "^16.5.1",
         "react-dom": "^16.5.1",
