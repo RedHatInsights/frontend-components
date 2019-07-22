@@ -10,17 +10,16 @@ class ComplianceRemediationButton extends React.Component {
         super(props);
     }
 
-    /* eslint-disable camelcase */
-    formatRule = ({ title, ref_id }, profile, system) => ({
-        id: `ssg:rhel7|${profile}|${ref_id}`,
+    formatRule = ({ title, refId }, profile, system) => ({
+        id: `ssg:rhel7|${profile}|${refId}`,
         description: title,
         systems: [
             system
         ]
     })
 
-    findRule = (rules, ref_id) => {
-        return rules.find(rule => rule.ref_id === ref_id.split('|')[2]);
+    findRule = (rules, refId) => {
+        return rules.find(rule => rule.refId === refId.split('|')[2]);
     }
 
     uniqIssuesBySystem = (issues) => {
@@ -32,18 +31,18 @@ class ComplianceRemediationButton extends React.Component {
         });
     }
 
-    removeRefIdPrefix = (ref_id) => {
-        const splitRefId = ref_id.split('xccdf_org.ssgproject.content_profile_')[1];
+    removeRefIdPrefix = (refId) => {
+        const splitRefId = refId.toLowerCase().split('xccdf_org.ssgproject.content_profile_')[1];
         if (splitRefId) {
             return splitRefId;
         } else {
             // Sometimes the reports contain IDs like "stig-rhel7-disa" which we can pass
             // directly
-            return ref_id;
+            return refId;
         }
     }
 
-    rulesWithRemediations = (rules, system_id) => {
+    rulesWithRemediations = (rules, systemId) => {
         return window.insights.chrome.auth.getUser()
         .then(() => {
             return fetch('/api/remediations/v1/resolutions', {
@@ -51,8 +50,8 @@ class ComplianceRemediationButton extends React.Component {
                 headers: { 'Content-Type': 'application/json; chartset=utf-8' },
                 body: JSON.stringify({
                     issues: rules.map(rule => `ssg:rhel7|` +
-                                      `${this.removeRefIdPrefix(rule.profiles[0].ref_id)}|` +
-                                      `${rule.ref_id}`)
+                                      `${this.removeRefIdPrefix(rule.profiles[0].refId)}|` +
+                                      `${rule.refId}`)
                 })
             }).then((response) => {
                 if (!response.ok) {
@@ -62,7 +61,7 @@ class ComplianceRemediationButton extends React.Component {
 
                 return response.json();
             }).then(response => Object.keys(response).filter(rule => response[rule]).map(
-                rule_ref_id => this.formatRule(this.findRule(rules, rule_ref_id), rule_ref_id.split('|')[1], system_id)
+                ruleRefId => this.formatRule(this.findRule(rules, ruleRefId), ruleRefId.split('|')[1], systemId)
             ));
         });
     }
@@ -84,7 +83,6 @@ class ComplianceRemediationButton extends React.Component {
             return result;
         });
     }
-    /* eslint-enable camelcase */
 
     render() {
         const { addNotification, allSystems, selectedRules } = this.props;
