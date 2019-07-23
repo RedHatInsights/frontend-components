@@ -112,19 +112,17 @@ exports[`Notification portal should render notifications given as direct props 1
               <div
                 class="pf-c-alert__description"
               >
-                <p>
-                  Some meaningfull description
-                </p>
+                Some meaningfull description
               </div>
               <div
-                class="pf-c-alert__action notification-item"
+                class="pf-c-alert__action"
               >
                 <button
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
                   title="Notification title"
                   type="button"
-                  variantlabel="Success"
+                  variantlabel="Success alert:"
                 >
                   <svg
                     aria-hidden="true"
@@ -183,19 +181,17 @@ exports[`Notification portal should render notifications given as direct props 1
               <div
                 class="pf-c-alert__description"
               >
-                <p>
-                  Some meaningfull description
-                </p>
+                Some meaningfull description
               </div>
               <div
-                class="pf-c-alert__action notification-item"
+                class="pf-c-alert__action"
               >
                 <button
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
                   title="Notification title"
                   type="button"
-                  variantlabel="Success"
+                  variantlabel="Success alert:"
                 >
                   <svg
                     aria-hidden="true"
@@ -235,15 +231,7 @@ exports[`Notification portal should render notifications given as direct props 1
             action={
               <Button
                 aria-label="close-notification"
-                className=""
-                component="button"
-                isActive={false}
-                isBlock={false}
-                isDisabled={false}
-                isFocus={false}
-                isHover={false}
                 onClick={[Function]}
-                type="button"
                 variant="plain"
               >
                 <CloseIcon
@@ -257,7 +245,6 @@ exports[`Notification portal should render notifications given as direct props 1
             id="0"
             title="Notification title"
             variant="success"
-            variantLabel={null}
           >
             <div
               aria-label="Success Alert"
@@ -265,7 +252,6 @@ exports[`Notification portal should render notifications given as direct props 1
               id="0"
             >
               <AlertIcon
-                className=""
                 variant="success"
               >
                 <div
@@ -273,6 +259,7 @@ exports[`Notification portal should render notifications given as direct props 1
                 >
                   <CheckCircleIcon
                     color="currentColor"
+                    noVerticalAlign={false}
                     size="sm"
                     title={null}
                   >
@@ -311,27 +298,17 @@ exports[`Notification portal should render notifications given as direct props 1
               <div
                 className="pf-c-alert__description"
               >
-                <p>
-                  Some meaningfull description
-                </p>
+                Some meaningfull description
               </div>
               <div
-                className="pf-c-alert__action notification-item"
+                className="pf-c-alert__action"
               >
                 <Button
                   aria-label="close-notification"
-                  className=""
-                  component="button"
-                  isActive={false}
-                  isBlock={false}
-                  isDisabled={false}
-                  isFocus={false}
-                  isHover={false}
                   onClick={[Function]}
                   title="Notification title"
-                  type="button"
                   variant="plain"
-                  variantLabel="Success"
+                  variantLabel="Success alert:"
                 >
                   <button
                     aria-disabled={null}
@@ -342,7 +319,7 @@ exports[`Notification portal should render notifications given as direct props 1
                     tabIndex={null}
                     title="Notification title"
                     type="button"
-                    variantLabel="Success"
+                    variantLabel="Success alert:"
                   >
                     <CloseIcon
                       color="currentColor"
@@ -493,19 +470,17 @@ exports[`Notification portal should render notifications given as direct props o
               <div
                 class="pf-c-alert__description"
               >
-                <p>
-                  Some meaningfull description
-                </p>
+                Some meaningfull description
               </div>
               <div
-                class="pf-c-alert__action notification-item"
+                class="pf-c-alert__action"
               >
                 <button
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
                   title="Notification title"
                   type="button"
-                  variantlabel="Success"
+                  variantlabel="Success alert:"
                 >
                   <svg
                     aria-hidden="true"
@@ -564,19 +539,17 @@ exports[`Notification portal should render notifications given as direct props o
               <div
                 class="pf-c-alert__description"
               >
-                <p>
-                  Some meaningfull description
-                </p>
+                Some meaningfull description
               </div>
               <div
-                class="pf-c-alert__action notification-item"
+                class="pf-c-alert__action"
               >
                 <button
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
                   title="Notification title"
                   type="button"
-                  variantlabel="Success"
+                  variantlabel="Success alert:"
                 >
                   <svg
                     aria-hidden="true"
@@ -635,19 +608,17 @@ exports[`Notification portal should render notifications given as direct props o
               <div
                 class="pf-c-alert__description"
               >
-                <p>
-                  Some meaningfull description
-                </p>
+                Some meaningfull description
               </div>
               <div
-                class="pf-c-alert__action notification-item"
+                class="pf-c-alert__action"
               >
                 <button
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
                   title="Notification title"
                   type="button"
-                  variantlabel="Success"
+                  variantlabel="Success alert:"
                 >
                   <svg
                     aria-hidden="true"
@@ -687,15 +658,7 @@ exports[`Notification portal should render notifications given as direct props o
             action={
               <Button
                 aria-label="close-notification"
-                className=""
-                component="button"
-                isActive={false}
-                isBlock={false}
-                isDisabled={false}
-                isFocus={false}
-                isHover={false}
                 onClick={[Function]}
-                type="button"
                 variant="plain"
               >
                 <CloseIcon
@@ -709,7 +672,6 @@ exports[`Notification portal should render notifications given as direct props o
             id="Direct notification"
             title="Notification title"
             variant="success"
-            variantLabel={null}
           >
             <div
               aria-label="Success Alert"
@@ -717,7 +679,6 @@ exports[`Notification portal should render notifications given as direct props o
               id="Direct notification"
             >
               <AlertIcon
-                className=""
                 variant="success"
               >
                 <div
@@ -725,6 +686,7 @@ exports[`Notification portal should render notifications given as direct props o
                 >
                   <CheckCircleIcon
                     color="currentColor"
+                    noVerticalAlign={false}
                     size="sm"
                     title={null}
                   >
@@ -763,27 +725,17 @@ exports[`Notification portal should render notifications given as direct props o
               <div
                 className="pf-c-alert__description"
               >
-                <p>
-                  Some meaningfull description
-                </p>
+                Some meaningfull description
               </div>
               <div
-                className="pf-c-alert__action notification-item"
+                className="pf-c-alert__action"
               >
                 <Button
                   aria-label="close-notification"
-                  className=""
-                  component="button"
-                  isActive={false}
-                  isBlock={false}
-                  isDisabled={false}
-                  isFocus={false}
-                  isHover={false}
                   onClick={[Function]}
                   title="Notification title"
-                  type="button"
                   variant="plain"
-                  variantLabel="Success"
+                  variantLabel="Success alert:"
                 >
                   <button
                     aria-disabled={null}
@@ -794,7 +746,7 @@ exports[`Notification portal should render notifications given as direct props o
                     tabIndex={null}
                     title="Notification title"
                     type="button"
-                    variantLabel="Success"
+                    variantLabel="Success alert:"
                   >
                     <CloseIcon
                       color="currentColor"
@@ -934,19 +886,17 @@ exports[`Notification portal should render notifications given from store 1`] = 
               <div
                 class="pf-c-alert__description"
               >
-                <p>
-                  Some meaningfull description
-                </p>
+                Some meaningfull description
               </div>
               <div
-                class="pf-c-alert__action notification-item"
+                class="pf-c-alert__action"
               >
                 <button
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
                   title="Notification title"
                   type="button"
-                  variantlabel="Success"
+                  variantlabel="Success alert:"
                 >
                   <svg
                     aria-hidden="true"
@@ -986,15 +936,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
             action={
               <Button
                 aria-label="close-notification"
-                className=""
-                component="button"
-                isActive={false}
-                isBlock={false}
-                isDisabled={false}
-                isFocus={false}
-                isHover={false}
                 onClick={[Function]}
-                type="button"
                 variant="plain"
               >
                 <CloseIcon
@@ -1008,7 +950,6 @@ exports[`Notification portal should render notifications given from store 1`] = 
             id="0"
             title="Notification title"
             variant="success"
-            variantLabel={null}
           >
             <div
               aria-label="Success Alert"
@@ -1016,7 +957,6 @@ exports[`Notification portal should render notifications given from store 1`] = 
               id="0"
             >
               <AlertIcon
-                className=""
                 variant="success"
               >
                 <div
@@ -1024,6 +964,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
                 >
                   <CheckCircleIcon
                     color="currentColor"
+                    noVerticalAlign={false}
                     size="sm"
                     title={null}
                   >
@@ -1062,27 +1003,17 @@ exports[`Notification portal should render notifications given from store 1`] = 
               <div
                 className="pf-c-alert__description"
               >
-                <p>
-                  Some meaningfull description
-                </p>
+                Some meaningfull description
               </div>
               <div
-                className="pf-c-alert__action notification-item"
+                className="pf-c-alert__action"
               >
                 <Button
                   aria-label="close-notification"
-                  className=""
-                  component="button"
-                  isActive={false}
-                  isBlock={false}
-                  isDisabled={false}
-                  isFocus={false}
-                  isHover={false}
                   onClick={[Function]}
                   title="Notification title"
-                  type="button"
                   variant="plain"
-                  variantLabel="Success"
+                  variantLabel="Success alert:"
                 >
                   <button
                     aria-disabled={null}
@@ -1093,7 +1024,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
                     tabIndex={null}
                     title="Notification title"
                     type="button"
-                    variantLabel="Success"
+                    variantLabel="Success alert:"
                   >
                     <CloseIcon
                       color="currentColor"

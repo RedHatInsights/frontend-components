@@ -12,16 +12,7 @@ exports[`SimpleTableFilter component should render correctly with custom filter 
   />
   <Button
     action="filter"
-    aria-label={null}
-    className=""
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="secondary"
   >
     Custom title
@@ -41,16 +32,7 @@ exports[`SimpleTableFilter component should render correctly with custom placeho
   />
   <Button
     action="filter"
-    aria-label={null}
-    className=""
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="secondary"
   >
     Filter
@@ -70,16 +52,7 @@ exports[`SimpleTableFilter component should render correctly with filter button 
   />
   <Button
     action="filter"
-    aria-label={null}
-    className=""
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="secondary"
   >
     Filter
@@ -96,19 +69,22 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
     direction="down"
     dropdownItems={
       Array [
-        <Item
+        <DropdownItem
           className=""
           component="button"
           data-key="one"
-          href="#"
+          href=""
           isDisabled={false}
           isHovered={false}
           onClick={[Function]}
+          tooltip={null}
+          tooltipProps={Object {}}
         >
           one
-        </Item>,
+        </DropdownItem>,
       ]
     }
+    isGrouped={false}
     isOpen={false}
     isPlain={false}
     onSelect={[Function]}
@@ -138,16 +114,7 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
   />
   <Button
     action="filter"
-    aria-label={null}
-    className=""
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="secondary"
   >
     Filter
@@ -164,19 +131,22 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
     direction="down"
     dropdownItems={
       Array [
-        <Item
+        <DropdownItem
           className=""
           component="button"
           data-key="one"
-          href="#"
+          href=""
           isDisabled={false}
           isHovered={false}
           onClick={[Function]}
+          tooltip={null}
+          tooltipProps={Object {}}
         >
           one
-        </Item>,
+        </DropdownItem>,
       ]
     }
+    isGrouped={false}
     isOpen={false}
     isPlain={false}
     onSelect={[Function]}
@@ -206,16 +176,7 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
   />
   <Button
     action="filter"
-    aria-label={null}
-    className=""
-    component="button"
-    isActive={false}
-    isBlock={false}
-    isDisabled={false}
-    isFocus={false}
-    isHover={false}
     onClick={[Function]}
-    type="button"
     variant="secondary"
   >
     Filter

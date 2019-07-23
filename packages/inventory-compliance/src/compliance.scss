@@ -22,6 +22,10 @@
     color: var(--pf-global--danger-color--100);
 }
 
+.ins-u-warning {
+    color: var(--pf-global--warning-color--100);
+}
+
 .margin-bottom {
     &-none {
         margin-bottom: 0;
@@ -59,6 +63,6 @@
     word-wrap: break-word;
 }
 
-.compliance-rules-table {
+.compliance-rules-table td[data-label=Severity] {
     text-transform: capitalize;
 }
