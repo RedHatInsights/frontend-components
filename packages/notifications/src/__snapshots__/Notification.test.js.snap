@@ -7,7 +7,6 @@ exports[`Notification component pagination should render correctly 1`] = `
   id="Foo"
   title="Bar"
   variant="success"
-  variantLabel={null}
 >
   description
 </Alert>
@@ -20,7 +19,6 @@ exports[`Notification component should render correctly 1`] = `
   id="Foo"
   title="Bar"
   variant="success"
-  variantLabel={null}
 >
   description
 </Alert>
@@ -33,7 +31,6 @@ exports[`Notification component should render correctly with HTML description 1`
   id="Foo"
   title="Bar"
   variant="success"
-  variantLabel={null}
 >
   Some textanother
 </Alert>
@@ -46,7 +43,6 @@ exports[`Notification component should render correctly with HTML title 1`] = `
   id="Foo"
   title="Some textanother"
   variant="success"
-  variantLabel={null}
 >
   description
 </Alert>
@@ -57,15 +53,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
   action={
     <Button
       aria-label="close-notification"
-      className=""
-      component="button"
-      isActive={false}
-      isBlock={false}
-      isDisabled={false}
-      isFocus={false}
-      isHover={false}
       onClick={[Function]}
-      type="button"
       variant="plain"
     >
       <CloseIcon
@@ -79,7 +67,6 @@ exports[`Notification component should render correctly with dismiss button 1`] 
   id="Foo"
   title="Bar"
   variant="success"
-  variantLabel={null}
 />
 `;
 
@@ -90,6 +77,5 @@ exports[`Notification component should render correctly withouth description 1`]
   id="Foo"
   title="Bar"
   variant="success"
-  variantLabel={null}
 />
 `;

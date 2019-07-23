@@ -5,6 +5,7 @@ exports[`FilterDropdown component should render 1`] = `
   className="ins-c-filter__dropdown"
   direction="down"
   dropdownItems={Array []}
+  isGrouped={false}
   isOpen={false}
   isPlain={false}
   onSelect={[Function]}

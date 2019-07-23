@@ -65,9 +65,7 @@ exports[`RowLoader should render correctly 1`] = `
 `;
 
 exports[`parseCvssScore cvssV2 should render correct tooltip content 1`] = `
-<TooltipContent
-  className={null}
->
+<TooltipContent>
   <div
     className="pf-c-tooltip__content"
   >
@@ -84,9 +82,7 @@ exports[`parseCvssScore cvssV2 should render value in span 1`] = `
 `;
 
 exports[`parseCvssScore cvssV2 with labels should render correct tooltip content 1`] = `
-<TooltipContent
-  className={null}
->
+<TooltipContent>
   <div
     className="pf-c-tooltip__content"
   >
@@ -112,9 +108,7 @@ exports[`parseCvssScore no cvss should render N/A in span 1`] = `
 `;
 
 exports[`parseCvssScore no cvss should render correct tooltip content 1`] = `
-<TooltipContent
-  className={null}
->
+<TooltipContent>
   <div
     className="pf-c-tooltip__content"
   >

@@ -6,16 +6,7 @@ exports[`Wizard component should render correctly default 1`] = `
     Array [
       <Button
         action="cancel"
-        aria-label={null}
-        className=""
-        component="button"
-        isActive={false}
-        isBlock={false}
-        isDisabled={false}
-        isFocus={false}
-        isHover={false}
         onClick={[Function]}
-        type="button"
         variant="secondary"
       >
         Cancel
@@ -23,16 +14,8 @@ exports[`Wizard component should render correctly default 1`] = `
       false,
       <Button
         action="next"
-        aria-label={null}
-        className=""
-        component="button"
-        isActive={false}
-        isBlock={false}
         isDisabled={false}
-        isFocus={false}
-        isHover={false}
         onClick={[Function]}
-        type="button"
         variant="primary"
       >
         Next
@@ -72,7 +55,6 @@ exports[`Wizard component should render correctly default 1`] = `
   onClose={[Function]}
   onKeyPress={[Function]}
   title="Some title"
-  width={null}
 >
   <div
     id="first"
@@ -88,16 +70,7 @@ exports[`Wizard component should render correctly large 1`] = `
     Array [
       <Button
         action="cancel"
-        aria-label={null}
-        className=""
-        component="button"
-        isActive={false}
-        isBlock={false}
-        isDisabled={false}
-        isFocus={false}
-        isHover={false}
         onClick={[Function]}
-        type="button"
         variant="secondary"
       >
         Cancel
@@ -105,16 +78,8 @@ exports[`Wizard component should render correctly large 1`] = `
       false,
       <Button
         action="next"
-        aria-label={null}
-        className=""
-        component="button"
-        isActive={false}
-        isBlock={false}
         isDisabled={false}
-        isFocus={false}
-        isHover={false}
         onClick={[Function]}
-        type="button"
         variant="primary"
       >
         Next
@@ -154,7 +119,6 @@ exports[`Wizard component should render correctly large 1`] = `
   onClose={[Function]}
   onKeyPress={[Function]}
   title="Some title"
-  width={null}
 >
   <div
     id="first"
@@ -170,16 +134,7 @@ exports[`Wizard component should render correctly one page 1`] = `
     Array [
       <Button
         action="cancel"
-        aria-label={null}
-        className=""
-        component="button"
-        isActive={false}
-        isBlock={false}
-        isDisabled={false}
-        isFocus={false}
-        isHover={false}
         onClick={[Function]}
-        type="button"
         variant="secondary"
       >
         Cancel
@@ -187,16 +142,8 @@ exports[`Wizard component should render correctly one page 1`] = `
       false,
       <Button
         action="confirm"
-        aria-label={null}
-        className=""
-        component="button"
-        isActive={false}
-        isBlock={false}
         isDisabled={false}
-        isFocus={false}
-        isHover={false}
         onClick={[Function]}
-        type="button"
         variant="primary"
       >
         Confirm
@@ -219,7 +166,6 @@ exports[`Wizard component should render correctly one page 1`] = `
   onClose={[Function]}
   onKeyPress={[Function]}
   title="Some title"
-  width={null}
 >
   <div>
     One

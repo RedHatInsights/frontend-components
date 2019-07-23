@@ -59,15 +59,17 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
 >
   <Tooltip
     appendTo={[Function]}
-    className={null}
+    className=""
     content={
       <div>
         Lorem Impsum
       </div>
     }
+    distance={15}
     enableFlip={true}
     entryDelay={500}
     exitDelay={500}
+    isAppLauncher={false}
     maxWidth="50vw"
     position="top"
     trigger="mouseenter focus"
@@ -81,12 +83,8 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           className="pf-c-tooltip"
           role="tooltip"
         >
-          <TooltipArrow
-            className={null}
-          />
-          <TooltipContent
-            className={null}
-          >
+          <TooltipArrow />
+          <TooltipContent>
             <div>
               Lorem Impsum
             </div>
@@ -150,16 +148,12 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           className="pf-c-tooltip"
           role="tooltip"
         >
-          <TooltipArrow
-            className={null}
-          >
+          <TooltipArrow>
             <div
               className="pf-c-tooltip__arrow"
             />
           </TooltipArrow>
-          <TooltipContent
-            className={null}
-          >
+          <TooltipContent>
             <div
               className="pf-c-tooltip__content"
             >
