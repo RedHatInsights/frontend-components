@@ -46,9 +46,17 @@ query System($systemId: String!){
                 refId
                 description
                 compliant(systemId: $systemId)
+                identifier {
+                    label
+                    system
+                }
+                references {
+                    label
+                    href
+                }
             }
         }
-	}
+    }
 }
 `;
 
