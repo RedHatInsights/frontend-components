@@ -2,7 +2,6 @@
 
 import { FilterDropdown, SimpleTableFilter } from '@redhat-cloud-services/frontend-components';
 import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
-import * as _ from 'lodash';
 import debounce from 'lodash/debounce';
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -11,77 +10,49 @@ import { filtersCVSSScore, filtersPublishDate, filtersSeverity, filtersShowAll }
 import { fetchSystemCveStatusList } from '../redux/actions';
 
 class Filters extends Component {
-    state = { show_all: 'true', publish_date: 'all', cvss_filter: 'all' };
-
-    difference(object, base) {
-        function changes(object, base) {
-            return _.transform(object, function(result, value, key) {
-                if (!_.isEqual(value, base[key])) {
-                    result[key] = _.isObject(value) && _.isObject(base[key]) ? changes(value, base[key]) : value;
-                }
-            });
-        }
-
-        return changes(object, base);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        if (nextState === this.state) {
-            return false;
-        }
-
-        return true;
-    }
-
     componentDidMount() {
         this.props.showStatusList && this.props.fetchStatusList();
         const urlParams = new URLSearchParams(this.props.location.search);
         const cvss_filter = urlParams.get('cvss_filter');
-        cvss_filter && this.setState({ ...this.state, cvss_filter }, this.apply);
+        cvss_filter && this.props.apply({ cvss_filter });
         cvss_filter && history.pushState(null, null, window.location.href.split('?')[0]);
     }
 
-    apply = () => {
-        this.props.apply(this.state);
-    };
-
     changeFilterValue = debounce(
         value =>
-            this.setState(
-                {
-                    ...this.state,
-                    filter: value,
-                    page: 1
-                },
-                this.apply
-            ),
+            this.props.apply({
+                filter: value,
+                page: 1
+            }),
         400
     );
 
     addFilter = (param, value, type) => {
+        const { filterValues, apply } = this.props;
         let newFilter;
         if (type === 'radio' || param === 'show_all') {
             newFilter = { [param]: value };
         } else {
-            newFilter = this.state[param] ? { [param]: `${this.state[param]},${value}` } : { [param]: value };
+            newFilter = filterValues[param] ? { [param]: `${filterValues[param]},${value}` } : { [param]: value };
         }
 
-        this.setState({ ...this.state, ...newFilter, page: 1 }, this.apply);
+        apply({ ...newFilter, page: 1 });
     };
 
     removeFilter = (key, value) => {
+        const { filterValues, apply } = this.props;
         const newFilter = {
-            [key]: this.state[key]
+            [key]: filterValues[key]
             .split(',')
             .filter(item => item !== value)
             .join(',')
         };
 
         if (newFilter.length !== 0) {
-            this.setState({ ...this.state, ...newFilter, page: 1 }, this.apply);
+            apply({ ...newFilter, page: 1 });
         } else {
-            const filter = { ...this.state, [key]: undefined };
-            this.setState({ ...this.state, ...filter, page: 1 }, this.apply);
+            const filter = { ...filterValues, [key]: undefined };
+            apply({ ...filter, page: 1 });
         }
     };
 
@@ -104,7 +75,7 @@ class Filters extends Component {
                     <FilterDropdown
                         addFilter={ this.addFilter }
                         removeFilter={ this.removeFilter }
-                        filters={ this.state }
+                        filters={ this.props.filterValues }
                         filterCategories={ [
                             showAllCheckbox && filtersShowAll,
                             filtersCVSSScore,
@@ -120,6 +91,7 @@ class Filters extends Component {
 }
 
 Filters.propTypes = {
+    filterValues: propTypes.object,
     showAllCheckbox: propTypes.bool,
     showStatusList: propTypes.bool,
     statusList: propTypes.object,

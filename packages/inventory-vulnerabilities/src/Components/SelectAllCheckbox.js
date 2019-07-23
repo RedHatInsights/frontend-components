@@ -1,31 +1,6 @@
-import { Dropdown, DropdownItem, DropdownToggle } from '@patternfly/react-core';
+import { Checkbox, Dropdown, DropdownItem, DropdownToggle } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
-
-class IndeterminateCheckbox extends React.Component {
-    componentDidMount() {
-        const { indeterminate } = this.props;
-        if (indeterminate) {
-            this._setIndeterminate(true);
-        }
-    }
-
-    componentDidUpdate(previousProps) {
-        if (previousProps.indeterminate !== this.props.indeterminate) {
-            this._setIndeterminate(this.props.indeterminate);
-        }
-    }
-
-    _setIndeterminate(indeterminate) {
-        const node = this.node;
-        node.indeterminate = indeterminate;
-    }
-
-    render() {
-        const { indeterminate, type, ...props } = this.props;
-        return <input type="checkbox" { ...props } ref={ node => (this.node = node) } />;
-    }
-}
 
 class SelectAllCheckbox extends Component {
     state = { isOpen: false };
@@ -44,7 +19,7 @@ class SelectAllCheckbox extends Component {
         });
     };
 
-    onSelect = event => {
+    onSelect = () => {
         this.setState({
             isOpen: !this.state.isOpen
         });
@@ -52,7 +27,7 @@ class SelectAllCheckbox extends Component {
 
     selectPage = () => {
         const {
-            cves: { meta, data },
+            cves: { data },
             selectorHandler
         } = this.props;
         const cveNames = data.map(cve => cve.id);
@@ -61,7 +36,7 @@ class SelectAllCheckbox extends Component {
 
     selectAll = () => {
         const {
-            cves: { meta, data },
+            cves: { meta },
             selectorHandler,
             fetchResource
         } = this.props;
@@ -80,9 +55,7 @@ class SelectAllCheckbox extends Component {
     };
 
     onCheckboxChange = () => {
-        const { selectedItems, cves, fetchResource } = this.props;
-        const { meta } = cves;
-        const { isOpen } = this.state;
+        const { selectedItems } = this.props;
         if (selectedItems === 0) {
             this.selectAll();
         } else {
@@ -113,10 +86,9 @@ class SelectAllCheckbox extends Component {
                 toggle={
                     <DropdownToggle
                         splitButtonItems={ [
-                            <IndeterminateCheckbox
+                            <Checkbox
                                 key={ 'selectAllcheckbox' }
-                                checked={ selectedItems === meta.total_items }
-                                indeterminate={ selectedItems !== 0 && selectedItems !== meta.total_items }
+                                isChecked={ meta.total_items === selectedItems ? true : selectedItems === 0 ? false : null }
                                 onChange={ this.onCheckboxChange }
                             />,
                             checkboxlabel

@@ -5,8 +5,6 @@ import propTypes from 'prop-types';
 import React, { Component } from 'react';
 
 class PaginationWrapper extends Component {
-    state = {};
-
     shouldComponentUpdate(nextProps) {
         if (nextProps.meta === this.props.meta) {
             return false;
@@ -14,13 +12,9 @@ class PaginationWrapper extends Component {
 
         return true;
     }
-    changePage = (_event, pageNumber) => this.setState({ ...this.state, page: pageNumber }, this.apply);
+    changePage = (_event, pageNumber) => this.props.apply({ page: pageNumber });
 
-    setPageSize = (_event, perPage) => this.setState({ ...this.state, page_size: perPage, page: 1 }, this.apply);
-
-    apply = () => {
-        this.props.apply(this.state);
-    };
+    setPageSize = (_event, perPage) => this.props.apply({ page_size: perPage, page: 1 });
 
     render() {
         const { meta } = this.props;
