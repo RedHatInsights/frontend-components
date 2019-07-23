@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Final wizard Renders renders errored step correctly 1`] = `
+<Wizard
+  ariaLabelCloseButton="Close"
+  ariaLabelNav="Steps"
+  backButtonText="Back"
+  cancelButtonText="Cancel"
+  className=""
+  description="You are importing data into this platform"
+  footer={null}
+  hasBodyPadding={true}
+  height={null}
+  isCompactNav={false}
+  isFullHeight={false}
+  isFullWidth={false}
+  isOpen={true}
+  nextButtonText="Next"
+  onBack={null}
+  onClose={[MockFunction]}
+  onGoToStep={null}
+  onNext={null}
+  startAtStep={1}
+  steps={
+    Array [
+      Object {
+        "component": <ErroredStep
+          onClose={[MockFunction]}
+          onRetry={[MockFunction]}
+        />,
+        "isFinishedStep": true,
+        "name": "Finish",
+      },
+    ]
+  }
+  title="Add a source"
+  width={null}
+/>
+`;
+
+exports[`Final wizard Renders renders finished step correctly 1`] = `
+<Wizard
+  ariaLabelCloseButton="Close"
+  ariaLabelNav="Steps"
+  backButtonText="Back"
+  cancelButtonText="Cancel"
+  className=""
+  description="You are importing data into this platform"
+  footer={null}
+  hasBodyPadding={true}
+  height={null}
+  isCompactNav={false}
+  isFullHeight={false}
+  isFullWidth={false}
+  isOpen={true}
+  nextButtonText="Next"
+  onBack={null}
+  onClose={[MockFunction]}
+  onGoToStep={null}
+  onNext={null}
+  startAtStep={1}
+  steps={
+    Array [
+      Object {
+        "component": <FinishedStep
+          onClose={[MockFunction]}
+          successfulMessage="Message"
+        />,
+        "isFinishedStep": true,
+        "name": "Finish",
+      },
+    ]
+  }
+  title="Add a source"
+  width={null}
+/>
+`;
+
+exports[`Final wizard Renders renders loading step correctly 1`] = `
+<Wizard
+  ariaLabelCloseButton="Close"
+  ariaLabelNav="Steps"
+  backButtonText="Back"
+  cancelButtonText="Cancel"
+  className=""
+  description="You are importing data into this platform"
+  footer={null}
+  hasBodyPadding={true}
+  height={null}
+  isCompactNav={false}
+  isFullHeight={false}
+  isFullWidth={false}
+  isOpen={true}
+  nextButtonText="Next"
+  onBack={null}
+  onClose={[MockFunction]}
+  onGoToStep={null}
+  onNext={null}
+  startAtStep={1}
+  steps={
+    Array [
+      Object {
+        "component": <LoadingStep
+          customText="Source is being created"
+        />,
+        "isFinishedStep": true,
+        "name": "Finish",
+      },
+    ]
+  }
+  title="Add a source"
+  width={null}
+/>
+`;

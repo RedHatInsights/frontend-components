@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddSourceButton renders correctly with sourceTypes 1`] = `
+<SourceAddModal
+  onCancel={[Function]}
+  onSubmit={[Function]}
+  sourceTypes={
+    Array [
+      Object {
+        "id": "1",
+        "name": "openshift",
+        "product_name": "OpenShift Container Platform",
+        "schema": Object {
+          "fields": Array [
+            Object {
+              "component": "text-field",
+              "name": "field",
+            },
+          ],
+          "title": "openshift",
+        },
+      },
+      Object {
+        "id": "2",
+        "name": "amazon",
+        "product_name": "Amazon Web Services",
+        "schema": Object {
+          "fields": Array [
+            Object {
+              "component": "text-field",
+              "name": "field",
+            },
+          ],
+          "title": "AWS",
+        },
+      },
+      Object {
+        "id": "3",
+        "name": "ansible-tower",
+        "product_name": "Ansible Tower",
+        "schema": Object {
+          "fields": Array [
+            Object {
+              "component": "text-field",
+              "name": "field",
+            },
+          ],
+          "title": "AnsibleTower",
+        },
+      },
+    ]
+  }
+  values={Object {}}
+/>
+`;
+
+exports[`AddSourceButton renders correctly without sourceTypes 1`] = `
+<SourceAddModal
+  onCancel={[Function]}
+  onSubmit={[Function]}
+  values={Object {}}
+/>
+`;
