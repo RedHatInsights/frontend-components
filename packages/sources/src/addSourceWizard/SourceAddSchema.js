@@ -203,7 +203,7 @@ const temporaryHardcodedSourceSchemas = {
             initialValue: 'access_key_secret_key'
         }, {
             component: componentTypes.TEXT_FIELD,
-            name: 'user_name',
+            name: 'username',
             label: 'Access Key ID',
             helperText: 'For example, AKIAIOSFODNN7EXAMPLE',
             isRequired: true,

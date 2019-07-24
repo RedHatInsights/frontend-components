@@ -35,7 +35,7 @@ openShiftSummary.propTypes = {
     certificate_authority: PropTypes.string.isRequired
 };
 
-const awsSummary = ({ user_name, password }) => (
+const awsSummary = ({ username, password }) => (
     <React.Fragment>
         <FormGroup
             label = "Access Key ID"
@@ -44,7 +44,7 @@ const awsSummary = ({ user_name, password }) => (
                 isDisabled
                 type="text"
                 id="summary-id"
-                value={ user_name }
+                value={ username }
             />
         </FormGroup>
         <FormGroup
@@ -61,7 +61,7 @@ const awsSummary = ({ user_name, password }) => (
     </React.Fragment>
 );
 awsSummary.propTypes = {
-    user_name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired
 };
 
