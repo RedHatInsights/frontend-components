@@ -19,7 +19,7 @@ As a Wizard
 import { AddSourceWizard } from '@redhat-cloud-services/frontend-components-sources';
 
 
-<AddSourceWizard isOpen={this.state.isOpen} onClose={ () => this.setIsOpen(false)/>
+<AddSourceWizard isOpen={this.state.isOpen} onClose={ () => this.setIsOpen(false)}/>
 ```
 
 **Props**
