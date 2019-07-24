@@ -259,12 +259,14 @@ class SystemRulesTable extends React.Component {
                             </StackItem>
                             <StackItem isFilled>{ description }</StackItem>
                         </Stack>
+                        { rationale &&
                         <Stack id={ `rule-rationale-${key}` } style={ { marginBottom: 'var(--pf-global--spacer--lg)' } }>
                             <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
                                 <Text component={ TextVariants.h5 }><b>Rationale</b></Text>
                             </StackItem>
                             <StackItem isFilled>{ rationale }</StackItem>
                         </Stack>
+                        }
                     </div>
                 </React.Fragment>
             ) }]
