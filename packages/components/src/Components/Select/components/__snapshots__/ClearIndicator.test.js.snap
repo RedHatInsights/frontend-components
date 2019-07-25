@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClearIndicator component should render required props 1`] = `
+<TimesCircleIcon
+  className="some-class"
+  color="currentColor"
+  onClick={[Function]}
+  size="sm"
+  title={null}
+/>
+`;

@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select component should render creatable 1`] = `
+<StateManager
+  className=" ins-c-select"
+  classNamePrefix="ins-c-select"
+  closeMenuOnSelect={true}
+  components={
+    Object {
+      "ClearIndicator": [Function],
+      "DropdownIndicator": [Function],
+      "Input": [Function],
+      "MultiValueContainer": [Function],
+      "MultiValueRemove": [Function],
+      "Option": [Function],
+      "ValueContainer": [Function],
+    }
+  }
+  defaultInputValue=""
+  defaultMenuIsOpen={false}
+  defaultValue={null}
+  hideSelectedOptions={false}
+  isCheckbox={false}
+  isMulti={false}
+  isSearchable={false}
+  menuPlacement="auto"
+  onChange={[Function]}
+  options={
+    Array [
+      Object {
+        "label": "some",
+        "value": "value",
+      },
+    ]
+  }
+  selectVariant="default"
+  showLessLabel="Show less"
+  showMoreLabel="more"
+  value={Array []}
+/>
+`;
+
+exports[`Select component should render creatable and multi 1`] = `
+<StateManager
+  className=" ins-c-select"
+  classNamePrefix="ins-c-select"
+  closeMenuOnSelect={true}
+  components={
+    Object {
+      "ClearIndicator": [Function],
+      "DropdownIndicator": [Function],
+      "Input": [Function],
+      "MultiValueContainer": [Function],
+      "MultiValueRemove": [Function],
+      "Option": [Function],
+      "ValueContainer": [Function],
+    }
+  }
+  defaultInputValue=""
+  defaultMenuIsOpen={false}
+  defaultValue={null}
+  hideSelectedOptions={false}
+  isCheckbox={false}
+  isMulti={false}
+  isSearchable={false}
+  menuPlacement="auto"
+  onChange={[Function]}
+  options={
+    Array [
+      Object {
+        "label": "some",
+        "value": "value",
+      },
+    ]
+  }
+  selectVariant="default"
+  showLessLabel="Show less"
+  showMoreLabel="more"
+  value={Array []}
+/>
+`;
+
+exports[`Select component should render default props 1`] = `
+<StateManager
+  className=" ins-c-select"
+  classNamePrefix="ins-c-select"
+  closeMenuOnSelect={true}
+  components={
+    Object {
+      "ClearIndicator": [Function],
+      "DropdownIndicator": [Function],
+      "Input": [Function],
+      "MultiValueContainer": [Function],
+      "MultiValueRemove": [Function],
+      "Option": [Function],
+      "ValueContainer": [Function],
+    }
+  }
+  defaultInputValue=""
+  defaultMenuIsOpen={false}
+  defaultValue={null}
+  hideSelectedOptions={false}
+  isCheckbox={false}
+  isMulti={false}
+  isSearchable={false}
+  menuPlacement="auto"
+  onChange={[Function]}
+  options={Array []}
+  selectVariant="default"
+  showLessLabel="Show less"
+  showMoreLabel="more"
+  value={Array []}
+/>
+`;
+
+exports[`Select component should render isMuli 1`] = `
+<StateManager
+  className=" ins-c-select"
+  classNamePrefix="ins-c-select"
+  closeMenuOnSelect={false}
+  components={
+    Object {
+      "ClearIndicator": [Function],
+      "DropdownIndicator": [Function],
+      "Input": [Function],
+      "MultiValueContainer": [Function],
+      "MultiValueRemove": [Function],
+      "Option": [Function],
+      "ValueContainer": [Function],
+    }
+  }
+  defaultInputValue=""
+  defaultMenuIsOpen={false}
+  defaultValue={null}
+  hideSelectedOptions={false}
+  isCheckbox={false}
+  isMulti={true}
+  isSearchable={false}
+  menuPlacement="auto"
+  onChange={[Function]}
+  options={Array []}
+  selectVariant="default"
+  showLessLabel="Show less"
+  showMoreLabel="more"
+  value={Array []}
+/>
+`;
+
+exports[`Select component should render simpleValue - false 1`] = `
+<StateManager
+  className=" ins-c-select"
+  classNamePrefix="ins-c-select"
+  closeMenuOnSelect={true}
+  components={
+    Object {
+      "ClearIndicator": [Function],
+      "DropdownIndicator": [Function],
+      "Input": [Function],
+      "MultiValueContainer": [Function],
+      "MultiValueRemove": [Function],
+      "Option": [Function],
+      "ValueContainer": [Function],
+    }
+  }
+  defaultInputValue=""
+  defaultMenuIsOpen={false}
+  defaultValue={null}
+  hideSelectedOptions={false}
+  isCheckbox={false}
+  isMulti={false}
+  isSearchable={false}
+  menuPlacement="auto"
+  onChange={[Function]}
+  options={Array []}
+  selectVariant="default"
+  showLessLabel="Show less"
+  showMoreLabel="more"
+  value={
+    Object {
+      "label": "some",
+      "value": "value",
+    }
+  }
+/>
+`;

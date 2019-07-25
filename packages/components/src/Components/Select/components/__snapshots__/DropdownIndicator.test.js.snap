@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownIndicator component should render required props 1`] = `
+<CaretDownIcon
+  color="currentColor"
+  size="sm"
+  title={null}
+/>
+`;

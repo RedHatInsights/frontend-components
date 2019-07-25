@@ -1,0 +1,643 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Option component should render isCheckbox - false 1`] = `
+<Option
+  cx={[Function]}
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={false}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": false,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Option
+      cx={[Function]}
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={false}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": false,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render isCheckbox - true 1`] = `
+<Option
+  cx={[Function]}
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={false}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": true,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Checkbox
+      className=""
+      id="some-classname-checkbox"
+      isChecked={false}
+      isDisabled={false}
+      isValid={true}
+      onChange={[Function]}
+    >
+      <div
+        className="pf-c-check"
+      >
+        <input
+          aria-invalid={false}
+          checked={false}
+          className="pf-c-check__input"
+          disabled={false}
+          id="some-classname-checkbox"
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </div>
+    </Checkbox>
+    <Option
+      cx={[Function]}
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={false}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": true,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render isFocused - false 1`] = `
+<Option
+  cx={[Function]}
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={false}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": false,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Option
+      cx={[Function]}
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={false}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": false,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render isFocused - true 1`] = `
+<Option
+  cx={[Function]}
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={true}
+  isSelected={false}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": false,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option focused"
+  >
+    <Option
+      cx={[Function]}
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={true}
+      isSelected={false}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": false,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render isSelected - false 1`] = `
+<Option
+  cx={[Function]}
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={false}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": false,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Option
+      cx={[Function]}
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={false}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": false,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render isSelected - true 1`] = `
+<Option
+  cx={[Function]}
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={true}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": false,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Option
+      cx={[Function]}
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={true}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": false,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+    <CheckIcon
+      color="currentColor"
+      size="sm"
+      title={null}
+    >
+      <svg
+        aria-hidden={true}
+        aria-labelledby={null}
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style={
+          Object {
+            "verticalAlign": "-0.125em",
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+          transform=""
+        />
+      </svg>
+    </CheckIcon>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render isSelected isCheckbox - false 1`] = `
+<Option
+  cx={[Function]}
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={true}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": false,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Option
+      cx={[Function]}
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={true}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": false,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+    <CheckIcon
+      color="currentColor"
+      size="sm"
+      title={null}
+    >
+      <svg
+        aria-hidden={true}
+        aria-labelledby={null}
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style={
+          Object {
+            "verticalAlign": "-0.125em",
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+      >
+        <path
+          d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+          transform=""
+        />
+      </svg>
+    </CheckIcon>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render isSelected isCheckbox - false 2`] = `
+<Option
+  cx={[Function]}
+  data={
+    Object {
+      "selected": true,
+    }
+  }
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={false}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": false,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Option
+      cx={[Function]}
+      data={
+        Object {
+          "selected": true,
+        }
+      }
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={false}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": false,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render isSelected isCheckbox - true 1`] = `
+<Option
+  cx={[Function]}
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={true}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": true,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Checkbox
+      className=""
+      id="some-classname-checkbox"
+      isChecked={true}
+      isDisabled={false}
+      isValid={true}
+      onChange={[Function]}
+    >
+      <div
+        className="pf-c-check"
+      >
+        <input
+          aria-invalid={false}
+          checked={true}
+          className="pf-c-check__input"
+          disabled={false}
+          id="some-classname-checkbox"
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </div>
+    </Checkbox>
+    <Option
+      cx={[Function]}
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={true}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": true,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render isSelected isCheckbox - true 2`] = `
+<Option
+  cx={[Function]}
+  data={
+    Object {
+      "selected": true,
+    }
+  }
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={false}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": true,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Checkbox
+      className=""
+      id="some-classname-checkbox"
+      isChecked={true}
+      isDisabled={false}
+      isValid={true}
+      onChange={[Function]}
+    >
+      <div
+        className="pf-c-check"
+      >
+        <input
+          aria-invalid={false}
+          checked={true}
+          className="pf-c-check__input"
+          disabled={false}
+          id="some-classname-checkbox"
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </div>
+    </Checkbox>
+    <Option
+      cx={[Function]}
+      data={
+        Object {
+          "selected": true,
+        }
+      }
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={false}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": true,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+  </div>
+</Option>
+`;
+
+exports[`Option component should render required props 1`] = `
+<Option
+  cx={[Function]}
+  getStyles={[Function]}
+  innerProps={
+    Object {
+      "id": "some-classname",
+    }
+  }
+  isFocused={false}
+  isSelected={false}
+  selectOption={[Function]}
+  selectProps={
+    Object {
+      "isCheckbox": false,
+    }
+  }
+>
+  <div
+    className="ins-c-select__menu--option "
+  >
+    <Option
+      cx={[Function]}
+      getStyles={[Function]}
+      innerProps={
+        Object {
+          "id": "some-classname",
+        }
+      }
+      isFocused={false}
+      isSelected={false}
+      selectOption={[Function]}
+      selectProps={
+        Object {
+          "isCheckbox": false,
+        }
+      }
+    >
+      <div
+        id="some-classname"
+      />
+    </Option>
+  </div>
+</Option>
+`;

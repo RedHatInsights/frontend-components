@@ -22,3 +22,4 @@ export * from './Components/TableToolbar';
 export * from './Components/EmptyTable';
 export * from './Components/Spinner';
 export * from './Components/Filters';
+export * from './Components/Select';
