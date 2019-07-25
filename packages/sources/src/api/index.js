@@ -68,7 +68,7 @@ const urlOrHost = formData => formData.url ? parseUrl(formData.url) : formData;
 export function doCreateSource(formData, sourceTypes) {
     let sourceData = {
         name: formData.source_name,
-        source_type_id: sourceTypes.find((x) => x.name = formData.source_type).id
+        source_type_id: sourceTypes.find((x) => x.name === formData.source_type).id
     };
 
     return getSourcesApi().createSource(sourceData).then((sourceDataOut) => {
