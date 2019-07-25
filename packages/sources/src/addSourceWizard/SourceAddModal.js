@@ -22,11 +22,11 @@ class SourceAddModal extends React.Component {
         const { sourceTypes } = this.props;
 
         if (sourceTypes) {
-            this.setState({ schema: createSchema(sourceTypes), isLoading: false });
+            this.setState({ schema: createSchema(sourceTypes.filter(type => type.schema)), isLoading: false, sourceTypes });
         } else {
             doLoadSourceTypes().then(types => {
                 if (this._isMounted) {
-                    this.setState({ sourceTypes: types, schema: createSchema(types), isLoading: false });
+                    this.setState({ sourceTypes: types, schema: createSchema(types.filter(type => type.schema)), isLoading: false });
                 }
             });
         }

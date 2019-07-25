@@ -289,7 +289,7 @@ exports[`Steps components renders correctly with sourceTypes 1`] = `
                   "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
-                  "name": "user_name",
+                  "name": "username",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -686,7 +686,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
-                  "name": "user_name",
+                  "name": "username",
                   "validate": Array [
                     Object {
                       "type": "required-validator",

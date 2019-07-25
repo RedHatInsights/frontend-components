@@ -92,7 +92,7 @@ export function doCreateSource(formData, sourceTypes) {
             const authenticationData = {
                 resource_id: String(parseInt(endpointDataOut.id, 10)),
                 resource_type: 'Endpoint',
-                username: formData.user_name,
+                username: formData.username,
                 password: formData.token || formData.password,
                 authtype: formData.authtype
             };

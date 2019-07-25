@@ -13,7 +13,7 @@ describe('SourceWizardSummary component', () => {
                 getState: () => ({
                     values: {
                         source_name: 'openshift',
-                        user_name: 'user_name',
+                        username: 'user_name',
                         certificate_authority: 'authority',
                         url: 'neznam.cz',
                         password: '123456',
