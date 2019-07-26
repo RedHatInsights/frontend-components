@@ -68,7 +68,7 @@ const urlOrHost = formData => formData.url ? parseUrl(formData.url) : formData;
 export function doCreateSource(formData, sourceTypes) {
     let sourceData = {
         name: formData.source_name,
-        source_type_id: sourceTypes.find((x) => x.name = formData.source_type).id
+        source_type_id: sourceTypes.find((x) => x.name === formData.source_type).id
     };
 
     return getSourcesApi().createSource(sourceData).then((sourceDataOut) => {
@@ -92,7 +92,7 @@ export function doCreateSource(formData, sourceTypes) {
             const authenticationData = {
                 resource_id: String(parseInt(endpointDataOut.id, 10)),
                 resource_type: 'Endpoint',
-                username: formData.user_name,
+                username: formData.username,
                 password: formData.token || formData.password,
                 authtype: formData.authtype
             };
