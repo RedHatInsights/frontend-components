@@ -41,10 +41,11 @@ class Filters extends Component {
 
     removeFilter = (key, value) => {
         const { filterValues, apply } = this.props;
+        const values = value.split(',');
         const newFilter = {
             [key]: filterValues[key]
             .split(',')
-            .filter(item => item !== value)
+            .filter(item => !values.includes(item))
             .join(',')
         };
 
