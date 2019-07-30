@@ -43,6 +43,7 @@
     .ins-c-select__menu {
         cursor: pointer;
         border-radius: 0;
+        z-index: 2;
     }
 
     .ins-c-select__menu--option {
@@ -84,6 +85,10 @@
         margin-right: 4px;
         font-size: 12px;
         max-height: 26px;
+
+        .ins-c-select__multi-value__label {
+            max-width: 7.5rem;
+        }
 
         > .ins-c-select__multivalue--remove {
             display: flex;

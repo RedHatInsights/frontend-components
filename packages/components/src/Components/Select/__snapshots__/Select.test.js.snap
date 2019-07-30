@@ -9,7 +9,6 @@ exports[`Select component should render creatable 1`] = `
     Object {
       "ClearIndicator": [Function],
       "DropdownIndicator": [Function],
-      "Input": [Function],
       "MultiValueContainer": [Function],
       "MultiValueRemove": [Function],
       "Option": [Function],
@@ -49,7 +48,6 @@ exports[`Select component should render creatable and multi 1`] = `
     Object {
       "ClearIndicator": [Function],
       "DropdownIndicator": [Function],
-      "Input": [Function],
       "MultiValueContainer": [Function],
       "MultiValueRemove": [Function],
       "Option": [Function],
@@ -89,7 +87,6 @@ exports[`Select component should render default props 1`] = `
     Object {
       "ClearIndicator": [Function],
       "DropdownIndicator": [Function],
-      "Input": [Function],
       "MultiValueContainer": [Function],
       "MultiValueRemove": [Function],
       "Option": [Function],
@@ -122,7 +119,6 @@ exports[`Select component should render isMuli 1`] = `
     Object {
       "ClearIndicator": [Function],
       "DropdownIndicator": [Function],
-      "Input": [Function],
       "MultiValueContainer": [Function],
       "MultiValueRemove": [Function],
       "Option": [Function],
@@ -155,7 +151,6 @@ exports[`Select component should render simpleValue - false 1`] = `
     Object {
       "ClearIndicator": [Function],
       "DropdownIndicator": [Function],
-      "Input": [Function],
       "MultiValueContainer": [Function],
       "MultiValueRemove": [Function],
       "Option": [Function],

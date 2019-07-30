@@ -28,7 +28,7 @@ Option.propTypes = {
     selectOption: PropTypes.func,
     cx: PropTypes.func.isRequired,
     data: PropTypes.shape({
-        select: PropTypes.bool
+        selected: PropTypes.bool
     }),
     innerProps: PropTypes.shape({
         id: PropTypes.string

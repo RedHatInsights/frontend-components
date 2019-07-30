@@ -7,8 +7,7 @@ import {
     MultiValueContainer,
     DropdownIndicator,
     ClearIndicator,
-    Option,
-    Input
+    Option
 } from './components';
 import './select.scss';
 
@@ -26,8 +25,7 @@ const Select = ({ variant, isSearchable, className, simpleValue, ...props }) => 
                 MultiValueRemove,
                 DropdownIndicator,
                 ClearIndicator,
-                Option,
-                Input
+                Option
             }}
             {...props}
             onChange={option => props.onChange(
