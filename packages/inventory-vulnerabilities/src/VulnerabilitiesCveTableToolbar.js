@@ -24,10 +24,10 @@ class CveToolbarWithContext extends Component {
                             selectedItems={ selectedCvesCount }
                             selectorHandler={ methods.selectCves }
                             cves={ cves }
-                            fetchResource={ methods.fetchResource }
+                            fetchResource={ ops => methods.fetchResource({ ...params, ...ops }) }
                         />
                     ) }
-                    <Filters apply={ methods.apply } showStatusList={ Boolean(entity) } showAllCheckbox={ showAllCheckbox } filterValues={ params }/>
+                    <Filters apply={ methods.apply } showStatusList={ Boolean(entity) } showAllCheckbox={ showAllCheckbox } filterValues={ params } />
                     { showRemediationButton && <Remediation systemId={ entity.id } selectedCves={ selectedCves } /> }
                     <DownloadReportKebab downloadReport={ methods.downloadReport } />
                 </ToolbarGroup>
