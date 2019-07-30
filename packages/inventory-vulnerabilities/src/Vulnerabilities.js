@@ -28,7 +28,7 @@ const header = [
         key: 'cvss_score',
         transforms: [ sortable, classNames('col-width-10') ]
     },
-    { title: 'Severity', key: 'impact', transforms: [ sortable, classNames('col-width-10') ]},
+    { title: 'Impact', key: 'impact', transforms: [ sortable, classNames('col-width-10') ]},
     { title: 'Status', key: 'status', transforms: [ sortable, classNames('col-width-15') ]}
 ];
 
