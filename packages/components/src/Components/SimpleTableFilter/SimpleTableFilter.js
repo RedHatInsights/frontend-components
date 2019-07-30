@@ -47,6 +47,7 @@ class SimpleFilter extends Component {
             onOptionSelect,
             onFilterChange,
             options,
+            searchIcon,
             widgetId,
             ...props
         } = this.props;
@@ -80,7 +81,7 @@ class SimpleFilter extends Component {
                     widget-id={ widgetId }
                     onChange={ this.onInputChange }
                 />
-                { !buttonTitle && <SearchIcon size="sm" className="ins-c-search-icon" /> }
+                { !buttonTitle && searchIcon && <SearchIcon size="sm" className="ins-c-search-icon" /> }
                 {
                     buttonTitle &&
                     <Button variant={ ButtonVariant.secondary } action="filter" onClick={ this.onFilterSubmit }>{ buttonTitle }</Button>
@@ -104,7 +105,8 @@ SimpleFilter.propTypes = {
     }),
     onButtonClick: PropTypes.func,
     onFilterChange: PropTypes.func,
-    onOptionSelect: PropTypes.func
+    onOptionSelect: PropTypes.func,
+    searchIcon: PropTypes.bool
 };
 
 SimpleFilter.defaultProps = {
@@ -113,7 +115,8 @@ SimpleFilter.defaultProps = {
     buttonTitle: 'Filter',
     onButtonClick: () => undefined,
     onFilterChange: () => undefined,
-    onOptionSelect: () => undefined
+    onOptionSelect: () => undefined,
+    searchIcon: true
 };
 
 export default SimpleFilter;
