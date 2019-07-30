@@ -1,10 +1,14 @@
-import { DefaultApi } from '@redhat-cloud-services/vulnerabilities-client';
+import { DefaultApi, GitApi } from '@redhat-cloud-services/vulnerabilities-client';
 import instance from './interceptors';
 
 const BASE_ROUTE = '/api/vulnerability/';
 
-const api = new DefaultApi(undefined, BASE_ROUTE, instance);
-
+let api;
+if (process.env.NODE_ENV === 'production') {
+    api = new DefaultApi(undefined, BASE_ROUTE, instance);
+} else {
+    api = new GitApi(undefined, BASE_ROUTE, instance);
+}
 /* eslint-disable camelcase */
 
 export function getCveListBySystem(apiProps) {
@@ -20,7 +24,7 @@ export function getCveListBySystem(apiProps) {
         'cvss_to',
         'public_from',
         'public_to',
-        'severity',
+        'impact',
         'status_id',
         'data_format'
     ];

@@ -154,9 +154,15 @@ export const filtersShowAll = {
 
 export const filtersSeverity = {
     type: 'checkbox',
-    title: 'Severity',
-    urlParam: 'severity',
-    values: [{ label: 'Critical', value: '7' }, { label: 'Important', value: '5' }, { label: 'Moderate', value: '4' }, { label: 'Low', value: '2' }]
+    title: 'Impact',
+    urlParam: 'impact',
+    values: [
+        { label: 'Critical', value: '7' },
+        { label: 'Important', value: '5' },
+        { label: 'Moderate', value: '4' },
+        { label: 'Low', value: '2' },
+        { label: 'Unknown', value: '0,1' }
+    ]
 };
 
 export const filtersCVSSScore = {
