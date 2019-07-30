@@ -21,14 +21,14 @@ const header = [
     {
         title: 'Publish date',
         key: 'public_date',
-        transforms: [ classNames('col-width-10') ]
+        transforms: [ sortable, classNames('col-width-10') ]
     },
     {
         title: 'CVSS base ',
         key: 'cvss_score',
         transforms: [ sortable, classNames('col-width-10') ]
     },
-    { title: 'Severity', key: 'impact', transforms: [ sortable, classNames('col-width-10') ]},
+    { title: 'Impact', key: 'impact', transforms: [ sortable, classNames('col-width-10') ]},
     { title: 'Status', key: 'status', transforms: [ sortable, classNames('col-width-15') ]}
 ];
 

@@ -14,6 +14,8 @@ import {
     EmptyStateVariant,
     Level,
     LevelItem,
+    Grid,
+    GridItem,
     Stack,
     StackItem,
     Pagination,
@@ -247,7 +249,15 @@ class SystemRulesTable extends React.Component {
         ]
     })
 
-    calculateChild = ({ description, rationale }, key) => ({
+    conditionalLink = (children, href, additionalProps) => (
+        href && <a href={ href } { ...additionalProps }>{ children }</a> || children
+    )
+
+    referencesList = (references) => references.reduce((acc, reference, i) => ([
+        acc, ', ', this.conditionalLink(reference.label, reference.href, { target: '_blank', key: i + 1 })
+    ]), this.conditionalLink(references[0].label, references[0].href, { target: '_blank', key: 0 }));
+
+    calculateChild = ({ description, rationale, identifier, references }, key) => ({
         parent: key * 2,
         cells: [{
             title: (
@@ -259,12 +269,27 @@ class SystemRulesTable extends React.Component {
                             </StackItem>
                             <StackItem isFilled>{ description }</StackItem>
                         </Stack>
+                        <Stack id={ `rule-identifiers-references-${key}` } className='margin-bottom-lg'>
+                            <Grid>
+                                <GridItem span={ 2 }>
+                                    <Text component={ TextVariants.h5 }><b>Identifier</b></Text>
+                                    <Text>{ identifier && this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
+                                </GridItem>
+
+                                { references.length > 0 ? <GridItem span={ 10 }>
+                                    <Text component={ TextVariants.h5 }><b>References</b></Text>
+                                    <Text>{ this.referencesList(references) }</Text>
+                                </GridItem> : '' }
+                            </Grid>
+                        </Stack>
+                        { rationale &&
                         <Stack id={ `rule-rationale-${key}` } style={ { marginBottom: 'var(--pf-global--spacer--lg)' } }>
                             <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
                                 <Text component={ TextVariants.h5 }><b>Rationale</b></Text>
                             </StackItem>
                             <StackItem isFilled>{ rationale }</StackItem>
                         </Stack>
+                        }
                     </div>
                 </React.Fragment>
             ) }]
@@ -491,7 +516,7 @@ class SystemRulesTable extends React.Component {
                             </LevelItem>
                             <LevelItem>
                                 <ComplianceRemediationButton
-                                    allSystems={ [{ id: system, rule_objects_failed: []}] }
+                                    allSystems={ [{ id: system.id, rule_objects_failed: []}] }
                                     selectedRules={ this.selectedRules() } />
                             </LevelItem>
                         </Level>

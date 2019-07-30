@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Steps components ErroredStep renders correctly 1`] = `
+<div
+  className="pf-l-bullseye"
+>
+  <EmptyState
+    variant="full"
+  >
+    <EmptyStateIcon
+      color="var(--pf-global--danger-color--100)"
+      icon={[Function]}
+    />
+    <Title
+      headingLevel="h5"
+      size="lg"
+    >
+      Configuration unsuccessful
+    </Title>
+    <EmptyStateBody>
+      Something went wrong. Your source has not been successfully added.
+    </EmptyStateBody>
+    <Button
+      onClick={[MockFunction]}
+      variant="primary"
+    >
+      Back to my application
+    </Button>
+    <EmptyStateSecondaryActions>
+      <Button
+        onClick={[MockFunction]}
+        variant="link"
+      >
+        Retry
+      </Button>
+    </EmptyStateSecondaryActions>
+  </EmptyState>
+</div>
+`;
+
+exports[`Steps components FinishedStep renders correctly 1`] = `
+<div
+  className="pf-l-bullseye"
+>
+  <EmptyState
+    variant="full"
+  >
+    <EmptyStateIcon
+      color="var(--pf-global--success-color--100)"
+      icon={[Function]}
+    />
+    <Title
+      headingLevel="h5"
+      size="lg"
+    >
+      Configuration successful
+    </Title>
+    <EmptyStateBody>
+      Here I Am
+    </EmptyStateBody>
+    <Button
+      onClick={[MockFunction]}
+      variant="primary"
+    >
+      Back to my application
+    </Button>
+    <EmptyStateSecondaryActions>
+      <a
+        href="/hybrid/settings/sources"
+      >
+        <Button
+          variant="link"
+        >
+          Take me to sources
+        </Button>
+      </a>
+    </EmptyStateSecondaryActions>
+  </EmptyState>
+</div>
+`;
+
+exports[`Steps components LoadingStep renders correctly 1`] = `
+<div
+  className="pf-l-bullseye"
+>
+  <EmptyState
+    variant="full"
+  >
+    <div>
+      <Spinner />
+    </div>
+    <EmptyStateBody>
+      Loading, please wait.
+    </EmptyStateBody>
+  </EmptyState>
+</div>
+`;
+
+exports[`Steps components LoadingStep renders correctly with custom props 1`] = `
+<div
+  className="pf-l-bullseye"
+>
+  <EmptyState
+    variant="full"
+  >
+    <div>
+      <Spinner />
+    </div>
+    <EmptyStateBody>
+      Here I Am
+    </EmptyStateBody>
+    <EmptyStateSecondaryActions>
+      <Button
+        onClick={[MockFunction]}
+        variant="link"
+      >
+        Cancel
+      </Button>
+    </EmptyStateSecondaryActions>
+  </EmptyState>
+</div>
+`;

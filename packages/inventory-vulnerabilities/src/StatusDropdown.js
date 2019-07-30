@@ -72,7 +72,7 @@ class StatusDropdown extends Component {
         ];
         const modal = this.state.isModalOpen && (
             <Modal
-                isLarge={ true }
+                isSmall={ true }
                 title="Update the status for this CVE and system"
                 isOpen={ this.state.isModalOpen }
                 onClose={ this.handleModalToggle }

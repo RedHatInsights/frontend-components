@@ -2,37 +2,41 @@ import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import { SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import findIndex from 'lodash/findIndex';
 import propTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { EmptyCVEList, EmptyCVEListForSystem, FilterNotFoundForCVE } from './constants';
+import { CVETableContext } from './VulnerabilitiesCves';
 
-class VulnerabilitiesCveTable extends Component {
-    state = { selectedCves: new Set() };
+class VulnerabilitiesCveTableWithContext extends Component {
+    changePage = (_event, pageNumber) => {
+        const { methods } = this.props.context;
+        methods.apply({ page: pageNumber });
+    };
 
-    changePage = (_event, pageNumber) => this.props.apply({ page: pageNumber });
-
-    // eslint-disable-next-line camelcase
-    setPageSize = (_event, perPage) => this.props.apply({ page_size: perPage, page: 1 });
+    setPageSize = (_event, perPage) => {
+        const { methods } = this.props.context;
+        // eslint-disable-next-line camelcase
+        methods.apply({ page_size: perPage, page: 1 });
+    };
 
     sortColumn = (event, key, direction) => {
         let columnMapping = this.props.isSelectable ? [{ key: 'checkbox' }, ...this.props.header ] : this.props.header;
         let columnName = columnMapping[key].key;
-        const { cves } = this.props;
+        const { cves, methods } = this.props.context;
         const currentSort = cves.meta.sort;
         const useDefault = currentSort && currentSort.substr(1) !== columnName;
         if (direction === SortByDirection.desc || useDefault) {
             columnName = '-' + columnName;
         }
 
-        this.props.apply({ sort: columnName });
+        methods.apply({ sort: columnName });
     };
 
     createPagination = () => {
         const {
             cves: { meta }
-        } = this.props;
+        } = this.props.context;
         return (
             <Pagination
                 page={ meta.page || 1 }
@@ -62,8 +66,9 @@ class VulnerabilitiesCveTable extends Component {
     };
 
     noCves = () => {
-        const { cves, entity } = this.props;
-        const filterFields = [ 'filter', 'cvss_from', 'cvss_to', 'public_from', 'public_to', 'severity', 'status_id' ].filter(
+        const { entity, context } = this.props;
+        const { cves } = context;
+        const filterFields = [ 'filter', 'cvss_from', 'cvss_to', 'public_from', 'public_to', 'impact', 'status_id' ].filter(
             item => cves.meta.hasOwnProperty(item) && cves.meta[item]
         );
         if (filterFields.length !== 0) {
@@ -76,21 +81,16 @@ class VulnerabilitiesCveTable extends Component {
     };
 
     onSelect = (event, isSelected, rowId) => {
-        const { cves } = this.props;
-        const { selectedCves } = this.state;
-        if (rowId === -1) {
-            isSelected ? cves.data.forEach(cve => selectedCves.add(cve.id)) : cves.data.forEach(cve => selectedCves.delete(cve.id));
-        } else {
-            const cveName = cves.data[rowId] && cves.data[rowId].id;
-            isSelected ? selectedCves.add(cveName) : selectedCves.delete(cveName);
-        }
-
-        this.setState(selectedCves, () => this.props.selectorHandler(selectedCves));
+        const { context } = this.props;
+        const { cves, methods } = context;
+        const cveName = cves.data[rowId] && cves.data[rowId].id;
+        methods.selectCves(isSelected, cveName);
     };
 
     render() {
-        const { cves, header } = this.props;
-        const { selectedCves } = this.state;
+        const { context, header } = this.props;
+        const { params, cves } = context;
+        const { selectedCves } = params;
         const rows = cves.data.map(cve => (selectedCves.has(cve.id) && { ...cve, selected: true }) || cve);
         const loader = [ ...Array(3) ].map(() => ({
             cells: [
@@ -126,13 +126,13 @@ class VulnerabilitiesCveTable extends Component {
     }
 }
 
-VulnerabilitiesCveTable.propTypes = {
-    cves: propTypes.any,
+VulnerabilitiesCveTableWithContext.propTypes = {
+    context: propTypes.any,
     header: propTypes.array,
-    history: propTypes.object,
-    apply: propTypes.func,
-    selectorHandler: propTypes.func,
     isSelectable: propTypes.bool,
     entity: propTypes.object
 };
-export default routerParams(VulnerabilitiesCveTable);
+const VulnerabilitiesCveTable = props => (
+    <CVETableContext.Consumer>{ context => <VulnerabilitiesCveTableWithContext context={ context } { ...props } /> }</CVETableContext.Consumer>
+);
+export default VulnerabilitiesCveTable;

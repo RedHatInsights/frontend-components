@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SSLFormLabel renders loading step correctly 1`] = `
+<Fragment>
+  SSL Certificate 
+  <span
+    onClick={[Function]}
+  >
+    <Popover
+      appendTo={[Function]}
+      aria-label="Help text"
+      bodyContent={
+        <TextContent>
+          <Text
+            component="p"
+          >
+            You can obtain your OpenShift Container Platform provider’s CA certificate for all endpoints (default, metrics, alerts) from
+            <b>
+              /etc/origin/master/ca.crt
+            </b>
+            .
+          </Text>
+          <Text
+            component="p"
+          >
+            Paste the output (a block of text starting with --BEGIN CERTIFICATE--) into the Trusted CA Certificates field.
+          </Text>
+        </TextContent>
+      }
+      className=""
+      closeBtnAriaLabel="Close"
+      enableFlip={true}
+      footerContent={null}
+      headerContent={null}
+      hideOnOutsideClick={true}
+      isVisible={null}
+      maxWidth="50%"
+      onHidden={[Function]}
+      onHide={[Function]}
+      onMount={[Function]}
+      onShow={[Function]}
+      onShown={[Function]}
+      position="top"
+      shouldClose={[Function]}
+      zIndex={9999}
+    >
+      <QuestionCircleIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+    </Popover>
+  </span>
+</Fragment>
+`;

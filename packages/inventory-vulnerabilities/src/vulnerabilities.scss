@@ -69,11 +69,24 @@
     }
   }
 
-  td.pf-c-table__check {
-    vertical-align: middle;
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
+  tbody > {
+    tr > {
+      td.pf-c-table__check {
+        vertical-align: middle;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+      }
+    }
   }
+
+  thead > {
+    tr > {
+      td.pf-c-table__check {
+        visibility: hidden;
+      }
+    }
+  }
+
   .pf-c-table tr > * {
     vertical-align: middle !important;
   }

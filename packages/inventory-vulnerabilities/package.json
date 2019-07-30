@@ -21,7 +21,7 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-vulnerabilities#readme",
     "peerDependencies": {
-        "@patternfly/react-core": ">=3.2.6",
+        "@patternfly/react-core": ">=3.58.1",
         "@patternfly/react-icons": ">=3.7.4",
         "@patternfly/react-table": ">=2.1.6",
         "prop-types": "^15.6.2",
@@ -31,11 +31,12 @@
         "react-router-dom": "^4.2.2"
     },
     "dependencies": {
+        "@patternfly/react-core": "^3.58.1",
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-notifications": "*",
         "@redhat-cloud-services/frontend-components-remediations": "*",
         "@redhat-cloud-services/frontend-components-utilities": "~0.0.7",
-        "@redhat-cloud-services/vulnerabilities-client": "^1.0.17",
+        "@redhat-cloud-services/vulnerabilities-client": "^1.0.28",
         "moment": "^2.24.0"
     }
 }
