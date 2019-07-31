@@ -41,7 +41,8 @@ export function errorInterceptor(err) {
             throw err;
         }
         catch (customError) {
-            Sentry.captureException(customError);
+            const sentryId = Sentry.captureException(customError);
+            customError.sentryId = sentryId;
             throw customError;
         }
     }

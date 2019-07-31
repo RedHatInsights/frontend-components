@@ -70,6 +70,26 @@ exports[`Notification component should render correctly with dismiss button 1`] 
 />
 `;
 
+exports[`Notification component should render correctly with sentryId 1`] = `
+<Alert
+  action={null}
+  className="notification-item"
+  id="Foo"
+  title="Bar"
+  variant="success"
+>
+  description
+  <TextContent>
+    <Text
+      component="small"
+    >
+      Tracking Id: 
+      some-UUID
+    </Text>
+  </TextContent>
+</Alert>
+`;
+
 exports[`Notification component should render correctly withouth description 1`] = `
 <Alert
   action={null}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Button } from '@patternfly/react-core';
+import { Alert, Button, TextContent, Text, TextVariants } from '@patternfly/react-core';
 import { CloseIcon } from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
 import './notifications.scss';
@@ -30,7 +30,7 @@ class Notification extends Component {
     }
 
     render() {
-        const { description, dismissable, onDismiss, dismissDelay, title, ...rest } = this.props;
+        const { description, dismissable, onDismiss, dismissDelay, title, sentryId, ...rest } = this.props;
         return (
             <Alert
                 className="notification-item"
@@ -47,6 +47,11 @@ class Notification extends Component {
                 }
             >
                 { (typeof description === 'string') ? description.replace(/<\/?[^>]+(>|$)/g, '') : description }
+                {
+                    sentryId && <TextContent>
+                        <Text component={ TextVariants.small }>Tracking Id: { sentryId }</Text>
+                    </TextContent>
+                }
             </Alert>
         );
     }
@@ -59,7 +64,8 @@ Notification.propTypes = {
     variant: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.node,
-    dismissDelay: PropTypes.number
+    dismissDelay: PropTypes.number,
+    sentryId: PropTypes.string
 };
 
 Notification.defaultProps = {
