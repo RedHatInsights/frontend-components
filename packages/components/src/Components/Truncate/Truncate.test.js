@@ -56,6 +56,11 @@ describe('Truncate component', () => {
                     wrapper.find('Button.ins-c-expand-button').first().simulate('click');
                     expect(toJson(wrapper)).toMatchSnapshot();
                 });
+
+                it('when text length is less than user specified length', () => {
+                    const wrapper = shallow(<Truncate text={text} inline={isInline} length={1000} />);
+                    expect(toJson(wrapper)).toMatchSnapshot();
+                });
             });
         });
     });

@@ -31,6 +31,11 @@ describe('Notification component', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('should render correctly with sentryId', () => {
+        const wrapper = shallow(<Notification { ...initialProps } sentryId={ 'some-UUID' } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     it('should render correctly with HTML description', () => {
         const description = '<html><body><h1>Some text</h1><div>another</div></body><img src="some" /></html>';
         const wrapper = shallow(<Notification { ...initialProps } description={ description } />);

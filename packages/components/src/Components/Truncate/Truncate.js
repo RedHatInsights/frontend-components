@@ -41,6 +41,8 @@ class Truncate extends React.Component {
 
         const trimmedText = this.props.text.substring(0, this.props.length);
 
+        const textOverflow = this.props.text.length > this.props.length;
+
         const { showText } = this.state;
 
         const expandButton =
@@ -65,8 +67,9 @@ class Truncate extends React.Component {
                     <span
                         className={ truncateClasses }
                         widget-type='InsightsTruncateInline'
-                        dangerouslySetInnerHTML={ this.dangerousHtml(showText === false ? `${trimmedText}...` : this.props.text) } />
-                    { showText === false ? expandButton : collapseButton }
+                        dangerouslySetInnerHTML={ this.dangerousHtml(showText === false ? `${trimmedText}${textOverflow ? '...' : '' }`
+                            : this.props.text) } />
+                    { textOverflow && (showText === false ? expandButton : collapseButton) }
                 </React.Fragment>
             );
         } else {
@@ -75,11 +78,13 @@ class Truncate extends React.Component {
                     <StackItem>
                         <span
                             widget-type='InsightsTruncateBlock'
-                            dangerouslySetInnerHTML={ this.dangerousHtml(showText === false ? `${trimmedText}...` : this.props.text) } />
+                            dangerouslySetInnerHTML={ this.dangerousHtml(showText === false ? `${trimmedText}${textOverflow ? '...' : '' }`
+                                : this.props.text) } />
                     </StackItem>
-                    <StackItem>
+                    { textOverflow && <StackItem>
                         { showText === false ? expandButton : collapseButton }
                     </StackItem>
+                    }
                 </Stack>
             );
         }
