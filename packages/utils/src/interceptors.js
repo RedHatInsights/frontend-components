@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as Sentry from '@sentry/browser';
 
 export class HttpError extends Error {
     constructor(description) {
@@ -31,12 +32,19 @@ export function interceptor401(error) {
 
 export function errorInterceptor(err) {
     if (!axios.isCancel(err)) {
-        const errObject = { ...err };
-        if (errObject.response && errObject.response.data) {
-            throw errObject.response.data;
-        }
+        try {
+            const errObject = { ...err };
+            if (errObject.response && errObject.response.data) {
+                throw errObject.response.data;
+            }
 
-        throw err;
+            throw err;
+        }
+        catch (customError) {
+            const sentryId = Sentry.captureException(customError);
+            customError.sentryId = sentryId;
+            throw customError;
+        }
     }
 }
 

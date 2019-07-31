@@ -332,6 +332,43 @@ describe('Notifications middleware', () => {
         });
     });
 
+    it('should dispatch custom error notification with sentry ID', () => {
+        const action = {
+            ...requestMock(true, { sentryId: 'some-sentry-UUID' }),
+            meta: {
+                notifications: {
+                    rejected: {
+                        variant: 'warning',
+                        title: 'Title',
+                        dismissable: false
+                    }
+                }
+            }
+        };
+
+        const expectedActions = [
+            expect.objectContaining({
+                type: 'FOO_PENDING'
+            }), {
+                type: ADD_NOTIFICATION,
+                payload: {
+                    title: 'Title',
+                    variant: 'warning',
+                    dismissDelay: 5000,
+                    dismissable: false,
+                    sentryId: 'some-sentry-UUID'
+                }
+            },
+            expect.objectContaining({
+                type: 'FOO_REJECTED'
+            })
+        ];
+
+        return initialProps.store.dispatch(action).catch(() => {
+            expect(initialProps.store.getActions()).toEqual(expectedActions);
+        });
+    });
+
     it('should select second message key from configuration', () => {
         middlewares = [ promiseMiddleware(), notificationsMiddleware({
             errorTitleKey: [ 'body.title', 'fooKey' ],
@@ -355,6 +392,36 @@ describe('Notifications middleware', () => {
         return store.dispatch(requestMock(true, {
             fooKey: 'Second title option',
             barKey: 'Second description option'
+        })).catch(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+
+    it('should send sentryId if encountered', () => {
+        middlewares = [ promiseMiddleware(), notificationsMiddleware({
+            errorTitleKey: [ 'title' ],
+            errorDescriptionKey: [ 'description' ]
+        }) ];
+        mockStore = configureStore(middlewares);
+        const store = mockStore({});
+        const expectedActions = expect.arrayContaining([
+            expect.objectContaining({
+                type: ADD_NOTIFICATION,
+                payload: {
+                    variant: 'danger',
+                    dismissable: true,
+                    title: 'Title',
+                    description: 'Description',
+                    sentryId: 'some-sentry-UUID'
+                }
+            }),
+            expect.any(Object)
+        ]);
+
+        return store.dispatch(requestMock(true, {
+            title: 'Title',
+            description: 'Description',
+            sentryId: 'some-sentry-UUID'
         })).catch(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });
