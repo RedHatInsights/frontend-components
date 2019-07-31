@@ -68,7 +68,7 @@ class VulnerabilitiesCveTableWithContext extends Component {
     noCves = () => {
         const { entity, context } = this.props;
         const { cves } = context;
-        const filterFields = [ 'filter', 'cvss_from', 'cvss_to', 'public_from', 'public_to', 'severity', 'status_id' ].filter(
+        const filterFields = [ 'filter', 'cvss_from', 'cvss_to', 'public_from', 'public_to', 'impact', 'status_id' ].filter(
             item => cves.meta.hasOwnProperty(item) && cves.meta[item]
         );
         if (filterFields.length !== 0) {

@@ -154,8 +154,8 @@ export const filtersShowAll = {
 
 export const filtersSeverity = {
     type: 'checkbox',
-    title: 'Severity',
-    urlParam: 'severity',
+    title: 'Impact',
+    urlParam: 'impact',
     values: [
         { label: 'Critical', value: '7' },
         { label: 'Important', value: '5' },
