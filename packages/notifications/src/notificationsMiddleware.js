@@ -21,7 +21,11 @@ const prepareErrorMessage = (payload, errorTitleKey, errorDescriptionKey) => {
         descriptionKey = errorDescriptionKey.find(key => has(payload, key));
     }
 
-    return { title: get(payload, titleKey) || 'Error', description: get(payload, descriptionKey) };
+    return {
+        title: get(payload, titleKey) || 'Error',
+        description: get(payload, descriptionKey),
+        sentryId: payload && payload.sentryId
+    };
 };
 
 const shouldDispatchDefaultError = ({
@@ -62,7 +66,11 @@ const createNotificationsMiddleware = (options = {}) => {
             } else if (matchFulfilled(type) && notifications.fulfilled) {
                 dispatch(addNotification({ ...defaultNotificationOptions, ...notifications.fulfilled }));
             } else if (matchRejected(type) && notifications.rejected) {
-                dispatch(addNotification({ ...defaultNotificationOptions, ...notifications.rejected }));
+                dispatch(addNotification({
+                    ...defaultNotificationOptions,
+                    ...notifications.rejected,
+                    sentryId: action.payload && action.payload.sentryId
+                }));
             }
         }
 
