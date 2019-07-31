@@ -11,7 +11,7 @@ import VulnerabilitiesCves from './VulnerabilitiesCves';
 const cvssBaseDescription = 'All CVEs use Common Vulnerability Scoring System v3 except where noted.';
 
 const header = [
-    { title: 'Name', key: 'synopsis', transforms: [ sortable, classNames('col-width-10') ]},
+    { title: 'Name', key: 'synopsis', transforms: [ sortable, classNames('col-width-10') ], columnTransforms: [ classNames('no-wrap') ]},
     {
         title: 'Description',
         key: 'description',
@@ -28,7 +28,7 @@ const header = [
         key: 'cvss_score',
         transforms: [ sortable, classNames('col-width-10') ]
     },
-    { title: 'Impact', key: 'impact', transforms: [ sortable, classNames('col-width-10') ]},
+    { title: 'Impact', key: 'impact', transforms: [ sortable, classNames('col-width-10') ], columnTransforms: [ classNames('no-wrap') ]},
     { title: 'Status', key: 'status', transforms: [ sortable, classNames('col-width-15') ]}
 ];
 
