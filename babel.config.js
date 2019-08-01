@@ -20,7 +20,13 @@ module.exports = {
         "@babel/plugin-proposal-object-rest-spread",
         "babel-plugin-lodash",
         "@babel/plugin-transform-react-display-name",
-        "@babel/plugin-proposal-class-properties"
+        "@babel/plugin-proposal-class-properties",
+        [
+            "react-intl",
+            {
+                "messagesDir": "./build/messages/"
+            }
+        ]
     ],
     "ignore": [
         "node_modules"

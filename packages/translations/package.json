@@ -19,5 +19,9 @@
     "bugs": {
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
-    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/translations#readme"
+    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/translations#readme",
+    "dependencies": {
+        "react-intl": "^2.9.0",
+        "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7"
+    }
 }
