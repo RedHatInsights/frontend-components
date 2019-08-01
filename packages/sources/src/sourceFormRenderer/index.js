@@ -5,6 +5,7 @@ import { layoutMapper, formFieldsMapper } from '@data-driven-forms/pf4-component
 
 import SourceWizardSummary from './components/SourceWizardSummary';
 import Description from './components/Description';
+import CardSelect from './components/CardSelect';
 
 const SourcesFormRenderer = props => (
     <FormRenderer
@@ -12,7 +13,8 @@ const SourcesFormRenderer = props => (
         formFieldsMapper={ {
             ...formFieldsMapper,
             summary: SourceWizardSummary,
-            description: Description
+            description: Description,
+            'card-select': CardSelect
         } }
         { ...props } />
 );
