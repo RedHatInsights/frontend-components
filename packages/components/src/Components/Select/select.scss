@@ -37,6 +37,14 @@
                     fill: var(--pf-global--Color--dark-100);
                 }
             }
+
+            button.pf-c-button.pf-m-plain {
+                padding-right: 0.5rem;
+                padding-left: 1rem;
+                margin-left: auto;
+                padding-bottom: 0;
+                margin-right: 0.5rem;
+            }
         }
     }
 

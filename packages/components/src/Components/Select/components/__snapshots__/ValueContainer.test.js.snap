@@ -44,108 +44,49 @@ exports[`ValueContainer component api should toggle 1`] = `
 `;
 
 exports[`ValueContainer component should render isMulti required props 1`] = `
-<ValueContainer
-  cx={[Function]}
-  getStyles={[Function]}
-  isMulti={true}
-  selectProps={
-    Object {
-      "showLessLabel": "Show less",
-      "showMoreLabel": "more",
-    }
-  }
->
-  <div
-    className="ins-c-select__value--container"
-  >
-    <div>
-      aaa
-    </div>
-  </div>
-</ValueContainer>
-`;
-
-exports[`ValueContainer component should render isMulti show more button 1`] = `
-<ValueContainer
-  cx={[Function]}
-  getStyles={[Function]}
-  isMulti={true}
-  selectProps={
-    Object {
-      "showLessLabel": "Show less",
-      "showMoreLabel": "more",
-    }
-  }
->
-  <div
-    className="ins-c-select__value--container"
-  >
-    first
-    <Button
-      className="ins-c-select__value--container-chipgroup"
-      onClick={[Function]}
-      variant="plain"
-    >
-      <button
-        aria-disabled={null}
-        aria-label={null}
-        className="pf-c-button pf-m-plain ins-c-select__value--container-chipgroup"
-        disabled={false}
-        onClick={[Function]}
-        tabIndex={null}
-        type="button"
-      >
-        <span>
-          1 more
-        </span>
-      </button>
-    </Button>
-    <div>
-      aaa
-    </div>
-  </div>
-</ValueContainer>
-`;
-
-exports[`ValueContainer component should render isMulti two children 1`] = `
-<ValueContainer
-  cx={[Function]}
-  getStyles={[Function]}
-  isMulti={true}
-  selectProps={
-    Object {
-      "showLessLabel": "Show less",
-      "showMoreLabel": "more",
-    }
-  }
->
-  <div
-    className="ins-c-select__value--container"
-  >
-    <div>
-      aaa
-    </div>
-    <div>
-      aaa
-    </div>
-  </div>
-</ValueContainer>
-`;
-
-exports[`ValueContainer component should render required props 1`] = `
-<ValueContainer
-  cx={[Function]}
-  getStyles={[Function]}
-  isMulti={false}
-  selectProps={
-    Object {
-      "showLessLabel": "Show less",
-      "showMoreLabel": "more",
-    }
-  }
+<div
+  class="ins-c-select__value--container"
 >
   <div>
     aaa
   </div>
-</ValueContainer>
+</div>
+`;
+
+exports[`ValueContainer component should render isMulti show more button 1`] = `
+<div
+  class="ins-c-select__value--container"
+>
+  first
+  <button
+    class="pf-c-button pf-m-plain ins-c-select__value--container-chipgroup"
+    type="button"
+  >
+    <span>
+      1 more
+    </span>
+  </button>
+  <div>
+    aaa
+  </div>
+</div>
+`;
+
+exports[`ValueContainer component should render isMulti two children 1`] = `
+<div
+  class="ins-c-select__value--container"
+>
+  <div>
+    aaa
+  </div>
+  <div>
+    aaa
+  </div>
+</div>
+`;
+
+exports[`ValueContainer component should render required props 1`] = `
+<div>
+  aaa
+</div>
 `;

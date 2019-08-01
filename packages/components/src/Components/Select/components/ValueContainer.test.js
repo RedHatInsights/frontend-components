@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import ValueContainer from './ValueContainer';
 
@@ -11,7 +11,7 @@ const requiredProps = {
 describe('ValueContainer component', () => {
     describe('should render', () => {
         it('required props', () => {
-            const wrapper = mount(<ValueContainer {...requiredProps}>
+            const wrapper = render(<ValueContainer {...requiredProps}>
                 <div>aaa</div>
             </ValueContainer>);
             expect(toJson(wrapper)).toMatchSnapshot();
@@ -19,14 +19,14 @@ describe('ValueContainer component', () => {
 
         describe('isMulti', () => {
             it('required props', () => {
-                const wrapper = mount(<ValueContainer isMulti {...requiredProps}>
+                const wrapper = render(<ValueContainer isMulti {...requiredProps}>
                     <div>aaa</div>
                 </ValueContainer>);
                 expect(toJson(wrapper)).toMatchSnapshot();
             });
 
             it('two children', () => {
-                const wrapper = mount(<ValueContainer isMulti {...requiredProps}>
+                const wrapper = render(<ValueContainer isMulti {...requiredProps}>
                     <div>aaa</div>
                     <div>aaa</div>
                 </ValueContainer>);
@@ -34,7 +34,7 @@ describe('ValueContainer component', () => {
             });
 
             it('show more button', () => {
-                const wrapper = mount(<ValueContainer isMulti {...requiredProps}>
+                const wrapper = render(<ValueContainer isMulti {...requiredProps}>
                     {[ 'first', 'second'].map(item => item)}
                     <div>aaa</div>
                 </ValueContainer>);

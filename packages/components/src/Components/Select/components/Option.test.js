@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Option from './Option';
 
@@ -11,23 +11,23 @@ const requiredProps = {
 describe('Option component', () => {
     describe('should render', () => {
         it('required props', () => {
-            const wrapper = mount(<Option {...requiredProps} />);
+            const wrapper = render(<Option {...requiredProps} />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         [true, false].map((item) => {
             it(`isSelected - ${item}`, () => {
-                const wrapper = mount(<Option isSelected={item} {...requiredProps} />);
+                const wrapper = render(<Option isSelected={item} {...requiredProps} />);
                 expect(toJson(wrapper)).toMatchSnapshot();
             });
 
             it(`isFocused - ${item}`, () => {
-                const wrapper = mount(<Option isFocused={item} {...requiredProps} />);
+                const wrapper = render(<Option isFocused={item} {...requiredProps} />);
                 expect(toJson(wrapper)).toMatchSnapshot();
             });
 
             it(`isCheckbox - ${item}`, () => {
-                const wrapper = mount(<Option selectProps={{ isCheckbox: item }} {...requiredProps} />);
+                const wrapper = render(<Option selectProps={{ isCheckbox: item }} {...requiredProps} />);
                 expect(toJson(wrapper)).toMatchSnapshot();
             });
         });
@@ -35,7 +35,7 @@ describe('Option component', () => {
         describe('isSelected', () => {
             [true, false].map((item) => {
                 it(`isCheckbox - ${item}`, () => {
-                    const wrapper = mount(<Option
+                    const wrapper = render(<Option
                         isSelected={true}
                         selectProps={{ isCheckbox: item }}
                         {...requiredProps}
@@ -44,7 +44,7 @@ describe('Option component', () => {
                 });
 
                 it(`isCheckbox - ${item}`, () => {
-                    const wrapper = mount(<Option
+                    const wrapper = render(<Option
                         data={{
                             selected: true
                         }}

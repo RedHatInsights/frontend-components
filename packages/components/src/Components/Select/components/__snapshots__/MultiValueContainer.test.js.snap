@@ -1,55 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MultiValueContainer component should render single children 1`] = `
-<MultiValueContainer
-  className=""
-  data={
-    Object {
-      "label": "some label",
-    }
-  }
+<div
+  class=" ins-c-select__multivalue--container"
+  title="some label"
 >
-  <div
-    className=" ins-c-select__multivalue--container"
-    title="some label"
-  >
-    <span>
-      <div>
-        some
-      </div>
-    </span>
-    <span
-      className="ins-c-select__multivalue--remove"
-    />
-  </div>
-</MultiValueContainer>
+  <span>
+    <div>
+      some
+    </div>
+  </span>
+  <span
+    class="ins-c-select__multivalue--remove"
+  />
+</div>
 `;
 
 exports[`MultiValueContainer component should render two children 1`] = `
-<MultiValueContainer
-  className=""
-  data={
-    Object {
-      "label": "some label",
-    }
-  }
+<div
+  class=" ins-c-select__multivalue--container"
+  title="some label"
 >
-  <div
-    className=" ins-c-select__multivalue--container"
-    title="some label"
+  <span>
+    <div>
+      some
+    </div>
+  </span>
+  <span
+    class="ins-c-select__multivalue--remove"
   >
-    <span>
-      <div>
-        some
-      </div>
-    </span>
-    <span
-      className="ins-c-select__multivalue--remove"
-    >
-      <div>
-        some
-      </div>
-    </span>
-  </div>
-</MultiValueContainer>
+    <div>
+      some
+    </div>
+  </span>
+</div>
 `;

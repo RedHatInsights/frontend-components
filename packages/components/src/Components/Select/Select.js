@@ -11,7 +11,7 @@ import {
 } from './components';
 import './select.scss';
 
-const Select = ({ variant, isSearchable, className, simpleValue, ...props }) => {
+const Select = ({ variant, isSearchable, className, simpleValue, components, ...props }) => {
     const SelectComponent = variantToSelect(variant);
     return (
         <SelectComponent
@@ -25,7 +25,8 @@ const Select = ({ variant, isSearchable, className, simpleValue, ...props }) => 
                 MultiValueRemove,
                 DropdownIndicator,
                 ClearIndicator,
-                Option
+                Option,
+                ...components
             }}
             {...props}
             onChange={option => props.onChange(
@@ -56,6 +57,33 @@ Select.propTypes = {
         value: PropTypes.string,
         label: PropTypes.node
     })),
+    components: PropTypes.shape({
+        ClearIndicator: PropTypes.node,
+        Control: PropTypes.node,
+        DropdownIndicator: PropTypes.node,
+        DownChevron: PropTypes.node,
+        CrossIcon: PropTypes.node,
+        Group: PropTypes.node,
+        GroupHeading: PropTypes.node,
+        IndicatorsContainer: PropTypes.node,
+        IndicatorSeparator: PropTypes.node,
+        Input: PropTypes.node,
+        LoadingIndicator: PropTypes.node,
+        Menu: PropTypes.node,
+        MenuList: PropTypes.node,
+        MenuPortal: PropTypes.node,
+        LoadingMessage: PropTypes.node,
+        NoOptionsMessage: PropTypes.node,
+        MultiValue: PropTypes.node,
+        MultiValueContainer: PropTypes.node,
+        MultiValueLabel: PropTypes.node,
+        MultiValueRemove: PropTypes.node,
+        Option: PropTypes.node,
+        Placeholder: PropTypes.node,
+        SelectContainer: PropTypes.node,
+        SingleValue: PropTypes.node,
+        ValueContainer: PropTypes.node,
+    }),
     hideSelectedOptions: PropTypes.bool
 }
 
@@ -71,6 +99,7 @@ Select.defaultProps = {
     showLessLabel: 'Show less',
     options: [],
     onChange: () => undefined,
+    components: {},
     hideSelectedOptions: false
 }
 
