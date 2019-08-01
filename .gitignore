@@ -4,6 +4,9 @@
 .idea/
 .editorconfig
 
+# devel
+*.js.map
+
 # dependencies
 node_modules
 

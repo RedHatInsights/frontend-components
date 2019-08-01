@@ -21,6 +21,7 @@ import {
     Pagination,
     PaginationVariant,
     Text,
+    TextContent,
     TextVariants,
     Title
 } from '@patternfly/react-core';
@@ -230,10 +231,17 @@ class SystemRulesTable extends React.Component {
         this.setState({ rows, currentRows });
     }
 
-    calculateParent = ({ profile }, { title, severity, compliant }) => ({
+    ruleTitleCell = (title, identifier) => <Stack>
+        <StackItem>{ title }</StackItem>
+        { identifier && <StackItem>
+            <TextContent><Text component={ TextVariants.small }>{ identifier.label }</Text></TextContent>
+        </StackItem> || '' }
+    </Stack>
+
+    calculateParent = ({ profile }, { title, severity, compliant, identifier }) => ({
         isOpen: false,
         cells: [
-            { title, original: title },
+            { title: this.ruleTitleCell(title, identifier), original: title },
             { title: profile.name, original: profile.name },
             {
                 title: (severity.toLowerCase() === 'high' ? HIGH_SEVERITY :

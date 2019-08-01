@@ -11,7 +11,7 @@ module.exports = ({
 }) => {
     return {
         mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-        devtool: false,
+        devtool: 'source-map',
         optimization: {
             minimize: process.env.NODE_ENV === 'production',
             splitChunks: {
