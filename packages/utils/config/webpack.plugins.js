@@ -28,7 +28,8 @@ const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
 });
 
 const CopyFilesWebpackPlugin = new(require('copy-webpack-plugin'))([
-    { from: 'src/**/*.scss', to: 'files/Utilities', flatten: true }
+    { from: 'src/**/*.scss', to: 'files/Utilities', flatten: true },
+    { from: 'src/mergeMessages.js', to: 'files/mergeMessages.js' }
 ]);
 
 module.exports = { buildPlugins: (env) => ({
