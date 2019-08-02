@@ -4,7 +4,7 @@ import * as remediationsApi from '@redhat-cloud-services/frontend-components-rem
 import ComplianceRemediationButton from './ComplianceRemediationButton';
 import { CheckIcon, CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
-import { EmptyTable, TableToolbar } from '@redhat-cloud-services/frontend-components';
+import { EmptyTable, SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
 import {
     Bullseye,
@@ -12,6 +12,7 @@ import {
     EmptyState,
     EmptyStateBody,
     EmptyStateVariant,
+    InputGroup,
     Level,
     LevelItem,
     Grid,
@@ -29,6 +30,8 @@ import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/
 import flatMap from 'lodash/flatMap';
 import './compliance.scss';
 import RulesComplianceFilter from './RulesComplianceFilter';
+import debounce from 'lodash/debounce';
+import includes from 'lodash/includes';
 
 const emptyRows = [{
     cells: [{
@@ -57,6 +60,7 @@ import {
     COMPLIANT_COLUMN,
     SEVERITY_COLUMN,
     POLICY_COLUMN,
+    TITLE_COLUMN,
     ANSIBLE_ICON,
     HIGH_SEVERITY,
     MEDIUM_SEVERITY,
@@ -114,7 +118,7 @@ class SystemRulesTable extends React.Component {
                 }
             ));
             if (hidePassed) {
-                this.hidePassed(hidePassed, rows);
+                this.filterBy(hidePassed, rows, COMPLIANT_COLUMN);
             }
         });
     }
@@ -362,6 +366,14 @@ class SystemRulesTable extends React.Component {
         return originalRows;
     }
 
+    handleSearch = debounce(title => {
+        const { hidePassed, severity, policy } = this.state;
+        this.setState({
+            title
+        }, () => this.updateFilter(hidePassed, severity, policy));
+
+    }, 500)
+
     onSort = (_event, index, direction) => {
         // Original index is not the right column, as patternfly adds 1 because
         // of the 'collapsible' button and 1 because of the checkbox.
@@ -390,10 +402,12 @@ class SystemRulesTable extends React.Component {
         });
     }
 
-    filterByPolicy = (policy, rows) => {
+    filterBy = (attribute, rows, column) => {
         const filteredRows = [];
         rows.forEach((row, i) => {
-            if (row.hasOwnProperty('isOpen') && policy.includes(row.cells[POLICY_COLUMN].original.toLowerCase())) {
+            if (row.hasOwnProperty('isOpen') && String(row.cells[column].original).toLowerCase().match(
+                String(attribute).toLowerCase()
+            )) {
                 filteredRows.push(row);
                 if (!rows[i + 1].hasOwnProperty('isOpen')) {
                     let child = rows[i + 1];
@@ -406,45 +420,7 @@ class SystemRulesTable extends React.Component {
         return filteredRows;
     }
 
-    filterBySeverity = (severity, rows) => {
-        const filteredRows = [];
-        rows.forEach((row, i) => {
-            if (row.hasOwnProperty('isOpen') && severity.includes(row.cells[SEVERITY_COLUMN].original.toLowerCase())) {
-                filteredRows.push(row);
-                if (!rows[i + 1].hasOwnProperty('isOpen')) {
-                    let child = rows[i + 1];
-                    child.parent = filteredRows.length - 1;
-                    filteredRows.push(child);
-                }
-            }
-        });
-
-        return filteredRows;
-    }
-
-    hidePassed = (checked, rows) => {
-        const { originalRows } = this.state;
-
-        if (checked) {
-            const filteredRows = [];
-            rows.forEach((row, i) => {
-                if (row.hasOwnProperty('isOpen') && row.cells[COMPLIANT_COLUMN].title.props.className === 'ins-u-failed') {
-                    filteredRows.push(row);
-                    if (!rows[i + 1].hasOwnProperty('isOpen')) {
-                        let child = rows[i + 1];
-                        child.parent = filteredRows.length - 1;
-                        filteredRows.push(child);
-                    }
-                }
-            });
-
-            return filteredRows;
-        } else {
-            return originalRows;
-        }
-    }
-
-    filteredRows = (passedRows, severityRows, policyRows, hidePassed, severity, policy) => {
+    filteredRows = (passedRows, severityRows, policyRows, titleRows, hidePassed, severity, policy, title) => {
         let result;
 
         if (severity.length > 0 && hidePassed) {
@@ -463,15 +439,29 @@ class SystemRulesTable extends React.Component {
             result = policyRows;
         }
 
+        if (title.length > 0 && result.length > 0) {
+            result = result.filter(row => titleRows.includes(row));
+        } else if (title.length > 0 && result.length === 0) {
+            result = titleRows;
+        }
+
         return result;
     }
 
     updateFilter = (hidePassed, severity, policy) => {
-        const { originalRows, profiles, refIds, page, itemsPerPage } = this.state;
-        const passedRows = this.hidePassed(hidePassed, originalRows);
-        const severityRows = this.filterBySeverity(severity, originalRows);
-        const policyRows = this.filterByPolicy(policy, originalRows);
-        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, hidePassed, severity, policy);
+        const { originalRows, profiles, refIds, page, itemsPerPage, title } = this.state;
+        let passedRows;
+        if (hidePassed) {
+            passedRows = this.filterBy(!hidePassed, originalRows, COMPLIANT_COLUMN);
+        } else {
+            passedRows = originalRows;
+        }
+
+        const severityRows = this.filterBy(severity, originalRows, SEVERITY_COLUMN);
+        const policyRows = this.filterBy(policy, originalRows, POLICY_COLUMN);
+        const titleRows = this.filterBy(title, originalRows, TITLE_COLUMN);
+        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, titleRows,
+            hidePassed, severity, policy, title);
 
         this.currentRows(
             page,
@@ -485,7 +475,8 @@ class SystemRulesTable extends React.Component {
                 rows: filteredRows,
                 hidePassed,
                 severity,
-                policy
+                policy,
+                title
             }));
         });
     }
@@ -515,9 +506,14 @@ class SystemRulesTable extends React.Component {
                     <TableToolbar>
                         <Level gutter='md'>
                             <LevelItem>
-                                <RulesComplianceFilter
-                                    availablePolicies={ profileRules.map(profile => profile.profile) }
-                                    updateFilter={ this.updateFilter } />
+                                <InputGroup>
+                                    <RulesComplianceFilter
+                                        availablePolicies={ profileRules.map(profile => profile.profile) }
+                                        updateFilter={ this.updateFilter } />
+                                    <SimpleTableFilter buttonTitle={ null }
+                                        onFilterChange={ this.handleSearch }
+                                        placeholder="Search by name" />
+                                </InputGroup>
                             </LevelItem>
                             <LevelItem>
                                 { rows.length / 2 } results
