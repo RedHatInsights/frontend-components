@@ -6,6 +6,7 @@
 
 # devel
 *.js.map
+*.css.map
 
 # dependencies
 node_modules
