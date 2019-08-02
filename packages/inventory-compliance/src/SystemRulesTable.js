@@ -332,7 +332,7 @@ class SystemRulesTable extends React.Component {
 
     selectedRules = () => {
         const { currentRows, profiles, refIds } = this.state;
-        return currentRows.filter(row => row.selected && !row.cells[REMEDIATIONS_COLUMN].title.props.unsupported).map(row => ({
+        return currentRows.filter(row => row.selected && row.cells[REMEDIATIONS_COLUMN].original).map(row => ({
             // We want to match this response with a similar response from GraphQL
             refId: refIds[row.cells[0].original],
             profiles: [{ refId: profiles[row.cells[0].original] }],
