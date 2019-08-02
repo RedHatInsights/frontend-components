@@ -16,7 +16,9 @@ describe('Steps components', () => {
 
         initialProps = {
             isOpen: true,
-            refreshSources: spyFunction
+            refreshSources: spyFunction,
+            onCancel: jest.fn(),
+            onSubmit: jest.fn()
         };
     });
 

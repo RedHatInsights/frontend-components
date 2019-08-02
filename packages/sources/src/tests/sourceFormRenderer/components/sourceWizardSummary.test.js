@@ -7,8 +7,38 @@ describe('SourceWizardSummary component', () => {
     describe('should render correctly', () => {
         let formOptions;
         let sourceTypes;
+        let schema;
 
         beforeEach(() => {
+            schema = {
+                fields: [
+                    {
+                        name: 'username',
+                        label: 'Username'
+                    },
+                    {
+                        name: 'certificate_authority',
+                        label: 'Certificate Authority'
+                    },
+                    {
+                        name: 'url',
+                        label: 'URL'
+                    },
+                    {
+                        name: 'password',
+                        label: 'Password'
+                    },
+                    {
+                        name: 'role',
+                        type: 'hidden'
+                    },
+                    {
+                        name: 'validate',
+                        label: 'Should validate?'
+                    }
+                ]
+            };
+
             formOptions = (source_type) => ({
                 getState: () => ({
                     values: {
@@ -17,7 +47,9 @@ describe('SourceWizardSummary component', () => {
                         certificate_authority: 'authority',
                         url: 'neznam.cz',
                         password: '123456',
-                        source_type
+                        source_type,
+                        role: 'kubernetes',
+                        validate: true
                     }
                 })
             });
@@ -25,17 +57,20 @@ describe('SourceWizardSummary component', () => {
                 {
                     id: '1',
                     name: 'openshift',
-                    product_name: 'OpenShift Container Platform'
+                    product_name: 'OpenShift Container Platform',
+                    schema
                 },
                 {
                     id: '2',
                     name: 'amazon',
-                    product_name: 'Amazon Web Services'
+                    product_name: 'Amazon Web Services',
+                    schema
                 },
                 {
                     id: '3',
                     name: 'ansible-tower',
-                    product_name: 'Ansible Tower'
+                    product_name: 'Ansible Tower',
+                    schema
                 }
             ];
         });
