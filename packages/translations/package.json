@@ -23,5 +23,8 @@
     "dependencies": {
         "react-intl": "^2.9.0",
         "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7"
+    },
+    "devDependencies": {
+        "babel-plugin-react-intl": "^4.1.5"
     }
 }

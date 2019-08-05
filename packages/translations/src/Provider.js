@@ -29,6 +29,7 @@ const IntlProvider = ({
 
 export const updateLocaleData = (localeData = []) => {
     defaultLocale = [ ...defaultLocale, ...localeData ];
+    return defaultLocale;
 };
 
 IntlProvider.propTypes = {

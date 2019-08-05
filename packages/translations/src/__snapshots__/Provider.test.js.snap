@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`provider messages multiple Languages cs-locale 1`] = `
+<IntlProvider
+  locale="cs"
+  messages={
+    Object {
+      "cs": Object {
+        "some.msg": "Zpráva",
+      },
+      "en": Object {
+        "some.msg": "Message",
+      },
+    }
+  }
+>
+  <IntlProvider
+    locale="cs"
+    messages={
+      Object {
+        "some.msg": "Zpráva",
+      }
+    }
+  >
+    <div>
+      Test
+    </div>
+  </IntlProvider>
+</IntlProvider>
+`;
+
+exports[`provider messages multiple Languages no locale 1`] = `
+<IntlProvider
+  locale={null}
+  messages={
+    Object {
+      "cs": Object {
+        "some.msg": "Zpráva",
+      },
+      "en": Object {
+        "some.msg": "Message",
+      },
+    }
+  }
+>
+  <IntlProvider
+    locale="en"
+    messages={
+      Object {
+        "default.cancel": "Cancel",
+        "default.save": "Save",
+        "some.msg": "Message",
+      }
+    }
+  >
+    <div>
+      Test
+    </div>
+  </IntlProvider>
+</IntlProvider>
+`;
+
+exports[`provider messages no langauge 1`] = `
+<IntlProvider
+  locale={null}
+  messages={
+    Object {
+      "some.msg": "Message",
+    }
+  }
+>
+  <IntlProvider
+    locale="en"
+    messages={
+      Object {
+        "default.cancel": "Cancel",
+        "default.save": "Save",
+        "some.msg": "Message",
+      }
+    }
+  >
+    <div>
+      Test
+    </div>
+  </IntlProvider>
+</IntlProvider>
+`;
+
+exports[`provider should render correctly 1`] = `
+<IntlProvider
+  locale={null}
+>
+  <IntlProvider
+    locale="en"
+    messages={
+      Object {
+        "default.cancel": "Cancel",
+        "default.save": "Save",
+      }
+    }
+  >
+    <div>
+      Test
+    </div>
+  </IntlProvider>
+</IntlProvider>
+`;
