@@ -3,11 +3,15 @@
 exports[`Steps components renders correctly with sourceTypes 1`] = `
 <SourcesFormRenderer
   initialValues={Object {}}
+  onCancel={[MockFunction]}
   onSubmit={[Function]}
   schema={
     Object {
       "fields": Array [
         Object {
+          "buttonLabels": Object {
+            "submit": "Finish",
+          },
           "component": "wizard",
           "description": "You are importing data into this platform",
           "fields": Array [
@@ -332,10 +336,16 @@ exports[`Steps components renders correctly with sourceTypes 1`] = `
                 Object {
                   "component": "description",
                   "content": <TextContent>
+                    <Title
+                      headingLevel="h3"
+                      size="2xl"
+                    >
+                      Review source details
+                    </Title>
                     <Text
                       component="p"
                     >
-                      Review source details and click Add source to complete source creation. Click Back to revise.
+                      Review the information below and click Finish to configure your project. Use the Back button to make changes.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -343,6 +353,50 @@ exports[`Steps components renders correctly with sourceTypes 1`] = `
                 Object {
                   "component": "summary",
                   "name": "summary",
+                  "sourceTypes": Array [
+                    Object {
+                      "id": "1",
+                      "name": "openshift",
+                      "product_name": "OpenShift Container Platform",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "openshift",
+                      },
+                    },
+                    Object {
+                      "id": "2",
+                      "name": "amazon",
+                      "product_name": "Amazon Web Services",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "AWS",
+                      },
+                    },
+                    Object {
+                      "id": "3",
+                      "name": "ansible-tower",
+                      "product_name": "Ansible Tower",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "AnsibleTower",
+                      },
+                    },
+                  ],
                 },
               ],
               "name": "summary",
@@ -378,6 +432,7 @@ exports[`Steps components renders correctly without sourceTypes 1`] = `
   isOpen={true}
   nextButtonText="Next"
   onBack={null}
+  onClose={[MockFunction]}
   onGoToStep={null}
   onNext={null}
   startAtStep={1}
@@ -386,6 +441,7 @@ exports[`Steps components renders correctly without sourceTypes 1`] = `
       Object {
         "component": <LoadingStep
           customText="Loading, please wait."
+          onClose={[MockFunction]}
         />,
         "isFinishedStep": true,
         "name": "Loading",
@@ -400,11 +456,15 @@ exports[`Steps components renders correctly without sourceTypes 1`] = `
 exports[`Steps components renders correctly without sourceTypes 2`] = `
 <SourcesFormRenderer
   initialValues={Object {}}
+  onCancel={[MockFunction]}
   onSubmit={[Function]}
   schema={
     Object {
       "fields": Array [
         Object {
+          "buttonLabels": Object {
+            "submit": "Finish",
+          },
           "component": "wizard",
           "description": "You are importing data into this platform",
           "fields": Array [
@@ -729,10 +789,16 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 Object {
                   "component": "description",
                   "content": <TextContent>
+                    <Title
+                      headingLevel="h3"
+                      size="2xl"
+                    >
+                      Review source details
+                    </Title>
                     <Text
                       component="p"
                     >
-                      Review source details and click Add source to complete source creation. Click Back to revise.
+                      Review the information below and click Finish to configure your project. Use the Back button to make changes.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -740,6 +806,50 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 Object {
                   "component": "summary",
                   "name": "summary",
+                  "sourceTypes": Array [
+                    Object {
+                      "id": "1",
+                      "name": "openshift",
+                      "product_name": "OpenShift Container Platform",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "openshift",
+                      },
+                    },
+                    Object {
+                      "id": "2",
+                      "name": "amazon",
+                      "product_name": "Amazon Web Services",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "AWS",
+                      },
+                    },
+                    Object {
+                      "id": "3",
+                      "name": "ansible-tower",
+                      "product_name": "Ansible Tower",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "AnsibleTower",
+                      },
+                    },
+                  ],
                 },
               ],
               "name": "summary",

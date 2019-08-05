@@ -296,20 +296,22 @@ const sourceTypeSteps = sourceTypes =>
     sourceTypes.map(t => fieldsToSteps(sourceTypeSchema(t), t.name, 'summary'))
     .flatMap((x) => x);
 
-const summaryStep = () => ({
+const summaryStep = (sourceTypes) => ({
     fields: [
         {
             component: 'description',
             name: 'description-summary',
             content: <TextContent>
+                <Title headingLevel="h3" size="2xl">Review source details</Title>
                 <Text component={ TextVariants.p }>
-            Review source details and click Add source to complete source creation. Click Back to revise.
+            Review the information below and click Finish to configure your project. Use the Back button to make changes.
                 </Text>
             </TextContent>
         },
         {
             name: 'summary',
-            component: 'summary'
+            component: 'summary',
+            sourceTypes
         }],
     stepKey: 'summary',
     name: 'summary',
@@ -324,10 +326,13 @@ export default (sourceTypes) => (
             title: 'Add a source',
             inModal: true,
             description: 'You are importing data into this platform',
+            buttonLabels: {
+                submit: 'Finish'
+            },
             fields: [
                 firstStepNew(sourceTypes),
                 ...sourceTypeSteps(sourceTypes),
-                summaryStep()
+                summaryStep(sourceTypes)
             ]
         }
     ]});

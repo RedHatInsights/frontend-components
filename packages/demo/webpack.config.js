@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = (env) => ({
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-    devtool: false,
+    devtool: 'source-map',
     optimization: {
         minimize: process.env.NODE_ENV === 'production'
     },

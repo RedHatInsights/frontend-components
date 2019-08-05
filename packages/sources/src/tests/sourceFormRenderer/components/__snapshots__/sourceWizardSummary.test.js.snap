@@ -1,185 +1,238 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SourceWizardSummary component should render correctly amazon 1`] = `
-<Fragment>
-  <FormGroup
-    fieldId="summary-name"
-    label="name"
+<TextContent>
+  <TextList
+    component="dl"
   >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-name"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="openshift"
-    />
-  </FormGroup>
-  <FormGroup
-    fieldId="summary-type"
-    label="Type"
-  >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-type"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="Amazon Web Services"
-    />
-  </FormGroup>
-  <FormGroup
-    label="Access Key ID"
-  >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-id"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="user_name"
-    />
-  </FormGroup>
-  <FormGroup
-    fieldId="summary-ssl-cert"
-    label="Secret access key"
-  >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-ssl-cert"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="123456"
-    />
-  </FormGroup>
-</Fragment>
+    <TextListItem
+      component="dt"
+    >
+      Name
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      openshift
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Source Type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Amazon Web Services
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Username
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      user_name
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      URL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Password
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      123456
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Should validate?
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+  </TextList>
+</TextContent>
 `;
 
 exports[`SourceWizardSummary component should render correctly ansible-tower 1`] = `
-<Fragment>
-  <FormGroup
-    fieldId="summary-name"
-    label="name"
+<TextContent>
+  <TextList
+    component="dl"
   >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-name"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="openshift"
-    />
-  </FormGroup>
-  <FormGroup
-    fieldId="summary-type"
-    label="Type"
-  >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-type"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="Ansible Tower"
-    />
-  </FormGroup>
-</Fragment>
+    <TextListItem
+      component="dt"
+    >
+      Name
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      openshift
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Source Type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Ansible Tower
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Username
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      user_name
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      URL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Password
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      123456
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Should validate?
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+  </TextList>
+</TextContent>
 `;
 
 exports[`SourceWizardSummary component should render correctly openshift 1`] = `
-<Fragment>
-  <FormGroup
-    fieldId="summary-name"
-    label="name"
+<TextContent>
+  <TextList
+    component="dl"
   >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-name"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="openshift"
-    />
-  </FormGroup>
-  <FormGroup
-    fieldId="summary-type"
-    label="Type"
-  >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-type"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="OpenShift Container Platform"
-    />
-  </FormGroup>
-  <FormGroup
-    fieldId="summary-url"
-    label="URL"
-  >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-url"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="neznam.cz"
-    />
-  </FormGroup>
-  <FormGroup
-    fieldId="summary-ssl-cert"
-    label="SSL Certificate"
-  >
-    <TextInput
-      aria-label={null}
-      className=""
-      id="summary-ssl-cert"
-      isDisabled={true}
-      isReadOnly={false}
-      isRequired={false}
-      isValid={true}
-      onChange={[Function]}
-      type="text"
-      value="authority"
-    />
-  </FormGroup>
-</Fragment>
+    <TextListItem
+      component="dt"
+    >
+      Name
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      openshift
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Source Type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      OpenShift Container Platform
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Username
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      user_name
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      URL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Password
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      123456
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Should validate?
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+  </TextList>
+</TextContent>
 `;
