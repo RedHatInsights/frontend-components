@@ -4,10 +4,10 @@ import zipObject from 'lodash/zipObject';
 import { Popover, TextContent, TextList, TextListItem, Text, TextVariants, Title } from '@patternfly/react-core';
 import { QuestionCircleIcon } from '@patternfly/react-icons';
 import SSLFormLabel from './SSLFormLabel';
+import { AwsIcon, OpenshiftIcon } from '@patternfly/react-icons';
 
 const compileAllSourcesComboOptions = (sourceTypes) => (
     [
-        { label: 'Choose a type' },
         ...sourceTypes.map(t => ({
             value: t.name,
             label: t.product_name
@@ -20,6 +20,11 @@ const compileStepMapper = (sourceTypes) => {
     const names = sourceTypes.map(t => t.name);
     return zipObject(names, names);
 };
+
+const iconMapper = (name, DefaultIcon) => ({
+    openshift: OpenshiftIcon,
+    amazon: AwsIcon
+}[name] || DefaultIcon);
 
 const firstStepNew = (sourceTypes) => ({
     title: 'Select a source type',
@@ -54,14 +59,15 @@ const firstStepNew = (sourceTypes) => ({
                 type: validatorTypes.REQUIRED
             }]
         }, {
-            component: componentTypes.SELECT_COMPONENT,
+            component: 'card-select',
             name: 'source_type',
-            label: 'Type',
             isRequired: true,
-            options: compileAllSourcesComboOptions(sourceTypes),
+            label: 'Type',
+            iconMapper,
             validate: [{
                 type: validatorTypes.REQUIRED
-            }]
+            }],
+            options: compileAllSourcesComboOptions(sourceTypes)
         }]
 });
 

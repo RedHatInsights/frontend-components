@@ -1,0 +1,30 @@
+.ins-c-sources__wizard--card {
+    min-height: 120px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 4px 11px 0 rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.42), 0 4px 11px 0 rgba(0, 0, 0, 0.42);
+      outline: none;
+    }
+
+    &.selected {
+      border:1px solid;
+      border-color: var(--pf-global--primary-color--100);
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      background-color: var(--pf-global--BorderColor--100);
+      opacity: 0.5;
+      pointer-events: none;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+
+    .disabled {
+      z-index: -1;
+    }
+}
