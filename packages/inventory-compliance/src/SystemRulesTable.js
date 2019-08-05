@@ -439,9 +439,9 @@ class SystemRulesTable extends React.Component {
             result = policyRows;
         }
 
-        if (title.length > 0 && result.length > 0) {
+        if (title && title.length > 0 && result.length > 0) {
             result = result.filter(row => titleRows.includes(row));
-        } else if (title.length > 0 && result.length === 0) {
+        } else if (title && title.length > 0 && result.length === 0) {
             result = titleRows;
         }
 
@@ -457,7 +457,7 @@ class SystemRulesTable extends React.Component {
             passedRows = originalRows;
         }
 
-        const severityRows = this.filterBy(severity, originalRows, SEVERITY_COLUMN);
+        const severityRows = this.filterBy(severity.join('|'), originalRows, SEVERITY_COLUMN);
         const policyRows = this.filterBy(policy, originalRows, POLICY_COLUMN);
         const titleRows = this.filterBy(title, originalRows, TITLE_COLUMN);
         const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, titleRows,
