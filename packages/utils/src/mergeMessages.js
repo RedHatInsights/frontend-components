@@ -7,13 +7,13 @@ const last = require('lodash/last');
 let MESSAGES_PATTERN = 'packages/**/build/messages/**/*.json';
 let LANG_DIR = 'packages/translations/locales/';
 let LANG_PATTERN = '';
-let IGNORED = ['translations'];
+let IGNORED = [ 'translations' ];
 
 program
-    .option('-p, --pattern <value>', 'file pattern')
-    .option('-I, --ignore-files <value>', 'array of ignored files')
-    .option('-L, --lang-pattern <value>', 'pattern to look for files with languages')
-    .option('-l, --lang-dir <dir>', 'folder with languages');
+.option('-p, --pattern <value>', 'file pattern')
+.option('-I, --ignore-files <value>', 'array of ignored files')
+.option('-L, --lang-pattern <value>', 'pattern to look for files with languages')
+.option('-l, --lang-dir <dir>', 'folder with languages');
 
 const rootFolder = `${process.cwd()}/`;
 
@@ -48,15 +48,15 @@ try {
 // so that they can be merged with the eggregated 'en' object below
 
 const mergedTranslations = globSync(`${rootFolder}${LANG_PATTERN}`)
-    .map(filename => {
-        const locale = last(filename.split('/')).split('.json')[0];
-        if (!IGNORED.includes(locale)) {
-            return { [locale]: JSON.parse(fs.readFileSync(filename, 'utf8')) };
-        }
-    })
-    .reduce((acc, localeObj) => {
-        return { ...acc, ...localeObj };
-    }, {});
+.map(filename => {
+    const locale = last(filename.split('/')).split('.json')[0];
+    if (!IGNORED.includes(locale)) {
+        return { [locale]: JSON.parse(fs.readFileSync(filename, 'utf8')) };
+    }
+})
+.reduce((acc, localeObj) => {
+    return { ...acc, ...localeObj };
+}, {});
 
 // Aggregates the default messages that were extracted from the example app's
 // React components via the React Intl Babel plugin. An error will be thrown if
@@ -64,17 +64,18 @@ const mergedTranslations = globSync(`${rootFolder}${LANG_PATTERN}`)
 // is a flat collection of `id: message` pairs for the app's default locale.
 
 const defaultMessages = globSync(`${rootFolder}${MESSAGES_PATTERN}`)
-    .map(filename => fs.readFileSync(filename, 'utf8'))
-    .map(file => JSON.parse(file))
-    .reduce((collection, descriptors) => {
-        descriptors.forEach(({ id, defaultMessage }) => {
-            if (collection.hasOwnProperty(id)) {
-                throw new Error(`Duplicate message id: ${id}`);
-            }
-            collection[id] = defaultMessage;
-        });
-        return collection;
-    }, {});
+.map(filename => fs.readFileSync(filename, 'utf8'))
+.map(file => JSON.parse(file))
+.reduce((collection, descriptors) => {
+    descriptors.forEach(({ id, defaultMessage }) => {
+        if (collection.hasOwnProperty(id)) {
+            throw new Error(`Duplicate message id: ${id}`);
+        }
+
+        collection[id] = defaultMessage;
+    });
+    return collection;
+}, {});
 // Create a new directory that we want to write the aggregate messages to
 mkdirpSync(`${rootFolder}${LANG_DIR}`);
 

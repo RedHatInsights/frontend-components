@@ -136,7 +136,7 @@
         "bootstrap": "lerna bootstrap --hoist",
         "start": "lerna run --parallel start",
         "build": "lerna run build --no-private --ignore=@redhat-cloud-services/frontend-components-config",
-        "generate-translations": "npm run build && node scripts/mergeMessages.js",
+        "generate-translations": "npm run build && node packages/utils/src/mergeMessages.js",
         "test": "jest",
         "coverage": "codecov",
         "prepare": "npm run bootstrap && npm run build",

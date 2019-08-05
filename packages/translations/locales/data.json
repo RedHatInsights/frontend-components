@@ -1,6 +1,6 @@
 {
-  "en": {},
-  "fr": {
-    "bla": "fla"
+  "en": {
+    "default.cancel": "Cancel",
+    "default.save": "Save"
   }
 }
