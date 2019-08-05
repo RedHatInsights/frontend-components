@@ -18,7 +18,8 @@ describe('AddSourceButton', () => {
     beforeEach(() => {
         initialProps = {
             isOpen: true,
-            sourceTypes
+            sourceTypes,
+            onClose: jest.fn()
         };
     });
 

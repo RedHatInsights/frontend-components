@@ -121,20 +121,20 @@ class EntityTable extends React.Component {
         }));
     }
 
-    buildTransforms = (props, transforms, hasItems) => {
+    buildTransforms = (props, transforms, hasItems, rows) => {
         return ([
             ...transforms || [],
             ...props && props.width ? [ cellWidth(props.width) ] : [],
-            ...hasItems ? [] : [ sortable ]
+            ...hasItems || rows.length <= 0 ? [] : [ sortable ]
         ]);
     }
 
     createColumns = () => {
-        const { columns, hasItems } = this.props;
+        const { columns, hasItems, rows } = this.props;
         return columns.map(({ props, transforms, ...oneCell }) => ({
             ...oneCell,
             transforms: [
-                ...this.buildTransforms(props, transforms, hasItems) || []
+                ...this.buildTransforms(props, transforms, hasItems, rows) || []
             ]
         }));
     }
@@ -164,9 +164,11 @@ class EntityTable extends React.Component {
                         rows={ this.createRows() }
                         gridBreakPoint={ columns.length > 5 ? TableGridBreakpoint.gridLg : TableGridBreakpoint.gridMd }
                         className="ins-c-entity-table"
-                        onSort={ (event, index, direction) => this.onSort(event, cells[index].key, direction) }
+                        onSort={ (event, index, direction) => {
+                            this.onSort(event, cells[index - Boolean(hasCheckbox) - Boolean(expandable)].key, direction);
+                        } }
                         sortBy={ {
-                            index: cells.findIndex(item => sortBy && sortBy.key === item.key),
+                            index: cells.findIndex(item => sortBy && sortBy.key === item.key) + Boolean(hasCheckbox) + Boolean(expandable),
                             direction: sortBy && sortBy.direction
                         } }
                         { ...{
