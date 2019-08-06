@@ -30,13 +30,6 @@ module.exports = {
         'prop-types': 'prop-types',
         react: 'react',
         'react-redux': 'react-redux',
-        'react-dom': 'react-dom',
-        'react-router-dom': {
-            commonjs: 'react-router-dom',
-            commonjs2: 'react-router-dom',
-            amd: 'react-router-dom',
-            root: 'ReactRouterDOM'
-        },
         urijs: 'urijs',
         classnames: 'classnames',
         dot: 'dot',

@@ -19,11 +19,10 @@ import {
     ToolbarGroup,
     ToolbarItem
 } from '@patternfly/react-core';
-import { CheckIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon  } from '@patternfly/react-icons';
+import { CheckIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon } from '@patternfly/react-icons';
 import { cellWidth, sortable, SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
-import { filter, flatten, sortBy } from 'lodash';
+import { flatten, sortBy } from 'lodash';
 import { global_success_color_200 } from '@patternfly/react-tokens';
-import { withRouter } from 'react-router-dom';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import moment from 'moment';
 import { Battery, FilterDropdown, TableToolbar } from '@redhat-cloud-services/frontend-components';
@@ -105,7 +104,7 @@ class InventoryRuleList extends Component {
 
     activeRuleFirst = (activeReports) => {
         const reports = [ ...activeReports ];
-        const activeRuleIndex = activeReports.findIndex(report => report.rule.rule_id === this.props.match.params.id);
+        const activeRuleIndex = activeReports.findIndex(report => report.rule.rule_id === this.props.routerData.params.id);
         const activeReport = reports.splice(activeRuleIndex, 1);
 
         return activeRuleIndex !== -1 ? [ activeReport[0], ...reports ] : activeReports;
@@ -351,34 +350,37 @@ class InventoryRuleList extends Component {
                     </CardBody>
                 </Card>
             ) }
-            { inventoryReportFetchStatus === 'fulfilled' && hideResultsSatelliteManaged ?
-                <MessageState icon={ PficonSatelliteIcon } title='Satellite managed system'
-                    text={ <span key='satellite managed system'>Insights results can not be displayed for this host, as the &quot;Hide
-                    Satellite Managed Systems&quot; setting has been enabled by an org admin.<br/>For more information on this setting
-                    and how to modify it,
-                    <a href='https://access.redhat.com/solutions/4281761' rel="noopener"> Please visit this Knowledgebase Article
-                        <ExternalLinkAltIcon />
-                    </a>.</span> } />
-                :
-                (activeReports.length > 0 ?
-                    <Fragment><Table aria-label={ 'rule-table' } onCollapse={ this.handleOnCollapse } rows={ rows } cells={ cols } sortBy={ sortBy }
-                        onSort={ this.onSort }
-                        onSelect={ this.onSelect }>
-                        <TableHeader />
-                        <TableBody />
-                    </Table>
-                    { results === 0 &&
-                            <MessageState icon={ TimesCircleIcon } title='No matching systems found'
-                                text={ `This filter criteria matches no rules. Try changing your filter settings.` } />
-                    }
-                    </Fragment>
+            { inventoryReportFetchStatus === 'fulfilled' &&
+                (hideResultsSatelliteManaged ?
+                    <MessageState icon={ PficonSatelliteIcon } title='Satellite managed system'
+                        text={ <span key='satellite managed system'>Insights results can not be displayed for this host, as the &quot;Hide
+                    Satellite Managed Systems&quot; setting has been enabled by an org admin.<br />For more information on this setting
+                                and how to modify it,
+                        <a href='https://access.redhat.com/solutions/4281761' rel="noopener"> Please visit this Knowledgebase Article
+                            <ExternalLinkAltIcon />
+                        </a>.</span> } />
                     :
-                    <Card>
-                        <CardBody>
-                            <MessageState icon={ CheckIcon } iconStyle={ { color: global_success_color_200.value } } title='No rule hits'
-                                text={ `No known rules affect this system` } />
-                        </CardBody></Card>
-                )
+                    (activeReports.length > 0 ?
+                        <Fragment>
+                            <Table aria-label={ 'rule-table' } onCollapse={ this.handleOnCollapse } rows={ rows } cells={ cols } sortBy={ sortBy }
+                                onSort={ this.onSort }
+                                onSelect={ this.onSelect }>
+                                <TableHeader />
+                                <TableBody />
+                            </Table>
+                            { results === 0 &&
+                                <MessageState icon={ TimesCircleIcon } title='No matching systems found'
+                                    text={ `This filter criteria matches no rules. Try changing your filter settings.` } />
+                            }
+                        </Fragment>
+                        :
+                        <Card>
+                            <CardBody>
+                                <MessageState icon={ CheckIcon } iconStyle={ { color: global_success_color_200.value } } title='No rule hits'
+                                    text={ `No known rules affect this system` } />
+                            </CardBody>
+                        </Card>
+                    ))
             }
             { inventoryReportFetchStatus === 'failed' && this.props.entity &&
                 <MessageState icon={ TimesCircleIcon } title='Error getting rules'
@@ -393,18 +395,19 @@ class InventoryRuleList extends Component {
 InventoryRuleList.propTypes = {
     entity: PropTypes.object,
     addNotification: PropTypes.func,
-    match: PropTypes.object
+    routerData: PropTypes.object
 };
 
-const mapStateToProps = ({ entityDetails: { entity }}) => ({
-    entity
+const mapStateToProps = (state) => ({
+    entity: state.entityDetails.entity,
+    routerData: state.routerData
 });
 
 const mapDispatchToProps = dispatch => ({
     addNotification: data => dispatch(addNotification(data))
 });
 
-export default withRouter(connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(InventoryRuleList));
+)(InventoryRuleList);
