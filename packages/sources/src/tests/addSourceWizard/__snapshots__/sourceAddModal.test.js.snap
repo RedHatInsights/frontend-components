@@ -47,14 +47,12 @@ exports[`Steps components renders correctly with sourceTypes 1`] = `
                   ],
                 },
                 Object {
-                  "component": "select-field",
+                  "component": "card-select",
+                  "iconMapper": [Function],
                   "isRequired": true,
                   "label": "Type",
                   "name": "source_type",
                   "options": Array [
-                    Object {
-                      "label": "Choose a type",
-                    },
                     Object {
                       "label": "OpenShift Container Platform",
                       "value": "openshift",
@@ -500,14 +498,12 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   ],
                 },
                 Object {
-                  "component": "select-field",
+                  "component": "card-select",
+                  "iconMapper": [Function],
                   "isRequired": true,
                   "label": "Type",
                   "name": "source_type",
                   "options": Array [
-                    Object {
-                      "label": "Choose a type",
-                    },
                     Object {
                       "label": "OpenShift Container Platform",
                       "value": "openshift",
