@@ -2,6 +2,20 @@
 
 exports[`AddSourceButton renders correctly with sourceTypes 1`] = `
 <SourceAddModal
+  applicationTypes={
+    Array [
+      Object {
+        "display_name": "Catalog",
+        "id": "1",
+        "name": "catalog/overwiev",
+      },
+      Object {
+        "display_name": "Cost Management",
+        "id": "2",
+        "name": "koku/overwiev",
+      },
+    ]
+  }
   onCancel={[Function]}
   onSubmit={[Function]}
   sourceTypes={
@@ -56,6 +70,20 @@ exports[`AddSourceButton renders correctly with sourceTypes 1`] = `
 
 exports[`AddSourceButton renders correctly without sourceTypes 1`] = `
 <SourceAddModal
+  applicationTypes={
+    Array [
+      Object {
+        "display_name": "Catalog",
+        "id": "1",
+        "name": "catalog/overwiev",
+      },
+      Object {
+        "display_name": "Cost Management",
+        "id": "2",
+        "name": "koku/overwiev",
+      },
+    ]
+  }
   onCancel={[Function]}
   onSubmit={[Function]}
   values={Object {}}

@@ -4,12 +4,13 @@ import { Wizard } from '@patternfly/react-core';
 
 import SourcesFormRenderer from '../sourceFormRenderer/index';
 import createSchema from './SourceAddSchema';
-import { doLoadSourceTypes } from '../api/index';
+import { doLoadSourceTypes, doLoadApplicationTypes } from '../api/index';
 import LoadingStep from './steps/LoadingStep';
 
 const initialValues = {
     schema: {},
     sourceTypes: [],
+    application: [],
     isLoading: true
 };
 
@@ -19,14 +20,39 @@ class SourceAddModal extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
-        const { sourceTypes } = this.props;
+        const { sourceTypes, applicationTypes } = this.props;
 
-        if (sourceTypes) {
-            this.setState({ schema: createSchema(sourceTypes.filter(type => type.schema)), isLoading: false, sourceTypes });
+        if (sourceTypes && applicationTypes) {
+            this.setState({
+                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes),
+                isLoading: false,
+                sourceTypes,
+                applicationTypes
+            });
         } else {
-            doLoadSourceTypes().then(types => {
+            const promises = [];
+            if (!sourceTypes) {
+                promises.push(doLoadSourceTypes());
+            }
+
+            if (!applicationTypes) {
+                promises.push(doLoadApplicationTypes());
+            }
+
+            return Promise.all(promises).then((data) => {
+                const sourceTypesOut = data.find(types => types.hasOwnProperty('sourceTypes'));
+                const applicationTypesOut = data.find(types => types.hasOwnProperty('applicationTypes'));
+
+                const sourceTypesFinal = sourceTypes || sourceTypesOut.sourceTypes;
+                const applicationTypesFinal = applicationTypes || applicationTypesOut.applicationTypes;
+
                 if (this._isMounted) {
-                    this.setState({ sourceTypes: types, schema: createSchema(types.filter(type => type.schema)), isLoading: false });
+                    this.setState({
+                        sourceTypes: sourceTypesFinal,
+                        schema: createSchema(sourceTypesFinal.filter(type => type.schema), applicationTypesFinal),
+                        isLoading: false,
+                        applicationTypes: applicationTypesFinal
+                    });
                 }
             });
         }
@@ -69,7 +95,19 @@ class SourceAddModal extends React.Component {
 SourceAddModal.propTypes = {
     onCancel: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    sourceTypes: PropTypes.array,
+    sourceTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
+        schema: PropTypes.shape({
+            title: PropTypes.string.isRequired
+        })
+    })),
+    applicationTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
+    })),
     values: PropTypes.object
 };
 
