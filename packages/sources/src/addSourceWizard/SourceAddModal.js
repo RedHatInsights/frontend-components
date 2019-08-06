@@ -95,8 +95,19 @@ class SourceAddModal extends React.Component {
 SourceAddModal.propTypes = {
     onCancel: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    sourceTypes: PropTypes.array,
-    applicationTypes: PropTypes.array,
+    sourceTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
+        schema: PropTypes.shape({
+            title: PropTypes.string.isRequired
+        })
+    })),
+    applicationTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
+    })),
     values: PropTypes.object
 };
 

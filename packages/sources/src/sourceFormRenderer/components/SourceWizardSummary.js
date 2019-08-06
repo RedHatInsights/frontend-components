@@ -51,8 +51,19 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes }) => 
 
 SourceWizardSummary.propTypes = {
     formOptions: PropTypes.any.isRequired,
-    sourceTypes: PropTypes.arrayOf(PropTypes.any).isRequired,
-    applicationTypes: PropTypes.arrayOf(PropTypes.any).isRequired
+    sourceTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
+        schema: PropTypes.shape({
+            title: PropTypes.string.isRequired
+        })
+    })).isRequired,
+    applicationTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
+    })).isRequired
 };
 
 export default SourceWizardSummary;

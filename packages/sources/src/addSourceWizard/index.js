@@ -81,8 +81,19 @@ class AddSourceWizard extends React.Component {
 
 AddSourceWizard.propTypes = {
     afterSuccess: PropTypes.func,
-    sourceTypes: PropTypes.array,
-    applicationTypes: PropTypes.array,
+    sourceTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
+        schema: PropTypes.shape({
+            title: PropTypes.string.isRequired
+        })
+    })),
+    applicationTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
+    })),
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
     successfulMessage: PropTypes.node

@@ -15,6 +15,7 @@ describe('SourceWizardSummary component', () => {
 
         beforeEach(() => {
             schema = {
+                title: 'Title',
                 fields: [
                     {
                         name: 'username',
