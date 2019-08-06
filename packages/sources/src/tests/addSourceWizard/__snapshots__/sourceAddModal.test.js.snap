@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Steps components renders correctly with sourceTypes 1`] = `
+exports[`Steps components renders correctly with sourceTypes and applicationTypes 1`] = `
 <SourcesFormRenderer
   initialValues={Object {}}
   onCancel={[MockFunction]}
@@ -190,7 +190,7 @@ exports[`Steps components renders correctly with sourceTypes 1`] = `
                 },
               ],
               "name": "openshift_1",
-              "nextStep": "summary",
+              "nextStep": "application-type",
               "stepKey": "openshift_1",
               "title": "Enter OpenShift Container Platform information",
             },
@@ -313,7 +313,7 @@ exports[`Steps components renders correctly with sourceTypes 1`] = `
                 },
               ],
               "name": "amazon",
-              "nextStep": "summary",
+              "nextStep": "application-type",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -325,9 +325,33 @@ exports[`Steps components renders correctly with sourceTypes 1`] = `
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "summary",
+              "nextStep": "application-type",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "label": "Select your application",
+                  "name": "app_type",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                },
+              ],
+              "name": "application-type",
+              "nextStep": "summary",
+              "stepKey": "application-type",
+              "title": "Select application",
             },
             Object {
               "fields": Array [
@@ -349,6 +373,505 @@ exports[`Steps components renders correctly with sourceTypes 1`] = `
                   "name": "description-summary",
                 },
                 Object {
+                  "applicationTypes": Array [
+                    Object {
+                      "display_name": "Catalog",
+                      "id": "1",
+                      "name": "catalog/overwiev",
+                    },
+                    Object {
+                      "display_name": "Cost Management",
+                      "id": "2",
+                      "name": "koku/overwiev",
+                    },
+                  ],
+                  "component": "summary",
+                  "name": "summary",
+                  "sourceTypes": Array [
+                    Object {
+                      "id": "1",
+                      "name": "openshift",
+                      "product_name": "OpenShift Container Platform",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "openshift",
+                      },
+                    },
+                    Object {
+                      "id": "2",
+                      "name": "amazon",
+                      "product_name": "Amazon Web Services",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "AWS",
+                      },
+                    },
+                    Object {
+                      "id": "3",
+                      "name": "ansible-tower",
+                      "product_name": "Ansible Tower",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "AnsibleTower",
+                      },
+                    },
+                  ],
+                },
+              ],
+              "name": "summary",
+              "stepKey": "summary",
+              "title": "Review source details",
+            },
+          ],
+          "inModal": true,
+          "name": "wizard",
+          "title": "Add a source",
+        },
+      ],
+    }
+  }
+  showFormControls={false}
+/>
+`;
+
+exports[`Steps components renders correctly without applicationTypes 1`] = `
+<Wizard
+  ariaLabelCloseButton="Close"
+  ariaLabelNav="Steps"
+  backButtonText="Back"
+  cancelButtonText="Cancel"
+  className=""
+  description="You are importing data into this platform"
+  footer={null}
+  hasBodyPadding={true}
+  height={null}
+  isCompactNav={false}
+  isFullHeight={false}
+  isFullWidth={false}
+  isOpen={true}
+  nextButtonText="Next"
+  onBack={null}
+  onClose={[MockFunction]}
+  onGoToStep={null}
+  onNext={null}
+  startAtStep={1}
+  steps={
+    Array [
+      Object {
+        "component": <LoadingStep
+          customText="Loading, please wait."
+          onClose={[MockFunction]}
+        />,
+        "isFinishedStep": true,
+        "name": "Loading",
+      },
+    ]
+  }
+  title="Add a source"
+  width={null}
+/>
+`;
+
+exports[`Steps components renders correctly without applicationTypes 2`] = `
+<SourcesFormRenderer
+  initialValues={Object {}}
+  onCancel={[MockFunction]}
+  onSubmit={[Function]}
+  schema={
+    Object {
+      "fields": Array [
+        Object {
+          "buttonLabels": Object {
+            "submit": "Finish",
+          },
+          "component": "wizard",
+          "description": "You are importing data into this platform",
+          "fields": Array [
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      All fields are required.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, Source_1",
+                  "isRequired": true,
+                  "label": "Name",
+                  "name": "source_name",
+                  "type": "text",
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+                Object {
+                  "component": "card-select",
+                  "iconMapper": [Function],
+                  "isRequired": true,
+                  "label": "Type",
+                  "name": "source_type",
+                  "options": Array [
+                    Object {
+                      "label": "OpenShift Container Platform",
+                      "value": "openshift",
+                    },
+                    Object {
+                      "label": "Amazon Web Services",
+                      "value": "amazon",
+                    },
+                    Object {
+                      "label": "Ansible Tower",
+                      "value": "ansible-tower",
+                    },
+                  ],
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+              ],
+              "name": "step_1",
+              "nextStep": Object {
+                "stepMapper": Object {
+                  "amazon": "amazon",
+                  "ansible-tower": "ansible-tower",
+                  "openshift": "openshift",
+                },
+                "when": "source_type",
+              },
+              "stepKey": 1,
+              "title": "Select a source type",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Add credentials that enable communication with this source. This source requires the login token.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      To collect data from a Red Hat OpenShift Container Platform source,
+                    </Text>
+                    <TextContent>
+                      <TextList
+                        component="ul"
+                      >
+                        <TextListItem
+                          component="li"
+                        >
+                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Run the following command to obtain your login token:
+                          <b>
+                             # oc sa get-token -n management-infra management-admin
+                          </b>
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Copy the token and paste it in the following field.
+                        </TextListItem>
+                      </TextList>
+                    </TextContent>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "label": "Token",
+                  "name": "token",
+                },
+              ],
+              "name": "openshift",
+              "nextStep": "openshift_1",
+              "stepKey": "openshift",
+              "title": "Add source credentials",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Provide OpenShift Container Platform URL and SSL certificate.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authtype",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
+                  "isRequired": true,
+                  "label": "URL",
+                  "name": "url",
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+                Object {
+                  "component": "checkbox",
+                  "label": "Verify SSL",
+                  "name": "verify_ssl",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "condition": Object {
+                    "is": true,
+                    "when": "verify_ssl",
+                  },
+                  "label": <SSLFormLabel />,
+                  "name": "certificate_authority",
+                },
+              ],
+              "name": "openshift_1",
+              "nextStep": "application-type",
+              "stepKey": "openshift_1",
+              "title": "Enter OpenShift Container Platform information",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      <Title
+                        headingLevel="h3"
+                        size="2xl"
+                      >
+                        Configure account access 
+                        <Popover
+                          appendTo={[Function]}
+                          aria-label="Help text"
+                          bodyContent={
+                            <React.Fragment>
+                              <Text
+                                component="p"
+                              >
+                                Red Had recommends using the Power User AWS Identity and Access Management (IAM) policy when adding an AWS account as a source. This Policy allows the user full access to API functionality and AWS services for user administration.
+                                <br />
+                                Create an access key in the  
+                                <b>
+                                  Security Credentials
+                                </b>
+                                  area of your AWS user account. To add your account as a source, enter the access key ID and secret access key to act as your user ID and password.
+                              </Text>
+                            </React.Fragment>
+                          }
+                          className=""
+                          closeBtnAriaLabel="Close"
+                          enableFlip={true}
+                          footerContent={
+                            <a
+                              href="http://foo.bar"
+                            >
+                              Learn more
+                            </a>
+                          }
+                          headerContent={null}
+                          hideOnOutsideClick={true}
+                          isVisible={null}
+                          maxWidth="50%"
+                          onHidden={[Function]}
+                          onHide={[Function]}
+                          onMount={[Function]}
+                          onShow={[Function]}
+                          onShown={[Function]}
+                          position="bottom"
+                          shouldClose={[Function]}
+                          zIndex={9999}
+                        >
+                          <QuestionCircleIcon
+                            color="currentColor"
+                            noVerticalAlign={false}
+                            size="sm"
+                            title={null}
+                          />
+                        </Popover>
+                      </Title>
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      Create an access key in your AWS user account and enter the details below.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      For sufficient access and security, Red Hat recommends using the Power User IAM polocy for your AWS user account.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      All fields are required.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "aws",
+                  "name": "role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "access_key_secret_key",
+                  "name": "authtype",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
+                  "isRequired": true,
+                  "label": "Access Key ID",
+                  "name": "username",
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+                  "isRequired": true,
+                  "label": "Secret Key",
+                  "name": "password",
+                  "type": "password",
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+              ],
+              "name": "amazon",
+              "nextStep": "application-type",
+              "stepKey": "amazon",
+              "title": "Configure account access",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "text-field",
+                  "name": "field",
+                },
+              ],
+              "name": "ansible-tower",
+              "nextStep": "application-type",
+              "stepKey": "ansible-tower",
+              "title": "AnsibleTower",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "label": "Select your application",
+                  "name": "app_type",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                },
+              ],
+              "name": "application-type",
+              "nextStep": "summary",
+              "stepKey": "application-type",
+              "title": "Select application",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Title
+                      headingLevel="h3"
+                      size="2xl"
+                    >
+                      Review source details
+                    </Title>
+                    <Text
+                      component="p"
+                    >
+                      Review the information below and click Finish to configure your project. Use the Back button to make changes.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "applicationTypes": Array [
+                    Object {
+                      "display_name": "Catalog",
+                      "id": "1",
+                      "name": "catalog/overwiev",
+                    },
+                    Object {
+                      "display_name": "Cost Management",
+                      "id": "2",
+                      "name": "koku/overwiev",
+                    },
+                  ],
                   "component": "summary",
                   "name": "summary",
                   "sourceTypes": Array [
@@ -641,7 +1164,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
               ],
               "name": "openshift_1",
-              "nextStep": "summary",
+              "nextStep": "application-type",
               "stepKey": "openshift_1",
               "title": "Enter OpenShift Container Platform information",
             },
@@ -764,7 +1287,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
               ],
               "name": "amazon",
-              "nextStep": "summary",
+              "nextStep": "application-type",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -776,9 +1299,33 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "summary",
+              "nextStep": "application-type",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "label": "Select your application",
+                  "name": "app_type",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                },
+              ],
+              "name": "application-type",
+              "nextStep": "summary",
+              "stepKey": "application-type",
+              "title": "Select application",
             },
             Object {
               "fields": Array [
@@ -800,6 +1347,505 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "name": "description-summary",
                 },
                 Object {
+                  "applicationTypes": Array [
+                    Object {
+                      "display_name": "Catalog",
+                      "id": "1",
+                      "name": "catalog/overwiev",
+                    },
+                    Object {
+                      "display_name": "Cost Management",
+                      "id": "2",
+                      "name": "koku/overwiev",
+                    },
+                  ],
+                  "component": "summary",
+                  "name": "summary",
+                  "sourceTypes": Array [
+                    Object {
+                      "id": "1",
+                      "name": "openshift",
+                      "product_name": "OpenShift Container Platform",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "openshift",
+                      },
+                    },
+                    Object {
+                      "id": "2",
+                      "name": "amazon",
+                      "product_name": "Amazon Web Services",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "AWS",
+                      },
+                    },
+                    Object {
+                      "id": "3",
+                      "name": "ansible-tower",
+                      "product_name": "Ansible Tower",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "AnsibleTower",
+                      },
+                    },
+                  ],
+                },
+              ],
+              "name": "summary",
+              "stepKey": "summary",
+              "title": "Review source details",
+            },
+          ],
+          "inModal": true,
+          "name": "wizard",
+          "title": "Add a source",
+        },
+      ],
+    }
+  }
+  showFormControls={false}
+/>
+`;
+
+exports[`Steps components renders correctly without sourceTypes and application types 1`] = `
+<Wizard
+  ariaLabelCloseButton="Close"
+  ariaLabelNav="Steps"
+  backButtonText="Back"
+  cancelButtonText="Cancel"
+  className=""
+  description="You are importing data into this platform"
+  footer={null}
+  hasBodyPadding={true}
+  height={null}
+  isCompactNav={false}
+  isFullHeight={false}
+  isFullWidth={false}
+  isOpen={true}
+  nextButtonText="Next"
+  onBack={null}
+  onClose={[MockFunction]}
+  onGoToStep={null}
+  onNext={null}
+  startAtStep={1}
+  steps={
+    Array [
+      Object {
+        "component": <LoadingStep
+          customText="Loading, please wait."
+          onClose={[MockFunction]}
+        />,
+        "isFinishedStep": true,
+        "name": "Loading",
+      },
+    ]
+  }
+  title="Add a source"
+  width={null}
+/>
+`;
+
+exports[`Steps components renders correctly without sourceTypes and application types 2`] = `
+<SourcesFormRenderer
+  initialValues={Object {}}
+  onCancel={[MockFunction]}
+  onSubmit={[Function]}
+  schema={
+    Object {
+      "fields": Array [
+        Object {
+          "buttonLabels": Object {
+            "submit": "Finish",
+          },
+          "component": "wizard",
+          "description": "You are importing data into this platform",
+          "fields": Array [
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      All fields are required.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, Source_1",
+                  "isRequired": true,
+                  "label": "Name",
+                  "name": "source_name",
+                  "type": "text",
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+                Object {
+                  "component": "card-select",
+                  "iconMapper": [Function],
+                  "isRequired": true,
+                  "label": "Type",
+                  "name": "source_type",
+                  "options": Array [
+                    Object {
+                      "label": "OpenShift Container Platform",
+                      "value": "openshift",
+                    },
+                    Object {
+                      "label": "Amazon Web Services",
+                      "value": "amazon",
+                    },
+                    Object {
+                      "label": "Ansible Tower",
+                      "value": "ansible-tower",
+                    },
+                  ],
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+              ],
+              "name": "step_1",
+              "nextStep": Object {
+                "stepMapper": Object {
+                  "amazon": "amazon",
+                  "ansible-tower": "ansible-tower",
+                  "openshift": "openshift",
+                },
+                "when": "source_type",
+              },
+              "stepKey": 1,
+              "title": "Select a source type",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Add credentials that enable communication with this source. This source requires the login token.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      To collect data from a Red Hat OpenShift Container Platform source,
+                    </Text>
+                    <TextContent>
+                      <TextList
+                        component="ul"
+                      >
+                        <TextListItem
+                          component="li"
+                        >
+                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Run the following command to obtain your login token:
+                          <b>
+                             # oc sa get-token -n management-infra management-admin
+                          </b>
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Copy the token and paste it in the following field.
+                        </TextListItem>
+                      </TextList>
+                    </TextContent>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "label": "Token",
+                  "name": "token",
+                },
+              ],
+              "name": "openshift",
+              "nextStep": "openshift_1",
+              "stepKey": "openshift",
+              "title": "Add source credentials",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Provide OpenShift Container Platform URL and SSL certificate.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authtype",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
+                  "isRequired": true,
+                  "label": "URL",
+                  "name": "url",
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+                Object {
+                  "component": "checkbox",
+                  "label": "Verify SSL",
+                  "name": "verify_ssl",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "condition": Object {
+                    "is": true,
+                    "when": "verify_ssl",
+                  },
+                  "label": <SSLFormLabel />,
+                  "name": "certificate_authority",
+                },
+              ],
+              "name": "openshift_1",
+              "nextStep": "application-type",
+              "stepKey": "openshift_1",
+              "title": "Enter OpenShift Container Platform information",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      <Title
+                        headingLevel="h3"
+                        size="2xl"
+                      >
+                        Configure account access 
+                        <Popover
+                          appendTo={[Function]}
+                          aria-label="Help text"
+                          bodyContent={
+                            <React.Fragment>
+                              <Text
+                                component="p"
+                              >
+                                Red Had recommends using the Power User AWS Identity and Access Management (IAM) policy when adding an AWS account as a source. This Policy allows the user full access to API functionality and AWS services for user administration.
+                                <br />
+                                Create an access key in the  
+                                <b>
+                                  Security Credentials
+                                </b>
+                                  area of your AWS user account. To add your account as a source, enter the access key ID and secret access key to act as your user ID and password.
+                              </Text>
+                            </React.Fragment>
+                          }
+                          className=""
+                          closeBtnAriaLabel="Close"
+                          enableFlip={true}
+                          footerContent={
+                            <a
+                              href="http://foo.bar"
+                            >
+                              Learn more
+                            </a>
+                          }
+                          headerContent={null}
+                          hideOnOutsideClick={true}
+                          isVisible={null}
+                          maxWidth="50%"
+                          onHidden={[Function]}
+                          onHide={[Function]}
+                          onMount={[Function]}
+                          onShow={[Function]}
+                          onShown={[Function]}
+                          position="bottom"
+                          shouldClose={[Function]}
+                          zIndex={9999}
+                        >
+                          <QuestionCircleIcon
+                            color="currentColor"
+                            noVerticalAlign={false}
+                            size="sm"
+                            title={null}
+                          />
+                        </Popover>
+                      </Title>
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      Create an access key in your AWS user account and enter the details below.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      For sufficient access and security, Red Hat recommends using the Power User IAM polocy for your AWS user account.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      All fields are required.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "aws",
+                  "name": "role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "access_key_secret_key",
+                  "name": "authtype",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
+                  "isRequired": true,
+                  "label": "Access Key ID",
+                  "name": "username",
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+                  "isRequired": true,
+                  "label": "Secret Key",
+                  "name": "password",
+                  "type": "password",
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
+              ],
+              "name": "amazon",
+              "nextStep": "application-type",
+              "stepKey": "amazon",
+              "title": "Configure account access",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "text-field",
+                  "name": "field",
+                },
+              ],
+              "name": "ansible-tower",
+              "nextStep": "application-type",
+              "stepKey": "ansible-tower",
+              "title": "AnsibleTower",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "label": "Select your application",
+                  "name": "app_type",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                },
+              ],
+              "name": "application-type",
+              "nextStep": "summary",
+              "stepKey": "application-type",
+              "title": "Select application",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Title
+                      headingLevel="h3"
+                      size="2xl"
+                    >
+                      Review source details
+                    </Title>
+                    <Text
+                      component="p"
+                    >
+                      Review the information below and click Finish to configure your project. Use the Back button to make changes.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "applicationTypes": Array [
+                    Object {
+                      "display_name": "Catalog",
+                      "id": "1",
+                      "name": "catalog/overwiev",
+                    },
+                    Object {
+                      "display_name": "Cost Management",
+                      "id": "2",
+                      "name": "koku/overwiev",
+                    },
+                  ],
                   "component": "summary",
                   "name": "summary",
                   "sourceTypes": Array [

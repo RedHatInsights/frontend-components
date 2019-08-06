@@ -1,6 +1,5 @@
 import React from 'react';
 import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
-import zipObject from 'lodash/zipObject';
 import { Popover, TextContent, TextList, TextListItem, Text, TextVariants, Title } from '@patternfly/react-core';
 import { QuestionCircleIcon } from '@patternfly/react-icons';
 import SSLFormLabel from './SSLFormLabel';
@@ -15,11 +14,17 @@ const compileAllSourcesComboOptions = (sourceTypes) => (
     ]
 );
 
+const compileAllApplicationComboOptions = (applicationTypes) => (
+    [
+        ...applicationTypes.map(t => ({
+            value: t.id,
+            label: t.display_name
+        }))
+    ]
+);
+
 /* return hash of form: { amazon: 'amazon', google: 'google', openshift: 'openshift' } */
-const compileStepMapper = (sourceTypes) => {
-    const names = sourceTypes.map(t => t.name);
-    return zipObject(names, names);
-};
+const compileStepMapper = (sourceTypes) => sourceTypes.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.name }), {});
 
 const iconMapper = (name, DefaultIcon) => ({
     openshift: OpenshiftIcon,
@@ -299,10 +304,10 @@ const fieldsToSteps = (fields, stepNamePrefix, lastStep) =>
         ) : fieldsToStep(fields, stepNamePrefix, lastStep);
 
 const sourceTypeSteps = sourceTypes =>
-    sourceTypes.map(t => fieldsToSteps(sourceTypeSchema(t), t.name, 'summary'))
+    sourceTypes.map(t => fieldsToSteps(sourceTypeSchema(t), t.name, 'application-type'))
     .flatMap((x) => x);
 
-const summaryStep = (sourceTypes) => ({
+const summaryStep = (sourceTypes, applicationTypes) => ({
     fields: [
         {
             component: 'description',
@@ -317,14 +322,31 @@ const summaryStep = (sourceTypes) => ({
         {
             name: 'summary',
             component: 'summary',
-            sourceTypes
+            sourceTypes,
+            applicationTypes
         }],
     stepKey: 'summary',
     name: 'summary',
     title: 'Review source details'
 });
 
-export default (sourceTypes) => (
+const applicationStep = (applicationTypes) => ({
+    stepKey: 'application-type',
+    name: 'application-type',
+    title: 'Select application',
+    nextStep: 'summary',
+    fields: [
+        {
+            component: 'card-select',
+            name: 'app_type',
+            label: 'Select your application',
+            DefaultIcon: () => <React.Fragment />,
+            options: compileAllApplicationComboOptions(applicationTypes)
+        }
+    ]
+});
+
+export default (sourceTypes, applicationTypes) => (
     { fields: [
         {
             component: componentTypes.WIZARD,
@@ -338,7 +360,8 @@ export default (sourceTypes) => (
             fields: [
                 firstStepNew(sourceTypes),
                 ...sourceTypeSteps(sourceTypes),
-                summaryStep(sourceTypes)
+                applicationStep(applicationTypes),
+                summaryStep(sourceTypes, applicationTypes)
             ]
         }
     ]});

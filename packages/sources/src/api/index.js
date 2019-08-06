@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import axios from 'axios';
 import { DefaultApi as SourcesDefaultApi } from '@redhat-cloud-services/sources-client';
 import { Base64 } from 'js-base64';
@@ -37,7 +38,10 @@ export const getSourcesApi = () =>
     apiInstance || (apiInstance = new SourcesDefaultApi(undefined, SOURCES_API_BASE, axiosInstance));
 
 export const doLoadSourceTypes = () =>
-    getSourcesApi().listSourceTypes().then(data => data.data);
+    getSourcesApi().listSourceTypes().then(data => ({ sourceTypes: data.data }));
+
+export const doLoadApplicationTypes = () =>
+    getSourcesApi().listApplicationTypes().then(data => ({ applicationTypes: data.data }));
 
 const parseUrl = url => {
     if (!url) {
@@ -78,7 +82,7 @@ export function doCreateSource(formData, sourceTypes) {
 
         const endpointData = {
             default: true,
-            source_id: String(parseInt(sourceDataOut.id, 10)),
+            source_id: sourceDataOut.id,
             role: formData.role,
             scheme,
             host,
@@ -88,9 +92,20 @@ export function doCreateSource(formData, sourceTypes) {
             certificate_authority: formData.certificate_authority
         };
 
-        return getSourcesApi().createEndpoint(endpointData).then((endpointDataOut) => {
+        const promises = [ getSourcesApi().createEndpoint(endpointData) ];
+
+        if (formData.app_type) {
+            const applicationData = {
+                application_type_id: formData.app_type,
+                source_id: sourceDataOut.id
+            };
+
+            promises.push(getSourcesApi().createApplication(applicationData));
+        }
+
+        return Promise.all(promises).then(([ endpointDataOut, _applicationData = undefined ]) => {
             const authenticationData = {
-                resource_id: String(parseInt(endpointDataOut.id, 10)),
+                resource_id: endpointDataOut.id,
                 resource_type: 'Endpoint',
                 username: formData.username,
                 password: formData.token || formData.password,
@@ -103,13 +118,14 @@ export function doCreateSource(formData, sourceTypes) {
                 console.error('Authentication creation failure.');
                 throw { error: 'Authentication creation failure.' };
             });
-        }, (_error) => {
-            console.error('Endpoint creation failure.');
-            throw { error: 'Endpoint creation failure.' };
+        }).catch(e => {
+            console.error(e);
+            throw { error: e };
         });
-
     }, (_error) => {
         console.error('Source creation failure.');
         throw { error: 'Source creation failure.' };
     });
 }
+
+export const doLoadAllApplications = () => getSourcesApi().listApplicationTypes().then(data => data.data);
