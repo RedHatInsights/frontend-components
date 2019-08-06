@@ -114,17 +114,17 @@ export function doCreateSource(formData, sourceTypes) {
 
             return getSourcesApi().createAuthentication(authenticationData).then((authenticationDataOut) => {
                 return authenticationDataOut;
-            }, (_error) => {
-                console.error('Authentication creation failure.');
-                throw { error: 'Authentication creation failure.' };
+            }, (error) => {
+                console.error('Authentication creation failure:', error);
+                throw { error };
             });
         }).catch(e => {
             console.error(e);
             throw { error: e };
         });
-    }, (_error) => {
-        console.error('Source creation failure.');
-        throw { error: 'Source creation failure.' };
+    }, (error) => {
+        console.error('Source creation failure:', error);
+        throw { error };
     });
 }
 
