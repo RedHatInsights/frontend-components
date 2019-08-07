@@ -1,16 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { TextListItem } from '@patternfly/react-core';
+
 import SourceWizardSummary from '../../../sourceFormRenderer/components/SourceWizardSummary';
+import applicationTypes from '../../helpers/applicationTypes';
 
 describe('SourceWizardSummary component', () => {
     describe('should render correctly', () => {
         let formOptions;
         let sourceTypes;
         let schema;
+        let initialProps;
 
         beforeEach(() => {
             schema = {
+                title: 'Title',
                 fields: [
                     {
                         name: 'username',
@@ -39,7 +44,7 @@ describe('SourceWizardSummary component', () => {
                 ]
             };
 
-            formOptions = (source_type) => ({
+            formOptions = (source_type, app_type) => ({
                 getState: () => ({
                     values: {
                         source_name: 'openshift',
@@ -49,7 +54,8 @@ describe('SourceWizardSummary component', () => {
                         password: '123456',
                         source_type,
                         role: 'kubernetes',
-                        validate: true
+                        validate: true,
+                        app_type
                     }
                 })
             });
@@ -73,21 +79,52 @@ describe('SourceWizardSummary component', () => {
                     schema
                 }
             ];
+
+            initialProps = {
+                sourceTypes,
+                applicationTypes
+            };
         });
 
         it('openshift', () => {
-            const wrapper = shallow(<SourceWizardSummary formOptions={ formOptions('openshift') } sourceTypes={ sourceTypes }/>);
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift') }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
+        it('name is first', () => {
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift') }/>);
+            expect(wrapper.find(TextListItem).at(1).children().first().text()).toEqual('openshift');
+        });
+
+        it('type is second', () => {
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift') }/>);
+            expect(wrapper.find(TextListItem).at(3).children().first().text()).toEqual('OpenShift Container Platform');
+        });
+
         it('amazon', () => {
-            const wrapper = shallow(<SourceWizardSummary formOptions={ formOptions('amazon') } sourceTypes={ sourceTypes }/>);
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon') } />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         it('ansible-tower', () => {
-            const wrapper = shallow(<SourceWizardSummary formOptions={ formOptions('ansible-tower') } sourceTypes={ sourceTypes }/>);
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower') } />);
             expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('selected Catalog application', () => {
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', '1') } />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+            expect(wrapper.find(TextListItem).last().children().first().text()).toEqual('Catalog');
+        });
+
+        it('do not contain hidden field', () => {
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower') } />);
+            expect(wrapper.contains('kubernetes')).toEqual(false);
+        });
+
+        it('render boolean as Yes', () => {
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower') } />);
+            expect(wrapper.contains('Yes')).toEqual(true);
         });
     });
 });

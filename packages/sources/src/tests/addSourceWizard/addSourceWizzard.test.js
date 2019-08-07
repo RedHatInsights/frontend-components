@@ -10,6 +10,7 @@ import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
 
 import sourceTypes from '../helpers/sourceTypes';
+import applicationTypes from '../helpers/applicationTypes';
 import * as dependency from '../../api/index';
 
 describe('AddSourceButton', () => {
@@ -19,6 +20,7 @@ describe('AddSourceButton', () => {
         initialProps = {
             isOpen: true,
             sourceTypes,
+            applicationTypes,
             onClose: jest.fn()
         };
     });
@@ -51,7 +53,7 @@ describe('AddSourceButton', () => {
     });
 
     it('show error step after failing the form', () => {
-        dependency.doCreateSource = jest.fn(() => new Promise((resolve) => resolve('ok')));
+        dependency.doCreateSource = jest.fn(() => new Promise((_resolve, reject) => reject('fail')));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
         const form = wrapper.find(FormRenderer).children().children().instance().form;

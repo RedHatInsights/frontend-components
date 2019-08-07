@@ -4,6 +4,7 @@ import toJson from 'enzyme-to-json';
 
 import { AddSourceButton } from '../../addSourceWizard/';
 import sourceTypes from '../helpers/sourceTypes';
+import applicationTypes from '../helpers/applicationTypes';
 import Form from '../../addSourceWizard/SourceAddModal';
 
 describe('AddSourceButton', () => {
@@ -14,7 +15,7 @@ describe('AddSourceButton', () => {
     });
 
     it('opens wizard', () => {
-        const wrapper = mount(<AddSourceButton  sourceTypes={ sourceTypes }/>);
+        const wrapper = mount(<AddSourceButton  sourceTypes={ sourceTypes } applicationTypes={ applicationTypes }/>);
         wrapper.find('button').simulate('click');
 
         wrapper.update();

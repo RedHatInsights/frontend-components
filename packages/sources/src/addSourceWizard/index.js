@@ -51,7 +51,7 @@ class AddSourceWizard extends React.Component {
     }
 
     render() {
-        const { successfulMessage, isOpen, sourceTypes } = this.props;
+        const { successfulMessage, isOpen, sourceTypes, applicationTypes } = this.props;
         const { isErrored, isFinished, isSubmitted, values } = this.state;
 
         if (!isOpen) {
@@ -64,6 +64,7 @@ class AddSourceWizard extends React.Component {
                 onSubmit={ this.onSubmit }
                 onCancel={ this.onCancel }
                 sourceTypes={ sourceTypes }
+                applicationTypes={ applicationTypes }
             />;
         }
 
@@ -80,7 +81,19 @@ class AddSourceWizard extends React.Component {
 
 AddSourceWizard.propTypes = {
     afterSuccess: PropTypes.func,
-    sourceTypes: PropTypes.array,
+    sourceTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
+        schema: PropTypes.shape({
+            title: PropTypes.string.isRequired
+        })
+    })),
+    applicationTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
+    })),
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
     successfulMessage: PropTypes.node
@@ -89,6 +102,7 @@ AddSourceWizard.propTypes = {
 AddSourceWizard.defaultProps = {
     afterSuccess: () => {},
     sourceTypes: undefined,
+    applicationTypes: undefined,
     successfulMessage: 'Your source has been successfully added.'
 };
 
