@@ -196,9 +196,9 @@ class InventoryRuleList extends Component {
         });
     };
 
-    onKebabSelect = event => {
+    onKebabClick = action => {
         const { rows } = this.state;
-        const isOpen = event.target.id === 'insights-expand-all';
+        const isOpen = action === 'insights-expand-all';
         rows.map((row, key) => {
             if (row.hasOwnProperty('isOpen')) {
                 row.isOpen = isOpen;
@@ -215,16 +215,15 @@ class InventoryRuleList extends Component {
         const { isKebabOpen } = this.state;
         return <Dropdown
             onToggle={ this.onKebabToggle }
-            onSelect={ this.onKebabSelect }
             position={ DropdownPosition.right }
             toggle={ <KebabToggle onToggle={ this.onKebabToggle } /> }
             isOpen={ isKebabOpen }
             isPlain
             dropdownItems={ [
-                <DropdownItem component='button' key='collapse' id='insights-collapse-all'>
+                <DropdownItem component='button' key='collapse' onClick={ () => this.onKebabClick('insights-collapse-all') } >
                     Collapse all
                 </DropdownItem>,
-                <DropdownItem component='button' key='expand' id='insights-expand-all'>
+                <DropdownItem component='button' key='expand' onClick={  () => this.onKebabClick('insights-expand-all') }>
                     Expand all
                 </DropdownItem>
             ] }
