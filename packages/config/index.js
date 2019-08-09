@@ -29,6 +29,7 @@ module.exports = (configurations) => {
         console.log('~~~~~~~~~~~~~~~~~~~~~');
     }
     /* eslint-enable no-console */
+
     return {
         config: config({
             ...configurations,
@@ -42,6 +43,6 @@ module.exports = (configurations) => {
             appDeployment,
             insights,
             publicPath
-        }),
-    }
-}
+        })
+    };
+};

@@ -8,7 +8,7 @@ module.exports = ({
     appEntry,
     rootFolder,
     https
-}) => {
+} = {}) => {
     return {
         mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
         devtool: 'source-map',
@@ -30,7 +30,7 @@ module.exports = ({
         },
         output: {
             filename: 'js/[name].js',
-            path: `${rootFolder}/dist`,
+            path: `${rootFolder || ''}/dist`,
             publicPath,
             chunkFilename: 'js/[name].js'
         },
@@ -62,7 +62,7 @@ module.exports = ({
             }]
         },
         devServer: {
-            contentBase: `${rootFolder}/dist`,
+            contentBase: `${rootFolder || ''}/dist`,
             hot: true,
             port: port || 8002,
             https: https || false,
@@ -71,7 +71,7 @@ module.exports = ({
             historyApiFallback: true
         },
         serve: {
-            content: `${rootFolder}/dist`,
+            content: `${rootFolder || ''}/dist`,
             port: port || 8002,
             dev: {
                 publicPath
