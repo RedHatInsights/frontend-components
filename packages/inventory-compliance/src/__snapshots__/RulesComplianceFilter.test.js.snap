@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RulesComplianceFilter component should render filter 1`] = `
+<FilterDropdown
+  addFilter={[Function]}
+  filterCategories={
+    Array [
+      Object {
+        "title": "Passed",
+        "type": "radio",
+        "urlParam": "hidePassed",
+        "values": Array [
+          Object {
+            "label": "Show all rules",
+            "value": false,
+          },
+          Object {
+            "label": "Hide passed rules",
+            "value": true,
+          },
+        ],
+      },
+      Object {
+        "title": "Severity",
+        "type": "checkbox",
+        "urlParam": "severity",
+        "values": Array [
+          Object {
+            "label": <React.Fragment>
+              <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                size="sm"
+                title={null}
+              />
+               High
+            </React.Fragment>,
+            "value": "high",
+          },
+          Object {
+            "label": <React.Fragment>
+              <ExclamationTriangleIcon
+                className="ins-u-warning"
+                color="currentColor"
+                size="sm"
+                title={null}
+              />
+               Medium
+            </React.Fragment>,
+            "value": "medium",
+          },
+          Object {
+            "label": <React.Fragment>
+              <svg
+                height="18"
+                width="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 0h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm6.67 10.46a1.67 1.67 0 1 0 0 3.338 1.67 1.67 0 0 0 0-3.338zm-1.586-6l.27 4.935a.435.435 0 0 0 .434.411H9.55c.232 0 .422-.18.435-.411l.27-4.936A.435.435 0 0 0 9.818 4h-2.3c-.25 0-.448.21-.435.46z"
+                  fill="#3A9CA6"
+                  fillRule="evenodd"
+                />
+              </svg>
+               Low
+            </React.Fragment>,
+            "value": "low",
+          },
+          Object {
+            "label": "Unknown",
+            "value": "unknown",
+          },
+        ],
+      },
+      Object {
+        "title": "Policy",
+        "type": "checkbox",
+        "urlParam": "policy",
+        "values": Array [
+          Object {
+            "label": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            "value": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+          },
+          Object {
+            "label": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 8",
+            "value": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 8",
+          },
+        ],
+      },
+    ]
+  }
+  filters={
+    Object {
+      "filterCategories": Array [
+        Object {
+          "title": "Passed",
+          "type": "radio",
+          "urlParam": "hidePassed",
+          "values": Array [
+            Object {
+              "label": "Show all rules",
+              "value": false,
+            },
+            Object {
+              "label": "Hide passed rules",
+              "value": true,
+            },
+          ],
+        },
+        Object {
+          "title": "Severity",
+          "type": "checkbox",
+          "urlParam": "severity",
+          "values": Array [
+            Object {
+              "label": <React.Fragment>
+                <ExclamationCircleIcon
+                  className="ins-u-failed"
+                  color="currentColor"
+                  size="sm"
+                  title={null}
+                />
+                 High
+              </React.Fragment>,
+              "value": "high",
+            },
+            Object {
+              "label": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+              "value": "medium",
+            },
+            Object {
+              "label": <React.Fragment>
+                <svg
+                  height="18"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 0h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm6.67 10.46a1.67 1.67 0 1 0 0 3.338 1.67 1.67 0 0 0 0-3.338zm-1.586-6l.27 4.935a.435.435 0 0 0 .434.411H9.55c.232 0 .422-.18.435-.411l.27-4.936A.435.435 0 0 0 9.818 4h-2.3c-.25 0-.448.21-.435.46z"
+                    fill="#3A9CA6"
+                    fillRule="evenodd"
+                  />
+                </svg>
+                 Low
+              </React.Fragment>,
+              "value": "low",
+            },
+            Object {
+              "label": "Unknown",
+              "value": "unknown",
+            },
+          ],
+        },
+        Object {
+          "title": "Policy",
+          "type": "checkbox",
+          "urlParam": "policy",
+          "values": Array [
+            Object {
+              "label": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "value": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "label": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 8",
+              "value": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 8",
+            },
+          ],
+        },
+      ],
+      "hidePassed": false,
+      "policy": Array [],
+      "severity": Array [],
+    }
+  }
+  hideCategories={Array []}
+  id="rules-compliance-filter"
+  label="Filters"
+  removeFilter={[Function]}
+/>
+`;

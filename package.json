@@ -47,7 +47,8 @@
             "!<rootDir>/packages/components/src/Components/Table/*"
         ],
         "setupFiles": [
-            "<rootDir>/config/setupTests.js"
+            "<rootDir>/config/setupTests.js",
+            "jest-canvas-mock"
         ],
         "testEnvironment": "jsdom",
         "roots": [
@@ -108,6 +109,8 @@
         "html-webpack-plugin": "^4.0.0-alpha.2",
         "identity-obj-proxy": "^3.0.0",
         "jest": "^24.7.1",
+        "jest-canvas-mock": "^2.1.1",
+        "jest-fetch-mock": "^2.1.2",
         "lerna": "^3.13.4",
         "lodash-webpack-plugin": "^0.11.5",
         "mini-css-extract-plugin": "^0.4.2",
