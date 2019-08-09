@@ -4,10 +4,10 @@ const { sync: globSync } = require('glob');
 const { sync: mkdirpSync } = require('mkdirp');
 const last = require('lodash/last');
 
-let MESSAGES_PATTERN = 'packages/**/build/messages/**/*.json';
-let LANG_DIR = 'packages/translations/locales/';
+let MESSAGES_PATTERN = 'build/messages/**/*.json';
+let LANG_DIR = 'locales/';
 let LANG_PATTERN = '';
-let IGNORED = [ 'translations' ];
+let IGNORED = [ 'translations', 'data' ];
 
 program
 .option('-p, --pattern <value>', 'file pattern')
@@ -34,14 +34,6 @@ if (program.langPattern) {
     LANG_PATTERN = `${LANG_DIR}${program.langPattern}`;
 } else {
     LANG_PATTERN = `${LANG_DIR}/*.json`;
-}
-
-// Try to delete current json files from public/locales
-try {
-    fs.unlinkSync(`${rootFolder}${LANG_DIR}data.json`);
-    fs.unlinkSync(`${rootFolder}${LANG_DIR}translations.json`);
-} catch (error) {
-    console.log(error);
 }
 
 // Merge translated json files (es.json, fr.json, etc) into one object

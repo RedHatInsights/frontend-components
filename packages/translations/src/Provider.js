@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider as ReactIntlProvider, addLocaleData } from 'react-intl';
 import { LOCALSTORAGE_KEY } from './';
-import translatedMessages from '../locales/data.json';
+import translatedMessages from '../../../locales/data.json';
 import localeEn from 'react-intl/locale-data/en';
 import localeCs from 'react-intl/locale-data/cs';
 
 let defaultLocale = [ ...localeEn, ...localeCs ];
+
+console.log(translatedMessages);
 
 const IntlProvider = ({
     locale,
