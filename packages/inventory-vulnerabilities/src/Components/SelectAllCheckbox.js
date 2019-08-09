@@ -41,7 +41,7 @@ class SelectAllCheckbox extends Component {
             fetchResource
         } = this.props;
         // eslint-disable-next-line camelcase
-        let { payload } = fetchResource && fetchResource({ page_size: meta.total_items });
+        let { payload } = fetchResource && fetchResource({ page_size: meta.total_items, page: 1 });
         payload &&
             payload.then(({ data: response }) => {
                 const cveNames = response.map(cve => cve.id);
