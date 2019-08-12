@@ -18,6 +18,10 @@ exports[`provider messages multiple Languages cs-locale 1`] = `
     locale="cs"
     messages={
       Object {
+        "default.cancel": "Zrušit",
+        "default.delete": "Smazat",
+        "default.remove": "Odstranit",
+        "default.save": "Save",
         "some.msg": "Zpráva",
       }
     }
@@ -48,6 +52,8 @@ exports[`provider messages multiple Languages no locale 1`] = `
     messages={
       Object {
         "default.cancel": "Cancel",
+        "default.delete": "Delete",
+        "default.remove": "Remove",
         "default.save": "Save",
         "some.msg": "Message",
       }
@@ -74,6 +80,8 @@ exports[`provider messages no langauge 1`] = `
     messages={
       Object {
         "default.cancel": "Cancel",
+        "default.delete": "Delete",
+        "default.remove": "Remove",
         "default.save": "Save",
         "some.msg": "Message",
       }
@@ -95,6 +103,8 @@ exports[`provider should render correctly 1`] = `
     messages={
       Object {
         "default.cancel": "Cancel",
+        "default.delete": "Delete",
+        "default.remove": "Remove",
         "default.save": "Save",
       }
     }

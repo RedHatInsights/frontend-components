@@ -8,8 +8,6 @@ import localeCs from 'react-intl/locale-data/cs';
 
 let defaultLocale = [ ...localeEn, ...localeCs ];
 
-console.log(translatedMessages);
-
 const IntlProvider = ({
     locale,
     messages,

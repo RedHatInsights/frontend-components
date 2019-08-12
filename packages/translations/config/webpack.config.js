@@ -10,7 +10,8 @@ module.exports = (env) => ({
         minimize: process.env.NODE_ENV === 'production'
     },
     entry: {
-        index: './src/index.js'
+        index: './src/index.js',
+        messages: './src/translatedMessages.js'
     },
     output: {
         filename: '[name].js',
