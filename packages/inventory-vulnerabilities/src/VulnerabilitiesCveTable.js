@@ -52,7 +52,7 @@ class VulnerabilitiesCveTableWithContext extends Component {
     createSortBy = value => {
         if (value) {
             let columnMapping = this.props.isSelectable ? [{ key: 'checkbox' }, ...this.props.header ] : this.props.header;
-            let direction = value[0] === '+' ? SortByDirection.asc : SortByDirection.desc;
+            let direction = value[0] === '-' ? SortByDirection.desc : SortByDirection.asc;
             value = value.replace(/^(-|\+)/, '');
             const index = findIndex(columnMapping, item => item.key === value);
             let sort = {
