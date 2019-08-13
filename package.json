@@ -56,7 +56,8 @@
         "moduleNameMapper": {
             "\\.(css|scss)$": "identity-obj-proxy",
             "^lodash-es$": "lodash"
-        }
+        },
+        "testURL": "http://localhost:5000/"
     },
     "sassIncludes": {
         "patternfly": "node_modules/patternfly/dist/sass",
@@ -79,6 +80,7 @@
         "@patternfly/patternfly": "^2.5.0",
         "@semantic-release/git": "^6.0.2",
         "@semantic-release/npm": "^5.1.9",
+        "axios-mock-adapter": "^1.17.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.0.1",
         "babel-jest": "^24.1.0",

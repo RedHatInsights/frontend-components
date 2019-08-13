@@ -10,3 +10,20 @@ global.MutationObserver = class {
     disconnect() {}
     observe(element, initObject) {}
 };
+
+global.window.insights = {
+    ...window.insights || {},
+    chrome: {
+        ...(window.insights && window.insights.chrome) || {},
+        auth: {
+            ...(window.insights && window.insights.chrome && window.insights.chrome) || {},
+            getUser: () => new Promise((res) => res({
+                identity: {
+                    // eslint-disable-next-line camelcase
+                    account_number: '0',
+                    type: 'User'
+                }
+            }))
+        }
+    }
+};
