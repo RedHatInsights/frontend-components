@@ -7,15 +7,17 @@ import {
     configurationSelector,
     collectionInformationSelector
 } from './selectors';
+import {
+    testProperties,
+    osTest,
+    biosTest,
+    infraTest,
+    configTest,
+    collectInfoTest
+} from './__mock__/selectors';
 
 it('propertiesSelector should return correct data', () => {
-    expect(propertiesSelector({
-        number_of_cpus: 1,
-        number_of_sockets: 1,
-        cores_per_socket: 1,
-        ramSize: '5 MB',
-        disk_devices: []
-    })).toEqual({
+    expect(propertiesSelector(testProperties)).toEqual({
         cpuNumber: 1,
         sockets: 1,
         coresPerSocket: 1,
@@ -35,13 +37,7 @@ it('propertiesSelector - no data', () => {
 });
 
 it('operatingSystem should return correct data', () => {
-    expect(operatingSystem({
-        arch: 'test-arch',
-        os_release: 'test-release',
-        os_kernel_version: 'test-kernel',
-        last_boot_time: 'test-boot',
-        kernel_modules: []
-    })).toEqual({
+    expect(operatingSystem(osTest)).toEqual({
         release: 'test-release',
         kernelRelease: 'test-kernel',
         architecture: 'test-arch',
@@ -61,12 +57,7 @@ it('operatingSystem - no data', () => {
 });
 
 it('biosSelector should return correct data', () => {
-    expect(biosSelector({
-        bios_vendor: 'test-vendor',
-        bios_version: 'test-version',
-        bios_release_date: 1565702893431,
-        cpu_flags: []
-    })).toEqual({
+    expect(biosSelector(biosTest)).toEqual({
         vendor: 'test-vendor',
         version: 'test-version',
         releaseDate: '8/13/2019',
@@ -84,15 +75,7 @@ it('biosSelector - no data', () => {
 });
 
 it('infrastructureSelector should return correct data', () => {
-    expect(infrastructureSelector({
-        infrastructure_type: 'test-type',
-        infrastructure_vendor: 'test-vendor',
-        network: {
-            ipv4: [ '1' ],
-            ipv6: [ '6' ],
-            interfaces: [ 'test' ]
-        }
-    })).toEqual({
+    expect(infrastructureSelector(infraTest)).toEqual({
         type: 'test-type',
         vendor: 'test-vendor',
         ipv4: [ '1' ],
@@ -112,12 +95,7 @@ it('infrastructureSelector - no data', () => {
 });
 
 it('configurationSelector should return correct data', () => {
-    expect(configurationSelector({
-        installed_packages: [ 'packages' ],
-        enabled_services: [ 'services' ],
-        running_processes: [ 'processes' ],
-        repositories: [ 'repos' ]
-    })).toEqual({
+    expect(configurationSelector(configTest)).toEqual({
         packages: [ 'packages' ],
         services: [ 'services' ],
         processes: [ 'processes' ],
@@ -135,10 +113,7 @@ it('configurationSelector should return correct data', () => {
 });
 
 it('collectionInformationSelector should return correct data', () => {
-    expect(collectionInformationSelector({
-        insights_client_version: 'test-client',
-        insights_egg_version: 'test-egg'
-    })).toEqual({
+    expect(collectionInformationSelector(collectInfoTest)).toEqual({
         client: 'test-client',
         egg: 'test-egg'
     });
