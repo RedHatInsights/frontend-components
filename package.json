@@ -43,7 +43,8 @@
             "<rootDir>/packages/**/src/**/*.js",
             "!<rootDir>/packages/**/stories/*",
             "!<rootDir>/packages/**/index.js",
-            "!<rootDir>/packages/**/*{c|C}ontext*.js"
+            "!<rootDir>/packages/**/*{c|C}ontext*.js",
+            "!<rootDir>/packages/components/src/Components/Table/*"
         ],
         "setupFiles": [
             "<rootDir>/config/setupTests.js"
