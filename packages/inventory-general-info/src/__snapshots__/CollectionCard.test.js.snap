@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollectionCard should render correctly - no data 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Collection information
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights client
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Egg
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last check-in
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Registered
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CollectionCard should render correctly with data 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Collection information
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights client
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not Available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Egg
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not Available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last check-in
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Invalid Date
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Registered
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Invalid Date
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
