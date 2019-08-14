@@ -99,7 +99,15 @@ it('configurationSelector should return correct data', () => {
         packages: [ 'packages' ],
         services: [ 'services' ],
         processes: [ 'processes' ],
-        repositories: [ 'repos' ]
+        repositories: {
+            disabled: [],
+            enabled: [{
+                base_url: 'test-url',
+                name: 'test-name',
+                enabled: true,
+                gpgcheck: true
+            }]
+        }
     });
 });
 

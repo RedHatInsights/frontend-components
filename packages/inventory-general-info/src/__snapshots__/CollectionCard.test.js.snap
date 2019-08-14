@@ -136,7 +136,7 @@ exports[`CollectionCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Not Available
+          test-client
         </dd>
         <dt
           class=""
@@ -148,7 +148,7 @@ exports[`CollectionCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Not Available
+          test-egg
         </dd>
         <dt
           class=""

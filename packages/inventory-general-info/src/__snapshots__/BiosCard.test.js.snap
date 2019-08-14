@@ -136,7 +136,7 @@ exports[`BiosCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Not Available
+          test-vendor
         </dd>
         <dt
           class=""
@@ -148,7 +148,7 @@ exports[`BiosCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Not Available
+          test-version
         </dd>
         <dt
           class=""
@@ -160,7 +160,7 @@ exports[`BiosCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Not Available
+          8/13/2019
         </dd>
         <dt
           class=""
@@ -172,7 +172,11 @@ exports[`BiosCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          None
+          <a
+            href="http://localhost:5000//csm"
+          >
+            1 CSMs
+          </a>
         </dd>
       </dl>
     </div>

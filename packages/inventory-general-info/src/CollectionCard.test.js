@@ -22,7 +22,7 @@ describe('CollectionCard', () => {
             systemProfileStore: {
                 systemProfile: {
                     loaded: true,
-                    collectInfoTest
+                    ...collectInfoTest
                 }
             }
         };

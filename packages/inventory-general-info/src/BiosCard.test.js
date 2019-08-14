@@ -15,7 +15,8 @@ describe('BiosCard', () => {
         initialState = { systemProfileStore: {
             systemProfile: {
                 loaded: true,
-                biosTest
+                ...biosTest,
+                cpu_flags: [ 'one' ]
             }
         }};
     });

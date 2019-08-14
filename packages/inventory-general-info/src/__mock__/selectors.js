@@ -36,7 +36,15 @@ export const configTest = {
     installed_packages: [ 'packages' ],
     enabled_services: [ 'services' ],
     running_processes: [ 'processes' ],
-    repositories: [ 'repos' ]
+    repositories: {
+        enabled: [{
+            base_url: 'test-url',
+            name: 'test-name',
+            enabled: true,
+            gpgcheck: true
+        }],
+        disabled: []
+    }
 };
 
 export const collectInfoTest = {
