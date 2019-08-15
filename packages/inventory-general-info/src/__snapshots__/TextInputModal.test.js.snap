@@ -1,0 +1,508 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInputModal API onSubmit should NOT be called 1`] = `
+<TextInputModal
+  ariaLabel="input text"
+  isOpen={true}
+  onCancel={[Function]}
+  onSubmit={[Function]}
+  title=""
+>
+  <Modal
+    actions={
+      Array [
+        <Button
+          data-action="cancel"
+          onClick={[Function]}
+          variant="secondary"
+        >
+          Cancel
+        </Button>,
+        <Button
+          data-action="confirm"
+          onClick={[Function]}
+          variant="primary"
+        >
+          Save
+        </Button>,
+      ]
+    }
+    ariaDescribedById=""
+    className="ins-c-inventory__detail--edit"
+    hideTitle={false}
+    isLarge={false}
+    isOpen={true}
+    isSmall={true}
+    onClose={[Function]}
+    title=""
+  >
+    <Portal
+      containerInfo={
+        <div
+          aria-hidden="true"
+        >
+          <div
+            class="pf-c-backdrop"
+          >
+            <div
+              class="pf-l-bullseye"
+            >
+              <div
+                aria-describedby="pf-modal-3"
+                aria-label=""
+                aria-modal="true"
+                class="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
+                role="dialog"
+              >
+                <button
+                  aria-label="Close"
+                  class="pf-c-button pf-m-plain"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 0 352 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      transform=""
+                    />
+                  </svg>
+                </button>
+                <h1
+                  class="pf-c-title pf-m-2xl"
+                >
+                   
+                  
+                   
+                </h1>
+                <div
+                  class="pf-c-modal-box__body"
+                  id="pf-modal-3"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="input text"
+                    class="pf-c-form-control"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="pf-c-modal-box__footer"
+                >
+                   
+                  <button
+                    class="pf-c-button pf-m-secondary"
+                    data-action="cancel"
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="pf-c-button pf-m-primary"
+                    data-action="confirm"
+                    type="button"
+                  >
+                    Save
+                  </button>
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <ModalContent
+        actions={
+          Array [
+            <Button
+              data-action="cancel"
+              onClick={[Function]}
+              variant="secondary"
+            >
+              Cancel
+            </Button>,
+            <Button
+              data-action="confirm"
+              onClick={[Function]}
+              variant="primary"
+            >
+              Save
+            </Button>,
+          ]
+        }
+        ariaDescribedById=""
+        className="ins-c-inventory__detail--edit"
+        hideTitle={false}
+        id="pf-modal-3"
+        isLarge={false}
+        isOpen={true}
+        isSmall={true}
+        onClose={[Function]}
+        title=""
+      >
+        <Backdrop>
+          <div
+            className="pf-c-backdrop"
+          >
+            <FocusTrap
+              _createFocusTrap={[Function]}
+              active={true}
+              className="pf-l-bullseye"
+              focusTrapOptions={
+                Object {
+                  "clickOutsideDeactivates": true,
+                }
+              }
+              paused={false}
+              tag="div"
+            >
+              <div
+                className="pf-l-bullseye"
+              >
+                <ModalBox
+                  className="ins-c-inventory__detail--edit"
+                  id="pf-modal-3"
+                  isLarge={false}
+                  isSmall={true}
+                  style={Object {}}
+                  title=""
+                >
+                  <div
+                    aria-describedby="pf-modal-3"
+                    aria-label=""
+                    aria-modal="true"
+                    className="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
+                    role="dialog"
+                    style={Object {}}
+                  >
+                    <ModalBoxCloseButton
+                      onClose={[Function]}
+                    >
+                      <Button
+                        aria-label="Close"
+                        className=""
+                        onClick={[Function]}
+                        variant="plain"
+                      >
+                        <button
+                          aria-disabled={null}
+                          aria-label="Close"
+                          className="pf-c-button pf-m-plain"
+                          disabled={false}
+                          onClick={[Function]}
+                          tabIndex={null}
+                          type="button"
+                        >
+                          <TimesIcon
+                            color="currentColor"
+                            noVerticalAlign={false}
+                            size="sm"
+                            title={null}
+                          >
+                            <svg
+                              aria-hidden={true}
+                              aria-labelledby={null}
+                              fill="currentColor"
+                              height="1em"
+                              role="img"
+                              style={
+                                Object {
+                                  "verticalAlign": "-0.125em",
+                                }
+                              }
+                              viewBox="0 0 352 512"
+                              width="1em"
+                            >
+                              <path
+                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                transform=""
+                              />
+                            </svg>
+                          </TimesIcon>
+                        </button>
+                      </Button>
+                    </ModalBoxCloseButton>
+                    <ModalBoxHeader
+                      hideTitle={false}
+                    >
+                      <Title
+                        className=""
+                        headingLevel="h1"
+                        size="2xl"
+                      >
+                        <h1
+                          className="pf-c-title pf-m-2xl"
+                        >
+                           
+                           
+                        </h1>
+                      </Title>
+                    </ModalBoxHeader>
+                    <ModalBoxBody
+                      id="pf-modal-3"
+                    >
+                      <div
+                        className="pf-c-modal-box__body"
+                        id="pf-modal-3"
+                      >
+                        <TextInput
+                          aria-label="input text"
+                          className=""
+                          isDisabled={false}
+                          isReadOnly={false}
+                          isRequired={false}
+                          isValid={true}
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        >
+                          <input
+                            aria-invalid={false}
+                            aria-label="input text"
+                            className="pf-c-form-control"
+                            disabled={false}
+                            onChange={[Function]}
+                            readOnly={false}
+                            required={false}
+                            type="text"
+                            value=""
+                          />
+                        </TextInput>
+                      </div>
+                    </ModalBoxBody>
+                    <ModalBoxFooter>
+                      <div
+                        className="pf-c-modal-box__footer"
+                      >
+                         
+                        <Button
+                          data-action="cancel"
+                          key="cancel"
+                          onClick={[Function]}
+                          variant="secondary"
+                        >
+                          <button
+                            aria-disabled={null}
+                            aria-label={null}
+                            className="pf-c-button pf-m-secondary"
+                            data-action="cancel"
+                            disabled={false}
+                            onClick={[Function]}
+                            tabIndex={null}
+                            type="button"
+                          >
+                            Cancel
+                          </button>
+                        </Button>
+                        <Button
+                          data-action="confirm"
+                          key="confirm"
+                          onClick={[Function]}
+                          variant="primary"
+                        >
+                          <button
+                            aria-disabled={null}
+                            aria-label={null}
+                            className="pf-c-button pf-m-primary"
+                            data-action="confirm"
+                            disabled={false}
+                            onClick={[Function]}
+                            tabIndex={null}
+                            type="button"
+                          >
+                            Save
+                          </button>
+                        </Button>
+                         
+                      </div>
+                    </ModalBoxFooter>
+                  </div>
+                </ModalBox>
+              </div>
+            </FocusTrap>
+          </div>
+        </Backdrop>
+      </ModalContent>
+    </Portal>
+  </Modal>
+</TextInputModal>
+`;
+
+exports[`TextInputModal render should render aria label 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        data-action="cancel"
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+      <Button
+        data-action="confirm"
+        onClick={[Function]}
+        variant="primary"
+      >
+        Save
+      </Button>,
+    ]
+  }
+  ariaDescribedById=""
+  className="ins-c-inventory__detail--edit"
+  hideTitle={false}
+  isLarge={false}
+  isOpen={true}
+  isSmall={true}
+  onClose={[Function]}
+  title=""
+>
+  <TextInput
+    aria-label="Some aria label"
+    className=""
+    isDisabled={false}
+    isReadOnly={false}
+    isRequired={false}
+    isValid={true}
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+</Modal>
+`;
+
+exports[`TextInputModal render should render open 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        data-action="cancel"
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+      <Button
+        data-action="confirm"
+        onClick={[Function]}
+        variant="primary"
+      >
+        Save
+      </Button>,
+    ]
+  }
+  ariaDescribedById=""
+  className="ins-c-inventory__detail--edit"
+  hideTitle={false}
+  isLarge={false}
+  isOpen={true}
+  isSmall={true}
+  onClose={[Function]}
+  title=""
+>
+  <TextInput
+    aria-label="input text"
+    className=""
+    isDisabled={false}
+    isReadOnly={false}
+    isRequired={false}
+    isValid={true}
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+</Modal>
+`;
+
+exports[`TextInputModal render should render title 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        data-action="cancel"
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+      <Button
+        data-action="confirm"
+        onClick={[Function]}
+        variant="primary"
+      >
+        Save
+      </Button>,
+    ]
+  }
+  ariaDescribedById=""
+  className="ins-c-inventory__detail--edit"
+  hideTitle={false}
+  isLarge={false}
+  isOpen={true}
+  isSmall={true}
+  onClose={[Function]}
+  title="Some title"
+>
+  <TextInput
+    aria-label="input text"
+    className=""
+    isDisabled={false}
+    isReadOnly={false}
+    isRequired={false}
+    isValid={true}
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+</Modal>
+`;
+
+exports[`TextInputModal render should render without any props 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        data-action="cancel"
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
+      </Button>,
+      <Button
+        data-action="confirm"
+        onClick={[Function]}
+        variant="primary"
+      >
+        Save
+      </Button>,
+    ]
+  }
+  ariaDescribedById=""
+  className="ins-c-inventory__detail--edit"
+  hideTitle={false}
+  isLarge={false}
+  isOpen={false}
+  isSmall={true}
+  onClose={[Function]}
+  title=""
+>
+  <TextInput
+    aria-label="input text"
+    className=""
+    isDisabled={false}
+    isReadOnly={false}
+    isRequired={false}
+    isValid={true}
+    onChange={[Function]}
+    type="text"
+  />
+</Modal>
+`;
