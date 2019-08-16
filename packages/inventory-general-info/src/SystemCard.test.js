@@ -6,8 +6,8 @@ jest.mock('@redhat-cloud-services/frontend-components-inventory/actions', () => 
         payload: new Promise(res => res())
     }))
 }));
-import { render, mount, shallow } from 'enzyme';
-import toJson, { shallowToJson } from 'enzyme-to-json';
+import { render, mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import SystemCard from './SystemCard';
 import configureStore from 'redux-mock-store';
 import { testProperties } from './__mock__/selectors';
