@@ -19,7 +19,7 @@ export default class TextInputModal extends Component {
         }
 
         if (state.value !== undefined) {
-            return;
+            return null;
         }
 
         return {
@@ -39,10 +39,10 @@ export default class TextInputModal extends Component {
                 isOpen={ isOpen }
                 onClose={ event => onCancel(event) }
                 actions={ [
-                    <Button key="cancel" variant="secondary" onClick={ onCancel }>
+                    <Button key="cancel" data-action="cancel" variant="secondary" onClick={ onCancel }>
                         Cancel
                     </Button>,
-                    <Button key="confirm" variant="primary" onClick={ () => onSubmit(this.state.value) }>
+                    <Button key="confirm" data-action="confirm" variant="primary" onClick={ () => onSubmit(this.state.value) }>
                         Save
                     </Button>
                 ] }
@@ -51,7 +51,7 @@ export default class TextInputModal extends Component {
                     value={ value }
                     type="text"
                     onChange={ value => this.setState({ value }) }
-                    aria-label={ ariaLabel || 'input text' }
+                    aria-label={ ariaLabel  }
                 />
             </Modal>
         );
@@ -59,10 +59,18 @@ export default class TextInputModal extends Component {
 }
 
 TextInputModal.propTypes = {
-    title: PropTypes.string.isRequired,
-    isOpen: PropTypes.bool.isRequired,
+    title: PropTypes.string,
+    isOpen: PropTypes.bool,
     onCancel: PropTypes.func,
     onSubmit: PropTypes.func,
     ariaLabel: PropTypes.string
+};
+
+TextInputModal.defaultProps = {
+    onCancel: () => undefined,
+    onSubmit: () => undefined,
+    isOpen: false,
+    title: '',
+    ariaLabel: 'input text'
 };
 

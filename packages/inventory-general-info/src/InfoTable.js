@@ -80,13 +80,15 @@ class InfoTable extends Component {
 InfoTable.propTypes = {
     rows: PropTypes.array,
     cells: PropTypes.array,
-    onSort: PropTypes.func
+    onSort: PropTypes.func,
+    expandable: PropTypes.bool
 };
 InfoTable.defaultProps = {
     cells: [],
     rows: [],
     onSort: () => undefined,
-    sortBy: {}
+    sortBy: {},
+    expandable: false
 };
 
 export default InfoTable;

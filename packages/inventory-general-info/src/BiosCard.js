@@ -14,7 +14,7 @@ const BiosCard = ({ bios, detailLoaded, handleClick }) => (<LoadingCard
         { title: 'Release date', value: bios.releaseDate },
         {
             title: 'CSM',
-            value: bios.csm ? `${bios.csm.length} CSMs` : 0,
+            value: bios.csm && bios.csm.length > 0 ? `${bios.csm.length} CSMs` : 0,
             target: 'csm',
             onClick: () => handleClick('CSM', generalMapper(bios.csm, 'CSM name'))
         }

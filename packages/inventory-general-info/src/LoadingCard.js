@@ -14,7 +14,7 @@ import {
 } from '@patternfly/react-core';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
 
-const Clickable = ({ item: { onClick, value, target }}) => (
+export const Clickable = ({ item: { onClick, value, target }}) => (
     <Fragment>
         {
             value !== 0 ?
@@ -29,7 +29,7 @@ const Clickable = ({ item: { onClick, value, target }}) => (
 
 Clickable.propTypes = {
     item: PropTypes.shape({
-        value: PropTypes.string,
+        value: PropTypes.node,
         target: PropTypes.string,
         onClick: PropTypes.func
     })

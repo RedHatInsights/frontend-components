@@ -1,0 +1,1348 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GeneralInformation should render correctly - no data 1`] = `
+<div
+  class="pf-l-grid pf-m-all-12-col-on-sm pf-m-all-6-col-on-md pf-m-gutter"
+>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            System properties
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Host name
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__md"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Display name
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__md"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Ansible hostname
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__md"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Number of CPUs
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Sockets
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Cores per socket
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              RAM
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Storage
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            Operating System
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Release
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Kernel release
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Architecture
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Last boot time
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Kernel modules
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            BIOS
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Vendor
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Version
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Release date
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              CSM
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            Infrastructure
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Type
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Vendor
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              IPv4 addresses
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              IPv6 addresses
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Interfaces/NICs
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            Configuration
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Installed packages
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Services
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Running processes
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Repositories
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            Collection information
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Insights client
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Egg
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Last check-in
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Registered
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`GeneralInformation should render correctly 1`] = `
+<div
+  class="pf-l-grid pf-m-all-12-col-on-sm pf-m-all-6-col-on-md pf-m-gutter"
+>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            System properties
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Host name
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              Not Available
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Display name
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                class="ins-c-inventory__detail--action"
+                href="http://localhost:5000//display_name"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align:-0.125em"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                    transform=""
+                  />
+                </svg>
+              </a>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Ansible hostname
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-id
+              <a
+                class="ins-c-inventory__detail--action"
+                href="http://localhost:5000//ansible_name"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style="vertical-align:-0.125em"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                >
+                  <path
+                    d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                    transform=""
+                  />
+                </svg>
+              </a>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Number of CPUs
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              1
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Sockets
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              1
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Cores per socket
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              1
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              RAM
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              5 MB
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Storage
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                href="http://localhost:5000//storage"
+              >
+                0 disks
+              </a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            Operating System
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Release
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-release
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Kernel release
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-kernel
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Architecture
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-arch
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Last boot time
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              Invalid Date
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Kernel modules
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                href="http://localhost:5000//kernel_modules"
+              >
+                0 modules
+              </a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            BIOS
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Vendor
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-vendor
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Version
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-version
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Release date
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              8/13/2019
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              CSM
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              None
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            Infrastructure
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Type
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-type
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Vendor
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-vendor
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              IPv4 addresses
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                href="http://localhost:5000//ipv4"
+              >
+                2 addresses
+              </a>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              IPv6 addresses
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                href="http://localhost:5000//ipv6"
+              >
+                2 addresses
+              </a>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Interfaces/NICs
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                href="http://localhost:5000//interfaces"
+              >
+                2 NICs
+              </a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            Configuration
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Installed packages
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                href="http://localhost:5000//installed_packages"
+              >
+                1 packages
+              </a>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Services
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                href="http://localhost:5000//services"
+              >
+                1 services
+              </a>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Running processes
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                href="http://localhost:5000//running_processes"
+              >
+                1 processes
+              </a>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Repositories
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <a
+                href="http://localhost:5000//repositories"
+              >
+                1 enabled
+              </a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="pf-l-grid__item"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h1
+            class=""
+            data-pf-content="true"
+          >
+            Collection information
+          </h1>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item pf-m-fill"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <dl
+            class=""
+            data-pf-content="true"
+          >
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Insights client
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-client
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Egg
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              test-egg
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Last check-in
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              Invalid Date
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              Registered
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              Invalid Date
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

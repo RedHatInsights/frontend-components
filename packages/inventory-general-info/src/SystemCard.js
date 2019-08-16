@@ -126,7 +126,11 @@ SystemCard.propTypes = {
     detailLoaded: PropTypes.bool,
     entity: PropTypes.shape({
         // eslint-disable-next-line camelcase
-        display_name: PropTypes.string
+        display_name: PropTypes.string,
+        // eslint-disable-next-line camelcase
+        ansible_host: PropTypes.string,
+        fqdn: PropTypes.string,
+        id: PropTypes.string
     }),
     properties: PropTypes.shape({
         cpuNumber: PropTypes.number,
@@ -149,9 +153,7 @@ SystemCard.defaultProps = {
     detailLoaded: false,
     entity: {},
     properties: {},
-    handleClick: () => undefined,
-    setDisplayName: () => undefined,
-    setAnsibleHost: () => undefined
+    handleClick: () => undefined
 };
 
 function mapDispatchToProps(dispatch) {

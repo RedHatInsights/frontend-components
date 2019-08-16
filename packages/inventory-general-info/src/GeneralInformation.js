@@ -31,9 +31,9 @@ class GeneralInformation extends Component {
         const sorted = (customRows || rows).sort((a, b) => {
             const firstRow = a.cells || a;
             const secondRow = b.cells || b;
-            const aSortBy = (firstRow[index].sortValue || firstRow[index]).toLocaleLowerCase();
-            const bSortBy = (secondRow[index].sortValue || secondRow[index]).toLocaleLowerCase();
-            return (aSortBy > bSortBy) - (aSortBy < bSortBy);
+            const aSortBy = ('' + (firstRow[index].sortValue || firstRow[index])).toLocaleLowerCase();
+            const bSortBy = ('' + (secondRow[index].sortValue || secondRow[index])).toLocaleLowerCase();
+            return (aSortBy > bSortBy) ? -1 : 1;
         });
         this.setState({
             rows: direction === SortByDirection.asc ? sorted : sorted.reverse()
@@ -51,7 +51,7 @@ class GeneralInformation extends Component {
     };
 
     componentDidMount() {
-        this.props.loadSystemDetail(this.props.entity.id);
+        this.props.loadSystemDetail && this.props.loadSystemDetail(this.props.entity.id);
     };
 
     render() {
@@ -102,8 +102,7 @@ GeneralInformation.propTypes = {
     loadSystemDetail: PropTypes.func
 };
 GeneralInformation.defaultProps = {
-    entity: {},
-    loadSystemDetail: () => undefined
+    entity: {}
 };
 
 const mapStateToProps = ({

@@ -5,11 +5,11 @@ import LoadingCard from './LoadingCard';
 import { generalMapper, repositoriesMapper } from './dataMapper';
 import { configurationSelector } from './selectors';
 
-function enabledRepos(repositories) {
+export function enabledRepos(repositories) {
     if (repositories) {
         return [
-            repositories.enabled.length > 0 && `${repositories.enabled.length} enabled`,
-            repositories.disabled.length > 0 && `${repositories.disabled.length} disabled`
+            repositories.enabled && repositories.enabled.length > 0 && `${repositories.enabled.length} enabled`,
+            repositories.disabled && repositories.disabled.length > 0 && `${repositories.disabled.length} disabled`
         ].filter(Boolean).join(' / ');
     }
 
@@ -74,13 +74,22 @@ ConfigurationCard.propTypes = {
         packages: PropTypes.arrayOf(PropTypes.string),
         services: PropTypes.arrayOf(PropTypes.string),
         processes: PropTypes.arrayOf(PropTypes.string),
-        repositories: PropTypes.arrayOf(PropTypes.shape({
-            // eslint-disable-next-line camelcase
-            base_url: PropTypes.string,
-            name: PropTypes.string,
-            enabled: PropTypes.bool,
-            gpgcheck: PropTypes.bool
-        }))
+        repositories: PropTypes.shape({
+            enabled: PropTypes.arrayOf(PropTypes.shape({
+                // eslint-disable-next-line camelcase
+                base_url: PropTypes.string,
+                name: PropTypes.string,
+                enabled: PropTypes.bool,
+                gpgcheck: PropTypes.bool
+            })),
+            disabled: PropTypes.arrayOf(PropTypes.shape({
+                // eslint-disable-next-line camelcase
+                base_url: PropTypes.string,
+                name: PropTypes.string,
+                enabled: PropTypes.bool,
+                gpgcheck: PropTypes.bool
+            }))
+        })
     })
 };
 ConfigurationCard.defaultProps = {
