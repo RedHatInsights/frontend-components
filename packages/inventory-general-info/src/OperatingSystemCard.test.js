@@ -54,7 +54,6 @@ describe('OperatingSystemCard', () => {
             const wrapper = mount(<OperatingSystemCard store={ store } />);
             wrapper.find('TextListItem a').first().simulate('click');
             expect(onClick).not.toHaveBeenCalled();
-            expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         it('should call handleClick on packages', () => {
