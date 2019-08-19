@@ -1,3 +1,11 @@
+@mixin absolute($top: 0, $right: 0, $bottom:0, $left: 0) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
 .ins-c-select {
     .ins-c-select__control {
         box-shadow: none;
@@ -5,11 +13,7 @@
         border-radius: 0;
         border: 0;
         &::before {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            @include absolute;
             content: "";
             border: var(--pf-global--BorderWidth--sm) solid;
             border-color: var(--pf-global--Color--light-200);
@@ -25,7 +29,7 @@
             border-bottom-color: var(--pf-global--active-color--100);
         }
         .ins-c-select__indicators {
-            padding-right: 6px;
+            padding-right: var(--pf-global--spacer--xs);
             z-index: 1;
             .ins-c-select__indicator-separator {
                 display: none;
@@ -39,11 +43,11 @@
             }
 
             button.pf-c-button.pf-m-plain {
-                padding-right: 0.5rem;
-                padding-left: 1rem;
+                padding-right: var(--pf-global--spacer--sm);
+                padding-left: var(--pf-global--spacer--md);
                 margin-left: auto;
                 padding-bottom: 0;
-                margin-right: 0.5rem;
+                margin-right: var(--pf-global--spacer--sm);
             }
         }
     }
@@ -88,17 +92,18 @@
         flex-wrap: nowrap;
         align-items: center;
         box-sizing: border-box;
-        line-height: 24px;
+        line-height: var(--pf-global--LineHeight--md);
         position: relative;
-        margin-right: 4px;
-        font-size: 12px;
-        max-height: 26px;
+        margin-right: var(--pf-global--spacer--xs);
+        font-size: var(--pf-global--FontSize--xs);
+        max-height: var(--pf-global--spacer--lg);
 
         .ins-c-select__multi-value__label {
-            max-width: 7.5rem;
+            max-width: calc(10 * var(--pf-global--FontSize--xs));
+            padding-top: 6px;
         }
 
-        > .ins-c-select__multivalue--remove {
+        .ins-c-select__multivalue--remove {
             display: flex;
 
             svg {
@@ -114,36 +119,31 @@
         }
 
         &::before {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            @include absolute;
             content: "";
             border: var(--pf-global--BorderWidth--sm) solid var(--pf-global--Color--dark-200);
-            border-radius: 3px;
+            border-radius: var(--pf-global--BorderRadius--sm);
             pointer-events: none;
         }
     }
 
     .ins-c-select__value--container {
         display: flex;
-        padding-left: 8px;
+        padding-left: var(--pf-global--spacer--xs);
         align-items: center;
         flex-wrap: wrap;
-        max-width: calc(100% - 2.5rem);
         
         .ins-c-select__multivalue--container {
             align-items: initial;
         }
 
         .ins-c-select__value--container-chipgroup {
-            padding: 4px 6px;
-            font-size: 12px;
+            padding: var(--pf-global--spacer--xs);
+            font-size: var(--pf-global--FontSize--xs);
             background-color: var(--pf-global--BorderColor--300);
             border: var(--pf-global--BorderWidth--sm) solid var(--pf-global--BorderColor--300);
             margin: 0;
-            max-height: 26px;
+            max-height: var(--pf-global--spacer--lg);
                 &:hover{
                     border-color: var(--pf-global--Color--dark-100);
                 }

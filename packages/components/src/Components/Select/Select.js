@@ -15,11 +15,11 @@ const Select = ({ variant, isSearchable, className, simpleValue, components, ...
     const SelectComponent = variantToSelect(variant);
     return (
         <SelectComponent
-            className={`${className} ins-c-select`}
+            className={ `${className} ins-c-select` }
             menuPlacement="auto"
-            closeMenuOnSelect={!props.isMulti}
+            closeMenuOnSelect={ !props.isMulti }
             classNamePrefix="ins-c-select"
-            components={{
+            components={ {
                 MultiValueContainer,
                 ValueContainer,
                 MultiValueRemove,
@@ -27,19 +27,19 @@ const Select = ({ variant, isSearchable, className, simpleValue, components, ...
                 ClearIndicator,
                 Option,
                 ...components
-            }}
-            {...props}
-            onChange={option => props.onChange(
+            } }
+            { ...props }
+            onChange={ option => props.onChange(
                 (simpleValue || variant === SelectVariant.creatable) ?
-                calculateOption(option, props.isMulti) :
-                option
-            )}
+                    calculateOption(option, props.isMulti) :
+                    option
+            ) }
             value={
                 (simpleValue || variant === SelectVariant.creatable) ?
-                calculateMulti(props.options, props.value, props.isMulti) :
-                props.value
+                    calculateMulti(props.options, props.value, props.isMulti) :
+                    props.value
             }
-            isSearchable={ [SelectVariant.creatable, SelectVariant.async].includes(variant) || isSearchable }
+            isSearchable={ [ SelectVariant.creatable, SelectVariant.async ].includes(variant) || isSearchable }
         />
     );
 };
@@ -82,10 +82,10 @@ Select.propTypes = {
         Placeholder: PropTypes.node,
         SelectContainer: PropTypes.node,
         SingleValue: PropTypes.node,
-        ValueContainer: PropTypes.node,
+        ValueContainer: PropTypes.node
     }),
     hideSelectedOptions: PropTypes.bool
-}
+};
 
 Select.defaultProps = {
     selectVariant: SelectVariant.default,
@@ -101,6 +101,6 @@ Select.defaultProps = {
     onChange: () => undefined,
     components: {},
     hideSelectedOptions: false
-}
+};
 
 export default Select;
