@@ -14,7 +14,7 @@ node_modules
 # production
 dist
 /demo/assets
-
+/**/build
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
