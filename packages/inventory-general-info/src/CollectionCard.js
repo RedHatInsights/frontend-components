@@ -10,14 +10,13 @@ const CollectionCard = ({ detailLoaded, collectionInformation, entity }) => (<Lo
     items={ [
         { title: 'Insights client', value: collectionInformation.client },
         { title: 'Egg', value: collectionInformation.egg },
-        { title: 'Last check-in', value: new Date(entity.updated).toLocaleString() },
-        { title: 'Registered', value: new Date(entity.created).toLocaleString() }
+        { title: 'Last check-in', value: entity && new Date(entity.updated).toLocaleString() },
+        { title: 'Registered', value: entity && new Date(entity.created).toLocaleString() }
     ] }
 />);
 
 CollectionCard.propTypes = {
     detailLoaded: PropTypes.bool,
-    handleClick: PropTypes.func,
     entity: PropTypes.shape({
         updated: PropTypes.string,
         created: PropTypes.string
@@ -28,8 +27,7 @@ CollectionCard.propTypes = {
     })
 };
 CollectionCard.defaultProps = {
-    detailLoaded: false,
-    handleClick: () => undefined
+    detailLoaded: false
 };
 
 export default connect(({

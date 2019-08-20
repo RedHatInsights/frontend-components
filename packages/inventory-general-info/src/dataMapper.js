@@ -10,12 +10,12 @@ import {
 } from '@patternfly/react-icons';
 import { sortable } from '@patternfly/react-table';
 
-const statusHelper = {
+export const statusHelper = {
     UP: <OutlinedArrowAltCircleUpIcon className="ins-c-inventory__detail--up" />,
     DOWN: <OutlinedArrowAltCircleDownIcon className="ins-c-inventory__detail--down" />
 };
 
-const enabledHelper = {
+export const enabledHelper = {
     true: <CheckCircleIcon className="ins-c-inventory__detail--enabled" />,
     false: <TimesIcon className="ins-c-inventory__detail--disabled" />
 };
@@ -109,7 +109,7 @@ export const interfaceMapper = (data = []) => ({
     ]))
 });
 
-export const repositoriesMapper = ({ enabled, disabled } = {}) => ({
+export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabled: []}) => ({
     cells: [
         {
             title: 'Name',
@@ -123,8 +123,8 @@ export const repositoriesMapper = ({ enabled, disabled } = {}) => ({
             title: <a href={ repository.base_url } target="_blank" rel="noopener noreferrer">{ repository.name }</a>,
             sortValue: repository.name
         },
-        { title: enabledHelper[repository.enabled] },
-        { title: enabledHelper[repository.gpgcheck] }
+        { title: enabledHelper[Boolean(repository.enabled)] },
+        { title: enabledHelper[Boolean(repository.gpgcheck)] }
     ]))
 });
 
