@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BulkSelect should render correctly - no data 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={Array []}
+  isGrouped={false}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+      splitButtonItems={
+        Array [
+          <DropdownToggleCheckbox
+            aria-label="Select all"
+            checked={false}
+            className=""
+            id="toggle-checkbox"
+            isChecked={null}
+            isDisabled={false}
+            isValid={true}
+            onChange={[Function]}
+          />,
+        ]
+      }
+    />
+  }
+/>
+`;
+
+exports[`BulkSelect should render correctly 1`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={
+    Array [
+      <DropdownItem
+        className=""
+        component="button"
+        href=""
+        isDisabled={false}
+        isHovered={false}
+        onClick={[Function]}
+        tooltip={null}
+        tooltipProps={Object {}}
+      >
+        Select all
+      </DropdownItem>,
+    ]
+  }
+  isGrouped={false}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+      splitButtonItems={
+        Array [
+          <DropdownToggleCheckbox
+            aria-label="Select all"
+            checked={false}
+            className=""
+            id="toggle-checkbox"
+            isChecked={null}
+            isDisabled={false}
+            isValid={true}
+            onChange={[Function]}
+          />,
+        ]
+      }
+    />
+  }
+/>
+`;
+
+exports[`BulkSelect should render correctly 2`] = `
+<Dropdown
+  className=""
+  direction="down"
+  dropdownItems={
+    Array [
+      <DropdownItem
+        className=""
+        component="button"
+        href=""
+        isDisabled={false}
+        isHovered={false}
+        onClick={[Function]}
+        tooltip={null}
+        tooltipProps={Object {}}
+      >
+        Select all
+      </DropdownItem>,
+    ]
+  }
+  isGrouped={false}
+  isOpen={false}
+  isPlain={false}
+  onSelect={[Function]}
+  position="left"
+  toggle={
+    <DropdownToggle
+      className=""
+      iconComponent={[Function]}
+      id=""
+      isActive={false}
+      isFocused={false}
+      isHovered={false}
+      isOpen={false}
+      isPlain={false}
+      onToggle={[Function]}
+      parentRef={null}
+      splitButtonItems={
+        Array [
+          <DropdownToggleCheckbox
+            aria-label="Select all"
+            checked={false}
+            className=""
+            id="toggle-checkbox"
+            isChecked={null}
+            isDisabled={false}
+            isValid={true}
+            onChange={[Function]}
+          />,
+        ]
+      }
+    />
+  }
+/>
+`;
