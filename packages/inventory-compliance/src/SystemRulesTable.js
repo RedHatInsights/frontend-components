@@ -272,6 +272,8 @@ class SystemRulesTable extends React.Component {
     calculateChild = ({ description, rationale, identifier, references }, key) => ({
         parent: key * 2,
         cells: [{
+            originalIdentifier: identifier ? identifier.label : '',
+            originalReferences: references && references.length ? references.map((r) => r.label).join() : '',
             title: (
                 <React.Fragment key={ key }>
                     <div className='margin-top-lg'>
@@ -366,10 +368,10 @@ class SystemRulesTable extends React.Component {
         return originalRows;
     }
 
-    handleSearch = debounce(title => {
+    handleSearch = debounce(searchTerm => {
         const { hidePassed, severity, policy } = this.state;
         this.setState({
-            title
+            searchTerm
         }, () => this.updateFilter(hidePassed, severity, policy));
 
     }, 500)
@@ -420,7 +422,32 @@ class SystemRulesTable extends React.Component {
         return filteredRows;
     }
 
-    filteredRows = (passedRows, severityRows, policyRows, titleRows, hidePassed, severity, policy, title) => {
+    searchBy = (searchTerm, rows) => {
+        const lowerString = (s) => String(s).toLowerCase();
+        const filteredRows = [];
+        if (searchTerm) {
+            searchTerm = lowerString(searchTerm);
+            rows.forEach((row, i) => {
+                const isParent = row.hasOwnProperty('isOpen');
+
+                const titleMatches = isParent && lowerString(row.cells[TITLE_COLUMN].original).match(searchTerm);
+                const identifierMatches = !isParent && lowerString(row.cells[0].originalIdentifier).match(searchTerm);
+                const referencesMatch = !isParent && lowerString(row.cells[0].originalReferences).match(searchTerm);
+
+                if (titleMatches || identifierMatches || referencesMatch) {
+                    let parent = isParent ? row : rows[i - 1];
+                    let child = isParent ? rows[i + 1] : row;
+                    filteredRows.push(parent);
+                    child.parent = filteredRows.length - 1;
+                    filteredRows.push(child);
+                }
+            });
+        }
+
+        return filteredRows;
+    }
+
+    filteredRows = (passedRows, severityRows, policyRows, searchRows, hidePassed, severity, policy, searchTerm) => {
         let result;
 
         if (severity.length > 0 && hidePassed) {
@@ -439,17 +466,17 @@ class SystemRulesTable extends React.Component {
             result = policyRows;
         }
 
-        if (title && title.length > 0 && result.length > 0) {
-            result = result.filter(row => titleRows.includes(row));
-        } else if (title && title.length > 0 && result.length === 0) {
-            result = titleRows;
+        if (searchTerm && searchTerm.length > 0 && result.length > 0) {
+            result = result.filter(row => searchRows.includes(row));
+        } else if (searchTerm && searchTerm.length > 0 && result.length === 0) {
+            result = searchRows;
         }
 
         return result;
     }
 
     updateFilter = (hidePassed, severity, policy) => {
-        const { originalRows, profiles, refIds, page, itemsPerPage, title } = this.state;
+        const { originalRows, profiles, refIds, page, itemsPerPage, searchTerm } = this.state;
         let passedRows;
         if (hidePassed) {
             passedRows = this.filterBy(!hidePassed, originalRows, COMPLIANT_COLUMN);
@@ -459,9 +486,9 @@ class SystemRulesTable extends React.Component {
 
         const severityRows = this.filterBy(severity.join('|'), originalRows, SEVERITY_COLUMN);
         const policyRows = this.filterBy(policy, originalRows, POLICY_COLUMN);
-        const titleRows = this.filterBy(title, originalRows, TITLE_COLUMN);
-        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, titleRows,
-            hidePassed, severity, policy, title);
+        const searchRows = this.searchBy(searchTerm, originalRows);
+        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows,
+            hidePassed, severity, policy, searchTerm);
 
         this.currentRows(
             page,
@@ -476,7 +503,7 @@ class SystemRulesTable extends React.Component {
                 hidePassed,
                 severity,
                 policy,
-                title
+                searchTerm
             }));
         });
     }
@@ -512,7 +539,7 @@ class SystemRulesTable extends React.Component {
                                         updateFilter={ this.updateFilter } />
                                     <SimpleTableFilter buttonTitle={ null }
                                         onFilterChange={ this.handleSearch }
-                                        placeholder="Search by name" />
+                                        placeholder="Search by name, identifer, or reference" />
                                 </InputGroup>
                             </LevelItem>
                             <LevelItem>
