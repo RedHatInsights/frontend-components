@@ -15,7 +15,7 @@ describe('BulkSelect', () => {
                 title: 'Select all',
                 onClick: jest.fn()
             }
-        ] }/>);
+        ] } id="some-id" />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
@@ -30,6 +30,13 @@ describe('BulkSelect', () => {
     });
 
     describe('API', () => {
+        it('should call on select with no items', () => {
+            const onSelect = jest.fn();
+            const wrapper = mount(<BulkSelect onSelect={ onSelect } />);
+            wrapper.find('input[type="checkbox"]').first().simulate('change');
+            expect(onSelect).toHaveBeenCalled();
+        });
+
         it('should call on select', () => {
             const onSelect = jest.fn();
             const wrapper = mount(<BulkSelect items={ [
