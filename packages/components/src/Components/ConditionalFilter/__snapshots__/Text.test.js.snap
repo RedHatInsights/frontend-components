@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text component render should render correctly 1`] = `
+<input
+  className="pf-c-form-control"
+  onChange={[Function]}
+  onKeyDown={[Function]}
+  value=""
+  widget-type="InsightsInput"
+/>
+`;
+
+exports[`Text component render should render placeholder 1`] = `
+<input
+  className="pf-c-form-control"
+  onChange={[Function]}
+  onKeyDown={[Function]}
+  placeholder="some-placeholder"
+  value=""
+  widget-type="InsightsInput"
+/>
+`;
+
+exports[`Text component render should render value 1`] = `
+<input
+  className="pf-c-form-control"
+  onChange={[Function]}
+  onKeyDown={[Function]}
+  value=""
+  widget-type="InsightsInput"
+/>
+`;

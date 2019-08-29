@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+
 class Text extends Component {
     state = {
         stateValue: ''
@@ -20,9 +21,9 @@ class Text extends Component {
             <input { ...props }
                 value={ onChange ? value : stateValue }
                 className="pf-c-form-control"
-                onChange={ (e) => changeCallback(e, event.target.value) }
+                onChange={ (e) => changeCallback(e, e.target.value) }
                 widget-type="InsightsInput"
-                onKeyDown={ e => e.key === 'Enter' && onSubmit(e, stateValue) }
+                onKeyDown={ e => e.key === 'Enter' && onSubmit(e, value || stateValue) }
             />
         );
     }
