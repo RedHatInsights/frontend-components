@@ -15,8 +15,9 @@ class ConditionalFilter extends Component {
             isOpen
         });
     }
+
     render() {
-        const { items, value, onChange, placeholder, ...props } = this.props;
+        const { items, value, id, onChange, placeholder, ...props } = this.props;
         const { isOpen } = this.state;
         const activeItem = items && items.length && (
             items.find(item => item.value === value) ||
@@ -26,10 +27,11 @@ class ConditionalFilter extends Component {
         return (
             <Fragment>
                 {
-                    !items || (items && items.length === 1) ?
+                    !items || (items && items.length <= 0) ?
                         <Text { ...props }
                             value={ value }
-                            onChange={ (e) => onChange(e, event.target.value) }
+                            id={ id || 'default-input' }
+                            onChange={ (e) => onChange(e, e.target.value) }
                             placeholder={ placeholder }
                             widget-type='InsightsInput'
                         /> :
