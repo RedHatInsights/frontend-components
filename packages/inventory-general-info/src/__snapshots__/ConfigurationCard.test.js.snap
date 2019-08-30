@@ -106,17 +106,12 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
       title="Configuration"
     >
       <Stack
-        className=""
-        component="div"
         gutter="md"
       >
         <div
           className="pf-l-stack pf-m-gutter"
         >
-          <StackItem
-            className=""
-            isFilled={false}
-          >
+          <StackItem>
             <div
               className="pf-l-stack__item"
             >
@@ -139,7 +134,6 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
             </div>
           </StackItem>
           <StackItem
-            className=""
             isFilled={true}
           >
             <div

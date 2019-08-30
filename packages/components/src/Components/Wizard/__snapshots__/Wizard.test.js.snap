@@ -54,6 +54,7 @@ exports[`Wizard component should render correctly default 1`] = `
   isSmall={false}
   onClose={[Function]}
   onKeyPress={[Function]}
+  showClose={true}
   title="Some title"
 >
   <div
@@ -118,6 +119,7 @@ exports[`Wizard component should render correctly large 1`] = `
   isSmall={false}
   onClose={[Function]}
   onKeyPress={[Function]}
+  showClose={true}
   title="Some title"
 >
   <div
@@ -165,6 +167,7 @@ exports[`Wizard component should render correctly one page 1`] = `
   isSmall={false}
   onClose={[Function]}
   onKeyPress={[Function]}
+  showClose={true}
   title="Some title"
 >
   <div>

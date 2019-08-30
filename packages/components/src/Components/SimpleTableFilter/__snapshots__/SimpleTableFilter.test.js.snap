@@ -65,42 +65,22 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
   className="pf-c-input-group ins-c-filter  "
 >
   <Dropdown
-    className=""
-    direction="down"
     dropdownItems={
       Array [
         <DropdownItem
-          className=""
           component="button"
           data-key="one"
-          href=""
-          isDisabled={false}
-          isHovered={false}
           onClick={[Function]}
-          tooltip={null}
-          tooltipProps={Object {}}
         >
           one
         </DropdownItem>,
       ]
     }
-    isGrouped={false}
     isOpen={false}
-    isPlain={false}
     onSelect={[Function]}
-    position="left"
     toggle={
       <DropdownToggle
-        className=""
-        iconComponent={[Function]}
-        id=""
-        isActive={false}
-        isFocused={false}
-        isHovered={false}
-        isOpen={false}
-        isPlain={false}
         onToggle={[Function]}
-        parentRef={null}
       >
         Dropdown
       </DropdownToggle>
@@ -127,42 +107,22 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
   className="pf-c-input-group ins-c-filter  "
 >
   <Dropdown
-    className=""
-    direction="down"
     dropdownItems={
       Array [
         <DropdownItem
-          className=""
           component="button"
           data-key="one"
-          href=""
-          isDisabled={false}
-          isHovered={false}
           onClick={[Function]}
-          tooltip={null}
-          tooltipProps={Object {}}
         >
           one
         </DropdownItem>,
       ]
     }
-    isGrouped={false}
     isOpen={false}
-    isPlain={false}
     onSelect={[Function]}
-    position="left"
     toggle={
       <DropdownToggle
-        className=""
-        iconComponent={[Function]}
-        id=""
-        isActive={false}
-        isFocused={false}
-        isHovered={false}
-        isOpen={false}
-        isPlain={false}
         onToggle={[Function]}
-        parentRef={null}
       >
         Filter by
       </DropdownToggle>
