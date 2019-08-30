@@ -1,31 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Text component render should render correctly 1`] = `
-<input
-  className="pf-c-form-control"
+<TextInput
+  aria-label={null}
+  className=""
+  id="test-id"
+  isDisabled={false}
+  isReadOnly={false}
+  isRequired={false}
+  isValid={true}
   onChange={[Function]}
   onKeyDown={[Function]}
+  type="text"
   value=""
   widget-type="InsightsInput"
 />
 `;
 
 exports[`Text component render should render placeholder 1`] = `
-<input
-  className="pf-c-form-control"
+<TextInput
+  aria-label={null}
+  className=""
+  id="test-id"
+  isDisabled={false}
+  isReadOnly={false}
+  isRequired={false}
+  isValid={true}
   onChange={[Function]}
   onKeyDown={[Function]}
   placeholder="some-placeholder"
+  type="text"
   value=""
   widget-type="InsightsInput"
 />
 `;
 
 exports[`Text component render should render value 1`] = `
-<input
-  className="pf-c-form-control"
+<TextInput
+  aria-label={null}
+  className=""
+  id="test-id"
+  isDisabled={false}
+  isReadOnly={false}
+  isRequired={false}
+  isValid={true}
   onChange={[Function]}
   onKeyDown={[Function]}
+  type="text"
   value=""
   widget-type="InsightsInput"
 />

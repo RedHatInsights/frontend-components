@@ -62,6 +62,7 @@ class ConditionalFilter extends Component {
                                 ActiveComponent && <SplitItem isFilled>
                                     <ActiveComponent
                                         placeholder={ placeholder || activeItem.placeholder || `Filter by ${activeItem.label}` }
+                                        id={ (activeItem.filterValues && activeItem.filterValues.id) || activeItem.value }
                                         { ...activeItem.filterValues }
                                     />
                                 </SplitItem>

@@ -19,8 +19,8 @@ class Checkbox extends Component {
         const { selected } = this.state;
         const { value } = this.props;
         return Array.from(new Set([
-            ...(value && value.length > 0) ? value.map(item => item.value || item) : [],
-            ...selected || []
+            ...(value && value.length > 0 && value.constructor === Array) ? value.map(item => item.value || item) : [],
+            ...selected
         ]));
     }
 
@@ -37,15 +37,9 @@ class Checkbox extends Component {
         this.setState({ selected: newSelection });
     };
 
-    clearSelection = () => {
-        this.setState({
-            selected: []
-        });
-    };
-
     render() {
         const { isExpanded } = this.state;
-        const { items, placeholder } = this.props;
+        const { items, placeholder, onChange } = this.props;
         return (<Fragment>
             { !items || (items && items.length <= 0) ? <Text { ...this.props } value={ `${this.calculateSelected()}` } /> : <Select
                 variant={ SelectVariant.checkbox }
@@ -56,8 +50,15 @@ class Checkbox extends Component {
                 isExpanded={ isExpanded }
                 placeholderText={ placeholder }
             >
-                { items.map(({ value, label, id, ...item }, key) => (
-                    <SelectOption { ...item } key={ id || key } value={ value }>{ label }</SelectOption>)
+                { items.map(({ value, onClick, label, id, ...item }, key) => (
+                    <SelectOption
+                        { ...item }
+                        key={ id || key }
+                        value={ value }
+                        onClick={ e => onClick && onClick(e, { value, label, id, ...item }, key) }
+                    >
+                        { label }
+                    </SelectOption>)
                 ) }
             </Select> }
         </Fragment>);
@@ -65,12 +66,18 @@ class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
-    onChange: PropTypes.func,
+    onChangeFunc: PropTypes.func,
     value: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.shape({
         label: PropTypes.node,
         value: PropTypes.string
     }) ])),
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.node,
+        id: PropTypes.string,
+        onClick: PropTypes.func
+    }))
 };
 
 Checkbox.defaultProps = {

@@ -1,0 +1,344 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio render should render correctly 1`] = `
+<Fragment>
+  <Text
+    items={Array []}
+    onChange={[Function]}
+    onSubmit={[Function]}
+    value="undefined"
+  />
+</Fragment>
+`;
+
+exports[`Radio render should render correctly placeholder 1`] = `
+<Fragment>
+  <Select
+    aria-label="Select Input"
+    ariaLabelClear="Clear all"
+    ariaLabelRemove="Remove"
+    ariaLabelToggle="Options menu"
+    ariaLabelTypeAhead=""
+    ariaLabelledBy=""
+    className=""
+    isDisabled={false}
+    isExpanded={false}
+    isGrouped={false}
+    isPlain={false}
+    onClear={[Function]}
+    onSelect={[Function]}
+    onToggle={[Function]}
+    placeholderText="some placeholder"
+    selections=""
+    toggleId={null}
+    variant="single"
+    width=""
+  >
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="0"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="some-value"
+    >
+      <Radio
+        className=""
+        id="some-value-0"
+        isChecked={false}
+        isDisabled={false}
+        isValid={true}
+        label={
+          <div>
+            Custom value
+          </div>
+        }
+        name="0-radio"
+        onChange={[Function]}
+        value="some-value"
+      />
+    </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="1"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="another-value"
+    >
+      <Radio
+        className=""
+        id="another-value-1"
+        isChecked={true}
+        isDisabled={false}
+        isValid={true}
+        label="Another"
+        name="1-radio"
+        onChange={[Function]}
+        value="another-value"
+      />
+    </SelectOption>
+  </Select>
+</Fragment>
+`;
+
+exports[`Radio render should render correctly with items 1`] = `
+<Fragment>
+  <Select
+    aria-label="Select Input"
+    ariaLabelClear="Clear all"
+    ariaLabelRemove="Remove"
+    ariaLabelToggle="Options menu"
+    ariaLabelTypeAhead=""
+    ariaLabelledBy=""
+    className=""
+    isDisabled={false}
+    isExpanded={false}
+    isGrouped={false}
+    isPlain={false}
+    onClear={[Function]}
+    onSelect={[Function]}
+    onToggle={[Function]}
+    placeholderText=""
+    selections=""
+    toggleId={null}
+    variant="single"
+    width=""
+  >
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="0"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="some-value"
+    >
+      <Radio
+        className=""
+        id="some-value-0"
+        isChecked={false}
+        isDisabled={false}
+        isValid={true}
+        label={
+          <div>
+            Custom value
+          </div>
+        }
+        name="0-radio"
+        onChange={[Function]}
+        value="some-value"
+      />
+    </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="1"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="another-value"
+    >
+      <Radio
+        className=""
+        id="another-value-1"
+        isChecked={false}
+        isDisabled={false}
+        isValid={true}
+        label="Another"
+        name="1-radio"
+        onChange={[Function]}
+        value="another-value"
+      />
+    </SelectOption>
+  </Select>
+</Fragment>
+`;
+
+exports[`Radio render should render correctly with items and default value 1`] = `
+<Fragment>
+  <Select
+    aria-label="Select Input"
+    ariaLabelClear="Clear all"
+    ariaLabelRemove="Remove"
+    ariaLabelToggle="Options menu"
+    ariaLabelTypeAhead=""
+    ariaLabelledBy=""
+    className=""
+    isDisabled={false}
+    isExpanded={false}
+    isGrouped={false}
+    isPlain={false}
+    onClear={[Function]}
+    onSelect={[Function]}
+    onToggle={[Function]}
+    placeholderText=""
+    selections=""
+    toggleId={null}
+    variant="single"
+    width=""
+  >
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="0"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="some-value"
+    >
+      <Radio
+        className=""
+        id="some-value-0"
+        isChecked={true}
+        isDisabled={false}
+        isValid={true}
+        label={
+          <div>
+            Custom value
+          </div>
+        }
+        name="0-radio"
+        onChange={[Function]}
+        value="some-value"
+      />
+    </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="1"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="another-value"
+    >
+      <Radio
+        className=""
+        id="another-value-1"
+        isChecked={false}
+        isDisabled={false}
+        isValid={true}
+        label="Another"
+        name="1-radio"
+        onChange={[Function]}
+        value="another-value"
+      />
+    </SelectOption>
+  </Select>
+</Fragment>
+`;
+
+exports[`Radio render should render correctly with items and selected value 1`] = `
+<Fragment>
+  <Select
+    aria-label="Select Input"
+    ariaLabelClear="Clear all"
+    ariaLabelRemove="Remove"
+    ariaLabelToggle="Options menu"
+    ariaLabelTypeAhead=""
+    ariaLabelledBy=""
+    className=""
+    isDisabled={false}
+    isExpanded={false}
+    isGrouped={false}
+    isPlain={false}
+    onClear={[Function]}
+    onSelect={[Function]}
+    onToggle={[Function]}
+    placeholderText=""
+    selections=""
+    toggleId={null}
+    variant="single"
+    width=""
+  >
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="0"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="some-value"
+    >
+      <Radio
+        className=""
+        id="some-value-0"
+        isChecked={false}
+        isDisabled={false}
+        isValid={true}
+        label={
+          <div>
+            Custom value
+          </div>
+        }
+        name="0-radio"
+        onChange={[Function]}
+        value="some-value"
+      />
+    </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="1"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="another-value"
+    >
+      <Radio
+        className=""
+        id="another-value-1"
+        isChecked={true}
+        isDisabled={false}
+        isValid={true}
+        label="Another"
+        name="1-radio"
+        onChange={[Function]}
+        value="another-value"
+      />
+    </SelectOption>
+  </Select>
+</Fragment>
+`;

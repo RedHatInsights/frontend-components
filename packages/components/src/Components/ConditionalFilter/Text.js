@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import { TextInput } from '@patternfly/react-core';
 
 class Text extends Component {
     state = {
@@ -14,14 +14,14 @@ class Text extends Component {
     }
 
     render() {
-        const { value, onChange, onSubmit, ...props } = this.props;
+        const { value, onChange, onSubmit, id, ...props } = this.props;
         const { stateValue } = this.state;
         const changeCallback = onChange ? onChange : this.onChangeValue;
         return (
-            <input { ...props }
+            <TextInput { ...props }
+                id={ id }
                 value={ onChange ? value : stateValue }
-                className="pf-c-form-control"
-                onChange={ (e) => changeCallback(e, e.target.value) }
+                onChange={ (_inputValue, e) => changeCallback(e, e.target.value) }
                 widget-type="InsightsInput"
                 onKeyDown={ e => e.key === 'Enter' && onSubmit(e, value || stateValue) }
             />

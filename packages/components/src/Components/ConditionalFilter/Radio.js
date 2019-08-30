@@ -27,12 +27,6 @@ class Radio extends Component {
         this.setState({ checked: selection });
     };
 
-    clearSelection = () => {
-        this.setState({
-            selected: []
-        });
-    };
-
     render() {
         const { isExpanded } = this.state;
         const { items, placeholder } = this.props;
@@ -51,15 +45,15 @@ class Radio extends Component {
                     isExpanded={ isExpanded }
                     placeholderText={ placeholder }
                 >
-                    { items.map(({ value, isChecked, label, id, ...item }, key) => (
+                    { items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (
                         <SelectOption { ...item } key={ id || key } value={ value }>
                             <InputRadio
                                 { ...item }
                                 name={ id || `${key}-radio` }
                                 label={ label }
                                 value={ value }
-                                isChecked={ item.isChecked || (checkedValue === value) || false }
-                                onChange={ () => undefined }
+                                isChecked={ isChecked || (checkedValue === value) || false }
+                                onChange={ (_value, e) => onChange && onChange(e, { id, label, value, isChecked, ...item }, key) }
                                 id={ id || `${value}-${key}` }
                             />
                         </SelectOption>)
@@ -75,7 +69,14 @@ Radio.propTypes = {
         label: PropTypes.node,
         value: PropTypes.string
     }) ]),
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.node,
+        id: PropTypes.string,
+        isChecked: PropTypes.bool,
+        onChange: PropTypes.func
+    }))
 };
 
 Radio.defaultProps = {
