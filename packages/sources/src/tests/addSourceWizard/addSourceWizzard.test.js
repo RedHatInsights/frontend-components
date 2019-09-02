@@ -42,7 +42,7 @@ describe('AddSourceButton', () => {
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
         const form = wrapper.find(FormRenderer).children().children().instance().form;
 
-        form.change('source_name', 'nameee');
+        form.change('source.name', 'nameee');
         form.change('source_type', 'openshift');
         form.submit().then(() => {
             wrapper.update();
@@ -58,7 +58,7 @@ describe('AddSourceButton', () => {
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
         const form = wrapper.find(FormRenderer).children().children().instance().form;
 
-        form.change('source_name', 'nameee');
+        form.change('source.name', 'nameee');
         form.change('source_type', 'openshift');
         form.submit().then(() => {
             wrapper.update();

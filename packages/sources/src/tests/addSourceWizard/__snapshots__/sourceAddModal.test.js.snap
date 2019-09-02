@@ -38,7 +38,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "helperText": "For example, Source_1",
                   "isRequired": true,
                   "label": "Name",
-                  "name": "source_name",
+                  "name": "source.name",
                   "type": "text",
                   "validate": Array [
                     Object {
@@ -130,7 +130,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 Object {
                   "component": "textarea-field",
                   "label": "Token",
-                  "name": "token",
+                  "name": "authentication.password",
                 },
               ],
               "name": "openshift",
@@ -153,17 +153,6 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
                 Object {
                   "component": "text-field",
-                  "initialValue": "kubernetes",
-                  "name": "role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "token",
-                  "name": "authtype",
-                },
-                Object {
-                  "component": "text-field",
                   "helperText": "For example, https://myopenshiftcluster.mycompany.com",
                   "isRequired": true,
                   "label": "URL",
@@ -177,16 +166,28 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 Object {
                   "component": "checkbox",
                   "label": "Verify SSL",
-                  "name": "verify_ssl",
+                  "name": "endpoint.verify_ssl",
                 },
                 Object {
                   "component": "textarea-field",
                   "condition": Object {
                     "is": true,
-                    "when": "verify_ssl",
+                    "when": "endpoint.verify_ssl",
                   },
                   "label": <SSLFormLabel />,
-                  "name": "certificate_authority",
+                  "name": "endpoint.certificate_authority",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
                 },
               ],
               "name": "openshift_1",
@@ -251,7 +252,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                           headerContent={null}
                           hideOnOutsideClick={true}
                           isVisible={null}
-                          maxWidth="50%"
+                          maxWidth="calc(2rem + 18.75rem)"
                           onHidden={[Function]}
                           onHide={[Function]}
                           onMount={[Function]}
@@ -290,21 +291,10 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
                 Object {
                   "component": "text-field",
-                  "initialValue": "aws",
-                  "name": "role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "access_key_secret_key",
-                  "name": "authtype",
-                },
-                Object {
-                  "component": "text-field",
                   "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
-                  "name": "username",
+                  "name": "authentication.username",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -317,12 +307,24 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "isRequired": true,
                   "label": "Secret Key",
                   "name": "password",
-                  "type": "password",
+                  "type": "authentication.password",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
                     },
                   ],
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "aws",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "access_key_secret_key",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
                 },
               ],
               "name": "amazon",
@@ -348,7 +350,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "DefaultIcon": [Function],
                   "component": "card-select",
                   "label": "Select your application",
-                  "name": "app_type",
+                  "name": "application.application_type_id",
                   "options": Array [
                     Object {
                       "label": "Catalog",
@@ -538,7 +540,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "helperText": "For example, Source_1",
                   "isRequired": true,
                   "label": "Name",
-                  "name": "source_name",
+                  "name": "source.name",
                   "type": "text",
                   "validate": Array [
                     Object {
@@ -630,7 +632,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 Object {
                   "component": "textarea-field",
                   "label": "Token",
-                  "name": "token",
+                  "name": "authentication.password",
                 },
               ],
               "name": "openshift",
@@ -653,17 +655,6 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "initialValue": "kubernetes",
-                  "name": "role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "token",
-                  "name": "authtype",
-                },
-                Object {
-                  "component": "text-field",
                   "helperText": "For example, https://myopenshiftcluster.mycompany.com",
                   "isRequired": true,
                   "label": "URL",
@@ -677,16 +668,28 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 Object {
                   "component": "checkbox",
                   "label": "Verify SSL",
-                  "name": "verify_ssl",
+                  "name": "endpoint.verify_ssl",
                 },
                 Object {
                   "component": "textarea-field",
                   "condition": Object {
                     "is": true,
-                    "when": "verify_ssl",
+                    "when": "endpoint.verify_ssl",
                   },
                   "label": <SSLFormLabel />,
-                  "name": "certificate_authority",
+                  "name": "endpoint.certificate_authority",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
                 },
               ],
               "name": "openshift_1",
@@ -751,7 +754,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                           headerContent={null}
                           hideOnOutsideClick={true}
                           isVisible={null}
-                          maxWidth="50%"
+                          maxWidth="calc(2rem + 18.75rem)"
                           onHidden={[Function]}
                           onHide={[Function]}
                           onMount={[Function]}
@@ -790,21 +793,10 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "initialValue": "aws",
-                  "name": "role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "access_key_secret_key",
-                  "name": "authtype",
-                },
-                Object {
-                  "component": "text-field",
                   "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
-                  "name": "username",
+                  "name": "authentication.username",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -817,12 +809,24 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "isRequired": true,
                   "label": "Secret Key",
                   "name": "password",
-                  "type": "password",
+                  "type": "authentication.password",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
                     },
                   ],
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "aws",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "access_key_secret_key",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
                 },
               ],
               "name": "amazon",
@@ -848,7 +852,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "DefaultIcon": [Function],
                   "component": "card-select",
                   "label": "Select your application",
-                  "name": "app_type",
+                  "name": "application.application_type_id",
                   "options": Array [
                     Object {
                       "label": "Catalog",
@@ -1038,7 +1042,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "helperText": "For example, Source_1",
                   "isRequired": true,
                   "label": "Name",
-                  "name": "source_name",
+                  "name": "source.name",
                   "type": "text",
                   "validate": Array [
                     Object {
@@ -1130,7 +1134,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 Object {
                   "component": "textarea-field",
                   "label": "Token",
-                  "name": "token",
+                  "name": "authentication.password",
                 },
               ],
               "name": "openshift",
@@ -1153,17 +1157,6 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "initialValue": "kubernetes",
-                  "name": "role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "token",
-                  "name": "authtype",
-                },
-                Object {
-                  "component": "text-field",
                   "helperText": "For example, https://myopenshiftcluster.mycompany.com",
                   "isRequired": true,
                   "label": "URL",
@@ -1177,16 +1170,28 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 Object {
                   "component": "checkbox",
                   "label": "Verify SSL",
-                  "name": "verify_ssl",
+                  "name": "endpoint.verify_ssl",
                 },
                 Object {
                   "component": "textarea-field",
                   "condition": Object {
                     "is": true,
-                    "when": "verify_ssl",
+                    "when": "endpoint.verify_ssl",
                   },
                   "label": <SSLFormLabel />,
-                  "name": "certificate_authority",
+                  "name": "endpoint.certificate_authority",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
                 },
               ],
               "name": "openshift_1",
@@ -1251,7 +1256,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                           headerContent={null}
                           hideOnOutsideClick={true}
                           isVisible={null}
-                          maxWidth="50%"
+                          maxWidth="calc(2rem + 18.75rem)"
                           onHidden={[Function]}
                           onHide={[Function]}
                           onMount={[Function]}
@@ -1290,21 +1295,10 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "initialValue": "aws",
-                  "name": "role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "access_key_secret_key",
-                  "name": "authtype",
-                },
-                Object {
-                  "component": "text-field",
                   "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
-                  "name": "username",
+                  "name": "authentication.username",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -1317,12 +1311,24 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "isRequired": true,
                   "label": "Secret Key",
                   "name": "password",
-                  "type": "password",
+                  "type": "authentication.password",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
                     },
                   ],
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "aws",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "access_key_secret_key",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
                 },
               ],
               "name": "amazon",
@@ -1348,7 +1354,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "DefaultIcon": [Function],
                   "component": "card-select",
                   "label": "Select your application",
-                  "name": "app_type",
+                  "name": "application.application_type_id",
                   "options": Array [
                     Object {
                       "label": "Catalog",
@@ -1538,7 +1544,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "helperText": "For example, Source_1",
                   "isRequired": true,
                   "label": "Name",
-                  "name": "source_name",
+                  "name": "source.name",
                   "type": "text",
                   "validate": Array [
                     Object {
@@ -1630,7 +1636,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 Object {
                   "component": "textarea-field",
                   "label": "Token",
-                  "name": "token",
+                  "name": "authentication.password",
                 },
               ],
               "name": "openshift",
@@ -1653,17 +1659,6 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
                 Object {
                   "component": "text-field",
-                  "initialValue": "kubernetes",
-                  "name": "role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "token",
-                  "name": "authtype",
-                },
-                Object {
-                  "component": "text-field",
                   "helperText": "For example, https://myopenshiftcluster.mycompany.com",
                   "isRequired": true,
                   "label": "URL",
@@ -1677,16 +1672,28 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 Object {
                   "component": "checkbox",
                   "label": "Verify SSL",
-                  "name": "verify_ssl",
+                  "name": "endpoint.verify_ssl",
                 },
                 Object {
                   "component": "textarea-field",
                   "condition": Object {
                     "is": true,
-                    "when": "verify_ssl",
+                    "when": "endpoint.verify_ssl",
                   },
                   "label": <SSLFormLabel />,
-                  "name": "certificate_authority",
+                  "name": "endpoint.certificate_authority",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
                 },
               ],
               "name": "openshift_1",
@@ -1751,7 +1758,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                           headerContent={null}
                           hideOnOutsideClick={true}
                           isVisible={null}
-                          maxWidth="50%"
+                          maxWidth="calc(2rem + 18.75rem)"
                           onHidden={[Function]}
                           onHide={[Function]}
                           onMount={[Function]}
@@ -1790,21 +1797,10 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
                 Object {
                   "component": "text-field",
-                  "initialValue": "aws",
-                  "name": "role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "access_key_secret_key",
-                  "name": "authtype",
-                },
-                Object {
-                  "component": "text-field",
                   "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
-                  "name": "username",
+                  "name": "authentication.username",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -1817,12 +1813,24 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "isRequired": true,
                   "label": "Secret Key",
                   "name": "password",
-                  "type": "password",
+                  "type": "authentication.password",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
                     },
                   ],
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "aws",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "access_key_secret_key",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
                 },
               ],
               "name": "amazon",
@@ -1848,7 +1856,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "DefaultIcon": [Function],
                   "component": "card-select",
                   "label": "Select your application",
-                  "name": "app_type",
+                  "name": "application.application_type_id",
                   "options": Array [
                     Object {
                       "label": "Catalog",

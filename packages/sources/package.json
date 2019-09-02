@@ -23,8 +23,8 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7",
-        "@data-driven-forms/pf4-component-mapper": "^1.13.1",
-        "@data-driven-forms/react-form-renderer": "^1.13.1",
+        "@data-driven-forms/pf4-component-mapper": "^1.15.7",
+        "@data-driven-forms/react-form-renderer": "^1.15.7",
         "@patternfly/react-icons": "^3.10.9",
         "@redhat-cloud-services/sources-client": "^1.0.23",
         "js-base64": "^2.5.1"

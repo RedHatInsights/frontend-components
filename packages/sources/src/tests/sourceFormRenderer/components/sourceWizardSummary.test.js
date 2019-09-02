@@ -18,11 +18,11 @@ describe('SourceWizardSummary component', () => {
                 title: 'Title',
                 fields: [
                     {
-                        name: 'username',
+                        name: 'authentication.username',
                         label: 'Username'
                     },
                     {
-                        name: 'certificate_authority',
+                        name: 'endpoint.certificate_authority',
                         label: 'Certificate Authority'
                     },
                     {
@@ -30,32 +30,47 @@ describe('SourceWizardSummary component', () => {
                         label: 'URL'
                     },
                     {
-                        name: 'password',
+                        name: 'authentication.password',
                         label: 'Password'
                     },
                     {
-                        name: 'role',
+                        name: 'authentication.role',
                         type: 'hidden'
                     },
                     {
-                        name: 'validate',
+                        name: 'authentication.validate',
                         label: 'Should validate?'
+                    },
+                    {
+                        name: 'authentication.extra.tenant',
+                        label: 'Tenant Region'
                     }
                 ]
             };
 
-            formOptions = (source_type, app_type) => ({
+            formOptions = (source_type, application_type_id, validate = true) => ({
                 getState: () => ({
                     values: {
-                        source_name: 'openshift',
-                        username: 'user_name',
-                        certificate_authority: 'authority',
+                        source: {
+                            name: 'openshift'
+                        },
+                        endpoint: {
+                            certificate_authority: 'authority'
+                        },
+                        authentication: {
+                            role: 'kubernetes',
+                            password: '123456',
+                            username: 'user_name',
+                            validate,
+                            extra: {
+                                tenant: 'tenant1234'
+                            }
+                        },
                         url: 'neznam.cz',
-                        password: '123456',
                         source_type,
-                        role: 'kubernetes',
-                        validate: true,
-                        app_type
+                        application: {
+                            application_type_id
+                        }
                     }
                 })
             });
@@ -125,6 +140,13 @@ describe('SourceWizardSummary component', () => {
         it('render boolean as Yes', () => {
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower') } />);
             expect(wrapper.contains('Yes')).toEqual(true);
+            expect(wrapper.contains('No')).toEqual(false);
+        });
+
+        it('render boolean as No', () => {
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', '1', false) } />);
+            expect(wrapper.contains('No')).toEqual(true);
+            expect(wrapper.contains('Yes')).toEqual(false);
         });
     });
 });
