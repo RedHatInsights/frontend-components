@@ -55,7 +55,7 @@ const firstStepNew = (sourceTypes) => ({
         },
         {
             component: componentTypes.TEXT_FIELD,
-            name: 'source_name',
+            name: 'source.name',
             type: 'text',
             label: 'Name',
             helperText: 'For example, Source_1',
@@ -109,7 +109,7 @@ const temporaryHardcodedSourceSchemas = {
                 </TextContent>
             }, {
                 component: componentTypes.TEXTAREA_FIELD,
-                name: 'token',
+                name: 'authentication.password',
                 label: 'Token'
             }]
         }, {
@@ -124,15 +124,6 @@ const temporaryHardcodedSourceSchemas = {
                 </TextContent>
             }, {
                 component: componentTypes.TEXT_FIELD,
-                name: 'role',
-                type: 'hidden',
-                initialValue: 'kubernetes' // value of 'role' for the endpoint
-            }, {
-                component: componentTypes.TEXT_FIELD,
-                name: 'authtype',
-                initialValue: 'token'
-            }, {
-                component: componentTypes.TEXT_FIELD,
                 name: 'url',
                 label: 'URL',
                 helperText: 'For example, https://myopenshiftcluster.mycompany.com',
@@ -140,16 +131,26 @@ const temporaryHardcodedSourceSchemas = {
                 validate: [{ type: 'required-validator' }]
             }, {
                 component: componentTypes.CHECKBOX,
-                name: 'verify_ssl',
+                name: 'endpoint.verify_ssl',
                 label: 'Verify SSL'
             }, {
                 component: componentTypes.TEXTAREA_FIELD,
-                name: 'certificate_authority',
+                name: 'endpoint.certificate_authority',
                 label: <SSLFormLabel />,
                 condition: {
-                    when: 'verify_ssl',
+                    when: 'endpoint.verify_ssl',
                     is: true
                 }
+            }, {
+                component: componentTypes.TEXT_FIELD,
+                name: 'endpoint.role',
+                type: 'hidden',
+                initialValue: 'kubernetes' // value of 'role' for the endpoint
+            }, {
+                component: componentTypes.TEXT_FIELD,
+                name: 'authentication.authtype',
+                initialValue: 'token',
+                type: 'hidden'
             }]
         }
     ],
@@ -164,7 +165,6 @@ const temporaryHardcodedSourceSchemas = {
                         <Popover
                             aria-label="Help text"
                             position="bottom"
-                            maxWidth="50%"
                             bodyContent={
                                 <React.Fragment>
                                     <Text component={ TextVariants.p }>
@@ -205,16 +205,7 @@ const temporaryHardcodedSourceSchemas = {
             </TextContent>
         }, {
             component: componentTypes.TEXT_FIELD,
-            name: 'role',
-            type: 'hidden',
-            initialValue: 'aws' // value of 'role' for the endpoint
-        }, {
-            component: componentTypes.TEXT_FIELD,
-            name: 'authtype',
-            initialValue: 'access_key_secret_key'
-        }, {
-            component: componentTypes.TEXT_FIELD,
-            name: 'username',
+            name: 'authentication.username',
             label: 'Access Key ID',
             helperText: 'For example, AKIAIOSFODNN7EXAMPLE',
             isRequired: true,
@@ -223,55 +214,29 @@ const temporaryHardcodedSourceSchemas = {
             component: componentTypes.TEXT_FIELD,
             name: 'password',
             label: 'Secret Key',
-            type: 'password',
+            type: 'authentication.password',
             helperText: 'For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
             isRequired: true,
             validate: [{ type: 'required-validator' }]
+        }, {
+            component: componentTypes.TEXT_FIELD,
+            name: 'endpoint.role',
+            type: 'hidden',
+            initialValue: 'aws' // value of 'role' for the endpoint
+        }, {
+            component: componentTypes.TEXT_FIELD,
+            name: 'authentication.authtype',
+            initialValue: 'access_key_secret_key',
+            type: 'hidden'
         }]
-    },
-    'mock-source': {
-        title: 'Configure Mock Source',
-        fields: [
-            // Save to Endpoint
-            {
-                component: 'select-field',
-                name: 'host',
-                label: 'Config',
-                validate: [{ type: 'required-validator' }],
-                isRequired: true,
-                initialValue: 'default',
-                options: [
-                    { label: 'Multi-threaded with events', value: 'default' },
-                    { label: 'Single-threaded full refresh', value: 'simple' }
-                ]
-            },
-            // Save to endpoint
-            // FIXME: name => 'path'?
-            {
-                component: 'select-field',
-                name: 'path',
-                label: 'Amount',
-                validate: [{ type: 'required-validator' }],
-                isRequired: true,
-                initialValue: 'default',
-                options: [
-                    { label: 'All collections | Small', value: 'small' },
-                    { label: 'All collections | Medium', value: 'default' },
-                    { label: 'All collections | Large', value: 'large' },
-                    { label: 'Amazon | Small', value: 'amazon/small' },
-                    { label: 'Amazon | Medium', value: 'amazon/default' },
-                    { label: 'Amazon | Large', value: 'amazon/large' },
-                    { label: 'Openshift | Small', value: 'openshift/small' },
-                    { label: 'Openshift | Medium', value: 'openshift/default' },
-                    { label: 'Openshift | Large', value: 'openshift/large' }
-                ]
-            }
-        ]
     }
 };
 
 /* Switch between using hard-coded provider schemas and schemas from the api/source_types */
-const sourceTypeSchemaHardcodedWithFallback = t => (temporaryHardcodedSourceSchemas[t.name] || t.schema);
+const sourceTypeSchemaHardcodedWithFallback = t => (
+    temporaryHardcodedSourceSchemas[t.name] ||
+    { ...t.schema, fields: t.schema.fields.sort((_a, b) => b.type === 'hidden' ? -1 : 0) }
+);
 const sourceTypeSchemaWithFallback = t => (t.schema || temporaryHardcodedSourceSchemas[t.name]);
 const sourceTypeSchemaHardcoded = t => temporaryHardcodedSourceSchemas[t.name];
 const sourceTypeSchemaServer = t => t.schema;
@@ -338,7 +303,7 @@ const applicationStep = (applicationTypes) => ({
     fields: [
         {
             component: 'card-select',
-            name: 'app_type',
+            name: 'application.application_type_id',
             label: 'Select your application',
             DefaultIcon: () => <React.Fragment />,
             options: compileAllApplicationComboOptions(applicationTypes)
