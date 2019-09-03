@@ -290,7 +290,7 @@ class SystemRulesTable extends React.Component {
                                     <Text>{ identifier && this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
                                 </GridItem>
 
-                                { references.length > 0 ? <GridItem span={ 10 }>
+                                { references && references.length > 0 ? <GridItem span={ 10 }>
                                     <Text component={ TextVariants.h5 }><b>References</b></Text>
                                     <Text>{ this.referencesList(references) }</Text>
                                 </GridItem> : '' }
@@ -539,7 +539,7 @@ class SystemRulesTable extends React.Component {
                                         updateFilter={ this.updateFilter } />
                                     <SimpleTableFilter buttonTitle={ null }
                                         onFilterChange={ this.handleSearch }
-                                        placeholder="Search by name, identifer, or reference" />
+                                        placeholder="Search by name or identifer" />
                                 </InputGroup>
                             </LevelItem>
                             <LevelItem>
