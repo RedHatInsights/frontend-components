@@ -33,15 +33,17 @@ class Checkbox extends Component {
             newSelection = [ ...newSelection, selection ];
         }
 
-        onChange(event, newSelection);
+        onChange(event, newSelection, selection);
         this.setState({ selected: newSelection });
     };
 
     render() {
         const { isExpanded } = this.state;
-        const { items, placeholder, onChange } = this.props;
+        const { items, placeholder, className } = this.props;
+
         return (<Fragment>
             { !items || (items && items.length <= 0) ? <Text { ...this.props } value={ `${this.calculateSelected()}` } /> : <Select
+                className={ className }
                 variant={ SelectVariant.checkbox }
                 aria-label="Select Input"
                 onToggle={ this.onToggle }
@@ -54,7 +56,7 @@ class Checkbox extends Component {
                     <SelectOption
                         { ...item }
                         key={ id || key }
-                        value={ value }
+                        value={ String(value || id || key) }
                         onClick={ e => onClick && onClick(e, { value, label, id, ...item }, key) }
                     >
                         { label }
@@ -66,7 +68,7 @@ class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
-    onChangeFunc: PropTypes.func,
+    onChange: PropTypes.func,
     value: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.shape({
         label: PropTypes.node,
         value: PropTypes.string

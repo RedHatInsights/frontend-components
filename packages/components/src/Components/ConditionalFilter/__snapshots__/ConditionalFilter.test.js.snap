@@ -14,9 +14,12 @@ exports[`ConditionalFilter render should render correctly 1`] = `
 
 exports[`ConditionalFilter render should render correctly Checkbox with value checkbox-filter 1`] = `
 <Fragment>
-  <Split>
+  <Split
+    className="ins-c-conditional-filter"
+  >
     <SplitItem>
       <Dropdown
+        className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
             <DropdownItem
@@ -61,7 +64,7 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
               title={null}
             />
             <span
-              className="ins-c-conditionalfiler"
+              className="ins-c-conditional-filter__value-selector"
             >
               Checkbox
             </span>
@@ -86,6 +89,9 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
               "label": "Another",
               "value": "another-value",
             },
+            Object {
+              "label": "No value",
+            },
           ]
         }
         onChange={[Function]}
@@ -99,9 +105,12 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
 
 exports[`ConditionalFilter render should render correctly Radio filter with value radio-filter 1`] = `
 <Fragment>
-  <Split>
+  <Split
+    className="ins-c-conditional-filter"
+  >
     <SplitItem>
       <Dropdown
+        className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
             <DropdownItem
@@ -146,7 +155,7 @@ exports[`ConditionalFilter render should render correctly Radio filter with valu
               title={null}
             />
             <span
-              className="ins-c-conditionalfiler"
+              className="ins-c-conditional-filter__value-selector"
             >
               Radio filter
             </span>
@@ -183,9 +192,12 @@ exports[`ConditionalFilter render should render correctly Radio filter with valu
 
 exports[`ConditionalFilter render should render correctly Simple text 1 with value simple-text-1 1`] = `
 <Fragment>
-  <Split>
+  <Split
+    className="ins-c-conditional-filter"
+  >
     <SplitItem>
       <Dropdown
+        className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
             <DropdownItem
@@ -230,7 +242,7 @@ exports[`ConditionalFilter render should render correctly Simple text 1 with val
               title={null}
             />
             <span
-              className="ins-c-conditionalfiler"
+              className="ins-c-conditional-filter__value-selector"
             >
               Simple text 1
             </span>
@@ -254,9 +266,12 @@ exports[`ConditionalFilter render should render correctly Simple text 1 with val
 
 exports[`ConditionalFilter render should render correctly Simple text 2 with value simple-text-2 1`] = `
 <Fragment>
-  <Split>
+  <Split
+    className="ins-c-conditional-filter"
+  >
     <SplitItem>
       <Dropdown
+        className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
             <DropdownItem
@@ -301,7 +316,7 @@ exports[`ConditionalFilter render should render correctly Simple text 2 with val
               title={null}
             />
             <span
-              className="ins-c-conditionalfiler"
+              className="ins-c-conditional-filter__value-selector"
             >
               Simple text 2
             </span>
@@ -325,9 +340,12 @@ exports[`ConditionalFilter render should render correctly Simple text 2 with val
 
 exports[`ConditionalFilter render should render correctly with config 1`] = `
 <Fragment>
-  <Split>
+  <Split
+    className="ins-c-conditional-filter"
+  >
     <SplitItem>
       <Dropdown
+        className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
             <DropdownItem
@@ -372,7 +390,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               title={null}
             />
             <span
-              className="ins-c-conditionalfiler"
+              className="ins-c-conditional-filter__value-selector"
             >
               Simple text 1
             </span>
@@ -384,7 +402,6 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
       isFilled={true}
     >
       <Text
-        id="simple-text-1"
         onSubmit={[Function]}
         placeholder="Filter by Simple text 1"
         value=""

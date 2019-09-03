@@ -68,6 +68,22 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
     >
       Another
     </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      No value
+    </SelectOption>
   </Select>
 </Fragment>
 `;
@@ -128,6 +144,22 @@ exports[`Checkbox render should render correctly with items 1`] = `
       value="another-value"
     >
       Another
+    </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      No value
     </SelectOption>
   </Select>
 </Fragment>
@@ -194,6 +226,22 @@ exports[`Checkbox render should render correctly with items and default object v
     >
       Another
     </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      No value
+    </SelectOption>
   </Select>
 </Fragment>
 `;
@@ -259,6 +307,22 @@ exports[`Checkbox render should render correctly with items and default value 1`
     >
       Another
     </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      No value
+    </SelectOption>
   </Select>
 </Fragment>
 `;
@@ -319,6 +383,22 @@ exports[`Checkbox render should render correctly with items and selected value 1
       value="another-value"
     >
       Another
+    </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      No value
     </SelectOption>
   </Select>
 </Fragment>

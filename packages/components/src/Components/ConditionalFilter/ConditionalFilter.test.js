@@ -25,6 +25,8 @@ const config = [{
         }, {
             label: 'Another',
             value: 'another-value'
+        }, {
+            label: 'No value'
         }]
     }
 }, {
@@ -56,7 +58,8 @@ describe('ConditionalFilter', () => {
 
         config.map(({ value, label }) => {
             it(`should render correctly ${label} with value ${value}`, () => {
-                const wrappper = shallow(<ConditionalFilter items={ config } value={ value } />);
+                const onChange = jest.fn();
+                const wrappper = shallow(<ConditionalFilter items={ config } value={ value } onChange={ onChange }/>);
                 expect(toJson(wrappper)).toMatchSnapshot();
             });
         });
@@ -100,6 +103,15 @@ describe('ConditionalFilter', () => {
             wrappper.update();
             wrappper.find('ul.pf-c-dropdown__menu button.pf-c-dropdown__menu-item').first().simulate('click');
             expect(onChange).toHaveBeenCalled();
+        });
+
+        it('should update state on select', () => {
+            const onChange = jest.fn();
+            const wrappper = mount(<ConditionalFilter items={ config } />);
+            wrappper.find('button.pf-c-dropdown__toggle').first().simulate('click');
+            wrappper.update();
+            wrappper.find('ul.pf-c-dropdown__menu button.pf-c-dropdown__menu-item').at(2).simulate('click');
+            expect(wrappper.instance().state.stateValue).toBe('checkbox-filter');
         });
     });
 });

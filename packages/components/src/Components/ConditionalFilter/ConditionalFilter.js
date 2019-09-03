@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 
 class ConditionalFilter extends Component {
     state = {
-        isOpen: false
+        isOpen: false,
+        stateValue: undefined
     }
 
     dropdownToggle = (isOpen) => {
@@ -16,34 +17,43 @@ class ConditionalFilter extends Component {
         });
     }
 
+    onChange = (_e, value) => {
+        this.setState({
+            stateValue: value
+        });
+    }
+
     render() {
         const { items, value, id, onChange, placeholder, ...props } = this.props;
-        const { isOpen } = this.state;
+        const { isOpen, stateValue } = this.state;
+        const currentValue = onChange ? value : stateValue;
         const activeItem = items && items.length && (
-            items.find(item => item.value === value) ||
+            items.find((item, key) => item.value === currentValue || key === currentValue) ||
             items[0]
         );
+        const onChangeCallback = onChange || this.onChange;
         const ActiveComponent = activeItem && typeMapper(activeItem.type);
         return (
             <Fragment>
                 {
                     !items || (items && items.length <= 0) ?
                         <Text { ...props }
-                            value={ value }
+                            value={ currentValue }
                             id={ id || 'default-input' }
-                            onChange={ (e) => onChange(e, e.target.value) }
+                            onChange={ (e) => onChangeCallback(e, e.target.value) }
                             placeholder={ placeholder }
                             widget-type='InsightsInput'
                         /> :
-                        <Split>
+                        <Split className="ins-c-conditional-filter">
                             <SplitItem>
                                 <Dropdown
+                                    className="ins-c-conditional-filter__group"
                                     onSelect={ () => this.dropdownToggle(false) }
                                     isOpen={ isOpen }
                                     toggle={
                                         <DropdownToggle onToggle={ this.dropdownToggle }>
                                             <FilterIcon size="sm" />
-                                            <span className="ins-c-conditionalfiler">
+                                            <span className="ins-c-conditional-filter__value-selector">
                                                 { activeItem && activeItem.label }
                                             </span>
                                         </DropdownToggle>
@@ -52,7 +62,7 @@ class ConditionalFilter extends Component {
                                         items.map((item, key) => <DropdownItem
                                             key={ item.id ? `${item.id}-dropdown` : key }
                                             component="button"
-                                            onClick={ e => onChange(e, item.value, item) }
+                                            onClick={ e => onChangeCallback(e, item.value || key, item) }
                                             isHovered={ activeItem.label === item.label }
                                         >
                                             { item.label }
@@ -67,7 +77,7 @@ class ConditionalFilter extends Component {
                                         ...activeItem.type !== conditionalFilterType.custom &&
                                             {
                                                 placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
-                                                id: (activeItem.filterValues && activeItem.filterValues.id) || activeItem.value
+                                                id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
                                             }
                                         }
                                         { ...activeItem.filterValues }
@@ -116,7 +126,6 @@ ConditionalFilter.propTypes = {
 
 ConditionalFilter.defaultProps = {
     value: '',
-    items: [],
-    onChange: () => undefined
+    items: []
 };
 export default ConditionalFilter;

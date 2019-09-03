@@ -29,7 +29,7 @@ class Radio extends Component {
 
     render() {
         const { isExpanded } = this.state;
-        const { items, placeholder } = this.props;
+        const { items, placeholder, className } = this.props;
         const checkedValue = this.calculateSelected();
         return (<Fragment>
             { !items || (items && items.length <= 0) ?
@@ -38,6 +38,7 @@ class Radio extends Component {
                     value={ `${this.calculateSelected()}` }
                 /> :
                 <Select
+                    className={ className }
                     variant={ SelectVariant.single }
                     aria-label="Select Input"
                     onToggle={ this.onToggle }

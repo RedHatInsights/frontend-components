@@ -11,6 +11,8 @@ const config = {
     }, {
         label: 'Another',
         value: 'another-value'
+    }, {
+        label: 'No value'
     }]
 };
 
