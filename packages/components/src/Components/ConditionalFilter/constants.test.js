@@ -3,7 +3,7 @@ import Checkbox from './Checkbox';
 import Text from './Text';
 
 it('should have correct types', () => {
-    expect(Object.values(conditionalFilterType).length).toBe(3);
+    expect(Object.values(conditionalFilterType).length).toBe(4);
 });
 
 it('should return correct type', () => {
