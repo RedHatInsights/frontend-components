@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { TextContent, TextListItem, TextListItemVariants, TextListVariants, TextList } from '@patternfly/react-core';
 import flattenDeep from 'lodash/flattenDeep';
 
-const createItem = (value, fields, path) => {
+export const createItem = (value, fields, path) => {
     const formField = fields.find((field) => field.name === path);
 
     // not in field, probably source_name or type, handled seperately
@@ -24,7 +24,7 @@ const createItem = (value, fields, path) => {
     return ({ label: formField.label,  value });
 };
 
-const allValuesPath = (value, fields, path = undefined) => {
+export const allValuesPath = (value, fields, path = undefined) => {
     if (typeof value !== 'object') {
         return createItem(value, fields, path);
     }
