@@ -37,13 +37,15 @@ class ConditionalFilter extends Component {
             <Fragment>
                 {
                     !items || (items && items.length <= 0) ?
-                        <Text { ...props }
-                            value={ currentValue }
-                            id={ id || 'default-input' }
-                            onChange={ (e) => onChangeCallback(e, e.target.value) }
-                            placeholder={ placeholder }
-                            widget-type='InsightsInput'
-                        /> :
+                        <div className="ins-c-conditional-filter">
+                            <Text { ...props }
+                                value={ currentValue }
+                                id={ id || 'default-input' }
+                                onChange={ (e) => onChangeCallback(e, e.target.value) }
+                                placeholder={ placeholder }
+                                widget-type='InsightsInput'
+                            />
+                        </div> :
                         <Split className="ins-c-conditional-filter">
                             <SplitItem>
                                 <Dropdown

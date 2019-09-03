@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { TextInput } from '@patternfly/react-core';
+import { SearchIcon } from '@patternfly/react-icons';
 
 class Text extends Component {
     state = {
@@ -14,17 +15,23 @@ class Text extends Component {
     }
 
     render() {
-        const { value, onChange, onSubmit, id, ...props } = this.props;
+        const { value, onChange, onSubmit, id, icon, className, ...props } = this.props;
+        const Icon = icon || SearchIcon;
         const { stateValue } = this.state;
         const changeCallback = onChange ? onChange : this.onChangeValue;
         return (
-            <TextInput { ...props }
-                id={ id }
-                value={ onChange ? value : stateValue }
-                onChange={ (_inputValue, e) => changeCallback(e, e.target.value) }
-                widget-type="InsightsInput"
-                onKeyDown={ e => e.key === 'Enter' && onSubmit(e, value || stateValue) }
-            />
+            <Fragment>
+                <TextInput { ...props }
+                    className={`ins-c-conditional-filter ${className || ''}`}
+                    id={ id }
+                    value={ onChange ? value : stateValue }
+                    onChange={ (_inputValue, e) => changeCallback(e, e.target.value) }
+                    widget-type="InsightsInput"
+                    onKeyDown={ e => e.key === 'Enter' && onSubmit(e, value || stateValue) }
+                />
+                <Icon size="sm" className="ins-c-search-icon" />
+            </Fragment>
+
         );
     }
 }

@@ -53,7 +53,7 @@ class Radio extends Component {
                                 name={ id || `${key}-radio` }
                                 label={ label }
                                 value={ value }
-                                isChecked={ isChecked || (checkedValue === value) || false }
+                                isChecked={ isChecked || (checkedValue === value) || (checkedValue === key) || false }
                                 onChange={ (_value, e) => onChange && onChange(e, { id, label, value, isChecked, ...item }, key) }
                                 id={ id || `${value}-${key}` }
                             />
