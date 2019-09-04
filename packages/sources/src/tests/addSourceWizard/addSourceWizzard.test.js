@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { Button } from '@patternfly/react-core';
 
 import { AddSourceWizard } from '../../addSourceWizard/index';
 import FormRenderer from '../../sourceFormRenderer/index';
@@ -49,6 +50,23 @@ describe('AddSourceButton', () => {
             expect(wrapper.find(FinalWizard).length).toBe(1);
             expect(wrapper.find(FinishedStep).length).toBe(1);
             expect(wrapper.find(ErroredStep).length).toBe(0);
+        });
+    });
+
+    it('show pass created source to afterSubmit function', () => {
+        const afterSubmitMock = jest.fn();
+        dependency.doCreateSource = jest.fn(() => new Promise((resolve) => resolve({ name: 'source' })));
+
+        const wrapper = mount(<AddSourceWizard { ...initialProps } afterSubmit={ afterSubmitMock }/>);
+        const form = wrapper.find(FormRenderer).children().children().instance().form;
+
+        form.change('source.name', 'nameee');
+        form.change('source_type', 'openshift');
+        form.submit().then(() => {
+            wrapper.update();
+            wrapper.find(Button).at(0).simulate('click');
+
+            expect(afterSubmitMock).toHaveBeenCalledWith({ name: 'source' });
         });
     });
 
