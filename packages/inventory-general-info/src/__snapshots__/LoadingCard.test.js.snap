@@ -28,14 +28,9 @@ exports[`Clickable should render 1`] = `
 
 exports[`Loading card render - isLoading: false 1`] = `
 <Stack
-  className=""
-  component="div"
   gutter="md"
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <TextContent>
       <Text
         component="h1"
@@ -45,7 +40,6 @@ exports[`Loading card render - isLoading: false 1`] = `
     </TextContent>
   </StackItem>
   <StackItem
-    className=""
     isFilled={true}
   >
     <TextContent>
@@ -59,14 +53,9 @@ exports[`Loading card render - isLoading: false 1`] = `
 
 exports[`Loading card render - isLoading: true 1`] = `
 <Stack
-  className=""
-  component="div"
   gutter="md"
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <TextContent>
       <Text
         component="h1"
@@ -76,7 +65,6 @@ exports[`Loading card render - isLoading: true 1`] = `
     </TextContent>
   </StackItem>
   <StackItem
-    className=""
     isFilled={true}
   >
     <TextContent>
@@ -90,14 +78,9 @@ exports[`Loading card render - isLoading: true 1`] = `
 
 exports[`Loading card render 1`] = `
 <Stack
-  className=""
-  component="div"
   gutter="md"
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <TextContent>
       <Text
         component="h1"
@@ -107,7 +90,6 @@ exports[`Loading card render 1`] = `
     </TextContent>
   </StackItem>
   <StackItem
-    className=""
     isFilled={true}
   >
     <TextContent>
@@ -151,14 +133,9 @@ exports[`Loading card render 1`] = `
 
 exports[`should render loading bars 1`] = `
 <Stack
-  className=""
-  component="div"
   gutter="md"
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <TextContent>
       <Text
         component="h1"
@@ -168,7 +145,6 @@ exports[`should render loading bars 1`] = `
     </TextContent>
   </StackItem>
   <StackItem
-    className=""
     isFilled={true}
   >
     <TextContent>

@@ -59,6 +59,8 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
 >
   <Tooltip
     appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
     className=""
     content={
       <div>
@@ -69,21 +71,34 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
     enableFlip={true}
     entryDelay={500}
     exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
     isAppLauncher={false}
     maxWidth="50vw"
     position="top"
     trigger="mouseenter focus"
     zIndex={9999}
   >
-    <Tippy
+    <PopoverBase
       animateFill={false}
       appendTo={[Function]}
+      aria="describedby"
+      arrow={true}
+      boundary="window"
       content={
         <div
-          className="pf-c-tooltip"
+          className=""
           role="tooltip"
         >
-          <TooltipArrow />
           <TooltipContent>
             <div>
               Lorem Impsum
@@ -99,6 +114,17 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       }
       distance={15}
       flip={true}
+      flipBehavior={
+        Array [
+          "top",
+          "right",
+          "bottom",
+          "left",
+          "top",
+          "right",
+          "bottom",
+        ]
+      }
       lazy={true}
       maxWidth="50vw"
       onCreate={[Function]}
@@ -116,7 +142,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           },
         }
       }
-      theme="pf-tippy"
+      theme="pf-tooltip"
       trigger="mouseenter focus"
       zIndex={9999}
     >
@@ -127,12 +153,9 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
         containerInfo={
           <div>
             <div
-              class="pf-c-tooltip"
+              class=""
               role="tooltip"
             >
-              <div
-                class="pf-c-tooltip__arrow"
-              />
               <div
                 class="pf-c-tooltip__content"
               >
@@ -145,14 +168,9 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
         }
       >
         <div
-          className="pf-c-tooltip"
+          className=""
           role="tooltip"
         >
-          <TooltipArrow>
-            <div
-              className="pf-c-tooltip__arrow"
-            />
-          </TooltipArrow>
           <TooltipContent>
             <div
               className="pf-c-tooltip__content"
@@ -164,7 +182,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           </TooltipContent>
         </div>
       </Portal>
-    </Tippy>
+    </PopoverBase>
   </Tooltip>
 </LongTextTooltip>
 `;

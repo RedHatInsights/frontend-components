@@ -186,6 +186,8 @@ exports[`Shield component should render where title is Hello world and hasToolti
 <Fragment>
   <Tooltip
     appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
     className=""
     content={
       <div>
@@ -196,6 +198,17 @@ exports[`Shield component should render where title is Hello world and hasToolti
     enableFlip={true}
     entryDelay={500}
     exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
     isAppLauncher={false}
     maxWidth="18.75rem"
     position="top"
