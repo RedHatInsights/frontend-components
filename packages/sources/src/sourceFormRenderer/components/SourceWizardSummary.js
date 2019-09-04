@@ -5,7 +5,6 @@ import flattenDeep from 'lodash/flattenDeep';
 
 export const createItem = (value, fields, path) => {
     const formField = fields.find((field) => field.name === path);
-
     // not in field, probably source_name or type, handled seperately
     if (!formField) {
         return undefined;
@@ -14,6 +13,11 @@ export const createItem = (value, fields, path) => {
     // do not show hidden fields
     if (formField.type === 'hidden') {
         return undefined;
+    }
+
+    // Hide password
+    if (formField.type === 'password') {
+        value = '●●●●●●●●●●●●';
     }
 
     // Boolean value convert to Yes / No

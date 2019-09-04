@@ -31,7 +31,8 @@ describe('SourceWizardSummary component', () => {
                     },
                     {
                         name: 'authentication.password',
-                        label: 'Password'
+                        label: 'Password',
+                        type: 'password'
                     },
                     {
                         name: 'authentication.role',
@@ -147,6 +148,12 @@ describe('SourceWizardSummary component', () => {
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', '1', false) } />);
             expect(wrapper.contains('No')).toEqual(true);
             expect(wrapper.contains('Yes')).toEqual(false);
+        });
+
+        it('render password as dots', () => {
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', '1', false) } />);
+            expect(wrapper.contains('●●●●●●●●●●●●')).toEqual(true);
+            expect(wrapper.contains('123456')).toEqual(false);
         });
     });
 });
