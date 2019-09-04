@@ -98,7 +98,7 @@ export function doCreateSource(formData, sourceTypes) {
             promises.push(getSourcesApi().createApplication(applicationData));
         }
 
-        return Promise.all(promises).then(([ endpointDataOut, _applicationData = undefined ]) => {
+        return Promise.all(promises).then(([ endpointDataOut, applicationDataOut = undefined ]) => {
             const authenticationData = {
                 ...formData.authentication,
                 resource_id: endpointDataOut.id,
@@ -106,7 +106,11 @@ export function doCreateSource(formData, sourceTypes) {
             };
 
             return getSourcesApi().createAuthentication(authenticationData).then((authenticationDataOut) => {
-                return authenticationDataOut;
+                return {
+                    ...sourceDataOut,
+                    endpoint: [ endpointDataOut ],
+                    applications: [ applicationDataOut ]
+                };
             }, (error) => {
                 console.error('Authentication creation failure:', error);
                 throw { error };

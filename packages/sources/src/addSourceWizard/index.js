@@ -11,7 +11,8 @@ const initialValues = {
     isSubmitted: false,
     isFinished: false,
     isErrored: false,
-    values: {}
+    values: {},
+    createdSource: {}
 };
 
 class AddSourceWizard extends React.Component {
@@ -24,8 +25,8 @@ class AddSourceWizard extends React.Component {
 
     onSubmit = (formValues, sourceTypes) => {
         this.setOnSubmitState(formValues);
-        return doCreateSource(formValues, sourceTypes).then(() => {
-            this.setState({ isFinished: true });
+        return doCreateSource(formValues, sourceTypes).then((data) => {
+            this.setState({ isFinished: true, createdSource: data });
         })
         .catch(() => {
             this.setState({ isErrored: true });
@@ -37,7 +38,7 @@ class AddSourceWizard extends React.Component {
 
         onClose();
         this.setState({ ...initialValues });
-        afterSuccess();
+        afterSuccess(this.state.createdSource);
     }
 
     onRetry = () => this.setState({
