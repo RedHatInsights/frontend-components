@@ -76,7 +76,7 @@ const firstStepNew = (sourceTypes) => ({
         }]
 });
 
-const temporaryHardcodedSourceSchemas = {
+export const temporaryHardcodedSourceSchemas = {
     openshift: [
         {
             title: 'Add source credentials',
