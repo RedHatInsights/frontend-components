@@ -43,7 +43,7 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dd"
     >
-      123456
+      ●●●●●●●●●●●●
     </TextListItem>
     <TextListItem
       component="dt"
@@ -142,7 +142,7 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dd"
     >
-      123456
+      ●●●●●●●●●●●●
     </TextListItem>
     <TextListItem
       component="dt"
@@ -241,7 +241,7 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
     <TextListItem
       component="dd"
     >
-      123456
+      ●●●●●●●●●●●●
     </TextListItem>
     <TextListItem
       component="dt"
@@ -340,7 +340,7 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dd"
     >
-      123456
+      ●●●●●●●●●●●●
     </TextListItem>
     <TextListItem
       component="dt"
