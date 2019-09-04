@@ -5,75 +5,39 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
   extraItems={
     Array [
       <DropdownItem
-        className=""
         component="button"
-        href=""
-        isDisabled={false}
-        isHovered={false}
-        tooltip={null}
-        tooltipProps={Object {}}
       />,
     ]
   }
   onSelect={[Function]}
 >
   <Dropdown
-    className=""
-    direction="down"
     dropdownItems={
       Array [
         <DropdownItem
-          className=""
           component="button"
-          href=""
-          isDisabled={false}
-          isHovered={false}
           onClick={[Function]}
-          tooltip={null}
-          tooltipProps={Object {}}
         >
           CSV
         </DropdownItem>,
         <DropdownItem
-          className=""
           component="button"
-          href=""
-          isDisabled={false}
-          isHovered={false}
           onClick={[Function]}
-          tooltip={null}
-          tooltipProps={Object {}}
         >
           JSON
         </DropdownItem>,
         <DropdownItem
-          className=""
           component="button"
-          href=""
-          isDisabled={false}
-          isHovered={false}
-          tooltip={null}
-          tooltipProps={Object {}}
         />,
       ]
     }
-    isGrouped={false}
     isOpen={true}
     isPlain={true}
     onSelect={[Function]}
-    position="left"
     toggle={
       <DropdownToggle
-        className=""
         iconComponent={null}
-        id=""
-        isActive={false}
-        isFocused={false}
-        isHovered={false}
-        isOpen={false}
-        isPlain={false}
         onToggle={[Function]}
-        parentRef={null}
       >
         <FileExportIcon
           color="currentColor"
@@ -89,37 +53,19 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       dropdownItems={
         Array [
           <DropdownItem
-            className=""
             component="button"
-            href=""
-            isDisabled={false}
-            isHovered={false}
             onClick={[Function]}
-            tooltip={null}
-            tooltipProps={Object {}}
           >
             CSV
           </DropdownItem>,
           <DropdownItem
-            className=""
             component="button"
-            href=""
-            isDisabled={false}
-            isHovered={false}
             onClick={[Function]}
-            tooltip={null}
-            tooltipProps={Object {}}
           >
             JSON
           </DropdownItem>,
           <DropdownItem
-            className=""
             component="button"
-            href=""
-            isDisabled={false}
-            isHovered={false}
-            tooltip={null}
-            tooltipProps={Object {}}
           />,
         ]
       }
@@ -130,16 +76,8 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       position="left"
       toggle={
         <DropdownToggle
-          className=""
           iconComponent={null}
-          id=""
-          isActive={false}
-          isFocused={false}
-          isHovered={false}
-          isOpen={false}
-          isPlain={false}
           onToggle={[Function]}
-          parentRef={null}
         >
           <FileExportIcon
             color="currentColor"
@@ -154,103 +92,16 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       >
         <DropdownToggle
           ariaHasPopup={true}
-          className=""
           iconComponent={null}
           id="pf-toggle-id-1"
-          isActive={false}
-          isFocused={false}
-          isHovered={false}
           isOpen={true}
           isPlain={true}
           key=".0"
           onEnter={[Function]}
           onToggle={[Function]}
           parentRef={
-            <div
-              class="pf-c-dropdown pf-m-expanded"
-            >
-              <button
-                aria-expanded="true"
-                aria-haspopup="true"
-                class="pf-c-dropdown__toggle pf-m-plain"
-                id="pf-toggle-id-1"
-                type="button"
-              >
-                <span>
-                  <svg
-                    aria-hidden="true"
-                    fill="currentColor"
-                    height="1.5em"
-                    role="img"
-                    style="vertical-align: -0.1875em;"
-                    viewBox="0 0 576 512"
-                    width="1.5em"
-                  >
-                    <path
-                      d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128zM571 308l-95.7-96.4c-10.1-10.1-27.4-3-27.4 11.3V288h-64v64h64v65.2c0 14.3 17.3 21.4 27.4 11.3L571 332c6.6-6.6 6.6-17.4 0-24zm-379 28v-32c0-8.8 7.2-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.8 0-16-7.2-16-16z"
-                      transform=""
-                    />
-                  </svg>
-                </span>
-              </button>
-              <ul
-                aria-labelledby="pf-toggle-id-1"
-                class="pf-c-dropdown__menu"
-                role="menu"
-              >
-                <li
-                  role="none"
-                >
-                  <button
-                    class="pf-c-dropdown__menu-item"
-                    role="menuitem"
-                    tabindex="-1"
-                    type="button"
-                  >
-                    CSV
-                  </button>
-                </li>
-                <li
-                  role="none"
-                >
-                  <button
-                    class="pf-c-dropdown__menu-item"
-                    role="menuitem"
-                    tabindex="-1"
-                    type="button"
-                  >
-                    JSON
-                  </button>
-                </li>
-                <li
-                  role="none"
-                >
-                  <button
-                    class="pf-c-dropdown__menu-item"
-                    role="menuitem"
-                    tabindex="-1"
-                    type="button"
-                  />
-                </li>
-              </ul>
-            </div>
-          }
-        >
-          <Toggle
-            ariaHasPopup={true}
-            className=""
-            id="pf-toggle-id-1"
-            isActive={false}
-            isDisabled={false}
-            isFocused={false}
-            isHovered={false}
-            isOpen={true}
-            isPlain={true}
-            isSplitButton={false}
-            onEnter={[Function]}
-            onToggle={[Function]}
-            parentRef={
-              <div
+            Object {
+              "current": <div
                 class="pf-c-dropdown pf-m-expanded"
               >
                 <button
@@ -317,9 +168,95 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     />
                   </li>
                 </ul>
-              </div>
+              </div>,
             }
-            type={null}
+          }
+        >
+          <Toggle
+            ariaHasPopup={true}
+            className=""
+            id="pf-toggle-id-1"
+            isActive={false}
+            isDisabled={false}
+            isFocused={false}
+            isHovered={false}
+            isOpen={true}
+            isPlain={true}
+            isSplitButton={false}
+            onEnter={[Function]}
+            onToggle={[Function]}
+            parentRef={
+              Object {
+                "current": <div
+                  class="pf-c-dropdown pf-m-expanded"
+                >
+                  <button
+                    aria-expanded="true"
+                    aria-haspopup="true"
+                    class="pf-c-dropdown__toggle pf-m-plain"
+                    id="pf-toggle-id-1"
+                    type="button"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        fill="currentColor"
+                        height="1.5em"
+                        role="img"
+                        style="vertical-align: -0.1875em;"
+                        viewBox="0 0 576 512"
+                        width="1.5em"
+                      >
+                        <path
+                          d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128zM571 308l-95.7-96.4c-10.1-10.1-27.4-3-27.4 11.3V288h-64v64h64v65.2c0 14.3 17.3 21.4 27.4 11.3L571 332c6.6-6.6 6.6-17.4 0-24zm-379 28v-32c0-8.8 7.2-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.8 0-16-7.2-16-16z"
+                          transform=""
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                  <ul
+                    aria-labelledby="pf-toggle-id-1"
+                    class="pf-c-dropdown__menu"
+                    role="menu"
+                  >
+                    <li
+                      role="none"
+                    >
+                      <button
+                        class="pf-c-dropdown__menu-item"
+                        role="menuitem"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        CSV
+                      </button>
+                    </li>
+                    <li
+                      role="none"
+                    >
+                      <button
+                        class="pf-c-dropdown__menu-item"
+                        role="menuitem"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        JSON
+                      </button>
+                    </li>
+                    <li
+                      role="none"
+                    >
+                      <button
+                        class="pf-c-dropdown__menu-item"
+                        role="menuitem"
+                        tabindex="-1"
+                        type="button"
+                      />
+                    </li>
+                  </ul>
+                </div>,
+              }
+            }
           >
             <button
               aria-expanded={true}
@@ -365,6 +302,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         </DropdownToggle>
         <DropdownMenu
           aria-labelledby="pf-toggle-id-1"
+          autoFocus={true}
           className=""
           component="ul"
           isGrouped={false}
@@ -374,23 +312,18 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         >
           <ul
             aria-labelledby="pf-toggle-id-1"
+            autoFocus={true}
             className="pf-c-dropdown__menu"
             hidden={false}
             role="menu"
           >
             <DropdownItem
-              className=""
               component="button"
-              href=""
               index={0}
-              isDisabled={false}
-              isHovered={false}
               key=".$download-csv"
               onClick={[Function]}
-              tooltip={null}
-              tooltipProps={Object {}}
             >
-              <DropdownItem
+              <InternalDropdownItem
                 className=""
                 component="button"
                 context={
@@ -404,6 +337,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 isDisabled={false}
                 isHovered={false}
                 onClick={[Function]}
+                onSelect={[Function]}
                 role="menuitem"
                 tabIndex={-1}
                 tooltip={null}
@@ -418,6 +352,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     href={null}
                     onClick={[Function]}
                     onKeyDown={[Function]}
+                    onSelect={[Function]}
                     role="menuitem"
                     tabIndex={-1}
                     type="button"
@@ -425,21 +360,15 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     CSV
                   </button>
                 </li>
-              </DropdownItem>
+              </InternalDropdownItem>
             </DropdownItem>
             <DropdownItem
-              className=""
               component="button"
-              href=""
               index={1}
-              isDisabled={false}
-              isHovered={false}
               key=".$download-json"
               onClick={[Function]}
-              tooltip={null}
-              tooltipProps={Object {}}
             >
-              <DropdownItem
+              <InternalDropdownItem
                 className=""
                 component="button"
                 context={
@@ -453,6 +382,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 isDisabled={false}
                 isHovered={false}
                 onClick={[Function]}
+                onSelect={[Function]}
                 role="menuitem"
                 tabIndex={-1}
                 tooltip={null}
@@ -467,6 +397,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     href={null}
                     onClick={[Function]}
                     onKeyDown={[Function]}
+                    onSelect={[Function]}
                     role="menuitem"
                     tabIndex={-1}
                     type="button"
@@ -474,20 +405,14 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     JSON
                   </button>
                 </li>
-              </DropdownItem>
+              </InternalDropdownItem>
             </DropdownItem>
             <DropdownItem
-              className=""
               component="button"
-              href=""
               index={2}
-              isDisabled={false}
-              isHovered={false}
               key=".$extra-1"
-              tooltip={null}
-              tooltipProps={Object {}}
             >
-              <DropdownItem
+              <InternalDropdownItem
                 className=""
                 component="button"
                 context={
@@ -501,6 +426,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 isDisabled={false}
                 isHovered={false}
                 onClick={[Function]}
+                onSelect={[Function]}
                 role="menuitem"
                 tabIndex={-1}
                 tooltip={null}
@@ -515,12 +441,13 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     href={null}
                     onClick={[Function]}
                     onKeyDown={[Function]}
+                    onSelect={[Function]}
                     role="menuitem"
                     tabIndex={-1}
                     type="button"
                   />
                 </li>
-              </DropdownItem>
+              </InternalDropdownItem>
             </DropdownItem>
           </ul>
         </DropdownMenu>
@@ -532,53 +459,29 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
 
 exports[`DownloadButton component should render CSV and JSON by default 1`] = `
 <Dropdown
-  className=""
-  direction="down"
   dropdownItems={
     Array [
       <DropdownItem
-        className=""
         component="button"
-        href=""
-        isDisabled={false}
-        isHovered={false}
         onClick={[Function]}
-        tooltip={null}
-        tooltipProps={Object {}}
       >
         CSV
       </DropdownItem>,
       <DropdownItem
-        className=""
         component="button"
-        href=""
-        isDisabled={false}
-        isHovered={false}
         onClick={[Function]}
-        tooltip={null}
-        tooltipProps={Object {}}
       >
         JSON
       </DropdownItem>,
     ]
   }
-  isGrouped={false}
   isOpen={false}
   isPlain={true}
   onSelect={[Function]}
-  position="left"
   toggle={
     <DropdownToggle
-      className=""
       iconComponent={null}
-      id=""
-      isActive={false}
-      isFocused={false}
-      isHovered={false}
-      isOpen={false}
-      isPlain={false}
       onToggle={[Function]}
-      parentRef={null}
     >
       <FileExportIcon
         color="currentColor"
@@ -592,62 +495,32 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
 
 exports[`DownloadButton component should render custom items 1`] = `
 <Dropdown
-  className=""
-  direction="down"
   dropdownItems={
     Array [
       <DropdownItem
-        className=""
         component="button"
-        href=""
-        isDisabled={false}
-        isHovered={false}
         onClick={[Function]}
-        tooltip={null}
-        tooltipProps={Object {}}
       >
         CSV
       </DropdownItem>,
       <DropdownItem
-        className=""
         component="button"
-        href=""
-        isDisabled={false}
-        isHovered={false}
         onClick={[Function]}
-        tooltip={null}
-        tooltipProps={Object {}}
       >
         JSON
       </DropdownItem>,
       <DropdownItem
-        className=""
         component="button"
-        href=""
-        isDisabled={false}
-        isHovered={false}
-        tooltip={null}
-        tooltipProps={Object {}}
       />,
     ]
   }
-  isGrouped={false}
   isOpen={false}
   isPlain={true}
   onSelect={[Function]}
-  position="left"
   toggle={
     <DropdownToggle
-      className=""
       iconComponent={null}
-      id=""
-      isActive={false}
-      isFocused={false}
-      isHovered={false}
-      isOpen={false}
-      isPlain={false}
       onToggle={[Function]}
-      parentRef={null}
     >
       <FileExportIcon
         color="currentColor"

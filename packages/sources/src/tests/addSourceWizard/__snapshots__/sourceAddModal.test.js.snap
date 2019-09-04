@@ -225,9 +225,22 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                               </Text>
                             </React.Fragment>
                           }
+                          boundary="window"
                           className=""
                           closeBtnAriaLabel="Close"
+                          distance={25}
                           enableFlip={true}
+                          flipBehavior={
+                            Array [
+                              "top",
+                              "right",
+                              "bottom",
+                              "left",
+                              "top",
+                              "right",
+                              "bottom",
+                            ]
+                          }
                           footerContent={
                             <a
                               href="http://foo.bar"
@@ -712,9 +725,22 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                               </Text>
                             </React.Fragment>
                           }
+                          boundary="window"
                           className=""
                           closeBtnAriaLabel="Close"
+                          distance={25}
                           enableFlip={true}
+                          flipBehavior={
+                            Array [
+                              "top",
+                              "right",
+                              "bottom",
+                              "left",
+                              "top",
+                              "right",
+                              "bottom",
+                            ]
+                          }
                           footerContent={
                             <a
                               href="http://foo.bar"
@@ -1199,9 +1225,22 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                               </Text>
                             </React.Fragment>
                           }
+                          boundary="window"
                           className=""
                           closeBtnAriaLabel="Close"
+                          distance={25}
                           enableFlip={true}
+                          flipBehavior={
+                            Array [
+                              "top",
+                              "right",
+                              "bottom",
+                              "left",
+                              "top",
+                              "right",
+                              "bottom",
+                            ]
+                          }
                           footerContent={
                             <a
                               href="http://foo.bar"
@@ -1686,9 +1725,22 @@ exports[`Steps components renders correctly without sourceTypes and application 
                               </Text>
                             </React.Fragment>
                           }
+                          boundary="window"
                           className=""
                           closeBtnAriaLabel="Close"
+                          distance={25}
                           enableFlip={true}
+                          flipBehavior={
+                            Array [
+                              "top",
+                              "right",
+                              "bottom",
+                              "left",
+                              "top",
+                              "right",
+                              "bottom",
+                            ]
+                          }
                           footerContent={
                             <a
                               href="http://foo.bar"

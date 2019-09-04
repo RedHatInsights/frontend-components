@@ -34,13 +34,12 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
     isOpen={true}
     isSmall={true}
     onClose={[Function]}
+    showClose={true}
     title=""
   >
     <Portal
       containerInfo={
-        <div
-          aria-hidden="true"
-        >
+        <div>
           <div
             class="pf-c-backdrop"
           >
@@ -96,7 +95,6 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                 <div
                   class="pf-c-modal-box__footer"
                 >
-                   
                   <button
                     class="pf-c-button pf-m-secondary"
                     data-action="cancel"
@@ -111,7 +109,6 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                   >
                     Save
                   </button>
-                   
                 </div>
               </div>
             </div>
@@ -146,6 +143,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
         isOpen={true}
         isSmall={true}
         onClose={[Function]}
+        showClose={true}
         title=""
       >
         <Backdrop>
@@ -282,7 +280,6 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                       <div
                         className="pf-c-modal-box__footer"
                       >
-                         
                         <Button
                           data-action="cancel"
                           key="cancel"
@@ -321,7 +318,6 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                             Save
                           </button>
                         </Button>
-                         
                       </div>
                     </ModalBoxFooter>
                   </div>
@@ -363,6 +359,7 @@ exports[`TextInputModal render should render aria label 1`] = `
   isOpen={true}
   isSmall={true}
   onClose={[Function]}
+  showClose={true}
   title=""
 >
   <TextInput
@@ -406,6 +403,7 @@ exports[`TextInputModal render should render open 1`] = `
   isOpen={true}
   isSmall={true}
   onClose={[Function]}
+  showClose={true}
   title=""
 >
   <TextInput
@@ -449,6 +447,7 @@ exports[`TextInputModal render should render title 1`] = `
   isOpen={true}
   isSmall={true}
   onClose={[Function]}
+  showClose={true}
   title="Some title"
 >
   <TextInput
@@ -492,6 +491,7 @@ exports[`TextInputModal render should render without any props 1`] = `
   isOpen={false}
   isSmall={true}
   onClose={[Function]}
+  showClose={true}
   title=""
 >
   <TextInput
