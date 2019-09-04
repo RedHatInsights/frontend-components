@@ -13,7 +13,10 @@ const IntlProvider = ({
     messages,
     ...props
 }) => {
-    addLocaleData(defaultLocale);
+    if (addLocaleData) {
+        addLocaleData(defaultLocale);
+    }
+
     const language = locale || localStorage.getItem(LOCALSTORAGE_KEY) || navigator.language.split(/[-_]/)[0] || 'en';
     return (
         <ReactIntlProvider
