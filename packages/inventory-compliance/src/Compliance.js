@@ -50,10 +50,6 @@ query System($systemId: String!){
                     label
                     system
                 }
-                references {
-                    label
-                    href
-                }
             }
         }
     }

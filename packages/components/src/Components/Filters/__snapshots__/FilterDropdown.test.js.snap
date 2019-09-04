@@ -3,25 +3,10 @@
 exports[`FilterDropdown component should render 1`] = `
 <Dropdown
   className="ins-c-filter__dropdown"
-  direction="down"
-  dropdownItems={Array []}
-  isGrouped={false}
   isOpen={false}
-  isPlain={false}
-  onSelect={[Function]}
-  position="left"
   toggle={
     <DropdownToggle
-      className=""
-      iconComponent={[Function]}
-      id=""
-      isActive={false}
-      isFocused={false}
-      isHovered={false}
-      isOpen={false}
-      isPlain={false}
       onToggle={[Function]}
-      parentRef={null}
     >
       Filters
     </DropdownToggle>
