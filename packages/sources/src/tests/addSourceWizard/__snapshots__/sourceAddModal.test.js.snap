@@ -306,8 +306,8 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "isRequired": true,
                   "label": "Secret Key",
-                  "name": "password",
-                  "type": "authentication.password",
+                  "name": "authentication.password",
+                  "type": "password",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -808,8 +808,8 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "isRequired": true,
                   "label": "Secret Key",
-                  "name": "password",
-                  "type": "authentication.password",
+                  "name": "authentication.password",
+                  "type": "password",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -1310,8 +1310,8 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "isRequired": true,
                   "label": "Secret Key",
-                  "name": "password",
-                  "type": "authentication.password",
+                  "name": "authentication.password",
+                  "type": "password",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -1812,8 +1812,8 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "isRequired": true,
                   "label": "Secret Key",
-                  "name": "password",
-                  "type": "authentication.password",
+                  "name": "authentication.password",
+                  "type": "password",
                   "validate": Array [
                     Object {
                       "type": "required-validator",

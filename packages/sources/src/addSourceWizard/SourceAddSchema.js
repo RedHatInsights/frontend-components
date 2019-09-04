@@ -212,9 +212,9 @@ export const temporaryHardcodedSourceSchemas = {
             validate: [{ type: 'required-validator' }]
         }, {
             component: componentTypes.TEXT_FIELD,
-            name: 'password',
+            name: 'authentication.password',
             label: 'Secret Key',
-            type: 'authentication.password',
+            type: 'password',
             helperText: 'For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
             isRequired: true,
             validate: [{ type: 'required-validator' }]
