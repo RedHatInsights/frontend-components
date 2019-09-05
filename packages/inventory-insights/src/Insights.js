@@ -233,14 +233,13 @@ class InventoryRuleList extends Component {
     onSort = (_event, index, direction) => {
         const { activeReports, kbaDetailsData, filters, searchValue } = this.state;
         const sortedReports = {
-            1: sortBy(activeReports, [ result => result.rule.description ]),
-            2: sortBy(activeReports, [ result => result.rule.publish_date ]),
-            3: sortBy(activeReports, [ result => result.rule.total_risk ]),
-            4: sortBy(activeReports, [ result => result.resolution.resolution_risk.risk ]),
-            5: sortBy(activeReports, [ result => result.resolution.has_playbook ])
+            2: sortBy(activeReports, [ result => result.rule.description ]),
+            3: sortBy(activeReports, [ result => result.rule.publish_date ]),
+            4: sortBy(activeReports, [ result => result.rule.total_risk ]),
+            5: sortBy(activeReports, [ result => result.resolution.resolution_risk.risk ]),
+            6: sortBy(activeReports, [ result => result.resolution.has_playbook ])
         };
-
-        let sortedReportsDirectional = direction === SortByDirection.asc ? sortedReports[index] : sortedReports[index].reverse();
+        const sortedReportsDirectional = direction === SortByDirection.asc ? sortedReports[index] : sortedReports[index].reverse();
         this.setState({
             sortBy: {
                 index,
@@ -300,8 +299,8 @@ class InventoryRuleList extends Component {
     render() {
         const { inventoryReportFetchStatus, rows, cols, sortBy, filters, searchValue, activeReports, accountSettings } = this.state;
         const results = rows ? rows.length / 2 : 0;
-        const satelliteManaged = this.props.entity.satellite_id; // system is managed by satellite
-        const satelliteShowHosts = accountSettings.show_satellite_hosts; // setting to show satellite managed systems
+        const satelliteManaged = this.props.entity.satellite_id || false; // system is managed by satellite
+        const satelliteShowHosts = accountSettings.show_satellite_hosts || false; // setting to show satellite managed systems
         const hideResultsSatelliteManaged = !satelliteShowHosts && satelliteManaged;
 
         return <Fragment>
