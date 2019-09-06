@@ -70,50 +70,47 @@ const parseUrl = url => {
 const urlOrHost = formData => formData.url ? parseUrl(formData.url) : formData;
 
 export function doCreateSource(formData, sourceTypes) {
-    let sourceData = {
-        name: formData.source_name,
-        source_type_id: sourceTypes.find((x) => x.name === formData.source_type).id
-    };
+    const source_type_id = sourceTypes.find((x) => x.name === formData.source_type).id;
 
-    return getSourcesApi().createSource(sourceData).then((sourceDataOut) => {
+    return getSourcesApi().createSource({ ...formData.source, source_type_id }).then((sourceDataOut) => {
         const { scheme, host, port, path } = urlOrHost(formData);
 
         const endPointPort = parseInt(port, 10);
 
         const endpointData = {
+            ...formData.endpoint,
             default: true,
             source_id: sourceDataOut.id,
-            role: formData.role,
             scheme,
             host,
             port: isNaN(endPointPort) ? undefined : endPointPort,
-            path,
-            verify_ssl: formData.verify_ssl,
-            certificate_authority: formData.certificate_authority
+            path
         };
 
         const promises = [ getSourcesApi().createEndpoint(endpointData) ];
 
-        if (formData.app_type) {
+        if (formData.application.application_type_id) {
             const applicationData = {
-                application_type_id: formData.app_type,
+                ...formData.application,
                 source_id: sourceDataOut.id
             };
 
             promises.push(getSourcesApi().createApplication(applicationData));
         }
 
-        return Promise.all(promises).then(([ endpointDataOut, _applicationData = undefined ]) => {
+        return Promise.all(promises).then(([ endpointDataOut, applicationDataOut = undefined ]) => {
             const authenticationData = {
+                ...formData.authentication,
                 resource_id: endpointDataOut.id,
-                resource_type: 'Endpoint',
-                username: formData.username,
-                password: formData.token || formData.password,
-                authtype: formData.authtype
+                resource_type: 'Endpoint'
             };
 
             return getSourcesApi().createAuthentication(authenticationData).then((authenticationDataOut) => {
-                return authenticationDataOut;
+                return {
+                    ...sourceDataOut,
+                    endpoint: [ endpointDataOut ],
+                    applications: [ applicationDataOut ]
+                };
             }, (error) => {
                 console.error('Authentication creation failure:', error);
                 throw { error };

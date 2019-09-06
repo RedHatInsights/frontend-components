@@ -28,16 +28,6 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dt"
     >
-      Username
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      user_name
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Certificate Authority
     </TextListItem>
     <TextListItem
@@ -48,22 +38,22 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dt"
     >
-      URL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      neznam.cz
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Password
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      123456
+      ●●●●●●●●●●●●
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Username
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      user_name
     </TextListItem>
     <TextListItem
       component="dt"
@@ -74,6 +64,26 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
       component="dd"
     >
       Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Tenant Region
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      tenant1234
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      URL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      neznam.cz
     </TextListItem>
     <TextListItem
       component="dt"
@@ -117,16 +127,6 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
-      Username
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      user_name
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Certificate Authority
     </TextListItem>
     <TextListItem
@@ -137,22 +137,22 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
-      URL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      neznam.cz
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Password
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      123456
+      ●●●●●●●●●●●●
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Username
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      user_name
     </TextListItem>
     <TextListItem
       component="dt"
@@ -163,6 +163,26 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
       component="dd"
     >
       Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Tenant Region
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      tenant1234
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      URL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      neznam.cz
     </TextListItem>
     <TextListItem
       component="dt"
@@ -206,16 +226,6 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
     <TextListItem
       component="dt"
     >
-      Username
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      user_name
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Certificate Authority
     </TextListItem>
     <TextListItem
@@ -226,22 +236,22 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
     <TextListItem
       component="dt"
     >
-      URL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      neznam.cz
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Password
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      123456
+      ●●●●●●●●●●●●
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Username
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      user_name
     </TextListItem>
     <TextListItem
       component="dt"
@@ -252,6 +262,26 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
       component="dd"
     >
       Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Tenant Region
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      tenant1234
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      URL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      neznam.cz
     </TextListItem>
     <TextListItem
       component="dt"
@@ -295,16 +325,6 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      Username
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      user_name
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Certificate Authority
     </TextListItem>
     <TextListItem
@@ -315,22 +335,22 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      URL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      neznam.cz
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Password
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      123456
+      ●●●●●●●●●●●●
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Username
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      user_name
     </TextListItem>
     <TextListItem
       component="dt"
@@ -341,6 +361,26 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
       component="dd"
     >
       Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Tenant Region
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      tenant1234
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      URL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      neznam.cz
     </TextListItem>
     <TextListItem
       component="dt"
