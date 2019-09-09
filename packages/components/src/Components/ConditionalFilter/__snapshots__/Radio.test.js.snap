@@ -90,6 +90,32 @@ exports[`Radio render should render correctly placeholder 1`] = `
         value="another-value"
       />
     </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      <Radio
+        className=""
+        id="undefined-2"
+        isChecked={false}
+        isDisabled={false}
+        isValid={true}
+        label="No value"
+        name="2-radio"
+        onChange={[Function]}
+        value={2}
+      />
+    </SelectOption>
   </Select>
 </Fragment>
 `;
@@ -171,6 +197,32 @@ exports[`Radio render should render correctly with items 1`] = `
         name="1-radio"
         onChange={[Function]}
         value="another-value"
+      />
+    </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      <Radio
+        className=""
+        id="undefined-2"
+        isChecked={false}
+        isDisabled={false}
+        isValid={true}
+        label="No value"
+        name="2-radio"
+        onChange={[Function]}
+        value={2}
       />
     </SelectOption>
   </Select>
@@ -256,6 +308,32 @@ exports[`Radio render should render correctly with items and default value 1`] =
         value="another-value"
       />
     </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      <Radio
+        className=""
+        id="undefined-2"
+        isChecked={false}
+        isDisabled={false}
+        isValid={true}
+        label="No value"
+        name="2-radio"
+        onChange={[Function]}
+        value={2}
+      />
+    </SelectOption>
   </Select>
 </Fragment>
 `;
@@ -337,6 +415,32 @@ exports[`Radio render should render correctly with items and selected value 1`] 
         name="1-radio"
         onChange={[Function]}
         value="another-value"
+      />
+    </SelectOption>
+    <SelectOption
+      className=""
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      <Radio
+        className=""
+        id="undefined-2"
+        isChecked={false}
+        isDisabled={false}
+        isValid={true}
+        label="No value"
+        name="2-radio"
+        onChange={[Function]}
+        value={2}
       />
     </SelectOption>
   </Select>

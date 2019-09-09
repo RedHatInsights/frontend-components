@@ -2,13 +2,17 @@
 
 exports[`ConditionalFilter render should render correctly 1`] = `
 <Fragment>
-  <Text
-    id="default-input"
-    onChange={[Function]}
-    onSubmit={[Function]}
-    value=""
-    widget-type="InsightsInput"
-  />
+  <div
+    className="ins-c-conditional-filter"
+  >
+    <Text
+      id="default-input"
+      onChange={[Function]}
+      onSubmit={[Function]}
+      value=""
+      widget-type="InsightsInput"
+    />
+  </div>
 </Fragment>
 `;
 
@@ -49,6 +53,13 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
               onClick={[Function]}
             >
               Radio filter
+            </DropdownItem>,
+            <DropdownItem
+              component="button"
+              isHovered={false}
+              onClick={[Function]}
+            >
+              No value
             </DropdownItem>,
           ]
         }
@@ -103,6 +114,87 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
 </Fragment>
 `;
 
+exports[`ConditionalFilter render should render correctly No value with value undefined 1`] = `
+<Fragment>
+  <Split
+    className="ins-c-conditional-filter"
+  >
+    <SplitItem>
+      <Dropdown
+        className="ins-c-conditional-filter__group"
+        dropdownItems={
+          Array [
+            <DropdownItem
+              component="button"
+              isHovered={true}
+              onClick={[Function]}
+            >
+              Simple text 1
+            </DropdownItem>,
+            <DropdownItem
+              component="button"
+              isHovered={false}
+              onClick={[Function]}
+            >
+              Simple text 2
+            </DropdownItem>,
+            <DropdownItem
+              component="button"
+              isHovered={false}
+              onClick={[Function]}
+            >
+              Checkbox
+            </DropdownItem>,
+            <DropdownItem
+              component="button"
+              isHovered={false}
+              onClick={[Function]}
+            >
+              Radio filter
+            </DropdownItem>,
+            <DropdownItem
+              component="button"
+              isHovered={false}
+              onClick={[Function]}
+            >
+              No value
+            </DropdownItem>,
+          ]
+        }
+        isOpen={false}
+        onSelect={[Function]}
+        toggle={
+          <DropdownToggle
+            onToggle={[Function]}
+          >
+            <FilterIcon
+              color="currentColor"
+              size="sm"
+              title={null}
+            />
+            <span
+              className="ins-c-conditional-filter__value-selector"
+            >
+              Simple text 1
+            </span>
+          </DropdownToggle>
+        }
+      />
+    </SplitItem>
+    <SplitItem
+      isFilled={true}
+    >
+      <Text
+        id=""
+        onSubmit={[Function]}
+        placeholder="Filter by Simple text 1"
+        value=""
+      />
+    </SplitItem>
+  </Split>
+</Fragment>
+`;
+
 exports[`ConditionalFilter render should render correctly Radio filter with value radio-filter 1`] = `
 <Fragment>
   <Split
@@ -140,6 +232,13 @@ exports[`ConditionalFilter render should render correctly Radio filter with valu
               onClick={[Function]}
             >
               Radio filter
+            </DropdownItem>,
+            <DropdownItem
+              component="button"
+              isHovered={false}
+              onClick={[Function]}
+            >
+              No value
             </DropdownItem>,
           ]
         }
@@ -228,6 +327,13 @@ exports[`ConditionalFilter render should render correctly Simple text 1 with val
             >
               Radio filter
             </DropdownItem>,
+            <DropdownItem
+              component="button"
+              isHovered={false}
+              onClick={[Function]}
+            >
+              No value
+            </DropdownItem>,
           ]
         }
         isOpen={false}
@@ -302,6 +408,13 @@ exports[`ConditionalFilter render should render correctly Simple text 2 with val
             >
               Radio filter
             </DropdownItem>,
+            <DropdownItem
+              component="button"
+              isHovered={false}
+              onClick={[Function]}
+            >
+              No value
+            </DropdownItem>,
           ]
         }
         isOpen={false}
@@ -350,7 +463,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
           Array [
             <DropdownItem
               component="button"
-              isHovered={true}
+              isHovered={false}
               onClick={[Function]}
             >
               Simple text 1
@@ -376,6 +489,13 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
             >
               Radio filter
             </DropdownItem>,
+            <DropdownItem
+              component="button"
+              isHovered={true}
+              onClick={[Function]}
+            >
+              No value
+            </DropdownItem>,
           ]
         }
         isOpen={false}
@@ -392,7 +512,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
             <span
               className="ins-c-conditional-filter__value-selector"
             >
-              Simple text 1
+              No value
             </span>
           </DropdownToggle>
         }
@@ -403,7 +523,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
     >
       <Text
         onSubmit={[Function]}
-        placeholder="Filter by Simple text 1"
+        placeholder="Filter by No value"
         value=""
       />
     </SplitItem>

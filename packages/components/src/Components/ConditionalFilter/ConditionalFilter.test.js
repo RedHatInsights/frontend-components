@@ -42,6 +42,9 @@ const config = [{
             value: 'another-value'
         }]
     }
+}, {
+    label: 'No value',
+    type: 'text'
 }];
 
 describe('ConditionalFilter', () => {

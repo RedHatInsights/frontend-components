@@ -47,13 +47,18 @@ class Radio extends Component {
                     placeholderText={ placeholder }
                 >
                     { items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (
-                        <SelectOption { ...item } key={ id || key } value={ value }>
+                        <SelectOption { ...item } key={ id || key } value={ value || '' + key }>
                             <InputRadio
                                 { ...item }
                                 name={ id || `${key}-radio` }
                                 label={ label }
-                                value={ value }
-                                isChecked={ isChecked || (checkedValue === value) || (checkedValue === key) || false }
+                                value={ value || key }
+                                isChecked={
+                                    isChecked ||
+                                    (checkedValue !== undefined && checkedValue === value) ||
+                                    (checkedValue !== undefined && checkedValue === '' + key) ||
+                                    false
+                                }
                                 onChange={ (_value, e) => onChange && onChange(e, { id, label, value, isChecked, ...item }, key) }
                                 id={ id || `${value}-${key}` }
                             />
