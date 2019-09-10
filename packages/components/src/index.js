@@ -23,3 +23,4 @@ export * from './Components/EmptyTable';
 export * from './Components/Spinner';
 export * from './Components/Filters';
 export * from './Components/InvalidObject';
+export * from './Components/ConditionalFilter';
