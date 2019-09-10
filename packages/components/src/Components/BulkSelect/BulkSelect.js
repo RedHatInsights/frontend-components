@@ -23,13 +23,14 @@ visible unless you update it.');
 
     render() {
         const { isOpen, hasError } = this.state;
-        const { id, items, onSelect, checked, toggleProps, count, ...props } = this.props;
+        const { id, items, onSelect, checked, toggleProps, count, className, ...props } = this.props;
 
         return (
             <Fragment>
                 { items && items.length > 0 ? <Dropdown
                     onSelect={ () => this.onToggle(false) }
                     { ...props }
+                    className={ classnames(className, 'ins-c-bulk-select') }
                     toggle={ (
                         <DropdownToggle
                             { ...toggleProps }
@@ -64,6 +65,7 @@ visible unless you update it.');
                     </DropdownItem>) }
                 /> : <Checkbox
                     { ...props }
+                    className={ classnames(className, 'ins-c-bulk-select') }
                     id={ `${id}-checkbox` }
                     isChecked={ checked }
                     onChange={ onSelect }
@@ -76,7 +78,7 @@ visible unless you update it.');
 
 BulkSelect.propTypes = {
     count: PropTypes.number,
-    className: PropTypes.node,
+    className: PropTypes.string,
     items: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string,
         onClick: PropTypes.func
