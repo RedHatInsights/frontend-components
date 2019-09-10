@@ -1,11 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Dropdown, DropdownItem, DropdownToggle, DropdownToggleCheckbox, Checkbox } from '@patternfly/react-core';
 
 class BulkSelect extends Component {
     state = {
-        isOpen: false
+        isOpen: false,
+        hasError: false
+    }
+
+    componentDidCatch = () => {
+        console.error('Above error is caused because you are using outdated PF react core library. Count will not be \
+visible unless you update it.');
+        this.setState({ hasError: true });
     }
 
     onToggle = (isOpen) => {
@@ -15,11 +22,11 @@ class BulkSelect extends Component {
     }
 
     render() {
-        const { isOpen } = this.state;
-        const { id, items, onSelect, checked, toggleProps, ...props } = this.props;
+        const { isOpen, hasError } = this.state;
+        const { id, items, onSelect, checked, toggleProps, count, ...props } = this.props;
 
         return (
-            <React.Fragment>
+            <Fragment>
                 { items && items.length > 0 ? <Dropdown
                     onSelect={ () => this.onToggle(false) }
                     { ...props }
@@ -27,13 +34,22 @@ class BulkSelect extends Component {
                         <DropdownToggle
                             { ...toggleProps }
                             splitButtonItems={ [
-                                <DropdownToggleCheckbox
-                                    id={ id ? `${id}-toggle-checkbox` : 'toggle-checkbox' }
-                                    key="split-checkbox"
-                                    aria-label="Select all"
-                                    onChange={ onSelect }
-                                    checked={ checked || false }
-                                />
+                                <Fragment key="split-checkbox">
+                                    {
+                                        hasError ? <DropdownToggleCheckbox
+                                            id={ id ? `${id}-toggle-checkbox` : 'toggle-checkbox' }
+                                            aria-label="Select all"
+                                            onChange={ onSelect }
+                                            checked={ checked || false }
+                                        /> :
+                                            <DropdownToggleCheckbox
+                                                id={ id ? `${id}-toggle-checkbox` : 'toggle-checkbox' }
+                                                aria-label="Select all"
+                                                onChange={ onSelect }
+                                                checked={ checked || false }
+                                            >{ count } Selected</DropdownToggleCheckbox>
+                                    }
+                                </Fragment>
                             ] }
                             onToggle={ this.onToggle }
                         />
@@ -52,7 +68,7 @@ class BulkSelect extends Component {
                     isChecked={ checked }
                     onChange={ onSelect }
                 /> }
-            </React.Fragment>
+            </Fragment>
 
         );
     }

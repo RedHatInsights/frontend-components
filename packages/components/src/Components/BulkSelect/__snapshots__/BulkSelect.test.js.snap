@@ -4,7 +4,6 @@ exports[`BulkSelect should render correctly - no data 1`] = `
 <Fragment>
   <Checkbox
     className=""
-    count={0}
     id="undefined-checkbox"
     isChecked={false}
     isDisabled={false}
@@ -18,7 +17,6 @@ exports[`BulkSelect should render correctly 1`] = `
 <Fragment>
   <Dropdown
     className=""
-    count={30}
     dropdownItems={
       Array [
         <DropdownItem
@@ -36,16 +34,21 @@ exports[`BulkSelect should render correctly 1`] = `
         onToggle={[Function]}
         splitButtonItems={
           Array [
-            <DropdownToggleCheckbox
-              aria-label="Select all"
-              checked={false}
-              className=""
-              id="some-id-toggle-checkbox"
-              isChecked={null}
-              isDisabled={false}
-              isValid={true}
-              onChange={[Function]}
-            />,
+            <React.Fragment>
+              <DropdownToggleCheckbox
+                aria-label="Select all"
+                checked={false}
+                className=""
+                id="some-id-toggle-checkbox"
+                isChecked={null}
+                isDisabled={false}
+                isValid={true}
+                onChange={[Function]}
+              >
+                30
+                 Selected
+              </DropdownToggleCheckbox>
+            </React.Fragment>,
           ]
         }
       />
@@ -58,7 +61,6 @@ exports[`BulkSelect should render correctly 2`] = `
 <Fragment>
   <Dropdown
     className=""
-    count={0}
     dropdownItems={
       Array [
         <DropdownItem
@@ -76,16 +78,21 @@ exports[`BulkSelect should render correctly 2`] = `
         onToggle={[Function]}
         splitButtonItems={
           Array [
-            <DropdownToggleCheckbox
-              aria-label="Select all"
-              checked={false}
-              className=""
-              id="toggle-checkbox"
-              isChecked={null}
-              isDisabled={false}
-              isValid={true}
-              onChange={[Function]}
-            />,
+            <React.Fragment>
+              <DropdownToggleCheckbox
+                aria-label="Select all"
+                checked={false}
+                className=""
+                id="toggle-checkbox"
+                isChecked={null}
+                isDisabled={false}
+                isValid={true}
+                onChange={[Function]}
+              >
+                0
+                 Selected
+              </DropdownToggleCheckbox>
+            </React.Fragment>,
           ]
         }
       />
