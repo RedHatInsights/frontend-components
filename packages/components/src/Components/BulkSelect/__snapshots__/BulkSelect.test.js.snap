@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BulkSelect should render correctly - no data 1`] = `
+<Fragment>
+  <Checkbox
+    className="ins-c-bulk-select"
+    id="undefined-checkbox"
+    isChecked={false}
+    isDisabled={false}
+    isValid={true}
+    onChange={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`BulkSelect should render correctly 1`] = `
+<Fragment>
+  <Dropdown
+    className="ins-c-bulk-select"
+    dropdownItems={
+      Array [
+        <DropdownItem
+          component="button"
+          onClick={[Function]}
+        >
+          Select all
+        </DropdownItem>,
+      ]
+    }
+    isOpen={false}
+    onSelect={[Function]}
+    toggle={
+      <DropdownToggle
+        onToggle={[Function]}
+        splitButtonItems={
+          Array [
+            <React.Fragment>
+              <DropdownToggleCheckbox
+                aria-label="Select all"
+                checked={false}
+                className=""
+                id="some-id-toggle-checkbox"
+                isChecked={null}
+                isDisabled={false}
+                isValid={true}
+                onChange={[Function]}
+              >
+                30
+                 Selected
+              </DropdownToggleCheckbox>
+            </React.Fragment>,
+          ]
+        }
+      />
+    }
+  />
+</Fragment>
+`;
+
+exports[`BulkSelect should render correctly 2`] = `
+<Fragment>
+  <Dropdown
+    className="ins-c-bulk-select"
+    dropdownItems={
+      Array [
+        <DropdownItem
+          component="button"
+          onClick={[Function]}
+        >
+          Select all
+        </DropdownItem>,
+      ]
+    }
+    isOpen={false}
+    onSelect={[Function]}
+    toggle={
+      <DropdownToggle
+        onToggle={[Function]}
+        splitButtonItems={
+          Array [
+            <React.Fragment>
+              <DropdownToggleCheckbox
+                aria-label="Select all"
+                checked={false}
+                className=""
+                id="toggle-checkbox"
+                isChecked={null}
+                isDisabled={false}
+                isValid={true}
+                onChange={[Function]}
+              >
+                0
+                 Selected
+              </DropdownToggleCheckbox>
+            </React.Fragment>,
+          ]
+        }
+      />
+    }
+  />
+</Fragment>
+`;
