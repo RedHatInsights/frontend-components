@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SystemPolicyCards component should render loading state 1`] = `
+<SystemPolicyCards
+  loading={true}
+  policies={
+    Array [
+      Object {
+        "compliant": false,
+        "lastScanned": "2019-03-06T06:20:13Z",
+        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+        "rulesFailed": 10,
+        "rulesPassed": 30,
+      },
+    ]
+  }
+/>
+`;
+
+exports[`SystemPolicyCards component should render real table 1`] = `
+<SystemPolicyCards
+  loading={false}
+  policies={
+    Array [
+      Object {
+        "compliant": false,
+        "lastScanned": "2019-03-06T06:20:13Z",
+        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+        "rulesFailed": 10,
+        "rulesPassed": 30,
+      },
+    ]
+  }
+/>
+`;
