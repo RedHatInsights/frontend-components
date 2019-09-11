@@ -21,7 +21,7 @@ $invert-skeleton-dark-color: #363636;
     background: linear-gradient(to right, $skeleton-base-color 10%, $skeleton-dark-color 18%, $skeleton-base-color 33%);
     @include rem('background-size', 1000px 50px);
     @include rem('border-radius', 5px);
-    .ins-m-dark {
+    &.ins-m-dark {
         background: $ins-color--dark;
         background: linear-gradient(to right, $invert-skeleton-base-color 10%, $invert-skeleton-dark-color 18%, $invert-skeleton-base-color 33%);
     }
