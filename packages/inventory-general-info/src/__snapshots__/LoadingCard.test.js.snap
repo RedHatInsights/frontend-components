@@ -160,6 +160,7 @@ exports[`should render loading bars 1`] = `
           component="dd"
         >
           <Skeleton
+            isDark={false}
             size="md"
           />
         </TextListItem>
@@ -172,6 +173,7 @@ exports[`should render loading bars 1`] = `
           component="dd"
         >
           <Skeleton
+            isDark={false}
             size="sm"
           />
         </TextListItem>

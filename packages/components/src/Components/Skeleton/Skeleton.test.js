@@ -15,4 +15,9 @@ describe('Skeleton component', () => {
         const wrapper = shallow(<Skeleton />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
+
+    it('should render correctly as dark', () => {
+        const wrapper = shallow(<Skeleton isDark />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 });
