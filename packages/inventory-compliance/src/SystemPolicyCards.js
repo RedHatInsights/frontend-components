@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, GridItem, Card, CardBody } from '@patternfly/react-core';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import SystemPolicyCard from './SystemPolicyCard';
 import propTypes from 'prop-types';
 import { Instagram } from 'react-content-loader';
@@ -46,4 +45,4 @@ SystemPolicyCards.defaultProps = {
     policies: []
 };
 
-export default routerParams(SystemPolicyCards);
+export default SystemPolicyCards;
