@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { DataToolbar, DataToolbarItem, DataToolbarContent } from '@patternfly/react-core/dist/esm/experimental';
+import { DataToolbar, DataToolbarItem, DataToolbarContent, DataToolbarGroup } from '@patternfly/react-core/dist/esm/experimental';
 import { Pagination } from '@patternfly/react-core';
 import { ConditionalFilter } from '../ConditionalFilter';
 import { BulkSelect } from '../BulkSelect';
+import { DownloadButton } from '../DownloadButton';
+import { SortByDirection } from '@patternfly/react-table';
+import SortBy from './SortBy';
 import Actions from './Actions';
 import PropTypes from 'prop-types';
 
@@ -20,6 +23,7 @@ class PrimaryToolbar extends Component {
             pagination,
             filters,
             children,
+            exportConfig,
             ...props
         } = this.props;
         return (
@@ -31,29 +35,62 @@ class PrimaryToolbar extends Component {
             >
                 <DataToolbarContent>
                     {
-                        bulkSelect &&
-                        <DataToolbarItem>
-                            <BulkSelect { ...bulkSelect }/>
-                        </DataToolbarItem>
-                    }
-                    {
-                        filterConfig &&
-                        <DataToolbarItem>
-                            <BulkSelect { ...filterConfig } />
-                        </DataToolbarItem>
+                        (bulkSelect || filterConfig) &&
+                        <DataToolbarGroup
+                            className="ins-c-primary-toolbar__group-filter"
+                            itemSpacers={ [{ spacerSize: 'md' }] }
+                            variant="filter-group"
+                        >
+                            {
+                                bulkSelect &&
+                                <DataToolbarItem>
+                                    <BulkSelect { ...bulkSelect } />
+                                </DataToolbarItem>
+                            }
+                            {
+                                filterConfig &&
+                                <DataToolbarItem className="ins-c-primary-toolbar__filter">
+                                    <ConditionalFilter { ...filterConfig } />
+                                </DataToolbarItem>
+                            }
+                        </DataToolbarGroup>
                     }
                     {
                         (actions && actions.length > 0) &&
-                        <Actions actions={ actions } />
+                        <Actions actions={ actions } overflowActions={ [
+                            ...sortByConfig &&
+                            [
+                                {
+                                    label: 'Sort order ASC',
+                                    props: { isDisabled: sortByConfig.direction === SortByDirection.asc },
+                                    onClick: (e) => sortByConfig.onSortChange &&
+                                        sortByConfig.onSortChange(e, SortByDirection.asc)
+                                }, {
+                                    label: 'Sort order DESC',
+                                    props: { isDisabled: sortByConfig.direction === SortByDirection.desc },
+                                    onClick: (e) => sortByConfig.onSortChange &&
+                                        sortByConfig.onSortChange(e, SortByDirection.desc)
+                                }
+                            ]
+                        ] } />
                     }
                     {
                         sortByConfig &&
-                        <DataToolbarItem>
-
+                        <DataToolbarItem className="ins-c-primary-toolbar__sort-by">
+                            <SortBy { ...sortByConfig } />
                         </DataToolbarItem>
                     }
+                    {
+                        exportConfig &&
+                        <DownloadButton  { ...exportConfig }/>
+                    }
                     { children }
-                    { pagination && <DataToolbarItem>Bla</DataToolbarItem> }
+                    {
+                        pagination &&
+                        <DataToolbarItem className="ins-c-primary-toolbar__pagination">
+                            <Pagination { ...pagination } />
+                        </DataToolbarItem>
+                    }
                 </DataToolbarContent>
                 {
                     filters &&
@@ -72,6 +109,9 @@ PrimaryToolbar.propTypes = {
     toggleIsExpanded: PropTypes.func,
     bulkSelect: PropTypes.shape(BulkSelect.propTypes),
     filterConfig: PropTypes.shape(ConditionalFilter.propTypes),
+    pagination: PropTypes.shape(Pagination.propTypes),
+    sortByConfig: PropTypes.shape(SortBy.propTypes),
+    exportConfig: PropTypes.shape(DownloadButton.propTypes),
     children: PropTypes.node,
     actions: Actions.propTypes.actions
 };

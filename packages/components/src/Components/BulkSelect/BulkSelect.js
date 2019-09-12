@@ -56,13 +56,25 @@ visible unless you update it.');
                         />
                     ) }
                     isOpen={ isOpen }
-                    dropdownItems={ items.map((oneItem, key) => <DropdownItem
-                        component="button"
-                        key={ oneItem.key || key }
-                        onClick={ (event) => oneItem.onClick && oneItem.onClick(event, oneItem, key) }
-                    >
-                        { oneItem.title }
-                    </DropdownItem>) }
+                    dropdownItems={ [
+                        ...[ 
+                            count && 
+                            <DropdownItem
+                                key="count"
+                                isDisabled
+                                className={ !hasError ? 'ins-c-bulk-select__selected' : '' }
+                            >
+                                { count } Selected
+                            </DropdownItem>
+                        ],
+                        ...items.map((oneItem, key) => <DropdownItem
+                            component="button"
+                            key={ oneItem.key || key }
+                            onClick={ (event) => oneItem.onClick && oneItem.onClick(event, oneItem, key) }
+                        >
+                            { oneItem.title }
+                        </DropdownItem>)
+                    ]}
                 /> : <Checkbox
                     { ...props }
                     className={ classnames(className, 'ins-c-bulk-select') }

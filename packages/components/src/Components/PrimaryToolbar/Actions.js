@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { DataToolbarItem } from '@patternfly/react-core/dist/esm/experimental';
-import { Dropdown, DropDownItem, KebabToggle, Button } from '@patternfly/react-core';
-
+import { Dropdown, DropdownItem, KebabToggle, Button, DropdownSeparator } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 
 class Actions extends Component {
@@ -14,13 +13,14 @@ class Actions extends Component {
     }
 
     render() {
-        const { actions } = this.props;
+        const { isOpen } = this.state;
+        const { actions, overflowActions } = this.props;
         const [ firstAction, ...restActions ] = actions;
         return (
             <Fragment>
                 {
                     firstAction &&
-                    <DataToolbarItem>
+                    <DataToolbarItem className="ins-c-primary-toolbar__first-action">
                         {
                             firstAction.label ?
                                 <Button { ...firstAction.props }>
@@ -34,10 +34,12 @@ class Actions extends Component {
                     (actions && actions.length > 0) &&
                     <DataToolbarItem>
                         <Dropdown
+                            isOpen={ isOpen }
+                            isPlain
                             onSelect={ () => this.toggleOpen(false) }
                             toggle={ <KebabToggle onToggle={ (isOpen) => this.toggleOpen(isOpen) } /> }
                             dropdownItems={ [
-                                <DropDownItem
+                                <DropdownItem
                                     { ...firstAction.props }
                                     key="first-action"
                                     className={
@@ -45,14 +47,27 @@ class Actions extends Component {
                                     }
                                 >
                                     { firstAction.label || firstAction }
-                                </DropDownItem>,
+                                </DropdownItem>,
                                 ...restActions.map((action, key) => (
-                                    <DropDownItem
+                                    <DropdownItem
                                         { ...action.props }
                                         key={ action.value || key }
                                         component={ (action.props && action.props.component) || 'button' }
                                         onClick={ (e) => action.onClick(e, action, key) }
-                                    >{ action.label || action }</DropDownItem>
+                                    >{ action.label || action }</DropdownItem>
+                                )),
+                                <DropdownSeparator
+                                    key="separator"
+                                    className="ins-c-primary-toolbar__overflow-actions-separator"
+                                />,
+                                ...overflowActions.map((action, key) => (
+                                    <DropdownItem
+                                        { ...action.props }
+                                        className="ins-c-primary-toolbar__overflow-actions"
+                                        key={ action.value || `${key}-overflow` }
+                                        component={ (action.props && action.props.component) || 'button' }
+                                        onClick={ (e) => action.onClick(e, action, key) }
+                                    >{ action.label || action }</DropdownItem>
                                 ))
                             ] }
                         />
@@ -72,11 +87,18 @@ Actions.propTypes = {
             onClick: PropTypes.func,
             props: PropTypes.any
         })
-    ]))
+    ])),
+    overflowActions: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.node,
+        value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+        onClick: PropTypes.func,
+        props: PropTypes.any
+    }))
 };
 
 Actions.defaultProps = {
-    actions: []
+    actions: [],
+    overflowActions: []
 };
 
 export default Actions;
