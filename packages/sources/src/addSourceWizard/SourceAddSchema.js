@@ -3,11 +3,11 @@ import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-re
 import { Popover, TextContent, TextList, TextListItem, Text, TextVariants, Title } from '@patternfly/react-core';
 import { QuestionCircleIcon } from '@patternfly/react-icons';
 import SSLFormLabel from './SSLFormLabel';
-import { AwsIcon, OpenshiftIcon } from '@patternfly/react-icons';
+import { AwsIcon, OpenshiftIcon, MicrosoftIcon } from '@patternfly/react-icons';
 
 const compileAllSourcesComboOptions = (sourceTypes) => (
     [
-        ...sourceTypes.map(t => ({
+        ...sourceTypes.sort((a, b) => a.product_name.localeCompare(b.product_name)).map(t => ({
             value: t.name,
             label: t.product_name
         }))
@@ -16,7 +16,7 @@ const compileAllSourcesComboOptions = (sourceTypes) => (
 
 const compileAllApplicationComboOptions = (applicationTypes) => (
     [
-        ...applicationTypes.map(t => ({
+        ...applicationTypes.sort((a, b) => a.display_name.localeCompare(b.display_name)).map(t => ({
             value: t.id,
             label: t.display_name
         }))
@@ -28,7 +28,8 @@ const compileStepMapper = (sourceTypes) => sourceTypes.reduce((acc, curr) => ({ 
 
 const iconMapper = (name, DefaultIcon) => ({
     openshift: OpenshiftIcon,
-    amazon: AwsIcon
+    amazon: AwsIcon,
+    azure: MicrosoftIcon
 }[name] || DefaultIcon);
 
 const firstStepNew = (sourceTypes) => ({
