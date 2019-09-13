@@ -62,7 +62,7 @@ This components accepts all formGroup props `(label, helperText, isDisabled, isR
 
 |Prop|Type|Description|
 |----|:--:|----------:|
-|options|array|Array of options with keys `value`, `label`|
+|options|array|Array of options with keys `value`, `label`, `isDisabled`|
 |DefaultIcon|element, node, func|Default icon (default is `ServerIcon`)|
 |iconMapper*|func|You can use your own mapper `(value, DefaultIcon) => ...` |
 |multi/isMulti|bool|Allows to select more items|

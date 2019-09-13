@@ -48,6 +48,14 @@ describe('CardSelect component', () => {
         expect(wrapper.find(AwsIcon).length).toEqual(2);
     });
 
+    it('should render correctly one item disabled', () => {
+        const wrapper = mount(
+            <CardSelect { ...initialProps } options={ [ ...initialProps.options, { value: 'azure', label: 'MS Azure', isDisabled: true }] }/>
+        );
+
+        expect(wrapper.find(Card).last().props().className.includes('disabled')).toEqual(true);
+    });
+
     it('should render correctly with iconMapper', () => {
         const iconMapper = (value, defaultIcon) => ({
             aws: AwsIcon,
