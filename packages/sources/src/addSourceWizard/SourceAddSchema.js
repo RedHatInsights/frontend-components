@@ -129,7 +129,10 @@ export const temporaryHardcodedSourceSchemas = {
                 label: 'URL',
                 helperText: 'For example, https://myopenshiftcluster.mycompany.com',
                 isRequired: true,
-                validate: [{ type: 'required-validator' }]
+                validate: [
+                    { type: validatorTypes.REQUIRED },
+                    { type: validatorTypes.URL }
+                ]
             }, {
                 component: componentTypes.CHECKBOX,
                 name: 'endpoint.verify_ssl',
@@ -210,7 +213,7 @@ export const temporaryHardcodedSourceSchemas = {
             label: 'Access Key ID',
             helperText: 'For example, AKIAIOSFODNN7EXAMPLE',
             isRequired: true,
-            validate: [{ type: 'required-validator' }]
+            validate: [{ type: validatorTypes.REQUIRED }]
         }, {
             component: componentTypes.TEXT_FIELD,
             name: 'authentication.password',
@@ -218,7 +221,7 @@ export const temporaryHardcodedSourceSchemas = {
             type: 'password',
             helperText: 'For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
             isRequired: true,
-            validate: [{ type: 'required-validator' }]
+            validate: [{ type: validatorTypes.REQUIRED }]
         }, {
             component: componentTypes.TEXT_FIELD,
             name: 'endpoint.role',

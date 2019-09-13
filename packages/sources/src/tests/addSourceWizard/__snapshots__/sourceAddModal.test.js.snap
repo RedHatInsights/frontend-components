@@ -54,17 +54,14 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "name": "source_type",
                   "options": Array [
                     Object {
-                      "isDisabled": false,
                       "label": "Amazon Web Services",
                       "value": "amazon",
                     },
                     Object {
-                      "isDisabled": false,
                       "label": "Ansible Tower",
                       "value": "ansible-tower",
                     },
                     Object {
-                      "isDisabled": false,
                       "label": "OpenShift Container Platform",
                       "value": "openshift",
                     },
@@ -312,6 +309,9 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "validate": Array [
                     Object {
                       "type": "required-validator",
+                    },
+                    Object {
+                      "type": "url-validator",
                     },
                   ],
                 },
@@ -559,17 +559,14 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "name": "source_type",
                   "options": Array [
                     Object {
-                      "isDisabled": false,
                       "label": "Amazon Web Services",
                       "value": "amazon",
                     },
                     Object {
-                      "isDisabled": false,
                       "label": "Ansible Tower",
                       "value": "ansible-tower",
                     },
                     Object {
-                      "isDisabled": false,
                       "label": "OpenShift Container Platform",
                       "value": "openshift",
                     },
@@ -817,6 +814,9 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "validate": Array [
                     Object {
                       "type": "required-validator",
+                    },
+                    Object {
+                      "type": "url-validator",
                     },
                   ],
                 },
@@ -1064,17 +1064,14 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "name": "source_type",
                   "options": Array [
                     Object {
-                      "isDisabled": false,
                       "label": "Amazon Web Services",
                       "value": "amazon",
                     },
                     Object {
-                      "isDisabled": false,
                       "label": "Ansible Tower",
                       "value": "ansible-tower",
                     },
                     Object {
-                      "isDisabled": false,
                       "label": "OpenShift Container Platform",
                       "value": "openshift",
                     },
@@ -1322,6 +1319,9 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "validate": Array [
                     Object {
                       "type": "required-validator",
+                    },
+                    Object {
+                      "type": "url-validator",
                     },
                   ],
                 },
@@ -1569,17 +1569,14 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "name": "source_type",
                   "options": Array [
                     Object {
-                      "isDisabled": false,
                       "label": "Amazon Web Services",
                       "value": "amazon",
                     },
                     Object {
-                      "isDisabled": false,
                       "label": "Ansible Tower",
                       "value": "ansible-tower",
                     },
                     Object {
-                      "isDisabled": false,
                       "label": "OpenShift Container Platform",
                       "value": "openshift",
                     },
@@ -1827,6 +1824,9 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "validate": Array [
                     Object {
                       "type": "required-validator",
+                    },
+                    Object {
+                      "type": "url-validator",
                     },
                   ],
                 },
