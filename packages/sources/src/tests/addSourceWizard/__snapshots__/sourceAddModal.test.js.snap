@@ -41,9 +41,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "name": "source.name",
                   "type": "text",
                   "validate": Array [
-                    Object {
-                      "type": "required-validator",
-                    },
+                    [Function],
                   ],
                 },
                 Object {
@@ -546,9 +544,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "name": "source.name",
                   "type": "text",
                   "validate": Array [
-                    Object {
-                      "type": "required-validator",
-                    },
+                    [Function],
                   ],
                 },
                 Object {
@@ -1051,9 +1047,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "name": "source.name",
                   "type": "text",
                   "validate": Array [
-                    Object {
-                      "type": "required-validator",
-                    },
+                    [Function],
                   ],
                 },
                 Object {
@@ -1556,9 +1550,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "name": "source.name",
                   "type": "text",
                   "validate": Array [
-                    Object {
-                      "type": "required-validator",
-                    },
+                    [Function],
                   ],
                 },
                 Object {

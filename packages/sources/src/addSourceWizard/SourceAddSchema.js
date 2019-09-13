@@ -4,6 +4,22 @@ import { Popover, TextContent, TextList, TextListItem, Text, TextVariants, Title
 import { QuestionCircleIcon } from '@patternfly/react-icons';
 import SSLFormLabel from './SSLFormLabel';
 import { AwsIcon, OpenshiftIcon, MicrosoftIcon } from '@patternfly/react-icons';
+import debouncePromise from '../utilities/debouncePromise';
+import { findSource } from '../api';
+
+export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources }}) => {
+    if (sources.find(({ id }) => id !== sourceId)) {
+        return 'Name has already been taken';
+    }
+
+    if (value === '' || value === undefined) {
+        return 'Name can\'t be blank';
+    }
+
+    return undefined;
+});
+
+const asyncValidatorDebounced = debouncePromise(asyncValidator);
 
 const compileAllSourcesComboOptions = (sourceTypes) => (
     [
@@ -61,9 +77,9 @@ const firstStepNew = (sourceTypes) => ({
             label: 'Name',
             helperText: 'For example, Source_1',
             isRequired: true,
-            validate: [{
-                type: validatorTypes.REQUIRED
-            }]
+            validate: [
+                (value) => asyncValidatorDebounced(value)
+            ]
         }, {
             component: 'card-select',
             name: 'source_type',
