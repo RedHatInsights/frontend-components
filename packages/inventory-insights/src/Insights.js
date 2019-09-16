@@ -19,17 +19,17 @@ import {
     ToolbarGroup,
     ToolbarItem
 } from '@patternfly/react-core';
-import { CheckIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon } from '@patternfly/react-icons';
+import { CheckIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
 import { cellWidth, sortable, SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
 import { flatten, sortBy } from 'lodash';
-import { global_success_color_200 } from '@patternfly/react-tokens';
+import { global_success_color_200, global_BackgroundColor_100 } from '@patternfly/react-tokens';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import moment from 'moment';
 import { Battery, FilterDropdown, TableToolbar } from '@redhat-cloud-services/frontend-components';
 
 import './insights.scss';
 import ReportDetails from './ReportDetails';
-import { ANSIBLE_ICON, FILTER_CATEGORIES, BASE_FETCH_URL } from './Constants';
+import { FILTER_CATEGORIES, BASE_FETCH_URL } from './Constants';
 import MessageState from './MessageState';
 
 class InventoryRuleList extends Component {
@@ -41,7 +41,9 @@ class InventoryRuleList extends Component {
             { title: 'Added', transforms: [ sortable, cellWidth(15) ]},
             { title: 'Total risk', transforms: [ sortable ]},
             { title: 'Risk of change', transforms: [ sortable ]},
-            { title: <span className='ansibleCol'>{ ANSIBLE_ICON } Ansible</span>, transforms: [ sortable ]}
+            { title: <span className='ansibleCol'>
+                { AnsibeTowerIcon && <AnsibeTowerIcon size='md' /> } Ansible
+            </span>, transforms: [ sortable ]}
         ],
         isKebabOpen: false,
         sortBy: {},
@@ -331,7 +333,9 @@ class InventoryRuleList extends Component {
                             <RemediationButton
                                 isDisabled={ this.getSelectedItems(rows).length === 0 }
                                 dataProvider={ this.processRemediation }
-                                onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } />
+                                onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } >
+                                { AnsibeTowerIcon && <AnsibeTowerIcon size='sm' color={ global_BackgroundColor_100.value } /> } Remediation
+                            </RemediationButton>
                         </ToolbarItem>
                         <ToolbarItem>{ this.buildKebab() }</ToolbarItem>
                     </ToolbarGroup>
