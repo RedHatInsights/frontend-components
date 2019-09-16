@@ -62,6 +62,7 @@ exports[`SystemPolicyCard component should render 1`] = `
               >
                 <ExclamationCircleIcon
                   color="currentColor"
+                  noVerticalAlign={false}
                   size="sm"
                   title={null}
                 >

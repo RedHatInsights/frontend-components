@@ -157,6 +157,7 @@ exports[`SimpleTableFilter component should render correctly without filter butt
   <SearchIcon
     className="ins-c-search-icon"
     color="currentColor"
+    noVerticalAlign={false}
     size="sm"
     title={null}
   />
