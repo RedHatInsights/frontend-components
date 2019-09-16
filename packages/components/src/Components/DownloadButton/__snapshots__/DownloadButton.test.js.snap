@@ -41,6 +41,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       >
         <FileExportIcon
           color="currentColor"
+          noVerticalAlign={false}
           size="md"
           title={null}
         />
@@ -81,6 +82,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         >
           <FileExportIcon
             color="currentColor"
+            noVerticalAlign={false}
             size="md"
             title={null}
           />
@@ -273,6 +275,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               >
                 <FileExportIcon
                   color="currentColor"
+                  noVerticalAlign={false}
                   size="md"
                   title={null}
                 >
@@ -485,6 +488,7 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
     >
       <FileExportIcon
         color="currentColor"
+        noVerticalAlign={false}
         size="md"
         title={null}
       />
@@ -524,6 +528,7 @@ exports[`DownloadButton component should render custom items 1`] = `
     >
       <FileExportIcon
         color="currentColor"
+        noVerticalAlign={false}
         size="md"
         title={null}
       />

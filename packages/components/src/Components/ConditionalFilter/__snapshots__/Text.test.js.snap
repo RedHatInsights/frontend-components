@@ -19,6 +19,7 @@ exports[`Text component render should render correctly 1`] = `
   <SearchIcon
     className="ins-c-search-icon"
     color="currentColor"
+    noVerticalAlign={false}
     size="sm"
     title={null}
   />
@@ -45,6 +46,7 @@ exports[`Text component render should render placeholder 1`] = `
   <SearchIcon
     className="ins-c-search-icon"
     color="currentColor"
+    noVerticalAlign={false}
     size="sm"
     title={null}
   />
@@ -70,6 +72,7 @@ exports[`Text component render should render value 1`] = `
   <SearchIcon
     className="ins-c-search-icon"
     color="currentColor"
+    noVerticalAlign={false}
     size="sm"
     title={null}
   />

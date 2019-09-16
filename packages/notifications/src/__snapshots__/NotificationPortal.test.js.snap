@@ -236,6 +236,7 @@ exports[`Notification portal should render notifications given as direct props 1
               >
                 <CloseIcon
                   color="currentColor"
+                  noVerticalAlign={false}
                   size="sm"
                   title={null}
                 />
@@ -323,6 +324,7 @@ exports[`Notification portal should render notifications given as direct props 1
                   >
                     <CloseIcon
                       color="currentColor"
+                      noVerticalAlign={false}
                       size="sm"
                       title={null}
                     >
@@ -663,6 +665,7 @@ exports[`Notification portal should render notifications given as direct props o
               >
                 <CloseIcon
                   color="currentColor"
+                  noVerticalAlign={false}
                   size="sm"
                   title={null}
                 />
@@ -750,6 +753,7 @@ exports[`Notification portal should render notifications given as direct props o
                   >
                     <CloseIcon
                       color="currentColor"
+                      noVerticalAlign={false}
                       size="sm"
                       title={null}
                     >
@@ -941,6 +945,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
               >
                 <CloseIcon
                   color="currentColor"
+                  noVerticalAlign={false}
                   size="sm"
                   title={null}
                 />
@@ -1028,6 +1033,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
                   >
                     <CloseIcon
                       color="currentColor"
+                      noVerticalAlign={false}
                       size="sm"
                       title={null}
                     >

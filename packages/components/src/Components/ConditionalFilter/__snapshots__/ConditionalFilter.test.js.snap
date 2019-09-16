@@ -71,6 +71,7 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
           >
             <FilterIcon
               color="currentColor"
+              noVerticalAlign={false}
               size="sm"
               title={null}
             />
@@ -169,6 +170,7 @@ exports[`ConditionalFilter render should render correctly No value with value un
           >
             <FilterIcon
               color="currentColor"
+              noVerticalAlign={false}
               size="sm"
               title={null}
             />
@@ -250,6 +252,7 @@ exports[`ConditionalFilter render should render correctly Radio filter with valu
           >
             <FilterIcon
               color="currentColor"
+              noVerticalAlign={false}
               size="sm"
               title={null}
             />
@@ -344,6 +347,7 @@ exports[`ConditionalFilter render should render correctly Simple text 1 with val
           >
             <FilterIcon
               color="currentColor"
+              noVerticalAlign={false}
               size="sm"
               title={null}
             />
@@ -425,6 +429,7 @@ exports[`ConditionalFilter render should render correctly Simple text 2 with val
           >
             <FilterIcon
               color="currentColor"
+              noVerticalAlign={false}
               size="sm"
               title={null}
             />
@@ -506,6 +511,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
           >
             <FilterIcon
               color="currentColor"
+              noVerticalAlign={false}
               size="sm"
               title={null}
             />
