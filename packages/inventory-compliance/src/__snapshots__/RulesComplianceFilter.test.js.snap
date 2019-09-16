@@ -30,6 +30,7 @@ exports[`RulesComplianceFilter component should render filter 1`] = `
               <ExclamationCircleIcon
                 className="ins-u-failed"
                 color="currentColor"
+                noVerticalAlign={false}
                 size="sm"
                 title={null}
               />
@@ -42,6 +43,7 @@ exports[`RulesComplianceFilter component should render filter 1`] = `
               <ExclamationTriangleIcon
                 className="ins-u-warning"
                 color="currentColor"
+                noVerticalAlign={false}
                 size="sm"
                 title={null}
               />
@@ -117,6 +119,7 @@ exports[`RulesComplianceFilter component should render filter 1`] = `
                 <ExclamationCircleIcon
                   className="ins-u-failed"
                   color="currentColor"
+                  noVerticalAlign={false}
                   size="sm"
                   title={null}
                 />
@@ -129,6 +132,7 @@ exports[`RulesComplianceFilter component should render filter 1`] = `
                 <ExclamationTriangleIcon
                   className="ins-u-warning"
                   color="currentColor"
+                  noVerticalAlign={false}
                   size="sm"
                   title={null}
                 />

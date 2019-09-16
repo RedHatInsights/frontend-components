@@ -58,6 +58,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
     >
       <CloseIcon
         color="currentColor"
+        noVerticalAlign={false}
         size="sm"
         title={null}
       />

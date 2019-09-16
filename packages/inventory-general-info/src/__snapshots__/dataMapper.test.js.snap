@@ -185,6 +185,7 @@ Object {
         "title": <OutlinedArrowAltCircleUpIcon
           className="ins-c-inventory__detail--up"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -199,6 +200,7 @@ Object {
         "title": <OutlinedArrowAltCircleDownIcon
           className="ins-c-inventory__detail--down"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -213,6 +215,7 @@ Object {
         "title": <OutlinedQuestionCircleIcon
           className="ins-c-inventory__detail--unknown"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -256,6 +259,7 @@ Object {
         "title": <OutlinedQuestionCircleIcon
           className="ins-c-inventory__detail--unknown"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -267,6 +271,7 @@ Object {
         "title": <OutlinedQuestionCircleIcon
           className="ins-c-inventory__detail--unknown"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -278,6 +283,7 @@ Object {
         "title": <OutlinedQuestionCircleIcon
           className="ins-c-inventory__detail--unknown"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -331,6 +337,7 @@ Object {
         "title": <CheckCircleIcon
           className="ins-c-inventory__detail--enabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -339,6 +346,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -359,6 +367,7 @@ Object {
         "title": <CheckCircleIcon
           className="ins-c-inventory__detail--enabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -367,6 +376,7 @@ Object {
         "title": <CheckCircleIcon
           className="ins-c-inventory__detail--enabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -387,6 +397,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -395,6 +406,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -415,6 +427,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -423,6 +436,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
