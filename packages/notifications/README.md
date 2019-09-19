@@ -6,12 +6,12 @@ This package has portal component that shows toast notifications based on [PF4 a
 ## Installation
 With NPM
 ```bash
-npm i -S @redhat-cloud-services/frontend-components-inventory-notifications
+npm i -S @redhat-cloud-services/frontend-components-notifications
 ```
 
 With yarn
 ```bash
-yarn add @redhat-cloud-services/frontend-components-inventory-notifications
+yarn add @redhat-cloud-services/frontend-components-notifications
 ```
 
 This package is dependent on [@redhat-cloud-services/frontend-components-utilities](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components-utilities) it will automatically install it trough direct dependencies.
