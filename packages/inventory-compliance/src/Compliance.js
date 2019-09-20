@@ -46,6 +46,7 @@ query System($systemId: String!){
                 refId
                 description
                 compliant(systemId: $systemId)
+                remediationAvailable
                 identifier {
                     label
                     system

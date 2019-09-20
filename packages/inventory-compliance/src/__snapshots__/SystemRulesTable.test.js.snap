@@ -36,7 +36,7 @@ exports[`SystemRulesTable component should render 1`] = `
         </InputGroup>
       </LevelItem>
       <LevelItem>
-        0
+        2
          results
       </LevelItem>
       <LevelItem>
@@ -55,7 +55,7 @@ exports[`SystemRulesTable component should render 1`] = `
     </Level>
     <Pagination
       dropDirection="down"
-      itemCount={0}
+      itemCount={2}
       onPerPageSelect={[Function]}
       onSetPage={[Function]}
       page={1}
@@ -106,6 +106,9 @@ exports[`SystemRulesTable component should render 1`] = `
             </svg>
              Ansible
           </React.Fragment>,
+          "transforms": Array [
+            [Function],
+          ],
         },
       ]
     }
@@ -126,30 +129,304 @@ exports[`SystemRulesTable component should render 1`] = `
         Object {
           "cells": Array [
             Object {
-              "props": Object {
-                "colSpan": 5,
-              },
-              "title": <EmptyTable>
-                <Bullseye>
-                  <EmptyState
-                    variant="full"
-                  >
-                    <Title
-                      headingLevel="h5"
-                      size="lg"
+              "original": "Use direct-lvm with the Device Mapper Storage Driver",
+              "title": <Stack>
+                <StackItem>
+                  Use direct-lvm with the Device Mapper Storage Driver
+                </StackItem>
+                <StackItem>
+                  <TextContent>
+                    <Text
+                      component="small"
                     >
-                      No matching rules found
-                    </Title>
-                    <EmptyStateBody>
-                      This filter criteria matches no rules. 
-                      <br />
-                       Try changing your filter settings.
-                    </EmptyStateBody>
-                  </EmptyState>
-                </Bullseye>
-              </EmptyTable>,
+                      CCE-80441-9
+                    </Text>
+                  </TextContent>
+                </StackItem>
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "low",
+              "title": <React.Fragment>
+                <svg
+                  height="18"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 0h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm6.67 10.46a1.67 1.67 0 1 0 0 3.338 1.67 1.67 0 0 0 0-3.338zm-1.586-6l.27 4.935a.435.435 0 0 0 .434.411H9.55c.232 0 .422-.18.435-.411l.27-4.936A.435.435 0 0 0 9.818 4h-2.3c-.25 0-.448.21-.435.46z"
+                    fill="#3A9CA6"
+                    fillRule="evenodd"
+                  />
+                </svg>
+                 Low
+              </React.Fragment>,
+            },
+            Object {
+              "original": true,
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": undefined,
+              "title": "No",
             },
           ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "CCE-80441-9",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-0"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      foodescription
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-0"
+                  >
+                    <Grid>
+                      <GridItem
+                        span={2}
+                      >
+                        <Text
+                          component="h5"
+                        >
+                          <b>
+                            Identifier
+                          </b>
+                        </Text>
+                        <Text>
+                          <a
+                            href="https://nvd.nist.gov/cce/index.cfm"
+                            target="_blank"
+                          >
+                            CCE-80441-9
+                          </a>
+                        </Text>
+                      </GridItem>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-0"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      foorationale
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 0,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "original": "Enable the Docker service",
+              "title": <Stack>
+                <StackItem>
+                  Enable the Docker service
+                </StackItem>
+                <StackItem>
+                  <TextContent>
+                    <Text
+                      component="small"
+                    >
+                      CCE-80440-1
+                    </Text>
+                  </TextContent>
+                </StackItem>
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "medium",
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "original": true,
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": undefined,
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "CCE-80440-1",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-1"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      foodescription
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-1"
+                  >
+                    <Grid>
+                      <GridItem
+                        span={2}
+                      >
+                        <Text
+                          component="h5"
+                        >
+                          <b>
+                            Identifier
+                          </b>
+                        </Text>
+                        <Text>
+                          <a
+                            href="https://nvd.nist.gov/cce/index.cfm"
+                            target="_blank"
+                          >
+                            CCE-80440-1
+                          </a>
+                        </Text>
+                      </GridItem>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-1"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      foorationale
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 2,
         },
       ]
     }
@@ -171,7 +448,7 @@ exports[`SystemRulesTable component should render 1`] = `
   >
     <Pagination
       dropDirection="up"
-      itemCount={0}
+      itemCount={2}
       onPerPageSelect={[Function]}
       onSetPage={[Function]}
       page={1}
@@ -227,6 +504,9 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
           </svg>
            Ansible
         </React.Fragment>,
+        "transforms": Array [
+          [Function],
+        ],
       },
     ]
   }

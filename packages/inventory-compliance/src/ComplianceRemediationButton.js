@@ -31,39 +31,10 @@ class ComplianceRemediationButton extends React.Component {
         });
     }
 
-    removeRefIdPrefix = (refId) => {
-        const splitRefId = refId.toLowerCase().split('xccdf_org.ssgproject.content_profile_')[1];
-        if (splitRefId) {
-            return splitRefId;
-        } else {
-            // Sometimes the reports contain IDs like "stig-rhel7-disa" which we can pass
-            // directly
-            return refId;
-        }
-    }
-
     rulesWithRemediations = (rules, systemId) => {
-        return window.insights.chrome.auth.getUser()
-        .then(() => {
-            return fetch('/api/remediations/v1/resolutions', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json; chartset=utf-8' },
-                body: JSON.stringify({
-                    issues: rules.map(rule => `ssg:rhel7|` +
-                                      `${this.removeRefIdPrefix(rule.profiles[0].refId)}|` +
-                                      `${rule.refId}`)
-                })
-            }).then((response) => {
-                if (!response.ok) {
-                    // If remediations doesn't respond, inject no fix available
-                    return {};
-                }
-
-                return response.json();
-            }).then(response => Object.keys(response).filter(rule => response[rule]).map(
-                ruleRefId => this.formatRule(this.findRule(rules, ruleRefId), ruleRefId.split('|')[1], systemId)
-            ));
-        });
+        return rules.filter(rule => rule.remediationAvailable).map(
+            rule => this.formatRule(rule, rule.refId.split('|')[1], systemId)
+        );
     }
 
     dataProvider = () => {
