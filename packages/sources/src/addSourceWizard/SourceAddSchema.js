@@ -3,11 +3,27 @@ import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-re
 import { Popover, TextContent, TextList, TextListItem, Text, TextVariants, Title } from '@patternfly/react-core';
 import { QuestionCircleIcon } from '@patternfly/react-icons';
 import SSLFormLabel from './SSLFormLabel';
-import { AwsIcon, OpenshiftIcon } from '@patternfly/react-icons';
+import { AwsIcon, OpenshiftIcon, MicrosoftIcon } from '@patternfly/react-icons';
+import debouncePromise from '../utilities/debouncePromise';
+import { findSource } from '../api';
+
+export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources }}) => {
+    if (sources.find(({ id }) => id !== sourceId)) {
+        return 'Name has already been taken';
+    }
+
+    if (value === '' || value === undefined) {
+        return 'Name can\'t be blank';
+    }
+
+    return undefined;
+});
+
+const asyncValidatorDebounced = debouncePromise(asyncValidator);
 
 const compileAllSourcesComboOptions = (sourceTypes) => (
     [
-        ...sourceTypes.map(t => ({
+        ...sourceTypes.sort((a, b) => a.product_name.localeCompare(b.product_name)).map(t => ({
             value: t.name,
             label: t.product_name
         }))
@@ -16,7 +32,7 @@ const compileAllSourcesComboOptions = (sourceTypes) => (
 
 const compileAllApplicationComboOptions = (applicationTypes) => (
     [
-        ...applicationTypes.map(t => ({
+        ...applicationTypes.sort((a, b) => a.display_name.localeCompare(b.display_name)).map(t => ({
             value: t.id,
             label: t.display_name
         }))
@@ -28,7 +44,8 @@ const compileStepMapper = (sourceTypes) => sourceTypes.reduce((acc, curr) => ({ 
 
 const iconMapper = (name, DefaultIcon) => ({
     openshift: OpenshiftIcon,
-    amazon: AwsIcon
+    amazon: AwsIcon,
+    azure: MicrosoftIcon
 }[name] || DefaultIcon);
 
 const firstStepNew = (sourceTypes) => ({
@@ -60,9 +77,9 @@ const firstStepNew = (sourceTypes) => ({
             label: 'Name',
             helperText: 'For example, Source_1',
             isRequired: true,
-            validate: [{
-                type: validatorTypes.REQUIRED
-            }]
+            validate: [
+                (value) => asyncValidatorDebounced(value)
+            ]
         }, {
             component: 'card-select',
             name: 'source_type',
@@ -128,7 +145,10 @@ export const temporaryHardcodedSourceSchemas = {
                 label: 'URL',
                 helperText: 'For example, https://myopenshiftcluster.mycompany.com',
                 isRequired: true,
-                validate: [{ type: 'required-validator' }]
+                validate: [
+                    { type: validatorTypes.REQUIRED },
+                    { type: validatorTypes.URL }
+                ]
             }, {
                 component: componentTypes.CHECKBOX,
                 name: 'endpoint.verify_ssl',
@@ -209,7 +229,7 @@ export const temporaryHardcodedSourceSchemas = {
             label: 'Access Key ID',
             helperText: 'For example, AKIAIOSFODNN7EXAMPLE',
             isRequired: true,
-            validate: [{ type: 'required-validator' }]
+            validate: [{ type: validatorTypes.REQUIRED }]
         }, {
             component: componentTypes.TEXT_FIELD,
             name: 'authentication.password',
@@ -217,7 +237,7 @@ export const temporaryHardcodedSourceSchemas = {
             type: 'password',
             helperText: 'For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
             isRequired: true,
-            validate: [{ type: 'required-validator' }]
+            validate: [{ type: validatorTypes.REQUIRED }]
         }, {
             component: componentTypes.TEXT_FIELD,
             name: 'endpoint.role',
