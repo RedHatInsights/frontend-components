@@ -14,7 +14,7 @@ import sourceTypes from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
 import * as dependency from '../../api/index';
 
-describe('AddSourceButton', () => {
+describe('AddSourceWizard', () => {
     let initialProps;
 
     beforeEach(() => {
@@ -37,40 +37,51 @@ describe('AddSourceButton', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it('show finished step after filling the form', () => {
+    it('show finished step after filling the form', (done) => {
         dependency.doCreateSource = jest.fn(() => new Promise((resolve) => resolve('ok')));
+        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: []}}));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
         const form = wrapper.find(FormRenderer).children().children().instance().form;
 
         form.change('source.name', 'nameee');
         form.change('source_type', 'openshift');
-        form.submit().then(() => {
-            wrapper.update();
-            expect(wrapper.find(FinalWizard).length).toBe(1);
-            expect(wrapper.find(FinishedStep).length).toBe(1);
-            expect(wrapper.find(ErroredStep).length).toBe(0);
-        });
+
+        setTimeout(() => {
+            form.submit().then(() => {
+                wrapper.update();
+                expect(wrapper.find(FinalWizard).length).toBe(1);
+                expect(wrapper.find(FinishedStep).length).toBe(1);
+                expect(wrapper.find(ErroredStep).length).toBe(0);
+                done();
+            });
+        }, 1000);
     });
 
-    it('show pass created source to afterSubmit function', () => {
+    it('pass created source to afterSuccess function', (done) => {
         const afterSubmitMock = jest.fn();
         dependency.doCreateSource = jest.fn(() => new Promise((resolve) => resolve({ name: 'source' })));
+        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: []}}));
 
-        const wrapper = mount(<AddSourceWizard { ...initialProps } afterSubmit={ afterSubmitMock }/>);
+        const wrapper = mount(<AddSourceWizard { ...initialProps } afterSuccess={ afterSubmitMock }/>);
         const form = wrapper.find(FormRenderer).children().children().instance().form;
 
         form.change('source.name', 'nameee');
         form.change('source_type', 'openshift');
-        form.submit().then(() => {
-            wrapper.update();
-            wrapper.find(Button).at(0).simulate('click');
 
-            expect(afterSubmitMock).toHaveBeenCalledWith({ name: 'source' });
-        });
+        setTimeout(() => {
+            form.submit().then(() => {
+                wrapper.update();
+                wrapper.find(Button).at(0).simulate('click');
+                wrapper.update();
+
+                expect(afterSubmitMock).toHaveBeenCalledWith({ name: 'source' });
+                done();
+            });
+        }, 1000);
     });
 
-    it('show error step after failing the form', () => {
+    it('show error step after failing the form', (done) => {
         dependency.doCreateSource = jest.fn(() => new Promise((_resolve, reject) => reject('fail')));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
@@ -78,11 +89,15 @@ describe('AddSourceButton', () => {
 
         form.change('source.name', 'nameee');
         form.change('source_type', 'openshift');
-        form.submit().then(() => {
-            wrapper.update();
-            expect(wrapper.find(FinalWizard).length).toBe(1);
-            expect(wrapper.find(FinishedStep).length).toBe(0);
-            expect(wrapper.find(ErroredStep).length).toBe(1);
-        });
+
+        setTimeout(() => {
+            form.submit().then(() => {
+                wrapper.update();
+                expect(wrapper.find(FinalWizard).length).toBe(1);
+                expect(wrapper.find(FinishedStep).length).toBe(0);
+                expect(wrapper.find(ErroredStep).length).toBe(1);
+                done();
+            });
+        }, 1000);
     });
 });

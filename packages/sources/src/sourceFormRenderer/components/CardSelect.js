@@ -42,8 +42,10 @@ class CardSelect extends React.Component {
         }
     }
 
-    prepareCards = () => this.props.options.map(({ value, label }) => {
+    prepareCards = () => this.props.options.map(({ value, label, isDisabled }) => {
         const { iconMapper, DefaultIcon } = this.props;
+
+        const disabled = isDisabled || this.isDisabled;
 
         if (!value) {
             return undefined;
@@ -54,14 +56,14 @@ class CardSelect extends React.Component {
         return (
             <GridItem sm={ 1 } md={ 4 } key={ value }>
                 <Card
-                    className={ `ins-c-sources__wizard--card${this.handleCompare(value) ? ' selected' : ''}${this.isDisabled ? ' disabled' : ''}` }
+                    className={ `ins-c-sources__wizard--card${this.handleCompare(value) ? ' selected' : ''}${disabled ? ' disabled' : ''}` }
                     onClick={ () => this.onClick(value) }
-                    tabIndex={ this.isDisabled ? -1 : 0 }
+                    tabIndex={ disabled ? -1 : 0 }
                     onKeyPress={ (e) => this.handleKeyPress(e, value) }
-                    isHoverable={ !this.isDisabled }
+                    isHoverable={ !disabled }
                     isCompact={ true }
                 >
-                    <div className={ this.isDisabled ? 'disabled' : '' }>
+                    <div className={ disabled ? 'disabled' : '' }>
                         <CardHeader>
                             { label }
                         </CardHeader>
