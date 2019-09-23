@@ -19,7 +19,8 @@ describe('Final wizard', () => {
                 onRetry: jest.fn(),
                 isFinished: false,
                 isErrored: false,
-                successfulMessage: 'Message'
+                successfulMessage: 'Message',
+                hideSourcesButton: false
             };
         });
 

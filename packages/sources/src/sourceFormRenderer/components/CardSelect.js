@@ -42,7 +42,7 @@ class CardSelect extends React.Component {
         }
     }
 
-    prepareCards = () => this.props.options.map(({ value, label, isDisabled }) => {
+    prepareCards = () => this.props.options.map(option => this.props.mutator(option, this.props.formOptions)).map(({ value, label, isDisabled }) => {
         const { iconMapper, DefaultIcon } = this.props;
 
         const disabled = isDisabled || this.isDisabled;
@@ -127,7 +127,8 @@ CardSelect.propTypes = {
 CardSelect.defaultProps = {
     options: [],
     DefaultIcon: ServerIcon,
-    iconMapper: (_value, DefaultIcon) => DefaultIcon
+    iconMapper: (_value, DefaultIcon) => DefaultIcon,
+    mutator: x => x
 };
 
 const CardSelectProvider = ({ FieldProvider, ...rest }) =>

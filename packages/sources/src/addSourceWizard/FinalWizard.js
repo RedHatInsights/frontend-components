@@ -6,7 +6,7 @@ import FinishedStep from './steps/FinishedStep';
 import ErroredStep from './steps/ErroredStep';
 import LoadingStep from './steps/LoadingStep';
 
-const FinalWizard = ({ afterSubmit, afterError, isFinished, isErrored, onRetry, successfulMessage }) =>
+const FinalWizard = ({ afterSubmit, afterError, isFinished, isErrored, onRetry, successfulMessage, hideSourcesButton }) =>
     <Wizard
         isOpen={ true }
         onClose={ isFinished ? afterSubmit : afterError }
@@ -15,7 +15,7 @@ const FinalWizard = ({ afterSubmit, afterError, isFinished, isErrored, onRetry, 
         steps={ [{
             name: 'Finish',
             component: isFinished ?
-                <FinishedStep onClose={ afterSubmit } successfulMessage={ successfulMessage }/> :
+                <FinishedStep onClose={ afterSubmit } successfulMessage={ successfulMessage } hideSourcesButton={ hideSourcesButton }/> :
                 isErrored ?
                     <ErroredStep onRetry={ onRetry } onClose={ afterError }/>
                     : <LoadingStep customText='Source is being created'/>,
@@ -28,7 +28,8 @@ FinalWizard.propTypes = {
     onRetry: PropTypes.func.isRequired,
     isFinished: PropTypes.bool.isRequired,
     isErrored: PropTypes.bool.isRequired,
-    successfulMessage: PropTypes.node.isRequired
+    successfulMessage: PropTypes.node.isRequired,
+    hideSourcesButton: PropTypes.bool.isRequired
 };
 
 export default FinalWizard;
