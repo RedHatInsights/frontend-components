@@ -7,16 +7,16 @@ import FinalWizard from './FinalWizard';
 
 import { doCreateSource } from '../api/index';
 
-const initialValues = {
+const initialValues = (initialValues) => ({
     isSubmitted: false,
     isFinished: false,
     isErrored: false,
-    values: {},
+    values: initialValues,
     createdSource: {}
-};
+});
 
 class AddSourceWizard extends React.Component {
-    state = initialValues;
+    state = initialValues(this.props.initialValues);
 
     setOnSubmitState = (values) => this.setState({
         isSubmitted: true,
@@ -52,7 +52,7 @@ class AddSourceWizard extends React.Component {
     }
 
     render() {
-        const { successfulMessage, isOpen, sourceTypes, applicationTypes } = this.props;
+        const { successfulMessage, isOpen, sourceTypes, applicationTypes, disableAppSelection, hideSourcesButton } = this.props;
         const { isErrored, isFinished, isSubmitted, values } = this.state;
 
         if (!isOpen) {
@@ -66,6 +66,7 @@ class AddSourceWizard extends React.Component {
                 onCancel={ this.onCancel }
                 sourceTypes={ sourceTypes }
                 applicationTypes={ applicationTypes }
+                disableAppSelection={ disableAppSelection }
             />;
         }
 
@@ -76,6 +77,7 @@ class AddSourceWizard extends React.Component {
             isErrored={ isErrored }
             onRetry={ this.onRetry }
             successfulMessage={ successfulMessage }
+            hideSourcesButton={ hideSourcesButton }
         />;
     }
 }
@@ -97,14 +99,22 @@ AddSourceWizard.propTypes = {
     })),
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
-    successfulMessage: PropTypes.node
+    successfulMessage: PropTypes.node,
+    initialValues: PropTypes.shape({
+        [PropTypes.string]: PropTypes.oneOf([ PropTypes.string, PropTypes.array, PropTypes.number, PropTypes.bool ])
+    }),
+    disableAppSelection: PropTypes.bool,
+    hideSourcesButton: PropTypes.bool
 };
 
 AddSourceWizard.defaultProps = {
     afterSuccess: () => {},
     sourceTypes: undefined,
     applicationTypes: undefined,
-    successfulMessage: 'Your source has been successfully added.'
+    successfulMessage: 'Your source has been successfully added.',
+    initialValues: {},
+    disableAppSelection: false,
+    hideSourcesButton: false
 };
 
 class AddSourceButton extends React.Component {

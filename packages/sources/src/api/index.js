@@ -128,7 +128,7 @@ export function doCreateSource(formData, sourceTypes) {
 export const doLoadAllApplications = () => getSourcesApi().listApplicationTypes().then(data => data.data);
 
 export const findSource = (name) => getSourcesApi().postGraphQL({
-    query: `{ sources(filter: {name: ${name}})
+    query: `{ sources(filter: {name: "${name}"})
         { id, name }
     }`
 });

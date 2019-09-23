@@ -16,7 +16,9 @@ const SourcesFormRenderer = props => (
             description: Description,
             'card-select': CardSelect
         } }
-        { ...props } />
+        subscription={ { values: true } }
+        { ...props }
+    />
 );
 
 export default SourcesFormRenderer;

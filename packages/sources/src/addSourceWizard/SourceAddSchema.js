@@ -39,6 +39,26 @@ const compileAllApplicationComboOptions = (applicationTypes) => (
     ]
 );
 
+const appMutator = (appTypes) => (option, formOptions) => {
+    const selectedSourceType = formOptions.getState().values.source_type;
+    const appType = appTypes.find(app => app.display_name === option.label);
+    const isEnabled = selectedSourceType ? appType.supported_source_types.includes(selectedSourceType) : true;
+    return {
+        ...option,
+        isDisabled: !isEnabled
+    };
+};
+
+const sourceTypeMutator = (appTypes, sourceTypes) => (option, formOptions) => {
+    const selectedApp = formOptions.getState().values.application ? formOptions.getState().values.application.application_type_id : undefined;
+    const appType = appTypes.find(app => app.id === selectedApp);
+    const isEnabled = appType ? appType.supported_source_types.includes(sourceTypes.find(type => type.product_name === option.label).name) : true;
+    return {
+        ...option,
+        isDisabled: !isEnabled
+    };
+};
+
 /* return hash of form: { amazon: 'amazon', google: 'google', openshift: 'openshift' } */
 const compileStepMapper = (sourceTypes) => sourceTypes.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.name }), {});
 
@@ -48,14 +68,49 @@ const iconMapper = (name, DefaultIcon) => ({
     azure: MicrosoftIcon
 }[name] || DefaultIcon);
 
-const firstStepNew = (sourceTypes) => ({
-    title: 'Select a source type',
-    name: 'step_1',
-    stepKey: 1,
+const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
+    title: 'Configure your source',
+    name: 'types_step',
+    stepKey: 'types_step',
     nextStep: {
         when: 'source_type',
         stepMapper: compileStepMapper(sourceTypes)
     },
+    fields: [
+        {
+            component: 'card-select',
+            name: 'application.application_type_id',
+            label: 'Select your application',
+            DefaultIcon: () => <React.Fragment />,
+            options: compileAllApplicationComboOptions(applicationTypes),
+            mutator: appMutator(applicationTypes),
+            validate: [{
+                type: validatorTypes.REQUIRED
+            }],
+            isRequired: true,
+            helperText: 'Selected application will limit the options of available source types.',
+            isDisabled: disableAppSelection
+        },
+        {
+            component: 'card-select',
+            name: 'source_type',
+            isRequired: true,
+            label: 'Select your source type',
+            iconMapper,
+            validate: [{
+                type: validatorTypes.REQUIRED
+            }],
+            options: compileAllSourcesComboOptions(sourceTypes),
+            mutator: sourceTypeMutator(applicationTypes, sourceTypes)
+        }
+    ]
+});
+
+const nameStep = () => ({
+    title: 'Select a source name',
+    name: 'name_step',
+    stepKey: 1,
+    nextStep: 'types_step',
     fields: [
         {
             component: 'description',
@@ -63,10 +118,10 @@ const firstStepNew = (sourceTypes) => ({
             content: <TextContent key='step1'>
                 <Text component={ TextVariants.p }>
                 To import data for an application, you need to connect to a data source.
-                To begin, input a name and select the type of source you want to collect data from.
+                Input a name and then proceed to the selection of application and source types.
                 </Text>
                 <Text component={ TextVariants.p }>
-            All fields are required.
+            Name is required and has to be unique.
                 </Text>
             </TextContent>
         },
@@ -80,17 +135,8 @@ const firstStepNew = (sourceTypes) => ({
             validate: [
                 (value) => asyncValidatorDebounced(value)
             ]
-        }, {
-            component: 'card-select',
-            name: 'source_type',
-            isRequired: true,
-            label: 'Type',
-            iconMapper,
-            validate: [{
-                type: validatorTypes.REQUIRED
-            }],
-            options: compileAllSourcesComboOptions(sourceTypes)
-        }]
+        }
+    ]
 });
 
 export const temporaryHardcodedSourceSchemas = {
@@ -289,7 +335,7 @@ const fieldsToSteps = (fields, stepNamePrefix, lastStep) =>
         ) : fieldsToStep(fields, stepNamePrefix, lastStep);
 
 const sourceTypeSteps = sourceTypes =>
-    sourceTypes.map(t => fieldsToSteps(sourceTypeSchema(t), t.name, 'application-type'))
+    sourceTypes.map(t => fieldsToSteps(sourceTypeSchema(t), t.name, 'summary'))
     .flatMap((x) => x);
 
 const summaryStep = (sourceTypes, applicationTypes) => ({
@@ -315,23 +361,7 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
     title: 'Review source details'
 });
 
-const applicationStep = (applicationTypes) => ({
-    stepKey: 'application-type',
-    name: 'application-type',
-    title: 'Select application',
-    nextStep: 'summary',
-    fields: [
-        {
-            component: 'card-select',
-            name: 'application.application_type_id',
-            label: 'Select your application',
-            DefaultIcon: () => <React.Fragment />,
-            options: compileAllApplicationComboOptions(applicationTypes)
-        }
-    ]
-});
-
-export default (sourceTypes, applicationTypes) => (
+export default (sourceTypes, applicationTypes, disableAppSelection) => (
     { fields: [
         {
             component: componentTypes.WIZARD,
@@ -343,9 +373,9 @@ export default (sourceTypes, applicationTypes) => (
                 submit: 'Finish'
             },
             fields: [
-                firstStepNew(sourceTypes),
+                nameStep(),
+                typesStep(sourceTypes, applicationTypes, disableAppSelection),
                 ...sourceTypeSteps(sourceTypes),
-                applicationStep(applicationTypes),
                 summaryStep(sourceTypes, applicationTypes)
             ]
         }

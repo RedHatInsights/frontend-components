@@ -23,12 +23,12 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                     <Text
                       component="p"
                     >
-                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                      To import data for an application, you need to connect to a data source. Input a name and then proceed to the selection of application and source types.
                     </Text>
                     <Text
                       component="p"
                     >
-                      All fields are required.
+                      Name is required and has to be unique.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -44,11 +44,45 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                     [Function],
                   ],
                 },
+              ],
+              "name": "name_step",
+              "nextStep": "types_step",
+              "stepKey": 1,
+              "title": "Select a source name",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "helperText": "Selected application will limit the options of available source types.",
+                  "isDisabled": false,
+                  "isRequired": true,
+                  "label": "Select your application",
+                  "mutator": [Function],
+                  "name": "application.application_type_id",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
                 Object {
                   "component": "card-select",
                   "iconMapper": [Function],
                   "isRequired": true,
-                  "label": "Type",
+                  "label": "Select your source type",
+                  "mutator": [Function],
                   "name": "source_type",
                   "options": Array [
                     Object {
@@ -71,7 +105,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   ],
                 },
               ],
-              "name": "step_1",
+              "name": "types_step",
               "nextStep": Object {
                 "stepMapper": Object {
                   "amazon": "amazon",
@@ -80,8 +114,8 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
                 "when": "source_type",
               },
-              "stepKey": 1,
-              "title": "Select a source type",
+              "stepKey": "types_step",
+              "title": "Configure your source",
             },
             Object {
               "fields": Array [
@@ -216,7 +250,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
               ],
               "name": "amazon",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -228,7 +262,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
             },
@@ -341,33 +375,9 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
               ],
               "name": "openshift_1",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "openshift_1",
               "title": "Enter OpenShift Container Platform information",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "DefaultIcon": [Function],
-                  "component": "card-select",
-                  "label": "Select your application",
-                  "name": "application.application_type_id",
-                  "options": Array [
-                    Object {
-                      "label": "Catalog",
-                      "value": "1",
-                    },
-                    Object {
-                      "label": "Cost Management",
-                      "value": "2",
-                    },
-                  ],
-                },
-              ],
-              "name": "application-type",
-              "nextStep": "summary",
-              "stepKey": "application-type",
-              "title": "Select application",
             },
             Object {
               "fields": Array [
@@ -526,12 +536,12 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                     <Text
                       component="p"
                     >
-                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                      To import data for an application, you need to connect to a data source. Input a name and then proceed to the selection of application and source types.
                     </Text>
                     <Text
                       component="p"
                     >
-                      All fields are required.
+                      Name is required and has to be unique.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -547,11 +557,45 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                     [Function],
                   ],
                 },
+              ],
+              "name": "name_step",
+              "nextStep": "types_step",
+              "stepKey": 1,
+              "title": "Select a source name",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "helperText": "Selected application will limit the options of available source types.",
+                  "isDisabled": false,
+                  "isRequired": true,
+                  "label": "Select your application",
+                  "mutator": [Function],
+                  "name": "application.application_type_id",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
                 Object {
                   "component": "card-select",
                   "iconMapper": [Function],
                   "isRequired": true,
-                  "label": "Type",
+                  "label": "Select your source type",
+                  "mutator": [Function],
                   "name": "source_type",
                   "options": Array [
                     Object {
@@ -574,7 +618,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   ],
                 },
               ],
-              "name": "step_1",
+              "name": "types_step",
               "nextStep": Object {
                 "stepMapper": Object {
                   "amazon": "amazon",
@@ -583,8 +627,8 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
                 "when": "source_type",
               },
-              "stepKey": 1,
-              "title": "Select a source type",
+              "stepKey": "types_step",
+              "title": "Configure your source",
             },
             Object {
               "fields": Array [
@@ -719,7 +763,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
               ],
               "name": "amazon",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -731,7 +775,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
             },
@@ -844,33 +888,9 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
               ],
               "name": "openshift_1",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "openshift_1",
               "title": "Enter OpenShift Container Platform information",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "DefaultIcon": [Function],
-                  "component": "card-select",
-                  "label": "Select your application",
-                  "name": "application.application_type_id",
-                  "options": Array [
-                    Object {
-                      "label": "Catalog",
-                      "value": "1",
-                    },
-                    Object {
-                      "label": "Cost Management",
-                      "value": "2",
-                    },
-                  ],
-                },
-              ],
-              "name": "application-type",
-              "nextStep": "summary",
-              "stepKey": "application-type",
-              "title": "Select application",
             },
             Object {
               "fields": Array [
@@ -1029,12 +1049,12 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                     <Text
                       component="p"
                     >
-                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                      To import data for an application, you need to connect to a data source. Input a name and then proceed to the selection of application and source types.
                     </Text>
                     <Text
                       component="p"
                     >
-                      All fields are required.
+                      Name is required and has to be unique.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -1050,11 +1070,45 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                     [Function],
                   ],
                 },
+              ],
+              "name": "name_step",
+              "nextStep": "types_step",
+              "stepKey": 1,
+              "title": "Select a source name",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "helperText": "Selected application will limit the options of available source types.",
+                  "isDisabled": false,
+                  "isRequired": true,
+                  "label": "Select your application",
+                  "mutator": [Function],
+                  "name": "application.application_type_id",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
                 Object {
                   "component": "card-select",
                   "iconMapper": [Function],
                   "isRequired": true,
-                  "label": "Type",
+                  "label": "Select your source type",
+                  "mutator": [Function],
                   "name": "source_type",
                   "options": Array [
                     Object {
@@ -1077,7 +1131,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   ],
                 },
               ],
-              "name": "step_1",
+              "name": "types_step",
               "nextStep": Object {
                 "stepMapper": Object {
                   "amazon": "amazon",
@@ -1086,8 +1140,8 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
                 "when": "source_type",
               },
-              "stepKey": 1,
-              "title": "Select a source type",
+              "stepKey": "types_step",
+              "title": "Configure your source",
             },
             Object {
               "fields": Array [
@@ -1222,7 +1276,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
               ],
               "name": "amazon",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -1234,7 +1288,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
             },
@@ -1347,33 +1401,9 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
               ],
               "name": "openshift_1",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "openshift_1",
               "title": "Enter OpenShift Container Platform information",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "DefaultIcon": [Function],
-                  "component": "card-select",
-                  "label": "Select your application",
-                  "name": "application.application_type_id",
-                  "options": Array [
-                    Object {
-                      "label": "Catalog",
-                      "value": "1",
-                    },
-                    Object {
-                      "label": "Cost Management",
-                      "value": "2",
-                    },
-                  ],
-                },
-              ],
-              "name": "application-type",
-              "nextStep": "summary",
-              "stepKey": "application-type",
-              "title": "Select application",
             },
             Object {
               "fields": Array [
@@ -1532,12 +1562,12 @@ exports[`Steps components renders correctly without sourceTypes and application 
                     <Text
                       component="p"
                     >
-                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                      To import data for an application, you need to connect to a data source. Input a name and then proceed to the selection of application and source types.
                     </Text>
                     <Text
                       component="p"
                     >
-                      All fields are required.
+                      Name is required and has to be unique.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -1553,11 +1583,45 @@ exports[`Steps components renders correctly without sourceTypes and application 
                     [Function],
                   ],
                 },
+              ],
+              "name": "name_step",
+              "nextStep": "types_step",
+              "stepKey": 1,
+              "title": "Select a source name",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "helperText": "Selected application will limit the options of available source types.",
+                  "isDisabled": false,
+                  "isRequired": true,
+                  "label": "Select your application",
+                  "mutator": [Function],
+                  "name": "application.application_type_id",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                  "validate": Array [
+                    Object {
+                      "type": "required-validator",
+                    },
+                  ],
+                },
                 Object {
                   "component": "card-select",
                   "iconMapper": [Function],
                   "isRequired": true,
-                  "label": "Type",
+                  "label": "Select your source type",
+                  "mutator": [Function],
                   "name": "source_type",
                   "options": Array [
                     Object {
@@ -1580,7 +1644,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   ],
                 },
               ],
-              "name": "step_1",
+              "name": "types_step",
               "nextStep": Object {
                 "stepMapper": Object {
                   "amazon": "amazon",
@@ -1589,8 +1653,8 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
                 "when": "source_type",
               },
-              "stepKey": 1,
-              "title": "Select a source type",
+              "stepKey": "types_step",
+              "title": "Configure your source",
             },
             Object {
               "fields": Array [
@@ -1725,7 +1789,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
               ],
               "name": "amazon",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -1737,7 +1801,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
             },
@@ -1850,33 +1914,9 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
               ],
               "name": "openshift_1",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "openshift_1",
               "title": "Enter OpenShift Container Platform information",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "DefaultIcon": [Function],
-                  "component": "card-select",
-                  "label": "Select your application",
-                  "name": "application.application_type_id",
-                  "options": Array [
-                    Object {
-                      "label": "Catalog",
-                      "value": "1",
-                    },
-                    Object {
-                      "label": "Cost Management",
-                      "value": "2",
-                    },
-                  ],
-                },
-              ],
-              "name": "application-type",
-              "nextStep": "summary",
-              "stepKey": "application-type",
-              "title": "Select application",
             },
             Object {
               "fields": Array [

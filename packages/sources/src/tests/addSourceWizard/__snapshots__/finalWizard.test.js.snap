@@ -63,6 +63,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
     Array [
       Object {
         "component": <FinishedStep
+          hideSourcesButton={false}
           onClose={[MockFunction]}
           successfulMessage="Message"
         />,

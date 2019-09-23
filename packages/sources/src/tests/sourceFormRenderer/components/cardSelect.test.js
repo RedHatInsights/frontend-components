@@ -24,6 +24,9 @@ describe('CardSelect component', () => {
                 name: 'card-select',
                 onChange: spyOnChange,
                 onBlur: spyOnBlur
+            },
+            formOptions: {
+                something: '1'
             }
         };
     });
@@ -40,6 +43,15 @@ describe('CardSelect component', () => {
         expect(wrapper.find(CardHeader).length).toEqual(2);
         expect(wrapper.find(CardHeader).first().text()).toEqual('openshift');
         expect(wrapper.find(CardHeader).last().text()).toEqual('aws');
+    });
+
+    it('should render correctly with mutator and it passes formOptions', () => {
+        const wrapper = mount(<CardSelect { ...initialProps } mutator={ ({ label, value }, formOptions) => ({ label: `AAA-${label}-${formOptions.something}`, value }) }/>);
+
+        expect(wrapper.find(Card).length).toEqual(2);
+        expect(wrapper.find(CardHeader).length).toEqual(2);
+        expect(wrapper.find(CardHeader).first().text()).toEqual('AAA-openshift-1');
+        expect(wrapper.find(CardHeader).last().text()).toEqual('AAA-aws-1');
     });
 
     it('should render correctly with default icon', () => {
