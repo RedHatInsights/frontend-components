@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagCount component should render 1`] = `
+<div
+  className="ins-c-tagCount"
+>
+  <i
+    className="fas fa-tag"
+  />
+  <p />
+</div>
+`;
+
+exports[`TagCount component should render center Spinner 1`] = `
+<div
+  className="ins-c-tagCount"
+>
+  <i
+    className="fas fa-tag"
+  />
+  <p>
+    44
+  </p>
+</div>
+`;
