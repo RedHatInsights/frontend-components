@@ -20,11 +20,11 @@ class SourceAddModal extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
-        const { sourceTypes, applicationTypes } = this.props;
+        const { sourceTypes, applicationTypes, disableAppSelection } = this.props;
 
         if (sourceTypes && applicationTypes) {
             this.setState({
-                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes),
+                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes, disableAppSelection),
                 isLoading: false,
                 sourceTypes,
                 applicationTypes
@@ -49,7 +49,7 @@ class SourceAddModal extends React.Component {
                 if (this._isMounted) {
                     this.setState({
                         sourceTypes: sourceTypesFinal,
-                        schema: createSchema(sourceTypesFinal.filter(type => type.schema), applicationTypesFinal),
+                        schema: createSchema(sourceTypesFinal.filter(type => type.schema), applicationTypesFinal, disableAppSelection),
                         isLoading: false,
                         applicationTypes: applicationTypesFinal
                     });
@@ -108,11 +108,13 @@ SourceAddModal.propTypes = {
         name: PropTypes.string.isRequired,
         display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
     })),
-    values: PropTypes.object
+    values: PropTypes.object,
+    disableAppSelection: PropTypes.bool
 };
 
 SourceAddModal.defaultProps = {
-    values: {}
+    values: {},
+    disableAppSelection: false
 };
 
 export default SourceAddModal;
