@@ -10,6 +10,9 @@ exports[`AddSourceButton renders correctly 1`] = `
   </Button>
   <AddSourceWizard
     afterSuccess={[Function]}
+    disableAppSelection={false}
+    hideSourcesButton={false}
+    initialValues={Object {}}
     isOpen={false}
     onClose={[Function]}
     successfulMessage="Your source has been successfully added."

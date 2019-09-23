@@ -112,9 +112,9 @@ describe('SourceWizardSummary component', () => {
             expect(wrapper.find(TextListItem).at(1).children().first().text()).toEqual('openshift');
         });
 
-        it('type is second', () => {
+        it('type is third', () => {
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift') }/>);
-            expect(wrapper.find(TextListItem).at(3).children().first().text()).toEqual('OpenShift Container Platform');
+            expect(wrapper.find(TextListItem).at(5).children().first().text()).toEqual('OpenShift Container Platform');
         });
 
         it('amazon', () => {
@@ -127,10 +127,17 @@ describe('SourceWizardSummary component', () => {
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
-        it('selected Catalog application', () => {
+        it('selected Catalog application, is second', () => {
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', '1') } />);
             expect(toJson(wrapper)).toMatchSnapshot();
-            expect(wrapper.find(TextListItem).last().children().first().text()).toEqual('Catalog');
+            expect(wrapper.find(TextListItem).at(3).children().first().text()).toEqual('Catalog');
+        });
+
+        it('hide application', () => {
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', '1') } showApp={ false }/>);
+            expect(toJson(wrapper)).toMatchSnapshot();
+            expect(wrapper.find(TextListItem).at(3).children().first().text()).not.toEqual('Catalog');
+            expect(wrapper.contains('Catalog')).toEqual(false);
         });
 
         it('do not contain hidden field', () => {
