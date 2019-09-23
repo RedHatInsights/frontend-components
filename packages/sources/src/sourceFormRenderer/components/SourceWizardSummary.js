@@ -36,7 +36,7 @@ export const allValuesPath = (value, fields, path = undefined) => {
     return Object.keys(value).map((key) => allValuesPath(value[key], fields, path ? `${path}.${key}` : key)).filter(x => x);
 };
 
-const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes }) => {
+const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showApp }) => {
     const values = formOptions.getState().values;
     const type = sourceTypes.find(type => type.name === values.source_type);
     const fields = type.schema.fields;
@@ -57,11 +57,13 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes }) => 
             <TextList component={ TextListVariants.dl }>
                 <TextListItem component={ TextListItemVariants.dt }>{ 'Name' }</TextListItem>
                 <TextListItem component={ TextListItemVariants.dd }>{ values.source.name }</TextListItem>
+                { showApp && <React.Fragment>
+                    <TextListItem component={ TextListItemVariants.dt }>{ 'Application' }</TextListItem>
+                    <TextListItem component={ TextListItemVariants.dd }>{ applicationName }</TextListItem>
+                </React.Fragment> }
                 <TextListItem component={ TextListItemVariants.dt }>{ 'Source Type' }</TextListItem>
                 <TextListItem component={ TextListItemVariants.dd }>{ type.product_name }</TextListItem>
                 { valuesList }
-                <TextListItem component={ TextListItemVariants.dt }>{ 'Application' }</TextListItem>
-                <TextListItem component={ TextListItemVariants.dd }>{ applicationName }</TextListItem>
             </TextList>
         </TextContent>
     );
@@ -81,7 +83,12 @@ SourceWizardSummary.propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
-    })).isRequired
+    })).isRequired,
+    showApp: PropTypes.bool
+};
+
+SourceWizardSummary.defaultProps = {
+    showApp: true
 };
 
 export default SourceWizardSummary;
