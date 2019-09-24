@@ -24,7 +24,7 @@ export default class TagCount extends React.Component
             <div className="ins-c-tagCount" onClick={this.toggleTagModal}>
                 <i className="fas fa-tag"></i>
                 <span>{this.props.count}</span>
-                <TagModal modalOpen={this.state.modalOpen} />
+                <TagModal modalOpen={this.state.modalOpen} systemName="paul.hostname.com" />
             </div>
         )
     }
