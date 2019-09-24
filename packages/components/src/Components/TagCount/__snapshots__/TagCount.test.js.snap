@@ -3,23 +3,33 @@
 exports[`TagCount component should render 1`] = `
 <div
   className="ins-c-tagCount"
+  onClick={[Function]}
 >
   <i
     className="fas fa-tag"
   />
-  <p />
+  <span />
+  <TagModal
+    modalOpen={false}
+    systemName="paul.hostname.com"
+  />
 </div>
 `;
 
 exports[`TagCount component should render center Spinner 1`] = `
 <div
   className="ins-c-tagCount"
+  onClick={[Function]}
 >
   <i
     className="fas fa-tag"
   />
-  <p>
+  <span>
     44
-  </p>
+  </span>
+  <TagModal
+    modalOpen={false}
+    systemName="paul.hostname.com"
+  />
 </div>
 `;
