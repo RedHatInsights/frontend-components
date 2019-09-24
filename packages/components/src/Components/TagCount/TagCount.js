@@ -8,8 +8,15 @@ export default class TagCount extends React.Component
 {
     constructor(props) {
         super(props);
+        let count = 0;
+        if (props.systemName === 'paul.localhost.com') {
+            count = 11;
+        } else {
+            count = 2; 
+        }
         this.state = {
-            modalOpen: false
+            modalOpen: false,
+            count: count
         };
     }
 
@@ -23,8 +30,8 @@ export default class TagCount extends React.Component
         return (
             <div className="ins-c-tagCount" onClick={this.toggleTagModal}>
                 <i className="fas fa-tag"></i>
-                <span>{this.props.count}</span>
-                <TagModal modalOpen={this.state.modalOpen} systemName="paul.hostname.com" />
+                <span>{this.state.count}</span>
+                <TagModal modalOpen={this.state.modalOpen} systemName={this.props.systemName} />
             </div>
         )
     }

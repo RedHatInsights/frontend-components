@@ -20,17 +20,15 @@ import {
 export default class TagModal extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            columns: [
-                { title: 'Name' },
-                { title: 'Tag Source' }
-            ],
-            rows: [
+        let rows = []
+        //this bit should be replaced with an API call when the backend is ready
+        if(props.systemName == 'paul.localhost.com') {
+            rows = [
                 {
-                cells: ['environment=production', 'AWS']
+                    cells: ['environment=production', 'AWS']
                 },
                 {
-                    cells: ['owner=faninace', 'AWS']
+                    cells: ['owner=finanace', 'AWS']
                 },
                 {
                     cells: ['pants=worn', 'AWS']
@@ -49,8 +47,34 @@ export default class TagModal extends React.Component {
                 },
                 {
                     cells: ['Iam=SPEED!', 'AWS']
+                },
+                {
+                    cells: ['beans=food', 'AWS']
+                },
+                {
+                    cells: ['thing=otherthing', 'AWS']
+                },
+                {
+                    cells: ['cheese=cheddar', 'AWS']
                 }
-            ]
+            ];
+        } else {
+            rows = [
+                {
+                    cells: ['environment=staging', 'AWS']
+                },
+                {
+                    cells: ['owner=engineering', 'AWS']
+                }
+            ];
+        }
+
+        this.state = {
+            columns: [
+                { title: 'Name' },
+                { title: 'Tag Source' }
+            ],
+            rows: rows
         };
     }
     render() {
