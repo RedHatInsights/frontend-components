@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './tagCount.scss';
 
-const TagCount = ({count, onTagClick, ...props}) => {
+const TagCount = ({count, onTagClick, className, ...props}) => {
     return (
-        <div className="ins-c-tag-count" onClick={onTagClick}>
+        <div {...props} className={classNames("ins-c-tag-count", className)} onClick={onTagClick}>
             <i className="fas fa-tag"></i>
             <span>{count}</span>
         </div>
