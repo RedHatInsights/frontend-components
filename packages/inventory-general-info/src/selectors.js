@@ -1,5 +1,13 @@
 /* eslint-disable camelcase */
 
+function safeParser(toParse, key) {
+    try {
+        return JSON.parse(toParse);
+    } catch {
+        return { [key]: toParse };
+    }
+}
+
 export const propertiesSelector = ({
     number_of_cpus,
     number_of_sockets,
@@ -11,7 +19,14 @@ export const propertiesSelector = ({
     sockets: number_of_sockets,
     coresPerSocket: cores_per_socket,
     ramSize,
-    storage: disk_devices
+    storage: disk_devices && disk_devices.map(({ device, label, mount_point, options, type }) => ({
+        ...device && safeParser(device, 'device'),
+        label,
+        ...mount_point && safeParser(mount_point, 'mountpoint'),
+        ...options && safeParser(options, 'options'),
+        ...type && safeParser(type, 'mounttype')
+    })
+    )
 });
 
 export const operatingSystem = ({
