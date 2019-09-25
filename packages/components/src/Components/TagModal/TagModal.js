@@ -78,30 +78,33 @@ export default class TagModal extends React.Component {
         };
     }
 
-    componentWillReceiveProps(...props) {
-        this.setState({modalOpen: this.props.modalOpen})
-    }
-
-    toggleModal = () => {
-        this.setState(({ modalOpen }) => ({
-            modalOpen: !modalOpen
-        }));
-    }
-
-    render(...props) {
+    render() {
+        const { systemName, toggleModal, isOpen, ...props } = this.props;
         return(
             <Modal
-            width={'50%'}
-            title={"Tags for " + this.props.systemName}
-            isOpen={this.state.modalOpen}
-            onClose={this.toggleModal}
-            isFooterLeftAligned
+                {...props}
+                isOpen={isOpen}
+                title={`Tags for ${systemName}`}
+                onClose={toggleModal}
+                isFooterLeftAligned
             >
+                {this.props.children}
                 <Table variant="compact" cells={this.state.columns} rows={this.state.rows}>
                     <TableHeader />
                     <TableBody />
                 </Table>
             </Modal>
-        )
+        );
     }
+}
+
+TagModal.propTypes = {
+    systemName: PropTypes.string,
+    isOpen: PropTypes.bool,
+    toggleModal: PropTypes.func
+};
+
+TagModal.defaultProps = {
+    isOpen: false,
+    toggleModal: () => undefined
 }
