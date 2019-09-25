@@ -77,16 +77,27 @@ export default class TagModal extends React.Component {
             rows: rows
         };
     }
-    render() {
+
+    componentWillReceiveProps(...props) {
+        this.setState({modalOpen: this.props.modalOpen})
+    }
+
+    toggleModal = () => {
+        this.setState(({ modalOpen }) => ({
+            modalOpen: !modalOpen
+        }));
+    }
+
+    render(...props) {
         return(
             <Modal
             width={'50%'}
             title={"Tags for " + this.props.systemName}
-            isOpen={this.props.modalOpen}
-            onClose={this.handleModalToggle}
+            isOpen={this.state.modalOpen}
+            onClose={this.toggleModal}
             isFooterLeftAligned
             >
-                <Table cells={this.state.columns} rows={this.state.rows}>
+                <Table variant="compact" cells={this.state.columns} rows={this.state.rows}>
                     <TableHeader />
                     <TableBody />
                 </Table>
