@@ -2,7 +2,7 @@
 
 exports[`TagCount component should render a tag count of 11 1`] = `
 <div
-  className="ins-c-tagCount"
+  className="ins-c-tag-count"
   onClick={[Function]}
 >
   <i
@@ -11,26 +11,17 @@ exports[`TagCount component should render a tag count of 11 1`] = `
   <span>
     11
   </span>
-  <TagModal
-    modalOpen={false}
-    systemName="paul.localhost.com"
-  />
 </div>
 `;
 
 exports[`TagCount component should render a tag count with no value 1`] = `
 <div
-  className="ins-c-tagCount"
+  className="ins-c-tag-count"
   onClick={[Function]}
 >
   <i
     className="fas fa-tag"
   />
-  <span>
-    2
-  </span>
-  <TagModal
-    modalOpen={false}
-  />
+  <span />
 </div>
 `;
