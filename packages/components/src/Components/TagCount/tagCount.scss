@@ -1,10 +1,10 @@
-.ins-c-tagCount {
-    color: #9a9a9a;
+.ins-c-tag-count {
+    color: var(--pf-global--icon--Color--light);
     display: flex;
 
     i {
         padding: 10px;
-        font-size: 150%;
+        font-size: var(--pf-global--icon--FontSize--lg);
     }
 
     span {
