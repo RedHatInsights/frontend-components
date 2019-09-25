@@ -1,6 +1,9 @@
 .ins-c-tag-count {
     color: var(--pf-global--icon--Color--light);
     display: flex;
+    border: none;
+    padding: 0;
+    background-color: inherit;
 
     i {
         padding: 10px;
@@ -10,4 +13,12 @@
     span {
         margin: auto 0;
     }
+}
+
+.blue-boy {
+    color: blue !important;
+}
+
+.bordered {
+    border: 10px solid red;
 }
