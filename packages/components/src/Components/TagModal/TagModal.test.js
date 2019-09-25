@@ -5,7 +5,14 @@ import TagModal from './TagModal';
 
 describe('TagCount component', () => {
     it('Render the modal open with 11 tags', () => {
-        const wrapper = shallow(<TagModal modalOpen={true} systemName={'paul.localhost.com'} />)
+        const wrapper = shallow(<TagModal isOpen={true} systemName={'paul.localhost.com'} />)
         expect(toJson(wrapper)).toMatchSnapshot();
     });
+
+    it('Render the modal with a child component', () => {
+        const wrapper = shallow(<TagModal isOpen={true} systemName={'paul.localhost.com'}>
+            <h1>I am a chile component</h1>
+        </TagModal>)
+        expect(toJson(wrapper)).toMatchSnapshot();
+    })
 })
