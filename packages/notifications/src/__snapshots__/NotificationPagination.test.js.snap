@@ -7,16 +7,16 @@ exports[`Notification Pagination component should render correctly 1`] = `
   <CardBody>
     <Level>
       <LevelItem>
-        <Button
+        <Component
           className="ins-c-pagination__clear-all"
           onClick={[Function]}
           variant="link"
         >
           Clear all
-        </Button>
+        </Component>
       </LevelItem>
       <LevelItem>
-        <Pagination
+        <Component
           itemCount={10}
           onSetPage={[Function]}
           page={1}
