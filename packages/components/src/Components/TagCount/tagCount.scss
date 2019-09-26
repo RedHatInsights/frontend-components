@@ -1,5 +1,7 @@
 .ins-c-tag-count {
     color: var(--pf-global--icon--Color--light);
+    display: flex !important;
+    align-content: center;
 }
 
 .ins-c-tag__text {
