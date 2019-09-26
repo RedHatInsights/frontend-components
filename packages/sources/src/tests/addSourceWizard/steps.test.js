@@ -27,7 +27,8 @@ describe('Steps components', () => {
         beforeEach(() => {
             initialProps = {
                 onClose: spyFunction,
-                successfulMessage: 'Here I Am'
+                successfulMessage: 'Here I Am',
+                hideSourcesButton: false
             };
         });
 
@@ -36,6 +37,12 @@ describe('Steps components', () => {
             expect(toJson(wrapper)).toMatchSnapshot();
             expect(wrapper.find('a[href="/hybrid/settings/sources"]').length).toBe(1);
             expect(wrapper.find(EmptyStateBody).html().includes('Here I Am')).toBe(true);
+        });
+
+        it('renders withou takemetosources button', () => {
+            const wrapper = shallow(<FinishedStep { ...initialProps } hideSourcesButton={ true }/>);
+            expect(toJson(wrapper)).toMatchSnapshot();
+            expect(wrapper.find('a[href="/hybrid/settings/sources"]').length).toBe(0);
         });
 
         it('calls onClose function', () => {

@@ -49,9 +49,9 @@ class RulesComplianceFilter extends React.Component {
         if (filterName === 'hidePassed') {
             this.setState({ hidePassed: selectedValue }, this.updateInventory);
         } else if (filterName === 'severity') {
-            this.setState({ severity: [ ...severity, selectedValue ]}, this.updateInventory);
+            this.setState({ severity: [ ...severity, selectedValue ] }, this.updateInventory);
         } else if (filterName === 'policy') {
-            this.setState({ policy: [ ...policy, selectedValue ]}, this.updateInventory);
+            this.setState({ policy: [ ...policy, selectedValue ] }, this.updateInventory);
         }
     }
 
@@ -70,6 +70,7 @@ class RulesComplianceFilter extends React.Component {
     render() {
         return (
             <FilterDropdown
+                id='rules-compliance-filter'
                 filters = { this.state }
                 addFilter={ this.addFilter }
                 removeFilter={ this.removeFilter }
@@ -80,8 +81,8 @@ class RulesComplianceFilter extends React.Component {
 }
 
 RulesComplianceFilter.propTypes = {
-    updateFilter: propTypes.function,
-    hidePassed: propTypes.boolean,
+    updateFilter: propTypes.func,
+    hidePassed: propTypes.bool,
     severity: propTypes.array,
     availablePolicies: propTypes.array,
     policy: propTypes.array
@@ -90,7 +91,8 @@ RulesComplianceFilter.propTypes = {
 RulesComplianceFilter.defaultProps = {
     hidePassed: false,
     severity: [],
-    policy: []
+    policy: [],
+    updateFilter: () => {}
 };
 
 export default RulesComplianceFilter;

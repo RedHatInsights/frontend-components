@@ -10,7 +10,7 @@ import './InventoryDetail.scss';
 
 class InventoryDetail extends React.Component {
     componentDidMount() {
-        const { match: { params: { inventoryId }}, entity, loaded } = this.props;
+        const { match: { params: { inventoryId } }, entity, loaded } = this.props;
         if (!entity || entity.id !== inventoryId || !loaded) {
             this.props.loadEntity(
                 inventoryId,
@@ -61,4 +61,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default routerParams(connect(({ entityDetails: { entity, loaded }}) => ({ entity, loaded }), mapDispatchToProps)(InventoryDetail));
+export default routerParams(connect(({ entityDetails: { entity, loaded } }) => ({ entity, loaded }), mapDispatchToProps)(InventoryDetail));

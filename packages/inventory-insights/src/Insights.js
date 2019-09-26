@@ -19,17 +19,17 @@ import {
     ToolbarGroup,
     ToolbarItem
 } from '@patternfly/react-core';
-import { CheckIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon } from '@patternfly/react-icons';
+import { CheckIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
 import { cellWidth, sortable, SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
 import { flatten, sortBy } from 'lodash';
-import { global_success_color_200 } from '@patternfly/react-tokens';
+import { global_success_color_200, global_BackgroundColor_100 } from '@patternfly/react-tokens';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import moment from 'moment';
 import { Battery, FilterDropdown, TableToolbar } from '@redhat-cloud-services/frontend-components';
 
 import './insights.scss';
 import ReportDetails from './ReportDetails';
-import { ANSIBLE_ICON, FILTER_CATEGORIES, BASE_FETCH_URL } from './Constants';
+import { FILTER_CATEGORIES, BASE_FETCH_URL } from './Constants';
 import MessageState from './MessageState';
 
 class InventoryRuleList extends Component {
@@ -37,11 +37,13 @@ class InventoryRuleList extends Component {
         inventoryReportFetchStatus: 'pending',
         rows: [],
         cols: [
-            { title: 'Description', transforms: [ sortable ]},
-            { title: 'Added', transforms: [ sortable, cellWidth(15) ]},
-            { title: 'Total risk', transforms: [ sortable ]},
-            { title: 'Risk of change', transforms: [ sortable ]},
-            { title: <span className='ansibleCol'>{ ANSIBLE_ICON } Ansible</span>, transforms: [ sortable ]}
+            { title: 'Description', transforms: [ sortable ] },
+            { title: 'Added', transforms: [ sortable, cellWidth(15) ] },
+            { title: 'Total risk', transforms: [ sortable ] },
+            { title: 'Risk of change', transforms: [ sortable ] },
+            { title: <span className='ansibleCol'>
+                { AnsibeTowerIcon && <AnsibeTowerIcon size='md' /> } Ansible
+            </span>, transforms: [ sortable ] }
         ],
         isKebabOpen: false,
         sortBy: {},
@@ -233,14 +235,13 @@ class InventoryRuleList extends Component {
     onSort = (_event, index, direction) => {
         const { activeReports, kbaDetailsData, filters, searchValue } = this.state;
         const sortedReports = {
-            1: sortBy(activeReports, [ result => result.rule.description ]),
-            2: sortBy(activeReports, [ result => result.rule.publish_date ]),
-            3: sortBy(activeReports, [ result => result.rule.total_risk ]),
-            4: sortBy(activeReports, [ result => result.resolution.resolution_risk.risk ]),
-            5: sortBy(activeReports, [ result => result.resolution.has_playbook ])
+            2: sortBy(activeReports, [ result => result.rule.description ]),
+            3: sortBy(activeReports, [ result => result.rule.publish_date ]),
+            4: sortBy(activeReports, [ result => result.rule.total_risk ]),
+            5: sortBy(activeReports, [ result => result.resolution.resolution_risk.risk ]),
+            6: sortBy(activeReports, [ result => result.resolution.has_playbook ])
         };
-
-        let sortedReportsDirectional = direction === SortByDirection.asc ? sortedReports[index] : sortedReports[index].reverse();
+        const sortedReportsDirectional = direction === SortByDirection.asc ? sortedReports[index] : sortedReports[index].reverse();
         this.setState({
             sortBy: {
                 index,
@@ -293,15 +294,15 @@ class InventoryRuleList extends Component {
         );
 
         return issues.length ?
-            { issues, systems: [ this.props.entity.id ]} :
+            { issues, systems: [ this.props.entity.id ] } :
             false;
     };
 
     render() {
         const { inventoryReportFetchStatus, rows, cols, sortBy, filters, searchValue, activeReports, accountSettings } = this.state;
         const results = rows ? rows.length / 2 : 0;
-        const satelliteManaged = this.props.entity.satellite_id; // system is managed by satellite
-        const satelliteShowHosts = accountSettings.show_satellite_hosts; // setting to show satellite managed systems
+        const satelliteManaged = this.props.entity.satellite_id || false; // system is managed by satellite
+        const satelliteShowHosts = accountSettings.show_satellite_hosts || false; // setting to show satellite managed systems
         const hideResultsSatelliteManaged = !satelliteShowHosts && satelliteManaged;
 
         return <Fragment>
@@ -332,7 +333,9 @@ class InventoryRuleList extends Component {
                             <RemediationButton
                                 isDisabled={ this.getSelectedItems(rows).length === 0 }
                                 dataProvider={ this.processRemediation }
-                                onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } />
+                                onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } >
+                                { AnsibeTowerIcon && <AnsibeTowerIcon size='sm' color={ global_BackgroundColor_100.value } /> } Remediation
+                            </RemediationButton>
                         </ToolbarItem>
                         <ToolbarItem>{ this.buildKebab() }</ToolbarItem>
                     </ToolbarGroup>

@@ -27,9 +27,22 @@ exports[`SSLFormLabel renders loading step correctly 1`] = `
           </Text>
         </TextContent>
       }
+      boundary="window"
       className=""
       closeBtnAriaLabel="Close"
+      distance={25}
       enableFlip={true}
+      flipBehavior={
+        Array [
+          "top",
+          "right",
+          "bottom",
+          "left",
+          "top",
+          "right",
+          "bottom",
+        ]
+      }
       footerContent={null}
       headerContent={null}
       hideOnOutsideClick={true}

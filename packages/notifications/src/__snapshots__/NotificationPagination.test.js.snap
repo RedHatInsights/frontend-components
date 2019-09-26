@@ -5,32 +5,19 @@ exports[`Notification Pagination component should render correctly 1`] = `
   className="notification-item"
 >
   <CardBody>
-    <Level
-      className=""
-      gutter={null}
-    >
+    <Level>
       <LevelItem>
-        <Button
+        <Component
           className="ins-c-pagination__clear-all"
           onClick={[Function]}
           variant="link"
         >
           Clear all
-        </Button>
+        </Component>
       </LevelItem>
       <LevelItem>
-        <Pagination
-          className=""
-          dropDirection="down"
+        <Component
           itemCount={10}
-          itemsEnd={null}
-          itemsStart={null}
-          onFirstClick={[Function]}
-          onLastClick={[Function]}
-          onNextClick={[Function]}
-          onPageInput={[Function]}
-          onPerPageSelect={[Function]}
-          onPreviousClick={[Function]}
           onSetPage={[Function]}
           page={1}
           perPage={5}
@@ -47,9 +34,7 @@ exports[`Notification Pagination component should render correctly 1`] = `
               "items": "Notifications",
             }
           }
-          toggleTemplate={[Function]}
           variant="bottom"
-          widgetId="pagination-options-menu"
         />
       </LevelItem>
     </Level>

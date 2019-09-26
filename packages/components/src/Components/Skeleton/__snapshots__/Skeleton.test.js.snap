@@ -32,6 +32,14 @@ exports[`Skeleton component should render correctly - xs 1`] = `
 </div>
 `;
 
+exports[`Skeleton component should render correctly as dark 1`] = `
+<div
+  className="ins-c-skeleton ins-c-skeleton__md ins-m-dark"
+>
+   
+</div>
+`;
+
 exports[`Skeleton component should render correctly without size 1`] = `
 <div
   className="ins-c-skeleton ins-c-skeleton__md"

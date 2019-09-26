@@ -37,7 +37,7 @@ AppInfo.defaultProps = {
     active: {}
 };
 
-export default connect(({ entityDetails: { activeApps, activeApp, loaded }}) => ({
+export default connect(({ entityDetails: { activeApps, activeApp, loaded } }) => ({
     activeApps,
     active: activeApp,
     loaded

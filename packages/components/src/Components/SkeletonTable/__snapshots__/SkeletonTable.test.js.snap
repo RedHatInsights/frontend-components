@@ -8,26 +8,31 @@ exports[`SkeletonTable component should render correctly 1`] = `
     Array [
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
@@ -39,8 +44,6 @@ exports[`SkeletonTable component should render correctly 1`] = `
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
-  onCollapse={null}
-  onExpand={null}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
@@ -48,53 +51,31 @@ exports[`SkeletonTable component should render correctly 1`] = `
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -102,53 +83,31 @@ exports[`SkeletonTable component should render correctly 1`] = `
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -156,53 +115,31 @@ exports[`SkeletonTable component should render correctly 1`] = `
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -210,53 +147,31 @@ exports[`SkeletonTable component should render correctly 1`] = `
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -264,53 +179,31 @@ exports[`SkeletonTable component should render correctly 1`] = `
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -318,53 +211,31 @@ exports[`SkeletonTable component should render correctly 1`] = `
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -372,53 +243,31 @@ exports[`SkeletonTable component should render correctly 1`] = `
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -426,26 +275,255 @@ exports[`SkeletonTable component should render correctly 1`] = `
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -454,14 +532,8 @@ exports[`SkeletonTable component should render correctly 1`] = `
   }
   variant={null}
 >
-  <TableHeader
-    className=""
-  />
-  <TableBody
-    className=""
-    onRowClick={[Function]}
-    rowKey="id"
-  />
+  <TableHeader />
+  <TableBody />
 </Table>
 `;
 
@@ -481,8 +553,6 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
-  onCollapse={null}
-  onExpand={null}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
@@ -490,23 +560,13 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -514,23 +574,13 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -538,23 +588,13 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -562,23 +602,13 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -586,23 +616,13 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -610,23 +630,13 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -634,23 +644,13 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -658,11 +658,111 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
       Array [
         Object {
           "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
         Object {
           "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+      ],
+      Array [
+        Object {
+          "title": <Skeleton
+            isDark={false}
+            size="md"
+          />,
+        },
+        Object {
+          "title": <Skeleton
+            isDark={false}
             size="md"
           />,
         },
@@ -671,14 +771,8 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
   }
   variant={null}
 >
-  <TableHeader
-    className=""
-  />
-  <TableBody
-    className=""
-    onRowClick={[Function]}
-    rowKey="id"
-  />
+  <TableHeader />
+  <TableBody />
 </Table>
 `;
 
@@ -690,26 +784,31 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
     Array [
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
       Object {
         "title": <Skeleton
+          isDark={false}
           size="sm"
         />,
       },
@@ -721,20 +820,12 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
-  onCollapse={null}
-  onExpand={null}
   role="grid"
   rowLabeledBy="simple-node"
   rows={Array []}
   variant={null}
 >
-  <TableHeader
-    className=""
-  />
-  <TableBody
-    className=""
-    onRowClick={[Function]}
-    rowKey="id"
-  />
+  <TableHeader />
+  <TableBody />
 </Table>
 `;

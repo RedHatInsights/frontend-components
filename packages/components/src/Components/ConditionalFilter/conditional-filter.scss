@@ -1,0 +1,39 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
+
+.ins-c-conditional-filter {
+    .ins-c-conditional-filter__group .pf-c-dropdown__toggle-text {
+        width: 100px;
+        text-align: left;
+
+        & > svg {
+            margin-right: var(--pf-global--spacer--xs);
+        }
+    }
+
+    input.ins-c-conditional-filter[type="text"] {
+        @include rem('padding-right', 35px);
+        @include rem('margin-right', -23px);
+
+        & + svg {
+            position: relative;
+            @include rem('left', -5px);
+            @include rem('top', 2px);
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .ins-c-conditional-filter {
+        .ins-c-conditional-filter__group {
+            .pf-c-dropdown__toggle-text {
+                width: auto;
+            }
+            .ins-c-conditional-filter__value-selector {
+                display: none;
+            }
+            .ins-c-conditional-filter__group {
+                width: initial;
+            }
+        }
+    }
+}

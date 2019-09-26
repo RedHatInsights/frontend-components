@@ -54,7 +54,7 @@ describe('GeneralInformation', () => {
     });
 
     it('should render correctly - no data', () => {
-        const store = mockStore({ systemProfileStore: {}, entityDetails: {}});
+        const store = mockStore({ systemProfileStore: {}, entityDetails: {} });
         const wrapper = render(<Provider store={ store }>
             <GeneralInformation />
         </Provider>);
@@ -78,7 +78,7 @@ describe('GeneralInformation', () => {
                     entity: {
                         id: 'test-id'
                     }
-                }});
+                } });
             mount(<Provider store={ store }>
                 <GeneralInformation />
             </Provider>);
@@ -130,8 +130,8 @@ describe('GeneralInformation', () => {
             wrapper.find('GeneralInformation').instance().handleModalToggle('title', {
                 cells: [{ title: 'one' }, { title: 'two' }],
                 rows: [
-                    { cells: [ 'a', 'aa' ]},
-                    { cells: [ 'b', 'bb' ]}],
+                    { cells: [ 'a', 'aa' ] },
+                    { cells: [ 'b', 'bb' ] }],
                 expandable: true
             });
         });

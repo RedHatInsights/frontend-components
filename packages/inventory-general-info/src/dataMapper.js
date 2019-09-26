@@ -42,21 +42,28 @@ export const diskMapper = (devices = []) => ({
     rows: devices.map(({
         device,
         label,
-        mount_point,
+        mountpoint,
         options,
-        type
-    }) => ({
-        isOpen: false,
-        child: <div>
-            { options && Object.keys(options).map(oneKey => `${oneKey}=${options[oneKey]}`).join(',  ') }
-        </div>,
-        cells: [
-            device,
-            label,
-            mount_point,
-            type
-        ]
-    })),
+        mounttype
+    }) => {
+        const calculatedOptions = (options && options.options) || options;
+        return ({
+            isOpen: false,
+            child: <div>
+                {
+                    calculatedOptions &&
+                    Object.entries(calculatedOptions.value || calculatedOptions)
+                    .map(([ oneKey, option ]) => `${oneKey}=${option.value || option}`).join(',  ')
+                }
+            </div>,
+            cells: [
+                (device && device.value) || device,
+                label,
+                (mountpoint && mountpoint.value) || mountpoint,
+                (mounttype && mounttype.value) || mounttype
+            ]
+        });
+    }),
     expandable: true
 });
 
@@ -109,7 +116,7 @@ export const interfaceMapper = (data = []) => ({
     ]))
 });
 
-export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabled: []}) => ({
+export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabled: [] }) => ({
     cells: [
         {
             title: 'Name',

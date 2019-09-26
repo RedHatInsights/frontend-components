@@ -3,6 +3,11 @@
 $skeleton-base-color: #f5f5f5;
 $skeleton-dark-color: #e8e8e8;
 
+$ins-color--dark: #3c3c3c;
+$invert-skeleton-base-color: #3c3c3c;
+$invert-skeleton-dark-color: #484848;
+
+
 .ins-c-skeleton {
     &__xs { width: 16%; }
     &__sm { width: 33%; }
@@ -16,6 +21,11 @@ $skeleton-dark-color: #e8e8e8;
     background: linear-gradient(to right, $skeleton-base-color 10%, $skeleton-dark-color 18%, $skeleton-base-color 33%);
     @include rem('background-size', 1000px 50px);
     @include rem('border-radius', 5px);
+    &.ins-m-dark {
+        background: $ins-color--dark;
+        background: linear-gradient(to right, $invert-skeleton-base-color 10%, $invert-skeleton-dark-color 18%, $invert-skeleton-base-color 33%);
+        @include rem('background-size', 1000px 50px);
+    }
 }
 
 @keyframes skeletonGradient{

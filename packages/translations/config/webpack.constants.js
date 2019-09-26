@@ -36,6 +36,7 @@ module.exports = {
             root: 'ReactRouterDOM'
         },
         urijs: 'urijs',
+        'react-intl': 'react-intl',
         classnames: 'classnames'
     }
 };

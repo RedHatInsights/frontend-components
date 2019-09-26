@@ -32,14 +32,14 @@ describe('interceptor401', () => {
     });
 
     it('should call logout', () => {
-        interceptor401({ response: { status: 401 }});
+        interceptor401({ response: { status: 401 } });
         expect(insights.chrome.auth.logout).toHaveBeenCalled();
     });
 });
 
 describe('errorInterceptor', () => {
     it('should throw data error', () => {
-        expect(() => errorInterceptor({ response: { data: 'error' }})).toThrow();
+        expect(() => errorInterceptor({ response: { data: 'error' } })).toThrow();
     });
 
     it('should throw response error', () => {

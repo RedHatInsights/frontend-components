@@ -150,7 +150,8 @@ class EntityTable extends React.Component {
             actions,
             variant,
             sortBy,
-            hasItems
+            hasItems,
+            tableProps
         } = this.props;
         const cells = loaded && this.createColumns();
         return (
@@ -176,6 +177,7 @@ class EntityTable extends React.Component {
                             ...expandable ? { onCollapse: onExpandClick } : {},
                             ...actions ? { actions } : {}
                         } }
+                        { ...tableProps }
                     >
                         <TableHeader />
                         <TableBody onRowClick={ (event, { selected }, { rowIndex }) => {
@@ -213,6 +215,9 @@ EntityTable.propTypes = {
         key: PropTypes.string,
         direction: PropTypes.oneOf([ 'asc', 'desc' ])
     }),
+    tableProps: PropTypes.shape({
+        [PropTypes.string]: PropTypes.any
+    }),
     selectEntity: PropTypes.func,
     onDetailSelect: PropTypes.func
 };
@@ -227,7 +232,8 @@ EntityTable.defaultProps = {
     rows: [],
     onExpandClick: () => undefined,
     selectEntity: () => undefined,
-    onDetailSelect: () => undefined
+    onDetailSelect: () => undefined,
+    tableProps: {}
 };
 
 function mapDispatchToProps(dispatch) {
@@ -238,7 +244,7 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({ entities: { columns, rows, loaded, sortBy }}) {
+function mapStateToProps({ entities: { columns, rows, loaded, sortBy } }) {
     return {
         columns,
         loaded,

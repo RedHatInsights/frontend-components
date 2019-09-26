@@ -11,9 +11,9 @@
     ],
     "dependencies": {
         "@babel/core": "^7.4.3",
-        "@patternfly/react-core": "^3.58.1",
-        "@patternfly/react-icons": "^3.7.4",
-        "@patternfly/react-table": "^2.13.18",
+        "@patternfly/react-core": "^3.110.0",
+        "@patternfly/react-icons": "^3.14.6",
+        "@patternfly/react-table": "^2.20.15",
         "@redhat-cloud-services/host-inventory-client": "1.0.18",
         "abortcontroller-polyfill": "^1.2.1",
         "apollo-boost": "^0.1.23",
@@ -24,7 +24,7 @@
         "d3": "^5.7.0",
         "graphql": "^14.0.2",
         "graphql-tag": "^2.10.0",
-        "marked": "^0.6.0",
+        "marked": "^0.7.0",
         "prop-types": "^15.6.2",
         "react": "^16.5.1",
         "react-apollo": "^2.3.3",
@@ -47,7 +47,8 @@
             "!<rootDir>/packages/components/src/Components/Table/*"
         ],
         "setupFiles": [
-            "<rootDir>/config/setupTests.js"
+            "<rootDir>/config/setupTests.js",
+            "jest-canvas-mock"
         ],
         "testEnvironment": "jsdom",
         "roots": [
@@ -108,17 +109,19 @@
         "html-webpack-plugin": "^4.0.0-alpha.2",
         "identity-obj-proxy": "^3.0.0",
         "jest": "^24.7.1",
+        "jest-canvas-mock": "^2.1.1",
+        "jest-fetch-mock": "^2.1.2",
         "lerna": "^3.13.4",
         "lodash-webpack-plugin": "^0.11.5",
         "mini-css-extract-plugin": "^0.4.2",
         "mkdirp": "^0.5.1",
-        "node-sass": "^4.11.0",
+        "node-sass": "^4.12.0",
         "react-content-loader": "^3.4.1",
         "react-intl": "^2.9.0",
         "redux-mock-store": "^1.5.3",
         "sanitize-html": "^1.20.0",
         "sass-loader": "^7.1.0",
-        "semantic-release": "^15.13.14",
+        "semantic-release": "^15.13.24",
         "source-map-loader": "^0.2.4",
         "style-loader": "^0.21.0",
         "topojson": "^3.0.2",
@@ -130,9 +133,6 @@
         "webpack-dev-server": "^3.1.14",
         "webpack-visualizer-plugin": "^0.1.11",
         "write-file-webpack-plugin": "^4.4.0"
-    },
-    "resolutions": {
-        "node-sass": "4.9.3"
     },
     "scripts": {
         "clean": "lerna clean -y && rm -rf node_modules",

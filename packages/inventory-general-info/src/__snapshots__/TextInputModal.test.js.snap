@@ -11,36 +11,258 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
   <Modal
     actions={
       Array [
-        <Button
+        <Unknown
           data-action="cancel"
           onClick={[Function]}
           variant="secondary"
         >
           Cancel
-        </Button>,
-        <Button
+        </Unknown>,
+        <Unknown
           data-action="confirm"
           onClick={[Function]}
           variant="primary"
         >
           Save
-        </Button>,
+        </Unknown>,
       ]
     }
-    ariaDescribedById=""
-    className="ins-c-inventory__detail--edit"
-    hideTitle={false}
-    isLarge={false}
-    isOpen={true}
-    isSmall={true}
-    onClose={[Function]}
-    title=""
-  >
-    <Portal
-      containerInfo={
+    appendTo={
+      <body
+        class="pf-c-backdrop__open"
+      >
         <div
           aria-hidden="true"
         >
+          <div
+            class="pf-c-backdrop"
+          >
+            <div
+              class="pf-l-bullseye"
+            >
+              <div
+                aria-describedby="pf-modal-0"
+                aria-label=""
+                aria-modal="true"
+                class="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
+                role="dialog"
+              >
+                <button
+                  aria-label="Close"
+                  class="pf-c-button pf-m-plain"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 0 352 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      transform=""
+                    />
+                  </svg>
+                </button>
+                <h1
+                  class="pf-c-title pf-m-2xl"
+                >
+                   
+                  
+                   
+                </h1>
+                <div
+                  class="pf-c-modal-box__body"
+                  id="pf-modal-0"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="input text"
+                    class="pf-c-form-control"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="pf-c-modal-box__footer"
+                >
+                  <button
+                    class="pf-c-button pf-m-secondary"
+                    data-action="cancel"
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="pf-c-button pf-m-primary"
+                    data-action="confirm"
+                    type="button"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+        >
+          <div
+            class="pf-c-backdrop"
+          >
+            <div
+              class="pf-l-bullseye"
+            >
+              <div
+                aria-describedby="pf-modal-1"
+                aria-label=""
+                aria-modal="true"
+                class="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
+                role="dialog"
+              >
+                <button
+                  aria-label="Close"
+                  class="pf-c-button pf-m-plain"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 0 352 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      transform=""
+                    />
+                  </svg>
+                </button>
+                <h1
+                  class="pf-c-title pf-m-2xl"
+                >
+                   
+                  
+                   
+                </h1>
+                <div
+                  class="pf-c-modal-box__body"
+                  id="pf-modal-1"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="input text"
+                    class="pf-c-form-control"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="pf-c-modal-box__footer"
+                >
+                  <button
+                    class="pf-c-button pf-m-secondary"
+                    data-action="cancel"
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="pf-c-button pf-m-primary"
+                    data-action="confirm"
+                    type="button"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+        >
+          <div
+            class="pf-c-backdrop"
+          >
+            <div
+              class="pf-l-bullseye"
+            >
+              <div
+                aria-describedby="pf-modal-2"
+                aria-label=""
+                aria-modal="true"
+                class="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
+                role="dialog"
+              >
+                <button
+                  aria-label="Close"
+                  class="pf-c-button pf-m-plain"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 0 352 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      transform=""
+                    />
+                  </svg>
+                </button>
+                <h1
+                  class="pf-c-title pf-m-2xl"
+                >
+                   
+                  
+                   
+                </h1>
+                <div
+                  class="pf-c-modal-box__body"
+                  id="pf-modal-2"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="input text"
+                    class="pf-c-form-control"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="pf-c-modal-box__footer"
+                >
+                  <button
+                    class="pf-c-button pf-m-secondary"
+                    data-action="cancel"
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="pf-c-button pf-m-primary"
+                    data-action="confirm"
+                    type="button"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
           <div
             class="pf-c-backdrop"
           >
@@ -96,7 +318,6 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                 <div
                   class="pf-c-modal-box__footer"
                 >
-                   
                   <button
                     class="pf-c-button pf-m-secondary"
                     data-action="cancel"
@@ -111,7 +332,96 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                   >
                     Save
                   </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
+    }
+    ariaDescribedById=""
+    className="ins-c-inventory__detail--edit"
+    hideTitle={false}
+    isFooterLeftAligned={false}
+    isLarge={false}
+    isOpen={true}
+    isSmall={true}
+    onClose={[Function]}
+    showClose={true}
+    title=""
+  >
+    <Portal
+      containerInfo={
+        <div>
+          <div
+            class="pf-c-backdrop"
+          >
+            <div
+              class="pf-l-bullseye"
+            >
+              <div
+                aria-describedby="pf-modal-3"
+                aria-label=""
+                aria-modal="true"
+                class="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
+                role="dialog"
+              >
+                <button
+                  aria-label="Close"
+                  class="pf-c-button pf-m-plain"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style="vertical-align: -0.125em;"
+                    viewBox="0 0 352 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      transform=""
+                    />
+                  </svg>
+                </button>
+                <h1
+                  class="pf-c-title pf-m-2xl"
+                >
                    
+                  
+                   
+                </h1>
+                <div
+                  class="pf-c-modal-box__body"
+                  id="pf-modal-3"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="input text"
+                    class="pf-c-form-control"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="pf-c-modal-box__footer"
+                >
+                  <button
+                    class="pf-c-button pf-m-secondary"
+                    data-action="cancel"
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="pf-c-button pf-m-primary"
+                    data-action="confirm"
+                    type="button"
+                  >
+                    Save
+                  </button>
                 </div>
               </div>
             </div>
@@ -122,30 +432,32 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
       <ModalContent
         actions={
           Array [
-            <Button
+            <Unknown
               data-action="cancel"
               onClick={[Function]}
               variant="secondary"
             >
               Cancel
-            </Button>,
-            <Button
+            </Unknown>,
+            <Unknown
               data-action="confirm"
               onClick={[Function]}
               variant="primary"
             >
               Save
-            </Button>,
+            </Unknown>,
           ]
         }
         ariaDescribedById=""
         className="ins-c-inventory__detail--edit"
         hideTitle={false}
         id="pf-modal-3"
+        isFooterLeftAligned={false}
         isLarge={false}
         isOpen={true}
         isSmall={true}
         onClose={[Function]}
+        showClose={true}
         title=""
       >
         <Backdrop>
@@ -186,49 +498,81 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                     <ModalBoxCloseButton
                       onClose={[Function]}
                     >
-                      <Button
+                      <Component
                         aria-label="Close"
                         className=""
                         onClick={[Function]}
                         variant="plain"
                       >
-                        <button
-                          aria-disabled={null}
-                          aria-label="Close"
-                          className="pf-c-button pf-m-plain"
-                          disabled={false}
-                          onClick={[Function]}
-                          tabIndex={null}
-                          type="button"
+                        <ComponentWithOuia
+                          component={[Function]}
+                          componentProps={
+                            Object {
+                              "aria-label": "Close",
+                              "children": <TimesIcon
+                                color="currentColor"
+                                noVerticalAlign={false}
+                                size="sm"
+                                title={null}
+                              />,
+                              "className": "",
+                              "onClick": [Function],
+                              "variant": "plain",
+                            }
+                          }
+                          consumerContext={null}
                         >
-                          <TimesIcon
-                            color="currentColor"
-                            noVerticalAlign={false}
-                            size="sm"
-                            title={null}
-                          >
-                            <svg
-                              aria-hidden={true}
-                              aria-labelledby={null}
-                              fill="currentColor"
-                              height="1em"
-                              role="img"
-                              style={
-                                Object {
-                                  "verticalAlign": "-0.125em",
-                                }
+                          <Button
+                            aria-label="Close"
+                            className=""
+                            onClick={[Function]}
+                            ouiaContext={
+                              Object {
+                                "isOuia": false,
+                                "ouiaId": null,
                               }
-                              viewBox="0 0 352 512"
-                              width="1em"
+                            }
+                            variant="plain"
+                          >
+                            <button
+                              aria-disabled={null}
+                              aria-label="Close"
+                              className="pf-c-button pf-m-plain"
+                              disabled={false}
+                              onClick={[Function]}
+                              tabIndex={null}
+                              type="button"
                             >
-                              <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                                transform=""
-                              />
-                            </svg>
-                          </TimesIcon>
-                        </button>
-                      </Button>
+                              <TimesIcon
+                                color="currentColor"
+                                noVerticalAlign={false}
+                                size="sm"
+                                title={null}
+                              >
+                                <svg
+                                  aria-hidden={true}
+                                  aria-labelledby={null}
+                                  fill="currentColor"
+                                  height="1em"
+                                  role="img"
+                                  style={
+                                    Object {
+                                      "verticalAlign": "-0.125em",
+                                    }
+                                  }
+                                  viewBox="0 0 352 512"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                    transform=""
+                                  />
+                                </svg>
+                              </TimesIcon>
+                            </button>
+                          </Button>
+                        </ComponentWithOuia>
+                      </Component>
                     </ModalBoxCloseButton>
                     <ModalBoxHeader
                       hideTitle={false}
@@ -278,50 +622,100 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                         </TextInput>
                       </div>
                     </ModalBoxBody>
-                    <ModalBoxFooter>
+                    <ModalBoxFooter
+                      isLeftAligned={false}
+                    >
                       <div
                         className="pf-c-modal-box__footer"
                       >
-                         
-                        <Button
+                        <Component
                           data-action="cancel"
                           key="cancel"
                           onClick={[Function]}
                           variant="secondary"
                         >
-                          <button
-                            aria-disabled={null}
-                            aria-label={null}
-                            className="pf-c-button pf-m-secondary"
-                            data-action="cancel"
-                            disabled={false}
-                            onClick={[Function]}
-                            tabIndex={null}
-                            type="button"
+                          <ComponentWithOuia
+                            component={[Function]}
+                            componentProps={
+                              Object {
+                                "children": "Cancel",
+                                "data-action": "cancel",
+                                "onClick": [Function],
+                                "variant": "secondary",
+                              }
+                            }
+                            consumerContext={null}
                           >
-                            Cancel
-                          </button>
-                        </Button>
-                        <Button
+                            <Button
+                              data-action="cancel"
+                              onClick={[Function]}
+                              ouiaContext={
+                                Object {
+                                  "isOuia": false,
+                                  "ouiaId": null,
+                                }
+                              }
+                              variant="secondary"
+                            >
+                              <button
+                                aria-disabled={null}
+                                aria-label={null}
+                                className="pf-c-button pf-m-secondary"
+                                data-action="cancel"
+                                disabled={false}
+                                onClick={[Function]}
+                                tabIndex={null}
+                                type="button"
+                              >
+                                Cancel
+                              </button>
+                            </Button>
+                          </ComponentWithOuia>
+                        </Component>
+                        <Component
                           data-action="confirm"
                           key="confirm"
                           onClick={[Function]}
                           variant="primary"
                         >
-                          <button
-                            aria-disabled={null}
-                            aria-label={null}
-                            className="pf-c-button pf-m-primary"
-                            data-action="confirm"
-                            disabled={false}
-                            onClick={[Function]}
-                            tabIndex={null}
-                            type="button"
+                          <ComponentWithOuia
+                            component={[Function]}
+                            componentProps={
+                              Object {
+                                "children": "Save",
+                                "data-action": "confirm",
+                                "onClick": [Function],
+                                "variant": "primary",
+                              }
+                            }
+                            consumerContext={null}
                           >
-                            Save
-                          </button>
-                        </Button>
-                         
+                            <Button
+                              data-action="confirm"
+                              onClick={[Function]}
+                              ouiaContext={
+                                Object {
+                                  "isOuia": false,
+                                  "ouiaId": null,
+                                }
+                              }
+                              variant="primary"
+                            >
+                              <button
+                                aria-disabled={null}
+                                aria-label={null}
+                                className="pf-c-button pf-m-primary"
+                                data-action="confirm"
+                                disabled={false}
+                                onClick={[Function]}
+                                tabIndex={null}
+                                type="button"
+                              >
+                                Save
+                              </button>
+                            </Button>
+                          </ComponentWithOuia>
+                        </Component>
                       </div>
                     </ModalBoxFooter>
                   </div>
@@ -340,29 +734,32 @@ exports[`TextInputModal render should render aria label 1`] = `
 <Modal
   actions={
     Array [
-      <Button
+      <Unknown
         data-action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Button>,
-      <Button
+      </Unknown>,
+      <Unknown
         data-action="confirm"
         onClick={[Function]}
         variant="primary"
       >
         Save
-      </Button>,
+      </Unknown>,
     ]
   }
+  appendTo={<body />}
   ariaDescribedById=""
   className="ins-c-inventory__detail--edit"
   hideTitle={false}
+  isFooterLeftAligned={false}
   isLarge={false}
   isOpen={true}
   isSmall={true}
   onClose={[Function]}
+  showClose={true}
   title=""
 >
   <TextInput
@@ -383,29 +780,32 @@ exports[`TextInputModal render should render open 1`] = `
 <Modal
   actions={
     Array [
-      <Button
+      <Unknown
         data-action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Button>,
-      <Button
+      </Unknown>,
+      <Unknown
         data-action="confirm"
         onClick={[Function]}
         variant="primary"
       >
         Save
-      </Button>,
+      </Unknown>,
     ]
   }
+  appendTo={<body />}
   ariaDescribedById=""
   className="ins-c-inventory__detail--edit"
   hideTitle={false}
+  isFooterLeftAligned={false}
   isLarge={false}
   isOpen={true}
   isSmall={true}
   onClose={[Function]}
+  showClose={true}
   title=""
 >
   <TextInput
@@ -426,29 +826,32 @@ exports[`TextInputModal render should render title 1`] = `
 <Modal
   actions={
     Array [
-      <Button
+      <Unknown
         data-action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Button>,
-      <Button
+      </Unknown>,
+      <Unknown
         data-action="confirm"
         onClick={[Function]}
         variant="primary"
       >
         Save
-      </Button>,
+      </Unknown>,
     ]
   }
+  appendTo={<body />}
   ariaDescribedById=""
   className="ins-c-inventory__detail--edit"
   hideTitle={false}
+  isFooterLeftAligned={false}
   isLarge={false}
   isOpen={true}
   isSmall={true}
   onClose={[Function]}
+  showClose={true}
   title="Some title"
 >
   <TextInput
@@ -469,29 +872,32 @@ exports[`TextInputModal render should render without any props 1`] = `
 <Modal
   actions={
     Array [
-      <Button
+      <Unknown
         data-action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Button>,
-      <Button
+      </Unknown>,
+      <Unknown
         data-action="confirm"
         onClick={[Function]}
         variant="primary"
       >
         Save
-      </Button>,
+      </Unknown>,
     ]
   }
+  appendTo={<body />}
   ariaDescribedById=""
   className="ins-c-inventory__detail--edit"
   hideTitle={false}
+  isFooterLeftAligned={false}
   isLarge={false}
   isOpen={false}
   isSmall={true}
   onClose={[Function]}
+  showClose={true}
   title=""
 >
   <TextInput

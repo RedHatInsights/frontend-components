@@ -3,13 +3,8 @@
 exports[`Truncate component should render correctly block clicking on expand toggles to collapse 1`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -23,17 +18,14 @@ laborum.",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem
-    className=""
-    isFilled={false}
-  >
-    <Button
+  <StackItem>
+    <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
       variant="link"
     >
       Custom collapse
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -41,13 +33,8 @@ laborum.",
 exports[`Truncate component should render correctly block clicking on expand toggles to collapse 2`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -61,17 +48,14 @@ laborum.",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem
-    className=""
-    isFilled={false}
-  >
-    <Button
+  <StackItem>
+    <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
       variant="link"
     >
       Custom collapse
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -79,13 +63,8 @@ laborum.",
 exports[`Truncate component should render correctly block custom button titles 1`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -99,17 +78,14 @@ laborum.",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem
-    className=""
-    isFilled={false}
-  >
-    <Button
+  <StackItem>
+    <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
       variant="link"
     >
       Custom collapse
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -117,13 +93,8 @@ laborum.",
 exports[`Truncate component should render correctly block custom button titles 2`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -137,17 +108,14 @@ laborum.",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem
-    className=""
-    isFilled={false}
-  >
-    <Button
+  <StackItem>
+    <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
       variant="link"
     >
       Custom collapse
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -155,13 +123,8 @@ laborum.",
 exports[`Truncate component should render correctly block custom expande button 1`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -172,17 +135,14 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem
-    className=""
-    isFilled={false}
-  >
-    <Button
+  <StackItem>
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Custom expand
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -190,13 +150,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
 exports[`Truncate component should render correctly block custom expande button 2`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -207,17 +162,14 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem
-    className=""
-    isFilled={false}
-  >
-    <Button
+  <StackItem>
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Custom expand
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -225,13 +177,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
 exports[`Truncate component should render correctly block when text length is less than user specified length 1`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -251,13 +198,8 @@ laborum.",
 exports[`Truncate component should render correctly block with short length 1`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -267,17 +209,14 @@ exports[`Truncate component should render correctly block with short length 1`] 
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem
-    className=""
-    isFilled={false}
-  >
-    <Button
+  <StackItem>
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Read more
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -285,13 +224,8 @@ exports[`Truncate component should render correctly block with short length 1`] 
 exports[`Truncate component should render correctly block without length specified 1`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -302,17 +236,14 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem
-    className=""
-    isFilled={false}
-  >
-    <Button
+  <StackItem>
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Read more
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -332,13 +263,13 @@ laborum.",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-collapse-button"
     onClick={[Function]}
     variant="link"
   >
     Custom collapse
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -357,13 +288,13 @@ laborum.",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-collapse-button"
     onClick={[Function]}
     variant="link"
   >
     Custom collapse
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -382,13 +313,13 @@ laborum.",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-collapse-button"
     onClick={[Function]}
     variant="link"
   >
     Custom collapse
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -407,13 +338,13 @@ laborum.",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-collapse-button"
     onClick={[Function]}
     variant="link"
   >
     Custom collapse
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -429,13 +360,13 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-expand-button"
     onClick={[Function]}
     variant="link"
   >
     Custom expand
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -451,13 +382,13 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-expand-button"
     onClick={[Function]}
     variant="link"
   >
     Custom expand
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -482,13 +413,8 @@ laborum.",
 exports[`Truncate component should render correctly inline with short length 1`] = `
 <Stack
   className="ins-c-truncate is-block"
-  component="div"
-  gutter={null}
 >
-  <StackItem
-    className=""
-    isFilled={false}
-  >
+  <StackItem>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -498,17 +424,14 @@ exports[`Truncate component should render correctly inline with short length 1`]
       widget-type="InsightsTruncateBlock"
     />
   </StackItem>
-  <StackItem
-    className=""
-    isFilled={false}
-  >
-    <Button
+  <StackItem>
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Read more
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -525,12 +448,12 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-expand-button"
     onClick={[Function]}
     variant="link"
   >
     Read more
-  </Button>
+  </Component>
 </Fragment>
 `;
