@@ -3,6 +3,26 @@ import { DataToolbarItem } from '@patternfly/react-core/dist/esm/experimental';
 import { Dropdown, DropdownItem, KebabToggle, Button, DropdownSeparator } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 
+const overflowActionsMapper = (action, key) => (
+    <DropdownItem
+        { ...action.props }
+        className="ins-c-primary-toolbar__overflow-actions"
+        key={ action.value || `${key}-overflow` }
+        component={ (action.props && action.props.component) || 'button' }
+        onClick={ (e) => action.onClick(e, action, key) }
+    >
+        { action.label || action }
+    </DropdownItem>
+);
+
+const actionPropsGenerator = (action, key) => ({
+    ...action.props,
+    component: (action.props && action.props.component) ||
+        React.isValidElement(action.label || action) ? 'div' : 'button',
+    onClick: (e) => action.onClick && action.onClick(e, action, key),
+    children: action.label || action
+});
+
 class Actions extends Component {
     state = {
         isOpen: false
@@ -14,7 +34,7 @@ class Actions extends Component {
 
     render() {
         const { isOpen } = this.state;
-        const { actions, overflowActions } = this.props;
+        const { actions, overflowActions, onSelect, dropdownProps } = this.props;
         const [ firstAction, ...restActions ] = actions;
         return (
             <Fragment>
@@ -31,44 +51,41 @@ class Actions extends Component {
                     </DataToolbarItem>
                 }
                 {
-                    (actions && actions.length > 0) &&
-                    <DataToolbarItem>
+                    ((actions && actions.length > 1) || (overflowActions.length > 0)) &&
+                    <DataToolbarItem
+                        className={ `${actions.length <= 1 && 'ins-m-empty-actions'}` }
+                    >
                         <Dropdown
+                            { ...dropdownProps }
                             isOpen={ isOpen }
                             isPlain
-                            onSelect={ () => this.toggleOpen(false) }
+                            onSelect={ (...props) => {
+                                onSelect && onSelect(...props);
+                                this.toggleOpen(false);
+                            } }
                             toggle={ <KebabToggle onToggle={ (isOpen) => this.toggleOpen(isOpen) } /> }
                             dropdownItems={ [
-                                <DropdownItem
-                                    { ...firstAction.props }
-                                    key="first-action"
-                                    className={
-                                        `ins-c-primary-toolbar__first-action ${firstAction.props.className || ''}`
-                                    }
-                                >
-                                    { firstAction.label || firstAction }
-                                </DropdownItem>,
+                                ...firstAction ? [
+                                    <DropdownItem
+                                        key="first-action"
+                                        { ...actionPropsGenerator(firstAction, 'first-action') }
+                                        className={
+                                            `ins-c-primary-toolbar__first-action ${firstAction.props.className || ''}`
+                                        }
+                                    />
+                                    
+                                ] : [],
                                 ...restActions.map((action, key) => (
                                     <DropdownItem
-                                        { ...action.props }
-                                        key={ action.value || key }
-                                        component={ (action.props && action.props.component) || 'button' }
-                                        onClick={ (e) => action.onClick(e, action, key) }
-                                    >{ action.label || action }</DropdownItem>
+                                        key={ action.key || (action && action.props && action.props.key) || key }
+                                        { ...actionPropsGenerator(action, key) }
+                                    />
                                 )),
-                                <DropdownSeparator
+                                ...actions.length > 0 ? [ <DropdownSeparator
                                     key="separator"
                                     className="ins-c-primary-toolbar__overflow-actions-separator"
-                                />,
-                                ...overflowActions.map((action, key) => (
-                                    <DropdownItem
-                                        { ...action.props }
-                                        className="ins-c-primary-toolbar__overflow-actions"
-                                        key={ action.value || `${key}-overflow` }
-                                        component={ (action.props && action.props.component) || 'button' }
-                                        onClick={ (e) => action.onClick(e, action, key) }
-                                    >{ action.label || action }</DropdownItem>
-                                ))
+                                /> ] : [],
+                                ...overflowActions.map(overflowActionsMapper)
                             ] }
                         />
                     </DataToolbarItem>
@@ -88,17 +105,23 @@ Actions.propTypes = {
             props: PropTypes.any
         })
     ])),
+    onSelect: PropTypes.func,
     overflowActions: PropTypes.arrayOf(PropTypes.shape({
         label: PropTypes.node,
-        value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+        value: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
         onClick: PropTypes.func,
         props: PropTypes.any
-    }))
+    })),
+    dropdownProps: PropTypes.shape({
+        [PropTypes.string]: PropTypes.any
+    })
 };
 
 Actions.defaultProps = {
     actions: [],
-    overflowActions: []
+    overflowActions: [],
+    dropdownProps: {},
+    onSelect: () => undefined
 };
 
 export default Actions;

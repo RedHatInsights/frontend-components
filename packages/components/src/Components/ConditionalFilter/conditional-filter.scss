@@ -1,6 +1,10 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
 
 .ins-c-conditional-filter {
+    .pf-c-select__toggle-wrapper .pf-c-select__toggle-text {
+        @include rem('max-width', 150px);
+    }
+
     .ins-c-conditional-filter__group .pf-c-dropdown__toggle-text {
         width: 100px;
         text-align: left;
@@ -20,9 +24,24 @@
             @include rem('top', 2px);
         }
     }
+
+    .pf-c-select__toggle-text {
+        margin-right: 0;
+    }
+    .pf-c-select__toggle-badge {
+        display: none;
+    }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 406px) {
+    .ins-c-conditional-filter {
+        .pf-c-select__toggle-wrapper .pf-c-select__toggle-text {
+            @include rem('max-width', 100px);
+        }
+    }
+}
+
+@media only screen and (max-width: 884px) {
     .ins-c-conditional-filter {
         .ins-c-conditional-filter__group {
             .pf-c-dropdown__toggle-text {

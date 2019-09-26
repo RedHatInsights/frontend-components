@@ -48,7 +48,7 @@ visible unless you update it.');
                                                 aria-label="Select all"
                                                 onChange={ onSelect }
                                                 checked={ checked || false }
-                                            >{ count } Selected</DropdownToggleCheckbox>
+                                            >{ count } selected</DropdownToggleCheckbox>
                                     }
                                 </Fragment>
                             ] }
@@ -57,8 +57,7 @@ visible unless you update it.');
                     ) }
                     isOpen={ isOpen }
                     dropdownItems={ [
-                        ...[ 
-                            count && 
+                        ...count !== undefined && count > 0 ? [
                             <DropdownItem
                                 key="count"
                                 isDisabled
@@ -66,7 +65,7 @@ visible unless you update it.');
                             >
                                 { count } Selected
                             </DropdownItem>
-                        ],
+                        ] : [],
                         ...items.map((oneItem, key) => <DropdownItem
                             component="button"
                             key={ oneItem.key || key }
@@ -74,7 +73,7 @@ visible unless you update it.');
                         >
                             { oneItem.title }
                         </DropdownItem>)
-                    ]}
+                    ] }
                 /> : <Checkbox
                     { ...props }
                     className={ classnames(className, 'ins-c-bulk-select') }

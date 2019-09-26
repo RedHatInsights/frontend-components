@@ -18,15 +18,31 @@ class PrimaryToolbar extends Component {
             toggleIsExpanded,
             bulkSelect,
             filterConfig,
-            actions,
+            actionsConfig,
             exportsConfig,
             sortByConfig,
             pagination,
-            filters,
+            activeFiltersConfig,
             children,
             exportConfig,
             ...props
         } = this.props;
+        const overflowActions = [
+            ...sortByConfig ?
+                [
+                    {
+                        label: 'Sort order ASC',
+                        props: { isDisabled: sortByConfig.direction === SortByDirection.asc },
+                        onClick: (e) => sortByConfig.onSortChange &&
+                            sortByConfig.onSortChange(e, SortByDirection.asc)
+                    }, {
+                        label: 'Sort order DESC',
+                        props: { isDisabled: sortByConfig.direction === SortByDirection.desc },
+                        onClick: (e) => sortByConfig.onSortChange &&
+                            sortByConfig.onSortChange(e, SortByDirection.desc)
+                    }
+                ] : []
+        ];
         return (
             <DataToolbar
                 { ...props }
@@ -57,23 +73,11 @@ class PrimaryToolbar extends Component {
                         </DataToolbarGroup>
                     }
                     {
-                        (actions && actions.length > 0) &&
-                        <Actions actions={ actions } overflowActions={ [
-                            ...sortByConfig &&
-                            [
-                                {
-                                    label: 'Sort order ASC',
-                                    props: { isDisabled: sortByConfig.direction === SortByDirection.asc },
-                                    onClick: (e) => sortByConfig.onSortChange &&
-                                        sortByConfig.onSortChange(e, SortByDirection.asc)
-                                }, {
-                                    label: 'Sort order DESC',
-                                    props: { isDisabled: sortByConfig.direction === SortByDirection.desc },
-                                    onClick: (e) => sortByConfig.onSortChange &&
-                                        sortByConfig.onSortChange(e, SortByDirection.desc)
-                                }
-                            ]
-                        ] } />
+                        (
+                            (actionsConfig && actionsConfig.config && actionsConfig.actions.length > 0) ||
+                            sortByConfig
+                        ) &&
+                        <Actions { ...actionsConfig || {} } overflowActions={ overflowActions } />
                     }
                     {
                         sortByConfig &&
@@ -94,10 +98,10 @@ class PrimaryToolbar extends Component {
                     }
                 </DataToolbarContent>
                 {
-                    filters &&
+                    activeFiltersConfig &&
                     <DataToolbarContent>
                         <DataToolbarItem>
-                            <FilterChips { ...filters } />
+                            <FilterChips { ...activeFiltersConfig } />
                         </DataToolbarItem>
                     </DataToolbarContent>
                 }
@@ -115,9 +119,13 @@ PrimaryToolbar.propTypes = {
     pagination: PropTypes.shape(Pagination.propTypes),
     sortByConfig: PropTypes.shape(SortBy.propTypes),
     exportConfig: PropTypes.shape(DownloadButton.propTypes),
-    filters: PropTypes.shape(FilterChips.propTypes),
+    activeFiltersConfig: PropTypes.shape(FilterChips.propTypes),
     children: PropTypes.node,
-    actions: Actions.propTypes.actions
+    actionsConfig: PropTypes.shape({
+        actions: Actions.propTypes.actions,
+        dropdownProps: Actions.propTypes.dropdownProps,
+        onSelect: Actions.propTypes.onSelect
+    })
 };
 
 PrimaryToolbar.defaultProps = {

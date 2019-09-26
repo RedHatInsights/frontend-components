@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { SortByDirection } from '@patternfly/react-table';
 import { Button } from '@patternfly/react-core';
@@ -15,8 +15,8 @@ const SortBy = ({ direction, onSortChange }) => (
     >
         {
             direction === SortByDirection.asc ?
-                <SortAmountDownIcon size="sm" /> :
-                <SortAmountUpIcon size="sm" />
+                <SortAmountUpIcon size="sm" /> :
+                <SortAmountDownIcon size="sm" />
         }
     </Button>
 );
@@ -29,6 +29,6 @@ SortBy.propTypes = {
 SortBy.defaultProps = {
     direction: SortByDirection.asc,
     onSortChange: () => undefined
-}
+};
 
 export default SortBy;
