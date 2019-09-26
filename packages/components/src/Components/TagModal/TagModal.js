@@ -13,16 +13,13 @@ export default class TagModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            columns: [
-                { title: 'Name' },
-                { title: 'Tag Source' }
-            ],
+            columns: props.columns,
             rows: props.rows
         };
     }
 
     render() {
-        const { systemName, toggleModal, isOpen, ...props } = this.props;
+        const { systemName, toggleModal, isOpen, rows, columns, ...props } = this.props;
         return(
             <Modal
                 {...props}
@@ -32,7 +29,7 @@ export default class TagModal extends React.Component {
                 isFooterLeftAligned
             >
                 {this.props.children}
-                <Table variant="compact" cells={this.state.columns} rows={this.state.rows}>
+                <Table variant="compact" cells={columns} rows={rows}>
                     <TableHeader />
                     <TableBody />
                 </Table>
@@ -45,10 +42,16 @@ TagModal.propTypes = {
     systemName: PropTypes.string,
     isOpen: PropTypes.bool,
     toggleModal: PropTypes.func,
-    rows: PropTypes.array
+    rows: PropTypes.array,
+    columns: PropTypes.array
 };
 
 TagModal.defaultProps = {
     isOpen: false,
     toggleModal: () => undefined,
+    columns: [
+        { title: 'Name' },
+        { title: 'Tag Source' }
+    ],
+    rows: []
 }
