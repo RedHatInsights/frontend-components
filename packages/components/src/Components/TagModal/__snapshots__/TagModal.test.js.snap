@@ -11,18 +11,6 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   isOpen={true}
   isSmall={false}
   onClose={[Function]}
-  rows={
-    Array [
-      Array [
-        "key",
-        "value",
-      ],
-      Array [
-        "thing",
-        "otherthing",
-      ],
-    ]
-  }
   title="Tags for paul.localhost.com"
 >
   <Table
@@ -111,6 +99,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
     onExpand={null}
     role="grid"
     rowLabeledBy="simple-node"
+    rows={Array []}
     variant="compact"
   >
     <TableHeader
