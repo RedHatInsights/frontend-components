@@ -7,8 +7,8 @@ import { TagIcon } from '@patternfly/react-icons'
 const TagCount = ({count, onTagClick, className, ...props}) => {
     return (
         <Button  {...props} variant="plain" className={`ins-c-tag-count ${className}`} onClick={onTagClick}>
-            <TagIcon />
-            <span>{count}</span>
+            <TagIcon size="md"/>
+            <span className="ins-c-tag__text">{count}</span>
         </Button>
     )
 }
