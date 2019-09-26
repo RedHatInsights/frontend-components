@@ -41,7 +41,7 @@ describe('InfoTable', () => {
         it('onSort set', () => {
             const wrapper = shallow(<InfoTable
                 onSort={ jest.fn() }
-                cells={ [{ title: 'One cell', transforms: [ sortable ]}, 'Second one' ] }
+                cells={ [{ title: 'One cell', transforms: [ sortable ] }, 'Second one' ] }
                 rows={ [
                     [ 'first', 'second' ],
                     [{ title: 'second from title' }, 'another' ],
@@ -74,7 +74,7 @@ describe('InfoTable', () => {
             const wrapper = mount(<InfoTable
                 expandable
                 onSort={ onSort }
-                cells={ [{ title: 'One cell', transforms: [ sortable ]}, 'Second one' ] }
+                cells={ [{ title: 'One cell', transforms: [ sortable ] }, 'Second one' ] }
                 rows={ [
                     {
                         cells: [ 'first', 'second' ]
@@ -95,7 +95,7 @@ describe('InfoTable', () => {
             const onSort = jest.fn();
             const wrapper = mount(<InfoTable
                 onSort={ onSort }
-                cells={ [{ title: 'One cell', transforms: [ sortable ]}, 'Second one' ] }
+                cells={ [{ title: 'One cell', transforms: [ sortable ] }, 'Second one' ] }
                 rows={ [
                     [ 'first', 'second' ],
                     [{ title: 'second from title' }, 'another' ],
@@ -110,7 +110,7 @@ describe('InfoTable', () => {
         it('onSort should be called', () => {
             const onSort = jest.fn();
             const wrapper = mount(<InfoTable
-                cells={ [{ title: 'One cell', transforms: [ sortable ]}, 'Second one' ] }
+                cells={ [{ title: 'One cell', transforms: [ sortable ] }, 'Second one' ] }
                 rows={ [
                     [ 'first', 'second' ],
                     [{ title: 'second from title' }, 'another' ],

@@ -29,7 +29,7 @@ describe('CollectionCard', () => {
     });
 
     it('should render correctly - no data', () => {
-        const store = mockStore({ systemProfileStore: {}, entityDetails: {}});
+        const store = mockStore({ systemProfileStore: {}, entityDetails: {} });
         const wrapper = render(<CollectionCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });

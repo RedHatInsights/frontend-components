@@ -122,7 +122,7 @@ class SystemDetails extends Component {
     }
 
     render() {
-        const { match: { params: { inventoryId }}, hidePassed, client } = this.props;
+        const { match: { params: { inventoryId } }, hidePassed, client } = this.props;
         return (
             <ApolloProvider client={ client }>
                 <Query query={ QUERY } variables={ { systemId: inventoryId } }>

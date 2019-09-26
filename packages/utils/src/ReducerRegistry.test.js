@@ -63,7 +63,7 @@ describe('dispatchActionsToStore', () => {
             one: () => ({ type: 'test' }),
             two: (data) => ({ type: 'another', payload: data })
         }, { dispatch });
-        actions.two({ rows: []});
+        actions.two({ rows: [] });
         expect(dispatch).toHaveBeenLastCalledWith({
             type: 'another', payload: {
                 rows: []
