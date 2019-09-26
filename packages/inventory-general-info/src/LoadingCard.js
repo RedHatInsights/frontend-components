@@ -14,7 +14,7 @@ import {
 } from '@patternfly/react-core';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
 
-export const Clickable = ({ item: { onClick, value, target }}) => (
+export const Clickable = ({ item: { onClick, value, target } }) => (
     <Fragment>
         {
             value !== 0 ?

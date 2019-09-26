@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import LoadingCard, { Clickable } from './LoadingCard';
 
-[ true, false ].map(isLoading => {
+[true, false].map(isLoading => {
     it(`Loading card render - isLoading: ${isLoading}`, () => {
         const wrapper = shallow(<LoadingCard isLoading={ isLoading } title={ `Card that is ${isLoading ? 'loading' : 'loaded'}` } />);
         expect(toJson(wrapper)).toMatchSnapshot();

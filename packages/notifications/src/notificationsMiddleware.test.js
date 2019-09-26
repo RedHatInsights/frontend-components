@@ -28,7 +28,7 @@ describe('Notifications middleware', () => {
 
     beforeEach(() => {
         initialProps = {};
-        middlewares = [ promiseMiddleware(), notificationsMiddleware() ];
+        middlewares = [promiseMiddleware(), notificationsMiddleware()];
         mockStore = configureStore(middlewares);
         initialProps = {
             store: mockStore({})
@@ -92,7 +92,7 @@ describe('Notifications middleware', () => {
             expect.objectContaining({
                 type: 'FOO_FULFILLED',
                 payload: { sucess: true }
-            }) ];
+            })];
 
         const action = {
             ...requestMock(false),
@@ -116,9 +116,9 @@ describe('Notifications middleware', () => {
     });
 
     it('should dispatch pending and success notifications with custom configuration', () => {
-        middlewares = [ promiseMiddleware(), notificationsMiddleware({
+        middlewares = [promiseMiddleware(), notificationsMiddleware({
             autoDismiss: false
-        }) ];
+        })];
         mockStore = configureStore(middlewares);
         const store = mockStore({});
 
@@ -146,7 +146,7 @@ describe('Notifications middleware', () => {
             expect.objectContaining({
                 type: 'FOO_FULFILLED',
                 payload: { sucess: true }
-            }) ];
+            })];
 
         const action = {
             ...requestMock(false),
@@ -192,9 +192,9 @@ describe('Notifications middleware', () => {
     });
 
     it('should not dispatch error notification automatically', () => {
-        middlewares = [ promiseMiddleware(), notificationsMiddleware({
+        middlewares = [promiseMiddleware(), notificationsMiddleware({
             dispatchDefaultFailure: false
-        }) ];
+        })];
         mockStore = configureStore(middlewares);
         const store = mockStore({});
         const expectedActions = [
@@ -211,10 +211,10 @@ describe('Notifications middleware', () => {
     });
 
     it('should dispatch error notification automatically with custom error message structure', () => {
-        middlewares = [ promiseMiddleware(), notificationsMiddleware({
+        middlewares = [promiseMiddleware(), notificationsMiddleware({
             errorTitleKey: 'body.title',
             errorDescriptionKey: 'body.description'
-        }) ];
+        })];
         mockStore = configureStore(middlewares);
         const store = mockStore({});
         const expectedActions = [
@@ -239,14 +239,14 @@ describe('Notifications middleware', () => {
     });
 
     it('should dispatch notifications with custom suffixes', () => {
-        const customSuffixes = [ 'FETCHING', 'SUCCESS', 'FAILED' ];
-        middlewares = [ promiseMiddleware({
+        const customSuffixes = ['FETCHING', 'SUCCESS', 'FAILED'];
+        middlewares = [promiseMiddleware({
             promiseTypeSuffixes: customSuffixes
         }), notificationsMiddleware({
             pendingSuffix: 'FETCHING',
             fulfilledSuffix: 'SUCCESS',
             rejectedSuffix: 'FAILED'
-        }) ];
+        })];
         mockStore = configureStore(middlewares);
         const store = mockStore({});
 
@@ -370,10 +370,10 @@ describe('Notifications middleware', () => {
     });
 
     it('should select second message key from configuration', () => {
-        middlewares = [ promiseMiddleware(), notificationsMiddleware({
-            errorTitleKey: [ 'body.title', 'fooKey' ],
-            errorDescriptionKey: [ 'body.description', 'barKey' ]
-        }) ];
+        middlewares = [promiseMiddleware(), notificationsMiddleware({
+            errorTitleKey: ['body.title', 'fooKey'],
+            errorDescriptionKey: ['body.description', 'barKey']
+        })];
         mockStore = configureStore(middlewares);
         const store = mockStore({});
         const expectedActions = expect.arrayContaining([
@@ -398,10 +398,10 @@ describe('Notifications middleware', () => {
     });
 
     it('should send sentryId if encountered', () => {
-        middlewares = [ promiseMiddleware(), notificationsMiddleware({
-            errorTitleKey: [ 'title' ],
-            errorDescriptionKey: [ 'description' ]
-        }) ];
+        middlewares = [promiseMiddleware(), notificationsMiddleware({
+            errorTitleKey: ['title'],
+            errorDescriptionKey: ['description']
+        })];
         mockStore = configureStore(middlewares);
         const store = mockStore({});
         const expectedActions = expect.arrayContaining([

@@ -20,7 +20,7 @@ describe('SystemCard', () => {
     let mockStore;
 
     beforeEach(() => {
-        mockStore = configureStore([ promiseMiddleware() ]);
+        mockStore = configureStore([promiseMiddleware()]);
         initialState = {
             entityDetails: {
                 entity: {
@@ -39,7 +39,7 @@ describe('SystemCard', () => {
     });
 
     it('should render correctly - no data', () => {
-        const store = mockStore({ systemProfileStore: {}, entityDetails: {}});
+        const store = mockStore({ systemProfileStore: {}, entityDetails: {} });
         const wrapper = render(<SystemCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });

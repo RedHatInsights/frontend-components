@@ -6,7 +6,7 @@ import translatedMessages from '../../../locales/data.json';
 import localeEn from 'react-intl/locale-data/en';
 import localeCs from 'react-intl/locale-data/cs';
 
-let defaultLocale = [ ...localeEn, ...localeCs ];
+let defaultLocale = [...localeEn, ...localeCs];
 
 const IntlProvider = ({
     locale,
@@ -31,7 +31,7 @@ const IntlProvider = ({
 };
 
 export const updateLocaleData = (localeData = []) => {
-    defaultLocale = [ ...defaultLocale, ...localeData ];
+    defaultLocale = [...defaultLocale, ...localeData];
     return defaultLocale;
 };
 

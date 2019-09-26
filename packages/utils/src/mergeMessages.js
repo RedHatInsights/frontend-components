@@ -7,7 +7,7 @@ const last = require('lodash/last');
 let MESSAGES_PATTERN = 'build/messages/**/*.json';
 let LANG_DIR = 'locales/';
 let LANG_PATTERN = '';
-let IGNORED = [ 'translations', 'data' ];
+let IGNORED = ['translations', 'data'];
 
 program
 .option('-p, --pattern <value>', 'file pattern')

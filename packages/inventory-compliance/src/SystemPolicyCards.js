@@ -21,7 +21,7 @@ class SystemPolicyCards extends React.Component {
             <React.Fragment>
                 <Grid gutter='md'>
                     { this.systemPolicyCards() }
-                    { loading && [ ...Array(3) ].map((_item, i) => (
+                    { loading && [...Array(3)].map((_item, i) => (
                         <GridItem span={ 4 } key={ i }>
                             <Card>
                                 <CardBody>

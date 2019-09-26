@@ -16,13 +16,13 @@ describe('BiosCard', () => {
             systemProfile: {
                 loaded: true,
                 ...biosTest,
-                cpu_flags: [ 'one' ]
+                cpu_flags: ['one']
             }
-        }};
+        } };
     });
 
     it('should render correctly - no data', () => {
-        const store = mockStore({ systemProfileStore: {}});
+        const store = mockStore({ systemProfileStore: {} });
         const wrapper = render(<BiosCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
@@ -39,7 +39,7 @@ describe('BiosCard', () => {
             systemProfileStore: {
                 systemProfile: {
                     ...initialState.systemProfileStore.systemProfile,
-                    cpu_flags: [ 'one' ]
+                    cpu_flags: ['one']
                 }
             }
         });
@@ -56,7 +56,7 @@ describe('BiosCard', () => {
             systemProfileStore: {
                 systemProfile: {
                     ...initialState.systemProfileStore.systemProfile,
-                    cpu_flags: [ 'one' ]
+                    cpu_flags: ['one']
                 }
             }
         });

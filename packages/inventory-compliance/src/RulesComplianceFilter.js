@@ -49,9 +49,9 @@ class RulesComplianceFilter extends React.Component {
         if (filterName === 'hidePassed') {
             this.setState({ hidePassed: selectedValue }, this.updateInventory);
         } else if (filterName === 'severity') {
-            this.setState({ severity: [ ...severity, selectedValue ]}, this.updateInventory);
+            this.setState({ severity: [...severity, selectedValue] }, this.updateInventory);
         } else if (filterName === 'policy') {
-            this.setState({ policy: [ ...policy, selectedValue ]}, this.updateInventory);
+            this.setState({ policy: [...policy, selectedValue] }, this.updateInventory);
         }
     }
 

@@ -94,19 +94,19 @@ class RemediationWizard extends Component {
         try {
             const result = await api.getResolutionsBatch(issues.map(i => i.id));
 
-            const [ resolutions, errors ] = transform(result, ([ resolutions, errors ], value, key) => {
+            const [resolutions, errors] = transform(result, ([resolutions, errors], value, key) => {
                 if (!value) {
                     errors.push(`Issue ${key} does not have Ansible support`);
                 } else {
                     resolutions.push(value);
                 }
 
-                return [ resolutions, errors ];
-            }, [ [], [] ]);
+                return [resolutions, errors];
+            }, [[], []]);
 
             this.setState({ resolutions, errors });
         } catch (e) {
-            this.setState({ errors: [ 'Error obtaining resolution information. Please try again later.' ]});
+            this.setState({ errors: ['Error obtaining resolution information. Please try again later.'] });
         }
     }
 

@@ -60,7 +60,7 @@ describe('TextInputModal', () => {
         it('getDerivedStateFromProps should be called', () => {
             const getDerivedStateFromProps = jest.spyOn(TextInputModal, 'getDerivedStateFromProps');
             const wrapper = mount(<TextInputModal isOpen />);
-            wrapper.find('input[type="text"]').first().simulate('change', { target: { value: 'some' }});
+            wrapper.find('input[type="text"]').first().simulate('change', { target: { value: 'some' } });
             expect(getDerivedStateFromProps).toHaveBeenCalled();
         });
 

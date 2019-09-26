@@ -24,19 +24,19 @@ export const diskMapper = (devices = []) => ({
     cells: [
         {
             title: 'Device',
-            transforms: [ sortable ]
+            transforms: [sortable]
         },
         {
             title: 'Label',
-            transforms: [ sortable ]
+            transforms: [sortable]
         },
         {
             title: 'Mount point',
-            transforms: [ sortable ]
+            transforms: [sortable]
         },
         {
             title: 'Type',
-            transforms: [ sortable ]
+            transforms: [sortable]
         }
     ],
     rows: devices.map(({
@@ -64,7 +64,7 @@ export const productsMapper = (products = []) => ({
     cells: [
         {
             title: 'Name',
-            transforms: [ sortable ]
+            transforms: [sortable]
         },
         'Status'
     ],
@@ -81,20 +81,20 @@ export const interfaceMapper = (data = []) => ({
     cells: [
         {
             title: 'MAC address',
-            transforms: [ sortable ]
+            transforms: [sortable]
         },
         {
             title: 'MTU',
-            transforms: [ sortable ]
+            transforms: [sortable]
         },
         {
             title: 'Name',
-            transforms: [ sortable ]
+            transforms: [sortable]
         },
         'State',
         {
             title: 'Type',
-            transforms: [ sortable ]
+            transforms: [sortable]
         }
     ],
     rows: data.map(item => ([
@@ -109,16 +109,16 @@ export const interfaceMapper = (data = []) => ({
     ]))
 });
 
-export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabled: []}) => ({
+export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabled: [] }) => ({
     cells: [
         {
             title: 'Name',
-            transforms: [ sortable ]
+            transforms: [sortable]
         },
         'Enabled',
         'GPG check'
     ],
-    rows: [ ...enabled, ...disabled ].map(repository => ([
+    rows: [...enabled, ...disabled].map(repository => ([
         {
             title: <a href={ repository.base_url } target="_blank" rel="noopener noreferrer">{ repository.name }</a>,
             sortValue: repository.name
@@ -131,7 +131,7 @@ export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabl
 export const generalMapper = (data = [], title = '') => ({
     cells: [{
         title,
-        transforms: [ sortable ]
+        transforms: [sortable]
     }],
-    rows: data.map(item => ([ item ]))
+    rows: data.map(item => ([item]))
 });

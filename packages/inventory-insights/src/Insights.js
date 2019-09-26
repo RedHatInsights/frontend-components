@@ -37,11 +37,11 @@ class InventoryRuleList extends Component {
         inventoryReportFetchStatus: 'pending',
         rows: [],
         cols: [
-            { title: 'Description', transforms: [ sortable ]},
-            { title: 'Added', transforms: [ sortable, cellWidth(15) ]},
-            { title: 'Total risk', transforms: [ sortable ]},
-            { title: 'Risk of change', transforms: [ sortable ]},
-            { title: <span className='ansibleCol'>{ ANSIBLE_ICON } Ansible</span>, transforms: [ sortable ]}
+            { title: 'Description', transforms: [sortable] },
+            { title: 'Added', transforms: [sortable, cellWidth(15)] },
+            { title: 'Total risk', transforms: [sortable] },
+            { title: 'Risk of change', transforms: [sortable] },
+            { title: <span className='ansibleCol'>{ ANSIBLE_ICON } Ansible</span>, transforms: [sortable] }
         ],
         isKebabOpen: false,
         sortBy: {},
@@ -103,15 +103,15 @@ class InventoryRuleList extends Component {
     };
 
     activeRuleFirst = (activeReports) => {
-        const reports = [ ...activeReports ];
+        const reports = [...activeReports];
         const activeRuleIndex = activeReports.findIndex(report => report.rule.rule_id === this.props.routerData.params.id);
         const activeReport = reports.splice(activeRuleIndex, 1);
 
-        return activeRuleIndex !== -1 ? [ activeReport[0], ...reports ] : activeReports;
+        return activeRuleIndex !== -1 ? [activeReport[0], ...reports] : activeReports;
     };
 
     handleOnCollapse = (event, rowId, isOpen) => {
-        const rows = [ ...this.state.rows ];
+        const rows = [...this.state.rows];
         rows[rowId] = { ...rows[rowId], isOpen };
         this.setState({
             rows
@@ -233,11 +233,11 @@ class InventoryRuleList extends Component {
     onSort = (_event, index, direction) => {
         const { activeReports, kbaDetailsData, filters, searchValue } = this.state;
         const sortedReports = {
-            2: sortBy(activeReports, [ result => result.rule.description ]),
-            3: sortBy(activeReports, [ result => result.rule.publish_date ]),
-            4: sortBy(activeReports, [ result => result.rule.total_risk ]),
-            5: sortBy(activeReports, [ result => result.resolution.resolution_risk.risk ]),
-            6: sortBy(activeReports, [ result => result.resolution.has_playbook ])
+            2: sortBy(activeReports, [result => result.rule.description]),
+            3: sortBy(activeReports, [result => result.rule.publish_date]),
+            4: sortBy(activeReports, [result => result.rule.total_risk]),
+            5: sortBy(activeReports, [result => result.resolution.resolution_risk.risk]),
+            6: sortBy(activeReports, [result => result.resolution.has_playbook])
         };
         const sortedReportsDirectional = direction === SortByDirection.asc ? sortedReports[index] : sortedReports[index].reverse();
         this.setState({
@@ -292,7 +292,7 @@ class InventoryRuleList extends Component {
         );
 
         return issues.length ?
-            { issues, systems: [ this.props.entity.id ]} :
+            { issues, systems: [this.props.entity.id] } :
             false;
     };
 

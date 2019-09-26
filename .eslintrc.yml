@@ -28,10 +28,9 @@ globals:
   shallow: true
   React: true
 rules:
-  array-bracket-spacing:
-    - error
-    - always
-    - objectsInArrays: false
+  react/jsx-uses-vars: 2
+  react/jsx-uses-react: 2
+  array-bracket-spacing: 2
   comma-dangle: 2
   comma-spacing:
     - 2
@@ -54,14 +53,6 @@ rules:
       MemberExpression: 0
       ImportDeclaration: 1
       ObjectExpression: 1
-  react/jsx-curly-spacing:
-    - error
-    - always
-    - children: true
-    - allowMultiline: false
-    - spacing:
-      - objectLiterals:
-        - never
   key-spacing: 2
   keyword-spacing: 2
   linebreak-style:
@@ -69,11 +60,12 @@ rules:
     - unix
   max-len:
     - 2
-    - 150
-  new-cap: 2
-  no-bitwise: 2
+    - 175
+  new-cap: 0
+  no-bitwise:
+    - 2
+    - allow: ["~"]
   no-caller: 2
-  no-console: 1
   no-mixed-spaces-and-tabs: 2
   no-multiple-empty-lines:
     - error
@@ -83,15 +75,13 @@ rules:
     - error
     - functions: false
   no-undef: 2
-  no-unused-vars: 0
+  no-console: 1
+  no-unused-vars: 1
   no-var: 2
   no-with: 2
-  object-shorthand: 2
   object-curly-spacing:
     - error
     - always
-    - objectsInObjects: false
-      arraysInObjects: false
   one-var:
     - error
     - never

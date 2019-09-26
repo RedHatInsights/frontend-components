@@ -56,12 +56,12 @@ describe('appDeployment', () => {
 });
 
 it('htmlPlugin should update', () => {
-    const enabledPlugins = plugins({ htmlPlugin: { title: 'myTitle' }});
+    const enabledPlugins = plugins({ htmlPlugin: { title: 'myTitle' } });
     expect(enabledPlugins[HTML_WEBPACK].options.title).toBe('myTitle');
 });
 
 it('copyPlugin should update', () => {
-    const enabledPlugins = plugins({ copyPlugin: [{}]});
+    const enabledPlugins = plugins({ copyPlugin: [{}] });
     expect(enabledPlugins[COPYFILES].patterns.length).toBe(2);
 });
 
@@ -71,7 +71,7 @@ it('replacePlugin should update', () => {
             pattern: '@@another',
             replacement: 'test-string'
         }
-    ]});
+    ] });
     enabledPlugins[REPLACE].replace(
         { html: '@@another string @@env' },
         (_, { html }) => expect(html).toBe('test-string string ')

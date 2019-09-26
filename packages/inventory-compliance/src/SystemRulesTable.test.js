@@ -50,7 +50,7 @@ describe('SystemRulesTable component', () => {
         const instance = wrapper.instance();
         await instance.setInitialCurrentRows();
         expect(wrapper.state('currentRows').length / 2).toEqual(2);
-        await instance.updateFilter(false, [ 'high' ], []);
+        await instance.updateFilter(false, ['high'], []);
         expect(wrapper.state('currentRows').length / 2).toEqual(0);
     });
 
@@ -65,7 +65,7 @@ describe('SystemRulesTable component', () => {
         const instance = wrapper.instance();
         await instance.setInitialCurrentRows();
         expect(wrapper.state('currentRows').length / 2).toEqual(2);
-        await instance.updateFilter(false, [ 'high', 'medium' ], []);
+        await instance.updateFilter(false, ['high', 'medium'], []);
         expect(wrapper.state('currentRows').length / 2).toEqual(1);
     });
 

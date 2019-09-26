@@ -13,9 +13,9 @@ import './insights.scss';
 
 class ReportDetails extends React.Component {
     templateProcessor = (template, definitions) => {
-        const DOT_SETTINGS = { ...doT.templateSettings, varname: [ 'pydata' ], strip: false };
+        const DOT_SETTINGS = { ...doT.templateSettings, varname: ['pydata'], strip: false };
         const sanitizeOptions = {
-            allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, '*': [ 'style' ]},
+            allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, '*': ['style'] },
             transformTags: {
                 ul(tagName, attribs) {
                     return {
