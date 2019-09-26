@@ -106,7 +106,7 @@ class RemediationWizard extends Component {
 
             this.setState({ resolutions, errors });
         } catch (e) {
-            this.setState({ errors: [ 'Error obtaining resolution information. Please try again later.' ]});
+            this.setState({ errors: [ 'Error obtaining resolution information. Please try again later.' ] });
         }
     }
 

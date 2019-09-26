@@ -23,7 +23,7 @@ describe('basic functions', () => {
 describe('bubble actions', () => {
     let mwListener;
     const mockedNext = jest.fn();
-    const mockedAction = { type: 'something', payload: { data: 'some data' }};
+    const mockedAction = { type: 'something', payload: { data: 'some data' } };
 
     beforeEach(() => {
         mwListener = new MiddlewareListener();

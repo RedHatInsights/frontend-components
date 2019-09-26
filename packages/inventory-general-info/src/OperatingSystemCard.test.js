@@ -23,7 +23,7 @@ describe('OperatingSystemCard', () => {
     });
 
     it('should render correctly - no data', () => {
-        const store = mockStore({ systemProfileStore: {}, entityDetails: {}});
+        const store = mockStore({ systemProfileStore: {}, entityDetails: {} });
         const wrapper = render(<OperatingSystemCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });

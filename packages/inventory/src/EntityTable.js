@@ -244,7 +244,7 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({ entities: { columns, rows, loaded, sortBy }}) {
+function mapStateToProps({ entities: { columns, rows, loaded, sortBy } }) {
     return {
         columns,
         loaded,

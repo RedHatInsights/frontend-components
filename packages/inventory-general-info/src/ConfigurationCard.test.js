@@ -23,7 +23,7 @@ describe('ConfigurationCard', () => {
     });
 
     it('should render correctly - no data', () => {
-        const store = mockStore({ systemProfileStore: {}, entityDetails: {}});
+        const store = mockStore({ systemProfileStore: {}, entityDetails: {} });
         const wrapper = render(<ConfigurationCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
