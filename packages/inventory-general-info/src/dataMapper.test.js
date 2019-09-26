@@ -29,11 +29,25 @@ it('diskMapper', () => {
     expect(diskMapper([{
         device: 'device',
         label: 'label',
-        mount_point: 'mount',
+        mountpoint: 'mount',
         options: {
             test: 'data'
         },
-        type: 'type'
+        mounttype: 'type'
+    }])).toMatchSnapshot();
+});
+
+it('diskMapper with values', () => {
+    expect(diskMapper([{
+        device: { value: 'device' },
+        label: { value: 'label' },
+        mountpoint: { value: 'mount' },
+        options: {
+            options: {
+                value: { test: 'data' }
+            }
+        },
+        mounttype: 'type'
     }])).toMatchSnapshot();
 });
 

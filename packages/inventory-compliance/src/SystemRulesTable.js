@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import * as remediationsApi from '@redhat-cloud-services/frontend-components-remediations/remediationsApi';
 import ComplianceRemediationButton from './ComplianceRemediationButton';
 import { CheckIcon, CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import { EmptyTable, SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
 import {
@@ -107,7 +106,7 @@ class SystemRulesTable extends React.Component {
         const { hidePassed, itemsPerPage } = this.state;
         const { profileRules, rows } = this.props;
         const rowsRefIds = this.rulesToRows(profileRules);
-        this.currentRows(1, itemsPerPage, rowsRefIds).then((currentRows) => {
+        return this.currentRows(1, itemsPerPage, rowsRefIds).then((currentRows) => {
             this.setState(() => (
                 {
                     currentRows,
@@ -184,14 +183,11 @@ class SystemRulesTable extends React.Component {
                     {}
             )
         }));
-
         const ruleIds = newRows.filter(row => row.hasOwnProperty('isOpen'))
         .map(({ cells }) => `ssg:rhel7|${this.removeRefIdPrefix(profiles[cells[0].original])}|${refIds[cells[0].original]}`);
 
-        return window.insights.chrome.auth.getUser()
-        .then(() => {
-            return remediationsApi.getResolutionsBatch(ruleIds).catch(e => newRows)
-            .then(response => newRows.map(({ cells, ...row }) => ({
+        return window.insights.chrome.auth.getUser().then(() => {
+            return remediationsApi.getResolutionsBatch(ruleIds).then(response => newRows.map(({ cells, ...row }) => ({
                 ...row,
                 cells: [
                     ...cells,
@@ -285,10 +281,10 @@ class SystemRulesTable extends React.Component {
                         </Stack>
                         <Stack id={ `rule-identifiers-references-${key}` } className='margin-bottom-lg'>
                             <Grid>
-                                <GridItem span={ 2 }>
+                                { identifier && <GridItem span={ 2 }>
                                     <Text component={ TextVariants.h5 }><b>Identifier</b></Text>
-                                    <Text>{ identifier && this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
-                                </GridItem>
+                                    <Text>{ this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
+                                </GridItem> }
 
                                 { references && references.length > 0 ? <GridItem span={ 10 }>
                                     <Text component={ TextVariants.h5 }><b>References</b></Text>
@@ -370,10 +366,9 @@ class SystemRulesTable extends React.Component {
 
     handleSearch = debounce(searchTerm => {
         const { hidePassed, severity, policy } = this.state;
-        this.setState({
+        return this.setState({
             searchTerm
         }, () => this.updateFilter(hidePassed, severity, policy));
-
     }, 500)
 
     onSort = (_event, index, direction) => {
@@ -392,7 +387,7 @@ class SystemRulesTable extends React.Component {
                 }
             )
         );
-        this.currentRows(page, itemsPerPage, { rows: sortedRows, profiles, refIds }).then((currentRows) => {
+        return this.currentRows(page, itemsPerPage, { rows: sortedRows, profiles, refIds }).then((currentRows) => {
             this.setState(() => ({
                 currentRows,
                 sortBy: {
@@ -490,7 +485,7 @@ class SystemRulesTable extends React.Component {
         const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows,
             hidePassed, severity, policy, searchTerm);
 
-        this.currentRows(
+        return this.currentRows(
             page,
             itemsPerPage,
             {
@@ -566,7 +561,7 @@ class SystemRulesTable extends React.Component {
                         onCollapse={ this.onCollapse }
                         onSort={ this.onSort }
                         sortBy={ sortBy }
-                        onSelect={ (currentRows.length !== 0) && this.onSelect }
+                        onSelect={ (currentRows.length !== 0) ? this.onSelect : () => null }
                         rows={ (currentRows.length === 0) ? emptyRows : currentRows }>
                         <TableHeader />
                         <TableBody />
@@ -602,4 +597,4 @@ SystemRulesTable.defaultProps = {
     profileRules: [{ rules: []}]
 };
 
-export default routerParams(SystemRulesTable);
+export default SystemRulesTable;

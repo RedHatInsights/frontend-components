@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddSourceButton renders correctly with sourceTypes 1`] = `
+exports[`AddSourceWizard renders correctly with sourceTypes 1`] = `
 <SourceAddModal
   applicationTypes={
     Array [
@@ -16,6 +16,7 @@ exports[`AddSourceButton renders correctly with sourceTypes 1`] = `
       },
     ]
   }
+  disableAppSelection={false}
   onCancel={[Function]}
   onSubmit={[Function]}
   sourceTypes={
@@ -68,7 +69,7 @@ exports[`AddSourceButton renders correctly with sourceTypes 1`] = `
 />
 `;
 
-exports[`AddSourceButton renders correctly without sourceTypes 1`] = `
+exports[`AddSourceWizard renders correctly without sourceTypes 1`] = `
 <SourceAddModal
   applicationTypes={
     Array [
@@ -84,6 +85,7 @@ exports[`AddSourceButton renders correctly without sourceTypes 1`] = `
       },
     ]
   }
+  disableAppSelection={false}
   onCancel={[Function]}
   onSubmit={[Function]}
   values={Object {}}
