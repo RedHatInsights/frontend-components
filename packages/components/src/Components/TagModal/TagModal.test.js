@@ -4,8 +4,8 @@ import toJson from 'enzyme-to-json';
 import TagModal from './TagModal';
 
 describe('TagCount component', () => {
-    it('Render the modal open with 11 tags', () => {
-        const wrapper = shallow(<TagModal isOpen={true} systemName={'paul.localhost.com'} />)
+    it('Render the modal open with row of tags', () => {
+        const wrapper = shallow(<TagModal isOpen={true} systemName={'paul.localhost.com'} rows={[['key','value'],['thing','otherthing']]} />)
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 

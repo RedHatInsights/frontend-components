@@ -12,61 +12,12 @@ import {
 export default class TagModal extends React.Component {
     constructor(props) {
         super(props);
-        let rows = []
-        //TODO: this bit should be replaced with an API call when the backend is ready
-        if(props.systemName == 'paul.localhost.com') {
-            rows = [
-                {
-                    cells: ['environment=production', 'AWS']
-                },
-                {
-                    cells: ['owner=finanace', 'AWS']
-                },
-                {
-                    cells: ['pants=worn', 'AWS']
-                },
-                {
-                    cells: ['fit=F R E S H', 'AWS']
-                },
-                {
-                    cells: ['clams=casino', 'AWS']
-                },
-                {
-                    cells: ['OS=RHEL', 'AWS']
-                },
-                {
-                    cells: ['computer=fast', 'AWS']
-                },
-                {
-                    cells: ['Iam=SPEED!', 'AWS']
-                },
-                {
-                    cells: ['beans=food', 'AWS']
-                },
-                {
-                    cells: ['thing=otherthing', 'AWS']
-                },
-                {
-                    cells: ['cheese=cheddar', 'AWS']
-                }
-            ];
-        } else {
-            rows = [
-                {
-                    cells: ['environment=staging', 'AWS']
-                },
-                {
-                    cells: ['owner=engineering', 'AWS']
-                }
-            ];
-        }
-
         this.state = {
             columns: [
                 { title: 'Name' },
                 { title: 'Tag Source' }
             ],
-            rows: rows
+            rows: props.rows
         };
     }
 
@@ -93,10 +44,11 @@ export default class TagModal extends React.Component {
 TagModal.propTypes = {
     systemName: PropTypes.string,
     isOpen: PropTypes.bool,
-    toggleModal: PropTypes.func
+    toggleModal: PropTypes.func,
+    rows: PropTypes.array
 };
 
 TagModal.defaultProps = {
     isOpen: false,
-    toggleModal: () => undefined
+    toggleModal: () => undefined,
 }

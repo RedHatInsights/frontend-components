@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TagCount component Render the modal open with 11 tags 1`] = `
+exports[`TagCount component Render the modal open with row of tags 1`] = `
 <Modal
   actions={Array []}
   ariaDescribedById=""
@@ -11,6 +11,18 @@ exports[`TagCount component Render the modal open with 11 tags 1`] = `
   isOpen={true}
   isSmall={false}
   onClose={[Function]}
+  rows={
+    Array [
+      Array [
+        "key",
+        "value",
+      ],
+      Array [
+        "thing",
+        "otherthing",
+      ],
+    ]
+  }
   title="Tags for paul.localhost.com"
 >
   <Table
@@ -37,72 +49,14 @@ exports[`TagCount component Render the modal open with 11 tags 1`] = `
     rowLabeledBy="simple-node"
     rows={
       Array [
-        Object {
-          "cells": Array [
-            "environment=production",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "owner=finanace",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "pants=worn",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "fit=F R E S H",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "clams=casino",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "OS=RHEL",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "computer=fast",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "Iam=SPEED!",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "beans=food",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "thing=otherthing",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "cheese=cheddar",
-            "AWS",
-          ],
-        },
+        Array [
+          "key",
+          "value",
+        ],
+        Array [
+          "thing",
+          "otherthing",
+        ],
       ]
     }
     variant="compact"
@@ -157,76 +111,6 @@ exports[`TagCount component Render the modal with a child component 1`] = `
     onExpand={null}
     role="grid"
     rowLabeledBy="simple-node"
-    rows={
-      Array [
-        Object {
-          "cells": Array [
-            "environment=production",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "owner=finanace",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "pants=worn",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "fit=F R E S H",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "clams=casino",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "OS=RHEL",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "computer=fast",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "Iam=SPEED!",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "beans=food",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "thing=otherthing",
-            "AWS",
-          ],
-        },
-        Object {
-          "cells": Array [
-            "cheese=cheddar",
-            "AWS",
-          ],
-        },
-      ]
-    }
     variant="compact"
   >
     <TableHeader
