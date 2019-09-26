@@ -1,19 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import './tagModal.scss';
 import { Modal } from '@patternfly/react-core';
 import {
     Table,
     TableHeader,
-    TableBody,
-    sortable,
-    SortByDirection,
-    headerCol,
-    TableVariant,
-    expandable,
-    cellWidth,
-    textCenter,
+    TableBody
   } from '@patternfly/react-table';
   
 
