@@ -83,8 +83,10 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       ]
     }
     isAppLauncher={false}
+    isVisible={false}
     maxWidth="50vw"
     position="top"
+    tippyProps={Object {}}
     trigger="mouseenter focus"
     zIndex={9999}
   >
@@ -125,6 +127,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           "bottom",
         ]
       }
+      isVisible={false}
       lazy={true}
       maxWidth="50vw"
       onCreate={[Function]}
