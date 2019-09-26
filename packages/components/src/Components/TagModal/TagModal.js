@@ -13,7 +13,7 @@ export default class TagModal extends React.Component {
     constructor(props) {
         super(props);
         let rows = []
-        //this bit should be replaced with an API call when the backend is ready
+        //TODO: this bit should be replaced with an API call when the backend is ready
         if(props.systemName == 'paul.localhost.com') {
             rows = [
                 {
