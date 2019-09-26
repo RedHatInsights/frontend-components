@@ -4,6 +4,7 @@ import { Pagination } from '@patternfly/react-core';
 import { ConditionalFilter } from '../ConditionalFilter';
 import { BulkSelect } from '../BulkSelect';
 import { DownloadButton } from '../DownloadButton';
+import { FilterChips } from '../FilterChips';
 import { SortByDirection } from '@patternfly/react-table';
 import SortBy from './SortBy';
 import Actions from './Actions';
@@ -88,14 +89,16 @@ class PrimaryToolbar extends Component {
                     {
                         pagination &&
                         <DataToolbarItem className="ins-c-primary-toolbar__pagination">
-                            <Pagination { ...pagination } />
+                            <Pagination isCompact { ...pagination } />
                         </DataToolbarItem>
                     }
                 </DataToolbarContent>
                 {
                     filters &&
                     <DataToolbarContent>
-                        <DataToolbarItem>Filters</DataToolbarItem>
+                        <DataToolbarItem>
+                            <FilterChips { ...filters } />
+                        </DataToolbarItem>
                     </DataToolbarContent>
                 }
             </DataToolbar>
@@ -112,6 +115,7 @@ PrimaryToolbar.propTypes = {
     pagination: PropTypes.shape(Pagination.propTypes),
     sortByConfig: PropTypes.shape(SortBy.propTypes),
     exportConfig: PropTypes.shape(DownloadButton.propTypes),
+    filters: PropTypes.shape(FilterChips.propTypes),
     children: PropTypes.node,
     actions: Actions.propTypes.actions
 };

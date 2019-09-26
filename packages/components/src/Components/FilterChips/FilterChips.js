@@ -71,6 +71,6 @@ FilterChips.propTypes = {
         ])
     ),
     onDelete: PropTypes.func
-}
+};
 
 export default FilterChips;
