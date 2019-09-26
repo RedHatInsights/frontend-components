@@ -3,7 +3,7 @@ export let registry;
 
 function init(initialState = {}, middleware = [], composeEnhancersDefault) {
     if (!registry) {
-        registry = new ReducerRegistry(initialState, [...middleware], composeEnhancersDefault);
+        registry = new ReducerRegistry(initialState, [ ...middleware ], composeEnhancersDefault);
     }
 
     registry.register({

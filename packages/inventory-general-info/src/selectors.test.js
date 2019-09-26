@@ -78,9 +78,9 @@ it('infrastructureSelector should return correct data', () => {
     expect(infrastructureSelector(infraTest)).toEqual({
         type: 'test-type',
         vendor: 'test-vendor',
-        ipv4: ['1'],
-        ipv6: ['6'],
-        nics: ['test']
+        ipv4: [ '1' ],
+        ipv6: [ '6' ],
+        nics: [ 'test' ]
     });
 });
 
@@ -96,9 +96,9 @@ it('infrastructureSelector - no data', () => {
 
 it('configurationSelector should return correct data', () => {
     expect(configurationSelector(configTest)).toEqual({
-        packages: ['packages'],
-        services: ['services'],
-        processes: ['processes'],
+        packages: [ 'packages' ],
+        services: [ 'services' ],
+        processes: [ 'processes' ],
         repositories: {
             disabled: [],
             enabled: [{

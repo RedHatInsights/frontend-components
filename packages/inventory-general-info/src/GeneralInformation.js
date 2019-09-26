@@ -97,7 +97,7 @@ class GeneralInformation extends Component {
 
 GeneralInformation.propTypes = {
     entity: PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        id: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
     }),
     loadSystemDetail: PropTypes.func
 };

@@ -65,7 +65,7 @@ class EntityDetails extends Component {
                                     toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
                                     isOpen={ isOpen }
                                     position={ DropdownPosition.right }
-                                    dropdownItems={ [...(actions ?
+                                    dropdownItems={ [ ...(actions ?
                                         actions.map((action, key) => (
                                             <DropdownItem
                                                 key={ action.key || key }
@@ -74,7 +74,7 @@ class EntityDetails extends Component {
                                             >
                                                 { action.title }
                                             </DropdownItem>)
-                                        ) : [])] }
+                                        ) : []) ] }
                                 /> :
                                 <Skeleton size={ SkeletonSize.xl } />
                         }

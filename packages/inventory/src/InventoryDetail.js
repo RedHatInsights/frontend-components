@@ -44,7 +44,7 @@ InventoryDetail.propTypes = {
     pathPrefix: PropTypes.number,
     apiBase: PropTypes.string,
     entity: PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        id: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
     }),
     loaded: PropTypes.bool,
     loadEntity: PropTypes.func,

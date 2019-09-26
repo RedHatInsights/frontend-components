@@ -16,7 +16,7 @@ describe('BiosCard', () => {
             systemProfile: {
                 loaded: true,
                 ...biosTest,
-                cpu_flags: ['one']
+                cpu_flags: [ 'one' ]
             }
         } };
     });
@@ -39,7 +39,7 @@ describe('BiosCard', () => {
             systemProfileStore: {
                 systemProfile: {
                     ...initialState.systemProfileStore.systemProfile,
-                    cpu_flags: ['one']
+                    cpu_flags: [ 'one' ]
                 }
             }
         });
@@ -56,7 +56,7 @@ describe('BiosCard', () => {
             systemProfileStore: {
                 systemProfile: {
                     ...initialState.systemProfileStore.systemProfile,
-                    cpu_flags: ['one']
+                    cpu_flags: [ 'one' ]
                 }
             }
         });

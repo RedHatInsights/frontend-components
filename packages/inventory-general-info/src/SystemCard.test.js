@@ -20,7 +20,7 @@ describe('SystemCard', () => {
     let mockStore;
 
     beforeEach(() => {
-        mockStore = configureStore([promiseMiddleware()]);
+        mockStore = configureStore([ promiseMiddleware() ]);
         initialState = {
             entityDetails: {
                 entity: {

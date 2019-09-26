@@ -114,7 +114,7 @@ describe('Notification portal', () => {
 
     it('should render pagination', () => {
         const modifiedStore = mockStore({
-            notifications: [...new Array(20)].map((_item, key) => ({
+            notifications: [ ...new Array(20) ].map((_item, key) => ({
                 id: `store notification ${key}`,
                 variant: 'success',
                 title: 'Notification title',

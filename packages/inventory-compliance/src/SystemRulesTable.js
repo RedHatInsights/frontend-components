@@ -71,10 +71,10 @@ class SystemRulesTable extends React.Component {
         super(props);
         this.state = {
             columns: [
-                { title: 'Rule', transforms: [sortable] },
-                { title: 'Policy', transforms: [sortable] },
-                { title: 'Severity', transforms: [sortable] },
-                { title: 'Passed', transforms: [sortable] },
+                { title: 'Rule', transforms: [ sortable ] },
+                { title: 'Policy', transforms: [ sortable ] },
+                { title: 'Severity', transforms: [ sortable ] },
+                { title: 'Passed', transforms: [ sortable ] },
                 { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment> }
             ],
             page: 1,
@@ -511,7 +511,7 @@ class SystemRulesTable extends React.Component {
             return (
                 <Table
                     cells={ columns }
-                    rows={ [...Array(10)].map(() => ({
+                    rows={ [ ...Array(10) ].map(() => ({
                         cells: [{
                             title: <RowLoader />,
                             colSpan: 5

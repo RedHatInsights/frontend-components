@@ -62,7 +62,7 @@ class EntityTable extends React.Component {
             }
 
             if (isTime) {
-                const [day, date, month, year, time] = new Date(get(col, key, ' ')).toUTCString().split(' ');
+                const [ day, date, month, year, time ] = new Date(get(col, key, ' ')).toUTCString().split(' ');
                 if (date && month && year && time) {
                     return `${date} ${month} ${year}, ${time.split(':').slice(0, 2).join(':')} UTC`;
                 }
@@ -124,8 +124,8 @@ class EntityTable extends React.Component {
     buildTransforms = (props, transforms, hasItems, rows) => {
         return ([
             ...transforms || [],
-            ...props && props.width ? [cellWidth(props.width)] : [],
-            ...hasItems || rows.length <= 0 ? [] : [sortable]
+            ...props && props.width ? [ cellWidth(props.width) ] : [],
+            ...hasItems || rows.length <= 0 ? [] : [ sortable ]
         ]);
     }
 
@@ -213,7 +213,7 @@ EntityTable.propTypes = {
     items: PropTypes.array,
     sortBy: PropTypes.shape({
         key: PropTypes.string,
-        direction: PropTypes.oneOf(['asc', 'desc'])
+        direction: PropTypes.oneOf([ 'asc', 'desc' ])
     }),
     tableProps: PropTypes.shape({
         [PropTypes.string]: PropTypes.any

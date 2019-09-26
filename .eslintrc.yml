@@ -30,7 +30,10 @@ globals:
 rules:
   react/jsx-uses-vars: 2
   react/jsx-uses-react: 2
-  array-bracket-spacing: 2
+  array-bracket-spacing:
+    - error
+    - always
+    - objectsInArrays: false
   comma-dangle: 2
   comma-spacing:
     - 2

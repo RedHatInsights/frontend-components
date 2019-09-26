@@ -12,28 +12,28 @@ describe('InfoTable', () => {
         });
 
         it('one cell', () => {
-            const wrapper = shallow(<InfoTable cells={ ['One cell'] } rows={ [
+            const wrapper = shallow(<InfoTable cells={ [ 'One cell' ] } rows={ [
                 'first',
                 { title: 'second from title' },
-                ['multiple', 'cells']
+                [ 'multiple', 'cells' ]
             ] } />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         it('multiple cells', () => {
-            const wrapper = shallow(<InfoTable cells={ ['One cell', 'Second one'] } rows={ [
-                ['first', 'second'],
-                [{ title: 'second from title' }, 'another'],
-                ['multiple', 'cells']
+            const wrapper = shallow(<InfoTable cells={ [ 'One cell', 'Second one' ] } rows={ [
+                [ 'first', 'second' ],
+                [{ title: 'second from title' }, 'another' ],
+                [ 'multiple', 'cells' ]
             ] } />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         it('expandable set to true', () => {
-            const wrapper = shallow(<InfoTable expandable cells={ ['One cell', 'Second one'] } rows={ [
-                ['first', 'second'],
-                [{ title: 'second from title' }, 'another'],
-                ['multiple', 'cells']
+            const wrapper = shallow(<InfoTable expandable cells={ [ 'One cell', 'Second one' ] } rows={ [
+                [ 'first', 'second' ],
+                [{ title: 'second from title' }, 'another' ],
+                [ 'multiple', 'cells' ]
             ] } />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
@@ -41,11 +41,11 @@ describe('InfoTable', () => {
         it('onSort set', () => {
             const wrapper = shallow(<InfoTable
                 onSort={ jest.fn() }
-                cells={ [{ title: 'One cell', transforms: [sortable] }, 'Second one'] }
+                cells={ [{ title: 'One cell', transforms: [ sortable ] }, 'Second one' ] }
                 rows={ [
-                    ['first', 'second'],
-                    [{ title: 'second from title' }, 'another'],
-                    ['multiple', 'cells']
+                    [ 'first', 'second' ],
+                    [{ title: 'second from title' }, 'another' ],
+                    [ 'multiple', 'cells' ]
                 ] } />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
@@ -53,15 +53,15 @@ describe('InfoTable', () => {
 
     describe('api', () => {
         it('expandable should open', () => {
-            const wrapper = mount(<InfoTable expandable cells={ ['One cell', 'Second one'] } rows={ [
+            const wrapper = mount(<InfoTable expandable cells={ [ 'One cell', 'Second one' ] } rows={ [
                 {
-                    cells: ['first', 'second']
+                    cells: [ 'first', 'second' ]
                 }, {
                     cells: [{ title: 'second from title' }]
                 }, {
-                    cells: ['multiple', 'cells']
+                    cells: [ 'multiple', 'cells' ]
                 }, {
-                    cells: ['child']
+                    cells: [ 'child' ]
                 }
             ] } />);
             wrapper.find('.pf-c-table__toggle button').first().simulate('click');
@@ -74,16 +74,16 @@ describe('InfoTable', () => {
             const wrapper = mount(<InfoTable
                 expandable
                 onSort={ onSort }
-                cells={ [{ title: 'One cell', transforms: [sortable] }, 'Second one'] }
+                cells={ [{ title: 'One cell', transforms: [ sortable ] }, 'Second one' ] }
                 rows={ [
                     {
-                        cells: ['first', 'second']
+                        cells: [ 'first', 'second' ]
                     }, {
                         cells: [{ title: 'second from title' }]
                     }, {
-                        cells: ['multiple', 'cells']
+                        cells: [ 'multiple', 'cells' ]
                     }, {
-                        cells: ['child']
+                        cells: [ 'child' ]
                     }
                 ] } />);
             wrapper.find('th.pf-c-table__sort button').first().simulate('click');
@@ -95,11 +95,11 @@ describe('InfoTable', () => {
             const onSort = jest.fn();
             const wrapper = mount(<InfoTable
                 onSort={ onSort }
-                cells={ [{ title: 'One cell', transforms: [sortable] }, 'Second one'] }
+                cells={ [{ title: 'One cell', transforms: [ sortable ] }, 'Second one' ] }
                 rows={ [
-                    ['first', 'second'],
-                    [{ title: 'second from title' }, 'another'],
-                    ['multiple', 'cells']
+                    [ 'first', 'second' ],
+                    [{ title: 'second from title' }, 'another' ],
+                    [ 'multiple', 'cells' ]
                 ] } />);
             wrapper.find('th.pf-c-table__sort button').first().simulate('click');
             expect(onSort).toHaveBeenCalled();
@@ -110,11 +110,11 @@ describe('InfoTable', () => {
         it('onSort should be called', () => {
             const onSort = jest.fn();
             const wrapper = mount(<InfoTable
-                cells={ [{ title: 'One cell', transforms: [sortable] }, 'Second one'] }
+                cells={ [{ title: 'One cell', transforms: [ sortable ] }, 'Second one' ] }
                 rows={ [
-                    ['first', 'second'],
-                    [{ title: 'second from title' }, 'another'],
-                    ['multiple', 'cells']
+                    [ 'first', 'second' ],
+                    [{ title: 'second from title' }, 'another' ],
+                    [ 'multiple', 'cells' ]
                 ] } />);
             wrapper.find('th.pf-c-table__sort button').first().simulate('click');
             expect(onSort).not.toHaveBeenCalled();

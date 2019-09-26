@@ -15,7 +15,7 @@ describe('GeneralInformation', () => {
     let mockStore;
 
     beforeEach(() => {
-        mockStore = configureStore([promiseMiddleware()]);
+        mockStore = configureStore([ promiseMiddleware() ]);
         initialState = {
             entityDetails: {
                 entity: {
@@ -32,8 +32,8 @@ describe('GeneralInformation', () => {
                     ...configTest,
                     ...testProperties,
                     network: {
-                        ipv4: ['1', '2'],
-                        ipv6: ['6', '3'],
+                        ipv4: [ '1', '2' ],
+                        ipv6: [ '6', '3' ],
                         interfaces: [{
                             mac_address: '0:0:0',
                             mtu: 150,
@@ -103,7 +103,7 @@ describe('GeneralInformation', () => {
             </Provider>);
             wrapper.find('a[href$="interfaces"]').first().simulate('click');
             wrapper.update();
-            const [firstRow, secondRow] = wrapper.find('GeneralInformation').instance().state.rows;
+            const [ firstRow, secondRow ] = wrapper.find('GeneralInformation').instance().state.rows;
             wrapper.find('table th button').first().simulate('click');
             wrapper.update();
             expect(wrapper.find('GeneralInformation').instance().state.rows[0]).toEqual(secondRow);
@@ -130,8 +130,8 @@ describe('GeneralInformation', () => {
             wrapper.find('GeneralInformation').instance().handleModalToggle('title', {
                 cells: [{ title: 'one' }, { title: 'two' }],
                 rows: [
-                    { cells: ['a', 'aa'] },
-                    { cells: ['b', 'bb'] }],
+                    { cells: [ 'a', 'aa' ] },
+                    { cells: [ 'b', 'bb' ] }],
                 expandable: true
             });
         });

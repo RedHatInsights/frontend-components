@@ -5,7 +5,7 @@ import { RowLoader, processDate, parseCvssScore, downloadFile, mergeArraysByKey 
 
 describe('mergeArraysByKey', () => {
     it('should join two arrays by ID', () => {
-        const result = mergeArraysByKey([[{
+        const result = mergeArraysByKey([ [{
             id: '1',
             value: '5'
         }, {
@@ -15,13 +15,13 @@ describe('mergeArraysByKey', () => {
         [{
             id: '1',
             value: '7'
-        }]]);
+        }] ]);
         expect(result.length).toBe(2);
-        expect(result).toEqual(expect.arrayContaining([expect.objectContaining({ id: '1', value: '7' })]));
+        expect(result).toEqual(expect.arrayContaining([ expect.objectContaining({ id: '1', value: '7' }) ]));
     });
 
     it('should join arryas by different key', () => {
-        const result = mergeArraysByKey([[{
+        const result = mergeArraysByKey([ [{
             key: '1',
             value: '5'
         }, {
@@ -34,9 +34,9 @@ describe('mergeArraysByKey', () => {
         [{
             key: '1',
             value: '7'
-        }]], 'key');
+        }] ], 'key');
         expect(result.length).toBe(3);
-        expect(result).toEqual(expect.arrayContaining([expect.objectContaining({ key: '1', value: '7' })]));
+        expect(result).toEqual(expect.arrayContaining([ expect.objectContaining({ key: '1', value: '7' }) ]));
     });
 });
 
