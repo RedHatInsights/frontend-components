@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagCount component Render the modal open with 11 tags 1`] = `
+<Modal
+  actions={Array []}
+  ariaDescribedById=""
+  className=""
+  hideTitle={false}
+  isFooterLeftAligned={true}
+  isLarge={false}
+  isOpen={true}
+  isSmall={false}
+  onClose={[Function]}
+  title="Tags for paul.localhost.com"
+>
+  <Table
+    borders={true}
+    cells={
+      Array [
+        Object {
+          "title": "Name",
+        },
+        Object {
+          "title": "Tag Source",
+        },
+      ]
+    }
+    className=""
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    onCollapse={null}
+    onExpand={null}
+    role="grid"
+    rowLabeledBy="simple-node"
+    rows={
+      Array [
+        Object {
+          "cells": Array [
+            "environment=production",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "owner=finanace",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "pants=worn",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "fit=F R E S H",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "clams=casino",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "OS=RHEL",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "computer=fast",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "Iam=SPEED!",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "beans=food",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "thing=otherthing",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "cheese=cheddar",
+            "AWS",
+          ],
+        },
+      ]
+    }
+    variant="compact"
+  >
+    <TableHeader
+      className=""
+    />
+    <TableBody
+      className=""
+      onRowClick={[Function]}
+      rowKey="id"
+    />
+  </Table>
+</Modal>
+`;
+
+exports[`TagCount component Render the modal with a child component 1`] = `
+<Modal
+  actions={Array []}
+  ariaDescribedById=""
+  className=""
+  hideTitle={false}
+  isFooterLeftAligned={true}
+  isLarge={false}
+  isOpen={true}
+  isSmall={false}
+  onClose={[Function]}
+  title="Tags for paul.localhost.com"
+>
+  <h1>
+    I am a chile component
+  </h1>
+  <Table
+    borders={true}
+    cells={
+      Array [
+        Object {
+          "title": "Name",
+        },
+        Object {
+          "title": "Tag Source",
+        },
+      ]
+    }
+    className=""
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    onCollapse={null}
+    onExpand={null}
+    role="grid"
+    rowLabeledBy="simple-node"
+    rows={
+      Array [
+        Object {
+          "cells": Array [
+            "environment=production",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "owner=finanace",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "pants=worn",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "fit=F R E S H",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "clams=casino",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "OS=RHEL",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "computer=fast",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "Iam=SPEED!",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "beans=food",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "thing=otherthing",
+            "AWS",
+          ],
+        },
+        Object {
+          "cells": Array [
+            "cheese=cheddar",
+            "AWS",
+          ],
+        },
+      ]
+    }
+    variant="compact"
+  >
+    <TableHeader
+      className=""
+    />
+    <TableBody
+      className=""
+      onRowClick={[Function]}
+      rowKey="id"
+    />
+  </Table>
+</Modal>
+`;

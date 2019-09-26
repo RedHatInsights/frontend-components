@@ -1,17 +1,17 @@
 .ins-c-tag-count {
     color: var(--pf-global--icon--Color--light);
     display: flex;
-    border: none;
-    padding: 0;
-    background-color: inherit;
 
-    i {
-        padding: 10px;
+    svg {
+        width: 30px;
+        height: 30px;
+        padding: 5px;
         font-size: var(--pf-global--icon--FontSize--lg);
     }
-
     span {
-        margin: auto 0;
+        position: absolute;
+        top: 10px;
+        margin-left: 5px;
     }
 }
 
