@@ -342,22 +342,45 @@ exports[`InvalidObject component should render 1`] = `
                 Sorry, we couldn't find what you're looking for. The page you requested may have changed or moved.
               </h1>
             </Title>
-            <Button
+            <Component
               onClick={[Function]}
               variant="link"
             >
-              <button
-                aria-disabled={null}
-                aria-label={null}
-                className="pf-c-button pf-m-link"
-                disabled={false}
-                onClick={[Function]}
-                tabIndex={null}
-                type="button"
+              <ComponentWithOuia
+                component={[Function]}
+                componentProps={
+                  Object {
+                    "children": "Go Back",
+                    "onClick": [Function],
+                    "variant": "link",
+                  }
+                }
+                consumerContext={null}
               >
-                Go Back
-              </button>
-            </Button>
+                <Button
+                  onClick={[Function]}
+                  ouiaContext={
+                    Object {
+                      "isOuia": false,
+                      "ouiaId": null,
+                    }
+                  }
+                  variant="link"
+                >
+                  <button
+                    aria-disabled={null}
+                    aria-label={null}
+                    className="pf-c-button pf-m-link"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex={null}
+                    type="button"
+                  >
+                    Go Back
+                  </button>
+                </Button>
+              </ComponentWithOuia>
+            </Component>
           </section>
         </InvalidObject>
       </Route>

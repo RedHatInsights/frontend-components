@@ -79,6 +79,36 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
 </div>
 `;
 
+exports[`Steps components FinishedStep renders withou takemetosources button 1`] = `
+<div
+  className="pf-l-bullseye"
+>
+  <EmptyState
+    variant="full"
+  >
+    <EmptyStateIcon
+      color="var(--pf-global--success-color--100)"
+      icon={[Function]}
+    />
+    <Title
+      headingLevel="h5"
+      size="lg"
+    >
+      Configuration successful
+    </Title>
+    <EmptyStateBody>
+      Here I Am
+    </EmptyStateBody>
+    <Button
+      onClick={[MockFunction]}
+      variant="primary"
+    >
+      Back to my application
+    </Button>
+  </EmptyState>
+</div>
+`;
+
 exports[`Steps components LoadingStep renders correctly 1`] = `
 <div
   className="pf-l-bullseye"

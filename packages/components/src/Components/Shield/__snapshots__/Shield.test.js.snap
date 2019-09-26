@@ -7,6 +7,7 @@ exports[`Shield component should render where impact value is 1 1`] = `
       aria-hidden="false"
       aria-label="Low"
       color="var(--pf-global--Color--200)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -21,6 +22,7 @@ exports[`Shield component should render where impact value is 2 1`] = `
       aria-hidden="false"
       aria-label="Medium"
       color="var(--pf-global--warning-color--100)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -35,6 +37,7 @@ exports[`Shield component should render where impact value is 3 1`] = `
       aria-hidden="false"
       aria-label="High"
       color="#ec7a08"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -49,6 +52,7 @@ exports[`Shield component should render where impact value is 4 1`] = `
       aria-hidden="false"
       aria-label="Critical"
       color="var(--pf-global--danger-color--100)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -63,6 +67,7 @@ exports[`Shield component should render where impact value is Critical 1`] = `
       aria-hidden="false"
       aria-label="Critical"
       color="var(--pf-global--danger-color--100)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -77,6 +82,7 @@ exports[`Shield component should render where impact value is Low and title is H
       aria-hidden="false"
       aria-label="Hello world"
       color="var(--pf-global--Color--200)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -91,6 +97,7 @@ exports[`Shield component should render where impact value is Low and tooltipPre
       aria-hidden="false"
       aria-label="Severity: Low"
       color="var(--pf-global--Color--200)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -105,6 +112,7 @@ exports[`Shield component should render where impact value is Medium and tooltip
       aria-hidden="false"
       aria-label="Medium"
       color="var(--pf-global--warning-color--100)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -119,6 +127,7 @@ exports[`Shield component should render where impact value is Medium and tooltip
       aria-hidden="false"
       aria-label="Medium"
       color="var(--pf-global--warning-color--100)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -133,6 +142,7 @@ exports[`Shield component should render where impact value is NonExist 1`] = `
       aria-hidden="false"
       aria-label="Unknown"
       color="var(--pf-global--Color--200)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -147,6 +157,7 @@ exports[`Shield component should render where impact value is empty string 1`] =
       aria-hidden="false"
       aria-label="Unknown"
       color="var(--pf-global--Color--200)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -161,6 +172,7 @@ exports[`Shield component should render where impact value is undefined 1`] = `
       aria-hidden="false"
       aria-label="Unknown"
       color="var(--pf-global--Color--200)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -175,6 +187,7 @@ exports[`Shield component should render where title is Hello world 1`] = `
       aria-hidden="false"
       aria-label="Hello world"
       color="var(--pf-global--Color--200)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -210,8 +223,10 @@ exports[`Shield component should render where title is Hello world and hasToolti
       ]
     }
     isAppLauncher={false}
+    isVisible={false}
     maxWidth="18.75rem"
     position="top"
+    tippyProps={Object {}}
     trigger="mouseenter focus"
     zIndex={9999}
   >
@@ -219,6 +234,7 @@ exports[`Shield component should render where title is Hello world and hasToolti
       aria-hidden="false"
       aria-label="Hello world"
       color="var(--pf-global--Color--200)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />
@@ -233,6 +249,7 @@ exports[`Shield component should render without props 1`] = `
       aria-hidden="false"
       aria-label="Unknown"
       color="var(--pf-global--Color--200)"
+      noVerticalAlign={false}
       size="md"
       title={null}
     />

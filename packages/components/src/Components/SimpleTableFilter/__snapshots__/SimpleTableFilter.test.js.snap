@@ -10,13 +10,13 @@ exports[`SimpleTableFilter component should render correctly with custom filter 
     placeholder="Search items"
     widget-id="filter"
   />
-  <Button
+  <Component
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Custom title
-  </Button>
+  </Component>
 </div>
 `;
 
@@ -30,13 +30,13 @@ exports[`SimpleTableFilter component should render correctly with custom placeho
     placeholder="Custom placeholder"
     widget-id="filter"
   />
-  <Button
+  <Component
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Filter
-  </Button>
+  </Component>
 </div>
 `;
 
@@ -50,13 +50,13 @@ exports[`SimpleTableFilter component should render correctly with filter button 
     placeholder="Search items"
     widget-id="filter"
   />
-  <Button
+  <Component
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Filter
-  </Button>
+  </Component>
 </div>
 `;
 
@@ -92,13 +92,13 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
     placeholder="Search items"
     widget-id="filter"
   />
-  <Button
+  <Component
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Filter
-  </Button>
+  </Component>
 </div>
 `;
 
@@ -134,13 +134,13 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
     placeholder="Search items"
     widget-id="filter"
   />
-  <Button
+  <Component
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Filter
-  </Button>
+  </Component>
 </div>
 `;
 
@@ -157,6 +157,7 @@ exports[`SimpleTableFilter component should render correctly without filter butt
   <SearchIcon
     className="ins-c-search-icon"
     color="currentColor"
+    noVerticalAlign={false}
     size="sm"
     title={null}
   />

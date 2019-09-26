@@ -79,6 +79,54 @@ Object {
 }
 `;
 
+exports[`diskMapper with values 1`] = `
+Object {
+  "cells": Array [
+    Object {
+      "title": "Device",
+      "transforms": Array [
+        [Function],
+      ],
+    },
+    Object {
+      "title": "Label",
+      "transforms": Array [
+        [Function],
+      ],
+    },
+    Object {
+      "title": "Mount point",
+      "transforms": Array [
+        [Function],
+      ],
+    },
+    Object {
+      "title": "Type",
+      "transforms": Array [
+        [Function],
+      ],
+    },
+  ],
+  "expandable": true,
+  "rows": Array [
+    Object {
+      "cells": Array [
+        "device",
+        Object {
+          "value": "label",
+        },
+        "mount",
+        "type",
+      ],
+      "child": <div>
+        test=data
+      </div>,
+      "isOpen": false,
+    },
+  ],
+}
+`;
+
 exports[`generalMapper - no data 1`] = `
 Object {
   "cells": Array [
@@ -185,6 +233,7 @@ Object {
         "title": <OutlinedArrowAltCircleUpIcon
           className="ins-c-inventory__detail--up"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -199,6 +248,7 @@ Object {
         "title": <OutlinedArrowAltCircleDownIcon
           className="ins-c-inventory__detail--down"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -213,6 +263,7 @@ Object {
         "title": <OutlinedQuestionCircleIcon
           className="ins-c-inventory__detail--unknown"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -256,6 +307,7 @@ Object {
         "title": <OutlinedQuestionCircleIcon
           className="ins-c-inventory__detail--unknown"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -267,6 +319,7 @@ Object {
         "title": <OutlinedQuestionCircleIcon
           className="ins-c-inventory__detail--unknown"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -278,6 +331,7 @@ Object {
         "title": <OutlinedQuestionCircleIcon
           className="ins-c-inventory__detail--unknown"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -331,6 +385,7 @@ Object {
         "title": <CheckCircleIcon
           className="ins-c-inventory__detail--enabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -339,6 +394,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -359,6 +415,7 @@ Object {
         "title": <CheckCircleIcon
           className="ins-c-inventory__detail--enabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -367,6 +424,7 @@ Object {
         "title": <CheckCircleIcon
           className="ins-c-inventory__detail--enabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -387,6 +445,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -395,6 +454,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -415,6 +475,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,
@@ -423,6 +484,7 @@ Object {
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
+          noVerticalAlign={false}
           size="sm"
           title={null}
         />,

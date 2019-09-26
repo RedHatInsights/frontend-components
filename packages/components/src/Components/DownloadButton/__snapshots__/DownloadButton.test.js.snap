@@ -41,6 +41,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       >
         <FileExportIcon
           color="currentColor"
+          noVerticalAlign={false}
           size="md"
           title={null}
         />
@@ -48,6 +49,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
     }
   >
     <DropdownWithContext
+      autoFocus={true}
       className=""
       direction="down"
       dropdownItems={
@@ -81,6 +83,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         >
           <FileExportIcon
             color="currentColor"
+            noVerticalAlign={false}
             size="md"
             title={null}
           />
@@ -134,11 +137,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   role="menu"
                 >
                   <li
-                    role="none"
+                    role="menuitem"
                   >
                     <button
                       class="pf-c-dropdown__menu-item"
-                      role="menuitem"
                       tabindex="-1"
                       type="button"
                     >
@@ -146,11 +148,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     </button>
                   </li>
                   <li
-                    role="none"
+                    role="menuitem"
                   >
                     <button
                       class="pf-c-dropdown__menu-item"
-                      role="menuitem"
                       tabindex="-1"
                       type="button"
                     >
@@ -158,11 +159,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     </button>
                   </li>
                   <li
-                    role="none"
+                    role="menuitem"
                   >
                     <button
                       class="pf-c-dropdown__menu-item"
-                      role="menuitem"
                       tabindex="-1"
                       type="button"
                     />
@@ -182,6 +182,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             isHovered={false}
             isOpen={true}
             isPlain={true}
+            isPrimary={false}
             isSplitButton={false}
             onEnter={[Function]}
             onToggle={[Function]}
@@ -220,11 +221,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     role="menu"
                   >
                     <li
-                      role="none"
+                      role="menuitem"
                     >
                       <button
                         class="pf-c-dropdown__menu-item"
-                        role="menuitem"
                         tabindex="-1"
                         type="button"
                       >
@@ -232,11 +232,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       </button>
                     </li>
                     <li
-                      role="none"
+                      role="menuitem"
                     >
                       <button
                         class="pf-c-dropdown__menu-item"
-                        role="menuitem"
                         tabindex="-1"
                         type="button"
                       >
@@ -244,11 +243,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       </button>
                     </li>
                     <li
-                      role="none"
+                      role="menuitem"
                     >
                       <button
                         class="pf-c-dropdown__menu-item"
-                        role="menuitem"
                         tabindex="-1"
                         type="button"
                       />
@@ -273,6 +271,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               >
                 <FileExportIcon
                   color="currentColor"
+                  noVerticalAlign={false}
                   size="md"
                   title={null}
                 >
@@ -302,7 +301,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         </DropdownToggle>
         <DropdownMenu
           aria-labelledby="pf-toggle-id-1"
-          autoFocus={true}
+          autoFocus={false}
           className=""
           component="ul"
           isGrouped={false}
@@ -312,7 +311,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         >
           <ul
             aria-labelledby="pf-toggle-id-1"
-            autoFocus={true}
+            autoFocus={false}
             className="pf-c-dropdown__menu"
             hidden={false}
             role="menu"
@@ -344,7 +343,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 tooltipProps={Object {}}
               >
                 <li
-                  role="none"
+                  role="menuitem"
                 >
                   <button
                     className="pf-c-dropdown__menu-item"
@@ -353,7 +352,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     onSelect={[Function]}
-                    role="menuitem"
                     tabIndex={-1}
                     type="button"
                   >
@@ -389,7 +387,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 tooltipProps={Object {}}
               >
                 <li
-                  role="none"
+                  role="menuitem"
                 >
                   <button
                     className="pf-c-dropdown__menu-item"
@@ -398,7 +396,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     onSelect={[Function]}
-                    role="menuitem"
                     tabIndex={-1}
                     type="button"
                   >
@@ -433,7 +430,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 tooltipProps={Object {}}
               >
                 <li
-                  role="none"
+                  role="menuitem"
                 >
                   <button
                     className="pf-c-dropdown__menu-item"
@@ -442,7 +439,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     onSelect={[Function]}
-                    role="menuitem"
                     tabIndex={-1}
                     type="button"
                   />
@@ -485,6 +481,7 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
     >
       <FileExportIcon
         color="currentColor"
+        noVerticalAlign={false}
         size="md"
         title={null}
       />
@@ -524,6 +521,7 @@ exports[`DownloadButton component should render custom items 1`] = `
     >
       <FileExportIcon
         color="currentColor"
+        noVerticalAlign={false}
         size="md"
         title={null}
       />

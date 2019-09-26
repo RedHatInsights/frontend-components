@@ -23,12 +23,12 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                     <Text
                       component="p"
                     >
-                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                      To import data for an application, you need to connect to a data source. Input a name and then proceed to the selection of application and source types.
                     </Text>
                     <Text
                       component="p"
                     >
-                      All fields are required.
+                      Name is required and has to be unique.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -41,6 +41,37 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "name": "source.name",
                   "type": "text",
                   "validate": Array [
+                    [Function],
+                  ],
+                },
+              ],
+              "name": "name_step",
+              "nextStep": "types_step",
+              "stepKey": 1,
+              "title": "Select a source name",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "helperText": "Selected application will limit the options of available source types.",
+                  "isDisabled": false,
+                  "isRequired": true,
+                  "label": "Select your application",
+                  "mutator": [Function],
+                  "name": "application.application_type_id",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                  "validate": Array [
                     Object {
                       "type": "required-validator",
                     },
@@ -50,13 +81,10 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "component": "card-select",
                   "iconMapper": [Function],
                   "isRequired": true,
-                  "label": "Type",
+                  "label": "Select your source type",
+                  "mutator": [Function],
                   "name": "source_type",
                   "options": Array [
-                    Object {
-                      "label": "OpenShift Container Platform",
-                      "value": "openshift",
-                    },
                     Object {
                       "label": "Amazon Web Services",
                       "value": "amazon",
@@ -65,6 +93,10 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                       "label": "Ansible Tower",
                       "value": "ansible-tower",
                     },
+                    Object {
+                      "label": "OpenShift Container Platform",
+                      "value": "openshift",
+                    },
                   ],
                   "validate": Array [
                     Object {
@@ -73,7 +105,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   ],
                 },
               ],
-              "name": "step_1",
+              "name": "types_step",
               "nextStep": Object {
                 "stepMapper": Object {
                   "amazon": "amazon",
@@ -82,118 +114,8 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
                 "when": "source_type",
               },
-              "stepKey": 1,
-              "title": "Select a source type",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "component": "description",
-                  "content": <TextContent>
-                    <Text
-                      component="p"
-                    >
-                      Add credentials that enable communication with this source. This source requires the login token.
-                    </Text>
-                    <Text
-                      component="p"
-                    >
-                      To collect data from a Red Hat OpenShift Container Platform source,
-                    </Text>
-                    <TextContent>
-                      <TextList
-                        component="ul"
-                      >
-                        <TextListItem
-                          component="li"
-                        >
-                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
-                        </TextListItem>
-                        <TextListItem
-                          component="li"
-                        >
-                          Run the following command to obtain your login token:
-                          <b>
-                             # oc sa get-token -n management-infra management-admin
-                          </b>
-                        </TextListItem>
-                        <TextListItem
-                          component="li"
-                        >
-                          Copy the token and paste it in the following field.
-                        </TextListItem>
-                      </TextList>
-                    </TextContent>
-                  </TextContent>,
-                  "name": "description-summary",
-                },
-                Object {
-                  "component": "textarea-field",
-                  "label": "Token",
-                  "name": "authentication.password",
-                },
-              ],
-              "name": "openshift",
-              "nextStep": "openshift_1",
-              "stepKey": "openshift",
-              "title": "Add source credentials",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "component": "description",
-                  "content": <TextContent>
-                    <Text
-                      component="p"
-                    >
-                      Provide OpenShift Container Platform URL and SSL certificate.
-                    </Text>
-                  </TextContent>,
-                  "name": "description-summary",
-                },
-                Object {
-                  "component": "text-field",
-                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
-                  "isRequired": true,
-                  "label": "URL",
-                  "name": "url",
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
-                    },
-                  ],
-                },
-                Object {
-                  "component": "checkbox",
-                  "label": "Verify SSL",
-                  "name": "endpoint.verify_ssl",
-                },
-                Object {
-                  "component": "textarea-field",
-                  "condition": Object {
-                    "is": true,
-                    "when": "endpoint.verify_ssl",
-                  },
-                  "label": <SSLFormLabel />,
-                  "name": "endpoint.certificate_authority",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "kubernetes",
-                  "name": "endpoint.role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "token",
-                  "name": "authentication.authtype",
-                  "type": "hidden",
-                },
-              ],
-              "name": "openshift_1",
-              "nextStep": "application-type",
-              "stepKey": "openshift_1",
-              "title": "Enter OpenShift Container Platform information",
+              "stepKey": "types_step",
+              "title": "Configure your source",
             },
             Object {
               "fields": Array [
@@ -328,7 +250,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
               ],
               "name": "amazon",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -340,33 +262,122 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
             },
             Object {
               "fields": Array [
                 Object {
-                  "DefaultIcon": [Function],
-                  "component": "card-select",
-                  "label": "Select your application",
-                  "name": "application.application_type_id",
-                  "options": Array [
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Add credentials that enable communication with this source. This source requires the login token.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      To collect data from a Red Hat OpenShift Container Platform source,
+                    </Text>
+                    <TextContent>
+                      <TextList
+                        component="ul"
+                      >
+                        <TextListItem
+                          component="li"
+                        >
+                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Run the following command to obtain your login token:
+                          <b>
+                             # oc sa get-token -n management-infra management-admin
+                          </b>
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Copy the token and paste it in the following field.
+                        </TextListItem>
+                      </TextList>
+                    </TextContent>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "label": "Token",
+                  "name": "authentication.password",
+                },
+              ],
+              "name": "openshift",
+              "nextStep": "openshift_1",
+              "stepKey": "openshift",
+              "title": "Add source credentials",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Provide OpenShift Container Platform URL and SSL certificate.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
+                  "isRequired": true,
+                  "label": "URL",
+                  "name": "url",
+                  "validate": Array [
                     Object {
-                      "label": "Catalog",
-                      "value": "1",
+                      "type": "required-validator",
                     },
                     Object {
-                      "label": "Cost Management",
-                      "value": "2",
+                      "type": "url-validator",
                     },
                   ],
                 },
+                Object {
+                  "component": "checkbox",
+                  "label": "Verify SSL",
+                  "name": "endpoint.verify_ssl",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "condition": Object {
+                    "is": true,
+                    "when": "endpoint.verify_ssl",
+                  },
+                  "label": <SSLFormLabel />,
+                  "name": "endpoint.certificate_authority",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
+                },
               ],
-              "name": "application-type",
+              "name": "openshift_1",
               "nextStep": "summary",
-              "stepKey": "application-type",
-              "title": "Select application",
+              "stepKey": "openshift_1",
+              "title": "Enter OpenShift Container Platform information",
             },
             Object {
               "fields": Array [
@@ -404,20 +415,6 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                   "name": "summary",
                   "sourceTypes": Array [
                     Object {
-                      "id": "1",
-                      "name": "openshift",
-                      "product_name": "OpenShift Container Platform",
-                      "schema": Object {
-                        "fields": Array [
-                          Object {
-                            "component": "text-field",
-                            "name": "field",
-                          },
-                        ],
-                        "title": "openshift",
-                      },
-                    },
-                    Object {
                       "id": "2",
                       "name": "amazon",
                       "product_name": "Amazon Web Services",
@@ -443,6 +440,20 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                           },
                         ],
                         "title": "AnsibleTower",
+                      },
+                    },
+                    Object {
+                      "id": "1",
+                      "name": "openshift",
+                      "product_name": "OpenShift Container Platform",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "openshift",
                       },
                     },
                   ],
@@ -525,12 +536,12 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                     <Text
                       component="p"
                     >
-                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                      To import data for an application, you need to connect to a data source. Input a name and then proceed to the selection of application and source types.
                     </Text>
                     <Text
                       component="p"
                     >
-                      All fields are required.
+                      Name is required and has to be unique.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -543,6 +554,37 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "name": "source.name",
                   "type": "text",
                   "validate": Array [
+                    [Function],
+                  ],
+                },
+              ],
+              "name": "name_step",
+              "nextStep": "types_step",
+              "stepKey": 1,
+              "title": "Select a source name",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "helperText": "Selected application will limit the options of available source types.",
+                  "isDisabled": false,
+                  "isRequired": true,
+                  "label": "Select your application",
+                  "mutator": [Function],
+                  "name": "application.application_type_id",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                  "validate": Array [
                     Object {
                       "type": "required-validator",
                     },
@@ -552,13 +594,10 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "component": "card-select",
                   "iconMapper": [Function],
                   "isRequired": true,
-                  "label": "Type",
+                  "label": "Select your source type",
+                  "mutator": [Function],
                   "name": "source_type",
                   "options": Array [
-                    Object {
-                      "label": "OpenShift Container Platform",
-                      "value": "openshift",
-                    },
                     Object {
                       "label": "Amazon Web Services",
                       "value": "amazon",
@@ -567,6 +606,10 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                       "label": "Ansible Tower",
                       "value": "ansible-tower",
                     },
+                    Object {
+                      "label": "OpenShift Container Platform",
+                      "value": "openshift",
+                    },
                   ],
                   "validate": Array [
                     Object {
@@ -575,7 +618,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   ],
                 },
               ],
-              "name": "step_1",
+              "name": "types_step",
               "nextStep": Object {
                 "stepMapper": Object {
                   "amazon": "amazon",
@@ -584,118 +627,8 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
                 "when": "source_type",
               },
-              "stepKey": 1,
-              "title": "Select a source type",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "component": "description",
-                  "content": <TextContent>
-                    <Text
-                      component="p"
-                    >
-                      Add credentials that enable communication with this source. This source requires the login token.
-                    </Text>
-                    <Text
-                      component="p"
-                    >
-                      To collect data from a Red Hat OpenShift Container Platform source,
-                    </Text>
-                    <TextContent>
-                      <TextList
-                        component="ul"
-                      >
-                        <TextListItem
-                          component="li"
-                        >
-                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
-                        </TextListItem>
-                        <TextListItem
-                          component="li"
-                        >
-                          Run the following command to obtain your login token:
-                          <b>
-                             # oc sa get-token -n management-infra management-admin
-                          </b>
-                        </TextListItem>
-                        <TextListItem
-                          component="li"
-                        >
-                          Copy the token and paste it in the following field.
-                        </TextListItem>
-                      </TextList>
-                    </TextContent>
-                  </TextContent>,
-                  "name": "description-summary",
-                },
-                Object {
-                  "component": "textarea-field",
-                  "label": "Token",
-                  "name": "authentication.password",
-                },
-              ],
-              "name": "openshift",
-              "nextStep": "openshift_1",
-              "stepKey": "openshift",
-              "title": "Add source credentials",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "component": "description",
-                  "content": <TextContent>
-                    <Text
-                      component="p"
-                    >
-                      Provide OpenShift Container Platform URL and SSL certificate.
-                    </Text>
-                  </TextContent>,
-                  "name": "description-summary",
-                },
-                Object {
-                  "component": "text-field",
-                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
-                  "isRequired": true,
-                  "label": "URL",
-                  "name": "url",
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
-                    },
-                  ],
-                },
-                Object {
-                  "component": "checkbox",
-                  "label": "Verify SSL",
-                  "name": "endpoint.verify_ssl",
-                },
-                Object {
-                  "component": "textarea-field",
-                  "condition": Object {
-                    "is": true,
-                    "when": "endpoint.verify_ssl",
-                  },
-                  "label": <SSLFormLabel />,
-                  "name": "endpoint.certificate_authority",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "kubernetes",
-                  "name": "endpoint.role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "token",
-                  "name": "authentication.authtype",
-                  "type": "hidden",
-                },
-              ],
-              "name": "openshift_1",
-              "nextStep": "application-type",
-              "stepKey": "openshift_1",
-              "title": "Enter OpenShift Container Platform information",
+              "stepKey": "types_step",
+              "title": "Configure your source",
             },
             Object {
               "fields": Array [
@@ -830,7 +763,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
               ],
               "name": "amazon",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -842,33 +775,122 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
             },
             Object {
               "fields": Array [
                 Object {
-                  "DefaultIcon": [Function],
-                  "component": "card-select",
-                  "label": "Select your application",
-                  "name": "application.application_type_id",
-                  "options": Array [
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Add credentials that enable communication with this source. This source requires the login token.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      To collect data from a Red Hat OpenShift Container Platform source,
+                    </Text>
+                    <TextContent>
+                      <TextList
+                        component="ul"
+                      >
+                        <TextListItem
+                          component="li"
+                        >
+                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Run the following command to obtain your login token:
+                          <b>
+                             # oc sa get-token -n management-infra management-admin
+                          </b>
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Copy the token and paste it in the following field.
+                        </TextListItem>
+                      </TextList>
+                    </TextContent>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "label": "Token",
+                  "name": "authentication.password",
+                },
+              ],
+              "name": "openshift",
+              "nextStep": "openshift_1",
+              "stepKey": "openshift",
+              "title": "Add source credentials",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Provide OpenShift Container Platform URL and SSL certificate.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
+                  "isRequired": true,
+                  "label": "URL",
+                  "name": "url",
+                  "validate": Array [
                     Object {
-                      "label": "Catalog",
-                      "value": "1",
+                      "type": "required-validator",
                     },
                     Object {
-                      "label": "Cost Management",
-                      "value": "2",
+                      "type": "url-validator",
                     },
                   ],
                 },
+                Object {
+                  "component": "checkbox",
+                  "label": "Verify SSL",
+                  "name": "endpoint.verify_ssl",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "condition": Object {
+                    "is": true,
+                    "when": "endpoint.verify_ssl",
+                  },
+                  "label": <SSLFormLabel />,
+                  "name": "endpoint.certificate_authority",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
+                },
               ],
-              "name": "application-type",
+              "name": "openshift_1",
               "nextStep": "summary",
-              "stepKey": "application-type",
-              "title": "Select application",
+              "stepKey": "openshift_1",
+              "title": "Enter OpenShift Container Platform information",
             },
             Object {
               "fields": Array [
@@ -906,20 +928,6 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                   "name": "summary",
                   "sourceTypes": Array [
                     Object {
-                      "id": "1",
-                      "name": "openshift",
-                      "product_name": "OpenShift Container Platform",
-                      "schema": Object {
-                        "fields": Array [
-                          Object {
-                            "component": "text-field",
-                            "name": "field",
-                          },
-                        ],
-                        "title": "openshift",
-                      },
-                    },
-                    Object {
                       "id": "2",
                       "name": "amazon",
                       "product_name": "Amazon Web Services",
@@ -945,6 +953,20 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                           },
                         ],
                         "title": "AnsibleTower",
+                      },
+                    },
+                    Object {
+                      "id": "1",
+                      "name": "openshift",
+                      "product_name": "OpenShift Container Platform",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "openshift",
                       },
                     },
                   ],
@@ -1027,12 +1049,12 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                     <Text
                       component="p"
                     >
-                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                      To import data for an application, you need to connect to a data source. Input a name and then proceed to the selection of application and source types.
                     </Text>
                     <Text
                       component="p"
                     >
-                      All fields are required.
+                      Name is required and has to be unique.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -1045,6 +1067,37 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "name": "source.name",
                   "type": "text",
                   "validate": Array [
+                    [Function],
+                  ],
+                },
+              ],
+              "name": "name_step",
+              "nextStep": "types_step",
+              "stepKey": 1,
+              "title": "Select a source name",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "helperText": "Selected application will limit the options of available source types.",
+                  "isDisabled": false,
+                  "isRequired": true,
+                  "label": "Select your application",
+                  "mutator": [Function],
+                  "name": "application.application_type_id",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                  "validate": Array [
                     Object {
                       "type": "required-validator",
                     },
@@ -1054,13 +1107,10 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "component": "card-select",
                   "iconMapper": [Function],
                   "isRequired": true,
-                  "label": "Type",
+                  "label": "Select your source type",
+                  "mutator": [Function],
                   "name": "source_type",
                   "options": Array [
-                    Object {
-                      "label": "OpenShift Container Platform",
-                      "value": "openshift",
-                    },
                     Object {
                       "label": "Amazon Web Services",
                       "value": "amazon",
@@ -1069,6 +1119,10 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                       "label": "Ansible Tower",
                       "value": "ansible-tower",
                     },
+                    Object {
+                      "label": "OpenShift Container Platform",
+                      "value": "openshift",
+                    },
                   ],
                   "validate": Array [
                     Object {
@@ -1077,7 +1131,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   ],
                 },
               ],
-              "name": "step_1",
+              "name": "types_step",
               "nextStep": Object {
                 "stepMapper": Object {
                   "amazon": "amazon",
@@ -1086,118 +1140,8 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
                 "when": "source_type",
               },
-              "stepKey": 1,
-              "title": "Select a source type",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "component": "description",
-                  "content": <TextContent>
-                    <Text
-                      component="p"
-                    >
-                      Add credentials that enable communication with this source. This source requires the login token.
-                    </Text>
-                    <Text
-                      component="p"
-                    >
-                      To collect data from a Red Hat OpenShift Container Platform source,
-                    </Text>
-                    <TextContent>
-                      <TextList
-                        component="ul"
-                      >
-                        <TextListItem
-                          component="li"
-                        >
-                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
-                        </TextListItem>
-                        <TextListItem
-                          component="li"
-                        >
-                          Run the following command to obtain your login token:
-                          <b>
-                             # oc sa get-token -n management-infra management-admin
-                          </b>
-                        </TextListItem>
-                        <TextListItem
-                          component="li"
-                        >
-                          Copy the token and paste it in the following field.
-                        </TextListItem>
-                      </TextList>
-                    </TextContent>
-                  </TextContent>,
-                  "name": "description-summary",
-                },
-                Object {
-                  "component": "textarea-field",
-                  "label": "Token",
-                  "name": "authentication.password",
-                },
-              ],
-              "name": "openshift",
-              "nextStep": "openshift_1",
-              "stepKey": "openshift",
-              "title": "Add source credentials",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "component": "description",
-                  "content": <TextContent>
-                    <Text
-                      component="p"
-                    >
-                      Provide OpenShift Container Platform URL and SSL certificate.
-                    </Text>
-                  </TextContent>,
-                  "name": "description-summary",
-                },
-                Object {
-                  "component": "text-field",
-                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
-                  "isRequired": true,
-                  "label": "URL",
-                  "name": "url",
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
-                    },
-                  ],
-                },
-                Object {
-                  "component": "checkbox",
-                  "label": "Verify SSL",
-                  "name": "endpoint.verify_ssl",
-                },
-                Object {
-                  "component": "textarea-field",
-                  "condition": Object {
-                    "is": true,
-                    "when": "endpoint.verify_ssl",
-                  },
-                  "label": <SSLFormLabel />,
-                  "name": "endpoint.certificate_authority",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "kubernetes",
-                  "name": "endpoint.role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "token",
-                  "name": "authentication.authtype",
-                  "type": "hidden",
-                },
-              ],
-              "name": "openshift_1",
-              "nextStep": "application-type",
-              "stepKey": "openshift_1",
-              "title": "Enter OpenShift Container Platform information",
+              "stepKey": "types_step",
+              "title": "Configure your source",
             },
             Object {
               "fields": Array [
@@ -1332,7 +1276,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
               ],
               "name": "amazon",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -1344,33 +1288,122 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
             },
             Object {
               "fields": Array [
                 Object {
-                  "DefaultIcon": [Function],
-                  "component": "card-select",
-                  "label": "Select your application",
-                  "name": "application.application_type_id",
-                  "options": Array [
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Add credentials that enable communication with this source. This source requires the login token.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      To collect data from a Red Hat OpenShift Container Platform source,
+                    </Text>
+                    <TextContent>
+                      <TextList
+                        component="ul"
+                      >
+                        <TextListItem
+                          component="li"
+                        >
+                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Run the following command to obtain your login token:
+                          <b>
+                             # oc sa get-token -n management-infra management-admin
+                          </b>
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Copy the token and paste it in the following field.
+                        </TextListItem>
+                      </TextList>
+                    </TextContent>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "label": "Token",
+                  "name": "authentication.password",
+                },
+              ],
+              "name": "openshift",
+              "nextStep": "openshift_1",
+              "stepKey": "openshift",
+              "title": "Add source credentials",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Provide OpenShift Container Platform URL and SSL certificate.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
+                  "isRequired": true,
+                  "label": "URL",
+                  "name": "url",
+                  "validate": Array [
                     Object {
-                      "label": "Catalog",
-                      "value": "1",
+                      "type": "required-validator",
                     },
                     Object {
-                      "label": "Cost Management",
-                      "value": "2",
+                      "type": "url-validator",
                     },
                   ],
                 },
+                Object {
+                  "component": "checkbox",
+                  "label": "Verify SSL",
+                  "name": "endpoint.verify_ssl",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "condition": Object {
+                    "is": true,
+                    "when": "endpoint.verify_ssl",
+                  },
+                  "label": <SSLFormLabel />,
+                  "name": "endpoint.certificate_authority",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
+                },
               ],
-              "name": "application-type",
+              "name": "openshift_1",
               "nextStep": "summary",
-              "stepKey": "application-type",
-              "title": "Select application",
+              "stepKey": "openshift_1",
+              "title": "Enter OpenShift Container Platform information",
             },
             Object {
               "fields": Array [
@@ -1408,20 +1441,6 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                   "name": "summary",
                   "sourceTypes": Array [
                     Object {
-                      "id": "1",
-                      "name": "openshift",
-                      "product_name": "OpenShift Container Platform",
-                      "schema": Object {
-                        "fields": Array [
-                          Object {
-                            "component": "text-field",
-                            "name": "field",
-                          },
-                        ],
-                        "title": "openshift",
-                      },
-                    },
-                    Object {
                       "id": "2",
                       "name": "amazon",
                       "product_name": "Amazon Web Services",
@@ -1447,6 +1466,20 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                           },
                         ],
                         "title": "AnsibleTower",
+                      },
+                    },
+                    Object {
+                      "id": "1",
+                      "name": "openshift",
+                      "product_name": "OpenShift Container Platform",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "openshift",
                       },
                     },
                   ],
@@ -1529,12 +1562,12 @@ exports[`Steps components renders correctly without sourceTypes and application 
                     <Text
                       component="p"
                     >
-                      To import data for an application, you need to connect to a data source. To begin, input a name and select the type of source you want to collect data from.
+                      To import data for an application, you need to connect to a data source. Input a name and then proceed to the selection of application and source types.
                     </Text>
                     <Text
                       component="p"
                     >
-                      All fields are required.
+                      Name is required and has to be unique.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -1547,6 +1580,37 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "name": "source.name",
                   "type": "text",
                   "validate": Array [
+                    [Function],
+                  ],
+                },
+              ],
+              "name": "name_step",
+              "nextStep": "types_step",
+              "stepKey": 1,
+              "title": "Select a source name",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "DefaultIcon": [Function],
+                  "component": "card-select",
+                  "helperText": "Selected application will limit the options of available source types.",
+                  "isDisabled": false,
+                  "isRequired": true,
+                  "label": "Select your application",
+                  "mutator": [Function],
+                  "name": "application.application_type_id",
+                  "options": Array [
+                    Object {
+                      "label": "Catalog",
+                      "value": "1",
+                    },
+                    Object {
+                      "label": "Cost Management",
+                      "value": "2",
+                    },
+                  ],
+                  "validate": Array [
                     Object {
                       "type": "required-validator",
                     },
@@ -1556,13 +1620,10 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "component": "card-select",
                   "iconMapper": [Function],
                   "isRequired": true,
-                  "label": "Type",
+                  "label": "Select your source type",
+                  "mutator": [Function],
                   "name": "source_type",
                   "options": Array [
-                    Object {
-                      "label": "OpenShift Container Platform",
-                      "value": "openshift",
-                    },
                     Object {
                       "label": "Amazon Web Services",
                       "value": "amazon",
@@ -1571,6 +1632,10 @@ exports[`Steps components renders correctly without sourceTypes and application 
                       "label": "Ansible Tower",
                       "value": "ansible-tower",
                     },
+                    Object {
+                      "label": "OpenShift Container Platform",
+                      "value": "openshift",
+                    },
                   ],
                   "validate": Array [
                     Object {
@@ -1579,7 +1644,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   ],
                 },
               ],
-              "name": "step_1",
+              "name": "types_step",
               "nextStep": Object {
                 "stepMapper": Object {
                   "amazon": "amazon",
@@ -1588,118 +1653,8 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
                 "when": "source_type",
               },
-              "stepKey": 1,
-              "title": "Select a source type",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "component": "description",
-                  "content": <TextContent>
-                    <Text
-                      component="p"
-                    >
-                      Add credentials that enable communication with this source. This source requires the login token.
-                    </Text>
-                    <Text
-                      component="p"
-                    >
-                      To collect data from a Red Hat OpenShift Container Platform source,
-                    </Text>
-                    <TextContent>
-                      <TextList
-                        component="ul"
-                      >
-                        <TextListItem
-                          component="li"
-                        >
-                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
-                        </TextListItem>
-                        <TextListItem
-                          component="li"
-                        >
-                          Run the following command to obtain your login token:
-                          <b>
-                             # oc sa get-token -n management-infra management-admin
-                          </b>
-                        </TextListItem>
-                        <TextListItem
-                          component="li"
-                        >
-                          Copy the token and paste it in the following field.
-                        </TextListItem>
-                      </TextList>
-                    </TextContent>
-                  </TextContent>,
-                  "name": "description-summary",
-                },
-                Object {
-                  "component": "textarea-field",
-                  "label": "Token",
-                  "name": "authentication.password",
-                },
-              ],
-              "name": "openshift",
-              "nextStep": "openshift_1",
-              "stepKey": "openshift",
-              "title": "Add source credentials",
-            },
-            Object {
-              "fields": Array [
-                Object {
-                  "component": "description",
-                  "content": <TextContent>
-                    <Text
-                      component="p"
-                    >
-                      Provide OpenShift Container Platform URL and SSL certificate.
-                    </Text>
-                  </TextContent>,
-                  "name": "description-summary",
-                },
-                Object {
-                  "component": "text-field",
-                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
-                  "isRequired": true,
-                  "label": "URL",
-                  "name": "url",
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
-                    },
-                  ],
-                },
-                Object {
-                  "component": "checkbox",
-                  "label": "Verify SSL",
-                  "name": "endpoint.verify_ssl",
-                },
-                Object {
-                  "component": "textarea-field",
-                  "condition": Object {
-                    "is": true,
-                    "when": "endpoint.verify_ssl",
-                  },
-                  "label": <SSLFormLabel />,
-                  "name": "endpoint.certificate_authority",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "kubernetes",
-                  "name": "endpoint.role",
-                  "type": "hidden",
-                },
-                Object {
-                  "component": "text-field",
-                  "initialValue": "token",
-                  "name": "authentication.authtype",
-                  "type": "hidden",
-                },
-              ],
-              "name": "openshift_1",
-              "nextStep": "application-type",
-              "stepKey": "openshift_1",
-              "title": "Enter OpenShift Container Platform information",
+              "stepKey": "types_step",
+              "title": "Configure your source",
             },
             Object {
               "fields": Array [
@@ -1834,7 +1789,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
               ],
               "name": "amazon",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "amazon",
               "title": "Configure account access",
             },
@@ -1846,33 +1801,122 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
               ],
               "name": "ansible-tower",
-              "nextStep": "application-type",
+              "nextStep": "summary",
               "stepKey": "ansible-tower",
               "title": "AnsibleTower",
             },
             Object {
               "fields": Array [
                 Object {
-                  "DefaultIcon": [Function],
-                  "component": "card-select",
-                  "label": "Select your application",
-                  "name": "application.application_type_id",
-                  "options": Array [
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Add credentials that enable communication with this source. This source requires the login token.
+                    </Text>
+                    <Text
+                      component="p"
+                    >
+                      To collect data from a Red Hat OpenShift Container Platform source,
+                    </Text>
+                    <TextContent>
+                      <TextList
+                        component="ul"
+                      >
+                        <TextListItem
+                          component="li"
+                        >
+                          Log in to the Red Hat OpenShift Container Platform cluster with an account that has access to the namespace
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Run the following command to obtain your login token:
+                          <b>
+                             # oc sa get-token -n management-infra management-admin
+                          </b>
+                        </TextListItem>
+                        <TextListItem
+                          component="li"
+                        >
+                          Copy the token and paste it in the following field.
+                        </TextListItem>
+                      </TextList>
+                    </TextContent>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "label": "Token",
+                  "name": "authentication.password",
+                },
+              ],
+              "name": "openshift",
+              "nextStep": "openshift_1",
+              "stepKey": "openshift",
+              "title": "Add source credentials",
+            },
+            Object {
+              "fields": Array [
+                Object {
+                  "component": "description",
+                  "content": <TextContent>
+                    <Text
+                      component="p"
+                    >
+                      Provide OpenShift Container Platform URL and SSL certificate.
+                    </Text>
+                  </TextContent>,
+                  "name": "description-summary",
+                },
+                Object {
+                  "component": "text-field",
+                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
+                  "isRequired": true,
+                  "label": "URL",
+                  "name": "url",
+                  "validate": Array [
                     Object {
-                      "label": "Catalog",
-                      "value": "1",
+                      "type": "required-validator",
                     },
                     Object {
-                      "label": "Cost Management",
-                      "value": "2",
+                      "type": "url-validator",
                     },
                   ],
                 },
+                Object {
+                  "component": "checkbox",
+                  "label": "Verify SSL",
+                  "name": "endpoint.verify_ssl",
+                },
+                Object {
+                  "component": "textarea-field",
+                  "condition": Object {
+                    "is": true,
+                    "when": "endpoint.verify_ssl",
+                  },
+                  "label": <SSLFormLabel />,
+                  "name": "endpoint.certificate_authority",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "kubernetes",
+                  "name": "endpoint.role",
+                  "type": "hidden",
+                },
+                Object {
+                  "component": "text-field",
+                  "initialValue": "token",
+                  "name": "authentication.authtype",
+                  "type": "hidden",
+                },
               ],
-              "name": "application-type",
+              "name": "openshift_1",
               "nextStep": "summary",
-              "stepKey": "application-type",
-              "title": "Select application",
+              "stepKey": "openshift_1",
+              "title": "Enter OpenShift Container Platform information",
             },
             Object {
               "fields": Array [
@@ -1910,20 +1954,6 @@ exports[`Steps components renders correctly without sourceTypes and application 
                   "name": "summary",
                   "sourceTypes": Array [
                     Object {
-                      "id": "1",
-                      "name": "openshift",
-                      "product_name": "OpenShift Container Platform",
-                      "schema": Object {
-                        "fields": Array [
-                          Object {
-                            "component": "text-field",
-                            "name": "field",
-                          },
-                        ],
-                        "title": "openshift",
-                      },
-                    },
-                    Object {
                       "id": "2",
                       "name": "amazon",
                       "product_name": "Amazon Web Services",
@@ -1949,6 +1979,20 @@ exports[`Steps components renders correctly without sourceTypes and application 
                           },
                         ],
                         "title": "AnsibleTower",
+                      },
+                    },
+                    Object {
+                      "id": "1",
+                      "name": "openshift",
+                      "product_name": "OpenShift Container Platform",
+                      "schema": Object {
+                        "fields": Array [
+                          Object {
+                            "component": "text-field",
+                            "name": "field",
+                          },
+                        ],
+                        "title": "openshift",
                       },
                     },
                   ],

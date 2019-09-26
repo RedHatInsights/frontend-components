@@ -6,6 +6,7 @@ exports[`Reboot component should render correctly 1`] = `
 >
   <RebootingIcon
     color="currentColor"
+    noVerticalAlign={false}
     size="sm"
     title={null}
   />
@@ -21,6 +22,7 @@ exports[`Reboot component should render correctly with red 1`] = `
 >
   <RebootingIcon
     color="currentColor"
+    noVerticalAlign={false}
     size="sm"
     title={null}
   />

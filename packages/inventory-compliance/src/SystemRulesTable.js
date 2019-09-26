@@ -281,10 +281,10 @@ class SystemRulesTable extends React.Component {
                         </Stack>
                         <Stack id={ `rule-identifiers-references-${key}` } className='margin-bottom-lg'>
                             <Grid>
-                                <GridItem span={ 2 }>
+                                { identifier && <GridItem span={ 2 }>
                                     <Text component={ TextVariants.h5 }><b>Identifier</b></Text>
-                                    <Text>{ identifier && this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
-                                </GridItem>
+                                    <Text>{ this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
+                                </GridItem> }
 
                                 { references && references.length > 0 ? <GridItem span={ 10 }>
                                     <Text component={ TextVariants.h5 }><b>References</b></Text>

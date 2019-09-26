@@ -4,24 +4,25 @@ exports[`Wizard component should render correctly default 1`] = `
 <Modal
   actions={
     Array [
-      <Button
+      <Unknown
         action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Button>,
+      </Unknown>,
       false,
-      <Button
+      <Unknown
         action="next"
         isDisabled={false}
         onClick={[Function]}
         variant="primary"
       >
         Next
-      </Button>,
+      </Unknown>,
     ]
   }
+  appendTo={<body />}
   ariaDescribedById=""
   className="ins-c-wizard"
   content={
@@ -49,6 +50,7 @@ exports[`Wizard component should render correctly default 1`] = `
     ]
   }
   hideTitle={false}
+  isFooterLeftAligned={false}
   isLarge={false}
   isOpen={true}
   isSmall={false}
@@ -69,24 +71,25 @@ exports[`Wizard component should render correctly large 1`] = `
 <Modal
   actions={
     Array [
-      <Button
+      <Unknown
         action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Button>,
+      </Unknown>,
       false,
-      <Button
+      <Unknown
         action="next"
         isDisabled={false}
         onClick={[Function]}
         variant="primary"
       >
         Next
-      </Button>,
+      </Unknown>,
     ]
   }
+  appendTo={<body />}
   ariaDescribedById=""
   className="ins-c-wizard"
   content={
@@ -114,6 +117,7 @@ exports[`Wizard component should render correctly large 1`] = `
     ]
   }
   hideTitle={false}
+  isFooterLeftAligned={false}
   isLarge={true}
   isOpen={true}
   isSmall={false}
@@ -134,24 +138,25 @@ exports[`Wizard component should render correctly one page 1`] = `
 <Modal
   actions={
     Array [
-      <Button
+      <Unknown
         action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Button>,
+      </Unknown>,
       false,
-      <Button
+      <Unknown
         action="confirm"
         isDisabled={false}
         onClick={[Function]}
         variant="primary"
       >
         Confirm
-      </Button>,
+      </Unknown>,
     ]
   }
+  appendTo={<body />}
   ariaDescribedById=""
   className="ins-c-wizard"
   content={
@@ -162,6 +167,7 @@ exports[`Wizard component should render correctly one page 1`] = `
     ]
   }
   hideTitle={false}
+  isFooterLeftAligned={false}
   isLarge={false}
   isOpen={true}
   isSmall={false}
