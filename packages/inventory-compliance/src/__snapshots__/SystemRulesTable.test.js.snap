@@ -53,7 +53,7 @@ exports[`SystemRulesTable component should render 1`] = `
         />
       </LevelItem>
     </Level>
-    <Pagination
+    <Component
       dropDirection="down"
       itemCount={0}
       onPerPageSelect={[Function]}
@@ -116,7 +116,6 @@ exports[`SystemRulesTable component should render 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     onCollapse={[Function]}
-    onExpand={null}
     onSelect={[Function]}
     onSort={[Function]}
     role="grid"
@@ -156,20 +155,14 @@ exports[`SystemRulesTable component should render 1`] = `
     sortBy={Object {}}
     variant={null}
   >
-    <TableHeader
-      className=""
-    />
-    <TableBody
-      className=""
-      onRowClick={[Function]}
-      rowKey="id"
-    />
+    <TableHeader />
+    <TableBody />
   </Table>
   <TableToolbar
     className="ins-c-inventory__table--toolbar"
     isFooter={true}
   >
-    <Pagination
+    <Component
       dropDirection="up"
       itemCount={0}
       onPerPageSelect={[Function]}
@@ -236,8 +229,6 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
-  onCollapse={null}
-  onExpand={null}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
@@ -326,13 +317,7 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
   }
   variant={null}
 >
-  <TableHeader
-    className=""
-  />
-  <TableBody
-    className=""
-    onRowClick={[Function]}
-    rowKey="id"
-  />
+  <TableHeader />
+  <TableBody />
 </Table>
 `;

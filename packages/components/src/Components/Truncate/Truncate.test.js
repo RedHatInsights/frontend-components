@@ -25,7 +25,7 @@ describe('Truncate component', () => {
 
                 it('clicking on expand toggles to collapse', () => {
                     const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    wrapper.find('Button.ins-c-expand-button').first().simulate('click');
+                    wrapper.find('.ins-c-expand-button').first().simulate('click');
                     expect(toJson(wrapper)).toMatchSnapshot();
                 });
 
@@ -36,13 +36,13 @@ describe('Truncate component', () => {
 
                 it('custom button titles', () => {
                     const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    wrapper.find('Button.ins-c-expand-button').first().simulate('click');
+                    wrapper.find('.ins-c-expand-button').first().simulate('click');
                     expect(toJson(wrapper)).toMatchSnapshot();
                 });
 
                 it('clicking on expand toggles to collapse', () => {
                     const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    wrapper.find('Button.ins-c-expand-button').first().simulate('click');
+                    wrapper.find('.ins-c-expand-button').first().simulate('click');
                     expect(toJson(wrapper)).toMatchSnapshot();
                 });
 
@@ -53,7 +53,7 @@ describe('Truncate component', () => {
 
                 it('custom button titles', () => {
                     const wrapper = shallow(<Truncate text={text} inline={isInline} expandText="Custom expand" collapseText="Custom collapse" />);
-                    wrapper.find('Button.ins-c-expand-button').first().simulate('click');
+                    wrapper.find('.ins-c-expand-button').first().simulate('click');
                     expect(toJson(wrapper)).toMatchSnapshot();
                 });
 
