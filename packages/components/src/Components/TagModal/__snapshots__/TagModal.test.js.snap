@@ -3,6 +3,7 @@
 exports[`TagCount component Render the modal open with row of tags 1`] = `
 <Modal
   actions={Array []}
+  appendTo={<body />}
   ariaDescribedById=""
   className=""
   hideTitle={false}
@@ -11,6 +12,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   isOpen={true}
   isSmall={false}
   onClose={[Function]}
+  showClose={true}
   title="Tags for paul.localhost.com"
 >
   <Table
@@ -31,8 +33,6 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
-    onCollapse={null}
-    onExpand={null}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -49,14 +49,8 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
     }
     variant="compact"
   >
-    <TableHeader
-      className=""
-    />
-    <TableBody
-      className=""
-      onRowClick={[Function]}
-      rowKey="id"
-    />
+    <TableHeader />
+    <TableBody />
   </Table>
 </Modal>
 `;
@@ -64,6 +58,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
 exports[`TagCount component Render the modal with a child component 1`] = `
 <Modal
   actions={Array []}
+  appendTo={<body />}
   ariaDescribedById=""
   className=""
   hideTitle={false}
@@ -72,6 +67,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   isOpen={true}
   isSmall={false}
   onClose={[Function]}
+  showClose={true}
   title="Tags for paul.localhost.com"
 >
   <h1>
@@ -95,21 +91,13 @@ exports[`TagCount component Render the modal with a child component 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
-    onCollapse={null}
-    onExpand={null}
     role="grid"
     rowLabeledBy="simple-node"
     rows={Array []}
     variant="compact"
   >
-    <TableHeader
-      className=""
-    />
-    <TableBody
-      className=""
-      onRowClick={[Function]}
-      rowKey="id"
-    />
+    <TableHeader />
+    <TableBody />
   </Table>
 </Modal>
 `;

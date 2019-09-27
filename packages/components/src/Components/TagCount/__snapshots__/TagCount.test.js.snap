@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TagCount component should render a disabled tag count with count 0 1`] = `
-<Button
+<Component
   className="ins-c-tag-count"
   isDisabled={true}
   onClick={[Function]}
@@ -9,17 +9,18 @@ exports[`TagCount component should render a disabled tag count with count 0 1`] 
 >
   <TagIcon
     color="currentColor"
+    noVerticalAlign={false}
     size="md"
     title={null}
   />
   <span
     className="ins-c-tag__text"
   />
-</Button>
+</Component>
 `;
 
 exports[`TagCount component should render a tag count of 11 1`] = `
-<Button
+<Component
   className="ins-c-tag-count"
   isDisabled={false}
   onClick={[Function]}
@@ -27,6 +28,7 @@ exports[`TagCount component should render a tag count of 11 1`] = `
 >
   <TagIcon
     color="currentColor"
+    noVerticalAlign={false}
     size="md"
     title={null}
   />
@@ -35,11 +37,11 @@ exports[`TagCount component should render a tag count of 11 1`] = `
   >
     11
   </span>
-</Button>
+</Component>
 `;
 
 exports[`TagCount component should render a tag count with no value 1`] = `
-<Button
+<Component
   className="ins-c-tag-count"
   isDisabled={true}
   onClick={[Function]}
@@ -47,11 +49,12 @@ exports[`TagCount component should render a tag count with no value 1`] = `
 >
   <TagIcon
     color="currentColor"
+    noVerticalAlign={false}
     size="md"
     title={null}
   />
   <span
     className="ins-c-tag__text"
   />
-</Button>
+</Component>
 `;
