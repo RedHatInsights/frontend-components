@@ -5,7 +5,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   actions={Array []}
   appendTo={<body />}
   ariaDescribedById=""
-  className=""
+  className="ins-c-tag-modal"
   hideTitle={false}
   isFooterLeftAligned={true}
   isLarge={false}
@@ -27,7 +27,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
         },
       ]
     }
-    className=""
+    className="ins-c-tag-modal__table"
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"
@@ -60,7 +60,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   actions={Array []}
   appendTo={<body />}
   ariaDescribedById=""
-  className=""
+  className="ins-c-tag-modal"
   hideTitle={false}
   isFooterLeftAligned={true}
   isLarge={false}
@@ -85,7 +85,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
         },
       ]
     }
-    className=""
+    className="ins-c-tag-modal__table"
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"

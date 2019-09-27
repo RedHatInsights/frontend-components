@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './tagModal.scss';
 import { Modal } from '@patternfly/react-core';
+import classNames from 'classnames';
 import {
     Table,
     TableHeader,
@@ -11,17 +12,18 @@ import {
 
 export default class TagModal extends React.Component {
     render() {
-        const { systemName, toggleModal, isOpen, rows, columns, ...props } = this.props;
+        const { className, systemName, toggleModal, isOpen, rows, columns, ...props } = this.props;
         return(
             <Modal
                 {...props}
+                className={classNames('ins-c-tag-modal', className)}
                 isOpen={isOpen}
                 title={`Tags for ${systemName}`}
                 onClose={toggleModal}
                 isFooterLeftAligned
             >
                 {this.props.children}
-                <Table variant="compact" cells={columns} rows={rows}>
+                <Table variant="compact" className="ins-c-tag-modal__table" cells={columns} rows={rows}>
                     <TableHeader />
                     <TableBody />
                 </Table>
