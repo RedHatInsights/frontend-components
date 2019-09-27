@@ -1,0 +1,435 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrimaryToolbar should render custom className 1`] = `
+<DataToolbar
+  className="custom-classname ins-c-primary-toolbar"
+  id="ins-primary-data-toolbar"
+  isExpanded={false}
+  toggleIsExpanded={[Function]}
+>
+  <DataToolbarContent />
+</DataToolbar>
+`;
+
+exports[`PrimaryToolbar should render custom id 1`] = `
+<DataToolbar
+  className=" ins-c-primary-toolbar"
+  id="custom-id"
+  isExpanded={false}
+  toggleIsExpanded={[Function]}
+>
+  <DataToolbarContent />
+</DataToolbar>
+`;
+
+exports[`PrimaryToolbar should render no data 1`] = `
+<DataToolbar
+  className=" ins-c-primary-toolbar"
+  id="ins-primary-data-toolbar"
+  isExpanded={false}
+  toggleIsExpanded={[Function]}
+>
+  <DataToolbarContent />
+</DataToolbar>
+`;
+
+exports[`PrimaryToolbar should render with data full config 1`] = `
+<DataToolbar
+  className=" ins-c-primary-toolbar"
+  id="ins-primary-data-toolbar"
+  isExpanded={false}
+  toggleIsExpanded={[Function]}
+>
+  <DataToolbarContent>
+    <DataToolbarGroup
+      className="ins-c-primary-toolbar__group-filter"
+      itemSpacers={
+        Array [
+          Object {
+            "spacerSize": "md",
+          },
+        ]
+      }
+      variant="filter-group"
+    >
+      <DataToolbarItem>
+        <BulkSelect
+          checked={false}
+          className=""
+          count={0}
+          items={
+            Array [
+              Object {
+                "onClick": [MockFunction],
+                "title": "Some action",
+              },
+            ]
+          }
+          onSelect={[MockFunction]}
+        />
+      </DataToolbarItem>
+      <DataToolbarItem
+        className="ins-c-primary-toolbar__filter"
+      >
+        <ConditionalFilter
+          items={
+            Array [
+              Object {
+                "label": "First filter",
+              },
+              Object {
+                "filterValues": Object {
+                  "items": Array [
+                    Object {
+                      "label": "Some checkbox",
+                    },
+                  ],
+                },
+                "label": "Second filter",
+                "type": "checkbox",
+              },
+            ]
+          }
+          value=""
+        />
+      </DataToolbarItem>
+    </DataToolbarGroup>
+    <Actions
+      actions={
+        Array [
+          <Unknown
+            onClick={[MockFunction]}
+          >
+             Some action
+          </Unknown>,
+          <Unknown
+            onClick={[MockFunction]}
+          >
+            Another button
+          </Unknown>,
+          Object {
+            "label": "Or objects",
+            "onClick": [MockFunction],
+          },
+          "or plain string",
+        ]
+      }
+      dropdownProps={
+        Object {
+          "className": "custom-class",
+        }
+      }
+      onSelect={[MockFunction]}
+      overflowActions={
+        Array [
+          Object {
+            "label": "Sort order ASC",
+            "onClick": [Function],
+            "props": Object {
+              "isDisabled": true,
+            },
+          },
+          Object {
+            "label": "Sort order DESC",
+            "onClick": [Function],
+            "props": Object {
+              "isDisabled": false,
+            },
+          },
+        ]
+      }
+    />
+    <DataToolbarItem
+      className="ins-c-primary-toolbar__sort-by"
+    >
+      <SortBy
+        direction="asc"
+        onSortChange={[MockFunction]}
+      />
+    </DataToolbarItem>
+    <DownloadButton
+      extraItems={Array []}
+      onSelect={[MockFunction]}
+    />
+    <DataToolbarItem
+      className="ins-c-primary-toolbar__pagination"
+    >
+      <Component
+        isCompact={true}
+        itemCount={100}
+        onPerPageSelect={[MockFunction]}
+        onSetPage={[MockFunction]}
+        page={1}
+        perPage={10}
+      />
+    </DataToolbarItem>
+  </DataToolbarContent>
+  <DataToolbarContent>
+    <DataToolbarItem>
+      <FilterChips
+        filters={
+          Array [
+            Object {
+              "category": "Some",
+              "chips": Array [
+                Object {
+                  "name": "something",
+                },
+                Object {
+                  "name": "something 2",
+                },
+              ],
+            },
+            Object {
+              "category": "Another",
+              "chips": Array [
+                Object {
+                  "name": "One chip",
+                },
+              ],
+            },
+            Object {
+              "name": "Something else",
+            },
+          ]
+        }
+        onDelete={[MockFunction]}
+      />
+    </DataToolbarItem>
+  </DataToolbarContent>
+</DataToolbar>
+`;
+
+exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
+<DataToolbar
+  className=" ins-c-primary-toolbar"
+  id="ins-primary-data-toolbar"
+  isExpanded={false}
+  toggleIsExpanded={[Function]}
+>
+  <DataToolbarContent>
+    <DataToolbarGroup
+      className="ins-c-primary-toolbar__group-filter"
+      itemSpacers={
+        Array [
+          Object {
+            "spacerSize": "md",
+          },
+        ]
+      }
+      variant="filter-group"
+    >
+      <DataToolbarItem>
+        <BulkSelect
+          checked={false}
+          className=""
+          count={0}
+          items={
+            Array [
+              Object {
+                "onClick": [MockFunction],
+                "title": "Some action",
+              },
+            ]
+          }
+          onSelect={[MockFunction]}
+        />
+      </DataToolbarItem>
+    </DataToolbarGroup>
+  </DataToolbarContent>
+</DataToolbar>
+`;
+
+exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
+<DataToolbar
+  className=" ins-c-primary-toolbar"
+  id="ins-primary-data-toolbar"
+  isExpanded={false}
+  toggleIsExpanded={[Function]}
+>
+  <DataToolbarContent>
+    <DataToolbarGroup
+      className="ins-c-primary-toolbar__group-filter"
+      itemSpacers={
+        Array [
+          Object {
+            "spacerSize": "md",
+          },
+        ]
+      }
+      variant="filter-group"
+    >
+      <DataToolbarItem
+        className="ins-c-primary-toolbar__filter"
+      >
+        <ConditionalFilter
+          items={
+            Array [
+              Object {
+                "label": "First filter",
+              },
+              Object {
+                "filterValues": Object {
+                  "items": Array [
+                    Object {
+                      "label": "Some checkbox",
+                    },
+                  ],
+                },
+                "label": "Second filter",
+                "type": "checkbox",
+              },
+            ]
+          }
+          value=""
+        />
+      </DataToolbarItem>
+    </DataToolbarGroup>
+  </DataToolbarContent>
+</DataToolbar>
+`;
+
+exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
+<DataToolbar
+  className=" ins-c-primary-toolbar"
+  id="ins-primary-data-toolbar"
+  isExpanded={false}
+  toggleIsExpanded={[Function]}
+>
+  <DataToolbarContent>
+    <DataToolbarGroup
+      className="ins-c-primary-toolbar__group-filter"
+      itemSpacers={
+        Array [
+          Object {
+            "spacerSize": "md",
+          },
+        ]
+      }
+      variant="filter-group"
+    >
+      <DataToolbarItem>
+        <BulkSelect
+          checked={false}
+          className=""
+          count={0}
+          items={
+            Array [
+              Object {
+                "onClick": [MockFunction],
+                "title": "Some action",
+              },
+            ]
+          }
+          onSelect={[MockFunction]}
+        />
+      </DataToolbarItem>
+      <DataToolbarItem
+        className="ins-c-primary-toolbar__filter"
+      >
+        <ConditionalFilter
+          items={
+            Array [
+              Object {
+                "label": "First filter",
+              },
+              Object {
+                "filterValues": Object {
+                  "items": Array [
+                    Object {
+                      "label": "Some checkbox",
+                    },
+                  ],
+                },
+                "label": "Second filter",
+                "type": "checkbox",
+              },
+            ]
+          }
+          value=""
+        />
+      </DataToolbarItem>
+    </DataToolbarGroup>
+    <Actions
+      actions={Array []}
+      dropdownProps={Object {}}
+      onSelect={[Function]}
+      overflowActions={
+        Array [
+          Object {
+            "label": "Sort order ASC",
+            "onClick": [Function],
+            "props": Object {
+              "isDisabled": true,
+            },
+          },
+          Object {
+            "label": "Sort order DESC",
+            "onClick": [Function],
+            "props": Object {
+              "isDisabled": false,
+            },
+          },
+        ]
+      }
+    />
+    <DataToolbarItem
+      className="ins-c-primary-toolbar__sort-by"
+    >
+      <SortBy
+        direction="asc"
+        onSortChange={[MockFunction]}
+      />
+    </DataToolbarItem>
+    <DownloadButton
+      extraItems={Array []}
+      onSelect={[MockFunction]}
+    />
+    <DataToolbarItem
+      className="ins-c-primary-toolbar__pagination"
+    >
+      <Component
+        isCompact={true}
+        itemCount={100}
+        onPerPageSelect={[MockFunction]}
+        onSetPage={[MockFunction]}
+        page={1}
+        perPage={10}
+      />
+    </DataToolbarItem>
+  </DataToolbarContent>
+  <DataToolbarContent>
+    <DataToolbarItem>
+      <FilterChips
+        filters={
+          Array [
+            Object {
+              "category": "Some",
+              "chips": Array [
+                Object {
+                  "name": "something",
+                },
+                Object {
+                  "name": "something 2",
+                },
+              ],
+            },
+            Object {
+              "category": "Another",
+              "chips": Array [
+                Object {
+                  "name": "One chip",
+                },
+              ],
+            },
+            Object {
+              "name": "Something else",
+            },
+          ]
+        }
+        onDelete={[MockFunction]}
+      />
+    </DataToolbarItem>
+  </DataToolbarContent>
+</DataToolbar>
+`;

@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { DataToolbar, DataToolbarItem, DataToolbarContent, DataToolbarGroup } from '@patternfly/react-core/dist/esm/experimental';
+import React, { Component } from 'react';
+import { DataToolbar, DataToolbarItem, DataToolbarContent, DataToolbarGroup } from '@patternfly/react-core/dist/js/experimental';
 import { Pagination } from '@patternfly/react-core';
 import { ConditionalFilter } from '../ConditionalFilter';
 import { BulkSelect } from '../BulkSelect';
@@ -73,10 +73,13 @@ class PrimaryToolbar extends Component {
                     }
                     {
                         (
-                            (actionsConfig && actionsConfig.config && actionsConfig.actions.length > 0) ||
+                            (actionsConfig && actionsConfig.actions && actionsConfig.actions.length > 0) ||
                             sortByConfig
                         ) &&
-                        <Actions { ...actionsConfig || {} } overflowActions={ overflowActions } />
+                        <Actions
+                            { ...actionsConfig || {} }
+                            overflowActions={ overflowActions }
+                        />
                     }
                     {
                         sortByConfig &&
@@ -86,7 +89,9 @@ class PrimaryToolbar extends Component {
                     }
                     {
                         exportConfig &&
-                        <DownloadButton  { ...exportConfig }/>
+                        <DataToolbarItem>
+                            <DownloadButton  { ...exportConfig }/>
+                        </DataToolbarItem>
                     }
                     { children }
                     {
@@ -128,7 +133,7 @@ PrimaryToolbar.propTypes = {
 };
 
 PrimaryToolbar.defaultProps = {
-    toggleIsExpanded: () => undefined
+    toggleIsExpanded: Function
 };
 
 export default PrimaryToolbar;
