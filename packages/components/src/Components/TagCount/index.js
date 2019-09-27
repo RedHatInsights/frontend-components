@@ -1,2 +1,2 @@
 export { default as TagCount } from './TagCount';
-import './tagCount.scss' 
+import './tagCount.scss';
