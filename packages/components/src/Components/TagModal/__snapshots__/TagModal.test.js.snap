@@ -4,7 +4,6 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
 <Modal
   actions={Array []}
   appendTo={<body />}
-
   ariaDescribedById=""
   className=""
   hideTitle={false}
@@ -13,7 +12,6 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   isOpen={true}
   isSmall={false}
   onClose={[Function]}
-
   showClose={true}
   title="Tags for paul.localhost.com"
 >
