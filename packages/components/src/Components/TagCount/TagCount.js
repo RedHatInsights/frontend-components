@@ -16,7 +16,8 @@ const TagCount = ({count, onTagClick, className, ...props}) => {
 
 TagCount.propTypes = {
     count: PropTypes.number,
-    onTagClick: PropTypes.func
+    onTagClick: PropTypes.func,
+    className: PropTypes.string
 };
 
 TagCount.defaultProps = {

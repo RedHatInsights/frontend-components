@@ -12,7 +12,7 @@ import {
 
 export default class TagModal extends React.Component {
     render() {
-        const { className, systemName, toggleModal, isOpen, rows, columns, ...props } = this.props;
+        const { className, systemName, toggleModal, isOpen, rows, columns, children, ...props } = this.props;
         return(
             <Modal
                 {...props}
@@ -22,7 +22,7 @@ export default class TagModal extends React.Component {
                 onClose={toggleModal}
                 isFooterLeftAligned
             >
-                {this.props.children}
+                {children}
                 <Table variant="compact" className="ins-c-tag-modal__table" cells={columns} rows={rows}>
                     <TableHeader />
                     <TableBody />
@@ -37,7 +37,8 @@ TagModal.propTypes = {
     isOpen: PropTypes.bool,
     toggleModal: PropTypes.func,
     rows: PropTypes.array,
-    columns: PropTypes.array
+    columns: PropTypes.array,
+    className: PropTypes.string
 };
 
 TagModal.defaultProps = {
