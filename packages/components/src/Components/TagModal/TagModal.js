@@ -10,14 +10,6 @@ import {
   
 
 export default class TagModal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            columns: props.columns,
-            rows: props.rows
-        };
-    }
-
     render() {
         const { systemName, toggleModal, isOpen, rows, columns, ...props } = this.props;
         return(
