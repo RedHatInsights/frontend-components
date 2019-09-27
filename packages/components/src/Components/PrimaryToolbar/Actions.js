@@ -53,7 +53,7 @@ class Actions extends Component {
                 {
                     ((actions && actions.length > 1) || (overflowActions.length > 0)) &&
                     <DataToolbarItem
-                        className={ `${actions.length <= 1 && 'ins-m-empty-actions'}` }
+                        className={ `${actions.length <= 1 && 'ins-m-actions--empty'}` }
                     >
                         <Dropdown
                             { ...dropdownProps }

@@ -1,9 +1,9 @@
-.ins-c-chip-group__plain > li {
+.ins-c-chip-filters .ins-c-chip-group__plain.pf-m-toolbar > li:not(.pf-m-overflow) {
     background: none;
     padding: 0;
-    background-color: initial !important;
+    background-color: initial;
 
     h4 {
-        display: none !important;
+        display: none;
     }
 }

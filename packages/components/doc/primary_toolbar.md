@@ -91,3 +91,35 @@ export default myCmp = () => {
     )
 }
 ```
+
+### PropTypes
+Since we are using components defined in different components some are reused, please go to corresponding components for full list of prop types and their default values
+
+```JS
+id: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
+className: PropTypes.string,
+toggleIsExpanded: PropTypes.func,
+bulkSelect: PropTypes.shape(BulkSelect.propTypes),
+filterConfig: PropTypes.shape(ConditionalFilter.propTypes),
+pagination: PropTypes.shape(Pagination.propTypes),
+sortByConfig: PropTypes.shape({
+    direction: PropTypes.oneOf(Object.values(SortByDirection)),
+    onSortChange: PropTypes.func
+}),
+exportConfig: PropTypes.shape(DownloadButton.propTypes),
+activeFiltersConfig: PropTypes.shape(FilterChips.propTypes),
+children: PropTypes.node, // will be placed before pagination and should be wrapped in data toolbar item from PF
+actionsConfig: PropTypes.shape({
+    actions: PropTypes.arrayOf(PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.shape({
+            label: PropTypes.node,
+            value: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
+            onClick: PropTypes.func,
+            props: PropTypes.any
+        })
+    ])),
+    dropdownProps: Actions.propTypes.dropdownProps,
+    onSelect: Actions.propTypes.onSelect
+})
+```

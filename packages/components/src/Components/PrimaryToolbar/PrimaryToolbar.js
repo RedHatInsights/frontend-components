@@ -19,7 +19,6 @@ class PrimaryToolbar extends Component {
             bulkSelect,
             filterConfig,
             actionsConfig,
-            exportsConfig,
             sortByConfig,
             pagination,
             activeFiltersConfig,
