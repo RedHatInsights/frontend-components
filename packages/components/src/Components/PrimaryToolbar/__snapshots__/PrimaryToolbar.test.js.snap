@@ -147,10 +147,12 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         onSortChange={[MockFunction]}
       />
     </DataToolbarItem>
-    <DownloadButton
-      extraItems={Array []}
-      onSelect={[MockFunction]}
-    />
+    <DataToolbarItem>
+      <DownloadButton
+        extraItems={Array []}
+        onSelect={[MockFunction]}
+      />
+    </DataToolbarItem>
     <DataToolbarItem
       className="ins-c-primary-toolbar__pagination"
     >
@@ -381,10 +383,12 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         onSortChange={[MockFunction]}
       />
     </DataToolbarItem>
-    <DownloadButton
-      extraItems={Array []}
-      onSelect={[MockFunction]}
-    />
+    <DataToolbarItem>
+      <DownloadButton
+        extraItems={Array []}
+        onSelect={[MockFunction]}
+      />
+    </DataToolbarItem>
     <DataToolbarItem
       className="ins-c-primary-toolbar__pagination"
     >
