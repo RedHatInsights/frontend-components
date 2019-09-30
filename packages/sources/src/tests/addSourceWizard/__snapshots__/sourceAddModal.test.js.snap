@@ -55,9 +55,8 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 Object {
                   "DefaultIcon": [Function],
                   "component": "card-select",
-                  "helperText": "Selected application will limit the options of available source types.",
+                  "helperText": "Selected application will limit the options of available source types. You can assign an application to your source later.",
                   "isDisabled": false,
-                  "isRequired": true,
                   "label": "Select your application",
                   "mutator": [Function],
                   "name": "application.application_type_id",
@@ -69,11 +68,6 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                     Object {
                       "label": "Cost Management",
                       "value": "2",
-                    },
-                  ],
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
                     },
                   ],
                 },
@@ -568,9 +562,8 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 Object {
                   "DefaultIcon": [Function],
                   "component": "card-select",
-                  "helperText": "Selected application will limit the options of available source types.",
+                  "helperText": "Selected application will limit the options of available source types. You can assign an application to your source later.",
                   "isDisabled": false,
-                  "isRequired": true,
                   "label": "Select your application",
                   "mutator": [Function],
                   "name": "application.application_type_id",
@@ -582,11 +575,6 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                     Object {
                       "label": "Cost Management",
                       "value": "2",
-                    },
-                  ],
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
                     },
                   ],
                 },
@@ -1081,9 +1069,8 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 Object {
                   "DefaultIcon": [Function],
                   "component": "card-select",
-                  "helperText": "Selected application will limit the options of available source types.",
+                  "helperText": "Selected application will limit the options of available source types. You can assign an application to your source later.",
                   "isDisabled": false,
-                  "isRequired": true,
                   "label": "Select your application",
                   "mutator": [Function],
                   "name": "application.application_type_id",
@@ -1095,11 +1082,6 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                     Object {
                       "label": "Cost Management",
                       "value": "2",
-                    },
-                  ],
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
                     },
                   ],
                 },
@@ -1594,9 +1576,8 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 Object {
                   "DefaultIcon": [Function],
                   "component": "card-select",
-                  "helperText": "Selected application will limit the options of available source types.",
+                  "helperText": "Selected application will limit the options of available source types. You can assign an application to your source later.",
                   "isDisabled": false,
-                  "isRequired": true,
                   "label": "Select your application",
                   "mutator": [Function],
                   "name": "application.application_type_id",
@@ -1608,11 +1589,6 @@ exports[`Steps components renders correctly without sourceTypes and application 
                     Object {
                       "label": "Cost Management",
                       "value": "2",
-                    },
-                  ],
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
                     },
                   ],
                 },

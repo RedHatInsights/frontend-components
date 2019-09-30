@@ -84,11 +84,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
             DefaultIcon: () => <React.Fragment />,
             options: compileAllApplicationComboOptions(applicationTypes),
             mutator: appMutator(applicationTypes),
-            validate: [{
-                type: validatorTypes.REQUIRED
-            }],
-            isRequired: true,
-            helperText: 'Selected application will limit the options of available source types.',
+            helperText: 'Selected application will limit the options of available source types. You can assign an application to your source later.',
             isDisabled: disableAppSelection
         },
         {
