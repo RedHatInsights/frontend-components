@@ -12,7 +12,9 @@ exports[`FilterDropdown component should render 1`] = `
     </DropdownToggle>
   }
 >
-  <div>
+  <div
+    className="pf-c-dropdown__menu-item"
+  >
     <div
       className="filterTitle"
       key="0"
