@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { EmptyStateBody, EmptyState, EmptyStateIcon, Title, Button, EmptyStateSecondaryActions, EmptyStateVariant } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons';
 
-const FinishedStep = ({ onClose, successfulMessage, hideSourcesButton }) => <div className="pf-l-bullseye">
+const FinishedStep = ({ onClose, successfulMessage, hideSourcesButton, returnButtonTitle }) => <div className="pf-l-bullseye">
     <EmptyState variant={ EmptyStateVariant.full }>
         <EmptyStateIcon icon={ CheckCircleIcon } color="var(--pf-global--success-color--100)" />
         <Title headingLevel="h5" size="lg">
@@ -13,7 +13,7 @@ const FinishedStep = ({ onClose, successfulMessage, hideSourcesButton }) => <div
         <EmptyStateBody>
             { successfulMessage }
         </EmptyStateBody>
-        <Button variant="primary" onClick={ onClose }>Back to my application</Button>
+        <Button variant="primary" onClick={ onClose }>{returnButtonTitle}</Button>
         { !hideSourcesButton &&
         <EmptyStateSecondaryActions>
             <a href='/hybrid/settings/sources'>
@@ -27,7 +27,8 @@ const FinishedStep = ({ onClose, successfulMessage, hideSourcesButton }) => <div
 FinishedStep.propTypes = {
     onClose: PropTypes.func.isRequired,
     successfulMessage: PropTypes.node.isRequired,
-    hideSourcesButton: PropTypes.bool.isRequired
+    hideSourcesButton: PropTypes.bool.isRequired,
+    returnButtonTitle: PropTypes.node.isRequired
 };
 
 export default FinishedStep;

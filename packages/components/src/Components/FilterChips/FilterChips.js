@@ -12,7 +12,10 @@ const FilterChips = ({ filters, onDelete }) => {
             { group.chips.map(chip => (
                 <Chip
                     key={ `group_${group.category}_chip_${chip.name}` }
-                    onClick={ (event) => onDelete(event, [{ category: group.category, chips: [ chip ]}]) }
+                    onClick={ (event) => {
+                        event.stopPropagation();
+                        onDelete(event, [{ category: group.category, chips: [ chip ] }]);
+                    }}
                 >
                     { chip.name }
                     { chip.count && <Badge key={ `chip_badge_${chip.id}` } isRead={ chip.isRead }>{ chip.count }</Badge> }
@@ -24,19 +27,22 @@ const FilterChips = ({ filters, onDelete }) => {
     const plainFilters = filters.filter(group => !(group.category));
 
     return (
-        <React.Fragment>
+        <span className="ins-c-chip-filters">
             <ChipGroup withToolbar>
                 { groupedFilters }
                 { plainFilters &&
                     <ChipGroupToolbarItem
-                        key={ `group_plain` }
+                        key="group_plain"
                         onClick={ (event) => onDelete(event, plainFilters) }
-                        className='ins-c-chip-group__plain'
+                        className="ins-c-chip-group__plain"
                     >
                         { plainFilters.map(chip => (
                             <Chip
                                 key={ `group_plain_chip_${chip.name}` }
-                                onClick={ (event) => onDelete(event, [{ category: group.category, chips: [ chip ]}]) }
+                                onClick={ (event) => {
+                                    event.stopPropagation();
+                                    onDelete(event, [ chip ]);
+                                }}
                             >
                                 { chip.name }
                                 { chip.count && <Badge key={ `chip_badge_${chip.id}` } isRead={ chip.isRead }>{ chip.count }</Badge> }
@@ -46,7 +52,7 @@ const FilterChips = ({ filters, onDelete }) => {
                 }
             </ChipGroup>
             <Button variant="link" onClick={ (event) => onDelete(event, filters, true) }>Clear filters</Button>
-        </React.Fragment>
+        </span>
     );
 };
 
@@ -71,6 +77,11 @@ FilterChips.propTypes = {
         ])
     ),
     onDelete: PropTypes.func
-}
+};
+
+FilterChips.defaultProps = {
+    filters: [],
+    onDelete: () => undefined
+};
 
 export default FilterChips;

@@ -57,7 +57,7 @@ ApplicationDetails.defaultProps = {
     activeApp: {}
 };
 
-function stateToProps({ entityDetails: { activeApps, activeApp }}) {
+function stateToProps({ entityDetails: { activeApps, activeApp } }) {
     return {
         items: activeApps,
         activeApp

@@ -18,11 +18,11 @@ describe('BiosCard', () => {
                 ...biosTest,
                 cpu_flags: [ 'one' ]
             }
-        }};
+        } };
     });
 
     it('should render correctly - no data', () => {
-        const store = mockStore({ systemProfileStore: {}});
+        const store = mockStore({ systemProfileStore: {} });
         const wrapper = render(<BiosCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });

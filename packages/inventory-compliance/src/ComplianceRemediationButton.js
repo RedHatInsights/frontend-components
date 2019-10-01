@@ -39,7 +39,7 @@ class ComplianceRemediationButton extends React.Component {
 
     dataProvider = () => {
         const { allSystems, selectedRules } = this.props;
-        const result = { systems: [], issues: []};
+        const result = { systems: [], issues: [] };
         allSystems.forEach(async (system) => {
             result.systems.push(system.id);
             if (selectedRules) {

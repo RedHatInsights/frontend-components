@@ -20,7 +20,8 @@ describe('Final wizard', () => {
                 isFinished: false,
                 isErrored: false,
                 successfulMessage: 'Message',
-                hideSourcesButton: false
+                hideSourcesButton: false,
+                returnButtonTitle: 'Go back to my application'
             };
         });
 

@@ -116,7 +116,7 @@ export const interfaceMapper = (data = []) => ({
     ]))
 });
 
-export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabled: []}) => ({
+export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabled: [] }) => ({
     cells: [
         {
             title: 'Name',

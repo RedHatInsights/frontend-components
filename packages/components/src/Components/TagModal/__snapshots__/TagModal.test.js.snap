@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagCount component Render the modal open with row of tags 1`] = `
+<Modal
+  actions={Array []}
+  appendTo={<body />}
+  ariaDescribedById=""
+  className="ins-c-tag-modal"
+  hideTitle={false}
+  isFooterLeftAligned={true}
+  isLarge={false}
+  isOpen={true}
+  isSmall={false}
+  onClose={[Function]}
+  showClose={true}
+  title="Tags for paul.localhost.com"
+>
+  <Table
+    aria-label="paul.localhost.com tags"
+    borders={true}
+    cells={
+      Array [
+        Object {
+          "title": "Name",
+        },
+        Object {
+          "title": "Tag Source",
+        },
+      ]
+    }
+    className="ins-c-tag-modal__table"
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    role="grid"
+    rowLabeledBy="simple-node"
+    rows={
+      Array [
+        Array [
+          "key",
+          "value",
+        ],
+        Array [
+          "thing",
+          "otherthing",
+        ],
+      ]
+    }
+    variant="compact"
+  >
+    <TableHeader />
+    <TableBody />
+  </Table>
+</Modal>
+`;
+
+exports[`TagCount component Render the modal with a child component 1`] = `
+<Modal
+  actions={Array []}
+  appendTo={<body />}
+  ariaDescribedById=""
+  className="ins-c-tag-modal"
+  hideTitle={false}
+  isFooterLeftAligned={true}
+  isLarge={false}
+  isOpen={true}
+  isSmall={false}
+  onClose={[Function]}
+  showClose={true}
+  title="Tags for paul.localhost.com"
+>
+  <h1>
+    I am a chile component
+  </h1>
+  <Table
+    aria-label="paul.localhost.com tags"
+    borders={true}
+    cells={
+      Array [
+        Object {
+          "title": "Name",
+        },
+        Object {
+          "title": "Tag Source",
+        },
+      ]
+    }
+    className="ins-c-tag-modal__table"
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    role="grid"
+    rowLabeledBy="simple-node"
+    rows={Array []}
+    variant="compact"
+  >
+    <TableHeader />
+    <TableBody />
+  </Table>
+</Modal>
+`;

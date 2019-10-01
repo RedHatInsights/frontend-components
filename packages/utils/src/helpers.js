@@ -69,7 +69,7 @@ export const RowLoader = props => (
 
 export function getBaseName(pathname) {
     let release = '/';
-    const pathName = pathname.split('/');
+    const pathName = pathname.replace(/(#|\?).*/, '').split('/');
 
     pathName.shift();
 
@@ -78,5 +78,5 @@ export function getBaseName(pathname) {
         release = `/beta/`;
     }
 
-    return `${release}${pathName[0]}/${pathName[1]}`;
+    return `${release}${pathName[0]}/${pathName[1] || ''}`;
 }

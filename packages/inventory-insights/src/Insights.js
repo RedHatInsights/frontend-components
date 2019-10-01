@@ -37,13 +37,13 @@ class InventoryRuleList extends Component {
         inventoryReportFetchStatus: 'pending',
         rows: [],
         cols: [
-            { title: 'Description', transforms: [ sortable ]},
-            { title: 'Added', transforms: [ sortable, cellWidth(15) ]},
-            { title: 'Total risk', transforms: [ sortable ]},
-            { title: 'Risk of change', transforms: [ sortable ]},
+            { title: 'Description', transforms: [ sortable ] },
+            { title: 'Added', transforms: [ sortable, cellWidth(15) ] },
+            { title: 'Total risk', transforms: [ sortable ] },
+            { title: 'Risk of change', transforms: [ sortable ] },
             { title: <span className='ansibleCol'>
                 { AnsibeTowerIcon && <AnsibeTowerIcon size='md' /> } Ansible
-            </span>, transforms: [ sortable ]}
+            </span>, transforms: [ sortable ] }
         ],
         isKebabOpen: false,
         sortBy: {},
@@ -294,7 +294,7 @@ class InventoryRuleList extends Component {
         );
 
         return issues.length ?
-            { issues, systems: [ this.props.entity.id ]} :
+            { issues, systems: [ this.props.entity.id ] } :
             false;
     };
 

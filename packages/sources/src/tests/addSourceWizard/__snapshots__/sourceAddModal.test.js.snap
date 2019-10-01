@@ -13,7 +13,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
             "submit": "Finish",
           },
           "component": "wizard",
-          "description": "You are importing data into this platform",
+          "description": "Connect an external source to Red Hat Cloud Services",
           "fields": Array [
             Object {
               "fields": Array [
@@ -35,10 +35,10 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, Source_1",
                   "isRequired": true,
                   "label": "Name",
                   "name": "source.name",
+                  "placeholder": "Source_1",
                   "type": "text",
                   "validate": Array [
                     [Function],
@@ -48,16 +48,15 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
               "name": "name_step",
               "nextStep": "types_step",
               "stepKey": 1,
-              "title": "Select a source name",
+              "title": "Select source name",
             },
             Object {
               "fields": Array [
                 Object {
                   "DefaultIcon": [Function],
                   "component": "card-select",
-                  "helperText": "Selected application will limit the options of available source types.",
+                  "helperText": "Selected application will limit the options of available source types. You can assign an application to your source later.",
                   "isDisabled": false,
-                  "isRequired": true,
                   "label": "Select your application",
                   "mutator": [Function],
                   "name": "application.application_type_id",
@@ -69,11 +68,6 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                     Object {
                       "label": "Cost Management",
                       "value": "2",
-                    },
-                  ],
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
                     },
                   ],
                 },
@@ -213,10 +207,10 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
                   "name": "authentication.username",
+                  "placeholder": "AKIAIOSFODNN7EXAMPLE",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -225,10 +219,10 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "isRequired": true,
                   "label": "Secret Key",
                   "name": "authentication.password",
+                  "placeholder": "wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "type": "password",
                   "validate": Array [
                     Object {
@@ -334,10 +328,10 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
                   "isRequired": true,
                   "label": "URL",
                   "name": "url",
+                  "placeholder": "https://myopenshiftcluster.mycompany.com",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -393,7 +387,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                     <Text
                       component="p"
                     >
-                      Review the information below and click Finish to configure your project. Use the Back button to make changes.
+                      Review the information below and click Finish to add your source. Use the Back button to make changes.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -482,7 +476,7 @@ exports[`Steps components renders correctly without applicationTypes 1`] = `
   backButtonText="Back"
   cancelButtonText="Cancel"
   className=""
-  description="You are importing data into this platform"
+  description="Connect an external source to Red Hat Cloud Services"
   footer={null}
   hasBodyPadding={true}
   height={null}
@@ -526,7 +520,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
             "submit": "Finish",
           },
           "component": "wizard",
-          "description": "You are importing data into this platform",
+          "description": "Connect an external source to Red Hat Cloud Services",
           "fields": Array [
             Object {
               "fields": Array [
@@ -548,10 +542,10 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, Source_1",
                   "isRequired": true,
                   "label": "Name",
                   "name": "source.name",
+                  "placeholder": "Source_1",
                   "type": "text",
                   "validate": Array [
                     [Function],
@@ -561,16 +555,15 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
               "name": "name_step",
               "nextStep": "types_step",
               "stepKey": 1,
-              "title": "Select a source name",
+              "title": "Select source name",
             },
             Object {
               "fields": Array [
                 Object {
                   "DefaultIcon": [Function],
                   "component": "card-select",
-                  "helperText": "Selected application will limit the options of available source types.",
+                  "helperText": "Selected application will limit the options of available source types. You can assign an application to your source later.",
                   "isDisabled": false,
-                  "isRequired": true,
                   "label": "Select your application",
                   "mutator": [Function],
                   "name": "application.application_type_id",
@@ -582,11 +575,6 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                     Object {
                       "label": "Cost Management",
                       "value": "2",
-                    },
-                  ],
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
                     },
                   ],
                 },
@@ -726,10 +714,10 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
                   "name": "authentication.username",
+                  "placeholder": "AKIAIOSFODNN7EXAMPLE",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -738,10 +726,10 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "isRequired": true,
                   "label": "Secret Key",
                   "name": "authentication.password",
+                  "placeholder": "wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "type": "password",
                   "validate": Array [
                     Object {
@@ -847,10 +835,10 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
                   "isRequired": true,
                   "label": "URL",
                   "name": "url",
+                  "placeholder": "https://myopenshiftcluster.mycompany.com",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -906,7 +894,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                     <Text
                       component="p"
                     >
-                      Review the information below and click Finish to configure your project. Use the Back button to make changes.
+                      Review the information below and click Finish to add your source. Use the Back button to make changes.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -995,7 +983,7 @@ exports[`Steps components renders correctly without sourceTypes 1`] = `
   backButtonText="Back"
   cancelButtonText="Cancel"
   className=""
-  description="You are importing data into this platform"
+  description="Connect an external source to Red Hat Cloud Services"
   footer={null}
   hasBodyPadding={true}
   height={null}
@@ -1039,7 +1027,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
             "submit": "Finish",
           },
           "component": "wizard",
-          "description": "You are importing data into this platform",
+          "description": "Connect an external source to Red Hat Cloud Services",
           "fields": Array [
             Object {
               "fields": Array [
@@ -1061,10 +1049,10 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, Source_1",
                   "isRequired": true,
                   "label": "Name",
                   "name": "source.name",
+                  "placeholder": "Source_1",
                   "type": "text",
                   "validate": Array [
                     [Function],
@@ -1074,16 +1062,15 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
               "name": "name_step",
               "nextStep": "types_step",
               "stepKey": 1,
-              "title": "Select a source name",
+              "title": "Select source name",
             },
             Object {
               "fields": Array [
                 Object {
                   "DefaultIcon": [Function],
                   "component": "card-select",
-                  "helperText": "Selected application will limit the options of available source types.",
+                  "helperText": "Selected application will limit the options of available source types. You can assign an application to your source later.",
                   "isDisabled": false,
-                  "isRequired": true,
                   "label": "Select your application",
                   "mutator": [Function],
                   "name": "application.application_type_id",
@@ -1095,11 +1082,6 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                     Object {
                       "label": "Cost Management",
                       "value": "2",
-                    },
-                  ],
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
                     },
                   ],
                 },
@@ -1239,10 +1221,10 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
                   "name": "authentication.username",
+                  "placeholder": "AKIAIOSFODNN7EXAMPLE",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -1251,10 +1233,10 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "isRequired": true,
                   "label": "Secret Key",
                   "name": "authentication.password",
+                  "placeholder": "wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "type": "password",
                   "validate": Array [
                     Object {
@@ -1360,10 +1342,10 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
                   "isRequired": true,
                   "label": "URL",
                   "name": "url",
+                  "placeholder": "https://myopenshiftcluster.mycompany.com",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -1419,7 +1401,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                     <Text
                       component="p"
                     >
-                      Review the information below and click Finish to configure your project. Use the Back button to make changes.
+                      Review the information below and click Finish to add your source. Use the Back button to make changes.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",
@@ -1508,7 +1490,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
   backButtonText="Back"
   cancelButtonText="Cancel"
   className=""
-  description="You are importing data into this platform"
+  description="Connect an external source to Red Hat Cloud Services"
   footer={null}
   hasBodyPadding={true}
   height={null}
@@ -1552,7 +1534,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
             "submit": "Finish",
           },
           "component": "wizard",
-          "description": "You are importing data into this platform",
+          "description": "Connect an external source to Red Hat Cloud Services",
           "fields": Array [
             Object {
               "fields": Array [
@@ -1574,10 +1556,10 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, Source_1",
                   "isRequired": true,
                   "label": "Name",
                   "name": "source.name",
+                  "placeholder": "Source_1",
                   "type": "text",
                   "validate": Array [
                     [Function],
@@ -1587,16 +1569,15 @@ exports[`Steps components renders correctly without sourceTypes and application 
               "name": "name_step",
               "nextStep": "types_step",
               "stepKey": 1,
-              "title": "Select a source name",
+              "title": "Select source name",
             },
             Object {
               "fields": Array [
                 Object {
                   "DefaultIcon": [Function],
                   "component": "card-select",
-                  "helperText": "Selected application will limit the options of available source types.",
+                  "helperText": "Selected application will limit the options of available source types. You can assign an application to your source later.",
                   "isDisabled": false,
-                  "isRequired": true,
                   "label": "Select your application",
                   "mutator": [Function],
                   "name": "application.application_type_id",
@@ -1608,11 +1589,6 @@ exports[`Steps components renders correctly without sourceTypes and application 
                     Object {
                       "label": "Cost Management",
                       "value": "2",
-                    },
-                  ],
-                  "validate": Array [
-                    Object {
-                      "type": "required-validator",
                     },
                   ],
                 },
@@ -1752,10 +1728,10 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, AKIAIOSFODNN7EXAMPLE",
                   "isRequired": true,
                   "label": "Access Key ID",
                   "name": "authentication.username",
+                  "placeholder": "AKIAIOSFODNN7EXAMPLE",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -1764,10 +1740,10 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "isRequired": true,
                   "label": "Secret Key",
                   "name": "authentication.password",
+                  "placeholder": "wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
                   "type": "password",
                   "validate": Array [
                     Object {
@@ -1873,10 +1849,10 @@ exports[`Steps components renders correctly without sourceTypes and application 
                 },
                 Object {
                   "component": "text-field",
-                  "helperText": "For example, https://myopenshiftcluster.mycompany.com",
                   "isRequired": true,
                   "label": "URL",
                   "name": "url",
+                  "placeholder": "https://myopenshiftcluster.mycompany.com",
                   "validate": Array [
                     Object {
                       "type": "required-validator",
@@ -1932,7 +1908,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                     <Text
                       component="p"
                     >
-                      Review the information below and click Finish to configure your project. Use the Back button to make changes.
+                      Review the information below and click Finish to add your source. Use the Back button to make changes.
                     </Text>
                   </TextContent>,
                   "name": "description-summary",

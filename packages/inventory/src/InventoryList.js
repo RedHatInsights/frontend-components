@@ -46,7 +46,7 @@ class ContextInventoryList extends React.Component {
         const { setRefresh, setUpdate, onClearFilters } = this.props;
         setRefresh && setRefresh(this.loadEntities);
         setUpdate && setUpdate((options) => this.loadEntities(options, false));
-        this.loadEntities({ filters: []});
+        this.loadEntities({ filters: [] });
         onClearFilters();
     }
 
@@ -155,7 +155,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-    ({ entities: { page, perPage, sortBy, activeFilters }}, { perPage: currPerPage }) => (
+    ({ entities: { page, perPage, sortBy, activeFilters } }, { perPage: currPerPage }) => (
         { page, perPage: currPerPage || perPage, sortBy, activeFilters }
     ),
     mapDispatchToProps

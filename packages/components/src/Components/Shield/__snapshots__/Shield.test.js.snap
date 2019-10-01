@@ -223,8 +223,10 @@ exports[`Shield component should render where title is Hello world and hasToolti
       ]
     }
     isAppLauncher={false}
+    isVisible={false}
     maxWidth="18.75rem"
     position="top"
+    tippyProps={Object {}}
     trigger="mouseenter focus"
     zIndex={9999}
   >

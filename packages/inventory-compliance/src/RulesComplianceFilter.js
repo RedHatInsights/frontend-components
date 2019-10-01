@@ -44,19 +44,19 @@ class RulesComplianceFilter extends React.Component {
     }
 
     addFilter = (filterName, selectedValue) => {
-        const { hidePassed, severity, policy } = this.state;
+        const { severity, policy } = this.state;
 
         if (filterName === 'hidePassed') {
             this.setState({ hidePassed: selectedValue }, this.updateInventory);
         } else if (filterName === 'severity') {
-            this.setState({ severity: [ ...severity, selectedValue ]}, this.updateInventory);
+            this.setState({ severity: [ ...severity, selectedValue ] }, this.updateInventory);
         } else if (filterName === 'policy') {
-            this.setState({ policy: [ ...policy, selectedValue ]}, this.updateInventory);
+            this.setState({ policy: [ ...policy, selectedValue ] }, this.updateInventory);
         }
     }
 
     removeFilter = (filterName, selectedValue) => {
-        const { hidePassed, policy, severity } = this.state;
+        const { policy, severity } = this.state;
 
         if (filterName === 'hidePassed') {
             this.setState({ hidePassed: selectedValue }, this.updateInventory);

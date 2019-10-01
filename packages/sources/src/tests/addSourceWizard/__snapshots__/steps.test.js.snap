@@ -24,7 +24,7 @@ exports[`Steps components ErroredStep renders correctly 1`] = `
       onClick={[MockFunction]}
       variant="primary"
     >
-      Back to my application
+      Go back to my application
     </Button>
     <EmptyStateSecondaryActions>
       <Button
@@ -62,7 +62,7 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
       onClick={[MockFunction]}
       variant="primary"
     >
-      Back to my application
+      Go back to my application
     </Button>
     <EmptyStateSecondaryActions>
       <a
@@ -103,7 +103,7 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
       onClick={[MockFunction]}
       variant="primary"
     >
-      Back to my application
+      Go back to my application
     </Button>
   </EmptyState>
 </div>

@@ -19,13 +19,13 @@ laborum.",
     />
   </StackItem>
   <StackItem>
-    <Button
+    <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
       variant="link"
     >
       Custom collapse
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -49,13 +49,13 @@ laborum.",
     />
   </StackItem>
   <StackItem>
-    <Button
+    <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
       variant="link"
     >
       Custom collapse
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -79,13 +79,13 @@ laborum.",
     />
   </StackItem>
   <StackItem>
-    <Button
+    <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
       variant="link"
     >
       Custom collapse
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -109,13 +109,13 @@ laborum.",
     />
   </StackItem>
   <StackItem>
-    <Button
+    <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
       variant="link"
     >
       Custom collapse
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -136,13 +136,13 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     />
   </StackItem>
   <StackItem>
-    <Button
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Custom expand
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -163,13 +163,13 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     />
   </StackItem>
   <StackItem>
-    <Button
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Custom expand
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -210,13 +210,13 @@ exports[`Truncate component should render correctly block with short length 1`] 
     />
   </StackItem>
   <StackItem>
-    <Button
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Read more
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -237,13 +237,13 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     />
   </StackItem>
   <StackItem>
-    <Button
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Read more
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -263,13 +263,13 @@ laborum.",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-collapse-button"
     onClick={[Function]}
     variant="link"
   >
     Custom collapse
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -288,13 +288,13 @@ laborum.",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-collapse-button"
     onClick={[Function]}
     variant="link"
   >
     Custom collapse
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -313,13 +313,13 @@ laborum.",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-collapse-button"
     onClick={[Function]}
     variant="link"
   >
     Custom collapse
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -338,13 +338,13 @@ laborum.",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-collapse-button"
     onClick={[Function]}
     variant="link"
   >
     Custom collapse
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -360,13 +360,13 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-expand-button"
     onClick={[Function]}
     variant="link"
   >
     Custom expand
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -382,13 +382,13 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-expand-button"
     onClick={[Function]}
     variant="link"
   >
     Custom expand
-  </Button>
+  </Component>
 </Fragment>
 `;
 
@@ -425,13 +425,13 @@ exports[`Truncate component should render correctly inline with short length 1`]
     />
   </StackItem>
   <StackItem>
-    <Button
+    <Component
       className="ins-c-expand-button"
       onClick={[Function]}
       variant="link"
     >
       Read more
-    </Button>
+    </Component>
   </StackItem>
 </Stack>
 `;
@@ -448,12 +448,12 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     }
     widget-type="InsightsTruncateInline"
   />
-  <Button
+  <Component
     className="ins-c-expand-button"
     onClick={[Function]}
     variant="link"
   >
     Read more
-  </Button>
+  </Component>
 </Fragment>
 `;

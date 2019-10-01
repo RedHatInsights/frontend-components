@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrimaryToolbar should render desc direction 1`] = `
+<Component
+  onClick={[Function]}
+  variant="plain"
+>
+  <SortAmountDownIcon
+    color="currentColor"
+    noVerticalAlign={false}
+    size="sm"
+    title={null}
+  />
+</Component>
+`;
+
+exports[`PrimaryToolbar should render no data 1`] = `
+<Component
+  onClick={[Function]}
+  variant="plain"
+>
+  <SortAmountUpIcon
+    color="currentColor"
+    noVerticalAlign={false}
+    size="sm"
+    title={null}
+  />
+</Component>
+`;

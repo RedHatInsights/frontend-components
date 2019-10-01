@@ -6,7 +6,6 @@ import { EmptyTable, SimpleTableFilter, TableToolbar } from '@redhat-cloud-servi
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
 import {
     Bullseye,
-    Checkbox,
     EmptyState,
     EmptyStateBody,
     EmptyStateVariant,
@@ -29,7 +28,6 @@ import flatMap from 'lodash/flatMap';
 import './compliance.scss';
 import RulesComplianceFilter from './RulesComplianceFilter';
 import debounce from 'lodash/debounce';
-import includes from 'lodash/includes';
 
 const emptyRows = [{
     cells: [{
@@ -70,11 +68,11 @@ class SystemRulesTable extends React.Component {
         super(props);
         this.state = {
             columns: [
-                { title: 'Rule', transforms: [ sortable ]},
-                { title: 'Policy', transforms: [ sortable ]},
-                { title: 'Severity', transforms: [ sortable ]},
-                { title: 'Passed', transforms: [ sortable ]},
-                { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, transforms: [ sortable ]}
+                { title: 'Rule', transforms: [ sortable ] },
+                { title: 'Policy', transforms: [ sortable ] },
+                { title: 'Severity', transforms: [ sortable ] },
+                { title: 'Passed', transforms: [ sortable ] },
+                { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, transforms: [ sortable ] }
             ],
             page: 1,
             itemsPerPage: 10,
@@ -159,7 +157,7 @@ class SystemRulesTable extends React.Component {
     }
 
     currentRows = (page, itemsPerPage, rowsRefIds) => {
-        const { rows, profiles, refIds } = (rowsRefIds) ? rowsRefIds : this.state;
+        const { rows } = (rowsRefIds) ? rowsRefIds : this.state;
 
         if (!rows.length) {
             return [];
@@ -517,7 +515,7 @@ class SystemRulesTable extends React.Component {
                             </LevelItem>
                             <LevelItem>
                                 <ComplianceRemediationButton
-                                    allSystems={ [{ id: system.id, rule_objects_failed: []}] }
+                                    allSystems={ [{ id: system.id, rule_objects_failed: [] }] }
                                     selectedRules={ this.selectedRules() } />
                             </LevelItem>
                         </Level>
@@ -569,7 +567,7 @@ SystemRulesTable.propTypes = {
 };
 
 SystemRulesTable.defaultProps = {
-    profileRules: [{ rules: []}]
+    profileRules: [{ rules: [] }]
 };
 
 export default SystemRulesTable;

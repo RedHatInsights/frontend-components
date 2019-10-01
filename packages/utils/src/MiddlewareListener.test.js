@@ -23,7 +23,7 @@ describe('basic functions', () => {
 describe('bubble actions', () => {
     let mwListener;
     const mockedNext = jest.fn();
-    const mockedAction = { type: 'something', payload: { data: 'some data' }};
+    const mockedAction = { type: 'something', payload: { data: 'some data' } };
 
     beforeEach(() => {
         mwListener = new MiddlewareListener();
@@ -50,5 +50,15 @@ describe('bubble actions', () => {
         });
         mwListener.getMiddleware()()(mockedNext)(mockedAction);
         expect(mockedNext.mock.calls[1][0].type).toBe('something');
+    });
+
+    test('should return listeners', () => {
+        const callback = jest.fn();
+        mwListener.addNew({
+            on: 'test-listener',
+            callback
+        });
+        expect(mwListener.getListeners().size).toBe(1);
+        expect(mwListener.getListeners().values().next().value.on).toBe('test-listener');
     });
 });

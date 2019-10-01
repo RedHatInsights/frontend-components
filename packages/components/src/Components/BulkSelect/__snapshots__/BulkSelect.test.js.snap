@@ -20,6 +20,13 @@ exports[`BulkSelect should render correctly 1`] = `
     dropdownItems={
       Array [
         <DropdownItem
+          className="ins-c-bulk-select__selected"
+          isDisabled={true}
+        >
+          30
+           Selected
+        </DropdownItem>,
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
@@ -40,13 +47,12 @@ exports[`BulkSelect should render correctly 1`] = `
                 checked={false}
                 className=""
                 id="some-id-toggle-checkbox"
-                isChecked={null}
                 isDisabled={false}
                 isValid={true}
                 onChange={[Function]}
               >
                 30
-                 Selected
+                 selected
               </DropdownToggleCheckbox>
             </React.Fragment>,
           ]
@@ -84,13 +90,12 @@ exports[`BulkSelect should render correctly 2`] = `
                 checked={false}
                 className=""
                 id="toggle-checkbox"
-                isChecked={null}
                 isDisabled={false}
                 isValid={true}
                 onChange={[Function]}
               >
                 0
-                 Selected
+                 selected
               </DropdownToggleCheckbox>
             </React.Fragment>,
           ]
