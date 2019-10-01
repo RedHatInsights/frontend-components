@@ -28,7 +28,7 @@ export default function(Component) {
         }
 
         render () {
-            const { onPathChange, ...props } = this.props;
+            const { onPathChange, routerData, staticContext, ...props } = this.props;
             return <Component { ...props }/>;
         }
     };
