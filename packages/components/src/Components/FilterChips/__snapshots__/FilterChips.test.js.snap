@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterChips component should render - no data 1`] = `
+<span
+  className="ins-c-chip-filters"
+>
+  <ChipGroup
+    className=""
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    numChips={3}
+    withToolbar={true}
+  >
+    <ChipGroupToolbarItem
+      className="ins-c-chip-group__plain"
+      key="group_plain"
+      onClick={[Function]}
+    />
+  </ChipGroup>
+  <Component
+    onClick={[Function]}
+    variant="link"
+  >
+    Clear filters
+  </Component>
+</span>
+`;
+
+exports[`FilterChips component should render 1`] = `
+<span
+  className="ins-c-chip-filters"
+>
+  <ChipGroup
+    className=""
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    numChips={3}
+    withToolbar={true}
+  >
+    <ChipGroupToolbarItem
+      categoryName="Group 1"
+      key="group_Group 1"
+      onClick={[Function]}
+    >
+      <Chip
+        className=""
+        closeBtnAriaLabel="close"
+        component="div"
+        isOverflowChip={false}
+        isReadOnly={false}
+        key="group_Group 1_chip_Chip 1"
+        onClick={[Function]}
+        tooltipPosition="top"
+      >
+        Chip 1
+      </Chip>
+      <Chip
+        className=""
+        closeBtnAriaLabel="close"
+        component="div"
+        isOverflowChip={false}
+        isReadOnly={false}
+        key="group_Group 1_chip_Chip 2"
+        onClick={[Function]}
+        tooltipPosition="top"
+      >
+        Chip 2
+        <Badge
+          key="chip_badge_undefined"
+        >
+          3
+        </Badge>
+      </Chip>
+    </ChipGroupToolbarItem>
+    <ChipGroupToolbarItem
+      className="ins-c-chip-group__plain"
+      key="group_plain"
+      onClick={[Function]}
+    >
+      <Chip
+        className=""
+        closeBtnAriaLabel="close"
+        component="div"
+        isOverflowChip={false}
+        isReadOnly={false}
+        key="group_plain_chip_Chip 3"
+        onClick={[Function]}
+        tooltipPosition="top"
+      >
+        Chip 3
+      </Chip>
+      <Chip
+        className=""
+        closeBtnAriaLabel="close"
+        component="div"
+        isOverflowChip={false}
+        isReadOnly={false}
+        key="group_plain_chip_Chip 4"
+        onClick={[Function]}
+        tooltipPosition="top"
+      >
+        Chip 4
+      </Chip>
+    </ChipGroupToolbarItem>
+  </ChipGroup>
+  <Component
+    onClick={[Function]}
+    variant="link"
+  >
+    Clear filters
+  </Component>
+</span>
+`;
