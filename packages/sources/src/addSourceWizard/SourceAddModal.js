@@ -71,7 +71,7 @@ class SourceAddModal extends React.Component {
                 isOpen={ true }
                 onClose={ onCancel }
                 title="Add a source"
-                description="You are importing data into this platform"
+                description="Connect an external source to Red Hat Cloud Services"
                 steps={ [{
                     name: 'Loading',
                     component: <LoadingStep onClose={ onCancel }/>,

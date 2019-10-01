@@ -103,7 +103,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
 });
 
 const nameStep = () => ({
-    title: 'Select a source name',
+    title: 'Select source name',
     name: 'name_step',
     stepKey: 1,
     nextStep: 'types_step',
@@ -126,7 +126,7 @@ const nameStep = () => ({
             name: 'source.name',
             type: 'text',
             label: 'Name',
-            helperText: 'For example, Source_1',
+            placeholder: 'Source_1',
             isRequired: true,
             validate: [
                 (value) => asyncValidatorDebounced(value)
@@ -185,7 +185,7 @@ export const temporaryHardcodedSourceSchemas = {
                 component: componentTypes.TEXT_FIELD,
                 name: 'url',
                 label: 'URL',
-                helperText: 'For example, https://myopenshiftcluster.mycompany.com',
+                placeholder: 'https://myopenshiftcluster.mycompany.com',
                 isRequired: true,
                 validate: [
                     { type: validatorTypes.REQUIRED },
@@ -269,7 +269,7 @@ export const temporaryHardcodedSourceSchemas = {
             component: componentTypes.TEXT_FIELD,
             name: 'authentication.username',
             label: 'Access Key ID',
-            helperText: 'For example, AKIAIOSFODNN7EXAMPLE',
+            placeholder: 'AKIAIOSFODNN7EXAMPLE',
             isRequired: true,
             validate: [{ type: validatorTypes.REQUIRED }]
         }, {
@@ -277,7 +277,7 @@ export const temporaryHardcodedSourceSchemas = {
             name: 'authentication.password',
             label: 'Secret Key',
             type: 'password',
-            helperText: 'For example, wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
+            placeholder: 'wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
             isRequired: true,
             validate: [{ type: validatorTypes.REQUIRED }]
         }, {
@@ -342,7 +342,7 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
             content: <TextContent>
                 <Title headingLevel="h3" size="2xl">Review source details</Title>
                 <Text component={ TextVariants.p }>
-            Review the information below and click Finish to configure your project. Use the Back button to make changes.
+            Review the information below and click Finish to add your source. Use the Back button to make changes.
                 </Text>
             </TextContent>
         },
@@ -364,7 +364,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection) => (
             name: 'wizard',
             title: 'Add a source',
             inModal: true,
-            description: 'You are importing data into this platform',
+            description: 'Connect an external source to Red Hat Cloud Services',
             buttonLabels: {
                 submit: 'Finish'
             },

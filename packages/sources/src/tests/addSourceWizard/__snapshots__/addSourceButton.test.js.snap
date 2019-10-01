@@ -15,6 +15,7 @@ exports[`AddSourceButton renders correctly 1`] = `
     initialValues={Object {}}
     isOpen={false}
     onClose={[Function]}
+    returnButtonTitle="Go back to sources"
     successfulMessage="Your source has been successfully added."
   />
 </Fragment>

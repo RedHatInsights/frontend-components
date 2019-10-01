@@ -7,7 +7,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
   backButtonText="Back"
   cancelButtonText="Cancel"
   className=""
-  description="You are importing data into this platform"
+  description="Connect an external source to Red Hat Cloud Services"
   footer={null}
   hasBodyPadding={true}
   height={null}
@@ -27,6 +27,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
         "component": <ErroredStep
           onClose={[MockFunction]}
           onRetry={[MockFunction]}
+          returnButtonTitle="Go back to my application"
         />,
         "isFinishedStep": true,
         "name": "Finish",
@@ -45,7 +46,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
   backButtonText="Back"
   cancelButtonText="Cancel"
   className=""
-  description="You are importing data into this platform"
+  description="Connect an external source to Red Hat Cloud Services"
   footer={null}
   hasBodyPadding={true}
   height={null}
@@ -65,6 +66,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
         "component": <FinishedStep
           hideSourcesButton={false}
           onClose={[MockFunction]}
+          returnButtonTitle="Go back to my application"
           successfulMessage="Message"
         />,
         "isFinishedStep": true,
@@ -84,7 +86,7 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
   backButtonText="Back"
   cancelButtonText="Cancel"
   className=""
-  description="You are importing data into this platform"
+  description="Connect an external source to Red Hat Cloud Services"
   footer={null}
   hasBodyPadding={true}
   height={null}

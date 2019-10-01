@@ -6,18 +6,23 @@ import FinishedStep from './steps/FinishedStep';
 import ErroredStep from './steps/ErroredStep';
 import LoadingStep from './steps/LoadingStep';
 
-const FinalWizard = ({ afterSubmit, afterError, isFinished, isErrored, onRetry, successfulMessage, hideSourcesButton }) =>
+const FinalWizard = ({ afterSubmit, afterError, isFinished, isErrored, onRetry, successfulMessage, hideSourcesButton, returnButtonTitle }) =>
     <Wizard
         isOpen={ true }
         onClose={ isFinished ? afterSubmit : afterError }
         title="Add a source"
-        description="You are importing data into this platform"
+        description="Connect an external source to Red Hat Cloud Services"
         steps={ [{
             name: 'Finish',
             component: isFinished ?
-                <FinishedStep onClose={ afterSubmit } successfulMessage={ successfulMessage } hideSourcesButton={ hideSourcesButton }/> :
+                <FinishedStep
+                    onClose={ afterSubmit }
+                    successfulMessage={ successfulMessage }
+                    hideSourcesButton={ hideSourcesButton }
+                    returnButtonTitle={ returnButtonTitle }
+                /> :
                 isErrored ?
-                    <ErroredStep onRetry={ onRetry } onClose={ afterError }/>
+                    <ErroredStep onRetry={ onRetry } onClose={ afterError } returnButtonTitle={ returnButtonTitle }/>
                     : <LoadingStep customText='Source is being created'/>,
             isFinishedStep: true
         }] } />;
@@ -29,7 +34,8 @@ FinalWizard.propTypes = {
     isFinished: PropTypes.bool.isRequired,
     isErrored: PropTypes.bool.isRequired,
     successfulMessage: PropTypes.node.isRequired,
-    hideSourcesButton: PropTypes.bool.isRequired
+    hideSourcesButton: PropTypes.bool.isRequired,
+    returnButtonTitle: PropTypes.string.isRequired
 };
 
 export default FinalWizard;

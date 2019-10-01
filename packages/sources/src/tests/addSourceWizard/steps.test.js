@@ -28,7 +28,8 @@ describe('Steps components', () => {
             initialProps = {
                 onClose: spyFunction,
                 successfulMessage: 'Here I Am',
-                hideSourcesButton: false
+                hideSourcesButton: false,
+                returnButtonTitle: 'Go back to my application'
             };
         });
 
@@ -84,7 +85,8 @@ describe('Steps components', () => {
         beforeEach(() => {
             initialProps = {
                 onClose: spyFunction,
-                onRetry: spyFunctionSecond
+                onRetry: spyFunctionSecond,
+                returnButtonTitle: 'Go back to my application'
             };
         });
 

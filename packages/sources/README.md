@@ -57,6 +57,7 @@ import { AddSourceWizard } from '@redhat-cloud-services/frontend-components-sour
 |initialValues|object|{}|Object with initialValues of the form.|
 |disableAppSelection|bool|false|Flag to disable appSelection.|
 |hideSourcesButton|bool|false|hide 'Take me to sources' button.|
+|returnButtonTitle|string|'Go back to sources'|Title of the button shown after success submit. Put your own application name if you neeed.|
 
 If you need to set up and support only one application you can provide filtered `applicationTypes` with the only one application, set up `disableAppSelection` to `false` and `initialValues` to:
 
