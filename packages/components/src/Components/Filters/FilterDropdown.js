@@ -35,7 +35,7 @@ class FilterDropdown extends Component {
                 onSelect={ this.onSelect }
                 toggle={ <DropdownToggle onToggle={ this.onToggle }>{ label }</DropdownToggle> } isOpen={ isOpen }
             >
-                <div>
+                <div className='pf-c-dropdown__menu-item'>
                     { filterCategories.map(
                         (data, index) =>
                             !hideCategories.includes(data.urlParam) && (
