@@ -363,7 +363,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection, disableHardc
             name: 'wizard',
             title: 'Add a source',
             inModal: true,
-            description: 'You are importing data into this platform',
+            description: 'Connect an external source to Red Hat Cloud Services',
             buttonLabels: {
                 submit: 'Finish'
             },

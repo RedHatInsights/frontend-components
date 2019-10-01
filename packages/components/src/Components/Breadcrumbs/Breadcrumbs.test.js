@@ -34,6 +34,6 @@ describe('Breadcrumbs component', () => {
             expect(onNavigate.mock.calls.length).toBe(1);
             expect(onNavigate.mock.calls[0][1]).toBe(items[0].navigate);
             expect(onNavigate.mock.calls[0][2]).toBe(0);
-        })
+        });
     });
 });

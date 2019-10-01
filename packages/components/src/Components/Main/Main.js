@@ -26,7 +26,7 @@ export class Main extends Component {
                     }
 
                     return acc;
-                }, { staticPart: [ chromeState.chrome.appId ], dynamic: {}});
+                }, { staticPart: [ chromeState.chrome.appId ], dynamic: {} });
             }
         }
 

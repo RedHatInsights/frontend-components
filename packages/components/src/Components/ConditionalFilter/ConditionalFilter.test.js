@@ -72,14 +72,14 @@ describe('ConditionalFilter', () => {
         it('should not call onChange', () => {
             const onChange = jest.fn();
             const wrappper = mount(<ConditionalFilter />);
-            wrappper.find('input').first().simulate('change', { target: { value: 'new-value' }});
+            wrappper.find('input').first().simulate('change', { target: { value: 'new-value' } });
             expect(onChange).not.toHaveBeenCalled();
         });
 
         it('should call onChange', () => {
             const onChange = jest.fn();
             const wrappper = mount(<ConditionalFilter onChange={ onChange } />);
-            wrappper.find('input').first().simulate('change', { target: { value: 'new-value' }});
+            wrappper.find('input').first().simulate('change', { target: { value: 'new-value' } });
             expect(onChange).toHaveBeenCalled();
         });
 

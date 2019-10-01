@@ -145,7 +145,7 @@
         "prepare": "npm run bootstrap && npm run build",
         "playground": "lerna run --parallel start:dev",
         "release": "semantic-release",
-        "lint": "eslint config packages/**/src/**/*.js",
+        "lint": "eslint config packages/**/src/",
         "watch": "lerna exec --parallel --ignore=@redhat-cloud-services/frontend-components-config --no-private -- npm run build -- --watch"
     },
     "release": {

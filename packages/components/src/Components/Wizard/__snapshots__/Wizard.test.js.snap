@@ -61,6 +61,7 @@ exports[`Wizard component should render correctly default 1`] = `
 >
   <div
     id="first"
+    key="first"
   >
     First
   </div>
@@ -128,6 +129,7 @@ exports[`Wizard component should render correctly large 1`] = `
 >
   <div
     id="first"
+    key="first"
   >
     First
   </div>
@@ -176,7 +178,9 @@ exports[`Wizard component should render correctly one page 1`] = `
   showClose={true}
   title="Some title"
 >
-  <div>
+  <div
+    key="one"
+  >
     One
   </div>
 </Modal>
