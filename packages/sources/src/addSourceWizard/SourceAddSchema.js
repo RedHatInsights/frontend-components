@@ -81,6 +81,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
             component: 'card-select',
             name: 'application.application_type_id',
             label: 'Select your application',
+            // eslint-disable-next-line react/display-name
             DefaultIcon: () => <React.Fragment />,
             options: compileAllApplicationComboOptions(applicationTypes),
             mutator: appMutator(applicationTypes),
@@ -356,25 +357,21 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
 });
 
 export default (sourceTypes, applicationTypes, disableAppSelection, disableHardcodedSchemas) => (
-    {
-        fields:
-         [
-             {
-                 component: componentTypes.WIZARD,
-                 name: 'wizard',
-                 title: 'Add a source',
-                 inModal: true,
-                 description: 'Connect an external source to Red Hat Cloud Services',
-                 buttonLabels: {
-                     submit: 'Finish'
-                 },
-                 fields: [
-                     nameStep(),
-                     typesStep(sourceTypes, applicationTypes, disableAppSelection),
-                     ...sourceTypeSteps(sourceTypes, disableHardcodedSchemas),
-                     summaryStep(sourceTypes, applicationTypes)
-                 ]
-             }
-         ]
-    }
-);
+    { fields: [
+        {
+            component: componentTypes.WIZARD,
+            name: 'wizard',
+            title: 'Add a source',
+            inModal: true,
+            description: 'You are importing data into this platform',
+            buttonLabels: {
+                submit: 'Finish'
+            },
+            fields: [
+                nameStep(),
+                typesStep(sourceTypes, applicationTypes, disableAppSelection),
+                ...sourceTypeSteps(sourceTypes, disableHardcodedSchemas),
+                summaryStep(sourceTypes, applicationTypes)
+            ]
+        }
+    ] });

@@ -1,5 +1,5 @@
 const asyncInventory = [
-    'LOAD_SYSTEM_PROFILE',
+    'LOAD_SYSTEM_PROFILE'
 ].reduce((acc, curr) => [
     ...acc,
     ...[ curr, `${curr}_PENDING`, `${curr}_FULFILLED`, `${curr}_REJECTED` ]

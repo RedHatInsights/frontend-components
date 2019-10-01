@@ -13,7 +13,7 @@ import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-uti
 export const defaultState = { loaded: false };
 
 const defaultColumns = [
-    { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ]},
+    { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ] },
     { key: 'updated', title: 'Last sync', isTime: true, props: { width: 25 } }
 ];
 
@@ -34,7 +34,7 @@ function clearFilters(state) {
 }
 
 // eslint-disable-next-line camelcase
-function entitiesLoaded(state, { payload: { results, per_page: perPage, page, count, total, loaded }}) {
+function entitiesLoaded(state, { payload: { results, per_page: perPage, page, count, total, loaded } }) {
     // Data are loaded and APi returned malicious data
     if (loaded === undefined && (page === undefined || perPage === undefined)) {
         return state;
@@ -51,7 +51,7 @@ function entitiesLoaded(state, { payload: { results, per_page: perPage, page, co
     };
 }
 
-function selectEntity(state, { payload: { id, selected }}) {
+function selectEntity(state, { payload: { id, selected } }) {
     const rows = [ ...state.rows ];
     const entity = rows.find(entity => entity.id === id);
     if (entity) {
@@ -66,7 +66,7 @@ function selectEntity(state, { payload: { id, selected }}) {
     };
 }
 
-function changeSort(state, { payload: { key, direction }}) {
+function changeSort(state, { payload: { key, direction } }) {
     return {
         ...state,
         sortBy: {
@@ -76,8 +76,8 @@ function changeSort(state, { payload: { key, direction }}) {
     };
 }
 
-function selectFilter(state, { payload: { item: { items, ...item }, selected }}) {
-    let { activeFilters = []} = state;
+function selectFilter(state, { payload: { item: { items, ...item }, selected } }) {
+    let { activeFilters = [] } = state;
     if (selected) {
         activeFilters = [
             ...activeFilters,
@@ -115,5 +115,5 @@ export default {
     [SELECT_ENTITY]: selectEntity,
     [CHANGE_SORT]: changeSort,
     [CLEAR_FILTERS]: clearFilters,
-    [ENTITIES_LOADING]: (state, { payload: { isLoading }}) => ({ ...state, loaded: !isLoading })
+    [ENTITIES_LOADING]: (state, { payload: { isLoading } }) => ({ ...state, loaded: !isLoading })
 };
