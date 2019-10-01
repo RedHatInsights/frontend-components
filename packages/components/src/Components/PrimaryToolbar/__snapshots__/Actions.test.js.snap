@@ -1,0 +1,370 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Actions - component should render actionObject as first action 1`] = `
+<Fragment>
+  <DataToolbarItem
+    className="ins-c-primary-toolbar__first-action"
+  >
+    <Component>
+      Some title
+    </Component>
+  </DataToolbarItem>
+</Fragment>
+`;
+
+exports[`Actions - component should render actions and overflow 1`] = `
+<Fragment>
+  <DataToolbarItem
+    className="ins-c-primary-toolbar__first-action"
+  >
+    <button
+      key="btn"
+      onClick={[MockFunction]}
+    >
+      Some button
+    </button>
+  </DataToolbarItem>
+  <DataToolbarItem
+    className=" ins-c-primary-toolbar__actions"
+  >
+    <Dropdown
+      dropdownItems={
+        Array [
+          <DropdownItem
+            className="ins-c-primary-toolbar__first-action "
+            component="div"
+            onClick={[Function]}
+          >
+            <button
+              onClick={[MockFunction]}
+            >
+              Some button
+            </button>
+          </DropdownItem>,
+          <DropdownItem
+            component="button"
+            onClick={[Function]}
+          >
+            Some title
+          </DropdownItem>,
+          <DropdownItem
+            component="button"
+            onClick={[Function]}
+          >
+            Custom props
+          </DropdownItem>,
+          <DropdownItem
+            component="button"
+            onClick={[Function]}
+          >
+            plain string
+          </DropdownItem>,
+          <DropdownSeparator
+            className="ins-c-primary-toolbar__overflow-actions-separator"
+          />,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="div"
+            onClick={[Function]}
+          >
+            <button
+              onClick={[MockFunction]}
+            >
+              Some button
+            </button>
+          </DropdownItem>,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="button"
+            onClick={[Function]}
+          >
+            Some title
+          </DropdownItem>,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="button"
+            onClick={[Function]}
+          >
+            Custom props
+          </DropdownItem>,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="button"
+            onClick={[Function]}
+          >
+            plain string
+          </DropdownItem>,
+        ]
+      }
+      isOpen={false}
+      isPlain={true}
+      onSelect={[Function]}
+      toggle={
+        <KebabToggle
+          onToggle={[Function]}
+        />
+      }
+    />
+  </DataToolbarItem>
+</Fragment>
+`;
+
+exports[`Actions - component should render empty actions 1`] = `
+<Fragment>
+  <DataToolbarItem
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+  >
+    <Dropdown
+      dropdownItems={
+        Array [
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="div"
+            onClick={[Function]}
+          >
+            <button
+              onClick={[MockFunction]}
+            >
+              Some button
+            </button>
+          </DropdownItem>,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="button"
+            onClick={[Function]}
+          >
+            Some title
+          </DropdownItem>,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="button"
+            onClick={[Function]}
+          >
+            Custom props
+          </DropdownItem>,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="button"
+            onClick={[Function]}
+          >
+            plain string
+          </DropdownItem>,
+        ]
+      }
+      isOpen={false}
+      isPlain={true}
+      onSelect={[Function]}
+      toggle={
+        <KebabToggle
+          onToggle={[Function]}
+        />
+      }
+    />
+  </DataToolbarItem>
+</Fragment>
+`;
+
+exports[`Actions - component should render just actions 1`] = `
+<Fragment>
+  <DataToolbarItem
+    className="ins-c-primary-toolbar__first-action"
+  >
+    <button
+      key="btn"
+      onClick={[MockFunction]}
+    >
+      Some button
+    </button>
+  </DataToolbarItem>
+  <DataToolbarItem
+    className=" ins-c-primary-toolbar__actions"
+  >
+    <Dropdown
+      dropdownItems={
+        Array [
+          <DropdownItem
+            className="ins-c-primary-toolbar__first-action "
+            component="div"
+            onClick={[Function]}
+          >
+            <button
+              onClick={[MockFunction]}
+            >
+              Some button
+            </button>
+          </DropdownItem>,
+          <DropdownItem
+            component="button"
+            onClick={[Function]}
+          >
+            Some title
+          </DropdownItem>,
+          <DropdownItem
+            component="button"
+            onClick={[Function]}
+          >
+            Custom props
+          </DropdownItem>,
+          <DropdownItem
+            component="button"
+            onClick={[Function]}
+          >
+            plain string
+          </DropdownItem>,
+          <DropdownSeparator
+            className="ins-c-primary-toolbar__overflow-actions-separator"
+          />,
+        ]
+      }
+      isOpen={false}
+      isPlain={true}
+      onSelect={[Function]}
+      toggle={
+        <KebabToggle
+          onToggle={[Function]}
+        />
+      }
+    />
+  </DataToolbarItem>
+</Fragment>
+`;
+
+exports[`Actions - component should render no data 1`] = `<Fragment />`;
+
+exports[`Actions - component should render one action 1`] = `
+<Fragment>
+  <DataToolbarItem
+    className="ins-c-primary-toolbar__first-action"
+  >
+    <button
+      key="btn"
+      onClick={[MockFunction]}
+    >
+      Some button
+    </button>
+  </DataToolbarItem>
+</Fragment>
+`;
+
+exports[`Actions - component should render one action and multiple overflow 1`] = `
+<Fragment>
+  <DataToolbarItem
+    className="ins-c-primary-toolbar__first-action"
+  >
+    <button
+      key="btn"
+      onClick={[MockFunction]}
+    >
+      Some button
+    </button>
+  </DataToolbarItem>
+  <DataToolbarItem
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+  >
+    <Dropdown
+      dropdownItems={
+        Array [
+          <DropdownItem
+            className="ins-c-primary-toolbar__first-action "
+            component="div"
+            onClick={[Function]}
+          >
+            <button
+              onClick={[MockFunction]}
+            >
+              Some button
+            </button>
+          </DropdownItem>,
+          <DropdownSeparator
+            className="ins-c-primary-toolbar__overflow-actions-separator"
+          />,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="div"
+            onClick={[Function]}
+          >
+            <button
+              onClick={[MockFunction]}
+            >
+              Some button
+            </button>
+          </DropdownItem>,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="button"
+            onClick={[Function]}
+          >
+            Some title
+          </DropdownItem>,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="button"
+            onClick={[Function]}
+          >
+            Custom props
+          </DropdownItem>,
+          <DropdownItem
+            className="ins-c-primary-toolbar__overflow-actions"
+            component="button"
+            onClick={[Function]}
+          >
+            plain string
+          </DropdownItem>,
+        ]
+      }
+      isOpen={false}
+      isPlain={true}
+      onSelect={[Function]}
+      toggle={
+        <KebabToggle
+          onToggle={[Function]}
+        />
+      }
+    />
+  </DataToolbarItem>
+</Fragment>
+`;
+
+exports[`overflowActionsMapper should render action object 1`] = `
+<div>
+  <DropdownItem
+    className="ins-c-primary-toolbar__overflow-actions"
+    component="button"
+    key="undefined-overflow"
+    onClick={[Function]}
+  >
+    Some title
+  </DropdownItem>
+</div>
+`;
+
+exports[`overflowActionsMapper should render component 1`] = `
+<div>
+  <DropdownItem
+    className="ins-c-primary-toolbar__overflow-actions"
+    component="div"
+    key="btn"
+    onClick={[Function]}
+  >
+    <button
+      key="btn"
+      onClick={[MockFunction]}
+    >
+      Some button
+    </button>
+  </DropdownItem>
+</div>
+`;
+
+exports[`overflowActionsMapper should render plain string 1`] = `
+<div>
+  <DropdownItem
+    className="ins-c-primary-toolbar__overflow-actions"
+    component="button"
+    key="undefined-overflow"
+    onClick={[Function]}
+  >
+    Custom props
+  </DropdownItem>
+</div>
+`;

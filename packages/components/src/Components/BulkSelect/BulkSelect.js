@@ -48,7 +48,7 @@ visible unless you update it.');
                                                 aria-label="Select all"
                                                 onChange={ onSelect }
                                                 checked={ checked || false }
-                                            >{ count } Selected</DropdownToggleCheckbox>
+                                            >{ count } selected</DropdownToggleCheckbox>
                                     }
                                 </Fragment>
                             ] }
@@ -56,13 +56,24 @@ visible unless you update it.');
                         />
                     ) }
                     isOpen={ isOpen }
-                    dropdownItems={ items.map((oneItem, key) => <DropdownItem
-                        component="button"
-                        key={ oneItem.key || key }
-                        onClick={ (event) => oneItem.onClick && oneItem.onClick(event, oneItem, key) }
-                    >
-                        { oneItem.title }
-                    </DropdownItem>) }
+                    dropdownItems={ [
+                        ...count !== undefined && count > 0 ? [
+                            <DropdownItem
+                                key="count"
+                                isDisabled
+                                className={ !hasError ? 'ins-c-bulk-select__selected' : '' }
+                            >
+                                { count } Selected
+                            </DropdownItem>
+                        ] : [],
+                        ...items.map((oneItem, key) => <DropdownItem
+                            component="button"
+                            key={ oneItem.key || key }
+                            onClick={ (event) => oneItem.onClick && oneItem.onClick(event, oneItem, key) }
+                        >
+                            { oneItem.title }
+                        </DropdownItem>)
+                    ] }
                 /> : <Checkbox
                     { ...props }
                     className={ classnames(className, 'ins-c-bulk-select') }
