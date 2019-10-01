@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import SystemPolicyCards from './SystemPolicyCards';
 import SystemRulesTable from './SystemRulesTable';
+import { sortable } from '@patternfly/react-table';
+import { ANSIBLE_ICON } from './Constants'
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ApolloProvider } from 'react-apollo';
@@ -57,12 +59,21 @@ query System($systemId: String!){
 }
 `;
 
+const columns = [
+    { title: 'Rule', transforms: [ sortable ] },
+    { title: 'Policy', transforms: [ sortable ] },
+    { title: 'Severity', transforms: [ sortable ] },
+    { title: 'Passed', transforms: [ sortable ] },
+    { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment> }
+]
+
 const SystemQuery = ({ data, loading, hidePassed }) => (
     <React.Fragment>
         <SystemPolicyCards policies={ data.system && data.system.profiles } loading={ loading } />
         <br/>
         <SystemRulesTable hidePassed={ hidePassed }
             system={ data.system }
+            columns={ columns }
             profileRules={ data.system && data.system.profiles.map((profile) => ({
                 system: data.system.id,
                 profile: { refId: profile.refId, name: profile.name },

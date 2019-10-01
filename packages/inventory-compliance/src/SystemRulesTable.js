@@ -2,13 +2,10 @@ import React from 'react';
 import propTypes from 'prop-types';
 import ComplianceRemediationButton from './ComplianceRemediationButton';
 import { CheckIcon, CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
-import { EmptyTable, SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
+import { SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
 import {
-    Bullseye,
-    EmptyState,
-    EmptyStateBody,
-    EmptyStateVariant,
+    Checkbox,
     InputGroup,
     Level,
     LevelItem,
@@ -20,36 +17,14 @@ import {
     PaginationVariant,
     Text,
     TextContent,
-    TextVariants,
-    Title
+    TextVariants
 } from '@patternfly/react-core';
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import flatMap from 'lodash/flatMap';
 import './compliance.scss';
 import RulesComplianceFilter from './RulesComplianceFilter';
+import EmptyRows from './EmptyRows';
 import debounce from 'lodash/debounce';
-
-const emptyRows = [{
-    cells: [{
-        title: (
-            <EmptyTable>
-                <Bullseye>
-                    <EmptyState variant={ EmptyStateVariant.full }>
-                        <Title headingLevel="h5" size="lg">
-                                No matching rules found
-                        </Title>
-                        <EmptyStateBody>
-                                This filter criteria matches no rules. <br /> Try changing your filter settings.
-                        </EmptyStateBody>
-                    </EmptyState>
-                </Bullseye>
-            </EmptyTable>
-        ),
-        props: {
-            colSpan: 5
-        }
-    }]
-}];
 
 import {
     REMEDIATIONS_COLUMN,
@@ -67,13 +42,7 @@ class SystemRulesTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            columns: [
-                { title: 'Rule', transforms: [ sortable ] },
-                { title: 'Policy', transforms: [ sortable ] },
-                { title: 'Severity', transforms: [ sortable ] },
-                { title: 'Passed', transforms: [ sortable ] },
-                { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, transforms: [ sortable ] }
-            ],
+            columns: props.columns,
             page: 1,
             itemsPerPage: props.itemsPerPage,
             rows: [],
@@ -500,7 +469,7 @@ class SystemRulesTable extends React.Component {
 
     render() {
         const { hidePassed, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
-        const { system, loading, profileRules } = this.props;
+        const { remediationsEnabled, system, loading, profileRules } = this.props;
 
         if (loading) {
             return (
@@ -537,11 +506,13 @@ class SystemRulesTable extends React.Component {
                             <LevelItem>
                                 { rows.length / 2 } results
                             </LevelItem>
-                            <LevelItem>
-                                <ComplianceRemediationButton
-                                    allSystems={ [{ id: system.id, rule_objects_failed: [] }] }
-                                    selectedRules={ this.selectedRules() } />
-                            </LevelItem>
+                            { remediationsEnabled &&
+                                <LevelItem>
+                                    <ComplianceRemediationButton
+                                        allSystems={ [{ id: system.id, rule_objects_failed: [] }] }
+                                        selectedRules={ this.selectedRules() } />
+                                </LevelItem>
+                            }
                         </Level>
                         <Pagination
                             page={ page }
@@ -560,7 +531,7 @@ class SystemRulesTable extends React.Component {
                         onSort={ this.onSort }
                         sortBy={ sortBy }
                         onSelect={ (currentRows.length !== 0) ? this.onSelect : () => null }
-                        rows={ (currentRows.length === 0) ? emptyRows : currentRows }>
+                        rows={ (currentRows.length === 0) ? EmptyRows : currentRows }>
                         <TableHeader />
                         <TableBody />
                     </Table>
@@ -590,12 +561,14 @@ SystemRulesTable.propTypes = {
     rows: propTypes.array,
     system: propTypes.object,
     itemsPerPage: propTypes.number
+    remediationsEnabled: propTypes.bool
 };
 
 SystemRulesTable.defaultProps = {
     profileRules: [{ rules: [] }],
     hidePassed: false,
     itemsPerPage: 10
+    remediationsEnabled: true
 };
 
 export default SystemRulesTable;
