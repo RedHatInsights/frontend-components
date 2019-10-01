@@ -58,7 +58,7 @@ describe('bubble actions', () => {
             on: 'test-listener',
             callback
         });
-        expect(mwListener.listeners.size).toBe(1);
-        expect(mwListener.listeners.values().next().value.on).toBe('test-listener');
+        expect(mwListener.getListeners().size).toBe(1);
+        expect(mwListener.getListeners().values().next().value.on).toBe('test-listener');
     });
 });
