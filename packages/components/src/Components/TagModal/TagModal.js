@@ -7,13 +7,22 @@ import {
     Table,
     TableHeader,
     TableBody
-  } from '@patternfly/react-table';
-
+} from '@patternfly/react-table';
 
 export default class TagModal extends React.Component {
     render() {
-        const { className, systemName, toggleModal, isOpen, rows, columns, children, ...props } = this.props;
-        return(
+        const {
+            className,
+            systemName,
+            toggleModal,
+            isOpen,
+            rows,
+            columns,
+            children,
+            tableProps,
+            ...props
+        } = this.props;
+        return (
             <Modal
                 {...props}
                 className={classNames('ins-c-tag-modal', className)}
@@ -23,7 +32,14 @@ export default class TagModal extends React.Component {
                 isFooterLeftAligned
             >
                 {children}
-                <Table variant="compact" className="ins-c-tag-modal__table" cells={columns} rows={rows}>
+                <Table
+                    aria-label={`${systemName} tags`}
+                    variant="compact"
+                    className="ins-c-tag-modal__table"
+                    cells={columns}
+                    rows={rows}
+                    { ...tableProps }
+                >
                     <TableHeader />
                     <TableBody />
                 </Table>
@@ -38,7 +54,10 @@ TagModal.propTypes = {
     toggleModal: PropTypes.func,
     rows: PropTypes.array,
     columns: PropTypes.array,
-    className: PropTypes.string
+    className: PropTypes.string,
+    tableProps: PropTypes.shape({
+        [PropTypes.string]: PropTypes.any
+    })
 };
 
 TagModal.defaultProps = {
@@ -48,5 +67,6 @@ TagModal.defaultProps = {
         { title: 'Name' },
         { title: 'Tag Source' }
     ],
-    rows: []
-}
+    rows: [],
+    tableProps: {}
+};
