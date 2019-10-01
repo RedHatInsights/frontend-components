@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { RowLoader, processDate, parseCvssScore, downloadFile, mergeArraysByKey } from './helpers';
+import { RowLoader, processDate, parseCvssScore, downloadFile, mergeArraysByKey, getBaseName } from './helpers';
 
 describe('mergeArraysByKey', () => {
     it('should join two arrays by ID', () => {
@@ -124,4 +124,20 @@ describe('RowLoader', () => {
         const wrapper = shallow(<RowLoader />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
+});
+
+describe('getBaseName', () => {
+    [
+        [ '/group/application', '/group/application' ],
+        [ '/group/application/navigation', '/group/application' ],
+        [ '/group', '/group/' ],
+        [ '/beta/group/application', '/beta/group/application' ],
+        [ '/beta/group', '/beta/group/' ],
+        [ '/group/application#id', '/group/application' ],
+        [ '/group/application?param=value', '/group/application' ]
+    ].map(([ pathName, baseName ]) =>
+        it(`should return ${baseName} for ${pathName}`, () => {
+            expect(getBaseName(pathName)).toBe(baseName);
+        })
+    );
 });
