@@ -48,17 +48,19 @@ import { AddSourceWizard } from '@redhat-cloud-services/frontend-components-sour
 
 |Prop|Type|Default|Description|
 |----|:--:|:-----:|----------:|
-|isOpen|bool|false|You need to control yourselves if the wizard is open or not. (Not needed for the button version)|
-|afterSuccess|function|null|This function will be executed after closing the wizard successful finish step. In Sources-UI this method is used for updating the list of sources.|
-|onClose|function|null|This function will be executed after closing the wizard. Eg. set isOpen to false.|
-|successfulMessage|node|'Your source has been successfully added.'|A message shown on the last page of the wizard. Can be customized when accessing from different app (eg. 'Source was added to Cost Management')|
-|sourceTypes|array|null|SourceTypes array. This prop can be used on pages, which have already loaded the source types, so there is no need to load them in this component.|
-|applicationTypes|array|null|applicationTypes array. This prop can be used on pages, which have already loaded the application types, so there is no need to load them in this component.|
-|initialValues|object|{}|Object with initialValues of the form.|
-|disableAppSelection|bool|false|Flag to disable appSelection.|
-|hideSourcesButton|bool|false|hide 'Take me to sources' button.|
+|isOpen|bool|`false`|You need to control yourselves if the wizard is open or not. (Not needed for the button version)|
+|afterSuccess|function|`null`|This function will be executed after closing the wizard successful finish step. In Sources-UI this method is used for updating the list of sources.|
+|onClose|function|`null`|This function will be executed after closing the wizard. Eg. set isOpen to false.|
+|successfulMessage|node|`'Your source has been successfully added.'`|A message shown on the last page of the wizard. Can be customized when accessing from different app (eg. 'Source was added to Cost Management')|
+|sourceTypes|array|`null`|SourceTypes array. This prop can be used on pages, which have already loaded the source types, so there is no need to load them in this component.|
+|applicationTypes|array|`null`|applicationTypes array. This prop can be used on pages, which have already loaded the application types, so there is no need to load them in this component.|
+|initialValues|object|`{}`|Object with initialValues of the form.|
+|disableAppSelection|bool|`false`|Flag to disable appSelection.|
+|hideSourcesButton|bool|`false`|hide 'Take me to sources' button.|
+|returnButtonTitle|node|`'Go back to sources'`|Title of the button shown after success submit. Put your own application name if you neeed.|
+|disableHardcodedSchemas|bool|`false`|Disables hardcoded schemas. Use if you need to overwrite schemas by providing custom schemas in `sourceTypes`|
 
-If you need to set up and support only one application you can provide filtered `applicationTypes` with the only one application, set up `disableAppSelection` to `false` and `initialValues` to:
+If you need to set up and **support only one application** you can provide filtered `applicationTypes` with the only one application, set up `disableAppSelection` to `false` and `initialValues` to:
 
 ```jsx
 {
@@ -67,6 +69,8 @@ If you need to set up and support only one application you can provide filtered 
     }
 }
 ```
+
+If you need to provide **custom schemas**, just disable hardcoded schema by setting `disableHardcodedSchemas` to true and modify schemas in `sourceTypes` objects.
 
 
 # Additional components

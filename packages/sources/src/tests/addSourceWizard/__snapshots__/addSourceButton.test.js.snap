@@ -11,10 +11,12 @@ exports[`AddSourceButton renders correctly 1`] = `
   <AddSourceWizard
     afterSuccess={[Function]}
     disableAppSelection={false}
+    disableHardcodedSchemas={false}
     hideSourcesButton={false}
     initialValues={Object {}}
     isOpen={false}
     onClose={[Function]}
+    returnButtonTitle="Go back to sources"
     successfulMessage="Your source has been successfully added."
   />
 </Fragment>

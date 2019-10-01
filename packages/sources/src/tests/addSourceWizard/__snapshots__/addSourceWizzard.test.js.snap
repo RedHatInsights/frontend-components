@@ -17,6 +17,7 @@ exports[`AddSourceWizard renders correctly with sourceTypes 1`] = `
     ]
   }
   disableAppSelection={false}
+  disableHardcodedSchemas={false}
   onCancel={[Function]}
   onSubmit={[Function]}
   sourceTypes={
@@ -86,6 +87,7 @@ exports[`AddSourceWizard renders correctly without sourceTypes 1`] = `
     ]
   }
   disableAppSelection={false}
+  disableHardcodedSchemas={false}
   onCancel={[Function]}
   onSubmit={[Function]}
   values={Object {}}
