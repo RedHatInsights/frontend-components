@@ -12,7 +12,10 @@ const FilterChips = ({ filters, onDelete }) => {
             { group.chips.map(chip => (
                 <Chip
                     key={ `group_${group.category}_chip_${chip.name}` }
-                    onClick={ (event) => onDelete(event, [{ category: group.category, chips: [ chip ]}]) }
+                    onClick={ (event) => {
+                        event.stopPropagation();
+                        onDelete(event, [{ category: group.category, chips: [ chip ] }]);
+                    }}
                 >
                     { chip.name }
                     { chip.count && <Badge key={ `chip_badge_${chip.id}` } isRead={ chip.isRead }>{ chip.count }</Badge> }
@@ -36,7 +39,10 @@ const FilterChips = ({ filters, onDelete }) => {
                         { plainFilters.map(chip => (
                             <Chip
                                 key={ `group_plain_chip_${chip.name}` }
-                                onClick={ (event) => onDelete(event, [{ category: 'group_plain', chips: [ chip ]}]) }
+                                onClick={ (event) => {
+                                    event.stopPropagation();
+                                    onDelete(event, [ chip ]);
+                                }}
                             >
                                 { chip.name }
                                 { chip.count && <Badge key={ `chip_badge_${chip.id}` } isRead={ chip.isRead }>{ chip.count }</Badge> }
@@ -71,6 +77,11 @@ FilterChips.propTypes = {
         ])
     ),
     onDelete: PropTypes.func
+};
+
+FilterChips.defaultProps = {
+    filters: [],
+    onDelete: () => undefined
 };
 
 export default FilterChips;

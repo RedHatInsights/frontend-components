@@ -16,6 +16,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   title="Tags for paul.localhost.com"
 >
   <Table
+    aria-label="paul.localhost.com tags"
     borders={true}
     cells={
       Array [
@@ -74,6 +75,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
     I am a chile component
   </h1>
   <Table
+    aria-label="paul.localhost.com tags"
     borders={true}
     cells={
       Array [
