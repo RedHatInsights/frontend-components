@@ -52,7 +52,16 @@ class AddSourceWizard extends React.Component {
     }
 
     render() {
-        const { successfulMessage, isOpen, sourceTypes, applicationTypes, disableAppSelection, hideSourcesButton, returnButtonTitle } = this.props;
+        const {
+            successfulMessage,
+            isOpen,
+            sourceTypes,
+            applicationTypes,
+            disableAppSelection,
+            hideSourcesButton,
+            returnButtonTitle,
+            disableHardcodedSchemas
+        } = this.props;
         const { isErrored, isFinished, isSubmitted, values } = this.state;
 
         if (!isOpen) {
@@ -67,6 +76,7 @@ class AddSourceWizard extends React.Component {
                 sourceTypes={ sourceTypes }
                 applicationTypes={ applicationTypes }
                 disableAppSelection={ disableAppSelection }
+                disableHardcodedSchemas={ disableHardcodedSchemas }
             />;
         }
 
@@ -106,7 +116,8 @@ AddSourceWizard.propTypes = {
     }),
     disableAppSelection: PropTypes.bool,
     hideSourcesButton: PropTypes.bool,
-    returnButtonTitle: PropTypes.string
+    returnButtonTitle: PropTypes.node,
+    disableHardcodedSchemas: PropTypes.bool
 };
 
 AddSourceWizard.defaultProps = {
@@ -117,7 +128,8 @@ AddSourceWizard.defaultProps = {
     initialValues: {},
     disableAppSelection: false,
     hideSourcesButton: false,
-    returnButtonTitle: 'Go back to sources'
+    returnButtonTitle: 'Go back to sources',
+    disableHardcodedSchemas: false
 };
 
 class AddSourceButton extends React.Component {

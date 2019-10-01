@@ -35,7 +35,7 @@ FinalWizard.propTypes = {
     isErrored: PropTypes.bool.isRequired,
     successfulMessage: PropTypes.node.isRequired,
     hideSourcesButton: PropTypes.bool.isRequired,
-    returnButtonTitle: PropTypes.string.isRequired
+    returnButtonTitle: PropTypes.node.isRequired
 };
 
 export default FinalWizard;

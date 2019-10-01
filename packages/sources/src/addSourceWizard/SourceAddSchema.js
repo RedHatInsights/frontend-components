@@ -7,7 +7,7 @@ import { AwsIcon, OpenshiftIcon, MicrosoftIcon } from '@patternfly/react-icons';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
 
-export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources }}) => {
+export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources } }) => {
     if (sources.find(({ id }) => id !== sourceId)) {
         return 'Name has already been taken';
     }
@@ -301,16 +301,14 @@ const sourceTypeSchemaHardcodedWithFallback = t => (
 );
 const sourceTypeSchemaWithFallback = t => (t.schema || temporaryHardcodedSourceSchemas[t.name]);
 const sourceTypeSchemaHardcoded = t => temporaryHardcodedSourceSchemas[t.name];
-const sourceTypeSchemaServer = t => t.schema;
+const sourceTypeSchemaServer = t => ({ ...t.schema, fields: t.schema.fields.sort((_a, b) => b.type === 'hidden' ? -1 : 0) });
 
-const schemaMode = 4; // defaults to 0
-
-const sourceTypeSchema = {
+const sourceTypeSchema = (schemaMode = 4) => ({
     0: sourceTypeSchemaWithFallback,
     1: sourceTypeSchemaHardcoded,
     2: sourceTypeSchemaServer,
     4: sourceTypeSchemaHardcodedWithFallback
-}[schemaMode];
+}[schemaMode]);
 
 const fieldsToStep = (fields, stepName, nextStep) => ({
     ...fields, // expected to include title and fields
@@ -330,8 +328,8 @@ const fieldsToSteps = (fields, stepNamePrefix, lastStep) =>
                 index < fields.length - 1 ? indexedStepName(stepNamePrefix, index + 1) : lastStep)
         ) : fieldsToStep(fields, stepNamePrefix, lastStep);
 
-const sourceTypeSteps = sourceTypes =>
-    sourceTypes.map(t => fieldsToSteps(sourceTypeSchema(t), t.name, 'summary'))
+const sourceTypeSteps = (sourceTypes, disableHardcodedSchemas) =>
+    sourceTypes.map(t => fieldsToSteps(sourceTypeSchema(disableHardcodedSchemas ? 2 : 4)(t), t.name, 'summary'))
     .flatMap((x) => x);
 
 const summaryStep = (sourceTypes, applicationTypes) => ({
@@ -357,22 +355,26 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
     title: 'Review source details'
 });
 
-export default (sourceTypes, applicationTypes, disableAppSelection) => (
-    { fields: [
-        {
-            component: componentTypes.WIZARD,
-            name: 'wizard',
-            title: 'Add a source',
-            inModal: true,
-            description: 'Connect an external source to Red Hat Cloud Services',
-            buttonLabels: {
-                submit: 'Finish'
-            },
-            fields: [
-                nameStep(),
-                typesStep(sourceTypes, applicationTypes, disableAppSelection),
-                ...sourceTypeSteps(sourceTypes),
-                summaryStep(sourceTypes, applicationTypes)
-            ]
-        }
-    ]});
+export default (sourceTypes, applicationTypes, disableAppSelection, disableHardcodedSchemas) => (
+    {
+        fields:
+         [
+             {
+                 component: componentTypes.WIZARD,
+                 name: 'wizard',
+                 title: 'Add a source',
+                 inModal: true,
+                 description: 'Connect an external source to Red Hat Cloud Services',
+                 buttonLabels: {
+                     submit: 'Finish'
+                 },
+                 fields: [
+                     nameStep(),
+                     typesStep(sourceTypes, applicationTypes, disableAppSelection),
+                     ...sourceTypeSteps(sourceTypes, disableHardcodedSchemas),
+                     summaryStep(sourceTypes, applicationTypes)
+                 ]
+             }
+         ]
+    }
+);

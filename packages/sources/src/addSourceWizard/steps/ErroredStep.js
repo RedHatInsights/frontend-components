@@ -23,7 +23,7 @@ const ErroredStep = ({ onClose, onRetry, returnButtonTitle }) => <div className=
 ErroredStep.propTypes = {
     onClose: PropTypes.func.isRequired,
     onRetry: PropTypes.func.isRequired,
-    returnButtonTitle: PropTypes.string.isRequired
+    returnButtonTitle: PropTypes.node.isRequired
 };
 
 export default ErroredStep;

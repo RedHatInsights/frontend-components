@@ -28,7 +28,7 @@ FinishedStep.propTypes = {
     onClose: PropTypes.func.isRequired,
     successfulMessage: PropTypes.node.isRequired,
     hideSourcesButton: PropTypes.bool.isRequired,
-    returnButtonTitle: PropTypes.string.isRequired
+    returnButtonTitle: PropTypes.node.isRequired
 };
 
 export default FinishedStep;

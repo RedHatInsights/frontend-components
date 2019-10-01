@@ -11,6 +11,7 @@ exports[`AddSourceButton renders correctly 1`] = `
   <AddSourceWizard
     afterSuccess={[Function]}
     disableAppSelection={false}
+    disableHardcodedSchemas={false}
     hideSourcesButton={false}
     initialValues={Object {}}
     isOpen={false}
