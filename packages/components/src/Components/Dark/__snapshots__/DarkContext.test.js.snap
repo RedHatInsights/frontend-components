@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DarkContext should render children 1`] = `
+<ContextProvider
+  value="dark"
+>
+  <div
+    id="isPresent"
+  />
+</ContextProvider>
+`;
