@@ -10,7 +10,7 @@ describe('FilterDropdown component', () => {
                 filters={ {} }
                 addFilter={ jest.fn() }
                 removeFilter={ jest.fn() }
-                filterCategories={ [{ title: '', type: '', urlParam: '', values: [{ label: '', value: '' }]}] }
+                filterCategories={ [{ title: '', type: '', urlParam: '', values: [{ label: '', value: '' }] }] }
             />
         );
         expect(toJson(wrapper)).toMatchSnapshot();

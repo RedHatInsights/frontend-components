@@ -6,21 +6,21 @@ import Donut from './Donut';
 describe('Donut component', () => {
 
     const values = [
-        ['value1', 5],
-        ['value2', 10],
-        ['value3', 20],
-        ['value4', 40]
+        [ 'value1', 5 ],
+        [ 'value2', 10 ],
+        [ 'value3', 20 ],
+        [ 'value4', 40 ]
     ];
 
     const totalLabel = 'label for donut hole';
-    const identifier = 'test-donut'
+    const identifier = 'test-donut';
 
     it('should render correctly', () => {
         const wrapper = shallow(
             <Donut values={values} identifier={identifier}/>);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
-    
+
     it('should render correctly with no legend', () => {
         const wrapper = shallow(
             <Donut

@@ -11,7 +11,7 @@ describe('Pagination component', () => {
         });
 
         it('per page options', () => {
-            const wrapper = shallow(<Pagination numberOfItems={10} perPageOptions={[1,2]}/>);
+            const wrapper = shallow(<Pagination numberOfItems={10} perPageOptions={[ 1, 2 ]}/>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 

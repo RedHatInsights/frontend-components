@@ -90,7 +90,7 @@ FilterDropdown.defaultProps = {
     removeFilter: Function.prototype,
     hideCategories: [],
     filters: {},
-    label: "Filters"
+    label: 'Filters'
 };
 
 export default FilterDropdown;

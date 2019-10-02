@@ -19,7 +19,7 @@ class CardSelect extends React.Component {
 
     handleMulti = (value) => this.state.selectedValues.includes(value) ?
         this.setState(({ selectedValues }) => ({ selectedValues: selectedValues.filter(valueSelect => valueSelect !== value) }), this.change)
-        : this.setState(({ selectedValues }) => ({ selectedValues: [ ...selectedValues, value ]}), this.change);
+        : this.setState(({ selectedValues }) => ({ selectedValues: [ ...selectedValues, value ] }), this.change);
 
     handleSingle = (value) => this.setState(() => ({ selectedValues: this.state.selectedValues === value ? undefined : value }), this.change);
 
@@ -111,6 +111,8 @@ CardSelect.propTypes = {
     description: PropTypes.string,
     hideLabel: PropTypes.bool,
     name: PropTypes.string.isRequired,
+    mutator: PropTypes.func,
+    formOptions: PropTypes.any,
     FieldProvider: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]),
     options: PropTypes.array,
     input: PropTypes.shape({

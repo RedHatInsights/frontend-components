@@ -6,13 +6,13 @@ import Pie from './Pie';
 describe('Pie component', () => {
 
     const values = [
-        ['value1', 5],
-        ['value2', 10],
-        ['value3', 20],
-        ['value4', 40]
+        [ 'value1', 5 ],
+        [ 'value2', 10 ],
+        [ 'value3', 20 ],
+        [ 'value4', 40 ]
     ];
 
-    const identifier = 'test-pie'
+    const identifier = 'test-pie';
 
     it('should render correctly', () => {
         const wrapper = shallow(
@@ -25,7 +25,7 @@ describe('Pie component', () => {
             <Pie values={values} className='test pie' identifier={identifier}/>);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
-    
+
     it('should render correctly with no legend', () => {
         const wrapper = shallow(
             <Pie

@@ -12,7 +12,7 @@ global.insights = {
             }
         }
     }
-}
+};
 
 describe('Main component', () => {
     describe('should render correctly', () => {

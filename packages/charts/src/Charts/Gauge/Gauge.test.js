@@ -6,21 +6,21 @@ import Gauge from './Gauge';
 describe('Gauge component', () => {
 
     const label = 'gauge label';
-    const identifier = 'gauge-identifier'
+    const identifier = 'gauge-identifier';
 
     it('should render correctly', () => {
         const wrapper = shallow(<Gauge value={10} label={label} identifier={identifier}/>);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    [0, 25, 50, 75, 100].forEach(value => {
+    [ 0, 25, 50, 75, 100 ].forEach(value => {
         it(`Value- ${value}`, () => {
             const wrapper = shallow(<Gauge value={value} identifier={identifier} label={label}/>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
     });
 
-    [0, 25, 50, 75, 100].forEach(value => {
+    [ 0, 25, 50, 75, 100 ].forEach(value => {
         it(`Value- ${value} - flipped colors`, () => {
             const wrapper = shallow(<Gauge value={value} identifier={identifier} label={label} flipFullColors/>);
             expect(toJson(wrapper)).toMatchSnapshot();

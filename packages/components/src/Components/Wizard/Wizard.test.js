@@ -4,11 +4,11 @@ import toJson from 'enzyme-to-json';
 import Wizard from './Wizard';
 
 const content = [
-    <div id="first">First</div>,
-    <div id="second">Second</div>,
-    <div id="third">Third</div>,
-    <div id="fourth">Fourth</div>
-]
+    <div id="first" key="first">First</div>,
+    <div id="second" key="second">Second</div>,
+    <div id="third" key="third">Third</div>,
+    <div id="fourth" key="fourth">Fourth</div>
+];
 
 describe('Wizard component', () => {
     describe('should render correctly', () => {
@@ -23,17 +23,17 @@ describe('Wizard component', () => {
         });
 
         it('one page', () => {
-            const wrapper = shallow(<Wizard content={[<div>One</div>]} title="Some title" isOpen />);
+            const wrapper = shallow(<Wizard content={[ <div key="one">One</div> ]} title="Some title" isOpen />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         it('one page confirm button', () => {
-            const wrapper = mount(<Wizard content={[<div>One</div>]} title="Some title" isOpen />);
+            const wrapper = mount(<Wizard content={[ <div key="one">One</div> ]} title="Some title" isOpen />);
             expect(wrapper.find('[action="confirm"]').first().text()).toBe('Confirm');
         });
 
         it('one page save button', () => {
-            const wrapper = mount(<Wizard content={[<div>One</div>]} confirmAction="Save" title="Some title" isOpen />);
+            const wrapper = mount(<Wizard content={[ <div key="one">One</div> ]} confirmAction="Save" title="Some title" isOpen />);
             expect(wrapper.find('[action="confirm"]').first().text()).toBe('Save');
         });
     });
@@ -84,7 +84,7 @@ describe('Wizard component', () => {
             const onClose = jest.fn();
             const wrapper = mount(<Wizard content={content} title="Some title" isOpen />);
             wrapper.find('[action="cancel"]').first().simulate('click');
-            expect(onClose.mock.calls.length).toBe(0)
+            expect(onClose.mock.calls.length).toBe(0);
         });
 
         it('should call onClose X button', () => {

@@ -14,16 +14,16 @@ export const mapData = ({ facts = {}, ...oneResult }) => ({
     facts: {
         ...facts.reduce((acc, curr) => ({ ...acc, [curr.namespace]: curr.facts }), {}),
         ...flatMap(facts, (oneFact => Object.values(oneFact)))
-            .map(item => typeof item !== 'string' ? ({
-                ...item,
-                // eslint-disable-next-line camelcase
-                os_release: item.os_release || item.release,
-                // eslint-disable-next-line camelcase
-                display_name: item.display_name || item.fqdn || item.id
-            }) : item)
-            .reduce(
-                (acc, curr) => ({ ...acc, ...(typeof curr !== 'string') ? curr : {} }), {}
-            )
+        .map(item => typeof item !== 'string' ? ({
+            ...item,
+            // eslint-disable-next-line camelcase
+            os_release: item.os_release || item.release,
+            // eslint-disable-next-line camelcase
+            display_name: item.display_name || item.fqdn || item.id
+        }) : item)
+        .reduce(
+            (acc, curr) => ({ ...acc, ...(typeof curr !== 'string') ? curr : {} }), {}
+        )
     }
 });
 
@@ -40,13 +40,13 @@ export function getEntities(items, {
 
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
-            .then(({ results = [], ...data } = {}) => ({
-                ...data,
-                results: results.map(result => mapData({
-                    ...result,
-                    display_name: result.display_name || result.fqdn || result.id
-                }))
-            }));
+        .then(({ results = [], ...data } = {}) => ({
+            ...data,
+            results: results.map(result => mapData({
+                ...result,
+                display_name: result.display_name || result.fqdn || result.id
+            }))
+        }));
     } else if (!hasItems) {
         return hosts.apiHostGetHostList(
             undefined,
@@ -60,13 +60,13 @@ export function getEntities(items, {
             orderDirection,
             { cancelToken: controller && controller.token }
         )
-            .then(({ results = [], ...data } = {}) => ({
-                ...data,
-                results: results.map(result => mapData({
-                    ...result,
-                    display_name: result.display_name || result.fqdn || result.id
-                }))
-            }));
+        .then(({ results = [], ...data } = {}) => ({
+            ...data,
+            results: results.map(result => mapData({
+                ...result,
+                display_name: result.display_name || result.fqdn || result.id
+            }))
+        }));
     }
 
     return new Promise((res) => {
@@ -78,5 +78,5 @@ export function getEntities(items, {
     });
 }
 
-export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([item]);
+export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);
 

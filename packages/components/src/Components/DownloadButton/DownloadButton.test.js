@@ -6,7 +6,7 @@ import { DropdownItem } from '@patternfly/react-core';
 
 const extraItems = [
     <DropdownItem key="extra-1" component="button"></DropdownItem>
-]
+];
 
 describe('DownloadButton component', () => {
     describe('should render', () => {
@@ -52,6 +52,6 @@ describe('DownloadButton component', () => {
             wrapper.find('button').first().simulate('click');
             wrapper.find('ul button').at(1).simulate('click');
             expect(onSelect.mock.calls.length).toBe(0);
-        })
+        });
     });
 });

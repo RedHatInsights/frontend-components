@@ -71,16 +71,16 @@ describe('systemProfilePending', () => {
 
 describe('onSystemProfile', () => {
     it('empty results', () => {
-        expect(onSystemProfile(undefined, { payload: {}})).toEqual({
+        expect(onSystemProfile(undefined, { payload: {} })).toEqual({
             systemProfile: {
                 loaded: true,
                 network: undefined,
                 ramSize: '0 B',
                 repositories: undefined
-            }});
+            } });
     });
     describe('correct data', () => {
-        const { systemProfile: { network, repositories, ramSize, ...rest }} = onSystemProfile(undefined, { payload: mockedData });
+        const { systemProfile: { network, repositories, ramSize, ...rest } } = onSystemProfile(undefined, { payload: mockedData });
 
         it('network', () => {
             expect(network.interfaces.length).toBe(1);
