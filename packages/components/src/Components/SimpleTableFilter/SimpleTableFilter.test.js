@@ -28,7 +28,7 @@ describe('SimpleTableFilter component', () => {
         it('with filter opitons', () => {
             const wrapper = shallow(<SimpleTableFilter widgetId="filter" options={
                 {
-                    items: [{ value: 'one', title: 'one'}]
+                    items: [{ value: 'one', title: 'one' }]
                 }
             } />);
             expect(toJson(wrapper)).toMatchSnapshot();

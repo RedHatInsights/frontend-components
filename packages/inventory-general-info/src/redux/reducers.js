@@ -32,7 +32,7 @@ export function calculateRepos(repos) {
         } : {
             disabled: [ ...acc.disabled, curr ]
         }
-    }), { enabled: [], disabled: []});
+    }), { enabled: [], disabled: [] });
 }
 
 export function calculateInterfaces(interfaces) {
@@ -40,10 +40,10 @@ export function calculateInterfaces(interfaces) {
         interfaces: [ ...acc.interfaces, curr ],
         ipv4: [ ...acc.ipv4, ...curr.ipv4_addresses || [] ].filter(Boolean),
         ipv6: [ ...acc.ipv6, ...curr.ipv6_addresses || [] ].filter(Boolean)
-    }), { interfaces: [], ipv4: [], ipv6: []});
+    }), { interfaces: [], ipv4: [], ipv6: [] });
 }
 
-export function onSystemProfile(state, { payload: { results }}) {
+export function onSystemProfile(state, { payload: { results } }) {
     const systemProfile = (results && results[0] && results[0].system_profile) || {};
     return {
         ...state,

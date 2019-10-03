@@ -11,7 +11,7 @@ describe('asyncNameValidator', () => {
     };
 
     const emptySourceResponse = {
-        data: { sources: [ ]}
+        data: { sources: [ ] }
     };
 
     it('returns error message when name is taken', () => {

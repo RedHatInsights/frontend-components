@@ -1,2 +1,2 @@
 export { default as PrimaryToolbar } from './PrimaryToolbar';
-import './primary-toolbar.scss'
+import './primary-toolbar.scss';

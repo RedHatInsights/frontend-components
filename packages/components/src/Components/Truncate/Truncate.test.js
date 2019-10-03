@@ -11,8 +11,8 @@ laborum.`;
 
 describe('Truncate component', () => {
     describe('should render correctly', () => {
-        [true, false].forEach(isInline => {
-            describe(isInline ? 'inline': 'block', () => {
+        [ true, false ].forEach(isInline => {
+            describe(isInline ? 'inline' : 'block', () => {
                 it('without length specified', () => {
                     const wrapper = shallow(<Truncate text={text} inline={isInline} />);
                     expect(toJson(wrapper)).toMatchSnapshot();

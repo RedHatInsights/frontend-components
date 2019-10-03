@@ -17,4 +17,4 @@ export const typeMapper = (type) => {
         radio: Radio,
         custom: Fragment
     }[type] || Text;
-}
+};

@@ -39,7 +39,7 @@ describe('AddSourceWizard', () => {
 
     it('show finished step after filling the form', (done) => {
         dependency.doCreateSource = jest.fn(() => new Promise((resolve) => resolve('ok')));
-        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: []}}));
+        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
         const form = wrapper.find(FormRenderer).children().children().instance().form;
@@ -61,7 +61,7 @@ describe('AddSourceWizard', () => {
     it('pass created source to afterSuccess function', (done) => {
         const afterSubmitMock = jest.fn();
         dependency.doCreateSource = jest.fn(() => new Promise((resolve) => resolve({ name: 'source' })));
-        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: []}}));
+        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps } afterSuccess={ afterSubmitMock }/>);
         const form = wrapper.find(FormRenderer).children().children().instance().form;

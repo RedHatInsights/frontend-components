@@ -6,7 +6,7 @@ class DemoApp extends Component {
     render() {
         return (
             <div>I am demo!</div>
-        )
+        );
     }
 }
 

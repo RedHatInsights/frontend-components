@@ -133,7 +133,7 @@ class ContextFilter extends Component {
                             }
                             onOptionSelect={ this.onFilterByString }
                             onFilterChange={ this.filterEntities }
-                        placeholder={`Find system by ${placeholder && placeholder.toLowerCase()}` }
+                            placeholder={`Find system by ${placeholder && placeholder.toLowerCase()}` }
                             buttonTitle=""
                         />
                 }
@@ -184,7 +184,7 @@ Filter.defaultProps = {
     onFilterSelect: () => undefined
 };
 
-function mapStateToProps({ entities: { columns, total, activeFilters }}, { totalItems }) {
+function mapStateToProps({ entities: { columns, total, activeFilters } }, { totalItems }) {
     return {
         columns,
         total: totalItems || total,
