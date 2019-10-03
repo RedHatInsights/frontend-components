@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Select, SelectOption, SelectVariant, SelectGroup, Checkbox } from '@patternfly/react-core';
+import { Select, SelectOption, SelectVariant, SelectGroup, Radio, Checkbox } from '@patternfly/react-core';
 import Text from './Text';
 
 export const groupType = {
@@ -79,10 +79,10 @@ class Group extends Component {
 
     render() {
         const { isExpanded } = this.state;
-        const { groups, placeholder, className } = this.props;
+        const { groups, placeholder, className, selected } = this.props;
 
         return (<Fragment>
-            { !groups || (groups && groups.length <= 0) ? <Text { ...this.props } value={ `${this.calculateSelected()}` } /> : <Select
+            { !groups || (groups && groups.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
                 className={ className }
                 variant={ SelectVariant.single }
                 aria-label="Select Input"
@@ -137,29 +137,29 @@ class Group extends Component {
                                             this.isChecked(groupValue || groupKey, value || key) ||
                                             false
                                         }
-                                        onChange={item.onChange || (() => undefined)}
+                                        onChange={(value, event) => {
+                                            item.onChange && item.onChange(value, event);
+                                        }}
                                         name={ item.name || value || `${groupKey}-${key}` }
                                         id={ id || value || `${groupKey}-${key}` }
                                     />
                                 }
                                 {
                                     type === groupType.radio &&
-                                    // PF Radio cannot be used here because it is not updating for some reason
-                                    <div className="pf-c-radio">
-                                        <input
-                                            name={item.name || key || `${groupKey}-${key}`}
-                                            id={id || key || `${groupKey}-${key}`}
-                                            className="pf-c-radio__input"
-                                            type="radio"
-                                            value={ value || key }
-                                            checked={
-                                                isChecked ||
-                                                this.isChecked(groupValue || groupKey, value || key) ||
-                                                false
-                                            }
-                                        />
-                                        <label className="pf-c-radio__label" htmlFor={ id || key || `${groupKey}-${key}` }>{ label }</label>
-                                    </div>
+                                    <Radio
+                                        isChecked={
+                                            isChecked ||
+                                            this.isChecked(groupValue || groupKey, value || key) ||
+                                            false
+                                        }
+                                        onChange={(value, event) => {
+                                            item.onChange && item.onChange(value, event);
+                                        }}
+                                        value={ value || key }
+                                        name={item.name || value || `${groupKey}-${key}`}
+                                        label={ label }
+                                        id={ id || value || `${groupKey}-${key}` }
+                                    />
                                 }
                                 { (type !== groupType.checkbox && type !== groupType.radio) ? label : '' }
                             </SelectOption>
