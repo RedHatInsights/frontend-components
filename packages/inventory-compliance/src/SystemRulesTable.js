@@ -1,13 +1,11 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import * as remediationsApi from '@redhat-cloud-services/frontend-components-remediations/remediationsApi';
 import ComplianceRemediationButton from './ComplianceRemediationButton';
 import { CheckIcon, CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import { EmptyTable, SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
 import {
     Bullseye,
-    Checkbox,
     EmptyState,
     EmptyStateBody,
     EmptyStateVariant,
@@ -30,7 +28,6 @@ import flatMap from 'lodash/flatMap';
 import './compliance.scss';
 import RulesComplianceFilter from './RulesComplianceFilter';
 import debounce from 'lodash/debounce';
-import includes from 'lodash/includes';
 
 const emptyRows = [{
     cells: [{
@@ -75,7 +72,7 @@ class SystemRulesTable extends React.Component {
                 { title: 'Policy', transforms: [ sortable ] },
                 { title: 'Severity', transforms: [ sortable ] },
                 { title: 'Passed', transforms: [ sortable ] },
-                { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment> }
+                { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, transforms: [ sortable ] }
             ],
             page: 1,
             itemsPerPage: 10,
@@ -106,20 +103,19 @@ class SystemRulesTable extends React.Component {
         const { hidePassed, itemsPerPage } = this.state;
         const { profileRules, rows } = this.props;
         const rowsRefIds = this.rulesToRows(profileRules);
-        return this.currentRows(1, itemsPerPage, rowsRefIds).then((currentRows) => {
-            this.setState(() => (
-                {
-                    currentRows,
-                    originalRows: rowsRefIds.rows,
-                    rows: rowsRefIds.rows,
-                    profiles: rowsRefIds.profiles,
-                    refIds: rowsRefIds.refIds
-                }
-            ));
-            if (hidePassed) {
-                this.filterBy(hidePassed, rows, COMPLIANT_COLUMN);
+        this.setState(() => (
+            {
+                currentRows: this.currentRows(1, itemsPerPage, rowsRefIds),
+                originalRows: rowsRefIds.rows,
+                rows: rowsRefIds.rows,
+                profiles: rowsRefIds.profiles,
+                refIds: rowsRefIds.refIds
             }
-        });
+        ));
+
+        if (hidePassed) {
+            this.filterBy(hidePassed, rows, COMPLIANT_COLUMN);
+        }
     }
 
     componentDidMount = () => {
@@ -133,15 +129,13 @@ class SystemRulesTable extends React.Component {
     }
 
     changePage = (page, itemsPerPage) => {
-        this.currentRows(page, itemsPerPage).then((currentRows) => {
-            this.setState(() => (
-                {
-                    page,
-                    itemsPerPage,
-                    currentRows
-                }
-            ));
-        });
+        this.setState(() => (
+            {
+                currentRows: this.currentRows(page, itemsPerPage),
+                page,
+                itemsPerPage
+            }
+        ));
     }
 
     setPage = (_event, page) => {
@@ -163,11 +157,10 @@ class SystemRulesTable extends React.Component {
     }
 
     currentRows = (page, itemsPerPage, rowsRefIds) => {
-        const { rows, profiles, refIds } = (rowsRefIds) ? rowsRefIds : this.state;
+        const { rows } = (rowsRefIds) ? rowsRefIds : this.state;
 
         if (!rows.length) {
-            // Avoid even making an empty request to the remediations API
-            return Promise.resolve([]);
+            return [];
         }
 
         if (rows.length < itemsPerPage * 2) { itemsPerPage = rows.length / 2; }
@@ -183,25 +176,8 @@ class SystemRulesTable extends React.Component {
                     {}
             )
         }));
-        const ruleIds = newRows.filter(row => row.hasOwnProperty('isOpen'))
-        .map(({ cells }) => `ssg:rhel7|${this.removeRefIdPrefix(profiles[cells[0].original])}|${refIds[cells[0].original]}`);
 
-        return window.insights.chrome.auth.getUser().then(() => {
-            return remediationsApi.getResolutionsBatch(ruleIds).then(response => newRows.map(({ cells, ...row }) => ({
-                ...row,
-                cells: [
-                    ...cells,
-                    ...this.isParent(row, cells) ? [
-                        {
-                            title: this.remediationAvailable(
-                                response[`ssg:rhel7|${this.removeRefIdPrefix(profiles[cells[0].original])}|${refIds[cells[0].original]}`]
-                            ),
-                            original: response[`ssg:rhel7|${this.removeRefIdPrefix(profiles[cells[0].original])}|${refIds[cells[0].original]}`]
-                        }
-                    ] : []
-                ]
-            })));
-        });
+        return newRows;
     }
 
     selectAll = (rows, selected) => {
@@ -238,7 +214,7 @@ class SystemRulesTable extends React.Component {
         </StackItem> || '' }
     </Stack>
 
-    calculateParent = ({ profile }, { title, severity, compliant, identifier }) => ({
+    calculateParent = ({ profile }, { title, severity, compliant, identifier, remediationAvailable }) => ({
         isOpen: false,
         cells: [
             { title: this.ruleTitleCell(title, identifier), original: title },
@@ -253,6 +229,10 @@ class SystemRulesTable extends React.Component {
                 title: (compliant ? <CheckCircleIcon className='ins-u-passed' /> :
                     <ExclamationCircleIcon className='ins-u-failed' />),
                 original: compliant
+            },
+            {
+                title: (remediationAvailable ? <CheckIcon className='ins-c-compliance-system-rule-check' /> : 'No'),
+                original: remediationAvailable
             }
         ]
     })
@@ -323,18 +303,20 @@ class SystemRulesTable extends React.Component {
         const { rows, profiles, refIds } = this.state;
         const key = ((this.state.page - 1) * this.state.itemsPerPage * 2) + Number(rowKey);
         rows[key].isOpen = isOpen;
-        this.currentRows(this.state.page, this.state.itemsPerPage, { rows, profiles, refIds }).then((currentRows) => {
-            this.setState(() => ({ rows, currentRows }));
-        });
+        this.setState(() => ({
+            rows,
+            currentRows: this.currentRows(this.state.page, this.state.itemsPerPage, { rows, profiles, refIds })
+        }));
     }
 
     selectedRules = () => {
         const { currentRows, profiles, refIds } = this.state;
         return currentRows.filter(row => row.selected && row.cells[REMEDIATIONS_COLUMN].original).map(row => ({
             // We want to match this response with a similar response from GraphQL
-            refId: refIds[row.cells[0].original],
-            profiles: [{ refId: profiles[row.cells[0].original] }],
-            title: row.cells[0].original // This is the rule title, the description is too long
+            refId: refIds[row.cells[TITLE_COLUMN].original],
+            profiles: [{ refId: profiles[row.cells[TITLE_COLUMN].original] }],
+            remediationAvailable: row.cells[REMEDIATIONS_COLUMN].original,
+            title: row.cells[TITLE_COLUMN].original // This is the rule title, the description is too long
         }));
     }
 
@@ -387,16 +369,15 @@ class SystemRulesTable extends React.Component {
                 }
             )
         );
-        return this.currentRows(page, itemsPerPage, { rows: sortedRows, profiles, refIds }).then((currentRows) => {
-            this.setState(() => ({
-                currentRows,
-                sortBy: {
-                    index,
-                    direction
-                },
-                rows: sortedRows
-            }));
-        });
+
+        return this.setState(() => ({
+            currentRows: this.currentRows(page, itemsPerPage, { rows: sortedRows, profiles, refIds }),
+            sortBy: {
+                index,
+                direction
+            },
+            rows: sortedRows
+        }));
     }
 
     filterBy = (attribute, rows, column) => {
@@ -485,22 +466,14 @@ class SystemRulesTable extends React.Component {
         const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows,
             hidePassed, severity, policy, searchTerm);
 
-        return this.currentRows(
-            page,
-            itemsPerPage,
-            {
-                rows: filteredRows, profiles, refIds
-            }
-        ).then((currentRows) => {
-            this.setState(() => ({
-                currentRows,
-                rows: filteredRows,
-                hidePassed,
-                severity,
-                policy,
-                searchTerm
-            }));
-        });
+        return this.setState(() => ({
+            currentRows: this.currentRows(page, itemsPerPage, { rows: filteredRows, profiles, refIds }),
+            rows: filteredRows,
+            hidePassed,
+            severity,
+            policy,
+            searchTerm
+        }));
     }
 
     render() {

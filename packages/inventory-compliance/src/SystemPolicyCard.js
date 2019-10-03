@@ -5,7 +5,6 @@ import Truncate from 'react-truncate';
 import {
     Card,
     CardBody,
-    CardFooter,
     Text,
     TextContent,
     TextVariants

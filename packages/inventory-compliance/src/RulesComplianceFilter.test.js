@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import RulesComplianceFilter from './RulesComplianceFilter';
-import { IntlProvider } from 'react-intl';
 
 describe('RulesComplianceFilter component', () => {
     const policies = [
@@ -27,7 +26,7 @@ describe('RulesComplianceFilter component', () => {
         const wrapper = shallow(
             <RulesComplianceFilter availablePolicies={ [ policies[0] ] } />
         );
-        const instance = wrapper.instance();
+        wrapper.instance();
         expect(wrapper.state('filterCategories').length).toEqual(2);
     });
 

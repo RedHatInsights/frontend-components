@@ -1,6 +1,6 @@
 /* eslint max-len: 0 */
 import React from 'react';
-import { ExclamationCircleIcon, ExclamationTriangleIcon, ExclamationIcon } from '@patternfly/react-icons';
+import { ExclamationCircleIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
 
 export const REMEDIATIONS_COLUMN = 4;
 export const COMPLIANT_COLUMN = 3;
