@@ -64,6 +64,7 @@ exports[`SystemRulesTable component should render 1`] = `
   </TableToolbar>
   <Table
     borders={true}
+    canSelectAll={true}
     cells={
       Array [
         Object {
@@ -455,6 +456,7 @@ exports[`SystemRulesTable component should render 1`] = `
 exports[`SystemRulesTable component should render a loading table 1`] = `
 <Table
   borders={true}
+  canSelectAll={true}
   cells={
     Array [
       Object {

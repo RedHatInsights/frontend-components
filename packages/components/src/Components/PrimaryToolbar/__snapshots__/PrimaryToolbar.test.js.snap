@@ -5,6 +5,7 @@ exports[`PrimaryToolbar should render custom className 1`] = `
   className="custom-classname ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   isExpanded={false}
+  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
   <DataToolbarContent />
@@ -16,6 +17,7 @@ exports[`PrimaryToolbar should render custom id 1`] = `
   className=" ins-c-primary-toolbar"
   id="custom-id"
   isExpanded={false}
+  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
   <DataToolbarContent />
@@ -27,6 +29,7 @@ exports[`PrimaryToolbar should render no data 1`] = `
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   isExpanded={false}
+  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
   <DataToolbarContent />
@@ -38,6 +41,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   isExpanded={false}
+  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
   <DataToolbarContent>
@@ -207,6 +211,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   isExpanded={false}
+  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
   <DataToolbarContent>
@@ -247,6 +252,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   isExpanded={false}
+  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
   <DataToolbarContent>
@@ -296,6 +302,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   isExpanded={false}
+  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
   <DataToolbarContent>

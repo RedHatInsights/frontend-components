@@ -55,6 +55,7 @@ exports[`SSLFormLabel renders loading step correctly 1`] = `
       onShown={[Function]}
       position="top"
       shouldClose={[Function]}
+      tippyProps={Object {}}
       zIndex={9999}
     >
       <QuestionCircleIcon

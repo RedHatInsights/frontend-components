@@ -43,6 +43,7 @@ exports[`InfoTable api expandable should open 1`] = `
   <Table
     aria-label="General information dialog table"
     borders={true}
+    canSelectAll={true}
     cells={
       Array [
         "One cell",
@@ -152,6 +153,7 @@ exports[`InfoTable api expandable should open 1`] = `
               "actions": undefined,
               "allRowsSelected": false,
               "areActionsDisabled": undefined,
+              "canSelectAll": true,
               "contentId": "expanded-content",
               "dropdownDirection": "down",
               "dropdownPosition": "right",
@@ -199,6 +201,7 @@ exports[`InfoTable api expandable should open 1`] = `
               "actions": undefined,
               "allRowsSelected": false,
               "areActionsDisabled": undefined,
+              "canSelectAll": true,
               "contentId": "expanded-content",
               "dropdownDirection": "down",
               "dropdownPosition": "right",
@@ -244,6 +247,7 @@ exports[`InfoTable api expandable should open 1`] = `
               "actions": undefined,
               "allRowsSelected": false,
               "areActionsDisabled": undefined,
+              "canSelectAll": true,
               "contentId": "expanded-content",
               "dropdownDirection": "down",
               "dropdownPosition": "right",
@@ -322,6 +326,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "actions": undefined,
                         "allRowsSelected": false,
                         "areActionsDisabled": undefined,
+                        "canSelectAll": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -369,6 +374,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "actions": undefined,
                         "allRowsSelected": false,
                         "areActionsDisabled": undefined,
+                        "canSelectAll": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -414,6 +420,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "actions": undefined,
                         "allRowsSelected": false,
                         "areActionsDisabled": undefined,
+                        "canSelectAll": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -492,6 +499,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "actions": undefined,
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
+                            "canSelectAll": true,
                             "contentId": "expanded-content",
                             "dropdownDirection": "down",
                             "dropdownPosition": "right",
@@ -539,6 +547,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "actions": undefined,
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
+                            "canSelectAll": true,
                             "contentId": "expanded-content",
                             "dropdownDirection": "down",
                             "dropdownPosition": "right",
@@ -584,6 +593,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "actions": undefined,
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
+                            "canSelectAll": true,
                             "contentId": "expanded-content",
                             "dropdownDirection": "down",
                             "dropdownPosition": "right",
@@ -689,6 +699,7 @@ exports[`InfoTable api expandable should open 1`] = `
                     "actions": undefined,
                     "allRowsSelected": false,
                     "areActionsDisabled": undefined,
+                    "canSelectAll": true,
                     "contentId": "expanded-content",
                     "dropdownDirection": "down",
                     "dropdownPosition": "right",
@@ -736,6 +747,7 @@ exports[`InfoTable api expandable should open 1`] = `
                     "actions": undefined,
                     "allRowsSelected": false,
                     "areActionsDisabled": undefined,
+                    "canSelectAll": true,
                     "contentId": "expanded-content",
                     "dropdownDirection": "down",
                     "dropdownPosition": "right",
@@ -781,6 +793,7 @@ exports[`InfoTable api expandable should open 1`] = `
                     "actions": undefined,
                     "allRowsSelected": false,
                     "areActionsDisabled": undefined,
+                    "canSelectAll": true,
                     "contentId": "expanded-content",
                     "dropdownDirection": "down",
                     "dropdownPosition": "right",
@@ -1251,6 +1264,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "actions": undefined,
                         "allRowsSelected": false,
                         "areActionsDisabled": undefined,
+                        "canSelectAll": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -1298,6 +1312,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "actions": undefined,
                         "allRowsSelected": false,
                         "areActionsDisabled": undefined,
+                        "canSelectAll": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -1343,6 +1358,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "actions": undefined,
                         "allRowsSelected": false,
                         "areActionsDisabled": undefined,
+                        "canSelectAll": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -1936,6 +1952,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -1983,6 +2000,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2028,6 +2046,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2297,6 +2316,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2344,6 +2364,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2389,6 +2410,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2560,6 +2582,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2607,6 +2630,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2652,6 +2676,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2902,6 +2927,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2949,6 +2975,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -2994,6 +3021,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -3165,6 +3193,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -3212,6 +3241,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -3257,6 +3287,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -3526,6 +3557,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -3573,6 +3605,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -3618,6 +3651,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -3789,6 +3823,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -3836,6 +3871,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -3881,6 +3917,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -4127,6 +4164,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -4174,6 +4212,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -4219,6 +4258,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               "actions": undefined,
                               "allRowsSelected": false,
                               "areActionsDisabled": undefined,
+                              "canSelectAll": true,
                               "contentId": "expanded-content",
                               "dropdownDirection": "down",
                               "dropdownPosition": "right",
@@ -4383,6 +4423,7 @@ exports[`InfoTable should render expandable set to true 1`] = `
   <Table
     aria-label="General information dialog table"
     borders={true}
+    canSelectAll={true}
     cells={
       Array [
         "One cell",
@@ -4463,6 +4504,7 @@ exports[`InfoTable should render multiple cells 1`] = `
   <Table
     aria-label="General information dialog table"
     borders={true}
+    canSelectAll={true}
     cells={
       Array [
         "One cell",
@@ -4515,6 +4557,7 @@ exports[`InfoTable should render no data 1`] = `
   <Table
     aria-label="General information dialog table"
     borders={true}
+    canSelectAll={true}
     cells={Array []}
     className=""
     contentId="expanded-content"
@@ -4545,6 +4588,7 @@ exports[`InfoTable should render onSort set 1`] = `
   <Table
     aria-label="General information dialog table"
     borders={true}
+    canSelectAll={true}
     cells={
       Array [
         Object {

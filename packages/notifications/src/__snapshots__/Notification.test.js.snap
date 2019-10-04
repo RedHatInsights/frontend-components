@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Notification component pagination should render correctly 1`] = `
-<Alert
+<Component
   action={null}
   className="notification-item"
   id="Foo"
@@ -9,11 +9,11 @@ exports[`Notification component pagination should render correctly 1`] = `
   variant="success"
 >
   description
-</Alert>
+</Component>
 `;
 
 exports[`Notification component should render correctly 1`] = `
-<Alert
+<Component
   action={null}
   className="notification-item"
   id="Foo"
@@ -21,11 +21,11 @@ exports[`Notification component should render correctly 1`] = `
   variant="success"
 >
   description
-</Alert>
+</Component>
 `;
 
 exports[`Notification component should render correctly with HTML description 1`] = `
-<Alert
+<Component
   action={null}
   className="notification-item"
   id="Foo"
@@ -33,11 +33,11 @@ exports[`Notification component should render correctly with HTML description 1`
   variant="success"
 >
   Some textanother
-</Alert>
+</Component>
 `;
 
 exports[`Notification component should render correctly with HTML title 1`] = `
-<Alert
+<Component
   action={null}
   className="notification-item"
   id="Foo"
@@ -45,11 +45,11 @@ exports[`Notification component should render correctly with HTML title 1`] = `
   variant="success"
 >
   description
-</Alert>
+</Component>
 `;
 
 exports[`Notification component should render correctly with dismiss button 1`] = `
-<Alert
+<Component
   action={
     <Unknown
       aria-label="close-notification"
@@ -72,7 +72,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
 `;
 
 exports[`Notification component should render correctly with sentryId 1`] = `
-<Alert
+<Component
   action={null}
   className="notification-item"
   id="Foo"
@@ -88,11 +88,11 @@ exports[`Notification component should render correctly with sentryId 1`] = `
       some-UUID
     </Text>
   </TextContent>
-</Alert>
+</Component>
 `;
 
 exports[`Notification component should render correctly withouth description 1`] = `
-<Alert
+<Component
   action={null}
   className="notification-item"
   id="Foo"

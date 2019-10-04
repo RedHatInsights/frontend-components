@@ -20,19 +20,19 @@ exports[`Steps components ErroredStep renders correctly 1`] = `
     <EmptyStateBody>
       Something went wrong. Your source has not been successfully added.
     </EmptyStateBody>
-    <Button
+    <Component
       onClick={[MockFunction]}
       variant="primary"
     >
       Go back to my application
-    </Button>
+    </Component>
     <EmptyStateSecondaryActions>
-      <Button
+      <Component
         onClick={[MockFunction]}
         variant="link"
       >
         Retry
-      </Button>
+      </Component>
     </EmptyStateSecondaryActions>
   </EmptyState>
 </div>
@@ -58,21 +58,21 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
     <EmptyStateBody>
       Here I Am
     </EmptyStateBody>
-    <Button
+    <Component
       onClick={[MockFunction]}
       variant="primary"
     >
       Go back to my application
-    </Button>
+    </Component>
     <EmptyStateSecondaryActions>
       <a
         href="/hybrid/settings/sources"
       >
-        <Button
+        <Component
           variant="link"
         >
           Take me to sources
-        </Button>
+        </Component>
       </a>
     </EmptyStateSecondaryActions>
   </EmptyState>
@@ -99,12 +99,12 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
     <EmptyStateBody>
       Here I Am
     </EmptyStateBody>
-    <Button
+    <Component
       onClick={[MockFunction]}
       variant="primary"
     >
       Go back to my application
-    </Button>
+    </Component>
   </EmptyState>
 </div>
 `;
@@ -140,12 +140,12 @@ exports[`Steps components LoadingStep renders correctly with custom props 1`] = 
       Here I Am
     </EmptyStateBody>
     <EmptyStateSecondaryActions>
-      <Button
+      <Component
         onClick={[MockFunction]}
         variant="link"
       >
         Cancel
-      </Button>
+      </Component>
     </EmptyStateSecondaryActions>
   </EmptyState>
 </div>
