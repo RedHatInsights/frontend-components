@@ -18,6 +18,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   <Table
     aria-label="paul.localhost.com tags"
     borders={true}
+    canSelectAll={true}
     cells={
       Array [
         Object {
@@ -77,6 +78,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   <Table
     aria-label="paul.localhost.com tags"
     borders={true}
+    canSelectAll={true}
     cells={
       Array [
         Object {

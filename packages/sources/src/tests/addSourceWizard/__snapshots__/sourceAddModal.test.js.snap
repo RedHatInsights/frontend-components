@@ -176,6 +176,7 @@ exports[`Steps components renders correctly with sourceTypes and applicationType
                           onShown={[Function]}
                           position="bottom"
                           shouldClose={[Function]}
+                          tippyProps={Object {}}
                           zIndex={9999}
                         >
                           <QuestionCircleIcon
@@ -483,6 +484,7 @@ exports[`Steps components renders correctly without applicationTypes 1`] = `
   isCompactNav={false}
   isFullHeight={false}
   isFullWidth={false}
+  isInPage={false}
   isOpen={true}
   nextButtonText="Next"
   onBack={null}
@@ -683,6 +685,7 @@ exports[`Steps components renders correctly without applicationTypes 2`] = `
                           onShown={[Function]}
                           position="bottom"
                           shouldClose={[Function]}
+                          tippyProps={Object {}}
                           zIndex={9999}
                         >
                           <QuestionCircleIcon
@@ -990,6 +993,7 @@ exports[`Steps components renders correctly without sourceTypes 1`] = `
   isCompactNav={false}
   isFullHeight={false}
   isFullWidth={false}
+  isInPage={false}
   isOpen={true}
   nextButtonText="Next"
   onBack={null}
@@ -1190,6 +1194,7 @@ exports[`Steps components renders correctly without sourceTypes 2`] = `
                           onShown={[Function]}
                           position="bottom"
                           shouldClose={[Function]}
+                          tippyProps={Object {}}
                           zIndex={9999}
                         >
                           <QuestionCircleIcon
@@ -1497,6 +1502,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
   isCompactNav={false}
   isFullHeight={false}
   isFullWidth={false}
+  isInPage={false}
   isOpen={true}
   nextButtonText="Next"
   onBack={null}
@@ -1697,6 +1703,7 @@ exports[`Steps components renders correctly without sourceTypes and application 
                           onShown={[Function]}
                           position="bottom"
                           shouldClose={[Function]}
+                          tippyProps={Object {}}
                           zIndex={9999}
                         >
                           <QuestionCircleIcon

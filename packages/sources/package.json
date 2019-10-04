@@ -31,7 +31,7 @@
         "js-base64": "^2.5.1"
     },
     "devDependencies": {
-        "@patternfly/react-core": "3.87.3",
+        "@patternfly/react-core": "3.112.9",
         "webpack-cli": "^3.3.6",
         "webpack": "^4.35.3"
     }

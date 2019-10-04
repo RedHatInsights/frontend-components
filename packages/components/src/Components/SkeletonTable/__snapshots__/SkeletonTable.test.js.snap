@@ -4,6 +4,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
 <Table
   aria-label="Loading"
   borders={true}
+  canSelectAll={true}
   cells={
     Array [
       Object {
@@ -541,6 +542,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
 <Table
   aria-label="Loading"
   borders={true}
+  canSelectAll={true}
   cells={
     Array [
       "first",
@@ -780,6 +782,7 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
 <Table
   aria-label="Loading"
   borders={true}
+  canSelectAll={true}
   cells={
     Array [
       Object {
