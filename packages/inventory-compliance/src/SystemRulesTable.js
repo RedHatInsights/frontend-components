@@ -77,7 +77,7 @@ class SystemRulesTable extends React.Component {
             page: 1,
             itemsPerPage: 10,
             rows: [],
-            hidePassed: false,
+            hidePassed: props.hidePassed,
             severity: [],
             policy: [],
             currentRows: [],
@@ -100,22 +100,21 @@ class SystemRulesTable extends React.Component {
     }
 
     setInitialCurrentRows() {
-        const { hidePassed, itemsPerPage } = this.state;
-        const { profileRules, rows } = this.props;
-        const rowsRefIds = this.rulesToRows(profileRules);
-        this.setState(() => (
-            {
-                currentRows: this.currentRows(1, itemsPerPage, rowsRefIds),
-                originalRows: rowsRefIds.rows,
-                rows: rowsRefIds.rows,
-                profiles: rowsRefIds.profiles,
-                refIds: rowsRefIds.refIds
-            }
-        ));
+        const { hidePassed, itemsPerPage, severity, policy } = this.state;
+        let { profileRules, rows } = this.props;
+        const rowsRefIds = this.rulesToRows (profileRules);
 
-        if (hidePassed) {
-            this.filterBy(hidePassed, rows, COMPLIANT_COLUMN);
-        }
+        this.setState({
+            currentRows: this.currentRows(1, itemsPerPage, rowsRefIds),
+            originalRows: rowsRefIds.rows,
+            rows: rowsRefIds.rows,
+            profiles: rowsRefIds.profiles,
+            refIds: rowsRefIds.refIds
+        }, () => {
+            if (hidePassed) {
+                this.updateFilter(hidePassed, severity, policy);
+            }
+        });
     }
 
     componentDidMount = () => {
@@ -129,13 +128,11 @@ class SystemRulesTable extends React.Component {
     }
 
     changePage = (page, itemsPerPage) => {
-        this.setState(() => (
-            {
-                currentRows: this.currentRows(page, itemsPerPage),
-                page,
-                itemsPerPage
-            }
-        ));
+        this.setState({
+            currentRows: this.currentRows(page, itemsPerPage),
+            page,
+            itemsPerPage
+        });
     }
 
     setPage = (_event, page) => {
@@ -303,10 +300,10 @@ class SystemRulesTable extends React.Component {
         const { rows, profiles, refIds } = this.state;
         const key = ((this.state.page - 1) * this.state.itemsPerPage * 2) + Number(rowKey);
         rows[key].isOpen = isOpen;
-        this.setState(() => ({
+        this.setState({
             rows,
             currentRows: this.currentRows(this.state.page, this.state.itemsPerPage, { rows, profiles, refIds })
-        }));
+        });
     }
 
     selectedRules = () => {
@@ -370,14 +367,14 @@ class SystemRulesTable extends React.Component {
             )
         );
 
-        return this.setState(() => ({
+        return this.setState({
             currentRows: this.currentRows(page, itemsPerPage, { rows: sortedRows, profiles, refIds }),
             sortBy: {
                 index,
                 direction
             },
             rows: sortedRows
-        }));
+        });
     }
 
     filterBy = (attribute, rows, column) => {
@@ -466,18 +463,18 @@ class SystemRulesTable extends React.Component {
         const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows,
             hidePassed, severity, policy, searchTerm);
 
-        return this.setState(() => ({
+        return this.setState({
             currentRows: this.currentRows(page, itemsPerPage, { rows: filteredRows, profiles, refIds }),
             rows: filteredRows,
             hidePassed,
             severity,
             policy,
             searchTerm
-        }));
+        });
     }
 
     render() {
-        const { sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
+        const { hidePassed, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
         const { system, loading, profileRules } = this.props;
 
         if (loading) {
@@ -503,6 +500,7 @@ class SystemRulesTable extends React.Component {
                             <LevelItem>
                                 <InputGroup>
                                     <RulesComplianceFilter
+                                        hidePassed={hidePassed}
                                         availablePolicies={ profileRules.map(profile => profile.profile) }
                                         updateFilter={ this.updateFilter } />
                                     <SimpleTableFilter buttonTitle={ null }
@@ -567,7 +565,8 @@ SystemRulesTable.propTypes = {
 };
 
 SystemRulesTable.defaultProps = {
-    profileRules: [{ rules: [] }]
+    profileRules: [{ rules: [] }],
+    hidePassed: false
 };
 
 export default SystemRulesTable;
