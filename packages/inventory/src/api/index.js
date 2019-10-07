@@ -24,7 +24,10 @@ export const mapData = ({ facts = {}, ...oneResult }) => ({
         .reduce(
             (acc, curr) => ({ ...acc, ...(typeof curr !== 'string') ? curr : {} }), {}
         )
-    }
+    },
+    ...localStorage.getItem('rhcs-tags') === 'true' ? {
+        tagCount: Math.floor(Math.random() * Math.floor(11))
+    } : {}
 });
 
 export function getEntities(items, {
@@ -80,3 +83,11 @@ export function getEntities(items, {
 
 export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);
 
+export function getTags(systemId, count) {
+    return new Promise(res => setTimeout(() => res({
+        results: [ ...Array(count) ].map(() => ({
+            tagName: 'Tag name',
+            tagValue: `Some tag=${systemId}`
+        }))
+    }), 1000));
+}

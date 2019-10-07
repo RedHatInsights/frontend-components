@@ -47,31 +47,33 @@ class ConditionalFilter extends Component {
                             />
                         </div> :
                         <Split className="ins-c-conditional-filter">
-                            <SplitItem>
-                                <Dropdown
-                                    className="ins-c-conditional-filter__group"
-                                    onSelect={ () => this.dropdownToggle(false) }
-                                    isOpen={ isOpen }
-                                    toggle={
-                                        <DropdownToggle onToggle={ this.dropdownToggle }>
-                                            <FilterIcon size="sm" />
-                                            <span className="ins-c-conditional-filter__value-selector">
-                                                { activeItem && activeItem.label }
-                                            </span>
-                                        </DropdownToggle>
-                                    }
-                                    dropdownItems={
-                                        items.map((item, key) => <DropdownItem
-                                            key={ item.id ? `${item.id}-dropdown` : key }
-                                            component="button"
-                                            onClick={ e => onChangeCallback(e, item.value || key, item) }
-                                            isHovered={ activeItem.label === item.label }
-                                        >
-                                            { item.label }
-                                        </DropdownItem>)
-                                    }
-                                />
-                            </SplitItem>
+                            { items.length > 1 &&
+                                <SplitItem>
+                                    <Dropdown
+                                        className="ins-c-conditional-filter__group"
+                                        onSelect={ () => this.dropdownToggle(false) }
+                                        isOpen={ isOpen }
+                                        toggle={
+                                            <DropdownToggle onToggle={ this.dropdownToggle }>
+                                                <FilterIcon size="sm" />
+                                                <span className="ins-c-conditional-filter__value-selector">
+                                                    { activeItem && activeItem.label }
+                                                </span>
+                                            </DropdownToggle>
+                                        }
+                                        dropdownItems={
+                                            items.map((item, key) => <DropdownItem
+                                                key={ item.id ? `${item.id}-dropdown` : key }
+                                                component="button"
+                                                onClick={ e => onChangeCallback(e, item.value || key, item) }
+                                                isHovered={ activeItem.label === item.label }
+                                            >
+                                                { item.label }
+                                            </DropdownItem>)
+                                        }
+                                    />
+                                </SplitItem>
+                            }
                             {
                                 ActiveComponent && <SplitItem isFilled>
                                     <ActiveComponent

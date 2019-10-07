@@ -21,6 +21,7 @@ import {
     sortable
 } from '@patternfly/react-table';
 import { SkeletonTable, EmptyTable } from '@redhat-cloud-services/frontend-components';
+import TagsModal from './TagsModal';
 
 class EntityTable extends React.Component {
     onRowClick = (_event, key, application) => {
@@ -83,7 +84,12 @@ class EntityTable extends React.Component {
         }
 
         return [
-            ...columns.map(({ key, composed, isTime }) => this.renderCol(item, key, composed, isTime))
+            ...columns.map(({ key, composed, isTime, renderFunc }) => {
+                const oneColumn = this.renderCol(item, key, composed, isTime, renderFunc);
+                return renderFunc ? {
+                    title: renderFunc(oneColumn, item.id)
+                } : oneColumn;
+            })
         ].filter(cell => cell !== false && cell !== undefined);
     }
 
@@ -188,6 +194,7 @@ class EntityTable extends React.Component {
                     </PfTable> :
                     <SkeletonTable colSize={ 2 } rowSize={ 15 } />
                 }
+                <TagsModal />
             </React.Fragment>
         );
     }
@@ -219,7 +226,8 @@ EntityTable.propTypes = {
         [PropTypes.string]: PropTypes.any
     }),
     selectEntity: PropTypes.func,
-    onDetailSelect: PropTypes.func
+    onDetailSelect: PropTypes.func,
+    onToggleTagModal: PropTypes.func
 };
 
 EntityTable.defaultProps = {
@@ -233,6 +241,7 @@ EntityTable.defaultProps = {
     onExpandClick: () => undefined,
     selectEntity: () => undefined,
     onDetailSelect: () => undefined,
+    onToggleTagModal: () => undefined,
     tableProps: {}
 };
 
