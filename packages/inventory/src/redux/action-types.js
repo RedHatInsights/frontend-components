@@ -3,7 +3,8 @@ const asyncInventory = [
     'LOAD_ENTITY',
     'LOAD_SYSTEM_PROFILE',
     'SET_DISPLAY_NAME',
-    'SET_ANSIBLE_HOST'
+    'SET_ANSIBLE_HOST',
+    'LOAD_TAGS'
 ].reduce((acc, curr) => [
     ...acc,
     ...[ curr, `${curr}_PENDING`, `${curr}_FULFILLED`, `${curr}_REJECTED` ]
@@ -38,3 +39,4 @@ export const SHOW_ENTITIES = 'SHOW_ENTITIES';
 export const FILTER_SELECT = 'FILTER_SELECT';
 export const ENTITIES_LOADING = 'ENTITIES_LOADING';
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';
+export const TOGGLE_TAG_MODAL = 'TOGGLE_TAG_MODAL';
