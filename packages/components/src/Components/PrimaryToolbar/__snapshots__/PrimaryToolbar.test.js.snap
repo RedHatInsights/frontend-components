@@ -24,6 +24,72 @@ exports[`PrimaryToolbar should render custom id 1`] = `
 </DataToolbar>
 `;
 
+exports[`PrimaryToolbar should render elements instead of data 1`] = `
+<DataToolbar
+  className=" ins-c-primary-toolbar"
+  id="ins-primary-data-toolbar"
+  isExpanded={false}
+  showClearFiltersButton={false}
+  toggleIsExpanded={[Function]}
+>
+  <DataToolbarContent>
+    <DataToolbarGroup
+      className="ins-c-primary-toolbar__group-filter"
+      itemSpacers={
+        Array [
+          Object {
+            "spacerSize": "md",
+          },
+        ]
+      }
+      variant="filter-group"
+    >
+      <DataToolbarItem>
+        <div>
+          Loading...
+        </div>
+      </DataToolbarItem>
+      <DataToolbarItem
+        className="ins-c-primary-toolbar__filter"
+      >
+        <div>
+          Loading...
+        </div>
+      </DataToolbarItem>
+    </DataToolbarGroup>
+    <div>
+      Loading...
+    </div>
+    <DataToolbarItem
+      className="ins-c-primary-toolbar__sort-by"
+    >
+      <div>
+        Loading...
+      </div>
+    </DataToolbarItem>
+    <DataToolbarItem>
+      <div>
+        Loading...
+      </div>
+    </DataToolbarItem>
+    <DataToolbarItem
+      className="ins-c-primary-toolbar__pagination"
+    >
+      <div>
+        Loading...
+      </div>
+    </DataToolbarItem>
+  </DataToolbarContent>
+  <DataToolbarContent>
+    <DataToolbarItem>
+      <div>
+        Loading...
+      </div>
+    </DataToolbarItem>
+  </DataToolbarContent>
+</DataToolbar>
+`;
+
 exports[`PrimaryToolbar should render no data 1`] = `
 <DataToolbar
   className=" ins-c-primary-toolbar"

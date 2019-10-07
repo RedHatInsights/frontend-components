@@ -81,6 +81,15 @@ describe('PrimaryToolbar', () => {
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
+        it('elements instead of data', () => {
+            const elementsConfig = Object.keys(config).map(key => ({
+                [key]: <div>Loading...</div>
+            })).reduce((acc, curr) => ({ ...acc, ...curr }), {});
+
+            const wrapper = shallow(<PrimaryToolbar {...elementsConfig} />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
         describe('with data', () => {
             it('full config', () => {
                 const wrapper = shallow(<PrimaryToolbar {...config} />);
