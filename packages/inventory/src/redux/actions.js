@@ -8,9 +8,10 @@ import {
     FILTER_SELECT,
     UPDATE_ENTITIES,
     ENTITIES_LOADING,
-    CLEAR_FILTERS
+    CLEAR_FILTERS,
+    TOGGLE_TAG_MODAL
 } from './action-types';
-import { getEntities, getEntitySystemProfile, hosts } from '../api';
+import { getEntities, getEntitySystemProfile, hosts, getTags } from '../api';
 
 export const loadEntities = (items = [], config) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
@@ -103,5 +104,21 @@ export const editAnsibleHost = (id, value) => ({
                 dismissable: true
             }
         }
+    }
+});
+
+export const loadTags = (systemId, count) => ({
+    type: ACTION_TYPES.LOAD_TAGS,
+    payload: getTags(systemId, count),
+    meta: {
+        systemId,
+        count
+    }
+});
+
+export const toggleTagModal = (isOpen) => ({
+    type: TOGGLE_TAG_MODAL,
+    payload: {
+        isOpen: isOpen
     }
 });

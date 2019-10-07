@@ -146,22 +146,6 @@ exports[`GeneralInformation should render correctly - no data 1`] = `
                  
               </div>
             </dd>
-            <dt
-              class=""
-              data-pf-content="true"
-            >
-              Storage
-            </dt>
-            <dd
-              class=""
-              data-pf-content="true"
-            >
-              <div
-                class="ins-c-skeleton ins-c-skeleton__sm"
-              >
-                 
-              </div>
-            </dd>
           </dl>
         </div>
       </div>
@@ -851,22 +835,6 @@ exports[`GeneralInformation should render correctly 1`] = `
               data-pf-content="true"
             >
               5 MB
-            </dd>
-            <dt
-              class=""
-              data-pf-content="true"
-            >
-              Storage
-            </dt>
-            <dd
-              class=""
-              data-pf-content="true"
-            >
-              <a
-                href="http://localhost:5000//storage"
-              >
-                0 disks
-              </a>
             </dd>
           </dl>
         </div>
