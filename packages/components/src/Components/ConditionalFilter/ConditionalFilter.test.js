@@ -66,6 +66,11 @@ describe('ConditionalFilter', () => {
                 expect(toJson(wrappper)).toMatchSnapshot();
             });
         });
+
+        it('should render correctly with one filter', () => {
+            const wrappper = shallow(<ConditionalFilter items={[ config[0] ]} />);
+            expect(toJson(wrappper)).toMatchSnapshot();
+        });
     });
 
     describe('API', () => {
