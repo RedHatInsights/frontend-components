@@ -536,3 +536,21 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
   </Split>
 </Fragment>
 `;
+
+exports[`ConditionalFilter render should render correctly with one filter 1`] = `
+<Fragment>
+  <Split
+    className="ins-c-conditional-filter"
+  >
+    <SplitItem
+      isFilled={true}
+    >
+      <Text
+        onSubmit={[Function]}
+        placeholder="Filter by Simple text 1"
+        value=""
+      />
+    </SplitItem>
+  </Split>
+</Fragment>
+`;
