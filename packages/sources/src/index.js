@@ -2,8 +2,9 @@ import { AddSourceButton, AddSourceWizard } from './addSourceWizard/index';
 import SummaryStep from './sourceFormRenderer/components/SourceWizardSummary';
 import CardSelect from './sourceFormRenderer/components/CardSelect';
 import SourceWizardSummary, * as summaryHelpers from './sourceFormRenderer/components/SourceWizardSummary';
-import { temporaryHardcodedSourceSchemas, asyncValidator } from './addSourceWizard/SourceAddSchema';
+import { asyncValidator } from './addSourceWizard/SourceAddSchema';
 import './styles/cardSelect.scss';
+import './styles/authSelect.scss';
 
 export {
     AddSourceButton,
@@ -12,6 +13,5 @@ export {
     CardSelect,
     SourceWizardSummary,
     SummaryStep,
-    summaryHelpers,
-    temporaryHardcodedSourceSchemas
+    summaryHelpers
 };

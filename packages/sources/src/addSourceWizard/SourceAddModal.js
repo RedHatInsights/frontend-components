@@ -100,7 +100,8 @@ SourceAddModal.propTypes = {
         name: PropTypes.string.isRequired,
         product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
         schema: PropTypes.shape({
-            title: PropTypes.string.isRequired
+            authentication: PropTypes.object,
+            endpoint: PropTypes.object
         })
     })),
     applicationTypes: PropTypes.arrayOf(PropTypes.shape({

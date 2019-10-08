@@ -6,6 +6,7 @@ import { layoutMapper, formFieldsMapper } from '@data-driven-forms/pf4-component
 import SourceWizardSummary from './components/SourceWizardSummary';
 import Description from './components/Description';
 import CardSelect from './components/CardSelect';
+import AuthSelect from './components/AuthSelect';
 
 const SourcesFormRenderer = props => (
     <FormRenderer
@@ -14,7 +15,8 @@ const SourcesFormRenderer = props => (
             ...formFieldsMapper,
             summary: SourceWizardSummary,
             description: Description,
-            'card-select': CardSelect
+            'card-select': CardSelect,
+            'auth-select': AuthSelect
         } }
         subscription={ { values: true } }
         { ...props }
