@@ -19,7 +19,8 @@ import get from 'lodash/get';
 import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
 import { editDisplayName, editAnsibleHost, loadEntity } from './redux/actions';
-
+import TagWithDialog from './TagWithDialog';
+import TagsModal from './TagsModal';
 class EntityDetails extends Component {
     state = {
         isOpen: false,
@@ -119,7 +120,7 @@ class EntityDetails extends Component {
     }
 
     render() {
-        const { useCard } = this.props;
+        const { useCard, loaded, entity } = this.props;
 
         return (
             <div className="ins-entity-detail">
@@ -135,6 +136,14 @@ class EntityDetails extends Component {
                     <Fragment>
                         { this.generateTop() }
                         { this.generateFacts() }
+                        {
+                            localStorage.getItem('rhcs-tags') === 'true' && (
+                                loaded ?
+                                    <TagWithDialog count={ entity.tagCount } systemId={ entity.id } /> :
+                                    <Skeleton size={SkeletonSize.sm}>&nbsp;</Skeleton>
+                            )
+                        }
+                        <TagsModal />
                     </Fragment>
                 }
                 <ApplicationDetails />
@@ -147,6 +156,7 @@ EntityDetails.propTypes = {
     loaded: PropTypes.bool.isRequired,
     entity: PropTypes.object,
     useCard: PropTypes.bool,
+    tagCount: PropTypes.number,
     setDisplayName: PropTypes.func,
     setAnsibleHost: PropTypes.func,
     actions: PropTypes.arrayOf(PropTypes.shape({

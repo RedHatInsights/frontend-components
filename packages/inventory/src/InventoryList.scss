@@ -1,6 +1,8 @@
 @import "~@patternfly/patternfly/utilities/Flex/flex.css";
 @import "~@patternfly/patternfly/utilities/Display/display.css";
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
+@import '~@redhat-cloud-services/frontend-components/components/TagCount.css';
+@import '~@redhat-cloud-services/frontend-components/components/TagModal.css';
 
 .ins-c-table__toolbar.ins-c-inventory__table--toolbar {
     .pf-c-pagination__nav-page-select input { @include rem('min-width', 75px); }

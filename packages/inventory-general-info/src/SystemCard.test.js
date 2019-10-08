@@ -107,54 +107,6 @@ describe('SystemCard', () => {
             expect(wrapper.find('TextInputModal[title="Edit Ansible host"]').first().instance().props.isOpen).toBe(true);
         });
 
-        it('should NOT call handleClick', () => {
-            const store = mockStore({
-                ...initialState,
-                systemProfileStore: {
-                    systemProfile: {
-                        ...initialState.systemProfileStore.systemProfile,
-                        disk_devices: [{
-                            device: 'test-device',
-                            label: 'test-label',
-                            mount_point: 'test-mount',
-                            options: { one: 'value' },
-                            type: 'test-value'
-                        }]
-                    }
-                }
-            });
-            const onClick = jest.fn();
-            const wrapper = mount(<SystemCard store={ store } />);
-            wrapper.find('TextListItem a[href$="storage"]').first().simulate('click', {
-                preventDefault: () => undefined
-            });
-            expect(onClick).not.toHaveBeenCalled();
-        });
-
-        it('should call handleClick', () => {
-            const store = mockStore({
-                ...initialState,
-                systemProfileStore: {
-                    systemProfile: {
-                        ...initialState.systemProfileStore.systemProfile,
-                        disk_devices: [{
-                            device: 'test-device',
-                            label: 'test-label',
-                            mount_point: 'test-mount',
-                            options: { one: 'value' },
-                            type: 'test-value'
-                        }]
-                    }
-                }
-            });
-            const onClick = jest.fn();
-            const wrapper = mount(<SystemCard store={ store } handleClick={ onClick } />);
-            wrapper.find('TextListItem a[href$="storage"]').first().simulate('click', {
-                preventDefault: () => undefined
-            });
-            expect(onClick).toHaveBeenCalled();
-        });
-
         it('should call edit display name actions', () => {
             mock.onPatch('/api/inventory/v1/hosts/test-id').reply(200, mockedData);
             mock.onGet('/api/inventory/v1/hosts/test-id/system_profile').reply(200, mockedData);

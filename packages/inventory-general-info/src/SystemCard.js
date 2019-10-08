@@ -48,7 +48,7 @@ class SystemCard extends Component {
     };
 
     render() {
-        const { detailLoaded, entity, properties, handleClick, setDisplayName, setAnsibleHost } = this.props;
+        const { detailLoaded, entity, properties, setDisplayName, setAnsibleHost } = this.props;
         const { isDisplayNameModalOpen, isAnsibleHostModalOpen } = this.state;
         return (
             <Fragment>
@@ -90,15 +90,7 @@ class SystemCard extends Component {
                         { title: 'Number of CPUs', value: properties.cpuNumber },
                         { title: 'Sockets', value: properties.sockets },
                         { title: 'Cores per socket', value: properties.coresPerSocket },
-                        { title: 'RAM', value: properties.ramSize },
-                        {
-                            title: 'Storage',
-                            value: properties.storage ? `${properties.storage.length} disks` : 0,
-                            target: 'storage',
-                            onClick: () => {
-                                handleClick('Storage', diskMapper(properties.storage));
-                            }
-                        }
+                        { title: 'RAM', value: properties.ramSize }
                     ] }
                 />
                 <TextInputModal
@@ -145,15 +137,13 @@ SystemCard.propTypes = {
             type: PropTypes.string
         }))
     }),
-    handleClick: PropTypes.func,
     setDisplayName: PropTypes.func,
     setAnsibleHost: PropTypes.func
 };
 SystemCard.defaultProps = {
     detailLoaded: false,
     entity: {},
-    properties: {},
-    handleClick: () => undefined
+    properties: {}
 };
 
 function mapDispatchToProps(dispatch) {
