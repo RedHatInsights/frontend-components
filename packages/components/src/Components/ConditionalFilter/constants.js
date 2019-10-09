@@ -27,3 +27,4 @@ export const groupType = {
     radio: 'radio',
     plain: 'plain'
 };
+
