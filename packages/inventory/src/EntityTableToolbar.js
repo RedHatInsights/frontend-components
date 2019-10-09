@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -36,15 +37,11 @@ class EntityTableToolbar extends Component {
             perPage,
             filters,
             hasItems,
-            // eslint-disable-next-line no-unused-vars
             pathPrefix,
-            // eslint-disable-next-line no-unused-vars
             apiBase,
             children,
             loaded,
             actionsConfig,
-            // eslint-disable-next-line no-unused-vars
-            onFilterSelect,
             ...props
         } = this.props;
         return (<PrimaryToolbar
