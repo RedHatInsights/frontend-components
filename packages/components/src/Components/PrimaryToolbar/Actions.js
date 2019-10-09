@@ -71,7 +71,7 @@ class Actions extends Component {
                                         key="first-action"
                                         { ...actionPropsGenerator(firstAction, 'first-action') }
                                         className={
-                                            `ins-c-primary-toolbar__first-action ${firstAction.props.className || ''}`
+                                            `ins-c-primary-toolbar__first-action ${(firstAction.props && firstAction.props.className) || ''}`
                                         }
                                     />
                                 ] : [],
