@@ -24,8 +24,8 @@
         "@patternfly/react-core": ">=3.2.6",
         "@patternfly/react-icons": ">=3.7.4",
         "prop-types": "^15.6.2",
-        "react": "^16.5.1",
-        "react-dom": "^16.5.1",
+        "react": "^16.10.2",
+        "react-dom": "^16.10.2",
         "react-redux": "^5.0.7"
     },
     "dependencies": {
