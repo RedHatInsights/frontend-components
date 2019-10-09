@@ -2,6 +2,7 @@
 - [Sources](#sources)
 - [Install](#install)
   - [Using](#using)
+- [Format for sourceType schema](#format-for-sourcetype-schema)
 - [Additional components](#additional-components)
   - [CardSelect](#cardselect)
   - [SourceWizardSummary](#sourcewizardsummary)
@@ -58,7 +59,6 @@ import { AddSourceWizard } from '@redhat-cloud-services/frontend-components-sour
 |disableAppSelection|bool|`false`|Flag to disable appSelection.|
 |hideSourcesButton|bool|`false`|hide 'Take me to sources' button.|
 |returnButtonTitle|node|`'Go back to sources'`|Title of the button shown after success submit. Put your own application name if you neeed.|
-|disableHardcodedSchemas|bool|`false`|Disables hardcoded schemas. Use if you need to overwrite schemas by providing custom schemas in `sourceTypes`|
 
 If you need to set up and **support only one application** you can provide filtered `applicationTypes` with the only one application, set up `disableAppSelection` to `false` and `initialValues` to:
 
@@ -70,8 +70,39 @@ If you need to set up and **support only one application** you can provide filte
 }
 ```
 
-If you need to provide **custom schemas**, just disable hardcoded schema by setting `disableHardcodedSchemas` to true and modify schemas in `sourceTypes` objects.
+# Format for sourceType schema
 
+```rb
+schema = {
+  :authentication => {
+    :name_of_the_authentication_type => {
+      :meta => {
+        name: 'Token' # Will be shown in the authentication selection step
+      },
+      :fields => {
+        # DDF Fields, will be shown in the authentication selection step
+        {:component => "text-field", :name => "authentication.authtype", :type => "hidden", :initialValue => "username_password"},
+      },
+      :additional_steps => [
+        # Steps according to DDF
+        # Don't use `stepKey` in the first step
+        # Don't use `nextStep` in the last step
+        # => These attributes will be appended automatically
+        # Additional steps are shown after the authentication_type selection step
+      ]
+    }
+  },
+  :endpoint => {
+    :title => 'Title', # If the endpoint will be on a separate step
+    :hidden => true, # If true, the endpoint step will be hidden, use if all components have `:hideField => true`
+    :fields => {
+      # DDF Fields
+      {:component => "checkbox", :name => "endpoint.verify_ssl", :label => "Verify SSL"},
+      ...
+    }
+  }
+}
+```
 
 # Additional components
 
@@ -110,6 +141,8 @@ This components accepts all formGroup props `(label, helperText, isDisabled, isR
 |sourceTypes|array|SourceTypes array with schemas.|
 |applicationTypes|array|applicationTypes array with schemas.|
 |showApp|bool|Default: `true`, shows the application selection in the summary|
+|showAuthType|bool|Default: `true`, shows the authtype selection in the summary|
+
 
 ## Others
 
