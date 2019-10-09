@@ -8,27 +8,26 @@ export default [
         name: 'openshift',
         product_name: 'OpenShift Container Platform',
         schema: {
-            authentication: {
-                token: {
-                    meta: {
-                        name: 'Token'
+            authentication: [{
+                type: 'token',
+                meta: {
+                    name: 'Token'
+                },
+                fields: [
+                    {
+                        component: 'text-field',
+                        name: 'authentication.authtype',
+                        hideField: true,
+                        initialValue: 'token'
                     },
-                    fields: [
-                        {
-                            component: 'text-field',
-                            name: 'authentication.authtype',
-                            hideField: true,
-                            initialValue: 'token'
-                        },
-                        {
-                            component: 'text-field',
-                            name: 'authentication.password',
-                            label: 'Token',
-                            type: 'password'
-                        }
-                    ]
-                }
-            },
+                    {
+                        component: 'text-field',
+                        name: 'authentication.password',
+                        label: 'Token',
+                        type: 'password'
+                    }
+                ]
+            }],
             endpoint: {
                 title: 'Configure OpenShift endpoint',
                 fields: [
@@ -75,8 +74,9 @@ export default [
         name: 'amazon',
         product_name: 'Amazon Web Services',
         schema: {
-            authentication: {
-                access_key_secret_key: {
+            authentication: [
+                {
+                    type: 'access_key_secret_key',
                     meta: {
                         name: 'AWS Secret Key'
                     },
@@ -100,7 +100,8 @@ export default [
                         }
                     ]
                 },
-                arn: {
+                {
+                    type: 'arn',
                     meta: {
                         name: 'ARN'
                     },
@@ -132,7 +133,7 @@ export default [
                         ]
                     }]
                 }
-            },
+            ],
             endpoint: {
                 hidden: true,
                 fields: [
@@ -154,32 +155,32 @@ export default [
         name: 'ansible-tower',
         product_name: 'Ansible Tower',
         schema: {
-            authentication: {
-                username_password: {
-                    meta: {
-                        name: 'Username and password'
+            authentication: [{
+                type: 'username_password',
+                meta: {
+                    name: 'Username and password'
+                },
+                fields: [
+                    {
+                        component: 'text-field',
+                        name: 'authentication.authtype',
+                        hideField: true,
+                        initialValue: 'username_password'
                     },
-                    fields: [
-                        {
-                            component: 'text-field',
-                            name: 'authentication.authtype',
-                            hideField: true,
-                            initialValue: 'username_password'
-                        },
-                        {
-                            component: 'text-field',
-                            name: 'authentication.username',
-                            label: 'User name'
-                        },
-                        {
-                            component: 'text-field',
-                            name: 'authentication.password',
-                            label: 'Secret Key',
-                            type: 'password'
-                        }
-                    ]
-                }
-            },
+                    {
+                        component: 'text-field',
+                        name: 'authentication.username',
+                        label: 'User name'
+                    },
+                    {
+                        component: 'text-field',
+                        name: 'authentication.password',
+                        label: 'Secret Key',
+                        type: 'password'
+                    }
+                ]
+
+            }],
             endpoint: {
                 title: 'Configure Ansible Tower endpoint',
                 fields: [
@@ -258,37 +259,36 @@ export default [
         name: 'azure',
         product_name: 'Microsoft Azure',
         schema: {
-            authentication: {
-                access_key_secret_key: {
-                    meta: {
-                        name: 'Username and password'
+            authentication: [{
+                type: 'access_key_secret_key',
+                meta: {
+                    name: 'Username and password'
+                },
+                fields: [
+                    {
+                        component: 'text-field',
+                        name: 'authentication.authtype',
+                        hideField: true,
+                        initialValue: 'access_key_secret_key'
                     },
-                    fields: [
-                        {
-                            component: 'text-field',
-                            name: 'authentication.authtype',
-                            hideField: true,
-                            initialValue: 'access_key_secret_key'
-                        },
-                        {
-                            component: 'text-field',
-                            name: 'authentication.extra.azure.tenant_id',
-                            label: 'Tenant ID'
-                        },
-                        {
-                            component: 'text-field',
-                            name: 'authentication.username',
-                            label: 'Client ID'
-                        },
-                        {
-                            component: 'text-field',
-                            name: 'authentication.password',
-                            label: 'Client Secret',
-                            type: 'password'
-                        }
-                    ]
-                }
-            },
+                    {
+                        component: 'text-field',
+                        name: 'authentication.extra.azure.tenant_id',
+                        label: 'Tenant ID'
+                    },
+                    {
+                        component: 'text-field',
+                        name: 'authentication.username',
+                        label: 'Client ID'
+                    },
+                    {
+                        component: 'text-field',
+                        name: 'authentication.password',
+                        label: 'Client Secret',
+                        type: 'password'
+                    }
+                ]
+            }],
             endpoint: {
                 hidden: true,
                 fields: [

@@ -100,7 +100,7 @@ AddSourceWizard.propTypes = {
         name: PropTypes.string.isRequired,
         product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
         schema: PropTypes.shape({
-            authentication: PropTypes.object,
+            authentication: PropTypes.array,
             endpoint: PropTypes.object
         })
     })),

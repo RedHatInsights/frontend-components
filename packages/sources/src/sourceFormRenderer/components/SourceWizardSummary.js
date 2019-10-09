@@ -40,7 +40,7 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
     const values = formOptions.getState().values;
     const type = sourceTypes.find(type => type.name === values.source_type);
 
-    const authType = type.schema.authentication[values.authentication.authtype];
+    const authType = type.schema.authentication.find(({ type }) => type === values.authentication.authtype);
 
     let additionalFields = [];
     if (authType.additional_steps) {
@@ -92,7 +92,7 @@ SourceWizardSummary.propTypes = {
         name: PropTypes.string.isRequired,
         product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
         schema: PropTypes.shape({
-            authentication: PropTypes.object,
+            authentication: PropTypes.array,
             endpoint: PropTypes.object
         })
     })).isRequired,

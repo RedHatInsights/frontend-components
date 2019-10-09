@@ -7,7 +7,7 @@ const AuthRadio = ({ label, name, input, authName, index, formOptions, applicati
     let isDisabled = false;
     const values = formOptions.getState().values;
     const isSelected = input.value === authName;
-    const supportedAuthTypes = Object.keys(sourceTypes.find(type => type.name === values.source_type).schema.authentication);
+    const supportedAuthTypes = sourceTypes.find(type => type.name === values.source_type).schema.authentication.map((auth) => auth.type);
 
     if (values.application) {
         application = applicationTypes.find(({ id }) => id === values.application.application_type_id);
@@ -54,7 +54,7 @@ AuthRadio.propTypes = {
         name: PropTypes.string.isRequired,
         product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
         schema: PropTypes.shape({
-            authentication: PropTypes.object,
+            authentication: PropTypes.array,
             endpoint: PropTypes.object
         })
     })).isRequired,

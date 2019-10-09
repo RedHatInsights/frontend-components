@@ -36,12 +36,12 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
 
     const stepMapper = {};
 
-    Object.keys(auths).forEach((key, index) => {
+    auths.forEach((auth, index) => {
         fields.push({
             component: 'auth-select',
             name: 'auth_select',
-            label: auths[key].meta.name,
-            authName: key,
+            label: auth.meta.name,
+            authName: auth.type,
             validate: [{
                 type: validatorTypes.REQUIRED
             }],
@@ -51,17 +51,17 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
         });
         fields.push({
             component: componentTypes.SUB_FORM,
-            name: `${key}-subform`,
+            name: `${auth.type}-subform`,
             fields: [
-                ...getAdditionalAuthFields(type.name, key),
-                ...injectAuthFieldsInfo(auths[key].fields, type.name, key)
+                ...getAdditionalAuthFields(type.name, auth.type),
+                ...injectAuthFieldsInfo(auth.fields, type.name, auth.type)
             ],
             condition: {
                 when: 'auth_select',
-                is: key
+                is: auth.type
             }
         });
-        stepMapper[key] = auths[key].additional_steps ? `${type.name}-${key}-additional-step` :
+        stepMapper[auth.type] = auth.additional_steps ? `${type.name}-${auth.type}-additional-step` :
             endpointFields.length === 0 ? `${type.name}-endpoint` : 'summary';
     });
 
@@ -107,10 +107,10 @@ export const schemaBuilder = (sourceTypes, appTypes) => {
 
         schema.push(createAuthSelection(type, appTypes, sourceTypes, appendEndpoint));
 
-        Object.keys(type.schema.authentication).forEach(auth => {
-            const additionalSteps = type.schema.authentication[auth].additional_steps;
+        type.schema.authentication.forEach(auth => {
+            const additionalSteps = auth.additional_steps;
             if (additionalSteps) {
-                schema.push(...createAdditionalSteps(additionalSteps, type.name, auth, hasEndpointStep));
+                schema.push(...createAdditionalSteps(additionalSteps, type.name, auth.type, hasEndpointStep));
             }
         });
 
