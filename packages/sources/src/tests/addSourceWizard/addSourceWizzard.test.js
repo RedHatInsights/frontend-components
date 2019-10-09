@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { Button } from '@patternfly/react-core';
 
 import { AddSourceWizard } from '../../addSourceWizard/index';
+import Form from '../../addSourceWizard/SourceAddModal';
 import FormRenderer from '../../sourceFormRenderer/index';
 import Modal from '../../addSourceWizard/SourceAddModal';
 import FinalWizard from '../../addSourceWizard/FinalWizard';
@@ -28,13 +28,14 @@ describe('AddSourceWizard', () => {
 
     it('renders correctly with sourceTypes', () => {
         const wrapper = shallow(<AddSourceWizard { ...initialProps }/>);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        expect(wrapper.find(Form)).toHaveLength(1);
         expect(wrapper.find(Modal).length).toBe(1);
     });
 
     it('renders correctly without sourceTypes', () => {
         const wrapper = shallow(<AddSourceWizard { ...initialProps } sourceTypes={ undefined }/>);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        expect(wrapper.find(Form)).toHaveLength(1);
+        expect(wrapper.find(Modal).length).toBe(1);
     });
 
     it('show finished step after filling the form', (done) => {

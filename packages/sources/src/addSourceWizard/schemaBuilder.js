@@ -30,11 +30,7 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
     const auths = type.schema.authentication;
 
     const fields = [
-        {
-            component: 'description',
-            name: 'description-source-credentials',
-            content: <Title headingLevel="h3" size="2xl">Configure credentials</Title>
-        },
+        createTitle('Configure credentials'),
         ...endpointFields
     ];
 

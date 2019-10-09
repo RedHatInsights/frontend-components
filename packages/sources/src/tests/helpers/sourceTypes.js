@@ -9,26 +9,22 @@ export default [
             authentication: {
                 token: {
                     meta: {
-                        name: 'Token',
-                        description: 'Configure OpenShift token'
+                        name: 'Token'
                     },
-                    schema: {
-                        title: 'Configure OpenShift',
-                        fields: [
-                            {
-                                component: 'text-field',
-                                name: 'authentication.authtype',
-                                hideField: true,
-                                initialValue: 'token'
-                            },
-                            {
-                                component: 'text-field',
-                                name: 'authentication.password',
-                                label: 'Token',
-                                type: 'password'
-                            }
-                        ]
-                    }
+                    fields: [
+                        {
+                            component: 'text-field',
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'token'
+                        },
+                        {
+                            component: 'text-field',
+                            name: 'authentication.password',
+                            label: 'Token',
+                            type: 'password'
+                        }
+                    ]
                 }
             },
             endpoint: {
@@ -80,59 +76,52 @@ export default [
             authentication: {
                 access_key_secret_key: {
                     meta: {
-                        name: 'AWS Secret Key',
-                        description: 'Configure AWS Secret Key'
+                        name: 'AWS Secret Key'
                     },
-                    schema: {
-                        title: 'Configure AWS Secret Key',
-                        fields: [
-                            {
-                                component: 'text-field',
-                                name: 'authentication.authtype',
-                                hideField: true,
-                                initialValue: 'access_key_secret_key'
-                            },
-                            {
-                                component: 'text-field',
-                                name: 'authentication.username',
-                                label: 'Access Key'
-                            },
-                            {
-                                component: 'text-field',
-                                name: 'authentication.password',
-                                label: 'Secret Key',
-                                type: 'password'
-                            }
-                        ]
-                    }
+                    fields: [
+                        {
+                            component: 'text-field',
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'access_key_secret_key'
+                        },
+                        {
+                            component: 'text-field',
+                            name: 'authentication.username',
+                            label: 'Access Key'
+                        },
+                        {
+                            component: 'text-field',
+                            name: 'authentication.password',
+                            label: 'Secret Key',
+                            type: 'password'
+                        }
+                    ]
                 },
                 arn: {
                     meta: {
-                        name: 'ARN',
-                        description: 'Configure AWS Secret Key'
+                        name: 'ARN'
                     },
-                    schema: {
-                        title: 'Configure AWS Secret Key',
-                        fields: [
-                            {
-                                component: 'text-field',
-                                name: 'authentication.authtype',
-                                hideField: true,
-                                initialValue: 'arn'
-                            },
-                            {
-                                component: 'text-field',
-                                name: 'authentication.password',
-                                label: 'ARN',
-                                type: 'password'
-                            }
-                        ]
-                    },
+                    fields: [
+                        {
+                            component: 'text-field',
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'arn'
+                        },
+                        {
+                            component: 'text-field',
+                            name: 'authentication.password',
+                            label: 'ARN',
+                            type: 'password'
+                        }
+                    ],
                     additional_steps: [{
                         title: 'ARN amazon bucket',
                         substep: 'ARN',
                         fields: [
                             {
+                                label: 'Additional CostManagement field',
                                 component: 'text-field',
                                 name: 'cost_management.bucket',
                                 description: 'description',
@@ -166,31 +155,27 @@ export default [
             authentication: {
                 username_password: {
                     meta: {
-                        name: 'Username and password',
-                        description: 'Configure Azure user name and password'
+                        name: 'Username and password'
                     },
-                    schema: {
-                        title: 'Configure Azure',
-                        fields: [
-                            {
-                                component: 'text-field',
-                                name: 'authentication.authtype',
-                                hideField: true,
-                                initialValue: 'username_password'
-                            },
-                            {
-                                component: 'text-field',
-                                name: 'authentication.username',
-                                label: 'User name'
-                            },
-                            {
-                                component: 'text-field',
-                                name: 'authentication.password',
-                                label: 'Secret Key',
-                                type: 'password'
-                            }
-                        ]
-                    }
+                    fields: [
+                        {
+                            component: 'text-field',
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'username_password'
+                        },
+                        {
+                            component: 'text-field',
+                            name: 'authentication.username',
+                            label: 'User name'
+                        },
+                        {
+                            component: 'text-field',
+                            name: 'authentication.password',
+                            label: 'Secret Key',
+                            type: 'password'
+                        }
+                    ]
                 }
             },
             endpoint: {
@@ -272,38 +257,34 @@ export default [
         product_name: 'Microsoft Azure',
         schema: {
             authentication: {
-                username_password: {
+                access_key_secret_key: {
                     meta: {
-                        name: 'Username and password',
-                        description: 'Configure Azure'
+                        name: 'Username and password'
                     },
-                    schema: {
-                        title: 'Configure Azure',
-                        fields: [
-                            {
-                                component: 'text-field',
-                                name: 'authentication.authtype',
-                                hideField: true,
-                                initialValue: 'access_key_secret_key'
-                            },
-                            {
-                                component: 'text-field',
-                                name: 'authentication.extra.azure.tenant_id',
-                                label: 'Tenant ID'
-                            },
-                            {
-                                component: 'text-field',
-                                name: 'authentication.username',
-                                label: 'Client ID'
-                            },
-                            {
-                                component: 'text-field',
-                                name: 'authentication.password',
-                                label: 'Client Secret',
-                                type: 'password'
-                            }
-                        ]
-                    }
+                    fields: [
+                        {
+                            component: 'text-field',
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'access_key_secret_key'
+                        },
+                        {
+                            component: 'text-field',
+                            name: 'authentication.extra.azure.tenant_id',
+                            label: 'Tenant ID'
+                        },
+                        {
+                            component: 'text-field',
+                            name: 'authentication.username',
+                            label: 'Client ID'
+                        },
+                        {
+                            component: 'text-field',
+                            name: 'authentication.password',
+                            label: 'Client Secret',
+                            type: 'password'
+                        }
+                    ]
                 }
             },
             endpoint: {
