@@ -24,7 +24,7 @@ describe('AuthSelect component', () => {
             formOptions: {
                 getState: () => ({
                     values: {
-                        source_type: 'amazon'
+                        source_type: 'amazon' //eslint-disable-line camelcase
                     }
                 })
             },
@@ -62,9 +62,9 @@ describe('AuthSelect component', () => {
             formOptions: {
                 getState: () => ({
                     values: {
-                        source_type: 'amazon',
+                        source_type: 'amazon', //eslint-disable-line camelcase
                         application: {
-                            application_type_id: '2'
+                            application_type_id: '2' //eslint-disable-line camelcase
                         }
                     }
                 })
@@ -84,7 +84,7 @@ describe('AuthSelect component', () => {
                 value: 'username_password'
             }
         };
-        const wrapper = mount(<AuthSelect { ...initialProps }/>);
+        mount(<AuthSelect { ...initialProps }/>);
 
         expect(spyOnChange).toHaveBeenCalledWith(undefined);
     });
@@ -95,9 +95,9 @@ describe('AuthSelect component', () => {
             formOptions: {
                 getState: () => ({
                     values: {
-                        source_type: 'amazon',
+                        source_type: 'amazon', //eslint-disable-line camelcase
                         application: {
-                            application_type_id: '2'
+                            application_type_id: '2' //eslint-disable-line camelcase
                         }
                     }
                 })
@@ -107,7 +107,7 @@ describe('AuthSelect component', () => {
                 value: 'access_key_secret_key'
             }
         };
-        const wrapper = mount(<AuthSelect { ...initialProps }/>);
+        mount(<AuthSelect { ...initialProps }/>);
 
         expect(spyOnChange).toHaveBeenCalledWith(undefined);
     });

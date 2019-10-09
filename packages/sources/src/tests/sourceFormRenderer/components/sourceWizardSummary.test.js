@@ -86,7 +86,7 @@ describe('SourceWizardSummary component', () => {
         });
 
         it('hide application', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower','username_password', '1') } showApp={ false }/>);
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1') } showApp={ false }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
             expect(wrapper.find(TextListItem).at(3).children().first().text()).not.toEqual('Catalog');
             expect(wrapper.contains('Catalog')).toEqual(false);

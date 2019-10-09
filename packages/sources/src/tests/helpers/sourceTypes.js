@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 export default [
     {
         created_at: '2019-03-26T14:05:45Z',

@@ -79,7 +79,7 @@ class CardSelect extends React.Component {
     })
 
     render() {
-        const { FieldProvider, isRequired, label, helperText, hideLabel, name, meta, input, ...rest } = this.props;
+        const { isRequired, label, helperText, hideLabel, meta, input } = this.props;
         const { error, touched } = meta;
         const showError = touched && error;
 

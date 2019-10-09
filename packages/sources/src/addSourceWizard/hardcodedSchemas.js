@@ -63,7 +63,7 @@ export default {
     },
     amazon: {
         authentication: {
-            access_key_secret_key: {
+            access_key_secret_key: { //eslint-disable-line camelcase
                 additionalFields: [
                     {
                         component: 'description',

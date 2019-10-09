@@ -105,7 +105,7 @@ export function doCreateSource(formData, sourceTypes) {
                 resource_type: 'Endpoint'
             };
 
-            return getSourcesApi().createAuthentication(authenticationData).then((authenticationDataOut) => {
+            return getSourcesApi().createAuthentication(authenticationData).then(() => {
                 return {
                     ...sourceDataOut,
                     endpoint: [ endpointDataOut ],

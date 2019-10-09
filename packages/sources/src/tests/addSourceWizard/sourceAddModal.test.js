@@ -1,13 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { Wizard } from '@patternfly/react-core';
 
 import AddSourceWizard from '../../addSourceWizard/SourceAddModal';
 import sourceTypes from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
 import SourcesFormRenderer from '../../sourceFormRenderer/index';
-import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 
 import * as dependency from '../../api/index';
 
