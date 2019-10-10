@@ -24,7 +24,7 @@ describe('AuthSelect component', () => {
             formOptions: {
                 getState: () => ({
                     values: {
-                        source_type: 'amazon' //eslint-disable-line camelcase
+                        source_type: 'amazon'
                     }
                 })
             },
@@ -69,9 +69,9 @@ describe('AuthSelect component', () => {
             formOptions: {
                 getState: () => ({
                     values: {
-                        source_type: 'amazon', //eslint-disable-line camelcase
+                        source_type: 'amazon',
                         application: {
-                            application_type_id: '2' //eslint-disable-line camelcase
+                            application_type_id: '2'
                         }
                     }
                 })
@@ -102,9 +102,9 @@ describe('AuthSelect component', () => {
             formOptions: {
                 getState: () => ({
                     values: {
-                        source_type: 'amazon', //eslint-disable-line camelcase
+                        source_type: 'amazon',
                         application: {
-                            application_type_id: '2' //eslint-disable-line camelcase
+                            application_type_id: '2'
                         }
                     }
                 })

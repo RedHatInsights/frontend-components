@@ -105,7 +105,7 @@ describe('schema builder', () => {
                         when: expect.any(String),
                         stepMapper: {
                             arn: 'amazon-arn-additional-step',
-                            access_key_secret_key: 'summary' //eslint-disable-line camelcase
+                            access_key_secret_key: 'summary'
                         }
                     }
                 })

@@ -90,7 +90,7 @@ SourceWizardSummary.propTypes = {
     sourceTypes: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
+        product_name: PropTypes.string.isRequired,
         schema: PropTypes.shape({
             authentication: PropTypes.array,
             endpoint: PropTypes.object
@@ -99,7 +99,7 @@ SourceWizardSummary.propTypes = {
     applicationTypes: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
+        display_name: PropTypes.string.isRequired
     })).isRequired,
     showApp: PropTypes.bool,
     showAuthType: PropTypes.bool
