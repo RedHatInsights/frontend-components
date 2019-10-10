@@ -22,7 +22,7 @@ export const getAdditionalEndpointFields = (type) => get(hardcodedSchemas, [ typ
 
 export const createTitle = (title) => ({
     component: 'description',
-    name: 'description-title',
+    name: `description-title-${title}`,
     content: <Title headingLevel="h3" size="2xl">{title}</Title>
 });
 

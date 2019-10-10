@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio, FormHelperText } from '@patternfly/react-core';
 
-const AuthRadio = ({ label, name, input, authName, index, formOptions, applicationTypes, sourceTypes, disableAuthType }) => {
+const AuthRadio = ({ label, input, authName, index, formOptions, applicationTypes, sourceTypes, disableAuthType }) => {
     let application = {};
     let isDisabled = false;
     const values = formOptions.getState().values;
@@ -31,10 +31,10 @@ const AuthRadio = ({ label, name, input, authName, index, formOptions, applicati
             <Radio
                 value={authName}
                 isChecked={isSelected}
-                name={name}
+                name={input.name}
                 onChange={() => input.onChange(authName)}
                 label={label}
-                id={`${name}-${index}`}
+                id={`${input.name}-${index}`}
                 isDisabled={isDisabled}
             />
             {isDisabled && !disableAuthType && <FormHelperText isHidden={false} className="pf-m-disabled">
@@ -49,12 +49,11 @@ const AuthRadio = ({ label, name, input, authName, index, formOptions, applicati
 
 AuthRadio.propTypes = {
     label: PropTypes.string,
-    name: PropTypes.string.isRequired,
     formOptions: PropTypes.any,
     input: PropTypes.shape({
         value: PropTypes.any,
-        onChange: PropTypes.func,
-        onBlur: PropTypes.func
+        onChange: PropTypes.func.isRequired,
+        name: PropTypes.string.isRequired
     }).isRequired,
     sourceTypes: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,

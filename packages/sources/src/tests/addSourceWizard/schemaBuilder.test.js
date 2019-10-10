@@ -23,7 +23,7 @@ describe('schema builder', () => {
 
             expect(createTitle(TITLE)).toEqual({
                 component: 'description',
-                name: 'description-title',
+                name: `description-title-${TITLE}`,
                 content: <Title headingLevel="h3" size="2xl">{TITLE}</Title>
             });
         });

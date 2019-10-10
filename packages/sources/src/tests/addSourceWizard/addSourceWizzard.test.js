@@ -29,13 +29,13 @@ describe('AddSourceWizard', () => {
     it('renders correctly with sourceTypes', () => {
         const wrapper = shallow(<AddSourceWizard { ...initialProps }/>);
         expect(wrapper.find(Form)).toHaveLength(1);
-        expect(wrapper.find(Modal).length).toBe(1);
+        expect(wrapper.find(Modal)).toHaveLength(1);
     });
 
     it('renders correctly without sourceTypes', () => {
         const wrapper = shallow(<AddSourceWizard { ...initialProps } sourceTypes={ undefined }/>);
         expect(wrapper.find(Form)).toHaveLength(1);
-        expect(wrapper.find(Modal).length).toBe(1);
+        expect(wrapper.find(Modal)).toHaveLength(1);
     });
 
     it('show finished step after filling the form', (done) => {
@@ -51,9 +51,9 @@ describe('AddSourceWizard', () => {
         setTimeout(() => {
             form.submit().then(() => {
                 wrapper.update();
-                expect(wrapper.find(FinalWizard).length).toBe(1);
-                expect(wrapper.find(FinishedStep).length).toBe(1);
-                expect(wrapper.find(ErroredStep).length).toBe(0);
+                expect(wrapper.find(FinalWizard)).toHaveLength(1);
+                expect(wrapper.find(FinishedStep)).toHaveLength(1);
+                expect(wrapper.find(ErroredStep)).toHaveLength(0);
                 done();
             });
         }, 1000);
@@ -94,9 +94,9 @@ describe('AddSourceWizard', () => {
         setTimeout(() => {
             form.submit().then(() => {
                 wrapper.update();
-                expect(wrapper.find(FinalWizard).length).toBe(1);
-                expect(wrapper.find(FinishedStep).length).toBe(0);
-                expect(wrapper.find(ErroredStep).length).toBe(1);
+                expect(wrapper.find(FinalWizard)).toHaveLength(1);
+                expect(wrapper.find(FinishedStep)).toHaveLength(0);
+                expect(wrapper.find(ErroredStep)).toHaveLength(1);
                 done();
             });
         }, 1000);
