@@ -76,7 +76,7 @@ class InventoryRuleList extends Component {
             await insights.chrome.auth.getUser();
             const reportsFetch = await fetch(`${BASE_FETCH_URL}system/${entity.id}/reports/`, { credentials: 'include' });
             const reportsData = await reportsFetch.json();
-            const activeRuleFirstReportsData = activeApp.length ?  reportsData : this.activeRuleFirst(reportsData);
+            const activeRuleFirstReportsData = activeApp === undefined ?  this.activeRuleFirst(reportsData) : reportsData;
             this.fetchKbaDetails(activeRuleFirstReportsData);
             this.setState({
                 rows: this.buildRows(activeRuleFirstReportsData, {}, filters, searchValue, true),
