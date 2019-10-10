@@ -27,6 +27,10 @@ class SystemPolicyCard extends React.Component {
             </div>;
     }
 
+    fixedPercentage = (value, fixed = 0, withPercent = true) => (
+        (value).toFixed(fixed) + (withPercent ? '%' : '')
+    );
+
     onMouseover = () => {
         this.setState({ refIdTruncated: this.state.policy.refId });
     }
@@ -36,17 +40,20 @@ class SystemPolicyCard extends React.Component {
     }
 
     render() {
+        const { rulesPassed, rulesFailed, name, compliant, lastScanned } = this.state.policy;
+        const passedPercentage = this.fixedPercentage(100 * (rulesPassed / (rulesPassed + rulesFailed)));
+
         return (
             <Card>
                 <CardBody>
                     <TextContent className='margin-bottom-md'>
                         <Text className='margin-bottom-none' component={ TextVariants.small }>External policy</Text>
-                        <Text className='margin-bottom-top-none' component={ TextVariants.h4 }>{ this.state.policy.name }</Text>
+                        <Text className='margin-bottom-top-none' component={ TextVariants.h4 }>{ name }</Text>
                     </TextContent>
                     <div className='margin-bottom-md' >
-                        { this.complianceIcon(this.state.policy.compliant) }
+                        { this.complianceIcon(compliant) }
                         <Text component={ TextVariants.small }>
-                            { this.state.policy.rulesPassed } of { this.state.policy.rulesPassed + this.state.policy.rulesFailed } rules passed
+                            { rulesPassed } of { rulesPassed + rulesFailed } rules passed ({ passedPercentage })
                         </Text>
                     </div>
                     <div className='margin-bottom-md' >
@@ -61,7 +68,7 @@ class SystemPolicyCard extends React.Component {
                         </Text>
                     </div>
                     <Text className='margin-bottom-none' component={ TextVariants.small }>
-                      Last scanned: <FormattedRelative value={ Date.parse(this.state.policy.lastScanned) } />
+                      Last scanned: <FormattedRelative value={ Date.parse(lastScanned) } />
                     </Text>
                 </CardBody>
             </Card>
