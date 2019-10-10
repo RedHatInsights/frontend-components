@@ -26,7 +26,7 @@ export const createTitle = (title) => ({
     content: <Title headingLevel="h3" size="2xl">{title}</Title>
 });
 
-export const createAuthSelection = (type, applicationTypes, sourceTypes, endpointFields = []) => {
+export const createAuthSelection = (type, applicationTypes, sourceTypes, endpointFields = [], disableAuthType = false) => {
     const auths = type.schema.authentication;
 
     const fields = [
@@ -40,14 +40,15 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
         fields.push({
             component: 'auth-select',
             name: 'auth_select',
-            label: auth.meta.name,
+            label: auth.name,
             authName: auth.type,
             validate: [{
                 type: validatorTypes.REQUIRED
             }],
             index,
             applicationTypes,
-            sourceTypes
+            sourceTypes,
+            disableAuthType
         });
         fields.push({
             component: componentTypes.SUB_FORM,
@@ -94,18 +95,18 @@ export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpoi
     ...step,
     fields: [
         createTitle(step.title),
-        ...step.fields
+        ...injectAuthFieldsInfo(step.fields, name, authName)
     ]
 }));
 
-export const schemaBuilder = (sourceTypes, appTypes) => {
+export const schemaBuilder = (sourceTypes, appTypes, disableAuthType) => {
     const schema = [];
 
     sourceTypes.forEach(type => {
         const appendEndpoint = type.schema.endpoint.hidden ? type.schema.endpoint.fields : [];
         const hasEndpointStep = appendEndpoint.length === 0;
 
-        schema.push(createAuthSelection(type, appTypes, sourceTypes, appendEndpoint));
+        schema.push(createAuthSelection(type, appTypes, sourceTypes, appendEndpoint, disableAuthType));
 
         type.schema.authentication.forEach(auth => {
             const additionalSteps = auth.additional_steps;

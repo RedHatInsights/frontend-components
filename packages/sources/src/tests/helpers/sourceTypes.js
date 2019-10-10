@@ -10,9 +10,7 @@ export default [
         schema: {
             authentication: [{
                 type: 'token',
-                meta: {
-                    name: 'Token'
-                },
+                name: 'Token',
                 fields: [
                     {
                         component: 'text-field',
@@ -77,9 +75,7 @@ export default [
             authentication: [
                 {
                     type: 'access_key_secret_key',
-                    meta: {
-                        name: 'AWS Secret Key'
-                    },
+                    name: 'AWS Secret Key',
                     fields: [
                         {
                             component: 'text-field',
@@ -102,9 +98,7 @@ export default [
                 },
                 {
                     type: 'arn',
-                    meta: {
-                        name: 'ARN'
-                    },
+                    name: 'ARN',
                     fields: [
                         {
                             component: 'text-field',
@@ -157,9 +151,7 @@ export default [
         schema: {
             authentication: [{
                 type: 'username_password',
-                meta: {
-                    name: 'Username and password'
-                },
+                name: 'Username and password',
                 fields: [
                     {
                         component: 'text-field',
@@ -261,9 +253,7 @@ export default [
         schema: {
             authentication: [{
                 type: 'access_key_secret_key',
-                meta: {
-                    name: 'Username and password'
-                },
+                name: 'Username and password',
                 fields: [
                     {
                         component: 'text-field',
@@ -288,6 +278,7 @@ export default [
                         type: 'password'
                     }
                 ]
+
             }],
             endpoint: {
                 hidden: true,

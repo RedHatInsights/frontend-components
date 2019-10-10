@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio, FormHelperText } from '@patternfly/react-core';
 
-const AuthRadio = ({ label, name, input, authName, index, formOptions, applicationTypes, sourceTypes }) => {
+const AuthRadio = ({ label, name, input, authName, index, formOptions, applicationTypes, sourceTypes, disableAuthType }) => {
     let application = {};
     let isDisabled = false;
     const values = formOptions.getState().values;
@@ -22,6 +22,10 @@ const AuthRadio = ({ label, name, input, authName, index, formOptions, applicati
         input.onChange(undefined);
     }
 
+    if (disableAuthType && !isSelected) {
+        isDisabled = true;
+    }
+
     return (
         <React.Fragment>
             <Radio
@@ -33,8 +37,11 @@ const AuthRadio = ({ label, name, input, authName, index, formOptions, applicati
                 id={`${name}-${index}`}
                 isDisabled={isDisabled}
             />
-            {isDisabled && <FormHelperText isHidden={false} className="pf-m-disabled">
+            {isDisabled && !disableAuthType && <FormHelperText isHidden={false} className="pf-m-disabled">
                 {application.display_name} does not support this authentication type.
+            </FormHelperText>}
+            {disableAuthType && !isSelected && <FormHelperText isHidden={false} className="pf-m-disabled">
+                You cannot change the authtype, when editing.
             </FormHelperText>}
         </React.Fragment>
     );
@@ -64,7 +71,12 @@ AuthRadio.propTypes = {
         display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
     })).isRequired,
     authName: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired
+    index: PropTypes.number.isRequired,
+    disableAuthType: PropTypes.bool
+};
+
+AuthRadio.defaultProps = {
+    disableAuthType: false
 };
 
 const AuthSelectProvider = ({ FieldProvider, ...rest }) =>

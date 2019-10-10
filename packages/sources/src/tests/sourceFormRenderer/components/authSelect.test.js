@@ -46,6 +46,13 @@ describe('AuthSelect component', () => {
         expect(wrapper.find(FormHelperText)).toHaveLength(0);
     });
 
+    it('renders correctly when disableAuthType', () => {
+        const wrapper = mount(<AuthSelect { ...initialProps } disableAuthType/>);
+
+        expect(wrapper.find(Radio)).toHaveLength(1);
+        expect(wrapper.find(FormHelperText)).toHaveLength(1);
+    });
+
     it('calls onChange correctly', () => {
         const wrapper = mount(<AuthSelect { ...initialProps }/>);
 

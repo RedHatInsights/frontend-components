@@ -4,6 +4,9 @@ import CardSelect from './sourceFormRenderer/components/CardSelect';
 import SourceWizardSummary, * as summaryHelpers from './sourceFormRenderer/components/SourceWizardSummary';
 import { asyncValidator } from './addSourceWizard/SourceAddSchema';
 import { schemaBuilder } from './addSourceWizard/schemaBuilder';
+import AuthSelect from './sourceFormRenderer/components/AuthSelect';
+import { mapperExtension } from './sourceFormRenderer/index';
+
 import './styles/cardSelect.scss';
 import './styles/authSelect.scss';
 
@@ -15,5 +18,7 @@ export {
     SourceWizardSummary,
     SummaryStep,
     summaryHelpers,
-    schemaBuilder
+    schemaBuilder,
+    AuthSelect,
+    mapperExtension
 };
