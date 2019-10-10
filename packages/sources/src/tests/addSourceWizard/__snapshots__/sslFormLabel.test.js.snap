@@ -3,68 +3,64 @@
 exports[`SSLFormLabel renders loading step correctly 1`] = `
 <Fragment>
   SSL Certificate 
-  <span
-    onClick={[Function]}
+  <Popover
+    appendTo={[Function]}
+    aria-label="Help text"
+    bodyContent={
+      <TextContent>
+        <Text
+          component="p"
+        >
+          You can obtain your OpenShift Container Platform provider’s CA certificate for all endpoints (default, metrics, alerts) from
+          <b>
+            /etc/origin/master/ca.crt
+          </b>
+          .
+        </Text>
+        <Text
+          component="p"
+        >
+          Paste the output (a block of text starting with --BEGIN CERTIFICATE--) into the Trusted CA Certificates field.
+        </Text>
+      </TextContent>
+    }
+    boundary="window"
+    className=""
+    closeBtnAriaLabel="Close"
+    distance={25}
+    enableFlip={true}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    footerContent={null}
+    headerContent={null}
+    hideOnOutsideClick={true}
+    isVisible={null}
+    maxWidth="50%"
+    onHidden={[Function]}
+    onHide={[Function]}
+    onMount={[Function]}
+    onShow={[Function]}
+    onShown={[Function]}
+    position="top"
+    shouldClose={[Function]}
+    tippyProps={Object {}}
+    zIndex={9999}
   >
-    <Popover
-      appendTo={[Function]}
-      aria-label="Help text"
-      bodyContent={
-        <TextContent>
-          <Text
-            component="p"
-          >
-            You can obtain your OpenShift Container Platform provider’s CA certificate for all endpoints (default, metrics, alerts) from
-            <b>
-              /etc/origin/master/ca.crt
-            </b>
-            .
-          </Text>
-          <Text
-            component="p"
-          >
-            Paste the output (a block of text starting with --BEGIN CERTIFICATE--) into the Trusted CA Certificates field.
-          </Text>
-        </TextContent>
-      }
-      boundary="window"
-      className=""
-      closeBtnAriaLabel="Close"
-      distance={25}
-      enableFlip={true}
-      flipBehavior={
-        Array [
-          "top",
-          "right",
-          "bottom",
-          "left",
-          "top",
-          "right",
-          "bottom",
-        ]
-      }
-      footerContent={null}
-      headerContent={null}
-      hideOnOutsideClick={true}
-      isVisible={null}
-      maxWidth="50%"
-      onHidden={[Function]}
-      onHide={[Function]}
-      onMount={[Function]}
-      onShow={[Function]}
-      onShown={[Function]}
-      position="top"
-      shouldClose={[Function]}
-      tippyProps={Object {}}
-      zIndex={9999}
-    >
-      <QuestionCircleIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-        title={null}
-      />
-    </Popover>
-  </span>
+    <QuestionCircleIcon
+      color="currentColor"
+      noVerticalAlign={false}
+      size="sm"
+      title={null}
+    />
+  </Popover>
 </Fragment>
 `;
