@@ -11,7 +11,7 @@ export const createItem = (value, fields, path) => {
     }
 
     // do not show hidden fields
-    if (formField.type === 'hidden') {
+    if (formField.hideField) {
         return undefined;
     }
 
@@ -36,10 +36,22 @@ export const allValuesPath = (value, fields, path = undefined) => {
     return Object.keys(value).map((key) => allValuesPath(value[key], fields, path ? `${path}.${key}` : key)).filter(x => x);
 };
 
-const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showApp }) => {
+const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showApp, showAuthType }) => {
     const values = formOptions.getState().values;
     const type = sourceTypes.find(type => type.name === values.source_type);
-    const fields = type.schema.fields;
+
+    const authType = type.schema.authentication.find(({ type }) => type === values.authentication.authtype);
+
+    let additionalFields = [];
+    if (authType.additional_steps) {
+        additionalFields = flattenDeep(authType.additional_steps.map(({ fields }) => fields));
+    }
+
+    const authTypeFields = authType.fields;
+    const endpointFields = type.schema.endpoint.fields;
+
+    const fields = [ ...authTypeFields, ...endpointFields, ...additionalFields  ];
+
     const application = values.application ? applicationTypes.find(type => type.id === values.application.application_type_id) : undefined;
     const applicationName = application ? application.display_name : 'Not selected';
 
@@ -61,6 +73,10 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
                     <TextListItem component={ TextListItemVariants.dt }>{ 'Application' }</TextListItem>
                     <TextListItem component={ TextListItemVariants.dd }>{ applicationName }</TextListItem>
                 </React.Fragment> }
+                { showAuthType && <React.Fragment>
+                    <TextListItem component={ TextListItemVariants.dt }>{ 'Authentication type' }</TextListItem>
+                    <TextListItem component={ TextListItemVariants.dd }>{ authType.name }</TextListItem>
+                </React.Fragment> }
                 <TextListItem component={ TextListItemVariants.dt }>{ 'Source Type' }</TextListItem>
                 <TextListItem component={ TextListItemVariants.dd }>{ type.product_name }</TextListItem>
                 { valuesList }
@@ -74,21 +90,24 @@ SourceWizardSummary.propTypes = {
     sourceTypes: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        product_name: PropTypes.string.isRequired, //eslint-disable-line camelcase
+        product_name: PropTypes.string.isRequired,
         schema: PropTypes.shape({
-            title: PropTypes.string.isRequired
+            authentication: PropTypes.array,
+            endpoint: PropTypes.object
         })
     })).isRequired,
     applicationTypes: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        display_name: PropTypes.string.isRequired //eslint-disable-line camelcase
+        display_name: PropTypes.string.isRequired
     })).isRequired,
-    showApp: PropTypes.bool
+    showApp: PropTypes.bool,
+    showAuthType: PropTypes.bool
 };
 
 SourceWizardSummary.defaultProps = {
-    showApp: true
+    showApp: true,
+    showAuthType: true
 };
 
 export default SourceWizardSummary;
