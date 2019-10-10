@@ -21,6 +21,74 @@ class Group extends Component {
         });
     };
 
+    mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
+        return items.map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
+            <SelectOption
+                {...item}
+                key={id || key}
+                value={String(value || id || key)}
+                onClick={e => {
+                    const clickedGroup = {
+                        value: groupValue,
+                        label: groupLabel,
+                        id: groupId,
+                        type,
+                        items,
+                        ...group
+                    };
+                    const clickedItem = { value, label, id, type, ...group };
+                    const props = [
+                        e,
+                        clickedGroup,
+                        clickedItem,
+                        groupValue || groupKey,
+                        value || key
+                    ];
+
+                    this.onSelect(...props);
+                    onSelect && onSelect(...props);
+                    onClick && onClick(...props);
+                }}
+            >
+                {
+                    type === groupType.checkbox &&
+                    <Checkbox
+                        {...itemProps}
+                        label={label}
+                        isChecked={
+                            isChecked ||
+                            this.isChecked(groupValue || groupKey, value || key) ||
+                            false
+                        }
+                        onChange={(value, event) => {
+                            item.onChange && item.onChange(value, event);
+                        }}
+                        name={item.name || value || `${groupKey}-${key}`}
+                        id={id || value || `${groupKey}-${key}`}
+                    />
+                }
+                {
+                    type === groupType.radio &&
+                    <Radio
+                        isChecked={
+                            isChecked ||
+                            this.isChecked(groupValue || groupKey, value || key) ||
+                            false
+                        }
+                        onChange={(value, event) => {
+                            item.onChange && item.onChange(value, event);
+                        }}
+                        value={value || key}
+                        name={item.name || value || `${groupKey}-${key}`}
+                        label={label}
+                        id={id || value || `${groupKey}-${key}`}
+                    />
+                }
+                {(type !== groupType.checkbox && type !== groupType.radio) ? label : ''}
+            </SelectOption>
+        ));
+    }
+
     calculateSelected = ({ type }, groupKey, itemKey) => {
         const { selected } = this.state;
         const { selected: propSelected } = this.props;
@@ -77,99 +145,59 @@ class Group extends Component {
         return Boolean(selected[groupValue][itemValue]);
     }
 
+    customFilter = (...props) => {
+        console.log(props);
+    }
+
     render() {
         const { isExpanded } = this.state;
-        const { groups, placeholder, className, selected } = this.props;
+        const { groups, items, placeholder, className, selected, isFilterable } = this.props;
+
+        const fitlerItems = items || groups;
 
         return (<Fragment>
-            { !groups || (groups && groups.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
+            { !fitlerItems || (fitlerItems && fitlerItems.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
                 className={ className }
-                variant={ SelectVariant.single }
+                variant={ isFilterable ? SelectVariant.typeahead : SelectVariant.single }
                 aria-label="Select Input"
                 onToggle={ this.onToggle }
                 isExpanded={ isExpanded }
                 onSelect={ () => undefined }
                 placeholderText={ placeholder }
-                isGrouped
+                { ...isFilterable && { onFilter: this.customFilter } }
+                { ...groups && groups.length > 0 && { isGroupped: true }}
             >
-                { groups.map(({ value: groupValue, onSelect, label: groupLabel, id: groupId, type, items, ...group }, groupKey) => (
-                    <SelectGroup
-                        { ...group }
-                        key={ groupId || groupValue || groupKey }
-                        label={ groupLabel }
-                        id={ groupId || `group-${groupValue || groupKey}` }
-                    >
-                        {items && items.map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
-                            <SelectOption
-                                { ...item }
-                                key={id || key}
-                                value={String(value || id || key)}
-                                onClick={e => {
-                                    const clickedGroup = {
-                                        value: groupValue,
-                                        label: groupLabel,
-                                        id: groupId,
-                                        type,
-                                        items,
-                                        ...group
-                                    };
-                                    const clickedItem = { value, label, id, type, ...group };
-                                    const props = [
-                                        e,
-                                        clickedGroup,
-                                        clickedItem,
-                                        groupValue || groupKey,
-                                        value || key
-                                    ];
-
-                                    this.onSelect(...props);
-                                    onSelect && onSelect(...props);
-                                    onClick && onClick(...props);
-                                }}
-                            >
-                                {
-                                    type === groupType.checkbox &&
-                                    <Checkbox
-                                        { ...itemProps }
-                                        label={ label }
-                                        isChecked={
-                                            isChecked ||
-                                            this.isChecked(groupValue || groupKey, value || key) ||
-                                            false
-                                        }
-                                        onChange={(value, event) => {
-                                            item.onChange && item.onChange(value, event);
-                                        }}
-                                        name={ item.name || value || `${groupKey}-${key}` }
-                                        id={ id || value || `${groupKey}-${key}` }
-                                    />
-                                }
-                                {
-                                    type === groupType.radio &&
-                                    <Radio
-                                        isChecked={
-                                            isChecked ||
-                                            this.isChecked(groupValue || groupKey, value || key) ||
-                                            false
-                                        }
-                                        onChange={(value, event) => {
-                                            item.onChange && item.onChange(value, event);
-                                        }}
-                                        value={ value || key }
-                                        name={item.name || value || `${groupKey}-${key}`}
-                                        label={ label }
-                                        id={ id || value || `${groupKey}-${key}` }
-                                    />
-                                }
-                                { (type !== groupType.checkbox && type !== groupType.radio) ? label : '' }
-                            </SelectOption>
-                        )) }
-                    </SelectGroup>)
+                { groups && groups.length > 0 ? (
+                    groups.map(({ value: groupValue, onSelect, label: groupLabel, id: groupId, type, items, ...group }, groupKey) => (
+                        <SelectGroup
+                            {...group}
+                            key={groupId || groupValue || groupKey}
+                            label={groupLabel}
+                            id={groupId || `group-${groupValue || groupKey}`}
+                        >
+                            { this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) }
+                        </SelectGroup>
+                    ))
+                ) : (
+                    this.mapItems({ items })
                 ) }
             </Select> }
         </Fragment>);
     }
 }
+
+const itemsProps = PropTypes.arrayOf(
+    PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.node,
+        id: PropTypes.string,
+        isChecked: PropTypes.bool,
+        onClick: PropTypes.func,
+        props: PropTypes.shape({
+            [PropTypes.string]: PropTypes.any
+        })
+    })
+);
 
 Group.propTypes = {
     selected: PropTypes.shape({
@@ -183,25 +211,17 @@ Group.propTypes = {
         value: PropTypes.string,
         onSelect: PropTypes.func,
         type: PropTypes.oneOf(Object.values(groupType)),
-        items: PropTypes.arrayOf(
-            PropTypes.shape({
-                value: PropTypes.string,
-                label: PropTypes.node,
-                id: PropTypes.string,
-                isChecked: PropTypes.bool,
-                onClick: PropTypes.func,
-                props: PropTypes.shape({
-                    [PropTypes.string]: PropTypes.any
-                })
-            })
-        )
-    }))
+        items: itemsProps
+    })),
+    items: itemsProps,
+    isFilterable: PropTypes.bool
 };
 
 Group.defaultProps = {
     selected: {},
     onChange: () => undefined,
-    groups: []
+    groups: [],
+    isFilterable: false
 };
 
 export default Group;

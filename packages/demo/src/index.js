@@ -8,16 +8,19 @@ const DemoApp = () => {
     const [ value, onChange ] = useState();
     return (
         <ConditionalFilter items={[{
-            type: conditionalFilterType.typeahead,
+            type: conditionalFilterType.group,
             label: 'typeahead',
             value: 'typeahead',
             filterValues: {
                 onChange: (event, value) => onChange(value),
+                isFilterable: true,
                 value,
                 items: [{
-                    "Satellite": ["environment=production", "environment=test", "geo=MA"],
-                    "InsightsClient": ["group=saturn", "group=hallsat", "tag6"],
-                    "Foobar": ["tag7", "tag8", "tag9"]
+                    value: 'first',
+                    label: 'Fisrt'
+                }, {
+                    value: 'second',
+                    label: 'Second'
                 }]
             }
         }]}
