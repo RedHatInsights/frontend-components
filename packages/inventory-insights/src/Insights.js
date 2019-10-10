@@ -70,13 +70,13 @@ class InventoryRuleList extends Component {
     }
 
     async fetchEntityRules() {
-        const { entity, activeApp } = this.props;
+        const { entity } = this.props;
         const { filters, searchValue } = this.state;
         try {
             await insights.chrome.auth.getUser();
             const reportsFetch = await fetch(`${BASE_FETCH_URL}system/${entity.id}/reports/`, { credentials: 'include' });
             const reportsData = await reportsFetch.json();
-            const activeRuleFirstReportsData = activeApp === undefined ?  this.activeRuleFirst(reportsData) : reportsData;
+            const activeRuleFirstReportsData = this.activeRuleFirst(reportsData);
             this.fetchKbaDetails(activeRuleFirstReportsData);
             this.setState({
                 rows: this.buildRows(activeRuleFirstReportsData, {}, filters, searchValue, true),
@@ -105,8 +105,11 @@ class InventoryRuleList extends Component {
     };
 
     activeRuleFirst = (activeReports) => {
+        const { routerData } = this.props;
         const reports = [ ...activeReports ];
-        const activeRuleIndex = activeReports.findIndex(report => report.rule.rule_id === this.props.routerData.params.id);
+        const activeRuleIndex = routerData && routerData.params ?
+            activeReports.findIndex(report => report.rule.rule_id === this.props.routerData.params.id)
+            : -1;
         const activeReport = reports.splice(activeRuleIndex, 1);
 
         return activeRuleIndex !== -1 ? [ activeReport[0], ...reports ] : activeReports;
@@ -402,8 +405,7 @@ InventoryRuleList.propTypes = {
 
 const mapStateToProps = (state) => ({
     entity: state.entityDetails.entity,
-    routerData: state.routerData,
-    activeApp: state.entityDetails.activeApp
+    routerData: state.routerData
 });
 
 const mapDispatchToProps = dispatch => ({
