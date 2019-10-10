@@ -105,6 +105,11 @@ class Group extends Component {
                                 key={id || key}
                                 value={String(value || id || key)}
                                 onClick={e => {
+                                    if (e.target.tagName === 'LABEL') {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }
+
                                     const clickedGroup = {
                                         value: groupValue,
                                         label: groupLabel,
