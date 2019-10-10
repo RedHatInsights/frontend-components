@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import axios from 'axios';
 import { DefaultApi as SourcesDefaultApi } from '@redhat-cloud-services/sources-client';
 import { Base64 } from 'js-base64';
@@ -105,7 +104,7 @@ export function doCreateSource(formData, sourceTypes) {
                 resource_type: 'Endpoint'
             };
 
-            return getSourcesApi().createAuthentication(authenticationData).then((authenticationDataOut) => {
+            return getSourcesApi().createAuthentication(authenticationData).then(() => {
                 return {
                     ...sourceDataOut,
                     endpoint: [ endpointDataOut ],
