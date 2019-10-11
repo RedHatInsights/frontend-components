@@ -105,8 +105,11 @@ class InventoryRuleList extends Component {
     };
 
     activeRuleFirst = (activeReports) => {
+        const { routerData } = this.props;
         const reports = [ ...activeReports ];
-        const activeRuleIndex = activeReports.findIndex(report => report.rule.rule_id === this.props.routerData.params.id);
+        const activeRuleIndex = routerData && routerData.params ?
+            activeReports.findIndex(report => report.rule.rule_id === this.props.routerData.params.id)
+            : -1;
         const activeReport = reports.splice(activeRuleIndex, 1);
 
         return activeRuleIndex !== -1 ? [ activeReport[0], ...reports ] : activeReports;
