@@ -153,10 +153,10 @@ class Group extends Component {
         const { isExpanded } = this.state;
         const { groups, items, placeholder, className, selected, isFilterable } = this.props;
 
-        const fitlerItems = items || groups;
+        const filterItems = items || groups;
 
         return (<Fragment>
-            { !fitlerItems || (fitlerItems && fitlerItems.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
+            { !filterItems || (filterItems && filterItems.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
                 className={ className }
                 variant={ isFilterable ? SelectVariant.typeahead : SelectVariant.single }
                 aria-label="Select Input"
@@ -165,7 +165,7 @@ class Group extends Component {
                 onSelect={ () => undefined }
                 placeholderText={ placeholder }
                 { ...isFilterable && { onFilter: this.customFilter } }
-                { ...groups && groups.length > 0 && { isGroupped: true }}
+                { ...groups && groups.length > 0 && { isGrouped: true }}
             >
                 { groups && groups.length > 0 ? (
                     groups.map(({ value: groupValue, onSelect, label: groupLabel, id: groupId, type, items, ...group }, groupKey) => (
