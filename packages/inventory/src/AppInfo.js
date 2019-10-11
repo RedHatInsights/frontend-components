@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BulletList } from 'react-content-loader';
-import { CardBody, Card } from '@patternfly/react-core';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
 
 class AppInfo extends Component {
     render () {
@@ -13,11 +12,7 @@ class AppInfo extends Component {
                 { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>
                     { activeApp.component ? <activeApp.component /> : 'missing component' }
                 </div> }
-                { !loaded && <Card>
-                    <CardBody>
-                        <BulletList />
-                    </CardBody>
-                </Card> }
+                { !loaded && <Skeleton size={ SkeletonSize.md } /> }
             </Fragment>
         );
     }
