@@ -1,8 +1,7 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SystemRulesTable from './SystemRulesTable';
-import { IntlProvider } from 'react-intl';
 import { SortByDirection } from '@patternfly/react-table';
 import { TITLE_COLUMN } from './Constants';
 import { remediationsResponse, system, profileRules } from './Fixtures';

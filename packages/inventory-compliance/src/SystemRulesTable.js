@@ -101,7 +101,7 @@ class SystemRulesTable extends React.Component {
 
     setInitialCurrentRows() {
         const { hidePassed, itemsPerPage, severity, policy } = this.state;
-        let { profileRules, rows } = this.props;
+        let { profileRules } = this.props;
         const rowsRefIds = this.rulesToRows (profileRules);
 
         this.setState({
