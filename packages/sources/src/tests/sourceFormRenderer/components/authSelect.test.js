@@ -31,7 +31,8 @@ describe('AuthSelect component', () => {
             label: 'Test',
             name: 'auth-select',
             authName: 'access_key_secret_key',
-            index: 0
+            index: 0,
+            authsCount: 2
         };
     });
 
@@ -61,6 +62,20 @@ describe('AuthSelect component', () => {
         wrapper.find('input').simulate('change');
 
         expect(spyOnChange).toHaveBeenCalledWith(initialProps.authName);
+    });
+
+    it('calls onChange after render, when only one authtype is available', () => {
+        const OPENSHIFT_FORM_OPTIONS = {
+            getState: () => ({
+                values: {
+                    source_type: 'openshift'
+                }
+            })
+        };
+        const OPENSHIFT_AUTH_NAME = 'token';
+
+        mount(<AuthSelect { ...initialProps } formOptions={OPENSHIFT_FORM_OPTIONS} authName={OPENSHIFT_AUTH_NAME} authsCount={1}/>);
+        expect(spyOnChange).toHaveBeenCalledWith(OPENSHIFT_AUTH_NAME);
     });
 
     it('renders correctly with unsupported application', () => {

@@ -37,7 +37,8 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
             index,
             applicationTypes,
             sourceTypes,
-            disableAuthType
+            disableAuthType,
+            authsCount: auths.length
         });
         fields.push({
             component: componentTypes.SUB_FORM,
