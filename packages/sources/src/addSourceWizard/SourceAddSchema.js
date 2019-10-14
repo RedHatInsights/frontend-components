@@ -1,6 +1,6 @@
 import React from 'react';
 import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
-import { TextContent, Text, TextVariants, Title } from '@patternfly/react-core';
+import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import { AwsIcon, OpenshiftIcon, MicrosoftIcon } from '@patternfly/react-icons';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
@@ -77,11 +77,6 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
     },
     fields: [
         {
-            component: 'description',
-            name: 'description-source-type',
-            content: <Title headingLevel="h3" size="2xl">Configure your source</Title>
-        },
-        {
             component: 'card-select',
             name: 'application.application_type_id',
             label: 'Select your application',
@@ -117,7 +112,6 @@ const nameStep = () => ({
             component: 'description',
             name: 'description-summary',
             content: <TextContent key='step1'>
-                <Title headingLevel="h3" size="2xl">Select source name</Title>
                 <Text component={ TextVariants.p }>
                 To import data for an application, you need to connect to a data source.
                 Input a name and then proceed to the selection of application and source types.
@@ -147,7 +141,6 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
             component: 'description',
             name: 'description-summary',
             content: <TextContent>
-                <Title headingLevel="h3" size="2xl">Review source details</Title>
                 <Text component={ TextVariants.p }>
             Review the information below and click Finish to add your source. Use the Back button to make changes.
                 </Text>
@@ -175,6 +168,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection) => (
             buttonLabels: {
                 submit: 'Finish'
             },
+            showTitles: true,
             fields: [
                 nameStep(),
                 typesStep(sourceTypes, applicationTypes, disableAppSelection),

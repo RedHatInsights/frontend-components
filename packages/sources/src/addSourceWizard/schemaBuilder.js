@@ -1,6 +1,4 @@
-import React from 'react';
 import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
-import { Title } from '@patternfly/react-core';
 import hardcodedSchemas from './hardcodedSchemas';
 import get from 'lodash/get';
 
@@ -20,19 +18,10 @@ export const getAdditionalAuthFields = (type, auth) => get(hardcodedSchemas, [ t
 
 export const getAdditionalEndpointFields = (type) => get(hardcodedSchemas, [ type, 'endpoint', 'additionalFields' ], []);
 
-export const createTitle = (title) => ({
-    component: 'description',
-    name: `description-title-${title}`,
-    content: <Title headingLevel="h3" size="2xl">{title}</Title>
-});
-
 export const createAuthSelection = (type, applicationTypes, sourceTypes, endpointFields = [], disableAuthType = false) => {
     const auths = type.schema.authentication;
 
-    const fields = [
-        createTitle('Configure credentials'),
-        ...endpointFields
-    ];
+    const fields = [ ...endpointFields ];
 
     const stepMapper = {};
 
@@ -81,7 +70,6 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
 export const createEndpointStep = (endpoint, typeName) => ({
     ...endpoint,
     fields: [
-        createTitle(endpoint.title),
         ...getAdditionalEndpointFields(typeName),
         ...injectEndpointFieldsInfo(endpoint.fields, typeName)
     ],
@@ -93,10 +81,7 @@ export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpoi
     stepKey: `${name}-${authName}-additional-step`,
     nextStep: hasEndpointStep ? `${name}-endpoint` : 'summary',
     ...step,
-    fields: [
-        createTitle(step.title),
-        ...injectAuthFieldsInfo(step.fields, name, authName)
-    ]
+    fields: [ ...injectAuthFieldsInfo(step.fields, name, authName) ]
 }));
 
 export const schemaBuilder = (sourceTypes, appTypes, disableAuthType) => {
