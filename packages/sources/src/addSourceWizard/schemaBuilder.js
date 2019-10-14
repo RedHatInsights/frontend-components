@@ -58,7 +58,7 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
     return ({
         name: type.name,
         stepKey: type.name,
-        title: 'Configure credentials',
+        title: `Configure ${type.product_name} credentials`,
         fields,
         nextStep: {
             when: 'auth_select',
