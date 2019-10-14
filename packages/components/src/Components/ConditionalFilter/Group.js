@@ -12,7 +12,8 @@ export const groupType = {
 class Group extends Component {
     state = {
         isExpanded: false,
-        selected: {}
+        selected: {},
+        options: this.props.items || this.props.groups
     }
 
     onToggle = isExpanded => {
@@ -145,8 +146,27 @@ class Group extends Component {
         return Boolean(selected[groupValue][itemValue]);
     }
 
-    customFilter = (...props) => {
-        console.log(props);
+    customFilter = (e) => {
+        let input;
+
+        try {
+            input = new RegExp(e.target.value.toString(), 'i');
+          } catch (err) {
+            input = new RegExp(e.target.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+        }
+
+        let filteredValue = [];
+
+        this.state.options.filter(option => {
+            if(input.test(option.value)) {
+                option.items.filter(item => filteredValue.push(item.value));
+            } else {
+                option.items.filter(item => { input.test(item.value) && filteredValue.push(item.value)})
+            }
+        });
+        
+        //TODO, actually return the values?
+        console.log(filteredValue);
     }
 
     render() {

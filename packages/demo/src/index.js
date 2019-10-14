@@ -10,8 +10,6 @@ const DemoApp = () => {
 
     const selectedFiltered = Object.values(selected)[0];
 
-    console.log(selectedFiltered);
-
     return (
         <ConditionalFilter items={[{
             type: conditionalFilterType.group,

@@ -11,7 +11,7 @@
     ],
     "dependencies": {
         "@babel/core": "^7.4.3",
-        "@patternfly/react-core": "^3.112.9",
+        "@patternfly/react-core": "^3.114.4",
         "@patternfly/react-icons": "^3.14.8",
         "@patternfly/react-table": "^2.22.19",
         "@redhat-cloud-services/host-inventory-client": "1.0.18",
