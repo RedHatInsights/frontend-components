@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { FilterDropdown } from '@redhat-cloud-services/frontend-components';
 import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
+import { FilterIcon } from '@patternfly/react-icons';
 
 class RulesComplianceFilter extends React.Component {
     constructor(props) {
@@ -71,6 +72,7 @@ class RulesComplianceFilter extends React.Component {
         return (
             <FilterDropdown
                 id='rules-compliance-filter'
+                label={<FilterIcon/>}
                 filters = { this.state }
                 addFilter={ this.addFilter }
                 removeFilter={ this.removeFilter }
