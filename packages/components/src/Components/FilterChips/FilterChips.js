@@ -28,7 +28,7 @@ const FilterChips = ({ filters, onDelete }) => {
 
     return (
         <span className="ins-c-chip-filters">
-            <ChipGroup withToolbar>
+            <ChipGroup withToolbar numChips={ Infinity }>
                 { groupedFilters }
                 { plainFilters &&
                     <ChipGroupToolbarItem

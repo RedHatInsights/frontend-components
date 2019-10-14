@@ -28,6 +28,7 @@ class Group extends Component {
         if (activeGroup) {
             if (type !== groupType.radio && activeGroup[itemKey]) {
                 return {
+                    ...propSelected,
                     ...selected,
                     [groupKey]: {
                         ...activeGroup || {},
@@ -37,6 +38,7 @@ class Group extends Component {
             }
 
             return {
+                ...propSelected,
                 ...selected,
                 [groupKey]: {
                     ...type !== groupType.radio ? (activeGroup || {}) : {},
@@ -57,10 +59,13 @@ class Group extends Component {
     onSelect = (event, group, item, groupKey, itemKey) => {
         const newSelection = this.calculateSelected(group, groupKey, itemKey);
         const { onChange } = this.props;
-        onChange(event, newSelection, group, item);
-        this.setState({
-            selected: newSelection
-        });
+        if (onChange) {
+            onChange(event, newSelection, group, item);
+        } else {
+            this.setState({
+                selected: newSelection
+            });
+        }
     };
 
     isChecked = (groupValue, itemValue) => {
@@ -205,7 +210,6 @@ Group.propTypes = {
 
 Group.defaultProps = {
     selected: {},
-    onChange: () => undefined,
     groups: []
 };
 

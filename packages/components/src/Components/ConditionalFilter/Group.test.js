@@ -103,8 +103,7 @@ describe('Group - component', () => {
             expect(onChange).toHaveBeenCalled();
         });
         it('should update selected', () => {
-            const onChange = jest.fn();
-            const wrapper = mount(<Group {...config} onChange={onChange} />);
+            const wrapper = mount(<Group {...config} />);
             wrapper.find('button.pf-c-select__toggle').first().simulate('click');
             wrapper.update();
             wrapper.find('.pf-c-select__menu-item').first().simulate('click');
