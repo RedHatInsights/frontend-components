@@ -42,6 +42,7 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
         fields.push({
             component: componentTypes.SUB_FORM,
             name: `${auth.type}-subform`,
+            className: 'pf-u-pl-md',
             fields: [
                 ...getAdditionalAuthFields(type.name, auth.type),
                 ...injectAuthFieldsInfo(auth.fields, type.name, auth.type)
