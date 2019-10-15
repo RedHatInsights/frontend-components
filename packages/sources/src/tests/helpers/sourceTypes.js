@@ -97,32 +97,78 @@ export default [
                 {
                     type: 'arn',
                     name: 'ARN',
-                    fields: [
-                        {
-                            component: 'text-field',
-                            name: 'authentication.authtype',
-                            hideField: true,
-                            initialValue: 'arn'
-                        },
-                        {
-                            component: 'text-field',
-                            name: 'authentication.password',
-                            label: 'ARN',
-                            type: 'password'
-                        }
-                    ],
+                    fields: [{
+                        component: 'text-field',
+                        name: 'authentication.authtype',
+                        hideField: true,
+                        initialValue: 'arn'
+                    }],
                     additional_steps: [{
-                        title: 'ARN amazon bucket',
-                        substep: 'ARN',
-                        fields: [
-                            {
-                                label: 'Additional CostManagement field',
-                                component: 'text-field',
-                                name: 'cost_management.bucket',
-                                description: 'description',
-                                helperText: 'helperText'
-                            }
-                        ]
+                        title: 'Configure cost and usage reporting',
+                        nextStep: 'tags',
+                        fields: [{
+                            name: 'usage-description',
+                            component: 'description'
+                        }, {
+                            name: 'cost_management.s3_bucket',
+                            component: 'text-field',
+                            label: 'S3 bucket name'
+                        }]
+                    }, {
+                        title: 'Activate tags',
+                        stepKey: 'tags',
+                        nextStep: 'iam-policy',
+                        fields: [{
+                            name: 'tags-description',
+                            component: 'description'
+                        }]
+                    },
+                    {
+                        title: 'Create IAM policy',
+                        stepKey: 'iam-policy',
+                        nextStep: 'iam-role',
+                        substepOf: 'Enable account access',
+                        fields: [{
+                            name: 'iam-policy-description',
+                            component: 'description'
+                        }, {
+                            name: 'cost_management.iam_policy',
+                            component: 'text-field',
+                            label: 'IAM Policy',
+                            hideLabel: true
+                        }, {
+                            name: 'iam-policy-description-2',
+                            component: 'description'
+                        }]
+                    }, {
+                        title: 'Create IAM role',
+                        stepKey: 'iam-role',
+                        nextStep: 'arn',
+                        substepOf: 'Enable account access',
+                        fields: [{
+                            name: 'iam-role-description',
+                            component: 'description'
+                        }, {
+                            name: 'cost_management.account_id',
+                            component: 'text-field',
+                            label: 'Account ID',
+                            hideLabel: true
+                        }, {
+                            name: 'iam-role-description-2',
+                            component: 'description'
+                        }]
+                    }, {
+                        title: 'Enter ARN',
+                        stepKey: 'arn',
+                        substepOf: 'Enable account access',
+                        fields: [{
+                            name: 'arn-description',
+                            component: 'description'
+                        }, {
+                            name: 'authentication.arn',
+                            component: 'text-field',
+                            label: 'ARN'
+                        }]
                     }]
                 }
             ],
