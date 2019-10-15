@@ -84,7 +84,7 @@ class ReportDetails extends React.Component {
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
-                                    <LightbulbIcon /><strong> Related Knowledgebase article: </strong>
+                                    <LightbulbIcon /><strong> Related Knowledgebase article </strong>
                                 </CardHeader>
                                 <CardBody>
                                     { kbaDetail && kbaDetail.view_uri ?
@@ -99,7 +99,7 @@ class ReportDetails extends React.Component {
                         <StackItem>
                             <Card className='ins-m-card__flat'>
                                 <CardHeader>
-                                    <InfoCircleIcon /><strong> Additional info:</strong>
+                                    <InfoCircleIcon /><strong> Additional info </strong>
                                 </CardHeader>
                                 <CardBody>
                                     { rule.more_info && this.templateProcessor(rule.more_info) }
