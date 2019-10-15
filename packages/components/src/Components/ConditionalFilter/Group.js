@@ -13,17 +13,18 @@ class Group extends Component {
     state = {
         isExpanded: false,
         selected: {},
-        options: this.props.items || this.props.groups
+        filterBy: ''
     }
 
     onToggle = isExpanded => {
         this.setState({
-            isExpanded
+            isExpanded,
+            filterBy: ''
         });
     };
 
     mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
-        return items.map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
+        return items.filter(item => (item.value && item.value.indexOf(this.state.filterBy) !== -1) || (item.label && item.label.indexOf(this.state.filterBy) !== -1)).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
                 key={id || key}
@@ -128,7 +129,8 @@ class Group extends Component {
         const { onChange } = this.props;
         onChange(event, newSelection, group, item);
         this.setState({
-            selected: newSelection
+            selected: newSelection,
+            filterBy: ''
         });
     };
 
@@ -147,26 +149,7 @@ class Group extends Component {
     }
 
     customFilter = (e) => {
-        let input;
-
-        try {
-            input = new RegExp(e.target.value.toString(), 'i');
-          } catch (err) {
-            input = new RegExp(e.target.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-        }
-
-        let filteredValue = [];
-
-        this.state.options.filter(option => {
-            if(input.test(option.value)) {
-                option.items.filter(item => filteredValue.push(item.value));
-            } else {
-                option.items.filter(item => { input.test(item.value) && filteredValue.push(item.value)})
-            }
-        });
-        
-        //TODO, actually return the values?
-        console.log(filteredValue);
+        this.setState({ filterBy: e.target.value.toString() });
     }
 
     render() {
@@ -188,18 +171,20 @@ class Group extends Component {
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
                 { groups && groups.length > 0 ? (
-                    groups.map(({ value: groupValue, onSelect, label: groupLabel, id: groupId, type, items, ...group }, groupKey) => (
-                        <SelectGroup
-                            {...group}
-                            key={groupId || groupValue || groupKey}
-                            label={groupLabel}
-                            id={groupId || `group-${groupValue || groupKey}`}
-                        >
-                            { this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) }
-                        </SelectGroup>
-                    ))
+                    groups.map(({ value: groupValue, onSelect, label: groupLabel, id: groupId, type, items, ...group }, groupKey) => {
+                        const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey)
+                        return filteredItems.filter(Boolean).length > 0
+                            ? <SelectGroup
+                                {...group}
+                                key={groupId || groupValue || groupKey}
+                                label={groupLabel}
+                                id={groupId || `group-${groupValue || groupKey}`}
+                            > {filteredItems} </SelectGroup>
+                            : <Fragment/>
+                        }
+                    )
                 ) : (
-                    this.mapItems({ items })
+                   this.mapItems({ items }).length > 0 || <Fragment/>
                 ) }
             </Select> }
         </Fragment>);
