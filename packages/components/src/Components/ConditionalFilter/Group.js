@@ -24,7 +24,10 @@ class Group extends Component {
     };
 
     mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
-        return items.filter(item => (item.value && item.value.indexOf(this.state.filterBy) !== -1) || (item.label && item.label.indexOf(this.state.filterBy) !== -1)).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
+        return items.filter(item =>
+            (item.value && item.value.indexOf(this.state.filterBy) !== -1) ||
+            (item.label && item.label.indexOf(this.state.filterBy) !== -1)
+        ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
                 key={id || key}
@@ -172,7 +175,7 @@ class Group extends Component {
             >
                 { groups && groups.length > 0 ? (
                     groups.map(({ value: groupValue, onSelect, label: groupLabel, id: groupId, type, items, ...group }, groupKey) => {
-                        const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey)
+                        const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey);
                         return filteredItems.filter(Boolean).length > 0
                             ? <SelectGroup
                                 {...group}
@@ -180,11 +183,10 @@ class Group extends Component {
                                 label={groupLabel}
                                 id={groupId || `group-${groupValue || groupKey}`}
                             > {filteredItems} </SelectGroup>
-                            : <Fragment/>
-                        }
-                    )
+                            : <Fragment/>;
+                    })
                 ) : (
-                   this.mapItems({ items }).length > 0 || <Fragment/>
+                    this.mapItems({ items }).length > 0 || <Fragment/>
                 ) }
             </Select> }
         </Fragment>);
