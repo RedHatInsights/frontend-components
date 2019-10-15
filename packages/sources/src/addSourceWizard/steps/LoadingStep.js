@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EmptyState, EmptyStateVariant, EmptyStateIcon, EmptyStateBody, EmptyStateSecondaryActions, Button } from '@patternfly/react-core';
+import { EmptyState, EmptyStateVariant, EmptyStateBody, EmptyStateSecondaryActions, Button } from '@patternfly/react-core';
 import { Spinner } from '@redhat-cloud-services/frontend-components';
 
 const LoadingStep = ({ onClose, customText }) => <div className="pf-l-bullseye">

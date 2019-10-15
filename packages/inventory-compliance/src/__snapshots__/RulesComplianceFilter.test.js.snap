@@ -186,7 +186,14 @@ exports[`RulesComplianceFilter component should render filter 1`] = `
   }
   hideCategories={Array []}
   id="rules-compliance-filter"
-  label="Filters"
+  label={
+    <FilterIcon
+      color="currentColor"
+      noVerticalAlign={false}
+      size="sm"
+      title={null}
+    />
+  }
   removeFilter={[Function]}
 />
 `;

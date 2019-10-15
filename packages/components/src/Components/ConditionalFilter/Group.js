@@ -101,6 +101,7 @@ class Group extends Component {
         if (activeGroup) {
             if (type !== groupType.radio && activeGroup[itemKey]) {
                 return {
+                    ...propSelected,
                     ...selected,
                     [groupKey]: {
                         ...activeGroup || {},
@@ -110,6 +111,7 @@ class Group extends Component {
             }
 
             return {
+                ...propSelected,
                 ...selected,
                 [groupKey]: {
                     ...type !== groupType.radio ? (activeGroup || {}) : {},

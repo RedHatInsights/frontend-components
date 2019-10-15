@@ -40,7 +40,6 @@ class InventoryRuleList extends Component {
             { title: 'Description', transforms: [ sortable ] },
             { title: 'Added', transforms: [ sortable, cellWidth(15) ] },
             { title: 'Total risk', transforms: [ sortable ] },
-            { title: 'Risk of change', transforms: [ sortable ] },
             { title: <span className='ansibleCol'>
                 { AnsibeTowerIcon && <AnsibeTowerIcon size='md' /> } Ansible
             </span>, transforms: [ sortable ] }
@@ -72,23 +71,25 @@ class InventoryRuleList extends Component {
     async fetchEntityRules() {
         const { entity } = this.props;
         const { filters, searchValue } = this.state;
+        let reportsData = {};
         try {
             await insights.chrome.auth.getUser();
             const reportsFetch = await fetch(`${BASE_FETCH_URL}system/${entity.id}/reports/`, { credentials: 'include' });
-            const reportsData = await reportsFetch.json();
-            const activeRuleFirstReportsData = this.activeRuleFirst(reportsData);
-            this.fetchKbaDetails(activeRuleFirstReportsData);
-            this.setState({
-                rows: this.buildRows(activeRuleFirstReportsData, {}, filters, searchValue, true),
-                inventoryReportFetchStatus: 'fulfilled',
-                activeReports: activeRuleFirstReportsData
-            });
+            reportsData = await reportsFetch.json();
         } catch (error) {
             this.setState({
                 inventoryReportFetchStatus: 'failed'
             });
             console.warn(error, 'Entity rules fetch failed.');
         }
+
+        const activeRuleFirstReportsData = this.activeRuleFirst(reportsData);
+        this.fetchKbaDetails(activeRuleFirstReportsData);
+        this.setState({
+            rows: this.buildRows(activeRuleFirstReportsData, {}, filters, searchValue, true),
+            inventoryReportFetchStatus: 'fulfilled',
+            activeReports: activeRuleFirstReportsData
+        });
     }
 
     fetchKbaDetails = async (reportsData) => {
@@ -105,8 +106,11 @@ class InventoryRuleList extends Component {
     };
 
     activeRuleFirst = (activeReports) => {
+        const { routerData } = this.props;
         const reports = [ ...activeReports ];
-        const activeRuleIndex = activeReports.findIndex(report => report.rule.rule_id === this.props.routerData.params.id);
+        const activeRuleIndex = routerData && (typeof(routerData.params) !== 'undefined') ?
+            activeReports.findIndex(report => report.rule.rule_id === this.props.routerData.params.id)
+            : -1;
         const activeReport = reports.splice(activeRuleIndex, 1);
 
         return activeRuleIndex !== -1 ? [ activeReport[0], ...reports ] : activeReports;
@@ -145,14 +149,6 @@ class InventoryRuleList extends Component {
                                     severity={ rule.total_risk }
                                 />
                             </div>
-                        }, {
-                            title: <div className='pf-m-center' key={ key } style={ { verticalAlign: 'top' } }>
-                                <Battery
-                                    label='Risk of change'
-                                    labelHidden
-                                    severity={ resolution.resolution_risk.risk }
-                                />
-                            </div>
                         },
                         {
                             title: <div className='pf-m-center ' key={ key }>
@@ -176,7 +172,6 @@ class InventoryRuleList extends Component {
                 const filterValues = filters[key];
                 const rowValue = {
                     has_playbook: value.resolution.has_playbook,
-                    risk: value.resolution.resolution_risk.risk,
                     publish_date: rule.publish_date,
                     total_risk: rule.total_risk
                 };
@@ -238,8 +233,7 @@ class InventoryRuleList extends Component {
             2: sortBy(activeReports, [ result => result.rule.description ]),
             3: sortBy(activeReports, [ result => result.rule.publish_date ]),
             4: sortBy(activeReports, [ result => result.rule.total_risk ]),
-            5: sortBy(activeReports, [ result => result.resolution.resolution_risk.risk ]),
-            6: sortBy(activeReports, [ result => result.resolution.has_playbook ])
+            5: sortBy(activeReports, [ result => result.resolution.has_playbook ])
         };
         const sortedReportsDirectional = direction === SortByDirection.asc ? sortedReports[index] : sortedReports[index].reverse();
         this.setState({
@@ -371,7 +365,7 @@ class InventoryRuleList extends Component {
                                 <TableBody />
                             </Table>
                             { results === 0 &&
-                                <MessageState icon={ TimesCircleIcon } title='No matching systems found'
+                                <MessageState icon={ TimesCircleIcon } title='No matching rules found'
                                     text={ `This filter criteria matches no rules. Try changing your filter settings.` } />
                             }
                         </Fragment>

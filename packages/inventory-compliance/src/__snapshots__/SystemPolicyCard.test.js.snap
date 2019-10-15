@@ -49,7 +49,7 @@ exports[`SystemPolicyCard component should render 1`] = `
         class=""
         data-pf-content="true"
       >
-        30 of 40 rules passed
+        30 of 40 rules passed (75%)
       </small>
     </div>
     <div

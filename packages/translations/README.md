@@ -160,3 +160,27 @@ export default () => {
 }
 
 ```
+
+## Providing access to intl for a non-components
+
+A file contaning app constants, that is very much not a component can still leverage 
+translations by using the `intlHelper` function in the following way.
+
+```JS
+import { createIntl, createIntlCache } from 'react-intl';
+import { intlHelper } from '@redhat-cloud-services/frontend-components-translations';
+import messages from './Messages';
+const cache = createIntlCache();
+const intl = createIntl({
+    onError: console.log, 
+    locale: navigator.language
+}, cache);
+const intlSettings = {locale: navigator.language}
+
+const IMPACT_LABEL = {
+    1: intlHelper(intl.formatMessage(messages.low), intlSettings),
+    2: intlHelper(intl.formatMessage(messages.moderate),  intlSettings)),
+    3: intlHelper(intl.formatMessage(messages.important),  intlSettings)),
+    4: intlHelper(intl.formatMessage(messages.critical),  intlSettings))
+    };
+```

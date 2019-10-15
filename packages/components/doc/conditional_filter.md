@@ -172,6 +172,128 @@ class SomeCmp extends Component {
 }
 ```
 
+### 4) Group component
+This component combines 3 groups together in order to allow multiple groups to be present. Once you pass `type: 'group'` you can show multiple groups with different group type
+* `checkbox` - in order to show checkbox group pass `type: checkbox`
+* `radio` - in order to show radio group pass `type: radio`
+* default is plain - no checkbox, no radio.
+
+```JSX
+import React, { Component, useState } from 'react';
+import { ConditionalFilter, conditionalFilterType, groupType } from '@redhat-cloud-services/frontend-components';
+
+class SomeCmp extends Component {
+    render() {
+        const [ value, onChange ] = useState();
+        return (
+            <ConditionalFilter items={[{
+                type: conditionalFilterType.group,
+                label: 'Group',
+                value: 'checkbox',
+                filterValues: {
+                    selected: value,
+                    onChange: (event, newSelection, clickedGroup, clickedItem) => onChange(newSelection),
+                    groups: [
+                        {
+                            onSelect: (event, newSelection, clickedGroup, clickedItem) => {
+                                onChange({
+                                    ...value,
+                                    [clickedGroup]: {
+                                        [clickedItem]: value[clickedGroup] && value[clickedGroup][clickedItem] ?
+                                            false:
+                                            true
+                                    }
+                                });
+                            },
+                            label: 'First value', value: 'first',
+                            items: [
+                                {
+                                    label: 'First value',
+                                    onClick: (event, newSelection, clickedGroup, clickedItem) => {
+                                        onChange({
+                                            ...value,
+                                            [clickedGroup]: {
+                                                [clickedItem]: value[clickedGroup] && value[clickedGroup][clickedItem] ?
+                                                    false:
+                                                    true
+                                            }
+                                        });
+                                    }
+                                },
+                                {
+                                    label: 'Second value'
+                                }
+                            ]
+                        },
+                        {
+                            label: 'Second value',
+                            value: 'second',
+                            type: 'checkbox',
+                            items: [
+                                {
+                                    label: 'First checkbox'
+                                },
+                                {
+                                    label: 'Second checkbox',
+                                    value: 'some-value'
+                                }
+                            ]
+                        },
+                        {
+                            label: 'Third value',
+                            value: 'third',
+                            type: 'radio',
+                            items: [
+                                {
+                                    label: 'First radio'
+                                },
+                                {
+                                    label: 'Second radio'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }]}
+            />
+        );
+    }
+}
+```
+* `onChange` - callback has parameters `event`, `selection`, `clickedGroup` and `clickedItem` where `selection` is curently selected values.
+* group's `onSelect` - callback has parameters `event`, `clickedGroupKey` and `clickedItemKey`.
+* items's `onClick` - callback has parameters `event`, `clickedGroupKey` and `clickedItemKey`.
+* Props - passed from `filterValues`
+```JS
+{
+    onChange: PropTypes.func, // callback when new selection is fired
+    selected: PropTypes.shape({
+        [PropTypes.string]: PropTypes.shape({
+            [PropTypes.string]: PropTypes.bool
+        })
+    }),
+    placeholder: PropTypes.string,
+    groups: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.node,
+        value: PropTypes.string,
+        onSelect: PropTypes.func, // callback when clicked on item in group
+        type: PropTypes.oneOf(Object.values(groupType)),
+        items: PropTypes.arrayOf(
+            PropTypes.shape({
+                value: PropTypes.string,
+                label: PropTypes.node,
+                id: PropTypes.string,
+                isChecked: PropTypes.bool,
+                onClick: PropTypes.func, // callback when clicked on item
+                props: PropTypes.shape({
+                    [PropTypes.string]: PropTypes.any
+                })
+            })
+        )
+    }))
+}
+```
+
 ### *) Custom component
 If you want to display some custom component, for instance color picker, date picker or something more complicated you can use this type.
 

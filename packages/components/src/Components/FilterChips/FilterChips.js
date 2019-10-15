@@ -14,7 +14,7 @@ const FilterChips = ({ filters, onDelete }) => {
                     key={ `group_${group.category}_chip_${chip.name}` }
                     onClick={ (event) => {
                         event.stopPropagation();
-                        onDelete(event, [{ category: group.category, chips: [ chip ] }]);
+                        onDelete(event, [{ ...group, chips: [ chip ] }]);
                     }}
                 >
                     { chip.name }
@@ -28,7 +28,7 @@ const FilterChips = ({ filters, onDelete }) => {
 
     return (
         <span className="ins-c-chip-filters">
-            <ChipGroup withToolbar>
+            <ChipGroup withToolbar numChips={ Infinity }>
                 { groupedFilters }
                 { plainFilters &&
                     <ChipGroupToolbarItem
