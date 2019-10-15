@@ -1,6 +1,4 @@
-import React from 'react';
 import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
-import { Title } from '@patternfly/react-core';
 import hardcodedSchemas from './hardcodedSchemas';
 import get from 'lodash/get';
 
@@ -20,19 +18,10 @@ export const getAdditionalAuthFields = (type, auth) => get(hardcodedSchemas, [ t
 
 export const getAdditionalEndpointFields = (type) => get(hardcodedSchemas, [ type, 'endpoint', 'additionalFields' ], []);
 
-export const createTitle = (title) => ({
-    component: 'description',
-    name: `description-title-${title}`,
-    content: <Title headingLevel="h3" size="2xl">{title}</Title>
-});
-
 export const createAuthSelection = (type, applicationTypes, sourceTypes, endpointFields = [], disableAuthType = false) => {
     const auths = type.schema.authentication;
 
-    const fields = [
-        createTitle('Configure credentials'),
-        ...endpointFields
-    ];
+    const fields = [ ...endpointFields ];
 
     const stepMapper = {};
 
@@ -48,11 +37,13 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
             index,
             applicationTypes,
             sourceTypes,
-            disableAuthType
+            disableAuthType,
+            authsCount: auths.length
         });
         fields.push({
             component: componentTypes.SUB_FORM,
             name: `${auth.type}-subform`,
+            className: 'pf-u-pl-md',
             fields: [
                 ...getAdditionalAuthFields(type.name, auth.type),
                 ...injectAuthFieldsInfo(auth.fields, type.name, auth.type)
@@ -69,7 +60,7 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
     return ({
         name: type.name,
         stepKey: type.name,
-        title: 'Configure credentials',
+        title: `Configure ${type.product_name} credentials`,
         fields,
         nextStep: {
             when: 'auth_select',
@@ -81,7 +72,6 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
 export const createEndpointStep = (endpoint, typeName) => ({
     ...endpoint,
     fields: [
-        createTitle(endpoint.title),
         ...getAdditionalEndpointFields(typeName),
         ...injectEndpointFieldsInfo(endpoint.fields, typeName)
     ],
@@ -93,10 +83,7 @@ export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpoi
     stepKey: `${name}-${authName}-additional-step`,
     nextStep: hasEndpointStep ? `${name}-endpoint` : 'summary',
     ...step,
-    fields: [
-        createTitle(step.title),
-        ...injectAuthFieldsInfo(step.fields, name, authName)
-    ]
+    fields: [ ...injectAuthFieldsInfo(step.fields, name, authName) ]
 }));
 
 export const schemaBuilder = (sourceTypes, appTypes, disableAuthType) => {
