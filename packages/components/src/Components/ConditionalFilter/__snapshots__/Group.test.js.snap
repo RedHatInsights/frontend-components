@@ -4,7 +4,6 @@ exports[`Group - component render should render correctly 1`] = `
 <Fragment>
   <Text
     groups={Array []}
-    onChange={[Function]}
     onSubmit={[Function]}
     selected={Object {}}
     value="[object Object]"

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio, FormHelperText } from '@patternfly/react-core';
 
-const AuthRadio = ({ label, input, authName, index, formOptions, applicationTypes, sourceTypes, disableAuthType }) => {
+const AuthRadio = ({ label, input, authName, index, formOptions, applicationTypes, sourceTypes, disableAuthType, authsCount }) => {
     let application = {};
     let isDisabled = false;
     const values = formOptions.getState().values;
@@ -24,6 +24,10 @@ const AuthRadio = ({ label, input, authName, index, formOptions, applicationType
 
     if (disableAuthType && !isSelected) {
         isDisabled = true;
+    }
+
+    if (!input.value && !isDisabled && authsCount === 1) {
+        input.onChange(authName);
     }
 
     return (
@@ -71,7 +75,8 @@ AuthRadio.propTypes = {
     })).isRequired,
     authName: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
-    disableAuthType: PropTypes.bool
+    disableAuthType: PropTypes.bool,
+    authsCount: PropTypes.number.isRequired
 };
 
 AuthRadio.defaultProps = {

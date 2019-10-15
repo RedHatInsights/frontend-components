@@ -1,12 +1,8 @@
-import React from 'react';
-import { Title } from '@patternfly/react-core';
-
 import {
     injectAuthFieldsInfo,
     injectEndpointFieldsInfo,
     getAdditionalAuthFields,
     getAdditionalEndpointFields,
-    createTitle,
     createAuthSelection,
     createEndpointStep,
     createAdditionalSteps,
@@ -17,18 +13,6 @@ import sourceTypes from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
 
 describe('schema builder', () => {
-    describe('createTitle', () => {
-        it('should return title step', () => {
-            const TITLE = 'title title tile';
-
-            expect(createTitle(TITLE)).toEqual({
-                component: 'description',
-                name: `description-title-${TITLE}`,
-                content: <Title headingLevel="h3" size="2xl">{TITLE}</Title>
-            });
-        });
-    });
-
     describe('getAdditionalEndpointFields', () => {
         it('returns additionalEndpointFields for openshift', () => {
             expect(getAdditionalEndpointFields('openshift')).toEqual(
@@ -120,7 +104,6 @@ describe('schema builder', () => {
             expect(createEndpointStep(ENDPOINT, 'openshift')).toEqual(
                 expect.objectContaining({
                     fields: [
-                        createTitle(ENDPOINT.title),
                         ...getAdditionalEndpointFields('openshift'),
                         ...injectEndpointFieldsInfo(ENDPOINT.fields, 'openshift')
                     ],

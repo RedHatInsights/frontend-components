@@ -9,7 +9,7 @@ exports[`FilterChips component should render - no data 1`] = `
     collapsedText="\${remaining} more"
     defaultIsOpen={false}
     expandedText="Show Less"
-    numChips={3}
+    numChips={Infinity}
     withToolbar={true}
   >
     <ChipGroupToolbarItem
@@ -36,7 +36,7 @@ exports[`FilterChips component should render 1`] = `
     collapsedText="\${remaining} more"
     defaultIsOpen={false}
     expandedText="Show Less"
-    numChips={3}
+    numChips={Infinity}
     withToolbar={true}
   >
     <ChipGroupToolbarItem
