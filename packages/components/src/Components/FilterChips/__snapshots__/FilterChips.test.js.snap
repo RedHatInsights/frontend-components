@@ -44,27 +44,15 @@ exports[`FilterChips component should render 1`] = `
       key="group_Group 1"
       onClick={[Function]}
     >
-      <Chip
-        className=""
-        closeBtnAriaLabel="close"
-        component="div"
-        isOverflowChip={false}
-        isReadOnly={false}
+      <Component
         key="group_Group 1_chip_Chip 1"
         onClick={[Function]}
-        tooltipPosition="top"
       >
         Chip 1
-      </Chip>
-      <Chip
-        className=""
-        closeBtnAriaLabel="close"
-        component="div"
-        isOverflowChip={false}
-        isReadOnly={false}
+      </Component>
+      <Component
         key="group_Group 1_chip_Chip 2"
         onClick={[Function]}
-        tooltipPosition="top"
       >
         Chip 2
         <Badge
@@ -72,37 +60,25 @@ exports[`FilterChips component should render 1`] = `
         >
           3
         </Badge>
-      </Chip>
+      </Component>
     </ChipGroupToolbarItem>
     <ChipGroupToolbarItem
       className="ins-c-chip-group__plain"
       key="group_plain"
       onClick={[Function]}
     >
-      <Chip
-        className=""
-        closeBtnAriaLabel="close"
-        component="div"
-        isOverflowChip={false}
-        isReadOnly={false}
+      <Component
         key="group_plain_chip_Chip 3"
         onClick={[Function]}
-        tooltipPosition="top"
       >
         Chip 3
-      </Chip>
-      <Chip
-        className=""
-        closeBtnAriaLabel="close"
-        component="div"
-        isOverflowChip={false}
-        isReadOnly={false}
+      </Component>
+      <Component
         key="group_plain_chip_Chip 4"
         onClick={[Function]}
-        tooltipPosition="top"
       >
         Chip 4
-      </Chip>
+      </Component>
     </ChipGroupToolbarItem>
   </ChipGroup>
   <Component

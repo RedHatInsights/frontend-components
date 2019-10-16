@@ -62,9 +62,7 @@ exports[`SystemRulesTable component should render 1`] = `
       perPage={10}
     />
   </TableToolbar>
-  <Table
-    borders={true}
-    canSelectAll={true}
+  <Component
     cells={
       Array [
         Object {
@@ -114,16 +112,9 @@ exports[`SystemRulesTable component should render 1`] = `
       ]
     }
     className="compliance-rules-table"
-    contentId="expanded-content"
-    dropdownDirection="down"
-    dropdownPosition="right"
-    expandId="expandable-toggle"
-    gridBreakPoint="grid-md"
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
-    role="grid"
-    rowLabeledBy="simple-node"
     rows={
       Array [
         Object {
@@ -431,11 +422,10 @@ exports[`SystemRulesTable component should render 1`] = `
       ]
     }
     sortBy={Object {}}
-    variant={null}
   >
     <TableHeader />
     <TableBody />
-  </Table>
+  </Component>
   <TableToolbar
     className="ins-c-inventory__table--toolbar"
     isFooter={true}
@@ -454,9 +444,7 @@ exports[`SystemRulesTable component should render 1`] = `
 `;
 
 exports[`SystemRulesTable component should render a loading table 1`] = `
-<Table
-  borders={true}
-  canSelectAll={true}
+<Component
   cells={
     Array [
       Object {
@@ -505,14 +493,6 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
       },
     ]
   }
-  className=""
-  contentId="expanded-content"
-  dropdownDirection="down"
-  dropdownPosition="right"
-  expandId="expandable-toggle"
-  gridBreakPoint="grid-md"
-  role="grid"
-  rowLabeledBy="simple-node"
   rows={
     Array [
       Object {
@@ -597,9 +577,8 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
       },
     ]
   }
-  variant={null}
 >
   <TableHeader />
   <TableBody />
-</Table>
+</Component>
 `;
