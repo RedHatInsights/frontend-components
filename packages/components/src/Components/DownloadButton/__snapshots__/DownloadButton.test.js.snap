@@ -150,12 +150,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   role="menu"
                 >
                   <li
-                    id=""
                     role="menuitem"
                   >
                     <button
                       class="pf-c-dropdown__menu-item"
-                      id=""
                       tabindex="-1"
                       type="button"
                     >
@@ -163,12 +161,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     </button>
                   </li>
                   <li
-                    id=""
                     role="menuitem"
                   >
                     <button
                       class="pf-c-dropdown__menu-item"
-                      id=""
                       tabindex="-1"
                       type="button"
                     >
@@ -176,12 +172,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     </button>
                   </li>
                   <li
-                    id=""
                     role="menuitem"
                   >
                     <button
                       class="pf-c-dropdown__menu-item"
-                      id=""
                       tabindex="-1"
                       type="button"
                     />
@@ -257,12 +251,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     role="menu"
                   >
                     <li
-                      id=""
                       role="menuitem"
                     >
                       <button
                         class="pf-c-dropdown__menu-item"
-                        id=""
                         tabindex="-1"
                         type="button"
                       >
@@ -270,12 +262,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       </button>
                     </li>
                     <li
-                      id=""
                       role="menuitem"
                     >
                       <button
                         class="pf-c-dropdown__menu-item"
-                        id=""
                         tabindex="-1"
                         type="button"
                       >
@@ -283,12 +273,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       </button>
                     </li>
                     <li
-                      id=""
                       role="menuitem"
                     >
                       <button
                         class="pf-c-dropdown__menu-item"
-                        id=""
                         tabindex="-1"
                         type="button"
                       />
@@ -395,7 +383,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               <InternalDropdownItem
                 className=""
                 component="button"
-                componentID=""
                 context={
                   Object {
                     "keyHandler": [Function],
@@ -403,7 +390,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   }
                 }
                 href=""
-                id=""
                 index={0}
                 isDisabled={false}
                 isHovered={false}
@@ -416,7 +402,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               >
                 <li
                   className={null}
-                  id=""
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   role="menuitem"
@@ -425,7 +410,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     className="pf-c-dropdown__menu-item"
                     disabled={false}
                     href={null}
-                    id=""
                     onSelect={[Function]}
                     tabIndex={-1}
                     type="button"
@@ -444,7 +428,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               <InternalDropdownItem
                 className=""
                 component="button"
-                componentID=""
                 context={
                   Object {
                     "keyHandler": [Function],
@@ -452,7 +435,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   }
                 }
                 href=""
-                id=""
                 index={1}
                 isDisabled={false}
                 isHovered={false}
@@ -465,7 +447,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               >
                 <li
                   className={null}
-                  id=""
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   role="menuitem"
@@ -474,7 +455,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     className="pf-c-dropdown__menu-item"
                     disabled={false}
                     href={null}
-                    id=""
                     onSelect={[Function]}
                     tabIndex={-1}
                     type="button"
@@ -492,7 +472,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               <InternalDropdownItem
                 className=""
                 component="button"
-                componentID=""
                 context={
                   Object {
                     "keyHandler": [Function],
@@ -500,7 +479,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   }
                 }
                 href=""
-                id=""
                 index={2}
                 isDisabled={false}
                 isHovered={false}
@@ -513,7 +491,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               >
                 <li
                   className={null}
-                  id=""
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   role="menuitem"
@@ -522,7 +499,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     className="pf-c-dropdown__menu-item"
                     disabled={false}
                     href={null}
-                    id=""
                     onSelect={[Function]}
                     tabIndex={-1}
                     type="button"

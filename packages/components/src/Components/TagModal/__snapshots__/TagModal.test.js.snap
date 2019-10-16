@@ -15,8 +15,10 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   showClose={true}
   title="Tags for paul.localhost.com"
 >
-  <Component
+  <Table
     aria-label="paul.localhost.com tags"
+    borders={true}
+    canSelectAll={true}
     cells={
       Array [
         Object {
@@ -28,6 +30,13 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
       ]
     }
     className="ins-c-tag-modal__table"
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    role="grid"
+    rowLabeledBy="simple-node"
     rows={
       Array [
         Array [
@@ -44,7 +53,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   >
     <TableHeader />
     <TableBody />
-  </Component>
+  </Table>
 </Modal>
 `;
 
@@ -66,8 +75,10 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   <h1>
     I am a chile component
   </h1>
-  <Component
+  <Table
     aria-label="paul.localhost.com tags"
+    borders={true}
+    canSelectAll={true}
     cells={
       Array [
         Object {
@@ -79,11 +90,18 @@ exports[`TagCount component Render the modal with a child component 1`] = `
       ]
     }
     className="ins-c-tag-modal__table"
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    role="grid"
+    rowLabeledBy="simple-node"
     rows={Array []}
     variant="compact"
   >
     <TableHeader />
     <TableBody />
-  </Component>
+  </Table>
 </Modal>
 `;

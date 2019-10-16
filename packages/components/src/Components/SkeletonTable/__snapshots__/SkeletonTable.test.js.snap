@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SkeletonTable component should render correctly 1`] = `
-<Component
+<Table
   aria-label="Loading"
+  borders={true}
+  canSelectAll={true}
   cells={
     Array [
       Object {
@@ -37,6 +39,14 @@ exports[`SkeletonTable component should render correctly 1`] = `
       },
     ]
   }
+  className=""
+  contentId="expanded-content"
+  dropdownDirection="down"
+  dropdownPosition="right"
+  expandId="expandable-toggle"
+  gridBreakPoint="grid-md"
+  role="grid"
+  rowLabeledBy="simple-node"
   rows={
     Array [
       Array [
@@ -521,21 +531,32 @@ exports[`SkeletonTable component should render correctly 1`] = `
       ],
     ]
   }
+  variant={null}
 >
   <TableHeader />
   <TableBody />
-</Component>
+</Table>
 `;
 
 exports[`SkeletonTable component should render correctly with static columns 1`] = `
-<Component
+<Table
   aria-label="Loading"
+  borders={true}
+  canSelectAll={true}
   cells={
     Array [
       "first",
       "second",
     ]
   }
+  className=""
+  contentId="expanded-content"
+  dropdownDirection="down"
+  dropdownPosition="right"
+  expandId="expandable-toggle"
+  gridBreakPoint="grid-md"
+  role="grid"
+  rowLabeledBy="simple-node"
   rows={
     Array [
       Array [
@@ -750,15 +771,18 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
       ],
     ]
   }
+  variant={null}
 >
   <TableHeader />
   <TableBody />
-</Component>
+</Table>
 `;
 
 exports[`SkeletonTable component should render correctly without rows 1`] = `
-<Component
+<Table
   aria-label="Loading"
+  borders={true}
+  canSelectAll={true}
   cells={
     Array [
       Object {
@@ -793,9 +817,18 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
       },
     ]
   }
+  className=""
+  contentId="expanded-content"
+  dropdownDirection="down"
+  dropdownPosition="right"
+  expandId="expandable-toggle"
+  gridBreakPoint="grid-md"
+  role="grid"
+  rowLabeledBy="simple-node"
   rows={Array []}
+  variant={null}
 >
   <TableHeader />
   <TableBody />
-</Component>
+</Table>
 `;
