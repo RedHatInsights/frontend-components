@@ -37,6 +37,7 @@ class ContextEntityTableToolbar extends Component {
             onRefreshData,
             perPage,
             filters,
+            filterConfig,
             hasItems,
             pathPrefix,
             apiBase,
@@ -45,21 +46,26 @@ class ContextEntityTableToolbar extends Component {
             actionsConfig,
             ...props
         } = this.props;
+        const inventoryFilters = [
+            ...!hasItems ? [{
+                label: 'Name',
+                value: 'name-filter',
+                filterValues: {
+                    placeholder: 'Find system by name',
+                    value: this.state.textFilter,
+                    onChange: (_e, value) => this.onSetTextFilter(value)
+                }
+            }] : [],
+            ...(filterConfig && filterConfig.items) || []
+        ];
         return (<PrimaryToolbar
             {...props}
             className="ins-c-inventory__table--toolbar"
-            filterConfig={{
-                items: [
-                    ...!hasItems ? [{
-                        label: 'Name',
-                        value: 'name-filter',
-                        filterValues: {
-                            placeholder: 'Find system by name',
-                            value: this.state.textFilter,
-                            onChange: (_e, value) => this.onSetTextFilter(value)
-                        }
-                    }] : []
-                ]
+            {...inventoryFilters.length > 0 && {
+                filterConfig: {
+                    ...filterConfig || {},
+                    items: inventoryFilters
+                }
             }}
             actionsConfig={
                 loaded ?
@@ -89,6 +95,7 @@ const EntityTableToolbar = ({ ...props }) => (
 );
 
 EntityTableToolbar.propTypes = {
+    filterConfig: PropTypes.shape(PrimaryToolbar.propTypes.filterConfig),
     total: PropTypes.number,
     filters: PropTypes.array,
     hasItems: PropTypes.bool,
