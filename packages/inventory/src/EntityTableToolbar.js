@@ -4,16 +4,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 import debounce from 'lodash/debounce';
+import { InventoryContext } from './Inventory';
 
 const TEXT_FILTER = 'hostname_or_id';
 
-class EntityTableToolbar extends Component {
+class ContextEntityTableToolbar extends Component {
     state = {
         textFilter: ''
     }
 
     debouncedRefresh = debounce((config) => {
-        this.props.onRefresh && this.props.onRefresh(config);
+        this.props.onRefreshData && this.props.onRefreshData(config);
     }, 800);
 
     onSetTextFilter = (value) => {
@@ -33,7 +34,7 @@ class EntityTableToolbar extends Component {
         const {
             total,
             page,
-            onRefresh,
+            onRefreshData,
             perPage,
             filters,
             hasItems,
@@ -69,15 +70,23 @@ class EntityTableToolbar extends Component {
                 page,
                 itemCount: total,
                 perPage,
-                onSetPage: (_e, newPage) => onRefresh({ page: newPage, perPage, filters }),
+                onSetPage: (_e, newPage) => onRefreshData({ page: newPage, perPage, filters }),
                 // eslint-disable-next-line camelcase
-                onPerPageSelect: (_e, newPerPage) => onRefresh({ page: 1, per_page: newPerPage, filters })
+                onPerPageSelect: (_e, newPerPage) => onRefreshData({ page: 1, per_page: newPerPage, filters })
             } : <Skeleton size={SkeletonSize.lg} />}
         >
             { children }
         </PrimaryToolbar>);
     }
 }
+
+const EntityTableToolbar = ({ ...props }) => (
+    <InventoryContext.Consumer>
+        {({ onRefreshData }) => (
+            <ContextEntityTableToolbar {...props} onRefreshData={onRefreshData} />
+        )}
+    </InventoryContext.Consumer>
+);
 
 EntityTableToolbar.propTypes = {
     total: PropTypes.number,
@@ -86,12 +95,16 @@ EntityTableToolbar.propTypes = {
     pathPrefix: PropTypes.number,
     apiBase: PropTypes.string,
     page: PropTypes.number,
-    onRefresh: PropTypes.func,
     perPage: PropTypes.number,
     children: PropTypes.node,
     pagination: PrimaryToolbar.propTypes.pagination,
     loaded: PropTypes.bool,
     actionsConfig: PrimaryToolbar.propTypes.actionsConfig
+};
+
+ContextEntityTableToolbar.propTypes = {
+    ...EntityTableToolbar.propTypes,
+    onRefreshData: PropTypes.func
 };
 
 function mapStateToProps(
