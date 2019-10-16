@@ -11,9 +11,9 @@
     ],
     "dependencies": {
         "@babel/core": "^7.4.3",
-        "@patternfly/react-core": "^3.112.9",
+        "@patternfly/react-core": "3.115.2",
         "@patternfly/react-icons": "^3.14.8",
-        "@patternfly/react-table": "^2.22.19",
+        "@patternfly/react-table": "2.23.8",
         "@redhat-cloud-services/host-inventory-client": "1.0.18",
         "abortcontroller-polyfill": "^1.2.1",
         "apollo-boost": "^0.1.23",
