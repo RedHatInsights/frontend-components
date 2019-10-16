@@ -176,10 +176,10 @@ describe('schema builder', () => {
             expect(schema).toEqual(expect.arrayContaining([ expect.any(Object) ]));
 
             // 4x AuthSelection: Ansible, Azure, AWS, Openshift
-            // 1x AWS ARN additional steps
+            // 5x AWS ARN additional steps
             // 1x Openshift endpoint
             // 1x Ansible endpoint
-            expect(schema).toHaveLength(7);
+            expect(schema).toHaveLength(11);
         });
     });
 });
