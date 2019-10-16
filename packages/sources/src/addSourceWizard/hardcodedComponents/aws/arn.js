@@ -53,7 +53,10 @@ export const IAMPolicyDescription = ({ formOptions }) => {
 To grant permissions to cost management report you just configured, create an AWS identity access management (IAM) policy.
         </Text>
         <TextList>
-            <TextListItem>Sign in to the <a href="#">AWS Identity Access Management* (IAM) console</a>.</TextListItem>
+            <TextListItem>
+                Sign in to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html" rel="noopener noreferrer" target="_blank">
+                    AWS Identity Access Management* (IAM) console</a>.
+            </TextListItem>
             <TextListItem>Create a new policy, pasting the following content into the JSON text box.</TextListItem>
             <ClipboardCopy isCode variant={ClipboardCopyVariant.expansion} className="pf-u-m-sm-on-sm" isReadOnly>
                 {JSON.stringify({
