@@ -13,36 +13,17 @@ exports[`Radio render should render correctly 1`] = `
 
 exports[`Radio render should render correctly placeholder 1`] = `
 <Fragment>
-  <Select
+  <Component
     aria-label="Select Input"
-    ariaLabelClear="Clear all"
-    ariaLabelRemove="Remove"
-    ariaLabelToggle="Options menu"
-    ariaLabelTypeAhead=""
-    ariaLabelledBy=""
-    className=""
-    createText="Create"
-    direction="down"
-    isCreatable={false}
-    isDisabled={false}
     isExpanded={false}
-    isGrouped={false}
-    isPlain={false}
-    maxHeight=""
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
     onSelect={[Function]}
     onToggle={[Function]}
     placeholderText="some placeholder"
-    selections=""
-    toggleIcon={null}
-    toggleId={null}
     variant="single"
-    width=""
   >
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -73,6 +54,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -99,6 +81,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -123,42 +106,22 @@ exports[`Radio render should render correctly placeholder 1`] = `
         value={2}
       />
     </SelectOption>
-  </Select>
+  </Component>
 </Fragment>
 `;
 
 exports[`Radio render should render correctly with items 1`] = `
 <Fragment>
-  <Select
+  <Component
     aria-label="Select Input"
-    ariaLabelClear="Clear all"
-    ariaLabelRemove="Remove"
-    ariaLabelToggle="Options menu"
-    ariaLabelTypeAhead=""
-    ariaLabelledBy=""
-    className=""
-    createText="Create"
-    direction="down"
-    isCreatable={false}
-    isDisabled={false}
     isExpanded={false}
-    isGrouped={false}
-    isPlain={false}
-    maxHeight=""
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
     onSelect={[Function]}
     onToggle={[Function]}
-    placeholderText=""
-    selections=""
-    toggleIcon={null}
-    toggleId={null}
     variant="single"
-    width=""
   >
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -189,6 +152,7 @@ exports[`Radio render should render correctly with items 1`] = `
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -215,6 +179,7 @@ exports[`Radio render should render correctly with items 1`] = `
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -239,42 +204,22 @@ exports[`Radio render should render correctly with items 1`] = `
         value={2}
       />
     </SelectOption>
-  </Select>
+  </Component>
 </Fragment>
 `;
 
 exports[`Radio render should render correctly with items and default value 1`] = `
 <Fragment>
-  <Select
+  <Component
     aria-label="Select Input"
-    ariaLabelClear="Clear all"
-    ariaLabelRemove="Remove"
-    ariaLabelToggle="Options menu"
-    ariaLabelTypeAhead=""
-    ariaLabelledBy=""
-    className=""
-    createText="Create"
-    direction="down"
-    isCreatable={false}
-    isDisabled={false}
     isExpanded={false}
-    isGrouped={false}
-    isPlain={false}
-    maxHeight=""
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
     onSelect={[Function]}
     onToggle={[Function]}
-    placeholderText=""
-    selections=""
-    toggleIcon={null}
-    toggleId={null}
     variant="single"
-    width=""
   >
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -305,6 +250,7 @@ exports[`Radio render should render correctly with items and default value 1`] =
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -331,6 +277,7 @@ exports[`Radio render should render correctly with items and default value 1`] =
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -355,42 +302,22 @@ exports[`Radio render should render correctly with items and default value 1`] =
         value={2}
       />
     </SelectOption>
-  </Select>
+  </Component>
 </Fragment>
 `;
 
 exports[`Radio render should render correctly with items and selected value 1`] = `
 <Fragment>
-  <Select
+  <Component
     aria-label="Select Input"
-    ariaLabelClear="Clear all"
-    ariaLabelRemove="Remove"
-    ariaLabelToggle="Options menu"
-    ariaLabelTypeAhead=""
-    ariaLabelledBy=""
-    className=""
-    createText="Create"
-    direction="down"
-    isCreatable={false}
-    isDisabled={false}
     isExpanded={false}
-    isGrouped={false}
-    isPlain={false}
-    maxHeight=""
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
     onSelect={[Function]}
     onToggle={[Function]}
-    placeholderText=""
-    selections=""
-    toggleIcon={null}
-    toggleId={null}
     variant="single"
-    width=""
   >
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -421,6 +348,7 @@ exports[`Radio render should render correctly with items and selected value 1`] 
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -447,6 +375,7 @@ exports[`Radio render should render correctly with items and selected value 1`] 
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -471,6 +400,6 @@ exports[`Radio render should render correctly with items and selected value 1`] 
         value={2}
       />
     </SelectOption>
-  </Select>
+  </Component>
 </Fragment>
 `;
