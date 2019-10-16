@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { DataToolbarItem } from '@patternfly/react-core/dist/js/experimental';
 import { Dropdown, DropdownItem, KebabToggle, Button, DropdownSeparator } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
+import { DownloadButton } from '../DownloadButton';
 
 export const overflowActionsMapper = (action, key) => (
     <DropdownItem
@@ -35,7 +36,7 @@ class Actions extends Component {
 
     render() {
         const { isOpen } = this.state;
-        const { actions, overflowActions, onSelect, dropdownProps } = this.props;
+        const { actions, overflowActions, onSelect, dropdownProps, exportConfig } = this.props;
         const [ firstAction, ...restActions ] = actions;
         return (
             <Fragment>
@@ -49,6 +50,12 @@ class Actions extends Component {
                                 </Button> :
                                 firstAction
                         }
+                    </DataToolbarItem>
+                }
+                {
+                    exportConfig && (exportConfig.extraItems || exportConfig.onSelect) &&
+                    <DataToolbarItem>
+                        <DownloadButton  { ...exportConfig } />
                     </DataToolbarItem>
                 }
                 {
@@ -112,13 +119,15 @@ Actions.propTypes = {
     overflowActions: actionsType,
     dropdownProps: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
-    })
+    }),
+    exportConfig: PropTypes.shape(DownloadButton.propTypes)
 };
 
 Actions.defaultProps = {
     actions: [],
     overflowActions: [],
     dropdownProps: {},
+    exportConfig: {},
     onSelect: () => undefined
 };
 

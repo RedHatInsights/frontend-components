@@ -82,12 +82,14 @@ class PrimaryToolbar extends Component {
                     {
                         (
                             (actionsConfig && actionsConfig.actions && actionsConfig.actions.length > 0) ||
-                            sortByConfig
+                            sortByConfig ||
+                            exportConfig
                         ) && (
                             React.isValidElement(actionsConfig) ?
                                 actionsConfig :
                                 <Actions
                                     {...actionsConfig || {}}
+                                    exportConfig={ exportConfig }
                                     overflowActions={overflowActions}
                                 />
                         )
@@ -99,16 +101,6 @@ class PrimaryToolbar extends Component {
                                 React.isValidElement(sortByConfig) ?
                                     sortByConfig :
                                     <SortBy  {...sortByConfig }/>
-                            }
-                        </DataToolbarItem>
-                    }
-                    {
-                        exportConfig &&
-                        <DataToolbarItem>
-                            {
-                                React.isValidElement(exportConfig) ?
-                                    exportConfig :
-                                    <DownloadButton  { ...exportConfig }/>
                             }
                         </DataToolbarItem>
                     }
