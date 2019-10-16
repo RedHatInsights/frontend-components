@@ -1,5 +1,15 @@
 import React from 'react';
-import { TextContent, Text, TextVariants, TextList, TextListItem, TextListVariants } from '@patternfly/react-core';
+import PropTypes from 'prop-types';
+import {
+    TextContent,
+    Text,
+    TextVariants,
+    TextList,
+    TextListItem,
+    TextListVariants,
+    ClipboardCopy,
+    ClipboardCopyVariant
+} from '@patternfly/react-core';
 
 export const UsageDescription = () => (<TextContent>
     <Text component={ TextVariants.p }>
@@ -27,34 +37,69 @@ To delegate account access, create an IAM role to associate with your IAM policy
     <TextList>
         <TextListItem>From the AWS Identity Access Management console, create a new role.</TextListItem>
         <TextListItem>Select another AWS Account from the list of trusted entities and paste the foolowing value into the Account ID field:</TextListItem>
-    </TextList>
-</TextContent>);
-
-export const IAMRoleDescriptionSecond = () => (<TextContent>
-    <TextList>
+        <ClipboardCopy className="pf-u-m-sm-on-sm" isReadOnly>
+        589173575009
+        </ClipboardCopy>
         <TextListItem>Attach the permissions policy that you just created.</TextListItem>
         <TextListItem>Complete the process to create your new role.</TextListItem>
     </TextList>
 </TextContent>);
 
-export const IAMPolicyDescription = () => (<TextContent>
-    <Text component={ TextVariants.p }>
-To grant permissions to cost management report you just configured, create an AWS identity access management (IAM) policy.
-    </Text>
-    <TextList>
-        <TextListItem>Sign in to the <a href="#">AWS Identity Access Management* (IAM) console</a>.</TextListItem>
-        <TextListItem>Create a new policy, pasting the following content into the JSON text box.</TextListItem>
-    </TextList>
-</TextContent>);
+export const IAMPolicyDescription = ({ formOptions }) => {
+    const s3Bucket = formOptions.getState().values.cost_management.s3_bucket;
 
-export const IAMPolicyDescriptionSecond = () => (<TextContent>
-    <TextList>
-        <TextListItem>Complete the process to create your new policy.</TextListItem>
-    </TextList>
-    <Text component={ TextVariants.p }>
-        <b>Do not close your browser.</b> You will need to be logged in to the IAM console to compute the next step.
-    </Text>
-</TextContent>);
+    return (<TextContent>
+        <Text component={ TextVariants.p }>
+To grant permissions to cost management report you just configured, create an AWS identity access management (IAM) policy.
+        </Text>
+        <TextList>
+            <TextListItem>Sign in to the <a href="#">AWS Identity Access Management* (IAM) console</a>.</TextListItem>
+            <TextListItem>Create a new policy, pasting the following content into the JSON text box.</TextListItem>
+            <ClipboardCopy isCode variant={ClipboardCopyVariant.expansion} className="pf-u-m-sm-on-sm" isReadOnly>
+                {JSON.stringify({
+                    Version: '2012-10-17',
+                    Statement: [
+                        {
+                            Sid: 'VisualEditor0',
+                            Effect: 'Allow',
+                            Action: [
+                                's3:Get*',
+                                's3:List*'
+                            ],
+                            Resource: [
+                                `arn:aws:s3:::${s3Bucket}`,
+                                `arn:aws:s3:::${s3Bucket}/*`
+                            ]
+                        },
+                        {
+                            Sid: 'VisualEditor1',
+                            Effect: 'Allow',
+                            Action: [
+                                's3:ListAllMyBuckets',
+                                'iam:ListAccountAliases',
+                                's3:HeadBucket',
+                                'cur:DescribeReportDefinitions',
+                                'organizations:List*',
+                                'organizations:Describe*'
+                            ],
+                            Resource: '*'
+                        }
+                    ]
+                }, null, 2)}
+            </ClipboardCopy>
+            <TextListItem>Complete the process to create your new policy.</TextListItem>
+        </TextList>
+        <Text component={ TextVariants.p }>
+            <b>Do not close your browser.</b> You will need to be logged in to the IAM console to compute the next step.
+        </Text>
+    </TextContent>);
+};
+
+IAMPolicyDescription.propTypes = {
+    formOptions: PropTypes.shape({
+        getState: PropTypes.func.isRequired
+    }).isRequired
+};
 
 export const TagsDescription = () => (<TextContent>
     <Text component={ TextVariants.p }>

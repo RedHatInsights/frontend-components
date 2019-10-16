@@ -64,7 +64,19 @@ export default {
             },
             arn: {
                 'authentication.arn': {
-                    placeholder: 'arn:aws:iam:123456789:role/CostManagement'
+                    placeholder: 'arn:aws:iam:123456789:role/CostManagement',
+                    isRequired: true,
+                    validate: [{
+                        type: validatorTypes.REQUIRED
+                    },  {
+                        type: validatorTypes.PATTERN_VALIDATOR,
+                        pattern: /^arn:aws:.*/,
+                        message: 'ARN must start with arn:aws:'
+                    }, {
+                        type: validatorTypes.MIN_LENGTH,
+                        threshold: 10,
+                        message: 'ARN should have at least 10 characters'
+                    }]
                 },
                 'arn-description': {
                     content: <AwsArn.ArnDescription />
@@ -72,14 +84,9 @@ export default {
                 'iam-role-description': {
                     content: <AwsArn.IAMRoleDescription />
                 },
-                'iam-role-description-2': {
-                    content: <AwsArn.IAMRoleDescriptionSecond />
-                },
                 'iam-policy-description': {
-                    content: <AwsArn.IAMPolicyDescription />
-                },
-                'iam-policy-description-2': {
-                    content: <AwsArn.IAMPolicyDescriptionSecond />
+                    content: <AwsArn.IAMPolicyDescription />,
+                    assignFormOptions: true
                 },
                 'tags-description': {
                     content: <AwsArn.TagsDescription />
@@ -88,7 +95,15 @@ export default {
                     content: <AwsArn.UsageDescription />
                 },
                 'cost_management.s3_bucket': {
-                    placeholder: 'cost-usage-bucket'
+                    placeholder: 'cost-usage-bucket',
+                    validate: [{
+                        type: validatorTypes.REQUIRED
+                    }, {
+                        type: validatorTypes.PATTERN_VALIDATOR,
+                        pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
+                        message: 'S3 bucket name must start with alphanumeric character and can contain underscore and hyphen'
+                    }],
+                    isRequired: true
                 }
             }
         },

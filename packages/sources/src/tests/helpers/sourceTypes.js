@@ -131,14 +131,6 @@ export default [
                         fields: [{
                             name: 'iam-policy-description',
                             component: 'description'
-                        }, {
-                            name: 'cost_management.iam_policy',
-                            component: 'text-field',
-                            label: 'IAM Policy',
-                            hideLabel: true
-                        }, {
-                            name: 'iam-policy-description-2',
-                            component: 'description'
                         }]
                     }, {
                         title: 'Create IAM role',
@@ -147,14 +139,6 @@ export default [
                         substepOf: 'Enable account access',
                         fields: [{
                             name: 'iam-role-description',
-                            component: 'description'
-                        }, {
-                            name: 'cost_management.account_id',
-                            component: 'text-field',
-                            label: 'Account ID',
-                            hideLabel: true
-                        }, {
-                            name: 'iam-role-description-2',
                             component: 'description'
                         }]
                     }, {
