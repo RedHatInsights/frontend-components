@@ -24,7 +24,10 @@ class Group extends Component {
     };
 
     mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
-        return items.filter(item => (groupValue && this.state.filterBy.test(groupValue)) || (item.value && this.state.filterBy.test(item.value)) || (item.label && this.state.filterBy.test(item.label))
+        return items.filter(item =>
+            (groupValue && this.state.filterBy.test(groupValue)) ||
+            (item.value && this.state.filterBy.test(item.value)) ||
+            (item.label && this.state.filterBy.test(item.label))
         ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
@@ -153,11 +156,13 @@ class Group extends Component {
 
     customFilter = (e) => {
         let input;
+
         try {
             input = new RegExp(e.target.value, 'i');
         } catch (err) {
             input = new RegExp(e.target.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
         }
+
         this.setState({ filterBy: input });
     }
 
