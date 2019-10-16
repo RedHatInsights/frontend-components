@@ -58,18 +58,7 @@ class InventoryTable extends Component {
                     pathPrefix={ pathPrefix }
                     apiBase={ apiBase }
                     page={ page }
-                    onRefresh={ onRefresh }
                     perPage={ perPage }
-                    pagination={
-                        <Pagination
-                            totalItems={ total || (items && items.length) }
-                            page={ page }
-                            hasItems={ Boolean(items) }
-                            onRefresh={ onRefresh }
-                            perPage={ perPage }
-                            direction="down"
-                        />
-                    }
                 >
                     { children }
                 </EntityTableToolbar>
