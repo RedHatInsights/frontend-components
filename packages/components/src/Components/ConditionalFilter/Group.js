@@ -24,9 +24,8 @@ class Group extends Component {
     };
 
     mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
-        return items.filter(item =>
-            (item.value && item.value.indexOf(this.state.filterBy) !== -1) ||
-            (item.label && item.label.indexOf(this.state.filterBy) !== -1)
+        groupValue = groupValue.toLowerCase();
+        return items.filter(item => (groupValue && groupValue.indexOf(this.state.filterBy) !== -1) || (item.value && item.value.toLowerCase().indexOf(this.state.filterBy) !== -1) || (item.label && item.label.indexOf(this.state.filterBy) !== -1)
         ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
@@ -154,7 +153,7 @@ class Group extends Component {
     }
 
     customFilter = (e) => {
-        this.setState({ filterBy: e.target.value.toString() });
+        this.setState({ filterBy: e.target.value.toString().toLowerCase() });
     }
 
     render() {
