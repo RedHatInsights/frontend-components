@@ -13,36 +13,18 @@ exports[`Checkbox render should render correctly 1`] = `
 
 exports[`Checkbox render should render correctly placeholder 1`] = `
 <Fragment>
-  <Select
+  <Component
     aria-label="Select Input"
-    ariaLabelClear="Clear all"
-    ariaLabelRemove="Remove"
-    ariaLabelToggle="Options menu"
-    ariaLabelTypeAhead=""
-    ariaLabelledBy=""
-    className=""
-    createText="Create"
-    direction="down"
-    isCreatable={false}
-    isDisabled={false}
     isExpanded={false}
-    isGrouped={false}
-    isPlain={false}
-    maxHeight=""
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
     onSelect={[Function]}
     onToggle={[Function]}
     placeholderText="some placeholder"
     selections={Array []}
-    toggleIcon={null}
-    toggleId={null}
     variant="checkbox"
-    width=""
   >
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -61,6 +43,7 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={true}
       isDisabled={false}
@@ -77,6 +60,7 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -91,42 +75,23 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
     >
       No value
     </SelectOption>
-  </Select>
+  </Component>
 </Fragment>
 `;
 
 exports[`Checkbox render should render correctly with items 1`] = `
 <Fragment>
-  <Select
+  <Component
     aria-label="Select Input"
-    ariaLabelClear="Clear all"
-    ariaLabelRemove="Remove"
-    ariaLabelToggle="Options menu"
-    ariaLabelTypeAhead=""
-    ariaLabelledBy=""
-    className=""
-    createText="Create"
-    direction="down"
-    isCreatable={false}
-    isDisabled={false}
     isExpanded={false}
-    isGrouped={false}
-    isPlain={false}
-    maxHeight=""
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
     onSelect={[Function]}
     onToggle={[Function]}
-    placeholderText=""
     selections={Array []}
-    toggleIcon={null}
-    toggleId={null}
     variant="checkbox"
-    width=""
   >
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -145,6 +110,7 @@ exports[`Checkbox render should render correctly with items 1`] = `
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -161,6 +127,7 @@ exports[`Checkbox render should render correctly with items 1`] = `
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -175,46 +142,27 @@ exports[`Checkbox render should render correctly with items 1`] = `
     >
       No value
     </SelectOption>
-  </Select>
+  </Component>
 </Fragment>
 `;
 
 exports[`Checkbox render should render correctly with items and default object value 1`] = `
 <Fragment>
-  <Select
+  <Component
     aria-label="Select Input"
-    ariaLabelClear="Clear all"
-    ariaLabelRemove="Remove"
-    ariaLabelToggle="Options menu"
-    ariaLabelTypeAhead=""
-    ariaLabelledBy=""
-    className=""
-    createText="Create"
-    direction="down"
-    isCreatable={false}
-    isDisabled={false}
     isExpanded={false}
-    isGrouped={false}
-    isPlain={false}
-    maxHeight=""
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
     onSelect={[Function]}
     onToggle={[Function]}
-    placeholderText=""
     selections={
       Array [
         "some-value",
       ]
     }
-    toggleIcon={null}
-    toggleId={null}
     variant="checkbox"
-    width=""
   >
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -233,6 +181,7 @@ exports[`Checkbox render should render correctly with items and default object v
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -249,6 +198,7 @@ exports[`Checkbox render should render correctly with items and default object v
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -263,46 +213,27 @@ exports[`Checkbox render should render correctly with items and default object v
     >
       No value
     </SelectOption>
-  </Select>
+  </Component>
 </Fragment>
 `;
 
 exports[`Checkbox render should render correctly with items and default value 1`] = `
 <Fragment>
-  <Select
+  <Component
     aria-label="Select Input"
-    ariaLabelClear="Clear all"
-    ariaLabelRemove="Remove"
-    ariaLabelToggle="Options menu"
-    ariaLabelTypeAhead=""
-    ariaLabelledBy=""
-    className=""
-    createText="Create"
-    direction="down"
-    isCreatable={false}
-    isDisabled={false}
     isExpanded={false}
-    isGrouped={false}
-    isPlain={false}
-    maxHeight=""
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
     onSelect={[Function]}
     onToggle={[Function]}
-    placeholderText=""
     selections={
       Array [
         "some-value",
       ]
     }
-    toggleIcon={null}
-    toggleId={null}
     variant="checkbox"
-    width=""
   >
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -321,6 +252,7 @@ exports[`Checkbox render should render correctly with items and default value 1`
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -337,6 +269,7 @@ exports[`Checkbox render should render correctly with items and default value 1`
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -351,42 +284,23 @@ exports[`Checkbox render should render correctly with items and default value 1`
     >
       No value
     </SelectOption>
-  </Select>
+  </Component>
 </Fragment>
 `;
 
 exports[`Checkbox render should render correctly with items and selected value 1`] = `
 <Fragment>
-  <Select
+  <Component
     aria-label="Select Input"
-    ariaLabelClear="Clear all"
-    ariaLabelRemove="Remove"
-    ariaLabelToggle="Options menu"
-    ariaLabelTypeAhead=""
-    ariaLabelledBy=""
-    className=""
-    createText="Create"
-    direction="down"
-    isCreatable={false}
-    isDisabled={false}
     isExpanded={false}
-    isGrouped={false}
-    isPlain={false}
-    maxHeight=""
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
     onSelect={[Function]}
     onToggle={[Function]}
-    placeholderText=""
     selections={Array []}
-    toggleIcon={null}
-    toggleId={null}
     variant="checkbox"
-    width=""
   >
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -405,6 +319,7 @@ exports[`Checkbox render should render correctly with items and selected value 1
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={true}
       isDisabled={false}
@@ -421,6 +336,7 @@ exports[`Checkbox render should render correctly with items and selected value 1
     </SelectOption>
     <SelectOption
       className=""
+      component="button"
       index={0}
       isChecked={false}
       isDisabled={false}
@@ -435,6 +351,6 @@ exports[`Checkbox render should render correctly with items and selected value 1
     >
       No value
     </SelectOption>
-  </Select>
+  </Component>
 </Fragment>
 `;
