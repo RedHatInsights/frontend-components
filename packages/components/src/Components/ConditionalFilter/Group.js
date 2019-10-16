@@ -13,19 +13,18 @@ class Group extends Component {
     state = {
         isExpanded: false,
         selected: {},
-        filterBy: ''
+        filterBy: /./ // Use Regex here to ignore case match, set to all characters
     }
 
     onToggle = isExpanded => {
         this.setState({
             isExpanded,
-            filterBy: ''
+            filterBy: /./
         });
     };
 
     mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
-        groupValue = groupValue.toLowerCase();
-        return items.filter(item => (groupValue && groupValue.indexOf(this.state.filterBy) !== -1) || (item.value && item.value.toLowerCase().indexOf(this.state.filterBy) !== -1) || (item.label && item.label.indexOf(this.state.filterBy) !== -1)
+        return items.filter(item => (groupValue && this.state.filterBy.test(groupValue)) || (item.value && this.state.filterBy.test(item.value)) || (item.label && this.state.filterBy.test(item.label))
         ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
@@ -134,7 +133,7 @@ class Group extends Component {
         onChange(event, newSelection, group, item);
         this.setState({
             selected: newSelection,
-            filterBy: ''
+            filterBy: /./
         });
     };
 
@@ -153,7 +152,13 @@ class Group extends Component {
     }
 
     customFilter = (e) => {
-        this.setState({ filterBy: e.target.value.toString().toLowerCase() });
+        let input;
+        try {
+            input = new RegExp(e.target.value, 'i');
+        } catch (err) {
+            input = new RegExp(e.target.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+        }
+        this.setState({ filterBy: input });
     }
 
     render() {
