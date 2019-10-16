@@ -42,7 +42,7 @@ class Actions extends Component {
             <Fragment>
                 {
                     firstAction &&
-                    <DataToolbarItem className="ins-c-primary-toolbar__first-action">
+                    <DataToolbarItem className="ins-c-primary-toolbar__first-action pf-m-spacer-sm">
                         {
                             firstAction.label ?
                                 <Button { ...firstAction.props }>
@@ -54,14 +54,14 @@ class Actions extends Component {
                 }
                 {
                     exportConfig && (exportConfig.extraItems || exportConfig.onSelect) &&
-                    <DataToolbarItem>
+                    <DataToolbarItem className="pf-m-spacer-sm">
                         <DownloadButton  { ...exportConfig } />
                     </DataToolbarItem>
                 }
                 {
                     ((actions && actions.length > 0) || (overflowActions.length > 0)) &&
                     <DataToolbarItem
-                        className={`${actions.length <= 1 ? 'ins-m-actions--empty' : ''} ins-c-primary-toolbar__actions` }
+                        className={`${actions.length <= 1 ? 'ins-m-actions--empty' : ''} ins-c-primary-toolbar__actions pf-m-spacer-sm` }
                     >
                         <Dropdown
                             { ...dropdownProps }

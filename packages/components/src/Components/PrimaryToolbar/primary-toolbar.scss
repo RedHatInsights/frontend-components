@@ -26,11 +26,10 @@
     }
 
     .ins-c-primary-toolbar__group-filter {
-        margin-right: var(--pf-global--spacer--md);
         flex-grow: initial;
-            .ins-c-primary-toolbar__filter {
-                flex: initial;
-            }
+        .ins-c-primary-toolbar__filter {
+            flex: initial;
+        }
     }
 }
 

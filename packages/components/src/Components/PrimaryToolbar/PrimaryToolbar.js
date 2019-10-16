@@ -53,8 +53,7 @@ class PrimaryToolbar extends Component {
                     {
                         (bulkSelect || filterConfig) &&
                         <DataToolbarGroup
-                            className="ins-c-primary-toolbar__group-filter"
-                            itemSpacers={ [{ spacerSize: 'md' }] }
+                            className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
                             variant="filter-group"
                         >
                             {

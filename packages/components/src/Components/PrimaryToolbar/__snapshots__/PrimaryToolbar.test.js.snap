@@ -34,14 +34,7 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter"
-      itemSpacers={
-        Array [
-          Object {
-            "spacerSize": "md",
-          },
-        ]
-      }
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
       variant="filter-group"
     >
       <DataToolbarItem>
@@ -63,11 +56,6 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
     <DataToolbarItem
       className="ins-c-primary-toolbar__sort-by"
     >
-      <div>
-        Loading...
-      </div>
-    </DataToolbarItem>
-    <DataToolbarItem>
       <div>
         Loading...
       </div>
@@ -112,14 +100,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter"
-      itemSpacers={
-        Array [
-          Object {
-            "spacerSize": "md",
-          },
-        ]
-      }
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
       variant="filter-group"
     >
       <DataToolbarItem>
@@ -189,6 +170,11 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           "className": "custom-class",
         }
       }
+      exportConfig={
+        Object {
+          "onSelect": [MockFunction],
+        }
+      }
       onSelect={[MockFunction]}
       overflowActions={
         Array [
@@ -215,12 +201,6 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
       <SortBy
         direction="asc"
         onSortChange={[MockFunction]}
-      />
-    </DataToolbarItem>
-    <DataToolbarItem>
-      <DownloadButton
-        extraItems={Array []}
-        onSelect={[MockFunction]}
       />
     </DataToolbarItem>
     <DataToolbarItem
@@ -282,14 +262,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter"
-      itemSpacers={
-        Array [
-          Object {
-            "spacerSize": "md",
-          },
-        ]
-      }
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
       variant="filter-group"
     >
       <DataToolbarItem>
@@ -323,14 +296,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter"
-      itemSpacers={
-        Array [
-          Object {
-            "spacerSize": "md",
-          },
-        ]
-      }
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
       variant="filter-group"
     >
       <DataToolbarItem
@@ -373,14 +339,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter"
-      itemSpacers={
-        Array [
-          Object {
-            "spacerSize": "md",
-          },
-        ]
-      }
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
       variant="filter-group"
     >
       <DataToolbarItem>
@@ -428,6 +387,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
     <Actions
       actions={Array []}
       dropdownProps={Object {}}
+      exportConfig={
+        Object {
+          "onSelect": [MockFunction],
+        }
+      }
       onSelect={[Function]}
       overflowActions={
         Array [
@@ -454,12 +418,6 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
       <SortBy
         direction="asc"
         onSortChange={[MockFunction]}
-      />
-    </DataToolbarItem>
-    <DataToolbarItem>
-      <DownloadButton
-        extraItems={Array []}
-        onSelect={[MockFunction]}
       />
     </DataToolbarItem>
     <DataToolbarItem
