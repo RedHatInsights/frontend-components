@@ -1,8 +1,9 @@
+// Variables not found in pf-react
 export const colorList = {
-    default: 'var(--pf-global--Color--200)', // grey
-    danger: 'var(--pf-global--danger-color--100)',
-    warning: 'var(--pf-global--warning-color--100)',
-    orange: '#ec7a08' // orange
+    default: '#737679', // pf-black-600
+    danger: '#a30000', //pf-red-200
+    warning: '#f0ab00', //pf-gold-400
+    orange: '#ec7a08' // pf-orange-300
 };
 
 export const messageList = {
