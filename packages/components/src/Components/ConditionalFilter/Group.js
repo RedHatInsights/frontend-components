@@ -137,13 +137,13 @@ class Group extends Component {
         const { onChange } = this.props;
 
         if (onChange) {
-          onChange(event, newSelection, group, item);
-          this.setState({ selected: {} })
+            onChange(event, newSelection, group, item);
+            this.setState({ selected: {} });
         }
 
         this.setState({
-          selected: newSelection,
-          filterBy: /./
+            selected: newSelection,
+            filterBy: /./
         });
     };
 
