@@ -26,6 +26,7 @@ class Group extends Component {
     mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
         return items.filter(item =>
             (groupValue && this.state.filterBy.test(groupValue)) ||
+            (groupLabel && this.state.filterBy.test(groupLabel)) ||
             (item.value && this.state.filterBy.test(item.value)) ||
             (item.label && this.state.filterBy.test(item.label))
         ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
@@ -131,9 +132,12 @@ class Group extends Component {
     }
 
     onSelect = (event, group, item, groupKey, itemKey) => {
-        const newSelection = this.calculateSelected(group, groupKey, itemKey);
+        let newSelection = this.calculateSelected(group, groupKey, itemKey);
         const { onChange } = this.props;
-        onChange(event, newSelection, group, item);
+        if (onChange) {
+            onChange(event, newSelection, group, item);
+            newSelection = {};
+        }
         this.setState({
             selected: newSelection,
             filterBy: /./
@@ -168,20 +172,20 @@ class Group extends Component {
 
     render() {
         const { isExpanded } = this.state;
-        const { groups, items, placeholder, className, selected, isFilterable } = this.props;
+        const { groups, items, placeholder, className, selected, isFilterable, onFilter } = this.props;
 
         const filterItems = items || groups;
 
         return (<Fragment>
             { !filterItems || (filterItems && filterItems.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
                 className={ className }
-                variant={ isFilterable ? SelectVariant.typeahead : SelectVariant.single }
+                variant={ (isFilterable || onFilter) ? SelectVariant.typeahead : SelectVariant.single }
                 aria-label="Select Input"
                 onToggle={ this.onToggle }
                 isExpanded={ isExpanded }
                 onSelect={ () => undefined }
                 placeholderText={ placeholder }
-                { ...isFilterable && { onFilter: this.customFilter } }
+                { ...(isFilterable || onFilter) && { onFilter: (onFilter || this.customFilter) } }
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
                 { groups && groups.length > 0 ? (
@@ -232,7 +236,8 @@ Group.propTypes = {
         items: itemsProps
     })),
     items: itemsProps,
-    isFilterable: PropTypes.bool
+    isFilterable: PropTypes.bool,
+    onFilter: PropTypes.func
 };
 
 Group.defaultProps = {
