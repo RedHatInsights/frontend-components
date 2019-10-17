@@ -4,6 +4,8 @@ import RemediationButton from '@redhat-cloud-services/frontend-components-remedi
 import flatten from 'lodash/flatten';
 import { connect } from 'react-redux';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import { AnsibeTowerIcon } from '@patternfly/react-icons';
+import { global_BackgroundColor_100 as globalBackgroundColor100 } from '@patternfly/react-tokens';
 
 class ComplianceRemediationButton extends React.Component {
     constructor(props) {
@@ -66,7 +68,10 @@ class ComplianceRemediationButton extends React.Component {
                     }
                     onRemediationCreated={ result => addNotification(result.getNotification()) }
                     dataProvider={ this.dataProvider }
-                />
+                >
+                    <AnsibeTowerIcon size='sm' color={globalBackgroundColor100.value} />
+                    &nbsp;Remediate
+                </RemediationButton>
             </React.Fragment>
         );
     }
