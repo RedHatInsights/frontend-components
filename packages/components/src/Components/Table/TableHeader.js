@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SortDirection } from './Table';
-import { AngleDownIcon, AngleUpIcon, SortIcon } from '@patternfly/react-icons';
+import { AngleUpIcon, SortIcon } from '@patternfly/react-icons';
 
 class TableHeader extends Component {
     constructor(props) {
@@ -109,12 +109,11 @@ class TableHeader extends Component {
     render() {
         const {
             className,
-            onSort,
-            sortBy,
+            // eslint-disable-next-line no-unused-vars
+            onSort, sortBy, onSelectAll,
             cols,
             hasIcon,
             hasCheckbox,
-            onSelectAll,
             expandable,
             ...props
         } = this.props;

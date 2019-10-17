@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { Breadcrumb, BreadcrumbItem } from '@patternfly/react-core';
 
 const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => {
+    // eslint-disable-next-line no-console
     console.warn('Breadcrumbs from FE component shouldn\'t be used anymore. \
 Instead use http://patternfly-react.surge.sh/patternfly-4/components/breadcrumb#Breadcrumb from PF repository.');
     return (

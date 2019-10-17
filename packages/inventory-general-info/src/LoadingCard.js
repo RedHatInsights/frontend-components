@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
     Stack,
     StackItem,
-    CardBody,
     TextContent,
     Text,
     TextList,

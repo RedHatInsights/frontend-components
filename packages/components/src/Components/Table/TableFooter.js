@@ -8,8 +8,8 @@ const TableFooter = ({
     expandable,
     hasCheckbox,
     hasIcon,
-    onSort,
-    onItemSelect,
+    // eslint-disable-next-line no-unused-vars
+    onSort, onItemSelect,
     colspan = 0,
     ...props
 }) => {

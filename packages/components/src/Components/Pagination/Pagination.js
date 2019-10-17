@@ -22,10 +22,12 @@ class Pagination extends Component {
     render() {
         let {
             page,
+            // eslint-disable-next-line no-unused-vars
             onSetPage,
             numberOfItems,
             itemsPerPage,
             perPageOptions,
+            // eslint-disable-next-line no-unused-vars
             onPerPageSelect,
             onFirstPage,
             onLastPage,

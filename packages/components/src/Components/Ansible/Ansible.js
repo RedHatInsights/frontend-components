@@ -15,6 +15,7 @@ import './ansible.scss';
 const Ansible = ({ unsupported, className, ...props }) => {
 
     let ansibleLogoClass = classNames(
+        className,
         'Ansible',
         { [`is-supported`]: !unsupported || unsupported === 0 },
         { [`is-unsupported`]: unsupported || unsupported === 1 }

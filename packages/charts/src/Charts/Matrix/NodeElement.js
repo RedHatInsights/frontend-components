@@ -37,7 +37,7 @@ class NodeElement extends React.Component {
         const tick = gridSize / (max - min);
         const limitedLength = cellData.length < 3 ? cellData.length : 3;
         return (
-            <g {...props} onClick={_event => onClick(cellData, color)}>
+            <g {...props} onClick={() => onClick(cellData, color)}>
                 <circle
                     ref={ref => this.ref = ref}
                     cx={tick * cellCoord + 23}

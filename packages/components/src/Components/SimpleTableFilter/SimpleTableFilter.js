@@ -43,9 +43,8 @@ class SimpleFilter extends Component {
             placeholder,
             buttonTitle,
             className,
-            onButtonClick,
-            onOptionSelect,
-            onFilterChange,
+            // eslint-disable-next-line no-unused-vars
+            onButtonClick, onOptionSelect, onFilterChange,
             options,
             searchIcon,
             widgetId,

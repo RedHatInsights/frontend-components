@@ -2,7 +2,6 @@ import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoadingCard from './LoadingCard';
-import { diskMapper } from './dataMapper';
 import { PencilAltIcon } from '@patternfly/react-icons';
 import { propertiesSelector } from './selectors';
 import { editDisplayName, editAnsibleHost, systemProfile } from './redux/actions';
