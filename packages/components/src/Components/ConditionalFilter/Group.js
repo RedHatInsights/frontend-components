@@ -145,8 +145,6 @@ class Group extends Component {
           selected: newSelection,
           filterBy: /./
         });
-
-        console.log(this.state.selected);
     };
 
     isChecked = (groupValue, itemValue) => {
