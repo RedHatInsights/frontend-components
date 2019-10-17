@@ -78,7 +78,12 @@ rules:
     - error
     - functions: false
   no-undef: 2
-  no-console: 1
+  no-console:
+  - warn
+  - allow:
+    - warn
+    - error
+
   no-unused-vars: 1
   no-var: 2
   no-with: 2

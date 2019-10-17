@@ -42,7 +42,6 @@ describe('Battery component', () => {
         it('NullBatery, default', () => {
             const wrapper = shallow(<Battery severity={''} label={''}/>);
             expect(toJson(wrapper)).toMatchSnapshot();
-            // eslint-disable-next-line no-console
             expect(console.error).toBeCalled();
         });
     });

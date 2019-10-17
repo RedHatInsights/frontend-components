@@ -128,7 +128,6 @@ function mapDispatchToProps(dispatch) {
     return {
         loadEntities: (items = [], config) => {
             if (!Array.isArray(items)) {
-                // eslint-disable-next-line no-console
                 console.error('Wrong shape of items, array with strings or objects with ID property required!');
             }
 

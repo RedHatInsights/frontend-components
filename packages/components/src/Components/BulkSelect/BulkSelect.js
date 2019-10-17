@@ -10,7 +10,6 @@ class BulkSelect extends Component {
     }
 
     componentDidCatch = () => {
-        // eslint-disable-next-line no-console
         console.error('Above error is caused because you are using outdated PF react core library. Count will not be \
 visible unless you update it.');
         this.setState({ hasError: true });

@@ -7,7 +7,6 @@ class ConnectedBreadcrumbs extends Component {
         super(props);
         this.onNavigate = this.onNavigate.bind(this);
         this.calculateBreadcrumbs = this.calculateBreadcrumbs.bind(this);
-        // eslint-disable-next-line no-console
         console.warn('This component will be removed in future release (next month March), do not use it anymore!');
     }
 
