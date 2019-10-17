@@ -33,7 +33,6 @@ class ConnectedBreadcrumbs extends Component {
     }
 
     render() {
-        // eslint-disable-next-line no-unused-vars
         const { match, location, history, current, staticContext, dispatch, ...props } = this.props;
         const mappedBreadcrumbs = this.calculateBreadcrumbs() || [];
         return (

@@ -109,11 +109,12 @@ class TableHeader extends Component {
     render() {
         const {
             className,
-            // eslint-disable-next-line no-unused-vars
-            onSort, sortBy, onSelectAll,
+            onSort,
+            sortBy,
             cols,
             hasIcon,
             hasCheckbox,
+            onSelectAll,
             expandable,
             ...props
         } = this.props;

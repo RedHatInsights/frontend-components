@@ -35,7 +35,6 @@ export class Main extends Component {
         };
     }
     render () {
-        // eslint-disable-next-line no-unused-vars
         const { className, children, params, path, ...props } = this.props;
         const { dynamic, staticPart } = this.calculateLocation();
         return (

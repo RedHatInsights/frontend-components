@@ -17,7 +17,6 @@ class PaginationNext extends Component {
             itemCount,
             perPageOptions,
             dropDirection,
-            // eslint-disable-next-line no-unused-vars
             amountOfPages,
             onFirstPage,
             onLastPage,

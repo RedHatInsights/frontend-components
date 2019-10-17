@@ -79,12 +79,13 @@ rules:
     - functions: false
   no-undef: 2
   no-console:
-  - warn
-  - allow:
     - warn
-    - error
-
-  no-unused-vars: 1
+    - allow:
+      - warn
+      - error
+  no-unused-vars:
+    - warn
+    - ignoreRestSiblings: true
   no-var: 2
   no-with: 2
   object-curly-spacing:
