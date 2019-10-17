@@ -138,6 +138,7 @@ class Group extends Component {
             onChange(event, newSelection, group, item);
             newSelection = {};
         }
+
         this.setState({
             selected: newSelection,
             filterBy: /./
