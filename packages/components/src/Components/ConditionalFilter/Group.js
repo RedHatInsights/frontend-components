@@ -133,16 +133,20 @@ class Group extends Component {
 
     onSelect = (event, group, item, groupKey, itemKey) => {
         let newSelection = this.calculateSelected(group, groupKey, itemKey);
+
         const { onChange } = this.props;
+
         if (onChange) {
-            onChange(event, newSelection, group, item);
-            newSelection = {};
+          onChange(event, newSelection, group, item);
+          this.setState({ selected: {} })
         }
 
         this.setState({
-            selected: newSelection,
-            filterBy: /./
+          selected: newSelection,
+          filterBy: /./
         });
+
+        console.log(this.state.selected);
     };
 
     isChecked = (groupValue, itemValue) => {

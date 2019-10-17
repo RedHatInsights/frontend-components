@@ -475,6 +475,7 @@ exports[`Shield component should render with label 1`] = `
       ]
     }
     isAppLauncher={false}
+    isContentLeftAligned={false}
     isVisible={false}
     maxWidth="18.75rem"
     position="bottom"

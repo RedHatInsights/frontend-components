@@ -83,6 +83,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       ]
     }
     isAppLauncher={false}
+    isContentLeftAligned={false}
     isVisible={false}
     maxWidth="50vw"
     position="top"
@@ -101,7 +102,9 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           className=""
           role="tooltip"
         >
-          <TooltipContent>
+          <TooltipContent
+            isLeftAligned={false}
+          >
             <div>
               Lorem Impsum
             </div>
@@ -174,7 +177,9 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           className=""
           role="tooltip"
         >
-          <TooltipContent>
+          <TooltipContent
+            isLeftAligned={false}
+          >
             <div
               className="pf-c-tooltip__content"
             >
