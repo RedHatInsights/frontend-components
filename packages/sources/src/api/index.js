@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { DefaultApi as SourcesDefaultApi } from '@redhat-cloud-services/sources-client';
 import { Base64 } from 'js-base64';
+import { postBillingSource } from './billingSource';
 
 const calculateApiBase = b => (
     (b.endsWith('/') && `${b}v1.0`) || `${b}/sources/v1.0`
@@ -95,6 +96,15 @@ export function doCreateSource(formData, sourceTypes) {
             };
 
             promises.push(getSourcesApi().createApplication(applicationData));
+        }
+
+        if (formData.billing_source) {
+            const billingSourceData = {
+                billing_source: formData.billing_source,
+                source_id: sourceDataOut.id
+            };
+
+            promises.push(postBillingSource(billingSourceData));
         }
 
         return Promise.all(promises).then(([ endpointDataOut, applicationDataOut = undefined ]) => {

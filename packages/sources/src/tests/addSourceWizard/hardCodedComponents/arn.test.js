@@ -26,8 +26,8 @@ describe('AWS-ARN hardcoded schemas', () => {
         const FORM_OPTIONS = {
             getState: () => ({
                 values: {
-                    cost_management: {
-                        s3_bucket: S3_BUCKET_NAME
+                    billing_source: {
+                        bucket: S3_BUCKET_NAME
                     }
                 }
             })

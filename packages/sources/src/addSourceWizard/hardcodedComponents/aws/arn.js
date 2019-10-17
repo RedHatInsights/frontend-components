@@ -46,7 +46,7 @@ To delegate account access, create an IAM role to associate with your IAM policy
 </TextContent>);
 
 export const IAMPolicyDescription = ({ formOptions }) => {
-    const s3Bucket = formOptions.getState().values.cost_management.s3_bucket;
+    const s3Bucket = formOptions.getState().values.billing_source.bucket;
 
     return (<TextContent>
         <Text component={ TextVariants.p }>

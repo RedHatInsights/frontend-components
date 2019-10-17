@@ -94,7 +94,7 @@ export default {
                 'usage-description': {
                     content: <AwsArn.UsageDescription />
                 },
-                'cost_management.s3_bucket': {
+                'billing_source.bucket': {
                     placeholder: 'cost-usage-bucket',
                     validate: [{
                         type: validatorTypes.REQUIRED

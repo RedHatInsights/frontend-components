@@ -110,7 +110,7 @@ export default [
                             name: 'usage-description',
                             component: 'description'
                         }, {
-                            name: 'cost_management.s3_bucket',
+                            name: 'billing_source.bucket',
                             component: 'text-field',
                             label: 'S3 bucket name'
                         }]
