@@ -102,7 +102,7 @@ class SystemRulesTable extends React.Component {
     setInitialCurrentRows() {
         const { hidePassed, itemsPerPage, severity, policy } = this.state;
         let { profileRules } = this.props;
-        const rowsRefIds = this.rulesToRows (profileRules);
+        const rowsRefIds = this.rulesToRows(profileRules);
 
         this.setState({
             currentRows: this.currentRows(1, itemsPerPage, rowsRefIds),
@@ -286,13 +286,33 @@ class SystemRulesTable extends React.Component {
         const refIds = {};
         const profiles = {};
         const rows = flatMap(profileRules, (profileRule) => flatMap(profileRule.rules, (rule, key) => {
-            profiles[rule.title] = profileRule.profile.refId;
-            refIds[rule.title] = rule.refId;
+            if (profiles[rule.title]) {
+                profiles[rule.title].name = `${profiles[rule.title].name}, ${profileRule.profile.name}`;
+                return;
+            } else {
+                profiles[rule.title] = { refId: profileRule.profile.refId, name: profileRule.profile.name };
+                refIds[rule.title] = rule.refId;
+            }
+
             return [
                 this.calculateParent(profileRule, rule),
                 this.calculateChild(rule, key)
             ];
-        }));
+        })).filter(row => row); // Need to remove undefined (duplicate) rows
+
+        rows.forEach((row) => {
+            if (this.isParent(row)) {
+                row.cells[POLICY_COLUMN] = {
+                    title: profiles[row.cells[TITLE_COLUMN].original].name,
+                    original: profiles[row.cells[TITLE_COLUMN].original].name
+                };
+            }
+        });
+
+        for (let [ key, value ] of Object.entries(profiles)) {
+            profiles[key] = value.refId;
+        }
+
         return { rows, refIds, profiles };
     }
 
@@ -401,15 +421,13 @@ class SystemRulesTable extends React.Component {
         if (searchTerm) {
             searchTerm = lowerString(searchTerm);
             rows.forEach((row, i) => {
-                const isParent = row.hasOwnProperty('isOpen');
-
-                const titleMatches = isParent && lowerString(row.cells[TITLE_COLUMN].original).match(searchTerm);
-                const identifierMatches = !isParent && lowerString(row.cells[0].originalIdentifier).match(searchTerm);
-                const referencesMatch = !isParent && lowerString(row.cells[0].originalReferences).match(searchTerm);
+                const titleMatches = this.isParent(row) && lowerString(row.cells[TITLE_COLUMN].original).match(searchTerm);
+                const identifierMatches = !this.isParent(row) && lowerString(row.cells[0].originalIdentifier).match(searchTerm);
+                const referencesMatch = !this.isParent(row) && lowerString(row.cells[0].originalReferences).match(searchTerm);
 
                 if (titleMatches || identifierMatches || referencesMatch) {
-                    let parent = isParent ? row : rows[i - 1];
-                    let child = isParent ? rows[i + 1] : row;
+                    let parent = this.isParent(row) ? row : rows[i - 1];
+                    let child = this.isParent(row) ? rows[i + 1] : row;
                     filteredRows.push(parent);
                     child.parent = filteredRows.length - 1;
                     filteredRows.push(child);
@@ -481,6 +499,7 @@ class SystemRulesTable extends React.Component {
             return (
                 <Table
                     cells={ columns }
+                    aria-label='Loading table'
                     rows={ [ ...Array(10) ].map(() => ({
                         cells: [{
                             title: <RowLoader />,
@@ -528,6 +547,7 @@ class SystemRulesTable extends React.Component {
                     </TableToolbar>
                     <Table
                         className='compliance-rules-table'
+                        aria-label='Rules table'
                         cells={ columns }
                         onCollapse={ this.onCollapse }
                         onSort={ this.onSort }

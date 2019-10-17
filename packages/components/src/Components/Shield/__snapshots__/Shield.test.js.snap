@@ -1,202 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shield component should render where impact value is 1 1`] = `
-<Fragment>
-  <span>
-    <SecurityIcon
-      aria-hidden="false"
-      aria-label="Low"
-      color="var(--pf-global--Color--200)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is 2 1`] = `
-<Fragment>
-  <span>
-    <SecurityIcon
-      aria-hidden="false"
-      aria-label="Medium"
-      color="var(--pf-global--warning-color--100)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is 3 1`] = `
-<Fragment>
-  <span>
-    <SecurityIcon
-      aria-hidden="false"
-      aria-label="High"
-      color="#ec7a08"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is 4 1`] = `
-<Fragment>
-  <span>
-    <SecurityIcon
-      aria-hidden="false"
-      aria-label="Critical"
-      color="var(--pf-global--danger-color--100)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is Critical 1`] = `
-<Fragment>
-  <span>
-    <SecurityIcon
-      aria-hidden="false"
-      aria-label="Critical"
-      color="var(--pf-global--danger-color--100)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is Low and title is Hello world 1`] = `
-<Fragment>
-  <span>
-    <SecurityIcon
-      aria-hidden="false"
-      aria-label="Hello world"
-      color="var(--pf-global--Color--200)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is Low and tooltipPrefix is Severity:  1`] = `
-<Fragment>
-  <span>
-    <SecurityIcon
-      aria-hidden="false"
-      aria-label="Severity: Low"
-      color="var(--pf-global--Color--200)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is Medium and tooltipPosition is bottom 1`] = `
-<Fragment>
-  <span>
-    <SecurityIcon
-      aria-hidden="false"
-      aria-label="Medium"
-      color="var(--pf-global--warning-color--100)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is Medium and tooltipPosition is notValid 1`] = `
-<Fragment>
-  <span>
-    <SecurityIcon
-      aria-hidden="false"
-      aria-label="Medium"
-      color="var(--pf-global--warning-color--100)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is NonExist 1`] = `
-<Fragment>
-  <span>
-    <QuestionIcon
-      aria-hidden="false"
-      aria-label="Unknown"
-      color="var(--pf-global--Color--200)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is empty string 1`] = `
-<Fragment>
-  <span>
-    <QuestionIcon
-      aria-hidden="false"
-      aria-label="Unknown"
-      color="var(--pf-global--Color--200)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where impact value is undefined 1`] = `
-<Fragment>
-  <span>
-    <QuestionIcon
-      aria-hidden="false"
-      aria-label="Unknown"
-      color="var(--pf-global--Color--200)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where title is Hello world 1`] = `
-<Fragment>
-  <span>
-    <QuestionIcon
-      aria-hidden="false"
-      aria-label="Hello world"
-      color="var(--pf-global--Color--200)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
-`;
-
-exports[`Shield component should render where title is Hello world and hasTooltip is true 1`] = `
-<Fragment>
+<span>
   <Tooltip
     appendTo={[Function]}
     aria="describedby"
@@ -204,7 +9,454 @@ exports[`Shield component should render where title is Hello world and hasToolti
     className=""
     content={
       <div>
-        Hello world
+        This rating is given to all other issues that have a security         impact. These are the types of vulnerabilities that are believed to         require unlikely circumstances to be able to be exploited, or where         a successful exploit would give minimal consequences. 
+      </div>
+    }
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <SecurityIcon
+        aria-hidden="false"
+        aria-label="Low"
+        color="#737679"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
+`;
+
+exports[`Shield component should render where impact value is 2 1`] = `
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={
+      <div>
+        This rating is given to flaws that may be more difficult to exploit         but could still lead to some compromise of the confidentiality,         integrity, or availability of resources, under certain circumstances.         These are the types of vulnerabilities that could have had a Critical         impact or Important impact but are less easily exploited based on a         technical evaluation of the flaw, or affect unlikely configurations. 
+      </div>
+    }
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <SecurityIcon
+        aria-hidden="false"
+        aria-label="Medium"
+        color="#f0ab00"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
+`;
+
+exports[`Shield component should render where impact value is 3 1`] = `
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={
+      <div>
+        This rating is given to flaws that can easily compromise the     confidentiality, integrity, or availability of resources. These are the     types of vulnerabilities that allow local users to gain privileges, allow     unauthenticated remote users to view resources that should otherwise be     protected by authentication, allow authenticated remote users to execute     arbitrary code, or allow remote users to cause a denial of service.
+      </div>
+    }
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <SecurityIcon
+        aria-hidden="false"
+        aria-label="High"
+        color="#ec7a08"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
+`;
+
+exports[`Shield component should render where impact value is 4 1`] = `
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={
+      <div>
+        This rating is given to flaws that could be easily exploited by a         remote unauthenticated attacker and lead to system compromise         (arbitrary code execution) without requiring user interaction. These         are the types of vulnerabilities that can be exploited by worms.         Flaws that require an authenticated remote user, a local user,         or an unlikely configuration are not classed as Critical impact.
+      </div>
+    }
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <SecurityIcon
+        aria-hidden="false"
+        aria-label="Critical"
+        color="#a30000"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
+`;
+
+exports[`Shield component should render where impact value is Critical 1`] = `
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={
+      <div>
+        This rating is given to flaws that could be easily exploited by a         remote unauthenticated attacker and lead to system compromise         (arbitrary code execution) without requiring user interaction. These         are the types of vulnerabilities that can be exploited by worms.         Flaws that require an authenticated remote user, a local user,         or an unlikely configuration are not classed as Critical impact.
+      </div>
+    }
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <SecurityIcon
+        aria-hidden="false"
+        aria-label="Critical"
+        color="#a30000"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
+`;
+
+exports[`Shield component should render where impact value is Low 1`] = `
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={
+      <div>
+        This rating is given to all other issues that have a security         impact. These are the types of vulnerabilities that are believed to         require unlikely circumstances to be able to be exploited, or where         a successful exploit would give minimal consequences. 
+      </div>
+    }
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <SecurityIcon
+        aria-hidden="false"
+        aria-label="Low"
+        color="#737679"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
+`;
+
+exports[`Shield component should render where impact value is NonExist 1`] = `
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={<div />}
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <QuestionIcon
+        aria-hidden="false"
+        aria-label="Unknown"
+        color="#737679"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
+`;
+
+exports[`Shield component should render where impact value is empty string 1`] = `
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={<div />}
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <QuestionIcon
+        aria-hidden="false"
+        aria-label="Unknown"
+        color="#737679"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
+`;
+
+exports[`Shield component should render where impact value is undefined 1`] = `
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={<div />}
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <QuestionIcon
+        aria-hidden="false"
+        aria-label="Unknown"
+        color="#737679"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
+`;
+
+exports[`Shield component should render with label 1`] = `
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={
+      <div>
+        This rating is given to flaws that may be more difficult to exploit         but could still lead to some compromise of the confidentiality,         integrity, or availability of resources, under certain circumstances.         These are the types of vulnerabilities that could have had a Critical         impact or Important impact but are less easily exploited based on a         technical evaluation of the flaw, or affect unlikely configurations. 
       </div>
     }
     distance={15}
@@ -225,34 +477,70 @@ exports[`Shield component should render where title is Hello world and hasToolti
     isAppLauncher={false}
     isVisible={false}
     maxWidth="18.75rem"
-    position="top"
+    position="bottom"
     tippyProps={Object {}}
     trigger="mouseenter focus"
     zIndex={9999}
   >
-    <QuestionIcon
-      aria-hidden="false"
-      aria-label="Hello world"
-      color="var(--pf-global--Color--200)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
+    <span>
+      <SecurityIcon
+        aria-hidden="false"
+        aria-label="Medium"
+        color="#f0ab00"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+      Medium
+    </span>
   </Tooltip>
-</Fragment>
+</span>
 `;
 
 exports[`Shield component should render without props 1`] = `
-<Fragment>
-  <span>
-    <QuestionIcon
-      aria-hidden="false"
-      aria-label="Unknown"
-      color="var(--pf-global--Color--200)"
-      noVerticalAlign={false}
-      size="md"
-      title={null}
-    />
-  </span>
-</Fragment>
+<span>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={<div />}
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      <QuestionIcon
+        aria-hidden="false"
+        aria-label="Unknown"
+        color="#737679"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+       
+    </span>
+  </Tooltip>
+</span>
 `;

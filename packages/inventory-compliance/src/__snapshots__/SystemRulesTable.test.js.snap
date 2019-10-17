@@ -63,6 +63,7 @@ exports[`SystemRulesTable component should render 1`] = `
     />
   </TableToolbar>
   <Component
+    aria-label="Rules table"
     cells={
       Array [
         Object {
@@ -445,6 +446,7 @@ exports[`SystemRulesTable component should render 1`] = `
 
 exports[`SystemRulesTable component should render a loading table 1`] = `
 <Component
+  aria-label="Loading table"
   cells={
     Array [
       Object {
