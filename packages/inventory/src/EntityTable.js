@@ -181,7 +181,7 @@ class EntityTable extends React.Component {
                         { ...{
                             ...hasCheckbox && rows.length !== 0 ? { onSelect: this.onItemSelect } : {},
                             ...expandable ? { onCollapse: onExpandClick } : {},
-                            ...actions ? { actions } : {}
+                            ...actions && rows.length > 0 && { actions }
                         } }
                         { ...tableProps }
                     >
