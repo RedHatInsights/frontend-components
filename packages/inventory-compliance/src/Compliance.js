@@ -39,7 +39,7 @@ query System($systemId: String!){
             rulesFailed(systemId: $systemId)
             rulesPassed(systemId: $systemId)
             lastScanned(systemId: $systemId)
-            rules {
+            rules(systemId: $systemId) {
                 title
                 severity
                 rationale
