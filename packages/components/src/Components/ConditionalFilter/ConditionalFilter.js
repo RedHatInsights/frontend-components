@@ -117,7 +117,10 @@ ConditionalFilter.propTypes = {
                         label: PropTypes.node,
                         value: PropTypes.string
                     })
-                ]))
+                ])),
+                PropTypes.shape({
+                    [PropTypes.string]: PropTypes.any
+                })
             ]),
             items: PropTypes.arrayOf(PropTypes.shape({
                 label: PropTypes.node,

@@ -4,6 +4,8 @@ exports[`Group - component render should render correctly 1`] = `
 <Fragment>
   <Text
     groups={Array []}
+    isFilterable={false}
+    onChange={[Function]}
     onSubmit={[Function]}
     selected={Object {}}
     value="[object Object]"
@@ -27,6 +29,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
       key="0"
       label="First value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -61,12 +64,14 @@ exports[`Group - component render should render correctly placeholder 1`] = `
       >
         Second value
       </SelectOption>
+       
     </SelectGroup>
     <SelectGroup
       id="group-second"
       key="second"
       label="Second value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -119,12 +124,14 @@ exports[`Group - component render should render correctly placeholder 1`] = `
           onChange={[Function]}
         />
       </SelectOption>
+       
     </SelectGroup>
     <SelectGroup
       id="group-third"
       key="third"
       label="Third value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -179,6 +186,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
           value={1}
         />
       </SelectOption>
+       
     </SelectGroup>
   </Component>
 </Fragment>
@@ -199,6 +207,7 @@ exports[`Group - component render should render correctly with items 1`] = `
       key="0"
       label="First value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -233,12 +242,14 @@ exports[`Group - component render should render correctly with items 1`] = `
       >
         Second value
       </SelectOption>
+       
     </SelectGroup>
     <SelectGroup
       id="group-second"
       key="second"
       label="Second value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -291,12 +302,14 @@ exports[`Group - component render should render correctly with items 1`] = `
           onChange={[Function]}
         />
       </SelectOption>
+       
     </SelectGroup>
     <SelectGroup
       id="group-third"
       key="third"
       label="Third value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -351,6 +364,7 @@ exports[`Group - component render should render correctly with items 1`] = `
           value={1}
         />
       </SelectOption>
+       
     </SelectGroup>
   </Component>
 </Fragment>
@@ -371,6 +385,7 @@ exports[`Group - component render should render correctly with items and default
       key="0"
       label="First value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -405,12 +420,14 @@ exports[`Group - component render should render correctly with items and default
       >
         Second value
       </SelectOption>
+       
     </SelectGroup>
     <SelectGroup
       id="group-second"
       key="second"
       label="Second value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -463,12 +480,14 @@ exports[`Group - component render should render correctly with items and default
           onChange={[Function]}
         />
       </SelectOption>
+       
     </SelectGroup>
     <SelectGroup
       id="group-third"
       key="third"
       label="Third value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -523,6 +542,7 @@ exports[`Group - component render should render correctly with items and default
           value={1}
         />
       </SelectOption>
+       
     </SelectGroup>
   </Component>
 </Fragment>
@@ -543,6 +563,7 @@ exports[`Group - component render should render correctly with items and selecte
       key="0"
       label="First value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -577,12 +598,14 @@ exports[`Group - component render should render correctly with items and selecte
       >
         Second value
       </SelectOption>
+       
     </SelectGroup>
     <SelectGroup
       id="group-second"
       key="second"
       label="Second value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -635,12 +658,14 @@ exports[`Group - component render should render correctly with items and selecte
           onChange={[Function]}
         />
       </SelectOption>
+       
     </SelectGroup>
     <SelectGroup
       id="group-third"
       key="third"
       label="Third value"
     >
+       
       <SelectOption
         className=""
         component="button"
@@ -695,6 +720,7 @@ exports[`Group - component render should render correctly with items and selecte
           value={1}
         />
       </SelectOption>
+       
     </SelectGroup>
   </Component>
 </Fragment>
