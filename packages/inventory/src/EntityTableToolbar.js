@@ -109,7 +109,10 @@ class ContextEntityTableToolbar extends Component {
                     });
                 } else {
                     if (deleted.type === TEXTUAL_CHIP) {
-                        onRefreshData({ page: 1, perPage, filters: mapGroups(selected, allTags) });
+                        this.setState({
+                            textFilter: ''
+                        }, () => onRefreshData({ page: 1, perPage, filters: mapGroups(selected, allTags) }));
+                        ;
                     } else if (deleted.type === TAG_CHIP) {
                         const deletedItem = deleted.chips[0];
                         selected[deleted.key][deletedItem.key] = false;
@@ -219,7 +222,7 @@ EntityTableToolbar.propTypes = {
     allTagsLoaded: PropTypes.bool,
     allTags: PropTypes.array,
     actionsConfig: PrimaryToolbar.propTypes.actionsConfig,
-    activeFiltersConfig: PrimaryToolbar.propTypes.activeFilters
+    activeFiltersConfig: PrimaryToolbar.propTypes.activeFiltersConfig
 };
 
 ContextEntityTableToolbar.propTypes = {
