@@ -8,11 +8,13 @@ import {
     UPDATE_ENTITIES,
     ENTITIES_LOADING,
     CLEAR_FILTERS,
-    TOGGLE_TAG_MODAL
+    TOGGLE_TAG_MODAL,
+    TAGS_SELECTED
 } from './action-types';
 import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import TagWithDialog from '../TagWithDialog';
-export const defaultState = { loaded: false, tagsLoaded: false };
+
+export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: false };
 
 const defaultColumns = [
     { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ] },
@@ -45,7 +47,7 @@ function clearFilters(state) {
 }
 
 // eslint-disable-next-line camelcase
-function entitiesLoaded(state, { payload: { results, per_page: perPage, page, count, total, loaded } }) {
+function entitiesLoaded(state, { payload: { results, per_page: perPage, page, count, total, loaded, filters } }) {
     // Data are loaded and APi returned malicious data
     if (loaded === undefined && (page === undefined || perPage === undefined)) {
         return state;
@@ -53,6 +55,7 @@ function entitiesLoaded(state, { payload: { results, per_page: perPage, page, co
 
     return {
         ...state,
+        activeFilters: filters || [],
         loaded: loaded === undefined || loaded,
         rows: mergeArraysByKey([ state.rows, results ]),
         perPage: perPage !== undefined ? perPage : state.perPage,
@@ -139,7 +142,17 @@ export function toggleTagModal(state, { payload: { isOpen } }) {
     };
 }
 
+export function allTags(state, { payload: { results } }) {
+    return {
+        ...state,
+        allTags: results,
+        allTagsLoaded: true
+    };
+}
+
 export default {
+    [ACTION_TYPES.ALL_TAGS_FULFILLED]: allTags,
+    [ACTION_TYPES.ALL_TAGS_PENDING]: (state) => ({ ...state, allTagsLoaded: false }),
     [ACTION_TYPES.LOAD_ENTITIES_PENDING]: entitiesPending,
     [ACTION_TYPES.LOAD_ENTITIES_FULFILLED]: entitiesLoaded,
     [ACTION_TYPES.LOAD_TAGS_PENDING]: tagsLoading,
