@@ -4,7 +4,8 @@ const asyncInventory = [
     'LOAD_SYSTEM_PROFILE',
     'SET_DISPLAY_NAME',
     'SET_ANSIBLE_HOST',
-    'LOAD_TAGS'
+    'LOAD_TAGS',
+    'ALL_TAGS'
 ].reduce((acc, curr) => [
     ...acc,
     ...[ curr, `${curr}_PENDING`, `${curr}_FULFILLED`, `${curr}_REJECTED` ]

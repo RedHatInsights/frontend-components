@@ -45,6 +45,7 @@ export function getEntities(items, {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
         .then(({ results = [], ...data } = {}) => ({
             ...data,
+            filters,
             results: results.map(result => mapData({
                 ...result,
                 display_name: result.display_name || result.fqdn || result.id
@@ -65,6 +66,7 @@ export function getEntities(items, {
         )
         .then(({ results = [], ...data } = {}) => ({
             ...data,
+            filters,
             results: results.map(result => mapData({
                 ...result,
                 display_name: result.display_name || result.fqdn || result.id
@@ -88,6 +90,19 @@ export function getTags(systemId, count) {
         results: [ ...Array(count) ].map(() => ({
             tagName: 'Tag name',
             tagValue: `Some tag=${systemId}`
+        }))
+    }), 1000));
+}
+
+export function getAllTags() {
+    return new Promise(res => setTimeout(() => res({
+        // Fake it till you make it
+        results: [ ...Array(Math.round(Math.random() * Math.floor(5))) ].map(() => ({
+            name: Math.random().toString(36).substring(Math.round(Math.random() * Math.floor(10))),
+            tags: [ ...Array(Math.round(Math.random() * Math.floor(10))) ].map(() => ({
+                tagName: Math.random().toString(36).substring(Math.round(Math.random() * Math.floor(10))),
+                tagValue: `Some tag=${Math.random().toString(36).substring(Math.round(Math.random() * Math.floor(10)))}`
+            }))
         }))
     }), 1000));
 }
