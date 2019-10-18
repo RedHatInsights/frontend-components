@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
-import { loadEntities, showEntities, clearFilters } from './redux/actions';
+import { loadEntities, showEntities } from './redux/actions';
 import { Grid, GridItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import './InventoryList.scss';
@@ -43,11 +43,10 @@ class ContextInventoryList extends React.Component {
     }
 
     componentDidMount() {
-        const { setRefresh, setUpdate, onClearFilters } = this.props;
+        const { setRefresh, setUpdate } = this.props;
         setRefresh && setRefresh(this.loadEntities);
         setUpdate && setUpdate((options) => this.loadEntities(options, false));
-        this.loadEntities({ filters: [] });
-        onClearFilters();
+        this.loadEntities();
     }
 
     componentDidUpdate(prevProps) {
@@ -127,7 +126,6 @@ InventoryList.propTypes = propTypes;
 
 function mapDispatchToProps(dispatch) {
     return {
-        onClearFilters: () => dispatch(clearFilters()),
         loadEntities: (items = [], config) => {
             if (!Array.isArray(items)) {
                 console.error('Wrong shape of items, array with strings or objects with ID property required!');
