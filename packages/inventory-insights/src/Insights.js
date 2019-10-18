@@ -19,7 +19,7 @@ import {
     ToolbarGroup,
     ToolbarItem
 } from '@patternfly/react-core';
-import { CheckIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
+import { CheckIcon, CheckCircleIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
 import { cellWidth, sortable, SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
 import { flatten, sortBy } from 'lodash';
 import { global_success_color_200, global_BackgroundColor_100 } from '@patternfly/react-tokens';
@@ -60,7 +60,7 @@ class InventoryRuleList extends Component {
 
     async fetchAccountSettings() {
         try {
-            const settingsFetch = await fetch(`${BASE_FETCH_URL}account_setting`, { credentials: 'include' });
+            const settingsFetch = await fetch(`${BASE_FETCH_URL}account_setting/`, { credentials: 'include' });
             const accountSettings = await settingsFetch.json();
             this.setState({ accountSettings });
         } catch (error) {
@@ -152,8 +152,9 @@ class InventoryRuleList extends Component {
                         },
                         {
                             title: <div className='pf-m-center ' key={ key }>
-                                { resolution.has_playbook &&
-                                    <CheckIcon className='successColorOverride' /> }
+                                { resolution.has_playbook ?
+                                    <CheckCircleIcon className='successColorOverride' />
+                                    : 'No' }
                             </div>
                         }
                     ]
@@ -279,10 +280,8 @@ class InventoryRuleList extends Component {
 
     getSelectedItems = (rows) => rows.filter(entity => entity.selected);
 
-    processRemediation = () => {
-        const { rows } = this.state;
-        const selectedRows = this.getSelectedItems(rows);
-        const playbookRows = selectedRows.filter(r => r.resolution && r.resolution.has_playbook);
+    processRemediation = (selectedAnsibleRules) => {
+        const playbookRows = selectedAnsibleRules.filter(r => r.resolution && r.resolution.has_playbook);
         const issues = playbookRows.map(
             r => ({ id: `advisor:${r.rule.rule_id}`, description: r.rule.description })
         );
@@ -294,10 +293,12 @@ class InventoryRuleList extends Component {
 
     render() {
         const { inventoryReportFetchStatus, rows, cols, sortBy, filters, searchValue, activeReports, accountSettings } = this.state;
+        const { entity, systemProfile, addNotification } = this.props;
         const results = rows ? rows.length / 2 : 0;
-        const satelliteManaged = this.props.entity.satellite_id || false; // system is managed by satellite
+        const satelliteManaged = systemProfile && systemProfile.satellite_managed || false; // system is managed by satellite
         const satelliteShowHosts = accountSettings.show_satellite_hosts || false; // setting to show satellite managed systems
         const hideResultsSatelliteManaged = !satelliteShowHosts && satelliteManaged;
+        const selectedAnsibleRules = this.getSelectedItems(rows).filter(r => r.resolution && r.resolution.has_playbook);
 
         return <Fragment>
             { inventoryReportFetchStatus === 'pending' ||
@@ -325,10 +326,10 @@ class InventoryRuleList extends Component {
                         </ToolbarItem>
                         <ToolbarItem className="pf-u-mr-md">
                             <RemediationButton
-                                isDisabled={ this.getSelectedItems(rows).length === 0 }
-                                dataProvider={ this.processRemediation }
-                                onRemediationCreated={ result => this.props.addNotification(result.getNotification()) } >
-                                { AnsibeTowerIcon && <AnsibeTowerIcon size='sm' color={ global_BackgroundColor_100.value } /> } Remediation
+                                isDisabled={ selectedAnsibleRules.length === 0 }
+                                dataProvider={ () => this.processRemediation(selectedAnsibleRules) }
+                                onRemediationCreated={ result => addNotification(result.getNotification()) } >
+                                { AnsibeTowerIcon && <AnsibeTowerIcon size='sm' color={ global_BackgroundColor_100.value } /> } Remediate
                             </RemediationButton>
                         </ToolbarItem>
                         <ToolbarItem>{ this.buildKebab() }</ToolbarItem>
@@ -348,11 +349,11 @@ class InventoryRuleList extends Component {
             ) }
             { inventoryReportFetchStatus === 'fulfilled' &&
                 (hideResultsSatelliteManaged ?
-                    <MessageState icon={ PficonSatelliteIcon } title='Satellite managed system'
+                    <MessageState icon={ PficonSatelliteIcon } title='Satellite managed system' size='md'
                         text={ <span key='satellite managed system'>Insights results can not be displayed for this host, as the &quot;Hide
                     Satellite Managed Systems&quot; setting has been enabled by an org admin.<br />For more information on this setting
                                 and how to modify it,
-                        <a href='https://access.redhat.com/solutions/4281761' rel="noopener"> Please visit this Knowledgebase Article
+                        <a href='https://access.redhat.com/solutions/4281761' rel="noopener"> Please visit this Knowledgebase Article &nbsp;
                             <ExternalLinkAltIcon />
                         </a>.</span> } />
                     :
@@ -365,22 +366,22 @@ class InventoryRuleList extends Component {
                                 <TableBody />
                             </Table>
                             { results === 0 &&
-                                <MessageState icon={ TimesCircleIcon } title='No matching rules found'
+                                <MessageState icon={ TimesCircleIcon } title='No matching rules found' size='md'
                                     text={ `This filter criteria matches no rules. Try changing your filter settings.` } />
                             }
                         </Fragment>
                         :
                         <Card>
                             <CardBody>
-                                <MessageState icon={ CheckIcon } iconStyle={ { color: global_success_color_200.value } } title='No rule hits'
-                                    text={ `No known rules affect this system` } />
+                                <MessageState icon={ CheckIcon } iconStyle={ { color: global_success_color_200.value } } size='md'
+                                    title='No rule hits' text={ `No known rules affect this system` } />
                             </CardBody>
                         </Card>
                     ))
             }
-            { inventoryReportFetchStatus === 'failed' && this.props.entity &&
-                <MessageState icon={ TimesCircleIcon } title='Error getting rules'
-                    text={ this.props.entity ? `There was an error fetching rules list for this entity. Refresh your page to try again.`
+            { inventoryReportFetchStatus === 'failed' && entity &&
+                <MessageState icon={ TimesCircleIcon } title='Error getting rules' size='md'
+                    text={ entity ? `There was an error fetching rules list for this entity. Refresh your page to try again.`
                         : `This entity can not be found or might no longer be registered to Red Hat Insights.` } />
 
             }
@@ -391,12 +392,14 @@ class InventoryRuleList extends Component {
 InventoryRuleList.propTypes = {
     entity: PropTypes.object,
     addNotification: PropTypes.func,
-    routerData: PropTypes.object
+    routerData: PropTypes.object,
+    systemProfile: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({
     entity: state.entityDetails.entity,
-    routerData: state.routerData
+    routerData: state.routerData,
+    systemProfile: state.systemProfileStore && state.systemProfileStore.systemProfile
 });
 
 const mapDispatchToProps = dispatch => ({
