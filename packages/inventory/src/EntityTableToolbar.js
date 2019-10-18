@@ -117,7 +117,7 @@ class ContextEntityTableToolbar extends Component {
                     }
                 }
 
-                activeFiltersConfig && activeFiltersConfig.onDelete(e, deleted, isAll);
+                activeFiltersConfig && activeFiltersConfig.onDelete && activeFiltersConfig.onDelete(e, deleted, isAll);
             }
         };
     }
