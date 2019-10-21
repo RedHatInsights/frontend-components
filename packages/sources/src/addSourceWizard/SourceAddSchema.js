@@ -169,6 +169,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection) => (
                 submit: 'Finish'
             },
             showTitles: true,
+            predictSteps: true,
             fields: [
                 nameStep(),
                 typesStep(sourceTypes, applicationTypes, disableAppSelection),
