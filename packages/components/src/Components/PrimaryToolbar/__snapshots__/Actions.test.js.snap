@@ -10,7 +10,7 @@ exports[`Actions - component should render actionObject as first action 1`] = `
     </Component>
   </DataToolbarItem>
   <DataToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <Dropdown
       dropdownItems={
@@ -266,7 +266,7 @@ exports[`Actions - component should render one action 1`] = `
     </button>
   </DataToolbarItem>
   <DataToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <Dropdown
       dropdownItems={

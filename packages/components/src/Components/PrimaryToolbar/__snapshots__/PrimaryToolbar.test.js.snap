@@ -34,7 +34,7 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
       <DataToolbarItem>
@@ -100,7 +100,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
       <DataToolbarItem>
@@ -262,7 +262,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
       <DataToolbarItem>
@@ -296,7 +296,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
       <DataToolbarItem
@@ -339,7 +339,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
 >
   <DataToolbarContent>
     <DataToolbarGroup
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
       <DataToolbarItem>
