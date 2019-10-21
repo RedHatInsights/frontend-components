@@ -149,7 +149,7 @@ export default [
                             name: 'arn-description',
                             component: 'description'
                         }, {
-                            name: 'authentication.arn',
+                            name: 'authentication.password',
                             component: 'text-field',
                             label: 'ARN'
                         }]

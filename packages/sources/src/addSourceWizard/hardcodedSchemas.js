@@ -63,7 +63,7 @@ export default {
                 }
             },
             arn: {
-                'authentication.arn': {
+                'authentication.password': {
                     placeholder: 'arn:aws:iam:123456789:role/CostManagement',
                     isRequired: true,
                     validate: [{
