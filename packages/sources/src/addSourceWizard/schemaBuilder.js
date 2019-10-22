@@ -2,6 +2,12 @@ import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-re
 import hardcodedSchemas from './hardcodedSchemas';
 import get from 'lodash/get';
 
+export const getAdditionalSteps = (typeName, authName) => get(hardcodedSchemas, [ typeName, 'authentication', authName, 'additionalSteps' ], []);
+
+export const getAdditionalStepFields = (fields, stepKey) => fields.filter(field => field.stepKey === stepKey);
+
+export const getNoStepsFields = (fields) => fields.filter(field => !field.stepKey);
+
 export const injectAuthFieldsInfo = (fields, type, auth) => fields.map((field) => {
     const hardcodedField = get(hardcodedSchemas, [ type, 'authentication', auth, field.name ]);
 
@@ -46,14 +52,14 @@ export const createAuthSelection = (type, applicationTypes, sourceTypes, endpoin
             className: 'pf-u-pl-md',
             fields: [
                 ...getAdditionalAuthFields(type.name, auth.type),
-                ...injectAuthFieldsInfo(auth.fields, type.name, auth.type)
+                ...injectAuthFieldsInfo(getNoStepsFields(auth.fields), type.name, auth.type)
             ],
             condition: {
                 when: 'auth_select',
                 is: auth.type
             }
         });
-        stepMapper[auth.type] = auth.additional_steps ? `${type.name}-${auth.type}-additional-step` :
+        stepMapper[auth.type] = getAdditionalSteps(type.name, auth.type).length > 0 ? `${type.name}-${auth.type}-additional-step` :
             endpointFields.length === 0 ? `${type.name}-endpoint` : 'summary';
     });
 
@@ -79,12 +85,19 @@ export const createEndpointStep = (endpoint, typeName) => ({
     nextStep: 'summary'
 });
 
-export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpointStep) => additionalSteps.map((step) => ({
-    stepKey: `${name}-${authName}-additional-step`,
-    nextStep: hasEndpointStep ? `${name}-endpoint` : 'summary',
-    ...step,
-    fields: [ ...injectAuthFieldsInfo(step.fields, name, authName) ]
-}));
+export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpointStep, fields) => additionalSteps.map((step) => {
+    const stepKey = step.stepKey || `${name}-${authName}-additional-step`;
+
+    return ({
+        stepKey: stepKey,
+        nextStep: hasEndpointStep ? `${name}-endpoint` : 'summary',
+        ...step,
+        fields: [
+            ...injectAuthFieldsInfo(step.fields, name, authName),
+            ...injectAuthFieldsInfo(getAdditionalStepFields(fields, stepKey), name, authName)
+        ]
+    });
+});
 
 export const schemaBuilder = (sourceTypes, appTypes, disableAuthType) => {
     const schema = [];
@@ -96,9 +109,9 @@ export const schemaBuilder = (sourceTypes, appTypes, disableAuthType) => {
         schema.push(createAuthSelection(type, appTypes, sourceTypes, appendEndpoint, disableAuthType));
 
         type.schema.authentication.forEach(auth => {
-            const additionalSteps = auth.additional_steps;
-            if (additionalSteps) {
-                schema.push(...createAdditionalSteps(additionalSteps, type.name, auth.type, hasEndpointStep));
+            const additionalSteps = getAdditionalSteps(type.name, auth.type);
+            if (additionalSteps.length > 0) {
+                schema.push(...createAdditionalSteps(additionalSteps, type.name, auth.type, hasEndpointStep, auth.fields));
             }
         });
 

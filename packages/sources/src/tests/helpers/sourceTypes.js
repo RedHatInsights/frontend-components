@@ -102,57 +102,27 @@ export default [
                         name: 'authentication.authtype',
                         hideField: true,
                         initialValue: 'arn'
-                    }],
-                    additional_steps: [{
-                        title: 'Configure cost and usage reporting',
-                        nextStep: 'tags',
-                        fields: [{
-                            name: 'usage-description',
-                            component: 'description'
-                        }, {
-                            name: 'billing_source.bucket',
-                            component: 'text-field',
-                            label: 'S3 bucket name'
-                        }]
+                    },  {
+                        name: 'billing_source.bucket',
+                        component: 'text-field',
+                        label: 'S3 bucket name',
+                        stepKey: 'amazon-arn-additional-step',
+                        isRequired: true,
+                        validate: [
+                            { type: 'required-validator' },
+                            { type: 'pattern-validator', pattern: '^[A-Za-z0-9]+[A-Za-z0-9_-]*$' }
+                        ]
                     }, {
-                        title: 'Activate tags',
-                        stepKey: 'tags',
-                        nextStep: 'iam-policy',
-                        fields: [{
-                            name: 'tags-description',
-                            component: 'description'
-                        }]
-                    },
-                    {
-                        title: 'Create IAM policy',
-                        stepKey: 'iam-policy',
-                        nextStep: 'iam-role',
-                        substepOf: 'Enable account access',
-                        fields: [{
-                            name: 'iam-policy-description',
-                            component: 'description'
-                        }]
-                    }, {
-                        title: 'Create IAM role',
-                        stepKey: 'iam-role',
-                        nextStep: 'arn',
-                        substepOf: 'Enable account access',
-                        fields: [{
-                            name: 'iam-role-description',
-                            component: 'description'
-                        }]
-                    }, {
-                        title: 'Enter ARN',
+                        name: 'authentication.password',
+                        component: 'text-field',
+                        label: 'ARN',
                         stepKey: 'arn',
-                        substepOf: 'Enable account access',
-                        fields: [{
-                            name: 'arn-description',
-                            component: 'description'
-                        }, {
-                            name: 'authentication.password',
-                            component: 'text-field',
-                            label: 'ARN'
-                        }]
+                        isRequired: true,
+                        validate: [
+                            { type: 'required-validator' },
+                            { type: 'pattern-validator', pattern: '^arn:aws:.*' },
+                            { type: 'length-validator', threshold: 10 }
+                        ]
                     }]
                 }
             ],

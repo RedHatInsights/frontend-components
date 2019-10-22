@@ -6,13 +6,61 @@ import {
     createAuthSelection,
     createEndpointStep,
     createAdditionalSteps,
-    schemaBuilder
+    schemaBuilder,
+    getAdditionalStepFields,
+    getNoStepsFields,
+    getAdditionalSteps
 } from '../../addSourceWizard/schemaBuilder';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import sourceTypes from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
 
 describe('schema builder', () => {
+    describe('stepKey fields', () => {
+        const STEP_KEY = 'pepa';
+        const NO_STEP_FIELD_1 = { name: 'cosi-1' };
+        const NO_STEP_FIELD_2 = { name: 'cosi-2' };
+        const STEP_FIELD_1 = { name: 'cosi-a-1', stepKey: STEP_KEY };
+        const NO_STEP_FIELD_3 = { name: 'cosi-3' };
+        const STEP_FIELD_2 = { name: 'cosi-a-2', stepKey: STEP_KEY };
+
+        const NO_STEP_FIELDS = [
+            NO_STEP_FIELD_1,
+            NO_STEP_FIELD_2,
+            NO_STEP_FIELD_3
+        ];
+
+        const STEP_FIELDS = [
+            STEP_FIELD_1,
+            STEP_FIELD_2
+        ];
+
+        const FIELDS = [
+            ...NO_STEP_FIELDS,
+            ...STEP_FIELDS
+        ];
+
+        describe('getAdditionalStepFields', () => {
+            it('returns fields with stepKey', () => {
+                expect(getAdditionalStepFields(FIELDS, STEP_KEY)).toEqual(STEP_FIELDS);
+            });
+        });
+
+        describe('getNoStepsFields', () => {
+            it('returns fields with no stepKey', () => {
+                expect(getNoStepsFields(FIELDS)).toEqual(NO_STEP_FIELDS);
+            });
+        });
+    });
+
+    describe('getAdditionalSteps', () => {
+        it('returns additional steps for amazon-arn', () => {
+            expect(getAdditionalSteps('amazon', 'arn')).toEqual(
+                hardcodedSchemas.amazon.authentication.arn.additionalSteps
+            );
+        });
+    });
+
     describe('getAdditionalEndpointFields', () => {
         it('returns additionalEndpointFields for openshift', () => {
             expect(getAdditionalEndpointFields('openshift')).toEqual(
@@ -122,13 +170,23 @@ describe('schema builder', () => {
             { name: 'step-3', stepKey: 'step-3', fields: [ 'c' ] }
         ];
 
+        const INSERTED_STEP = { name: 'component-1', stepKey: 'red-hat-additional-step' };
+
+        const TYPES_FIELDS = [
+            INSERTED_STEP,
+            { name: 'component-2' }
+        ];
+
         it('returns createAdditionalSteps', () => {
             const HAS_ENDPOINT = false;
 
-            expect(createAdditionalSteps(ADDITIONAL_STEPS, 'red', 'hat', HAS_ENDPOINT)).toEqual([
+            expect(createAdditionalSteps(ADDITIONAL_STEPS, 'red', 'hat', HAS_ENDPOINT, TYPES_FIELDS)).toEqual([
                 {
                     ...ADDITIONAL_STEPS[0],
-                    fields: expect.any(Array),
+                    fields: [
+                        ...ADDITIONAL_STEPS[0].fields,
+                        INSERTED_STEP // insert the right step
+                    ],
                     nextStep: 'step-2',
                     stepKey: 'red-hat-additional-step'
                 },
@@ -148,7 +206,7 @@ describe('schema builder', () => {
         it('returns createAdditionalSteps with endpoint', () => {
             const HAS_ENDPOINT = true;
 
-            expect(createAdditionalSteps(ADDITIONAL_STEPS, 'red', 'hat', HAS_ENDPOINT)).toEqual([
+            expect(createAdditionalSteps(ADDITIONAL_STEPS, 'red', 'hat', HAS_ENDPOINT, TYPES_FIELDS)).toEqual([
                 {
                     ...ADDITIONAL_STEPS[0],
                     fields: expect.any(Array),

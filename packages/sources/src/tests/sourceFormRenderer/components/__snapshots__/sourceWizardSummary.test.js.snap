@@ -53,7 +53,7 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
     <TextListItem
       component="dd"
     >
-      ●●●●●●●●●●●●
+      123456
     </TextListItem>
   </TextList>
 </TextContent>

@@ -104,7 +104,50 @@ export default {
                         message: 'S3 bucket name must start with alphanumeric character and can contain underscore and hyphen'
                     }],
                     isRequired: true
-                }
+                },
+                additionalSteps: [{
+                    title: 'Configure cost and usage reporting',
+                    nextStep: 'iam-policy',
+                    fields: [{
+                        name: 'usage-description',
+                        component: 'description'
+                    }]
+                }, {
+                    title: 'Activate tags',
+                    stepKey: 'tags',
+                    nextStep: 'iam-policy',
+                    fields: [{
+                        name: 'tags-description',
+                        component: 'description'
+                    }]
+                },
+                {
+                    title: 'Create IAM policy',
+                    stepKey: 'iam-policy',
+                    nextStep: 'iam-role',
+                    substepOf: 'Enable account access',
+                    fields: [{
+                        name: 'iam-policy-description',
+                        component: 'description'
+                    }]
+                }, {
+                    title: 'Create IAM role',
+                    stepKey: 'iam-role',
+                    nextStep: 'arn',
+                    substepOf: 'Enable account access',
+                    fields: [{
+                        name: 'iam-role-description',
+                        component: 'description'
+                    }]
+                }, {
+                    title: 'Enter ARN',
+                    stepKey: 'arn',
+                    substepOf: 'Enable account access',
+                    fields: [{
+                        name: 'arn-description',
+                        component: 'description'
+                    }]
+                }]
             }
         },
         endpoint: {}
