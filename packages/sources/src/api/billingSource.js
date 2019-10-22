@@ -1,16 +1,17 @@
-import axios from 'axios';
+import { axiosInstance } from './index';
 import { COST_MANAGEMENT_API_BASE } from './constants';
 
-const resolveInterceptor = response => response.data || response;
-const axiosInstance = axios.create();
+export const postBillingSource = (data) => new Promise((resolve, reject) => {
+    const start = Date.now();
+    const timeout = 10000;
 
-axiosInstance.interceptors.response.use(resolveInterceptor);
-axiosInstance.interceptors.request.use(async (config) => {
-    await window.insights.chrome.auth.getUser();
-    return config;
+    const postBillingSourceInner = () =>  axiosInstance
+    .post(`${COST_MANAGEMENT_API_BASE}/sources/billing_source/`, data)
+    .then(({ data }) => resolve(data))
+    .catch(() => (Date.now() - start) >= timeout ?
+        reject(new Error('Timeout expired')) :
+        setTimeout(() => postBillingSourceInner(data), 1000)
+    );
+
+    return postBillingSourceInner(data);
 });
-axiosInstance.interceptors.response.use(null, error => { throw { ...error.response }; });
-
-export const getAxiosInstance = () => axiosInstance;
-
-export const postBillingSource = (data) => getAxiosInstance().get(`${COST_MANAGEMENT_API_BASE}/costmodels/`, data).then(({ data }) =>  data);

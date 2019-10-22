@@ -40,9 +40,14 @@ describe('schema builder', () => {
             ...STEP_FIELDS
         ];
 
+        const STEP_FIELDS_PARSED = [
+            { ...STEP_FIELD_1, stepKey: undefined },
+            { ...STEP_FIELD_2, stepKey: undefined }
+        ];
+
         describe('getAdditionalStepFields', () => {
-            it('returns fields with stepKey', () => {
-                expect(getAdditionalStepFields(FIELDS, STEP_KEY)).toEqual(STEP_FIELDS);
+            it('returns fields with stepKey and removes stepKey', () => {
+                expect(getAdditionalStepFields(FIELDS, STEP_KEY)).toEqual(STEP_FIELDS_PARSED);
             });
         });
 
@@ -185,7 +190,7 @@ describe('schema builder', () => {
                     ...ADDITIONAL_STEPS[0],
                     fields: [
                         ...ADDITIONAL_STEPS[0].fields,
-                        INSERTED_STEP // insert the right step
+                        { ...INSERTED_STEP, stepKey: undefined } // insert the right field
                     ],
                     nextStep: 'step-2',
                     stepKey: 'red-hat-additional-step'

@@ -32,6 +32,8 @@ axiosInstance.interceptors.request.use(async (config) => {
 axiosInstance.interceptors.response.use(response => response.data || response);
 axiosInstance.interceptors.response.use(null, error => { throw { ...error.response }; });
 
+export { axiosInstance };
+
 let apiInstance;
 
 export const getSourcesApi = () =>
@@ -98,15 +100,6 @@ export function doCreateSource(formData, sourceTypes) {
             promises.push(getSourcesApi().createApplication(applicationData));
         }
 
-        if (formData.billing_source) {
-            const billingSourceData = {
-                billing_source: formData.billing_source,
-                source_id: sourceDataOut.id
-            };
-
-            promises.push(postBillingSource(billingSourceData));
-        }
-
         return Promise.all(promises).then(([ endpointDataOut, applicationDataOut = undefined ]) => {
             const authenticationData = {
                 ...formData.authentication,
@@ -115,11 +108,23 @@ export function doCreateSource(formData, sourceTypes) {
             };
 
             return getSourcesApi().createAuthentication(authenticationData).then(() => {
-                return {
+                const source = {
                     ...sourceDataOut,
                     endpoint: [ endpointDataOut ],
                     applications: [ applicationDataOut ]
                 };
+
+                if (formData.billing_source) {
+                    const billingSourceData = {
+                        billing_source: formData.billing_source,
+                        source_id: sourceDataOut.id
+                    };
+
+                    return postBillingSource(billingSourceData).then(() => source)
+                    .catch(error => { throw { error };});
+                }
+
+                return source;
             }, (error) => {
                 console.error('Authentication creation failure:', error);
                 throw { error };

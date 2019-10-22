@@ -4,7 +4,8 @@ import get from 'lodash/get';
 
 export const getAdditionalSteps = (typeName, authName) => get(hardcodedSchemas, [ typeName, 'authentication', authName, 'additionalSteps' ], []);
 
-export const getAdditionalStepFields = (fields, stepKey) => fields.filter(field => field.stepKey === stepKey);
+export const getAdditionalStepFields = (fields, stepKey) => fields.filter(field => field.stepKey === stepKey)
+.map(field => ({ ...field, stepKey: undefined }));
 
 export const getNoStepsFields = (fields) => fields.filter(field => !field.stepKey);
 
