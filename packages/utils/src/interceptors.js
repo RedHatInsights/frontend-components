@@ -30,6 +30,16 @@ export function interceptor401(error) {
     throw error;
 }
 
+export function interceptor500(error) {
+    if (error.response && error.response.status === 503) {
+        Sentry.configureScope((scope) => {
+            scope.setTag("request_id", error.response.req_id);
+        });
+    }
+
+    throw error;
+}
+
 export function errorInterceptor(err) {
     if (!axios.isCancel(err)) {
         try {
@@ -52,6 +62,7 @@ const instance = axios.create();
 instance.interceptors.request.use(authInterceptor);
 instance.interceptors.response.use(responseDataInterceptor);
 instance.interceptors.response.use(null, interceptor401);
+instance.interceptors.response.use(null,interceptor500);
 instance.interceptors.response.use(null, errorInterceptor);
 
 export default instance;
