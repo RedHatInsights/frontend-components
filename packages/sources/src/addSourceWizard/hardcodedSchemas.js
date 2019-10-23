@@ -85,7 +85,7 @@ export default {
                     content: <AwsArn.IAMRoleDescription />
                 },
                 'iam-policy-description': {
-                    content: <AwsArn.IAMPolicyDescription />,
+                    content: AwsArn.IAMPolicyDescription,
                     assignFormOptions: true
                 },
                 'tags-description': {
