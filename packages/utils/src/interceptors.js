@@ -31,7 +31,7 @@ export function interceptor401(error) {
 }
 
 export function interceptor500(error) {
-    if (error.response && error.response.status === 503) {
+    if (error.response && error.response.status === 500) {
         Sentry.configureScope((scope) => {
             scope.setTag('request_id', error.response.req_id);
         });
