@@ -18,12 +18,6 @@ exports[`FilterChips component should render - no data 1`] = `
       onClick={[Function]}
     />
   </ChipGroup>
-  <Component
-    onClick={[Function]}
-    variant="link"
-  >
-    Clear filters
-  </Component>
 </span>
 `;
 
