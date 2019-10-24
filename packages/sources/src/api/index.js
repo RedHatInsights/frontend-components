@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { DefaultApi as SourcesDefaultApi } from '@redhat-cloud-services/sources-client';
 import { Base64 } from 'js-base64';
+import { postBillingSource } from './billingSource';
 
 const calculateApiBase = b => (
     (b.endsWith('/') && `${b}v1.0`) || `${b}/sources/v1.0`
@@ -30,6 +31,8 @@ axiosInstance.interceptors.request.use(async (config) => {
 });
 axiosInstance.interceptors.response.use(response => response.data || response);
 axiosInstance.interceptors.response.use(null, error => { throw { ...error.response }; });
+
+export { axiosInstance };
 
 let apiInstance;
 
@@ -105,11 +108,23 @@ export function doCreateSource(formData, sourceTypes) {
             };
 
             return getSourcesApi().createAuthentication(authenticationData).then(() => {
-                return {
+                const source = {
                     ...sourceDataOut,
                     endpoint: [ endpointDataOut ],
                     applications: [ applicationDataOut ]
                 };
+
+                if (formData.billing_source) {
+                    const billingSourceData = {
+                        billing_source: formData.billing_source,
+                        source_id: sourceDataOut.id
+                    };
+
+                    return postBillingSource(billingSourceData).then(() => source)
+                    .catch(error => { throw { error };});
+                }
+
+                return source;
             }, (error) => {
                 console.error('Authentication creation failure:', error);
                 throw { error };

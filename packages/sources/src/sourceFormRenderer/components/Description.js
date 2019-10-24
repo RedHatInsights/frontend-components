@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Description = ({ name, content, className }) => <div className={ className } id={ name }>
-    { content }
+const Description = ({ name, Content, className, formOptions, assignFormOptions }) => <div className={ className } id={ name }>
+    {assignFormOptions ? <Content formOptions={formOptions} /> : <Content />}
 </div>;
 
 Description.propTypes = {
     name: PropTypes.string.isRequired,
-    content: PropTypes.node.isRequired,
-    className: PropTypes.string
+    Content: PropTypes.oneOfType([ PropTypes.element, PropTypes.func ]).isRequired,
+    className: PropTypes.string,
+    assignFormOptions: PropTypes.bool,
+    formOptions: PropTypes.shape({
+        getState: PropTypes.func.isRequired
+    }).isRequired
 };
 
 Description.defaultProps = {
