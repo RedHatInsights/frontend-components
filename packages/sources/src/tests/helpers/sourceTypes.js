@@ -97,31 +97,31 @@ export default [
                 {
                     type: 'arn',
                     name: 'ARN',
-                    fields: [
-                        {
-                            component: 'text-field',
-                            name: 'authentication.authtype',
-                            hideField: true,
-                            initialValue: 'arn'
-                        },
-                        {
-                            component: 'text-field',
-                            name: 'authentication.password',
-                            label: 'ARN',
-                            type: 'password'
-                        }
-                    ],
-                    additional_steps: [{
-                        title: 'ARN amazon bucket',
-                        substep: 'ARN',
-                        fields: [
-                            {
-                                label: 'Additional CostManagement field',
-                                component: 'text-field',
-                                name: 'cost_management.bucket',
-                                description: 'description',
-                                helperText: 'helperText'
-                            }
+                    fields: [{
+                        component: 'text-field',
+                        name: 'authentication.authtype',
+                        hideField: true,
+                        initialValue: 'arn'
+                    },  {
+                        name: 'billing_source.bucket',
+                        component: 'text-field',
+                        label: 'S3 bucket name',
+                        stepKey: 'amazon-arn-additional-step',
+                        isRequired: true,
+                        validate: [
+                            { type: 'required-validator' },
+                            { type: 'pattern-validator', pattern: '^[A-Za-z0-9]+[A-Za-z0-9_-]*$' }
+                        ]
+                    }, {
+                        name: 'authentication.password',
+                        component: 'text-field',
+                        label: 'ARN',
+                        stepKey: 'arn',
+                        isRequired: true,
+                        validate: [
+                            { type: 'required-validator' },
+                            { type: 'pattern-validator', pattern: '^arn:aws:.*' },
+                            { type: 'length-validator', threshold: 10 }
                         ]
                     }]
                 }

@@ -111,7 +111,8 @@ const nameStep = () => ({
         {
             component: 'description',
             name: 'description-summary',
-            content: <TextContent key='step1'>
+            // eslint-disable-next-line react/display-name
+            Content: () => (<TextContent key='step1'>
                 <Text component={ TextVariants.p }>
                 To import data for an application, you need to connect to a data source.
                 Input a name and then proceed to the selection of application and source types.
@@ -119,7 +120,7 @@ const nameStep = () => ({
                 <Text component={ TextVariants.p }>
             Name is required and has to be unique.
                 </Text>
-            </TextContent>
+            </TextContent>)
         },
         {
             component: componentTypes.TEXT_FIELD,
@@ -140,11 +141,12 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
         {
             component: 'description',
             name: 'description-summary',
-            content: <TextContent>
+            // eslint-disable-next-line react/display-name
+            Content: () => (<TextContent>
                 <Text component={ TextVariants.p }>
             Review the information below and click Finish to add your source. Use the Back button to make changes.
                 </Text>
-            </TextContent>
+            </TextContent>)
         },
         {
             name: 'summary',
@@ -169,6 +171,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection) => (
                 submit: 'Finish'
             },
             showTitles: true,
+            predictSteps: true,
             fields: [
                 nameStep(),
                 typesStep(sourceTypes, applicationTypes, disableAppSelection),
