@@ -58,4 +58,9 @@ describe('Shield component', () => {
         const wrapper = shallow(<Shield impact={'Medium'} hasLabel />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
+
+    it('should render where hasTooltip is false', () => {
+        const wrapper = shallow(<Shield hasTooltip={false} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 });

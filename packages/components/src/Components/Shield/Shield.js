@@ -19,11 +19,11 @@ const Shield = ({ impact, hasLabel, hasTooltip, size }) => {
     );
     return (
         <span>
-            {(hasTooltip && (
+            {hasTooltip ?
                 <Tooltip content={<div>{attributes.message}</div>} position={'bottom'}>
                     {body}
                 </Tooltip>
-            )) || { body }}
+                : body}
         </span>
     );
 };

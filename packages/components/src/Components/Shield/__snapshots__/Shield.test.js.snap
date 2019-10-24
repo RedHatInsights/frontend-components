@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Shield component should render where hasTooltip is false 1`] = `
+<span>
+  <span>
+    <QuestionIcon
+      aria-hidden="false"
+      aria-label="Unknown"
+      color="#737679"
+      noVerticalAlign={false}
+      size="sm"
+      title={null}
+    />
+     
+  </span>
+</span>
+`;
+
 exports[`Shield component should render where impact value is 1 1`] = `
 <span>
   <Tooltip
