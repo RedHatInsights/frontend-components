@@ -14,7 +14,7 @@ export default {
                 additionalFields: [{
                     component: 'description',
                     name: 'description-summary',
-                    content: <OpenshiftToken.DescriptionSummary />
+                    Content: OpenshiftToken.DescriptionSummary
                 }]
             }
         },
@@ -33,11 +33,12 @@ export default {
             additionalFields: [{
                 component: 'description',
                 name: 'description-summary',
-                content: <TextContent key='2'>
+                // eslint-disable-next-line react/display-name
+                Content: () => (<TextContent key='2'>
                     <Text component={ TextVariants.p }>
                     Provide OpenShift Container Platform URL and SSL certificate.
                     </Text>
-                </TextContent>
+                </TextContent>)
             }]
         }
     },
@@ -48,7 +49,7 @@ export default {
                     {
                         component: 'description',
                         name: 'description-summary',
-                        content: <AwsSecret.DescriptionSummary />
+                        Content: AwsSecret.DescriptionSummary
                     }
                 ],
                 'authentication.username': {
@@ -79,20 +80,20 @@ export default {
                     }]
                 },
                 'arn-description': {
-                    content: <AwsArn.ArnDescription />
+                    Content: AwsArn.ArnDescription
                 },
                 'iam-role-description': {
-                    content: <AwsArn.IAMRoleDescription />
+                    Content: AwsArn.IAMRoleDescription
                 },
                 'iam-policy-description': {
-                    content: AwsArn.IAMPolicyDescription,
+                    Content: AwsArn.IAMPolicyDescription,
                     assignFormOptions: true
                 },
                 'tags-description': {
-                    content: <AwsArn.TagsDescription />
+                    Content: AwsArn.TagsDescription
                 },
                 'usage-description': {
-                    content: <AwsArn.UsageDescription />
+                    Content: AwsArn.UsageDescription
                 },
                 'billing_source.bucket': {
                     placeholder: 'cost-usage-bucket',
