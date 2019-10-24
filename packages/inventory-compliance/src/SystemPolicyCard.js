@@ -14,7 +14,11 @@ import PropTypes from 'prop-types';
 class SystemPolicyCard extends React.Component {
     constructor(policy) {
         super(policy);
-        this.state = { refIdTruncated: <Truncate lines={ 1 }>{ policy.policy.refId }</Truncate>, ...policy };
+        this.state = {
+            cardTitle: <Truncate lines={ 1 }>{ policy.policy.name }</Truncate>,
+            refIdTruncated: <Truncate lines={ 1 }>{ policy.policy.refId }</Truncate>,
+            ...policy
+        };
     }
 
     complianceIcon = () => {
@@ -39,8 +43,17 @@ class SystemPolicyCard extends React.Component {
         this.setState({ refIdTruncated: <Truncate lines={ 1 }>{ this.state.policy.refId }</Truncate> });
     }
 
+    onTitleMouseover = () => {
+        this.setState({ cardTitle: this.state.policy.name });
+    }
+
+    onTitleMouseout = () => {
+        this.setState({ cardTitle: <Truncate lines={ 1 }>{ this.state.cardTitle }</Truncate> });
+    }
+
     render() {
-        const { rulesPassed, rulesFailed, name, compliant, lastScanned } = this.state.policy;
+        const { rulesPassed, rulesFailed, compliant, lastScanned } = this.state.policy;
+        const { refIdTruncated, cardTitle } = this.state;
         const passedPercentage = this.fixedPercentage(100 * (rulesPassed / (rulesPassed + rulesFailed)));
 
         return (
@@ -48,7 +61,13 @@ class SystemPolicyCard extends React.Component {
                 <CardBody>
                     <TextContent className='margin-bottom-md'>
                         <Text className='margin-bottom-none' component={ TextVariants.small }>External policy</Text>
-                        <Text className='margin-bottom-top-none' component={ TextVariants.h4 }>{ name }</Text>
+                        <Text className='margin-bottom-top-none'
+                            component={ TextVariants.h4 }
+                            onMouseEnter={ this.onTitleMouseover }
+                            onMouseLeave={ this.onTitleMouseout }
+                        >
+                            { cardTitle }
+                        </Text>
                     </TextContent>
                     <div className='margin-bottom-md' >
                         { this.complianceIcon(compliant) }
@@ -64,7 +83,7 @@ class SystemPolicyCard extends React.Component {
                             className='wrap-break-word'
                         >
                             Profile <br/>
-                            { this.state.refIdTruncated }
+                            { refIdTruncated }
                         </Text>
                     </div>
                     <Text className='margin-bottom-none' component={ TextVariants.small }>
