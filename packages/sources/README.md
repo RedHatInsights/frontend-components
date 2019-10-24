@@ -81,15 +81,14 @@ schema = {
       },
       :fields => {
         # DDF Fields, will be shown in the authentication selection step
-        {:component => "text-field", :name => "authentication.authtype", :type => "hidden", :initialValue => "username_password"},
+        {
+          :component    => "text-field",
+          :name         => "authentication.authtype",
+          :hideField    => true,
+          :initialValue => "username_password",
+          :stepKey      => 'openshift-token-additional-field'
+        },
       },
-      :additional_steps => [
-        # Steps according to DDF
-        # Don't use `stepKey` in the first step
-        # Don't use `nextStep` in the last step
-        # => These attributes will be appended automatically
-        # Additional steps are shown after the authentication_type selection step
-      ]
     }
   },
   :endpoint => {
