@@ -18,12 +18,6 @@ module.exports = {
             amd: '@patternfly/react-core',
             root: 'PFReactCore'
         },
-        '@patternfly/react-table': {
-            commonjs: '@patternfly/react-table',
-            commonjs2: '@patternfly/react-table',
-            amd: '@patternfly/react-table',
-            root: 'PFReactTable'
-        },
         '@redhat-cloud-services/frontend-components': '@redhat-cloud-services/frontend-components',
         'prop-types': 'prop-types',
         react: 'react',

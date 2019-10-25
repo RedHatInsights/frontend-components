@@ -164,7 +164,7 @@ class ContextEntityTableToolbar extends Component {
                 label: 'Name',
                 value: 'name-filter',
                 filterValues: {
-                    placeholder: 'Find system by name',
+                    placeholder: 'Filter by name',
                     value: this.state.textFilter,
                     onChange: (_e, value) => this.onSetTextFilter(value)
                 }
