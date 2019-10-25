@@ -160,7 +160,7 @@ exports[`CollectionCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Invalid Date
+          25 Oct 2019
         </dd>
         <dt
           class=""
@@ -172,7 +172,7 @@ exports[`CollectionCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Invalid Date
+          25 Oct 2019
         </dd>
       </dl>
     </div>
