@@ -15,8 +15,8 @@ describe('CollectionCard', () => {
         initialState = {
             entityDetails: {
                 entity: {
-                    updated: '1565702893431',
-                    created: '1565702893431'
+                    updated: 1572008795974,
+                    created: 1572008795974
                 }
             },
             systemProfileStore: {

@@ -20,7 +20,7 @@ import {
     TableVariant,
     sortable
 } from '@patternfly/react-table';
-import { SkeletonTable, EmptyTable } from '@redhat-cloud-services/frontend-components';
+import { SkeletonTable, EmptyTable, DateFormat } from '@redhat-cloud-services/frontend-components';
 import TagsModal from './TagsModal';
 
 class EntityTable extends React.Component {
@@ -63,7 +63,11 @@ class EntityTable extends React.Component {
             }
 
             if (isTime) {
-                const [ day, date, month, year, time ] = new Date(get(col, key, ' ')).toUTCString().split(' ');
+                if (DateFormat) {
+                    return { title: <DateFormat date={get(col, key, ' ')} type="relative" /> };
+                }
+
+                const [ , date, month, year, time ] = new Date(get(col, key, ' ')).toUTCString().split(' ');
                 if (date && month && year && time) {
                     return `${date} ${month} ${year}, ${time.split(':').slice(0, 2).join(':')} UTC`;
                 }
