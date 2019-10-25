@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateFormat component DateFormat renders 1`] = `
+<Fragment>
+  Invalid Date
+</Fragment>
+`;
