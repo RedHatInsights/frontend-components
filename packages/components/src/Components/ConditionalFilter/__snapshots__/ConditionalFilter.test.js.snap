@@ -87,7 +87,7 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
     <SplitItem
       isFilled={true}
     >
-      <Checkbox
+      <checkbox
         id="checkbox-filter"
         items={
           Array [
@@ -106,9 +106,7 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
             },
           ]
         }
-        onChange={[Function]}
         placeholder="Filter by Checkbox"
-        value={Array []}
       />
     </SplitItem>
   </Split>
@@ -268,7 +266,7 @@ exports[`ConditionalFilter render should render correctly Radio filter with valu
     <SplitItem
       isFilled={true}
     >
-      <Radio
+      <radio
         id="radio-filter"
         items={
           Array [
@@ -284,7 +282,6 @@ exports[`ConditionalFilter render should render correctly Radio filter with valu
             },
           ]
         }
-        onChange={[Function]}
         placeholder="Filter by Radio filter"
       />
     </SplitItem>
@@ -445,9 +442,8 @@ exports[`ConditionalFilter render should render correctly Simple text 2 with val
     <SplitItem
       isFilled={true}
     >
-      <Text
+      <text
         id="simple-text-2"
-        onSubmit={[Function]}
         placeholder="Filter by Simple text 2"
         value="some-value blaa"
       />
@@ -527,10 +523,8 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
     <SplitItem
       isFilled={true}
     >
-      <Text
-        onSubmit={[Function]}
+      <text
         placeholder="Filter by No value"
-        value=""
       />
     </SplitItem>
   </Split>
