@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-compliance",
-    "version": "0.0.22",
+    "version": "0.0.27",
     "description": "Detail part of compliance for RedHat Cloud Services.",
     "main": "index.js",
     "publishConfig": {
@@ -22,13 +22,15 @@
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-compliance#readme",
     "peerDependencies": {
         "@patternfly/react-core": ">=3.2.6",
-        "@patternfly/react-icons": ">=3.7.4",
+        "@patternfly/react-icons": "3.14.12",
         "@patternfly/react-table": ">=2.1.6",
+        "@patternfly/react-tokens": "2.6.31",
         "react": "^16.5.1",
         "react-dom": "^16.5.1",
         "prop-types": "^15.6.2",
         "react-redux": "^5.0.7",
         "react-router-dom": "^4.2.2",
+        "react-truncate": "^2.4.0",
         "react-content-loader": "^3.4.1",
         "lodash": "4.17.15"
     },

@@ -252,19 +252,19 @@ class SystemRulesTable extends React.Component {
                     <div className='margin-top-lg'>
                         <Stack id={ `rule-description-${key}` } className='margin-bottom-lg'>
                             <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
-                                <Text component={ TextVariants.h5 }><b>Description</b></Text>
+                                <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>Description</b></Text>
                             </StackItem>
                             <StackItem isFilled>{ description }</StackItem>
                         </Stack>
                         <Stack id={ `rule-identifiers-references-${key}` } className='margin-bottom-lg'>
                             <Grid>
                                 { identifier && <GridItem span={ 2 }>
-                                    <Text component={ TextVariants.h5 }><b>Identifier</b></Text>
+                                    <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>Identifier</b></Text>
                                     <Text>{ this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
                                 </GridItem> }
 
                                 { references && references.length > 0 ? <GridItem span={ 10 }>
-                                    <Text component={ TextVariants.h5 }><b>References</b></Text>
+                                    <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>References</b></Text>
                                     <Text>{ this.referencesList(references) }</Text>
                                 </GridItem> : '' }
                             </Grid>
@@ -272,7 +272,7 @@ class SystemRulesTable extends React.Component {
                         { rationale &&
                         <Stack id={ `rule-rationale-${key}` } style={ { marginBottom: 'var(--pf-global--spacer--lg)' } }>
                             <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
-                                <Text component={ TextVariants.h5 }><b>Rationale</b></Text>
+                                <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>Rationale</b></Text>
                             </StackItem>
                             <StackItem isFilled>{ rationale }</StackItem>
                         </Stack>
