@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 import { dateStringByType } from './helper';
 
 export default function DateFormat({ date, type = 'relative' }) {
-    const dateObj = date instanceof Date === 'Date' ? date : new Date(date);
-    return <React.Fragment>{dateStringByType(dateObj.toString() === 'Invalid Date' ? 'invalid' : type)(dateObj)}</React.Fragment>;
+    const dateObj = date instanceof Date ? date : new Date(date);
+    const dateType = dateObj.toString() === 'Invalid Date' ? 'invalid' : type;
+    return (
+        <React.Fragment>
+            {dateStringByType(dateType)(dateObj)}
+        </React.Fragment>
+    );
 }
 
 DateFormat.propTypes = {
-    date: PropTypes.oneOfType([ PropTypes.instanceOf(Date), PropTypes.string ]),
+    date: PropTypes.oneOfType([ PropTypes.instanceOf(Date), PropTypes.string, PropTypes.number ]),
     type: PropTypes.oneOf([ 'exact', 'onlyDate', 'relative' ])
 };
