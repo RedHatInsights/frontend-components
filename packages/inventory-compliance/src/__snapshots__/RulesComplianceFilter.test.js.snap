@@ -54,8 +54,15 @@ exports[`RulesComplianceFilter component should render filter 1`] = `
           Object {
             "label": <React.Fragment>
               <svg
-                height="18"
-                width="18"
+                height="1em"
+                role="img"
+                style={
+                  Object {
+                    "verticalAlign": "-0.125em",
+                  }
+                }
+                viewBox="0 0 18 18"
+                width="1em"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -143,8 +150,15 @@ exports[`RulesComplianceFilter component should render filter 1`] = `
             Object {
               "label": <React.Fragment>
                 <svg
-                  height="18"
-                  width="18"
+                  height="1em"
+                  role="img"
+                  style={
+                    Object {
+                      "verticalAlign": "-0.125em",
+                    }
+                  }
+                  viewBox="0 0 18 18"
+                  width="1em"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path

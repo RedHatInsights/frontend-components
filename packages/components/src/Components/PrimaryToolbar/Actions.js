@@ -52,7 +52,7 @@ class Actions extends Component {
                     </DataToolbarItem>
                 }
                 {
-                    ((actions && actions.length > 1) || (overflowActions.length > 0)) &&
+                    ((actions && actions.length > 0) || (overflowActions.length > 0)) &&
                     <DataToolbarItem
                         className={`${actions.length <= 1 ? 'ins-m-actions--empty' : ''} ins-c-primary-toolbar__actions` }
                     >
@@ -81,7 +81,7 @@ class Actions extends Component {
                                         { ...actionPropsGenerator(action, key) }
                                     />
                                 )),
-                                ...actions.length > 0 ? [ <DropdownSeparator
+                                ...(actions.length > 0 && overflowActions.length > 0) ? [ <DropdownSeparator
                                     key="separator"
                                     className="ins-c-primary-toolbar__overflow-actions-separator"
                                 /> ] : [],
