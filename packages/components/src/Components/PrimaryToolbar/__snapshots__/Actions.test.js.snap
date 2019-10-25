@@ -9,6 +9,31 @@ exports[`Actions - component should render actionObject as first action 1`] = `
       Some title
     </Component>
   </DataToolbarItem>
+  <DataToolbarItem
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+  >
+    <Dropdown
+      dropdownItems={
+        Array [
+          <DropdownItem
+            className="ins-c-primary-toolbar__first-action "
+            component="button"
+            onClick={[Function]}
+          >
+            Some title
+          </DropdownItem>,
+        ]
+      }
+      isOpen={false}
+      isPlain={true}
+      onSelect={[Function]}
+      toggle={
+        <KebabToggle
+          onToggle={[Function]}
+        />
+      }
+    />
+  </DataToolbarItem>
 </Fragment>
 `;
 
@@ -211,9 +236,6 @@ exports[`Actions - component should render just actions 1`] = `
           >
             plain string
           </DropdownItem>,
-          <DropdownSeparator
-            className="ins-c-primary-toolbar__overflow-actions-separator"
-          />,
         ]
       }
       isOpen={false}
@@ -242,6 +264,35 @@ exports[`Actions - component should render one action 1`] = `
     >
       Some button
     </button>
+  </DataToolbarItem>
+  <DataToolbarItem
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+  >
+    <Dropdown
+      dropdownItems={
+        Array [
+          <DropdownItem
+            className="ins-c-primary-toolbar__first-action "
+            component="div"
+            onClick={[Function]}
+          >
+            <button
+              onClick={[MockFunction]}
+            >
+              Some button
+            </button>
+          </DropdownItem>,
+        ]
+      }
+      isOpen={false}
+      isPlain={true}
+      onSelect={[Function]}
+      toggle={
+        <KebabToggle
+          onToggle={[Function]}
+        />
+      }
+    />
   </DataToolbarItem>
 </Fragment>
 `;
