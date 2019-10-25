@@ -1,4 +1,5 @@
-import { Fragment } from 'react';
+/* eslint-disable react/display-name */
+import React, { Fragment } from 'react';
 import Text from './Text';
 import Checkbox from './Checkbox';
 import Radio from './Radio';
@@ -14,11 +15,11 @@ export const conditionalFilterType = {
 
 export const typeMapper = (type) => {
     return {
-        text: Text,
-        checkbox: Checkbox,
-        radio: Radio,
-        custom: Fragment,
-        group: Group
+        text: (props) => <Text {...props} />,
+        checkbox: (props) => <Checkbox {...props} />,
+        radio: (props) => <Radio {...props} />,
+        custom: (props) => <Fragment {...props}/>,
+        group: (props) => <Group {...props} />
     }[type] || Text;
 };
 
