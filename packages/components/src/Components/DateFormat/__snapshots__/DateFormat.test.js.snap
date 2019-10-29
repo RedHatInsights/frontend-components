@@ -1,7 +1,130 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateFormat component DateFormat renders 1`] = `
+exports[`DateFormat component DateFormat renders with date integer 1`] = `
 <Fragment>
-  Invalid Date
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={
+      <div>
+        date
+      </div>
+    }
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      01 Jan 1970 00:00:00
+    </span>
+  </Tooltip>
+</Fragment>
+`;
+
+exports[`DateFormat component DateFormat renders with date object 1`] = `
+<Fragment>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={
+      <div>
+        date
+      </div>
+    }
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      Just now
+    </span>
+  </Tooltip>
+</Fragment>
+`;
+
+exports[`DateFormat component DateFormat renders with date string 1`] = `
+<Fragment>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content={
+      <div>
+        date
+      </div>
+    }
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span>
+      Just now
+    </span>
+  </Tooltip>
 </Fragment>
 `;
