@@ -35,15 +35,8 @@ Install all packages by calling `npm install` in root folder. This will perform 
 ## Creating new package
 If none package suits scope of new changes, we need to create new package by creating folder inside `packages` and running `npm init` in it.
 
-## Commit format
+## Run release
 
-[Semantic release](https://github.com/semantic-release/semantic-release) is used in this project, so to trigger new release you should add specific format into your commit messages and new release will be triggered when PR is merged.
+Webhooks are enabled to trigger releases on travis from comment on merged PR. If you are member of group responsible for releases you can add new commnent to merged PR `Release minor`, `Release bugfix` or `Release` in order to trigger new release.
 
-### Used formatter
-
-[Commit analyzer wildcard](https://github.com/karelhala/commit-analyzer-wildcard) is used for parsing commit messages so to trigger new release add one of these strings into your commit and new release is triggered
-
-* Major - `<x.x.x>` or `<x.x.?>` or `<x.?.x>` or `<x.?.?>`
-* Minor - `<?.x.x>` or `<?.x.?>`
-* Bug - `<?.?.x>`
-* No release - `<no>`
+You can also draft a release by adding label `release` or `release minor` and once this PR is merged new release will be triggered.
