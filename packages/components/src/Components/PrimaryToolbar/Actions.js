@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { DataToolbarItem } from '@patternfly/react-core/dist/js/experimental';
 import { Dropdown, DropdownItem, KebabToggle, Button, DropdownSeparator } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
+import { DownloadButton } from '../DownloadButton';
 
 export const overflowActionsMapper = (action, key) => (
     <DropdownItem
@@ -35,13 +36,13 @@ class Actions extends Component {
 
     render() {
         const { isOpen } = this.state;
-        const { actions, overflowActions, onSelect, dropdownProps } = this.props;
+        const { actions, overflowActions, onSelect, dropdownProps, exportConfig } = this.props;
         const [ firstAction, ...restActions ] = actions;
         return (
             <Fragment>
                 {
                     firstAction &&
-                    <DataToolbarItem className="ins-c-primary-toolbar__first-action">
+                    <DataToolbarItem className="ins-c-primary-toolbar__first-action pf-m-spacer-sm">
                         {
                             firstAction.label ?
                                 <Button { ...firstAction.props }>
@@ -52,9 +53,15 @@ class Actions extends Component {
                     </DataToolbarItem>
                 }
                 {
+                    exportConfig && (exportConfig.extraItems || exportConfig.onSelect) &&
+                    <DataToolbarItem className="pf-m-spacer-sm">
+                        <DownloadButton  { ...exportConfig } />
+                    </DataToolbarItem>
+                }
+                {
                     ((actions && actions.length > 0) || (overflowActions.length > 0)) &&
                     <DataToolbarItem
-                        className={`${actions.length <= 1 ? 'ins-m-actions--empty' : ''} ins-c-primary-toolbar__actions` }
+                        className={`${actions.length <= 1 ? 'ins-m-actions--empty' : ''} ins-c-primary-toolbar__actions pf-m-spacer-sm` }
                     >
                         <Dropdown
                             { ...dropdownProps }
@@ -112,13 +119,15 @@ Actions.propTypes = {
     overflowActions: actionsType,
     dropdownProps: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
-    })
+    }),
+    exportConfig: PropTypes.shape(DownloadButton.propTypes)
 };
 
 Actions.defaultProps = {
     actions: [],
     overflowActions: [],
     dropdownProps: {},
+    exportConfig: {},
     onSelect: () => undefined
 };
 

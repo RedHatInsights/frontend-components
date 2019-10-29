@@ -26,16 +26,20 @@ class DownloadButton extends Component {
         return (
             <Dropdown
                 { ...props }
+                isPlain
                 onSelect={ this.onSelect }
                 toggle={
-                    <DropdownToggle onToggle={ this.onToggle } >
+                    <DropdownToggle
+                        iconComponent={null}
+                        onToggle={ this.onToggle }
+                    >
                         <ExportIcon size={ IconSize.sm } />
                     </DropdownToggle>
                 }
                 isOpen={ isOpen }
                 dropdownItems={ [
-                    <DropdownItem key="download-csv" component="button" onClick={ event => onSelect(event, 'csv') }>CSV</DropdownItem>,
-                    <DropdownItem key="download-json" component="button" onClick={ event => onSelect(event, 'json') }>JSON</DropdownItem>,
+                    <DropdownItem key="download-csv" component="button" onClick={ event => onSelect(event, 'csv') }>Export to CSV</DropdownItem>,
+                    <DropdownItem key="download-json" component="button" onClick={ event => onSelect(event, 'json') }>Export to JSON</DropdownItem>,
                     ...extraItems
                 ] }
             />
