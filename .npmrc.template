@@ -1,0 +1,2 @@
+//registry.npmjs.org/:_authToken=${NPM_TOKEN}
+@redhat-cloud-services:registry=https://registry.npmjs.org/
