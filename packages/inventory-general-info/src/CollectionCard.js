@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoadingCard from './LoadingCard';
 import { collectionInformationSelector } from './selectors';
+import { DateFormat } from '@redhat-cloud-services/frontend-components';
 
 const CollectionCard = ({ detailLoaded, collectionInformation, entity }) => (<LoadingCard
     title="Collection information"
@@ -10,8 +11,16 @@ const CollectionCard = ({ detailLoaded, collectionInformation, entity }) => (<Lo
     items={ [
         { title: 'Insights client', value: collectionInformation.client },
         { title: 'Egg', value: collectionInformation.egg },
-        { title: 'Last check-in', value: entity && new Date(entity.updated).toLocaleString() },
-        { title: 'Registered', value: entity && new Date(entity.created).toLocaleString() }
+        { title: 'Last check-in', value: entity && (
+            DateFormat ?
+                <DateFormat date={ entity.updated } type="onlyDate" /> :
+                new Date(entity.updated).toLocaleString()
+        ) },
+        { title: 'Registered', value: entity && (
+            DateFormat ?
+                <DateFormat date={entity.created} type="onlyDate" /> :
+                new Date(entity.created).toLocaleString()
+        ) }
     ] }
 />);
 

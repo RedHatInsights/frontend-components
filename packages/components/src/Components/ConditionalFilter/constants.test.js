@@ -1,5 +1,4 @@
 import { conditionalFilterType, typeMapper } from './constants';
-import Checkbox from './Checkbox';
 import Text from './Text';
 
 it('should have correct types', () => {
@@ -7,7 +6,7 @@ it('should have correct types', () => {
 });
 
 it('should return correct type', () => {
-    expect(typeMapper('checkbox')).toBe(Checkbox);
+    expect(typeMapper('checkbox').name).toBe('checkbox');
 });
 
 it('should return Text if no type present', () => {
