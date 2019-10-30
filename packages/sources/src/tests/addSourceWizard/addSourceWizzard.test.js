@@ -46,7 +46,6 @@ describe('AddSourceWizard', () => {
         const form = wrapper.find(FormRenderer).children().children().instance().form;
 
         form.change('source.name', 'nameee');
-        form.change('source_type', 'openshift');
 
         setTimeout(() => {
             form.submit().then(() => {
@@ -68,7 +67,6 @@ describe('AddSourceWizard', () => {
         const form = wrapper.find(FormRenderer).children().children().instance().form;
 
         form.change('source.name', 'nameee');
-        form.change('source_type', 'openshift');
 
         setTimeout(() => {
             form.submit().then(() => {
@@ -83,13 +81,13 @@ describe('AddSourceWizard', () => {
     });
 
     it('show error step after failing the form', (done) => {
-        dependency.doCreateSource = jest.fn(() => new Promise((_resolve, reject) => reject('fail')));
+        const ERROR_MESSAGE = 'fail';
+        dependency.doCreateSource = jest.fn(() => new Promise((_resolve, reject) => reject(ERROR_MESSAGE)));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
         const form = wrapper.find(FormRenderer).children().children().instance().form;
 
         form.change('source.name', 'nameee');
-        form.change('source_type', 'openshift');
 
         setTimeout(() => {
             form.submit().then(() => {
@@ -97,6 +95,7 @@ describe('AddSourceWizard', () => {
                 expect(wrapper.find(FinalWizard)).toHaveLength(1);
                 expect(wrapper.find(FinishedStep)).toHaveLength(0);
                 expect(wrapper.find(ErroredStep)).toHaveLength(1);
+                expect(wrapper.find(ErroredStep).html().includes(ERROR_MESSAGE)).toEqual(true);
                 done();
             });
         }, 1000);

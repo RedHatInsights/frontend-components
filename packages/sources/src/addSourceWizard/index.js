@@ -12,7 +12,8 @@ const initialValues = (initialValues) => ({
     isFinished: false,
     isErrored: false,
     values: initialValues,
-    createdSource: {}
+    createdSource: {},
+    error: undefined
 });
 
 class AddSourceWizard extends React.Component {
@@ -28,8 +29,8 @@ class AddSourceWizard extends React.Component {
         return doCreateSource(formValues, sourceTypes).then((data) => {
             this.setState({ isFinished: true, createdSource: data });
         })
-        .catch(() => {
-            this.setState({ isErrored: true });
+        .catch((error) => {
+            this.setState({ isErrored: true, error: error.toString() });
         });
     }
 
@@ -43,7 +44,8 @@ class AddSourceWizard extends React.Component {
 
     onRetry = () => this.setState({
         isErrored: false,
-        isSubmitted: false
+        isSubmitted: false,
+        error: undefined
     })
 
     onCancel = () => {
@@ -62,7 +64,7 @@ class AddSourceWizard extends React.Component {
             returnButtonTitle,
             disableHardcodedSchemas
         } = this.props;
-        const { isErrored, isFinished, isSubmitted, values } = this.state;
+        const { isErrored, isFinished, isSubmitted, values, error } = this.state;
 
         if (!isOpen) {
             return null;
@@ -89,6 +91,7 @@ class AddSourceWizard extends React.Component {
             successfulMessage={ successfulMessage }
             hideSourcesButton={ hideSourcesButton }
             returnButtonTitle={ returnButtonTitle }
+            errorMessage={ error }
         />;
     }
 }

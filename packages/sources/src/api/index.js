@@ -3,6 +3,8 @@ import { DefaultApi as SourcesDefaultApi } from '@redhat-cloud-services/sources-
 import { Base64 } from 'js-base64';
 import { postBillingSource } from './billingSource';
 
+import { handleError } from './handleError';
+
 const calculateApiBase = b => (
     (b.endsWith('/') && `${b}v1.0`) || `${b}/sources/v1.0`
 );
@@ -30,7 +32,7 @@ axiosInstance.interceptors.request.use(async (config) => {
     return config;
 });
 axiosInstance.interceptors.response.use(response => response.data || response);
-axiosInstance.interceptors.response.use(null, error => { throw { ...error.response }; });
+axiosInstance.interceptors.response.use(null, error => { throw { ...error }; });
 
 export { axiosInstance };
 
@@ -121,21 +123,27 @@ export function doCreateSource(formData, sourceTypes) {
                     };
 
                     return postBillingSource(billingSourceData).then(() => source)
-                    .catch(error => { throw { error };});
+                    .catch(async (error) => {
+                        const errorMessage = await handleError(sourceDataOut.id, error);
+                        throw errorMessage;
+                    });
                 }
 
                 return source;
-            }, (error) => {
-                console.error('Authentication creation failure:', error);
-                throw { error };
+            }, async (error) => {
+                const errorMessage = await handleError(sourceDataOut.id, error);
+                throw errorMessage;
             });
-        }).catch(e => {
-            console.error(e);
-            throw { error: e };
+        }).catch(async (error) => {
+            const errorMessage = await handleError(sourceDataOut.id, error);
+            throw errorMessage;
         });
     }, (error) => {
-        console.error('Source creation failure:', error);
-        throw { error };
+        if (typeof error === 'string') {
+            throw error;
+        }
+
+        throw `${error.config.url}: ${error.response.data.errors[0].detail}`;
     });
 }
 

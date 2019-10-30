@@ -9,7 +9,7 @@ const AuthRadio = ({ label, input, authName, index, formOptions, applicationType
     const isSelected = input.value === authName;
     const supportedAuthTypes = sourceTypes.find(type => type.name === values.source_type).schema.authentication.map((auth) => auth.type);
 
-    if (values.application) {
+    if (values.application && values.application.application_type_id) {
         application = applicationTypes.find(({ id }) => id === values.application.application_type_id);
         isDisabled = !application.supported_authentication_types[values.source_type].includes(authName);
     }
