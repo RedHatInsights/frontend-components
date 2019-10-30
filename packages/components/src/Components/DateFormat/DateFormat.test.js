@@ -18,4 +18,14 @@ describe('DateFormat component', () => {
         const wrapper = shallow(<DateFormat date={new Date('Dec 31 2019 00:00:00 UTC')} />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
+
+    it('DateFormat renders with date integer', () => {
+        const wrapper = shallow(<DateFormat date={10} type='exact'/>);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('DateFormat renders with date integer', () => {
+        const wrapper = shallow(<DateFormat date={10} type='onlyDate'/>);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 });

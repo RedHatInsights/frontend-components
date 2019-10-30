@@ -9,7 +9,7 @@ exports[`DateFormat component DateFormat renders with date integer 1`] = `
     className=""
     content={
       <div>
-        date
+        1970-01-01T00:00:00.010Z
       </div>
     }
     distance={15}
@@ -43,6 +43,18 @@ exports[`DateFormat component DateFormat renders with date integer 1`] = `
 </Fragment>
 `;
 
+exports[`DateFormat component DateFormat renders with date integer 2`] = `
+<Fragment>
+  01 Jan 1970 00:00:00 UTC
+</Fragment>
+`;
+
+exports[`DateFormat component DateFormat renders with date integer 3`] = `
+<Fragment>
+  01 Jan 1970
+</Fragment>
+`;
+
 exports[`DateFormat component DateFormat renders with date object 1`] = `
 <Fragment>
   <Tooltip
@@ -52,7 +64,7 @@ exports[`DateFormat component DateFormat renders with date object 1`] = `
     className=""
     content={
       <div>
-        date
+        2019-12-31T00:00:00.000Z
       </div>
     }
     distance={15}
@@ -95,7 +107,7 @@ exports[`DateFormat component DateFormat renders with date string 1`] = `
     className=""
     content={
       <div>
-        date
+        2019-12-31T00:00:00.000Z
       </div>
     }
     distance={15}
