@@ -32,10 +32,20 @@ const calculatePackages = (files) => {
     return [ ...new Set(files.map(({ filename }) => `${filename.substring(monorepoFolder.length + 1).split('/')[0]}/`)) ];
 };
 
+const packageName = (pckgName, newVersion) => {
+    const newNameVersion = `${pckgName}/v/${newVersion}`;
+    const spaces = [ ...new Array(Math.max(0, 14 - Math.round(newNameVersion.length / 10))) ].map(() => '&emsp;').join('');
+    return `${spaces}:package:[${newNameVersion}](https://www.npmjs.com/package/${newNameVersion}):package:`;
+};
+
 const releaseComment = (pckgName, newVersion) => `
-New version of package has been released \
-[${pckgName}/v/${newVersion}]\
-(https://www.npmjs.com/package/${pckgName}/v/${newVersion})
+&emsp;&emsp;&emsp;&emsp;&emsp;🌱  🌸 🌷 🌻 🌟  **New version of package has been released**  🌟  🌻 🌷 🌸 🌱
+
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;The release is available on:
+
+**${packageName(pckgName, newVersion)}**
+
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:boom:This feature is brought to you by [probot](https://probot.github.io/):rocket:
 `;
 
 (async () => {
@@ -79,5 +89,13 @@ New version of package has been released \
             packageUpdate,
             `Updating ${pckg.name} to ${newVersion}`
         );
+
+        pushBot.issues.addLabels({
+            owner,
+            repo,
+            // eslint-disable-next-line camelcase
+            issue_number: prNumber,
+            labels: [ 'released' ]
+        });
     });
 })();
