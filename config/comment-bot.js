@@ -5,7 +5,7 @@ dotenv.config();
 
 const octokit = Octokit({
     auth: process.env.GH_TOKEN_BOT,
-    userAgent: 'karelhala-bot',
+    userAgent: 'nacho-bot',
     previews: [ 'jean-grey', 'symmetra' ],
     timeZone: 'Europe/Prague',
     baseUrl: 'https://api.github.com'
