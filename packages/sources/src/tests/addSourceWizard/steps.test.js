@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { Button, EmptyStateBody } from '@patternfly/react-core';
+import { Button, EmptyStateBody, Text } from '@patternfly/react-core';
 
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
@@ -93,6 +93,13 @@ describe('Steps components', () => {
         it('renders correctly', () => {
             const wrapper = shallow(<ErroredStep { ...initialProps }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('renders correctly with message', () => {
+            const ERROR_MESSAGE = 'I am a little error, nice to meet you';
+            const wrapper = shallow(<ErroredStep { ...initialProps } message={ERROR_MESSAGE}/>);
+
+            expect(wrapper.find(Text).last().children().text().includes(ERROR_MESSAGE)).toEqual(true);
         });
 
         it('calls onClose function', () => {
