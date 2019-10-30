@@ -1,35 +1,21 @@
 /* eslint-disable camelcase */
-
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { List } from 'react-content-loader';
-import {
-    Button,
-    ButtonVariant,
-    Card,
-    CardBody,
-    Dropdown,
-    DropdownItem,
-    DropdownPosition,
-    InputGroup,
-    KebabToggle,
-    TextInput,
-    ToolbarGroup,
-    ToolbarItem
-} from '@patternfly/react-core';
-import { CheckIcon, CheckCircleIcon, ExternalLinkAltIcon, SearchIcon, TimesCircleIcon, PficonSatelliteIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
+import { Card, CardBody, ToolbarItem } from '@patternfly/react-core';
+import { CheckIcon, CheckCircleIcon, ExternalLinkAltIcon, TimesCircleIcon, PficonSatelliteIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
 import { cellWidth, sortable, SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
 import { flatten, sortBy } from 'lodash';
 import { global_success_color_200, global_BackgroundColor_100 } from '@patternfly/react-tokens';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import moment from 'moment';
-import { Battery, FilterDropdown, TableToolbar } from '@redhat-cloud-services/frontend-components';
+import { Battery, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 
 import './insights.scss';
 import ReportDetails from './ReportDetails';
-import { FILTER_CATEGORIES, BASE_FETCH_URL } from './Constants';
+import { FILTER_CATEGORIES as FC, BASE_FETCH_URL } from './Constants';
 import MessageState from './MessageState';
 
 class InventoryRuleList extends Component {
@@ -40,17 +26,19 @@ class InventoryRuleList extends Component {
             { title: 'Description', transforms: [ sortable ] },
             { title: 'Added', transforms: [ sortable, cellWidth(15) ] },
             { title: 'Total risk', transforms: [ sortable ] },
-            { title: <span className='ansibleCol'>
-                { AnsibeTowerIcon && <AnsibeTowerIcon size='md' /> } Ansible
-            </span>, transforms: [ sortable ] }
+            {
+                title: <span>{AnsibeTowerIcon && <AnsibeTowerIcon size='md' />}Ansible</span>,
+                transforms: [ sortable ],
+                dataLabel: 'Ansible'
+            }
         ],
-        isKebabOpen: false,
         sortBy: {},
         activeReports: [],
         kbaDetailsData: [],
-        filters: {},
+        filters: { has_playbook: 'all' },
         searchValue: '',
-        accountSettings: {}
+        accountSettings: {},
+        isSelected: false
     };
 
     componentDidMount() {
@@ -124,7 +112,7 @@ class InventoryRuleList extends Component {
         });
     };
 
-    buildRows = (activeReports, kbaDetails, filters, searchValue, kbaLoading = false) => {
+    buildRows = (activeReports, kbaDetails, filters, searchValue = '', kbaLoading = false) => {
         const rows = flatten(activeReports.map((value, key) => {
             const rule = value.rule;
             const resolution = value.resolution;
@@ -135,26 +123,26 @@ class InventoryRuleList extends Component {
                     resolution,
                     isOpen: true,
                     cells: [
-                        { title: <div> { rule.description }</div> },
+                        { title: <div> {rule.description}</div> },
                         {
-                            title: <div key={ key }>
-                                { moment(rule.publish_date).fromNow() }
+                            title: <div key={key}>
+                                {moment(rule.publish_date).fromNow()}
                             </div>
                         },
                         {
-                            title: <div className='pf-m-center' key={ key } style={ { verticalAlign: 'top' } }>
+                            title: <div className='pf-m-center' key={key} style={{ verticalAlign: 'top' }}>
                                 <Battery
                                     label='Total risk'
                                     labelHidden
-                                    severity={ rule.total_risk }
+                                    severity={rule.total_risk}
                                 />
                             </div>
                         },
                         {
-                            title: <div className='pf-m-center ' key={ key }>
-                                { resolution.has_playbook ?
+                            title: <div className='pf-m-center ' key={key}>
+                                {resolution.has_playbook ?
                                     <CheckCircleIcon className='successColorOverride' />
-                                    : 'No' }
+                                    : 'No'}
                             </div>
                         }
                     ]
@@ -163,7 +151,7 @@ class InventoryRuleList extends Component {
                     parent: key,
                     fullWidth: true,
                     cells: [{
-                        title: <ReportDetails key={ `child-${key}` } report={ value } kbaDetail={ kbaDetail } kbaLoading={ kbaLoading } />
+                        title: <ReportDetails key={`child-${key}`} report={value} kbaDetail={kbaDetail} kbaLoading={kbaLoading} />
                     }]
                 }
             ];
@@ -176,8 +164,11 @@ class InventoryRuleList extends Component {
                     publish_date: rule.publish_date,
                     total_risk: rule.total_risk
                 };
-
-                return filterValues.search(rowValue[key]) !== -1;
+                if (typeof filterValues === 'string') {
+                    return filterValues === 'all' ? true : filterValues.search(rowValue[key]) !== -1;
+                } else {
+                    return filterValues.find(value => Number(value) === rowValue[key]);
+                }
             }).every(x => x);
 
             return isValidSearchValue && isValidFilterValue ? reportRow : [];
@@ -188,13 +179,7 @@ class InventoryRuleList extends Component {
         return rows;
     };
 
-    onKebabToggle = isOpen => {
-        this.setState({
-            isKebabOpen: isOpen
-        });
-    };
-
-    onKebabClick = action => {
+    onKebabClick = (action) => {
         const { rows } = this.state;
         const isOpen = action === 'insights-expand-all';
         rows.map((row, key) => {
@@ -204,28 +189,7 @@ class InventoryRuleList extends Component {
             }
         });
 
-        this.setState({
-            isKebabOpen: !this.state.isKebabOpen
-        });
-    };
-
-    buildKebab = () => {
-        const { isKebabOpen } = this.state;
-        return <Dropdown
-            onToggle={ this.onKebabToggle }
-            position={ DropdownPosition.right }
-            toggle={ <KebabToggle onToggle={ this.onKebabToggle } /> }
-            isOpen={ isKebabOpen }
-            isPlain
-            dropdownItems={ [
-                <DropdownItem component='button' key='collapse' onClick={ () => this.onKebabClick('insights-collapse-all') } >
-                    Collapse all
-                </DropdownItem>,
-                <DropdownItem component='button' key='expand' onClick={  () => this.onKebabClick('insights-expand-all') }>
-                    Expand all
-                </DropdownItem>
-            ] }
-        />;
+        this.setState({ rows });
     };
 
     onSort = (_event, index, direction) => {
@@ -246,24 +210,17 @@ class InventoryRuleList extends Component {
         });
     };
 
-    onFilterChange = (key, value, type) => {
-        const { filters, activeReports, kbaDetailsData, searchValue } = this.state;
-        let newFilter;
-        if (type) {
-            newFilter = filters[key] ? { [key]: `${filters[key]},${value}` } : { [key]: `${value}` };
-        } else {
-            newFilter = { [key]: filters[key].split(',').filter(item => String(item) !== String(value)).join(',') };
-            if (!newFilter[key].length) {
-                delete filters[key];
-                delete newFilter[key];
-            }
-        }
+    removeFilterParam = (param) => {
+        const filter = { ...this.state.filters };
+        delete filter[param];
+        return filter;
+    };
 
-        const rows = this.buildRows(activeReports, kbaDetailsData, { ...filters, ...newFilter }, searchValue);
-        this.setState({
-            filters: { ...filters, ...newFilter },
-            rows
-        });
+    onFilterChange = (param, values) => {
+        const { filters, activeReports, kbaDetailsData, searchValue } = this.state;
+        const newFilters = values.length > 0 ? { ...filters, ...{ [param]: values } } : this.removeFilterParam(param);
+        const rows = this.buildRows(activeReports, kbaDetailsData, newFilters, searchValue);
+        this.setState({ rows, filters: newFilters });
     };
 
     onInputChange = (value) => {
@@ -280,6 +237,13 @@ class InventoryRuleList extends Component {
 
     getSelectedItems = (rows) => rows.filter(entity => entity.selected);
 
+    bulkSelect = (isSelected) => {
+        this.setState({
+            isSelected,
+            rows: this.state.rows.map((row) => (row.rule ? { ...row, selected: isSelected } : row))
+        });
+    }
+
     processRemediation = (selectedAnsibleRules) => {
         const playbookRows = selectedAnsibleRules.filter(r => r.resolution && r.resolution.has_playbook);
         const issues = playbookRows.map(
@@ -291,98 +255,161 @@ class InventoryRuleList extends Component {
             false;
     };
 
+    buildFilterChips = (filters) => {
+        const prunedFilters = Object.entries(filters);
+        const chips = filters && prunedFilters.length > 0 ? prunedFilters.map(item => {
+            const category = FC[item[0]];
+            const chips = Array.isArray(item[1]) ? item[1].map(value =>
+                ({ name: category.values.find(values => values.value === String(value)).label, value }))
+                : [{ name: category.values.find(values => values.value === String(item[1])).label, value: item[1] }];
+            return { category: category.title, chips, urlParam: category.urlParam };
+        })
+            : [];
+        return chips;
+    }
+
+    onChipDelete = (event, itemsToRemove, isAll) => {
+        const { filters, activeReports, kbaDetailsData, searchValue } = this.state;
+        if (isAll) {
+            const rows = this.buildRows(activeReports, kbaDetailsData, { has_playbook: 'all' }, searchValue);
+            this.setState({ rows, filters: { has_playbook: 'all' } });
+        } else {
+            itemsToRemove.map(item => {
+                item.urlParam === 'total_risk' &&
+                    this.onFilterChange(item.urlParam, filters[item.urlParam].filter(value => Number(value) !== Number(item.chips[0].value)));
+            });
+        }
+    }
+
     render() {
-        const { inventoryReportFetchStatus, rows, cols, sortBy, filters, searchValue, activeReports, accountSettings } = this.state;
+        const { inventoryReportFetchStatus, rows, cols, sortBy, filters, searchValue, activeReports, accountSettings, isSelected } = this.state;
         const { entity, systemProfile, addNotification } = this.props;
         const results = rows ? rows.length / 2 : 0;
         const satelliteManaged = systemProfile && systemProfile.satellite_managed || false; // system is managed by satellite
         const satelliteShowHosts = accountSettings.show_satellite_hosts || false; // setting to show satellite managed systems
         const hideResultsSatelliteManaged = !satelliteShowHosts && satelliteManaged;
         const selectedAnsibleRules = this.getSelectedItems(rows).filter(r => r.resolution && r.resolution.has_playbook);
+        const selectedItemsLength = this.getSelectedItems(rows).length;
+        const actions = [
+            '', {
+                label: 'Collapse all',
+                onClick: () => this.onKebabClick('insights-collapse-all')
+            }, {
+                label: 'Expand all',
+                onClick: () => this.onKebabClick('insights-expand-all')
+            }
+        ];
+
+        const filterConfigItems = [{
+            label: 'Description',
+            filterValues: {
+                onChange: (event, value) => this.onInputChange(value),
+                value: searchValue
+            }
+        }, {
+            label: FC.has_playbook.title,
+            type: FC.has_playbook.type,
+            id: FC.has_playbook.urlParam,
+            value: `checkbox-${FC.has_playbook.urlParam}`,
+            filterValues: {
+                onChange: (event, values) => this.onFilterChange(FC.has_playbook.urlParam, values),
+                value: filters.has_playbook,
+                items: FC.has_playbook.values
+            }
+        }, {
+            label: FC.total_risk.title,
+            type: FC.total_risk.type,
+            id: FC.total_risk.urlParam,
+            value: `checkbox-${FC.total_risk.urlParam}`,
+            filterValues: {
+                onChange: (event, values) => this.onFilterChange(FC.total_risk.urlParam, values),
+                value: filters.total_risk,
+                items: FC.total_risk.values
+            }
+        }];
+
+        const bulkSelect = {
+            items: [{
+                title: 'Select none',
+                onClick: () => this.bulkSelect(false)
+            }, {
+                title: 'Select all',
+                onClick: () => this.bulkSelect(true)
+            }],
+            count: selectedItemsLength,
+            checked: isSelected || selectedItemsLength === results,
+            onSelect: () => { this.bulkSelect(!isSelected); }
+        };
+
+        const activeFiltersConfig = {
+            filters: this.buildFilterChips(filters),
+            onDelete: this.onChipDelete
+        };
 
         return <Fragment>
-            { inventoryReportFetchStatus === 'pending' ||
+            {inventoryReportFetchStatus === 'pending' ||
                 (inventoryReportFetchStatus === 'fulfilled' && hideResultsSatelliteManaged) ?
-                <></>
-                : <TableToolbar className='pf-u-justify-content-space-between'>
-                    <ToolbarGroup>
-                        <ToolbarItem className="pf-u-mr-md">
-                            <InputGroup>
-                                <TextInput name='search-input' id='inventory-insights-search-input' type='search' value={ searchValue }
-                                    aria-label='inventory-insights-search-input' placeholder='Find a rule...' onChange={ this.onInputChange }
-                                />
-                                <Button variant={ ButtonVariant.tertiary } aria-label='search button for search input'>
-                                    <SearchIcon />
-                                </Button>
-                            </InputGroup>
-                        </ToolbarItem>
-                        <ToolbarItem className="pf-u-mr-md">
-                            <FilterDropdown
-                                filters={ filters }
-                                addFilter={ this.onFilterChange }
-                                removeFilter={ this.onFilterChange }
-                                filterCategories={ FILTER_CATEGORIES }
-                            />
-                        </ToolbarItem>
-                        <ToolbarItem className="pf-u-mr-md">
-                            <RemediationButton
-                                isDisabled={ selectedAnsibleRules.length === 0 }
-                                dataProvider={ () => this.processRemediation(selectedAnsibleRules) }
-                                onRemediationCreated={ result => addNotification(result.getNotification()) } >
-                                { AnsibeTowerIcon && <AnsibeTowerIcon size='sm' color={ global_BackgroundColor_100.value } /> } Remediate
-                            </RemediationButton>
-                        </ToolbarItem>
-                        <ToolbarItem>{ this.buildKebab() }</ToolbarItem>
-                    </ToolbarGroup>
-                    <ToolbarGroup>
-                        <ToolbarItem>
-                            { results === 1 ? `${results} rule` : `${results} rules` }
-                        </ToolbarItem>
-                    </ToolbarGroup>
-                </TableToolbar> }
-            { inventoryReportFetchStatus === 'pending' && (
+                <React.Fragment></React.Fragment>
+                :
+                <PrimaryToolbar
+                    actionsConfig={{ actions }}
+                    bulkSelect={bulkSelect}
+                    filterConfig={{ items: filterConfigItems }}
+                    pagination={<React.Fragment> {results === 1 ? `${results} rule` : `${results} rules`} </React.Fragment>}
+                    activeFiltersConfig={activeFiltersConfig}
+                >
+                    <ToolbarItem className="remediationButtonOverride">
+                        <RemediationButton
+                            isDisabled={selectedAnsibleRules.length === 0}
+                            dataProvider={() => this.processRemediation(selectedAnsibleRules)}
+                            onRemediationCreated={result => addNotification(result.getNotification())} >
+                            {AnsibeTowerIcon && <AnsibeTowerIcon size='sm' color={global_BackgroundColor_100.value} />} Remediate
+                        </RemediationButton>
+                    </ToolbarItem>
+                </PrimaryToolbar>
+            }
+            {inventoryReportFetchStatus === 'pending' && (
                 <Card>
                     <CardBody>
                         <List />
                     </CardBody>
                 </Card>
-            ) }
-            { inventoryReportFetchStatus === 'fulfilled' &&
+            )}
+            {inventoryReportFetchStatus === 'fulfilled' &&
                 (hideResultsSatelliteManaged ?
-                    <MessageState icon={ PficonSatelliteIcon } title='Satellite managed system' size='md'
-                        text={ <span key='satellite managed system'>Insights results can not be displayed for this host, as the &quot;Hide
-                    Satellite Managed Systems&quot; setting has been enabled by an org admin.<br />For more information on this setting
-                                and how to modify it,
-                        <a href='https://access.redhat.com/solutions/4281761' rel="noopener"> Please visit this Knowledgebase Article &nbsp;
-                            <ExternalLinkAltIcon />
-                        </a>.</span> } />
+                    <MessageState icon={PficonSatelliteIcon} title='Satellite managed system' size='md'
+                        text={<span key='satellite managed system'>
+                            Insights results can not be displayed for this host, as the &quot;Hide Satellite Managed Systems&quot; setting has been
+                            enabled by an org admin.<br />For more information on this setting and how to modify it,
+                            <a href='https://access.redhat.com/solutions/4281761' rel="noopener"> Please visit this Knowledgebase article &nbsp;
+                                <ExternalLinkAltIcon />
+                            </a>.</span>} />
                     :
                     (activeReports.length > 0 ?
                         <Fragment>
-                            <Table aria-label={ 'rule-table' } onCollapse={ this.handleOnCollapse } rows={ rows } cells={ cols } sortBy={ sortBy }
-                                onSort={ this.onSort }
-                                onSelect={ this.onSelect }>
+                            <Table aria-label={'rule-table'} onCollapse={this.handleOnCollapse} rows={rows} cells={cols} sortBy={sortBy}
+                                canSelectAll={false} onSort={this.onSort} onSelect={this.onSelect}>
                                 <TableHeader />
                                 <TableBody />
                             </Table>
-                            { results === 0 &&
-                                <MessageState icon={ TimesCircleIcon } title='No matching rules found' size='md'
-                                    text={ `This filter criteria matches no rules. Try changing your filter settings.` } />
+                            {results === 0 &&
+                                <MessageState icon={TimesCircleIcon} title='No matching rules found' size='md'
+                                    text={`This filter criteria matches no rules. Try changing your filter settings.`} />
                             }
                         </Fragment>
                         :
                         <Card>
                             <CardBody>
-                                <MessageState icon={ CheckIcon } iconStyle={ { color: global_success_color_200.value } } size='md'
-                                    title='No rule hits' text={ `No known rules affect this system` } />
+                                <MessageState icon={CheckIcon} iconStyle={{ color: global_success_color_200.value }} size='md'
+                                    title='No rule hits' text={`No known rules affect this system`} />
                             </CardBody>
                         </Card>
                     ))
             }
-            { inventoryReportFetchStatus === 'failed' && entity &&
-                <MessageState icon={ TimesCircleIcon } title='Error getting rules' size='md'
-                    text={ entity ? `There was an error fetching rules list for this entity. Refresh your page to try again.`
-                        : `This entity can not be found or might no longer be registered to Red Hat Insights.` } />
+            {inventoryReportFetchStatus === 'failed' && entity &&
+                <MessageState icon={TimesCircleIcon} title='Error getting rules' size='md'
+                    text={entity ? `There was an error fetching rules list for this entity. Refresh your page to try again.`
+                        : `This entity can not be found or might no longer be registered to Red Hat Insights.`} />
 
             }
         </Fragment>;
@@ -399,7 +426,7 @@ InventoryRuleList.propTypes = {
 const mapStateToProps = (state) => ({
     entity: state.entityDetails.entity,
     routerData: state.routerData,
-    systemProfile: state.systemProfileStore && state.systemProfileStore.systemProfile
+    systemProfile: state.systemProfileStore ? state.systemProfileStore.systemProfile : {}
 });
 
 const mapDispatchToProps = dispatch => ({
