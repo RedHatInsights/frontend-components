@@ -1,3 +1,6 @@
+import React from 'react';
+import { Tooltip } from '@patternfly/react-core';
+
 const second = 1000;
 const minute = second * 60;
 const hour = minute * 60;
@@ -16,9 +19,23 @@ const relativeTimeTable = [
 
 const exact = (value) => value.toUTCString().split(',')[1].slice(0, -4).trim();
 
+export const addTooltip = (date, element) => (
+    <Tooltip
+        content={<div>{date}</div>}
+    >
+        {element}
+    </Tooltip>);
+
 export const dateStringByType = (type) => ({
     exact: date => exact(date) + ' UTC',
     onlyDate: date => exact(date).slice(0, -9),
     relative: date => relativeTimeTable.reduce((acc, i) => (i.rightBound > Date.now() - date ? i.description(Date.now() - date) : acc), exact(date)),
+    invalid: () => 'Invalid Date'
+})[type];
+
+export const dateByType = (type) => ({
+    exact: date => dateStringByType(type)(date),
+    onlyDate: date => dateStringByType(type)(date),
+    relative: date => addTooltip(date, <span>{dateStringByType(type)(date)}</span>),
     invalid: () => 'Invalid Date'
 })[type];
