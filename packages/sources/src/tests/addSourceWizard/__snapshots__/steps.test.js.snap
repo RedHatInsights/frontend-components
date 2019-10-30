@@ -18,7 +18,13 @@ exports[`Steps components ErroredStep renders correctly 1`] = `
       Configuration unsuccessful
     </Title>
     <EmptyStateBody>
-      Something went wrong. Your source has not been successfully added.
+      <TextContent>
+        <Text
+          variant="p"
+        >
+          Your source has not been successfully added:
+        </Text>
+      </TextContent>
     </EmptyStateBody>
     <Component
       onClick={[MockFunction]}
