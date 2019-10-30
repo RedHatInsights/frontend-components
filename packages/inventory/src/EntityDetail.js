@@ -14,7 +14,7 @@ import {
     DropdownPosition,
     DropdownToggle
 } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize, DateFormat } from '@redhat-cloud-services/frontend-components';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
@@ -109,7 +109,11 @@ class EntityDetails extends Component {
                         <span>
                             {
                                 loaded ?
-                                    (new Date(this.getFact('updated'))).toLocaleString() :
+                                    (
+                                        DateFormat ?
+                                            <DateFormat date={this.getFact('updated')} type="exact" /> :
+                                            new Date(this.getFact('updated')).toLocaleString()
+                                    ) :
                                     <Skeleton size={ SkeletonSize.sm } />
                             }
                         </span>

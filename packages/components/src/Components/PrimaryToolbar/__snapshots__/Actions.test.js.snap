@@ -3,14 +3,14 @@
 exports[`Actions - component should render actionObject as first action 1`] = `
 <Fragment>
   <DataToolbarItem
-    className="ins-c-primary-toolbar__first-action"
+    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <Component>
       Some title
     </Component>
   </DataToolbarItem>
   <DataToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <Dropdown
       dropdownItems={
@@ -40,7 +40,7 @@ exports[`Actions - component should render actionObject as first action 1`] = `
 exports[`Actions - component should render actions and overflow 1`] = `
 <Fragment>
   <DataToolbarItem
-    className="ins-c-primary-toolbar__first-action"
+    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
       key="btn"
@@ -50,7 +50,7 @@ exports[`Actions - component should render actions and overflow 1`] = `
     </button>
   </DataToolbarItem>
   <DataToolbarItem
-    className=" ins-c-primary-toolbar__actions"
+    className=" ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <Dropdown
       dropdownItems={
@@ -137,7 +137,7 @@ exports[`Actions - component should render actions and overflow 1`] = `
 exports[`Actions - component should render empty actions 1`] = `
 <Fragment>
   <DataToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <Dropdown
       dropdownItems={
@@ -192,7 +192,7 @@ exports[`Actions - component should render empty actions 1`] = `
 exports[`Actions - component should render just actions 1`] = `
 <Fragment>
   <DataToolbarItem
-    className="ins-c-primary-toolbar__first-action"
+    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
       key="btn"
@@ -202,7 +202,7 @@ exports[`Actions - component should render just actions 1`] = `
     </button>
   </DataToolbarItem>
   <DataToolbarItem
-    className=" ins-c-primary-toolbar__actions"
+    className=" ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <Dropdown
       dropdownItems={
@@ -256,7 +256,7 @@ exports[`Actions - component should render no data 1`] = `<Fragment />`;
 exports[`Actions - component should render one action 1`] = `
 <Fragment>
   <DataToolbarItem
-    className="ins-c-primary-toolbar__first-action"
+    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
       key="btn"
@@ -266,7 +266,7 @@ exports[`Actions - component should render one action 1`] = `
     </button>
   </DataToolbarItem>
   <DataToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <Dropdown
       dropdownItems={
@@ -300,7 +300,7 @@ exports[`Actions - component should render one action 1`] = `
 exports[`Actions - component should render one action and multiple overflow 1`] = `
 <Fragment>
   <DataToolbarItem
-    className="ins-c-primary-toolbar__first-action"
+    className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
       key="btn"
@@ -310,7 +310,7 @@ exports[`Actions - component should render one action and multiple overflow 1`] 
     </button>
   </DataToolbarItem>
   <DataToolbarItem
-    className="ins-m-actions--empty ins-c-primary-toolbar__actions"
+    className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
     <Dropdown
       dropdownItems={
