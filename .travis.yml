@@ -10,7 +10,7 @@ node_js:
 install:
   - npm ci
 before_script:
-  - cp .npmrc.template $HOME/.npmrc
+  - npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 script:
   - npm run lint
   - npm test
