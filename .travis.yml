@@ -9,9 +9,9 @@ node_js:
 - '10'
 install:
   - npm ci
+before_script:
+  - cp .npmrc.template $HOME/.npmrc
 script:
   - npm run lint
   - npm test
   - npm run coverage
-after_success:
-  - cp .npmrc.template $HOME/.npmrc
