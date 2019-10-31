@@ -5,6 +5,7 @@ import { AwsIcon, OpenshiftIcon, MicrosoftIcon } from '@patternfly/react-icons';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
 import { schemaBuilder } from './schemaBuilder';
+import hardcodedSchemas from './hardcodedSchemas';
 
 export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources } }) => {
     if (sources.find(({ id }) => id !== sourceId)) {
@@ -58,23 +59,34 @@ const sourceTypeMutator = (appTypes, sourceTypes) => (option, formOptions) => {
     };
 };
 
-/* return hash of form: { amazon: 'amazon', google: 'google', openshift: 'openshift' } */
-const compileStepMapper = (sourceTypes) => sourceTypes.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.name }), {});
-
 const iconMapper = (name, DefaultIcon) => ({
     openshift: OpenshiftIcon,
     amazon: AwsIcon,
     azure: MicrosoftIcon
 }[name] || DefaultIcon);
 
+export const nextStep = ({ values: { application, source_type } }, applicationTypes) => {
+    const appId = application && application.application_type_id;
+    const app = appId && applicationTypes.find(({ id }) => id === appId);
+
+    let hasSpecificSteps = false;
+
+    if (app && hardcodedSchemas[source_type] && hardcodedSchemas[source_type].authentication) {
+        const schema = hardcodedSchemas[source_type].authentication;
+        hasSpecificSteps = Object.keys(schema).some((key) => schema[key].hasOwnProperty(app.name));
+    }
+
+    const resultedStep = appId && hasSpecificSteps ? `${source_type}-${appId}` : source_type;
+
+    console.log(resultedStep);
+    return resultedStep;
+};
+
 const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
     title: 'Configure your source',
     name: 'types_step',
     stepKey: 'types_step',
-    nextStep: {
-        when: 'source_type',
-        stepMapper: compileStepMapper(sourceTypes)
-    },
+    nextStep: (args) => nextStep(args, applicationTypes),
     fields: [
         {
             component: 'card-select',

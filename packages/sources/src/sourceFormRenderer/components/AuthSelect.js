@@ -9,9 +9,10 @@ const AuthRadio = ({ label, input, authName, index, formOptions, applicationType
     const isSelected = input.value === authName;
     const supportedAuthTypes = sourceTypes.find(type => type.name === values.source_type).schema.authentication.map((auth) => auth.type);
 
-    if (values.application && values.application.application_type_id) {
+    /*
+    if (values.application) {
         application = applicationTypes.find(({ id }) => id === values.application.application_type_id);
-        isDisabled = !application.supported_authentication_types[values.source_type].includes(authName);
+        //isDisabled = !application.supported_authentication_types[values.source_type].includes(authName);
     }
 
     if (isDisabled && isSelected) {
@@ -28,7 +29,7 @@ const AuthRadio = ({ label, input, authName, index, formOptions, applicationType
 
     if (!input.value && !isDisabled && authsCount === 1) {
         input.onChange(authName);
-    }
+    }*/
 
     return (
         <React.Fragment>
@@ -41,9 +42,6 @@ const AuthRadio = ({ label, input, authName, index, formOptions, applicationType
                 id={`${input.name}-${index}`}
                 isDisabled={isDisabled}
             />
-            {isDisabled && !disableAuthType && <FormHelperText isHidden={false} className="pf-m-disabled">
-                {application.display_name} does not support this authentication type.
-            </FormHelperText>}
             {disableAuthType && !isSelected && <FormHelperText isHidden={false} className="pf-m-disabled">
                 You cannot change the authtype, when editing.
             </FormHelperText>}
