@@ -1,10 +1,8 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import TextInputModal from './TextInputModal';
-import configureStore from 'redux-mock-store';
-import { osTest } from './__mock__/selectors';
 
 describe('TextInputModal', () => {
     describe('getDerivedStateFromProps', () => {

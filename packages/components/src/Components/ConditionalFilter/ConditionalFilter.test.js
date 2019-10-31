@@ -114,7 +114,6 @@ describe('ConditionalFilter', () => {
         });
 
         it('should update state on select', () => {
-            const onChange = jest.fn();
             const wrappper = mount(<ConditionalFilter items={ config } />);
             wrappper.find('button.pf-c-dropdown__toggle').first().simulate('click');
             wrappper.update();

@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
-import toJson, { shallowToJson } from 'enzyme-to-json';
+import { render, mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import GeneralInformation from './GeneralInformation';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';

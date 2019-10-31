@@ -160,7 +160,6 @@ class EntityTable extends React.Component {
             actions,
             variant,
             sortBy,
-            hasItems,
             tableProps
         } = this.props;
         const cells = loaded && this.createColumns();
