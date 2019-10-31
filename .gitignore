@@ -12,6 +12,7 @@
 node_modules
 
 # production
+.env
 dist
 /demo/assets
 /**/build
