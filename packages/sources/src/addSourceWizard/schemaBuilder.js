@@ -281,6 +281,5 @@ export const schemaBuilder = (sourceTypes, appTypes, disableAuthType) => {
         }
     });
 
-    console.log(schema);
     return schema;
 };
