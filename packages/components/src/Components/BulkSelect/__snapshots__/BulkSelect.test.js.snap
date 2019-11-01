@@ -51,8 +51,7 @@ exports[`BulkSelect should render correctly 1`] = `
                 isValid={true}
                 onChange={[Function]}
               >
-                30
-                 selected
+                30 selected
               </DropdownToggleCheckbox>
             </React.Fragment>,
           ]
@@ -94,8 +93,7 @@ exports[`BulkSelect should render correctly 2`] = `
                 isValid={true}
                 onChange={[Function]}
               >
-                0
-                 selected
+                
               </DropdownToggleCheckbox>
             </React.Fragment>,
           ]

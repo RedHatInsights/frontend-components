@@ -48,7 +48,7 @@ visible unless you update it.');
                                                 aria-label="Select all"
                                                 onChange={ onSelect }
                                                 checked={ checked || false }
-                                            >{ count } selected</DropdownToggleCheckbox>
+                                            >{ count ? `${count} selected` : '' }</DropdownToggleCheckbox>
                                     }
                                 </Fragment>
                             ] }
