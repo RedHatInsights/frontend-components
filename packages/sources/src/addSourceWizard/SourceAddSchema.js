@@ -5,7 +5,6 @@ import { AwsIcon, OpenshiftIcon, MicrosoftIcon } from '@patternfly/react-icons';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
 import { schemaBuilder } from './schemaBuilder';
-import hardcodedSchemas from './hardcodedSchemas';
 
 export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources } }) => {
     if (sources.find(({ id }) => id !== sourceId)) {
@@ -65,20 +64,10 @@ const iconMapper = (name, DefaultIcon) => ({
     azure: MicrosoftIcon
 }[name] || DefaultIcon);
 
-export const nextStep = ({ values: { application, source_type } }, applicationTypes) => {
+export const nextStep = ({ values: { application, source_type } }) => {
     const appId = application && application.application_type_id;
-    const app = appId && applicationTypes.find(({ id }) => id === appId);
+    const resultedStep = appId ? `${source_type}-${appId}` : source_type;
 
-    let hasSpecificSteps = false;
-
-    if (app && hardcodedSchemas[source_type] && hardcodedSchemas[source_type].authentication) {
-        const schema = hardcodedSchemas[source_type].authentication;
-        hasSpecificSteps = Object.keys(schema).some((key) => schema[key].hasOwnProperty(app.name));
-    }
-
-    const resultedStep = appId && hasSpecificSteps ? `${source_type}-${appId}` : source_type;
-
-    console.log(resultedStep);
     return resultedStep;
 };
 
@@ -86,7 +75,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
     title: 'Configure your source',
     name: 'types_step',
     stepKey: 'types_step',
-    nextStep: (args) => nextStep(args, applicationTypes),
+    nextStep,
     fields: [
         {
             component: 'card-select',

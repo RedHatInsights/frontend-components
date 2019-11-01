@@ -1,5 +1,5 @@
 import React from 'react';
-import { validatorTypes } from '@data-driven-forms/react-form-renderer';
+import { validatorTypes, componentTypes } from '@data-driven-forms/react-form-renderer';
 import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import SSLFormLabel from './SSLFormLabel';
 
@@ -89,6 +89,7 @@ export default {
                     'authentication.password': arnField
                 },
                 '/insights/platform/cost-management': {
+                    skipSelection: true,
                     'authentication.password': arnField,
                     'arn-description': {
                         Content: AwsArn.ArnDescription
@@ -123,6 +124,15 @@ export default {
                         fields: [{
                             name: 'usage-description',
                             component: 'description'
+                        },  {
+                            name: 'billing_source.bucket',
+                            component: componentTypes.TEXT_FIELD,
+                            label: 'S3 bucket name'
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'arn'
                         }]
                     }, {
                         title: 'Activate tags',
