@@ -36,6 +36,6 @@ export const dateStringByType = (type) => ({
 export const dateByType = (type) => ({
     exact: date => dateStringByType(type)(date),
     onlyDate: date => dateStringByType(type)(date),
-    relative: date => addTooltip(date, <span>{dateStringByType(type)(date)}</span>),
+    relative: date => addTooltip(dateStringByType('exact')(date), <span>{dateStringByType(type)(date)}</span>),
     invalid: () => 'Invalid Date'
 })[type];
