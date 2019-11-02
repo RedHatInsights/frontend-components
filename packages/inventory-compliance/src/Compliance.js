@@ -64,7 +64,7 @@ const columns = [
     { title: 'Policy', transforms: [ sortable ] },
     { title: 'Severity', transforms: [ sortable ] },
     { title: 'Passed', transforms: [ sortable ] },
-    { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment> }
+    { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible', transforms: [ sortable ] }
 ]
 
 const SystemQuery = ({ data, loading, hidePassed }) => (

@@ -180,28 +180,31 @@ class SystemRulesTable extends React.Component {
         </StackItem> || '' }
     </Stack>
 
-    calculateParent = ({ profile }, { title, severity, compliant, identifier, remediationAvailable }) => ({
-        isOpen: false,
-        cells: [
-            { title: this.ruleTitleCell(title, identifier), original: title },
-            { title: profile.name, original: profile.name },
-            {
-                title: (severity.toLowerCase() === 'high' ? HIGH_SEVERITY :
-                    severity.toLowerCase() === 'medium' ? MEDIUM_SEVERITY :
-                        severity.toLowerCase() === 'low' ? LOW_SEVERITY : severity),
-                original: severity.toLowerCase()
-            },
-            {
-                title: (compliant ? <CheckCircleIcon className='ins-u-passed' /> :
-                    <ExclamationCircleIcon className='ins-u-failed' />),
-                original: compliant
-            },
-            {
-                title: (remediationAvailable ? <CheckIcon className='ins-c-compliance-system-rule-check' /> : 'No'),
-                original: remediationAvailable
-            }
-        ]
-    })
+    calculateParent = ({ profile }, { title, severity, compliant, identifier, remediationAvailable }) => {
+        const { columns } = this.state;
+        return {
+            isOpen: false,
+            cells: [
+                columns.find((column) => column.title === 'Rule') ? { title: this.ruleTitleCell(title, identifier), original: title } : null,
+                columns.find((column) => column.title === 'Policy') ? { title: profile.name, original: profile.name } : null,
+                columns.find((column) => column.title === 'Severity') ? {
+                    title: (severity.toLowerCase() === 'high' ? HIGH_SEVERITY :
+                        severity.toLowerCase() === 'medium' ? MEDIUM_SEVERITY :
+                            severity.toLowerCase() === 'low' ? LOW_SEVERITY : severity),
+                    original: severity.toLowerCase()
+                } : null,
+                columns.find((column) => column.title === 'Passed') ? {
+                    title: (compliant ? <CheckCircleIcon className='ins-u-passed' /> :
+                        <ExclamationCircleIcon className='ins-u-failed' />),
+                    original: compliant
+                } : null,
+                columns.find((column) => column.original === 'Ansible') ? {
+                    title: (remediationAvailable ? <CheckIcon className='ins-c-compliance-system-rule-check' /> : 'No'),
+                    original: remediationAvailable
+                } : null
+            ].filter(e => e)
+        }
+    }
 
     conditionalLink = (children, href, additionalProps) => (
         href && <a href={ href } { ...additionalProps }>{ children }</a> || children
@@ -530,7 +533,7 @@ class SystemRulesTable extends React.Component {
                         onCollapse={ this.onCollapse }
                         onSort={ this.onSort }
                         sortBy={ sortBy }
-                        onSelect={ (currentRows.length !== 0) ? this.onSelect : () => null }
+                        onSelect={ (remediationsEnabled && currentRows.length !== 0) ? this.onSelect : undefined }
                         rows={ (currentRows.length === 0) ? EmptyRows : currentRows }>
                         <TableHeader />
                         <TableBody />
