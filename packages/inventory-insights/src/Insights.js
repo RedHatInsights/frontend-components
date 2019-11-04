@@ -303,6 +303,7 @@ class InventoryRuleList extends Component {
         const filterConfigItems = [{
             label: 'Description',
             filterValues: {
+                key: 'text-filter',
                 onChange: (event, value) => this.onInputChange(value),
                 value: searchValue
             }
@@ -312,6 +313,7 @@ class InventoryRuleList extends Component {
             id: FC.has_playbook.urlParam,
             value: `checkbox-${FC.has_playbook.urlParam}`,
             filterValues: {
+                key: `${FC.has_playbook.urlParam}-filter`,
                 onChange: (event, values) => this.onFilterChange(FC.has_playbook.urlParam, values),
                 value: filters.has_playbook,
                 items: FC.has_playbook.values
@@ -322,6 +324,7 @@ class InventoryRuleList extends Component {
             id: FC.total_risk.urlParam,
             value: `checkbox-${FC.total_risk.urlParam}`,
             filterValues: {
+                key: `${FC.total_risk.urlParam}-filter`,
                 onChange: (event, values) => this.onFilterChange(FC.total_risk.urlParam, values),
                 value: filters.total_risk,
                 items: FC.total_risk.values
