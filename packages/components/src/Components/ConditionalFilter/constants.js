@@ -13,14 +13,12 @@ export const conditionalFilterType = {
     group: 'group'
 };
 
-export const typeMapper = (type) => {
-    return {
-        text: (props) => <Text {...props} />,
-        checkbox: (props) => <Checkbox {...props} />,
-        radio: (props) => <Radio {...props} />,
-        custom: (props) => <Fragment {...props}/>,
-        group: (props) => <Group {...props} />
-    }[type] || Text;
+export const typeMapper = {
+    text: Text,
+    checkbox: Checkbox,
+    radio: Radio,
+    custom: Fragment,
+    group: Group
 };
 
 export const groupType = {
