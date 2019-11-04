@@ -1,4 +1,4 @@
-export default [
+const sourceTypes = [
     {
         created_at: '2019-03-26T14:05:45Z',
         icon_url: '/openshift_logo.png',
@@ -250,14 +250,14 @@ export default [
         product_name: 'Microsoft Azure',
         schema: {
             authentication: [{
-                type: 'access_key_secret_key',
-                name: 'Username and password',
+                type: 'tenant_id_client_id_client_secret',
+                name: 'Tenant ID, Client ID, Client Secret',
                 fields: [
                     {
                         component: 'text-field',
                         name: 'authentication.authtype',
                         hideField: true,
-                        initialValue: 'access_key_secret_key'
+                        initialValue: 'tenant_id_client_id_client_secret'
                     },
                     {
                         component: 'text-field',
@@ -294,3 +294,9 @@ export default [
         vendor: 'Azure'
     }
 ];
+
+export default sourceTypes;
+
+export const AMAZON_TYPE = sourceTypes[1];
+export const OPENSHIFT_TYPE = sourceTypes[0];
+export const AZURE_TYPE = sourceTypes[7];

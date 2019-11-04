@@ -58,23 +58,24 @@ const sourceTypeMutator = (appTypes, sourceTypes) => (option, formOptions) => {
     };
 };
 
-/* return hash of form: { amazon: 'amazon', google: 'google', openshift: 'openshift' } */
-const compileStepMapper = (sourceTypes) => sourceTypes.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.name }), {});
-
 const iconMapper = (name, DefaultIcon) => ({
     openshift: OpenshiftIcon,
     amazon: AwsIcon,
     azure: MicrosoftIcon
 }[name] || DefaultIcon);
 
+export const nextStep = ({ values: { application, source_type } }) => {
+    const appId = application && application.application_type_id;
+    const resultedStep = appId ? `${source_type}-${appId}` : source_type;
+
+    return resultedStep;
+};
+
 const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
     title: 'Configure your source',
     name: 'types_step',
     stepKey: 'types_step',
-    nextStep: {
-        when: 'source_type',
-        stepMapper: compileStepMapper(sourceTypes)
-    },
+    nextStep,
     fields: [
         {
             component: 'card-select',
