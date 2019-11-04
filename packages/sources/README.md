@@ -3,6 +3,7 @@
 - [Install](#install)
   - [Using](#using)
 - [Format for sourceType schema](#format-for-sourcetype-schema)
+  - [Hardcoded component schema](#hardcoded-component-schema)
 - [Additional components](#additional-components)
   - [CardSelect](#cardselect)
   - [SourceWizardSummary](#sourcewizardsummary)
@@ -102,6 +103,17 @@ schema = {
   }
 }
 ```
+
+## Hardcoded component schema
+
+In [hardcodedSchema](src/addSourceWizard/hardcodedSchemas.js), there is an object which defines additional UI enhancements of the flow for combinations of sourceTypes and appTypes. The format has following structure: `source-type-name.authenication.auth-type.app-name`. For generic steps use as the app-name `generic`. Each of these objects has following keys:
+
+|key|description|
+|---|-----------|
+|`additionalFields`|These fields are appended to the authType selection page.|
+|name of field (ex. `authentication.password`|This defines additional props for the field (can be used for enhancing of API fields).|
+|`additionalSteps`|Defines additional steps.|
+|`skipSelection`|If there is only one authType, this flag will cause to skip the selection page.|
 
 # Additional components
 
