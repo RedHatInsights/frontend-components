@@ -6,9 +6,5 @@ it('should have correct types', () => {
 });
 
 it('should return correct type', () => {
-    expect(typeMapper('checkbox').name).toBe('checkbox');
-});
-
-it('should return Text if no type present', () => {
-    expect(typeMapper('error')).toBe(Text);
+    expect(typeMapper.checkbox.name).toBe('Checkbox');
 });

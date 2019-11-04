@@ -32,7 +32,7 @@ class ConditionalFilter extends Component {
             items[0]
         );
         const onChangeCallback = onChange || this.onChange;
-        const ActiveComponent = activeItem && typeMapper(activeItem.type);
+        const ActiveComponent = activeItem && (typeMapper[activeItem.type] || typeMapper.text);
         return (
             <Fragment>
                 {
