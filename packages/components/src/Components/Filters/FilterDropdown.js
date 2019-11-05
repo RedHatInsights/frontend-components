@@ -82,7 +82,7 @@ FilterDropdown.propTypes = {
             )
         })
     ),
-    label: PropTypes.string
+    label: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ])
 };
 
 FilterDropdown.defaultProps = {
