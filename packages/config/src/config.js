@@ -7,10 +7,9 @@ module.exports = ({
     publicPath,
     appEntry,
     rootFolder,
-    https,
-    useTypescript
+    https
 } = {}) => {
-    const config = {
+    return {
         mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
         devtool: 'source-map',
         optimization: {
@@ -41,6 +40,10 @@ module.exports = ({
                 exclude: /(node_modules|bower_components)/i,
                 use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }, { loader: 'eslint-loader' }]
             }, {
+                test: /src\/.*\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /(node_modules)/i
+            }, {
                 test: /\.s?[ac]ss$/,
                 use: [
                     process.env.NODE_ENV === 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -62,6 +65,9 @@ module.exports = ({
                 }]
             }]
         },
+        resolve: {
+            extensions: [ '.ts', '.tsx', '.js', '.scss' ]
+        },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,
             hot: true,
@@ -81,16 +87,4 @@ module.exports = ({
             add: app => app.use(convert(history({})))
         }
     };
-    if (useTypescript === true) {
-        config.module.rules.push({
-            test: /\.tsx?$/,
-            loader: 'ts-loader',
-            exclude: /(node_modules)/i
-        });
-        config.resolve = {
-            extensions: [ '.ts', '.tsx', '.js' ]
-        };
-    }
-
-    return config;
 };
