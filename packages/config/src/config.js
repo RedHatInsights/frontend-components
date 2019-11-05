@@ -7,9 +7,10 @@ module.exports = ({
     publicPath,
     appEntry,
     rootFolder,
-    https
+    https,
+    useTypescript
 } = {}) => {
-    return {
+    const config = {
         mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
         devtool: 'source-map',
         optimization: {
@@ -80,4 +81,16 @@ module.exports = ({
             add: app => app.use(convert(history({})))
         }
     };
+    if (useTypescript === true) {
+        config.module.rules.push({
+            test: /\.tsx?$/,
+            loader: 'ts-loader',
+            exclude: /(node_modules)/i
+        });
+        config.resolve = {
+            extensions: [ '.ts', '.tsx', '.js' ]
+        };
+    }
+
+    return config;
 };
