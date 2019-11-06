@@ -63,10 +63,15 @@ module.exports = ({
                         outputPath: 'fonts/'
                     }
                 }]
+            },
+            {
+                test: /\.mjs$/,
+                include: /node_modules/,
+                type: 'javascript/auto'
             }]
         },
         resolve: {
-            extensions: [ '.ts', '.tsx', '.js', '.scss' ]
+            extensions: [ '.ts', '.tsx', '.mjs', '.js', '.scss' ]
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,
