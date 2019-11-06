@@ -7,6 +7,8 @@ import * as OpenshiftToken from './hardcodedComponents/openshift/token';
 import * as AwsSecret from './hardcodedComponents/aws/access_key';
 import * as AwsArn from './hardcodedComponents/aws/arn';
 
+export const COST_MANAGEMENT_APP_NAME = '/insights/platform/cost-management';
+
 const arnField = {
     placeholder: 'arn:aws:iam:123456789:role/CostManagement',
     isRequired: true,
@@ -88,25 +90,9 @@ export default {
                     includeStepKeyFields: [ 'arn' ],
                     'authentication.password': arnField
                 },
-                '/insights/platform/cost-management': {
+                [COST_MANAGEMENT_APP_NAME]: {
                     skipSelection: true,
                     'authentication.password': arnField,
-                    'arn-description': {
-                        Content: AwsArn.ArnDescription
-                    },
-                    'iam-role-description': {
-                        Content: AwsArn.IAMRoleDescription
-                    },
-                    'iam-policy-description': {
-                        Content: AwsArn.IAMPolicyDescription,
-                        assignFormOptions: true
-                    },
-                    'tags-description': {
-                        Content: AwsArn.TagsDescription
-                    },
-                    'usage-description': {
-                        Content: AwsArn.UsageDescription
-                    },
                     'billing_source.bucket': {
                         placeholder: 'cost-usage-bucket',
                         validate: [{
@@ -120,10 +106,11 @@ export default {
                     },
                     additionalSteps: [{
                         title: 'Configure cost and usage reporting',
-                        nextStep: 'iam-policy',
+                        nextStep: 'tags',
                         fields: [{
                             name: 'usage-description',
-                            component: 'description'
+                            component: 'description',
+                            Content: AwsArn.UsageDescription
                         },  {
                             name: 'billing_source.bucket',
                             component: componentTypes.TEXT_FIELD,
@@ -135,12 +122,13 @@ export default {
                             initialValue: 'arn'
                         }]
                     }, {
-                        title: 'Activate tags',
+                        title: 'Activate cost allocation tags',
                         stepKey: 'tags',
                         nextStep: 'iam-policy',
                         fields: [{
                             name: 'tags-description',
-                            component: 'description'
+                            component: 'description',
+                            Content: AwsArn.TagsDescription
                         }]
                     },
                     {
@@ -150,7 +138,9 @@ export default {
                         substepOf: 'Enable account access',
                         fields: [{
                             name: 'iam-policy-description',
-                            component: 'description'
+                            component: 'description',
+                            Content: AwsArn.IAMPolicyDescription,
+                            assignFormOptions: true
                         }]
                     }, {
                         title: 'Create IAM role',
@@ -159,7 +149,8 @@ export default {
                         substepOf: 'Enable account access',
                         fields: [{
                             name: 'iam-role-description',
-                            component: 'description'
+                            component: 'description',
+                            Content: AwsArn.IAMRoleDescription
                         }]
                     }, {
                         title: 'Enter ARN',
@@ -167,7 +158,8 @@ export default {
                         substepOf: 'Enable account access',
                         fields: [{
                             name: 'arn-description',
-                            component: 'description'
+                            component: 'description',
+                            Content: AwsArn.ArnDescription
                         }]
                     }]
                 }
