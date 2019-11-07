@@ -49,7 +49,9 @@ export const IAMPolicyDescription = ({ formOptions }) => {
     const s3Bucket = formOptions.getState().values.billing_source ? formOptions.getState().values.billing_source.bucket : undefined;
 
     if (!s3Bucket) {
-        return 'Something went wrong, you are missing bucket value.';
+        return (<Text component={ TextVariants.p }>
+            Something went wrong, you are missing bucket value.
+        </Text>);
     }
 
     return (<TextContent>
@@ -110,12 +112,11 @@ IAMPolicyDescription.propTypes = {
 
 export const TagsDescription = () => (<TextContent>
     <Text component={ TextVariants.p }>
-If you are using tags in AWS to organize your resources, you can import those tags into the cost management application to help organize your costs.
+    To use tags to organize your AWS resources in the cost management application, activate your tags in AWS to allow them to be imported automatically.
     </Text>
     <TextList component={TextListVariants.ol}>
-        <TextListItem>Go to biling section in AWS.</TextListItem>
-        <TextListItem>{'On the "Cost allocation tags" page, click on the "activate" button.'}</TextListItem>
-        <TextListItem>...</TextListItem>
+        <TextListItem>In the AWS Billing console, open the Cost Allocation Tags section.</TextListItem>
+        <TextListItem>Select the tags you want to use in the cost management application, and click Activate.</TextListItem>
     </TextList>
 </TextContent>);
 
