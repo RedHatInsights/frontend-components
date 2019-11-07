@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-sources",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "description": "Sources components for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -27,8 +27,7 @@
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7",
         "@redhat-cloud-services/sources-client": "^1.0.23",
-        "awesome-debounce-promise": "^2.1.0",
-        "js-base64": "^2.5.1"
+        "awesome-debounce-promise": "^2.1.0"
     },
     "devDependencies": {
         "@patternfly/react-core": "3.115.2",
