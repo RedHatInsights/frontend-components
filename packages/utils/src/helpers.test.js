@@ -140,4 +140,20 @@ describe('getBaseName', () => {
             expect(getBaseName(pathName)).toBe(baseName);
         })
     );
+
+    it('should work with long url', () => {
+        expect(getBaseName('/really/long/url/with/some/stuff')).toBe('/really/long');
+    });
+
+    it('should work with custom level', () => {
+        expect(getBaseName('/really/long/url/with/some/stuff', 5)).toBe('/really/long/url/with/some');
+    });
+
+    it('should work with 1st level', () => {
+        expect(getBaseName('/really/long/url/with/some/stuff', 1)).toBe('/really');
+    });
+
+    it('should work with root level', () => {
+        expect(getBaseName('/really/long/url/with/some/stuff', 0)).toBe('/');
+    });
 });
