@@ -1,38 +1,11 @@
-import axios from 'axios';
 import { DefaultApi as SourcesDefaultApi } from '@redhat-cloud-services/sources-client';
-import { Base64 } from 'js-base64';
+import axiosInstanceInsights from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
+
 import { postBillingSource } from './billingSource';
-
 import { handleError } from './handleError';
+import { SOURCES_API_BASE } from './constants';
 
-const calculateApiBase = b => (
-    (b.endsWith('/') && `${b}v1.0`) || `${b}/sources/v1.0`
-);
-
-export const SOURCES_API_BASE = calculateApiBase(process.env.BASE_PATH || '');
-
-const axiosInstance = axios.create(
-    process.env.FAKE_IDENTITY ? {
-        headers: {
-            common: {
-                'x-rh-identity': Base64.encode(
-                    JSON.stringify(
-                        {
-                            identity: { account_number: process.env.FAKE_IDENTITY }
-                        }
-                    )
-                )
-            }
-        }
-    } : {}
-);
-
-axiosInstance.interceptors.request.use(async (config) => {
-    await window.insights.chrome.auth.getUser();
-    return config;
-});
-axiosInstance.interceptors.response.use(response => response.data || response);
-axiosInstance.interceptors.response.use(null, error => { throw { ...error }; });
+const axiosInstance = axiosInstanceInsights;
 
 export { axiosInstance };
 
