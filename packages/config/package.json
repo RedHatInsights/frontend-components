@@ -35,10 +35,12 @@
         "source-map-loader": "^0.2.4",
         "style-loader": "^0.23.1",
         "ts-loader": "^6.2.1",
-        "webpack": "^4.41.2",
         "webpack-dev-server": "^3.4.1",
         "webpack-hot-client": "^4.1.1",
         "webpack-serve": "1.0.2",
         "write-file-webpack-plugin": "^4.5.0"
+    },
+    "peerDependencies": {
+        "webpack": ">=3.12.0"
     }
 }
