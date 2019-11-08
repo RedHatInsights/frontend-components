@@ -1,6 +1,7 @@
 import { getSourcesApi } from './index';
+import get from 'lodash/get';
 
-export const handleError = (id, error) => {
+export const handleError = (error, sourceId = undefined) => {
     if (!error) {
         return 'Undefined error';
     }
@@ -9,22 +10,19 @@ export const handleError = (id, error) => {
         return error;
     }
 
-    const url = error.config.url;
-    let detail;
+    const detail = get(error, 'errors[0].detail', JSON.stringify(error, null, 2));
 
-    if (typeof error.response.data === 'string') {
-        detail = error.response.data;
-    } else {
-        detail = error.response.data.errors[0].detail;
+    if (!sourceId) {
+        return detail;
     }
 
-    const detailInfo = error.detailInfo ? `(${error.detailInfo}) ` : ``;
-
-    return getSourcesApi().deleteSource(id)
+    return getSourcesApi().deleteSource(sourceId)
     .then(() => {
-        return `${detailInfo}${url}: ${detail}`;
+        return detail;
     })
     .catch((errorDelete) => {
-        return `${detailInfo}${url}: ${detail}. The source was not removed, try remove it later: ${errorDelete.response.data.errors[0].detail}`; }
+        const errorDeleteDetail = get(errorDelete, 'errors[0].detail', JSON.stringify(errorDelete, null, 2));
+
+        return `${detail}. The source was not removed, try remove it later: ${errorDeleteDetail}`; }
     );
 };
