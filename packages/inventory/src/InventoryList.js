@@ -16,7 +16,7 @@ class ContextInventoryList extends React.Component {
     loadEntities = (options = {}, reload = true) => {
         const { page, perPage, onRefresh, items, hasItems, sortBy, activeFilters } = this.props;
         options = {
-            page: options.page || page,
+            page: hasItems ? 1 : options.page || page,
             // eslint-disable-next-line camelcase
             per_page: options.per_page || perPage,
             orderBy: sortBy && sortBy.key,
@@ -50,12 +50,8 @@ class ContextInventoryList extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { items, hasItems, sortBy, perPage, page } = this.props;
-        if (hasItems &&
-            (JSON.stringify(items) !== JSON.stringify(prevProps.items)) ||
-            (perPage !== prevProps.perPage) ||
-            (page !== prevProps.page)
-        ) {
+        const { items, hasItems, sortBy } = this.props;
+        if (hasItems && (JSON.stringify(items) !== JSON.stringify(prevProps.items))) {
             this.loadEntities({}, false);
         } else if (!hasItems && JSON.stringify(prevProps.sortBy) !== JSON.stringify(sortBy)) {
             this.loadEntities({}, false);
