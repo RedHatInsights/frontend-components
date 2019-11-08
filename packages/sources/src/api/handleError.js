@@ -17,9 +17,7 @@ export const handleError = (error, sourceId = undefined) => {
     }
 
     return getSourcesApi().deleteSource(sourceId)
-    .then(() => {
-        return detail;
-    })
+    .then(() => detail)
     .catch((errorDelete) => {
         const errorDeleteDetail = get(errorDelete, 'errors[0].detail', JSON.stringify(errorDelete, null, 2));
 

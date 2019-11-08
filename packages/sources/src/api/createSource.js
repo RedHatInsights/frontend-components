@@ -24,6 +24,8 @@ export const parseUrl = url => {
 
 export const urlOrHost = formData => formData.url ? parseUrl(formData.url) : formData;
 
+export const handleErrorWrapper = (sourceId) => async(error) => await handleError(error, sourceId);
+
 export function doCreateSource(formData, sourceTypes) {
     const source_type_id = sourceTypes.find((x) => x.name === formData.source_type).id;
 
@@ -44,7 +46,7 @@ export function doCreateSource(formData, sourceTypes) {
 
         const promises = [ getSourcesApi().createEndpoint(endpointData) ];
 
-        if (formData.application.application_type_id) {
+        if (formData.application && formData.application.application_type_id) {
             const applicationData = {
                 ...formData.application,
                 source_id: sourceDataOut.id
@@ -74,27 +76,11 @@ export function doCreateSource(formData, sourceTypes) {
                     };
 
                     return postBillingSource(billingSourceData).then(() => source)
-                    .catch(async (error) => {
-                        const errorMessage = await handleError(error, sourceDataOut.id);
-                        throw errorMessage;
-                    });
+                    .catch(handleErrorWrapper(sourceDataOut.id));
                 }
 
                 return source;
-            }, async (error) => {
-                const errorMessage = await handleError(error, sourceDataOut.id);
-                throw errorMessage;
-            });
-        }).catch(async (error) => {
-            const errorMessage = await handleError(error, sourceDataOut.id);
-            throw errorMessage;
-        });
-    }, async (error) => {
-        if (typeof error === 'string') {
-            throw error;
-        }
-
-        const errorMessage = await handleError(error);
-        throw errorMessage;
-    });
+            }, handleErrorWrapper(sourceDataOut.id));
+        }).catch(handleErrorWrapper(sourceDataOut.id));
+    }, handleErrorWrapper());
 }
