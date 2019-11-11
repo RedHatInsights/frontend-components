@@ -21,8 +21,8 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/sources#readme",
     "dependencies": {
-        "@data-driven-forms/pf4-component-mapper": "^1.22.6",
-        "@data-driven-forms/react-form-renderer": "^1.22.6",
+        "@data-driven-forms/pf4-component-mapper": "^1.22.11",
+        "@data-driven-forms/react-form-renderer": "^1.22.11",
         "@patternfly/react-icons": "^3.10.9",
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7",
