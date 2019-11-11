@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Form from './SourceAddModal';
 import FinalWizard from './FinalWizard';
 
-import { doCreateSource } from '../api/index';
+import { doCreateSource } from '../api/createSource';
 
 const initialValues = (initialValues) => ({
     isSubmitted: false,

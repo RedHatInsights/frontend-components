@@ -13,6 +13,7 @@ import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
 import sourceTypes from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
 import * as dependency from '../../api/index';
+import * as createSource from '../../api/createSource';
 
 describe('AddSourceWizard', () => {
     let initialProps;
@@ -39,7 +40,7 @@ describe('AddSourceWizard', () => {
     });
 
     it('show finished step after filling the form', (done) => {
-        dependency.doCreateSource = jest.fn(() => new Promise((resolve) => resolve('ok')));
+        createSource.doCreateSource = jest.fn(() => new Promise((resolve) => resolve('ok')));
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
@@ -60,7 +61,7 @@ describe('AddSourceWizard', () => {
 
     it('pass created source to afterSuccess function', (done) => {
         const afterSubmitMock = jest.fn();
-        dependency.doCreateSource = jest.fn(() => new Promise((resolve) => resolve({ name: 'source' })));
+        createSource.doCreateSource = jest.fn(() => new Promise((resolve) => resolve({ name: 'source' })));
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps } afterSuccess={ afterSubmitMock }/>);
@@ -82,7 +83,7 @@ describe('AddSourceWizard', () => {
 
     it('show error step after failing the form', (done) => {
         const ERROR_MESSAGE = 'fail';
-        dependency.doCreateSource = jest.fn(() => new Promise((_resolve, reject) => reject(ERROR_MESSAGE)));
+        createSource.doCreateSource = jest.fn(() => new Promise((_resolve, reject) => reject(ERROR_MESSAGE)));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
         const form = wrapper.find(FormRenderer).children().children().instance().form;
