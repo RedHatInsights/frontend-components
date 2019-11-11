@@ -29,6 +29,16 @@ describe('BulkSelect', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('should render correctly - null checked', () => {
+        const wrapper = shallow(<BulkSelect items={[
+            {
+                title: 'Select all',
+                onClick: jest.fn()
+            }
+        ]} checked={ null } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     describe('API', () => {
         it('should call on select with no items', () => {
             const onSelect = jest.fn();
