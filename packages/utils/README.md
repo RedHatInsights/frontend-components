@@ -6,12 +6,12 @@ This package exports common functions to be used in other packages.
 ## Installation
 With NPM
 ```bash
-npm i -S @redhat-cloud-services/frontend-components-inventory-remediations
+npm i -S @redhat-cloud-services/frontend-components-utilities
 ```
 
 With yarn
 ```bash
-yarn add @redhat-cloud-services/frontend-components-inventory-remediations
+yarn add @redhat-cloud-services/frontend-components-utilities
 ```
 
 This package is dependent on [@redhat-cloud-services/frontend-components](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components) it will automatically installed trough direct dependencies.
