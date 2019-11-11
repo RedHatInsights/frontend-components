@@ -5,27 +5,17 @@ describe('handleError', () => {
     let spyDelete;
     let spyDeleteError;
 
-    const URL = 'redhat.com/api/v1/sources';
     const DETAIL = 'auth id does not exist';
     const DETAIL_ERROR = 'remove endpoint is unavailable';
     const ERROR = {
-        config: { url: URL },
-        response: {
-            data: {
-                errors: [
-                    { detail: DETAIL }
-                ]
-            }
-        }
+        errors: [
+            { detail: DETAIL }
+        ]
     };
     const DELETE_ERROR = {
-        response: {
-            data: {
-                errors: [
-                    { detail: DETAIL_ERROR }
-                ]
-            }
-        }
+        errors: [
+            { detail: DETAIL_ERROR }
+        ]
     };
     const SOURCE_ID = '11111';
 
@@ -44,10 +34,33 @@ describe('handleError', () => {
             deleteSource: spyDelete
         });
 
-        const result = await handleError(SOURCE_ID, ERROR);
+        const result = await handleError(ERROR, SOURCE_ID);
 
-        const someTextIsNotInError = [ DETAIL, URL ].some((text) => !result.includes(text));
         expect(spyDelete).toHaveBeenCalledWith(SOURCE_ID);
+        expect(result).toEqual(DETAIL);
+    });
+
+    it('handles nonsense error', async () => {
+        const NONSENSE_ERROR = {
+            blabla: [
+                { text: 'lorem ipsum' }
+            ]
+        };
+
+        const result = await handleError(NONSENSE_ERROR);
+
+        expect(result).toEqual(JSON.stringify(NONSENSE_ERROR, null, 2));
+    });
+
+    it('handles error with no source ID provided', async () => {
+        api.getSourcesApi = jest.fn().mockReturnValue({
+            deleteSource: spyDelete
+        });
+
+        const result = await handleError(ERROR);
+
+        const someTextIsNotInError = [ DETAIL ].some((text) => !result.includes(text));
+        expect(spyDelete).not.toHaveBeenCalled();
         expect(someTextIsNotInError).toEqual(false);
     });
 
@@ -56,9 +69,9 @@ describe('handleError', () => {
             deleteSource: spyDeleteError
         });
 
-        const result = await handleError(SOURCE_ID, ERROR);
+        const result = await handleError(ERROR, SOURCE_ID);
 
-        const someTextIsNotInError = [ DETAIL, URL, DETAIL_ERROR ].some((text) => !result.includes(text));
+        const someTextIsNotInError = [ DETAIL, DETAIL_ERROR ].some((text) => !result.includes(text));
         expect(spyDeleteError).toHaveBeenCalledWith(SOURCE_ID);
         expect(someTextIsNotInError).toEqual(false);
     });
@@ -70,7 +83,7 @@ describe('handleError', () => {
             deleteSource: spyDelete
         });
 
-        const result = await handleError(SOURCE_ID, STRING_ERROR);
+        const result = await handleError(STRING_ERROR, SOURCE_ID);
 
         expect(spyDelete).not.toHaveBeenCalled();
         expect(result).toEqual(STRING_ERROR);
@@ -81,29 +94,9 @@ describe('handleError', () => {
             deleteSource: spyDeleteError
         });
 
-        const result = await handleError(SOURCE_ID, undefined);
+        const result = await handleError(undefined, SOURCE_ID);
 
         expect(spyDelete).not.toHaveBeenCalled();
         expect(result).toEqual(expect.any(String));
-    });
-
-    it('handles error with string response', async () => {
-        const STRING = 'I am a string';
-        const ERROR_WITH_STRING = {
-            config: { url: URL },
-            response: {
-                data: STRING
-            }
-        };
-
-        api.getSourcesApi = jest.fn().mockReturnValue({
-            deleteSource: spyDelete
-        });
-
-        const result = await handleError(SOURCE_ID, ERROR_WITH_STRING);
-
-        const someTextIsNotInError = [ STRING, URL ].some((text) => !result.includes(text));
-        expect(spyDelete).toHaveBeenCalledWith(SOURCE_ID);
-        expect(someTextIsNotInError).toEqual(false);
     });
 });
