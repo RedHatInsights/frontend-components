@@ -74,7 +74,7 @@ class SourceAddModal extends React.Component {
                 description="Connect an external source to Red Hat Cloud Services"
                 steps={ [{
                     name: 'Loading',
-                    component: <LoadingStep onClose={ onCancel }/>,
+                    component: <LoadingStep onClose={ () => onCancel() }/>,
                     isFinishedStep: true
                 }] }
             />;
