@@ -45,7 +45,7 @@ exports[`FilterDropdown component should render with an object/component as labe
     <DropdownToggle
       onToggle={[Function]}
     >
-      <TestComponent />
+      <React.Fragment />
     </DropdownToggle>
   }
 >
