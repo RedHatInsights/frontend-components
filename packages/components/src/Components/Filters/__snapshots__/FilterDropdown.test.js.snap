@@ -37,7 +37,7 @@ exports[`FilterDropdown component should render 1`] = `
 </Dropdown>
 `;
 
-exports[`FilterDropdown component should render with an object/component as label 1`] = `
+exports[`FilterDropdown component should render with a component as label 1`] = `
 <Dropdown
   className="ins-c-filter__dropdown"
   isOpen={false}
