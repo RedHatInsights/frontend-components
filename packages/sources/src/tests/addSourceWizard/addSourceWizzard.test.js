@@ -81,6 +81,26 @@ describe('AddSourceWizard', () => {
         }, 1000);
     });
 
+    it('pass values to onClose function', (done) => {
+        const CANCEL_BUTTON_INDEX = 3;
+        const NAME = 'name';
+        const onClose = jest.fn();
+        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
+
+        const wrapper = mount(<AddSourceWizard { ...initialProps } onClose={ onClose }/>);
+        const form = wrapper.find(FormRenderer).children().children().instance().form;
+
+        form.change('source.name', NAME);
+
+        setTimeout(() => {
+            wrapper.update();
+            wrapper.find(Button).at(CANCEL_BUTTON_INDEX).simulate('click');
+
+            expect(onClose).toHaveBeenCalledWith({ source: { name: NAME } });
+            done();
+        }, 1000);
+    });
+
     it('show error step after failing the form', (done) => {
         const ERROR_MESSAGE = 'fail';
         createSource.doCreateSource = jest.fn(() => new Promise((_resolve, reject) => reject(ERROR_MESSAGE)));
