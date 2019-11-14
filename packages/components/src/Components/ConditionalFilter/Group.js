@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Select, SelectOption, SelectVariant, SelectGroup, Radio, Checkbox } from '@patternfly/react-core';
 import Text from './Text';
+import isEqual from 'lodash/isEqual';
 
 export const groupType = {
     checkbox: 'checkbox',
@@ -23,6 +24,15 @@ class Group extends Component {
         });
     };
 
+    componentDidUpdate({ selected: prevSelected }) {
+        const { selected } = this.props;
+        if (!isEqual(prevSelected, selected)) {
+            this.setState({
+                selected
+            });
+        }
+    }
+
     mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
         return items.filter(item =>
             (groupValue && this.state.filterBy.test(groupValue)) ||
@@ -35,6 +45,11 @@ class Group extends Component {
                 key={id || key}
                 value={String(value || id || key)}
                 onClick={e => {
+                    if (e.target.tagName === 'LABEL') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+
                     const clickedGroup = {
                         value: groupValue,
                         label: groupLabel,
