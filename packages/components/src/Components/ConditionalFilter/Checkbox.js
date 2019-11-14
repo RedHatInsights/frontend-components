@@ -2,11 +2,21 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Select, SelectOption, SelectVariant } from '@patternfly/react-core';
 import Text from './Text';
+import isEqual from 'lodash/isEqual';
 
 class Checkbox extends Component {
     state = {
         isExpanded: false,
         selected: []
+    }
+
+    componentDidUpdate({ value: prevSelected }) {
+        const { value } = this.props;
+        if (!isEqual(prevSelected, value)) {
+            this.setState({
+                selected: value
+            });
+        }
     }
 
     onToggle = isExpanded => {
