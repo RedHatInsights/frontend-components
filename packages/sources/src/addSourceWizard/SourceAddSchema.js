@@ -18,7 +18,7 @@ export const asyncValidator = (value, sourceId = undefined) => findSource(value)
     return undefined;
 });
 
-const asyncValidatorDebounced = debouncePromise(asyncValidator);
+export const asyncValidatorDebounced = debouncePromise(asyncValidator);
 
 const compileAllSourcesComboOptions = (sourceTypes) => (
     [
