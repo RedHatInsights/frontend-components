@@ -342,7 +342,7 @@ class SystemRulesTable extends React.Component {
     compressRows = (rows) => {
         const compressedRows = [];
         rows.forEach((row, i) => {
-            if (row.hasOwnProperty('isOpen')) {
+            if (this.isParent(row)) {
                 compressedRows.push({ parent: row, child: rows[i + 1] });
             }
         });
@@ -400,14 +400,15 @@ class SystemRulesTable extends React.Component {
     filterBy = (attribute, rows, column) => {
         const filteredRows = [];
         rows.forEach((row, i) => {
-            if (row.hasOwnProperty('isOpen') && String(row.cells[column].original).toLowerCase().match(
+            if (this.isParent(row) && String(row.cells[column].original).toLowerCase().match(
                 String(attribute).toLowerCase()
             )) {
                 filteredRows.push(row);
-                if (!rows[i + 1].hasOwnProperty('isOpen')) {
-                    let child = rows[i + 1];
-                    child.parent = filteredRows.length - 1;
-                    filteredRows.push(child);
+                if (!this.isParent(rows[i + 1])) {
+                    filteredRows.push({
+                        parent: filteredRows.length - 1,
+                        cells: rows[i + 1].cells
+                    });
                 }
             }
         });
@@ -442,7 +443,7 @@ class SystemRulesTable extends React.Component {
         let result;
 
         if (severity.length > 0 && hidePassed) {
-            result = passedRows.filter(row => severityRows.includes(row));
+            result = passedRows.filter(row => severityRows.map((row) => row.cells).includes(row.cells));
         } else if (hidePassed && severity.length === 0) {
             result = passedRows;
         } else if (severity.length > 0 && !hidePassed) {
@@ -452,13 +453,13 @@ class SystemRulesTable extends React.Component {
         }
 
         if (policy.length > 0 && result.length > 0) {
-            result = result.filter(row => policyRows.includes(row));
+            result = result.filter(row => policyRows.map((row) => row.cells).includes(row.cells));
         } else if (policy.length > 0 && result.length === 0) {
             result = policyRows;
         }
 
         if (searchTerm && searchTerm.length > 0 && result.length > 0) {
-            result = result.filter(row => searchRows.includes(row));
+            result = result.filter(row => searchRows.map((row) => row.cells).includes(row.cells));
         } else if (searchTerm && searchTerm.length > 0 && result.length === 0) {
             result = searchRows;
         }
