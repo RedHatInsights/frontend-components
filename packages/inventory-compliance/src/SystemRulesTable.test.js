@@ -105,4 +105,19 @@ describe('SystemRulesTable component', () => {
         expect(wrapper.state('currentRows')[2].cells[TITLE_COLUMN].original).
         toEqual('Use direct-lvm with the Device Mapper Storage Driver');
     });
+
+    it('should render filtered rows with the right parent fields', async () => {
+        const wrapper = shallow(
+            <SystemRulesTable
+                profileRules={ profileRules }
+                loading={ false }
+                system={ system }
+            />
+        );
+        const instance = wrapper.instance();
+        await instance.setInitialCurrentRows();
+        await instance.updateFilter(false, [ 'high', 'medium' ], []);
+        expect(wrapper.state('currentRows').length / 2).toEqual(1);
+        expect(wrapper.state('currentRows')[1].parent).toEqual(0);
+    });
 });
