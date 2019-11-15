@@ -48,6 +48,10 @@ query System($systemId: String!){
                 description
                 compliant(systemId: $systemId)
                 remediationAvailable
+                references {
+                    label
+                    href
+                }
                 identifier {
                     label
                     system

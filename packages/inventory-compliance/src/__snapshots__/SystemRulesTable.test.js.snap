@@ -30,7 +30,7 @@ exports[`SystemRulesTable component should render 1`] = `
             onButtonClick={[Function]}
             onFilterChange={[Function]}
             onOptionSelect={[Function]}
-            placeholder="Search by name or identifier"
+            placeholder="Search by name, identifer, or reference"
             searchIcon={true}
           />
         </InputGroup>
@@ -243,7 +243,7 @@ exports[`SystemRulesTable component should render 1`] = `
                           </a>
                         </Text>
                       </GridItem>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -395,7 +395,7 @@ exports[`SystemRulesTable component should render 1`] = `
                           </a>
                         </Text>
                       </GridItem>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -442,7 +442,7 @@ exports[`SystemRulesTable component should render 1`] = `
                 <StackItem>
                   Disable At Service (atd)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -519,7 +519,7 @@ exports[`SystemRulesTable component should render 1`] = `
                     id="rule-identifiers-references-2"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -566,7 +566,7 @@ exports[`SystemRulesTable component should render 1`] = `
                 <StackItem>
                   Disable Network Router Discovery Daemon (rdisc)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -643,7 +643,7 @@ exports[`SystemRulesTable component should render 1`] = `
                     id="rule-identifiers-references-3"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -690,7 +690,7 @@ exports[`SystemRulesTable component should render 1`] = `
                 <StackItem>
                   Disable Odd Job Daemon (oddjobd)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -767,7 +767,7 @@ exports[`SystemRulesTable component should render 1`] = `
                     id="rule-identifiers-references-4"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -814,7 +814,7 @@ exports[`SystemRulesTable component should render 1`] = `
                 <StackItem>
                   Disable Apache Qpid (qpidd)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -891,7 +891,7 @@ exports[`SystemRulesTable component should render 1`] = `
                     id="rule-identifiers-references-5"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -938,7 +938,7 @@ exports[`SystemRulesTable component should render 1`] = `
                 <StackItem>
                   Disable Automatic Bug Reporting Tool (abrtd)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -1015,7 +1015,7 @@ exports[`SystemRulesTable component should render 1`] = `
                     id="rule-identifiers-references-6"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -1062,7 +1062,7 @@ exports[`SystemRulesTable component should render 1`] = `
                 <StackItem>
                   Disable ntpdate Service (ntpdate)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -1139,7 +1139,7 @@ exports[`SystemRulesTable component should render 1`] = `
                     id="rule-identifiers-references-7"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -1186,7 +1186,7 @@ exports[`SystemRulesTable component should render 1`] = `
                 <StackItem>
                   Ensure auditd Collects Information on Kernel Module Loading and Unloading
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -1263,7 +1263,7 @@ exports[`SystemRulesTable component should render 1`] = `
                     id="rule-identifiers-references-8"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -1310,7 +1310,7 @@ exports[`SystemRulesTable component should render 1`] = `
                 <StackItem>
                   Record Attempts to Alter Time Through stime
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -1387,7 +1387,7 @@ exports[`SystemRulesTable component should render 1`] = `
                     id="rule-identifiers-references-9"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -1821,7 +1821,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                           </a>
                         </Text>
                       </GridItem>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -1973,7 +1973,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                           </a>
                         </Text>
                       </GridItem>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -2020,7 +2020,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                 <StackItem>
                   Disable At Service (atd)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -2097,7 +2097,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     id="rule-identifiers-references-2"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -2144,7 +2144,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                 <StackItem>
                   Disable Network Router Discovery Daemon (rdisc)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -2221,7 +2221,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     id="rule-identifiers-references-3"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -2268,7 +2268,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                 <StackItem>
                   Disable Odd Job Daemon (oddjobd)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -2345,7 +2345,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     id="rule-identifiers-references-4"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -2392,7 +2392,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                 <StackItem>
                   Disable Apache Qpid (qpidd)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -2469,7 +2469,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     id="rule-identifiers-references-5"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -2516,7 +2516,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                 <StackItem>
                   Disable Automatic Bug Reporting Tool (abrtd)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -2593,7 +2593,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     id="rule-identifiers-references-6"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -2640,7 +2640,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                 <StackItem>
                   Disable ntpdate Service (ntpdate)
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -2717,7 +2717,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     id="rule-identifiers-references-7"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -2764,7 +2764,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                 <StackItem>
                   Ensure auditd Collects Information on Kernel Module Loading and Unloading
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -2841,7 +2841,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     id="rule-identifiers-references-8"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack
@@ -2888,7 +2888,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                 <StackItem>
                   Record Attempts to Alter Time Through stime
                 </StackItem>
-                
+
               </Stack>,
             },
             Object {
@@ -2965,7 +2965,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     id="rule-identifiers-references-9"
                   >
                     <Grid>
-                      
+
                     </Grid>
                   </Stack>
                   <Stack

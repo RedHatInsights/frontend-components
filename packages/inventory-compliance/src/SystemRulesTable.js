@@ -228,8 +228,8 @@ class SystemRulesTable extends React.Component {
     )
 
     referencesList = (references) => references.reduce((acc, reference, i) => ([
-        acc, ', ', this.conditionalLink(reference.label, reference.href, { target: '_blank', key: i + 1 })
-    ]), this.conditionalLink(references[0].label, references[0].href, { target: '_blank', key: 0 }));
+        acc, i !== 0 ? ', ' : '', this.conditionalLink(reference.label, reference.href, { target: '_blank', key: i + 1 })
+    ]), []);
 
     calculateChild = ({ description, rationale, identifier, references }, key) => ({
         parent: key * 2,
@@ -520,7 +520,7 @@ class SystemRulesTable extends React.Component {
                                         updateFilter={ this.updateFilter } />
                                     <SimpleTableFilter buttonTitle={ null }
                                         onFilterChange={ this.handleSearch }
-                                        placeholder="Search by name or identifier" />
+                                        placeholder="Search by name, identifer, or reference" />
                                 </InputGroup>
                             </LevelItem>
                             <LevelItem>
