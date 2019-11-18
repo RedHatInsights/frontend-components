@@ -7,6 +7,8 @@ import * as OpenshiftToken from './hardcodedComponents/openshift/token';
 import * as AwsSecret from './hardcodedComponents/aws/access_key';
 import * as AwsArn from './hardcodedComponents/aws/arn';
 
+import * as CMOpenshift from  './hardcodedComponents/openshift/costManagement';
+
 export const COST_MANAGEMENT_APP_NAME = '/insights/platform/cost-management';
 
 const arnField = {
@@ -38,6 +40,80 @@ export default {
                         component: 'description',
                         name: 'description-summary',
                         Content: OpenshiftToken.DescriptionSummary
+                    }]
+                },
+                [COST_MANAGEMENT_APP_NAME]: {
+                    skipSelection: true,
+                    skipEndpoint: true,
+                    'source.source_ref': {
+                        label: <CMOpenshift.ClusterIdentifierLabel />,
+                        validate: [{
+                            type: validatorTypes.REQUIRED
+                        }, {
+                            type: validatorTypes.PATTERN_VALIDATOR,
+                            pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
+                            message: 'Cluster ID must start with alphanumeric character and can contain underscore and hyphen'
+                        }]
+                    },
+                    additionalSteps: [{
+                        title: 'Install prerequisites',
+                        nextStep: 'obtainLogin',
+                        fields: [{
+                            name: 'description',
+                            component: 'description',
+                            Content: CMOpenshift.PrerequisiteDescription
+                        }, {
+                            name: 'ocp-req',
+                            component: componentTypes.CHECKBOX,
+                            label: <CMOpenshift.PrerequisiteOCPText />,
+                            isRequired: true,
+                            validate: [{ type: validatorTypes.REQUIRED }]
+                        }, {
+                            name: 'ocp-req-list',
+                            component: 'description',
+                            Content: CMOpenshift.PrerequisiteOCPList
+                        }, {
+                            name: 'sys-req',
+                            component: componentTypes.CHECKBOX,
+                            label: <CMOpenshift.PrerequisiteSystemText />,
+                            isRequired: true,
+                            validate: [{ type: validatorTypes.REQUIRED }]
+                        }, {
+                            name: 'sys-req-list',
+                            component: 'description',
+                            Content: CMOpenshift.PrerequisiteSystemList
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'token'
+                        }]
+                    }, {
+                        title: 'Obtain your login credentials',
+                        stepKey: 'obtainLogin',
+                        nextStep: 'usageCollector',
+                        fields: [{
+                            component: 'description',
+                            name: 'description-summary',
+                            Content: CMOpenshift.ObtainLoginDescription
+                        }]
+                    }, {
+                        title: 'Configure usage collector',
+                        stepKey: 'usageCollector',
+                        nextStep: 'dataCollection',
+                        fields: [{
+                            component: 'description',
+                            name: 'description-summary',
+                            Content: CMOpenshift.ConfigureUsageCollector
+                        }]
+                    }, {
+                        title: 'Configure data collection',
+                        stepKey: 'dataCollection',
+                        fields: [{
+                            component: 'description',
+                            name: 'description-summary',
+                            Content: CMOpenshift.DataCollectionDescription
+                        }]
                     }]
                 }
             }
