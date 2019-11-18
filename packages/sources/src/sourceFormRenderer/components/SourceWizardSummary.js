@@ -40,17 +40,25 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
     const values = formOptions.getState().values;
     const type = sourceTypes.find(type => type.name === values.source_type);
 
-    const authType = type.schema.authentication.find(({ type }) => type === values.authentication.authtype);
+    const hasAuthentication = values.authentication && values.authentication.authtype ? values.authentication.authtype : values.authtype;
 
-    let additionalFields = [];
-    if (authType.additional_steps) {
-        additionalFields = flattenDeep(authType.additional_steps.map(({ fields }) => fields));
+    let authType;
+    let authTypeFields = [];
+
+    if (hasAuthentication) {
+        authType = type.schema.authentication.find(({ type }) => type === hasAuthentication);
+        authTypeFields = authType && authType.fields ? authType.fields : [];
     }
 
-    const authTypeFields = authType.fields;
-    const endpointFields = type.schema.endpoint.fields;
+    const skipEndpoint = values.noEndpoint;
 
-    const fields = [ ...authTypeFields, ...endpointFields, ...additionalFields  ];
+    let endpointFields = [];
+
+    if (!skipEndpoint) {
+        endpointFields = type.schema.endpoint.fields;
+    }
+
+    const fields = [ ...authTypeFields, ...endpointFields ];
 
     const application = values.application ? applicationTypes.find(type => type.id === values.application.application_type_id) : undefined;
     const applicationName = application ? application.display_name : 'Not selected';
@@ -73,7 +81,7 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
                     <TextListItem component={ TextListItemVariants.dt }>{ 'Application' }</TextListItem>
                     <TextListItem component={ TextListItemVariants.dd }>{ applicationName }</TextListItem>
                 </React.Fragment> }
-                { showAuthType && <React.Fragment>
+                { hasAuthentication && showAuthType && <React.Fragment>
                     <TextListItem component={ TextListItemVariants.dt }>{ 'Authentication type' }</TextListItem>
                     <TextListItem component={ TextListItemVariants.dd }>{ authType.name }</TextListItem>
                 </React.Fragment> }
