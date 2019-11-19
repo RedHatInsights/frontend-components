@@ -4,6 +4,8 @@ describe('dateStringByType component', () => {
     const date = new Date('Dec 31 2019 00:00:00 UTC');
     const tenSecondsAgo = new Date('Dec 30 2019 23:59:50 UTC');
     const tenMinutesAgo = new Date('Dec 30 2019 23:50:00 UTC');
+    const hourAgo = new Date('Dec 30 2019 23:00:00 UTC');
+    const fourHoursAgo = new Date('Dec 30 2019 20:00:00 UTC');
     const dayAgo = new Date('Dec 30 2019 00:00:00 UTC');
     const twoDaysAgo = new Date('Dec 29 2019 00:00:00 UTC');
     const weekAgo = new Date('Dec 24 2019 00:00:00 UTC');
@@ -36,6 +38,14 @@ describe('dateStringByType component', () => {
 
     it('Relative datetime matches 10 minutes ago', () => {
         expect(dateStringByType('relative')(tenMinutesAgo)).toEqual('10 minutes ago');
+    });
+
+    it('Relative datetime matches 1 hour ago', () => {
+        expect(dateStringByType('relative')(hourAgo)).toEqual('1 hour ago');
+    });
+
+    it('Relative datetime matches 4 hours ago', () => {
+        expect(dateStringByType('relative')(fourHoursAgo)).toEqual('4 hours ago');
     });
 
     it('Relative datetime matches 1 day ago', () => {
