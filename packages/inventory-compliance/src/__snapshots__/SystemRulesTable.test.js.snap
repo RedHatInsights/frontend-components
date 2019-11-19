@@ -36,7 +36,7 @@ exports[`SystemRulesTable component should render 1`] = `
         </InputGroup>
       </LevelItem>
       <LevelItem>
-        2
+        52
          results
       </LevelItem>
       <LevelItem>
@@ -55,7 +55,7 @@ exports[`SystemRulesTable component should render 1`] = `
     </Level>
     <Component
       dropDirection="down"
-      itemCount={2}
+      itemCount={52}
       onPerPageSelect={[Function]}
       onSetPage={[Function]}
       page={1}
@@ -433,6 +433,998 @@ exports[`SystemRulesTable component should render 1`] = `
           ],
           "parent": 2,
         },
+        Object {
+          "cells": Array [
+            Object {
+              "original": "Disable At Service (atd)",
+              "title": <Stack>
+                <StackItem>
+                  Disable At Service (atd)
+                </StackItem>
+                
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "medium",
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "original": true,
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": false,
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-2"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The at and batch commands can be used to schedule tasks that are meant to be executed only once. This allows delayed execution in a manner similar to cron, except that it is not recurring. The daemon atd keeps track of tasks scheduled via at and batch, and executes them at the specified time. The atd service can be disabled with the following command: $ sudo systemctl disable atd.service
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-2"
+                  >
+                    <Grid>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-2"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The atd service could be used by an unsophisticated insider to carry out activities outside of a normal login session, which could complicate accountability. Furthermore, the need to schedule tasks with at or batch is not common.
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 4,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "original": "Disable Network Router Discovery Daemon (rdisc)",
+              "title": <Stack>
+                <StackItem>
+                  Disable Network Router Discovery Daemon (rdisc)
+                </StackItem>
+                
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "medium",
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "original": true,
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": false,
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-3"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The rdisc service implements the client side of the ICMP Internet Router Discovery Protocol (IRDP), which allows discovery of routers on the local subnet. If a router is discovered then the local routing table is updated with a corresponding default route. By default this daemon is disabled. The rdisc service can be disabled with the following command: $ sudo systemctl disable rdisc.service
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-3"
+                  >
+                    <Grid>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-3"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      General-purpose systems typically have their network and routing information configured statically by a system administrator. Workstations or some special-purpose systems often use DHCP (instead of IRDP) to retrieve dynamic network configuration information.
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 6,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "original": "Disable Odd Job Daemon (oddjobd)",
+              "title": <Stack>
+                <StackItem>
+                  Disable Odd Job Daemon (oddjobd)
+                </StackItem>
+                
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "medium",
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "original": true,
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": false,
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-4"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The oddjobd service exists to provide an interface and access control mechanism through which specified privileged tasks can run tasks for unprivileged client applications. Communication with oddjobd through the system message bus. The oddjobd service can be disabled with the following command: $ sudo systemctl disable oddjobd.service
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-4"
+                  >
+                    <Grid>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-4"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The oddjobd service may provide necessary functionality in some environments, and can be disabled if it is not needed. Execution of tasks by privileged programs, on behalf of unprivileged ones, has traditionally been a source of privilege escalation security issues.
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 8,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "original": "Disable Apache Qpid (qpidd)",
+              "title": <Stack>
+                <StackItem>
+                  Disable Apache Qpid (qpidd)
+                </StackItem>
+                
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "medium",
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "original": true,
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": false,
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-5"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The qpidd service provides high speed, secure, guaranteed delivery services.  It is an implementation of the Advanced Message Queuing Protocol.  By default the qpidd service will bind to port 5672 and listen for connection attempts. The qpidd service can be disabled with the following command: $ sudo systemctl disable qpidd.service
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-5"
+                  >
+                    <Grid>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-5"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The qpidd service is automatically installed when the "base" package selection is selected during installation. The qpidd service listens for network connections, which increases the attack surface of the system. If the system is not intended to receive AMQP traffic, then the qpidd service is not needed and should be disabled or removed.
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 10,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "original": "Disable Automatic Bug Reporting Tool (abrtd)",
+              "title": <Stack>
+                <StackItem>
+                  Disable Automatic Bug Reporting Tool (abrtd)
+                </StackItem>
+                
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "medium",
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "original": true,
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": false,
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-6"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The Automatic Bug Reporting Tool (abrtd) daemon collects and reports crash data when an application crash is detected. Using a variety of plugins, abrtd can email crash reports to system administrators, log crash reports to files, or forward crash reports to a centralized issue tracking system such as RHTSupport. The abrtd service can be disabled with the following command: $ sudo systemctl disable abrtd.service
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-6"
+                  >
+                    <Grid>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-6"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      Mishandling crash data could expose sensitive information about vulnerabilities in software executing on the system, as well as sensitive information from within a process's address space or registers.
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 12,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "original": "Disable ntpdate Service (ntpdate)",
+              "title": <Stack>
+                <StackItem>
+                  Disable ntpdate Service (ntpdate)
+                </StackItem>
+                
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "medium",
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "original": true,
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": false,
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-7"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The ntpdate service sets the local hardware clock by polling NTP servers when the system boots. It synchronizes to the NTP servers listed in /etc/ntp/step-tickers or /etc/ntp.conf and then sets the local hardware clock to the newly synchronized system time. The ntpdate service can be disabled with the following command: $ sudo systemctl disable ntpdate.service
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-7"
+                  >
+                    <Grid>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-7"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The ntpdate service may only be suitable for systems which are rebooted frequently enough that clock drift does not cause problems between reboots. In any event, the functionality of the ntpdate service is now available in the ntpd program and should be considered deprecated.
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 14,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "original": "Ensure auditd Collects Information on Kernel Module Loading and Unloading",
+              "title": <Stack>
+                <StackItem>
+                  Ensure auditd Collects Information on Kernel Module Loading and Unloading
+                </StackItem>
+                
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "medium",
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "original": false,
+              "title": <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": false,
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-8"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      To capture kernel module loading and unloading events, use following lines, setting ARCH to either b32 for 32-bit system, or having two lines for both b32 and b64 in case your system is 64-bit: -w /usr/sbin/insmod -p x -k modules -w /usr/sbin/rmmod -p x -k modules -w /usr/sbin/modprobe -p x -k modules -a always,exit -F arch=ARCH -S init_module,finit_module,create_module,delete_module -F key=modules The place to add the lines depends on a way auditd daemon is configured. If it is configured to use the augenrules program (the default), add the lines to a file with suffix .rules in the directory /etc/audit/rules.d. If the auditd daemon is configured to use the auditctl utility, add the lines to file /etc/audit/audit.rules.
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-8"
+                  >
+                    <Grid>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-8"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      The addition/removal of kernel modules can be used to alter the behavior of the kernel and potentially introduce malicious code into kernel space. It is important to have an audit trail of modules that have been introduced into the kernel.
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 16,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "original": "Record Attempts to Alter Time Through stime",
+              "title": <Stack>
+                <StackItem>
+                  Record Attempts to Alter Time Through stime
+                </StackItem>
+                
+              </Stack>,
+            },
+            Object {
+              "original": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "original": "medium",
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                  title={null}
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "original": false,
+              "title": <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />,
+            },
+            Object {
+              "original": false,
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "originalIdentifier": "",
+              "originalReferences": "",
+              "title": <React.Fragment>
+                <div
+                  className="margin-top-lg"
+                >
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-description-9"
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Description
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d for both 32 bit and 64 bit systems: -a always,exit -F arch=b32 -S stime -F key=audit_time_rules Since the 64 bit version of the "stime" system call is not defined in the audit lookup table, the corresponding "-F arch=b64" form of this rule is not expected to be defined on 64 bit systems (the aforementioned "-F arch=b32" stime rule form itself is sufficient for both 32 bit and 64 bit systems). If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file for both 32 bit and 64 bit systems: -a always,exit -F arch=b32 -S stime -F key=audit_time_rules Since the 64 bit version of the "stime" system call is not defined in the audit lookup table, the corresponding "-F arch=b64" form of this rule is not expected to be defined on 64 bit systems (the aforementioned "-F arch=b32" stime rule form itself is sufficient for both 32 bit and 64 bit systems). The -k option allows for the specification of a key in string form that can be used for better reporting capability through ausearch and aureport. Multiple system calls can be defined on the same line to save space if desired, but is not required. See an example of multiple combined system calls: -a always,exit -F arch=b64 -S adjtimex,settimeofday -F key=audit_time_rules
+                    </StackItem>
+                  </Stack>
+                  <Stack
+                    className="margin-bottom-lg"
+                    id="rule-identifiers-references-9"
+                  >
+                    <Grid>
+                      
+                    </Grid>
+                  </Stack>
+                  <Stack
+                    id="rule-rationale-9"
+                    style={
+                      Object {
+                        "marginBottom": "var(--pf-global--spacer--lg)",
+                      }
+                    }
+                  >
+                    <StackItem
+                      style={
+                        Object {
+                          "marginBottom": "var(--pf-global--spacer--sm)",
+                        }
+                      }
+                    >
+                      <Text
+                        className="pf-c-form__label"
+                        component="h5"
+                      >
+                        <b>
+                          Rationale
+                        </b>
+                      </Text>
+                    </StackItem>
+                    <StackItem
+                      isFilled={true}
+                    >
+                      Arbitrary changes to the system time can be used to obfuscate nefarious activities in log files, as well as to confuse network services that are highly dependent upon an accurate system time (such as sshd). All changes to the system time should be audited.
+                    </StackItem>
+                  </Stack>
+                </div>
+              </React.Fragment>,
+            },
+          ],
+          "parent": 18,
+        },
       ]
     }
     sortBy={Object {}}
@@ -446,7 +1438,7 @@ exports[`SystemRulesTable component should render 1`] = `
   >
     <Component
       dropDirection="up"
-      itemCount={2}
+      itemCount={52}
       onPerPageSelect={[Function]}
       onSetPage={[Function]}
       page={1}

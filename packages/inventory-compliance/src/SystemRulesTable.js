@@ -75,7 +75,7 @@ class SystemRulesTable extends React.Component {
                 { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, transforms: [ sortable ] }
             ],
             page: 1,
-            itemsPerPage: 10,
+            itemsPerPage: props.itemsPerPage,
             rows: [],
             hidePassed: props.hidePassed,
             severity: [],
@@ -430,8 +430,10 @@ class SystemRulesTable extends React.Component {
                     let parent = this.isParent(row) ? row : rows[i - 1];
                     let child = this.isParent(row) ? rows[i + 1] : row;
                     filteredRows.push(parent);
-                    child.parent = filteredRows.length - 1;
-                    filteredRows.push(child);
+                    filteredRows.push({
+                        parent: filteredRows.length - 1,
+                        cells: child.cells
+                    });
                 }
             });
         }
@@ -464,8 +466,12 @@ class SystemRulesTable extends React.Component {
             result = searchRows;
         }
 
-        return result;
+        return this.recomputeParentId(result);
     }
+
+    recomputeParentId = (rows) => (
+        this.uncompressRows(this.compressRows(rows))
+    )
 
     updateFilter = (hidePassed, severity, policy) => {
         const { originalRows, profiles, refIds, page, itemsPerPage, searchTerm } = this.state;
@@ -582,12 +588,14 @@ SystemRulesTable.propTypes = {
     hidePassed: propTypes.bool,
     severity: propTypes.array,
     rows: propTypes.array,
-    system: propTypes.object
+    system: propTypes.object,
+    itemsPerPage: propTypes.number
 };
 
 SystemRulesTable.defaultProps = {
     profileRules: [{ rules: [] }],
-    hidePassed: false
+    hidePassed: false,
+    itemsPerPage: 10
 };
 
 export default SystemRulesTable;
