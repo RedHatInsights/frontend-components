@@ -29,10 +29,17 @@ export const mapData = ({ facts = {}, ...oneResult }) => ({
 
 export const mapTags = (data = { results: [] }, { orderBy, orderDirection } = {}) => {
     if (data.results.length > 0) {
-        return hosts.apiHostGetHostTags(data.results.map(({ id }) => id), data.per_page, data.page, orderBy, orderDirection)
+        return hosts.apiHostGetHostTags(data.results.map(({ id }) => id), data.per_page, 1, orderBy, orderDirection)
         .then(({ results: tags }) => ({
             ...data,
             results: data.results.map(row => ({ ...row, tags: tags[row.id] || [] }))
+        }))
+        .catch(() => ({
+            ...data,
+            results: data.results.map(row => ({
+                ...row,
+                tags: []
+            }))
         }));
     }
 
