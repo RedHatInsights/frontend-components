@@ -96,6 +96,57 @@ describe('SourceWizardSummary component', () => {
             expect(wrapper.contains('kubernetes')).toEqual(false);
         });
 
+        it('do not contain hidden field', () => {
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
+            expect(wrapper.contains('kubernetes')).toEqual(false);
+        });
+
+        it('do contain endpoint fields when noEndpoint not set', () => {
+            formOptions = {
+                getState: () => ({
+                    values: {
+                        source: {
+                            name: 'openshift'
+                        },
+                        source_type: 'openshift',
+                        endpoint: {
+                            certificate_authority: 'authority'
+                        },
+                        authentication: {
+                            username: 'user_name'
+                        },
+                        noEndpoint: ''
+                    }
+                })
+            };
+
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            expect(wrapper.contains('authority')).toEqual(true);
+        });
+
+        it('do not contain endpoint fields when noEndpoint set', () => {
+            formOptions = {
+                getState: () => ({
+                    values: {
+                        source: {
+                            name: 'openshift'
+                        },
+                        source_type: 'openshift',
+                        endpoint: {
+                            certificate_authority: 'authority'
+                        },
+                        authentication: {
+                            username: 'user_name'
+                        },
+                        noEndpoint: true
+                    }
+                })
+            };
+
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            expect(wrapper.contains('authority')).toEqual(false);
+        });
+
         it('render boolean as Yes', () => {
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') } />);
             expect(wrapper.contains('Yes')).toEqual(true);

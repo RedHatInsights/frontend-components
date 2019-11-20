@@ -40,7 +40,7 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
     const values = formOptions.getState().values;
     const type = sourceTypes.find(type => type.name === values.source_type);
 
-    const hasAuthentication = values.authentication && values.authentication.authtype ? values.authentication.authtype : values.authtype;
+    const hasAuthentication = values.authentication && values.authentication.authtype ? values.authentication.authtype : values.auth_select;
 
     let authType;
     let authTypeFields = [];
@@ -81,7 +81,7 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
                     <TextListItem component={ TextListItemVariants.dt }>{ 'Application' }</TextListItem>
                     <TextListItem component={ TextListItemVariants.dd }>{ applicationName }</TextListItem>
                 </React.Fragment> }
-                { hasAuthentication && showAuthType && <React.Fragment>
+                { authType && showAuthType && <React.Fragment>
                     <TextListItem component={ TextListItemVariants.dt }>{ 'Authentication type' }</TextListItem>
                     <TextListItem component={ TextListItemVariants.dd }>{ authType.name }</TextListItem>
                 </React.Fragment> }
