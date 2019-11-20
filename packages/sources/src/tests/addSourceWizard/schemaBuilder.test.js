@@ -12,13 +12,38 @@ import {
     shouldSkipSelection,
     getAdditionalStepKeys,
     createGenericAuthTypeSelection,
-    createSpecificAuthTypeSelection
+    createSpecificAuthTypeSelection,
+    createEndpointFlagger
 } from '../../addSourceWizard/schemaBuilder';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import sourceTypes, { AMAZON_TYPE, OPENSHIFT_TYPE, AZURE_TYPE } from '../helpers/sourceTypes';
 import applicationTypes, { COST_MANAGEMENT_APP, TOPOLOGY_INV_APP } from '../helpers/applicationTypes';
+import { componentTypes } from '@data-driven-forms/react-form-renderer';
 
 describe('schema builder', () => {
+    describe('createEndpointFlagger', () => {
+        const INITIAL_SCHEMA = {
+            component: componentTypes.TEXT_FIELD,
+            name: 'noEndpoint',
+            hideField: true,
+            initializeOnMount: true
+        };
+
+        it('creates object with true', () => {
+            expect(createEndpointFlagger(true)).toEqual({
+                ...INITIAL_SCHEMA,
+                initialValue: true
+            });
+        });
+
+        it('creates object with empty string as a false', () => {
+            expect(createEndpointFlagger(false)).toEqual({
+                ...INITIAL_SCHEMA,
+                initialValue: ''
+            });
+        });
+    });
+
     describe('stepKey fields', () => {
         const STEP_KEY = 'pepa';
         const NO_STEP_FIELD_1 = { name: 'cosi-1' };
@@ -245,7 +270,10 @@ describe('schema builder', () => {
 
         describe('createGenericAuthTypeSelection', () => {
             it('generate single selection', () => {
-                const fields = OPENSHIFT_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey);
+                const fields = [
+                    ...OPENSHIFT_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey),
+                    createEndpointFlagger(false)
+                ];
 
                 expectedSchema = expect.objectContaining({
                     fields: expect.arrayContaining(fields),
@@ -297,7 +325,10 @@ describe('schema builder', () => {
 
         describe('createSpecificAuthTypeSelection', () => {
             it('generate single selection', () => {
-                const fields = AZURE_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey);
+                const fields = [
+                    ...AZURE_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey),
+                    createEndpointFlagger(false)
+                ];
                 const expectedName = `${AZURE_TYPE.name}-${TOPOLOGY_INV_APP.id}`;
 
                 expectedSchema = expect.objectContaining({
