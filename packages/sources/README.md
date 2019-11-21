@@ -114,6 +114,7 @@ In [hardcodedSchema](src/addSourceWizard/hardcodedSchemas.js), there is an objec
 |name of field (ex. `authentication.password`|This defines additional props for the field (can be used for enhancing of API fields).|
 |`additionalSteps`|Defines additional steps.|
 |`skipSelection`|If there is only one authType, this flag will cause to skip the selection page.|
+|`skipEndpoint`|If it is set to `true`, all `endpoint.*` and `authentications.*` values will be ignored and no endpoint step will be shown to user.|
 
 # Additional components
 
