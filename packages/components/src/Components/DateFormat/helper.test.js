@@ -14,6 +14,8 @@ describe('dateStringByType component', () => {
     const twoMonthsAgo = new Date('Nov 1 2019 00:00:00 UTC');
     const twoMonthsAgo2 = new Date('Oct 31 2019 00:00:00 UTC');
     const sixMonthsAgo = new Date('Jun 30 2019 00:00:00 UTC');
+    const yearAgo = new Date('Dec 31 2018 00:00:00 UTC');
+    const twoYearsAgo = new Date('Dec 31 2017 00:00:00 UTC');
     global.Date.now = () => date;
 
     afterAll(() => {
@@ -78,5 +80,13 @@ describe('dateStringByType component', () => {
 
     it('Relative datetime matches 6 months ago', () => {
         expect(dateStringByType('relative')(sixMonthsAgo)).toEqual('6 months ago');
+    });
+
+    it('Relative datetime matches year ago', () => {
+        expect(dateStringByType('relative')(yearAgo)).toEqual('1 year ago');
+    });
+
+    it('Relative datetime matches2 years ago', () => {
+        expect(dateStringByType('relative')(twoYearsAgo)).toEqual('2 years ago');
     });
 });
