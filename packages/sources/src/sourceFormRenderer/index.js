@@ -9,9 +9,10 @@ import CardSelect from './components/CardSelect';
 import AuthSelect from './components/AuthSelect';
 
 export const mapperExtension = {
-    summary: SourceWizardSummary,
+    'auth-select': AuthSelect,
+    description: Description,
     'card-select': CardSelect,
-    'auth-select': AuthSelect
+    summary: SourceWizardSummary
 };
 
 const SourcesFormRenderer = props => (
@@ -19,8 +20,7 @@ const SourcesFormRenderer = props => (
         layoutMapper={ layoutMapper }
         formFieldsMapper={ {
             ...formFieldsMapper,
-            ...mapperExtension,
-            description: Description
+            ...mapperExtension
         } }
         subscription={ { values: true } }
         { ...props }

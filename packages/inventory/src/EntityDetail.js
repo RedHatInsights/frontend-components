@@ -141,11 +141,9 @@ class EntityDetails extends Component {
                         { this.generateTop() }
                         { this.generateFacts() }
                         {
-                            localStorage.getItem('rhcs-tags') === 'true' && (
-                                loaded ?
-                                    <TagWithDialog count={ entity.tagCount } systemId={ entity.id } /> :
-                                    <Skeleton size={SkeletonSize.sm}>&nbsp;</Skeleton>
-                            )
+                            loaded ?
+                                <TagWithDialog count={ entity.tags.length } systemId={ entity.id } /> :
+                                <Skeleton size={ SkeletonSize.sm }>&nbsp;</Skeleton>
                         }
                         <TagsModal />
                     </Fragment>

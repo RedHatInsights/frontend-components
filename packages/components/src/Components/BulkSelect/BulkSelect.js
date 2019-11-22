@@ -41,14 +41,14 @@ visible unless you update it.');
                                             id={ id ? `${id}-toggle-checkbox` : 'toggle-checkbox' }
                                             aria-label="Select all"
                                             onChange={ onSelect }
-                                            checked={ checked || false }
+                                            checked={ checked }
                                         /> :
                                             <DropdownToggleCheckbox
                                                 id={ id ? `${id}-toggle-checkbox` : 'toggle-checkbox' }
                                                 aria-label="Select all"
                                                 onChange={ onSelect }
-                                                checked={ checked || false }
-                                            >{ count } selected</DropdownToggleCheckbox>
+                                                checked={ checked }
+                                            >{ count ? `${count} selected` : '' }</DropdownToggleCheckbox>
                                     }
                                 </Fragment>
                             ] }

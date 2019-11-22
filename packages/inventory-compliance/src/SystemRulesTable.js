@@ -75,7 +75,7 @@ class SystemRulesTable extends React.Component {
                 { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, transforms: [ sortable ] }
             ],
             page: 1,
-            itemsPerPage: 10,
+            itemsPerPage: props.itemsPerPage,
             rows: [],
             hidePassed: props.hidePassed,
             severity: [],
@@ -342,7 +342,7 @@ class SystemRulesTable extends React.Component {
     compressRows = (rows) => {
         const compressedRows = [];
         rows.forEach((row, i) => {
-            if (row.hasOwnProperty('isOpen')) {
+            if (this.isParent(row)) {
                 compressedRows.push({ parent: row, child: rows[i + 1] });
             }
         });
@@ -400,14 +400,15 @@ class SystemRulesTable extends React.Component {
     filterBy = (attribute, rows, column) => {
         const filteredRows = [];
         rows.forEach((row, i) => {
-            if (row.hasOwnProperty('isOpen') && String(row.cells[column].original).toLowerCase().match(
+            if (this.isParent(row) && String(row.cells[column].original).toLowerCase().match(
                 String(attribute).toLowerCase()
             )) {
                 filteredRows.push(row);
-                if (!rows[i + 1].hasOwnProperty('isOpen')) {
-                    let child = rows[i + 1];
-                    child.parent = filteredRows.length - 1;
-                    filteredRows.push(child);
+                if (!this.isParent(rows[i + 1])) {
+                    filteredRows.push({
+                        parent: filteredRows.length - 1,
+                        cells: rows[i + 1].cells
+                    });
                 }
             }
         });
@@ -429,8 +430,10 @@ class SystemRulesTable extends React.Component {
                     let parent = this.isParent(row) ? row : rows[i - 1];
                     let child = this.isParent(row) ? rows[i + 1] : row;
                     filteredRows.push(parent);
-                    child.parent = filteredRows.length - 1;
-                    filteredRows.push(child);
+                    filteredRows.push({
+                        parent: filteredRows.length - 1,
+                        cells: child.cells
+                    });
                 }
             });
         }
@@ -442,7 +445,7 @@ class SystemRulesTable extends React.Component {
         let result;
 
         if (severity.length > 0 && hidePassed) {
-            result = passedRows.filter(row => severityRows.includes(row));
+            result = passedRows.filter(row => severityRows.map((row) => row.cells).includes(row.cells));
         } else if (hidePassed && severity.length === 0) {
             result = passedRows;
         } else if (severity.length > 0 && !hidePassed) {
@@ -452,19 +455,23 @@ class SystemRulesTable extends React.Component {
         }
 
         if (policy.length > 0 && result.length > 0) {
-            result = result.filter(row => policyRows.includes(row));
+            result = result.filter(row => policyRows.map((row) => row.cells).includes(row.cells));
         } else if (policy.length > 0 && result.length === 0) {
             result = policyRows;
         }
 
         if (searchTerm && searchTerm.length > 0 && result.length > 0) {
-            result = result.filter(row => searchRows.includes(row));
+            result = result.filter(row => searchRows.map((row) => row.cells).includes(row.cells));
         } else if (searchTerm && searchTerm.length > 0 && result.length === 0) {
             result = searchRows;
         }
 
-        return result;
+        return this.recomputeParentId(result);
     }
+
+    recomputeParentId = (rows) => (
+        this.uncompressRows(this.compressRows(rows))
+    )
 
     updateFilter = (hidePassed, severity, policy) => {
         const { originalRows, profiles, refIds, page, itemsPerPage, searchTerm } = this.state;
@@ -581,12 +588,14 @@ SystemRulesTable.propTypes = {
     hidePassed: propTypes.bool,
     severity: propTypes.array,
     rows: propTypes.array,
-    system: propTypes.object
+    system: propTypes.object,
+    itemsPerPage: propTypes.number
 };
 
 SystemRulesTable.defaultProps = {
     profileRules: [{ rules: [] }],
-    hidePassed: false
+    hidePassed: false,
+    itemsPerPage: 10
 };
 
 export default SystemRulesTable;

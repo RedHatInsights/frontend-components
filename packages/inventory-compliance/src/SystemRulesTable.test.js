@@ -44,13 +44,14 @@ describe('SystemRulesTable component', () => {
                 profileRules={ profileRules }
                 loading={ false }
                 system={ system }
+                itemsPerPage={ 100 }
             />
         );
         const instance = wrapper.instance();
         await instance.setInitialCurrentRows();
+        expect(wrapper.state('currentRows').length / 2).toEqual(52);
+        await instance.updateFilter(false, [ 'low' ], []);
         expect(wrapper.state('currentRows').length / 2).toEqual(2);
-        await instance.updateFilter(false, [ 'high' ], []);
-        expect(wrapper.state('currentRows').length / 2).toEqual(0);
     });
 
     it('should render filtered rows by multiple severities', async () => {
@@ -59,13 +60,14 @@ describe('SystemRulesTable component', () => {
                 profileRules={ profileRules }
                 loading={ false }
                 system={ system }
+                itemsPerPage={ 100 }
             />
         );
         const instance = wrapper.instance();
         await instance.setInitialCurrentRows();
-        expect(wrapper.state('currentRows').length / 2).toEqual(2);
+        expect(wrapper.state('currentRows').length / 2).toEqual(52);
         await instance.updateFilter(false, [ 'high', 'medium' ], []);
-        expect(wrapper.state('currentRows').length / 2).toEqual(1);
+        expect(wrapper.state('currentRows').length / 2).toEqual(50);
     });
 
     it('should render search results by rule name', async () => {
@@ -74,6 +76,7 @@ describe('SystemRulesTable component', () => {
                 profileRules={ profileRules }
                 loading={ false }
                 system={ system }
+                itemsPerPage={ 100 }
             />
         );
         const instance = wrapper.instance();
@@ -89,20 +92,83 @@ describe('SystemRulesTable component', () => {
                 profileRules={ profileRules }
                 loading={ false }
                 system={ system }
+                itemsPerPage={ 100 }
             />
         );
         const instance = wrapper.instance();
         await instance.setInitialCurrentRows();
-        expect(wrapper.state('currentRows').length / 2).toEqual(2);
+        expect(wrapper.state('currentRows').length / 2).toEqual(52);
         expect(wrapper.state('currentRows')[0].cells[TITLE_COLUMN].original).
         toEqual('Use direct-lvm with the Device Mapper Storage Driver');
         expect(wrapper.state('currentRows')[2].cells[TITLE_COLUMN].original).
         toEqual('Enable the Docker service');
         await instance.onSort(null, TITLE_COLUMN + 2, SortByDirection.asc);
-        expect(wrapper.state('currentRows').length / 2).toEqual(2);
+        expect(wrapper.state('currentRows').length / 2).toEqual(52);
         expect(wrapper.state('currentRows')[0].cells[TITLE_COLUMN].original).
-        toEqual('Enable the Docker service');
+        toEqual('Add nodev Option to /dev/shm');
         expect(wrapper.state('currentRows')[2].cells[TITLE_COLUMN].original).
-        toEqual('Use direct-lvm with the Device Mapper Storage Driver');
+        toEqual('Add nosuid Option to /dev/shm');
+    });
+
+    it('should render filtered rows with the right parent fields', async () => {
+        const wrapper = shallow(
+            <SystemRulesTable
+                profileRules={ profileRules }
+                loading={ false }
+                system={ system }
+                itemsPerPage={ 50 }
+            />
+        );
+        const instance = wrapper.instance();
+        await instance.setInitialCurrentRows();
+        await instance.updateFilter(false, [ 'high', 'medium' ], []);
+        expect(wrapper.state('currentRows').length / 2).toEqual(50);
+        wrapper.state('currentRows').forEach((row, i) => {
+            if (row.hasOwnProperty('parent')) {
+                expect(row.parent).toEqual(i - 1);
+            }
+        });
+    });
+
+    it('should render search results with the right parent fields', async () => {
+        const wrapper = shallow(
+            <SystemRulesTable
+                profileRules={ profileRules }
+                loading={ false }
+                system={ system }
+                itemsPerPage={ 50 }
+            />
+        );
+        const instance = wrapper.instance();
+        await instance.setInitialCurrentRows();
+        await instance.setState({ searchTerm: 'Disable' });
+        await instance.updateFilter(wrapper.state('hidePassed'), wrapper.state('severity'), wrapper.state('policy'));
+        expect(wrapper.state('currentRows').length / 2).toEqual(7);
+        wrapper.state('currentRows').forEach((row, i) => {
+            if (row.hasOwnProperty('parent')) {
+                expect(row.parent).toEqual(i - 1);
+            }
+        });
+    });
+
+    it('should render filtered and search mixed results with the right parent', async () => {
+        const wrapper = shallow(
+            <SystemRulesTable
+                profileRules={ profileRules }
+                loading={ false }
+                system={ system }
+                itemsPerPage={ 50 }
+            />
+        );
+        const instance = wrapper.instance();
+        await instance.setInitialCurrentRows();
+        await instance.setState({ searchTerm: 'Verify' });
+        await instance.updateFilter(wrapper.state('hidePassed'), [ 'high' ], wrapper.state('policy'));
+        expect(wrapper.state('currentRows').length / 2).toEqual(2);
+        wrapper.state('currentRows').forEach((row, i) => {
+            if (row.hasOwnProperty('parent')) {
+                expect(row.parent).toEqual(i - 1);
+            }
+        });
     });
 });

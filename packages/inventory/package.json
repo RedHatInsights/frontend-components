@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory",
-    "version": "0.0.33",
+    "version": "0.0.36",
     "description": "Inventory components for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -35,7 +35,7 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7",
-        "@redhat-cloud-services/host-inventory-client": "1.0.19",
+        "@redhat-cloud-services/host-inventory-client": "1.0.39",
         "axios": "^0.19.0"
     }
 }

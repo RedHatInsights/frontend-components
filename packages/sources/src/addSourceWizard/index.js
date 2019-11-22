@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Form from './SourceAddModal';
 import FinalWizard from './FinalWizard';
 
-import { doCreateSource } from '../api/index';
+import { doCreateSource } from '../api/createSource';
 
 const initialValues = (initialValues) => ({
     isSubmitted: false,
@@ -48,9 +48,9 @@ class AddSourceWizard extends React.Component {
         error: undefined
     })
 
-    onCancel = () => {
+    onCancel = (formValues) => {
         this.setState(initialValues);
-        this.props.onClose();
+        this.props.onClose(formValues);
     }
 
     render() {
@@ -84,7 +84,7 @@ class AddSourceWizard extends React.Component {
 
         return <FinalWizard
             afterSubmit={ this.afterSubmit }
-            afterError={ this.onCancel }
+            afterError={ () => this.onCancel() }
             isFinished={ isFinished }
             isErrored={ isErrored }
             onRetry={ this.onRetry }

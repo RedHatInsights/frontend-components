@@ -3,6 +3,7 @@
 - [Install](#install)
   - [Using](#using)
 - [Format for sourceType schema](#format-for-sourcetype-schema)
+  - [Hardcoded component schema](#hardcoded-component-schema)
 - [Additional components](#additional-components)
   - [CardSelect](#cardselect)
   - [SourceWizardSummary](#sourcewizardsummary)
@@ -51,7 +52,7 @@ import { AddSourceWizard } from '@redhat-cloud-services/frontend-components-sour
 |----|:--:|:-----:|----------:|
 |isOpen|bool|`false`|You need to control yourselves if the wizard is open or not. (Not needed for the button version)|
 |afterSuccess|function|`null`|This function will be executed after closing the wizard successful finish step. In Sources-UI this method is used for updating the list of sources.|
-|onClose|function|`null`|This function will be executed after closing the wizard. Eg. set isOpen to false.|
+|onClose|function|`null`|This function will be executed after closing the wizard. Eg. set isOpen to false. In case of closing wizard before submitting, form values are passed as the first argument.|
 |successfulMessage|node|`'Your source has been successfully added.'`|A message shown on the last page of the wizard. Can be customized when accessing from different app (eg. 'Source was added to Cost Management')|
 |sourceTypes|array|`null`|SourceTypes array. This prop can be used on pages, which have already loaded the source types, so there is no need to load them in this component.|
 |applicationTypes|array|`null`|applicationTypes array. This prop can be used on pages, which have already loaded the application types, so there is no need to load them in this component.|
@@ -102,6 +103,18 @@ schema = {
   }
 }
 ```
+
+## Hardcoded component schema
+
+In [hardcodedSchema](src/addSourceWizard/hardcodedSchemas.js), there is an object which defines additional UI enhancements of the flow for combinations of sourceTypes and appTypes. The format has following structure: `source-type-name.authenication.auth-type.app-name`. For generic steps use as the app-name `generic`. Each of these objects has following keys:
+
+|key|description|
+|---|-----------|
+|`additionalFields`|These fields are appended to the authType selection page.|
+|name of field (ex. `authentication.password`|This defines additional props for the field (can be used for enhancing of API fields).|
+|`additionalSteps`|Defines additional steps.|
+|`skipSelection`|If there is only one authType, this flag will cause to skip the selection page.|
+|`skipEndpoint`|If it is set to `true`, all `endpoint.*` and `authentications.*` values will be ignored and no endpoint step will be shown to user.|
 
 # Additional components
 

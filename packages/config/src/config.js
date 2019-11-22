@@ -40,6 +40,10 @@ module.exports = ({
                 exclude: /(node_modules|bower_components)/i,
                 use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }, { loader: 'eslint-loader' }]
             }, {
+                test: /src\/.*\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /(node_modules)/i
+            }, {
                 test: /\.s?[ac]ss$/,
                 use: [
                     process.env.NODE_ENV === 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -59,7 +63,15 @@ module.exports = ({
                         outputPath: 'fonts/'
                     }
                 }]
+            },
+            {
+                test: /\.mjs$/,
+                include: /node_modules/,
+                type: 'javascript/auto'
             }]
+        },
+        resolve: {
+            extensions: [ '.ts', '.tsx', '.mjs', '.js', '.scss' ]
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,

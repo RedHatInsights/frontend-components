@@ -24,11 +24,27 @@ export const mapData = ({ facts = {}, ...oneResult }) => ({
         .reduce(
             (acc, curr) => ({ ...acc, ...(typeof curr !== 'string') ? curr : {} }), {}
         )
-    },
-    ...localStorage.getItem('rhcs-tags') === 'true' ? {
-        tagCount: Math.floor(Math.random() * Math.floor(11))
-    } : {}
+    }
 });
+
+export const mapTags = (data = { results: [] }, { orderBy, orderDirection } = {}) => {
+    if (data.results.length > 0) {
+        return hosts.apiHostGetHostTags(data.results.map(({ id }) => id), data.per_page, 1, orderBy, orderDirection)
+        .then(({ results: tags }) => ({
+            ...data,
+            results: data.results.map(row => ({ ...row, tags: tags[row.id] || [] }))
+        }))
+        .catch(() => ({
+            ...data,
+            results: data.results.map(row => ({
+                ...row,
+                tags: []
+            }))
+        }));
+    }
+
+    return data;
+};
 
 export function getEntities(items, {
     controller,
@@ -43,6 +59,7 @@ export function getEntities(items, {
 
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
+        .then(mapTags)
         .then(({ results = [], ...data } = {}) => ({
             ...data,
             filters,
@@ -58,12 +75,14 @@ export function getEntities(items, {
             hostnameOrId && hostnameOrId.filter,
             undefined,
             undefined,
+            undefined,
             perPage,
             page,
             orderBy,
             orderDirection,
             { cancelToken: controller && controller.token }
         )
+        .then((data) => mapTags(data, { orderBy, orderDirection }))
         .then(({ results = [], ...data } = {}) => ({
             ...data,
             filters,
@@ -85,13 +104,8 @@ export function getEntities(items, {
 
 export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);
 
-export function getTags(systemId, count) {
-    return new Promise(res => setTimeout(() => res({
-        results: [ ...Array(count) ].map(() => ({
-            tagName: 'Tag name',
-            tagValue: `Some tag=${systemId}`
-        }))
-    }), 1000));
+export function getTags(systemId) {
+    return hosts.apiHostGetHostTags(systemId).then(({ results }) => ({ results: Object.values(results)[0] }));
 }
 
 export function getAllTags() {

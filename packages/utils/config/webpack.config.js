@@ -16,6 +16,7 @@ module.exports = (env) => ({
         Deffered: './src/Deffered.js',
         RouterParams: './src/RouterParams.js',
         interceptors: './src/interceptors.js',
+        debounce: './src/debounce.js',
         Styles: './src/Utilities.scss'
     },
     output: {
@@ -62,7 +63,8 @@ module.exports = (env) => ({
         'react-content-loader': 'react-content-loader',
         react: 'react',
         'react-redux': 'react-redux',
-        axios: 'axios'
+        axios: 'axios',
+        'awesome-debounce-promise': 'awesome-debounce-promise'
     },
     ...buildPlugins(env)
 });

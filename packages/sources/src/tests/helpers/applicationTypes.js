@@ -1,4 +1,4 @@
-export default [
+const applicationTypes = [
     {
         created_at: '2019-04-05T17:54:38Z',
         dependent_applications: [
@@ -27,7 +27,7 @@ export default [
         name: '/insights/platform/cost-management',
         supported_authentication_types: {
             azure: [
-                'username_password'
+                'tenant_id_client_id_client_secret'
             ],
             amazon: [
                 'arn'
@@ -53,7 +53,7 @@ export default [
         name: '/insights/platform/topological-inventory',
         supported_authentication_types: {
             azure: [
-                'username_password'
+                'tenant_id_client_id_client_secret'
             ],
             amazon: [
                 'access_key_secret_key'
@@ -74,3 +74,8 @@ export default [
         updated_at: '2019-09-23T14:04:02Z'
     }
 ];
+
+export default applicationTypes;
+
+export const COST_MANAGEMENT_APP = applicationTypes[1];
+export const TOPOLOGY_INV_APP = applicationTypes[2];
