@@ -7,13 +7,14 @@ const hour = minute * 60;
 const day = hour * 24;
 const month = day * 30; // let's count that every month has 30 days
 const year = day * 365;
+const formatTime = (number, unit) => `${number} ${number > 1 ? `${unit}s` : unit} ago`;
 
 const relativeTimeTable = [
-    { rightBound: year, description: date => `${Math.round(date / (month))} months ago` },
-    { rightBound: month, description: date => `${Math.round(date / (day))} days ago` },
-    { rightBound: 2 * day, description: () => '1 day ago' },
-    { rightBound: day, description: date => `${Math.round(date / (hour))} hours ago` },
-    { rightBound: hour, description: date => `${Math.round(date / (minute))} minutes ago` },
+    { rightBound: Infinity, description: date => formatTime(Math.round(date / (year)), 'year') },
+    { rightBound: year, description: date => formatTime(Math.round(date / (month)), 'month') },
+    { rightBound: month, description: date => formatTime(Math.round(date / (day)), 'day') },
+    { rightBound: day, description: date => formatTime(Math.round(date / (hour)), 'hour') },
+    { rightBound: hour, description: date => formatTime(Math.round(date / (minute)), 'minute') },
     { rightBound: minute, description: () => 'Just now' }
 ];
 
