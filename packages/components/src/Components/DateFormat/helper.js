@@ -7,10 +7,12 @@ const hour = minute * 60;
 const twoHours = hour * 2;
 const day = hour * 24;
 const month = day * 30; // let's count that every month has 30 days
+const twoMonths = month * 2;
 const year = day * 365;
 
 const relativeTimeTable = [
     { rightBound: year, description: date => `${Math.round(date / (month))} months ago` },
+    { rightBound: twoMonths, description: () => '1 month ago' },
     { rightBound: month, description: date => `${Math.round(date / (day))} days ago` },
     { rightBound: 2 * day, description: () => '1 day ago' },
     { rightBound: day, description: date => `${Math.round(date / (hour))} hours ago` },
