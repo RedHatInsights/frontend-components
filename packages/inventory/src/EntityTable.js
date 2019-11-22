@@ -135,7 +135,7 @@ class EntityTable extends React.Component {
         return ([
             ...transforms || [],
             ...props && props.width ? [ cellWidth(props.width) ] : [],
-            ...hasItems || rows.length <= 0 ? [] : [ sortable ]
+            ...hasItems || rows.length <= 0 || (props && props.isStatic) ? [] : [ sortable ]
         ]);
     }
 

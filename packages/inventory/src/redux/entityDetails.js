@@ -1,5 +1,5 @@
 import { ACTION_TYPES, APPLICATION_SELECTED, TOGGLE_TAG_MODAL } from './action-types';
-import { tagsLoading, tagsFulfilled, toggleTagModal } from './entities';
+import { showTags, toggleTagModal } from './entities';
 export const defaultState = { loaded: false };
 
 function entityDetailPending(state) {
@@ -29,7 +29,6 @@ export default {
     [ACTION_TYPES.LOAD_ENTITY_PENDING]: entityDetailPending,
     [ACTION_TYPES.LOAD_ENTITY_FULFILLED]: entityDetailLoaded,
     [APPLICATION_SELECTED]: onApplicationSelected,
-    [ACTION_TYPES.LOAD_TAGS_PENDING]: tagsLoading,
-    [ACTION_TYPES.LOAD_TAGS_FULFILLED]: tagsFulfilled,
+    [ACTION_TYPES.LOAD_TAGS]: showTags,
     [TOGGLE_TAG_MODAL]: toggleTagModal
 };

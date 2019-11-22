@@ -108,13 +108,9 @@ export const editAnsibleHost = (id, value) => ({
     }
 });
 
-export const loadTags = (systemId, count) => ({
+export const loadTags = (systemId) => ({
     type: ACTION_TYPES.LOAD_TAGS,
-    payload: getTags(systemId, count),
-    meta: {
-        systemId,
-        count
-    }
+    payload: systemId
 });
 
 export const toggleTagModal = (isOpen) => ({

@@ -18,15 +18,13 @@ export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: f
 
 const defaultColumns = [
     { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ] },
-    ...localStorage.getItem('rhcs-tags') === 'true' ? [
-        {
-            key: 'tagCount',
-            title: 'Tags',
-            props: { width: 25 },
-            // eslint-disable-next-line react/display-name
-            renderFunc: (value, systemId) => <TagWithDialog count={value} systemId={ systemId }/>
-        }
-    ] : [],
+    {
+        key: 'tags',
+        title: 'Tags',
+        props: { width: 25, isStatic: true },
+        // eslint-disable-next-line react/display-name
+        renderFunc: (value, systemId) => <TagWithDialog count={value.length} systemId={systemId} />
+    },
     { key: 'updated', title: 'Last sync', isTime: true, props: { width: 25 } }
 ];
 
@@ -115,23 +113,13 @@ function selectFilter(state, { payload: { item: { items, ...item }, selected } }
     };
 }
 
-export function tagsLoading(state, { meta: { systemId, count } }) {
-    const activeSystemTag = state.rows ? state.rows.find(({ id }) => systemId === id) : state.entity;
+export function showTags(state, { payload }) {
+    const activeSystemTag = state.rows ? state.rows.find(({ id }) => payload === id) : state.entity;
     return {
         ...state,
-        tags: [],
-        showTagDialog: true,
-        tagsLoaded: false,
         activeSystemTag,
-        tagCount: count
-    };
-}
-
-export function tagsFulfilled(state, { payload: { results } }) {
-    return {
-        ...state,
-        tags: results,
-        tagsLoaded: true
+        tagsLoaded: true,
+        showTagDialog: true
     };
 }
 
@@ -155,8 +143,7 @@ export default {
     [ACTION_TYPES.ALL_TAGS_PENDING]: (state) => ({ ...state, allTagsLoaded: false }),
     [ACTION_TYPES.LOAD_ENTITIES_PENDING]: entitiesPending,
     [ACTION_TYPES.LOAD_ENTITIES_FULFILLED]: entitiesLoaded,
-    [ACTION_TYPES.LOAD_TAGS_PENDING]: tagsLoading,
-    [ACTION_TYPES.LOAD_TAGS_FULFILLED]: tagsFulfilled,
+    [ACTION_TYPES.LOAD_TAGS]: showTags,
     [UPDATE_ENTITIES]: entitiesLoaded,
     [SHOW_ENTITIES]: (state, action) => entitiesLoaded(state, {
         payload: {
