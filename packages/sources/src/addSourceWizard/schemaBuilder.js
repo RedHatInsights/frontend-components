@@ -55,9 +55,11 @@ export const createEndpointStep = (endpoint, typeName) => ({
 export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpointStep, fields, appName = 'generic') => additionalSteps.map((step) => {
     const stepKey = step.stepKey || `${name}-${authName}-${appName}-additional-step`;
 
+    const skipEndpoint = shouldSkipEndpoint(name, authName, appName);
+
     return ({
         stepKey: stepKey,
-        nextStep: hasEndpointStep ? `${name}-endpoint` : 'summary',
+        nextStep: hasEndpointStep && !skipEndpoint ? `${name}-endpoint` : 'summary',
         ...step,
         fields: [
             ...injectAuthFieldsInfo(step.fields, name, authName, appName),
