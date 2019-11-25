@@ -10,7 +10,7 @@ docs:
 
 # any file changes with the .test.js extension
 tests:
-  - src/**/*.test.js
+  - packages/**/*.test.js
 
 # any change to the workflows file is updated
 workflows:
