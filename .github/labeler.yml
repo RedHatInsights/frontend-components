@@ -26,6 +26,7 @@ awaitingReview:
 release:
   - packages/*/src/**/*
 
+# add label based on package changed
 charts:
   - packages/charts/**/*
 components:
