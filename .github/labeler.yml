@@ -1,0 +1,27 @@
+# root for top level changes
+root:
+  - '.*'
+
+# any update in README.md
+docs:
+  - README.md
+  - packages/*/src/doc/*
+  - packages/*/README.md
+
+# any file changes with the .test.js extension
+tests:
+  - src/**/*.test.js
+
+# any change to the workflows file is updated
+workflows:
+  - .github/workflows/*
+
+# For any file changed
+awaitingReview:
+  - '**'
+  - '.*'
+  - '.*/**'
+
+# release any file changed in a package
+release:
+  - packages/*/src/**/*
