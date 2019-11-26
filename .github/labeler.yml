@@ -29,27 +29,39 @@ release:
 # add label based on package changed
 charts:
   - packages/charts/**/*
+
 components:
   - packages/components/**/*
+
 config:
   - packages/config/**/*
+
 demo:
   - packages/demo/**/*
+
 inventory:
   - packages/inventory/**/*
+
 inventory/compliance:
   - packages/inventory-compliance/**/*
+
 inventory/general-info:
   - packages/inventory-general-info/**/*
+
 inventory/insights:
   - packages/inventory-insights/**/*
+
 notifications:
   - packages/notifications/**/*
+
 remediations:
   - packages/remediations/**/*
+
 sources:
   - packages/sources/**/*
+
 translations:
   - packages/translations/**/*
+
 utils:
   - packages/utils/**/*
