@@ -36,10 +36,10 @@ query System($systemId: String!){
         profiles {
             name
             refId
-            compliant(systemId: $systemId)
-            rulesFailed(systemId: $systemId)
-            rulesPassed(systemId: $systemId)
-            lastScanned(systemId: $systemId)
+            compliant
+            rulesFailed
+            rulesPassed
+            lastScanned
             rules(systemId: $systemId) {
                 title
                 severity
