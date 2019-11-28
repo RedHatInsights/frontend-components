@@ -33,7 +33,7 @@ class DownloadButton extends Component {
                         iconComponent={null}
                         onToggle={ this.onToggle }
                     >
-                        <ExportIcon size={ IconSize.sm } />
+                        <ExportIcon size="sm" />
                     </DropdownToggle>
                 }
                 isOpen={ isOpen }

@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-notifications",
-    "version": "0.0.6-rc2",
+    "version": "0.0.6",
     "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -30,5 +30,8 @@
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components-utilities": "~0.0.7"
+    },
+    "devDependencies": {
+        "babel-plugin-import": "^1.13.0"
     }
 }

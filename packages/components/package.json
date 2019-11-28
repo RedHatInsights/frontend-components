@@ -34,5 +34,8 @@
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7"
+    },
+    "devDependencies": {
+        "babel-plugin-import": "^1.13.0"
     }
 }
