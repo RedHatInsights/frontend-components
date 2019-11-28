@@ -15,8 +15,14 @@ describe('should create dummy config with no options', () => {
         devServer,
         serve
     } = configBuilder();
+
+    const { mode: prodMode } = configBuilder({ mode: 'production' });
     test('mode', () => {
         expect(mode).toBe('development');
+    });
+
+    test('prodMode', () => {
+        expect(prodMode).toBe('production');
     });
 
     test('optimization', () => {

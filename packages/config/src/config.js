@@ -7,13 +7,14 @@ module.exports = ({
     publicPath,
     appEntry,
     rootFolder,
-    https
+    https,
+    mode
 } = {}) => {
     return {
-        mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+        mode: mode || (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
         devtool: 'source-map',
         optimization: {
-            minimize: process.env.NODE_ENV === 'production',
+            minimize: (process.env.NODE_ENV || mode) === 'production',
             splitChunks: {
                 cacheGroups: {
                     vendors: false,
