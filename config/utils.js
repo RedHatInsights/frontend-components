@@ -7,7 +7,7 @@ const getDirectories = (source, dest) =>
     .map(name => {
         const key = `${dest}/${name}`;
         return {
-            [key]: './' + join(source, `${name}/index.js`)
+            [key]: `${source.substr(0, 1) === '/' ? '' : './'}` + join(source, `${name}/index.js`)
         };
     })
     .reduce((acc, curr) => ({ ...acc, ...curr }), {});

@@ -8,7 +8,7 @@
         "access": "public"
     },
     "scripts": {
-        "build": "webpack --config config/webpack.config.js",
+        "build": "webpack --config config/webpack.config.js && node ./config/generateMapper.js",
         "start": "webpack --watch --config config/webpack.config.js"
     },
     "repository": {
