@@ -10,7 +10,10 @@ module.exports = (env) => ({
         minimize: process.env.NODE_ENV === 'production'
     },
     entry: {
-        index: './src/index.js'
+        index: './src/index.js',
+        NotificationPortal: './src/NotificationPortal/index.js',
+        redux: './src/redux/index.js',
+        notificationsMiddleware: './src/notificationsMiddleware/index.js'
     },
     output: {
         filename: '[name].js',

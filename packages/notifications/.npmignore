@@ -1,5 +1,7 @@
 !/index.js
 !/index.css
+!/*.css
+!/*.js
 src/
 .babelrc
 babel.config.js

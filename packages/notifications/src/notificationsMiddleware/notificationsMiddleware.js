@@ -1,7 +1,7 @@
 
 import get from 'lodash/get';
 import has from 'lodash/has';
-import { addNotification } from './redux/actions/notifications';
+import { addNotification } from '../redux/actions/notifications';
 
 const prepareErrorMessage = (payload, errorTitleKey, errorDescriptionKey) => {
     if (typeof payload === 'string') {

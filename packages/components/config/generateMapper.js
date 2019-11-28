@@ -5,11 +5,8 @@ const fs = require('fs');
 const readFile = (fileName) => util.promisify(fs.readFile)(fileName, 'utf8');
 const writeFile = (fileName, data) => util.promisify(fs.writeFile)(fileName, data, 'utf8');
 const writeJson = (fileName, data) => writeFile(fileName, JSON.stringify(data, null, 4) + '\n');
-const copyFile = (input, out) => util.promisify(fs.copyFile)(input, out);
 
-const output = join(__dirname, '../components/fileMapper.json');
-const customNameOut = join(__dirname, '../components/customName.js');
-const customNameIn = join(__dirname, '../src/customName.js');
+const output = join(__dirname, '../fileMapper.json');
 
 const writeMapper = (mappedFiles) => {
     writeJson(
@@ -19,10 +16,6 @@ const writeMapper = (mappedFiles) => {
             ...curr
         }), {})
     );
-};
-
-const moveCustomName = () => {
-    copyFile(customNameIn, customNameOut);
 };
 
 const generateData = (file) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removeNotification, clearNotifications } from './redux/actions/notifications';
+import { removeNotification, clearNotifications } from '../redux/actions/notifications';
 import Notification from './Notification';
 import './notifications.scss';
 import NotificationPagination from './NotificationPagination';

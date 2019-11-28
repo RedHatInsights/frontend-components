@@ -1,8 +1,7 @@
-import React from 'react';
 import configureStore from 'redux-mock-store';
 import promiseMiddleware from 'redux-promise-middleware';
 import { notificationsMiddleware } from './';
-import { ADD_NOTIFICATION } from './redux/action-types';
+import { ADD_NOTIFICATION } from '../redux/action-types';
 
 describe('Notifications middleware', () => {
     let initialProps;

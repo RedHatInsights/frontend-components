@@ -1,2 +1,6 @@
 /index.js
 /index.css
+/*.js
+/*.css
+!.babel.config.js
+!customName.js

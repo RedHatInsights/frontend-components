@@ -1,4 +1,4 @@
-export { default as NotificationsPortal } from './NotificationPortal';
+export * from './NotificationPortal';
 export { default as notifications, notificationsReducers } from './redux/reducers/notifications';
 export {
     ADD_NOTIFICATION,
@@ -10,4 +10,4 @@ export {
     removeNotification,
     clearNotifications
 } from './redux/actions/notifications';
-export { default as notificationsMiddleware } from './notificationsMiddleware';
+export * from './notificationsMiddleware';
