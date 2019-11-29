@@ -44,5 +44,4 @@ const generateData = (file) => {
     }));
 
     writeMapper(mappedFiles);
-    moveCustomName();
 })();
