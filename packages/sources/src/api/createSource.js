@@ -1,7 +1,7 @@
-import { postBillingSource } from './billingSource';
 import { handleError } from './handleError';
 
 import { getSourcesApi } from './index';
+import { patchSource } from './costManagementAuthentication';
 
 export const parseUrl = url => {
     if (!url) {
@@ -67,16 +67,15 @@ export const doCreateSource = async (formData, sourceTypes) => {
             promises.push(Promise.resolve(undefined));
         }
 
-        if (formData.billing_source) {
-            const billingSourceData = {
-                billing_source: formData.billing_source,
-                source_id: sourceDataOut.id
-            };
-
-            promises.push(postBillingSource(billingSourceData));
-        }
-
         const [ endpointDataOut, applicationDataOut ] = await Promise.all(promises);
+
+        if (formData.credentials || formData.billing_source) {
+            const { credentials, billing_source } = formData;
+            let data = {};
+            data = credentials ? { credentials } : {};
+            data = billing_source ? { ...data, billing_source } : data;
+            await patchSource({ id: sourceDataOut.id, ...data });
+        }
 
         if (endpointDataOut) {
             const authenticationData = {

@@ -5,3 +5,8 @@
 .list-align-left {
     margin-left: calc(var(--pf-global--spacer--xl) * -1);
 }
+
+.export-table {
+    margin-left: calc(var(--pf-global--spacer--xl) * 1.5);
+    margin-top: var(--pf-global--spacer--md);
+}
