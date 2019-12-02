@@ -1,13 +1,12 @@
 import React from 'react';
-import { TextContent, TextList, TextListItem, Text, TextVariants } from '@patternfly/react-core';
+import { TextContent, TextList, TextListItem, Text, TextVariants, ClipboardCopy } from '@patternfly/react-core';
 
 export const DescriptionSummary = () => (<TextContent key='1'>
     <Text component={ TextVariants.p }>
-        Add credentials that enable communication with this source.
-            This source requires the login token.
+    An OpenShift Container Platform login token is required to communicate with the application.
     </Text>
     <Text component={ TextVariants.p }>
-        To collect data from a Red Hat OpenShift Container Platform source,
+        To collect data from a Red Hat OpenShift Container Platform source:
     </Text>
     <TextContent>
         <TextList component='ul'>
@@ -17,10 +16,10 @@ export const DescriptionSummary = () => (<TextContent key='1'>
             </TextListItem>
             <TextListItem component='li' key='2'>
                 Run the following command to obtain your login token:
-                <b>&nbsp;# oc sa get-token -n management-infra management-admin</b>
             </TextListItem>
+            <ClipboardCopy isReadOnly># oc sa get-token -n management-infra management-admin</ClipboardCopy>
             <TextListItem component='li' key='3'>
-                Copy the token and paste it in the following field.
+                Copy the token and paste it in the Token field:
             </TextListItem>
         </TextList>
     </TextContent>

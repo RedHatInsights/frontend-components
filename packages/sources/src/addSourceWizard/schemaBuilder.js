@@ -287,7 +287,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
         return ({
             stepKey: `${type.name}-${appType.id}`,
             name: `${type.name}-${appType.id}`,
-            title: `Configure ${type.product_name} - ${auth.name} credentials`,
+            title: `Configure ${auth.name} credentials`,
             fields: [
                 ...fields,
                 ...getAdditionalAuthFields(type.name, auth.type, appName),
