@@ -531,7 +531,7 @@ class SystemRulesTable extends React.Component {
                                         updateFilter={ this.updateFilter } />
                                     <SimpleTableFilter buttonTitle={ null }
                                         onFilterChange={ this.handleSearch }
-                                        placeholder="Search by name or identifer" />
+                                        placeholder="Search by name or identifier" />
                                 </InputGroup>
                             </LevelItem>
                             <LevelItem>

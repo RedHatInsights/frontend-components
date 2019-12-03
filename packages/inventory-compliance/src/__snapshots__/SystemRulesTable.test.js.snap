@@ -30,7 +30,7 @@ exports[`SystemRulesTable component should render 1`] = `
             onButtonClick={[Function]}
             onFilterChange={[Function]}
             onOptionSelect={[Function]}
-            placeholder="Search by name or identifer"
+            placeholder="Search by name or identifier"
             searchIcon={true}
           />
         </InputGroup>
