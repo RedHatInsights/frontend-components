@@ -70,13 +70,6 @@ export default {
         authentication: {
             access_key_secret_key: {
                 generic: {
-                    additionalFields: [
-                        {
-                            component: 'description',
-                            name: 'description-summary',
-                            Content: AwsSecret.DescriptionSummary
-                        }
-                    ],
                     'authentication.username': {
                         label: 'Access key ID',
                         placeholder: 'AKIAIOSFODNN7EXAMPLE',
@@ -88,7 +81,28 @@ export default {
                         placeholder: 'wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
                         isRequired: true,
                         validate: [{ type: validatorTypes.REQUIRED }]
-                    }
+                    },
+                    skipSelection: true,
+                    onlyHiddenFields: true,
+                    additionalSteps: [{
+                        title: 'Configure account access',
+                        fields: [{
+                            component: 'description',
+                            name: 'description-summary',
+                            Content: AwsSecret.DescriptionSummary
+                        }, {
+                            name: 'authentication.username',
+                            component: componentTypes.TEXT_FIELD
+                        }, {
+                            name: 'authentication.password',
+                            component: componentTypes.TEXT_FIELD
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'access_key_secret_key'
+                        }]
+                    }]
                 }
             },
             arn: {

@@ -1,12 +1,8 @@
 import React from 'react';
-import { Popover, TextContent, Text, TextVariants, Title } from '@patternfly/react-core';
+import { Popover, TextContent, Text, TextVariants } from '@patternfly/react-core';
 import { QuestionCircleIcon } from '@patternfly/react-icons';
 
 export const DescriptionSummary = () => (<TextContent>
-    <Text component={ TextVariants.p }>
-        <Title headingLevel="h3" size="lg">Configure account access&nbsp;
-        </Title>
-    </Text>
     <Text component={ TextVariants.p }>
 Create an access key in your AWS user account and enter the details below.
     </Text>
