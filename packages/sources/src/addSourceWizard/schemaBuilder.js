@@ -17,6 +17,9 @@ export const shouldSkipEndpoint = (typeName, authName, appName = 'generic') =>
 export const getAdditionalStepKeys = (typeName, authName, appName = 'generic') =>
     get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'includeStepKeyFields' ], []);
 
+export const getOnlyHiddenFields = (typeName, authName, appName = 'generic') =>
+    get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'onlyHiddenFields' ], false);
+
 export const getAdditionalStepFields = (fields, stepKey) => fields.filter(field => field.stepKey === stepKey)
 .map(field => ({ ...field, stepKey: undefined }));
 
@@ -91,6 +94,9 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
 
             fields.push(createEndpointFlagger(skipEndpoint));
 
+            const onlyHiddenFields = getOnlyHiddenFields(type.name, auth.type);
+            const authFields = onlyHiddenFields ? auth.fields.filter(({ hideField }) => hideField) : auth.fields;
+
             fields.push({
                 component: 'auth-select',
                 name: 'auth_select',
@@ -107,14 +113,15 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
                 className: 'pf-u-pl-md',
                 fields: [
                     ...getAdditionalAuthFields(type.name, auth.type),
-                    ...injectAuthFieldsInfo(getNoStepsFields(auth.fields, additionalIncludesStepKeys), type.name, auth.type)
+                    ...injectAuthFieldsInfo(getNoStepsFields(authFields, additionalIncludesStepKeys), type.name, auth.type)
                 ],
                 condition: {
                     when: 'auth_select',
                     is: auth.type
-                }
+                },
+                hideField: onlyHiddenFields
             });
-            stepMapper[auth.type] = getAdditionalSteps(type.name, auth.type).length > 0 ? `${type.name}-${auth.type}-additional-step` :
+            stepMapper[auth.type] = getAdditionalSteps(type.name, auth.type).length > 0 ? `${type.name}-${auth.type}-generic-additional-step` :
                 endpointFields.length === 0 ? `${type.name}-endpoint` : 'summary';
         });
 
@@ -200,6 +207,10 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
             }
 
             const additionalIncludesStepKeys = getAdditionalStepKeys(type.name, auth.type, appName);
+
+            const onlyHiddenFields = getOnlyHiddenFields(type.name, auth.type, appName);
+            const authFields = onlyHiddenFields ? auth.fields.filter(({ hideField }) => hideField) : auth.fields;
+
             fields.push({
                 component: 'auth-select',
                 name: 'auth_select',
@@ -217,12 +228,13 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
                 className: 'pf-u-pl-md',
                 fields: [
                     ...getAdditionalAuthFields(type.name, auth.type, appName),
-                    ...injectAuthFieldsInfo(getNoStepsFields(auth.fields, additionalIncludesStepKeys), type.name, auth.type, appName)
+                    ...injectAuthFieldsInfo(getNoStepsFields(authFields, additionalIncludesStepKeys), type.name, auth.type, appName)
                 ],
                 condition: {
                     when: 'auth_select',
                     is: auth.type
-                }
+                },
+                hideField: onlyHiddenFields
             });
             stepMapper[auth.type] = nextStep;
         });
@@ -287,7 +299,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
         return ({
             stepKey: `${type.name}-${appType.id}`,
             name: `${type.name}-${appType.id}`,
-            title: `Configure ${type.product_name} - ${auth.name} credentials`,
+            title: `Configure ${auth.name} credentials`,
             fields: [
                 ...fields,
                 ...getAdditionalAuthFields(type.name, auth.type, appName),

@@ -14,6 +14,8 @@ describe('asyncNameValidator', () => {
         data: { sources: [ ] }
     };
 
+    const requiredMessage = 'Required';
+
     it('returns error message when name is taken', () => {
         actions.findSource = jest.fn(() => Promise.resolve(returnedSourceResponse));
 
@@ -29,13 +31,13 @@ describe('asyncNameValidator', () => {
     it('returns error message when name is undefined', () => {
         actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
-        return asyncValidator(undefined).then(data => expect(data).toEqual('Name can\'t be blank'));
+        return asyncValidator(undefined).then(data => expect(data).toEqual(requiredMessage));
     });
 
     it('returns error message when name is blank', () => {
         actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
-        return asyncValidator('').then(data => expect(data).toEqual('Name can\'t be blank'));
+        return asyncValidator('').then(data => expect(data).toEqual(requiredMessage));
     });
 
     it('returns nothing when passes', () => {

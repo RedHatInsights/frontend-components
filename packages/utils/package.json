@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-utilities",
-    "version": "0.0.13",
+    "version": "0.0.14",
     "description": "Util functions for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -33,5 +33,6 @@
         "axios": "^0.19.0",
         "commander": "^2.20.0",
         "react-content-loader": "^3.4.1"
-    }
+    },
+    "sideEffects": false
 }
