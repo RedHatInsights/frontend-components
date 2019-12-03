@@ -17,7 +17,7 @@ export const DescriptionSummary = () => (<TextContent key='1'>
             <TextListItem component='li' key='2'>
                 Run the following command to obtain your login token:
             </TextListItem>
-            <ClipboardCopy isReadOnly># oc sa get-token -n management-infra management-admin</ClipboardCopy>
+            <ClipboardCopy className="pf-u-mb-md" isReadOnly># oc sa get-token -n management-infra management-admin</ClipboardCopy>
             <TextListItem component='li' key='3'>
                 Copy the token and paste it in the Token field:
             </TextListItem>
