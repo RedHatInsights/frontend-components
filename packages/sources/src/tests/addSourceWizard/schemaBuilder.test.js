@@ -271,7 +271,8 @@ describe('schema builder', () => {
         describe('createGenericAuthTypeSelection', () => {
             it('generate single selection', () => {
                 const fields = [
-                    ...OPENSHIFT_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey),
+                    ...OPENSHIFT_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey)
+                    .map((field) => expect.objectContaining(field)),
                     createEndpointFlagger(false)
                 ];
 
@@ -313,7 +314,7 @@ describe('schema builder', () => {
                     nextStep: {
                         when: expect.any(String),
                         stepMapper: {
-                            access_key_secret_key: 'summary',
+                            access_key_secret_key: 'amazon-access_key_secret_key-generic-additional-step',
                             arn: 'summary'
                         }
                     }
@@ -381,7 +382,7 @@ describe('schema builder', () => {
             const schema = schemaBuilder(sourceTypes.filter(({ schema }) => schema), applicationTypes);
 
             expect(schema).toEqual(expect.arrayContaining([ expect.any(Object) ]));
-            expect(schema).toHaveLength(19);
+            expect(schema).toHaveLength(20);
         });
     });
 });
