@@ -142,7 +142,7 @@ class EntityDetails extends Component {
                         { this.generateFacts() }
                         {
                             loaded ?
-                                <TagWithDialog count={ entity.tags.length } systemId={ entity.id } /> :
+                                <TagWithDialog count={ entity.tags && entity.tags.length } systemId={ entity.id } /> :
                                 <Skeleton size={ SkeletonSize.sm }>&nbsp;</Skeleton>
                         }
                         <TagsModal />
