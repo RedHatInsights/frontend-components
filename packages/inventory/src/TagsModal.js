@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toggleTagModal } from './redux/actions';
-import { TagModal, Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { TagModal } from '@redhat-cloud-services/frontend-components';
 
 const TagsModal = ({ showTagDialog, tags, activeSystemTag, tagCount, onToggleTagModal }) => {
     return (
@@ -45,7 +45,7 @@ export default connect(({ entities, entityDetails }) => {
         showTagDialog,
         tags: activeSystemTag.tags,
         activeSystemTag,
-        tagCount: activeSystemTag.tags.length
+        tagCount: activeSystemTag.tags && activeSystemTag.tags.length
     });
 }, (dispatch) => ({
     onToggleTagModal: () => dispatch(toggleTagModal(false))

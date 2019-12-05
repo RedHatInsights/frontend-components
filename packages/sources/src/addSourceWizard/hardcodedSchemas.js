@@ -30,6 +30,10 @@ export default {
         authentication: {
             token: {
                 generic: {
+                    'authentication.password': {
+                        isRequired: true,
+                        validate: [{ type: validatorTypes.REQUIRED }]
+                    },
                     additionalFields: [{
                         component: 'description',
                         name: 'description-summary',
@@ -44,7 +48,7 @@ export default {
                 isRequired: true,
                 validate: [
                     { type: validatorTypes.REQUIRED },
-                    { type: validatorTypes.URL }
+                    { type: validatorTypes.URL, message: 'The URL is not formatted correctly.' }
                 ]
             },
             'endpoint.certificate_authority': {
@@ -56,7 +60,7 @@ export default {
                 // eslint-disable-next-line react/display-name
                 Content: () => (<TextContent key='2'>
                     <Text component={ TextVariants.p }>
-                    Provide OpenShift Container Platform URL and SSL certificate.
+                    Provide the OpenShift Container Platform URL and SSL certificate.
                     </Text>
                 </TextContent>)
             }]
@@ -66,23 +70,39 @@ export default {
         authentication: {
             access_key_secret_key: {
                 generic: {
-                    additionalFields: [
-                        {
-                            component: 'description',
-                            name: 'description-summary',
-                            Content: AwsSecret.DescriptionSummary
-                        }
-                    ],
                     'authentication.username': {
+                        label: 'Access key ID',
                         placeholder: 'AKIAIOSFODNN7EXAMPLE',
                         isRequired: true,
                         validate: [{ type: validatorTypes.REQUIRED }]
                     },
                     'authentication.password': {
+                        label: 'Secret access key',
                         placeholder: 'wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
                         isRequired: true,
                         validate: [{ type: validatorTypes.REQUIRED }]
-                    }
+                    },
+                    skipSelection: true,
+                    onlyHiddenFields: true,
+                    additionalSteps: [{
+                        title: 'Configure account access',
+                        fields: [{
+                            component: 'description',
+                            name: 'description-summary',
+                            Content: AwsSecret.DescriptionSummary
+                        }, {
+                            name: 'authentication.username',
+                            component: componentTypes.TEXT_FIELD
+                        }, {
+                            name: 'authentication.password',
+                            component: componentTypes.TEXT_FIELD
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'access_key_secret_key'
+                        }]
+                    }]
                 }
             },
             arn: {

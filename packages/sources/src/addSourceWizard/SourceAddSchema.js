@@ -12,7 +12,7 @@ export const asyncValidator = (value, sourceId = undefined) => findSource(value)
     }
 
     if (value === '' || value === undefined) {
-        return 'Name can\'t be blank';
+        return 'Required';
     }
 
     return undefined;
@@ -80,12 +80,12 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
         {
             component: 'card-select',
             name: 'application.application_type_id',
-            label: 'Select your application',
+            label: 'Select your application (optional)',
             // eslint-disable-next-line react/display-name
             DefaultIcon: () => <React.Fragment />,
             options: compileAllApplicationComboOptions(applicationTypes),
             mutator: appMutator(applicationTypes),
-            helperText: 'Selected application will limit the options of available source types. You can assign an application to your source later.',
+            helperText: 'Selecting an application will limit the available source types. You can assign an application to your source now, or after adding your source.',
             isDisabled: disableAppSelection
         },
         {
@@ -104,7 +104,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
 });
 
 const nameStep = () => ({
-    title: 'Select source name',
+    title: 'Enter source name',
     name: 'name_step',
     stepKey: 1,
     nextStep: 'types_step',
@@ -116,10 +116,7 @@ const nameStep = () => ({
             Content: () => (<TextContent key='step1'>
                 <Text component={ TextVariants.p }>
                 To import data for an application, you need to connect to a data source.
-                Input a name and then proceed to the selection of application and source types.
-                </Text>
-                <Text component={ TextVariants.p }>
-            Name is required and has to be unique.
+                Enter a name, then proceed to select your application and source type.
                 </Text>
             </TextContent>)
         },
