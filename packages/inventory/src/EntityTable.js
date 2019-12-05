@@ -28,8 +28,13 @@ class EntityTable extends React.Component {
         const { match: { url }, history, onDetailSelect, loaded } = this.props;
         if (loaded) {
             const dilimeter = url.substr(-1, 1) === '/' ? '' : '/';
-            history.push(`${url}${dilimeter}${key}/${application ? application : ''}`);
-            onDetailSelect && onDetailSelect(application);
+            const isMetaKey = (event.ctrlKey || event.metaKey || event.which === 2);
+            if (isMetaKey) {
+                window.open(`${location.pathname}/${key}`);
+            } else {
+                history.push(`${url}${dilimeter}${key}/${application ? application : ''}`);
+                onDetailSelect && onDetailSelect(application);
+            }
         }
     }
 
@@ -50,13 +55,18 @@ class EntityTable extends React.Component {
                 return (
                     <div className="ins-composed-col">
                         { composed.map(path => (
-                            <div key={ path }
+                            <a key={ path }
                                 widget="col"
                                 data-key={ path }
-                                onClick={ event => this.onRowClick(event, col.id) }
+                                href={ `${location.pathname}/${col.id}` }
+                                onClick={ event => {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    this.onRowClick(event, col.id);
+                                }}
                             >
                                 { get(col, path, ' ') || '\u00A0' }
-                            </div>
+                            </a>
                         )) }
                     </div>
                 );
