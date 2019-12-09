@@ -19,6 +19,11 @@ describe('DownloadButton component', () => {
             const wrapper = shallow(<DownloadButton extraItems={extraItems} />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
+
+        it('disabled', () => {
+            const wrapper = shallow(<DownloadButton extraItems={extraItems} isDisabled />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
     });
 
     describe('API', () => {
