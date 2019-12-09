@@ -556,3 +556,45 @@ exports[`DownloadButton component should render custom items 1`] = `
   }
 />
 `;
+
+exports[`DownloadButton component should render disabled 1`] = `
+<Dropdown
+  dropdownItems={
+    Array [
+      <DropdownItem
+        component="button"
+        isDisabled={true}
+        onClick={[Function]}
+      >
+        Export to CSV
+      </DropdownItem>,
+      <DropdownItem
+        component="button"
+        isDisabled={true}
+        onClick={[Function]}
+      >
+        Export to JSON
+      </DropdownItem>,
+      <DropdownItem
+        component="button"
+      />,
+    ]
+  }
+  isOpen={false}
+  isPlain={true}
+  onSelect={[Function]}
+  toggle={
+    <DropdownToggle
+      iconComponent={null}
+      onToggle={[Function]}
+    >
+      <ExportIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+    </DropdownToggle>
+  }
+/>
+`;
