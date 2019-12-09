@@ -257,7 +257,7 @@ class RemediationWizard extends Component {
         const steps = [
             <ExistingOrNew
                 key='RemediationNameStep'
-                state={ this.state }
+                {...this.state}
                 onNameChange={ this.onNameChange }
                 onIsNewSwitch={ this.onIsNewSwitch }
                 onRemediationSelected={ this.onRemediationSelected }
@@ -312,9 +312,9 @@ class RemediationWizard extends Component {
 
         return (
             <Wizard
-                isLarge = { true }
+                width="initial"
                 isValidated={ this.state.valid && (this.state.nameValid || !this.state.isNewSwitch) }
-                title="Remediate with Ansible"
+                title="Plan remediation"
                 className='ins-c-remediation-modal'
                 onClose = { this.closeWizard }
                 isOpen= { this.state.open !== false }

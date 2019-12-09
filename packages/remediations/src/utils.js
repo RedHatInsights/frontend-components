@@ -14,3 +14,5 @@ export function getGroup () {
 export function remediationUrl (id) {
     return urijs(document.baseURI).segment(getGroup()).segment('remediations').segment(id).toString();
 }
+
+export const pluralazie = (text = '', count = 0) => `${text}${count !== 1 ? 's' : ''}`;

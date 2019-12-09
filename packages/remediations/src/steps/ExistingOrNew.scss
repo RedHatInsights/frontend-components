@@ -11,4 +11,14 @@
       @include rem('margin-left', 20px);
     }
   }
+
+  .ins-m-success {
+    color: var(--pf-global--success-color--200);
+  }
+
+  .ins-c-existing-or-new__auto-remediation {
+    svg {
+      margin-right: var(--pf-global--spacer--sm);
+    }
+  }
 }
