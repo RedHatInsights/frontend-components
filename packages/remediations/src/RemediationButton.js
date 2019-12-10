@@ -57,7 +57,7 @@ RemediationButton.propTypes = {
 RemediationButton.defaultProps = {
     isDisabled: false,
     onRemediationCreated: f => f,
-    children: 'Plan remediation'
+    children: 'Remediate with Ansible'
 };
 
 export default RemediationButton;

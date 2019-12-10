@@ -314,7 +314,7 @@ class RemediationWizard extends Component {
             <Wizard
                 width="initial"
                 isValidated={ this.state.valid && (this.state.nameValid || !this.state.isNewSwitch) }
-                title="Plan remediation"
+                title="Remediate with Ansible"
                 className='ins-c-remediation-modal'
                 onClose = { this.closeWizard }
                 isOpen= { this.state.open !== false }

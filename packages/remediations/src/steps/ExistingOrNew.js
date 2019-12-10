@@ -36,7 +36,7 @@ const ExistingOrNewStep = ({
                 <h1 className='ins-m-text__bold'>
                     {data.issues.length} {pluralazie('issue', data.issues.length)}
                 </h1>
-                    &nbsp;to add to a remedation plan.
+                    &nbsp;to add to a playbook.
             </span>
         </StackItem>
         <StackItem>
