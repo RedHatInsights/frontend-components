@@ -2,7 +2,12 @@ import { AddSourceButton, AddSourceWizard } from './addSourceWizard/index';
 import SummaryStep from './sourceFormRenderer/components/SourceWizardSummary';
 import CardSelect from './sourceFormRenderer/components/CardSelect';
 import SourceWizardSummary, * as summaryHelpers from './sourceFormRenderer/components/SourceWizardSummary';
-import { asyncValidatorDebounced as asyncValidator, asyncValidator as asyncValidatorRaw  } from './addSourceWizard/SourceAddSchema';
+import {
+    asyncValidatorDebounced as asyncValidator,
+    asyncValidator as asyncValidatorRaw,
+    asyncValidatorDebouncedWrapper,
+    setFirstValidated
+} from './addSourceWizard/SourceAddSchema';
 import * as schemaBuilder from './addSourceWizard/schemaBuilder';
 import AuthSelect from './sourceFormRenderer/components/AuthSelect';
 import { mapperExtension } from './sourceFormRenderer/index';
@@ -27,5 +32,7 @@ export {
     hardcodedSchemas,
     asyncValidatorRaw,
     parseUrl,
-    urlOrHost
+    urlOrHost,
+    asyncValidatorDebouncedWrapper,
+    setFirstValidated
 };

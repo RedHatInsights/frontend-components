@@ -1,4 +1,4 @@
-import { asyncValidator } from '../../addSourceWizard/SourceAddSchema';
+import { asyncValidator, asyncValidatorDebouncedWrapper, setFirstValidated } from '../../addSourceWizard/SourceAddSchema';
 import * as actions from '../../api/index';
 
 describe('asyncNameValidator', () => {
@@ -44,5 +44,27 @@ describe('asyncNameValidator', () => {
         actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
         return asyncValidator('a1').then(data => expect(data).toEqual(undefined));
+    });
+
+    describe('wrapper', () => {
+        beforeEach(() => {
+            setFirstValidated(true);
+        });
+
+        it('returns required and then the debounced function when creating', () => {
+            actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
+
+            expect(asyncValidatorDebouncedWrapper()()).toEqual('Required');
+
+            expect(asyncValidatorDebouncedWrapper()()).toEqual(expect.any(Promise));
+            expect(asyncValidatorDebouncedWrapper()()).toEqual(expect.any(Promise));
+        });
+
+        it('returns function when editing', () => {
+            actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
+
+            expect(asyncValidatorDebouncedWrapper()('a1', '1')).toEqual(expect.any(Promise));
+            expect(asyncValidatorDebouncedWrapper()('a1', '1')).toEqual(expect.any(Promise));
+        });
     });
 });
