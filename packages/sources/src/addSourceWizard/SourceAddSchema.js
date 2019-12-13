@@ -18,7 +18,20 @@ export const asyncValidator = (value, sourceId = undefined) => findSource(value)
     return undefined;
 });
 
+let firstValidation = true;
+export const setFirstValidated = (bool) => firstValidation = bool;
+export const getFirstValidated = () => firstValidation;
+
 export const asyncValidatorDebounced = debouncePromise(asyncValidator);
+
+export const asyncValidatorDebouncedWrapper = () => {
+    if (getFirstValidated()) {
+        setFirstValidated(false);
+        return (value, id) => value ? asyncValidator(value, id) : 'Required';
+    }
+
+    return asyncValidatorDebounced;
+};
 
 const compileAllSourcesComboOptions = (sourceTypes) => (
     [
@@ -128,7 +141,7 @@ const nameStep = () => ({
             placeholder: 'Source_1',
             isRequired: true,
             validate: [
-                (value) => asyncValidatorDebounced(value)
+                (value) => asyncValidatorDebouncedWrapper()(value)
             ]
         }
     ]
@@ -157,9 +170,11 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
     title: 'Review source details'
 });
 
-export default (sourceTypes, applicationTypes, disableAppSelection) => (
-    { fields: [
-        {
+export default (sourceTypes, applicationTypes, disableAppSelection) => {
+    setFirstValidated(true);
+
+    return ({
+        fields: [{
             component: componentTypes.WIZARD,
             name: 'wizard',
             title: 'Add a source',
@@ -176,6 +191,6 @@ export default (sourceTypes, applicationTypes, disableAppSelection) => (
                 ...schemaBuilder(sourceTypes, applicationTypes),
                 summaryStep(sourceTypes, applicationTypes)
             ]
-        }
-    ] }
-);
+        }]
+    });
+};
