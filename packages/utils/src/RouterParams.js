@@ -17,7 +17,7 @@ export default function(Component) {
 
         componentDidUpdate () {
             const { match: { params, path, url }, onPathChange, location, routerData } = this.props;
-            if (!isEqual(params, routerData.params) || path !== routerData.path) {
+            if (routerData && (!isEqual(params, routerData.params) || path !== routerData.path)) {
                 if (matchPath(location.pathname, { path: url, exact: true })) {
                     onPathChange && onPathChange({
                         params,
