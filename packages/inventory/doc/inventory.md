@@ -20,6 +20,8 @@ Where `ItemPage` contains `InventoryTable` and `InventoryPage` has inventory det
 ## Usage of hot loading
 To load such inventory via chrome just call `window.insights.loadInventory` with dependencies and wait for it to load all data.
 
+**If you want to use new version of react-redux with hooks you have to change the way how you load the inventory to pass your store to it `inventoryConnector(store)`, where store is your redux store.**
+
 Expected dependencies is object with shape:
 ```JS
 {
@@ -66,6 +68,9 @@ class SomeCmp extends React.Component {
         });
 
         this.setState({
+            // if you are going to use newer version of react-redux pass store to this function
+            // InventoryCmp: inventoryConnector(store).InventoryTable
+            // where `store` is your redux store - https://react-redux.js.org/api/provider#props
             InventoryCmp: inventoryConnector().InventoryTable
         })
     }
@@ -128,6 +133,43 @@ class SomeCmp extends React.Component {
 
 You'll have to also register inventory reducers so the data are fetched correctly that is represent by calling 
 `this.getRegistry().register` with `mergeWithEntities` and `mergeWithDetail`.
+
+* react-redux with hooks
+```JSX
+import React, { useState, useEffect } from 'react';
+import { useStore } from 'react-redux'
+import * as reactCore from '@patternfly/react-core';
+import * as reactIcons from '@patternfly/react-icons';
+import * as pfReactTable from '@patternfly/react-table';
+import * as reactRouterDom from 'react-router-dom';
+import register from '../redux/store';
+
+const SomeCmp = () => {
+    const [ InventoryCmp, setInventory ] = useState(<div>Loading...</div>);
+    const store = useStore()
+    const loadInventory = async () => {
+        const { inventoryConnector, mergeWithEntities } = await insights.loadInventory({
+            react: React,
+            reactRouterDom,
+            reactCore,
+            reactIcons,
+            pfReactTable
+        });
+
+        this.getRegistry().register({
+            ...mergeWithEntities()
+        });
+
+        setInventory(inventoryConnector(store).InventoryTable);
+    };
+
+    useEffect(() => {
+        loadInventory();
+    }, []);
+
+    return <InventoryCmp />
+}
+```
 
 ## Usage variants
 With inventory component loaded same as in previous step we have couple of variants of how to use this component

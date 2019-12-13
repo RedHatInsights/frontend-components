@@ -8,7 +8,7 @@ import Pagination from './Pagination';
 import { updateEntities } from './redux/actions';
 import AppInfo from './AppInfo';
 import EntityTableToolbar from './EntityTableToolbar';
-
+import { Provider } from 'react-redux';
 export const InventoryContext = createContext('inventory');
 
 class InventoryTable extends Component {
@@ -120,7 +120,16 @@ const Inventory = ({ match = {}, noTable = false, items, pathPrefix = 0, apiBase
 
 export default routerParams((Inventory));
 
-export function inventoryConnector() {
+const reduxComponent = (props, store, ConnectedComponent) => <Fragment>
+    {
+        store ? <Provider store={store}>
+            <ConnectedComponent {...props} />
+        </Provider> :
+            <ConnectedComponent {...props} />
+    }
+</Fragment>;
+
+export function inventoryConnector(store) {
     const InventoryDetail = (props) => (
         <Fragment>
             <InventoryItem { ...props } />
@@ -131,10 +140,10 @@ export function inventoryConnector() {
     const connectedInventory = routerParams((Inventory));
 
     connectedInventory.updateEntities = updateEntities;
-    connectedInventory.InventoryTable = InventoryTable;
-    connectedInventory.AppInfo = AppInfo;
-    connectedInventory.InventoryDetailHead = InventoryItem;
-    connectedInventory.InventoryDetail = InventoryDetail;
+    connectedInventory.InventoryTable = (props) => reduxComponent(props, store, InventoryTable);
+    connectedInventory.AppInfo = (props) => reduxComponent(props, store, AppInfo);
+    connectedInventory.InventoryDetailHead = (props) => reduxComponent(props, store, InventoryItem);
+    connectedInventory.InventoryDetail = (props) => reduxComponent(props, store, InventoryDetail);
 
     return connectedInventory;
 }
