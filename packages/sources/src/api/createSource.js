@@ -72,7 +72,7 @@ export const doCreateSource = async (formData, sourceTypes) => {
         if (formData.credentials || formData.billing_source) {
             const { credentials, billing_source } = formData;
             let data = {};
-            data = credentials ? { credentials } : {};
+            data = credentials ? { authentication: { credentials } } : {};
             data = billing_source ? { ...data, billing_source } : data;
             await patchSource({ id: sourceDataOut.id, ...data });
         }
