@@ -368,7 +368,9 @@ describe('doCreateSource', () => {
                         storage_account: 'sa'
                     }
                 },
-                credentials: 'MY_CREDS_1'
+                authentication: {
+                    credentials: 'MY_CREDS_1'
+                }
             };
 
             api.getSourcesApi = () => mocks;
