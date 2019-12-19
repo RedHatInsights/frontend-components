@@ -1,0 +1,43 @@
+{
+    "name": "@redhat-cloud-services/frontend-components-pdf-generator",
+    "version": "0.0.1",
+    "description": "Common components for RedHat Cloud Services project to generate PDF from JS.",
+    "main": "dist/js/index.js",
+    "module": "dist/esm/index.js",
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "rollup -c ./rollup.config.js",
+        "start": "echo \"Error: no start specified\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+    },
+    "bugs": {
+        "url": "https://github.com/RedHatInsights/frontend-components/issues"
+    },
+    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/pdf-generator#readme",
+    "keywords": [
+        "pdf",
+        "generator",
+        "jspdf",
+        "pdfjs"
+    ],
+    "author": "Red Hat",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@patternfly/react-charts": "^5.2.2",
+        "@patternfly/react-core": "^3.124.1",
+        "@patternfly/react-styles": "^3.6.11",
+        "@patternfly/react-tokens": "^2.7.10",
+        "@react-pdf/renderer": "^1.6.8",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    },
+    "devDependencies": {
+        "@patternfly/react-icons": "^3.14.25"
+    }
+}
