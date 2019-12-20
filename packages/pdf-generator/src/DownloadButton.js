@@ -23,6 +23,7 @@ class DownloadButton extends React.Component {
             style,
             title,
             preview,
+            reportName,
             ...props
         } = this.props;
         const appliedStyles = styles(style);
@@ -36,12 +37,12 @@ class DownloadButton extends React.Component {
                         <View style={appliedStyles.headerContainer}>
                             <RHLogo />
                             <Text style={appliedStyles.currDate}>
-                            Prepared {DateFormat({ date: new Date(), type: 'exact' }).props.children}
+                                Prepared {DateFormat({ date: new Date(), type: 'exact' }).props.children}
                             </Text>
                         </View>
                         <View>
                             <Text style={[ appliedStyles.reportName, appliedStyles.largeSpacing ]}>
-                            Executive report: {type}
+                                {reportName} {type}
                             </Text>
                         </View>
                         <View>
@@ -60,7 +61,7 @@ class DownloadButton extends React.Component {
                         <Text style={[{
                             marginLeft: 'auto'
                         }, appliedStyles.thirdTitle ]}>
-                        redhat.com
+                            redhat.com
                         </Text>
                     </View>
                 </Page>
@@ -88,6 +89,7 @@ DownloadButton.propTypes = {
         PropTypes.node,
         PropTypes.arrayOf(PropTypes.node)
     ])),
+    reportName: PropTypes.string,
     fileName: PropTypes.string,
     type: PropTypes.string,
     title: PropTypes.oneOfType([
@@ -108,6 +110,7 @@ DownloadButton.propTypes = {
 };
 
 DownloadButton.defaultProps = {
+    reportName: 'Executive report:',
     pages: [],
     title: '',
     type: 'Default',

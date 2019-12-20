@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { CircleIconConfig } from '@patternfly/react-icons';
 import { View, Canvas, Text } from '@react-pdf/renderer';
-import { ChartPie, getLightThemeColors } from '@patternfly/react-charts';
+import { ChartPie, ChartDonut, ChartDonutUtilization, getLightThemeColors, ChartDonutUtilizationStyles } from '@patternfly/react-charts';
 import Table from './Table';
 import styles from '../utils/styles';
 
@@ -12,6 +12,15 @@ const chartMapper = {
     pie: {
         component: ChartPie,
         width: 80
+    },
+    donut: {
+        component: ChartDonut,
+        width: 80
+    },
+    donutUtilization: {
+        component: ChartDonutUtilization,
+        width: 80,
+        colorScale: ([ color ]) => [ color, ...getLightThemeColors('gray').voronoi.colorScale ]
     }
 };
 
@@ -25,11 +34,16 @@ const Chart = ({ data, chartType, colorSchema, ...props }) => {
         <Chart data={ data } { ...props } />,
         el,
     );
-    const colors = getLightThemeColors(colorSchema).pie.colorScale;
+
+    const colors = currChart.colorScale ?
+        currChart.colorScale(getLightThemeColors(colorSchema).voronoi.colorScale) :
+        getLightThemeColors(colorSchema).voronoi.colorScale;
     const paths = Array.from(el.querySelectorAll('path')).map((path) => (path.getAttribute('d')));
     return <View style={[
         appliedStyles.flexRow,
         {
+            paddingLeft: 30,
+            paddinRight: 10,
             justifyContent: 'flex-start'
         }
     ]}>
@@ -37,9 +51,9 @@ const Chart = ({ data, chartType, colorSchema, ...props }) => {
             {...props}
             style={{
                 width: currChart.width,
-                height: 80
+                height: 67
             }}
-            paint={({ path }) => paths.map((onePath, key) => path(onePath).scale(key === 0 ? 0.4 : 1)
+            paint={({ path }) => paths.map((onePath, key) => path(onePath).scale(key === 0 ? 0.34 : 1)
             .translate(key === 0 ? 100 : 0, key === 0 ? 100 : 0).fill(colors[key]))
             }
         />
@@ -53,7 +67,7 @@ const Chart = ({ data, chartType, colorSchema, ...props }) => {
             }}
             rows={[
                 [ 'Legend' ],
-                ...data.map(({ x, y }, key) => [
+                ...(Array.isArray(data) ? data : [ data ]).map(({ x, y }, key) => [
                     <Canvas
                         key={`${key}-bullet`}
                         style={{

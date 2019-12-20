@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from '@react-pdf/renderer';
 import { styleProps } from '../utils/propTypes';
+import styles from '../utils/styles';
+
+const appliedStyles = styles();
 
 const Table = ({
     rows,
@@ -12,22 +15,18 @@ const Table = ({
     ...props
 }) => {
     const [ header, ...cells ] = rows;
-    console.log(cells);
     return <View { ...props } style={{
-        display: 'flex',
-        flexDirection: 'column',
+        ...appliedStyles.flexColum,
         ...style
     }}>
         {
             withHeader && <View style={{
-                display: 'flex',
-                flexDirection: 'row',
+                ...appliedStyles.flexRow,
+                justifyContent: 'flex-start',
                 ...headerStyles
             }}>
                 {header.map((cell, key) => <Text key={ key } style={{
-                    fontWeight: 700,
-                    fontSize: 9,
-                    color: '#4f4c4d',
+                    ...appliedStyles.secondTitle,
                     flex: 1
                 }}>
                     {cell}
@@ -45,16 +44,13 @@ const Table = ({
             {
                 (!withHeader ? [ header, ...cells ] : cells).map((row, key) => (
                     <View key={key} style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
+                        ...appliedStyles.flexRow,
                         ...key % 2 && { backgroundColor: '#ededed' },
                         ...rowsStyle
                     }}>
                         { row.map((cell, cellKey) => (
                             (typeof cell === 'string' || cell instanceof String) ? <Text key={cellKey} style={{
-                                fontSize: 9,
-                                color: '#151515',
+                                ...appliedStyles.text,
                                 flex: 1
                             }}>
                                 { cell }

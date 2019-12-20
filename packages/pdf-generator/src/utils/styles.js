@@ -88,6 +88,10 @@ export default (style = {}) => StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
+    flexColumn: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
     colorCrit: {
         color: '#c9190b'
     },

@@ -59,7 +59,7 @@ const Battery = ({ variant, ...props }) => {
         svg: '',
         title: 'Unknown'
     };
-    return <View style={appliedStyles.flexRow}>
+    return <View {...props} style={appliedStyles.flexRow}>
         <Canvas style={{
             width: 20,
             height: 21
