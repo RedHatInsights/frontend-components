@@ -13,6 +13,7 @@ import {
 } from './action-types';
 import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import TagWithDialog from '../TagWithDialog';
+import groupBy from 'lodash/groupBy';
 
 export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: false };
 
@@ -131,9 +132,19 @@ export function toggleTagModal(state, { payload: { isOpen } }) {
 }
 
 export function allTags(state, { payload: { results } }) {
+    // TODO: Remove me! I am just for testing purposes
+    const fakeResults = results.length > 0 ? results : [{
+        namespace: 'one',
+        key: 'some',
+        value: 'anothefr'
+    }];
+
     return {
         ...state,
-        allTags: results,
+        allTags: Object.entries(groupBy(fakeResults, ({ namespace }) => namespace)).map(([ key, value ]) => ({
+            name: key,
+            tags: value
+        })),
         allTagsLoaded: true
     };
 }

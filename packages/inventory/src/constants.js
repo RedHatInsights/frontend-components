@@ -5,10 +5,10 @@ export const TAG_CHIP = 'tags';
 export function constructValues(groupValue, tags) {
     return Object.entries(groupValue).map(([ key, value ]) => {
         if (value) {
-            const { tagName, tagValue } = tags[key];
+            const { key: tagKey, value } = tags[key];
             return {
                 key,
-                name: `${tagName} - ${tagValue}`
+                name: `${tagKey} - ${value}`
             };
         }
     }).filter(Boolean);
@@ -41,8 +41,8 @@ export function constructGroups(allTags) {
         label: name,
         value: key,
         type: 'checkbox',
-        items: tags.map(({ tagName, tagValue }) => ({
-            label: `${tagName} - ${tagValue}`
+        items: tags.map(({ key: tagKey, value }) => ({
+            label: `${tagKey} - ${value}`
         }))
     }));
 }
