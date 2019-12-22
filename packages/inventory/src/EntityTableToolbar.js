@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 import { fetchAllTags, clearFilters } from './redux/actions';
 import debounce from 'lodash/debounce';
+import { Spinner } from '@patternfly/react-core/dist/esm/experimental';
 import { InventoryContext } from './Inventory';
 import {
     mapGroups,
@@ -66,7 +67,7 @@ class ContextEntityTableToolbar extends Component {
     }
 
     createTagsFilter = () => {
-        const { allTags } = this.props;
+        const { allTags, allTagsLoaded, additionalTagsCount } = this.props;
         const { selected } = this.state;
         return {
             label: 'Tags',
@@ -79,7 +80,23 @@ class ContextEntityTableToolbar extends Component {
                     () =>  this.applyTags(newSelection)
                 ),
                 selected,
-                groups: constructGroups(allTags)
+                ...allTagsLoaded && allTags.length > 0 ? {
+                    groups: [
+                        ...constructGroups(allTags),
+                        ...additionalTagsCount > 0 ? [{
+                            items: [{ label: `${additionalTagsCount} more tags available`, isDisabled: true }]
+                        }] : []
+                    ]
+                } : {
+                    items: [
+                        {
+                            label: !allTagsLoaded ? <Fragment>
+                                    Loading... <Spinner size="md" />
+                            </Fragment> : 'No tags available',
+                            isDisabled: true
+                        }
+                    ]
+                }
             }
         };
     }
@@ -157,6 +174,7 @@ class ContextEntityTableToolbar extends Component {
             totalItems,
             hasCheckbox,
             activeFiltersConfig,
+            additionalTagsCount,
             ...props
         } = this.props;
         const inventoryFilters = [
@@ -211,6 +229,7 @@ EntityTableToolbar.propTypes = {
     filters: PropTypes.array,
     hasItems: PropTypes.bool,
     pathPrefix: PropTypes.number,
+    additionalTagsCount: PropTypes.number,
     apiBase: PropTypes.string,
     page: PropTypes.number,
     getAllTags: PropTypes.func,
@@ -240,7 +259,7 @@ EntityTableToolbar.defaultProps = {
 };
 
 function mapStateToProps(
-    { entities: { page, perPage, total, loaded, activeFilters, allTags, allTagsLoaded } },
+    { entities: { page, perPage, total, loaded, activeFilters, allTags, allTagsLoaded, additionalTagsCount } },
     { totalItems, page: currPage, perPage: currPerPage, hasItems }) {
     return {
         page: hasItems ? currPage : page,
@@ -249,7 +268,8 @@ function mapStateToProps(
         loaded,
         allTagsLoaded,
         allTags,
-        filters: activeFilters
+        filters: activeFilters,
+        additionalTagsCount
     };
 }
 

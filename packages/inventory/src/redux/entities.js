@@ -131,7 +131,7 @@ export function toggleTagModal(state, { payload: { isOpen } }) {
     };
 }
 
-export function allTags(state, { payload: { results } }) {
+export function allTags(state, { payload: { results, total, per_page: perPage } }) {
     // TODO: Remove me! I am just for testing purposes
     const fakeResults = results.length > 0 ? results : [{
         namespace: 'one',
@@ -145,6 +145,7 @@ export function allTags(state, { payload: { results } }) {
             name: key,
             tags: value
         })),
+        additionalTagsCount: total > perPage ? total - perPage : 500,
         allTagsLoaded: true
     };
 }

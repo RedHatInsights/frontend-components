@@ -214,12 +214,12 @@ class Group extends Component {
                                 {...group}
                                 key={groupId || groupValue || groupKey}
                                 label={groupLabel}
-                                id={groupId || `group-${groupValue || groupKey}`}
+                                id={groupId || `groups-${groupValue || groupKey}`}
                             > {filteredItems} </SelectGroup>
                             : <Fragment/>;
                     })
                 ) : (
-                    this.mapItems({ items }).length > 0 || <Fragment/>
+                    this.mapItems({ items })
                 ) }
             </Select> }
         </Fragment>);
