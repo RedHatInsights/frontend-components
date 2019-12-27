@@ -27,6 +27,10 @@ class ContextEntityTableToolbar extends Component {
         this.props.onRefreshData && this.props.onRefreshData(config);
     }, 800);
 
+    debounceGetAllTags = debounce((config) => {
+        this.props.getAllTags && this.props.getAllTags(config);
+    }, 800);
+
     componentDidMount() {
         const { filters } = this.props;
         this.props.getAllTags();
@@ -37,8 +41,8 @@ class ContextEntityTableToolbar extends Component {
         });
     }
 
-    onSetTextFilter = (value) => {
-        const { page, perPage, filters } = this.props;
+    onSetTextFilter = (value, debounced = true) => {
+        const { onRefreshData, perPage, filters } = this.props;
         const textualFilter = filters.find(oneFilter => oneFilter.value === TEXT_FILTER);
         if (textualFilter) {
             textualFilter.filter = value;
@@ -46,15 +50,18 @@ class ContextEntityTableToolbar extends Component {
             filters.push({ value: TEXT_FILTER, filter: value });
         }
 
-        this.debouncedRefresh({ page: 1, perPage, filters });
-        this.setState({ textFilter: value });
+        const refresh = debounced ? this.debouncedRefresh : onRefreshData;
+        this.setState({ textFilter: value }, () => refresh({ page: 1, perPage, filters }));
     }
 
     applyTags = (newSelection, debounced = true) => {
-        const { allTags, page, perPage, filters, onRefreshData } = this.props;
+        const { allTags, perPage, filters, onRefreshData } = this.props;
         const tagFilters = mapGroups(newSelection, allTags);
         const tagFiltersIndex = filters.findIndex((value) => value.hasOwnProperty('tagFilters'));
-        filters.splice(tagFiltersIndex, 1);
+        if (tagFiltersIndex !== -1) {
+            filters.splice(tagFiltersIndex, 1);
+        }
+
         const refresh = debounced ? this.debouncedRefresh : onRefreshData;
         refresh({
             page: 1,
@@ -75,6 +82,8 @@ class ContextEntityTableToolbar extends Component {
             type: 'group',
             placeholder: 'Filter system by tag',
             filterValues: {
+                className: 'ins-c-inventory__tags-filter',
+                onFilter: (e) => this.debounceGetAllTags(e.target.value),
                 onChange: (e, newSelection) => this.setState(
                     { selected: newSelection },
                     () =>  this.applyTags(newSelection)
@@ -84,7 +93,11 @@ class ContextEntityTableToolbar extends Component {
                     groups: [
                         ...constructGroups(allTags),
                         ...additionalTagsCount > 0 ? [{
-                            items: [{ label: `${additionalTagsCount} more tags available`, isDisabled: true }]
+                            items: [{
+                                label: `${additionalTagsCount} more tags available`,
+                                isDisabled: true,
+                                className: 'ins-c-inventory__tags-more-items'
+                            }]
                         }] : []
                     ]
                 } : {
@@ -92,8 +105,11 @@ class ContextEntityTableToolbar extends Component {
                         {
                             label: !allTagsLoaded ? <Fragment>
                                     Loading... <Spinner size="md" />
-                            </Fragment> : 'No tags available',
-                            isDisabled: true
+                            </Fragment> : <div className="ins-c-inventory__tags-no-tags">
+                                No tags available!
+                            </div>,
+                            isDisabled: true,
+                            className: 'ins-c-inventory__tags-tail'
                         }
                     ]
                 }
@@ -126,10 +142,7 @@ class ContextEntityTableToolbar extends Component {
                     });
                 } else {
                     if (deleted.type === TEXTUAL_CHIP) {
-                        this.setState({
-                            textFilter: ''
-                        }, () => onRefreshData({ page: 1, perPage, filters: mapGroups(selected, allTags) }));
-                        ;
+                        this.onSetTextFilter('', false);
                     } else if (deleted.type === TAG_CHIP) {
                         const deletedItem = deleted.chips[0];
                         selected[deleted.key][deletedItem.key] = false;
@@ -274,6 +287,6 @@ function mapStateToProps(
 }
 
 export default connect(mapStateToProps, (dispatch) => ({
-    getAllTags: () => dispatch(fetchAllTags()),
+    getAllTags: (search) => dispatch(fetchAllTags(search)),
     onClearFilters: () => dispatch(clearFilters())
 }))(EntityTableToolbar);

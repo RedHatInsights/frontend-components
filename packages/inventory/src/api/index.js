@@ -47,6 +47,21 @@ export const mapTags = (data = { results: [] }, { orderBy, orderDirection } = {}
     return data;
 };
 
+export const constructTags = (tagFilters) => {
+    return flatMap(
+        tagFilters,
+        ({ values, category: namespace }) => values.map(({ value: tagValue, tagKey }) => (
+            `${namespace ? `${namespace}/` : ''}${tagKey}${tagValue ? `=${tagValue}` : ''}`
+        ))
+    ) || '';
+};
+
+export const filtersReducer = (acc, filter) => ({
+    ...acc,
+    ...filter.value === 'hostname_or_id' && { hostnameOrId: filter.filter },
+    ...'tagFilters' in filter && { tagFilters: filter.tagFilters }
+});
+
 export function getEntities(items, {
     controller,
     hasItems,
@@ -56,8 +71,7 @@ export function getEntities(items, {
     orderBy = 'updated',
     orderDirection = 'DESC'
 }) {
-    const hostnameOrId = filters ? filters.find(filter => filter.value === 'hostname_or_id') : undefined;
-
+    const { hostnameOrId, tagFilters } = filters ? filters.reduce(filtersReducer, {}) : {};
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
         .then(mapTags)
@@ -73,15 +87,15 @@ export function getEntities(items, {
         return hosts.apiHostGetHostList(
             undefined,
             undefined,
-            hostnameOrId && hostnameOrId.filter,
+            hostnameOrId,
             undefined,
             undefined,
             perPage,
             page,
             orderBy,
             orderDirection,
-            '',
-            '',
+            '', //staleness
+            constructTags(tagFilters),
             { cancelToken: controller && controller.token }
         )
         .then((data) => mapTags(data, { orderBy, orderDirection }))
@@ -111,5 +125,5 @@ export function getTags(systemId) {
 }
 
 export function getAllTags(search) {
-    return tags.apiTagGetTags(undefined, undefined, undefined, undefined, search);
+    return tags.apiTagGetTags(undefined, undefined, undefined, undefined, undefined, undefined, search);
 }

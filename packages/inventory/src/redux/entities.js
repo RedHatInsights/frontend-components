@@ -132,20 +132,13 @@ export function toggleTagModal(state, { payload: { isOpen } }) {
 }
 
 export function allTags(state, { payload: { results, total, per_page: perPage } }) {
-    // TODO: Remove me! I am just for testing purposes
-    const fakeResults = results.length > 0 ? results : [{
-        namespace: 'one',
-        key: 'some',
-        value: 'anothefr'
-    }];
-
     return {
         ...state,
-        allTags: Object.entries(groupBy(fakeResults, ({ namespace }) => namespace)).map(([ key, value ]) => ({
+        allTags: Object.entries(groupBy(results, ({ tag: { namespace } }) => namespace)).map(([ key, value ]) => ({
             name: key,
             tags: value
         })),
-        additionalTagsCount: total > perPage ? total - perPage : 500,
+        additionalTagsCount: total > perPage ? total - perPage : 0,
         allTagsLoaded: true
     };
 }

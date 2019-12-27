@@ -45,7 +45,7 @@ class Group extends Component {
                 key={id || key}
                 value={String(value || id || key)}
                 onClick={e => {
-                    if (e.target.tagName === 'LABEL') {
+                    if (e.target.tagName !== 'INPUT') {
                         e.preventDefault();
                         e.stopPropagation();
                     }
@@ -214,7 +214,7 @@ class Group extends Component {
                                 {...group}
                                 key={groupId || groupValue || groupKey}
                                 label={groupLabel}
-                                id={groupId || `groups-${groupValue || groupKey}`}
+                                id={groupId || `group-${groupValue || groupKey}`}
                             > {filteredItems} </SelectGroup>
                             : <Fragment/>;
                     })
