@@ -1,35 +1,14 @@
+/* eslint-disable camelcase */
 import { StyleSheet, Font } from '@react-pdf/renderer';
-
-const fontBaseUrl = 'https://overpass-30e2.kxcdn.com/';
-
-const fontTypes = [ 'thin', 'extralight', 'light', 'semibold', 'bold', 'extrabold', 'heavy' ];
-
-const generateFonts = (fonts) => {
-    const bla = fonts.reduce((acc, curr, key) => ([
-        ...[
-            {
-                src: `${fontBaseUrl}overpass-${curr}.ttf`,
-                fontWeight: (key * (key >= 3 ? 200 : 100)) + 200,
-                fontStyle: 'normal'
-            },
-            {
-                src: `${fontBaseUrl}overpass-${curr}-italic.ttf`,
-                fontWeight: (key * (key >= 3 ? 200 : 100)) + 200,
-                fontStyle: 'italic'
-            }
-        ],
-        ...acc
-    ]), [{
-        src: `${fontBaseUrl}overpass-regular.ttf`,
-        fontStyle: 'normal',
-        fontWeight: 500
-    }, {
-        src: `${fontBaseUrl}overpass-italic.ttf`,
-        fontStyle: 'italic',
-        fontWeight: 500
-    }]);
-    return bla;
-};
+import {
+    global_danger_color_100,
+    global_Color_dark_100,
+    chart_global_warning_Color_100,
+    global_disabled_color_100,
+    global_Color_light_300,
+    chart_global_warning_Color_200
+} from '@patternfly/react-tokens';
+import { fontTypes, generateFonts } from './fonts';
 
 Font.register({ family: 'Overpass', fonts: generateFonts(fontTypes) });
 
@@ -54,7 +33,7 @@ export default (style = {}) => StyleSheet.create({
     },
     reportName: {
         fontSize: 28,
-        color: '#ee2435'
+        color: global_danger_color_100.value
     },
     largeSpacing: {
         margin: '30 0'
@@ -67,21 +46,21 @@ export default (style = {}) => StyleSheet.create({
     },
     text: {
         fontSize: 9,
-        color: '#151515'
+        color: global_Color_dark_100.value
     },
     firstTitle: {
         fontSize: 9,
         fontWeight: 700,
-        color: '#ee2435'
+        color: global_danger_color_100.value
     },
     secondTitle: {
         fontWeight: 700,
         fontSize: 9,
-        color: '#4f4c4d'
+        color: global_disabled_color_100.value
     },
     thirdTitle: {
         fontSize: 9,
-        color: '#6e6b6c'
+        color: global_Color_light_300.value
     },
     flexRow: {
         display: 'flex',
@@ -93,15 +72,15 @@ export default (style = {}) => StyleSheet.create({
         flexDirection: 'column'
     },
     colorCrit: {
-        color: '#c9190b'
+        color: global_danger_color_100.value
     },
     colorHigh: {
-        color: '#ec7a08'
+        color: chart_global_warning_Color_100.value
     },
     colorMedium: {
-        color: '#f0ab00'
+        color: chart_global_warning_Color_200.value
     },
     defaultColor: {
-        color: '#d2d2d2'
+        color: global_Color_light_300.value
     }
 });

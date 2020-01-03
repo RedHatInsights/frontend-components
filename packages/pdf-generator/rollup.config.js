@@ -13,8 +13,6 @@ import { dependencies } from './package.json';
 
 const external = Object.keys(dependencies);
 
-console.log(external);
-
 const globals = {
     react: 'React',
     'react-dom': 'ReactDOM',
@@ -46,7 +44,7 @@ const plugins = [
     postcss({
         inject: true
     }),
-    sizeSnapshot({ snapshotPath: './dist/size-snapshot.json' }),
+    sizeSnapshot({ snapshotPath: './size-snapshot.json' }),
     json()
 ];
 

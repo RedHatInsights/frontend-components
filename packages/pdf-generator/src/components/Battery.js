@@ -6,6 +6,8 @@ import {
     Text,
     View
 } from '@react-pdf/renderer';
+// eslint-disable-next-line camelcase
+import { global_icon_Color_light } from '@patternfly/react-tokens';
 
 import styles from '../utils/styles';
 
@@ -64,7 +66,8 @@ const Battery = ({ variant, ...props }) => {
             width: 20,
             height: 21
         }} paint={({ path }) =>
-            path(defaultSvg).scale(0.04).lineWidth('41.9638').stroke('grey')
+            // eslint-disable-next-line camelcase
+            path(defaultSvg).scale(0.04).lineWidth('41.9638').stroke(global_icon_Color_light.value)
             .path(currBattery.svg).fill(currBattery.color)
         }
         />
