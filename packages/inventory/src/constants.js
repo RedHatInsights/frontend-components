@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from '@patternfly/react-core';
+import { Badge, Tooltip, TooltipPosition } from '@patternfly/react-core';
 
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
@@ -49,7 +49,13 @@ export function constructGroups(allTags) {
         items: tags.map(({ count,  tag: { key: tagKey, value } }) => ({
             label: <React.Fragment>
                 <div>{tagKey}: {value}</div>
-                <Badge>{ count }</Badge>
+                <Tooltip
+                    position="right"
+                    enableFlip
+                    content={`Applicable to ${count} systems.`}
+                >
+                    <Badge isRead={count <= 0}>{ count }</Badge>
+                </Tooltip>
             </React.Fragment>
         }))
     }));

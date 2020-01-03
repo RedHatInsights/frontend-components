@@ -125,5 +125,5 @@ export function getTags(systemId) {
 }
 
 export function getAllTags(search) {
-    return tags.apiTagGetTags(undefined, undefined, undefined, undefined, undefined, undefined, search);
+    return tags.apiTagGetTags(undefined, undefined, undefined, 25, undefined, undefined, search);
 }
