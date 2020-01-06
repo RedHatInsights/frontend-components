@@ -240,13 +240,13 @@ describe('schema builder', () => {
         });
     });
 
-    describe('shouldSkipSelection', () => {
+    describe('Cost management shouldSkipSelection', () => {
         it('should skip selection page for AWS+CM', () => {
             expect(shouldSkipSelection(AMAZON_TYPE.name, 'arn', COST_MANAGEMENT_APP.name)).toEqual(true);
         });
 
-        it('should not skip selection for openshift', () => {
-            expect(shouldSkipSelection(OPENSHIFT_TYPE.name, 'token', COST_MANAGEMENT_APP.name)).toEqual(false);
+        it('should skip selection for openshift', () => {
+            expect(shouldSkipSelection(OPENSHIFT_TYPE.name, 'token', COST_MANAGEMENT_APP.name)).toEqual(true);
         });
     });
 
@@ -382,7 +382,7 @@ describe('schema builder', () => {
             const schema = schemaBuilder(sourceTypes.filter(({ schema }) => schema), applicationTypes);
 
             expect(schema).toEqual(expect.arrayContaining([ expect.any(Object) ]));
-            expect(schema).toHaveLength(20);
+            expect(schema).toHaveLength(27);
         });
     });
 });

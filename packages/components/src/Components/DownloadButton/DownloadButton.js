@@ -22,7 +22,7 @@ class DownloadButton extends Component {
 
     render() {
         const { isOpen } = this.state;
-        const { extraItems, onSelect, ...props } = this.props;
+        const { extraItems, onSelect, isDisabled, ...props } = this.props;
         return (
             <Dropdown
                 { ...props }
@@ -38,8 +38,10 @@ class DownloadButton extends Component {
                 }
                 isOpen={ isOpen }
                 dropdownItems={ [
-                    <DropdownItem key="download-csv" component="button" onClick={ event => onSelect(event, 'csv') }>Export to CSV</DropdownItem>,
-                    <DropdownItem key="download-json" component="button" onClick={ event => onSelect(event, 'json') }>Export to JSON</DropdownItem>,
+                    <DropdownItem key="download-csv" component="button" onClick={ event => onSelect(event, 'csv') } isDisabled={isDisabled}>
+                        Export to CSV</DropdownItem>,
+                    <DropdownItem key="download-json" component="button" onClick={ event => onSelect(event, 'json') } isDisabled={isDisabled}>
+                        Export to JSON</DropdownItem>,
                     ...extraItems
                 ] }
             />

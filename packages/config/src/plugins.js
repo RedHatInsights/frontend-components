@@ -24,7 +24,6 @@ module.exports = ({
     rootFolder,
     appDeployment,
     htmlPlugin,
-    copyPlugin,
     replacePlugin
 } = {}) => {
     const HtmlWebpackPlugin = new(require('html-webpack-plugin'))({
@@ -33,10 +32,6 @@ module.exports = ({
         template: `${rootFolder || ''}/src/index.html`,
         ...htmlPlugin || {}
     });
-    const CopyFilesWebpackPlugin = new(require('copy-webpack-plugin'))([
-        { from: `${rootFolder || ''}/static/images`, to: 'images' },
-        ...copyPlugin || []
-    ]);
 
     const HtmlReplaceWebpackPlugin = new(require('html-replace-webpack-plugin'))([
         {
@@ -53,7 +48,6 @@ module.exports = ({
         ExtractCssWebpackPlugin,
         CleanWebpackPlugin,
         HtmlWebpackPlugin,
-        CopyFilesWebpackPlugin,
         HtmlReplaceWebpackPlugin,
         WebpackHotModuleReplacement
     ];
