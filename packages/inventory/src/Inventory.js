@@ -140,10 +140,10 @@ export function inventoryConnector(store) {
     const connectedInventory = routerParams((Inventory));
 
     connectedInventory.updateEntities = updateEntities;
-    connectedInventory.InventoryTable = (props) => reduxComponent(props, store, InventoryTable);
-    connectedInventory.AppInfo = (props) => reduxComponent(props, store, AppInfo);
-    connectedInventory.InventoryDetailHead = (props) => reduxComponent(props, store, InventoryItem);
-    connectedInventory.InventoryDetail = (props) => reduxComponent(props, store, InventoryDetail);
+    connectedInventory.InventoryTable = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, InventoryTable));
+    connectedInventory.AppInfo = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, AppInfo));
+    connectedInventory.InventoryDetailHead = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, InventoryItem));
+    connectedInventory.InventoryDetail = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, InventoryDetail));
 
     return connectedInventory;
 }
