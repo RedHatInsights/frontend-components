@@ -58,6 +58,10 @@
         }
     }
 
+    .ins-c-inventory__list-tags {
+        display: inline-block;
+    }
+
     .ins-health-status div {
         span:nth-child(2) {
             color: var(--pf-global--info-color--100);
