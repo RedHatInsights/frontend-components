@@ -13,6 +13,8 @@ import AuthSelect from './sourceFormRenderer/components/AuthSelect';
 import { mapperExtension } from './sourceFormRenderer/index';
 import hardcodedSchemas from './addSourceWizard/hardcodedSchemas';
 import { parseUrl, urlOrHost } from './api/createSource';
+import { patchSource } from './api/costManagementAuthentication';
+import { handleError } from './api/handleError';
 
 import './styles/cardSelect.scss';
 import './styles/authSelect.scss';
@@ -34,5 +36,7 @@ export {
     parseUrl,
     urlOrHost,
     asyncValidatorDebouncedWrapper,
-    setFirstValidated
+    setFirstValidated,
+    patchSource,
+    handleError
 };
