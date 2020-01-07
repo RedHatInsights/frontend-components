@@ -29,6 +29,10 @@ export const createItem = (value, fields, path) => {
 };
 
 export const allValuesPath = (value, fields, path = undefined) => {
+    if (typeof value === 'undefined' || value === null) {
+        return undefined;
+    }
+
     if (typeof value !== 'object') {
         return createItem(value, fields, path);
     }
@@ -38,7 +42,7 @@ export const allValuesPath = (value, fields, path = undefined) => {
 
 const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showApp, showAuthType }) => {
     const values = formOptions.getState().values;
-    const type = sourceTypes.find(type => type.name === values.source_type);
+    const type = sourceTypes.find(type => type.name === values.source_type || type.id === values.source.source_type_id);
 
     const hasAuthentication = values.authentication && values.authentication.authtype ? values.authentication.authtype : values.auth_select;
 

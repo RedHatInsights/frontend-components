@@ -18,7 +18,7 @@ import {
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import sourceTypes, { AMAZON_TYPE, OPENSHIFT_TYPE, AZURE_TYPE } from '../helpers/sourceTypes';
 import applicationTypes, { COST_MANAGEMENT_APP, TOPOLOGY_INV_APP } from '../helpers/applicationTypes';
-import { componentTypes } from '@data-driven-forms/react-form-renderer';
+import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
 
 describe('schema builder', () => {
     describe('createEndpointFlagger', () => {
@@ -155,6 +155,23 @@ describe('schema builder', () => {
 
         it('returns uninjected fields', () => {
             expect(injectAuthFieldsInfo(FIELDS, 'openshift', 'token', 'generic')).toEqual(FIELDS);
+        });
+
+        it('removes password requirements', () => {
+            const disablePassword = true;
+
+            const passwordField = { name: 'authentication.password', isRequired: true, validate: [{ type: validatorTypes.REQUIRED }, { type: 'cosi' }] };
+            const unchangedField = { name: 'unchanged', isRequired: true, validate: [{ type: validatorTypes.REQUIRED }] };
+
+            const fields = [
+                passwordField,
+                unchangedField
+            ];
+
+            expect(injectAuthFieldsInfo(fields, 'nonsense', 'nonsense', 'generic', disablePassword)).toEqual([
+                { name: 'authentication.password', validate: [{ type: 'cosi' }], isRequired: false, helperText: expect.any(String) },
+                unchangedField
+            ]);
         });
     });
 
