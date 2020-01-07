@@ -86,7 +86,7 @@ export const nextStep = ({ values: { application, source_type } }) => {
 };
 
 const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
-    title: 'Configure your source',
+    title: 'Choose application and source type',
     name: 'types_step',
     stepKey: 'types_step',
     nextStep,
