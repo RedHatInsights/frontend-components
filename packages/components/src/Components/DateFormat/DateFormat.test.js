@@ -4,6 +4,29 @@ import toJson from 'enzyme-to-json';
 import DateFormat from './DateFormat';
 
 describe('DateFormat component', () => {
+    const _Date = Date;
+    const currDate = new Date('1970');
+    beforeAll(() => {
+        /*eslint no-global-assign:off*/
+        Date = class extends Date {
+            constructor(...props) {
+                if (props.length > 0) {
+                    return new _Date(...props);
+                }
+
+                return currDate;
+            }
+
+            static now() {
+                return new _Date('1970').getTime();
+            }
+        };
+    });
+
+    afterAll(() => {
+        Date = _Date;
+    });
+
     it('DateFormat renders with date integer', () => {
         const wrapper = shallow(<DateFormat date={10}/>);
         expect(toJson(wrapper)).toMatchSnapshot();

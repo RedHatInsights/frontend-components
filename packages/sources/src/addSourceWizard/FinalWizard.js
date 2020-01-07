@@ -5,6 +5,7 @@ import { Wizard } from '@patternfly/react-core';
 import FinishedStep from './steps/FinishedStep';
 import ErroredStep from './steps/ErroredStep';
 import LoadingStep from './steps/LoadingStep';
+import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 
 const FinalWizard = ({
     afterSubmit,
@@ -20,8 +21,8 @@ const FinalWizard = ({
     <Wizard
         isOpen={ true }
         onClose={ isFinished ? afterSubmit : afterError }
-        title="Add a source"
-        description="Connect an external source to Red Hat Cloud Services"
+        title={WIZARD_TITLE}
+        description={WIZARD_DESCRIPTION}
         steps={ [{
             name: 'Finish',
             component: isFinished ?

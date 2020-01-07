@@ -69,14 +69,6 @@ export const doCreateSource = async (formData, sourceTypes) => {
 
         const [ endpointDataOut, applicationDataOut ] = await Promise.all(promises);
 
-        if (formData.credentials || formData.billing_source) {
-            const { credentials, billing_source } = formData;
-            let data = {};
-            data = credentials ? { authentication: { credentials } } : {};
-            data = billing_source ? { ...data, billing_source } : data;
-            await patchSource({ id: sourceDataOut.id, ...data });
-        }
-
         if (endpointDataOut) {
             const authenticationData = {
                 ...formData.authentication,
@@ -85,6 +77,14 @@ export const doCreateSource = async (formData, sourceTypes) => {
             };
 
             await getSourcesApi().createAuthentication(authenticationData);
+        }
+
+        if (formData.credentials || formData.billing_source) {
+            const { credentials, billing_source } = formData;
+            let data = {};
+            data = credentials ? { authentication: { credentials } } : {};
+            data = billing_source ? { ...data, billing_source } : data;
+            await patchSource({ id: sourceDataOut.id, ...data });
         }
 
         return {
