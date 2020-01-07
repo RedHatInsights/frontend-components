@@ -341,8 +341,7 @@ export default {
                         fields: [{
                             name: 'iam-policy-description',
                             component: 'description',
-                            Content: AwsArn.IAMPolicyDescription,
-                            assignFormOptions: true
+                            Content: AwsArn.IAMPolicyDescription
                         }]
                     }, {
                         title: 'Create IAM role',

@@ -37,7 +37,7 @@ exports[`DateFormat component DateFormat renders with date integer 1`] = `
     zIndex={9999}
   >
     <span>
-      50 years ago
+      Just now
     </span>
   </Tooltip>
 </Fragment>

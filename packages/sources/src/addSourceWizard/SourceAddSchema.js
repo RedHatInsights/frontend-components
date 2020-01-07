@@ -5,6 +5,7 @@ import { AwsIcon, OpenshiftIcon, MicrosoftIcon } from '@patternfly/react-icons';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
 import { schemaBuilder } from './schemaBuilder';
+import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 
 export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources } }) => {
     if (sources.find(({ id }) => id !== sourceId)) {
@@ -85,7 +86,7 @@ export const nextStep = ({ values: { application, source_type } }) => {
 };
 
 const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
-    title: 'Configure your source',
+    title: 'Choose application and source type',
     name: 'types_step',
     stepKey: 'types_step',
     nextStep,
@@ -177,9 +178,9 @@ export default (sourceTypes, applicationTypes, disableAppSelection) => {
         fields: [{
             component: componentTypes.WIZARD,
             name: 'wizard',
-            title: 'Add a source',
+            title: WIZARD_TITLE,
             inModal: true,
-            description: 'Connect an external source to Red Hat Cloud Services',
+            description: WIZARD_DESCRIPTION,
             buttonLabels: {
                 submit: 'Finish'
             },
