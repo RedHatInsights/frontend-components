@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { TextListItem } from '@patternfly/react-core';
 
-import SourceWizardSummary from '../../../sourceFormRenderer/components/SourceWizardSummary';
+import SourceWizardSummary, { allValuesPath } from '../../../sourceFormRenderer/components/SourceWizardSummary';
 import applicationTypes from '../../helpers/applicationTypes';
 import sourceTypes from '../../helpers/sourceTypes';
 
@@ -163,6 +163,33 @@ describe('SourceWizardSummary component', () => {
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1', false) } />);
             expect(wrapper.contains('●●●●●●●●●●●●')).toEqual(true);
             expect(wrapper.contains('123456')).toEqual(false);
+        });
+
+        it('use source.source_type_id as a fallback', () => {
+            formOptions = {
+                getState: () => ({
+                    values: {
+                        source: {
+                            name: 'openshift',
+                            source_type_id: '1'
+                        },
+                        noEndpoint: true
+                    }
+                })
+            };
+
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            expect(wrapper.contains('OpenShift Container Platform')).toEqual(true);
+        });
+    });
+
+    describe('allValuesPath', () => {
+        it('when null', () => {
+            expect(allValuesPath(null)).toEqual(undefined);
+        });
+
+        it('when undefined', () => {
+            expect(allValuesPath(undefined)).toEqual(undefined);
         });
     });
 });

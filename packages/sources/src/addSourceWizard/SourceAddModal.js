@@ -6,6 +6,7 @@ import SourcesFormRenderer from '../sourceFormRenderer/index';
 import createSchema from './SourceAddSchema';
 import { doLoadSourceTypes, doLoadApplicationTypes } from '../api/index';
 import LoadingStep from './steps/LoadingStep';
+import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 
 const initialValues = {
     schema: {},
@@ -70,8 +71,8 @@ class SourceAddModal extends React.Component {
             return <Wizard
                 isOpen={ true }
                 onClose={ onCancel }
-                title="Add a source"
-                description="Connect an external source to Red Hat Cloud Services"
+                title={WIZARD_TITLE}
+                description={WIZARD_DESCRIPTION}
                 steps={ [{
                     name: 'Loading',
                     component: <LoadingStep onClose={ () => onCancel() }/>,
