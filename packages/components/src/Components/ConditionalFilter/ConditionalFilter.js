@@ -80,7 +80,7 @@ class ConditionalFilter extends Component {
                                         {
                                         ...activeItem.type !== conditionalFilterType.custom &&
                                             {
-                                                placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
+                                                placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label.toLowerCase()}`,
                                                 id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
                                             }
                                         }
