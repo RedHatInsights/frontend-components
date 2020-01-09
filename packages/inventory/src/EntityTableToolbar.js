@@ -55,8 +55,8 @@ class ContextEntityTableToolbar extends Component {
     }
 
     applyTags = (newSelection, debounced = true) => {
-        const { allTags, perPage, filters, onRefreshData } = this.props;
-        const tagFilters = mapGroups(newSelection, allTags);
+        const { perPage, filters, onRefreshData } = this.props;
+        const tagFilters = mapGroups(newSelection);
         const tagFiltersIndex = filters.findIndex((value) => value.hasOwnProperty('tagFilters'));
         if (tagFiltersIndex !== -1) {
             filters.splice(tagFiltersIndex, 1);
@@ -74,7 +74,7 @@ class ContextEntityTableToolbar extends Component {
     }
 
     createTagsFilter = () => {
-        const { allTags, allTagsLoaded, additionalTagsCount } = this.props;
+        const { allTags, allTagsLoaded, additionalTagsCount, getAllTags } = this.props;
         const { selected } = this.state;
         return {
             label: 'Tags',
@@ -83,11 +83,19 @@ class ContextEntityTableToolbar extends Component {
             placeholder: 'Filter system by tag',
             filterValues: {
                 className: 'ins-c-inventory__tags-filter',
-                onFilter: (e) => this.debounceGetAllTags(e.target.value),
-                onChange: (e, newSelection) => this.setState(
-                    { selected: newSelection },
-                    () =>  this.applyTags(newSelection)
-                ),
+                onFilter: (value) => this.debounceGetAllTags(value),
+                onChange: (_e, newSelection, group, item, groupKey, itemKey) => {
+                    const isSelected = newSelection[groupKey][itemKey];
+                    newSelection[groupKey][itemKey] = {
+                        isSelected,
+                        group,
+                        item
+                    };
+                    this.setState(
+                        { selected: newSelection },
+                        () => this.applyTags(newSelection)
+                    );
+                },
                 selected,
                 ...allTagsLoaded && allTags.length > 0 ? {
                     groups: [
@@ -118,11 +126,11 @@ class ContextEntityTableToolbar extends Component {
     }
 
     constructFilters = () => {
-        const { allTags, perPage, onRefreshData, onClearFilters, activeFiltersConfig } = this.props;
+        const { perPage, onRefreshData, onClearFilters, activeFiltersConfig } = this.props;
         const { selected, textFilter } = this.state;
         return {
             filters: [
-                ...mapGroups(selected, allTags, 'chips'),
+                ...mapGroups(selected, 'chips'),
                 ...textFilter.length > 0 ? [{
                     category: 'Display name',
                     type: TEXTUAL_CHIP,

@@ -14,13 +14,12 @@ class Group extends Component {
     state = {
         isExpanded: false,
         selected: {},
-        filterBy: /./ // Use Regex here to ignore case match, set to all characters
+        filterBy: ''
     }
-
+s
     onToggle = isExpanded => {
         this.setState({
-            isExpanded,
-            filterBy: /./
+            isExpanded
         });
     };
 
@@ -34,11 +33,22 @@ class Group extends Component {
     }
 
     mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
-        return items.filter(item =>
-            (groupValue && this.state.filterBy.test(groupValue)) ||
-            (groupLabel && this.state.filterBy.test(groupLabel)) ||
-            (item.value && this.state.filterBy.test(item.value)) ||
-            (item.label && this.state.filterBy.test(item.label))
+        const { onFilter } = this.props;
+        const { filterBy } = this.state;
+        let input;
+
+        try {
+            input = new RegExp(filterBy, 'i');
+        } catch (err) {
+            input = new RegExp(filterBy.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+        }
+
+        return items.filter(item => onFilter || (
+            (groupValue && input.test(groupValue)) ||
+            (groupLabel && input.test(groupLabel)) ||
+            (item.value && input.test(item.value)) ||
+            (item.label && input.test(item.label))
+        )
         ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
@@ -58,7 +68,7 @@ class Group extends Component {
                         items,
                         ...group
                     };
-                    const clickedItem = { value, label, id, type, ...group };
+                    const clickedItem = { value, label, id, type, ...item };
                     const props = [
                         e,
                         clickedGroup,
@@ -152,13 +162,12 @@ class Group extends Component {
         const { onChange } = this.props;
 
         if (onChange) {
-            onChange(event, newSelection, group, item);
+            onChange(event, newSelection, group, item, groupKey, itemKey);
             this.setState({ selected: {} });
         }
 
         this.setState({
-            selected: newSelection,
-            filterBy: /./
+            selected: newSelection
         });
     };
 
@@ -177,19 +186,25 @@ class Group extends Component {
     }
 
     customFilter = (e) => {
-        let input;
+        const { onFilter } = this.props;
+        const { target: { value } } = e;
 
-        try {
-            input = new RegExp(e.target.value, 'i');
-        } catch (err) {
-            input = new RegExp(e.target.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-        }
+        this.setState({ filterBy: value }, () => {
+            onFilter && onFilter(value);
+        });
+    }
 
-        this.setState({ filterBy: input });
+    clearSelection = () => {
+        const { onFilter } = this.props;
+        onFilter && onFilter('');
+        this.setState({
+            filterBy: '',
+            isExpanded: false
+        });
     }
 
     render() {
-        const { isExpanded } = this.state;
+        const { isExpanded, filterBy } = this.state;
         const { groups, items, placeholder, className, selected, isFilterable, onFilter } = this.props;
 
         const filterItems = items || groups;
@@ -203,7 +218,9 @@ class Group extends Component {
                 isExpanded={ isExpanded }
                 onSelect={ () => undefined }
                 placeholderText={ placeholder }
-                { ...(isFilterable || onFilter) && { onFilter: (onFilter || this.customFilter) } }
+                onClear={this.clearSelection}
+                { ...filterBy !== '' && { selections: [ filterBy ] } }
+                { ...(isFilterable || onFilter) && { onFilter: this.customFilter } }
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
                 { groups && groups.length > 0 ? (
@@ -213,6 +230,7 @@ class Group extends Component {
                             ? <SelectGroup
                                 {...group}
                                 key={groupId || groupValue || groupKey}
+                                value={groupId || groupValue || groupKey}
                                 label={groupLabel}
                                 id={groupId || `group-${groupValue || groupKey}`}
                             > {filteredItems} </SelectGroup>

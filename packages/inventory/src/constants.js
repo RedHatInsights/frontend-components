@@ -1,33 +1,33 @@
 import React from 'react';
-import { Badge, Tooltip, TooltipPosition } from '@patternfly/react-core';
+import { Badge, Tooltip } from '@patternfly/react-core';
 
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
 export const TAG_CHIP = 'tags';
 
-export function constructValues(groupValue, tags) {
-    return Object.entries(groupValue).map(([ key, value ]) => {
-        if (value) {
-            const { tag: { key: tagKey, value: tagValue } } = tags[key];
+export function constructValues(groupValue) {
+    return Object.entries(groupValue).map(([ key, { isSelected, group, item }]) => {
+        if (isSelected) {
+            const { tag: { key: tagKey, value: tagValue } } = item.meta;
             return {
                 key,
                 tagKey,
                 value: tagValue,
-                name: `${tagKey}: ${tagValue}`
+                name: `${tagKey}: ${tagValue}`,
+                group
             };
         }
     }).filter(Boolean);
 }
 
-export function mapGroups(currSelection, allTags, valuesKey = 'values') {
+export function mapGroups(currSelection, valuesKey = 'values') {
     return Object.entries(currSelection).map(([ groupKey, groupValue ]) => {
-        const { tags, name } = allTags[groupKey];
-        const values = constructValues(groupValue, tags);
+        const values = constructValues(groupValue, groupKey);
         if (values && values.length > 0) {
             return {
                 type: 'tags',
                 key: groupKey,
-                category: name,
+                category: values[0].group.label,
                 [valuesKey]: values
             };
         }
@@ -46,7 +46,7 @@ export function constructGroups(allTags) {
         label: name,
         value: key,
         type: 'checkbox',
-        items: tags.map(({ count,  tag: { key: tagKey, value } }) => ({
+        items: tags.map(({ count, tag: { key: tagKey, value } }) => ({
             label: <React.Fragment>
                 <div>{tagKey}: {value}</div>
                 <Tooltip
@@ -56,7 +56,15 @@ export function constructGroups(allTags) {
                 >
                     <Badge isRead={count <= 0}>{ count }</Badge>
                 </Tooltip>
-            </React.Fragment>
+            </React.Fragment>,
+            meta: {
+                count,
+                tag: {
+                    key: tagKey,
+                    value
+                }
+            },
+            value: tagKey
         }))
     }));
 }
