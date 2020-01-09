@@ -37,7 +37,8 @@ class CardSelect extends React.Component {
     }
 
     handleKeyPress = (event, value) => {
-        if (event.key === 'Enter') {
+        if (event.key === ' ') {
+            event.preventDefault();
             this.onClick(value);
         }
     }
