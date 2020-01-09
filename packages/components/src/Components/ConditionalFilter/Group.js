@@ -16,7 +16,7 @@ class Group extends Component {
         selected: {},
         filterBy: ''
     }
-s
+
     onToggle = isExpanded => {
         this.setState({
             isExpanded

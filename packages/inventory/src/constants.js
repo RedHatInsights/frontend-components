@@ -37,7 +37,18 @@ export function mapGroups(currSelection, valuesKey = 'values') {
 export function filterToGroup(filter = [], valuesKey = 'values') {
     return filter.reduce((accGroup, group) => ({
         ...accGroup,
-        [group.key]: group[valuesKey].reduce((acc, curr) => ({ ...acc, [curr.key]: true }), {})
+        [group.key]: group[valuesKey].reduce((acc, curr) => ({ ...acc, [curr.key]: {
+            isSelected: true,
+            group: curr.group,
+            item: {
+                meta: {
+                    tag: {
+                        key: curr.key,
+                        value: curr.value
+                    }
+                }
+            }
+        } }), {})
     }), {});
 }
 
