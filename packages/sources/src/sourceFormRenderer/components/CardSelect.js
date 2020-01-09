@@ -65,12 +65,12 @@ class CardSelect extends React.Component {
                     isCompact={ true }
                 >
                     <div className={ disabled ? 'disabled' : '' }>
-                        <CardHeader>
+                        <CardHeader className={Component ? 'text-elipsis' : '' }>
                             { label }
                         </CardHeader>
                         <CardBody>
                             <Bullseye>
-                                <Component size="xl"/>
+                                {Component && <Component size="xl"/>}
                             </Bullseye>
                         </CardBody>
                     </div>
