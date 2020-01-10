@@ -102,14 +102,14 @@ describe('CardSelect component', () => {
         const wrapper = mount(<CardSelect { ...initialProps }/>);
 
         const preventDefaultMock = jest.fn();
-        wrapper.find(Card).last().simulate('keypress', { key: ' ', preventDefault: preventDefaultMock });
+        wrapper.find(Card).last().simulate('keypress', { charCode: 32, preventDefault: preventDefaultMock });
 
         expect(spyOnChange).toHaveBeenCalledWith('aws');
         expect(spyOnBlur).toHaveBeenCalled();
         expect(preventDefaultMock).toHaveBeenCalled();
 
         // unselect
-        wrapper.find(Card).last().simulate('keypress', { key: ' ' });
+        wrapper.find(Card).last().simulate('keypress', { charCode: 32 });
         expect(spyOnChange).toHaveBeenCalledWith(undefined);
     });
 
