@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-sources",
-    "version": "0.0.29",
+    "version": "0.0.30",
     "description": "Sources components for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -21,8 +21,8 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/sources#readme",
     "dependencies": {
-        "@data-driven-forms/pf4-component-mapper": "^1.23.0",
-        "@data-driven-forms/react-form-renderer": "^1.23.0",
+        "@data-driven-forms/pf4-component-mapper": "^1.25.1",
+        "@data-driven-forms/react-form-renderer": "^1.25.1",
         "@patternfly/react-icons": "^3.10.9",
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7",

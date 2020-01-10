@@ -27,4 +27,10 @@
     .disabled {
       z-index: -1;
     }
+
+    .text-elipsis {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 }

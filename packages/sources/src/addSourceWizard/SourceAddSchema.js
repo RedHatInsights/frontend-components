@@ -96,7 +96,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
             name: 'application.application_type_id',
             label: 'Select your application (optional)',
             // eslint-disable-next-line react/display-name
-            DefaultIcon: () => <React.Fragment />,
+            DefaultIcon: null,
             options: compileAllApplicationComboOptions(applicationTypes),
             mutator: appMutator(applicationTypes),
             helperText: 'Selecting an application will limit the available source types. You can assign an application to your source now, or after adding your source.',
