@@ -37,7 +37,9 @@ class CardSelect extends React.Component {
     }
 
     handleKeyPress = (event, value) => {
-        if (event.key === 'Enter') {
+        const spaceBar = 32;
+        if (event.charCode === spaceBar) {
+            event.preventDefault();
             this.onClick(value);
         }
     }
@@ -54,7 +56,7 @@ class CardSelect extends React.Component {
         const Component = iconMapper(value, DefaultIcon);
 
         return (
-            <GridItem sm={ 1 } md={ 4 } key={ value }>
+            <GridItem sm={ 6 } md={ 4 } key={ value }>
                 <Card
                     className={ `ins-c-sources__wizard--card${this.handleCompare(value) ? ' selected' : ''}${disabled ? ' disabled' : ''}` }
                     onClick={ () => this.onClick(value) }
@@ -64,12 +66,12 @@ class CardSelect extends React.Component {
                     isCompact={ true }
                 >
                     <div className={ disabled ? 'disabled' : '' }>
-                        <CardHeader>
+                        <CardHeader className={Component ? 'text-elipsis' : '' }>
                             { label }
                         </CardHeader>
                         <CardBody>
                             <Bullseye>
-                                <Component size="xl"/>
+                                {Component && <Component size="xl"/>}
                             </Bullseye>
                         </CardBody>
                     </div>
