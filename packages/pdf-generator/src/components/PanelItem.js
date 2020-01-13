@@ -18,6 +18,7 @@ const PanelItem = ({
 }}>
     <Text { ...titleProps } style={{
         ...appliedStyles.thirdTitle,
+        ...appliedStyles.displayFont,
         ...titleProps.style
     }}>
         {title}

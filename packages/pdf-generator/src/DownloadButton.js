@@ -41,12 +41,12 @@ class DownloadButton extends React.Component {
                             </Text>
                         </View>
                         <View>
-                            <Text style={[ appliedStyles.reportName, appliedStyles.largeSpacing ]}>
+                            <Text style={[ appliedStyles.reportName, appliedStyles.largeSpacing, appliedStyles.displayFont ]}>
                                 {reportName} {type}
                             </Text>
                         </View>
                         <View>
-                            <Text>
+                            <Text style={ appliedStyles.displayFont }>
                                 { customTitle(title) }
                             </Text>
 
@@ -58,6 +58,11 @@ class DownloadButton extends React.Component {
                     <View style={[ appliedStyles.flexRow, {
                         marginTop: 'auto'
                     }]}>
+                        <Text style={[{
+                            marginLeft: 'auto'
+                        }]}>
+                            { key + 1 } of {pages.length}
+                        </Text>
                         <Text style={[{
                             marginLeft: 'auto'
                         }, appliedStyles.thirdTitle ]}>

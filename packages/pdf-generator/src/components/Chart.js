@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { CircleIconConfig } from '@patternfly/react-icons';
 import { View, Canvas, Text } from '@react-pdf/renderer';
-import { ChartPie, ChartDonut, ChartDonutUtilization, getLightThemeColors } from '@patternfly/react-charts';
+import {
+    ChartPie,
+    ChartDonut,
+    ChartDonutUtilization,
+    getLightThemeColors
+} from '@patternfly/react-charts';
 import Table from './Table';
 import styles from '../utils/styles';
+import rgbHex from 'rgb-hex';
 
 const appliedStyles = styles();
 
@@ -37,11 +43,21 @@ class Chart extends Component {
         );
 
         const paths = Array.from(el.querySelectorAll('path')).map((path) => path.getAttribute('d'));
+        const texts = Array.from(el.querySelectorAll('text tspan')).map((text) => ({
+            text: text.innerHTML,
+            style: text.getAttribute('style').split(';').reduce((acc, curr) => {
+                const [ key, val ] = curr.split(':');
+                return {
+                    ...acc,
+                    ...key && { [key.trim()]: val.trim() }
+                };
+            }, {})
+        }));
         // let's clean up the placeholder chart
         ReactDOM.unmountComponentAtNode(el);
         el.remove();
 
-        return paths;
+        return [ paths, texts ];
     }
 
     render() {
@@ -51,7 +67,7 @@ class Chart extends Component {
         const colors = currChart.colorScale ?
             currChart.colorScale(getLightThemeColors(colorSchema).voronoi.colorScale) :
             getLightThemeColors(colorSchema).voronoi.colorScale;
-        const paths = this.getChartData(currChart);
+        const [ paths, texts ] = this.getChartData(currChart);
 
         return <View style={[
             appliedStyles.flexRow,
@@ -67,8 +83,26 @@ class Chart extends Component {
                     width: currChart.width,
                     height: 67
                 }}
-                paint={({ path }) => paths.map((onePath, key) => path(onePath).scale(key === 0 ? 0.34 : 1)
-                .translate(key === 0 ? 100 : 0, key === 0 ? 100 : 0).fill(colors[key]))
+                paint={({ path, text, fill }) => {
+                    paths.map((onePath, key) => {
+                        path(onePath).scale(key === 0 ? 0.34 : 1)
+                        .translate(key === 0 ? 100 : 0, key === 0 ? 100 : 0).fill(colors[key]);
+                        const currText = texts[key];
+                        if (currText) {
+                            const fontSize = parseInt(currText.style['font-size'].replace('px', '')) * 2;
+                            const color = rgbHex(
+                                ...currText
+                                .style
+                                .fill
+                                .replace(/rgb\(|\)/g, '')
+                                .split(',')
+                                .map(item => parseInt(item, 10))
+                            );
+                            fill(`#${color}`).fontSize(fontSize);
+                            text(currText.text, -(currText.text.length * (fontSize / 4)), (24 * key) - fontSize);
+                        }
+                    });
+                }
                 }
             />
             <Table
