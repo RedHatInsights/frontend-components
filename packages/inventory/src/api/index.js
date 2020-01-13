@@ -71,6 +71,7 @@ export function getEntities(items, {
     orderBy = 'updated',
     orderDirection = 'DESC'
 }) {
+    console.log(TagsApi, 'sdf');
     const { hostnameOrId, tagFilters } = filters ? filters.reduce(filtersReducer, {}) : {};
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })

@@ -126,7 +126,9 @@ class Group extends Component {
         const { selected: propSelected } = this.props;
         const activeGroup = selected[groupKey] || propSelected[groupKey];
         if (activeGroup) {
-            if (type !== groupType.radio && activeGroup[itemKey]) {
+            if (type !== groupType.radio && (
+                activeGroup[itemKey] instanceof Object ? activeGroup[itemKey].isSelected : Boolean(activeGroup[itemKey])
+            )) {
                 return {
                     ...propSelected,
                     ...selected,
@@ -182,7 +184,9 @@ class Group extends Component {
             return false;
         }
 
-        return Boolean(selected[groupValue][itemValue]);
+        return selected[groupValue][itemValue] instanceof Object ?
+            selected[groupValue][itemValue].isSelected :
+            Boolean(selected[groupValue][itemValue]);
     }
 
     customFilter = (e) => {
@@ -260,7 +264,12 @@ const itemsProps = PropTypes.arrayOf(
 Group.propTypes = {
     selected: PropTypes.shape({
         [PropTypes.string]: PropTypes.shape({
-            [PropTypes.string]: PropTypes.bool
+            [PropTypes.string]: PropTypes.oneOfType([
+                PropTypes.bool,
+                PropTypes.shape({
+                    isSelected: PropTypes.bool
+                })
+            ])
         })
     }),
     onChange: PropTypes.func,
