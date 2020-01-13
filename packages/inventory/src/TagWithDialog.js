@@ -5,7 +5,9 @@ import { TagCount } from '@redhat-cloud-services/frontend-components/components/
 import { loadTags } from './redux/actions';
 
 const TagWithDialog = ({ count, loadTags, systemId }) => (
-    <TagCount count={count} onTagClick={() => loadTags(systemId, count)} />
+    <span onClick={(e) => e.stopPropagation()} className="ins-c-inventory__list-tags">
+        <TagCount count={count} onTagClick={ () => loadTags(systemId, count) } />
+    </span>
 );
 
 TagWithDialog.propTypes = {
