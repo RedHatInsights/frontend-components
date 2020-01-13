@@ -1,22 +1,23 @@
 /* eslint-disable camelcase */
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import connect from 'react-redux/es/connect/connect';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
-import { List } from 'react-content-loader';
-import { Card, CardBody, ToolbarItem } from '@patternfly/react-core';
-import { CheckIcon, CheckCircleIcon, ExternalLinkAltIcon, TimesCircleIcon, PficonSatelliteIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
-import { cellWidth, sortable, SortByDirection, Table, TableBody, TableHeader } from '@patternfly/react-table';
-import { flatten, sortBy } from 'lodash';
-import { global_success_color_200, global_BackgroundColor_100 } from '@patternfly/react-tokens';
-import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
-import moment from 'moment';
-import { Battery, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
-
 import './insights.scss';
-import ReportDetails from './ReportDetails';
-import { FILTER_CATEGORIES as FC, BASE_FETCH_URL } from './Constants';
+
+import { AnsibeTowerIcon, CheckCircleIcon, CheckIcon, ExternalLinkAltIcon, PficonSatelliteIcon, TimesCircleIcon } from '@patternfly/react-icons';
+import { BASE_FETCH_URL, FILTER_CATEGORIES as FC } from './Constants';
+import { Battery, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
+import { Card, CardBody, ToolbarItem } from '@patternfly/react-core';
+import React, { Component, Fragment } from 'react';
+import { SortByDirection, Table, TableBody, TableHeader, cellWidth, sortable } from '@patternfly/react-table';
+import { flatten, sortBy } from 'lodash';
+import { global_BackgroundColor_100, global_success_color_200 } from '@patternfly/react-tokens';
+
+import { List } from 'react-content-loader';
 import MessageState from './MessageState';
+import PropTypes from 'prop-types';
+import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
+import ReportDetails from './ReportDetails';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import connect from 'react-redux/es/connect/connect';
+import moment from 'moment';
 
 class InventoryRuleList extends Component {
     state = {
@@ -35,7 +36,7 @@ class InventoryRuleList extends Component {
         sortBy: {},
         activeReports: [],
         kbaDetailsData: [],
-        filters: { has_playbook: 'all' },
+        filters: {},
         searchValue: '',
         accountSettings: {},
         isSelected: false
@@ -164,11 +165,8 @@ class InventoryRuleList extends Component {
                     publish_date: rule.publish_date,
                     total_risk: rule.total_risk
                 };
-                if (typeof filterValues === 'string') {
-                    return filterValues === 'all' ? true : filterValues.search(rowValue[key]) !== -1;
-                } else {
-                    return filterValues.find(value => Number(value) === rowValue[key]);
-                }
+
+                return filterValues.find(value => String(value) === String(rowValue[key]));
             }).every(x => x);
 
             return isValidSearchValue && isValidFilterValue ? reportRow : [];
@@ -257,26 +255,31 @@ class InventoryRuleList extends Component {
 
     buildFilterChips = (filters) => {
         const prunedFilters = Object.entries(filters);
-        const chips = filters && prunedFilters.length > 0 ? prunedFilters.map(item => {
+        let chips = filters && prunedFilters.length > 0 ? prunedFilters.map(item => {
             const category = FC[item[0]];
-            const chips = Array.isArray(item[1]) ? item[1].map(value =>
-                ({ name: category.values.find(values => values.value === String(value)).label, value }))
-                : [{ name: category.values.find(values => values.value === String(item[1])).label, value: item[1] }];
+            const chips = item[1].map(value => ({ name: category.values.find(values => values.value === String(value)).text, value }));
             return { category: category.title, chips, urlParam: category.urlParam };
+
         })
             : [];
+        this.state.searchValue.length > 0 &&
+            (chips.push({ category: 'Description', chips: [{ name: this.state.searchValue, value: this.state.searchValue }] }));
         return chips;
     }
 
     onChipDelete = (event, itemsToRemove, isAll) => {
         const { filters, activeReports, kbaDetailsData, searchValue } = this.state;
         if (isAll) {
-            const rows = this.buildRows(activeReports, kbaDetailsData, { has_playbook: 'all' }, searchValue);
-            this.setState({ rows, filters: { has_playbook: 'all' } });
+            const rows = this.buildRows(activeReports, kbaDetailsData, {}, '');
+            this.setState({ rows, filters: {}, searchValue: '' });
         } else {
             itemsToRemove.map(item => {
-                item.urlParam === 'total_risk' &&
-                    this.onFilterChange(item.urlParam, filters[item.urlParam].filter(value => Number(value) !== Number(item.chips[0].value)));
+                if (item.category === 'Description') {
+                    const rows = this.buildRows(activeReports, kbaDetailsData, filters, '');
+                    this.setState({ rows, searchValue: '' });
+                } else {
+                    this.onFilterChange(item.urlParam, filters[item.urlParam].filter(value => String(value) !== String(item.chips[0].value)));
+                }
             });
         }
     }

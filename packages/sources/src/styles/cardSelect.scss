@@ -1,5 +1,10 @@
+.ins-c-sources__wizard--icon {
+  max-height: 64px;
+  filter: grayscale(1);
+}
+
 .ins-c-sources__wizard--card {
-    min-height: 120px;
+    min-height: 140px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 4px 11px 0 rgba(0, 0, 0, 0.12);
     cursor: pointer;
 
@@ -11,6 +16,16 @@
     &.selected {
       border:1px solid;
       border-color: var(--pf-global--primary-color--100);
+
+      .ins-c-sources__wizard--icon {
+        filter: none;
+      }
+    }
+
+    &:hover {
+      .ins-c-sources__wizard--icon {
+        filter: none;
+      }
     }
 
     &.disabled {
@@ -26,5 +41,11 @@
 
     .disabled {
       z-index: -1;
+    }
+
+    .text-elipsis {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 }

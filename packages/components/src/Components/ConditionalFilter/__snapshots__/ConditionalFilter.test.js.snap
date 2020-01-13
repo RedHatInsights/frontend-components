@@ -107,7 +107,7 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
           ]
         }
         onChange={[Function]}
-        placeholder="Filter by Checkbox"
+        placeholder="Filter by checkbox"
         value={Array []}
       />
     </SplitItem>
@@ -189,7 +189,7 @@ exports[`ConditionalFilter render should render correctly No value with value un
       <Text
         id=""
         onSubmit={[Function]}
-        placeholder="Filter by Simple text 1"
+        placeholder="Filter by simple text 1"
         value=""
       />
     </SplitItem>
@@ -285,7 +285,7 @@ exports[`ConditionalFilter render should render correctly Radio filter with valu
           ]
         }
         onChange={[Function]}
-        placeholder="Filter by Radio filter"
+        placeholder="Filter by radio filter"
       />
     </SplitItem>
   </Split>
@@ -366,7 +366,7 @@ exports[`ConditionalFilter render should render correctly Simple text 1 with val
       <Text
         id="simple-text-1"
         onSubmit={[Function]}
-        placeholder="Filter by Simple text 1"
+        placeholder="Filter by simple text 1"
         value=""
       />
     </SplitItem>
@@ -448,7 +448,7 @@ exports[`ConditionalFilter render should render correctly Simple text 2 with val
       <Text
         id="simple-text-2"
         onSubmit={[Function]}
-        placeholder="Filter by Simple text 2"
+        placeholder="Filter by simple text 2"
         value="some-value blaa"
       />
     </SplitItem>
@@ -529,7 +529,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
     >
       <Text
         onSubmit={[Function]}
-        placeholder="Filter by No value"
+        placeholder="Filter by no value"
         value=""
       />
     </SplitItem>
@@ -547,7 +547,7 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
     >
       <Text
         onSubmit={[Function]}
-        placeholder="Filter by Simple text 1"
+        placeholder="Filter by simple text 1"
         value=""
       />
     </SplitItem>

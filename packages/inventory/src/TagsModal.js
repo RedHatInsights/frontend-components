@@ -10,8 +10,13 @@ const TagsModal = ({ showTagDialog, tags, activeSystemTag, tagCount, onToggleTag
             width="auto"
             isOpen={ showTagDialog }
             toggleModal={() => onToggleTagModal()}
+            columns={ [
+                { title: 'Name' },
+                { title: 'Value' },
+                { title: 'Tag Source' }
+            ] }
             systemName={ `${activeSystemTag.display_name} (${tagCount})` }
-            rows={ tags.map(({ value, namespace }) => ([ value, namespace ])) }
+            rows={ tags.map(({ key, value, namespace }) => ([ key, value, namespace ])) }
         />
     );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
 import { TextContent, Text, TextVariants } from '@patternfly/react-core';
-import { AwsIcon, OpenshiftIcon, MicrosoftIcon } from '@patternfly/react-icons';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
 import { schemaBuilder } from './schemaBuilder';
@@ -72,11 +71,17 @@ const sourceTypeMutator = (appTypes, sourceTypes) => (option, formOptions) => {
     };
 };
 
-const iconMapper = (name, DefaultIcon) => ({
-    openshift: OpenshiftIcon,
-    amazon: AwsIcon,
-    azure: MicrosoftIcon
-}[name] || DefaultIcon);
+export const iconMapper = sourceTypes => (name, DefaultIcon) => {
+    const sourceType = sourceTypes.find((type) => type.name === name);
+
+    if (!sourceType || !sourceType.icon_url) {
+        return DefaultIcon;
+    }
+
+    const Icon = () => <img src={sourceType.icon_url} alt={sourceType.product_name} className="ins-c-sources__wizard--icon" />;
+
+    return Icon;
+};
 
 export const nextStep = ({ values: { application, source_type } }) => {
     const appId = application && application.application_type_id;
@@ -96,7 +101,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
             name: 'application.application_type_id',
             label: 'Select your application (optional)',
             // eslint-disable-next-line react/display-name
-            DefaultIcon: () => <React.Fragment />,
+            DefaultIcon: null,
             options: compileAllApplicationComboOptions(applicationTypes),
             mutator: appMutator(applicationTypes),
             helperText: 'Selecting an application will limit the available source types. You can assign an application to your source now, or after adding your source.',
@@ -107,7 +112,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
             name: 'source_type',
             isRequired: true,
             label: 'Select your source type',
-            iconMapper,
+            iconMapper: iconMapper(sourceTypes),
             validate: [{
                 type: validatorTypes.REQUIRED
             }],
