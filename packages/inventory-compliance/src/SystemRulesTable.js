@@ -115,7 +115,7 @@ class SystemRulesTable extends React.Component {
     }
 
     isParent = (row) => {
-        return row.hasOwnProperty('isOpen');
+        return Object.prototype.hasOwnProperty.call(row, 'isOpen');
     }
 
     remediationAvailable = (remediationId) => {
@@ -203,7 +203,7 @@ class SystemRulesTable extends React.Component {
                     original: remediationAvailable
                 } : null
             ].filter(e => e)
-        }
+        };
     }
 
     conditionalLink = (children, href, additionalProps) => (
@@ -563,14 +563,14 @@ SystemRulesTable.propTypes = {
     severity: propTypes.array,
     rows: propTypes.array,
     system: propTypes.object,
-    itemsPerPage: propTypes.number
+    itemsPerPage: propTypes.number,
     remediationsEnabled: propTypes.bool
 };
 
 SystemRulesTable.defaultProps = {
     profileRules: [{ rules: [] }],
     hidePassed: false,
-    itemsPerPage: 10
+    itemsPerPage: 10,
     remediationsEnabled: true
 };
 
