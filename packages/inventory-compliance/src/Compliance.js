@@ -59,7 +59,7 @@ query System($systemId: String!){
 }
 `;
 
-export const columns = [
+const columns = [
     { title: 'Rule', transforms: [ sortable ] },
     { title: 'Policy', transforms: [ sortable ] },
     { title: 'Severity', transforms: [ sortable ] },
