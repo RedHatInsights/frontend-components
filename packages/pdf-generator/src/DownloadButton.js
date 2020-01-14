@@ -22,7 +22,7 @@ class DownloadButton extends React.Component {
             type,
             style,
             title,
-            preview,
+            isPreview,
             reportName,
             ...props
         } = this.props;
@@ -75,7 +75,7 @@ class DownloadButton extends React.Component {
 
         return (
             <React.Fragment>
-                { preview ? <PDFViewer>
+                { isPreview ? <PDFViewer>
                     {document}
                 </PDFViewer> : <PDFDownloadLink
                     document={document}
@@ -110,7 +110,7 @@ DownloadButton.propTypes = {
             })
         ]))
     ]),
-    preview: PropTypes.bool,
+    isPreview: PropTypes.bool,
     label: PropTypes.node
 };
 
@@ -121,7 +121,7 @@ DownloadButton.defaultProps = {
     type: 'Default',
     fileName: '',
     label: 'Download PDF',
-    preview: false
+    isPreview: false
 };
 
 export default DownloadButton;

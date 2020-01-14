@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { CircleIconConfig } from '@patternfly/react-icons';
+import PropTypes from 'prop-types';
 import { View, Canvas, Text } from '@react-pdf/renderer';
 import {
     ChartPie,
@@ -135,12 +136,23 @@ class Chart extends Component {
     }
 }
 
-Chart.propTypes = {};
+Chart.propTypes = {
+    colorSchema: PropTypes.oneOf([
+        'blue',
+        'cyan',
+        'default',
+        'gold',
+        'gray',
+        'green',
+        'multi',
+        'multiOrdered',
+        'multiUnordered',
+        'orange',
+        'purple'
+    ])
+};
 Chart.defaultProps = {
     colorSchema: 'multi-ordered'
 };
-
-// voronoi
-// 'multi-ordered'
 
 export default Chart;

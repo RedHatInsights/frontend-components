@@ -7,3 +7,4 @@ export { default as Panel } from './components/Panel';
 export { default as PanelItem } from './components/PanelItem';
 export { default as Battery } from './components/Battery';
 export { default as Chart } from './components/Chart';
+export * from './utils/text';

@@ -5,7 +5,6 @@ import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
-import async from 'rollup-plugin-async';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
@@ -32,7 +31,6 @@ const babelOptions = {
 };
 
 const plugins = [
-    async(),
     nodeResolve(),
     babel(babelOptions),
     commonjs(commonjsOptions),
