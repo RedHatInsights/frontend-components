@@ -112,7 +112,9 @@ class ContextEntityTableToolbar extends Component {
                     items: [
                         {
                             label: !allTagsLoaded ? <Fragment>
+                                <span>
                                     Loading... <Spinner size="md" />
+                                </span>
                             </Fragment> : <div className="ins-c-inventory__tags-no-tags">
                                 No tags available
                             </div>,

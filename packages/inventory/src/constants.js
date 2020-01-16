@@ -63,7 +63,7 @@ export function constructGroups(allTags) {
                 <Tooltip
                     position="right"
                     enableFlip
-                    content={`Applicable to ${count} systems.`}
+                    content={`Applicable to ${count} system${count === 1 ? '' : 's'}.`}
                 >
                     <Badge isRead={count <= 0}>{ count }</Badge>
                 </Tooltip>
