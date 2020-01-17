@@ -14,6 +14,9 @@ export const shouldSkipSelection = (typeName, authName, appName = 'generic') =>
 export const shouldSkipEndpoint = (typeName, authName, appName = 'generic') =>
     get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'skipEndpoint' ], false);
 
+export const hasCustomSteps = (typeName, authName, appName = 'generic') =>
+    get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'customSteps' ], false);
+
 export const getAdditionalStepKeys = (typeName, authName, appName = 'generic') =>
     get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'includeStepKeyFields' ], []);
 
@@ -71,10 +74,11 @@ export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpoi
         const stepKey = step.stepKey || `${name}-${authName}-${appName}-additional-step`;
 
         const skipEndpoint = shouldSkipEndpoint(name, authName, appName);
+        const customSteps = hasCustomSteps(name, authName, appName);
 
         return ({
             stepKey: stepKey,
-            nextStep: hasEndpointStep && !skipEndpoint ? `${name}-endpoint` : 'summary',
+            nextStep: hasEndpointStep && !skipEndpoint && !customSteps ? `${name}-endpoint` : 'summary',
             ...step,
             fields: [
                 ...injectAuthFieldsInfo(step.fields, name, authName, appName, doNotRequirePassword),
@@ -205,6 +209,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
             const appName = hardcodedSchema(type.name, auth.type, appType.name) ? appType.name : 'generic';
 
             const skipEndpoint = shouldSkipEndpoint(type.name, auth.type, appName);
+            const customSteps = hasCustomSteps(type.name, auth.type, appName);
 
             fields.push(createEndpointFlagger(skipEndpoint));
 
@@ -212,7 +217,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
             if (getAdditionalSteps(type.name, auth.type, appType.name).length > 0) {
                 nextStep = `${type.name}-${auth.type}-additional-step`;
-            } else if (endpointFields.length === 0 && !skipEndpoint) {
+            } else if (endpointFields.length === 0 && !skipEndpoint && !customSteps) {
                 nextStep = `${type.name}-endpoint`;
             } else {
                 nextStep = 'summary';
@@ -268,6 +273,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
         const additionalStepName = `${type.name}-${auth.type}-${appType.name}-additional-step`;
 
         const skipEndpoint = shouldSkipEndpoint(type.name, auth.type, appName);
+        const customSteps = hasCustomSteps(type.name, auth.type, appName);
 
         fields.push(createEndpointFlagger(skipEndpoint));
 
@@ -292,7 +298,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
             if (firstAdditonalStep.nextStep) {
                 nextStep = firstAdditonalStep.nextStep;
-            } else if (endpointFields.length === 0 && !skipEndpoint) {
+            } else if (endpointFields.length === 0 && !skipEndpoint && !customSteps) {
                 nextStep = `${type.name}-endpoint`;
             } else {
                 nextStep = 'summary';
