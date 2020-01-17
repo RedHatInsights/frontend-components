@@ -1,7 +1,8 @@
-import React from 'react';
 import { EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateVariant, Title } from '@patternfly/react-core';
-import PropTypes from 'prop-types';
+
 import { CubesIcon } from '@patternfly/react-icons';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const MessageState = ({ children, icon, iconClass, iconStyle, size, text, title, variant }) => (
     <EmptyState variant={variant}>
@@ -31,7 +32,7 @@ MessageState.defaultProps = {
     icon: CubesIcon,
     title: '',
     variant: EmptyStateVariant.full,
-    size: ''
+    size: 'md'
 };
 
 export default MessageState;
