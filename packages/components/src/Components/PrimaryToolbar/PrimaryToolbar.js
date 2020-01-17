@@ -1,17 +1,18 @@
+import { DataToolbar, DataToolbarContent, DataToolbarGroup, DataToolbarItem } from '@patternfly/react-core/dist/js/experimental';
 import React, { Component } from 'react';
-import { DataToolbar, DataToolbarItem, DataToolbarContent, DataToolbarGroup } from '@patternfly/react-core/dist/js/experimental';
-import { Pagination } from '@patternfly/react-core';
-import { ConditionalFilter } from '../ConditionalFilter';
+
+import Actions from './Actions';
 import { BulkSelect } from '../BulkSelect';
+import { ConditionalFilter } from '../ConditionalFilter';
 import { DownloadButton } from '../DownloadButton';
 import { FilterChips } from '../FilterChips';
-import { SortByDirection } from '@patternfly/react-table';
-import SortBy from './SortBy';
-import Actions from './Actions';
+import { Pagination } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
+import SortBy from './SortBy';
+import { SortByDirection } from '@patternfly/react-table';
 
 class PrimaryToolbar extends Component {
-    render () {
+    render() {
         const {
             id,
             className,
@@ -44,10 +45,10 @@ class PrimaryToolbar extends Component {
         ];
         return (
             <DataToolbar
-                { ...props }
-                className={ `${className || ''} ins-c-primary-toolbar` }
-                toggleIsExpanded={ toggleIsExpanded }
-                id={ id || 'ins-primary-data-toolbar' }
+                {...props}
+                className={`${className || ''} ins-c-primary-toolbar`}
+                toggleIsExpanded={toggleIsExpanded}
+                id={id || 'ins-primary-data-toolbar'}
             >
                 <DataToolbarContent>
                     {
@@ -62,7 +63,7 @@ class PrimaryToolbar extends Component {
                                     {
                                         React.isValidElement(bulkSelect) ?
                                             bulkSelect :
-                                            <BulkSelect {...bulkSelect } />
+                                            <BulkSelect {...bulkSelect} />
                                     }
                                 </DataToolbarItem>
                             }
@@ -72,7 +73,7 @@ class PrimaryToolbar extends Component {
                                     {
                                         React.isValidElement(filterConfig) ?
                                             filterConfig :
-                                            <ConditionalFilter { ...filterConfig } />
+                                            <ConditionalFilter {...filterConfig} />
                                     }
                                 </DataToolbarItem>
                             }
@@ -88,7 +89,7 @@ class PrimaryToolbar extends Component {
                                 actionsConfig :
                                 <Actions
                                     {...actionsConfig || {}}
-                                    exportConfig={ exportConfig }
+                                    exportConfig={exportConfig}
                                     overflowActions={overflowActions}
                                 />
                         )
@@ -99,11 +100,11 @@ class PrimaryToolbar extends Component {
                             {
                                 React.isValidElement(sortByConfig) ?
                                     sortByConfig :
-                                    <SortBy  {...sortByConfig }/>
+                                    <SortBy  {...sortByConfig} />
                             }
                         </DataToolbarItem>
                     }
-                    { children }
+                    {children}
                     {
                         pagination &&
                         <DataToolbarItem className="ins-c-primary-toolbar__pagination">
@@ -117,15 +118,14 @@ class PrimaryToolbar extends Component {
                 </DataToolbarContent>
                 {
                     activeFiltersConfig &&
-                    <DataToolbarContent>
-                        <DataToolbarItem>
-                            {
-                                React.isValidElement(activeFiltersConfig) ?
-                                    activeFiltersConfig :
-                                    <FilterChips { ...activeFiltersConfig } />
-                            }
-                        </DataToolbarItem>
-                    </DataToolbarContent>
+                        React.isValidElement(activeFiltersConfig) ?
+                        <DataToolbarContent>
+                            <DataToolbarItem>{activeFiltersConfig}</DataToolbarItem>
+                        </DataToolbarContent>
+                        : activeFiltersConfig !== undefined && activeFiltersConfig.filters.length > 0 &&
+                        <DataToolbarContent>
+                            <DataToolbarItem><FilterChips {...activeFiltersConfig} /></DataToolbarItem>
+                        </DataToolbarContent>
                 }
             </DataToolbar>
         );
