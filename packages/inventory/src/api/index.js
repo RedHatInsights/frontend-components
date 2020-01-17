@@ -124,6 +124,15 @@ export function getTags(systemId) {
     return hosts.apiHostGetHostTags(systemId).then(({ results }) => ({ results: Object.values(results)[0] }));
 }
 
-export function getAllTags(search) {
-    return tags.apiTagGetTags(undefined, undefined, undefined, 25, undefined, undefined, search);
+export function getAllTags(search, { filters } = {}) {
+    const { tagFilters } = filters ? filters.reduce(filtersReducer, {}) : {};
+    return tags.apiTagGetTags(
+        tagFilters ? constructTags(tagFilters) : undefined,
+        undefined,
+        undefined,
+        10,
+        undefined,
+        undefined,
+        search
+    );
 }

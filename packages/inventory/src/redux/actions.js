@@ -119,7 +119,7 @@ export const toggleTagModal = (isOpen) => ({
     }
 });
 
-export const fetchAllTags = (search) => ({
+export const fetchAllTags = (search, options) => ({
     type: ACTION_TYPES.ALL_TAGS,
-    payload: getAllTags(search)
+    payload: getAllTags(search, options)
 });
