@@ -41,7 +41,6 @@ describe('doCreateSource', () => {
 
         let CREATE_AUTHENTICATION_DATA_OUT;
         let CREATE_APPLICATION_DATA_OUT;
-        let BILLING_SOURCE_DATA_OUT;
         let COST_MGMT_AUTH_OUT;
 
         let createSource;
@@ -87,7 +86,6 @@ describe('doCreateSource', () => {
 
             CREATE_AUTHENTICATION_DATA_OUT = { something: '123' };
             CREATE_APPLICATION_DATA_OUT = { application: 234 };
-            BILLING_SOURCE_DATA_OUT = { billing_source: 1 };
             COST_MGMT_AUTH_OUT = { authentication: 1 };
 
             createSource = jest.fn().mockImplementation(() => Promise.resolve(CREATE_SOURCE_DATA_OUT));
@@ -152,7 +150,7 @@ describe('doCreateSource', () => {
         it('create source with noEndpoint set', async () => {
             const FORM_DATA = {
                 ...INITIAL_VALUES,
-                noEndpoint: true
+                endpoint: undefined
             };
             const EXPECTED_RESULT = {
                 id: CREATED_SOURCE_ID,
@@ -247,7 +245,7 @@ describe('doCreateSource', () => {
             const FORM_DATA = {
                 ...INITIAL_VALUES,
                 application: { ...APPLICATION_FORM_DATA, application_type_id: APP_ID },
-                noEndpoint: true
+                endpoint: undefined
             };
 
             const EXPECTED_RESULT = {

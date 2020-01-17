@@ -367,5 +367,50 @@ export default {
             }
         },
         endpoint: {}
+    },
+    satellite: {
+        endpoint: {},
+        authentication: {
+            receptor_node: {
+                generic: {
+                    'source.source_ref': {
+                        label: 'Satellite ID',
+                        isRequired: true,
+                        validate: [{ type: validatorTypes.REQUIRED }],
+                        component: componentTypes.TEXT_FIELD
+                    },
+                    'endpoint.receptor_node': {
+                        label: 'Receptor ID',
+                        isRequired: true,
+                        validate: [{ type: validatorTypes.REQUIRED }],
+                        component: componentTypes.TEXT_FIELD
+                    },
+                    skipSelection: true,
+                    onlyHiddenFields: true,
+                    customSteps: true,
+                    additionalSteps: [{
+                        title: 'Configure receptor node credentials',
+                        nextStep: 'summary',
+                        fields: [{
+                            name: 'source.source_ref'
+                        }, {
+                            name: 'endpoint.receptor_node'
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'endpoint.role',
+                            hideField: true,
+                            initializeOnMount: true,
+                            initialValue: 'sattelite'
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initializeOnMount: true,
+                            initialValue: 'receptor_node'
+                        }]
+                    }]
+                }
+            }
+        }
     }
 };
