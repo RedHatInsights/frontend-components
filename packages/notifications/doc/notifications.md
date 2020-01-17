@@ -10,7 +10,7 @@ You can use notifications without the middleware. For that you will need the `No
 import React, { Fragment } from 'react'
 import { Provider } from 'react-redux'
 import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
-import { NotificationsPortal, notifications } from from '@redhat-cloud-services/frontend-components-notifications';
+import { NotificationsPortal, notifications } from '@redhat-cloud-services/frontend-components-notifications';
 
 // you also need styles for the component
 import '@redhat-cloud-services/frontend-components-notifications/index.css';
