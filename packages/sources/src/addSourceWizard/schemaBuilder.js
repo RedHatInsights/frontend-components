@@ -138,7 +138,7 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
                 hideField: onlyHiddenFields
             });
             stepMapper[auth.type] = getAdditionalSteps(type.name, auth.type).length > 0 ? `${type.name}-${auth.type}-generic-additional-step` :
-                endpointFields.length === 0 ? `${type.name}-endpoint` : 'summary';
+                endpointFields.length === 0 && !skipEndpoint ? `${type.name}-endpoint` : 'summary';
         });
 
         return ({
@@ -160,7 +160,7 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
         fields.push(createEndpointFlagger(skipEndpoint));
 
         const nextStep = getAdditionalSteps(type.name, auth.type).length > 0 ? additionalStepName :
-            endpointFields.length === 0 ? `${type.name}-endpoint` : 'summary';
+            endpointFields.length === 0 && !skipEndpoint ? `${type.name}-endpoint` : 'summary';
 
         const additionalIncludesStepKeys = getAdditionalStepKeys(type.name, auth.type);
         const hasCustomStep = shouldSkipSelection(type.name, auth.type);

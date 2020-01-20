@@ -1,14 +1,9 @@
 import {
     createEndpointFlagger,
-    createGenericAuthTypeSelection,
-    createSpecificAuthTypeSelection
-} from '../../addSourceWizard/schemaBuilder';
-import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
-import sourceTypes from '../helpers/sourceTypes';
-import applicationTypes from '../helpers/applicationTypes';
-import { componentTypes } from '@data-driven-forms/react-form-renderer';
+    createGenericAuthTypeSelection
+} from '../../../addSourceWizard/schemaBuilder';
 
-jest.mock('../../addSourceWizard/hardcodedSchemas', () => ({
+jest.mock('../../../addSourceWizard/hardcodedSchemas', () => ({
     openshiftAdditionalStep: {
         authentication: {
             token: {
@@ -200,59 +195,6 @@ describe('generate auth selection pages', () => {
 
                 expect(createGenericAuthTypeSelection(MULTIPLE_SELECTION_TYPE, EMPTY_APPEND_ENDPOINT, NOT_EDITING)).toEqual(expectedSchema);
             });
-        });
-
-    });
-
-    describe.skip('createSpecificAuthTypeSelection', () => {
-        it('generate single selection', () => {
-            const fields = [
-                ...AZURE_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey),
-                createEndpointFlagger(false)
-            ];
-            const expectedName = `${AZURE_TYPE.name}-${TOPOLOGY_INV_APP.id}`;
-
-            expectedSchema = expect.objectContaining({
-                fields: expect.arrayContaining(fields),
-                title: expect.any(String),
-                stepKey: expectedName,
-                name: expectedName,
-                nextStep: 'summary'
-            });
-
-            expect(createSpecificAuthTypeSelection(AZURE_TYPE, TOPOLOGY_INV_APP, APPEND_ENDPOINT_FIELDS, NOT_EDITING)).toEqual(expectedSchema);
-        });
-
-        it('generate single selection with endpoints', () => {
-            const fields = AZURE_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey);
-            const expectedName = `${AZURE_TYPE.name}-${TOPOLOGY_INV_APP.id}`;
-
-            expectedSchema = expect.objectContaining({
-                fields: expect.arrayContaining(fields),
-                title: expect.any(String),
-                stepKey: expectedName,
-                name: expectedName,
-                nextStep: `${AZURE_TYPE.name}-endpoint`
-            });
-
-            expect(createSpecificAuthTypeSelection(AZURE_TYPE, TOPOLOGY_INV_APP, EMPTY_APPEND_ENDPOINT, NOT_EDITING)).toEqual(expectedSchema);
-        });
-
-        it('generate with custom steps', () => {
-            const expectedName = `${AMAZON_TYPE.name}-${COST_MANAGEMENT_APP.id}`;
-            const firstAdditionalStep = hardcodedSchemas[AMAZON_TYPE.name]
-            .authentication.arn[COST_MANAGEMENT_APP.name].additionalSteps.find(({ stepKey }) => !stepKey);
-            const fields = firstAdditionalStep.fields.map((field) => expect.objectContaining(field));
-
-            expectedSchema = expect.objectContaining({
-                fields: expect.arrayContaining(fields),
-                title: firstAdditionalStep.title,
-                stepKey: expectedName,
-                name: expectedName,
-                nextStep: firstAdditionalStep.nextStep
-            });
-
-            expect(createSpecificAuthTypeSelection(AMAZON_TYPE, COST_MANAGEMENT_APP, APPEND_ENDPOINT_FIELDS, NOT_EDITING)).toEqual(expectedSchema);
         });
     });
 });
