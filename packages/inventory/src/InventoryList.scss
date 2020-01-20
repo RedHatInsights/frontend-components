@@ -20,6 +20,23 @@
     }
 }
 
+.ins-c-inventory__tags-filter ul {
+    label.pf-c-check__label {
+        display: flex;
+        width: 100%;
+
+        .pf-c-badge { margin-left: auto; }
+    }
+
+    .ins-c-inventory__tags-tail {
+        display: flex;
+
+        .ins-c-inventory__tags-no-tags { margin: auto; }
+
+        .pf-c-spinner { margin-left: auto; }
+    }
+}
+
 .ins-c-entity-table.pf-c-table {
 
     .ins-composed-col div:nth-child(2) {
