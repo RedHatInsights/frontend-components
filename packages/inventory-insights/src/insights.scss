@@ -95,3 +95,23 @@
         height: 1.25rem; 
     }
 }
+
+.chartSpikeIconColor  {
+    color: var(--pf-global--primary-color--100);
+}
+
+.pf-c-clipboard-copy__group-copy {
+    background-color: var(--pf-global--BackgroundColor--100);
+}
+
+.pf-l-stack {
+    color: var(--pf-c-empty-state__body--Color);
+}
+  
+.ins-c-insights__check {
+    color: var(--pf-global--success-color--200);
+}
+
+.ins-c-background__default {
+    color: var(--pf-global--BackgroundColor--100);
+}

@@ -1,14 +1,13 @@
 /* eslint-disable camelcase */
 import './insights.scss';
 
-import { AnsibeTowerIcon, CheckCircleIcon, CheckIcon, ExternalLinkAltIcon, PficonSatelliteIcon, TimesCircleIcon } from '@patternfly/react-icons';
+import { AnsibeTowerIcon, ChartSpikeIcon, CheckCircleIcon, CheckIcon, ExternalLinkAltIcon, PficonSatelliteIcon, TimesCircleIcon } from '@patternfly/react-icons';
 import { BASE_FETCH_URL, FILTER_CATEGORIES as FC } from './Constants';
 import { Battery, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
-import { Card, CardBody, ToolbarItem } from '@patternfly/react-core';
+import { Bullseye, Button, Card, CardBody, ClipboardCopy, Stack, StackItem, ToolbarItem } from '@patternfly/react-core';
 import React, { Component, Fragment } from 'react';
 import { SortByDirection, Table, TableBody, TableHeader, cellWidth, sortable } from '@patternfly/react-table';
 import { flatten, sortBy } from 'lodash';
-import { global_BackgroundColor_100, global_success_color_200 } from '@patternfly/react-tokens';
 
 import { List } from 'react-content-loader';
 import MessageState from './MessageState';
@@ -268,7 +267,7 @@ class InventoryRuleList extends Component {
     }
 
     onChipDelete = (event, itemsToRemove, isAll) => {
-        const { filters, activeReports, kbaDetailsData, searchValue } = this.state;
+        const { filters, activeReports, kbaDetailsData } = this.state;
         if (isAll) {
             const rows = this.buildRows(activeReports, kbaDetailsData, {}, '');
             this.setState({ rows, filters: {}, searchValue: '' });
@@ -354,8 +353,9 @@ class InventoryRuleList extends Component {
 
         return <Fragment>
             {inventoryReportFetchStatus === 'pending' ||
-                (inventoryReportFetchStatus === 'fulfilled' && hideResultsSatelliteManaged) ?
-                <React.Fragment></React.Fragment>
+                (inventoryReportFetchStatus === 'fulfilled' && hideResultsSatelliteManaged) ||
+                entity.insights_id === null ?
+                <Fragment />
                 :
                 <PrimaryToolbar
                     actionsConfig={{ actions }}
@@ -369,7 +369,7 @@ class InventoryRuleList extends Component {
                             isDisabled={selectedAnsibleRules.length === 0}
                             dataProvider={() => this.processRemediation(selectedAnsibleRules)}
                             onRemediationCreated={result => addNotification(result.getNotification())} >
-                            {AnsibeTowerIcon && <AnsibeTowerIcon size='sm' color={global_BackgroundColor_100.value} />} Remediate
+                            {AnsibeTowerIcon && <AnsibeTowerIcon size='sm' className='ins-c-background__default' />} Remediate
                         </RemediationButton>
                     </ToolbarItem>
                 </PrimaryToolbar>
@@ -403,13 +403,33 @@ class InventoryRuleList extends Component {
                                     text={`This filter criteria matches no rules. Try changing your filter settings.`} />
                             }
                         </Fragment>
-                        :
-                        <Card>
+                        : entity.insights_id !== null ? <Card>
                             <CardBody>
-                                <MessageState icon={CheckIcon} iconStyle={{ color: global_success_color_200.value }} size='md'
+                                <MessageState icon={CheckIcon} iconClass='ins-c-insights__check' size='md'
                                     title='No rule hits' text={`No known rules affect this system`} />
                             </CardBody>
                         </Card>
+                            : <MessageState
+                                iconClass='chartSpikeIconColor'
+                                icon={ChartSpikeIcon}
+                                title='Get started with Red Hat Insights'
+                                text={<Bullseye>
+                                    <Stack gutter="md">
+                                        <StackItem>
+                                            1. Install the client on the RHEL system.
+                                            <ClipboardCopy>yum install insights-client</ClipboardCopy>
+                                        </StackItem>
+                                        <StackItem>
+                                            2. Register the system to Red Hat Insights.
+                                            <ClipboardCopy>insights-client --register</ClipboardCopy>
+                                        </StackItem>
+                                    </Stack>
+                                </Bullseye>}>
+                                <Button component="a" href="https://access.redhat.com/products/red-hat-insights#getstarted"
+                                    target="_blank" variant="primary">
+                                    Getting started documentation
+                                </Button>
+                            </MessageState>
                     ))
             }
             {inventoryReportFetchStatus === 'failed' && entity &&
