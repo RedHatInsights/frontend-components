@@ -58,14 +58,10 @@ class ContextEntityTableToolbar extends Component {
     applyTags = (newSelection, debounced = true) => {
         const { perPage, filters, onRefreshData } = this.props;
         const tagFilters = mapGroups(newSelection);
-        const tagFiltersIndex = filters.findIndex((value) => value.hasOwnProperty('tagFilters'));
-        if (tagFiltersIndex !== -1) {
-            filters.splice(tagFiltersIndex, 1);
-        }
 
         const refresh = debounced ? this.debouncedRefresh : onRefreshData;
         const newFilters = [
-            ...filters,
+            ...filters.filter(oneFilter => !oneFilter.hasOwnProperty('tagFilters')),
             { tagFilters }
         ];
         refresh({
