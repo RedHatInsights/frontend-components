@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { ChipGroupToolbarItem } from '@patternfly/react-core';
 import FilterChips from './FilterChips';
 
 const filters = [
@@ -75,6 +76,14 @@ describe('FilterChips component', () => {
             wrapper.find('button').last().simulate('click');
             expect(onDelete).toHaveBeenCalledWith(expect.anything(), filters, true);
             expect(onDelete).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not call onDelete when clicking on any ChipGroupToolbarItem', () => {
+            const onDelete = jest.fn();
+            const wrapper = mount(<FilterChips filters={ filters } onDelete={ onDelete } />);
+
+            wrapper.find(ChipGroupToolbarItem).forEach(group => group.simulate('click'));
+            expect(onDelete).not.toHaveBeenCalled();
         });
     });
 });
