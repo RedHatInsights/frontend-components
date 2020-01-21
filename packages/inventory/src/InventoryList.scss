@@ -4,7 +4,7 @@
 @import '~@redhat-cloud-services/frontend-components/components/TagCount.css';
 @import '~@redhat-cloud-services/frontend-components/components/TagModal.css';
 
-.ins-c-inventory__table--toolbar {
+.ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items) {
     .pf-c-data-toolbar__content {
         .pf-c-data-toolbar__item:last-child { @include rem('min-width', 200px); }
     }

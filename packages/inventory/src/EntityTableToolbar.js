@@ -226,7 +226,7 @@ class ContextEntityTableToolbar extends Component {
         ];
         return <PrimaryToolbar
             {...props}
-            className="ins-c-inventory__table--toolbar"
+            className={`ins-c-inventory__table--toolbar ${hasItems ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
             {...inventoryFilters.length > 0 && {
                 filterConfig: {
                     ...filterConfig || {},
@@ -299,6 +299,7 @@ function mapStateToProps(
         page: hasItems ? currPage : page,
         perPage: hasItems ? currPerPage : perPage,
         total: hasItems ? totalItems : total,
+        hasItems,
         loaded,
         allTagsLoaded,
         allTags,
