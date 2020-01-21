@@ -2,9 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SystemRulesTable from './SystemRulesTable';
-import { SortByDirection, sortable } from '@patternfly/react-table';
-import { TITLE_COLUMN, ANSIBLE_ICON } from './Constants';
+import { SortByDirection } from '@patternfly/react-table';
+import { TITLE_COLUMN } from './Constants';
 import { remediationsResponse, system, profileRules } from './Fixtures';
+import { columns } from './defaultColumns';
 import debounce from 'lodash/debounce';
 
 jest.mock('lodash/debounce');
@@ -12,17 +13,8 @@ debounce.mockImplementation(fn => fn);
 global.fetch = require('jest-fetch-mock');
 
 describe('SystemRulesTable component', () => {
-    let columns;
-
     beforeEach(() => {
         fetch.mockResponse(JSON.stringify(remediationsResponse));
-        columns = [
-            { title: 'Rule', transforms: [ sortable ] },
-            { title: 'Policy', transforms: [ sortable ] },
-            { title: 'Severity', transforms: [ sortable ] },
-            { title: 'Passed', transforms: [ sortable ] },
-            { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible', transforms: [ sortable ] }
-        ];
     });
 
     it('should render', () => {

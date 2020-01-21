@@ -180,29 +180,46 @@ class SystemRulesTable extends React.Component {
         </StackItem> || '' }
     </Stack>
 
-    calculateParent = ({ profile }, { title, severity, compliant, identifier, remediationAvailable }) => {
-        const { columns } = this.state;
-        return {
-            isOpen: false,
-            cells: [
-                columns.find((column) => column.title === 'Rule') ? { title: this.ruleTitleCell(title, identifier), original: title } : null,
-                columns.find((column) => column.title === 'Policy') ? { title: profile.name, original: profile.name } : null,
-                columns.find((column) => column.title === 'Severity') ? {
+    columnsToTableHeaders = (columns, profile, { title, severity, compliant, identifier, remediationAvailable }) => (
+        columns.map((column) => {
+            let tableHeader;
+
+            if (column.title === 'Rule') {
+                tableHeader = { title: this.ruleTitleCell(title, identifier), original: title };
+            } else if (column.title === 'Policy') {
+                tableHeader = { title: profile.name, original: profile.name };
+            } else if (column.title === 'Severity') {
+                tableHeader = {
                     title: (severity.toLowerCase() === 'high' ? HIGH_SEVERITY :
                         severity.toLowerCase() === 'medium' ? MEDIUM_SEVERITY :
                             severity.toLowerCase() === 'low' ? LOW_SEVERITY : severity),
                     original: severity.toLowerCase()
-                } : null,
-                columns.find((column) => column.title === 'Passed') ? {
+                };
+            } else if (column.title === 'Passed') {
+                tableHeader = {
                     title: (compliant ? <CheckCircleIcon className='ins-u-passed' /> :
                         <ExclamationCircleIcon className='ins-u-failed' />),
                     original: compliant
-                } : null,
-                columns.find((column) => column.original === 'Ansible') ? {
+                } ;
+            } else if (column.original === 'Ansible') {
+                tableHeader = {
                     title: (remediationAvailable ? <CheckIcon className='ins-c-compliance-system-rule-check' /> : 'No'),
                     original: remediationAvailable
-                } : null
-            ].filter(e => e)
+                };
+            } else {
+                tableHeader = null;
+            }
+
+            return tableHeader;
+        })
+    );
+
+    calculateParent = ({ profile }, rule) => {
+        const { columns } = this.state;
+
+        return {
+            isOpen: false,
+            cells: this.columnsToTableHeaders(columns, profile, rule).filter(e => e)
         };
     }
 

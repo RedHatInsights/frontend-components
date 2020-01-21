@@ -3,13 +3,12 @@ import propTypes from 'prop-types';
 import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import SystemPolicyCards from './SystemPolicyCards';
 import SystemRulesTable from './SystemRulesTable';
-import { sortable } from '@patternfly/react-table';
-import { ANSIBLE_ICON } from './Constants';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
 import { ClipboardCheckIcon } from '@patternfly/react-icons';
+import { columns } from './defaultColumns';
 import {
     Card,
     CardBody,
@@ -58,14 +57,6 @@ query System($systemId: String!){
     }
 }
 `;
-
-const columns = [
-    { title: 'Rule', transforms: [ sortable ] },
-    { title: 'Policy', transforms: [ sortable ] },
-    { title: 'Severity', transforms: [ sortable ] },
-    { title: 'Passed', transforms: [ sortable ] },
-    { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible', transforms: [ sortable ] }
-];
 
 const SystemQuery = ({ data, loading, hidePassed }) => (
     <React.Fragment>
@@ -155,6 +146,13 @@ SystemDetails.propTypes = {
             inventoryId: propTypes.string
         })
     }),
+    columns: propTypes.shape([
+        {
+            title: propTypes.oneOfType([ propTypes.string, propTypes.object ]).isRequired,
+            transforms: propTypes.array.isRequired,
+            original: propTypes.string
+        }
+    ]),
     client: propTypes.object,
     hidePassed: propTypes.bool
 };
