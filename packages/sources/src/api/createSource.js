@@ -36,7 +36,7 @@ export const doCreateSource = async (formData, sourceTypes) => {
 
         const promises = [];
 
-        if (!formData.noEndpoint) {
+        if (formData.endpoint) {
             const { scheme, host, port, path } = urlOrHost(formData);
 
             const endPointPort = parseInt(port, 10);

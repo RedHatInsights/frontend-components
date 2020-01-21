@@ -1,28 +1,33 @@
+import React from 'react';
+import { Badge, Tooltip } from '@patternfly/react-core';
+
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
 export const TAG_CHIP = 'tags';
 
-export function constructValues(groupValue, tags) {
-    return Object.entries(groupValue).map(([ key, value ]) => {
-        if (value) {
-            const { tagName, tagValue } = tags[key];
+export function constructValues(groupValue) {
+    return Object.entries(groupValue).map(([ key, { isSelected, group, item }]) => {
+        if (isSelected) {
+            const { tag: { key: tagKey, value: tagValue } } = item.meta;
             return {
                 key,
-                name: `${tagName} - ${tagValue}`
+                tagKey,
+                value: tagValue,
+                name: `${tagKey}: ${tagValue}`,
+                group
             };
         }
     }).filter(Boolean);
 }
 
-export function mapGroups(currSelection, allTags, valuesKey = 'values') {
+export function mapGroups(currSelection, valuesKey = 'values') {
     return Object.entries(currSelection).map(([ groupKey, groupValue ]) => {
-        const { tags, name } = allTags[groupKey];
-        const values = constructValues(groupValue, tags);
+        const values = constructValues(groupValue, groupKey);
         if (values && values.length > 0) {
             return {
                 type: 'tags',
                 key: groupKey,
-                category: name,
+                category: values[0].group.label,
                 [valuesKey]: values
             };
         }
@@ -32,7 +37,18 @@ export function mapGroups(currSelection, allTags, valuesKey = 'values') {
 export function filterToGroup(filter = [], valuesKey = 'values') {
     return filter.reduce((accGroup, group) => ({
         ...accGroup,
-        [group.key]: group[valuesKey].reduce((acc, curr) => ({ ...acc, [curr.key]: true }), {})
+        [group.key]: group[valuesKey].reduce((acc, curr) => ({ ...acc, [curr.key]: {
+            isSelected: true,
+            group: curr.group,
+            item: {
+                meta: {
+                    tag: {
+                        key: curr.key,
+                        value: curr.value
+                    }
+                }
+            }
+        } }), {})
     }), {});
 }
 
@@ -41,8 +57,25 @@ export function constructGroups(allTags) {
         label: name,
         value: key,
         type: 'checkbox',
-        items: tags.map(({ tagName, tagValue }) => ({
-            label: `${tagName} - ${tagValue}`
+        items: tags.map(({ count, tag: { key: tagKey, value } }) => ({
+            label: <React.Fragment>
+                <div>{tagKey}: {value}</div>
+                <Tooltip
+                    position="right"
+                    enableFlip
+                    content={`Applicable to ${count} system${count === 1 ? '' : 's'}.`}
+                >
+                    <Badge isRead={count <= 0}>{ count }</Badge>
+                </Tooltip>
+            </React.Fragment>,
+            meta: {
+                count,
+                tag: {
+                    key: tagKey,
+                    value
+                }
+            },
+            value: tagKey
         }))
     }));
 }
@@ -51,7 +84,7 @@ export function reduceFilters(filters) {
     return filters.reduce((acc, oneFilter) => {
         if (oneFilter.value === TEXT_FILTER) {
             return { ...acc, textFilter: oneFilter.filter };
-        } else if ('tagFilters' in  oneFilter) {
+        } else if ('tagFilters' in oneFilter) {
             return {
                 ...acc,
                 tagFilters: filterToGroup(oneFilter.tagFilters)

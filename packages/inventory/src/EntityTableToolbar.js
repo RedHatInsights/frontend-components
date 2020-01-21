@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 import { fetchAllTags, clearFilters } from './redux/actions';
 import debounce from 'lodash/debounce';
+import { Spinner } from '@patternfly/react-core/dist/esm/experimental';
 import { InventoryContext } from './Inventory';
 import {
     mapGroups,
@@ -19,11 +20,16 @@ import flatMap from 'lodash/flatMap';
 class ContextEntityTableToolbar extends Component {
     state = {
         textFilter: '',
-        selected: {}
+        selected: {},
+        filterTagsBy: ''
     }
 
     debouncedRefresh = debounce((config) => {
         this.props.onRefreshData && this.props.onRefreshData(config);
+    }, 800);
+
+    debounceGetAllTags = debounce((config, options) => {
+        this.props.getAllTags && this.props.getAllTags(config, options);
     }, 800);
 
     componentDidMount() {
@@ -36,8 +42,8 @@ class ContextEntityTableToolbar extends Component {
         });
     }
 
-    onSetTextFilter = (value) => {
-        const { page, perPage, filters } = this.props;
+    onSetTextFilter = (value, debounced = true) => {
+        const { onRefreshData, perPage, filters } = this.props;
         const textualFilter = filters.find(oneFilter => oneFilter.value === TEXT_FILTER);
         if (textualFilter) {
             textualFilter.filter = value;
@@ -45,51 +51,94 @@ class ContextEntityTableToolbar extends Component {
             filters.push({ value: TEXT_FILTER, filter: value });
         }
 
-        this.debouncedRefresh({ page: 1, perPage, filters });
-        this.setState({ textFilter: value });
+        const refresh = debounced ? this.debouncedRefresh : onRefreshData;
+        this.setState({ textFilter: value }, () => refresh({ page: 1, perPage, filters }));
     }
 
     applyTags = (newSelection, debounced = true) => {
-        const { allTags, page, perPage, filters, onRefreshData } = this.props;
-        const tagFilters = mapGroups(newSelection, allTags);
-        const tagFiltersIndex = filters.findIndex((value) => value.hasOwnProperty('tagFilters'));
-        filters.splice(tagFiltersIndex, 1);
+        const { perPage, filters, onRefreshData } = this.props;
+        const tagFilters = mapGroups(newSelection);
+
         const refresh = debounced ? this.debouncedRefresh : onRefreshData;
+        const newFilters = [
+            ...filters.filter(oneFilter => !oneFilter.hasOwnProperty('tagFilters')),
+            { tagFilters }
+        ];
         refresh({
             page: 1,
             perPage,
-            filters: [
-                ...filters,
-                { tagFilters }
-            ]
+            filters: newFilters
         });
+
+        return newFilters;
     }
 
     createTagsFilter = () => {
-        const { allTags } = this.props;
-        const { selected } = this.state;
+        const { allTags, allTagsLoaded, additionalTagsCount, getAllTags, filters } = this.props;
+        const { selected, filterTagsBy } = this.state;
         return {
             label: 'Tags',
             value: 'tags',
             type: 'group',
             placeholder: 'Filter system by tag',
             filterValues: {
-                onChange: (e, newSelection) => this.setState(
-                    { selected: newSelection },
-                    () =>  this.applyTags(newSelection)
-                ),
+                className: 'ins-c-inventory__tags-filter',
+                onFilter: (value) => {
+                    this.setState({ filterTagsBy: value }, () => {
+                        this.debounceGetAllTags(value, { filters });
+                    });
+                },
+                onChange: (_e, newSelection, group, item, groupKey, itemKey) => {
+                    const isSelected = newSelection[groupKey][itemKey];
+                    newSelection[groupKey][itemKey] = {
+                        isSelected,
+                        group,
+                        item
+                    };
+                    this.setState(
+                        { selected: newSelection },
+                        () => {
+                            const newFilter = this.applyTags(newSelection);
+                            getAllTags(filterTagsBy, { filters: newFilter });
+                        });
+                },
                 selected,
-                groups: constructGroups(allTags)
+                ...allTagsLoaded && allTags.length > 0 ? {
+                    groups: [
+                        ...constructGroups(allTags),
+                        ...additionalTagsCount > 0 ? [{
+                            items: [{
+                                label: `${additionalTagsCount} more tags available`,
+                                isDisabled: true,
+                                className: 'ins-c-inventory__tags-more-items'
+                            }]
+                        }] : []
+                    ]
+                } : {
+                    items: [
+                        {
+                            label: !allTagsLoaded ? <Fragment>
+                                <span>
+                                    Loading... <Spinner size="md" />
+                                </span>
+                            </Fragment> : <div className="ins-c-inventory__tags-no-tags">
+                                No tags available
+                            </div>,
+                            isDisabled: true,
+                            className: 'ins-c-inventory__tags-tail'
+                        }
+                    ]
+                }
             }
         };
     }
 
     constructFilters = () => {
-        const { allTags, perPage, onRefreshData, onClearFilters, activeFiltersConfig } = this.props;
-        const { selected, textFilter } = this.state;
+        const { perPage, onRefreshData, onClearFilters, activeFiltersConfig, getAllTags } = this.props;
+        const { selected, textFilter, filterTagsBy } = this.state;
         return {
             filters: [
-                ...mapGroups(selected, allTags, 'chips'),
+                ...mapGroups(selected, 'chips'),
                 ...textFilter.length > 0 ? [{
                     category: 'Display name',
                     type: TEXTUAL_CHIP,
@@ -106,17 +155,19 @@ class ContextEntityTableToolbar extends Component {
                     this.setState({
                         selected: {},
                         textFilter: ''
+                    }, () => {
+                        getAllTags(filterTagsBy, {});
                     });
                 } else {
                     if (deleted.type === TEXTUAL_CHIP) {
-                        this.setState({
-                            textFilter: ''
-                        }, () => onRefreshData({ page: 1, perPage, filters: mapGroups(selected, allTags) }));
-                        ;
+                        this.onSetTextFilter('', false);
                     } else if (deleted.type === TAG_CHIP) {
                         const deletedItem = deleted.chips[0];
                         selected[deleted.key][deletedItem.key] = false;
-                        this.setState({ selected }, () => this.applyTags(selected, false));
+                        this.setState({ selected }, () => {
+                            const newFilter = this.applyTags(selected, false);
+                            getAllTags(filterTagsBy, { filters: newFilter });
+                        });
                     }
                 }
 
@@ -157,6 +208,7 @@ class ContextEntityTableToolbar extends Component {
             totalItems,
             hasCheckbox,
             activeFiltersConfig,
+            additionalTagsCount,
             ...props
         } = this.props;
         const inventoryFilters = [
@@ -174,7 +226,7 @@ class ContextEntityTableToolbar extends Component {
         ];
         return <PrimaryToolbar
             {...props}
-            className="ins-c-inventory__table--toolbar"
+            className={`ins-c-inventory__table--toolbar ${hasItems ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
             {...inventoryFilters.length > 0 && {
                 filterConfig: {
                     ...filterConfig || {},
@@ -211,6 +263,7 @@ EntityTableToolbar.propTypes = {
     filters: PropTypes.array,
     hasItems: PropTypes.bool,
     pathPrefix: PropTypes.number,
+    additionalTagsCount: PropTypes.number,
     apiBase: PropTypes.string,
     page: PropTypes.number,
     getAllTags: PropTypes.func,
@@ -240,20 +293,22 @@ EntityTableToolbar.defaultProps = {
 };
 
 function mapStateToProps(
-    { entities: { page, perPage, total, loaded, activeFilters, allTags, allTagsLoaded } },
+    { entities: { page, perPage, total, loaded, activeFilters, allTags, allTagsLoaded, additionalTagsCount } },
     { totalItems, page: currPage, perPage: currPerPage, hasItems }) {
     return {
         page: hasItems ? currPage : page,
         perPage: hasItems ? currPerPage : perPage,
         total: hasItems ? totalItems : total,
+        hasItems,
         loaded,
         allTagsLoaded,
         allTags,
-        filters: activeFilters
+        filters: activeFilters,
+        additionalTagsCount
     };
 }
 
 export default connect(mapStateToProps, (dispatch) => ({
-    getAllTags: () => dispatch(fetchAllTags()),
+    getAllTags: (search, options) => dispatch(fetchAllTags(search, options)),
     onClearFilters: () => dispatch(clearFilters())
 }))(EntityTableToolbar);

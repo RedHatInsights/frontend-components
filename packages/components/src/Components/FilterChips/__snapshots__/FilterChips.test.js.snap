@@ -15,7 +15,6 @@ exports[`FilterChips component should render - no data 1`] = `
     <ChipGroupToolbarItem
       className="ins-c-chip-group__plain"
       key="group_plain"
-      onClick={[Function]}
     />
   </ChipGroup>
 </span>
@@ -36,7 +35,6 @@ exports[`FilterChips component should render 1`] = `
     <ChipGroupToolbarItem
       categoryName="Group 1"
       key="group_Group 1"
-      onClick={[Function]}
     >
       <Component
         key="group_Group 1_chip_Chip 1"
@@ -59,7 +57,6 @@ exports[`FilterChips component should render 1`] = `
     <ChipGroupToolbarItem
       className="ins-c-chip-group__plain"
       key="group_plain"
-      onClick={[Function]}
     >
       <Component
         key="group_plain_chip_Chip 3"
