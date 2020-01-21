@@ -56,7 +56,7 @@ function entitiesLoaded(state, { payload: { results, per_page: perPage, page, co
         ...state,
         activeFilters: filters || [],
         loaded: loaded === undefined || loaded,
-        rows: mergeArraysByKey([ state.rows, results ]),
+        rows: mergeArraysByKey([ state.rows, results ]).filter(item => item.created),
         perPage: perPage !== undefined ? perPage : state.perPage,
         page: page !== undefined ? page : state.page,
         count: count !== undefined ? count : state.count,
