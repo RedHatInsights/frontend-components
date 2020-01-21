@@ -7,7 +7,6 @@ const FilterChips = ({ filters, onDelete }) => {
         <ChipGroupToolbarItem
             key={ `group_${group.category}` }
             categoryName={ group.category }
-            onClick={ (event) => onDelete(event, [ group ]) }
         >
             { group.chips.map(chip => (
                 <Chip
@@ -33,7 +32,6 @@ const FilterChips = ({ filters, onDelete }) => {
                 { plainFilters &&
                     <ChipGroupToolbarItem
                         key="group_plain"
-                        onClick={ (event) => onDelete(event, plainFilters) }
                         className="ins-c-chip-group__plain"
                     >
                         { plainFilters.map(chip => (
