@@ -40,22 +40,16 @@ query System($systemId: String!){
             rulesFailed
             rulesPassed
             lastScanned
-            rules(systemId: $systemId) {
+            rules {
                 title
                 severity
                 rationale
                 refId
                 description
-                compliant(systemId: $systemId)
+                compliant
                 remediationAvailable
-                references {
-                    label
-                    href
-                }
-                identifier {
-                    label
-                    system
-                }
+                references
+                identifier
             }
         }
     }
