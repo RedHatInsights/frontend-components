@@ -2,13 +2,10 @@ import React from 'react';
 import propTypes from 'prop-types';
 import ComplianceRemediationButton from './ComplianceRemediationButton';
 import { CheckIcon, CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
-import { EmptyTable, SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
+import { SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
 import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
 import {
-    Bullseye,
-    EmptyState,
-    EmptyStateBody,
-    EmptyStateVariant,
+    Checkbox,
     InputGroup,
     Level,
     LevelItem,
@@ -20,36 +17,14 @@ import {
     PaginationVariant,
     Text,
     TextContent,
-    TextVariants,
-    Title
+    TextVariants
 } from '@patternfly/react-core';
 import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import flatMap from 'lodash/flatMap';
 import './compliance.scss';
 import RulesComplianceFilter from './RulesComplianceFilter';
+import EmptyRows from './EmptyRows';
 import debounce from 'lodash/debounce';
-
-const emptyRows = [{
-    cells: [{
-        title: (
-            <EmptyTable>
-                <Bullseye>
-                    <EmptyState variant={ EmptyStateVariant.full }>
-                        <Title headingLevel="h5" size="lg">
-                                No matching rules found
-                        </Title>
-                        <EmptyStateBody>
-                                This filter criteria matches no rules. <br /> Try changing your filter settings.
-                        </EmptyStateBody>
-                    </EmptyState>
-                </Bullseye>
-            </EmptyTable>
-        ),
-        props: {
-            colSpan: 5
-        }
-    }]
-}];
 
 import {
     REMEDIATIONS_COLUMN,
@@ -67,13 +42,7 @@ class SystemRulesTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            columns: [
-                { title: 'Rule', transforms: [ sortable ] },
-                { title: 'Policy', transforms: [ sortable ] },
-                { title: 'Severity', transforms: [ sortable ] },
-                { title: 'Passed', transforms: [ sortable ] },
-                { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, transforms: [ sortable ] }
-            ],
+            columns: props.columns,
             page: 1,
             itemsPerPage: props.itemsPerPage,
             rows: [],
@@ -146,7 +115,7 @@ class SystemRulesTable extends React.Component {
     }
 
     isParent = (row) => {
-        return row.hasOwnProperty('isOpen');
+        return Object.prototype.hasOwnProperty.call(row, 'isOpen');
     }
 
     remediationAvailable = (remediationId) => {
@@ -211,28 +180,48 @@ class SystemRulesTable extends React.Component {
         </StackItem> || '' }
     </Stack>
 
-    calculateParent = ({ profile }, { title, severity, compliant, identifier, remediationAvailable }) => ({
-        isOpen: false,
-        cells: [
-            { title: this.ruleTitleCell(title, identifier), original: title },
-            { title: profile.name, original: profile.name },
-            {
-                title: (severity.toLowerCase() === 'high' ? HIGH_SEVERITY :
-                    severity.toLowerCase() === 'medium' ? MEDIUM_SEVERITY :
-                        severity.toLowerCase() === 'low' ? LOW_SEVERITY : severity),
-                original: severity.toLowerCase()
-            },
-            {
-                title: (compliant ? <CheckCircleIcon className='ins-u-passed' /> :
-                    <ExclamationCircleIcon className='ins-u-failed' />),
-                original: compliant
-            },
-            {
-                title: (remediationAvailable ? <CheckIcon className='ins-c-compliance-system-rule-check' /> : 'No'),
-                original: remediationAvailable
+    columnsToTableHeaders = (columns, profile, { title, severity, compliant, identifier, remediationAvailable }) => (
+        columns.map((column) => {
+            let tableHeader;
+
+            if (column.title === 'Rule') {
+                tableHeader = { title: this.ruleTitleCell(title, identifier), original: title };
+            } else if (column.title === 'Policy') {
+                tableHeader = { title: profile.name, original: profile.name };
+            } else if (column.title === 'Severity') {
+                tableHeader = {
+                    title: (severity.toLowerCase() === 'high' ? HIGH_SEVERITY :
+                        severity.toLowerCase() === 'medium' ? MEDIUM_SEVERITY :
+                            severity.toLowerCase() === 'low' ? LOW_SEVERITY : severity),
+                    original: severity.toLowerCase()
+                };
+            } else if (column.title === 'Passed') {
+                tableHeader = {
+                    title: (compliant ? <CheckCircleIcon className='ins-u-passed' /> :
+                        <ExclamationCircleIcon className='ins-u-failed' />),
+                    original: compliant
+                } ;
+            } else if (column.original === 'Ansible') {
+                tableHeader = {
+                    title: (remediationAvailable ? <CheckIcon className='ins-c-compliance-system-rule-check' /> : 'No'),
+                    original: remediationAvailable
+                };
+            } else {
+                tableHeader = null;
             }
-        ]
-    })
+
+            return tableHeader;
+        })
+    );
+
+    calculateParent = ({ profile }, rule) => {
+        const { columns } = this.state;
+
+        return {
+            isOpen: false,
+            cells: this.columnsToTableHeaders(columns, profile, rule).filter(e => e)
+        };
+    }
 
     conditionalLink = (children, href, additionalProps) => (
         href && <a href={ href } { ...additionalProps }>{ children }</a> || children
@@ -500,7 +489,7 @@ class SystemRulesTable extends React.Component {
 
     render() {
         const { hidePassed, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
-        const { system, loading, profileRules } = this.props;
+        const { remediationsEnabled, system, loading, profileRules } = this.props;
 
         if (loading) {
             return (
@@ -537,11 +526,13 @@ class SystemRulesTable extends React.Component {
                             <LevelItem>
                                 { rows.length / 2 } results
                             </LevelItem>
-                            <LevelItem>
-                                <ComplianceRemediationButton
-                                    allSystems={ [{ id: system.id, rule_objects_failed: [] }] }
-                                    selectedRules={ this.selectedRules() } />
-                            </LevelItem>
+                            { remediationsEnabled &&
+                                <LevelItem>
+                                    <ComplianceRemediationButton
+                                        allSystems={ [{ id: system.id, rule_objects_failed: [] }] }
+                                        selectedRules={ this.selectedRules() } />
+                                </LevelItem>
+                            }
                         </Level>
                         <Pagination
                             page={ page }
@@ -559,8 +550,8 @@ class SystemRulesTable extends React.Component {
                         onCollapse={ this.onCollapse }
                         onSort={ this.onSort }
                         sortBy={ sortBy }
-                        onSelect={ (currentRows.length !== 0) ? this.onSelect : () => null }
-                        rows={ (currentRows.length === 0) ? emptyRows : currentRows }>
+                        onSelect={ (remediationsEnabled && currentRows.length !== 0) ? this.onSelect : undefined }
+                        rows={ (currentRows.length === 0) ? EmptyRows : currentRows }>
                         <TableHeader />
                         <TableBody />
                     </Table>
@@ -589,13 +580,15 @@ SystemRulesTable.propTypes = {
     severity: propTypes.array,
     rows: propTypes.array,
     system: propTypes.object,
-    itemsPerPage: propTypes.number
+    itemsPerPage: propTypes.number,
+    remediationsEnabled: propTypes.bool
 };
 
 SystemRulesTable.defaultProps = {
     profileRules: [{ rules: [] }],
     hidePassed: false,
-    itemsPerPage: 10
+    itemsPerPage: 10,
+    remediationsEnabled: true
 };
 
 export default SystemRulesTable;

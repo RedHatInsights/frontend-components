@@ -5,6 +5,7 @@ import SystemRulesTable from './SystemRulesTable';
 import { SortByDirection } from '@patternfly/react-table';
 import { TITLE_COLUMN } from './Constants';
 import { remediationsResponse, system, profileRules } from './Fixtures';
+import { columns } from './defaultColumns';
 import debounce from 'lodash/debounce';
 
 jest.mock('lodash/debounce');
@@ -22,6 +23,20 @@ describe('SystemRulesTable component', () => {
                 profileRules={ profileRules }
                 loading={ false }
                 system={ system }
+                columns={ columns }
+            />
+        );
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('should render without remediations if prop passed', () => {
+        const wrapper = shallow(
+            <SystemRulesTable
+                remediationsEnabled={ false }
+                profileRules={ profileRules }
+                loading={ false }
+                system={ system }
+                columns={ columns }
             />
         );
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -33,6 +48,7 @@ describe('SystemRulesTable component', () => {
                 profileRules={ profileRules }
                 loading={ true }
                 system={ system }
+                columns={ columns }
             />
         );
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -45,6 +61,7 @@ describe('SystemRulesTable component', () => {
                 loading={ false }
                 system={ system }
                 itemsPerPage={ 100 }
+                columns={ columns }
             />
         );
         const instance = wrapper.instance();
@@ -61,6 +78,7 @@ describe('SystemRulesTable component', () => {
                 loading={ false }
                 system={ system }
                 itemsPerPage={ 100 }
+                columns={ columns }
             />
         );
         const instance = wrapper.instance();
@@ -77,6 +95,7 @@ describe('SystemRulesTable component', () => {
                 loading={ false }
                 system={ system }
                 itemsPerPage={ 100 }
+                columns={ columns }
             />
         );
         const instance = wrapper.instance();
@@ -93,6 +112,7 @@ describe('SystemRulesTable component', () => {
                 loading={ false }
                 system={ system }
                 itemsPerPage={ 100 }
+                columns={ columns }
             />
         );
         const instance = wrapper.instance();
@@ -117,6 +137,7 @@ describe('SystemRulesTable component', () => {
                 loading={ false }
                 system={ system }
                 itemsPerPage={ 50 }
+                columns={ columns }
             />
         );
         const instance = wrapper.instance();
@@ -124,7 +145,7 @@ describe('SystemRulesTable component', () => {
         await instance.updateFilter(false, [ 'high', 'medium' ], []);
         expect(wrapper.state('currentRows').length / 2).toEqual(50);
         wrapper.state('currentRows').forEach((row, i) => {
-            if (row.hasOwnProperty('parent')) {
+            if (Object.prototype.hasOwnProperty.call(row, 'parent')) {
                 expect(row.parent).toEqual(i - 1);
             }
         });
@@ -137,6 +158,7 @@ describe('SystemRulesTable component', () => {
                 loading={ false }
                 system={ system }
                 itemsPerPage={ 50 }
+                columns={ columns }
             />
         );
         const instance = wrapper.instance();
@@ -145,7 +167,7 @@ describe('SystemRulesTable component', () => {
         await instance.updateFilter(wrapper.state('hidePassed'), wrapper.state('severity'), wrapper.state('policy'));
         expect(wrapper.state('currentRows').length / 2).toEqual(7);
         wrapper.state('currentRows').forEach((row, i) => {
-            if (row.hasOwnProperty('parent')) {
+            if (Object.prototype.hasOwnProperty.call(row, 'parent')) {
                 expect(row.parent).toEqual(i - 1);
             }
         });
@@ -158,6 +180,7 @@ describe('SystemRulesTable component', () => {
                 loading={ false }
                 system={ system }
                 itemsPerPage={ 50 }
+                columns={ columns }
             />
         );
         const instance = wrapper.instance();
@@ -166,7 +189,7 @@ describe('SystemRulesTable component', () => {
         await instance.updateFilter(wrapper.state('hidePassed'), [ 'high' ], wrapper.state('policy'));
         expect(wrapper.state('currentRows').length / 2).toEqual(2);
         wrapper.state('currentRows').forEach((row, i) => {
-            if (row.hasOwnProperty('parent')) {
+            if (Object.prototype.hasOwnProperty.call(row, 'parent')) {
                 expect(row.parent).toEqual(i - 1);
             }
         });
