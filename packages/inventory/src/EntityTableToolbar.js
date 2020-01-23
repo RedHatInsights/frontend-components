@@ -33,8 +33,11 @@ class ContextEntityTableToolbar extends Component {
     }, 800);
 
     componentDidMount() {
-        const { filters } = this.props;
-        this.props.getAllTags();
+        const { filters, hasItems } = this.props;
+        if (localStorage.getItem('rhcs-tags') && !hasItems) {
+            this.props.getAllTags();
+        }
+
         const { textFilter, tagFilters } = reduceFilters(filters);
         this.setState({
             textFilter: textFilter,
@@ -309,6 +312,10 @@ function mapStateToProps(
 }
 
 export default connect(mapStateToProps, (dispatch) => ({
-    getAllTags: (search, options) => dispatch(fetchAllTags(search, options)),
+    getAllTags: (search, options) => {
+        if (localStorage.getItem('rhcs-tags')) {
+            dispatch(fetchAllTags(search, options));
+        }
+    },
     onClearFilters: () => dispatch(clearFilters())
 }))(EntityTableToolbar);
