@@ -179,7 +179,7 @@ class SystemRulesTable extends React.Component {
             let tableHeader;
 
             if (column.title === 'Rule') {
-                tableHeader = { title: this.ruleTitleCell(title, identifier), original: title };
+                tableHeader = { title: this.ruleTitleCell(title, JSON.parse(identifier)), original: title };
             } else if (column.title === 'Policy') {
                 tableHeader = { title: profile.name, original: profile.name };
             } else if (column.title === 'Severity') {
@@ -228,13 +228,13 @@ class SystemRulesTable extends React.Component {
     ]), [])
 
     calculateChild = ({ description, rationale, identifier: JSONidentifier, references: JSONreferences }, key) => {
-        const references = JSON.parse(JSONreferences);
-        const identifier = JSON.parse(JSONidentifier);
+        const references = JSONreferences && JSONreferences.length && JSON.parse(JSONreferences);
+        const identifier = JSONidentifier && JSON.parse(JSONidentifier);
         return {
             parent: key * 2,
             cells: [{
                 originalIdentifier: identifier ? identifier.label : '',
-                originalReferences: references && references.length ? references.map((r) => r.label).join() : '',
+                originalReferences: references ? references.map((r) => r.label).join() : '',
                 title: (
                     <React.Fragment key={ key }>
                         <div className='margin-top-lg'>
@@ -251,7 +251,7 @@ class SystemRulesTable extends React.Component {
                                         <Text>{ this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
                                     </GridItem> }
 
-                                    { references && references.length > 0 ? <GridItem span={ 10 }>
+                                    { references ? <GridItem span={ 10 }>
                                         <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>References</b></Text>
                                         <Text>{ this.referencesList(references) }</Text>
                                     </GridItem> : '' }
