@@ -3,9 +3,8 @@ import propTypes from 'prop-types';
 import ComplianceRemediationButton from './ComplianceRemediationButton';
 import { CheckIcon, CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import { SimpleTableFilter, TableToolbar } from '@redhat-cloud-services/frontend-components';
-import { Table, TableHeader, TableBody, sortable, SortByDirection } from '@patternfly/react-table';
+import { Table, TableHeader, TableBody, SortByDirection } from '@patternfly/react-table';
 import {
-    Checkbox,
     InputGroup,
     Level,
     LevelItem,
@@ -32,30 +31,25 @@ import {
     SEVERITY_COLUMN,
     POLICY_COLUMN,
     TITLE_COLUMN,
-    ANSIBLE_ICON,
     HIGH_SEVERITY,
     MEDIUM_SEVERITY,
     LOW_SEVERITY
 } from './Constants';
 
 class SystemRulesTable extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            columns: props.columns,
-            page: 1,
-            itemsPerPage: props.itemsPerPage,
-            rows: [],
-            hidePassed: props.hidePassed,
-            severity: [],
-            policy: [],
-            currentRows: [],
-            refIds: {},
-            profiles: {},
-            sortBy: {}
-        };
-
-    }
+    state = {
+        columns: this.props.columns,
+        page: 1,
+        itemsPerPage: this.props.itemsPerPage,
+        rows: [],
+        hidePassed: this.props.hidePassed,
+        severity: [],
+        policy: [],
+        currentRows: [],
+        refIds: {},
+        profiles: {},
+        sortBy: {}
+    };
 
     removeRefIdPrefix = (refId) => {
         const splitRefId = refId.toLowerCase().split('xccdf_org.ssgproject.content_profile_')[1];
@@ -185,7 +179,7 @@ class SystemRulesTable extends React.Component {
             let tableHeader;
 
             if (column.title === 'Rule') {
-                tableHeader = { title: this.ruleTitleCell(title, identifier), original: title };
+                tableHeader = { title: this.ruleTitleCell(title, JSON.parse(identifier)), original: title };
             } else if (column.title === 'Policy') {
                 tableHeader = { title: profile.name, original: profile.name };
             } else if (column.title === 'Severity') {
@@ -228,48 +222,54 @@ class SystemRulesTable extends React.Component {
     )
 
     referencesList = (references) => references.reduce((acc, reference, i) => ([
-        acc, ', ', this.conditionalLink(reference.label, reference.href, { target: '_blank', key: i + 1 })
-    ]), this.conditionalLink(references[0].label, references[0].href, { target: '_blank', key: 0 }));
+        ...acc,
+        i !== 0 ? ', ' : '',
+        this.conditionalLink(reference.label, reference.href, { target: '_blank', key: i + 1 })
+    ]), [])
 
-    calculateChild = ({ description, rationale, identifier, references }, key) => ({
-        parent: key * 2,
-        cells: [{
-            originalIdentifier: identifier ? identifier.label : '',
-            originalReferences: references && references.length ? references.map((r) => r.label).join() : '',
-            title: (
-                <React.Fragment key={ key }>
-                    <div className='margin-top-lg'>
-                        <Stack id={ `rule-description-${key}` } className='margin-bottom-lg'>
-                            <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
-                                <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>Description</b></Text>
-                            </StackItem>
-                            <StackItem isFilled>{ description }</StackItem>
-                        </Stack>
-                        <Stack id={ `rule-identifiers-references-${key}` } className='margin-bottom-lg'>
-                            <Grid>
-                                { identifier && <GridItem span={ 2 }>
-                                    <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>Identifier</b></Text>
-                                    <Text>{ this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
-                                </GridItem> }
+    calculateChild = ({ description, rationale, identifier: JSONidentifier, references: JSONreferences }, key) => {
+        const references = JSONreferences && JSONreferences.length && JSON.parse(JSONreferences);
+        const identifier = JSONidentifier && JSON.parse(JSONidentifier);
+        return {
+            parent: key * 2,
+            cells: [{
+                originalIdentifier: identifier ? identifier.label : '',
+                originalReferences: references ? references.map((r) => r.label).join() : '',
+                title: (
+                    <React.Fragment key={ key }>
+                        <div className='margin-top-lg'>
+                            <Stack id={ `rule-description-${key}` } className='margin-bottom-lg'>
+                                <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
+                                    <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>Description</b></Text>
+                                </StackItem>
+                                <StackItem isFilled>{ description }</StackItem>
+                            </Stack>
+                            <Stack id={ `rule-identifiers-references-${key}` } className='margin-bottom-lg'>
+                                <Grid>
+                                    { identifier && <GridItem span={ 2 }>
+                                        <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>Identifier</b></Text>
+                                        <Text>{ this.conditionalLink(identifier.label, identifier.system, { target: '_blank' }) }</Text>
+                                    </GridItem> }
 
-                                { references && references.length > 0 ? <GridItem span={ 10 }>
-                                    <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>References</b></Text>
-                                    <Text>{ this.referencesList(references) }</Text>
-                                </GridItem> : '' }
-                            </Grid>
-                        </Stack>
-                        { rationale &&
-                        <Stack id={ `rule-rationale-${key}` } style={ { marginBottom: 'var(--pf-global--spacer--lg)' } }>
-                            <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
-                                <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>Rationale</b></Text>
-                            </StackItem>
-                            <StackItem isFilled>{ rationale }</StackItem>
-                        </Stack>
-                        }
-                    </div>
-                </React.Fragment>
-            ) }]
-    })
+                                    { references ? <GridItem span={ 10 }>
+                                        <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>References</b></Text>
+                                        <Text>{ this.referencesList(references) }</Text>
+                                    </GridItem> : '' }
+                                </Grid>
+                            </Stack>
+                            { rationale &&
+                            <Stack id={ `rule-rationale-${key}` } style={ { marginBottom: 'var(--pf-global--spacer--lg)' } }>
+                                <StackItem style={ { marginBottom: 'var(--pf-global--spacer--sm)' } }>
+                                    <Text className='pf-c-form__label' component={ TextVariants.h5 }><b>Rationale</b></Text>
+                                </StackItem>
+                                <StackItem isFilled>{ rationale }</StackItem>
+                            </Stack>
+                            }
+                        </div>
+                    </React.Fragment>
+                ) }]
+        };
+    }
 
     rulesToRows = (profileRules) => {
         const refIds = {};
@@ -520,7 +520,7 @@ class SystemRulesTable extends React.Component {
                                         updateFilter={ this.updateFilter } />
                                     <SimpleTableFilter buttonTitle={ null }
                                         onFilterChange={ this.handleSearch }
-                                        placeholder="Search by name or identifier" />
+                                        placeholder="Search by name, identifer, or reference" />
                                 </InputGroup>
                             </LevelItem>
                             <LevelItem>

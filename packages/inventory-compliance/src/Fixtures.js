@@ -32,11 +32,11 @@ export const profileRules = [
                 refId: 'xccdf_org.ssgproject.content_rule_docker_storage_configured',
                 description: 'foodescription',
                 compliant: true,
-                identifier: {
+                identifier: JSON.stringify({
                     label: 'CCE-80441-9',
                     system: 'https://nvd.nist.gov/cce/index.cfm'
-                },
-                references: []
+                }),
+                references: JSON.stringify([])
             },
             {
                 title: 'Enable the Docker service',
@@ -45,11 +45,11 @@ export const profileRules = [
                 refId: 'xccdf_org.ssgproject.content_rule_service_docker_enabled',
                 description: 'foodescription',
                 compliant: true,
-                identifier: {
+                identifier: JSON.stringify({
                     label: 'CCE-80440-1',
                     system: 'https://nvd.nist.gov/cce/index.cfm'
-                },
-                references: []
+                }),
+                references: JSON.stringify([])
             },
             {
                 title: 'Disable At Service (atd)',

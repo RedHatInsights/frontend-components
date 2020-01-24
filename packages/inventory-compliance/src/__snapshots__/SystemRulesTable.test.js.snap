@@ -30,7 +30,7 @@ exports[`SystemRulesTable component should render 1`] = `
             onButtonClick={[Function]}
             onFilterChange={[Function]}
             onOptionSelect={[Function]}
-            placeholder="Search by name or identifier"
+            placeholder="Search by name, identifer, or reference"
             searchIcon={true}
           />
         </InputGroup>
@@ -243,7 +243,19 @@ exports[`SystemRulesTable component should render 1`] = `
                           </a>
                         </Text>
                       </GridItem>
-                      
+                      <GridItem
+                        span={10}
+                      >
+                        <Text
+                          className="pf-c-form__label"
+                          component="h5"
+                        >
+                          <b>
+                            References
+                          </b>
+                        </Text>
+                        <Text />
+                      </GridItem>
                     </Grid>
                   </Stack>
                   <Stack
@@ -395,7 +407,19 @@ exports[`SystemRulesTable component should render 1`] = `
                           </a>
                         </Text>
                       </GridItem>
-                      
+                      <GridItem
+                        span={10}
+                      >
+                        <Text
+                          className="pf-c-form__label"
+                          component="h5"
+                        >
+                          <b>
+                            References
+                          </b>
+                        </Text>
+                        <Text />
+                      </GridItem>
                     </Grid>
                   </Stack>
                   <Stack
@@ -1622,7 +1646,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             onButtonClick={[Function]}
             onFilterChange={[Function]}
             onOptionSelect={[Function]}
-            placeholder="Search by name or identifier"
+            placeholder="Search by name, identifer, or reference"
             searchIcon={true}
           />
         </InputGroup>
@@ -1821,7 +1845,19 @@ exports[`SystemRulesTable component should render without remediations if prop p
                           </a>
                         </Text>
                       </GridItem>
-                      
+                      <GridItem
+                        span={10}
+                      >
+                        <Text
+                          className="pf-c-form__label"
+                          component="h5"
+                        >
+                          <b>
+                            References
+                          </b>
+                        </Text>
+                        <Text />
+                      </GridItem>
                     </Grid>
                   </Stack>
                   <Stack
@@ -1973,7 +2009,19 @@ exports[`SystemRulesTable component should render without remediations if prop p
                           </a>
                         </Text>
                       </GridItem>
-                      
+                      <GridItem
+                        span={10}
+                      >
+                        <Text
+                          className="pf-c-form__label"
+                          component="h5"
+                        >
+                          <b>
+                            References
+                          </b>
+                        </Text>
+                        <Text />
+                      </GridItem>
                     </Grid>
                   </Stack>
                   <Stack
