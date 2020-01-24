@@ -1,7 +1,11 @@
 import React from 'react';
 import SystemPolicyCards from './SystemPolicyCards';
 import { IntlProvider } from 'react-intl';
-import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
+jest.mock('react-content-loader', () => ({
+    Instagram: 'Instagram'
+}));
 
 describe('SystemPolicyCards component', () => {
     const policies = [{
@@ -21,20 +25,20 @@ describe('SystemPolicyCards component', () => {
     }];
 
     it('should render loading state', () => {
-        const component = renderer.create(
+        const wrappper = mount(
             <IntlProvider locale={ navigator.language }>
                 <SystemPolicyCards policies={ policies } loading={ true } />
             </IntlProvider>
         );
-        expect(component.toJSON()).toMatchSnapshot();
+        expect(toJson(wrappper)).toMatchSnapshot();
     });
 
     it('should render real table', () => {
-        const component = renderer.create(
+        const wrappper = mount(
             <IntlProvider locale={ navigator.language }>
                 <SystemPolicyCards policies={ policies } loading={ false } />
             </IntlProvider>
         );
-        expect(component.toJSON()).toMatchSnapshot();
+        expect(toJson(wrappper)).toMatchSnapshot();
     });
 });
