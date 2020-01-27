@@ -39,6 +39,7 @@ function issueType (id) {
         case 'compliance':
             return 'Compliance';
         case 'vulnerabilities': return 'Vulnerability';
+        case 'patch-advisory': return 'Patch';
         default: return 'Unknown';
     }
 }
