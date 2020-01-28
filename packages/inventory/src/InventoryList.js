@@ -15,10 +15,11 @@ class ContextInventoryList extends React.Component {
 
     loadEntities = (options = {}, reload = true) => {
         const { page, perPage, onRefresh, items, hasItems, sortBy, activeFilters } = this.props;
+        const currPerPage = options.per_page || perPage;
         options = {
-            page: hasItems ? 1 : options.page || page,
+            page: (hasItems && items.length <= currPerPage) ? 1 : (options.page || page),
             // eslint-disable-next-line camelcase
-            per_page: options.per_page || perPage,
+            per_page: currPerPage,
             orderBy: sortBy && sortBy.key,
             orderDirection: sortBy && sortBy.direction.toUpperCase(),
             filters: activeFilters,
