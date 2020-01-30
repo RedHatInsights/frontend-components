@@ -95,3 +95,15 @@ export function reduceFilters(filters) {
         tagFilters: {}
     });
 }
+
+export const mergeTableProps = (stateProps, dispatchProps, ownProps) => ({
+    ...stateProps,
+    ...dispatchProps,
+    ...ownProps,
+    ...ownProps.onRefresh && {
+        onRefresh: (...props) => {
+            dispatchProps.onRefresh(...props);
+            ownProps.onRefresh(...props);
+        }
+    }
+});

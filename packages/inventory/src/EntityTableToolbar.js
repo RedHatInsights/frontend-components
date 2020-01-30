@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
-import { fetchAllTags, clearFilters } from './redux/actions';
+import { fetchAllTags, clearFilters, entitiesLoading } from './redux/actions';
 import debounce from 'lodash/debounce';
 import { Spinner } from '@patternfly/react-core/dist/esm/experimental';
 import { InventoryContext } from './Inventory';
@@ -13,7 +13,8 @@ import {
     reduceFilters,
     constructGroups,
     TEXTUAL_CHIP,
-    TAG_CHIP
+    TAG_CHIP,
+    mergeTableProps
 } from './constants';
 import flatMap from 'lodash/flatMap';
 
@@ -24,8 +25,23 @@ class ContextEntityTableToolbar extends Component {
         filterTagsBy: ''
     }
 
+    updateData = (config) => {
+        const { onRefresh, onRefreshData, perPage, filters, page } = this.props;
+        onRefresh ? onRefresh({
+            page,
+            perPage,
+            filters,
+            ...config
+        }) : onRefreshData({
+            page,
+            perPage,
+            filters,
+            ...config
+        });
+    }
+
     debouncedRefresh = debounce((config) => {
-        this.props.onRefreshData && this.props.onRefreshData(config);
+        this.updateData(config);
     }, 800);
 
     debounceGetAllTags = debounce((config, options) => {
@@ -46,7 +62,7 @@ class ContextEntityTableToolbar extends Component {
     }
 
     onSetTextFilter = (value, debounced = true) => {
-        const { onRefreshData, perPage, filters } = this.props;
+        const { perPage, filters } = this.props;
         const textualFilter = filters.find(oneFilter => oneFilter.value === TEXT_FILTER);
         if (textualFilter) {
             textualFilter.filter = value;
@@ -54,15 +70,15 @@ class ContextEntityTableToolbar extends Component {
             filters.push({ value: TEXT_FILTER, filter: value });
         }
 
-        const refresh = debounced ? this.debouncedRefresh : onRefreshData;
+        const refresh = debounced ? this.debouncedRefresh : this.updateData;
         this.setState({ textFilter: value }, () => refresh({ page: 1, perPage, filters }));
     }
 
     applyTags = (newSelection, debounced = true) => {
-        const { perPage, filters, onRefreshData } = this.props;
+        const { perPage, filters } = this.props;
         const tagFilters = mapGroups(newSelection);
 
-        const refresh = debounced ? this.debouncedRefresh : onRefreshData;
+        const refresh = debounced ? this.debouncedRefresh : this.updateData;
         const newFilters = [
             ...filters.filter(oneFilter => !oneFilter.hasOwnProperty('tagFilters')),
             { tagFilters }
@@ -137,7 +153,7 @@ class ContextEntityTableToolbar extends Component {
     }
 
     constructFilters = () => {
-        const { perPage, onRefreshData, onClearFilters, activeFiltersConfig, getAllTags } = this.props;
+        const { perPage, onClearFilters, activeFiltersConfig, getAllTags } = this.props;
         const { selected, textFilter, filterTagsBy } = this.state;
         return {
             filters: [
@@ -153,7 +169,7 @@ class ContextEntityTableToolbar extends Component {
             ],
             onDelete: (e, [ deleted ], isAll) => {
                 if (isAll) {
-                    onRefreshData({ page: 1, perPage, filters: [] });
+                    this.updateData({ page: 1, perPage, filters: [] });
                     onClearFilters();
                     this.setState({
                         selected: {},
@@ -242,9 +258,10 @@ class ContextEntityTableToolbar extends Component {
                 page,
                 itemCount: total,
                 perPage,
-                onSetPage: (_e, newPage) => onRefreshData({ page: newPage, perPage, filters }),
                 // eslint-disable-next-line camelcase
-                onPerPageSelect: (_e, newPerPage) => onRefreshData({ page: 1, per_page: newPerPage, filters })
+                onSetPage: (_e, newPage) => this.updateData({ page: newPage, per_page: perPage, filters }),
+                // eslint-disable-next-line camelcase
+                onPerPageSelect: (_e, newPerPage) => this.updateData({ page: 1, per_page: newPerPage, filters })
             } : <Skeleton size={SkeletonSize.lg} />}
         >
             { children }
@@ -290,14 +307,13 @@ EntityTableToolbar.defaultProps = {
     activeFiltersConfig: {},
     filters: [],
     allTags: [],
-    onRefresh: () => undefined,
     getAllTags: () => undefined,
     onClearFilters: () => undefined
 };
 
 function mapStateToProps(
     { entities: { page, perPage, total, loaded, activeFilters, allTags, allTagsLoaded, additionalTagsCount } },
-    { totalItems, page: currPage, perPage: currPerPage, hasItems }) {
+    { totalItems, page: currPage, perPage: currPerPage, hasItems, onRefresh }) {
     return {
         page: hasItems ? currPage : page,
         perPage: hasItems ? currPerPage : perPage,
@@ -307,7 +323,8 @@ function mapStateToProps(
         allTagsLoaded,
         allTags,
         filters: activeFilters,
-        additionalTagsCount
+        additionalTagsCount,
+        onRefresh
     };
 }
 
@@ -317,5 +334,6 @@ export default connect(mapStateToProps, (dispatch) => ({
             dispatch(fetchAllTags(search, options));
         }
     },
-    onClearFilters: () => dispatch(clearFilters())
-}))(EntityTableToolbar);
+    onClearFilters: () => dispatch(clearFilters()),
+    onRefresh: () => dispatch(entitiesLoading())
+}), mergeTableProps)(EntityTableToolbar);

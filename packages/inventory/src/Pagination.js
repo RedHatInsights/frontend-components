@@ -63,7 +63,7 @@ class ContextFooterPagination extends Component {
                         itemCount={ total }
                         page={ statePage || page }
                         perPage={ perPage }
-                        direction={ direction }
+                        dropDirection={ direction }
                         onSetPage={ this.onSetPage }
                         onPerPageSelect={ this.onPerPageSelect }
                     />

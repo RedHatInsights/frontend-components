@@ -52,6 +52,7 @@ class InventoryTable extends Component {
             } }>
                 <EntityTableToolbar
                     { ...props }
+                    onRefresh={onRefresh}
                     totalItems={ total || (items && items.length) }
                     hasItems={ Boolean(items) }
                     filters={ filters }
