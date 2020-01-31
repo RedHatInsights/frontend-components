@@ -16,9 +16,10 @@ export const UsageDescription = () => (<TextContent>
 To collect and store the information needed for cost management, you need to set up on Amazon S3 bucket for cost and usage reports.
     </Text>
     <TextList>
-        <TextListItem>Specify or create an Amazon S3 Bucket for your account.</TextListItem>
+        <TextListItem>Specify or create an Amazon S3 bucket for your account.</TextListItem>
         <TextListItem>
-Create a cost and usage report using the following values:            <TextList>
+Create a cost and usage report using the following values:
+            <TextList>
                 <TextListItem>Report name: koku.</TextListItem>
                 <TextListItem>Time unit: hourly</TextListItem>
                 <TextListItem>Include: Resource IDs</TextListItem>
@@ -35,8 +36,8 @@ export const IAMRoleDescription = () => (<TextContent>
 To delegate account access, create an IAM role to associate with your IAM policy.
     </Text>
     <TextList>
-        <TextListItem>From the AWS Identity Access Management console, create a new role.</TextListItem>
-        <TextListItem>Select another AWS Account from the list of trusted entities and paste the foolowing value into the Account ID field:</TextListItem>
+        <TextListItem>From the AWS Identity access management console, create a new role.</TextListItem>
+        <TextListItem>Select another AWS account from the list of trusted entities and paste the following value into the Account ID field:</TextListItem>
         <ClipboardCopy className="pf-u-m-sm-on-sm" isReadOnly>
         589173575009
         </ClipboardCopy>

@@ -38,7 +38,7 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
     <TextListItem
       component="dt"
     >
-      Source Type
+      Source type
     </TextListItem>
     <TextListItem
       component="dd"
@@ -97,7 +97,7 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dt"
     >
-      Source Type
+      Source type
     </TextListItem>
     <TextListItem
       component="dd"
@@ -166,7 +166,7 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
-      Source Type
+      Source type
     </TextListItem>
     <TextListItem
       component="dd"
@@ -255,7 +255,7 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      Source Type
+      Source type
     </TextListItem>
     <TextListItem
       component="dd"
@@ -354,7 +354,7 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
     <TextListItem
       component="dt"
     >
-      Source Type
+      Source type
     </TextListItem>
     <TextListItem
       component="dd"
@@ -443,7 +443,7 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      Source Type
+      Source type
     </TextListItem>
     <TextListItem
       component="dd"
