@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
@@ -29,12 +30,12 @@ class ContextEntityTableToolbar extends Component {
         const { onRefresh, onRefreshData, perPage, filters, page } = this.props;
         onRefresh ? onRefresh({
             page,
-            perPage,
+            per_page: perPage,
             filters,
             ...config
         }) : onRefreshData({
             page,
-            perPage,
+            per_page: perPage,
             filters,
             ...config
         });
@@ -258,9 +259,7 @@ class ContextEntityTableToolbar extends Component {
                 page,
                 itemCount: total,
                 perPage,
-                // eslint-disable-next-line camelcase
                 onSetPage: (_e, newPage) => this.updateData({ page: newPage, per_page: perPage, filters }),
-                // eslint-disable-next-line camelcase
                 onPerPageSelect: (_e, newPerPage) => this.updateData({ page: 1, per_page: newPerPage, filters })
             } : <Skeleton size={SkeletonSize.lg} />}
         >

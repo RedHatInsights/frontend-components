@@ -97,9 +97,9 @@ export function reduceFilters(filters) {
 }
 
 export const mergeTableProps = (stateProps, dispatchProps, ownProps) => ({
-    ...stateProps,
     ...dispatchProps,
     ...ownProps,
+    ...stateProps,
     ...ownProps.onRefresh && {
         onRefresh: (...props) => {
             dispatchProps.onRefresh(...props);
