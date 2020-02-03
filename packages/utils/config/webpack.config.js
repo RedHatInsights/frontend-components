@@ -12,6 +12,7 @@ module.exports = (env) => ({
         ReducerRegistry: './src/ReducerRegistry.js',
         helpers: './src/helpers.js',
         MiddlewareListener: './src/MiddlewareListener.js',
+        RelativeTimeHelper: './src/RelativeTimeHelper.js',
         Registry: './src/Registry.js',
         Deffered: './src/Deffered.js',
         RouterParams: './src/RouterParams.js',
