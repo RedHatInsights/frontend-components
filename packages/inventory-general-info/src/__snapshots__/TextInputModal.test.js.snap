@@ -597,29 +597,38 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                         className="pf-c-modal-box__body"
                         id="pf-modal-3"
                       >
-                        <TextInput
+                        <ForwardRef
                           aria-label="input text"
-                          className=""
-                          isDisabled={false}
-                          isReadOnly={false}
-                          isRequired={false}
-                          isValid={true}
                           onChange={[Function]}
                           type="text"
                           value=""
                         >
-                          <input
-                            aria-invalid={false}
+                          <TextInputBase
                             aria-label="input text"
-                            className="pf-c-form-control"
-                            disabled={false}
+                            className=""
+                            innerRef={null}
+                            isDisabled={false}
+                            isReadOnly={false}
+                            isRequired={false}
+                            isValid={true}
                             onChange={[Function]}
-                            readOnly={false}
-                            required={false}
                             type="text"
+                            validated="default"
                             value=""
-                          />
-                        </TextInput>
+                          >
+                            <input
+                              aria-invalid={false}
+                              aria-label="input text"
+                              className="pf-c-form-control"
+                              disabled={false}
+                              onChange={[Function]}
+                              readOnly={false}
+                              required={false}
+                              type="text"
+                              value=""
+                            />
+                          </TextInputBase>
+                        </ForwardRef>
                       </div>
                     </ModalBoxBody>
                     <ModalBoxFooter
@@ -762,13 +771,8 @@ exports[`TextInputModal render should render aria label 1`] = `
   showClose={true}
   title=""
 >
-  <TextInput
+  <ForwardRef
     aria-label="Some aria label"
-    className=""
-    isDisabled={false}
-    isReadOnly={false}
-    isRequired={false}
-    isValid={true}
     onChange={[Function]}
     type="text"
     value=""
@@ -808,13 +812,8 @@ exports[`TextInputModal render should render open 1`] = `
   showClose={true}
   title=""
 >
-  <TextInput
+  <ForwardRef
     aria-label="input text"
-    className=""
-    isDisabled={false}
-    isReadOnly={false}
-    isRequired={false}
-    isValid={true}
     onChange={[Function]}
     type="text"
     value=""
@@ -854,13 +853,8 @@ exports[`TextInputModal render should render title 1`] = `
   showClose={true}
   title="Some title"
 >
-  <TextInput
+  <ForwardRef
     aria-label="input text"
-    className=""
-    isDisabled={false}
-    isReadOnly={false}
-    isRequired={false}
-    isValid={true}
     onChange={[Function]}
     type="text"
     value=""
@@ -900,13 +894,8 @@ exports[`TextInputModal render should render without any props 1`] = `
   showClose={true}
   title=""
 >
-  <TextInput
+  <ForwardRef
     aria-label="input text"
-    className=""
-    isDisabled={false}
-    isReadOnly={false}
-    isRequired={false}
-    isValid={true}
     onChange={[Function]}
     type="text"
   />

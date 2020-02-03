@@ -82,6 +82,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -92,7 +93,6 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
     zIndex={9999}
   >
     <PopoverBase
-      animateFill={false}
       appendTo={[Function]}
       aria="describedby"
       arrow={true}
@@ -100,6 +100,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       content={
         <div
           className=""
+          id=""
           role="tooltip"
         >
           <TooltipContent
@@ -134,7 +135,6 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       lazy={true}
       maxWidth="50vw"
       onCreate={[Function]}
-      performance={true}
       placement="top"
       popperOptions={
         Object {
@@ -160,6 +160,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           <div>
             <div
               class=""
+              id=""
               role="tooltip"
             >
               <div
@@ -175,6 +176,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       >
         <div
           className=""
+          id=""
           role="tooltip"
         >
           <TooltipContent

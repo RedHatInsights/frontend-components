@@ -2,6 +2,7 @@
 
 exports[`Final wizard Renders renders errored step correctly 1`] = `
 <Wizard
+  appendTo={null}
   ariaLabelCloseButton="Close"
   ariaLabelNav="Steps"
   backButtonText="Back"
@@ -42,6 +43,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
 
 exports[`Final wizard Renders renders finished step correctly 1`] = `
 <Wizard
+  appendTo={null}
   ariaLabelCloseButton="Close"
   ariaLabelNav="Steps"
   backButtonText="Back"
@@ -83,6 +85,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
 
 exports[`Final wizard Renders renders loading step correctly 1`] = `
 <Wizard
+  appendTo={null}
   ariaLabelCloseButton="Close"
   ariaLabelNav="Steps"
   backButtonText="Back"

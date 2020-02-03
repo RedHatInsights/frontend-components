@@ -13,7 +13,7 @@ describe('AWS-Access key hardcoded schemas', () => {
         const wrapper = mount(<AwsAccess.DescriptionSummary />);
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
-        expect(wrapper.find(Text)).toHaveLength(3);
+        expect(wrapper.find(Text)).toHaveLength(2);
         expect(wrapper.find(Popover)).toHaveLength(1);
     });
 });

@@ -43,6 +43,7 @@ exports[`Shield component should render where impact value is 1 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -94,6 +95,7 @@ exports[`Shield component should render where impact value is 2 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -145,6 +147,7 @@ exports[`Shield component should render where impact value is 3 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -196,6 +199,7 @@ exports[`Shield component should render where impact value is 4 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -247,6 +251,7 @@ exports[`Shield component should render where impact value is Critical 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -298,6 +303,7 @@ exports[`Shield component should render where impact value is Low 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -345,6 +351,7 @@ exports[`Shield component should render where impact value is NonExist 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -392,6 +399,7 @@ exports[`Shield component should render where impact value is empty string 1`] =
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -439,6 +447,7 @@ exports[`Shield component should render where impact value is undefined 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -490,6 +499,7 @@ exports[`Shield component should render with label 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -538,6 +548,7 @@ exports[`Shield component should render without props 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}

@@ -4,11 +4,13 @@ exports[`PrimaryToolbar should render custom className 1`] = `
 <DataToolbar
   className="custom-classname ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
-  isExpanded={false}
-  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent />
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  />
 </DataToolbar>
 `;
 
@@ -16,11 +18,13 @@ exports[`PrimaryToolbar should render custom id 1`] = `
 <DataToolbar
   className=" ins-c-primary-toolbar"
   id="custom-id"
-  isExpanded={false}
-  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent />
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  />
 </DataToolbar>
 `;
 
@@ -28,12 +32,14 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
 <DataToolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
-  isExpanded={false}
-  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent>
-    <DataToolbarGroup
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  >
+    <ForwardRef
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
@@ -49,7 +55,7 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
           Loading...
         </div>
       </DataToolbarItem>
-    </DataToolbarGroup>
+    </ForwardRef>
     <div>
       Loading...
     </div>
@@ -68,7 +74,11 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
       </div>
     </DataToolbarItem>
   </DataToolbarContent>
-  <DataToolbarContent>
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  >
     <DataToolbarItem>
       <div>
         Loading...
@@ -82,11 +92,13 @@ exports[`PrimaryToolbar should render no data 1`] = `
 <DataToolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
-  isExpanded={false}
-  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent />
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  />
 </DataToolbar>
 `;
 
@@ -94,12 +106,14 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
 <DataToolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
-  isExpanded={false}
-  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent>
-    <DataToolbarGroup
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  >
+    <ForwardRef
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
@@ -144,7 +158,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           value=""
         />
       </DataToolbarItem>
-    </DataToolbarGroup>
+    </ForwardRef>
     <Actions
       actions={
         Array [
@@ -216,7 +230,11 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
       />
     </DataToolbarItem>
   </DataToolbarContent>
-  <DataToolbarContent>
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  >
     <DataToolbarItem>
       <FilterChips
         filters={
@@ -256,12 +274,14 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
 <DataToolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
-  isExpanded={false}
-  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent>
-    <DataToolbarGroup
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  >
+    <ForwardRef
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
@@ -281,7 +301,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
           onSelect={[MockFunction]}
         />
       </DataToolbarItem>
-    </DataToolbarGroup>
+    </ForwardRef>
   </DataToolbarContent>
 </DataToolbar>
 `;
@@ -290,12 +310,14 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
 <DataToolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
-  isExpanded={false}
-  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent>
-    <DataToolbarGroup
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  >
+    <ForwardRef
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
@@ -324,7 +346,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
           value=""
         />
       </DataToolbarItem>
-    </DataToolbarGroup>
+    </ForwardRef>
   </DataToolbarContent>
 </DataToolbar>
 `;
@@ -333,12 +355,14 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
 <DataToolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
-  isExpanded={false}
-  showClearFiltersButton={false}
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent>
-    <DataToolbarGroup
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  >
+    <ForwardRef
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
@@ -383,7 +407,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
           value=""
         />
       </DataToolbarItem>
-    </DataToolbarGroup>
+    </ForwardRef>
     <Actions
       actions={Array []}
       dropdownProps={Object {}}
@@ -433,7 +457,11 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
       />
     </DataToolbarItem>
   </DataToolbarContent>
-  <DataToolbarContent>
+  <DataToolbarContent
+    breakpointMods={Array []}
+    isExpanded={false}
+    showClearFiltersButton={false}
+  >
     <DataToolbarItem>
       <FilterChips
         filters={

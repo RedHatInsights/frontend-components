@@ -30,7 +30,7 @@
     "license": "Apache-2.0",
     "dependencies": {
         "@patternfly/react-charts": "^5.2.2",
-        "@patternfly/react-core": "^3.124.1",
+        "@patternfly/react-core": "^3.134.2",
         "@patternfly/react-styles": "^3.6.11",
         "@patternfly/react-tokens": "^2.7.10",
         "@react-pdf/renderer": "^1.6.8",
@@ -39,6 +39,6 @@
         "rgb-hex": "^3.0.0"
     },
     "devDependencies": {
-        "@patternfly/react-icons": "^3.14.25"
+        "@patternfly/react-icons": "^3.14.39"
     }
 }

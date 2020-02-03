@@ -27,6 +27,7 @@ exports[`DateFormat component DateFormat renders with date integer 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -82,6 +83,7 @@ exports[`DateFormat component DateFormat renders with date object 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
@@ -125,6 +127,7 @@ exports[`DateFormat component DateFormat renders with date string 1`] = `
         "bottom",
       ]
     }
+    id=""
     isAppLauncher={false}
     isContentLeftAligned={false}
     isVisible={false}
