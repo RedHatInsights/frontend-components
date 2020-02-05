@@ -10,10 +10,9 @@ const minutes = seconds * 60;
 const hours = minutes * 60;
 const days = hours * 24;
 
-const calculateTooltip = (culled, warning) => {
+const calculateTooltip = (culled, warning, currDate) => {
     const culledDate = new Date(culled);
     const warningDate = new Date(warning);
-    const currDate = new Date();
     const diffTime = currDate - warningDate;
     const removeIn = Math.ceil((culledDate - currDate) / days);
     if (diffTime >= 0 && removeIn <= 1) {
@@ -29,8 +28,12 @@ const calculateTooltip = (culled, warning) => {
     };
 };
 
-const CullingInformation = ({ culled, className, staleWarning, children, ...props }) => {
-    const { isWarn, isError, msg } = calculateTooltip(culled, staleWarning);
+const CullingInformation = ({ culled, className, staleWarning, stale, currDate, children, ...props }) => {
+    if ((new Date(currDate) - new Date(stale)) < 0) {
+        return children;
+    }
+
+    const { isWarn, isError, msg } = calculateTooltip(culled, staleWarning, currDate);
     return <Tooltip
         { ...props }
         content={msg}
@@ -49,10 +52,13 @@ const CullingInformation = ({ culled, className, staleWarning, children, ...prop
 
 CullingInformation.propTypes = {
     culled: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
-    staleWarning: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ])
+    staleWarning: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
+    stale: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
+    currDate: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ])
 };
 CullingInformation.defaultProps = {
     culled: new Date(0),
-    staleWarning: new Date(0)
+    staleWarning: new Date(0),
+    currDate: new Date()
 };
 export default CullingInformation;
