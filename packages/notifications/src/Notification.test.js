@@ -80,4 +80,20 @@ describe('Notification component', () => {
         wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } dismissable description={ undefined }/>);
         expect(timeoutSpy).not.toHaveBeenCalled();
     });
+
+    it('should clear timeout on notification mouse enter', () => {
+        const timeoutSpy = jest.spyOn(global, 'clearTimeout');
+        let wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
+        wrapper.find('.pf-c-alert').simulate('mouseEnter');
+        expect(timeoutSpy).toHaveBeenCalledTimes(1);
+        timeoutSpy.mockRestore();
+    });
+
+    it('should set timeout on notification mouse leave', () => {
+        const timeoutSpy = jest.spyOn(global, 'setTimeout');
+        let wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
+        wrapper.find('.pf-c-alert').simulate('mouseLeave');
+        expect(timeoutSpy).toHaveBeenCalledTimes(2);
+        timeoutSpy.mockRestore();
+    });
 });

@@ -244,6 +244,8 @@ exports[`Notification portal should render notifications given as direct props 1
             }
             className="notification-item"
             id="0"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
             title="Notification title"
             variant="success"
           >
@@ -269,6 +271,8 @@ exports[`Notification portal should render notifications given as direct props 1
                   ],
                   "className": "notification-item",
                   "id": "0",
+                  "onMouseEnter": [Function],
+                  "onMouseLeave": [Function],
                   "title": "Notification title",
                   "variant": "success",
                 }
@@ -292,6 +296,8 @@ exports[`Notification portal should render notifications given as direct props 1
                 }
                 className="notification-item"
                 id="0"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 ouiaContext={
                   Object {
                     "isOuia": false,
@@ -305,6 +311,8 @@ exports[`Notification portal should render notifications given as direct props 1
                   aria-label="Success Alert"
                   className="pf-c-alert pf-m-success notification-item"
                   id="0"
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <AlertIcon
                     variant="success"
@@ -768,6 +776,8 @@ exports[`Notification portal should render notifications given as direct props o
             }
             className="notification-item"
             id="Direct notification"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
             title="Notification title"
             variant="success"
           >
@@ -793,6 +803,8 @@ exports[`Notification portal should render notifications given as direct props o
                   ],
                   "className": "notification-item",
                   "id": "Direct notification",
+                  "onMouseEnter": [Function],
+                  "onMouseLeave": [Function],
                   "title": "Notification title",
                   "variant": "success",
                 }
@@ -816,6 +828,8 @@ exports[`Notification portal should render notifications given as direct props o
                 }
                 className="notification-item"
                 id="Direct notification"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 ouiaContext={
                   Object {
                     "isOuia": false,
@@ -829,6 +843,8 @@ exports[`Notification portal should render notifications given as direct props o
                   aria-label="Success Alert"
                   className="pf-c-alert pf-m-success notification-item"
                   id="Direct notification"
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <AlertIcon
                     variant="success"
@@ -1143,6 +1159,8 @@ exports[`Notification portal should render notifications given from store 1`] = 
             }
             className="notification-item"
             id="0"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
             title="Notification title"
             variant="success"
           >
@@ -1168,6 +1186,8 @@ exports[`Notification portal should render notifications given from store 1`] = 
                   ],
                   "className": "notification-item",
                   "id": "0",
+                  "onMouseEnter": [Function],
+                  "onMouseLeave": [Function],
                   "title": "Notification title",
                   "variant": "success",
                 }
@@ -1191,6 +1211,8 @@ exports[`Notification portal should render notifications given from store 1`] = 
                 }
                 className="notification-item"
                 id="0"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
                 ouiaContext={
                   Object {
                     "isOuia": false,
@@ -1204,6 +1226,8 @@ exports[`Notification portal should render notifications given from store 1`] = 
                   aria-label="Success Alert"
                   className="pf-c-alert pf-m-success notification-item"
                   id="0"
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <AlertIcon
                     variant="success"

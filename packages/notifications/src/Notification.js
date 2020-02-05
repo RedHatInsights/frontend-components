@@ -14,19 +14,27 @@ class Notification extends Component {
     constructor(props) {
         super(props);
         this.handleDismiss = this.handleDismiss.bind(this);
-        if (!props.dismissable) {
-            this.dismissTimeout = setTimeout(() => this.handleDismiss(), props.dismissDelay);
-        }
+        this.setDismissTimeout();
     }
 
-    handleDismiss() {
+    handleDismiss = () => {
         this.props.onDismiss(this.props.id);
     }
 
-    componentWillUnmount() {
+    setDismissTimeout = () => {
+        if (!this.props.dismissable) {
+            this.dismissTimeout = setTimeout(() => this.handleDismiss(), this.props.dismissDelay);
+        }
+    }
+
+    clearDismissTimeout = () => {
         if (this.dismissTimeout) {
             clearTimeout(this.dismissTimeout);
         }
+    }
+
+    componentWillUnmount() {
+        this.clearDismissTimeout();
     }
 
     render() {
@@ -45,6 +53,8 @@ class Notification extends Component {
                         <CloseIcon/>
                     </Button> : null
                 }
+                onMouseEnter={this.clearDismissTimeout}
+                onMouseLeave={this.setDismissTimeout}
             >
                 { (typeof description === 'string') ? description.replace(/<\/?[^>]+(>|$)/g, '') : description }
                 {
