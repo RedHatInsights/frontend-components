@@ -87,9 +87,6 @@ describe('Notification component', () => {
         wrapper.find('.pf-c-alert').simulate('mouseEnter');
         expect(timeoutSpy).toHaveBeenCalledTimes(1);
         timeoutSpy.mockRestore();
-
-        wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } dismissable description={ undefined }/>);
-        expect(timeoutSpy).not.toHaveBeenCalled();
     });
 
     it('should set timeout on notification mouse leave', () => {
@@ -98,8 +95,5 @@ describe('Notification component', () => {
         wrapper.find('.pf-c-alert').simulate('mouseLeave');
         expect(timeoutSpy).toHaveBeenCalledTimes(2);
         timeoutSpy.mockRestore();
-
-        wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } dismissable description={ undefined }/>);
-        expect(timeoutSpy).not.toHaveBeenCalled();
     });
 });
