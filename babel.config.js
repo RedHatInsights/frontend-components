@@ -14,6 +14,29 @@ const mapper = {
     ClipboardCopyVariant: 'ClipboardCopy'
 };
 
+const frontendComponentsMappe = {
+    CriticalBattery: 'Battery',
+    HighBattery: 'Battery',
+    MediumBattery: 'Battery',
+    LowBattery: 'Battery',
+    NullBattery: 'Battery',
+    ConnectedBreadcrumbs: 'Breadcrumbs',
+    ConditionalFilterType: 'ConditionalFilter',
+    groupType: 'ConditionalFilter',
+    DarkContext: 'Dark',
+    FilterDropdown: 'Filters',
+    FilterInput: 'Filters',
+    LabeledInput: 'Input',
+    PageHeaderTitle: 'PageHeader',
+    dropDirection: 'Pagination',
+    SkeletonSize: 'Skeleton',
+    SortDirection: 'Table',
+    TableVariant: 'Table',
+    TableHeader: 'Table',
+    TableBody: 'Table',
+    TableFooter: 'Table'
+};
+
 module.exports = {
     presets: [
         [
@@ -74,6 +97,16 @@ module.exports = {
                 }
             },
             'react-icons'
+        ], [
+            'transform-imports',
+            {
+                '@redhat-cloud-services/frontend-components': {
+                    transform: (importName, matches) => `@redhat-cloud-services/frontend-components/components/${frontendComponentsMappe[importName] || importName}`,
+                    preventFullImport: true,
+                    skipDefaultConversion: true
+                }
+            },
+            'frontend-components'
         ]
 
     ],
