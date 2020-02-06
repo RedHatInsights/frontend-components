@@ -530,7 +530,7 @@ class SystemRulesTable extends React.Component {
                             { remediationsEnabled &&
                                 <LevelItem>
                                     <ComplianceRemediationButton
-                                        allSystems={ [{ id: system.id, rule_objects_failed: [] }] }
+                                        allSystems={ [{ id: system.id, ruleObjectsFailed: [] }] }
                                         selectedRules={ this.selectedRules() } />
                                 </LevelItem>
                             }

@@ -8,10 +8,6 @@ import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { global_BackgroundColor_100 as globalBackgroundColor100 } from '@patternfly/react-tokens';
 
 class ComplianceRemediationButton extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     formatRule = ({ title, refId }, profile, system) => ({
         id: `ssg:rhel7|${profile}|${refId}`,
         description: title,
@@ -44,10 +40,10 @@ class ComplianceRemediationButton extends React.Component {
         const result = { systems: [], issues: [] };
         allSystems.forEach(async (system) => {
             result.systems.push(system.id);
-            if (selectedRules) {
+            if (selectedRules.length !== 0) {
                 result.issues.push(this.rulesWithRemediations(selectedRules, system.id));
             } else {
-                result.issues.push(this.rulesWithRemediations(system.rule_objects_failed, system.id));
+                result.issues.push(this.rulesWithRemediations(system.ruleObjectsFailed, system.id));
             }
         });
 
@@ -57,15 +53,18 @@ class ComplianceRemediationButton extends React.Component {
         });
     }
 
+    noRemediationAvailable = () => {
+        const { allSystems, selectedRules } = this.props;
+        return selectedRules.length === 0 && !allSystems.some((system) => system.ruleObjectsFailed.some((rule) => rule.remediationAvailable));
+    }
+
     render() {
-        const { addNotification, allSystems, selectedRules } = this.props;
+        const { addNotification } = this.props;
 
         return (
             <React.Fragment>
                 <RemediationButton
-                    isDisabled={ (allSystems.length === 0 || allSystems[0].rule_objects_failed.length === 0) &&
-                        selectedRules.length === 0
-                    }
+                    isDisabled={ this.noRemediationAvailable() }
                     onRemediationCreated={ result => addNotification(result.getNotification()) }
                     dataProvider={ this.dataProvider }
                 >
