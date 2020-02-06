@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { FilterDropdown } from '@redhat-cloud-services/frontend-components';
-import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
 import { FilterIcon } from '@patternfly/react-icons';
+import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
 
 class RulesComplianceFilter extends React.Component {
     constructor(props) {

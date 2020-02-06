@@ -8,14 +8,14 @@ Create an access key in your AWS user account and enter the details below.
     </Text>
     <Text component={ TextVariants.p }>
 For sufficient access and security, Red Hat recommends using
-    the Power User Identity and Access Management (IAM) policy for your AWS user account.&nbsp;
+    the Power user identity and access management (IAM) policy for your AWS user account.&nbsp;
         <Popover
             aria-label="Help text"
             position="bottom"
             bodyContent={
                 <React.Fragment>
                     <Text component={ TextVariants.p }>
-                        The Power User IAM policy allows the user full access to API functionality and AWS services for user administration.
+                        The Power user policy allows the user full access to API functionality and AWS services for user administration.
 Create an access key in the Security Credentials area of your AWS user account.
 When adding your AWS account as a source, the access key ID and secret access key act as your user ID and password.
                     </Text>

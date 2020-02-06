@@ -4,7 +4,7 @@
 @import '~@redhat-cloud-services/frontend-components/components/TagCount.css';
 @import '~@redhat-cloud-services/frontend-components/components/TagModal.css';
 
-.ins-c-inventory__table--toolbar {
+.ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items) {
     .pf-c-data-toolbar__content {
         .pf-c-data-toolbar__item:last-child { @include rem('min-width', 200px); }
     }
@@ -17,6 +17,23 @@
 
     .pf-c-content {
         text-align: center;
+    }
+}
+
+.ins-c-inventory__tags-filter ul {
+    label.pf-c-check__label {
+        display: flex;
+        width: 100%;
+
+        .pf-c-badge { margin-left: auto; }
+    }
+
+    .ins-c-inventory__tags-tail {
+        display: flex;
+
+        .ins-c-inventory__tags-no-tags { margin: auto; }
+
+        .pf-c-spinner { margin-left: auto; }
     }
 }
 

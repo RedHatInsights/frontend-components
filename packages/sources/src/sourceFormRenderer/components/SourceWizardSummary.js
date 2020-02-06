@@ -89,7 +89,7 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
                     <TextListItem component={ TextListItemVariants.dt }>{ 'Authentication type' }</TextListItem>
                     <TextListItem component={ TextListItemVariants.dd }>{ authType.name }</TextListItem>
                 </React.Fragment> }
-                <TextListItem component={ TextListItemVariants.dt }>{ 'Source Type' }</TextListItem>
+                <TextListItem component={ TextListItemVariants.dt }>{ 'Source type' }</TextListItem>
                 <TextListItem component={ TextListItemVariants.dd }>{ type.product_name }</TextListItem>
                 { valuesList }
             </TextList>

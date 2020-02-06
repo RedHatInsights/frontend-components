@@ -6,7 +6,8 @@ import { Instagram } from 'react-content-loader';
 
 class SystemPolicyCards extends React.Component {
     systemPolicyCards() {
-        return this.props.policies.map(
+        const { policies } = this.props;
+        return policies.filter((policy) => (policy.rulesFailed + policy.rulesPassed) > 0).map(
             (policy, i) =>
                 <GridItem sm={ 12 } md={ 12 } lg={ 6 } xl={ 4 } key={ i }>
                     <SystemPolicyCard policy={ policy } />

@@ -9,10 +9,9 @@ import {
     UPDATE_ENTITIES,
     ENTITIES_LOADING,
     CLEAR_FILTERS,
-    TOGGLE_TAG_MODAL,
-    TAGS_SELECTED
+    TOGGLE_TAG_MODAL
 } from './action-types';
-import { getEntities, getEntitySystemProfile, hosts, getTags, getAllTags } from '../api';
+import { getEntities, getEntitySystemProfile, hosts, getAllTags } from '../api';
 
 export const loadEntities = (items = [], config) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
@@ -120,7 +119,7 @@ export const toggleTagModal = (isOpen) => ({
     }
 });
 
-export const fetchAllTags = () => ({
+export const fetchAllTags = (search, options) => ({
     type: ACTION_TYPES.ALL_TAGS,
-    payload: getAllTags()
+    payload: getAllTags(search, options)
 });

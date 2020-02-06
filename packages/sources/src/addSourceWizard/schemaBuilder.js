@@ -2,6 +2,10 @@ import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-re
 import hardcodedSchemas from './hardcodedSchemas';
 import get from 'lodash/get';
 
+export const acronymMapper = (value) => ({
+    'Amazon Web Services': 'AWS'
+}[value] || value);
+
 export const hardcodedSchema = (typeName, authName, appName) =>
     get(hardcodedSchemas, [ typeName, 'authentication', authName, appName ], undefined);
 
@@ -144,7 +148,7 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
         return ({
             name: type.name,
             stepKey: type.name,
-            title: `Configure ${type.product_name} credentials`,
+            title: `Configure ${acronymMapper(type.product_name)} credentials`,
             fields,
             nextStep: {
                 when: 'auth_select',
@@ -184,7 +188,7 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
         return ({
             name: type.name,
             stepKey: type.name,
-            title: `Configure ${type.product_name} - ${auth.name} credentials`,
+            title: `Configure ${acronymMapper(type.product_name)} - ${auth.name} credentials`,
             fields: [
                 ...fields,
                 ...getAdditionalAuthFields(type.name, auth.type),
@@ -259,7 +263,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
         return ({
             name: type.name,
             stepKey: type.name,
-            title: `Configure ${type.product_name} credentials`,
+            title: `Configure ${acronymMapper(type.product_name)} credentials`,
             fields,
             nextStep: {
                 when: 'auth_select',

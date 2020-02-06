@@ -1,8 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import SystemPolicyCards from './SystemPolicyCards';
 import { IntlProvider } from 'react-intl';
+import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
+jest.mock('react-content-loader', () => ({
+    Instagram: 'Instagram'
+}));
 
 describe('SystemPolicyCards component', () => {
     const policies = [{
@@ -12,23 +15,30 @@ describe('SystemPolicyCards component', () => {
         refId: 'xccdf_org.ssgproject.content_profile_pci-dss',
         name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7',
         compliant: false
+    }, {
+        rulesPassed: 0,
+        rulesFailed: 0,
+        lastScanned: null,
+        refId: 'xccdf_org.ssgproject.content_profile_pci-dss2',
+        name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7 2',
+        compliant: false
     }];
 
     it('should render loading state', () => {
-        const wrapper = shallow(
+        const wrappper = mount(
             <IntlProvider locale={ navigator.language }>
                 <SystemPolicyCards policies={ policies } loading={ true } />
             </IntlProvider>
         );
-        expect(toJson(wrapper)).toMatchSnapshot();
+        expect(toJson(wrappper)).toMatchSnapshot();
     });
 
     it('should render real table', () => {
-        const wrapper = shallow(
+        const wrappper = mount(
             <IntlProvider locale={ navigator.language }>
                 <SystemPolicyCards policies={ policies } loading={ false } />
             </IntlProvider>
         );
-        expect(toJson(wrapper)).toMatchSnapshot();
+        expect(toJson(wrappper)).toMatchSnapshot();
     });
 });

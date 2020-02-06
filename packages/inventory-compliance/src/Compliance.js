@@ -8,6 +8,7 @@ import gql from 'graphql-tag';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
 import { ClipboardCheckIcon } from '@patternfly/react-icons';
+import { columns } from './defaultColumns';
 import {
     Card,
     CardBody,
@@ -35,22 +36,20 @@ query System($systemId: String!){
         profiles {
             name
             refId
-            compliant(systemId: $systemId)
-            rulesFailed(systemId: $systemId)
-            rulesPassed(systemId: $systemId)
-            lastScanned(systemId: $systemId)
-            rules(systemId: $systemId) {
+            compliant
+            rulesFailed
+            rulesPassed
+            lastScanned
+            rules {
                 title
                 severity
                 rationale
                 refId
                 description
-                compliant(systemId: $systemId)
+                compliant
                 remediationAvailable
-                identifier {
-                    label
-                    system
-                }
+                references
+                identifier
             }
         }
     }
@@ -63,6 +62,7 @@ const SystemQuery = ({ data, loading, hidePassed }) => (
         <br/>
         <SystemRulesTable hidePassed={ hidePassed }
             system={ data.system }
+            columns={ columns }
             profileRules={ data.system && data.system.profiles.map((profile) => ({
                 system: data.system.id,
                 profile: { refId: profile.refId, name: profile.name },
@@ -144,6 +144,13 @@ SystemDetails.propTypes = {
             inventoryId: propTypes.string
         })
     }),
+    columns: propTypes.shape([
+        {
+            title: propTypes.oneOfType([ propTypes.string, propTypes.object ]).isRequired,
+            transforms: propTypes.array.isRequired,
+            original: propTypes.string
+        }
+    ]),
     client: propTypes.object,
     hidePassed: propTypes.bool
 };

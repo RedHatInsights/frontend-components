@@ -14,13 +14,12 @@ class Group extends Component {
     state = {
         isExpanded: false,
         selected: {},
-        filterBy: /./ // Use Regex here to ignore case match, set to all characters
+        filterBy: ''
     }
 
     onToggle = isExpanded => {
         this.setState({
-            isExpanded,
-            filterBy: /./
+            isExpanded
         });
     };
 
@@ -34,18 +33,29 @@ class Group extends Component {
     }
 
     mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
-        return items.filter(item =>
-            (groupValue && this.state.filterBy.test(groupValue)) ||
-            (groupLabel && this.state.filterBy.test(groupLabel)) ||
-            (item.value && this.state.filterBy.test(item.value)) ||
-            (item.label && this.state.filterBy.test(item.label))
+        const { onFilter } = this.props;
+        const { filterBy } = this.state;
+        let input;
+
+        try {
+            input = new RegExp(filterBy, 'i');
+        } catch (err) {
+            input = new RegExp(filterBy.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+        }
+
+        return items.filter(item => onFilter || (
+            (groupValue && input.test(groupValue)) ||
+            (groupLabel && input.test(groupLabel)) ||
+            (item.value && input.test(item.value)) ||
+            (item.label && input.test(item.label))
+        )
         ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
                 key={id || key}
                 value={String(value || id || key)}
                 onClick={e => {
-                    if (e.target.tagName === 'LABEL') {
+                    if (e.target.tagName !== 'INPUT') {
                         e.preventDefault();
                         e.stopPropagation();
                     }
@@ -58,7 +68,7 @@ class Group extends Component {
                         items,
                         ...group
                     };
-                    const clickedItem = { value, label, id, type, ...group };
+                    const clickedItem = { value, label, id, type, ...item };
                     const props = [
                         e,
                         clickedGroup,
@@ -116,7 +126,9 @@ class Group extends Component {
         const { selected: propSelected } = this.props;
         const activeGroup = selected[groupKey] || propSelected[groupKey];
         if (activeGroup) {
-            if (type !== groupType.radio && activeGroup[itemKey]) {
+            if (type !== groupType.radio && (
+                activeGroup[itemKey] instanceof Object ? activeGroup[itemKey].isSelected : Boolean(activeGroup[itemKey])
+            )) {
                 return {
                     ...propSelected,
                     ...selected,
@@ -152,13 +164,12 @@ class Group extends Component {
         const { onChange } = this.props;
 
         if (onChange) {
-            onChange(event, newSelection, group, item);
+            onChange(event, newSelection, group, item, groupKey, itemKey);
             this.setState({ selected: {} });
         }
 
         this.setState({
-            selected: newSelection,
-            filterBy: /./
+            selected: newSelection
         });
     };
 
@@ -173,23 +184,31 @@ class Group extends Component {
             return false;
         }
 
-        return Boolean(selected[groupValue][itemValue]);
+        return selected[groupValue][itemValue] instanceof Object ?
+            selected[groupValue][itemValue].isSelected :
+            Boolean(selected[groupValue][itemValue]);
     }
 
     customFilter = (e) => {
-        let input;
+        const { onFilter } = this.props;
+        const { target: { value } } = e;
 
-        try {
-            input = new RegExp(e.target.value, 'i');
-        } catch (err) {
-            input = new RegExp(e.target.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
-        }
+        this.setState({ filterBy: value }, () => {
+            onFilter && onFilter(value);
+        });
+    }
 
-        this.setState({ filterBy: input });
+    clearSelection = () => {
+        const { onFilter } = this.props;
+        onFilter && onFilter('');
+        this.setState({
+            filterBy: '',
+            isExpanded: false
+        });
     }
 
     render() {
-        const { isExpanded } = this.state;
+        const { isExpanded, filterBy } = this.state;
         const { groups, items, placeholder, className, selected, isFilterable, onFilter } = this.props;
 
         const filterItems = items || groups;
@@ -203,7 +222,9 @@ class Group extends Component {
                 isExpanded={ isExpanded }
                 onSelect={ () => undefined }
                 placeholderText={ placeholder }
-                { ...(isFilterable || onFilter) && { onFilter: (onFilter || this.customFilter) } }
+                onClear={this.clearSelection}
+                { ...filterBy !== '' && { selections: [ filterBy ] } }
+                { ...(isFilterable || onFilter) && { onFilter: this.customFilter } }
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
                 { groups && groups.length > 0 ? (
@@ -213,13 +234,14 @@ class Group extends Component {
                             ? <SelectGroup
                                 {...group}
                                 key={groupId || groupValue || groupKey}
+                                value={groupId || groupValue || groupKey}
                                 label={groupLabel}
                                 id={groupId || `group-${groupValue || groupKey}`}
                             > {filteredItems} </SelectGroup>
                             : <Fragment/>;
                     })
                 ) : (
-                    this.mapItems({ items }).length > 0 || <Fragment/>
+                    this.mapItems({ items })
                 ) }
             </Select> }
         </Fragment>);
@@ -242,7 +264,12 @@ const itemsProps = PropTypes.arrayOf(
 Group.propTypes = {
     selected: PropTypes.shape({
         [PropTypes.string]: PropTypes.shape({
-            [PropTypes.string]: PropTypes.bool
+            [PropTypes.string]: PropTypes.oneOfType([
+                PropTypes.bool,
+                PropTypes.shape({
+                    isSelected: PropTypes.bool
+                })
+            ])
         })
     }),
     onChange: PropTypes.func,

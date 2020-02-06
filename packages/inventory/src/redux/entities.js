@@ -13,6 +13,7 @@ import {
 } from './action-types';
 import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import TagWithDialog from '../TagWithDialog';
+import groupBy from 'lodash/groupBy';
 
 export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: false };
 
@@ -55,7 +56,8 @@ function entitiesLoaded(state, { payload: { results, per_page: perPage, page, co
         ...state,
         activeFilters: filters || [],
         loaded: loaded === undefined || loaded,
-        rows: mergeArraysByKey([ state.rows, results ]),
+        // filter data only if we are loaded
+        rows: mergeArraysByKey([ state.rows, results ]).filter(item => !loaded ? true : item.created),
         perPage: perPage !== undefined ? perPage : state.perPage,
         page: page !== undefined ? page : state.page,
         count: count !== undefined ? count : state.count,
@@ -130,10 +132,14 @@ export function toggleTagModal(state, { payload: { isOpen } }) {
     };
 }
 
-export function allTags(state, { payload: { results } }) {
+export function allTags(state, { payload: { results, total, per_page: perPage } }) {
     return {
         ...state,
-        allTags: results,
+        allTags: Object.entries(groupBy(results, ({ tag: { namespace } }) => namespace)).map(([ key, value ]) => ({
+            name: key,
+            tags: value
+        })),
+        additionalTagsCount: total > perPage ? total - perPage : 0,
         allTagsLoaded: true
     };
 }
