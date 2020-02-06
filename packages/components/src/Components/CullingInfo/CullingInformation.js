@@ -29,25 +29,27 @@ const calculateTooltip = (culled, warning, currDate) => {
 };
 
 const CullingInformation = ({ culled, className, staleWarning, stale, currDate, children, ...props }) => {
-    if ((new Date(currDate) - new Date(stale)) < 0) {
+    if (!stale || (new Date(currDate) - new Date(stale)) < 0) {
         return children;
     }
 
     const { isWarn, isError, msg } = calculateTooltip(culled, staleWarning, currDate);
-    return <Tooltip
-        { ...props }
-        content={msg}
-        position="bottom"
-    >
-        <span className={
-            isWarn ? 'ins-c-inventory__culling-warning' :
-                isError ? 'ins-c-inventory__culling-danger' : ''
-        }>
-            { isError && <ExclamationCircleIcon className="ins-c-inventory__culling-danger"/> }
-            { isWarn && <ExclamationTriangleIcon className="ins-c-inventory__culling-warning"/> }
-            {children}
-        </span>
-    </Tooltip>;
+    return <React.Fragment>
+        <Tooltip
+            { ...props }
+            content={msg}
+            position="bottom"
+        >
+            <span className={
+                isWarn ? 'ins-c-inventory__culling-warning' :
+                    isError ? 'ins-c-inventory__culling-danger' : ''
+            }>
+                { isError && <ExclamationCircleIcon className="ins-c-inventory__culling-danger"/> }
+                { isWarn && <ExclamationTriangleIcon className="ins-c-inventory__culling-warning"/> }
+            </span>
+        </Tooltip>
+        {children}
+    </React.Fragment>;
 };
 
 CullingInformation.propTypes = {

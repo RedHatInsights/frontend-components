@@ -1,4 +1,5 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
+@import '~@redhat-cloud-services/frontend-components/components/CullingInfo.css';
 
 .ins-c-inventory__detail--edit { @include rem('min-width', 500px) }
 
