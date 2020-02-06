@@ -54,12 +54,12 @@ class ComplianceRemediationButton extends React.Component {
     }
 
     noRemediationAvailable = () => {
-        const { allSystems } = this.props;
-        return !allSystems.some((system) => system.ruleObjectsFailed.some((rule) => rule.remediationAvailable));
+        const { allSystems, selectedRules } = this.props;
+        return selectedRules.length === 0 && !allSystems.some((system) => system.ruleObjectsFailed.some((rule) => rule.remediationAvailable));
     }
 
     render() {
-        const { addNotification, allSystems, selectedRules } = this.props;
+        const { addNotification } = this.props;
 
         return (
             <React.Fragment>
