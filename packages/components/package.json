@@ -33,6 +33,6 @@
         "react-router-dom": "^4.2.2"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7"
+        "@redhat-cloud-services/frontend-components-utilities": "*"
     }
 }

@@ -35,10 +35,10 @@
         "lodash": "4.17.15"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components": ">=0.0.21",
+        "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-notifications": "*",
         "@redhat-cloud-services/frontend-components-remediations": "*",
-        "@redhat-cloud-services/frontend-components-utilities": "~0.0.7",
+        "@redhat-cloud-services/frontend-components-utilities": "*",
         "apollo-boost": "^0.1.23",
         "graphql-tag": "^2.10.0",
         "react-apollo": "^2.3.3",

@@ -17,6 +17,7 @@ module.exports = (env) => ({
         RouterParams: './src/RouterParams.js',
         interceptors: './src/interceptors.js',
         debounce: './src/debounce.js',
+        inventoryDependencies: './src/inventoryDependencies.js',
         Styles: './src/Utilities.scss'
     },
     output: {

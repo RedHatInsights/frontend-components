@@ -1,8 +1,8 @@
 import React from 'react';
-import * as ReactCore from '@patternfly/react-core';
 import * as pfReactTable from '@patternfly/react-table';
 
 import propTypes from 'prop-types';
+import { reactCore } from '../../utils/src/inventoryDependencies';
 
 function getLoader () {
     return (insights.experimental && insights.experimental.loadRemediations) || insights.loadRemediations;
@@ -21,7 +21,7 @@ class RemediationButton extends React.Component {
     componentDidMount() {
         getLoader()({
             react: React,
-            reactCore: ReactCore,
+            reactCore,
             pfReactTable
         }).then(remediations => this.setState({ remediations }));
     }
@@ -35,11 +35,11 @@ class RemediationButton extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <ReactCore.Button
+                <reactCore.Button
                     isDisabled={ this.props.isDisabled || this.state.remediations === false }
                     onClick={ this.onClick } >
                     { this.props.children }
-                </ReactCore.Button>
+                </reactCore.Button>
 
                 { this.state.remediations.RemediationWizard && <this.state.remediations.RemediationWizard /> }
             </React.Fragment>
