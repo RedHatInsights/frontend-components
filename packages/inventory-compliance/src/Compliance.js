@@ -123,15 +123,17 @@ class SystemDetails extends Component {
     }
 
     render() {
-        const { match: { params: { inventoryId } }, hidePassed, client } = this.props;
+        const { inventoryId, hidePassed, client } = this.props;
+        console.log(inventoryId);
         return (
             <ApolloProvider client={ client }>
                 <Query query={ QUERY } variables={ { systemId: inventoryId } }>
-                    { ({ data, error, loading }) => (
-                        error ?
+                    { ({ data, error, loading }) => {
+                        console.log(data, error, inventoryId);
+                        return error ?
                             this.renderError(error) :
                             <SystemQuery hidePassed={ hidePassed } data={ data } error={ error } loading={ loading } />
-                    ) }
+                    } }
                 </Query>
             </ApolloProvider>
         );
@@ -139,11 +141,7 @@ class SystemDetails extends Component {
 }
 
 SystemDetails.propTypes = {
-    match: propTypes.shape({
-        params: propTypes.shape({
-            inventoryId: propTypes.string
-        })
-    }),
+    inventoryId: propTypes.string,
     columns: propTypes.shape([
         {
             title: propTypes.oneOfType([ propTypes.string, propTypes.object ]).isRequired,
@@ -156,9 +154,6 @@ SystemDetails.propTypes = {
 };
 
 SystemDetails.defaultProps = {
-    match: {
-        params: {}
-    },
     client: new ApolloClient({
         link: new HttpLink({
             uri: COMPLIANCE_API_ROOT + '/graphql',
@@ -187,4 +182,4 @@ SystemQuery.defaultProps = {
     loading: true
 };
 
-export default routerParams(SystemDetails);
+export default SystemDetails;
