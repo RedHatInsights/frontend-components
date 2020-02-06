@@ -124,16 +124,15 @@ class SystemDetails extends Component {
 
     render() {
         const { inventoryId, hidePassed, client } = this.props;
-        console.log(inventoryId);
+
         return (
             <ApolloProvider client={ client }>
                 <Query query={ QUERY } variables={ { systemId: inventoryId } }>
-                    { ({ data, error, loading }) => {
-                        console.log(data, error, inventoryId);
-                        return error ?
+                    { ({ data, error, loading }) => (
+                        error ?
                             this.renderError(error) :
                             <SystemQuery hidePassed={ hidePassed } data={ data } error={ error } loading={ loading } />
-                    } }
+                    ) }
                 </Query>
             </ApolloProvider>
         );
