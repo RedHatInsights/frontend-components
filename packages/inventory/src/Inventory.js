@@ -81,6 +81,7 @@ class InventoryTable extends Component {
                         hasItems={ Boolean(items) }
                         onRefresh={ onRefresh }
                         perPage={ perPage }
+                        direction='up'
                     />
                 </TableToolbar>
             </InventoryContext.Provider>
