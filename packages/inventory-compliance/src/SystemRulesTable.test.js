@@ -194,4 +194,27 @@ describe('SystemRulesTable component', () => {
             }
         });
     });
+
+    it('should render search results on any page, returning to page 1', async () => {
+        const wrapper = shallow(
+            <SystemRulesTable
+                profileRules={ profileRules }
+                loading={ false }
+                system={ system }
+                itemsPerPage={ 50 }
+                columns={ columns }
+            />
+        );
+        const instance = wrapper.instance();
+        await instance.setInitialCurrentRows();
+        await instance.setState({ page: 3 });
+        await instance.setState({ searchTerm: 'Disable Odd Job Daemon' });
+        await instance.updateFilter(wrapper.state('hidePassed'), wrapper.state('severity'), wrapper.state('policy'));
+        expect(wrapper.state('currentRows').length / 2).toEqual(1);
+        wrapper.state('currentRows').forEach((row, i) => {
+            if (Object.prototype.hasOwnProperty.call(row, 'parent')) {
+                expect(row.parent).toEqual(i - 1);
+            }
+        });
+    });
 });

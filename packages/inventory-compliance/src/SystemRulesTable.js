@@ -463,7 +463,7 @@ class SystemRulesTable extends React.Component {
     )
 
     updateFilter = (hidePassed, severity, policy) => {
-        const { originalRows, profiles, refIds, page, itemsPerPage, searchTerm } = this.state;
+        const { originalRows, profiles, refIds, itemsPerPage, searchTerm } = this.state;
         let passedRows;
         if (hidePassed) {
             passedRows = this.filterBy(!hidePassed, originalRows, COMPLIANT_COLUMN);
@@ -478,7 +478,8 @@ class SystemRulesTable extends React.Component {
             hidePassed, severity, policy, searchTerm);
 
         return this.setState({
-            currentRows: this.currentRows(page, itemsPerPage, { rows: filteredRows, profiles, refIds }),
+            currentRows: this.currentRows(1, itemsPerPage, { rows: filteredRows, profiles, refIds }),
+            page: 1,
             rows: filteredRows,
             hidePassed,
             severity,
