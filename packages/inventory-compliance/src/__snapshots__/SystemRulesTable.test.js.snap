@@ -45,7 +45,7 @@ exports[`SystemRulesTable component should render 1`] = `
             Array [
               Object {
                 "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
-                "rule_objects_failed": Array [],
+                "ruleObjectsFailed": Array [],
               },
             ]
           }
