@@ -9,19 +9,30 @@ class SkeletonTable extends React.Component {
         return [
             ...Array(colSize)
         ].map(() => ({ title: <Skeleton size={ SkeletonSize.sm } /> }));
-    }
+    };
+
+    getColumns = () => {
+        const { paddingColumnSize } = this.props;
+        const columns = this.props.columns || this.createColumns();
+        return [ ...Array(paddingColumnSize) ].map(() => '').concat(columns);
+    };
 
     createRows = () => {
-        const { colSize, rowSize, columns } = this.props;
+        const { colSize, rowSize, columns, paddingColumnSize } = this.props;
         const numberOfCols = columns ? columns.length : colSize;
         return [
             ...Array(rowSize)
-        ].map(() => [ ...Array(numberOfCols) ].map(() => ({ title: <Skeleton size={ SkeletonSize.md } /> })));
-    }
+        ].map(() => [ ...Array(paddingColumnSize) ].map(() => '').concat(
+            [ ...Array(numberOfCols) ].map(() => ({ title: <Skeleton size={ SkeletonSize.md } /> }))
+        ));
+    };
 
     render() {
         return (
-            <Table cells={ this.props.columns || this.createColumns() } rows={ this.createRows() } aria-label="Loading">
+            <Table cells={ this.getColumns() }
+                rows={ this.createRows() }
+                sortBy={ this.props.sortBy }
+                aria-label="Loading">
                 <TableHeader />
                 <TableBody />
             </Table>
@@ -32,11 +43,17 @@ class SkeletonTable extends React.Component {
 SkeletonTable.propTypes = {
     colSize: PropTypes.number,
     rowSize: PropTypes.number,
-    columns: PropTypes.array
+    columns: PropTypes.array,
+    paddingColumnSize: PropTypes.number,
+    sortBy: PropTypes.shape({
+        index: PropTypes.number,
+        direction: PropTypes.oneOf([ 'asc', 'desc' ])
+    })
 };
 
 SkeletonTable.defaultProps = {
-    rowSize: 0
+    rowSize: 0,
+    paddingColumnSize: 0
 };
 
 export default SkeletonTable;
