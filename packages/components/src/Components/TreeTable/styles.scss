@@ -179,8 +179,6 @@ $pf-c-treeview--MaxDepth: 10;
 
     tbody {
       display: grid;
-      // width: 100%;
-      // grid-auto-columns: 100%;
     }
 
     td,
@@ -252,7 +250,6 @@ $pf-c-treeview--MaxDepth: 10;
 .pf-c-treeview.pf-m-grid {
   tr {
     display: none;
-    
   }
   
   @media (max-width: 2000px) {
@@ -278,8 +275,4 @@ $pf-c-treeview--MaxDepth: 10;
   }
 }
 
-.pf-c-treeview {
-  
-  @for $i from 1 through $pf-c-treeview--MaxDepth {
-  }  
-}
+.pf-c-treeview { @for $i from 1 through $pf-c-treeview--MaxDepth {} }
