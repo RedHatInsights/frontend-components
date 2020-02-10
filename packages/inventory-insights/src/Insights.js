@@ -1,7 +1,9 @@
 /* eslint-disable camelcase */
 import './insights.scss';
 
-import { AnsibeTowerIcon, ChartSpikeIcon, CheckCircleIcon, CheckIcon, ExternalLinkAltIcon, PficonSatelliteIcon, TimesCircleIcon } from '@patternfly/react-icons';
+import { CheckCircleIcon, CheckIcon, ExternalLinkAltIcon, PficonSatelliteIcon, TimesCircleIcon } from '@patternfly/react-icons';
+import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
+import ChartSpikeIcon from '@patternfly/react-icons/dist/js/icons/chartSpike-icon';
 import { BASE_FETCH_URL, FILTER_CATEGORIES as FC } from './Constants';
 import { Battery, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 import { Bullseye, Button, Card, CardBody, ClipboardCopy, Stack, StackItem, ToolbarItem } from '@patternfly/react-core';

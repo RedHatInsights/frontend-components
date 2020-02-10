@@ -17,6 +17,7 @@ module.exports = (env) => ({
         RouterParams: './src/RouterParams.js',
         interceptors: './src/interceptors.js',
         debounce: './src/debounce.js',
+        inventoryDependencies: './src/inventoryDependencies.js',
         Styles: './src/Utilities.scss'
     },
     output: {
@@ -52,19 +53,21 @@ module.exports = (env) => ({
             }]
         }]
     },
-    externals: {
-        '@patternfly/react-core': {
-            commonjs: '@patternfly/react-core',
-            commonjs2: '@patternfly/react-core',
-            amd: '@patternfly/react-core',
-            root: 'PFReactCore'
-        },
-        'react-router-dom': 'react-router-dom',
-        'react-content-loader': 'react-content-loader',
-        react: 'react',
-        'react-redux': 'react-redux',
-        axios: 'axios',
-        'awesome-debounce-promise': 'awesome-debounce-promise'
-    },
+    externals: [
+        /^@patternfly\/.*/, {
+            '@patternfly/react-core': {
+                commonjs: '@patternfly/react-core',
+                commonjs2: '@patternfly/react-core',
+                amd: '@patternfly/react-core',
+                root: 'PFReactCore'
+            },
+            'react-router-dom': 'react-router-dom',
+            'react-content-loader': 'react-content-loader',
+            react: 'react',
+            'react-dom': 'react-dom',
+            'react-redux': 'react-redux',
+            axios: 'axios',
+            'awesome-debounce-promise': 'awesome-debounce-promise'
+        }],
     ...buildPlugins(env)
 });

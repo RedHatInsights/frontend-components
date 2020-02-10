@@ -2,17 +2,11 @@
 
 exports[`Text component render should render correctly 1`] = `
 <Fragment>
-  <TextInput
-    aria-label={null}
+  <ForwardRef
     className="ins-c-conditional-filter "
     id="test-id"
-    isDisabled={false}
-    isReadOnly={false}
-    isRequired={false}
-    isValid={true}
     onChange={[Function]}
     onKeyDown={[Function]}
-    type="text"
     value=""
     widget-type="InsightsInput"
   />
@@ -28,18 +22,12 @@ exports[`Text component render should render correctly 1`] = `
 
 exports[`Text component render should render placeholder 1`] = `
 <Fragment>
-  <TextInput
-    aria-label={null}
+  <ForwardRef
     className="ins-c-conditional-filter "
     id="test-id"
-    isDisabled={false}
-    isReadOnly={false}
-    isRequired={false}
-    isValid={true}
     onChange={[Function]}
     onKeyDown={[Function]}
     placeholder="some-placeholder"
-    type="text"
     value=""
     widget-type="InsightsInput"
   />
@@ -55,17 +43,11 @@ exports[`Text component render should render placeholder 1`] = `
 
 exports[`Text component render should render value 1`] = `
 <Fragment>
-  <TextInput
-    aria-label={null}
+  <ForwardRef
     className="ins-c-conditional-filter "
     id="test-id"
-    isDisabled={false}
-    isReadOnly={false}
-    isRequired={false}
-    isValid={true}
     onChange={[Function]}
     onKeyDown={[Function]}
-    type="text"
     value=""
     widget-type="InsightsInput"
   />

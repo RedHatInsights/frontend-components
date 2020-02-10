@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import {
     Grid,
     GridItem,
-    GutterSize,
     Modal
 } from '@patternfly/react-core';
 import { SortByDirection } from '@patternfly/react-table';
@@ -57,7 +56,7 @@ class GeneralInformation extends Component {
     render() {
         const { isModalOpen, modalTitle, cells, rows, expandable } = this.state;
         return (
-            <Grid sm={ 12 } md={ 6 } gutter={ GutterSize.md }>
+            <Grid sm={ 12 } md={ 6 } gutter="md">
                 <GridItem>
                     <SystemCard handleClick={ this.handleModalToggle } />
                 </GridItem>
