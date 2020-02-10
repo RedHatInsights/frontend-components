@@ -11,6 +11,8 @@
 
 # Sources
 
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-sources.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-sources)
+
 This package exports **Add Source Wizard** and **Add Source button**, as other components, which wizard uses.
 
 # Install

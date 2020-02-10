@@ -54,12 +54,32 @@ const releaseComment = (pckgName, newVersion) => `
         return ;
     }
 
-    const { data: files } = await pushBot.pulls.listFiles({
+    let files = [];
+    const { data, headers: { link } } = await pushBot.pulls.listFiles({
         owner,
         repo,
         // eslint-disable-next-line camelcase
         pull_number: prNumber
     });
+    files = data;
+    if (link) {
+        const pages = parseInt(link.split(',').find(item => item.includes('rel="last"')).trim().replace(/.*page=(\d+).*/, '$1'), 10);
+        if (!isNaN(pages)) {
+            for (let page = 2; page <= pages; page++) {
+                const { data } = await pushBot.pulls.listFiles({
+                    owner,
+                    repo,
+                    // eslint-disable-next-line camelcase
+                    pull_number: prNumber,
+                    page
+                });
+                files = [
+                    ...files,
+                    ...data
+                ];
+            }
+        }
+    }
 
     const packages = calculatePackages(files);
     console.log(`Running release for packages ${packages}`);

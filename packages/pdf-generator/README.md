@@ -1,7 +1,11 @@
 # RedHat Cloud Services frontend components - PDF generator
+
+[![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-pdf-generator.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-pdf-generator)
+
 You can use this component in order to create download/preview PDF.
 
 You need to install this package:
+
 ```bash
 $ npm i -S @redhat-cloud-services/frontend-components-pdf-generator
 ```
