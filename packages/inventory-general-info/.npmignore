@@ -5,3 +5,5 @@ src/
 babel.config.js
 doc/
 config/
+!/TextInputModal.css
+!/TextInputModal.js

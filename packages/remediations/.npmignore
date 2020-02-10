@@ -7,3 +7,4 @@ src/
 babel.config.js
 doc/
 config/
+!/RemediationButton.css

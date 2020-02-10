@@ -5,3 +5,4 @@ babel.config.js
 doc/
 config/
 !Styles.css
+!helpers.css
