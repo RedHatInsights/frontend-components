@@ -1,4 +1,5 @@
 # RedHat Cloud Services frontend components - utils
+
 [![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-utilities.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-utilities)
 
 This package exports common functions to be used in other packages.
