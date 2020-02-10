@@ -22,6 +22,7 @@ exports[`CullingInformation it should render correctly without any date 1`] = `
       "bottom",
     ]
   }
+  id=""
   isAppLauncher={false}
   isContentLeftAligned={false}
   isVisible={false}
@@ -67,6 +68,7 @@ exports[`CullingInformation should render with dates - danger 1`] = `
       "bottom",
     ]
   }
+  id=""
   isAppLauncher={false}
   isContentLeftAligned={false}
   isVisible={false}
@@ -115,6 +117,7 @@ exports[`CullingInformation should render with dates - warning 1`] = `
       "bottom",
     ]
   }
+  id=""
   isAppLauncher={false}
   isContentLeftAligned={false}
   isVisible={false}
@@ -161,6 +164,7 @@ exports[`CullingInformation should render with dates 1`] = `
       "bottom",
     ]
   }
+  id=""
   isAppLauncher={false}
   isContentLeftAligned={false}
   isVisible={false}
