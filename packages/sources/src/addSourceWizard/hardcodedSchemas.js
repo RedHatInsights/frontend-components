@@ -222,17 +222,26 @@ export default {
                             name: 'authentication.extra.azure.tenant_id',
                             component: componentTypes.TEXT_FIELD,
                             isRequired: true,
-                            label: 'Tenant (Directory) ID'
+                            label: 'Tenant (Directory) ID',
+                            validate: [{
+                                type: validatorTypes.REQUIRED
+                            }]
                         }, {
                             name: 'authentication.username',
                             component: componentTypes.TEXT_FIELD,
                             isRequired: true,
+                            validate: [{
+                                type: validatorTypes.REQUIRED
+                            }],
                             label: 'Client (Application) ID'
                         }, {
                             name: 'authentication.password',
                             component: componentTypes.TEXT_FIELD,
                             isRequired: true,
                             type: 'password',
+                            validate: [{
+                                type: validatorTypes.REQUIRED
+                            }],
                             label: 'Client secret'
                         }]
                     }, {
