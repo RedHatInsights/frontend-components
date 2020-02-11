@@ -12,20 +12,19 @@ class SkeletonTable extends React.Component {
     };
 
     getColumns = () => {
-        const { paddingColumnSize } = this.props;
-        const columns = this.props.columns || this.createColumns();
-        return [ ...Array(paddingColumnSize) ].map(() => '').concat(columns);
+        const { paddingColumnSize, columns } = this.props;
+        return this.newArray(paddingColumnSize).map(() => '').concat(columns || this.createColumns());
     };
 
     createRows = () => {
         const { colSize, rowSize, columns, paddingColumnSize } = this.props;
         const numberOfCols = columns ? columns.length : colSize;
-        return [
-            ...Array(rowSize)
-        ].map(() => [ ...Array(paddingColumnSize) ].map(() => '').concat(
-            [ ...Array(numberOfCols) ].map(() => ({ title: <Skeleton size={ SkeletonSize.md } /> }))
+        return this.newArray(rowSize).map(() => this.newArray(paddingColumnSize).map(() => '').concat(
+            this.newArray(numberOfCols).map(() => ({ title: <Skeleton size={ SkeletonSize.md } /> }))
         ));
     };
+
+    newArray = (size) => [ ...Array(size) ];
 
     render() {
         return (
