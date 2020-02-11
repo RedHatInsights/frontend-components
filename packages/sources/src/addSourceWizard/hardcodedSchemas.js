@@ -92,6 +92,7 @@ export default {
                     }, {
                         title: 'Obtain your login credentials',
                         stepKey: 'obtainLogin',
+                        name: 'obtainLogin',
                         nextStep: 'usageCollector',
                         fields: [{
                             component: 'description',
@@ -101,6 +102,7 @@ export default {
                     }, {
                         title: 'Configure usage collector',
                         stepKey: 'usageCollector',
+                        name: 'usageCollector',
                         nextStep: 'dataCollection',
                         fields: [{
                             component: 'description',
@@ -110,6 +112,7 @@ export default {
                     }, {
                         title: 'Configure data collection',
                         stepKey: 'dataCollection',
+                        name: 'dataCollection',
                         fields: [{
                             component: 'description',
                             name: 'description-summary',
@@ -205,6 +208,7 @@ export default {
                     }, {
                         title: 'Configure service principal',
                         stepKey: 'service-principal',
+                        name: 'service-principal',
                         nextStep: 'export-schedule',
                         fields: [{
                             name: 'configure-service-principal',
@@ -238,6 +242,7 @@ export default {
                     }, {
                         title: 'Create a daily export',
                         stepKey: 'export-schedule',
+                        name: 'export-schedule',
                         fields: [{
                             name: 'export-schedule-description',
                             component: 'description',
@@ -326,6 +331,7 @@ export default {
                     }, {
                         title: 'Activate cost allocation tags',
                         stepKey: 'tags',
+                        name: 'tags',
                         nextStep: 'iam-policy',
                         fields: [{
                             name: 'tags-description',
@@ -336,6 +342,7 @@ export default {
                     {
                         title: 'Create IAM policy',
                         stepKey: 'iam-policy',
+                        name: 'iam-policy',
                         nextStep: 'iam-role',
                         substepOf: 'Enable account access',
                         fields: [{
@@ -346,6 +353,7 @@ export default {
                     }, {
                         title: 'Create IAM role',
                         stepKey: 'iam-role',
+                        name: 'iam-role',
                         nextStep: 'arn',
                         substepOf: 'Enable account access',
                         fields: [{
@@ -356,6 +364,7 @@ export default {
                     }, {
                         title: 'Enter ARN',
                         stepKey: 'arn',
+                        name: 'arn',
                         substepOf: 'Enable account access',
                         fields: [{
                             name: 'arn-description',

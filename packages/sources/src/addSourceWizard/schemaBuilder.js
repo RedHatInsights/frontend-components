@@ -70,6 +70,7 @@ export const createEndpointStep = (endpoint, typeName) => ({
         ...injectEndpointFieldsInfo(endpoint.fields, typeName)
     ],
     stepKey: `${typeName}-endpoint`,
+    name: `${typeName}-endpoint`,
     nextStep: 'summary'
 });
 
@@ -81,6 +82,7 @@ export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpoi
         const customSteps = hasCustomSteps(name, authName, appName);
 
         return ({
+            name: stepKey,
             stepKey: stepKey,
             nextStep: hasEndpointStep && !skipEndpoint && !customSteps ? `${name}-endpoint` : 'summary',
             ...step,
