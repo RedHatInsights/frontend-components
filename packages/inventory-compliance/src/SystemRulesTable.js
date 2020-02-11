@@ -289,15 +289,6 @@ class SystemRulesTable extends React.Component {
             ];
         })).filter(row => row); // Need to remove undefined (duplicate) rows
 
-        rows.forEach((row) => {
-            if (this.isParent(row)) {
-                row.cells[POLICY_COLUMN] = {
-                    title: profiles[row.cells[TITLE_COLUMN].original].name,
-                    original: profiles[row.cells[TITLE_COLUMN].original].name
-                };
-            }
-        });
-
         for (let [ key, value ] of Object.entries(profiles)) {
             profiles[key] = value.refId;
         }
