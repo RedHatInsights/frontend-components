@@ -1,99 +1,88 @@
 # Treeview Table
-This table is variantion of classic table, you can enable this by passing `expandable` to table props and if data
-matches the data structure table will be rendered with chevrons to enable collapsing of their rows.
+This is table variant with rows aligned in tree like structure, mening each row can have one parent and there ca be multiple levels.
 
-Notes:
- * collapsed rows doesn't have select
- * multiple collapsed rows for one parent is possible
- * parent can also be colapsible
- * every table action (custom classes, DOM elements as cells, etc.) are possible for this table as well
+### Usage
 
-## Usage
-Pass `expandable` to props and when user interacts with table you will be notified by `onExpandClick` callback with 
-`event`, `row`, `rowKey` arguments.
+We are heavily rely on [Table](https://www.patternfly.org/v4/documentation/react/components/table) implemenetaion in PF. And support custom styling with specific decator in order to lay the DOM correctly.
+
+In order to properly collapse and expand the tree you should use
+* `treeTable` - decorator that is added to specific col that controls the collapsing. This decorator takes one argument, function that is called upon user clicks.
+* `TreeRowWrapper` - row wrapper passed to table to properly style each row.
+* `sizeCalculator` - helper function to calculate size, level and ite count for each row. You should pass all of your rows to this helper function.
+* `collapseBuilder` - helper function to help you calculate collapse rows. This is a function builder, first argument is treeParent (if you want to change over which ID is collapse calculated) and creates function. Second function takes rows and everything that is sent when user clicks on arrow.
 
 ```JSX
-import React, { Component } from 'react';
-import { Table, Pagination, TableVariant } from '@redhat-cloud-services/frontend-components';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import { treeTable, TreeRowWrapper, sizeCalculator, collapseBuilder } from '../../components/src/Components/TreeTable';
+import './index.scss';
+import {
+    Table,
+    TableHeader,
+    TableBody,
+    textCenter
+} from '@patternfly/react-table';
 
-class TreeViewTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rows: [
-        {
-          children: [1],
-          active: false,
-          cells: ['1-1', '1-2', '1-3']
-        },
-        {
-          isOpen: false,
-          cells: [{ title: 'This text will span across whole table.', colSpan: 3}]
-        },
-        {
-          cells: ['3-1', '3-2', '3-3']
-        }
-      ]
-    };
-    this.onExpandClicked = this.onExpandClicked.bind(this);
-  }
+const rows = [
+    {
+        cells: [ 'one', 'two', 'three', 'four', 'five' ],
+        isTreeOpen: true
+    },
+    {
+        cells: [
+            {
+                title: <div>one - 2</div>,
+                props: { title: 'hover title', colSpan: 3 }
+            },
+            'four - 2',
+            'five - 2'
+        ],
+        isTreeOpen: false,
+        treeParent: 0
+    },
+    {
+        cells: [
+            'one - 3',
+            'two - 3',
+            'three - 3',
+            'four - 3',
+            {
+                title: 'five - 3 (not centered)',
+                props: { textCenter: false }
+            }
+        ],
+        treeParent: 1
+    },
+    {
+        cells: [ 'one', 'two', 'three', 'four', 'five' ]
+    }
+];
 
-  onExpandClicked(event, row, rowKey) {
-    const { rows } = this.state;
-    rows[rowKey].active = !row.active;
-    // or row.active = !row.active; both should function same
-    row.children.forEach(childKey => rows[childKey].isOpen = !rows[childKey].isOpen);
-    this.setState({ rows });
-  }
-
-  render() {
-    const { rows } = this.state;
-    return (
-      <Table 
-        header={['First', 'Second', 'Third']}
-        onExpandClick={(event, row, rowKey) => this.onExpandClicked(event, row, rowKey)}
-        expandable
-        variant={TableVariant.large}
-        rows={rows}
-        footer={<Pagination numberOfItems={3} />}
-      />
-    )
-  }
+export const myCmp = () => {
+    const [ rows, setRows ] = useState(rows);
+    const cells = [
+            { title: 'Repositories', cellTransforms: [ treeTable((...props) => {
+                setRows(collapseBuilder()(rows, ...props));
+            }) ] },
+            'Branches',
+            { title: 'Pull requests' },
+            'Workspaces',
+            {
+                title: 'Last Commit',
+                transforms: [ textCenter ],
+                cellTransforms: [ textCenter ]
+            }
+        ]
+    return <Table
+        className="pf-m-expandable pf-c-treeview"
+        rowWrapper={TreeRowWrapper}
+        aria-label="Simple Table"
+        cells={columns}
+        rows={sizeCalculator(rows)}
+    >
+        <TableHeader />
+        <TableBody />
+    </Table>
 }
 
-export default TreeViewTable;
 ```
-
-### Data structure explained
-```javascript
-rows = [
-  {
-    children: [1], // row index
-    active: false, // bool to change if children rows are expanded or not
-    cells: ['1-1', '1-2', '1-3']
-  },
-  {
-    isOpen: false, // bool to indicate if this row is expanded
-    cells: [{ title: 'This text will span across whole table.', colSpan: 3}]
-  },
-  {
-    cells: ['3-1', '3-2', '3-3']
-  }
-];
-```
-To indicate that some row is parent pass children array to it with keys (works both for arrays and objects). If you wnat
-to expand some parent you will indicate this by changing `isOpen` of such row to `true`. If you want to change chevron
-of opened parent you will set `active` to true.
-
-### Sorting, filtering, pagination
-Since this component is based on Table you can do same things with it as with default table, just keep in mind that
-treeview table is using flat structure so you'll have to come up with more complex functions when you interact with the
-table.
-
-Also if you want to load child data asynchronously, you are free to do so, just pass empty title when no data are presented
-or some loading element to indicate data fetching.
-
-Again cells can be whatever you want from string, to DOM objects.
-
-## Props
-Same as for [Table](table.md#props).
