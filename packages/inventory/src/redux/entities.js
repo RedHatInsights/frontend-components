@@ -12,6 +12,7 @@ import {
     TAGS_SELECTED
 } from './action-types';
 import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
+import { DateFormat, CullingInformation } from '@redhat-cloud-services/frontend-components';
 import TagWithDialog from '../TagWithDialog';
 import groupBy from 'lodash/groupBy';
 
@@ -26,7 +27,27 @@ const defaultColumns = [
         // eslint-disable-next-line react/display-name
         renderFunc: (value, systemId) => <TagWithDialog count={value.length} systemId={systemId} />
     },
-    { key: 'updated', title: 'Last sync', isTime: true, props: { width: 25 } }
+    {
+        key: 'updated',
+        title: 'Last seen',
+        // eslint-disable-next-line react/display-name
+        renderFunc: (
+            value,
+            _id,
+            {
+                culled_timestamp: culled, stale_warning_timestamp: staleWarn, stale_timestamp: stale
+            }) => {
+            const time = DateFormat ? <DateFormat date={value} type="exact" /> : new Date(value).toLocaleString();
+            return CullingInformation ? <CullingInformation
+                culled={culled}
+                staleWarning={staleWarn}
+                stale={stale}
+            >
+                { time }
+            </CullingInformation> : time;
+        },
+        props: { width: 25 }
+    }
 ];
 
 function entitiesPending(state) {

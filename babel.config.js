@@ -15,6 +15,7 @@ const mapper = {
 };
 
 const frontendComponentsMappe = {
+    CullingInformation: 'CullingInfo',
     CriticalBattery: 'Battery',
     HighBattery: 'Battery',
     MediumBattery: 'Battery',

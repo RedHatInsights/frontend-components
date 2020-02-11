@@ -1,183 +1,188 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CullingInformation it should render correctly without any date 1`] = `
-<Tooltip
-  appendTo={[Function]}
-  aria="describedby"
-  boundary="window"
-  className=""
-  content="This system is scheduled for removal from inventory"
-  distance={15}
-  enableFlip={true}
-  entryDelay={500}
-  exitDelay={500}
-  flipBehavior={
-    Array [
-      "top",
-      "right",
-      "bottom",
-      "left",
-      "top",
-      "right",
-      "bottom",
-    ]
-  }
-  id=""
-  isAppLauncher={false}
-  isContentLeftAligned={false}
-  isVisible={false}
-  maxWidth="18.75rem"
-  position="bottom"
-  tippyProps={Object {}}
-  trigger="mouseenter focus"
-  zIndex={9999}
->
-  <span
-    className="ins-c-inventory__culling-danger"
+<Fragment>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="This system is scheduled for removal from inventory"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
   >
-    <ExclamationCircleIcon
+    <span
       className="ins-c-inventory__culling-danger"
-      color="currentColor"
-      noVerticalAlign={false}
-      size="sm"
-      title={null}
-    />
-  </span>
-</Tooltip>
+    >
+      <ExclamationCircleIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+    </span>
+  </Tooltip>
+</Fragment>
 `;
 
 exports[`CullingInformation should render with dates - danger 1`] = `
-<Tooltip
-  appendTo={[Function]}
-  aria="describedby"
-  boundary="window"
-  className=""
-  content="This system is scheduled for removal from inventory"
-  distance={15}
-  enableFlip={true}
-  entryDelay={500}
-  exitDelay={500}
-  flipBehavior={
-    Array [
-      "top",
-      "right",
-      "bottom",
-      "left",
-      "top",
-      "right",
-      "bottom",
-    ]
-  }
-  id=""
-  isAppLauncher={false}
-  isContentLeftAligned={false}
-  isVisible={false}
-  maxWidth="18.75rem"
-  position="bottom"
-  tippyProps={Object {}}
-  trigger="mouseenter focus"
-  zIndex={9999}
->
-  <span
-    className="ins-c-inventory__culling-danger"
+<Fragment>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="This system is scheduled for removal from inventory"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
   >
-    <ExclamationCircleIcon
+    <span
       className="ins-c-inventory__culling-danger"
-      color="currentColor"
-      noVerticalAlign={false}
-      size="sm"
-      title={null}
-    />
-    Some children
-  </span>
-</Tooltip>
+    >
+      <ExclamationCircleIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      Some children
+    </span>
+  </Tooltip>
+</Fragment>
 `;
 
 exports[`CullingInformation should render with dates - no tooltip 1`] = `"Some children"`;
 
 exports[`CullingInformation should render with dates - warning 1`] = `
-<Tooltip
-  appendTo={[Function]}
-  aria="describedby"
-  boundary="window"
-  className=""
-  content="This system will be removed from the inventory in 2 days"
-  distance={15}
-  enableFlip={true}
-  entryDelay={500}
-  exitDelay={500}
-  flipBehavior={
-    Array [
-      "top",
-      "right",
-      "bottom",
-      "left",
-      "top",
-      "right",
-      "bottom",
-    ]
-  }
-  id=""
-  isAppLauncher={false}
-  isContentLeftAligned={false}
-  isVisible={false}
-  maxWidth="18.75rem"
-  position="bottom"
-  tippyProps={Object {}}
-  trigger="mouseenter focus"
-  zIndex={9999}
->
-  <span
-    className="ins-c-inventory__culling-warning"
+<Fragment>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="This system will be removed from the inventory in 2 days"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
   >
-    <ExclamationTriangleIcon
+    <span
       className="ins-c-inventory__culling-warning"
-      color="currentColor"
-      noVerticalAlign={false}
-      size="sm"
-      title={null}
-    />
-    Some children
-  </span>
-</Tooltip>
+    >
+      <ExclamationTriangleIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      Some children
+    </span>
+  </Tooltip>
+</Fragment>
 `;
 
 exports[`CullingInformation should render with dates 1`] = `
-<Tooltip
-  appendTo={[Function]}
-  aria="describedby"
-  boundary="window"
-  className=""
-  content="This system will be removed from the inventory in 10 days"
-  distance={15}
-  enableFlip={true}
-  entryDelay={500}
-  exitDelay={500}
-  flipBehavior={
-    Array [
-      "top",
-      "right",
-      "bottom",
-      "left",
-      "top",
-      "right",
-      "bottom",
-    ]
-  }
-  id=""
-  isAppLauncher={false}
-  isContentLeftAligned={false}
-  isVisible={false}
-  maxWidth="18.75rem"
-  position="bottom"
-  tippyProps={Object {}}
-  trigger="mouseenter focus"
-  zIndex={9999}
->
-  <span
+<Fragment>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
     className=""
+    content="This system will be removed from the inventory in 10 days"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
   >
-    Some children
-  </span>
-</Tooltip>
+    <span
+      className=""
+    >
+      Some children
+    </span>
+  </Tooltip>
+</Fragment>
 `;
