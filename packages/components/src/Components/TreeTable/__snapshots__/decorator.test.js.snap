@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeTable decorator should render correctly - with data 1`] = `
+<div
+  className="pf-c-treeview__control"
+>
+  <div
+    className="pf-c-treeview__control-text"
+  >
+    value
+  </div>
+</div>
+`;
+
+exports[`TreeTable decorator should render correctly - with data tree collapsed 1`] = `
+<div
+  className="pf-c-treeview__control"
+>
+  <div
+    className="pf-c-treeview__toggle"
+  >
+    <Component
+      onClick={[Function]}
+      variant="plain"
+    >
+      <AngleRightIcon
+        aria-hidden="true"
+        className="pf-c-treeview__toggle-icon"
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+    </Component>
+  </div>
+  <div
+    className="pf-c-treeview__control-text"
+  >
+    value
+  </div>
+</div>
+`;
+
+exports[`TreeTable decorator should render correctly - with data tree opened 1`] = `
+<div
+  className="pf-c-treeview__control"
+>
+  <div
+    className="pf-c-treeview__toggle"
+  >
+    <Component
+      onClick={[Function]}
+      variant="plain"
+    >
+      <AngleRightIcon
+        aria-hidden="true"
+        className="pf-c-treeview__toggle-icon"
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+    </Component>
+  </div>
+  <div
+    className="pf-c-treeview__control-text"
+  >
+    value
+  </div>
+</div>
+`;

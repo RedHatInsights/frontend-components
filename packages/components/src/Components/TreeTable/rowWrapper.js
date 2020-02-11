@@ -5,12 +5,12 @@ import classnames from 'classnames';
 
 const TreeRowWrapper = (props) => {
     const { className } = props;
-    const { level, isTreeOpen, point, posinset } = props.row;
+    const { level, isTreeOpen, point, posinset } = props.row || {};
     return <RowWrapper
         { ...props }
         aria-level={level === undefined ? 1 : level + 1}
-        aria-posinset={posinset}
-        aria-setsize={ point.size }
+        aria-posinset={ posinset }
+        aria-setsize={ point ? point.size : 0 }
         className={
             classnames({
                 className,
