@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ExclamationTriangleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-triangle-icon';
 import ExclamationCircleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-circle-icon';
 import { Tooltip } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
+import classnames from 'classnames';
 import './CullingInformation.scss';
 
 const seconds = 1000;
@@ -41,8 +42,10 @@ const CullingInformation = ({ culled, className, staleWarning, stale, currDate, 
             position="bottom"
         >
             <span className={
-                isWarn ? 'ins-c-inventory__culling-warning' :
-                    isError ? 'ins-c-inventory__culling-danger' : ''
+                classnames({
+                    'ins-c-inventory__culling-warning': isWarn,
+                    'ins-c-inventory__culling-danger': isError
+                })
             }>
                 { isError && <ExclamationCircleIcon /> }
                 { isWarn && <ExclamationTriangleIcon /> }
