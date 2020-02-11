@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeTable RowWrapper should render correctly - no data 1`] = `
+<Component
+  aria-level={1}
+  aria-setsize={0}
+  className=""
+/>
+`;
+
+exports[`TreeTable RowWrapper should render correctly - with data 1`] = `
+<Component
+  aria-level={1}
+  aria-posinset={1}
+  aria-setsize={2}
+  className="pf-m-expandable pf-m-expanded"
+  row={
+    Object {
+      "isTreeOpen": true,
+      "level": 0,
+      "point": Object {
+        "size": 2,
+      },
+      "posinset": 1,
+    }
+  }
+/>
+`;
+
+exports[`TreeTable RowWrapper should render correctly - with data collapsed 1`] = `
+<Component
+  aria-level={1}
+  aria-posinset={1}
+  aria-setsize={2}
+  className="pf-m-expandable"
+  row={
+    Object {
+      "isTreeOpen": false,
+      "level": 0,
+      "point": Object {
+        "size": 2,
+      },
+      "posinset": 1,
+    }
+  }
+/>
+`;
