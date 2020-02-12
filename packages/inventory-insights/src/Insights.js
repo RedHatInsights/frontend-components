@@ -1,21 +1,32 @@
 /* eslint-disable camelcase */
 import './insights.scss';
 
-import { CheckCircleIcon, CheckIcon, ExternalLinkAltIcon, PficonSatelliteIcon, TimesCircleIcon } from '@patternfly/react-icons';
-import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
-import ChartSpikeIcon from '@patternfly/react-icons/dist/js/icons/chartSpike-icon';
 import { BASE_FETCH_URL, FILTER_CATEGORIES as FC } from './Constants';
-import { Battery, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
-import { Bullseye, Button, Card, CardBody, ClipboardCopy, Stack, StackItem, ToolbarItem } from '@patternfly/react-core';
 import React, { Component, Fragment } from 'react';
 import { SortByDirection, Table, TableBody, TableHeader, cellWidth, sortable } from '@patternfly/react-table';
+import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
 import { flatten, sortBy } from 'lodash';
 
+import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
+import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
+import { Bullseye } from '@patternfly/react-core/dist/js/layouts/Bullseye/Bullseye';
+import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
+import { Card } from '@patternfly/react-core/dist/js/components/Card/Card';
+import { CardBody } from '@patternfly/react-core/dist/js/components/Card/CardBody';
+import ChartSpikeIcon from '@patternfly/react-icons/dist/js/icons/chartSpike-icon';
+import CheckCircleIcon from '@patternfly/react-icons/dist/js/icons/check-circle-icon';
+import CheckIcon from '@patternfly/react-icons/dist/js/icons/check-icon';
+import { ClipboardCopy } from '@patternfly/react-core/dist/js/components/ClipboardCopy/ClipboardCopy';
+import ExternalLinkAltIcon  from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
 import { List } from 'react-content-loader';
 import MessageState from './MessageState';
+import PficonSatelliteIcon  from '@patternfly/react-icons/dist/js/icons/pficon-satellite-icon';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
 import PropTypes from 'prop-types';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import ReportDetails from './ReportDetails';
+import TimesCircleIcon  from '@patternfly/react-icons/dist/js/icons/times-circle-icon';
+import { ToolbarItem } from '@patternfly/react-core/dist/js/layouts/Toolbar/ToolbarItem';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import connect from 'react-redux/es/connect/connect';
 import moment from 'moment';
