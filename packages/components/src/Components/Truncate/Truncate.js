@@ -1,13 +1,12 @@
-import React from 'react';
-import propTypes from 'prop-types';
-
-import classNames from 'classnames';
-
-import { Button, Stack, StackItem } from '@patternfly/react-core';
-
 import './truncate.scss';
 
-import sanitizeHtml from 'sanitize-html';
+import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
+
+import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
+import React from 'react';
+import classNames from 'classnames';
+import propTypes from 'prop-types';
+import sanitizeHtml from 'sanitize-html/dist/sanitize-html';
 
 class Truncate extends React.Component {
 
