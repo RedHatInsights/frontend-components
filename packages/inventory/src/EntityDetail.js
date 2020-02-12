@@ -111,17 +111,13 @@ class EntityDetails extends Component {
                             {
                                 loaded ?
                                     (
-                                        <CullingInformation
+                                        CullingInformation ? <CullingInformation
                                             culled={this.getFact('culled_timestamp')}
                                             staleWarning={this.getFact('stale_warning_timestamp')}
                                             stale={this.getFact('stale_timestamp')}
                                         >
-                                            {
-                                                DateFormat ?
-                                                    <DateFormat date={this.getFact('updated')} type="exact" /> :
-                                                    new Date(this.getFact('updated')).toLocaleString()
-                                            }
-                                        </CullingInformation>
+                                            <DateFormat date={this.getFact('updated')} type="exact" />
+                                        </CullingInformation> : <DateFormat date={this.getFact('updated')} type="exact" />
                                     ) :
                                     <Skeleton size={ SkeletonSize.sm } />
                             }
