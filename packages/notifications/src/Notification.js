@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Button, TextContent, Text, TextVariants } from '@patternfly/react-core';
+import { Alert, TextContent, Text, TextVariants, AlertActionCloseButton } from '@patternfly/react-core';
 import { CloseIcon } from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
 import './notifications.scss';
@@ -45,13 +45,13 @@ class Notification extends Component {
                 title={ title && title.replace(/<\/?[^>]+(>|$)/g, '') }
                 { ...rest }
                 action={ dismissable ?
-                    <Button
+                    <AlertActionCloseButton
                         aria-label="close-notification"
                         variant="plain"
                         onClick={ this.handleDismiss }
                     >
                         <CloseIcon/>
-                    </Button> : null
+                    </AlertActionCloseButton> : null
                 }
                 onMouseEnter={this.clearDismissTimeout}
                 onMouseLeave={this.setDismissTimeout}
