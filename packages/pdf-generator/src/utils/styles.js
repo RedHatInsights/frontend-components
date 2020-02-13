@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { StyleSheet, Font } from '@react-pdf/renderer';
 import {
-    global_danger_color_100,
+    chart_color_red_100,
     global_Color_dark_100,
     chart_global_warning_Color_100,
     global_disabled_color_100,
@@ -42,7 +42,7 @@ export default (style = {}) => StyleSheet.create({
     },
     reportName: {
         fontSize: 28,
-        color: global_danger_color_100.value
+        color: chart_color_red_100.value
     },
     largeSpacing: {
         margin: '30 0'
@@ -60,7 +60,7 @@ export default (style = {}) => StyleSheet.create({
     firstTitle: {
         fontSize: 9,
         fontWeight: 700,
-        color: global_danger_color_100.value
+        color: chart_color_red_100.value
     },
     secondTitle: {
         fontWeight: 700,
@@ -81,7 +81,7 @@ export default (style = {}) => StyleSheet.create({
         flexDirection: 'column'
     },
     colorCrit: {
-        color: global_danger_color_100.value
+        color: chart_color_red_100.value
     },
     colorHigh: {
         color: chart_global_warning_Color_100.value
