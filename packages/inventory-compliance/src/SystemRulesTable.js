@@ -77,25 +77,30 @@ class SystemRulesTable extends React.Component {
 
     setColumnIndices = () => {
         const { columns } = this.state;
+        const columnIndices = {};
 
         columns.forEach((column, index) => {
             if (column.title === 'Rule' || column.original === 'Rule') {
-                this.TITLE_COLUMN = index;
+                columnIndices.TITLE_COLUMN = index;
             } else if (column.title === 'Policy' || column.original === 'Policy') {
-                this.POLICY_COLUMN = index;
+                columnIndices.POLICY_COLUMN = index;
             } else if (column.title === 'Severity' || column.original === 'Severity') {
-                this.SEVERITY_COLUMN = index;
+                columnIndices.SEVERITY_COLUMN = index;
             } else if (column.title === 'Passed' || column.original === 'Passed') {
-                this.COMPLIANT_COLUMN = index;
+                columnIndices.COMPLIANT_COLUMN = index;
             } else if (column.original === 'Ansible' || column.original === 'Ansible') {
-                this.REMEDIATIONS_COLUMN = index;
+                columnIndices.REMEDIATIONS_COLUMN = index;
             }
+        });
+        return this.setState({
+            columnIndices
         });
     }
 
     componentDidMount = () => {
-        this.setColumnIndices();
-        this.setInitialCurrentRows();
+        this.setColumnIndices().then(() => {
+            this.setInitialCurrentRows();
+        });
     }
 
     componentDidUpdate = (prevProps) => {
@@ -164,7 +169,7 @@ class SystemRulesTable extends React.Component {
     }
 
     onSelect = (_event, selected, key) => {
-        const { page, itemsPerPage } = this.state;
+        const { columnIndices, page, itemsPerPage } = this.state;
         let { currentRows, rows } = this.state;
         if (key === -1) {
             rows = this.selectAll(rows, selected);
@@ -172,7 +177,7 @@ class SystemRulesTable extends React.Component {
         } else {
             // One rule was selected
             const index = ((page - 1) * itemsPerPage * 2) + Number(key);
-            if (currentRows[index].cells[this.REMEDIATIONS_COLUMN].original) {
+            if (currentRows[index].cells[columnIndices.REMEDIATIONS_COLUMN].original) {
                 rows[index].selected = selected;
                 currentRows[key].selected = selected;
             }
@@ -321,13 +326,13 @@ class SystemRulesTable extends React.Component {
     }
 
     selectedRules = () => {
-        const { currentRows, profiles, refIds } = this.state;
-        return currentRows.filter(row => row.selected && row.cells[this.REMEDIATIONS_COLUMN].original).map(row => ({
+        const { currentRows, profiles, refIds, columnIndices } = this.state;
+        return currentRows.filter(row => row.selected && row.cells[columnIndices.REMEDIATIONS_COLUMN].original).map(row => ({
             // We want to match this response with a similar response from GraphQL
-            refId: refIds[row.cells[this.TITLE_COLUMN].original],
-            profiles: [{ refId: profiles[row.cells[this.TITLE_COLUMN].original] }],
-            remediationAvailable: row.cells[this.REMEDIATIONS_COLUMN].original,
-            title: row.cells[this.TITLE_COLUMN].original // This is the rule title, the description is too long
+            refId: refIds[row.cells[columnIndices.TITLE_COLUMN].original],
+            profiles: [{ refId: profiles[row.cells[columnIndices.TITLE_COLUMN].original] }],
+            remediationAvailable: row.cells[columnIndices.REMEDIATIONS_COLUMN].original,
+            title: row.cells[columnIndices.TITLE_COLUMN].original // This is the rule title, the description is too long
         }));
     }
 
@@ -411,12 +416,13 @@ class SystemRulesTable extends React.Component {
     }
 
     searchBy = (searchTerm, rows) => {
+        const { columnIndices } = this.state;
         const lowerString = (s) => String(s).toLowerCase();
         const filteredRows = [];
         if (searchTerm) {
             searchTerm = lowerString(searchTerm);
             rows.forEach((row, i) => {
-                const titleMatches = this.isParent(row) && lowerString(row.cells[this.TITLE_COLUMN].original).match(searchTerm);
+                const titleMatches = this.isParent(row) && lowerString(row.cells[columnIndices.TITLE_COLUMN].original).match(searchTerm);
                 const identifierMatches = !this.isParent(row) && lowerString(row.cells[0].originalIdentifier).match(searchTerm);
                 const referencesMatch = !this.isParent(row) && lowerString(row.cells[0].originalReferences).match(searchTerm);
 
@@ -468,16 +474,16 @@ class SystemRulesTable extends React.Component {
     )
 
     updateFilter = (hidePassed, severity, policy) => {
-        const { originalRows, profiles, refIds, itemsPerPage, searchTerm } = this.state;
+        const { columnIndices, originalRows, profiles, refIds, itemsPerPage, searchTerm } = this.state;
         let passedRows;
         if (hidePassed) {
-            passedRows = this.filterBy(!hidePassed, originalRows, this.COMPLIANT_COLUMN);
+            passedRows = this.filterBy(!hidePassed, originalRows, columnIndices.COMPLIANT_COLUMN);
         } else {
             passedRows = originalRows;
         }
 
-        const severityRows = this.filterBy(severity.join('|'), originalRows, this.SEVERITY_COLUMN);
-        const policyRows = this.filterBy(policy, originalRows, this.POLICY_COLUMN);
+        const severityRows = this.filterBy(severity.join('|'), originalRows, columnIndices.SEVERITY_COLUMN);
+        const policyRows = this.filterBy(policy, originalRows, columnIndices.POLICY_COLUMN);
         const searchRows = this.searchBy(searchTerm, originalRows);
         const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows,
             hidePassed, severity, policy, searchTerm);
@@ -588,13 +594,15 @@ SystemRulesTable.propTypes = {
     system: propTypes.object,
     itemsPerPage: propTypes.number,
     remediationsEnabled: propTypes.bool,
-    columns: propTypes.shape([
-        {
-            title: propTypes.oneOfType([ propTypes.string, propTypes.object ]).isRequired,
-            transforms: propTypes.array.isRequired,
-            original: propTypes.string
-        }
-    ])
+    columns: propTypes.arrayOf(
+        propTypes.shape(
+            {
+                title: propTypes.oneOfType([ propTypes.string, propTypes.object ]).isRequired,
+                transforms: propTypes.array.isRequired,
+                original: propTypes.string
+            }
+        )
+    )
 };
 
 SystemRulesTable.defaultProps = {
