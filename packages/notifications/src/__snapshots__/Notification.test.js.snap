@@ -59,7 +59,7 @@ exports[`Notification component should render correctly with HTML title 1`] = `
 exports[`Notification component should render correctly with dismiss button 1`] = `
 <Component
   action={
-    <Unknown
+    <AlertActionCloseButton
       aria-label="close-notification"
       onClick={[Function]}
       variant="plain"
@@ -70,7 +70,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
         size="sm"
         title={null}
       />
-    </Unknown>
+    </AlertActionCloseButton>
   }
   className="notification-item"
   id="Foo"
