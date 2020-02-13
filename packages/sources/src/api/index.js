@@ -1,4 +1,3 @@
-import { DefaultApi as SourcesDefaultApi } from '@redhat-cloud-services/sources-client';
 import axiosInstanceInsights from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
 
 import { SOURCES_API_BASE } from './constants';
@@ -7,10 +6,16 @@ const axiosInstance = axiosInstanceInsights;
 
 export { axiosInstance };
 
-let apiInstance;
-
-export const getSourcesApi = () =>
-    apiInstance || (apiInstance = new SourcesDefaultApi(undefined, SOURCES_API_BASE, axiosInstance));
+export const getSourcesApi = () => ({
+    createEndpoint: (data) => axiosInstanceInsights.post(`${SOURCES_API_BASE}/endpoints`, data),
+    createAuthentication: (data) => axiosInstanceInsights.post(`${SOURCES_API_BASE}/authentications`, data),
+    deleteSource: (id) => axiosInstanceInsights.delete(`${SOURCES_API_BASE}/sources/${id}`),
+    createApplication: (data) => axiosInstanceInsights.post(`${SOURCES_API_BASE}/applications`, data),
+    postGraphQL: (data) => axiosInstanceInsights.post(`${SOURCES_API_BASE}/graphql`, data),
+    listSourceTypes: () => axiosInstanceInsights.get(`${SOURCES_API_BASE}/source_types`),
+    listApplicationTypes: () => axiosInstanceInsights.get(`${SOURCES_API_BASE}/application_types`),
+    createSource: (data) => axiosInstanceInsights.post(`${SOURCES_API_BASE}/sources`, data)
+});
 
 export const doLoadSourceTypes = () =>
     getSourcesApi().listSourceTypes().then(data => ({ sourceTypes: data.data }));
