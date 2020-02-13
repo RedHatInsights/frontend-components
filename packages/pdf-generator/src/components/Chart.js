@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { CircleIconConfig } from '@patternfly/react-icons';
+import { CircleIconConfig } from '@patternfly/react-icons/dist/js/icons/circle-icon';
 import PropTypes from 'prop-types';
 import { View, Canvas, Text } from '@react-pdf/renderer';
 import {
