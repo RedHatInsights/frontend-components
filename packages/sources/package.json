@@ -26,7 +26,6 @@
         "@patternfly/react-icons": "^3.14.39",
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
-        "@redhat-cloud-services/sources-client": "^1.0.23",
         "awesome-debounce-promise": "^2.1.0"
     },
     "devDependencies": {
