@@ -26,7 +26,7 @@ class RulesComplianceFilter extends React.Component {
             ]
         });
 
-        if (props.availablePolicies.length > 1) {
+        if (props.availablePolicies && props.availablePolicies.length > 1) {
             filterCategories.push({
                 type: 'checkbox', title: 'Policy', urlParam: 'policy',
                 values: props.availablePolicies.map(policy => ({

@@ -28,6 +28,19 @@ describe('RulesComplianceFilter component', () => {
         );
         wrapper.instance();
         expect(wrapper.state('filterCategories').length).toEqual(2);
+        expect(wrapper.state('filterCategories')[0].title).toEqual('Passed');
+        expect(wrapper.state('filterCategories')[1].title).toEqual('Severity');
+    });
+
+    it('should not display the "Passed" filter if disabled', () => {
+        const wrapper = shallow(
+            <RulesComplianceFilter
+                showPassFailFilter={ false }
+            />
+        );
+        wrapper.instance();
+        expect(wrapper.state('filterCategories').length).toEqual(1);
+        expect(wrapper.state('filterCategories')[0].title).toEqual('Severity');
     });
 
     it('should allow to add and remove filters', () => {
