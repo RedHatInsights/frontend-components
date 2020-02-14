@@ -7,34 +7,39 @@ import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
 class RulesComplianceFilter extends React.Component {
     constructor(props) {
         super(props);
+        const filterCategories = [];
+        if (props.showPassFailFilter) {
+            filterCategories.push({
+                type: 'radio', title: 'Passed', urlParam: 'hidePassed', values: [
+                    { label: 'Show all rules', value: false },
+                    { label: 'Hide passed rules', value: true }
+                ]
+            });
+        }
+
+        filterCategories.push({
+            type: 'checkbox', title: 'Severity', urlParam: 'severity', values: [
+                { label: HIGH_SEVERITY, value: 'high' },
+                { label: MEDIUM_SEVERITY, value: 'medium' },
+                { label: LOW_SEVERITY, value: 'low' },
+                { label: 'Unknown', value: 'unknown' }
+            ]
+        });
+
+        if (props.availablePolicies.length > 1) {
+            filterCategories.push({
+                type: 'checkbox', title: 'Policy', urlParam: 'policy',
+                values: props.availablePolicies.map(policy => ({
+                    label: policy.name, value: policy.name
+                }))
+            });
+        }
+
         this.state = {
             hidePassed: props.hidePassed,
             severity: props.severity,
             policy: props.policy,
-            filterCategories: [
-                {
-                    type: 'radio', title: 'Passed', urlParam: 'hidePassed', values: [
-                        { label: 'Show all rules', value: false },
-                        { label: 'Hide passed rules', value: true }
-                    ]
-                },
-                {
-                    type: 'checkbox', title: 'Severity', urlParam: 'severity', values: [
-                        { label: HIGH_SEVERITY, value: 'high' },
-                        { label: MEDIUM_SEVERITY, value: 'medium' },
-                        { label: LOW_SEVERITY, value: 'low' },
-                        { label: 'Unknown', value: 'unknown' }
-                    ]
-                },
-                ...props.availablePolicies.length > 1 ? [
-                    {
-                        type: 'checkbox', title: 'Policy', urlParam: 'policy',
-                        values: props.availablePolicies.map(policy => ({
-                            label: policy.name, value: policy.name
-                        }))
-                    }
-                ] : []
-            ]
+            filterCategories
         };
     };
 
@@ -85,6 +90,7 @@ class RulesComplianceFilter extends React.Component {
 RulesComplianceFilter.propTypes = {
     updateFilter: propTypes.func,
     hidePassed: propTypes.bool,
+    showPassFailFilter: propTypes.bool,
     severity: propTypes.array,
     availablePolicies: propTypes.array,
     policy: propTypes.array
@@ -92,6 +98,7 @@ RulesComplianceFilter.propTypes = {
 
 RulesComplianceFilter.defaultProps = {
     hidePassed: false,
+    showPassFailFilter: true,
     severity: [],
     policy: [],
     updateFilter: () => {}
