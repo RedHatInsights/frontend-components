@@ -139,6 +139,6 @@ ConditionalFilter.propTypes = {
 ConditionalFilter.defaultProps = {
     value: '',
     items: [],
-    hideLabel: false,
+    hideLabel: false
 };
 export default ConditionalFilter;
