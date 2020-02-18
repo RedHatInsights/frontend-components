@@ -71,6 +71,11 @@ describe('ConditionalFilter', () => {
             const wrappper = shallow(<ConditionalFilter items={[ config[0] ]} />);
             expect(toJson(wrappper)).toMatchSnapshot();
         });
+
+        it('should render correctly with with the active label hidden', () => {
+            const wrappper = shallow(<ConditionalFilter hideLabel={ true } items={ config } />);
+            expect(toJson(wrappper)).toMatchSnapshot();
+        });
     });
 
     describe('API', () => {

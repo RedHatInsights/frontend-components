@@ -24,7 +24,7 @@ class ConditionalFilter extends Component {
     }
 
     render() {
-        const { items, value, id, onChange, placeholder, ...props } = this.props;
+        const { items, value, id, onChange, placeholder, hideLabel, ...props } = this.props;
         const { isOpen, stateValue } = this.state;
         const currentValue = onChange ? value : stateValue;
         const activeItem = items && items.length && (
@@ -54,11 +54,15 @@ class ConditionalFilter extends Component {
                                         onSelect={ () => this.dropdownToggle(false) }
                                         isOpen={ isOpen }
                                         toggle={
-                                            <DropdownToggle onToggle={ this.dropdownToggle }>
+                                            <DropdownToggle
+                                                onToggle={ this.dropdownToggle }
+                                                className={ hideLabel ? 'no__label' : '' } >
                                                 <FilterIcon size="sm" />
-                                                <span className="ins-c-conditional-filter__value-selector">
-                                                    { activeItem && activeItem.label }
-                                                </span>
+                                                { !hideLabel &&
+                                                    <span className="ins-c-conditional-filter__value-selector">
+                                                        { activeItem && activeItem.label }
+                                                    </span>
+                                                }
                                             </DropdownToggle>
                                         }
                                         dropdownItems={
@@ -102,6 +106,7 @@ const TextInputProps = {
 };
 
 ConditionalFilter.propTypes = {
+    hideLabel: PropTypes.boolean,
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string,
         label: PropTypes.node,
@@ -133,6 +138,7 @@ ConditionalFilter.propTypes = {
 
 ConditionalFilter.defaultProps = {
     value: '',
-    items: []
+    items: [],
+    hideLabel: false,
 };
 export default ConditionalFilter;
