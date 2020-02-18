@@ -1,9 +1,4 @@
 /**
- * Plugins used by webpack bundler
- */
-const path = require('path');
-
-/**
  * Writes bundles to distribution folder.
  *
  * @type {var}
@@ -25,21 +20,12 @@ const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({
     shorthands: true
 });
 
-/**
- * Writes final css to file
- */
-const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
-    chunkFilename: '[name].css',
-    filename: '[id].css'
-});
-
 module.exports = {
     buildPlugins: (env) => ({
         plugins: [
             WriteFileWebpackPlugin,
             LodashWebpackPlugin,
-            ExtractCssWebpackPlugin,
-            ...env && env.server === 'true' ? [ HtmlWebpackPlugin, HotModuleReplacementPlugin ] : []
+            ...env && env.server === 'true' ? [ HotModuleReplacementPlugin ] : []
         ]
     })
 };

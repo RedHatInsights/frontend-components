@@ -13,10 +13,6 @@ const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({
     paths: true,
     shorthands: true
 });
-const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
-    chunkFilename: 'css/[name].css',
-    filename: 'css/[name].css'
-});
 const CleanWebpackPlugin = new(require('clean-webpack-plugin'))();
 const WebpackHotModuleReplacement = new HotModuleReplacementPlugin();
 
@@ -45,7 +41,6 @@ module.exports = ({
         WriteFileWebpackPlugin,
         SourceMapsPlugin,
         LodashWebpackPlugin,
-        ExtractCssWebpackPlugin,
         CleanWebpackPlugin,
         HtmlWebpackPlugin,
         HtmlReplaceWebpackPlugin,

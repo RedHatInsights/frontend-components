@@ -1,6 +1,5 @@
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = ({
     port,
@@ -46,15 +45,7 @@ module.exports = ({
                 exclude: /(node_modules)/i
             }, {
                 test: /\.s?[ac]ss$/,
-                use: [
-                    process.env.NODE_ENV === 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader'
-                    },
-                    {
-                        loader: 'sass-loader'
-                    }
-                ]
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
             }, {
                 test: /\.(woff(2)?|ttf|jpg|png|eot|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{
