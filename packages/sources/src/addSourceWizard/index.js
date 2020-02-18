@@ -27,6 +27,7 @@ class AddSourceWizard extends React.Component {
     onSubmit = (formValues, sourceTypes) => {
         this.setOnSubmitState(formValues);
         return doCreateSource(formValues, sourceTypes).then((data) => {
+            this.props.afterSuccess(data);
             this.setState({ isFinished: true, createdSource: data });
         })
         .catch((error) => {
@@ -35,11 +36,8 @@ class AddSourceWizard extends React.Component {
     }
 
     afterSubmit = () => {
-        const { afterSuccess, onClose } = this.props;
-
-        onClose();
+        this.props.onClose(undefined, this.state.createdSource);
         this.setState({ ...initialValues });
-        afterSuccess(this.state.createdSource);
     }
 
     onRetry = () => this.setState({
