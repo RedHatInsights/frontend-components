@@ -36,7 +36,7 @@ class Actions extends Component {
 
     render() {
         const { isOpen } = this.state;
-        const { actions, overflowActions, onSelect, dropdownProps, exportConfig } = this.props;
+        const { actions, overflowActions, onSelect, dropdownProps, kebabToggleProps, exportConfig } = this.props;
         const [ firstAction, ...restActions ] = actions;
         return (
             <Fragment>
@@ -71,7 +71,7 @@ class Actions extends Component {
                                 onSelect && onSelect(...props);
                                 this.toggleOpen(false);
                             } }
-                            toggle={ <KebabToggle onToggle={ (isOpen) => this.toggleOpen(isOpen) } /> }
+                            toggle={ <KebabToggle { ...kebabToggleProps } onToggle={ (isOpen) => this.toggleOpen(isOpen) } /> }
                             dropdownItems={ [
                                 ...firstAction ? [
                                     <DropdownItem
@@ -118,6 +118,9 @@ Actions.propTypes = {
     onSelect: PropTypes.func,
     overflowActions: actionsType,
     dropdownProps: PropTypes.shape({
+        [PropTypes.string]: PropTypes.any
+    }),
+    kebabToggleProps: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
     }),
     exportConfig: PropTypes.shape(DownloadButton.propTypes)
