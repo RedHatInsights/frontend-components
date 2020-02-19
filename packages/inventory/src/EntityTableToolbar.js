@@ -254,7 +254,7 @@ class ContextEntityTableToolbar extends Component {
                 }
             }}
             { ...this.isFilterSelected() && { activeFiltersConfig: this.constructFilters() } }
-            actionsConfig={ loaded ? actionsConfig : <Skeleton size={SkeletonSize.lg} /> }
+            actionsConfig={ loaded ? actionsConfig : null }
             pagination={loaded ? {
                 page,
                 itemCount: total,
