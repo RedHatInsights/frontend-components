@@ -101,7 +101,7 @@ class EntityTable extends React.Component {
             ...columns.map(({ key, composed, isTime, renderFunc }) => {
                 const oneColumn = this.renderCol(item, key, composed, isTime, renderFunc);
                 return renderFunc ? {
-                    title: renderFunc(oneColumn, item.id)
+                    title: renderFunc(oneColumn, item.id, item)
                 } : oneColumn;
             })
         ].filter(cell => cell !== false && cell !== undefined);

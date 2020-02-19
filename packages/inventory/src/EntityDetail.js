@@ -14,13 +14,14 @@ import {
     DropdownPosition,
     DropdownToggle
 } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize, DateFormat } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize, DateFormat, CullingInformation } from '@redhat-cloud-services/frontend-components';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
 import { editDisplayName, editAnsibleHost, loadEntity } from './redux/actions';
 import TagWithDialog from './TagWithDialog';
 import TagsModal from './TagsModal';
+
 class EntityDetails extends Component {
     state = {
         isOpen: false,
@@ -110,9 +111,13 @@ class EntityDetails extends Component {
                             {
                                 loaded ?
                                     (
-                                        DateFormat ?
-                                            <DateFormat date={this.getFact('updated')} type="exact" /> :
-                                            new Date(this.getFact('updated')).toLocaleString()
+                                        CullingInformation ? <CullingInformation
+                                            culled={this.getFact('culled_timestamp')}
+                                            staleWarning={this.getFact('stale_warning_timestamp')}
+                                            stale={this.getFact('stale_timestamp')}
+                                        >
+                                            <DateFormat date={this.getFact('updated')} type="exact" />
+                                        </CullingInformation> : <DateFormat date={this.getFact('updated')} type="exact" />
                                     ) :
                                     <Skeleton size={ SkeletonSize.sm } />
                             }

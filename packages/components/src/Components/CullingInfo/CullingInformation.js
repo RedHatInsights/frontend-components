@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ExclamationTriangleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-triangle-icon';
 import ExclamationCircleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-circle-icon';
 import { Tooltip } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
+import classnames from 'classnames';
 import './CullingInformation.scss';
 
 const seconds = 1000;
@@ -34,20 +35,24 @@ const CullingInformation = ({ culled, className, staleWarning, stale, currDate, 
     }
 
     const { isWarn, isError, msg } = calculateTooltip(culled, staleWarning, currDate);
-    return <Tooltip
-        { ...props }
-        content={msg}
-        position="bottom"
-    >
-        <span className={
-            isWarn ? 'ins-c-inventory__culling-warning' :
-                isError ? 'ins-c-inventory__culling-danger' : ''
-        }>
-            { isError && <ExclamationCircleIcon className="ins-c-inventory__culling-danger"/> }
-            { isWarn && <ExclamationTriangleIcon className="ins-c-inventory__culling-warning"/> }
-            {children}
-        </span>
-    </Tooltip>;
+    return <React.Fragment>
+        <Tooltip
+            { ...props }
+            content={msg}
+            position="bottom"
+        >
+            <span className={
+                classnames({
+                    'ins-c-inventory__culling-warning': isWarn,
+                    'ins-c-inventory__culling-danger': isError
+                })
+            }>
+                { isError && <ExclamationCircleIcon /> }
+                { isWarn && <ExclamationTriangleIcon /> }
+                {children}
+            </span>
+        </Tooltip>
+    </React.Fragment>;
 };
 
 CullingInformation.propTypes = {

@@ -59,7 +59,8 @@ export const constructTags = (tagFilters) => {
 export const filtersReducer = (acc, filter) => ({
     ...acc,
     ...filter.value === 'hostname_or_id' && { hostnameOrId: filter.filter },
-    ...'tagFilters' in filter && { tagFilters: filter.tagFilters }
+    ...'tagFilters' in filter && { tagFilters: filter.tagFilters },
+    ...'staleFilter' in filter && { staleFilter: filter.staleFilter }
 });
 
 export function getEntities(items, {
@@ -71,7 +72,7 @@ export function getEntities(items, {
     orderBy = 'updated',
     orderDirection = 'DESC'
 }) {
-    const { hostnameOrId, tagFilters } = filters ? filters.reduce(filtersReducer, {}) : {};
+    const { hostnameOrId, tagFilters, staleFilter } = filters ? filters.reduce(filtersReducer, {}) : {};
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
         .then(mapTags)
@@ -94,7 +95,7 @@ export function getEntities(items, {
             page,
             orderBy,
             orderDirection,
-            '', //staleness
+            staleFilter,
             constructTags(tagFilters),
             { cancelToken: controller && controller.token }
         )

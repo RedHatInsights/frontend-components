@@ -4,6 +4,7 @@ import { Badge, Tooltip } from '@patternfly/react-core';
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
 export const TAG_CHIP = 'tags';
+export const STALE_CHIP = 'staleness';
 
 export function constructValues(groupValue) {
     return Object.entries(groupValue).map(([ key, { isSelected, group, item }]) => {
@@ -89,10 +90,16 @@ export function reduceFilters(filters) {
                 ...acc,
                 tagFilters: filterToGroup(oneFilter.tagFilters)
             };
+        } else if ('staleFilter' in oneFilter) {
+            return {
+                ...acc,
+                staleFilter: oneFilter.staleFilter
+            };
         }
     }, {
         textFilter: '',
-        tagFilters: {}
+        tagFilters: {},
+        staleFilter: [ 'fresh', 'stale' ]
     });
 }
 
@@ -107,3 +114,9 @@ export const mergeTableProps = (stateProps, dispatchProps, ownProps) => ({
         }
     }
 });
+
+export const staleness = [
+    { label: 'Fresh', value: 'fresh' },
+    { label: 'Stale', value: 'stale' },
+    { label: 'Stale warning', value: 'stale_warning' }
+];

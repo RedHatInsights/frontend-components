@@ -1,11 +1,18 @@
 import '@redhat-cloud-services/frontend-components/components/Section.css';
 import './insights.scss';
 
-import { BullseyeIcon, ExternalLinkAltIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
-import { Card, CardBody, CardHeader, Stack, StackItem } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/Skeleton';
+import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
 
+import BullseyeIcon from '@patternfly/react-icons/dist/js/icons/bullseye-icon';
+import { Card } from '@patternfly/react-core/dist/js/components/Card/Card';
+import { CardBody } from '@patternfly/react-core/dist/js/components/Card/CardBody';
+import { CardHeader } from '@patternfly/react-core/dist/js/components/Card/CardHeader';
+import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
+import InfoCircleIcon from '@patternfly/react-icons/dist/js/icons/info-circle-icon';
+import LightbulbIcon from '@patternfly/react-icons/dist/js/icons/lightbulb-icon';
 import React from 'react';
+import ThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/thumbs-up-icon';
 import classNames from 'classnames';
 import doT from 'dot';
 import marked from 'marked';
