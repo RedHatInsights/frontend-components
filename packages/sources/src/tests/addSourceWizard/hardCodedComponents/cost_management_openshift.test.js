@@ -61,7 +61,6 @@ describe('Cost Management OpenShift steps components', () => {
     test('Cluster identifier label', () => {
         const wrapper = mount(<OpCm.ClusterIdentifierLabel />);
 
-        expect(wrapper.find(Text)).toHaveLength(1);
         expect(wrapper.find(Popover)).toHaveLength(1);
     });
     test('Data Collection description', () => {
