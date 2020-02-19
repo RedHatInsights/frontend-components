@@ -80,19 +80,18 @@ class PrimaryToolbar extends Component {
                         </DataToolbarGroup>
                     }
                     {
-                        (
-                            (actionsConfig && actionsConfig.actions && actionsConfig.actions.length > 0) ||
-                            sortByConfig ||
-                            exportConfig
-                        ) && (
-                            React.isValidElement(actionsConfig) ?
-                                actionsConfig :
+                        React.isValidElement(actionsConfig) ? actionsConfig :
+                            (
+                                (actionsConfig && actionsConfig.actions && actionsConfig.actions.length > 0) ||
+                                sortByConfig ||
+                                exportConfig
+                            ) && (
                                 <Actions
                                     {...actionsConfig || {}}
                                     exportConfig={exportConfig}
                                     overflowActions={overflowActions}
                                 />
-                        )
+                            )
                     }
                     {
                         sortByConfig &&
