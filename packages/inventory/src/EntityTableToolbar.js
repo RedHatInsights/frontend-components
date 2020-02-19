@@ -168,7 +168,7 @@ class ContextEntityTableToolbar extends Component {
     }
 
     constructFilters = () => {
-        const { perPage, onClearFilters, activeFiltersConfig, getAllTags } = this.props;
+        const { perPage, onClearFilters, activeFiltersConfig, getAllTags, hasItems } = this.props;
         const { selected, textFilter, filterTagsBy, staleFilter } = this.state;
         return {
             filters: [
@@ -180,7 +180,7 @@ class ContextEntityTableToolbar extends Component {
                         { name: textFilter }
                     ]
                 }] : [],
-                ...staleFilter && staleFilter.length > 0 ? [{
+                ...!hasItems && staleFilter && staleFilter.length > 0 ? [{
                     category: 'Status',
                     type: STALE_CHIP,
                     chips: staleness.filter(({ value }) => staleFilter.includes(value))

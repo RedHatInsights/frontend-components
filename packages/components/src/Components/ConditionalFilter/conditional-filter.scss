@@ -5,12 +5,18 @@
         @include rem('max-width', 150px);
     }
 
-    .ins-c-conditional-filter__group .pf-c-dropdown__toggle-text {
-        width: 102px;
-        text-align: left;
+    .ins-c-conditional-filter__group {
+        .pf-c-dropdown__toggle-text {
+            width: 102px;
+            text-align: left;
 
-        & > svg {
-            margin-right: var(--pf-global--spacer--xs);
+            & > svg {
+                margin-right: var(--pf-global--spacer--xs);
+            }
+        }
+
+        &.ins-c-conditional-filter__no-label .pf-c-dropdown__toggle-text  {
+            width: auto;
         }
     }
 
