@@ -14,10 +14,12 @@ const RHLogo = ({ style, ...props }) => (
             width: 150,
             height: 30
         }}
-        paint={({ path }) =>
-            path(fedoraPath).scale(0.2).fill('#EE0000')
+        paint={({ path, scale }) => {
+            scale(0.2);
+            path(fedoraPath).fill('#EE0000')
             .path(stripePath).fill('black')
-            .path(namePath).fill('black')
+            .path(namePath).fill('black');
+        }
         }
     ></Canvas>
 );
