@@ -56,7 +56,7 @@ class ConditionalFilter extends Component {
                                         toggle={
                                             <DropdownToggle
                                                 onToggle={ this.dropdownToggle }
-                                                className={ hideLabel ? 'no__label' : '' } >
+                                                className={ hideLabel ? 'ins-c-conditional-filter__no-label' : '' } >
                                                 <FilterIcon size="sm" />
                                                 { !hideLabel &&
                                                     <span className="ins-c-conditional-filter__value-selector">

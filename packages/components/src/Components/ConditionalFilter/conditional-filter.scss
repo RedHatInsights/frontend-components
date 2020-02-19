@@ -15,10 +15,8 @@
             }
         }
 
-        &.no__label {
-            .pf-c-dropdown__toggle-text {
-                width: auto;
-            }
+        &.ins-c-conditional-filter__no-label .pf-c-dropdown__toggle-text  {
+            width: auto;
         }
     }
 

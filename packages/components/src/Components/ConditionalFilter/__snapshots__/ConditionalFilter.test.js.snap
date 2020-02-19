@@ -612,7 +612,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
         onSelect={[Function]}
         toggle={
           <DropdownToggle
-            className="no__label"
+            className="ins-c-conditional-filter__no-label"
             onToggle={[Function]}
           >
             <FilterIcon
