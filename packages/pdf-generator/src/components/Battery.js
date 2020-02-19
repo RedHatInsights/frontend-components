@@ -65,11 +65,12 @@ const Battery = ({ variant, ...props }) => {
         <Canvas style={{
             width: 20,
             height: 21
-        }} paint={({ path }) =>
+        }} paint={({ path, scale }) => {
+            scale(0.04);
             // eslint-disable-next-line camelcase
-            path(defaultSvg).scale(0.04).lineWidth('41.9638').stroke(global_icon_Color_light.value)
-            .path(currBattery.svg).fill(currBattery.color)
-        }
+            path(defaultSvg).lineWidth('41.9638').stroke(global_icon_Color_light.value)
+            .path(currBattery.svg).fill(currBattery.color);
+        } }
         />
         <Text style={{
             alignSelf: 'center',

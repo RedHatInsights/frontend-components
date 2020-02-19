@@ -84,10 +84,12 @@ class Chart extends Component {
                     width: currChart.width,
                     height: 67
                 }}
-                paint={({ path, text, fill }) => {
+                paint={({ path, text, fill, scale, translate }) => {
                     paths.map((onePath, key) => {
-                        path(onePath).scale(key === 0 ? 0.34 : 1)
-                        .translate(key === 0 ? 100 : 0, key === 0 ? 100 : 0).fill(colors[key]);
+                        scale(key === 0 ? 0.34 : 1);
+                        translate(key === 0 ? 100 : 0, key === 0 ? 100 : 0);
+                        path(onePath)
+                        .fill(colors[key]);
                         const currText = texts[key];
                         if (currText) {
                             const fontSize = parseInt(currText.style['font-size'].replace('px', '')) * 2;
