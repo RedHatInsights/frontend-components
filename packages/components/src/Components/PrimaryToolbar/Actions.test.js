@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@patternfly/react-core';
 import Actions, { actionPropsGenerator, overflowActionsMapper } from './Actions';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
@@ -50,6 +51,34 @@ describe('Actions - component', () => {
         it('one action and multiple overflow', () => {
             const wrapper = shallow(<Actions actions={[ actions[0] ]} overflowActions={ actions }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('actionObject as first action has the onClick handler', () => {
+            const wrapper = shallow(<Actions actions={ [ actions[1] ]} />);
+            expect(wrapper.find(Button).prop('onClick')).toEqual(actions[1].onClick);
+        });
+
+        it('onClick takes priority from action', () => {
+            const onClick = jest.fn();
+            const wrapper = shallow(<Actions actions={ [{
+                label: 'some  label',
+                onClick: onClick,
+                props: {
+                    onClick: jest.fn()
+                }
+            }]} />);
+            expect(wrapper.find(Button).prop('onClick')).toEqual(onClick);
+        });
+
+        it('actionObject as first action has the onClick handler from props', () => {
+            const onClick = jest.fn();
+            const wrapper = shallow(<Actions actions={ [ {
+                label: 'some  label',
+                props: {
+                    onClick: onClick
+                }
+            }]} />);
+            expect(wrapper.find(Button).prop('onClick')).toEqual(onClick);
         });
 
         it('actionObject as first action', () => {

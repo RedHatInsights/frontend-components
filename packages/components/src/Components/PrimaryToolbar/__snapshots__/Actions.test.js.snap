@@ -5,7 +5,9 @@ exports[`Actions - component should render actionObject as first action 1`] = `
   <DataToolbarItem
     className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
-    <Component>
+    <Component
+      onClick={[MockFunction]}
+    >
       Some title
     </Component>
   </DataToolbarItem>
