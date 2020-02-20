@@ -24,6 +24,7 @@ class DownloadButton extends React.Component {
             title,
             isPreview,
             reportName,
+            size,
             ...props
         } = this.props;
         const appliedStyles = styles(style);
@@ -32,7 +33,7 @@ class DownloadButton extends React.Component {
             height: '100%'
         }}>
             {pages.map((page, key) => (
-                <Page key={key} style={[ appliedStyles.page, appliedStyles.text ]}>
+                <Page size={size} key={key} style={[ appliedStyles.page, appliedStyles.text ]}>
                     {<React.Fragment>
                         <View style={appliedStyles.headerContainer}>
                             <RHLogo />
@@ -94,6 +95,11 @@ DownloadButton.propTypes = {
         PropTypes.node,
         PropTypes.arrayOf(PropTypes.node)
     ])),
+    size: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.array,
+        PropTypes.number
+    ]),
     reportName: PropTypes.string,
     fileName: PropTypes.string,
     type: PropTypes.string,
@@ -115,6 +121,7 @@ DownloadButton.propTypes = {
 };
 
 DownloadButton.defaultProps = {
+    size: 'A4',
     reportName: 'Executive report:',
     pages: [],
     title: '',
