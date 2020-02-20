@@ -72,7 +72,7 @@ describe('Actions - component', () => {
 
         it('actionObject as first action has the onClick handler from props', () => {
             const onClick = jest.fn();
-            const wrapper = shallow(<Actions actions={ [ {
+            const wrapper = shallow(<Actions actions={ [{
                 label: 'some  label',
                 props: {
                     onClick: onClick
