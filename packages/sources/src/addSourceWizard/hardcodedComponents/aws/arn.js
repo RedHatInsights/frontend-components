@@ -15,7 +15,7 @@ export const UsageDescription = () => (<TextContent>
     <Text component={ TextVariants.p }>
 To collect and store the information needed for cost management, you need to set up on Amazon S3 bucket for cost and usage reports.
     </Text>
-    <TextList>
+    <TextList component={TextListVariants.ol}>
         <TextListItem>Specify or create an Amazon S3 bucket for your account.</TextListItem>
         <TextListItem>
 Create a cost and usage report using the following values:
@@ -116,7 +116,7 @@ export const TagsDescription = () => (<TextContent>
     To use tags to organize your AWS resources in the cost management application, activate your tags in AWS to allow them to be imported automatically.
     </Text>
     <TextList component={TextListVariants.ol}>
-        <TextListItem>In the AWS Billing console, open the Cost Allocation Tags section.</TextListItem>
+        <TextListItem>In the AWS Billing and Cost Management console, open the Cost Allocation Tags section.</TextListItem>
         <TextListItem>Select the tags you want to use in the cost management application, and click Activate.</TextListItem>
     </TextList>
 </TextContent>);

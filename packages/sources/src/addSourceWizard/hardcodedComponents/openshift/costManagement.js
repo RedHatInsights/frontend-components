@@ -194,16 +194,17 @@ export const ConfigureUsageCollector = () => (
 );
 
 export const ClusterIdentifierLabel = () => (
-    <Text>
-        Cluster identifier
+    // Github issue: https://github.com/patternfly/patternfly-react/issues/3731
+    <React.Fragment>
+        Cluster identifier <span className="pf-c-form__label-required" aria-hidden="true">*</span>
         <Popover
             aria-label="more-information-popover"
             position="top"
             bodyContent={<Text>The cluster identifier value is stored in <b>~/.config/ocp_usage/config.json</b></Text>}
         >
-            <Button variant={ButtonVariant.plain}><QuestionCircleIcon /></Button>
+            <Button className='cluster-id-question-button' variant={ButtonVariant.plain}><QuestionCircleIcon /></Button>
         </Popover>
-    </Text>
+    </React.Fragment>
 );
 
 export const DataCollectionDescription = () => (

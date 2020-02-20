@@ -137,6 +137,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         className="ins-c-primary-toolbar__filter"
       >
         <ConditionalFilter
+          hideLabel={false}
           items={
             Array [
               Object {
@@ -325,6 +326,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
         className="ins-c-primary-toolbar__filter"
       >
         <ConditionalFilter
+          hideLabel={false}
           items={
             Array [
               Object {
@@ -386,6 +388,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         className="ins-c-primary-toolbar__filter"
       >
         <ConditionalFilter
+          hideLabel={false}
           items={
             Array [
               Object {

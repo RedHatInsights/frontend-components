@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom';
 import { CircleIconConfig } from '@patternfly/react-icons/dist/js/icons/circle-icon';
 import PropTypes from 'prop-types';
 import { View, Canvas, Text } from '@react-pdf/renderer';
-import {
-    ChartPie,
-    ChartDonut,
-    ChartDonutUtilization,
-    getLightThemeColors
-} from '@patternfly/react-charts';
+import { ChartPie } from '@patternfly/react-charts/dist/js/components/ChartPie';
+import { ChartDonut } from '@patternfly/react-charts/dist/js/components/ChartDonut';
+import { ChartDonutUtilization } from '@patternfly/react-charts/dist/js/components/ChartDonutUtilization';
+import { getLightThemeColors } from '@patternfly/react-charts/dist/js/components/ChartUtils/chart-theme';
 import Table from './Table';
 import styles from '../utils/styles';
 import rgbHex from 'rgb-hex';
@@ -84,10 +82,12 @@ class Chart extends Component {
                     width: currChart.width,
                     height: 67
                 }}
-                paint={({ path, text, fill }) => {
+                paint={({ path, text, fill, scale, translate }) => {
                     paths.map((onePath, key) => {
-                        path(onePath).scale(key === 0 ? 0.34 : 1)
-                        .translate(key === 0 ? 100 : 0, key === 0 ? 100 : 0).fill(colors[key]);
+                        scale(key === 0 ? 0.34 : 1);
+                        translate(key === 0 ? 100 : 0, key === 0 ? 100 : 0);
+                        path(onePath)
+                        .fill(colors[key]);
                         const currText = texts[key];
                         if (currText) {
                             const fontSize = parseInt(currText.style['font-size'].replace('px', '')) * 2;
