@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom';
 import { CircleIconConfig } from '@patternfly/react-icons/dist/js/icons/circle-icon';
 import PropTypes from 'prop-types';
 import { View, Canvas, Text } from '@react-pdf/renderer';
-import {
-    ChartPie,
-    ChartDonut,
-    ChartDonutUtilization,
-    getLightThemeColors
-} from '@patternfly/react-charts';
+import { ChartPie } from '@patternfly/react-charts/dist/js/components/ChartPie';
+import { ChartDonut } from '@patternfly/react-charts/dist/js/components/ChartDonut';
+import { ChartDonutUtilization } from '@patternfly/react-charts/dist/js/components/ChartDonutUtilization';
+import { getLightThemeColors } from '@patternfly/react-charts/dist/js/components/ChartUtils/chart-theme';
 import Table from './Table';
 import styles from '../utils/styles';
 import rgbHex from 'rgb-hex';
