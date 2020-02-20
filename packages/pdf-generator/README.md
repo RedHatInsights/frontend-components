@@ -127,6 +127,7 @@ There are mutliple config options derived from [react-pdf](https://react-pdf.org
 * `isPreview` - this option is applicable only to root component of PDF download and it will enable in page view of PDF.
 * `debug` - this option comes directly from react-pdf and it will drap rectangle around element to let you know how much space it is taking (many custom components support this as well)
 * `title` - if you want to insert title above some elements many components support it, they have predefined title so correct styling is applied
+* `size` - Define page size. if String must be one of the [available sizes by react-pdf](https://github.com/diegomura/react-pdf/blob/master/src/utils/pageSizes.js)
 * styled texts - if you want to style some text place them in array instead of direct string and you can then wrap each part of such text in object
   * `title` - text to render
   * `fontWeight` - either 500 or 700 for normal and bold
