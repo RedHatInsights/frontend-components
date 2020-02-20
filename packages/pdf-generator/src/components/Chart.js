@@ -112,7 +112,8 @@ class Chart extends Component {
                     { width: 'auto', flex: 1 }
                 }
                 rowsStyle={{
-                    justifyContent: 'flex-start'
+                    justifyContent: 'flex-start',
+                    ...appliedStyles.compactCellPadding
                 }}
                 rows={[
                     [ 'Legend' ],
@@ -124,7 +125,7 @@ class Chart extends Component {
                                 width: 15,
                                 height: 10
                             }}
-                            paint={({ path }) => path(CircleIconConfig.svgPath).scale(0.012).fill(colors[key])}
+                            paint={({ path }) => path(CircleIconConfig.svgPath).scale(0.014).fill(colors[key])}
                         />,
                         <Text key={`${key}-text`}>
                             {x} {y}
