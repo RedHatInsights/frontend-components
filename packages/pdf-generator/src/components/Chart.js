@@ -125,7 +125,10 @@ class Chart extends Component {
                                 width: 15,
                                 height: 10
                             }}
-                            paint={({ path }) => path(CircleIconConfig.svgPath).scale(0.014).fill(colors[key])}
+                            paint={({ path, scale }) => {
+                                scale(0.014);
+                                path(CircleIconConfig.svgPath).fill(colors[key]);
+                            }}
                         />,
                         <Text key={`${key}-text`}>
                             {x} {y}
