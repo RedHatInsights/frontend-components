@@ -24,11 +24,13 @@ const Table = ({
         {
             withHeader && <View style={{
                 ...appliedStyles.flexRow,
+                ...appliedStyles.compactCellPadding,
                 justifyContent: 'flex-start',
                 ...headerStyles
             }}>
                 {header.map((cell, key) => <Text key={ key } style={{
                     ...appliedStyles.secondTitle,
+                    ...appliedStyles.compactCellPadding,
                     flex: 1
                 }}>
                     {cell}
@@ -47,12 +49,14 @@ const Table = ({
                 (!withHeader ? [ header, ...cells ] : cells).map((row, key) => (
                     <View key={key} style={{
                         ...appliedStyles.flexRow,
+                        ...appliedStyles.compactCellPadding,
                         ...key % 2 && { backgroundColor: global_BorderColor_300.value },
                         ...rowsStyle
                     }}>
                         { row.map((cell, cellKey) => (
                             (typeof cell === 'string' || cell instanceof String) ? <Text key={cellKey} style={{
                                 ...appliedStyles.text,
+                                ...appliedStyles.compactCellPadding,
                                 flex: 1
                             }}>
                                 { cell }
