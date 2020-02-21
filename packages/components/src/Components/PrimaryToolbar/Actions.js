@@ -45,7 +45,7 @@ class Actions extends Component {
                     <DataToolbarItem className="ins-c-primary-toolbar__first-action pf-m-spacer-sm">
                         {
                             firstAction.label ?
-                                <Button { ...firstAction.props }>
+                                <Button { ...firstAction.props } onClick={ firstAction.onClick || (firstAction.props && firstAction.props.onClick) || undefined } >
                                     { firstAction.label }
                                 </Button> :
                                 firstAction
