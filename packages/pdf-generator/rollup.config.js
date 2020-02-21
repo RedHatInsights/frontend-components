@@ -8,9 +8,14 @@ import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
+import { createFilter } from 'rollup-pluginutils';
 import { dependencies } from './package.json';
 
-const external = Object.keys(dependencies);
+const external = createFilter(
+    Object.keys(dependencies).map(item => item.includes('@patternfly') ? `${item}/**` : item),
+    null,
+    { resolve: false }
+);
 
 const globals = {
     react: 'React',
