@@ -3,11 +3,14 @@ import { StyleSheet, Font } from '@react-pdf/renderer';
 import {
     chart_color_red_100,
     global_Color_dark_100,
-    chart_global_warning_Color_100,
-    global_disabled_color_100,
+    global_Color_dark_200,
     global_Color_light_300,
+    chart_global_warning_Color_100,
     chart_global_warning_Color_200,
-    global_Color_dark_200
+    chart_global_Fill_Color_700,
+    c_table_m_compact_cell_PaddingLeft,
+    c_table_m_compact_cell_PaddingBottom,
+    c_table_m_compact_cell_PaddingTop
 } from '@patternfly/react-tokens';
 import { fontTypes, generateFonts, redhatFont } from './fonts';
 
@@ -24,7 +27,8 @@ export default (style = {}) => StyleSheet.create({
         fontWeight: 500,
         fontFamily: 'RedHatText',
         height: '100%',
-        padding: '20 50'
+        padding: '20 50',
+        lineHeight: 1.5
     },
     displayFont: {
         fontFamily: 'RedHatDisplay'
@@ -65,7 +69,7 @@ export default (style = {}) => StyleSheet.create({
     secondTitle: {
         fontWeight: 700,
         fontSize: 9,
-        color: global_disabled_color_100.value
+        color: chart_global_Fill_Color_700.value
     },
     thirdTitle: {
         fontSize: 9,
@@ -91,5 +95,10 @@ export default (style = {}) => StyleSheet.create({
     },
     defaultColor: {
         color: global_Color_light_300.value
+    },
+    compactCellPadding: {
+        paddingLeft: c_table_m_compact_cell_PaddingLeft.value,
+        paddingBottom: c_table_m_compact_cell_PaddingBottom.value,
+        paddingTop: c_table_m_compact_cell_PaddingTop.value
     }
 });
