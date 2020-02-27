@@ -22,6 +22,7 @@ exports[`SystemRulesTable component should render 1`] = `
             hidePassed={false}
             policy={Array []}
             severity={Array []}
+            showPassFailFilter={true}
             updateFilter={[Function]}
           />
           <SimpleFilter
@@ -1638,6 +1639,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             hidePassed={false}
             policy={Array []}
             severity={Array []}
+            showPassFailFilter={true}
             updateFilter={[Function]}
           />
           <SimpleFilter

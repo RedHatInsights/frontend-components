@@ -7,6 +7,7 @@ import { TITLE_COLUMN } from './Constants';
 import { remediationsResponse, system, profileRules } from './Fixtures';
 import { columns } from './defaultColumns';
 import debounce from 'lodash/debounce';
+import { ANSIBLE_ICON } from './Constants';
 
 jest.mock('lodash/debounce');
 debounce.mockImplementation(fn => fn);
@@ -216,5 +217,28 @@ describe('SystemRulesTable component', () => {
                 expect(row.parent).toEqual(i - 1);
             }
         });
+    });
+
+    it('should be able to filter when columns do not contain Passed or Policy', async () => {
+        const wrapper = shallow(
+            <SystemRulesTable
+                profileRules={ profileRules }
+                loading={ false }
+                system={ system }
+                itemsPerPage={ 50 }
+                columns={ [
+                    { title: 'Rule' },
+                    { title: 'Policy' },
+                    { title: 'Severity' },
+                    { title: 'Passed' },
+                    { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible' }
+                ] }
+            />
+        );
+        const instance = wrapper.instance();
+        await instance.setInitialCurrentRows();
+        await instance.setState({ page: 3 });
+        await instance.updateFilter(wrapper.state('hidePassed'), [ 'low' ], []);
+        expect(wrapper.state('currentRows').length / 2).toEqual(2);
     });
 });

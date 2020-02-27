@@ -26,11 +26,6 @@ import EmptyRows from './EmptyRows';
 import debounce from 'lodash/debounce';
 
 import {
-    REMEDIATIONS_COLUMN,
-    COMPLIANT_COLUMN,
-    SEVERITY_COLUMN,
-    POLICY_COLUMN,
-    TITLE_COLUMN,
     HIGH_SEVERITY,
     MEDIUM_SEVERITY,
     LOW_SEVERITY
@@ -80,8 +75,30 @@ class SystemRulesTable extends React.Component {
         });
     }
 
+    setColumnIndices = () => {
+        const { columns } = this.state;
+        const columnIndices = {};
+
+        columns.forEach((column, index) => {
+            if (column.title === 'Rule' || column.original === 'Rule') {
+                columnIndices.TITLE_COLUMN = index;
+            } else if (column.title === 'Policy' || column.original === 'Policy') {
+                columnIndices.POLICY_COLUMN = index;
+            } else if (column.title === 'Severity' || column.original === 'Severity') {
+                columnIndices.SEVERITY_COLUMN = index;
+            } else if (column.title === 'Passed' || column.original === 'Passed') {
+                columnIndices.COMPLIANT_COLUMN = index;
+            } else if (column.original === 'Ansible' || column.original === 'Ansible') {
+                columnIndices.REMEDIATIONS_COLUMN = index;
+            }
+        });
+        return columnIndices;
+    }
+
     componentDidMount = () => {
-        this.setInitialCurrentRows();
+        this.setState({
+            columnIndices: this.setColumnIndices()
+        }, this.setInitialCurrentRows);
     }
 
     componentDidUpdate = (prevProps) => {
@@ -150,7 +167,7 @@ class SystemRulesTable extends React.Component {
     }
 
     onSelect = (_event, selected, key) => {
-        const { page, itemsPerPage } = this.state;
+        const { columnIndices, page, itemsPerPage } = this.state;
         let { currentRows, rows } = this.state;
         if (key === -1) {
             rows = this.selectAll(rows, selected);
@@ -158,7 +175,7 @@ class SystemRulesTable extends React.Component {
         } else {
             // One rule was selected
             const index = ((page - 1) * itemsPerPage * 2) + Number(key);
-            if (currentRows[index].cells[REMEDIATIONS_COLUMN].original) {
+            if (currentRows[index].cells[columnIndices.REMEDIATIONS_COLUMN].original) {
                 rows[index].selected = selected;
                 currentRows[key].selected = selected;
             }
@@ -289,15 +306,6 @@ class SystemRulesTable extends React.Component {
             ];
         })).filter(row => row); // Need to remove undefined (duplicate) rows
 
-        rows.forEach((row) => {
-            if (this.isParent(row)) {
-                row.cells[POLICY_COLUMN] = {
-                    title: profiles[row.cells[TITLE_COLUMN].original].name,
-                    original: profiles[row.cells[TITLE_COLUMN].original].name
-                };
-            }
-        });
-
         for (let [ key, value ] of Object.entries(profiles)) {
             profiles[key] = value.refId;
         }
@@ -316,13 +324,13 @@ class SystemRulesTable extends React.Component {
     }
 
     selectedRules = () => {
-        const { currentRows, profiles, refIds } = this.state;
-        return currentRows.filter(row => row.selected && row.cells[REMEDIATIONS_COLUMN].original).map(row => ({
+        const { currentRows, profiles, refIds, columnIndices } = this.state;
+        return currentRows.filter(row => row.selected && row.cells[columnIndices.REMEDIATIONS_COLUMN].original).map(row => ({
             // We want to match this response with a similar response from GraphQL
-            refId: refIds[row.cells[TITLE_COLUMN].original],
-            profiles: [{ refId: profiles[row.cells[TITLE_COLUMN].original] }],
-            remediationAvailable: row.cells[REMEDIATIONS_COLUMN].original,
-            title: row.cells[TITLE_COLUMN].original // This is the rule title, the description is too long
+            refId: refIds[row.cells[columnIndices.TITLE_COLUMN].original],
+            profiles: [{ refId: profiles[row.cells[columnIndices.TITLE_COLUMN].original] }],
+            remediationAvailable: row.cells[columnIndices.REMEDIATIONS_COLUMN].original,
+            title: row.cells[columnIndices.TITLE_COLUMN].original // This is the rule title, the description is too long
         }));
     }
 
@@ -387,6 +395,8 @@ class SystemRulesTable extends React.Component {
     }
 
     filterBy = (attribute, rows, column) => {
+        if (column === undefined) { return rows; }
+
         const filteredRows = [];
         rows.forEach((row, i) => {
             if (this.isParent(row) && String(row.cells[column].original).toLowerCase().match(
@@ -406,14 +416,15 @@ class SystemRulesTable extends React.Component {
     }
 
     searchBy = (searchTerm, rows) => {
+        const { columnIndices } = this.state;
         const lowerString = (s) => String(s).toLowerCase();
         const filteredRows = [];
         if (searchTerm) {
             searchTerm = lowerString(searchTerm);
             rows.forEach((row, i) => {
-                const titleMatches = this.isParent(row) && lowerString(row.cells[TITLE_COLUMN].original).match(searchTerm);
-                const identifierMatches = !this.isParent(row) && lowerString(row.cells[0].originalIdentifier).match(searchTerm);
-                const referencesMatch = !this.isParent(row) && lowerString(row.cells[0].originalReferences).match(searchTerm);
+                const titleMatches = this.isParent(row) && lowerString(row.cells[columnIndices.TITLE_COLUMN].original).match(searchTerm);
+                const identifierMatches = !this.isParent(row) && lowerString(row.cells[columnIndices.TITLE_COLUMN].originalIdentifier).match(searchTerm);
+                const referencesMatch = !this.isParent(row) && lowerString(row.cells[columnIndices.TITLE_COLUMN].originalReferences).match(searchTerm);
 
                 if (titleMatches || identifierMatches || referencesMatch) {
                     let parent = this.isParent(row) ? row : rows[i - 1];
@@ -463,16 +474,16 @@ class SystemRulesTable extends React.Component {
     )
 
     updateFilter = (hidePassed, severity, policy) => {
-        const { originalRows, profiles, refIds, itemsPerPage, searchTerm } = this.state;
+        const { columnIndices, originalRows, profiles, refIds, itemsPerPage, searchTerm } = this.state;
         let passedRows;
         if (hidePassed) {
-            passedRows = this.filterBy(!hidePassed, originalRows, COMPLIANT_COLUMN);
+            passedRows = this.filterBy(!hidePassed, originalRows, columnIndices.COMPLIANT_COLUMN);
         } else {
             passedRows = originalRows;
         }
 
-        const severityRows = this.filterBy(severity.join('|'), originalRows, SEVERITY_COLUMN);
-        const policyRows = this.filterBy(policy, originalRows, POLICY_COLUMN);
+        const severityRows = this.filterBy(severity.join('|'), originalRows, columnIndices.SEVERITY_COLUMN);
+        const policyRows = this.filterBy(policy, originalRows, columnIndices.POLICY_COLUMN);
         const searchRows = this.searchBy(searchTerm, originalRows);
         const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows,
             hidePassed, severity, policy, searchTerm);
@@ -489,7 +500,7 @@ class SystemRulesTable extends React.Component {
     }
 
     render() {
-        const { hidePassed, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
+        const { columnIndices, hidePassed, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
         const { remediationsEnabled, system, loading, profileRules } = this.props;
 
         if (loading) {
@@ -517,6 +528,7 @@ class SystemRulesTable extends React.Component {
                                 <InputGroup>
                                     <RulesComplianceFilter
                                         hidePassed={hidePassed}
+                                        showPassFailFilter={ (columnIndices && columnIndices.COMPLIANT_COLUMN !== undefined) || false }
                                         availablePolicies={ profileRules.map(profile => profile.profile) }
                                         updateFilter={ this.updateFilter } />
                                     <SimpleTableFilter buttonTitle={ null }
@@ -582,7 +594,16 @@ SystemRulesTable.propTypes = {
     rows: propTypes.array,
     system: propTypes.object,
     itemsPerPage: propTypes.number,
-    remediationsEnabled: propTypes.bool
+    remediationsEnabled: propTypes.bool,
+    columns: propTypes.arrayOf(
+        propTypes.shape(
+            {
+                title: propTypes.oneOfType([ propTypes.string, propTypes.object ]).isRequired,
+                transforms: propTypes.array.isRequired,
+                original: propTypes.string
+            }
+        )
+    )
 };
 
 SystemRulesTable.defaultProps = {

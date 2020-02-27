@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 import SystemPolicyCards from './SystemPolicyCards';
 import SystemRulesTable from './SystemRulesTable';
 import { Query } from 'react-apollo';
