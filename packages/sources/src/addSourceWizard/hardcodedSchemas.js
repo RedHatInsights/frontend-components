@@ -7,10 +7,13 @@ import * as OpenshiftToken from './hardcodedComponents/openshift/token';
 import * as AwsSecret from './hardcodedComponents/aws/access_key';
 import * as AwsArn from './hardcodedComponents/aws/arn';
 
+import * as SWAwsArn from './hardcodedComponents/aws/subscriptionWatch';
+
 import * as CMOpenshift from  './hardcodedComponents/openshift/costManagement';
 import * as CMAzure from './hardcodedComponents/azure/costManagement';
 
 export const COST_MANAGEMENT_APP_NAME = '/insights/platform/cost-management';
+export const CLOUD_METER_APP_NAME = '/insights/platform/cloud-meter';
 
 const arnField = {
     placeholder: 'arn:aws:iam:123456789:role/CostManagement',
@@ -18,6 +21,22 @@ const arnField = {
     validate: [{
         type: validatorTypes.REQUIRED
     },  {
+        type: validatorTypes.PATTERN_VALIDATOR,
+        pattern: /^arn:aws:.*/,
+        message: 'ARN must start with arn:aws:'
+    }, {
+        type: validatorTypes.MIN_LENGTH,
+        threshold: 10,
+        message: 'ARN should have at least 10 characters'
+    }]
+};
+
+const subsWatchArnField = {
+    placeholder: 'arn:aws:iam:123456789:role/SubscriptionWatch',
+    isRequired: true,
+    validate: [{
+        type: validatorTypes.REQUIRED
+    }, {
         type: validatorTypes.PATTERN_VALIDATOR,
         pattern: /^arn:aws:.*/,
         message: 'ARN must start with arn:aws:'
@@ -381,6 +400,50 @@ export default {
                             Content: AwsArn.ArnDescription
                         }]
                     }]
+                }
+            },
+            'cloud-meter-arn': {
+                [CLOUD_METER_APP_NAME]: {
+                    skipSelection: true,
+                    'authentication.password': subsWatchArnField,
+                    additionalSteps: [{
+                        title: 'Create IAM policy',
+                        name: 'iam-policy',
+                        nextStep: 'subs-iam-role',
+                        substepOf: 'Enable account access',
+                        fields: [{
+                            name: 'iam-policy-description',
+                            component: 'description',
+                            Content: SWAwsArn.IAMPolicyDescription
+                        }]
+                    }, {
+                        title: 'Create IAM role',
+                        stepKey: 'subs-iam-role',
+                        name: 'subs-iam-role',
+                        nextStep: 'subs-arn',
+                        substepOf: 'Enable account access',
+                        fields: [{
+                            name: 'iam-role-description',
+                            component: 'description',
+                            Content: SWAwsArn.IAMRoleDescription
+                        }]
+                    }, {
+                        title: 'Enter ARN',
+                        stepKey: 'subs-arn',
+                        name: 'cloud-meter-arn',
+                        substepOf: 'Enable account access',
+                        fields: [{
+                            name: 'arn-description',
+                            component: 'description',
+                            Content: SWAwsArn.ArnDescription
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'authentication.password',
+                            label: 'ARN',
+                            isRequired: true
+                        }]
+                    }
+                    ]
                 }
             }
         },
