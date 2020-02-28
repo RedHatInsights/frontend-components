@@ -4,6 +4,7 @@ import routerParams from '@redhat-cloud-services/frontend-components-utilities/f
 import { selectEntity, setSort, detailSelect } from './redux/actions';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
+import flatten from 'lodash/flatten';
 import {
     Title,
     EmptyStateBody,
@@ -18,7 +19,8 @@ import {
     TableGridBreakpoint,
     cellWidth,
     TableVariant,
-    sortable
+    sortable,
+    expandable
 } from '@patternfly/react-table';
 import { SkeletonTable, EmptyTable, DateFormat } from '@redhat-cloud-services/frontend-components';
 import TagsModal from './TagsModal';
@@ -50,65 +52,55 @@ class EntityTable extends React.Component {
     }
 
     renderCol = (col, key, composed, isTime) => {
-        if (!col.hasOwnProperty('isOpen')) {
-            if (composed) {
-                return (
-                    <div className="ins-composed-col">
-                        { composed.map(path => (
-                            <a key={ path }
-                                widget="col"
-                                data-key={ path }
-                                href={ `${location.pathname}/${col.id}` }
-                                onClick={ event => {
-                                    event.preventDefault();
-                                    event.stopPropagation();
-                                    this.onRowClick(event, col.id);
-                                }}
-                            >
-                                { get(col, path, ' ') || '\u00A0' }
-                            </a>
-                        )) }
-                    </div>
-                );
+        if (composed) {
+            return (
+                { title: <div className="ins-composed-col">
+                    { composed.map(path => (
+                        <a key={ path }
+                            widget="col"
+                            data-key={ path }
+                            href={ `${location.pathname}/${col.id}` }
+                            onClick={ event => {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                this.onRowClick(event, col.id);
+                            }}
+                        >
+                            { get(col, path, ' ') || '\u00A0' }
+                        </a>
+                    )) }
+                </div>
+                }
+            );
+        }
+
+        if (isTime) {
+            if (DateFormat) {
+                return { title: <DateFormat date={get(col, key, ' ')} type="relative" /> };
             }
 
-            if (isTime) {
-                if (DateFormat) {
-                    return { title: <DateFormat date={get(col, key, ' ')} type="relative" /> };
-                }
-
-                const [ , date, month, year, time ] = new Date(get(col, key, ' ')).toUTCString().split(' ');
-                if (date && month && year && time) {
-                    return `${date} ${month} ${year}, ${time.split(':').slice(0, 2).join(':')} UTC`;
-                }
-
-                return 'Invalid Date';
+            const [ , date, month, year, time ] = new Date(get(col, key, ' ')).toUTCString().split(' ');
+            if (date && month && year && time) {
+                return `${date} ${month} ${year}, ${time.split(':').slice(0, 2).join(':')} UTC`;
             }
+
+            return 'Invalid Date';
         }
 
         return get(col, key, ' ');
     }
 
-    buildCells = (item) => {
-        const { columns } = this.props;
-        if (item.hasOwnProperty('isOpen')) {
-            return [{
-                title: item.title
-            }];
-        }
-
-        return [
-            ...columns.map(({ key, composed, isTime, renderFunc }) => {
-                const oneColumn = this.renderCol(item, key, composed, isTime, renderFunc);
-                return renderFunc ? {
-                    title: renderFunc(oneColumn, item.id, item)
-                } : oneColumn;
-            })
-        ].filter(cell => cell !== false && cell !== undefined);
-    }
+    buildCells = (item) => ([
+        ...this.props.columns.map(({ key, composed, isTime, renderFunc }) => {
+            const oneColumn = this.renderCol(item, key, composed, isTime, renderFunc);
+            return renderFunc ? {
+                title: renderFunc(oneColumn, item.id, item)
+            } : oneColumn;
+        })
+    ].filter(cell => cell !== false && cell !== undefined))
 
     createRows = () => {
-        const { rows, columns, actions } = this.props;
+        const { rows, columns, actions, expandable } = this.props;
 
         if (rows.length === 0) {
             return [{
@@ -134,11 +126,22 @@ class EntityTable extends React.Component {
             }];
         }
 
-        return rows
-        .map((oneItem) => ({
-            ...oneItem,
-            cells: this.buildCells(oneItem)
-        }));
+        return flatten(rows
+        .map((oneItem, key) => {
+            return ([{
+                ...oneItem,
+                ...oneItem.children && expandable && { isOpen: !!oneItem.isOpen },
+                cells: this.buildCells(oneItem)
+            }, oneItem.children && expandable && {
+                cells: [
+                    {
+                        title: typeof oneItem.children === 'function' ? oneItem.children() : oneItem.children
+                    }
+                ],
+                parent: key,
+                fullWidth: true
+            } ]);
+        })).filter(Boolean);
     }
 
     buildTransforms = (props, transforms, hasItems, rows) => {
@@ -150,11 +153,14 @@ class EntityTable extends React.Component {
     }
 
     createColumns = () => {
-        const { columns, hasItems, rows } = this.props;
+        const { columns, hasItems, rows, expandable: isExpendable } = this.props;
         return columns.map(({ props, transforms, ...oneCell }) => ({
             ...oneCell,
             transforms: [
                 ...this.buildTransforms(props, transforms, hasItems, rows) || []
+            ],
+            cellFormatters: [
+                ...isExpendable ? [ expandable ] : []
             ]
         }));
     }
@@ -173,6 +179,7 @@ class EntityTable extends React.Component {
             tableProps
         } = this.props;
         const cells = loaded && this.createColumns();
+        console.log(this.createRows(), 'sdfsrfd');
         return (
             <React.Fragment>
                 { loaded ?

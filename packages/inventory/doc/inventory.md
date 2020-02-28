@@ -316,7 +316,9 @@ class SomeCmp extends React.Component {
 ### InventoryTable as tree
 Since inventory table is regular table you can pass additional data to it to be rendered as tree table with collapsible rows and some specific data in such row.
 
-To access store for dispatching events down to inventory you need to connect your component to redux using `connect` function and set store into context props.
+To show some collapsed information you can pass children prop for each item. This children can be either string or function with React children in it.
+
+Once user clicks on expand button you will be notified over `onExpandClick` callback. 
 ```JSX
 import React from 'react';
 import * as reactRouterDom from 'react-router-dom';
@@ -333,12 +335,7 @@ class SomeCmp extends React.Component {
             InventoryCmp: () => <div>Loading...</div>,
             items: [{
                 id: 'some-id',
-                children: [1], // please select some kind of more specific ID
-                active: false // to indicate that parent is not expanded
-            }, {
-                account: true, // since inventory table is checking if account is set
-                isOpen: false,
-                title: <div>Blaaa</div>, // What to show in expanded row
+                children: () => <div>Something</div>
             }]
         }
         this.onExpandClick = this.onExpandClick.bind(this);
@@ -366,23 +363,15 @@ class SomeCmp extends React.Component {
         })
     }
 
-    onExpandClick(_cell, row, key) {
-        const { items } = this.state;
-        items.find(item => item.id === key).active = !row.active;
-        // Not ideal, but for the sake of example it's fine
-        row.children.forEach(child => {
-            items.find(item => item.id === child.id).isOpen = !row.active;
-        });
-        this.setState({
-            items
-        });
-        this.context.store.dispatch(this.updateEntities(items));
-    }
-
     render() {
         const { InventoryCmp, items } = this.state;
+        const { onCollapse } = this.props;
         return (
-            <InventoryCmp items={items} expandable onExpandClick={this.onExpandClick} />
+            <InventoryCmp
+                items={items}
+                expandable
+                onExpandClick={(_e, _i, isOpen, { id }) => expandItem(isOpen, id)}
+            />
         )
     }
 }
@@ -391,7 +380,9 @@ SomeCmp.contextTypes = {
    store: propTypes.object
 };
 
-export default connect(() => ({}))(SomeCmp);
+export default connect((dispatch) => ({
+    onCollapse: (isOpen, id) => dispatch({ type: 'EXPAND', payload: { id, isOpen } })
+})() => ({}))(SomeCmp);
 ```
 
 ### Compact table
