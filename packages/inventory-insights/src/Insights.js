@@ -81,7 +81,7 @@ class InventoryRuleList extends Component {
             this.setState({
                 inventoryReportFetchStatus: 'failed'
             });
-            console.warn(error, 'Entity rules fetch failed.');
+            console.warn(error, 'Entity recommendation fetch failed.');
         }
 
         const activeRuleFirstReportsData = this.activeRuleFirst(reportsData);
@@ -374,7 +374,7 @@ class InventoryRuleList extends Component {
                     actionsConfig={{ actions }}
                     bulkSelect={bulkSelect}
                     filterConfig={{ items: filterConfigItems }}
-                    pagination={<React.Fragment> {results === 1 ? `${results} rule` : `${results} rules`} </React.Fragment>}
+                    pagination={<React.Fragment> {results === 1 ? `${results} recommendation` : `${results} recommendations`} </React.Fragment>}
                     activeFiltersConfig={activeFiltersConfig}
                 >
                     <ToolbarItem className="remediationButtonOverride">
@@ -412,14 +412,14 @@ class InventoryRuleList extends Component {
                                 <TableBody />
                             </Table>
                             {results === 0 &&
-                                <MessageState icon={TimesCircleIcon} title='No matching rules found' size='md'
-                                    text={`This filter criteria matches no rules. Try changing your filter settings.`} />
+                                <MessageState icon={TimesCircleIcon} title='No matching recommendations found' size='md'
+                                    text={`This filter criteria matches no recommendations. Try changing your filter settings.`} />
                             }
                         </Fragment>
                         : entity.insights_id !== null ? <Card>
                             <CardBody>
                                 <MessageState icon={CheckIcon} iconClass='ins-c-insights__check' size='md'
-                                    title='No rule hits' text={`No known rules affect this system`} />
+                                    title='No recommendations' text={`No known recommendations affect this system`} />
                             </CardBody>
                         </Card>
                             : <MessageState
@@ -446,8 +446,8 @@ class InventoryRuleList extends Component {
                     ))
             }
             {inventoryReportFetchStatus === 'failed' && entity &&
-                <MessageState icon={TimesCircleIcon} title='Error getting rules' size='md'
-                    text={entity ? `There was an error fetching rules list for this entity. Refresh your page to try again.`
+                <MessageState icon={TimesCircleIcon} title='Error getting recommendations' size='md'
+                    text={entity ? `There was an error fetching recommendations for this entity. Refresh your page to try again.`
                         : `This entity can not be found or might no longer be registered to Red Hat Insights.`} />
 
             }
