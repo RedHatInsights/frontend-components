@@ -12,19 +12,15 @@ import { dependencies, name } from './package.json';
 import { createFilter } from 'rollup-pluginutils';
 import glob from 'glob';
 
-const globMapper = (mapper) => glob.sync(mapper).map(item => {
+const globMapper = (mapper) => glob.sync(mapper).reduce((acc, item) => {
     const [ path ] = item.split('/index.js');
     const last = path.split('/').pop();
-    if (last === 'src') {
-        return {
-            index: item
-        };
-    }
 
     return {
-        [last]: item
+        ...acc,
+        [last === 'src' ? 'index' : last]: item
     };
-}).reduce((acc, curr) => ({ ...acc, ...curr }), {});
+}, {});
 
 const external = createFilter(
     Object.keys(dependencies).map(item => item.includes('@patternfly') ? `${item}/**` : item),
