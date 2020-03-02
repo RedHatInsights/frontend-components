@@ -119,6 +119,7 @@
         "react-intl": "^2.9.0",
         "redux-mock-store": "^1.5.3",
         "rollup": "^1.27.13",
+        "rollup-plugin-analyzer": "^3.2.2",
         "rollup-plugin-async": "^1.2.0",
         "rollup-plugin-babel": "^4.3.3",
         "rollup-plugin-commonjs": "^10.1.0",
