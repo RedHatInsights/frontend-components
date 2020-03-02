@@ -37,7 +37,24 @@ const globals = {
 
 const commonjsOptions = {
     ignoreGlobal: true,
-    include: /node_modules/
+    include: /node_modules/,
+    namedExports: {
+        'node_modules/@redhat-cloud-services/frontend-components/components/PrimaryToolbar.js': [
+            'PrimaryToolbar'
+        ],
+        'node_modules/@redhat-cloud-services/frontend-components/components/Skeleton.js': [
+            'Skeleton'
+        ],
+        'node_modules/@redhat-cloud-services/frontend-components/components/TableToolbar.js': [
+            'TableToolbar'
+        ],
+        'node_modules/@redhat-cloud-services/frontend-components/components/Battery.js': [
+            'Battery'
+        ],
+        'node_modules/@redhat-cloud-services/frontend-components/components/Shield.js': [
+            ''
+        ]
+    }
 };
 
 const babelOptions = {

@@ -1,1 +1,3 @@
-console.log('rule-components');
+export * from './RuleTable';
+export { default as RuleTable } from './RuleTable';
+export * from './RuleFilters';
