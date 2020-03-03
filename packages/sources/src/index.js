@@ -15,6 +15,7 @@ import hardcodedSchemas from './addSourceWizard/hardcodedSchemas';
 import { parseUrl, urlOrHost } from './api/createSource';
 import { patchSource } from './api/costManagementAuthentication';
 import { handleError } from './api/handleError';
+import filterApps from '../src/utilities/filterApps';
 
 import './styles/cardSelect.scss';
 import './styles/authSelect.scss';
@@ -38,5 +39,6 @@ export {
     asyncValidatorDebouncedWrapper,
     setFirstValidated,
     patchSource,
-    handleError
+    handleError,
+    filterApps
 };
