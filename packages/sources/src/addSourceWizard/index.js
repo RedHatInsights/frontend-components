@@ -6,6 +6,7 @@ import Form from './SourceAddModal';
 import FinalWizard from './FinalWizard';
 
 import { doCreateSource } from '../api/createSource';
+import { WIZARD_TITLE } from '../utilities/stringConstants';
 
 const initialValues = (initialValues) => ({
     isSubmitted: false,
@@ -145,7 +146,7 @@ class AddSourceButton extends React.Component {
 
     render() {
         return <React.Fragment>
-            <Button variant='primary' onClick={ () => this.setState({ isOpen: true }) }>Add a source</Button>
+            <Button variant='primary' onClick={ () => this.setState({ isOpen: true }) }>{WIZARD_TITLE}</Button>
             <AddSourceWizard isOpen={ this.state.isOpen } onClose={ () => this.setIsOpen(false) } { ...this.props }/>
         </React.Fragment>;
     }

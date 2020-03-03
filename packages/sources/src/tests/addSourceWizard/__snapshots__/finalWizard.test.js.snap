@@ -36,7 +36,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
       },
     ]
   }
-  title="Add a source"
+  title="Add source"
   width={null}
 />
 `;
@@ -78,7 +78,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
       },
     ]
   }
-  title="Add a source"
+  title="Add source"
   width={null}
 />
 `;
@@ -117,7 +117,7 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
       },
     ]
   }
-  title="Add a source"
+  title="Add source"
   width={null}
 />
 `;
