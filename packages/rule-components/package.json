@@ -1,0 +1,36 @@
+{
+    "name": "@redhat-cloud-services/rule-components",
+    "version": "0.0.1",
+    "description": "Components to be used when showing rule information",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "rollup -c ./rollup.config.js",
+        "start": "rollup -c ./rollup.config.js -w"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/RedHatInsights/frontend-components/issues"
+    },
+    "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/rule-componenets#readme",
+    "dependencies": {
+        "@patternfly/react-core": "^3.134.2",
+        "@patternfly/react-icons": "^3.15.4",
+        "@patternfly/react-table": "^2.27.11",
+        "@redhat-cloud-services/frontend-components": ">=1.0.8",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    },
+    "devDependencies": {
+        "glob": "^7.1.6"
+    }
+}
