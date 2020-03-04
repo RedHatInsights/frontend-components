@@ -107,7 +107,8 @@ export default {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
-                            initialValue: 'token'
+                            initialValue: 'token',
+                            initializeOnMount: true
                         }]
                     }, {
                         title: 'Obtain your login credentials',
@@ -211,7 +212,8 @@ export default {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
-                            initialValue: 'tenant_id_client_id_client_secret'
+                            initialValue: 'tenant_id_client_id_client_secret',
+                            initializeOnMount: true
                         }, {
                             name: 'azure-storage-account-description',
                             component: 'description',
@@ -316,7 +318,8 @@ export default {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
-                            initialValue: 'access_key_secret_key'
+                            initialValue: 'access_key_secret_key',
+                            initializeOnMount: true
                         }]
                     }]
                 }
@@ -355,7 +358,8 @@ export default {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
-                            initialValue: 'arn'
+                            initialValue: 'arn',
+                            initializeOnMount: true
                         }]
                     }, {
                         title: 'Activate cost allocation tags',
@@ -507,7 +511,8 @@ export default {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
-                            initialValue: 'username_password'
+                            initialValue: 'username_password',
+                            initializeOnMount: true
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             label: 'Username',
@@ -533,8 +538,7 @@ export default {
                 placeholder: 'https://'
             },
             'endpoint.certificate_authority': {
-                label: 'Certificate authority',
-                initialValue: ''
+                label: 'Certificate authority'
             },
             'endpoint.verify_ssl': {
                 initialValue: false
