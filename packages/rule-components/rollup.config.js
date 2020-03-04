@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
-
-import nodeResolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
@@ -9,7 +8,7 @@ import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
 import analyze from 'rollup-plugin-analyzer';
 import { dependencies, name } from './package.json';
-import { createFilter } from 'rollup-pluginutils';
+import { createFilter } from '@rollup/pluginutils';
 import glob from 'glob';
 
 const globMapper = (mapper) => glob.sync(mapper).reduce((acc, item) => {
@@ -39,6 +38,21 @@ const commonjsOptions = {
     ignoreGlobal: true,
     include: /node_modules/,
     namedExports: {
+        '../components/components/PrimaryToolbar.js': [
+            'PrimaryToolbar'
+        ],
+        '../components/components/TableToolbar.js': [
+            'TableToolbar'
+        ],
+        '../components/components/Skeleton.js': [
+            'Skeleton'
+        ],
+        '../components/components/Battery.js': [
+            'Battery'
+        ],
+        '../components/components/Shield.js': [
+            'Shield'
+        ],
         'node_modules/@redhat-cloud-services/frontend-components/components/PrimaryToolbar.js': [
             'PrimaryToolbar'
         ],
@@ -52,7 +66,7 @@ const commonjsOptions = {
             'Battery'
         ],
         'node_modules/@redhat-cloud-services/frontend-components/components/Shield.js': [
-            ''
+            'Shield'
         ]
     }
 };
@@ -80,8 +94,9 @@ const plugins = [
 ];
 
 export default [
-    ...[ 'cjs', 'esm' ].map(env => ({
+    ...[ 'esm', 'cjs' ].map(env => ({
         input: globMapper('src/**/index.js'),
+        preserveSymlinks: true,
         output: {
             dir: `./dist/${env}`,
             format: env,
@@ -93,6 +108,7 @@ export default [
     })),
     ...Object.entries(globMapper('src/**/index.js')).map(([ key, input ]) => ({
         input,
+        preserveSymlinks: true,
         output: {
             file: `./dist/umd/${key}.js`,
             format: 'umd',
