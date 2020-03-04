@@ -10,7 +10,7 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: [ ...new Array(riskOfChangeValues.length) ].map((_item, key) => ({
+        items: riskOfChangeValues.map((_item, key) => ({
             label: <span>
                 <Shield impact={key + 1} hasTooltip={false} size="sm" />
                 {riskOfChangeLabels[key]}

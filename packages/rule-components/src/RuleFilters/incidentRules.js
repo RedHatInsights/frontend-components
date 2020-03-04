@@ -7,7 +7,7 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: [ ...new Array(incidentRulesValues.length) ].map((_item, key) => ({
+        items: incidentRulesValues.map((_item, key) => ({
             label: incidentRulesLabels[key],
             textual: incidentRulesLabels[key],
             value: incidentRulesValues[key]

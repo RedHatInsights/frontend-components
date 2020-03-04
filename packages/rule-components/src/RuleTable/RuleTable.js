@@ -52,15 +52,16 @@ class RuleTable extends Component {
 
     onCollapse = (_e, key, isOpen, { ruleId }) => {
         const { expanded } = this.state;
+        const collapseKey = ruleId || key;
         if (isOpen) {
             this.setState({
                 expanded: [
                     ...expanded,
-                    ruleId || key
+                    collapseKey
                 ]
             });
         } else {
-            const currIndex = expanded.findIndex(id => id === (ruleId || key));
+            const currIndex = expanded.findIndex(id => id === collapseKey);
             expanded.splice(currIndex, 1);
             this.setState({ expanded });
         }
@@ -143,8 +144,8 @@ class RuleTable extends Component {
             />
             <Table
                 {...props}
-                {...!isLoading && { actions } }
                 {...sortBy && { onSort: this.onSort }}
+                actions={!isLoading && actions}
                 aria-label={ariaLabel}
                 cells={columns.map(({ transforms, ...column }) => ({
                     ...column,

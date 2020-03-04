@@ -7,7 +7,7 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: [ ...new Array(ansibleSupportValues.length) ].map((_item, key) => ({
+        items: ansibleSupportValues.map((_item, key) => ({
             label: ansibleSupportLabels[key],
             textual: ansibleSupportLabels[key],
             value: ansibleSupportValues[key]

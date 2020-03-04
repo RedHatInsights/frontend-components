@@ -10,7 +10,7 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: [ ...new Array(severityValues.length) ].map((_item, key) => ({
+        items: severityValues.map((_item, key) => ({
             label: <Battery key={key} label={severityLabels[key]} severity={key + 1} />,
             textual: severityLabels[key],
             value: severityValues[key]

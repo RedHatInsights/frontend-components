@@ -56,12 +56,14 @@ class MyCmp extends Component {
 ReactDOM.render(<MyCmp />, document.querySelector('.demo-app'));
 ```
 
+*NOTE: you can also use package import `@redhat-cloud-services/rule-components`, just be careful as your bundle size might increase a lot, because treeshaking might not work properly. If that happens please consider using direc imports as in example.*
+
 ### Props
 
 * `filters` - list or object of filters
 * `rules` - actual data from API, including meta information
 * `columns` - list of columns to be shown. Each column should have `selector` attribute
-* `detail` - function to render something in expendable row
+* `detail` - what to render something in expendable row
 * `isLoading` - to indicate that data are being fetched from server
 * `fetchData` - function to fetch the actual data from server
 * `toolbarProps` - additional props for toolbar
@@ -109,7 +111,7 @@ Array of columns to be shown. Each column needs to have `title` - to show anythi
 
 #### `detail`
 
-Function to show something specific in detail of collapsible row.
+Function or React node to show something specific in detail of collapsible row.
 
 #### `isLoading`
 

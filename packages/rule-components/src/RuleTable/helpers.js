@@ -37,7 +37,7 @@ export const createRows = (data, columns, expanded, detail) => data.map((oneRule
         fullWidth: true,
         noPadding: true,
         cells: [{
-            title: detail(oneRule, ruleKey)
+            title: typeof detail === 'function' ? detail(oneRule, ruleKey) : detail
         }]
     }
 ]));
