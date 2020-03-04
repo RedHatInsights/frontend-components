@@ -533,7 +533,11 @@ export default {
                 placeholder: 'https://'
             },
             'endpoint.certificate_authority': {
-                label: 'Certificate authority'
+                label: 'Certificate authority',
+                initialValue: ''
+            },
+            'endpoint.verify_ssl': {
+                initialValue: false
             }
         }
     }
