@@ -14,6 +14,7 @@ import * as CMAzure from './hardcodedComponents/azure/costManagement';
 
 export const COST_MANAGEMENT_APP_NAME = '/insights/platform/cost-management';
 export const CLOUD_METER_APP_NAME = '/insights/platform/cloud-meter';
+export const CATALOG_APP = '/insights/platform/catalog';
 
 const arnField = {
     placeholder: 'arn:aws:iam:123456789:role/CostManagement',
@@ -491,6 +492,48 @@ export default {
                         }]
                     }]
                 }
+            }
+        }
+    },
+    'ansible-tower': {
+        authentication: {
+            username_password: {
+                [CATALOG_APP]: {
+                    skipSelection: true,
+                    additionalSteps: [{
+                        title: 'Configure credentials',
+                        name: 'catalog-ansible-tower',
+                        fields: [{
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'username_password'
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            label: 'Username',
+                            name: 'authentication.username',
+                            isRequired: true,
+                            validate: [{ type: validatorTypes.REQUIRED }]
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            label: 'Password',
+                            name: 'authentication.password',
+                            type: 'password',
+                            isRequired: true,
+                            validate: [{ type: validatorTypes.REQUIRED }]
+                        }]
+                    }]
+                }
+            }
+        },
+        endpoint: {
+            url: {
+                isRequired: true,
+                validate: [{ type: validatorTypes.REQUIRED }],
+                placeholder: 'https://'
+            },
+            'endpoint.certificate_authority': {
+                label: 'Certificate authority'
             }
         }
     }
