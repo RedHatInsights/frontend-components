@@ -97,7 +97,7 @@ export const createEndpointFlagger = (skipEndpoint) => ({
     component: componentTypes.TEXT_FIELD,
     name: 'noEndpoint',
     hideField: true,
-    initialValue: skipEndpoint || '',
+    initialValue: Boolean(skipEndpoint),
     initializeOnMount: true
 });
 

@@ -48,6 +48,16 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
     <TextListItem
       component="dt"
     >
+      S3 bucket name
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      -
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
       ARN
     </TextListItem>
     <TextListItem
@@ -107,22 +117,22 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dt"
     >
-      Secret Key
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      ●●●●●●●●●●●●
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Access Key
     </TextListItem>
     <TextListItem
       component="dd"
     >
       user_name
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Secret Key
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      ●●●●●●●●●●●●
     </TextListItem>
   </TextList>
 </TextContent>
@@ -176,22 +186,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
-      Certificate Authority
+      User name
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      authority
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Verify SSL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Yes
+      user_name
     </TextListItem>
     <TextListItem
       component="dt"
@@ -206,22 +206,32 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
-      User name
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      user_name
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       URL
     </TextListItem>
     <TextListItem
       component="dd"
     >
       neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Verify SSL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
     </TextListItem>
   </TextList>
 </TextContent>
@@ -265,22 +275,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      Certificate Authority
+      User name
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      authority
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Verify SSL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Yes
+      user_name
     </TextListItem>
     <TextListItem
       component="dt"
@@ -295,22 +295,32 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      User name
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      user_name
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       URL
     </TextListItem>
     <TextListItem
       component="dd"
     >
       neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Verify SSL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
     </TextListItem>
   </TextList>
 </TextContent>
@@ -364,26 +374,6 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
     <TextListItem
       component="dt"
     >
-      Certificate Authority
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      authority
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Verify SSL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Yes
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Token
     </TextListItem>
     <TextListItem
@@ -400,6 +390,26 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
       component="dd"
     >
       neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Verify SSL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
     </TextListItem>
   </TextList>
 </TextContent>
@@ -453,22 +463,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      Certificate Authority
+      User name
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      authority
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Verify SSL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Yes
+      user_name
     </TextListItem>
     <TextListItem
       component="dt"
@@ -483,22 +483,32 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      User name
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      user_name
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       URL
     </TextListItem>
     <TextListItem
       component="dd"
     >
       neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Verify SSL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
     </TextListItem>
   </TextList>
 </TextContent>
