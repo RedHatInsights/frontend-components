@@ -227,9 +227,11 @@ class SystemRulesTable extends React.Component {
 
     calculateParent = ({ profile }, rule) => {
         const { columns } = this.state;
+        const { selectedRefIds, tailoringEnabled } = this.props;
 
         return {
             isOpen: false,
+            selected: tailoringEnabled ? selectedRefIds.includes(rule.refId) : undefined,
             cells: this.columnsToTableHeaders(columns, profile, rule).filter(e => e)
         };
     }
@@ -501,7 +503,7 @@ class SystemRulesTable extends React.Component {
 
     render() {
         const { columnIndices, hidePassed, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
-        const { remediationsEnabled, system, loading, profileRules } = this.props;
+        const { remediationsEnabled, tailoringEnabled, system, loading, profileRules } = this.props;
 
         if (loading) {
             return (
@@ -563,7 +565,7 @@ class SystemRulesTable extends React.Component {
                         onCollapse={ this.onCollapse }
                         onSort={ this.onSort }
                         sortBy={ sortBy }
-                        onSelect={ (remediationsEnabled && currentRows.length !== 0) ? this.onSelect : undefined }
+                        onSelect={ ((tailoringEnabled || remediationsEnabled) && currentRows.length !== 0) ? this.onSelect : undefined }
                         rows={ (currentRows.length === 0) ? EmptyRows : currentRows }>
                         <TableHeader />
                         <TableBody />
@@ -595,6 +597,8 @@ SystemRulesTable.propTypes = {
     system: propTypes.object,
     itemsPerPage: propTypes.number,
     remediationsEnabled: propTypes.bool,
+    tailoringEnabled: propTypes.bool,
+    selectedRefIds: propTypes.array,
     columns: propTypes.arrayOf(
         propTypes.shape(
             {
@@ -610,7 +614,9 @@ SystemRulesTable.defaultProps = {
     profileRules: [{ rules: [] }],
     hidePassed: false,
     itemsPerPage: 10,
-    remediationsEnabled: true
+    remediationsEnabled: true,
+    tailoringEnabled: false,
+    selectedRefIds: []
 };
 
 export default SystemRulesTable;
