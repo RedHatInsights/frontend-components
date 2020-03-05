@@ -66,6 +66,12 @@ describe('SourceWizardSummary component', () => {
         it('amazon', () => {
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon', 'access_key_secret_key') } />);
             expect(toJson(wrapper)).toMatchSnapshot();
+
+            // use labels from hardcoded schemas
+            expect(wrapper.contains('Access Key')).toEqual(false);
+            expect(wrapper.contains('Secret Key')).toEqual(false);
+            expect(wrapper.contains('Access key ID')).toEqual(true);
+            expect(wrapper.contains('Secret access key')).toEqual(true);
         });
 
         it('amazon - ARN', () => {

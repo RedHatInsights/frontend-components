@@ -45,7 +45,8 @@ const subsWatchArnField = {
         type: validatorTypes.MIN_LENGTH,
         threshold: 10,
         message: 'ARN should have at least 10 characters'
-    }]
+    }],
+    label: 'ARN'
 };
 
 export default {
@@ -205,6 +206,28 @@ export default {
                         }],
                         isRequired: true
                     },
+                    'authentication.password': {
+                        isRequired: true,
+                        type: 'password',
+                        validate: [{
+                            type: validatorTypes.REQUIRED
+                        }],
+                        label: 'Client secret'
+                    },
+                    'authentication.username': {
+                        isRequired: true,
+                        validate: [{
+                            type: validatorTypes.REQUIRED
+                        }],
+                        label: 'Client (Application) ID'
+                    },
+                    'authentication.extra.azure.tenant_id': {
+                        isRequired: true,
+                        label: 'Tenant (Directory) ID',
+                        validate: [{
+                            type: validatorTypes.REQUIRED
+                        }]
+                    },
                     additionalSteps: [{
                         title: 'Configure resource group and storage account',
                         nextStep: 'service-principal',
@@ -246,29 +269,13 @@ export default {
                             Content: CMAzure.CreateActiveDirectory
                         }, {
                             name: 'authentication.extra.azure.tenant_id',
-                            component: componentTypes.TEXT_FIELD,
-                            isRequired: true,
-                            label: 'Tenant (Directory) ID',
-                            validate: [{
-                                type: validatorTypes.REQUIRED
-                            }]
+                            component: componentTypes.TEXT_FIELD
                         }, {
                             name: 'authentication.username',
-                            component: componentTypes.TEXT_FIELD,
-                            isRequired: true,
-                            validate: [{
-                                type: validatorTypes.REQUIRED
-                            }],
-                            label: 'Client (Application) ID'
+                            component: componentTypes.TEXT_FIELD
                         }, {
                             name: 'authentication.password',
-                            component: componentTypes.TEXT_FIELD,
-                            isRequired: true,
-                            type: 'password',
-                            validate: [{
-                                type: validatorTypes.REQUIRED
-                            }],
-                            label: 'Client secret'
+                            component: componentTypes.TEXT_FIELD
                         }]
                     }, {
                         title: 'Create a daily export',
@@ -443,9 +450,7 @@ export default {
                             Content: SWAwsArn.ArnDescription
                         }, {
                             component: componentTypes.TEXT_FIELD,
-                            name: 'authentication.password',
-                            label: 'ARN',
-                            isRequired: true
+                            name: 'authentication.password'
                         }]
                     }
                     ]
@@ -504,6 +509,17 @@ export default {
             username_password: {
                 [CATALOG_APP]: {
                     skipSelection: true,
+                    'authentication.username': {
+                        isRequired: true,
+                        validate: [{ type: validatorTypes.REQUIRED }],
+                        label: 'Username'
+                    },
+                    'authentication.password': {
+                        type: 'password',
+                        isRequired: true,
+                        validate: [{ type: validatorTypes.REQUIRED }],
+                        label: 'Password'
+                    },
                     additionalSteps: [{
                         title: 'Configure credentials',
                         name: 'catalog-ansible-tower',
@@ -515,17 +531,10 @@ export default {
                             initializeOnMount: true
                         }, {
                             component: componentTypes.TEXT_FIELD,
-                            label: 'Username',
-                            name: 'authentication.username',
-                            isRequired: true,
-                            validate: [{ type: validatorTypes.REQUIRED }]
+                            name: 'authentication.username'
                         }, {
                             component: componentTypes.TEXT_FIELD,
-                            label: 'Password',
-                            name: 'authentication.password',
-                            type: 'password',
-                            isRequired: true,
-                            validate: [{ type: validatorTypes.REQUIRED }]
+                            name: 'authentication.password'
                         }]
                     }]
                 }

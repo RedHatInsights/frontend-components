@@ -117,7 +117,7 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dt"
     >
-      Access Key
+      Access key ID
     </TextListItem>
     <TextListItem
       component="dd"
@@ -127,7 +127,7 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dt"
     >
-      Secret Key
+      Secret access key
     </TextListItem>
     <TextListItem
       component="dd"
@@ -275,7 +275,7 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      User name
+      Username
     </TextListItem>
     <TextListItem
       component="dd"
@@ -285,7 +285,7 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      Secret Key
+      Password
     </TextListItem>
     <TextListItem
       component="dd"
@@ -463,7 +463,7 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      User name
+      Username
     </TextListItem>
     <TextListItem
       component="dd"
@@ -473,7 +473,7 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      Secret Key
+      Password
     </TextListItem>
     <TextListItem
       component="dd"
