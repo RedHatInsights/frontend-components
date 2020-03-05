@@ -5,7 +5,6 @@ If you want to use rules table component please pass entire dataset from server 
 ```JSX
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
 import RuleTable, { severity } from '@redhat-cloud-services/rule-components/dist/cjs/RuleTable';
 import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
 import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
