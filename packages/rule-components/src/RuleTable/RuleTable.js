@@ -20,6 +20,19 @@ class RuleTable extends Component {
         fetchData(options);
     }, 500)
 
+    componentDidUpdate(prevProps) {
+        if (JSON.stringify(this.props.filterValues) !== JSON.stringify(prevProps.filterValues)) {
+            this.setState({
+                ...this.state,
+                filterValues: this.props.filterValues
+            });
+        }
+    }
+
+    componentDidMount() {
+        this.setState({ filterValues: this.props.filterValues });
+    }
+
     onUpdate = (isDebounce = false) => {
         const { fetchData, rules, columns, sortBy, detail } = this.props;
         const { filterValues } = this.state;
@@ -108,12 +121,12 @@ class RuleTable extends Component {
             isLoading,
             sortBy,
             toolbarProps,
+            filterValues: _filterValues,
             ...props
         } = this.props;
         const { expanded, filterValues } = this.state;
         const { meta, data } = rules;
 
-        const rows = flatten(createRows(data, columns, expanded, detail));
         const defaultMeta = calculateMeta(meta);
         const pagination = {
             ...defaultMeta,
@@ -162,7 +175,7 @@ class RuleTable extends Component {
                                 props: { colSpan: columns.length + Boolean(actions) }
                             }]
                         })) :
-                        rows
+                        flatten(createRows(data, columns, expanded, detail)).filter(Boolean)
                 }
                 {...!isLoading && detail && { onCollapse: this.onCollapse } }
             >
@@ -211,6 +224,12 @@ RuleTable.propTypes = {
         index: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
         direction: PropTypes.string
     }),
+    filterValues: PropTypes.shape({
+        [PropTypes.string]: PropTypes.oneOfType([
+            PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])),
+            PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
+        ])
+    }),
     toolbarProps: PropTypes.any
 };
 
@@ -223,6 +242,7 @@ RuleTable.defaultProps = {
     isLoading: false,
     sortBy: {},
     filters: {},
+    filterValues: {},
     fetchData: () => undefined
 };
 

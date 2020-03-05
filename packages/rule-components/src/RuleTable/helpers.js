@@ -11,14 +11,17 @@ export const calculateActiveFilters = (activeFilter, value, key) => value && val
     category: activeFilter.label,
     type: activeFilter.filterKey,
     chips: activeFilter.filterValues.items && activeFilter.filterValues.items.length > 0 ?
-        (Array.isArray(value) ? value : [ value ]).map(oneValue => ({
-            name: activeFilter
+        (Array.isArray(value) ? value : [ value ]).map(oneValue => {
+            const currFilter = activeFilter
             .filterValues
             .items
-            .find(({ value: currValue }) => `${currValue}` === oneValue).textual,
-            value: oneValue,
-            key
-        })) : [
+            .find(({ value: currValue }) => `${currValue}` === oneValue);
+            return ({
+                name: (currFilter || { textual: oneValue }).textual,
+                value: oneValue,
+                key
+            });
+        }) : [
             { name: value, key }
         ]
 });

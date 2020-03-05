@@ -6,7 +6,7 @@ If you want to use rules table component please pass entire dataset from server 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import RuleTable, { severityLabels } from '@redhat-cloud-services/rule-components/dist/cjs/RuleTable';
+import RuleTable, { severity } from '@redhat-cloud-services/rule-components/dist/cjs/RuleTable';
 import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
 import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
 import '@redhat-cloud-services/frontend-components/components/Battery.css';
@@ -37,6 +37,7 @@ class MyCmp extends Component {
                 ruleStatusFilter,
                 impactFilter
             }}
+            fetchData={console.log}
             rules={data}
             columns={[
                 { title: 'Description', selector: 'description' },
@@ -44,10 +45,13 @@ class MyCmp extends Component {
                 {
                     title: 'Total risk',
                     selector: ({ total_risk: riskNumber }) => (
-                        <Battery label={severityLabels[riskNumber - 1]} severity={riskNumber} />
+                        <Battery label={Object.values(severity)[riskNumber - 1]} severity={riskNumber} />
                     )
                 }
             ]}
+            filterValues={{
+                totalRiskFilter: [ 'low' ]
+            }}
             detail={() => <div>This is detail that is shown when user colapses/expands</div>}
         />;
     }
@@ -56,7 +60,7 @@ class MyCmp extends Component {
 ReactDOM.render(<MyCmp />, document.querySelector('.demo-app'));
 ```
 
-*NOTE: you can also use package import `@redhat-cloud-services/rule-components`, just be careful as your bundle size might increase a lot, because treeshaking might not work properly. If that happens please consider using direc imports as in example.*
+*NOTE: you can also use package import `import { RuleTable, severity } from '@redhat-cloud-services`, just be careful as your bundle size might increase a lot, because treeshaking might not work properly. If that happens please consider using direc imports as in example.*
 
 ### Props
 
@@ -67,6 +71,7 @@ ReactDOM.render(<MyCmp />, document.querySelector('.demo-app'));
 * `isLoading` - to indicate that data are being fetched from server
 * `fetchData` - function to fetch the actual data from server
 * `toolbarProps` - additional props for toolbar
+* `filterValues` - applied filters in table, they should match signature of `filters`
 * `sortBy` - PF4 sortBy object
 
 #### `filters`
@@ -120,6 +125,10 @@ If your data are loading pass `isLoading` property to indicate data loading. Col
 #### `fetchData`
 
 This function is called everytime somthing changes (after each user interaction). You will receive one object with `meta` for pagination, `filterValues` for filtering and `sortBy` for sorting.
+
+#### `filterValues`
+
+Applied filters outside of RuleTable component. It should be object with keys to match keys of `filters`. Values should be either array of strings/numbers or just string/number they will be then matched to values of each filter. If the key is not present in `filters` the filter will not be visible, if the value is not present in available filters raw value will be shown.
 
 #### `sortBy`
 
