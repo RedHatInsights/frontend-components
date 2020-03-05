@@ -1,6 +1,6 @@
 import React from 'react';
 import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
-import { severityLabels, severityValues } from '../RuleTable/constants';
+import { severity } from '../RuleTable/constants';
 
 export default ({ onChange, value, ...props } = { onChange: () => undefined }) => ({
     ...props,
@@ -10,10 +10,10 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: severityValues.map((_item, key) => ({
-            label: <Battery key={key} label={severityLabels[key]} severity={key + 1} />,
-            textual: severityLabels[key],
-            value: severityValues[key]
+        items: Object.entries(severity).map(([ key, label ]) => ({
+            label: <Battery key={key} label={label} severity={key + 1} />,
+            textual: label,
+            value: key
         }
         ))
     }

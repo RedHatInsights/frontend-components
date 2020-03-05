@@ -1,86 +1,44 @@
-export const severityLabels = [
-    'Low',
-    'Moderate',
-    'Important',
-    'Critical'
-];
+/* eslint-disable camelcase */
+export const severity = {
+    low: 'Low',
+    moderate: 'Moderate',
+    important: 'Important',
+    critical: 'Critical'
+};
 
-export const severityValues = [
-    'low',
-    'moderate',
-    'important',
-    'critical'
-];
+export const riskOfChange = {
+    very_low: 'Very low',
+    low: 'Low',
+    moderate: 'Moderate',
+    high: 'High'
+};
 
-export const riskOfChangeLabels = [
-    'Very low',
-    'Low',
-    'Moderate',
-    'High'
-];
+export const impact = {
+    critical: 'Critical',
+    important: 'Important',
+    moderate: 'Moderate',
+    low: 'Low'
+};
 
-export const riskOfChangeValues = [
-    'very_low',
-    'low',
-    'moderate',
-    'high'
-];
+export const category = {
+    availability: 'Availability',
+    performance: 'Performance',
+    stability: 'Stability',
+    security: 'Security'
+};
 
-export const impactLabels = [
-    'Critical',
-    'Important',
-    'Moderate',
-    'Low'
-];
-export const impactValues = [
-    'critical',
-    'important',
-    'moderate',
-    'low'
-];
+export const incidentRules = {
+    incident: 'Non-incident rules',
+    non_incident: 'Incident rules'
+};
 
-export const categoryLabels = [
-    'Availability',
-    'Performance',
-    'Stability',
-    'Security'
-];
+export const ansibleSupport = {
+    supported: 'Ansible remediation support',
+    not_supported: 'No Ansible remediation support'
+};
 
-export const categoryValues = [
-    'availability',
-    'performance',
-    'stability',
-    'security'
-];
-
-export const incidentRulesLabels = [
-    'Incident rules',
-    'Non-incident rules'
-];
-
-export const incidentRulesValues = [
-    'incident',
-    'non_incident'
-];
-
-export const ansibleSupportLabels = [
-    'Ansible remediation support',
-    'No Ansible remediation support'
-];
-
-export const ansibleSupportValues = [
-    'supported',
-    'not_supported'
-];
-
-export const ruleStatusLabels = [
-    'All',
-    'Enabled',
-    'Disabled'
-];
-
-export const ruleStatusValues = [
-    'all',
-    'enabled',
-    'disabled'
-];
+export const ruleStatus = {
+    all: 'All',
+    enabled: 'Enabled',
+    disabled: 'Disabled'
+};

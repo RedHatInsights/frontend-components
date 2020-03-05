@@ -1,6 +1,6 @@
 import React from 'react';
 import { Shield } from '@redhat-cloud-services/frontend-components/components/Shield';
-import { riskOfChangeLabels, riskOfChangeValues } from '../RuleTable/constants';
+import { riskOfChange } from '../RuleTable/constants';
 
 export default ({ onChange, value, ...props } = { onChange: () => undefined }) => ({
     ...props,
@@ -10,13 +10,13 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: riskOfChangeValues.map((_item, key) => ({
+        items: Object.entries(riskOfChange).map(([ key, label ]) => ({
             label: <span>
                 <Shield impact={key + 1} hasTooltip={false} size="sm" />
-                {riskOfChangeLabels[key]}
+                {label}
             </span>,
-            textual: riskOfChangeLabels[key],
-            value: riskOfChangeValues[key]
+            textual: label,
+            value: key
         }
         )).reverse()
     }

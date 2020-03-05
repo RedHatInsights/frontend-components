@@ -1,4 +1,4 @@
-import { incidentRulesLabels, incidentRulesValues } from '../RuleTable/constants';
+import { incidentRules } from '../RuleTable/constants';
 export default ({ onChange, value, ...props } = { onChange: () => undefined }) => ({
     ...props,
     label: 'Incident rules',
@@ -7,11 +7,10 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: incidentRulesValues.map((_item, key) => ({
-            label: incidentRulesLabels[key],
-            textual: incidentRulesLabels[key],
-            value: incidentRulesValues[key]
-        }
-        ))
+        items: Object.entries(incidentRules).map(([ key, label ]) => ({
+            label: label,
+            textual: label,
+            value: key
+        }))
     }
 });

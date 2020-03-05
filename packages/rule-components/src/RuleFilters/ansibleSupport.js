@@ -1,4 +1,4 @@
-import { ansibleSupportLabels, ansibleSupportValues } from '../RuleTable/constants';
+import { ansibleSupport } from '../RuleTable/constants';
 export default ({ onChange, value, ...props } = { onChange: () => undefined }) => ({
     ...props,
     label: 'Ansible support',
@@ -7,11 +7,10 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: ansibleSupportValues.map((_item, key) => ({
-            label: ansibleSupportLabels[key],
-            textual: ansibleSupportLabels[key],
-            value: ansibleSupportValues[key]
-        }
-        ))
+        items: Object.entries(ansibleSupport).map(([ key, label ]) => ({
+            label: label,
+            textual: label,
+            value: key
+        }))
     }
 });

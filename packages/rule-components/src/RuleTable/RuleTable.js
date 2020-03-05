@@ -130,7 +130,7 @@ class RuleTable extends Component {
 
         return <section className="rhcs-c-rules-table">
             <PrimaryToolbar
-                filterConfig={{ items: filterItems }}
+                { ...filterItems && filterItems.length > 0 && { filterConfig: { items: filterItems } }}
                 activeFiltersConfig={{
                     filters: Object.entries(filterValues).map(([ key, value ]) => calculateActiveFilters(
                         filterItems.find(({ filterKey }) => filterKey === key),
@@ -222,6 +222,7 @@ RuleTable.defaultProps = {
     ariaLabel: 'Rules table',
     isLoading: false,
     sortBy: {},
+    filters: {},
     fetchData: () => undefined
 };
 

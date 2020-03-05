@@ -1,4 +1,4 @@
-import { categoryLabels, categoryValues } from '../RuleTable/constants';
+import { category } from '../RuleTable/constants';
 export default ({ onChange, value, ...props } = { onChange: () => undefined }) => ({
     ...props,
     label: 'Category',
@@ -7,11 +7,10 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: categoryValues.map((_item, key) => ({
-            label: categoryLabels[key],
-            textual: categoryLabels[key],
-            value: categoryValues[key]
-        }
-        ))
+        items: Object.entries(category).map(([ key, label ]) => ({
+            label: label,
+            textual: label,
+            value: key
+        }))
     }
 });

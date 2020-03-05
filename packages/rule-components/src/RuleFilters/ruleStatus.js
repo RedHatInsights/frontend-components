@@ -1,4 +1,4 @@
-import { ruleStatusLabels, ruleStatusValues } from '../RuleTable/constants';
+import { ruleStatus } from '../RuleTable/constants';
 export default ({ onChange, value, ...props } = { onChange: () => undefined }) => ({
     ...props,
     label: 'Rule status',
@@ -7,10 +7,10 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: ruleStatusValues.map((_item, key) => ({
-            label: ruleStatusLabels[key],
-            textual: ruleStatusLabels[key],
-            value: ruleStatusValues[key]
+        items: Object.entries(ruleStatus).map(([ key, label ]) => ({
+            label: label,
+            textual: label,
+            value: key
         }
         ))
     }
