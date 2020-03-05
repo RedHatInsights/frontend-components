@@ -9,4 +9,3 @@ export const columns = [
     { title: 'Passed', transforms: [ sortable ] },
     { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible', transforms: [ sortable ] }
 ];
-

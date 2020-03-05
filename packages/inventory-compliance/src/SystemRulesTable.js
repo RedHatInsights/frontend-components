@@ -38,6 +38,7 @@ class SystemRulesTable extends React.Component {
         itemsPerPage: this.props.itemsPerPage,
         rows: [],
         hidePassed: this.props.hidePassed,
+        selectedFilter: this.props.selectedFilter,
         severity: [],
         policy: [],
         currentRows: [],
@@ -58,7 +59,7 @@ class SystemRulesTable extends React.Component {
     }
 
     setInitialCurrentRows() {
-        const { hidePassed, itemsPerPage, severity, policy } = this.state;
+        const { hidePassed, itemsPerPage, severity, policy, selectedFilter } = this.state;
         let { profileRules } = this.props;
         const rowsRefIds = this.rulesToRows(profileRules);
 
@@ -69,8 +70,8 @@ class SystemRulesTable extends React.Component {
             profiles: rowsRefIds.profiles,
             refIds: rowsRefIds.refIds
         }, () => {
-            if (hidePassed) {
-                this.updateFilter(hidePassed, severity, policy);
+            if (hidePassed || selectedFilter) {
+                this.updateFilter(hidePassed, severity, policy, selectedFilter);
             }
         });
     }
@@ -167,6 +168,7 @@ class SystemRulesTable extends React.Component {
     }
 
     onSelect = (_event, selected, key) => {
+        const { remediationsEnabled, tailoringEnabled } = this.props;
         const { columnIndices, page, itemsPerPage } = this.state;
         let { currentRows, rows } = this.state;
         if (key === -1) {
@@ -175,7 +177,10 @@ class SystemRulesTable extends React.Component {
         } else {
             // One rule was selected
             const index = ((page - 1) * itemsPerPage * 2) + Number(key);
-            if (currentRows[index].cells[columnIndices.REMEDIATIONS_COLUMN].original) {
+            if (remediationsEnabled && currentRows[index].cells[columnIndices.REMEDIATIONS_COLUMN].original) {
+                rows[index].selected = selected;
+                currentRows[key].selected = selected;
+            } else if (tailoringEnabled) {
                 rows[index].selected = selected;
                 currentRows[key].selected = selected;
             }
@@ -227,9 +232,11 @@ class SystemRulesTable extends React.Component {
 
     calculateParent = ({ profile }, rule) => {
         const { columns } = this.state;
+        const { selectedRefIds, tailoringEnabled } = this.props;
 
         return {
             isOpen: false,
+            selected: tailoringEnabled ? selectedRefIds.includes(rule.refId) : undefined,
             cells: this.columnsToTableHeaders(columns, profile, rule).filter(e => e)
         };
     }
@@ -361,10 +368,10 @@ class SystemRulesTable extends React.Component {
     }
 
     handleSearch = debounce(searchTerm => {
-        const { hidePassed, severity, policy } = this.state;
+        const { hidePassed, severity, policy, selectedFilter } = this.state;
         return this.setState({
             searchTerm
-        }, () => this.updateFilter(hidePassed, severity, policy));
+        }, () => this.updateFilter(hidePassed, severity, policy, selectedFilter));
     }, 500)
 
     onSort = (_event, index, direction) => {
@@ -441,7 +448,9 @@ class SystemRulesTable extends React.Component {
         return filteredRows;
     }
 
-    filteredRows = (passedRows, severityRows, policyRows, searchRows, hidePassed, severity, policy, searchTerm) => {
+    filteredRows = (passedRows, severityRows, policyRows, searchRows, selectedRows,
+        hidePassed, severity, policy, searchTerm, selectedFilter) => {
+
         let result;
 
         if (severity.length > 0 && hidePassed) {
@@ -466,6 +475,12 @@ class SystemRulesTable extends React.Component {
             result = searchRows;
         }
 
+        if (selectedFilter && result.length > 0) {
+            result = result.filter(row => selectedRows.map((row) => row.cells).includes(row.cells));
+        } else if (selectedFilter && result.length === 0) {
+            result = selectedRows;
+        }
+
         return this.recomputeParentId(result);
     }
 
@@ -473,8 +488,9 @@ class SystemRulesTable extends React.Component {
         this.uncompressRows(this.compressRows(rows))
     )
 
-    updateFilter = (hidePassed, severity, policy) => {
+    updateFilter = (hidePassed, severity, policy, selectedFilter) => {
         const { columnIndices, originalRows, profiles, refIds, itemsPerPage, searchTerm } = this.state;
+
         let passedRows;
         if (hidePassed) {
             passedRows = this.filterBy(!hidePassed, originalRows, columnIndices.COMPLIANT_COLUMN);
@@ -482,11 +498,29 @@ class SystemRulesTable extends React.Component {
             passedRows = originalRows;
         }
 
+        let selectedRows = [];
+        if (selectedFilter) {
+            originalRows.forEach((row, i) => {
+                if (row.selected && this.isParent(row)) {
+                    selectedRows.push(row);
+                    if (!this.isParent(originalRows[i + 1])) {
+                        selectedRows.push({
+                            parent: selectedRows.length - 1,
+                            cells: originalRows[i + 1].cells
+                        });
+                    }
+                }
+            });
+        } else {
+            selectedRows = originalRows;
+        }
+
         const severityRows = this.filterBy(severity.join('|'), originalRows, columnIndices.SEVERITY_COLUMN);
         const policyRows = this.filterBy(policy, originalRows, columnIndices.POLICY_COLUMN);
         const searchRows = this.searchBy(searchTerm, originalRows);
-        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows,
-            hidePassed, severity, policy, searchTerm);
+
+        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows, selectedRows,
+            hidePassed, severity, policy, searchTerm, selectedFilter);
 
         return this.setState({
             currentRows: this.currentRows(1, itemsPerPage, { rows: filteredRows, profiles, refIds }),
@@ -500,8 +534,8 @@ class SystemRulesTable extends React.Component {
     }
 
     render() {
-        const { columnIndices, hidePassed, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
-        const { remediationsEnabled, system, loading, profileRules } = this.props;
+        const { columnIndices, hidePassed, selectedFilter, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
+        const { remediationsEnabled, tailoringEnabled, system, loading, profileRules } = this.props;
 
         if (loading) {
             return (
@@ -528,6 +562,8 @@ class SystemRulesTable extends React.Component {
                                 <InputGroup>
                                     <RulesComplianceFilter
                                         hidePassed={hidePassed}
+                                        selected = { selectedFilter }
+                                        selectedFilter={ tailoringEnabled }
                                         showPassFailFilter={ (columnIndices && columnIndices.COMPLIANT_COLUMN !== undefined) || false }
                                         availablePolicies={ profileRules.map(profile => profile.profile) }
                                         updateFilter={ this.updateFilter } />
@@ -563,7 +599,7 @@ class SystemRulesTable extends React.Component {
                         onCollapse={ this.onCollapse }
                         onSort={ this.onSort }
                         sortBy={ sortBy }
-                        onSelect={ (remediationsEnabled && currentRows.length !== 0) ? this.onSelect : undefined }
+                        onSelect={ ((tailoringEnabled || remediationsEnabled) && currentRows.length !== 0) ? this.onSelect : undefined }
                         rows={ (currentRows.length === 0) ? EmptyRows : currentRows }>
                         <TableHeader />
                         <TableBody />
@@ -595,6 +631,9 @@ SystemRulesTable.propTypes = {
     system: propTypes.object,
     itemsPerPage: propTypes.number,
     remediationsEnabled: propTypes.bool,
+    tailoringEnabled: propTypes.bool,
+    selectedRefIds: propTypes.array,
+    selectedFilter: propTypes.bool,
     columns: propTypes.arrayOf(
         propTypes.shape(
             {
@@ -609,8 +648,11 @@ SystemRulesTable.propTypes = {
 SystemRulesTable.defaultProps = {
     profileRules: [{ rules: [] }],
     hidePassed: false,
+    selectedFilter: false,
     itemsPerPage: 10,
-    remediationsEnabled: true
+    remediationsEnabled: true,
+    tailoringEnabled: false,
+    selectedRefIds: []
 };
 
 export default SystemRulesTable;

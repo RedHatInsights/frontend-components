@@ -21,6 +21,8 @@ exports[`SystemRulesTable component should render 1`] = `
             }
             hidePassed={false}
             policy={Array []}
+            selected={false}
+            selectedFilter={false}
             severity={Array []}
             showPassFailFilter={true}
             updateFilter={[Function]}
@@ -183,6 +185,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -347,6 +350,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -503,6 +507,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -627,6 +632,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -751,6 +757,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -875,6 +882,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -999,6 +1007,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -1123,6 +1132,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -1247,6 +1257,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -1371,6 +1382,7 @@ exports[`SystemRulesTable component should render 1`] = `
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -1638,6 +1650,8 @@ exports[`SystemRulesTable component should render without remediations if prop p
             }
             hidePassed={false}
             policy={Array []}
+            selected={false}
+            selectedFilter={false}
             severity={Array []}
             showPassFailFilter={true}
             updateFilter={[Function]}
@@ -1786,6 +1800,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -1950,6 +1965,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -2106,6 +2122,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -2230,6 +2247,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -2354,6 +2372,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -2478,6 +2497,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -2602,6 +2622,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -2726,6 +2747,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -2850,6 +2872,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
@@ -2974,6 +2997,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
             },
           ],
           "isOpen": false,
+          "selected": undefined,
         },
         Object {
           "cells": Array [
