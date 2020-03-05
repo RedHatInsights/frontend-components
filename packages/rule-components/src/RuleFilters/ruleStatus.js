@@ -11,7 +11,6 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
             label: label,
             textual: label,
             value: key
-        }
-        ))
+        }))
     }
 });

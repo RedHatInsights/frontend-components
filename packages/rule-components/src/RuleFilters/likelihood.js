@@ -7,11 +7,10 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: Object.values(impact).map(([ key, label ]) => ({
+        items: Object.entries(impact).map(([ key, label ]) => ({
             label: label,
             textual: label,
             value: key
-        }
-        ))
+        }))
     }
 });

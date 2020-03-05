@@ -14,7 +14,6 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
             label: <Battery key={key} label={label} severity={index + 1} />,
             textual: label,
             value: key
-        }
-        ))
+        }))
     }
 });

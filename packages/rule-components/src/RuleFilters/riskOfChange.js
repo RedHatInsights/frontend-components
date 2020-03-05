@@ -10,14 +10,15 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     filterValues: {
         value,
         onChange,
-        items: Object.entries(riskOfChange).map(([ key, label ]) => ({
-            label: <span>
-                <Shield impact={key + 1} hasTooltip={false} size="sm" />
-                {label}
-            </span>,
+        items: Object.entries(riskOfChange).map(([ key, label ], index) => ({
+            label: (
+                <span>
+                    <Shield impact={index + 1} hasTooltip={false} size="sm" />
+                    {label}
+                </span>
+            ),
             textual: label,
             value: key
-        }
-        )).reverse()
+        })).reverse()
     }
 });
