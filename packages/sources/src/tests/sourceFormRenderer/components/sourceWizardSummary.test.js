@@ -58,9 +58,9 @@ describe('SourceWizardSummary component', () => {
             expect(wrapper.find(TextListItem).at(1).children().first().text()).toEqual('openshift');
         });
 
-        it('type is fourth', () => {
+        it('type is third', () => {
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
-            expect(wrapper.find(TextListItem).at(7).children().first().text()).toEqual('OpenShift Container Platform');
+            expect(wrapper.find(TextListItem).at(5).children().first().text()).toEqual('OpenShift Container Platform');
         });
 
         it('amazon', () => {

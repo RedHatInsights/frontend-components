@@ -28,22 +28,22 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      ARN
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
       component="dd"
     >
       Amazon Web Services
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Authentication type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      ARN
     </TextListItem>
     <TextListItem
       component="dt"
@@ -97,22 +97,22 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      AWS Secret Key
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
       component="dd"
     >
       Amazon Web Services
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Authentication type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      AWS Secret Key
     </TextListItem>
     <TextListItem
       component="dt"
@@ -166,22 +166,22 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Username and password
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
       component="dd"
     >
       Ansible Tower
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Authentication type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Username and password
     </TextListItem>
     <TextListItem
       component="dt"
@@ -255,22 +255,22 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Username and password
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
       component="dd"
     >
       Ansible Tower
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Authentication type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Username and password
     </TextListItem>
     <TextListItem
       component="dt"
@@ -354,22 +354,22 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Token
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
       component="dd"
     >
       OpenShift Container Platform
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Authentication type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Token
     </TextListItem>
     <TextListItem
       component="dt"
@@ -443,22 +443,22 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Username and password
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
       component="dd"
     >
       Ansible Tower
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Authentication type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Username and password
     </TextListItem>
     <TextListItem
       component="dt"
