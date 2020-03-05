@@ -6,7 +6,7 @@ exports[`AddSourceButton renders correctly 1`] = `
     onClick={[Function]}
     variant="primary"
   >
-    Add a source
+    Add source
   </Component>
   <AddSourceWizard
     afterSuccess={[Function]}

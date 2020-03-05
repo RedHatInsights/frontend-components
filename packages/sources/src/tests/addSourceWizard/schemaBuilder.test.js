@@ -39,7 +39,7 @@ describe('schema builder', () => {
         it('creates object with empty string as a false', () => {
             expect(createEndpointFlagger(false)).toEqual({
                 ...INITIAL_SCHEMA,
-                initialValue: ''
+                initialValue: false
             });
         });
     });
@@ -399,7 +399,7 @@ describe('schema builder', () => {
             const schema = schemaBuilder(sourceTypes.filter(({ schema }) => schema), applicationTypes);
 
             expect(schema).toEqual(expect.arrayContaining([ expect.any(Object) ]));
-            expect(schema).toHaveLength(27);
+            expect(schema).toHaveLength(28);
         });
     });
 });

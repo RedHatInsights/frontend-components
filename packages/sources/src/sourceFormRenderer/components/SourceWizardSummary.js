@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TextContent, TextListItem, TextListItemVariants, TextListVariants, TextList } from '@patternfly/react-core';
-import flattenDeep from 'lodash/flattenDeep';
+import get from 'lodash/get';
+import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 
-export const createItem = (value, fields, path) => {
-    const formField = fields.find((field) => field.name === path);
-    // not in field, probably source_name or type, handled seperately
-    if (!formField) {
+export const createItem = (formField, values, stepKeys) => {
+    let value = get(values, formField.name);
+
+    if (formField.stepKey && !stepKeys.includes(formField.stepKey)) {
+        return undefined;
+    }
+
+    if (formField.condition && get(values, formField.condition.when) !== formField.condition.is) {
         return undefined;
     }
 
@@ -16,7 +21,7 @@ export const createItem = (value, fields, path) => {
     }
 
     // Hide password
-    if (formField.type === 'password') {
+    if (value && formField.type === 'password') {
         value = '●●●●●●●●●●●●';
     }
 
@@ -25,20 +30,18 @@ export const createItem = (value, fields, path) => {
         value = value ? 'Yes' : 'No';
     }
 
-    return ({ label: formField.label,  value });
+    return ({ label: formField.label,  value: value || '-' });
 };
 
-export const allValuesPath = (value, fields, path = undefined) => {
-    if (typeof value === 'undefined' || value === null) {
-        return undefined;
-    }
+export const getAllFieldsValues = (fields, values, stepKeys) => fields.map((field) => createItem(field, values, stepKeys)).filter(Boolean);
 
-    if (typeof value !== 'object') {
-        return createItem(value, fields, path);
-    }
-
-    return Object.keys(value).map((key) => allValuesPath(value[key], fields, path ? `${path}.${key}` : key)).filter(x => x);
-};
+export const getStepKeys = (typeName, authName, appName = 'generic', appId) => [
+    ...get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'includeStepKeyFields' ], []),
+    ...get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'additionalSteps' ], []).map(({ stepKey }) => stepKey),
+    `${typeName}-${authName}-${appName}-additional-step`,
+    `${typeName}-${authName}-additional-step`,
+    appId ? `${typeName}-${appId}` : undefined
+].filter(Boolean);
 
 const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showApp, showAuthType }) => {
     const values = formOptions.getState().values;
@@ -56,18 +59,22 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
 
     const skipEndpoint = values.noEndpoint;
 
-    let endpointFields = [];
+    let endpointFields = type.schema.endpoint.fields;
 
-    if (!skipEndpoint) {
-        endpointFields = type.schema.endpoint.fields;
+    if (skipEndpoint) {
+        endpointFields = [];
+        authTypeFields = authTypeFields.filter(({ name }) => !name.includes('authentication.'));
     }
 
     const fields = [ ...authTypeFields, ...endpointFields ];
 
     const application = values.application ? applicationTypes.find(type => type.id === values.application.application_type_id) : undefined;
-    const applicationName = application ? application.display_name : 'Not selected';
 
-    const valuesInfo = [ ...flattenDeep(allValuesPath(values, fields)) ].filter(x => x);
+    const { display_name = 'Not selected', name, id } = application ? application : {};
+
+    const availableStepKeys = getStepKeys(type.name, hasAuthentication, name, id);
+
+    const valuesInfo = getAllFieldsValues(fields, values, availableStepKeys);
 
     const valuesList = valuesInfo.map(({ label, value }) => (
         <React.Fragment key={ `${label}--${value}` }>
@@ -83,14 +90,14 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
                 <TextListItem component={ TextListItemVariants.dd }>{ values.source.name }</TextListItem>
                 { showApp && <React.Fragment>
                     <TextListItem component={ TextListItemVariants.dt }>{ 'Application' }</TextListItem>
-                    <TextListItem component={ TextListItemVariants.dd }>{ applicationName }</TextListItem>
-                </React.Fragment> }
-                { authType && showAuthType && <React.Fragment>
-                    <TextListItem component={ TextListItemVariants.dt }>{ 'Authentication type' }</TextListItem>
-                    <TextListItem component={ TextListItemVariants.dd }>{ authType.name }</TextListItem>
+                    <TextListItem component={ TextListItemVariants.dd }>{ display_name }</TextListItem>
                 </React.Fragment> }
                 <TextListItem component={ TextListItemVariants.dt }>{ 'Source type' }</TextListItem>
                 <TextListItem component={ TextListItemVariants.dd }>{ type.product_name }</TextListItem>
+                { !skipEndpoint && authType && showAuthType && <React.Fragment>
+                    <TextListItem component={ TextListItemVariants.dt }>{ 'Authentication type' }</TextListItem>
+                    <TextListItem component={ TextListItemVariants.dd }>{ authType.name }</TextListItem>
+                </React.Fragment> }
                 { valuesList }
             </TextList>
         </TextContent>

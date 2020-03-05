@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { TextListItem } from '@patternfly/react-core';
 
-import SourceWizardSummary, { allValuesPath } from '../../../sourceFormRenderer/components/SourceWizardSummary';
+import SourceWizardSummary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
 import applicationTypes from '../../helpers/applicationTypes';
 import sourceTypes from '../../helpers/sourceTypes';
 
@@ -58,9 +58,9 @@ describe('SourceWizardSummary component', () => {
             expect(wrapper.find(TextListItem).at(1).children().first().text()).toEqual('openshift');
         });
 
-        it('type is fourth', () => {
+        it('type is third', () => {
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
-            expect(wrapper.find(TextListItem).at(7).children().first().text()).toEqual('OpenShift Container Platform');
+            expect(wrapper.find(TextListItem).at(5).children().first().text()).toEqual('OpenShift Container Platform');
         });
 
         it('amazon', () => {
@@ -110,12 +110,13 @@ describe('SourceWizardSummary component', () => {
                         },
                         source_type: 'openshift',
                         endpoint: {
+                            verify_ssl: true,
                             certificate_authority: 'authority'
                         },
                         authentication: {
                             username: 'user_name'
                         },
-                        noEndpoint: ''
+                        noEndpoint: false
                     }
                 })
             };
@@ -124,7 +125,7 @@ describe('SourceWizardSummary component', () => {
             expect(wrapper.contains('authority')).toEqual(true);
         });
 
-        it('do not contain endpoint fields when noEndpoint set', () => {
+        it('do not contain endpoint fields and authentication when noEndpoint set', () => {
             formOptions = {
                 getState: () => ({
                     values: {
@@ -136,7 +137,7 @@ describe('SourceWizardSummary component', () => {
                             certificate_authority: 'authority'
                         },
                         authentication: {
-                            username: 'user_name'
+                            password: 'token'
                         },
                         noEndpoint: true
                     }
@@ -145,6 +146,7 @@ describe('SourceWizardSummary component', () => {
 
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
             expect(wrapper.contains('authority')).toEqual(false);
+            expect(wrapper.contains('token')).toEqual(false);
         });
 
         it('render boolean as Yes', () => {
@@ -183,13 +185,134 @@ describe('SourceWizardSummary component', () => {
         });
     });
 
-    describe('allValuesPath', () => {
-        it('when null', () => {
-            expect(allValuesPath(null)).toEqual(undefined);
+    describe('createItem', () => {
+        let availableStepKeys;
+        let field;
+        let values;
+
+        beforeEach(() => {
+            availableStepKeys = [];
+            field = {
+                label: 'Label 1',
+                name: 'authentication.password'
+            };
+            values = {
+                authentication: {
+                    password: '123456'
+                }
+            };
         });
 
-        it('when undefined', () => {
-            expect(allValuesPath(undefined)).toEqual(undefined);
+        it('normal value', () => {
+            expect(createItem(field, values, availableStepKeys)).toEqual({
+                label: 'Label 1',
+                value: '123456'
+            });
+        });
+
+        it('password value', () => {
+            field = {
+                label: 'Label 1',
+                name: 'authentication.password',
+                type: 'password'
+            };
+
+            expect(createItem(field, values, availableStepKeys)).toEqual({
+                label: 'Label 1',
+                value: '●●●●●●●●●●●●'
+            });
+        });
+
+        it('boolean true', () => {
+            values = {
+                authentication: {
+                    password: true
+                }
+            };
+
+            expect(createItem(field, values, availableStepKeys)).toEqual({
+                label: 'Label 1',
+                value: 'Yes'
+            });
+        });
+
+        it('boolean false', () => {
+            values = {
+                authentication: {
+                    password: false
+                }
+            };
+
+            expect(createItem(field, values, availableStepKeys)).toEqual({
+                label: 'Label 1',
+                value: 'No'
+            });
+        });
+
+        it('hidden field', () => {
+            field = {
+                label: 'Label 1',
+                name: 'authentication.password',
+                hideField: true
+            };
+
+            expect(createItem(field, values, availableStepKeys)).toEqual(undefined);
+        });
+
+        it('available stepKey', () => {
+            field = {
+                label: 'Label 1',
+                name: 'authentication.password',
+                stepKey: 'in'
+            };
+            availableStepKeys = [ 'in' ];
+
+            expect(createItem(field, values, availableStepKeys)).toEqual({
+                label: 'Label 1',
+                value: '123456'
+            });
+        });
+
+        it('unavailableStepKey', () => {
+            field = {
+                label: 'Label 1',
+                name: 'authentication.password',
+                stepKey: 'notint'
+            };
+            availableStepKeys = [ 'in' ];
+
+            expect(createItem(field, values, availableStepKeys)).toEqual(undefined);
+        });
+
+        it('empty value', () => {
+            values = {};
+
+            expect(createItem(field, values, availableStepKeys)).toEqual({
+                label: 'Label 1',
+                value: '-'
+            });
+        });
+
+        it('hidden conditional field', () => {
+            field = {
+                label: 'Label 1',
+                name: 'authentication.password',
+                condition: {
+                    when: 'username.name',
+                    is: 'lojza'
+                }
+            };
+
+            values = {
+                authentication: {
+                    password: '123456'
+                },
+                username: {
+                    name: 'pepa'
+                }
+            };
+
+            expect(createItem(field, values, availableStepKeys)).toEqual(undefined);
         });
     });
 });

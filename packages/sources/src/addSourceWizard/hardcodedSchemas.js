@@ -14,6 +14,7 @@ import * as CMAzure from './hardcodedComponents/azure/costManagement';
 
 export const COST_MANAGEMENT_APP_NAME = '/insights/platform/cost-management';
 export const CLOUD_METER_APP_NAME = '/insights/platform/cloud-meter';
+export const CATALOG_APP = '/insights/platform/catalog';
 
 const arnField = {
     placeholder: 'arn:aws:iam:123456789:role/CostManagement',
@@ -106,7 +107,8 @@ export default {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
-                            initialValue: 'token'
+                            initialValue: 'token',
+                            initializeOnMount: true
                         }]
                     }, {
                         title: 'Obtain your login credentials',
@@ -210,7 +212,8 @@ export default {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
-                            initialValue: 'tenant_id_client_id_client_secret'
+                            initialValue: 'tenant_id_client_id_client_secret',
+                            initializeOnMount: true
                         }, {
                             name: 'azure-storage-account-description',
                             component: 'description',
@@ -315,7 +318,8 @@ export default {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
-                            initialValue: 'access_key_secret_key'
+                            initialValue: 'access_key_secret_key',
+                            initializeOnMount: true
                         }]
                     }]
                 }
@@ -354,7 +358,8 @@ export default {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
-                            initialValue: 'arn'
+                            initialValue: 'arn',
+                            initializeOnMount: true
                         }]
                     }, {
                         title: 'Activate cost allocation tags',
@@ -491,6 +496,52 @@ export default {
                         }]
                     }]
                 }
+            }
+        }
+    },
+    'ansible-tower': {
+        authentication: {
+            username_password: {
+                [CATALOG_APP]: {
+                    skipSelection: true,
+                    additionalSteps: [{
+                        title: 'Configure credentials',
+                        name: 'catalog-ansible-tower',
+                        fields: [{
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'username_password',
+                            initializeOnMount: true
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            label: 'Username',
+                            name: 'authentication.username',
+                            isRequired: true,
+                            validate: [{ type: validatorTypes.REQUIRED }]
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            label: 'Password',
+                            name: 'authentication.password',
+                            type: 'password',
+                            isRequired: true,
+                            validate: [{ type: validatorTypes.REQUIRED }]
+                        }]
+                    }]
+                }
+            }
+        },
+        endpoint: {
+            url: {
+                isRequired: true,
+                validate: [{ type: validatorTypes.REQUIRED }],
+                placeholder: 'https://'
+            },
+            'endpoint.certificate_authority': {
+                label: 'Certificate authority'
+            },
+            'endpoint.verify_ssl': {
+                initialValue: false
             }
         }
     }

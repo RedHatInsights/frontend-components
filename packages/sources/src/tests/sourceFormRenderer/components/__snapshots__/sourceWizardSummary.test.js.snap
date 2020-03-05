@@ -28,6 +28,16 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
     <TextListItem
       component="dt"
     >
+      Source type
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Amazon Web Services
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
       Authentication type
     </TextListItem>
     <TextListItem
@@ -38,12 +48,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
     <TextListItem
       component="dt"
     >
-      Source type
+      S3 bucket name
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      Amazon Web Services
+      -
     </TextListItem>
     <TextListItem
       component="dt"
@@ -87,16 +97,6 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      AWS Secret Key
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
@@ -107,12 +107,12 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
     <TextListItem
       component="dt"
     >
-      Secret Key
+      Authentication type
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      ●●●●●●●●●●●●
+      AWS Secret Key
     </TextListItem>
     <TextListItem
       component="dt"
@@ -123,6 +123,16 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
       component="dd"
     >
       user_name
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Secret Key
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      ●●●●●●●●●●●●
     </TextListItem>
   </TextList>
 </TextContent>
@@ -156,16 +166,6 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Username and password
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
@@ -176,32 +176,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
-      Certificate Authority
+      Authentication type
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      authority
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Verify SSL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Yes
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Secret Key
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      ●●●●●●●●●●●●
+      Username and password
     </TextListItem>
     <TextListItem
       component="dt"
@@ -216,12 +196,42 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
+      Secret Key
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      ●●●●●●●●●●●●
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
       URL
     </TextListItem>
     <TextListItem
       component="dd"
     >
       neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Verify SSL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
     </TextListItem>
   </TextList>
 </TextContent>
@@ -245,16 +255,6 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Username and password
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
@@ -265,32 +265,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      Certificate Authority
+      Authentication type
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      authority
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Verify SSL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Yes
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Secret Key
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      ●●●●●●●●●●●●
+      Username and password
     </TextListItem>
     <TextListItem
       component="dt"
@@ -305,12 +285,42 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
+      Secret Key
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      ●●●●●●●●●●●●
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
       URL
     </TextListItem>
     <TextListItem
       component="dd"
     >
       neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Verify SSL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
     </TextListItem>
   </TextList>
 </TextContent>
@@ -344,16 +354,6 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Token
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
@@ -364,22 +364,12 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
     <TextListItem
       component="dt"
     >
-      Certificate Authority
+      Authentication type
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      authority
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Verify SSL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Yes
+      Token
     </TextListItem>
     <TextListItem
       component="dt"
@@ -400,6 +390,26 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
       component="dd"
     >
       neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Verify SSL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
     </TextListItem>
   </TextList>
 </TextContent>
@@ -433,16 +443,6 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      Authentication type
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Username and password
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Source type
     </TextListItem>
     <TextListItem
@@ -453,32 +453,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      Certificate Authority
+      Authentication type
     </TextListItem>
     <TextListItem
       component="dd"
     >
-      authority
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Verify SSL
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      Yes
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Secret Key
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      ●●●●●●●●●●●●
+      Username and password
     </TextListItem>
     <TextListItem
       component="dt"
@@ -493,12 +473,42 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
+      Secret Key
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      ●●●●●●●●●●●●
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
       URL
     </TextListItem>
     <TextListItem
       component="dd"
     >
       neznam.cz
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Verify SSL
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      Yes
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Certificate Authority
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      authority
     </TextListItem>
   </TextList>
 </TextContent>
