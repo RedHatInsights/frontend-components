@@ -7,6 +7,7 @@ import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/js/co
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
 import flatten from 'lodash/flatten';
 import debounce from 'lodash/debounce';
+import isEqual from 'lodash/isEqual';
 import { calculateMeta, calculateActiveFilters, createRows } from './helpers';
 
 class RuleTable extends Component {
@@ -21,9 +22,8 @@ class RuleTable extends Component {
     }, 500)
 
     componentDidUpdate(prevProps) {
-        if (JSON.stringify(this.props.filterValues) !== JSON.stringify(prevProps.filterValues)) {
+        if (!isEqual(prevProps.filterValues, this.props.filterValues)) {
             this.setState({
-                ...this.state,
                 filterValues: this.props.filterValues
             });
         }
