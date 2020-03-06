@@ -66,7 +66,7 @@ class RuleTable extends Component {
 
     onCollapse = (_e, key, isOpen, { ruleId }) => {
         const { expanded } = this.state;
-        const collapseKey = ruleId || key;
+        const collapseKey = ruleId || (key / 2);
         if (isOpen) {
             this.setState({
                 expanded: [
