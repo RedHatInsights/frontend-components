@@ -23,7 +23,6 @@ describe('Steps components', () => {
     });
 
     describe('FinishedStep', () => {
-
         beforeEach(() => {
             initialProps = {
                 onClose: spyFunction,
@@ -54,7 +53,6 @@ describe('Steps components', () => {
     });
 
     describe('LoadingStep', () => {
-
         beforeEach(() => {
             initialProps = {
                 onClose: spyFunction,
@@ -81,7 +79,6 @@ describe('Steps components', () => {
     });
 
     describe('ErroredStep', () => {
-
         beforeEach(() => {
             initialProps = {
                 onClose: spyFunction,
