@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { TextContent, TextListItem, TextListItemVariants, TextListVariants, TextList } from '@patternfly/react-core';
 import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
-import { injectAuthFieldsInfo } from '../../addSourceWizard/schemaBuilder';
+import { injectAuthFieldsInfo, injectEndpointFieldsInfo } from '../../addSourceWizard/schemaBuilder';
 
 export const createItem = (formField, values, stepKeys) => {
     let value = get(values, formField.name);
@@ -74,6 +74,7 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
     const availableStepKeys = getStepKeys(type.name, hasAuthentication, name, id);
 
     authTypeFields = injectAuthFieldsInfo(authTypeFields, type.name, hasAuthentication, name || 'generic');
+    endpointFields = injectEndpointFieldsInfo(endpointFields, type.name);
 
     const fields = [ ...authTypeFields, ...endpointFields ];
 
