@@ -154,7 +154,8 @@ export default {
                 ]
             },
             'endpoint.certificate_authority': {
-                label: <SSLFormLabel />
+                label: <SSLFormLabel />,
+                'aria-label': 'SSL Certificate'
             },
             additionalFields: [{
                 component: 'description',

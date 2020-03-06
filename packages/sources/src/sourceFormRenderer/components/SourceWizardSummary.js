@@ -31,7 +31,7 @@ export const createItem = (formField, values, stepKeys) => {
         value = value ? 'Yes' : 'No';
     }
 
-    return ({ label: formField.label,  value: value || '-' });
+    return ({ label: formField['aria-label'] || formField.label,  value: value || '-' });
 };
 
 export const getAllFieldsValues = (fields, values, stepKeys) => fields.map((field) => createItem(field, values, stepKeys)).filter(Boolean);

@@ -404,7 +404,7 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
     <TextListItem
       component="dt"
     >
-      <SSLFormLabel />
+      SSL Certificate
     </TextListItem>
     <TextListItem
       component="dd"
