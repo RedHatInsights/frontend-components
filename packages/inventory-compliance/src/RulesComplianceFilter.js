@@ -17,6 +17,15 @@ class RulesComplianceFilter extends React.Component {
             });
         }
 
+        if (props.selectedFilter) {
+            filterCategories.push({
+                type: 'radio', title: 'Selected', urlParam: 'selected', values: [
+                    { label: 'Show selected rules', value: true },
+                    { label: 'Show all rules', value: false }
+                ]
+            });
+        }
+
         filterCategories.push({
             type: 'checkbox', title: 'Severity', urlParam: 'severity', values: [
                 { label: HIGH_SEVERITY, value: 'high' },
@@ -37,6 +46,7 @@ class RulesComplianceFilter extends React.Component {
 
         this.state = {
             hidePassed: props.hidePassed,
+            selected: props.selected,
             severity: props.severity,
             policy: props.policy,
             filterCategories
@@ -45,8 +55,8 @@ class RulesComplianceFilter extends React.Component {
 
     updateInventory = () => {
         const { updateFilter } = this.props;
-        const { hidePassed, severity, policy } = this.state;
-        updateFilter(hidePassed, severity, policy);
+        const { hidePassed, severity, policy, selected } = this.state;
+        updateFilter(hidePassed, severity, policy, selected);
     }
 
     addFilter = (filterName, selectedValue) => {
@@ -58,6 +68,8 @@ class RulesComplianceFilter extends React.Component {
             this.setState({ severity: [ ...severity, selectedValue ] }, this.updateInventory);
         } else if (filterName === 'policy') {
             this.setState({ policy: [ ...policy, selectedValue ] }, this.updateInventory);
+        } else if (filterName === 'selected') {
+            this.setState({ selected: selectedValue }, this.updateInventory);
         }
     }
 
@@ -70,6 +82,8 @@ class RulesComplianceFilter extends React.Component {
             this.setState({ severity: severity.filter((value) => value !== selectedValue) }, this.updateInventory);
         } else if (filterName === 'policy') {
             this.setState({ policy: policy.filter((value) => value !== selectedValue) }, this.updateInventory);
+        } else if (filterName === 'selected') {
+            this.setState({ selected: selectedValue }, this.updateInventory);
         }
     }
 
@@ -91,6 +105,8 @@ RulesComplianceFilter.propTypes = {
     updateFilter: propTypes.func,
     hidePassed: propTypes.bool,
     showPassFailFilter: propTypes.bool,
+    selectedFilter: propTypes.bool,
+    selected: propTypes.bool,
     severity: propTypes.array,
     availablePolicies: propTypes.array,
     policy: propTypes.array
@@ -99,8 +115,10 @@ RulesComplianceFilter.propTypes = {
 RulesComplianceFilter.defaultProps = {
     hidePassed: false,
     showPassFailFilter: true,
+    selectedFilter: false,
     severity: [],
     policy: [],
+    selected: true,
     updateFilter: () => {}
 };
 
