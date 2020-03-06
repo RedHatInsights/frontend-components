@@ -72,6 +72,7 @@ ReactDOM.render(<MyCmp />, document.querySelector('.demo-app'));
 * `toolbarProps` - additional props for toolbar
 * `filterValues` - applied filters in table, they should match signature of `filters`
 * `sortBy` - PF4 sortBy object
+* `loadingBars` - number of loading bars when data are feched
 
 #### `filters`
 

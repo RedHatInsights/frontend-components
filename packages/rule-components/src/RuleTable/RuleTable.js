@@ -122,6 +122,7 @@ class RuleTable extends Component {
             sortBy,
             toolbarProps,
             filterValues: _filterValues,
+            loadingBars,
             ...props
         } = this.props;
         const { expanded, filterValues } = this.state;
@@ -169,7 +170,7 @@ class RuleTable extends Component {
                 }))}
                 rows={
                     isLoading ?
-                        [ ...new Array(5) ].map(() => ({
+                        [ ...new Array(loadingBars) ].map(() => ({
                             cells: [{
                                 title: <Skeleton size="lg" />,
                                 props: { colSpan: columns.length + Boolean(actions) }
@@ -230,7 +231,8 @@ RuleTable.propTypes = {
             PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
         ])
     }),
-    toolbarProps: PropTypes.any
+    toolbarProps: PropTypes.any,
+    loadingBars: PropTypes.number
 };
 
 RuleTable.defaultProps = {
@@ -243,7 +245,8 @@ RuleTable.defaultProps = {
     sortBy: {},
     filters: {},
     filterValues: {},
-    fetchData: () => undefined
+    fetchData: () => undefined,
+    loadingBars: 5
 };
 
 export default RuleTable;
