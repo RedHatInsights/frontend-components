@@ -1,15 +1,15 @@
 /* eslint-disable camelcase */
 
-import nodeResolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
+import { createFilter } from 'rollup-pluginutils';
+import { dependencies } from './package.json';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
-import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
-import { createFilter } from 'rollup-pluginutils';
-import { dependencies } from './package.json';
 
 const external = createFilter(
     Object.keys(dependencies).map(item => item.includes('@patternfly') ? `${item}/**` : item),

@@ -1,15 +1,13 @@
 /* eslint-disable camelcase */
-
-import nodeResolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
-import analyze from 'rollup-plugin-analyzer';
 import { dependencies, name } from './package.json';
-import { createFilter } from 'rollup-pluginutils';
+import { createFilter } from '@rollup/pluginutils';
 import glob from 'glob';
 
 const globMapper = (mapper) => glob.sync(mapper).reduce((acc, item) => {
@@ -22,8 +20,18 @@ const globMapper = (mapper) => glob.sync(mapper).reduce((acc, item) => {
     };
 }, {});
 
+const externalDeps = Object.keys(dependencies).map(item =>
+    (
+        item.includes('@patternfly') ||
+        item.includes('@redhat-cloud-services')
+    ) &&
+    !item.includes('@patternfly/react-table') ?
+        `${item}/**` :
+        item
+);
+
 const external = createFilter(
-    Object.keys(dependencies).map(item => item.includes('@patternfly') ? `${item}/**` : item),
+    externalDeps,
     null,
     { resolve: false }
 );
@@ -31,8 +39,11 @@ const external = createFilter(
 const globals = {
     react: 'React',
     'react-dom': 'ReactDOM',
+    'prop-types': 'prop-types',
     '@patternfly/react-core': '@patternfly/react-core',
-    '@patternfly/react-icons': '@patternfly/react-icons'
+    '@patternfly/react-icons': '@patternfly/react-icons',
+    '@patternfly/react-table': '@patternfly/react-table',
+    '@redhat-cloud-services/frontend-components': '@redhat-cloud-services/frontend-components'
 };
 
 const commonjsOptions = {
@@ -58,18 +69,18 @@ const plugins = [
     postcss({
         inject: true
     }),
-    analyze({ summaryOnly: true }),
     json()
 ];
 
 export default [
-    ...[ 'cjs', 'esm' ].map(env => ({
+    ...[ 'esm', 'cjs' ].map(env => ({
         input: globMapper('src/**/index.js'),
         output: {
             dir: `./dist/${env}`,
             format: env,
             name,
-            globals
+            globals,
+            exports: 'named'
         },
         external,
         plugins
@@ -80,7 +91,8 @@ export default [
             file: `./dist/umd/${key}.js`,
             format: 'umd',
             name: `${name}-${key}`,
-            globals
+            globals,
+            exports: 'named'
         },
         external,
         plugins
