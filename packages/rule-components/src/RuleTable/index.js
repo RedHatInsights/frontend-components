@@ -1,3 +1,2 @@
-export { default as default } from './RuleTable';
+export { default as default, style } from './RuleTable';
 export * from './constants';
-import './index.scss';
