@@ -1,0 +1,14 @@
+@import '~@redhat-cloud-services/frontend-components/components/Battery.css';
+@import '~@redhat-cloud-services/frontend-components/components/Skeleton.css';
+@import '~@redhat-cloud-services/frontend-components/components/TableToolbar.css';
+@import '~@redhat-cloud-services/frontend-components/components/PrimaryToolbar.css';
+
+.rhcs-c-rules-table {
+    .ins-c-table__toolbar.ins-m-footer .pf-c-pagination.pf-m-footer {
+        margin-left: auto;
+    }
+
+    .pf-c-select__menu .pf-c-check__label .ins-battery svg {
+        height: 1.25rem;
+    }
+}
