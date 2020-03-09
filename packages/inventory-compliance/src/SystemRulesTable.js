@@ -478,6 +478,22 @@ class SystemRulesTable extends React.Component {
         this.uncompressRows(this.compressRows(rows))
     )
 
+    getSelectedRows = (rows) => {
+        let selectedRows = [];
+        rows.forEach((row, i) => {
+            if (row.selected && this.isParent(row)) {
+                selectedRows.push(row);
+                if (!this.isParent(rows[i + 1])) {
+                    selectedRows.push({
+                        parent: selectedRows.length - 1,
+                        cells: rows[i + 1].cells
+                    });
+                }
+            }
+        });
+        return selectedRows;
+    }
+
     updateFilter = (hidePassed, severity, policy, selectedFilter) => {
         const { columnIndices, originalRows, profiles, refIds, itemsPerPage, searchTerm } = this.state;
 
@@ -488,19 +504,9 @@ class SystemRulesTable extends React.Component {
             passedRows = originalRows;
         }
 
-        let selectedRows = [];
+        let selectedRows;
         if (selectedFilter) {
-            originalRows.forEach((row, i) => {
-                if (row.selected && this.isParent(row)) {
-                    selectedRows.push(row);
-                    if (!this.isParent(originalRows[i + 1])) {
-                        selectedRows.push({
-                            parent: selectedRows.length - 1,
-                            cells: originalRows[i + 1].cells
-                        });
-                    }
-                }
-            });
+            selectedRows = this.getSelectedRows(originalRows);
         } else {
             selectedRows = originalRows;
         }
