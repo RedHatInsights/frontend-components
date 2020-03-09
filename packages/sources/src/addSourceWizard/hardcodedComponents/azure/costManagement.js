@@ -9,14 +9,17 @@ import {
     TextListVariants,
     TextListItemVariants
 } from '@patternfly/react-core';
+import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
 
-const AZURE_CREDS_URL = 'https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials';
-const RECURRING_TASK_URL = 'https://docs.microsoft.com/en-us/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows';
+const CREATE_AZURE_STORAGE = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#creating_an_azure_storage_account`;
+const AZURE_CREDS_URL = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#configuring_an_azure_service_principal`;
+const RECURRING_TASK_URL = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#configuring_an_azure_daily_export_schedule`;
 
 export const ConfigureResourceGroupAndStorageAccount = () => (
     <TextContent>
         <Text component={TextVariants.p}>
-            Red Hat recommends creating a dedicated resource group and storage account in Azure to collect cost data and metrics for cost management.
+            Red Hat recommends creating a dedicated resource group and storage account in Azure to collect cost data and metrics for cost management.&nbsp;
+            <Text rel="noopener noreferrer" target="_blank" component={TextVariants.a} href={CREATE_AZURE_STORAGE}>Learn more</Text>
         </Text>
         <Text component={TextVariants.p}>
             After configuring a resource group and storage account in the Azure portal, enter the following:
@@ -31,7 +34,7 @@ export const ServicePrincipalDescription = () => (
             <Text rel="noopener noreferrer" target="_blank" component={TextVariants.a} href={AZURE_CREDS_URL}>Learn more</Text>
         </Text>
         <Text component={TextVariants.p}>
-            Run the following command in Cloud Shell to obtain your Subscription ID and enter it further below
+            Run the following command in Cloud Shell to obtain your Subscription ID and enter it below:
         </Text>
         <ClipboardCopy>{`az account show --query "{ subscription_id: id }"`}</ClipboardCopy>
     </TextContent>
@@ -71,13 +74,13 @@ export const ExportSchedule = () => (
                 <Text component={TextVariants.b}>Export type</Text>
             </TextListItem>
             <TextListItem component={TextListItemVariants.dd}>
-                Daily export for billing-period-to-date costs.
+                Daily export for billing-period-to-date costs
             </TextListItem>
             <TextListItem component={TextListItemVariants.dt}>
                 <Text component={TextVariants.b}>Storage account name</Text>
             </TextListItem>
             <TextListItem component={TextListItemVariants.dd}>
-                Storage account name created earlier.
+                Storage account name created earlier
             </TextListItem>
         </TextList>
     </TextContent>

@@ -112,7 +112,7 @@ export default {
                             initializeOnMount: true
                         }]
                     }, {
-                        title: 'Obtain your login credentials',
+                        title: 'Obtain login credentials',
                         stepKey: 'obtainLogin',
                         name: 'obtainLogin',
                         nextStep: 'usageCollector',
@@ -122,7 +122,7 @@ export default {
                             Content: CMOpenshift.ObtainLoginDescription
                         }]
                     }, {
-                        title: 'Configure usage collector',
+                        title: 'Configure Usage Collector',
                         stepKey: 'usageCollector',
                         name: 'usageCollector',
                         nextStep: 'dataCollection',
@@ -279,7 +279,7 @@ export default {
                             component: componentTypes.TEXT_FIELD
                         }]
                     }, {
-                        title: 'Create a daily export',
+                        title: 'Create daily export',
                         stepKey: 'export-schedule',
                         name: 'export-schedule',
                         fields: [{
