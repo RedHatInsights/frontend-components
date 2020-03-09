@@ -168,7 +168,7 @@ class SystemRulesTable extends React.Component {
     }
 
     onSelect = (_event, selected, key) => {
-        const { remediationsEnabled, tailoringEnabled } = this.props;
+        const { remediationsEnabled, tailoringEnabled, handleSelect } = this.props;
         const { columnIndices, page, itemsPerPage } = this.state;
         let { currentRows, rows } = this.state;
         if (key === -1) {
@@ -183,7 +183,7 @@ class SystemRulesTable extends React.Component {
             }
         }
 
-        this.setState({ rows, currentRows });
+        this.setState({ rows, currentRows }, () => handleSelect(this.getSelectedRows(rows)));
     }
 
     ruleTitleCell = (title, identifier) => <Stack>
@@ -630,6 +630,7 @@ SystemRulesTable.propTypes = {
     tailoringEnabled: propTypes.bool,
     selectedRefIds: propTypes.array,
     selectedFilter: propTypes.bool,
+    handleSelect: propTypes.handleSelect,
     columns: propTypes.arrayOf(
         propTypes.shape(
             {
@@ -648,7 +649,8 @@ SystemRulesTable.defaultProps = {
     itemsPerPage: 10,
     remediationsEnabled: true,
     tailoringEnabled: false,
-    selectedRefIds: []
+    selectedRefIds: [],
+    handleSelect: (() => {})
 };
 
 export default SystemRulesTable;
