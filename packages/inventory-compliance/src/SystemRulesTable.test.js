@@ -241,4 +241,82 @@ describe('SystemRulesTable component', () => {
         await instance.updateFilter(wrapper.state('hidePassed'), [ 'low' ], []);
         expect(wrapper.state('currentRows').length / 2).toEqual(2);
     });
+
+    describe('tailoring rules', () => {
+        const selectedRefIds = [
+            'xccdf_org.ssgproject.content_rule_service_docker_enabled',
+            'xccdf_org.ssgproject.content_rule_docker_storage_configured',
+            'xccdf_org.ssgproject.content_rule_service_rdisc_disabled'
+        ];
+
+
+        it('should be able to show all selected rules if tailoring is enabled', async () => {
+            const wrapper = shallow(
+                <SystemRulesTable
+                    profileRules={ profileRules }
+                    selectedRefIds={ selectedRefIds }
+                    loading={ false }
+                    system={ system }
+                    itemsPerPage={ 50 }
+                    selectedFilter
+                    tailoringEnabled
+                    columns={ [
+                        { title: 'Rule' },
+                        { title: 'Severity' },
+                        { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible' }
+                    ] }
+                />
+            );
+            const instance = wrapper.instance();
+            await instance.setInitialCurrentRows();
+            expect(wrapper.state('currentRows').length / 2).toEqual(3);
+            expect(wrapper.state('currentRows').filter((row) => row.selected).length).toEqual(3);
+        });
+
+        it('should be able to filter by selected/unselected rules if tailoring is enabled', async () => {
+            const wrapper = shallow(
+                <SystemRulesTable
+                    profileRules={ profileRules }
+                    selectedRefIds={ selectedRefIds }
+                    loading={ false }
+                    system={ system }
+                    itemsPerPage={ 50 }
+                    selectedFilter
+                    tailoringEnabled
+                    columns={ [
+                        { title: 'Rule' },
+                        { title: 'Severity' },
+                        { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible' }
+                    ] }
+                />
+            );
+            const instance = wrapper.instance();
+            await instance.setInitialCurrentRows();
+            expect(wrapper.state('currentRows').length / 2).toEqual(3);
+            await instance.updateFilter(false, [ 'high', 'medium' ], [], false);
+            expect(wrapper.state('currentRows').length / 2).toEqual(50);
+        });
+
+        it('should have undefined selected fields if tailoring is disabled', async () => {
+            const wrapper = shallow(
+                <SystemRulesTable
+                    profileRules={ profileRules }
+                    selectedRefIds={ selectedRefIds }
+                    loading={ false }
+                    system={ system }
+                    itemsPerPage={ 20 }
+                    tailoringEnabled={false}
+                    columns={ [
+                        { title: 'Rule' },
+                        { title: 'Severity' },
+                        { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible' }
+                    ] }
+                />
+            );
+            const instance = wrapper.instance();
+            await instance.setInitialCurrentRows();
+            expect(wrapper.state('currentRows').length / 2).toEqual(20);
+            expect(Array.from(new Set(wrapper.state('currentRows').map((row) => row.selected)))).toEqual([ undefined ]);
+        });
+    });
 });
