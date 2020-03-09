@@ -177,10 +177,7 @@ class SystemRulesTable extends React.Component {
         } else {
             // One rule was selected
             const index = ((page - 1) * itemsPerPage * 2) + Number(key);
-            if (remediationsEnabled && currentRows[index].cells[columnIndices.REMEDIATIONS_COLUMN].original) {
-                rows[index].selected = selected;
-                currentRows[key].selected = selected;
-            } else if (tailoringEnabled) {
+            if (tailoringEnabled || remediationsEnabled && currentRows[index].cells[columnIndices.REMEDIATIONS_COLUMN].original) {
                 rows[index].selected = selected;
                 currentRows[key].selected = selected;
             }
@@ -448,11 +445,19 @@ class SystemRulesTable extends React.Component {
         return filteredRows;
     }
 
+    appendToFilteredRows = (filterType, result, filteredRowsByType) => {
+        if (filterType && String(filterType).length > 0 && result.length > 0) {
+            result = result.filter(row => filteredRowsByType.map((row) => row.cells).includes(row.cells));
+        } else if (filterType && String(filterType).length > 0 && result.length === 0) {
+            result = filteredRowsByType;
+        }
+
+        return result;
+    }
+
     filteredRows = (passedRows, severityRows, policyRows, searchRows, selectedRows,
         hidePassed, severity, policy, searchTerm, selectedFilter) => {
-
         let result;
-
         if (severity.length > 0 && hidePassed) {
             result = passedRows.filter(row => severityRows.map((row) => row.cells).includes(row.cells));
         } else if (hidePassed && severity.length === 0) {
@@ -463,24 +468,9 @@ class SystemRulesTable extends React.Component {
             result = passedRows;
         }
 
-        if (policy.length > 0 && result.length > 0) {
-            result = result.filter(row => policyRows.map((row) => row.cells).includes(row.cells));
-        } else if (policy.length > 0 && result.length === 0) {
-            result = policyRows;
-        }
-
-        if (searchTerm && searchTerm.length > 0 && result.length > 0) {
-            result = result.filter(row => searchRows.map((row) => row.cells).includes(row.cells));
-        } else if (searchTerm && searchTerm.length > 0 && result.length === 0) {
-            result = searchRows;
-        }
-
-        if (selectedFilter && result.length > 0) {
-            result = result.filter(row => selectedRows.map((row) => row.cells).includes(row.cells));
-        } else if (selectedFilter && result.length === 0) {
-            result = selectedRows;
-        }
-
+        result = this.appendToFilteredRows(policy, result, policyRows);
+        result = this.appendToFilteredRows(searchTerm, result, searchRows);
+        result = this.appendToFilteredRows(selectedFilter, result, selectedRows);
         return this.recomputeParentId(result);
     }
 
