@@ -249,7 +249,6 @@ describe('SystemRulesTable component', () => {
             'xccdf_org.ssgproject.content_rule_service_rdisc_disabled'
         ];
 
-
         it('should be able to show all selected rules if tailoring is enabled', async () => {
             const wrapper = shallow(
                 <SystemRulesTable
