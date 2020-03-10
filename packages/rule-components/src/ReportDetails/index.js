@@ -7,7 +7,7 @@ import {
     StackItem,
     Text,
     TextVariants,
-    Title,
+    Title
 } from '@patternfly/react-core';
 import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
@@ -19,49 +19,49 @@ const totalRiskMeta = [
     {
         label: 'low',
         description: 'low severity desc for total risk',
-        IconComponent: Battery,
+        IconComponent: Battery
     },
     {
         label: 'moderate',
         description: 'moderate severity desc for total risk',
-        IconComponent: Battery,
+        IconComponent: Battery
     },
     {
         label: 'important',
         description: 'important severity desc for total risk',
-        IconComponent: Battery,
+        IconComponent: Battery
     },
     {
         label: 'critical',
         description: 'critical severity desc for total risk',
-        IconComponent: Battery,
-    },
+        IconComponent: Battery
+    }
 ];
 
 const riskOfChangeMeta = [
     {
         label: 'low',
         description: 'low severity desc for risk of change',
-        IconComponent: Battery,
+        IconComponent: Battery
     },
     {
         label: 'moderate',
         description: 'moderate severity desc for risk of change',
-        IconComponent: Battery,
+        IconComponent: Battery
     },
     {
         label: 'important',
         description: 'important severity desc for risk of change',
-        IconComponent: Battery,
+        IconComponent: Battery
     },
     {
         label: 'critical',
         description: 'critical severity desc for risk of change',
-        IconComponent: Battery,
-    },
+        IconComponent: Battery
+    }
 ];
 
-const LinkInDetails = ({children, href}) => (
+const LinkInDetails = ({ children, href }) => (
     <a href={href}>
         {children}
         <ExternalLinkAltIcon className="OCMReportDetailsExternalLinkIcon"/>
@@ -69,11 +69,11 @@ const LinkInDetails = ({children, href}) => (
 );
 
 LinkInDetails.propTypes = {
-    children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]),
-    href: PropTypes.string,
+    children: PropTypes.oneOfType([ PropTypes.array, PropTypes.node ]),
+    href: PropTypes.string
 };
 
-const RiskDescription = ({riskValue, riskMeta}) => {
+const RiskDescription = ({ riskValue, riskMeta }) => {
     // riskValue ranges from 1 to ∞
     const risk = riskMeta[riskValue - 1];
     const IconComponent = risk.IconComponent;
@@ -92,7 +92,7 @@ const RiskDescription = ({riskValue, riskMeta}) => {
 
 RiskDescription.propTypes = {
     riskValue: PropTypes.number,
-    riskMeta: PropTypes.array,
+    riskMeta: PropTypes.array
 };
 
 const OCMReportDetails = (
@@ -100,7 +100,7 @@ const OCMReportDetails = (
         details,
         ruleId,
         totalRisk,
-        riskOfChange,
+        riskOfChange
     }) => (
 
     <Grid gutter="md" className="OCMReportDetails">
@@ -112,7 +112,7 @@ const OCMReportDetails = (
                         <ReactMarkdown
                             source={details}
                             renderers={{
-                                link: LinkInDetails,
+                                link: LinkInDetails
                             }}
                         />
                     </div>
@@ -155,8 +155,7 @@ OCMReportDetails.propTypes = {
     details: PropTypes.string,
     ruleId: PropTypes.number,
     totalRisk: PropTypes.number,
-    riskOfChange: PropTypes.number,
+    riskOfChange: PropTypes.number
 };
-
 
 export default OCMReportDetails;

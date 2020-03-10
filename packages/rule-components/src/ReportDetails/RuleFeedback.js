@@ -9,7 +9,7 @@ const RuleFeedback = ruleId => (
 );
 
 RuleFeedback.propTypes = {
-    ruleId: PropTypes.number,
+    ruleId: PropTypes.number
 };
 
 export default RuleFeedback;
