@@ -9,10 +9,10 @@ import {
     TextVariants,
     Title,
 } from '@patternfly/react-core';
-import {ExternalLinkAltIcon} from '@patternfly/react-icons';
-import {Battery} from '@redhat-cloud-services/frontend-components/components/Battery';
+import { ExternalLinkAltIcon } from '@patternfly/react-icons';
+import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
 import RuleFeedback from './RuleFeedback';
-import './OCMReportDetails.css';
+import './ReportDetails.css';
 import ReactMarkdown from 'react-markdown';
 
 const totalRiskMeta = [
