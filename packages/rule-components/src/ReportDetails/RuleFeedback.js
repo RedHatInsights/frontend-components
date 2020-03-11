@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 const RuleFeedback = ({ ruleId }) => (
     <div>
-        <div>Is this rule helpful?</div>
+        <div>
+            <span>Is this rule helpful?</span>
+            <i className="far fa-thumbs-up"></i>
+            <i className="far fa-thumbs-down"></i>
+        </div>
     </div>
 );
 
