@@ -38,6 +38,8 @@ class SystemRulesTable extends React.Component {
         itemsPerPage: this.props.itemsPerPage,
         rows: [],
         hidePassed: this.props.hidePassed,
+        selectedFilter: this.props.selectedFilter,
+        selectedRefIds: this.props.selectedRefIds,
         severity: [],
         policy: [],
         currentRows: [],
@@ -58,19 +60,19 @@ class SystemRulesTable extends React.Component {
     }
 
     setInitialCurrentRows() {
-        const { hidePassed, itemsPerPage, severity, policy } = this.state;
+        const { hidePassed, itemsPerPage, severity, policy, selectedFilter } = this.state;
         let { profileRules } = this.props;
         const rowsRefIds = this.rulesToRows(profileRules);
 
         this.setState({
-            currentRows: this.currentRows(1, itemsPerPage, rowsRefIds),
+            currentRows: this.markSelectedRows(this.currentRows(1, itemsPerPage, rowsRefIds)),
             originalRows: rowsRefIds.rows,
-            rows: rowsRefIds.rows,
+            rows: this.markSelectedRows(rowsRefIds.rows),
             profiles: rowsRefIds.profiles,
             refIds: rowsRefIds.refIds
         }, () => {
-            if (hidePassed) {
-                this.updateFilter(hidePassed, severity, policy);
+            if (hidePassed || selectedFilter) {
+                this.updateFilter(hidePassed, severity, policy, selectedFilter);
             }
         });
     }
@@ -166,22 +168,46 @@ class SystemRulesTable extends React.Component {
         ));
     }
 
+    rowRefId = (row) => {
+        const { columnIndices, refIds } = this.state;
+        return refIds[row.cells[columnIndices.TITLE_COLUMN].original];
+    }
+
     onSelect = (_event, selected, key) => {
+        const { remediationsEnabled, tailoringEnabled, handleSelect } = this.props;
         const { columnIndices, page, itemsPerPage } = this.state;
-        let { currentRows, rows } = this.state;
+        let { currentRows, rows, selectedRefIds } = this.state;
+
         if (key === -1) {
             rows = this.selectAll(rows, selected);
             currentRows = this.selectAll(currentRows, selected);
+            if (selected) {
+                selectedRefIds = rows.filter(row => this.isParent(row)).map(row => this.rowRefId(row));
+            } else {
+                selectedRefIds = [];
+            }
         } else {
             // One rule was selected
             const index = ((page - 1) * itemsPerPage * 2) + Number(key);
-            if (currentRows[index].cells[columnIndices.REMEDIATIONS_COLUMN].original) {
+            if (tailoringEnabled || remediationsEnabled && currentRows[index].cells[columnIndices.REMEDIATIONS_COLUMN].original) {
                 rows[index].selected = selected;
                 currentRows[key].selected = selected;
+
+                const currentRefId = this.rowRefId(rows[index]);
+                const currentRefIdInSelectedRefIds = selectedRefIds.indexOf(currentRefId);
+                if (selected && currentRefIdInSelectedRefIds === -1) {
+                    selectedRefIds.push(currentRefId);
+                } else if (!selected && currentRefIdInSelectedRefIds !== -1) {
+                    selectedRefIds.splice(currentRefIdInSelectedRefIds, 1);
+                }
             }
         }
 
-        this.setState({ rows, currentRows });
+        this.setState({
+            rows,
+            currentRows,
+            selectedRefIds
+        }, () => handleSelect(selectedRefIds));
     }
 
     ruleTitleCell = (title, identifier) => <Stack>
@@ -324,10 +350,10 @@ class SystemRulesTable extends React.Component {
     }
 
     selectedRules = () => {
-        const { currentRows, profiles, refIds, columnIndices } = this.state;
+        const { currentRows, profiles, columnIndices } = this.state;
         return currentRows.filter(row => row.selected && row.cells[columnIndices.REMEDIATIONS_COLUMN].original).map(row => ({
             // We want to match this response with a similar response from GraphQL
-            refId: refIds[row.cells[columnIndices.TITLE_COLUMN].original],
+            refId: this.rowRefId(row),
             profiles: [{ refId: profiles[row.cells[columnIndices.TITLE_COLUMN].original] }],
             remediationAvailable: row.cells[columnIndices.REMEDIATIONS_COLUMN].original,
             title: row.cells[columnIndices.TITLE_COLUMN].original // This is the rule title, the description is too long
@@ -361,10 +387,10 @@ class SystemRulesTable extends React.Component {
     }
 
     handleSearch = debounce(searchTerm => {
-        const { hidePassed, severity, policy } = this.state;
+        const { hidePassed, severity, policy, selectedFilter } = this.state;
         return this.setState({
             searchTerm
-        }, () => this.updateFilter(hidePassed, severity, policy));
+        }, () => this.updateFilter(hidePassed, severity, policy, selectedFilter));
     }, 500)
 
     onSort = (_event, index, direction) => {
@@ -441,9 +467,19 @@ class SystemRulesTable extends React.Component {
         return filteredRows;
     }
 
-    filteredRows = (passedRows, severityRows, policyRows, searchRows, hidePassed, severity, policy, searchTerm) => {
-        let result;
+    appendToFilteredRows = (filterType, result, filteredRowsByType) => {
+        if (filterType && String(filterType).length > 0 && result.length > 0) {
+            result = result.filter(row => filteredRowsByType.map((row) => row.cells).includes(row.cells));
+        } else if (filterType && String(filterType).length > 0 && result.length === 0) {
+            result = filteredRowsByType;
+        }
 
+        return result;
+    }
+
+    filteredRows = (passedRows, severityRows, policyRows, searchRows, selectedRows,
+        hidePassed, severity, policy, searchTerm, selectedFilter) => {
+        let result;
         if (severity.length > 0 && hidePassed) {
             result = passedRows.filter(row => severityRows.map((row) => row.cells).includes(row.cells));
         } else if (hidePassed && severity.length === 0) {
@@ -454,17 +490,9 @@ class SystemRulesTable extends React.Component {
             result = passedRows;
         }
 
-        if (policy.length > 0 && result.length > 0) {
-            result = result.filter(row => policyRows.map((row) => row.cells).includes(row.cells));
-        } else if (policy.length > 0 && result.length === 0) {
-            result = policyRows;
-        }
-
-        if (searchTerm && searchTerm.length > 0 && result.length > 0) {
-            result = result.filter(row => searchRows.map((row) => row.cells).includes(row.cells));
-        } else if (searchTerm && searchTerm.length > 0 && result.length === 0) {
-            result = searchRows;
-        }
+        result = this.appendToFilteredRows(policy, result, policyRows);
+        result = this.appendToFilteredRows(searchTerm, result, searchRows);
+        result = this.appendToFilteredRows(selectedFilter, result, selectedRows);
 
         return this.recomputeParentId(result);
     }
@@ -473,8 +501,36 @@ class SystemRulesTable extends React.Component {
         this.uncompressRows(this.compressRows(rows))
     )
 
-    updateFilter = (hidePassed, severity, policy) => {
+    getSelectedRows = (rows) => {
+        const { selectedRefIds } = this.state;
+        let selectedRows = [];
+        rows.forEach((row, i) => {
+            if (this.isParent(row) && selectedRefIds.includes(this.rowRefId(row))) {
+                selectedRows.push(row);
+                if (!this.isParent(rows[i + 1])) {
+                    selectedRows.push({
+                        parent: selectedRows.length - 1,
+                        cells: rows[i + 1].cells
+                    });
+                }
+            }
+        });
+        return selectedRows;
+    }
+
+    markSelectedRows = (rows) => {
+        const { selectedRefIds } = this.state;
+        return rows.map(row => (
+            {
+                ...row,
+                ...this.isParent(row) && selectedRefIds.includes(this.rowRefId(row)) ? { selected: true } : {}
+            }
+        ));
+    }
+
+    updateFilter = (hidePassed, severity, policy, selectedFilter) => {
         const { columnIndices, originalRows, profiles, refIds, itemsPerPage, searchTerm } = this.state;
+
         let passedRows;
         if (hidePassed) {
             passedRows = this.filterBy(!hidePassed, originalRows, columnIndices.COMPLIANT_COLUMN);
@@ -482,16 +538,17 @@ class SystemRulesTable extends React.Component {
             passedRows = originalRows;
         }
 
+        const selectedRows = this.getSelectedRows(originalRows);
         const severityRows = this.filterBy(severity.join('|'), originalRows, columnIndices.SEVERITY_COLUMN);
         const policyRows = this.filterBy(policy, originalRows, columnIndices.POLICY_COLUMN);
         const searchRows = this.searchBy(searchTerm, originalRows);
-        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows,
-            hidePassed, severity, policy, searchTerm);
+        const filteredRows = this.filteredRows(passedRows, severityRows, policyRows, searchRows, selectedRows,
+            hidePassed, severity, policy, searchTerm, selectedFilter);
 
         return this.setState({
-            currentRows: this.currentRows(1, itemsPerPage, { rows: filteredRows, profiles, refIds }),
+            currentRows: this.markSelectedRows(this.currentRows(1, itemsPerPage, { rows: filteredRows, profiles, refIds })),
             page: 1,
-            rows: filteredRows,
+            rows: this.markSelectedRows(filteredRows),
             hidePassed,
             severity,
             policy,
@@ -500,8 +557,8 @@ class SystemRulesTable extends React.Component {
     }
 
     render() {
-        const { columnIndices, hidePassed, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
-        const { remediationsEnabled, system, loading, profileRules } = this.props;
+        const { columnIndices, hidePassed, selectedFilter, sortBy, rows, currentRows, columns, page, itemsPerPage } = this.state;
+        const { remediationsEnabled, tailoringEnabled, system, loading, profileRules } = this.props;
 
         if (loading) {
             return (
@@ -528,6 +585,8 @@ class SystemRulesTable extends React.Component {
                                 <InputGroup>
                                     <RulesComplianceFilter
                                         hidePassed={hidePassed}
+                                        selected = { selectedFilter }
+                                        selectedFilter={ tailoringEnabled }
                                         showPassFailFilter={ (columnIndices && columnIndices.COMPLIANT_COLUMN !== undefined) || false }
                                         availablePolicies={ profileRules.map(profile => profile.profile) }
                                         updateFilter={ this.updateFilter } />
@@ -563,7 +622,7 @@ class SystemRulesTable extends React.Component {
                         onCollapse={ this.onCollapse }
                         onSort={ this.onSort }
                         sortBy={ sortBy }
-                        onSelect={ (remediationsEnabled && currentRows.length !== 0) ? this.onSelect : undefined }
+                        onSelect={ ((tailoringEnabled || remediationsEnabled) && currentRows.length !== 0) ? this.onSelect : undefined }
                         rows={ (currentRows.length === 0) ? EmptyRows : currentRows }>
                         <TableHeader />
                         <TableBody />
@@ -595,6 +654,10 @@ SystemRulesTable.propTypes = {
     system: propTypes.object,
     itemsPerPage: propTypes.number,
     remediationsEnabled: propTypes.bool,
+    tailoringEnabled: propTypes.bool,
+    selectedRefIds: propTypes.array,
+    selectedFilter: propTypes.bool,
+    handleSelect: propTypes.func,
     columns: propTypes.arrayOf(
         propTypes.shape(
             {
@@ -609,8 +672,12 @@ SystemRulesTable.propTypes = {
 SystemRulesTable.defaultProps = {
     profileRules: [{ rules: [] }],
     hidePassed: false,
+    selectedFilter: false,
     itemsPerPage: 10,
-    remediationsEnabled: true
+    remediationsEnabled: true,
+    tailoringEnabled: false,
+    selectedRefIds: [],
+    handleSelect: (() => {})
 };
 
 export default SystemRulesTable;
