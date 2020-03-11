@@ -5,14 +5,14 @@ const RuleFeedback = ({ ruleId }) => (
     <div>
         <div>
             <span>Is this rule helpful?</span>
-            <i className="far fa-thumbs-up"></i>
-            <i className="far fa-thumbs-down"></i>
+            <i className="far fa-thumbs-up"/>
+            <i className="far fa-thumbs-down"/>
         </div>
     </div>
 );
 
 RuleFeedback.propTypes = {
-    ruleId: PropTypes.number,
+    ruleId: PropTypes.number
 };
 
 export default RuleFeedback;

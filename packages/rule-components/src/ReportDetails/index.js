@@ -9,9 +9,10 @@ import {
 } from '@patternfly/react-core';
 import RuleFeedback from './RuleFeedback';
 import ReactMarkdown from 'react-markdown';
-import { riskOfChangeMeta, totalRiskMeta } from "./constants";
-import LinkInDetails from "./LinkInDetails";
-import RiskDescription from "./RiskDescription";
+import { riskOfChangeMeta, totalRiskMeta } from './constants';
+import LinkInDetails from './LinkInDetails';
+import RiskDescription from './RiskDescription';
+
 export { default as style } from './index.scss';
 
 const ReportDetails = (
