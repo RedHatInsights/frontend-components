@@ -428,6 +428,12 @@ export default {
                             name: 'iam-policy-description',
                             component: 'description',
                             Content: SWAwsArn.IAMPolicyDescription
+                        }, {
+                            component: componentTypes.TEXT_FIELD,
+                            name: 'authentication.authtype',
+                            hideField: true,
+                            initialValue: 'cloud-meter-arn',
+                            initializeOnMount: true
                         }]
                     }, {
                         title: 'Create IAM role',
