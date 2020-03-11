@@ -29,6 +29,7 @@
         "react": "^16.10.2",
         "react-apollo": "^2.3.3",
         "react-dom": "^16.10.2",
+        "react-markdown": "^4.3.1",
         "react-redux": "^5.0.7",
         "react-router-dom": "^4.2.2",
         "react-truncate": "^2.4.0",
