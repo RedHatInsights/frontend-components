@@ -195,6 +195,7 @@ exports[`RulesComplianceFilter component should render filter 1`] = `
       ],
       "hidePassed": false,
       "policy": Array [],
+      "selected": true,
       "severity": Array [],
     }
   }
