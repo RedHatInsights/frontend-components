@@ -300,7 +300,6 @@ describe('SystemRulesTable component', () => {
             const wrapper = shallow(
                 <SystemRulesTable
                     profileRules={ profileRules }
-                    selectedRefIds={ selectedRefIds }
                     loading={ false }
                     system={ system }
                     itemsPerPage={ 20 }
