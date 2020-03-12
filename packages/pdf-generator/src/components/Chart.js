@@ -131,7 +131,7 @@ class Chart extends Component {
                             }}
                         />,
                         <Text key={`${key}-text`}>
-                            {x} {y}
+                            {x}
                         </Text>
                     ])
                 ]}
