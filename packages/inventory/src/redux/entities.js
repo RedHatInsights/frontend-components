@@ -86,15 +86,17 @@ function entitiesLoaded(state, { payload: { results, per_page: perPage, page, co
     };
 }
 
-function selectEntity(state, { payload: { id, selected } }) {
+function selectEntity(state, { payload }) {
     const rows = [ ...state.rows ];
-    const entity = rows.find(entity => entity.id === id);
-    if (entity) {
-        entity.selected = selected;
-    } else {
-        rows.forEach(item => item.selected = selected);
-    }
-
+    const toSelect = [].concat(payload);
+    toSelect.forEach(({ id, selected }) => {
+        const entity = rows.find(entity => entity.id === id);
+        if (entity) {
+            entity.selected = selected;
+        } else {
+            rows.forEach(item => item.selected = selected);
+        }
+    });
     return {
         ...state,
         rows
