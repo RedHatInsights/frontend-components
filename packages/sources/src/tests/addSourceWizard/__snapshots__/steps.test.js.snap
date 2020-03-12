@@ -116,32 +116,24 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
 `;
 
 exports[`Steps components LoadingStep renders correctly 1`] = `
-<div
-  className="pf-l-bullseye"
->
+<Bullseye>
   <EmptyState
     variant="full"
   >
-    <div>
-      <Spinner />
-    </div>
+    <Spinner />
     <EmptyStateBody>
       Loading, please wait.
     </EmptyStateBody>
   </EmptyState>
-</div>
+</Bullseye>
 `;
 
 exports[`Steps components LoadingStep renders correctly with custom props 1`] = `
-<div
-  className="pf-l-bullseye"
->
+<Bullseye>
   <EmptyState
     variant="full"
   >
-    <div>
-      <Spinner />
-    </div>
+    <Spinner />
     <EmptyStateBody>
       Here I Am
     </EmptyStateBody>
@@ -154,5 +146,5 @@ exports[`Steps components LoadingStep renders correctly with custom props 1`] = 
       </Component>
     </EmptyStateSecondaryActions>
   </EmptyState>
-</div>
+</Bullseye>
 `;

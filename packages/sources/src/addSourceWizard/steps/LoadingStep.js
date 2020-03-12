@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EmptyState, EmptyStateVariant, EmptyStateBody, EmptyStateSecondaryActions, Button } from '@patternfly/react-core';
-import { Spinner } from '@redhat-cloud-services/frontend-components';
+import { EmptyState, EmptyStateVariant, EmptyStateBody, EmptyStateSecondaryActions, Button, Bullseye, Spinner } from '@patternfly/react-core';
 
-const LoadingStep = ({ onClose, customText }) => <div className="pf-l-bullseye">
+const LoadingStep = ({ onClose, customText }) => <Bullseye>
     <EmptyState variant={ EmptyStateVariant.full }>
-        <div>
-            <Spinner />
-        </div>
+        <Spinner />
         <EmptyStateBody>
             { customText }
         </EmptyStateBody>
@@ -16,7 +13,7 @@ const LoadingStep = ({ onClose, customText }) => <div className="pf-l-bullseye">
             <Button variant="link" onClick={ onClose }>Cancel</Button>
         </EmptyStateSecondaryActions> }
     </EmptyState>
-</div>;
+</Bullseye>;
 
 LoadingStep.propTypes = {
     onClose: PropTypes.func,
