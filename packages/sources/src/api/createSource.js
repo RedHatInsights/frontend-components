@@ -69,6 +69,8 @@ export const doCreateSource = async (formData, sourceTypes) => {
 
         const [ endpointDataOut, applicationDataOut ] = await Promise.all(promises);
 
+        let authenticationDataOut;
+
         if (endpointDataOut) {
             const authenticationData = {
                 ...formData.authentication,
@@ -76,16 +78,29 @@ export const doCreateSource = async (formData, sourceTypes) => {
                 resource_type: 'Endpoint'
             };
 
-            await getSourcesApi().createAuthentication(authenticationData);
+            authenticationDataOut = await getSourcesApi().createAuthentication(authenticationData);
         }
+
+        const promisesSecondRound = [];
 
         if (formData.credentials || formData.billing_source) {
             const { credentials, billing_source } = formData;
             let data = {};
             data = credentials ? { authentication: { credentials } } : {};
             data = billing_source ? { ...data, billing_source } : data;
-            await patchSource({ id: sourceDataOut.id, ...data });
+            promisesSecondRound.push(patchSource({ id: sourceDataOut.id, ...data }));
         }
+
+        if (authenticationDataOut && applicationDataOut) {
+            const authAppData = {
+                application_id: applicationDataOut.id,
+                authentication_id: authenticationDataOut.id
+            };
+
+            promisesSecondRound.push(getSourcesApi().createAuthApp(authAppData));
+        }
+
+        await Promise.all(promisesSecondRound);
 
         return {
             ...sourceDataOut,
