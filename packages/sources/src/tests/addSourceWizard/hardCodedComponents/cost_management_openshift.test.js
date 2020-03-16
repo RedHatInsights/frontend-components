@@ -15,7 +15,7 @@ describe('Cost Management OpenShift steps components', () => {
             const wrapper = mount(<OpCm.PrerequisiteDescription />);
 
             expect(wrapper.find(TextContent)).toHaveLength(1);
-            expect(wrapper.find(Text)).toHaveLength(1);
+            expect(wrapper.find(Text)).toHaveLength(2);
         });
         test('OpenShift Cluster Platform text', () => {
             const wrapper = mount(<OpCm.PrerequisiteOCPText />);
@@ -47,14 +47,12 @@ describe('Cost Management OpenShift steps components', () => {
     test('Obtain login description', () => {
         const wrapper = mount(<OpCm.ObtainLoginDescription/>);
 
-        expect(wrapper.find(Popover)).toHaveLength(1);
         expect(wrapper.find('ol')).toHaveLength(1);
         expect(wrapper.find('li')).toHaveLength(3);
     });
     test('Usage Collector description', () => {
         const wrapper = mount(<OpCm.ConfigureUsageCollector />);
 
-        expect(wrapper.find(Popover)).toHaveLength(1);
         expect(wrapper.find('ol')).toHaveLength(1);
         expect(wrapper.find('li')).toHaveLength(4);
     });
@@ -66,9 +64,8 @@ describe('Cost Management OpenShift steps components', () => {
     test('Data Collection description', () => {
         const wrapper = mount(<OpCm.DataCollectionDescription />);
 
-        expect(wrapper.find(Popover)).toHaveLength(1);
         expect(wrapper.find(ClipboardCopy)).toHaveLength(2);
         expect(wrapper.find('ol')).toHaveLength(1);
-        expect(wrapper.find('li')).toHaveLength(3);
+        expect(wrapper.find('li')).toHaveLength(2);
     });
 });

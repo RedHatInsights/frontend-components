@@ -3,7 +3,6 @@ import { mount } from 'enzyme';
 import {
     TextContent,
     Text,
-    Popover,
     ClipboardCopy
 } from '@patternfly/react-core';
 
@@ -13,7 +12,7 @@ describe('Cost Management Azure steps components', () => {
     test('Configure Resource Group and Storage Account description', () => {
         const wrapper = mount(<Cm.ConfigureResourceGroupAndStorageAccount />);
 
-        expect(wrapper.find(Text)).toHaveLength(2);
+        expect(wrapper.find(Text)).toHaveLength(3);
     });
     test('Service Principal description', () => {
         const wrapper = mount(<Cm.ServicePrincipalDescription />);
