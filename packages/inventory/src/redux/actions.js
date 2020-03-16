@@ -123,3 +123,19 @@ export const fetchAllTags = (search, options) => ({
     type: ACTION_TYPES.ALL_TAGS,
     payload: getAllTags(search, options)
 });
+
+export const deleteEntity = (systems, displayName) => ({
+    type: ACTION_TYPES.REMOVE_ENTITY,
+    payload: hosts.apiHostDeleteById(systems),
+    meta: {
+        notifications: {
+            fulfilled: {
+                variant: 'success',
+                title: 'Delete operation finished',
+                description: `${displayName} has been successfully removed.`,
+                dismissable: true
+            }
+        },
+        systems
+    }
+});
