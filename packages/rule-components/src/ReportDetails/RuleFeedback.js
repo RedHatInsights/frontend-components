@@ -19,7 +19,7 @@ const RuleFeedback = ({ ruleId, onFeedbackChanged }) => (
             <ThumbsUpIcon/>
         </Button>
         <Button
-            className="ins-c-rule__rule-feedback-like-button"
+            className="ins-c-rule__rule-feedback-dislike-button"
             variant="plain"
             aria-label="Rule is not helpful"
             onClick={ () => onFeedbackChanged(ruleId, -1) }
