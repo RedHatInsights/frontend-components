@@ -20,7 +20,8 @@ const ReportDetails = (
         details,
         ruleId,
         totalRisk,
-        riskOfChange
+        riskOfChange,
+        onFeedbackChanged
     }) => (
 
     <Grid gutter="md" className="ins-c-rule__report-detail">
@@ -38,7 +39,7 @@ const ReportDetails = (
                     </div>
                 </StackItem>
                 <StackItem>
-                    <RuleFeedback ruleId={ ruleId }/>
+                    <RuleFeedback ruleId={ ruleId } onFeedbackChanged={ onFeedbackChanged }/>
                 </StackItem>
             </Stack>
         </GridItem>
@@ -74,7 +75,8 @@ ReportDetails.propTypes = {
     details: PropTypes.string,
     ruleId: PropTypes.number,
     totalRisk: PropTypes.number,
-    riskOfChange: PropTypes.number
+    riskOfChange: PropTypes.number,
+    onFeedbackChanged: PropTypes.func
 };
 
 export default ReportDetails;
