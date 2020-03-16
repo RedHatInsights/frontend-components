@@ -5,8 +5,8 @@ import ThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumb
 import { Button } from '@patternfly/react-core';
 
 // ruleId - is id of current rule
-// onFeedbackSent(ruleId, vote, text) is a callback which is called when feedback is changed
-// where ruleId is id of the rule, vote is either -1, 0 or 1 and text is a string
+// onFeedbackSent(ruleId, vote) is a callback which is called when feedback is changed
+// where ruleId is id of the rule, vote is either -1, 0 or 1
 const RuleFeedback = ({ ruleId, onFeedbackChanged }) => (
     <div>
         <span>Is this rule helpful?</span>
@@ -14,7 +14,7 @@ const RuleFeedback = ({ ruleId, onFeedbackChanged }) => (
             className="ins-c-rule__rule-feedback-like-button"
             variant="plain"
             aria-label="Rule is helpful"
-            onClick={ () => onFeedbackChanged(ruleId, 1, '') }
+            onClick={ () => onFeedbackChanged(ruleId, 1) }
         >
             <ThumbsUpIcon/>
         </Button>
@@ -22,7 +22,7 @@ const RuleFeedback = ({ ruleId, onFeedbackChanged }) => (
             className="ins-c-rule__rule-feedback-like-button"
             variant="plain"
             aria-label="Rule is not helpful"
-            onClick={ () => onFeedbackChanged(ruleId, -1, '') }
+            onClick={ () => onFeedbackChanged(ruleId, -1) }
         >
             <ThumbsDownIcon/>
         </Button>
