@@ -14,9 +14,7 @@ const RuleFeedback = ({ ruleId, onFeedbackChanged }) => (
             className="ins-c-rule__rule-feedback-like-button"
             variant="plain"
             aria-label="Rule is helpful"
-            onClick={ () => {
-                onFeedbackChanged(ruleId, 1, '');
-            } }
+            onClick={ () => onFeedbackChanged(ruleId, 1, '') }
         >
             <ThumbsUpIcon/>
         </Button>
@@ -24,9 +22,7 @@ const RuleFeedback = ({ ruleId, onFeedbackChanged }) => (
             className="ins-c-rule__rule-feedback-like-button"
             variant="plain"
             aria-label="Rule is not helpful"
-            onClick={ () => {
-                onFeedbackChanged(ruleId, -1, '');
-            } }
+            onClick={ () => onFeedbackChanged(ruleId, -1, '') }
         >
             <ThumbsDownIcon/>
         </Button>
@@ -34,8 +30,8 @@ const RuleFeedback = ({ ruleId, onFeedbackChanged }) => (
 );
 
 RuleFeedback.propTypes = {
-    ruleId: PropTypes.number,
-    onFeedbackChanged: PropTypes.func
+    ruleId: PropTypes.string.isRequired,
+    onFeedbackChanged: PropTypes.func.isRequired
 };
 
 export default RuleFeedback;

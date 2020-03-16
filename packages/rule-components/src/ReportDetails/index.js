@@ -39,7 +39,10 @@ const ReportDetails = (
                     </div>
                 </StackItem>
                 <StackItem>
-                    <RuleFeedback ruleId={ ruleId } onFeedbackChanged={ onFeedbackChanged }/>
+                    {
+                        onFeedbackChanged &&
+                        <RuleFeedback ruleId={ ruleId } onFeedbackChanged={ onFeedbackChanged }/>
+                    }
                 </StackItem>
             </Stack>
         </GridItem>
@@ -73,7 +76,7 @@ const ReportDetails = (
 
 ReportDetails.propTypes = {
     details: PropTypes.string,
-    ruleId: PropTypes.number,
+    ruleId: PropTypes.string,
     totalRisk: PropTypes.number,
     riskOfChange: PropTypes.number,
     onFeedbackChanged: PropTypes.func
