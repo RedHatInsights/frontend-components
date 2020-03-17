@@ -30,9 +30,9 @@ const RiskOfChangeIcon = ({ severity, label, ...props }) => (
 
 RiskOfChangeIcon.propTypes = {
     severity: PropTypes.oneOfType([
-        PropTypes.string.isRequired,
-        PropTypes.number.isRequired
-    ]),
+        PropTypes.string,
+        PropTypes.number
+    ]).isRequired,
     label: PropTypes.string.isRequired
 };
 
