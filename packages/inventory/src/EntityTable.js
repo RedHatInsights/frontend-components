@@ -149,14 +149,14 @@ class EntityTable extends React.Component {
     }
 
     createColumns = () => {
-        const { columns, hasItems, rows, expandable: isExpendable } = this.props;
+        const { columns, hasItems, rows, expandable: isExpandable } = this.props;
         return columns.map(({ props, transforms, ...oneCell }) => ({
             ...oneCell,
             transforms: [
                 ...this.buildTransforms(props, transforms, hasItems, rows) || []
             ],
             cellFormatters: [
-                ...isExpendable ? [ expandable ] : []
+                ...isExpandable ? [ expandable ] : []
             ]
         }));
     }
