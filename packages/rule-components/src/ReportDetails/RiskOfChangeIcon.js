@@ -22,7 +22,10 @@ const RiskOfChangeIcon = ({ severity, label, ...props }) => {
             >
                 <SecurityIcon className="ins-risk-of-change-icon"/>
             </i>
-            { label && label.length > 0 && <span className='label'> { label } </span> }
+            {
+                label && label.length > 0 &&
+                <span className="ins-risk-of-change-label">{ label }</span>
+            }
         </>
     );
 };
@@ -32,7 +35,7 @@ RiskOfChangeIcon.propTypes = {
         PropTypes.string.isRequired,
         PropTypes.number.isRequired
     ]),
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
 };
 
 RiskOfChangeIcon.defaultProps = {
