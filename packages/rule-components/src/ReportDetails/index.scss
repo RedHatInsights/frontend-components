@@ -9,5 +9,9 @@
   .ins-c-rule__risk-detail {
     margin-bottom: var(--pf-global--spacer--sm);
   }
+
+  .ins-c-rule__rule-feedback-like-button, .ins-c-rule__rule-feedback-dislike-button {
+    padding: 0 var(--pf-global--spacer--sm);
+  }
 }
 
