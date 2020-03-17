@@ -138,7 +138,7 @@ class EntityTable extends React.Component {
                         title: typeof oneItem.children === 'function' ? oneItem.children() : oneItem.children
                     }
                 ],
-                parent: key,
+                parent: key * 2,
                 fullWidth: true
             } ]);
         })).filter(Boolean);
@@ -179,7 +179,7 @@ class EntityTable extends React.Component {
             tableProps
         } = this.props;
         const cells = loaded && this.createColumns();
-        console.log(this.createRows(), 'sdfsrfd');
+
         return (
             <React.Fragment>
                 { loaded ?
