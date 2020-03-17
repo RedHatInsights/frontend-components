@@ -19,7 +19,7 @@ const RiskOfChangeIcon = ({ severity, label, ...props }) => (
             widget-id={ label }
             { ...props }
         >
-            <SecurityIcon className="ins-risk-of-change-icon"/>
+            <SecurityIcon className="ins-risk-of-change__icon"/>
         </i>
         {
             label && label.length > 0 &&
