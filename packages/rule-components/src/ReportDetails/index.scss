@@ -54,13 +54,35 @@
   }
 
   .ins-c-risk-of-change__icon {
-    color: $ins-color--high;
     font-size: 28px;
   }
 
   .ins-c-risk-of-change__label {
-    color: $ins-color--high;
     font-weight: bold;
+  }
+
+  .ins-c-rule__severity-level-1 {
+    .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon {
+      color: $ins-color--gray;
+    }
+  }
+
+  .ins-c-rule__severity-level-2 {
+    .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon {
+      color: $ins-color--medium;
+    }
+  }
+
+  .ins-c-rule__severity-level-3 {
+    .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon {
+      color: $ins-color--high;
+    }
+  }
+
+  .ins-c-rule__severity-level-4 {
+    .ins-c-risk-of-change__label, .ins-c-risk-of-change__icon {
+      color: $ins-color--critical;
+    }
   }
 
   // align label vertically
