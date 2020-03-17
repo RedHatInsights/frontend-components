@@ -37,14 +37,18 @@ const defaultColumns = [
             {
                 culled_timestamp: culled, stale_warning_timestamp: staleWarn, stale_timestamp: stale
             }) => {
-            const time = DateFormat ? <DateFormat date={value} type="exact" /> : new Date(value).toLocaleString();
             return CullingInformation ? <CullingInformation
                 culled={culled}
                 staleWarning={staleWarn}
                 stale={stale}
-            >
-                { time }
-            </CullingInformation> : time;
+                render={({ msg }) => <DateFormat date={ value } extraTitle={ (
+                    <React.Fragment>
+                        <div>{ msg }</div>
+                        Last seen:{` `}
+                    </React.Fragment>
+                ) }/>
+                }
+            > <DateFormat date={ value } /> </CullingInformation> : new Date(value).toLocaleString();
         },
         props: { width: 25 }
     }

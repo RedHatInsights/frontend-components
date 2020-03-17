@@ -19,7 +19,7 @@ const calculateTooltip = (culled, warning, currDate) => {
     if (diffTime >= 0 && removeIn <= 1) {
         return {
             isError: true,
-            msg: `This system is scheduled for removal from inventory`
+            msg: `This system is scheduled for removal from inventory within 24 hours`
         };
     }
 
@@ -29,12 +29,27 @@ const calculateTooltip = (culled, warning, currDate) => {
     };
 };
 
-const CullingInformation = ({ culled, className, staleWarning, stale, currDate, children, ...props }) => {
+const CullingInformation = ({ culled, className, staleWarning, stale, currDate, children, render, ...props }) => {
     if ((new Date(currDate) - new Date(stale)) < 0) {
-        return children;
+        return render ? render({
+            msg: ''
+        }) : children;
     }
 
     const { isWarn, isError, msg } = calculateTooltip(culled, staleWarning, currDate);
+    if (render) {
+        return <span className={
+            classnames({
+                'ins-c-inventory__culling-warning': isWarn,
+                'ins-c-inventory__culling-danger': isError
+            })
+        }>
+            { isWarn && <ExclamationTriangleIcon /> }
+            { isError && <ExclamationCircleIcon /> }
+            { render({ msg })}
+        </span>;
+    }
+
     return <React.Fragment>
         <Tooltip
             { ...props }
@@ -59,7 +74,8 @@ CullingInformation.propTypes = {
     culled: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
     staleWarning: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
     stale: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
-    currDate: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ])
+    currDate: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
+    render: PropTypes.func
 };
 CullingInformation.defaultProps = {
     culled: new Date(0),
