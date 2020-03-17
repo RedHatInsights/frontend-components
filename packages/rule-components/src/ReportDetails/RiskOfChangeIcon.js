@@ -23,7 +23,7 @@ const RiskOfChangeIcon = ({ severity, label, ...props }) => (
         </i>
         {
             label && label.length > 0 &&
-            <span className="ins-risk-of-change-label">{ label }</span>
+            <span className="ins-c-risk-of-change__label">{ label }</span>
         }
     </>
 );
