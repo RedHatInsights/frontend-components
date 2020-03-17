@@ -35,7 +35,7 @@ describe('AWS-ARN hardcoded schemas', () => {
         const wrapper = mount(<AwsArn.IAMPolicyDescription formOptions={FORM_OPTIONS}/>);
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
-        expect(wrapper.find(Text)).toHaveLength(2);
+        expect(wrapper.find(Text)).toHaveLength(3);
         expect(wrapper.find(TextList)).toHaveLength(1);
         expect(wrapper.find(TextListItem)).toHaveLength(3);
         expect(wrapper.find(ClipboardCopy)).toHaveLength(1);
@@ -85,7 +85,7 @@ describe('AWS-ARN hardcoded schemas', () => {
         const wrapper = mount(<AwsArn.UsageDescription />);
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
-        expect(wrapper.find(Text)).toHaveLength(1);
+        expect(wrapper.find(Text)).toHaveLength(2);
         expect(wrapper.find(TextList)).toHaveLength(2);
         expect(wrapper.find(TextListItem)).toHaveLength(8);
     });
