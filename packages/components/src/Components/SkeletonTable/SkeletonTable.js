@@ -19,9 +19,9 @@ class SkeletonTable extends React.Component {
     createRows = () => {
         const { colSize, rowSize, columns, paddingColumnSize } = this.props;
         const numberOfCols = columns ? columns.length : colSize;
-        return this.newArray(rowSize).map(() => this.newArray(paddingColumnSize).map(() => '').concat(
+        return this.newArray(rowSize).map(() => ({ cells: this.newArray(paddingColumnSize).map(() => '').concat(
             this.newArray(numberOfCols).map(() => ({ title: <Skeleton size={ SkeletonSize.md } /> }))
-        ));
+        ) }));
     };
 
     newArray = (size) => [ ...Array(size) ];
