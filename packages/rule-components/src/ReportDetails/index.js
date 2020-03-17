@@ -4,7 +4,7 @@ import {
     Grid,
     GridItem,
     Stack,
-    StackItem,
+    StackItem, Text,
     Title
 } from '@patternfly/react-core';
 import RuleFeedback from './RuleFeedback';
@@ -28,7 +28,6 @@ const ReportDetails = (
             <Stack gutter="md">
                 <StackItem>
                     <div>
-                        <div className="testclassname">test</div>
                         <ReactMarkdown
                             source={ details }
                             renderers={ {
@@ -48,7 +47,7 @@ const ReportDetails = (
                 <StackItem>
                     <Stack>
                         <StackItem>
-                            <Title className="ins-c-rule__risk-detail" size="md">Total risk</Title>
+                            <Title className="ins-c-rule__risk-detail-title" size="md">Total risk</Title>
                         </StackItem>
                         <StackItem>
                             <RiskDescription riskValue={ totalRisk } riskMeta={ totalRiskMeta }/>
@@ -58,7 +57,7 @@ const ReportDetails = (
                 <StackItem>
                     <Stack>
                         <StackItem>
-                            <Title className="ins-c-rule__risk-detail" size="md">Risk of change</Title>
+                            <Title className="ins-c-rule__risk-detail-title" size="md">Risk of change</Title>
                         </StackItem>
                         <StackItem>
                             <RiskDescription riskValue={ riskOfChange } riskMeta={ riskOfChangeMeta }/>

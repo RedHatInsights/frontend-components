@@ -4,12 +4,10 @@ import ThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumbs-
 import ThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumbs-down-icon';
 
 const RuleFeedback = ({ ruleId }) => (
-    <div>
-        <div>
-            <span>Is this rule helpful?</span>
-            <ThumbsUpIcon/>
-            <ThumbsDownIcon/>
-        </div>
+    <div className="ins-c-rule__rule-feedback">
+        <span>Is this rule helpful?</span>
+        <ThumbsUpIcon/>
+        <ThumbsDownIcon/>
     </div>
 );
 
