@@ -4,7 +4,7 @@ import {
     Grid,
     GridItem,
     Stack,
-    StackItem, Text,
+    StackItem,
     Title
 } from '@patternfly/react-core';
 import RuleFeedback from './RuleFeedback';
