@@ -12,23 +12,21 @@ import { SecurityIcon } from '@patternfly/react-icons';
  * 4 - critical - worst case scenario
  * Also accepts a label which can be made invisible
  */
-const RiskOfChangeIcon = ({ severity, label, ...props }) => {
-    return (
-        <>
-            <i
-                widget-type='InsightsBattery'
-                widget-id={ label }
-                { ...props }
-            >
-                <SecurityIcon className="ins-risk-of-change-icon"/>
-            </i>
-            {
-                label && label.length > 0 &&
-                <span className="ins-risk-of-change-label">{ label }</span>
-            }
-        </>
-    );
-};
+const RiskOfChangeIcon = ({ severity, label, ...props }) => (
+    <>
+        <i
+            widget-type='InsightsBattery'
+            widget-id={ label }
+            { ...props }
+        >
+            <SecurityIcon className="ins-risk-of-change-icon"/>
+        </i>
+        {
+            label && label.length > 0 &&
+            <span className="ins-risk-of-change-label">{ label }</span>
+        }
+    </>
+);
 
 RiskOfChangeIcon.propTypes = {
     severity: PropTypes.oneOfType([

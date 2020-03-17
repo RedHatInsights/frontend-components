@@ -8,7 +8,7 @@ const RiskDescription = ({ riskValue, riskMeta }) => {
 
     return (
         <div className="ins-c-rule__risk-description">
-            <div className={ `battery severity-level-${ riskValue }` }>
+            <div className={ `ins-c-rule__battery ins-c-rule__severity-level-${ riskValue }` }>
                 <IconComponent label={ label } severity={ riskValue }/>
             </div>
             <Text
