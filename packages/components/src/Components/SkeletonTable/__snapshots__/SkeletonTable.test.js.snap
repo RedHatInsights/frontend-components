@@ -39,486 +39,516 @@ exports[`SkeletonTable component should render correctly 1`] = `
   }
   rows={
     Array [
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
     ]
   }
 >
@@ -538,216 +568,246 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
   }
   rows={
     Array [
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
-      Array [
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-        Object {
-          "title": <Skeleton
-            isDark={false}
-            size="md"
-          />,
-        },
-      ],
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+      },
     ]
   }
 >
