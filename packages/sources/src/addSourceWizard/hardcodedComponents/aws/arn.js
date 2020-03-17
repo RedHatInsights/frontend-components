@@ -6,28 +6,34 @@ import {
     TextVariants,
     TextList,
     TextListItem,
+    TextListItemVariants,
     TextListVariants,
     ClipboardCopy,
     ClipboardCopyVariant
 } from '@patternfly/react-core';
+import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
+
+const CREATE_S3_BUCKET = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#creating_an_aws_s3_bucket`;
+const ENABLE_AWS_ACCOUNT = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#enabling_aws_account_access`;
 
 export const UsageDescription = () => (<TextContent>
     <Text component={ TextVariants.p }>
-To collect and store the information needed for cost management, you need to set up on Amazon S3 bucket for cost and usage reports.
+To collect and store the information needed for cost management, you need to set up an Amazon S3 bucket
+    for cost and usage reports. <Text component={TextVariants.a} href={CREATE_S3_BUCKET} rel="noopener noreferrer" target="_blank">Learn more</Text>
     </Text>
     <TextList component={TextListVariants.ol}>
         <TextListItem>Specify or create an Amazon S3 bucket for your account.</TextListItem>
         <TextListItem>
 Create a cost and usage report using the following values:
             <TextList>
-                <TextListItem>Report name: koku.</TextListItem>
+                <TextListItem>Report name: koku</TextListItem>
                 <TextListItem>Time unit: hourly</TextListItem>
                 <TextListItem>Include: Resource IDs</TextListItem>
                 <TextListItem>Enable support for: RedShift, QuickSight</TextListItem>
                 <TextListItem>Report path prefix: (leave blank)</TextListItem>
             </TextList>
         </TextListItem>
-        <TextListItem>Enter the name of the Amazon S3 bucket you just created in the S3 bucket field:</TextListItem>
+        <TextListItem>Enter the name of the Amazon S3 bucket you just created below:</TextListItem>
     </TextList>
 </TextContent>);
 
@@ -57,14 +63,15 @@ export const IAMPolicyDescription = ({ formOptions }) => {
 
     return (<TextContent>
         <Text component={ TextVariants.p }>
-To grant permissions to cost management report you just configured, create an AWS identity access management (IAM) policy.
+To grant permissions to the cost management report you just configured,
+create an AWS Identity and Access Management (IAM) policy.&nbsp;
+            <Text component={TextVariants.a} href={ENABLE_AWS_ACCOUNT} rel="noopener noreferrer" target="_blank">Learn more</Text>
         </Text>
-        <TextList>
-            <TextListItem>
-                Sign in to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html" rel="noopener noreferrer" target="_blank">
-                    AWS Identity Access Management* (IAM) console</a>.
+        <TextList component={TextListVariants.ol}>
+            <TextListItem component={TextListItemVariants.li}>
+                Sign in to the AWS Identity and Access Management (IAM) console.
             </TextListItem>
-            <TextListItem>Create a new policy, pasting the following content into the JSON text box.</TextListItem>
+            <TextListItem component={TextListItemVariants.li}>Create a new policy, pasting the following content into the JSON text box.</TextListItem>
             <ClipboardCopy isCode variant={ClipboardCopyVariant.expansion} className="pf-u-m-sm-on-sm" isReadOnly>
                 {JSON.stringify({
                     Version: '2012-10-17',
@@ -97,10 +104,10 @@ To grant permissions to cost management report you just configured, create an AW
                     ]
                 }, null, 2)}
             </ClipboardCopy>
-            <TextListItem>Complete the process to create your new policy.</TextListItem>
+            <TextListItem component={TextListItemVariants.li}>Complete the process to create your new policy.</TextListItem>
         </TextList>
         <Text component={ TextVariants.p }>
-            <b>Do not close your browser.</b> You will need to be logged in to the IAM console to compute the next step.
+            <b>Do not close your browser.</b> You will need to be logged in to the IAM console to complete the next step.
         </Text>
     </TextContent>);
 };
