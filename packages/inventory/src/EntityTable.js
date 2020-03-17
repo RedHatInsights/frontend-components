@@ -4,7 +4,6 @@ import routerParams from '@redhat-cloud-services/frontend-components-utilities/f
 import { selectEntity, setSort, detailSelect } from './redux/actions';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
-import flatten from 'lodash/flatten';
 import {
     Title,
     EmptyStateBody,
@@ -126,22 +125,19 @@ class EntityTable extends React.Component {
             }];
         }
 
-        return flatten(rows
-        .map((oneItem, key) => {
-            return ([{
-                ...oneItem,
-                ...oneItem.children && expandable && { isOpen: !!oneItem.isOpen },
-                cells: this.buildCells(oneItem)
-            }, oneItem.children && expandable && {
-                cells: [
-                    {
-                        title: typeof oneItem.children === 'function' ? oneItem.children() : oneItem.children
-                    }
-                ],
-                parent: key * 2,
-                fullWidth: true
-            } ]);
-        })).filter(Boolean);
+        return rows.map((oneItem, key) => ([{
+            ...oneItem,
+            ...oneItem.children && expandable && { isOpen: !!oneItem.isOpen },
+            cells: this.buildCells(oneItem)
+        }, oneItem.children && expandable && {
+            cells: [
+                {
+                    title: typeof oneItem.children === 'function' ? oneItem.children() : oneItem.children
+                }
+            ],
+            parent: key * 2,
+            fullWidth: true
+        } ])).flat().filter(Boolean);
     }
 
     buildTransforms = (props, transforms, hasItems, rows) => {
