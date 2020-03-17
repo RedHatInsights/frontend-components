@@ -12,18 +12,17 @@
   }
 
   .ins-c-rule__risk-detail-description-text {
-    text-transform: capitalize;
     color: #737679;
     size: 14px;
   }
 
   .ins-c-rule__link-in-description {
     display: block;
-    //padding-top: 24px;
     margin-top: var(--pf-l-stack--m-gutter--MarginBottom);
-  }
-
-  .ins-c-rule__rule-feedback {
   }
 }
 
+.ins-risk-of-change-icon {
+  color: #EC7A08;
+  font-size: 28px;
+}
