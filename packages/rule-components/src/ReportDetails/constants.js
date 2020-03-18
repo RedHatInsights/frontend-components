@@ -27,6 +27,11 @@ export const totalRiskMeta = [
 
 export const riskOfChangeMeta = [
     {
+        label: 'Very Low',
+        description: 'Very Low severity desc for risk of change',
+        IconComponent: RiskOfChangeIcon
+    },
+    {
         label: 'Low',
         description: 'Low severity desc for risk of change',
         IconComponent: RiskOfChangeIcon
@@ -37,13 +42,8 @@ export const riskOfChangeMeta = [
         IconComponent: RiskOfChangeIcon
     },
     {
-        label: 'Important',
-        description: 'Important severity desc for risk of change',
-        IconComponent: RiskOfChangeIcon
-    },
-    {
-        label: 'Critical',
-        description: 'Critical severity desc for risk of change',
+        label: 'High',
+        description: 'High severity desc for risk of change',
         IconComponent: RiskOfChangeIcon
     }
 ];
