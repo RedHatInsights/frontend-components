@@ -9,6 +9,7 @@ exports[`DateFormat component DateFormat renders with date integer 1`] = `
     className=""
     content={
       <div>
+        
         01 Jan 1970 00:00:00 UTC
       </div>
     }
@@ -65,6 +66,7 @@ exports[`DateFormat component DateFormat renders with date object 1`] = `
     className=""
     content={
       <div>
+        
         31 Dec 2019 00:00:00 UTC
       </div>
     }
@@ -109,6 +111,7 @@ exports[`DateFormat component DateFormat renders with date string 1`] = `
     className=""
     content={
       <div>
+        
         31 Dec 2019 00:00:00 UTC
       </div>
     }
