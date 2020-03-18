@@ -9,6 +9,7 @@ import { updateEntities } from './redux/actions';
 import AppInfo from './AppInfo';
 import EntityTableToolbar from './EntityTableToolbar';
 import { Provider } from 'react-redux';
+import TagWithDialog from './TagWithDialog';
 export const InventoryContext = createContext('inventory');
 
 class InventoryTable extends Component {
@@ -145,6 +146,6 @@ export function inventoryConnector(store) {
     connectedInventory.AppInfo = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, AppInfo));
     connectedInventory.InventoryDetailHead = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, InventoryItem));
     connectedInventory.InventoryDetail = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, InventoryDetail));
-
+    connectedInventory.TagWithDialog = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, TagWithDialog));
     return connectedInventory;
 }
