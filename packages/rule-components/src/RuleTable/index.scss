@@ -4,30 +4,30 @@
 @import '~@redhat-cloud-services/frontend-components/components/PrimaryToolbar.css';
 
 .rhcs-c-rules-table {
-  .ins-c-table__toolbar.ins-m-footer .pf-c-pagination.pf-m-footer {
-    margin-left: auto;
-  }
-
-  .pf-c-select__menu .pf-c-check__label .ins-battery svg {
-    height: 1.25rem;
-  }
-
-  // align items vertically
-  .pf-c-table {
-    td {
-      vertical-align: middle;
+    .ins-c-table__toolbar.ins-m-footer .pf-c-pagination.pf-m-footer {
+        margin-left: auto;
     }
 
-    // fix toggle
-    .pf-c-table__toggle {
-      padding-top: 0;
-
-      .pf-c-button {
-        margin: 0;
-        padding: 0;
-      }
+    .pf-c-select__menu .pf-c-check__label .ins-battery svg {
+        height: var(--pf-global--FontSize--xl);
     }
 
-  }
+    // align items vertically
+    .pf-c-table {
+        td {
+            vertical-align: middle;
+        }
+
+        // fix toggle
+        .pf-c-table__toggle {
+            padding-top: 0;
+
+            .pf-c-button {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+    }
 }
 
