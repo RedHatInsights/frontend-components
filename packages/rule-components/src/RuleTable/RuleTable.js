@@ -15,12 +15,12 @@ class RuleTable extends Component {
     state = {
         filterValues: {},
         expanded: []
-    }
+    };
 
     debounceFetchData = debounce(options => {
         const { fetchData } = this.props;
         fetchData(options);
-    }, 500)
+    }, 500);
 
     componentDidUpdate(prevProps) {
         if (!isEqual(prevProps.filterValues, this.props.filterValues)) {
@@ -43,7 +43,7 @@ class RuleTable extends Component {
             filterValues,
             sortBy: { ...sortBy, column: columns[sortBy.index - Boolean(detail)] }
         });
-    }
+    };
 
     onFilterDelete = (_e, [ deleteItem ], isAll) => {
         const { filterValues } = this.state;
@@ -62,7 +62,7 @@ class RuleTable extends Component {
                 this.setState({ filterValues }, () => this.onUpdate());
             }
         }
-    }
+    };
 
     onCollapse = (_e, key, isOpen, { ruleId }) => {
         const { expanded } = this.state;
@@ -79,7 +79,7 @@ class RuleTable extends Component {
             expanded.splice(currIndex, 1);
             this.setState({ expanded });
         }
-    }
+    };
 
     onFilterChange = (type, _e, value) => {
         this.setState({
@@ -88,7 +88,7 @@ class RuleTable extends Component {
                 [type]: value
             }
         }, () => this.onUpdate(true));
-    }
+    };
 
     onSort = (_e, index, direction) => {
         const { fetchData, rules, columns, detail } = this.props;
@@ -98,7 +98,7 @@ class RuleTable extends Component {
             filterValues,
             sortBy: { index, direction, column: columns[index - Boolean(detail)] }
         });
-    }
+    };
 
     onPaginate = (perPage, page) => {
         const { fetchData, rules, columns, detail, sortBy } = this.props;
@@ -108,7 +108,7 @@ class RuleTable extends Component {
             filterValues,
             sortBy: { ...sortBy, column: columns[sortBy.index - Boolean(detail)] }
         });
-    }
+    };
 
     render() {
         const {
