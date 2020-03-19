@@ -6,6 +6,7 @@ import { TextListItem } from '@patternfly/react-core';
 import SourceWizardSummary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
 import applicationTypes from '../../helpers/applicationTypes';
 import sourceTypes from '../../helpers/sourceTypes';
+import ValuePopover from '../../../sourceFormRenderer/components/ValuePopover';
 
 describe('SourceWizardSummary component', () => {
     describe('should render correctly', () => {
@@ -188,6 +189,28 @@ describe('SourceWizardSummary component', () => {
 
             const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
             expect(wrapper.contains('OpenShift Container Platform')).toEqual(true);
+        });
+
+        it('contains too long text', () => {
+            const randomLongText = new Array(500).fill(1).map(() => String.fromCharCode(Math.random() * (122 - 97) + 97)).join('');
+
+            formOptions = {
+                getState: () => ({
+                    values: {
+                        source: {
+                            name: 'openshift'
+                        },
+                        source_type: 'openshift',
+                        endpoint: {
+                            certificate_authority: randomLongText,
+                            verify_ssl: true
+                        }
+                    }
+                })
+            };
+
+            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            expect(wrapper.find(ValuePopover).props().value).toEqual(randomLongText);
         });
     });
 
