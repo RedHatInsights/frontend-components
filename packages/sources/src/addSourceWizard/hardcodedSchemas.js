@@ -517,13 +517,13 @@ export default {
                 [CATALOG_APP]: {
                     skipSelection: true,
                     'authentication.username': {
-                        isRequired: true,
+                        isRequired: false,
                         validate: [{ type: validatorTypes.REQUIRED }],
                         label: 'Username'
                     },
                     'authentication.password': {
                         type: 'password',
-                        isRequired: true,
+                        isRequired: false,
                         validate: [{ type: validatorTypes.REQUIRED }],
                         label: 'Password'
                     },
@@ -536,6 +536,19 @@ export default {
                             hideField: true,
                             initialValue: 'username_password',
                             initializeOnMount: true
+                        }, {
+                            name: 'required-desc',
+                            component: 'description',
+                            // eslint-disable-next-line react/display-name
+                            Content: () => <TextContent>
+                                <Text component={TextVariants.p} className="pf-u-mb-l">
+                                    Provide Ansible Tower service account user credentials to ensure
+                                    optimized availability of resources to Catalog Administrators.
+                                </Text>
+                                <Text component={TextVariants.p} className="ins-c-sources__wizard--all-required-text">
+                                    All fields are required.
+                                </Text>
+                            </TextContent>
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.username'
@@ -551,7 +564,8 @@ export default {
             url: {
                 isRequired: true,
                 validate: [{ type: validatorTypes.REQUIRED }],
-                placeholder: 'https://'
+                placeholder: 'https://',
+                label: 'Hostname'
             },
             'endpoint.certificate_authority': {
                 label: 'Certificate authority'

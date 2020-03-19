@@ -206,7 +206,7 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
     <TextListItem
       component="dt"
     >
-      URL
+      Hostname
     </TextListItem>
     <TextListItem
       component="dd"
@@ -295,7 +295,7 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      URL
+      Hostname
     </TextListItem>
     <TextListItem
       component="dd"
@@ -483,7 +483,7 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      URL
+      Hostname
     </TextListItem>
     <TextListItem
       component="dd"

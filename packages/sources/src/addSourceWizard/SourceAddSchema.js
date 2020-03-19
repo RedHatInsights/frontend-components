@@ -173,7 +173,7 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
         }],
     stepKey: 'summary',
     name: 'summary',
-    title: 'Review source details'
+    title: 'Review details'
 });
 
 export default (sourceTypes, applicationTypes, disableAppSelection) => {
@@ -187,7 +187,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection) => {
             inModal: true,
             description: WIZARD_DESCRIPTION,
             buttonLabels: {
-                submit: 'Finish'
+                submit: 'Add'
             },
             showTitles: true,
             predictSteps: true,
