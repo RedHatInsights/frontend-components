@@ -13,11 +13,11 @@ import {
     Text,
     TextVariants
 } from '@patternfly/react-core';
-import { ErrorCircleOIcon } from '@patternfly/react-icons';
+import { TimesCircleIcon } from '@patternfly/react-icons';
 
 const ErroredStep = ({ onClose, onRetry, returnButtonTitle, message }) => <div className="pf-l-bullseye">
     <EmptyState variant={ EmptyStateVariant.full }>
-        <EmptyStateIcon icon={ ErrorCircleOIcon } color="var(--pf-global--danger-color--100)" />
+        <EmptyStateIcon icon={ TimesCircleIcon } color="var(--pf-global--danger-color--100)" />
         <Title headingLevel="h5" size="lg">
       Configuration unsuccessful
         </Title>
