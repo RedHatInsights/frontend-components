@@ -36,6 +36,7 @@ class InventoryRuleList extends Component {
         inventoryReportFetchStatus: 'pending',
         rows: [],
         cols: [
+            { title: '' },
             { title: 'Description', transforms: [ sortable ] },
             { title: 'Added', transforms: [ sortable, cellWidth(15) ] },
             { title: 'Total risk', transforms: [ sortable ] },
@@ -71,7 +72,7 @@ class InventoryRuleList extends Component {
 
     async fetchEntityRules() {
         const { entity } = this.props;
-        const { filters, searchValue } = this.state;
+        const { filters, searchValue, rows } = this.state;
         let reportsData = {};
         try {
             await insights.chrome.auth.getUser();
@@ -87,21 +88,21 @@ class InventoryRuleList extends Component {
         const activeRuleFirstReportsData = this.activeRuleFirst(reportsData);
         this.fetchKbaDetails(activeRuleFirstReportsData);
         this.setState({
-            rows: this.buildRows(activeRuleFirstReportsData, {}, filters, searchValue, true),
+            rows: this.buildRows(activeRuleFirstReportsData, {}, filters, rows, searchValue, true),
             inventoryReportFetchStatus: 'fulfilled',
             activeReports: activeRuleFirstReportsData
         });
     }
 
     fetchKbaDetails = async (reportsData) => {
-        const { filters, searchValue } = this.state;
+        const { filters, searchValue, rows } = this.state;
         const kbaIds = reportsData.map(report => report.rule.node_id).filter(x => x).join(` OR `);
         const kbaDetailsFetch = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
             { credentials: 'include' });
         const kbaDetailsData = (await kbaDetailsFetch.json()).response.docs;
         this.setState({
             kbaDetailsData,
-            rows: this.buildRows(reportsData, kbaDetailsData, filters, searchValue)
+            rows: this.buildRows(reportsData, kbaDetailsData, filters, rows, searchValue)
 
         });
     };
@@ -125,17 +126,33 @@ class InventoryRuleList extends Component {
         });
     };
 
-    buildRows = (activeReports, kbaDetails, filters, searchValue = '', kbaLoading = false) => {
-        const rows = flatten(activeReports.map((value, key) => {
+    buildRows = (activeReports, kbaDetails, filters, rows, searchValue = '', kbaLoading = false) => {
+        const builtRows = flatten(activeReports.map((value, key) => {
             const rule = value.rule;
             const resolution = value.resolution;
             const kbaDetail = Object.keys(kbaDetails).length ? kbaDetails.filter(article => article.id === value.rule.node_id)[0] : {};
+            let selected = rows.filter((rowVal, rowKey) => {
+                return rowKey % 2 === 0 && rowVal.rule.rule_id === rule.rule_id && rowVal.selected;
+            });
+            selected = selected.length ? true : false;
             const reportRow = [
                 {
                     rule,
                     resolution,
-                    isOpen: true,
+                    isOpen: false,
+                    selected,
                     cells: [
+                        {
+                            title: <div className='pf-m-center'>
+                                {resolution.has_playbook ? <input
+                                    aria-label='select-checkbox'
+                                    type="checkbox"
+                                    checked={!!selected}
+                                    onChange={ event => this.onSelect(event, !selected, key * 2) }
+                                    className="pf-c-check"
+                                /> : ''}
+                            </div>
+                        },
                         { title: <div> {rule.description}</div> },
                         {
                             title: <div key={key}>
@@ -184,9 +201,9 @@ class InventoryRuleList extends Component {
             return isValidSearchValue && isValidFilterValue ? reportRow : [];
         }));
         //must recalculate parent for expandable table content whenever the array size changes
-        rows.forEach((row, index) => row.parent ? row.parent = index - 1 : null);
+        builtRows.forEach((row, index) => row.parent ? row.parent = index - 1 : null);
 
-        return rows;
+        return builtRows;
     };
 
     onKebabClick = (action) => {
@@ -203,7 +220,7 @@ class InventoryRuleList extends Component {
     };
 
     onSort = (_event, index, direction) => {
-        const { activeReports, kbaDetailsData, filters, searchValue } = this.state;
+        const { activeReports, kbaDetailsData, filters, searchValue, rows } = this.state;
         const sortedReports = {
             2: sortBy(activeReports, [ result => result.rule.description ]),
             3: sortBy(activeReports, [ result => result.rule.publish_date ]),
@@ -216,7 +233,7 @@ class InventoryRuleList extends Component {
                 index,
                 direction
             },
-            rows: this.buildRows(sortedReportsDirectional, kbaDetailsData, filters, searchValue)
+            rows: this.buildRows(sortedReportsDirectional, kbaDetailsData, filters, rows, searchValue)
         });
     };
 
@@ -227,30 +244,41 @@ class InventoryRuleList extends Component {
     };
 
     onFilterChange = (param, values) => {
-        const { filters, activeReports, kbaDetailsData, searchValue } = this.state;
+        const { filters, activeReports, kbaDetailsData, searchValue, rows } = this.state;
         const newFilters = values.length > 0 ? { ...filters, ...{ [param]: values } } : this.removeFilterParam(param);
-        const rows = this.buildRows(activeReports, kbaDetailsData, newFilters, searchValue);
-        this.setState({ rows, filters: newFilters });
+        const builtRows = this.buildRows(activeReports, kbaDetailsData, newFilters, rows, searchValue);
+        this.setState({ rows: builtRows, filters: newFilters });
     };
 
     onInputChange = (value) => {
-        const { activeReports, kbaDetailsData, filters } = this.state;
-        const rows = this.buildRows(activeReports, kbaDetailsData, filters, value);
-        this.setState({ searchValue: value, rows });
+        const { activeReports, kbaDetailsData, filters, rows } = this.state;
+        const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, value);
+        this.setState({ searchValue: value, rows: builtRows });
     };
 
     onSelect = (event, isSelected, rowId) => {
+        const { activeReports, kbaDetailsData, filters, rows } = this.state;
         this.setState({
-            rows: this.state.rows.map((oneRow, rowKey) => (rowId === -1 || rowKey === rowId) ? { ...oneRow, selected: isSelected } : { ...oneRow })
+            rows: this.buildRows(
+                activeReports, kbaDetailsData, filters,
+                rows.map((oneRow, rowKey) => (rowId === -1 || rowKey === rowId) ? { ...oneRow, selected: isSelected } : { ...oneRow })
+            )
         });
     };
 
     getSelectedItems = (rows) => rows.filter(entity => entity.selected);
 
     bulkSelect = (isSelected) => {
+        const { activeReports, kbaDetailsData, filters, rows } = this.state;
         this.setState({
             isSelected,
-            rows: this.state.rows.map((row) => (row.rule ? { ...row, selected: isSelected } : row))
+            rows: this.buildRows(
+                activeReports, kbaDetailsData, filters,
+                rows.map((row, index) => (
+                    // We need to use mod 2 here to ignore children with no has_playbook param
+                    index % 2 === 0 && row.resolution.has_playbook ? { ...row, selected: isSelected } : row
+                ))
+            )
         });
     }
 
@@ -280,15 +308,15 @@ class InventoryRuleList extends Component {
     }
 
     onChipDelete = (event, itemsToRemove, isAll) => {
-        const { filters, activeReports, kbaDetailsData } = this.state;
+        const { filters, activeReports, kbaDetailsData, rows } = this.state;
         if (isAll) {
-            const rows = this.buildRows(activeReports, kbaDetailsData, {}, '');
-            this.setState({ rows, filters: {}, searchValue: '' });
+            const builtRows = this.buildRows(activeReports, kbaDetailsData, {}, rows, '');
+            this.setState({ rows: builtRows, filters: {}, searchValue: '' });
         } else {
             itemsToRemove.map(item => {
                 if (item.category === 'Description') {
-                    const rows = this.buildRows(activeReports, kbaDetailsData, filters, '');
-                    this.setState({ rows, searchValue: '' });
+                    const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, '');
+                    this.setState({ rows: builtRows, searchValue: '' });
                 } else {
                     this.onFilterChange(item.urlParam, filters[item.urlParam].filter(value => String(value) !== String(item.chips[0].value)));
                 }
@@ -407,7 +435,7 @@ class InventoryRuleList extends Component {
                     (activeReports.length > 0 ?
                         <Fragment>
                             <Table aria-label={'rule-table'} onCollapse={this.handleOnCollapse} rows={rows} cells={cols} sortBy={sortBy}
-                                canSelectAll={false} onSort={this.onSort} onSelect={this.onSelect}>
+                                canSelectAll={false} onSort={this.onSort}>
                                 <TableHeader />
                                 <TableBody />
                             </Table>
