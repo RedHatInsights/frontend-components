@@ -4,6 +4,7 @@ import { TextContent, TextListItem, TextListItemVariants, TextListVariants, Text
 import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import { injectAuthFieldsInfo, injectEndpointFieldsInfo } from '../../addSourceWizard/schemaBuilder';
+import ValuePopover from './ValuePopover';
 
 export const createItem = (formField, values, stepKeys) => {
     let value = get(values, formField.name);
@@ -83,7 +84,13 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
     const valuesList = valuesInfo.map(({ label, value }) => (
         <React.Fragment key={ `${label}--${value}` }>
             <TextListItem component={ TextListItemVariants.dt }>{ label }</TextListItem>
-            <TextListItem component={ TextListItemVariants.dd }>{ value }</TextListItem>
+            <TextListItem component={ TextListItemVariants.dd }>
+                { value.toString().length > 150 ?
+                    <ValuePopover label={label} value={value} />
+                    :
+                    value
+                }
+            </TextListItem>
         </React.Fragment>
     ));
 
