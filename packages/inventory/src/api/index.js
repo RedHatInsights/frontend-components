@@ -60,7 +60,8 @@ export const filtersReducer = (acc, filter) => ({
     ...acc,
     ...filter.value === 'hostname_or_id' && { hostnameOrId: filter.filter },
     ...'tagFilters' in filter && { tagFilters: filter.tagFilters },
-    ...'staleFilter' in filter && { staleFilter: filter.staleFilter }
+    ...'staleFilter' in filter && { staleFilter: filter.staleFilter },
+    ...'registeredWithFilter' in filter && { registeredWithFilter: filter.registeredWithFilter }
 });
 
 export function getEntities(items, {
@@ -72,7 +73,7 @@ export function getEntities(items, {
     orderBy = 'updated',
     orderDirection = 'DESC'
 }) {
-    const { hostnameOrId, tagFilters, staleFilter } = filters ? filters.reduce(filtersReducer, {}) : {};
+    const { hostnameOrId, tagFilters, staleFilter, registeredWithFilter } = filters ? filters.reduce(filtersReducer, {}) : {};
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
         .then(mapTags)
@@ -97,6 +98,7 @@ export function getEntities(items, {
             orderDirection,
             staleFilter,
             constructTags(tagFilters),
+            registeredWithFilter,
             { cancelToken: controller && controller.token }
         )
         .then((data) => mapTags(data, { orderBy, orderDirection }))

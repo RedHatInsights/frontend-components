@@ -15,9 +15,11 @@ import {
     constructGroups,
     TEXTUAL_CHIP,
     STALE_CHIP,
+    REGISTERED_CHIP,
     TAG_CHIP,
     mergeTableProps,
-    staleness
+    staleness,
+    registered
 } from './constants';
 import flatMap from 'lodash/flatMap';
 
@@ -26,7 +28,8 @@ class ContextEntityTableToolbar extends Component {
         textFilter: '',
         selected: {},
         filterTagsBy: '',
-        staleFilter: []
+        staleFilter: [],
+        registeredWithFilter: []
     }
 
     updateData = (config) => {
@@ -58,11 +61,12 @@ class ContextEntityTableToolbar extends Component {
             this.props.getAllTags();
         }
 
-        const { textFilter, tagFilters, staleFilter } = reduceFilters(filters);
+        const { textFilter, tagFilters, staleFilter, registeredWithFilter } = reduceFilters(filters);
         this.setState({
             textFilter,
             selected: tagFilters,
-            staleFilter
+            staleFilter,
+            registeredWithFilter
         });
     }
 
@@ -79,14 +83,14 @@ class ContextEntityTableToolbar extends Component {
         this.setState({ textFilter: value }, () => refresh({ page: 1, perPage, filters }));
     }
 
-    onSetStaleFilter = (value, debounced = true) => {
+    onSetFilter = (value, filterKey, debounced = true) => {
         const { perPage, filters } = this.props;
         const refresh = debounced ? this.debouncedRefresh : this.updateData;
         const newFilters = [
-            ...filters.filter(oneFilter => !oneFilter.hasOwnProperty('staleFilter')),
-            { staleFilter: value }
+            ...filters.filter(oneFilter => !oneFilter.hasOwnProperty(filterKey)),
+            { [filterKey]: value }
         ];
-        this.setState({ staleFilter: value }, () => refresh({ page: 1, perPage, filters: newFilters }));
+        this.setState({ [filterKey]: value }, () => refresh({ page: 1, perPage, filters: newFilters }));
     }
 
     applyTags = (newSelection, debounced = true) => {
@@ -167,9 +171,33 @@ class ContextEntityTableToolbar extends Component {
         };
     }
 
+    onDeleteTag = (deleted) => {
+        const { getAllTags } = this.props;
+        const { selected, filterTagsBy } = this.state;
+        const deletedItem = deleted.chips[0];
+        selected[deleted.key][deletedItem.key] = false;
+        this.setState({ selected }, () => {
+            const newFilter = this.applyTags(selected, false);
+            getAllTags(filterTagsBy, { filters: newFilter });
+        });
+    }
+
+    onDeleteFilter = (deleted, filterType) => {
+        const { value: deletedItem } = deleted.chips[0];
+        const newFilter = this.state[filterType].filter((item) => item !== deletedItem);
+        this.onSetFilter(newFilter, filterType, false);
+    }
+
+    deleteMapper = {
+        [TEXTUAL_CHIP]: () => this.onSetTextFilter('', false),
+        [TAG_CHIP]: this.onDeleteTag,
+        [STALE_CHIP]: (deleted) => this.onDeleteFilter(deleted, 'staleFilter'),
+        [REGISTERED_CHIP]: (deleted) => this.onDeleteFilter(deleted, 'registeredWithFilter')
+    }
+
     constructFilters = () => {
         const { perPage, onClearFilters, activeFiltersConfig, getAllTags, hasItems } = this.props;
-        const { selected, textFilter, filterTagsBy, staleFilter } = this.state;
+        const { selected, textFilter, filterTagsBy, staleFilter, registeredWithFilter } = this.state;
         return {
             filters: [
                 ...mapGroups(selected, 'chips'),
@@ -186,6 +214,12 @@ class ContextEntityTableToolbar extends Component {
                     chips: staleness.filter(({ value }) => staleFilter.includes(value))
                     .map(({ label, ...props }) => ({ name: label, ...props }))
                 }] : [],
+                ...!hasItems && registeredWithFilter && registeredWithFilter.length > 0 ? [{
+                    category: 'Source',
+                    type: REGISTERED_CHIP,
+                    chips: registered.filter(({ value }) => registeredWithFilter.includes(value))
+                    .map(({ label, ...props }) => ({ name: label, ...props }))
+                }] : [],
                 ...(activeFiltersConfig && activeFiltersConfig.filters) || []
             ],
             onDelete: (e, [ deleted ], isAll) => {
@@ -195,25 +229,13 @@ class ContextEntityTableToolbar extends Component {
                     this.setState({
                         selected: {},
                         textFilter: '',
-                        staleFilter: []
+                        staleFilter: [],
+                        registeredWithFilter: []
                     }, () => {
                         getAllTags(filterTagsBy, {});
                     });
                 } else {
-                    if (deleted.type === TEXTUAL_CHIP) {
-                        this.onSetTextFilter('', false);
-                    } else if (deleted.type === TAG_CHIP) {
-                        const deletedItem = deleted.chips[0];
-                        selected[deleted.key][deletedItem.key] = false;
-                        this.setState({ selected }, () => {
-                            const newFilter = this.applyTags(selected, false);
-                            getAllTags(filterTagsBy, { filters: newFilter });
-                        });
-                    } else if (deleted.type === STALE_CHIP) {
-                        const { value: deletedItem } = deleted.chips[0];
-                        const newFilter = staleFilter.filter((staleness) => staleness !== deletedItem);
-                        this.onSetStaleFilter(newFilter, false);
-                    }
+                    this.deleteMapper[deleted.type](deleted);
                 }
 
                 activeFiltersConfig && activeFiltersConfig.onDelete && activeFiltersConfig.onDelete(e, deleted, isAll);
@@ -223,12 +245,13 @@ class ContextEntityTableToolbar extends Component {
 
     isFilterSelected = () => {
         const { activeFiltersConfig } = this.props;
-        const { selected, textFilter, staleFilter } = this.state;
+        const { selected, textFilter, staleFilter, registeredWithFilter } = this.state;
         return textFilter.length > 0 || flatMap(
             Object.values(selected),
             (value) => Object.values(value).filter(Boolean)
         ).filter(Boolean).length > 0 ||
         (staleFilter && staleFilter.length > 0) ||
+        (registeredWithFilter && registeredWithFilter.length > 0) ||
         (activeFiltersConfig && activeFiltersConfig.filters && activeFiltersConfig.filters.length > 0);
     }
 
@@ -272,8 +295,18 @@ class ContextEntityTableToolbar extends Component {
                 type: 'checkbox',
                 filterValues: {
                     value: this.state.staleFilter,
-                    onChange: (_e, value) => this.onSetStaleFilter(value),
+                    onChange: (_e, value) => this.onSetFilter(value, 'staleFilter'),
                     items: staleness
+                }
+            },
+            {
+                label: 'Source',
+                value: 'source-registered-with',
+                type: 'checkbox',
+                filterValues: {
+                    value: this.state.registeredWithFilter,
+                    onChange: (_e, value) => this.onSetFilter(value, 'registeredWithFilter'),
+                    items: registered
                 }
             }] : [],
             ...(localStorage.getItem('rhcs-tags') && !hasItems) ? [ this.createTagsFilter() ] : [],

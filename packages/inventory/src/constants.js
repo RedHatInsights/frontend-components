@@ -5,6 +5,7 @@ export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
 export const TAG_CHIP = 'tags';
 export const STALE_CHIP = 'staleness';
+export const REGISTERED_CHIP = 'registered_with';
 
 export function constructValues(groupValue) {
     return Object.entries(groupValue).map(([ key, { isSelected, group, item }]) => {
@@ -95,11 +96,19 @@ export function reduceFilters(filters) {
                 ...acc,
                 staleFilter: oneFilter.staleFilter
             };
+        } else if ('registeredWithFilter' in oneFilter) {
+            return {
+                ...acc,
+                registeredWithFilter: oneFilter.registeredWithFilter
+            };
         }
+
+        return acc;
     }, {
         textFilter: '',
         tagFilters: {},
-        staleFilter: [ 'fresh', 'stale' ]
+        staleFilter: [ 'fresh', 'stale' ],
+        registeredWithFilter: [ 'insights' ]
     });
 }
 
@@ -119,4 +128,8 @@ export const staleness = [
     { label: 'Fresh', value: 'fresh' },
     { label: 'Stale', value: 'stale' },
     { label: 'Stale warning', value: 'stale_warning' }
+];
+
+export const registered = [
+    { label: 'Insights', value: 'insights' }
 ];
