@@ -4,6 +4,7 @@ export const INVENTORY_API_BASE = '/api/inventory/v1';
 
 import instance from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
 import { HostsApi, TagsApi } from '@redhat-cloud-services/host-inventory-client';
+import { defaultFilters } from '../constants';
 
 export const hosts = new HostsApi(undefined, INVENTORY_API_BASE, instance);
 export const tags = new TagsApi(undefined, INVENTORY_API_BASE, instance);
@@ -73,7 +74,12 @@ export function getEntities(items, {
     orderBy = 'updated',
     orderDirection = 'DESC'
 }) {
-    const { hostnameOrId, tagFilters, staleFilter, registeredWithFilter } = filters ? filters.reduce(filtersReducer, {}) : {};
+    const {
+        hostnameOrId,
+        tagFilters,
+        staleFilter,
+        registeredWithFilter
+    } = filters ? filters.reduce(filtersReducer, defaultFilters) : defaultFilters;
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
         .then(mapTags)

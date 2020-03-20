@@ -82,6 +82,11 @@ export function constructGroups(allTags) {
     }));
 }
 
+export const defaultFilters = {
+    staleFilter: [ 'fresh', 'stale' ],
+    registeredWithFilter: [ 'insights' ]
+};
+
 export function reduceFilters(filters) {
     return filters.reduce((acc, oneFilter) => {
         if (oneFilter.value === TEXT_FILTER) {
@@ -107,8 +112,7 @@ export function reduceFilters(filters) {
     }, {
         textFilter: '',
         tagFilters: {},
-        staleFilter: [ 'fresh', 'stale' ],
-        registeredWithFilter: [ 'insights' ]
+        ...defaultFilters
     });
 }
 
