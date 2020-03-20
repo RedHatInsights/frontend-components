@@ -161,7 +161,7 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
             // eslint-disable-next-line react/display-name
             Content: () => (<TextContent>
                 <Text component={ TextVariants.p }>
-            Review the information below and click Finish to add your source. Use the Back button to make changes.
+            Review the information below and click Add to add your source. Use the Back button to make changes.
                 </Text>
             </TextContent>)
         },
