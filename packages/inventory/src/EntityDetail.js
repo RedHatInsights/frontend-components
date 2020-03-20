@@ -21,7 +21,7 @@ import ApplicationDetails from './ApplicationDetails';
 import { editDisplayName, editAnsibleHost, loadEntity, deleteEntity } from './redux/actions';
 import TagWithDialog from './TagWithDialog';
 import TagsModal from './TagsModal';
-import DeleteModal from './DeleteModal';
+import DeleteModal from '.';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import RouterParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 
@@ -97,30 +97,18 @@ class EntityDetails extends Component {
                     <DeleteModal
                         handleModalToggle={this.handleModalToggle}
                         isModalOpen={this.state.isModalOpen}
-                        currentSytem={entity}
+                        currentSytems={entity}
                         onConfirm={() => {
-                            let displayName;
-                            let removeSystems;
-                            if (Array.isArray(entity)) {
-                                removeSystems = entity.map(({ id }) => id);
-                                displayName = entity.length > 1 ?
-                                    `${entity.length} systems` :
-                                    this.state.currentSytem[0].display_name;
-                            } else {
-                                displayName = entity.display_name;
-                                removeSystems = [ entity.id ];
-                            }
-
                             addNotification({
                                 id: 'remove-initiated',
                                 variant: 'warning',
                                 title: 'Delete operation initiated',
-                                description: `Removal of ${displayName} started.`,
+                                description: `Removal of ${entity.display_name} started.`,
                                 dismissable: false
                             });
-                            deleteEntity(removeSystems, displayName, () => {
+                            deleteEntity([ entity.id ], entity.display_name, () => {
                                 const { match: { url }, history } = this.props;
-                                history.push(url.replace(new RegExp(`${removeSystems[0]}.*`, 'g'), ''));
+                                history.push(url.replace(new RegExp(`${[ entity.id ]}.*`, 'g'), ''));
                             });
                             this.handleModalToggle(false);
                         }}

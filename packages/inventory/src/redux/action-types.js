@@ -1,6 +1,7 @@
 const asyncInventory = [
     'LOAD_ENTITIES',
     'LOAD_ENTITY',
+    'REMOVE_ENTITY',
     'LOAD_SYSTEM_PROFILE',
     'SET_DISPLAY_NAME',
     'SET_ANSIBLE_HOST',

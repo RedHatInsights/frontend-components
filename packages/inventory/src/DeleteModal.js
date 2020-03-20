@@ -13,14 +13,14 @@ import {
 } from '@patternfly/react-core';
 import { ExclamationTriangleIcon } from  '@patternfly/react-icons';
 
-const DeleteModal = ({ handleModalToggle, isModalOpen, currentSytem, onConfirm }) => {
+const DeleteModal = ({ handleModalToggle, isModalOpen, currentSytems, onConfirm }) => {
     let systemToRemove;
     let systemLabel = 'system';
-    if (Array.isArray(currentSytem)) {
-        systemToRemove = currentSytem.length === 1 ? currentSytem[0].display_name : `${currentSytem.length} systems`;
-        systemLabel = currentSytem.length === 1 ? systemLabel : 'systems';
+    if (Array.isArray(currentSytems)) {
+        systemToRemove = currentSytems.length === 1 ? currentSytems[0].display_name : `${currentSytems.length} systems`;
+        systemLabel = currentSytems.length === 1 ? systemLabel : 'systems';
     } else {
-        systemToRemove = currentSytem.display_name;
+        systemToRemove = currentSytems.display_name;
     }
 
     return <Modal
@@ -66,14 +66,14 @@ const ActiveSystemProp = PropTypes.shape({
 
 DeleteModal.propTypes = {
     isModalOpen: PropTypes.bool,
-    currentSytem: PropTypes.oneOfType([ ActiveSystemProp, PropTypes.arrayOf(ActiveSystemProp) ]),
+    currentSytems: PropTypes.oneOfType([ ActiveSystemProp, PropTypes.arrayOf(ActiveSystemProp) ]),
     handleModalToggle: PropTypes.func,
     onConfirm: PropTypes.func
 };
 
 DeleteModal.defaultProps = {
     isModalOpen: false,
-    currentSytem: {},
+    currentSytems: {},
     handleModalToggle: () => undefined,
     onConfirm: () => undefined
 };
