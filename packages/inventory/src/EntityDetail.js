@@ -18,15 +18,19 @@ import { Skeleton, SkeletonSize, DateFormat, CullingInformation } from '@redhat-
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
-import { editDisplayName, editAnsibleHost, loadEntity } from './redux/actions';
+import { editDisplayName, editAnsibleHost, loadEntity, deleteEntity } from './redux/actions';
 import TagWithDialog from './TagWithDialog';
 import TagsModal from './TagsModal';
+import DeleteModal from '.';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import RouterParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 
 class EntityDetails extends Component {
     state = {
         isOpen: false,
         isDisplayNameModalOpen: false,
-        isAnsibleHostModalOpen: false
+        isAnsibleHostModalOpen: false,
+        isModalOpen: false
     };
 
     getFact = (path) => {
@@ -46,9 +50,16 @@ class EntityDetails extends Component {
         });
     };
 
+    handleModalToggle = () => {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    };
+
     generateTop = () => {
-        const { entity, loaded, actions } = this.props;
+        const { entity, loaded, actions, deleteEntity, addNotification } = this.props;
         const { isOpen } = this.state;
+        const inventoryActions = [{ onClick: this.handleModalToggle, title: 'Delete' }, ... actions || [] ];
         return (
             <Split className="ins-c-inventory__detail--header">
                 <SplitItem isFilled>
@@ -62,13 +73,13 @@ class EntityDetails extends Component {
                     <SplitItem>
                         {
                             loaded ?
-                                actions && actions.length > 0 && <Dropdown
+                                inventoryActions && inventoryActions.length > 0 && <Dropdown
                                     onSelect={ this.onSelect }
                                     toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
                                     isOpen={ isOpen }
                                     position={ DropdownPosition.right }
-                                    dropdownItems={ [ ...(actions ?
-                                        actions.map((action, key) => (
+                                    dropdownItems={ [ ...(inventoryActions ?
+                                        inventoryActions.map((action, key) => (
                                             <DropdownItem
                                                 key={ action.key || key }
                                                 component="button"
@@ -82,6 +93,26 @@ class EntityDetails extends Component {
                         }
                     </SplitItem>
                 }
+                { this.state.isModalOpen && (
+                    <DeleteModal
+                        handleModalToggle={this.handleModalToggle}
+                        isModalOpen={this.state.isModalOpen}
+                        currentSytems={entity}
+                        onConfirm={() => {
+                            addNotification({
+                                id: 'remove-initiated',
+                                variant: 'warning',
+                                title: 'Delete operation initiated',
+                                description: `Removal of ${entity.display_name} started.`,
+                                dismissable: false
+                            });
+                            deleteEntity([ entity.id ], entity.display_name, () => {
+                                const { match: { url }, history } = this.props;
+                                history.push(url.replace(new RegExp(`${[ entity.id ]}.*`, 'g'), ''));
+                            });
+                            this.handleModalToggle(false);
+                        }}
+                    />)}
             </Split>
         );
     }
@@ -160,23 +191,27 @@ class EntityDetails extends Component {
 }
 
 EntityDetails.propTypes = {
-    loaded: PropTypes.bool.isRequired,
-    entity: PropTypes.object,
-    useCard: PropTypes.bool,
-    tagCount: PropTypes.number,
-    setDisplayName: PropTypes.func,
-    setAnsibleHost: PropTypes.func,
     actions: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.node,
         onClick: PropTypes.func,
         key: PropTypes.string
-    }))
+    })),
+    entity: PropTypes.object,
+    history: PropTypes.any,
+    loaded: PropTypes.bool.isRequired,
+    match: PropTypes.any,
+    tagCount: PropTypes.number,
+    useCard: PropTypes.bool,
+    setAnsibleHost: PropTypes.func,
+    setDisplayName: PropTypes.func,
+    deleteEntity: PropTypes.func,
+    addNotification: PropTypes.func
 };
 
 EntityDetails.defualtProps = {
+    actions: [],
     entity: {},
     useCard: false,
-    actions: [],
     setDisplayName: () => undefined,
     setAnsibleHost: () => undefined
 };
@@ -191,15 +226,21 @@ function mapDispatchToProps(dispatch) {
         return event;
     };
 
+    const onActionFinish = (event, callback) => {
+        event.payload.then(callback);
+        return event;
+    };
+
     return {
+        addNotification: (payload) => dispatch(addNotification(payload)),
+        deleteEntity: (systems, displayName, callback) => dispatch(onActionFinish(deleteEntity(systems, displayName), callback)),
         setDisplayName: (id, value) => {
             dispatch(reloadWrapper(id, editDisplayName(id, value)));
         },
-
         setAnsibleHost: (id, value) => {
             dispatch(reloadWrapper(id, editAnsibleHost(id, value)));
         }
     };
 }
 
-export default connect(({ entityDetails }) => ({ ...entityDetails }), mapDispatchToProps)(EntityDetails);
+export default RouterParams(connect(({ entityDetails }) => ({ ...entityDetails }), mapDispatchToProps)(EntityDetails));
