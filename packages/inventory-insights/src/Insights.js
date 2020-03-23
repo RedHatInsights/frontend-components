@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import './insights.scss';
 
-import { BASE_FETCH_URL, FILTER_CATEGORIES as FC } from './Constants';
+import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, RISK_TO_STRING } from './Constants';
 import React, { Component, Fragment } from 'react';
 import { SortByDirection, Table, TableBody, TableHeader, cellWidth, sortable } from '@patternfly/react-table';
 import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
@@ -161,8 +161,7 @@ class InventoryRuleList extends Component {
                         {
                             title: <div className='pf-m-center' key={key} style={{ verticalAlign: 'top' }}>
                                 <Battery
-                                    label='Total risk'
-                                    labelHidden
+                                    label={RISK_TO_STRING[rule.total_risk]}
                                     severity={rule.total_risk}
                                 />
                             </div>
