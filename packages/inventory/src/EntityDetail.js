@@ -7,6 +7,8 @@ import {
     Card,
     CardBody,
     CardHeader,
+    Flex,
+    FlexItem,
     SplitItem,
     Split,
     Dropdown,
@@ -24,6 +26,8 @@ import TagsModal from './TagsModal';
 import DeleteModal from '.';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import RouterParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
+import { ExternalLinkAltIcon } from '@patternfly/react-icons';
+import './EntityDetail.scss';
 
 class EntityDetails extends Component {
     state = {
@@ -57,7 +61,7 @@ class EntityDetails extends Component {
     };
 
     generateTop = () => {
-        const { entity, loaded, actions, deleteEntity, addNotification } = this.props;
+        const { entity, loaded, actions, deleteEntity, addNotification, hideInvLink } = this.props;
         const { isOpen } = this.state;
         const inventoryActions = [{ onClick: this.handleModalToggle, title: 'Delete' }, ... actions || [] ];
         return (
@@ -65,7 +69,17 @@ class EntityDetails extends Component {
                 <SplitItem isFilled>
                     {
                         loaded ?
-                            <Title size='2xl'>{ entity && entity.display_name }</Title> :
+                            (
+                                <Flex>
+                                    <FlexItem>
+                                        <Title size='2xl'>{ entity && entity.display_name }</Title>
+                                    </FlexItem>
+                                    {hideInvLink || (
+                                        <FlexItem>
+                                            <a className='ins-c-entity-detail__inv-link' href={`./inventory/${entity.id}`}><ExternalLinkAltIcon/></a>
+                                        </FlexItem>)}
+                                </Flex>
+                            ) :
                             <Skeleton size={ SkeletonSize.md } />
                     }
                 </SplitItem>
@@ -197,6 +211,7 @@ EntityDetails.propTypes = {
         key: PropTypes.string
     })),
     entity: PropTypes.object,
+    hideInvLink: PropTypes.bool,
     history: PropTypes.any,
     loaded: PropTypes.bool.isRequired,
     match: PropTypes.any,
@@ -211,6 +226,7 @@ EntityDetails.propTypes = {
 EntityDetails.defualtProps = {
     actions: [],
     entity: {},
+    hideInvLink: false,
     useCard: false,
     setDisplayName: () => undefined,
     setAnsibleHost: () => undefined
