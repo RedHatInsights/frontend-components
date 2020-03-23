@@ -58,7 +58,7 @@ class EntityTable extends React.Component {
                         <a key={ path }
                             widget="col"
                             data-key={ path }
-                            href={ `${location.pathname}/${col.id}` }
+                            href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${col.id}` }
                             onClick={ event => {
                                 event.preventDefault();
                                 event.stopPropagation();
