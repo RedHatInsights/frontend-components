@@ -20,3 +20,10 @@ export const FILTER_CATEGORIES = {
         ]
     }
 };
+
+export const RISK_TO_STRING = {
+    1: 'Low',
+    2: 'Moderate',
+    3: 'Important',
+    4: 'Critical'
+};
