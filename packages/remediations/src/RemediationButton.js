@@ -4,6 +4,8 @@ import * as pfReactTable from '@patternfly/react-table';
 import propTypes from 'prop-types';
 import { reactCore } from '../../utils/src/inventoryDependencies';
 
+import { CAN_REMEDIATE } from './utils';
+
 function getLoader () {
     return (insights.experimental && insights.experimental.loadRemediations) || insights.loadRemediations;
 }
@@ -14,16 +16,28 @@ class RemediationButton extends React.Component {
         this.props = props;
 
         this.state = {
-            remediations: false
+            remediations: false,
+            hasPermission: false
         };
     }
 
     componentDidMount() {
-        getLoader()({
-            react: React,
-            reactCore,
-            pfReactTable
-        }).then(remediations => this.setState({ remediations }));
+        Promise.all([
+            getLoader()({
+                react: React,
+                reactCore,
+                pfReactTable
+            }),
+            insights.chrome.getUserPermissions('remediations')
+        ]).then(([
+            remediations,
+            permissions
+        ]) => {
+            this.setState({
+                remediations,
+                hasPermission: permissions.some(({ permission }) => permission === CAN_REMEDIATE)
+            });
+        });
     }
 
     onClick = () => {
@@ -33,6 +47,20 @@ class RemediationButton extends React.Component {
     }
 
     render() {
+        if (this.state.remediations && !this.state.hasPermission) {
+            return (
+                <reactCore.Tooltip
+                    content="You do not have correct permissions to execute remediations on this entity."
+                >
+                    <span>
+                        <reactCore.Button isDisabled>
+                            { this.props.children }
+                        </reactCore.Button>
+                    </span>
+                </reactCore.Tooltip>
+            );
+        }
+
         return (
             <React.Fragment>
                 <reactCore.Button
