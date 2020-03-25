@@ -13,7 +13,7 @@ const BiosCard = ({ bios, detailLoaded, handleClick }) => (<LoadingCard
         { title: 'Vendor', value: bios.vendor },
         { title: 'Version', value: bios.version },
         { title: 'Release date', value: (DateFormat ?
-            <DateFormat date={ bios.releaseDate } type="onlyDate" /> :
+            <DateFormat date={ new Date(bios.releaseDate) } type="onlyDate" /> :
             new Date(bios.releaseDate).toLocaleString()
         ) },
         {
