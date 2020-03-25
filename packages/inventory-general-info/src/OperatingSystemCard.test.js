@@ -55,7 +55,7 @@ describe('OperatingSystemCard', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it.only('should render correctly with rhsm facts', () => {
+    it('should render correctly with rhsm facts', () => {
         const store = mockStore({
             ...initialState,
             systemProfileStore: {
