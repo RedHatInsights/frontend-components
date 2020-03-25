@@ -10,7 +10,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SystemCard from './SystemCard';
 import configureStore from 'redux-mock-store';
-import { testProperties } from './__mock__/selectors';
+import { testProperties, rhsmFacts } from './__mock__/selectors';
 import promiseMiddleware from 'redux-promise-middleware';
 import { mock } from './__mock__/hostApi';
 import mockedData from './__mock__/mockedData.json';
@@ -26,7 +26,10 @@ describe('SystemCard', () => {
                 entity: {
                     display_name: 'test-display-name',
                     ansible_host: 'test-ansible-host',
-                    id: 'test-id'
+                    id: 'test-id',
+                    facts: {
+                        rhsm: rhsmFacts
+                    }
                 }
             },
             systemProfileStore: {
@@ -46,6 +49,19 @@ describe('SystemCard', () => {
 
     it('should render correctly with data', () => {
         const store = mockStore(initialState);
+        const wrapper = render(<SystemCard store={ store } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it.only('should render correctly with rhsm facts', () => {
+        const store = mockStore({
+            ...initialState,
+            systemProfileStore: {
+                systemProfile: {
+                    loaded: true
+                }
+            }
+        });
         const wrapper = render(<SystemCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });

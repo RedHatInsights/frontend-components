@@ -4,7 +4,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import OperatingSystemCard from './OperatingSystemCard';
 import configureStore from 'redux-mock-store';
-import { osTest } from './__mock__/selectors';
+import { osTest, rhsmFacts } from './__mock__/selectors';
 
 describe('OperatingSystemCard', () => {
     let initialState;
@@ -17,6 +17,12 @@ describe('OperatingSystemCard', () => {
                 systemProfile: {
                     loaded: true,
                     ...osTest
+                }
+            }, entityDetails: {
+                entity: {
+                    facts: {
+                        rhsm: rhsmFacts
+                    }
                 }
             }
         };
@@ -40,6 +46,21 @@ describe('OperatingSystemCard', () => {
                 systemProfile: {
                     loaded: true,
                     ...osTest
+                }
+            }, entityDetails: {
+                entity: {}
+            }
+        });
+        const wrapper = render(<OperatingSystemCard store={ store } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it.only('should render correctly with rhsm facts', () => {
+        const store = mockStore({
+            ...initialState,
+            systemProfileStore: {
+                systemProfile: {
+                    loaded: true
                 }
             }
         });

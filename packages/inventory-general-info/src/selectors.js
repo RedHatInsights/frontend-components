@@ -14,11 +14,13 @@ export const propertiesSelector = ({
     cores_per_socket,
     ramSize,
     disk_devices
-} = {}) => ({
-    cpuNumber: number_of_cpus,
-    sockets: number_of_sockets,
-    coresPerSocket: cores_per_socket,
-    ramSize,
+} = {}, { facts } = { }) => ({
+    cpuNumber: number_of_cpus || facts?.rhsm?.CPU_CORES,
+    sockets: number_of_sockets || facts?.rhsm?.CPU_SOCKETS,
+    coresPerSocket: cores_per_socket || (
+      facts?.rhsm?.CPU_CORES && facts?.rhsm?.CPU_CORES && Number(facts?.rhsm?.CPU_CORES, 10) / Number(facts?.rhsm?.CPU_SOCKETS, 10)
+    ),
+    ramSize: ramSize || (facts?.rhsm?.MEMORY && `${facts?.rhsm?.MEMORY} GB`) || '0 B',
     storage: disk_devices && disk_devices.map(({ device, label, mount_point, options, type }) => ({
         ...device && safeParser(device, 'device'),
         label,
@@ -35,10 +37,10 @@ export const operatingSystem = ({
     os_kernel_version,
     last_boot_time,
     kernel_modules
-} = {}) => ({
+} = {}, { facts } = {}) => ({
     release: os_release,
     kernelRelease: os_kernel_version,
-    architecture: arch,
+    architecture: arch || facts?.rhsm?.ARCHITECTURE,
     bootTime: last_boot_time,
     kernelModules: kernel_modules
 });
@@ -59,8 +61,10 @@ export const infrastructureSelector = ({
     infrastructure_type,
     infrastructure_vendor,
     network = {}
-} = {}) => ({
-    type: infrastructure_type,
+} = {}, { facts } = {}) => ({
+    type: infrastructure_type || (
+      facts?.rhsm?.IS_VIRTUAL !== undefined && (facts?.rhsm?.IS_VIRTUAL ? 'virtual' : 'physical')
+    ) || undefined,
     vendor: infrastructure_vendor,
     ipv4: network.ipv4,
     ipv6: network.ipv6,

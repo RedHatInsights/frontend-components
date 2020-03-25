@@ -4,7 +4,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import InfrastructureCard from './InfrastructureCard';
 import configureStore from 'redux-mock-store';
-import { infraTest } from './__mock__/selectors';
+import { infraTest, rhsmFacts } from './__mock__/selectors';
 
 describe('InfrastructureCard', () => {
     let initialState;
@@ -17,6 +17,12 @@ describe('InfrastructureCard', () => {
                 systemProfile: {
                     loaded: true,
                     ...infraTest
+                }
+            }, entityDetails: {
+                entity: {
+                    facts: {
+                        rhsm: rhsmFacts
+                    }
                 }
             }
         };
@@ -34,6 +40,19 @@ describe('InfrastructureCard', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('should render correctly with rhsm facts', () => {
+        const store = mockStore({
+            ...initialState,
+            systemProfileStore: {
+                systemProfile: {
+                    loaded: true
+                }
+            }
+        });
+        const wrapper = render(<InfrastructureCard store={ store } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     it('should render enabled/disabled', () => {
         const store = mockStore({
             systemProfileStore: {
@@ -41,6 +60,8 @@ describe('InfrastructureCard', () => {
                     loaded: true,
                     ...infraTest
                 }
+            }, entityDetails: {
+                entity: {}
             }
         });
         const wrapper = render(<InfrastructureCard store={ store } />);

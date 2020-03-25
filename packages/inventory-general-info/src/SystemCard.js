@@ -177,5 +177,5 @@ export default connect(({
 }) => ({
     entity,
     detailLoaded: systemProfile && systemProfile.loaded,
-    properties: propertiesSelector(systemProfile)
+    properties: propertiesSelector(systemProfile, entity)
 }), mapDispatchToProps)(SystemCard);

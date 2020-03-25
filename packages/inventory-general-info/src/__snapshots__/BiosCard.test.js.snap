@@ -160,7 +160,7 @@ exports[`BiosCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          8/13/2019
+          12 Aug 2019
         </dd>
         <dt
           class=""
