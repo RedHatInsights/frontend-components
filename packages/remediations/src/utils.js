@@ -14,3 +14,5 @@ export function getGroup () {
 export function remediationUrl (id) {
     return urijs(document.baseURI).segment(getGroup()).segment('remediations').segment(id).toString();
 }
+
+export const CAN_REMEDIATE = 'remediations:remediation:write';
