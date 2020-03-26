@@ -27,7 +27,7 @@ describe('dateStringByType component', () => {
     });
 
     it('Exact datetime matches', () => {
-        expect(dateStringByType('exact')(date)).toEqual('31 Dec 2019 00:00:00 UTC');
+        expect(dateStringByType('exact')(date)).toEqual('31 Dec 2019 00:00 UTC');
     });
 
     it('OnlyDate date matches', () => {

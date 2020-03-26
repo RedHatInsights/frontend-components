@@ -18,7 +18,7 @@ const relativeTimeTable = [
     { rightBound: minute, description: () => 'Just now' }
 ];
 
-const exact = (value) => value.toUTCString().split(',')[1].slice(0, -4).trim();
+const exact = (value) => value.toUTCString().split(',')[1].slice(0, -7).trim();
 
 export const addTooltip = (date, element, extraTitle = '') => (
     <Tooltip
@@ -29,7 +29,7 @@ export const addTooltip = (date, element, extraTitle = '') => (
 
 export const dateStringByType = (type) => ({
     exact: date => exact(date) + ' UTC',
-    onlyDate: date => exact(date).slice(0, -9),
+    onlyDate: date => exact(date).slice(0, -6),
     relative: date => relativeTimeTable.reduce((acc, i) => (i.rightBound > Date.now() - date ? i.description(Date.now() - date) : acc), exact(date)),
     invalid: () => 'Invalid Date'
 })[type];
