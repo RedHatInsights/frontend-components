@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LoadingCard from './LoadingCard';
 import { generalMapper } from './dataMapper';
 import { biosSelector } from './selectors';
+import { DateFormat } from '@redhat-cloud-services/frontend-components';
 
 const BiosCard = ({ bios, detailLoaded, handleClick }) => (<LoadingCard
     title="BIOS"
@@ -11,7 +12,10 @@ const BiosCard = ({ bios, detailLoaded, handleClick }) => (<LoadingCard
     items={ [
         { title: 'Vendor', value: bios.vendor },
         { title: 'Version', value: bios.version },
-        { title: 'Release date', value: bios.releaseDate },
+        { title: 'Release date', value: (DateFormat ?
+            <DateFormat date={ new Date(bios.releaseDate) } type="onlyDate" /> :
+            new Date(bios.releaseDate).toLocaleString()
+        ) },
         {
             title: 'CSM',
             value: bios.csm && bios.csm.length > 0 ? `${bios.csm.length} CSMs` : 0,

@@ -32,6 +32,14 @@ export const infraTest = {
     }
 };
 
+export const rhsmFacts = {
+    CPU_CORES: '2',
+    CPU_SOCKETS: 1,
+    MEMORY: 2,
+    ARCHITECTURE: 'x86_64',
+    IS_VIRTUAL: true
+};
+
 export const configTest = {
     installed_packages: [ 'packages' ],
     enabled_services: [ 'services' ],

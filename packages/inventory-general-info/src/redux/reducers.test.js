@@ -74,7 +74,7 @@ describe('onSystemProfile', () => {
             systemProfile: {
                 loaded: true,
                 network: undefined,
-                ramSize: '0 B',
+                ramSize: undefined,
                 repositories: undefined
             } });
     });

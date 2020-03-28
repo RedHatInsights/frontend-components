@@ -7,7 +7,7 @@ export const sizes = [ 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' ];
 
 // Kudos to https://stackoverflow.com/a/18650828/2560321
 export const formatBytes = (bytes) => {
-    if (bytes === 0 || !bytes || isNaN(Number(bytes))) {
+    if (bytes === 0 || isNaN(Number(bytes))) {
         return '0 B';
     }
 
@@ -50,7 +50,7 @@ export function onSystemProfile(state, { payload: { results } }) {
         systemProfile: {
             loaded: true,
             ...systemProfile,
-            ramSize: formatBytes(systemProfile.system_memory_bytes),
+            ramSize: systemProfile.system_memory_bytes && formatBytes(systemProfile.system_memory_bytes),
             repositories: calculateRepos(systemProfile.yum_repos),
             network: calculateInterfaces(systemProfile.network_interfaces)
         }

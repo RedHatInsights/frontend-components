@@ -31,7 +31,7 @@ it('propertiesSelector - no data', () => {
         cpuNumber: undefined,
         sockets: undefined,
         coresPerSocket: undefined,
-        ramSize: undefined,
+        ramSize: '0 B',
         storage: undefined
     });
 });

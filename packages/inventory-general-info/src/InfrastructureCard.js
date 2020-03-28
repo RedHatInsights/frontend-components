@@ -64,10 +64,13 @@ InfrastructureCard.defaultProps = {
 };
 
 export default connect(({
+    entityDetails: {
+        entity
+    },
     systemProfileStore: {
         systemProfile
     }
 }) => ({
     detailLoaded: systemProfile && systemProfile.loaded,
-    infrastructure: infrastructureSelector(systemProfile)
+    infrastructure: infrastructureSelector(systemProfile, entity)
 }))(InfrastructureCard);
