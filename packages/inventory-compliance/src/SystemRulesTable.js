@@ -149,8 +149,8 @@ class SystemRulesTable extends React.Component {
             chipBuilder,
             filterBuilder,
             activeFilters: filterConfigBuilder.initialDefaultState({
-                selected: this.props.selectedFilter ? 'selected' : undefined,
-                passed: this.props.hidePassed ? 'failed' : undefined
+                selected: this.props.selectedFilter ? [ 'selected' ] : undefined,
+                passed: this.props.hidePassed ? [ 'failed' ] : undefined
             })
         }, callback ? callback() : () => ({}));
     }
