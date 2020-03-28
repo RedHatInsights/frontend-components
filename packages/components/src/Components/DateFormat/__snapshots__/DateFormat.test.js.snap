@@ -10,7 +10,7 @@ exports[`DateFormat component DateFormat renders with date integer 1`] = `
     content={
       <div>
         
-        01 Jan 1970 00:00:00 UTC
+        01 Jan 1970 00:00 UTC
       </div>
     }
     distance={15}
@@ -47,7 +47,7 @@ exports[`DateFormat component DateFormat renders with date integer 1`] = `
 
 exports[`DateFormat component DateFormat renders with date integer 2`] = `
 <Fragment>
-  01 Jan 1970 00:00:00 UTC
+  01 Jan 1970 00:00 UTC
 </Fragment>
 `;
 
@@ -67,7 +67,7 @@ exports[`DateFormat component DateFormat renders with date object 1`] = `
     content={
       <div>
         
-        31 Dec 2019 00:00:00 UTC
+        31 Dec 2019 00:00 UTC
       </div>
     }
     distance={15}
@@ -112,7 +112,7 @@ exports[`DateFormat component DateFormat renders with date string 1`] = `
     content={
       <div>
         
-        31 Dec 2019 00:00:00 UTC
+        31 Dec 2019 00:00 UTC
       </div>
     }
     distance={15}
