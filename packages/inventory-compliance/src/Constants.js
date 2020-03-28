@@ -1,6 +1,10 @@
 /* eslint max-len: 0 */
 import React from 'react';
-import { ExclamationCircleIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
+import {
+    ExclamationCircleIcon,
+    ExclamationTriangleIcon,
+    QuestionCircleIcon
+} from '@patternfly/react-icons';
 
 export const REMEDIATIONS_COLUMN = 4;
 export const COMPLIANT_COLUMN = 3;
@@ -18,3 +22,4 @@ const LowSeverityIcon = <svg width="1em" height="1em" viewBox="0 0 18 18" role="
 export const HIGH_SEVERITY = <React.Fragment><ExclamationCircleIcon className='ins-u-failed'/> High</React.Fragment>;
 export const MEDIUM_SEVERITY = <React.Fragment><ExclamationTriangleIcon className='ins-u-warning'/> Medium</React.Fragment>;
 export const LOW_SEVERITY = <React.Fragment>{ LowSeverityIcon } Low</React.Fragment>;
+export const UNKNOWN_SEVERITY = <React.Fragment><QuestionCircleIcon /> Unknown</React.Fragment>;
