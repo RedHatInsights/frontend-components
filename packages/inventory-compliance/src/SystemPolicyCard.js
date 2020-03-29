@@ -1,7 +1,8 @@
 import React from 'react';
 import { FormattedRelative } from 'react-intl';
 import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
-import Truncate from 'react-truncate';
+import { Truncate } from '@redhat-cloud-services/frontend-components';
+
 import {
     Card,
     CardBody,
