@@ -113,7 +113,7 @@ class FilterConfigBuilder {
     };
 
     getCategoryForLabel = (query) => (
-        this.config.filter((item) => (stringToId(item.label) === stringToId(query)))[0]
+        this.config.filter((item) => (stringToId(item.label) === stringToId(query)))[0] || {}
     )
 
     getItemByLabelOrValue = (query, category) => {
