@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterConfigBuilder categoryLabelForValue to return a matching category label 1`] = `"true"`;
+
+exports[`FilterConfigBuilder categoryLabelForValue to return a matching category label 2`] = `"0-49"`;
+
+exports[`FilterConfigBuilder categoryLabelForValue to return a matching category label 3`] = `"Search term"`;
+
+exports[`FilterConfigBuilder labelForValue to return a matching label 1`] = `"true"`;
+
+exports[`FilterConfigBuilder labelForValue to return a matching label 2`] = `"0-49"`;
+
+exports[`FilterConfigBuilder labelForValue to return a matching label 3`] = `"Search term"`;
+
+exports[`FilterConfigBuilder returns a filterConfig 1`] = `
+Object {
+  "compliancescore": Array [],
+  "compliant": Array [],
+  "items": Array [
+    Object {
+      "filterValues": Object {
+        "onSubmit": [Function],
+        "value": "",
+      },
+      "id": "name",
+      "label": "Name",
+      "type": "text",
+    },
+    Object {
+      "filterValues": Object {
+        "items": Array [
+          Object {
+            "label": <React.Fragment>
+              <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />
+               High
+            </React.Fragment>,
+            "value": "high",
+          },
+          Object {
+            "label": <React.Fragment>
+              <ExclamationTriangleIcon
+                className="ins-u-warning"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />
+               Medium
+            </React.Fragment>,
+            "value": "medium",
+          },
+          Object {
+            "label": <React.Fragment>
+              <svg
+                height="1em"
+                role="img"
+                style={
+                  Object {
+                    "verticalAlign": "-0.125em",
+                  }
+                }
+                viewBox="0 0 18 18"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 0h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm6.67 10.46a1.67 1.67 0 1 0 0 3.338 1.67 1.67 0 0 0 0-3.338zm-1.586-6l.27 4.935a.435.435 0 0 0 .434.411H9.55c.232 0 .422-.18.435-.411l.27-4.936A.435.435 0 0 0 9.818 4h-2.3c-.25 0-.448.21-.435.46z"
+                  fill="#3A9CA6"
+                  fillRule="evenodd"
+                />
+              </svg>
+               Low
+            </React.Fragment>,
+            "value": "low",
+          },
+          Object {
+            "label": <React.Fragment>
+              <QuestionCircleIcon
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+                title={null}
+              />
+               Unknown
+            </React.Fragment>,
+            "value": "unknown",
+          },
+        ],
+        "onChange": [Function],
+        "value": undefined,
+      },
+      "id": "severity",
+      "label": "Severity",
+      "type": "checkbox",
+    },
+    Object {
+      "filterValues": Object {
+        "items": Array [
+          Object {
+            "label": "Show passed rules",
+            "value": "passed",
+          },
+          Object {
+            "label": "Hide passed rules",
+            "value": "failed",
+          },
+        ],
+        "onChange": [Function],
+        "value": undefined,
+      },
+      "id": "passed",
+      "label": "Passed",
+      "type": "radio",
+    },
+    Object {
+      "filterValues": Object {
+        "items": Array [
+          Object {
+            "label": "Show selected rules",
+            "value": "selected",
+          },
+        ],
+        "onChange": [Function],
+        "value": undefined,
+      },
+      "id": "selected",
+      "label": "Selected",
+      "type": "checkbox",
+    },
+  ],
+  "name": "",
+}
+`;
+
+exports[`FilterConfigBuilder valueForLabel to return a matching value 1`] = `"Non-compliant"`;
+
+exports[`FilterConfigBuilder valueForLabel to return a matching value 2`] = `"50 - 69%"`;
+
+exports[`FilterConfigBuilder valueForLabel to return a matching value 3`] = `"Search term"`;

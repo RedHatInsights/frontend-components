@@ -1,11 +1,12 @@
+import buildFilterConfig from './FilterBuilderConfigBuilder';
 import FilterConfigBuilder from './FilterConfigBuilder';
-import { FILTER_CONFIGURATION } from '../constants';
 
 describe('FilterConfigBuilder', () => {
+    const config = buildFilterConfig(true, true, []);
     let builder;
 
     beforeEach(() => {
-        builder = new FilterConfigBuilder(FILTER_CONFIGURATION);
+        builder = new FilterConfigBuilder(config);
     });
 
     it('returns a filterConfig', () => {
@@ -14,7 +15,7 @@ describe('FilterConfigBuilder', () => {
             compliant: [],
             compliancescore: []
         };
-        const builtConfig = builder.buildConfiguration(FILTER_CONFIGURATION, ()=> ({}), states);
+        const builtConfig = builder.buildConfiguration(config, ()=> ({}), states);
 
         expect(builtConfig).toMatchSnapshot();
     });

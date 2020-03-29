@@ -96,31 +96,34 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                               onMouseLeave={[Function]}
                             >
                               <Truncate
-                                ellipsis="…"
+                                collapseText="Collapse"
+                                expandText="Read more"
+                                length={150}
                                 lines={1}
-                                trimWhitespace={false}
-                                width={0}
+                                text=""
                               >
-                                <span
-                                  width={0}
+                                <Stack
+                                  className="ins-c-truncate is-block"
                                 >
-                                  <span />
-                                  <span>
-                                    PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7
-                                  </span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "left": 0,
-                                        "position": "fixed",
-                                        "top": 0,
-                                        "visibility": "hidden",
-                                      }
-                                    }
+                                  <div
+                                    className="pf-l-stack ins-c-truncate is-block"
                                   >
-                                    …
-                                  </span>
-                                </span>
+                                    <StackItem>
+                                      <div
+                                        className="pf-l-stack__item"
+                                      >
+                                        <span
+                                          dangerouslySetInnerHTML={
+                                            Object {
+                                              "__html": "",
+                                            }
+                                          }
+                                          widget-type="InsightsTruncateBlock"
+                                        />
+                                      </div>
+                                    </StackItem>
+                                  </div>
+                                </Stack>
                               </Truncate>
                             </h4>
                           </Text>
@@ -193,31 +196,34 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                             Profile 
                             <br />
                             <Truncate
-                              ellipsis="…"
+                              collapseText="Collapse"
+                              expandText="Read more"
+                              length={150}
                               lines={1}
-                              trimWhitespace={false}
-                              width={0}
+                              text=""
                             >
-                              <span
-                                width={0}
+                              <Stack
+                                className="ins-c-truncate is-block"
                               >
-                                <span />
-                                <span>
-                                  xccdf_org.ssgproject.content_profile_pci-dss
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "left": 0,
-                                      "position": "fixed",
-                                      "top": 0,
-                                      "visibility": "hidden",
-                                    }
-                                  }
+                                <div
+                                  className="pf-l-stack ins-c-truncate is-block"
                                 >
-                                  …
-                                </span>
-                              </span>
+                                  <StackItem>
+                                    <div
+                                      className="pf-l-stack__item"
+                                    >
+                                      <span
+                                        dangerouslySetInnerHTML={
+                                          Object {
+                                            "__html": "",
+                                          }
+                                        }
+                                        widget-type="InsightsTruncateBlock"
+                                      />
+                                    </div>
+                                  </StackItem>
+                                </div>
+                              </Stack>
                             </Truncate>
                           </p>
                         </Text>
@@ -416,31 +422,34 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                               onMouseLeave={[Function]}
                             >
                               <Truncate
-                                ellipsis="…"
+                                collapseText="Collapse"
+                                expandText="Read more"
+                                length={150}
                                 lines={1}
-                                trimWhitespace={false}
-                                width={0}
+                                text=""
                               >
-                                <span
-                                  width={0}
+                                <Stack
+                                  className="ins-c-truncate is-block"
                                 >
-                                  <span />
-                                  <span>
-                                    PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7
-                                  </span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "left": 0,
-                                        "position": "fixed",
-                                        "top": 0,
-                                        "visibility": "hidden",
-                                      }
-                                    }
+                                  <div
+                                    className="pf-l-stack ins-c-truncate is-block"
                                   >
-                                    …
-                                  </span>
-                                </span>
+                                    <StackItem>
+                                      <div
+                                        className="pf-l-stack__item"
+                                      >
+                                        <span
+                                          dangerouslySetInnerHTML={
+                                            Object {
+                                              "__html": "",
+                                            }
+                                          }
+                                          widget-type="InsightsTruncateBlock"
+                                        />
+                                      </div>
+                                    </StackItem>
+                                  </div>
+                                </Stack>
                               </Truncate>
                             </h4>
                           </Text>
@@ -513,31 +522,34 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                             Profile 
                             <br />
                             <Truncate
-                              ellipsis="…"
+                              collapseText="Collapse"
+                              expandText="Read more"
+                              length={150}
                               lines={1}
-                              trimWhitespace={false}
-                              width={0}
+                              text=""
                             >
-                              <span
-                                width={0}
+                              <Stack
+                                className="ins-c-truncate is-block"
                               >
-                                <span />
-                                <span>
-                                  xccdf_org.ssgproject.content_profile_pci-dss
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "left": 0,
-                                      "position": "fixed",
-                                      "top": 0,
-                                      "visibility": "hidden",
-                                    }
-                                  }
+                                <div
+                                  className="pf-l-stack ins-c-truncate is-block"
                                 >
-                                  …
-                                </span>
-                              </span>
+                                  <StackItem>
+                                    <div
+                                      className="pf-l-stack__item"
+                                    >
+                                      <span
+                                        dangerouslySetInnerHTML={
+                                          Object {
+                                            "__html": "",
+                                          }
+                                        }
+                                        widget-type="InsightsTruncateBlock"
+                                      />
+                                    </div>
+                                  </StackItem>
+                                </div>
+                              </Stack>
                             </Truncate>
                           </p>
                         </Text>

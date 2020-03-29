@@ -1,10 +1,10 @@
-import { FilterConfigBuilder } from './FilterConfigBuilder';
-import { FILTER_CONFIGURATION } from '../constants';
+import buildFilterConfig from './FilterBuilderConfigBuilder';
+import FilterConfigBuilder from './FilterConfigBuilder';
 
 import ChipBuilder from './ChipBuilder';
 
 describe('ChipBuilder#getChipsFor', () => {
-    const builder = new FilterConfigBuilder(FILTER_CONFIGURATION);
+    const builder = new FilterConfigBuilder(buildFilterConfig(true, true, []));
     let chipBuilder;
 
     beforeEach(() => {
@@ -13,9 +13,9 @@ describe('ChipBuilder#getChipsFor', () => {
 
     it('returns a filterConfig', () => {
         chipBuilder.chipsFor({
-            compliant: [ 'false' ],
+            passed: [ 'passed' ],
             name: 'Text search',
-            compliancescore: [ '50-69', '70-89' ],
+            selected: [ 'all' ],
             invalidFilter: ''
         }).then((results) => {
             expect(results).toMatchSnapshot();
