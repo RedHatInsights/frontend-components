@@ -4,7 +4,9 @@ import FilterConfigBuilder from './FilterConfigBuilder';
 import ChipBuilder from './ChipBuilder';
 
 describe('ChipBuilder#getChipsFor', () => {
-    const builder = new FilterConfigBuilder(buildFilterConfig(true, true, []));
+    const builder = new FilterConfigBuilder(
+        buildFilterConfig({ selectedFilter: true, showPassFailFilter: true, policies: [] })
+    );
     let chipBuilder;
 
     beforeEach(() => {

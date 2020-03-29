@@ -20,17 +20,19 @@ exports[`SystemPolicyCard component should render 1`] = `
         class="margin-bottom-top-none"
         data-pf-content="true"
       >
-        <div
-          class="pf-l-stack ins-c-truncate is-block"
+        <span
+          width="0"
         >
-          <div
-            class="pf-l-stack__item"
+          <span />
+          <span>
+            PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7
+          </span>
+          <span
+            style="position:fixed;visibility:hidden;top:0;left:0"
           >
-            <span
-              widget-type="InsightsTruncateBlock"
-            />
-          </div>
-        </div>
+            …
+          </span>
+        </span>
       </h4>
     </div>
     <div
@@ -71,19 +73,20 @@ exports[`SystemPolicyCard component should render 1`] = `
       >
         Profile 
         <br />
-      </p>
-      <div
-        class="pf-l-stack ins-c-truncate is-block"
-      >
-        <div
-          class="pf-l-stack__item"
+        <span
+          width="0"
         >
+          <span />
+          <span>
+            xccdf_org.ssgproject.content_profile_pci-dss
+          </span>
           <span
-            widget-type="InsightsTruncateBlock"
-          />
-        </div>
-      </div>
-      <p />
+            style="position:fixed;visibility:hidden;top:0;left:0"
+          >
+            …
+          </span>
+        </span>
+      </p>
     </div>
     <small
       class="margin-bottom-none"

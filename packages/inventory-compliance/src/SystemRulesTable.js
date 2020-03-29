@@ -7,87 +7,41 @@ import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-co
 
 import './compliance.scss';
 import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from './PresentationalComponents';
-import { FilterConfigBuilder, stringToId, buildFilterConfig } from './Utilities';
+import {
+    FilterConfigBuilder, stringToId, buildFilterConfig, POLICIES_FILTER_CONFIG, toRulesArray
+} from './Utilities';
 import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
 import ComplianceRemediationButton from './ComplianceRemediationButton';
 
 class SystemRulesTable extends React.Component {
+    config = buildFilterConfig({
+        selectedFilter: this.props.selectedFilter,
+        showPassFailFilter: (this.props.columns.filter((c) => (c.title === 'Passed')).length > 0),
+        policies: this.props.profileRules.map((p) => (p.profile))
+    });
+    filterConfigBuilder = new FilterConfigBuilder(this.config);
+    chipBuilder = this.filterConfigBuilder.getChipBuilder();
+    filterBuilder = this.filterConfigBuilder.getFilterBuilder();
+
     state = {
         page: 1,
         itemsPerPage: 10,
         rows: [],
         sortBy: {},
-        rules: [],
+        rules: toRulesArray(this.props.profileRules, this.props.selectedRefIds),
         ruleCount: 0,
         filterConfigBuilder: null,
-        filterChips: []
+        filterChips: [],
+        activeFilters: this.filterConfigBuilder.initialDefaultState({
+            selected: this.props.selectedFilter ? [ 'selected' ] : undefined,
+            passed: this.props.hidePassed ? [ 'failed' ] : undefined
+        })
     };
 
-    constructor (props) {
-        super(props);
-        this.config = buildFilterConfig(
-            props.columns.filter((c) => (c.title === 'Passed')).length > 0,
-            props.profileRules.map((p) => (p.profile)),
-            {
-                ...props.tailoringEnabled,
-                ...props.selectedFilter,
-                ...this.props.hidePassed
-            }
-        );
-        this.filterConfigBuilder = new FilterConfigBuilder(this.config);
-        this.chipBuilder = this.filterConfigBuilder.getChipBuilder();
-        this.filterBuilder = this.filterConfigBuilder.getFilterBuilder();
-
-        this.state = {
-            ...this.state,
-            rules: this.toRulesWithPolicies(props.profileRules),
-            activeFilters: this.filterConfigBuilder.initialDefaultState({
-                selected: this.props.selectedFilter ? [ 'selected' ] : undefined,
-                passed: this.props.hidePassed ? [ 'failed' ] : undefined
-            })
-        };
-    }
-
-    combineDuplicateRules = (rules) => {
-        const { selectedRefIds } = this.props;
-
-        let rulesWithPolicies = [];
-        rules.forEach((rule) => {
-            const existingRule = rulesWithPolicies.filter((erule) => (erule.refId === rule.refId))[0];
-
-            if (existingRule) {
-                rulesWithPolicies[rulesWithPolicies.indexOf(existingRule)] = {
-                    ...existingRule,
-                    isSelected: selectedRefIds.includes(rule.refId),
-                    policies: [
-                        ...existingRule.policies,
-                        ...rule.policies
-                    ]
-                };
-            } else {
-                rulesWithPolicies.push(rule);
-            }
-        });
-
-        return rulesWithPolicies;
-    }
-
-    toRulesWithPolicies = (policiesWithRules) => {
-        const { selectedRefIds } = this.props;
-        const rules = policiesWithRules.flatMap((policy) => (
-            policy.rules.map((rule) => (
-                {
-                    ...rule,
-                    references: rule.references ? JSON.parse(rule.references) : [],
-                    identifier: rule.identifier ? JSON.parse(rule.identifier) : [],
-                    policies: [ policy.profile ],
-                    isOpen: false,
-                    isSelected: selectedRefIds.includes(rule.refId)
-                }
-            ))
-        ));
-
-        return this.combineDuplicateRules(rules);
+    updatePolicyFilterConfig = (policies) => {
+        if (policies.length > 1) {
+            this.filterConfigBuilder.addConfigItem(POLICIES_FILTER_CONFIG(policies));
+        }
     }
 
     parentRowForRule = (rule) => {
@@ -159,6 +113,17 @@ class SystemRulesTable extends React.Component {
         this.updateTable()
     )
 
+    componentDidUpdate = (prevProps) => {
+        if (this.props.profileRules !== prevProps.profileRules) {
+            this.updatePolicyFilterConfig(this.props.profileRules.map((p) => (
+                p.profile
+            )).filter((p) => !!p));
+            this.setState({
+                rules: toRulesArray(this.props.profileRules)
+            }, this.updateTable);
+        }
+    }
+
     updateChips = () => (
         this.chipBuilder.chipsFor(this.state.activeFilters).then((filterChips) => (
             this.setState({
@@ -220,16 +185,16 @@ class SystemRulesTable extends React.Component {
         }, this.updateTable);
     }
 
-    clearAllFilter = () => {
+    clearAllFilter = () => (
         this.setState({
             activeFilters: this.filterConfigBuilder.initialDefaultState(),
             filterChips: []
-        }, this.updateTable);
-    }
+        }, this.updateTable)
+    )
 
-    onFilterDelete = (_event, chips, clearAll = false) => {
-        clearAll ? this.clearAllFilter() : this.deleteFilter(chips[0]);
-    }
+    onFilterDelete = (_event, chips, clearAll = false) => (
+        clearAll ? this.clearAllFilter() : this.deleteFilter(chips[0])
+    )
 
     changePage = (page, itemsPerPage) => (
         this.setState({
@@ -345,16 +310,15 @@ class SystemRulesTable extends React.Component {
         const selectedRulesWithRemediations = this.selectedRules().filter(
             (rule) => (rule.remediationAvailable)
         );
+        const filterConfig = this.filterConfigBuilder.buildConfiguration(
+            this.onFilterUpdate,
+            this.state.activeFilters,
+            { hideLabel: true }
+        );
 
         if (loading) {
             return <RuleLoadingTable columns={columns} />;
         } else {
-            const filterConfig = this.filterConfigBuilder.buildConfiguration(
-                this.onFilterUpdate,
-                this.state.activeFilters,
-                { hideLabel: true }
-            );
-
             return <React.Fragment>
                 <PrimaryToolbar
                     filterConfig={ filterConfig }

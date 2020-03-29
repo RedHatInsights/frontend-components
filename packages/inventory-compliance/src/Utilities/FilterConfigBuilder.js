@@ -14,6 +14,12 @@ class FilterConfigBuilder {
         this.config = config;
     }
 
+    addConfigItem = (item) => (
+        this.config = this.config.filter((i) => (
+            i.label !== item.label
+        )).concat(item)
+    )
+
     getChipBuilder = () => (
         this.chipBuilder = this.chipBuilder ? this.chipBuilder : new ChipBuilder(this)
     )

@@ -1,9 +1,4 @@
-import {
-    HIGH_SEVERITY,
-    MEDIUM_SEVERITY,
-    LOW_SEVERITY,
-    UNKNOWN_SEVERITY
-} from '../Constants';
+import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY, UNKNOWN_SEVERITY } from '../Constants';
 import {
     conditionalFilterType
 } from '@redhat-cloud-services/frontend-components/components/ConditionalFilter';
@@ -70,7 +65,7 @@ const SELECTED_FILTER_CONFIG = {
     ))
 };
 
-const POLICIES_FILTER_CONFIG = (policies) => ({
+export const POLICIES_FILTER_CONFIG = (policies) => ({
     type: conditionalFilterType.checkbox,
     label: 'Policy',
     items: policies.map(policy => (
@@ -81,7 +76,7 @@ const POLICIES_FILTER_CONFIG = (policies) => ({
     ))
 });
 
-const buildFilterConfig = (showPassFailFilter, selectedFilter, policies) => {
+const buildFilterConfig = ({ showPassFailFilter, policies, selectedFilter }) => {
     const config = [ ...BASE_FILTER_CONFIGURATION ];
 
     if (showPassFailFilter) {

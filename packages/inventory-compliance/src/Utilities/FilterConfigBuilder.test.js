@@ -2,7 +2,7 @@ import buildFilterConfig from './FilterBuilderConfigBuilder';
 import FilterConfigBuilder from './FilterConfigBuilder';
 
 describe('FilterConfigBuilder', () => {
-    const config = buildFilterConfig(true, true, []);
+    const config = buildFilterConfig({ selectedFilter: true, showPassFailFilter: true, policies: [] });
     let builder;
 
     beforeEach(() => {

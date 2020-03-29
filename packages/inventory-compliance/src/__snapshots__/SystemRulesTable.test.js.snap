@@ -114,21 +114,6 @@ exports[`SystemRulesTable component should render 1`] = `
             "label": "Passed",
             "type": "radio",
           },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": Array [],
-            },
-            "id": "selected",
-            "label": "Selected",
-            "type": "checkbox",
-          },
         ],
       }
     }
@@ -1185,21 +1170,6 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
             "label": "Passed",
             "type": "radio",
           },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": Array [],
-            },
-            "id": "selected",
-            "label": "Selected",
-            "type": "checkbox",
-          },
         ],
       }
     }
@@ -1463,21 +1433,6 @@ exports[`SystemRulesTable component should render search results by rule name 1`
             "id": "passed",
             "label": "Passed",
             "type": "radio",
-          },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": Array [],
-            },
-            "id": "selected",
-            "label": "Selected",
-            "type": "checkbox",
           },
         ],
       }
@@ -1794,21 +1749,6 @@ exports[`SystemRulesTable component should render search results on any page, re
             "label": "Passed",
             "type": "radio",
           },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": Array [],
-            },
-            "id": "selected",
-            "label": "Selected",
-            "type": "checkbox",
-          },
         ],
       }
     }
@@ -2114,21 +2054,6 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
             "id": "passed",
             "label": "Passed",
             "type": "radio",
-          },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": Array [],
-            },
-            "id": "selected",
-            "label": "Selected",
-            "type": "checkbox",
           },
         ],
       }
@@ -3093,21 +3018,6 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
             "label": "Passed",
             "type": "radio",
           },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": Array [],
-            },
-            "id": "selected",
-            "label": "Selected",
-            "type": "checkbox",
-          },
         ],
       }
     }
@@ -4050,21 +3960,6 @@ exports[`SystemRulesTable component should render without remediations if prop p
             "id": "passed",
             "label": "Passed",
             "type": "radio",
-          },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": Array [],
-            },
-            "id": "selected",
-            "label": "Selected",
-            "type": "checkbox",
           },
         ],
       }
