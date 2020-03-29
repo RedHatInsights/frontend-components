@@ -23,6 +23,31 @@ class SystemRulesTable extends React.Component {
         filterChips: []
     };
 
+    constructor (props) {
+        super(props);
+        this.config = buildFilterConfig(
+            props.columns.filter((c) => (c.title === 'Passed')).length > 0,
+            props.profileRules.map((p) => (p.profile)),
+            {
+                ...props.tailoringEnabled,
+                ...props.selectedFilter,
+                ...this.props.hidePassed
+            }
+        );
+        this.filterConfigBuilder = new FilterConfigBuilder(this.config);
+        this.chipBuilder = this.filterConfigBuilder.getChipBuilder();
+        this.filterBuilder = this.filterConfigBuilder.getFilterBuilder();
+
+        this.state = {
+            ...this.state,
+            rules: this.toRulesWithPolicies(props.profileRules),
+            activeFilters: this.filterConfigBuilder.initialDefaultState({
+                selected: this.props.selectedFilter ? [ 'selected' ] : undefined,
+                passed: this.props.hidePassed ? [ 'failed' ] : undefined
+            })
+        };
+    }
+
     combineDuplicateRules = (rules) => {
         const { selectedRefIds } = this.props;
 
@@ -130,51 +155,12 @@ class SystemRulesTable extends React.Component {
         )
     )
 
-    initFilterConfig = (callback) => {
-        const config = buildFilterConfig(
-            this.props.columns.filter((c) => (c.title === 'Passed')).length > 0,
-            this.props.profileRules.map((p) => (p.profile)),
-            {
-                ...this.props.tailoringEnabled,
-                ...this.props.selectedFilter,
-                ...this.props.hidePassed
-            }
-        );
-        const filterConfigBuilder = new FilterConfigBuilder(config);
-        const chipBuilder = filterConfigBuilder.getChipBuilder();
-        const filterBuilder = filterConfigBuilder.getFilterBuilder();
-
-        this.setState({
-            filterConfigBuilder,
-            chipBuilder,
-            filterBuilder,
-            activeFilters: filterConfigBuilder.initialDefaultState({
-                selected: this.props.selectedFilter ? [ 'selected' ] : undefined,
-                passed: this.props.hidePassed ? [ 'failed' ] : undefined
-            })
-        }, callback ? callback() : () => ({}));
-    }
-
-    initFilterConfigWithRules = () => (
-        this.initFilterConfig(() => (
-            this.setState({
-                rules: this.toRulesWithPolicies(this.props.profileRules)
-            }, this.updateTable)
-        ))
-    )
-
     componentDidMount = () => (
-        this.initFilterConfigWithRules()
+        this.updateTable()
     )
-
-    componentDidUpdate = (prevProps) => {
-        if (this.props.profileRules !== prevProps.profileRules) {
-            this.initFilterConfigWithRules();
-        }
-    }
 
     updateChips = () => (
-        this.state.chipBuilder.chipsFor(this.state.activeFilters).then((filterChips) => (
+        this.chipBuilder.chipsFor(this.state.activeFilters).then((filterChips) => (
             this.setState({
                 filterChips
             })
@@ -196,7 +182,7 @@ class SystemRulesTable extends React.Component {
     }
 
     filteredRules = () => (
-        this.state.filterConfigBuilder.applyFilterToObjectArray(
+        this.filterConfigBuilder.applyFilterToObjectArray(
             this.state.rules, this.state.activeFilters
         )
     )
@@ -220,7 +206,7 @@ class SystemRulesTable extends React.Component {
 
     deleteFilter = (chips) => {
         const chipCategory = chips.category;
-        const chipValue = this.state.filterConfigBuilder.valueForLabel(chips.chips[0].name, chipCategory);
+        const chipValue = this.filterConfigBuilder.valueForLabel(chips.chips[0].name, chipCategory);
         const stateProp = stringToId(chipCategory);
         const currentState = this.state.activeFilters[stateProp];
         const newFilterState = this.removeFilterFromFilterState(currentState, chipValue);
@@ -236,7 +222,7 @@ class SystemRulesTable extends React.Component {
 
     clearAllFilter = () => {
         this.setState({
-            activeFilters: this.state.filterConfigBuilder.initialDefaultState(),
+            activeFilters: this.filterConfigBuilder.initialDefaultState(),
             filterChips: []
         }, this.updateTable);
     }
@@ -346,7 +332,7 @@ class SystemRulesTable extends React.Component {
 
     render() {
         const {
-            sortBy, page, itemsPerPage, filterConfigBuilder, filterChips, rows, ruleCount
+            sortBy, page, itemsPerPage, filterChips, rows, ruleCount
         } = this.state;
         const { remediationsEnabled, system, loading, columns } = this.props;
         const pagination = {
@@ -360,10 +346,10 @@ class SystemRulesTable extends React.Component {
             (rule) => (rule.remediationAvailable)
         );
 
-        if (loading || !filterConfigBuilder) {
+        if (loading) {
             return <RuleLoadingTable columns={columns} />;
         } else {
-            const filterConfig = filterConfigBuilder.buildConfiguration(
+            const filterConfig = this.filterConfigBuilder.buildConfiguration(
                 this.onFilterUpdate,
                 this.state.activeFilters,
                 { hideLabel: true }
