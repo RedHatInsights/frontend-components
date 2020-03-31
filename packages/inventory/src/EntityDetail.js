@@ -12,9 +12,15 @@ import {
     Dropdown,
     DropdownItem,
     DropdownPosition,
-    DropdownToggle
+    DropdownToggle,
+    Button,
+    EmptyState,
+    EmptyStateVariant,
+    EmptyStateIcon,
+    EmptyStateBody
 } from '@patternfly/react-core';
 import { Skeleton, SkeletonSize, DateFormat, CullingInformation } from '@redhat-cloud-services/frontend-components';
+import { CubesIcon } from '@patternfly/react-icons';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
@@ -55,6 +61,11 @@ class EntityDetails extends Component {
             isModalOpen: !this.state.isModalOpen
         });
     };
+
+    redirectToInventoryList = (id) => {
+        const { match: { url }, history } = this.props;
+        history.push(url.replace(new RegExp(`${[ id ]}.*`, 'g'), ''));
+    }
 
     generateTop = () => {
         const { entity, loaded, actions, deleteEntity, addNotification } = this.props;
@@ -106,10 +117,11 @@ class EntityDetails extends Component {
                                 description: `Removal of ${entity.display_name} started.`,
                                 dismissable: false
                             });
-                            deleteEntity([ entity.id ], entity.display_name, () => {
-                                const { match: { url }, history } = this.props;
-                                history.push(url.replace(new RegExp(`${[ entity.id ]}.*`, 'g'), ''));
-                            });
+                            deleteEntity(
+                                [ entity.id ],
+                                entity.display_name,
+                                () => this.redirectToInventoryList(entity.id)
+                            );
                             this.handleModalToggle(false);
                         }}
                     />)}
@@ -159,8 +171,24 @@ class EntityDetails extends Component {
         );
     }
 
+    entityTopBar = () => {
+        const { loaded, entity } = this.props;
+        return (
+            <Fragment>
+                { this.generateTop() }
+                { this.generateFacts() }
+                {
+                    loaded ?
+                        <TagWithDialog count={ entity && entity.tags && entity.tags.length } systemId={ entity && entity.id } /> :
+                        <Skeleton size={ SkeletonSize.sm }>&nbsp;</Skeleton>
+                }
+                <TagsModal />
+            </Fragment>
+        );
+    }
+
     render() {
-        const { useCard, loaded, entity } = this.props;
+        const { useCard, loaded, entity, match } = this.props;
 
         return (
             <div className="ins-entity-detail">
@@ -173,16 +201,23 @@ class EntityDetails extends Component {
                             { this.generateFacts() }
                         </CardBody>
                     </Card> :
-                    <Fragment>
-                        { this.generateTop() }
-                        { this.generateFacts() }
-                        {
-                            loaded ?
-                                <TagWithDialog count={ entity.tags && entity.tags.length } systemId={ entity.id } /> :
-                                <Skeleton size={ SkeletonSize.sm }>&nbsp;</Skeleton>
-                        }
-                        <TagsModal />
-                    </Fragment>
+                    loaded && !entity ? (
+                        <EmptyState variant={EmptyStateVariant.full}>
+                            <EmptyStateIcon icon={CubesIcon} />
+                            <Title headingLevel="h5" size="lg">
+                                System not found
+                            </Title>
+                            <EmptyStateBody>
+                                System with ID {match.params.inventoryId} does not exist
+                            </EmptyStateBody>
+                            <Button
+                                variant="primary"
+                                onClick={() => this.redirectToInventoryList(match.params.inventoryId)}
+                            >
+                                Back to previous pages
+                            </Button>
+                        </EmptyState>
+                    ) : this.entityTopBar()
                 }
                 <ApplicationDetails />
             </div>
