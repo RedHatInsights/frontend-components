@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import './InventoryList.scss';
 import { InventoryContext } from './Inventory';
 import { CancelToken } from 'axios';
+import isEqual from 'lodash/isEqual';
 
 class ContextInventoryList extends React.Component {
     constructor(props) {
@@ -52,9 +53,9 @@ class ContextInventoryList extends React.Component {
 
     componentDidUpdate(prevProps) {
         const { items, hasItems, sortBy } = this.props;
-        if (hasItems && (JSON.stringify(items) !== JSON.stringify(prevProps.items))) {
+        if (hasItems && !isEqual(items, prevProps.items)) {
             this.loadEntities({}, false);
-        } else if (!hasItems && JSON.stringify(prevProps.sortBy) !== JSON.stringify(sortBy)) {
+        } else if (!hasItems && !isEqual(prevProps.sortBy, sortBy)) {
             this.loadEntities({}, false);
         }
     }
