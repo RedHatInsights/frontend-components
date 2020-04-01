@@ -7,12 +7,14 @@ import SourceWizardSummary from './components/SourceWizardSummary';
 import Description from './components/Description';
 import CardSelect from './components/CardSelect';
 import AuthSelect from './components/AuthSelect';
+import Authentication from './components/Authentication';
 
 export const mapperExtension = {
     'auth-select': AuthSelect,
     description: Description,
     'card-select': CardSelect,
-    summary: SourceWizardSummary
+    summary: SourceWizardSummary,
+    authentication: Authentication
 };
 
 const SourcesFormRenderer = props => (
