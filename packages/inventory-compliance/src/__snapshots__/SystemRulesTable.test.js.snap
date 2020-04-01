@@ -15,7 +15,7 @@ exports[`SystemRulesTable component should render 1`] = `
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "",
             },
             "id": "name",
@@ -1069,7 +1069,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "Docker",
             },
             "id": "name",
@@ -1335,7 +1335,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "Docker",
             },
             "id": "name",
@@ -1650,7 +1650,7 @@ exports[`SystemRulesTable component should render search results on any page, re
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "Docker",
             },
             "id": "name",
@@ -1956,7 +1956,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "",
             },
             "id": "name",
@@ -2919,7 +2919,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "",
             },
             "id": "name",
@@ -3862,7 +3862,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "",
             },
             "id": "name",
@@ -4821,7 +4821,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "",
             },
             "id": "name",
@@ -5228,7 +5228,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "",
             },
             "id": "name",
@@ -6046,7 +6046,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
         "items": Array [
           Object {
             "filterValues": Object {
-              "onSubmit": [Function],
+              "onChange": [Function],
               "value": "",
             },
             "id": "name",

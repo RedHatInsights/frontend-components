@@ -19,7 +19,7 @@ Object {
   "items": Array [
     Object {
       "filterValues": Object {
-        "onSubmit": [Function],
+        "onChange": [Function],
         "value": "",
       },
       "id": "name",
