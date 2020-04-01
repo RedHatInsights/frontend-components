@@ -2,13 +2,14 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Pagination, PaginationVariant, DataToolbarItem } from '@patternfly/react-core';
 import { CheckIcon, CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
-import { Table, TableHeader, TableBody, SortByDirection } from '@patternfly/react-table';
+import { Table, TableHeader, TableBody } from '@patternfly/react-table';
 import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 
 import './compliance.scss';
 import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from './PresentationalComponents';
 import {
-    FilterConfigBuilder, stringToId, buildFilterConfig, POLICIES_FILTER_CONFIG, toRulesArray
+    FilterConfigBuilder, stringToId, buildFilterConfig, POLICIES_FILTER_CONFIG,
+    toRulesArray, orderByArray, orderRuleArrayByProp
 } from './Utilities';
 import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
 import ComplianceRemediationButton from './ComplianceRemediationButton';
@@ -259,32 +260,27 @@ class SystemRulesTable extends React.Component {
         this.state.rules.filter((rule) => (rule.isSelected))
     )
 
-    onSort = (_, index, direction, extraData) => {
-        const _getSortable = (property, rule) => {
-            switch (property) {
-                case 'rule':
-                    return rule.title;
-                case 'policy':
-                    return rule.policies[0].name;
-                case 'severity':
-                    return rule.severity;
-                case 'passed':
-                    return rule.compliant;
-                case 'column-6':
-                    return rule.remediationAvailable;
-                default:
-                    return rule.title;
-            }
-        };
+    defaultSorting = (...args) => (
+        orderRuleArrayByProp(...args)
+    )
 
+    severitySorting = (property, rules, direction) => (
+        orderByArray(rules, property, [ 'high', 'medium', 'low', 'unkown' ], direction)
+    )
+
+    getSorter = (property) => {
+        switch (property) {
+            case 'severity':
+                return this.severitySorting;
+            default:
+                return this.defaultSorting;
+        }
+    }
+
+    onSort = (_, index, direction, extraData) => {
         const property = extraData.property;
-        const rules = this.state.rules.sort((a, b) => {
-            if (direction === SortByDirection.asc) {
-                return String(_getSortable(property, a)).localeCompare(String(_getSortable(property, b)));
-            } else {
-                return -String(_getSortable(property, a)).localeCompare(String(_getSortable(property, b)));
-            }
-        });
+        const sorter = this.getSorter(property);
+        const rules = sorter(property, this.state.rules, direction);
 
         this.setState({
             sortBy: {
