@@ -1,0 +1,108 @@
+import React from 'react';
+import { mount } from 'enzyme';
+
+import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
+import { formFieldsMapper, layoutMapper } from '@data-driven-forms/pf4-component-mapper';
+
+import SourcesFormRenderer from '../../sourceFormRenderer';
+import Authentication from '../../sourceFormRenderer/components/Authentication';
+
+describe('Authentication test', () => {
+    let schema;
+    let onSubmit;
+    let initialProps;
+
+    beforeEach(() => {
+        schema = {
+            fields: [{
+                component: 'authentication',
+                name: 'authentication.password',
+                validate: [
+                    { type: validatorTypes.REQUIRED },
+                    {
+                        type: validatorTypes.MIN_LENGTH,
+                        threshold: 2
+                    }
+                ],
+                isRequired: true
+            }]
+        };
+        onSubmit = jest.fn();
+        initialProps = {
+            formFieldsMapper: {
+                ...formFieldsMapper,
+                authentication: Authentication
+            },
+            schema,
+            onSubmit: (values) => onSubmit(values),
+            layoutMapper
+        };
+    });
+
+    it('renders not editing', () => {
+        const wrapper = mount(<SourcesFormRenderer
+            {...initialProps}
+        />);
+
+        expect(wrapper.find(Authentication)).toHaveLength(1);
+        expect(wrapper.find(formFieldsMapper[componentTypes.TEXT_FIELD]).props().isRequired).toEqual(true);
+        expect(wrapper.find(formFieldsMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual(undefined);
+
+        wrapper.find('form').simulate('submit');
+        wrapper.update();
+
+        expect(onSubmit).not.toHaveBeenCalled();
+
+        wrapper.find('input').instance().value = 's'; // too short
+        wrapper.find('input').simulate('change');
+        wrapper.update();
+
+        wrapper.find('form').simulate('submit');
+        wrapper.update();
+
+        expect(onSubmit).not.toHaveBeenCalled();
+
+        wrapper.find('input').instance().value = 'some-value';
+        wrapper.find('input').simulate('change');
+        wrapper.update();
+
+        wrapper.find('form').simulate('submit');
+        expect(onSubmit).toHaveBeenCalledWith({
+            authentication: {
+                password: 'some-value'
+            }
+        });
+    });
+
+    it('renders editing and removes required validator (min length still works)', () => {
+        const wrapper = mount(<SourcesFormRenderer
+            {...initialProps}
+            initialValues={{
+                authentication: {
+                    id: 'someid'
+                }
+            }}
+        />);
+
+        expect(wrapper.find(Authentication)).toHaveLength(1);
+        expect(wrapper.find(formFieldsMapper[componentTypes.TEXT_FIELD]).props().isRequired).toEqual(false);
+        expect(wrapper.find(formFieldsMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual(expect.any(String));
+
+        wrapper.find('form').simulate('submit');
+        wrapper.update();
+
+        expect(onSubmit).toHaveBeenCalledWith({
+            authentication: {
+                id: 'someid'
+            }
+        });
+        onSubmit.mockClear();
+
+        wrapper.find('input').instance().value = 's';
+        wrapper.find('input').simulate('change');
+        wrapper.update();
+
+        wrapper.find('form').simulate('submit');
+        expect(onSubmit).not.toHaveBeenCalled();
+    });
+});
