@@ -169,7 +169,7 @@ describe('schema builder', () => {
             ];
 
             expect(injectAuthFieldsInfo(fields, 'nonsense', 'nonsense', 'generic', disablePassword)).toEqual([
-                { name: 'authentication.password', validate: [{ type: 'cosi' }], isRequired: false, helperText: expect.any(String) },
+                { ...passwordField, component: 'authentication' },
                 unchangedField
             ]);
         });
@@ -283,13 +283,14 @@ describe('schema builder', () => {
         let expectedSchema;
         const APPEND_ENDPOINT_FIELDS = [ true ];
         const EMPTY_APPEND_ENDPOINT = [ ];
-        const NOT_EDITING = false;
 
         describe('createGenericAuthTypeSelection', () => {
             it('generate single selection', () => {
                 const fields = [
                     ...OPENSHIFT_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey)
-                    .map((field) => expect.objectContaining(field)),
+                    .map((field) => expect.objectContaining(field.name === 'authentication.password' ?
+                        { ...field, component: 'authentication' } : field
+                    )),
                     createEndpointFlagger(false)
                 ];
 
@@ -301,7 +302,7 @@ describe('schema builder', () => {
                     nextStep: 'summary'
                 });
 
-                expect(createGenericAuthTypeSelection(OPENSHIFT_TYPE, APPEND_ENDPOINT_FIELDS, NOT_EDITING)).toEqual(expectedSchema);
+                expect(createGenericAuthTypeSelection(OPENSHIFT_TYPE, APPEND_ENDPOINT_FIELDS)).toEqual(expectedSchema);
             });
 
             it('generate single selection with endpoint', () => {
@@ -313,7 +314,7 @@ describe('schema builder', () => {
                     nextStep: `${OPENSHIFT_TYPE.name}-endpoint`
                 });
 
-                expect(createGenericAuthTypeSelection(OPENSHIFT_TYPE, EMPTY_APPEND_ENDPOINT, NOT_EDITING)).toEqual(expectedSchema);
+                expect(createGenericAuthTypeSelection(OPENSHIFT_TYPE, EMPTY_APPEND_ENDPOINT)).toEqual(expectedSchema);
             });
 
             it('generate multiple selection', () => {
@@ -337,7 +338,7 @@ describe('schema builder', () => {
                     }
                 });
 
-                expect(createGenericAuthTypeSelection(AMAZON_TYPE, APPEND_ENDPOINT_FIELDS, NOT_EDITING)).toEqual(expectedSchema);
+                expect(createGenericAuthTypeSelection(AMAZON_TYPE, APPEND_ENDPOINT_FIELDS)).toEqual(expectedSchema);
             });
         });
 
@@ -357,7 +358,7 @@ describe('schema builder', () => {
                     nextStep: 'summary'
                 });
 
-                expect(createSpecificAuthTypeSelection(AZURE_TYPE, TOPOLOGY_INV_APP, APPEND_ENDPOINT_FIELDS, NOT_EDITING)).toEqual(expectedSchema);
+                expect(createSpecificAuthTypeSelection(AZURE_TYPE, TOPOLOGY_INV_APP, APPEND_ENDPOINT_FIELDS)).toEqual(expectedSchema);
             });
 
             it('generate single selection with endpoints', () => {
@@ -372,7 +373,7 @@ describe('schema builder', () => {
                     nextStep: `${AZURE_TYPE.name}-endpoint`
                 });
 
-                expect(createSpecificAuthTypeSelection(AZURE_TYPE, TOPOLOGY_INV_APP, EMPTY_APPEND_ENDPOINT, NOT_EDITING)).toEqual(expectedSchema);
+                expect(createSpecificAuthTypeSelection(AZURE_TYPE, TOPOLOGY_INV_APP, EMPTY_APPEND_ENDPOINT)).toEqual(expectedSchema);
             });
 
             it('generate with custom steps', () => {
@@ -389,7 +390,7 @@ describe('schema builder', () => {
                     nextStep: firstAdditionalStep.nextStep
                 });
 
-                expect(createSpecificAuthTypeSelection(AMAZON_TYPE, COST_MANAGEMENT_APP, APPEND_ENDPOINT_FIELDS, NOT_EDITING)).toEqual(expectedSchema);
+                expect(createSpecificAuthTypeSelection(AMAZON_TYPE, COST_MANAGEMENT_APP, APPEND_ENDPOINT_FIELDS)).toEqual(expectedSchema);
             });
         });
     });

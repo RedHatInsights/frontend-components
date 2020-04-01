@@ -32,10 +32,7 @@ export const getAdditionalStepFields = (fields, stepKey) => fields.filter(field 
 
 export const getNoStepsFields = (fields, additionalStepKeys = []) => fields.filter(field => !field.stepKey || additionalStepKeys.includes(field.stepKey));
 
-export const removeRequiredValidator = (validate = []) =>
-    validate.filter(validation => validation.type !== validatorTypes.REQUIRED);
-
-export const injectAuthFieldsInfo = (fields, type, auth, applicationName, doNotRequirePassword) => fields.map((field) => {
+export const injectAuthFieldsInfo = (fields, type, auth, applicationName) => fields.map((field) => {
     const specificFields = get(hardcodedSchemas, [ type, 'authentication', auth, applicationName ]);
 
     const hardcodedField = specificFields ? get(specificFields, field.name) :
@@ -43,10 +40,8 @@ export const injectAuthFieldsInfo = (fields, type, auth, applicationName, doNotR
 
     const resultedField = hardcodedField ? { ...field, ...hardcodedField } : field;
 
-    if (resultedField.name === 'authentication.password' && doNotRequirePassword) {
-        resultedField.helperText = `Changing this resets your current ${resultedField.label}.`;
-        resultedField.isRequired = false;
-        resultedField.validate = removeRequiredValidator(resultedField.validate);
+    if (resultedField.name === 'authentication.password') {
+        resultedField.component = 'authentication';
     }
 
     return resultedField;
@@ -74,7 +69,7 @@ export const createEndpointStep = (endpoint, typeName) => ({
     nextStep: 'summary'
 });
 
-export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpointStep, fields, appName = 'generic', doNotRequirePassword) =>
+export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpointStep, fields, appName = 'generic') =>
     additionalSteps.map((step) => {
         const stepKey = step.stepKey || `${name}-${authName}-${appName}-additional-step`;
 
@@ -87,8 +82,8 @@ export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpoi
             nextStep: hasEndpointStep && !skipEndpoint && !customSteps ? `${name}-endpoint` : 'summary',
             ...step,
             fields: [
-                ...injectAuthFieldsInfo(step.fields, name, authName, appName, doNotRequirePassword),
-                ...injectAuthFieldsInfo(getAdditionalStepFields(fields, stepKey), name, authName, appName, doNotRequirePassword)
+                ...injectAuthFieldsInfo(step.fields, name, authName, appName),
+                ...injectAuthFieldsInfo(getAdditionalStepFields(fields, stepKey), name, authName, appName)
             ]
         });
     });
@@ -202,7 +197,7 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
     }
 };
 
-export const createSpecificAuthTypeSelection = (type, appType, endpointFields, disableAuthType, doNotRequirePassword) => {
+export const createSpecificAuthTypeSelection = (type, appType, endpointFields, disableAuthType) => {
     const auths = type.schema.authentication;
     const supportedAuthTypes = appType.supported_authentication_types[type.name];
     const hasMultipleAuthTypes = supportedAuthTypes.length > 1;
@@ -251,7 +246,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
                 className: 'pf-u-pl-md',
                 fields: [
                     ...getAdditionalAuthFields(type.name, auth.type, appName),
-                    ...injectAuthFieldsInfo(getNoStepsFields(authFields, additionalIncludesStepKeys), type.name, auth.type, appName, doNotRequirePassword)
+                    ...injectAuthFieldsInfo(getNoStepsFields(authFields, additionalIncludesStepKeys), type.name, auth.type, appName)
                 ],
                 condition: {
                     when: 'auth_select',
@@ -314,7 +309,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
                 ...firstAdditonalStep,
                 fields: [
                     ...fields,
-                    ...injectAuthFieldsInfo([ ...firstAdditonalStep.fields, ...additionalFields ], type.name, auth.type, appName, doNotRequirePassword)
+                    ...injectAuthFieldsInfo([ ...firstAdditonalStep.fields, ...additionalFields ], type.name, auth.type, appName)
                 ],
                 stepKey: `${type.name}-${appType.id}`
             };
@@ -327,7 +322,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
             fields: [
                 ...fields,
                 ...getAdditionalAuthFields(type.name, auth.type, appName),
-                ...injectAuthFieldsInfo(getNoStepsFields(auth.fields, additionalIncludesStepKeys), type.name, auth.type, appName, doNotRequirePassword)
+                ...injectAuthFieldsInfo(getNoStepsFields(auth.fields, additionalIncludesStepKeys), type.name, auth.type, appName)
             ],
             nextStep,
             ...stepProps
