@@ -22,9 +22,9 @@ const BASE_FILTER_CONFIGURATION = [
         type: conditionalFilterType.text,
         label: 'Name',
         filter: (rules, value) => filterRulesWithAllValues(rules, [ value ], (rule, value) => (
-            rule.title.includes(value) ||
-            (rule.identifier.title && rule.identifier.title.includes(value)) ||
-            rule.references.filter((reference) => reference.label.includes(value)).length > 0
+            rule.title.toLowerCase().includes(value.toLowerCase()) ||
+            (rule.identifier.title && rule.identifier.titletoLowerCase().includes(value.toLowerCase())) ||
+            rule.references.filter((reference) => reference.label.toLowerCase().includes(value.toLowerCase())).length > 0
         ))
     },
     {

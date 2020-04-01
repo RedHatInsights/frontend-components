@@ -1,22 +1,21 @@
-const combineDuplicateRules = (rules, selectedRefIds) => {
-    let rulesWithPolicies = [];
+const appendProfileToDuplicates = (rules, selectedRefIds) => {
+    let rulesWithPoliciesAppended = [];
     rules.forEach((rule) => {
-        const existingRule = rulesWithPolicies.filter((erule) => (erule.refId === rule.refId))[0];
+        const existingRule = rulesWithPoliciesAppended.filter((erule) => (erule.refId === rule.refId))[0];
 
-        if (existingRule) {
-            rulesWithPolicies[rulesWithPolicies.indexOf(existingRule)] = {
-                ...existingRule,
-                isSelected: (selectedRefIds || []).includes(rule.refId),
-                policies: [
-                    ...existingRule.policies,
-                    ...rule.policies
-                ]
-            };
-        } else {
-            rulesWithPolicies.push(rule);
-        }
+        const newRule = existingRule ? {
+            ...existingRule,
+            title: `${existingRule.title}, ${rule.policies[0].name}`,
+            refId: `${existingRule.refId}-${rule.policies[0].refId}`,
+            isSelected: (selectedRefIds || []).includes(rule.refId),
+            policies: [
+                ...rule.policies
+            ]
+        } : rule;
+
+        rulesWithPoliciesAppended.push(newRule);
     });
-    return rulesWithPolicies;
+    return rulesWithPoliciesAppended;
 };
 
 export const toRulesArray = (policiesWithRules, selectedRefIds) => {
@@ -32,5 +31,5 @@ export const toRulesArray = (policiesWithRules, selectedRefIds) => {
             }
         ))
     ));
-    return combineDuplicateRules(rules, selectedRefIds);
+    return appendProfileToDuplicates(rules, selectedRefIds);
 };
