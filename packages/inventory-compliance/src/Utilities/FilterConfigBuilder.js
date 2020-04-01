@@ -34,7 +34,7 @@ class FilterConfigBuilder {
         id: stringToId(item.label),
         filterValues: {
             value,
-            onChange: (_event, selectedValues) => {
+            [item.event || 'onChange']: (_event, selectedValues) => {
                 handler(stringToId(item.label), selectedValues);
             }
         }
