@@ -166,6 +166,26 @@ class FilterConfigBuilder {
 
         return filteredObjects;
     }
+
+    removeFilterFromFilterState = (currentState, filter) => (
+        (typeof(currentState) === 'string') ? '' :
+            currentState.filter((value) =>
+                value !== filter
+            )
+    )
+
+    removeFilterWithChip = (chips, activeFilters) => {
+        const chipCategory = chips.category;
+        const chipValue = this.valueForLabel(chips.chips[0].name, chipCategory);
+        const stateProp = stringToId(chipCategory);
+        const currentState = activeFilters[stateProp];
+        const newFilterState = this.removeFilterFromFilterState(currentState, chipValue);
+
+        return {
+            ...activeFilters,
+            [stateProp]: newFilterState
+        };
+    }
 }
 
 export default FilterConfigBuilder;

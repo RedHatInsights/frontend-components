@@ -193,13 +193,6 @@ class SystemRulesTable extends React.Component {
         }
     }
 
-    removeFilterFromFilterState = (currentState, filter) => (
-        (typeof(currentState) === 'string') ? '' :
-            currentState.filter((value) =>
-                value !== filter
-            )
-    )
-
     onFilterUpdate = (filter, values) => (
         this.setState({
             page: 1,
@@ -211,16 +204,9 @@ class SystemRulesTable extends React.Component {
     )
 
     deleteFilter = (chips) => {
-        const chipCategory = chips.category;
-        const chipValue = this.filterConfigBuilder.valueForLabel(chips.chips[0].name, chipCategory);
-        const stateProp = stringToId(chipCategory);
-        const currentState = this.state.activeFilters[stateProp];
-        const newFilterState = this.removeFilterFromFilterState(currentState, chipValue);
-        const activeFilters =  {
-            ...this.state.activeFilters,
-            [stateProp]: newFilterState
-        };
-
+        const activeFilters =  this.filterConfigBuilder.removeFilterWithChip(
+            chips, this.state.activeFilters
+        );
         this.setState({
             activeFilters
         });
