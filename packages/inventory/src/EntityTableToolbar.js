@@ -222,7 +222,7 @@ class ContextEntityTableToolbar extends Component {
                 }] : [],
                 ...(activeFiltersConfig && activeFiltersConfig.filters) || []
             ],
-            onDelete: (e, [ deleted ], isAll) => {
+            onDelete: (e, [ deleted, ...restDeleted ], isAll) => {
                 if (isAll) {
                     this.updateData({ page: 1, perPage, filters: [] });
                     onClearFilters();
@@ -234,11 +234,11 @@ class ContextEntityTableToolbar extends Component {
                     }, () => {
                         getAllTags(filterTagsBy, {});
                     });
-                } else {
+                } else if (deleted.type) {
                     this.deleteMapper[deleted.type](deleted);
                 }
 
-                activeFiltersConfig && activeFiltersConfig.onDelete && activeFiltersConfig.onDelete(e, deleted, isAll);
+                activeFiltersConfig && activeFiltersConfig.onDelete && activeFiltersConfig.onDelete(e, [ deleted, ...restDeleted ], isAll);
             }
         };
     }
