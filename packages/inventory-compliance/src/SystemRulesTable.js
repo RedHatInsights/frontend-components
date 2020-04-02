@@ -115,15 +115,15 @@ class SystemRulesTable extends React.Component {
         }
     }
 
-    onSort = (_, index, direction, extraData) => {
+    onSort = (_, index, direction, extraData) => (
         this.setState({
             sortBy: {
                 index,
                 direction,
-                ...extraData.property
+                property: extraData.property
             }
-        });
-    }
+        })
+    )
 
     sortedRules = (rules) => {
         const { property, direction } = this.state.sortBy;
@@ -157,33 +157,40 @@ class SystemRulesTable extends React.Component {
         });
     }
 
-    openedRules = (rules) => {
-        const { openIds } = this.state;
-        return rules.map((rule) => ({
+    openedRules = (rules) => (
+        rules.map((rule) => ({
             ...rule,
-            isOpen: openIds.includes(rule.rowKey)
-        }));
-    }
+            isOpen: this.state.openIds.includes(rule.rowKey)
+        }))
+    )
 
     getRules = () => {
         const rules = toRulesArray(this.props.profileRules);
-        return this.filteredRules(
-            this.sortedRules(
+        return this.sortedRules(
+            this.filteredRules(
                 this.selectedRules(this.openedRules(rules))
             )
         );
     }
 
-    updatePolicyFilterConfig = (policies) => {
+    updatePolicyFilterConfig = () => {
+        const policies = this.props.profileRules.map((p) => (
+            p.profile
+        )).filter((p) => !!p);
+
         if (policies.length > 1) {
             this.filterConfigBuilder.addConfigItem(POLICIES_FILTER_CONFIG(policies));
         }
     }
 
     componentDidMount = () => {
-        this.updatePolicyFilterConfig(this.props.profileRules.map((p) => (
-            p.profile
-        )).filter((p) => !!p));
+        this.updatePolicyFilterConfig();
+    }
+
+    componentDidUpdate = (prevProps) => {
+        if (this.props.profileRules !== prevProps.profileRules) {
+            this.updatePolicyFilterConfig();
+        }
     }
 
     removeFilterFromFilterState = (currentState, filter) => (

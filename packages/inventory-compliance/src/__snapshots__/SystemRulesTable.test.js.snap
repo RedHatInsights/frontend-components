@@ -208,7 +208,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify that All World-Writable Directories Have Sticky Bits Set"
               />,
             },
@@ -253,7 +253,7 @@ exports[`SystemRulesTable component should render 1`] = `
                   Object {
                     "compliant": true,
                     "description": "When the so-called 'sticky bit' is set on a directory, only the owner of a given file may remove that file from the directory. Without the sticky bit, any user with write access to a directory may remove any file in the directory. Setting the sticky bit prevents users from removing each other's files. In cases where there is no reason for a directory to be world-writable, a better solution is to remove that permission rather than to set the sticky bit. However, if a directory is used by a particular application, consult that application's documentation instead of blindly changing modes. To set the sticky bit on a world-writable directory DIR, run the following command: $ sudo chmod +t DIR",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -280,7 +280,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify File Hashes with RPM"
               />,
             },
@@ -325,7 +325,7 @@ exports[`SystemRulesTable component should render 1`] = `
                   Object {
                     "compliant": true,
                     "description": "Without cryptographic integrity protections, system executables and files can be altered by unauthorized users without detection. The RPM package management system can check the hashes of installed software packages, including many that are important to system security. To verify that the cryptographic hash of system files and commands match vendor values, run the following command to list which files on the system have hashes that differ from what is expected by the RPM database: $ rpm -Va | grep '^..5' A \\"c\\" in the second column indicates that a file is a configuration file, which may appropriately be expected to change.  If the file was not expected to change, investigate the cause of the change using audit logs or other means. The package can then be reinstalled to restore the file. Run the following command to determine which package owns the file: $ rpm -qf FILENAME The package can be reinstalled from a yum repository using the command: $ sudo yum reinstall PACKAGENAME Alternatively, the package can be reinstalled from trusted media using the command: $ sudo rpm -Uvh PACKAGENAME",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -352,7 +352,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify and Correct File Permissions with RPM"
               />,
             },
@@ -397,7 +397,7 @@ exports[`SystemRulesTable component should render 1`] = `
                   Object {
                     "compliant": true,
                     "description": "The RPM package management system can check file access permissions of installed software packages, including many that are important to system security. Verify that the file permissions of system files and commands match vendor values. Check the file permissions with the following command: $ sudo rpm -Va | awk '{ if (substr($0,2,1)==\\"M\\") print $NF }' Output indicates files that do not match vendor defaults. After locating a file with incorrect permissions, run the following command to determine which package owns it: $ rpm -qf FILENAME Next, run the following command to reset its permissions to the correct values: $ sudo rpm --setperms PACKAGENAME",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -514,7 +514,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify User/Group Information"
               />,
             },
@@ -559,7 +559,7 @@ exports[`SystemRulesTable component should render 1`] = `
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -586,7 +586,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Network Environment"
               />,
             },
@@ -631,7 +631,7 @@ exports[`SystemRulesTable component should render 1`] = `
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -658,7 +658,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Mandatory Access Controls"
               />,
             },
@@ -703,7 +703,7 @@ exports[`SystemRulesTable component should render 1`] = `
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -w /etc/selinux/ -p wa -k MAC-policy If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -w /etc/selinux/ -p wa -k MAC-policy",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -730,7 +730,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - setxattr"
               />,
             },
@@ -775,7 +775,7 @@ exports[`SystemRulesTable component should render 1`] = `
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -802,7 +802,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - removexattr"
               />,
             },
@@ -847,7 +847,7 @@ exports[`SystemRulesTable component should render 1`] = `
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -874,7 +874,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - lsetxattr"
               />,
             },
@@ -919,7 +919,7 @@ exports[`SystemRulesTable component should render 1`] = `
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -2154,7 +2154,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify that All World-Writable Directories Have Sticky Bits Set"
               />,
             },
@@ -2199,7 +2199,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                   Object {
                     "compliant": true,
                     "description": "When the so-called 'sticky bit' is set on a directory, only the owner of a given file may remove that file from the directory. Without the sticky bit, any user with write access to a directory may remove any file in the directory. Setting the sticky bit prevents users from removing each other's files. In cases where there is no reason for a directory to be world-writable, a better solution is to remove that permission rather than to set the sticky bit. However, if a directory is used by a particular application, consult that application's documentation instead of blindly changing modes. To set the sticky bit on a world-writable directory DIR, run the following command: $ sudo chmod +t DIR",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -2226,7 +2226,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify File Hashes with RPM"
               />,
             },
@@ -2271,7 +2271,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                   Object {
                     "compliant": true,
                     "description": "Without cryptographic integrity protections, system executables and files can be altered by unauthorized users without detection. The RPM package management system can check the hashes of installed software packages, including many that are important to system security. To verify that the cryptographic hash of system files and commands match vendor values, run the following command to list which files on the system have hashes that differ from what is expected by the RPM database: $ rpm -Va | grep '^..5' A \\"c\\" in the second column indicates that a file is a configuration file, which may appropriately be expected to change.  If the file was not expected to change, investigate the cause of the change using audit logs or other means. The package can then be reinstalled to restore the file. Run the following command to determine which package owns the file: $ rpm -qf FILENAME The package can be reinstalled from a yum repository using the command: $ sudo yum reinstall PACKAGENAME Alternatively, the package can be reinstalled from trusted media using the command: $ sudo rpm -Uvh PACKAGENAME",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -2298,7 +2298,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify and Correct File Permissions with RPM"
               />,
             },
@@ -2343,7 +2343,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                   Object {
                     "compliant": true,
                     "description": "The RPM package management system can check file access permissions of installed software packages, including many that are important to system security. Verify that the file permissions of system files and commands match vendor values. Check the file permissions with the following command: $ sudo rpm -Va | awk '{ if (substr($0,2,1)==\\"M\\") print $NF }' Output indicates files that do not match vendor defaults. After locating a file with incorrect permissions, run the following command to determine which package owns it: $ rpm -qf FILENAME Next, run the following command to reset its permissions to the correct values: $ sudo rpm --setperms PACKAGENAME",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -2460,7 +2460,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify User/Group Information"
               />,
             },
@@ -2505,7 +2505,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -2532,7 +2532,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Network Environment"
               />,
             },
@@ -2577,7 +2577,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -2604,7 +2604,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Mandatory Access Controls"
               />,
             },
@@ -2649,7 +2649,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -w /etc/selinux/ -p wa -k MAC-policy If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -w /etc/selinux/ -p wa -k MAC-policy",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -2676,7 +2676,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - setxattr"
               />,
             },
@@ -2721,7 +2721,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -2748,7 +2748,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - removexattr"
               />,
             },
@@ -2793,7 +2793,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -2820,7 +2820,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - lsetxattr"
               />,
             },
@@ -2865,7 +2865,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3120,7 +3120,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Add nodev Option to /dev/shm"
               />,
             },
@@ -3165,7 +3165,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The nodev mount option can be used to prevent creation of device files in /dev/shm. Legitimate character and block devices should not exist within temporary directories like /dev/shm. Add the nodev option to the fourth column of /etc/fstab for the line which controls mounting of /dev/shm.",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3192,7 +3192,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Add nosuid Option to /dev/shm"
               />,
             },
@@ -3237,7 +3237,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The nosuid mount option can be used to prevent execution of setuid programs in /dev/shm.  The SUID and SGID permissions should not be required in these world-writable directories. Add the nosuid option to the fourth column of /etc/fstab for the line which controls mounting of /dev/shm.",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3264,7 +3264,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Disable Apache Qpid (qpidd)"
               />,
             },
@@ -3309,7 +3309,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The qpidd service provides high speed, secure, guaranteed delivery services.  It is an implementation of the Advanced Message Queuing Protocol.  By default the qpidd service will bind to port 5672 and listen for connection attempts. The qpidd service can be disabled with the following command: $ sudo systemctl disable qpidd.service",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3336,7 +3336,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Disable At Service (atd)"
               />,
             },
@@ -3381,7 +3381,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The at and batch commands can be used to schedule tasks that are meant to be executed only once. This allows delayed execution in a manner similar to cron, except that it is not recurring. The daemon atd keeps track of tasks scheduled via at and batch, and executes them at the specified time. The atd service can be disabled with the following command: $ sudo systemctl disable atd.service",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3408,7 +3408,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Disable Automatic Bug Reporting Tool (abrtd)"
               />,
             },
@@ -3453,7 +3453,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The Automatic Bug Reporting Tool (abrtd) daemon collects and reports crash data when an application crash is detected. Using a variety of plugins, abrtd can email crash reports to system administrators, log crash reports to files, or forward crash reports to a centralized issue tracking system such as RHTSupport. The abrtd service can be disabled with the following command: $ sudo systemctl disable abrtd.service",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3480,7 +3480,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Disable Network Router Discovery Daemon (rdisc)"
               />,
             },
@@ -3525,7 +3525,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The rdisc service implements the client side of the ICMP Internet Router Discovery Protocol (IRDP), which allows discovery of routers on the local subnet. If a router is discovered then the local routing table is updated with a corresponding default route. By default this daemon is disabled. The rdisc service can be disabled with the following command: $ sudo systemctl disable rdisc.service",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3552,7 +3552,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Disable ntpdate Service (ntpdate)"
               />,
             },
@@ -3597,7 +3597,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The ntpdate service sets the local hardware clock by polling NTP servers when the system boots. It synchronizes to the NTP servers listed in /etc/ntp/step-tickers or /etc/ntp.conf and then sets the local hardware clock to the newly synchronized system time. The ntpdate service can be disabled with the following command: $ sudo systemctl disable ntpdate.service",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3624,7 +3624,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Disable Odd Job Daemon (oddjobd)"
               />,
             },
@@ -3669,7 +3669,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The oddjobd service exists to provide an interface and access control mechanism through which specified privileged tasks can run tasks for unprivileged client applications. Communication with oddjobd through the system message bus. The oddjobd service can be disabled with the following command: $ sudo systemctl disable oddjobd.service",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3696,7 +3696,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Disable the Automounter"
               />,
             },
@@ -3741,7 +3741,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The autofs daemon mounts and unmounts filesystems, such as user home directories shared via NFS, on demand. In addition, autofs can be used to handle removable media, and the default configuration provides the cdrom device as /misc/cd. However, this method of providing access to removable media is not common, so autofs can almost always be disabled if NFS is not in use. Even if NFS is required, it may be possible to configure filesystem mounts statically by editing /etc/fstab rather than relying on the automounter. The autofs service can be disabled with the following command: $ sudo systemctl disable autofs.service",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3768,7 +3768,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Enable rsyslog Service"
               />,
             },
@@ -3813,7 +3813,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                   Object {
                     "compliant": true,
                     "description": "The rsyslog service provides syslog-style logging by default on Red Hat Enterprise Linux 7. The rsyslog service can be enabled with the following command: $ sudo systemctl enable rsyslog.service",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -3840,12 +3840,9 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     }
     sortBy={
       Object {
-        "0": "r",
-        "1": "u",
-        "2": "l",
-        "3": "e",
         "direction": "asc",
         "index": 2,
+        "property": "rule",
       }
     }
   >
@@ -4063,7 +4060,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify that All World-Writable Directories Have Sticky Bits Set"
               />,
             },
@@ -4108,7 +4105,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                   Object {
                     "compliant": true,
                     "description": "When the so-called 'sticky bit' is set on a directory, only the owner of a given file may remove that file from the directory. Without the sticky bit, any user with write access to a directory may remove any file in the directory. Setting the sticky bit prevents users from removing each other's files. In cases where there is no reason for a directory to be world-writable, a better solution is to remove that permission rather than to set the sticky bit. However, if a directory is used by a particular application, consult that application's documentation instead of blindly changing modes. To set the sticky bit on a world-writable directory DIR, run the following command: $ sudo chmod +t DIR",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -4135,7 +4132,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify File Hashes with RPM"
               />,
             },
@@ -4180,7 +4177,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                   Object {
                     "compliant": true,
                     "description": "Without cryptographic integrity protections, system executables and files can be altered by unauthorized users without detection. The RPM package management system can check the hashes of installed software packages, including many that are important to system security. To verify that the cryptographic hash of system files and commands match vendor values, run the following command to list which files on the system have hashes that differ from what is expected by the RPM database: $ rpm -Va | grep '^..5' A \\"c\\" in the second column indicates that a file is a configuration file, which may appropriately be expected to change.  If the file was not expected to change, investigate the cause of the change using audit logs or other means. The package can then be reinstalled to restore the file. Run the following command to determine which package owns the file: $ rpm -qf FILENAME The package can be reinstalled from a yum repository using the command: $ sudo yum reinstall PACKAGENAME Alternatively, the package can be reinstalled from trusted media using the command: $ sudo rpm -Uvh PACKAGENAME",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -4207,7 +4204,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify and Correct File Permissions with RPM"
               />,
             },
@@ -4252,7 +4249,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                   Object {
                     "compliant": true,
                     "description": "The RPM package management system can check file access permissions of installed software packages, including many that are important to system security. Verify that the file permissions of system files and commands match vendor values. Check the file permissions with the following command: $ sudo rpm -Va | awk '{ if (substr($0,2,1)==\\"M\\") print $NF }' Output indicates files that do not match vendor defaults. After locating a file with incorrect permissions, run the following command to determine which package owns it: $ rpm -qf FILENAME Next, run the following command to reset its permissions to the correct values: $ sudo rpm --setperms PACKAGENAME",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -4369,7 +4366,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify User/Group Information"
               />,
             },
@@ -4414,7 +4411,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -4441,7 +4438,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Network Environment"
               />,
             },
@@ -4486,7 +4483,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -4513,7 +4510,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Mandatory Access Controls"
               />,
             },
@@ -4558,7 +4555,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -w /etc/selinux/ -p wa -k MAC-policy If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -w /etc/selinux/ -p wa -k MAC-policy",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -4585,7 +4582,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - setxattr"
               />,
             },
@@ -4630,7 +4627,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -4657,7 +4654,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - removexattr"
               />,
             },
@@ -4702,7 +4699,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -4729,7 +4726,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - lsetxattr"
               />,
             },
@@ -4774,7 +4771,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -5245,7 +5242,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify that All World-Writable Directories Have Sticky Bits Set"
               />,
             },
@@ -5278,7 +5275,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                   Object {
                     "compliant": true,
                     "description": "When the so-called 'sticky bit' is set on a directory, only the owner of a given file may remove that file from the directory. Without the sticky bit, any user with write access to a directory may remove any file in the directory. Setting the sticky bit prevents users from removing each other's files. In cases where there is no reason for a directory to be world-writable, a better solution is to remove that permission rather than to set the sticky bit. However, if a directory is used by a particular application, consult that application's documentation instead of blindly changing modes. To set the sticky bit on a world-writable directory DIR, run the following command: $ sudo chmod +t DIR",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -5305,7 +5302,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify File Hashes with RPM"
               />,
             },
@@ -5338,7 +5335,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                   Object {
                     "compliant": true,
                     "description": "Without cryptographic integrity protections, system executables and files can be altered by unauthorized users without detection. The RPM package management system can check the hashes of installed software packages, including many that are important to system security. To verify that the cryptographic hash of system files and commands match vendor values, run the following command to list which files on the system have hashes that differ from what is expected by the RPM database: $ rpm -Va | grep '^..5' A \\"c\\" in the second column indicates that a file is a configuration file, which may appropriately be expected to change.  If the file was not expected to change, investigate the cause of the change using audit logs or other means. The package can then be reinstalled to restore the file. Run the following command to determine which package owns the file: $ rpm -qf FILENAME The package can be reinstalled from a yum repository using the command: $ sudo yum reinstall PACKAGENAME Alternatively, the package can be reinstalled from trusted media using the command: $ sudo rpm -Uvh PACKAGENAME",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -5365,7 +5362,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Verify and Correct File Permissions with RPM"
               />,
             },
@@ -5398,7 +5395,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                   Object {
                     "compliant": true,
                     "description": "The RPM package management system can check file access permissions of installed software packages, including many that are important to system security. Verify that the file permissions of system files and commands match vendor values. Check the file permissions with the following command: $ sudo rpm -Va | awk '{ if (substr($0,2,1)==\\"M\\") print $NF }' Output indicates files that do not match vendor defaults. After locating a file with incorrect permissions, run the following command to determine which package owns it: $ rpm -qf FILENAME Next, run the following command to reset its permissions to the correct values: $ sudo rpm --setperms PACKAGENAME",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -5503,7 +5500,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify User/Group Information"
               />,
             },
@@ -5536,7 +5533,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -5563,7 +5560,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Network Environment"
               />,
             },
@@ -5596,7 +5593,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -5623,7 +5620,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Mandatory Access Controls"
               />,
             },
@@ -5656,7 +5653,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                   Object {
                     "compliant": false,
                     "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -w /etc/selinux/ -p wa -k MAC-policy If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -w /etc/selinux/ -p wa -k MAC-policy",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -5683,7 +5680,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - setxattr"
               />,
             },
@@ -5716,7 +5713,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -5743,7 +5740,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - removexattr"
               />,
             },
@@ -5776,7 +5773,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [
@@ -5803,7 +5800,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "cells": Array [
             Object {
               "title": <RuleTitle
-                identifier={Array []}
+                identifier={null}
                 title="Record Events that Modify the System's Discretionary Access Controls - lsetxattr"
               />,
             },
@@ -5836,7 +5833,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                   Object {
                     "compliant": false,
                     "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
-                    "identifier": Array [],
+                    "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
                     "policies": Array [

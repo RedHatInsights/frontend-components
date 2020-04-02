@@ -23,7 +23,7 @@ const BASE_FILTER_CONFIGURATION = [
         label: 'Name',
         filter: (rules, value) => filterRulesWithAllValues(rules, [ value ], (rule, value) => (
             rule.title.toLowerCase().includes(value.toLowerCase()) ||
-            (rule.identifier.title && rule.identifier.titletoLowerCase().includes(value.toLowerCase())) ||
+            (rule.identifier && rule.identifier.label.toLowerCase().includes(value.toLowerCase())) ||
             rule.references.filter((reference) => reference.label.toLowerCase().includes(value.toLowerCase())).length > 0
         ))
     },
