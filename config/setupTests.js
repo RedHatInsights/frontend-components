@@ -22,9 +22,14 @@ global.window.insights = {
                 identity: {
                     // eslint-disable-next-line camelcase
                     account_number: '0',
-                    type: 'User'
+                    type: 'User',
+                    user: {
+                        // eslint-disable-next-line camelcase
+                        is_org_admin: true
+                    }
                 }
             }))
-        }
+        },
+        getUserPermissions: () => new Promise((res) => res([]))
     }
 };
