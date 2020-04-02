@@ -29,25 +29,20 @@ class SystemRulesTable extends React.Component {
         itemsPerPage: 10,
         rows: [],
         sortBy: {},
-        rules: toRulesArray(this.props.profileRules, this.props.selectedRefIds),
         ruleCount: 0,
         filterConfigBuilder: null,
         filterChips: [],
+        selectedToRemediate: [],
+        openIds: [],
         activeFilters: this.filterConfigBuilder.initialDefaultState({
             selected: this.props.selectedFilter ? [ 'selected' ] : undefined,
             passed: this.props.hidePassed ? [ 'failed' ] : undefined
         })
     };
 
-    updatePolicyFilterConfig = (policies) => {
-        if (policies.length > 1) {
-            this.filterConfigBuilder.addConfigItem(POLICIES_FILTER_CONFIG(policies));
-        }
-    }
-
     parentRowForRule = (rule) => {
         const {
-            title, identifier, policies, severity, compliant,
+            title, identifier, policies, severity, compliant, rowKey,
             remediationAvailable, refId, isOpen, isSelected
         } = rule;
         const cells = this.props.columns.map((column) => {
@@ -81,7 +76,8 @@ class SystemRulesTable extends React.Component {
         });
 
         return {
-            parentOf: refId,
+            refId,
+            rowKey,
             selected: isSelected,
             isOpen,
             cells
@@ -89,7 +85,6 @@ class SystemRulesTable extends React.Component {
     }
 
     childRowForRule = (rule, idx) => ({
-        childOf: rule.refId,
         parent: idx,
         cells: [
             { title: <RuleChildRow rule={ rule } key={ 'rule-' + rule.refId } /> }
@@ -101,163 +96,6 @@ class SystemRulesTable extends React.Component {
             this.parentRowForRule(rule),
             this.childRowForRule(rule, (((idx + 1) * 2) - 2))
         ]))
-    )
-
-    paginatedRules = (rules) => (
-        rules.slice(
-            (this.state.page - 1) * this.state.itemsPerPage,
-            this.state.page * this.state.itemsPerPage
-        )
-    )
-
-    componentDidMount = () => (
-        this.updateTable()
-    )
-
-    componentDidUpdate = (prevProps) => {
-        if (this.props.profileRules !== prevProps.profileRules) {
-            this.updatePolicyFilterConfig(this.props.profileRules.map((p) => (
-                p.profile
-            )).filter((p) => !!p));
-            this.setState({
-                rules: toRulesArray(this.props.profileRules)
-            }, this.updateTable);
-        }
-    }
-
-    updateChips = () => (
-        this.chipBuilder.chipsFor(this.state.activeFilters).then((filterChips) => (
-            this.setState({
-                filterChips
-            })
-        ))
-    )
-
-    updateRows = () => {
-        const rules = this.filteredRules();
-
-        this.setState({
-            ruleCount: rules.length,
-            rows: this.rulesToRows(this.paginatedRules(rules))
-        });
-    }
-
-    updateTable = () => {
-        this.updateChips();
-        this.updateRows();
-    }
-
-    filteredRules = () => (
-        this.filterConfigBuilder.applyFilterToObjectArray(
-            this.state.rules, this.state.activeFilters
-        )
-    )
-
-    removeFilterFromFilterState = (currentState, filter) => (
-        (typeof(currentState) === 'string') ? '' :
-            currentState.filter((value) =>
-                value !== filter
-            )
-    )
-
-    onFilterUpdate = (filter, values) => (
-        this.setState({
-            page: 1,
-            activeFilters: {
-                ...this.state.activeFilters,
-                [filter]: values
-            }
-        }, this.updateTable)
-    )
-
-    deleteFilter = (chips) => {
-        const chipCategory = chips.category;
-        const chipValue = this.filterConfigBuilder.valueForLabel(chips.chips[0].name, chipCategory);
-        const stateProp = stringToId(chipCategory);
-        const currentState = this.state.activeFilters[stateProp];
-        const newFilterState = this.removeFilterFromFilterState(currentState, chipValue);
-        const activeFilters =  {
-            ...this.state.activeFilters,
-            [stateProp]: newFilterState
-        };
-
-        this.setState({
-            activeFilters
-        }, this.updateTable);
-    }
-
-    clearAllFilter = () => (
-        this.setState({
-            activeFilters: this.filterConfigBuilder.initialDefaultState(),
-            filterChips: []
-        }, this.updateTable)
-    )
-
-    onFilterDelete = (_event, chips, clearAll = false) => (
-        clearAll ? this.clearAllFilter() : this.deleteFilter(chips[0])
-    )
-
-    changePage = (page, itemsPerPage) => (
-        this.setState({
-            page,
-            itemsPerPage
-        }, this.updateTable)
-    )
-
-    setPage = (_, page) => (
-        this.changePage(page, this.state.itemsPerPage)
-    )
-
-    setPerPage = (_, itemsPerPage) => (
-        this.changePage(1, itemsPerPage)
-    )
-
-    selectAllCheckbox = (key) => (key === -1)
-
-    onSelect = (_, selected, key, rowData) => {
-        const { rules } = this.state;
-        const { handleSelect } = this.props;
-        let selectedRuleIds = [];
-        let filter;
-
-        if (this.selectAllCheckbox(key)) {
-            filter = () => (true);
-        } else {
-            filter = (rule) => (rule.refId === rowData.parentOf);
-        }
-
-        const selectedRules = rules.map((rule) => {
-            if (filter(rule)) {
-                if (selected) {
-                    selectedRuleIds.push(rule.refId);
-                }
-
-                return { ...rule, isSelected: selected };
-            } else {
-                return rule;
-            }
-        });
-
-        this.setState({
-            rules: selectedRules
-        }, () => {
-            this.updateTable();
-            handleSelect(selectedRuleIds);
-        });
-    }
-
-    onCollapse = (_e, _k, isOpen, cell) => (
-        this.setState({
-            rules: this.state.rules.map((rule) =>
-                (rule.refId === cell.parentOf ? {
-                    ...rule, isOpen: isOpen
-                } : rule)
-            )
-        }, this.updateTable)
-    )
-
-    selectedRules = () => (
-        this.state.rules.filter((rule) => (rule.isSelected))
     )
 
     defaultSorting = (...args) => (
@@ -278,24 +116,193 @@ class SystemRulesTable extends React.Component {
     }
 
     onSort = (_, index, direction, extraData) => {
-        const property = extraData.property;
-        const sorter = this.getSorter(property);
-        const rules = sorter(property, this.state.rules, direction);
-
         this.setState({
             sortBy: {
                 index,
-                direction
-            },
-            rules
-        }, this.updateTable);
+                direction,
+                ...extraData.property
+            }
+        });
+    }
+
+    sortedRules = (rules) => {
+        const { property, direction } = this.state.sortBy;
+        return this.getSorter(property)(property, rules, direction);
+    }
+
+    paginatedRules = (rules) => (
+        rules.slice(
+            (this.state.page - 1) * this.state.itemsPerPage,
+            this.state.page * this.state.itemsPerPage
+        )
+    )
+
+    filteredRules = (rules) => (
+        this.filterConfigBuilder.applyFilterToObjectArray(
+            rules, this.state.activeFilters
+        )
+    )
+
+    selectedRules = (rules) => {
+        const { selectedRefIds, remediationsEnabled } = this.props;
+        const { selectedToRemediate } = this.state;
+
+        return rules.map((rule) => {
+            const isSelected = remediationsEnabled ?
+                selectedToRemediate.includes(rule.rowKey) : selectedRefIds.includes(rule.refId);
+            return {
+                ...rule,
+                isSelected
+            };
+        });
+    }
+
+    openedRules = (rules) => {
+        const { openIds } = this.state;
+        return rules.map((rule) => ({
+            ...rule,
+            isOpen: openIds.includes(rule.rowKey)
+        }));
+    }
+
+    getRules = () => {
+        const rules = toRulesArray(this.props.profileRules);
+        return this.filteredRules(
+            this.sortedRules(
+                this.selectedRules(this.openedRules(rules))
+            )
+        );
+    }
+
+    updatePolicyFilterConfig = (policies) => {
+        if (policies.length > 1) {
+            this.filterConfigBuilder.addConfigItem(POLICIES_FILTER_CONFIG(policies));
+        }
+    }
+
+    componentDidMount = () => {
+        this.updatePolicyFilterConfig(this.props.profileRules.map((p) => (
+            p.profile
+        )).filter((p) => !!p));
+    }
+
+    removeFilterFromFilterState = (currentState, filter) => (
+        (typeof(currentState) === 'string') ? '' :
+            currentState.filter((value) =>
+                value !== filter
+            )
+    )
+
+    onFilterUpdate = (filter, values) => (
+        this.setState({
+            page: 1,
+            activeFilters: {
+                ...this.state.activeFilters,
+                [filter]: values
+            }
+        })
+    )
+
+    deleteFilter = (chips) => {
+        const chipCategory = chips.category;
+        const chipValue = this.filterConfigBuilder.valueForLabel(chips.chips[0].name, chipCategory);
+        const stateProp = stringToId(chipCategory);
+        const currentState = this.state.activeFilters[stateProp];
+        const newFilterState = this.removeFilterFromFilterState(currentState, chipValue);
+        const activeFilters =  {
+            ...this.state.activeFilters,
+            [stateProp]: newFilterState
+        };
+
+        this.setState({
+            activeFilters
+        });
+    }
+
+    clearAllFilter = () => (
+        this.setState({
+            activeFilters: this.filterConfigBuilder.initialDefaultState()
+        })
+    )
+
+    onFilterDelete = (_event, chips, clearAll = false) => (
+        clearAll ? this.clearAllFilter() : this.deleteFilter(chips[0])
+    )
+
+    changePage = (page, itemsPerPage) => (
+        this.setState({
+            page,
+            itemsPerPage
+        })
+    )
+
+    setPage = (_, page) => (
+        this.changePage(page, this.state.itemsPerPage)
+    )
+
+    setPerPage = (_, itemsPerPage) => (
+        this.changePage(1, itemsPerPage)
+    )
+
+    selectAllCheckbox = (key) => (key === -1)
+
+    onSelect = (_, selected, key, rowData) => {
+        const { handleSelect, selectedRefIds } = this.props;
+
+        let selectedRuleIds;
+        if (this.selectAllCheckbox(key)) {
+            selectedRuleIds = this.getRules().map((rule) => rule.refId);
+        } else {
+            selectedRuleIds = selected ?
+                [ ...selectedRefIds, rowData.refId ] :
+                selectedRefIds.filter((refId) => (refId !== rowData.refId));
+        }
+
+        if (handleSelect) {
+            handleSelect(selectedRuleIds);
+        }
+    }
+
+    onSelectToRemediate = (_, selected, key, rowData) => {
+        const { selectedToRemediate: currentlySelectToRemediate } = this.state;
+        let selectedToRemediate;
+
+        if (this.selectAllCheckbox(key)) {
+            selectedToRemediate = this.getRules().map((rule) => rule.rowKey);
+        } else {
+            selectedToRemediate = selected ?
+                [ ...currentlySelectToRemediate, rowData.rowKey ] :
+                currentlySelectToRemediate.filter((refId) => (refId !== rowData.rowKey));
+        }
+
+        this.setState({
+            selectedToRemediate
+        });
+    }
+
+    onCollapse = (_e, _k, isOpen, rowData) => {
+        const currentlyOpenIds = this.state.openIds;
+        const openIds = isOpen ?
+            [ ...currentlyOpenIds, rowData.rowKey ] :
+            currentlyOpenIds.filter((rowKey) => (
+                rowKey !== rowData.rowKey
+            ));
+        this.setState({
+            openIds
+        });
     }
 
     render() {
         const {
-            sortBy, page, itemsPerPage, filterChips, rows, ruleCount
+            sortBy, page, itemsPerPage, selectedToRemediate
         } = this.state;
-        const { remediationsEnabled, system, loading, columns } = this.props;
+        const {
+            remediationsEnabled, system, loading, columns, handleSelect
+        } = this.props;
+        const rules = this.getRules();
+        const filterChips = this.chipBuilder.chipsFor(this.state.activeFilters, true);
+        const rows = this.rulesToRows(this.paginatedRules(rules));
+        const ruleCount = rules.length;
         const pagination = {
             itemCount: ruleCount,
             page,
@@ -303,9 +310,11 @@ class SystemRulesTable extends React.Component {
             onSetPage: this.setPage,
             onPerPageSelect: this.setPerPage
         };
-        const selectedRulesWithRemediations = this.selectedRules().filter(
-            (rule) => (rule.remediationAvailable)
-        );
+        const selectedRulesWithRemediations = rules && rules.filter((rule) => (
+            selectedToRemediate.includes(rule.rowKey) && rule.remediationAvailable
+        ));
+        const onSelect = !handleSelect && !remediationsEnabled ? undefined :
+            (remediationsEnabled ? this.onSelectToRemediate : this.onSelect);
         const filterConfig = this.filterConfigBuilder.buildConfiguration(
             this.onFilterUpdate,
             this.state.activeFilters,
@@ -344,7 +353,7 @@ class SystemRulesTable extends React.Component {
                     onCollapse={ this.onCollapse }
                     onSort={ this.onSort }
                     sortBy={ sortBy }
-                    onSelect={ (ruleCount === 0) ? undefined : this.onSelect }
+                    onSelect={ (ruleCount === 0) ? undefined : onSelect }
                     rows={ (ruleCount === 0) ? EmptyRows : rows }>
                     <TableHeader />
                     <TableBody />
@@ -388,8 +397,7 @@ SystemRulesTable.defaultProps = {
     selectedFilter: false,
     remediationsEnabled: true,
     tailoringEnabled: false,
-    selectedRefIds: [],
-    handleSelect: (() => {})
+    selectedRefIds: []
 };
 
 export default SystemRulesTable;

@@ -66,9 +66,9 @@ describe('SystemRulesTable component', () => {
             />
         );
         const instance = wrapper.instance();
-        expect(instance.filteredRules().length).toEqual(52);
+        expect(instance.getRules().length).toEqual(52);
         await instance.onFilterUpdate('severity', [ 'low' ]);
-        expect(instance.filteredRules().length).toEqual(2);
+        expect(instance.getRules().length).toEqual(2);
     });
 
     it('should render filtered rows by multiple severities', async () => {
@@ -82,9 +82,9 @@ describe('SystemRulesTable component', () => {
             />
         );
         const instance = wrapper.instance();
-        expect(instance.filteredRules().length).toEqual(52);
+        expect(instance.getRules().length).toEqual(52);
         await instance.onFilterUpdate('severity', [ 'high', 'medium' ]);
-        expect(instance.filteredRules().length).toEqual(50);
+        expect(instance.getRules().length).toEqual(50);
     });
 
     it('should render search results by rule name', async () => {
@@ -116,7 +116,7 @@ describe('SystemRulesTable component', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
 
         await instance.onSort(null, TITLE_COLUMN + 2, SortByDirection.asc, { property: 'rule' });
-        expect(instance.filteredRules().length).toEqual(52);
+        expect(instance.getRules().length).toEqual(52);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 

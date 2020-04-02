@@ -42,11 +42,12 @@ class ChipBuilder {
         }
     }
 
-    chipsFor = (filters) => (Promise.resolve(
-        Object.keys(filters).map((filter) => (
+    chipsFor = (filters, noPromise) => {
+        const chips = Object.keys(filters).map((filter) => (
             this.chipFor(filter, filters[filter])
-        )).filter((f) => (!!f))
-    ))
+        )).filter((f) => (!!f));
+        return noPromise ? chips : Promise.resolve(chips);
+    }
 }
 
 export default ChipBuilder;
