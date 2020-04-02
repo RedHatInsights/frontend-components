@@ -14,13 +14,12 @@ describe('ChipBuilder#getChipsFor', () => {
     });
 
     it('returns a filterConfig', () => {
-        chipBuilder.chipsFor({
+        const chips = chipBuilder.chipsFor({
             passed: [ 'passed' ],
             name: 'Text search',
             selected: [ 'all' ],
             invalidFilter: ''
-        }).then((results) => {
-            expect(results).toMatchSnapshot();
         });
+        expect(chips).toMatchSnapshot();
     });
 });

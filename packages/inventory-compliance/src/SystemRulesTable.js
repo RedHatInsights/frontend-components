@@ -291,7 +291,7 @@ class SystemRulesTable extends React.Component {
             remediationsEnabled, system, loading, columns, handleSelect
         } = this.props;
         const rules = this.getRules();
-        const filterChips = this.chipBuilder.chipsFor(this.state.activeFilters, true);
+        const filterChips = this.chipBuilder.chipsFor(this.state.activeFilters);
         const rows = this.rulesToRows(this.paginatedRules(rules));
         const ruleCount = rules.length;
         const pagination = {
