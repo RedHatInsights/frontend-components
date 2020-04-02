@@ -8,7 +8,7 @@ import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-co
 import './compliance.scss';
 import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from './PresentationalComponents';
 import {
-    FilterConfigBuilder, stringToId, buildFilterConfig, POLICIES_FILTER_CONFIG,
+    FilterConfigBuilder, buildFilterConfig, POLICIES_FILTER_CONFIG,
     toRulesArray, orderByArray, orderRuleArrayByProp
 } from './Utilities';
 import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
@@ -17,8 +17,7 @@ import ComplianceRemediationButton from './ComplianceRemediationButton';
 class SystemRulesTable extends React.Component {
     config = buildFilterConfig({
         selectedFilter: this.props.selectedFilter,
-        showPassFailFilter: (this.props.columns.filter((c) => (c.title === 'Passed')).length > 0),
-        policies: this.props.profileRules.map((p) => (p.profile))
+        showPassFailFilter: (this.props.columns.filter((c) => (c.title === 'Passed')).length > 0)
     });
     filterConfigBuilder = new FilterConfigBuilder(this.config);
     chipBuilder = this.filterConfigBuilder.getChipBuilder();
@@ -30,8 +29,6 @@ class SystemRulesTable extends React.Component {
         rows: [],
         sortBy: {},
         ruleCount: 0,
-        filterConfigBuilder: null,
-        filterChips: [],
         selectedToRemediate: [],
         openIds: [],
         activeFilters: this.filterConfigBuilder.initialDefaultState({
@@ -180,6 +177,7 @@ class SystemRulesTable extends React.Component {
 
         if (policies.length > 1) {
             this.filterConfigBuilder.addConfigItem(POLICIES_FILTER_CONFIG(policies));
+            this.forceUpdate();
         }
     }
 
