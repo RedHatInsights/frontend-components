@@ -45,12 +45,13 @@ class ContextFooterPagination extends Component {
 
     onPerPageSelect = (_event, perPage) => {
         const { filters } = this.props;
+        this.setState({ page: 1 });
         // eslint-disable-next-line camelcase
         this.updatePagination({ page: 1, per_page: perPage, filters });
     }
 
     render() {
-        const { total, page, perPage, loaded, direction, isFull } = this.props;
+        const { total, page, perPage, loaded, direction, isFull, hasItems } = this.props;
         const { page: statePage } = this.state;
         const extra = isFull ? {
             variant: PaginationVariant.bottom
@@ -61,7 +62,7 @@ class ContextFooterPagination extends Component {
                     <Pagination
                         { ...extra }
                         itemCount={ total }
-                        page={ statePage || page }
+                        page={ hasItems ? page : statePage || page }
                         perPage={ perPage }
                         dropDirection={ direction }
                         onSetPage={ this.onSetPage }
