@@ -39,6 +39,7 @@ query System($systemId: String!){
             rulesFailed
             rulesPassed
             lastScanned
+            score
             rules {
                 title
                 severity
