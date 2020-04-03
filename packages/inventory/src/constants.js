@@ -15,7 +15,7 @@ export function constructValues(groupValue) {
                 key,
                 tagKey,
                 value: tagValue,
-                name: `${tagKey}: ${tagValue}`,
+                name: `${tagKey}=${tagValue}`,
                 group
             };
         }
@@ -55,13 +55,13 @@ export function filterToGroup(filter = [], valuesKey = 'values') {
 }
 
 export function constructGroups(allTags) {
-    return allTags.map(({ name, tags }, key) => ({
+    return allTags.map(({ name, tags }) => ({
         label: name,
-        value: key,
+        value: name,
         type: 'checkbox',
         items: tags.map(({ count, tag: { key: tagKey, value } }) => ({
             label: <React.Fragment>
-                <div>{tagKey}: {value}</div>
+                <div>{tagKey}={value}</div>
                 <Tooltip
                     position="right"
                     enableFlip
