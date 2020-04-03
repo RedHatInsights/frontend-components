@@ -20,7 +20,7 @@ const Shield = ({ impact, hasLabel, hasTooltip, size }) => {
     return (
         <span>
             {hasTooltip ?
-                <Tooltip content={<div>{attributes.message}</div>} position={'bottom'}>
+                <Tooltip content={<div>{attributes.message}</div>} position={'bottom'} boundary={'viewport'}>
                     {body}
                 </Tooltip>
                 : body}
