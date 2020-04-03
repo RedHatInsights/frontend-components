@@ -52,9 +52,9 @@ class SystemPolicyCard extends React.Component {
     }
 
     render() {
-        const { rulesPassed, rulesFailed, compliant, lastScanned } = this.state.policy;
+        const { rulesPassed, rulesFailed, compliant, lastScanned, score } = this.state.policy;
         const { refIdTruncated, cardTitle } = this.state;
-        const passedPercentage = this.fixedPercentage(100 * (rulesPassed / (rulesPassed + rulesFailed)));
+        const passedPercentage = this.fixedPercentage(score);
 
         return (
             <Card>
@@ -100,6 +100,7 @@ SystemPolicyCard.propTypes = {
     policy: PropTypes.shape({
         rulesPassed: PropTypes.number,
         rulesFailed: PropTypes.number,
+        score: PropTypes.number,
         lastScanned: PropTypes.string,
         refId: PropTypes.string,
         name: PropTypes.string,
