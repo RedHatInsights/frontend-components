@@ -13,7 +13,7 @@ import {
 } from './action-types';
 import { getEntities, getEntitySystemProfile, hosts, getAllTags } from '../api';
 
-export const loadEntities = (items = [], config, { showTags }) => ({
+export const loadEntities = (items = [], config, { showTags } = {}) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
     payload: getEntities(items, config).then(results => ({
         ...results,
