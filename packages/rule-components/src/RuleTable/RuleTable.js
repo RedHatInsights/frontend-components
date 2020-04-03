@@ -143,9 +143,15 @@ class RuleTable extends Component {
             })
         }));
 
+        const sortProps = sortBy ? { sortBy, onSort: this.onSort } : undefined;
+
         return <section className="rhcs-c-rules-table">
             <PrimaryToolbar
-                { ...filterItems && filterItems.length > 0 && { filterConfig: { items: filterItems } }}
+                {
+                    ...filterItems &&
+                    filterItems.length > 0 &&
+                    { filterConfig: { items: filterItems } }
+                }
                 activeFiltersConfig={{
                     filters: Object.entries(filterValues).map(([ key, value ]) => calculateActiveFilters(
                         filterItems.find(({ filterKey }) => filterKey === key),
@@ -159,7 +165,7 @@ class RuleTable extends Component {
             />
             <Table
                 {...props}
-                {...sortBy && { onSort: this.onSort }}
+                {...sortProps}
                 actions={!isLoading && actions}
                 aria-label={ariaLabel}
                 cells={columns.map(({ transforms, ...column }) => ({

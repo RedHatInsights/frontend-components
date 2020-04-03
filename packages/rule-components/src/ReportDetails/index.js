@@ -58,16 +58,19 @@ const ReportDetails = (
                         </StackItem>
                     </Stack>
                 </StackItem>
-                <StackItem>
-                    <Stack>
-                        <StackItem>
-                            <Title className="ins-c-rule__risk-detail-title" size="md">Risk of change</Title>
-                        </StackItem>
-                        <StackItem>
-                            <RiskDescription riskValue={ riskOfChange } riskMeta={ riskOfChangeMeta }/>
-                        </StackItem>
-                    </Stack>
-                </StackItem>
+                {
+                    riskOfChange > 0 && riskOfChange < 5 &&
+                    <StackItem>
+                        <Stack>
+                            <StackItem>
+                                <Title className="ins-c-rule__risk-detail-title" size="md">Risk of change</Title>
+                            </StackItem>
+                            <StackItem>
+                                <RiskDescription riskValue={ riskOfChange } riskMeta={ riskOfChangeMeta }/>
+                            </StackItem>
+                        </Stack>
+                    </StackItem>
+                }
             </Stack>
         </GridItem>
     </Grid>
