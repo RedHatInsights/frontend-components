@@ -1,85 +1,51 @@
 import React from 'react';
-import { PDFDownloadLink } from '@react-pdf/renderer';
 import PropTypes from 'prop-types';
-import {
-    Page,
-    Text,
-    View,
-    Document,
-    PDFViewer
-} from '@react-pdf/renderer';
-import RHLogo from './components/Logo';
-import { DateFormat } from '../../components/src/Components/DateFormat';
-import { customTitle } from './utils/text';
-import styles from './utils/styles';
+import { PDFDownloadLink, PDFViewer, BlobProvider } from '@react-pdf/renderer';
+import { Button } from '@patternfly/react-core';
+import PDFDocument from './components/PDFDocument';
 
 class DownloadButton extends React.Component {
+    state = {
+        asyncPages: []
+    };
     render() {
         const {
-            pages,
             fileName,
             label,
-            type,
-            style,
-            title,
             isPreview,
-            reportName,
-            size,
+            asyncFunction,
+            buttonProps,
             ...props
         } = this.props;
-        const appliedStyles = styles(style);
-
-        const document = <Document style={{
-            height: '100%'
-        }}>
-            {pages.map((page, key) => (
-                <Page size={size} key={key} style={[ appliedStyles.page, appliedStyles.text ]}>
-                    {<React.Fragment>
-                        <View style={appliedStyles.headerContainer}>
-                            <RHLogo />
-                            <Text style={appliedStyles.currDate}>
-                                Prepared {DateFormat({ date: new Date(), type: 'exact' }).props.children}
-                            </Text>
-                        </View>
-                        <View>
-                            <Text style={[ appliedStyles.reportName, appliedStyles.largeSpacing, appliedStyles.displayFont ]}>
-                                {reportName} {type}
-                            </Text>
-                        </View>
-                        <View>
-                            <Text style={ appliedStyles.displayFont }>
-                                { customTitle(title) }
-                            </Text>
-
-                        </View>
-                    </React.Fragment>}
-                    <View style={appliedStyles.smallSpacing}>
-                        {page}
-                    </View>
-                    <View style={[ appliedStyles.flexRow, {
-                        marginTop: 'auto'
-                    }]}>
-                        <Text style={[{
-                            marginLeft: 'auto'
-                        }]}>
-                            { key + 1 } of {pages.length}
-                        </Text>
-                        <Text style={[{
-                            marginLeft: 'auto'
-                        }, appliedStyles.thirdTitle ]}>
-                            redhat.com
-                        </Text>
-                    </View>
-                </Page>
-            ))}
-        </Document>;
 
         return (
             <React.Fragment>
                 { isPreview ? <PDFViewer>
-                    {document}
-                </PDFViewer> : <PDFDownloadLink
-                    document={document}
+                    <PDFDocument { ...props } />
+                </PDFViewer> : asyncFunction ? <React.Fragment>
+                    <Button onClick={ () => {
+                        Promise.resolve(asyncFunction()).then(asyncPages => this.setState({
+                            asyncPages
+                        }));
+                    }} { ...buttonProps }>{label}</Button>
+                    {this.state.asyncPages.length > 0 && (
+                        <BlobProvider document={<PDFDocument { ...props } pages={this.state.asyncPages} />}>
+                            {({ blob }) => {
+                                if (blob) {
+                                    const link = document.createElement('a');
+                                    link.href = URL.createObjectURL(blob);
+                                    link.download = fileName;
+                                    document.body.append(link);
+                                    link.click();
+                                    link.remove();
+                                }
+
+                                return <React.Fragment />;
+                            }}
+                        </BlobProvider>
+                    )}
+                </React.Fragment> : <PDFDownloadLink
+                    document={<PDFDocument { ...props } />}
                     fileName={fileName}
                     {...props}
                 >
@@ -91,41 +57,15 @@ class DownloadButton extends React.Component {
 }
 
 DownloadButton.propTypes = {
-    pages: PropTypes.arrayOf(PropTypes.oneOfType([
-        PropTypes.node,
-        PropTypes.arrayOf(PropTypes.node)
-    ])),
-    size: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.array,
-        PropTypes.number
-    ]),
-    reportName: PropTypes.string,
+    ...PDFDocument.propTypes,
     fileName: PropTypes.string,
-    type: PropTypes.string,
-    title: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.shape({
-                title: PropTypes.string,
-                fontWeight: PropTypes.number,
-                style: PropTypes.shape({
-                    [PropTypes.string]: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ])
-                })
-            })
-        ]))
-    ]),
     isPreview: PropTypes.bool,
-    label: PropTypes.node
+    label: PropTypes.node,
+    asyncFunction: PropTypes.func
 };
 
 DownloadButton.defaultProps = {
-    size: 'A4',
-    reportName: 'Executive report:',
-    pages: [],
-    title: '',
-    type: 'Default',
+    ...PDFDocument.defaultProps,
     fileName: '',
     label: 'Download PDF',
     isPreview: false
