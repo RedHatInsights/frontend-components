@@ -138,8 +138,13 @@ If you need to load data when user clicks on a button you are free to do so by u
             </Column>
         </Section>
     </Fragment>
-]))} />
+]))} buttonProps={{
+    variant: 'link',
+    className: 'some-btn-class'
+}} />
 ```
+
+To properly style and use button that is created in this approach there is `buttonProps` property to which you can pass Patternfly's button config.
 
 ### Config
 There are mutliple config options derived from [react-pdf](https://react-pdf.org) and here are some that should help you to make PDFs easier.

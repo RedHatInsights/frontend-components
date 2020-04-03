@@ -43,7 +43,6 @@ const PDFDocument = ({
                         <Text style={ appliedStyles.displayFont }>
                             { customTitle(title) }
                         </Text>
-
                     </View>
                 </React.Fragment>}
                 <View style={appliedStyles.smallSpacing}>
