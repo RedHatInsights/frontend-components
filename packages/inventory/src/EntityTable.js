@@ -40,8 +40,9 @@ class EntityTable extends React.Component {
     }
 
     onItemSelect = (_event, checked, rowId) => {
-        const { rows } = this.props;
-        this.props.selectEntity && this.props.selectEntity(rowId === -1 ? 0 : rows[rowId].id, checked);
+        const { rows, expandable: isExpandable } = this.props;
+        const row = isExpandable ? rows[rowId / 2] : rows[rowId];
+        this.props.selectEntity && this.props.selectEntity(rowId === -1 ? 0 : row.id, checked);
     }
 
     onSort = (_event, key, direction) => {

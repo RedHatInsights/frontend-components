@@ -38,6 +38,7 @@ class InventoryTable extends Component {
             perPage,
             total,
             children,
+            showTags,
             ...props
         } = this.props;
         return (
@@ -61,6 +62,7 @@ class InventoryTable extends Component {
                     apiBase={ apiBase }
                     page={ page }
                     perPage={ perPage }
+                    showTags={ showTags }
                 >
                     { children }
                 </EntityTableToolbar>
@@ -73,6 +75,7 @@ class InventoryTable extends Component {
                     apiBase={ apiBase }
                     perPage={ perPage }
                     showHealth={ showHealth }
+                    showTags={ showTags }
                 />
                 <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                     <Pagination

@@ -118,6 +118,34 @@ class DemoApp extends Component {
 ReactDOM.render(<DemoApp />, document.querySelector('.demo-app'));
 ```
 
+### Async data
+
+If you need to load data when user clicks on a button you are free to do so by using `asyncFunction` prop. This function has to return pages in similiar way how pages are applied to this component
+
+```JSX
+<DownloadButton asyncFunction={() => (new Promise((res) => {
+    setTimeout(() => {
+        res({ rows: [ [ 'one', 'two' ] ] });
+    }, 1000);
+})).then(data => ([
+    <Fragment key="first-section">
+        <Section title="I am donut chart about pets">
+            <Column>
+                <Table
+                    withHeader
+                    rows={data.rows}
+                />
+            </Column>
+        </Section>
+    </Fragment>
+]))} buttonProps={{
+    variant: 'link',
+    className: 'some-btn-class'
+}} />
+```
+
+To properly style and use button that is created in this approach there is `buttonProps` property to which you can pass Patternfly's button config.
+
 ### Config
 There are mutliple config options derived from [react-pdf](https://react-pdf.org) and here are some that should help you to make PDFs easier.
 * `label` - what should be on button for PDF download.

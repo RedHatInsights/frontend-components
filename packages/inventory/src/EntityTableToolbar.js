@@ -56,8 +56,8 @@ class ContextEntityTableToolbar extends Component {
     }, 800);
 
     componentDidMount() {
-        const { filters, hasItems } = this.props;
-        if (localStorage.getItem('rhcs-tags') && !hasItems) {
+        const { filters, hasItems, showTags } = this.props;
+        if (showTags && !hasItems) {
             this.props.getAllTags();
         }
 
@@ -127,18 +127,20 @@ class ContextEntityTableToolbar extends Component {
                     });
                 },
                 onChange: (_e, newSelection, group, item, groupKey, itemKey) => {
-                    const isSelected = newSelection[groupKey][itemKey];
-                    newSelection[groupKey][itemKey] = {
-                        isSelected,
-                        group,
-                        item
-                    };
-                    this.setState(
-                        { selected: newSelection },
-                        () => {
-                            const newFilter = this.applyTags(newSelection);
-                            getAllTags(filterTagsBy, { filters: newFilter });
-                        });
+                    if (item.meta) {
+                        const isSelected = newSelection[groupKey][itemKey];
+                        newSelection[groupKey][itemKey] = {
+                            isSelected,
+                            group,
+                            item
+                        };
+                        this.setState(
+                            { selected: newSelection },
+                            () => {
+                                const newFilter = this.applyTags(newSelection);
+                                getAllTags(filterTagsBy, { filters: newFilter });
+                            });
+                    }
                 },
                 selected,
                 ...allTagsLoaded && allTags.length > 0 ? {
@@ -222,7 +224,7 @@ class ContextEntityTableToolbar extends Component {
                 }] : [],
                 ...(activeFiltersConfig && activeFiltersConfig.filters) || []
             ],
-            onDelete: (e, [ deleted ], isAll) => {
+            onDelete: (e, [ deleted, ...restDeleted ], isAll) => {
                 if (isAll) {
                     this.updateData({ page: 1, perPage, filters: [] });
                     onClearFilters();
@@ -234,11 +236,11 @@ class ContextEntityTableToolbar extends Component {
                     }, () => {
                         getAllTags(filterTagsBy, {});
                     });
-                } else {
+                } else if (deleted.type) {
                     this.deleteMapper[deleted.type](deleted);
                 }
 
-                activeFiltersConfig && activeFiltersConfig.onDelete && activeFiltersConfig.onDelete(e, deleted, isAll);
+                activeFiltersConfig && activeFiltersConfig.onDelete && activeFiltersConfig.onDelete(e, [ deleted, ...restDeleted ], isAll);
             }
         };
     }
@@ -278,6 +280,7 @@ class ContextEntityTableToolbar extends Component {
             hasCheckbox,
             activeFiltersConfig,
             additionalTagsCount,
+            showTags,
             ...props
         } = this.props;
         const inventoryFilters = [
@@ -309,7 +312,7 @@ class ContextEntityTableToolbar extends Component {
                     items: registered
                 }
             }] : [],
-            ...(localStorage.getItem('rhcs-tags') && !hasItems) ? [ this.createTagsFilter() ] : [],
+            ...(showTags && !hasItems) ? [ this.createTagsFilter() ] : [],
             ...(filterConfig && filterConfig.items) || []
         ];
         return <PrimaryToolbar
@@ -345,6 +348,7 @@ const EntityTableToolbar = ({ ...props }) => (
 );
 
 EntityTableToolbar.propTypes = {
+    showTags: PropTypes.bool,
     filterConfig: PropTypes.shape(PrimaryToolbar.propTypes.filterConfig),
     total: PropTypes.number,
     filters: PropTypes.array,
@@ -371,6 +375,7 @@ ContextEntityTableToolbar.propTypes = {
 };
 
 EntityTableToolbar.defaultProps = {
+    showTags: false,
     activeFiltersConfig: {},
     filters: [],
     allTags: [],
@@ -395,9 +400,9 @@ function mapStateToProps(
     };
 }
 
-export default connect(mapStateToProps, (dispatch) => ({
+export default connect(mapStateToProps, (dispatch, { showTags, hasItems }) => ({
     getAllTags: (search, options) => {
-        if (localStorage.getItem('rhcs-tags')) {
+        if (showTags && !hasItems) {
             dispatch(fetchAllTags(search, options));
         }
     },

@@ -11,6 +11,7 @@ describe('SystemPolicyCards component', () => {
     const policies = [{
         rulesPassed: 30,
         rulesFailed: 10,
+        score: 75,
         lastScanned: '2019-03-06T06:20:13Z',
         refId: 'xccdf_org.ssgproject.content_profile_pci-dss',
         name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7',
@@ -18,6 +19,7 @@ describe('SystemPolicyCards component', () => {
     }, {
         rulesPassed: 0,
         rulesFailed: 0,
+        score: 0,
         lastScanned: null,
         refId: 'xccdf_org.ssgproject.content_profile_pci-dss2',
         name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7 2',
