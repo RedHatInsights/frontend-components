@@ -4,22 +4,51 @@ import PropTypes from 'prop-types';
 import { toggleTagModal } from './redux/actions';
 import { TagModal } from '@redhat-cloud-services/frontend-components';
 
-const TagsModal = ({ showTagDialog, tags, activeSystemTag, tagCount, onToggleTagModal }) => {
-    return (
-        <TagModal
-            width="auto"
-            isOpen={ showTagDialog }
-            toggleModal={() => onToggleTagModal()}
-            columns={ [
-                { title: 'Name' },
-                { title: 'Value' },
-                { title: 'Tag Source' }
-            ] }
-            systemName={ `${activeSystemTag.display_name} (${tagCount})` }
-            rows={ tags.map(({ key, value, namespace }) => ([ key, value, namespace ])) }
-        />
-    );
-};
+class TagsModal extends React.Component {
+    state = {
+        filterTagsBy: '',
+        selected: []
+    }
+    render() {
+        const { showTagDialog, tags, activeSystemTag, tagCount, onToggleTagModal } = this.props;
+        const { filterTagsBy, selected } = this.state;
+        return (
+            <TagModal
+                width="auto"
+                isOpen={ showTagDialog }
+                toggleModal={() => onToggleTagModal()}
+                pagination={{
+                    count: tagCount
+                }}
+                filters={[
+                    {
+                        label: 'Tags filter',
+                        placeholder: 'Filter tags',
+                        value: 'tags-filter',
+                        filterValues: {
+                            value: filterTagsBy,
+                            onChange: (_e, value) => this.setState({ filterTagsBy: value })
+                        }
+                    }
+                ]}
+                onUpdateData={ console.log }
+                columns={ [
+                    { title: 'Name' },
+                    { title: 'Value' },
+                    { title: 'Tag Sources' }
+                ] }
+                onSelect={(selected) => this.setState({ selected })}
+                selected={selected}
+                systemName={ `${activeSystemTag.display_name} (${tagCount})` }
+                rows={ tags.map(({ key, value, namespace }) => ({
+                    id: `${namespace}/${key}=${value}`,
+                    selected: selected.find(({ id }) => id === `${namespace}/${key}=${value}`),
+                    cells: [ key, value, namespace ]
+                })) }
+            />
+        );
+    }
+}
 
 TagsModal.propTypes = {
     showTagDialog: PropTypes.bool,

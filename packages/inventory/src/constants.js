@@ -1,5 +1,6 @@
 import React from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
+import { Spinner } from '@patternfly/react-core/dist/esm/experimental';
 
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
@@ -137,3 +138,56 @@ export const staleness = [
 export const registered = [
     { label: 'Insights', value: 'insights' }
 ];
+
+export const tagsFilter = (
+    onFilter = () => undefined,
+    onChange = () => undefined,
+    selected = {},
+    tagsLoaded = true,
+    tags = [],
+    moreTags,
+    placeholder = 'Filter system by tag'
+) => {
+    return {
+        label: 'Tags',
+        value: 'tags',
+        type: 'group',
+        placeholder,
+        filterValues: {
+            className: 'ins-c-inventory__tags-filter',
+            onFilter,
+            onChange: (_e, newSelection, group, item, groupKey, itemKey) => {
+                if (item.meta) {
+                    const isSelected = newSelection[groupKey][itemKey];
+                    newSelection[groupKey][itemKey] = {
+                        isSelected,
+                        group,
+                        item
+                    };
+                    onChange(newSelection);
+                }
+            },
+            selected,
+            ...tagsLoaded && tags.length > 0 ? {
+                groups: [
+                    ...constructGroups(tags),
+                    ...moreTags || []
+                ]
+            } : {
+                items: [
+                    {
+                        label: !tagsLoaded ? <React.Fragment>
+                            <span>
+                                Loading... <Spinner size="md" />
+                            </span>
+                        </React.Fragment> : <div className="ins-c-inventory__tags-no-tags">
+                            No tags available
+                        </div>,
+                        isDisabled: true,
+                        className: 'ins-c-inventory__tags-tail'
+                    }
+                ]
+            }
+        }
+    };
+};
