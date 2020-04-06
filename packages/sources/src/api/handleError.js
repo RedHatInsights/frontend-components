@@ -12,9 +12,8 @@ export const handleError = (error, sourceId = undefined) => {
         errorMessage = error;
     }
 
-    if (!errorMessage && !sourceId) {
-        const detail = get(error, 'errors[0].detail', JSON.stringify(error, null, 2));
-        errorMessage = detail;
+    if (!errorMessage) {
+        errorMessage = get(error, 'errors[0].detail', JSON.stringify(error, null, 2));
     }
 
     if (!sourceId) {

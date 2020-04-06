@@ -4,7 +4,7 @@ const createProgressText = (formData) => {
 
     const authAndApp = formData.endpoint && formData.application && formData.application.application_type_id;
 
-    progressTexts.push(`Step 1: sending source data`);
+    progressTexts.push('Step 1: sending source data');
     if (authAndApp) {
         progressTexts.push(`Step ${++step}: sending endpoint and application data`);
     } else if ((formData.endpoint) && !(formData.application && formData.application.application_type_id)) {

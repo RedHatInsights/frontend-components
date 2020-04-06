@@ -37,8 +37,8 @@ const LoadingStep = ({ onClose, customText, progressStep, progressTexts }) => <B
 LoadingStep.propTypes = {
     onClose: PropTypes.func,
     customText: PropTypes.string,
-    progressStep: PropTypes.number.isRequired,
-    progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired
+    progressStep: PropTypes.number,
+    progressTexts: PropTypes.arrayOf(PropTypes.string)
 };
 
 LoadingStep.defaultProps = {
