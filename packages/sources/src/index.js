@@ -20,6 +20,7 @@ import filterApps from '../src/utilities/filterApps';
 import './styles/cardSelect.scss';
 import './styles/authSelect.scss';
 import './styles/costManagement.scss';
+import './styles/emptyState.scss';
 
 export {
     AddSourceButton,

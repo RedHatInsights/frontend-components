@@ -7,6 +7,7 @@ import FinalWizard from './FinalWizard';
 
 import { doCreateSource } from '../api/createSource';
 import { WIZARD_TITLE } from '../utilities/stringConstants';
+import createProgressText from './createProgressText';
 
 const initialValues = (initialValues) => ({
     isSubmitted: false,
@@ -14,7 +15,9 @@ const initialValues = (initialValues) => ({
     isErrored: false,
     values: initialValues,
     createdSource: {},
-    error: undefined
+    error: undefined,
+    progressStep: 0,
+    progressTexts: []
 });
 
 class AddSourceWizard extends React.Component {
@@ -26,8 +29,11 @@ class AddSourceWizard extends React.Component {
     })
 
     onSubmit = (formValues, sourceTypes) => {
+        this.setState({ progressTexts: createProgressText(formValues), progressStep: 0 });
+        const increaseProgressStep = () => this.setState((({ progressStep }) => ({ progressStep: ++progressStep })));
+
         this.setOnSubmitState(formValues);
-        return doCreateSource(formValues, sourceTypes).then((data) => {
+        return doCreateSource(formValues, sourceTypes, increaseProgressStep).then((data) => {
             this.props.afterSuccess(data);
             this.setState({ isFinished: true, createdSource: data });
         })
@@ -63,7 +69,7 @@ class AddSourceWizard extends React.Component {
             returnButtonTitle,
             disableHardcodedSchemas
         } = this.props;
-        const { isErrored, isFinished, isSubmitted, values, error } = this.state;
+        const { isErrored, isFinished, isSubmitted, values, error, progressStep, progressTexts } = this.state;
 
         if (!isOpen) {
             return null;
@@ -91,6 +97,8 @@ class AddSourceWizard extends React.Component {
             hideSourcesButton={ hideSourcesButton }
             returnButtonTitle={ returnButtonTitle }
             errorMessage={ error }
+            progressStep={progressStep}
+            progressTexts={progressTexts}
         />;
     }
 }
