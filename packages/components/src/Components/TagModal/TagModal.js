@@ -29,9 +29,9 @@ const calculateChecked = (rows = [], selected) => (
         : rows.some(({ id }) => selected && selected.find(({ id: selectedId }) => selectedId === id)) && null
 );
 
-const unique = (arr) => {
-    return arr.filter(({ id }, index, arr) => arr.findIndex(({ id: currId }) => currId === id) === index);
-};
+const unique = (arr) => (
+    arr.filter(({ id }, index, arr) => arr.findIndex(({ id: currId }) => currId === id) === index)
+);
 
 export default class TagModal extends React.Component {
     onSelect = (_event, isSelected, rowId) => {
