@@ -1,6 +1,5 @@
 import React from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
-import { Spinner } from '@patternfly/react-core/dist/esm/experimental';
 
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
@@ -144,7 +143,7 @@ export const mergeTableProps = (stateProps, dispatchProps, ownProps) => ({
     }
 });
 
-export const tagsFilterBuilder = (onFilter, onChange, selected, loaded, tags, items = []) => ({
+export const tagsFilterBuilder = (onFilter, onChange, selected, loaded, tags, items = [], loader) => ({
     label: 'Tags',
     value: 'tags',
     type: 'group',
@@ -173,7 +172,7 @@ export const tagsFilterBuilder = (onFilter, onChange, selected, loaded, tags, it
             items: [
                 {
                     label: !loaded ?
-                        <span> Loading... <Spinner size="md" /> </span> :
+                        loader :
                         <div className="ins-c-inventory__tags-no-tags"> No tags available </div>,
                     isDisabled: true,
                     className: 'ins-c-inventory__tags-tail'

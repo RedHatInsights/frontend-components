@@ -4,6 +4,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
+import { Spinner } from '@patternfly/react-core/dist/esm/experimental';
 import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from './redux/actions';
 import debounce from 'lodash/debounce';
 import { InventoryContext } from './Inventory';
@@ -131,7 +132,8 @@ class ContextEntityTableToolbar extends Component {
                     onClick: () => toggleTagModal(),
                     className: 'ins-c-inventory__tags-more-items'
                 }]
-            }] : []
+            }] : [],
+            <span> Loading... <Spinner size="md" /> </span>
         );
     }
 

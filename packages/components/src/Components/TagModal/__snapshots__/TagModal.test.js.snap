@@ -15,6 +15,17 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   showClose={true}
   title="Tags for paul.localhost.com"
 >
+  <PrimaryToolbar
+    pagination={
+      Object {
+        "count": 10,
+        "itemCount": 10,
+        "onPerPageSelect": [Function],
+        "onSetPage": [Function],
+      }
+    }
+    toggleIsExpanded={[Function]}
+  />
   <Component
     aria-label="paul.localhost.com tags"
     cells={
@@ -45,6 +56,17 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
     <TableHeader />
     <TableBody />
   </Component>
+  <TableToolbar
+    className="ins-c-inventory__table--toolbar"
+    isFooter={true}
+  >
+    <Component
+      itemCount={10}
+      onPerPageSelect={[Function]}
+      onSetPage={[Function]}
+      variant="bottom"
+    />
+  </TableToolbar>
 </Modal>
 `;
 
@@ -63,6 +85,17 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   showClose={true}
   title="Tags for paul.localhost.com"
 >
+  <PrimaryToolbar
+    pagination={
+      Object {
+        "count": 10,
+        "itemCount": 10,
+        "onPerPageSelect": [Function],
+        "onSetPage": [Function],
+      }
+    }
+    toggleIsExpanded={[Function]}
+  />
   <h1>
     I am a chile component
   </h1>
@@ -79,11 +112,53 @@ exports[`TagCount component Render the modal with a child component 1`] = `
       ]
     }
     className="ins-c-tag-modal__table"
-    rows={Array []}
+    rows={
+      Array [
+        Object {
+          "cells": Array [
+            Object {
+              "props": Object {
+                "colSpan": 2,
+              },
+              "title": <EmptyTable>
+                <Bullseye>
+                  <EmptyState
+                    variant="full"
+                  >
+                    <Title
+                      headingLevel="h5"
+                      size="lg"
+                    >
+                      No tags found
+                    </Title>
+                    <EmptyStateBody>
+                      This filter criteria matches no tags. 
+                      <br />
+                       Try changing your filter settings.
+                    </EmptyStateBody>
+                  </EmptyState>
+                </Bullseye>
+              </EmptyTable>,
+            },
+          ],
+        },
+      ]
+    }
     variant="compact"
   >
     <TableHeader />
     <TableBody />
   </Component>
+  <TableToolbar
+    className="ins-c-inventory__table--toolbar"
+    isFooter={true}
+  >
+    <Component
+      itemCount={10}
+      onPerPageSelect={[Function]}
+      onSetPage={[Function]}
+      variant="bottom"
+    />
+  </TableToolbar>
 </Modal>
 `;

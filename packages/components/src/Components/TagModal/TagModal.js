@@ -161,8 +161,8 @@ export default class TagModal extends React.Component {
                         perPage={pagination.perPage}
                         page={pagination.page}
                         variant="bottom"
-                        onSetPage={(_event, page) => this.updatePagination({ ...pagination, page })}
-                        onPerPageSelect={(_event, perPage) => this.updatePagination({ ...pagination, page: 1, perPage })}
+                        onSetPage={(_event, page) => onUpdateData({ ...pagination, page })}
+                        onPerPageSelect={(_event, perPage) => onUpdateData({ ...pagination, page: 1, perPage })}
                     />
                 </TableToolbar> }
             </Modal>
@@ -202,7 +202,5 @@ TagModal.defaultProps = {
     onUpdateData: () => undefined,
     rows: [],
     tableProps: {},
-    pagination: {
-        count: 10
-    }
+    pagination: { count: 10 }
 };
