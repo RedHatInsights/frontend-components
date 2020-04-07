@@ -158,8 +158,14 @@ function mapDispatchToProps(dispatch, { showTags }) {
 }
 
 export default connect(
-    ({ entities: { page, perPage, sortBy, activeFilters } }, { perPage: currPerPage }) => (
-        { page, perPage: currPerPage || perPage, sortBy, activeFilters }
-    ),
+    (
+        { entities: { page, perPage, sortBy, activeFilters } },
+        { perPage: currPerPage, sortBy: currSortBy, hasItems }
+    ) => ({
+        page,
+        perPage: currPerPage || perPage,
+        sortBy: hasItems ? currSortBy : sortBy,
+        activeFilters
+    }),
     mapDispatchToProps
 )(InventoryList);
