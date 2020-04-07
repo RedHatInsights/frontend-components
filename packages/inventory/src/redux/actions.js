@@ -13,12 +13,15 @@ import {
 } from './action-types';
 import { getEntities, getEntitySystemProfile, hosts, getAllTags } from '../api';
 
-export const loadEntities = (items = [], config) => ({
+export const loadEntities = (items = [], config, { showTags } = {}) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
     payload: getEntities(items, config).then(results => ({
         ...results,
         page: config.itemsPage || (results && results.page)
-    }))
+    })),
+    meta: {
+        showTags
+    }
 });
 
 export const showEntities = (items = []) => ({

@@ -159,7 +159,7 @@ class RuleTable extends Component {
             />
             <Table
                 {...props}
-                {...sortBy && { onSort: this.onSort }}
+                {...sortBy && { sortBy, onSort: this.onSort }}
                 actions={!isLoading && actions}
                 aria-label={ariaLabel}
                 cells={columns.map(({ transforms, ...column }) => ({

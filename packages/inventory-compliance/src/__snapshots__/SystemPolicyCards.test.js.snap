@@ -15,6 +15,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
           "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
           "rulesFailed": 10,
           "rulesPassed": 30,
+          "score": 75,
         },
         Object {
           "compliant": false,
@@ -23,6 +24,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
           "refId": "xccdf_org.ssgproject.content_profile_pci-dss2",
           "rulesFailed": 0,
           "rulesPassed": 0,
+          "score": 0,
         },
       ]
     }
@@ -52,6 +54,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rulesFailed": 10,
                   "rulesPassed": 30,
+                  "score": 75,
                 }
               }
             >
@@ -332,6 +335,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
           "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
           "rulesFailed": 10,
           "rulesPassed": 30,
+          "score": 75,
         },
         Object {
           "compliant": false,
@@ -340,6 +344,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
           "refId": "xccdf_org.ssgproject.content_profile_pci-dss2",
           "rulesFailed": 0,
           "rulesPassed": 0,
+          "score": 0,
         },
       ]
     }
@@ -369,6 +374,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rulesFailed": 10,
                   "rulesPassed": 30,
+                  "score": 75,
                 }
               }
             >

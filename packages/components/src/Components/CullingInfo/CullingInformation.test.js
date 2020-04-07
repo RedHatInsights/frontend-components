@@ -9,7 +9,7 @@ describe('CullingInformation', () => {
     const warningDate = new Date('Mon Feb 03 2020');
     const cullDate = new Date('Fri Feb 07 2020');
     test('it should render correctly without any date', () => {
-        const wrapper = shallow(<CullingInformation />);
+        const wrapper = shallow(<CullingInformation currDate={currdate} />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 

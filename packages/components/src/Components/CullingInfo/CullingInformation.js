@@ -11,21 +11,23 @@ const minutes = seconds * 60;
 const hours = minutes * 60;
 const days = hours * 24;
 
+const exact = (value) => `${value.toUTCString().split(',')[1].slice(0, -4).trim()} UTC`;
+
 const calculateTooltip = (culled, warning, currDate) => {
     const culledDate = new Date(culled);
     const warningDate = new Date(warning);
     const diffTime = currDate - warningDate;
     const removeIn = Math.ceil((culledDate - currDate) / days);
-    if (diffTime >= 0 && removeIn <= 1) {
+    if (diffTime >= 0) {
         return {
             isError: true,
-            msg: `This system is scheduled for removal from inventory within 24 hours`
+            msg: `This system is scheduled for removal from inventory in ${removeIn} days (${exact(culledDate)})`
         };
     }
 
     return {
-        isWarn: diffTime >= 0,
-        msg: `This system will be removed from the inventory in ${removeIn} days`
+        isWarn: true,
+        msg: `This system will be removed from the inventory in ${removeIn} days (${exact(culledDate)})`
     };
 };
 

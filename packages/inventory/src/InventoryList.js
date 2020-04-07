@@ -53,7 +53,13 @@ class ContextInventoryList extends React.Component {
 
     componentDidUpdate(prevProps) {
         const { items, hasItems, sortBy } = this.props;
-        if (hasItems && !isEqual(items, prevProps.items)) {
+        if (
+            hasItems &&
+            !isEqual(
+                items.map(({ children, isOpen, ...item }) => item),
+                prevProps.items.map(({ children, isOpen, ...item }) => item)
+            )
+        ) {
             this.loadEntities({}, false);
         } else if (!hasItems && !isEqual(prevProps.sortBy, sortBy)) {
             this.loadEntities({}, false);
@@ -75,6 +81,7 @@ class ContextInventoryList extends React.Component {
 }
 
 const propTypes = {
+    showTags: PropTypes.bool,
     filterEntities: PropTypes.func,
     loadEntities: PropTypes.func,
     pathPrefix: PropTypes.number,
@@ -122,7 +129,7 @@ const InventoryList = ({ ...props }) => (
 
 InventoryList.propTypes = propTypes;
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, { showTags }) {
     return {
         loadEntities: (items = [], config) => {
             if (!Array.isArray(items)) {
@@ -142,7 +149,7 @@ function mapDispatchToProps(dispatch) {
                     curr && typeof curr === 'string' ? curr : curr.id
                 ]
             ), []).filter(Boolean);
-            dispatch(loadEntities(itemIds, config));
+            dispatch(loadEntities(itemIds, config, { showTags }));
             dispatch(showEntities(limitedItems.map(oneItem => (
                 { ...typeof oneItem === 'string' ? { id: oneItem } : oneItem }
             ))));
