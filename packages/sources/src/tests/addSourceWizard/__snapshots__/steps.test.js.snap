@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Steps components ErroredStep renders correctly 1`] = `
-<div
-  className="pf-l-bullseye"
->
+<Bullseye>
   <EmptyState
+    className="ins-c-sources__empty-state"
     variant="full"
   >
     <EmptyStateIcon
@@ -18,6 +17,19 @@ exports[`Steps components ErroredStep renders correctly 1`] = `
       Configuration unsuccessful
     </Title>
     <EmptyStateBody>
+      <Progress
+        className="pf-u-mb-md ins-c-sources__progress"
+        id=""
+        label="Step 1: create source"
+        max={0}
+        measureLocation="top"
+        min={0}
+        size={null}
+        title=" "
+        value={0}
+        valueText="Step 1: create source"
+        variant="danger"
+      />
       <TextContent>
         <Text
           variant="p"
@@ -41,7 +53,7 @@ exports[`Steps components ErroredStep renders correctly 1`] = `
       </Component>
     </EmptyStateSecondaryActions>
   </EmptyState>
-</div>
+</Bullseye>
 `;
 
 exports[`Steps components FinishedStep renders correctly 1`] = `
@@ -49,6 +61,7 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
   className="pf-l-bullseye"
 >
   <EmptyState
+    className="ins-c-sources__empty-state"
     variant="full"
   >
     <EmptyStateIcon
@@ -62,6 +75,19 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
       Configuration successful
     </Title>
     <EmptyStateBody>
+      <Progress
+        className="pf-u-mb-md ins-c-sources__progress"
+        id=""
+        label="Completed"
+        max={0}
+        measureLocation="top"
+        min={0}
+        size={null}
+        title=" "
+        value={0}
+        valueText="Completed"
+        variant="success"
+      />
       Here I Am
     </EmptyStateBody>
     <Component
@@ -90,6 +116,7 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
   className="pf-l-bullseye"
 >
   <EmptyState
+    className="ins-c-sources__empty-state"
     variant="full"
   >
     <EmptyStateIcon
@@ -103,6 +130,19 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
       Configuration successful
     </Title>
     <EmptyStateBody>
+      <Progress
+        className="pf-u-mb-md ins-c-sources__progress"
+        id=""
+        label="Completed"
+        max={0}
+        measureLocation="top"
+        min={0}
+        size={null}
+        title=" "
+        value={0}
+        valueText="Completed"
+        variant="success"
+      />
       Here I Am
     </EmptyStateBody>
     <Component
@@ -118,9 +158,12 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
 exports[`Steps components LoadingStep renders correctly 1`] = `
 <Bullseye>
   <EmptyState
+    className="ins-c-sources__empty-state"
     variant="full"
   >
-    <Spinner />
+    <EmptyStateIcon
+      icon={[Function]}
+    />
     <EmptyStateBody>
       Loading, please wait.
     </EmptyStateBody>
@@ -131,9 +174,12 @@ exports[`Steps components LoadingStep renders correctly 1`] = `
 exports[`Steps components LoadingStep renders correctly with custom props 1`] = `
 <Bullseye>
   <EmptyState
+    className="ins-c-sources__empty-state"
     variant="full"
   >
-    <Spinner />
+    <EmptyStateIcon
+      icon={[Function]}
+    />
     <EmptyStateBody>
       Here I Am
     </EmptyStateBody>
@@ -145,6 +191,22 @@ exports[`Steps components LoadingStep renders correctly with custom props 1`] = 
         Cancel
       </Component>
     </EmptyStateSecondaryActions>
+  </EmptyState>
+</Bullseye>
+`;
+
+exports[`Steps components LoadingStep renders correctly with progress bar 1`] = `
+<Bullseye>
+  <EmptyState
+    className="ins-c-sources__empty-state"
+    variant="full"
+  >
+    <EmptyStateIcon
+      icon={[Function]}
+    />
+    <EmptyStateBody>
+      Loading, please wait.
+    </EmptyStateBody>
   </EmptyState>
 </Bullseye>
 `;

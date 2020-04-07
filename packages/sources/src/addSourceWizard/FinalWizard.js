@@ -16,8 +16,10 @@ const FinalWizard = ({
     successfulMessage,
     hideSourcesButton,
     returnButtonTitle,
-    errorMessage
-}) =>
+    errorMessage,
+    progressStep,
+    progressTexts
+}) =>(
     <Wizard
         isOpen={ true }
         onClose={ isFinished ? afterSubmit : afterError }
@@ -31,12 +33,27 @@ const FinalWizard = ({
                     successfulMessage={ successfulMessage }
                     hideSourcesButton={ hideSourcesButton }
                     returnButtonTitle={ returnButtonTitle }
+                    progressStep={progressStep}
+                    progressTexts={progressTexts}
                 /> :
                 isErrored ?
-                    <ErroredStep onRetry={ onRetry } onClose={ afterError } returnButtonTitle={ returnButtonTitle } message={errorMessage}/>
-                    : <LoadingStep customText='Source is being created'/>,
+                    <ErroredStep
+                        onRetry={ onRetry }
+                        onClose={ afterError }
+                        returnButtonTitle={ returnButtonTitle }
+                        message={errorMessage}
+                        progressStep={progressStep}
+                        progressTexts={progressTexts}
+                    />
+                    : <LoadingStep
+                        customText='Source is being created'
+                        progressStep={progressStep}
+                        progressTexts={progressTexts}
+                    />,
             isFinishedStep: true
-        }] } />;
+        }] }
+    />
+);
 
 FinalWizard.propTypes = {
     afterSubmit: PropTypes.func.isRequired,
@@ -47,7 +64,9 @@ FinalWizard.propTypes = {
     successfulMessage: PropTypes.node.isRequired,
     hideSourcesButton: PropTypes.bool.isRequired,
     returnButtonTitle: PropTypes.node.isRequired,
-    errorMessage: PropTypes.node
+    errorMessage: PropTypes.node,
+    progressStep: PropTypes.number.isRequired,
+    progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default FinalWizard;

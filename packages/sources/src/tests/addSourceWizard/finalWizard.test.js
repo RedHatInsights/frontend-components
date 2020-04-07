@@ -21,7 +21,9 @@ describe('Final wizard', () => {
                 isErrored: false,
                 successfulMessage: 'Message',
                 hideSourcesButton: false,
-                returnButtonTitle: 'Go back to my application'
+                returnButtonTitle: 'Go back to my application',
+                progressTexts: [ 'Completed' ],
+                progressStep: 0
             };
         });
 

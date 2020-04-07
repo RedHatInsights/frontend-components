@@ -83,7 +83,7 @@ describe('handleError', () => {
             deleteSource: spyDelete
         });
 
-        const result = await handleError(STRING_ERROR, SOURCE_ID);
+        const result = await handleError(STRING_ERROR);
 
         expect(spyDelete).not.toHaveBeenCalled();
         expect(result).toEqual(STRING_ERROR);
@@ -94,7 +94,7 @@ describe('handleError', () => {
             deleteSource: spyDeleteError
         });
 
-        const result = await handleError(undefined, SOURCE_ID);
+        const result = await handleError(undefined);
 
         expect(spyDelete).not.toHaveBeenCalled();
         expect(result).toEqual(expect.any(String));

@@ -28,7 +28,9 @@ describe('Steps components', () => {
                 onClose: spyFunction,
                 successfulMessage: 'Here I Am',
                 hideSourcesButton: false,
-                returnButtonTitle: 'Go back to my application'
+                returnButtonTitle: 'Go back to my application',
+                progressTexts: [ 'Completed' ],
+                progressStep: 0
             };
         });
 
@@ -76,6 +78,18 @@ describe('Steps components', () => {
             wrapper.find(Button).first().simulate('click');
             expect(spyFunction).toHaveBeenCalled();
         });
+
+        it('renders correctly with progress bar', () => {
+            initialProps = {
+                onClose: spyFunction,
+                customText: 'Here I Am',
+                progressTexts: [ 'Step 1: create source' ],
+                progressStep: 0
+            };
+
+            const wrapper = shallow(<LoadingStep />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
     });
 
     describe('ErroredStep', () => {
@@ -83,7 +97,9 @@ describe('Steps components', () => {
             initialProps = {
                 onClose: spyFunction,
                 onRetry: spyFunctionSecond,
-                returnButtonTitle: 'Go back to my application'
+                returnButtonTitle: 'Go back to my application',
+                progressTexts: [ 'Step 1: create source' ],
+                progressStep: 0
             };
         });
 
