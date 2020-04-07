@@ -180,13 +180,17 @@ export function toggleTagModal(state, { payload: { isOpen } }) {
     };
 }
 
-export function allTags(state, { payload: { results, total, per_page: perPage } }) {
+export function allTags(state, { payload: { results, total, page, per_page: perPage } }) {
     return {
         ...state,
         allTags: Object.entries(groupBy(results, ({ tag: { namespace } }) => namespace)).map(([ key, value ]) => ({
             name: key,
             tags: value
         })),
+        allTagsPagination: {
+            perPage,
+            page
+        },
         additionalTagsCount: total > perPage ? total - perPage : 0,
         allTagsLoaded: true
     };

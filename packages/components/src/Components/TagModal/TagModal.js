@@ -8,7 +8,8 @@ import {
     EmptyState,
     EmptyStateVariant,
     Title,
-    EmptyStateBody
+    EmptyStateBody,
+    Button
 } from '@patternfly/react-core';
 import classNames from 'classnames';
 import {
@@ -57,6 +58,7 @@ export default class TagModal extends React.Component {
             filters,
             onSelect,
             selected,
+            onApply,
             ...props
         } = this.props;
 
@@ -68,6 +70,19 @@ export default class TagModal extends React.Component {
                 title={`Tags for ${systemName}`}
                 onClose={toggleModal}
                 isFooterLeftAligned
+                {...onApply && {
+                    actions: [
+                        <Button key="confirm" variant="primary" onClick={() => {
+                            onApply();
+                            toggleModal();
+                        }}>
+                            Apply tags
+                        </Button>,
+                        <Button key="cancel" variant="link" onClick={() => toggleModal()}>
+                            Cancel
+                        </Button>
+                    ]
+                }}
             >
                 {onUpdateData && <PrimaryToolbar
                     {...onSelect && pagination && {

@@ -4,24 +4,25 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
-import { fetchAllTags, clearFilters, entitiesLoading } from './redux/actions';
+import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from './redux/actions';
 import debounce from 'lodash/debounce';
-import { Spinner } from '@patternfly/react-core/dist/esm/experimental';
 import { InventoryContext } from './Inventory';
 import {
     mapGroups,
     TEXT_FILTER,
     reduceFilters,
-    constructGroups,
+    tagsFilterBuilder,
     TEXTUAL_CHIP,
     STALE_CHIP,
     REGISTERED_CHIP,
     TAG_CHIP,
     mergeTableProps,
     staleness,
-    registered
+    registered,
+    arrayToSelection
 } from './constants';
 import flatMap from 'lodash/flatMap';
+import TagsModal from './TagsModal';
 
 class ContextEntityTableToolbar extends Component {
     state = {
@@ -34,26 +35,18 @@ class ContextEntityTableToolbar extends Component {
 
     updateData = (config) => {
         const { onRefresh, onRefreshData, perPage, filters, page } = this.props;
-        onRefresh ? onRefresh({
+        const params = {
             page,
             per_page: perPage,
             filters,
             ...config
-        }) : onRefreshData({
-            page,
-            per_page: perPage,
-            filters,
-            ...config
-        });
+        };
+        onRefresh ? onRefresh(params) : onRefreshData(params);
     }
 
-    debouncedRefresh = debounce((config) => {
-        this.updateData(config);
-    }, 800);
+    debouncedRefresh = debounce((config) => this.updateData(config), 800);
 
-    debounceGetAllTags = debounce((config, options) => {
-        this.props.getAllTags && this.props.getAllTags(config, options);
-    }, 800);
+    debounceGetAllTags = debounce((config, options) => this.props.getAllTags(config, options), 800);
 
     componentDidMount() {
         const { filters, hasItems, showTags } = this.props;
@@ -111,66 +104,35 @@ class ContextEntityTableToolbar extends Component {
         return newFilters;
     }
 
+    updateSelectedTags = (newSelection) => {
+        const { getAllTags } = this.props;
+        const { filterTagsBy } = this.state;
+        this.setState(
+            { selected: newSelection },
+            () => getAllTags(filterTagsBy, { filters: this.applyTags(newSelection) })
+        );
+    }
+
     createTagsFilter = () => {
-        const { allTags, allTagsLoaded, additionalTagsCount, getAllTags, filters } = this.props;
-        const { selected, filterTagsBy } = this.state;
-        return {
-            label: 'Tags',
-            value: 'tags',
-            type: 'group',
-            placeholder: 'Filter system by tag',
-            filterValues: {
-                className: 'ins-c-inventory__tags-filter',
-                onFilter: (value) => {
-                    this.setState({ filterTagsBy: value }, () => {
-                        this.debounceGetAllTags(value, { filters });
-                    });
-                },
-                onChange: (_e, newSelection, group, item, groupKey, itemKey) => {
-                    if (item.meta) {
-                        const isSelected = newSelection[groupKey][itemKey];
-                        newSelection[groupKey][itemKey] = {
-                            isSelected,
-                            group,
-                            item
-                        };
-                        this.setState(
-                            { selected: newSelection },
-                            () => {
-                                const newFilter = this.applyTags(newSelection);
-                                getAllTags(filterTagsBy, { filters: newFilter });
-                            });
-                    }
-                },
-                selected,
-                ...allTagsLoaded && allTags.length > 0 ? {
-                    groups: [
-                        ...constructGroups(allTags),
-                        ...additionalTagsCount > 0 ? [{
-                            items: [{
-                                label: `${additionalTagsCount} more tags available`,
-                                isDisabled: true,
-                                className: 'ins-c-inventory__tags-more-items'
-                            }]
-                        }] : []
-                    ]
-                } : {
-                    items: [
-                        {
-                            label: !allTagsLoaded ? <Fragment>
-                                <span>
-                                    Loading... <Spinner size="md" />
-                                </span>
-                            </Fragment> : <div className="ins-c-inventory__tags-no-tags">
-                                No tags available
-                            </div>,
-                            isDisabled: true,
-                            className: 'ins-c-inventory__tags-tail'
-                        }
-                    ]
-                }
-            }
-        };
+        const { allTags, allTagsLoaded, additionalTagsCount, filters, toggleTagModal } = this.props;
+        const { selected } = this.state;
+        return tagsFilterBuilder(
+            (value) => this.setState(
+                { filterTagsBy: value },
+                () => this.debounceGetAllTags(value, { filters })
+            ),
+            this.updateSelectedTags,
+            selected,
+            allTagsLoaded,
+            allTags,
+            additionalTagsCount > 0 ? [{
+                items: [{
+                    label: `${additionalTagsCount} more tags available`,
+                    onClick: () => toggleTagModal(),
+                    className: 'ins-c-inventory__tags-more-items'
+                }]
+            }] : []
+        );
     }
 
     onDeleteTag = (deleted) => {
@@ -178,10 +140,10 @@ class ContextEntityTableToolbar extends Component {
         const { selected, filterTagsBy } = this.state;
         const deletedItem = deleted.chips[0];
         selected[deleted.key][deletedItem.key] = false;
-        this.setState({ selected }, () => {
-            const newFilter = this.applyTags(selected, false);
-            getAllTags(filterTagsBy, { filters: newFilter });
-        });
+        this.setState(
+            { selected },
+            () => getAllTags(filterTagsBy, { filters: this.applyTags(selected, false) })
+        );
     }
 
     onDeleteFilter = (deleted, filterType) => {
@@ -315,27 +277,30 @@ class ContextEntityTableToolbar extends Component {
             ...(showTags && !hasItems) ? [ this.createTagsFilter() ] : [],
             ...(filterConfig && filterConfig.items) || []
         ];
-        return <PrimaryToolbar
-            {...props}
-            className={`ins-c-inventory__table--toolbar ${hasItems ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
-            {...inventoryFilters.length > 0 && {
-                filterConfig: {
-                    ...filterConfig || {},
-                    items: inventoryFilters
-                }
-            }}
-            { ...this.isFilterSelected() && { activeFiltersConfig: this.constructFilters() } }
-            actionsConfig={ loaded ? actionsConfig : null }
-            pagination={loaded ? {
-                page,
-                itemCount: total,
-                perPage,
-                onSetPage: (_e, newPage) => this.updateData({ page: newPage, per_page: perPage, filters }),
-                onPerPageSelect: (_e, newPerPage) => this.updateData({ page: 1, per_page: newPerPage, filters })
-            } : <Skeleton size={SkeletonSize.lg} />}
-        >
-            { children }
-        </PrimaryToolbar>;
+        return <Fragment>
+            <PrimaryToolbar
+                {...props}
+                className={`ins-c-inventory__table--toolbar ${hasItems ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
+                {...inventoryFilters.length > 0 && {
+                    filterConfig: {
+                        ...filterConfig || {},
+                        items: inventoryFilters
+                    }
+                }}
+                { ...this.isFilterSelected() && { activeFiltersConfig: this.constructFilters() } }
+                actionsConfig={ loaded ? actionsConfig : null }
+                pagination={loaded ? {
+                    page,
+                    itemCount: total,
+                    perPage,
+                    onSetPage: (_e, newPage) => this.updateData({ page: newPage, per_page: perPage, filters }),
+                    onPerPageSelect: (_e, newPerPage) => this.updateData({ page: 1, per_page: newPerPage, filters })
+                } : <Skeleton size={SkeletonSize.lg} />}
+            >
+                { children }
+            </PrimaryToolbar>
+            { showTags && <TagsModal onApply={(selected) => this.updateSelectedTags(arrayToSelection(selected))} /> }
+        </Fragment>;
     }
 }
 
@@ -359,6 +324,7 @@ EntityTableToolbar.propTypes = {
     page: PropTypes.number,
     getAllTags: PropTypes.func,
     onClearFilters: PropTypes.func,
+    toggleTagModal: PropTypes.func,
     perPage: PropTypes.number,
     children: PropTypes.node,
     pagination: PrimaryToolbar.propTypes.pagination,
@@ -407,5 +373,6 @@ export default connect(mapStateToProps, (dispatch, { showTags, hasItems }) => ({
         }
     },
     onClearFilters: () => dispatch(clearFilters()),
-    onRefresh: () => dispatch(entitiesLoading())
+    onRefresh: () => dispatch(entitiesLoading()),
+    toggleTagModal: () => dispatch(toggleTagModal(true))
 }), mergeTableProps)(EntityTableToolbar);
