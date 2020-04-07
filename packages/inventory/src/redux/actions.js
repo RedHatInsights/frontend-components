@@ -11,7 +11,7 @@ import {
     CLEAR_FILTERS,
     TOGGLE_TAG_MODAL
 } from './action-types';
-import { getEntities, getEntitySystemProfile, hosts, getAllTags } from '../api';
+import { getEntities, getEntitySystemProfile, hosts, getAllTags, getTags } from '../api';
 
 export const loadEntities = (items = [], config, { showTags } = {}) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
@@ -113,9 +113,13 @@ export const editAnsibleHost = (id, value) => ({
     }
 });
 
-export const loadTags = (systemId) => ({
+export const loadTags = (systemId, search, options, count) => ({
     type: ACTION_TYPES.LOAD_TAGS,
-    payload: systemId
+    payload: getTags(systemId, search, options),
+    meta: {
+        tagsCount: count,
+        systemId
+    }
 });
 
 export const toggleTagModal = (isOpen) => ({

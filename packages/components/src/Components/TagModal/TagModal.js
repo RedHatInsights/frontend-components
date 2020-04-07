@@ -1,16 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './tagModal.scss';
-import { Modal, Pagination } from '@patternfly/react-core';
+import {
+    Modal,
+    Pagination,
+    Bullseye,
+    EmptyState,
+    EmptyStateVariant,
+    Title,
+    EmptyStateBody
+} from '@patternfly/react-core';
 import classNames from 'classnames';
 import {
     Table,
     TableHeader,
     TableBody
 } from '@patternfly/react-table';
+import { EmptyTable } from '../EmptyTable';
 import { TableToolbar } from '../TableToolbar';
 import { PrimaryToolbar } from '../PrimaryToolbar';
 import { Skeleton } from '../Skeleton';
+import { SkeletonTable } from '../SkeletonTable';
 
 const calculateChecked = (rows = [], selected) => (
     rows.every(({ id }) => selected && selected.find(({ id: selectedId }) => selectedId === id))
@@ -70,7 +80,7 @@ export default class TagModal extends React.Component {
                                     onSelect(selected.filter(({ id }) => !rows.find(({ id: rowId }) => rowId === id)));
                                 }
                             },
-                            checked: calculateChecked(rows, selected),
+                            checked: loaded && calculateChecked(rows, selected),
                             items: [{
                                 title: 'Select none (0)',
                                 onClick: () => onSelect([])
@@ -91,25 +101,45 @@ export default class TagModal extends React.Component {
                     pagination={loaded ? {
                         ...pagination,
                         itemCount: pagination.count,
-                        onSetPage: (_e, page) => this.updatePagination({ ...pagination, page }),
-                        onPerPageSelect: (_e, perPage) => this.updatePagination({ ...pagination, page: 1, perPage })
+                        onSetPage: (_e, page) => onUpdateData({ ...pagination, page }),
+                        onPerPageSelect: (_e, perPage) => onUpdateData({ ...pagination, page: 1, perPage })
                     } : <Skeleton size="lg" />}
                 /> }
                 {children}
-                <Table
+                {loaded ? <Table
                     aria-label={`${systemName} tags`}
                     variant="compact"
                     className="ins-c-tag-modal__table"
                     cells={columns}
-                    rows={rows}
-                    {...onSelect && {
+                    rows={rows.length ? rows : [{
+                        cells: [{
+                            title: (
+                                <EmptyTable>
+                                    <Bullseye>
+                                        <EmptyState variant={ EmptyStateVariant.full }>
+                                            <Title headingLevel="h5" size="lg">
+                                                No tags found
+                                            </Title>
+                                            <EmptyStateBody>
+                                                This filter criteria matches no tags. <br /> Try changing your filter settings.
+                                            </EmptyStateBody>
+                                        </EmptyState>
+                                    </Bullseye>
+                                </EmptyTable>
+                            ),
+                            props: {
+                                colSpan: columns.length
+                            }
+                        }]
+                    }]}
+                    {...onSelect && rows.length && {
                         onSelect: this.onSelect
                     }}
                     { ...tableProps }
                 >
                     <TableHeader />
                     <TableBody />
-                </Table>
+                </Table> : <SkeletonTable columns={columns} rowSize={pagination.perPage || 10} /> }
                 {onUpdateData && pagination && <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                     <Pagination
                         itemCount={pagination.count}
@@ -154,6 +184,10 @@ TagModal.defaultProps = {
         { title: 'Name' },
         { title: 'Tag Source' }
     ],
+    onUpdateData: () => undefined,
     rows: [],
-    tableProps: {}
+    tableProps: {},
+    pagination: {
+        count: 10
+    }
 };

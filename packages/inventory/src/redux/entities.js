@@ -145,20 +145,38 @@ function selectFilter(state, { payload: { item: { items, ...item }, selected } }
     };
 }
 
-export function showTags(state, { payload }) {
-    const activeSystemTag = state.rows ? state.rows.find(({ id }) => payload === id) : state.entity;
+export function showTags(state, { payload, meta }) {
+    const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity;
     return {
         ...state,
-        activeSystemTag,
-        tagsLoaded: true,
-        showTagDialog: true
+        activeSystemTag: {
+            ...activeSystemTag,
+            tags: Object.values(payload.results)[0],
+            tagsCount: payload.total,
+            page: payload.page,
+            perPage: payload.per_page,
+            tagsLoaded: true
+        }
+    };
+}
+
+export function showTagsPending(state, { meta }) {
+    const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity;
+    return {
+        ...state,
+        activeSystemTag: {
+            ...activeSystemTag,
+            tagsCount: meta.tagsCount,
+            tagsLoaded: false
+        }
     };
 }
 
 export function toggleTagModal(state, { payload: { isOpen } }) {
     return {
         ...state,
-        showTagDialog: isOpen
+        showTagDialog: isOpen,
+        activeSystemTag: undefined
     };
 }
 
@@ -179,7 +197,8 @@ export default {
     [ACTION_TYPES.ALL_TAGS_PENDING]: (state) => ({ ...state, allTagsLoaded: false }),
     [ACTION_TYPES.LOAD_ENTITIES_PENDING]: entitiesPending,
     [ACTION_TYPES.LOAD_ENTITIES_FULFILLED]: entitiesLoaded,
-    [ACTION_TYPES.LOAD_TAGS]: showTags,
+    [ACTION_TYPES.LOAD_TAGS_PENDING]: showTagsPending,
+    [ACTION_TYPES.LOAD_TAGS_FULFILLED]: showTags,
     [UPDATE_ENTITIES]: entitiesLoaded,
     [SHOW_ENTITIES]: (state, action) => entitiesLoaded(state, {
         payload: {

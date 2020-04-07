@@ -129,18 +129,25 @@ export function getEntities(items, {
 
 export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);
 
-export function getTags(systemId) {
-    return hosts.apiHostGetHostTags(systemId).then(({ results }) => ({ results: Object.values(results)[0] }));
+export function getTags(systemId, search, { pagination } = { pagination: {} }) {
+    return hosts.apiHostGetHostTags(
+        systemId,
+        pagination.perPage || 10,
+        pagination.page || 1,
+        undefined,
+        undefined,
+        search
+    );
 }
 
-export function getAllTags(search, { filters } = {}) {
+export function getAllTags(search, { filters, pagination } = { pagination: {} }) {
     const { tagFilters } = filters ? filters.reduce(filtersReducer, {}) : {};
     return tags.apiTagGetTags(
         tagFilters ? constructTags(tagFilters) : undefined,
         undefined,
         undefined,
-        10,
-        undefined,
+        (pagination && pagination.perPage) || 10,
+        (pagination && pagination.page) || 1,
         undefined,
         search
     );
