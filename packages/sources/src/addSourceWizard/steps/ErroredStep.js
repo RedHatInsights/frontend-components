@@ -26,7 +26,7 @@ const ErroredStep = ({ onClose, onRetry, returnButtonTitle, message, progressSte
             </Title>
             <EmptyStateBody>
                 <Progress
-                    className="pf-u-mb-md"
+                    className="pf-u-mb-md ins-c-sources__progress"
                     value={progressStep}
                     min={0}
                     title=" "

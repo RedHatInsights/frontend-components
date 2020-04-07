@@ -24,6 +24,7 @@ const LoadingStep = ({ onClose, customText, progressStep, progressTexts }) => <B
                     title=" "
                     label={progressTexts[progressStep]}
                     valueText={progressTexts[progressStep]}
+                    className="pf-u-mb-md ins-c-sources__progress"
                 />
                 : customText
             }
