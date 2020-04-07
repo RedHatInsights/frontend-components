@@ -8,12 +8,13 @@ import {
     Button,
     Bullseye,
     Spinner,
-    Progress
+    Progress,
+    EmptyStateIcon
 } from '@patternfly/react-core';
 
 const LoadingStep = ({ onClose, customText, progressStep, progressTexts }) => <Bullseye>
     <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__empty-state">
-        <Spinner />
+        <EmptyStateIcon icon={ Spinner } />
         <EmptyStateBody>
             {progressTexts ?
                 <Progress

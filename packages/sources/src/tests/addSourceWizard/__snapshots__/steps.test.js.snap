@@ -161,7 +161,9 @@ exports[`Steps components LoadingStep renders correctly 1`] = `
     className="ins-c-sources__empty-state"
     variant="full"
   >
-    <Spinner />
+    <EmptyStateIcon
+      icon={[Function]}
+    />
     <EmptyStateBody>
       Loading, please wait.
     </EmptyStateBody>
@@ -175,7 +177,9 @@ exports[`Steps components LoadingStep renders correctly with custom props 1`] = 
     className="ins-c-sources__empty-state"
     variant="full"
   >
-    <Spinner />
+    <EmptyStateIcon
+      icon={[Function]}
+    />
     <EmptyStateBody>
       Here I Am
     </EmptyStateBody>
@@ -197,7 +201,9 @@ exports[`Steps components LoadingStep renders correctly with progress bar 1`] = 
     className="ins-c-sources__empty-state"
     variant="full"
   >
-    <Spinner />
+    <EmptyStateIcon
+      icon={[Function]}
+    />
     <EmptyStateBody>
       Loading, please wait.
     </EmptyStateBody>
