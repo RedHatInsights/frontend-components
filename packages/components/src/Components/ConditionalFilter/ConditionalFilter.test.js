@@ -5,45 +5,45 @@ import toJson from 'enzyme-to-json';
 
 const config = [{
     id: 'some',
-    label: 'Simple text 1',
+    label: 'simple text 1',
     value: 'simple-text-1'
 }, {
-    label: 'Simple text 2',
+    label: 'simple text 2',
     value: 'simple-text-2',
     type: 'text',
     filterValues: {
         value: 'some-value blaa'
     }
 }, {
-    label: 'Checkbox',
+    label: 'checkbox',
     value: 'checkbox-filter',
     type: 'checkbox',
     filterValues: {
         items: [{
-            label: <div>Custom value</div>,
+            label: <div>custom value</div>,
             value: 'some-value'
         }, {
-            label: 'Another',
+            label: 'another',
             value: 'another-value'
         }, {
-            label: 'No value'
+            label: 'no value'
         }]
     }
 }, {
-    label: 'Radio filter',
+    label: 'radio filter',
     value: 'radio-filter',
     type: 'radio',
     filterValues: {
         items: [{
-            label: <div>Custom value</div>,
+            label: <div>custom value</div>,
             value: 'some-value'
         }, {
-            label: 'Another',
+            label: 'another',
             value: 'another-value'
         }]
     }
 }, {
-    label: 'No value',
+    label: 'no value',
     type: 'text'
 }];
 
