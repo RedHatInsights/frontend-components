@@ -172,17 +172,17 @@ class EntityDetails extends Component {
     }
 
     entityTopBar = () => {
-        const { loaded, entity } = this.props;
+        const { loaded, entity, showTags } = this.props;
         return (
             <Fragment>
                 { this.generateTop() }
                 { this.generateFacts() }
                 {
-                    loaded ?
+                    showTags && (loaded ?
                         <TagWithDialog count={ entity && entity.tags && entity.tags.length } systemId={ entity && entity.id } /> :
-                        <Skeleton size={ SkeletonSize.sm }>&nbsp;</Skeleton>
+                        <Skeleton size={ SkeletonSize.sm }>&nbsp;</Skeleton>)
                 }
-                <TagsModal />
+                {showTags &&  <TagsModal />}
             </Fragment>
         );
     }
@@ -235,6 +235,7 @@ EntityDetails.propTypes = {
     history: PropTypes.any,
     loaded: PropTypes.bool.isRequired,
     match: PropTypes.any,
+    showTags: PropTypes.bool,
     tagCount: PropTypes.number,
     useCard: PropTypes.bool,
     setAnsibleHost: PropTypes.func,
@@ -247,14 +248,15 @@ EntityDetails.defualtProps = {
     actions: [],
     entity: {},
     useCard: false,
+    showTags: false,
     setDisplayName: () => undefined,
     setAnsibleHost: () => undefined
 };
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, { showTags }) {
     const reloadWrapper = (id, event) => {
         event.payload.then(data => {
-            dispatch(loadEntity(id, { hasItems: true }));
+            dispatch(loadEntity(id, { hasItems: true }, { showTags }));
             return data;
         });
 
