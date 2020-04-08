@@ -92,13 +92,14 @@ class InventoryTable extends Component {
     }
 }
 
-const InventoryItem = ({ pathPrefix = 0, apiBase, useCard = false, hideBack = false, ...props }) => (
+const InventoryItem = ({ pathPrefix = 0, apiBase, useCard = false, hideBack = false, showTags = false, ...props }) => (
     <InventoryDetail
         { ...props }
         pathPrefix={ pathPrefix }
         apiBase={ apiBase }
         useCard={ useCard }
         hideBack={ hideBack }
+        showTags={ showTags }
     />
 );
 
