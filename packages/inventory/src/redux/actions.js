@@ -15,7 +15,7 @@ import { getEntities, getEntitySystemProfile, hosts, getAllTags } from '../api';
 
 export const loadEntities = (items = [], config, { showTags } = {}) => ({
     type: ACTION_TYPES.LOAD_ENTITIES,
-    payload: getEntities(items, config).then(results => ({
+    payload: getEntities(items, config, showTags).then(results => ({
         ...results,
         page: config.itemsPage || (results && results.page)
     })),
@@ -43,9 +43,12 @@ export const filterSelect = (selectedItem) => ({
     payload: selectedItem
 });
 
-export const loadEntity = (id, config) => ({
+export const loadEntity = (id, config, { showTags }) => ({
     type: ACTION_TYPES.LOAD_ENTITY,
-    payload: getEntities(id, config)
+    payload: getEntities(id, config, showTags),
+    meta: {
+        showTags
+    }
 });
 
 export const selectEntity = (id, selected) => ({

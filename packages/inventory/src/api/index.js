@@ -73,7 +73,7 @@ export function getEntities(items, {
     page,
     orderBy = 'updated',
     orderDirection = 'DESC'
-}) {
+}, showTags) {
     const {
         hostnameOrId,
         tagFilters,
@@ -82,7 +82,7 @@ export function getEntities(items, {
     } = filters ? filters.reduce(filtersReducer, defaultFilters) : defaultFilters;
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
-        .then(mapTags)
+        .then((data) => showTags ? mapTags(data) : data)
         .then(({ results = [], ...data } = {}) => ({
             ...data,
             filters,
@@ -107,7 +107,7 @@ export function getEntities(items, {
             registeredWithFilter,
             { cancelToken: controller && controller.token }
         )
-        .then((data) => mapTags(data, { orderBy, orderDirection }))
+        .then((data) => showTags ? mapTags(data, { orderBy, orderDirection }) : data)
         .then(({ results = [], ...data } = {}) => ({
             ...data,
             filters,
