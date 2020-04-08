@@ -385,13 +385,13 @@ EntityTableToolbar.defaultProps = {
 
 function mapStateToProps(
     { entities: { page, perPage, total, loaded, activeFilters, allTags, allTagsLoaded, additionalTagsCount } },
-    { totalItems, page: currPage, perPage: currPerPage, hasItems, onRefresh }) {
+    { totalItems, page: currPage, perPage: currPerPage, hasItems, onRefresh, isLoaded }) {
     return {
         page: hasItems ? currPage : page,
         perPage: hasItems ? currPerPage : perPage,
         total: hasItems ? totalItems : total,
         hasItems,
-        loaded,
+        loaded: hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded,
         allTagsLoaded,
         allTags,
         filters: activeFilters,
