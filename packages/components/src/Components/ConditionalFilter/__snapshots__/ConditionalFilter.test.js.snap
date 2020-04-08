@@ -16,7 +16,7 @@ exports[`ConditionalFilter render should render correctly 1`] = `
 </Fragment>
 `;
 
-exports[`ConditionalFilter render should render correctly Checkbox with value checkbox-filter 1`] = `
+exports[`ConditionalFilter render should render correctly checkbox with value checkbox-filter 1`] = `
 <Fragment>
   <Split
     className="ins-c-conditional-filter"
@@ -94,16 +94,16 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
           Array [
             Object {
               "label": <div>
-                Custom value
+                custom value
               </div>,
               "value": "some-value",
             },
             Object {
-              "label": "Another",
+              "label": "another",
               "value": "another-value",
             },
             Object {
-              "label": "No value",
+              "label": "no value",
             },
           ]
         }
@@ -116,7 +116,7 @@ exports[`ConditionalFilter render should render correctly Checkbox with value ch
 </Fragment>
 `;
 
-exports[`ConditionalFilter render should render correctly No value with value undefined 1`] = `
+exports[`ConditionalFilter render should render correctly no value with value undefined 1`] = `
 <Fragment>
   <Split
     className="ins-c-conditional-filter"
@@ -199,7 +199,7 @@ exports[`ConditionalFilter render should render correctly No value with value un
 </Fragment>
 `;
 
-exports[`ConditionalFilter render should render correctly Radio filter with value radio-filter 1`] = `
+exports[`ConditionalFilter render should render correctly radio filter with value radio-filter 1`] = `
 <Fragment>
   <Split
     className="ins-c-conditional-filter"
@@ -277,12 +277,12 @@ exports[`ConditionalFilter render should render correctly Radio filter with valu
           Array [
             Object {
               "label": <div>
-                Custom value
+                custom value
               </div>,
               "value": "some-value",
             },
             Object {
-              "label": "Another",
+              "label": "another",
               "value": "another-value",
             },
           ]
@@ -295,7 +295,7 @@ exports[`ConditionalFilter render should render correctly Radio filter with valu
 </Fragment>
 `;
 
-exports[`ConditionalFilter render should render correctly Simple text 1 with value simple-text-1 1`] = `
+exports[`ConditionalFilter render should render correctly simple text 1 with value simple-text-1 1`] = `
 <Fragment>
   <Split
     className="ins-c-conditional-filter"
@@ -378,7 +378,7 @@ exports[`ConditionalFilter render should render correctly Simple text 1 with val
 </Fragment>
 `;
 
-exports[`ConditionalFilter render should render correctly Simple text 2 with value simple-text-2 1`] = `
+exports[`ConditionalFilter render should render correctly simple text 2 with value simple-text-2 1`] = `
 <Fragment>
   <Split
     className="ins-c-conditional-filter"
