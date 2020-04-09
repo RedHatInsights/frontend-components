@@ -322,6 +322,27 @@ describe('SourceWizardSummary component', () => {
             });
         });
 
+        it('authentication editing', () => {
+            field = {
+                label: 'Label 1',
+                name: 'authentication.password',
+                stepKey: 'in'
+            };
+
+            values = {
+                authentication: {
+                    id: 'someid'
+                }
+            };
+
+            availableStepKeys = [ 'in' ];
+
+            expect(createItem(field, values, availableStepKeys)).toEqual({
+                label: 'Label 1',
+                value: '●●●●●●●●●●●●'
+            });
+        });
+
         it('hidden conditional field', () => {
             field = {
                 label: 'Label 1',
