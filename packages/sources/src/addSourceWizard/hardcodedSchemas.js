@@ -1,6 +1,5 @@
 import React from 'react';
 import { validatorTypes, componentTypes } from '@data-driven-forms/react-form-renderer';
-import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import SSLFormLabel from './SSLFormLabel';
 
 import * as OpenshiftToken from './hardcodedComponents/openshift/token';
@@ -11,6 +10,9 @@ import * as SWAwsArn from './hardcodedComponents/aws/subscriptionWatch';
 
 import * as CMOpenshift from  './hardcodedComponents/openshift/costManagement';
 import * as CMAzure from './hardcodedComponents/azure/costManagement';
+
+import * as TowerCatalog from './hardcodedComponents/tower/catalog';
+import * as Openshift from './hardcodedComponents/openshift/endpoint';
 
 export const COST_MANAGEMENT_APP_NAME = '/insights/platform/cost-management';
 export const CLOUD_METER_APP_NAME = '/insights/platform/cloud-meter';
@@ -160,12 +162,7 @@ export default {
             additionalFields: [{
                 component: 'description',
                 name: 'description-summary',
-                // eslint-disable-next-line react/display-name
-                Content: () => (<TextContent key='2'>
-                    <Text component={ TextVariants.p }>
-                    Provide the OpenShift Container Platform URL and SSL certificate.
-                    </Text>
-                </TextContent>)
+                Content: Openshift.EndpointDesc
             }]
         }
     },
@@ -517,6 +514,7 @@ export default {
             username_password: {
                 [CATALOG_APP]: {
                     skipSelection: true,
+                    customSteps: true,
                     'authentication.username': {
                         isRequired: false,
                         validate: [{ type: validatorTypes.REQUIRED }],
@@ -528,9 +526,56 @@ export default {
                         validate: [{ type: validatorTypes.REQUIRED }],
                         label: 'Password'
                     },
+                    url: {
+                        isRequired: true,
+                        validate: [
+                            { type: validatorTypes.REQUIRED },
+                            {
+                                type: validatorTypes.PATTERN_VALIDATOR,
+                                message: 'URL must start with https:// or http://',
+                                pattern: /^https{0,1}:\/\//
+                            },
+                            { type: validatorTypes.URL }
+                        ],
+                        helperText: 'For example, https://myansibleinstance.example.com/ or https://127.0.0.1/',
+                        label: 'Hostname'
+                    },
+                    'endpoint.certificate_authority': {
+                        label: 'Certificate authority'
+                    },
+                    'endpoint.verify_ssl': {
+                        initialValue: false,
+                        label: 'Verify SSL'
+                    },
                     additionalSteps: [{
+                        nextStep: 'catalog-ansible-tower',
+                        name: 'catalog-ansible-tower-endpoint',
+                        title: 'Configure Ansible Tower endpoint',
+                        fields: [{
+                            name: 'ansible-tower-desc',
+                            component: 'description',
+                            Content: TowerCatalog.EndpointDescription
+                        }, {
+                            name: 'endpoint.role',
+                            component: 'text-field',
+                            hideField: true,
+                            initialValue: 'ansible',
+                            initializeOnMount: true
+                        }, {
+                            name: 'url',
+                            component: 'text-field'
+                        }, {
+                            name: 'endpoint.verify_ssl',
+                            component: 'switch-field'
+                        }, {
+                            name: 'endpoint.certificate_authority',
+                            component: 'text-field',
+                            condition: { is: true, when: 'endpoint.verify_ssl' }
+                        }]
+                    }, {
                         title: 'Configure credentials',
                         name: 'catalog-ansible-tower',
+                        stepKey: 'catalog-ansible-tower',
                         fields: [{
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
@@ -540,16 +585,7 @@ export default {
                         }, {
                             name: 'required-desc',
                             component: 'description',
-                            // eslint-disable-next-line react/display-name
-                            Content: () => <TextContent>
-                                <Text component={TextVariants.p} className="pf-u-mb-l">
-                                    Provide Ansible Tower service account user credentials to ensure
-                                    optimized availability of resources to Catalog Administrators.
-                                </Text>
-                                <Text component={TextVariants.p} className="ins-c-sources__wizard--all-required-text">
-                                    All fields are required.
-                                </Text>
-                            </TextContent>
+                            Content: TowerCatalog.AuthDescription
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.username'
