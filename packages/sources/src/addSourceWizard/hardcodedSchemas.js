@@ -303,7 +303,8 @@ export default {
                         label: 'Secret access key',
                         placeholder: 'wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
                         isRequired: true,
-                        validate: [{ type: validatorTypes.REQUIRED }]
+                        validate: [{ type: validatorTypes.REQUIRED }],
+                        type: 'password'
                     },
                     skipSelection: true,
                     onlyHiddenFields: true,

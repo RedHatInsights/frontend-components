@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { TextContent, TextListItem, TextListItemVariants, TextListVariants, TextList } from '@patternfly/react-core';
 import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
-import { injectAuthFieldsInfo, injectEndpointFieldsInfo } from '../../addSourceWizard/schemaBuilder';
+import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps } from '../../addSourceWizard/schemaBuilder';
 import ValuePopover from './ValuePopover';
 
 export const createItem = (formField, values, stepKeys) => {
@@ -73,6 +73,16 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
     const { display_name = 'Not selected', name, id } = application ? application : {};
 
     const availableStepKeys = getStepKeys(type.name, hasAuthentication, name, id);
+
+    const authSteps = getAdditionalSteps(type.name, hasAuthentication, name);
+    if (authSteps.length > 0) {
+        authTypeFields = authSteps.map((step) => step.fields).flatMap(x => x).filter(({ Content }) => !Content);
+    }
+
+    const hasCustomSteps = get(hardcodedSchemas, [ type.name, 'authentication', hasAuthentication, name, 'customSteps' ], false);
+    if (hasCustomSteps) {
+        endpointFields = [];
+    }
 
     authTypeFields = injectAuthFieldsInfo(authTypeFields, type.name, hasAuthentication, name || 'generic');
     endpointFields = injectEndpointFieldsInfo(endpointFields, type.name);

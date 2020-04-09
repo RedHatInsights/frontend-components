@@ -275,26 +275,6 @@ exports[`SourceWizardSummary component should render correctly hide application 
     <TextListItem
       component="dt"
     >
-      Username
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      user_name
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Password
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      ●●●●●●●●●●●●
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Hostname
     </TextListItem>
     <TextListItem
@@ -321,6 +301,26 @@ exports[`SourceWizardSummary component should render correctly hide application 
       component="dd"
     >
       authority
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Username
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      user_name
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Password
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      ●●●●●●●●●●●●
     </TextListItem>
   </TextList>
 </TextContent>
@@ -463,26 +463,6 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
     <TextListItem
       component="dt"
     >
-      Username
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      user_name
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
-      Password
-    </TextListItem>
-    <TextListItem
-      component="dd"
-    >
-      ●●●●●●●●●●●●
-    </TextListItem>
-    <TextListItem
-      component="dt"
-    >
       Hostname
     </TextListItem>
     <TextListItem
@@ -509,6 +489,26 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
       component="dd"
     >
       authority
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Username
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      user_name
+    </TextListItem>
+    <TextListItem
+      component="dt"
+    >
+      Password
+    </TextListItem>
+    <TextListItem
+      component="dd"
+    >
+      ●●●●●●●●●●●●
     </TextListItem>
   </TextList>
 </TextContent>
