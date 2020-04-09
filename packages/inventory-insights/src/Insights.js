@@ -1,10 +1,11 @@
 /* eslint-disable camelcase */
 import './insights.scss';
 
-import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, RISK_TO_STRING } from './Constants';
+import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, IMPACT_LABEL, LIKELIHOOD_LABEL, RISK_TO_STRING } from './Constants';
 import React, { Component, Fragment } from 'react';
 import { SortByDirection, Table, TableBody, TableHeader, cellWidth, sortable } from '@patternfly/react-table';
 import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
+import { Tooltip, TooltipPosition } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
 import { flatten, sortBy } from 'lodash';
 
 import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
@@ -17,15 +18,15 @@ import ChartSpikeIcon from '@patternfly/react-icons/dist/js/icons/chartSpike-ico
 import CheckCircleIcon from '@patternfly/react-icons/dist/js/icons/check-circle-icon';
 import CheckIcon from '@patternfly/react-icons/dist/js/icons/check-icon';
 import { ClipboardCopy } from '@patternfly/react-core/dist/js/components/ClipboardCopy/ClipboardCopy';
-import ExternalLinkAltIcon  from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
+import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
 import { List } from 'react-content-loader';
 import MessageState from './MessageState';
-import PficonSatelliteIcon  from '@patternfly/react-icons/dist/js/icons/pficon-satellite-icon';
+import PficonSatelliteIcon from '@patternfly/react-icons/dist/js/icons/pficon-satellite-icon';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
 import PropTypes from 'prop-types';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import ReportDetails from './ReportDetails';
-import TimesCircleIcon  from '@patternfly/react-icons/dist/js/icons/times-circle-icon';
+import TimesCircleIcon from '@patternfly/react-icons/dist/js/icons/times-circle-icon';
 import { ToolbarItem } from '@patternfly/react-core/dist/js/layouts/Toolbar/ToolbarItem';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import connect from 'react-redux/es/connect/connect';
@@ -147,7 +148,7 @@ class InventoryRuleList extends Component {
                                     aria-label='select-checkbox'
                                     type="checkbox"
                                     checked={!!selected}
-                                    onChange={ event => this.onSelect(event, !selected, key * 2) }
+                                    onChange={event => this.onSelect(event, !selected, key * 2)}
                                     className="pf-c-check"
                                 /> : ''}
                             </div>
@@ -160,11 +161,12 @@ class InventoryRuleList extends Component {
                         },
                         {
                             title: <div className='pf-m-center' key={key} style={{ verticalAlign: 'top' }}>
-                                <Battery
-                                    label={RISK_TO_STRING[rule.total_risk]}
-                                    severity={rule.total_risk}
-                                />
-                            </div>
+                                <Tooltip key={key} position={TooltipPosition.bottom} content={<span>The <strong>likelihood</strong> that this will be
+                                a problem is {LIKELIHOOD_LABEL[rule.likelihood]}. The <strong>impact</strong> of the problem would be
+                                &nbsp;{IMPACT_LABEL[rule.impact.impact]} if it occurred.</span>}>
+                                    <Battery label={RISK_TO_STRING[rule.total_risk]} severity={rule.total_risk} />
+                                </Tooltip>
+                            </div >
                         },
                         {
                             title: <div className='pf-m-center ' key={key}>
@@ -344,7 +346,7 @@ class InventoryRuleList extends Component {
         ];
 
         const filterConfigItems = [{
-            label: 'Description',
+            label: 'description',
             filterValues: {
                 key: 'text-filter',
                 onChange: (event, value) => this.onInputChange(value),
