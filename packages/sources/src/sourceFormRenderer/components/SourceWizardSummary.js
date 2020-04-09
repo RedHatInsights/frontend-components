@@ -32,6 +32,10 @@ export const createItem = (formField, values, stepKeys) => {
         value = value ? 'Yes' : 'No';
     }
 
+    if (!value && formField.name === 'authentication.password' && get(values, 'authentication.id')) {
+        value = '●●●●●●●●●●●●';
+    }
+
     return ({ label: formField['aria-label'] || formField.label,  value: value || '-' });
 };
 
