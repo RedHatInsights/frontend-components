@@ -133,7 +133,7 @@ class ContextEntityTableToolbar extends Component {
                     className: 'ins-c-inventory__tags-more-items'
                 }]
             }] : [],
-            <span> Loading... <Spinner size="md" /> </span>
+            <span> <Spinner size="md" /> </span>
         );
     }
 

@@ -97,7 +97,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
     toggleIsExpanded={[Function]}
   />
   <h1>
-    I am a chile component
+    I am a child component
   </h1>
   <Component
     aria-label="paul.localhost.com tags"

@@ -34,7 +34,7 @@ const unique = (arr) => (
 );
 
 export default class TagModal extends React.Component {
-    onSelect = (_event, isSelected, rowId) => {
+    onSelect = ({ isSelected, rowId }) => {
         const { rows, onSelect, selected } = this.props;
         const currRow = rows[rowId];
         if (currRow) {
@@ -148,7 +148,7 @@ export default class TagModal extends React.Component {
                         }]
                     }]}
                     {...onSelect && rows.length && {
-                        onSelect: this.onSelect
+                        onSelect: (_event, isSelected, rowId) => this.onSelect({ isSelected, rowId })
                     }}
                     { ...tableProps }
                 >
@@ -192,7 +192,7 @@ TagModal.propTypes = {
 };
 
 TagModal.defaultProps = {
-    loaded: true,
+    loaded: false,
     isOpen: false,
     toggleModal: () => undefined,
     columns: [
