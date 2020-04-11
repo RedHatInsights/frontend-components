@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-compliance",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "description": "Detail part of compliance for RedHat Cloud Services.",
     "main": "index.js",
     "publishConfig": {
@@ -30,7 +30,6 @@
         "prop-types": "^15.6.2",
         "react-redux": "^5.0.7",
         "react-router-dom": "^4.2.2",
-        "react-truncate": "^2.4.0",
         "react-content-loader": "^3.4.1",
         "lodash": "4.17.15"
     },

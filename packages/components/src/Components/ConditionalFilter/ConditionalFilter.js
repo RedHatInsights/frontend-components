@@ -33,6 +33,7 @@ class ConditionalFilter extends Component {
         );
         const onChangeCallback = onChange || this.onChange;
         const ActiveComponent = activeItem && (typeMapper[activeItem.type] || typeMapper.text);
+        const capitalize = (string) => string[0].toUpperCase() + string.substring(1);
         return (
             <Fragment>
                 {
@@ -60,7 +61,7 @@ class ConditionalFilter extends Component {
                                                 <FilterIcon size="sm" />
                                                 { !hideLabel &&
                                                     <span className="ins-c-conditional-filter__value-selector">
-                                                        { activeItem && activeItem.label }
+                                                        { activeItem && capitalize(activeItem.label) }
                                                     </span>
                                                 }
                                             </DropdownToggle>
@@ -72,7 +73,7 @@ class ConditionalFilter extends Component {
                                                 onClick={ e => onChangeCallback(e, item.value || key, item) }
                                                 isHovered={ activeItem.label === item.label }
                                             >
-                                                { item.label }
+                                                { capitalize(item.label) }
                                             </DropdownItem>)
                                         }
                                     />
@@ -84,7 +85,7 @@ class ConditionalFilter extends Component {
                                         {
                                         ...activeItem.type !== conditionalFilterType.custom &&
                                             {
-                                                placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label.toLowerCase()}`,
+                                                placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
                                                 id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
                                             }
                                         }

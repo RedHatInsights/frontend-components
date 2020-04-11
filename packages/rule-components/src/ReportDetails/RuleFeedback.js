@@ -9,7 +9,7 @@ import { Button } from '@patternfly/react-core';
 // where ruleId is id of the rule, vote is either -1, 0 or 1
 const RuleFeedback = ({ ruleId, onFeedbackChanged }) => (
     <div>
-        <span>Is this rule helpful?</span>
+        <span>Is this helpful?</span>
         <Button
             className="ins-c-rule__rule-feedback-like-button"
             variant="plain"

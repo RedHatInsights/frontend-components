@@ -29,6 +29,12 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
         "component": <ErroredStep
           onClose={[MockFunction]}
           onRetry={[MockFunction]}
+          progressStep={0}
+          progressTexts={
+            Array [
+              "Completed",
+            ]
+          }
           returnButtonTitle="Go back to my application"
         />,
         "isFinishedStep": true,
@@ -70,6 +76,12 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
         "component": <FinishedStep
           hideSourcesButton={false}
           onClose={[MockFunction]}
+          progressStep={0}
+          progressTexts={
+            Array [
+              "Completed",
+            ]
+          }
           returnButtonTitle="Go back to my application"
           successfulMessage="Message"
         />,
@@ -111,6 +123,12 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
       Object {
         "component": <LoadingStep
           customText="Source is being created"
+          progressStep={0}
+          progressTexts={
+            Array [
+              "Completed",
+            ]
+          }
         />,
         "isFinishedStep": true,
         "name": "Finish",

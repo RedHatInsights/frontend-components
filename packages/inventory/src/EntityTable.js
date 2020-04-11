@@ -45,10 +45,16 @@ class EntityTable extends React.Component {
         this.props.selectEntity && this.props.selectEntity(rowId === -1 ? 0 : row.id, checked);
     }
 
-    onSort = (_event, key, direction) => {
+    onSort = (_event, key, direction, index) => {
         if (key !== 'action' && key !== 'health') {
             this.props.setSort && this.props.setSort(key, direction);
         }
+
+        this.props.onSort && this.props.onSort({
+            index,
+            key,
+            direction
+        });
     }
 
     renderCol = (col, key, composed, isTime) => {
@@ -189,7 +195,7 @@ class EntityTable extends React.Component {
                         gridBreakPoint={ columns.length > 5 ? TableGridBreakpoint.gridLg : TableGridBreakpoint.gridMd }
                         className="ins-c-entity-table"
                         onSort={ (event, index, direction) => {
-                            this.onSort(event, cells[index - Boolean(hasCheckbox) - Boolean(expandable)].key, direction);
+                            this.onSort(event, cells[index - Boolean(hasCheckbox) - Boolean(expandable)].key, direction, index);
                         } }
                         sortBy={ {
                             index: cells.findIndex(item => sortBy && sortBy.key === item.key) + Boolean(hasCheckbox) + Boolean(expandable),
@@ -270,12 +276,12 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({ entities: { columns, rows, loaded, sortBy } }) {
+function mapStateToProps({ entities: { columns, rows, loaded, sortBy } }, { hasItems, sortBy: currSortBy, isLoaded }) {
     return {
         columns,
-        loaded,
+        loaded: hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded,
         rows,
-        sortBy
+        sortBy: hasItems ? currSortBy : sortBy
     };
 }
 

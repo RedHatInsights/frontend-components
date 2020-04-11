@@ -12,7 +12,7 @@ export const FILTER_CATEGORIES = {
         ]
     },
     total_risk: {
-        type: 'checkbox', title: 'Total risk', urlParam: 'total_risk', values: [
+        type: 'checkbox', title: 'total risk', urlParam: 'total_risk', values: [
             { label: <Battery label='Critical' severity={4} />, text: 'Critical', value: '4' },
             { label: <Battery label='Important' severity={3} />, text: 'Important', value: '3' },
             { label: <Battery label='Moderate' severity={2} />, text: 'Moderate', value: '2' },
@@ -22,6 +22,19 @@ export const FILTER_CATEGORIES = {
 };
 
 export const RISK_TO_STRING = {
+    1: 'Low',
+    2: 'Moderate',
+    3: 'Important',
+    4: 'Critical'
+};
+
+export const IMPACT_LABEL = {
+    1: 'Low',
+    2: 'Moderate',
+    3: 'Important',
+    4: 'Critical'
+};
+export const LIKELIHOOD_LABEL = {
     1: 'Low',
     2: 'Moderate',
     3: 'Important',

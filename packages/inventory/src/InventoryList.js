@@ -21,8 +21,8 @@ class ContextInventoryList extends React.Component {
             page: (hasItems && items.length <= currPerPage) ? 1 : (options.page || page),
             // eslint-disable-next-line camelcase
             per_page: currPerPage,
-            orderBy: sortBy && sortBy.key,
-            orderDirection: sortBy && sortBy.direction.toUpperCase(),
+            orderBy: !hasItems && (sortBy && sortBy.key),
+            orderDirection: !hasItems && (sortBy && sortBy.direction.toUpperCase()),
             filters: activeFilters,
             ...options
         };
@@ -158,8 +158,14 @@ function mapDispatchToProps(dispatch, { showTags }) {
 }
 
 export default connect(
-    ({ entities: { page, perPage, sortBy, activeFilters } }, { perPage: currPerPage }) => (
-        { page, perPage: currPerPage || perPage, sortBy, activeFilters }
-    ),
+    (
+        { entities: { page, perPage, sortBy, activeFilters } },
+        { perPage: currPerPage, sortBy: currSortBy, hasItems }
+    ) => ({
+        page,
+        perPage: currPerPage || perPage,
+        sortBy: hasItems ? currSortBy : sortBy,
+        activeFilters
+    }),
     mapDispatchToProps
 )(InventoryList);

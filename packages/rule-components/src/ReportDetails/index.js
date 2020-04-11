@@ -21,6 +21,7 @@ const ReportDetails = (
         ruleId,
         totalRisk,
         riskOfChange,
+        showRiskDescription,
         onFeedbackChanged
     }) => (
 
@@ -54,20 +55,31 @@ const ReportDetails = (
                             <Title className="ins-c-rule__risk-detail-title" size="md">Total risk</Title>
                         </StackItem>
                         <StackItem>
-                            <RiskDescription riskValue={ totalRisk } riskMeta={ totalRiskMeta }/>
+                            <RiskDescription
+                                riskValue={ totalRisk }
+                                riskMeta={ totalRiskMeta }
+                                showDescription={ showRiskDescription }
+                            />
                         </StackItem>
                     </Stack>
                 </StackItem>
-                <StackItem>
-                    <Stack>
-                        <StackItem>
-                            <Title className="ins-c-rule__risk-detail-title" size="md">Risk of change</Title>
-                        </StackItem>
-                        <StackItem>
-                            <RiskDescription riskValue={ riskOfChange } riskMeta={ riskOfChangeMeta }/>
-                        </StackItem>
-                    </Stack>
-                </StackItem>
+                {
+                    riskOfChange > 0 && riskOfChange < 5 &&
+                    <StackItem>
+                        <Stack>
+                            <StackItem>
+                                <Title className="ins-c-rule__risk-detail-title" size="md">Risk of change</Title>
+                            </StackItem>
+                            <StackItem>
+                                <RiskDescription
+                                    riskValue={ riskOfChange }
+                                    riskMeta={ riskOfChangeMeta }
+                                    showDescription={ showRiskDescription }
+                                />
+                            </StackItem>
+                        </Stack>
+                    </StackItem>
+                }
             </Stack>
         </GridItem>
     </Grid>
@@ -78,7 +90,12 @@ ReportDetails.propTypes = {
     ruleId: PropTypes.string,
     totalRisk: PropTypes.number,
     riskOfChange: PropTypes.number,
+    showRiskDescription: PropTypes.bool,
     onFeedbackChanged: PropTypes.func
+};
+
+ReportDetails.defaultProps = {
+    showRiskDescription: true
 };
 
 export default ReportDetails;
