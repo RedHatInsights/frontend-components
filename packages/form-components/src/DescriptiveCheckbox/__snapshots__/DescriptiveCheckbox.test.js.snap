@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Descriptive checkbox tests should render correctly 1`] = `
+<DescriptiveCheckbox
+  FieldProvider={[Function]}
+  isDanger={false}
+  label="test label"
+  name=""
+>
+  <FieldProvider
+    data={
+      Object {
+        "isClearable": true,
+      }
+    }
+    name=""
+    render={[Function]}
+    type="checkbox"
+  >
+    <Checkbox
+      className="pref-c-descriptive-checkbox"
+      data-type="descriptive-checkbox"
+      id="descriptive-checkbox-"
+      isChecked={false}
+      isDisabled={false}
+      isValid={true}
+      label={
+        <span
+          className="pref-c-checkbox-label"
+        >
+          test label
+        </span>
+      }
+      onChange={[Function]}
+    >
+      <div
+        className="pf-c-check pref-c-descriptive-checkbox"
+      >
+        <input
+          aria-invalid={false}
+          checked={false}
+          className="pf-c-check__input"
+          data-type="descriptive-checkbox"
+          disabled={false}
+          id="descriptive-checkbox-"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label
+          className="pf-c-check__label"
+          htmlFor="descriptive-checkbox-"
+        >
+          <span
+            className="pref-c-checkbox-label"
+          >
+            test label
+          </span>
+        </label>
+      </div>
+    </Checkbox>
+  </FieldProvider>
+</DescriptiveCheckbox>
+`;
