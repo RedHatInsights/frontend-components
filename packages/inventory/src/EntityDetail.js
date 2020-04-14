@@ -7,12 +7,14 @@ import {
     Card,
     CardBody,
     CardHeader,
+    Flex,
+    FlexItem,
     SplitItem,
     Split,
     Dropdown,
     DropdownItem,
     DropdownPosition,
-    DropdownToggle,
+    KebabToggle,
     Button,
     EmptyState,
     EmptyStateVariant,
@@ -27,7 +29,7 @@ import ApplicationDetails from './ApplicationDetails';
 import { editDisplayName, editAnsibleHost, loadEntity, deleteEntity } from './redux/actions';
 import TagWithDialog from './TagWithDialog';
 import TagsModal from './TagsModal';
-import DeleteModal from '.';
+import DeleteModal from './DeleteModal';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import RouterParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
 
@@ -68,15 +70,16 @@ class EntityDetails extends Component {
     }
 
     generateTop = () => {
-        const { entity, loaded, actions, deleteEntity, addNotification } = this.props;
+        const { entity, loaded, actions, deleteEntity, addNotification, hideInvLink } = this.props;
         const { isOpen } = this.state;
-        const inventoryActions = [{ onClick: this.handleModalToggle, title: 'Delete' }, ... actions || [] ];
+        const inventoryActions = [ ... actions || [] ];
         return (
             <Split className="ins-c-inventory__detail--header">
                 <SplitItem isFilled>
                     {
-                        loaded ?
-                            <Title size='2xl'>{ entity && entity.display_name }</Title> :
+                        loaded ? (
+                            <Title size='2xl'>{ entity && entity.display_name }</Title>
+                        ) :
                             <Skeleton size={ SkeletonSize.md } />
                     }
                 </SplitItem>
@@ -84,23 +87,42 @@ class EntityDetails extends Component {
                     <SplitItem>
                         {
                             loaded ?
-                                inventoryActions && inventoryActions.length > 0 && <Dropdown
-                                    onSelect={ this.onSelect }
-                                    toggle={ <DropdownToggle onToggle={ this.toggleActions }>Actions</DropdownToggle> }
-                                    isOpen={ isOpen }
-                                    position={ DropdownPosition.right }
-                                    dropdownItems={ [ ...(inventoryActions ?
-                                        inventoryActions.map((action, key) => (
-                                            <DropdownItem
-                                                key={ action.key || key }
-                                                component="button"
-                                                onClick={ (event) => action.onClick(event, action, action.key || key) }
-                                            >
-                                                { action.title }
-                                            </DropdownItem>)
-                                        ) : []) ] }
-                                /> :
-                                <Skeleton size={ SkeletonSize.xl } />
+                                <Flex>
+                                    <FlexItem>
+                                        <Button
+                                            onClick={ this.handleModalToggle }
+                                            variant="secondary">
+                                            Delete
+                                        </Button>
+                                    </FlexItem>
+                                    {hideInvLink || (
+                                        <FlexItem>
+                                            <a className='ins-c-entity-detail__inv-link' href={`./insights/inventory/${entity.id}`}>View in Inventory</a>
+                                        </FlexItem>
+                                    )}
+                                    { inventoryActions && inventoryActions.length > 0 && (
+                                        <FlexItem>
+                                            <Dropdown
+                                                onSelect={ this.onSelect }
+                                                toggle={ <KebabToggle onToggle={this.toggleActions} /> }
+                                                isOpen={ isOpen }
+                                                isPlain
+                                                position={ DropdownPosition.right }
+                                                dropdownItems={ [ ...(inventoryActions ?
+                                                    inventoryActions.map((action, key) => (
+                                                        <DropdownItem
+                                                            key={ action.key || key }
+                                                            component="button"
+                                                            onClick={ (event) => action.onClick(event, action, action.key || key) }
+                                                        >
+                                                            { action.title }
+                                                        </DropdownItem>)
+                                                    ) : []) ] }
+                                            />
+                                        </FlexItem>)}
+                                </Flex>
+                                :
+                                <Skeleton size={ SkeletonSize.lg } />
                         }
                     </SplitItem>
                 }
@@ -232,6 +254,7 @@ EntityDetails.propTypes = {
         key: PropTypes.string
     })),
     entity: PropTypes.object,
+    hideInvLink: PropTypes.bool,
     history: PropTypes.any,
     loaded: PropTypes.bool.isRequired,
     match: PropTypes.any,
@@ -247,6 +270,7 @@ EntityDetails.propTypes = {
 EntityDetails.defualtProps = {
     actions: [],
     entity: {},
+    hideInvLink: false,
     useCard: false,
     showTags: false,
     setDisplayName: () => undefined,
