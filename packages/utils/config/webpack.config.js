@@ -18,6 +18,8 @@ module.exports = (env) => ({
         interceptors: './src/interceptors.js',
         debounce: './src/debounce.js',
         inventoryDependencies: './src/inventoryDependencies.js',
+        RBAC: './src/RBAC.js',
+        RBACHook: './src/RBACHook.js',
         Styles: './src/Utilities.scss'
     },
     output: {
