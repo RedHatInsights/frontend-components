@@ -89,7 +89,9 @@ class EntityDetails extends Component {
                             loaded ?
                                 <Flex>
                                     <FlexItem>
-                                        <Button onClick={ this.handleModalToggle }>
+                                        <Button
+                                            onClick={ this.handleModalToggle }
+                                            variant="secondary">
                                             Delete
                                         </Button>
                                     </FlexItem>
