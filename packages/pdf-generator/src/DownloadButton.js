@@ -24,9 +24,13 @@ class DownloadButton extends React.Component {
                     <PDFDocument { ...props } />
                 </PDFViewer> : asyncFunction ? <React.Fragment>
                     <Button onClick={ () => {
-                        Promise.resolve(asyncFunction()).then(asyncPages => this.setState({
-                            asyncPages
-                        }));
+                        this.setState({
+                            asyncPages: []
+                        }, () => {
+                            Promise.resolve(asyncFunction()).then(asyncPages => this.setState({
+                                asyncPages
+                            }));
+                        });
                     }} { ...buttonProps }>{label}</Button>
                     {this.state.asyncPages.length > 0 && (
                         <BlobProvider document={<PDFDocument { ...props } pages={this.state.asyncPages} />}>
