@@ -33,3 +33,5 @@ global.window.insights = {
         getUserPermissions: () => new Promise((res) => res([]))
     }
 };
+
+Element.prototype.scrollTo = () => {};

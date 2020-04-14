@@ -1,10 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Button } from '@patternfly/react-core';
 
 import { AddSourceWizard } from '../../addSourceWizard/index';
 import Form from '../../addSourceWizard/SourceAddModal';
-import FormRenderer from '../../sourceFormRenderer/index';
 import Modal from '../../addSourceWizard/SourceAddModal';
 import FinalWizard from '../../addSourceWizard/FinalWizard';
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
@@ -15,6 +13,7 @@ import applicationTypes from '../helpers/applicationTypes';
 import * as dependency from '../../api/index';
 import * as createSource from '../../api/createSource';
 import CloseModal from '../../addSourceWizard/CloseModal';
+import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 
 describe('AddSourceWizard', () => {
     let initialProps;
@@ -41,20 +40,34 @@ describe('AddSourceWizard', () => {
     });
 
     it('show finished step after filling the form', (done) => {
+        expect.assertions(8);
+
         createSource.doCreateSource = jest.fn(() => new Promise((resolve) => resolve('ok')));
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
-        const form = wrapper.find(FormRenderer).children().children().instance().form;
 
-        form.change('source.name', 'nameee');
+        wrapper.find('input').instance().value = 'somename';
+        wrapper.find('input').simulate('change');
+        wrapper.update();
 
         setTimeout(() => {
-            form.submit().then(() => {
+            wrapper.update();
+            wrapper.find('form').simulate('submit');
+            wrapper.update();
+
+            expect(wrapper.find(FinalWizard)).toHaveLength(1);
+            expect(wrapper.find(LoadingStep)).toHaveLength(1);
+            expect(wrapper.find(ErroredStep)).toHaveLength(0);
+            expect(wrapper.find(FinishedStep)).toHaveLength(0);
+
+            setImmediate(() => {
                 wrapper.update();
+
                 expect(wrapper.find(FinalWizard)).toHaveLength(1);
-                expect(wrapper.find(FinishedStep)).toHaveLength(1);
+                expect(wrapper.find(LoadingStep)).toHaveLength(0);
                 expect(wrapper.find(ErroredStep)).toHaveLength(0);
+                expect(wrapper.find(FinishedStep)).toHaveLength(1);
                 done();
             });
         }, 1000);
@@ -66,16 +79,17 @@ describe('AddSourceWizard', () => {
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps } afterSuccess={ afterSubmitMock }/>);
-        const form = wrapper.find(FormRenderer).children().children().instance().form;
 
-        form.change('source.name', 'nameee');
+        wrapper.find('input').instance().value = 'somename';
+        wrapper.find('input').simulate('change');
+        wrapper.update();
 
         setTimeout(() => {
-            form.submit().then(() => {
-                wrapper.update();
-                wrapper.find(Button).at(0).simulate('click');
-                wrapper.update();
+            wrapper.update();
+            wrapper.find('form').simulate('submit');
+            wrapper.update();
 
+            setImmediate(() => {
                 expect(afterSubmitMock).toHaveBeenCalledWith({ name: 'source' });
                 done();
             });
@@ -90,9 +104,10 @@ describe('AddSourceWizard', () => {
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps } onClose={ onClose }/>);
-        const form = wrapper.find(FormRenderer).children().children().instance().form;
 
-        form.change('source.name', NAME);
+        wrapper.find('input').instance().value = NAME;
+        wrapper.find('input').simulate('change');
+        wrapper.update();
 
         setTimeout(() => {
             wrapper.update();
@@ -117,9 +132,10 @@ describe('AddSourceWizard', () => {
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps } onClose={ onClose }/>);
-        const form = wrapper.find(FormRenderer).children().children().instance().form;
 
-        form.change('source.name', NAME);
+        wrapper.find('input').instance().value = NAME;
+        wrapper.find('input').simulate('change');
+        wrapper.update();
 
         setTimeout(() => {
             wrapper.update();
@@ -144,13 +160,24 @@ describe('AddSourceWizard', () => {
         createSource.doCreateSource = jest.fn(() => new Promise((_resolve, reject) => reject(ERROR_MESSAGE)));
 
         const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
-        const form = wrapper.find(FormRenderer).children().children().instance().form;
 
-        form.change('source.name', 'nameee');
+        wrapper.find('input').instance().value = 'somename';
+        wrapper.find('input').simulate('change');
+        wrapper.update();
 
         setTimeout(() => {
-            form.submit().then(() => {
+            wrapper.update();
+            wrapper.find('form').simulate('submit');
+            wrapper.update();
+
+            expect(wrapper.find(FinalWizard)).toHaveLength(1);
+            expect(wrapper.find(LoadingStep)).toHaveLength(1);
+            expect(wrapper.find(ErroredStep)).toHaveLength(0);
+            expect(wrapper.find(FinishedStep)).toHaveLength(0);
+
+            setImmediate(() => {
                 wrapper.update();
+
                 expect(wrapper.find(FinalWizard)).toHaveLength(1);
                 expect(wrapper.find(FinishedStep)).toHaveLength(0);
                 expect(wrapper.find(ErroredStep)).toHaveLength(1);

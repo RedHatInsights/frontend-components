@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
-import { formFieldsMapper, layoutMapper } from '@data-driven-forms/pf4-component-mapper';
+import { componentMapper, FormTemplate } from '@data-driven-forms/pf4-component-mapper';
 
 import SourcesFormRenderer from '../../sourceFormRenderer';
 import Authentication from '../../sourceFormRenderer/components/Authentication';
@@ -30,12 +30,12 @@ describe('Authentication test', () => {
         onSubmit = jest.fn();
         initialProps = {
             formFieldsMapper: {
-                ...formFieldsMapper,
+                ...componentMapper,
                 authentication: Authentication
             },
             schema,
             onSubmit: (values) => onSubmit(values),
-            layoutMapper
+            FormTemplate
         };
     });
 
@@ -45,8 +45,8 @@ describe('Authentication test', () => {
         />);
 
         expect(wrapper.find(Authentication)).toHaveLength(1);
-        expect(wrapper.find(formFieldsMapper[componentTypes.TEXT_FIELD]).props().isRequired).toEqual(true);
-        expect(wrapper.find(formFieldsMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual(undefined);
+        expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().isRequired).toEqual(true);
+        expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual(undefined);
 
         wrapper.find('form').simulate('submit');
         wrapper.update();
@@ -85,8 +85,8 @@ describe('Authentication test', () => {
         />);
 
         expect(wrapper.find(Authentication)).toHaveLength(1);
-        expect(wrapper.find(formFieldsMapper[componentTypes.TEXT_FIELD]).props().isRequired).toEqual(false);
-        expect(wrapper.find(formFieldsMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual(expect.any(String));
+        expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().isRequired).toEqual(false);
+        expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual(expect.any(String));
 
         wrapper.find('form').simulate('submit');
         wrapper.update();

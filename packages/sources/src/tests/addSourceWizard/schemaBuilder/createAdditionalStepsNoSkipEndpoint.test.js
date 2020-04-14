@@ -2,7 +2,7 @@ import { createAdditionalSteps } from '../../../addSourceWizard/schemaBuilder';
 
 describe('createAdditionalSteps no skipEndpoint', () => {
     const ADDITIONAL_STEPS = [
-        { name: 'step-1', fields: [ 'a' ] }
+        { fields: [ 'a' ] }
     ];
 
     const TYPES_FIELDS = [];
@@ -20,7 +20,7 @@ describe('createAdditionalSteps no skipEndpoint', () => {
 
         expect(result).toEqual([{
             ...ADDITIONAL_STEPS[0],
-            stepKey: 'red-hat-generic-additional-step',
+            name: 'red-hat-generic-additional-step',
             nextStep: 'red-endpoint'
         }]);
     });
@@ -38,7 +38,7 @@ describe('createAdditionalSteps no skipEndpoint', () => {
 
         expect(result).toEqual([{
             ...ADDITIONAL_STEPS[0],
-            stepKey: 'red-hat-generic-additional-step',
+            name: 'red-hat-generic-additional-step',
             nextStep: 'summary'
         }]);
     });
