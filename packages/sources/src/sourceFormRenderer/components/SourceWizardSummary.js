@@ -5,6 +5,7 @@ import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps } from '../../addSourceWizard/schemaBuilder';
 import ValuePopover from './ValuePopover';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
 export const createItem = (formField, values, stepKeys) => {
     let value = get(values, formField.name);
@@ -49,7 +50,9 @@ export const getStepKeys = (typeName, authName, appName = 'generic', appId) => [
     appId ? `${typeName}-${appId}` : undefined
 ].filter(Boolean);
 
-const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showApp, showAuthType }) => {
+const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthType }) => {
+    const formOptions = useFormApi();
+
     const values = formOptions.getState().values;
     const type = sourceTypes.find(type => type.name === values.source_type || type.id === values.source.source_type_id);
 
@@ -137,7 +140,6 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
 };
 
 SourceWizardSummary.propTypes = {
-    formOptions: PropTypes.any.isRequired,
     sourceTypes: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,

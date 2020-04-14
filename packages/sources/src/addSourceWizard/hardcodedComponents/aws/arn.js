@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
     TextContent,
     Text,
@@ -12,6 +11,7 @@ import {
     ClipboardCopyVariant
 } from '@patternfly/react-core';
 import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
 const CREATE_S3_BUCKET = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#creating_an_aws_s3_bucket`;
 const ENABLE_AWS_ACCOUNT = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#enabling_aws_account_access`;
@@ -52,7 +52,9 @@ To delegate account access, create an IAM role to associate with your IAM policy
     </TextList>
 </TextContent>);
 
-export const IAMPolicyDescription = ({ formOptions }) => {
+export const IAMPolicyDescription = () => {
+    const formOptions = useFormApi();
+
     const s3Bucket = formOptions.getState().values.billing_source ? formOptions.getState().values.billing_source.bucket : undefined;
 
     if (!s3Bucket) {
@@ -110,12 +112,6 @@ create an AWS Identity and Access Management (IAM) policy.&nbsp;
             <b>Do not close your browser.</b> You will need to be logged in to the IAM console to complete the next step.
         </Text>
     </TextContent>);
-};
-
-IAMPolicyDescription.propTypes = {
-    formOptions: PropTypes.shape({
-        getState: PropTypes.func.isRequired
-    }).isRequired
 };
 
 export const TagsDescription = () => (<TextContent>
