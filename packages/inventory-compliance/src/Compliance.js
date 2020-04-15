@@ -40,6 +40,9 @@ query System($systemId: String!){
             rulesPassed
             lastScanned
             score
+            policy {
+                id
+            }
             benchmark {
                 version
             }
