@@ -15,7 +15,10 @@ describe('SystemPolicyCards component', () => {
         lastScanned: '2019-03-06T06:20:13Z',
         refId: 'xccdf_org.ssgproject.content_profile_pci-dss',
         name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7',
-        compliant: false
+        compliant: false,
+        benchmark: {
+            version: '0.1.45'
+        }
     }, {
         rulesPassed: 0,
         rulesFailed: 0,
@@ -23,7 +26,10 @@ describe('SystemPolicyCards component', () => {
         lastScanned: null,
         refId: 'xccdf_org.ssgproject.content_profile_pci-dss2',
         name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7 2',
-        compliant: false
+        compliant: false,
+        benchmark: {
+            version: '0.1.45'
+        }
     }];
 
     it('should render loading state', () => {

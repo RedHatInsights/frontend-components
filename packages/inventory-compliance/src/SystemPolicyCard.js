@@ -53,7 +53,7 @@ class SystemPolicyCard extends React.Component {
     }
 
     render() {
-        const { rulesPassed, rulesFailed, compliant, lastScanned, score } = this.state.policy;
+        const { benchmark, rulesPassed, rulesFailed, compliant, lastScanned, score } = this.state.policy;
         const { refIdTruncated, cardTitle } = this.state;
         const passedPercentage = this.fixedPercentage(score);
 
@@ -61,7 +61,6 @@ class SystemPolicyCard extends React.Component {
             <Card>
                 <CardBody>
                     <TextContent className='margin-bottom-md'>
-                        <Text className='margin-bottom-none' component={ TextVariants.small }>External policy</Text>
                         <Text className='margin-bottom-top-none'
                             component={ TextVariants.h4 }
                             onMouseEnter={ this.onTitleMouseover }
@@ -85,6 +84,8 @@ class SystemPolicyCard extends React.Component {
                         >
                             Profile <br/>
                             { refIdTruncated }
+                            <br/>
+                            SSG { benchmark.version }
                         </Text>
                     </div>
                     <Text className='margin-bottom-none' component={ TextVariants.small }>

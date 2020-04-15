@@ -9,6 +9,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
     policies={
       Array [
         Object {
+          "benchmark": Object {
+            "version": "0.1.45",
+          },
           "compliant": false,
           "lastScanned": "2019-03-06T06:20:13Z",
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -18,6 +21,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
           "score": 75,
         },
         Object {
+          "benchmark": Object {
+            "version": "0.1.45",
+          },
           "compliant": false,
           "lastScanned": null,
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7 2",
@@ -48,6 +54,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
             <SystemPolicyCard
               policy={
                 Object {
+                  "benchmark": Object {
+                    "version": "0.1.45",
+                  },
                   "compliant": false,
                   "lastScanned": "2019-03-06T06:20:13Z",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -72,17 +81,6 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                         <div
                           className="pf-c-content margin-bottom-md"
                         >
-                          <Text
-                            className="margin-bottom-none"
-                            component="small"
-                          >
-                            <small
-                              className="margin-bottom-none"
-                              data-pf-content={true}
-                            >
-                              External policy
-                            </small>
-                          </Text>
                           <Text
                             className="margin-bottom-top-none"
                             component="h4"
@@ -219,6 +217,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                 </span>
                               </span>
                             </Truncate>
+                            <br />
+                            SSG 
+                            0.1.45
                           </p>
                         </Text>
                       </div>
@@ -329,6 +330,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
     policies={
       Array [
         Object {
+          "benchmark": Object {
+            "version": "0.1.45",
+          },
           "compliant": false,
           "lastScanned": "2019-03-06T06:20:13Z",
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -338,6 +342,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
           "score": 75,
         },
         Object {
+          "benchmark": Object {
+            "version": "0.1.45",
+          },
           "compliant": false,
           "lastScanned": null,
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7 2",
@@ -368,6 +375,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
             <SystemPolicyCard
               policy={
                 Object {
+                  "benchmark": Object {
+                    "version": "0.1.45",
+                  },
                   "compliant": false,
                   "lastScanned": "2019-03-06T06:20:13Z",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -392,17 +402,6 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                         <div
                           className="pf-c-content margin-bottom-md"
                         >
-                          <Text
-                            className="margin-bottom-none"
-                            component="small"
-                          >
-                            <small
-                              className="margin-bottom-none"
-                              data-pf-content={true}
-                            >
-                              External policy
-                            </small>
-                          </Text>
                           <Text
                             className="margin-bottom-top-none"
                             component="h4"
@@ -539,6 +538,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                 </span>
                               </span>
                             </Truncate>
+                            <br />
+                            SSG 
+                            0.1.45
                           </p>
                         </Text>
                       </div>

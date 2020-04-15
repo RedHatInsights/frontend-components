@@ -10,12 +10,6 @@ exports[`SystemPolicyCard component should render 1`] = `
     <div
       class="pf-c-content margin-bottom-md"
     >
-      <small
-        class="margin-bottom-none"
-        data-pf-content="true"
-      >
-        External policy
-      </small>
       <h4
         class="margin-bottom-top-none"
         data-pf-content="true"
@@ -86,6 +80,8 @@ exports[`SystemPolicyCard component should render 1`] = `
             …
           </span>
         </span>
+        <br />
+        SSG 0.1.45
       </p>
     </div>
     <small
