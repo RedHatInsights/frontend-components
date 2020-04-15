@@ -95,10 +95,17 @@ class InventoryRuleList extends Component {
 
     fetchKbaDetails = async (reportsData) => {
         const { filters, searchValue, rows } = this.state;
-        const kbaIds = reportsData.map(report => report.rule.node_id).filter(x => x).join(` OR `);
+        const kbaIds = reportsData.map(({ rule }) => rule.node_id).filter(x => x);
         try {
-            const kbaDetailsFetch = (await API.get(`https://access.redhat.com/hydra/rest/search/kcs?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
-                {}, { credentials: 'include' })).data.response.docs;
+            const kbaDetailsFetch = (await API.get(
+                `https://access.redhat.com/hydra/rest/search/kcs?q=id:(${
+                    kbaIds.join(` OR `)
+                })&fl=view_uri,id,publishedTitle&rows=${
+                    kbaIds.length
+                }`,
+                {},
+                { credentials: 'include' }
+            )).data.response.docs;
             this.setState({
                 kbaDetailsData: kbaDetailsFetch,
                 rows: this.buildRows(reportsData, kbaDetailsFetch, filters, rows, true, searchValue)
