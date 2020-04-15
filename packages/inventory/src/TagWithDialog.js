@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { TagCount } from '@redhat-cloud-services/frontend-components/components/TagCount';
-import { loadTags } from './redux/actions';
+import { loadTags, toggleTagModal } from './redux/actions';
 
 const TagWithDialog = ({ count, loadTags, systemId }) => (
     <span onClick={(e) => e.stopPropagation()} className="ins-c-inventory__list-tags">
@@ -22,7 +22,8 @@ TagWithDialog.defaultProps = {
 
 const dispatchToProps = (dispatch) => ({
     loadTags: (systemId, count) => {
-        dispatch(loadTags(systemId, count));
+        dispatch(toggleTagModal(true));
+        dispatch(loadTags(systemId, undefined, undefined, count));
     }
 });
 
