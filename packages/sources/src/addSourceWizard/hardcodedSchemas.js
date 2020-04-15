@@ -81,7 +81,7 @@ export default {
                     },
                     additionalSteps: [{
                         title: 'Install prerequisites',
-                        nextStep: 'obtainLogin',
+                        nextStep: 'usageCollector',
                         fields: [{
                             name: 'description',
                             component: 'description',
@@ -97,16 +97,6 @@ export default {
                             component: 'description',
                             Content: CMOpenshift.PrerequisiteOCPList
                         }, {
-                            name: 'sys-req',
-                            component: componentTypes.CHECKBOX,
-                            label: <CMOpenshift.PrerequisiteSystemText />,
-                            isRequired: true,
-                            validate: [{ type: validatorTypes.REQUIRED }]
-                        }, {
-                            name: 'sys-req-list',
-                            component: 'description',
-                            Content: CMOpenshift.PrerequisiteSystemList
-                        }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
@@ -114,33 +104,13 @@ export default {
                             initializeOnMount: true
                         }]
                     }, {
-                        title: 'Obtain login credentials',
-                        stepKey: 'obtainLogin',
-                        name: 'obtainLogin',
-                        nextStep: 'usageCollector',
-                        fields: [{
-                            component: 'description',
-                            name: 'description-summary',
-                            Content: CMOpenshift.ObtainLoginDescription
-                        }]
-                    }, {
-                        title: 'Configure Usage Collector',
+                        title: 'Configure Cost Management Operator',
                         stepKey: 'usageCollector',
                         name: 'usageCollector',
-                        nextStep: 'dataCollection',
                         fields: [{
                             component: 'description',
                             name: 'description-summary',
-                            Content: CMOpenshift.ConfigureUsageCollector
-                        }]
-                    }, {
-                        title: 'Configure data collection',
-                        stepKey: 'dataCollection',
-                        name: 'dataCollection',
-                        fields: [{
-                            component: 'description',
-                            name: 'description-summary',
-                            Content: CMOpenshift.DataCollectionDescription
+                            Content: CMOpenshift.ConfigureCostOperator
                         }]
                     }]
                 }
