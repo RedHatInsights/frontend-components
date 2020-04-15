@@ -40,6 +40,9 @@ query System($systemId: String!){
             rulesPassed
             lastScanned
             score
+            benchmark {
+                version
+            }
             rules {
                 title
                 severity
