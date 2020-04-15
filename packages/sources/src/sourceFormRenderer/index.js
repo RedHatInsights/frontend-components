@@ -34,7 +34,8 @@ const SourcesFormRenderer = props => (
         validatorMapper={{
             'required-validator': validatorMapper[validatorTypes.REQUIRED],
             'pattern-validator': validatorMapper[validatorTypes.PATTERN],
-            'min-length-validator': validatorMapper[validatorTypes.MIN_LENGTH]
+            'min-length-validator': validatorMapper[validatorTypes.MIN_LENGTH],
+            'url-validator': validatorMapper[validatorTypes.URL]
         }}
         FormTemplate={FormTemplateWrapper}
         subscription={ { values: true } }
