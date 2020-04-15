@@ -79,11 +79,18 @@ const SourceWizardSummary = ({ sourceTypes, formOptions, applicationTypes, showA
     const availableStepKeys = getStepKeys(type.name, hasAuthentication, name, id);
 
     const authSteps = getAdditionalSteps(type.name, hasAuthentication, name);
+    const hasCustomSteps = get(hardcodedSchemas, [ type.name, 'authentication', hasAuthentication, name, 'customSteps' ], false);
+
     if (authSteps.length > 0) {
-        authTypeFields = authSteps.map((step) => step.fields).flatMap(x => x).filter(({ Content }) => !Content);
+        authTypeFields = authSteps
+        .map((step) => [ ...step.fields, ...authTypeFields.filter(({ stepKey }) => stepKey && step.stepKey === stepKey) ])
+        .flatMap(x => x)
+        .filter(({ name }) => (
+            authTypeFields.find((field) => field.name === name) ||
+            (hasCustomSteps && endpointFields.find((field) => field.name === name))
+        ));
     }
 
-    const hasCustomSteps = get(hardcodedSchemas, [ type.name, 'authentication', hasAuthentication, name, 'customSteps' ], false);
     if (hasCustomSteps) {
         endpointFields = [];
     }
