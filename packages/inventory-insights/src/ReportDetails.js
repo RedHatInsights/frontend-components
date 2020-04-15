@@ -94,7 +94,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                         <CardBody>
                             {kbaDetail && kbaDetail.view_uri ?
                                 <a rel="noopener noreferrer" target="_blank" href={`${kbaDetail.view_uri}`}>
-                                    {kbaDetail.publishedTitle} <ExternalLinkAltIcon />
+                                    {kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article` } <ExternalLinkAltIcon />
                                 </a>
                                 : kbaLoading ? <Skeleton size={SkeletonSize.sm} />
                                     : <React.Fragment>No related Knowledgebase article.</React.Fragment>}
