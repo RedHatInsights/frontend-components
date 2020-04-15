@@ -102,7 +102,7 @@ class InventoryRuleList extends Component {
                     kbaIds.join(` OR `)
                 })&fl=view_uri,id,publishedTitle&rows=${
                     kbaIds.length
-                }`,
+                }&redhat_client=$ADVISOR`,
                 {},
                 { credentials: 'include' }
             )).data.response.docs;
