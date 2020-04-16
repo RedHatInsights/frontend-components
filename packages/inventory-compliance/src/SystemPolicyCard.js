@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedRelative } from 'react-intl';
-import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
+import { CheckCircleIcon, ExclamationCircleIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import Truncate from 'react-truncate';
 
 import {
@@ -8,7 +8,8 @@ import {
     CardBody,
     Text,
     TextContent,
-    TextVariants
+    TextVariants,
+    Tooltip
 } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 
@@ -53,7 +54,7 @@ class SystemPolicyCard extends React.Component {
     }
 
     render() {
-        const { benchmark, rulesPassed, rulesFailed, compliant, lastScanned, score } = this.state.policy;
+        const { policy, benchmark, rulesPassed, rulesFailed, compliant, lastScanned, score } = this.state.policy;
         const { refIdTruncated, cardTitle } = this.state;
         const passedPercentage = this.fixedPercentage(score);
 
@@ -68,6 +69,15 @@ class SystemPolicyCard extends React.Component {
                         >
                             { cardTitle }
                         </Text>
+                        { !policy && <Tooltip position='bottom' content={
+                            <span>This policy report was uploaded into the Compliance application.
+                            If you would like to manage your policy inside the Compliance application,
+                            use the &quot;Create a policy&quot; wizard to create one and associate systems.</span>
+                        }>
+                            <span>
+                                External policy <OutlinedQuestionCircleIcon className='grey-icon'/>
+                            </span>
+                        </Tooltip> }
                     </TextContent>
                     <div className='margin-bottom-md' >
                         { this.complianceIcon(compliant) }
@@ -82,10 +92,9 @@ class SystemPolicyCard extends React.Component {
                             onMouseLeave={ this.onMouseout }
                             className='wrap-break-word'
                         >
-                            Profile <br/>
-                            { refIdTruncated }
+                            Profile: { refIdTruncated }
                             <br/>
-                            SSG { benchmark.version }
+                            SSG version: { benchmark.version }
                         </Text>
                     </div>
                     <Text className='margin-bottom-none' component={ TextVariants.small }>
