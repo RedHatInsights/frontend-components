@@ -179,14 +179,8 @@ exports[`CullingInformation should render with dates 1`] = `
     zIndex={9999}
   >
     <span
-      className="ins-c-inventory__culling-warning"
+      className=""
     >
-      <ExclamationTriangleIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-        title={null}
-      />
       Some children
     </span>
   </Tooltip>
