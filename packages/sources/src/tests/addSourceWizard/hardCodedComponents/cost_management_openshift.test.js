@@ -27,7 +27,7 @@ describe('Cost Management OpenShift steps components', () => {
 
             expect(wrapper.find(TextContent)).toHaveLength(1);
             expect(wrapper.find('ul')).toHaveLength(1);
-            expect(wrapper.find('li')).toHaveLength(2);
+            expect(wrapper.find('li')).toHaveLength(1);
         });
     });
     test('Configure Cost Management Operator description', () => {

@@ -30,9 +30,6 @@ export const PrerequisiteOCPList = () => (
             <TextListItem component='li'>
                     OpenShift Container Platform 4.3 or newer
             </TextListItem>
-            <TextListItem component='li'>
-                        Cost Management Operator
-            </TextListItem>
         </TextList>
     </TextContent>
 );
