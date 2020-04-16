@@ -42,6 +42,9 @@ class DownloadButton extends React.Component {
                                     document.body.append(link);
                                     link.click();
                                     link.remove();
+                                    this.setState({
+                                        asyncPages: []
+                                    });
                                 }
 
                                 return <React.Fragment />;
