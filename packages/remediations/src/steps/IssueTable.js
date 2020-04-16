@@ -34,7 +34,7 @@ function buildRows(issues, state, getResolution) {
 
 function issueType (id) {
     switch (id.split(':')[0]) {
-        case 'advisor': return 'Insights';
+        case 'advisor': return 'Advisor';
         case 'ssg':
         case 'compliance':
             return 'Compliance';
