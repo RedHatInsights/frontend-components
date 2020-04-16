@@ -71,6 +71,7 @@ export default {
                     skipEndpoint: true,
                     'source.source_ref': {
                         label: <CMOpenshift.ClusterIdentifierLabel />,
+                        component: componentTypes.TEXT_FIELD,
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }, {
@@ -80,37 +81,19 @@ export default {
                         }]
                     },
                     additionalSteps: [{
-                        title: 'Install prerequisites',
-                        nextStep: 'usageCollector',
+                        title: 'Configure Cost Management Operator',
                         fields: [{
-                            name: 'description',
                             component: 'description',
-                            Content: CMOpenshift.PrerequisiteDescription
+                            name: 'description-summary',
+                            Content: CMOpenshift.ConfigureCostOperator
                         }, {
-                            name: 'ocp-req',
-                            component: componentTypes.CHECKBOX,
-                            label: <CMOpenshift.PrerequisiteOCPText />,
-                            isRequired: true,
-                            validate: [{ type: validatorTypes.REQUIRED }]
-                        }, {
-                            name: 'ocp-req-list',
-                            component: 'description',
-                            Content: CMOpenshift.PrerequisiteOCPList
+                            name: 'source.source_ref'
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
                             initialValue: 'token',
                             initializeOnMount: true
-                        }]
-                    }, {
-                        title: 'Configure Cost Management Operator',
-                        stepKey: 'usageCollector',
-                        name: 'usageCollector',
-                        fields: [{
-                            component: 'description',
-                            name: 'description-summary',
-                            Content: CMOpenshift.ConfigureCostOperator
                         }]
                     }]
                 }
