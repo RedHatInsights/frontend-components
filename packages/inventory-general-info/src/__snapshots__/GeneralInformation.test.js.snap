@@ -167,7 +167,7 @@ exports[`GeneralInformation should render correctly - no data 1`] = `
             class=""
             data-pf-content="true"
           >
-            Operating System
+            Operating system
           </h1>
         </div>
       </div>
@@ -725,7 +725,7 @@ exports[`GeneralInformation should render correctly 1`] = `
               class=""
               data-pf-content="true"
             >
-              Not Available
+              Not available
             </dd>
             <dt
               class=""
@@ -857,7 +857,7 @@ exports[`GeneralInformation should render correctly 1`] = `
             class=""
             data-pf-content="true"
           >
-            Operating System
+            Operating system
           </h1>
         </div>
       </div>
@@ -917,7 +917,7 @@ exports[`GeneralInformation should render correctly 1`] = `
               class=""
               data-pf-content="true"
             >
-              Invalid Date
+              Invalid date
             </dd>
             <dt
               class=""
@@ -1293,7 +1293,7 @@ exports[`GeneralInformation should render correctly 1`] = `
               class=""
               data-pf-content="true"
             >
-              Invalid Date
+              Invalid date
             </dd>
             <dt
               class=""
@@ -1305,7 +1305,7 @@ exports[`GeneralInformation should render correctly 1`] = `
               class=""
               data-pf-content="true"
             >
-              Invalid Date
+              Invalid date
             </dd>
           </dl>
         </div>

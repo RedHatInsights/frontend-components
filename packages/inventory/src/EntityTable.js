@@ -89,7 +89,7 @@ class EntityTable extends React.Component {
                 return `${date} ${month} ${year}, ${time.split(':').slice(0, 2).join(':')} UTC`;
             }
 
-            return 'Invalid Date';
+            return 'Invalid date';
         }
 
         return get(col, key, ' ');
