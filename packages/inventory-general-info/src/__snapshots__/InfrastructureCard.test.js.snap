@@ -270,7 +270,7 @@ exports[`InfrastructureCard should render correctly with rhsm facts 1`] = `
           class=""
           data-pf-content="true"
         >
-          Not Available
+          Not available
         </dd>
         <dt
           class=""

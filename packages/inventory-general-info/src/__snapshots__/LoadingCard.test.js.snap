@@ -123,7 +123,7 @@ exports[`Loading card render 1`] = `
         <TextListItem
           component="dd"
         >
-          Not Available
+          Not available
         </TextListItem>
       </TextList>
     </TextContent>
