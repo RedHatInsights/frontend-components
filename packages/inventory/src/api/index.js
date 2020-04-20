@@ -141,14 +141,19 @@ export function getTags(systemId, search, { pagination } = { pagination: {} }) {
 }
 
 export function getAllTags(search, { filters, pagination } = { pagination: {} }) {
-    const { tagFilters } = filters ? filters.reduce(filtersReducer, {}) : {};
+    const {
+        tagFilters,
+        staleFilter,
+        registeredWithFilter
+    } = filters ? filters.reduce(filtersReducer, defaultFilters) : defaultFilters;
     return tags.apiTagGetTags(
         tagFilters ? constructTags(tagFilters) : undefined,
         undefined,
         undefined,
         (pagination && pagination.perPage) || 10,
         (pagination && pagination.page) || 1,
-        undefined,
-        search
+        pagination === undefined ? staleFilter : undefined,
+        search,
+        pagination === undefined ? registeredWithFilter : undefined,
     );
 }
