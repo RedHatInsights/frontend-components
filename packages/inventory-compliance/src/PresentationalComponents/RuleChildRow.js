@@ -46,10 +46,10 @@ const RuleChildRow = ({ rule }) => {
                             {
                                 references.map((ref, idx) => (
                                     <ConditionalLink
-                                        href={ ref.href }
+                                        href={ ref[0] }
                                         target='_blank'
                                         key={ `${refId}-reference-${idx}` }>
-                                        { ref.label }
+                                        { ref[1] }
                                     </ConditionalLink>)
                                 ).reduce((prev, next) => ([ prev, ', ', next ]))
                             }
