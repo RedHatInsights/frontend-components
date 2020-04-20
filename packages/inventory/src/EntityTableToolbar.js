@@ -35,7 +35,7 @@ class ContextEntityTableToolbar extends Component {
     }
 
     updateData = (config) => {
-        const { onRefresh, onRefreshData, perPage, filters, page } = this.props;
+        const { onRefresh, onRefreshData, perPage, filters, page, showTags, getAllTags } = this.props;
         const params = {
             page,
             per_page: perPage,
@@ -43,6 +43,9 @@ class ContextEntityTableToolbar extends Component {
             ...config
         };
         onRefresh ? onRefresh(params) : onRefreshData(params);
+        if (showTags) {
+            getAllTags('', { filters: config.filters });
+        }
     }
 
     debouncedRefresh = debounce((config) => this.updateData(config), 800);
@@ -84,7 +87,7 @@ class ContextEntityTableToolbar extends Component {
             ...filters.filter(oneFilter => !oneFilter.hasOwnProperty(filterKey)),
             { [filterKey]: value }
         ];
-        this.setState({ [filterKey]: value }, () => refresh({ page: 1, perPage, filters: newFilters }));
+        this.setState({ filterTagsBy: '', [filterKey]: value }, () => refresh({ page: 1, perPage, filters: newFilters }));
     }
 
     applyTags = (newSelection, debounced = true) => {
@@ -105,23 +108,22 @@ class ContextEntityTableToolbar extends Component {
         return newFilters;
     }
 
-    updateSelectedTags = (newSelection) => {
-        const { getAllTags } = this.props;
-        const { filterTagsBy } = this.state;
+    updateSelectedTags = (newSelection, debounce = true) => {
         this.setState(
-            { selected: newSelection },
-            () => getAllTags(filterTagsBy, { filters: this.applyTags(newSelection) })
+            { filterTagsBy: '', selected: newSelection },
+            () => this.applyTags(newSelection, debounce)
         );
     }
 
     createTagsFilter = () => {
         const { allTags, allTagsLoaded, additionalTagsCount, filters, toggleTagModal } = this.props;
-        const { selected } = this.state;
+        const { selected, filterTagsBy } = this.state;
         return tagsFilterBuilder(
             (value) => this.setState(
                 { filterTagsBy: value },
                 () => this.debounceGetAllTags(value, { filters })
             ),
+            filterTagsBy,
             this.updateSelectedTags,
             selected,
             allTagsLoaded,
@@ -138,14 +140,10 @@ class ContextEntityTableToolbar extends Component {
     }
 
     onDeleteTag = (deleted) => {
-        const { getAllTags } = this.props;
-        const { selected, filterTagsBy } = this.state;
+        const { selected } = this.state;
         const deletedItem = deleted.chips[0];
         selected[deleted.key][deletedItem.key] = false;
-        this.setState(
-            { selected },
-            () => getAllTags(filterTagsBy, { filters: this.applyTags(selected, false) })
-        );
+        this.updateSelectedTags(selected, false);
     }
 
     onDeleteFilter = (deleted, filterType) => {
@@ -162,8 +160,8 @@ class ContextEntityTableToolbar extends Component {
     }
 
     constructFilters = () => {
-        const { perPage, onClearFilters, activeFiltersConfig, getAllTags, hasItems } = this.props;
-        const { selected, textFilter, filterTagsBy, staleFilter, registeredWithFilter } = this.state;
+        const { perPage, onClearFilters, activeFiltersConfig, hasItems } = this.props;
+        const { selected, textFilter, staleFilter, registeredWithFilter } = this.state;
         return {
             filters: [
                 ...mapGroups(selected, 'chips'),
@@ -196,9 +194,8 @@ class ContextEntityTableToolbar extends Component {
                         selected: {},
                         textFilter: '',
                         staleFilter: [],
-                        registeredWithFilter: []
-                    }, () => {
-                        getAllTags(filterTagsBy, {});
+                        registeredWithFilter: [],
+                        filterTagsBy: ''
                     });
                 } else if (deleted.type) {
                     this.deleteMapper[deleted.type](deleted);

@@ -143,7 +143,7 @@ export const mergeTableProps = (stateProps, dispatchProps, ownProps) => ({
     }
 });
 
-export const tagsFilterBuilder = (onFilter, onChange, selected, loaded, tags, items = [], loader) => ({
+export const tagsFilterBuilder = (onFilter, filterBy, onChange, selected, loaded, tags, items = [], loader) => ({
     label: 'Tags',
     value: 'tags',
     type: 'group',
@@ -151,6 +151,7 @@ export const tagsFilterBuilder = (onFilter, onChange, selected, loaded, tags, it
     filterValues: {
         className: 'ins-c-inventory__tags-filter',
         onFilter,
+        filterBy,
         onChange: (_e, newSelection, group, item, groupKey, itemKey) => {
             if (item.meta) {
                 const isSelected = newSelection[groupKey][itemKey];
