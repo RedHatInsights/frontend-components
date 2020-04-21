@@ -14,7 +14,7 @@ exports[`OperatingSystemCard should render correctly - no data 1`] = `
         class=""
         data-pf-content="true"
       >
-        Operating System
+        Operating system
       </h1>
     </div>
   </div>
@@ -128,7 +128,7 @@ exports[`OperatingSystemCard should render correctly with data 1`] = `
         class=""
         data-pf-content="true"
       >
-        Operating System
+        Operating system
       </h1>
     </div>
   </div>
@@ -188,7 +188,7 @@ exports[`OperatingSystemCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Invalid Date
+          Invalid date
         </dd>
         <dt
           class=""
@@ -226,7 +226,7 @@ exports[`OperatingSystemCard should render correctly with rhsm facts 1`] = `
         class=""
         data-pf-content="true"
       >
-        Operating System
+        Operating system
       </h1>
     </div>
   </div>
@@ -250,7 +250,7 @@ exports[`OperatingSystemCard should render correctly with rhsm facts 1`] = `
           class=""
           data-pf-content="true"
         >
-          Not Available
+          Not available
         </dd>
         <dt
           class=""
@@ -262,7 +262,7 @@ exports[`OperatingSystemCard should render correctly with rhsm facts 1`] = `
           class=""
           data-pf-content="true"
         >
-          Not Available
+          Not available
         </dd>
         <dt
           class=""
@@ -286,7 +286,7 @@ exports[`OperatingSystemCard should render correctly with rhsm facts 1`] = `
           class=""
           data-pf-content="true"
         >
-          Invalid Date
+          Invalid date
         </dd>
         <dt
           class=""
@@ -320,7 +320,7 @@ exports[`OperatingSystemCard should render enabled/disabled 1`] = `
         class=""
         data-pf-content="true"
       >
-        Operating System
+        Operating system
       </h1>
     </div>
   </div>
@@ -380,7 +380,7 @@ exports[`OperatingSystemCard should render enabled/disabled 1`] = `
           class=""
           data-pf-content="true"
         >
-          Invalid Date
+          Invalid date
         </dd>
         <dt
           class=""

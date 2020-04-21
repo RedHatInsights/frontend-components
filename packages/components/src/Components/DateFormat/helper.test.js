@@ -23,7 +23,7 @@ describe('dateStringByType component', () => {
     });
 
     it('Invalid datetime matches', () => {
-        expect(dateStringByType('invalid')(date)).toEqual('Invalid Date');
+        expect(dateStringByType('invalid')(date)).toEqual('Invalid date');
     });
 
     it('Exact datetime matches', () => {

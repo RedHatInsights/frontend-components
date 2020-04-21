@@ -3,6 +3,7 @@
 exports[`Group - component render should render correctly 1`] = `
 <Fragment>
   <Text
+    filterBy=""
     groups={Array []}
     isFilterable={false}
     onChange={[Function]}

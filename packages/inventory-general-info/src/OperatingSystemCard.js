@@ -8,7 +8,7 @@ import { DateFormat } from '@redhat-cloud-services/frontend-components';
 
 const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (
     <LoadingCard
-        title="Operating System"
+        title="Operating system"
         isLoading={ !detailLoaded }
         items={ [
             { title: 'Release', value: systemInfo.release },
