@@ -31,12 +31,12 @@ export const dateStringByType = (type) => ({
     exact: date => exact(date) + ' UTC',
     onlyDate: date => exact(date).slice(0, -6),
     relative: date => relativeTimeTable.reduce((acc, i) => (i.rightBound > Date.now() - date ? i.description(Date.now() - date) : acc), exact(date)),
-    invalid: () => 'Invalid Date'
+    invalid: () => 'Invalid date'
 })[type];
 
 export const dateByType = (type, extraTitle) => ({
     exact: date => dateStringByType(type)(date),
     onlyDate: date => dateStringByType(type)(date),
     relative: date => addTooltip(dateStringByType('exact')(date), <span>{dateStringByType(type)(date)}</span>, extraTitle),
-    invalid: () => 'Invalid Date'
+    invalid: () => 'Invalid date'
 })[type];

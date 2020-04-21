@@ -71,6 +71,8 @@ export default {
                     skipEndpoint: true,
                     'source.source_ref': {
                         label: <CMOpenshift.ClusterIdentifierLabel />,
+                        'aria-label': 'Cluster Identifier',
+                        component: componentTypes.TEXT_FIELD,
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }, {
@@ -80,67 +82,19 @@ export default {
                         }]
                     },
                     additionalSteps: [{
-                        title: 'Install prerequisites',
-                        nextStep: 'obtainLogin',
+                        title: 'Configure Cost Management Operator',
                         fields: [{
-                            name: 'description',
                             component: 'description',
-                            Content: CMOpenshift.PrerequisiteDescription
+                            name: 'description-summary',
+                            Content: CMOpenshift.ConfigureCostOperator
                         }, {
-                            name: 'ocp-req',
-                            component: componentTypes.CHECKBOX,
-                            label: <CMOpenshift.PrerequisiteOCPText />,
-                            isRequired: true,
-                            validate: [{ type: validatorTypes.REQUIRED }]
-                        }, {
-                            name: 'ocp-req-list',
-                            component: 'description',
-                            Content: CMOpenshift.PrerequisiteOCPList
-                        }, {
-                            name: 'sys-req',
-                            component: componentTypes.CHECKBOX,
-                            label: <CMOpenshift.PrerequisiteSystemText />,
-                            isRequired: true,
-                            validate: [{ type: validatorTypes.REQUIRED }]
-                        }, {
-                            name: 'sys-req-list',
-                            component: 'description',
-                            Content: CMOpenshift.PrerequisiteSystemList
+                            name: 'source.source_ref'
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
                             hideField: true,
                             initialValue: 'token',
                             initializeOnMount: true
-                        }]
-                    }, {
-                        title: 'Obtain login credentials',
-                        stepKey: 'obtainLogin',
-                        name: 'obtainLogin',
-                        nextStep: 'usageCollector',
-                        fields: [{
-                            component: 'description',
-                            name: 'description-summary',
-                            Content: CMOpenshift.ObtainLoginDescription
-                        }]
-                    }, {
-                        title: 'Configure Usage Collector',
-                        stepKey: 'usageCollector',
-                        name: 'usageCollector',
-                        nextStep: 'dataCollection',
-                        fields: [{
-                            component: 'description',
-                            name: 'description-summary',
-                            Content: CMOpenshift.ConfigureUsageCollector
-                        }]
-                    }, {
-                        title: 'Configure data collection',
-                        stepKey: 'dataCollection',
-                        name: 'dataCollection',
-                        fields: [{
-                            component: 'description',
-                            name: 'description-summary',
-                            Content: CMOpenshift.DataCollectionDescription
                         }]
                     }]
                 }

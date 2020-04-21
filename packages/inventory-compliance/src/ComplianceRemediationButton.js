@@ -29,9 +29,9 @@ class ComplianceRemediationButton extends React.Component {
         });
     }
 
-    rulesWithRemediations = (rules, systemId) => {
+    rulesWithRemediations = (rules, system) => {
         return rules.filter(rule => rule.remediationAvailable).map(
-            rule => this.formatRule(rule, rule.refId.split('|')[1], systemId)
+            rule => this.formatRule(rule, system.profiles[0].refId, system.id)
         );
     }
 
@@ -41,9 +41,9 @@ class ComplianceRemediationButton extends React.Component {
         allSystems.forEach(async (system) => {
             result.systems.push(system.id);
             if (selectedRules.length !== 0) {
-                result.issues.push(this.rulesWithRemediations(selectedRules, system.id));
+                result.issues.push(this.rulesWithRemediations(selectedRules, system));
             } else {
-                result.issues.push(this.rulesWithRemediations(system.ruleObjectsFailed, system.id));
+                result.issues.push(this.rulesWithRemediations(system.ruleObjectsFailed, system));
             }
         });
 

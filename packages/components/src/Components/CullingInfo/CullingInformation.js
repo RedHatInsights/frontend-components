@@ -18,35 +18,37 @@ const calculateTooltip = (culled, warning, currDate) => {
     const warningDate = new Date(warning);
     const diffTime = currDate - warningDate;
     const removeIn = Math.ceil((culledDate - currDate) / days);
+    const msg = `System scheduled for inventory removal in ${removeIn} days`;
     if (diffTime >= 0) {
         return {
             isError: true,
-            msg: `This system is scheduled for removal from inventory in ${removeIn} days (${exact(culledDate)})`
+            msg
         };
     }
 
     return {
         isWarn: true,
-        msg: `This system will be removed from the inventory in ${removeIn} days (${exact(culledDate)})`
+        msg
     };
 };
 
 const CullingInformation = ({ culled, className, staleWarning, stale, currDate, children, render, ...props }) => {
-    if ((new Date(currDate) - new Date(stale)) < 0) {
+    // TODO: remove comments once culling is fine
+    const { isError, msg } = calculateTooltip(culled, staleWarning, currDate);
+    if (!isError || (new Date(currDate) - new Date(stale)) < 0) {
         return render ? render({
             msg: ''
         }) : children;
     }
 
-    const { isWarn, isError, msg } = calculateTooltip(culled, staleWarning, currDate);
     if (render) {
         return <span className={
             classnames({
-                'ins-c-inventory__culling-warning': isWarn,
+                // 'ins-c-inventory__culling-warning': isWarn,
                 'ins-c-inventory__culling-danger': isError
             })
         }>
-            { isWarn && <ExclamationTriangleIcon /> }
+            {/* { isWarn && <ExclamationTriangleIcon /> } */}
             { isError && <ExclamationCircleIcon /> }
             { render({ msg })}
         </span>;
@@ -60,12 +62,12 @@ const CullingInformation = ({ culled, className, staleWarning, stale, currDate, 
         >
             <span className={
                 classnames({
-                    'ins-c-inventory__culling-warning': isWarn,
+                    // 'ins-c-inventory__culling-warning': isWarn,
                     'ins-c-inventory__culling-danger': isError
                 })
             }>
                 { isError && <ExclamationCircleIcon /> }
-                { isWarn && <ExclamationTriangleIcon /> }
+                {/* { isWarn && <ExclamationTriangleIcon /> } */}
                 {children}
             </span>
         </Tooltip>

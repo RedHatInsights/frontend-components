@@ -23,11 +23,17 @@ class Group extends Component {
         });
     };
 
-    componentDidUpdate({ selected: prevSelected }) {
-        const { selected } = this.props;
+    componentDidUpdate({ selected: prevSelected, filterBy: prevFilterBy }) {
+        const { selected, filterBy } = this.props;
         if (!isEqual(prevSelected, selected)) {
             this.setState({
                 selected
+            });
+        }
+
+        if (filterBy !== undefined && prevFilterBy !== filterBy) {
+            this.setState({
+                filterBy
             });
         }
     }
@@ -280,6 +286,7 @@ Group.propTypes = {
         type: PropTypes.oneOf(Object.values(groupType)),
         items: itemsProps
     })),
+    filterBy: PropTypes.string,
     items: itemsProps,
     isFilterable: PropTypes.bool,
     onFilter: PropTypes.func
@@ -287,6 +294,7 @@ Group.propTypes = {
 
 Group.defaultProps = {
     selected: {},
+    filterBy: '',
     onChange: () => undefined,
     groups: [],
     isFilterable: false

@@ -24,10 +24,10 @@ class InventoryDetail extends React.Component {
     }
 
     render() {
-        const { root, match: { params }, useCard, hideBack, actions, showTags } = this.props;
+        const { root, match: { params }, useCard, hideBack, actions, showTags, hideInvLink } = this.props;
         return (
             <React.Fragment>
-                <Entitydetail useCard={ useCard } actions={ actions } showTags={ showTags } />
+                <Entitydetail useCard={ useCard } actions={ actions } showTags={ showTags } hideInvLink={ hideInvLink } />
                 { !hideBack && <Link to={ generatePath(root, params) }>
                     <Button variant='primary'>Back</Button>
                 </Link> }
@@ -37,6 +37,7 @@ class InventoryDetail extends React.Component {
 }
 
 InventoryDetail.propTypes = {
+    hideInvLink: PropTypes.bool,
     useCard: PropTypes.bool,
     hideBack: PropTypes.bool,
     root: PropTypes.string,

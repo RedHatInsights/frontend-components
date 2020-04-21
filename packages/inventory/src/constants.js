@@ -82,6 +82,21 @@ export function constructGroups(allTags) {
     }));
 }
 
+export const arrayToSelection = (selected) => selected.reduce((acc, { cells: [ key, value, namespace ] }) => ({
+    ...acc,
+    [namespace]: {
+        ...acc[namespace?.title || namespace],
+        [key?.title || key]: {
+            isSelected: true,
+            group: { value: namespace?.title || namespace, label: namespace?.title || namespace },
+            item: {
+                value: key?.title || key,
+                meta: { tag: { key: key?.title || key, value: value?.title || value } }
+            }
+        }
+    }
+}), {});
+
 export const defaultFilters = {
     staleFilter: [ 'fresh', 'stale' ],
     registeredWithFilter: [ 'insights' ]
@@ -124,6 +139,46 @@ export const mergeTableProps = (stateProps, dispatchProps, ownProps) => ({
         onRefresh: (...props) => {
             dispatchProps.onRefresh(...props);
             ownProps.onRefresh(...props);
+        }
+    }
+});
+
+export const tagsFilterBuilder = (onFilter, filterBy, onChange, selected, loaded, tags, items = [], loader) => ({
+    label: 'Tags',
+    value: 'tags',
+    type: 'group',
+    placeholder: 'Filter system by tag',
+    filterValues: {
+        className: 'ins-c-inventory__tags-filter',
+        onFilter,
+        filterBy,
+        onChange: (_e, newSelection, group, item, groupKey, itemKey) => {
+            if (item.meta) {
+                const isSelected = newSelection[groupKey][itemKey];
+                newSelection[groupKey][itemKey] = {
+                    isSelected,
+                    group,
+                    item
+                };
+                onChange(newSelection);
+            }
+        },
+        selected,
+        ...loaded && tags.length > 0 ? {
+            groups: [
+                ...constructGroups(tags),
+                ...items
+            ]
+        } : {
+            items: [
+                {
+                    label: !loaded ?
+                        loader :
+                        <div className="ins-c-inventory__tags-no-tags"> No tags available </div>,
+                    isDisabled: true,
+                    className: 'ins-c-inventory__tags-tail'
+                }
+            ]
         }
     }
 });

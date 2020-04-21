@@ -9,6 +9,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
     policies={
       Array [
         Object {
+          "benchmark": Object {
+            "version": "0.1.45",
+          },
           "compliant": false,
           "lastScanned": "2019-03-06T06:20:13Z",
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -18,6 +21,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
           "score": 75,
         },
         Object {
+          "benchmark": Object {
+            "version": "0.1.45",
+          },
           "compliant": false,
           "lastScanned": null,
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7 2",
@@ -48,6 +54,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
             <SystemPolicyCard
               policy={
                 Object {
+                  "benchmark": Object {
+                    "version": "0.1.45",
+                  },
                   "compliant": false,
                   "lastScanned": "2019-03-06T06:20:13Z",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -72,17 +81,6 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                         <div
                           className="pf-c-content margin-bottom-md"
                         >
-                          <Text
-                            className="margin-bottom-none"
-                            component="small"
-                          >
-                            <small
-                              className="margin-bottom-none"
-                              data-pf-content={true}
-                            >
-                              External policy
-                            </small>
-                          </Text>
                           <Text
                             className="margin-bottom-top-none"
                             component="h4"
@@ -124,6 +122,171 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                               </Truncate>
                             </h4>
                           </Text>
+                          <Tooltip
+                            appendTo={[Function]}
+                            aria="describedby"
+                            boundary="window"
+                            className=""
+                            content={
+                              <span>
+                                This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
+                              </span>
+                            }
+                            distance={15}
+                            enableFlip={true}
+                            entryDelay={500}
+                            exitDelay={500}
+                            flipBehavior={
+                              Array [
+                                "top",
+                                "right",
+                                "bottom",
+                                "left",
+                                "top",
+                                "right",
+                                "bottom",
+                              ]
+                            }
+                            id=""
+                            isAppLauncher={false}
+                            isContentLeftAligned={false}
+                            isVisible={false}
+                            maxWidth="18.75rem"
+                            position="bottom"
+                            tippyProps={Object {}}
+                            trigger="mouseenter focus"
+                            zIndex={9999}
+                          >
+                            <PopoverBase
+                              appendTo={[Function]}
+                              aria="describedby"
+                              arrow={true}
+                              boundary="window"
+                              content={
+                                <div
+                                  className=""
+                                  id=""
+                                  role="tooltip"
+                                >
+                                  <TooltipContent
+                                    isLeftAligned={false}
+                                  >
+                                    <span>
+                                      This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
+                                    </span>
+                                  </TooltipContent>
+                                </div>
+                              }
+                              delay={
+                                Array [
+                                  500,
+                                  500,
+                                ]
+                              }
+                              distance={15}
+                              flip={true}
+                              flipBehavior={
+                                Array [
+                                  "top",
+                                  "right",
+                                  "bottom",
+                                  "left",
+                                  "top",
+                                  "right",
+                                  "bottom",
+                                ]
+                              }
+                              isVisible={false}
+                              lazy={true}
+                              maxWidth="18.75rem"
+                              onCreate={[Function]}
+                              placement="bottom"
+                              popperOptions={
+                                Object {
+                                  "modifiers": Object {
+                                    "hide": Object {
+                                      "enabled": true,
+                                    },
+                                    "preventOverflow": Object {
+                                      "enabled": true,
+                                    },
+                                  },
+                                }
+                              }
+                              theme="pf-tooltip"
+                              trigger="mouseenter focus"
+                              zIndex={9999}
+                            >
+                              <span>
+                                External policy 
+                                <OutlinedQuestionCircleIcon
+                                  className="grey-icon"
+                                  color="currentColor"
+                                  noVerticalAlign={false}
+                                  size="sm"
+                                  title={null}
+                                >
+                                  <svg
+                                    aria-hidden={true}
+                                    aria-labelledby={null}
+                                    className="grey-icon"
+                                    fill="currentColor"
+                                    height="1em"
+                                    role="img"
+                                    style={
+                                      Object {
+                                        "verticalAlign": "-0.125em",
+                                      }
+                                    }
+                                    viewBox="0 0 512 512"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                                      transform=""
+                                    />
+                                  </svg>
+                                </OutlinedQuestionCircleIcon>
+                              </span>
+                              <Portal
+                                containerInfo={
+                                  <div>
+                                    <div
+                                      class=""
+                                      id=""
+                                      role="tooltip"
+                                    >
+                                      <div
+                                        class="pf-c-tooltip__content"
+                                      >
+                                        <span>
+                                          This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                }
+                              >
+                                <div
+                                  className=""
+                                  id=""
+                                  role="tooltip"
+                                >
+                                  <TooltipContent
+                                    isLeftAligned={false}
+                                  >
+                                    <div
+                                      className="pf-c-tooltip__content"
+                                    >
+                                      <span>
+                                        This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
+                                      </span>
+                                    </div>
+                                  </TooltipContent>
+                                </div>
+                              </Portal>
+                            </PopoverBase>
+                          </Tooltip>
                         </div>
                       </TextContent>
                       <div
@@ -190,8 +353,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                           >
-                            Profile 
-                            <br />
+                            Profile: 
                             <Truncate
                               ellipsis="…"
                               lines={1}
@@ -219,6 +381,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                 </span>
                               </span>
                             </Truncate>
+                            <br />
+                            SSG version: 
+                            0.1.45
                           </p>
                         </Text>
                       </div>
@@ -329,6 +494,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
     policies={
       Array [
         Object {
+          "benchmark": Object {
+            "version": "0.1.45",
+          },
           "compliant": false,
           "lastScanned": "2019-03-06T06:20:13Z",
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -338,6 +506,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
           "score": 75,
         },
         Object {
+          "benchmark": Object {
+            "version": "0.1.45",
+          },
           "compliant": false,
           "lastScanned": null,
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7 2",
@@ -368,6 +539,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
             <SystemPolicyCard
               policy={
                 Object {
+                  "benchmark": Object {
+                    "version": "0.1.45",
+                  },
                   "compliant": false,
                   "lastScanned": "2019-03-06T06:20:13Z",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -392,17 +566,6 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                         <div
                           className="pf-c-content margin-bottom-md"
                         >
-                          <Text
-                            className="margin-bottom-none"
-                            component="small"
-                          >
-                            <small
-                              className="margin-bottom-none"
-                              data-pf-content={true}
-                            >
-                              External policy
-                            </small>
-                          </Text>
                           <Text
                             className="margin-bottom-top-none"
                             component="h4"
@@ -444,6 +607,171 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                               </Truncate>
                             </h4>
                           </Text>
+                          <Tooltip
+                            appendTo={[Function]}
+                            aria="describedby"
+                            boundary="window"
+                            className=""
+                            content={
+                              <span>
+                                This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
+                              </span>
+                            }
+                            distance={15}
+                            enableFlip={true}
+                            entryDelay={500}
+                            exitDelay={500}
+                            flipBehavior={
+                              Array [
+                                "top",
+                                "right",
+                                "bottom",
+                                "left",
+                                "top",
+                                "right",
+                                "bottom",
+                              ]
+                            }
+                            id=""
+                            isAppLauncher={false}
+                            isContentLeftAligned={false}
+                            isVisible={false}
+                            maxWidth="18.75rem"
+                            position="bottom"
+                            tippyProps={Object {}}
+                            trigger="mouseenter focus"
+                            zIndex={9999}
+                          >
+                            <PopoverBase
+                              appendTo={[Function]}
+                              aria="describedby"
+                              arrow={true}
+                              boundary="window"
+                              content={
+                                <div
+                                  className=""
+                                  id=""
+                                  role="tooltip"
+                                >
+                                  <TooltipContent
+                                    isLeftAligned={false}
+                                  >
+                                    <span>
+                                      This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
+                                    </span>
+                                  </TooltipContent>
+                                </div>
+                              }
+                              delay={
+                                Array [
+                                  500,
+                                  500,
+                                ]
+                              }
+                              distance={15}
+                              flip={true}
+                              flipBehavior={
+                                Array [
+                                  "top",
+                                  "right",
+                                  "bottom",
+                                  "left",
+                                  "top",
+                                  "right",
+                                  "bottom",
+                                ]
+                              }
+                              isVisible={false}
+                              lazy={true}
+                              maxWidth="18.75rem"
+                              onCreate={[Function]}
+                              placement="bottom"
+                              popperOptions={
+                                Object {
+                                  "modifiers": Object {
+                                    "hide": Object {
+                                      "enabled": true,
+                                    },
+                                    "preventOverflow": Object {
+                                      "enabled": true,
+                                    },
+                                  },
+                                }
+                              }
+                              theme="pf-tooltip"
+                              trigger="mouseenter focus"
+                              zIndex={9999}
+                            >
+                              <span>
+                                External policy 
+                                <OutlinedQuestionCircleIcon
+                                  className="grey-icon"
+                                  color="currentColor"
+                                  noVerticalAlign={false}
+                                  size="sm"
+                                  title={null}
+                                >
+                                  <svg
+                                    aria-hidden={true}
+                                    aria-labelledby={null}
+                                    className="grey-icon"
+                                    fill="currentColor"
+                                    height="1em"
+                                    role="img"
+                                    style={
+                                      Object {
+                                        "verticalAlign": "-0.125em",
+                                      }
+                                    }
+                                    viewBox="0 0 512 512"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                                      transform=""
+                                    />
+                                  </svg>
+                                </OutlinedQuestionCircleIcon>
+                              </span>
+                              <Portal
+                                containerInfo={
+                                  <div>
+                                    <div
+                                      class=""
+                                      id=""
+                                      role="tooltip"
+                                    >
+                                      <div
+                                        class="pf-c-tooltip__content"
+                                      >
+                                        <span>
+                                          This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                }
+                              >
+                                <div
+                                  className=""
+                                  id=""
+                                  role="tooltip"
+                                >
+                                  <TooltipContent
+                                    isLeftAligned={false}
+                                  >
+                                    <div
+                                      className="pf-c-tooltip__content"
+                                    >
+                                      <span>
+                                        This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
+                                      </span>
+                                    </div>
+                                  </TooltipContent>
+                                </div>
+                              </Portal>
+                            </PopoverBase>
+                          </Tooltip>
                         </div>
                       </TextContent>
                       <div
@@ -510,8 +838,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                           >
-                            Profile 
-                            <br />
+                            Profile: 
                             <Truncate
                               ellipsis="…"
                               lines={1}
@@ -539,6 +866,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                 </span>
                               </span>
                             </Truncate>
+                            <br />
+                            SSG version: 
+                            0.1.45
                           </p>
                         </Text>
                       </div>

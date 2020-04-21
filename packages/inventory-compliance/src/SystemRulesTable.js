@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import { DataToolbarItem } from '@patternfly/react-core/dist/js/experimental';
-import { CheckIcon, CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
+import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import { Table, TableHeader, TableBody } from '@patternfly/react-table';
 import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 
@@ -64,7 +64,7 @@ class SystemRulesTable extends React.Component {
                     break;
                 case 'Ansible':
                     cell = (remediationAvailable ?
-                        <CheckIcon className='ins-c-compliance-system-rule-check' /> : 'No');
+                        <CheckCircleIcon className='ins-u-passed' /> : 'No');
                     break;
             }
 

@@ -8,6 +8,7 @@ import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/i
 import { Tooltip, TooltipPosition } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
 import { flatten, sortBy } from 'lodash';
 
+import API from './Api';
 import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
 import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
 import { Bullseye } from '@patternfly/react-core/dist/js/layouts/Bullseye/Bullseye';
@@ -63,9 +64,8 @@ class InventoryRuleList extends Component {
 
     async fetchAccountSettings() {
         try {
-            const settingsFetch = await fetch(`${BASE_FETCH_URL}account_setting/`, { credentials: 'include' });
-            const accountSettings = await settingsFetch.json();
-            this.setState({ accountSettings });
+            const settingsFetch = (await API.get(`${BASE_FETCH_URL}account_setting/`, { credentials: 'include' })).data;
+            this.setState({ accountSettings: settingsFetch });
         } catch (error) {
             console.warn(error, 'Account settings fetch failed.');
         }
@@ -74,11 +74,16 @@ class InventoryRuleList extends Component {
     async fetchEntityRules() {
         const { entity } = this.props;
         const { filters, searchValue, rows } = this.state;
-        let reportsData = {};
         try {
             await insights.chrome.auth.getUser();
-            const reportsFetch = await fetch(`${BASE_FETCH_URL}system/${entity.id}/reports/`, { credentials: 'include' });
-            reportsData = await reportsFetch.json();
+            const reportsFetch = (await API.get(`${BASE_FETCH_URL}system/${entity.id}/reports/`, { credentials: 'include' })).data;
+            const activeRuleFirstReportsData = this.activeRuleFirst(reportsFetch);
+            this.fetchKbaDetails(activeRuleFirstReportsData);
+            this.setState({
+                rows: this.buildRows(activeRuleFirstReportsData, {}, filters, rows, true, searchValue, true),
+                inventoryReportFetchStatus: 'fulfilled',
+                activeReports: activeRuleFirstReportsData
+            });
         } catch (error) {
             this.setState({
                 inventoryReportFetchStatus: 'failed'
@@ -86,26 +91,28 @@ class InventoryRuleList extends Component {
             console.warn(error, 'Entity recommendation fetch failed.');
         }
 
-        const activeRuleFirstReportsData = this.activeRuleFirst(reportsData);
-        this.fetchKbaDetails(activeRuleFirstReportsData);
-        this.setState({
-            rows: this.buildRows(activeRuleFirstReportsData, {}, filters, rows, true, searchValue, true),
-            inventoryReportFetchStatus: 'fulfilled',
-            activeReports: activeRuleFirstReportsData
-        });
     }
 
     fetchKbaDetails = async (reportsData) => {
         const { filters, searchValue, rows } = this.state;
-        const kbaIds = reportsData.map(report => report.rule.node_id).filter(x => x).join(` OR `);
-        const kbaDetailsFetch = await fetch(`https://access.redhat.com/rs/search?q=id:(${kbaIds})&fl=view_uri,id,publishedTitle`,
-            { credentials: 'include' });
-        const kbaDetailsData = (await kbaDetailsFetch.json()).response.docs;
-        this.setState({
-            kbaDetailsData,
-            rows: this.buildRows(reportsData, kbaDetailsData, filters, rows, true, searchValue)
-
-        });
+        const kbaIds = reportsData.map(({ rule }) => rule.node_id).filter(x => x);
+        try {
+            const kbaDetailsFetch = (await API.get(
+                `https://access.redhat.com/hydra/rest/search/kcs?q=id:(${
+                    kbaIds.join(` OR `)
+                })&fl=view_uri,id,publishedTitle&rows=${
+                    kbaIds.length
+                }&redhat_client=$ADVISOR`,
+                {},
+                { credentials: 'include' }
+            )).data.response.docs;
+            this.setState({
+                kbaDetailsData: kbaDetailsFetch,
+                rows: this.buildRows(reportsData, kbaDetailsFetch, filters, rows, true, searchValue)
+            });
+        } catch (error) {
+            console.error(error, 'KBA fetch failed.');
+        }
     };
 
     activeRuleFirst = (activeReports) => {
@@ -404,7 +411,7 @@ class InventoryRuleList extends Component {
                     actionsConfig={{ actions }}
                     bulkSelect={bulkSelect}
                     filterConfig={{ items: filterConfigItems }}
-                    pagination={<React.Fragment> {results === 1 ? `${results} recommendation` : `${results} recommendations`} </React.Fragment>}
+                    pagination={<React.Fragment> {results === 1 ? `${results} Recommendation` : `${results} Recommendations`} </React.Fragment>}
                     activeFiltersConfig={activeFiltersConfig}
                 >
                     <ToolbarItem className="remediationButtonOverride">

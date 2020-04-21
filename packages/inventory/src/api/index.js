@@ -129,19 +129,31 @@ export function getEntities(items, {
 
 export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);
 
-export function getTags(systemId) {
-    return hosts.apiHostGetHostTags(systemId).then(({ results }) => ({ results: Object.values(results)[0] }));
+export function getTags(systemId, search, { pagination } = { pagination: {} }) {
+    return hosts.apiHostGetHostTags(
+        systemId,
+        pagination.perPage || 10,
+        pagination.page || 1,
+        undefined,
+        undefined,
+        search
+    );
 }
 
-export function getAllTags(search, { filters } = {}) {
-    const { tagFilters } = filters ? filters.reduce(filtersReducer, {}) : {};
+export function getAllTags(search, { filters, pagination } = { pagination: {} }) {
+    const {
+        tagFilters,
+        staleFilter,
+        registeredWithFilter
+    } = filters ? filters.reduce(filtersReducer, defaultFilters) : defaultFilters;
     return tags.apiTagGetTags(
         tagFilters ? constructTags(tagFilters) : undefined,
         undefined,
         undefined,
-        10,
-        undefined,
-        undefined,
-        search
+        (pagination && pagination.perPage) || 10,
+        (pagination && pagination.page) || 1,
+        pagination === undefined ? staleFilter : undefined,
+        search,
+        pagination === undefined ? registeredWithFilter : undefined,
     );
 }

@@ -22,7 +22,6 @@ import {
     expandable
 } from '@patternfly/react-table';
 import { SkeletonTable, EmptyTable, DateFormat } from '@redhat-cloud-services/frontend-components';
-import TagsModal from './TagsModal';
 
 class EntityTable extends React.Component {
     onRowClick = (_event, key, application) => {
@@ -90,7 +89,7 @@ class EntityTable extends React.Component {
                 return `${date} ${month} ${year}, ${time.split(':').slice(0, 2).join(':')} UTC`;
             }
 
-            return 'Invalid Date';
+            return 'Invalid date';
         }
 
         return get(col, key, ' ');
@@ -179,7 +178,8 @@ class EntityTable extends React.Component {
             actions,
             variant,
             sortBy,
-            tableProps
+            tableProps,
+            showTags
         } = this.props;
         const cells = loaded && this.createColumns();
 
@@ -217,7 +217,6 @@ class EntityTable extends React.Component {
                     </PfTable> :
                     <SkeletonTable colSize={ 2 } rowSize={ 15 } />
                 }
-                <TagsModal />
             </React.Fragment>
         );
     }
@@ -250,7 +249,8 @@ EntityTable.propTypes = {
     }),
     selectEntity: PropTypes.func,
     onDetailSelect: PropTypes.func,
-    onToggleTagModal: PropTypes.func
+    onToggleTagModal: PropTypes.func,
+    showTags: PropTypes.bool
 };
 
 EntityTable.defaultProps = {
