@@ -39,7 +39,9 @@ To test changes from packages in this repository in other applications follow th
 
 After these steps the package you want to test should be linked and the last `npm link` command should have returned the paths it linked the package from.
 
-When linked successfully you can build the package(s) by running either `npm start` or `npm run build` in the `frontend-components` working copy.
+When linked successfully you can build the package(s) by running either  `npm start -- --scope=@redhat-cloud-services/frontend-components` or `npm run build -- --scope=@redhat-cloud-services/frontend-components` in the `frontend-components` working copy.
+
+Both will build the `@redhat-cloud-services/frontend-components` package, to build all packages run these commands without `-- --scope=@redhat-cloud-services/frontend-components`.*
 
 Once the packages are built the application the package is linked in should also be able to build and include any changes made locally in the `frontend-components` packages.
 
