@@ -121,7 +121,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         <BulkSelect
           checked={false}
           className=""
-          count={0}
+          isDisabled={false}
           items={
             Array [
               Object {
@@ -290,7 +290,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
         <BulkSelect
           checked={false}
           className=""
-          count={0}
+          isDisabled={false}
           items={
             Array [
               Object {
@@ -372,7 +372,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         <BulkSelect
           checked={false}
           className=""
-          count={0}
+          isDisabled={false}
           items={
             Array [
               Object {

@@ -23,7 +23,7 @@ visible unless you update it.');
 
     render() {
         const { isOpen, hasError } = this.state;
-        const { id, items, onSelect, checked, toggleProps, count, className, ...props } = this.props;
+        const { id, isDisabled, items, onSelect, checked, toggleProps, count, className, ...props } = this.props;
 
         return (
             <Fragment>
@@ -34,6 +34,7 @@ visible unless you update it.');
                     toggle={ (
                         <DropdownToggle
                             { ...toggleProps }
+                            isDisabled={ isDisabled }
                             splitButtonItems={ [
                                 <Fragment key="split-checkbox">
                                     {
@@ -102,7 +103,7 @@ BulkSelect.propTypes = {
 
 BulkSelect.defaultProps = {
     className: '',
-    count: 0,
+    isDisabled: false,
     items: [],
     checked: false,
     onSelect: () => undefined
