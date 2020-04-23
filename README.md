@@ -30,7 +30,22 @@ These tasks are preconfigured
 * `npm run playground` - to launch local demo on port 8080
 
 ## Running locally
-Install all packages by calling `npm install` in root folder. This will perform bootstrap and initial build as well. After that you can choose either playground for testing things seperately, or `npm run build` to build all packages.
+
+To test changes from packages in this repository in other applications follow these steps:
+
+1. Run `npm install` in the root of the `frontend-components` working copy
+2. Change into the directory of the package you are working on, for example `cd packages/components` and run `npm link`*
+3. Change into the directory of the application you'd like to include the package and run `npm link @redhat-cloud-services/frontend-components`*
+
+After these steps the package you want to test should be linked and the last `npm link` command should have returned the paths it linked the package from.
+
+When linked successfully you can build the package(s) by running either  `npm start -- --scope=@redhat-cloud-services/frontend-components` or `npm run build -- --scope=@redhat-cloud-services/frontend-components` in the `frontend-components` working copy.
+
+Both will build the `@redhat-cloud-services/frontend-components` package, to build all packages run these commands without `-- --scope=@redhat-cloud-services/frontend-components`.*
+
+Once the packages are built the application the package is linked in should also be able to build and include any changes made locally in the `frontend-components` packages.
+
+_* Depending on what package you are working on this arguments need to change accordingly._
 
 ## Creating new package
 If none package suits scope of new changes, we need to create new package by creating folder inside `packages` and running `npm init` in it.
