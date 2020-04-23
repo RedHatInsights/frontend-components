@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 
 import Form from './SourceAddModal';
 import FinalWizard from './FinalWizard';
@@ -8,11 +9,13 @@ import FinalWizard from './FinalWizard';
 import { doCreateSource } from '../api/createSource';
 import { WIZARD_TITLE } from '../utilities/stringConstants';
 import createProgressText from './createProgressText';
+import CloseModal from './CloseModal';
 
 const initialValues = (initialValues) => ({
     isSubmitted: false,
     isFinished: false,
     isErrored: false,
+    isCancelling: false,
     values: initialValues,
     createdSource: {},
     error: undefined,
@@ -53,10 +56,16 @@ class AddSourceWizard extends React.Component {
         error: undefined
     })
 
-    onCancel = (formValues) => {
-        this.setState(initialValues);
-        this.props.onClose(formValues);
-    }
+    onCancelBeforeExit = (values) => isEmpty(values) ? this.props.onClose({}) : this.setState({
+        isCancelling: true,
+        values
+    });
+
+    onExit = () => this.props.onClose(this.state.values);
+
+    onStay = () => this.setState({
+        isCancelling: false
+    });
 
     render() {
         const {
@@ -69,22 +78,31 @@ class AddSourceWizard extends React.Component {
             returnButtonTitle,
             disableHardcodedSchemas
         } = this.props;
-        const { isErrored, isFinished, isSubmitted, values, error, progressStep, progressTexts } = this.state;
+        const { isErrored, isFinished, isSubmitted, values, error, progressStep, progressTexts, isCancelling } = this.state;
 
         if (!isOpen) {
             return null;
         }
 
         if (!isSubmitted) {
-            return <Form
-                values={ values }
-                onSubmit={ this.onSubmit }
-                onCancel={ this.onCancel }
-                sourceTypes={ sourceTypes }
-                applicationTypes={ applicationTypes }
-                disableAppSelection={ disableAppSelection }
-                disableHardcodedSchemas={ disableHardcodedSchemas }
-            />;
+            return (<React.Fragment>
+                <CloseModal
+                    isOpen={isCancelling}
+                    onExit={this.onExit}
+                    onStay={this.onStay}
+                />
+                <Form
+                    isCancelling={isCancelling}
+                    values={ values }
+                    onSubmit={ this.onSubmit }
+                    onCancel={ this.onCancelBeforeExit }
+                    sourceTypes={ sourceTypes }
+                    applicationTypes={ applicationTypes }
+                    disableAppSelection={ disableAppSelection }
+                    disableHardcodedSchemas={ disableHardcodedSchemas }
+                />
+            </React.Fragment>
+            );
         }
 
         return <FinalWizard

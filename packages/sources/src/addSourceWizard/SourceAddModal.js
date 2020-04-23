@@ -19,14 +19,15 @@ const initialValues = {
 class SourceAddModal extends React.Component {
     _isMounted = false;
     state = initialValues;
+    container = document.createElement('div');
 
     componentDidMount() {
         this._isMounted = true;
-        const { sourceTypes, applicationTypes, disableAppSelection, disableHardcodedSchemas } = this.props;
+        const { sourceTypes, applicationTypes, disableAppSelection } = this.props;
 
         if (sourceTypes && applicationTypes) {
             this.setState({
-                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes.filter(filterApps), disableAppSelection, disableHardcodedSchemas),
+                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes.filter(filterApps), disableAppSelection, this.container),
                 isLoading: false,
                 sourceTypes,
                 applicationTypes
@@ -55,7 +56,7 @@ class SourceAddModal extends React.Component {
                             sourceTypesFinal.filter(type => type.schema),
                             applicationTypesFinal.filter(filterApps),
                             disableAppSelection,
-                            disableHardcodedSchemas
+                            this.container
                         ),
                         isLoading: false,
                         applicationTypes: applicationTypesFinal
@@ -67,6 +68,12 @@ class SourceAddModal extends React.Component {
 
     componentWillUnmount() {
         this._isMounted = false;
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.isCancelling !== prevProps.isCancelling) {
+            this.container.hidden = this.props.isCancelling;
+        }
     }
 
     render() {
@@ -118,13 +125,12 @@ SourceAddModal.propTypes = {
     })),
     values: PropTypes.object,
     disableAppSelection: PropTypes.bool,
-    disableHardcodedSchemas: PropTypes.bool
+    isCancelling: PropTypes.bool
 };
 
 SourceAddModal.defaultProps = {
     values: {},
-    disableAppSelection: false,
-    disableHardcodedSchemas: false
+    disableAppSelection: false
 };
 
 export default SourceAddModal;
