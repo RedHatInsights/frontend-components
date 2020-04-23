@@ -89,5 +89,16 @@ describe('BulkSelect', () => {
             expect(onSelect).toHaveBeenCalled();
             expect(otherAction).not.toHaveBeenCalled();
         });
+
+        it('should disable dropdown', () => {
+            const wrapper = shallow(<BulkSelect items={ [
+                {
+                    title: 'Select all',
+                    onClick: jest.fn()
+                }
+            ] }
+            isDisabled={ true } />);
+            expect(wrapper.find('Dropdown').prop('toggle').props.isDisabled).toBe(true);
+        });
     });
 });
