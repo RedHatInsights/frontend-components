@@ -14,6 +14,7 @@ import sourceTypes from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
 import * as dependency from '../../api/index';
 import * as createSource from '../../api/createSource';
+import CloseModal from '../../addSourceWizard/CloseModal';
 
 describe('AddSourceWizard', () => {
     let initialProps;
@@ -83,6 +84,7 @@ describe('AddSourceWizard', () => {
 
     it('pass values to onClose function', (done) => {
         const CANCEL_BUTTON_INDEX = 3;
+        const LEAVE_BUTTON_INDEX = 1;
         const NAME = 'name';
         const onClose = jest.fn();
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
@@ -94,9 +96,45 @@ describe('AddSourceWizard', () => {
 
         setTimeout(() => {
             wrapper.update();
-            wrapper.find(Button).at(CANCEL_BUTTON_INDEX).simulate('click');
+            wrapper.find('Button').at(CANCEL_BUTTON_INDEX).simulate('click');
+            wrapper.update();
+
+            expect(wrapper.find(CloseModal).props().isOpen).toEqual(true);
+
+            wrapper.find('Button').at(LEAVE_BUTTON_INDEX).simulate('click');
+            wrapper.update();
 
             expect(onClose).toHaveBeenCalledWith({ source: { name: NAME } });
+            done();
+        }, 1000);
+    });
+
+    it('stay on the wizard', (done) => {
+        const CANCEL_BUTTON_INDEX = 3;
+        const STAY_BUTTON_INDEX = 2;
+        const NAME = 'name';
+        const onClose = jest.fn();
+        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
+
+        const wrapper = mount(<AddSourceWizard { ...initialProps } onClose={ onClose }/>);
+        const form = wrapper.find(FormRenderer).children().children().instance().form;
+
+        form.change('source.name', NAME);
+
+        setTimeout(() => {
+            wrapper.update();
+            wrapper.find('Button').at(CANCEL_BUTTON_INDEX).simulate('click');
+            wrapper.update();
+
+            expect(wrapper.find(CloseModal).props().isOpen).toEqual(true);
+
+            wrapper.find('Button').at(STAY_BUTTON_INDEX).simulate('click');
+            wrapper.update();
+
+            expect(wrapper.find(CloseModal).props().isOpen).toEqual(false);
+
+            expect(onClose).not.toHaveBeenCalled();
+            expect(wrapper.find('input').instance().value).toEqual(NAME);
             done();
         }, 1000);
     });

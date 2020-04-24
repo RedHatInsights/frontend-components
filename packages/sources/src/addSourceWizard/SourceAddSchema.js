@@ -176,7 +176,7 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
     title: 'Review details'
 });
 
-export default (sourceTypes, applicationTypes, disableAppSelection) => {
+export default (sourceTypes, applicationTypes, disableAppSelection, container) => {
     setFirstValidated(true);
 
     return ({
@@ -189,6 +189,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection) => {
             buttonLabels: {
                 submit: 'Add'
             },
+            container,
             showTitles: true,
             predictSteps: true,
             crossroads: [ 'application.application_type_id', 'source_type', 'auth_select' ],
