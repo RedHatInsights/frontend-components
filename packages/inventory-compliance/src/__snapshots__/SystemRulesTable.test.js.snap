@@ -135,6 +135,44 @@ exports[`SystemRulesTable component should render 1`] = `
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -1194,6 +1232,44 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -1458,6 +1534,44 @@ exports[`SystemRulesTable component should render search results by rule name 1`
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -1774,6 +1888,44 @@ exports[`SystemRulesTable component should render search results on any page, re
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -2081,6 +2233,44 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -3047,6 +3237,44 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -4960,6 +5188,44 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -5190,6 +5456,44 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -6022,6 +6326,44 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
               "ruleObjectsFailed": Array [],
             },
           ]
