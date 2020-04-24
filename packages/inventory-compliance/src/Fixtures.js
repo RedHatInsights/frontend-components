@@ -39,9 +39,9 @@ export const system = {
             {
                 title: 'Disable At Service (atd)',
                 severity: 'medium',
-                rationale: 'The atd service could be used by an unsophisticated insider to carry out activities outside of a normal login session, which could complicate accountability. Furthermore, the need to schedule tasks with at or batch is not common.',
+                rationale: 'The atd service could be used by an unsophisticated insider to carry out activities ',
                 refId: 'xccdf_org.ssgproject.content_rule_service_atd_disabled',
-                description: 'The at and batch commands can be used to schedule tasks that are meant to be executed only once. This allows delayed execution in a manner similar to cron, except that it is not recurring. The daemon atd keeps track of tasks scheduled via at and batch, and executes them at the specified time. The atd service can be disabled with the following command: $ sudo systemctl disable atd.service',
+                description: 'The at and batch commands can be used to schedule tasks that are meant to be executed',
                 compliant: true,
                 remediationAvailable: false,
                 identifier: null
