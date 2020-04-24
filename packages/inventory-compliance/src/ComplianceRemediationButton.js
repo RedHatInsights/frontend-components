@@ -78,7 +78,24 @@ class ComplianceRemediationButton extends React.Component {
 
 ComplianceRemediationButton.propTypes = {
     selectedRules: propTypes.array,
-    allSystems: propTypes.array, // Prop coming from data.allSystems GraphQL query
+    allSystems: propTypes.arrayOf(propTypes.shape({
+        id: propTypes.string,
+        name: propTypes.string,
+        profiles: propTypes.arrayOf(propTypes.shape({
+            refId: propTypes.string,
+            name: propTypes.string,
+            rules: propTypes.arrayOf(propTypes.shape({
+                title: propTypes.string,
+                severity: propTypes.string,
+                rationale: propTypes.string,
+                refId: propTypes.string,
+                description: propTypes.string,
+                compliant: propTypes.bool,
+                identifier: propTypes.string,
+                references: propTypes.string
+            }))
+        }))
+    })),
     addNotification: propTypes.func
 };
 

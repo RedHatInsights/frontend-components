@@ -6,7 +6,49 @@ export const remediationsResponse = {
 export const system = {
     id: 'aa9c4497-5707-4233-9e9b-1fded5423ef3',
     name: '3.example.com',
-    profiles: {},
+    profiles: [{
+        refId: 'xccdf_org.ssgproject.content_profile_pci-dss',
+        name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7',
+        rules: [
+            {
+                title: 'Use direct-lvm with the Device Mapper Storage Driver',
+                severity: 'low',
+                rationale: 'foorationale',
+                refId: 'xccdf_org.ssgproject.content_rule_docker_storage_configured',
+                description: 'foodescription',
+                compliant: true,
+                identifier: JSON.stringify({
+                    label: 'CCE-80441-9',
+                    system: 'https://nvd.nist.gov/cce/index.cfm'
+                }),
+                references: JSON.stringify([])
+            },
+            {
+                title: 'Enable the Docker service',
+                severity: 'medium',
+                rationale: 'foorationale',
+                refId: 'xccdf_org.ssgproject.content_rule_service_docker_enabled',
+                description: 'foodescription',
+                compliant: true,
+                identifier: JSON.stringify({
+                    label: 'CCE-80440-1',
+                    system: 'https://nvd.nist.gov/cce/index.cfm'
+                }),
+                references: JSON.stringify([])
+            },
+            {
+                title: 'Disable At Service (atd)',
+                severity: 'medium',
+                rationale: 'The atd service could be used by an unsophisticated insider to carry out activities outside of a normal login session, which could complicate accountability. Furthermore, the need to schedule tasks with at or batch is not common.',
+                refId: 'xccdf_org.ssgproject.content_rule_service_atd_disabled',
+                description: 'The at and batch commands can be used to schedule tasks that are meant to be executed only once. This allows delayed execution in a manner similar to cron, except that it is not recurring. The daemon atd keeps track of tasks scheduled via at and batch, and executes them at the specified time. The atd service can be disabled with the following command: $ sudo systemctl disable atd.service',
+                compliant: true,
+                remediationAvailable: false,
+                identifier: null
+            }
+        ]
+
+    }],
     __typename: 'System'
 };
 
