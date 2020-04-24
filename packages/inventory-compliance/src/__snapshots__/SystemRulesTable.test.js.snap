@@ -135,6 +135,7 @@ exports[`SystemRulesTable component should render 1`] = `
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Object {},
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -1194,6 +1195,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Object {},
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -1458,6 +1460,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Object {},
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -1774,6 +1777,7 @@ exports[`SystemRulesTable component should render search results on any page, re
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Object {},
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -2081,6 +2085,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Object {},
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -3047,6 +3052,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Object {},
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -4960,6 +4966,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Object {},
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -5190,6 +5197,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Object {},
               "ruleObjectsFailed": Array [],
             },
           ]
@@ -6022,6 +6030,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
           Array [
             Object {
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Object {},
               "ruleObjectsFailed": Array [],
             },
           ]

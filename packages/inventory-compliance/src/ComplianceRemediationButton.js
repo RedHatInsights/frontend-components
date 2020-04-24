@@ -9,16 +9,12 @@ import { global_BackgroundColor_100 as globalBackgroundColor100 } from '@pattern
 
 class ComplianceRemediationButton extends React.Component {
     formatRule = ({ title, refId }, profile, system) => ({
-        id: `ssg:rhel7|${profile}|${refId}`,
+        id: `ssg:rhel7|${profile.split('xccdf_org.ssgproject.')[1]}|${refId}`,
         description: title,
         systems: [
             system
         ]
     })
-
-    findRule = (rules, refId) => {
-        return rules.find(rule => rule.refId === refId.split('|')[2]);
-    }
 
     uniqIssuesBySystem = (issues) => {
         const issueIds = issues.map((issue) => issue.id);
@@ -29,9 +25,13 @@ class ComplianceRemediationButton extends React.Component {
         });
     }
 
+    ruleProfile = (rule, system) => (
+        system.profiles.find(profile => profile.rules.find(profileRule => rule.refId === profileRule.refId))
+    )
+
     rulesWithRemediations = (rules, system) => {
         return rules.filter(rule => rule.remediationAvailable).map(
-            rule => this.formatRule(rule, system.profiles[0].refId, system.id)
+            rule => this.formatRule(rule, this.ruleProfile(rule, system).refId, system.id)
         );
     }
 
