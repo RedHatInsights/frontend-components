@@ -255,6 +255,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             >
               <Toggle
                 ariaHasPopup={true}
+                bubbleEvent={false}
                 className=""
                 id="pf-toggle-id-1"
                 isActive={false}
@@ -413,7 +414,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       }
                     }
                     enterTriggersArrowDown={false}
-                    href=""
                     index={0}
                     isDisabled={false}
                     isHovered={false}
@@ -433,7 +433,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       <button
                         className="pf-c-dropdown__menu-item"
                         disabled={false}
-                        href={null}
                         tabIndex={-1}
                         type="button"
                       >
@@ -458,7 +457,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       }
                     }
                     enterTriggersArrowDown={false}
-                    href=""
                     index={1}
                     isDisabled={false}
                     isHovered={false}
@@ -478,7 +476,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       <button
                         className="pf-c-dropdown__menu-item"
                         disabled={false}
-                        href={null}
                         tabIndex={-1}
                         type="button"
                       >
@@ -502,7 +499,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       }
                     }
                     enterTriggersArrowDown={false}
-                    href=""
                     index={2}
                     isDisabled={false}
                     isHovered={false}
@@ -522,7 +518,6 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       <button
                         className="pf-c-dropdown__menu-item"
                         disabled={false}
-                        href={null}
                         tabIndex={-1}
                         type="button"
                       />

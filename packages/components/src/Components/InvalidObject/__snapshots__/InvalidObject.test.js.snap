@@ -376,7 +376,11 @@ exports[`InvalidObject component should render 1`] = `
                     tabIndex={null}
                     type="button"
                   >
-                    Go Back
+                    <span
+                      className="pf-c-button__text"
+                    >
+                      Go Back
+                    </span>
                   </button>
                 </Button>
               </ComponentWithOuia>
