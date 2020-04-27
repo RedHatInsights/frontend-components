@@ -5,6 +5,7 @@ import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
 import { schemaBuilder } from './schemaBuilder';
 import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
+import ValidatorReset from './ValidatorReset';
 
 export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources } }) => {
     if (sources.find(({ id }) => id !== sourceId)) {
@@ -118,6 +119,11 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
             }],
             options: compileAllSourcesComboOptions(sourceTypes),
             mutator: sourceTypeMutator(applicationTypes, sourceTypes)
+        },
+        {
+            component: 'description',
+            name: 'fixasyncvalidation',
+            Content: ValidatorReset
         }
     ]
 });
