@@ -168,11 +168,7 @@ class InventoryRuleList extends Component {
                         },
                         {
                             title: <div className='pf-m-center' key={key} style={{ verticalAlign: 'top' }}>
-                                <Tooltip key={key} position={TooltipPosition.bottom} content={<span>The <strong>likelihood</strong> that this will be
-                                a problem is {LIKELIHOOD_LABEL[rule.likelihood]}. The <strong>impact</strong> of the problem would be
-                                &nbsp;{IMPACT_LABEL[rule.impact.impact]} if it occurred.</span>}>
-                                    <Battery label={RISK_TO_STRING[rule.total_risk]} severity={rule.total_risk} />
-                                </Tooltip>
+                                <Battery label={RISK_TO_STRING[rule.total_risk]} severity={rule.total_risk} />
                             </div >
                         },
                         {
