@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio, FormHelperText } from '@patternfly/react-core';
+import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
 
-const AuthRadio = ({ label, input, authName, supportedAuthTypes, disableAuthType }) => {
+const AuthRadio = (props) => {
+    const { label, input, authName, supportedAuthTypes, disableAuthType } = useFieldApi(props);
+
     let isDisabled = disableAuthType;
     const isSelected = input.value === authName;
 
@@ -30,11 +33,6 @@ const AuthRadio = ({ label, input, authName, supportedAuthTypes, disableAuthType
 
 AuthRadio.propTypes = {
     label: PropTypes.string,
-    input: PropTypes.shape({
-        value: PropTypes.any,
-        onChange: PropTypes.func.isRequired,
-        name: PropTypes.string.isRequired
-    }).isRequired,
     authName: PropTypes.string.isRequired,
     disableAuthType: PropTypes.bool,
     supportedAuthTypes: PropTypes.arrayOf(PropTypes.string)
@@ -44,11 +42,4 @@ AuthRadio.defaultProps = {
     disableAuthType: false
 };
 
-const AuthSelectProvider = ({ FieldProvider, ...rest }) =>
-    (
-        <FieldProvider { ...rest }>
-            { (props) =>  <AuthRadio  { ...props } name={ props.input.name }/> }
-        </FieldProvider>
-    );
-
-export default AuthSelectProvider;
+export default AuthRadio;

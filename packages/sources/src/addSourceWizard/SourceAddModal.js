@@ -98,7 +98,6 @@ class SourceAddModal extends React.Component {
             <SourcesFormRenderer
                 initialValues={ values }
                 schema={ schema }
-                showFormControls={ false }
                 onSubmit={ (values) => onSubmit(values, sourceTypes) }
                 onCancel={ onCancel }
             />

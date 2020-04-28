@@ -1,17 +1,24 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { TextListItem } from '@patternfly/react-core';
+import { TextListItem, TextContent } from '@patternfly/react-core';
 
-import SourceWizardSummary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
+import Summary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
 import applicationTypes from '../../helpers/applicationTypes';
 import sourceTypes from '../../helpers/sourceTypes';
 import ValuePopover from '../../../sourceFormRenderer/components/ValuePopover';
+import RendererContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
 
 describe('SourceWizardSummary component', () => {
     describe('should render correctly', () => {
         let formOptions;
         let initialProps;
+
+        const SourceWizardSummary = ({ formOptions, ...props }) => (
+            <RendererContext.Provider value={{ formOptions }}>
+                <Summary {...props} />
+            </RendererContext.Provider>
+        );
 
         beforeEach(() => {
             formOptions = (source_type, authtype, application_type_id, validate = true) => ({
@@ -50,23 +57,23 @@ describe('SourceWizardSummary component', () => {
         });
 
         it('openshift', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
-            expect(toJson(wrapper)).toMatchSnapshot();
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
+            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
         });
 
         it('name is first', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
             expect(wrapper.find(TextListItem).at(1).children().first().text()).toEqual('openshift');
         });
 
         it('type is third', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
             expect(wrapper.find(TextListItem).at(5).children().first().text()).toEqual('OpenShift Container Platform');
         });
 
         it('amazon', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon', 'access_key_secret_key') } />);
-            expect(toJson(wrapper)).toMatchSnapshot();
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon', 'access_key_secret_key') } />);
+            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
 
             // use labels from hardcoded schemas
             expect(wrapper.contains('Access Key')).toEqual(false);
@@ -76,35 +83,35 @@ describe('SourceWizardSummary component', () => {
         });
 
         it('amazon - ARN', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon', 'arn') } />);
-            expect(toJson(wrapper)).toMatchSnapshot();
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon', 'arn') } />);
+            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
         });
 
         it('ansible-tower', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
-            expect(toJson(wrapper)).toMatchSnapshot();
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
+            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
         });
 
         it('selected Catalog application, is second', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1') } />);
-            expect(toJson(wrapper)).toMatchSnapshot();
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1') } />);
+            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
             expect(wrapper.find(TextListItem).at(3).children().first().text()).toEqual('Catalog');
         });
 
         it('hide application', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1') } showApp={ false }/>);
-            expect(toJson(wrapper)).toMatchSnapshot();
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1') } showApp={ false }/>);
+            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
             expect(wrapper.find(TextListItem).at(3).children().first().text()).not.toEqual('Catalog');
             expect(wrapper.contains('Catalog')).toEqual(false);
         });
 
         it('do not contain hidden field', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
             expect(wrapper.contains('kubernetes')).toEqual(false);
         });
 
         it('do not contain hidden field', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
             expect(wrapper.contains('kubernetes')).toEqual(false);
         });
 
@@ -128,7 +135,7 @@ describe('SourceWizardSummary component', () => {
                 })
             };
 
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
             expect(wrapper.contains('authority')).toEqual(true);
         });
 
@@ -151,25 +158,25 @@ describe('SourceWizardSummary component', () => {
                 })
             };
 
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
             expect(wrapper.contains('authority')).toEqual(false);
             expect(wrapper.contains('token')).toEqual(false);
         });
 
         it('render boolean as Yes', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') } />);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') } />);
             expect(wrapper.contains('Yes')).toEqual(true);
             expect(wrapper.contains('No')).toEqual(false);
         });
 
         it('render boolean as No', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token', '1', false) } />);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token', '1', false) } />);
             expect(wrapper.contains('No')).toEqual(true);
             expect(wrapper.contains('Yes')).toEqual(false);
         });
 
         it('render password as dots', () => {
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1', false) } />);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1', false) } />);
             expect(wrapper.contains('●●●●●●●●●●●●')).toEqual(true);
             expect(wrapper.contains('123456')).toEqual(false);
         });
@@ -187,7 +194,7 @@ describe('SourceWizardSummary component', () => {
                 })
             };
 
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
             expect(wrapper.contains('OpenShift Container Platform')).toEqual(true);
         });
 
@@ -209,7 +216,7 @@ describe('SourceWizardSummary component', () => {
                 })
             };
 
-            const wrapper = shallow(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
             expect(wrapper.find(ValuePopover).props().value).toEqual(randomLongText);
         });
     });

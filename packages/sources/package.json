@@ -21,16 +21,21 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/sources#readme",
     "dependencies": {
-        "@data-driven-forms/pf4-component-mapper": "^1.28.3",
-        "@data-driven-forms/react-form-renderer": "^1.28.3",
         "@patternfly/react-icons": "^3.14.39",
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
         "awesome-debounce-promise": "^2.1.0"
     },
     "devDependencies": {
-        "@patternfly/react-core": ">=3.134.2",
-        "webpack-cli": "^3.3.6",
-        "webpack": "^4.35.3"
+        "@data-driven-forms/pf4-component-mapper": "^2.1.8",
+        "@data-driven-forms/react-form-renderer": "^2.1.8",
+        "@patternfly/react-core": "^3.153.13",
+        "webpack": "^4.35.3",
+        "webpack-bundle-analyzer": "^3.7.0",
+        "webpack-cli": "^3.3.6"
+    },
+    "peerDependencies": {
+        "@data-driven-forms/pf4-component-mapper": "^2.1.8",
+        "@data-driven-forms/react-form-renderer": "^2.1.8"
     }
 }

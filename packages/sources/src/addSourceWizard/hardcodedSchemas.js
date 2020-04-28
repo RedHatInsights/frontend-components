@@ -24,7 +24,7 @@ const arnField = {
     validate: [{
         type: validatorTypes.REQUIRED
     },  {
-        type: validatorTypes.PATTERN_VALIDATOR,
+        type: validatorTypes.PATTERN,
         pattern: /^arn:aws:.*/,
         message: 'ARN must start with arn:aws:'
     }, {
@@ -40,7 +40,7 @@ const subsWatchArnField = {
     validate: [{
         type: validatorTypes.REQUIRED
     }, {
-        type: validatorTypes.PATTERN_VALIDATOR,
+        type: validatorTypes.PATTERN,
         pattern: /^arn:aws:.*/,
         message: 'ARN must start with arn:aws:'
     }, {
@@ -76,7 +76,7 @@ export default {
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }, {
-                            type: validatorTypes.PATTERN_VALIDATOR,
+                            type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
                             message: 'Cluster ID must start with alphanumeric character and can contain underscore and hyphen'
                         }]
@@ -130,7 +130,7 @@ export default {
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }, {
-                            type: validatorTypes.PATTERN_VALIDATOR,
+                            type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
                             message: 'Subscription ID must start with alphanumeric character and can contain underscore and hyphen'
                         }],
@@ -141,7 +141,7 @@ export default {
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }, {
-                            type: validatorTypes.PATTERN_VALIDATOR,
+                            type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
                             message: 'Resource group must start with alphanumeric character and can contain underscore and hyphen'
                         }],
@@ -152,7 +152,7 @@ export default {
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }, {
-                            type: validatorTypes.PATTERN_VALIDATOR,
+                            type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
                             message: 'Storage account must start with alphanumeric character and can contain underscore and hyphen'
                         }],
@@ -204,7 +204,6 @@ export default {
                         }]
                     }, {
                         title: 'Configure service principal',
-                        stepKey: 'service-principal',
                         name: 'service-principal',
                         nextStep: 'export-schedule',
                         fields: [{
@@ -231,7 +230,6 @@ export default {
                         }]
                     }, {
                         title: 'Create daily export',
-                        stepKey: 'export-schedule',
                         name: 'export-schedule',
                         fields: [{
                             name: 'export-schedule-description',
@@ -297,7 +295,7 @@ export default {
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }, {
-                            type: validatorTypes.PATTERN_VALIDATOR,
+                            type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
                             message: 'S3 bucket name must start with alphanumeric character and can contain underscore and hyphen'
                         }],
@@ -323,7 +321,6 @@ export default {
                         }]
                     }, {
                         title: 'Activate cost allocation tags',
-                        stepKey: 'tags',
                         name: 'tags',
                         nextStep: 'iam-policy',
                         fields: [{
@@ -334,7 +331,6 @@ export default {
                     },
                     {
                         title: 'Create IAM policy',
-                        stepKey: 'iam-policy',
                         name: 'iam-policy',
                         nextStep: 'iam-role',
                         substepOf: 'Enable account access',
@@ -345,7 +341,6 @@ export default {
                         }]
                     }, {
                         title: 'Create IAM role',
-                        stepKey: 'iam-role',
                         name: 'iam-role',
                         nextStep: 'arn',
                         substepOf: 'Enable account access',
@@ -356,7 +351,6 @@ export default {
                         }]
                     }, {
                         title: 'Enter ARN',
-                        stepKey: 'arn',
                         name: 'arn',
                         substepOf: 'Enable account access',
                         fields: [{
@@ -373,7 +367,6 @@ export default {
                     'authentication.password': subsWatchArnField,
                     additionalSteps: [{
                         title: 'Create IAM policy',
-                        name: 'iam-policy',
                         nextStep: 'subs-iam-role',
                         substepOf: 'Enable account access',
                         fields: [{
@@ -389,7 +382,6 @@ export default {
                         }]
                     }, {
                         title: 'Create IAM role',
-                        stepKey: 'subs-iam-role',
                         name: 'subs-iam-role',
                         nextStep: 'subs-arn',
                         substepOf: 'Enable account access',
@@ -400,8 +392,7 @@ export default {
                         }]
                     }, {
                         title: 'Enter ARN',
-                        stepKey: 'subs-arn',
-                        name: 'cloud-meter-arn',
+                        name: 'subs-arn',
                         substepOf: 'Enable account access',
                         fields: [{
                             name: 'arn-description',
@@ -485,7 +476,7 @@ export default {
                         validate: [
                             { type: validatorTypes.REQUIRED },
                             {
-                                type: validatorTypes.PATTERN_VALIDATOR,
+                                type: validatorTypes.PATTERN,
                                 message: 'URL must start with https:// or http://',
                                 pattern: /^https{0,1}:\/\//
                             },
@@ -503,7 +494,6 @@ export default {
                     },
                     additionalSteps: [{
                         nextStep: 'catalog-ansible-tower',
-                        name: 'catalog-ansible-tower-endpoint',
                         title: 'Configure Ansible Tower endpoint',
                         fields: [{
                             name: 'ansible-tower-desc',
@@ -511,25 +501,24 @@ export default {
                             Content: TowerCatalog.EndpointDescription
                         }, {
                             name: 'endpoint.role',
-                            component: 'text-field',
+                            component: componentTypes.TEXT_FIELD,
                             hideField: true,
                             initialValue: 'ansible',
                             initializeOnMount: true
                         }, {
                             name: 'url',
-                            component: 'text-field'
+                            component: componentTypes.TEXT_FIELD
                         }, {
                             name: 'endpoint.verify_ssl',
-                            component: 'switch-field'
+                            component: componentTypes.SWITCH
                         }, {
                             name: 'endpoint.certificate_authority',
-                            component: 'text-field',
+                            component: componentTypes.TEXT_FIELD,
                             condition: { is: true, when: 'endpoint.verify_ssl' }
                         }]
                     }, {
                         title: 'Configure credentials',
                         name: 'catalog-ansible-tower',
-                        stepKey: 'catalog-ansible-tower',
                         fields: [{
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',

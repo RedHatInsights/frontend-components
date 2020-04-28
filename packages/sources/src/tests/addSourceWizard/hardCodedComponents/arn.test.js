@@ -8,6 +8,8 @@ import {
     ClipboardCopy
 } from '@patternfly/react-core';
 
+import RendererContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
+
 import * as AwsArn from '../../../addSourceWizard/hardcodedComponents/aws/arn';
 
 describe('AWS-ARN hardcoded schemas', () => {
@@ -32,7 +34,9 @@ describe('AWS-ARN hardcoded schemas', () => {
             })
         };
 
-        const wrapper = mount(<AwsArn.IAMPolicyDescription formOptions={FORM_OPTIONS}/>);
+        const wrapper = mount(<RendererContext.Provider value={{ formOptions: FORM_OPTIONS }}>
+            <AwsArn.IAMPolicyDescription />
+        </RendererContext.Provider>);
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
         expect(wrapper.find(Text)).toHaveLength(3);
@@ -54,7 +58,9 @@ describe('AWS-ARN hardcoded schemas', () => {
             })
         };
 
-        const wrapper = mount(<AwsArn.IAMPolicyDescription formOptions={FORM_OPTIONS}/>);
+        const wrapper = mount(<RendererContext.Provider value={{ formOptions: FORM_OPTIONS }}>
+            <AwsArn.IAMPolicyDescription />
+        </RendererContext.Provider>);
 
         expect(wrapper.find(Text)).toHaveLength(1);
         expect(wrapper.find(Text).text().includes('wrong')).toEqual(true);
