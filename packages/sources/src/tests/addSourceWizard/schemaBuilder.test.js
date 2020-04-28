@@ -186,7 +186,7 @@ describe('schema builder', () => {
                         ...injectEndpointFieldsInfo(ENDPOINT.fields, 'openshift')
                     ],
                     title: sourceTypes.find(({ name }) => name === 'openshift').schema.endpoint.title,
-                    stepKey: 'openshift-endpoint',
+                    name: 'openshift-endpoint',
                     nextStep: 'summary'
                 })
             );
@@ -195,9 +195,9 @@ describe('schema builder', () => {
 
     describe('createAdditionalSteps', () => {
         const ADDITIONAL_STEPS = [
-            { name: 'step-1', nextStep: 'step-2', fields: [ 'a' ] },
-            { name: 'step-2', stepKey: 'step-2', nextStep: 'step-3', fields: [ 'b' ] },
-            { name: 'step-3', stepKey: 'step-3', fields: [ 'c' ] }
+            { nextStep: 'step-2', fields: [ 'a' ] },
+            { name: 'step-2', nextStep: 'step-3', fields: [ 'b' ] },
+            { name: 'step-3', fields: [ 'c' ] }
         ];
 
         const INSERTED_STEP = { name: 'component-1', stepKey: 'red-hat-generic-additional-step' };
@@ -218,7 +218,7 @@ describe('schema builder', () => {
                         { ...INSERTED_STEP, stepKey: undefined } // insert the right field
                     ],
                     nextStep: 'step-2',
-                    stepKey: 'red-hat-generic-additional-step'
+                    name: 'red-hat-generic-additional-step'
                 },
                 {
                     ...ADDITIONAL_STEPS[1],
@@ -241,7 +241,7 @@ describe('schema builder', () => {
                     ...ADDITIONAL_STEPS[0],
                     fields: expect.any(Array),
                     nextStep: 'step-2',
-                    stepKey: 'red-hat-generic-additional-step'
+                    name: 'red-hat-generic-additional-step'
                 },
                 {
                     ...ADDITIONAL_STEPS[1],
@@ -297,7 +297,6 @@ describe('schema builder', () => {
                 expectedSchema = expect.objectContaining({
                     fields: expect.arrayContaining(fields),
                     title: expect.any(String),
-                    stepKey: OPENSHIFT_TYPE.name,
                     name: OPENSHIFT_TYPE.name,
                     nextStep: 'summary'
                 });
@@ -309,7 +308,6 @@ describe('schema builder', () => {
                 expectedSchema = expect.objectContaining({
                     fields: expect.any(Array),
                     title: expect.any(String),
-                    stepKey: OPENSHIFT_TYPE.name,
                     name: OPENSHIFT_TYPE.name,
                     nextStep: `${OPENSHIFT_TYPE.name}-endpoint`
                 });
@@ -327,7 +325,6 @@ describe('schema builder', () => {
                         secretKey
                     ]),
                     title: expect.any(String),
-                    stepKey: AMAZON_TYPE.name,
                     name: AMAZON_TYPE.name,
                     nextStep: {
                         when: expect.any(String),
@@ -353,7 +350,6 @@ describe('schema builder', () => {
                 expectedSchema = expect.objectContaining({
                     fields: expect.arrayContaining(fields),
                     title: expect.any(String),
-                    stepKey: expectedName,
                     name: expectedName,
                     nextStep: 'summary'
                 });
@@ -368,7 +364,6 @@ describe('schema builder', () => {
                 expectedSchema = expect.objectContaining({
                     fields: expect.arrayContaining(fields),
                     title: expect.any(String),
-                    stepKey: expectedName,
                     name: expectedName,
                     nextStep: `${AZURE_TYPE.name}-endpoint`
                 });
@@ -385,7 +380,6 @@ describe('schema builder', () => {
                 expectedSchema = expect.objectContaining({
                     fields: expect.arrayContaining(fields),
                     title: firstAdditionalStep.title,
-                    stepKey: expectedName,
                     name: expectedName,
                     nextStep: firstAdditionalStep.nextStep
                 });
