@@ -441,7 +441,7 @@ export default {
                             name: 'endpoint.role',
                             hideField: true,
                             initializeOnMount: true,
-                            initialValue: 'sattelite'
+                            initialValue: 'satellite'
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
