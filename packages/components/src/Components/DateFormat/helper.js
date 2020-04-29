@@ -20,8 +20,9 @@ const relativeTimeTable = [
 
 const exact = (value) => value.toUTCString().split(',')[1].slice(0, -7).trim();
 
-export const addTooltip = (date, element, extraTitle = '') => (
+export const addTooltip = (date, element, tooltipProps, extraTitle = '') => (
     <Tooltip
+        {...tooltipProps}
         content={<div>{extraTitle}{date}</div>}
     >
         {element}
@@ -34,9 +35,11 @@ export const dateStringByType = (type) => ({
     invalid: () => 'Invalid date'
 })[type];
 
-export const dateByType = (type, extraTitle) => ({
+export const dateByType = (type, tooltipProps, extraTitle) => ({
     exact: date => dateStringByType(type)(date),
     onlyDate: date => dateStringByType(type)(date),
-    relative: date => addTooltip(dateStringByType('exact')(date), <span>{dateStringByType(type)(date)}</span>, extraTitle),
+    relative: date => addTooltip(
+        dateStringByType('exact')(date), <span>{dateStringByType(type)(date)}</span>, tooltipProps, extraTitle
+    ),
     invalid: () => 'Invalid date'
 })[type];
