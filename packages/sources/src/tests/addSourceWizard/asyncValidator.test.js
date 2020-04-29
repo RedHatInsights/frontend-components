@@ -14,8 +14,6 @@ describe('asyncNameValidator', () => {
         data: { sources: [ ] }
     };
 
-    const requiredMessage = 'Required';
-
     it('returns error message when name is taken', async () => {
         expect.assertions(1);
 
@@ -28,36 +26,12 @@ describe('asyncNameValidator', () => {
         }
     });
 
-    it('returns nothing when name is taken but by the same catalog', async () => {
+    it('returns nothing when name is taken but by the same source', async () => {
         expect.assertions(1);
 
         actions.findSource = jest.fn(() => Promise.resolve(returnedSourceResponse));
 
         return asyncValidator('a1', '1').then(data => expect(data).toEqual(undefined));
-    });
-
-    it('returns error message when name is undefined', async () => {
-        expect.assertions(1);
-
-        actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
-
-        try {
-            await asyncValidator(undefined);
-        } catch (e) {
-            expect(e).toEqual(requiredMessage);
-        }
-    });
-
-    it('returns error message when name is blank', async () => {
-        expect.assertions(1);
-
-        actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
-
-        try {
-            await asyncValidator('');
-        } catch (e) {
-            expect(e).toEqual(requiredMessage);
-        }
     });
 
     it('returns nothing when passes', async () => {

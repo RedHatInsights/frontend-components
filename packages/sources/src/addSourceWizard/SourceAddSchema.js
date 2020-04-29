@@ -13,10 +13,6 @@ export const asyncValidator = (value, sourceId = undefined) => findSource(value)
         throw 'Name has already been taken';
     }
 
-    if (value === '' || value === undefined) {
-        throw 'Required';
-    }
-
     return undefined;
 });
 
@@ -162,7 +158,8 @@ const nameStep = () => ({
             placeholder: 'Source_1',
             isRequired: true,
             validate: [
-                (value) => asyncValidatorDebouncedWrapper()(value)
+                (value) => asyncValidatorDebouncedWrapper()(value),
+                { type: validatorTypes.REQUIRED }
             ]
         }
     ]
