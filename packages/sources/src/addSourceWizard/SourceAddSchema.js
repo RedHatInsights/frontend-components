@@ -1,5 +1,6 @@
 import React from 'react';
-import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
 import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
@@ -45,6 +46,7 @@ const compileAllSourcesComboOptions = (sourceTypes) => (
 
 const compileAllApplicationComboOptions = (applicationTypes) => (
     [
+        { label: 'None' },
         ...applicationTypes.sort((a, b) => a.display_name.localeCompare(b.display_name)).map(t => ({
             value: t.id,
             label: t.display_name
@@ -52,7 +54,11 @@ const compileAllApplicationComboOptions = (applicationTypes) => (
     ]
 );
 
-const appMutator = (appTypes) => (option, formOptions) => {
+export const appMutator = (appTypes) => (option, formOptions) => {
+    if (!option.value) {
+        return option;
+    }
+
     const selectedSourceType = formOptions.getState().values.source_type;
     const appType = appTypes.find(app => app.display_name === option.label);
     const isEnabled = selectedSourceType ? appType.supported_source_types.includes(selectedSourceType) : true;
@@ -62,7 +68,7 @@ const appMutator = (appTypes) => (option, formOptions) => {
     };
 };
 
-const sourceTypeMutator = (appTypes, sourceTypes) => (option, formOptions) => {
+export const sourceTypeMutator = (appTypes, sourceTypes) => (option, formOptions) => {
     const selectedApp = formOptions.getState().values.application ? formOptions.getState().values.application.application_type_id : undefined;
     const appType = appTypes.find(app => app.id === selectedApp);
     const isEnabled = appType ? appType.supported_source_types.includes(sourceTypes.find(type => type.product_name === option.label).name) : true;
@@ -98,21 +104,21 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
     nextStep,
     fields: [
         {
-            component: 'card-select',
+            component: 'enhanced-select',
             name: 'application.application_type_id',
-            label: 'Select your application (optional)',
+            label: 'A. Select your application',
             // eslint-disable-next-line react/display-name
-            DefaultIcon: null,
             options: compileAllApplicationComboOptions(applicationTypes),
             mutator: appMutator(applicationTypes),
-            helperText: 'Selecting an application will limit the available source types. You can assign an application to your source now, or after adding your source.',
-            isDisabled: disableAppSelection
+            description: 'Selecting an application will limit the available source types. You can assign an application to your source now or after adding your source.',
+            isDisabled: disableAppSelection,
+            placeholder: 'Choose application'
         },
         {
             component: 'card-select',
             name: 'source_type',
             isRequired: true,
-            label: 'Select your source type',
+            label: 'B. Select your source type',
             iconMapper: iconMapper(sourceTypes),
             validate: [{
                 type: validatorTypes.REQUIRED
@@ -128,6 +134,15 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
     ]
 });
 
+export const NameDescription = () => (
+    <TextContent key='step1'>
+        <Text component={ TextVariants.p }>
+To import data for an application, you need to connect to a data source.
+Enter a name, then proceed to select your application and source type.
+        </Text>
+    </TextContent>
+);
+
 const nameStep = () => ({
     title: 'Enter source name',
     name: 'name_step',
@@ -137,13 +152,7 @@ const nameStep = () => ({
         {
             component: 'description',
             name: 'description-summary',
-            // eslint-disable-next-line react/display-name
-            Content: () => (<TextContent key='step1'>
-                <Text component={ TextVariants.p }>
-                To import data for an application, you need to connect to a data source.
-                Enter a name, then proceed to select your application and source type.
-                </Text>
-            </TextContent>)
+            Content: NameDescription
         },
         {
             component: componentTypes.TEXT_FIELD,
@@ -159,17 +168,20 @@ const nameStep = () => ({
     ]
 });
 
+export const SummaryDescription = () => (
+    <TextContent>
+        <Text component={ TextVariants.p }>
+            Review the information below and click Add to add your source. Use the Back button to make changes.
+        </Text>
+    </TextContent>
+);
+
 const summaryStep = (sourceTypes, applicationTypes) => ({
     fields: [
         {
             component: 'description',
             name: 'description-summary',
-            // eslint-disable-next-line react/display-name
-            Content: () => (<TextContent>
-                <Text component={ TextVariants.p }>
-            Review the information below and click Add to add your source. Use the Back button to make changes.
-                </Text>
-            </TextContent>)
+            Content: SummaryDescription
         },
         {
             name: 'summary',

@@ -13,13 +13,15 @@ import Description from './components/Description';
 import CardSelect from './components/CardSelect';
 import AuthSelect from './components/AuthSelect';
 import Authentication from './components/Authentication';
+import EnhancedSelect from './components/EnhancedSelect';
 
 export const mapperExtension = {
     'auth-select': AuthSelect,
     description: Description,
     'card-select': CardSelect,
     summary: SourceWizardSummary,
-    authentication: Authentication
+    authentication: Authentication,
+    'enhanced-select': EnhancedSelect
 };
 
 const FormTemplateWrapper = (props) => <FormTemplate {...props} showFormControls={false}/>;
