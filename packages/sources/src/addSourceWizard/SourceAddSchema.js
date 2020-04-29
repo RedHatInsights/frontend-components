@@ -10,11 +10,7 @@ import ValidatorReset from './ValidatorReset';
 
 export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources } }) => {
     if (sources.find(({ id }) => id !== sourceId)) {
-        return 'Name has already been taken';
-    }
-
-    if (value === '' || value === undefined) {
-        return 'Required';
+        throw 'Name has already been taken';
     }
 
     return undefined;
@@ -162,7 +158,8 @@ const nameStep = () => ({
             placeholder: 'Source_1',
             isRequired: true,
             validate: [
-                (value) => asyncValidatorDebouncedWrapper()(value)
+                (value) => asyncValidatorDebouncedWrapper()(value),
+                { type: validatorTypes.REQUIRED }
             ]
         }
     ]
