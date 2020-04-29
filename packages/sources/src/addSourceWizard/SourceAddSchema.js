@@ -10,11 +10,11 @@ import ValidatorReset from './ValidatorReset';
 
 export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources } }) => {
     if (sources.find(({ id }) => id !== sourceId)) {
-        return 'Name has already been taken';
+        throw 'Name has already been taken';
     }
 
     if (value === '' || value === undefined) {
-        return 'Required';
+        throw 'Required';
     }
 
     return undefined;

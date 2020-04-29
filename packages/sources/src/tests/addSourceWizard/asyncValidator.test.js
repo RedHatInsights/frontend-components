@@ -16,34 +16,56 @@ describe('asyncNameValidator', () => {
 
     const requiredMessage = 'Required';
 
-    it('returns error message when name is taken', () => {
+    it('returns error message when name is taken', async () => {
+        expect.assertions(1);
+
         actions.findSource = jest.fn(() => Promise.resolve(returnedSourceResponse));
 
-        return asyncValidator('a1').then(data => expect(data).toEqual('Name has already been taken'));
+        try {
+            await asyncValidator('a1');
+        } catch (e) {
+            expect(e).toEqual('Name has already been taken');
+        }
     });
 
-    it('returns nothing when name is taken but by the same catalog', () => {
+    it('returns nothing when name is taken but by the same catalog', async () => {
+        expect.assertions(1);
+
         actions.findSource = jest.fn(() => Promise.resolve(returnedSourceResponse));
 
         return asyncValidator('a1', '1').then(data => expect(data).toEqual(undefined));
     });
 
-    it('returns error message when name is undefined', () => {
+    it('returns error message when name is undefined', async () => {
+        expect.assertions(1);
+
         actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
-        return asyncValidator(undefined).then(data => expect(data).toEqual(requiredMessage));
+        try {
+            await asyncValidator(undefined);
+        } catch (e) {
+            expect(e).toEqual(requiredMessage);
+        }
     });
 
-    it('returns error message when name is blank', () => {
+    it('returns error message when name is blank', async () => {
+        expect.assertions(1);
+
         actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
-        return asyncValidator('').then(data => expect(data).toEqual(requiredMessage));
+        try {
+            await asyncValidator('');
+        } catch (e) {
+            expect(e).toEqual(requiredMessage);
+        }
     });
 
-    it('returns nothing when passes', () => {
+    it('returns nothing when passes', async () => {
         actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
-        return asyncValidator('a1').then(data => expect(data).toEqual(undefined));
+        const msg = await asyncValidator('a1');
+
+        expect(msg).toEqual(undefined);
     });
 
     describe('wrapper', () => {
