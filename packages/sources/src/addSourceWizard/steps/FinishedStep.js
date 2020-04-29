@@ -14,14 +14,14 @@ import {
 import { CheckCircleIcon } from '@patternfly/react-icons';
 
 const FinishedStep = ({ onClose, successfulMessage, hideSourcesButton, returnButtonTitle, progressStep, progressTexts }) => <div className="pf-l-bullseye">
-    <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__empty-state">
-        <EmptyStateIcon icon={ CheckCircleIcon } color="var(--pf-global--success-color--100)" />
-        <Title headingLevel="h5" size="lg">
+    <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__empty-state" >
+        <EmptyStateIcon icon={ CheckCircleIcon } color="var(--pf-global--success-color--200)" className="pf-u-mb-0"/>
+        <Title headingLevel="h5" size="lg" className="pf-u-mt-xl">
       Configuration successful
         </Title>
         <EmptyStateBody>
             <Progress
-                className="pf-u-mb-md ins-c-sources__progress"
+                className="pf-u-mb-md ins-c-sources__progress ins-c-sources__progress-success"
                 value={progressStep}
                 min={0}
                 title=" "
@@ -32,7 +32,7 @@ const FinishedStep = ({ onClose, successfulMessage, hideSourcesButton, returnBut
             />
             { successfulMessage }
         </EmptyStateBody>
-        <Button variant="primary" onClick={ onClose }>{returnButtonTitle}</Button>
+        <Button variant="primary" onClick={ onClose } className="pf-u-mt-xl">{returnButtonTitle}</Button>
         { !hideSourcesButton &&
         <EmptyStateSecondaryActions>
             <a href='/hybrid/settings/sources'>
