@@ -7,10 +7,12 @@ exports[`Steps components ErroredStep renders correctly 1`] = `
     variant="full"
   >
     <EmptyStateIcon
+      className="pf-u-mb-0"
       color="var(--pf-global--danger-color--100)"
       icon={[Function]}
     />
     <Title
+      className="pf-u-mt-xl"
       headingLevel="h5"
       size="lg"
     >
@@ -65,10 +67,12 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
     variant="full"
   >
     <EmptyStateIcon
-      color="var(--pf-global--success-color--100)"
+      className="pf-u-mb-0"
+      color="var(--pf-global--success-color--200)"
       icon={[Function]}
     />
     <Title
+      className="pf-u-mt-xl"
       headingLevel="h5"
       size="lg"
     >
@@ -76,7 +80,7 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
     </Title>
     <EmptyStateBody>
       <Progress
-        className="pf-u-mb-md ins-c-sources__progress"
+        className="pf-u-mb-md ins-c-sources__progress ins-c-sources__progress-success"
         id=""
         label="Completed"
         max={0}
@@ -91,6 +95,7 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
       Here I Am
     </EmptyStateBody>
     <Component
+      className="pf-u-mt-xl"
       onClick={[MockFunction]}
       variant="primary"
     >
@@ -120,10 +125,12 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
     variant="full"
   >
     <EmptyStateIcon
-      color="var(--pf-global--success-color--100)"
+      className="pf-u-mb-0"
+      color="var(--pf-global--success-color--200)"
       icon={[Function]}
     />
     <Title
+      className="pf-u-mt-xl"
       headingLevel="h5"
       size="lg"
     >
@@ -131,7 +138,7 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
     </Title>
     <EmptyStateBody>
       <Progress
-        className="pf-u-mb-md ins-c-sources__progress"
+        className="pf-u-mb-md ins-c-sources__progress ins-c-sources__progress-success"
         id=""
         label="Completed"
         max={0}
@@ -146,6 +153,7 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
       Here I Am
     </EmptyStateBody>
     <Component
+      className="pf-u-mt-xl"
       onClick={[MockFunction]}
       variant="primary"
     >
@@ -162,9 +170,12 @@ exports[`Steps components LoadingStep renders correctly 1`] = `
     variant="full"
   >
     <EmptyStateIcon
+      className="pf-u-mb-0"
       icon={[Function]}
     />
-    <EmptyStateBody>
+    <EmptyStateBody
+      className="pf-u-mt-xl"
+    >
       Loading, please wait.
     </EmptyStateBody>
   </EmptyState>
@@ -178,12 +189,17 @@ exports[`Steps components LoadingStep renders correctly with custom props 1`] = 
     variant="full"
   >
     <EmptyStateIcon
+      className="pf-u-mb-0"
       icon={[Function]}
     />
-    <EmptyStateBody>
+    <EmptyStateBody
+      className="pf-u-mt-xl"
+    >
       Here I Am
     </EmptyStateBody>
-    <EmptyStateSecondaryActions>
+    <EmptyStateSecondaryActions
+      className="pf-u-mt-xl"
+    >
       <Component
         onClick={[MockFunction]}
         variant="link"
@@ -202,9 +218,12 @@ exports[`Steps components LoadingStep renders correctly with progress bar 1`] = 
     variant="full"
   >
     <EmptyStateIcon
+      className="pf-u-mb-0"
       icon={[Function]}
     />
-    <EmptyStateBody>
+    <EmptyStateBody
+      className="pf-u-mt-xl"
+    >
       Loading, please wait.
     </EmptyStateBody>
   </EmptyState>
