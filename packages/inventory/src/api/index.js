@@ -79,7 +79,10 @@ export function getEntities(items, {
         tagFilters,
         staleFilter,
         registeredWithFilter
-    } = filters ? filters.reduce(filtersReducer, defaultFilters) : defaultFilters;
+    } = filters ? filters.reduce(filtersReducer, {
+        ...defaultFilters,
+        registeredWithFilter: []
+    }) : defaultFilters;
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
         .then((data) => showTags ? mapTags(data) : data)
