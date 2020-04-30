@@ -96,7 +96,6 @@ export const nextStep = ({ values: { application, source_type } }) => {
 const typesStep = (sourceTypes, applicationTypes, disableAppSelection) => ({
     title: 'Choose application and source type',
     name: 'types_step',
-    stepKey: 'types_step',
     nextStep,
     fields: [
         {
@@ -142,7 +141,6 @@ Enter a name, then proceed to select your application and source type.
 const nameStep = () => ({
     title: 'Enter source name',
     name: 'name_step',
-    stepKey: 1,
     nextStep: 'types_step',
     fields: [
         {
@@ -186,7 +184,6 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
             sourceTypes,
             applicationTypes
         }],
-    stepKey: 'summary',
     name: 'summary',
     title: 'Review details'
 });
