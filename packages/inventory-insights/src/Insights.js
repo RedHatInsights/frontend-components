@@ -19,6 +19,7 @@ import ChartSpikeIcon from '@patternfly/react-icons/dist/js/icons/chartSpike-ico
 import CheckCircleIcon from '@patternfly/react-icons/dist/js/icons/check-circle-icon';
 import CheckIcon from '@patternfly/react-icons/dist/js/icons/check-icon';
 import { ClipboardCopy } from '@patternfly/react-core/dist/js/components/ClipboardCopy/ClipboardCopy';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
 import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
 import { List } from 'react-content-loader';
 import MessageState from './MessageState';
@@ -31,7 +32,6 @@ import TimesCircleIcon from '@patternfly/react-icons/dist/js/icons/times-circle-
 import { ToolbarItem } from '@patternfly/react-core/dist/js/layouts/Toolbar/ToolbarItem';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import connect from 'react-redux/es/connect/connect';
-import moment from 'moment';
 
 class InventoryRuleList extends Component {
     state = {
@@ -163,7 +163,7 @@ class InventoryRuleList extends Component {
                         { title: <div> {rule.description}</div> },
                         {
                             title: <div key={key}>
-                                {moment(rule.publish_date).fromNow()}
+                                <DateFormat date={rule.publish_date} type='relative' tooltipProps={{ position: TooltipPosition.bottom }}/>
                             </div>
                         },
                         {

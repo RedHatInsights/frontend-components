@@ -14,36 +14,32 @@ describe('asyncNameValidator', () => {
         data: { sources: [ ] }
     };
 
-    const requiredMessage = 'Required';
+    it('returns error message when name is taken', async () => {
+        expect.assertions(1);
 
-    it('returns error message when name is taken', () => {
         actions.findSource = jest.fn(() => Promise.resolve(returnedSourceResponse));
 
-        return asyncValidator('a1').then(data => expect(data).toEqual('Name has already been taken'));
+        try {
+            await asyncValidator('a1');
+        } catch (e) {
+            expect(e).toEqual('Name has already been taken');
+        }
     });
 
-    it('returns nothing when name is taken but by the same catalog', () => {
+    it('returns nothing when name is taken but by the same source', async () => {
+        expect.assertions(1);
+
         actions.findSource = jest.fn(() => Promise.resolve(returnedSourceResponse));
 
         return asyncValidator('a1', '1').then(data => expect(data).toEqual(undefined));
     });
 
-    it('returns error message when name is undefined', () => {
+    it('returns nothing when passes', async () => {
         actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
-        return asyncValidator(undefined).then(data => expect(data).toEqual(requiredMessage));
-    });
+        const msg = await asyncValidator('a1');
 
-    it('returns error message when name is blank', () => {
-        actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
-
-        return asyncValidator('').then(data => expect(data).toEqual(requiredMessage));
-    });
-
-    it('returns nothing when passes', () => {
-        actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
-
-        return asyncValidator('a1').then(data => expect(data).toEqual(undefined));
+        expect(msg).toEqual(undefined);
     });
 
     describe('wrapper', () => {

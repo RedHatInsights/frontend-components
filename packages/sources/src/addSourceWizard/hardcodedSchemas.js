@@ -1,5 +1,6 @@
 import React from 'react';
-import { validatorTypes, componentTypes } from '@data-driven-forms/react-form-renderer';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
 import SSLFormLabel from './SSLFormLabel';
 
 import * as OpenshiftToken from './hardcodedComponents/openshift/token';

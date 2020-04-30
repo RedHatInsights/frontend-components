@@ -44,7 +44,7 @@ export const getAllFieldsValues = (fields, values, stepKeys) => fields.map((fiel
 
 export const getStepKeys = (typeName, authName, appName = 'generic', appId) => [
     ...get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'includeStepKeyFields' ], []),
-    ...get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'additionalSteps' ], []).map(({ stepKey }) => stepKey),
+    ...get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'additionalSteps' ], []).map(({ name }) => name),
     `${typeName}-${authName}-${appName}-additional-step`,
     `${typeName}-${authName}-additional-step`,
     appId ? `${typeName}-${appId}` : undefined
@@ -86,7 +86,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
 
     if (authSteps.length > 0) {
         authTypeFields = authSteps
-        .map((step) => [ ...step.fields, ...authTypeFields.filter(({ stepKey }) => stepKey && step.stepKey === stepKey) ])
+        .map((step) => [ ...step.fields, ...authTypeFields.filter(({ stepKey }) => stepKey && step.name === stepKey) ])
         .flatMap(x => x)
         .filter(({ name }) => (
             authTypeFields.find((field) => field.name === name) ||

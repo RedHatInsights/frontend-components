@@ -73,7 +73,7 @@ class CardSelect extends React.Component {
                         </CardHeader>
                         <CardBody>
                             <Bullseye>
-                                {Component && <Component size="xl"/>}
+                                {Component && <Component size="md"/>}
                             </Bullseye>
                         </CardBody>
                     </div>
