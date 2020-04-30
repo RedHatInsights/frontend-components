@@ -1,6 +1,8 @@
 module.exports = {
     externals: [
         /^@patternfly\/.*/,
+        /^@data-driven-forms\/react-form-renderer\/.*/,
+        /^@data-driven-forms\/pf4-component-mapper\/.*/,
         {
             '@redhat-cloud-services/frontend-components-utilities': {
                 commonjs: '@redhat-cloud-services/frontend-components-utilities',

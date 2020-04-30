@@ -1,4 +1,5 @@
-import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
 import hardcodedSchemas from './hardcodedSchemas';
 import get from 'lodash/get';
 
@@ -28,7 +29,7 @@ export const getOnlyHiddenFields = (typeName, authName, appName = 'generic') =>
     get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'onlyHiddenFields' ], false);
 
 export const getAdditionalStepFields = (fields, stepKey) => fields.filter(field => field.stepKey === stepKey)
-.map(field => ({ ...field, stepKey: undefined }));
+.map(({ stepKey, ...field }) => field);
 
 export const getNoStepsFields = (fields, additionalStepKeys = []) => fields.filter(field => !field.stepKey || additionalStepKeys.includes(field.stepKey));
 
@@ -64,21 +65,19 @@ export const createEndpointStep = (endpoint, typeName) => ({
         ...getAdditionalEndpointFields(typeName),
         ...injectEndpointFieldsInfo(endpoint.fields, typeName)
     ],
-    stepKey: `${typeName}-endpoint`,
     name: `${typeName}-endpoint`,
     nextStep: 'summary'
 });
 
 export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpointStep, fields, appName = 'generic') =>
     additionalSteps.map((step) => {
-        const stepKey = step.stepKey || `${name}-${authName}-${appName}-additional-step`;
+        const stepKey = step.name || `${name}-${authName}-${appName}-additional-step`;
 
         const skipEndpoint = shouldSkipEndpoint(name, authName, appName);
         const customSteps = hasCustomSteps(name, authName, appName);
 
         return ({
             name: stepKey,
-            stepKey: stepKey,
             nextStep: hasEndpointStep && !skipEndpoint && !customSteps ? `${name}-endpoint` : 'summary',
             ...step,
             fields: [
@@ -144,7 +143,6 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
 
         return ({
             name: type.name,
-            stepKey: type.name,
             title: `Configure ${acronymMapper(type.product_name)} credentials`,
             fields,
             nextStep: {
@@ -169,7 +167,7 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
         let stepProps = {};
 
         if (hasCustomStep) {
-            const firstAdditonalStep = getAdditionalSteps(type.name, auth.type).find(({ stepKey }) => !stepKey);
+            const firstAdditonalStep = getAdditionalSteps(type.name, auth.type).find(({ name }) => !name);
             const additionalFields = getAdditionalStepFields(auth.fields, additionalStepName);
 
             stepProps = {
@@ -177,14 +175,12 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
                 fields: [
                     ...fields,
                     ...injectAuthFieldsInfo([ ...firstAdditonalStep.fields, ...additionalFields ], type.name, auth.type)
-                ],
-                stepKey: type.name
+                ]
             };
         }
 
         return ({
             name: type.name,
-            stepKey: type.name,
             title: `Configure ${acronymMapper(type.product_name)} - ${auth.name} credentials`,
             fields: [
                 ...fields,
@@ -259,7 +255,6 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
         return ({
             name: type.name,
-            stepKey: type.name,
             title: `Configure ${acronymMapper(type.product_name)} credentials`,
             fields,
             nextStep: {
@@ -294,7 +289,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
         let stepProps = {};
 
         if (hasCustomStep) {
-            const firstAdditonalStep = getAdditionalSteps(type.name, auth.type, appName).find(({ stepKey }) => !stepKey);
+            const firstAdditonalStep = getAdditionalSteps(type.name, auth.type, appName).find(({ name }) => !name);
             const additionalFields = getAdditionalStepFields(auth.fields, additionalStepName);
 
             if (firstAdditonalStep.nextStep) {
@@ -310,13 +305,11 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
                 fields: [
                     ...fields,
                     ...injectAuthFieldsInfo([ ...firstAdditonalStep.fields, ...additionalFields ], type.name, auth.type, appName)
-                ],
-                stepKey: `${type.name}-${appType.id}`
+                ]
             };
         }
 
         return ({
-            stepKey: `${type.name}-${appType.id}`,
             name: `${type.name}-${appType.id}`,
             title: `Configure ${auth.name} credentials`,
             fields: [

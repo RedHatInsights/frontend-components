@@ -16,11 +16,13 @@ import { parseUrl, urlOrHost } from './api/createSource';
 import { patchSource } from './api/costManagementAuthentication';
 import { handleError } from './api/handleError';
 import filterApps from '../src/utilities/filterApps';
+import CloseModal from '../src/addSourceWizard/CloseModal';
 
 import './styles/cardSelect.scss';
 import './styles/authSelect.scss';
 import './styles/costManagement.scss';
 import './styles/emptyState.scss';
+import './styles/enhancedSelect.scss';
 
 export {
     AddSourceButton,
@@ -41,5 +43,6 @@ export {
     setFirstValidated,
     patchSource,
     handleError,
-    filterApps
+    filterApps,
+    CloseModal
 };

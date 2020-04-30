@@ -14,7 +14,7 @@ jest.mock('../../../addSourceWizard/hardcodedSchemas', () => ({
 
 describe('createAdditionalStepsSkipEndpoint', () => {
     const ADDITIONAL_STEPS = [
-        { name: 'step-1', fields: [ 'a' ] }
+        { fields: [ 'a' ] }
     ];
 
     const TYPES_FIELDS = [];
@@ -32,7 +32,7 @@ describe('createAdditionalStepsSkipEndpoint', () => {
 
         expect(result).toEqual([{
             ...ADDITIONAL_STEPS[0],
-            stepKey: 'red-hat-generic-additional-step',
+            name: 'red-hat-generic-additional-step',
             nextStep: 'summary'
         }]);
     });
@@ -50,7 +50,7 @@ describe('createAdditionalStepsSkipEndpoint', () => {
 
         expect(result).toEqual([{
             ...ADDITIONAL_STEPS[0],
-            stepKey: 'red-hat-generic-additional-step',
+            name: 'red-hat-generic-additional-step',
             nextStep: 'summary'
         }]);
     });

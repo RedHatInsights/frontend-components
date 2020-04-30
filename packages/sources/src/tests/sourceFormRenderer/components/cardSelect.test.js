@@ -1,43 +1,44 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import CardSelect from '../../../sourceFormRenderer/components/CardSelect';
-import FieldProvider from '../../__mocks__/FieldProvider';
 import { Card, CardHeader } from '@patternfly/react-core';
 import { AwsIcon, OpenshiftIcon } from '@patternfly/react-icons';
+import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
+import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
 
 describe('CardSelect component', () => {
     let initialProps;
-    let spyOnChange;
-    let spyOnBlur;
+    let onSubmit;
+
+    const componentMapper = {
+        'card-select': CardSelect
+    };
 
     beforeEach(() => {
-        spyOnChange = jest.fn();
-        spyOnBlur = jest.fn();
+        onSubmit = jest.fn();
         initialProps = {
-            FieldProvider,
-            options: [
-                { value: 'ops', label: 'openshift' },
-                { value: 'aws', label: 'aws' },
-                { label: 'Choose one (this should not be displayed)' }
-            ],
-            input: {
-                name: 'card-select',
-                onChange: spyOnChange,
-                onBlur: spyOnBlur
+            initialValues: {
+                pre: 'filled'
             },
-            formOptions: {
-                something: '1'
+            onSubmit: (values) => onSubmit(values),
+            componentMapper,
+            FormTemplate,
+            schema: {
+                fields: [{
+                    component: 'card-select',
+                    name: 'card-select',
+                    options: [
+                        { value: 'ops', label: 'openshift' },
+                        { value: 'aws', label: 'aws' },
+                        { label: 'Choose one (this should not be displayed)' }
+                    ]
+                }]
             }
         };
     });
 
-    afterEach(() => {
-        spyOnChange.mockReset();
-        spyOnBlur.mockReset();
-    });
-
     it('should render correctly', () => {
-        const wrapper = mount(<CardSelect { ...initialProps }/>);
+        const wrapper = mount(<FormRenderer { ...initialProps }/>);
 
         expect(wrapper.find(Card).length).toEqual(2);
         expect(wrapper.find(CardHeader).length).toEqual(2);
@@ -46,23 +47,56 @@ describe('CardSelect component', () => {
     });
 
     it('should render correctly with mutator and it passes formOptions', () => {
-        const wrapper = mount(<CardSelect { ...initialProps } mutator={ ({ label, value }, formOptions) => ({ label: `AAA-${label}-${formOptions.something}`, value }) }/>);
+        initialProps = {
+            ...initialProps,
+            schema: {
+                fields: [{
+                    ...initialProps.schema.fields[0],
+                    mutator: ({ label, value }, formOptions) => ({ label: `AAA-${label}-${formOptions.getState().values.pre}`, value })
+                }]
+            }
+        };
+
+        const wrapper = mount(<FormRenderer { ...initialProps } />);
 
         expect(wrapper.find(Card).length).toEqual(2);
         expect(wrapper.find(CardHeader).length).toEqual(2);
-        expect(wrapper.find(CardHeader).first().text()).toEqual('AAA-openshift-1');
-        expect(wrapper.find(CardHeader).last().text()).toEqual('AAA-aws-1');
+        expect(wrapper.find(CardHeader).first().text()).toEqual('AAA-openshift-filled');
+        expect(wrapper.find(CardHeader).last().text()).toEqual('AAA-aws-filled');
     });
 
     it('should render correctly with default icon', () => {
-        const wrapper = mount(<CardSelect { ...initialProps } DefaultIcon={ AwsIcon }/>);
+        initialProps = {
+            ...initialProps,
+            schema: {
+                fields: [{
+                    ...initialProps.schema.fields[0],
+                    DefaultIcon: AwsIcon
+                }]
+            }
+        };
+
+        const wrapper = mount(<FormRenderer { ...initialProps } />);
 
         expect(wrapper.find(AwsIcon).length).toEqual(2);
     });
 
     it('should render correctly one item disabled', () => {
+        initialProps = {
+            ...initialProps,
+            schema: {
+                fields: [{
+                    ...initialProps.schema.fields[0],
+                    options: [
+                        ...initialProps.schema.fields[0].options,
+                        { value: 'azure', label: 'MS Azure', isDisabled: true }
+                    ]
+                }]
+            }
+        };
+
         const wrapper = mount(
-            <CardSelect { ...initialProps } options={ [ ...initialProps.options, { value: 'azure', label: 'MS Azure', isDisabled: true }] }/>
+            <FormRenderer { ...initialProps }/>
         );
 
         expect(wrapper.find(Card).last().props().className.includes('disabled')).toEqual(true);
@@ -74,79 +108,142 @@ describe('CardSelect component', () => {
             ops: OpenshiftIcon
         }[value] || defaultIcon);
 
-        const wrapper = mount(<CardSelect { ...initialProps } iconMapper={ iconMapper }/>);
+        initialProps = {
+            ...initialProps,
+            schema: {
+                fields: [{
+                    ...initialProps.schema.fields[0],
+                    iconMapper
+                }]
+            }
+        };
+
+        const wrapper = mount(<FormRenderer { ...initialProps }/>);
 
         expect(wrapper.find(AwsIcon).length).toEqual(1);
         expect(wrapper.find(OpenshiftIcon).length).toEqual(1);
     });
 
     it('should set default value', () => {
-        const wrapper = mount(<CardSelect { ...initialProps } input={ { ...initialProps.input, value: 'ops' } }/>);
+        const wrapper = mount(<FormRenderer { ...initialProps } initialValues={ { 'card-select': 'ops' } }/>);
 
         // value is set, we click on the card and check if clicking on it will unselect it
         wrapper.find(Card).first().simulate('click');
 
-        expect(spyOnChange).toHaveBeenCalledWith(undefined);
+        wrapper.find('form').simulate('submit');
+
+        expect(onSubmit).toHaveBeenCalledWith({});
     });
 
     it('should clicked single select', () => {
-        const wrapper = mount(<CardSelect { ...initialProps }/>);
+        const wrapper = mount(<FormRenderer { ...initialProps }/>);
 
         wrapper.find(Card).first().simulate('click');
 
-        expect(spyOnChange).toHaveBeenCalledWith('ops');
-        expect(spyOnBlur).toHaveBeenCalled();
+        wrapper.find('form').simulate('submit');
+
+        expect(onSubmit).toHaveBeenCalledWith({
+            pre: 'filled',
+            'card-select': 'ops'
+        });
     });
 
     it('should change by pressing enter single select', () => {
-        const wrapper = mount(<CardSelect { ...initialProps }/>);
+        const wrapper = mount(<FormRenderer { ...initialProps }/>);
 
         const preventDefaultMock = jest.fn();
         wrapper.find(Card).last().simulate('keypress', { charCode: 32, preventDefault: preventDefaultMock });
+        wrapper.update();
 
-        expect(spyOnChange).toHaveBeenCalledWith('aws');
-        expect(spyOnBlur).toHaveBeenCalled();
         expect(preventDefaultMock).toHaveBeenCalled();
+
+        wrapper.find('form').simulate('submit');
+
+        expect(onSubmit).toHaveBeenCalledWith({
+            pre: 'filled',
+            'card-select': 'aws'
+        });
 
         // unselect
         wrapper.find(Card).last().simulate('keypress', { charCode: 32 });
-        expect(spyOnChange).toHaveBeenCalledWith(undefined);
+        wrapper.update();
+
+        wrapper.find('form').simulate('submit');
+
+        expect(onSubmit).toHaveBeenCalledWith({
+            pre: 'filled'
+        });
     });
 
-    it('should not change by pressing enter single select', () => {
-        const wrapper = mount(<CardSelect { ...initialProps }/>);
+    it('should not change by pressing shift single select', () => {
+        const wrapper = mount(<FormRenderer { ...initialProps }/>);
 
         wrapper.find(Card).last().simulate('keypress', { key: 'Shift' });
 
-        expect(spyOnChange).not.toHaveBeenCalledWith();
-        expect(spyOnBlur).not.toHaveBeenCalled();
+        wrapper.find('form').simulate('submit');
+
+        expect(onSubmit).toHaveBeenCalledWith({
+            pre: 'filled'
+        });
     });
 
     it('should not clicked disabled', () => {
-        const wrapper = mount(<CardSelect { ...initialProps } isDisabled/>);
+        initialProps = {
+            ...initialProps,
+            schema: {
+                fields: [{
+                    ...initialProps.schema.fields[0],
+                    isDisabled: true
+                }]
+            }
+        };
+
+        const wrapper = mount(<FormRenderer { ...initialProps } />);
 
         wrapper.find(Card).first().simulate('click');
 
-        expect(spyOnChange).not.toHaveBeenCalled();
-        expect(spyOnBlur).not.toHaveBeenCalled();
+        wrapper.find('form').simulate('submit');
+
+        expect(onSubmit).toHaveBeenCalledWith({
+            pre: 'filled'
+        });
     });
 
     it('should clicked multiSelect select', () => {
-        let formState;
+        initialProps = {
+            ...initialProps,
+            schema: {
+                fields: [{
+                    ...initialProps.schema.fields[0],
+                    isMulti: true
+                }]
+            }
+        };
 
-        const onChange = (value) => formState = value;
-
-        const wrapper = mount(<CardSelect { ...initialProps } isMulti input={ { ...initialProps.input, onChange } }/>);
+        const wrapper = mount(<FormRenderer { ...initialProps } />);
 
         wrapper.find(Card).first().simulate('click');
-        wrapper.find(Card).last().simulate('click');
+        wrapper.update();
 
-        expect(formState).toEqual([ 'ops', 'aws' ]);
+        wrapper.find(Card).last().simulate('click');
+        wrapper.update();
+
+        wrapper.find('form').simulate('submit');
+
+        expect(onSubmit).toHaveBeenCalledWith({
+            pre: 'filled',
+            'card-select': [ 'ops', 'aws' ]
+        });
 
         // unselect
         wrapper.update();
         wrapper.find(Card).first().simulate('click');
 
-        expect(formState).toEqual([ 'aws' ]);
+        wrapper.find('form').simulate('submit');
+
+        expect(onSubmit).toHaveBeenCalledWith({
+            pre: 'filled',
+            'card-select': [ 'aws' ]
+        });
     });
 });

@@ -264,6 +264,7 @@ exports[`Notification portal should render notifications given as direct props 1
                   "children": Array [
                     "Some meaningfull description",
                     undefined,
+                    undefined,
                   ],
                   "className": "notification-item",
                   "id": "0",
@@ -365,9 +366,7 @@ exports[`Notification portal should render notifications given as direct props 1
                     <AlertActionCloseButton
                       aria-label="close-notification"
                       onClick={[Function]}
-                      title="Notification title"
                       variant="plain"
-                      variantLabel="Success alert:"
                     >
                       <Component
                         aria-label="close-notification"
@@ -790,6 +789,7 @@ exports[`Notification portal should render notifications given as direct props o
                   "children": Array [
                     "Some meaningfull description",
                     undefined,
+                    undefined,
                   ],
                   "className": "notification-item",
                   "id": "Direct notification",
@@ -891,9 +891,7 @@ exports[`Notification portal should render notifications given as direct props o
                     <AlertActionCloseButton
                       aria-label="close-notification"
                       onClick={[Function]}
-                      title="Notification title"
                       variant="plain"
-                      variantLabel="Success alert:"
                     >
                       <Component
                         aria-label="close-notification"
@@ -1171,6 +1169,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
                   "children": Array [
                     "Some meaningfull description",
                     undefined,
+                    undefined,
                   ],
                   "className": "notification-item",
                   "id": "0",
@@ -1272,9 +1271,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
                     <AlertActionCloseButton
                       aria-label="close-notification"
                       onClick={[Function]}
-                      title="Notification title"
                       variant="plain"
-                      variantLabel="Success alert:"
                     >
                       <Component
                         aria-label="close-notification"

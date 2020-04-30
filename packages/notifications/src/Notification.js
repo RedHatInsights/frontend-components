@@ -38,7 +38,7 @@ class Notification extends Component {
     }
 
     render() {
-        const { description, dismissable, onDismiss, dismissDelay, title, sentryId, ...rest } = this.props;
+        const { description, dismissable, onDismiss, dismissDelay, title, sentryId, requestId, ...rest } = this.props;
         return (
             <Alert
                 className="notification-item"
@@ -62,6 +62,11 @@ class Notification extends Component {
                         <Text component={ TextVariants.small }>Tracking Id: { sentryId }</Text>
                     </TextContent>
                 }
+                {
+                    requestId && <TextContent>
+                        <Text component={ TextVariants.small }>Request Id: { requestId }</Text>
+                    </TextContent>
+                }
             </Alert>
         );
     }
@@ -75,6 +80,7 @@ Notification.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.node,
     dismissDelay: PropTypes.number,
+    requestId: PropTypes.string,
     sentryId: PropTypes.string
 };
 

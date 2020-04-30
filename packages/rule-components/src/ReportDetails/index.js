@@ -12,8 +12,19 @@ import ReactMarkdown from 'react-markdown';
 import { riskOfChangeMeta, totalRiskMeta } from './constants';
 import LinkInDetails from './LinkInDetails';
 import RiskDescription from './RiskDescription';
+import doT from 'dot';
 
 export { default as style } from './index.scss';
+
+const templateProcessor = (template, definitions) => (
+    definitions
+        ? doT.template(template, {
+            ...doT.templateSettings,
+            varname: [ 'pydata' ],
+            strip: false
+        })(definitions)
+        : template
+);
 
 const ReportDetails = (
     {
@@ -22,16 +33,17 @@ const ReportDetails = (
         totalRisk,
         riskOfChange,
         showRiskDescription,
+        definitions,
         onFeedbackChanged
-    }) => (
+    }) => {
 
-    <Grid gutter="md" className="ins-c-rule__report-detail">
+    return <Grid gutter="md" className="ins-c-rule__report-detail">
         <GridItem span={ 7 }>
             <Stack gutter="md">
                 <StackItem>
                     <div>
                         <ReactMarkdown
-                            source={ details }
+                            source={ templateProcessor(details, definitions) }
                             renderers={ {
                                 link: LinkInDetails
                             } }
@@ -82,8 +94,8 @@ const ReportDetails = (
                 }
             </Stack>
         </GridItem>
-    </Grid>
-);
+    </Grid>;
+};
 
 ReportDetails.propTypes = {
     details: PropTypes.string,
@@ -91,6 +103,7 @@ ReportDetails.propTypes = {
     totalRisk: PropTypes.number,
     riskOfChange: PropTypes.number,
     showRiskDescription: PropTypes.bool,
+    definitions: PropTypes.object,
     onFeedbackChanged: PropTypes.func
 };
 

@@ -42,8 +42,10 @@ export function interceptor500(error) {
 
 export function errorInterceptor(err) {
     if (!axios.isCancel(err)) {
+        let requestId;
         try {
             const errObject = { ...err };
+            requestId = errObject.response.config.headers['x-rh-insights-request-id'];
             if (errObject.response && errObject.response.data) {
                 throw errObject.response.data;
             }
@@ -53,6 +55,7 @@ export function errorInterceptor(err) {
         catch (customError) {
             const sentryId = Sentry.captureException(customError);
             customError.sentryId = sentryId;
+            customError.requestId = requestId;
             throw customError;
         }
     }

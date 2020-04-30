@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardBody, FormGroup, Grid, GridItem, Bullseye } from '@patternfly/react-core';
 import { ServerIcon } from '@patternfly/react-icons';
+import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
 class CardSelect extends React.Component {
     constructor(props) {
@@ -71,7 +73,7 @@ class CardSelect extends React.Component {
                         </CardHeader>
                         <CardBody>
                             <Bullseye>
-                                {Component && <Component size="xl"/>}
+                                {Component && <Component size="md"/>}
                             </Bullseye>
                         </CardBody>
                     </div>
@@ -115,7 +117,6 @@ CardSelect.propTypes = {
     name: PropTypes.string.isRequired,
     mutator: PropTypes.func,
     formOptions: PropTypes.any,
-    FieldProvider: PropTypes.oneOfType([ PropTypes.node, PropTypes.func ]),
     options: PropTypes.array,
     input: PropTypes.shape({
         value: PropTypes.any,
@@ -135,11 +136,13 @@ CardSelect.defaultProps = {
     mutator: x => x
 };
 
-const CardSelectProvider = ({ FieldProvider, ...rest }) =>
-    (
-        <FieldProvider { ...rest }>
-            { (props) =>  <CardSelect  { ...props } name={ props.input.name }/> }
-        </FieldProvider>
+const CardSelectProvider = (props) => {
+    const rest = useFieldApi(props);
+    const formOptions = useFormApi();
+
+    return (
+        <CardSelect  { ...rest } name={ rest.input.name } formOptions={formOptions}/>
     );
+};
 
 export default CardSelectProvider;

@@ -32,7 +32,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
       label="First value"
       value={0}
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -40,6 +39,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -57,6 +57,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -67,7 +68,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
       >
         Second value
       </SelectOption>
-       
     </SelectGroup>
     <SelectGroup
       id="group-second"
@@ -75,7 +75,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
       label="Second value"
       value="second"
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -83,6 +82,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -109,6 +109,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -128,7 +129,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
           onChange={[Function]}
         />
       </SelectOption>
-       
     </SelectGroup>
     <SelectGroup
       id="group-third"
@@ -136,7 +136,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
       label="Third value"
       value="third"
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -144,6 +143,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -171,6 +171,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -191,7 +192,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
           value={1}
         />
       </SelectOption>
-       
     </SelectGroup>
   </Component>
 </Fragment>
@@ -214,7 +214,6 @@ exports[`Group - component render should render correctly with items 1`] = `
       label="First value"
       value={0}
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -222,6 +221,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -239,6 +239,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -249,7 +250,6 @@ exports[`Group - component render should render correctly with items 1`] = `
       >
         Second value
       </SelectOption>
-       
     </SelectGroup>
     <SelectGroup
       id="group-second"
@@ -257,7 +257,6 @@ exports[`Group - component render should render correctly with items 1`] = `
       label="Second value"
       value="second"
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -265,6 +264,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -291,6 +291,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -310,7 +311,6 @@ exports[`Group - component render should render correctly with items 1`] = `
           onChange={[Function]}
         />
       </SelectOption>
-       
     </SelectGroup>
     <SelectGroup
       id="group-third"
@@ -318,7 +318,6 @@ exports[`Group - component render should render correctly with items 1`] = `
       label="Third value"
       value="third"
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -326,6 +325,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -353,6 +353,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -373,7 +374,6 @@ exports[`Group - component render should render correctly with items 1`] = `
           value={1}
         />
       </SelectOption>
-       
     </SelectGroup>
   </Component>
 </Fragment>
@@ -396,7 +396,6 @@ exports[`Group - component render should render correctly with items and default
       label="First value"
       value={0}
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -404,6 +403,7 @@ exports[`Group - component render should render correctly with items and default
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -421,6 +421,7 @@ exports[`Group - component render should render correctly with items and default
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -431,7 +432,6 @@ exports[`Group - component render should render correctly with items and default
       >
         Second value
       </SelectOption>
-       
     </SelectGroup>
     <SelectGroup
       id="group-second"
@@ -439,7 +439,6 @@ exports[`Group - component render should render correctly with items and default
       label="Second value"
       value="second"
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -447,6 +446,7 @@ exports[`Group - component render should render correctly with items and default
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -473,6 +473,7 @@ exports[`Group - component render should render correctly with items and default
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -492,7 +493,6 @@ exports[`Group - component render should render correctly with items and default
           onChange={[Function]}
         />
       </SelectOption>
-       
     </SelectGroup>
     <SelectGroup
       id="group-third"
@@ -500,7 +500,6 @@ exports[`Group - component render should render correctly with items and default
       label="Third value"
       value="third"
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -508,6 +507,7 @@ exports[`Group - component render should render correctly with items and default
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -535,6 +535,7 @@ exports[`Group - component render should render correctly with items and default
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -555,7 +556,6 @@ exports[`Group - component render should render correctly with items and default
           value={1}
         />
       </SelectOption>
-       
     </SelectGroup>
   </Component>
 </Fragment>
@@ -578,7 +578,6 @@ exports[`Group - component render should render correctly with items and selecte
       label="First value"
       value={0}
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -586,6 +585,7 @@ exports[`Group - component render should render correctly with items and selecte
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -603,6 +603,7 @@ exports[`Group - component render should render correctly with items and selecte
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -613,7 +614,6 @@ exports[`Group - component render should render correctly with items and selecte
       >
         Second value
       </SelectOption>
-       
     </SelectGroup>
     <SelectGroup
       id="group-second"
@@ -621,7 +621,6 @@ exports[`Group - component render should render correctly with items and selecte
       label="Second value"
       value="second"
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -629,6 +628,7 @@ exports[`Group - component render should render correctly with items and selecte
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -655,6 +655,7 @@ exports[`Group - component render should render correctly with items and selecte
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -674,7 +675,6 @@ exports[`Group - component render should render correctly with items and selecte
           onChange={[Function]}
         />
       </SelectOption>
-       
     </SelectGroup>
     <SelectGroup
       id="group-third"
@@ -682,7 +682,6 @@ exports[`Group - component render should render correctly with items and selecte
       label="Third value"
       value="third"
     >
-       
       <SelectOption
         className=""
         component="button"
@@ -690,6 +689,7 @@ exports[`Group - component render should render correctly with items and selecte
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="0"
@@ -717,6 +717,7 @@ exports[`Group - component render should render correctly with items and selecte
         isChecked={false}
         isDisabled={false}
         isFocused={false}
+        isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
         key="1"
@@ -737,7 +738,6 @@ exports[`Group - component render should render correctly with items and selecte
           value={1}
         />
       </SelectOption>
-       
     </SelectGroup>
   </Component>
 </Fragment>

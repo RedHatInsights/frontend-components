@@ -101,7 +101,6 @@ describe('generate auth selection pages', () => {
             expectedSchema = expect.objectContaining({
                 fields: expect.arrayContaining(fields),
                 title: expect.any(String),
-                stepKey: ONE_SINGLE_SELECTION_TYPE.name,
                 name: ONE_SINGLE_SELECTION_TYPE.name,
                 nextStep: 'summary'
             });
@@ -125,7 +124,6 @@ describe('generate auth selection pages', () => {
             expectedSchema = expect.objectContaining({
                 fields: expect.arrayContaining(fields),
                 title: expect.any(String),
-                stepKey: ONE_SINGLE_SELECTION_TYPE_ADD_STEPS.name,
                 name: ONE_SINGLE_SELECTION_TYPE_ADD_STEPS.name,
                 nextStep: EXPECTED_NEXTSTEP
             });
@@ -137,7 +135,6 @@ describe('generate auth selection pages', () => {
             expectedSchema = expect.objectContaining({
                 fields: expect.any(Array),
                 title: expect.any(String),
-                stepKey: ONE_SINGLE_SELECTION_TYPE.name,
                 name: ONE_SINGLE_SELECTION_TYPE.name,
                 nextStep: `${ONE_SINGLE_SELECTION_TYPE.name}-endpoint`
             });
@@ -159,7 +156,6 @@ describe('generate auth selection pages', () => {
                         secondAuth
                     ]),
                     title: expect.any(String),
-                    stepKey: MULTIPLE_SELECTION_TYPE.name,
                     name: MULTIPLE_SELECTION_TYPE.name,
                     nextStep: {
                         when: expect.any(String),
@@ -182,7 +178,6 @@ describe('generate auth selection pages', () => {
                         secondAuth
                     ]),
                     title: expect.any(String),
-                    stepKey: MULTIPLE_SELECTION_TYPE.name,
                     name: MULTIPLE_SELECTION_TYPE.name,
                     nextStep: {
                         when: expect.any(String),

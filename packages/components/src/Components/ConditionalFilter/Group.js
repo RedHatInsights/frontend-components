@@ -243,7 +243,7 @@ class Group extends Component {
                                 value={groupId || groupValue || groupKey}
                                 label={groupLabel}
                                 id={groupId || `group-${groupValue || groupKey}`}
-                            > {filteredItems} </SelectGroup>
+                            >{filteredItems}</SelectGroup>
                             : <Fragment/>;
                     })
                 ) : (

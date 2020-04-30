@@ -80,7 +80,7 @@ describe('Group - component', () => {
     describe('API', () => {
         it('should open', () => {
             const wrapper = mount(<Group { ...config } />);
-            wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+            wrapper.find('button.pf-c-select__toggle-button').simulate('click');
             wrapper.update();
             expect(wrapper.instance().state.isExpanded).toBe(true);
         });
@@ -88,7 +88,7 @@ describe('Group - component', () => {
         it('should NOT call onChange', () => {
             const onChange = jest.fn();
             const wrapper = mount(<Group { ...config } />);
-            wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
             wrapper.update();
             wrapper.find('.pf-c-select__menu-item').first().simulate('click');
             expect(onChange).not.toHaveBeenCalled();
@@ -97,14 +97,14 @@ describe('Group - component', () => {
         it('should call onChange', () => {
             const onChange = jest.fn();
             const wrapper = mount(<Group {...config} onChange={ onChange } />);
-            wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
             wrapper.update();
             wrapper.find('.pf-c-select__menu-item').first().simulate('click');
             expect(onChange).toHaveBeenCalled();
         });
         it('should update selected', () => {
             const wrapper = mount(<Group {...config} />);
-            wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
             wrapper.update();
             wrapper.find('.pf-c-select__menu-item').first().simulate('click');
             wrapper.update();
@@ -129,7 +129,7 @@ describe('Group - component', () => {
                     ]}
                 />
             );
-            wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
             wrapper.update();
             wrapper.find(`.pf-c-select__menu-item`).first().simulate('click');
             expect(onClick).toHaveBeenCalled();
@@ -148,7 +148,7 @@ describe('Group - component', () => {
                     ]}
                 />
             );
-            wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
             wrapper.update();
             wrapper.find(`.pf-c-select__menu-item`).first().simulate('click');
             expect(onSelect).toHaveBeenCalled();
@@ -173,7 +173,7 @@ describe('Group - component', () => {
                         ]}
                     />
                 );
-                wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+                wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
                 wrapper.update();
                 wrapper.find(`input.pf-c-${type}__input`).first().simulate('change');
                 expect(onChange).toHaveBeenCalled();
@@ -195,7 +195,7 @@ describe('Group - component', () => {
                     } }
                 />
             );
-            wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
             wrapper.update();
             wrapper.find('.pf-c-select__menu-item').first().simulate('click');
             expect(onChange.mock.calls[0][1]).toEqual({ second: { 0: true, 1: true } });
@@ -217,7 +217,7 @@ describe('Group - component', () => {
                     }}
                 />
             );
-            wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
             wrapper.update();
             wrapper.find('.pf-c-select__menu-item').first().simulate('click');
             expect(onChange.mock.calls[0][1]).toEqual({ second: { 0: false } });
@@ -239,7 +239,7 @@ describe('Group - component', () => {
                     }}
                 />
             );
-            wrapper.find('button.pf-c-select__toggle').first().simulate('click');
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
             wrapper.update();
             wrapper.find('.pf-c-select__menu-item').first().simulate('click');
             expect(onChange.mock.calls[0][1]).toEqual({ third: { 0: true } });

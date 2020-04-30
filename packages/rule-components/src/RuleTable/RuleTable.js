@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table, TableBody, TableHeader, sortable } from '@patternfly/react-table';
+import { Bullseye, EmptyState, EmptyStateIcon, Title, EmptyStateBody, Button, EmptyStateVariant } from '@patternfly/react-core';
+import SearchIcon from '@patternfly/react-icons/dist/js/icons/search-icon';
 import { Skeleton } from '@redhat-cloud-services/frontend-components/components/Skeleton';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/TableToolbar';
 import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/js/components/Pagination';
@@ -124,6 +126,9 @@ class RuleTable extends Component {
             toolbarProps,
             filterValues: _filterValues,
             loadingBars,
+            emptyStateTitle,
+            emptyStateDescription,
+            emptyStateIcon,
             ...props
         } = this.props;
         const { expanded, filterValues } = this.state;
@@ -177,9 +182,31 @@ class RuleTable extends Component {
                                 props: { colSpan: columns.length + Boolean(actions) }
                             }]
                         })) :
-                        flatten(createRows(data, columns, expanded, detail)).filter(Boolean)
+                        data.length > 0 ?
+                            flatten(createRows(data, columns, expanded, detail)).filter(Boolean) :
+                            [{
+                                heightAuto: true,
+                                cells: [
+                                    {
+                                        props: { colSpan: columns.length },
+                                        title: (
+                                            <Bullseye>
+                                                <EmptyState variant={EmptyStateVariant.small}>
+                                                    <EmptyStateIcon icon={emptyStateIcon} />
+                                                    <Title headingLevel="h2" size="lg">
+                                                        {emptyStateTitle}
+                                                    </Title>
+                                                    <EmptyStateBody>
+                                                        {emptyStateDescription}
+                                                    </EmptyStateBody>
+                                                </EmptyState>
+                                            </Bullseye>
+                                        )
+                                    }
+                                ]
+                            }]
                 }
-                {...!isLoading && detail && { onCollapse: this.onCollapse } }
+                {...!isLoading && detail && data.length > 0 && { onCollapse: this.onCollapse } }
             >
                 <TableHeader />
                 <TableBody />
@@ -215,6 +242,9 @@ RuleTable.propTypes = {
         disableSort: PropTypes.bool
     })),
     sort: PropTypes.string,
+    emptyStateTitle: PropTypes.string,
+    emptyStateDescription: PropTypes.string,
+    emptyStateIcon: PropTypes.node,
     defaultFilters: PropTypes.arrayOf(PropTypes.shape({})),
     fetchData: PropTypes.func,
     detail: PropTypes.oneOfType([ PropTypes.func, PropTypes.node ]),
@@ -247,7 +277,10 @@ RuleTable.defaultProps = {
     filters: {},
     filterValues: {},
     fetchData: () => undefined,
-    loadingBars: 5
+    loadingBars: 5,
+    emptyStateTitle: 'No results found',
+    emptyStateDescription: 'No results match the filter criteria. Remove all filters or clear all filters to show results.',
+    emptyStateIcon: SearchIcon
 };
 
 export default RuleTable;

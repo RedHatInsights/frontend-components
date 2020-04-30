@@ -13,8 +13,13 @@ exports[`FilterChips component should render - no data 1`] = `
     withToolbar={true}
   >
     <ChipGroupToolbarItem
+      categoryName=""
       className="ins-c-chip-group__plain"
+      closeBtnAriaLabel="Close chip group"
+      isClosable={false}
       key="group_plain"
+      onClick={[Function]}
+      tooltipPosition="top"
     />
   </ChipGroup>
 </span>
@@ -34,7 +39,12 @@ exports[`FilterChips component should render 1`] = `
   >
     <ChipGroupToolbarItem
       categoryName="Group 1"
+      className=""
+      closeBtnAriaLabel="Close chip group"
+      isClosable={false}
       key="group_Group 1"
+      onClick={[Function]}
+      tooltipPosition="top"
     >
       <Component
         key="group_Group 1_chip_Chip 1"
@@ -55,8 +65,13 @@ exports[`FilterChips component should render 1`] = `
       </Component>
     </ChipGroupToolbarItem>
     <ChipGroupToolbarItem
+      categoryName=""
       className="ins-c-chip-group__plain"
+      closeBtnAriaLabel="Close chip group"
+      isClosable={false}
       key="group_plain"
+      onClick={[Function]}
+      tooltipPosition="top"
     >
       <Component
         key="group_plain_chip_Chip 3"
