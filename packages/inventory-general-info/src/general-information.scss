@@ -11,6 +11,11 @@
             text-align: center;
         }
     }
+
+    .ins-active-general_information__popover-icon {
+        padding: 0;
+        margin-left: var(--pf-global--spacer--sm);
+    }
 }
 
 .pf-c-modal-box .pf-c-table {
