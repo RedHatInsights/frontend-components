@@ -2,11 +2,29 @@ import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoadingCard from './LoadingCard';
-import { PencilAltIcon } from '@patternfly/react-icons';
+import { PencilAltIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { propertiesSelector } from './selectors';
 import { editDisplayName, editAnsibleHost, systemProfile } from './redux/actions';
 import TextInputModal from './TextInputModal';
 import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory/actions';
+
+import { Popover, Button } from '@patternfly/react-core';
+
+const TitleWithPopover = ({ title, content }) => (
+    <React.Fragment>
+        <span>{ title }</span>
+        <Popover
+            headerContent={<div>{ title }</div>}
+            bodyContent={<div>{ content }</div>}>
+            <Button
+                variant="plain"
+                aria-label={`Action for ${title}`}
+                className='ins-active-general_information__popover-icon'>
+                <OutlinedQuestionCircleIcon />
+            </Button>
+        </Popover>
+    </React.Fragment>
+);
 
 class SystemCard extends Component {
     state = {
@@ -56,10 +74,16 @@ class SystemCard extends Component {
                     isLoading={ !detailLoaded }
                     items={ [
                         {
-                            title: 'Host name', value: entity.fqdn, size: 'md'
+                            title: <TitleWithPopover
+                                title='Host name'
+                                content='Name imported from the system.'/>,
+                            value: entity.fqdn, size: 'md'
                         },
                         {
-                            title: 'Display name', value: (
+                            title: <TitleWithPopover
+                                title='Display name'
+                                content='System name displayed in an inventory list.'/>,
+                            value: (
                                 <Fragment>
                                     { entity.display_name }
                                     <a
@@ -73,7 +97,10 @@ class SystemCard extends Component {
                             ), size: 'md'
                         },
                         {
-                            title: 'Ansible hostname', value: (
+                            title: <TitleWithPopover
+                                title='Ansible hostname'
+                                content='Hostname that is used in playbooks by Remediations.'/>,
+                            value: (
                                 <Fragment>
                                     { this.getAnsibleHost() }
                                     <a
@@ -143,6 +170,11 @@ SystemCard.defaultProps = {
     detailLoaded: false,
     entity: {},
     properties: {}
+};
+
+TitleWithPopover.propTypes = {
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
