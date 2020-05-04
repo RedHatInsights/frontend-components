@@ -10,23 +10,21 @@ import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory
 
 import { Popover, Button } from '@patternfly/react-core';
 
-const TitleWithPopover = ({ title, content }) => {
-    return (
-        <React.Fragment>
-            <span>{ title }</span>
-            <Popover
-                headerContent={<div>{ title }</div>}
-                bodyContent={<div>{ content }</div>}>
-                <Button
-                    variant="plain"
-                    aria-label={`Action for ${title}`}
-                    className='ins-active-general_information__popover-icon'>
-                    <OutlinedQuestionCircleIcon />
-                </Button>
-            </Popover>
-        </React.Fragment>
-    );
-};
+const TitleWithPopover = ({ title, content }) => (
+    <React.Fragment>
+        <span>{ title }</span>
+        <Popover
+            headerContent={<div>{ title }</div>}
+            bodyContent={<div>{ content }</div>}>
+            <Button
+                variant="plain"
+                aria-label={`Action for ${title}`}
+                className='ins-active-general_information__popover-icon'>
+                <OutlinedQuestionCircleIcon />
+            </Button>
+        </Popover>
+    </React.Fragment>
+);
 
 class SystemCard extends Component {
     state = {
