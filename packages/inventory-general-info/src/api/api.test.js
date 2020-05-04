@@ -10,11 +10,3 @@ it('should send the data as JSON', async () => {
     expect(mock.history.get.length).toBe(1);
     expect(data).toEqual(mockedData);
 });
-
-it('should throw 404', async () => {
-    try {
-        await getEntitySystemProfile();
-    } catch (e) {
-        expect(e.response.status).toBe(404);
-    }
-});
