@@ -13,10 +13,10 @@ import { Popover, Button } from '@patternfly/react-core';
 const TitleWithPopover = ({ title, content }) => {
     return (
         <React.Fragment>
-            <span> { title } </span>
+            <span>{ title }</span>
             <Popover
-                headerContent={<div> { title }</div>}
-                bodyContent={<div>{ content } </div>}>
+                headerContent={<div>{ title }</div>}
+                bodyContent={<div>{ content }</div>}>
                 <Button
                     variant="plain"
                     aria-label={`Action for ${title}`}
@@ -25,8 +25,8 @@ const TitleWithPopover = ({ title, content }) => {
                 </Button>
             </Popover>
         </React.Fragment>
-    )
-}
+    );
+};
 
 class SystemCard extends Component {
     state = {
@@ -172,6 +172,11 @@ SystemCard.defaultProps = {
     detailLoaded: false,
     entity: {},
     properties: {}
+};
+
+TitleWithPopover.propTypes = {
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
