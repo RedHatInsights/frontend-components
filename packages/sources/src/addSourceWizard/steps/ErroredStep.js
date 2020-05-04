@@ -20,8 +20,8 @@ import { TimesCircleIcon } from '@patternfly/react-icons';
 const ErroredStep = ({ onClose, onRetry, returnButtonTitle, message, progressStep, progressTexts }) => (
     <Bullseye>
         <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__empty-state">
-            <EmptyStateIcon icon={ TimesCircleIcon } color="var(--pf-global--danger-color--100)" />
-            <Title headingLevel="h5" size="lg">
+            <EmptyStateIcon icon={ TimesCircleIcon } color="var(--pf-global--danger-color--100)" className="pf-u-mb-0"/>
+            <Title headingLevel="h5" size="lg" className="pf-u-mt-xl">
       Configuration unsuccessful
             </Title>
             <EmptyStateBody>

@@ -2,6 +2,7 @@
 - [Sources](#sources)
 - [Install](#install)
   - [Using](#using)
+- [Modification of the wizard](#modification-of-the-wizard)
 - [Format for sourceType schema](#format-for-sourcetype-schema)
   - [Hardcoded component schema](#hardcoded-component-schema)
 - [Additional components](#additional-components)
@@ -72,6 +73,10 @@ If you need to set up and **support only one application** you can provide filte
     }
 }
 ```
+
+# Modification of the wizard
+
+Please, if you need to update the wizard, take a look on a [guide](https://github.com/RedHatInsights/sources-ui/blob/master/doc/update-wizard.md) first.
 
 # Format for sourceType schema
 

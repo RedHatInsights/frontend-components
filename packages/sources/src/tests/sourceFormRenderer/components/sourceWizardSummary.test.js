@@ -87,6 +87,29 @@ describe('SourceWizardSummary component', () => {
             expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
         });
 
+        it('amazon - ARN cost management - include appended field from DB', () => {
+            formOptions = {
+                getState: () => ({
+                    values: {
+                        source: { name: 'cosi' },
+                        application: { application_type_id: '2' },
+                        source_type: 'amazon',
+                        authentication: { password: 'arn:aws:132', authtype: 'arn' },
+                        billing_source: { bucket: 'gfghf' },
+                        fixasyncvalidation: '',
+                        endpoint: { role: 'aws' },
+                        noEndpoint: false
+                    }
+                })
+            };
+
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+
+            expect(wrapper.find(TextContent).html().includes('ARN')).toEqual(true);
+            expect(wrapper.find(TextContent).html().includes('arn:aws:132')).toEqual(true);
+        });
+
         it('ansible-tower', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
             expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();

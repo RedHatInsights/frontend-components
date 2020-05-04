@@ -60,7 +60,11 @@
 
     p + pre, ul + pre { @include rem('margin-bottom', 20px); }
 
-    .pf-c-list { @include rem('margin', 5px 0); }
+    .pf-c-list {
+        @include rem('margin', 5px 0);
+        list-style: var(--pf-c-list--ul--ListStyle);
+        padding-left: var(--pf-global--spacer--lg);
+    }
 
     table {
         width: 100%;
