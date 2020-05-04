@@ -117,7 +117,7 @@ describe('GeneralInformation', () => {
             </Provider>);
             wrapper.find('a[href$="interfaces"]').first().simulate('click');
             wrapper.update();
-            wrapper.find('button.pf-m-plain').first().simulate('click');
+            wrapper.find('.ins-c-inventory__detail--dialog button.pf-m-plain').first().simulate('click');
             wrapper.update();
             expect(wrapper.find('GeneralInformation').instance().state.isModalOpen).toBe(false);
         });
