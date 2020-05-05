@@ -1,4 +1,5 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_variables';
+@import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_mixins';
 
 .ins-c-rule__report-detail {
   padding: var(--pf-global--gutter--md) 40px;
@@ -18,7 +19,7 @@
     size: var(--pf-chart-global--FontSize--sm);
   }
 
-  .ins-c-rule__link-in-description {
+  p > .ins-c-rule__link-in-description:only-child {
     display: block;
     margin-top: var(--pf-l-stack--m-gutter--MarginBottom);
   }
@@ -72,6 +73,34 @@
     i {
       margin-right: 5px;
     }
+  }
+  ol {
+      @include rem('margin-top', 10px);
+      @include rem('margin-left', 15px);
+  }
+
+  p + pre, ul + pre { @include rem('margin-bottom', 20px); }
+
+  .pf-c-list { @include rem('margin', 5px 0); }
+
+  .pf-c-button.pf-m-link {
+    padding-left: 0;
+  }
+
+}
+
+.ins-c-rule__remediating-modal {
+  ol {
+    @include rem('margin-top', 10px);
+    @include rem('margin-left', 15px);
+  }
+
+  p + pre, ul + pre { @include rem('margin-bottom', 20px); }
+
+  .pf-c-list { @include rem('margin', 5px 0); }
+
+  .ins-c-rule__modal-content {
+    margin-top: 24px;
   }
 }
 

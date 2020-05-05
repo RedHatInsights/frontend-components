@@ -1,11 +1,12 @@
+$card-height: 90px;
+
 .ins-c-sources__wizard--icon {
-  max-height: 32px;
-  filter: grayscale(1);
+  max-height: calc(#{$card-height} - 2 * var(--pf-global--spacer--md));
+  filter: grayscale(1) brightness(1.25);
 }
 
 .ins-c-sources__wizard--card {
-    height: 90px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 4px 11px 0 rgba(0, 0, 0, 0.12);
+    height: $card-height;
     cursor: pointer;
 
     &:focus {

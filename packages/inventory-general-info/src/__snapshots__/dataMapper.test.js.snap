@@ -137,6 +137,11 @@ Object {
       ],
     },
   ],
+  "filters": Array [
+    Object {
+      "type": "textual",
+    },
+  ],
   "rows": Array [],
 }
 `;
@@ -149,6 +154,11 @@ Object {
       "transforms": Array [
         [Function],
       ],
+    },
+  ],
+  "filters": Array [
+    Object {
+      "type": "textual",
     },
   ],
   "rows": Array [
@@ -350,8 +360,49 @@ Object {
         [Function],
       ],
     },
-    "Enabled",
-    "GPG check",
+    Object {
+      "title": "Enabled",
+      "transforms": Array [
+        [Function],
+      ],
+    },
+    Object {
+      "title": "GPG check",
+      "transforms": Array [
+        [Function],
+      ],
+    },
+  ],
+  "filters": Array [
+    Object {
+      "type": "textual",
+    },
+    Object {
+      "options": Array [
+        Object {
+          "label": "Is enabled",
+          "value": "true",
+        },
+        Object {
+          "label": "Not enabled",
+          "value": "false",
+        },
+      ],
+      "type": "checkbox",
+    },
+    Object {
+      "options": Array [
+        Object {
+          "label": "Is enabled",
+          "value": "true",
+        },
+        Object {
+          "label": "Not enabled",
+          "value": "false",
+        },
+      ],
+      "type": "checkbox",
+    },
   ],
   "rows": Array [],
 }
@@ -366,8 +417,49 @@ Object {
         [Function],
       ],
     },
-    "Enabled",
-    "GPG check",
+    Object {
+      "title": "Enabled",
+      "transforms": Array [
+        [Function],
+      ],
+    },
+    Object {
+      "title": "GPG check",
+      "transforms": Array [
+        [Function],
+      ],
+    },
+  ],
+  "filters": Array [
+    Object {
+      "type": "textual",
+    },
+    Object {
+      "options": Array [
+        Object {
+          "label": "Is enabled",
+          "value": "true",
+        },
+        Object {
+          "label": "Not enabled",
+          "value": "false",
+        },
+      ],
+      "type": "checkbox",
+    },
+    Object {
+      "options": Array [
+        Object {
+          "label": "Is enabled",
+          "value": "true",
+        },
+        Object {
+          "label": "Not enabled",
+          "value": "false",
+        },
+      ],
+      "type": "checkbox",
+    },
   ],
   "rows": Array [
     Array [
@@ -382,6 +474,7 @@ Object {
         </a>,
       },
       Object {
+        "sortValue": "true",
         "title": <CheckCircleIcon
           className="ins-c-inventory__detail--enabled"
           color="currentColor"
@@ -391,6 +484,7 @@ Object {
         />,
       },
       Object {
+        "sortValue": "false",
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
@@ -412,6 +506,7 @@ Object {
         </a>,
       },
       Object {
+        "sortValue": "true",
         "title": <CheckCircleIcon
           className="ins-c-inventory__detail--enabled"
           color="currentColor"
@@ -421,6 +516,7 @@ Object {
         />,
       },
       Object {
+        "sortValue": "true",
         "title": <CheckCircleIcon
           className="ins-c-inventory__detail--enabled"
           color="currentColor"
@@ -442,6 +538,7 @@ Object {
         </a>,
       },
       Object {
+        "sortValue": "false",
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
@@ -451,6 +548,7 @@ Object {
         />,
       },
       Object {
+        "sortValue": "false",
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
@@ -472,6 +570,7 @@ Object {
         </a>,
       },
       Object {
+        "sortValue": "undefined",
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"
@@ -481,6 +580,7 @@ Object {
         />,
       },
       Object {
+        "sortValue": "false",
         "title": <TimesIcon
           className="ins-c-inventory__detail--disabled"
           color="currentColor"

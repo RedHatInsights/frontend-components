@@ -50,12 +50,6 @@ class Wizard extends Component {
         );
 
         const renderModalActions =  [
-            <Button key="cancel" action="cancel" variant="secondary" onClick={ () => this.handleOnClose(false) }>
-            Cancel
-            </Button>,
-            // Conditionally render 'previous' button if not on first page
-            this.state.currentStep !== 0 &&
-                <Button key="back" action="back" variant="secondary" onClick={ this.handlePreviousModalStep }> Back </Button>,
             // Conditionally render 'confirm' button if on last page
             this.state.currentStep < this.props.content.length - 1
                 ? <Button
@@ -73,7 +67,13 @@ class Wizard extends Component {
                     isDisabled={ !isValidated }
                     onClick={ () => this.handleOnClose(true) }>
                     { confirmAction }
-                </Button>
+                </Button>,
+            // Conditionally render 'previous' button if not on first page
+            this.state.currentStep !== 0 &&
+                <Button key="back" action="back" variant="secondary" onClick={ this.handlePreviousModalStep }> Back </Button>,
+            <Button key="cancel" action="cancel" variant="secondary" onClick={ () => this.handleOnClose(false) }>
+                Cancel
+            </Button>
         ];
 
         return (
