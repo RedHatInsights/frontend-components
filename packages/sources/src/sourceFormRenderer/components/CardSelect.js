@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardBody, FormGroup, Grid, GridItem, Bullseye } from '@patternfly/react-core';
-import { ServerIcon } from '@patternfly/react-icons';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
@@ -68,14 +67,16 @@ class CardSelect extends React.Component {
                     isCompact={ true }
                 >
                     <div className={ disabled ? 'disabled' : '' }>
-                        <CardHeader className={Component ? 'text-elipsis' : '' }>
+                        {!Component && <CardHeader className='text-elipsis'>
                             { label }
-                        </CardHeader>
-                        <CardBody>
-                            <Bullseye>
-                                {Component && <Component size="md"/>}
-                            </Bullseye>
-                        </CardBody>
+                        </CardHeader>}
+                        {Component && (
+                            <CardBody>
+                                <Bullseye>
+                                    <Component size="md"/>
+                                </Bullseye>
+                            </CardBody>
+                        )}
                     </div>
                 </Card>
             </GridItem>
@@ -96,10 +97,9 @@ class CardSelect extends React.Component {
                 helperText={ helperText }
                 helperTextInvalid={ error }
             >
-                <Grid gutter="md">
+                <Grid gutter="md" className="pf-u-mb-md">
                     { this.prepareCards() }
                 </Grid>
-                <br />
             </FormGroup>
         );
     }
@@ -131,7 +131,6 @@ CardSelect.propTypes = {
 
 CardSelect.defaultProps = {
     options: [],
-    DefaultIcon: ServerIcon,
     iconMapper: (_value, DefaultIcon) => DefaultIcon,
     mutator: x => x
 };

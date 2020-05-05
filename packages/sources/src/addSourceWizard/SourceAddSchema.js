@@ -74,11 +74,11 @@ export const sourceTypeMutator = (appTypes, sourceTypes) => (option, formOptions
     };
 };
 
-export const iconMapper = sourceTypes => (name, DefaultIcon) => {
+export const iconMapper = sourceTypes => (name) => {
     const sourceType = sourceTypes.find((type) => type.name === name);
 
     if (!sourceType || !sourceType.icon_url) {
-        return DefaultIcon;
+        return null;
     }
 
     const Icon = () => <img src={sourceType.icon_url} alt={sourceType.product_name} className="ins-c-sources__wizard--icon" />;
