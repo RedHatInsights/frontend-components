@@ -8,10 +8,10 @@ import {
     Title
 } from '@patternfly/react-core';
 import RuleFeedback from './RuleFeedback';
-import ReactMarkdown from 'react-markdown';
+import Markdown from './Markdown';
 import { riskOfChangeMeta, totalRiskMeta } from './constants';
-import LinkInDetails from './LinkInDetails';
 import RiskDescription from './RiskDescription';
+import RemediatingModal from './RemediatingModal';
 import doT from 'dot';
 
 export { default as style } from './index.scss';
@@ -33,6 +33,7 @@ const ReportDetails = (
         totalRisk,
         riskOfChange,
         showRiskDescription,
+        remediating,
         definitions,
         onFeedbackChanged
     }) => {
@@ -42,12 +43,19 @@ const ReportDetails = (
             <Stack gutter="md">
                 <StackItem>
                     <div>
-                        <ReactMarkdown
-                            source={ templateProcessor(details, definitions) }
-                            renderers={ {
-                                link: LinkInDetails
-                            } }
+                        <Markdown
+                            template={ details }
+                            definitions={ definitions }
                         />
+                    </div>
+                    <div>
+                        {
+                            remediating && <RemediatingModal
+                                reason={ remediating.reason }
+                                resolution={ remediating.resolution }
+                                definitions={ definitions }
+                            />
+                        }
                     </div>
                 </StackItem>
                 <StackItem>
@@ -104,6 +112,10 @@ ReportDetails.propTypes = {
     riskOfChange: PropTypes.number,
     showRiskDescription: PropTypes.bool,
     definitions: PropTypes.object,
+    remediating: PropTypes.shape({
+        reason: PropTypes.string,
+        resolution: PropTypes.string
+    }),
     onFeedbackChanged: PropTypes.func
 };
 

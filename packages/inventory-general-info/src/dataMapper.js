@@ -122,17 +122,46 @@ export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabl
             title: 'Name',
             transforms: [ sortable ]
         },
-        'Enabled',
-        'GPG check'
+        {
+            title: 'Enabled',
+            transforms: [ sortable ]
+        },
+        {
+            title: 'GPG check',
+            transforms: [ sortable ]
+        }
     ],
     rows: [ ...enabled, ...disabled ].map(repository => ([
         {
             title: <a href={ repository.base_url } target="_blank" rel="noopener noreferrer">{ repository.name }</a>,
             sortValue: repository.name
         },
-        { title: enabledHelper[Boolean(repository.enabled)] },
-        { title: enabledHelper[Boolean(repository.gpgcheck)] }
-    ]))
+        {
+            title: enabledHelper[Boolean(repository.enabled)],
+            sortValue: `${repository.enabled}`
+        },
+        {
+            title: enabledHelper[Boolean(repository.gpgcheck)],
+            sortValue: `${repository.gpgcheck}`
+        }
+    ])),
+    filters: [
+        { type: 'textual' },
+        {
+            type: 'checkbox',
+            options: [
+                { label: 'Is enabled', value: 'true' },
+                { label: 'Not enabled', value: 'false' }
+            ]
+        },
+        {
+            type: 'checkbox',
+            options: [
+                { label: 'Is enabled', value: 'true' },
+                { label: 'Not enabled', value: 'false' }
+            ]
+        }
+    ]
 });
 
 export const generalMapper = (data = [], title = '') => ({
@@ -140,5 +169,6 @@ export const generalMapper = (data = [], title = '') => ({
         title,
         transforms: [ sortable ]
     }],
-    rows: data.map(item => ([ item ]))
+    rows: data.map(item => ([ item ])),
+    filters: [{ type: 'textual' }]
 });

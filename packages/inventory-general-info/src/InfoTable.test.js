@@ -119,5 +119,128 @@ describe('InfoTable', () => {
             wrapper.find('th.pf-c-table__sort button').first().simulate('click');
             expect(onSort).not.toHaveBeenCalled();
         });
+
+        it('should limit number of rows', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={ [ ...new Array(50) ].map(() => ([ ...new Array(2) ])) } />);
+            expect(wrapper.find('table tbody tr').length).toBe(10);
+        });
+
+        it('should paginate to next page', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={
+                    [ ...new Array(50) ]
+                    .map(
+                        (_e, index) => ([ ...new Array(2) ].map((_e, cell) =>`${index}-${cell}`))
+                    )
+                } />);
+            expect(toJson(wrapper.find('table tbody tr').first())).toMatchSnapshot();
+            wrapper.find('nav.pf-c-pagination__nav [data-action="next"]').first().simulate('click');
+            expect(wrapper.find('table tbody tr').length).toBe(10);
+            expect(toJson(wrapper.find('table tbody tr').first())).toMatchSnapshot();
+        });
+
+        it('should change per page count', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={
+                    [ ...new Array(50) ]
+                    .map(
+                        (_e, index) => ([ ...new Array(2) ].map((_e, cell) =>`${index}-${cell}`))
+                    )
+                } />);
+            wrapper.find('.pf-c-pagination .pf-c-options-menu button.pf-c-options-menu__toggle-button').first().simulate('click');
+            wrapper.update();
+            wrapper.find('ul.pf-c-options-menu__menu button[data-action="per-page-20"]').first().simulate('click');
+            expect(wrapper.find('table tbody tr').length).toBe(20);
+        });
+
+        it('should paginate to last page', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={
+                    [ ...new Array(50) ]
+                    .map(
+                        (_e, index) => ([ ...new Array(2) ].map((_e, cell) =>`${index}-${cell}`))
+                    )
+                } />);
+            expect(toJson(wrapper.find('table tbody tr').first())).toMatchSnapshot();
+            wrapper.find('nav.pf-c-pagination__nav [data-action="last"]').first().simulate('click');
+            expect(wrapper.find('table tbody tr').length).toBe(10);
+            expect(toJson(wrapper.find('table tbody tr').first())).toMatchSnapshot();
+        });
+
+        it('should change per page count - bottom pagination', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={
+                    [ ...new Array(50) ]
+                    .map(
+                        (_e, index) => ([ ...new Array(2) ].map((_e, cell) =>`${index}-${cell}`))
+                    )
+                } />);
+            wrapper.find('.ins-c-table__toolbar .pf-c-pagination .pf-c-options-menu button.pf-c-options-menu__toggle-button').first().simulate('click');
+            wrapper.update();
+            wrapper.find('.ins-c-table__toolbar ul.pf-c-options-menu__menu button[data-action="per-page-20"]').first().simulate('click');
+            expect(wrapper.find('table tbody tr').length).toBe(20);
+        });
+
+        it('should filter away all items', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={ [ ...new Array(50) ].map(() => ([ ...new Array(2) ])) }
+                filters={[{ index: 0 }, { index: 1 }]}
+            />);
+            wrapper.find('input.ins-c-conditional-filter').simulate('change', { target: { value: 'something' } });
+            expect(wrapper.find('table tbody tr').length).toBe(0);
+        });
+
+        it('should filter away items but left one', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={
+                    [ ...new Array(50) ]
+                    .map(
+                        (_e, index) => ([ ...new Array(2) ].map((_e, cell) =>`${index}-${cell}`))
+                    )
+                }
+                filters={[{ index: 0 }, { index: 1 }]}
+            />);
+            wrapper.find('input.ins-c-conditional-filter').first().simulate('change', { target: { value: '10-0' } });
+            wrapper.update();
+            expect(wrapper.find('table tbody tr').length).toBe(1);
+        });
+
+        it('should remove filter chip', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={ [ ...new Array(50) ].map(() => ([ ...new Array(2) ])) }
+                filters={[{ index: 0 }, { index: 1 }]}
+            />);
+            wrapper.find('input.ins-c-conditional-filter').simulate('change', { target: { value: 'something' } });
+            expect(wrapper.find('table tbody tr').length).toBe(0);
+            wrapper.find('.ins-c-chip-filters ul.pf-c-chip-group .pf-c-chip button').first().simulate('click');
+            expect(wrapper.find('table tbody tr').length).toBe(10);
+        });
+
+        it('should add checkbox filter', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={
+                    [ ...new Array(50) ]
+                    .map(
+                        (_e, index) => ([ ...new Array(2) ].map((_e, cell) =>`${index}-${cell}`))
+                    )
+                }
+                filters={[{ type: 'checkbox', options: [{ label: 'ff' }] }]}
+            />);
+            wrapper.find('.ins-c-conditional-filter .pf-c-select .pf-c-select__toggle').simulate('click');
+            wrapper.update();
+            wrapper.find('.ins-c-conditional-filter .pf-c-select__menu .pf-c-select__menu-item .pf-c-check__input').first().simulate('change', { target: { value: true } });
+            wrapper.update();
+            expect(wrapper.find('table tbody tr').length).toBe(0);
+        });
     });
 });
