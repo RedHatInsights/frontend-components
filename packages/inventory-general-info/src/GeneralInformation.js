@@ -39,13 +39,14 @@ class GeneralInformation extends Component {
         });
     }
 
-    handleModalToggle = (modalTitle = '', { cells, rows, expandable } = {}) => {
+    handleModalToggle = (modalTitle = '', { cells, rows, expandable, filters } = {}) => {
         rows && this.onSort(undefined, expandable ? 1 : 0, SortByDirection.asc, rows);
         this.setState(({ isModalOpen }) => ({
             isModalOpen: !isModalOpen,
             modalTitle,
             cells,
-            expandable
+            expandable,
+            filters
         }));
     };
 
@@ -54,7 +55,7 @@ class GeneralInformation extends Component {
     };
 
     render() {
-        const { isModalOpen, modalTitle, cells, rows, expandable } = this.state;
+        const { isModalOpen, modalTitle, cells, rows, expandable, filters } = this.state;
         return (
             <Grid sm={ 12 } md={ 6 } gutter="md">
                 <GridItem>
@@ -87,6 +88,7 @@ class GeneralInformation extends Component {
                         rows={ rows }
                         expandable={ expandable }
                         onSort={ this.onSort }
+                        filters={ filters }
                     />
                 </Modal>
             </Grid>

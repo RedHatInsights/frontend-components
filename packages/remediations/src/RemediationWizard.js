@@ -318,6 +318,7 @@ class RemediationWizard extends Component {
                 className='ins-c-remediation-modal'
                 onClose = { this.closeWizard }
                 isOpen= { this.state.open !== false }
+                isFooterLeftAligned
                 content = { steps }
                 confirmAction={ this.state.isNewSwitch ? 'Create' : 'Save' }
             />
