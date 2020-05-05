@@ -62,7 +62,7 @@
 
     .pf-c-list {
         @include rem('margin', 5px 0);
-        list-style: var(--pf-c-list--ul--ListStyle);
+        list-style: 'disc';
         padding-left: var(--pf-global--spacer--lg);
     }
 
