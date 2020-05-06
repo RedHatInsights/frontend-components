@@ -87,14 +87,6 @@ export const createAdditionalSteps = (additionalSteps, name, authName, hasEndpoi
         });
     });
 
-export const createEndpointFlagger = (skipEndpoint) => ({
-    component: componentTypes.TEXT_FIELD,
-    name: 'noEndpoint',
-    hideField: true,
-    initialValue: Boolean(skipEndpoint),
-    initializeOnMount: true
-});
-
 export const createGenericAuthTypeSelection = (type, endpointFields, disableAuthType) => {
     const auths = type.schema.authentication;
     const hasMultipleAuthTypes = auths.length > 1;
@@ -107,8 +99,6 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
             const additionalIncludesStepKeys = getAdditionalStepKeys(type.name, auth.type);
 
             const skipEndpoint = shouldSkipEndpoint(type.name, auth.type, 'generic');
-
-            fields.push(createEndpointFlagger(skipEndpoint));
 
             const onlyHiddenFields = getOnlyHiddenFields(type.name, auth.type);
             const authFields = onlyHiddenFields ? auth.fields.filter(({ hideField }) => hideField) : auth.fields;
@@ -155,8 +145,6 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
         const additionalStepName = `${type.name}-${auth.type}-generic-additional-step`;
 
         const skipEndpoint = shouldSkipEndpoint(type.name, auth.type, 'generic');
-
-        fields.push(createEndpointFlagger(skipEndpoint));
 
         const nextStep = getAdditionalSteps(type.name, auth.type).length > 0 ? additionalStepName :
             endpointFields.length === 0 && !skipEndpoint ? `${type.name}-endpoint` : 'summary';
@@ -207,8 +195,6 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
             const skipEndpoint = shouldSkipEndpoint(type.name, auth.type, appName);
             const customSteps = hasCustomSteps(type.name, auth.type, appName);
-
-            fields.push(createEndpointFlagger(skipEndpoint));
 
             let nextStep;
 
@@ -270,8 +256,6 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
         const skipEndpoint = shouldSkipEndpoint(type.name, auth.type, appName);
         const customSteps = hasCustomSteps(type.name, auth.type, appName);
-
-        fields.push(createEndpointFlagger(skipEndpoint));
 
         let nextStep;
 

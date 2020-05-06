@@ -62,20 +62,20 @@ describe('Add source schema', () => {
             expect(imgProps.alt).toEqual(OPENSHIFT_TYPE.product_name);
         });
 
-        it('returns DefaultIcon when no iconUrl', () => {
+        it('returns null when no iconUrl', () => {
             sourceTypes = [{ ...OPENSHIFT_TYPE, icon_url: undefined }];
 
             const Icon = iconMapper(sourceTypes)(OPENSHIFT_TYPE.name, DefaultIcon);
 
-            expect(Icon).toEqual(DefaultIcon);
+            expect(Icon).toEqual(null);
         });
 
-        it('returns DefaultIcon when no sourceType', () => {
+        it('returns null when no sourceType', () => {
             sourceTypes = [];
 
             const Icon = iconMapper(sourceTypes)(OPENSHIFT_TYPE.name, DefaultIcon);
 
-            expect(Icon).toEqual(DefaultIcon);
+            expect(Icon).toEqual(null);
         });
     });
 

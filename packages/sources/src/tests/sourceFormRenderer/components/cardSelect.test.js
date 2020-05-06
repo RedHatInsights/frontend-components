@@ -46,6 +46,34 @@ describe('CardSelect component', () => {
         expect(wrapper.find(CardHeader).last().text()).toEqual('aws');
     });
 
+    it('should render correctly with icon mapper - do not show text for icons', () => {
+        const Icon = () => <h1>someIcon</h1>;
+
+        initialProps = {
+            ...initialProps,
+            schema: {
+                fields: [{
+                    component: 'card-select',
+                    name: 'card-select',
+                    iconMapper: (value) => value === 'ops' ? Icon : undefined,
+                    options: [
+                        { value: 'ops', label: 'openshift' },
+                        { value: 'amazon', label: 'AWS' }
+                    ]
+                }]
+            }
+        };
+
+        const wrapper = mount(<FormRenderer { ...initialProps }/>);
+
+        expect(wrapper.find(Card)).toHaveLength(2);
+        expect(wrapper.find(CardHeader)).toHaveLength(1);
+        expect(wrapper.find(CardHeader).text()).toEqual('AWS');
+
+        expect(wrapper.find(Icon)).toHaveLength(1);
+        expect(wrapper.find(Icon).text()).toEqual('someIcon');
+    });
+
     it('should render correctly with mutator and it passes formOptions', () => {
         initialProps = {
             ...initialProps,
