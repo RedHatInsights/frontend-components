@@ -968,6 +968,104 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
 </TextContent>
 `;
 
+exports[`SourceWizardSummary component should render correctly openshift cost management - include appended field from DB 1`] = `
+<TextContent>
+  <div
+    className="pf-c-content"
+  >
+    <TextList
+      component="dl"
+    >
+      <dl
+        className=""
+        data-pf-content={true}
+      >
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Name
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            cosi
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Application
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            Cost Management
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Source type
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            OpenShift Container Platform
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Cluster Identifier
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            CLUSTER ID123
+          </dd>
+        </TextListItem>
+      </dl>
+    </TextList>
+  </div>
+</TextContent>
+`;
+
 exports[`SourceWizardSummary component should render correctly selected Catalog application, is second 1`] = `
 <TextContent>
   <div

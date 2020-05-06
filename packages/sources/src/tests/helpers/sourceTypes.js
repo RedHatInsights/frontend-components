@@ -14,13 +14,26 @@ const sourceTypes = [
                         component: 'text-field',
                         name: 'authentication.authtype',
                         hideField: true,
+                        initializeOnMount: true,
                         initialValue: 'token'
+                    },
+                    {
+                        component: 'text-field',
+                        name: 'source.source_ref',
+                        label: 'Cluster ID',
+                        stepKey: 'usageCollector'
                     },
                     {
                         component: 'text-field',
                         name: 'authentication.password',
                         label: 'Token',
-                        type: 'password'
+                        type: 'password',
+                        isRequired: true,
+                        validate: [
+                            {
+                                type: 'required'
+                            }
+                        ]
                     }
                 ]
             }],

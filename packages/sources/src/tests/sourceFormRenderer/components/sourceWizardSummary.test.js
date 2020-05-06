@@ -109,6 +109,26 @@ describe('SourceWizardSummary component', () => {
             expect(wrapper.find(TextContent).html().includes('arn:aws:132')).toEqual(true);
         });
 
+        it('openshift cost management - include appended field from DB', () => {
+            formOptions = {
+                getState: () => ({
+                    values: {
+                        source: { name: 'cosi', source_ref: 'CLUSTER ID123' },
+                        application: { application_type_id: COST_MANAGEMENT_APP.id },
+                        source_type: 'openshift',
+                        authentication: { authtype: 'token' },
+                        auth_select: 'token'
+                    }
+                })
+            };
+
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+
+            expect(wrapper.find(TextContent).html().includes('Cluster Identifier')).toEqual(true);
+            expect(wrapper.find(TextContent).html().includes('CLUSTER ID123')).toEqual(true);
+        });
+
         it('ansible-tower', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
             expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
