@@ -1,5 +1,4 @@
 import {
-    createEndpointFlagger,
     createGenericAuthTypeSelection
 } from '../../../addSourceWizard/schemaBuilder';
 
@@ -90,10 +89,7 @@ describe('generate auth selection pages', () => {
 
     describe('createGenericAuthTypeSelection - with skip endpoint', () => {
         it('generate single selection', () => {
-            const fields = [
-                ...ONE_SINGLE_SELECTION_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey),
-                createEndpointFlagger(true)
-            ];
+            const fields = ONE_SINGLE_SELECTION_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey);
 
             expectedSchema = expect.objectContaining({
                 fields: expect.arrayContaining(fields),

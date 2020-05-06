@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import { TextListItem, TextContent } from '@patternfly/react-core';
 
 import Summary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
-import applicationTypes from '../../helpers/applicationTypes';
+import applicationTypes, { COST_MANAGEMENT_APP } from '../../helpers/applicationTypes';
 import sourceTypes from '../../helpers/sourceTypes';
 import ValuePopover from '../../../sourceFormRenderer/components/ValuePopover';
 import RendererContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
@@ -97,8 +97,7 @@ describe('SourceWizardSummary component', () => {
                         authentication: { password: 'arn:aws:132', authtype: 'arn' },
                         billing_source: { bucket: 'gfghf' },
                         fixasyncvalidation: '',
-                        endpoint: { role: 'aws' },
-                        noEndpoint: false
+                        endpoint: { role: 'aws' }
                     }
                 })
             };
@@ -152,8 +151,7 @@ describe('SourceWizardSummary component', () => {
                         },
                         authentication: {
                             username: 'user_name'
-                        },
-                        noEndpoint: false
+                        }
                     }
                 })
             };
@@ -170,13 +168,16 @@ describe('SourceWizardSummary component', () => {
                             name: 'openshift'
                         },
                         source_type: 'openshift',
+                        application: {
+                            application_type_id: COST_MANAGEMENT_APP.id
+                        },
                         endpoint: {
                             certificate_authority: 'authority'
                         },
                         authentication: {
-                            password: 'token'
-                        },
-                        noEndpoint: true
+                            password: 'token',
+                            authtype: 'token'
+                        }
                     }
                 })
             };
@@ -211,8 +212,7 @@ describe('SourceWizardSummary component', () => {
                         source: {
                             name: 'openshift',
                             source_type_id: '1'
-                        },
-                        noEndpoint: true
+                        }
                     }
                 })
             };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { TextContent, TextListItem, TextListItemVariants, TextListVariants, TextList } from '@patternfly/react-core';
 import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
-import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps } from '../../addSourceWizard/schemaBuilder';
+import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps, shouldSkipEndpoint } from '../../addSourceWizard/schemaBuilder';
 import ValuePopover from './ValuePopover';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
@@ -66,7 +66,11 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
         authTypeFields = authType && authType.fields ? authType.fields : [];
     }
 
-    const skipEndpoint = values.noEndpoint;
+    const application = values.application ? applicationTypes.find(type => type.id === values.application.application_type_id) : undefined;
+
+    const { display_name = 'Not selected', name, id } = application ? application : {};
+
+    const skipEndpoint = shouldSkipEndpoint(type.name, hasAuthentication, name);
 
     let endpointFields = type.schema.endpoint.fields;
 
@@ -74,10 +78,6 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
         endpointFields = [];
         authTypeFields = authTypeFields.filter(({ name }) => !name.includes('authentication.'));
     }
-
-    const application = values.application ? applicationTypes.find(type => type.id === values.application.application_type_id) : undefined;
-
-    const { display_name = 'Not selected', name, id } = application ? application : {};
 
     const availableStepKeys = getStepKeys(type.name, hasAuthentication, name, id);
 
