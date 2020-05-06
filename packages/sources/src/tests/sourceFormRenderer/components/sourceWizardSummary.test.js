@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import { TextListItem, TextContent } from '@patternfly/react-core';
 
 import Summary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
-import applicationTypes from '../../helpers/applicationTypes';
+import applicationTypes, { COST_MANAGEMENT_APP } from '../../helpers/applicationTypes';
 import sourceTypes from '../../helpers/sourceTypes';
 import ValuePopover from '../../../sourceFormRenderer/components/ValuePopover';
 import RendererContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
@@ -97,8 +97,7 @@ describe('SourceWizardSummary component', () => {
                         authentication: { password: 'arn:aws:132', authtype: 'arn' },
                         billing_source: { bucket: 'gfghf' },
                         fixasyncvalidation: '',
-                        endpoint: { role: 'aws' },
-                        noEndpoint: false
+                        endpoint: { role: 'aws' }
                     }
                 })
             };
@@ -108,6 +107,26 @@ describe('SourceWizardSummary component', () => {
 
             expect(wrapper.find(TextContent).html().includes('ARN')).toEqual(true);
             expect(wrapper.find(TextContent).html().includes('arn:aws:132')).toEqual(true);
+        });
+
+        it('openshift cost management - include appended field from DB', () => {
+            formOptions = {
+                getState: () => ({
+                    values: {
+                        source: { name: 'cosi', source_ref: 'CLUSTER ID123' },
+                        application: { application_type_id: COST_MANAGEMENT_APP.id },
+                        source_type: 'openshift',
+                        authentication: { authtype: 'token' },
+                        auth_select: 'token'
+                    }
+                })
+            };
+
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+
+            expect(wrapper.find(TextContent).html().includes('Cluster Identifier')).toEqual(true);
+            expect(wrapper.find(TextContent).html().includes('CLUSTER ID123')).toEqual(true);
         });
 
         it('ansible-tower', () => {
@@ -152,8 +171,7 @@ describe('SourceWizardSummary component', () => {
                         },
                         authentication: {
                             username: 'user_name'
-                        },
-                        noEndpoint: false
+                        }
                     }
                 })
             };
@@ -170,13 +188,16 @@ describe('SourceWizardSummary component', () => {
                             name: 'openshift'
                         },
                         source_type: 'openshift',
+                        application: {
+                            application_type_id: COST_MANAGEMENT_APP.id
+                        },
                         endpoint: {
                             certificate_authority: 'authority'
                         },
                         authentication: {
-                            password: 'token'
-                        },
-                        noEndpoint: true
+                            password: 'token',
+                            authtype: 'token'
+                        }
                     }
                 })
             };
@@ -211,8 +232,7 @@ describe('SourceWizardSummary component', () => {
                         source: {
                             name: 'openshift',
                             source_type_id: '1'
-                        },
-                        noEndpoint: true
+                        }
                     }
                 })
             };
