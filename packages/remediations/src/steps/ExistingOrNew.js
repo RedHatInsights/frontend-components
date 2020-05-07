@@ -24,14 +24,14 @@ function ExistingOrNewStep(props) {
             <Form className="ins-c-existing-or-new">
                 <Stack gutter='md'>
                     <StackItem>
-                        <h1 className='ins-m-text__bold'>Do you want to modify an existing Playbook or create a new one?</h1>
+                        <h1 className='ins-m-text__bold'>Do you want to modify an existing playbook or create a new one?</h1>
                     </StackItem>
                     <StackItem>
                         <Grid>
                             <GridItem sm={ 12 } md={ 6 } lg={ 3 }>
                                 <Radio
-                                    label={ existingRemediations ? `Existing Playbook (${existingRemediations.length})` : 'Existing Playbook' }
-                                    aria-label="Existing Playbook"
+                                    label={ existingRemediations ? `Existing playbook (${existingRemediations.length})` : 'Existing playbook' }
+                                    aria-label="Existing playbook"
                                     id="existing"
                                     name="radio"
                                     isDisabled={ !existingRemediations || !existingRemediations.length }
@@ -47,11 +47,11 @@ function ExistingOrNewStep(props) {
                                             isDisabled={ isNewSwitch }
                                             onChange={ props.onRemediationSelected }
                                             value={ selectedRemediationId }
-                                            aria-label="Select an existing Playbook" >
+                                            aria-label="Select an existing playbook" >
                                             { existingRemediations.length
                                                 ? existingRemediations.map(({ id, name }) =>
                                                     <FormSelectOption key={ id } value={ id } label={ name } />)
-                                                :   <FormSelectOption key="empty" value="empty" label="No exising Playbooks" />
+                                                :   <FormSelectOption key="empty" value="empty" label="No existing playbooks" />
                                             }
                                         </FormSelect>
                                 }
@@ -62,8 +62,8 @@ function ExistingOrNewStep(props) {
                         <Grid>
                             <GridItem sm={ 12 } md={ 6 } lg={ 3 }>
                                 <Radio
-                                    label="Create new Playbook"
-                                    aria-label="Create new Playbook"
+                                    label="Create new playbook"
+                                    aria-label="Create new playbook"
                                     id="new"
                                     name="radio"
                                     defaultChecked={ props.state.isNewSwitch }
@@ -81,7 +81,7 @@ function ExistingOrNewStep(props) {
                                         type="text"
                                         value={ name }
                                         onChange={ props.onNameChange }
-                                        aria-label="Name your Playbook"
+                                        aria-label="Name your playbook"
                                         autoFocus
                                         isDisabled={ !isNewSwitch }
                                         isValid={ nameValid }
