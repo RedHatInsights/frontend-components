@@ -1,8 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Checkbox render should render correctly - disabled 1`] = `
+<Fragment>
+  <Component
+    aria-label="Select Input"
+    isDisabled={true}
+    isExpanded={false}
+    onSelect={[Function]}
+    onToggle={[Function]}
+    selections={Array []}
+    variant="checkbox"
+  >
+    <SelectOption
+      className=""
+      component="button"
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isNoResultsOption={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="0"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="some-value"
+    >
+      <div>
+        Custom value
+      </div>
+    </SelectOption>
+    <SelectOption
+      className=""
+      component="button"
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isNoResultsOption={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="1"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="another-value"
+    >
+      Another
+    </SelectOption>
+    <SelectOption
+      className=""
+      component="button"
+      index={0}
+      isChecked={false}
+      isDisabled={false}
+      isFocused={false}
+      isNoResultsOption={false}
+      isPlaceholder={false}
+      isSelected={false}
+      key="2"
+      keyHandler={[Function]}
+      onClick={[Function]}
+      sendRef={[Function]}
+      value="2"
+    >
+      No value
+    </SelectOption>
+  </Component>
+</Fragment>
+`;
+
 exports[`Checkbox render should render correctly 1`] = `
 <Fragment>
   <Text
+    isDisabled={false}
     items={Array []}
     onChange={[Function]}
     onSubmit={[Function]}
@@ -15,6 +87,7 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
 <Fragment>
   <Component
     aria-label="Select Input"
+    isDisabled={false}
     isExpanded={false}
     onSelect={[Function]}
     onToggle={[Function]}
@@ -86,6 +159,7 @@ exports[`Checkbox render should render correctly with items 1`] = `
 <Fragment>
   <Component
     aria-label="Select Input"
+    isDisabled={false}
     isExpanded={false}
     onSelect={[Function]}
     onToggle={[Function]}
@@ -156,6 +230,7 @@ exports[`Checkbox render should render correctly with items and default object v
 <Fragment>
   <Component
     aria-label="Select Input"
+    isDisabled={false}
     isExpanded={false}
     onSelect={[Function]}
     onToggle={[Function]}
@@ -230,6 +305,7 @@ exports[`Checkbox render should render correctly with items and default value 1`
 <Fragment>
   <Component
     aria-label="Select Input"
+    isDisabled={false}
     isExpanded={false}
     onSelect={[Function]}
     onToggle={[Function]}
@@ -304,6 +380,7 @@ exports[`Checkbox render should render correctly with items and selected value 1
 <Fragment>
   <Component
     aria-label="Select Input"
+    isDisabled={false}
     isExpanded={false}
     onSelect={[Function]}
     onToggle={[Function]}

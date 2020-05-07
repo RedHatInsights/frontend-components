@@ -10,6 +10,11 @@ describe('Text component', () => {
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
+        it('should render correctly - isDisabled', () => {
+            const wrapper = shallow(<Text id="test-id" isDisabled />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
         it('should render placeholder', () => {
             const wrapper = shallow(<Text id="test-id" placeholder="some-placeholder"/>);
             expect(toJson(wrapper)).toMatchSnapshot();

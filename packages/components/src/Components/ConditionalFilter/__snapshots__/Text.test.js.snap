@@ -1,10 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Text component render should render correctly - isDisabled 1`] = `
+<Fragment>
+  <ForwardRef
+    className="ins-c-conditional-filter "
+    id="test-id"
+    isDisabled={true}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    value=""
+    widget-type="InsightsInput"
+  />
+  <SearchIcon
+    className="ins-c-search-icon"
+    color="currentColor"
+    noVerticalAlign={false}
+    size="sm"
+    title={null}
+  />
+</Fragment>
+`;
+
 exports[`Text component render should render correctly 1`] = `
 <Fragment>
   <ForwardRef
     className="ins-c-conditional-filter "
     id="test-id"
+    isDisabled={false}
     onChange={[Function]}
     onKeyDown={[Function]}
     value=""
@@ -25,6 +47,7 @@ exports[`Text component render should render placeholder 1`] = `
   <ForwardRef
     className="ins-c-conditional-filter "
     id="test-id"
+    isDisabled={false}
     onChange={[Function]}
     onKeyDown={[Function]}
     placeholder="some-placeholder"
@@ -46,6 +69,7 @@ exports[`Text component render should render value 1`] = `
   <ForwardRef
     className="ins-c-conditional-filter "
     id="test-id"
+    isDisabled={false}
     onChange={[Function]}
     onKeyDown={[Function]}
     value=""

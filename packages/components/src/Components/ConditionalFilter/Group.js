@@ -215,7 +215,7 @@ class Group extends Component {
 
     render() {
         const { isExpanded, filterBy } = this.state;
-        const { groups, items, placeholder, className, selected, isFilterable, onFilter } = this.props;
+        const { groups, items, placeholder, className, selected, isFilterable, isDisabled, onFilter } = this.props;
 
         const filterItems = items || groups;
 
@@ -226,6 +226,7 @@ class Group extends Component {
                 aria-label="Select Input"
                 onToggle={ this.onToggle }
                 isExpanded={ isExpanded }
+                isDisabled={ isDisabled }
                 onSelect={ () => undefined }
                 placeholderText={ placeholder }
                 onClear={this.clearSelection}
@@ -289,7 +290,8 @@ Group.propTypes = {
     filterBy: PropTypes.string,
     items: itemsProps,
     isFilterable: PropTypes.bool,
-    onFilter: PropTypes.func
+    onFilter: PropTypes.func,
+    isDisabled: PropTypes.bool
 };
 
 Group.defaultProps = {
@@ -297,7 +299,8 @@ Group.defaultProps = {
     filterBy: '',
     onChange: () => undefined,
     groups: [],
-    isFilterable: false
+    isFilterable: false,
+    isDisabled: false
 };
 
 export default Group;
