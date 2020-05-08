@@ -71,8 +71,8 @@ export default {
                     skipSelection: true,
                     skipEndpoint: true,
                     'source.source_ref': {
-                        label: <CMOpenshift.ClusterIdentifierLabel />,
-                        'aria-label': 'Cluster Identifier',
+                        label: 'Cluster Identifier',
+                        isRequired: true,
                         component: componentTypes.TEXT_FIELD,
                         validate: [{
                             type: validatorTypes.REQUIRED
