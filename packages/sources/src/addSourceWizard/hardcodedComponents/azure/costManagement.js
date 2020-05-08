@@ -10,6 +10,7 @@ import {
     TextListItemVariants
 } from '@patternfly/react-core';
 import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
 const CREATE_AZURE_STORAGE = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#creating_an_azure_storage_account`;
 const AZURE_CREDS_URL = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#configuring_an_azure_service_principal`;
@@ -27,28 +28,46 @@ export const ConfigureResourceGroupAndStorageAccount = () => (
     </TextContent>
 );
 
-export const ServicePrincipalDescription = () => (
+export const SubscriptionID = () => {
+    return (
+        <TextContent>
+            <Text component={TextVariants.p}>
+            Run the following command in Cloud Shell to obtain your Subscription ID and enter it below:
+            </Text>
+            <ClipboardCopy>{`az account show --query "{ subscription_id: id }"`}</ClipboardCopy>
+        </TextContent>
+    );
+};
+
+export const ConfigureRolesDescription = () => (
     <TextContent>
         <Text component={TextVariants.p}>
-            Red Hat recommends configuring dedicated credentials to grant cost management read-only access to Azure cost data.&nbsp;&nbsp;
+            Red Hat recommends configuring dedicated credentials to grant Cost Management read-only access to Azure cost data.&nbsp;&nbsp;
             <Text rel="noopener noreferrer" target="_blank" component={TextVariants.a} href={AZURE_CREDS_URL}>Learn more</Text>
         </Text>
         <Text component={TextVariants.p}>
-            Run the following command in Cloud Shell to obtain your Subscription ID and enter it below:
+            Run the following command in Cloud Shell to create a Cost Management Storage Account Contributor role.
+            From the output enter the values in the fields below:
         </Text>
-        <ClipboardCopy>{`az account show --query "{ subscription_id: id }"`}</ClipboardCopy>
+        <ClipboardCopy>{
+            `az ad sp create-for-rbac -n "CostManagement" --role "Storage Account Contributor" --query '{"tenant": tenant, "client_id": appId, "secret": password}'`
+        }</ClipboardCopy>
     </TextContent>
 );
 
-export const CreateActiveDirectory = () => (
-    <TextContent>
-        <Text component={TextVariants.p}>
-            Run the following command in Cloud Shell to create an Active Directory application and assign it to a role using all
-                default selections. From the output, enter the values in the fields below.
-        </Text>
-        <ClipboardCopy>{`az ad sp create-for-rbac --query '{"tenant": tenant, "client_id": appId, "secret": password}'`}</ClipboardCopy>
-    </TextContent>
-);
+export const ReaderRoleDescription = () => {
+    const form = useFormApi();
+    const { values: { credentials } } = form.getState();
+    return (
+        <TextContent>
+            <Text component={TextVariants.p}>
+            Run the following command in Cloud Shell to create a Cost Management Reader role:
+            </Text>
+            <ClipboardCopy>{
+                `az role assignment create --role "Cost Management Reader" --assignee http://CostManagement --subscription ${credentials.subscription_id}`
+            }</ClipboardCopy>
+        </TextContent>
+    );};
 
 export const ExportSchedule = () => (
     <TextContent>
