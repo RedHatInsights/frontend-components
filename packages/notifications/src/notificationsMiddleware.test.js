@@ -87,6 +87,30 @@ describe('Notifications middleware', () => {
         });
     });
 
+    it('should dispatch danger with text from string payload', () => {
+        mockStore = configureStore([ promiseMiddleware(), notificationsMiddleware({ errorNamespaceKey: [ 'errors' ], useStatusText: true }) ]);
+        const store = mockStore({});
+        const expectedActions = [
+            expect.objectContaining({
+                type: 'FOO_PENDING'
+            }), {
+                type: ADD_NOTIFICATION,
+                payload: {
+                    description: 'string',
+                    dismissable: true,
+                    title: 'Error',
+                    variant: 'danger'
+                }
+            },
+            expect.objectContaining({
+                type: 'FOO_REJECTED'
+            })
+        ];
+        return store.dispatch(requestMock(true, 'string')).catch(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+
     it('should not dispatch any default notification on promise success', () => {
         const expectedActions = [{
             type: 'FOO_PENDING'
