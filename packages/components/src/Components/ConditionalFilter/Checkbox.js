@@ -49,7 +49,7 @@ class Checkbox extends Component {
 
     render() {
         const { isExpanded } = this.state;
-        const { items, placeholder, className } = this.props;
+        const { items, placeholder, isDisabled, className } = this.props;
 
         return (<Fragment>
             { !items || (items && items.length <= 0) ? <Text { ...this.props } value={ `${this.calculateSelected()}` } /> : <Select
@@ -57,6 +57,7 @@ class Checkbox extends Component {
                 variant={ SelectVariant.checkbox }
                 aria-label="Select Input"
                 onToggle={ this.onToggle }
+                isDisabled={ isDisabled }
                 onSelect={ this.onSelect }
                 selections={ this.calculateSelected() }
                 isExpanded={ isExpanded }
@@ -89,13 +90,15 @@ Checkbox.propTypes = {
         label: PropTypes.node,
         id: PropTypes.string,
         onClick: PropTypes.func
-    }))
+    })),
+    isDisabled: PropTypes.bool
 };
 
 Checkbox.defaultProps = {
     items: [],
     value: [],
-    onChange: () => undefined
+    onChange: () => undefined,
+    isDisabled: false
 };
 
 export default Checkbox;

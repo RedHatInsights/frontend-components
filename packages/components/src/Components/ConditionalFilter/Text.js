@@ -15,7 +15,7 @@ class Text extends Component {
     }
 
     render() {
-        const { value, onChange, onSubmit, id, icon, className, ...props } = this.props;
+        const { value, onChange, onSubmit, id, icon, className, isDisabled, ...props } = this.props;
         const Icon = icon || SearchIcon;
         const { stateValue } = this.state;
         const changeCallback = onChange ? onChange : this.onChangeValue;
@@ -24,6 +24,7 @@ class Text extends Component {
                 <TextInput { ...props }
                     className={`ins-c-conditional-filter ${className || ''}`}
                     id={ id }
+                    isDisabled={ isDisabled }
                     value={ onChange ? value : stateValue }
                     onChange={ (_inputValue, e) => changeCallback(e, e.target.value) }
                     widget-type="InsightsInput"
@@ -40,12 +41,14 @@ Text.propTypes = {
     value: PropTypes.string,
     placeholder: PropTypes.string,
     onChange: PropTypes.func,
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    isDisabled: PropTypes.bool
 };
 
 Text.defaultProps = {
     value: '',
-    onSubmit: () => undefined
+    onSubmit: () => undefined,
+    isDisabled: false
 };
 
 export default Text;

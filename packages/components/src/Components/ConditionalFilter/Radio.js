@@ -29,7 +29,7 @@ class Radio extends Component {
 
     render() {
         const { isExpanded } = this.state;
-        const { items, placeholder, className } = this.props;
+        const { items, placeholder, isDisabled, className } = this.props;
         const checkedValue = this.calculateSelected();
         return (<Fragment>
             { !items || (items && items.length <= 0) ?
@@ -41,6 +41,7 @@ class Radio extends Component {
                     className={ className }
                     variant={ SelectVariant.single }
                     aria-label="Select Input"
+                    isDisabled={ isDisabled }
                     onToggle={ this.onToggle }
                     onSelect={ this.onSelect }
                     isExpanded={ isExpanded }
@@ -82,12 +83,14 @@ Radio.propTypes = {
         id: PropTypes.string,
         isChecked: PropTypes.bool,
         onChange: PropTypes.func
-    }))
+    })),
+    isDisabled: PropTypes.bool
 };
 
 Radio.defaultProps = {
     items: [],
-    onChange: () => undefined
+    onChange: () => undefined,
+    isDisabled: false
 };
 
 export default Radio;

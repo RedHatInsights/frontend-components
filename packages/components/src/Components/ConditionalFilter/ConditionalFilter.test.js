@@ -54,8 +54,20 @@ describe('ConditionalFilter', () => {
             expect(toJson(wrappper)).toMatchSnapshot();
         });
 
+        it('should render correctly - isDisabled', () => {
+            const wrappper = shallow(<ConditionalFilter items={ config } isDisabled />);
+            expect(toJson(wrappper)).toMatchSnapshot();
+        });
+
         it('should render correctly with config', () => {
             const wrappper = shallow(<ConditionalFilter items={ config } />);
+            expect(toJson(wrappper)).toMatchSnapshot();
+        });
+
+        it('should render correctly with config - each item as disabled', () => {
+            const wrappper = shallow(<ConditionalFilter items={ config.map(item =>(
+                { ...item, filterValues: { ...item.filterValues, isDisabled: true } })
+            ) } />);
             expect(toJson(wrappper)).toMatchSnapshot();
         });
 
