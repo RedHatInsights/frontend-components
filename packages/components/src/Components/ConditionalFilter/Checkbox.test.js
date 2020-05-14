@@ -23,6 +23,11 @@ describe('Checkbox', () => {
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
+        it('should render correctly - disabled', () => {
+            const wrapper = shallow(<Checkbox { ...config } isDisabled />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
         it('should render correctly with items', () => {
             const wrapper = shallow(<Checkbox { ...config } />);
             expect(toJson(wrapper)).toMatchSnapshot();

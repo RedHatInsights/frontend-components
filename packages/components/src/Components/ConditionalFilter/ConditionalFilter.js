@@ -24,7 +24,7 @@ class ConditionalFilter extends Component {
     }
 
     render() {
-        const { items, value, id, onChange, placeholder, hideLabel, ...props } = this.props;
+        const { items, value, id, onChange, placeholder, hideLabel, isDisabled, ...props } = this.props;
         const { isOpen, stateValue } = this.state;
         const currentValue = onChange ? value : stateValue;
         const activeItem = items && items.length && (
@@ -57,6 +57,7 @@ class ConditionalFilter extends Component {
                                         toggle={
                                             <DropdownToggle
                                                 onToggle={ this.dropdownToggle }
+                                                isDisabled={ isDisabled }
                                                 className={ hideLabel ? 'ins-c-conditional-filter__no-label' : '' } >
                                                 <FilterIcon size="sm" />
                                                 { !hideLabel &&
@@ -134,12 +135,14 @@ ConditionalFilter.propTypes = {
             }))
         }) ])
     })),
-    ...TextInputProps
+    ...TextInputProps,
+    isDisabled: PropTypes.bool
 };
 
 ConditionalFilter.defaultProps = {
     value: '',
     items: [],
-    hideLabel: false
+    hideLabel: false,
+    isDisabled: false
 };
 export default ConditionalFilter;
