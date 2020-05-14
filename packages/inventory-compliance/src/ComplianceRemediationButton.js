@@ -21,7 +21,8 @@ class ComplianceRemediationButton extends React.Component {
         return issues.filter((issue, index) => {
             const originalIssueIndex = issueIds.indexOf(issue.id);
             return (originalIssueIndex === index) ? true :
-                (issues[originalIssueIndex].systems = issues[originalIssueIndex].systems.concat(issue.systems)) && false;
+                (issues[originalIssueIndex].systems = Array.from(new Set(
+                    issues[originalIssueIndex].systems.concat(issue.systems)))) && false;
         });
     }
 
