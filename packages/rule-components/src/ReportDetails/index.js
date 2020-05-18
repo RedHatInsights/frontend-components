@@ -7,7 +7,7 @@ import {
     StackItem,
     Title
 } from '@patternfly/react-core';
-import RuleFeedback from './RuleFeedback';
+import RuleFeedback, { feedback } from './RuleFeedback';
 import Markdown from './Markdown';
 import { riskOfChangeMeta, totalRiskMeta } from './constants';
 import RiskDescription from './RiskDescription';
@@ -35,6 +35,7 @@ const ReportDetails = (
         showRiskDescription,
         remediating,
         definitions,
+        userVote,
         onFeedbackChanged
     }) => {
 
@@ -61,7 +62,11 @@ const ReportDetails = (
                 <StackItem>
                     {
                         onFeedbackChanged &&
-                        <RuleFeedback ruleId={ ruleId } onFeedbackChanged={ onFeedbackChanged }/>
+                        <RuleFeedback
+                            userVote={ userVote }
+                            ruleId={ ruleId }
+                            onFeedbackChanged={ onFeedbackChanged }
+                        />
                     }
                 </StackItem>
             </Stack>
@@ -110,6 +115,7 @@ ReportDetails.propTypes = {
     ruleId: PropTypes.string,
     totalRisk: PropTypes.number,
     riskOfChange: PropTypes.number,
+    userVote: PropTypes.oneOf(Object.values(feedback)),
     showRiskDescription: PropTypes.bool,
     definitions: PropTypes.object,
     remediating: PropTypes.shape({
@@ -120,7 +126,8 @@ ReportDetails.propTypes = {
 };
 
 ReportDetails.defaultProps = {
-    showRiskDescription: true
+    showRiskDescription: true,
+    userVote: 0
 };
 
 export default ReportDetails;
