@@ -30,7 +30,8 @@ class EntityTable extends React.Component {
             const dilimeter = url.substr(-1, 1) === '/' ? '' : '/';
             const isMetaKey = (event.ctrlKey || event.metaKey || event.which === 2);
             if (isMetaKey) {
-                window.open(`${location.pathname}/${key}`);
+                const url = new URL(`./${key}`, location.href);
+                window.open(url.href);
             } else {
                 history.push(`${url}${dilimeter}${key}/${application ? application : ''}`);
                 onDetailSelect && onDetailSelect(application);
