@@ -49,48 +49,22 @@ exports[`Unavailable component should render 1`] = `
         <h5
           className="pf-c-title pf-m-lg"
         >
-          Unable to connect
+          This page is temporarily unavailable
         </h5>
       </Title>
       <EmptyStateBody>
         <div
           className="pf-c-empty-state__body"
         >
-          <Stack>
-            <div
-              className="pf-l-stack"
-            >
-              <StackItem>
-                <div
-                  className="pf-l-stack__item"
-                >
-                  This page is temporarily unavailable. Try refreshing the page.
-                </div>
-              </StackItem>
-              <StackItem>
-                <div
-                  className="pf-l-stack__item"
-                >
-                  If the problem persists, conact your administrator.
-                </div>
-              </StackItem>
-              <StackItem>
-                <div
-                  className="pf-l-stack__item"
-                >
-                  See 
-                  <a
-                    href="./status"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    cloud.redhat.com/status
-                  </a>
-                   for more information.
-                </div>
-              </StackItem>
-            </div>
-          </Stack>
+          Try refreshing the page. If the problem persists, contact your organization administrator or visit our
+          <a
+            href="./status"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+             status page
+          </a>
+           for known outages.
         </div>
       </EmptyStateBody>
     </div>
