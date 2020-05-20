@@ -12,7 +12,7 @@ import { EmptyStateIcon } from '@patternfly/react-core/dist/js/components/EmptyS
 import ExclamationCircleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-circle-icon';
 
 const Unavailable = () => {
-    return(
+    return (
         <EmptyState variant={EmptyStateVariant.large} className='ins-c-empty-state__unavailable pf-m-redhat-font'>
             <EmptyStateIcon icon={ExclamationCircleIcon} />
             <Title headingLevel="h5" size="lg">
