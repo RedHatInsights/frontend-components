@@ -13,7 +13,7 @@ import ExclamationCircleIcon from '@patternfly/react-icons/dist/js/icons/exclama
 
 const Unavailable = () => {
     return(
-        <EmptyState variant={EmptyStateVariant.large} className='ins-c-empty-state__unavailable'>
+        <EmptyState variant={EmptyStateVariant.large} className='ins-c-empty-state__unavailable pf-m-redhat-font'>
             <EmptyStateIcon icon={ExclamationCircleIcon} />
             <Title headingLevel="h5" size="lg">
                 Unable to connect
@@ -27,7 +27,7 @@ const Unavailable = () => {
                         If the problem persists, conact your administrator.
                     </StackItem>
                     <StackItem>
-                        See <a href='https://cloud.redhat.com/status' target='_blank' rel='noopener noreferrer'>cloud.redhat.com/status</a> for more information.
+                        See <a href='./status' target='_blank' rel='noopener noreferrer'>cloud.redhat.com/status</a> for more information.
                     </StackItem>
                 </Stack>
             </EmptyStateBody>

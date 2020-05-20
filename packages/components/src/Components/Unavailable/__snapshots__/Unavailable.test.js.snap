@@ -3,11 +3,11 @@
 exports[`Unavailable component should render 1`] = `
 <Unavailable>
   <EmptyState
-    className="ins-c-empty-state__unavailable"
+    className="ins-c-empty-state__unavailable pf-m-redhat-font"
     variant="large"
   >
     <div
-      className="pf-c-empty-state pf-m-lg ins-c-empty-state__unavailable"
+      className="pf-c-empty-state pf-m-lg ins-c-empty-state__unavailable pf-m-redhat-font"
     >
       <EmptyStateIcon
         icon={[Function]}
@@ -80,7 +80,7 @@ exports[`Unavailable component should render 1`] = `
                 >
                   See 
                   <a
-                    href="https://cloud.redhat.com/status"
+                    href="./status"
                     rel="noopener noreferrer"
                     target="_blank"
                   >
