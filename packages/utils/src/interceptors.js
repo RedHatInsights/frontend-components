@@ -45,7 +45,7 @@ export function errorInterceptor(err) {
         let requestId;
         try {
             const errObject = { ...err };
-            requestId = errObject.response?.headers['x-rh-insights-request-id'];
+            requestId = errObject.response?.headers?.['x-rh-insights-request-id'];
             if (errObject.response && errObject.response.data) {
                 throw errObject.response.data;
             }
@@ -53,8 +53,10 @@ export function errorInterceptor(err) {
             throw err;
         }
         catch (customError) {
-            const sentryId = Sentry.captureException(customError);
-            customError.sentryId = sentryId;
+            if (!requestId) {
+                customError.sentryId = Sentry.captureException(customError);
+            }
+
             customError.requestId = requestId;
             throw customError;
         }
