@@ -155,7 +155,7 @@ class InventoryRuleList extends Component {
                                     aria-label='select-checkbox'
                                     type="checkbox"
                                     checked={!!selected}
-                                    onChange={event => this.onSelect(event, !selected, key * 2)}
+                                    onChange={event => this.onSelect(event, !selected, rule)}
                                     className="pf-c-check"
                                 /> : ''}
                             </div>
@@ -163,7 +163,7 @@ class InventoryRuleList extends Component {
                         { title: <div> {rule.description}</div> },
                         {
                             title: <div key={key}>
-                                <DateFormat date={rule.publish_date} type='relative' tooltipProps={{ position: TooltipPosition.bottom }}/>
+                                <DateFormat date={rule.publish_date} type='relative' tooltipProps={{ position: TooltipPosition.bottom }} />
                             </div>
                         },
                         {
@@ -263,13 +263,13 @@ class InventoryRuleList extends Component {
         this.setState({ searchValue: value, rows: builtRows });
     };
 
-    onSelect = (event, isSelected, rowId) => {
-        const { activeReports, kbaDetailsData, filters, rows } = this.state;
+    onSelect = (event, isSelected, rule) => {
+        const { activeReports, kbaDetailsData, filters, rows, searchValue } = this.state;
         this.setState({
             rows: this.buildRows(
                 activeReports, kbaDetailsData, filters,
-                rows.map((oneRow, rowKey) => (rowId === -1 || rowKey === rowId) ? { ...oneRow, selected: isSelected } : { ...oneRow }),
-                false
+                rows.map((oneRow) => oneRow.rule && oneRow.rule.rule_id === rule.rule_id ? { ...oneRow, selected: isSelected } : { ...oneRow }),
+                false, searchValue
             )
         });
     };
@@ -277,7 +277,7 @@ class InventoryRuleList extends Component {
     getSelectedItems = (rows) => rows.filter(entity => entity.selected);
 
     bulkSelect = (isSelected) => {
-        const { activeReports, kbaDetailsData, filters, rows } = this.state;
+        const { activeReports, kbaDetailsData, filters, rows, searchValue } = this.state;
         this.setState({
             isSelected,
             rows: this.buildRows(
@@ -286,7 +286,7 @@ class InventoryRuleList extends Component {
                     // We need to use mod 2 here to ignore children with no has_playbook param
                     index % 2 === 0 && row.resolution.has_playbook ? { ...row, selected: isSelected } : row
                 )),
-                false
+                false, searchValue
             )
         });
     }
@@ -342,6 +342,7 @@ class InventoryRuleList extends Component {
         const hideResultsSatelliteManaged = !satelliteShowHosts && satelliteManaged;
         const selectedAnsibleRules = this.getSelectedItems(rows).filter(r => r.resolution && r.resolution.has_playbook);
         const selectedItemsLength = this.getSelectedItems(rows).length;
+        const selectableItemsLength = rows.filter(r => r.resolution && r.resolution.has_playbook).length;
         const actions = [
             '', {
                 label: 'Collapse all',
@@ -392,8 +393,8 @@ class InventoryRuleList extends Component {
                 onClick: () => this.bulkSelect(true)
             }],
             count: selectedItemsLength,
-            checked: isSelected || selectedItemsLength === results,
-            onSelect: () => { this.bulkSelect(!isSelected); }
+            checked: selectedItemsLength === selectableItemsLength,
+            onSelect: () => this.bulkSelect(!isSelected)
         };
 
         const activeFiltersConfig = {
