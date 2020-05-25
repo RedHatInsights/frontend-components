@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-insights",
-    "version": "1.0.16",
+    "version": "1.0.17",
     "description": "Rules detail page for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
