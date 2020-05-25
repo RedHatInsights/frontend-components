@@ -35,7 +35,7 @@ const Markdown = ({ template, definitions }) => {
         const compiledDot = definitions ? doT.template(template, DOT_SETTINGS)(definitions) : template;
         const compiledMd = marked(sanitizeHtml(compiledDot, sanitizeOptions));
 
-        return <div dangerouslySetInnerHTML={{
+        return <div className="ins-c-rule__markdown" dangerouslySetInnerHTML={{
             __html: compiledMd
             .replace(/<ul>/gim, `<ul class="pf-c-list" style="font-size: inherit">`)
             .replace(/<a>/gim, `<a rel="noopener noreferrer" target="_blank">`)
