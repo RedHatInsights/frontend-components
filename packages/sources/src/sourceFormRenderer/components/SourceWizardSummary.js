@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { TextContent, TextListItem, TextListItemVariants, TextListVariants, TextList } from '@patternfly/react-core';
 import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
-import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps } from '../../addSourceWizard/schemaBuilder';
+import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps, shouldSkipEndpoint } from '../../addSourceWizard/schemaBuilder';
 import ValuePopover from './ValuePopover';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
@@ -44,7 +44,7 @@ export const getAllFieldsValues = (fields, values, stepKeys) => fields.map((fiel
 
 export const getStepKeys = (typeName, authName, appName = 'generic', appId) => [
     ...get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'includeStepKeyFields' ], []),
-    ...get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'additionalSteps' ], []).map(({ stepKey }) => stepKey),
+    ...get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'additionalSteps' ], []).map(({ name }) => name),
     `${typeName}-${authName}-${appName}-additional-step`,
     `${typeName}-${authName}-additional-step`,
     appId ? `${typeName}-${appId}` : undefined
@@ -66,7 +66,11 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
         authTypeFields = authType && authType.fields ? authType.fields : [];
     }
 
-    const skipEndpoint = values.noEndpoint;
+    const application = values.application ? applicationTypes.find(type => type.id === values.application.application_type_id) : undefined;
+
+    const { display_name = 'Not selected', name, id } = application ? application : {};
+
+    const skipEndpoint = shouldSkipEndpoint(type.name, hasAuthentication, name);
 
     let endpointFields = type.schema.endpoint.fields;
 
@@ -75,10 +79,6 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
         authTypeFields = authTypeFields.filter(({ name }) => !name.includes('authentication.'));
     }
 
-    const application = values.application ? applicationTypes.find(type => type.id === values.application.application_type_id) : undefined;
-
-    const { display_name = 'Not selected', name, id } = application ? application : {};
-
     const availableStepKeys = getStepKeys(type.name, hasAuthentication, name, id);
 
     const authSteps = getAdditionalSteps(type.name, hasAuthentication, name);
@@ -86,7 +86,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
 
     if (authSteps.length > 0) {
         authTypeFields = authSteps
-        .map((step) => [ ...step.fields, ...authTypeFields.filter(({ stepKey }) => stepKey && step.stepKey === stepKey) ])
+        .map((step) => [ ...step.fields, ...authTypeFields.filter(({ stepKey }) => stepKey && step.name === stepKey) ])
         .flatMap(x => x)
         .filter(({ name }) => (
             authTypeFields.find((field) => field.name === name) ||

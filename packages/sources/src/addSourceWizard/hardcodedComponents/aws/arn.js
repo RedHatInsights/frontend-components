@@ -29,8 +29,9 @@ Create a cost and usage report using the following values:
                 <TextListItem>Report name: koku</TextListItem>
                 <TextListItem>Time unit: hourly</TextListItem>
                 <TextListItem>Include: Resource IDs</TextListItem>
-                <TextListItem>Enable support for: RedShift, QuickSight</TextListItem>
+                <TextListItem>Enable support for: RedShift, QuickSight and disable support for Athena</TextListItem>
                 <TextListItem>Report path prefix: (leave blank)</TextListItem>
+                <TextListItem>Compression type: GZIP</TextListItem>
             </TextList>
         </TextListItem>
         <TextListItem>Enter the name of the Amazon S3 bucket you just created below:</TextListItem>

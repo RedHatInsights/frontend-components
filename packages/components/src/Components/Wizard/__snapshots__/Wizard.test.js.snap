@@ -5,20 +5,20 @@ exports[`Wizard component should render correctly default 1`] = `
   actions={
     Array [
       <Unknown
-        action="cancel"
-        onClick={[Function]}
-        variant="secondary"
-      >
-        Cancel
-      </Unknown>,
-      false,
-      <Unknown
         action="next"
         isDisabled={false}
         onClick={[Function]}
         variant="primary"
       >
         Next
+      </Unknown>,
+      false,
+      <Unknown
+        action="cancel"
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
       </Unknown>,
     ]
   }
@@ -73,20 +73,20 @@ exports[`Wizard component should render correctly large 1`] = `
   actions={
     Array [
       <Unknown
-        action="cancel"
-        onClick={[Function]}
-        variant="secondary"
-      >
-        Cancel
-      </Unknown>,
-      false,
-      <Unknown
         action="next"
         isDisabled={false}
         onClick={[Function]}
         variant="primary"
       >
         Next
+      </Unknown>,
+      false,
+      <Unknown
+        action="cancel"
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
       </Unknown>,
     ]
   }
@@ -141,20 +141,20 @@ exports[`Wizard component should render correctly one page 1`] = `
   actions={
     Array [
       <Unknown
-        action="cancel"
-        onClick={[Function]}
-        variant="secondary"
-      >
-        Cancel
-      </Unknown>,
-      false,
-      <Unknown
         action="confirm"
         isDisabled={false}
         onClick={[Function]}
         variant="primary"
       >
         Confirm
+      </Unknown>,
+      false,
+      <Unknown
+        action="cancel"
+        onClick={[Function]}
+        variant="secondary"
+      >
+        Cancel
       </Unknown>,
     ]
   }

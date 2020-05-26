@@ -38,9 +38,9 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
             <React.Fragment>
               <DropdownToggleCheckbox
                 aria-label="Select all"
-                checked={null}
                 className=""
                 id="toggle-checkbox"
+                isChecked={null}
                 isDisabled={false}
                 isValid={true}
                 onChange={[Function]}
@@ -88,9 +88,9 @@ exports[`BulkSelect should render correctly 1`] = `
             <React.Fragment>
               <DropdownToggleCheckbox
                 aria-label="Select all"
-                checked={false}
                 className=""
                 id="some-id-toggle-checkbox"
+                isChecked={false}
                 isDisabled={false}
                 isValid={true}
                 onChange={[Function]}
@@ -131,9 +131,9 @@ exports[`BulkSelect should render correctly 2`] = `
             <React.Fragment>
               <DropdownToggleCheckbox
                 aria-label="Select all"
-                checked={false}
                 className=""
                 id="toggle-checkbox"
+                isChecked={false}
                 isDisabled={false}
                 isValid={true}
                 onChange={[Function]}

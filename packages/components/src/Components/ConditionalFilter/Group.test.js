@@ -59,6 +59,11 @@ describe('Group - component', () => {
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
+        it('should render correctly with items - isDisabled', () => {
+            const wrapper = shallow(<Group {...config} isDisabled />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
         it('should render correctly with items and default value', () => {
             const wrapper = shallow(<Group { ...config } value={ [{ value: 'some-value' }] } />);
             expect(toJson(wrapper)).toMatchSnapshot();

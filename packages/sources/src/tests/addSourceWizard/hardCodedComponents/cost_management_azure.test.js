@@ -7,6 +7,7 @@ import {
 } from '@patternfly/react-core';
 
 import * as Cm from '../../../addSourceWizard/hardcodedComponents/azure/costManagement';
+import RenderContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
 
 describe('Cost Management Azure steps components', () => {
     test('Configure Resource Group and Storage Account description', () => {
@@ -14,18 +15,28 @@ describe('Cost Management Azure steps components', () => {
 
         expect(wrapper.find(Text)).toHaveLength(3);
     });
-    test('Service Principal description', () => {
-        const wrapper = mount(<Cm.ServicePrincipalDescription />);
+    test('Subscription ID description', () => {
+        const wrapper = mount(<Cm.SubscriptionID />);
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
         expect(wrapper.find(ClipboardCopy)).toHaveLength(1);
     });
-    test('Create Active Directory description', () => {
-        const wrapper = mount(<Cm.CreateActiveDirectory />);
+    test('Configure Roles description', () => {
+        const wrapper = mount(<Cm.ConfigureRolesDescription />);
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
-        expect(wrapper.find(Text)).toHaveLength(1);
+        expect(wrapper.find(Text)).toHaveLength(3);
         expect(wrapper.find(ClipboardCopy)).toHaveLength(1);
+    });
+    test('Read Role description', () => {
+        const wrapper = mount(
+            <RenderContext.Provider value={{ formOptions: { getState: () => ({ values: { credentials: { subscription_id: 'my-sub-id-1' } } }) } }}>
+                <Cm.ReaderRoleDescription />
+            </RenderContext.Provider>
+        );
+        expect(wrapper.find(TextContent)).toHaveLength(1);
+        expect(wrapper.find(Text)).toHaveLength(1);
+        expect(wrapper.find(ClipboardCopy).props().children).toMatch(/my-sub-id-1/);
     });
     test('Export Schedule description', () => {
         const wrapper = mount(<Cm.ExportSchedule />);

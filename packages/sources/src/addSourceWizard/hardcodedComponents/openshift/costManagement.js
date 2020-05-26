@@ -1,5 +1,4 @@
-import { TextContent, Text, TextVariants, TextListItem, TextList, Button, Popover, ButtonVariant } from '@patternfly/react-core';
-import { QuestionCircleIcon } from '@patternfly/react-icons';
+import { TextContent, Text, TextVariants, TextListItem, TextList } from '@patternfly/react-core';
 import React from 'react';
 import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
 
@@ -19,25 +18,9 @@ export const ConfigureCostOperator = () => (
                     for <i>cost management</i> ).
                 </TextListItem>
                 <TextListItem component='li'>
-                    When configuration is complete provide your cluster identifier.<br />
-                    Enter the cluster identifier below:
+                    When configuration is complete, enter the cluster identifier below. The cluster identifier can be found in the cluster&apos;s Help &gt; About screen.
                 </TextListItem>
             </TextList>
         </TextContent>
     </TextContent>
 );
-
-export const ClusterIdentifierLabel = () => (
-    // Github issue: https://github.com/patternfly/patternfly-react/issues/3731
-    <React.Fragment>
-        Cluster identifier <span className="pf-c-form__label-required" aria-hidden="true">*</span>
-        <Popover
-            aria-label="more-information-popover"
-            position="top"
-            bodyContent={<Text>The cluster identifier can be found in the <b>Help &gt; About</b> screen on the cluster.</Text>}
-        >
-            <Button className='cluster-id-question-button' variant={ButtonVariant.plain}><QuestionCircleIcon /></Button>
-        </Popover>
-    </React.Fragment>
-);
-

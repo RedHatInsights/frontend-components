@@ -138,6 +138,144 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
 </TextContent>
 `;
 
+exports[`SourceWizardSummary component should render correctly amazon - ARN cost management - include appended field from DB 1`] = `
+<TextContent>
+  <div
+    className="pf-c-content"
+  >
+    <TextList
+      component="dl"
+    >
+      <dl
+        className=""
+        data-pf-content={true}
+      >
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Name
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            cosi
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Application
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            Cost Management
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Source type
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            Amazon Web Services
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Authentication type
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            ARN
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            S3 bucket name
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            gfghf
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            ARN
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            arn:aws:132
+          </dd>
+        </TextListItem>
+      </dl>
+    </TextList>
+  </div>
+</TextContent>
+`;
+
 exports[`SourceWizardSummary component should render correctly amazon 1`] = `
 <TextContent>
   <div
@@ -822,6 +960,104 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
             data-pf-content={true}
           >
             authority
+          </dd>
+        </TextListItem>
+      </dl>
+    </TextList>
+  </div>
+</TextContent>
+`;
+
+exports[`SourceWizardSummary component should render correctly openshift cost management - include appended field from DB 1`] = `
+<TextContent>
+  <div
+    className="pf-c-content"
+  >
+    <TextList
+      component="dl"
+    >
+      <dl
+        className=""
+        data-pf-content={true}
+      >
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Name
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            cosi
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Application
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            Cost Management
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Source type
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            OpenShift Container Platform
+          </dd>
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          <dt
+            className=""
+            data-pf-content={true}
+          >
+            Cluster Identifier
+          </dt>
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <dd
+            className=""
+            data-pf-content={true}
+          >
+            CLUSTER ID123
           </dd>
         </TextListItem>
       </dl>
