@@ -145,4 +145,50 @@ exports[`CullingInformation should render with dates - warning 1`] = `
 </Fragment>
 `;
 
-exports[`CullingInformation should render with dates 1`] = `"Some children"`;
+exports[`CullingInformation should render with dates 1`] = `
+<Fragment>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="System scheduled for inventory removal in 10 days"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="bottom"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span
+      className="ins-c-inventory__culling-warning"
+    >
+      <ExclamationTriangleIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      Some children
+    </span>
+  </Tooltip>
+</Fragment>
+`;

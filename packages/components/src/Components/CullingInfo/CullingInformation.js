@@ -34,21 +34,21 @@ const calculateTooltip = (culled, warning, currDate) => {
 
 const CullingInformation = ({ culled, className, staleWarning, stale, currDate, children, render, ...props }) => {
     // TODO: remove comments once culling is fine
-    const { isError, msg } = calculateTooltip(culled, staleWarning, currDate);
-    if (!isError || (new Date(currDate) - new Date(stale)) < 0) {
+    if ((new Date(currDate) - new Date(stale)) < 0) {
         return render ? render({
             msg: ''
         }) : children;
     }
 
+    const { isWarn, isError, msg } = calculateTooltip(culled, staleWarning, currDate);
     if (render) {
         return <span className={
             classnames({
-                // 'ins-c-inventory__culling-warning': isWarn,
+                'ins-c-inventory__culling-warning': isWarn,
                 'ins-c-inventory__culling-danger': isError
             })
         }>
-            {/* { isWarn && <ExclamationTriangleIcon /> } */}
+            { isWarn && <ExclamationTriangleIcon /> }
             { isError && <ExclamationCircleIcon /> }
             { render({ msg })}
         </span>;
@@ -62,12 +62,12 @@ const CullingInformation = ({ culled, className, staleWarning, stale, currDate, 
         >
             <span className={
                 classnames({
-                    // 'ins-c-inventory__culling-warning': isWarn,
+                    'ins-c-inventory__culling-warning': isWarn,
                     'ins-c-inventory__culling-danger': isError
                 })
             }>
                 { isError && <ExclamationCircleIcon /> }
-                {/* { isWarn && <ExclamationTriangleIcon /> } */}
+                { isWarn && <ExclamationTriangleIcon /> }
                 {children}
             </span>
         </Tooltip>
