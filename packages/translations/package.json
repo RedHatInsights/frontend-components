@@ -7,8 +7,8 @@
         "access": "public"
     },
     "scripts": {
-        "build": "webpack --config config/webpack.config.js",
-        "start": "webpack --watch --config config/webpack.config.js"
+        "build": "rollup -c ./config/rollup.config.js",
+        "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
         "type": "git",
@@ -21,7 +21,9 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/translations#readme",
     "peerDependencies": {
-        "react-intl": ">=2.9.2"
+        "react-intl": ">=2.9.2",
+        "prop-types": "^15.6.2",
+        "react": "^16.5.1"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components-utilities": ">=0.0.7"

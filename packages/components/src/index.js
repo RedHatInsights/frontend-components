@@ -29,7 +29,7 @@ export * from './Components/BulkSelect';
 export * from './Components/ConditionalFilter';
 export * from './Components/TagCount';
 export * from './Components/TagModal';
-export * from './Components/PrimaryToolbar';
+// export * from './Components/PrimaryToolbar';
 export * from './Components/DateFormat';
 export * from './Components/CullingInfo';
 export * from './Components/Unavailable';

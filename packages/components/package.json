@@ -8,8 +8,8 @@
         "access": "public"
     },
     "scripts": {
-        "build": "webpack --config config/webpack.config.js",
-        "start": "webpack --watch --config config/webpack.config.js"
+        "build": "rollup -c ./config/rollup.config.js",
+        "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
         "type": "git",

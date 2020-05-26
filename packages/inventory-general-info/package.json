@@ -7,8 +7,8 @@
         "access": "public"
     },
     "scripts": {
-        "build": "webpack --config config/webpack.config.js",
-        "start": "webpack --watch --config config/webpack.config.js"
+        "build": "rollup -c ./config/rollup.config.js",
+        "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
         "type": "git",
@@ -27,8 +27,8 @@
         "prop-types": "^15.6.2",
         "react": "^16.5.1",
         "react-dom": "^16.5.1",
-        "react-redux": "^5.0.7",
-        "react-router-dom": "^4.2.2"
+        "react-redux": ">=5.0.7",
+        "react-router-dom": ">=4.2.2"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
