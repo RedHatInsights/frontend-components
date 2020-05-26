@@ -42,6 +42,20 @@ describe('asyncNameValidator', () => {
         expect(msg).toEqual(undefined);
     });
 
+    it('returns nothing when the request fails', async () => {
+        const consoleTmp = console.error;
+        console.error = jest.fn();
+
+        actions.findSource = jest.fn(() => Promise.reject('Some error'));
+
+        const msg = await asyncValidator('a1');
+
+        expect(msg).toEqual(undefined);
+        expect(console.error).toHaveBeenCalledWith('Some error');
+
+        console.error = consoleTmp;
+    });
+
     describe('wrapper', () => {
         beforeEach(() => {
             setFirstValidated(true);
