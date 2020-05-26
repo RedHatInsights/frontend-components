@@ -1,6 +1,6 @@
 # Deprecated
 
-Breadcrumbs from FE component shouldn\'t be used anymore.
+Breadcrumbs from FE component shouldn't be used anymore.
 Instead use [Breadcrumb](https://patternfly-react.surge.sh/documentation/react/components/breadcrumb) from PF repository
 
 # Breadcrumbs
