@@ -23,6 +23,7 @@ export * from './Components/EmptyTable';
 export * from './Components/Spinner';
 export * from './Components/Filters';
 export * from './Components/InvalidObject';
+export * from './Components/NotAuthorized';
 export * from './Components/FilterChips';
 export * from './Components/BulkSelect';
 export * from './Components/ConditionalFilter';
