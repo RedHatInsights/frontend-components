@@ -5,7 +5,7 @@ import { Breadcrumb, BreadcrumbItem } from '@patternfly/react-core';
 
 const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => {
     console.warn('Breadcrumbs from FE component shouldn\'t be used anymore. \
-Instead use http://patternfly-react.surge.sh/patternfly-4/components/breadcrumb#Breadcrumb from PF repository.');
+Instead use https://patternfly-react.surge.sh/documentation/react/components/breadcrumb from PF repository.');
     return (
         <Breadcrumb className={ classnames('ins-c-breadcrumbs', className) } { ...props }>
             {

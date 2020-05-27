@@ -1,3 +1,8 @@
+# Deprecated
+
+Breadcrumbs from FE component shouldn't be used anymore.
+Instead use [Breadcrumb](https://patternfly-react.surge.sh/documentation/react/components/breadcrumb) from PF repository
+
 # Breadcrumbs
 This component is to show user from where he came and to easilly go back number of times.
 
