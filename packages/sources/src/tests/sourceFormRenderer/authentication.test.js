@@ -39,6 +39,51 @@ describe('Authentication test', () => {
         };
     });
 
+    it('renders with no validation', () => {
+        schema = {
+            fields: [{
+                component: 'authentication',
+                name: 'authentication.password',
+                isRequired: true
+            }]
+        };
+
+        const wrapper = mount(<SourcesFormRenderer
+            {...initialProps}
+            schema={schema}
+            initialValues={{
+                authentication: {
+                    id: 'someid'
+                }
+            }}
+        />);
+
+        expect(wrapper.find(Authentication)).toHaveLength(1);
+    });
+
+    it('renders with func validation', () => {
+        schema = {
+            fields: [{
+                component: 'authentication',
+                name: 'authentication.password',
+                isRequired: true,
+                validate: [ () => undefined ]
+            }]
+        };
+
+        const wrapper = mount(<SourcesFormRenderer
+            {...initialProps}
+            schema={schema}
+            initialValues={{
+                authentication: {
+                    id: 'someid'
+                }
+            }}
+        />);
+
+        expect(wrapper.find(Authentication)).toHaveLength(1);
+    });
+
     it('renders not editing', () => {
         const wrapper = mount(<SourcesFormRenderer
             {...initialProps}
