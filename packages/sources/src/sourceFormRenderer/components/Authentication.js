@@ -9,7 +9,7 @@ const Authentication = (rest) => {
 
     const { authentication } = formOptions.getState().values;
 
-    const doNotRequirePassword = rest.validate.filter(({ type }) => type !== validatorTypes.REQUIRED);
+    const doNotRequirePassword = rest.validate && rest.validate.filter(({ type }) => type !== validatorTypes.REQUIRED);
 
     const componentProps = {
         ...rest,
