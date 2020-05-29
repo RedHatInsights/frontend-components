@@ -17,10 +17,10 @@ const CloseModal = ({ onExit, onStay, isOpen, title }) => (<Modal
     isOpen={isOpen}
     onClose={onStay}
     actions={[
-        <Button key="confirm" variant="primary" onClick={onExit}>
+        <Button key="confirm" variant="primary" id="on-exit-button" onClick={onExit}>
     Exit
         </Button>,
-        <Button key="cancel" variant="link" onClick={onStay}>
+        <Button key="cancel" variant="link" id="on-stay-button" onClick={onStay}>
     Stay
         </Button>
     ]}
