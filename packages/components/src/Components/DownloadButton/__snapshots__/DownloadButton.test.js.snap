@@ -640,6 +640,7 @@ exports[`DownloadButton component should render disabled 1`] = `
   toggle={
     <DropdownToggle
       iconComponent={null}
+      isDisabled={true}
       onToggle={[Function]}
     >
       <ExportIcon
