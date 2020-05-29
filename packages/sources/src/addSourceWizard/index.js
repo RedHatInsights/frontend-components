@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useReducer } from 'react';
 import { Button } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
@@ -11,7 +11,7 @@ import { WIZARD_TITLE } from '../utilities/stringConstants';
 import createProgressText from './createProgressText';
 import CloseModal from './CloseModal';
 
-const initialValues = (initialValues) => ({
+const prepareInitialValues = (initialValues) => ({
     isSubmitted: false,
     isFinished: false,
     isErrored: false,
@@ -23,103 +23,116 @@ const initialValues = (initialValues) => ({
     progressTexts: []
 });
 
-class AddSourceWizard extends React.Component {
-    state = initialValues(this.props.initialValues);
+const reducer = (state, { type, values, data, error, initialValues }) => {
+    switch (type) {
+        case 'reset':
+            return prepareInitialValues(initialValues);
+        case 'prepareSubmitState':
+            return {
+                ...state,
+                isSubmitted: true,
+                values,
+                progressTexts: createProgressText(values),
+                progressStep: 0
+            };
+        case 'increaseProgressStep':
+            return { ...state, progressStep: state.progressStep + 1 };
+        case 'setSubmitted':
+            return { ...state, isFinished: true, createdSource: data };
+        case 'setErrored':
+            return { ...state, isErrored: true, error: error.toString() };
+        case 'onRetry':
+            return {
+                ...state,
+                isErrored: false,
+                isSubmitted: false,
+                error: undefined
+            };
+        case 'onStay':
+            return { ...state, isCancelling: false };
+        case 'showCancelModal':
+            return { ...state, isCancelling: true, values };
+    }
+};
 
-    setOnSubmitState = (values) => this.setState({
-        isSubmitted: true,
-        values
-    })
+const AddSourceWizard = ({
+    successfulMessage,
+    isOpen,
+    sourceTypes,
+    applicationTypes,
+    disableAppSelection,
+    hideSourcesButton,
+    returnButtonTitle,
+    initialValues,
+    onClose,
+    afterSuccess
+}) => {
+    const [
+        { isErrored, isFinished, isSubmitted, values, error, progressStep, progressTexts, isCancelling, createdSource },
+        dispatch
+    ] = useReducer(reducer, prepareInitialValues(initialValues));
 
-    onSubmit = (formValues, sourceTypes) => {
-        this.setState({ progressTexts: createProgressText(formValues), progressStep: 0 });
-        const increaseProgressStep = () => this.setState((({ progressStep }) => ({ progressStep: ++progressStep })));
+    const onSubmit = (formValues, sourceTypes) => {
+        dispatch({ type: 'prepareSubmitState', values: formValues });
 
-        this.setOnSubmitState(formValues);
-        return doCreateSource(formValues, sourceTypes, increaseProgressStep).then((data) => {
-            this.props.afterSuccess(data);
-            this.setState({ isFinished: true, createdSource: data });
+        return doCreateSource(formValues, sourceTypes, () => dispatch({ type: 'increaseProgressStep' })).then((data) => {
+            afterSuccess && afterSuccess(data);
+            dispatch({ type: 'setSubmitted', data });
         })
         .catch((error) => {
-            this.setState({ isErrored: true, error: error.toString() });
+            dispatch({ type: 'setErrored', error });
         });
+    };
+
+    const afterSubmit = () => {
+        onClose(undefined, createdSource);
+        dispatch({ type: 'reset', initialValues });
+    };
+
+    const onCancelBeforeExit = (values) => isEmpty(values)
+        ? onClose({})
+        : dispatch({ type: 'showCancelModal', values });
+
+    const onExit = () => onClose(values);
+
+    if (!isOpen) {
+        return null;
     }
 
-    afterSubmit = () => {
-        this.props.onClose(undefined, this.state.createdSource);
-        this.setState({ ...initialValues });
+    if (!isSubmitted) {
+        return (<React.Fragment>
+            <CloseModal
+                isOpen={isCancelling}
+                onExit={onExit}
+                onStay={() => dispatch({ type: 'onStay' })}
+            />
+            <Form
+                isCancelling={isCancelling}
+                values={ values }
+                onSubmit={ onSubmit }
+                onCancel={ onCancelBeforeExit }
+                sourceTypes={ sourceTypes }
+                applicationTypes={ applicationTypes }
+                disableAppSelection={ disableAppSelection }
+            />
+        </React.Fragment>
+        );
     }
 
-    onRetry = () => this.setState({
-        isErrored: false,
-        isSubmitted: false,
-        error: undefined
-    })
-
-    onCancelBeforeExit = (values) => isEmpty(values) ? this.props.onClose({}) : this.setState({
-        isCancelling: true,
-        values
-    });
-
-    onExit = () => this.props.onClose(this.state.values);
-
-    onStay = () => this.setState({
-        isCancelling: false
-    });
-
-    render() {
-        const {
-            successfulMessage,
-            isOpen,
-            sourceTypes,
-            applicationTypes,
-            disableAppSelection,
-            hideSourcesButton,
-            returnButtonTitle,
-            disableHardcodedSchemas
-        } = this.props;
-        const { isErrored, isFinished, isSubmitted, values, error, progressStep, progressTexts, isCancelling } = this.state;
-
-        if (!isOpen) {
-            return null;
-        }
-
-        if (!isSubmitted) {
-            return (<React.Fragment>
-                <CloseModal
-                    isOpen={isCancelling}
-                    onExit={this.onExit}
-                    onStay={this.onStay}
-                />
-                <Form
-                    isCancelling={isCancelling}
-                    values={ values }
-                    onSubmit={ this.onSubmit }
-                    onCancel={ this.onCancelBeforeExit }
-                    sourceTypes={ sourceTypes }
-                    applicationTypes={ applicationTypes }
-                    disableAppSelection={ disableAppSelection }
-                    disableHardcodedSchemas={ disableHardcodedSchemas }
-                />
-            </React.Fragment>
-            );
-        }
-
-        return <FinalWizard
-            afterSubmit={ this.afterSubmit }
-            afterError={ () => this.onCancel() }
-            isFinished={ isFinished }
-            isErrored={ isErrored }
-            onRetry={ this.onRetry }
-            successfulMessage={ successfulMessage }
-            hideSourcesButton={ hideSourcesButton }
-            returnButtonTitle={ returnButtonTitle }
-            errorMessage={ error }
-            progressStep={progressStep}
-            progressTexts={progressTexts}
-        />;
-    }
-}
+    return <FinalWizard
+        afterSubmit={ afterSubmit }
+        afterError={ () => onClose({}) }
+        isFinished={ isFinished }
+        isErrored={ isErrored }
+        onRetry={ () => dispatch({ type: 'onRetry' }) }
+        successfulMessage={ successfulMessage }
+        hideSourcesButton={ hideSourcesButton }
+        returnButtonTitle={ returnButtonTitle }
+        errorMessage={ error }
+        progressStep={progressStep}
+        progressTexts={progressTexts}
+    />;
+};
 
 AddSourceWizard.propTypes = {
     afterSuccess: PropTypes.func,
@@ -145,37 +158,22 @@ AddSourceWizard.propTypes = {
     }),
     disableAppSelection: PropTypes.bool,
     hideSourcesButton: PropTypes.bool,
-    returnButtonTitle: PropTypes.node,
-    disableHardcodedSchemas: PropTypes.bool
+    returnButtonTitle: PropTypes.node
 };
 
 AddSourceWizard.defaultProps = {
-    afterSuccess: () => {},
-    sourceTypes: undefined,
-    applicationTypes: undefined,
     successfulMessage: 'Your source has been successfully added.',
     initialValues: {},
-    disableAppSelection: false,
-    hideSourcesButton: false,
-    returnButtonTitle: 'Go back to sources',
-    disableHardcodedSchemas: false
+    returnButtonTitle: 'Go back to sources'
 };
 
-class AddSourceButton extends React.Component {
-    state = {
-        isOpen: false
-    }
+const AddSourceButton = (props) => {
+    const [ isOpen, setIsOpen ] = useState(false);
 
-    setIsOpen = (value) => this.setState({
-        isOpen: value
-    })
-
-    render() {
-        return <React.Fragment>
-            <Button variant='primary' onClick={ () => this.setState({ isOpen: true }) }>{WIZARD_TITLE}</Button>
-            <AddSourceWizard isOpen={ this.state.isOpen } onClose={ () => this.setIsOpen(false) } { ...this.props }/>
-        </React.Fragment>;
-    }
-}
+    return (<React.Fragment>
+        <Button variant='primary' onClick={ () => setIsOpen(true) }>{WIZARD_TITLE}</Button>
+        <AddSourceWizard isOpen={ isOpen } onClose={ () => setIsOpen(false) } { ...props }/>
+    </React.Fragment>);
+};
 
 export { AddSourceButton, AddSourceWizard };

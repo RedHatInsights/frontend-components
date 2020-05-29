@@ -46,7 +46,7 @@ const FinishedStep = ({ onClose, successfulMessage, hideSourcesButton, returnBut
 FinishedStep.propTypes = {
     onClose: PropTypes.func.isRequired,
     successfulMessage: PropTypes.node.isRequired,
-    hideSourcesButton: PropTypes.bool.isRequired,
+    hideSourcesButton: PropTypes.bool,
     returnButtonTitle: PropTypes.node.isRequired,
     progressStep: PropTypes.number.isRequired,
     progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired
