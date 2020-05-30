@@ -3,6 +3,7 @@
     "version": "1.0.12",
     "description": "Detail part of compliance for RedHat Cloud Services.",
     "main": "index.js",
+    "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },

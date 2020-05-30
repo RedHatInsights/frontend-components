@@ -17,6 +17,80 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
   * [inventory-compliance](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-compliance#readme) - directly imported component with graphql to show compliance data
   * [inventory-insights](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-insights#readme) - directly imported component to show insights data
 
+## Treeshaking PF with babel plugin
+
+Patternfly packages require some ehancements to be done in order to properly treeshake your bundles. You can either use direct imports or plugin that does that for you, there are actually 2 plugins to do this
+* [babel-plugin-import](https://www.npmjs.com/package/babel-plugin-import) - easy setup, however not that extensible
+* [transform-imports](https://www.npmjs.com/package/transform-imports) - harder to setup, but allows custom rules
+
+Since Patternfly requires a bit of custom settings you should use `transform-imports`. Change your babel to be JS file `babel.config.js` and add these changes to it
+
+```JS
+require.extensions['.css'] = () => undefined;
+const path = require('path');
+const glob = require('glob');
+
+// list of custom named exports, this is just a few, and you should probably update it to fit your project
+const mapper = {
+  TextVariants: 'Text',
+  DropdownPosition: 'dropdownConstants',
+  EmptyStateVariant: 'EmptyState',
+  TextListItemVariants: 'TextListItem',
+  TextListVariants: 'TextList'
+};
+
+module.exports = {
+    presets: [
+        // list of your presets goes here
+    ],
+    plugins: [
+        // your other plugins
+        [
+            'transform-imports',
+            {
+              '@patternfly/react-core': {
+                transform: (importName) => {
+                  const files = glob.sync(
+                    path.resolve(
+                      __dirname,
+                      // you can use `js` or `esm`
+                      `./node_modules/@patternfly/react-core/dist/js/**/${mapper[
+                      importName
+                      ] || importName}.js`
+                    )
+                  );
+                  if (files.length > 0) {
+                    return files[0].replace(/.*(?=@patternfly)/, '');
+                  } else {
+                    throw `File with importName ${importName} does not exist`;
+                  }
+                },
+                preventFullImport: false,
+                skipDefaultConversion: true
+              }
+            },
+            'react-core'
+          ],
+          [
+            'transform-imports',
+            {
+              '@patternfly/react-icons': {
+                transform: (importName) =>
+                  // you can use `js` or `esm`
+                  `@patternfly/react-icons/dist/js/icons/${importName
+                  .split(/(?=[A-Z])/)
+                  .join('-')
+                  .toLowerCase()}`,
+                preventFullImport: true
+              }
+            },
+            'react-icons'
+          
+    ]
+}
+
+```
+
 ## Local tasks
 Since this is monorepo repository it has some special requirements how to run tasks. This repository is using [lerna](https://github.com/lerna/lerna), so if you have newer version of npm you can run `npx lerna $TASK` where $TASK is one of [lerna commands](https://github.com/lerna/lerna/tree/master/commands).
 

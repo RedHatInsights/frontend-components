@@ -50,9 +50,6 @@ Since our components require a bit more setting up, we are recommending using `t
 Change your babel config to be javascript config `babel.config.js` so you can use JS functions to properly transform your imports
 
 ```JS
-const path = require('path');
-const glob = require('glob');
-
 const FECMapper = {
     SkeletonSize: 'Skeleton',
     PageHeaderTitle: 'PageHeader'
