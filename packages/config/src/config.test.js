@@ -29,12 +29,12 @@ describe('should create dummy config with no options', () => {
         expect(optimization).toEqual({
             minimize: false,
             splitChunks: {
+                chunks: 'all',
+                maxInitialRequests: Infinity,
+                minSize: 0,
                 cacheGroups: {
-                    vendors: false,
-                    commons: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: 'vendor',
-                        chunks: 'initial'
+                    vendor: {
+                        test: /[\\/]node_modules[\\/]/
                     }
                 }
             }
