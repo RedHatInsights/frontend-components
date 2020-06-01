@@ -9,12 +9,22 @@ import {
     Button,
     EmptyStateSecondaryActions,
     EmptyStateVariant,
-    Progress
+    Progress,
+    Bullseye
 } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons';
 
-const FinishedStep = ({ onClose, successfulMessage, hideSourcesButton, returnButtonTitle, progressStep, progressTexts, title }) => (
-    <div className="pf-l-bullseye">
+const FinishedStep = ({
+    onClose,
+    successfulMessage,
+    hideSourcesButton,
+    returnButtonTitle,
+    progressStep,
+    progressTexts,
+    title,
+    linkText
+}) => (
+    <Bullseye>
         <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__empty-state" >
             <EmptyStateIcon icon={ CheckCircleIcon } color="var(--pf-global--success-color--200)" className="pf-u-mb-0"/>
             <Title headingLevel="h5" size="lg" className="pf-u-mt-xl">
@@ -34,15 +44,15 @@ const FinishedStep = ({ onClose, successfulMessage, hideSourcesButton, returnBut
                 { successfulMessage }
             </EmptyStateBody>
             <Button variant="primary" onClick={ onClose } className="pf-u-mt-xl">{returnButtonTitle}</Button>
-            { !hideSourcesButton &&
-        <EmptyStateSecondaryActions>
-            <a href='/hybrid/settings/sources'>
-                <Button variant="link">Take me to sources</Button>
-            </a>
-        </EmptyStateSecondaryActions>
-            }
+            { !hideSourcesButton && (
+                <EmptyStateSecondaryActions>
+                    <a href='/hybrid/settings/sources'>
+                        <Button variant="link">{linkText}</Button>
+                    </a>
+                </EmptyStateSecondaryActions>
+            ) }
         </EmptyState>
-    </div>
+    </Bullseye>
 );
 
 FinishedStep.propTypes = {
@@ -52,11 +62,13 @@ FinishedStep.propTypes = {
     returnButtonTitle: PropTypes.node.isRequired,
     progressStep: PropTypes.number.isRequired,
     progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired,
-    title: PropTypes.node
+    title: PropTypes.node,
+    linkText: PropTypes.node
 };
 
 FinishedStep.defaultProps = {
-    title: 'Configuration successful'
+    title: 'Configuration successful',
+    linkText: 'Take me to sources'
 };
 
 export default FinishedStep;
