@@ -7,38 +7,16 @@ import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
 import { dependencies, peerDependencies, name } from '../package.json';
-import { createFilter } from '@rollup/pluginutils';
+import {
+    rollupConfig,
+    externalDeps,
+    external,
+    globals
+} from '../../../config/rollup-contants';
 
 const entryMapper = {
     index: './src/index.js',
     messages: './src/translatedMessages.js'
-};
-
-const externalDeps = Object.keys({ ...dependencies, ...peerDependencies }).map(item =>
-    (
-        item.includes('@patternfly') ||
-        item.includes('@redhat-cloud-services') ||
-        item.includes('react-intl')
-    ) &&
-    !item.includes('@patternfly/react-table') ?
-        `${item}/**` :
-        item
-);
-
-const external = createFilter(
-    externalDeps,
-    null,
-    { resolve: false }
-);
-
-const globals = {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-    'prop-types': 'prop-types',
-    '@patternfly/react-core': '@patternfly/react-core',
-    '@patternfly/react-icons': '@patternfly/react-icons',
-    '@patternfly/react-table': '@patternfly/react-table',
-    '@redhat-cloud-services/frontend-components': '@redhat-cloud-services/frontend-components'
 };
 
 const commonjsOptions = {
@@ -76,29 +54,41 @@ const plugins = [
     json()
 ];
 
-export default [
-    ...[ 'esm', 'cjs' ].map(env => ({
-        input: entryMapper,
-        output: {
-            dir: `./${env}`,
-            format: env,
-            name,
-            globals,
-            exports: 'named'
-        },
-        external,
-        plugins
-    })),
-    ...Object.entries(entryMapper).map(([ key, input ]) => ({
-        input,
-        output: {
-            file: `./${key}.js`,
-            format: 'umd',
-            name: `${name}-${key}`,
-            globals,
-            exports: 'named'
-        },
-        external,
-        plugins
-    }))
-];
+export default rollupConfig(
+    external(externalDeps(
+        { ...dependencies, ...peerDependencies },
+        [ '@patternfly', '@redhat-cloud-services', 'react-intl' ]
+    )),
+    plugins,
+    globals,
+    name,
+    [ entryMapper ],
+    './'
+);
+
+// export default [
+//     ...[ 'esm', 'cjs' ].map(env => ({
+//         input: entryMapper,
+//         output: {
+//             dir: `./${env}`,
+//             format: env,
+//             name,
+//             globals,
+//             exports: 'named'
+//         },
+//         external,
+//         plugins
+//     })),
+//     ...Object.entries(entryMapper).map(([ key, input ]) => ({
+//         input,
+//         output: {
+//             file: `./${key}.js`,
+//             format: 'umd',
+//             name: `${name}-${key}`,
+//             globals,
+//             exports: 'named'
+//         },
+//         external,
+//         plugins
+//     }))
+// ];

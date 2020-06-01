@@ -8,8 +8,7 @@ import {
     UPDATE_ENTITIES,
     ENTITIES_LOADING,
     CLEAR_FILTERS,
-    TOGGLE_TAG_MODAL,
-    TAGS_SELECTED
+    TOGGLE_TAG_MODAL
 } from './action-types';
 import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import { DateFormat, CullingInformation } from '@redhat-cloud-services/frontend-components';

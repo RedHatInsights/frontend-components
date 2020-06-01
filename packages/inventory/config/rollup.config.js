@@ -7,42 +7,12 @@ import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
 import { dependencies, name, peerDependencies } from '../package.json';
-import { createFilter } from '@rollup/pluginutils';
-
-const entryMapper = {
-    index: 'src/index.js',
-    Inventory: 'src/Inventory.js',
-    reducers: 'src/redux/reducers.js',
-    actionTypes: 'src/redux/action-types.js',
-    actions: 'src/redux/actions.js',
-    DeleteModal: 'src/DeleteModal.js'
-};
-
-const externalDeps = Object.keys({ ...dependencies, ...peerDependencies }).map(item =>
-    (
-        item.includes('@patternfly') ||
-        item.includes('@redhat-cloud-services')
-    ) &&
-    !item.includes('@patternfly/react-table') ?
-        `${item}/**` :
-        item
-);
-
-const external = createFilter(
+import {
+    rollupConfig,
     externalDeps,
-    null,
-    { resolve: false }
-);
-
-const globals = {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-    'prop-types': 'prop-types',
-    '@patternfly/react-core': '@patternfly/react-core',
-    '@patternfly/react-icons': '@patternfly/react-icons',
-    '@patternfly/react-table': '@patternfly/react-table',
-    '@redhat-cloud-services/frontend-components': '@redhat-cloud-services/frontend-components'
-};
+    external,
+    globals
+} from '../../../config/rollup-contants';
 
 const commonjsOptions = {
     ignoreGlobal: true,
@@ -79,32 +49,21 @@ const plugins = [
     json()
 ];
 
-export default [
-    ...[ 'esm', 'cjs' ].map(env => ({
-        input: entryMapper,
-        output: {
-            dir: `./${env}`,
-            format: env,
-            name,
-            globals,
-            exports: 'named'
-        },
-        external,
-        plugins
-    })),
-    ...Object.entries({
+export default rollupConfig(
+    external(externalDeps({ ...dependencies, ...peerDependencies })),
+    plugins,
+    globals,
+    name,
+    [{
+        index: 'src/index.js',
+        Inventory: 'src/Inventory.js',
+        reducers: 'src/redux/reducers.js',
+        actionTypes: 'src/redux/action-types.js',
+        actions: 'src/redux/actions.js',
+        DeleteModal: 'src/DeleteModal.js'
+    }, {
         index: 'src/index.js',
         actions: 'src/redux/actions.js'
-    }).map(([ key, input ]) => ({
-        input,
-        output: {
-            file: `./${key}.js`,
-            format: 'umd',
-            name: `${name}-${key}`,
-            globals,
-            exports: 'named'
-        },
-        external,
-        plugins
-    }))
-];
+    }],
+    './'
+);
