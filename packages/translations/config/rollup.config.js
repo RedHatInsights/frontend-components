@@ -65,30 +65,3 @@ export default rollupConfig(
     [ entryMapper ],
     './'
 );
-
-// export default [
-//     ...[ 'esm', 'cjs' ].map(env => ({
-//         input: entryMapper,
-//         output: {
-//             dir: `./${env}`,
-//             format: env,
-//             name,
-//             globals,
-//             exports: 'named'
-//         },
-//         external,
-//         plugins
-//     })),
-//     ...Object.entries(entryMapper).map(([ key, input ]) => ({
-//         input,
-//         output: {
-//             file: `./${key}.js`,
-//             format: 'umd',
-//             name: `${name}-${key}`,
-//             globals,
-//             exports: 'named'
-//         },
-//         external,
-//         plugins
-//     }))
-// ];
