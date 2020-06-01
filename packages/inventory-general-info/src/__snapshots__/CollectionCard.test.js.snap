@@ -92,6 +92,54 @@ exports[`CollectionCard should render correctly - no data 1`] = `
              
           </div>
         </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Reporter
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Rhel machine id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
       </dl>
     </div>
   </div>
@@ -173,6 +221,42 @@ exports[`CollectionCard should render correctly with data 1`] = `
           data-pf-content="true"
         >
           25 Oct 2019
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Reporter
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Rhel machine id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
         </dd>
       </dl>
     </div>
