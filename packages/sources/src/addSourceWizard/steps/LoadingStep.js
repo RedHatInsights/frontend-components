@@ -12,7 +12,7 @@ import {
     EmptyStateIcon
 } from '@patternfly/react-core';
 
-const LoadingStep = ({ onClose, customText, progressStep, progressTexts }) => <Bullseye>
+const LoadingStep = ({ onClose, customText, progressStep, progressTexts, cancelTitle }) => (<Bullseye>
     <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__empty-state">
         <EmptyStateIcon icon={ Spinner } className="pf-u-mb-0"/>
         <EmptyStateBody className="pf-u-mt-xl">
@@ -31,20 +31,22 @@ const LoadingStep = ({ onClose, customText, progressStep, progressTexts }) => <B
         </EmptyStateBody>
         { onClose &&
         <EmptyStateSecondaryActions className="pf-u-mt-xl">
-            <Button variant="link" onClick={ onClose }>Cancel</Button>
+            <Button variant="link" onClick={ onClose }>{cancelTitle}</Button>
         </EmptyStateSecondaryActions> }
     </EmptyState>
-</Bullseye>;
+</Bullseye>);
 
 LoadingStep.propTypes = {
     onClose: PropTypes.func,
     customText: PropTypes.string,
     progressStep: PropTypes.number,
-    progressTexts: PropTypes.arrayOf(PropTypes.string)
+    progressTexts: PropTypes.arrayOf(PropTypes.string),
+    cancelTitle: PropTypes.node
 };
 
 LoadingStep.defaultProps = {
-    customText: 'Loading, please wait.'
+    customText: 'Loading, please wait.',
+    cancelTitle: 'Cancel'
 };
 
 export default LoadingStep;

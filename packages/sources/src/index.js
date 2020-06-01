@@ -20,6 +20,9 @@ import * as schemaBuilder from './addSourceWizard/schemaBuilder';
 export {
     schemaBuilder
 };
+export { default as LoadingStep } from './addSourceWizard/steps/LoadingStep';
+export { default as FinishedStep } from './addSourceWizard/steps/FinishedStep';
+export { default as ErroredStep } from './addSourceWizard/steps/ErroredStep';
 
 import './styles/cardSelect.scss';
 import './styles/authSelect.scss';
