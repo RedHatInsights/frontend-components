@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 
 import { AddSourceWizard } from '../../addSourceWizard/index';
@@ -18,6 +18,7 @@ import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 
 describe('AddSourceWizard', () => {
     let initialProps;
+    let wrapper;
 
     beforeEach(() => {
         initialProps = {
@@ -28,16 +29,27 @@ describe('AddSourceWizard', () => {
         };
     });
 
-    it('renders correctly with sourceTypes', () => {
-        const wrapper = shallow(<AddSourceWizard { ...initialProps }/>);
+    it('renders correctly with sourceTypes', async () => {
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } />);
+        });
+        wrapper.update();
+
         expect(wrapper.find(Form)).toHaveLength(1);
         expect(wrapper.find(Modal)).toHaveLength(1);
     });
 
-    it('renders correctly without sourceTypes', () => {
-        const wrapper = shallow(<AddSourceWizard { ...initialProps } sourceTypes={ undefined }/>);
+    it('renders correctly without sourceTypes', async () => {
+        dependency.doLoadSourceTypes = jest.fn(() => new Promise((resolve) => resolve({ sourceTypes })));
+
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } sourceTypes={undefined}/>);
+        });
+        wrapper.update();
+
         expect(wrapper.find(Form)).toHaveLength(1);
         expect(wrapper.find(Modal)).toHaveLength(1);
+        expect(dependency.doLoadSourceTypes).toHaveBeenCalled();
     });
 
     it('show finished step after filling the form', async () => {
@@ -47,7 +59,10 @@ describe('AddSourceWizard', () => {
         createSource.doCreateSource = jest.fn(() => new Promise((resolve) => setTimeout(() => resolve('ok'), 100)));
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
-        const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } />);
+        });
+        wrapper.update();
 
         await act(async() => {
             wrapper.find('input').instance().value = 'somename';
@@ -90,7 +105,10 @@ describe('AddSourceWizard', () => {
         createSource.doCreateSource = jest.fn(() => new Promise((resolve) => resolve({ name: 'source' })));
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
-        const wrapper = mount(<AddSourceWizard { ...initialProps } afterSuccess={ afterSubmitMock }/>);
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } afterSuccess={ afterSubmitMock } />);
+        });
+        wrapper.update();
 
         await act(async () => {
             wrapper.find('input').instance().value = 'somename';
@@ -126,7 +144,10 @@ describe('AddSourceWizard', () => {
         const onClose = jest.fn();
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
-        const wrapper = mount(<AddSourceWizard { ...initialProps } onClose={ onClose }/>);
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } onClose={ onClose } />);
+        });
+        wrapper.update();
 
         await act(async () => {
             wrapper.find('input').instance().value = NAME;
@@ -166,7 +187,10 @@ describe('AddSourceWizard', () => {
         const onClose = jest.fn();
         dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
 
-        const wrapper = mount(<AddSourceWizard { ...initialProps } onClose={ onClose }/>);
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } onClose={ onClose } />);
+        });
+        wrapper.update();
 
         await act(async () => {
             wrapper.find('input').instance().value = NAME;
@@ -206,7 +230,10 @@ describe('AddSourceWizard', () => {
         const ERROR_MESSAGE = 'fail';
         createSource.doCreateSource = jest.fn(() => new Promise((_resolve, reject) => reject(ERROR_MESSAGE)));
 
-        const wrapper = mount(<AddSourceWizard { ...initialProps }/>);
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } />);
+        });
+        wrapper.update();
 
         await act(async () => {
             wrapper.find('input').instance().value = 'somename';
