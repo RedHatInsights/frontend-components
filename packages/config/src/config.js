@@ -21,8 +21,21 @@ module.exports = ({
                 maxInitialRequests: Infinity,
                 minSize: 0,
                 cacheGroups: {
+                    reactVendor: {
+                        test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                        name: 'reactvendor'
+                    },
+                    pfVendor: {
+                        test: /[\\/]node_modules[\\/](@patternfly)[\\/]/,
+                        name: 'pfVendor'
+                    },
+                    rhcsVendor: {
+                        test: /[\\/]node_modules[\\/](@redhat-cloud-services)[\\/]/,
+                        name: 'rhcsVendor'
+                    },
                     vendor: {
-                        test: /[\\/]node_modules[\\/]/
+                        test: /[\\/]node_modules[\\/](!react-bootstrap)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
+                        name: 'vendor'
                     }
                 }
             }

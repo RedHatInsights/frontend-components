@@ -47,5 +47,5 @@ export default rollupConfig(
     globals,
     name,
     [ globMapper('src/**/index.js') ],
-    './dist'
+    './dist/'
 );

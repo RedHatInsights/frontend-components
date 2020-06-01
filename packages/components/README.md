@@ -85,6 +85,14 @@ transform: (importName) =>`@redhat-cloud-services/frontend-components/components
 
 ```
 
+#### Jest error
+
+If you see Jest errors after applying transform-imports plugin you should add to your Jest config
+
+```JSON
+"transformIgnorePatterns": [ "/node_modules/(?!@redhat-cloud-services)" ],
+```
+
 ## Documentation Links
 
 * Components

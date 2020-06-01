@@ -26,6 +26,8 @@ Patternfly packages require some ehancements to be done in order to properly tre
 Since Patternfly requires a bit of custom settings you should use `transform-imports`. Change your babel to be JS file `babel.config.js` and add these changes to it
 
 ```JS
+// This is required because of how PF is using their css modules.
+// This `extensions` will be removed in future, we'll have to come up with some other clever way of doing this
 require.extensions['.css'] = () => undefined;
 const path = require('path');
 const glob = require('glob');
@@ -89,6 +91,14 @@ module.exports = {
     ]
 }
 
+```
+
+#### Jest error
+
+If you see Jest errors after applying transform-imports plugin you should add to your Jest config
+
+```JSON
+"transformIgnorePatterns": [ "/node_modules/(?!@redhat-cloud-services)" ],
 ```
 
 ## Local tasks
