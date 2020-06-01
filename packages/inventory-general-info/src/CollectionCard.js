@@ -20,7 +20,10 @@ const CollectionCard = ({ detailLoaded, collectionInformation, entity }) => (<Lo
             DateFormat ?
                 <DateFormat date={entity.created} type="onlyDate" /> :
                 new Date(entity.created).toLocaleString()
-        ) }
+        ) },
+        { title: 'Insights id', value: entity && entity.insights_id },
+        { title: 'Reporter', value: entity && entity.reporter },
+        { title: 'Rhel machine id', value: entity && entity.rhel_machine_id }
     ] }
 />);
 
