@@ -83,6 +83,11 @@ export function getEntities(items, {
         ...defaultFilters,
         registeredWithFilter: []
     }) : defaultFilters;
+
+    const fields = 'fields[canonical_facts]=insights_id,rhel_machine_id,subscription_manager_id,satellite_id,bios_uuid,ip_addresses,fqdn,mac_addresses,external_id' +
+        '&&fields[host]=ansible_host,facts,reporter,stale_timestamp,stale_warning_timestamp,culled_timestamp,created,updated' +
+        '&&fields[system_profile]=arch,os_release';
+
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
         .then((data) => showTags ? mapTags(data) : data)
@@ -108,7 +113,8 @@ export function getEntities(items, {
             staleFilter,
             constructTags(tagFilters),
             registeredWithFilter,
-            { cancelToken: controller && controller.token }
+            { cancelToken: controller && controller.token },
+            fields
         )
         .then((data) => showTags ? mapTags(data, { orderBy, orderDirection }) : data)
         .then(({ results = [], ...data } = {}) => ({
