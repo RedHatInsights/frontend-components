@@ -1,4 +1,4 @@
-import { DataToolbar, DataToolbarContent, DataToolbarGroup, DataToolbarItem } from '@patternfly/react-core/dist/js/experimental';
+import { DataToolbar, DataToolbarContent, DataToolbarGroup, DataToolbarItem, Pagination } from '@patternfly/react-core';
 import React, { Component } from 'react';
 
 import Actions from './Actions';
@@ -6,7 +6,6 @@ import { BulkSelect } from '../BulkSelect';
 import { ConditionalFilter } from '../ConditionalFilter';
 import { DownloadButton } from '../DownloadButton';
 import { FilterChips } from '../FilterChips';
-import { Pagination } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import SortBy from './SortBy';
 import { SortByDirection } from '@patternfly/react-table';

@@ -1,5 +1,7 @@
 /index.js
 /index.css
 /messages.js
+/esm
+/cjs
 *.js.map
 *.css.map

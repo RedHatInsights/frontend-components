@@ -7,3 +7,5 @@ doc/
 config/
 !/TextInputModal.css
 !/TextInputModal.js
+!/esm
+!/cjs

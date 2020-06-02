@@ -3,12 +3,13 @@
     "version": "1.0.12",
     "description": "Detail part of compliance for RedHat Cloud Services.",
     "main": "index.js",
+    "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "webpack --config config/webpack.config.js",
-        "start": "webpack --watch --config config/webpack.config.js"
+        "build": "rollup -c ./config/rollup.config.js",
+        "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
         "type": "git",
@@ -22,15 +23,15 @@
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-compliance#readme",
     "peerDependencies": {
         "@patternfly/react-core": ">=3.2.6",
-        "@patternfly/react-icons": "3.14.12",
+        "@patternfly/react-icons": ">=3.14.12",
         "@patternfly/react-table": ">=2.1.6",
-        "@patternfly/react-tokens": "2.6.31",
+        "@patternfly/react-tokens": ">=2.6.31",
         "react": "^16.5.1",
         "react-dom": "^16.5.1",
         "prop-types": "^15.6.2",
-        "react-redux": "^5.0.7",
-        "react-router-dom": "^4.2.2",
-        "react-content-loader": "^3.4.1",
+        "react-redux": ">=5.0.7",
+        "react-router-dom": ">=4.2.2",
+        "react-content-loader": ">=3.4.1",
         "react-intl": ">=2.8.0",
         "lodash": "4.17.15"
     },
