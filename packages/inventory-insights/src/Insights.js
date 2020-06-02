@@ -465,7 +465,7 @@ class InventoryRuleList extends Component {
                                 icon={ChartSpikeIcon}
                                 title='Get started with Red Hat Insights'
                                 text={<Bullseye>
-                                    <Stack gutter="md">
+                                    <Stack hasGutter>
                                         <StackItem>
                                             1. Install the client on the RHEL system.
                                             <ClipboardCopy>yum install insights-client</ClipboardCopy>
