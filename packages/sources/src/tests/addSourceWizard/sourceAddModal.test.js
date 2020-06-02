@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Wizard } from '@patternfly/react-core';
+import { mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 
 import AddSourceWizard from '../../addSourceWizard/SourceAddModal';
 import sourceTypes from '../helpers/sourceTypes';
@@ -9,9 +9,10 @@ import SourcesFormRenderer from '../../sourceFormRenderer/index';
 
 import * as dependency from '../../api/index';
 
-describe('Steps components', () => {
+describe('sourceAddModal', () => {
     let initialProps;
     let spyFunction;
+    let wrapper;
 
     beforeEach(() => {
         spyFunction = jest.fn();
@@ -28,71 +29,56 @@ describe('Steps components', () => {
         spyFunction.mockReset();
     });
 
-    it('renders correctly with sourceTypes and applicationTypes', () => {
-        const wrapper = shallow(<AddSourceWizard { ...initialProps } sourceTypes={ sourceTypes } applicationTypes={ applicationTypes }/>);
+    it('renders correctly with sourceTypes and applicationTypes', async () => {
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } sourceTypes={ sourceTypes } applicationTypes={ applicationTypes }/>);
+        });
+        wrapper.update();
         expect(wrapper.find(SourcesFormRenderer)).toHaveLength(1);
     });
 
-    it('renders correctly without sourceTypes', (done) => {
+    it('renders correctly without sourceTypes', async () => {
         // mock API
         dependency.doLoadApplicationTypes = jest.fn(() => new Promise((resolve) => resolve({ applicationTypes })));
         dependency.doLoadSourceTypes = jest.fn(() => new Promise((resolve) => resolve({ sourceTypes })));
 
-        const wrapper = shallow(<AddSourceWizard { ...initialProps } applicationTypes={ applicationTypes }/>);
-
-        // loading state
-        expect(wrapper.find(SourcesFormRenderer)).toHaveLength(0);
-        expect(wrapper.find(Wizard)).toHaveLength(1);
-
-        // async call
-        setImmediate(() => {
-            wrapper.update();
-            expect(dependency.doLoadSourceTypes).toHaveBeenCalled();
-            expect(dependency.doLoadApplicationTypes).not.toHaveBeenCalled();
-            expect(wrapper.find(SourcesFormRenderer)).toHaveLength(1);
-            done();
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } applicationTypes={ applicationTypes }/>);
         });
+        wrapper.update();
+
+        expect(dependency.doLoadSourceTypes).toHaveBeenCalled();
+        expect(dependency.doLoadApplicationTypes).not.toHaveBeenCalled();
+        expect(wrapper.find(SourcesFormRenderer)).toHaveLength(1);
     });
 
-    it('renders correctly without applicationTypes', (done) => {
+    it('renders correctly without applicationTypes', async () => {
         // mock API
         dependency.doLoadSourceTypes = jest.fn(() => new Promise((resolve) => resolve({ sourceTypes })));
         dependency.doLoadApplicationTypes = jest.fn(() => new Promise((resolve) => resolve({ applicationTypes })));
 
-        const wrapper = shallow(<AddSourceWizard { ...initialProps } sourceTypes={ sourceTypes }/>);
-
-        // loading state
-        expect(wrapper.find(SourcesFormRenderer)).toHaveLength(0);
-        expect(wrapper.find(Wizard)).toHaveLength(1);
-
-        // async call
-        setImmediate(() => {
-            wrapper.update();
-            expect(dependency.doLoadSourceTypes).not.toHaveBeenCalled();
-            expect(dependency.doLoadApplicationTypes).toHaveBeenCalled();
-            expect(wrapper.find(SourcesFormRenderer)).toHaveLength(1);
-            done();
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } sourceTypes={ sourceTypes } />);
         });
+        wrapper.update();
+
+        expect(dependency.doLoadSourceTypes).not.toHaveBeenCalled();
+        expect(dependency.doLoadApplicationTypes).toHaveBeenCalled();
+        expect(wrapper.find(SourcesFormRenderer)).toHaveLength(1);
     });
 
-    it('renders correctly without sourceTypes and application types', (done) => {
+    it('renders correctly without sourceTypes and application types', async () => {
         // mock API
         dependency.doLoadSourceTypes = jest.fn(() => new Promise((resolve) => resolve({ sourceTypes })));
         dependency.doLoadApplicationTypes = jest.fn(() => new Promise((resolve) => resolve({ applicationTypes })));
 
-        const wrapper = shallow(<AddSourceWizard { ...initialProps }/>);
-
-        // loading state
-        expect(wrapper.find(SourcesFormRenderer)).toHaveLength(0);
-        expect(wrapper.find(Wizard)).toHaveLength(1);
-
-        // async call
-        setImmediate(() => {
-            wrapper.update();
-            expect(dependency.doLoadSourceTypes).toHaveBeenCalled();
-            expect(dependency.doLoadApplicationTypes).toHaveBeenCalled();
-            expect(wrapper.find(SourcesFormRenderer)).toHaveLength(1);
-            done();
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } />);
         });
+        wrapper.update();
+
+        expect(dependency.doLoadSourceTypes).toHaveBeenCalled();
+        expect(dependency.doLoadApplicationTypes).toHaveBeenCalled();
+        expect(wrapper.find(SourcesFormRenderer)).toHaveLength(1);
     });
 });

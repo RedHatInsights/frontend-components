@@ -103,7 +103,7 @@ module.exports = {
             'transform-imports',
             {
                 '@redhat-cloud-services/frontend-components': {
-                    transform: (importName, matches) => `@redhat-cloud-services/frontend-components/components/${frontendComponentsMappe[importName] || importName}`,
+                    transform: (importName, matches) => `@redhat-cloud-services/frontend-components/components/cjs/${frontendComponentsMappe[importName] || importName}`,
                     preventFullImport: true,
                     skipDefaultConversion: true
                 }

@@ -6,18 +6,30 @@ import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
-import { dependencies, name } from './package.json';
+import { dependencies, peerDependencies, name } from '../package.json';
 import {
     rollupConfig,
+    globMapper,
     externalDeps,
     external,
-    globals,
-    globMapper
-} from '../../config/rollup-contants';
+    globals
+} from '../../../config/rollup-contants';
 
 const commonjsOptions = {
     ignoreGlobal: true,
-    include: /node_modules/
+    include: /node_modules/,
+    namedExports: {
+        '../../node_modules/@patternfly/react-table/node_modules/lodash/lodash.js': [
+            'mergeWith',
+            'isFunction',
+            'isArray',
+            'isEqualWith',
+            'isEqual'
+        ],
+        'src/Components/ConditionalFilter/ConditionalFilter.js': [
+            'ConditionalFilterType'
+        ]
+    }
 };
 
 const babelOptions = {
@@ -36,16 +48,16 @@ const plugins = [
         keep_fnames: true
     }),
     postcss({
-        inject: true
+        extract: true
     }),
     json()
 ];
 
 export default rollupConfig(
-    external(externalDeps(dependencies)),
+    external(externalDeps({ ...dependencies, ...peerDependencies })),
     plugins,
     globals,
     name,
     [ globMapper('src/**/index.js') ],
-    './dist/'
+    './components/'
 );

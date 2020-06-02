@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -16,12 +17,25 @@ module.exports = ({
         optimization: {
             minimize: (process.env.NODE_ENV || mode) === 'production',
             splitChunks: {
+                chunks: 'all',
+                maxInitialRequests: Infinity,
+                minSize: 0,
                 cacheGroups: {
-                    vendors: false,
-                    commons: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: 'vendor',
-                        chunks: 'initial'
+                    reactVendor: {
+                        test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                        name: 'reactvendor'
+                    },
+                    pfVendor: {
+                        test: /[\\/]node_modules[\\/](@patternfly)[\\/]/,
+                        name: 'pfVendor'
+                    },
+                    rhcsVendor: {
+                        test: /[\\/]node_modules[\\/](@redhat-cloud-services)[\\/]/,
+                        name: 'rhcsVendor'
+                    },
+                    vendor: {
+                        test: /[\\/]node_modules[\\/](!react-bootstrap)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
+                        name: 'vendor'
                     }
                 }
             }

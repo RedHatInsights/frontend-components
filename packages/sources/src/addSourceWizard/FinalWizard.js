@@ -62,7 +62,7 @@ FinalWizard.propTypes = {
     isFinished: PropTypes.bool.isRequired,
     isErrored: PropTypes.bool.isRequired,
     successfulMessage: PropTypes.node.isRequired,
-    hideSourcesButton: PropTypes.bool.isRequired,
+    hideSourcesButton: PropTypes.bool,
     returnButtonTitle: PropTypes.node.isRequired,
     errorMessage: PropTypes.node,
     progressStep: PropTypes.number.isRequired,
