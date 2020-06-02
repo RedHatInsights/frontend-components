@@ -20,17 +20,12 @@ describe('handleError', () => {
     const SOURCE_ID = '11111';
 
     beforeEach(() => {
-        spyDelete = jest.fn().mockReturnValue(Promise.resolve('ok'));
-        spyDeleteError = jest.fn().mockReturnValue(Promise.reject(DELETE_ERROR));
-    });
-
-    afterEach(() => {
-        spyDelete.mockReset();
-        spyDeleteError.mockReset();
+        spyDelete = jest.fn().mockImplementationOnce(() => Promise.resolve('ok'));
+        spyDeleteError = jest.fn().mockImplementationOnce(() => Promise.reject(DELETE_ERROR));
     });
 
     it('handles error', async () => {
-        api.getSourcesApi = jest.fn().mockReturnValue({
+        api.getSourcesApi = () => ({
             deleteSource: spyDelete
         });
 
@@ -53,7 +48,7 @@ describe('handleError', () => {
     });
 
     it('handles error with no source ID provided', async () => {
-        api.getSourcesApi = jest.fn().mockReturnValue({
+        api.getSourcesApi = () => ({
             deleteSource: spyDelete
         });
 
@@ -65,7 +60,7 @@ describe('handleError', () => {
     });
 
     it('handles error when delete fails', async () => {
-        api.getSourcesApi = jest.fn().mockReturnValue({
+        api.getSourcesApi = () => ({
             deleteSource: spyDeleteError
         });
 
@@ -79,7 +74,7 @@ describe('handleError', () => {
     it('handles string error', async () => {
         const STRING_ERROR = 'Cosi 123445';
 
-        api.getSourcesApi = jest.fn().mockReturnValue({
+        api.getSourcesApi = () => ({
             deleteSource: spyDelete
         });
 
@@ -90,7 +85,7 @@ describe('handleError', () => {
     });
 
     it('handles undefined', async () => {
-        api.getSourcesApi = jest.fn().mockReturnValue({
+        api.getSourcesApi = () => ({
             deleteSource: spyDeleteError
         });
 

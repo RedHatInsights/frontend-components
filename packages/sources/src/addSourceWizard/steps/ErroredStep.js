@@ -17,12 +17,22 @@ import {
 } from '@patternfly/react-core';
 import { TimesCircleIcon } from '@patternfly/react-icons';
 
-const ErroredStep = ({ onClose, onRetry, returnButtonTitle, message, progressStep, progressTexts }) => (
+const ErroredStep = ({
+    onClose,
+    onRetry,
+    returnButtonTitle,
+    message,
+    progressStep,
+    progressTexts,
+    title,
+    customText,
+    retryText
+}) => (
     <Bullseye>
         <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__empty-state">
             <EmptyStateIcon icon={ TimesCircleIcon } color="var(--pf-global--danger-color--100)" className="pf-u-mb-0"/>
             <Title headingLevel="h5" size="lg" className="pf-u-mt-xl">
-      Configuration unsuccessful
+                {title}
             </Title>
             <EmptyStateBody>
                 <Progress
@@ -36,13 +46,13 @@ const ErroredStep = ({ onClose, onRetry, returnButtonTitle, message, progressSte
                     variant='danger'
                 />
                 <TextContent>
-                    <Text variant={TextVariants.p}>Your source has not been successfully added:</Text>
-                    { message && <Text variant={TextVariants.p}>{message}</Text>}
+                    <Text variant={TextVariants.p}>{customText}</Text>
+                    { message && <Text className="pf-u-mt-md" variant={TextVariants.p}>{message}</Text>}
                 </TextContent>
             </EmptyStateBody>
             <Button variant="primary" onClick={ onClose }>{returnButtonTitle}</Button>
             <EmptyStateSecondaryActions>
-                <Button variant="link" onClick={ onRetry }>Retry</Button>
+                <Button variant="link" onClick={ onRetry }>{retryText}</Button>
             </EmptyStateSecondaryActions>
         </EmptyState>
     </Bullseye>
@@ -54,7 +64,16 @@ ErroredStep.propTypes = {
     returnButtonTitle: PropTypes.node.isRequired,
     message: PropTypes.node,
     progressStep: PropTypes.number.isRequired,
-    progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired
+    progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    title: PropTypes.node,
+    customText: PropTypes.node,
+    retryText: PropTypes.node
+};
+
+ErroredStep.defaultProps = {
+    title: 'Configuration unsuccessful',
+    customText: 'Your source has not been successfully added:',
+    retryText: 'Retry'
 };
 
 export default ErroredStep;

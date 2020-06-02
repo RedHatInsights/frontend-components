@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 
 import { AddSourceButton } from '../../addSourceWizard/';
 import sourceTypes from '../helpers/sourceTypes';
@@ -8,15 +8,17 @@ import applicationTypes from '../helpers/applicationTypes';
 import Form from '../../addSourceWizard/SourceAddModal';
 
 describe('AddSourceButton', () => {
+    it('opens wizard', async () => {
+        let wrapper;
 
-    it('renders correctly', () => {
-        const wrapper = shallow(<AddSourceButton />);
-        expect(toJson(wrapper)).toMatchSnapshot();
-    });
+        await act(async() => {
+            wrapper = mount(<AddSourceButton  sourceTypes={ sourceTypes } applicationTypes={ applicationTypes }/>);
+        });
+        wrapper.update();
 
-    it('opens wizard', () => {
-        const wrapper = mount(<AddSourceButton  sourceTypes={ sourceTypes } applicationTypes={ applicationTypes }/>);
-        wrapper.find('button').simulate('click');
+        await act(async() => {
+            wrapper.find('button').simulate('click');
+        });
 
         wrapper.update();
 

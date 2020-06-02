@@ -27,6 +27,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
     Array [
       Object {
         "component": <ErroredStep
+          customText="Your source has not been successfully added:"
           onClose={[MockFunction]}
           onRetry={[MockFunction]}
           progressStep={0}
@@ -35,7 +36,9 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
               "Completed",
             ]
           }
+          retryText="Retry"
           returnButtonTitle="Go back to my application"
+          title="Configuration unsuccessful"
         />,
         "isFinishedStep": true,
         "name": "Finish",
@@ -75,6 +78,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
       Object {
         "component": <FinishedStep
           hideSourcesButton={false}
+          linkText="Take me to sources"
           onClose={[MockFunction]}
           progressStep={0}
           progressTexts={
@@ -84,6 +88,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
           }
           returnButtonTitle="Go back to my application"
           successfulMessage="Message"
+          title="Configuration successful"
         />,
         "isFinishedStep": true,
         "name": "Finish",
@@ -122,6 +127,7 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
     Array [
       Object {
         "component": <LoadingStep
+          cancelTitle="Cancel"
           customText="Source is being created"
           progressStep={0}
           progressTexts={
