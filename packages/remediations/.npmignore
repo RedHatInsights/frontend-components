@@ -1,6 +1,8 @@
 !/index.js
 !/RemediationButton.js
+!/RemediationButton.css
 !/remediationsApi.js
+!/remediationsApi.css
 !/index.css
 src/
 .babelrc
@@ -8,3 +10,5 @@ babel.config.js
 doc/
 config/
 !/RemediationButton.css
+!/esm
+!/cjs
