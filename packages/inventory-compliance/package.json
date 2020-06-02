@@ -40,6 +40,7 @@
         "@redhat-cloud-services/frontend-components-notifications": "*",
         "@redhat-cloud-services/frontend-components-remediations": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
+        "@apollo/react-hooks": "^3.1.5",
         "apollo-boost": "^0.1.23",
         "graphql-tag": "^2.10.0",
         "react-apollo": "^2.3.3",
