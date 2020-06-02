@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { Wizard } from '@patternfly/react-core';
 
@@ -12,98 +12,93 @@ import filterApps from '../utilities/filterApps';
 const initialValues = {
     schema: {},
     sourceTypes: [],
-    application: [],
     isLoading: true
 };
 
-class SourceAddModal extends React.Component {
-    _isMounted = false;
-    state = initialValues;
-    container = document.createElement('div');
-
-    componentDidMount() {
-        this._isMounted = true;
-        const { sourceTypes, applicationTypes, disableAppSelection } = this.props;
-
-        if (sourceTypes && applicationTypes) {
-            this.setState({
-                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes.filter(filterApps), disableAppSelection, this.container),
+const reducer = (state, { type, sourceTypes, applicationTypes, container, disableAppSelection }) => {
+    switch (type) {
+        case 'loaded':
+            return {
+                ...state,
+                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes.filter(filterApps), disableAppSelection, container),
                 isLoading: false,
-                sourceTypes,
-                applicationTypes
-            });
-        } else {
-            const promises = [];
-            if (!sourceTypes) {
-                promises.push(doLoadSourceTypes());
+                sourceTypes
+            };
+    }
+};
+
+const SourceAddModal = ({
+    sourceTypes,
+    applicationTypes,
+    disableAppSelection,
+    isCancelling,
+    onCancel,
+    values,
+    onSubmit
+}) => {
+    const [{ schema, sourceTypes: stateSourceTypes, isLoading }, dispatch ] = useReducer(reducer, initialValues);
+    const isMounted = useRef(false);
+    const container = useRef(document.createElement('div'));
+
+    useEffect(() => {
+        isMounted.current = true;
+
+        const promises = [];
+        if (!sourceTypes) {
+            promises.push(doLoadSourceTypes());
+        }
+
+        if (!applicationTypes) {
+            promises.push(doLoadApplicationTypes());
+        }
+
+        Promise.all(promises).then((data) => {
+            const sourceTypesOut = data.find(types => types.hasOwnProperty('sourceTypes'));
+            const applicationTypesOut = data.find(types => types.hasOwnProperty('applicationTypes'));
+
+            if (isMounted.current) {
+                dispatch({
+                    type: 'loaded',
+                    sourceTypes: sourceTypes || sourceTypesOut.sourceTypes,
+                    applicationTypes: applicationTypes || applicationTypesOut.applicationTypes,
+                    disableAppSelection,
+                    container: container.current
+                });
             }
+        });
 
-            if (!applicationTypes) {
-                promises.push(doLoadApplicationTypes());
-            }
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
 
-            return Promise.all(promises).then((data) => {
-                const sourceTypesOut = data.find(types => types.hasOwnProperty('sourceTypes'));
-                const applicationTypesOut = data.find(types => types.hasOwnProperty('applicationTypes'));
+    useEffect(() => {
+        container.current.hidden = isCancelling;
+    }, [ isCancelling ]);
 
-                const sourceTypesFinal = sourceTypes || sourceTypesOut.sourceTypes;
-                const applicationTypesFinal = applicationTypes || applicationTypesOut.applicationTypes;
-
-                if (this._isMounted) {
-                    this.setState({
-                        sourceTypes: sourceTypesFinal,
-                        schema: createSchema(
-                            sourceTypesFinal.filter(type => type.schema),
-                            applicationTypesFinal.filter(filterApps),
-                            disableAppSelection,
-                            this.container
-                        ),
-                        isLoading: false,
-                        applicationTypes: applicationTypesFinal
-                    });
-                }
-            });
-        }
+    if (isLoading) {
+        return <Wizard
+            isOpen={ true }
+            onClose={ onCancel }
+            title={WIZARD_TITLE}
+            description={WIZARD_DESCRIPTION}
+            steps={ [{
+                name: 'Loading',
+                component: <LoadingStep onClose={ () => onCancel() }/>,
+                isFinishedStep: true
+            }] }
+        />;
     }
 
-    componentWillUnmount() {
-        this._isMounted = false;
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.isCancelling !== prevProps.isCancelling) {
-            this.container.hidden = this.props.isCancelling;
-        }
-    }
-
-    render() {
-        const { onCancel, values, onSubmit } = this.props;
-        const { schema, sourceTypes, isLoading } = this.state;
-
-        if (isLoading) {
-            return <Wizard
-                isOpen={ true }
-                onClose={ onCancel }
-                title={WIZARD_TITLE}
-                description={WIZARD_DESCRIPTION}
-                steps={ [{
-                    name: 'Loading',
-                    component: <LoadingStep onClose={ () => onCancel() }/>,
-                    isFinishedStep: true
-                }] }
-            />;
-        }
-
-        return (
-            <SourcesFormRenderer
-                initialValues={ values }
-                schema={ schema }
-                onSubmit={ (values) => onSubmit(values, sourceTypes) }
-                onCancel={ onCancel }
-            />
-        );
-    }
-}
+    return (
+        <SourcesFormRenderer
+            initialValues={ values }
+            schema={ schema }
+            onSubmit={ (values) => onSubmit(values, stateSourceTypes) }
+            onCancel={ onCancel }
+        />
+    );
+};
 
 SourceAddModal.propTypes = {
     onCancel: PropTypes.func.isRequired,

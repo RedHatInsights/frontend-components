@@ -24,6 +24,8 @@ describe('patch cost management source', () => {
     });
 
     it('resolve', done => {
+        expect.assertions(4);
+
         spyGet = jest.fn(() => Promise.resolve('OK1'));
         spyPatch = jest.fn(() => Promise.resolve('OK2'));
         api.axiosInstance = {
@@ -40,6 +42,8 @@ describe('patch cost management source', () => {
         }).catch((err) => done.fail(new Error(`should not be here: ${err}`)));
     });
     it('reject on check', done => {
+        expect.assertions(2);
+
         spyGet = jest.fn(() => Promise.reject('NO'));
         spyPatch = jest.fn(() => Promise.resolve('OK'));
         api.axiosInstance = {
@@ -56,6 +60,8 @@ describe('patch cost management source', () => {
     });
 
     it('reject on update', done => {
+        expect.assertions(2);
+
         spyGet = jest.fn(() => Promise.resolve('OK'));
         spyPatch = jest.fn(() => Promise.reject('NO'));
         api.axiosInstance = {
@@ -72,6 +78,8 @@ describe('patch cost management source', () => {
     });
 
     it('two failures on checking', done => {
+        expect.assertions(2);
+
         spyGet = jest.fn()
         .mockImplementationOnce(() => Promise.reject('error'))
         .mockImplementationOnce(() => Promise.reject('error'))
