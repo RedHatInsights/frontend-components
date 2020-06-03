@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
-import { selectEntity, setSort, detailSelect } from './redux/actions';
+import { selectEntity, setSort, detailSelect } from '../../redux/actions';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
-import {
-    Title,
-    Bullseye,
-    EmptyState,
-    EmptyStateVariant,
-    EmptyStateBody
-} from '@patternfly/react-core';
+import { Title } from '@patternfly/react-core/dist/esm/components/Title';
+import { EmptyStateBody, EmptyState, EmptyStateVariant } from '@patternfly/react-core/dist/esm/components/EmptyState';
+import { Bullseye } from '@patternfly/react-core/dist/esm/layouts/Bullseye';
 import {
     Table as PfTable,
     TableBody,
@@ -21,9 +16,9 @@ import {
     sortable,
     expandable
 } from '@patternfly/react-table';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/esm/SkeletonTable';
 import { EmptyTable } from '@redhat-cloud-services/frontend-components/components/esm/EmptyTable';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
 
 class EntityTable extends React.Component {
     onRowClick = (_event, key, application) => {
@@ -289,4 +284,4 @@ function mapStateToProps({ entities: { columns, rows, loaded, sortBy } }, { hasI
     };
 }
 
-export default routerParams(connect(mapStateToProps, mapDispatchToProps)(EntityTable));
+export default connect(mapStateToProps, mapDispatchToProps)(EntityTable);

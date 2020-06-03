@@ -13,7 +13,7 @@ import {
 import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/esm/helpers';
 import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
 import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/esm/CullingInfo';
-import TagWithDialog from '../TagWithDialog';
+import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
 
 export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: false };

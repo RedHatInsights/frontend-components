@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleTagModal, fetchAllTags, loadTags } from './redux/actions';
+import { toggleTagModal, fetchAllTags, loadTags } from '../redux/actions';
 import { TagModal } from '@redhat-cloud-services/frontend-components/components/esm/TagModal';
 import debounce from 'lodash/debounce';
 

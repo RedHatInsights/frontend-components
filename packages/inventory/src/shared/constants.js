@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
 
 export const TEXT_FILTER = 'hostname_or_id';
@@ -193,3 +193,5 @@ export const staleness = [
 export const registered = [
     { label: 'Insights', value: 'insights' }
 ];
+
+export const InventoryContext = createContext('inventory');

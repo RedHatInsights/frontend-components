@@ -1,39 +1,33 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Title } from '@patternfly/react-core/dist/esm/components/Title';
+import { Card, CardBody, CardHeader } from '@patternfly/react-core/dist/esm/components/Card';
 import {
-    Title,
-    Card,
-    CardBody,
-    CardHeader,
-    Flex,
-    FlexItem,
-    EmptyState,
-    EmptyStateVariant,
-    EmptyStateIcon,
-    EmptyStateBody,
     Dropdown,
     DropdownItem,
     DropdownPosition,
-    KebabToggle,
-    Split,
-    SplitItem,
-    Button,
-    Grid,
-    GridItem
-} from '@patternfly/react-core';
+    KebabToggle
+} from '@patternfly/react-core/dist/esm/components/Dropdown';
+import { Button } from '@patternfly/react-core/dist/esm/components/Button';
+import {
+    EmptyState,
+    EmptyStateVariant,
+    EmptyStateIcon,
+    EmptyStateBody
+} from '@patternfly/react-core/dist/esm/components/EmptyState';
+import { Grid, GridItem } from '@patternfly/react-core/dist/esm/layouts/Grid';
+import { Flex, FlexItem } from '@patternfly/react-core/dist/esm/layouts/Flex';
+import { Split, SplitItem } from '@patternfly/react-core/dist/esm/layouts/Split';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
 import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/esm/CullingInfo';
-import { CubesIcon } from '@patternfly/react-icons';
+import CubesIcon from '@patternfly/react-icons/dist/esm/icons/cubes-icon';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import ApplicationDetails from './ApplicationDetails';
-import { editDisplayName, editAnsibleHost, loadEntity, deleteEntity } from './redux/actions';
-import TagWithDialog from './TagWithDialog';
-import TagsModal from './TagsModal';
-import DeleteModal from './DeleteModal';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/esm/actions';
-import RouterParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
+import { editDisplayName, editAnsibleHost, loadEntity, deleteEntity } from '../../redux/actions';
+import { TagsModal, TagWithDialog, DeleteModal } from '../../shared';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 
 class EntityDetails extends Component {
     state = {
@@ -67,8 +61,8 @@ class EntityDetails extends Component {
     };
 
     redirectToInventoryList = (id) => {
-        const { match: { url }, history } = this.props;
-        history.push(url.replace(new RegExp(`${[ id ]}.*`, 'g'), ''));
+        // const { match: { url }, history } = this.props;
+        // history.push(url.replace(new RegExp(`${[ id ]}.*`, 'g'), ''));
     }
 
     generateTop = () => {
@@ -213,6 +207,7 @@ class EntityDetails extends Component {
 
     render() {
         const { useCard, loaded, entity, match } = this.props;
+        const inventoryId = location.pathname.split('/')[location.pathname.split('/').length - 1];
 
         return (
             <div className="ins-entity-detail">
@@ -232,11 +227,11 @@ class EntityDetails extends Component {
                                 System not found
                             </Title>
                             <EmptyStateBody>
-                                System with ID {match.params.inventoryId} does not exist
+                                System with ID {inventoryId} does not exist
                             </EmptyStateBody>
                             <Button
                                 variant="primary"
-                                onClick={() => this.redirectToInventoryList(match.params.inventoryId)}
+                                onClick={() => this.redirectToInventoryList(inventoryId)}
                             >
                                 Back to previous pages
                             </Button>
@@ -308,4 +303,4 @@ function mapDispatchToProps(dispatch, { showTags }) {
     };
 }
 
-export default RouterParams(connect(({ entityDetails }) => ({ ...entityDetails }), mapDispatchToProps)(EntityDetails));
+export default connect(({ entityDetails }) => ({ ...entityDetails }), mapDispatchToProps)(EntityDetails);

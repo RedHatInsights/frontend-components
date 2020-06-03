@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { detailSelect } from './redux/actions';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
-import { Tabs, Tab } from '@patternfly/react-core';
+import { detailSelect } from '../../redux/actions';
+import { Tabs, Tab } from '@patternfly/react-core/dist/esm/components/Tabs';
 
 class ApplicationDetails extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     onTabClick = (_event, item) => {
-        const { history, match: { url }, onDetailSelect, items } = this.props;
+        const { onDetailSelect, items } = this.props;
         const activeItem = items.find(oneApp => oneApp.name === item);
-        history.push(`${url}/${activeItem.name}`);
         onDetailSelect && onDetailSelect(activeItem.name);
     }
 
@@ -72,4 +66,4 @@ function propsToDispatch(dispatch) {
     };
 }
 
-export default routerParams(connect(stateToProps, propsToDispatch)(ApplicationDetails));
+export default connect(stateToProps, propsToDispatch)(ApplicationDetails);

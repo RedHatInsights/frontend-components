@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button } from '@patternfly/react-core';
-import { loadEntity } from './redux/actions';
-import { Link, generatePath } from 'react-router-dom';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
+import { loadEntity } from '../../redux/actions';
 import Entitydetail from './EntityDetail';
 import PropTypes from 'prop-types';
 
 class InventoryDetail extends React.Component {
     componentDidMount() {
-        const { match: { params: { inventoryId } }, entity, loaded } = this.props;
+        const { entity, loaded } = this.props;
+        const inventoryId = location.pathname.split('/')[location.pathname.split('/').length - 1];
         if (!entity || entity.id !== inventoryId || !loaded) {
             this.props.loadEntity(
                 inventoryId,
@@ -23,20 +21,16 @@ class InventoryDetail extends React.Component {
     }
 
     render() {
-        const { root, match: { params }, useCard, hideBack, actions, showTags, hideInvLink, showDelete } = this.props;
+        const { useCard, actions, showTags, hideInvLink, showDelete } = this.props;
+
         return (
-            <React.Fragment>
-                <Entitydetail
-                    useCard={ useCard }
-                    actions={ actions }
-                    showTags={ showTags }
-                    hideInvLink={ hideInvLink }
-                    showDelete={ showDelete }
-                />
-                { !hideBack && <Link to={ generatePath(root, params) }>
-                    <Button variant='primary'>Back</Button>
-                </Link> }
-            </React.Fragment>
+            <Entitydetail
+                useCard={ useCard }
+                actions={ actions }
+                showTags={ showTags }
+                hideInvLink={ hideInvLink }
+                showDelete={ showDelete }
+            />
         );
     }
 }
@@ -69,4 +63,4 @@ function mapDispatchToProps(dispatch, { showTags }) {
     };
 }
 
-export default routerParams(connect(({ entityDetails: { entity, loaded } }) => ({ entity, loaded }), mapDispatchToProps)(InventoryDetail));
+export default connect(({ entityDetails: { entity, loaded } }) => ({ entity, loaded }), mapDispatchToProps)(InventoryDetail);

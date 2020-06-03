@@ -10,7 +10,7 @@ class AppInfo extends Component {
         return (
             <Fragment>
                 { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>
-                    { activeApp.component ? <activeApp.component /> : 'missing component' }
+                    { activeApp.component ? <activeApp.component /> : 'missing component'}
                 </div> }
                 { !loaded && <Skeleton size={ SkeletonSize.md } /> }
             </Fragment>

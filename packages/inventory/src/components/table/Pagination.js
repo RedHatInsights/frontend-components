@@ -1,20 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/esm/components/Pagination';
-import { entitiesLoading } from './redux/actions';
+import { entitiesLoading } from '../../redux/actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { InventoryContext } from './Inventory';
+import { InventoryContext } from '../../shared';
 import debounce from 'lodash/debounce';
 
 class ContextFooterPagination extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            page: undefined
-        };
-
-        this.changePage = debounce((pagination) => this.updatePagination(pagination), 800);
-    }
+    state = {
+        page: undefined
+    };
+    changePage = debounce((pagination) => this.updatePagination(pagination), 800);
 
     updatePagination = (pagination) => {
         const { onRefreshData, onRefresh, dataLoading } = this.props;

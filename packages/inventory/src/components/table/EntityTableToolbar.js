@@ -3,13 +3,14 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { SkeletonSize, Skeleton } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/esm/PrimaryToolbar';
-import { Spinner } from '@patternfly/react-core';
-import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from './redux/actions';
+import { Spinner } from '@patternfly/react-core/dist/esm/components/Spinner';
+import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from '../../redux/actions';
 import debounce from 'lodash/debounce';
-import { InventoryContext } from './Inventory';
+import flatMap from 'lodash/flatMap';
 import {
+    TagsModal,
     mapGroups,
     TEXT_FILTER,
     reduceFilters,
@@ -21,10 +22,9 @@ import {
     mergeTableProps,
     staleness,
     registered,
-    arrayToSelection
-} from './constants';
-import flatMap from 'lodash/flatMap';
-import TagsModal from './TagsModal';
+    arrayToSelection,
+    InventoryContext
+} from '../../shared';
 
 class ContextEntityTableToolbar extends Component {
     state = {
