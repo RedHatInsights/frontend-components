@@ -26,7 +26,11 @@ export const externalDeps = (
 );
 
 export const external = (externalDeps) => createFilter(
-    externalDeps,
+    [
+        ...externalDeps,
+        'react',
+        'react-dom'
+    ],
     null,
     { resolve: false }
 );
