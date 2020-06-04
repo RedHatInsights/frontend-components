@@ -12,18 +12,25 @@ export const feedback = { negative: -1, neutral: 0, positive: 1 };
 // where ruleId is id of the rule, vote is either -1, 0 or 1
 class RuleFeedback extends React.Component {
     state = { feedbackSaved: false }
-    render() {
+
+    handleFeedbackChange = (vote) => {
         const { ruleId, userVote, onFeedbackChanged } = this.props;
+        if (userVote === vote) {
+            onFeedbackChanged(ruleId, 0);
+        } else {
+            this.setState({ feedbackSaved: true });
+            onFeedbackChanged(ruleId, vote);
+        }
+    }
+    render() {
+        const { userVote } = this.props;
         return <div>
             <span>Is this helpful?</span>
             <Button
                 className="ins-c-rule__rule-feedback-like-button"
                 variant="plain"
                 aria-label="Rule is helpful"
-                onClick={ () => {
-                    this.setState({ feedbackSaved: true });
-                    onFeedbackChanged(ruleId, 1);
-                }}
+                onClick={ () => this.handleFeedbackChange(feedback.positive) }
             >
                 {
                     userVote === feedback.positive
@@ -35,10 +42,7 @@ class RuleFeedback extends React.Component {
                 className="ins-c-rule__rule-feedback-dislike-button"
                 variant="plain"
                 aria-label="Rule is not helpful"
-                onClick={ () => {
-                    this.setState({ feedbackSaved: true });
-                    onFeedbackChanged(ruleId, -1);
-                }}
+                onClick={ () => this.handleFeedbackChange(feedback.negative) }
             >
                 {
                     userVote === feedback.negative
