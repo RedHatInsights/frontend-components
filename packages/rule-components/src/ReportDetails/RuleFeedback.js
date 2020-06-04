@@ -16,7 +16,7 @@ class RuleFeedback extends React.Component {
     handleFeedbackChange = (vote) => {
         const { ruleId, userVote, onFeedbackChanged } = this.props;
         if (userVote === vote) {
-            onFeedbackChanged(ruleId, 0);
+            onFeedbackChanged(ruleId, feedback.neutral);
         } else {
             this.setState({ feedbackSaved: true });
             onFeedbackChanged(ruleId, vote);
