@@ -14,6 +14,7 @@ import {
     external,
     globals
 } from '../../../config/rollup-contants';
+import copy from 'rollup-plugin-copy';
 
 const commonjsOptions = {
     ignoreGlobal: true,
@@ -50,7 +51,15 @@ const plugins = [
     postcss({
         extract: true
     }),
-    json()
+    json(),
+    copy({
+        targets: [
+            { src: 'components/index.css', dest: './' },
+            { src: 'components/index.js', dest: './' }
+        ],
+        overwrite: false,
+        hook: 'writeBundle'
+    })
 ];
 
 export default rollupConfig(

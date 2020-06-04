@@ -20,6 +20,7 @@ This package is dependent on [@redhat-cloud-services/frontend-components-utiliti
 
 In order not to increase your bundle size you you should either import components trough direct imports or use babel plugin to change relative imports to direct imports. You can mix both direct imports and babel plugin, it's just convenient to use the babel plugin so you don't have to change all of your imports.
 
+
 ### Direct imports
 
 You can try `esm` or `cjs` whichever fits you more, generally `ems` modules should yield less code, but is considered bleading edge and could break your build, cjs (refers to commonjs) will work out of the box (it adds about 1 or 2 KB of code to each build). For instance `tableToolbar` can be imported as:

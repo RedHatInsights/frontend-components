@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Common components for RedHat Cloud Services project.",
     "main": "components/index.js",
     "module": "components/esm/index.js",
@@ -36,6 +36,7 @@
         "lodash": ">=4.17.15"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components-utilities": "*"
+        "@redhat-cloud-services/frontend-components-utilities": "*",
+        "sanitize-html": "^1.25.0"
     }
 }

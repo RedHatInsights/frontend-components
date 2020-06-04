@@ -59,6 +59,7 @@ class MyCmp extends Component {
 ReactDOM.render(<MyCmp />, document.querySelector('.demo-app'));
 ```
 
+
 *NOTE: you can also use package import `import { RuleTable, severity } from '@redhat-cloud-services`, just be careful as your bundle size might increase a lot, because treeshaking might not work properly. If that happens please consider using direc imports as in example.*
 
 ### Props
