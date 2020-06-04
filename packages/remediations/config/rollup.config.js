@@ -41,7 +41,9 @@ const babelOptions = {
 };
 
 const plugins = [
-    nodeResolve(),
+    nodeResolve({
+        browser: true
+    }),
     babel(babelOptions),
     commonjs(commonjsOptions),
     nodeGlobals(),
