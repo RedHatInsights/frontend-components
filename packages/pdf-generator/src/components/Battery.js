@@ -7,7 +7,7 @@ import {
     View
 } from '@react-pdf/renderer';
 // eslint-disable-next-line camelcase
-import { global_icon_Color_light } from '@patternfly/react-tokens';
+import global_icon_Color_light from '@patternfly/react-tokens/dist/js/global_icon_Color_light';
 
 import styles from '../utils/styles';
 

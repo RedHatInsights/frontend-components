@@ -1,8 +1,8 @@
 {
     "name": "@redhat-cloud-services/frontend-components-sources",
-    "version": "2.0.3",
+    "version": "2.0.6",
     "description": "Sources components for RedHat Cloud Services project.",
-    "main": "index.js",
+    "browser": "index.js",
     "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
@@ -22,7 +22,6 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/sources#readme",
     "dependencies": {
-        "@patternfly/react-icons": "^3.14.39",
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
         "awesome-debounce-promise": "^2.1.0"
@@ -30,11 +29,13 @@
     "devDependencies": {
         "@data-driven-forms/pf4-component-mapper": "^2.1.8",
         "@data-driven-forms/react-form-renderer": "^2.1.8",
-        "@patternfly/react-core": "^3.153.13"
+        "@patternfly/react-core": "^3.153.13",
+        "@patternfly/react-icons": "^3.14.39"
     },
     "peerDependencies": {
         "react": "^16.12.0",
         "@data-driven-forms/pf4-component-mapper": "^2.1.8",
-        "@data-driven-forms/react-form-renderer": "^2.1.8"
+        "@data-driven-forms/react-form-renderer": "^2.1.8",
+        "lodash": "^4.17.15"
     }
 }

@@ -13,6 +13,7 @@ import {
     external,
     globals
 } from '../../../config/rollup-contants';
+import resolve from '@rollup/plugin-node-resolve';
 
 const commonjsOptions = {
     ignoreGlobal: true,
@@ -35,13 +36,18 @@ const babelOptions = {
 };
 
 const plugins = [
-    nodeResolve(),
+    nodeResolve({
+        browser: true
+    }),
     babel(babelOptions),
     commonjs(commonjsOptions),
     nodeGlobals(),
     terser({
         keep_classnames: true,
         keep_fnames: true
+    }),
+    resolve({
+        browser: true
     }),
     postcss({
         extract: true
