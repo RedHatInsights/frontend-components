@@ -8,8 +8,8 @@
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
-        "start": "rollup -c ./config/rollup.config.js -w"
+        "build": "NODE_ENV=production webpack --config config/webpack.config.js",
+        "start": "webpack --watch --config config/webpack.config.js"
     },
     "repository": {
         "type": "git",
