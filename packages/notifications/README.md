@@ -4,6 +4,7 @@
 
 This package has portal component that shows toast notifications based on [PF4 alert component](https://v2.patternfly.org/documentation/core/components/alert).
 
+
 ## Installation
 With NPM
 ```bash
