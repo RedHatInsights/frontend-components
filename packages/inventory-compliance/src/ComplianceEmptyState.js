@@ -49,11 +49,10 @@ const ComplianceEmptyState = ({ title, mainButton, client }) => {
             <Title size="lg">{ title }</Title>
             <br/>
             <EmptyStateBody>
-                { policiesCount > 0 ?
+                { policiesCount > 0 &&
                     <TextContent>
                         <a href='insights/compliance/scappolicies'>{policiesCount} {policyWord}</a> {haveWord} been created but {haveWord} no reports.
-                    </TextContent> :
-                    '' }
+                    </TextContent> }
                 <TextContent>
                     The Compliance service uses SCAP policies to track your organization&#39;s adherence to
                     compliance requirements.
