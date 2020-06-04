@@ -14,7 +14,8 @@ module.exports = (env) => ({
     },
     entry: {
         index: './src/index.js',
-        actions: './src/redux/actions.js'
+        actions: './src/redux/actions.js',
+        useInventory: './src/useInventory.js'
     },
     output: {
         filename: '[name].js',

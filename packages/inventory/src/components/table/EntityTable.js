@@ -21,17 +21,15 @@ import { EmptyTable } from '@redhat-cloud-services/frontend-components/component
 import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
 
 class EntityTable extends React.Component {
-    onRowClick = (_event, key, application) => {
-        const { match: { url }, history, onDetailSelect, loaded } = this.props;
-        if (loaded) {
-            const dilimeter = url.substr(-1, 1) === '/' ? '' : '/';
+    onRowClick = (event, key, application) => {
+        const { loaded, onRowClick } = this.props;
+        if (loaded && onRowClick) {
             const isMetaKey = (event.ctrlKey || event.metaKey || event.which === 2);
             if (isMetaKey) {
                 const url = new URL(`./${key}`, location.href);
                 window.open(url.href);
             } else {
-                history.push(`${url}${dilimeter}${key}/${application ? application : ''}`);
-                onDetailSelect && onDetailSelect(application);
+                onRowClick(event, key, application);
             }
         }
     }
@@ -247,7 +245,7 @@ EntityTable.propTypes = {
         [PropTypes.string]: PropTypes.any
     }),
     selectEntity: PropTypes.func,
-    onDetailSelect: PropTypes.func,
+    onRowClick: PropTypes.func,
     onToggleTagModal: PropTypes.func,
     showTags: PropTypes.bool
 };
@@ -262,7 +260,6 @@ EntityTable.defaultProps = {
     rows: [],
     onExpandClick: () => undefined,
     selectEntity: () => undefined,
-    onDetailSelect: () => undefined,
     onToggleTagModal: () => undefined,
     tableProps: {}
 };
@@ -270,8 +267,7 @@ EntityTable.defaultProps = {
 function mapDispatchToProps(dispatch) {
     return {
         selectEntity: (id, isSelected) => dispatch(selectEntity(id, isSelected)),
-        setSort: (id, sortDirection) => dispatch(setSort(id, sortDirection)),
-        onDetailSelect: (name) => dispatch(detailSelect(name))
+        setSort: (id, sortDirection) => dispatch(setSort(id, sortDirection))
     };
 }
 

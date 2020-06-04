@@ -3,7 +3,6 @@
     "version": "2.1.3",
     "description": "Inventory components for RedHat Cloud Services project.",
     "browser": "index.js",
-    "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
