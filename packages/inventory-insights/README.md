@@ -1,6 +1,7 @@
 # RedHat Cloud Services frontend components - inventory insights
 [![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory-insights.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-inventory-insights)
 
+
 This package exports components to show rules detail page.
 
 ## Installation
