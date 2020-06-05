@@ -1,4 +1,4 @@
-import '@redhat-cloud-services/frontend-components/components/Section.css';
+import '@redhat-cloud-services/frontend-components/components/section.scss';
 import './insights.scss';
 
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/Skeleton';
