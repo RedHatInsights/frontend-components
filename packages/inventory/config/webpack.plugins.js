@@ -23,8 +23,8 @@ const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({ currying: tr
  * Writes final css to file
  */
 const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
-    chunkFilename: '[name].css',
-    filename: '[id].css'
+    chunkFilename: '[id].css',
+    filename: '[name].css'
 });
 
 module.exports = { buildPlugins: (env) => ({
@@ -32,6 +32,6 @@ module.exports = { buildPlugins: (env) => ({
         WriteFileWebpackPlugin,
         LodashWebpackPlugin,
         ExtractCssWebpackPlugin,
-        ...env && env.server === 'true' ? [ HtmlWebpackPlugin, HotModuleReplacementPlugin ] : []
+        ...env && env.server === 'true' ? [ HotModuleReplacementPlugin ] : []
     ]
 }) };
