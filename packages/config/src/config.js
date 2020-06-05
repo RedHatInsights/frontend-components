@@ -34,7 +34,7 @@ module.exports = ({
                         name: 'rhcsVendor'
                     },
                     vendor: {
-                        test: /[\\/]node_modules[\\/](!react-bootstrap)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
+                        test: /[\\/]node_modules[\\/](!react-dom)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
                         name: 'vendor'
                     }
                 }
