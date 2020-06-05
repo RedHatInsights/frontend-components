@@ -47,6 +47,7 @@ const plugins = [
         keep_fnames: true
     }),
     postcss({
+        minimize: true,
         extract: true
     }),
     json()

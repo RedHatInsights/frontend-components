@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-sources",
-    "version": "2.0.6",
+    "version": "2.0.7",
     "description": "Sources components for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",
@@ -8,7 +8,7 @@
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./config/rollup.config.js",
+        "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
         "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
