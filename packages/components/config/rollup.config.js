@@ -59,8 +59,7 @@ const plugins = [
         targets: [
             { src: 'components/index.css', dest: './' },
             { src: 'components/index.js', dest: './' },
-            { src: 'src/**/*.scss', dest: './components/esm' },
-            { src: 'src/**/*.scss', dest: './components/cjs' }
+            { src: 'src/**/*.scss', dest: './components' }
         ],
         overwrite: false,
         hook: 'writeBundle'

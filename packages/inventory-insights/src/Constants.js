@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { Battery } from '@redhat-cloud-services/frontend-components/components/esm/Battery';
+import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
 import React from 'react';
 
 export const BASE_FETCH_URL = '/api/insights/v1/';
