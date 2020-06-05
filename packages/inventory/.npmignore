@@ -8,3 +8,4 @@ doc/
 config/
 !/esm
 !/cjs
+!/*.css
