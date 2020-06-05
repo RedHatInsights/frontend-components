@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-insights",
-    "version": "2.0.3",
+    "version": "2.0.5-beta",
     "description": "Rules detail page for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",

@@ -58,7 +58,9 @@ const plugins = [
     copy({
         targets: [
             { src: 'components/index.css', dest: './' },
-            { src: 'components/index.js', dest: './' }
+            { src: 'components/index.js', dest: './' },
+            { src: 'src/**/*.scss', dest: './components/esm' },
+            { src: 'src/**/*.scss', dest: './components/cjs' }
         ],
         overwrite: false,
         hook: 'writeBundle'

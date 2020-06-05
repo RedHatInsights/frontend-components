@@ -1,7 +1,7 @@
-import '@redhat-cloud-services/frontend-components/components/Section.css';
+import '@redhat-cloud-services/frontend-components/components/esm/section.scss';
 import './insights.scss';
 
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/Skeleton';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
 
 import BullseyeIcon from '@patternfly/react-icons/dist/js/icons/bullseye-icon';

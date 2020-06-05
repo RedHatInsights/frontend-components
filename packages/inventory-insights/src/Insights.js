@@ -10,7 +10,7 @@ import { flatten, sortBy } from 'lodash';
 
 import API from './Api';
 import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
-import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
+import { Battery } from '@redhat-cloud-services/frontend-components/components/esm/Battery';
 import { Bullseye } from '@patternfly/react-core/dist/js/layouts/Bullseye/Bullseye';
 import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
 import { Card } from '@patternfly/react-core/dist/js/components/Card/Card';
@@ -19,12 +19,12 @@ import ChartSpikeIcon from '@patternfly/react-icons/dist/js/icons/chartSpike-ico
 import CheckCircleIcon from '@patternfly/react-icons/dist/js/icons/check-circle-icon';
 import CheckIcon from '@patternfly/react-icons/dist/js/icons/check-icon';
 import { ClipboardCopy } from '@patternfly/react-core/dist/js/components/ClipboardCopy/ClipboardCopy';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
 import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
 import { List } from 'react-content-loader';
 import MessageState from './MessageState';
 import PficonSatelliteIcon from '@patternfly/react-icons/dist/js/icons/pficon-satellite-icon';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/esm/PrimaryToolbar';
 import PropTypes from 'prop-types';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import ReportDetails from './ReportDetails';
