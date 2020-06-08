@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { DataToolbarItem } from '@patternfly/react-core/dist/js/experimental';
-import { Dropdown, DropdownItem, KebabToggle, Button, DropdownSeparator } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, KebabToggle, Button, DropdownSeparator, DataToolbarItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import { DownloadButton } from '../DownloadButton';
 

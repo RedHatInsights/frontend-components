@@ -1,6 +1,7 @@
 module.exports = {
     externals: [
         /^@patternfly\/.*/,
+        /^@redhat-cloud-services\/.*/,
         {
             '@patternfly/react-icons': {
                 commonjs: '@patternfly/react-icons',

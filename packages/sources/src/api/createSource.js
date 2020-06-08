@@ -17,6 +17,7 @@ export const parseUrl = url => {
             path: u.pathname
         };
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
         return ({});
     }

@@ -1,14 +1,15 @@
 {
     "name": "@redhat-cloud-services/frontend-components-notifications",
-    "version": "1.0.2",
+    "version": "2.0.1",
     "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
-    "main": "index.js",
+    "browser": "index.js",
+    "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "webpack --config config/webpack.config.js",
-        "start": "webpack --watch --config config/webpack.config.js"
+        "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
+        "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
         "type": "git",
@@ -26,7 +27,7 @@
         "prop-types": "^15.6.2",
         "react": "^16.5.1",
         "react-dom": "^16.5.1",
-        "react-redux": "^5.0.7"
+        "react-redux": ">=5.0.7"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components-utilities": "*"

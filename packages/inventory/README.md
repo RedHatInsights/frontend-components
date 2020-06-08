@@ -16,6 +16,7 @@ yarn add @redhat-cloud-services/frontend-components-inventory
 
 This package is dependent on [@redhat-cloud-services/frontend-components-utilities](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components-utilities), [@redhat-cloud-services/frontend-components](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components) and [@redhat-cloud-services/host-inventory-client](https://www.npmjs.com/package/@redhat-cloud-services/host-inventory-client) will automatically install them trough direct dependencies.
 
+
 ## Documentation Links
 
 * Components

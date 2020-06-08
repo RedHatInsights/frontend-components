@@ -94,7 +94,7 @@ module.exports = {
             'transform-imports',
             {
                 '@patternfly/react-icons': {
-                    transform: (importName, matches) => `@patternfly/react-icons/dist/js/icons/${importName.split(/(?=[A-Z])/).join('-').toLowerCase()}`,
+                    transform: (importName, matches) => `@patternfly/react-icons/dist/js/icons/${importName.split(/(?=[A-Z])/).join('-').toLowerCase()}.js`,
                     preventFullImport: true
                 }
             },
@@ -103,7 +103,7 @@ module.exports = {
             'transform-imports',
             {
                 '@redhat-cloud-services/frontend-components': {
-                    transform: (importName, matches) => `@redhat-cloud-services/frontend-components/components/${frontendComponentsMappe[importName] || importName}`,
+                    transform: (importName, matches) => `@redhat-cloud-services/frontend-components/components/cjs/${frontendComponentsMappe[importName] || importName}.js`,
                     preventFullImport: true,
                     skipDefaultConversion: true
                 }

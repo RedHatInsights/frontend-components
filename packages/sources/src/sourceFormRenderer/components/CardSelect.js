@@ -4,51 +4,41 @@ import { Card, CardHeader, CardBody, FormGroup, Grid, GridItem, Bullseye } from 
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
-class CardSelect extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedValues: this.props.input.value ? this.props.input.value : this.isMulti ? [] : undefined
-        };
+const handleKeyPress = (event, value, onClick) => {
+    const spaceBar = 32;
+    if (event.charCode === spaceBar) {
+        event.preventDefault();
+        onClick(value);
     }
+};
 
-    isMulti = this.props.isMulti || this.props.multi;
+const CardSelect = (originalProps) => {
+    const { isRequired, label, helperText, hideLabel, meta, input, options, mutator, DefaultIcon, iconMapper, ...props } = useFieldApi(originalProps);
+    const formOptions = useFormApi();
 
-    isDisabled = this.props.isDisabled || this.props.isReadOnly;
+    const isMulti = props.isMulti || props.multi;
+    const isDisabled = props.isDisabled || props.isReadOnly;
+    const inputValue = input.value || [];
 
-    change = () => this.props.input.onChange(this.state.selectedValues);
+    const handleMulti = (value) => input.onChange(
+        inputValue.includes(value) ? inputValue.filter(valueSelect => valueSelect !== value) : [ ...inputValue, value ]
+    );
 
-    handleMulti = (value) => this.state.selectedValues.includes(value) ?
-        this.setState(({ selectedValues }) => ({ selectedValues: selectedValues.filter(valueSelect => valueSelect !== value) }), this.change)
-        : this.setState(({ selectedValues }) => ({ selectedValues: [ ...selectedValues, value ] }), this.change);
+    const handleSingle = (value) => input.onChange(inputValue === value ? undefined : value);
 
-    handleSingle = (value) => this.setState(() => ({ selectedValues: this.state.selectedValues === value ? undefined : value }), this.change);
+    const handleClick = (value) => isMulti ? handleMulti(value) : handleSingle(value);
 
-    handleClick = (value) => {this.isMulti ? this.handleMulti(value) : this.handleSingle(value);}
-
-    handleCompare = (value) => this.isMulti ? this.state.selectedValues.includes(value) : this.state.selectedValues === value;
-
-    onClick = value => {
-        if (this.isDisabled) {
+    const onClick = value => {
+        if (isDisabled) {
             return undefined;
         }
 
-        this.handleClick(value);
-        this.props.input.onBlur();
-    }
+        handleClick(value);
+        input.onBlur();
+    };
 
-    handleKeyPress = (event, value) => {
-        const spaceBar = 32;
-        if (event.charCode === spaceBar) {
-            event.preventDefault();
-            this.onClick(value);
-        }
-    }
-
-    prepareCards = () => this.props.options.map(option => this.props.mutator(option, this.props.formOptions)).map(({ value, label, isDisabled }) => {
-        const { iconMapper, DefaultIcon } = this.props;
-
-        const disabled = isDisabled || this.isDisabled;
+    const prepareCards = () => options.map(option => mutator(option, formOptions)).map(({ value, label, isDisabled: itemIsDisabled }) => {
+        const disabled = itemIsDisabled || isDisabled;
 
         if (!value) {
             return undefined;
@@ -59,10 +49,10 @@ class CardSelect extends React.Component {
         return (
             <GridItem sm={ 6 } md={ 4 } key={ value }>
                 <Card
-                    className={ `ins-c-sources__wizard--card${this.handleCompare(value) ? ' selected' : ''}${disabled ? ' disabled' : ''}` }
-                    onClick={ () => this.onClick(value) }
+                    className={ `ins-c-sources__wizard--card${inputValue.includes(value) ? ' selected' : ''}${disabled ? ' disabled' : ''}` }
+                    onClick={ () => onClick(value) }
                     tabIndex={ disabled ? -1 : 0 }
-                    onKeyPress={ (e) => this.handleKeyPress(e, value) }
+                    onKeyPress={ (e) => handleKeyPress(e, value, onClick) }
                     isHoverable={ !disabled }
                     isCompact={ true }
                 >
@@ -81,29 +71,26 @@ class CardSelect extends React.Component {
                 </Card>
             </GridItem>
         );
-    })
+    });
 
-    render() {
-        const { isRequired, label, helperText, hideLabel, meta, input } = this.props;
-        const { error, touched } = meta;
-        const showError = touched && error;
+    const { error, touched } = meta;
+    const showError = touched && error;
 
-        return (
-            <FormGroup
-                isRequired={ isRequired }
-                label={ !hideLabel && label }
-                fieldId={ input.name }
-                isValid={ !showError }
-                helperText={ helperText }
-                helperTextInvalid={ error }
-            >
-                <Grid gutter="md" className="pf-u-mb-md">
-                    { this.prepareCards() }
-                </Grid>
-            </FormGroup>
-        );
-    }
-}
+    return (
+        <FormGroup
+            isRequired={ isRequired }
+            label={ !hideLabel && label }
+            fieldId={ input.name }
+            isValid={ !showError }
+            helperText={ helperText }
+            helperTextInvalid={ error }
+        >
+            <Grid gutter="md" className="pf-u-mb-md">
+                { prepareCards() }
+            </Grid>
+        </FormGroup>
+    );
+};
 
 CardSelect.propTypes = {
     multi: PropTypes.bool,
@@ -111,18 +98,11 @@ CardSelect.propTypes = {
     label: PropTypes.string,
     isRequired: PropTypes.bool,
     helperText: PropTypes.string,
-    meta: PropTypes.object.isRequired,
     description: PropTypes.string,
     hideLabel: PropTypes.bool,
     name: PropTypes.string.isRequired,
     mutator: PropTypes.func,
-    formOptions: PropTypes.any,
     options: PropTypes.array,
-    input: PropTypes.shape({
-        value: PropTypes.any,
-        onChange: PropTypes.func,
-        onBlur: PropTypes.func
-    }).isRequired,
     DefaultIcon: PropTypes.oneOfType([ PropTypes.node, PropTypes.func, PropTypes.element ]),
     iconMapper: PropTypes.func,
     isDisabled: PropTypes.bool,
@@ -135,13 +115,4 @@ CardSelect.defaultProps = {
     mutator: x => x
 };
 
-const CardSelectProvider = (props) => {
-    const rest = useFieldApi(props);
-    const formOptions = useFormApi();
-
-    return (
-        <CardSelect  { ...rest } name={ rest.input.name } formOptions={formOptions}/>
-    );
-};
-
-export default CardSelectProvider;
+export default CardSelect;

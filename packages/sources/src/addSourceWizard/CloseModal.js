@@ -3,41 +3,49 @@ import PropTypes from 'prop-types';
 import { Modal, Button, TextContent, Text, TextVariants } from '@patternfly/react-core';
 import { ExclamationTriangleIcon } from '@patternfly/react-icons';
 
-const CloseModal = ({ onExit, onStay, isOpen, title }) => (<Modal
-    isSmall
-    title={title}
-    header={
-        <TextContent>
-            <ExclamationTriangleIcon size="lg" className="ins-c-source__warning-icon" />
-            <Text component={TextVariants.h1}>
-                {title}
-            </Text>
-        </TextContent>
-    }
-    isOpen={isOpen}
-    onClose={onStay}
-    actions={[
-        <Button key="confirm" variant="primary" onClick={onExit}>
-    Exit
-        </Button>,
-        <Button key="cancel" variant="link" onClick={onStay}>
-    Stay
-        </Button>
-    ]}
-    isFooterLeftAligned
->
-All inputs will be discarded.
-</Modal>);
+const CloseModal = ({ onExit, onStay, isOpen, title, exitTitle, stayTitle, description }) => (
+    <Modal
+        isSmall
+        title={title}
+        header={
+            <TextContent>
+                <ExclamationTriangleIcon size="lg" className="ins-c-source__warning-icon" />
+                <Text component={TextVariants.h1}>
+                    {title}
+                </Text>
+            </TextContent>
+        }
+        isOpen={isOpen}
+        onClose={onStay}
+        actions={[
+            <Button key="confirm" variant="primary" id="on-exit-button" onClick={onExit}>
+                {exitTitle}
+            </Button>,
+            <Button key="cancel" variant="link" id="on-stay-button" onClick={onStay}>
+                {stayTitle}
+            </Button>
+        ]}
+        isFooterLeftAligned
+    >
+        {description}
+    </Modal>
+);
 
 CloseModal.propTypes = {
     onExit: PropTypes.func.isRequired,
     onStay: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
-    title: PropTypes.node
+    title: PropTypes.node,
+    exitTitle: PropTypes.node,
+    stayTitle: PropTypes.node,
+    description: PropTypes.node
 };
 
 CloseModal.defaultProps = {
-    title: 'Exit source creation?'
+    title: 'Exit source creation?',
+    exitTitle: 'Exit',
+    stayTitle: 'Stay',
+    description: 'All inputs will be discarded.'
 };
 
 export default CloseModal;

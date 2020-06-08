@@ -138,6 +138,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
       >
         <ConditionalFilter
           hideLabel={false}
+          isDisabled={false}
           items={
             Array [
               Object {
@@ -327,6 +328,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
       >
         <ConditionalFilter
           hideLabel={false}
+          isDisabled={false}
           items={
             Array [
               Object {
@@ -389,6 +391,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
       >
         <ConditionalFilter
           hideLabel={false}
+          isDisabled={false}
           items={
             Array [
               Object {

@@ -2,6 +2,7 @@
 
 This package is for setting [react-int](https://www.npmjs.com/package/react-intl) with default messages translated accross entire platform. For futher understanding how to pass messages and such follow up `react-int` documentation.
 
+
 ## Usage
 
 If you want to translate your app import `IntlProvider` and wrap your piece of app that you want to translate, this will usually be entire application.

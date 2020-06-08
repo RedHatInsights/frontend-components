@@ -11,8 +11,8 @@ module.exports = (env) => ({
     },
     entry: {
         index: './src/index.js',
-        RemediationButton: './src/RemediationButton',
-        remediationsApi: './src/api'
+        RemediationButton: './src/RemediationButton.js',
+        remediationsApi: './src/api/index.js'
     },
     output: {
         filename: '[name].js',
@@ -25,7 +25,9 @@ module.exports = (env) => ({
         rules: [{
             test: /src\/.*\.js$/,
             exclude: /(node_modules|bower_components)/i,
-            use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }]
+            use: [{ loader: 'source-map-loader' }, {
+                loader: 'babel-loader'
+            }]
         }, {
             test: /\.s?[ac]ss$/,
             use: [

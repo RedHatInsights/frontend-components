@@ -7,14 +7,23 @@ import { findSource } from '../api';
 import { schemaBuilder } from './schemaBuilder';
 import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 import ValidatorReset from './ValidatorReset';
+import { handleError } from '../api/handleError';
 
-export const asyncValidator = (value, sourceId = undefined) => findSource(value).then(({ data: { sources } }) => {
-    if (sources.find(({ id }) => id !== sourceId)) {
+export const asyncValidator = async (value, sourceId = undefined) => {
+    let response;
+    try {
+        response = await findSource(value);
+    } catch (error) {
+        console.error(handleError(error));
+        return undefined;
+    }
+
+    if (response.data.sources.find(({ id }) => id !== sourceId)) {
         throw 'Name has already been taken';
     }
 
     return undefined;
-});
+};
 
 let firstValidation = true;
 export const setFirstValidated = (bool) => firstValidation = bool;

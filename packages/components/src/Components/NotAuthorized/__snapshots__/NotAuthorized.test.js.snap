@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotAuthorized component should render 1`] = `
+<Fragment>
+  <EmptyState
+    className="ins-c-not-authorized"
+    variant="full"
+  >
+    <EmptyStateIcon
+      icon={[Function]}
+    />
+    <Title
+      headingLevel="h5"
+      size="lg"
+    >
+       You do not have access to 
+      Foo
+    </Title>
+    <EmptyStateBody>
+      Contact your organization administrator(s) for more information.
+    </EmptyStateBody>
+    <Component
+      component="a"
+      href="."
+      variant="primary"
+    >
+      Go to landing page
+    </Component>
+  </EmptyState>
+</Fragment>
+`;

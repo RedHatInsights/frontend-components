@@ -65,15 +65,6 @@
     font-size: 28px;
   }
 
-  // align label vertically
-  .ins-c-rule__battery {
-    line-height: 2;
-    display: flex;
-
-    i {
-      margin-right: 5px;
-    }
-  }
   ol {
       @include rem('margin-top', 10px);
       @include rem('margin-left', 15px);
@@ -102,5 +93,9 @@
   .ins-c-rule__modal-content {
     margin-top: 24px;
   }
+}
+
+.ins-c-rule__markdown code {
+  white-space: pre-wrap;
 }
 

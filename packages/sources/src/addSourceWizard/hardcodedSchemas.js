@@ -71,8 +71,8 @@ export default {
                     skipSelection: true,
                     skipEndpoint: true,
                     'source.source_ref': {
-                        label: <CMOpenshift.ClusterIdentifierLabel />,
-                        'aria-label': 'Cluster Identifier',
+                        label: 'Cluster Identifier',
+                        isRequired: true,
                         component: componentTypes.TEXT_FIELD,
                         validate: [{
                             type: validatorTypes.REQUIRED
@@ -183,7 +183,7 @@ export default {
                     },
                     additionalSteps: [{
                         title: 'Configure resource group and storage account',
-                        nextStep: 'service-principal',
+                        nextStep: 'azure-sub-id',
                         fields: [{
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
@@ -204,21 +204,26 @@ export default {
                             label: 'Storage account name'
                         }]
                     }, {
-                        title: 'Configure service principal',
-                        name: 'service-principal',
-                        nextStep: 'export-schedule',
+                        title: 'Enter subscription ID',
+                        name: 'azure-sub-id',
+                        nextStep: 'configure-roles',
                         fields: [{
-                            name: 'configure-service-principal',
+                            name: 'azure-sub-id-description',
                             component: 'description',
-                            Content: CMAzure.ServicePrincipalDescription
+                            Content: CMAzure.SubscriptionID
                         }, {
                             name: 'credentials.subscription_id',
                             component: componentTypes.TEXT_FIELD,
                             label: 'Subscription ID'
-                        }, {
-                            name: 'active-directory-description',
+                        }]
+                    }, {
+                        title: 'Configure roles',
+                        name: 'configure-roles',
+                        nextStep: 'export-schedule',
+                        fields: [{
+                            name: 'configure-service-principal',
                             component: 'description',
-                            Content: CMAzure.CreateActiveDirectory
+                            Content: CMAzure.ConfigureRolesDescription
                         }, {
                             name: 'authentication.extra.azure.tenant_id',
                             component: componentTypes.TEXT_FIELD
@@ -228,6 +233,10 @@ export default {
                         }, {
                             name: 'authentication.password',
                             component: componentTypes.TEXT_FIELD
+                        }, {
+                            name: 'reader-role',
+                            component: 'description',
+                            Content: CMAzure.ReaderRoleDescription
                         }]
                     }, {
                         title: 'Create daily export',

@@ -24,7 +24,8 @@ const prepareErrorMessage = (payload, errorTitleKey, errorDescriptionKey) => {
     return {
         title: get(payload, titleKey) || 'Error',
         description: get(payload, descriptionKey),
-        sentryId: payload && payload.sentryId
+        sentryId: payload && payload.sentryId,
+        requestId: payload && payload.requestId
     };
 };
 
@@ -70,7 +71,8 @@ const createNotificationsMiddleware = (options = {}) => {
                 dispatch(addNotification({
                     ...defaultNotificationOptions,
                     ...notifications.rejected,
-                    sentryId: action.payload && action.payload.sentryId
+                    sentryId: action.payload && action.payload.sentryId,
+                    requestId: action.payload && action.payload.requestId
                 }));
             }
         }

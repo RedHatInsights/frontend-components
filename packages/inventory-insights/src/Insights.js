@@ -62,6 +62,8 @@ class InventoryRuleList extends Component {
         this.fetchEntityRules();
     }
 
+    capitalize = (string) => string[0].toUpperCase() + string.substring(1);
+
     async fetchAccountSettings() {
         try {
             const settingsFetch = (await API.get(`${BASE_FETCH_URL}account_setting/`, { credentials: 'include' })).data;
@@ -155,7 +157,7 @@ class InventoryRuleList extends Component {
                                     aria-label='select-checkbox'
                                     type="checkbox"
                                     checked={!!selected}
-                                    onChange={event => this.onSelect(event, !selected, key * 2)}
+                                    onChange={event => this.onSelect(event, !selected, rule)}
                                     className="pf-c-check"
                                 /> : ''}
                             </div>
@@ -163,7 +165,7 @@ class InventoryRuleList extends Component {
                         { title: <div> {rule.description}</div> },
                         {
                             title: <div key={key}>
-                                <DateFormat date={rule.publish_date} type='relative' tooltipProps={{ position: TooltipPosition.bottom }}/>
+                                <DateFormat date={rule.publish_date} type='relative' tooltipProps={{ position: TooltipPosition.bottom }} />
                             </div>
                         },
                         {
@@ -199,7 +201,8 @@ class InventoryRuleList extends Component {
                 const rowValue = {
                     has_playbook: value.resolution.has_playbook,
                     publish_date: rule.publish_date,
-                    total_risk: rule.total_risk
+                    total_risk: rule.total_risk,
+                    category: rule.category.name
                 };
 
                 return filterValues.find(value => String(value) === String(rowValue[key]));
@@ -263,13 +266,13 @@ class InventoryRuleList extends Component {
         this.setState({ searchValue: value, rows: builtRows });
     };
 
-    onSelect = (event, isSelected, rowId) => {
-        const { activeReports, kbaDetailsData, filters, rows } = this.state;
+    onSelect = (event, isSelected, rule) => {
+        const { activeReports, kbaDetailsData, filters, rows, searchValue } = this.state;
         this.setState({
             rows: this.buildRows(
                 activeReports, kbaDetailsData, filters,
-                rows.map((oneRow, rowKey) => (rowId === -1 || rowKey === rowId) ? { ...oneRow, selected: isSelected } : { ...oneRow }),
-                false
+                rows.map((oneRow) => oneRow.rule && oneRow.rule.rule_id === rule.rule_id ? { ...oneRow, selected: isSelected } : { ...oneRow }),
+                false, searchValue
             )
         });
     };
@@ -277,7 +280,7 @@ class InventoryRuleList extends Component {
     getSelectedItems = (rows) => rows.filter(entity => entity.selected);
 
     bulkSelect = (isSelected) => {
-        const { activeReports, kbaDetailsData, filters, rows } = this.state;
+        const { activeReports, kbaDetailsData, filters, rows, searchValue } = this.state;
         this.setState({
             isSelected,
             rows: this.buildRows(
@@ -286,7 +289,7 @@ class InventoryRuleList extends Component {
                     // We need to use mod 2 here to ignore children with no has_playbook param
                     index % 2 === 0 && row.resolution.has_playbook ? { ...row, selected: isSelected } : row
                 )),
-                false
+                false, searchValue
             )
         });
     }
@@ -307,7 +310,7 @@ class InventoryRuleList extends Component {
         let chips = filters && prunedFilters.length > 0 ? prunedFilters.map(item => {
             const category = FC[item[0]];
             const chips = item[1].map(value => ({ name: category.values.find(values => values.value === String(value)).text, value }));
-            return { category: category.title, chips, urlParam: category.urlParam };
+            return { category: this.capitalize(category.title), chips, urlParam: category.urlParam };
 
         })
             : [];
@@ -342,6 +345,7 @@ class InventoryRuleList extends Component {
         const hideResultsSatelliteManaged = !satelliteShowHosts && satelliteManaged;
         const selectedAnsibleRules = this.getSelectedItems(rows).filter(r => r.resolution && r.resolution.has_playbook);
         const selectedItemsLength = this.getSelectedItems(rows).length;
+        const selectableItemsLength = rows.filter(r => r.resolution && r.resolution.has_playbook).length;
         const actions = [
             '', {
                 label: 'Collapse all',
@@ -360,17 +364,6 @@ class InventoryRuleList extends Component {
                 value: searchValue
             }
         }, {
-            label: FC.has_playbook.title,
-            type: FC.has_playbook.type,
-            id: FC.has_playbook.urlParam,
-            value: `checkbox-${FC.has_playbook.urlParam}`,
-            filterValues: {
-                key: `${FC.has_playbook.urlParam}-filter`,
-                onChange: (event, values) => this.onFilterChange(FC.has_playbook.urlParam, values),
-                value: filters.has_playbook,
-                items: FC.has_playbook.values
-            }
-        }, {
             label: FC.total_risk.title,
             type: FC.total_risk.type,
             id: FC.total_risk.urlParam,
@@ -380,6 +373,28 @@ class InventoryRuleList extends Component {
                 onChange: (event, values) => this.onFilterChange(FC.total_risk.urlParam, values),
                 value: filters.total_risk,
                 items: FC.total_risk.values
+            }
+        }, {
+            label: FC.category.title,
+            type: FC.category.type,
+            id: FC.category.urlParam,
+            value: `checkbox-${FC.category.urlParam}`,
+            filterValues: {
+                key: `${FC.category.urlParam}-filter`,
+                onChange: (event, values) => this.onFilterChange(FC.category.urlParam, values),
+                value: filters.category,
+                items: FC.category.values
+            }
+        }, {
+            label: FC.has_playbook.title,
+            type: FC.has_playbook.type,
+            id: FC.has_playbook.urlParam,
+            value: `checkbox-${FC.has_playbook.urlParam}`,
+            filterValues: {
+                key: `${FC.has_playbook.urlParam}-filter`,
+                onChange: (event, values) => this.onFilterChange(FC.has_playbook.urlParam, values),
+                value: filters.has_playbook,
+                items: FC.has_playbook.values
             }
         }];
 
@@ -392,8 +407,8 @@ class InventoryRuleList extends Component {
                 onClick: () => this.bulkSelect(true)
             }],
             count: selectedItemsLength,
-            checked: isSelected || selectedItemsLength === results,
-            onSelect: () => { this.bulkSelect(!isSelected); }
+            checked: selectedItemsLength === selectableItemsLength,
+            onSelect: () => this.bulkSelect(!isSelected)
         };
 
         const activeFiltersConfig = {

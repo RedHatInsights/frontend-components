@@ -32,6 +32,7 @@ class DownloadButton extends Component {
                     <DropdownToggle
                         iconComponent={null}
                         onToggle={ this.onToggle }
+                        isDisabled={isDisabled}
                     >
                         <ExportIcon size="sm" />
                     </DropdownToggle>

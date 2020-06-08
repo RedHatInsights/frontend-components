@@ -7,44 +7,13 @@ import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
 import { dependencies, name } from './package.json';
-import { createFilter } from '@rollup/pluginutils';
-import glob from 'glob';
-
-const globMapper = (mapper) => glob.sync(mapper).reduce((acc, item) => {
-    const [ path ] = item.split('/index.js');
-    const last = path.split('/').pop();
-
-    return {
-        ...acc,
-        [last === 'src' ? 'index' : last]: item
-    };
-}, {});
-
-const externalDeps = Object.keys(dependencies).map(item =>
-    (
-        item.includes('@patternfly') ||
-        item.includes('@redhat-cloud-services')
-    ) &&
-    !item.includes('@patternfly/react-table') ?
-        `${item}/**` :
-        item
-);
-
-const external = createFilter(
+import {
+    rollupConfig,
     externalDeps,
-    null,
-    { resolve: false }
-);
-
-const globals = {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-    'prop-types': 'prop-types',
-    '@patternfly/react-core': '@patternfly/react-core',
-    '@patternfly/react-icons': '@patternfly/react-icons',
-    '@patternfly/react-table': '@patternfly/react-table',
-    '@redhat-cloud-services/frontend-components': '@redhat-cloud-services/frontend-components'
-};
+    external,
+    globals,
+    globMapper
+} from '../../config/rollup-contants';
 
 const commonjsOptions = {
     ignoreGlobal: true,
@@ -58,7 +27,9 @@ const babelOptions = {
 };
 
 const plugins = [
-    nodeResolve(),
+    nodeResolve({
+        browser: true
+    }),
     babel(babelOptions),
     commonjs(commonjsOptions),
     nodeGlobals(),
@@ -72,29 +43,11 @@ const plugins = [
     json()
 ];
 
-export default [
-    ...[ 'esm', 'cjs' ].map(env => ({
-        input: globMapper('src/**/index.js'),
-        output: {
-            dir: `./dist/${env}`,
-            format: env,
-            name,
-            globals,
-            exports: 'named'
-        },
-        external,
-        plugins
-    })),
-    ...Object.entries(globMapper('src/**/index.js')).map(([ key, input ]) => ({
-        input,
-        output: {
-            file: `./dist/umd/${key}.js`,
-            format: 'umd',
-            name: `${name}-${key}`,
-            globals,
-            exports: 'named'
-        },
-        external,
-        plugins
-    }))
-];
+export default rollupConfig(
+    external(externalDeps(dependencies)),
+    plugins,
+    globals,
+    name,
+    [ globMapper('src/**/index.js') ],
+    './dist/'
+);
