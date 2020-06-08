@@ -8,13 +8,8 @@ import gql from 'graphql-tag';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
 import { columns } from './defaultColumns';
-import {
-    Card,
-    CardBody,
-    CardHeader
-} from '@patternfly/react-core';
-import { NotEqualIcon } from '@patternfly/react-icons';
 import './compliance.scss';
+import { ErrorCard } from './PresentationalComponents';
 
 const COMPLIANCE_API_ROOT = '/api/compliance';
 
@@ -79,15 +74,8 @@ class SystemDetails extends Component {
     renderError = (error) => {
         const errorMsg = `Oops! Error loading System data: ${error}`;
         return (error.networkError && error.networkError.statusCode === 404) ?
-            <ComplianceEmptyState title='No policies are reporting' /> :
-            <Card className="ins-error-card">
-                <CardHeader>
-                    <NotEqualIcon />
-                </CardHeader>
-                <CardBody>
-                    <div>{ errorMsg }</div>
-                </CardBody>
-            </Card>;
+            <ComplianceEmptyState title='No policies are reporting for this system' /> :
+            <ErrorCard message={errorMsg} />;
     }
 
     render() {
