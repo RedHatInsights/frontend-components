@@ -45,7 +45,8 @@ const createNotificationsMiddleware = (options = {}) => {
         autoDismiss: false,
         dismissDelay: 5000,
         errorTitleKey: 'title',
-        errorDescriptionKey: 'detail'
+        errorDescriptionKey: 'detail',
+        useStatusText: false
     };
     const middlewareOptions = { ...defaultOptions, ...options };
 
@@ -82,11 +83,40 @@ const createNotificationsMiddleware = (options = {}) => {
             noErrorOverride: meta && meta.noError,
             dispatchDefaultFailure: middlewareOptions.dispatchDefaultFailure
         })) {
-            dispatch(addNotification({
-                variant: 'danger',
-                dismissable: true,
-                ...prepareErrorMessage(action.payload, middlewareOptions.errorTitleKey, middlewareOptions.errorDescriptionKey)
-            }));
+            if (middlewareOptions.useStatusText) {
+                dispatch(addNotification({
+                    variant: 'danger',
+                    dismissable: true,
+                    ...prepareErrorMessage(action.payload, middlewareOptions.errorTitleKey, 'statusText')
+                }));
+            } else {
+                const namespaceKey = Array.isArray(middlewareOptions.errorNamespaceKey) && middlewareOptions.errorNamespaceKey.find(key => has(action.payload, key));
+                if (namespaceKey) {
+                    get(action.payload, namespaceKey).map((item) => {
+                        dispatch(addNotification({
+                            variant: 'danger',
+                            dismissable: true,
+                            ...prepareErrorMessage(item, middlewareOptions.errorTitleKey, middlewareOptions.errorDescriptionKey)
+                        }));
+                    });
+                } else {
+                    if (Array.isArray(action.payload)) {
+                        action.payload.map((item) => {
+                            dispatch(addNotification({
+                                variant: 'danger',
+                                dismissable: true,
+                                ...prepareErrorMessage(item, middlewareOptions.errorTitleKey, middlewareOptions.errorDescriptionKey)
+                            }));
+                        });
+                    } else {
+                        dispatch(addNotification({
+                            variant: 'danger',
+                            dismissable: true,
+                            ...prepareErrorMessage(action.payload, middlewareOptions.errorTitleKey, middlewareOptions.errorDescriptionKey)
+                        }));
+                    }
+                }
+            }
         }
 
         next(action);
