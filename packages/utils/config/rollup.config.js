@@ -26,7 +26,8 @@ const entryMapper = {
     debounce: './src/debounce.js',
     inventoryDependencies: './src/inventoryDependencies.js',
     RBAC: './src/RBAC.js',
-    RBACHook: './src/RBACHook.js'
+    RBACHook: './src/RBACHook.js',
+    mergeMessages: './src/mergeMessages.js'
 };
 
 const commonjsOptions = {
