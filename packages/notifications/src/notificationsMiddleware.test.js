@@ -28,14 +28,14 @@ describe('Notifications middleware', () => {
 
     beforeEach(() => {
         initialProps = {};
-        middlewares = [ promiseMiddleware(), notificationsMiddleware() ];
+        middlewares = [ promiseMiddleware(), notificationsMiddleware({ errorNamespaceKey: [ 'errors' ] }) ];
         mockStore = configureStore(middlewares);
         initialProps = {
             store: mockStore({})
         };
     });
 
-    it('should dispatch danger with text from payload', () => {
+    it('should dispatch danger with text from object array payload', () => {
         const expectedActions = [
             expect.objectContaining({
                 type: 'FOO_PENDING'
@@ -52,8 +52,62 @@ describe('Notifications middleware', () => {
                 type: 'FOO_REJECTED'
             })
         ];
-        return initialProps.store.dispatch(requestMock(true, 'Longer detailed description of error message')).catch(() => {
+        return initialProps.store.dispatch(requestMock(true, { errors: [{
+            title: 'Error',
+            detail: 'Longer detailed description of error message'
+        }]
+        })).catch(() => {
             expect(initialProps.store.getActions()).toEqual(expectedActions);
+        });
+    });
+
+    it('should dispatch danger with text from array payload', () => {
+        const expectedActions = [
+            expect.objectContaining({
+                type: 'FOO_PENDING'
+            }), {
+                type: ADD_NOTIFICATION,
+                payload: {
+                    description: 'Longer detailed description of error message',
+                    dismissable: true,
+                    title: 'Error',
+                    variant: 'danger'
+                }
+            },
+            expect.objectContaining({
+                type: 'FOO_REJECTED'
+            })
+        ];
+        return initialProps.store.dispatch(requestMock(true, [{
+            title: 'Error',
+            detail: 'Longer detailed description of error message'
+        }]
+        )).catch(() => {
+            expect(initialProps.store.getActions()).toEqual(expectedActions);
+        });
+    });
+
+    it('should dispatch danger with text from string payload', () => {
+        mockStore = configureStore([ promiseMiddleware(), notificationsMiddleware({ errorNamespaceKey: [ 'errors' ], useStatusText: true }) ]);
+        const store = mockStore({});
+        const expectedActions = [
+            expect.objectContaining({
+                type: 'FOO_PENDING'
+            }), {
+                type: ADD_NOTIFICATION,
+                payload: {
+                    description: 'string',
+                    dismissable: true,
+                    title: 'Error',
+                    variant: 'danger'
+                }
+            },
+            expect.objectContaining({
+                type: 'FOO_REJECTED'
+            })
+        ];
+        return store.dispatch(requestMock(true, 'string')).catch(() => {
+            expect(store.getActions()).toEqual(expectedActions);
         });
     });
 
