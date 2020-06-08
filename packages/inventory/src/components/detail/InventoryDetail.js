@@ -12,8 +12,6 @@ class InventoryDetail extends React.Component {
             this.props.loadEntity(
                 inventoryId,
                 {
-                    prefix: this.props.pathPrefix,
-                    base: this.props.apiBase,
                     hasItems: true
                 }
             );
@@ -41,8 +39,6 @@ InventoryDetail.propTypes = {
     hideBack: PropTypes.bool,
     root: PropTypes.string,
     match: PropTypes.any,
-    pathPrefix: PropTypes.number,
-    apiBase: PropTypes.string,
     entity: PropTypes.shape({
         id: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
     }),

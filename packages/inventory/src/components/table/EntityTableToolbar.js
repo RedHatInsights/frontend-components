@@ -43,7 +43,7 @@ class ContextEntityTableToolbar extends Component {
             filters,
             ...config
         };
-        onRefresh ? onRefresh(params) : onRefreshData(params);
+        onRefresh ? onRefresh(params, onRefreshData) : onRefreshData(params);
         if (showTags) {
             getAllTags('', { filters: config.filters });
         }
@@ -229,8 +229,6 @@ class ContextEntityTableToolbar extends Component {
             filters,
             filterConfig,
             hasItems,
-            pathPrefix,
-            apiBase,
             children,
             loaded,
             actionsConfig,
@@ -239,7 +237,6 @@ class ContextEntityTableToolbar extends Component {
             onClearFilters,
             getAllTags,
             allTagsLoaded,
-            totalItems,
             hasCheckbox,
             activeFiltersConfig,
             additionalTagsCount,
@@ -319,9 +316,7 @@ EntityTableToolbar.propTypes = {
     total: PropTypes.number,
     filters: PropTypes.array,
     hasItems: PropTypes.bool,
-    pathPrefix: PropTypes.number,
     additionalTagsCount: PropTypes.number,
-    apiBase: PropTypes.string,
     page: PropTypes.number,
     getAllTags: PropTypes.func,
     onClearFilters: PropTypes.func,
@@ -351,19 +346,15 @@ EntityTableToolbar.defaultProps = {
 };
 
 function mapStateToProps(
-    { entities: { page, perPage, total, loaded, activeFilters, allTags, allTagsLoaded, additionalTagsCount } },
-    { totalItems, page: currPage, perPage: currPerPage, hasItems, onRefresh, isLoaded }) {
+    { entities: { loaded, activeFilters, allTags, allTagsLoaded, additionalTagsCount } },
+    { hasItems, isLoaded }) {
     return {
-        page: hasItems ? currPage : page,
-        perPage: hasItems ? currPerPage : perPage,
-        total: hasItems ? totalItems : total,
         hasItems,
         loaded: hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded,
         allTagsLoaded,
         allTags,
         filters: activeFilters,
-        additionalTagsCount,
-        onRefresh
+        additionalTagsCount
     };
 }
 

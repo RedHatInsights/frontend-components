@@ -29,6 +29,7 @@ module.exports = {
             'react-content-loader': 'react-content-loader',
             'react-router-dom': 'react-router-dom',
             'react-dom': 'react-dom',
+            'react-redux': 'react-redux',
             redux: 'redux',
             axios: 'axios',
             react: 'react'

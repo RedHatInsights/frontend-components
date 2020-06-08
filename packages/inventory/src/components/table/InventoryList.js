@@ -1,11 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
-import { loadEntities, showEntities } from '../../redux/actions';
 import { Grid, GridItem } from '@patternfly/react-core/dist/esm/layouts/Grid';
 import PropTypes from 'prop-types';
 import './InventoryList.scss';
-import { InventoryContext } from '../../shared';
+import { InventoryContext, loadSystems } from '../../shared';
 import { CancelToken } from 'axios';
 import isEqual from 'lodash/isEqual';
 
@@ -14,40 +13,30 @@ class ContextInventoryList extends React.Component {
         super(props);
     }
 
-    loadEntities = (options = {}, reload = true) => {
-        const { page, perPage, onRefresh, items, hasItems, sortBy, activeFilters } = this.props;
+    loadEntities = (options = {}) => {
+        const { page, perPage, items, hasItems, sortBy, activeFilters } = this.props;
         const currPerPage = options.per_page || perPage;
-        options = {
+        if (this.controller) {
+            this.controller.cancel('Get host items canceled by user.');
+        }
+
+        this.controller = CancelToken.source();
+        this.props.loadEntities && this.props.loadEntities({
             page: (hasItems && items.length <= currPerPage) ? 1 : (options.page || page),
             // eslint-disable-next-line camelcase
             per_page: currPerPage,
             orderBy: !hasItems && (sortBy && sortBy.key),
             orderDirection: !hasItems && (sortBy && sortBy.direction.toUpperCase()),
             filters: activeFilters,
+            controller: this.controller,
+            hasItems,
             ...options
-        };
-        reload && onRefresh(options);
-        if (this.controller) {
-            this.controller.cancel('Get host items canceled by user.');
-        }
-
-        this.controller = CancelToken.source();
-        this.props.loadEntities && this.props.loadEntities(
-            items,
-            {
-                ...options,
-                controller: this.controller,
-                prefix: this.props.pathPrefix,
-                base: this.props.apiBase,
-                hasItems
-            }
-        );
+        });
     }
 
     componentDidMount() {
-        const { setRefresh, setUpdate } = this.props;
+        const { setRefresh } = this.props;
         setRefresh && setRefresh(this.loadEntities);
-        setUpdate && setUpdate((options) => this.loadEntities(options, false));
         this.loadEntities();
     }
 
@@ -60,9 +49,9 @@ class ContextInventoryList extends React.Component {
                 prevProps.items.map(({ children, isOpen, ...item }) => item)
             )
         ) {
-            this.loadEntities({}, false);
+            this.loadEntities({});
         } else if (!hasItems && !isEqual(prevProps.sortBy, sortBy)) {
-            this.loadEntities({}, false);
+            this.loadEntities({});
         }
     }
 
@@ -72,7 +61,7 @@ class ContextInventoryList extends React.Component {
             <React.Fragment>
                 <Grid guttter="sm" className="ins-inventory-list">
                     <GridItem span={ 12 }>
-                        <InventoryEntityTable { ...props } showHealth={ showHealth } />
+                        <InventoryEntityTable { ...props } />
                     </GridItem>
                 </Grid>
             </React.Fragment>
@@ -80,12 +69,37 @@ class ContextInventoryList extends React.Component {
     }
 }
 
-const propTypes = {
+const InventoryList = (props) => {
+    const dispatch = useDispatch();
+    const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
+    return (
+        <InventoryContext.Consumer>
+            { ({ setRefresh, setUpdate }) => (
+                <ContextInventoryList
+                    { ...props }
+                    activeFilters={ activeFilters }
+                    setRefresh={ setRefresh }
+                    setUpdate={ setUpdate }
+                    loadEntities={ (config) => dispatch(loadSystems(props.items, config, props.showTags)) }
+                />
+            ) }
+        </InventoryContext.Consumer>
+    );
+};
+
+ContextInventoryList.propTypes = {
+    ...InventoryList.propTypes,
+    setRefresh: PropTypes.func
+};
+ContextInventoryList.defaultProps = {
+    perPage: 50,
+    page: 1,
+    onRefresh: () => undefined
+};
+InventoryList.propTypes = {
     showTags: PropTypes.bool,
     filterEntities: PropTypes.func,
     loadEntities: PropTypes.func,
-    pathPrefix: PropTypes.number,
-    apiBase: PropTypes.string,
     showHealth: PropTypes.bool,
     page: PropTypes.number,
     perPage: PropTypes.number,
@@ -108,64 +122,4 @@ const propTypes = {
     entities: PropTypes.arrayOf(PropTypes.any)
 };
 
-ContextInventoryList.propTypes = {
-    ...propTypes,
-    setRefresh: PropTypes.func
-};
-
-ContextInventoryList.defaultProps = {
-    perPage: 50,
-    page: 1,
-    onRefresh: () => undefined
-};
-
-const InventoryList = ({ ...props }) => (
-    <InventoryContext.Consumer>
-        { ({ setRefresh, setUpdate }) => (
-            <ContextInventoryList { ...props } setRefresh={ setRefresh } setUpdate={ setUpdate } />
-        ) }
-    </InventoryContext.Consumer>
-);
-
-InventoryList.propTypes = propTypes;
-
-function mapDispatchToProps(dispatch, { showTags }) {
-    return {
-        loadEntities: (items = [], config) => {
-            if (!Array.isArray(items)) {
-                console.error('Wrong shape of items, array with strings or objects with ID property required!');
-            }
-
-            const limitedItems = items.slice((config.page - 1) * config.per_page, config.page * config.per_page);
-
-            if (limitedItems.length > 0) {
-                config.itemsPage = config.page;
-                config.page = 1;
-            }
-
-            const itemIds = limitedItems.reduce((acc, curr) => (
-                [
-                    ...acc,
-                    curr && typeof curr === 'string' ? curr : curr.id
-                ]
-            ), []).filter(Boolean);
-            dispatch(loadEntities(itemIds, config, { showTags }));
-            dispatch(showEntities(limitedItems.map(oneItem => (
-                { ...typeof oneItem === 'string' ? { id: oneItem } : oneItem }
-            ))));
-        }
-    };
-}
-
-export default connect(
-    (
-        { entities: { page, perPage, sortBy, activeFilters } },
-        { perPage: currPerPage, sortBy: currSortBy, hasItems }
-    ) => ({
-        page,
-        perPage: currPerPage || perPage,
-        sortBy: hasItems ? currSortBy : sortBy,
-        activeFilters
-    }),
-    mapDispatchToProps
-)(InventoryList);
+export default InventoryList;

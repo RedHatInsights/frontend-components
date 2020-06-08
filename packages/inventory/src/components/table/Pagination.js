@@ -16,7 +16,7 @@ class ContextFooterPagination extends Component {
         const { onRefreshData, onRefresh, dataLoading } = this.props;
         if (onRefresh) {
             dataLoading();
-            onRefresh(pagination);
+            onRefresh(pagination, onRefreshData);
         } else {
             onRefreshData(pagination);
         }
@@ -52,6 +52,7 @@ class ContextFooterPagination extends Component {
         const extra = isFull ? {
             variant: PaginationVariant.bottom
         } : {};
+
         return (
             <Fragment>
                 { loaded && (
@@ -103,12 +104,9 @@ FooterPagination.defaultProps = {
 };
 
 function stateToProps(
-    { entities: { page, perPage, total, loaded, activeFilters } },
-    { totalItems, page: currPage, perPage: currPerPage, hasItems, isFull, isLoaded }) {
+    { entities: { loaded, activeFilters } },
+    { hasItems, isFull, isLoaded }) {
     return {
-        page: hasItems ? currPage : page,
-        perPage: hasItems ? currPerPage : perPage,
-        total: hasItems ? totalItems : total,
         loaded: hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded,
         filters: activeFilters,
         isFull

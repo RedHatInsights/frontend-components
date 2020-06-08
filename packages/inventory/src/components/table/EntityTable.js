@@ -179,6 +179,7 @@ class EntityTable extends React.Component {
             showTags
         } = this.props;
         const cells = loaded && this.createColumns();
+        console.log(loaded, 'fff');
 
         return (
             <React.Fragment>
@@ -271,12 +272,11 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-function mapStateToProps({ entities: { columns, rows, loaded, sortBy } }, { hasItems, sortBy: currSortBy, isLoaded }) {
+function mapStateToProps({ entities: { columns, rows, loaded } }, { hasItems, isLoaded }) {
     return {
         columns,
         loaded: hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded,
-        rows,
-        sortBy: hasItems ? currSortBy : sortBy
+        rows
     };
 }
 

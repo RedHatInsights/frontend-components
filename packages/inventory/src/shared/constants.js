@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
+import { loadEntities } from '../redux/actions';
 
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
@@ -195,3 +196,15 @@ export const registered = [
 ];
 
 export const InventoryContext = createContext('inventory');
+
+export const loadSystems = (items = [], config, showTags) => {
+    const limitedItems = items.slice((config.page - 1) * config.per_page, config.page * config.per_page);
+
+    return loadEntities(limitedItems, {
+        ...config,
+        ...limitedItems.length > 0 && {
+            itemsPage: config.page,
+            page: 1
+        }
+    }, { showTags });
+};
