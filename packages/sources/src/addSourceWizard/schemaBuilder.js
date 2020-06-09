@@ -241,7 +241,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
         return ({
             name: `${type.name}-${appType.id}`,
-            title: 'Select authentication type',
+            title: 'Choose authentication type',
             fields,
             nextStep: {
                 when: 'auth_select',
