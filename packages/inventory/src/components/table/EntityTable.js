@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { selectEntity, setSort, detailSelect } from '../../redux/actions';
+import { selectEntity, setSort } from '../../redux/actions';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
-import { Title } from '@patternfly/react-core/dist/esm/components/Title';
-import { EmptyStateBody, EmptyState, EmptyStateVariant } from '@patternfly/react-core/dist/esm/components/EmptyState';
-import { Bullseye } from '@patternfly/react-core/dist/esm/layouts/Bullseye';
 import {
     Table as PfTable,
     TableBody,
@@ -17,23 +14,9 @@ import {
     expandable
 } from '@patternfly/react-table';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/esm/SkeletonTable';
-import { EmptyTable } from '@redhat-cloud-services/frontend-components/components/esm/EmptyTable';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
+import NoSystemsTable from './NoSystemsTable';
 
 class EntityTable extends React.Component {
-    onRowClick = (event, key, application) => {
-        const { loaded, onRowClick } = this.props;
-        if (loaded && onRowClick) {
-            const isMetaKey = (event.ctrlKey || event.metaKey || event.which === 2);
-            if (isMetaKey) {
-                const url = new URL(`./${key}`, location.href);
-                window.open(url.href);
-            } else {
-                onRowClick(event, key, application);
-            }
-        }
-    }
-
     onItemSelect = (_event, checked, rowId) => {
         const { rows, expandable: isExpandable } = this.props;
         const row = isExpandable ? rows[rowId / 2] : rows[rowId];
@@ -52,54 +35,16 @@ class EntityTable extends React.Component {
         });
     }
 
-    renderCol = (col, key, composed, isTime) => {
-        if (composed) {
-            return (
-                { title: <div className="ins-composed-col">
-                    { composed.map(path => (
-                        <div key={ path }
-                            widget="col"
-                            data-key={ path }>
-                            <a href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${col.id}` }
-                                onClick={ event => {
-                                    event.preventDefault();
-                                    event.stopPropagation();
-                                    this.onRowClick(event, col.id);
-                                }}
-                            >
-                                { get(col, path, ' ') || '\u00A0' }
-                            </a>
-                        </div>
-                    )) }
-                </div>
-                }
-            );
-        }
-
-        if (isTime) {
-            if (DateFormat) {
-                return { title: <DateFormat date={get(col, key, ' ')} type="relative" /> };
-            }
-
-            const [ , date, month, year, time ] = new Date(get(col, key, ' ')).toUTCString().split(' ');
-            if (date && month && year && time) {
-                return `${date} ${month} ${year}, ${time.split(':').slice(0, 2).join(':')} UTC`;
-            }
-
-            return 'Invalid date';
-        }
-
-        return get(col, key, ' ');
-    }
-
-    buildCells = (item) => ([
-        ...this.props.columns.map(({ key, composed, isTime, renderFunc }) => {
-            const oneColumn = this.renderCol(item, key, composed, isTime, renderFunc);
+    buildCells = (item) => {
+        return this.props.columns
+        .map(({ key, renderFunc }) => {
+            const data = get(item, key, ' ');
             return renderFunc ? {
-                title: renderFunc(oneColumn, item.id, item)
-            } : oneColumn;
+                title: renderFunc(data, item.id, item, this.props)
+            } : data;
         })
-    ].filter(cell => cell !== false && cell !== undefined))
+        .filter(cell => cell !== false && cell !== undefined);
+    }
 
     createRows = () => {
         const { rows, columns, actions, expandable } = this.props;
@@ -107,20 +52,7 @@ class EntityTable extends React.Component {
         if (rows.length === 0) {
             return [{
                 cells: [{
-                    title: (
-                        <EmptyTable>
-                            <Bullseye>
-                                <EmptyState variant={ EmptyStateVariant.full }>
-                                    <Title headingLevel="h5" size="lg">
-                                        No matching systems found
-                                    </Title>
-                                    <EmptyStateBody>
-                                        This filter criteria matches no systems. <br /> Try changing your filter settings.
-                                    </EmptyStateBody>
-                                </EmptyState>
-                            </Bullseye>
-                        </EmptyTable>
-                    ),
+                    title: <NoSystemsTable />,
                     props: {
                         colSpan: columns.length + Boolean(actions)
                     }
@@ -143,20 +75,14 @@ class EntityTable extends React.Component {
         } ])).flat().filter(Boolean);
     }
 
-    buildTransforms = (props, transforms, hasItems, rows) => {
-        return ([
-            ...transforms || [],
-            ...props && props.width ? [ cellWidth(props.width) ] : [],
-            ...hasItems || rows.length <= 0 || (props && props.isStatic) ? [] : [ sortable ]
-        ]);
-    }
-
     createColumns = () => {
         const { columns, hasItems, rows, expandable: isExpandable } = this.props;
         return columns.map(({ props, transforms, ...oneCell }) => ({
             ...oneCell,
             transforms: [
-                ...this.buildTransforms(props, transforms, hasItems, rows) || []
+                ...transforms || [],
+                ...props && props.width ? [ cellWidth(props.width) ] : [],
+                ...hasItems || rows.length <= 0 || (props && props.isStatic) ? [] : [ sortable ]
             ],
             cellFormatters: [
                 ...isExpandable ? [ expandable ] : []
@@ -179,13 +105,12 @@ class EntityTable extends React.Component {
             showTags
         } = this.props;
         const cells = loaded && this.createColumns();
-        console.log(loaded, 'fff');
+        console.log(actions, 'fff');
 
         return (
             <React.Fragment>
                 { loaded ?
                     PfTable && <PfTable
-                        borders={ true }
                         variant={ variant }
                         aria-label="Host inventory"
                         cells={ cells }
@@ -207,13 +132,9 @@ class EntityTable extends React.Component {
                         { ...tableProps }
                     >
                         <TableHeader />
-                        <TableBody onRowClick={ (event, { selected }, { rowIndex }) => {
-                            if (hasCheckbox && event.target.matches('td')) {
-                                this.onItemSelect(event, !selected, rowIndex);
-                            }
-                        } } />
+                        <TableBody />
                     </PfTable> :
-                    <SkeletonTable colSize={ 2 } rowSize={ 15 } />
+                    <SkeletonTable colSize={ columns.length } rowSize={ 15 } />
                 }
             </React.Fragment>
         );
@@ -222,7 +143,6 @@ class EntityTable extends React.Component {
 
 EntityTable.propTypes = {
     variant: PropTypes.oneOf(Object.values(TableVariant || {})),
-    history: PropTypes.any,
     expandable: PropTypes.bool,
     onExpandClick: PropTypes.func,
     setSort: PropTypes.func,
@@ -235,7 +155,6 @@ EntityTable.propTypes = {
         composed: PropTypes.arrayOf(PropTypes.string)
     })),
     showHealth: PropTypes.bool,
-    match: PropTypes.any,
     loaded: PropTypes.bool,
     items: PropTypes.array,
     sortBy: PropTypes.shape({

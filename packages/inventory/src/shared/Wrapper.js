@@ -17,6 +17,7 @@ class RenderWrapper extends Component {
                             { ...inventoryRef && {
                                 ref: inventoryRef
                             }}
+                            store={ store }
                         />
                     </Provider> :
                     <Component
@@ -24,6 +25,7 @@ class RenderWrapper extends Component {
                         { ...inventoryRef && {
                             ref: inventoryRef
                         }}
+                        store={ store }
                     />,
                 this.ref.current
             );
@@ -44,7 +46,8 @@ class RenderWrapper extends Component {
 RenderWrapper.propTypes = {
     cmp: PropTypes.oneOfType([ PropTypes.func, PropTypes.string, PropTypes.element ]),
     inventoryRef: PropTypes.any,
-    store: PropTypes.object
+    store: PropTypes.object,
+    customRender: PropTypes.bool
 };
 
 export default RenderWrapper;

@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
 import { loadEntities } from '../redux/actions';
 
 export const TEXT_FILTER = 'hostname_or_id';

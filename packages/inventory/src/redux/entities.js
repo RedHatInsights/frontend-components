@@ -15,11 +15,16 @@ import { DateFormat } from '@redhat-cloud-services/frontend-components/component
 import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/esm/CullingInfo';
 import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
+import TitleColumn from '../components/table/TitleColumn';
 
 export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: false };
 
 const defaultColumns = [
-    { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ] },
+    {
+        key: 'display_name',
+        title: 'Name',
+        renderFunc: TitleColumn
+    },
     {
         key: 'tags',
         title: 'Tags',

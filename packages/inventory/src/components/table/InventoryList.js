@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
 import { Grid, GridItem } from '@patternfly/react-core/dist/esm/layouts/Grid';
@@ -9,10 +9,6 @@ import { CancelToken } from 'axios';
 import isEqual from 'lodash/isEqual';
 
 class ContextInventoryList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     loadEntities = (options = {}) => {
         const { page, perPage, items, hasItems, sortBy, activeFilters } = this.props;
         const currPerPage = options.per_page || perPage;
@@ -23,10 +19,12 @@ class ContextInventoryList extends React.Component {
         this.controller = CancelToken.source();
         this.props.loadEntities && this.props.loadEntities({
             page: (hasItems && items.length <= currPerPage) ? 1 : (options.page || page),
+            ...hasItems ? {
+                sortBy: sortBy?.key,
+                orderDirection: sortBy?.direction?.toUpperCase()
+            } : { hasItems },
             // eslint-disable-next-line camelcase
             per_page: currPerPage,
-            orderBy: !hasItems && (sortBy && sortBy.key),
-            orderDirection: !hasItems && (sortBy && sortBy.direction.toUpperCase()),
             filters: activeFilters,
             controller: this.controller,
             hasItems,
@@ -58,13 +56,11 @@ class ContextInventoryList extends React.Component {
     render() {
         const { showHealth, ...props } = this.props;
         return (
-            <React.Fragment>
-                <Grid guttter="sm" className="ins-inventory-list">
-                    <GridItem span={ 12 }>
-                        <InventoryEntityTable { ...props } />
-                    </GridItem>
-                </Grid>
-            </React.Fragment>
+            <Grid guttter="sm" className="ins-inventory-list">
+                <GridItem span={ 12 }>
+                    <InventoryEntityTable { ...props } />
+                </GridItem>
+            </Grid>
         );
     }
 }
@@ -74,12 +70,11 @@ const InventoryList = (props) => {
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
     return (
         <InventoryContext.Consumer>
-            { ({ setRefresh, setUpdate }) => (
+            { ({ setRefresh }) => (
                 <ContextInventoryList
                     { ...props }
                     activeFilters={ activeFilters }
                     setRefresh={ setRefresh }
-                    setUpdate={ setUpdate }
                     loadEntities={ (config) => dispatch(loadSystems(props.items, config, props.showTags)) }
                 />
             ) }

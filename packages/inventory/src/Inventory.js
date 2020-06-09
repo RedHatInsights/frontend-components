@@ -3,7 +3,7 @@ import { AppInfo, InventoryDetail, FullDetail } from './components/detail';
 import { TagWithDialog, RenderWrapper } from './shared';
 import { InventoryTable } from './components/table';
 
-export function inventoryConnector(store) {
+export function inventoryConnector(store, componentsMapper) {
     return {
         InventoryTable: React.forwardRef(
             (props, ref) => <RenderWrapper
@@ -16,6 +16,7 @@ export function inventoryConnector(store) {
         AppInfo: React.forwardRef(
             (props, ref) => <RenderWrapper
                 { ...props }
+                componentsMapper={componentsMapper}
                 inventoryRef={ ref }
                 store={ store }
                 cmp={ AppInfo }
