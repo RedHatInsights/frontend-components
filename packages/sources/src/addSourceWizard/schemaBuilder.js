@@ -199,7 +199,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
             let nextStep;
 
             if (getAdditionalSteps(type.name, auth.type, appType.name).length > 0) {
-                nextStep = `${type.name}-${auth.type}-additional-step`;
+                nextStep = `${type.name}-${auth.type}-${appType.name}-additional-step`;
             } else if (endpointFields.length === 0 && !skipEndpoint && !customSteps) {
                 nextStep = `${type.name}-endpoint`;
             } else {
@@ -240,8 +240,8 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
         });
 
         return ({
-            name: type.name,
-            title: `Configure ${acronymMapper(type.product_name)} credentials`,
+            name: `${type.name}-${appType.id}`,
+            title: 'Select authentication type',
             fields,
             nextStep: {
                 when: 'auth_select',
