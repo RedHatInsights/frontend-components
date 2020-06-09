@@ -476,6 +476,7 @@ export default {
             },
             username_password: {
                 [CATALOG_APP]: {
+                    skipSelection: true,
                     onlyHiddenFields: true,
                     customSteps: true,
                     'authentication.username': {
