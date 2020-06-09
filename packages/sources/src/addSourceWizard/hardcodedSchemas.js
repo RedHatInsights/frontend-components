@@ -466,9 +466,17 @@ export default {
     },
     'ansible-tower': {
         authentication: {
+            receptor_node: {
+                generic: {
+                    skipEndpoint: true
+                },
+                [CATALOG_APP]: {
+                    skipEndpoint: true
+                }
+            },
             username_password: {
                 [CATALOG_APP]: {
-                    skipSelection: true,
+                    onlyHiddenFields: true,
                     customSteps: true,
                     'authentication.username': {
                         isRequired: false,
