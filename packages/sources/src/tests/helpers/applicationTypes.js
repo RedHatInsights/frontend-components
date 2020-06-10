@@ -9,7 +9,8 @@ const applicationTypes = [
         name: '/insights/platform/catalog',
         supported_authentication_types: {
             'ansible-tower': [
-                'username_password'
+                'username_password',
+                'receptor_node'
             ]
         },
         supported_source_types: [
