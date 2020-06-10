@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Notification Pagination component should render correctly 1`] = `
-<Card
+<Component
   className="notification-item"
 >
-  <CardBody>
-    <Level>
-      <LevelItem>
+  <Component>
+    <Component>
+      <Component>
         <Component
           className="ins-c-pagination__clear-all"
           onClick={[Function]}
@@ -14,11 +14,26 @@ exports[`Notification Pagination component should render correctly 1`] = `
         >
           Clear all
         </Component>
-      </LevelItem>
-      <LevelItem>
-        <Component
+      </Component>
+      <Component>
+        <Pagination
+          className=""
+          defaultToFullPage={false}
+          firstPage={1}
+          isCompact={false}
+          isDisabled={false}
           itemCount={10}
+          itemsEnd={null}
+          itemsStart={null}
+          offset={0}
+          onFirstClick={[Function]}
+          onLastClick={[Function]}
+          onNextClick={[Function]}
+          onPageInput={[Function]}
+          onPerPageSelect={[Function]}
+          onPreviousClick={[Function]}
           onSetPage={[Function]}
+          ouiaId={null}
           page={1}
           perPage={5}
           perPageOptions={
@@ -34,10 +49,12 @@ exports[`Notification Pagination component should render correctly 1`] = `
               "items": "Notifications",
             }
           }
+          toggleTemplate={[Function]}
           variant="bottom"
+          widgetId="pagination-options-menu"
         />
-      </LevelItem>
-    </Level>
-  </CardBody>
-</Card>
+      </Component>
+    </Component>
+  </Component>
+</Component>
 `;
