@@ -1,69 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { detailSelect } from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
 import { Tabs, Tab } from '@patternfly/react-core/dist/esm/components/Tabs';
+import { detailSelect } from '../../redux/actions';
 
-class ApplicationDetails extends Component {
-    onTabClick = (_event, item) => {
-        const { onDetailSelect, items } = this.props;
-        const activeItem = items.find(oneApp => oneApp.name === item);
-        onDetailSelect && onDetailSelect(activeItem.name);
-    }
-
-    render() {
-        const { activeApp, items } = this.props;
-        const defaultApp = (activeApp && activeApp.appName) || items && items[0] && items[0].name;
-        return (
-            <React.Fragment>
-                {
-                    items && items.length > 1 &&
-                    <Tabs
-                        activeKey={ defaultApp }
-                        onSelect={ this.onTabClick }
-                        isFilled
-                        className="ins-c-inventory-detail__app-tabs"
-                    >
-                        { items.map((item, key) => (
-                            <Tab key={ key } eventKey={ item.name } title={ item.title }></Tab>
-                        )) }
-                    </Tabs>
-                }
-            </React.Fragment>
-        );
-    }
-}
+const ApplicationDetails = ({ onTabSelect, ...props }) => {
+    const dispatch = useDispatch();
+    const items = useSelector(({ entityDetails: { activeApps } }) => activeApps);
+    const activeApp = useSelector(({ entityDetails: { activeApp } }) => activeApp);
+    const defaultApp = activeApp?.appName || items?.[0]?.name;
+    return (
+        <React.Fragment>
+            {
+                items && items.length > 1 &&
+                <Tabs
+                    {...props}
+                    activeKey={ defaultApp }
+                    onSelect={ (event, item) => {
+                        const activeItem = items.find(oneApp => oneApp.name === item);
+                        onTabSelect(event, item, activeItem);
+                        dispatch(detailSelect(activeItem.name));
+                    } }
+                    isFilled
+                    className="ins-c-inventory-detail__app-tabs"
+                >
+                    { items.map((item, key) => (
+                        <Tab key={ key } eventKey={ item.name } title={ item.title }></Tab>
+                    )) }
+                </Tabs>
+            }
+        </React.Fragment>
+    );
+};
 
 ApplicationDetails.propTypes = {
-    history: PropTypes.any,
-    match: PropTypes.any,
-    items: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string,
-        title: PropTypes.string
-    })),
-    activeApp: PropTypes.shape({
-        name: PropTypes.string
-    }),
-    onDetailSelect: PropTypes.func
+    onTabSelect: PropTypes.func
 };
 
 ApplicationDetails.defaultProps = {
-    activeApp: {}
+    onTabSelect: () => undefined
 };
 
-function stateToProps({ entityDetails: { activeApps, activeApp } }) {
-    return {
-        items: activeApps,
-        activeApp
-    };
-}
-
-function propsToDispatch(dispatch) {
-    return {
-        onDetailSelect: (application) => {
-            dispatch(detailSelect(application));
-        }
-    };
-}
-
-export default connect(stateToProps, propsToDispatch)(ApplicationDetails);
+export default ApplicationDetails;

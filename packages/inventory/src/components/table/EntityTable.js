@@ -8,13 +8,11 @@ import {
     TableBody,
     TableHeader,
     TableGridBreakpoint,
-    cellWidth,
-    TableVariant,
-    sortable,
-    expandable
+    TableVariant
 } from '@patternfly/react-table';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/esm/SkeletonTable';
 import NoSystemsTable from './NoSystemsTable';
+import { createColumns } from '../../shared/constants';
 
 class EntityTable extends React.Component {
     onItemSelect = (_event, checked, rowId) => {
@@ -75,21 +73,6 @@ class EntityTable extends React.Component {
         } ])).flat().filter(Boolean);
     }
 
-    createColumns = () => {
-        const { columns, hasItems, rows, expandable: isExpandable } = this.props;
-        return columns.map(({ props, transforms, ...oneCell }) => ({
-            ...oneCell,
-            transforms: [
-                ...transforms || [],
-                ...props && props.width ? [ cellWidth(props.width) ] : [],
-                ...hasItems || rows.length <= 0 || (props && props.isStatic) ? [] : [ sortable ]
-            ],
-            cellFormatters: [
-                ...isExpandable ? [ expandable ] : []
-            ]
-        }));
-    }
-
     render() {
         const {
             rows,
@@ -102,10 +85,11 @@ class EntityTable extends React.Component {
             variant,
             sortBy,
             tableProps,
+            hasItems,
+            expandable: isExpandable,
             showTags
         } = this.props;
-        const cells = loaded && this.createColumns();
-        console.log(actions, 'fff');
+        const cells = loaded && createColumns(columns, hasItems, rows, isExpandable);
 
         return (
             <React.Fragment>

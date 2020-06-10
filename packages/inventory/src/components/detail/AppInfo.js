@@ -21,6 +21,7 @@ class AppInfo extends Component {
 }
 
 AppInfo.propTypes = {
+    store: PropTypes.any,
     activeApps: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string
     })),

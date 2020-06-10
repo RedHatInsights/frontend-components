@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const onRowClick = (event, key, { loaded, onRowClick }) => {
-    if (loaded && onRowClick) {
+const onRowClick = (event, key, { loaded, onRowClick, noDetail }) => {
+    if (loaded && !noDetail) {
         const isMetaKey = (event.ctrlKey || event.metaKey || event.which === 2);
         if (isMetaKey) {
             const url = new URL(`./${key}`, location.href);
             window.open(url.href);
-        } else {
+        } else if (onRowClick) {
             onRowClick(event, key, isMetaKey);
+        } else {
+            location.href = new URL(`./${key}`, location.href);
         }
     }
 };
@@ -17,7 +19,7 @@ const TitleColumn = (data, id, item, props) => {
     return (
         <div className="ins-composed-col">
             <div>{item.os_release}</div>
-            { props.onRowClick ?
+            { !props.noDetail ?
                 <a
                     widget="col"
                     href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${id}` }
