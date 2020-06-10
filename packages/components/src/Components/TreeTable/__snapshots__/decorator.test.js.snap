@@ -29,7 +29,6 @@ exports[`TreeTable decorator should render correctly - with data tree collapsed 
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
     </Component>
   </div>
@@ -58,7 +57,6 @@ exports[`TreeTable decorator should render correctly - with data tree opened 1`]
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
     </Component>
   </div>

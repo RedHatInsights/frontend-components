@@ -50,7 +50,7 @@ class PaginationNav extends Component {
                             </DropdownItem>
                         )) }
                         toggle={
-                            <DropdownToggle onToggle={ this.onToggle } iconComponent={ null } className="pf-c-options-menu__toggle-button">
+                            <DropdownToggle onToggle={ this.onToggle } toggleIndicator={ null } className="pf-c-options-menu__toggle-button">
                                 <span className="pf-c-options-menu__toggle-text">
                                     <b>{ itemsStart } - { itemsEnd }</b> of <b>{ itemCount }</b> { itemsTitle }
                                 </span>

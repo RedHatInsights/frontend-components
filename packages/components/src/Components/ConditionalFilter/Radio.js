@@ -44,7 +44,7 @@ class Radio extends Component {
                     isDisabled={ isDisabled }
                     onToggle={ this.onToggle }
                     onSelect={ this.onSelect }
-                    isExpanded={ isExpanded }
+                    isOpen={ isExpanded }
                     placeholderText={ placeholder }
                 >
                     { items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dropdown, DropdownToggle } from '@patternfly/react-core';
+import { Dropdown, DropdownToggle, Level } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import FilterInput from './FilterInput.js';
 
@@ -39,7 +39,7 @@ class FilterDropdown extends Component {
                     { filterCategories.map(
                         (data, index) =>
                             !hideCategories.includes(data.urlParam) && (
-                                <div key={ `${data.urlParam}${index}` } className="filterTitle">
+                                <Level key={ `${data.urlParam}${index}` }>
                                     { data.title }
                                     { data.values.map((item, key) => (
                                         <FilterInput
@@ -55,7 +55,7 @@ class FilterDropdown extends Component {
                                         />
                                     )) }
                                     { index !== filterCategories.length - 1 && <br /> }
-                                </div>
+                                </Level>
                             )
                     ) }
                 </div>

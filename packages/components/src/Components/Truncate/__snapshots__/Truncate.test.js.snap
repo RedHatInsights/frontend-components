@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Truncate component should render correctly block clicking on expand toggles to collapse 1`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -17,8 +17,8 @@ laborum.",
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-  <StackItem>
+  </Component>
+  <Component>
     <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
@@ -26,15 +26,15 @@ laborum.",
     >
       Custom collapse
     </Component>
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly block clicking on expand toggles to collapse 2`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -47,8 +47,8 @@ laborum.",
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-  <StackItem>
+  </Component>
+  <Component>
     <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
@@ -56,15 +56,15 @@ laborum.",
     >
       Custom collapse
     </Component>
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly block custom button titles 1`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -77,8 +77,8 @@ laborum.",
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-  <StackItem>
+  </Component>
+  <Component>
     <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
@@ -86,15 +86,15 @@ laborum.",
     >
       Custom collapse
     </Component>
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly block custom button titles 2`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -107,8 +107,8 @@ laborum.",
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-  <StackItem>
+  </Component>
+  <Component>
     <Component
       className="ins-c-collapse-button"
       onClick={[Function]}
@@ -116,15 +116,15 @@ laborum.",
     >
       Custom collapse
     </Component>
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly block custom expande button 1`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -134,8 +134,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-  <StackItem>
+  </Component>
+  <Component>
     <Component
       className="ins-c-expand-button"
       onClick={[Function]}
@@ -143,15 +143,15 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     >
       Custom expand
     </Component>
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly block custom expande button 2`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -161,8 +161,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-  <StackItem>
+  </Component>
+  <Component>
     <Component
       className="ins-c-expand-button"
       onClick={[Function]}
@@ -170,15 +170,15 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     >
       Custom expand
     </Component>
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly block when text length is less than user specified length 1`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -191,15 +191,15 @@ laborum.",
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly block with short length 1`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -208,8 +208,8 @@ exports[`Truncate component should render correctly block with short length 1`] 
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-  <StackItem>
+  </Component>
+  <Component>
     <Component
       className="ins-c-expand-button"
       onClick={[Function]}
@@ -217,15 +217,15 @@ exports[`Truncate component should render correctly block with short length 1`] 
     >
       Read more
     </Component>
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly block without length specified 1`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -235,8 +235,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-  <StackItem>
+  </Component>
+  <Component>
     <Component
       className="ins-c-expand-button"
       onClick={[Function]}
@@ -244,8 +244,8 @@ et dolore magna aliqua. Ut enim ad minim veniam, q...",
     >
       Read more
     </Component>
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly inline clicking on expand toggles to collapse 1`] = `
@@ -411,10 +411,10 @@ laborum.",
 `;
 
 exports[`Truncate component should render correctly inline with short length 1`] = `
-<Stack
+<Component
   className="ins-c-truncate is-block"
 >
-  <StackItem>
+  <Component>
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -423,8 +423,8 @@ exports[`Truncate component should render correctly inline with short length 1`]
       }
       widget-type="InsightsTruncateBlock"
     />
-  </StackItem>
-  <StackItem>
+  </Component>
+  <Component>
     <Component
       className="ins-c-expand-button"
       onClick={[Function]}
@@ -432,8 +432,8 @@ exports[`Truncate component should render correctly inline with short length 1`]
     >
       Read more
     </Component>
-  </StackItem>
-</Stack>
+  </Component>
+</Component>
 `;
 
 exports[`Truncate component should render correctly inline without length specified 1`] = `

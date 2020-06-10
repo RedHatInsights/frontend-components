@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import BulkSelect from './BulkSelect';
+import { Dropdown } from '@patternfly/react-core';
 
 describe('BulkSelect', () => {
     it('should render correctly - no data', () => {
@@ -98,7 +99,7 @@ describe('BulkSelect', () => {
                 }
             ] }
             isDisabled={ true } />);
-            expect(wrapper.find('Dropdown').prop('toggle').props.isDisabled).toBe(true);
+            expect(wrapper.find(Dropdown).prop('toggle').props.isDisabled).toBe(true);
         });
     });
 });

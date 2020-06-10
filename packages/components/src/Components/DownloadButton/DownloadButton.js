@@ -30,7 +30,7 @@ class DownloadButton extends Component {
                 onSelect={ this.onSelect }
                 toggle={
                     <DropdownToggle
-                        iconComponent={null}
+                        toggleIndicator={null}
                         onToggle={ this.onToggle }
                         isDisabled={isDisabled}
                     >

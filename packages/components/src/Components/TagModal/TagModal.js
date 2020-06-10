@@ -69,7 +69,6 @@ export default class TagModal extends React.Component {
                 isOpen={isOpen}
                 title={`Tags for ${systemName}`}
                 onClose={toggleModal}
-                isFooterLeftAligned
                 {...onApply && {
                     actions: [
                         <Button key="confirm" variant="primary" onClick={() => {
