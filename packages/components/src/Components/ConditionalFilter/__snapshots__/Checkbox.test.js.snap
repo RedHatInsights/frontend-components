@@ -2,14 +2,37 @@
 
 exports[`Checkbox render should render correctly - disabled 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={true}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
     selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="checkbox"
+    width=""
   >
     <SelectOption
       className=""
@@ -17,7 +40,6 @@ exports[`Checkbox render should render correctly - disabled 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -37,7 +59,6 @@ exports[`Checkbox render should render correctly - disabled 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -55,7 +76,6 @@ exports[`Checkbox render should render correctly - disabled 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -67,7 +87,7 @@ exports[`Checkbox render should render correctly - disabled 1`] = `
     >
       No value
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;
 
@@ -85,15 +105,37 @@ exports[`Checkbox render should render correctly 1`] = `
 
 exports[`Checkbox render should render correctly placeholder 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
     placeholderText="some placeholder"
+    removeSelectionAriaLabel="Remove"
     selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="checkbox"
+    width=""
   >
     <SelectOption
       className=""
@@ -101,7 +143,6 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -121,7 +162,6 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
       index={0}
       isChecked={true}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -139,7 +179,6 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -151,20 +190,43 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
     >
       No value
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Checkbox render should render correctly with items 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
     selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="checkbox"
+    width=""
   >
     <SelectOption
       className=""
@@ -172,7 +234,6 @@ exports[`Checkbox render should render correctly with items 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -192,7 +253,6 @@ exports[`Checkbox render should render correctly with items 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -210,7 +270,6 @@ exports[`Checkbox render should render correctly with items 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -222,24 +281,47 @@ exports[`Checkbox render should render correctly with items 1`] = `
     >
       No value
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Checkbox render should render correctly with items and default object value 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
     selections={
       Array [
         "some-value",
       ]
     }
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="checkbox"
+    width=""
   >
     <SelectOption
       className=""
@@ -247,7 +329,6 @@ exports[`Checkbox render should render correctly with items and default object v
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -267,7 +348,6 @@ exports[`Checkbox render should render correctly with items and default object v
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -285,7 +365,6 @@ exports[`Checkbox render should render correctly with items and default object v
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -297,24 +376,47 @@ exports[`Checkbox render should render correctly with items and default object v
     >
       No value
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Checkbox render should render correctly with items and default value 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
     selections={
       Array [
         "some-value",
       ]
     }
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="checkbox"
+    width=""
   >
     <SelectOption
       className=""
@@ -322,7 +424,6 @@ exports[`Checkbox render should render correctly with items and default value 1`
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -342,7 +443,6 @@ exports[`Checkbox render should render correctly with items and default value 1`
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -360,7 +460,6 @@ exports[`Checkbox render should render correctly with items and default value 1`
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -372,20 +471,43 @@ exports[`Checkbox render should render correctly with items and default value 1`
     >
       No value
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Checkbox render should render correctly with items and selected value 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
     selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="checkbox"
+    width=""
   >
     <SelectOption
       className=""
@@ -393,7 +515,6 @@ exports[`Checkbox render should render correctly with items and selected value 1
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -413,7 +534,6 @@ exports[`Checkbox render should render correctly with items and selected value 1
       index={0}
       isChecked={true}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -431,7 +551,6 @@ exports[`Checkbox render should render correctly with items and selected value 1
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -443,6 +562,6 @@ exports[`Checkbox render should render correctly with items and selected value 1
     >
       No value
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;

@@ -10,9 +10,9 @@ import { withRouter } from 'react-router-dom';
 const InvalidObject = ({ history, ...props }) => {
     return (
         <section {...props} className="pf-l-page__main-section pf-c-page__main-section ins-c-component_invalid-componet">
-            <Title size='3xl'>This doesn&apos;t seem to exist.</Title>
+            <Title headingLevel="h1" size='3xl'>This doesn&apos;t seem to exist.</Title>
             <Icon404/>
-            <Title size='xl' className='ins-c-text__sorry'>Sorry, we couldn&apos;t find what you&apos;re looking for.
+            <Title headingLevel="h1" size='xl' className='ins-c-text__sorry'>Sorry, we couldn&apos;t find what you&apos;re looking for.
                     The page you requested may have changed or moved.</Title>
             <Button
                 variant="link"

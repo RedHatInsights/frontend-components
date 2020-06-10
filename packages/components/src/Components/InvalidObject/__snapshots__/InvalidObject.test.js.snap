@@ -83,7 +83,8 @@ exports[`InvalidObject component should render 1`] = `
               }
             }
           >
-            <Title
+            <Component
+              headingLevel="h1"
               size="3xl"
             >
               <h1
@@ -91,7 +92,7 @@ exports[`InvalidObject component should render 1`] = `
               >
                 This doesn't seem to exist.
               </h1>
-            </Title>
+            </Component>
             <Icon404>
               <svg
                 className="Icon404"
@@ -332,8 +333,9 @@ exports[`InvalidObject component should render 1`] = `
                 </g>
               </svg>
             </Icon404>
-            <Title
+            <Component
               className="ins-c-text__sorry"
+              headingLevel="h1"
               size="xl"
             >
               <h1
@@ -341,49 +343,25 @@ exports[`InvalidObject component should render 1`] = `
               >
                 Sorry, we couldn't find what you're looking for. The page you requested may have changed or moved.
               </h1>
-            </Title>
+            </Component>
             <Component
               onClick={[Function]}
               variant="link"
             >
-              <ComponentWithOuia
-                component={[Function]}
-                componentProps={
-                  Object {
-                    "children": "Go Back",
-                    "onClick": [Function],
-                    "variant": "link",
-                  }
-                }
-                consumerContext={null}
+              <button
+                aria-disabled={null}
+                aria-label={null}
+                className="pf-c-button pf-m-link"
+                data-ouia-component-id={null}
+                data-ouia-component-type="PF4/Button"
+                data-ouia-safe={true}
+                disabled={false}
+                onClick={[Function]}
+                tabIndex={null}
+                type="button"
               >
-                <Button
-                  onClick={[Function]}
-                  ouiaContext={
-                    Object {
-                      "isOuia": false,
-                      "ouiaId": null,
-                    }
-                  }
-                  variant="link"
-                >
-                  <button
-                    aria-disabled={null}
-                    aria-label={null}
-                    className="pf-c-button pf-m-link"
-                    disabled={false}
-                    onClick={[Function]}
-                    tabIndex={null}
-                    type="button"
-                  >
-                    <span
-                      className="pf-c-button__text"
-                    >
-                      Go Back
-                    </span>
-                  </button>
-                </Button>
-              </ComponentWithOuia>
+                Go Back
+              </button>
             </Component>
           </section>
         </InvalidObject>

@@ -14,14 +14,37 @@ exports[`Radio render should render correctly 1`] = `
 
 exports[`Radio render should render correctly placeholder 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
     placeholderText="some placeholder"
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
     <SelectOption
       className=""
@@ -29,7 +52,6 @@ exports[`Radio render should render correctly placeholder 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -61,7 +83,6 @@ exports[`Radio render should render correctly placeholder 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -89,7 +110,6 @@ exports[`Radio render should render correctly placeholder 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -111,19 +131,43 @@ exports[`Radio render should render correctly placeholder 1`] = `
         value={2}
       />
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Radio render should render correctly with items - isDisabled 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={true}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
     <SelectOption
       className=""
@@ -131,7 +175,6 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -163,7 +206,6 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -191,7 +233,6 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -213,19 +254,43 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
         value={2}
       />
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Radio render should render correctly with items 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
     <SelectOption
       className=""
@@ -233,7 +298,6 @@ exports[`Radio render should render correctly with items 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -265,7 +329,6 @@ exports[`Radio render should render correctly with items 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -293,7 +356,6 @@ exports[`Radio render should render correctly with items 1`] = `
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -315,19 +377,43 @@ exports[`Radio render should render correctly with items 1`] = `
         value={2}
       />
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Radio render should render correctly with items and default value 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
     <SelectOption
       className=""
@@ -335,7 +421,6 @@ exports[`Radio render should render correctly with items and default value 1`] =
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -367,7 +452,6 @@ exports[`Radio render should render correctly with items and default value 1`] =
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -395,7 +479,6 @@ exports[`Radio render should render correctly with items and default value 1`] =
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -417,19 +500,43 @@ exports[`Radio render should render correctly with items and default value 1`] =
         value={2}
       />
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Radio render should render correctly with items and selected value 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
+    isGrouped={false}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
+    onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
     <SelectOption
       className=""
@@ -437,7 +544,6 @@ exports[`Radio render should render correctly with items and selected value 1`] 
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -469,7 +575,6 @@ exports[`Radio render should render correctly with items and selected value 1`] 
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -497,7 +602,6 @@ exports[`Radio render should render correctly with items and selected value 1`] 
       index={0}
       isChecked={false}
       isDisabled={false}
-      isFocused={false}
       isNoResultsOption={false}
       isPlaceholder={false}
       isSelected={false}
@@ -519,6 +623,6 @@ exports[`Radio render should render correctly with items and selected value 1`] 
         value={2}
       />
     </SelectOption>
-  </Component>
+  </Select>
 </Fragment>
 `;

@@ -3,7 +3,7 @@ import { Tab } from '@patternfly/react-core/dist/js/components/Tabs/Tab';
 import { Tooltip } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
 import { Badge } from '@patternfly/react-core/dist/js/components/Badge/Badge';
 import { Title } from '@patternfly/react-core/dist/js/components/Title/Title';
-import { Grid } from '@patternfly/react-core/dist/js/layouts/Grid/GridItem';
+import { Grid } from '@patternfly/react-core/dist/js/layouts/Grid/Grid';
 import { GridItem } from '@patternfly/react-core/dist/js/layouts/Grid/GridItem';
 import { Card } from '@patternfly/react-core/dist/js/components/Card/Card';
 import { CardBody } from '@patternfly/react-core/dist/js/components/Card/CardBody';
