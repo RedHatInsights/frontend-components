@@ -103,13 +103,13 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           id=""
           role="tooltip"
         >
-          <TooltipContent
+          <Unknown
             isLeftAligned={false}
           >
             <div>
               Lorem Impsum
             </div>
-          </TooltipContent>
+          </Unknown>
         </div>
       }
       delay={
@@ -179,7 +179,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
           id=""
           role="tooltip"
         >
-          <TooltipContent
+          <Component
             isLeftAligned={false}
           >
             <div
@@ -189,7 +189,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
                 Lorem Impsum
               </div>
             </div>
-          </TooltipContent>
+          </Component>
         </div>
       </Portal>
     </PopoverBase>

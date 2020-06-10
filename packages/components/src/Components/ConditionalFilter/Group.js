@@ -225,7 +225,7 @@ class Group extends Component {
                 variant={ (isFilterable || onFilter) ? SelectVariant.typeahead : SelectVariant.single }
                 aria-label="Select Input"
                 onToggle={ this.onToggle }
-                isExpanded={ isExpanded }
+                isOpen={ isExpanded }
                 isDisabled={ isDisabled }
                 onSelect={ () => undefined }
                 placeholderText={ placeholder }

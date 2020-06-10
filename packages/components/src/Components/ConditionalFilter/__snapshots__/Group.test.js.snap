@@ -17,18 +17,39 @@ exports[`Group - component render should render correctly 1`] = `
 
 exports[`Group - component render should render correctly placeholder 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
     isGrouped={true}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
     onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
     placeholderText="some placeholder"
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
-    <SelectGroup
+    <Component
       id="group-0"
       key="0"
       label="First value"
@@ -40,7 +61,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -58,7 +78,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -70,8 +89,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
       >
         Second value
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-second"
       key="second"
       label="Second value"
@@ -83,7 +102,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -110,7 +128,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -131,8 +148,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
           onChange={[Function]}
         />
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-third"
       key="third"
       label="Third value"
@@ -144,7 +161,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -172,7 +188,6 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -194,24 +209,46 @@ exports[`Group - component render should render correctly placeholder 1`] = `
           value={1}
         />
       </SelectOption>
-    </SelectGroup>
-  </Component>
+    </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Group - component render should render correctly with items - isDisabled 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={true}
-    isExpanded={false}
     isGrouped={true}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
     onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
-    <SelectGroup
+    <Component
       id="group-0"
       key="0"
       label="First value"
@@ -223,7 +260,6 @@ exports[`Group - component render should render correctly with items - isDisable
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -241,7 +277,6 @@ exports[`Group - component render should render correctly with items - isDisable
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -253,8 +288,8 @@ exports[`Group - component render should render correctly with items - isDisable
       >
         Second value
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-second"
       key="second"
       label="Second value"
@@ -266,7 +301,6 @@ exports[`Group - component render should render correctly with items - isDisable
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -293,7 +327,6 @@ exports[`Group - component render should render correctly with items - isDisable
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -314,8 +347,8 @@ exports[`Group - component render should render correctly with items - isDisable
           onChange={[Function]}
         />
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-third"
       key="third"
       label="Third value"
@@ -327,7 +360,6 @@ exports[`Group - component render should render correctly with items - isDisable
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -355,7 +387,6 @@ exports[`Group - component render should render correctly with items - isDisable
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -377,24 +408,46 @@ exports[`Group - component render should render correctly with items - isDisable
           value={1}
         />
       </SelectOption>
-    </SelectGroup>
-  </Component>
+    </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Group - component render should render correctly with items 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
     isGrouped={true}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
     onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
-    <SelectGroup
+    <Component
       id="group-0"
       key="0"
       label="First value"
@@ -406,7 +459,6 @@ exports[`Group - component render should render correctly with items 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -424,7 +476,6 @@ exports[`Group - component render should render correctly with items 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -436,8 +487,8 @@ exports[`Group - component render should render correctly with items 1`] = `
       >
         Second value
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-second"
       key="second"
       label="Second value"
@@ -449,7 +500,6 @@ exports[`Group - component render should render correctly with items 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -476,7 +526,6 @@ exports[`Group - component render should render correctly with items 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -497,8 +546,8 @@ exports[`Group - component render should render correctly with items 1`] = `
           onChange={[Function]}
         />
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-third"
       key="third"
       label="Third value"
@@ -510,7 +559,6 @@ exports[`Group - component render should render correctly with items 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -538,7 +586,6 @@ exports[`Group - component render should render correctly with items 1`] = `
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -560,24 +607,46 @@ exports[`Group - component render should render correctly with items 1`] = `
           value={1}
         />
       </SelectOption>
-    </SelectGroup>
-  </Component>
+    </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Group - component render should render correctly with items and default value 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
     isGrouped={true}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
     onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
-    <SelectGroup
+    <Component
       id="group-0"
       key="0"
       label="First value"
@@ -589,7 +658,6 @@ exports[`Group - component render should render correctly with items and default
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -607,7 +675,6 @@ exports[`Group - component render should render correctly with items and default
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -619,8 +686,8 @@ exports[`Group - component render should render correctly with items and default
       >
         Second value
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-second"
       key="second"
       label="Second value"
@@ -632,7 +699,6 @@ exports[`Group - component render should render correctly with items and default
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -659,7 +725,6 @@ exports[`Group - component render should render correctly with items and default
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -680,8 +745,8 @@ exports[`Group - component render should render correctly with items and default
           onChange={[Function]}
         />
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-third"
       key="third"
       label="Third value"
@@ -693,7 +758,6 @@ exports[`Group - component render should render correctly with items and default
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -721,7 +785,6 @@ exports[`Group - component render should render correctly with items and default
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -743,24 +806,46 @@ exports[`Group - component render should render correctly with items and default
           value={1}
         />
       </SelectOption>
-    </SelectGroup>
-  </Component>
+    </Component>
+  </Select>
 </Fragment>
 `;
 
 exports[`Group - component render should render correctly with items and selected value 1`] = `
 <Fragment>
-  <Component
+  <Select
     aria-label="Select Input"
+    aria-labelledby=""
+    className=""
+    clearSelectionsAriaLabel="Clear all"
+    createText="Create"
+    customBadgeText={null}
+    customContent={null}
+    direction="down"
+    hasInlineFilter={false}
+    inlineFilterPlaceholderText={null}
+    isCreatable={false}
     isDisabled={false}
-    isExpanded={false}
     isGrouped={true}
+    isOpen={false}
+    isPlain={false}
+    noResultsFoundText="No results found"
     onClear={[Function]}
+    onCreateOption={[Function]}
+    onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    placeholderText=""
+    removeSelectionAriaLabel="Remove"
+    selections={Array []}
+    toggleAriaLabel="Options menu"
+    toggleIcon={null}
+    toggleId={null}
+    typeAheadAriaLabel=""
     variant="single"
+    width=""
   >
-    <SelectGroup
+    <Component
       id="group-0"
       key="0"
       label="First value"
@@ -772,7 +857,6 @@ exports[`Group - component render should render correctly with items and selecte
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -790,7 +874,6 @@ exports[`Group - component render should render correctly with items and selecte
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -802,8 +885,8 @@ exports[`Group - component render should render correctly with items and selecte
       >
         Second value
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-second"
       key="second"
       label="Second value"
@@ -815,7 +898,6 @@ exports[`Group - component render should render correctly with items and selecte
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -842,7 +924,6 @@ exports[`Group - component render should render correctly with items and selecte
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -863,8 +944,8 @@ exports[`Group - component render should render correctly with items and selecte
           onChange={[Function]}
         />
       </SelectOption>
-    </SelectGroup>
-    <SelectGroup
+    </Component>
+    <Component
       id="group-third"
       key="third"
       label="Third value"
@@ -876,7 +957,6 @@ exports[`Group - component render should render correctly with items and selecte
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -904,7 +984,6 @@ exports[`Group - component render should render correctly with items and selecte
         index={0}
         isChecked={false}
         isDisabled={false}
-        isFocused={false}
         isNoResultsOption={false}
         isPlaceholder={false}
         isSelected={false}
@@ -926,7 +1005,7 @@ exports[`Group - component render should render correctly with items and selecte
           value={1}
         />
       </SelectOption>
-    </SelectGroup>
-  </Component>
+    </Component>
+  </Select>
 </Fragment>
 `;

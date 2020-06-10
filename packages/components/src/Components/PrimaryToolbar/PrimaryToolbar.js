@@ -1,4 +1,4 @@
-import { DataToolbar, DataToolbarContent, DataToolbarGroup, DataToolbarItem, Pagination } from '@patternfly/react-core';
+import { Toolbar, ToolbarContent, ToolbarGroup, ToolbarItem, Pagination } from '@patternfly/react-core';
 import React, { Component } from 'react';
 
 import Actions from './Actions';
@@ -44,46 +44,55 @@ class PrimaryToolbar extends Component {
                 ] : []
         ];
         return (
-            <DataToolbar
+            <Toolbar
                 {...props}
                 className={`${className || ''} ins-c-primary-toolbar`}
                 toggleIsExpanded={toggleIsExpanded}
                 id={id || 'ins-primary-data-toolbar'}
             >
-                <DataToolbarContent>
+                <ToolbarContent>
                     {
+<<<<<<< HEAD
                         (bulkSelect || filterConfig || dedicatedAction) &&
-                        <DataToolbarGroup
+                        <ToolbarGroup
+=======
+                        (bulkSelect || filterConfig) &&
+                        <ToolbarGroup
+>>>>>>> Update components pf4 (#558)
                             className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
                             variant="filter-group"
                         >
                             {
                                 bulkSelect &&
-                                <DataToolbarItem>
+                                <ToolbarItem>
                                     {
                                         React.isValidElement(bulkSelect) ?
                                             bulkSelect :
                                             <BulkSelect {...bulkSelect} />
                                     }
-                                </DataToolbarItem>
+                                </ToolbarItem>
                             }
                             {
                                 filterConfig &&
-                                <DataToolbarItem className="ins-c-primary-toolbar__filter">
+                                <ToolbarItem className="ins-c-primary-toolbar__filter">
                                     {
                                         React.isValidElement(filterConfig) ?
                                             filterConfig :
                                             <ConditionalFilter {...filterConfig} />
                                     }
-                                </DataToolbarItem>
+                                </ToolbarItem>
                             }
+<<<<<<< HEAD
                             {
                                 dedicatedAction &&
-                                <DataToolbarItem>
+                                <ToolbarItem>
                                     {dedicatedAction}
-                                </DataToolbarItem>
+                                </ToolbarItem>
                             }
-                        </DataToolbarGroup>
+                        </ToolbarGroup>
+=======
+                        </ToolbarGroup>
+>>>>>>> Update components pf4 (#558)
                     }
                     {
                         React.isValidElement(actionsConfig) ? actionsConfig :
@@ -101,38 +110,38 @@ class PrimaryToolbar extends Component {
                     }
                     {
                         sortByConfig &&
-                        <DataToolbarItem className="ins-c-primary-toolbar__sort-by">
+                        <ToolbarItem className="ins-c-primary-toolbar__sort-by">
                             {
                                 React.isValidElement(sortByConfig) ?
                                     sortByConfig :
                                     <SortBy  {...sortByConfig} />
                             }
-                        </DataToolbarItem>
+                        </ToolbarItem>
                     }
                     {children}
                     {
                         pagination &&
-                        <DataToolbarItem className="ins-c-primary-toolbar__pagination">
+                        <ToolbarItem className="ins-c-primary-toolbar__pagination">
                             {
                                 React.isValidElement(pagination) ?
                                     pagination :
                                     <Pagination isCompact {...pagination} />
                             }
-                        </DataToolbarItem>
+                        </ToolbarItem>
                     }
-                </DataToolbarContent>
+                </ToolbarContent>
                 {
                     activeFiltersConfig &&
                         React.isValidElement(activeFiltersConfig) ?
-                        <DataToolbarContent>
-                            <DataToolbarItem>{activeFiltersConfig}</DataToolbarItem>
-                        </DataToolbarContent>
+                        <ToolbarContent>
+                            <ToolbarItem>{activeFiltersConfig}</ToolbarItem>
+                        </ToolbarContent>
                         : activeFiltersConfig !== undefined && activeFiltersConfig.filters.length > 0 &&
-                        <DataToolbarContent>
-                            <DataToolbarItem><FilterChips {...activeFiltersConfig} /></DataToolbarItem>
-                        </DataToolbarContent>
+                        <ToolbarContent>
+                            <ToolbarItem><FilterChips {...activeFiltersConfig} /></ToolbarItem>
+                        </ToolbarContent>
                 }
-            </DataToolbar>
+            </Toolbar>
         );
     }
 }

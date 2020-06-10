@@ -38,15 +38,15 @@ Import FilterDropdown from this package.
 
 ```JSX
 import React from 'react';
-import { FilterInput } from '@redhat-cloud-services/frontend-components';
+import { FilterDropdown } from '@redhat-cloud-services/frontend-components';
 
 class YourCmp extends React.Component {
   render() {
     return (
       <FilterDropdown
           filters={ {} }
-          addFilter={ jest.fn() }
-          removeFilter={ jest.fn() }
+          addFilter={ console.log }
+          removeFilter={ console.log }
           filterCategories={ [{ title: '', type: '', urlParam: '', values: [{ label: '', value: '' }]}] }
       />
     )

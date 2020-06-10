@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Dropdown, DropdownItem, KebabToggle, Button, DropdownSeparator, DataToolbarItem } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, KebabToggle, Button, DropdownSeparator, ToolbarItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import { DownloadButton } from '../DownloadButton';
 
@@ -41,7 +41,7 @@ class Actions extends Component {
             <Fragment>
                 {
                     firstAction &&
-                    <DataToolbarItem className="ins-c-primary-toolbar__first-action pf-m-spacer-sm">
+                    <ToolbarItem className="ins-c-primary-toolbar__first-action pf-m-spacer-sm">
                         {
                             firstAction.label ?
                                 <Button { ...firstAction.props } onClick={ firstAction.onClick || (firstAction.props && firstAction.props.onClick) || undefined } >
@@ -49,17 +49,17 @@ class Actions extends Component {
                                 </Button> :
                                 firstAction
                         }
-                    </DataToolbarItem>
+                    </ToolbarItem>
                 }
                 {
                     exportConfig && (exportConfig.extraItems || exportConfig.onSelect) &&
-                    <DataToolbarItem className="pf-m-spacer-sm">
+                    <ToolbarItem className="pf-m-spacer-sm">
                         <DownloadButton  { ...exportConfig } />
-                    </DataToolbarItem>
+                    </ToolbarItem>
                 }
                 {
                     ((actions && actions.length > 0) || (overflowActions.length > 0)) &&
-                    <DataToolbarItem
+                    <ToolbarItem
                         className={`${actions.length <= 1 ? 'ins-m-actions--empty' : ''} ins-c-primary-toolbar__actions pf-m-spacer-sm` }
                     >
                         <Dropdown
@@ -94,7 +94,7 @@ class Actions extends Component {
                                 ...overflowActions.map(overflowActionsMapper)
                             ] }
                         />
-                    </DataToolbarItem>
+                    </ToolbarItem>
                 }
             </Fragment>
         );

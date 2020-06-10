@@ -4,16 +4,16 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
 <Modal
   actions={Array []}
   appendTo={<body />}
-  ariaDescribedById=""
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
   className="ins-c-tag-modal"
-  hideTitle={false}
-  isFooterLeftAligned={true}
-  isLarge={false}
+  hasNoBodyWrapper={false}
   isOpen={true}
-  isSmall={false}
   onClose={[Function]}
   showClose={true}
   title="Tags for paul.localhost.com"
+  variant="default"
 >
   <PrimaryToolbar
     pagination={
@@ -26,8 +26,10 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
     }
     toggleIsExpanded={[Function]}
   />
-  <Component
+  <Table
     aria-label="paul.localhost.com tags"
+    borders={true}
+    canSelectAll={true}
     cells={
       Array [
         Object {
@@ -39,6 +41,13 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
       ]
     }
     className="ins-c-tag-modal__table"
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    role="grid"
+    rowLabeledBy="simple-node"
     rows={
       Array [
         Array [
@@ -53,18 +62,71 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
     }
     variant="compact"
   >
-    <TableHeader />
-    <TableBody />
-  </Component>
+    <Component />
+    <Component />
+  </Table>
   <TableToolbar
     className="ins-c-inventory__table--toolbar"
     isFooter={true}
   >
-    <Component
+    <Pagination
+      className=""
+      defaultToFullPage={false}
+      firstPage={1}
+      isCompact={false}
+      isDisabled={false}
       itemCount={10}
+      itemsEnd={null}
+      itemsStart={null}
+      offset={0}
+      onFirstClick={[Function]}
+      onLastClick={[Function]}
+      onNextClick={[Function]}
+      onPageInput={[Function]}
       onPerPageSelect={[Function]}
+      onPreviousClick={[Function]}
       onSetPage={[Function]}
+      ouiaId={null}
+      page={0}
+      perPage={10}
+      perPageOptions={
+        Array [
+          Object {
+            "title": "10",
+            "value": 10,
+          },
+          Object {
+            "title": "20",
+            "value": 20,
+          },
+          Object {
+            "title": "50",
+            "value": 50,
+          },
+          Object {
+            "title": "100",
+            "value": 100,
+          },
+        ]
+      }
+      titles={
+        Object {
+          "currPage": "Current page",
+          "items": "",
+          "itemsPerPage": "Items per page",
+          "optionsToggle": "Items per page",
+          "page": "",
+          "paginationTitle": "Pagination",
+          "perPageSuffix": "per page",
+          "toFirstPage": "Go to first page",
+          "toLastPage": "Go to last page",
+          "toNextPage": "Go to next page",
+          "toPreviousPage": "Go to previous page",
+        }
+      }
+      toggleTemplate={[Function]}
       variant="bottom"
+      widgetId="pagination-options-menu"
     />
   </TableToolbar>
 </Modal>
@@ -74,16 +136,16 @@ exports[`TagCount component Render the modal with a child component 1`] = `
 <Modal
   actions={Array []}
   appendTo={<body />}
-  ariaDescribedById=""
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
   className="ins-c-tag-modal"
-  hideTitle={false}
-  isFooterLeftAligned={true}
-  isLarge={false}
+  hasNoBodyWrapper={false}
   isOpen={true}
-  isSmall={false}
   onClose={[Function]}
   showClose={true}
   title="Tags for paul.localhost.com"
+  variant="default"
 >
   <PrimaryToolbar
     pagination={
@@ -99,8 +161,10 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   <h1>
     I am a child component
   </h1>
-  <Component
+  <Table
     aria-label="paul.localhost.com tags"
+    borders={true}
+    canSelectAll={true}
     cells={
       Array [
         Object {
@@ -112,6 +176,13 @@ exports[`TagCount component Render the modal with a child component 1`] = `
       ]
     }
     className="ins-c-tag-modal__table"
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    role="grid"
+    rowLabeledBy="simple-node"
     rows={
       Array [
         Object {
@@ -121,23 +192,23 @@ exports[`TagCount component Render the modal with a child component 1`] = `
                 "colSpan": 2,
               },
               "title": <EmptyTable>
-                <Bullseye>
-                  <EmptyState
+                <Unknown>
+                  <Unknown
                     variant="full"
                   >
-                    <Title
+                    <Unknown
                       headingLevel="h5"
                       size="lg"
                     >
                       No tags found
-                    </Title>
-                    <EmptyStateBody>
+                    </Unknown>
+                    <Unknown>
                       This filter criteria matches no tags. 
                       <br />
                        Try changing your filter settings.
-                    </EmptyStateBody>
-                  </EmptyState>
-                </Bullseye>
+                    </Unknown>
+                  </Unknown>
+                </Unknown>
               </EmptyTable>,
             },
           ],
@@ -146,18 +217,71 @@ exports[`TagCount component Render the modal with a child component 1`] = `
     }
     variant="compact"
   >
-    <TableHeader />
-    <TableBody />
-  </Component>
+    <Component />
+    <Component />
+  </Table>
   <TableToolbar
     className="ins-c-inventory__table--toolbar"
     isFooter={true}
   >
-    <Component
+    <Pagination
+      className=""
+      defaultToFullPage={false}
+      firstPage={1}
+      isCompact={false}
+      isDisabled={false}
       itemCount={10}
+      itemsEnd={null}
+      itemsStart={null}
+      offset={0}
+      onFirstClick={[Function]}
+      onLastClick={[Function]}
+      onNextClick={[Function]}
+      onPageInput={[Function]}
       onPerPageSelect={[Function]}
+      onPreviousClick={[Function]}
       onSetPage={[Function]}
+      ouiaId={null}
+      page={0}
+      perPage={10}
+      perPageOptions={
+        Array [
+          Object {
+            "title": "10",
+            "value": 10,
+          },
+          Object {
+            "title": "20",
+            "value": 20,
+          },
+          Object {
+            "title": "50",
+            "value": 50,
+          },
+          Object {
+            "title": "100",
+            "value": 100,
+          },
+        ]
+      }
+      titles={
+        Object {
+          "currPage": "Current page",
+          "items": "",
+          "itemsPerPage": "Items per page",
+          "optionsToggle": "Items per page",
+          "page": "",
+          "paginationTitle": "Pagination",
+          "perPageSuffix": "per page",
+          "toFirstPage": "Go to first page",
+          "toLastPage": "Go to last page",
+          "toNextPage": "Go to next page",
+          "toPreviousPage": "Go to previous page",
+        }
+      }
+      toggleTemplate={[Function]}
       variant="bottom"
+      widgetId="pagination-options-menu"
     />
   </TableToolbar>
 </Modal>
