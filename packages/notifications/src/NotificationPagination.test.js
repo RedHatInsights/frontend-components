@@ -12,7 +12,7 @@ describe('Notification Pagination component', () => {
 
     it('render should contain correct items', () => {
         const wrapper = mount(<NotificationPagination page={ 1 } count={ 10 } />);
-        expect(wrapper.find('.pf-c-pagination.pf-m-footer').length).toBe(1);
+        expect(wrapper.find('.pf-c-pagination.pf-m-bottom').length).toBe(1);
         expect(wrapper.find('.pf-c-pagination__nav').length).toBe(1);
     });
 
