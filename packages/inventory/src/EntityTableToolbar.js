@@ -4,7 +4,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
-import { Spinner } from '@patternfly/react-core/dist/esm/experimental';
+import { Spinner } from '@patternfly/react-core';
 import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from './redux/actions';
 import debounce from 'lodash/debounce';
 import { InventoryContext } from './Inventory';
