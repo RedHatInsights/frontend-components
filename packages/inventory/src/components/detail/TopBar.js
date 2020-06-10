@@ -110,6 +110,7 @@ const TopBar = ({
 TopBar.propTypes = {
     entity: PropTypes.object,
     loaded: PropTypes.bool,
+    showDelete: PropTypes.bool,
     hideInvLink: PropTypes.bool,
     actions: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string,
@@ -125,6 +126,7 @@ TopBar.defaultProps = {
     actions: [],
     loaded: false,
     hideInvLink: false,
+    showDelete: false,
     deleteEntity: () => undefined,
     addNotification: () => undefined,
     onBackToListClick: () => undefined

@@ -133,18 +133,6 @@ export function reduceFilters(filters) {
     });
 }
 
-export const mergeTableProps = (stateProps, dispatchProps, ownProps) => ({
-    ...dispatchProps,
-    ...ownProps,
-    ...stateProps,
-    ...ownProps.onRefresh && {
-        onRefresh: (...props) => {
-            dispatchProps.onRefresh(...props);
-            ownProps.onRefresh(...props);
-        }
-    }
-});
-
 export const tagsFilterBuilder = (onFilter, filterBy, onChange, selected, loaded, tags, items = [], loader) => ({
     label: 'Tags',
     value: 'tags',
