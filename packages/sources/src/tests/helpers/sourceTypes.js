@@ -182,7 +182,44 @@ const sourceTypes = [
                         type: 'password'
                     }
                 ]
-
+            }, {
+                name: 'Receptor node',
+                type: 'receptor_node',
+                fields: [{
+                    name: 'authentication.authtype',
+                    component: 'text-field',
+                    hideField: true,
+                    initialValue: 'receptor_node',
+                    initializeOnMount: true
+                },
+                {
+                    name: 'source.source_ref',
+                    label: 'Ansible Tower ID',
+                    validate: [
+                        {
+                            type: 'required'
+                        }
+                    ],
+                    component: 'text-field',
+                    isRequired: true
+                },
+                {
+                    name: 'endpoint.receptor_node',
+                    label: 'Receptor ID',
+                    component: 'text-field',
+                    isRequired: true,
+                    validate: [
+                        {
+                            type: 'required'
+                        }
+                    ]
+                }, {
+                    name: 'endpoint.role',
+                    component: 'text-field',
+                    hideField: true,
+                    initialValue: 'ansible',
+                    initializeOnMount: true
+                }]
             }],
             endpoint: {
                 title: 'Configure Ansible Tower endpoint',

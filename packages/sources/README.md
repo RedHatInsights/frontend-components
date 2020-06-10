@@ -153,9 +153,6 @@ Adds a summary of formValues to the form.
 
 **Props**
 
-This components accepts all formGroup props `(label, helperText, isDisabled, isRequired, ...)`
-
-
 |Prop|Type|Description|
 |----|:--:|----------:|
 |sourceTypes|array|SourceTypes array with schemas.|

@@ -70,7 +70,7 @@ class EntityDetails extends Component {
     }
 
     generateTop = () => {
-        const { entity, loaded, actions, deleteEntity, addNotification, hideInvLink } = this.props;
+        const { entity, loaded, actions, deleteEntity, showDelete, addNotification, hideInvLink } = this.props;
         const { isOpen } = this.state;
         const inventoryActions = [ ... actions || [] ];
         return (
@@ -88,13 +88,13 @@ class EntityDetails extends Component {
                         {
                             loaded ?
                                 <Flex>
-                                    <FlexItem>
+                                    {showDelete && (<FlexItem>
                                         <Button
                                             onClick={ this.handleModalToggle }
                                             variant="secondary">
                                             Delete
                                         </Button>
-                                    </FlexItem>
+                                    </FlexItem>)}
                                     {hideInvLink || (
                                         <FlexItem>
                                             <a className='ins-c-entity-detail__inv-link' href={`./insights/inventory/${entity.id}`}>View in Inventory</a>
@@ -255,6 +255,7 @@ EntityDetails.propTypes = {
     })),
     entity: PropTypes.object,
     hideInvLink: PropTypes.bool,
+    showDelete: PropTypes.bool,
     history: PropTypes.any,
     loaded: PropTypes.bool.isRequired,
     match: PropTypes.any,
@@ -273,6 +274,7 @@ EntityDetails.defualtProps = {
     hideInvLink: false,
     useCard: false,
     showTags: false,
+    showDelete: false,
     setDisplayName: () => undefined,
     setAnsibleHost: () => undefined
 };
