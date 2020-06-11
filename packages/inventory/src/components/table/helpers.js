@@ -40,29 +40,15 @@ export const createRows = (rows, columns, { actions, expandable, ...extra }) => 
     } ])).flat().filter(Boolean);
 };
 
-export const stateMapper = {
-    setTextFilter: (state, { payload }) => ({
-        ...state,
-        textFilter: payload
-    }),
-    setSelected: (state, { payload }) => ({
-        ...state,
-        selected: payload
-    }),
-    setFilterTagsBy: (state, { payload }) => ({
-        ...state,
-        filterTagsBy: payload
-    }),
-    setStaleFilter: (state, { payload }) => ({
-        ...state,
-        staleFilter: payload
-    }),
-    setRegisteredWithFilter: (state, { payload }) => ({
-        ...state,
-        registeredWithFilter: payload
-    }),
-    batchUpdate: (state, { payload }) => ({
-        ...state,
-        ...payload
-    })
+export const onDeleteFilter = (deleted, currFilter) => {
+    const { value: deletedItem } = deleted.chips[0];
+    const newFilter = currFilter.filter((item) => item !== deletedItem);
+    return newFilter;
+};
+
+export const onDeleteTag = (deleted, selectedTags, onApplyTags) => {
+    const deletedItem = deleted.chips[0];
+    selectedTags[deleted.key][deletedItem.key] = false;
+    onApplyTags(selectedTags, false);
+    return selectedTags;
 };

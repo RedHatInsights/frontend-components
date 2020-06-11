@@ -2,6 +2,7 @@ import React from 'react';
 import { AppInfo, InventoryDetail, FullDetail } from './components/detail';
 import { TagWithDialog, RenderWrapper } from './shared';
 import { InventoryTable } from './components/table';
+import * as inventoryFitlers from './components/filters';
 
 export function inventoryConnector(store, componentsMapper) {
     return {
@@ -45,6 +46,7 @@ export function inventoryConnector(store, componentsMapper) {
                 store={ store }
                 cmp={ TagWithDialog }
             />
-        )
+        ),
+        ...inventoryFitlers
     };
 }

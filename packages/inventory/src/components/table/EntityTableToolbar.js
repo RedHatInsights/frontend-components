@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useEffect, useReducer, useCallback } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import React, { Fragment, useEffect, useCallback } from 'react';
+import ReactDOM from 'react-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/esm/PrimaryToolbar';
-import { Spinner } from '@patternfly/react-core/dist/esm/components/Spinner';
 import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from '../../redux/actions';
 import debounce from 'lodash/debounce';
 import flatMap from 'lodash/flatMap';
@@ -14,17 +14,15 @@ import {
     mapGroups,
     TEXT_FILTER,
     reduceFilters,
-    tagsFilterBuilder,
     TEXTUAL_CHIP,
     STALE_CHIP,
     REGISTERED_CHIP,
     TAG_CHIP,
-    staleness,
-    registered,
     arrayToSelection,
     InventoryContext
 } from '../../shared';
-import { stateMapper } from './helpers';
+import { onDeleteFilter, onDeleteTag } from './helpers';
+import { useStalenessFilter, useTextFilter, useRegisteredWithFilter, useTagsFilter } from '../filters';
 
 const ContextEntityTableToolbar = ({
     total,
@@ -35,28 +33,29 @@ const ContextEntityTableToolbar = ({
     filterConfig,
     hasItems,
     children,
-    loaded,
     actionsConfig,
-    allTags,
     onRefresh,
-    allTagsLoaded,
     hasCheckbox,
     activeFiltersConfig,
-    additionalTagsCount,
     showTags,
+    isLoaded,
     ...props
 }) => {
     const dispatch = useDispatch();
-    const [ state, setState ] = useReducer(
-        (state, action) => stateMapper?.[action.type]?.(state, action) || state,
-        {
-            textFilter: '',
-            selected: {},
-            filterTagsBy: '',
-            staleFilter: [],
-            registeredWithFilter: []
-        }
-    );
+    const loaded = useSelector(({ entities: { loaded } }) => hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded);
+    const allTagsLoaded = useSelector(({ entities: { allTagsLoaded } }) => allTagsLoaded);
+    const allTags = useSelector(({ entities: { allTags } }) => allTags);
+    const additionalTagsCount = useSelector(({ entities: { additionalTagsCount } }) => additionalTagsCount);
+    const [ nameFilter, nameChip, textFilter, setTextFilter ] = useTextFilter('');
+    const [ stalenessFilter, stalenessChip, staleFilter, setStaleFilter ] = useStalenessFilter();
+    const [ registeredFilter, registeredChip, registeredWithFilter, setRegisteredWithFilter ] = useRegisteredWithFilter();
+    const [
+        tagsFilter,
+        tagsChip,
+        selectedTags,
+        setSelectedTags,
+        filterTagsBy
+    ] = useTagsFilter(allTags, allTagsLoaded, additionalTagsCount, () => dispatch(toggleTagModal(true)));
 
     const updateData = (config) => {
         const params = {
@@ -69,9 +68,6 @@ const ContextEntityTableToolbar = ({
             dispatch(entitiesLoading());
             onRefreshData(options);
         }) : onRefreshData(params);
-        if (showTags && !hasItems) {
-            dispatch(fetchAllTags('', { filters: config.filters }));
-        }
     };
 
     const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), [ onRefreshData ]);
@@ -80,20 +76,14 @@ const ContextEntityTableToolbar = ({
             dispatch(fetchAllTags(config, options));
         }
     }, 800), []);
-    useEffect(() => {
-        if (showTags && !hasItems) {
-            dispatch(fetchAllTags());
-        }
 
+    useEffect(() => {
         const { textFilter, tagFilters, staleFilter, registeredWithFilter } = reduceFilters(filters);
-        setState({
-            type: 'batchUpdate',
-            payload: {
-                textFilter,
-                selected: tagFilters,
-                staleFilter,
-                registeredWithFilter
-            }
+        ReactDOM.unstable_batchedUpdates(() => {
+            setTextFilter(textFilter);
+            setStaleFilter(staleFilter);
+            setRegisteredWithFilter(registeredWithFilter);
+            setSelectedTags(tagFilters);
         });
     }, []);
 
@@ -105,31 +95,21 @@ const ContextEntityTableToolbar = ({
             filters.push({ value: TEXT_FILTER, filter: value });
         }
 
-        setState({
-            type: 'setTextFilter',
-            payload: value
-        });
         const refresh = debounced ? debouncedRefresh : updateData;
         refresh({ page: 1, perPage, filters });
     };
 
-    const onSetFilter = (value, filterKey, debounced = true) => {
+    const onSetFilter = (value, filterKey, refresh) => {
         const newFilters = [
             ...filters.filter(oneFilter => !oneFilter.hasOwnProperty(filterKey)),
             { [filterKey]: value }
         ];
-        setState({
-            type: 'batchUpdate',
-            payload: { filterTagsBy: '', [filterKey]: value }
-        });
-        const refresh = debounced ? debouncedRefresh : updateData;
         refresh({ page: 1, perPage, filters: newFilters });
     };
 
     const applyTags = (newSelection, debounced = true) => {
-        const tagFilters = mapGroups(newSelection);
-
         const refresh = debounced ? debouncedRefresh : updateData;
+        const tagFilters = mapGroups(newSelection);
         const newFilters = [
             ...filters.filter(oneFilter => !oneFilter.hasOwnProperty('tagFilters')),
             { tagFilters }
@@ -143,97 +123,58 @@ const ContextEntityTableToolbar = ({
         return newFilters;
     };
 
-    const updateSelectedTags = (newSelection, debounce = true) => {
-        setState({
-            type: 'batchUpdate',
-            payload: { filterTagsBy: '', selected: newSelection }
-        });
-        applyTags(newSelection, debounce);
-    };
+    useEffect(() => {
+        if (showTags && !hasItems) {
+            debounceGetAllTags(filterTagsBy, { filters });
+        }
+    }, [ filterTagsBy ]);
 
-    const createTagsFilter = () => {
-        return tagsFilterBuilder(
-            (value) => {
-                setState({
-                    type: 'setFilterTagsBy',
-                    payload: value
-                });
-                debounceGetAllTags(value, { filters });
-            },
-            state.filterTagsBy,
-            updateSelectedTags,
-            state.selected,
-            allTagsLoaded,
-            allTags,
-            additionalTagsCount > 0 ? [{
-                label: '',
-                items: [{
-                    label: `${additionalTagsCount} more tags available`,
-                    onClick: () => dispatch(toggleTagModal(true)),
-                    className: 'ins-c-inventory__tags-more-items'
-                }]
-            }] : [],
-            <span> <Spinner size="md" /> </span>
-        );
-    };
+    useEffect(() => {
+        onSetTextFilter(textFilter, true);
+    }, [ textFilter ]);
 
-    const onDeleteTag = (deleted) => {
-        const deletedItem = deleted.chips[0];
-        state.selected[deleted.key][deletedItem.key] = false;
-        updateSelectedTags(state.selected, false);
-    };
+    useEffect(() => {
+        onSetFilter(staleFilter, 'staleFilter', debouncedRefresh);
+    }, [ staleFilter ]);
 
-    const onDeleteFilter = (deleted, filterType) => {
-        const { value: deletedItem } = deleted.chips[0];
-        const newFilter = state[filterType].filter((item) => item !== deletedItem);
-        onSetFilter(newFilter, filterType, false);
-    };
+    useEffect(() => {
+        onSetFilter(registeredWithFilter, 'registeredWithFilter', debouncedRefresh);
+    }, [ registeredWithFilter ]);
+
+    useEffect(() => {
+        if (showTags && !hasItems) {
+            const newFilters = applyTags(selectedTags, true);
+            debounceGetAllTags(filterTagsBy, { filters: newFilters });
+        }
+    }, [ selectedTags ]);
 
     const deleteMapper = {
-        [TEXTUAL_CHIP]: () => onSetTextFilter('', false),
-        [TAG_CHIP]: onDeleteTag,
-        [STALE_CHIP]: (deleted) => onDeleteFilter(deleted, 'staleFilter'),
-        [REGISTERED_CHIP]: (deleted) => onDeleteFilter(deleted, 'registeredWithFilter')
+        [TEXTUAL_CHIP]: () => setTextFilter(''),
+        [TAG_CHIP]: (deleted) => setSelectedTags(onDeleteTag(deleted, selectedTags, applyTags)),
+        [STALE_CHIP]: (deleted) => setStaleFilter(onDeleteFilter(deleted, staleFilter)),
+        [REGISTERED_CHIP]: (deleted) => setRegisteredWithFilter(
+            onDeleteFilter(deleted, registeredWithFilter)
+        )
     };
 
     const constructFilters = () => {
         return {
             filters: [
-                ...mapGroups(state.selected, 'chips'),
-                ...state.textFilter.length > 0 ? [{
-                    category: 'Display name',
-                    type: TEXTUAL_CHIP,
-                    chips: [
-                        { name: state.textFilter }
-                    ]
-                }] : [],
-                ...!hasItems && state.staleFilter && state.staleFilter.length > 0 ? [{
-                    category: 'Status',
-                    type: STALE_CHIP,
-                    chips: staleness.filter(({ value }) => state.staleFilter.includes(value))
-                    .map(({ label, ...props }) => ({ name: label, ...props }))
-                }] : [],
-                ...!hasItems && state.registeredWithFilter && state.registeredWithFilter.length > 0 ? [{
-                    category: 'Source',
-                    type: REGISTERED_CHIP,
-                    chips: registered.filter(({ value }) => state.registeredWithFilter.includes(value))
-                    .map(({ label, ...props }) => ({ name: label, ...props }))
-                }] : [],
+                ...(showTags && !hasItems) ? tagsChip : [],
+                ...!hasItems ? nameChip : [],
+                ...!hasItems ? stalenessChip : [],
+                ...!hasItems ? registeredChip : [],
                 ...(activeFiltersConfig && activeFiltersConfig.filters) || []
             ],
             onDelete: (e, [ deleted, ...restDeleted ], isAll) => {
                 if (isAll) {
                     updateData({ page: 1, perPage, filters: [] });
                     dispatch(clearFilters());
-                    setState({
-                        type: 'batchUpdate',
-                        payload: {
-                            selected: {},
-                            textFilter: '',
-                            staleFilter: [],
-                            registeredWithFilter: [],
-                            filterTagsBy: ''
-                        }
+                    ReactDOM.unstable_batchedUpdates(() => {
+                        setTextFilter('');
+                        setStaleFilter([]);
+                        setRegisteredWithFilter([]);
+                        setSelectedTags({});
                     });
                 } else if (deleted.type) {
                     deleteMapper[deleted.type](deleted);
@@ -245,45 +186,22 @@ const ContextEntityTableToolbar = ({
     };
 
     const isFilterSelected = () => {
-        return state.textFilter.length > 0 || flatMap(
-            Object.values(state.selected),
+        return textFilter.length > 0 || flatMap(
+            Object.values(selectedTags),
             (value) => Object.values(value).filter(Boolean)
         ).filter(Boolean).length > 0 ||
-        (state.staleFilter && state.staleFilter.length > 0) ||
-        (state.registeredWithFilter && state.registeredWithFilter.length > 0) ||
+        (staleFilter?.length > 0) ||
+        (registeredWithFilter?.length > 0) ||
         (activeFiltersConfig && activeFiltersConfig.filters && activeFiltersConfig.filters.length > 0);
     };
 
     const inventoryFilters = [
-        ...!hasItems ? [{
-            label: 'Name',
-            value: 'name-filter',
-            filterValues: {
-                placeholder: 'Filter by name',
-                value: state.textFilter,
-                onChange: (_e, value) => onSetTextFilter(value)
-            }
-        }, {
-            label: 'Status',
-            value: 'stale-status',
-            type: 'checkbox',
-            filterValues: {
-                value: state.staleFilter,
-                onChange: (_e, value) => onSetFilter(value, 'staleFilter'),
-                items: staleness
-            }
-        },
-        {
-            label: 'Source',
-            value: 'source-registered-with',
-            type: 'checkbox',
-            filterValues: {
-                value: state.registeredWithFilter,
-                onChange: (_e, value) => onSetFilter(value, 'registeredWithFilter'),
-                items: registered
-            }
-        }] : [],
-        ...(showTags && !hasItems) ? [ createTagsFilter() ] : [],
+        ...!hasItems ? [
+            nameFilter,
+            stalenessFilter,
+            registeredFilter,
+            ...showTags ? [ tagsFilter ] : []
+        ] : [],
         ...(filterConfig && filterConfig.items) || []
     ];
     return <Fragment>
@@ -308,7 +226,7 @@ const ContextEntityTableToolbar = ({
         >
             { children }
         </PrimaryToolbar>
-        { showTags && <TagsModal onApply={(selected) => updateSelectedTags(arrayToSelection(selected))} /> }
+        { showTags && <TagsModal onApply={(selected) => setSelectedTags(arrayToSelection(selected))} /> }
     </Fragment>;
 };
 
@@ -326,16 +244,12 @@ EntityTableToolbar.propTypes = {
     total: PropTypes.number,
     filters: PropTypes.array,
     hasItems: PropTypes.bool,
-    additionalTagsCount: PropTypes.number,
     page: PropTypes.number,
     onClearFilters: PropTypes.func,
     toggleTagModal: PropTypes.func,
     perPage: PropTypes.number,
     children: PropTypes.node,
     pagination: PrimaryToolbar.propTypes.pagination,
-    loaded: PropTypes.bool,
-    allTagsLoaded: PropTypes.bool,
-    allTags: PropTypes.array,
     actionsConfig: PrimaryToolbar.propTypes.actionsConfig,
     activeFiltersConfig: PrimaryToolbar.propTypes.activeFiltersConfig
 };
@@ -348,21 +262,7 @@ ContextEntityTableToolbar.propTypes = {
 EntityTableToolbar.defaultProps = {
     showTags: false,
     activeFiltersConfig: {},
-    filters: [],
-    allTags: []
+    filters: []
 };
 
-function mapStateToProps(
-    { entities: { loaded, activeFilters, allTags, allTagsLoaded, additionalTagsCount } },
-    { hasItems, isLoaded }) {
-    return {
-        hasItems,
-        loaded: hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded,
-        allTagsLoaded,
-        allTags,
-        filters: activeFilters,
-        additionalTagsCount
-    };
-}
-
-export default connect(mapStateToProps)(EntityTableToolbar);
+export default EntityTableToolbar;
