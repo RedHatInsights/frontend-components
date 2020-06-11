@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Button, Tabs, Tab } from '@patternfly/react-core';
+import { Modal, Button, Tabs, Tab, TabTitleText } from '@patternfly/react-core';
 import Markdown from './Markdown';
 
 class RemediatingModal extends React.Component {
@@ -39,14 +39,14 @@ class RemediatingModal extends React.Component {
                 >
                     <Tabs activeKey={activeTabKey} onSelect={this.handleTabClick}>
                         {
-                            reason && <Tab eventKey={0} title="Reason">
+                            reason && <Tab eventKey={0} title={<TabTitleText>Reason</TabTitleText>}>
                                 <div className="ins-c-rule__modal-content">
                                     <Markdown template={reason} definitions={definitions} />
                                 </div>
                             </Tab>
                         }
                         {
-                            resolution && <Tab eventKey={1} title="How to remediate">
+                            resolution && <Tab eventKey={1} title={<TabTitleText>How to remediate</TabTitleText>}>
                                 <div className="ins-c-rule__modal-content">
                                     <Markdown template={resolution} definitions={definitions} />
                                 </div>
