@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import CardSelect from '../../../sourceFormRenderer/components/CardSelect';
-import { Card, CardHeader } from '@patternfly/react-core';
+import { Card, CardTitle } from '@patternfly/react-core';
 import { AwsIcon, OpenshiftIcon } from '@patternfly/react-icons';
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
@@ -41,9 +41,9 @@ describe('CardSelect component', () => {
         const wrapper = mount(<FormRenderer { ...initialProps }/>);
 
         expect(wrapper.find(Card).length).toEqual(2);
-        expect(wrapper.find(CardHeader).length).toEqual(2);
-        expect(wrapper.find(CardHeader).first().text()).toEqual('openshift');
-        expect(wrapper.find(CardHeader).last().text()).toEqual('aws');
+        expect(wrapper.find(CardTitle).length).toEqual(2);
+        expect(wrapper.find(CardTitle).first().text()).toEqual('openshift');
+        expect(wrapper.find(CardTitle).last().text()).toEqual('aws');
     });
 
     it('should render correctly with icon mapper - do not show text for icons', () => {
@@ -67,8 +67,8 @@ describe('CardSelect component', () => {
         const wrapper = mount(<FormRenderer { ...initialProps }/>);
 
         expect(wrapper.find(Card)).toHaveLength(2);
-        expect(wrapper.find(CardHeader)).toHaveLength(1);
-        expect(wrapper.find(CardHeader).text()).toEqual('AWS');
+        expect(wrapper.find(CardTitle)).toHaveLength(1);
+        expect(wrapper.find(CardTitle).text()).toEqual('AWS');
 
         expect(wrapper.find(Icon)).toHaveLength(1);
         expect(wrapper.find(Icon).text()).toEqual('someIcon');
@@ -88,9 +88,9 @@ describe('CardSelect component', () => {
         const wrapper = mount(<FormRenderer { ...initialProps } />);
 
         expect(wrapper.find(Card).length).toEqual(2);
-        expect(wrapper.find(CardHeader).length).toEqual(2);
-        expect(wrapper.find(CardHeader).first().text()).toEqual('AAA-openshift-filled');
-        expect(wrapper.find(CardHeader).last().text()).toEqual('AAA-aws-filled');
+        expect(wrapper.find(CardTitle).length).toEqual(2);
+        expect(wrapper.find(CardTitle).first().text()).toEqual('AAA-openshift-filled');
+        expect(wrapper.find(CardTitle).last().text()).toEqual('AAA-aws-filled');
     });
 
     it('should render correctly with default icon', () => {

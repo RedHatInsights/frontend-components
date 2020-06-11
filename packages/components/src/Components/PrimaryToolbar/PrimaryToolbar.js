@@ -82,7 +82,6 @@ class PrimaryToolbar extends Component {
                                     }
                                 </ToolbarItem>
                             }
-<<<<<<< HEAD
                             {
                                 dedicatedAction &&
                                 <ToolbarItem>
@@ -90,9 +89,6 @@ class PrimaryToolbar extends Component {
                                 </ToolbarItem>
                             }
                         </ToolbarGroup>
-=======
-                        </ToolbarGroup>
->>>>>>> Update components pf4 (#558)
                     }
                     {
                         React.isValidElement(actionsConfig) ? actionsConfig :
