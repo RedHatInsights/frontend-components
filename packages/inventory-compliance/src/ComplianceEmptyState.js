@@ -20,7 +20,7 @@ const COMPLIANCE_API_ROOT = '/api/compliance';
 
 const QUERY = gql`
 {
-    profiles(search: "external = false") {
+    profiles(search: "external = false and canonical = false") {
         totalCount
     }
 }
