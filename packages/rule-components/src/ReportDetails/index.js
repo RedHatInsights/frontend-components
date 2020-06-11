@@ -39,9 +39,9 @@ const ReportDetails = (
         onFeedbackChanged
     }) => {
 
-    return <Grid gutter="md" className="ins-c-rule__report-detail">
+    return <Grid hasGutter className="ins-c-rule__report-detail">
         <GridItem span={ 7 }>
-            <Stack gutter="md">
+            <Stack hasGutter>
                 <StackItem>
                     <div>
                         <Markdown
@@ -73,11 +73,11 @@ const ReportDetails = (
         </GridItem>
 
         <GridItem span={ 3 }>
-            <Stack gutter="md">
+            <Stack hasGutter>
                 <StackItem>
                     <Stack>
                         <StackItem>
-                            <Title className="ins-c-rule__risk-detail-title" size="md">Total risk</Title>
+                            <Title headingLevel="h1" className="ins-c-rule__risk-detail-title" size="md">Total risk</Title>
                         </StackItem>
                         <StackItem>
                             <RiskDescription
@@ -93,7 +93,7 @@ const ReportDetails = (
                     <StackItem>
                         <Stack>
                             <StackItem>
-                                <Title className="ins-c-rule__risk-detail-title" size="md">Risk of change</Title>
+                                <Title headingLevel="h1" className="ins-c-rule__risk-detail-title" size="md">Risk of change</Title>
                             </StackItem>
                             <StackItem>
                                 <RiskDescription
