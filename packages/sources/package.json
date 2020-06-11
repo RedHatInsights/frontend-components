@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-sources",
-    "version": "2.0.7",
+    "version": "2.1.0-beta",
     "description": "Sources components for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",
@@ -22,20 +22,19 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/sources#readme",
     "dependencies": {
-        "@redhat-cloud-services/frontend-components": "*",
-        "@redhat-cloud-services/frontend-components-utilities": "*",
+        "@redhat-cloud-services/frontend-components-utilities": "2.1.0-beta",
         "awesome-debounce-promise": "^2.1.0"
     },
     "devDependencies": {
-        "@data-driven-forms/pf4-component-mapper": "^2.1.8",
-        "@data-driven-forms/react-form-renderer": "^2.1.8",
-        "@patternfly/react-core": "^3.153.13",
-        "@patternfly/react-icons": "^3.14.39"
+        "@data-driven-forms/pf4-component-mapper": "^2.5.0-beta.1",
+        "@data-driven-forms/react-form-renderer": "^2.5.0-beta.1",
+        "@patternfly/react-core": "^4.18.5",
+        "@patternfly/react-icons": "^4.3.5"
     },
     "peerDependencies": {
         "react": "^16.12.0",
-        "@data-driven-forms/pf4-component-mapper": "^2.1.8",
-        "@data-driven-forms/react-form-renderer": "^2.1.8",
+        "@data-driven-forms/pf4-component-mapper": "^2.5.0-beta.1",
+        "@data-driven-forms/react-form-renderer": "^2.5.0-beta.1",
         "lodash": "^4.17.15"
     }
 }
