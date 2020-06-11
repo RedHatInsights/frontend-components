@@ -465,13 +465,7 @@ Object {
     Array [
       Object {
         "sortValue": "test-name",
-        "title": <a
-          href="test-url"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          test-name
-        </a>,
+        "title": "test-name",
       },
       Object {
         "sortValue": "true",
@@ -497,13 +491,7 @@ Object {
     Array [
       Object {
         "sortValue": "test-name",
-        "title": <a
-          href="test-url"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          test-name
-        </a>,
+        "title": "test-name",
       },
       Object {
         "sortValue": "true",
@@ -529,13 +517,7 @@ Object {
     Array [
       Object {
         "sortValue": "test-name",
-        "title": <a
-          href="test-url"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          test-name
-        </a>,
+        "title": "test-name",
       },
       Object {
         "sortValue": "false",
@@ -561,13 +543,7 @@ Object {
     Array [
       Object {
         "sortValue": "test-name",
-        "title": <a
-          href="test-url"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          test-name
-        </a>,
+        "title": "test-name",
       },
       Object {
         "sortValue": "undefined",

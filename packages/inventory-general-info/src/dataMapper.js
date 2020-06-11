@@ -133,7 +133,7 @@ export const repositoriesMapper = ({ enabled, disabled } = { enabled: [], disabl
     ],
     rows: [ ...enabled, ...disabled ].map(repository => ([
         {
-            title: <a href={ repository.base_url } target="_blank" rel="noopener noreferrer">{ repository.name }</a>,
+            title: repository.name,
             sortValue: repository.name
         },
         {
