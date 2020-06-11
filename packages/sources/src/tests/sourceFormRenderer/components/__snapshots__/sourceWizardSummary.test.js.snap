@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] = `
-<TextContent>
+<Component>
   <div
     className="pf-c-content"
   >
-    <TextList
+    <Component
       component="dl"
     >
       <dl
         className=""
         data-pf-content={true}
       >
-        <TextListItem
+        <Component
           component="dt"
         >
           <dt
@@ -21,8 +21,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             Name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -31,8 +31,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             openshift
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -41,8 +41,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             Application
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -51,8 +51,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             Not selected
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -61,8 +61,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             Source type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -71,8 +71,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             Amazon Web Services
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -81,8 +81,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             Authentication type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -91,8 +91,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             ARN
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -101,8 +101,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             S3 bucket name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -111,8 +111,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             -
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -121,8 +121,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             ARN
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -131,26 +131,26 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
           >
             123456
           </dd>
-        </TextListItem>
+        </Component>
       </dl>
-    </TextList>
+    </Component>
   </div>
-</TextContent>
+</Component>
 `;
 
 exports[`SourceWizardSummary component should render correctly amazon - ARN cost management - include appended field from DB 1`] = `
-<TextContent>
+<Component>
   <div
     className="pf-c-content"
   >
-    <TextList
+    <Component
       component="dl"
     >
       <dl
         className=""
         data-pf-content={true}
       >
-        <TextListItem
+        <Component
           component="dt"
         >
           <dt
@@ -159,8 +159,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             Name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -169,8 +169,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             cosi
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -179,8 +179,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             Application
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -189,8 +189,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             Cost Management
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -199,8 +199,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             Source type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -209,8 +209,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             Amazon Web Services
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -219,8 +219,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             Authentication type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -229,8 +229,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             ARN
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -239,8 +239,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             S3 bucket name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -249,8 +249,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             gfghf
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -259,8 +259,8 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             ARN
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -269,26 +269,26 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
           >
             arn:aws:132
           </dd>
-        </TextListItem>
+        </Component>
       </dl>
-    </TextList>
+    </Component>
   </div>
-</TextContent>
+</Component>
 `;
 
 exports[`SourceWizardSummary component should render correctly amazon 1`] = `
-<TextContent>
+<Component>
   <div
     className="pf-c-content"
   >
-    <TextList
+    <Component
       component="dl"
     >
       <dl
         className=""
         data-pf-content={true}
       >
-        <TextListItem
+        <Component
           component="dt"
         >
           <dt
@@ -297,8 +297,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             Name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -307,8 +307,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             openshift
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -317,8 +317,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             Application
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -327,8 +327,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             Not selected
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -337,8 +337,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             Source type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -347,8 +347,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             Amazon Web Services
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -357,8 +357,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             Authentication type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -367,8 +367,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             AWS Secret Key
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -377,8 +377,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             Access key ID
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -387,8 +387,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             user_name
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -397,8 +397,8 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             Secret access key
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -407,26 +407,26 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
           >
             ●●●●●●●●●●●●
           </dd>
-        </TextListItem>
+        </Component>
       </dl>
-    </TextList>
+    </Component>
   </div>
-</TextContent>
+</Component>
 `;
 
 exports[`SourceWizardSummary component should render correctly ansible-tower 1`] = `
-<TextContent>
+<Component>
   <div
     className="pf-c-content"
   >
-    <TextList
+    <Component
       component="dl"
     >
       <dl
         className=""
         data-pf-content={true}
       >
-        <TextListItem
+        <Component
           component="dt"
         >
           <dt
@@ -435,8 +435,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -445,8 +445,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             openshift
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -455,8 +455,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Application
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -465,8 +465,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Not selected
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -475,8 +475,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Source type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -485,8 +485,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Ansible Tower
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -495,8 +495,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Authentication type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -505,8 +505,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Username and password
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -515,8 +515,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             User name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -525,8 +525,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             user_name
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -535,8 +535,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Secret Key
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -545,8 +545,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             ●●●●●●●●●●●●
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -555,8 +555,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Hostname
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -565,8 +565,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             neznam.cz
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -575,8 +575,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Verify SSL
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -585,8 +585,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Yes
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -595,8 +595,8 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             Certificate authority
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -605,26 +605,26 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
           >
             authority
           </dd>
-        </TextListItem>
+        </Component>
       </dl>
-    </TextList>
+    </Component>
   </div>
-</TextContent>
+</Component>
 `;
 
 exports[`SourceWizardSummary component should render correctly hide application 1`] = `
-<TextContent>
+<Component>
   <div
     className="pf-c-content"
   >
-    <TextList
+    <Component
       component="dl"
     >
       <dl
         className=""
         data-pf-content={true}
       >
-        <TextListItem
+        <Component
           component="dt"
         >
           <dt
@@ -633,8 +633,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -643,8 +643,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             openshift
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -653,8 +653,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Source type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -663,8 +663,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Ansible Tower
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -673,8 +673,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Authentication type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -683,8 +683,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Username and password
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -693,8 +693,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Hostname
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -703,8 +703,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             neznam.cz
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -713,8 +713,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Verify SSL
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -723,8 +723,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Yes
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -733,8 +733,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Certificate authority
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -743,8 +743,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             authority
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -753,8 +753,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Username
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -763,8 +763,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             user_name
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -773,8 +773,8 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             Password
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -783,26 +783,26 @@ exports[`SourceWizardSummary component should render correctly hide application 
           >
             ●●●●●●●●●●●●
           </dd>
-        </TextListItem>
+        </Component>
       </dl>
-    </TextList>
+    </Component>
   </div>
-</TextContent>
+</Component>
 `;
 
 exports[`SourceWizardSummary component should render correctly openshift 1`] = `
-<TextContent>
+<Component>
   <div
     className="pf-c-content"
   >
-    <TextList
+    <Component
       component="dl"
     >
       <dl
         className=""
         data-pf-content={true}
       >
-        <TextListItem
+        <Component
           component="dt"
         >
           <dt
@@ -811,8 +811,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             Name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -821,8 +821,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             openshift
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -831,8 +831,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             Application
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -841,8 +841,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             Not selected
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -851,8 +851,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             Source type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -861,8 +861,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             OpenShift Container Platform
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -871,8 +871,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             Authentication type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -881,8 +881,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             Token
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -891,8 +891,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             Token
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -901,8 +901,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             ●●●●●●●●●●●●
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -911,8 +911,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             URL
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -921,8 +921,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             neznam.cz
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -931,8 +931,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             Verify SSL
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -941,8 +941,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             Yes
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -951,8 +951,8 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             SSL Certificate
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -961,26 +961,26 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
           >
             authority
           </dd>
-        </TextListItem>
+        </Component>
       </dl>
-    </TextList>
+    </Component>
   </div>
-</TextContent>
+</Component>
 `;
 
 exports[`SourceWizardSummary component should render correctly openshift cost management - include appended field from DB 1`] = `
-<TextContent>
+<Component>
   <div
     className="pf-c-content"
   >
-    <TextList
+    <Component
       component="dl"
     >
       <dl
         className=""
         data-pf-content={true}
       >
-        <TextListItem
+        <Component
           component="dt"
         >
           <dt
@@ -989,8 +989,8 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
           >
             Name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -999,8 +999,8 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
           >
             cosi
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1009,8 +1009,8 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
           >
             Application
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1019,8 +1019,8 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
           >
             Cost Management
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1029,8 +1029,8 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
           >
             Source type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1039,8 +1039,8 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
           >
             OpenShift Container Platform
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1049,8 +1049,8 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
           >
             Cluster Identifier
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1059,26 +1059,26 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
           >
             CLUSTER ID123
           </dd>
-        </TextListItem>
+        </Component>
       </dl>
-    </TextList>
+    </Component>
   </div>
-</TextContent>
+</Component>
 `;
 
 exports[`SourceWizardSummary component should render correctly selected Catalog application, is second 1`] = `
-<TextContent>
+<Component>
   <div
     className="pf-c-content"
   >
-    <TextList
+    <Component
       component="dl"
     >
       <dl
         className=""
         data-pf-content={true}
       >
-        <TextListItem
+        <Component
           component="dt"
         >
           <dt
@@ -1087,8 +1087,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Name
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1097,8 +1097,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             openshift
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1107,8 +1107,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Application
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1117,8 +1117,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Catalog
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1127,8 +1127,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Source type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1137,8 +1137,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Ansible Tower
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1147,8 +1147,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Authentication type
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1157,8 +1157,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Username and password
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1167,8 +1167,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Hostname
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1177,8 +1177,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             neznam.cz
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1187,8 +1187,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Verify SSL
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1197,8 +1197,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Yes
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1207,8 +1207,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Certificate authority
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1217,8 +1217,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             authority
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1227,8 +1227,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Username
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1237,8 +1237,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             user_name
           </dd>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dt"
         >
           <dt
@@ -1247,8 +1247,8 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             Password
           </dt>
-        </TextListItem>
-        <TextListItem
+        </Component>
+        <Component
           component="dd"
         >
           <dd
@@ -1257,9 +1257,9 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
           >
             ●●●●●●●●●●●●
           </dd>
-        </TextListItem>
+        </Component>
       </dl>
-    </TextList>
+    </Component>
   </div>
-</TextContent>
+</Component>
 `;
