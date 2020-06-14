@@ -12,17 +12,22 @@ import {
     SortByDirection
 } from '@patternfly/react-table';
 
-export function useInventory({
+export const useInventory = ({
     store,
     tableReducer,
-    detailReducer
-}) {
+    detailReducer,
+    getRegistry
+}) => {
+    let cleenupCallback;
     const [ inventory, setInventory ] = useState({
-        InventoryTable: null,
-        InventoryDetail: null,
-        TagWithDialog: null,
         newReducers: null,
         rawReducers: null
+    });
+
+    const [ inventoryComponents, setInventoryComponents ] = useState({
+        InventoryTable: null,
+        InventoryDetail: null,
+        TagWithDialog: null
     });
 
     useEffect(() => {
@@ -46,6 +51,7 @@ export function useInventory({
                     SortByDirection
                 }
             });
+
             let newReducers = {};
             if (tableReducer) {
                 newReducers = {
@@ -69,20 +75,36 @@ export function useInventory({
                 TagWithDialog
             } = inventoryConnector(store);
             setInventory(() => ({
-                InventoryDetail: {
-                    InventoryDetailHead,
-                    AppInfo,
-                    InventoryDetail
-                },
-                InventoryTable,
-                TagWithDialog,
                 newReducers,
                 rawReducers: {
                     mergeWithEntities,
                     mergeWithDetail
                 }
             }));
+
+            if (getRegistry && typeof getRegistry === 'function') {
+                cleenupCallback = getRegistry().register(newReducers);
+            }
+
+            setInventoryComponents(() => ({
+                InventoryDetail: {
+                    InventoryDetailHead,
+                    AppInfo,
+                    InventoryDetail
+                },
+                InventoryTable,
+                TagWithDialog
+            }));
         })();
+
+        return () => {
+            if (cleenupCallback && typeof cleenupCallback === 'function') {
+                cleenupCallback();
+            }
+        };
     }, []);
-    return inventory;
-}
+    return {
+        ...inventory,
+        ...inventoryComponents
+    };
+};

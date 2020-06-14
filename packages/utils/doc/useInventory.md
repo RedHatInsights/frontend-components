@@ -3,40 +3,33 @@
 If you are using newer version of react, you can use hook that comes with this package to load inventory and reducers.
 
 ```JSX
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { useStore } from 'react-redux';
 import { useInventory } from '@redhat-cloud-services/frontend-components-utilities/files/useInventory';
 import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import { entitiesReducer } from './redux/reducers/table';
 
 const MyCmp = () => {
-    const [ConnectedInventory, setInventory] = useState();
-    const { InventoryTable, newReducers } = useInventory({
+    const { InventoryTable } = useInventory({
         tableReducer: entitiesReducer,
-        store: useStore()
+        store: useStore(),
+        getRegistry
     });
-
-    useEffect(() => {
-        if (InventoryTable && newReducers) {
-            getRegistry().register(newReducers);
-            setInventory(() => InventoryTable);
-        }
-    }, [InventoryTable, newReducers]);
 
     return (
         <Fragment>
-            {ConnectedInventory && <ConnectedInventory />}
+            {InventoryTable && <InventoryTable />}
         </Fragment>
     );
-
 }
 ```
 
 #### `useInventory` accepts object with
 
+* `getRegistry` - registry to be used to include newly created reducers from inventory
 * `store` - react redux store
-* `tableReducer` - function called to create table reducers, it will be called with all inventory action types. So you can change state based on some inv events.
-
-* `detailReducer` - function called to create detail reducers, it will be called with all inventory action types. So you can change state based on some inv events.
+* `tableReducer` - redux reducer function called to create table reducers, it will be called with all inventory action types. So you can change state based on some inv events.
+* `detailReducer` - redux reducer function called to create detail reducers, it will be called with all inventory action types. So you can change state based on some inv events.
 
 #### Example of reducer callback:
 
@@ -60,3 +53,40 @@ const MyCmp = () => {
 * TagWithDialog - tags component
 * newReducers - reducers to be registered in your store
 * rawReducers - if you want to change how reducers are merged together here will be `mergeWithEntities` and `mergeWithDetail`
+
+#### Custom register and Inv component
+
+If you want to change the reducer that has been calculated or you want to assign component created from hook to your own state prop:
+
+```JSX
+import React, { useEffect, useState, Fragment } from 'react';
+import { useStore } from 'react-redux';
+import { useInventory } from '@redhat-cloud-services/frontend-components-utilities/files/useInventory';
+import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import { entitiesReducer } from './redux/reducers/table';
+
+const MyCmp = () => {
+    const [ ConnectedInventory, setConnectedInventory ] = useState(null);
+    const store = useStore();
+    const { InventoryTable, newReducers } = useInventory({
+        tableReducer: entitiesReducer,
+        store
+    });
+
+    useEffect(() => {
+        if (newReducers) {
+            // do something with reducers or InventoryTable
+            // don't forget to register newReducers in your redux!
+            // for example `store.replaceReducers(newReducers);`
+            setConnectedInventory(InventoryTable);
+        }
+    }, [newReducers])
+
+    return (
+        <Fragment>
+            {ConnectedInventory && <ConnectedInventory />}
+        </Fragment>
+    );
+
+}
+```
