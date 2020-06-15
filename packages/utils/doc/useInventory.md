@@ -12,7 +12,6 @@ import { entitiesReducer } from './redux/reducers/table';
 const MyCmp = () => {
     const { InventoryTable } = useInventory({
         tableReducer: entitiesReducer,
-        store: useStore(),
         getRegistry
     });
 
@@ -27,7 +26,7 @@ const MyCmp = () => {
 #### `useInventory` accepts object with
 
 * `getRegistry` - registry to be used to include newly created reducers from inventory
-* `store` - react redux store
+* `store` - react redux store, by default it is expected that `getRegistry` has method `getStore` if it does not have such method, please pass in your redux store to this hook.
 * `tableReducer` - redux reducer function called to create table reducers, it will be called with all inventory action types. So you can change state based on some inv events.
 * `detailReducer` - redux reducer function called to create detail reducers, it will be called with all inventory action types. So you can change state based on some inv events.
 

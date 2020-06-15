@@ -32,6 +32,8 @@ export const useInventory = ({
 
     useEffect(() => {
         (async () => {
+            let currStore = store;
+            let registry;
             const {
                 inventoryConnector,
                 INVENTORY_ACTION_TYPES,
@@ -67,13 +69,21 @@ export const useInventory = ({
                 };
             }
 
+            if (getRegistry && typeof getRegistry === 'function') {
+                registry = getRegistry();
+            }
+
+            if (!currStore && registry) {
+                currStore = registry?.getStore?.();
+            }
+
             const {
                 InventoryDetailHead,
                 AppInfo,
                 InventoryTable,
                 InventoryDetail,
                 TagWithDialog
-            } = inventoryConnector(store);
+            } = inventoryConnector(currStore);
             setInventory(() => ({
                 newReducers,
                 rawReducers: {
@@ -82,8 +92,8 @@ export const useInventory = ({
                 }
             }));
 
-            if (getRegistry && typeof getRegistry === 'function') {
-                cleenupCallback = getRegistry().register(newReducers);
+            if (registry) {
+                cleenupCallback = registry?.register?.(newReducers);
             }
 
             setInventoryComponents(() => ({
