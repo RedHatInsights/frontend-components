@@ -8,7 +8,8 @@ import {
     UPDATE_ENTITIES,
     ENTITIES_LOADING,
     CLEAR_FILTERS,
-    TOGGLE_TAG_MODAL
+    TOGGLE_TAG_MODAL,
+    CONFIG_CHANGED
 } from './action-types';
 import { getEntities, getEntitySystemProfile, hosts, getAllTags, getTags } from '../api';
 
@@ -154,4 +155,9 @@ export const deleteEntity = (systems, displayName) => ({
         },
         systems
     }
+});
+
+export const configChanged = (config) => ({
+    type: CONFIG_CHANGED,
+    payload: config
 });

@@ -185,18 +185,15 @@ export const registered = [
     { label: 'Insights', value: 'insights' }
 ];
 
-export const InventoryContext = createContext('inventory');
-
-export let controller;
+export const InventoryContext = createContext({});
 
 export const loadSystems = (options, showTags) => {
-    if (controller) {
-        controller.cancel('Get host items canceled by user.');
-    }
 
-    controller = CancelToken.source();
+    // eslint-disable-next-line camelcase
+    const currPerPage = options?.perPage || options?.per_page;
+
     const limitedItems = options?.items?.slice(
-        (options?.page - 1) * options?.perPage, options?.page * options?.perPage
+        (options?.page - 1) * currPerPage, options?.page * currPerPage
     );
     const config = {
         ...options.hasItems && {
@@ -204,9 +201,8 @@ export const loadSystems = (options, showTags) => {
             orderDirection: options?.sortBy?.direction?.toUpperCase()
         },
         // eslint-disable-next-line camelcase
-        per_page: options.perPage,
+        per_page: currPerPage,
         filters: options.activeFilters,
-        controller: controller,
         ...options,
         ...limitedItems?.length > 0 && {
             itemsPage: options?.page,

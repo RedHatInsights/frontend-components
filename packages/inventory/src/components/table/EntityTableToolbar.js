@@ -61,9 +61,11 @@ const EntityTableToolbar = ({
 
     const updateData = (config) => {
         const params = {
+            items,
             page,
             per_page: perPage,
             filters,
+            hasItems,
             ...config
         };
         onRefresh ? onRefresh(params, (options) => {
@@ -72,7 +74,7 @@ const EntityTableToolbar = ({
         }) : onRefreshData(...params);
     };
 
-    const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800));
+    const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), []);
     const debounceGetAllTags = useCallback(debounce((config, options) => {
         if (showTags && !hasItems) {
             dispatch(fetchAllTags(config, options));
@@ -126,25 +128,31 @@ const EntityTableToolbar = ({
     };
 
     useEffect(() => {
-        if (showTags && !hasItems) {
+        if (page && perPage && filters && showTags && !hasItems) {
             debounceGetAllTags(filterTagsBy, { filters });
         }
     }, [ filterTagsBy ]);
 
     useEffect(() => {
-        onSetTextFilter(textFilter, true);
+        if (page && perPage && filters && (!hasItems || items)) {
+            onSetTextFilter(textFilter, true);
+        }
     }, [ textFilter ]);
 
-    useEffect(() => {
-        onSetFilter(staleFilter, 'staleFilter', debouncedRefresh);
-    }, [ staleFilter ]);
+    // useEffect(() => {
+    //     if (page && perPage && filters && (!hasItems || items)) {
+    //         onSetFilter(staleFilter, 'staleFilter', debouncedRefresh);
+    //     }
+    // }, [ staleFilter ]);
+
+    // useEffect(() => {
+    //     if (page && perPage && filters && (!hasItems || items)) {
+    //         onSetFilter(registeredWithFilter, 'registeredWithFilter', debouncedRefresh);
+    //     }
+    // }, [ registeredWithFilter ]);
 
     useEffect(() => {
-        onSetFilter(registeredWithFilter, 'registeredWithFilter', debouncedRefresh);
-    }, [ registeredWithFilter ]);
-
-    useEffect(() => {
-        if (showTags && !hasItems) {
+        if (page && perPage && filters && showTags && !hasItems) {
             const newFilters = applyTags(selectedTags, true);
             debounceGetAllTags(filterTagsBy, { filters: newFilters });
         }

@@ -2,20 +2,19 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { InventoryContext } from './constants';
-
+import { configChanged } from '../redux/actions';
 class RenderWrapper extends Component {
     ref = createRef();
 
     componentDidMount() {
-        const { cmp: Component, inventoryRef, store, ...props } = this.props;
+        const { cmp: Component, inventoryRef, store, onConfigChanged, ...props } = this.props;
+        store?.dispatch?.(configChanged(props));
         if (this.ref.current) {
             ReactDOM.render(
                 store ?
                     <Provider store={store}>
                         <Component
                             {...props}
-                            inventoryRef
                             { ...inventoryRef && {
                                 ref: inventoryRef
                             }}
@@ -40,15 +39,18 @@ class RenderWrapper extends Component {
         }
     }
 
+    componentDidUpdate() {
+        const { cmp: Component, inventoryRef, store, onConfigChanged, ...props } = this.props;
+        store?.dispatch?.(configChanged(props));
+    }
+
     render() {
-        return <InventoryContext.Provider value={this.props}>
-            <article ref={ this.ref }/>
-        </InventoryContext.Provider>;
+        return <article ref={ this.ref }/>;
     }
 }
 
 RenderWrapper.propTypes = {
-    cmp: PropTypes.oneOfType([ PropTypes.func, PropTypes.string, PropTypes.element ]),
+    cmp: PropTypes.any,
     inventoryRef: PropTypes.any,
     store: PropTypes.object,
     customRender: PropTypes.bool

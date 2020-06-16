@@ -1,44 +1,44 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import { InventoryContext } from '../../shared';
 import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/esm/TableToolbar';
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 
-const ContextInventoryTable = React.forwardRef(({
-    items,
-    filters,
-    showHealth,
+const InventoryTable = React.forwardRef(({
     onRefresh,
-    page,
-    perPage,
-    total,
     children,
-    showTags,
-    sortBy,
     inventoryRef,
     ...props
 }, ref) => {
     let pagination = {
-        page,
-        perPage,
-        total: total || (items && items.length)
+        page: useSelector(({ entities: { page, invConfig } }) => (
+            (invConfig?.items && invConfig?.page) || page || 1)
+        ),
+        perPage: useSelector(({ entities: { perPage, invConfig } }) => (
+            (invConfig?.items && invConfig?.perPage) || perPage || 50)
+        ),
+        total: useSelector(({ entities: { total, invConfig } }) => (
+            (invConfig?.items && (invConfig?.total || invConfig.items.length)) || total)
+        )
     };
 
-    if (!items) {
-        pagination.page = useSelector(({ entities: { page } }) => page);
-        pagination.perPage = useSelector(({ entities: { perPage } }) => perPage);
-        pagination.total = useSelector(({ entities: { total } }) => total);
-    }
+    const hasItems = useSelector(({ entities: { invConfig } }) => Boolean(invConfig?.items));
+    const sortBy = useSelector(({ entities: { sortBy, invConfig } }) => (
+        (invConfig?.items && invConfig?.sortBy) || sortBy
+    ));
+    const filters = useSelector(({ entities: { invConfig: { filters } } }) => filters);
+    const showTags = useSelector(({ entities: { invConfig: { showTags } } }) => showTags);
+    const items = useSelector(({ entities: { invConfig: { items } } }) => items);
 
     return (
         <Fragment>
             <EntityTableToolbar
                 { ...props }
+                items={ items }
                 onRefresh={onRefresh}
                 filters={ filters }
-                hasItems={ Boolean(items) }
+                hasItems={ hasItems }
                 total={ pagination.total }
                 page={ pagination.page }
                 perPage={ pagination.perPage }
@@ -49,33 +49,27 @@ const ContextInventoryTable = React.forwardRef(({
             <InventoryList
                 { ...props }
                 ref={ref}
-                hasItems={ Boolean(items) }
+                hasItems={ hasItems }
                 onRefresh={ onRefresh }
                 items={ items }
                 page={ pagination.page }
-                sortBy={ items ? sortBy : useSelector(({ entities: { sortBy } }) => sortBy) }
+                sortBy={ sortBy }
                 perPage={ pagination.perPage }
-                showHealth={ showHealth }
                 showTags={ showTags }
             />
             <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                 <Pagination
                     isFull
+                    items={ items }
                     total={ pagination.total }
                     page={ pagination.page }
                     perPage={ pagination.perPage }
-                    hasItems={ Boolean(items) }
+                    hasItems={ hasItems }
                     onRefresh={ onRefresh }
                 />
             </TableToolbar>
         </Fragment>
     );
 });
-
-const InventoryTable = React.forwardRef((props, ref) => (
-    <InventoryContext.Consumer>
-        {(context) => <ContextInventoryTable {...props} {...context} ref={ref} />}
-    </InventoryContext.Consumer>
-));
 
 export default InventoryTable;

@@ -4,7 +4,9 @@ import { TEXTUAL_CHIP } from '../../shared';
 export const useTextFilter = (defaultValue) => {
     const [ value, setValue ] = useState('');
     useEffect(() => {
-        setValue(defaultValue);
+        if (defaultValue) {
+            setValue(defaultValue);
+        }
     }, [ defaultValue ]);
     const filter = {
         label: 'Name',

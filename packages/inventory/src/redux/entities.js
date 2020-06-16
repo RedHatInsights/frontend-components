@@ -8,7 +8,8 @@ import {
     UPDATE_ENTITIES,
     ENTITIES_LOADING,
     CLEAR_FILTERS,
-    TOGGLE_TAG_MODAL
+    TOGGLE_TAG_MODAL,
+    CONFIG_CHANGED
 } from './action-types';
 import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/esm/helpers';
 import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
@@ -17,7 +18,7 @@ import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
 import TitleColumn from '../components/table/TitleColumn';
 
-export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: false };
+export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: false, invConfig: {} };
 
 const defaultColumns = [
     {
@@ -220,5 +221,6 @@ export default {
     [CHANGE_SORT]: changeSort,
     [CLEAR_FILTERS]: clearFilters,
     [ENTITIES_LOADING]: (state, { payload: { isLoading } }) => ({ ...state, loaded: !isLoading }),
-    [TOGGLE_TAG_MODAL]: toggleTagModal
+    [TOGGLE_TAG_MODAL]: toggleTagModal,
+    [CONFIG_CHANGED]: (state, { payload }) => ({ ...state, invConfig: payload })
 };
