@@ -34,7 +34,7 @@ const FactsInfo = ({ entity, loaded, ...props }) => (
                                     staleWarning={getFact('stale_warning_timestamp', entity)}
                                     stale={getFact('stale_timestamp', entity)}
                                 >
-                                    <DateFormat date={getFact('updated')} type="exact" />
+                                    <DateFormat date={getFact('updated', entity)} type="exact" />
                                 </CullingInformation> : <DateFormat date={getFact('updated', entity)} type="exact" />
                             ) :
                             <Skeleton size={ SkeletonSize.sm } />

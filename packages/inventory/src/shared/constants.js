@@ -2,6 +2,7 @@ import React, { createContext } from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
 import { loadEntities } from '../redux/actions';
 import { cellWidth, sortable, expandable } from '@patternfly/react-table';
+import { CancelToken } from 'axios';
 
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
@@ -186,16 +187,34 @@ export const registered = [
 
 export const InventoryContext = createContext('inventory');
 
-export const loadSystems = (items = [], config, showTags) => {
-    const limitedItems = items.slice((config.page - 1) * config.per_page, config.page * config.per_page);
+export let controller;
 
-    return loadEntities(limitedItems, {
-        ...config,
-        ...limitedItems.length > 0 && {
-            itemsPage: config.page,
+export const loadSystems = (options, showTags) => {
+    if (controller) {
+        controller.cancel('Get host items canceled by user.');
+    }
+
+    controller = CancelToken.source();
+    const limitedItems = options?.items?.slice(
+        (options?.page - 1) * options?.perPage, options?.page * options?.perPage
+    );
+    const config = {
+        ...options.hasItems && {
+            sortBy: options?.sortBy?.key,
+            orderDirection: options?.sortBy?.direction?.toUpperCase()
+        },
+        // eslint-disable-next-line camelcase
+        per_page: options.perPage,
+        filters: options.activeFilters,
+        controller: controller,
+        ...options,
+        ...limitedItems?.length > 0 && {
+            itemsPage: options?.page,
             page: 1
         }
-    }, { showTags });
+    };
+
+    return loadEntities(limitedItems, config, { showTags });
 };
 
 export const createColumns = (columns, hasItems, rows, isExpandable) => (

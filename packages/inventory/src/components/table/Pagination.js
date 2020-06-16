@@ -3,29 +3,29 @@ import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/esm/c
 import { entitiesLoading } from '../../redux/actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { InventoryContext } from '../../shared';
+import { loadSystems } from '../../shared';
 import debounce from 'lodash/debounce';
 
-class ContextFooterPagination extends Component {
+class FooterPagination extends Component {
     state = {
         page: undefined
     };
     changePage = debounce((pagination) => this.updatePagination(pagination), 800);
 
     updatePagination = (pagination) => {
-        const { onRefreshData, onRefresh, dataLoading } = this.props;
+        const { onRefresh, dataLoading, loadEntities, showTags } = this.props;
         if (onRefresh) {
             dataLoading();
-            onRefresh(pagination, onRefreshData);
+            onRefresh(pagination, (options) => loadEntities(options, showTags));
         } else {
-            onRefreshData(pagination);
+            loadEntities(pagination, showTags);
         }
     }
 
     onSetPage = (event, page) => {
-        const { perPage, filters } = this.props;
+        const { perPage, filters, sortBy, hasItems, items } = this.props;
         // eslint-disable-next-line camelcase
-        const pagination = { page, per_page: perPage, filters };
+        const pagination = { page, per_page: perPage, filters, sortBy, hasItems, items };
         if (event.target.matches('input')) {
             this.changePage(pagination);
             this.setState({
@@ -71,14 +71,6 @@ class ContextFooterPagination extends Component {
     }
 }
 
-const FooterPagination = ({ ...props }) => (
-    <InventoryContext.Consumer>
-        { ({ onRefreshData }) => (
-            <ContextFooterPagination { ...props } onRefreshData={ onRefreshData } />
-        ) }
-    </InventoryContext.Consumer>
-);
-
 const propTypes = {
     perPage: PropTypes.number,
     total: PropTypes.number,
@@ -88,19 +80,13 @@ const propTypes = {
     direction: PropTypes.string
 };
 
-ContextFooterPagination.propTypes = {
-    ...propTypes,
-    onRefreshData: PropTypes.func
-};
-
 FooterPagination.propTypes = propTypes;
 
 FooterPagination.defaultProps = {
     total: 0,
     loaded: false,
     isFull: false,
-    direction: 'up',
-    onRefreshData: () => undefined
+    direction: 'up'
 };
 
 function stateToProps(
@@ -115,7 +101,8 @@ function stateToProps(
 
 function dispatchToProps(dispatch) {
     return {
-        dataLoading: () => dispatch(entitiesLoading())
+        dataLoading: () => dispatch(entitiesLoading()),
+        loadEntities: (config, showTags) => dispatch(loadSystems(config, showTags))
     };
 }
 

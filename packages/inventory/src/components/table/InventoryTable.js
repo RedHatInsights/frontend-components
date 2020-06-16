@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { InventoryContext } from '../../shared';
 import EntityTableToolbar from './EntityTableToolbar';
@@ -6,7 +6,7 @@ import { TableToolbar } from '@redhat-cloud-services/frontend-components/compone
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 
-const InventoryTable = ({
+const ContextInventoryTable = React.forwardRef(({
     items,
     filters,
     showHealth,
@@ -17,9 +17,9 @@ const InventoryTable = ({
     children,
     showTags,
     sortBy,
+    inventoryRef,
     ...props
-}) => {
-    const [ onRefreshData, setOnRefreshData ] = useState(() => undefined);
+}, ref) => {
     let pagination = {
         page,
         perPage,
@@ -33,10 +33,7 @@ const InventoryTable = ({
     }
 
     return (
-        <InventoryContext.Provider value={ {
-            onRefreshData,
-            setRefresh: (onRefresh) => setOnRefreshData(() => onRefresh)
-        } }>
+        <Fragment>
             <EntityTableToolbar
                 { ...props }
                 onRefresh={onRefresh}
@@ -51,6 +48,7 @@ const InventoryTable = ({
             </EntityTableToolbar>
             <InventoryList
                 { ...props }
+                ref={ref}
                 hasItems={ Boolean(items) }
                 onRefresh={ onRefresh }
                 items={ items }
@@ -70,8 +68,14 @@ const InventoryTable = ({
                     onRefresh={ onRefresh }
                 />
             </TableToolbar>
-        </InventoryContext.Provider>
+        </Fragment>
     );
-};
+});
+
+const InventoryTable = React.forwardRef((props, ref) => (
+    <InventoryContext.Consumer>
+        {(context) => <ContextInventoryTable {...props} {...context} ref={ref} />}
+    </InventoryContext.Consumer>
+));
 
 export default InventoryTable;

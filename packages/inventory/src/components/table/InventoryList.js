@@ -4,38 +4,21 @@ import InventoryEntityTable from './EntityTable';
 import { Grid, GridItem } from '@patternfly/react-core/dist/esm/layouts/Grid';
 import PropTypes from 'prop-types';
 import './InventoryList.scss';
-import { InventoryContext, loadSystems } from '../../shared';
-import { CancelToken } from 'axios';
+import { loadSystems } from '../../shared';
 import isEqual from 'lodash/isEqual';
 
 class ContextInventoryList extends React.Component {
-    loadEntities = (options = {}) => {
-        const { page, perPage, items, hasItems, sortBy, activeFilters } = this.props;
-        const currPerPage = options.per_page || perPage;
-        if (this.controller) {
-            this.controller.cancel('Get host items canceled by user.');
-        }
-
-        this.controller = CancelToken.source();
+    onRefreshData = (options = {}) => {
+        const { page, perPage, items, hasItems, sortBy, activeFilters, showTags } = this.props;
         this.props.loadEntities && this.props.loadEntities({
-            page: (hasItems && items.length <= currPerPage) ? 1 : (options.page || page),
-            ...hasItems ? {
-                sortBy: sortBy?.key,
-                orderDirection: sortBy?.direction?.toUpperCase()
-            } : { hasItems },
-            // eslint-disable-next-line camelcase
-            per_page: currPerPage,
-            filters: activeFilters,
-            controller: this.controller,
+            page,
+            perPage,
+            items,
             hasItems,
+            sortBy,
+            activeFilters,
             ...options
-        });
-    }
-
-    componentDidMount() {
-        const { setRefresh } = this.props;
-        setRefresh && setRefresh(this.loadEntities);
-        this.loadEntities();
+        }, showTags);
     }
 
     componentDidUpdate(prevProps) {
@@ -47,9 +30,9 @@ class ContextInventoryList extends React.Component {
                 prevProps.items.map(({ children, isOpen, ...item }) => item)
             )
         ) {
-            this.loadEntities({});
+            this.onRefreshData({});
         } else if (!hasItems && !isEqual(prevProps.sortBy, sortBy)) {
-            this.loadEntities({});
+            this.onRefreshData({});
         }
     }
 
@@ -65,22 +48,18 @@ class ContextInventoryList extends React.Component {
     }
 }
 
-const InventoryList = (props) => {
+const InventoryList = React.forwardRef((props, ref) => {
     const dispatch = useDispatch();
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
     return (
-        <InventoryContext.Consumer>
-            { ({ setRefresh }) => (
-                <ContextInventoryList
-                    { ...props }
-                    activeFilters={ activeFilters }
-                    setRefresh={ setRefresh }
-                    loadEntities={ (config) => dispatch(loadSystems(props.items, config, props.showTags)) }
-                />
-            ) }
-        </InventoryContext.Consumer>
+        <ContextInventoryList
+            { ...props }
+            ref={ref}
+            activeFilters={ activeFilters }
+            loadEntities={ (config, showTags) => dispatch(loadSystems(config, showTags)) }
+        />
     );
-};
+});
 
 ContextInventoryList.propTypes = {
     ...InventoryList.propTypes,

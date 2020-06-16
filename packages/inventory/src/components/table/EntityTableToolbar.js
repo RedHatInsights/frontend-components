@@ -19,17 +19,15 @@ import {
     REGISTERED_CHIP,
     TAG_CHIP,
     arrayToSelection,
-    InventoryContext
+    loadSystems
 } from '../../shared';
 import { onDeleteFilter, onDeleteTag } from './helpers';
 import { useStalenessFilter, useTextFilter, useRegisteredWithFilter, useTagsFilter } from '../filters';
 
-const ContextEntityTableToolbar = ({
+const EntityTableToolbar = ({
     total,
     page,
-    onRefreshData,
     perPage,
-    filters,
     filterConfig,
     hasItems,
     children,
@@ -39,9 +37,12 @@ const ContextEntityTableToolbar = ({
     activeFiltersConfig,
     showTags,
     isLoaded,
+    items,
+    sortBy,
     ...props
 }) => {
     const dispatch = useDispatch();
+    const filters = useSelector(({ entities: { activeFilters } }) => activeFilters || []);
     const loaded = useSelector(({ entities: { loaded } }) => hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded);
     const allTagsLoaded = useSelector(({ entities: { allTagsLoaded } }) => allTagsLoaded);
     const allTags = useSelector(({ entities: { allTags } }) => allTags);
@@ -56,6 +57,7 @@ const ContextEntityTableToolbar = ({
         setSelectedTags,
         filterTagsBy
     ] = useTagsFilter(allTags, allTagsLoaded, additionalTagsCount, () => dispatch(toggleTagModal(true)));
+    const onRefreshData = useCallback((options) => dispatch(loadSystems(options, showTags)));
 
     const updateData = (config) => {
         const params = {
@@ -66,11 +68,11 @@ const ContextEntityTableToolbar = ({
         };
         onRefresh ? onRefresh(params, (options) => {
             dispatch(entitiesLoading());
-            onRefreshData(options);
-        }) : onRefreshData(params);
+            onRefreshData({ ...params, ...options });
+        }) : onRefreshData(...params);
     };
 
-    const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), [ onRefreshData ]);
+    const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800));
     const debounceGetAllTags = useCallback(debounce((config, options) => {
         if (showTags && !hasItems) {
             dispatch(fetchAllTags(config, options));
@@ -230,14 +232,6 @@ const ContextEntityTableToolbar = ({
     </Fragment>;
 };
 
-const EntityTableToolbar = ({ ...props }) => (
-    <InventoryContext.Consumer>
-        {({ onRefreshData }) => (
-            <ContextEntityTableToolbar {...props} onRefreshData={onRefreshData} />
-        )}
-    </InventoryContext.Consumer>
-);
-
 EntityTableToolbar.propTypes = {
     showTags: PropTypes.bool,
     filterConfig: PropTypes.shape(PrimaryToolbar.propTypes.filterConfig),
@@ -251,11 +245,7 @@ EntityTableToolbar.propTypes = {
     children: PropTypes.node,
     pagination: PrimaryToolbar.propTypes.pagination,
     actionsConfig: PrimaryToolbar.propTypes.actionsConfig,
-    activeFiltersConfig: PrimaryToolbar.propTypes.activeFiltersConfig
-};
-
-ContextEntityTableToolbar.propTypes = {
-    ...EntityTableToolbar.propTypes,
+    activeFiltersConfig: PrimaryToolbar.propTypes.activeFiltersConfig,
     onRefreshData: PropTypes.func
 };
 

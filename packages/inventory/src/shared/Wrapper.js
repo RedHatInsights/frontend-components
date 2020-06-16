@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { InventoryContext } from './constants';
 
 class RenderWrapper extends Component {
     ref = createRef();
@@ -14,6 +15,7 @@ class RenderWrapper extends Component {
                     <Provider store={store}>
                         <Component
                             {...props}
+                            inventoryRef
                             { ...inventoryRef && {
                                 ref: inventoryRef
                             }}
@@ -39,7 +41,9 @@ class RenderWrapper extends Component {
     }
 
     render() {
-        return <article ref={ this.ref }/>;
+        return <InventoryContext.Provider value={this.props}>
+            <article ref={ this.ref }/>
+        </InventoryContext.Provider>;
     }
 }
 
