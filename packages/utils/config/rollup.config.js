@@ -27,7 +27,8 @@ const entryMapper = {
     inventoryDependencies: './src/inventoryDependencies.js',
     RBAC: './src/RBAC.js',
     RBACHook: './src/RBACHook.js',
-    mergeMessages: './src/mergeMessages.js'
+    mergeMessages: './src/mergeMessages.js',
+    useInventory: './src/useInventory.js'
 };
 
 const commonjsOptions = {
