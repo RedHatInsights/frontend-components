@@ -16,16 +16,9 @@
 }
 
 .ins-c-inventory-detail__app-tabs ul {
-    &:before {
-        content: '';
-        border-right: 1px solid var(--pf-c-tabs__item--BorderColor);
-    }
-
     &:after {
         content: '';
         width: 100%;
-        margin-top: var(--pf-c-content--li--MarginTop);
-        border-left: 1px solid var(--pf-c-tabs__item--BorderColor);
     }
 
     li button:before {

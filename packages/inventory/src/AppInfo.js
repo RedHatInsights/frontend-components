@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 
 class AppInfo extends Component {
     render () {
