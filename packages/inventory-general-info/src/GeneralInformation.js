@@ -57,7 +57,7 @@ class GeneralInformation extends Component {
     render() {
         const { isModalOpen, modalTitle, cells, rows, expandable, filters } = this.state;
         return (
-            <Grid sm={ 12 } md={ 6 } gutter="md">
+            <Grid sm={ 12 } md={ 6 } hasGutter>
                 <GridItem>
                     <SystemCard handleClick={ this.handleModalToggle } />
                 </GridItem>
