@@ -8,11 +8,19 @@
 @import '~@redhat-cloud-services/frontend-components/components/TagModal.css';
 @import '~@redhat-cloud-services/frontend-components/components/CullingInfo.css';
 
-.ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items) {
-    .pf-c-data-toolbar__content {
-        .pf-c-data-toolbar__item:last-child { @include rem('min-width', 200px); }
+
+.ins-c-inventory__table--toolbar {
+    &.ins-m-footer {
+        margin: 0;
+        padding: 0;
     }
-    .pf-c-pagination__nav-page-select input { @include rem('min-width', 75px); }
+
+    &:not(.ins-c-inventory__table--toolbar-has-items) {
+        .pf-c-data-toolbar__content {
+            .pf-c-toolbar__item:last-child { @include rem('min-width', 200px); }
+        }
+        .pf-c-pagination__nav-page-select input { @include rem('min-width', 75px); }
+    }
 }
 
 .ins-c-table__empty {

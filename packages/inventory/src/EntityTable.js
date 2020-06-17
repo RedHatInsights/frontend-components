@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
+import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
 import { selectEntity, setSort, detailSelect } from './redux/actions';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import {
     Title,
-    EmptyStateBody,
     Bullseye,
     EmptyState,
-    EmptyStateVariant
+    EmptyStateVariant,
+    EmptyStateBody
 } from '@patternfly/react-core';
 import {
     Table as PfTable,
@@ -21,7 +21,9 @@ import {
     sortable,
     expandable
 } from '@patternfly/react-table';
-import { SkeletonTable, EmptyTable, DateFormat } from '@redhat-cloud-services/frontend-components';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
+import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/esm/SkeletonTable';
+import { EmptyTable } from '@redhat-cloud-services/frontend-components/components/esm/EmptyTable';
 
 class EntityTable extends React.Component {
     onRowClick = (_event, key, application) => {

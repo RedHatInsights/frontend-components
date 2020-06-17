@@ -2,26 +2,28 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
     Title,
-    Grid,
-    GridItem,
     Card,
     CardBody,
     CardHeader,
     Flex,
     FlexItem,
-    SplitItem,
-    Split,
+    EmptyState,
+    EmptyStateVariant,
+    EmptyStateIcon,
+    EmptyStateBody,
     Dropdown,
     DropdownItem,
     DropdownPosition,
     KebabToggle,
+    Split,
+    SplitItem,
     Button,
-    EmptyState,
-    EmptyStateVariant,
-    EmptyStateIcon,
-    EmptyStateBody
+    Grid,
+    GridItem
 } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize, DateFormat, CullingInformation } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
+import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/esm/CullingInfo';
 import { CubesIcon } from '@patternfly/react-icons';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
@@ -30,8 +32,8 @@ import { editDisplayName, editAnsibleHost, loadEntity, deleteEntity } from './re
 import TagWithDialog from './TagWithDialog';
 import TagsModal from './TagsModal';
 import DeleteModal from './DeleteModal';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
-import RouterParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/esm/actions';
+import RouterParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
 
 class EntityDetails extends Component {
     state = {
@@ -78,7 +80,7 @@ class EntityDetails extends Component {
                 <SplitItem isFilled>
                     {
                         loaded ? (
-                            <Title size='2xl'>{ entity && entity.display_name }</Title>
+                            <Title headingLevel="h1" size='2xl'>{ entity && entity.display_name }</Title>
                         ) :
                             <Skeleton size={ SkeletonSize.md } />
                     }
