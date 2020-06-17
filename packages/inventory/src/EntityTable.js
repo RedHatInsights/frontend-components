@@ -64,18 +64,19 @@ class EntityTable extends React.Component {
             return (
                 { title: <div className="ins-composed-col">
                     { composed.map(path => (
-                        <a key={ path }
+                        <div key={ path }
                             widget="col"
-                            data-key={ path }
-                            href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${col.id}` }
-                            onClick={ event => {
-                                event.preventDefault();
-                                event.stopPropagation();
-                                this.onRowClick(event, col.id);
-                            }}
-                        >
-                            { get(col, path, ' ') || '\u00A0' }
-                        </a>
+                            data-key={ path }>
+                            <a href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${col.id}` }
+                                onClick={ event => {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    this.onRowClick(event, col.id);
+                                }}
+                            >
+                                { get(col, path, ' ') || '\u00A0' }
+                            </a>
+                        </div>
                     )) }
                 </div>
                 }
