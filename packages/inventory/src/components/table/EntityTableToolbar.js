@@ -71,7 +71,7 @@ const EntityTableToolbar = ({
         onRefresh ? onRefresh(params, (options) => {
             dispatch(entitiesLoading());
             onRefreshData({ ...params, ...options });
-        }) : onRefreshData(...params);
+        }) : onRefreshData(params);
     };
 
     const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), []);
@@ -83,6 +83,7 @@ const EntityTableToolbar = ({
 
     useEffect(() => {
         const { textFilter, tagFilters, staleFilter, registeredWithFilter } = reduceFilters(filters);
+        debouncedRefresh();
         ReactDOM.unstable_batchedUpdates(() => {
             setTextFilter(textFilter);
             setStaleFilter(staleFilter);
@@ -139,17 +140,17 @@ const EntityTableToolbar = ({
         }
     }, [ textFilter ]);
 
-    // useEffect(() => {
-    //     if (page && perPage && filters && (!hasItems || items)) {
-    //         onSetFilter(staleFilter, 'staleFilter', debouncedRefresh);
-    //     }
-    // }, [ staleFilter ]);
+    useEffect(() => {
+        if (page && perPage && filters && (!hasItems || items)) {
+            onSetFilter(staleFilter, 'staleFilter', debouncedRefresh);
+        }
+    }, [ staleFilter ]);
 
-    // useEffect(() => {
-    //     if (page && perPage && filters && (!hasItems || items)) {
-    //         onSetFilter(registeredWithFilter, 'registeredWithFilter', debouncedRefresh);
-    //     }
-    // }, [ registeredWithFilter ]);
+    useEffect(() => {
+        if (page && perPage && filters && (!hasItems || items)) {
+            onSetFilter(registeredWithFilter, 'registeredWithFilter', debouncedRefresh);
+        }
+    }, [ registeredWithFilter ]);
 
     useEffect(() => {
         if (page && perPage && filters && showTags && !hasItems) {

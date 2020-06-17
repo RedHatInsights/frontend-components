@@ -5,6 +5,7 @@ import { InventoryTable } from './components/table';
 import * as inventoryFitlers from './components/filters';
 
 export function inventoryConnector(store, componentsMapper) {
+    console.log(React, 'ffff mjhhh');
     return {
         InventoryTable: React.forwardRef(
             (props, ref) => <RenderWrapper

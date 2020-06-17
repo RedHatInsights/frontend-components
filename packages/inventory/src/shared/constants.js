@@ -189,6 +189,8 @@ export const InventoryContext = createContext({});
 
 export const loadSystems = (options, showTags) => {
 
+    console.log(options, 'Am I here?');
+
     // eslint-disable-next-line camelcase
     const currPerPage = options?.perPage || options?.per_page;
 
