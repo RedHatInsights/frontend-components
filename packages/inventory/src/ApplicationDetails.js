@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { detailSelect } from './redux/actions';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
+import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
 import { Tabs, Tab } from '@patternfly/react-core';
 
 class ApplicationDetails extends Component {
