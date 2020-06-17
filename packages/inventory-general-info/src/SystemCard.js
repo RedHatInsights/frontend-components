@@ -7,7 +7,6 @@ import { propertiesSelector } from './selectors';
 import { editDisplayName, editAnsibleHost, systemProfile } from './redux/actions';
 import TextInputModal from './TextInputModal';
 import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory/actions';
-
 import { Popover, Button } from '@patternfly/react-core';
 
 const TitleWithPopover = ({ title, content }) => (
@@ -181,7 +180,7 @@ function mapDispatchToProps(dispatch) {
     const reloadWrapper = (id, event) => {
         event.payload.then(data => {
             dispatch(systemProfile(id, { hasItems: true }));
-            dispatch(loadEntity(id, { hasItems: true }));
+            dispatch(loadEntity(id, { hasItems: true }, { showTags: true }));
             return data;
         });
 
