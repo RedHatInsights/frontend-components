@@ -36,7 +36,6 @@ Object {
                 color="currentColor"
                 noVerticalAlign={false}
                 size="sm"
-                title={null}
               />
                High
             </React.Fragment>,
@@ -49,7 +48,6 @@ Object {
                 color="currentColor"
                 noVerticalAlign={false}
                 size="sm"
-                title={null}
               />
                Medium
             </React.Fragment>,
@@ -85,7 +83,6 @@ Object {
                 color="currentColor"
                 noVerticalAlign={false}
                 size="sm"
-                title={null}
               />
                Unknown
             </React.Fragment>,
