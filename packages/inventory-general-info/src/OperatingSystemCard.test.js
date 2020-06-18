@@ -73,7 +73,7 @@ describe('OperatingSystemCard', () => {
             const store = mockStore(initialState);
             const onClick = jest.fn();
             const wrapper = mount(<OperatingSystemCard store={ store } />);
-            wrapper.find('TextListItem a').first().simulate('click');
+            wrapper.find('dd a').first().simulate('click');
             expect(onClick).not.toHaveBeenCalled();
         });
 

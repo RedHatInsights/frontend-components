@@ -245,7 +245,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
       "test-type",
@@ -260,7 +259,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
       "test-type2",
@@ -275,7 +273,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
       "test-type2",
@@ -319,7 +316,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
     ],
@@ -331,7 +327,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
     ],
@@ -343,7 +338,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
     ],
@@ -480,7 +474,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
       Object {
@@ -490,7 +483,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
     ],
@@ -512,7 +504,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
       Object {
@@ -522,7 +513,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
     ],
@@ -544,7 +534,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
       Object {
@@ -554,7 +543,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
     ],
@@ -576,7 +564,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
       Object {
@@ -586,7 +573,6 @@ Object {
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />,
       },
     ],
