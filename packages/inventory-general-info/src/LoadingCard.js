@@ -40,7 +40,7 @@ Clickable.defaultProps = {
 
 const LoadingCard = ({ title, isLoading, items }) => {
     return (
-        <Stack gutter="md">
+        <Stack hasGutter>
             <StackItem>
                 <TextContent>
                     <Text component={ TextVariants.h1 }>

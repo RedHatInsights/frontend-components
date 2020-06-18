@@ -221,7 +221,7 @@ describe('InfoTable', () => {
             />);
             wrapper.find('input.ins-c-conditional-filter').simulate('change', { target: { value: 'something' } });
             expect(wrapper.find('table tbody tr').length).toBe(0);
-            wrapper.find('.ins-c-chip-filters ul.pf-c-chip-group .pf-c-chip button').first().simulate('click');
+            wrapper.find('.ins-c-chip-filters ul.pf-c-chip-group__list .pf-c-chip-group__list-item button').first().simulate('click');
             expect(wrapper.find('table tbody tr').length).toBe(10);
         });
 
