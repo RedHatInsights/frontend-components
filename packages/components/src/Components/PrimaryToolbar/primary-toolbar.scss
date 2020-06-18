@@ -1,12 +1,7 @@
 .ins-c-primary-toolbar {
     padding: var(--pf-global--spacer--md);
-    .pf-c-toolbar__item {
-            &.ins-c-primary-toolbar__first-action {
-                display: initial;
-            }
-        }
-    .ins-c-primary-toolbar__first-action {
-        display: none;
+    .pf-c-toolbar__item.ins-c-primary-toolbar__first-action {
+        display: initial;
     }
 
     .ins-c-primary-toolbar__pagination {
@@ -37,13 +32,8 @@
     .ins-c-primary-toolbar {
         padding: var(--pf-global--spacer--sm);
 
-        .pf-c-toolbar__item {
-            &.ins-c-primary-toolbar__first-action {
-                display: none;
-            }
-        }
-        .ins-c-primary-toolbar__first-action {
-            display: block;
+        .pf-c-toolbar__item.ins-c-primary-toolbar__first-action {
+            display: none;
         }
 
         .ins-c-primary-toolbar__sort-by {

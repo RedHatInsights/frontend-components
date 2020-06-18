@@ -96,6 +96,7 @@
         "codecov": "^3.6.5",
         "commander": "^2.20.0",
         "copy-webpack-plugin": "^5.1.1",
+        "copyfiles": "^2.3.0",
         "cross-fetch": "^2.2.0",
         "css-loader": "^2.1.1",
         "dot": "^1.1.2",
