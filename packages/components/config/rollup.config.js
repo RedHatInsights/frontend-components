@@ -4,8 +4,9 @@ import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
-import postcss from 'rollup-plugin-postcss';
+import scss from 'rollup-plugin-scss';
 import json from '@rollup/plugin-json';
+import packageImporter from 'node-sass-package-importer';
 import { dependencies, peerDependencies, name } from '../package.json';
 import {
     rollupConfig,
@@ -50,9 +51,10 @@ const plugins = [
         keep_classnames: true,
         keep_fnames: true
     }),
-    postcss({
-        minimize: true,
-        extract: true
+    scss({
+        output: 'index.css',
+        outputStyle: 'compressed',
+        importer: packageImporter()
     }),
     json(),
     copy({
