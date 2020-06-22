@@ -18,6 +18,7 @@ class PrimaryToolbar extends Component {
             toggleIsExpanded,
             bulkSelect,
             filterConfig,
+            dedicatedAction,
             actionsConfig,
             sortByConfig,
             pagination,
@@ -51,7 +52,7 @@ class PrimaryToolbar extends Component {
             >
                 <DataToolbarContent>
                     {
-                        (bulkSelect || filterConfig) &&
+                        (bulkSelect || filterConfig || dedicatedAction) &&
                         <DataToolbarGroup
                             className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
                             variant="filter-group"
@@ -74,6 +75,12 @@ class PrimaryToolbar extends Component {
                                             filterConfig :
                                             <ConditionalFilter {...filterConfig} />
                                     }
+                                </DataToolbarItem>
+                            }
+                            {
+                                dedicatedAction &&
+                                <DataToolbarItem>
+                                    {dedicatedAction}
                                 </DataToolbarItem>
                             }
                         </DataToolbarGroup>
@@ -136,6 +143,7 @@ PrimaryToolbar.propTypes = {
     toggleIsExpanded: PropTypes.func,
     bulkSelect: PropTypes.shape(BulkSelect.propTypes),
     filterConfig: PropTypes.shape(ConditionalFilter.propTypes),
+    dedicatedAction: PropTypes.node,
     pagination: PropTypes.shape(Pagination.propTypes),
     sortByConfig: PropTypes.shape(SortBy.propTypes),
     exportConfig: PropTypes.shape(DownloadButton.propTypes),
