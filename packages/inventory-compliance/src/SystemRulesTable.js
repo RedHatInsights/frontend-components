@@ -1,7 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { Pagination, PaginationVariant } from '@patternfly/react-core';
-import { DataToolbarItem } from '@patternfly/react-core/dist/js/experimental';
+import { Pagination, PaginationVariant, ToolbarItem } from '@patternfly/react-core';
 import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
 import { Table, TableHeader, TableBody } from '@patternfly/react-table';
 import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
@@ -328,15 +327,15 @@ class SystemRulesTable extends React.Component {
                         dropDirection: 'down'
                     }}>
                     { remediationsEnabled &&
-                        <DataToolbarItem>
+                        <ToolbarItem>
                             <ComplianceRemediationButton
                                 allSystems={ [{ id: system.id, profiles: system.profiles, ruleObjectsFailed: [] }] }
                                 selectedRules={ selectedRulesWithRemediations } />
-                        </DataToolbarItem>
+                        </ToolbarItem>
                     }
-                    <DataToolbarItem>
+                    <ToolbarItem>
                         { ruleCount } results
-                    </DataToolbarItem>
+                    </ToolbarItem>
                 </PrimaryToolbar>
                 <Table
                     className='compliance-rules-table'

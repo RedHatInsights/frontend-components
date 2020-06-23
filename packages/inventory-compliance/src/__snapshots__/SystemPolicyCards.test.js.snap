@@ -35,13 +35,14 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
       ]
     }
   >
-    <Grid
+    <Component
       gutter="md"
     >
       <div
-        className="pf-l-grid pf-m-gutter"
+        className="pf-l-grid"
+        gutter="md"
       >
-        <GridItem
+        <Component
           key="0"
           lg={6}
           md={12}
@@ -67,21 +68,21 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                 }
               }
             >
-              <Card>
+              <Component>
                 <article
                   className="pf-c-card"
                 >
-                  <CardBody>
+                  <Component>
                     <div
                       className="pf-c-card__body"
                     >
-                      <TextContent
+                      <Component
                         className="margin-bottom-md"
                       >
                         <div
                           className="pf-c-content margin-bottom-md"
                         >
-                          <Text
+                          <Component
                             className="margin-bottom-top-none"
                             component="h4"
                             onMouseEnter={[Function]}
@@ -121,7 +122,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                 </span>
                               </Truncate>
                             </h4>
-                          </Text>
+                          </Component>
                           <Tooltip
                             appendTo={[Function]}
                             aria="describedby"
@@ -168,13 +169,13 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                   id=""
                                   role="tooltip"
                                 >
-                                  <TooltipContent
+                                  <Unknown
                                     isLeftAligned={false}
                                   >
                                     <span>
                                       This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
                                     </span>
-                                  </TooltipContent>
+                                  </Unknown>
                                 </div>
                               }
                               delay={
@@ -224,7 +225,6 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                   color="currentColor"
                                   noVerticalAlign={false}
                                   size="sm"
-                                  title={null}
                                 >
                                   <svg
                                     aria-hidden={true}
@@ -272,7 +272,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                   id=""
                                   role="tooltip"
                                 >
-                                  <TooltipContent
+                                  <Component
                                     isLeftAligned={false}
                                   >
                                     <div
@@ -282,13 +282,13 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                         This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
                                       </span>
                                     </div>
-                                  </TooltipContent>
+                                  </Component>
                                 </div>
                               </Portal>
                             </PopoverBase>
                           </Tooltip>
                         </div>
-                      </TextContent>
+                      </Component>
                       <div
                         className="margin-bottom-md"
                       >
@@ -299,7 +299,6 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                             color="currentColor"
                             noVerticalAlign={false}
                             size="sm"
-                            title={null}
                           >
                             <svg
                               aria-hidden={true}
@@ -323,7 +322,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                           </ExclamationCircleIcon>
                            Noncompliant
                         </div>
-                        <Text
+                        <Component
                           component="small"
                         >
                           <small
@@ -337,12 +336,12 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                             75%
                             )
                           </small>
-                        </Text>
+                        </Component>
                       </div>
                       <div
                         className="margin-bottom-md"
                       >
-                        <Text
+                        <Component
                           className="wrap-break-word"
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -385,9 +384,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                             SSG version: 
                             0.1.45
                           </p>
-                        </Text>
+                        </Component>
                       </div>
-                      <Text
+                      <Component
                         className="margin-bottom-none"
                         component="small"
                       >
@@ -405,82 +404,82 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                             </span>
                           </FormattedRelative>
                         </small>
-                      </Text>
+                      </Component>
                     </div>
-                  </CardBody>
+                  </Component>
                 </article>
-              </Card>
+              </Component>
             </SystemPolicyCard>
           </div>
-        </GridItem>
-        <GridItem
+        </Component>
+        <Component
           key="0"
           span={4}
         >
           <div
             className="pf-l-grid__item pf-m-4-col"
           >
-            <Card>
+            <Component>
               <article
                 className="pf-c-card"
               >
-                <CardBody>
+                <Component>
                   <div
                     className="pf-c-card__body"
                   >
                     <Instagram />
                   </div>
-                </CardBody>
+                </Component>
               </article>
-            </Card>
+            </Component>
           </div>
-        </GridItem>
-        <GridItem
+        </Component>
+        <Component
           key="1"
           span={4}
         >
           <div
             className="pf-l-grid__item pf-m-4-col"
           >
-            <Card>
+            <Component>
               <article
                 className="pf-c-card"
               >
-                <CardBody>
+                <Component>
                   <div
                     className="pf-c-card__body"
                   >
                     <Instagram />
                   </div>
-                </CardBody>
+                </Component>
               </article>
-            </Card>
+            </Component>
           </div>
-        </GridItem>
-        <GridItem
+        </Component>
+        <Component
           key="2"
           span={4}
         >
           <div
             className="pf-l-grid__item pf-m-4-col"
           >
-            <Card>
+            <Component>
               <article
                 className="pf-c-card"
               >
-                <CardBody>
+                <Component>
                   <div
                     className="pf-c-card__body"
                   >
                     <Instagram />
                   </div>
-                </CardBody>
+                </Component>
               </article>
-            </Card>
+            </Component>
           </div>
-        </GridItem>
+        </Component>
       </div>
-    </Grid>
+    </Component>
   </SystemPolicyCards>
 </IntlProvider>
 `;
@@ -520,13 +519,14 @@ exports[`SystemPolicyCards component should render real table 1`] = `
       ]
     }
   >
-    <Grid
+    <Component
       gutter="md"
     >
       <div
-        className="pf-l-grid pf-m-gutter"
+        className="pf-l-grid"
+        gutter="md"
       >
-        <GridItem
+        <Component
           key="0"
           lg={6}
           md={12}
@@ -552,21 +552,21 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                 }
               }
             >
-              <Card>
+              <Component>
                 <article
                   className="pf-c-card"
                 >
-                  <CardBody>
+                  <Component>
                     <div
                       className="pf-c-card__body"
                     >
-                      <TextContent
+                      <Component
                         className="margin-bottom-md"
                       >
                         <div
                           className="pf-c-content margin-bottom-md"
                         >
-                          <Text
+                          <Component
                             className="margin-bottom-top-none"
                             component="h4"
                             onMouseEnter={[Function]}
@@ -606,7 +606,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                 </span>
                               </Truncate>
                             </h4>
-                          </Text>
+                          </Component>
                           <Tooltip
                             appendTo={[Function]}
                             aria="describedby"
@@ -653,13 +653,13 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                   id=""
                                   role="tooltip"
                                 >
-                                  <TooltipContent
+                                  <Unknown
                                     isLeftAligned={false}
                                   >
                                     <span>
                                       This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
                                     </span>
-                                  </TooltipContent>
+                                  </Unknown>
                                 </div>
                               }
                               delay={
@@ -709,7 +709,6 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                   color="currentColor"
                                   noVerticalAlign={false}
                                   size="sm"
-                                  title={null}
                                 >
                                   <svg
                                     aria-hidden={true}
@@ -757,7 +756,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                   id=""
                                   role="tooltip"
                                 >
-                                  <TooltipContent
+                                  <Component
                                     isLeftAligned={false}
                                   >
                                     <div
@@ -767,13 +766,13 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                         This policy report was uploaded into the Compliance application. If you would like to manage your policy inside the Compliance application, use the "Create a policy" wizard to create one and associate systems.
                                       </span>
                                     </div>
-                                  </TooltipContent>
+                                  </Component>
                                 </div>
                               </Portal>
                             </PopoverBase>
                           </Tooltip>
                         </div>
-                      </TextContent>
+                      </Component>
                       <div
                         className="margin-bottom-md"
                       >
@@ -784,7 +783,6 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                             color="currentColor"
                             noVerticalAlign={false}
                             size="sm"
-                            title={null}
                           >
                             <svg
                               aria-hidden={true}
@@ -808,7 +806,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                           </ExclamationCircleIcon>
                            Noncompliant
                         </div>
-                        <Text
+                        <Component
                           component="small"
                         >
                           <small
@@ -822,12 +820,12 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                             75%
                             )
                           </small>
-                        </Text>
+                        </Component>
                       </div>
                       <div
                         className="margin-bottom-md"
                       >
-                        <Text
+                        <Component
                           className="wrap-break-word"
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -870,9 +868,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                             SSG version: 
                             0.1.45
                           </p>
-                        </Text>
+                        </Component>
                       </div>
-                      <Text
+                      <Component
                         className="margin-bottom-none"
                         component="small"
                       >
@@ -890,16 +888,16 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                             </span>
                           </FormattedRelative>
                         </small>
-                      </Text>
+                      </Component>
                     </div>
-                  </CardBody>
+                  </Component>
                 </article>
-              </Card>
+              </Component>
             </SystemPolicyCard>
           </div>
-        </GridItem>
+        </Component>
       </div>
-    </Grid>
+    </Component>
   </SystemPolicyCards>
 </IntlProvider>
 `;
