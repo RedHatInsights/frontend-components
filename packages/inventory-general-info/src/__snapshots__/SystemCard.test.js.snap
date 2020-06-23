@@ -38,6 +38,8 @@ exports[`SystemCard should render correctly - no data 1`] = `
           <button
             aria-label="Action for Host name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-type="PF4/Button"
+            data-ouia-safe="true"
             type="button"
           >
             <svg
@@ -76,6 +78,8 @@ exports[`SystemCard should render correctly - no data 1`] = `
           <button
             aria-label="Action for Display name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-type="PF4/Button"
+            data-ouia-safe="true"
             type="button"
           >
             <svg
@@ -114,6 +118,8 @@ exports[`SystemCard should render correctly - no data 1`] = `
           <button
             aria-label="Action for Ansible hostname"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-type="PF4/Button"
+            data-ouia-safe="true"
             type="button"
           >
             <svg
@@ -250,6 +256,8 @@ exports[`SystemCard should render correctly with data 1`] = `
           <button
             aria-label="Action for Host name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-type="PF4/Button"
+            data-ouia-safe="true"
             type="button"
           >
             <svg
@@ -284,6 +292,8 @@ exports[`SystemCard should render correctly with data 1`] = `
           <button
             aria-label="Action for Display name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-type="PF4/Button"
+            data-ouia-safe="true"
             type="button"
           >
             <svg
@@ -337,6 +347,8 @@ exports[`SystemCard should render correctly with data 1`] = `
           <button
             aria-label="Action for Ansible hostname"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-type="PF4/Button"
+            data-ouia-safe="true"
             type="button"
           >
             <svg
@@ -472,6 +484,8 @@ exports[`SystemCard should render correctly with rhsm facts 1`] = `
           <button
             aria-label="Action for Host name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-type="PF4/Button"
+            data-ouia-safe="true"
             type="button"
           >
             <svg
@@ -506,6 +520,8 @@ exports[`SystemCard should render correctly with rhsm facts 1`] = `
           <button
             aria-label="Action for Display name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-type="PF4/Button"
+            data-ouia-safe="true"
             type="button"
           >
             <svg
@@ -559,6 +575,8 @@ exports[`SystemCard should render correctly with rhsm facts 1`] = `
           <button
             aria-label="Action for Ansible hostname"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-type="PF4/Button"
+            data-ouia-safe="true"
             type="button"
           >
             <svg

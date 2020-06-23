@@ -4,7 +4,7 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
 <Component
   className="ins-c-breadcrumbs"
 >
-  <BreadcrumbItem
+  <Component
     data-key={0}
     key="0"
   >
@@ -14,8 +14,8 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
     >
       First
     </a>
-  </BreadcrumbItem>
-  <BreadcrumbItem
+  </Component>
+  <Component
     data-key={1}
     key="1"
   >
@@ -27,7 +27,7 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
         Second
       </span>
     </a>
-  </BreadcrumbItem>
+  </Component>
 </Component>
 `;
 
@@ -35,13 +35,13 @@ exports[`Breadcrumbs component should render correctly no items 1`] = `
 <Component
   className="ins-c-breadcrumbs"
 >
-  <BreadcrumbItem
+  <Component
     isActive={true}
   >
      
     Something
      
-  </BreadcrumbItem>
+  </Component>
 </Component>
 `;
 
@@ -49,7 +49,7 @@ exports[`Breadcrumbs component should render correctly with items and current it
 <Component
   className="ins-c-breadcrumbs"
 >
-  <BreadcrumbItem
+  <Component
     data-key={0}
     key="0"
   >
@@ -59,8 +59,8 @@ exports[`Breadcrumbs component should render correctly with items and current it
     >
       First
     </a>
-  </BreadcrumbItem>
-  <BreadcrumbItem
+  </Component>
+  <Component
     data-key={1}
     key="1"
   >
@@ -72,13 +72,13 @@ exports[`Breadcrumbs component should render correctly with items and current it
         Second
       </span>
     </a>
-  </BreadcrumbItem>
-  <BreadcrumbItem
+  </Component>
+  <Component
     isActive={true}
   >
      
     Something
      
-  </BreadcrumbItem>
+  </Component>
 </Component>
 `;

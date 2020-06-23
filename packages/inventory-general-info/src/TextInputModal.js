@@ -33,7 +33,7 @@ export default class TextInputModal extends Component {
 
         return (
             <Modal
-                isSmall
+                variant="small"
                 title={ title }
                 className="ins-c-inventory__detail--edit"
                 isOpen={ isOpen }

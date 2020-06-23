@@ -4,29 +4,29 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
 <DownloadButton
   extraItems={
     Array [
-      <DropdownItem
+      <Unknown
         component="button"
       />,
     ]
   }
   onSelect={[Function]}
 >
-  <Dropdown
+  <Component
     dropdownItems={
       Array [
-        <DropdownItem
+        <Unknown
           component="button"
           onClick={[Function]}
         >
           Export to CSV
-        </DropdownItem>,
-        <DropdownItem
+        </Unknown>,
+        <Unknown
           component="button"
           onClick={[Function]}
         >
           Export to JSON
-        </DropdownItem>,
-        <DropdownItem
+        </Unknown>,
+        <Unknown
           component="button"
         />,
       ]
@@ -35,339 +35,183 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
     isPlain={true}
     onSelect={[Function]}
     toggle={
-      <DropdownToggle
-        iconComponent={null}
+      <Unknown
         onToggle={[Function]}
+        toggleIndicator={null}
       >
         <ExportIcon
           color="currentColor"
           noVerticalAlign={false}
           size="sm"
-          title={null}
         />
-      </DropdownToggle>
+      </Unknown>
     }
   >
-    <Component
+    <DropdownWithContext
+      autoFocus={true}
+      className=""
+      direction="down"
       dropdownItems={
         Array [
-          <DropdownItem
+          <Unknown
             component="button"
             onClick={[Function]}
           >
             Export to CSV
-          </DropdownItem>,
-          <DropdownItem
+          </Unknown>,
+          <Unknown
             component="button"
             onClick={[Function]}
           >
             Export to JSON
-          </DropdownItem>,
-          <DropdownItem
+          </Unknown>,
+          <Unknown
             component="button"
           />,
         ]
       }
+      isGrouped={false}
       isOpen={true}
       isPlain={true}
+      onSelect={[Function]}
+      ouiaComponentType="Dropdown"
+      position="left"
       toggle={
-        <DropdownToggle
-          iconComponent={null}
+        <Unknown
           onToggle={[Function]}
+          toggleIndicator={null}
         >
           <ExportIcon
             color="currentColor"
             noVerticalAlign={false}
             size="sm"
-            title={null}
           />
-        </DropdownToggle>
+        </Unknown>
       }
     >
-      <ComponentWithOuia
-        component={[Function]}
-        componentProps={
-          Object {
-            "dropdownItems": Array [
-              <DropdownItem
-                component="button"
-                onClick={[Function]}
-              >
-                Export to CSV
-              </DropdownItem>,
-              <DropdownItem
-                component="button"
-                onClick={[Function]}
-              >
-                Export to JSON
-              </DropdownItem>,
-              <DropdownItem
-                component="button"
-              />,
-            ],
-            "isOpen": true,
-            "isPlain": true,
-            "toggle": <DropdownToggle
-              iconComponent={null}
-              onToggle={[Function]}
-            >
-              <ExportIcon
-                color="currentColor"
-                noVerticalAlign={false}
-                size="sm"
-                title={null}
-              />
-            </DropdownToggle>,
-          }
-        }
-        consumerContext={null}
+      <div
+        className="pf-c-dropdown pf-m-expanded"
+        data-ouia-component-id={1}
+        data-ouia-component-type="PF4/Dropdown"
+        data-ouia-safe={true}
       >
-        <DropdownWithContext
-          autoFocus={true}
-          className=""
-          direction="down"
-          dropdownItems={
-            Array [
-              <DropdownItem
-                component="button"
-                onClick={[Function]}
-              >
-                Export to CSV
-              </DropdownItem>,
-              <DropdownItem
-                component="button"
-                onClick={[Function]}
-              >
-                Export to JSON
-              </DropdownItem>,
-              <DropdownItem
-                component="button"
-              />,
-            ]
-          }
-          isGrouped={false}
+        <Component
+          aria-haspopup={true}
+          id="pf-toggle-id-1"
           isOpen={true}
           isPlain={true}
-          onSelect={[Function]}
-          ouiaComponentType="Dropdown"
-          ouiaContext={
+          key=".0"
+          onEnter={[Function]}
+          onToggle={[Function]}
+          parentRef={
             Object {
-              "isOuia": false,
-              "ouiaId": null,
-            }
-          }
-          position="left"
-          toggle={
-            <DropdownToggle
-              iconComponent={null}
-              onToggle={[Function]}
-            >
-              <ExportIcon
-                color="currentColor"
-                noVerticalAlign={false}
-                size="sm"
-                title={null}
-              />
-            </DropdownToggle>
-          }
-        >
-          <div
-            className="pf-c-dropdown pf-m-expanded"
-          >
-            <DropdownToggle
-              ariaHasPopup={true}
-              iconComponent={null}
-              id="pf-toggle-id-1"
-              isOpen={true}
-              isPlain={true}
-              key=".0"
-              onEnter={[Function]}
-              onToggle={[Function]}
-              parentRef={
-                Object {
-                  "current": <div
-                    class="pf-c-dropdown pf-m-expanded"
-                  >
-                    <button
-                      aria-expanded="true"
-                      aria-haspopup="true"
-                      class="pf-c-dropdown__toggle pf-m-plain"
-                      id="pf-toggle-id-1"
-                      type="button"
-                    >
-                      <span>
-                        <svg
-                          aria-hidden="true"
-                          fill="currentColor"
-                          height="1em"
-                          role="img"
-                          style="vertical-align: -0.125em;"
-                          viewBox="0 64 1024 1024"
-                          width="1em"
-                        >
-                          <path
-                            d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
-                            transform="rotate(180 0 512) scale(-1 1)"
-                          />
-                        </svg>
-                      </span>
-                    </button>
-                    <ul
-                      aria-labelledby="pf-toggle-id-1"
-                      class="pf-c-dropdown__menu"
-                      role="menu"
-                    >
-                      <li
-                        role="menuitem"
-                      >
-                        <button
-                          class="pf-c-dropdown__menu-item"
-                          tabindex="-1"
-                          type="button"
-                        >
-                          Export to CSV
-                        </button>
-                      </li>
-                      <li
-                        role="menuitem"
-                      >
-                        <button
-                          class="pf-c-dropdown__menu-item"
-                          tabindex="-1"
-                          type="button"
-                        >
-                          Export to JSON
-                        </button>
-                      </li>
-                      <li
-                        role="menuitem"
-                      >
-                        <button
-                          class="pf-c-dropdown__menu-item"
-                          tabindex="-1"
-                          type="button"
-                        />
-                      </li>
-                    </ul>
-                  </div>,
-                }
-              }
-            >
-              <Toggle
-                ariaHasPopup={true}
-                bubbleEvent={false}
-                className=""
-                id="pf-toggle-id-1"
-                isActive={false}
-                isDisabled={false}
-                isFocused={false}
-                isHovered={false}
-                isOpen={true}
-                isPlain={true}
-                isPrimary={false}
-                isSplitButton={false}
-                onEnter={[Function]}
-                onToggle={[Function]}
-                parentRef={
-                  Object {
-                    "current": <div
-                      class="pf-c-dropdown pf-m-expanded"
-                    >
-                      <button
-                        aria-expanded="true"
-                        aria-haspopup="true"
-                        class="pf-c-dropdown__toggle pf-m-plain"
-                        id="pf-toggle-id-1"
-                        type="button"
-                      >
-                        <span>
-                          <svg
-                            aria-hidden="true"
-                            fill="currentColor"
-                            height="1em"
-                            role="img"
-                            style="vertical-align: -0.125em;"
-                            viewBox="0 64 1024 1024"
-                            width="1em"
-                          >
-                            <path
-                              d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
-                              transform="rotate(180 0 512) scale(-1 1)"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                      <ul
-                        aria-labelledby="pf-toggle-id-1"
-                        class="pf-c-dropdown__menu"
-                        role="menu"
-                      >
-                        <li
-                          role="menuitem"
-                        >
-                          <button
-                            class="pf-c-dropdown__menu-item"
-                            tabindex="-1"
-                            type="button"
-                          >
-                            Export to CSV
-                          </button>
-                        </li>
-                        <li
-                          role="menuitem"
-                        >
-                          <button
-                            class="pf-c-dropdown__menu-item"
-                            tabindex="-1"
-                            type="button"
-                          >
-                            Export to JSON
-                          </button>
-                        </li>
-                        <li
-                          role="menuitem"
-                        >
-                          <button
-                            class="pf-c-dropdown__menu-item"
-                            tabindex="-1"
-                            type="button"
-                          />
-                        </li>
-                      </ul>
-                    </div>,
-                  }
-                }
+              "current": <div
+                class="pf-c-dropdown pf-m-expanded"
+                data-ouia-component-id="1"
+                data-ouia-component-type="PF4/Dropdown"
+                data-ouia-safe="true"
               >
                 <button
-                  aria-expanded={true}
-                  aria-haspopup={true}
-                  className="pf-c-dropdown__toggle pf-m-plain"
-                  disabled={false}
+                  aria-expanded="true"
+                  aria-haspopup="true"
+                  class="pf-c-dropdown__toggle pf-m-plain"
                   id="pf-toggle-id-1"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
                   type="button"
                 >
-                  <span
-                    className={null}
-                  >
-                    <ExportIcon
-                      color="currentColor"
-                      noVerticalAlign={false}
-                      size="sm"
-                      title={null}
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      style="vertical-align: -0.125em;"
+                      viewBox="0 64 1024 1024"
+                      width="1em"
                     >
+                      <path
+                        d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
+                        transform="rotate(180 0 512) scale(-1 1)"
+                      />
+                    </svg>
+                  </span>
+                </button>
+                <ul
+                  aria-labelledby="pf-toggle-id-1"
+                  class="pf-c-dropdown__menu"
+                  role="menu"
+                >
+                  <li
+                    role="menuitem"
+                  >
+                    <button
+                      class="pf-c-dropdown__menu-item"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      Export to CSV
+                    </button>
+                  </li>
+                  <li
+                    role="menuitem"
+                  >
+                    <button
+                      class="pf-c-dropdown__menu-item"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      Export to JSON
+                    </button>
+                  </li>
+                  <li
+                    role="menuitem"
+                  >
+                    <button
+                      class="pf-c-dropdown__menu-item"
+                      tabindex="-1"
+                      type="button"
+                    />
+                  </li>
+                </ul>
+              </div>,
+            }
+          }
+          toggleIndicator={null}
+        >
+          <Toggle
+            aria-haspopup={true}
+            bubbleEvent={false}
+            className=""
+            id="pf-toggle-id-1"
+            isActive={false}
+            isDisabled={false}
+            isOpen={true}
+            isPlain={true}
+            isPrimary={false}
+            isSplitButton={false}
+            onEnter={[Function]}
+            onToggle={[Function]}
+            parentRef={
+              Object {
+                "current": <div
+                  class="pf-c-dropdown pf-m-expanded"
+                  data-ouia-component-id="1"
+                  data-ouia-component-type="PF4/Dropdown"
+                  data-ouia-safe="true"
+                >
+                  <button
+                    aria-expanded="true"
+                    aria-haspopup="true"
+                    class="pf-c-dropdown__toggle pf-m-plain"
+                    id="pf-toggle-id-1"
+                    type="button"
+                  >
+                    <span>
                       <svg
-                        aria-hidden={true}
-                        aria-labelledby={null}
+                        aria-hidden="true"
                         fill="currentColor"
                         height="1em"
                         role="img"
-                        style={
-                          Object {
-                            "verticalAlign": "-0.125em",
-                          }
-                        }
+                        style="vertical-align: -0.125em;"
                         viewBox="0 64 1024 1024"
                         width="1em"
                       >
@@ -376,218 +220,295 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                           transform="rotate(180 0 512) scale(-1 1)"
                         />
                       </svg>
-                    </ExportIcon>
-                  </span>
-                </button>
-              </Toggle>
-            </DropdownToggle>
-            <DropdownMenu
-              aria-labelledby="pf-toggle-id-1"
-              autoFocus={false}
-              className=""
-              component="ul"
-              isGrouped={false}
-              isOpen={true}
-              openedOnEnter={false}
-              position="left"
-            >
-              <ul
-                aria-labelledby="pf-toggle-id-1"
-                autoFocus={false}
-                className="pf-c-dropdown__menu"
-                hidden={false}
-                role="menu"
-              >
-                <DropdownItem
-                  component="button"
-                  index={0}
-                  key=".$download-csv"
-                  onClick={[Function]}
-                >
-                  <InternalDropdownItem
-                    className=""
-                    component="button"
-                    context={
-                      Object {
-                        "keyHandler": [Function],
-                        "sendRef": [Function],
-                      }
-                    }
-                    enterTriggersArrowDown={false}
-                    index={0}
-                    isDisabled={false}
-                    isHovered={false}
-                    onClick={[Function]}
-                    role="menuitem"
-                    tabIndex={-1}
-                    tooltip={null}
-                    tooltipProps={Object {}}
-                    variant="item"
+                    </span>
+                  </button>
+                  <ul
+                    aria-labelledby="pf-toggle-id-1"
+                    class="pf-c-dropdown__menu"
+                    role="menu"
                   >
                     <li
-                      className={null}
-                      onClick={[Function]}
-                      onKeyDown={[Function]}
                       role="menuitem"
                     >
                       <button
-                        className="pf-c-dropdown__menu-item"
-                        disabled={false}
-                        tabIndex={-1}
+                        class="pf-c-dropdown__menu-item"
+                        tabindex="-1"
                         type="button"
                       >
                         Export to CSV
                       </button>
                     </li>
-                  </InternalDropdownItem>
-                </DropdownItem>
-                <DropdownItem
-                  component="button"
-                  index={1}
-                  key=".$download-json"
-                  onClick={[Function]}
-                >
-                  <InternalDropdownItem
-                    className=""
-                    component="button"
-                    context={
-                      Object {
-                        "keyHandler": [Function],
-                        "sendRef": [Function],
-                      }
-                    }
-                    enterTriggersArrowDown={false}
-                    index={1}
-                    isDisabled={false}
-                    isHovered={false}
-                    onClick={[Function]}
-                    role="menuitem"
-                    tabIndex={-1}
-                    tooltip={null}
-                    tooltipProps={Object {}}
-                    variant="item"
-                  >
                     <li
-                      className={null}
-                      onClick={[Function]}
-                      onKeyDown={[Function]}
                       role="menuitem"
                     >
                       <button
-                        className="pf-c-dropdown__menu-item"
-                        disabled={false}
-                        tabIndex={-1}
+                        class="pf-c-dropdown__menu-item"
+                        tabindex="-1"
                         type="button"
                       >
                         Export to JSON
                       </button>
                     </li>
-                  </InternalDropdownItem>
-                </DropdownItem>
-                <DropdownItem
-                  component="button"
-                  index={2}
-                  key=".$extra-1"
-                >
-                  <InternalDropdownItem
-                    className=""
-                    component="button"
-                    context={
-                      Object {
-                        "keyHandler": [Function],
-                        "sendRef": [Function],
-                      }
-                    }
-                    enterTriggersArrowDown={false}
-                    index={2}
-                    isDisabled={false}
-                    isHovered={false}
-                    onClick={[Function]}
-                    role="menuitem"
-                    tabIndex={-1}
-                    tooltip={null}
-                    tooltipProps={Object {}}
-                    variant="item"
-                  >
                     <li
-                      className={null}
-                      onClick={[Function]}
-                      onKeyDown={[Function]}
                       role="menuitem"
                     >
                       <button
-                        className="pf-c-dropdown__menu-item"
-                        disabled={false}
-                        tabIndex={-1}
+                        class="pf-c-dropdown__menu-item"
+                        tabindex="-1"
                         type="button"
                       />
                     </li>
-                  </InternalDropdownItem>
-                </DropdownItem>
-              </ul>
-            </DropdownMenu>
-          </div>
-        </DropdownWithContext>
-      </ComponentWithOuia>
-    </Component>
-  </Dropdown>
+                  </ul>
+                </div>,
+              }
+            }
+          >
+            <button
+              aria-expanded={true}
+              aria-haspopup={true}
+              className="pf-c-dropdown__toggle pf-m-plain"
+              disabled={false}
+              id="pf-toggle-id-1"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              type="button"
+            >
+              <span
+                className={null}
+              >
+                <ExportIcon
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                >
+                  <svg
+                    aria-hidden={true}
+                    aria-labelledby={null}
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style={
+                      Object {
+                        "verticalAlign": "-0.125em",
+                      }
+                    }
+                    viewBox="0 64 1024 1024"
+                    width="1em"
+                  >
+                    <path
+                      d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
+                      transform="rotate(180 0 512) scale(-1 1)"
+                    />
+                  </svg>
+                </ExportIcon>
+              </span>
+            </button>
+          </Toggle>
+        </Component>
+        <DropdownMenu
+          aria-labelledby="pf-toggle-id-1"
+          autoFocus={false}
+          className=""
+          component="ul"
+          isGrouped={false}
+          isOpen={true}
+          openedOnEnter={false}
+          position="left"
+        >
+          <ul
+            aria-labelledby="pf-toggle-id-1"
+            autoFocus={false}
+            className="pf-c-dropdown__menu"
+            hidden={false}
+            role="menu"
+          >
+            <Component
+              component="button"
+              index={0}
+              key=".$download-csv"
+              onClick={[Function]}
+            >
+              <InternalDropdownItem
+                className=""
+                component="button"
+                context={
+                  Object {
+                    "keyHandler": [Function],
+                    "sendRef": [Function],
+                  }
+                }
+                enterTriggersArrowDown={false}
+                icon={null}
+                index={0}
+                isDisabled={false}
+                isHovered={false}
+                isPlainText={false}
+                onClick={[Function]}
+                role="menuitem"
+                tabIndex={-1}
+                tooltipProps={Object {}}
+              >
+                <li
+                  className={null}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  role="menuitem"
+                >
+                  <button
+                    className="pf-c-dropdown__menu-item"
+                    disabled={false}
+                    tabIndex={-1}
+                    type="button"
+                  >
+                    Export to CSV
+                  </button>
+                </li>
+              </InternalDropdownItem>
+            </Component>
+            <Component
+              component="button"
+              index={1}
+              key=".$download-json"
+              onClick={[Function]}
+            >
+              <InternalDropdownItem
+                className=""
+                component="button"
+                context={
+                  Object {
+                    "keyHandler": [Function],
+                    "sendRef": [Function],
+                  }
+                }
+                enterTriggersArrowDown={false}
+                icon={null}
+                index={1}
+                isDisabled={false}
+                isHovered={false}
+                isPlainText={false}
+                onClick={[Function]}
+                role="menuitem"
+                tabIndex={-1}
+                tooltipProps={Object {}}
+              >
+                <li
+                  className={null}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  role="menuitem"
+                >
+                  <button
+                    className="pf-c-dropdown__menu-item"
+                    disabled={false}
+                    tabIndex={-1}
+                    type="button"
+                  >
+                    Export to JSON
+                  </button>
+                </li>
+              </InternalDropdownItem>
+            </Component>
+            <Component
+              component="button"
+              index={2}
+              key=".$extra-1"
+            >
+              <InternalDropdownItem
+                className=""
+                component="button"
+                context={
+                  Object {
+                    "keyHandler": [Function],
+                    "sendRef": [Function],
+                  }
+                }
+                enterTriggersArrowDown={false}
+                icon={null}
+                index={2}
+                isDisabled={false}
+                isHovered={false}
+                isPlainText={false}
+                onClick={[Function]}
+                role="menuitem"
+                tabIndex={-1}
+                tooltipProps={Object {}}
+              >
+                <li
+                  className={null}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  role="menuitem"
+                >
+                  <button
+                    className="pf-c-dropdown__menu-item"
+                    disabled={false}
+                    tabIndex={-1}
+                    type="button"
+                  />
+                </li>
+              </InternalDropdownItem>
+            </Component>
+          </ul>
+        </DropdownMenu>
+      </div>
+    </DropdownWithContext>
+  </Component>
 </DownloadButton>
 `;
 
 exports[`DownloadButton component should render CSV and JSON by default 1`] = `
-<Dropdown
+<Component
   dropdownItems={
     Array [
-      <DropdownItem
+      <Unknown
         component="button"
         onClick={[Function]}
       >
         Export to CSV
-      </DropdownItem>,
-      <DropdownItem
+      </Unknown>,
+      <Unknown
         component="button"
         onClick={[Function]}
       >
         Export to JSON
-      </DropdownItem>,
+      </Unknown>,
     ]
   }
   isOpen={false}
   isPlain={true}
   onSelect={[Function]}
   toggle={
-    <DropdownToggle
-      iconComponent={null}
+    <Unknown
       onToggle={[Function]}
+      toggleIndicator={null}
     >
       <ExportIcon
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
-    </DropdownToggle>
+    </Unknown>
   }
 />
 `;
 
 exports[`DownloadButton component should render custom items 1`] = `
-<Dropdown
+<Component
   dropdownItems={
     Array [
-      <DropdownItem
+      <Unknown
         component="button"
         onClick={[Function]}
       >
         Export to CSV
-      </DropdownItem>,
-      <DropdownItem
+      </Unknown>,
+      <Unknown
         component="button"
         onClick={[Function]}
       >
         Export to JSON
-      </DropdownItem>,
-      <DropdownItem
+      </Unknown>,
+      <Unknown
         component="button"
       />,
     ]
@@ -596,40 +517,39 @@ exports[`DownloadButton component should render custom items 1`] = `
   isPlain={true}
   onSelect={[Function]}
   toggle={
-    <DropdownToggle
-      iconComponent={null}
+    <Unknown
       onToggle={[Function]}
+      toggleIndicator={null}
     >
       <ExportIcon
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
-    </DropdownToggle>
+    </Unknown>
   }
 />
 `;
 
 exports[`DownloadButton component should render disabled 1`] = `
-<Dropdown
+<Component
   dropdownItems={
     Array [
-      <DropdownItem
+      <Unknown
         component="button"
         isDisabled={true}
         onClick={[Function]}
       >
         Export to CSV
-      </DropdownItem>,
-      <DropdownItem
+      </Unknown>,
+      <Unknown
         component="button"
         isDisabled={true}
         onClick={[Function]}
       >
         Export to JSON
-      </DropdownItem>,
-      <DropdownItem
+      </Unknown>,
+      <Unknown
         component="button"
       />,
     ]
@@ -638,18 +558,17 @@ exports[`DownloadButton component should render disabled 1`] = `
   isPlain={true}
   onSelect={[Function]}
   toggle={
-    <DropdownToggle
-      iconComponent={null}
+    <Unknown
       isDisabled={true}
       onToggle={[Function]}
+      toggleIndicator={null}
     >
       <ExportIcon
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
-    </DropdownToggle>
+    </Unknown>
   }
 />
 `;

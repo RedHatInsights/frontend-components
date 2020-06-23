@@ -11,7 +11,6 @@ exports[`TagCount component should render a disabled tag count with count 0 1`] 
     color="currentColor"
     noVerticalAlign={false}
     size="md"
-    title={null}
   />
   <span
     className="ins-c-tag__text"
@@ -30,7 +29,6 @@ exports[`TagCount component should render a tag count of 11 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="md"
-    title={null}
   />
   <span
     className="ins-c-tag__text"
@@ -51,7 +49,6 @@ exports[`TagCount component should render a tag count with no value 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="md"
-    title={null}
   />
   <span
     className="ins-c-tag__text"

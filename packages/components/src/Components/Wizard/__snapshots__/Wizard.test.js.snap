@@ -23,7 +23,9 @@ exports[`Wizard component should render correctly default 1`] = `
     ]
   }
   appendTo={<body />}
-  ariaDescribedById=""
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
   className="ins-c-wizard"
   content={
     Array [
@@ -49,15 +51,13 @@ exports[`Wizard component should render correctly default 1`] = `
       </div>,
     ]
   }
-  hideTitle={false}
-  isFooterLeftAligned={false}
-  isLarge={false}
+  hasNoBodyWrapper={false}
   isOpen={true}
-  isSmall={false}
   onClose={[Function]}
   onKeyPress={[Function]}
   showClose={true}
   title="Some title"
+  variant="large"
 >
   <div
     id="first"
@@ -91,7 +91,9 @@ exports[`Wizard component should render correctly large 1`] = `
     ]
   }
   appendTo={<body />}
-  ariaDescribedById=""
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
   className="ins-c-wizard"
   content={
     Array [
@@ -117,15 +119,13 @@ exports[`Wizard component should render correctly large 1`] = `
       </div>,
     ]
   }
-  hideTitle={false}
-  isFooterLeftAligned={false}
-  isLarge={true}
+  hasNoBodyWrapper={false}
   isOpen={true}
-  isSmall={false}
   onClose={[Function]}
   onKeyPress={[Function]}
   showClose={true}
   title="Some title"
+  variant="large"
 >
   <div
     id="first"
@@ -159,7 +159,9 @@ exports[`Wizard component should render correctly one page 1`] = `
     ]
   }
   appendTo={<body />}
-  ariaDescribedById=""
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
   className="ins-c-wizard"
   content={
     Array [
@@ -168,15 +170,13 @@ exports[`Wizard component should render correctly one page 1`] = `
       </div>,
     ]
   }
-  hideTitle={false}
-  isFooterLeftAligned={false}
-  isLarge={false}
+  hasNoBodyWrapper={false}
   isOpen={true}
-  isSmall={false}
   onClose={[Function]}
   onKeyPress={[Function]}
   showClose={true}
   title="Some title"
+  variant="large"
 >
   <div
     key="one"
