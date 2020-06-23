@@ -52,13 +52,8 @@ class PrimaryToolbar extends Component {
             >
                 <ToolbarContent>
                     {
-<<<<<<< HEAD
                         (bulkSelect || filterConfig || dedicatedAction) &&
                         <ToolbarGroup
-=======
-                        (bulkSelect || filterConfig) &&
-                        <ToolbarGroup
->>>>>>> Update components pf4 (#558)
                             className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
                             variant="filter-group"
                         >

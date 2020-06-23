@@ -64,17 +64,7 @@ exports[`RowLoader should render correctly 1`] = `
 </ContentLoader>
 `;
 
-exports[`parseCvssScore cvssV2 should render correct tooltip content 1`] = `
-<TooltipContent
-  isLeftAligned={false}
->
-  <div
-    className="pf-c-tooltip__content"
-  >
-    Prior to 2016 (approximately), CVEs were scored with Common Vulnerability Scoring System v2.
-  </div>
-</TooltipContent>
-`;
+exports[`parseCvssScore cvssV2 should render correct tooltip content 1`] = `null`;
 
 exports[`parseCvssScore cvssV2 should render value in span 1`] = `
 <span>
@@ -83,17 +73,7 @@ exports[`parseCvssScore cvssV2 should render value in span 1`] = `
 </span>
 `;
 
-exports[`parseCvssScore cvssV2 with labels should render correct tooltip content 1`] = `
-<TooltipContent
-  isLeftAligned={false}
->
-  <div
-    className="pf-c-tooltip__content"
-  >
-    Prior to 2016 (approximately), CVEs were scored with Common Vulnerability Scoring System v2.
-  </div>
-</TooltipContent>
-`;
+exports[`parseCvssScore cvssV2 with labels should render correct tooltip content 1`] = `null`;
 
 exports[`parseCvssScore cvssV2 with labels should render value in span 1`] = `
 <span>
@@ -111,14 +91,4 @@ exports[`parseCvssScore no cvss should render N/A in span 1`] = `
 </span>
 `;
 
-exports[`parseCvssScore no cvss should render correct tooltip content 1`] = `
-<TooltipContent
-  isLeftAligned={false}
->
-  <div
-    className="pf-c-tooltip__content"
-  >
-    CVEs published before 2005 (approximately) did not have a CVSS Base Score.
-  </div>
-</TooltipContent>
-`;
+exports[`parseCvssScore no cvss should render correct tooltip content 1`] = `null`;

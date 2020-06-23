@@ -27,15 +27,15 @@
         "awesome-debounce-promise": "^2.1.0"
     },
     "devDependencies": {
-        "@data-driven-forms/pf4-component-mapper": "2.4.8",
-        "@data-driven-forms/react-form-renderer": "2.4.8",
+        "@data-driven-forms/pf4-component-mapper": "^2.5.0",
+        "@data-driven-forms/react-form-renderer": "^2.5.0",
         "@patternfly/react-core": "^4.18.5",
         "@patternfly/react-icons": "^4.3.5"
     },
     "peerDependencies": {
         "react": "^16.12.0",
-        "@data-driven-forms/pf4-component-mapper": "2.4.8",
-        "@data-driven-forms/react-form-renderer": "2.4.8",
+        "@data-driven-forms/pf4-component-mapper": "^2.5.0",
+        "@data-driven-forms/react-form-renderer": "^2.5.0",
         "lodash": "^4.17.15"
     }
 }

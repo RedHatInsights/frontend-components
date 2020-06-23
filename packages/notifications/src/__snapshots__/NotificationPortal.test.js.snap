@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Notification portal should render notifications given as direct props 1`] = `
-<ConnectFunction
+<Connect(Portal)
   notifications={
     Array [
       Object {
@@ -46,6 +46,27 @@ exports[`Notification portal should render notifications given as direct props 1
         "getState": [Function],
         "replaceReducer": [Function],
         "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
       }
     }
   >
@@ -351,11 +372,11 @@ exports[`Notification portal should render notifications given as direct props 1
       </div>
     </Portal>
   </Portal>
-</ConnectFunction>
+</Connect(Portal)>
 `;
 
 exports[`Notification portal should render notifications given as direct props over store notifications 1`] = `
-<ConnectFunction
+<Connect(Portal)
   notifications={
     Array [
       Object {
@@ -400,6 +421,27 @@ exports[`Notification portal should render notifications given as direct props o
         "getState": [Function],
         "replaceReducer": [Function],
         "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
       }
     }
   >
@@ -777,11 +819,11 @@ exports[`Notification portal should render notifications given as direct props o
       </div>
     </Portal>
   </Portal>
-</ConnectFunction>
+</Connect(Portal)>
 `;
 
 exports[`Notification portal should render notifications given from store 1`] = `
-<ConnectFunction
+<Connect(Portal)
   store={
     Object {
       "clearActions": [Function],
@@ -815,6 +857,27 @@ exports[`Notification portal should render notifications given from store 1`] = 
         "getState": [Function],
         "replaceReducer": [Function],
         "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
       }
     }
   >
@@ -1048,5 +1111,5 @@ exports[`Notification portal should render notifications given from store 1`] = 
       </div>
     </Portal>
   </Portal>
-</ConnectFunction>
+</Connect(Portal)>
 `;
