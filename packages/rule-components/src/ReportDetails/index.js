@@ -5,13 +5,14 @@ import {
     GridItem,
     Stack,
     StackItem,
-    Title
+    Title,
+    Text
 } from '@patternfly/react-core';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
 import RuleFeedback, { feedback } from './RuleFeedback';
-import Markdown from './Markdown';
+import Markdown from '../Markdown';
 import { riskOfChangeMeta, totalRiskMeta } from './constants';
 import RiskDescription from './RiskDescription';
-import RemediatingModal from './RemediatingModal';
 import doT from 'dot';
 
 export { default as style } from './index.scss';
@@ -33,30 +34,30 @@ const ReportDetails = (
         totalRisk,
         riskOfChange,
         showRiskDescription,
-        remediating,
         definitions,
+        createdAt,
         userVote,
+        showPublishedDate,
         onFeedbackChanged
     }) => {
 
     return <Grid hasGutter className="ins-c-rule__report-detail">
         <GridItem span={ 7 }>
             <Stack hasGutter>
+                {
+                    showPublishedDate &&
+                    <StackItem>
+                        <Text>
+                            Published date: {createdAt}
+                        </Text>
+                    </StackItem>
+                }
                 <StackItem>
                     <div>
                         <Markdown
                             template={ details }
                             definitions={ definitions }
                         />
-                    </div>
-                    <div>
-                        {
-                            remediating && <RemediatingModal
-                                reason={ remediating.reason }
-                                resolution={ remediating.resolution }
-                                definitions={ definitions }
-                            />
-                        }
                     </div>
                 </StackItem>
                 <StackItem>
@@ -117,11 +118,9 @@ ReportDetails.propTypes = {
     riskOfChange: PropTypes.number,
     userVote: PropTypes.oneOf(Object.values(feedback)),
     showRiskDescription: PropTypes.bool,
+    showPublishedDate: PropTypes.bool,
     definitions: PropTypes.object,
-    remediating: PropTypes.shape({
-        reason: PropTypes.string,
-        resolution: PropTypes.string
-    }),
+    createdAt: PropTypes.node,
     onFeedbackChanged: PropTypes.func
 };
 
