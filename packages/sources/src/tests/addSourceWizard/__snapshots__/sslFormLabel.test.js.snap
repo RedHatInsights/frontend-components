@@ -7,8 +7,8 @@ exports[`SSLFormLabel renders loading step correctly 1`] = `
     appendTo={[Function]}
     aria-label="Help text"
     bodyContent={
-      <TextContent>
-        <Text
+      <Unknown>
+        <Unknown
           component="p"
         >
           You can obtain your OpenShift Container Platform provider’s CA certificate for all endpoints (default, metrics, alerts) from
@@ -16,13 +16,13 @@ exports[`SSLFormLabel renders loading step correctly 1`] = `
             /etc/origin/master/ca.crt
           </b>
           .
-        </Text>
-        <Text
+        </Unknown>
+        <Unknown
           component="p"
         >
           Paste the output (a block of text starting with --BEGIN CERTIFICATE--) into the Trusted CA Certificates field.
-        </Text>
-      </TextContent>
+        </Unknown>
+      </Unknown>
     }
     boundary="window"
     className=""
@@ -59,7 +59,6 @@ exports[`SSLFormLabel renders loading step correctly 1`] = `
       color="currentColor"
       noVerticalAlign={false}
       size="sm"
-      title={null}
     />
   </Popover>
 </Fragment>

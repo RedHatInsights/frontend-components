@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table, TableBody, TableHeader, sortable } from '@patternfly/react-table';
-import { Bullseye, EmptyState, EmptyStateIcon, Title, EmptyStateBody, Button, EmptyStateVariant } from '@patternfly/react-core';
+import { Bullseye, EmptyState, EmptyStateIcon, Title, EmptyStateBody, EmptyStateVariant } from '@patternfly/react-core';
 import SearchIcon from '@patternfly/react-icons/dist/js/icons/search-icon';
 import { Skeleton } from '@redhat-cloud-services/frontend-components/components/Skeleton';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/TableToolbar';

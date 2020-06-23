@@ -1,4 +1,3 @@
-import React from 'react';
 import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
 import RiskOfChangeIcon from './RiskOfChangeIcon';
 

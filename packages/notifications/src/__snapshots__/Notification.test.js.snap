@@ -2,7 +2,7 @@
 
 exports[`Notification component pagination should render correctly 1`] = `
 <Component
-  action={null}
+  actionClose={null}
   className="notification-item"
   id="Foo"
   onMouseEnter={[Function]}
@@ -16,7 +16,7 @@ exports[`Notification component pagination should render correctly 1`] = `
 
 exports[`Notification component should render correctly 1`] = `
 <Component
-  action={null}
+  actionClose={null}
   className="notification-item"
   id="Foo"
   onMouseEnter={[Function]}
@@ -30,7 +30,7 @@ exports[`Notification component should render correctly 1`] = `
 
 exports[`Notification component should render correctly with HTML description 1`] = `
 <Component
-  action={null}
+  actionClose={null}
   className="notification-item"
   id="Foo"
   onMouseEnter={[Function]}
@@ -44,7 +44,7 @@ exports[`Notification component should render correctly with HTML description 1`
 
 exports[`Notification component should render correctly with HTML title 1`] = `
 <Component
-  action={null}
+  actionClose={null}
   className="notification-item"
   id="Foo"
   onMouseEnter={[Function]}
@@ -58,8 +58,8 @@ exports[`Notification component should render correctly with HTML title 1`] = `
 
 exports[`Notification component should render correctly with dismiss button 1`] = `
 <Component
-  action={
-    <AlertActionCloseButton
+  actionClose={
+    <Unknown
       aria-label="close-notification"
       onClick={[Function]}
       variant="plain"
@@ -68,9 +68,8 @@ exports[`Notification component should render correctly with dismiss button 1`] 
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
-    </AlertActionCloseButton>
+    </Unknown>
   }
   className="notification-item"
   id="Foo"
@@ -83,7 +82,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
 
 exports[`Notification component should render correctly with sentryId 1`] = `
 <Component
-  action={null}
+  actionClose={null}
   className="notification-item"
   id="Foo"
   onMouseEnter={[Function]}
@@ -92,20 +91,20 @@ exports[`Notification component should render correctly with sentryId 1`] = `
   variant="success"
 >
   description
-  <TextContent>
-    <Text
+  <Component>
+    <Component
       component="small"
     >
       Tracking Id: 
       some-UUID
-    </Text>
-  </TextContent>
+    </Component>
+  </Component>
 </Component>
 `;
 
 exports[`Notification component should render correctly withouth description 1`] = `
 <Component
-  action={null}
+  actionClose={null}
   className="notification-item"
   id="Foo"
   onMouseEnter={[Function]}

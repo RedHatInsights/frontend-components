@@ -1,15 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TreeTable RowWrapper should render correctly - no data 1`] = `
-<Component
+<RowWrapper
   aria-level={1}
   aria-setsize={0}
   className=""
+  row={
+    Object {
+      "isEditable": undefined,
+      "isExpanded": undefined,
+      "isHeightAuto": undefined,
+      "isOpen": undefined,
+    }
+  }
+  rowProps={null}
 />
 `;
 
 exports[`TreeTable RowWrapper should render correctly - with data 1`] = `
-<Component
+<RowWrapper
   aria-level={1}
   aria-posinset={1}
   aria-setsize={2}
@@ -24,11 +33,12 @@ exports[`TreeTable RowWrapper should render correctly - with data 1`] = `
       "posinset": 1,
     }
   }
+  rowProps={null}
 />
 `;
 
 exports[`TreeTable RowWrapper should render correctly - with data collapsed 1`] = `
-<Component
+<RowWrapper
   aria-level={1}
   aria-posinset={1}
   aria-setsize={2}
@@ -43,5 +53,6 @@ exports[`TreeTable RowWrapper should render correctly - with data collapsed 1`] 
       "posinset": 1,
     }
   }
+  rowProps={null}
 />
 `;

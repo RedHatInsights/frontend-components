@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardHeader, CardBody, FormGroup, Grid, GridItem, Bullseye } from '@patternfly/react-core';
+import { Card, CardBody, FormGroup, Grid, GridItem, Bullseye, CardTitle } from '@patternfly/react-core';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
@@ -57,9 +57,9 @@ const CardSelect = (originalProps) => {
                     isCompact={ true }
                 >
                     <div className={ disabled ? 'disabled' : '' }>
-                        {!Component && <CardHeader className='text-elipsis'>
+                        {!Component && <CardTitle className='text-elipsis'>
                             { label }
-                        </CardHeader>}
+                        </CardTitle>}
                         {Component && (
                             <CardBody>
                                 <Bullseye>
@@ -81,11 +81,11 @@ const CardSelect = (originalProps) => {
             isRequired={ isRequired }
             label={ !hideLabel && label }
             fieldId={ input.name }
-            isValid={ !showError }
             helperText={ helperText }
             helperTextInvalid={ error }
+            validated={showError ? 'error' : 'default'}
         >
-            <Grid gutter="md" className="pf-u-mb-md">
+            <Grid hasGutter className="pf-u-mb-md">
                 { prepareCards() }
             </Grid>
         </FormGroup>

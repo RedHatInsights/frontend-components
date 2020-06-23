@@ -60,7 +60,7 @@ describe('ConfigurationCard', () => {
             const store = mockStore(initialState);
             const onClick = jest.fn();
             const wrapper = mount(<ConfigurationCard store={ store } />);
-            wrapper.find('TextListItem a').first().simulate('click');
+            wrapper.find('dd a').first().simulate('click');
             expect(onClick).not.toHaveBeenCalled();
             expect(toJson(wrapper)).toMatchSnapshot();
         });

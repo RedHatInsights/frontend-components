@@ -44,7 +44,7 @@ class Notification extends Component {
                 className="notification-item"
                 title={ title && title.replace(/<\/?[^>]+(>|$)/g, '') }
                 { ...rest }
-                action={ dismissable ?
+                actionClose={ dismissable ?
                     <AlertActionCloseButton
                         aria-label="close-notification"
                         variant="plain"
