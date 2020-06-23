@@ -16,6 +16,7 @@ yarn add @redhat-cloud-services/frontend-components-charts
 
 This package is dependent on [@redhat-cloud-services/frontend-components-utilities](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components-utilities) and will automatically install it trough direct dependencies.
 
+
 ## Documentation Links
 
 * Charts

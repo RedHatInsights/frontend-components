@@ -1,19 +1,8 @@
 import React from 'react';
-import IntlProvider, { updateLocaleData } from './Provider';
+import IntlProvider from './Provider';
 import { mount } from 'enzyme';
 import { LOCALSTORAGE_KEY } from './';
 import toJson from 'enzyme-to-json';
-
-describe('updateLocaleData', () => {
-    test('en should be present', () => {
-        expect(updateLocaleData()[0].locale).toBe('en');
-    });
-    test('it should update locale', () => {
-        const newLocaleData = updateLocaleData([{ locale: 'test' }]);
-        expect(newLocaleData[newLocaleData.length - 1].locale).toBe('test');
-    });
-});
-
 describe('provider', () => {
     test('should render correctly', () => {
         const wrapper = mount(<IntlProvider><div>Test</div></IntlProvider>);

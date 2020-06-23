@@ -1,14 +1,14 @@
 {
     "name": "@redhat-cloud-services/frontend-components-translations",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "description": "Translations package for RedHat Cloud Services project.",
-    "main": "index.js",
+    "browser": "index.js",
     "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./config/rollup.config.js",
+        "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
         "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
@@ -22,7 +22,7 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/translations#readme",
     "peerDependencies": {
-        "react-intl": ">=2.9.2",
+        "react-intl": ">=3.0.0",
         "prop-types": "^15.6.2",
         "react": "^16.5.1"
     },

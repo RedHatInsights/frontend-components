@@ -26,7 +26,9 @@ const entryMapper = {
     debounce: './src/debounce.js',
     inventoryDependencies: './src/inventoryDependencies.js',
     RBAC: './src/RBAC.js',
-    RBACHook: './src/RBACHook.js'
+    RBACHook: './src/RBACHook.js',
+    mergeMessages: './src/mergeMessages.js',
+    useInventory: './src/useInventory.js'
 };
 
 const commonjsOptions = {
@@ -59,6 +61,7 @@ const plugins = [
         keep_fnames: true
     }),
     postcss({
+        minimize: true,
         extract: true
     }),
     copy({

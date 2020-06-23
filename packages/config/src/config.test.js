@@ -46,7 +46,7 @@ describe('should create dummy config with no options', () => {
                         name: 'rhcsVendor'
                     },
                     vendor: {
-                        test: /[\\/]node_modules[\\/](!react-bootstrap)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
+                        test: /[\\/]node_modules[\\/](!react-dom)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
                         name: 'vendor'
                     }
                 }

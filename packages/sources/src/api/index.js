@@ -1,4 +1,4 @@
-import axiosInstanceInsights from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
+import axiosInstanceInsights from '@redhat-cloud-services/frontend-components-utilities/files/cjs/interceptors';
 
 import { SOURCES_API_BASE, SOURCES_API_BASE_V2 } from './constants';
 

@@ -1,8 +1,8 @@
 {
     "name": "@redhat-cloud-services/frontend-components-pdf-generator",
-    "version": "2.0.0",
+    "version": "2.0.3",
     "description": "Common components for RedHat Cloud Services project to generate PDF from JS.",
-    "main": "dist/js/index.js",
+    "browser": "dist/js/index.js",
     "module": "dist/esm/index.js",
     "sideEffects": false,
     "publishConfig": {

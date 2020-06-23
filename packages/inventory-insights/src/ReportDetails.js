@@ -1,4 +1,4 @@
-import '@redhat-cloud-services/frontend-components/components/Section.css';
+import '@redhat-cloud-services/frontend-components/components/section.scss';
 import './insights.scss';
 
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/Skeleton';
@@ -86,21 +86,19 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                         </CardBody>
                     </Card>
                 </StackItem>
-                <StackItem>
+                {rule.node_id && <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
                             <LightbulbIcon /><strong> Related Knowledgebase article </strong>
                         </CardHeader>
                         <CardBody>
-                            {kbaDetail && kbaDetail.view_uri ?
-                                <a rel="noopener noreferrer" target="_blank" href={`${kbaDetail.view_uri}`}>
-                                    {kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article` } <ExternalLinkAltIcon />
-                                </a>
-                                : kbaLoading ? <Skeleton size={SkeletonSize.sm} />
-                                    : <React.Fragment>No related Knowledgebase article.</React.Fragment>}
+                            {kbaLoading ? <Skeleton size={SkeletonSize.sm} />
+                                : <a rel="noopener noreferrer" target="_blank" href={`${kbaDetail.view_uri}`}>
+                                    {kbaDetail.publishedTitle ? kbaDetail.publishedTitle : `Knowledgebase article`} <ExternalLinkAltIcon />
+                                </a>}
                         </CardBody>
                     </Card>
-                </StackItem>
+                </StackItem>}
                 {rule.more_info && <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>

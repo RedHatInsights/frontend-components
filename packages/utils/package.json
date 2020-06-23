@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-utilities",
-    "version": "2.0.0",
+    "version": "2.0.5",
     "description": "Util functions for RedHat Cloud Services project.",
     "main": "files/index.js",
     "module": "files/esm/index.js",
@@ -8,7 +8,7 @@
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./config/rollup.config.js",
+        "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
         "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
@@ -26,7 +26,8 @@
         "react": "^16.5.1",
         "react-dom": "^16.5.1",
         "react-redux": ">=5.0.7",
-        "react-router-dom": ">=4.2.2"
+        "react-router-dom": ">=4.2.2",
+        "@patternfly/react-table": ">=2.1.6"
     },
     "dependencies": {
         "@sentry/browser": "^5.4.0",

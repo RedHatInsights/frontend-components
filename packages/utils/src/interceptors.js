@@ -47,7 +47,7 @@ export function errorInterceptor(err) {
             const errObject = { ...err };
             requestId = errObject.response?.headers?.['x-rh-insights-request-id'];
             if (errObject.response && errObject.response.data) {
-                throw errObject.response.data;
+                throw { ...errObject.response.data, statusText: errObject.response.statusText };
             }
 
             throw err;

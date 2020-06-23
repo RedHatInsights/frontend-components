@@ -6,7 +6,7 @@ import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
-import { dependencies, peerDependencies, name } from '../package.json';
+import { dependencies, peerDependencies, devDependencies, name } from '../package.json';
 import {
     rollupConfig,
     externalDeps,
@@ -35,7 +35,9 @@ const babelOptions = {
 };
 
 const plugins = [
-    nodeResolve(),
+    nodeResolve({
+        browser: true
+    }),
     babel(babelOptions),
     commonjs(commonjsOptions),
     nodeGlobals(),
@@ -44,15 +46,25 @@ const plugins = [
         keep_fnames: true
     }),
     postcss({
-        extract: true
+        extract: true,
+        minimize: true
     }),
     json()
 ];
 
 export default rollupConfig(
-    external(externalDeps({ ...dependencies, ...peerDependencies })),
+    external(externalDeps(
+        { ...dependencies, ...peerDependencies, ...devDependencies },
+        [ '@patternfly', '@redhat-cloud-services',  '@data-driven-forms', 'lodash' ]
+    )),
     plugins,
-    globals,
+    {
+        ...globals,
+        '@data-driven-forms/pf4-component-mapper': '@data-driven-forms/pf4-component-mapper',
+        '@data-driven-forms/react-form-renderer': '@data-driven-forms/react-form-renderer',
+        '@redhat-cloud-services/frontend-components-utilities': '@redhat-cloud-services/frontend-components-utilities',
+        lodash: 'lodash'
+    },
     name,
     [{
         index: 'src/index.js',
@@ -68,7 +80,10 @@ export default rollupConfig(
         hardcodedSchemas: 'src/addSourceWizard/hardcodedSchemas.js',
         AuthSelect: 'src/sourceFormRenderer/components/AuthSelect.js',
         CardSelect: 'src/sourceFormRenderer/components/CardSelect.js',
-        SourceWizardSummary: 'src/sourceFormRenderer/components/SourceWizardSummary.js'
+        SourceWizardSummary: 'src/sourceFormRenderer/components/SourceWizardSummary.js',
+        LoadingStep: 'src/addSourceWizard/steps/LoadingStep',
+        FinishedStep: 'src/addSourceWizard/steps/FinishedStep',
+        ErroredStep: 'src/addSourceWizard/steps/ErroredStep'
     }, {
         index: 'src/index.js'
     }],

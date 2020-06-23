@@ -40,7 +40,9 @@ const babelOptions = {
 };
 
 const plugins = [
-    nodeResolve(),
+    nodeResolve({
+        browser: true
+    }),
     babel(babelOptions),
     commonjs(commonjsOptions),
     nodeGlobals(),
@@ -49,6 +51,7 @@ const plugins = [
         keep_fnames: true
     }),
     postcss({
+        minimize: true,
         extract: true
     }),
     json()

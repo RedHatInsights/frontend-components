@@ -1,15 +1,14 @@
 {
     "name": "@redhat-cloud-services/frontend-components-remediations",
-    "version": "2.0.0",
+    "version": "2.0.4",
     "description": "Remediations components for RedHat Cloud Services project.",
-    "main": "index.js",
-    "module": "esm/index.js",
+    "browser": "index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./config/rollup.config.js",
-        "start": "rollup -c ./config/rollup.config.js -w"
+        "build": "NODE_ENV=production webpack --config config/webpack.config.js",
+        "start": "webpack --watch --config config/webpack.config.js"
     },
     "repository": {
         "type": "git",

@@ -1,14 +1,14 @@
 {
     "name": "@redhat-cloud-services/frontend-components-notifications",
-    "version": "2.0.0",
+    "version": "2.0.4",
     "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
-    "main": "index.js",
+    "browser": "index.js",
     "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./config/rollup.config.js",
+        "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
         "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {

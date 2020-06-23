@@ -1,17 +1,15 @@
 /* eslint-disable camelcase */
 import { StyleSheet, Font } from '@react-pdf/renderer';
-import {
-    chart_color_red_100,
-    global_Color_dark_100,
-    global_Color_dark_200,
-    global_Color_light_300,
-    chart_global_warning_Color_100,
-    chart_global_warning_Color_200,
-    chart_global_Fill_Color_700,
-    c_table_m_compact_cell_PaddingLeft,
-    c_table_m_compact_cell_PaddingBottom,
-    c_table_m_compact_cell_PaddingTop
-} from '@patternfly/react-tokens';
+import c_table_m_compact_cell_PaddingTop from '@patternfly/react-tokens/dist/js/c_table_m_compact_cell_PaddingTop';
+import c_table_m_compact_cell_PaddingBottom from '@patternfly/react-tokens/dist/js/c_table_m_compact_cell_PaddingBottom';
+import c_table_m_compact_cell_PaddingLeft from '@patternfly/react-tokens/dist/js/c_table_m_compact_cell_PaddingLeft';
+import chart_global_Fill_Color_700 from '@patternfly/react-tokens/dist/js/chart_global_Fill_Color_700';
+import chart_global_warning_Color_200 from '@patternfly/react-tokens/dist/js/chart_global_warning_Color_200';
+import chart_global_warning_Color_100 from '@patternfly/react-tokens/dist/js/chart_global_warning_Color_100';
+import global_Color_light_300 from '@patternfly/react-tokens/dist/js/global_Color_light_300';
+import global_Color_dark_200 from '@patternfly/react-tokens/dist/js/global_Color_dark_200';
+import global_Color_dark_100 from '@patternfly/react-tokens/dist/js/global_Color_dark_100';
+import chart_color_red_100 from '@patternfly/react-tokens/dist/js/chart_color_red_100';
 import { fontTypes, generateFonts, redhatFont } from './fonts';
 
 Font.register({ family: 'Overpass', fonts: generateFonts(fontTypes) });

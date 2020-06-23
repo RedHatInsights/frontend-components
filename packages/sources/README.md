@@ -16,6 +16,7 @@
 
 This package exports **Add Source Wizard** and **Add Source button**, as other components, which wizard uses.
 
+
 # Install
 
 ```bash
@@ -151,9 +152,6 @@ This components accepts all formGroup props `(label, helperText, isDisabled, isR
 Adds a summary of formValues to the form.
 
 **Props**
-
-This components accepts all formGroup props `(label, helperText, isDisabled, isRequired, ...)`
-
 
 |Prop|Type|Description|
 |----|:--:|----------:|

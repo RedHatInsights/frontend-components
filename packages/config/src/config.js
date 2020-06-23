@@ -34,7 +34,7 @@ module.exports = ({
                         name: 'rhcsVendor'
                     },
                     vendor: {
-                        test: /[\\/]node_modules[\\/](!react-bootstrap)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
+                        test: /[\\/]node_modules[\\/](!react-dom)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
                         name: 'vendor'
                     }
                 }
@@ -105,6 +105,7 @@ module.exports = ({
             },
             // https://github.com/webpack-contrib/webpack-serve/blob/master/docs/addons/history-fallback.config.js
             add: app => app.use(convert(history({})))
-        }
+        },
+        node: { fs: 'empty' }
     };
 };

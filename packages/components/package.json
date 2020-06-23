@@ -1,15 +1,17 @@
 {
     "name": "@redhat-cloud-services/frontend-components",
-    "version": "2.0.0",
+    "version": "2.0.7",
     "description": "Common components for RedHat Cloud Services project.",
-    "main": "components/index.js",
+    "browser": "components/index.js",
     "module": "components/esm/index.js",
     "sideEffects": false,
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./config/rollup.config.js",
+        "build": "npm run build:js && npm run build:css",
+        "build:js": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
+        "build:css": "node ./create-styles.js",
         "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
@@ -36,6 +38,10 @@
         "lodash": ">=4.17.15"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components-utilities": "*"
+        "@redhat-cloud-services/frontend-components-utilities": "*",
+        "sanitize-html": "^1.25.0"
+    },
+    "devDependencies": {
+        "node-sass-package-importer": "^5.3.2"
     }
 }

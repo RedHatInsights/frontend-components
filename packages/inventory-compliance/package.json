@@ -1,14 +1,14 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-compliance",
-    "version": "2.0.0",
+    "version": "2.0.6",
     "description": "Detail part of compliance for RedHat Cloud Services.",
-    "main": "index.js",
+    "browser": "index.js",
     "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./config/rollup.config.js",
+        "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
         "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
@@ -40,6 +40,7 @@
         "@redhat-cloud-services/frontend-components-notifications": "*",
         "@redhat-cloud-services/frontend-components-remediations": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
+        "@apollo/react-hooks": "^3.1.5",
         "apollo-boost": "^0.1.23",
         "graphql-tag": "^2.10.0",
         "react-apollo": "^2.3.3",
