@@ -66,7 +66,7 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
   >
     <Component
       className="pf-u-mb-0"
-      color="var(--pf-global--success-color--200)"
+      color="var(--pf-global--success-color--100)"
       icon={[Function]}
     />
     <Component
@@ -78,7 +78,7 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
     </Component>
     <Component>
       <Progress
-        className="pf-u-mb-md ins-c-sources__progress ins-c-sources__progress-success"
+        className="pf-u-mb-md ins-c-sources__progress"
         id=""
         label="Completed"
         max={0}
@@ -122,7 +122,7 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
   >
     <Component
       className="pf-u-mb-0"
-      color="var(--pf-global--success-color--200)"
+      color="var(--pf-global--success-color--100)"
       icon={[Function]}
     />
     <Component
@@ -134,7 +134,7 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
     </Component>
     <Component>
       <Progress
-        className="pf-u-mb-md ins-c-sources__progress ins-c-sources__progress-success"
+        className="pf-u-mb-md ins-c-sources__progress"
         id=""
         label="Completed"
         max={0}
