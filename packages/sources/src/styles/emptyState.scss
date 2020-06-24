@@ -5,13 +5,3 @@
 .ins-c-sources__progress {
     text-align: right;
 }
-
-.ins-c-sources__progress-success {
-       .pf-c-progress__indicator {
-           background-color: var(--pf-global--success-color--200) !important;
-       };
-
-       .pf-c-progress__status-icon {
-           color: var(--pf-global--success-color--200) !important;
-       }
-}
