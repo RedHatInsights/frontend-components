@@ -21,9 +21,9 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
 
 Patternfly packages require some ehancements to be done in order to properly treeshake your bundles. You can either use direct imports or plugin that does that for you, there are actually 2 plugins to do this
 * [babel-plugin-import](https://www.npmjs.com/package/babel-plugin-import) - easy setup, however not that extensible
-* [transform-imports](https://www.npmjs.com/package/transform-imports) - harder to setup, but allows custom rules
+* [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) - harder to setup, but allows custom rules
 
-Since Patternfly requires a bit of custom settings you should use `transform-imports`. Change your babel to be JS file `babel.config.js` and add these changes to it
+Since Patternfly requires a bit of custom settings you should use `babel-plugin-transform-imports`. Change your babel to be JS file `babel.config.js` and add these changes to it
 
 ```JS
 // This is required because of how PF is using their css modules.
