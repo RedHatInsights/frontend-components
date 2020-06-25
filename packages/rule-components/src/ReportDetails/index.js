@@ -37,15 +37,27 @@ const ReportDetails = (
         definitions,
         createdAt,
         userVote,
-        showPublishedDate,
+        title,
+        actions,
         onFeedbackChanged
     }) => {
 
-    return <Grid hasGutter className="ins-c-rule__report-detail">
-        <GridItem span={ 7 }>
+    return <Grid className="ins-c-rule__report-detail">
+        {
+            title && actions &&
+            <React.Fragment>
+                <GridItem span={ 8 }>
+                    {title}
+                </GridItem>
+                <GridItem span={ 4 } className="ins-c-rule__report-detail-actions">
+                    {actions}
+                </GridItem>
+            </React.Fragment>
+        }
+        <GridItem span={ 8 }>
             <Stack hasGutter>
                 {
-                    showPublishedDate &&
+                    createdAt &&
                     <StackItem>
                         <Text>
                             Published date: {createdAt}
@@ -73,7 +85,7 @@ const ReportDetails = (
             </Stack>
         </GridItem>
 
-        <GridItem span={ 3 }>
+        <GridItem span={ 4 }>
             <Stack hasGutter>
                 <StackItem>
                     <Stack>
@@ -118,9 +130,10 @@ ReportDetails.propTypes = {
     riskOfChange: PropTypes.number,
     userVote: PropTypes.oneOf(Object.values(feedback)),
     showRiskDescription: PropTypes.bool,
-    showPublishedDate: PropTypes.bool,
     definitions: PropTypes.object,
     createdAt: PropTypes.node,
+    title: PropTypes.node,
+    actions: PropTypes.node,
     onFeedbackChanged: PropTypes.func
 };
 
