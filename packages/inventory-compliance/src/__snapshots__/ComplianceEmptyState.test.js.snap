@@ -16,6 +16,7 @@ exports[`ComplianceEmptyState expect to render different message if many policie
     />
     <br />
     <Component
+      headingLevel="h1"
       size="lg"
     >
       No policies
@@ -81,6 +82,7 @@ exports[`ComplianceEmptyState expect to render different message if one policy e
     />
     <br />
     <Component
+      headingLevel="h1"
       size="lg"
     >
       No policies
@@ -146,6 +148,7 @@ exports[`ComplianceEmptyState expect to render without error if no policies exis
     />
     <br />
     <Component
+      headingLevel="h1"
       size="lg"
     >
       No policies
