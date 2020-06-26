@@ -130,6 +130,7 @@ class ContextEntityTableToolbar extends Component {
             allTagsLoaded,
             allTags,
             additionalTagsCount > 0 ? [{
+                label: '',
                 items: [{
                     label: `${additionalTagsCount} more tags available`,
                     onClick: () => toggleTagModal(),

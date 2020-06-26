@@ -170,6 +170,7 @@ export const tagsFilterBuilder = (onFilter, filterBy, onChange, selected, loaded
                 ...items
             ]
         } : {
+            label: '',
             items: [
                 {
                     label: !loaded ?
