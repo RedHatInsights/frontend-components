@@ -1,8 +1,17 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_variables';
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_mixins';
+@import '~@redhat-cloud-services/frontend-components/components/battery.scss';
 
 .ins-c-rule__report-detail {
   padding: var(--pf-global--gutter--md) 40px;
+
+  .ins-c-rule__report-detail-actions {
+    text-align: right;
+  }
+
+  .pf-l-grid__item.pf-m-8-col {
+    margin-right: var(--pf-l-grid--m-gutter--GridGap);
+  }
 
   .ins-c-rule__report-detail-link {
     margin-bottom: var(--pf-global--spacer--xs);
