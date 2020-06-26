@@ -66,6 +66,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="first"
@@ -83,6 +84,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
@@ -107,9 +109,10 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Checkbox
           className=""
@@ -133,6 +136,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
         value="some-value"
@@ -166,9 +170,10 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Radio
           className=""
@@ -193,6 +198,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
@@ -265,6 +271,7 @@ exports[`Group - component render should render correctly with items - isDisable
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="first"
@@ -282,6 +289,7 @@ exports[`Group - component render should render correctly with items - isDisable
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
@@ -306,9 +314,10 @@ exports[`Group - component render should render correctly with items - isDisable
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Checkbox
           className=""
@@ -332,6 +341,7 @@ exports[`Group - component render should render correctly with items - isDisable
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
         value="some-value"
@@ -365,9 +375,10 @@ exports[`Group - component render should render correctly with items - isDisable
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Radio
           className=""
@@ -392,6 +403,7 @@ exports[`Group - component render should render correctly with items - isDisable
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
@@ -464,6 +476,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="first"
@@ -481,6 +494,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
@@ -505,9 +519,10 @@ exports[`Group - component render should render correctly with items 1`] = `
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Checkbox
           className=""
@@ -531,6 +546,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
         value="some-value"
@@ -564,9 +580,10 @@ exports[`Group - component render should render correctly with items 1`] = `
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Radio
           className=""
@@ -591,6 +608,7 @@ exports[`Group - component render should render correctly with items 1`] = `
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
@@ -663,6 +681,7 @@ exports[`Group - component render should render correctly with items and default
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="first"
@@ -680,6 +699,7 @@ exports[`Group - component render should render correctly with items and default
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
@@ -704,9 +724,10 @@ exports[`Group - component render should render correctly with items and default
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Checkbox
           className=""
@@ -730,6 +751,7 @@ exports[`Group - component render should render correctly with items and default
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
         value="some-value"
@@ -763,9 +785,10 @@ exports[`Group - component render should render correctly with items and default
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Radio
           className=""
@@ -790,6 +813,7 @@ exports[`Group - component render should render correctly with items and default
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
@@ -862,6 +886,7 @@ exports[`Group - component render should render correctly with items and selecte
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="first"
@@ -879,6 +904,7 @@ exports[`Group - component render should render correctly with items and selecte
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="First value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
@@ -903,9 +929,10 @@ exports[`Group - component render should render correctly with items and selecte
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Checkbox
           className=""
@@ -929,6 +956,7 @@ exports[`Group - component render should render correctly with items and selecte
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Second value"
         onClick={[Function]}
         sendRef={[Function]}
         value="some-value"
@@ -962,9 +990,10 @@ exports[`Group - component render should render correctly with items and selecte
         isSelected={false}
         key="0"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
-        value="0"
+        value=""
       >
         <Radio
           className=""
@@ -989,6 +1018,7 @@ exports[`Group - component render should render correctly with items and selecte
         isSelected={false}
         key="1"
         keyHandler={[Function]}
+        label="Third value"
         onClick={[Function]}
         sendRef={[Function]}
         value="1"
