@@ -81,7 +81,7 @@ export function getEntities(items, {
         registeredWithFilter
     } = filters ? filters.reduce(filtersReducer, {
         ...defaultFilters,
-        ...filters.length === 0 && { registeredWithFilter: [] },
+        ...filters.length === 0 && { registeredWithFilter: [] }
     }) : defaultFilters;
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
