@@ -135,7 +135,7 @@ const reduxComponent = (props, store, ConnectedComponent) => <Fragment>
     }
 </Fragment>;
 
-export function inventoryConnector(store) {
+export function inventoryConnector(store, componentMapper) {
     const InventoryDetail = (props) => (
         <Fragment>
             <InventoryItem { ...props } />
@@ -147,7 +147,7 @@ export function inventoryConnector(store) {
 
     connectedInventory.updateEntities = updateEntities;
     connectedInventory.InventoryTable = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, InventoryTable));
-    connectedInventory.AppInfo = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, AppInfo));
+    connectedInventory.AppInfo = React.forwardRef((props, ref) => reduxComponent({ ...props, ref, componentMapper, store }, store, AppInfo));
     connectedInventory.InventoryDetailHead = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, InventoryItem));
     connectedInventory.InventoryDetail = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, InventoryDetail));
     connectedInventory.TagWithDialog = React.forwardRef((props, ref) => reduxComponent({ ...props, ref }, store, TagWithDialog));

@@ -2,15 +2,26 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
+import RenderWrapper from './RenderWrapper';
 
 class AppInfo extends Component {
     render () {
-        const { activeApps, active, loaded } = this.props;
+        const { activeApps, active, loaded, componentMapper, entity, store } = this.props;
         const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
+        const Component = componentMapper ? componentMapper?.[activeApp?.name] : activeApp?.component;
         return (
             <Fragment>
                 { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>
-                    { activeApp.component ? <activeApp.component /> : 'missing component' }
+                    { Component ?
+                        componentMapper ? <RenderWrapper
+                            cmp={Component}
+                            store={store}
+                            inventoryId={entity.id}
+                            appName={activeApp?.name}
+                        /> : <Component />
+                        :
+                        'missing component'
+                    }
                 </div> }
                 { !loaded && <Skeleton size={ SkeletonSize.md } /> }
             </Fragment>
@@ -19,6 +30,13 @@ class AppInfo extends Component {
 }
 
 AppInfo.propTypes = {
+    store: PropTypes.any,
+    entity: PropTypes.shape({
+        id: PropTypes.string
+    }),
+    componentMapper: PropTypes.shape({
+        [PropTypes.string]: PropTypes.func
+    }),
     activeApps: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string
     })),
@@ -32,8 +50,9 @@ AppInfo.defaultProps = {
     active: {}
 };
 
-export default connect(({ entityDetails: { activeApps, activeApp, loaded } }) => ({
+export default connect(({ entityDetails: { activeApps, activeApp, loaded, entity } }) => ({
     activeApps,
     active: activeApp,
-    loaded
+    loaded,
+    entity
 }))(AppInfo);
