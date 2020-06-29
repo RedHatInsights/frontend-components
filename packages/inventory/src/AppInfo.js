@@ -2,25 +2,22 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
-import RenderWrapper from './RenderWrapper';
 
 class AppInfo extends Component {
     render () {
         const { activeApps, active, loaded, componentMapper, entity, store } = this.props;
         const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
-        const Component = componentMapper ? componentMapper?.[activeApp?.name] : activeApp?.component;
+        const Component = componentMapper;
         return (
             <Fragment>
                 { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>
                     { Component ?
-                        componentMapper ? <RenderWrapper
-                            cmp={Component}
+                        <Component
                             store={store}
                             inventoryId={entity.id}
                             appName={activeApp?.name}
-                        /> : <Component />
-                        :
-                        'missing component'
+                        />
+                        : 'missing component'
                     }
                 </div> }
                 { !loaded && <Skeleton size={ SkeletonSize.md } /> }
@@ -34,9 +31,7 @@ AppInfo.propTypes = {
     entity: PropTypes.shape({
         id: PropTypes.string
     }),
-    componentMapper: PropTypes.shape({
-        [PropTypes.string]: PropTypes.func
-    }),
+    componentMapper: PropTypes.any,
     activeApps: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string
     })),
