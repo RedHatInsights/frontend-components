@@ -212,7 +212,7 @@ class EntityDetails extends Component {
     }
 
     render() {
-        const { useCard, loaded, entity, match } = this.props;
+        const { useCard, loaded, entity, match, appList } = this.props;
 
         return (
             <div className="ins-entity-detail">
@@ -243,7 +243,7 @@ class EntityDetails extends Component {
                         </EmptyState>
                     ) : this.entityTopBar()
                 }
-                <ApplicationDetails />
+                <ApplicationDetails appList={appList}/>
             </div>
         );
     }
@@ -267,7 +267,8 @@ EntityDetails.propTypes = {
     setAnsibleHost: PropTypes.func,
     setDisplayName: PropTypes.func,
     deleteEntity: PropTypes.func,
-    addNotification: PropTypes.func
+    addNotification: PropTypes.func,
+    appList: PropTypes.any
 };
 
 EntityDetails.defualtProps = {

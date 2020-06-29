@@ -5,8 +5,8 @@ import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-componen
 
 class AppInfo extends Component {
     render () {
-        const { activeApps, active, loaded, componentMapper, entity, store } = this.props;
-        const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
+        const { activeApps, appList, active, loaded, componentMapper, entity, store } = this.props;
+        const activeApp = (appList || activeApps).find(item => item.name === active.appName) || activeApps[0];
         const Component = componentMapper;
         return (
             <Fragment>
@@ -34,6 +34,10 @@ AppInfo.propTypes = {
     componentMapper: PropTypes.any,
     activeApps: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string
+    })),
+    appList: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+        title: PropTypes.string
     })),
     active: PropTypes.shape({
         appName: PropTypes.string

@@ -24,7 +24,17 @@ class InventoryDetail extends React.Component {
     }
 
     render() {
-        const { root, match: { params }, useCard, hideBack, actions, showTags, hideInvLink, showDelete } = this.props;
+        const {
+            root,
+            match: { params },
+            useCard,
+            hideBack,
+            actions,
+            showTags,
+            hideInvLink,
+            showDelete,
+            appList
+        } = this.props;
         return (
             <React.Fragment>
                 <Entitydetail
@@ -33,6 +43,7 @@ class InventoryDetail extends React.Component {
                     showTags={ showTags }
                     hideInvLink={ hideInvLink }
                     showDelete={ showDelete }
+                    appList={ appList }
                 />
                 { !hideBack && <Link to={ generatePath(root, params) }>
                     <Button variant='primary'>Back</Button>
@@ -61,7 +72,8 @@ InventoryDetail.propTypes = {
         title: PropTypes.node,
         onClick: PropTypes.func,
         key: PropTypes.string
-    }))
+    })),
+    appList: PropTypes.any
 };
 
 function mapDispatchToProps(dispatch, { showTags }) {
