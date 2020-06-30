@@ -29,13 +29,14 @@ const Table = ({
                 justifyContent: 'flex-start',
                 ...headerStyles
             }}>
-                {header.map((cell, key) => <Text key={ key } style={{
-                    ...appliedStyles.secondTitle,
-                    ...appliedStyles.compactCellPadding,
-                    flex: 1
-                }}>
-                    {cell}
-                </Text>)}
+                {header.map((cell, key) => (
+                    (typeof cell === 'string' || cell instanceof String) ? <Text key={ key } style={{
+                        ...appliedStyles.secondTitle,
+                        ...appliedStyles.compactCellPadding,
+                        flex: 1
+                    }}>
+                        {cell}
+                    </Text> : cell))}
             </View>
         }
         <View style={{
