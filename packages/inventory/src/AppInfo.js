@@ -31,7 +31,7 @@ AppInfo.propTypes = {
     entity: PropTypes.shape({
         id: PropTypes.string
     }),
-    componentMapper: PropTypes.any,
+    componentMapper: PropTypes.elementType,
     activeApps: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string
     })),

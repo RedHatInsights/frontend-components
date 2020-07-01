@@ -21,13 +21,16 @@ class ApplicationDetails extends Component {
     render() {
         const { activeApp, items, appList } = this.props;
         const defaultApp = (activeApp && activeApp.appName) ||
-            appList?.find(({ pageId, name }) => items?.[0]?.name === (pageId || name))?.name ||
+            appList?.find(({ pageId, name }) => {
+                const currApp = pageId || name;
+                return items?.[0]?.name && items?.[0]?.name === currApp;
+            })?.name ||
             items?.[0]?.name;
         const applications = appList || items;
         return (
             <React.Fragment>
                 {
-                    applications && applications.length > 1 &&
+                    applications?.length > 1 &&
                     <Tabs
                         activeKey={ defaultApp }
                         onSelect={ this.onTabClick }
