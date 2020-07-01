@@ -20,7 +20,9 @@ class ApplicationDetails extends Component {
 
     render() {
         const { activeApp, items, appList } = this.props;
-        const defaultApp = (activeApp && activeApp.appName) || items && items[0] && items[0].name;
+        const defaultApp = (activeApp && activeApp.appName) ||
+            appList?.find(({ pageId, name }) => items?.[0]?.name === (pageId || name))?.name ||
+            items?.[0]?.name;
         const applications = appList || items;
         return (
             <React.Fragment>
