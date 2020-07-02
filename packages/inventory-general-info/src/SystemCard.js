@@ -120,7 +120,7 @@ class SystemCard extends Component {
                 />
                 <TextInputModal
                     isOpen={ isDisplayNameModalOpen }
-                    title='Edit name'
+                    title='Edit display name'
                     value={ entity && entity.display_name }
                     ariaLabel='Host inventory display name'
                     onCancel={ this.onCancel }
