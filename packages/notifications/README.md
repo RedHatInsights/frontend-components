@@ -52,6 +52,10 @@ Since our components require a bit more setting up, we are recommending using `b
 Change your babel config to be javascript config `babel.config.js` so you can use JS functions to properly transform your imports
 
 ```JS
+notificationsMapper = {
+    addNotification: 'actions',
+    removeNotification: 'actions',
+};
 module.exports = {
     presets: [
         // your presets go here
@@ -63,8 +67,8 @@ module.exports = {
             {
               '@redhat-cloud-services/frontend-components-notifications': {
                 transform: (importName) =>
-                  `@redhat-cloud-services/frontend-components-notifications/cjs/${importName}`,
-                preventFullImport: true
+                  `@redhat-cloud-services/frontend-components-notifications/cjs/${notificationsMapper[importName] || importName}`,
+                preventFullImport: true,
               }
             },
             'frontend-notifications'
