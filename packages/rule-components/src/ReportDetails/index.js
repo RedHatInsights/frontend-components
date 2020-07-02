@@ -42,12 +42,24 @@ const ReportDetails = (
         onFeedbackChanged
     }) => {
 
-    return <Grid className="ins-c-rule__report-detail">
+    return <Grid className="ins-c-rule__report-detail" hasGutter gutter="md">
         {
             title && actions &&
             <React.Fragment>
                 <GridItem span={ 8 }>
-                    {title}
+                    <Stack>
+                        <StackItem>
+                            {title}
+                        </StackItem>
+                        {
+                            createdAt &&
+                            <StackItem>
+                                <Text>
+                                    Published date: {createdAt}
+                                </Text>
+                            </StackItem>
+                        }
+                    </Stack>
                 </GridItem>
                 <GridItem span={ 4 } className="ins-c-rule__report-detail-actions">
                     {actions}
@@ -55,15 +67,7 @@ const ReportDetails = (
             </React.Fragment>
         }
         <GridItem span={ 8 }>
-            <Stack hasGutter>
-                {
-                    createdAt &&
-                    <StackItem>
-                        <Text>
-                            Published date: {createdAt}
-                        </Text>
-                    </StackItem>
-                }
+            <Stack hasGutter gutter="md">
                 <StackItem>
                     <div>
                         <Markdown
@@ -86,7 +90,7 @@ const ReportDetails = (
         </GridItem>
 
         <GridItem span={ 4 }>
-            <Stack hasGutter>
+            <Stack hasGutter gutter="md">
                 <StackItem>
                     <Stack>
                         <StackItem>
