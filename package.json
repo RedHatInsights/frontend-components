@@ -57,7 +57,8 @@
         ],
         "moduleNameMapper": {
             "\\.(css|scss)$": "identity-obj-proxy",
-            "^lodash-es$": "lodash"
+            "^lodash-es$": "lodash",
+            "customReact": "react"
         },
         "testURL": "http://localhost:5000/"
     },
