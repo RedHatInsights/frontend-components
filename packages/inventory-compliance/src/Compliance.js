@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Wrapper } from 'react';
 import propTypes from 'prop-types';
 import SystemPolicyCards from './SystemPolicyCards';
 import SystemRulesTable from './SystemRulesTable';
@@ -10,6 +10,7 @@ import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
 import { columns } from './defaultColumns';
 import './compliance.scss';
 import { ErrorCard } from './PresentationalComponents';
+import { IntlProvider } from 'react-intl';
 
 const COMPLIANCE_API_ROOT = '/api/compliance';
 
@@ -137,4 +138,11 @@ SystemQuery.defaultProps = {
     loading: true
 };
 
-export default SystemDetails;
+const WrappedSystemDetails = ({ customItnl, intlProps, ...props }) => {
+    const IntlWrapper = customItnl ? IntlProvider : Wrapper;
+    return <IntlWrapper { ...customItnl && intlProps } >
+        <SystemDetails { ...props } />
+    </IntlWrapper>;
+};
+
+export default WrappedSystemDetails;
