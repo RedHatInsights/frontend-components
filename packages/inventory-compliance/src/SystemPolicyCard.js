@@ -1,5 +1,5 @@
-import React from 'react';
-import { FormattedRelative } from 'react-intl';
+import React, { Wrapper } from 'react';
+import { FormattedRelative, FormattedRelativeTime } from 'react-intl';
 import { CheckCircleIcon, ExclamationCircleIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import Truncate from 'react-truncate';
 
@@ -57,6 +57,7 @@ class SystemPolicyCard extends React.Component {
         const { policy, benchmark, rulesPassed, rulesFailed, compliant, lastScanned, score } = this.state.policy;
         const { refIdTruncated, cardTitle } = this.state;
         const passedPercentage = this.fixedPercentage(score);
+        const FormattedRelativeCmp = FormattedRelativeTime || FormattedRelative || Wrapper;
 
         return (
             <Card>
@@ -98,7 +99,7 @@ class SystemPolicyCard extends React.Component {
                         </Text>
                     </div>
                     <Text className='margin-bottom-none' component={ TextVariants.small }>
-                      Last scanned: <FormattedRelative value={ Date.parse(lastScanned) } />
+                      Last scanned: <FormattedRelativeCmp value={ Date.parse(lastScanned) } />
                     </Text>
                 </CardBody>
             </Card>
