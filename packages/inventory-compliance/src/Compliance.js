@@ -1,4 +1,4 @@
-import React, { Component, Wrapper } from 'react';
+import React, { Component, Fragment } from 'react';
 import propTypes from 'prop-types';
 import SystemPolicyCards from './SystemPolicyCards';
 import SystemRulesTable from './SystemRulesTable';
@@ -139,7 +139,8 @@ SystemQuery.defaultProps = {
 };
 
 const WrappedSystemDetails = ({ customItnl, intlProps, ...props }) => {
-    const IntlWrapper = customItnl ? IntlProvider : Wrapper;
+    const IntlWrapper = customItnl ? IntlProvider : Fragment;
+    console.log(IntlWrapper, IntlProvider, 'fff');
     return <IntlWrapper { ...customItnl && intlProps } >
         <SystemDetails { ...props } />
     </IntlWrapper>;

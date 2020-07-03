@@ -1,4 +1,4 @@
-import React, { Wrapper } from 'react';
+import React, { Fragment } from 'react';
 import { FormattedRelative, FormattedRelativeTime } from 'react-intl';
 import { CheckCircleIcon, ExclamationCircleIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import Truncate from 'react-truncate';
@@ -57,7 +57,7 @@ class SystemPolicyCard extends React.Component {
         const { policy, benchmark, rulesPassed, rulesFailed, compliant, lastScanned, score } = this.state.policy;
         const { refIdTruncated, cardTitle } = this.state;
         const passedPercentage = this.fixedPercentage(score);
-        const FormattedRelativeCmp = FormattedRelativeTime || FormattedRelative || Wrapper;
+        const FormattedRelativeCmp = FormattedRelativeTime || FormattedRelative || Fragment;
 
         return (
             <Card>
