@@ -64,26 +64,26 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
 <div
   className="pf-c-input-group ins-c-filter  "
 >
-  <Dropdown
+  <Component
     dropdownItems={
       Array [
-        <DropdownItem
+        <Unknown
           component="button"
           data-key="one"
           onClick={[Function]}
         >
           one
-        </DropdownItem>,
+        </Unknown>,
       ]
     }
     isOpen={false}
     onSelect={[Function]}
     toggle={
-      <DropdownToggle
+      <Unknown
         onToggle={[Function]}
       >
         Dropdown
-      </DropdownToggle>
+      </Unknown>
     }
   />
   <Input
@@ -106,26 +106,26 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
 <div
   className="pf-c-input-group ins-c-filter  "
 >
-  <Dropdown
+  <Component
     dropdownItems={
       Array [
-        <DropdownItem
+        <Unknown
           component="button"
           data-key="one"
           onClick={[Function]}
         >
           one
-        </DropdownItem>,
+        </Unknown>,
       ]
     }
     isOpen={false}
     onSelect={[Function]}
     toggle={
-      <DropdownToggle
+      <Unknown
         onToggle={[Function]}
       >
         Filter by
-      </DropdownToggle>
+      </Unknown>
     }
   />
   <Input
@@ -159,7 +159,6 @@ exports[`SimpleTableFilter component should render correctly without filter butt
     color="currentColor"
     noVerticalAlign={false}
     size="sm"
-    title={null}
   />
 </div>
 `;

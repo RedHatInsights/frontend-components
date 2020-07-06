@@ -16,7 +16,6 @@ exports[`Text component render should render correctly - isDisabled 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="sm"
-    title={null}
   />
 </Fragment>
 `;
@@ -37,7 +36,6 @@ exports[`Text component render should render correctly 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="sm"
-    title={null}
   />
 </Fragment>
 `;
@@ -59,7 +57,6 @@ exports[`Text component render should render placeholder 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="sm"
-    title={null}
   />
 </Fragment>
 `;
@@ -80,7 +77,6 @@ exports[`Text component render should render value 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="sm"
-    title={null}
   />
 </Fragment>
 `;

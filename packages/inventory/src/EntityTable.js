@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
+import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
 import { selectEntity, setSort, detailSelect } from './redux/actions';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import {
     Title,
-    EmptyStateBody,
     Bullseye,
     EmptyState,
-    EmptyStateVariant
+    EmptyStateVariant,
+    EmptyStateBody
 } from '@patternfly/react-core';
 import {
     Table as PfTable,
@@ -21,7 +21,9 @@ import {
     sortable,
     expandable
 } from '@patternfly/react-table';
-import { SkeletonTable, EmptyTable, DateFormat } from '@redhat-cloud-services/frontend-components';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
+import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/esm/SkeletonTable';
+import { EmptyTable } from '@redhat-cloud-services/frontend-components/components/esm/EmptyTable';
 
 class EntityTable extends React.Component {
     onRowClick = (_event, key, application) => {
@@ -62,18 +64,19 @@ class EntityTable extends React.Component {
             return (
                 { title: <div className="ins-composed-col">
                     { composed.map(path => (
-                        <a key={ path }
+                        <div key={ path }
                             widget="col"
-                            data-key={ path }
-                            href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${col.id}` }
-                            onClick={ event => {
-                                event.preventDefault();
-                                event.stopPropagation();
-                                this.onRowClick(event, col.id);
-                            }}
-                        >
-                            { get(col, path, ' ') || '\u00A0' }
-                        </a>
+                            data-key={ path }>
+                            <a href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${col.id}` }
+                                onClick={ event => {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    this.onRowClick(event, col.id);
+                                }}
+                            >
+                                { get(col, path, ' ') || '\u00A0' }
+                            </a>
+                        </div>
                     )) }
                 </div>
                 }

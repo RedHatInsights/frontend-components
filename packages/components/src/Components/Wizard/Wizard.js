@@ -80,7 +80,7 @@ class Wizard extends Component {
             <Modal
                 { ...props }
                 onKeyPress={ this.handleKeyPress }
-                isLarge = { isLarge }
+                variant="large"
                 title= { title }
                 className= { wizardClasses }
                 isOpen={ isOpen }

@@ -75,7 +75,7 @@ function ExistingOrNewStep(props) {
                                     fieldId="remediation-name"
                                     helperText="Playbook name"
                                     helperTextInvalid="Playbook name has to contain alphanumeric characters"
-                                    isValid={ nameValid }
+                                    validated={nameValid ? 'default' : 'error' }
                                 >
                                     <TextInput
                                         type="text"
@@ -84,7 +84,7 @@ function ExistingOrNewStep(props) {
                                         aria-label="Name your playbook"
                                         autoFocus
                                         isDisabled={ !isNewSwitch }
-                                        isValid={ nameValid }
+                                        validated={nameValid ? 'default' : 'error'}
                                     />
                                 </FormGroup>
                             </GridItem>

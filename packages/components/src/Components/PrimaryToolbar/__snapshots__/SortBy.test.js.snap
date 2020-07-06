@@ -9,7 +9,6 @@ exports[`PrimaryToolbar should render desc direction 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="sm"
-    title={null}
   />
 </Component>
 `;
@@ -23,7 +22,6 @@ exports[`PrimaryToolbar should render no data 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="sm"
-    title={null}
   />
 </Component>
 `;

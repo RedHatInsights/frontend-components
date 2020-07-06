@@ -1,41 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PrimaryToolbar should render custom className 1`] = `
-<DataToolbar
+<Toolbar
   className="custom-classname ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent
-    breakpointMods={Array []}
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   />
-</DataToolbar>
+</Toolbar>
 `;
 
 exports[`PrimaryToolbar should render custom id 1`] = `
-<DataToolbar
+<Toolbar
   className=" ins-c-primary-toolbar"
   id="custom-id"
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent
-    breakpointMods={Array []}
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   />
-</DataToolbar>
+</Toolbar>
 `;
 
 exports[`PrimaryToolbar should render elements instead of data 1`] = `
-<DataToolbar
+<Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent
-    breakpointMods={Array []}
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
@@ -43,73 +40,70 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <DataToolbarItem>
+      <Component>
         <div>
           Loading...
         </div>
-      </DataToolbarItem>
-      <DataToolbarItem
+      </Component>
+      <Component
         className="ins-c-primary-toolbar__filter"
       >
         <div>
           Loading...
         </div>
-      </DataToolbarItem>
+      </Component>
     </ForwardRef>
     <div>
       Loading...
     </div>
-    <DataToolbarItem
+    <Component
       className="ins-c-primary-toolbar__sort-by"
     >
       <div>
         Loading...
       </div>
-    </DataToolbarItem>
-    <DataToolbarItem
+    </Component>
+    <Component
       className="ins-c-primary-toolbar__pagination"
     >
       <div>
         Loading...
       </div>
-    </DataToolbarItem>
-  </DataToolbarContent>
-  <DataToolbarContent
-    breakpointMods={Array []}
+    </Component>
+  </ToolbarContent>
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
-    <DataToolbarItem>
+    <Component>
       <div>
         Loading...
       </div>
-    </DataToolbarItem>
-  </DataToolbarContent>
-</DataToolbar>
+    </Component>
+  </ToolbarContent>
+</Toolbar>
 `;
 
 exports[`PrimaryToolbar should render no data 1`] = `
-<DataToolbar
+<Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent
-    breakpointMods={Array []}
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   />
-</DataToolbar>
+</Toolbar>
 `;
 
 exports[`PrimaryToolbar should render with data full config 1`] = `
-<DataToolbar
+<Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent
-    breakpointMods={Array []}
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
@@ -117,7 +111,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <DataToolbarItem>
+      <Component>
         <BulkSelect
           checked={false}
           className=""
@@ -132,8 +126,8 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           }
           onSelect={[MockFunction]}
         />
-      </DataToolbarItem>
-      <DataToolbarItem
+      </Component>
+      <Component
         className="ins-c-primary-toolbar__filter"
       >
         <ConditionalFilter
@@ -159,7 +153,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           }
           value=""
         />
-      </DataToolbarItem>
+      </Component>
     </ForwardRef>
     <Actions
       actions={
@@ -211,33 +205,83 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         ]
       }
     />
-    <DataToolbarItem
+    <Component
       className="ins-c-primary-toolbar__sort-by"
     >
       <SortBy
         direction="asc"
         onSortChange={[MockFunction]}
       />
-    </DataToolbarItem>
-    <DataToolbarItem
+    </Component>
+    <Component
       className="ins-c-primary-toolbar__pagination"
     >
-      <Component
+      <Pagination
+        className=""
+        defaultToFullPage={false}
+        firstPage={1}
         isCompact={true}
+        isDisabled={false}
         itemCount={100}
+        itemsEnd={null}
+        itemsStart={null}
+        offset={0}
+        onFirstClick={[Function]}
+        onLastClick={[Function]}
+        onNextClick={[Function]}
+        onPageInput={[Function]}
         onPerPageSelect={[MockFunction]}
+        onPreviousClick={[Function]}
         onSetPage={[MockFunction]}
+        ouiaId={null}
         page={1}
         perPage={10}
+        perPageOptions={
+          Array [
+            Object {
+              "title": "10",
+              "value": 10,
+            },
+            Object {
+              "title": "20",
+              "value": 20,
+            },
+            Object {
+              "title": "50",
+              "value": 50,
+            },
+            Object {
+              "title": "100",
+              "value": 100,
+            },
+          ]
+        }
+        titles={
+          Object {
+            "currPage": "Current page",
+            "items": "",
+            "itemsPerPage": "Items per page",
+            "optionsToggle": "Items per page",
+            "page": "",
+            "paginationTitle": "Pagination",
+            "perPageSuffix": "per page",
+            "toFirstPage": "Go to first page",
+            "toLastPage": "Go to last page",
+            "toNextPage": "Go to next page",
+            "toPreviousPage": "Go to previous page",
+          }
+        }
+        toggleTemplate={[Function]}
+        variant="top"
+        widgetId="pagination-options-menu"
       />
-    </DataToolbarItem>
-  </DataToolbarContent>
-  <DataToolbarContent
-    breakpointMods={Array []}
+    </Component>
+  </ToolbarContent>
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
-    <DataToolbarItem>
+    <Component>
       <FilterChips
         filters={
           Array [
@@ -267,19 +311,18 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         }
         onDelete={[MockFunction]}
       />
-    </DataToolbarItem>
-  </DataToolbarContent>
-</DataToolbar>
+    </Component>
+  </ToolbarContent>
+</Toolbar>
 `;
 
 exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
-<DataToolbar
+<Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent
-    breakpointMods={Array []}
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
@@ -287,7 +330,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <DataToolbarItem>
+      <Component>
         <BulkSelect
           checked={false}
           className=""
@@ -302,20 +345,19 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
           }
           onSelect={[MockFunction]}
         />
-      </DataToolbarItem>
+      </Component>
     </ForwardRef>
-  </DataToolbarContent>
-</DataToolbar>
+  </ToolbarContent>
+</Toolbar>
 `;
 
 exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
-<DataToolbar
+<Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent
-    breakpointMods={Array []}
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
@@ -323,7 +365,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <DataToolbarItem
+      <Component
         className="ins-c-primary-toolbar__filter"
       >
         <ConditionalFilter
@@ -349,20 +391,19 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
           }
           value=""
         />
-      </DataToolbarItem>
+      </Component>
     </ForwardRef>
-  </DataToolbarContent>
-</DataToolbar>
+  </ToolbarContent>
+</Toolbar>
 `;
 
 exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
-<DataToolbar
+<Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
   toggleIsExpanded={[Function]}
 >
-  <DataToolbarContent
-    breakpointMods={Array []}
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
@@ -370,7 +411,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <DataToolbarItem>
+      <Component>
         <BulkSelect
           checked={false}
           className=""
@@ -385,8 +426,8 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
           }
           onSelect={[MockFunction]}
         />
-      </DataToolbarItem>
-      <DataToolbarItem
+      </Component>
+      <Component
         className="ins-c-primary-toolbar__filter"
       >
         <ConditionalFilter
@@ -412,7 +453,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
           }
           value=""
         />
-      </DataToolbarItem>
+      </Component>
     </ForwardRef>
     <Actions
       actions={Array []}
@@ -442,33 +483,83 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         ]
       }
     />
-    <DataToolbarItem
+    <Component
       className="ins-c-primary-toolbar__sort-by"
     >
       <SortBy
         direction="asc"
         onSortChange={[MockFunction]}
       />
-    </DataToolbarItem>
-    <DataToolbarItem
+    </Component>
+    <Component
       className="ins-c-primary-toolbar__pagination"
     >
-      <Component
+      <Pagination
+        className=""
+        defaultToFullPage={false}
+        firstPage={1}
         isCompact={true}
+        isDisabled={false}
         itemCount={100}
+        itemsEnd={null}
+        itemsStart={null}
+        offset={0}
+        onFirstClick={[Function]}
+        onLastClick={[Function]}
+        onNextClick={[Function]}
+        onPageInput={[Function]}
         onPerPageSelect={[MockFunction]}
+        onPreviousClick={[Function]}
         onSetPage={[MockFunction]}
+        ouiaId={null}
         page={1}
         perPage={10}
+        perPageOptions={
+          Array [
+            Object {
+              "title": "10",
+              "value": 10,
+            },
+            Object {
+              "title": "20",
+              "value": 20,
+            },
+            Object {
+              "title": "50",
+              "value": 50,
+            },
+            Object {
+              "title": "100",
+              "value": 100,
+            },
+          ]
+        }
+        titles={
+          Object {
+            "currPage": "Current page",
+            "items": "",
+            "itemsPerPage": "Items per page",
+            "optionsToggle": "Items per page",
+            "page": "",
+            "paginationTitle": "Pagination",
+            "perPageSuffix": "per page",
+            "toFirstPage": "Go to first page",
+            "toLastPage": "Go to last page",
+            "toNextPage": "Go to next page",
+            "toPreviousPage": "Go to previous page",
+          }
+        }
+        toggleTemplate={[Function]}
+        variant="top"
+        widgetId="pagination-options-menu"
       />
-    </DataToolbarItem>
-  </DataToolbarContent>
-  <DataToolbarContent
-    breakpointMods={Array []}
+    </Component>
+  </ToolbarContent>
+  <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
-    <DataToolbarItem>
+    <Component>
       <FilterChips
         filters={
           Array [
@@ -498,7 +589,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         }
         onDelete={[MockFunction]}
       />
-    </DataToolbarItem>
-  </DataToolbarContent>
-</DataToolbar>
+    </Component>
+  </ToolbarContent>
+</Toolbar>
 `;

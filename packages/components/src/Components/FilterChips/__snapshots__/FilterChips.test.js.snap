@@ -3,26 +3,7 @@
 exports[`FilterChips component should render - no data 1`] = `
 <span
   className="ins-c-chip-filters"
->
-  <ChipGroup
-    className=""
-    collapsedText="\${remaining} more"
-    defaultIsOpen={false}
-    expandedText="Show Less"
-    numChips={Infinity}
-    withToolbar={true}
-  >
-    <ChipGroupToolbarItem
-      categoryName=""
-      className="ins-c-chip-group__plain"
-      closeBtnAriaLabel="Close chip group"
-      isClosable={false}
-      key="group_plain"
-      onClick={[Function]}
-      tooltipPosition="top"
-    />
-  </ChipGroup>
-</span>
+/>
 `;
 
 exports[`FilterChips component should render 1`] = `
@@ -30,62 +11,97 @@ exports[`FilterChips component should render 1`] = `
   className="ins-c-chip-filters"
 >
   <ChipGroup
-    className=""
+    aria-label="Chip group category"
+    categoryName="Group 1"
+    closeBtnAriaLabel="Close chip group"
     collapsedText="\${remaining} more"
     defaultIsOpen={false}
     expandedText="Show Less"
-    numChips={Infinity}
-    withToolbar={true}
+    isClosable={false}
+    key="group_Group 1"
+    numChips={3}
+    onClick={[Function]}
+    tooltipPosition="top"
   >
-    <ChipGroupToolbarItem
-      categoryName="Group 1"
+    <Chip
       className=""
-      closeBtnAriaLabel="Close chip group"
-      isClosable={false}
-      key="group_Group 1"
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      key="Chip 1"
       onClick={[Function]}
       tooltipPosition="top"
     >
-      <Component
-        key="group_Group 1_chip_Chip 1"
-        onClick={[Function]}
-      >
-        Chip 1
-      </Component>
-      <Component
-        key="group_Group 1_chip_Chip 2"
-        onClick={[Function]}
-      >
-        Chip 2
-        <Badge
-          key="chip_badge_undefined"
-        >
-          3
-        </Badge>
-      </Component>
-    </ChipGroupToolbarItem>
-    <ChipGroupToolbarItem
-      categoryName=""
-      className="ins-c-chip-group__plain"
-      closeBtnAriaLabel="Close chip group"
-      isClosable={false}
-      key="group_plain"
+      Chip 1
+    </Chip>
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      key="Chip 2"
       onClick={[Function]}
       tooltipPosition="top"
     >
+      Chip 2
       <Component
-        key="group_plain_chip_Chip 3"
-        onClick={[Function]}
+        key="chip_badge_undefined"
       >
-        Chip 3
+        3
       </Component>
-      <Component
-        key="group_plain_chip_Chip 4"
-        onClick={[Function]}
-      >
-        Chip 4
-      </Component>
-    </ChipGroupToolbarItem>
+    </Chip>
+  </ChipGroup>
+  <ChipGroup
+    aria-label="Chip group category"
+    categoryName=""
+    closeBtnAriaLabel="Close chip group"
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    isClosable={false}
+    key="group_plain_chip_Chip 3"
+    numChips={3}
+    onClick={[Function]}
+    tooltipPosition="top"
+  >
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 3
+    </Chip>
+  </ChipGroup>
+  <ChipGroup
+    aria-label="Chip group category"
+    categoryName=""
+    closeBtnAriaLabel="Close chip group"
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    isClosable={false}
+    key="group_plain_chip_Chip 4"
+    numChips={3}
+    onClick={[Function]}
+    tooltipPosition="top"
+  >
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 4
+    </Chip>
   </ChipGroup>
   <Component
     onClick={[Function]}

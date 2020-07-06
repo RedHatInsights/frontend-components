@@ -1,7 +1,7 @@
-import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import decorator from './decorator';
+import { Button } from '@patternfly/react-core';
 
 describe('TreeTable decorator', () => {
     it('should render correctly - no data', () => {
@@ -34,7 +34,7 @@ describe('TreeTable decorator', () => {
         const callback = jest.fn();
         const { children } = decorator()('value', { rowData: { level: 0, isTreeOpen: true } });
         const wrapper = mount(children);
-        wrapper.find('Button').first().simulate('click');
+        wrapper.find(Button).first().simulate('click');
         expect(callback).not.toHaveBeenCalled();
     });
 
@@ -42,7 +42,7 @@ describe('TreeTable decorator', () => {
         const callback = jest.fn();
         const { children } = decorator(callback)('value', { rowData: { level: 0, isTreeOpen: true } });
         const wrapper = mount(children);
-        wrapper.find('Button').first().simulate('click');
+        wrapper.find(Button).first().simulate('click');
         expect(callback).toHaveBeenCalled();
     });
 });

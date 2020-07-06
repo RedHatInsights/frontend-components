@@ -60,7 +60,7 @@ class Checkbox extends Component {
                 isDisabled={ isDisabled }
                 onSelect={ this.onSelect }
                 selections={ this.calculateSelected() }
-                isExpanded={ isExpanded }
+                isOpen={ isExpanded }
                 placeholderText={ placeholder }
             >
                 { items.map(({ value, onClick, label, id, ...item }, key) => (

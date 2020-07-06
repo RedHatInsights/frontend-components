@@ -8,7 +8,6 @@ exports[`Reboot component should render correctly 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="sm"
-    title={null}
   />
   <span>
     Reboot required
@@ -24,7 +23,6 @@ exports[`Reboot component should render correctly with red 1`] = `
     color="currentColor"
     noVerticalAlign={false}
     size="sm"
-    title={null}
   />
   <span>
     Reboot required

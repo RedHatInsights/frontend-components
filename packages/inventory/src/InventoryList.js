@@ -4,7 +4,6 @@ import InventoryEntityTable from './EntityTable';
 import { loadEntities, showEntities } from './redux/actions';
 import { Grid, GridItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
-import './InventoryList.scss';
 import { InventoryContext } from './Inventory';
 import { CancelToken } from 'axios';
 import isEqual from 'lodash/isEqual';

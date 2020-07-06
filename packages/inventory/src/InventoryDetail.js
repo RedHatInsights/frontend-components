@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { Button } from '@patternfly/react-core';
 import { loadEntity } from './redux/actions';
 import { Link, generatePath } from 'react-router-dom';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
+import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
 import Entitydetail from './EntityDetail';
 import PropTypes from 'prop-types';
-import './InventoryDetail.scss';
 
 class InventoryDetail extends React.Component {
     componentDidMount() {

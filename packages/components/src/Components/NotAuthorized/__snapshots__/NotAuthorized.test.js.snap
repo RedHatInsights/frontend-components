@@ -2,23 +2,23 @@
 
 exports[`NotAuthorized component should render 1`] = `
 <Fragment>
-  <EmptyState
+  <Component
     className="ins-c-not-authorized"
     variant="full"
   >
-    <EmptyStateIcon
+    <Component
       icon={[Function]}
     />
-    <Title
+    <Component
       headingLevel="h5"
       size="lg"
     >
        You do not have access to 
       Foo
-    </Title>
-    <EmptyStateBody>
+    </Component>
+    <Component>
       Contact your organization administrator(s) for more information.
-    </EmptyStateBody>
+    </Component>
     <Component
       component="a"
       href="."
@@ -26,6 +26,6 @@ exports[`NotAuthorized component should render 1`] = `
     >
       Go to landing page
     </Component>
-  </EmptyState>
+  </Component>
 </Fragment>
 `;

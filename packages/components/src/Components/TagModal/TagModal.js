@@ -45,6 +45,7 @@ export default class TagModal extends React.Component {
     render() {
         const {
             className,
+            title,
             systemName,
             toggleModal,
             isOpen,
@@ -67,9 +68,8 @@ export default class TagModal extends React.Component {
                 {...props}
                 className={classNames('ins-c-tag-modal', className)}
                 isOpen={isOpen}
-                title={`Tags for ${systemName}`}
+                title={title || `Tags for ${systemName}`}
                 onClose={toggleModal}
-                isFooterLeftAligned
                 {...onApply && {
                     actions: [
                         <Button key="confirm" variant="primary" onClick={() => {
@@ -172,6 +172,7 @@ export default class TagModal extends React.Component {
 
 TagModal.propTypes = {
     loaded: PropTypes.bool,
+    title: PropTypes.string,
     systemName: PropTypes.string,
     isOpen: PropTypes.bool,
     toggleModal: PropTypes.func,

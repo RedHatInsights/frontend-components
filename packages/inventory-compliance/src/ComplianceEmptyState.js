@@ -46,7 +46,7 @@ const ComplianceEmptyState = ({ title, mainButton, client }) => {
             <EmptyStateIcon style={{ fontWeight: '500', color: 'var(--pf-global--primary-color--100)' }}
                 size="xl" title="Compliance" icon={CloudSecurityIcon} />
             <br/>
-            <Title size="lg">{ title }</Title>
+            <Title headingLevel="h1" size="lg">{ title }</Title>
             <br/>
             <EmptyStateBody>
                 { policiesCount > 0 &&

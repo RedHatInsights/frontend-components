@@ -1,7 +1,7 @@
 import React, { createContext, Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
-import { TableToolbar } from '@redhat-cloud-services/frontend-components';
+import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/esm/RouterParams';
+import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/esm/TableToolbar';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail';
 import Pagination from './Pagination';

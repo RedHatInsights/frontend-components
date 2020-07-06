@@ -40,7 +40,6 @@ exports[`CullingInformation it should render correctly without any date 1`] = `
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
     </span>
   </Tooltip>
@@ -87,7 +86,6 @@ exports[`CullingInformation should render with dates - danger 1`] = `
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       Some children
     </span>
@@ -137,7 +135,6 @@ exports[`CullingInformation should render with dates - warning 1`] = `
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       Some children
     </span>
@@ -185,7 +182,6 @@ exports[`CullingInformation should render with dates 1`] = `
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       Some children
     </span>

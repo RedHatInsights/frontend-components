@@ -29,7 +29,7 @@ import PropTypes from 'prop-types';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import ReportDetails from './ReportDetails';
 import TimesCircleIcon from '@patternfly/react-icons/dist/js/icons/times-circle-icon';
-import { ToolbarItem } from '@patternfly/react-core/dist/js/layouts/Toolbar/ToolbarItem';
+import { ToolbarItem } from '@patternfly/react-core/dist/js/components/Toolbar';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import connect from 'react-redux/es/connect/connect';
 

@@ -212,7 +212,6 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container) =
             },
             container,
             showTitles: true,
-            predictSteps: true,
             crossroads: [ 'application.application_type_id', 'source_type', 'auth_select' ],
             fields: [
                 nameStep(),

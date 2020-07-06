@@ -5,8 +5,9 @@ import { ExclamationTriangleIcon } from '@patternfly/react-icons';
 
 const CloseModal = ({ onExit, onStay, isOpen, title, exitTitle, stayTitle, description }) => (
     <Modal
-        isSmall
+        variant="small"
         title={title}
+        aria-label="Close add source wizard"
         header={
             <TextContent>
                 <ExclamationTriangleIcon size="lg" className="ins-c-source__warning-icon" />
@@ -25,7 +26,6 @@ const CloseModal = ({ onExit, onStay, isOpen, title, exitTitle, stayTitle, descr
                 {stayTitle}
             </Button>
         ]}
-        isFooterLeftAligned
     >
         {description}
     </Modal>

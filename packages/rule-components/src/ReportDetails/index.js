@@ -5,13 +5,14 @@ import {
     GridItem,
     Stack,
     StackItem,
-    Title
+    Title,
+    Text
 } from '@patternfly/react-core';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
 import RuleFeedback, { feedback } from './RuleFeedback';
-import Markdown from './Markdown';
+import Markdown from '../Markdown';
 import { riskOfChangeMeta, totalRiskMeta } from './constants';
 import RiskDescription from './RiskDescription';
-import RemediatingModal from './RemediatingModal';
 import doT from 'dot';
 
 export { default as style } from './index.scss';
@@ -33,30 +34,46 @@ const ReportDetails = (
         totalRisk,
         riskOfChange,
         showRiskDescription,
-        remediating,
         definitions,
+        createdAt,
         userVote,
+        title,
+        actions,
         onFeedbackChanged
     }) => {
 
-    return <Grid gutter="md" className="ins-c-rule__report-detail">
-        <GridItem span={ 7 }>
-            <Stack gutter="md">
+    return <Grid className="ins-c-rule__report-detail" hasGutter gutter="md">
+        {
+            title && actions &&
+            <React.Fragment>
+                <GridItem span={ 8 }>
+                    <Stack>
+                        <StackItem>
+                            {title}
+                        </StackItem>
+                        {
+                            createdAt &&
+                            <StackItem>
+                                <Text>
+                                    Published date: {createdAt}
+                                </Text>
+                            </StackItem>
+                        }
+                    </Stack>
+                </GridItem>
+                <GridItem span={ 4 } className="ins-c-rule__report-detail-actions">
+                    {actions}
+                </GridItem>
+            </React.Fragment>
+        }
+        <GridItem span={ 8 }>
+            <Stack hasGutter gutter="md">
                 <StackItem>
                     <div>
                         <Markdown
                             template={ details }
                             definitions={ definitions }
                         />
-                    </div>
-                    <div>
-                        {
-                            remediating && <RemediatingModal
-                                reason={ remediating.reason }
-                                resolution={ remediating.resolution }
-                                definitions={ definitions }
-                            />
-                        }
                     </div>
                 </StackItem>
                 <StackItem>
@@ -72,12 +89,12 @@ const ReportDetails = (
             </Stack>
         </GridItem>
 
-        <GridItem span={ 3 }>
-            <Stack gutter="md">
+        <GridItem span={ 4 }>
+            <Stack hasGutter gutter="md">
                 <StackItem>
                     <Stack>
                         <StackItem>
-                            <Title className="ins-c-rule__risk-detail-title" size="md">Total risk</Title>
+                            <Title headingLevel="h1" className="ins-c-rule__risk-detail-title" size="md">Total risk</Title>
                         </StackItem>
                         <StackItem>
                             <RiskDescription
@@ -93,7 +110,7 @@ const ReportDetails = (
                     <StackItem>
                         <Stack>
                             <StackItem>
-                                <Title className="ins-c-rule__risk-detail-title" size="md">Risk of change</Title>
+                                <Title headingLevel="h1" className="ins-c-rule__risk-detail-title" size="md">Risk of change</Title>
                             </StackItem>
                             <StackItem>
                                 <RiskDescription
@@ -118,10 +135,9 @@ ReportDetails.propTypes = {
     userVote: PropTypes.oneOf(Object.values(feedback)),
     showRiskDescription: PropTypes.bool,
     definitions: PropTypes.object,
-    remediating: PropTypes.shape({
-        reason: PropTypes.string,
-        resolution: PropTypes.string
-    }),
+    createdAt: PropTypes.node,
+    title: PropTypes.node,
+    actions: PropTypes.node,
     onFeedbackChanged: PropTypes.func
 };
 

@@ -22,17 +22,18 @@ const FinishedStep = ({
     progressStep,
     progressTexts,
     title,
-    linkText
+    linkText,
+    secondaryActions
 }) => (
     <Bullseye>
         <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__empty-state" >
-            <EmptyStateIcon icon={ CheckCircleIcon } color="var(--pf-global--success-color--200)" className="pf-u-mb-0"/>
+            <EmptyStateIcon icon={ CheckCircleIcon } color="var(--pf-global--success-color--100)" className="pf-u-mb-0"/>
             <Title headingLevel="h5" size="lg" className="pf-u-mt-xl">
                 {title}
             </Title>
             <EmptyStateBody>
                 <Progress
-                    className="pf-u-mb-md ins-c-sources__progress ins-c-sources__progress-success"
+                    className="pf-u-mb-md ins-c-sources__progress"
                     value={progressStep}
                     min={0}
                     title=" "
@@ -51,6 +52,11 @@ const FinishedStep = ({
                     </a>
                 </EmptyStateSecondaryActions>
             ) }
+            {secondaryActions && (
+                <EmptyStateSecondaryActions>
+                    {secondaryActions}
+                </EmptyStateSecondaryActions>
+            )}
         </EmptyState>
     </Bullseye>
 );
@@ -63,7 +69,8 @@ FinishedStep.propTypes = {
     progressStep: PropTypes.number.isRequired,
     progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.node,
-    linkText: PropTypes.node
+    linkText: PropTypes.node,
+    secondaryActions: PropTypes.node
 };
 
 FinishedStep.defaultProps = {

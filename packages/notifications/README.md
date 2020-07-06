@@ -45,13 +45,17 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 
 There are 2 plugins that can be used to change relative imports to direct imports
 * [babel-plugin-import](https://www.npmjs.com/package/babel-plugin-import) - easy setup, however not that extensible
-* [transform-imports](https://www.npmjs.com/package/transform-imports) - harder to setup, but allows custom rules
+* [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) - harder to setup, but allows custom rules
 
-Since our components require a bit more setting up, we are recommending using `transform-imports`.
+Since our components require a bit more setting up, we are recommending using `babel-plugin-transform-imports`.
 
 Change your babel config to be javascript config `babel.config.js` so you can use JS functions to properly transform your imports
 
 ```JS
+notificationsMapper = {
+    addNotification: 'actions',
+    removeNotification: 'actions',
+};
 module.exports = {
     presets: [
         // your presets go here
@@ -63,8 +67,8 @@ module.exports = {
             {
               '@redhat-cloud-services/frontend-components-notifications': {
                 transform: (importName) =>
-                  `@redhat-cloud-services/frontend-components-notifications/cjs/${importName}`,
-                preventFullImport: true
+                  `@redhat-cloud-services/frontend-components-notifications/cjs/${notificationsMapper[importName] || importName}`,
+                preventFullImport: true,
               }
             },
             'frontend-notifications'
