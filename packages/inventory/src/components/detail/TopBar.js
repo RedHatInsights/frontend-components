@@ -32,7 +32,7 @@ const TopBar = ({
             <SplitItem isFilled>
                 {
                     loaded ? (
-                        <Title size='2xl'>{ entity && entity.display_name }</Title>
+                        <Title headingLevel="h1" size='2xl'>{ entity && entity.display_name }</Title>
                     ) :
                         <Skeleton size={ SkeletonSize.md } />
                 }

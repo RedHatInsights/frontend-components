@@ -20,17 +20,19 @@ const TitleColumn = (data, id, item, props) => {
         <div className="ins-composed-col">
             <div>{item.os_release}</div>
             { !props.noDetail ?
-                <a
-                    widget="col"
-                    href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${id}` }
-                    onClick={ event => {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        onRowClick(event, id, props);
-                    }}
-                >
-                    { data }
-                </a> :
+                <div>
+                    <a
+                        widget="col"
+                        href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${id}` }
+                        onClick={ event => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            onRowClick(event, id, props);
+                        }}
+                    >
+                        { data }
+                    </a>
+                </div> :
                 <div>
                     {data}
                 </div>
