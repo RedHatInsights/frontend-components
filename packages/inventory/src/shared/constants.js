@@ -1,9 +1,6 @@
 import React, { createContext } from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
 import { loadEntities } from '../redux/actions';
-import { cellWidth, sortable, expandable } from '@patternfly/react-table';
-import { CancelToken } from 'axios';
-
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
 export const TAG_CHIP = 'tags';
@@ -188,9 +185,6 @@ export const registered = [
 export const InventoryContext = createContext({});
 
 export const loadSystems = (options, showTags) => {
-
-    console.log(options, 'Am I here?');
-
     // eslint-disable-next-line camelcase
     const currPerPage = options?.perPage || options?.per_page;
 
@@ -214,20 +208,6 @@ export const loadSystems = (options, showTags) => {
 
     return loadEntities(limitedItems, config, { showTags });
 };
-
-export const createColumns = (columns, hasItems, rows, isExpandable) => (
-    columns.map(({ props, transforms, ...oneCell }) => ({
-        ...oneCell,
-        transforms: [
-            ...transforms || [],
-            ...props && props.width ? [ cellWidth(props.width) ] : [],
-            ...hasItems || rows.length <= 0 || (props && props.isStatic) ? [] : [ sortable ]
-        ],
-        cellFormatters: [
-            ...isExpandable ? [ expandable ] : []
-        ]
-    }))
-);
 
 export const reloadWrapper = (event, callback) => {
     event.payload.then(data => {

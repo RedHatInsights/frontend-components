@@ -9,8 +9,6 @@ const onRowClick = (event, key, { loaded, onRowClick, noDetail }) => {
             window.open(url.href);
         } else if (onRowClick) {
             onRowClick(event, key, isMetaKey);
-        } else {
-            location.href = new URL(`./${key}`, location.href);
         }
     }
 };

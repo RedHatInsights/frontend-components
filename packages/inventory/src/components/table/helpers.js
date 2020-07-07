@@ -1,5 +1,6 @@
 import React from 'react';
 import NoSystemsTable from './NoSystemsTable';
+import { cellWidth, sortable, expandable } from '@patternfly/react-table';
 import get from 'lodash/get';
 
 export const buildCells = (item, columns, extra) => {
@@ -52,3 +53,17 @@ export const onDeleteTag = (deleted, selectedTags, onApplyTags) => {
     onApplyTags(selectedTags, false);
     return selectedTags;
 };
+
+export const createColumns = (columns, hasItems, rows, isExpandable) => (
+    columns.map(({ props, transforms, ...oneCell }) => ({
+        ...oneCell,
+        transforms: [
+            ...transforms || [],
+            ...props && props.width ? [ cellWidth(props.width) ] : [],
+            ...hasItems || rows.length <= 0 || (props && props.isStatic) ? [] : [ sortable ]
+        ],
+        cellFormatters: [
+            ...isExpandable ? [ expandable ] : []
+        ]
+    }))
+);

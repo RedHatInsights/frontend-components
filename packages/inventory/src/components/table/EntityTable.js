@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { selectEntity, setSort } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
     Table as PfTable,
     TableBody,
@@ -10,8 +11,7 @@ import {
     TableVariant
 } from '@patternfly/react-table';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/esm/SkeletonTable';
-import { createColumns } from '../../shared/constants';
-import { createRows } from './helpers';
+import { createRows, createColumns } from './helpers';
 
 const EntityTable = ({
     hasItems,
@@ -29,6 +29,7 @@ const EntityTable = ({
     noDetail
 }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const loaded = useSelector(({ entities: { loaded } }) => (
         hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded
     ));
@@ -50,6 +51,10 @@ const EntityTable = ({
 
     const cells = loaded && createColumns(columns, hasItems, rows, isExpandable);
 
+    const defaultRowClick = (_event, key) => {
+        history.push(`/${key}`);
+    };
+
     return (
         <React.Fragment>
             { loaded ?
@@ -60,7 +65,14 @@ const EntityTable = ({
                     rows={ createRows(
                         rows,
                         columns,
-                        { actions, expandable, loaded, onRowClick, noDetail, sortBy })
+                        {
+                            actions,
+                            expandable,
+                            loaded,
+                            onRowClick: onRowClick || defaultRowClick,
+                            noDetail,
+                            sortBy
+                        })
                     }
                     gridBreakPoint={
                         columns.length > 5 ?
