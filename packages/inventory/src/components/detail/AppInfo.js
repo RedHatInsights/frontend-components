@@ -8,7 +8,7 @@ class AppInfo extends Component {
     render () {
         const { activeApps, active, loaded, componentsMapper, store } = this.props;
         const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
-        const Cmp = activeApp && activeApp.name ? componentsMapper?.[activeApp.name] || activeApp?.component : 'missing component';
+        const Cmp = activeApp?.name && (componentsMapper?.[activeApp.name] || activeApp?.component);
         return (
             <Fragment>
                 { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>

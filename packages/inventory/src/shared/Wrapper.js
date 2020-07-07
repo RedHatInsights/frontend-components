@@ -1,20 +1,17 @@
-import React, { PureComponent, createRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class RenderWrapper extends PureComponent {
-    ref = createRef();
+console.log('fff');
 
-    render() {
-        const { cmp: Component, inventoryRef, store, ...props } = this.props;
-        return <Component
-            {...props}
-            { ...inventoryRef && {
-                ref: inventoryRef
-            }}
-            store={ store }
-        />;
-    }
-}
+const RenderWrapper = ({ cmp: Component, inventoryRef, store, ...props }) => (
+    <Component
+        {...props}
+        { ...inventoryRef && {
+            ref: inventoryRef
+        }}
+        store={ store }
+    />
+);
 
 RenderWrapper.propTypes = {
     cmp: PropTypes.any,

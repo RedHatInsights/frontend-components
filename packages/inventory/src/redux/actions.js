@@ -22,16 +22,14 @@ export const loadEntities = (items = [], config, { showTags } = {}) => {
     ), []).filter(Boolean);
     return {
         type: ACTION_TYPES.LOAD_ENTITIES,
-        payload: getEntities(itemIds, config, showTags).then(({ results, ...data }) => {
-            return ({
-                ...data,
-                results: items.length > 0 ? items.map((item) => ({
-                    ...item.id ? item : { id: item },
-                    ...results.find(({ id }) => id === item || id === item.id) || {}
-                })) : results,
-                page: config.itemsPage || (data && data.page)
-            });
-        }),
+        payload: getEntities(itemIds, config, showTags).then(({ results, ...data }) => ({
+            ...data,
+            results: items.length > 0 ? items.map((item) => ({
+                ...item.id ? item : { id: item },
+                ...results.find(({ id }) => id === item || id === item.id) || {}
+            })) : results,
+            page: config.itemsPage || (data && data.page)
+        })),
         meta: {
             showTags
         }
