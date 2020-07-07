@@ -448,7 +448,7 @@ class InventoryRuleList extends Component {
             )}
             {inventoryReportFetchStatus === 'fulfilled' &&
                 (hideResultsSatelliteManaged ?
-                    <MessageState icon={PficonSatelliteIcon} title='Satellite managed system' size='md'
+                    <MessageState icon={PficonSatelliteIcon} title='Satellite managed system'
                         text={<span key='satellite managed system'>
                             Insights results can not be displayed for this host, as the &quot;Hide Satellite Managed Systems&quot; setting has been
                             enabled by an org admin.<br />For more information on this setting and how to modify it,
@@ -464,13 +464,13 @@ class InventoryRuleList extends Component {
                                 <TableBody />
                             </Table>
                             {results === 0 &&
-                                <MessageState icon={TimesCircleIcon} title='No matching recommendations found' size='md'
+                                <MessageState icon={TimesCircleIcon} title='No matching recommendations found'
                                     text={`This filter criteria matches no recommendations. Try changing your filter settings.`} />
                             }
                         </Fragment>
                         : entity.insights_id !== null ? <Card>
                             <CardBody>
-                                <MessageState icon={CheckIcon} iconClass='ins-c-insights__check' size='md'
+                                <MessageState icon={CheckIcon} iconClass='ins-c-insights__check'
                                     title='No recommendations' text={`No known recommendations affect this system`} />
                             </CardBody>
                         </Card>
@@ -479,7 +479,7 @@ class InventoryRuleList extends Component {
                                 icon={ChartSpikeIcon}
                                 title='Get started with Red Hat Insights'
                                 text={<Bullseye>
-                                    <Stack gutter="md">
+                                    <Stack hasGutter>
                                         <StackItem>
                                             1. Install the client on the RHEL system.
                                             <ClipboardCopy>yum install insights-client</ClipboardCopy>
@@ -498,7 +498,7 @@ class InventoryRuleList extends Component {
                     ))
             }
             {inventoryReportFetchStatus === 'failed' && entity &&
-                <MessageState icon={TimesCircleIcon} title='Error getting recommendations' size='md'
+                <MessageState icon={TimesCircleIcon} title='Error getting recommendations'
                     text={entity ? `There was an error fetching recommendations for this entity. Refresh your page to try again.`
                         : `This entity can not be found or might no longer be registered to Red Hat Insights.`} />
 
