@@ -140,7 +140,7 @@ SystemQuery.defaultProps = {
 
 const WrappedSystemDetails = ({ customItnl, intlProps, ...props }) => {
     const IntlWrapper = customItnl ? IntlProvider : Fragment;
-    console.log(IntlWrapper, IntlProvider, 'fff');
+
     return <IntlWrapper { ...customItnl && intlProps } >
         <SystemDetails { ...props } />
     </IntlWrapper>;
