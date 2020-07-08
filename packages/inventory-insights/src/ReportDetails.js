@@ -63,7 +63,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
 
     return <Card style={{ boxShadow: 'none' }}>
         <CardBody>
-            <Stack className={rulesCardClasses} widget-type='InsightsRulesCard' gutter='md'>
+            <Stack className={rulesCardClasses} widget-type='InsightsRulesCard' hasGutter>
                 <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
