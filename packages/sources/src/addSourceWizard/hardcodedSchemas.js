@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { FormHelperText } from '@patternfly/react-core';
 
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
 import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
@@ -521,10 +522,12 @@ export default {
                             },
                             { type: validatorTypes.URL }
                         ],
-                        helperText: <FormattedMessage
-                            id="wizard.ForExampleHttpsMyansibleinstanceExampleComOrHttps"
-                            defaultMessage="For example, https://myansibleinstance.example.com/ or https://127.0.0.1/"
-                        />,
+                        helperText: <FormHelperText isHidden={false}>
+                            <FormattedMessage
+                                id="wizard.ForExampleHttpsMyansibleinstanceExampleComOrHttps"
+                                defaultMessage="For example, https://myansibleinstance.example.com/ or https://127.0.0.1/"
+                            />
+                        </FormHelperText>,
                         label: <FormattedMessage id="wizard.Hostname" defaultMessage="Hostname" />
                     },
                     'endpoint.certificate_authority': {
