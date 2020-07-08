@@ -9,7 +9,7 @@ Import TableToolbar and styles from this package.
 ```JSX
 import React from 'react';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components';
-import { PageHeaderToolsGroup, PageHeaderToolsItem } from '@patternfly/react-core';
+import { ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 
 
 class YourCmp extends React.Component {
@@ -17,10 +17,10 @@ class YourCmp extends React.Component {
     return (
         <TableToolbar>
             // Whatever content you want inside the toolbar (search, buttons, etc) can go in ToolbarItem
-            <PageHeaderToolsGroup>
-              <PageHeaderToolsItem> Foo </PageHeaderToolsItem>
-              <PageHeaderToolsItem> Bar </PageHeaderToolsItem>
-            </PageHeaderToolsGroup>
+            <ToolbarGroup>
+              <ToolbarItem> Foo </ToolbarItem>
+              <ToolbarItem> Bar </ToolbarItem>
+            </ToolbarGroup>
         </TableToolbar>
         <Table>
             // Table content
