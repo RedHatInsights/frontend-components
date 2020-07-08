@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import {
     EmptyStateBody,
@@ -71,9 +72,9 @@ ErroredStep.propTypes = {
 };
 
 ErroredStep.defaultProps = {
-    title: 'Configuration unsuccessful',
-    customText: 'Your source has not been successfully added:',
-    retryText: 'Retry'
+    title: <FormattedMessage id="wizard.unsuccConfiguration" defaultMessage="Configuration unsuccessful"/>,
+    customText: <FormattedMessage id="wizard.errorText" defaultMessage="Your source has not been successfully added:"/>,
+    retryText: <FormattedMessage id="wizard.retryText" defaultMessage="Retry"/>
 };
 
 export default ErroredStep;

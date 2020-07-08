@@ -3,6 +3,7 @@ import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/comp
 import componentMapper from '@data-driven-forms/pf4-component-mapper/dist/cjs/component-mapper';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
+import { FormattedMessage } from 'react-intl';
 
 const Authentication = (rest) => {
     const formOptions = useFormApi();
@@ -15,7 +16,11 @@ const Authentication = (rest) => {
         ...rest,
         ...(authentication && authentication.id ? {
             isRequired: false,
-            helperText: `Changing this resets your current ${rest.label}.`,
+            helperText: <FormattedMessage
+                id="wizard.ChangingThisResetsYourCurrentRestLabel"
+                defaultMessage="Changing this resets your current {label}."
+                values={{ label: rest.label }}
+            />,
             validate: doNotRequirePassword
         } : {})
     };

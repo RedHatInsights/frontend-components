@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio, FormHelperText } from '@patternfly/react-core';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
+import { FormattedMessage } from 'react-intl';
 
 const AuthRadio = (props) => {
     const { label, input, authName, supportedAuthTypes, disableAuthType } = useFieldApi(props);
@@ -25,7 +26,7 @@ const AuthRadio = (props) => {
                 isDisabled={isDisabled}
             />
             {disableAuthType && !isSelected && <FormHelperText isHidden={false} className="pf-m-disabled">
-                You cannot change the authtype, when editing.
+                <FormattedMessage id="wizard.YouCannotChangeTheAuthtypeWhenEditing" defaultMessage="You cannot change the authtype, when editing." />
             </FormHelperText>}
         </React.Fragment>
     );

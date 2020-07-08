@@ -1,4 +1,6 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
 import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
 import SSLFormLabel from './SSLFormLabel';
@@ -19,6 +21,9 @@ export const COST_MANAGEMENT_APP_NAME = '/insights/platform/cost-management';
 export const CLOUD_METER_APP_NAME = '/insights/platform/cloud-meter';
 export const CATALOG_APP = '/insights/platform/catalog';
 
+const arnMessagePattern = <FormattedMessage id="wizard.arnPattern" defaultMessage="ARN must start with arn:aws:"/>;
+const arnMessageLength = <FormattedMessage id="wizard.arnLength" defaultMessage="ARN should have at least 10 characters"/>;
+
 const arnField = {
     placeholder: 'arn:aws:iam:123456789:role/CostManagement',
     isRequired: true,
@@ -27,11 +32,11 @@ const arnField = {
     },  {
         type: validatorTypes.PATTERN,
         pattern: /^arn:aws:.*/,
-        message: 'ARN must start with arn:aws:'
+        message: arnMessagePattern
     }, {
         type: validatorTypes.MIN_LENGTH,
         threshold: 10,
-        message: 'ARN should have at least 10 characters'
+        message: arnMessageLength
     }]
 };
 
@@ -43,13 +48,13 @@ const subsWatchArnField = {
     }, {
         type: validatorTypes.PATTERN,
         pattern: /^arn:aws:.*/,
-        message: 'ARN must start with arn:aws:'
+        message: arnMessagePattern
     }, {
         type: validatorTypes.MIN_LENGTH,
         threshold: 10,
-        message: 'ARN should have at least 10 characters'
+        message: arnMessageLength
     }],
-    label: 'ARN'
+    label: <FormattedMessage id="wizard.Arn" defaultMessage="ARN" />
 };
 
 export default {
@@ -71,7 +76,7 @@ export default {
                     skipSelection: true,
                     skipEndpoint: true,
                     'source.source_ref': {
-                        label: 'Cluster Identifier',
+                        label: <FormattedMessage id="wizard.clusterId" defaultMessage="Cluster Indetifier"/>,
                         isRequired: true,
                         component: componentTypes.TEXT_FIELD,
                         validate: [{
@@ -79,11 +84,14 @@ export default {
                         }, {
                             type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
-                            message: 'Cluster ID must start with alphanumeric character and can contain underscore and hyphen'
+                            message: <FormattedMessage
+                                id="wizard.clusterIdPattern"
+                                defaultMessage="Cluster ID must start with alphanumeric character and can contain underscore and hyphen"
+                            />
                         }]
                     },
                     additionalSteps: [{
-                        title: 'Configure Cost Management Operator',
+                        title: <FormattedMessage id="wizard.ConfigureCostManagementOperator" defaultMessage="Configure Cost Management Operator" />,
                         fields: [{
                             component: 'description',
                             name: 'description-summary',
@@ -107,7 +115,7 @@ export default {
                 isRequired: true,
                 validate: [
                     { type: validatorTypes.REQUIRED },
-                    { type: validatorTypes.URL, message: 'The URL is not formatted correctly.' }
+                    { type: validatorTypes.URL, message: <FormattedMessage id="wizard.urlPatternMessage" defaultMessage="The URL is not formatted correctly."/> }
                 ]
             },
             'endpoint.certificate_authority': {
@@ -133,7 +141,10 @@ export default {
                         }, {
                             type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
-                            message: 'Subscription ID must start with alphanumeric character and can contain underscore and hyphen'
+                            message: <FormattedMessage
+                                id="wizard.subidPattern"
+                                defaultMessage="Subscription ID must start with alphanumeric character and can contain underscore and hyphen"
+                            />
                         }],
                         isRequired: true
                     },
@@ -144,7 +155,10 @@ export default {
                         }, {
                             type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
-                            message: 'Resource group must start with alphanumeric character and can contain underscore and hyphen'
+                            message: <FormattedMessage
+                                id="wizard.resourceGroupPattern"
+                                defaultMessage="Resource group must start with alphanumeric character and can contain underscore and hyphen"
+                            />
                         }],
                         isRequired: true
                     },
@@ -155,7 +169,10 @@ export default {
                         }, {
                             type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
-                            message: 'Storage account must start with alphanumeric character and can contain underscore and hyphen'
+                            message: <FormattedMessage
+                                id="wizard.storageAccountPattern"
+                                defaultMessage="Storage account must start with alphanumeric character and can contain underscore and hyphen"
+                            />
                         }],
                         isRequired: true
                     },
@@ -165,24 +182,24 @@ export default {
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }],
-                        label: 'Client secret'
+                        label: <FormattedMessage id="wizard.clientSecret" defaultMessage="Client secret"/>
                     },
                     'authentication.username': {
                         isRequired: true,
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }],
-                        label: 'Client (Application) ID'
+                        label: <FormattedMessage id="wizard.clientAppId" defaultMessage="Client (Application) ID" />
                     },
                     'authentication.extra.azure.tenant_id': {
                         isRequired: true,
-                        label: 'Tenant (Directory) ID',
+                        label: <FormattedMessage id="wizard.tenantDirId" defaultMessage="Tenant (Directory) ID" />,
                         validate: [{
                             type: validatorTypes.REQUIRED
                         }]
                     },
                     additionalSteps: [{
-                        title: 'Configure resource group and storage account',
+                        title: <FormattedMessage id="wizard.azureSubStepId" defaultMessage="Configure resource group and storage account" />,
                         nextStep: 'azure-sub-id',
                         fields: [{
                             component: componentTypes.TEXT_FIELD,
@@ -197,14 +214,14 @@ export default {
                         }, {
                             name: 'billing_source.data_source.resource_group',
                             component: componentTypes.TEXT_FIELD,
-                            label: 'Resource group name'
+                            label: <FormattedMessage id="wizard.resourceGroupName" defaultMessage="Resource group name" />
                         }, {
                             name: 'billing_source.data_source.storage_account',
                             component: componentTypes.TEXT_FIELD,
-                            label: 'Storage account name'
+                            label: <FormattedMessage id="wizard.storageAccountName" defaultMessage="Storage account name" />
                         }]
                     }, {
-                        title: 'Enter subscription ID',
+                        title: <FormattedMessage id="wizard.SubItTitle" defaultMessage="Enter subscription ID" />,
                         name: 'azure-sub-id',
                         nextStep: 'configure-roles',
                         fields: [{
@@ -214,10 +231,10 @@ export default {
                         }, {
                             name: 'credentials.subscription_id',
                             component: componentTypes.TEXT_FIELD,
-                            label: 'Subscription ID'
+                            label: <FormattedMessage id="wizard.SubIdID" defaultMessage="Subscription ID" />
                         }]
                     }, {
-                        title: 'Configure roles',
+                        title: <FormattedMessage id="wizard.ConfigureRoles" defaultMessage="Configure roles" />,
                         name: 'configure-roles',
                         nextStep: 'export-schedule',
                         fields: [{
@@ -239,7 +256,7 @@ export default {
                             Content: CMAzure.ReaderRoleDescription
                         }]
                     }, {
-                        title: 'Create daily export',
+                        title: <FormattedMessage id="wizard.DailyExport" defaultMessage="Create daily export" />,
                         name: 'export-schedule',
                         fields: [{
                             name: 'export-schedule-description',
@@ -256,13 +273,13 @@ export default {
             access_key_secret_key: {
                 generic: {
                     'authentication.username': {
-                        label: 'Access key ID',
+                        label: <FormattedMessage id="wizard.AccessKeyId" defaultMessage="Access key ID" />,
                         placeholder: 'AKIAIOSFODNN7EXAMPLE',
                         isRequired: true,
                         validate: [{ type: validatorTypes.REQUIRED }]
                     },
                     'authentication.password': {
-                        label: 'Secret access key',
+                        label: <FormattedMessage id="wizard.SecretAccessKey" defaultMessage="Secret access key" />,
                         placeholder: 'wJairXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
                         isRequired: true,
                         validate: [{ type: validatorTypes.REQUIRED }],
@@ -271,7 +288,7 @@ export default {
                     skipSelection: true,
                     onlyHiddenFields: true,
                     additionalSteps: [{
-                        title: 'Configure account access',
+                        title: <FormattedMessage id="wizard.ConfigureAccountAccess" defaultMessage="Configure account access" />,
                         fields: [{
                             component: 'description',
                             name: 'description-summary',
@@ -307,12 +324,15 @@ export default {
                         }, {
                             type: validatorTypes.PATTERN,
                             pattern: /^[A-Za-z0-9]+[A-Za-z0-9_-]*$/,
-                            message: 'S3 bucket name must start with alphanumeric character and can contain underscore and hyphen'
+                            message: <FormattedMessage
+                                id="wizard.S3BucketPattern"
+                                defaultMessage="S3 bucket name must start with alphanumeric character and can contain underscore and hyphen"
+                            />
                         }],
                         isRequired: true
                     },
                     additionalSteps: [{
-                        title: 'Configure cost and usage reporting',
+                        title: <FormattedMessage id="wizard.usageDescriptionTitle" defaultMessage="Configure cost and usage reporting" />,
                         nextStep: 'tags',
                         fields: [{
                             name: 'usage-description',
@@ -321,7 +341,7 @@ export default {
                         },  {
                             name: 'billing_source.bucket',
                             component: componentTypes.TEXT_FIELD,
-                            label: 'S3 bucket name'
+                            label: <FormattedMessage id="wizard.S3Label" defaultMessage="S3 bucket name" />
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.authtype',
@@ -330,7 +350,7 @@ export default {
                             initializeOnMount: true
                         }]
                     }, {
-                        title: 'Activate cost allocation tags',
+                        title: <FormattedMessage id="wizard.TagsStepTitle" defaultMessage="Activate cost allocation tags" />,
                         name: 'tags',
                         nextStep: 'iam-policy',
                         fields: [{
@@ -340,7 +360,7 @@ export default {
                         }]
                     },
                     {
-                        title: 'Create IAM policy',
+                        title: <FormattedMessage id="wizard.IamPolicyTitle" defaultMessage="Create IAM policy" />,
                         name: 'iam-policy',
                         nextStep: 'iam-role',
                         substepOf: 'Enable account access',
@@ -350,7 +370,7 @@ export default {
                             Content: AwsArn.IAMPolicyDescription
                         }]
                     }, {
-                        title: 'Create IAM role',
+                        title: <FormattedMessage id="wizard.IamRoleStepTitle" defaultMessage="Create IAM role" />,
                         name: 'iam-role',
                         nextStep: 'arn',
                         substepOf: 'Enable account access',
@@ -360,7 +380,7 @@ export default {
                             Content: AwsArn.IAMRoleDescription
                         }]
                     }, {
-                        title: 'Enter ARN',
+                        title: <FormattedMessage id="wizard.EnterArn" defaultMessage="Enter ARN" />,
                         name: 'arn',
                         substepOf: 'Enable account access',
                         fields: [{
@@ -376,7 +396,7 @@ export default {
                     skipSelection: true,
                     'authentication.password': subsWatchArnField,
                     additionalSteps: [{
-                        title: 'Create IAM policy',
+                        title: <FormattedMessage id="wizard.CreateIamPolicy" defaultMessage="Create IAM policy" />,
                         nextStep: 'subs-iam-role',
                         substepOf: 'Enable account access',
                         fields: [{
@@ -391,7 +411,7 @@ export default {
                             initializeOnMount: true
                         }]
                     }, {
-                        title: 'Create IAM role',
+                        title: <FormattedMessage id="wizard.CreateIamRole" defaultMessage="Create IAM role" />,
                         name: 'subs-iam-role',
                         nextStep: 'subs-arn',
                         substepOf: 'Enable account access',
@@ -401,7 +421,7 @@ export default {
                             Content: SWAwsArn.IAMRoleDescription
                         }]
                     }, {
-                        title: 'Enter ARN',
+                        title: <FormattedMessage id="wizard.EnterArn" defaultMessage="Enter ARN" />,
                         name: 'subs-arn',
                         substepOf: 'Enable account access',
                         fields: [{
@@ -425,13 +445,13 @@ export default {
             receptor_node: {
                 generic: {
                     'source.source_ref': {
-                        label: 'Satellite ID',
+                        label: <FormattedMessage id="wizard.SatelliteId" defaultMessage="Satellite ID" />,
                         isRequired: true,
                         validate: [{ type: validatorTypes.REQUIRED }],
                         component: componentTypes.TEXT_FIELD
                     },
                     'endpoint.receptor_node': {
-                        label: 'Receptor ID',
+                        label: <FormattedMessage id="wizard.ReceptorId" defaultMessage="Receptor ID" />,
                         isRequired: true,
                         validate: [{ type: validatorTypes.REQUIRED }],
                         component: componentTypes.TEXT_FIELD
@@ -440,7 +460,7 @@ export default {
                     onlyHiddenFields: true,
                     customSteps: true,
                     additionalSteps: [{
-                        title: 'Configure receptor node credentials',
+                        title: <FormattedMessage id="wizard.ConfigureReceptorNodeCredentials" defaultMessage="Configure receptor node credentials" />,
                         nextStep: 'summary',
                         fields: [{
                             name: 'source.source_ref'
@@ -482,13 +502,13 @@ export default {
                     'authentication.username': {
                         isRequired: false,
                         validate: [{ type: validatorTypes.REQUIRED }],
-                        label: 'Username'
+                        label: <FormattedMessage id="wizard.Username" defaultMessage="Username" />
                     },
                     'authentication.password': {
                         type: 'password',
                         isRequired: false,
                         validate: [{ type: validatorTypes.REQUIRED }],
-                        label: 'Password'
+                        label: <FormattedMessage id="wizard.Password" defaultMessage="Password" />
                     },
                     url: {
                         isRequired: true,
@@ -496,24 +516,27 @@ export default {
                             { type: validatorTypes.REQUIRED },
                             {
                                 type: validatorTypes.PATTERN,
-                                message: 'URL must start with https:// or http://',
+                                message: <FormattedMessage id="wizard.UrlMustStartWithHttpsOrHttp" defaultMessage="URL must start with https:// or http://" />,
                                 pattern: /^https{0,1}:\/\//
                             },
                             { type: validatorTypes.URL }
                         ],
-                        helperText: 'For example, https://myansibleinstance.example.com/ or https://127.0.0.1/',
-                        label: 'Hostname'
+                        helperText: <FormattedMessage
+                            id="wizard.ForExampleHttpsMyansibleinstanceExampleComOrHttps"
+                            defaultMessage="For example, https://myansibleinstance.example.com/ or https://127.0.0.1/"
+                        />,
+                        label: <FormattedMessage id="wizard.Hostname" defaultMessage="Hostname" />
                     },
                     'endpoint.certificate_authority': {
-                        label: 'Certificate authority'
+                        label: <FormattedMessage id="wizard.CertificateAuthority" defaultMessage="Certificate authority" />
                     },
                     'endpoint.verify_ssl': {
                         initialValue: false,
-                        label: 'Verify SSL'
+                        label: <FormattedMessage id="wizard.VerifySsl" defaultMessage="Verify SSL" />
                     },
                     additionalSteps: [{
                         nextStep: 'catalog-ansible-tower',
-                        title: 'Configure Ansible Tower endpoint',
+                        title: <FormattedMessage id="wizard.ConfigureAnsibleTowerEndpoint" defaultMessage="Configure Ansible Tower endpoint" />,
                         fields: [{
                             name: 'ansible-tower-desc',
                             component: 'description',
@@ -536,7 +559,7 @@ export default {
                             condition: { is: true, when: 'endpoint.verify_ssl' }
                         }]
                     }, {
-                        title: 'Configure credentials',
+                        title: <FormattedMessage id="wizard.ConfigureCredentials" defaultMessage="Configure credentials" />,
                         name: 'catalog-ansible-tower',
                         fields: [{
                             component: componentTypes.TEXT_FIELD,
@@ -564,10 +587,10 @@ export default {
                 isRequired: true,
                 validate: [{ type: validatorTypes.REQUIRED }],
                 placeholder: 'https://',
-                label: 'Hostname'
+                label: <FormattedMessage id="wizard.Hostname" defaultMessage="Hostname" />
             },
             'endpoint.certificate_authority': {
-                label: 'Certificate authority'
+                label: <FormattedMessage id="wizard.CertificateAuthority" defaultMessage="Certificate authority" />
             },
             'endpoint.verify_ssl': {
                 initialValue: false

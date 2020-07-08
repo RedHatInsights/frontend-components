@@ -10,6 +10,7 @@ import { doCreateSource } from '../api/createSource';
 import { WIZARD_TITLE } from '../utilities/stringConstants';
 import createProgressText from './createProgressText';
 import CloseModal from './CloseModal';
+import { FormattedMessage } from 'react-intl';
 
 const prepareInitialValues = (initialValues) => ({
     isSubmitted: false,
@@ -162,9 +163,9 @@ AddSourceWizard.propTypes = {
 };
 
 AddSourceWizard.defaultProps = {
-    successfulMessage: 'Your source has been successfully added.',
+    successfulMessage: <FormattedMessage id="wizard.successfulMessage" defaultMessage="Your source has been successfully added." />,
     initialValues: {},
-    returnButtonTitle: 'Go back to sources'
+    returnButtonTitle: <FormattedMessage id="wizard.goBackToSources" defaultMessage="Go back to sources" />
 };
 
 const AddSourceButton = (props) => {

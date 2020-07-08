@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Wizard } from '@patternfly/react-core';
+import { FormattedMessage } from 'react-intl';
 
 import FinishedStep from './steps/FinishedStep';
 import ErroredStep from './steps/ErroredStep';
@@ -46,7 +47,7 @@ const FinalWizard = ({
                         progressTexts={progressTexts}
                     />
                     : <LoadingStep
-                        customText='Source is being created'
+                        customText={<FormattedMessage id="wizard.loadingText" defaultMessage="Source is being created"/>}
                         progressStep={progressStep}
                         progressTexts={progressTexts}
                     />,
