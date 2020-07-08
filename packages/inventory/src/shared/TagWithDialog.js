@@ -16,14 +16,12 @@ TagWithDialog.propTypes = {
     systemId: PropTypes.string
 };
 
-TagWithDialog.defaultProps = {
-    loadTags: () => undefined
-};
-
 const dispatchToProps = (dispatch) => ({
     loadTags: (systemId, count) => {
-        dispatch(toggleTagModal(true));
-        dispatch(loadTags(systemId, undefined, undefined, count));
+        if (systemId) {
+            dispatch(toggleTagModal(true));
+            dispatch(loadTags(systemId, undefined, undefined, count));
+        }
     }
 });
 

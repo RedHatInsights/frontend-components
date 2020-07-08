@@ -61,9 +61,9 @@ export const selectEntity = (id, selected) => ({
     payload: { id, selected }
 });
 
-export const setSort = (key, direction) => ({
+export const setSort = (data) => ({
     type: CHANGE_SORT,
-    payload: { key, direction }
+    payload: data
 });
 
 export const filterEntities = (key, filterString) => ({

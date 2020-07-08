@@ -57,7 +57,7 @@ const EntityTable = ({
 
     return (
         <React.Fragment>
-            { loaded ?
+            { loaded && cells ?
                 PfTable && <PfTable
                     variant={ variant }
                     aria-label="Host inventory"
@@ -75,7 +75,7 @@ const EntityTable = ({
                         })
                     }
                     gridBreakPoint={
-                        columns.length > 5 ?
+                        columns?.length > 5 ?
                             TableGridBreakpoint.gridLg :
                             TableGridBreakpoint.gridMd
                     }
@@ -83,19 +83,19 @@ const EntityTable = ({
                     onSort={ (event, index, direction) => {
                         onSortChange(
                             event,
-                            cells[index - Boolean(hasCheckbox) - Boolean(expandable)].key,
+                            cells?.[index - Boolean(hasCheckbox) - Boolean(expandable)]?.key,
                             direction,
                             index
                         );
                     } }
                     sortBy={ {
-                        index: cells.findIndex(item => sortBy && sortBy.key === item.key) + Boolean(hasCheckbox) + Boolean(expandable),
-                        direction: sortBy && sortBy.direction
+                        index: cells?.findIndex(item => sortBy?.key === item.key) + Boolean(hasCheckbox) + Boolean(expandable),
+                        direction: sortBy?.direction
                     } }
                     { ...{
-                        ...hasCheckbox && rows.length !== 0 ? { onSelect: onItemSelect } : {},
+                        ...hasCheckbox && rows?.length !== 0 ? { onSelect: onItemSelect } : {},
                         ...expandable ? { onCollapse: onExpandClick } : {},
-                        ...actions && rows.length > 0 && { actions }
+                        ...actions && rows?.length > 0 && { actions }
                     } }
                     { ...tableProps }
                 >

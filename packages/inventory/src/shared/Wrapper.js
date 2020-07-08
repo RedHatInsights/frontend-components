@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-console.log('fff');
-
 const RenderWrapper = ({ cmp: Component, inventoryRef, store, ...props }) => (
     <Component
         {...props}

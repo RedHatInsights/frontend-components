@@ -175,7 +175,7 @@ const EntityTableToolbar = ({
                 ...!hasItems ? nameChip : [],
                 ...!hasItems ? stalenessChip : [],
                 ...!hasItems ? registeredChip : [],
-                ...(activeFiltersConfig && activeFiltersConfig.filters) || []
+                ...activeFiltersConfig?.filters || []
             ],
             onDelete: (e, [ deleted, ...restDeleted ], isAll) => {
                 if (isAll) {
@@ -213,7 +213,7 @@ const EntityTableToolbar = ({
             registeredFilter,
             ...showTags ? [ tagsFilter ] : []
         ] : [],
-        ...(filterConfig && filterConfig.items) || []
+        ...filterConfig?.items || []
     ];
     return <Fragment>
         <PrimaryToolbar

@@ -1,24 +1,21 @@
 /* eslint-disable camelcase */
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 
-class AppInfo extends Component {
-    render () {
-        const { activeApps, active, loaded, componentsMapper, store } = this.props;
-        const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
-        const Cmp = activeApp?.name && (componentsMapper?.[activeApp.name] || activeApp?.component);
-        return (
-            <Fragment>
-                { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>
-                    { Cmp ? <Cmp store={store} /> : 'missing component'}
-                </div> }
-                { !loaded && <Skeleton size={ SkeletonSize.md } /> }
-            </Fragment>
-        );
-    }
-}
+const AppInfo = ({ activeApps, active, loaded, componentsMapper, store }) => {
+    const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
+    const Cmp = activeApp?.name && (componentsMapper?.[activeApp.name] || activeApp?.component);
+    return (
+        <Fragment>
+            { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>
+                { Cmp ? <Cmp store={store} /> : 'missing component'}
+            </div> }
+            { !loaded && <Skeleton size={ SkeletonSize.md } /> }
+        </Fragment>
+    );
+};
 
 AppInfo.propTypes = {
     store: PropTypes.any,

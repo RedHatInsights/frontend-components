@@ -51,6 +51,7 @@
 
 .ins-c-entity-table.pf-c-table {
 
+    .pf-c-table__check input { cursor: pointer; }
     .ins-composed-col div:nth-child(2) {
         color: var(--pf-global--link--Color);
         word-wrap: break-word;

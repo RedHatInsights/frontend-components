@@ -44,7 +44,7 @@ export const useTagsFilter = (allTags = [], loaded = false, additionalTagsCount 
                     ...additionalTagsCount > 0 ? [{
                         items: [{
                             label: `${state.additionalTagsCount} more tags available`,
-                            onClick: onShowMoreClick,
+                            onClick: (...props) => onShowMoreClick && onShowMoreClick(...props),
                             className: 'ins-c-inventory__tags-more-items'
                         }]
                     }] : []

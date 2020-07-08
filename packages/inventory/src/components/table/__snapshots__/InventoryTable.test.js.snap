@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoSystemsTable should render correctly - no data 1`] = `
+<ForwardRef>
+  <EntityTableToolbar
+    activeFiltersConfig={Object {}}
+    filters={Array []}
+    hasItems={false}
+    page={1}
+    perPage={50}
+    showTags={false}
+  />
+  <ForwardRef
+    hasItems={false}
+    page={1}
+    perPage={50}
+  >
+    <ContextInventoryList
+      hasItems={false}
+      loadEntities={[Function]}
+      page={1}
+      perPage={50}
+    />
+  </ForwardRef>
+  <TableToolbar
+    className="ins-c-inventory__table--toolbar"
+    isFooter={true}
+  />
+</ForwardRef>
+`;
+
+exports[`NoSystemsTable should render correctly 1`] = `
+<ForwardRef>
+  <EntityTableToolbar
+    activeFiltersConfig={Object {}}
+    filters={Array []}
+    hasItems={false}
+    page={1}
+    perPage={50}
+    showTags={false}
+    total={500}
+  />
+  <ForwardRef
+    hasItems={false}
+    page={1}
+    perPage={50}
+    sortBy={
+      Object {
+        "direction": "asc",
+        "index": 1,
+        "key": "one",
+      }
+    }
+  >
+    <ContextInventoryList
+      activeFilters={
+        Array [
+          Object {},
+          Object {
+            "filter": "",
+            "value": "hostname_or_id",
+          },
+        ]
+      }
+      hasItems={false}
+      loadEntities={[Function]}
+      page={1}
+      perPage={50}
+      sortBy={
+        Object {
+          "direction": "asc",
+          "index": 1,
+          "key": "one",
+        }
+      }
+    />
+  </ForwardRef>
+  <TableToolbar
+    className="ins-c-inventory__table--toolbar"
+    isFooter={true}
+  />
+</ForwardRef>
+`;
+
+exports[`NoSystemsTable should render correctly with items 1`] = `
+<ForwardRef
+  items={
+    Array [
+      Object {
+        "id": "someId",
+      },
+    ]
+  }
+  page={5}
+  perPage={20}
+  sortBy={
+    Object {
+      "direction": "asc",
+      "index": 1,
+      "key": "one",
+    }
+  }
+  total={200}
+>
+  <EntityTableToolbar
+    activeFiltersConfig={Object {}}
+    filters={Array []}
+    hasItems={true}
+    items={
+      Array [
+        Object {
+          "id": "someId",
+        },
+      ]
+    }
+    page={5}
+    perPage={20}
+    showTags={false}
+    total={200}
+  />
+  <ForwardRef
+    hasItems={true}
+    items={
+      Array [
+        Object {
+          "id": "someId",
+        },
+      ]
+    }
+    page={5}
+    perPage={20}
+    sortBy={
+      Object {
+        "direction": "asc",
+        "index": 1,
+        "key": "one",
+      }
+    }
+  >
+    <ContextInventoryList
+      activeFilters={
+        Array [
+          Object {},
+          Object {
+            "filter": "",
+            "value": "hostname_or_id",
+          },
+        ]
+      }
+      hasItems={true}
+      items={
+        Array [
+          Object {
+            "id": "someId",
+          },
+        ]
+      }
+      loadEntities={[Function]}
+      page={5}
+      perPage={20}
+      sortBy={
+        Object {
+          "direction": "asc",
+          "index": 1,
+          "key": "one",
+        }
+      }
+    />
+  </ForwardRef>
+  <TableToolbar
+    className="ins-c-inventory__table--toolbar"
+    isFooter={true}
+  />
+</ForwardRef>
+`;
+
+exports[`NoSystemsTable should render correctly with items no totla 1`] = `
+<ForwardRef
+  items={
+    Array [
+      Object {
+        "id": "someId",
+      },
+    ]
+  }
+  page={5}
+  perPage={20}
+  sortBy={
+    Object {
+      "direction": "asc",
+      "index": 1,
+      "key": "one",
+    }
+  }
+>
+  <EntityTableToolbar
+    activeFiltersConfig={Object {}}
+    filters={Array []}
+    hasItems={true}
+    items={
+      Array [
+        Object {
+          "id": "someId",
+        },
+      ]
+    }
+    page={5}
+    perPage={20}
+    showTags={false}
+    total={1}
+  />
+  <ForwardRef
+    hasItems={true}
+    items={
+      Array [
+        Object {
+          "id": "someId",
+        },
+      ]
+    }
+    page={5}
+    perPage={20}
+    sortBy={
+      Object {
+        "direction": "asc",
+        "index": 1,
+        "key": "one",
+      }
+    }
+  >
+    <ContextInventoryList
+      activeFilters={
+        Array [
+          Object {},
+          Object {
+            "filter": "",
+            "value": "hostname_or_id",
+          },
+        ]
+      }
+      hasItems={true}
+      items={
+        Array [
+          Object {
+            "id": "someId",
+          },
+        ]
+      }
+      loadEntities={[Function]}
+      page={5}
+      perPage={20}
+      sortBy={
+        Object {
+          "direction": "asc",
+          "index": 1,
+          "key": "one",
+        }
+      }
+    />
+  </ForwardRef>
+  <TableToolbar
+    className="ins-c-inventory__table--toolbar"
+    isFooter={true}
+  />
+</ForwardRef>
+`;

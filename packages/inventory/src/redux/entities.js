@@ -18,7 +18,16 @@ import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
 import TitleColumn from '../components/table/TitleColumn';
 
-export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: false, invConfig: {} };
+export const defaultState = {
+    loaded: false,
+    tagsLoaded: false,
+    allTagsLoaded: false,
+    invConfig: {},
+    sortBy: {
+        key: 'updated',
+        direction: 'desc'
+    }
+};
 
 const defaultColumns = [
     {
@@ -158,7 +167,7 @@ export function showTags(state, { payload, meta }) {
         activeSystemTag: {
             ...activeSystemTag,
             tags: Object.values(payload.results)[0],
-            tagsCount: payload.total,
+            tagsCount: meta.tagsCount,
             page: payload.page,
             perPage: payload.per_page,
             tagsLoaded: true
@@ -198,6 +207,7 @@ export function allTags(state, { payload: { results, total, page, per_page: perP
             page
         },
         additionalTagsCount: total > perPage ? total - perPage : 0,
+        allTagsTotal: total,
         allTagsLoaded: true
     };
 }

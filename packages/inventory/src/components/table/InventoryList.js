@@ -67,8 +67,7 @@ ContextInventoryList.propTypes = {
 };
 ContextInventoryList.defaultProps = {
     perPage: 50,
-    page: 1,
-    onRefresh: () => undefined
+    page: 1
 };
 InventoryList.propTypes = {
     showTags: PropTypes.bool,
@@ -77,7 +76,6 @@ InventoryList.propTypes = {
     showHealth: PropTypes.bool,
     page: PropTypes.number,
     perPage: PropTypes.number,
-    onRefresh: PropTypes.func,
     sortBy: PropTypes.shape({
         key: PropTypes.string,
         direction: PropTypes.string
