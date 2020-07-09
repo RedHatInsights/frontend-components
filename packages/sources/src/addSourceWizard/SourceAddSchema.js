@@ -56,7 +56,7 @@ const compileAllSourcesComboOptions = (sourceTypes) => (
 
 const compileAllApplicationComboOptions = (applicationTypes) => (
     [
-        { label: <FormattedMessage id="wizard.None" defaultMessage="None" /> },
+        { label: <FormattedMessage id="wizard.None" defaultMessage="None" />, key: 'none' },
         ...applicationTypes.sort((a, b) => a.display_name.localeCompare(b.display_name)).map(t => ({
             value: t.id,
             label: t.display_name
