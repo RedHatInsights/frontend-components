@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ConfigurationCard api should NOT call handleClick 1`] = `
-<Connect(ConfigurationCard)
+<ConnectFunction
   store={
     Object {
       "clearActions": [Function],
@@ -49,27 +49,6 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
         "getState": [Function],
         "replaceReducer": [Function],
         "subscribe": [Function],
-      }
-    }
-    storeSubscription={
-      Subscription {
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [Function],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": [Function],
       }
     }
   >
@@ -304,7 +283,7 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
       </Component>
     </LoadingCard>
   </ConfigurationCard>
-</Connect(ConfigurationCard)>
+</ConnectFunction>
 `;
 
 exports[`ConfigurationCard should render correctly - no data 1`] = `

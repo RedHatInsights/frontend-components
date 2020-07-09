@@ -65,7 +65,7 @@ describe('RouterParams component', () => {
             </MemoryRouter>
         );
         wrapper.find('a#link').props().onClick(new MouseEvent('click'));
-        expect(store.getActions()).toHaveLength(2);
+        expect(store.getActions()).toHaveLength(3);
         expect(store.getActions()[1].payload).toEqual({
             path: '/route/:paramName',
             params: { paramName: 'paramValue1' }
@@ -85,7 +85,7 @@ describe('RouterParams component', () => {
             </MemoryRouter>
         );
         wrapper.find('a#link').props().onClick(new MouseEvent('click'));
-        expect(store.getActions().length).toBe(2);
+        expect(store.getActions().length).toBe(3);
         expect(store.getActions()[1].payload).toEqual({
             path: '/route/:paramName',
             params: { paramName: 'paramValue0' }

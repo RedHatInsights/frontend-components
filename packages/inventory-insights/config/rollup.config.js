@@ -25,7 +25,7 @@ const commonjsOptions = {
             'isEqualWith',
             'isEqual'
         ],
-        'node_modules/react-redux/node_modules/react-is/index.js': [ 'isValidElementType', 'isContextConsumer' ]
+        '../../node_modules/react-redux/node_modules/react-is/index.js': [ 'isValidElementType', 'isContextConsumer' ]
     }
 };
 
