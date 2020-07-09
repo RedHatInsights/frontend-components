@@ -39,7 +39,7 @@ export const asyncValidatorDebounced = debouncePromise(asyncValidator);
 export const asyncValidatorDebouncedWrapper = (intl) => {
     if (getFirstValidated()) {
         setFirstValidated(false);
-        return (value, id) => asyncValidator(value, id, intl);
+        return (value, id) => value ? asyncValidator(value, id, intl) : undefined;
     }
 
     return asyncValidatorDebounced;

@@ -77,7 +77,7 @@ export default {
                     skipSelection: true,
                     skipEndpoint: true,
                     'source.source_ref': {
-                        label: <FormattedMessage id="wizard.clusterId" defaultMessage="Cluster Indetifier"/>,
+                        label: <FormattedMessage id="wizard.clusterId" defaultMessage="Cluster Identifier"/>,
                         isRequired: true,
                         component: componentTypes.TEXT_FIELD,
                         validate: [{
@@ -364,7 +364,7 @@ export default {
                         title: <FormattedMessage id="wizard.IamPolicyTitle" defaultMessage="Create IAM policy" />,
                         name: 'iam-policy',
                         nextStep: 'iam-role',
-                        substepOf: 'Enable account access',
+                        substepOf: { name: 'eaa', title: <FormattedMessage id="wizard.EnableAccountAccess" defaultMessage="Enable account access" /> },
                         fields: [{
                             name: 'iam-policy-description',
                             component: 'description',
@@ -374,7 +374,7 @@ export default {
                         title: <FormattedMessage id="wizard.IamRoleStepTitle" defaultMessage="Create IAM role" />,
                         name: 'iam-role',
                         nextStep: 'arn',
-                        substepOf: 'Enable account access',
+                        substepOf: 'eaa',
                         fields: [{
                             name: 'iam-role-description',
                             component: 'description',
@@ -383,7 +383,7 @@ export default {
                     }, {
                         title: <FormattedMessage id="wizard.EnterArn" defaultMessage="Enter ARN" />,
                         name: 'arn',
-                        substepOf: 'Enable account access',
+                        substepOf: 'eaa',
                         fields: [{
                             name: 'arn-description',
                             component: 'description',
@@ -399,7 +399,7 @@ export default {
                     additionalSteps: [{
                         title: <FormattedMessage id="wizard.CreateIamPolicy" defaultMessage="Create IAM policy" />,
                         nextStep: 'subs-iam-role',
-                        substepOf: 'Enable account access',
+                        substepOf: { name: 'eaa', title: <FormattedMessage id="wizard.EnableAccountAccess" defaultMessage="Enable account access" /> },
                         fields: [{
                             name: 'iam-policy-description',
                             component: 'description',
@@ -415,7 +415,7 @@ export default {
                         title: <FormattedMessage id="wizard.CreateIamRole" defaultMessage="Create IAM role" />,
                         name: 'subs-iam-role',
                         nextStep: 'subs-arn',
-                        substepOf: 'Enable account access',
+                        substepOf: 'eaa',
                         fields: [{
                             name: 'iam-role-description',
                             component: 'description',
@@ -424,7 +424,7 @@ export default {
                     }, {
                         title: <FormattedMessage id="wizard.EnterArn" defaultMessage="Enter ARN" />,
                         name: 'subs-arn',
-                        substepOf: 'Enable account access',
+                        substepOf: 'eaa',
                         fields: [{
                             name: 'arn-description',
                             component: 'description',

@@ -67,7 +67,7 @@ FinalWizard.propTypes = {
     returnButtonTitle: PropTypes.node.isRequired,
     errorMessage: PropTypes.node,
     progressStep: PropTypes.number.isRequired,
-    progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired
+    progressTexts: PropTypes.arrayOf(PropTypes.node).isRequired
 };
 
 export default FinalWizard;

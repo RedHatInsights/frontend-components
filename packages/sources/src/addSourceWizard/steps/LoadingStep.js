@@ -27,6 +27,7 @@ const LoadingStep = ({ onClose, customText, progressStep, progressTexts, cancelT
                         label={progressTexts[progressStep]}
                         valueText={progressTexts[progressStep]}
                         className="pf-u-mb-0 ins-c-sources__progress"
+                        id="loading-progress-bar"
                     />
                     : customText
                 }
@@ -43,7 +44,7 @@ LoadingStep.propTypes = {
     onClose: PropTypes.func,
     customText: PropTypes.node,
     progressStep: PropTypes.number,
-    progressTexts: PropTypes.arrayOf(PropTypes.string),
+    progressTexts: PropTypes.arrayOf(PropTypes.node),
     cancelTitle: PropTypes.node
 };
 

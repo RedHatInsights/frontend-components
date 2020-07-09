@@ -45,6 +45,7 @@ const ErroredStep = ({
                     label={progressTexts[progressStep]}
                     valueText={progressTexts[progressStep]}
                     variant='danger'
+                    id="errored-step-progress-bar"
                 />
                 <TextContent>
                     <Text variant={TextVariants.p}>{customText}</Text>
@@ -65,7 +66,7 @@ ErroredStep.propTypes = {
     returnButtonTitle: PropTypes.node.isRequired,
     message: PropTypes.node,
     progressStep: PropTypes.number.isRequired,
-    progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    progressTexts: PropTypes.arrayOf(PropTypes.node).isRequired,
     title: PropTypes.node,
     customText: PropTypes.node,
     retryText: PropTypes.node

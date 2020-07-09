@@ -42,6 +42,7 @@ const FinishedStep = ({
                     label={progressTexts[progressStep]}
                     valueText={progressTexts[progressStep]}
                     variant="success"
+                    id="finished-progress-bar"
                 />
                 { successfulMessage }
             </EmptyStateBody>
@@ -68,7 +69,7 @@ FinishedStep.propTypes = {
     hideSourcesButton: PropTypes.bool,
     returnButtonTitle: PropTypes.node.isRequired,
     progressStep: PropTypes.number.isRequired,
-    progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    progressTexts: PropTypes.arrayOf(PropTypes.node).isRequired,
     title: PropTypes.node,
     linkText: PropTypes.node,
     secondaryActions: PropTypes.node
