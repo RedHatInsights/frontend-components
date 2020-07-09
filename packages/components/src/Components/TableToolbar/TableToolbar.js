@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
-import { PageHeaderTools } from '@patternfly/react-core';
+import { Toolbar } from '@patternfly/react-core';
 import classNames from 'classnames';
 
 import './TableToolbar.scss';
@@ -23,7 +23,7 @@ const TableToolbar = ({ isFooter, results, className, selected, children, ...pro
 
     return (
         <Fragment>
-            <PageHeaderTools className={ tableToolbarClasses } { ...props }> { children }</PageHeaderTools>
+            <Toolbar className={ tableToolbarClasses } { ...props }> { children }</Toolbar>
             {
                 (results >= 0 || selected >= 0) &&
                 <div className='ins-c-table__toolbar-results'>

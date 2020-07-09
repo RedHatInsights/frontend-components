@@ -92,7 +92,7 @@ export const editDisplayName = (id, value) => ({
         notifications: {
             fulfilled: {
                 variant: 'success',
-                title: `Display name for entity with ID ${id} has been changed to ${value}`,
+                title: 'Display name has been updated',
                 dismissable: true
             }
         }
@@ -106,7 +106,7 @@ export const editAnsibleHost = (id, value) => ({
         notifications: {
             fulfilled: {
                 variant: 'success',
-                title: `Ansible host for entity with ID ${id} has been changed to ${value}`,
+                title: 'Ansible hostname has been updated',
                 dismissable: true
             }
         }
