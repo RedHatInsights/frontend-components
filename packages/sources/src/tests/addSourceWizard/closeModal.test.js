@@ -1,9 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { Modal, Button, Text, TextContent } from '@patternfly/react-core';
 import { ExclamationTriangleIcon } from '@patternfly/react-icons';
 
 import CloseModal from '../../addSourceWizard/CloseModal';
+
+import mount from '../__mocks__/mount';
 
 describe('CloseModal', () => {
     let initialProps;

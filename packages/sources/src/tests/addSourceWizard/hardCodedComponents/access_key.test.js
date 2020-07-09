@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import {
     TextContent,
     Text,
@@ -7,6 +6,7 @@ import {
 } from '@patternfly/react-core';
 
 import * as AwsAccess from '../../../addSourceWizard/hardcodedComponents/aws/access_key';
+import mount from '../../__mocks__/mount';
 
 describe('AWS-Access key hardcoded schemas', () => {
     it('ARN DESCRIPTION is rendered correctly', () => {

@@ -11,6 +11,7 @@ import {
     Progress,
     EmptyStateIcon
 } from '@patternfly/react-core';
+import { FormattedMessage } from 'react-intl';
 
 const LoadingStep = ({ onClose, customText, progressStep, progressTexts, cancelTitle }) => (
     <Bullseye>
@@ -26,6 +27,7 @@ const LoadingStep = ({ onClose, customText, progressStep, progressTexts, cancelT
                         label={progressTexts[progressStep]}
                         valueText={progressTexts[progressStep]}
                         className="pf-u-mb-0 ins-c-sources__progress"
+                        id="loading-progress-bar"
                     />
                     : customText
                 }
@@ -40,15 +42,15 @@ const LoadingStep = ({ onClose, customText, progressStep, progressTexts, cancelT
 
 LoadingStep.propTypes = {
     onClose: PropTypes.func,
-    customText: PropTypes.string,
+    customText: PropTypes.node,
     progressStep: PropTypes.number,
-    progressTexts: PropTypes.arrayOf(PropTypes.string),
+    progressTexts: PropTypes.arrayOf(PropTypes.node),
     cancelTitle: PropTypes.node
 };
 
 LoadingStep.defaultProps = {
-    customText: 'Loading, please wait.',
-    cancelTitle: 'Cancel'
+    customText: <FormattedMessage id="wizard.loadingText" defaultMessage="Loading, please wait."/>,
+    cancelTitle: <FormattedMessage id="wizard.cancelText" defaultMessage="Cancel"/>
 };
 
 export default LoadingStep;

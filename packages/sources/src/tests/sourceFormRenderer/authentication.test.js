@@ -1,11 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
 
 import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
 import { componentMapper, FormTemplate } from '@data-driven-forms/pf4-component-mapper';
 
 import SourcesFormRenderer from '../../sourceFormRenderer';
 import Authentication from '../../sourceFormRenderer/components/Authentication';
+import mount from '../__mocks__/mount';
 
 describe('Authentication test', () => {
     let schema;
@@ -131,7 +131,7 @@ describe('Authentication test', () => {
 
         expect(wrapper.find(Authentication)).toHaveLength(1);
         expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().isRequired).toEqual(false);
-        expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual(expect.any(String));
+        expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual(expect.any(Object));
 
         wrapper.find('form').simulate('submit');
         wrapper.update();
