@@ -23,7 +23,7 @@ describe('editDisplayName', () => {
             notifications: {
                 fulfilled: {
                     variant: 'success',
-                    title: 'Display name for entity with ID 4 has been changed to test-value',
+                    title: 'Display name has been updated',
                     dismissable: true
                 }
             }
@@ -43,7 +43,7 @@ describe('editAnsibleHost', () => {
             notifications: {
                 fulfilled: {
                     variant: 'success',
-                    title: 'Ansible host for entity with ID 4 has been changed to test-value',
+                    title: 'Ansible hostname has been updated',
                     dismissable: true
                 }
             }
