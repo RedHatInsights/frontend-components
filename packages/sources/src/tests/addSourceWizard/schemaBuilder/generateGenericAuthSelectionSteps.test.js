@@ -96,7 +96,7 @@ describe('generate auth selection pages', () => {
 
             expectedSchema = expect.objectContaining({
                 fields: expect.arrayContaining(fields),
-                title: expect.any(String),
+                title: expect.any(Object),
                 name: ONE_SINGLE_SELECTION_TYPE.name,
                 nextStep: 'summary'
             });
@@ -116,7 +116,7 @@ describe('generate auth selection pages', () => {
 
             expectedSchema = expect.objectContaining({
                 fields: expect.arrayContaining(fields),
-                title: expect.any(String),
+                title: expect.any(Object),
                 name: ONE_SINGLE_SELECTION_TYPE_ADD_STEPS.name,
                 nextStep: EXPECTED_NEXTSTEP
             });
@@ -127,7 +127,7 @@ describe('generate auth selection pages', () => {
         it('generate single selection with endpoint', () => {
             expectedSchema = expect.objectContaining({
                 fields: expect.any(Array),
-                title: expect.any(String),
+                title: expect.any(Object),
                 name: ONE_SINGLE_SELECTION_TYPE.name,
                 nextStep: `${ONE_SINGLE_SELECTION_TYPE.name}-endpoint`
             });
@@ -148,7 +148,7 @@ describe('generate auth selection pages', () => {
                         firstAuth,
                         secondAuth
                     ]),
-                    title: expect.any(String),
+                    title: expect.any(Object),
                     name: MULTIPLE_SELECTION_TYPE.name,
                     nextStep: {
                         when: expect.any(String),
@@ -170,7 +170,7 @@ describe('generate auth selection pages', () => {
                         firstAuth,
                         secondAuth
                     ]),
-                    title: expect.any(String),
+                    title: expect.any(Object),
                     name: MULTIPLE_SELECTION_TYPE.name,
                     nextStep: {
                         when: expect.any(String),

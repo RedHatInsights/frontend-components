@@ -1,12 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import SSLFormLabel from '../../addSourceWizard/SSLFormLabel';
+import mount from '../__mocks__/mount';
 
 describe('SSLFormLabel', () => {
     it('renders loading step correctly', () => {
-        const wrapper = shallow(<SSLFormLabel />);
+        const wrapper = mount(<SSLFormLabel />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 });

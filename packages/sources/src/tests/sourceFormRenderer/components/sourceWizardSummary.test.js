@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { TextListItem, TextContent } from '@patternfly/react-core';
 
@@ -8,6 +7,8 @@ import applicationTypes, { COST_MANAGEMENT_APP } from '../../helpers/application
 import sourceTypes from '../../helpers/sourceTypes';
 import ValuePopover from '../../../sourceFormRenderer/components/ValuePopover';
 import RendererContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
+import mount from '../../__mocks__/mount';
+import { FormattedMessage } from 'react-intl';
 
 describe('SourceWizardSummary component', () => {
     describe('should render correctly', () => {
@@ -125,7 +126,7 @@ describe('SourceWizardSummary component', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
             expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
 
-            expect(wrapper.find(TextContent).html().includes('Cluster Identifier')).toEqual(true);
+            expect(wrapper.find(TextContent).find({ defaultMessage: 'Cluster Identifier' })).toHaveLength(1);
             expect(wrapper.find(TextContent).html().includes('CLUSTER ID123')).toEqual(true);
         });
 
@@ -311,7 +312,7 @@ describe('SourceWizardSummary component', () => {
 
             expect(createItem(field, values, availableStepKeys)).toEqual({
                 label: 'Label 1',
-                value: 'Yes'
+                value: <FormattedMessage id="wizard.Yes" defaultMessage="Yes" />
             });
         });
 
@@ -324,7 +325,7 @@ describe('SourceWizardSummary component', () => {
 
             expect(createItem(field, values, availableStepKeys)).toEqual({
                 label: 'Label 1',
-                value: 'No'
+                value: <FormattedMessage id="wizard.No" defaultMessage="No" />
             });
         });
 

@@ -14,13 +14,15 @@ describe('asyncNameValidator', () => {
         data: { sources: [ ] }
     };
 
+    const intl = { formatMessage: ({ defaultMessage }) => defaultMessage };
+
     it('returns error message when name is taken', async () => {
         expect.assertions(1);
 
         actions.findSource = jest.fn(() => Promise.resolve(returnedSourceResponse));
 
         try {
-            await asyncValidator('a1');
+            await asyncValidator('a1', undefined, intl);
         } catch (e) {
             expect(e).toEqual('Name has already been taken');
         }
@@ -31,13 +33,13 @@ describe('asyncNameValidator', () => {
 
         actions.findSource = jest.fn(() => Promise.resolve(returnedSourceResponse));
 
-        return asyncValidator('a1', '1').then(data => expect(data).toEqual(undefined));
+        return asyncValidator('a1', '1', intl).then(data => expect(data).toEqual(undefined));
     });
 
     it('returns nothing when passes', async () => {
         actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
-        const msg = await asyncValidator('a1');
+        const msg = await asyncValidator('a1', undefined, intl);
 
         expect(msg).toEqual(undefined);
     });
@@ -48,7 +50,7 @@ describe('asyncNameValidator', () => {
 
         actions.findSource = jest.fn(() => Promise.reject('Some error'));
 
-        const msg = await asyncValidator('a1');
+        const msg = await asyncValidator('a1', undefined, intl);
 
         expect(msg).toEqual(undefined);
         expect(console.error).toHaveBeenCalledWith('Some error');
@@ -61,20 +63,20 @@ describe('asyncNameValidator', () => {
             setFirstValidated(true);
         });
 
-        it('returns required and then the debounced function when creating', () => {
+        it('do not return promise when value is empty and editing', () => {
             actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
-            expect(asyncValidatorDebouncedWrapper()()).toEqual('Required');
+            expect(asyncValidatorDebouncedWrapper(intl)(undefined, undefined, intl)).toEqual(undefined);
 
-            expect(asyncValidatorDebouncedWrapper()()).toEqual(expect.any(Promise));
-            expect(asyncValidatorDebouncedWrapper()()).toEqual(expect.any(Promise));
+            expect(asyncValidatorDebouncedWrapper(intl)(undefined, undefined, intl)).toEqual(expect.any(Promise));
+            expect(asyncValidatorDebouncedWrapper(intl)(undefined, undefined, intl)).toEqual(expect.any(Promise));
         });
 
         it('returns function when editing', () => {
             actions.findSource = jest.fn(() => Promise.resolve(emptySourceResponse));
 
-            expect(asyncValidatorDebouncedWrapper()('a1', '1')).toEqual(expect.any(Promise));
-            expect(asyncValidatorDebouncedWrapper()('a1', '1')).toEqual(expect.any(Promise));
+            expect(asyncValidatorDebouncedWrapper(intl)('a1', '1', intl)).toEqual(expect.any(Promise));
+            expect(asyncValidatorDebouncedWrapper(intl)('a1', '1', intl)).toEqual(expect.any(Promise));
         });
     });
 });

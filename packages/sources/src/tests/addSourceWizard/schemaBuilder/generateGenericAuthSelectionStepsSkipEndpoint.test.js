@@ -93,7 +93,7 @@ describe('generate auth selection pages', () => {
 
             expectedSchema = expect.objectContaining({
                 fields: expect.arrayContaining(fields),
-                title: expect.any(String),
+                title: expect.any(Object),
                 name: ONE_SINGLE_SELECTION_TYPE.name,
                 nextStep: 'summary'
             });
@@ -116,7 +116,7 @@ describe('generate auth selection pages', () => {
                         firstAuth,
                         secondAuth
                     ]),
-                    title: expect.any(String),
+                    title: expect.any(Object),
                     name: MULTIPLE_SELECTION_TYPE.name,
                     nextStep: {
                         when: expect.any(String),

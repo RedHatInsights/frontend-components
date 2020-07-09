@@ -1,11 +1,12 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 
 import { AddSourceButton } from '../../addSourceWizard/';
 import sourceTypes from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
 import Form from '../../addSourceWizard/SourceAddModal';
+
+import mount from '../__mocks__/mount';
 
 describe('AddSourceButton', () => {
     it('opens wizard', async () => {

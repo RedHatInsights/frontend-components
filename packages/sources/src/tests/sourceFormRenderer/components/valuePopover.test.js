@@ -1,7 +1,8 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { Popover, Button } from '@patternfly/react-core';
 import ValuePopover from '../../../sourceFormRenderer/components/ValuePopover';
+
+import mount from '../../__mocks__/mount';
 
 describe('ValuePopover', () => {
     it('renders correctly', () => {

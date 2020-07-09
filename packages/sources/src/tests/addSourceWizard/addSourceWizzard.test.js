@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 
 import { Button } from '@patternfly/react-core';
@@ -17,6 +16,8 @@ import * as dependency from '../../api/index';
 import * as createSource from '../../api/createSource';
 import CloseModal from '../../addSourceWizard/CloseModal';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
+
+import mount from '../__mocks__/mount';
 
 describe('AddSourceWizard', () => {
     let initialProps;
