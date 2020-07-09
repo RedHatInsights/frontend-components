@@ -85,33 +85,19 @@ export const IAMPolicyDescription = () => {
             <ClipboardCopy isCode variant={ClipboardCopyVariant.expansion} className="pf-u-m-sm-on-sm" isReadOnly>
                 {JSON.stringify({
                     Version: '2012-10-17',
-                    Statement: [
-                        {
-                            Sid: 'VisualEditor0',
-                            Effect: 'Allow',
-                            Action: [
-                                's3:Get*',
-                                's3:List*'
-                            ],
-                            Resource: [
-                                `arn:aws:s3:::${s3Bucket}`,
-                                `arn:aws:s3:::${s3Bucket}/*`
-                            ]
-                        },
-                        {
-                            Sid: 'VisualEditor1',
-                            Effect: 'Allow',
-                            Action: [
-                                's3:ListAllMyBuckets',
-                                'iam:ListAccountAliases',
-                                's3:HeadBucket',
-                                'cur:DescribeReportDefinitions',
-                                'organizations:List*',
-                                'organizations:Describe*'
-                            ],
-                            Resource: '*'
-                        }
-                    ]
+                    Statement: [{
+                        Sid: 'VisualEditor0',
+                        Effect: 'Allow',
+                        Action: [ 's3:Get*', 's3:List*' ],
+                        Resource: [
+                            `arn:aws:s3:::${s3Bucket}`,
+                            `arn:aws:s3:::${s3Bucket}/*`
+                        ] }, {
+                        Sid: 'VisualEditor1',
+                        Effect: 'Allow',
+                        Action: [ 's3:HeadBucket', 'cur:DescribeReportDefinitions' ],
+                        Resource: '*'
+                    }]
                 }, null, 2)}
             </ClipboardCopy>
             <TextListItem component={TextListItemVariants.li}><FormattedMessage id="wizard.CompleteTheProcessToCreateYourNewPolicy" defaultMessage="Complete the process to create your new policy." /></TextListItem>
