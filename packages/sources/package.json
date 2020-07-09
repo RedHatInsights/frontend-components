@@ -9,7 +9,8 @@
     },
     "scripts": {
         "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
-        "start": "rollup -c ./config/rollup.config.js -w"
+        "start": "rollup -c ./config/rollup.config.js -w",
+        "extract:messages": "npx @formatjs/cli extract 'src/**/*.{js,jsx}' --out-file ./translations/messages.json"
     },
     "repository": {
         "type": "git",
