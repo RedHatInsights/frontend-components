@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import {
     EmptyStateBody,
@@ -44,6 +45,7 @@ const ErroredStep = ({
                     label={progressTexts[progressStep]}
                     valueText={progressTexts[progressStep]}
                     variant='danger'
+                    id="errored-step-progress-bar"
                 />
                 <TextContent>
                     <Text variant={TextVariants.p}>{customText}</Text>
@@ -64,16 +66,16 @@ ErroredStep.propTypes = {
     returnButtonTitle: PropTypes.node.isRequired,
     message: PropTypes.node,
     progressStep: PropTypes.number.isRequired,
-    progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    progressTexts: PropTypes.arrayOf(PropTypes.node).isRequired,
     title: PropTypes.node,
     customText: PropTypes.node,
     retryText: PropTypes.node
 };
 
 ErroredStep.defaultProps = {
-    title: 'Configuration unsuccessful',
-    customText: 'Your source has not been successfully added:',
-    retryText: 'Retry'
+    title: <FormattedMessage id="wizard.unsuccConfiguration" defaultMessage="Configuration unsuccessful"/>,
+    customText: <FormattedMessage id="wizard.errorText" defaultMessage="Your source has not been successfully added:"/>,
+    retryText: <FormattedMessage id="wizard.retryText" defaultMessage="Retry"/>
 };
 
 export default ErroredStep;

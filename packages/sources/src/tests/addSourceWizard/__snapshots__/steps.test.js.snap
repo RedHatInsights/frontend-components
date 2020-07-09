@@ -1,227 +1,1131 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Steps components ErroredStep renders correctly 1`] = `
-<Component>
-  <Component
-    className="ins-c-sources__empty-state"
-    variant="full"
-  >
-    <Component
-      className="pf-u-mb-0"
-      color="var(--pf-global--danger-color--100)"
-      icon={[Function]}
-    />
-    <Component
-      className="pf-u-mt-xl"
-      headingLevel="h5"
-      size="lg"
-    >
-      Configuration unsuccessful
-    </Component>
-    <Component>
-      <Progress
-        className="pf-u-mb-md ins-c-sources__progress"
-        id=""
-        label="Step 1: create source"
-        max={0}
-        measureLocation="top"
-        min={0}
-        size={null}
-        title=" "
-        value={0}
-        valueText="Step 1: create source"
-        variant="danger"
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
+  locale="en"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <ErroredStep
+    customText={
+      <FormattedMessage
+        defaultMessage="Your source has not been successfully added:"
+        id="wizard.errorText"
       />
-      <Component>
-        <Component
-          variant="p"
-        >
-          Your source has not been successfully added:
-        </Component>
-      </Component>
-    </Component>
-    <Component
-      onClick={[MockFunction]}
-      variant="primary"
-    >
-      Go back to my application
-    </Component>
+    }
+    onClose={[MockFunction]}
+    onRetry={[MockFunction]}
+    progressStep={0}
+    progressTexts={
+      Array [
+        "Step 1: create source",
+      ]
+    }
+    retryText={
+      <FormattedMessage
+        defaultMessage="Retry"
+        id="wizard.retryText"
+      />
+    }
+    returnButtonTitle="Go back to my application"
+    title={
+      <FormattedMessage
+        defaultMessage="Configuration unsuccessful"
+        id="wizard.unsuccConfiguration"
+      />
+    }
+  >
     <Component>
-      <Component
-        onClick={[MockFunction]}
-        variant="link"
+      <div
+        className="pf-l-bullseye"
       >
-        Retry
-      </Component>
+        <Component
+          className="ins-c-sources__empty-state"
+          variant="full"
+        >
+          <div
+            className="pf-c-empty-state ins-c-sources__empty-state"
+          >
+            <div
+              className="pf-c-empty-state__content"
+            >
+              <Component
+                className="pf-u-mb-0"
+                color="var(--pf-global--danger-color--100)"
+                icon={[Function]}
+              >
+                <TimesCircleIcon
+                  aria-hidden="true"
+                  className="pf-c-empty-state__icon pf-u-mb-0"
+                  color="var(--pf-global--danger-color--100)"
+                  noVerticalAlign={false}
+                  size="sm"
+                >
+                  <svg
+                    aria-hidden="true"
+                    aria-labelledby={null}
+                    className="pf-c-empty-state__icon pf-u-mb-0"
+                    fill="var(--pf-global--danger-color--100)"
+                    height="1em"
+                    role="img"
+                    style={
+                      Object {
+                        "verticalAlign": "-0.125em",
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+                      transform=""
+                    />
+                  </svg>
+                </TimesCircleIcon>
+              </Component>
+              <Component
+                className="pf-u-mt-xl"
+                headingLevel="h5"
+                size="lg"
+              >
+                <h5
+                  className="pf-c-title pf-m-lg pf-u-mt-xl"
+                >
+                  <FormattedMessage
+                    defaultMessage="Configuration unsuccessful"
+                    id="wizard.unsuccConfiguration"
+                  >
+                    Configuration unsuccessful
+                  </FormattedMessage>
+                </h5>
+              </Component>
+              <Component>
+                <div
+                  className="pf-c-empty-state__body"
+                >
+                  <Progress
+                    className="pf-u-mb-md ins-c-sources__progress"
+                    id="errored-step-progress-bar"
+                    label="Step 1: create source"
+                    max={0}
+                    measureLocation="top"
+                    min={0}
+                    size={null}
+                    title=" "
+                    value={0}
+                    valueText="Step 1: create source"
+                    variant="danger"
+                  >
+                    <div
+                      className="pf-c-progress pf-m-danger pf-u-mb-md ins-c-sources__progress"
+                      id="errored-step-progress-bar"
+                    >
+                      <Component
+                        label="Step 1: create source"
+                        measureLocation="top"
+                        parentId="errored-step-progress-bar"
+                        progressBarAriaProps={
+                          Object {
+                            "aria-labelledby": "errored-step-progress-bar-description",
+                            "aria-valuemax": 0,
+                            "aria-valuemin": 0,
+                            "aria-valuenow": 0,
+                            "aria-valuetext": "Step 1: create source",
+                          }
+                        }
+                        title=" "
+                        value={NaN}
+                        variant="danger"
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="pf-c-progress__description"
+                          id="errored-step-progress-bar-description"
+                        >
+                           
+                        </div>
+                        <div
+                          aria-hidden="true"
+                          className="pf-c-progress__status"
+                        >
+                          <span
+                            className="pf-c-progress__measure"
+                          >
+                            Step 1: create source
+                          </span>
+                          <span
+                            className="pf-c-progress__status-icon"
+                          >
+                            <TimesCircleIcon
+                              color="currentColor"
+                              noVerticalAlign={false}
+                              size="sm"
+                            >
+                              <svg
+                                aria-hidden={true}
+                                aria-labelledby={null}
+                                fill="currentColor"
+                                height="1em"
+                                role="img"
+                                style={
+                                  Object {
+                                    "verticalAlign": "-0.125em",
+                                  }
+                                }
+                                viewBox="0 0 512 512"
+                                width="1em"
+                              >
+                                <path
+                                  d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+                                  transform=""
+                                />
+                              </svg>
+                            </TimesCircleIcon>
+                          </span>
+                        </div>
+                        <Component
+                          progressBarAriaProps={
+                            Object {
+                              "aria-labelledby": "errored-step-progress-bar-description",
+                              "aria-valuemax": 0,
+                              "aria-valuemin": 0,
+                              "aria-valuenow": 0,
+                              "aria-valuetext": "Step 1: create source",
+                            }
+                          }
+                          role="progressbar"
+                          value={NaN}
+                        >
+                          <div
+                            aria-labelledby="errored-step-progress-bar-description"
+                            aria-valuemax={0}
+                            aria-valuemin={0}
+                            aria-valuenow={0}
+                            aria-valuetext="Step 1: create source"
+                            className="pf-c-progress__bar"
+                            role="progressbar"
+                          >
+                            <div
+                              className="pf-c-progress__indicator"
+                              style={
+                                Object {
+                                  "width": "NaN%",
+                                }
+                              }
+                            >
+                              <span
+                                className="pf-c-progress__measure"
+                              />
+                            </div>
+                          </div>
+                        </Component>
+                      </Component>
+                    </div>
+                  </Progress>
+                  <Component>
+                    <div
+                      className="pf-c-content"
+                    >
+                      <Component
+                        variant="p"
+                      >
+                        <p
+                          className=""
+                          data-pf-content={true}
+                          variant="p"
+                        >
+                          <FormattedMessage
+                            defaultMessage="Your source has not been successfully added:"
+                            id="wizard.errorText"
+                          >
+                            Your source has not been successfully added:
+                          </FormattedMessage>
+                        </p>
+                      </Component>
+                    </div>
+                  </Component>
+                </div>
+              </Component>
+              <Component
+                onClick={[MockFunction]}
+                variant="primary"
+              >
+                <button
+                  aria-disabled={null}
+                  aria-label={null}
+                  className="pf-c-button pf-m-primary"
+                  data-ouia-component-id={null}
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe={true}
+                  disabled={false}
+                  onClick={[MockFunction]}
+                  tabIndex={null}
+                  type="button"
+                >
+                  Go back to my application
+                </button>
+              </Component>
+              <Component>
+                <div
+                  className="pf-c-empty-state__secondary"
+                >
+                  <Component
+                    onClick={[MockFunction]}
+                    variant="link"
+                  >
+                    <button
+                      aria-disabled={null}
+                      aria-label={null}
+                      className="pf-c-button pf-m-link"
+                      data-ouia-component-id={null}
+                      data-ouia-component-type="PF4/Button"
+                      data-ouia-safe={true}
+                      disabled={false}
+                      onClick={[MockFunction]}
+                      tabIndex={null}
+                      type="button"
+                    >
+                      <FormattedMessage
+                        defaultMessage="Retry"
+                        id="wizard.retryText"
+                      >
+                        Retry
+                      </FormattedMessage>
+                    </button>
+                  </Component>
+                </div>
+              </Component>
+            </div>
+          </div>
+        </Component>
+      </div>
     </Component>
-  </Component>
-</Component>
+  </ErroredStep>
+</IntlProvider>
 `;
 
 exports[`Steps components FinishedStep renders correctly 1`] = `
-<Component>
-  <Component
-    className="ins-c-sources__empty-state"
-    variant="full"
-  >
-    <Component
-      className="pf-u-mb-0"
-      color="var(--pf-global--success-color--100)"
-      icon={[Function]}
-    />
-    <Component
-      className="pf-u-mt-xl"
-      headingLevel="h5"
-      size="lg"
-    >
-      Configuration successful
-    </Component>
-    <Component>
-      <Progress
-        className="pf-u-mb-md ins-c-sources__progress"
-        id=""
-        label="Completed"
-        max={0}
-        measureLocation="top"
-        min={0}
-        size={null}
-        title=" "
-        value={0}
-        valueText="Completed"
-        variant="success"
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
+  locale="en"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <FinishedStep
+    hideSourcesButton={false}
+    linkText={
+      <FormattedMessage
+        defaultMessage="Take me to sources"
+        id="wizard.toSources"
       />
-      Here I Am
-    </Component>
-    <Component
-      className="pf-u-mt-xl"
-      onClick={[MockFunction]}
-      variant="primary"
-    >
-      Go back to my application
-    </Component>
+    }
+    onClose={[MockFunction]}
+    progressStep={0}
+    progressTexts={
+      Array [
+        "Completed",
+      ]
+    }
+    returnButtonTitle="Go back to my application"
+    successfulMessage="Here I Am"
+    title={
+      <FormattedMessage
+        defaultMessage="Configuration successful"
+        id="wizard.succConfiguration"
+      />
+    }
+  >
     <Component>
-      <a
-        href="/hybrid/settings/sources"
+      <div
+        className="pf-l-bullseye"
       >
         <Component
-          variant="link"
+          className="ins-c-sources__empty-state"
+          variant="full"
         >
-          Take me to sources
+          <div
+            className="pf-c-empty-state ins-c-sources__empty-state"
+          >
+            <div
+              className="pf-c-empty-state__content"
+            >
+              <Component
+                className="pf-u-mb-0"
+                color="var(--pf-global--success-color--100)"
+                icon={[Function]}
+              >
+                <CheckCircleIcon
+                  aria-hidden="true"
+                  className="pf-c-empty-state__icon pf-u-mb-0"
+                  color="var(--pf-global--success-color--100)"
+                  noVerticalAlign={false}
+                  size="sm"
+                >
+                  <svg
+                    aria-hidden="true"
+                    aria-labelledby={null}
+                    className="pf-c-empty-state__icon pf-u-mb-0"
+                    fill="var(--pf-global--success-color--100)"
+                    height="1em"
+                    role="img"
+                    style={
+                      Object {
+                        "verticalAlign": "-0.125em",
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                      transform=""
+                    />
+                  </svg>
+                </CheckCircleIcon>
+              </Component>
+              <Component
+                className="pf-u-mt-xl"
+                headingLevel="h5"
+                size="lg"
+              >
+                <h5
+                  className="pf-c-title pf-m-lg pf-u-mt-xl"
+                >
+                  <FormattedMessage
+                    defaultMessage="Configuration successful"
+                    id="wizard.succConfiguration"
+                  >
+                    Configuration successful
+                  </FormattedMessage>
+                </h5>
+              </Component>
+              <Component>
+                <div
+                  className="pf-c-empty-state__body"
+                >
+                  <Progress
+                    className="pf-u-mb-md ins-c-sources__progress"
+                    id="finished-progress-bar"
+                    label="Completed"
+                    max={0}
+                    measureLocation="top"
+                    min={0}
+                    size={null}
+                    title=" "
+                    value={0}
+                    valueText="Completed"
+                    variant="success"
+                  >
+                    <div
+                      className="pf-c-progress pf-m-success pf-u-mb-md ins-c-sources__progress"
+                      id="finished-progress-bar"
+                    >
+                      <Component
+                        label="Completed"
+                        measureLocation="top"
+                        parentId="finished-progress-bar"
+                        progressBarAriaProps={
+                          Object {
+                            "aria-labelledby": "finished-progress-bar-description",
+                            "aria-valuemax": 0,
+                            "aria-valuemin": 0,
+                            "aria-valuenow": 0,
+                            "aria-valuetext": "Completed",
+                          }
+                        }
+                        title=" "
+                        value={NaN}
+                        variant="success"
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="pf-c-progress__description"
+                          id="finished-progress-bar-description"
+                        >
+                           
+                        </div>
+                        <div
+                          aria-hidden="true"
+                          className="pf-c-progress__status"
+                        >
+                          <span
+                            className="pf-c-progress__measure"
+                          >
+                            Completed
+                          </span>
+                          <span
+                            className="pf-c-progress__status-icon"
+                          >
+                            <CheckCircleIcon
+                              color="currentColor"
+                              noVerticalAlign={false}
+                              size="sm"
+                            >
+                              <svg
+                                aria-hidden={true}
+                                aria-labelledby={null}
+                                fill="currentColor"
+                                height="1em"
+                                role="img"
+                                style={
+                                  Object {
+                                    "verticalAlign": "-0.125em",
+                                  }
+                                }
+                                viewBox="0 0 512 512"
+                                width="1em"
+                              >
+                                <path
+                                  d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                                  transform=""
+                                />
+                              </svg>
+                            </CheckCircleIcon>
+                          </span>
+                        </div>
+                        <Component
+                          progressBarAriaProps={
+                            Object {
+                              "aria-labelledby": "finished-progress-bar-description",
+                              "aria-valuemax": 0,
+                              "aria-valuemin": 0,
+                              "aria-valuenow": 0,
+                              "aria-valuetext": "Completed",
+                            }
+                          }
+                          role="progressbar"
+                          value={NaN}
+                        >
+                          <div
+                            aria-labelledby="finished-progress-bar-description"
+                            aria-valuemax={0}
+                            aria-valuemin={0}
+                            aria-valuenow={0}
+                            aria-valuetext="Completed"
+                            className="pf-c-progress__bar"
+                            role="progressbar"
+                          >
+                            <div
+                              className="pf-c-progress__indicator"
+                              style={
+                                Object {
+                                  "width": "NaN%",
+                                }
+                              }
+                            >
+                              <span
+                                className="pf-c-progress__measure"
+                              />
+                            </div>
+                          </div>
+                        </Component>
+                      </Component>
+                    </div>
+                  </Progress>
+                  Here I Am
+                </div>
+              </Component>
+              <Component
+                className="pf-u-mt-xl"
+                onClick={[MockFunction]}
+                variant="primary"
+              >
+                <button
+                  aria-disabled={null}
+                  aria-label={null}
+                  className="pf-c-button pf-m-primary pf-u-mt-xl"
+                  data-ouia-component-id={null}
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe={true}
+                  disabled={false}
+                  onClick={[MockFunction]}
+                  tabIndex={null}
+                  type="button"
+                >
+                  Go back to my application
+                </button>
+              </Component>
+              <Component>
+                <div
+                  className="pf-c-empty-state__secondary"
+                >
+                  <a
+                    href="/hybrid/settings/sources"
+                  >
+                    <Component
+                      variant="link"
+                    >
+                      <button
+                        aria-disabled={null}
+                        aria-label={null}
+                        className="pf-c-button pf-m-link"
+                        data-ouia-component-id={null}
+                        data-ouia-component-type="PF4/Button"
+                        data-ouia-safe={true}
+                        disabled={false}
+                        tabIndex={null}
+                        type="button"
+                      >
+                        <FormattedMessage
+                          defaultMessage="Take me to sources"
+                          id="wizard.toSources"
+                        >
+                          Take me to sources
+                        </FormattedMessage>
+                      </button>
+                    </Component>
+                  </a>
+                </div>
+              </Component>
+            </div>
+          </div>
         </Component>
-      </a>
+      </div>
     </Component>
-  </Component>
-</Component>
+  </FinishedStep>
+</IntlProvider>
 `;
 
 exports[`Steps components FinishedStep renders withou takemetosources button 1`] = `
-<Component>
-  <Component
-    className="ins-c-sources__empty-state"
-    variant="full"
-  >
-    <Component
-      className="pf-u-mb-0"
-      color="var(--pf-global--success-color--100)"
-      icon={[Function]}
-    />
-    <Component
-      className="pf-u-mt-xl"
-      headingLevel="h5"
-      size="lg"
-    >
-      Configuration successful
-    </Component>
-    <Component>
-      <Progress
-        className="pf-u-mb-md ins-c-sources__progress"
-        id=""
-        label="Completed"
-        max={0}
-        measureLocation="top"
-        min={0}
-        size={null}
-        title=" "
-        value={0}
-        valueText="Completed"
-        variant="success"
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
+  locale="en"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <FinishedStep
+    hideSourcesButton={true}
+    linkText={
+      <FormattedMessage
+        defaultMessage="Take me to sources"
+        id="wizard.toSources"
       />
-      Here I Am
+    }
+    onClose={[MockFunction]}
+    progressStep={0}
+    progressTexts={
+      Array [
+        "Completed",
+      ]
+    }
+    returnButtonTitle="Go back to my application"
+    successfulMessage="Here I Am"
+    title={
+      <FormattedMessage
+        defaultMessage="Configuration successful"
+        id="wizard.succConfiguration"
+      />
+    }
+  >
+    <Component>
+      <div
+        className="pf-l-bullseye"
+      >
+        <Component
+          className="ins-c-sources__empty-state"
+          variant="full"
+        >
+          <div
+            className="pf-c-empty-state ins-c-sources__empty-state"
+          >
+            <div
+              className="pf-c-empty-state__content"
+            >
+              <Component
+                className="pf-u-mb-0"
+                color="var(--pf-global--success-color--100)"
+                icon={[Function]}
+              >
+                <CheckCircleIcon
+                  aria-hidden="true"
+                  className="pf-c-empty-state__icon pf-u-mb-0"
+                  color="var(--pf-global--success-color--100)"
+                  noVerticalAlign={false}
+                  size="sm"
+                >
+                  <svg
+                    aria-hidden="true"
+                    aria-labelledby={null}
+                    className="pf-c-empty-state__icon pf-u-mb-0"
+                    fill="var(--pf-global--success-color--100)"
+                    height="1em"
+                    role="img"
+                    style={
+                      Object {
+                        "verticalAlign": "-0.125em",
+                      }
+                    }
+                    viewBox="0 0 512 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                      transform=""
+                    />
+                  </svg>
+                </CheckCircleIcon>
+              </Component>
+              <Component
+                className="pf-u-mt-xl"
+                headingLevel="h5"
+                size="lg"
+              >
+                <h5
+                  className="pf-c-title pf-m-lg pf-u-mt-xl"
+                >
+                  <FormattedMessage
+                    defaultMessage="Configuration successful"
+                    id="wizard.succConfiguration"
+                  >
+                    Configuration successful
+                  </FormattedMessage>
+                </h5>
+              </Component>
+              <Component>
+                <div
+                  className="pf-c-empty-state__body"
+                >
+                  <Progress
+                    className="pf-u-mb-md ins-c-sources__progress"
+                    id="finished-progress-bar"
+                    label="Completed"
+                    max={0}
+                    measureLocation="top"
+                    min={0}
+                    size={null}
+                    title=" "
+                    value={0}
+                    valueText="Completed"
+                    variant="success"
+                  >
+                    <div
+                      className="pf-c-progress pf-m-success pf-u-mb-md ins-c-sources__progress"
+                      id="finished-progress-bar"
+                    >
+                      <Component
+                        label="Completed"
+                        measureLocation="top"
+                        parentId="finished-progress-bar"
+                        progressBarAriaProps={
+                          Object {
+                            "aria-labelledby": "finished-progress-bar-description",
+                            "aria-valuemax": 0,
+                            "aria-valuemin": 0,
+                            "aria-valuenow": 0,
+                            "aria-valuetext": "Completed",
+                          }
+                        }
+                        title=" "
+                        value={NaN}
+                        variant="success"
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="pf-c-progress__description"
+                          id="finished-progress-bar-description"
+                        >
+                           
+                        </div>
+                        <div
+                          aria-hidden="true"
+                          className="pf-c-progress__status"
+                        >
+                          <span
+                            className="pf-c-progress__measure"
+                          >
+                            Completed
+                          </span>
+                          <span
+                            className="pf-c-progress__status-icon"
+                          >
+                            <CheckCircleIcon
+                              color="currentColor"
+                              noVerticalAlign={false}
+                              size="sm"
+                            >
+                              <svg
+                                aria-hidden={true}
+                                aria-labelledby={null}
+                                fill="currentColor"
+                                height="1em"
+                                role="img"
+                                style={
+                                  Object {
+                                    "verticalAlign": "-0.125em",
+                                  }
+                                }
+                                viewBox="0 0 512 512"
+                                width="1em"
+                              >
+                                <path
+                                  d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                                  transform=""
+                                />
+                              </svg>
+                            </CheckCircleIcon>
+                          </span>
+                        </div>
+                        <Component
+                          progressBarAriaProps={
+                            Object {
+                              "aria-labelledby": "finished-progress-bar-description",
+                              "aria-valuemax": 0,
+                              "aria-valuemin": 0,
+                              "aria-valuenow": 0,
+                              "aria-valuetext": "Completed",
+                            }
+                          }
+                          role="progressbar"
+                          value={NaN}
+                        >
+                          <div
+                            aria-labelledby="finished-progress-bar-description"
+                            aria-valuemax={0}
+                            aria-valuemin={0}
+                            aria-valuenow={0}
+                            aria-valuetext="Completed"
+                            className="pf-c-progress__bar"
+                            role="progressbar"
+                          >
+                            <div
+                              className="pf-c-progress__indicator"
+                              style={
+                                Object {
+                                  "width": "NaN%",
+                                }
+                              }
+                            >
+                              <span
+                                className="pf-c-progress__measure"
+                              />
+                            </div>
+                          </div>
+                        </Component>
+                      </Component>
+                    </div>
+                  </Progress>
+                  Here I Am
+                </div>
+              </Component>
+              <Component
+                className="pf-u-mt-xl"
+                onClick={[MockFunction]}
+                variant="primary"
+              >
+                <button
+                  aria-disabled={null}
+                  aria-label={null}
+                  className="pf-c-button pf-m-primary pf-u-mt-xl"
+                  data-ouia-component-id={null}
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe={true}
+                  disabled={false}
+                  onClick={[MockFunction]}
+                  tabIndex={null}
+                  type="button"
+                >
+                  Go back to my application
+                </button>
+              </Component>
+            </div>
+          </div>
+        </Component>
+      </div>
     </Component>
-    <Component
-      className="pf-u-mt-xl"
-      onClick={[MockFunction]}
-      variant="primary"
-    >
-      Go back to my application
-    </Component>
-  </Component>
-</Component>
+  </FinishedStep>
+</IntlProvider>
 `;
 
 exports[`Steps components LoadingStep renders correctly 1`] = `
-<Component>
-  <Component
-    className="ins-c-sources__empty-state"
-    variant="full"
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
+  locale="en"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <LoadingStep
+    cancelTitle={
+      <FormattedMessage
+        defaultMessage="Cancel"
+        id="wizard.cancelText"
+      />
+    }
+    customText={
+      <FormattedMessage
+        defaultMessage="Loading, please wait."
+        id="wizard.loadingText"
+      />
+    }
   >
-    <Component
-      className="pf-u-mb-0"
-      icon={[Function]}
-    />
-    <Component
-      className="pf-u-mt-xl"
-    >
-      Loading, please wait.
+    <Component>
+      <div
+        className="pf-l-bullseye"
+      >
+        <Component
+          className="ins-c-sources__empty-state"
+          variant="full"
+        >
+          <div
+            className="pf-c-empty-state ins-c-sources__empty-state"
+          >
+            <div
+              className="pf-c-empty-state__content"
+            >
+              <Component
+                className="pf-u-mb-0"
+                icon={[Function]}
+              >
+                <Component
+                  aria-hidden="true"
+                  className="pf-c-empty-state__icon pf-u-mb-0"
+                >
+                  <span
+                    aria-hidden="true"
+                    aria-valuetext="Loading..."
+                    className="pf-c-spinner pf-m-xl"
+                    role="progressbar"
+                  >
+                    <span
+                      className="pf-c-spinner__clipper"
+                    />
+                    <span
+                      className="pf-c-spinner__lead-ball"
+                    />
+                    <span
+                      className="pf-c-spinner__tail-ball"
+                    />
+                  </span>
+                </Component>
+              </Component>
+              <Component
+                className="pf-u-mt-xl"
+              >
+                <div
+                  className="pf-c-empty-state__body pf-u-mt-xl"
+                >
+                  <FormattedMessage
+                    defaultMessage="Loading, please wait."
+                    id="wizard.loadingText"
+                  >
+                    Loading, please wait.
+                  </FormattedMessage>
+                </div>
+              </Component>
+            </div>
+          </div>
+        </Component>
+      </div>
     </Component>
-  </Component>
-</Component>
+  </LoadingStep>
+</IntlProvider>
 `;
 
 exports[`Steps components LoadingStep renders correctly with custom props 1`] = `
-<Component>
-  <Component
-    className="ins-c-sources__empty-state"
-    variant="full"
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
+  locale="en"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <LoadingStep
+    cancelTitle={
+      <FormattedMessage
+        defaultMessage="Cancel"
+        id="wizard.cancelText"
+      />
+    }
+    customText="Here I Am"
+    onClose={[MockFunction]}
   >
-    <Component
-      className="pf-u-mb-0"
-      icon={[Function]}
-    />
-    <Component
-      className="pf-u-mt-xl"
-    >
-      Here I Am
-    </Component>
-    <Component
-      className="pf-u-mt-xl"
-    >
-      <Component
-        onClick={[MockFunction]}
-        variant="link"
+    <Component>
+      <div
+        className="pf-l-bullseye"
       >
-        Cancel
-      </Component>
+        <Component
+          className="ins-c-sources__empty-state"
+          variant="full"
+        >
+          <div
+            className="pf-c-empty-state ins-c-sources__empty-state"
+          >
+            <div
+              className="pf-c-empty-state__content"
+            >
+              <Component
+                className="pf-u-mb-0"
+                icon={[Function]}
+              >
+                <Component
+                  aria-hidden="true"
+                  className="pf-c-empty-state__icon pf-u-mb-0"
+                >
+                  <span
+                    aria-hidden="true"
+                    aria-valuetext="Loading..."
+                    className="pf-c-spinner pf-m-xl"
+                    role="progressbar"
+                  >
+                    <span
+                      className="pf-c-spinner__clipper"
+                    />
+                    <span
+                      className="pf-c-spinner__lead-ball"
+                    />
+                    <span
+                      className="pf-c-spinner__tail-ball"
+                    />
+                  </span>
+                </Component>
+              </Component>
+              <Component
+                className="pf-u-mt-xl"
+              >
+                <div
+                  className="pf-c-empty-state__body pf-u-mt-xl"
+                >
+                  Here I Am
+                </div>
+              </Component>
+              <Component
+                className="pf-u-mt-xl"
+              >
+                <div
+                  className="pf-c-empty-state__secondary pf-u-mt-xl"
+                >
+                  <Component
+                    onClick={[MockFunction]}
+                    variant="link"
+                  >
+                    <button
+                      aria-disabled={null}
+                      aria-label={null}
+                      className="pf-c-button pf-m-link"
+                      data-ouia-component-id={null}
+                      data-ouia-component-type="PF4/Button"
+                      data-ouia-safe={true}
+                      disabled={false}
+                      onClick={[MockFunction]}
+                      tabIndex={null}
+                      type="button"
+                    >
+                      <FormattedMessage
+                        defaultMessage="Cancel"
+                        id="wizard.cancelText"
+                      >
+                        Cancel
+                      </FormattedMessage>
+                    </button>
+                  </Component>
+                </div>
+              </Component>
+            </div>
+          </div>
+        </Component>
+      </div>
     </Component>
-  </Component>
-</Component>
+  </LoadingStep>
+</IntlProvider>
 `;
 
 exports[`Steps components LoadingStep renders correctly with progress bar 1`] = `
-<Component>
-  <Component
-    className="ins-c-sources__empty-state"
-    variant="full"
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
+  locale="en"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <LoadingStep
+    cancelTitle={
+      <FormattedMessage
+        defaultMessage="Cancel"
+        id="wizard.cancelText"
+      />
+    }
+    customText={
+      <FormattedMessage
+        defaultMessage="Loading, please wait."
+        id="wizard.loadingText"
+      />
+    }
   >
-    <Component
-      className="pf-u-mb-0"
-      icon={[Function]}
-    />
-    <Component
-      className="pf-u-mt-xl"
-    >
-      Loading, please wait.
+    <Component>
+      <div
+        className="pf-l-bullseye"
+      >
+        <Component
+          className="ins-c-sources__empty-state"
+          variant="full"
+        >
+          <div
+            className="pf-c-empty-state ins-c-sources__empty-state"
+          >
+            <div
+              className="pf-c-empty-state__content"
+            >
+              <Component
+                className="pf-u-mb-0"
+                icon={[Function]}
+              >
+                <Component
+                  aria-hidden="true"
+                  className="pf-c-empty-state__icon pf-u-mb-0"
+                >
+                  <span
+                    aria-hidden="true"
+                    aria-valuetext="Loading..."
+                    className="pf-c-spinner pf-m-xl"
+                    role="progressbar"
+                  >
+                    <span
+                      className="pf-c-spinner__clipper"
+                    />
+                    <span
+                      className="pf-c-spinner__lead-ball"
+                    />
+                    <span
+                      className="pf-c-spinner__tail-ball"
+                    />
+                  </span>
+                </Component>
+              </Component>
+              <Component
+                className="pf-u-mt-xl"
+              >
+                <div
+                  className="pf-c-empty-state__body pf-u-mt-xl"
+                >
+                  <FormattedMessage
+                    defaultMessage="Loading, please wait."
+                    id="wizard.loadingText"
+                  >
+                    Loading, please wait.
+                  </FormattedMessage>
+                </div>
+              </Component>
+            </div>
+          </div>
+        </Component>
+      </div>
     </Component>
-  </Component>
-</Component>
+  </LoadingStep>
+</IntlProvider>
 `;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import {
     TextContent,
     Text,
@@ -8,6 +7,7 @@ import {
 
 import * as Cm from '../../../addSourceWizard/hardcodedComponents/azure/costManagement';
 import RenderContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
+import mount from '../../__mocks__/mount';
 
 describe('Cost Management Azure steps components', () => {
     test('Configure Resource Group and Storage Account description', () => {

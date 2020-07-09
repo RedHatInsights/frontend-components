@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Popover } from '@patternfly/react-core';
+import { FormattedMessage } from 'react-intl';
 
 const ValuePopover = ({ label, value }) => (
     <Popover
@@ -9,7 +10,9 @@ const ValuePopover = ({ label, value }) => (
         position="top"
         maxWidth="80%"
     >
-        <Button variant="link" isInline className="ins-c-sources__wizard--summary-buttonss">Show more</Button>
+        <Button variant="link" isInline className="ins-c-sources__wizard--summary-buttonss">
+            <FormattedMessage id="wizard.ShowMore" defaultMessage="Show more" />
+        </Button>
     </Popover>
 );
 

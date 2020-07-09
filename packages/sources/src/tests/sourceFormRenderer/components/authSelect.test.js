@@ -1,11 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { Radio, FormHelperText } from '@patternfly/react-core';
 
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
 
 import AuthSelect from '../../../sourceFormRenderer/components/AuthSelect';
+import mount from '../../__mocks__/mount';
 
 describe('AuthSelect component', () => {
     let initialProps;

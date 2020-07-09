@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import mount from '../../__mocks__/mount';
 import { TextContent, Text } from '@patternfly/react-core';
 
 import * as OpenShift from '../../../addSourceWizard/hardcodedComponents/openshift/endpoint';

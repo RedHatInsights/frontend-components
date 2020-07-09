@@ -269,7 +269,7 @@ describe('schema builder', () => {
 
                 expectedSchema = expect.objectContaining({
                     fields: expect.arrayContaining(fields),
-                    title: expect.any(String),
+                    title: expect.any(Object),
                     name: OPENSHIFT_TYPE.name,
                     nextStep: 'summary'
                 });
@@ -280,7 +280,7 @@ describe('schema builder', () => {
             it('generate single selection with endpoint', () => {
                 expectedSchema = expect.objectContaining({
                     fields: expect.any(Array),
-                    title: expect.any(String),
+                    title: expect.any(Object),
                     name: OPENSHIFT_TYPE.name,
                     nextStep: `${OPENSHIFT_TYPE.name}-endpoint`
                 });
@@ -297,7 +297,7 @@ describe('schema builder', () => {
                         arnSelect,
                         secretKey
                     ]),
-                    title: expect.any(String),
+                    title: expect.any(Object),
                     name: AMAZON_TYPE.name,
                     nextStep: {
                         when: expect.any(String),
@@ -319,7 +319,7 @@ describe('schema builder', () => {
 
                 expectedSchema = expect.objectContaining({
                     fields: expect.arrayContaining(fields),
-                    title: expect.any(String),
+                    title: expect.any(Object),
                     name: expectedName,
                     nextStep: 'summary'
                 });
@@ -333,7 +333,7 @@ describe('schema builder', () => {
 
                 expectedSchema = expect.objectContaining({
                     fields: expect.arrayContaining(fields),
-                    title: expect.any(String),
+                    title: expect.any(Object),
                     name: expectedName,
                     nextStep: `${AZURE_TYPE.name}-endpoint`
                 });

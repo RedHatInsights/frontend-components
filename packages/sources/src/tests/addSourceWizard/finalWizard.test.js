@@ -1,12 +1,13 @@
 
 import React from 'react';
-import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import FinalWizard from '../../addSourceWizard/FinalWizard';
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
+
+import mount from '../__mocks__/mount';
 
 describe('Final wizard', () => {
     describe('Renders', () => {
@@ -28,7 +29,7 @@ describe('Final wizard', () => {
         });
 
         it('renders loading step correctly', () => {
-            const wrapper = shallow(<FinalWizard { ...initialProps }/>);
+            const wrapper = mount(<FinalWizard { ...initialProps }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
@@ -38,7 +39,7 @@ describe('Final wizard', () => {
         });
 
         it('renders finished step correctly', () => {
-            const wrapper = shallow(<FinalWizard { ...initialProps } isFinished={ true }/>);
+            const wrapper = mount(<FinalWizard { ...initialProps } isFinished={ true }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
@@ -48,7 +49,7 @@ describe('Final wizard', () => {
         });
 
         it('renders errored step correctly', () => {
-            const wrapper = shallow(<FinalWizard { ...initialProps } isErrored={ true }/>);
+            const wrapper = mount(<FinalWizard { ...initialProps } isErrored={ true }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 

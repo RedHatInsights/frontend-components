@@ -1,8 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { nextStep, iconMapper, NameDescription, SummaryDescription, sourceTypeMutator, appMutator } from '../../addSourceWizard/SourceAddSchema';
 import { OPENSHIFT_TYPE } from '../helpers/sourceTypes';
 import { TextContent, Text } from '@patternfly/react-core';
+
+import mount from '../__mocks__/mount';
 
 describe('Add source schema', () => {
     describe('nextStep', () => {

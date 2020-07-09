@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 import { TextContent, Text, TextVariants, TextListItem, TextList } from '@patternfly/react-core';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
 
 const INSTALL_PREREQUISITE = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#installing_ocp_prerequisites`;
@@ -7,18 +9,31 @@ const INSTALL_PREREQUISITE = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost
 export const ConfigureCostOperator = () => (
     <TextContent>
         <Text component={TextVariants.p}>
-            The Cost Management Operator collects the data required for Cost Management.&nbsp;
-            This is supported for clusters that are OpenShift Container Platform version 4.3 or later.&nbsp;
-            <Text component={TextVariants.a} href={INSTALL_PREREQUISITE} target="_blank" rel="noopener noreferrer">Learn more</Text>
+            <FormattedMessage
+                id="wizard.TheCostManagementOperatorCollectsTheDataRequiredForCostManagementThisIsSupportedForClustersThatAreOpenshiftContainerPlatformVersionOrLaterMore"
+                defaultMessage="The Cost Management Operator collects the data required for Cost Management. This is supported for clusters that are OpenShift Container Platform version 4.3 or later. {more}"
+                values={{ more: <Text
+                    component={TextVariants.a}
+                    href={INSTALL_PREREQUISITE}
+                    target="_blank"
+                    rel="noopener noreferrer"><FormattedMessage id="wizard.LearnMore" defaultMessage="Learn more" /></Text>
+                }}
+            />
         </Text>
         <TextContent className='list-align-left'>
             <TextList component='ol'>
                 <TextListItem component='li'>
-                    Install the Cost Management Operator from OperatorHub on your cluster (search
-                    for <i>cost management</i> ).
+                    <FormattedMessage
+                        id="wizard.InstallTheCostManagementOperatorFromOperatorhubOnYourClusterSearchForICostManagementI"
+                        defaultMessage="Install the Cost Management Operator from OperatorHub on your cluster (search for {cost})."
+                        values={{ cost: <i><FormattedMessage id="wizard.CostManagement" defaultMessage="cost management" /></i> }}
+                    />
                 </TextListItem>
                 <TextListItem component='li'>
-                    When configuration is complete, enter the cluster identifier below. The cluster identifier can be found in the cluster&apos;s Help &gt; About screen.
+                    <FormattedMessage
+                        id="wizard.WhenConfigurationIsCompleteEnterTheClusterIdentifierBelowTheClusterIdentifierCanBeFoundInTheClusterAposSHelpGtAboutScreen"
+                        defaultMessage="When configuration is complete, enter the cluster identifier below. The cluster identifier can be found in the cluster's Help > About screen."
+                    />
                 </TextListItem>
             </TextList>
         </TextContent>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import {
     EmptyStateBody,
@@ -41,6 +42,7 @@ const FinishedStep = ({
                     label={progressTexts[progressStep]}
                     valueText={progressTexts[progressStep]}
                     variant="success"
+                    id="finished-progress-bar"
                 />
                 { successfulMessage }
             </EmptyStateBody>
@@ -67,15 +69,15 @@ FinishedStep.propTypes = {
     hideSourcesButton: PropTypes.bool,
     returnButtonTitle: PropTypes.node.isRequired,
     progressStep: PropTypes.number.isRequired,
-    progressTexts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    progressTexts: PropTypes.arrayOf(PropTypes.node).isRequired,
     title: PropTypes.node,
     linkText: PropTypes.node,
     secondaryActions: PropTypes.node
 };
 
 FinishedStep.defaultProps = {
-    title: 'Configuration successful',
-    linkText: 'Take me to sources'
+    title: <FormattedMessage id="wizard.succConfiguration" defaultMessage="Configuration successful"/>,
+    linkText: <FormattedMessage id="wizard.toSources" defaultMessage="Take me to sources"/>
 };
 
 export default FinishedStep;

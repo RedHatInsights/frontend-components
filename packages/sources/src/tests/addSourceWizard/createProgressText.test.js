@@ -3,6 +3,7 @@ import createProgressText from '../../addSourceWizard/createProgressText';
 describe('createProgressText', () => {
     let formData;
     let result;
+    let texts;
 
     it('only source', () => {
         formData = {};
@@ -12,7 +13,11 @@ describe('createProgressText', () => {
             'Completed'
         ];
 
-        expect(createProgressText(formData)).toEqual(result);
+        texts = createProgressText(formData);
+
+        result.forEach((text, index) => {
+            expect(text).toEqual(texts[index].props.defaultMessage.replace('{step}', index + 1));
+        });
     });
 
     it('source with endpoint', () => {
@@ -25,7 +30,11 @@ describe('createProgressText', () => {
             'Completed'
         ];
 
-        expect(createProgressText(formData)).toEqual(result);
+        texts = createProgressText(formData);
+
+        result.forEach((text, index) => {
+            expect(text).toEqual(texts[index].props.defaultMessage.replace('{step}', index + 1));
+        });
     });
 
     it('source with app', () => {
@@ -37,7 +46,11 @@ describe('createProgressText', () => {
             'Completed'
         ];
 
-        expect(createProgressText(formData)).toEqual(result);
+        texts = createProgressText(formData);
+
+        result.forEach((text, index) => {
+            expect(text).toEqual(texts[index].props.defaultMessage.replace('{step}', index + 1));
+        });
     });
 
     it('cost managament', () => {
@@ -51,7 +64,11 @@ describe('createProgressText', () => {
             'Completed'
         ];
 
-        expect(createProgressText(formData)).toEqual(result);
+        texts = createProgressText(formData);
+
+        result.forEach((text, index) => {
+            expect(text).toEqual(texts[index].props.defaultMessage.replace('{step}', index + 1));
+        });
     });
 
     it('application and auth', () => {
@@ -65,6 +82,10 @@ describe('createProgressText', () => {
             'Completed'
         ];
 
-        expect(createProgressText(formData)).toEqual(result);
+        texts = createProgressText(formData);
+
+        result.forEach((text, index) => {
+            expect(text).toEqual(texts[index].props.defaultMessage.replace('{step}', index + 1));
+        });
     });
 });
