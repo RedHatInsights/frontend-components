@@ -59,9 +59,6 @@ describe('doCreateSource', () => {
         let EXPECTED_CREATE_ENDPOINT_SOURCE_ARG;
         let EXPECTED_CREATE_AUTH_APP_ARG;
 
-        let counter;
-        let increaseCounter;
-
         beforeEach(() => {
             TYPE_NAME = OPENSHIFT_TYPE.name;
             SOURCE_NAME = 'some name';
@@ -127,9 +124,6 @@ describe('doCreateSource', () => {
                 application_id: CREATE_APPLICATION_DATA_OUT.id,
                 authentication_id: CREATE_AUTHENTICATION_DATA_OUT.id
             };
-
-            counter = 0;
-            increaseCounter = () => ++counter;
         });
 
         afterEach(() => {
@@ -153,7 +147,7 @@ describe('doCreateSource', () => {
 
             api.getSourcesApi = () => mocks;
 
-            const result = await doCreateSource(FORM_DATA, sourceTypes, increaseCounter);
+            const result = await doCreateSource(FORM_DATA, sourceTypes);
 
             expect(result).toEqual(EXPECTED_RESULT);
 
@@ -163,8 +157,6 @@ describe('doCreateSource', () => {
             expect(createApplication).not.toHaveBeenCalled();
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
-
-            expect(counter).toEqual(3);
         });
 
         it('create source with noEndpoint set', async () => {
@@ -180,7 +172,7 @@ describe('doCreateSource', () => {
 
             api.getSourcesApi = () => mocks;
 
-            const result = await doCreateSource(FORM_DATA, sourceTypes, increaseCounter);
+            const result = await doCreateSource(FORM_DATA, sourceTypes);
 
             expect(result).toEqual(EXPECTED_RESULT);
 
@@ -190,8 +182,6 @@ describe('doCreateSource', () => {
             expect(createApplication).not.toHaveBeenCalled();
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
-
-            expect(counter).toEqual(1);
         });
 
         it('create source with url', async () => {
@@ -209,7 +199,7 @@ describe('doCreateSource', () => {
 
             api.getSourcesApi = () => mocks;
 
-            const result = await doCreateSource(FORM_DATA, sourceTypes, increaseCounter);
+            const result = await doCreateSource(FORM_DATA, sourceTypes);
 
             const EXPECTED_ENDPOINT_ARG_WITH_URL_PORT_IS_NUMBER = {
                 ...EXPECTED_CREATE_ENDPOINT_SOURCE_ARG,
@@ -225,8 +215,6 @@ describe('doCreateSource', () => {
             expect(createApplication).not.toHaveBeenCalled();
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
-
-            expect(counter).toEqual(3);
         });
 
         it('create source with app', async () => {
@@ -254,7 +242,7 @@ describe('doCreateSource', () => {
 
             api.getSourcesApi = () => mocks;
 
-            const result = await doCreateSource(FORM_DATA, sourceTypes, increaseCounter);
+            const result = await doCreateSource(FORM_DATA, sourceTypes);
 
             expect(result).toEqual(EXPECTED_RESULT);
 
@@ -264,8 +252,6 @@ describe('doCreateSource', () => {
             expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
-
-            expect(counter).toEqual(4);
         });
 
         it('create source with app and no endpoint set', async () => {
@@ -293,7 +279,7 @@ describe('doCreateSource', () => {
 
             api.getSourcesApi = () => mocks;
 
-            const result = await doCreateSource(FORM_DATA, sourceTypes, increaseCounter);
+            const result = await doCreateSource(FORM_DATA, sourceTypes);
 
             expect(result).toEqual(EXPECTED_RESULT);
 
@@ -303,8 +289,6 @@ describe('doCreateSource', () => {
             expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
-
-            expect(counter).toEqual(2);
         });
 
         it('create source with app billing source', async () => {
@@ -343,7 +327,7 @@ describe('doCreateSource', () => {
 
             api.getSourcesApi = () => mocks;
             cmAuthApi.patchSource = patchSource;
-            const result = await doCreateSource(FORM_DATA, sourceTypes, increaseCounter);
+            const result = await doCreateSource(FORM_DATA, sourceTypes);
 
             expect(result).toEqual(EXPECTED_RESULT);
 
@@ -353,8 +337,6 @@ describe('doCreateSource', () => {
             expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
             expect(patchSource).toHaveBeenCalledWith(EXPECTED_BILLING_SOURCE_ARG);
             expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
-
-            expect(counter).toEqual(4);
         });
 
         it('create source with app cost management source', async () => {
@@ -409,7 +391,7 @@ describe('doCreateSource', () => {
             api.getSourcesApi = () => mocks;
             cmAuthApi.patchSource = patchSource;
 
-            const result = await doCreateSource(FORM_DATA, sourceTypes, increaseCounter);
+            const result = await doCreateSource(FORM_DATA, sourceTypes);
             expect(result).toEqual(EXPECTED_RESULT);
 
             expect(createSource).toHaveBeenCalledWith({ ...EXPECTED_CREATE_SOURCE_ARG, source_type_id: '8' });
@@ -418,8 +400,6 @@ describe('doCreateSource', () => {
             expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
             expect(patchSource).toHaveBeenCalledWith(EXPECTED_CREDENTIALS_ARG);
             expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
-
-            expect(counter).toEqual(4);
         });
 
         describe('failures', () => {

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import toJson from 'enzyme-to-json';
+import { EmptyStateSecondaryActions, Button } from '@patternfly/react-core';
 
 import FinalWizard from '../../addSourceWizard/FinalWizard';
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
@@ -23,8 +24,7 @@ describe('Final wizard', () => {
                 successfulMessage: 'Message',
                 hideSourcesButton: false,
                 returnButtonTitle: 'Go back to my application',
-                progressTexts: [ 'Completed' ],
-                progressStep: 0
+                reset: jest.fn()
             };
         });
 
@@ -46,6 +46,12 @@ describe('Final wizard', () => {
         it('contains finished step', () => {
             const wrapper = mount(<FinalWizard { ...initialProps } isFinished={ true }/>);
             expect(wrapper.find(FinishedStep).length).toBe(1);
+        });
+
+        it('calls reset', () => {
+            const wrapper = mount(<FinalWizard { ...initialProps } isFinished={ true } hideSourcesButton={true}/>);
+            wrapper.find(EmptyStateSecondaryActions).find(Button).simulate('click');
+            expect(initialProps.reset).toHaveBeenCalled();
         });
 
         it('renders errored step correctly', () => {

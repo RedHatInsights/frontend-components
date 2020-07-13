@@ -2,15 +2,14 @@ import React, { useState, useReducer } from 'react';
 import { Button } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+import { FormattedMessage } from 'react-intl';
 
 import Form from './SourceAddModal';
 import FinalWizard from './FinalWizard';
 
 import { doCreateSource } from '../api/createSource';
 import { WIZARD_TITLE } from '../utilities/stringConstants';
-import createProgressText from './createProgressText';
 import CloseModal from './CloseModal';
-import { FormattedMessage } from 'react-intl';
 
 const prepareInitialValues = (initialValues) => ({
     isSubmitted: false,
@@ -19,9 +18,7 @@ const prepareInitialValues = (initialValues) => ({
     isCancelling: false,
     values: initialValues,
     createdSource: {},
-    error: undefined,
-    progressStep: 0,
-    progressTexts: []
+    error: undefined
 });
 
 const reducer = (state, { type, values, data, error, initialValues }) => {
@@ -32,12 +29,8 @@ const reducer = (state, { type, values, data, error, initialValues }) => {
             return {
                 ...state,
                 isSubmitted: true,
-                values,
-                progressTexts: createProgressText(values),
-                progressStep: 0
+                values
             };
-        case 'increaseProgressStep':
-            return { ...state, progressStep: state.progressStep + 1 };
         case 'setSubmitted':
             return { ...state, isFinished: true, createdSource: data };
         case 'setErrored':
@@ -69,14 +62,14 @@ const AddSourceWizard = ({
     afterSuccess
 }) => {
     const [
-        { isErrored, isFinished, isSubmitted, values, error, progressStep, progressTexts, isCancelling, createdSource },
+        { isErrored, isFinished, isSubmitted, values, error, isCancelling, createdSource },
         dispatch
     ] = useReducer(reducer, prepareInitialValues(initialValues));
 
     const onSubmit = (formValues, sourceTypes) => {
         dispatch({ type: 'prepareSubmitState', values: formValues });
 
-        return doCreateSource(formValues, sourceTypes, () => dispatch({ type: 'increaseProgressStep' })).then((data) => {
+        return doCreateSource(formValues, sourceTypes).then((data) => {
             afterSuccess && afterSuccess(data);
             dispatch({ type: 'setSubmitted', data });
         })
@@ -130,8 +123,7 @@ const AddSourceWizard = ({
         hideSourcesButton={ hideSourcesButton }
         returnButtonTitle={ returnButtonTitle }
         errorMessage={ error }
-        progressStep={progressStep}
-        progressTexts={progressTexts}
+        reset={ () => dispatch({ type: 'reset', initialValues })}
     />;
 };
 
@@ -165,7 +157,7 @@ AddSourceWizard.propTypes = {
 AddSourceWizard.defaultProps = {
     successfulMessage: <FormattedMessage id="wizard.successfulMessage" defaultMessage="Your source has been successfully added." />,
     initialValues: {},
-    returnButtonTitle: <FormattedMessage id="wizard.goBackToSources" defaultMessage="Go back to sources" />
+    returnButtonTitle: <FormattedMessage id="wizard.goBackToSources" defaultMessage="Go back to Sources" />
 };
 
 const AddSourceButton = (props) => {

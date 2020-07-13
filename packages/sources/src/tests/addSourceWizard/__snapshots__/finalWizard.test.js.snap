@@ -17,12 +17,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
     isErrored={true}
     isFinished={false}
     onRetry={[MockFunction]}
-    progressStep={0}
-    progressTexts={
-      Array [
-        "Completed",
-      ]
-    }
+    reset={[MockFunction]}
     returnButtonTitle="Go back to my application"
     successfulMessage="Message"
   >
@@ -57,18 +52,12 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
             "component": <ErroredStep
               customText={
                 <FormattedMessage
-                  defaultMessage="Your source has not been successfully added:"
+                  defaultMessage="Your source has not been successfully added."
                   id="wizard.errorText"
                 />
               }
               onClose={[MockFunction]}
               onRetry={[MockFunction]}
-              progressStep={0}
-              progressTexts={
-                Array [
-                  "Completed",
-                ]
-              }
               retryText={
                 <FormattedMessage
                   defaultMessage="Retry"
@@ -225,7 +214,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -246,49 +235,11 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                         class="pf-c-spinner__tail-ball"
                                       />
                                     </span>
-                                    <div
-                                      class="pf-c-empty-state__body pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-u-mb-0 ins-c-sources__progress"
-                                        id="loading-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="loading-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="loading-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                      Validating source credentials
+                                    </h2>
                                   </div>
                                 </div>
                               </div>
@@ -452,7 +403,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -473,49 +424,11 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                         class="pf-c-spinner__tail-ball"
                                       />
                                     </span>
-                                    <div
-                                      class="pf-c-empty-state__body pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-u-mb-0 ins-c-sources__progress"
-                                        id="loading-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="loading-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="loading-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                      Validating source credentials
+                                    </h2>
                                   </div>
                                 </div>
                               </div>
@@ -679,7 +592,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -699,71 +612,14 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                         transform=""
                                       />
                                     </svg>
-                                    <h5
-                                      class="pf-c-title pf-m-lg pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
                                       Configuration successful
-                                    </h5>
+                                    </h2>
                                     <div
                                       class="pf-c-empty-state__body"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-m-success pf-u-mb-md ins-c-sources__progress"
-                                        id="finished-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="finished-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                          <span
-                                            class="pf-c-progress__status-icon"
-                                          >
-                                            <svg
-                                              aria-hidden="true"
-                                              fill="currentColor"
-                                              height="1em"
-                                              role="img"
-                                              style="vertical-align: -0.125em;"
-                                              viewBox="0 0 512 512"
-                                              width="1em"
-                                            >
-                                              <path
-                                                d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                                                transform=""
-                                              />
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="finished-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
                                       Message
                                     </div>
                                     <button
@@ -789,6 +645,18 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                           Take me to sources
                                         </button>
                                       </a>
+                                    </div>
+                                    <div
+                                      class="pf-c-empty-state__secondary"
+                                    >
+                                      <button
+                                        class="pf-c-button pf-m-link"
+                                        data-ouia-component-type="PF4/Button"
+                                        data-ouia-safe="true"
+                                        type="button"
+                                      >
+                                        Add another source
+                                      </button>
                                     </div>
                                   </div>
                                 </div>
@@ -953,7 +821,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -973,71 +841,14 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                         transform=""
                                       />
                                     </svg>
-                                    <h5
-                                      class="pf-c-title pf-m-lg pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
                                       Configuration successful
-                                    </h5>
+                                    </h2>
                                     <div
                                       class="pf-c-empty-state__body"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-m-success pf-u-mb-md ins-c-sources__progress"
-                                        id="finished-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="finished-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                          <span
-                                            class="pf-c-progress__status-icon"
-                                          >
-                                            <svg
-                                              aria-hidden="true"
-                                              fill="currentColor"
-                                              height="1em"
-                                              role="img"
-                                              style="vertical-align: -0.125em;"
-                                              viewBox="0 0 512 512"
-                                              width="1em"
-                                            >
-                                              <path
-                                                d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                                                transform=""
-                                              />
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="finished-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
                                       Message
                                     </div>
                                     <button
@@ -1063,6 +874,18 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                           Take me to sources
                                         </button>
                                       </a>
+                                    </div>
+                                    <div
+                                      class="pf-c-empty-state__secondary"
+                                    >
+                                      <button
+                                        class="pf-c-button pf-m-link"
+                                        data-ouia-component-type="PF4/Button"
+                                        data-ouia-safe="true"
+                                        type="button"
+                                      >
+                                        Add another source
+                                      </button>
                                     </div>
                                   </div>
                                 </div>
@@ -1104,7 +927,9 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                 </div>
               </div>
             </div>
-            <div>
+            <div
+              aria-hidden="true"
+            >
               <div
                 class="pf-c-backdrop"
               >
@@ -1225,7 +1050,218 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
+                                >
+                                  <div
+                                    class="pf-c-empty-state__content"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      class="pf-c-empty-state__icon pf-u-mb-0"
+                                      fill="var(--pf-global--success-color--100)"
+                                      height="1em"
+                                      role="img"
+                                      style="vertical-align: -0.125em;"
+                                      viewBox="0 0 512 512"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+                                        transform=""
+                                      />
+                                    </svg>
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
+                                    >
+                                      Configuration successful
+                                    </h2>
+                                    <div
+                                      class="pf-c-empty-state__body"
+                                    >
+                                      Message
+                                    </div>
+                                    <button
+                                      class="pf-c-button pf-m-primary pf-u-mt-xl"
+                                      data-ouia-component-type="PF4/Button"
+                                      data-ouia-safe="true"
+                                      type="button"
+                                    >
+                                      Go back to my application
+                                    </button>
+                                    <div
+                                      class="pf-c-empty-state__secondary"
+                                    >
+                                      <button
+                                        class="pf-c-button pf-m-link"
+                                        data-ouia-component-type="PF4/Button"
+                                        data-ouia-safe="true"
+                                        type="button"
+                                      >
+                                        Add another source
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </main>
+                        </div>
+                        <footer
+                          class="pf-c-wizard__footer"
+                        >
+                          <button
+                            class="pf-c-button pf-m-primary"
+                            data-ouia-component-type="PF4/Button"
+                            data-ouia-safe="true"
+                            type="submit"
+                          >
+                            Next
+                          </button>
+                          <button
+                            class="pf-c-button pf-m-secondary pf-m-disabled"
+                            data-ouia-component-type="PF4/Button"
+                            data-ouia-safe="true"
+                            type="button"
+                          >
+                            Back
+                          </button>
+                          <button
+                            class="pf-c-button pf-m-link"
+                            data-ouia-component-type="PF4/Button"
+                            data-ouia-safe="true"
+                            type="button"
+                          >
+                            Cancel
+                          </button>
+                        </footer>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div
+                class="pf-c-backdrop"
+              >
+                <div
+                  class="pf-l-bullseye"
+                >
+                  <div
+                    aria-describedby="pf-wizard-description-5"
+                    aria-labelledby="pf-wizard-title-5"
+                    aria-modal="true"
+                    class="pf-c-modal-box pf-m-lg"
+                    id="pf-modal-part-5"
+                    role="dialog"
+                  >
+                    
+                    <div
+                      class="pf-c-wizard pf-m-finished"
+                    >
+                      <div
+                        class="pf-c-wizard__header"
+                      >
+                        <button
+                          aria-label="Close"
+                          class="pf-c-button pf-m-plain pf-c-wizard__close"
+                          data-ouia-component-type="PF4/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            style="vertical-align: -0.125em;"
+                            viewBox="0 0 352 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                              transform=""
+                            />
+                          </svg>
+                        </button>
+                        <h2
+                          aria-label="[object Object]"
+                          class="pf-c-title pf-m-3xl pf-c-wizard__title"
+                          id="pf-wizard-title-5"
+                        >
+                          Add source
+                        </h2>
+                        <p
+                          class="pf-c-wizard__description"
+                          id="pf-wizard-description-5"
+                        >
+                          Connect a data source to use with your applications.
+                        </p>
+                      </div>
+                      <button
+                        aria-expanded="false"
+                        aria-label="Wizard Toggle"
+                        class="pf-c-wizard__toggle"
+                      >
+                        <ol
+                          class="pf-c-wizard__toggle-list"
+                        >
+                          <li
+                            class="pf-c-wizard__toggle-list-item"
+                          >
+                            <span
+                              class="pf-c-wizard__toggle-num"
+                            >
+                              1
+                            </span>
+                             
+                            Finish
+                          </li>
+                        </ol>
+                        <span
+                          class="pf-c-wizard__toggle-icon"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            style="vertical-align: -0.125em;"
+                            viewBox="0 0 320 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                              transform=""
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                      <div
+                        class="pf-c-wizard__outer-wrap"
+                      >
+                        <div
+                          class="pf-c-wizard__inner-wrap"
+                        >
+                          <nav
+                            aria-label="Steps"
+                            class="pf-c-wizard__nav"
+                          >
+                            <ol
+                              class="pf-c-wizard__nav-list"
+                            />
+                          </nav>
+                          <main
+                            class="pf-c-wizard__main"
+                          >
+                            <div
+                              class="pf-c-wizard__main-body"
+                            >
+                              <div
+                                class="pf-l-bullseye"
+                              >
+                                <div
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -1241,86 +1277,19 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                       width="1em"
                                     >
                                       <path
-                                        d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+                                        d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
                                         transform=""
                                       />
                                     </svg>
-                                    <h5
-                                      class="pf-c-title pf-m-lg pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
                                       Configuration unsuccessful
-                                    </h5>
+                                    </h2>
                                     <div
                                       class="pf-c-empty-state__body"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-m-danger pf-u-mb-md ins-c-sources__progress"
-                                        id="errored-step-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="errored-step-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                          <span
-                                            class="pf-c-progress__status-icon"
-                                          >
-                                            <svg
-                                              aria-hidden="true"
-                                              fill="currentColor"
-                                              height="1em"
-                                              role="img"
-                                              style="vertical-align: -0.125em;"
-                                              viewBox="0 0 512 512"
-                                              width="1em"
-                                            >
-                                              <path
-                                                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
-                                                transform=""
-                                              />
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="errored-step-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div
-                                        class="pf-c-content"
-                                      >
-                                        <p
-                                          class=""
-                                          data-pf-content="true"
-                                          variant="p"
-                                        >
-                                          Your source has not been successfully added:
-                                        </p>
-                                      </div>
+                                      Your source has not been successfully added.
                                     </div>
                                     <button
                                       class="pf-c-button pf-m-primary"
@@ -1384,9 +1353,9 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
             </div>
           </body>
         }
-        aria-describedby="pf-wizard-description-4"
+        aria-describedby="pf-wizard-description-5"
         aria-label=""
-        aria-labelledby="pf-wizard-title-4"
+        aria-labelledby="pf-wizard-title-5"
         className=""
         hasNoBodyWrapper={true}
         isOpen={true}
@@ -1405,11 +1374,11 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                   class="pf-l-bullseye"
                 >
                   <div
-                    aria-describedby="pf-wizard-description-4"
-                    aria-labelledby="pf-wizard-title-4"
+                    aria-describedby="pf-wizard-description-5"
+                    aria-labelledby="pf-wizard-title-5"
                     aria-modal="true"
                     class="pf-c-modal-box pf-m-lg"
-                    id="pf-modal-part-4"
+                    id="pf-modal-part-5"
                     role="dialog"
                   >
                     
@@ -1444,13 +1413,13 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                         <h2
                           aria-label="[object Object]"
                           class="pf-c-title pf-m-3xl pf-c-wizard__title"
-                          id="pf-wizard-title-4"
+                          id="pf-wizard-title-5"
                         >
                           Add source
                         </h2>
                         <p
                           class="pf-c-wizard__description"
-                          id="pf-wizard-description-4"
+                          id="pf-wizard-description-5"
                         >
                           Connect a data source to use with your applications.
                         </p>
@@ -1518,7 +1487,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -1534,86 +1503,19 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                       width="1em"
                                     >
                                       <path
-                                        d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+                                        d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
                                         transform=""
                                       />
                                     </svg>
-                                    <h5
-                                      class="pf-c-title pf-m-lg pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
                                       Configuration unsuccessful
-                                    </h5>
+                                    </h2>
                                     <div
                                       class="pf-c-empty-state__body"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-m-danger pf-u-mb-md ins-c-sources__progress"
-                                        id="errored-step-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="errored-step-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                          <span
-                                            class="pf-c-progress__status-icon"
-                                          >
-                                            <svg
-                                              aria-hidden="true"
-                                              fill="currentColor"
-                                              height="1em"
-                                              role="img"
-                                              style="vertical-align: -0.125em;"
-                                              viewBox="0 0 512 512"
-                                              width="1em"
-                                            >
-                                              <path
-                                                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
-                                                transform=""
-                                              />
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="errored-step-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div
-                                        class="pf-c-content"
-                                      >
-                                        <p
-                                          class=""
-                                          data-pf-content="true"
-                                          variant="p"
-                                        >
-                                          Your source has not been successfully added:
-                                        </p>
-                                      </div>
+                                      Your source has not been successfully added.
                                     </div>
                                     <button
                                       class="pf-c-button pf-m-primary"
@@ -1679,15 +1581,15 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
         >
           <Component
             actions={Array []}
-            aria-describedby="pf-wizard-description-4"
+            aria-describedby="pf-wizard-description-5"
             aria-label=""
-            aria-labelledby="pf-wizard-title-4"
-            boxId="pf-modal-part-4"
+            aria-labelledby="pf-wizard-title-5"
+            boxId="pf-modal-part-5"
             className=""
-            descriptorId="pf-modal-part-6"
+            descriptorId="pf-modal-part-7"
             hasNoBodyWrapper={true}
             isOpen={true}
-            labelId="pf-modal-part-5"
+            labelId="pf-modal-part-6"
             onClose={[Function]}
             showClose={false}
             title=""
@@ -1711,21 +1613,21 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                     className="pf-l-bullseye"
                   >
                     <Component
-                      aria-describedby="pf-wizard-description-4"
+                      aria-describedby="pf-wizard-description-5"
                       aria-label=""
-                      aria-labelledby="pf-wizard-title-4"
+                      aria-labelledby="pf-wizard-title-5"
                       className=""
-                      id="pf-modal-part-4"
+                      id="pf-modal-part-5"
                       style={Object {}}
                       variant="large"
                     >
                       <div
-                        aria-describedby="pf-wizard-description-4"
+                        aria-describedby="pf-wizard-description-5"
                         aria-label={null}
-                        aria-labelledby="pf-wizard-title-4"
+                        aria-labelledby="pf-wizard-title-5"
                         aria-modal="true"
                         className="pf-c-modal-box pf-m-lg"
-                        id="pf-modal-part-4"
+                        id="pf-modal-part-5"
                         role="dialog"
                         style={Object {}}
                       >
@@ -1740,7 +1642,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 id="wizard.wizardDescription"
                               />
                             }
-                            descriptionId="pf-wizard-description-4"
+                            descriptionId="pf-wizard-description-5"
                             hideClose={false}
                             onClose={[MockFunction]}
                             title={
@@ -1749,7 +1651,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 id="wizard.wizardTitle"
                               />
                             }
-                            titleId="pf-wizard-title-4"
+                            titleId="pf-wizard-title-5"
                           >
                             <div
                               className="pf-c-wizard__header"
@@ -1809,7 +1711,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 }
                                 className="pf-c-wizard__title"
                                 headingLevel="h2"
-                                id="pf-wizard-title-4"
+                                id="pf-wizard-title-5"
                                 size="3xl"
                               >
                                 <h2
@@ -1820,7 +1722,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                     />
                                   }
                                   className="pf-c-title pf-m-3xl pf-c-wizard__title"
-                                  id="pf-wizard-title-4"
+                                  id="pf-wizard-title-5"
                                 >
                                   <FormattedMessage
                                     defaultMessage="Add source"
@@ -1832,7 +1734,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                               </Component>
                               <p
                                 className="pf-c-wizard__description"
-                                id="pf-wizard-description-4"
+                                id="pf-wizard-description-5"
                               >
                                 <FormattedMessage
                                   defaultMessage="Connect a data source to use with your applications."
@@ -1849,18 +1751,12 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 "component": <ErroredStep
                                   customText={
                                     <FormattedMessage
-                                      defaultMessage="Your source has not been successfully added:"
+                                      defaultMessage="Your source has not been successfully added."
                                       id="wizard.errorText"
                                     />
                                   }
                                   onClose={[MockFunction]}
                                   onRetry={[MockFunction]}
-                                  progressStep={0}
-                                  progressTexts={
-                                    Array [
-                                      "Completed",
-                                    ]
-                                  }
                                   retryText={
                                     <FormattedMessage
                                       defaultMessage="Retry"
@@ -1890,18 +1786,12 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                   "component": <ErroredStep
                                     customText={
                                       <FormattedMessage
-                                        defaultMessage="Your source has not been successfully added:"
+                                        defaultMessage="Your source has not been successfully added."
                                         id="wizard.errorText"
                                       />
                                     }
                                     onClose={[MockFunction]}
                                     onRetry={[MockFunction]}
-                                    progressStep={0}
-                                    progressTexts={
-                                      Array [
-                                        "Completed",
-                                      ]
-                                    }
                                     retryText={
                                       <FormattedMessage
                                         defaultMessage="Retry"
@@ -2005,18 +1895,12 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                       <ErroredStep
                                         customText={
                                           <FormattedMessage
-                                            defaultMessage="Your source has not been successfully added:"
+                                            defaultMessage="Your source has not been successfully added."
                                             id="wizard.errorText"
                                           />
                                         }
                                         onClose={[MockFunction]}
                                         onRetry={[MockFunction]}
-                                        progressStep={0}
-                                        progressTexts={
-                                          Array [
-                                            "Completed",
-                                          ]
-                                        }
                                         retryText={
                                           <FormattedMessage
                                             defaultMessage="Retry"
@@ -2036,11 +1920,11 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                             className="pf-l-bullseye"
                                           >
                                             <Component
-                                              className="ins-c-sources__empty-state"
+                                              className="pf-u-mt-4xl"
                                               variant="full"
                                             >
                                               <div
-                                                className="pf-c-empty-state ins-c-sources__empty-state"
+                                                className="pf-c-empty-state pf-u-mt-4xl"
                                               >
                                                 <div
                                                   className="pf-c-empty-state__content"
@@ -2050,7 +1934,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                                     color="var(--pf-global--danger-color--100)"
                                                     icon={[Function]}
                                                   >
-                                                    <TimesCircleIcon
+                                                    <ExclamationCircleIcon
                                                       aria-hidden="true"
                                                       className="pf-c-empty-state__icon pf-u-mb-0"
                                                       color="var(--pf-global--danger-color--100)"
@@ -2073,19 +1957,19 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                                         width="1em"
                                                       >
                                                         <path
-                                                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+                                                          d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
                                                           transform=""
                                                         />
                                                       </svg>
-                                                    </TimesCircleIcon>
+                                                    </ExclamationCircleIcon>
                                                   </Component>
                                                   <Component
                                                     className="pf-u-mt-xl"
-                                                    headingLevel="h5"
-                                                    size="lg"
+                                                    headingLevel="h2"
+                                                    size="xl"
                                                   >
-                                                    <h5
-                                                      className="pf-c-title pf-m-lg pf-u-mt-xl"
+                                                    <h2
+                                                      className="pf-c-title pf-m-xl pf-u-mt-xl"
                                                     >
                                                       <FormattedMessage
                                                         defaultMessage="Configuration unsuccessful"
@@ -2093,153 +1977,18 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                                       >
                                                         Configuration unsuccessful
                                                       </FormattedMessage>
-                                                    </h5>
+                                                    </h2>
                                                   </Component>
                                                   <Component>
                                                     <div
                                                       className="pf-c-empty-state__body"
                                                     >
-                                                      <Progress
-                                                        className="pf-u-mb-md ins-c-sources__progress"
-                                                        id="errored-step-progress-bar"
-                                                        label="Completed"
-                                                        max={0}
-                                                        measureLocation="top"
-                                                        min={0}
-                                                        size={null}
-                                                        title=" "
-                                                        value={0}
-                                                        valueText="Completed"
-                                                        variant="danger"
+                                                      <FormattedMessage
+                                                        defaultMessage="Your source has not been successfully added."
+                                                        id="wizard.errorText"
                                                       >
-                                                        <div
-                                                          className="pf-c-progress pf-m-danger pf-u-mb-md ins-c-sources__progress"
-                                                          id="errored-step-progress-bar"
-                                                        >
-                                                          <Component
-                                                            label="Completed"
-                                                            measureLocation="top"
-                                                            parentId="errored-step-progress-bar"
-                                                            progressBarAriaProps={
-                                                              Object {
-                                                                "aria-labelledby": "errored-step-progress-bar-description",
-                                                                "aria-valuemax": 0,
-                                                                "aria-valuemin": 0,
-                                                                "aria-valuenow": 0,
-                                                                "aria-valuetext": "Completed",
-                                                              }
-                                                            }
-                                                            title=" "
-                                                            value={NaN}
-                                                            variant="danger"
-                                                          >
-                                                            <div
-                                                              aria-hidden="true"
-                                                              className="pf-c-progress__description"
-                                                              id="errored-step-progress-bar-description"
-                                                            >
-                                                               
-                                                            </div>
-                                                            <div
-                                                              aria-hidden="true"
-                                                              className="pf-c-progress__status"
-                                                            >
-                                                              <span
-                                                                className="pf-c-progress__measure"
-                                                              >
-                                                                Completed
-                                                              </span>
-                                                              <span
-                                                                className="pf-c-progress__status-icon"
-                                                              >
-                                                                <TimesCircleIcon
-                                                                  color="currentColor"
-                                                                  noVerticalAlign={false}
-                                                                  size="sm"
-                                                                >
-                                                                  <svg
-                                                                    aria-hidden={true}
-                                                                    aria-labelledby={null}
-                                                                    fill="currentColor"
-                                                                    height="1em"
-                                                                    role="img"
-                                                                    style={
-                                                                      Object {
-                                                                        "verticalAlign": "-0.125em",
-                                                                      }
-                                                                    }
-                                                                    viewBox="0 0 512 512"
-                                                                    width="1em"
-                                                                  >
-                                                                    <path
-                                                                      d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
-                                                                      transform=""
-                                                                    />
-                                                                  </svg>
-                                                                </TimesCircleIcon>
-                                                              </span>
-                                                            </div>
-                                                            <Component
-                                                              progressBarAriaProps={
-                                                                Object {
-                                                                  "aria-labelledby": "errored-step-progress-bar-description",
-                                                                  "aria-valuemax": 0,
-                                                                  "aria-valuemin": 0,
-                                                                  "aria-valuenow": 0,
-                                                                  "aria-valuetext": "Completed",
-                                                                }
-                                                              }
-                                                              role="progressbar"
-                                                              value={NaN}
-                                                            >
-                                                              <div
-                                                                aria-labelledby="errored-step-progress-bar-description"
-                                                                aria-valuemax={0}
-                                                                aria-valuemin={0}
-                                                                aria-valuenow={0}
-                                                                aria-valuetext="Completed"
-                                                                className="pf-c-progress__bar"
-                                                                role="progressbar"
-                                                              >
-                                                                <div
-                                                                  className="pf-c-progress__indicator"
-                                                                  style={
-                                                                    Object {
-                                                                      "width": "NaN%",
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <span
-                                                                    className="pf-c-progress__measure"
-                                                                  />
-                                                                </div>
-                                                              </div>
-                                                            </Component>
-                                                          </Component>
-                                                        </div>
-                                                      </Progress>
-                                                      <Component>
-                                                        <div
-                                                          className="pf-c-content"
-                                                        >
-                                                          <Component
-                                                            variant="p"
-                                                          >
-                                                            <p
-                                                              className=""
-                                                              data-pf-content={true}
-                                                              variant="p"
-                                                            >
-                                                              <FormattedMessage
-                                                                defaultMessage="Your source has not been successfully added:"
-                                                                id="wizard.errorText"
-                                                              >
-                                                                Your source has not been successfully added:
-                                                              </FormattedMessage>
-                                                            </p>
-                                                          </Component>
-                                                        </div>
-                                                      </Component>
+                                                        Your source has not been successfully added.
+                                                      </FormattedMessage>
                                                     </div>
                                                   </Component>
                                                   <Component
@@ -2307,18 +2056,12 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                     "component": <ErroredStep
                                       customText={
                                         <FormattedMessage
-                                          defaultMessage="Your source has not been successfully added:"
+                                          defaultMessage="Your source has not been successfully added."
                                           id="wizard.errorText"
                                         />
                                       }
                                       onClose={[MockFunction]}
                                       onRetry={[MockFunction]}
-                                      progressStep={0}
-                                      progressTexts={
-                                        Array [
-                                          "Completed",
-                                        ]
-                                      }
                                       retryText={
                                         <FormattedMessage
                                           defaultMessage="Retry"
@@ -2445,12 +2188,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
     isErrored={false}
     isFinished={true}
     onRetry={[MockFunction]}
-    progressStep={0}
-    progressTexts={
-      Array [
-        "Completed",
-      ]
-    }
+    reset={[MockFunction]}
     returnButtonTitle="Go back to my application"
     successfulMessage="Message"
   >
@@ -2491,13 +2229,18 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                 />
               }
               onClose={[MockFunction]}
-              progressStep={0}
-              progressTexts={
-                Array [
-                  "Completed",
-                ]
-              }
               returnButtonTitle="Go back to my application"
+              secondaryActions={
+                <Unknown
+                  onClick={[MockFunction]}
+                  variant="link"
+                >
+                  <FormattedMessage
+                    defaultMessage="Add another source"
+                    id="wizard.addAnotherSource"
+                  />
+                </Unknown>
+              }
               successfulMessage="Message"
               title={
                 <FormattedMessage
@@ -2648,7 +2391,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -2669,49 +2412,11 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                         class="pf-c-spinner__tail-ball"
                                       />
                                     </span>
-                                    <div
-                                      class="pf-c-empty-state__body pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-u-mb-0 ins-c-sources__progress"
-                                        id="loading-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="loading-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="loading-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                      Validating source credentials
+                                    </h2>
                                   </div>
                                 </div>
                               </div>
@@ -2875,7 +2580,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -2896,49 +2601,11 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                         class="pf-c-spinner__tail-ball"
                                       />
                                     </span>
-                                    <div
-                                      class="pf-c-empty-state__body pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-u-mb-0 ins-c-sources__progress"
-                                        id="loading-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="loading-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="loading-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                      Validating source credentials
+                                    </h2>
                                   </div>
                                 </div>
                               </div>
@@ -3100,7 +2767,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -3120,71 +2787,14 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                         transform=""
                                       />
                                     </svg>
-                                    <h5
-                                      class="pf-c-title pf-m-lg pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
                                       Configuration successful
-                                    </h5>
+                                    </h2>
                                     <div
                                       class="pf-c-empty-state__body"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-m-success pf-u-mb-md ins-c-sources__progress"
-                                        id="finished-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="finished-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                          <span
-                                            class="pf-c-progress__status-icon"
-                                          >
-                                            <svg
-                                              aria-hidden="true"
-                                              fill="currentColor"
-                                              height="1em"
-                                              role="img"
-                                              style="vertical-align: -0.125em;"
-                                              viewBox="0 0 512 512"
-                                              width="1em"
-                                            >
-                                              <path
-                                                d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                                                transform=""
-                                              />
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="finished-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
                                       Message
                                     </div>
                                     <button
@@ -3210,6 +2820,18 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                           Take me to sources
                                         </button>
                                       </a>
+                                    </div>
+                                    <div
+                                      class="pf-c-empty-state__secondary"
+                                    >
+                                      <button
+                                        class="pf-c-button pf-m-link"
+                                        data-ouia-component-type="PF4/Button"
+                                        data-ouia-safe="true"
+                                        type="button"
+                                      >
+                                        Add another source
+                                      </button>
                                     </div>
                                   </div>
                                 </div>
@@ -3387,7 +3009,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -3407,71 +3029,14 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                         transform=""
                                       />
                                     </svg>
-                                    <h5
-                                      class="pf-c-title pf-m-lg pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
                                       Configuration successful
-                                    </h5>
+                                    </h2>
                                     <div
                                       class="pf-c-empty-state__body"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-m-success pf-u-mb-md ins-c-sources__progress"
-                                        id="finished-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="finished-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                          <span
-                                            class="pf-c-progress__status-icon"
-                                          >
-                                            <svg
-                                              aria-hidden="true"
-                                              fill="currentColor"
-                                              height="1em"
-                                              role="img"
-                                              style="vertical-align: -0.125em;"
-                                              viewBox="0 0 512 512"
-                                              width="1em"
-                                            >
-                                              <path
-                                                d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                                                transform=""
-                                              />
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="finished-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
                                       Message
                                     </div>
                                     <button
@@ -3497,6 +3062,18 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                           Take me to sources
                                         </button>
                                       </a>
+                                    </div>
+                                    <div
+                                      class="pf-c-empty-state__secondary"
+                                    >
+                                      <button
+                                        class="pf-c-button pf-m-link"
+                                        data-ouia-component-type="PF4/Button"
+                                        data-ouia-safe="true"
+                                        type="button"
+                                      >
+                                        Add another source
+                                      </button>
                                     </div>
                                   </div>
                                 </div>
@@ -3718,13 +3295,18 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                     />
                                   }
                                   onClose={[MockFunction]}
-                                  progressStep={0}
-                                  progressTexts={
-                                    Array [
-                                      "Completed",
-                                    ]
-                                  }
                                   returnButtonTitle="Go back to my application"
+                                  secondaryActions={
+                                    <Unknown
+                                      onClick={[MockFunction]}
+                                      variant="link"
+                                    >
+                                      <FormattedMessage
+                                        defaultMessage="Add another source"
+                                        id="wizard.addAnotherSource"
+                                      />
+                                    </Unknown>
+                                  }
                                   successfulMessage="Message"
                                   title={
                                     <FormattedMessage
@@ -3754,13 +3336,18 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                       />
                                     }
                                     onClose={[MockFunction]}
-                                    progressStep={0}
-                                    progressTexts={
-                                      Array [
-                                        "Completed",
-                                      ]
-                                    }
                                     returnButtonTitle="Go back to my application"
+                                    secondaryActions={
+                                      <Unknown
+                                        onClick={[MockFunction]}
+                                        variant="link"
+                                      >
+                                        <FormattedMessage
+                                          defaultMessage="Add another source"
+                                          id="wizard.addAnotherSource"
+                                        />
+                                      </Unknown>
+                                    }
                                     successfulMessage="Message"
                                     title={
                                       <FormattedMessage
@@ -3864,13 +3451,18 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                           />
                                         }
                                         onClose={[MockFunction]}
-                                        progressStep={0}
-                                        progressTexts={
-                                          Array [
-                                            "Completed",
-                                          ]
-                                        }
                                         returnButtonTitle="Go back to my application"
+                                        secondaryActions={
+                                          <Unknown
+                                            onClick={[MockFunction]}
+                                            variant="link"
+                                          >
+                                            <FormattedMessage
+                                              defaultMessage="Add another source"
+                                              id="wizard.addAnotherSource"
+                                            />
+                                          </Unknown>
+                                        }
                                         successfulMessage="Message"
                                         title={
                                           <FormattedMessage
@@ -3884,11 +3476,11 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                             className="pf-l-bullseye"
                                           >
                                             <Component
-                                              className="ins-c-sources__empty-state"
+                                              className="pf-u-mt-4xl"
                                               variant="full"
                                             >
                                               <div
-                                                className="pf-c-empty-state ins-c-sources__empty-state"
+                                                className="pf-c-empty-state pf-u-mt-4xl"
                                               >
                                                 <div
                                                   className="pf-c-empty-state__content"
@@ -3929,11 +3521,11 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                                   </Component>
                                                   <Component
                                                     className="pf-u-mt-xl"
-                                                    headingLevel="h5"
-                                                    size="lg"
+                                                    headingLevel="h2"
+                                                    size="xl"
                                                   >
-                                                    <h5
-                                                      className="pf-c-title pf-m-lg pf-u-mt-xl"
+                                                    <h2
+                                                      className="pf-c-title pf-m-xl pf-u-mt-xl"
                                                     >
                                                       <FormattedMessage
                                                         defaultMessage="Configuration successful"
@@ -3941,131 +3533,12 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                                       >
                                                         Configuration successful
                                                       </FormattedMessage>
-                                                    </h5>
+                                                    </h2>
                                                   </Component>
                                                   <Component>
                                                     <div
                                                       className="pf-c-empty-state__body"
                                                     >
-                                                      <Progress
-                                                        className="pf-u-mb-md ins-c-sources__progress"
-                                                        id="finished-progress-bar"
-                                                        label="Completed"
-                                                        max={0}
-                                                        measureLocation="top"
-                                                        min={0}
-                                                        size={null}
-                                                        title=" "
-                                                        value={0}
-                                                        valueText="Completed"
-                                                        variant="success"
-                                                      >
-                                                        <div
-                                                          className="pf-c-progress pf-m-success pf-u-mb-md ins-c-sources__progress"
-                                                          id="finished-progress-bar"
-                                                        >
-                                                          <Component
-                                                            label="Completed"
-                                                            measureLocation="top"
-                                                            parentId="finished-progress-bar"
-                                                            progressBarAriaProps={
-                                                              Object {
-                                                                "aria-labelledby": "finished-progress-bar-description",
-                                                                "aria-valuemax": 0,
-                                                                "aria-valuemin": 0,
-                                                                "aria-valuenow": 0,
-                                                                "aria-valuetext": "Completed",
-                                                              }
-                                                            }
-                                                            title=" "
-                                                            value={NaN}
-                                                            variant="success"
-                                                          >
-                                                            <div
-                                                              aria-hidden="true"
-                                                              className="pf-c-progress__description"
-                                                              id="finished-progress-bar-description"
-                                                            >
-                                                               
-                                                            </div>
-                                                            <div
-                                                              aria-hidden="true"
-                                                              className="pf-c-progress__status"
-                                                            >
-                                                              <span
-                                                                className="pf-c-progress__measure"
-                                                              >
-                                                                Completed
-                                                              </span>
-                                                              <span
-                                                                className="pf-c-progress__status-icon"
-                                                              >
-                                                                <CheckCircleIcon
-                                                                  color="currentColor"
-                                                                  noVerticalAlign={false}
-                                                                  size="sm"
-                                                                >
-                                                                  <svg
-                                                                    aria-hidden={true}
-                                                                    aria-labelledby={null}
-                                                                    fill="currentColor"
-                                                                    height="1em"
-                                                                    role="img"
-                                                                    style={
-                                                                      Object {
-                                                                        "verticalAlign": "-0.125em",
-                                                                      }
-                                                                    }
-                                                                    viewBox="0 0 512 512"
-                                                                    width="1em"
-                                                                  >
-                                                                    <path
-                                                                      d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                                                                      transform=""
-                                                                    />
-                                                                  </svg>
-                                                                </CheckCircleIcon>
-                                                              </span>
-                                                            </div>
-                                                            <Component
-                                                              progressBarAriaProps={
-                                                                Object {
-                                                                  "aria-labelledby": "finished-progress-bar-description",
-                                                                  "aria-valuemax": 0,
-                                                                  "aria-valuemin": 0,
-                                                                  "aria-valuenow": 0,
-                                                                  "aria-valuetext": "Completed",
-                                                                }
-                                                              }
-                                                              role="progressbar"
-                                                              value={NaN}
-                                                            >
-                                                              <div
-                                                                aria-labelledby="finished-progress-bar-description"
-                                                                aria-valuemax={0}
-                                                                aria-valuemin={0}
-                                                                aria-valuenow={0}
-                                                                aria-valuetext="Completed"
-                                                                className="pf-c-progress__bar"
-                                                                role="progressbar"
-                                                              >
-                                                                <div
-                                                                  className="pf-c-progress__indicator"
-                                                                  style={
-                                                                    Object {
-                                                                      "width": "NaN%",
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <span
-                                                                    className="pf-c-progress__measure"
-                                                                  />
-                                                                </div>
-                                                              </div>
-                                                            </Component>
-                                                          </Component>
-                                                        </div>
-                                                      </Progress>
                                                       Message
                                                     </div>
                                                   </Component>
@@ -4121,6 +3594,36 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                                       </a>
                                                     </div>
                                                   </Component>
+                                                  <Component>
+                                                    <div
+                                                      className="pf-c-empty-state__secondary"
+                                                    >
+                                                      <Component
+                                                        onClick={[MockFunction]}
+                                                        variant="link"
+                                                      >
+                                                        <button
+                                                          aria-disabled={null}
+                                                          aria-label={null}
+                                                          className="pf-c-button pf-m-link"
+                                                          data-ouia-component-id={null}
+                                                          data-ouia-component-type="PF4/Button"
+                                                          data-ouia-safe={true}
+                                                          disabled={false}
+                                                          onClick={[MockFunction]}
+                                                          tabIndex={null}
+                                                          type="button"
+                                                        >
+                                                          <FormattedMessage
+                                                            defaultMessage="Add another source"
+                                                            id="wizard.addAnotherSource"
+                                                          >
+                                                            Add another source
+                                                          </FormattedMessage>
+                                                        </button>
+                                                      </Component>
+                                                    </div>
+                                                  </Component>
                                                 </div>
                                               </div>
                                             </Component>
@@ -4143,13 +3646,18 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                         />
                                       }
                                       onClose={[MockFunction]}
-                                      progressStep={0}
-                                      progressTexts={
-                                        Array [
-                                          "Completed",
-                                        ]
-                                      }
                                       returnButtonTitle="Go back to my application"
+                                      secondaryActions={
+                                        <Unknown
+                                          onClick={[MockFunction]}
+                                          variant="link"
+                                        >
+                                          <FormattedMessage
+                                            defaultMessage="Add another source"
+                                            id="wizard.addAnotherSource"
+                                          />
+                                        </Unknown>
+                                      }
                                       successfulMessage="Message"
                                       title={
                                         <FormattedMessage
@@ -4270,12 +3778,7 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
     isErrored={false}
     isFinished={false}
     onRetry={[MockFunction]}
-    progressStep={0}
-    progressTexts={
-      Array [
-        "Completed",
-      ]
-    }
+    reset={[MockFunction]}
     returnButtonTitle="Go back to my application"
     successfulMessage="Message"
   >
@@ -4311,20 +3814,14 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
               cancelTitle={
                 <FormattedMessage
                   defaultMessage="Cancel"
-                  id="wizard.cancelText"
+                  id="wizard.cancel"
                 />
               }
               customText={
                 <FormattedMessage
-                  defaultMessage="Source is being created"
+                  defaultMessage="Validating source credentials"
                   id="wizard.loadingText"
                 />
-              }
-              progressStep={0}
-              progressTexts={
-                Array [
-                  "Completed",
-                ]
               }
             />,
             "isFinishedStep": true,
@@ -4467,7 +3964,7 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -4488,49 +3985,11 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                         class="pf-c-spinner__tail-ball"
                                       />
                                     </span>
-                                    <div
-                                      class="pf-c-empty-state__body pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-u-mb-0 ins-c-sources__progress"
-                                        id="loading-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="loading-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="loading-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                      Validating source credentials
+                                    </h2>
                                   </div>
                                 </div>
                               </div>
@@ -4707,7 +4166,7 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__empty-state"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -4728,49 +4187,11 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                         class="pf-c-spinner__tail-ball"
                                       />
                                     </span>
-                                    <div
-                                      class="pf-c-empty-state__body pf-u-mt-xl"
+                                    <h2
+                                      class="pf-c-title pf-m-xl pf-u-mt-xl"
                                     >
-                                      <div
-                                        class="pf-c-progress pf-u-mb-0 ins-c-sources__progress"
-                                        id="loading-progress-bar"
-                                      >
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__description"
-                                          id="loading-progress-bar-description"
-                                        >
-                                           
-                                        </div>
-                                        <div
-                                          aria-hidden="true"
-                                          class="pf-c-progress__status"
-                                        >
-                                          <span
-                                            class="pf-c-progress__measure"
-                                          >
-                                            Completed
-                                          </span>
-                                        </div>
-                                        <div
-                                          aria-labelledby="loading-progress-bar-description"
-                                          aria-valuemax="0"
-                                          aria-valuemin="0"
-                                          aria-valuenow="0"
-                                          aria-valuetext="Completed"
-                                          class="pf-c-progress__bar"
-                                          role="progressbar"
-                                        >
-                                          <div
-                                            class="pf-c-progress__indicator"
-                                          >
-                                            <span
-                                              class="pf-c-progress__measure"
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                      Validating source credentials
+                                    </h2>
                                   </div>
                                 </div>
                               </div>
@@ -4986,20 +4407,14 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                   cancelTitle={
                                     <FormattedMessage
                                       defaultMessage="Cancel"
-                                      id="wizard.cancelText"
+                                      id="wizard.cancel"
                                     />
                                   }
                                   customText={
                                     <FormattedMessage
-                                      defaultMessage="Source is being created"
+                                      defaultMessage="Validating source credentials"
                                       id="wizard.loadingText"
                                     />
-                                  }
-                                  progressStep={0}
-                                  progressTexts={
-                                    Array [
-                                      "Completed",
-                                    ]
                                   }
                                 />,
                                 "isFinishedStep": true,
@@ -5018,20 +4433,14 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                     cancelTitle={
                                       <FormattedMessage
                                         defaultMessage="Cancel"
-                                        id="wizard.cancelText"
+                                        id="wizard.cancel"
                                       />
                                     }
                                     customText={
                                       <FormattedMessage
-                                        defaultMessage="Source is being created"
+                                        defaultMessage="Validating source credentials"
                                         id="wizard.loadingText"
                                       />
-                                    }
-                                    progressStep={0}
-                                    progressTexts={
-                                      Array [
-                                        "Completed",
-                                      ]
                                     }
                                   />,
                                   "isFinishedStep": true,
@@ -5124,20 +4533,14 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                         cancelTitle={
                                           <FormattedMessage
                                             defaultMessage="Cancel"
-                                            id="wizard.cancelText"
+                                            id="wizard.cancel"
                                           />
                                         }
                                         customText={
                                           <FormattedMessage
-                                            defaultMessage="Source is being created"
+                                            defaultMessage="Validating source credentials"
                                             id="wizard.loadingText"
                                           />
-                                        }
-                                        progressStep={0}
-                                        progressTexts={
-                                          Array [
-                                            "Completed",
-                                          ]
                                         }
                                       >
                                         <Component>
@@ -5145,11 +4548,11 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                             className="pf-l-bullseye"
                                           >
                                             <Component
-                                              className="ins-c-sources__empty-state"
+                                              className="pf-u-mt-4xl"
                                               variant="full"
                                             >
                                               <div
-                                                className="pf-c-empty-state ins-c-sources__empty-state"
+                                                className="pf-c-empty-state pf-u-mt-4xl"
                                               >
                                                 <div
                                                   className="pf-c-empty-state__content"
@@ -5182,101 +4585,19 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                                   </Component>
                                                   <Component
                                                     className="pf-u-mt-xl"
+                                                    headingLevel="h2"
+                                                    size="xl"
                                                   >
-                                                    <div
-                                                      className="pf-c-empty-state__body pf-u-mt-xl"
+                                                    <h2
+                                                      className="pf-c-title pf-m-xl pf-u-mt-xl"
                                                     >
-                                                      <Progress
-                                                        className="pf-u-mb-0 ins-c-sources__progress"
-                                                        id="loading-progress-bar"
-                                                        label="Completed"
-                                                        max={0}
-                                                        measureLocation="top"
-                                                        min={0}
-                                                        size={null}
-                                                        title=" "
-                                                        value={0}
-                                                        valueText="Completed"
-                                                        variant={null}
+                                                      <FormattedMessage
+                                                        defaultMessage="Validating source credentials"
+                                                        id="wizard.loadingText"
                                                       >
-                                                        <div
-                                                          className="pf-c-progress pf-u-mb-0 ins-c-sources__progress"
-                                                          id="loading-progress-bar"
-                                                        >
-                                                          <Component
-                                                            label="Completed"
-                                                            measureLocation="top"
-                                                            parentId="loading-progress-bar"
-                                                            progressBarAriaProps={
-                                                              Object {
-                                                                "aria-labelledby": "loading-progress-bar-description",
-                                                                "aria-valuemax": 0,
-                                                                "aria-valuemin": 0,
-                                                                "aria-valuenow": 0,
-                                                                "aria-valuetext": "Completed",
-                                                              }
-                                                            }
-                                                            title=" "
-                                                            value={NaN}
-                                                            variant={null}
-                                                          >
-                                                            <div
-                                                              aria-hidden="true"
-                                                              className="pf-c-progress__description"
-                                                              id="loading-progress-bar-description"
-                                                            >
-                                                               
-                                                            </div>
-                                                            <div
-                                                              aria-hidden="true"
-                                                              className="pf-c-progress__status"
-                                                            >
-                                                              <span
-                                                                className="pf-c-progress__measure"
-                                                              >
-                                                                Completed
-                                                              </span>
-                                                            </div>
-                                                            <Component
-                                                              progressBarAriaProps={
-                                                                Object {
-                                                                  "aria-labelledby": "loading-progress-bar-description",
-                                                                  "aria-valuemax": 0,
-                                                                  "aria-valuemin": 0,
-                                                                  "aria-valuenow": 0,
-                                                                  "aria-valuetext": "Completed",
-                                                                }
-                                                              }
-                                                              role="progressbar"
-                                                              value={NaN}
-                                                            >
-                                                              <div
-                                                                aria-labelledby="loading-progress-bar-description"
-                                                                aria-valuemax={0}
-                                                                aria-valuemin={0}
-                                                                aria-valuenow={0}
-                                                                aria-valuetext="Completed"
-                                                                className="pf-c-progress__bar"
-                                                                role="progressbar"
-                                                              >
-                                                                <div
-                                                                  className="pf-c-progress__indicator"
-                                                                  style={
-                                                                    Object {
-                                                                      "width": "NaN%",
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <span
-                                                                    className="pf-c-progress__measure"
-                                                                  />
-                                                                </div>
-                                                              </div>
-                                                            </Component>
-                                                          </Component>
-                                                        </div>
-                                                      </Progress>
-                                                    </div>
+                                                        Validating source credentials
+                                                      </FormattedMessage>
+                                                    </h2>
                                                   </Component>
                                                 </div>
                                               </div>
@@ -5295,20 +4616,14 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                       cancelTitle={
                                         <FormattedMessage
                                           defaultMessage="Cancel"
-                                          id="wizard.cancelText"
+                                          id="wizard.cancel"
                                         />
                                       }
                                       customText={
                                         <FormattedMessage
-                                          defaultMessage="Source is being created"
+                                          defaultMessage="Validating source credentials"
                                           id="wizard.loadingText"
                                         />
-                                      }
-                                      progressStep={0}
-                                      progressTexts={
-                                        Array [
-                                          "Completed",
-                                        ]
                                       }
                                     />,
                                     "isFinishedStep": true,

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Wizard } from '@patternfly/react-core';
+import { Wizard, Button } from '@patternfly/react-core';
 import { FormattedMessage } from 'react-intl';
 
 import FinishedStep from './steps/FinishedStep';
@@ -18,8 +18,7 @@ const FinalWizard = ({
     hideSourcesButton,
     returnButtonTitle,
     errorMessage,
-    progressStep,
-    progressTexts
+    reset
 }) =>(
     <Wizard
         isOpen={ true }
@@ -34,8 +33,7 @@ const FinalWizard = ({
                     successfulMessage={ successfulMessage }
                     hideSourcesButton={ hideSourcesButton }
                     returnButtonTitle={ returnButtonTitle }
-                    progressStep={progressStep}
-                    progressTexts={progressTexts}
+                    secondaryActions={<Button variant="link" onClick={ reset }><FormattedMessage id="wizard.addAnotherSource" defaultMessage="Add another source"/></Button>}
                 /> :
                 isErrored ?
                     <ErroredStep
@@ -43,13 +41,10 @@ const FinalWizard = ({
                         onClose={ afterError }
                         returnButtonTitle={ returnButtonTitle }
                         message={errorMessage}
-                        progressStep={progressStep}
-                        progressTexts={progressTexts}
                     />
                     : <LoadingStep
-                        customText={<FormattedMessage id="wizard.loadingText" defaultMessage="Source is being created"/>}
-                        progressStep={progressStep}
-                        progressTexts={progressTexts}
+                        customText={<FormattedMessage id="wizard.loadingText" defaultMessage="Validating source credentials"/>}
+                        cancelTitle={<FormattedMessage id="wizard.cancel" defaultMessage="Cancel"/>}
                     />,
             isFinishedStep: true
         }] }
@@ -66,8 +61,7 @@ FinalWizard.propTypes = {
     hideSourcesButton: PropTypes.bool,
     returnButtonTitle: PropTypes.node.isRequired,
     errorMessage: PropTypes.node,
-    progressStep: PropTypes.number.isRequired,
-    progressTexts: PropTypes.arrayOf(PropTypes.node).isRequired
+    reset: PropTypes.func
 };
 
 export default FinalWizard;

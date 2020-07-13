@@ -27,5 +27,4 @@ export { default as ErroredStep } from './addSourceWizard/steps/ErroredStep';
 import './styles/cardSelect.scss';
 import './styles/authSelect.scss';
 import './styles/costManagement.scss';
-import './styles/emptyState.scss';
 import './styles/enhancedSelect.scss';
