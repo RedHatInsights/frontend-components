@@ -83,6 +83,7 @@ class ConditionalFilter extends Component {
                             {
                                 ActiveComponent && <SplitItem isFilled>
                                     <ActiveComponent
+                                        onShowMore={activeItem.onShowMore}
                                         {
                                         ...activeItem.type !== conditionalFilterType.custom &&
                                             {
