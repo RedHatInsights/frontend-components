@@ -13,7 +13,6 @@ import {
     TextContent,
     Text,
     TextVariants,
-    Progress,
     Bullseye
 } from '@patternfly/react-core';
 import { TimesCircleIcon } from '@patternfly/react-icons';
@@ -23,30 +22,17 @@ const ErroredStep = ({
     onRetry,
     returnButtonTitle,
     message,
-    progressStep,
-    progressTexts,
     title,
     customText,
     retryText
 }) => (
     <Bullseye>
-        <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__empty-state">
+        <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__wizard-empty-state pf-u-mt-4xl">
             <EmptyStateIcon icon={ TimesCircleIcon } color="var(--pf-global--danger-color--100)" className="pf-u-mb-0"/>
-            <Title headingLevel="h5" size="lg" className="pf-u-mt-xl">
+            <Title headingLevel="h2" size="xl" className="pf-u-mt-xl">
                 {title}
             </Title>
             <EmptyStateBody>
-                <Progress
-                    className="pf-u-mb-md ins-c-sources__progress"
-                    value={progressStep}
-                    min={0}
-                    title=" "
-                    max={progressTexts.length - 1}
-                    label={progressTexts[progressStep]}
-                    valueText={progressTexts[progressStep]}
-                    variant='danger'
-                    id="errored-step-progress-bar"
-                />
                 <TextContent>
                     <Text variant={TextVariants.p}>{customText}</Text>
                     { message && <Text className="pf-u-mt-md" variant={TextVariants.p}>{message}</Text>}
@@ -65,8 +51,6 @@ ErroredStep.propTypes = {
     onRetry: PropTypes.func.isRequired,
     returnButtonTitle: PropTypes.node.isRequired,
     message: PropTypes.node,
-    progressStep: PropTypes.number.isRequired,
-    progressTexts: PropTypes.arrayOf(PropTypes.node).isRequired,
     title: PropTypes.node,
     customText: PropTypes.node,
     retryText: PropTypes.node

@@ -1,6 +1,6 @@
 import React from 'react';
 import toJson from 'enzyme-to-json';
-import { Button, EmptyStateBody, Text } from '@patternfly/react-core';
+import { Button, EmptyStateBody, Text, Title } from '@patternfly/react-core';
 
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
@@ -29,9 +29,7 @@ describe('Steps components', () => {
                 onClose: spyFunction,
                 successfulMessage: 'Here I Am',
                 hideSourcesButton: false,
-                returnButtonTitle: 'Go back to my application',
-                progressTexts: [ 'Completed' ],
-                progressStep: 0
+                returnButtonTitle: 'Go back to my application'
             };
         });
 
@@ -66,7 +64,7 @@ describe('Steps components', () => {
         it('renders correctly with custom props', () => {
             const wrapper = mount(<LoadingStep { ...initialProps }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
-            expect(wrapper.find(EmptyStateBody).html().includes('Here I Am')).toBe(true);
+            expect(wrapper.find(Title).html().includes('Here I Am')).toBe(true);
         });
 
         it('renders correctly', () => {
@@ -79,18 +77,6 @@ describe('Steps components', () => {
             wrapper.find(Button).first().simulate('click');
             expect(spyFunction).toHaveBeenCalled();
         });
-
-        it('renders correctly with progress bar', () => {
-            initialProps = {
-                onClose: spyFunction,
-                customText: 'Here I Am',
-                progressTexts: [ 'Step 1: create source' ],
-                progressStep: 0
-            };
-
-            const wrapper = mount(<LoadingStep />);
-            expect(toJson(wrapper)).toMatchSnapshot();
-        });
     });
 
     describe('ErroredStep', () => {
@@ -98,9 +84,7 @@ describe('Steps components', () => {
             initialProps = {
                 onClose: spyFunction,
                 onRetry: spyFunctionSecond,
-                returnButtonTitle: 'Go back to my application',
-                progressTexts: [ 'Step 1: create source' ],
-                progressStep: 0
+                returnButtonTitle: 'Go back to my application'
             };
         });
 
