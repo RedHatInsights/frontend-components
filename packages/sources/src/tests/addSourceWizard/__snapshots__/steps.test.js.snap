@@ -101,28 +101,12 @@ exports[`Steps components ErroredStep renders correctly 1`] = `
                 <div
                   className="pf-c-empty-state__body"
                 >
-                  <Component>
-                    <div
-                      className="pf-c-content"
-                    >
-                      <Component
-                        variant="p"
-                      >
-                        <p
-                          className=""
-                          data-pf-content={true}
-                          variant="p"
-                        >
-                          <FormattedMessage
-                            defaultMessage="Your source has not been successfully added."
-                            id="wizard.errorText"
-                          >
-                            Your source has not been successfully added.
-                          </FormattedMessage>
-                        </p>
-                      </Component>
-                    </div>
-                  </Component>
+                  <FormattedMessage
+                    defaultMessage="Your source has not been successfully added."
+                    id="wizard.errorText"
+                  >
+                    Your source has not been successfully added.
+                  </FormattedMessage>
                 </div>
               </Component>
               <Component

@@ -1289,17 +1289,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                     <div
                                       class="pf-c-empty-state__body"
                                     >
-                                      <div
-                                        class="pf-c-content"
-                                      >
-                                        <p
-                                          class=""
-                                          data-pf-content="true"
-                                          variant="p"
-                                        >
-                                          Your source has not been successfully added.
-                                        </p>
-                                      </div>
+                                      Your source has not been successfully added.
                                     </div>
                                     <button
                                       class="pf-c-button pf-m-primary"
@@ -1525,17 +1515,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                     <div
                                       class="pf-c-empty-state__body"
                                     >
-                                      <div
-                                        class="pf-c-content"
-                                      >
-                                        <p
-                                          class=""
-                                          data-pf-content="true"
-                                          variant="p"
-                                        >
-                                          Your source has not been successfully added.
-                                        </p>
-                                      </div>
+                                      Your source has not been successfully added.
                                     </div>
                                     <button
                                       class="pf-c-button pf-m-primary"
@@ -2003,28 +1983,12 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                                     <div
                                                       className="pf-c-empty-state__body"
                                                     >
-                                                      <Component>
-                                                        <div
-                                                          className="pf-c-content"
-                                                        >
-                                                          <Component
-                                                            variant="p"
-                                                          >
-                                                            <p
-                                                              className=""
-                                                              data-pf-content={true}
-                                                              variant="p"
-                                                            >
-                                                              <FormattedMessage
-                                                                defaultMessage="Your source has not been successfully added."
-                                                                id="wizard.errorText"
-                                                              >
-                                                                Your source has not been successfully added.
-                                                              </FormattedMessage>
-                                                            </p>
-                                                          </Component>
-                                                        </div>
-                                                      </Component>
+                                                      <FormattedMessage
+                                                        defaultMessage="Your source has not been successfully added."
+                                                        id="wizard.errorText"
+                                                      >
+                                                        Your source has not been successfully added.
+                                                      </FormattedMessage>
                                                     </div>
                                                   </Component>
                                                   <Component

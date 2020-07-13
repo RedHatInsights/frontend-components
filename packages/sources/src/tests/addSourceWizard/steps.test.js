@@ -1,6 +1,6 @@
 import React from 'react';
 import toJson from 'enzyme-to-json';
-import { Button, EmptyStateBody, Text, Title } from '@patternfly/react-core';
+import { Button, EmptyStateBody, Title } from '@patternfly/react-core';
 
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
@@ -97,7 +97,7 @@ describe('Steps components', () => {
             const ERROR_MESSAGE = 'I am a little error, nice to meet you';
             const wrapper = mount(<ErroredStep { ...initialProps } message={ERROR_MESSAGE}/>);
 
-            expect(wrapper.find(Text).last().children().text().includes(ERROR_MESSAGE)).toEqual(true);
+            expect(wrapper.find(EmptyStateBody).text()).toEqual(ERROR_MESSAGE);
         });
 
         it('calls onClose function', () => {

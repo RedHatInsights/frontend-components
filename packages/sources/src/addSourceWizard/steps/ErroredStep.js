@@ -10,9 +10,6 @@ import {
     Button,
     EmptyStateSecondaryActions,
     EmptyStateVariant,
-    TextContent,
-    Text,
-    TextVariants,
     Bullseye
 } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
@@ -33,9 +30,7 @@ const ErroredStep = ({
                 {title}
             </Title>
             <EmptyStateBody>
-                <TextContent>
-                    <Text variant={TextVariants.p}>{message || customText}</Text>
-                </TextContent>
+                {message || customText}
             </EmptyStateBody>
             <Button variant="primary" onClick={ onClose }>{returnButtonTitle}</Button>
             <EmptyStateSecondaryActions>
