@@ -24,7 +24,7 @@ const FinishedStep = ({
     secondaryActions
 }) => (
     <Bullseye>
-        <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__wizard-empty-state pf-u-mt-4xl" >
+        <EmptyState variant={ EmptyStateVariant.full } className="pf-u-mt-4xl" >
             <EmptyStateIcon icon={ CheckCircleIcon } color="var(--pf-global--success-color--100)" className="pf-u-mb-0"/>
             <Title headingLevel="h2" size="xl" className="pf-u-mt-xl">
                 {title}

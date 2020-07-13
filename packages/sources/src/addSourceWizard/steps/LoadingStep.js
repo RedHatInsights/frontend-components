@@ -14,7 +14,7 @@ import { FormattedMessage } from 'react-intl';
 
 const LoadingStep = ({ onClose, customText, cancelTitle }) => (
     <Bullseye>
-        <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__wizard-empty-state pf-u-mt-4xl">
+        <EmptyState variant={ EmptyStateVariant.full } className="pf-u-mt-4xl">
             <EmptyStateIcon icon={ Spinner } className="pf-u-mb-0"/>
             <Title headingLevel="h2" size="xl" className="pf-u-mt-xl">
                 {customText}

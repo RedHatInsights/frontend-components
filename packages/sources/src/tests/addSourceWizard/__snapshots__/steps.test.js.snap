@@ -38,11 +38,11 @@ exports[`Steps components ErroredStep renders correctly 1`] = `
         className="pf-l-bullseye"
       >
         <Component
-          className="ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+          className="pf-u-mt-4xl"
           variant="full"
         >
           <div
-            className="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+            className="pf-c-empty-state pf-u-mt-4xl"
           >
             <div
               className="pf-c-empty-state__content"
@@ -216,11 +216,11 @@ exports[`Steps components FinishedStep renders correctly 1`] = `
         className="pf-l-bullseye"
       >
         <Component
-          className="ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+          className="pf-u-mt-4xl"
           variant="full"
         >
           <div
-            className="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+            className="pf-c-empty-state pf-u-mt-4xl"
           >
             <div
               className="pf-c-empty-state__content"
@@ -376,11 +376,11 @@ exports[`Steps components FinishedStep renders withou takemetosources button 1`]
         className="pf-l-bullseye"
       >
         <Component
-          className="ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+          className="pf-u-mt-4xl"
           variant="full"
         >
           <div
-            className="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+            className="pf-c-empty-state pf-u-mt-4xl"
           >
             <div
               className="pf-c-empty-state__content"
@@ -500,11 +500,11 @@ exports[`Steps components LoadingStep renders correctly 1`] = `
         className="pf-l-bullseye"
       >
         <Component
-          className="ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+          className="pf-u-mt-4xl"
           variant="full"
         >
           <div
-            className="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+            className="pf-c-empty-state pf-u-mt-4xl"
           >
             <div
               className="pf-c-empty-state__content"
@@ -585,11 +585,11 @@ exports[`Steps components LoadingStep renders correctly with custom props 1`] = 
         className="pf-l-bullseye"
       >
         <Component
-          className="ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+          className="pf-u-mt-4xl"
           variant="full"
         >
           <div
-            className="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+            className="pf-c-empty-state pf-u-mt-4xl"
           >
             <div
               className="pf-c-empty-state__content"

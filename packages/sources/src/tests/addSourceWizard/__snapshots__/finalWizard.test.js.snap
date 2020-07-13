@@ -214,7 +214,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -403,7 +403,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -592,7 +592,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -821,7 +821,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -1050,7 +1050,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -1261,7 +1261,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -1497,7 +1497,7 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -1940,11 +1940,11 @@ exports[`Final wizard Renders renders errored step correctly 1`] = `
                                             className="pf-l-bullseye"
                                           >
                                             <Component
-                                              className="ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                              className="pf-u-mt-4xl"
                                               variant="full"
                                             >
                                               <div
-                                                className="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                                className="pf-c-empty-state pf-u-mt-4xl"
                                               >
                                                 <div
                                                   className="pf-c-empty-state__content"
@@ -2427,7 +2427,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -2616,7 +2616,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -2803,7 +2803,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -3045,7 +3045,7 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -3512,11 +3512,11 @@ exports[`Final wizard Renders renders finished step correctly 1`] = `
                                             className="pf-l-bullseye"
                                           >
                                             <Component
-                                              className="ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                              className="pf-u-mt-4xl"
                                               variant="full"
                                             >
                                               <div
-                                                className="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                                className="pf-c-empty-state pf-u-mt-4xl"
                                               >
                                                 <div
                                                   className="pf-c-empty-state__content"
@@ -4000,7 +4000,7 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -4202,7 +4202,7 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                 class="pf-l-bullseye"
                               >
                                 <div
-                                  class="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                  class="pf-c-empty-state pf-u-mt-4xl"
                                 >
                                   <div
                                     class="pf-c-empty-state__content"
@@ -4584,11 +4584,11 @@ exports[`Final wizard Renders renders loading step correctly 1`] = `
                                             className="pf-l-bullseye"
                                           >
                                             <Component
-                                              className="ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                              className="pf-u-mt-4xl"
                                               variant="full"
                                             >
                                               <div
-                                                className="pf-c-empty-state ins-c-sources__wizard-empty-state pf-u-mt-4xl"
+                                                className="pf-c-empty-state pf-u-mt-4xl"
                                               >
                                                 <div
                                                   className="pf-c-empty-state__content"
