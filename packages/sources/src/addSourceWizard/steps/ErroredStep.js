@@ -15,7 +15,7 @@ import {
     TextVariants,
     Bullseye
 } from '@patternfly/react-core';
-import { TimesCircleIcon } from '@patternfly/react-icons';
+import { ExclamationCircleIcon } from '@patternfly/react-icons';
 
 const ErroredStep = ({
     onClose,
@@ -28,14 +28,13 @@ const ErroredStep = ({
 }) => (
     <Bullseye>
         <EmptyState variant={ EmptyStateVariant.full } className="ins-c-sources__wizard-empty-state pf-u-mt-4xl">
-            <EmptyStateIcon icon={ TimesCircleIcon } color="var(--pf-global--danger-color--100)" className="pf-u-mb-0"/>
+            <EmptyStateIcon icon={ ExclamationCircleIcon } color="var(--pf-global--danger-color--100)" className="pf-u-mb-0"/>
             <Title headingLevel="h2" size="xl" className="pf-u-mt-xl">
                 {title}
             </Title>
             <EmptyStateBody>
                 <TextContent>
-                    <Text variant={TextVariants.p}>{customText}</Text>
-                    { message && <Text className="pf-u-mt-md" variant={TextVariants.p}>{message}</Text>}
+                    <Text variant={TextVariants.p}>{message || customText}</Text>
                 </TextContent>
             </EmptyStateBody>
             <Button variant="primary" onClick={ onClose }>{returnButtonTitle}</Button>
@@ -58,7 +57,7 @@ ErroredStep.propTypes = {
 
 ErroredStep.defaultProps = {
     title: <FormattedMessage id="wizard.unsuccConfiguration" defaultMessage="Configuration unsuccessful"/>,
-    customText: <FormattedMessage id="wizard.errorText" defaultMessage="Your source has not been successfully added:"/>,
+    customText: <FormattedMessage id="wizard.errorText" defaultMessage="Your source has not been successfully added."/>,
     retryText: <FormattedMessage id="wizard.retryText" defaultMessage="Retry"/>
 };
 

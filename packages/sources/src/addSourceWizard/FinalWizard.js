@@ -44,7 +44,6 @@ const FinalWizard = ({
                     />
                     : <LoadingStep
                         customText={<FormattedMessage id="wizard.loadingText" defaultMessage="Validating source credentials"/>}
-                        onClose={afterSubmit}
                         cancelTitle={<FormattedMessage id="wizard.cancel" defaultMessage="Cancel"/>}
                     />,
             isFinishedStep: true
