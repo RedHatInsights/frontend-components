@@ -1,16 +1,13 @@
 /* eslint-disable camelcase */
-import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
-import React from 'react';
-
 export const BASE_FETCH_URL = '/api/insights/v1/';
 
 export const FILTER_CATEGORIES = {
     total_risk: {
         type: 'checkbox', title: 'total risk', urlParam: 'total_risk', values: [
-            { label: <Battery label='Critical' severity={4} />, text: 'Critical', value: '4' },
-            { label: <Battery label='Important' severity={3} />, text: 'Important', value: '3' },
-            { label: <Battery label='Moderate' severity={2} />, text: 'Moderate', value: '2' },
-            { label: <Battery label='Low' severity={1} />, text: 'Low', value: '1' }
+            { label: 'Critical', text: 'Critical', value: '4' },
+            { label: 'Important', text: 'Important', value: '3' },
+            { label: 'Moderate', text: 'Moderate', value: '2' },
+            { label: 'Low', text: 'Low', value: '1' }
         ]
     },
     category: {
