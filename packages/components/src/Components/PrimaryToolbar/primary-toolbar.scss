@@ -4,6 +4,10 @@
         display: initial;
     }
 
+    .ins-c-primary-toolbar__first-action {
+        display: none;
+    }
+
     .ins-c-primary-toolbar__pagination {
         margin-left: auto;
     }
@@ -34,6 +38,10 @@
 
         .pf-c-toolbar__item.ins-c-primary-toolbar__first-action {
             display: none;
+        }
+
+        .ins-c-primary-toolbar__first-action {
+            display: block;
         }
 
         .ins-c-primary-toolbar__sort-by {
