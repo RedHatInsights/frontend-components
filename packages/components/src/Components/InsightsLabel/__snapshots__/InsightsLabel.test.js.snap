@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InsightsLabel component should render defaults 1`] = `
+<span
+  className="pf-c-label ins-c-label-1"
+>
+  <span
+    className="pf-c-label__content"
+  >
+    <span
+      className="pf-c-label__icon"
+    >
+      <AngleDoubleDownIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+      />
+    </span>
+    Low
+  </span>
+</span>
+`;
+
+exports[`InsightsLabel component should render with icon 1`] = `
+<span
+  className="pf-c-label ins-c-label-1"
+>
+  <span
+    className="pf-c-label__content"
+  >
+    <span
+      className="pf-c-label__icon"
+    >
+      <AngleDoubleDownIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+      />
+    </span>
+    Low
+  </span>
+</span>
+`;
+
+exports[`InsightsLabel component should render without icon 1`] = `
+<span
+  className="pf-c-label ins-c-label-1"
+>
+  <span
+    className="pf-c-label__content"
+  >
+    Low
+  </span>
+</span>
+`;
