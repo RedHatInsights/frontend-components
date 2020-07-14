@@ -245,7 +245,10 @@ class Group extends Component {
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
                 { groups && groups.length > 0 ? (
-                    [ ...groups, onShowMore && showMore ].map(({
+                    [
+                        ...groups,
+                        ...onShowMore ? [ showMore ] : []
+                    ].map(({
                         value: groupValue,
                         onSelect,
                         label: groupLabel,
