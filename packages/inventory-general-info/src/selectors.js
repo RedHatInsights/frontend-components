@@ -53,7 +53,7 @@ export const biosSelector = ({
 } = {}) => ({
     vendor: bios_vendor,
     version: bios_version,
-    releaseDate: bios_release_date && new Date(bios_release_date).toLocaleDateString(),
+    releaseDate: bios_release_date,
     csm: cpu_flags
 });
 

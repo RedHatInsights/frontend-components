@@ -1109,7 +1109,7 @@ exports[`GeneralInformation should render correctly 1`] = `
               class=""
               data-pf-content="true"
             >
-              Invalid date
+              Not available
             </dd>
             <dt
               class=""
