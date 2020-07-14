@@ -27,14 +27,13 @@ export const urlOrHost = formData => formData.url ? parseUrl(formData.url) : for
 
 export const handleErrorWrapper = (sourceId) => async(error) => await handleError(error, sourceId);
 
-export const doCreateSource = async (formData, sourceTypes, increaseProgressStep = () => {}) => {
+export const doCreateSource = async (formData, sourceTypes) => {
     let sourceDataOut;
 
     try {
         const source_type_id = sourceTypes.find((x) => x.name === formData.source_type).id;
 
         sourceDataOut = await getSourcesApi().createSource({ ...formData.source, source_type_id  });
-        increaseProgressStep();
 
         const promises = [];
 
@@ -70,9 +69,6 @@ export const doCreateSource = async (formData, sourceTypes, increaseProgressStep
         }
 
         const [ endpointDataOut, applicationDataOut ] = await Promise.all(promises);
-        if (endpointDataOut || applicationDataOut) {
-            increaseProgressStep();
-        }
 
         let authenticationDataOut;
 
@@ -84,7 +80,6 @@ export const doCreateSource = async (formData, sourceTypes, increaseProgressStep
             };
 
             authenticationDataOut = await getSourcesApi().createAuthentication(authenticationData);
-            increaseProgressStep();
         }
 
         const promisesSecondRound = [];
@@ -110,10 +105,7 @@ export const doCreateSource = async (formData, sourceTypes, increaseProgressStep
             promises.push(Promise.resolve(undefined));
         }
 
-        const [ costManagementDataOut, authAppDataOut ] = await Promise.all(promisesSecondRound);
-        if (costManagementDataOut || authAppDataOut) {
-            increaseProgressStep();
-        }
+        await Promise.all(promisesSecondRound);
 
         return {
             ...sourceDataOut,

@@ -24,3 +24,4 @@ This package is dependent on [@redhat-cloud-services/frontend-components-utiliti
   * [gauge](doc/gauge.md)
   * [matrix](doc/matrix.md)
   * [pie](doc/pie.md)
+  * [severityLine](doc/severityLine.md)

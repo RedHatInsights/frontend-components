@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { Wizard } from '@patternfly/react-core';
+import { useIntl } from 'react-intl';
 
 import SourcesFormRenderer from '../sourceFormRenderer/index';
 import createSchema from './SourceAddSchema';
@@ -15,12 +16,12 @@ const initialValues = {
     isLoading: true
 };
 
-const reducer = (state, { type, sourceTypes, applicationTypes, container, disableAppSelection }) => {
+const reducer = (state, { type, sourceTypes, applicationTypes, container, disableAppSelection, intl }) => {
     switch (type) {
         case 'loaded':
             return {
                 ...state,
-                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes.filter(filterApps), disableAppSelection, container),
+                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes.filter(filterApps), disableAppSelection, container, intl),
                 isLoading: false,
                 sourceTypes
             };
@@ -39,6 +40,7 @@ const SourceAddModal = ({
     const [{ schema, sourceTypes: stateSourceTypes, isLoading }, dispatch ] = useReducer(reducer, initialValues);
     const isMounted = useRef(false);
     const container = useRef(document.createElement('div'));
+    const intl = useIntl();
 
     useEffect(() => {
         isMounted.current = true;
@@ -62,7 +64,8 @@ const SourceAddModal = ({
                     sourceTypes: sourceTypes || sourceTypesOut.sourceTypes,
                     applicationTypes: applicationTypes || applicationTypesOut.applicationTypes,
                     disableAppSelection,
-                    container: container.current
+                    container: container.current,
+                    intl
                 });
             }
         });

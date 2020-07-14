@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import mount from '../../__mocks__/mount';
 
 import * as OpCm from '../../../addSourceWizard/hardcodedComponents/openshift/costManagement';
 

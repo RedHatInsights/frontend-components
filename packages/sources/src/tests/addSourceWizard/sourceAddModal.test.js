@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 
 import AddSourceWizard from '../../addSourceWizard/SourceAddModal';
@@ -8,6 +7,7 @@ import applicationTypes from '../helpers/applicationTypes';
 import SourcesFormRenderer from '../../sourceFormRenderer/index';
 
 import * as dependency from '../../api/index';
+import mount from '../__mocks__/mount';
 
 describe('sourceAddModal', () => {
     let initialProps;

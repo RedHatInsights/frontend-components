@@ -95,10 +95,10 @@ const CardSelect = (originalProps) => {
 CardSelect.propTypes = {
     multi: PropTypes.bool,
     isMulti: PropTypes.bool,
-    label: PropTypes.string,
+    label: PropTypes.node,
     isRequired: PropTypes.bool,
-    helperText: PropTypes.string,
-    description: PropTypes.string,
+    helperText: PropTypes.node,
+    description: PropTypes.node,
     hideLabel: PropTypes.bool,
     name: PropTypes.string.isRequired,
     mutator: PropTypes.func,

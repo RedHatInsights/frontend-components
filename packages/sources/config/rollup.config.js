@@ -55,7 +55,7 @@ const plugins = [
 export default rollupConfig(
     external(externalDeps(
         { ...dependencies, ...peerDependencies, ...devDependencies },
-        [ '@patternfly', '@redhat-cloud-services',  '@data-driven-forms', 'lodash' ]
+        [ '@patternfly', '@redhat-cloud-services',  '@data-driven-forms', 'lodash', 'react-intl' ]
     )),
     plugins,
     {
@@ -63,7 +63,8 @@ export default rollupConfig(
         '@data-driven-forms/pf4-component-mapper': '@data-driven-forms/pf4-component-mapper',
         '@data-driven-forms/react-form-renderer': '@data-driven-forms/react-form-renderer',
         '@redhat-cloud-services/frontend-components-utilities': '@redhat-cloud-services/frontend-components-utilities',
-        lodash: 'lodash'
+        lodash: 'lodash',
+        'react-intl': 'react-intl'
     },
     name,
     [{

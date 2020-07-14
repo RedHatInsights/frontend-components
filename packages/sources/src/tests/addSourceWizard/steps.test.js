@@ -1,11 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { Button, EmptyStateBody, Text } from '@patternfly/react-core';
+import { Button, EmptyStateBody, Title } from '@patternfly/react-core';
 
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
+
+import mount from '../__mocks__/mount';
 
 describe('Steps components', () => {
     let initialProps;
@@ -28,27 +29,25 @@ describe('Steps components', () => {
                 onClose: spyFunction,
                 successfulMessage: 'Here I Am',
                 hideSourcesButton: false,
-                returnButtonTitle: 'Go back to my application',
-                progressTexts: [ 'Completed' ],
-                progressStep: 0
+                returnButtonTitle: 'Go back to my application'
             };
         });
 
         it('renders correctly', () => {
-            const wrapper = shallow(<FinishedStep { ...initialProps }/>);
+            const wrapper = mount(<FinishedStep { ...initialProps }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
             expect(wrapper.find('a[href="/hybrid/settings/sources"]').length).toBe(1);
             expect(wrapper.find(EmptyStateBody).html().includes('Here I Am')).toBe(true);
         });
 
         it('renders withou takemetosources button', () => {
-            const wrapper = shallow(<FinishedStep { ...initialProps } hideSourcesButton={ true }/>);
+            const wrapper = mount(<FinishedStep { ...initialProps } hideSourcesButton={ true }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
             expect(wrapper.find('a[href="/hybrid/settings/sources"]').length).toBe(0);
         });
 
         it('calls onClose function', () => {
-            const wrapper = shallow(<FinishedStep { ...initialProps }/>);
+            const wrapper = mount(<FinishedStep { ...initialProps }/>);
             wrapper.find(Button).first().simulate('click');
             expect(spyFunction).toHaveBeenCalled();
         });
@@ -63,32 +62,20 @@ describe('Steps components', () => {
         });
 
         it('renders correctly with custom props', () => {
-            const wrapper = shallow(<LoadingStep { ...initialProps }/>);
+            const wrapper = mount(<LoadingStep { ...initialProps }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
-            expect(wrapper.find(EmptyStateBody).html().includes('Here I Am')).toBe(true);
+            expect(wrapper.find(Title).html().includes('Here I Am')).toBe(true);
         });
 
         it('renders correctly', () => {
-            const wrapper = shallow(<LoadingStep />);
+            const wrapper = mount(<LoadingStep />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         it('calls onClose function', () => {
-            const wrapper = shallow(<LoadingStep { ...initialProps }/>);
+            const wrapper = mount(<LoadingStep { ...initialProps }/>);
             wrapper.find(Button).first().simulate('click');
             expect(spyFunction).toHaveBeenCalled();
-        });
-
-        it('renders correctly with progress bar', () => {
-            initialProps = {
-                onClose: spyFunction,
-                customText: 'Here I Am',
-                progressTexts: [ 'Step 1: create source' ],
-                progressStep: 0
-            };
-
-            const wrapper = shallow(<LoadingStep />);
-            expect(toJson(wrapper)).toMatchSnapshot();
         });
     });
 
@@ -97,32 +84,30 @@ describe('Steps components', () => {
             initialProps = {
                 onClose: spyFunction,
                 onRetry: spyFunctionSecond,
-                returnButtonTitle: 'Go back to my application',
-                progressTexts: [ 'Step 1: create source' ],
-                progressStep: 0
+                returnButtonTitle: 'Go back to my application'
             };
         });
 
         it('renders correctly', () => {
-            const wrapper = shallow(<ErroredStep { ...initialProps }/>);
+            const wrapper = mount(<ErroredStep { ...initialProps }/>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         it('renders correctly with message', () => {
             const ERROR_MESSAGE = 'I am a little error, nice to meet you';
-            const wrapper = shallow(<ErroredStep { ...initialProps } message={ERROR_MESSAGE}/>);
+            const wrapper = mount(<ErroredStep { ...initialProps } message={ERROR_MESSAGE}/>);
 
-            expect(wrapper.find(Text).last().children().text().includes(ERROR_MESSAGE)).toEqual(true);
+            expect(wrapper.find(EmptyStateBody).text()).toEqual(ERROR_MESSAGE);
         });
 
         it('calls onClose function', () => {
-            const wrapper = shallow(<ErroredStep { ...initialProps }/>);
+            const wrapper = mount(<ErroredStep { ...initialProps }/>);
             wrapper.find(Button).first().simulate('click');
             expect(spyFunction).toHaveBeenCalled();
         });
 
         it('calls onRetry function', () => {
-            const wrapper = shallow(<ErroredStep { ...initialProps }/>);
+            const wrapper = mount(<ErroredStep { ...initialProps }/>);
             wrapper.find(Button).last().simulate('click');
             expect(spyFunctionSecond).toHaveBeenCalled();
         });

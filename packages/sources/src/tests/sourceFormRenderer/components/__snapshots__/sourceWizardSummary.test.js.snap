@@ -19,7 +19,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
             className=""
             data-pf-content={true}
           >
-            Name
+            <FormattedMessage
+              defaultMessage="Name"
+              id="wizard.Name"
+            >
+              Name
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -39,7 +44,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
             className=""
             data-pf-content={true}
           >
-            Application
+            <FormattedMessage
+              defaultMessage="Application"
+              id="wizard.Application"
+            >
+              Application
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -49,7 +59,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
             className=""
             data-pf-content={true}
           >
-            Not selected
+            <FormattedMessage
+              defaultMessage="Not selected"
+              id="wizard.NotSelected"
+            >
+              Not selected
+            </FormattedMessage>
           </dd>
         </Component>
         <Component
@@ -59,7 +74,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
             className=""
             data-pf-content={true}
           >
-            Source type
+            <FormattedMessage
+              defaultMessage="Source type"
+              id="wizard.SourceType"
+            >
+              Source type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -79,7 +99,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN 1`] 
             className=""
             data-pf-content={true}
           >
-            Authentication type
+            <FormattedMessage
+              defaultMessage="Authentication type"
+              id="wizard.AuthenticationType"
+            >
+              Authentication type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -157,7 +182,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
             className=""
             data-pf-content={true}
           >
-            Name
+            <FormattedMessage
+              defaultMessage="Name"
+              id="wizard.Name"
+            >
+              Name
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -177,7 +207,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
             className=""
             data-pf-content={true}
           >
-            Application
+            <FormattedMessage
+              defaultMessage="Application"
+              id="wizard.Application"
+            >
+              Application
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -197,7 +232,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
             className=""
             data-pf-content={true}
           >
-            Source type
+            <FormattedMessage
+              defaultMessage="Source type"
+              id="wizard.SourceType"
+            >
+              Source type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -217,7 +257,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
             className=""
             data-pf-content={true}
           >
-            Authentication type
+            <FormattedMessage
+              defaultMessage="Authentication type"
+              id="wizard.AuthenticationType"
+            >
+              Authentication type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -237,7 +282,12 @@ exports[`SourceWizardSummary component should render correctly amazon - ARN cost
             className=""
             data-pf-content={true}
           >
-            S3 bucket name
+            <FormattedMessage
+              defaultMessage="S3 bucket name"
+              id="wizard.S3Label"
+            >
+              S3 bucket name
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -295,7 +345,12 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
             className=""
             data-pf-content={true}
           >
-            Name
+            <FormattedMessage
+              defaultMessage="Name"
+              id="wizard.Name"
+            >
+              Name
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -315,7 +370,12 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
             className=""
             data-pf-content={true}
           >
-            Application
+            <FormattedMessage
+              defaultMessage="Application"
+              id="wizard.Application"
+            >
+              Application
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -325,7 +385,12 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
             className=""
             data-pf-content={true}
           >
-            Not selected
+            <FormattedMessage
+              defaultMessage="Not selected"
+              id="wizard.NotSelected"
+            >
+              Not selected
+            </FormattedMessage>
           </dd>
         </Component>
         <Component
@@ -335,7 +400,12 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
             className=""
             data-pf-content={true}
           >
-            Source type
+            <FormattedMessage
+              defaultMessage="Source type"
+              id="wizard.SourceType"
+            >
+              Source type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -355,7 +425,12 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
             className=""
             data-pf-content={true}
           >
-            Authentication type
+            <FormattedMessage
+              defaultMessage="Authentication type"
+              id="wizard.AuthenticationType"
+            >
+              Authentication type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -375,7 +450,12 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
             className=""
             data-pf-content={true}
           >
-            Access key ID
+            <FormattedMessage
+              defaultMessage="Access key ID"
+              id="wizard.AccessKeyId"
+            >
+              Access key ID
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -395,7 +475,12 @@ exports[`SourceWizardSummary component should render correctly amazon 1`] = `
             className=""
             data-pf-content={true}
           >
-            Secret access key
+            <FormattedMessage
+              defaultMessage="Secret access key"
+              id="wizard.SecretAccessKey"
+            >
+              Secret access key
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -433,7 +518,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
             className=""
             data-pf-content={true}
           >
-            Name
+            <FormattedMessage
+              defaultMessage="Name"
+              id="wizard.Name"
+            >
+              Name
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -453,7 +543,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
             className=""
             data-pf-content={true}
           >
-            Application
+            <FormattedMessage
+              defaultMessage="Application"
+              id="wizard.Application"
+            >
+              Application
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -463,7 +558,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
             className=""
             data-pf-content={true}
           >
-            Not selected
+            <FormattedMessage
+              defaultMessage="Not selected"
+              id="wizard.NotSelected"
+            >
+              Not selected
+            </FormattedMessage>
           </dd>
         </Component>
         <Component
@@ -473,7 +573,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
             className=""
             data-pf-content={true}
           >
-            Source type
+            <FormattedMessage
+              defaultMessage="Source type"
+              id="wizard.SourceType"
+            >
+              Source type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -493,7 +598,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
             className=""
             data-pf-content={true}
           >
-            Authentication type
+            <FormattedMessage
+              defaultMessage="Authentication type"
+              id="wizard.AuthenticationType"
+            >
+              Authentication type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -553,7 +663,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
             className=""
             data-pf-content={true}
           >
-            Hostname
+            <FormattedMessage
+              defaultMessage="Hostname"
+              id="wizard.Hostname"
+            >
+              Hostname
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -583,7 +698,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
             className=""
             data-pf-content={true}
           >
-            Yes
+            <FormattedMessage
+              defaultMessage="Yes"
+              id="wizard.Yes"
+            >
+              Yes
+            </FormattedMessage>
           </dd>
         </Component>
         <Component
@@ -593,7 +713,12 @@ exports[`SourceWizardSummary component should render correctly ansible-tower 1`]
             className=""
             data-pf-content={true}
           >
-            Certificate authority
+            <FormattedMessage
+              defaultMessage="Certificate authority"
+              id="wizard.CertificateAuthority"
+            >
+              Certificate authority
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -631,7 +756,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
             className=""
             data-pf-content={true}
           >
-            Name
+            <FormattedMessage
+              defaultMessage="Name"
+              id="wizard.Name"
+            >
+              Name
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -651,7 +781,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
             className=""
             data-pf-content={true}
           >
-            Source type
+            <FormattedMessage
+              defaultMessage="Source type"
+              id="wizard.SourceType"
+            >
+              Source type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -671,7 +806,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
             className=""
             data-pf-content={true}
           >
-            Authentication type
+            <FormattedMessage
+              defaultMessage="Authentication type"
+              id="wizard.AuthenticationType"
+            >
+              Authentication type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -691,7 +831,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
             className=""
             data-pf-content={true}
           >
-            Hostname
+            <FormattedMessage
+              defaultMessage="Hostname"
+              id="wizard.Hostname"
+            >
+              Hostname
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -711,7 +856,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
             className=""
             data-pf-content={true}
           >
-            Verify SSL
+            <FormattedMessage
+              defaultMessage="Verify SSL"
+              id="wizard.VerifySsl"
+            >
+              Verify SSL
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -721,7 +871,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
             className=""
             data-pf-content={true}
           >
-            Yes
+            <FormattedMessage
+              defaultMessage="Yes"
+              id="wizard.Yes"
+            >
+              Yes
+            </FormattedMessage>
           </dd>
         </Component>
         <Component
@@ -731,7 +886,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
             className=""
             data-pf-content={true}
           >
-            Certificate authority
+            <FormattedMessage
+              defaultMessage="Certificate authority"
+              id="wizard.CertificateAuthority"
+            >
+              Certificate authority
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -751,7 +911,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
             className=""
             data-pf-content={true}
           >
-            Username
+            <FormattedMessage
+              defaultMessage="Username"
+              id="wizard.Username"
+            >
+              Username
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -771,7 +936,12 @@ exports[`SourceWizardSummary component should render correctly hide application 
             className=""
             data-pf-content={true}
           >
-            Password
+            <FormattedMessage
+              defaultMessage="Password"
+              id="wizard.Password"
+            >
+              Password
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -809,7 +979,12 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
             className=""
             data-pf-content={true}
           >
-            Name
+            <FormattedMessage
+              defaultMessage="Name"
+              id="wizard.Name"
+            >
+              Name
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -829,7 +1004,12 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
             className=""
             data-pf-content={true}
           >
-            Application
+            <FormattedMessage
+              defaultMessage="Application"
+              id="wizard.Application"
+            >
+              Application
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -839,7 +1019,12 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
             className=""
             data-pf-content={true}
           >
-            Not selected
+            <FormattedMessage
+              defaultMessage="Not selected"
+              id="wizard.NotSelected"
+            >
+              Not selected
+            </FormattedMessage>
           </dd>
         </Component>
         <Component
@@ -849,7 +1034,12 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
             className=""
             data-pf-content={true}
           >
-            Source type
+            <FormattedMessage
+              defaultMessage="Source type"
+              id="wizard.SourceType"
+            >
+              Source type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -869,7 +1059,12 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
             className=""
             data-pf-content={true}
           >
-            Authentication type
+            <FormattedMessage
+              defaultMessage="Authentication type"
+              id="wizard.AuthenticationType"
+            >
+              Authentication type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -939,7 +1134,12 @@ exports[`SourceWizardSummary component should render correctly openshift 1`] = `
             className=""
             data-pf-content={true}
           >
-            Yes
+            <FormattedMessage
+              defaultMessage="Yes"
+              id="wizard.Yes"
+            >
+              Yes
+            </FormattedMessage>
           </dd>
         </Component>
         <Component
@@ -987,7 +1187,12 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
             className=""
             data-pf-content={true}
           >
-            Name
+            <FormattedMessage
+              defaultMessage="Name"
+              id="wizard.Name"
+            >
+              Name
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1007,7 +1212,12 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
             className=""
             data-pf-content={true}
           >
-            Application
+            <FormattedMessage
+              defaultMessage="Application"
+              id="wizard.Application"
+            >
+              Application
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1027,7 +1237,12 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
             className=""
             data-pf-content={true}
           >
-            Source type
+            <FormattedMessage
+              defaultMessage="Source type"
+              id="wizard.SourceType"
+            >
+              Source type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1047,7 +1262,12 @@ exports[`SourceWizardSummary component should render correctly openshift cost ma
             className=""
             data-pf-content={true}
           >
-            Cluster Identifier
+            <FormattedMessage
+              defaultMessage="Cluster Identifier"
+              id="wizard.clusterId"
+            >
+              Cluster Identifier
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1085,7 +1305,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Name
+            <FormattedMessage
+              defaultMessage="Name"
+              id="wizard.Name"
+            >
+              Name
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1105,7 +1330,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Application
+            <FormattedMessage
+              defaultMessage="Application"
+              id="wizard.Application"
+            >
+              Application
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1125,7 +1355,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Source type
+            <FormattedMessage
+              defaultMessage="Source type"
+              id="wizard.SourceType"
+            >
+              Source type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1145,7 +1380,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Authentication type
+            <FormattedMessage
+              defaultMessage="Authentication type"
+              id="wizard.AuthenticationType"
+            >
+              Authentication type
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1165,7 +1405,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Hostname
+            <FormattedMessage
+              defaultMessage="Hostname"
+              id="wizard.Hostname"
+            >
+              Hostname
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1185,7 +1430,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Verify SSL
+            <FormattedMessage
+              defaultMessage="Verify SSL"
+              id="wizard.VerifySsl"
+            >
+              Verify SSL
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1195,7 +1445,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Yes
+            <FormattedMessage
+              defaultMessage="Yes"
+              id="wizard.Yes"
+            >
+              Yes
+            </FormattedMessage>
           </dd>
         </Component>
         <Component
@@ -1205,7 +1460,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Certificate authority
+            <FormattedMessage
+              defaultMessage="Certificate authority"
+              id="wizard.CertificateAuthority"
+            >
+              Certificate authority
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1225,7 +1485,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Username
+            <FormattedMessage
+              defaultMessage="Username"
+              id="wizard.Username"
+            >
+              Username
+            </FormattedMessage>
           </dt>
         </Component>
         <Component
@@ -1245,7 +1510,12 @@ exports[`SourceWizardSummary component should render correctly selected Catalog 
             className=""
             data-pf-content={true}
           >
-            Password
+            <FormattedMessage
+              defaultMessage="Password"
+              id="wizard.Password"
+            >
+              Password
+            </FormattedMessage>
           </dt>
         </Component>
         <Component

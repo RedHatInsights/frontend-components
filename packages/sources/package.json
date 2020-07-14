@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-sources",
-    "version": "2.1.3",
+    "version": "2.1.6",
     "description": "Sources components for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",
@@ -9,7 +9,8 @@
     },
     "scripts": {
         "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
-        "start": "rollup -c ./config/rollup.config.js -w"
+        "start": "rollup -c ./config/rollup.config.js -w",
+        "extract:messages": "npx @formatjs/cli extract 'src/**/*.{js,jsx}' --out-file ./translations/messages.json"
     },
     "repository": {
         "type": "git",
@@ -27,15 +28,17 @@
         "awesome-debounce-promise": "^2.1.0"
     },
     "devDependencies": {
-        "@data-driven-forms/pf4-component-mapper": "^2.5.0",
-        "@data-driven-forms/react-form-renderer": "^2.5.0",
+        "@data-driven-forms/pf4-component-mapper": "^2.6.7",
+        "@data-driven-forms/react-form-renderer": "^2.6.7",
         "@patternfly/react-core": "^4.18.5",
-        "@patternfly/react-icons": "^4.3.5"
+        "@patternfly/react-icons": "^4.3.5",
+        "react-intl": "^5.0.2"
     },
     "peerDependencies": {
         "react": "^16.12.0",
-        "@data-driven-forms/pf4-component-mapper": "^2.5.0",
-        "@data-driven-forms/react-form-renderer": "^2.5.0",
-        "lodash": "^4.17.15"
+        "@data-driven-forms/pf4-component-mapper": "^2.6.7",
+        "@data-driven-forms/react-form-renderer": "^2.6.7",
+        "lodash": "^4.17.15",
+        "react-intl": "^5.0.2"
     }
 }

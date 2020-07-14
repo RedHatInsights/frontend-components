@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import {
     TextContent,
     Text,
@@ -11,6 +10,7 @@ import {
 import RendererContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
 
 import * as AwsArn from '../../../addSourceWizard/hardcodedComponents/aws/arn';
+import mount from '../../__mocks__/mount';
 
 describe('AWS-ARN hardcoded schemas', () => {
     it('ARN DESCRIPTION is rendered correctly', () => {

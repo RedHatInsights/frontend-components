@@ -127,7 +127,7 @@ exports[`SystemRulesTable component should render 1`] = `
     toggleIsExpanded={[Function]}
   >
     <Component>
-      <Connect(ComplianceRemediationButton)
+      <ConnectFunction
         allSystems={
           Array [
             Object {
@@ -1263,7 +1263,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
     toggleIsExpanded={[Function]}
   >
     <Component>
-      <Connect(ComplianceRemediationButton)
+      <ConnectFunction
         allSystems={
           Array [
             Object {
@@ -1623,7 +1623,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
     toggleIsExpanded={[Function]}
   >
     <Component>
-      <Connect(ComplianceRemediationButton)
+      <ConnectFunction
         allSystems={
           Array [
             Object {
@@ -2033,7 +2033,7 @@ exports[`SystemRulesTable component should render search results on any page, re
     toggleIsExpanded={[Function]}
   >
     <Component>
-      <Connect(ComplianceRemediationButton)
+      <ConnectFunction
         allSystems={
           Array [
             Object {
@@ -2434,7 +2434,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
     toggleIsExpanded={[Function]}
   >
     <Component>
-      <Connect(ComplianceRemediationButton)
+      <ConnectFunction
         allSystems={
           Array [
             Object {
@@ -3477,7 +3477,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     toggleIsExpanded={[Function]}
   >
     <Component>
-      <Connect(ComplianceRemediationButton)
+      <ConnectFunction
         allSystems={
           Array [
             Object {
@@ -5505,7 +5505,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     toggleIsExpanded={[Function]}
   >
     <Component>
-      <Connect(ComplianceRemediationButton)
+      <ConnectFunction
         allSystems={
           Array [
             Object {
@@ -5831,7 +5831,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     toggleIsExpanded={[Function]}
   >
     <Component>
-      <Connect(ComplianceRemediationButton)
+      <ConnectFunction
         allSystems={
           Array [
             Object {
@@ -6750,7 +6750,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
     toggleIsExpanded={[Function]}
   >
     <Component>
-      <Connect(ComplianceRemediationButton)
+      <ConnectFunction
         allSystems={
           Array [
             Object {

@@ -1,3 +1,5 @@
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
 import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
 import hardcodedSchemas from './hardcodedSchemas';
@@ -133,7 +135,11 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
 
         return ({
             name: type.name,
-            title: `Configure ${acronymMapper(type.product_name)} credentials`,
+            title: <FormattedMessage
+                id="wizard.ConfigureAcronymmapperTypeProductNameCredentials"
+                defaultMessage="Configure {title} credentials"
+                values={{ title: acronymMapper(type.product_name) }}
+            />,
             fields,
             nextStep: {
                 when: 'auth_select',
@@ -169,7 +175,11 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
 
         return ({
             name: type.name,
-            title: `Configure ${acronymMapper(type.product_name)} - ${auth.name} credentials`,
+            title: <FormattedMessage
+                id="wizard.ConfigureAcronymmapperTypeProductNameAuthNameCredentials"
+                defaultMessage="Configure {title} - {name} credentials"
+                values={{ title: acronymMapper(type.product_name), name: auth.name }}
+            />,
             fields: [
                 ...fields,
                 ...getAdditionalAuthFields(type.name, auth.type),
@@ -241,7 +251,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
         return ({
             name: `${type.name}-${appType.id}`,
-            title: 'Choose authentication type',
+            title: <FormattedMessage id="wizard.ChooseAuthenticationType" defaultMessage="Choose authentication type" />,
             fields,
             nextStep: {
                 when: 'auth_select',
@@ -295,7 +305,11 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
         return ({
             name: `${type.name}-${appType.id}`,
-            title: `Configure ${auth.name} credentials`,
+            title: <FormattedMessage
+                id="wizard.ConfigureAuthNameCredentials"
+                defaultMessage="Configure {name} credentials"
+                title={{ name: auth.name }}
+            />,
             fields: [
                 ...fields,
                 ...getAdditionalAuthFields(type.name, auth.type, appName),
