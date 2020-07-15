@@ -54,7 +54,9 @@ class Group extends Component {
                 (groupValue && input.test(groupValue)) ||
                 (groupLabel && input.test(groupLabel)) ||
                 (item.value && input.test(item.value)) ||
-                (item.label && input.test(item.label)))
+                (item.label && input.test(item.label)) ||
+                item.isPersistentAction
+            )
         ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
@@ -67,7 +69,7 @@ class Group extends Component {
                         e.stopPropagation();
                     }
 
-                    if (e.target.matches('.pf-c-select__option-button') && onClick) {
+                    if (item.isPersistentAction) {
                         return onClick();
                     }
 
@@ -227,7 +229,7 @@ class Group extends Component {
         const showMore = {
             type: groupType.button,
             variant: 'link',
-            items: [{ label: 'Show more', type: groupType.button, onClick: onShowMore }]
+            items: [{ label: 'Show more', type: groupType.button, onClick: onShowMore, isPersistentAction: true }]
         };
         return (<Fragment>
             { !filterItems || (filterItems && filterItems.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
