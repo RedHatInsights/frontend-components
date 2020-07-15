@@ -1,8 +1,24 @@
 import { useState } from 'react';
 import { REGISTERED_CHIP, registered } from '../../shared';
 
-export const useRegisteredWithFilter = () => {
-    const [ registeredWithValue, setValue ] = useState([]);
+export const registeredWithFilterState = { registeredWithFilter: [] };
+export const REGISTERED_WITH_FILTER = 'REGISTERED_WITH_FILTER';
+export const registeredWithFilterReducer = (_state, { type, payload }) => ({
+    ...type === REGISTERED_WITH_FILTER && {
+        registeredWithFilter: payload
+    }
+});
+
+export const useRegisteredWithFilter = ([ state, dispatch ] = [ registeredWithFilterState ]) => {
+    let registeredWithValue;
+    let setValue;
+    if (dispatch) {
+        registeredWithValue = state.registeredWithFilter;
+        setValue = (newValue) => dispatch({ type: REGISTERED_WITH_FILTER, payload: newValue });
+    } else {
+        [ registeredWithValue, setValue ] = useState([]);
+    }
+
     const filter = {
         label: 'Source',
         value: 'source-registered-with',

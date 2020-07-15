@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useEffect, useCallback } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Fragment, useEffect, useCallback, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
@@ -22,7 +21,21 @@ import {
     loadSystems
 } from '../../shared';
 import { onDeleteFilter, onDeleteTag } from './helpers';
-import { useStalenessFilter, useTextFilter, useRegisteredWithFilter, useTagsFilter } from '../filters';
+import {
+    useStalenessFilter,
+    useTextFilter,
+    useRegisteredWithFilter,
+    useTagsFilter,
+    textFilterState,
+    textFilterReducer,
+    filtersReducer,
+    stalenessFilterReducer,
+    stalenessFilterState,
+    registeredWithFilterReducer,
+    registeredWithFilterState,
+    tagsFilterReducer,
+    tagsFilterState
+} from '../filters';
 
 const EntityTableToolbar = ({
     total,
@@ -42,21 +55,32 @@ const EntityTableToolbar = ({
     ...props
 }) => {
     const dispatch = useDispatch();
+    const [ state, stateDispatch ] = useReducer(filtersReducer([
+        textFilterReducer,
+        stalenessFilterReducer,
+        registeredWithFilterReducer,
+        tagsFilterReducer
+    ]), {
+        ...textFilterState,
+        ...stalenessFilterState,
+        ...registeredWithFilterState,
+        ...tagsFilterState
+    });
     const filters = useSelector(({ entities: { activeFilters } }) => activeFilters || []);
     const loaded = useSelector(({ entities: { loaded } }) => hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded);
     const allTagsLoaded = useSelector(({ entities: { allTagsLoaded } }) => allTagsLoaded);
     const allTags = useSelector(({ entities: { allTags } }) => allTags);
     const additionalTagsCount = useSelector(({ entities: { additionalTagsCount } }) => additionalTagsCount);
-    const [ nameFilter, nameChip, textFilter, setTextFilter ] = useTextFilter('');
-    const [ stalenessFilter, stalenessChip, staleFilter, setStaleFilter ] = useStalenessFilter();
-    const [ registeredFilter, registeredChip, registeredWithFilter, setRegisteredWithFilter ] = useRegisteredWithFilter();
+    const [ nameFilter, nameChip, textFilter, setTextFilter ] = useTextFilter([ state, stateDispatch ]);
+    const [ stalenessFilter, stalenessChip, staleFilter, setStaleFilter ] = useStalenessFilter([ state, stateDispatch ]);
+    const [ registeredFilter, registeredChip, registeredWithFilter, setRegisteredWithFilter ] = useRegisteredWithFilter([ state, stateDispatch ]);
     const [
         tagsFilter,
         tagsChip,
         selectedTags,
         setSelectedTags,
         filterTagsBy
-    ] = useTagsFilter(allTags, allTagsLoaded, additionalTagsCount, () => dispatch(toggleTagModal(true)));
+    ] = useTagsFilter(allTags, allTagsLoaded, additionalTagsCount, () => dispatch(toggleTagModal(true)), [ state, stateDispatch ]);
     const onRefreshData = useCallback((options) => dispatch(loadSystems(options, showTags)));
 
     const updateData = (config) => {
@@ -84,12 +108,10 @@ const EntityTableToolbar = ({
     useEffect(() => {
         const { textFilter, tagFilters, staleFilter, registeredWithFilter } = reduceFilters(filters);
         debouncedRefresh();
-        ReactDOM.unstable_batchedUpdates(() => {
-            setTextFilter(textFilter);
-            setStaleFilter(staleFilter);
-            setRegisteredWithFilter(registeredWithFilter);
-            setSelectedTags(tagFilters);
-        });
+        setTextFilter(textFilter);
+        setStaleFilter(staleFilter);
+        setRegisteredWithFilter(registeredWithFilter);
+        setSelectedTags(tagFilters);
     }, []);
 
     const onSetTextFilter = (value, debounced = true) => {
@@ -161,7 +183,15 @@ const EntityTableToolbar = ({
 
     const deleteMapper = {
         [TEXTUAL_CHIP]: () => setTextFilter(''),
-        [TAG_CHIP]: (deleted) => setSelectedTags(onDeleteTag(deleted, selectedTags, applyTags)),
+        [TAG_CHIP]: (deleted) => setSelectedTags(
+            onDeleteTag(
+                deleted,
+                selectedTags,
+                (selectedTags, debounce) => {
+                    debounceGetAllTags(filterTagsBy, { filters: applyTags(selectedTags, debounce) });
+                }
+            )
+        ),
         [STALE_CHIP]: (deleted) => setStaleFilter(onDeleteFilter(deleted, staleFilter)),
         [REGISTERED_CHIP]: (deleted) => setRegisteredWithFilter(
             onDeleteFilter(deleted, registeredWithFilter)
@@ -181,12 +211,10 @@ const EntityTableToolbar = ({
                 if (isAll) {
                     updateData({ page: 1, perPage, filters: [] });
                     dispatch(clearFilters());
-                    ReactDOM.unstable_batchedUpdates(() => {
-                        setTextFilter('');
-                        setStaleFilter([]);
-                        setRegisteredWithFilter([]);
-                        setSelectedTags({});
-                    });
+                    setTextFilter('');
+                    setStaleFilter([]);
+                    setRegisteredWithFilter([]);
+                    setSelectedTags({});
                 } else if (deleted.type) {
                     deleteMapper[deleted.type](deleted);
                 }

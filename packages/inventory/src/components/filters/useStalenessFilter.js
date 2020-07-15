@@ -1,8 +1,24 @@
 import { useState } from 'react';
 import { STALE_CHIP, staleness } from '../../shared';
 
-export const useStalenessFilter = () => {
-    const [ stalenessValue, setValue ] = useState([]);
+export const stalenessFilterState = { stalenessFilter: [] };
+export const STALENESS_FILTER = 'STALENESS_FILTER';
+export const stalenessFilterReducer = (_state, { type, payload }) => ({
+    ...type === STALENESS_FILTER && {
+        stalenessFilter: payload
+    }
+});
+
+export const useStalenessFilter = ([ state, dispatch ] = [ stalenessFilterState ]) => {
+    let stalenessValue;
+    let setValue;
+    if (dispatch) {
+        stalenessValue = state.stalenessFilter;
+        setValue = (newValue) => dispatch({ type: STALENESS_FILTER, payload: newValue });
+    } else {
+        [ stalenessValue, setValue ] = useState([]);
+    }
+
     const filter = {
         label: 'Status',
         value: 'stale-status',

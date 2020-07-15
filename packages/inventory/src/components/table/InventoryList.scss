@@ -21,6 +21,8 @@
         }
         .pf-c-pagination__nav-page-select input { @include rem('min-width', 75px); }
     }
+
+    .ins-c-chip-filters .pf-c-chip-group:not(:last-of-type) { margin-right: var(--pf-global--spacer--xs); }
 }
 
 .ins-c-table__empty {

@@ -1,13 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TEXTUAL_CHIP } from '../../shared';
 
-export const useTextFilter = (defaultValue) => {
-    const [ value, setValue ] = useState('');
-    useEffect(() => {
-        if (defaultValue) {
-            setValue(defaultValue);
-        }
-    }, [ defaultValue ]);
+export const textFilterState = { textFilter: '' };
+export const TEXT_FILTER = 'TEXT_FILTER';
+export const textFilterReducer = (_state, { type, payload }) => ({
+    ...type === TEXT_FILTER && {
+        textFilter: payload
+    }
+});
+
+export const useTextFilter = ([ state, dispatch ] = [ textFilterState ]) => {
+    let value;
+    let setValue;
+    if (dispatch) {
+        value = state.textFilter;
+        setValue = (newValue) => dispatch({ type: TEXT_FILTER, payload: newValue });
+    } else {
+        [ value, setValue ] = useState('');
+    }
+
     const filter = {
         label: 'Name',
         value: 'name-filter',

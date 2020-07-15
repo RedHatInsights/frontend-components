@@ -253,7 +253,7 @@ describe('EntityTableToolbar', () => {
                 </Provider>);
                 wrapper.find('.pf-c-chip-group__list li div button').first().simulate('click');
                 const actions = store.getActions();
-                expect(actions[actions.length - 1]).toMatchObject({ meta: { showTags: true }, type: 'LOAD_ENTITIES_PENDING' });
+                expect(actions[actions.length - 1]).toMatchObject({ type: 'ALL_TAGS_PENDING' });
             });
 
             it('should dispatch action on delete all filters', () => {

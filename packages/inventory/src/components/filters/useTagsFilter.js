@@ -2,7 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { constructGroups, mapGroups } from '../../shared';
 import { Spinner } from '@patternfly/react-core/dist/esm/components/Spinner';
 
-export const useTagsFilter = (allTags = [], loaded = false, additionalTagsCount = 0, onShowMoreClick) => {
+export const tagsFilterState = { tagsFilter: {} };
+export const TAGS_FILTER = 'TAGS_FILTER';
+export const tagsFilterReducer = (_state, { type, payload }) => ({
+    ...type === TAGS_FILTER && {
+        tagsFilter: payload
+    }
+});
+
+export const useTagsFilter = (
+    allTags = [],
+    loaded = false,
+    additionalTagsCount = 0,
+    onShowMoreClick,
+    [ globalState, dispatch ] = [ tagsFilterState ]
+) => {
     const [ state, setState ] = useState({
         allTags: [],
         loaded: false,
@@ -15,7 +29,15 @@ export const useTagsFilter = (allTags = [], loaded = false, additionalTagsCount 
             additionalTagsCount
         }));
     }, [ loaded ]);
-    const [ selectedTags, setValue ] = useState({});
+    let selectedTags;
+    let setValue;
+    if (dispatch) {
+        selectedTags = globalState.tagsFilter;
+        setValue = (newValue) => dispatch({ type: TAGS_FILTER, payload: newValue });
+    } else {
+        [ selectedTags, setValue ] = useState({});
+    }
+
     const [ filterTagsBy, seFilterTagsBy ] = useState('');
     const filter = {
         label: 'Tags',
