@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import propTypes from 'prop-types';
 import SystemPolicyCards from './SystemPolicyCards';
 import SystemRulesTable from './SystemRulesTable';
@@ -15,6 +15,7 @@ import {
 } from '@patternfly/react-core';
 import { NotEqualIcon } from '@patternfly/react-icons';
 import './compliance.scss';
+import { IntlProvider } from 'react-intl';
 
 const COMPLIANCE_API_ROOT = '/api/compliance';
 
@@ -149,4 +150,11 @@ SystemQuery.defaultProps = {
     loading: true
 };
 
-export default SystemDetails;
+const WrappedSystemDetails = ({ customItnl, intlProps, ...props }) => {
+    const IntlWrapper = customItnl ? IntlProvider : Fragment;
+    return <IntlWrapper { ...customItnl && intlProps } >
+        <SystemDetails { ...props } />
+    </IntlWrapper>;
+};
+
+export default WrappedSystemDetails;
