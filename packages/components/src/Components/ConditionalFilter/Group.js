@@ -223,13 +223,13 @@ class Group extends Component {
 
     render() {
         const { isExpanded, filterBy } = this.state;
-        const { groups, items, placeholder, className, selected, isFilterable, isDisabled, onFilter, onShowMore } = this.props;
+        const { groups, items, placeholder, className, selected, isFilterable, isDisabled, onFilter, onShowMore, showMoreTitle } = this.props;
         const filterItems = items || groups;
 
         const showMore = {
             type: groupType.button,
             variant: 'link',
-            items: [{ label: 'Show more', type: groupType.button, onClick: onShowMore, isPersistentAction: true }]
+            items: [{ label: showMoreTitle, type: groupType.button, onClick: onShowMore, isPersistentAction: true }]
         };
         return (<Fragment>
             { !filterItems || (filterItems && filterItems.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
@@ -314,6 +314,7 @@ Group.propTypes = {
     isFilterable: PropTypes.bool,
     onFilter: PropTypes.func,
     onShowMore: PropTypes.func,
+    showMoreTitle: PropTypes.string,
     isDisabled: PropTypes.bool
 };
 
@@ -321,6 +322,7 @@ Group.defaultProps = {
     selected: {},
     filterBy: '',
     onChange: () => undefined,
+    showMoreTitle: 'Show more',
     groups: [],
     isFilterable: false,
     isDisabled: false
