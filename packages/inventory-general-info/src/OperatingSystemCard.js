@@ -5,6 +5,7 @@ import LoadingCard from './LoadingCard';
 import { generalMapper } from './dataMapper';
 import { operatingSystem } from './selectors';
 import { DateFormat } from '@redhat-cloud-services/frontend-components';
+import { isDate } from './constants';
 
 const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (
     <LoadingCard
@@ -14,9 +15,9 @@ const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (
             { title: 'Release', value: systemInfo.release },
             { title: 'Kernel release', value: systemInfo.kernelRelease },
             { title: 'Architecture', value: systemInfo.architecture },
-            { title: 'Last boot time', value: (DateFormat ?
+            { title: 'Last boot time', value: (isDate(systemInfo.bootTime) ?
                 <DateFormat date={ systemInfo.bootTime } type="onlyDate" /> :
-                new Date(systemInfo.bootTime).toLocaleString()
+                'Not available'
             )
             },
             {
