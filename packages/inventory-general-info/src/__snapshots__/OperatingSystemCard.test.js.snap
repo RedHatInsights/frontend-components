@@ -188,7 +188,7 @@ exports[`OperatingSystemCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Invalid date
+          Not available
         </dd>
         <dt
           class=""
@@ -286,7 +286,7 @@ exports[`OperatingSystemCard should render correctly with rhsm facts 1`] = `
           class=""
           data-pf-content="true"
         >
-          Invalid date
+          Not available
         </dd>
         <dt
           class=""
@@ -380,7 +380,7 @@ exports[`OperatingSystemCard should render enabled/disabled 1`] = `
           class=""
           data-pf-content="true"
         >
-          Invalid date
+          Not available
         </dd>
         <dt
           class=""

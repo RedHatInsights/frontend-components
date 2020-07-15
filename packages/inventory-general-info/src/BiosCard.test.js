@@ -33,6 +33,21 @@ describe('BiosCard', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('should render correctly with data - wrong date', () => {
+        const store = mockStore({
+            systemProfileStore: {
+                systemProfile: {
+                    loaded: true,
+                    ...biosTest,
+                    bios_release_date: 'test',
+                    cpu_flags: [ 'one' ]
+                }
+            }
+        });
+        const wrapper = render(<BiosCard store={ store } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     it('should interact correctly with data', () => {
         const onClick = jest.fn();
         const store = mockStore({

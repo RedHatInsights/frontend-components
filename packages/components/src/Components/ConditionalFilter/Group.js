@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Select, SelectOption, SelectVariant, SelectGroup, Radio, Checkbox } from '@patternfly/react-core';
+import { Select, SelectOption, SelectVariant, SelectGroup, Radio, Checkbox, Button } from '@patternfly/react-core';
 import Text from './Text';
 import isEqual from 'lodash/isEqual';
 
 export const groupType = {
     checkbox: 'checkbox',
     radio: 'radio',
+    button: 'button',
     plain: 'plain'
 };
 
@@ -38,23 +39,24 @@ class Group extends Component {
         }
     }
 
-    mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey) => {
+    mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, variant, items, ...group }, groupKey) => {
         const { onFilter } = this.props;
         const { filterBy } = this.state;
         let input;
-
         try {
             input = new RegExp(filterBy, 'i');
         } catch (err) {
             input = new RegExp(filterBy.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
         }
 
-        return items.filter(item => onFilter || (
-            (groupValue && input.test(groupValue)) ||
-            (groupLabel && input.test(groupLabel)) ||
-            (item.value && input.test(item.value)) ||
-            (item.label && input.test(item.label))
-        )
+        return items.filter(item =>
+            onFilter || (
+                (groupValue && input.test(groupValue)) ||
+                (groupLabel && input.test(groupLabel)) ||
+                (item.value && input.test(item.value)) ||
+                (item.label && input.test(item.label)) ||
+                item.isPersistentAction
+            )
         ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
@@ -65,6 +67,10 @@ class Group extends Component {
                     if (e.target.tagName !== 'INPUT') {
                         e.preventDefault();
                         e.stopPropagation();
+                    }
+
+                    if (item.isPersistentAction) {
+                        return onClick();
                     }
 
                     const clickedGroup = {
@@ -118,10 +124,13 @@ class Group extends Component {
                                 name={item.name || value || `${groupKey}-${key}`}
                                 label={label}
                                 id={id || value || `${groupKey}-${key}`}
-                            /> : [
+                            /> : type === groupType.button ?
+                                <Button
+                                    className="pf-c-select__option-button" variant={variant} onClick={item.onClick}>{label}</Button>
+                                : [
                                 // we have to wrap it in array, otherwise PF will complain
-                                (type !== groupType.checkbox && type !== groupType.radio) ? label : ''
-                            ]
+                                    (type !== groupType.checkbox && type !== groupType.radio) ? label : ''
+                                ]
                 }
             </SelectOption>
         ));
@@ -166,7 +175,6 @@ class Group extends Component {
 
     onSelect = (event, group, item, groupKey, itemKey) => {
         let newSelection = this.calculateSelected(group, groupKey, itemKey);
-
         const { onChange } = this.props;
 
         if (onChange) {
@@ -215,10 +223,14 @@ class Group extends Component {
 
     render() {
         const { isExpanded, filterBy } = this.state;
-        const { groups, items, placeholder, className, selected, isFilterable, isDisabled, onFilter } = this.props;
-
+        const { groups, items, placeholder, className, selected, isFilterable, isDisabled, onFilter, onShowMore, showMoreTitle } = this.props;
         const filterItems = items || groups;
 
+        const showMore = {
+            type: groupType.button,
+            variant: 'link',
+            items: [{ label: showMoreTitle, type: groupType.button, onClick: onShowMore, isPersistentAction: true }]
+        };
         return (<Fragment>
             { !filterItems || (filterItems && filterItems.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
                 className={ className }
@@ -235,18 +247,27 @@ class Group extends Component {
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
                 { groups && groups.length > 0 ? (
-                    groups.map(({ value: groupValue, onSelect, label: groupLabel, id: groupId, type, items, ...group }, groupKey) => {
+                    [
+                        ...groups,
+                        ...onShowMore ? [ showMore ] : []
+                    ].map(({
+                        value: groupValue,
+                        onSelect,
+                        label: groupLabel,
+                        id: groupId,
+                        type,
+                        items,
+                        ...group
+                    }, groupKey) => {
                         const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey)
                         .filter(Boolean);
-                        return filteredItems.length > 0
-                            ? <SelectGroup
-                                {...group}
-                                key={groupId || groupValue || groupKey}
-                                value={groupId || groupValue || groupKey}
-                                label={groupLabel || ''}
-                                id={groupId || `group-${groupValue || groupKey}`}
-                            >{filteredItems}</SelectGroup>
-                            : <Fragment/>;
+                        return (<SelectGroup
+                            {...group}
+                            key={groupId || groupValue || groupKey}
+                            value={groupId || groupValue || groupKey}
+                            label={groupLabel || ''}
+                            id={groupId || `group-${groupValue || groupKey}`}
+                        >{filteredItems}</SelectGroup>);
                     })
                 ) : (
                     this.mapItems({ items })
@@ -292,6 +313,8 @@ Group.propTypes = {
     items: itemsProps,
     isFilterable: PropTypes.bool,
     onFilter: PropTypes.func,
+    onShowMore: PropTypes.func,
+    showMoreTitle: PropTypes.string,
     isDisabled: PropTypes.bool
 };
 
@@ -299,6 +322,7 @@ Group.defaultProps = {
     selected: {},
     filterBy: '',
     onChange: () => undefined,
+    showMoreTitle: 'Show more',
     groups: [],
     isFilterable: false,
     isDisabled: false
