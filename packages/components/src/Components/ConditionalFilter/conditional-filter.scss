@@ -20,6 +20,23 @@
         }
     }
 
+    .pf-l-split__item {
+        .pf-c-select__menu-group {
+            .pf-c-select__menu-group-title {
+                display: none;
+            }
+            padding: 0;
+        }
+        
+        .pf-c-select__option-button {
+            padding: 0;
+        }
+
+        .pf-c-select__menu-item-icon {
+            display: none;
+        }
+    }
+
     input.ins-c-conditional-filter[type="text"] {
         @include rem('padding-right', 35px);
         @include rem('margin-right', -23px);
