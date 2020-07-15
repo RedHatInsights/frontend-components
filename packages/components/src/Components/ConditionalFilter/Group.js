@@ -238,15 +238,13 @@ class Group extends Component {
                     groups.map(({ value: groupValue, onSelect, label: groupLabel, id: groupId, type, items, ...group }, groupKey) => {
                         const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey)
                         .filter(Boolean);
-                        return filteredItems.length > 0
-                            ? <SelectGroup
-                                {...group}
-                                key={groupId || groupValue || groupKey}
-                                value={groupId || groupValue || groupKey}
-                                label={groupLabel || ''}
-                                id={groupId || `group-${groupValue || groupKey}`}
-                            >{filteredItems}</SelectGroup>
-                            : <Fragment/>;
+                        return (<SelectGroup
+                            {...group}
+                            key={groupId || groupValue || groupKey}
+                            value={groupId || groupValue || groupKey}
+                            label={groupLabel || ''}
+                            id={groupId || `group-${groupValue || groupKey}`}
+                        >{filteredItems}</SelectGroup>);
                     })
                 ) : (
                     this.mapItems({ items })
