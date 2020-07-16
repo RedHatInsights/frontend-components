@@ -1,4 +1,19 @@
-import { onDeleteFilter, generateFilters, filterRows, prepareRows } from './constants';
+import { onDeleteFilter, generateFilters, filterRows, prepareRows, isDate } from './constants';
+
+describe('isDate', () => {
+    it('should return true for number date', () => {
+        expect(isDate(0)).toBe(true);
+        expect(isDate('2019-08-13T13:28:13.431Z')).toBe(true);
+    });
+
+    it('should return true for string date', () => {
+        expect(isDate('2019-08-13T13:28:13.431Z')).toBe(true);
+    });
+
+    it('should return false for incorrect dates', () => {
+        expect(isDate('test')).toBe(false);
+    });
+});
 
 describe('prepareRows', () => {
     it('should not fail', () => {
