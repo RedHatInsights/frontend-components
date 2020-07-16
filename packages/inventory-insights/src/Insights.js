@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import './insights.scss';
 
-import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, IMPACT_LABEL, LIKELIHOOD_LABEL, RISK_TO_STRING } from './Constants';
+import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, IMPACT_LABEL, LIKELIHOOD_LABEL } from './Constants';
 import React, { Component, Fragment } from 'react';
 import { SortByDirection, Table, TableBody, TableHeader, cellWidth, sortable } from '@patternfly/react-table';
 import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
@@ -10,7 +10,6 @@ import { flatten, sortBy } from 'lodash';
 
 import API from './Api';
 import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
-import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
 import { Bullseye } from '@patternfly/react-core/dist/js/layouts/Bullseye/Bullseye';
 import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
 import { Card } from '@patternfly/react-core/dist/js/components/Card/Card';
@@ -21,6 +20,7 @@ import CheckIcon from '@patternfly/react-icons/dist/js/icons/check-icon';
 import { ClipboardCopy } from '@patternfly/react-core/dist/js/components/ClipboardCopy/ClipboardCopy';
 import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
 import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
+import { InsightsLabel } from '@redhat-cloud-services/frontend-components/components/InsightsLabel';
 import { List } from 'react-content-loader';
 import MessageState from './MessageState';
 import PficonSatelliteIcon from '@patternfly/react-icons/dist/js/icons/pficon-satellite-icon';
@@ -173,7 +173,7 @@ class InventoryRuleList extends Component {
                                 <Tooltip key={key} position={TooltipPosition.bottom} content={<span>The <strong>likelihood</strong> that this will be
                                 a problem is {LIKELIHOOD_LABEL[rule.likelihood]}. The <strong>impact</strong> of the problem would be
                                 &nbsp;{IMPACT_LABEL[rule.impact.impact]} if it occurred.</span>}>
-                                    <Battery label={RISK_TO_STRING[rule.total_risk]} severity={rule.total_risk} />
+                                    <InsightsLabel value={rule.total_risk} />
                                 </Tooltip>
                             </div >
                         },
