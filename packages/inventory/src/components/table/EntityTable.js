@@ -13,6 +13,12 @@ import {
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/esm/SkeletonTable';
 import { createRows, createColumns } from './helpers';
 
+/**
+ * The actual (PF)table component. It calculates each cell and every table property.
+ * It uses rows, columns and loaded from redux to show correct data.
+ * When row is selected `selectEntity` is dispatched.
+ * @param {*} props all props used in this component.
+ */
 const EntityTable = ({
     hasItems,
     isLoaded,

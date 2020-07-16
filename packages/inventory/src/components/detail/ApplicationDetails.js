@@ -4,6 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Tabs, Tab } from '@patternfly/react-core/dist/esm/components/Tabs';
 import { detailSelect } from '../../redux/actions';
 
+/**
+ * Component that renders tabs for each application detail and handles clicking on each item.
+ * @param {*} props onTabSelect can be used to notify parent component that detail has been selected.
+ */
 const ApplicationDetails = ({ onTabSelect, ...props }) => {
     const dispatch = useDispatch();
     const items = useSelector(({ entityDetails: { activeApps } }) => activeApps);

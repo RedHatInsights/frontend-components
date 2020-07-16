@@ -1,42 +1,39 @@
 /* eslint-disable camelcase */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useStore, useSelector } from 'react-redux';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 
-const AppInfo = ({ activeApps, active, loaded, componentsMapper, store }) => {
-    const activeApp = activeApps.find(item => item.name === active.appName) || activeApps[0];
-    const Cmp = activeApp?.name && (componentsMapper?.[activeApp.name] || activeApp?.component);
+/**
+ * Small component that just renders active detail with some specific class.
+ * This component detail is accessed from redux if no component found `missing component` is displayed.
+ * @param {*} props `componentsMapper` if you want to pass different components list.
+ */
+const AppInfo = ({ componentsMapper }) => {
+    const loaded = useSelector(({ entityDetails: { loaded } }) => loaded);
+    const activeApp = useSelector(({ entityDetails: { activeApps, activeApp, loaded } }) => {
+        if (loaded) {
+            return activeApps?.find?.(item => item?.name === activeApp?.appName) || activeApps?.[0];
+        }
+    });
+    const Cmp = componentsMapper?.[activeApp?.name] || activeApp?.component;
     return (
         <Fragment>
-            { activeApp && <div className={ `ins-active-app-${activeApp.name}` }>
-                { Cmp ? <Cmp store={store} /> : 'missing component'}
-            </div> }
-            { !loaded && <Skeleton size={ SkeletonSize.md } /> }
+            {
+                loaded ? activeApp && (
+                    <div className={ `ins-active-app-${activeApp?.name}` }>
+                        { Cmp ? <Cmp store={useStore()} /> : 'missing component'}
+                    </div>
+                ) : <Skeleton size={ SkeletonSize.md } />
+            }
         </Fragment>
     );
 };
 
 AppInfo.propTypes = {
-    store: PropTypes.any,
-    activeApps: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string
-    })),
-    active: PropTypes.shape({
-        appName: PropTypes.string
-    }),
-    loaded: PropTypes.bool,
     componentsMapper: PropTypes.shape({
         [PropTypes.string]: PropTypes.component
     })
 };
-AppInfo.defaultProps = {
-    activeApps: [],
-    active: {}
-};
 
-export default connect(({ entityDetails: { activeApps, activeApp, loaded } }) => ({
-    activeApps,
-    active: activeApp,
-    loaded
-}))(AppInfo);
+export default AppInfo;

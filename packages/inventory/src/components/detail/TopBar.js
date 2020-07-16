@@ -14,6 +14,11 @@ import {
 } from '@patternfly/react-core/dist/esm/components/Dropdown';
 import { redirectToInventoryList } from './helpers';
 
+/**
+ * Top inventory bar with title, buttons (namely remove from inventory and inventory detail button) and actions.
+ * Remove from inventory button requires remove modal, which is included at bottom of this component.
+ * @param {*} props namely entity and if entity is loaded.
+ */
 const TopBar = ({
     entity,
     loaded,

@@ -5,6 +5,13 @@ import { TableToolbar } from '@redhat-cloud-services/frontend-components/compone
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 
+/**
+ * This component is used to combine all essential components together:
+ *   * EntityTableToolbar - to control top toolbar.
+ *   * InventoryList - to allow consumers to change data from outside and contains actual inventory table.
+ *   * Pagination - bottom pagination.
+ * It also calculates pagination and sortBy from props or from store if consumer passed items or not.
+ */
 const InventoryTable = forwardRef(({
     onRefresh,
     children,

@@ -6,6 +6,11 @@ import { DateFormat } from '@redhat-cloud-services/frontend-components/component
 import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/esm/CullingInfo';
 import { getFact } from './helpers';
 
+/**
+ * Basic information about system.
+ * UUID and last seen.
+ * @param {*} props entity and if entity is loaded.
+ */
 const FactsInfo = ({ entity, loaded, ...props }) => (
     <Grid className="ins-entity-facts" { ...props }>
         <GridItem md={ 6 }>

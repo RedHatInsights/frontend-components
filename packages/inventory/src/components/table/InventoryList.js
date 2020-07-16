@@ -7,7 +7,14 @@ import './InventoryList.scss';
 import { loadSystems } from '../../shared';
 import isEqual from 'lodash/isEqual';
 
+/**
+ * Component that works as a side channel for consumers to notify inventory of new data changes.
+ */
 class ContextInventoryList extends React.Component {
+    /**
+     * If conumer wants to change data they can call this function via component ref.
+     * @param {*} options new options to be applied, like pagination, filters, etc.
+     */
     onRefreshData = (options = {}) => {
         const { page, perPage, items, hasItems, sortBy, activeFilters, showTags } = this.props;
         this.props.loadEntities && this.props.loadEntities({
@@ -21,6 +28,12 @@ class ContextInventoryList extends React.Component {
         }, showTags);
     }
 
+    /**
+     * Function to calculate for new changes, this function limits re-renders by checking if previous items are
+     * same as new items.
+     * If items are not passed, it only checks for props sortBy.
+     * @param {*} prevProps previous props - items, hasItems, sortBy.
+     */
     componentDidUpdate(prevProps) {
         const { items, hasItems, sortBy } = this.props;
         if (
@@ -48,6 +61,9 @@ class ContextInventoryList extends React.Component {
     }
 }
 
+/**
+ * Component that consumes active filters and passes them down to component.
+ */
 const InventoryList = React.forwardRef((props, ref) => {
     const dispatch = useDispatch();
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);

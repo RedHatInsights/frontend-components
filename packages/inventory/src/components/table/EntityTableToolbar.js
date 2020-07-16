@@ -37,6 +37,11 @@ import {
     tagsFilterState
 } from '../filters';
 
+/**
+ * Table toolbar used at top of inventory table.
+ * It uses couple of filters and acces redux data along side all passed props.
+ * @param {*} props used in this component.
+ */
 const EntityTableToolbar = ({
     total,
     page,
@@ -81,19 +86,33 @@ const EntityTableToolbar = ({
         setSelectedTags,
         filterTagsBy
     ] = useTagsFilter(allTags, allTagsLoaded, additionalTagsCount, () => dispatch(toggleTagModal(true)), reducer);
+
+    /**
+     * Debounced function for fetching all tags.
+     */
     const debounceGetAllTags = useCallback(debounce((config, options) => {
         if (showTags && !hasItems) {
             dispatch(fetchAllTags(config, options));
         }
     }, 800), []);
+
+    /**
+     * Function to dispatch load systems and fetch all tags.
+     */
     const onRefreshData = useCallback((options) => {
+        dispatch(loadSystems(options, showTags));
         if (showTags && !hasItems) {
             dispatch(fetchAllTags(filterTagsBy, { filters: options.filters }));
         }
-
-        dispatch(loadSystems(options, showTags));
     });
 
+    /**
+     * Function used to update data, it either calls `onRefresh` from props or dispatches `onRefreshData`.
+     * `onRefresh` function takes two parameters
+     *   * entire config with new changes.
+     *   * callback to update data.
+     * @param {*} config new config to fetch data.
+     */
     const updateData = (config) => {
         const params = {
             items,
@@ -109,8 +128,14 @@ const EntityTableToolbar = ({
         }) : onRefreshData(params);
     };
 
+    /**
+     * Debounced `updateData` function.
+     */
     const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), []);
 
+    /**
+     * Component did mount effect to calculate actual filters from redux.
+     */
     useEffect(() => {
         const { textFilter, tagFilters, staleFilter, registeredWithFilter } = reduceFilters(filters);
         debouncedRefresh();
@@ -120,6 +145,11 @@ const EntityTableToolbar = ({
         setSelectedTags(tagFilters);
     }, []);
 
+    /**
+     * Function used to change text filter.
+     * @param {*} value new value used for filtering.
+     * @param {*} debounced if debounce function should be used.
+     */
     const onSetTextFilter = (value, debounced = true) => {
         const textualFilter = filters.find(oneFilter => oneFilter.value === TEXT_FILTER);
         if (textualFilter) {
@@ -132,28 +162,18 @@ const EntityTableToolbar = ({
         refresh({ page: 1, perPage, filters });
     };
 
+    /**
+     * General function to apply filter (excluding tag and text).
+     * @param {*} value new value to be set of specified filter.
+     * @param {*} filterKey which filter should be changed.
+     * @param {*} refresh refresh callback function.
+     */
     const onSetFilter = (value, filterKey, refresh) => {
         const newFilters = [
             ...filters.filter(oneFilter => !oneFilter.hasOwnProperty(filterKey)),
             { [filterKey]: value }
         ];
         refresh({ page: 1, perPage, filters: newFilters });
-    };
-
-    const applyTags = (newSelection, debounced = true) => {
-        const refresh = debounced ? debouncedRefresh : updateData;
-        const tagFilters = mapGroups(newSelection);
-        const newFilters = [
-            ...filters.filter(oneFilter => !oneFilter.hasOwnProperty('tagFilters')),
-            { tagFilters }
-        ];
-        refresh({
-            page: 1,
-            perPage,
-            filters: newFilters
-        });
-
-        return newFilters;
     };
 
     useEffect(() => {
@@ -182,18 +202,20 @@ const EntityTableToolbar = ({
 
     useEffect(() => {
         if (page && perPage && filters && showTags && !hasItems) {
-            const newFilters = applyTags(selectedTags, true);
-            debounceGetAllTags(filterTagsBy, { filters: newFilters });
+            onSetFilter(mapGroups(selectedTags), 'tagFilters', debouncedRefresh);
         }
     }, [ selectedTags ]);
 
+    /**
+     * Mapper to simplify removing of any filter.
+     */
     const deleteMapper = {
         [TEXTUAL_CHIP]: () => setTextFilter(''),
         [TAG_CHIP]: (deleted) => setSelectedTags(
             onDeleteTag(
                 deleted,
                 selectedTags,
-                applyTags
+                (selectedTags) => onSetFilter(mapGroups(selectedTags), 'tagFilters', updateData)
             )
         ),
         [STALE_CHIP]: (deleted) => setStaleFilter(onDeleteFilter(deleted, staleFilter)),
@@ -202,6 +224,9 @@ const EntityTableToolbar = ({
         )
     };
 
+    /**
+     * Function to create active filters chips.
+     */
     const constructFilters = () => {
         return {
             filters: [
@@ -228,6 +253,9 @@ const EntityTableToolbar = ({
         };
     };
 
+    /**
+     * Function to calculate if any filter is applied.
+     */
     const isFilterSelected = () => {
         return textFilter.length > 0 || flatMap(
             Object.values(selectedTags),

@@ -12,6 +12,11 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 import ApplicationDetails from './ApplicationDetails';
 import './InventoryDetail.scss';
 
+/**
+ * Composit component which tangles together Topbar, facts, tags, app details and if system is found or not.
+ * This component is connected to redux and reads `loaded` and `entity`.
+ * @param {*} props additional features from parent component.
+ */
 const InventoryDetail = ({
     actions,
     showTags,

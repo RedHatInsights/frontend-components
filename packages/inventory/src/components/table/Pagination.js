@@ -6,12 +6,20 @@ import PropTypes from 'prop-types';
 import { loadSystems } from '../../shared';
 import debounce from 'lodash/debounce';
 
+/**
+ * Bottom pagination used in table. It can remember what page user is on if user entered the page number in input.
+ */
 class FooterPagination extends Component {
     state = {
         page: undefined
     };
     changePage = debounce((pagination) => this.updatePagination(pagination), 800);
 
+    /**
+     * Actual function called when updating any part of pagination.
+     * It either calls `onRefresh` from props if passed or dispatches new action `loadEntities`.
+     * @param {*} pagination contains new pagination config.
+     */
     updatePagination = (pagination) => {
         const { onRefresh, dataLoading, loadEntities, showTags } = this.props;
         if (onRefresh) {
@@ -22,6 +30,11 @@ class FooterPagination extends Component {
         }
     }
 
+    /**
+     * Thi method sets new page and combines previous props to apply sort, filters etc.
+     * @param {*} event html event to figure if target was input.
+     * @param {*} page current page to change to.
+     */
     onSetPage = (event, page) => {
         const { perPage, filters, sortBy, hasItems, items } = this.props;
         // eslint-disable-next-line camelcase
@@ -39,11 +52,17 @@ class FooterPagination extends Component {
         }
     }
 
+    /**
+     * This method changes per page, it automatically sets page to first one.
+     * It also applies previous sort, filters, etc.
+     * @param {*} _event event is now not used.
+     * @param {*} perPage new perPage set by user.
+     */
     onPerPageSelect = (_event, perPage) => {
-        const { filters } = this.props;
+        const { filters, sortBy, hasItems, items } = this.props;
         this.setState({ page: 1 });
         // eslint-disable-next-line camelcase
-        this.updatePagination({ page: 1, per_page: perPage, filters });
+        this.updatePagination({ page: 1, per_page: perPage, filters, sortBy, hasItems, items });
     }
 
     render() {

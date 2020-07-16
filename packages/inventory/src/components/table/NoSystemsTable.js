@@ -4,6 +4,9 @@ import { Title } from '@patternfly/react-core/dist/esm/components/Title';
 import { EmptyStateBody, EmptyState, EmptyStateVariant } from '@patternfly/react-core/dist/esm/components/EmptyState';
 import { Bullseye } from '@patternfly/react-core/dist/esm/layouts/Bullseye';
 
+/**
+ * Empty state stable when no systems are found.
+ */
 const NoSystemsTable = () => (
     <EmptyTable>
         <Bullseye>

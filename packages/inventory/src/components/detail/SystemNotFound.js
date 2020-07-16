@@ -11,6 +11,10 @@ import { Title } from '@patternfly/react-core/dist/esm/components/Title';
 import CubesIcon from '@patternfly/react-icons/dist/esm/icons/cubes-icon';
 import { redirectToInventoryList } from './helpers';
 
+/**
+ * Empty state when system was not found in inventory.
+ * @param {*} params - inventoryId and onBackToListClick.
+ */
 const SystemNotFound = ({ inventoryId, onBackToListClick }) => {
     return <EmptyState variant={EmptyStateVariant.full}>
         <EmptyStateIcon icon={CubesIcon} />
