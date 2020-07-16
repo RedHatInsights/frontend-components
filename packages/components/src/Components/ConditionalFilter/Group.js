@@ -126,7 +126,13 @@ class Group extends Component {
                                 id={id || value || `${groupKey}-${key}`}
                             /> : type === groupType.button ?
                                 <Button
-                                    className="pf-c-select__option-button" variant={variant} onClick={item.onClick}>{label}</Button>
+                                    {...itemProps}
+                                    className={`pf-c-select__option-button ${itemProps?.className || ''}`}
+                                    variant={variant}
+                                    onClick={item.onClick}
+                                >
+                                    {label}
+                                </Button>
                                 : [
                                 // we have to wrap it in array, otherwise PF will complain
                                     (type !== groupType.checkbox && type !== groupType.radio) ? label : ''
@@ -223,14 +229,21 @@ class Group extends Component {
 
     render() {
         const { isExpanded, filterBy } = this.state;
-        const { groups, items, placeholder, className, selected, isFilterable, isDisabled, onFilter, onShowMore, showMoreTitle } = this.props;
+        const { groups, items, placeholder, className, selected, isFilterable, isDisabled, onFilter, onShowMore, showMoreTitle, showMoreOptions } = this.props;
         const filterItems = items || groups;
 
         const showMore = {
             type: groupType.button,
-            variant: 'link',
-            items: [{ label: showMoreTitle, type: groupType.button, onClick: onShowMore, isPersistentAction: true }]
+            variant: showMoreOptions?.variant || 'link',
+            items: [{
+                ...showMoreOptions,
+                label: showMoreTitle,
+                type: groupType.button,
+                onClick: onShowMore,
+                isPersistentAction: true
+            }]
         };
+
         return (<Fragment>
             { !filterItems || (filterItems && filterItems.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
                 className={ className }
@@ -242,7 +255,7 @@ class Group extends Component {
                 onSelect={ () => undefined }
                 placeholderText={ placeholder }
                 onClear={this.clearSelection}
-                { ...filterBy !== '' && { selections: [ filterBy ] } }
+                selections={filterBy === '' ? null : filterBy}
                 { ...(isFilterable || onFilter) && { onFilter: this.customFilter } }
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
@@ -315,7 +328,14 @@ Group.propTypes = {
     onFilter: PropTypes.func,
     onShowMore: PropTypes.func,
     showMoreTitle: PropTypes.string,
-    isDisabled: PropTypes.bool
+    isDisabled: PropTypes.bool,
+    showMoreOptions: PropTypes.shape({
+        variant: PropTypes.string,
+        [PropTypes.string]: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+        props: {
+            [PropTypes.string]: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
+        }
+    })
 };
 
 Group.defaultProps = {
