@@ -55,7 +55,7 @@ const EntityTableToolbar = ({
     ...props
 }) => {
     const dispatch = useDispatch();
-    const [ state, stateDispatch ] = useReducer(filtersReducer([
+    const reducer = useReducer(filtersReducer([
         textFilterReducer,
         stalenessFilterReducer,
         registeredWithFilterReducer,
@@ -71,17 +71,28 @@ const EntityTableToolbar = ({
     const allTagsLoaded = useSelector(({ entities: { allTagsLoaded } }) => allTagsLoaded);
     const allTags = useSelector(({ entities: { allTags } }) => allTags);
     const additionalTagsCount = useSelector(({ entities: { additionalTagsCount } }) => additionalTagsCount);
-    const [ nameFilter, nameChip, textFilter, setTextFilter ] = useTextFilter([ state, stateDispatch ]);
-    const [ stalenessFilter, stalenessChip, staleFilter, setStaleFilter ] = useStalenessFilter([ state, stateDispatch ]);
-    const [ registeredFilter, registeredChip, registeredWithFilter, setRegisteredWithFilter ] = useRegisteredWithFilter([ state, stateDispatch ]);
+    const [ nameFilter, nameChip, textFilter, setTextFilter ] = useTextFilter(reducer);
+    const [ stalenessFilter, stalenessChip, staleFilter, setStaleFilter ] = useStalenessFilter(reducer);
+    const [ registeredFilter, registeredChip, registeredWithFilter, setRegisteredWithFilter ] = useRegisteredWithFilter(reducer);
     const [
         tagsFilter,
         tagsChip,
         selectedTags,
         setSelectedTags,
         filterTagsBy
-    ] = useTagsFilter(allTags, allTagsLoaded, additionalTagsCount, () => dispatch(toggleTagModal(true)), [ state, stateDispatch ]);
-    const onRefreshData = useCallback((options) => dispatch(loadSystems(options, showTags)));
+    ] = useTagsFilter(allTags, allTagsLoaded, additionalTagsCount, () => dispatch(toggleTagModal(true)), reducer);
+    const debounceGetAllTags = useCallback(debounce((config, options) => {
+        if (showTags && !hasItems) {
+            dispatch(fetchAllTags(config, options));
+        }
+    }, 800), []);
+    const onRefreshData = useCallback((options) => {
+        if (showTags && !hasItems) {
+            dispatch(fetchAllTags(filterTagsBy, { filters: options.filters }));
+        }
+
+        dispatch(loadSystems(options, showTags));
+    });
 
     const updateData = (config) => {
         const params = {
@@ -99,11 +110,6 @@ const EntityTableToolbar = ({
     };
 
     const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), []);
-    const debounceGetAllTags = useCallback(debounce((config, options) => {
-        if (showTags && !hasItems) {
-            dispatch(fetchAllTags(config, options));
-        }
-    }, 800), []);
 
     useEffect(() => {
         const { textFilter, tagFilters, staleFilter, registeredWithFilter } = reduceFilters(filters);
@@ -187,9 +193,7 @@ const EntityTableToolbar = ({
             onDeleteTag(
                 deleted,
                 selectedTags,
-                (selectedTags, debounce) => {
-                    debounceGetAllTags(filterTagsBy, { filters: applyTags(selectedTags, debounce) });
-                }
+                applyTags
             )
         ),
         [STALE_CHIP]: (deleted) => setStaleFilter(onDeleteFilter(deleted, staleFilter)),

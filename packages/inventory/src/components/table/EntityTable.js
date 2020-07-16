@@ -55,6 +55,8 @@ const EntityTable = ({
         history.push(`/${key}`);
     };
 
+    const { RowWrapper: tableRowWrapper, ...additionalTableProps } = tableProps;
+
     return (
         <React.Fragment>
             { loaded && cells ?
@@ -97,7 +99,7 @@ const EntityTable = ({
                         ...expandable ? { onCollapse: onExpandClick } : {},
                         ...actions && rows?.length > 0 && { actions }
                     } }
-                    { ...tableProps }
+                    { ...additionalTableProps }
                 >
                     <TableHeader />
                     <TableBody />
