@@ -14,41 +14,41 @@
 }
 
 .ins-c-label-4 {
-    background-color: var(--ins-c-label--red-bg);
+    background-color: var(--ins-c-label--red-bg) !important;
     .pf-c-label__content {
-        color: var(--inc-c-label--content-red);
+        color: var(--inc-c-label--content-red) !important;
         .pf-c-label__icon {
-            color: var(--inc-c-label--icon-red);
+            color: var(--inc-c-label--icon-red) !important;
         }
     }
 }
 
 .ins-c-label-3 {
-    background-color: var(--ins-c-label--orange-bg);
+    background-color: var(--ins-c-label--orange-bg) !important;
     .pf-c-label__content {
-        color: var(--inc-c-label--content-orange);
+        color: var(--inc-c-label--content-orange) !important;
         .pf-c-label__icon {
-            color: var(--inc-c-label--icon-orange);
+            color: var(--inc-c-label--icon-orange) !important;
         }
     }
 }
 
 .ins-c-label-2 {
-    background-color: var(--ins-c-label--gold-bg);
+    background-color: var(--ins-c-label--gold-bg) !important;
     .pf-c-label__content {
-        color: var(--inc-c-label--content-gold);
+        color: var(--inc-c-label--content-gold) !important;
         .pf-c-label__icon {
-            color: var(--inc-c-label--icon-gold);
+            color: var(--inc-c-label--icon-gold) !important;
         }
     }
 }
 
 .ins-c-label-1 {
-    background-color: var(--ins-c-label--blue-bg);
+    background-color: var(--ins-c-label--blue-bg) !important;
     .pf-c-label__content {
-        color: var(--inc-c-label--content-blue);
+        color: var(--inc-c-label--content-blue) !important;
         .pf-c-label__icon {
-            color: var(--inc-c-label--icon-blue);
+            color: var(--inc-c-label--icon-blue) !important;
         }
     }
 }
