@@ -22,6 +22,10 @@
 
     .pf-l-split__item {
         .pf-c-select__menu-group {
+            .pf-c-select__menu-group-title:empty {
+                display: none;
+            }
+
             .pf-c-select__menu-group-title {
                 display: none;
             }
