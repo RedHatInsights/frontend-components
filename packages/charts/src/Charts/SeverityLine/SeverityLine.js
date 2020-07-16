@@ -1,5 +1,3 @@
-import './severity-line.scss';
-
 import React, { useMemo } from 'react';
 
 import PropTypes from 'prop-types';
