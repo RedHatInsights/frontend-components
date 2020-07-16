@@ -8,7 +8,6 @@
 @import '~@redhat-cloud-services/frontend-components/components/TagModal.css';
 @import '~@redhat-cloud-services/frontend-components/components/CullingInfo.css';
 
-
 .ins-c-inventory__table--toolbar {
     &.ins-m-footer {
         margin: 0;
@@ -39,6 +38,9 @@
         display: flex;
         width: 100%;
 
+        .ins-c-inventory__tags-filter--tag-name {
+            margin-right: var(--pf-global--spacer--xs);
+        }
         .pf-c-badge { margin-left: auto; }
     }
 

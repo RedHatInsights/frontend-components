@@ -60,16 +60,13 @@ export const useTagsFilter = (
                 }
             },
             selected: selectedTags,
+            ...additionalTagsCount && {
+                onShowMore: (...props) => onShowMoreClick && onShowMoreClick(...props),
+                showMoreTitle: `${state.additionalTagsCount} more tags available`
+            },
             ...loaded && allTags.length > 0 ? {
                 groups: [
-                    ...constructGroups(state.allTags),
-                    ...additionalTagsCount > 0 ? [{
-                        items: [{
-                            label: `${state.additionalTagsCount} more tags available`,
-                            onClick: (...props) => onShowMoreClick && onShowMoreClick(...props),
-                            className: 'ins-c-inventory__tags-more-items'
-                        }]
-                    }] : []
+                    ...constructGroups(state.allTags)
                 ]
             } : {
                 items: [

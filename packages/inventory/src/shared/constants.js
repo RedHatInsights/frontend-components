@@ -1,6 +1,5 @@
 import React, { createContext } from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
-import { CancelToken } from 'axios';
 import { loadEntities } from '../redux/actions';
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
@@ -18,8 +17,6 @@ export const defaultFilters = {
     staleFilter: [ 'fresh', 'stale' ],
     registeredWithFilter: [ 'insights' ]
 };
-
-let controller;
 
 export function constructValues(groupValue) {
     return Object.entries(groupValue).map(([ key, { isSelected, group, item }]) => {
@@ -75,7 +72,7 @@ export function constructGroups(allTags) {
         type: 'checkbox',
         items: tags.map(({ count, tag: { key: tagKey, value } }) => ({
             label: <React.Fragment>
-                <div>{tagKey}={value}</div>
+                <div className="ins-c-inventory__tags-filter--tag-name">{tagKey}={value}</div>
                 <Tooltip
                     position="right"
                     enableFlip

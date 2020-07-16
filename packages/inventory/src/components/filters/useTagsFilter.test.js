@@ -146,9 +146,7 @@ describe('useTagsFilter', () => {
     it('should call show more', () => {
         const showMore = jest.fn();
         const hookAccessor = ([ filter ]) => {
-            if (filter.filterValues.groups[1]) {
-                filter.filterValues.groups[1].items[0].onClick();
-            }
+            filter.filterValues.onShowMore();
         };
 
         mount(<HookRender hookAccessor={hookAccessor} onShowMoreClick={showMore} additionalTagsCount={10} />);
