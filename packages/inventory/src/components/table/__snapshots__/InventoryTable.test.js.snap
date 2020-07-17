@@ -114,9 +114,9 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
       ]
     }
     page={5}
-    perPage={20}
+    perPage={50}
     showTags={false}
-    total={200}
+    total={1}
   />
   <ForwardRef
     hasItems={true}
@@ -128,7 +128,7 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
       ]
     }
     page={5}
-    perPage={20}
+    perPage={50}
     sortBy={
       Object {
         "direction": "asc",
@@ -157,7 +157,7 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
       }
       loadEntities={[Function]}
       page={5}
-      perPage={20}
+      perPage={50}
       sortBy={
         Object {
           "direction": "asc",
@@ -205,7 +205,7 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
       ]
     }
     page={5}
-    perPage={20}
+    perPage={50}
     showTags={false}
     total={1}
   />
@@ -219,7 +219,7 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
       ]
     }
     page={5}
-    perPage={20}
+    perPage={50}
     sortBy={
       Object {
         "direction": "asc",
@@ -248,7 +248,7 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
       }
       loadEntities={[Function]}
       page={5}
-      perPage={20}
+      perPage={50}
       sortBy={
         Object {
           "direction": "asc",

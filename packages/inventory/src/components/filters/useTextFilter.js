@@ -10,11 +10,9 @@ export const textFilterReducer = (_state, { type, payload }) => ({
 });
 
 export const useTextFilter = ([ state, dispatch ] = [ textFilterState ]) => {
-    let [ value, setValue ] = useState('');
-    if (dispatch) {
-        value = state.textFilter;
-        setValue = (newValue) => dispatch({ type: TEXT_FILTER, payload: newValue });
-    }
+    const [ stateValue, setStateValue ] = useState('');
+    const value = dispatch ? state.textFilter : stateValue;
+    const setValue = dispatch ? (newValue) => dispatch({ type: TEXT_FILTER, payload: newValue }) : setStateValue;
 
     const filter = {
         label: 'Name',

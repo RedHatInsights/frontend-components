@@ -10,6 +10,7 @@ import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-componen
  * @param {*} props `componentsMapper` if you want to pass different components list.
  */
 const AppInfo = ({ componentsMapper }) => {
+    const store = useStore();
     const loaded = useSelector(({ entityDetails: { loaded } }) => loaded);
     const activeApp = useSelector(({ entityDetails: { activeApps, activeApp, loaded } }) => {
         if (loaded) {
@@ -22,7 +23,7 @@ const AppInfo = ({ componentsMapper }) => {
             {
                 loaded ? activeApp && (
                     <div className={ `ins-active-app-${activeApp?.name}` }>
-                        { Cmp ? <Cmp store={useStore()} /> : 'missing component'}
+                        { Cmp ? <Cmp store={store} /> : 'missing component'}
                     </div>
                 ) : <Skeleton size={ SkeletonSize.md } />
             }

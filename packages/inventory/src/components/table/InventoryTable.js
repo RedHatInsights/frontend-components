@@ -1,5 +1,5 @@
 import React, { Fragment, forwardRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/esm/TableToolbar';
 import InventoryList from './InventoryList';
@@ -17,29 +17,32 @@ const InventoryTable = forwardRef(({
     children,
     inventoryRef,
     items,
-    total,
-    page,
-    perPage,
+    total: propsTotal,
+    page: propsPage,
+    perPage: propsPerPage,
     filters,
     showTags,
     sortBy: propsSortBy,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
-    let pagination = {
-        page: useSelector(({ entities: { page: invPage } }) => (
-            (hasItems && page) || invPage || 1)
-        ),
-        perPage: useSelector(({ entities: { perPage: invPerPage } }) => (
-            (hasItems && perPage) || invPerPage || 50)
-        ),
-        total: useSelector(({ entities: { total: invTotal } }) => (
-            (hasItems && (total || items?.length)) || invTotal)
-        )
+    const page = useSelector(({ entities: { page: invPage } }) => (
+        (hasItems && propsPage) || invPage || 1)
+    , shallowEqual);
+    const perPage = useSelector(({ entities: { perPage: invPerPage } }) => (
+        (hasItems && perPage) || invPerPage || 50)
+    , shallowEqual);
+    const total = useSelector(({ entities: { total: invTotal } }) => (
+        (hasItems && (total || items?.length)) || invTotal)
+    , shallowEqual);
+    const pagination = {
+        page,
+        perPage,
+        total
     };
     const sortBy = useSelector(({ entities: { sortBy: invSortBy } }) => (
         (hasItems && propsSortBy) || invSortBy
-    ));
+    ), shallowEqual);
 
     return (
         <Fragment>

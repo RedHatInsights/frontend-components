@@ -4,7 +4,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
 <table
   aria-label="Host inventory"
   class="pf-c-table pf-m-grid-md pf-m-compact ins-c-entity-table"
-  data-ouia-component-id="32"
+  data-ouia-component-id="48"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -70,7 +70,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="33"
+      data-ouia-component-id="49"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -286,7 +286,7 @@ exports[`EntityTable DOM should render correctly - no rows 1`] = `
 <table
   aria-label="Host inventory"
   class="pf-c-table pf-m-grid-md ins-c-entity-table"
-  data-ouia-component-id="16"
+  data-ouia-component-id="32"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -310,7 +310,7 @@ exports[`EntityTable DOM should render correctly - no rows 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="17"
+      data-ouia-component-id="33"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -487,7 +487,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
 <table
   aria-label="Host inventory"
   class="pf-c-table pf-m-grid-md ins-c-entity-table"
-  data-ouia-component-id="50"
+  data-ouia-component-id="66"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -553,7 +553,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="51"
+      data-ouia-component-id="67"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >

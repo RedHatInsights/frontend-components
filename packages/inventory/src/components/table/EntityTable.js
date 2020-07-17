@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { selectEntity, setSort } from '../../redux/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
     Table as PfTable,
@@ -38,9 +38,14 @@ const EntityTable = ({
     const history = useHistory();
     const loaded = useSelector(({ entities: { loaded } }) => (
         hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded
-    ));
+    ), shallowEqual);
     const rows = useSelector(({ entities: { rows } }) => rows);
-    const columns = useSelector(({ entities: { columns } }) => columns);
+    const columns = useSelector(
+        ({ entities: { columns } }) => columns,
+        (next, prev) => next.some(
+            ({ key }, index) => prev.findIndex(({ key: prevKey }) => prevKey === key) === index
+        )
+    );
 
     const onItemSelect = (_event, checked, rowId) => {
         const row = isExpandable ? rows[rowId / 2] : rows[rowId];
