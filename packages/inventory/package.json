@@ -3,7 +3,6 @@
     "version": "2.1.3",
     "description": "Inventory components for RedHat Cloud Services project.",
     "browser": "index.js",
-    "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
@@ -34,9 +33,9 @@
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
-        "@redhat-cloud-services/frontend-components-utilities": "*",
-        "@redhat-cloud-services/host-inventory-client": "1.0.61",
         "@redhat-cloud-services/frontend-components-notifications": "*",
+        "@redhat-cloud-services/frontend-components-utilities": "*",
+        "@redhat-cloud-services/host-inventory-client": "1.0.66",
         "axios": "^0.19.0"
     }
 }
