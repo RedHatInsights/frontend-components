@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InventoryList should render correctly 1`] = `
+<div
+  class="pf-l-grid ins-inventory-list"
+  guttter="sm"
+>
+  <div
+    class="pf-l-grid__item pf-m-12-col"
+  >
+    <table
+      aria-label="Host inventory"
+      class="pf-c-table pf-m-grid-md ins-c-entity-table"
+      data-ouia-component-id="0"
+      data-ouia-component-type="PF4/Table"
+      data-ouia-safe="true"
+      role="grid"
+    >
+      <thead
+        class=""
+      >
+        <tr>
+          <th
+            class=""
+            data-key="0"
+            data-label="One"
+            scope="col"
+          >
+            One
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+          data-ouia-component-id="1"
+          data-ouia-component-type="PF4/TableRow"
+          data-ouia-safe="true"
+        >
+          <td
+            class=""
+            colspan="1"
+            data-key="0"
+            data-label="One"
+          >
+            <div
+              class="ins-c-table__empty"
+            >
+               
+              <div
+                class="pf-l-bullseye"
+              >
+                <div
+                  class="pf-c-empty-state"
+                >
+                  <div
+                    class="pf-c-empty-state__content"
+                  >
+                    <h5
+                      class="pf-c-title pf-m-lg"
+                    >
+                      No matching systems found
+                    </h5>
+                    <div
+                      class="pf-c-empty-state__body"
+                    >
+                      This filter criteria matches no systems. 
+                      <br />
+                       Try changing your filter settings.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

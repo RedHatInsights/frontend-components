@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
-
+import { loadEntities } from '../redux/actions';
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
 export const TAG_CHIP = 'tags';
 export const STALE_CHIP = 'staleness';
 export const REGISTERED_CHIP = 'registered_with';
+export const staleness = [
+    { label: 'Fresh', value: 'fresh' },
+    { label: 'Stale', value: 'stale' },
+    { label: 'Stale warning', value: 'stale_warning' }
+];
+export const registered = [{ label: 'Insights', value: 'insights' }];
+export const InventoryContext = createContext({});
+export const defaultFilters = {
+    staleFilter: [ 'fresh', 'stale' ],
+    registeredWithFilter: [ 'insights' ]
+};
 
 export function constructValues(groupValue) {
     return Object.entries(groupValue).map(([ key, { isSelected, group, item }]) => {
@@ -61,7 +72,7 @@ export function constructGroups(allTags) {
         type: 'checkbox',
         items: tags.map(({ count, tag: { key: tagKey, value } }) => ({
             label: <React.Fragment>
-                <div>{tagKey}={value}</div>
+                <div className="ins-c-inventory__tags-filter--tag-name">{tagKey}={value}</div>
                 <Tooltip
                     position="right"
                     enableFlip
@@ -97,11 +108,6 @@ export const arrayToSelection = (selected) => selected.reduce((acc, { cells: [ k
     }
 }), {});
 
-export const defaultFilters = {
-    staleFilter: [ 'fresh', 'stale' ],
-    registeredWithFilter: [ 'insights' ]
-};
-
 export function reduceFilters(filters) {
     return filters.reduce((acc, oneFilter) => {
         if (oneFilter.value === TEXT_FILTER) {
@@ -131,65 +137,36 @@ export function reduceFilters(filters) {
     });
 }
 
-export const mergeTableProps = (stateProps, dispatchProps, ownProps) => ({
-    ...dispatchProps,
-    ...ownProps,
-    ...stateProps,
-    ...ownProps.onRefresh && {
-        onRefresh: (...props) => {
-            dispatchProps.onRefresh(...props);
-            ownProps.onRefresh(...props);
-        }
-    }
-});
+export const loadSystems = (options, showTags) => {
+    // eslint-disable-next-line camelcase
+    const currPerPage = options?.perPage || options?.per_page;
 
-export const tagsFilterBuilder = (onFilter, filterBy, onChange, selected, loaded, tags, items = [], loader) => ({
-    label: 'Tags',
-    value: 'tags',
-    type: 'group',
-    placeholder: 'Filter system by tag',
-    filterValues: {
-        className: 'ins-c-inventory__tags-filter',
-        onFilter,
-        filterBy,
-        onChange: (_e, newSelection, group, item, groupKey, itemKey) => {
-            if (item.meta) {
-                const isSelected = newSelection[groupKey][itemKey];
-                newSelection[groupKey][itemKey] = {
-                    isSelected,
-                    group,
-                    item
-                };
-                onChange(newSelection);
-            }
+    const limitedItems = options?.items?.slice(
+        (options?.page - 1) * currPerPage, options?.page * currPerPage
+    );
+    const config = {
+        ...options.hasItems && {
+            sortBy: options?.sortBy?.key,
+            orderDirection: options?.sortBy?.direction?.toUpperCase()
         },
-        selected,
-        ...loaded && tags.length > 0 ? {
-            groups: [
-                ...constructGroups(tags),
-                ...items
-            ]
-        } : {
-            label: '',
-            items: [
-                {
-                    label: !loaded ?
-                        loader :
-                        <div className="ins-c-inventory__tags-no-tags"> No tags available </div>,
-                    isDisabled: true,
-                    className: 'ins-c-inventory__tags-tail'
-                }
-            ]
+        // eslint-disable-next-line camelcase
+        per_page: currPerPage,
+        filters: options.activeFilters,
+        ...options,
+        ...limitedItems?.length > 0 && {
+            itemsPage: options?.page,
+            page: 1
         }
-    }
-});
+    };
 
-export const staleness = [
-    { label: 'Fresh', value: 'fresh' },
-    { label: 'Stale', value: 'stale' },
-    { label: 'Stale warning', value: 'stale_warning' }
-];
+    return loadEntities(limitedItems, config, { showTags });
+};
 
-export const registered = [
-    { label: 'Insights', value: 'insights' }
-];
+export const reloadWrapper = (event, callback) => {
+    event.payload.then(data => {
+        callback();
+        return data;
+    });
+
+    return event;
+};

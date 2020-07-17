@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TitleColumn should render correctly no detail with data 1`] = `
+<Cmp>
+  <div
+    className="ins-composed-col"
+  >
+    <div>
+      os_release
+    </div>
+    <div>
+      something
+    </div>
+  </div>
+</Cmp>
+`;
+
+exports[`TitleColumn should render correctly with NO data 1`] = `
+<Cmp>
+  <div
+    className="ins-composed-col"
+  >
+    <div />
+    <div>
+      <a
+        href="/undefined"
+        onClick={[Function]}
+        widget="col"
+      />
+    </div>
+  </div>
+</Cmp>
+`;
+
+exports[`TitleColumn should render correctly with data 1`] = `
+<Cmp>
+  <div
+    className="ins-composed-col"
+  >
+    <div>
+      os_release
+    </div>
+    <div>
+      <a
+        href="/some-id"
+        onClick={[Function]}
+        widget="col"
+      >
+        something
+      </a>
+    </div>
+  </div>
+</Cmp>
+`;

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleTagModal, fetchAllTags, loadTags } from './redux/actions';
+import { toggleTagModal, fetchAllTags, loadTags } from '../redux/actions';
 import { TagModal } from '@redhat-cloud-services/frontend-components/components/esm/TagModal';
 import debounce from 'lodash/debounce';
+import flatten from 'lodash/flatten';
 
 class TagsModal extends React.Component {
     state = {
@@ -15,9 +16,9 @@ class TagsModal extends React.Component {
 
     fetchTags = (pagination) => {
         const { filterTagsBy } = this.state;
-        const { fetchAllTags, fetchTagsForSystem, activeSystemTag, tagsCount } = this.props;
+        const { fetchAllTags, fetchTagsForSystem, activeSystemTag, tagsCount, filters } = this.props;
         if (!activeSystemTag) {
-            fetchAllTags(filterTagsBy, { pagination });
+            fetchAllTags(filterTagsBy, { pagination, filters });
         } else {
             fetchTagsForSystem(activeSystemTag.id, filterTagsBy, { pagination }, tagsCount);
         }
@@ -99,6 +100,7 @@ class TagsModal extends React.Component {
 TagsModal.propTypes = {
     showTagDialog: PropTypes.bool,
     tags: PropTypes.arrayOf(PropTypes.shape({
+        key: PropTypes.node,
         value: PropTypes.node,
         namespace: PropTypes.node
     })),
@@ -121,22 +123,21 @@ TagsModal.propTypes = {
 TagsModal.defaultProps = {
     showTagDialog: false,
     loaded: false,
-    tagsCount: 0,
-    onToggleTagModal: () => undefined,
-    fetchAllTags: () => undefined
+    tagsCount: 0
 };
 
 export default connect(({ entities, entityDetails }) => {
-    const { showTagDialog, activeSystemTag, additionalTagsCount, allTags, allTagsPagination, allTagsLoaded } = entities || entityDetails || {};
+    const { showTagDialog, activeFilters, activeSystemTag, allTagsTotal, allTags, allTagsPagination, allTagsLoaded } = entities || entityDetails || {};
     return ({
         showTagDialog,
         tags: activeSystemTag ? activeSystemTag.tags : allTags && allTags.reduce((acc, { tags }) => ([
             ...acc,
-            ...tags.map(({ tag }) => tag).flat()
+            ...flatten(tags.map(({ tag }) => tag))
         ]), []),
+        filters: activeFilters,
         activeSystemTag,
         loaded: activeSystemTag ? activeSystemTag.tagsLoaded : allTagsLoaded,
-        tagsCount: activeSystemTag ? activeSystemTag.tagsCount : additionalTagsCount,
+        tagsCount: activeSystemTag ? activeSystemTag.tagsCount : allTagsTotal,
         pagination: activeSystemTag ? {
             page: activeSystemTag.page,
             perPage: activeSystemTag.perPage
