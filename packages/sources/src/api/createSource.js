@@ -2,6 +2,7 @@ import { handleError } from './handleError';
 
 import { getSourcesApi } from './index';
 import { patchSource } from './costManagementAuthentication';
+import { checkAppAvailability } from './getApplicationStatus';
 
 export const parseUrl = url => {
     if (!url) {
@@ -27,7 +28,7 @@ export const urlOrHost = formData => formData.url ? parseUrl(formData.url) : for
 
 export const handleErrorWrapper = (sourceId) => async(error) => await handleError(error, sourceId);
 
-export const doCreateSource = async (formData, sourceTypes) => {
+export const doCreateSource = async (formData, sourceTypes, timetoutedApps) => {
     let sourceDataOut;
 
     try {
@@ -68,7 +69,7 @@ export const doCreateSource = async (formData, sourceTypes) => {
             promises.push(Promise.resolve(undefined));
         }
 
-        const [ endpointDataOut, applicationDataOut ] = await Promise.all(promises);
+        let [ endpointDataOut, applicationDataOut ] = await Promise.all(promises);
 
         let authenticationDataOut;
 
@@ -106,6 +107,11 @@ export const doCreateSource = async (formData, sourceTypes) => {
         }
 
         await Promise.all(promisesSecondRound);
+
+        if (applicationDataOut) {
+            const timeout = timetoutedApps.includes(applicationDataOut.application_type_id) ? 10000 : 0;
+            applicationDataOut = await checkAppAvailability(applicationDataOut.id, timeout);
+        }
 
         return {
             ...sourceDataOut,

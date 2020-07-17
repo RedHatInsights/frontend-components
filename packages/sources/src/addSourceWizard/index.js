@@ -11,6 +11,8 @@ import { doCreateSource } from '../api/createSource';
 import { WIZARD_TITLE } from '../utilities/stringConstants';
 import CloseModal from './CloseModal';
 
+import { timeoutedApps } from '../api/constants';
+
 const prepareInitialValues = (initialValues) => ({
     isSubmitted: false,
     isFinished: false,
@@ -21,15 +23,19 @@ const prepareInitialValues = (initialValues) => ({
     error: undefined
 });
 
-const reducer = (state, { type, values, data, error, initialValues }) => {
+const reducer = (state, { type, values, data, error, initialValues, sourceTypes }) => {
     switch (type) {
         case 'reset':
             return prepareInitialValues(initialValues);
         case 'prepareSubmitState':
             return {
                 ...state,
+                isFinished: false,
+                isErrored: false,
+                error: undefined,
                 isSubmitted: true,
-                values
+                values,
+                sourceTypes
             };
         case 'setSubmitted':
             return { ...state, isFinished: true, createdSource: data };
@@ -62,14 +68,14 @@ const AddSourceWizard = ({
     afterSuccess
 }) => {
     const [
-        { isErrored, isFinished, isSubmitted, values, error, isCancelling, createdSource },
+        { isErrored, isFinished, isSubmitted, values, error, isCancelling, createdSource, ...state },
         dispatch
     ] = useReducer(reducer, prepareInitialValues(initialValues));
 
     const onSubmit = (formValues, sourceTypes) => {
-        dispatch({ type: 'prepareSubmitState', values: formValues });
+        dispatch({ type: 'prepareSubmitState', values: formValues, sourceTypes });
 
-        return doCreateSource(formValues, sourceTypes).then((data) => {
+        return doCreateSource(formValues, sourceTypes, timeoutedApps(applicationTypes)).then((data) => {
             afterSuccess && afterSuccess(data);
             dispatch({ type: 'setSubmitted', data });
         })
@@ -124,6 +130,8 @@ const AddSourceWizard = ({
         returnButtonTitle={ returnButtonTitle }
         errorMessage={ error }
         reset={ () => dispatch({ type: 'reset', initialValues })}
+        createdSource={createdSource}
+        tryAgain={() => onSubmit(values, state.sourceTypes)}
     />;
 };
 
@@ -155,7 +163,7 @@ AddSourceWizard.propTypes = {
 };
 
 AddSourceWizard.defaultProps = {
-    successfulMessage: <FormattedMessage id="wizard.successfulMessage" defaultMessage="Your source has been successfully added." />,
+    successfulMessage: <FormattedMessage id="wizard.successfulMessage" defaultMessage="Your source was successfully added." />,
     initialValues: {},
     returnButtonTitle: <FormattedMessage id="wizard.goBackToSources" defaultMessage="Go back to Sources" />
 };

@@ -12,34 +12,28 @@ import {
     EmptyStateVariant,
     Bullseye
 } from '@patternfly/react-core';
-import { CheckCircleIcon } from '@patternfly/react-icons';
+import { WrenchIcon } from '@patternfly/react-icons';
 
-const FinishedStep = ({
+const TimeoutStep = ({
     onClose,
-    successfulMessage,
-    hideSourcesButton,
     returnButtonTitle,
     title,
-    linkText,
     secondaryActions
 }) => (
     <Bullseye>
         <EmptyState variant={ EmptyStateVariant.full } className="pf-u-mt-4xl" >
-            <EmptyStateIcon icon={ CheckCircleIcon } color="var(--pf-global--success-color--100)" className="pf-u-mb-0"/>
+            <EmptyStateIcon icon={ WrenchIcon } color="var(--pf-global--Color--200)" className="pf-u-mb-0"/>
             <Title headingLevel="h2" size="xl" className="pf-u-mt-xl">
                 {title}
             </Title>
-            <EmptyStateBody className="ins-c-sources__wizard--step-text">
-                { successfulMessage }
+            <EmptyStateBody>
+                <FormattedMessage
+                    id="wizard.uncompleteConfigurationDescription"
+                    defaultMessage="We are still working to confirm credentials and app settings.{newLine}To track progress, check the Status column in the Sources table."
+                    values={{ newLine: <br /> }}
+                />
             </EmptyStateBody>
             <Button variant="primary" onClick={ onClose } className="pf-u-mt-xl">{returnButtonTitle}</Button>
-            { !hideSourcesButton && (
-                <EmptyStateSecondaryActions>
-                    <a href='/hybrid/settings/sources'>
-                        <Button variant="link">{linkText}</Button>
-                    </a>
-                </EmptyStateSecondaryActions>
-            ) }
             {secondaryActions && (
                 <EmptyStateSecondaryActions>
                     {secondaryActions}
@@ -49,19 +43,15 @@ const FinishedStep = ({
     </Bullseye>
 );
 
-FinishedStep.propTypes = {
+TimeoutStep.propTypes = {
     onClose: PropTypes.func.isRequired,
-    successfulMessage: PropTypes.node.isRequired,
-    hideSourcesButton: PropTypes.bool,
     returnButtonTitle: PropTypes.node.isRequired,
     title: PropTypes.node,
-    linkText: PropTypes.node,
     secondaryActions: PropTypes.node
 };
 
-FinishedStep.defaultProps = {
-    title: <FormattedMessage id="wizard.succConfiguration" defaultMessage="Configuration successful"/>,
-    linkText: <FormattedMessage id="wizard.toSources" defaultMessage="Take me to sources"/>
+TimeoutStep.defaultProps = {
+    title: <FormattedMessage id="wizard.uncompleteConfigurationTitle" defaultMessage="Configuration not yet complete"/>
 };
 
-export default FinishedStep;
+export default TimeoutStep;
