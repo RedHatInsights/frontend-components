@@ -12,7 +12,7 @@ import classNames from 'classnames';
 const VALUE_TO_STATE = {
     1: { icon: <AngleDoubleDownIcon/>, text: 'Low' },
     2: { icon: <EqualsIcon/>, text: 'Moderate' },
-    3: { icon: <AngleDoubleUpIcon/>, text: 'High' },
+    3: { icon: <AngleDoubleUpIcon/>, text: 'Important' },
     4: { icon: <CriticalIcon/>, text: 'Critical' }
 };
 
