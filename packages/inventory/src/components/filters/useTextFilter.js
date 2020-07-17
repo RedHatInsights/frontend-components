@@ -10,13 +10,10 @@ export const textFilterReducer = (_state, { type, payload }) => ({
 });
 
 export const useTextFilter = ([ state, dispatch ] = [ textFilterState ]) => {
-    let value;
-    let setValue;
+    let [ value, setValue ] = useState('');
     if (dispatch) {
         value = state.textFilter;
         setValue = (newValue) => dispatch({ type: TEXT_FILTER, payload: newValue });
-    } else {
-        [ value, setValue ] = useState('');
     }
 
     const filter = {

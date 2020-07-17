@@ -29,13 +29,10 @@ export const useTagsFilter = (
             additionalTagsCount
         }));
     }, [ loaded ]);
-    let selectedTags;
-    let setValue;
+    let [ selectedTags, setValue ] = useState({});
     if (dispatch) {
         selectedTags = globalState.tagsFilter;
         setValue = (newValue) => dispatch({ type: TAGS_FILTER, payload: newValue });
-    } else {
-        [ selectedTags, setValue ] = useState({});
     }
 
     const [ filterTagsBy, seFilterTagsBy ] = useState('');

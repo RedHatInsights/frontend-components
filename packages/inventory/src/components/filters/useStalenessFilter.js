@@ -10,13 +10,10 @@ export const stalenessFilterReducer = (_state, { type, payload }) => ({
 });
 
 export const useStalenessFilter = ([ state, dispatch ] = [ stalenessFilterState ]) => {
-    let stalenessValue;
-    let setValue;
+    let [ stalenessValue, setValue ] = useState([]);
     if (dispatch) {
         stalenessValue = state.stalenessFilter;
         setValue = (newValue) => dispatch({ type: STALENESS_FILTER, payload: newValue });
-    } else {
-        [ stalenessValue, setValue ] = useState([]);
     }
 
     const filter = {

@@ -10,13 +10,10 @@ export const registeredWithFilterReducer = (_state, { type, payload }) => ({
 });
 
 export const useRegisteredWithFilter = ([ state, dispatch ] = [ registeredWithFilterState ]) => {
-    let registeredWithValue;
-    let setValue;
+    let [ registeredWithValue, setValue ] = useState([]);
     if (dispatch) {
         registeredWithValue = state.registeredWithFilter;
         setValue = (newValue) => dispatch({ type: REGISTERED_WITH_FILTER, payload: newValue });
-    } else {
-        [ registeredWithValue, setValue ] = useState([]);
     }
 
     const filter = {
