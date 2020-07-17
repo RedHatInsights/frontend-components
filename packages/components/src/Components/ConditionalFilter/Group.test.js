@@ -59,6 +59,34 @@ describe('Group - component', () => {
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
+        describe('show more', () => {
+            it('should render correctly with items and default text', () => {
+                const wrapper = shallow(<Group {...config} onShowMore={() => undefined} />);
+                expect(toJson(wrapper)).toMatchSnapshot();
+            });
+
+            it('should render correctly with items and custom text', () => {
+                const wrapper = shallow(<Group {...config} onShowMore={() => undefined} showMoreTitle="some title" />);
+                expect(toJson(wrapper)).toMatchSnapshot();
+            });
+
+            it('should render correctly with items and different variant', () => {
+                const wrapper = shallow(<Group {...config} onShowMore={() => undefined} showMoreOptions={{
+                    variant: 'default'
+                }} />);
+                expect(toJson(wrapper)).toMatchSnapshot();
+            });
+
+            it('should render correctly with items and custom props', () => {
+                const wrapper = shallow(<Group {...config} onShowMore={() => undefined} showMoreOptions={{
+                    props: {
+                        className: 'some-test-class'
+                    }
+                }} />);
+                expect(toJson(wrapper)).toMatchSnapshot();
+            });
+        });
+
         it('should render correctly with items - isDisabled', () => {
             const wrapper = shallow(<Group {...config} isDisabled />);
             expect(toJson(wrapper)).toMatchSnapshot();

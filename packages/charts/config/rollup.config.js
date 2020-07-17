@@ -48,7 +48,7 @@ const plugins = [
     }),
     postcss({
         minimize: true,
-        extract: true
+        extract: false
     }),
     json()
 ];

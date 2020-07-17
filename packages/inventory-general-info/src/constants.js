@@ -3,6 +3,10 @@ export const prepareRows = (rows = [], pagination = {}) => (
     .slice((pagination.page - 1) * pagination.perPage, pagination.page * pagination.perPage)
 );
 
+export const isDate = (date) => {
+    return !(isNaN(date) && isNaN(Date.parse(date)));
+};
+
 export const filterRows = (rows = [], activeFilters = {}) => (
     rows
     .filter(row => (
