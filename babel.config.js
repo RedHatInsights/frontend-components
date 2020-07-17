@@ -111,8 +111,5 @@ module.exports = {
             'frontend-components'
         ]
 
-    ],
-    ignore: [
-        'node_modules'
     ]
 };

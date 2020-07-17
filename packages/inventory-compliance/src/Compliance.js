@@ -72,9 +72,9 @@ class SystemDetails extends Component {
         client && client.clearStore && client.clearStore();
     }
 
-    renderError = (error) => {
+    renderError = (error, system) => {
         const errorMsg = `Oops! Error loading System data: ${error}`;
-        return (error.networkError && error.networkError.statusCode === 404) ?
+        return !system || (error.networkError && error.networkError.statusCode === 404) ?
             <ComplianceEmptyState title='No policies are reporting for this system' /> :
             <ErrorCard message={errorMsg} />;
     }
@@ -86,8 +86,8 @@ class SystemDetails extends Component {
             <ApolloProvider client={ client }>
                 <Query query={ QUERY } variables={ { systemId: inventoryId } }>
                     { ({ data, error, loading }) => (
-                        error ?
-                            this.renderError(error) :
+                        error || !data?.system ?
+                            this.renderError(error, data?.system) :
                             <SystemQuery hidePassed={ hidePassed } data={ data } error={ error } loading={ loading } />
                     ) }
                 </Query>

@@ -4,32 +4,37 @@ import {
     CHANGE_SORT,
     FILTER_ENTITIES,
     APPLICATION_SELECTED,
-    SHOW_ENTITIES,
     FILTER_SELECT,
     UPDATE_ENTITIES,
     ENTITIES_LOADING,
     CLEAR_FILTERS,
-    TOGGLE_TAG_MODAL
+    TOGGLE_TAG_MODAL,
+    CONFIG_CHANGED
 } from './action-types';
 import { getEntities, getEntitySystemProfile, hosts, getAllTags, getTags } from '../api';
 
-export const loadEntities = (items = [], config, { showTags } = {}) => ({
-    type: ACTION_TYPES.LOAD_ENTITIES,
-    payload: getEntities(items, config, showTags).then(results => ({
-        ...results,
-        page: config.itemsPage || (results && results.page)
-    })),
-    meta: {
-        showTags
-    }
-});
-
-export const showEntities = (items = []) => ({
-    type: SHOW_ENTITIES,
-    payload: {
-        results: items
-    }
-});
+export const loadEntities = (items = [], config, { showTags } = {}) => {
+    const itemIds = items.reduce((acc, curr) => (
+        [
+            ...acc,
+            curr && typeof curr === 'string' ? curr : curr.id
+        ]
+    ), []).filter(Boolean);
+    return {
+        type: ACTION_TYPES.LOAD_ENTITIES,
+        payload: getEntities(itemIds, config, showTags).then(({ results, ...data }) => ({
+            ...data,
+            results: items.length > 0 ? items.map((item) => ({
+                ...item.id ? item : { id: item },
+                ...results.find(({ id }) => id === item || id === item.id) || {}
+            })) : results,
+            page: config.itemsPage || (data && data.page)
+        })),
+        meta: {
+            showTags
+        }
+    };
+};
 
 export const updateEntities = (items = []) => ({
     type: UPDATE_ENTITIES,
@@ -56,9 +61,9 @@ export const selectEntity = (id, selected) => ({
     payload: { id, selected }
 });
 
-export const setSort = (key, direction) => ({
+export const setSort = (data) => ({
     type: CHANGE_SORT,
-    payload: { key, direction }
+    payload: data
 });
 
 export const filterEntities = (key, filterString) => ({
@@ -148,4 +153,9 @@ export const deleteEntity = (systems, displayName) => ({
         },
         systems
     }
+});
+
+export const configChanged = (config) => ({
+    type: CONFIG_CHANGED,
+    payload: config
 });

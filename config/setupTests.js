@@ -33,5 +33,8 @@ global.window.insights = {
         getUserPermissions: () => new Promise((res) => res([]))
     }
 };
-
+jest.mock('react', () => ({
+    ...jest.requireActual('react'),
+    useLayoutEffect: jest.requireActual('react').useEffect
+}));
 Element.prototype.scrollTo = () => {};

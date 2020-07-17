@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagsModal DOM should render activeSystemTag 1`] = `
+<ContextProvider
+  value={null}
+>
+  <TagsModal
+    activeSystemTag={
+      Object {
+        "page": 1,
+        "perPage": 10,
+        "tags": Array [
+          Object {
+            "key": "some",
+            "namespace": "something",
+            "value": "test",
+          },
+        ],
+        "tagsCount": 50,
+        "tagsLoaded": true,
+      }
+    }
+    fetchAllTags={[Function]}
+    fetchTagsForSystem={[Function]}
+    loaded={true}
+    onToggleTagModal={[Function]}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 10,
+      }
+    }
+    showTagDialog={true}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    tags={
+      Array [
+        Object {
+          "key": "some",
+          "namespace": "something",
+          "value": "test",
+        },
+      ]
+    }
+    tagsCount={50}
+  />
+</ContextProvider>
+`;
+
+exports[`TagsModal DOM should render alltags 1`] = `
+<ContextProvider
+  value={null}
+>
+  <TagsModal
+    fetchAllTags={[Function]}
+    fetchTagsForSystem={[Function]}
+    loaded={true}
+    onToggleTagModal={[Function]}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 10,
+      }
+    }
+    showTagDialog={true}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    tags={
+      Array [
+        Object {
+          "key": "some",
+          "namespace": "something",
+          "value": "test",
+        },
+      ]
+    }
+    tagsCount={50}
+  />
+</ContextProvider>
+`;
+
+exports[`TagsModal DOM should render loading state correctly 1`] = `
+<ContextProvider
+  value={null}
+>
+  <TagsModal
+    fetchAllTags={[Function]}
+    fetchTagsForSystem={[Function]}
+    loaded={false}
+    onToggleTagModal={[Function]}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 10,
+      }
+    }
+    showTagDialog={false}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    tagsCount={0}
+  />
+</ContextProvider>
+`;
