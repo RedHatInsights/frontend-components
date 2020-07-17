@@ -55,7 +55,7 @@ const plugins = [
 export default rollupConfig(
     external(externalDeps(
         { ...dependencies, ...peerDependencies, ...devDependencies },
-        [ '@patternfly', '@redhat-cloud-services',  '@data-driven-forms', 'lodash', 'react-intl' ]
+        [ '@patternfly', '@redhat-cloud-services',  '@data-driven-forms', 'lodash', 'react-intl', 'react-router-dom' ]
     )),
     plugins,
     {
@@ -64,7 +64,8 @@ export default rollupConfig(
         '@data-driven-forms/react-form-renderer': '@data-driven-forms/react-form-renderer',
         '@redhat-cloud-services/frontend-components-utilities': '@redhat-cloud-services/frontend-components-utilities',
         lodash: 'lodash',
-        'react-intl': 'react-intl'
+        'react-intl': 'react-intl',
+        'react-router-dom': 'react-router-dom'
     },
     name,
     [{
