@@ -1,9 +1,25 @@
 const config = require('./src/config');
 const plugins = require('./src/plugins');
+const fs = require('fs');
+
 const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
     branch: true
 });
 const betaBranhces = ['master', 'qa-beta', 'ci-beta', 'prod-beta'];
+
+const getAppEntry = (rootFolder, isProd) => {
+    const jsAppEntry = isProd ? `${rootFolder}/src/entry.js` : `${rootFolder}/src/entry-dev.js`;
+    const tsAppEntry = isProd ? `${rootFolder}/src/entry.tsx` : `${rootFolder}/src/entry-dev.tsx`;
+    if (fs.existsSync(jsAppEntry)) {
+        return jsAppEntry;
+    }
+
+    if (fs.existsSync(tsAppEntry)) {
+        return tsAppEntry;
+    }
+
+    return jsAppEntry;
+};
 
 module.exports = (configurations) => {
     const { insights } = require(`${configurations.rootFolder}/package.json`);
@@ -13,9 +29,7 @@ module.exports = (configurations) => {
         'apps';
 
     const publicPath = `/${appDeployment}/${insights.appname}/`;
-    const appEntry = process.env.NODE_ENV === 'production' ?
-        `${configurations.rootFolder}/src/entry.js` :
-        `${configurations.rootFolder}/src/entry-dev.js`;
+    const appEntry = getAppEntry(configurations.rootFolder, process.env.NODE_ENV === 'production');
 
     /* eslint-disable no-console */
     if (configurations.debug) {
