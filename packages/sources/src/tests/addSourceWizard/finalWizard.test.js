@@ -23,7 +23,6 @@ describe('Final wizard', () => {
         initialProps = {
             afterSubmit: jest.fn(),
             afterError: jest.fn(),
-            onRetry: jest.fn(),
             isFinished: false,
             isErrored: false,
             successfulMessage: 'Message',

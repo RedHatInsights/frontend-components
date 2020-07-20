@@ -41,13 +41,6 @@ const reducer = (state, { type, values, data, error, initialValues, sourceTypes 
             return { ...state, isFinished: true, createdSource: data };
         case 'setErrored':
             return { ...state, isErrored: true, error: error.toString() };
-        case 'onRetry':
-            return {
-                ...state,
-                isErrored: false,
-                isSubmitted: false,
-                error: undefined
-            };
         case 'onStay':
             return { ...state, isCancelling: false };
         case 'showCancelModal':
@@ -124,7 +117,6 @@ const AddSourceWizard = ({
         afterError={ () => onClose({}) }
         isFinished={ isFinished }
         isErrored={ isErrored }
-        onRetry={ () => dispatch({ type: 'onRetry' }) }
         successfulMessage={ successfulMessage }
         hideSourcesButton={ hideSourcesButton }
         returnButtonTitle={ returnButtonTitle }

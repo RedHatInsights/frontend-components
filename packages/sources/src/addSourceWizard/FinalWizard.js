@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Wizard, Button, Text } from '@patternfly/react-core';
+import { Wizard, Button } from '@patternfly/react-core';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import FinishedStep from './steps/FinishedStep';
 import ErroredStep from './steps/ErroredStep';
@@ -17,19 +17,17 @@ const FinalWizard = ({
     afterError,
     isFinished,
     isErrored,
-    onRetry,
     successfulMessage,
     hideSourcesButton,
     returnButtonTitle,
     reset,
     createdSource = {},
     tryAgain
-}) =>{
+}) => {
     const [ isDeletingSource, setIsDeleting ] = useState();
     const [ isAfterDeletion, setDeleted ] = useState();
 
     const intl = useIntl();
-    const { push } = useHistory();
 
     const removeSource = () => {
         setIsDeleting(true);
@@ -62,7 +60,6 @@ const FinalWizard = ({
             />;
         } else if (createdSource.applications[0]?.availability_status === 'unavailable') {
             step = <ErroredStep
-                onRetry={ onRetry }
                 onClose={ afterSubmit }
                 secondaryActions={<Button variant="link" onClick={ removeSource }>
                     {intl.formatMessage({ id: 'wizard.removeSource', defaultMessage: 'Remove source' })}
@@ -122,7 +119,6 @@ const FinalWizard = ({
 FinalWizard.propTypes = {
     afterSubmit: PropTypes.func.isRequired,
     afterError: PropTypes.func.isRequired,
-    onRetry: PropTypes.func.isRequired,
     isFinished: PropTypes.bool.isRequired,
     isErrored: PropTypes.bool.isRequired,
     successfulMessage: PropTypes.node.isRequired,
