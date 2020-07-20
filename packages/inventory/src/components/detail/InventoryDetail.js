@@ -1,4 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 import PropTypes from 'prop-types';
@@ -25,13 +26,14 @@ const InventoryDetail = ({
     onBackToListClick,
     showDelete
 }) => {
+    const { inventoryId } = useParams();
     const dispatch = useDispatch();
     const loaded = useSelector(({ entityDetails: { loaded } }) => loaded);
     const entity = useSelector(({ entityDetails: { entity } }) => entity);
     useEffect(() => {
-        const inventoryId = location.pathname.split('/')[location.pathname.split('/').length - 1];
+        const currId = inventoryId || location.pathname.split('/')[location.pathname.split('/').length - 1];
         if (!entity || entity.id !== inventoryId || !loaded) {
-            dispatch(loadEntity(inventoryId, { hasItems: true }, { showTags }));
+            dispatch(loadEntity(currId, { hasItems: true }, { showTags }));
         }
     }, []);
     return <div className="ins-entity-detail">

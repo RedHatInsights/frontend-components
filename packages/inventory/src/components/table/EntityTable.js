@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { selectEntity, setSort } from '../../redux/actions';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
     Table as PfTable,
     TableBody,
@@ -36,6 +36,7 @@ const EntityTable = ({
 }) => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const location = useLocation();
     const loaded = useSelector(({ entities: { loaded } }) => (
         hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded
     ), shallowEqual);
@@ -63,7 +64,7 @@ const EntityTable = ({
     const cells = loaded && createColumns(columns, hasItems, rows, isExpandable);
 
     const defaultRowClick = (_event, key) => {
-        history.push(`/${key}`);
+        history.push(`${location.pathname}${location.pathname.slice(-1) === '/' ? '' : '/'}${key}`);
     };
 
     const { RowWrapper: tableRowWrapper, ...additionalTableProps } = tableProps;
