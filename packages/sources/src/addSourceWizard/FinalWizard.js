@@ -22,7 +22,7 @@ const FinalWizard = ({
     hideSourcesButton,
     returnButtonTitle,
     reset,
-    createdSource,
+    createdSource = {},
     tryAgain
 }) =>{
     const [ isDeletingSource, setIsDeleting ] = useState();

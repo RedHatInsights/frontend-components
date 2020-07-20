@@ -28,7 +28,7 @@ export const urlOrHost = formData => formData.url ? parseUrl(formData.url) : for
 
 export const handleErrorWrapper = (sourceId) => async(error) => await handleError(error, sourceId);
 
-export const doCreateSource = async (formData, sourceTypes, timetoutedApps) => {
+export const doCreateSource = async (formData, sourceTypes, timetoutedApps = []) => {
     let sourceDataOut;
 
     try {

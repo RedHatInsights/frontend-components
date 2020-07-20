@@ -5,6 +5,7 @@ import { COST_MANAGEMENT_APP } from '../helpers/applicationTypes';
 import * as api from '../../api/index';
 import * as cmAuthApi from '../../api/costManagementAuthentication';
 import * as errorHandling from '../../api/handleError';
+import * as checkApp from '../../api/getApplicationStatus';
 
 describe('doCreateSource', () => {
     const HOST = 'mycluster.net';
@@ -52,6 +53,8 @@ describe('doCreateSource', () => {
 
         let patchSource;
 
+        let checkAppMock;
+
         let mocks;
 
         let EXPECTED_CREATE_SOURCE_ARG;
@@ -88,7 +91,7 @@ describe('doCreateSource', () => {
             CREATE_EDNPOINT_DATA_OUT = ({ id: CREATED_EDNPOINT_ID });
 
             CREATE_AUTHENTICATION_DATA_OUT = { something: '123', id: '989' };
-            CREATE_APPLICATION_DATA_OUT = { application: 234, id: '234' };
+            CREATE_APPLICATION_DATA_OUT = { application: 234, id: '234', application_type_id: COST_MANAGEMENT_APP.id };
             CREATE_AUTH_APP_DATA_OUT = { application_id: '234', authentication_id: '989' };
             COST_MGMT_AUTH_OUT = { authentication: 1 };
 
@@ -99,6 +102,9 @@ describe('doCreateSource', () => {
             createAuthApp = jest.fn().mockImplementation(() => Promise.resolve(CREATE_AUTH_APP_DATA_OUT));
 
             patchSource = jest.fn().mockImplementation(() => Promise.resolve(COST_MGMT_AUTH_OUT));
+
+            checkAppMock = jest.fn().mockImplementation(() => Promise.resolve(CREATE_APPLICATION_DATA_OUT));
+            checkApp.checkAppAvailability = checkAppMock;
 
             mocks = {
                 createSource,
@@ -157,6 +163,7 @@ describe('doCreateSource', () => {
             expect(createApplication).not.toHaveBeenCalled();
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
+            expect(checkAppMock).not.toHaveBeenCalled();
         });
 
         it('create source with noEndpoint set', async () => {
@@ -182,6 +189,7 @@ describe('doCreateSource', () => {
             expect(createApplication).not.toHaveBeenCalled();
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
+            expect(checkAppMock).not.toHaveBeenCalled();
         });
 
         it('create source with url', async () => {
@@ -215,6 +223,7 @@ describe('doCreateSource', () => {
             expect(createApplication).not.toHaveBeenCalled();
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
+            expect(checkAppMock).not.toHaveBeenCalled();
         });
 
         it('create source with app', async () => {
@@ -252,6 +261,47 @@ describe('doCreateSource', () => {
             expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
+            expect(checkAppMock).toHaveBeenCalledWith(CREATE_APPLICATION_DATA_OUT.id, 0);
+        });
+
+        it('create source with app with timeout', async () => {
+            const APP_ID = COST_MANAGEMENT_APP.id;
+
+            const FORM_DATA = {
+                ...INITIAL_VALUES,
+                application: { ...APPLICATION_FORM_DATA, application_type_id: APP_ID }
+            };
+            const EXPECTED_RESULT = {
+                id: CREATED_SOURCE_ID,
+                endpoint: [
+                    { ...CREATE_EDNPOINT_DATA_OUT }
+                ],
+                applications: [{
+                    ...CREATE_APPLICATION_DATA_OUT
+                }]
+            };
+
+            const EXPECTED_CREATE_APPLICATION_ARG = {
+                ...APPLICATION_FORM_DATA,
+                source_id: CREATED_SOURCE_ID,
+                application_type_id: APP_ID
+            };
+
+            api.getSourcesApi = () => mocks;
+
+            const timeoutedApps = [ COST_MANAGEMENT_APP.id ];
+
+            const result = await doCreateSource(FORM_DATA, sourceTypes, timeoutedApps);
+
+            expect(result).toEqual(EXPECTED_RESULT);
+
+            expect(createSource).toHaveBeenCalledWith(EXPECTED_CREATE_SOURCE_ARG);
+            expect(createEndpoint).toHaveBeenCalledWith(EXPECTED_CREATE_ENDPOINT_SOURCE_ARG);
+            expect(createAuthentication).toHaveBeenCalledWith(EXPECTED_AUTHENTICATION_SOURCE_ARG);
+            expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
+            expect(patchSource).not.toHaveBeenCalled();
+            expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
+            expect(checkAppMock).toHaveBeenCalledWith(CREATE_APPLICATION_DATA_OUT.id, 10000);
         });
 
         it('create source with app and no endpoint set', async () => {
@@ -289,6 +339,7 @@ describe('doCreateSource', () => {
             expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
+            expect(checkAppMock).toHaveBeenCalledWith(CREATE_APPLICATION_DATA_OUT.id, 0);
         });
 
         it('create source with app billing source', async () => {
@@ -337,6 +388,7 @@ describe('doCreateSource', () => {
             expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
             expect(patchSource).toHaveBeenCalledWith(EXPECTED_BILLING_SOURCE_ARG);
             expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
+            expect(checkAppMock).toHaveBeenCalledWith(CREATE_APPLICATION_DATA_OUT.id, 0);
         });
 
         it('create source with app cost management source', async () => {
@@ -400,6 +452,7 @@ describe('doCreateSource', () => {
             expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
             expect(patchSource).toHaveBeenCalledWith(EXPECTED_CREDENTIALS_ARG);
             expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
+            expect(checkAppMock).toHaveBeenCalledWith(CREATE_APPLICATION_DATA_OUT.id, 0);
         });
 
         describe('failures', () => {
@@ -442,6 +495,7 @@ describe('doCreateSource', () => {
                 expect(createApplication).not.toHaveBeenCalled();
                 expect(patchSource).not.toHaveBeenCalled();
                 expect(createAuthApp).not.toHaveBeenCalled();
+                expect(checkAppMock).not.toHaveBeenCalled();
             });
 
             it('source creation failed because of endpoint', async () => {
@@ -465,6 +519,7 @@ describe('doCreateSource', () => {
                 expect(createApplication).not.toHaveBeenCalled();
                 expect(patchSource).not.toHaveBeenCalled();
                 expect(createAuthApp).not.toHaveBeenCalled();
+                expect(checkAppMock).not.toHaveBeenCalled();
             });
 
             it('source creation failed because of authentication', async () => {
@@ -487,6 +542,7 @@ describe('doCreateSource', () => {
                 expect(createApplication).not.toHaveBeenCalled();
                 expect(patchSource).not.toHaveBeenCalled();
                 expect(createAuthApp).not.toHaveBeenCalled();
+                expect(checkAppMock).not.toHaveBeenCalled();
             });
 
             it('source creation failed because of application', async () => {
@@ -513,6 +569,7 @@ describe('doCreateSource', () => {
 
                 expect(patchSource).not.toHaveBeenCalled();
                 expect(createAuthApp).not.toHaveBeenCalled();
+                expect(checkAppMock).not.toHaveBeenCalled();
             });
 
             it('source creation failed because of billing source', async () => {
