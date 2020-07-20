@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 
 import PropTypes from 'prop-types';
 import { Tooltip } from '@patternfly/react-core';
+import classNames from 'classnames';
 
 const chartMapper = (width) => ({
     1: '1',
@@ -10,10 +11,11 @@ const chartMapper = (width) => ({
     4: (width - 1)
 });
 
-const SeverityLine = ({ title, value, tooltipMessage, config, chartProps }) => {
+const SeverityLine = ({ title, value, className, tooltipMessage, config, chartProps }) => {
 
     const { width, height } = config;
     const severity = useMemo(() => chartMapper(width)?.[value], [ width, value ]);
+    const chartClasses = classNames(className, 'ins-c-severity-line');
     const points = [
         { className: 'horizontal', points: `${1}, ${height / 2} ${width - 1}, ${height / 2}` },
         { className: 'vertical', points: `${width - 1}, ${0} ${width - 1}, ${height}` },
@@ -23,7 +25,7 @@ const SeverityLine = ({ title, value, tooltipMessage, config, chartProps }) => {
         { className: `dataline-${value}`, points: `${1}, ${height / 2} ${severity}, ${height / 2}` }
     ];
 
-    return <div className='ins-c-severity-line' { ...chartProps }>
+    return <div className={ chartClasses } { ...chartProps }>
         <div className='ins-l-title'>
             {title.length > 14 ? <Tooltip content={title}>
                 <span> {`${title.substring(0, 14)}...`} </span>
@@ -43,6 +45,7 @@ const SeverityLine = ({ title, value, tooltipMessage, config, chartProps }) => {
 SeverityLine.propTypes = {
     value: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    className: PropTypes.string,
     tooltipMessage: PropTypes.string,
     config: PropTypes.shape({
         height: PropTypes.number,
