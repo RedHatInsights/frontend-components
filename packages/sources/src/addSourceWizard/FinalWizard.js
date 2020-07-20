@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Wizard, Button, Text } from '@patternfly/react-core';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import FinishedStep from './steps/FinishedStep';
 import ErroredStep from './steps/ErroredStep';
@@ -67,9 +67,13 @@ const FinalWizard = ({
                 secondaryActions={<Button variant="link" onClick={ removeSource }>
                     {intl.formatMessage({ id: 'wizard.removeSource', defaultMessage: 'Remove source' })}
                 </Button>}
-                component="a"
-                primaryAction={() => push(`/sources/edit/${createdSource.id}`)}
-                returnButtonTitle={ intl.formatMessage({ id: 'wizard.editSource', defaultMessage: 'Edit source' }) }
+                Component={() => (
+                    <Link to={`/sources/edit/${createdSource.id}`}>
+                        <Button variant='primary'>
+                            { intl.formatMessage({ id: 'wizard.editSource', defaultMessage: 'Edit source' })}
+                        </Button>
+                    </Link>
+                )}
                 message={createdSource.applications[0]?.availability_status_error || intl.formatMessage({ id: 'wizard.unknownError', defaultMessage: 'Unknown error' })}
                 title={intl.formatMessage({ id: 'wizard.configurationUnsuccessful', defaultMessage: 'Configuration unsuccessful' })}
             />;

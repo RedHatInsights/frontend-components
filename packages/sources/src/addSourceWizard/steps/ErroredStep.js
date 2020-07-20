@@ -22,7 +22,7 @@ const ErroredStep = ({
     customText,
     primaryAction,
     secondaryActions,
-    component
+    Component
 }) => (
     <Bullseye>
         <EmptyState variant={ EmptyStateVariant.full } className="pf-u-mt-4xl">
@@ -33,7 +33,7 @@ const ErroredStep = ({
             <EmptyStateBody className="ins-c-sources__wizard--step-text">
                 {message || customText}
             </EmptyStateBody>
-            <Button variant="primary" onClick={ primaryAction || onClose } component={component}>{returnButtonTitle}</Button>
+            <Component variant="primary" onClick={ primaryAction || onClose }>{returnButtonTitle}</Component>
             {secondaryActions && (
                 <EmptyStateSecondaryActions>
                     {secondaryActions}
@@ -51,14 +51,14 @@ ErroredStep.propTypes = {
     customText: PropTypes.node,
     primaryAction: PropTypes.func,
     secondaryActions: PropTypes.node,
-    component: PropTypes.string
+    Component: PropTypes.elementType
 };
 
 ErroredStep.defaultProps = {
     title: <FormattedMessage id="wizard.unsuccConfiguration" defaultMessage="Something went wrong"/>,
     // eslint-disable-next-line max-len
     customText: <FormattedMessage id="wizard.errorText" defaultMessage="There was a problem while trying to add your source. Please try again. If the error persists, open a support case."/>,
-    component: 'button'
+    Component: Button
 };
 
 export default ErroredStep;
