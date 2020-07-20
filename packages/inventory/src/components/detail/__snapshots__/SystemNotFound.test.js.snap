@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EntityTable DOM should render correctly 1`] = `
+<EmptyState
+  variant="full"
+>
+  <EmptyStateIcon
+    icon={[Function]}
+  />
+  <Title
+    headingLevel="h5"
+    size="lg"
+  >
+    System not found
+  </Title>
+  <EmptyStateBody>
+    System with ID 
+     does not exist
+  </EmptyStateBody>
+  <Button
+    onClick={[Function]}
+    variant="primary"
+  >
+    Back to previous page
+  </Button>
+</EmptyState>
+`;
+
+exports[`EntityTable DOM should render correctly with inv ID 1`] = `
+<EmptyState
+  variant="full"
+>
+  <EmptyStateIcon
+    icon={[Function]}
+  />
+  <Title
+    headingLevel="h5"
+    size="lg"
+  >
+    System not found
+  </Title>
+  <EmptyStateBody>
+    System with ID 
+    something
+     does not exist
+  </EmptyStateBody>
+  <Button
+    onClick={[Function]}
+    variant="primary"
+  >
+    Back to previous page
+  </Button>
+</EmptyState>
+`;

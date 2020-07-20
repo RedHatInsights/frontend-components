@@ -8,18 +8,33 @@ import {
     UPDATE_ENTITIES,
     ENTITIES_LOADING,
     CLEAR_FILTERS,
-    TOGGLE_TAG_MODAL
+    TOGGLE_TAG_MODAL,
+    CONFIG_CHANGED
 } from './action-types';
 import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/esm/helpers';
 import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
 import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/esm/CullingInfo';
-import TagWithDialog from '../TagWithDialog';
+import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
+import TitleColumn from '../components/table/TitleColumn';
 
-export const defaultState = { loaded: false, tagsLoaded: false, allTagsLoaded: false };
+export const defaultState = {
+    loaded: false,
+    tagsLoaded: false,
+    allTagsLoaded: false,
+    invConfig: {},
+    sortBy: {
+        key: 'updated',
+        direction: 'desc'
+    }
+};
 
 const defaultColumns = [
-    { key: 'display_name', title: 'Name', composed: [ 'facts.os_release', 'display_name' ] },
+    {
+        key: 'display_name',
+        title: 'Name',
+        renderFunc: TitleColumn
+    },
     {
         key: 'tags',
         title: 'Tags',
@@ -152,7 +167,7 @@ export function showTags(state, { payload, meta }) {
         activeSystemTag: {
             ...activeSystemTag,
             tags: Object.values(payload.results)[0],
-            tagsCount: payload.total,
+            tagsCount: meta.tagsCount,
             page: payload.page,
             perPage: payload.per_page,
             tagsLoaded: true
@@ -192,6 +207,7 @@ export function allTags(state, { payload: { results, total, page, per_page: perP
             page
         },
         additionalTagsCount: total > perPage ? total - perPage : 0,
+        allTagsTotal: total,
         allTagsLoaded: true
     };
 }
@@ -215,5 +231,6 @@ export default {
     [CHANGE_SORT]: changeSort,
     [CLEAR_FILTERS]: clearFilters,
     [ENTITIES_LOADING]: (state, { payload: { isLoading } }) => ({ ...state, loaded: !isLoading }),
-    [TOGGLE_TAG_MODAL]: toggleTagModal
+    [TOGGLE_TAG_MODAL]: toggleTagModal,
+    [CONFIG_CHANGED]: (state, { payload }) => ({ ...state, invConfig: payload })
 };

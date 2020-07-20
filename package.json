@@ -40,6 +40,9 @@
     "jest": {
         "coverageDirectory": "./coverage/",
         "collectCoverage": true,
+        "transformIgnorePatterns": [
+            "node_modules/(?!@patternfly)"
+        ],
         "collectCoverageFrom": [
             "<rootDir>/packages/**/src/**/*.js",
             "!<rootDir>/packages/**/stories/*",
@@ -57,7 +60,9 @@
         ],
         "moduleNameMapper": {
             "\\.(css|scss)$": "identity-obj-proxy",
-            "^lodash-es$": "lodash"
+            "^lodash-es$": "lodash",
+            "customReact": "react",
+            "reactRedux": "react-redux"
         },
         "testURL": "http://localhost:5000/"
     },

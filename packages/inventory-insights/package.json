@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-insights",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "description": "Rules detail page for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",
@@ -28,7 +28,7 @@
         "prop-types": ">=15.6.2",
         "react": ">=16.5.1",
         "react-content-loader": ">=3.4.1",
-        "react-redux": ">=5.0.7"
+        "react-redux": ">=7.2.0"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",

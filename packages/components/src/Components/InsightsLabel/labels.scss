@@ -13,42 +13,42 @@
     --inc-c-label--icon-blue:           var(--pf-global--palette--blue-300);
 }
 
-.ins-c-label-4 {
-    background-color: var(--ins-c-label--red-bg) !important;
+.ins-c-label-4.pf-c-label {
+    background-color: var(--ins-c-label--red-bg);
     .pf-c-label__content {
-        color: var(--inc-c-label--content-red) !important;
+        color: var(--inc-c-label--content-red);
         .pf-c-label__icon {
-            color: var(--inc-c-label--icon-red) !important;
+            color: var(--inc-c-label--icon-red);
         }
     }
 }
 
-.ins-c-label-3 {
-    background-color: var(--ins-c-label--orange-bg) !important;
+.ins-c-label-3.pf-c-label {
+    background-color: var(--ins-c-label--orange-bg);
     .pf-c-label__content {
-        color: var(--inc-c-label--content-orange) !important;
+        color: var(--inc-c-label--content-orange);
         .pf-c-label__icon {
-            color: var(--inc-c-label--icon-orange) !important;
+            color: var(--inc-c-label--icon-orange);
         }
     }
 }
 
-.ins-c-label-2 {
-    background-color: var(--ins-c-label--gold-bg) !important;
+.ins-c-label-2.pf-c-label {
+    background-color: var(--ins-c-label--gold-bg);
     .pf-c-label__content {
-        color: var(--inc-c-label--content-gold) !important;
+        color: var(--inc-c-label--content-gold);
         .pf-c-label__icon {
-            color: var(--inc-c-label--icon-gold) !important;
+            color: var(--inc-c-label--icon-gold);
         }
     }
 }
 
-.ins-c-label-1 {
-    background-color: var(--ins-c-label--blue-bg) !important;
+.ins-c-label-1.pf-c-label {
+    background-color: var(--ins-c-label--blue-bg);
     .pf-c-label__content {
-        color: var(--inc-c-label--content-blue) !important;
+        color: var(--inc-c-label--content-blue);
         .pf-c-label__icon {
-            color: var(--inc-c-label--icon-blue) !important;
+            color: var(--inc-c-label--icon-blue);
         }
     }
 }

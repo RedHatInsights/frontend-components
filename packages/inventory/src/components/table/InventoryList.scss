@@ -8,7 +8,6 @@
 @import '~@redhat-cloud-services/frontend-components/components/TagModal.css';
 @import '~@redhat-cloud-services/frontend-components/components/CullingInfo.css';
 
-
 .ins-c-inventory__table--toolbar {
     &.ins-m-footer {
         margin: 0;
@@ -21,6 +20,8 @@
         }
         .pf-c-pagination__nav-page-select input { @include rem('min-width', 75px); }
     }
+
+    .ins-c-chip-filters .pf-c-chip-group:not(:last-of-type) { margin-right: var(--pf-global--spacer--xs); }
 }
 
 .ins-c-table__empty {
@@ -37,6 +38,9 @@
         display: flex;
         width: 100%;
 
+        .ins-c-inventory__tags-filter--tag-name {
+            margin-right: var(--pf-global--spacer--xs);
+        }
         .pf-c-badge { margin-left: auto; }
     }
 
@@ -51,6 +55,7 @@
 
 .ins-c-entity-table.pf-c-table {
 
+    .pf-c-table__check input { cursor: pointer; }
     .ins-composed-col div:nth-child(2) {
         color: var(--pf-global--link--Color);
         word-wrap: break-word;

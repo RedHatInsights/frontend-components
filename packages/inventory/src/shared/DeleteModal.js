@@ -24,16 +24,16 @@ const DeleteModal = ({ handleModalToggle, isModalOpen, currentSytems, onConfirm 
     }
 
     return <Modal
-        isSmall
+        variant="small"
         title="Remove from inventory"
         className="ins-c-inventory__table--remove"
         isOpen={isModalOpen}
         onClose={() => handleModalToggle(false)}
     >
-        <Split gutter="md">
+        <Split hasGutter>
             <SplitItem><ExclamationTriangleIcon size="xl" className="ins-m-alert" /></SplitItem>
             <SplitItem isFilled>
-                <Stack gutter="md">
+                <Stack hasGutter>
                     <StackItem>
                         {systemToRemove} will be removed from
                                     all {location.host} applications and services. You need to re-register
@@ -48,7 +48,7 @@ const DeleteModal = ({ handleModalToggle, isModalOpen, currentSytems, onConfirm 
                 </Stack>
             </SplitItem>
         </Split>
-        <Level gutter="md">
+        <Level hasGutter>
             <LevelItem>
                 <Button variant="danger" onClick={onConfirm}>
                     Remove
