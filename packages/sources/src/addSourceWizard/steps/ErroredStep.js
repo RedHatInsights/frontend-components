@@ -45,7 +45,7 @@ const ErroredStep = ({
 
 ErroredStep.propTypes = {
     onClose: PropTypes.func.isRequired,
-    returnButtonTitle: PropTypes.node.isRequired,
+    returnButtonTitle: PropTypes.node,
     message: PropTypes.node,
     title: PropTypes.node,
     customText: PropTypes.node,

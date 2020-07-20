@@ -52,6 +52,7 @@ exports[`Steps components ErroredStep renders correctly 1`] = `
       textComponent={Symbol(react.fragment)}
     >
       <ErroredStep
+        Component={[Function]}
         customText={
           <FormattedMessage
             defaultMessage="There was a problem while trying to add your source. Please try again. If the error persists, open a support case."
