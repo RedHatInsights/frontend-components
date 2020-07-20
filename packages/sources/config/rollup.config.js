@@ -85,7 +85,10 @@ export default rollupConfig(
         SourceWizardSummary: 'src/sourceFormRenderer/components/SourceWizardSummary.js',
         LoadingStep: 'src/addSourceWizard/steps/LoadingStep',
         FinishedStep: 'src/addSourceWizard/steps/FinishedStep',
-        ErroredStep: 'src/addSourceWizard/steps/ErroredStep'
+        ErroredStep: 'src/addSourceWizard/steps/ErroredStep',
+        TimeoutStep: 'src/addSourceWizard/steps/TimeoutStep',
+        getApplicationStatus: 'src/api/getApplicationStatus.js',
+        constants: 'src/api/constants.js'
     }, {
         index: 'src/index.js'
     }],

@@ -67,6 +67,7 @@ const FinalWizard = ({
                 secondaryActions={<Button variant="link" onClick={ removeSource }>
                     {intl.formatMessage({ id: 'wizard.removeSource', defaultMessage: 'Remove source' })}
                 </Button>}
+                component="a"
                 primaryAction={() => push(`/sources/edit/${createdSource.id}`)}
                 returnButtonTitle={ intl.formatMessage({ id: 'wizard.editSource', defaultMessage: 'Edit source' }) }
                 message={createdSource.applications[0]?.availability_status_error || intl.formatMessage({ id: 'wizard.unknownError', defaultMessage: 'Unknown error' })}
@@ -90,13 +91,7 @@ const FinalWizard = ({
     } else if (isErrored) {
         step = <ErroredStep
             onClose={ afterError }
-            returnButtonTitle={ <FormattedMessage id="wizard.retryText" defaultMessage="Retry"/> }
             primaryAction={tryAgain}
-            secondaryActions={
-                <Text component='a' target="_blank" href="https://access.redhat.com/support/cases/#/case/new/open-case?caseCreate=true" rel="noopener noreferrer">
-                    {intl.formatMessage({ id: 'wizard.openTicket', defaultMessage: 'Open a support case' })}
-                </Text>
-            }
         />;
     } else {
         step = <LoadingStep
