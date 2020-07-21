@@ -5,14 +5,14 @@ import {
     Title,
     Stack, StackItem, EmptyStateIcon
 } from '@patternfly/react-core';
-import IconMaintenance from './icon-maintenance';
+import { HourglassHalfIcon } from '@patternfly/react-icons';
 
 import './maintenance.scss';
 
 const Maintenance = ({ startTime, endTime, timeZone, description }) => {
     return (
         <EmptyState className='ins-c-empty-state__maintenance'>
-            <EmptyStateIcon icon={IconMaintenance}/>
+            <EmptyStateIcon icon={HourglassHalfIcon}/>
             <Title headingLevel='h4' size='lg'>Maintenance in progress</Title>
             <EmptyStateBody>
                 { description
