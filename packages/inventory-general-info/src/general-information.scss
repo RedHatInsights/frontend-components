@@ -16,6 +16,10 @@
         padding: 0;
         margin-left: var(--pf-global--spacer--sm);
     }
+
+    dl dd {
+        word-break: break-all;
+    }
 }
 
 .pf-c-modal-box .pf-c-table {
