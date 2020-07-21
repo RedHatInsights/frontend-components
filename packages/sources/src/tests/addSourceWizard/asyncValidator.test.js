@@ -16,6 +16,16 @@ describe('asyncNameValidator', () => {
 
     const intl = { formatMessage: ({ defaultMessage }) => defaultMessage };
 
+    it('returns undefined when no value', async () => {
+        expect.assertions(1);
+
+        actions.findSource = jest.fn(() => Promise.resolve(returnedSourceResponse));
+
+        const result = await asyncValidator(undefined, undefined, intl);
+
+        expect(result).toEqual(undefined);
+    });
+
     it('returns error message when name is taken', async () => {
         expect.assertions(1);
 

@@ -5,6 +5,7 @@ import { render, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
+import { MemoryRouter } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
 import { mock } from '../../__mock__/hostApi';
 
@@ -29,9 +30,11 @@ describe('InventoryList', () => {
 
     it('should render correctly', () => {
         const store = mockStore(initialState);
-        const wrapper = render(<Provider store={ store }>
-            <InventoryList/>
-        </Provider>);
+        const wrapper = render(<MemoryRouter>
+            <Provider store={ store }>
+                <InventoryList/>
+            </Provider>
+        </MemoryRouter>);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
@@ -44,9 +47,11 @@ describe('InventoryList', () => {
                 direction: 'asc'
             };
             const store = mockStore(initialState);
-            const Cmp = (props) => <Provider store={ store }>
-                <InventoryList {...props} />
-            </Provider>;
+            const Cmp = (props) => <MemoryRouter>
+                <Provider store={ store }>
+                    <InventoryList {...props} />
+                </Provider>
+            </MemoryRouter>;
             const wrapper = mount(<Cmp sortBy={sortBy} />);
             wrapper.setProps({
                 sortBy: {
@@ -66,9 +71,11 @@ describe('InventoryList', () => {
                 direction: 'asc'
             };
             const store = mockStore(initialState);
-            const Cmp = (props) => <Provider store={ store }>
-                <InventoryList {...props} />
-            </Provider>;
+            const Cmp = (props) => <MemoryRouter>
+                <Provider store={ store }>
+                    <InventoryList {...props} />
+                </Provider>
+            </MemoryRouter>;
             const wrapper = mount(<Cmp sortBy={sortBy} />);
             wrapper.setProps({
                 showTags: true
@@ -81,9 +88,11 @@ describe('InventoryList', () => {
         it('should fire refresh after changing items', () => {
             mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
             const store = mockStore(initialState);
-            const Cmp = (props) => <Provider store={ store }>
-                <InventoryList {...props} />
-            </Provider>;
+            const Cmp = (props) => <MemoryRouter>
+                <Provider store={ store }>
+                    <InventoryList {...props} />
+                </Provider>
+            </MemoryRouter>;
             const wrapper = mount(<Cmp items={[{ children: () => <div>test</div>, isOpen: false, id: 'fff' }]} hasItems />);
             wrapper.setProps({
                 items: [{ children: () => <div>test</div>, isOpen: false, id: 'something' }]

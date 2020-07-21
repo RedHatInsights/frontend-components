@@ -31,7 +31,7 @@ import ReportDetails from './ReportDetails';
 import TimesCircleIcon from '@patternfly/react-icons/dist/js/icons/times-circle-icon';
 import { ToolbarItem } from '@patternfly/react-core/dist/js/components/Toolbar';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 
 class InventoryRuleList extends Component {
     state = {
