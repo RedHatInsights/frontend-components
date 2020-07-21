@@ -19,7 +19,7 @@ const Maintenance = ({ startTime, endTime, timeZone, description }) => {
                     ? { description }
                     : <Stack>
                         <StackItem>We are currently undergoing scheduled maintenance from {startTime}-{endTime} {timeZone}.</StackItem>
-                        <StackItem>We will be back shortly, thank you for your patience</StackItem>
+                        <StackItem>We will be back shortly, thank you for your patience.</StackItem>
                     </Stack>
                 }
             </EmptyStateBody>

@@ -25,7 +25,7 @@ exports[`Maintenance component should render with default props 1`] = `
         .
       </Component>
       <Component>
-        We will be back shortly, thank you for your patience
+        We will be back shortly, thank you for your patience.
       </Component>
     </Component>
   </Component>
@@ -76,7 +76,7 @@ exports[`Maintenance component should render with times 1`] = `
         .
       </Component>
       <Component>
-        We will be back shortly, thank you for your patience
+        We will be back shortly, thank you for your patience.
       </Component>
     </Component>
   </Component>
