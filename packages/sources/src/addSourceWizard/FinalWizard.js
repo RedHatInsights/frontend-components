@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Wizard, Button } from '@patternfly/react-core';
+import { Wizard, Button, Text } from '@patternfly/react-core';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 
@@ -93,6 +93,12 @@ const FinalWizard = ({
         step = <ErroredStep
             onClose={ afterError }
             primaryAction={tryAgain}
+            secondaryActions={
+                <Text component='a' target="_blank" href="https://access.redhat.com/support/cases/#/case/new/open-case?caseCreate=true" rel="noopener noreferrer">
+                    {intl.formatMessage({ id: 'wizard.openTicket', defaultMessage: 'Open a support case' })}
+                </Text>
+            }
+            returnButtonTitle={ <FormattedMessage id="wizard.retryText" defaultMessage="Retry"/> }
         />;
     } else {
         step = <LoadingStep
