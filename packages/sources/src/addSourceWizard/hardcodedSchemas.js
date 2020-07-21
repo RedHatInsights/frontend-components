@@ -18,9 +18,7 @@ import * as CMAzure from './hardcodedComponents/azure/costManagement';
 import * as TowerCatalog from './hardcodedComponents/tower/catalog';
 import * as Openshift from './hardcodedComponents/openshift/endpoint';
 
-export const COST_MANAGEMENT_APP_NAME = '/insights/platform/cost-management';
-export const CLOUD_METER_APP_NAME = '/insights/platform/cloud-meter';
-export const CATALOG_APP = '/insights/platform/catalog';
+import { COST_MANAGEMENT_APP_NAME, CLOUD_METER_APP_NAME, CATALOG_APP } from '../api/constants';
 
 const arnMessagePattern = <FormattedMessage id="wizard.arnPattern" defaultMessage="ARN must start with arn:aws:"/>;
 const arnMessageLength = <FormattedMessage id="wizard.arnLength" defaultMessage="ARN should have at least 10 characters"/>;

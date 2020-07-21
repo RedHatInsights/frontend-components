@@ -1,7 +1,7 @@
 import { axiosInstance } from './index';
 import { COST_MANAGEMENT_API_BASE } from './constants';
 
-const delay = (interval, prms) => {
+export const delay = (interval, prms) => {
     return new Promise(resolve => {
         setTimeout(resolve.bind(null, prms), interval);
     });

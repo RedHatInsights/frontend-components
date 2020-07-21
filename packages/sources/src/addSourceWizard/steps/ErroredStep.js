@@ -16,12 +16,13 @@ import { ExclamationCircleIcon } from '@patternfly/react-icons';
 
 const ErroredStep = ({
     onClose,
-    onRetry,
     returnButtonTitle,
     message,
     title,
     customText,
-    retryText
+    primaryAction,
+    secondaryActions,
+    Component
 }) => (
     <Bullseye>
         <EmptyState variant={ EmptyStateVariant.full } className="pf-u-mt-4xl">
@@ -29,31 +30,35 @@ const ErroredStep = ({
             <Title headingLevel="h2" size="xl" className="pf-u-mt-xl">
                 {title}
             </Title>
-            <EmptyStateBody>
+            <EmptyStateBody className="ins-c-sources__wizard--step-text">
                 {message || customText}
             </EmptyStateBody>
-            <Button variant="primary" onClick={ onClose }>{returnButtonTitle}</Button>
-            <EmptyStateSecondaryActions>
-                <Button variant="link" onClick={ onRetry }>{retryText}</Button>
-            </EmptyStateSecondaryActions>
+            <Component variant="primary" onClick={ primaryAction || onClose }>{returnButtonTitle}</Component>
+            {secondaryActions && (
+                <EmptyStateSecondaryActions className="pf-u-mt-sm">
+                    {secondaryActions}
+                </EmptyStateSecondaryActions>
+            )}
         </EmptyState>
     </Bullseye>
 );
 
 ErroredStep.propTypes = {
     onClose: PropTypes.func.isRequired,
-    onRetry: PropTypes.func.isRequired,
-    returnButtonTitle: PropTypes.node.isRequired,
+    returnButtonTitle: PropTypes.node,
     message: PropTypes.node,
     title: PropTypes.node,
     customText: PropTypes.node,
-    retryText: PropTypes.node
+    primaryAction: PropTypes.func,
+    secondaryActions: PropTypes.node,
+    Component: PropTypes.elementType
 };
 
 ErroredStep.defaultProps = {
-    title: <FormattedMessage id="wizard.unsuccConfiguration" defaultMessage="Configuration unsuccessful"/>,
-    customText: <FormattedMessage id="wizard.errorText" defaultMessage="Your source has not been successfully added."/>,
-    retryText: <FormattedMessage id="wizard.retryText" defaultMessage="Retry"/>
+    title: <FormattedMessage id="wizard.unsuccConfiguration" defaultMessage="Something went wrong"/>,
+    // eslint-disable-next-line max-len
+    customText: <FormattedMessage id="wizard.errorText" defaultMessage="There was a problem while trying to add your source. Please try again. If the error persists, open a support case."/>,
+    Component: Button
 };
 
 export default ErroredStep;
