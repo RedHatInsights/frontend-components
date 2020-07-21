@@ -5,6 +5,7 @@ import { Button, EmptyStateBody, Title } from '@patternfly/react-core';
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
+import TimeoutStep from '../../addSourceWizard/steps/TimeoutStep';
 
 import mount from '../__mocks__/mount';
 
@@ -83,7 +84,6 @@ describe('Steps components', () => {
         beforeEach(() => {
             initialProps = {
                 onClose: spyFunction,
-                onRetry: spyFunctionSecond,
                 returnButtonTitle: 'Go back to my application'
             };
         });
@@ -106,10 +106,39 @@ describe('Steps components', () => {
             expect(spyFunction).toHaveBeenCalled();
         });
 
-        it('calls onRetry function', () => {
-            const wrapper = mount(<ErroredStep { ...initialProps }/>);
-            wrapper.find(Button).last().simulate('click');
+        it('calls primaryAction function', () => {
+            const wrapper = mount(<ErroredStep { ...initialProps } primaryAction={spyFunctionSecond}/>);
+            wrapper.find(Button).simulate('click');
             expect(spyFunctionSecond).toHaveBeenCalled();
+        });
+    });
+
+    describe('TimeoutStep', () => {
+        beforeEach(() => {
+            initialProps = {
+                onClose: spyFunction,
+                returnButtonTitle: 'go back'
+            };
+        });
+
+        it('renders correctly', () => {
+            const wrapper = mount(<TimeoutStep { ...initialProps }/>);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('renders correctly customized', () => {
+            const wrapper = mount(<TimeoutStep
+                { ...initialProps }
+                title="pekny nadpis"
+                secondaryActions={<button>some button here</button>}
+            />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('calls onClose function', () => {
+            const wrapper = mount(<TimeoutStep { ...initialProps }/>);
+            wrapper.find(Button).simulate('click');
+            expect(spyFunction).toHaveBeenCalled();
         });
     });
 });

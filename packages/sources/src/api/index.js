@@ -15,7 +15,9 @@ export const getSourcesApi = () => ({
     listSourceTypes: () => axiosInstanceInsights.get(`${SOURCES_API_BASE}/source_types`),
     listApplicationTypes: () => axiosInstanceInsights.get(`${SOURCES_API_BASE}/application_types`),
     createSource: (data) => axiosInstanceInsights.post(`${SOURCES_API_BASE}/sources`, data),
-    createAuthApp: (data) => axiosInstanceInsights.post(`${SOURCES_API_BASE_V2}/application_authentications`, data)
+    createAuthApp: (data) => axiosInstanceInsights.post(`${SOURCES_API_BASE_V2}/application_authentications`, data),
+    getApplication: (id) => axiosInstanceInsights.get(`${SOURCES_API_BASE_V2}/applications/${id}`),
+    removeSource: (id) => axiosInstanceInsights.delete(`${SOURCES_API_BASE_V2}/sources/${id}`)
 });
 
 export const doLoadSourceTypes = () =>
