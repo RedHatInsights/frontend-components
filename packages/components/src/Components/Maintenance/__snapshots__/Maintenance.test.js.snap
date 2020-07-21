@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Maintenance component should render with default props 1`] = `
+<Component
+  className="ins-c-empty-state__maintenance"
+>
+  <Component
+    icon={[Function]}
+  />
+  <Component
+    headingLevel="h4"
+    size="lg"
+  >
+    Maintenance in progress
+  </Component>
+  <Component>
+    <Component>
+      <Component>
+        We are currently undergoing scheduled maintenance from 
+        6am
+        -
+        8am
+         
+        EST
+        .
+      </Component>
+      <Component>
+        We will be back shortly, thank you for your patience.
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`Maintenance component should render with new description 1`] = `
+<Component
+  className="ins-c-empty-state__maintenance"
+>
+  <Component
+    icon={[Function]}
+  />
+  <Component
+    headingLevel="h4"
+    size="lg"
+  >
+    Maintenance in progress
+  </Component>
+  <Component>
+    <Component />
+  </Component>
+</Component>
+`;
+
+exports[`Maintenance component should render with times 1`] = `
+<Component
+  className="ins-c-empty-state__maintenance"
+>
+  <Component
+    icon={[Function]}
+  />
+  <Component
+    headingLevel="h4"
+    size="lg"
+  >
+    Maintenance in progress
+  </Component>
+  <Component>
+    <Component>
+      <Component>
+        We are currently undergoing scheduled maintenance from 
+        12am
+        -
+        2am
+         
+        EST
+        .
+      </Component>
+      <Component>
+        We will be back shortly, thank you for your patience.
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;
