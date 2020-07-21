@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
 import routeData from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 import TitleColumn from './TitleColumn';
 
 describe('EntityTable', () => {
@@ -41,9 +42,11 @@ describe('EntityTable', () => {
                     loaded: false
                 }
             });
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable/>
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable/>
+                </Provider>
+            </MemoryRouter>);
             expect(toJson(wrapper.find('EntityTable'), { mode: 'shallow' })).toMatchSnapshot();
         });
 
@@ -55,9 +58,11 @@ describe('EntityTable', () => {
                     rows: []
                 }
             });
-            const wrapper = render(<Provider store={ store }>
-                <EntityTable/>
-            </Provider>);
+            const wrapper = render(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable/>
+                </Provider>
+            </MemoryRouter>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
@@ -68,98 +73,118 @@ describe('EntityTable', () => {
                     columns: [ ...new Array(6) ].map(() => ({ key: 'one', title: 'One' }))
                 }
             });
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable/>
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable/>
+                </Provider>
+            </MemoryRouter>);
             expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
         });
 
         it('should render correctly - without checkbox', () => {
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable hasCheckbox={false} />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable hasCheckbox={false} />
+                </Provider>
+            </MemoryRouter>);
             expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
         });
 
         it('should render correctly - is expandable', () => {
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable expandable />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable expandable />
+                </Provider>
+            </MemoryRouter>);
             expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
         });
 
         it('should render correctly - with actions', () => {
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable actions={[]} />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable actions={[]} />
+                </Provider>
+            </MemoryRouter>);
             expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
         });
 
         describe('sort by', () => {
             it('should render correctly', () => {
                 const store = mockStore(initialState);
-                const wrapper = mount(<Provider store={ store }>
-                    <EntityTable sortBy={{
-                        key: 'one',
-                        directions: 'asc'
-                    }} />
-                </Provider>);
+                const wrapper = mount(<MemoryRouter>
+                    <Provider store={ store }>
+                        <EntityTable sortBy={{
+                            key: 'one',
+                            directions: 'asc'
+                        }} />
+                    </Provider>
+                </MemoryRouter>);
                 expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
             });
 
             it('should render correctly - without checkbox', () => {
                 const store = mockStore(initialState);
-                const wrapper = mount(<Provider store={ store }>
-                    <EntityTable
-                        hasCheckbox={false}
-                        sortBy={{
-                            key: 'one',
-                            directions: 'asc'
-                        }}
-                    />
-                </Provider>);
+                const wrapper = mount(<MemoryRouter>
+                    <Provider store={ store }>
+                        <EntityTable
+                            hasCheckbox={false}
+                            sortBy={{
+                                key: 'one',
+                                directions: 'asc'
+                            }}
+                        />
+                    </Provider>
+                </MemoryRouter>);
                 expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
             });
 
             it('should render correctly - is expandable', () => {
                 const store = mockStore(initialState);
-                const wrapper = mount(<Provider store={ store }>
-                    <EntityTable
-                        expandable
-                        sortBy={{
-                            key: 'one',
-                            directions: 'asc'
-                        }}
-                    />
-                </Provider>);
+                const wrapper = mount(<MemoryRouter>
+                    <Provider store={ store }>
+                        <EntityTable
+                            expandable
+                            sortBy={{
+                                key: 'one',
+                                directions: 'asc'
+                            }}
+                        />
+                    </Provider>
+                </MemoryRouter>);
                 expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
             });
         });
 
         it('should render correctly - compact', () => {
             const store = mockStore(initialState);
-            const wrapper = render(<Provider store={ store }>
-                <EntityTable variant="compact" />
-            </Provider>);
+            const wrapper = render(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable variant="compact" />
+                </Provider>
+            </MemoryRouter>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         it('should render correctly with has items', () => {
             const store = mockStore(initialState);
-            const wrapper = render(<Provider store={ store }>
-                <EntityTable hasItems isLoaded={false} />
-            </Provider>);
+            const wrapper = render(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable hasItems isLoaded={false} />
+                </Provider>
+            </MemoryRouter>);
             expect(toJson(wrapper.find('EntityTable'), { mode: 'shallow' })).toMatchSnapshot();
         });
 
         it('should render correctly', () => {
             const store = mockStore(initialState);
-            const wrapper = render(<Provider store={ store }>
-                <EntityTable/>
-            </Provider>);
+            const wrapper = render(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable/>
+                </Provider>
+            </MemoryRouter>);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
     });
@@ -167,9 +192,11 @@ describe('EntityTable', () => {
     describe('API', () => {
         it('should call default onRowClick', () => {
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable/>
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable/>
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('table tbody tr a[widget="col"]').first().simulate('click');
             expect(routerPush).toHaveBeenCalled();
         });
@@ -177,9 +204,11 @@ describe('EntityTable', () => {
         it('should call onRowClick', () => {
             const onRowClick = jest.fn();
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable onRowClick={onRowClick} />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable onRowClick={onRowClick} />
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('table tbody tr a[widget="col"]').first().simulate('click');
             expect(onRowClick).toHaveBeenCalled();
         });
@@ -195,9 +224,11 @@ describe('EntityTable', () => {
                     }]
                 }
             });
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable expandable />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable expandable />
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('.pf-c-table__toggle button').first().simulate('click');
             expect(onExpand).not.toHaveBeenCalled();
         });
@@ -213,18 +244,22 @@ describe('EntityTable', () => {
                     }]
                 }
             });
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable expandable onExpandClick={onExpand} />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable expandable onExpandClick={onExpand} />
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('.pf-c-table__toggle button').first().simulate('click');
             expect(onExpand).toHaveBeenCalled();
         });
 
         it('should call dispatch select cation', () => {
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable expandable />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable expandable />
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('table tbody tr .pf-c-table__check input').first().simulate('change', {
                 target: {
                     value: 'checked'
@@ -237,9 +272,11 @@ describe('EntityTable', () => {
 
         it('should call dispatch select cation', () => {
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable expandable />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable expandable />
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('table tbody tr .pf-c-table__check input').first().simulate('change', {
                 target: {
                     value: 'checked'
@@ -252,9 +289,11 @@ describe('EntityTable', () => {
 
         it('should call dispatch select all cation', () => {
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable />
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('table thead input[name="check-all"]').first().simulate('change', {
                 target: {
                     value: 'checked'
@@ -267,9 +306,11 @@ describe('EntityTable', () => {
 
         it('should call dispatch set sort cation', () => {
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable />
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('table thead th.pf-c-table__sort button').first().simulate('click');
             const actions = store.getActions();
             expect(actions.length).toBe(1);
@@ -282,9 +323,11 @@ describe('EntityTable', () => {
         it('should call onSort function', () => {
             const onSort = jest.fn();
             const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable onSort={onSort} />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable onSort={onSort} />
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('table thead th.pf-c-table__sort button').first().simulate('click');
             expect(onSort).toHaveBeenCalled();
         });
@@ -297,9 +340,11 @@ describe('EntityTable', () => {
                     columns: [{ key: 'health', title: 'Health' }]
                 }
             });
-            const wrapper = mount(<Provider store={ store }>
-                <EntityTable onSort={onSort} />
-            </Provider>);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable onSort={onSort} />
+                </Provider>
+            </MemoryRouter>);
             wrapper.find('table thead th.pf-c-table__sort button').first().simulate('click');
             const actions = store.getActions();
             expect(actions.length).toBe(0);
