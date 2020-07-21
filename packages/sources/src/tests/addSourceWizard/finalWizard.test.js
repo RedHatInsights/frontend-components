@@ -58,6 +58,8 @@ describe('Final wizard', () => {
         const wrapper = mount(<FinalWizard { ...initialProps } isErrored={ true }/>);
         expect(wrapper.find(ErroredStep)).toHaveLength(1);
         expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Something went wrong');
+        expect(wrapper.find(EmptyState).find(Button).first().text()).toEqual('Retry');
+        expect(wrapper.find(EmptyStateSecondaryActions).text()).toEqual('Open a support case');
     });
 
     it('retries to create source on errored', async () => {
