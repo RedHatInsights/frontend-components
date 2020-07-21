@@ -35,7 +35,7 @@ const ErroredStep = ({
             </EmptyStateBody>
             <Component variant="primary" onClick={ primaryAction || onClose }>{returnButtonTitle}</Component>
             {secondaryActions && (
-                <EmptyStateSecondaryActions>
+                <EmptyStateSecondaryActions className="pf-u-mt-sm">
                     {secondaryActions}
                 </EmptyStateSecondaryActions>
             )}

@@ -66,7 +66,7 @@ const FinalWizard = ({
                 </Button>}
                 Component={() => (
                     <Link to={`/sources/edit/${createdSource.id}`}>
-                        <Button variant='primary'>
+                        <Button variant='primary' className="pf-u-mt-xl">
                             { intl.formatMessage({ id: 'wizard.editSource', defaultMessage: 'Edit source' })}
                         </Button>
                     </Link>
