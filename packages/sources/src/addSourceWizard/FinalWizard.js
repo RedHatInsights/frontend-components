@@ -22,7 +22,8 @@ const FinalWizard = ({
     returnButtonTitle,
     reset,
     createdSource = {},
-    tryAgain
+    tryAgain,
+    afterSuccess
 }) => {
     const [ isDeletingSource, setIsDeleting ] = useState();
     const [ isAfterDeletion, setDeleted ] = useState();
@@ -32,7 +33,12 @@ const FinalWizard = ({
     const removeSource = () => {
         setIsDeleting(true);
 
-        return getSourcesApi().removeSource(createdSource.id).then(() => setDeleted(true)).catch(() => setIsDeleting(false));
+        return getSourcesApi().removeSource(createdSource.id)
+        .then(() => {
+            afterSuccess && afterSuccess();
+            setDeleted(true);
+        })
+        .catch(() => setIsDeleting(false));
     };
 
     let step;
@@ -133,7 +139,8 @@ FinalWizard.propTypes = {
     errorMessage: PropTypes.node,
     reset: PropTypes.func,
     createdSource: PropTypes.object,
-    tryAgain: PropTypes.func
+    tryAgain: PropTypes.func,
+    afterSuccess: PropTypes.func
 };
 
 export default FinalWizard;
