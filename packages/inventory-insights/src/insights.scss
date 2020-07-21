@@ -78,26 +78,16 @@
     }
 }
 
-.batterySectionOverrides{
-    margin-top: 16px;
-}
-
 .smallFontSizeOverride{
     font-size: $ins-fontSize--sm;
 }
 
 .successColorOverride{
-    color: var(--pf-global--success-color--200)
+    color: var(--pf-global--success-color--100)
 }
 
 .remediationButtonOverride{
         margin-top: -8px;
-}
-
-.pf-c-check__label {
-    #battery_svg {
-        height: 1.25rem; 
-    }
 }
 
 .chartSpikeIconColor  {
