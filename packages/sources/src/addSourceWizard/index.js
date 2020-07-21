@@ -124,6 +124,7 @@ const AddSourceWizard = ({
         reset={ () => dispatch({ type: 'reset', initialValues })}
         createdSource={createdSource}
         tryAgain={() => onSubmit(values, state.sourceTypes)}
+        afterSuccess={afterSuccess}
     />;
 };
 

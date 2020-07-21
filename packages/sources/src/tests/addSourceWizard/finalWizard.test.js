@@ -108,6 +108,40 @@ describe('Final wizard', () => {
         expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Removing successful');
     });
 
+    it('removes source on errored step correctly with afterSucces - when unavailable', async () => {
+        const ERROR_MSG = 'Some error message';
+        const removeSource = jest.fn().mockImplementation(() => Promise.resolve());
+        const afterSuccess = jest.fn();
+
+        api.getSourcesApi = () => ({
+            removeSource
+        });
+
+        const wrapper = mount(<FinalWizard
+            { ...initialProps }
+            afterSuccess={afterSuccess}
+            isFinished={ true }
+            createdSource={{
+                id,
+                applications: [{
+                    availability_status: 'unavailable',
+                    availability_status_error: ERROR_MSG
+                }]
+            }}
+        />);
+        expect(wrapper.find(ErroredStep)).toHaveLength(1);
+        expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Configuration unsuccessful');
+        expect(wrapper.find(EmptyStateBody).text()).toEqual(ERROR_MSG);
+
+        await act(async () => {
+            wrapper.find(EmptyStateSecondaryActions).find(Button).simulate('click');
+        });
+        wrapper.update();
+
+        expect(afterSuccess).toHaveBeenCalled();
+        expect(removeSource).toHaveBeenCalledWith(id);
+    });
+
     it('removes source on errored step correctly, restart when removing failed', async () => {
         const ERROR_MSG = 'Some error message';
         const removeSource = jest.fn().mockImplementation(() => Promise.reject());
