@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
@@ -16,7 +16,7 @@ import BiosCard from './BiosCard';
 import InfrastructureCard from './InfrastructureCard';
 import ConfigurationCard from './ConfigurationCard';
 import CollectionCard from './CollectionCard';
-
+import { Provider } from 'react-redux';
 import './general-information.scss';
 
 class GeneralInformation extends Component {
@@ -56,42 +56,46 @@ class GeneralInformation extends Component {
 
     render() {
         const { isModalOpen, modalTitle, cells, rows, expandable, filters } = this.state;
+        const { store } = this.props;
+        const Wrapper = store ? Provider : Fragment;
         return (
-            <Grid sm={ 12 } md={ 6 } hasGutter>
-                <GridItem>
-                    <SystemCard handleClick={ this.handleModalToggle } />
-                </GridItem>
-                <GridItem>
-                    <OperatingSystemCard handleClick={ this.handleModalToggle } />
-                </GridItem>
-                <GridItem>
-                    <BiosCard handleClick={ this.handleModalToggle } />
-                </GridItem>
-                <GridItem>
-                    <InfrastructureCard handleClick={ this.handleModalToggle } />
-                </GridItem>
-                <GridItem>
-                    <ConfigurationCard handleClick={ this.handleModalToggle } />
-                </GridItem>
-                <GridItem>
-                    <CollectionCard handleClick={ this.handleModalToggle } />
-                </GridItem>
-                <Modal
-                    width={ 'initial' }
-                    title={ modalTitle || '' }
-                    isOpen={ isModalOpen }
-                    onClose={ () => this.handleModalToggle() }
-                    className="ins-c-inventory__detail--dialog"
-                >
-                    <InfoTable
-                        cells={ cells }
-                        rows={ rows }
-                        expandable={ expandable }
-                        onSort={ this.onSort }
-                        filters={ filters }
-                    />
-                </Modal>
-            </Grid>
+            <Wrapper store={store}>
+                <Grid sm={ 12 } md={ 6 } hasGutter>
+                    <GridItem>
+                        <SystemCard handleClick={ this.handleModalToggle } />
+                    </GridItem>
+                    <GridItem>
+                        <OperatingSystemCard handleClick={ this.handleModalToggle } />
+                    </GridItem>
+                    <GridItem>
+                        <BiosCard handleClick={ this.handleModalToggle } />
+                    </GridItem>
+                    <GridItem>
+                        <InfrastructureCard handleClick={ this.handleModalToggle } />
+                    </GridItem>
+                    <GridItem>
+                        <ConfigurationCard handleClick={ this.handleModalToggle } />
+                    </GridItem>
+                    <GridItem>
+                        <CollectionCard handleClick={ this.handleModalToggle } />
+                    </GridItem>
+                    <Modal
+                        width={ 'initial' }
+                        title={ modalTitle || '' }
+                        isOpen={ isModalOpen }
+                        onClose={ () => this.handleModalToggle() }
+                        className="ins-c-inventory__detail--dialog"
+                    >
+                        <InfoTable
+                            cells={ cells }
+                            rows={ rows }
+                            expandable={ expandable }
+                            onSort={ this.onSort }
+                            filters={ filters }
+                        />
+                    </Modal>
+                </Grid>
+            </Wrapper>
         );
     }
 }
@@ -100,7 +104,8 @@ GeneralInformation.propTypes = {
     entity: PropTypes.shape({
         id: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
     }),
-    loadSystemDetail: PropTypes.func
+    loadSystemDetail: PropTypes.func,
+    store: PropTypes.any
 };
 GeneralInformation.defaultProps = {
     entity: {}

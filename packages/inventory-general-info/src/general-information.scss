@@ -47,9 +47,8 @@
     @include rem('min-width', 350px);
 
     .pf-c-table {
-        th, th button, td {
-            padding-left: 0 !important;
-        }
+        tbody tr td:first-child { padding-left: 0; }
+        thead tr th { padding-bottom: 0; }
     }
 }
 
