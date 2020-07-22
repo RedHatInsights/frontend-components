@@ -2,10 +2,13 @@ import React from 'react';
 import mount from '../../__mocks__/mount';
 import validated, { ValidatingSpinner } from '../../../sourceFormRenderer/resolveProps/validated';
 import { Spinner, FormHelperText } from '@patternfly/react-core';
+import Form from '@data-driven-forms/react-form-renderer/dist/cjs/form';
 
 describe('resolveProps - validated', () => {
     it('Spinner is renderer correctly', () => {
-        const wrapper = mount(<ValidatingSpinner />);
+        const wrapper = mount(
+            <ValidatingSpinner validating/>
+        );
 
         expect(wrapper.find(Spinner)).toHaveLength(1);
         expect(wrapper.find(FormHelperText).text()).toEqual('Validating');
@@ -19,7 +22,11 @@ describe('resolveProps - validated', () => {
         });
 
         expect(
-            mount(validated(props, { meta: { validating: true } }).helperText).find(ValidatingSpinner)
+            mount(
+                <Form onSubmit={jest.fn()}>
+                    {() => validated(props, { meta: { validating: true } }).helperText}
+                </Form>
+            ).find(ValidatingSpinner)
         ).toHaveLength(1);
     });
 
