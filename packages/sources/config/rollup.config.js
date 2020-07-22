@@ -88,7 +88,8 @@ export default rollupConfig(
         ErroredStep: 'src/addSourceWizard/steps/ErroredStep',
         TimeoutStep: 'src/addSourceWizard/steps/TimeoutStep',
         getApplicationStatus: 'src/api/getApplicationStatus.js',
-        constants: 'src/api/constants.js'
+        constants: 'src/api/constants.js',
+        validated: 'src/sourceFormRenderer/resolveProps/validated.js'
     }, {
         index: 'src/index.js'
     }],
