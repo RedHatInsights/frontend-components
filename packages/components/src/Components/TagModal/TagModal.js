@@ -60,6 +60,7 @@ export default class TagModal extends React.Component {
             onSelect,
             selected,
             onApply,
+            primaryToolbarProps,
             ...props
         } = this.props;
 
@@ -119,6 +120,7 @@ export default class TagModal extends React.Component {
                         onSetPage: (_e, page) => onUpdateData({ ...pagination, page }),
                         onPerPageSelect: (_e, perPage) => onUpdateData({ ...pagination, page: 1, perPage })
                     } : <Skeleton size="lg" />}
+                    {...primaryToolbarProps}
                 /> }
                 {children}
                 {loaded ? <Table
@@ -188,6 +190,9 @@ TagModal.propTypes = {
         count: PropTypes.number,
         page: PropTypes.number,
         perPage: PropTypes.number
+    }),
+    primaryToolbarProps: PropTypes.shape({
+        [PropTypes.string]: PropTypes.any
     }),
     selected: PropTypes.array
 };
