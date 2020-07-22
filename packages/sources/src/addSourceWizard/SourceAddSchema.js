@@ -9,6 +9,7 @@ import { schemaBuilder } from './schemaBuilder';
 import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 import ValidatorReset from './ValidatorReset';
 import { handleError } from '../api/handleError';
+import validated from '../sourceFormRenderer/resolveProps/validated';
 
 export const asyncValidator = async (value, sourceId = undefined, intl) => {
     if (!value) {
@@ -178,7 +179,8 @@ const nameStep = (intl) => ({
             validate: [
                 (value) => asyncValidatorDebouncedWrapper(intl)(value, undefined, intl),
                 { type: validatorTypes.REQUIRED }
-            ]
+            ],
+            resolveProps: validated
         }
     ]
 });
