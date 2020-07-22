@@ -4,7 +4,7 @@ import { TagWithDialog, RenderWrapper } from './shared';
 import { InventoryTable } from './components/table';
 import * as inventoryFitlers from './components/filters';
 
-export function inventoryConnector(store) {
+export function inventoryConnector(store, componentsMapper) {
     return {
         InventoryTable: React.forwardRef(
             (props, ref) => <RenderWrapper
@@ -17,6 +17,7 @@ export function inventoryConnector(store) {
         AppInfo: React.forwardRef(
             (props, ref) => <RenderWrapper
                 { ...props }
+                {...componentsMapper}
                 inventoryRef={ ref }
                 store={ store }
                 cmp={ AppInfo }
@@ -25,6 +26,7 @@ export function inventoryConnector(store) {
         InventoryDetailHead: React.forwardRef(
             (props, ref) => <RenderWrapper
                 { ...props }
+                {...componentsMapper}
                 inventoryRef={ ref }
                 store={ store }
                 cmp={ InventoryDetail }
@@ -33,6 +35,7 @@ export function inventoryConnector(store) {
         InventoryDetail: React.forwardRef(
             (props, ref) => <RenderWrapper
                 { ...props }
+                {...componentsMapper}
                 inventoryRef={ ref }
                 store={ store }
                 cmp={ FullDetail }

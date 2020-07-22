@@ -24,7 +24,8 @@ const InventoryDetail = ({
     hideInvLink,
     onTabSelect,
     onBackToListClick,
-    showDelete
+    showDelete,
+    appList
 }) => {
     const { inventoryId } = useParams();
     const dispatch = useDispatch();
@@ -64,7 +65,7 @@ const InventoryDetail = ({
             }
             {showTags &&  <TagsModal />}
         </Fragment>}
-        <ApplicationDetails onTabSelect={ onTabSelect } />
+        <ApplicationDetails onTabSelect={ onTabSelect } appList={ appList } />
     </div>;
 };
 
@@ -77,6 +78,11 @@ InventoryDetail.propTypes = {
         title: PropTypes.node,
         onClick: PropTypes.func,
         key: PropTypes.string
+    })),
+    appList: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.node,
+        name: PropTypes.string,
+        pageId: PropTypes.string
     })),
     onTabSelect: PropTypes.func,
     onBackToListClick: PropTypes.func
