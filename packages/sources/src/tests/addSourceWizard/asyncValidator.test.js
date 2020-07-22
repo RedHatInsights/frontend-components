@@ -34,7 +34,7 @@ describe('asyncNameValidator', () => {
         try {
             await asyncValidator('a1', undefined, intl);
         } catch (e) {
-            expect(e).toEqual('Name has already been taken');
+            expect(e).toEqual('That name is taken. Try another.');
         }
     });
 

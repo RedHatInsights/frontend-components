@@ -25,7 +25,7 @@ export const asyncValidator = async (value, sourceId = undefined, intl) => {
     }
 
     if (response.data.sources.find(({ id }) => id !== sourceId)) {
-        throw intl.formatMessage({ defaultMessage: 'Name has already been taken', id: 'wizard.nameTaken' });
+        throw intl.formatMessage({ defaultMessage: 'That name is taken. Try another.', id: 'wizard.nameTaken' });
     }
 
     return undefined;
