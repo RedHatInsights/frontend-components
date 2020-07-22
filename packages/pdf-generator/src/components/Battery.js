@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
     Canvas,
-    Text,
+    Text as PDFText,
     View
 } from '@react-pdf/renderer';
 // eslint-disable-next-line camelcase
@@ -56,7 +56,7 @@ const batteryMapper = {
     }
 };
 
-const Battery = ({ variant, ...props }) => {
+const Battery = ({ variant, text, ...props }) => {
     const currBattery = batteryMapper[variant] || {
         svg: '',
         title: 'Unknown'
@@ -72,17 +72,18 @@ const Battery = ({ variant, ...props }) => {
             .path(currBattery.svg).fill(currBattery.color);
         } }
         />
-        <Text style={{
+        <PDFText style={{
             alignSelf: 'center',
             color: currBattery.color
         }}>
-            {currBattery.title}
-        </Text>
+            {text || currBattery.title}
+        </PDFText>
     </View>;
 };
 
 Battery.propTypes = {
-    variant: PropTypes.oneOf(Object.keys(batteryMapper))
+    variant: PropTypes.oneOf(Object.keys(batteryMapper)),
+    text: PropTypes.node
 };
 
 export default Battery;

@@ -10,7 +10,7 @@
     },
     "scripts": {
         "build": "rollup -c ./rollup.config.js",
-        "start": "echo \"Error: no start specified\""
+        "start": "rollup -c ./rollup.config.js -w"
     },
     "repository": {
         "type": "git",
