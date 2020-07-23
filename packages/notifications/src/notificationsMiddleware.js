@@ -36,7 +36,7 @@ const shouldDispatchDefaultError = ({
     dispatchDefaultFailure
 }) => isRejected && !hasCustomNotification && !noErrorOverride && dispatchDefaultFailure;
 
-const createNotificationsMiddleware = (options = {}) => {
+export const createNotificationsMiddleware = (options = {}) => {
     const defaultOptions = {
         dispatchDefaultFailure: true,
         pendingSuffix: '_PENDING',
