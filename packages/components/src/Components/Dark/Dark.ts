@@ -1,7 +1,7 @@
 import * as React from 'react';
-declare type DarkContextValue = 'light' | 'dark';
+export type DarkContextValue = 'light' | 'dark';
 
-declare type DarkProps = {
+export type DarkProps = {
     children: React.ReactNode;
 }
 

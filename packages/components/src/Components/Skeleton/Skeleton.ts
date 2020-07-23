@@ -8,4 +8,4 @@ export type SkeletonProps = Omit<React.HTMLAttributes<HTMLElement>, 'className' 
     isDark?: boolean;
 };
 
-declare var Skeleton: React.FunctionComponent<SkeletonProps>;
+export declare const Skeleton: React.FunctionComponent<SkeletonProps>;
