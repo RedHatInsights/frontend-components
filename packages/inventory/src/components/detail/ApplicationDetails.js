@@ -44,7 +44,7 @@ const ApplicationDetails = ({ onTabSelect, appList, ...props }) => {
 ApplicationDetails.propTypes = {
     appList: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.node,
-        name: PropTypes.string,
+        name: PropTypes.string.isRequired,
         pageId: PropTypes.string
     })),
     onTabSelect: PropTypes.func

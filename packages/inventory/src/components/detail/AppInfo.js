@@ -39,12 +39,7 @@ const AppInfo = ({ componentMapper, appList }) => {
 };
 
 AppInfo.propTypes = {
-    componentMapper: PropTypes.oneOfType([
-        PropTypes.shape({
-            [PropTypes.string]: PropTypes.component
-        }),
-        PropTypes.element
-    ]),
+    componentMapper: PropTypes.element,
     appList: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.node,
         name: PropTypes.string,
