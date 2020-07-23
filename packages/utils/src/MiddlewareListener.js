@@ -1,4 +1,4 @@
-class MiddlewareListener {
+export class MiddlewareListener {
     constructor() {
         this.listeners = new Set();
     }
@@ -8,7 +8,7 @@ class MiddlewareListener {
     }
 
     getMiddleware() {
-        return store => next => action => {
+        return () => next => action => {
             const preventBubble = this.callOnAction(action.type, action.payload);
             if (preventBubble) {
                 next({ type: '@@config/action-stopped', payload: action });
