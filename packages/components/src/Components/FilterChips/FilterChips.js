@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Badge, Chip, ChipGroup, Button } from '@patternfly/react-core';
+import classNames from 'classnames';
 
-const FilterChips = ({ filters, onDelete }) => {
+const FilterChips = ({ className, filters, onDelete }) => {
     const groupedFilters = filters.filter(group => group.category).map(group =>  (
         <ChipGroup key={ `group_${group.category}` } categoryName={group.category}>
             {group.chips.map(chip => (
@@ -23,7 +24,7 @@ const FilterChips = ({ filters, onDelete }) => {
     const plainFilters = filters.filter(group => !(group.category));
 
     return (
-        <span className="ins-c-chip-filters">
+        <span className={classNames(className, 'ins-c-chip-filters')}>
             { groupedFilters }
             { plainFilters && plainFilters.map(chip => (
                 <ChipGroup key={ `group_plain_chip_${chip.name}` }>
@@ -44,6 +45,7 @@ const FilterChips = ({ filters, onDelete }) => {
 };
 
 FilterChips.propTypes = {
+    className: PropTypes.string,
     filters: PropTypes.arrayOf(
         PropTypes.oneOfType([
             PropTypes.shape({
