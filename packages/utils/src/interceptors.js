@@ -63,7 +63,7 @@ export function errorInterceptor(err) {
     }
 }
 
-const instance = axios.create();
+export const instance = axios.create();
 instance.interceptors.request.use(authInterceptor);
 instance.interceptors.response.use(responseDataInterceptor);
 instance.interceptors.response.use(null, interceptor401);
