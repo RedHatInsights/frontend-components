@@ -9,21 +9,28 @@ import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-componen
  * This component detail is accessed from redux if no component found `missing component` is displayed.
  * @param {*} props `componentsMapper` if you want to pass different components list.
  */
-const AppInfo = ({ componentsMapper }) => {
+const AppInfo = ({ componentMapper, appList }) => {
     const store = useStore();
     const loaded = useSelector(({ entityDetails: { loaded } }) => loaded);
+    const entity = useSelector(({ entityDetails: { entity } }) => entity);
     const activeApp = useSelector(({ entityDetails: { activeApps, activeApp, loaded } }) => {
         if (loaded) {
-            return activeApps?.find?.(item => item?.name === activeApp?.appName) || activeApps?.[0];
+            return (appList || activeApps)?.find?.(item => item?.name === activeApp?.appName) || activeApps?.[0];
         }
     });
-    const Cmp = componentsMapper?.[activeApp?.name] || activeApp?.component;
+    const Cmp = componentMapper || activeApp?.component;
     return (
         <Fragment>
             {
                 loaded ? activeApp && (
                     <div className={ `ins-active-app-${activeApp?.name}` }>
-                        { Cmp ? <Cmp store={store} /> : 'missing component'}
+                        { Cmp ?
+                            <Cmp
+                                store={store}
+                                inventoryId={entity.id}
+                                appName={activeApp?.name}
+                            /> :
+                            'missing component'}
                     </div>
                 ) : <Skeleton size={ SkeletonSize.md } />
             }
@@ -32,9 +39,12 @@ const AppInfo = ({ componentsMapper }) => {
 };
 
 AppInfo.propTypes = {
-    componentsMapper: PropTypes.shape({
-        [PropTypes.string]: PropTypes.component
-    })
+    componentMapper: PropTypes.element,
+    appList: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.node,
+        name: PropTypes.string,
+        pageId: PropTypes.string
+    }))
 };
 
 export default AppInfo;

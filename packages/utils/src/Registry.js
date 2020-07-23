@@ -17,7 +17,7 @@ function init(initialState = {}, middleware = [], composeEnhancersDefault) {
     return registry;
 }
 
-export default function() {
+export function registryDecorator() {
     return function(target) {
         target.prototype.getRegistry = () => registry;
     };
@@ -26,3 +26,5 @@ export default function() {
 export function getRegistry(initialState = {}, middleware = [], composeEnhancersDefault) {
     return init(initialState, middleware, composeEnhancersDefault);
 }
+
+export default registryDecorator;

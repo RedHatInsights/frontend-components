@@ -11,7 +11,7 @@ import {
     PaginationVariant
 } from '@patternfly/react-core';
 
-const NotificationPagination = ({ page, onSetPage, onClearAll, count }) => (
+export const NotificationPagination = ({ page, onSetPage, onClearAll, count }) => (
     <Card className="notification-item">
         <CardBody>
             <Level>

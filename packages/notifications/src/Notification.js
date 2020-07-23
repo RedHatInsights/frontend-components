@@ -10,7 +10,7 @@ import './notifications.scss';
 
 const DEFAULT_DELAY = 5000;
 
-class Notification extends Component {
+export class Notification extends Component {
     constructor(props) {
         super(props);
         this.handleDismiss = this.handleDismiss.bind(this);
