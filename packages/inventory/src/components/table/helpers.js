@@ -36,7 +36,10 @@ export const createRows = (rows = [], columns = [], { actions, expandable, ...ex
     return flatten(rows.map((oneItem, key) => ([{
         ...oneItem,
         ...oneItem.children && expandable && { isOpen: !!oneItem.isOpen },
-        cells: buildCells(oneItem, columns, extra)
+        cells: buildCells(oneItem, columns, extra),
+        actionProps: {
+            'data-ouia-component-id': `${oneItem.id}-actions-kebab`
+        }
     }, oneItem.children && expandable && {
         cells: [
             {

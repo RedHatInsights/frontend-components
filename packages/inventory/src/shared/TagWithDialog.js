@@ -5,7 +5,11 @@ import { TagCount } from '@redhat-cloud-services/frontend-components/components/
 import { loadTags, toggleTagModal } from '../redux/actions';
 
 const TagWithDialog = ({ count, loadTags, systemId }) => (
-    <span onClick={(e) => e.stopPropagation()} className="ins-c-inventory__list-tags">
+    <span
+        onClick={(e) => e.stopPropagation()}
+        className="ins-c-inventory__list-tags"
+        data-ouia-component-id={`${systemId}-tag-button`}
+    >
         <TagCount count={count} onTagClick={ () => loadTags(systemId, count) } />
     </span>
 );
