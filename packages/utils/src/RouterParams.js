@@ -3,7 +3,7 @@ import { withRouter, matchPath } from 'react-router-dom';
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 
-export default function(Component) {
+export const routerParams = (Component) => {
     class RouterParams extends React.Component {
         componentDidMount () {
             const { match: { params, path, url }, onPathChange, location } = this.props;
@@ -41,4 +41,6 @@ export default function(Component) {
             })
         }
     ))(RouterParams));
-}
+};
+
+export default routerParams;

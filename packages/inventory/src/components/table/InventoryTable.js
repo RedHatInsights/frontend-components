@@ -30,7 +30,7 @@ const InventoryTable = forwardRef(({
         (hasItems && propsPage) || invPage || 1)
     , shallowEqual);
     const perPage = useSelector(({ entities: { perPage: invPerPage } }) => (
-        (hasItems && perPage) || invPerPage || 50)
+        (hasItems && propsPerPage) || invPerPage || 50)
     , shallowEqual);
     const total = useSelector(({ entities: { total: invTotal } }) => (
         (hasItems && (total || items?.length)) || invTotal)

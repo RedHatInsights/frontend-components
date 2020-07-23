@@ -107,7 +107,7 @@ describe('AddSourceWizard', () => {
         jest.useRealTimers();
     });
 
-    it.only('pass created source to afterSuccess function', async () => {
+    it('pass created source to afterSuccess function', async () => {
         jest.useFakeTimers();
 
         const afterSubmitMock = jest.fn();
