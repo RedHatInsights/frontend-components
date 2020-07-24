@@ -312,7 +312,7 @@ describe('SourceWizardSummary component', () => {
 
             expect(createItem(field, values, availableStepKeys)).toEqual({
                 label: 'Label 1',
-                value: <FormattedMessage id="wizard.Yes" defaultMessage="Yes" />
+                value: <FormattedMessage id="wizard.yes" defaultMessage="Yes" />
             });
         });
 
@@ -325,7 +325,7 @@ describe('SourceWizardSummary component', () => {
 
             expect(createItem(field, values, availableStepKeys)).toEqual({
                 label: 'Label 1',
-                value: <FormattedMessage id="wizard.No" defaultMessage="No" />
+                value: <FormattedMessage id="wizard.no" defaultMessage="No" />
             });
         });
 

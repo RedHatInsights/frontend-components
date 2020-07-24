@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radio, FormHelperText } from '@patternfly/react-core';
+import { Radio } from '@patternfly/react-core';
 
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
@@ -36,7 +36,6 @@ describe('AuthSelect component', () => {
         const wrapper = mount(<FormRenderer { ...initialProps }/>);
 
         expect(wrapper.find(Radio)).toHaveLength(1);
-        expect(wrapper.find(FormHelperText)).toHaveLength(0);
     });
 
     it('renders correctly when disableAuthType', () => {
@@ -52,8 +51,7 @@ describe('AuthSelect component', () => {
 
         const wrapper = mount(<FormRenderer { ...initialProps }/>);
 
-        expect(wrapper.find(Radio)).toHaveLength(1);
-        expect(wrapper.find(FormHelperText)).toHaveLength(1);
+        expect(wrapper.find(Radio).props().isDisabled).toEqual(true);
     });
 
     it('calls onChange correctly', () => {
@@ -68,23 +66,6 @@ describe('AuthSelect component', () => {
         wrapper.find('form').simulate('submit');
 
         expect(onSubmit).toHaveBeenCalledWith({});
-    });
-
-    it('renders correctly when editing', () => {
-        initialProps = {
-            ...initialProps,
-            schema: {
-                fields: [{
-                    ...initialProps.schema.fields[0],
-                    disableAuthType: true
-                }]
-            }
-        };
-
-        const wrapper = mount(<FormRenderer { ...initialProps }/>);
-
-        expect(wrapper.find(Radio)).toHaveLength(1);
-        expect(wrapper.find(FormHelperText)).toHaveLength(1);
     });
 
     it('reset the value when unsupported auth type for application is selected', () => {

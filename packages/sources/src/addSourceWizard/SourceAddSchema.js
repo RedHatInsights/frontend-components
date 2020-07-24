@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
 import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
 import { TextContent, Text, TextVariants } from '@patternfly/react-core';
@@ -55,9 +55,15 @@ const compileAllSourcesComboOptions = (sourceTypes) => (
     ]
 );
 
-const compileAllApplicationComboOptions = (applicationTypes) => (
+const compileAllApplicationComboOptions = (applicationTypes, intl) => (
     [
-        { label: <FormattedMessage id="wizard.None" defaultMessage="None" />, key: 'none' },
+        {
+            label: intl.formatMessage({
+                id: 'wizard.none',
+                defaultMessage: 'None'
+            }),
+            key: 'none'
+        },
         ...applicationTypes.sort((a, b) => a.display_name.localeCompare(b.display_name)).map(t => ({
             value: t.id,
             label: t.display_name
@@ -109,21 +115,27 @@ export const nextStep = ({ values: { application, source_type } }) => {
 };
 
 const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => ({
-    title: <FormattedMessage id="wizard.ChooseApplicationAndSourceType" defaultMessage="Choose application and source type" />,
+    title: intl.formatMessage({
+        id: 'wizard.chooseAppAndType',
+        defaultMessage: 'Choose application and source type'
+    }),
     name: 'types_step',
     nextStep,
     fields: [
         {
             component: 'enhanced-select',
             name: 'application.application_type_id',
-            label: <FormattedMessage id="wizard.ASelectYourApplication" defaultMessage="A. Select your application" />,
+            label: intl.formatMessage({
+                id: 'wizard.selectYourApplication',
+                defaultMessage: 'A. Select your application'
+            }),
             // eslint-disable-next-line react/display-name
-            options: compileAllApplicationComboOptions(applicationTypes),
+            options: compileAllApplicationComboOptions(applicationTypes, intl),
             mutator: appMutator(applicationTypes),
-            description: <FormattedMessage
-                id="wizard.SelectingAnApplicationWillLimitTheAvailableSourceTypesYouCanAssignAnApplicationToYourSourceNowOrAfterAddingYourSource"
-                defaultMessage="Selecting an application will limit the available source types. You can assign an application to your source now or after adding your source."
-            />,
+            description: intl.formatMessage({
+                id: 'wizard.selectAppWarning',
+                defaultMessage: 'Selecting an application will limit the available source types. You can assign an application to your source now or after adding your source.'
+            }),
             isDisabled: disableAppSelection,
             placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' })
         },
@@ -131,7 +143,10 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => 
             component: 'card-select',
             name: 'source_type',
             isRequired: true,
-            label: <FormattedMessage id="wizard.BSelectYourSourceType" defaultMessage="B. Select your source type" />,
+            label: intl.formatMessage({
+                id: 'wizard.selectYourSourceType',
+                defaultMessage: 'B. Select your source type'
+            }),
             iconMapper: iconMapper(sourceTypes),
             validate: [{
                 type: validatorTypes.REQUIRED
@@ -147,20 +162,27 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => 
     ]
 });
 
-export const NameDescription = () => (
-    <TextContent key='step1'>
-        <Text component={ TextVariants.p }>
-            <FormattedMessage
-                id="wizard.ToImportDataForAnApplicationYouNeedToConnectToADataSourceEnterANameThenProceedToSelectYourApplicationAndSourceType"
-                // eslint-disable-next-line max-len
-                defaultMessage="To import data for an application, you need to connect to a data source. Enter a name, then proceed to select your application and source type."
-            />
-        </Text>
-    </TextContent>
-);
+export const NameDescription = () => {
+    const intl = useIntl();
+
+    return (
+        <TextContent key='step1'>
+            <Text component={ TextVariants.p }>
+                { intl.formatMessage({
+                    id: 'wizard.nameDescription',
+                    // eslint-disable-next-line max-len
+                    defaultMessage: 'To import data for an application, you need to connect to a data source. Enter a name, then proceed to select your application and source type.'
+                }) }
+            </Text>
+        </TextContent>
+    );
+};
 
 const nameStep = (intl) => ({
-    title: <FormattedMessage id="wizard.EnterSourceName" defaultMessage="Enter source name" />,
+    title: intl.formatMessage({
+        id: 'wizard.enterSourceName',
+        defaultMessage: 'Enter source name'
+    }),
     name: 'name_step',
     nextStep: 'types_step',
     fields: [
@@ -173,7 +195,10 @@ const nameStep = (intl) => ({
             component: componentTypes.TEXT_FIELD,
             name: 'source.name',
             type: 'text',
-            label: <FormattedMessage id="wizard.Name" defaultMessage="Name" />,
+            label: intl.formatMessage({
+                id: 'wizard.name',
+                defaultMessage: 'Name'
+            }),
             placeholder: 'Source_1',
             isRequired: true,
             validate: [
@@ -185,18 +210,22 @@ const nameStep = (intl) => ({
     ]
 });
 
-export const SummaryDescription = () => (
-    <TextContent>
-        <Text component={ TextVariants.p }>
-            <FormattedMessage
-                id="wizard.ReviewTheInformationBelowAndClickAddToAddYourSourceUseTheBackButtonToMakeChanges"
-                defaultMessage="Review the information below and click Add to add your source. Use the Back button to make changes."
-            />
-        </Text>
-    </TextContent>
-);
+export const SummaryDescription = () => {
+    const intl = useIntl();
 
-const summaryStep = (sourceTypes, applicationTypes) => ({
+    return (
+        <TextContent>
+            <Text component={ TextVariants.p }>
+                { intl.formatMessage({
+                    id: 'wizard.summaryDescription',
+                    defaultMessage: 'Review the information below and click Add to add your source. Use the Back button to make changes.'
+                }) }
+            </Text>
+        </TextContent>
+    );
+};
+
+const summaryStep = (sourceTypes, applicationTypes, intl) => ({
     fields: [
         {
             component: 'description',
@@ -210,7 +239,10 @@ const summaryStep = (sourceTypes, applicationTypes) => ({
             applicationTypes
         }],
     name: 'summary',
-    title: <FormattedMessage id="wizard.ReviewDetails" defaultMessage="Review details" />
+    title: intl.formatMessage({
+        id: 'wizard.reviewDetails',
+        defaultMessage: 'Review details'
+    })
 });
 
 export default (sourceTypes, applicationTypes, disableAppSelection, container, intl) => {
@@ -224,10 +256,22 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container, i
             inModal: true,
             description: WIZARD_DESCRIPTION,
             buttonLabels: {
-                submit: <FormattedMessage id="sources.addButton" defaultMessage="Add" />,
-                back: <FormattedMessage id="wizard.Back" defaultMessage="Back" />,
-                cancel: <FormattedMessage id="wizard.Cancel" defaultMessage="Cancel" />,
-                next: <FormattedMessage id="wizard.Next" defaultMessage="Next" />
+                submit: intl.formatMessage({
+                    id: 'sources.add',
+                    defaultMessage: 'Add'
+                }),
+                back: intl.formatMessage({
+                    id: 'wizard.back',
+                    defaultMessage: 'Back'
+                }),
+                cancel: intl.formatMessage({
+                    id: 'wizard.cancel',
+                    defaultMessage: 'Cancel'
+                }),
+                next: intl.formatMessage({
+                    id: 'wizard.next',
+                    defaultMessage: 'Next'
+                })
             },
             container,
             showTitles: true,
@@ -236,7 +280,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container, i
                 nameStep(intl),
                 typesStep(sourceTypes, applicationTypes, disableAppSelection, intl),
                 ...schemaBuilder(sourceTypes, applicationTypes),
-                summaryStep(sourceTypes, applicationTypes)
+                summaryStep(sourceTypes, applicationTypes, intl)
             ]
         }]
     });

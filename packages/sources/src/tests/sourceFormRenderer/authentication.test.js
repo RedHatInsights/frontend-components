@@ -131,7 +131,7 @@ describe('Authentication test', () => {
 
         expect(wrapper.find(Authentication)).toHaveLength(1);
         expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().isRequired).toEqual(false);
-        expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual(expect.any(Object));
+        expect(wrapper.find(componentMapper[componentTypes.TEXT_FIELD]).props().helperText).toEqual('Changing this resets your current .');
 
         wrapper.find('form').simulate('submit');
         wrapper.update();

@@ -136,7 +136,7 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
         return ({
             name: type.name,
             title: <FormattedMessage
-                id="wizard.ConfigureAcronymmapperTypeProductNameCredentials"
+                id="wizard.configureCredentials"
                 defaultMessage="Configure {title} credentials"
                 values={{ title: acronymMapper(type.product_name) }}
             />,
@@ -176,7 +176,7 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
         return ({
             name: type.name,
             title: <FormattedMessage
-                id="wizard.ConfigureAcronymmapperTypeProductNameAuthNameCredentials"
+                id="wizard.configureTypeAuthcredentials"
                 defaultMessage="Configure {title} - {name} credentials"
                 values={{ title: acronymMapper(type.product_name), name: auth.name }}
             />,
@@ -251,7 +251,7 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
         return ({
             name: `${type.name}-${appType.id}`,
-            title: <FormattedMessage id="wizard.ChooseAuthenticationType" defaultMessage="Choose authentication type" />,
+            title: <FormattedMessage id="wizard.chooseAuthType" defaultMessage="Choose authentication type" />,
             fields,
             nextStep: {
                 when: 'auth_select',
@@ -306,9 +306,9 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
         return ({
             name: `${type.name}-${appType.id}`,
             title: <FormattedMessage
-                id="wizard.ConfigureAuthNameCredentials"
-                defaultMessage="Configure {name} credentials"
-                title={{ name: auth.name }}
+                id="wizard.configureCredentials"
+                defaultMessage="Configure {title} credentials"
+                title={{ title: auth.name }}
             />,
             fields: [
                 ...fields,
