@@ -141,9 +141,9 @@ export const loadSystems = (options, showTags) => {
     // eslint-disable-next-line camelcase
     const currPerPage = options?.perPage || options?.per_page;
 
-    const limitedItems = options?.items?.slice(
+    const limitedItems = options?.items?.length > currPerPage ? options?.items?.slice(
         (options?.page - 1) * currPerPage, options?.page * currPerPage
-    );
+    ) : options?.items;
     const config = {
         ...options.hasItems && {
             sortBy: options?.sortBy?.key,
