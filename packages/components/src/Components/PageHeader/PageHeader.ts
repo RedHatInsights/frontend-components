@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-declare type PageHeaderProps = Omit<React.HTMLAttributes<React.HTMLElement>, 'className'> & {
+export type PageHeaderProps = Omit<React.HTMLAttributes<HTMLElement>, 'className'> & {
     className?: string;
     children: React.ReactNode;
 };
 
 export declare const PageHeader: React.FunctionComponent<PageHeaderProps>;
 
-declare type PageHeaderTitleProps = Omit<React.HTMLAttributes<React.HTMLElement>, 'className', 'title'> & {
+export type PageHeaderTitleProps = Omit<React.HTMLAttributes<HTMLElement>, 'className' | 'title'> & {
     className?: string;
     title: React.ReactNode;
 };

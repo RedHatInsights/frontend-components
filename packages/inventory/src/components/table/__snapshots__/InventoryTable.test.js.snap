@@ -116,7 +116,7 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
     page={5}
     perPage={20}
     showTags={false}
-    total={1}
+    total={200}
   />
   <ForwardRef
     hasItems={true}

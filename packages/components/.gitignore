@@ -2,3 +2,8 @@
 /index.js
 /index.css
 /index.d.ts
+
+# Definition files
+*.d.ts
+# Incremental ts info
+tsconfig.tsbuildinfo
