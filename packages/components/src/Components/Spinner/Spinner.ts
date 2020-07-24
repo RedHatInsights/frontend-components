@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-declare type SpinnerProps = Omit<React.HTMLAttributes<React.HTMLElement>, 'className'> & {
+export type SpinnerProps = Omit<React.HTMLAttributes<HTMLElement>, 'className'> & {
     centered?: boolean;
     className?: string;
 };

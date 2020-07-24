@@ -7,7 +7,7 @@ import Notification from './Notification';
 import './notifications.scss';
 import NotificationPagination from './NotificationPagination';
 
-class Portal extends Component {
+export class Portal extends Component {
     state = {
         page: 1
     }
@@ -63,4 +63,6 @@ const mapDispatchToProps = (dispatch, initialProps) => ({
     onClearAll: initialProps.clearNotifications ? initialProps.clearNotifications : () => dispatch(clearNotifications())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Portal);
+export const NotificationPortal = connect(mapStateToProps, mapDispatchToProps)(Portal);
+
+export default NotificationPortal;
