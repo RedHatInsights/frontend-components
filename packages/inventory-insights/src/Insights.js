@@ -82,7 +82,7 @@ class InventoryRuleList extends Component {
             const activeRuleFirstReportsData = this.activeRuleFirst(reportsFetch);
             this.fetchKbaDetails(activeRuleFirstReportsData);
             this.setState({
-                rows: this.buildRows(activeRuleFirstReportsData, {}, filters, rows, true, searchValue, true),
+                rows: this.buildRows(activeRuleFirstReportsData, {}, filters, rows, searchValue, true),
                 inventoryReportFetchStatus: 'fulfilled',
                 activeReports: activeRuleFirstReportsData
             });
@@ -110,7 +110,7 @@ class InventoryRuleList extends Component {
             )).data.response.docs;
             this.setState({
                 kbaDetailsData: kbaDetailsFetch,
-                rows: this.buildRows(reportsData, kbaDetailsFetch, filters, rows, true, searchValue)
+                rows: this.buildRows(reportsData, kbaDetailsFetch, filters, rows, searchValue)
             });
         } catch (error) {
             console.error(error, 'KBA fetch failed.');
@@ -136,19 +136,24 @@ class InventoryRuleList extends Component {
         });
     };
 
-    buildRows = (activeReports, kbaDetails, filters, rows, isOpenDefault = true, searchValue = '', kbaLoading = false) => {
+    buildRows = (activeReports, kbaDetails, filters, rows, searchValue = '', kbaLoading = false) => {
         const builtRows = flatten(activeReports.map((value, key) => {
+            console.error(activeReports);
             const rule = value.rule;
             const resolution = value.resolution;
             const kbaDetail = Object.keys(kbaDetails).length ? kbaDetails.filter(article => article.id === value.rule.node_id)[0] : {};
             const entity = rows.filter((rowVal, rowKey) => rowKey % 2 === 0 && rowVal.rule.rule_id === rule.rule_id && rowVal);
             const selected = entity.length ? entity[0].selected : false;
-            const isOpen = entity.length ? entity[0].isOpen : false;
+            const isOpen = rows.length ? (
+                entity.length ? entity[0].isOpen : false
+            ) : (
+                key === 0 ? true : false
+            );
             const reportRow = [
                 {
                     rule,
                     resolution,
-                    isOpen: isOpen || isOpenDefault,
+                    isOpen,
                     selected,
                     cells: [
                         {
@@ -239,11 +244,12 @@ class InventoryRuleList extends Component {
         };
         const sortedReportsDirectional = direction === SortByDirection.asc ? sortedReports[index] : sortedReports[index].reverse();
         this.setState({
+            activeReports: sortedReportsDirectional,
             sortBy: {
                 index,
                 direction
             },
-            rows: this.buildRows(sortedReportsDirectional, kbaDetailsData, filters, rows, false, searchValue)
+            rows: this.buildRows(sortedReportsDirectional, kbaDetailsData, filters, rows, searchValue)
         });
     };
 
@@ -256,13 +262,13 @@ class InventoryRuleList extends Component {
     onFilterChange = (param, values) => {
         const { filters, activeReports, kbaDetailsData, searchValue, rows } = this.state;
         const newFilters = values.length > 0 ? { ...filters, ...{ [param]: values } } : this.removeFilterParam(param);
-        const builtRows = this.buildRows(activeReports, kbaDetailsData, newFilters, rows, false, searchValue);
+        const builtRows = this.buildRows(activeReports, kbaDetailsData, newFilters, rows, searchValue);
         this.setState({ rows: builtRows, filters: newFilters });
     };
 
     onInputChange = (value) => {
         const { activeReports, kbaDetailsData, filters, rows } = this.state;
-        const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, false, value);
+        const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, value);
         this.setState({ searchValue: value, rows: builtRows });
     };
 
@@ -272,7 +278,7 @@ class InventoryRuleList extends Component {
             rows: this.buildRows(
                 activeReports, kbaDetailsData, filters,
                 rows.map((oneRow) => oneRow.rule && oneRow.rule.rule_id === rule.rule_id ? { ...oneRow, selected: isSelected } : { ...oneRow }),
-                false, searchValue
+                searchValue
             )
         });
     };
@@ -288,8 +294,7 @@ class InventoryRuleList extends Component {
                 rows.map((row, index) => (
                     // We need to use mod 2 here to ignore children with no has_playbook param
                     index % 2 === 0 && row.resolution.has_playbook ? { ...row, selected: isSelected } : row
-                )),
-                false, searchValue
+                )), searchValue
             )
         });
     }
@@ -322,12 +327,12 @@ class InventoryRuleList extends Component {
     onChipDelete = (event, itemsToRemove, isAll) => {
         const { filters, activeReports, kbaDetailsData, rows } = this.state;
         if (isAll) {
-            const builtRows = this.buildRows(activeReports, kbaDetailsData, {}, rows, false, '');
+            const builtRows = this.buildRows(activeReports, kbaDetailsData, {}, rows, '');
             this.setState({ rows: builtRows, filters: {}, searchValue: '' });
         } else {
             itemsToRemove.map(item => {
                 if (item.category === 'Description') {
-                    const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, false, '');
+                    const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, '');
                     this.setState({ rows: builtRows, searchValue: '' });
                 } else {
                     this.onFilterChange(item.urlParam, filters[item.urlParam].filter(value => String(value) !== String(item.chips[0].value)));
