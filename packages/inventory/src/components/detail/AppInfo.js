@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import { useStore, useSelector } from 'react-redux';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 
@@ -11,11 +12,15 @@ import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-componen
  */
 const AppInfo = ({ componentMapper, appList }) => {
     const store = useStore();
+    const { search } = useLocation();
+    const searchParams = new URLSearchParams(search);
     const loaded = useSelector(({ entityDetails: { loaded } }) => loaded);
     const entity = useSelector(({ entityDetails: { entity } }) => entity);
     const activeApp = useSelector(({ entityDetails: { activeApps, activeApp, loaded } }) => {
         if (loaded) {
-            return (appList || activeApps)?.find?.(item => item?.name === activeApp?.appName) || activeApps?.[0];
+            return (appList || activeApps)?.find?.(item => item?.name === (
+                searchParams.get('appName') || activeApp?.appName
+            )) || activeApps?.[0];
         }
     });
     const Cmp = componentMapper || activeApp?.component;

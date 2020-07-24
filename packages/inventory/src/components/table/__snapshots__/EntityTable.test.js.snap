@@ -93,7 +93,9 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
           class="ins-composed-col"
         >
           <div />
-          <div>
+          <div
+            class=""
+          >
             <a
               href="/testing-id"
               widget="col"
@@ -247,7 +249,9 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -402,7 +406,9 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -468,7 +474,9 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -588,7 +596,9 @@ exports[`EntityTable DOM should render correctly 1`] = `
           class="ins-composed-col"
         >
           <div />
-          <div>
+          <div
+            class=""
+          >
             <a
               href="/testing-id"
               widget="col"
@@ -648,7 +658,9 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -714,7 +726,9 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -781,7 +795,9 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
