@@ -970,19 +970,11 @@ exports[`Steps components TimeoutStep renders correctly 1`] = `
                     <div
                       className="pf-c-empty-state__body"
                     >
-                      <FormattedMessage
-                        defaultMessage="We are still working to confirm credentials and app settings.{newLine}To track progress, check the Status column in the Sources table."
-                        id="wizard.uncompleteConfigurationDescription"
-                        values={
-                          Object {
-                            "newLine": <br />,
-                          }
-                        }
-                      >
-                        We are still working to confirm credentials and app settings.
-                        <br />
-                        To track progress, check the Status column in the Sources table.
-                      </FormattedMessage>
+                      We are still working to confirm credentials and app settings.
+                      <br
+                        key="br"
+                      />
+                      To track progress, check the Status column in the Sources table.
                     </div>
                   </Component>
                   <Component
@@ -1140,19 +1132,11 @@ exports[`Steps components TimeoutStep renders correctly customized 1`] = `
                     <div
                       className="pf-c-empty-state__body"
                     >
-                      <FormattedMessage
-                        defaultMessage="We are still working to confirm credentials and app settings.{newLine}To track progress, check the Status column in the Sources table."
-                        id="wizard.uncompleteConfigurationDescription"
-                        values={
-                          Object {
-                            "newLine": <br />,
-                          }
-                        }
-                      >
-                        We are still working to confirm credentials and app settings.
-                        <br />
-                        To track progress, check the Status column in the Sources table.
-                      </FormattedMessage>
+                      We are still working to confirm credentials and app settings.
+                      <br
+                        key="br"
+                      />
+                      To track progress, check the Status column in the Sources table.
                     </div>
                   </Component>
                   <Component

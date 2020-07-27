@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Radio, FormHelperText } from '@patternfly/react-core';
+import { Radio } from '@patternfly/react-core';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
-import { FormattedMessage } from 'react-intl';
 
 const AuthRadio = (props) => {
     const { label, input, authName, supportedAuthTypes, disableAuthType } = useFieldApi(props);
 
-    let isDisabled = disableAuthType;
     const isSelected = input.value === authName;
 
     if (input.value && supportedAuthTypes && !supportedAuthTypes.includes(input.value)) {
@@ -15,20 +13,15 @@ const AuthRadio = (props) => {
     }
 
     return (
-        <React.Fragment>
-            <Radio
-                value={authName}
-                isChecked={isSelected}
-                name={input.name}
-                onChange={() => input.onChange(authName)}
-                label={label}
-                id={`${input.name}-${authName}`}
-                isDisabled={isDisabled}
-            />
-            {disableAuthType && !isSelected && <FormHelperText isHidden={false} className="pf-m-disabled">
-                <FormattedMessage id="wizard.YouCannotChangeTheAuthtypeWhenEditing" defaultMessage="You cannot change the authtype, when editing." />
-            </FormHelperText>}
-        </React.Fragment>
+        <Radio
+            value={authName}
+            isChecked={isSelected}
+            name={input.name}
+            onChange={() => input.onChange(authName)}
+            label={label}
+            id={`${input.name}-${authName}`}
+            isDisabled={disableAuthType}
+        />
     );
 };
 

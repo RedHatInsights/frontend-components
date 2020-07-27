@@ -52,13 +52,7 @@ exports[`SSLFormLabel renders loading step correctly 1`] = `
       textComponent={Symbol(react.fragment)}
     >
       <SSLFormLabel>
-        <FormattedMessage
-          defaultMessage="SSL Certificate"
-          id="wizard.SslCertificate"
-        >
-          SSL Certificate
-        </FormattedMessage>
-         
+        SSL Certificate
         <Popover
           appendTo={[Function]}
           aria-label="Help text"
@@ -67,25 +61,16 @@ exports[`SSLFormLabel renders loading step correctly 1`] = `
               <Unknown
                 component="p"
               >
-                <FormattedMessage
-                  defaultMessage="You can obtain your OpenShift Container Platform provider’s CA certificate for all endpoints (default, metrics, alerts) from {cmd}."
-                  id="wizard.YouCanObtainYourOpenshiftContainerPlatformProviderSCaCertificateForAllEndpointsDefaultMetricsAlertsFrom"
-                  values={
-                    Object {
-                      "cmd": <b>
-                        /etc/origin/master/ca.crt
-                      </b>,
-                    }
-                  }
-                />
+                You can obtain your OpenShift Container Platform provider’s CA certificate for all endpoints (default, metrics, alerts) from 
+                <b>
+                  /etc/origin/master/ca.crt
+                </b>
+                .
               </Unknown>
               <Unknown
                 component="p"
               >
-                <FormattedMessage
-                  defaultMessage="Paste the output (a block of text starting with --BEGIN CERTIFICATE--) into the Trusted CA Certificates field."
-                  id="wizard.PasteTheOutputABlockOfTextStartingWithBeginCertificateIntoTheTrustedCaCertificatesField"
-                />
+                Paste the output (a block of text starting with --BEGIN CERTIFICATE--) into the Trusted CA Certificates field.
               </Unknown>
             </Unknown>
           }
@@ -168,6 +153,7 @@ exports[`SSLFormLabel renders loading step correctly 1`] = `
             zIndex={9999}
           >
             <QuestionCircleIcon
+              className="pf-u-ml-sm"
               color="currentColor"
               noVerticalAlign={false}
               size="sm"
@@ -175,6 +161,7 @@ exports[`SSLFormLabel renders loading step correctly 1`] = `
               <svg
                 aria-hidden={true}
                 aria-labelledby={null}
+                className="pf-u-ml-sm"
                 fill="currentColor"
                 height="1em"
                 role="img"

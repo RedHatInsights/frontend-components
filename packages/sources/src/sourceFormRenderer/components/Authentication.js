@@ -3,10 +3,10 @@ import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/comp
 import componentMapper from '@data-driven-forms/pf4-component-mapper/dist/cjs/component-mapper';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
-import { FormattedMessage } from 'react-intl';
-import { FormHelperText } from '@patternfly/react-core';
+import { useIntl } from 'react-intl';
 
 const Authentication = (rest) => {
+    const intl = useIntl();
     const formOptions = useFormApi();
 
     const { authentication } = formOptions.getState().values;
@@ -17,13 +17,10 @@ const Authentication = (rest) => {
         ...rest,
         ...(authentication && authentication.id ? {
             isRequired: false,
-            helperText: <FormHelperText isHidden={false}>
-                <FormattedMessage
-                    id="wizard.ChangingThisResetsYourCurrentRestLabel"
-                    defaultMessage="Changing this resets your current {label}."
-                    values={{ label: rest.label }}
-                />
-            </FormHelperText>,
+            helperText: intl.formatMessage({
+                id: 'wizard.changeAuthHelper',
+                defaultMessage: 'Changing this resets your current {label}.'
+            }, { label: rest.label }),
             validate: doNotRequirePassword
         } : {})
     };
