@@ -144,15 +144,16 @@ export const loadSystems = (options, showTags) => {
     const limitedItems = options?.items?.length > currPerPage ? options?.items?.slice(
         (options?.page - 1) * currPerPage, options?.page * currPerPage
     ) : options?.items;
+
     const config = {
         ...options.hasItems && {
             sortBy: options?.sortBy?.key,
             orderDirection: options?.sortBy?.direction?.toUpperCase()
         },
+        ...options,
         // eslint-disable-next-line camelcase
         per_page: currPerPage,
-        filters: options.activeFilters,
-        ...options,
+        filters: options?.filters || options?.activeFilters,
         ...limitedItems?.length > 0 && {
             itemsPage: options?.page,
             page: 1
