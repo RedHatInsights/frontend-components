@@ -67,7 +67,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                 <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
-                            <BullseyeIcon />
+                            <BullseyeIcon className='ins-c-report-details-icon'/>
                             <strong> Detected issues</strong>
                         </CardHeader>
                         <CardBody>
@@ -78,7 +78,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                 <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
-                            <ThumbsUpIcon />
+                            <ThumbsUpIcon className='ins-c-report-details-icon'/>
                             <strong> Steps to resolve</strong>
                         </CardHeader>
                         <CardBody>
@@ -89,7 +89,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                 {rule.node_id && <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
-                            <LightbulbIcon /><strong> Related Knowledgebase article </strong>
+                            <LightbulbIcon className='ins-c-report-details-icon'/><strong> Related Knowledgebase article </strong>
                         </CardHeader>
                         <CardBody>
                             {kbaLoading ? <Skeleton size={SkeletonSize.sm} />
@@ -102,7 +102,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                 {rule.more_info && <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
-                            <InfoCircleIcon /><strong> Additional info </strong>
+                            <InfoCircleIcon className='ins-c-report-details-icon'/><strong> Additional info </strong>
                         </CardHeader>
                         <CardBody>
                             {templateProcessor(rule.more_info)}
