@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation, useHistory } from 'react-router-dom';
 import { Tabs, Tab } from '@patternfly/react-core/dist/esm/components/Tabs';
 import { detailSelect } from '../../redux/actions';
 
@@ -9,11 +10,18 @@ import { detailSelect } from '../../redux/actions';
  * @param {*} props onTabSelect can be used to notify parent component that detail has been selected.
  */
 const ApplicationDetails = ({ onTabSelect, appList, ...props }) => {
+    const { search } = useLocation();
+    const history = useHistory();
     const dispatch = useDispatch();
+    const searchParams = new URLSearchParams(search);
     const items = useSelector(({ entityDetails: { activeApps } }) => activeApps);
     const activeApp = useSelector(({ entityDetails: { activeApp } }) => activeApp);
     const defaultApp = activeApp?.appName ||
-        appList?.find(({ pageId, name }) => items?.[0]?.name === (pageId || name))?.name ||
+        searchParams.get('appName') ||
+        appList?.find(({ pageId, name }) => items?.[0]?.name === (
+            pageId ||
+            name
+        ))?.name ||
         items?.[0]?.name;
     const applications = appList || items;
 
@@ -26,7 +34,13 @@ const ApplicationDetails = ({ onTabSelect, appList, ...props }) => {
                     activeKey={ defaultApp }
                     onSelect={ (event, item) => {
                         const activeItem = applications.find(oneApp => oneApp.name === item);
-                        onTabSelect(event, item, activeItem);
+                        if (onTabSelect) {
+                            onTabSelect(event, item, activeItem);
+                        } else {
+                            searchParams.set('appName', activeItem.name);
+                            history.push({ search: searchParams.toString() });
+                        }
+
                         dispatch(detailSelect(activeItem.name));
                     } }
                     isFilled
@@ -48,10 +62,6 @@ ApplicationDetails.propTypes = {
         pageId: PropTypes.string
     })),
     onTabSelect: PropTypes.func
-};
-
-ApplicationDetails.defaultProps = {
-    onTabSelect: () => undefined
 };
 
 export default ApplicationDetails;
