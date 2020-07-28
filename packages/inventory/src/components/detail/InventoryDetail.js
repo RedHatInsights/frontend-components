@@ -91,7 +91,6 @@ InventoryDetail.defaultProps = {
     actions: [],
     hideInvLink: false,
     showTags: false,
-    onTabSelect: () => undefined,
     onBackToListClick: () => undefined
 };
 

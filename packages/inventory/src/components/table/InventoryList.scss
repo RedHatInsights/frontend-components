@@ -56,13 +56,13 @@
 .ins-c-entity-table.pf-c-table {
 
     .pf-c-table__check input { cursor: pointer; }
-    .ins-composed-col div:nth-child(2) {
-        color: var(--pf-global--link--Color);
+    .ins-composed-col div {
         word-wrap: break-word;
         word-break:break-all;
-        cursor: pointer;
-        &:hover {
-            color: var(--pf-global--link--Color--hover);
+        &:nth-child(2):not(.ins-m-nodetail) {
+            color: var(--pf-global--link--Color);
+            cursor: pointer;
+            &:hover { color: var(--pf-global--link--Color--hover); }
         }
     }
 
