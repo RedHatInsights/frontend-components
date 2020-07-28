@@ -3,7 +3,7 @@ import './insights.scss';
 
 import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, IMPACT_LABEL, LIKELIHOOD_LABEL } from './Constants';
 import React, { Component, Fragment } from 'react';
-import { SortByDirection, Table, TableBody, TableHeader, cellWidth, sortable } from '@patternfly/react-table';
+import { SortByDirection, Table, TableBody, TableHeader, cellWidth, fitContent, sortable } from '@patternfly/react-table';
 import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
 import { Tooltip, TooltipPosition } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
 import { flatten, sortBy } from 'lodash';
@@ -43,8 +43,8 @@ class InventoryRuleList extends Component {
             { title: 'Added', transforms: [ sortable, cellWidth(15) ] },
             { title: 'Total risk', transforms: [ sortable ] },
             {
-                title: <span>{AnsibeTowerIcon && <AnsibeTowerIcon size='md' />}Ansible</span>,
-                transforms: [ sortable ],
+                title: <span>{AnsibeTowerIcon && <AnsibeTowerIcon size='md' />} Ansible</span>,
+                transforms: [ sortable, fitContent ],
                 dataLabel: 'Ansible'
             }
         ],
