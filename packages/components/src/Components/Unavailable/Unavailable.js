@@ -17,7 +17,7 @@ const Unavailable = () => {
             </Title>
             <EmptyStateBody>
                 Try refreshing the page. If the problem persists, contact your organization administrator or visit our
-                <a href='./status' target='_blank' rel='noopener noreferrer'> status page</a> for known outages.
+                <a href='https://status.redhat.com/' target='_blank' rel='noopener noreferrer'> status page</a> for known outages.
             </EmptyStateBody>
         </EmptyState>
     );
