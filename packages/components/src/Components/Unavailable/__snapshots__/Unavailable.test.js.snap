@@ -60,7 +60,7 @@ exports[`Unavailable component should render 1`] = `
           >
             Try refreshing the page. If the problem persists, contact your organization administrator or visit our
             <a
-              href="./status"
+              href="https://status.redhat.com/"
               rel="noopener noreferrer"
               target="_blank"
             >
