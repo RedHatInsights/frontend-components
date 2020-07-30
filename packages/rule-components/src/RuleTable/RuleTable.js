@@ -188,7 +188,7 @@ class RuleTable extends Component {
                                 heightAuto: true,
                                 cells: [
                                     {
-                                        props: { colSpan: columns.length },
+                                        props: { colSpan: columns.length + Boolean(actions) },
                                         title: (
                                             <Bullseye>
                                                 <EmptyState variant={EmptyStateVariant.small}>
