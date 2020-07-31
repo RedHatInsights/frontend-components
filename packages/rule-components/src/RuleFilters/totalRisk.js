@@ -11,7 +11,7 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
         value,
         onChange,
         items: Object.entries(severity).map(([ key, label ], index) => ({
-            label: <Battery key={key} label={label} severity={index + 1} />,
+            label: label,
             textual: label,
             value: key
         }))
