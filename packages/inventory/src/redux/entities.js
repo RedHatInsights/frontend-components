@@ -73,7 +73,7 @@ function entitiesPending(state, { meta }) {
     return {
         ...state,
         columns: mergeArraysByKey([
-            defaultColumns.filter(({ key }) => key !== 'tags' || (meta && meta.showTags)),
+            defaultColumns.filter(({ key }) => key !== 'tags' || meta?.showTags),
             state.columns
         ], 'key'),
         rows: [],
