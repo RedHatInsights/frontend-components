@@ -34,7 +34,7 @@ class RuleFeedback extends React.Component {
             >
                 {
                     userVote === feedback.positive
-                        ? <ThumbsUpIcon color="var(--pf-global--success-color--200)"/>
+                        ? <ThumbsUpIcon color="var(--pf-global--success-color--100)"/>
                         : <OutlinedThumbsUpIcon/>
                 }
             </Button>

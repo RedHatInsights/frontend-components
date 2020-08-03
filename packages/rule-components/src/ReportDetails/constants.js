@@ -1,26 +1,26 @@
-import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
+import { InsightsLabel } from '@redhat-cloud-services/frontend-components/components/InsightsLabel';
 import RiskOfChangeIcon from './RiskOfChangeIcon';
 
 export const totalRiskMeta = [
     {
         label: 'Low',
         description: 'Low severity desc for total risk',
-        IconComponent: Battery
+        IconComponent: InsightsLabel
     },
     {
         label: 'Moderate',
         description: 'Moderate severity desc for total risk',
-        IconComponent: Battery
+        IconComponent: InsightsLabel
     },
     {
         label: 'Important',
         description: 'Important severity desc for total risk',
-        IconComponent: Battery
+        IconComponent: InsightsLabel
     },
     {
         label: 'Critical',
         description: 'Critical severity desc for total risk',
-        IconComponent: Battery
+        IconComponent: InsightsLabel
     }
 ];
 

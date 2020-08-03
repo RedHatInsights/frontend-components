@@ -1,6 +1,6 @@
 import React from 'react';
-import toJson from 'enzyme-to-json';
-import { Button, EmptyStateBody, Title } from '@patternfly/react-core';
+import { Button, EmptyStateBody, Title, Bullseye, Spinner, EmptyState, EmptyStateSecondaryActions } from '@patternfly/react-core';
+import { CheckCircleIcon, ExclamationCircleIcon, WrenchIcon } from '@patternfly/react-icons';
 
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
@@ -36,14 +36,18 @@ describe('Steps components', () => {
 
         it('renders correctly', () => {
             const wrapper = mount(<FinishedStep { ...initialProps }/>);
-            expect(toJson(wrapper)).toMatchSnapshot();
+
+            expect(wrapper.find(Bullseye)).toHaveLength(1);
+            expect(wrapper.find(CheckCircleIcon)).toHaveLength(1);
+            expect(wrapper.find(EmptyState)).toHaveLength(1);
+            expect(wrapper.find(Button)).toHaveLength(2);
+
             expect(wrapper.find('a[href="/hybrid/settings/sources"]').length).toBe(1);
             expect(wrapper.find(EmptyStateBody).html().includes('Here I Am')).toBe(true);
         });
 
-        it('renders withou takemetosources button', () => {
+        it('renders without takemetosources button', () => {
             const wrapper = mount(<FinishedStep { ...initialProps } hideSourcesButton={ true }/>);
-            expect(toJson(wrapper)).toMatchSnapshot();
             expect(wrapper.find('a[href="/hybrid/settings/sources"]').length).toBe(0);
         });
 
@@ -64,13 +68,13 @@ describe('Steps components', () => {
 
         it('renders correctly with custom props', () => {
             const wrapper = mount(<LoadingStep { ...initialProps }/>);
-            expect(toJson(wrapper)).toMatchSnapshot();
-            expect(wrapper.find(Title).html().includes('Here I Am')).toBe(true);
-        });
 
-        it('renders correctly', () => {
-            const wrapper = mount(<LoadingStep />);
-            expect(toJson(wrapper)).toMatchSnapshot();
+            expect(wrapper.find(Bullseye)).toHaveLength(1);
+            expect(wrapper.find(Spinner)).toHaveLength(1);
+            expect(wrapper.find(EmptyState)).toHaveLength(1);
+            expect(wrapper.find(Button)).toHaveLength(1);
+
+            expect(wrapper.find(Title).html().includes('Here I Am')).toBe(true);
         });
 
         it('calls onClose function', () => {
@@ -90,7 +94,11 @@ describe('Steps components', () => {
 
         it('renders correctly', () => {
             const wrapper = mount(<ErroredStep { ...initialProps }/>);
-            expect(toJson(wrapper)).toMatchSnapshot();
+
+            expect(wrapper.find(Bullseye)).toHaveLength(1);
+            expect(wrapper.find(ExclamationCircleIcon)).toHaveLength(1);
+            expect(wrapper.find(EmptyState)).toHaveLength(1);
+            expect(wrapper.find(Button)).toHaveLength(1);
         });
 
         it('renders correctly with message', () => {
@@ -123,7 +131,11 @@ describe('Steps components', () => {
 
         it('renders correctly', () => {
             const wrapper = mount(<TimeoutStep { ...initialProps }/>);
-            expect(toJson(wrapper)).toMatchSnapshot();
+
+            expect(wrapper.find(Bullseye)).toHaveLength(1);
+            expect(wrapper.find(WrenchIcon)).toHaveLength(1);
+            expect(wrapper.find(EmptyState)).toHaveLength(1);
+            expect(wrapper.find(Button)).toHaveLength(1);
         });
 
         it('renders correctly customized', () => {
@@ -132,7 +144,9 @@ describe('Steps components', () => {
                 title="pekny nadpis"
                 secondaryActions={<button>some button here</button>}
             />);
-            expect(toJson(wrapper)).toMatchSnapshot();
+
+            expect(wrapper.find(Title).first().text()).toEqual('pekny nadpis');
+            expect(wrapper.find(EmptyStateSecondaryActions).find('button')).toHaveLength(1);
         });
 
         it('calls onClose function', () => {

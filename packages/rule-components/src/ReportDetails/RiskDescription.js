@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 
 const RiskDescription = ({ riskValue, riskMeta, showDescription }) => {
     // riskValue ranges from 1 to ∞
-    const { IconComponent, label, description } = riskMeta[riskValue - 1];
+    const { IconComponent, description } = riskMeta[riskValue - 1];
 
     return (
         <div className="ins-c-rule__risk-description">
-            <div className={ `ins-c-rule__battery battery ins-c-rule__severity-level-${ riskValue }` }>
-                <IconComponent label={ label } severity={ riskValue }/>
-            </div>
+            <IconComponent value={ riskValue }/>
             {
                 showDescription && <Text
                     className="ins-c-rule__risk-detail-description-text"
