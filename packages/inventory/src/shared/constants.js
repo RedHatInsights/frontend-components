@@ -154,6 +154,8 @@ export const loadSystems = (options, showTags) => {
         // eslint-disable-next-line camelcase
         per_page: currPerPage,
         filters: options?.filters || options?.activeFilters,
+        orderBy: options?.orderBy || options?.sortBy?.key,
+        orderDirection: options?.orderDirection?.toUpperCase() || options?.sortBy?.direction?.toUpperCase(),
         ...limitedItems?.length > 0 && {
             itemsPage: options?.page,
             page: 1
