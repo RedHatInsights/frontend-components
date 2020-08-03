@@ -27,21 +27,27 @@ const InventoryTable = forwardRef(({
 }, ref) => {
     const hasItems = Boolean(items);
     const page = useSelector(({ entities: { page: invPage } }) => (
-        (hasItems && propsPage) || invPage || 1)
+        hasItems ? propsPage : (invPage || 1)
+    )
     , shallowEqual);
     const perPage = useSelector(({ entities: { perPage: invPerPage } }) => (
-        (hasItems && propsPerPage) || invPerPage || 50)
+        hasItems ? propsPerPage : (invPerPage || 50)
+    )
     , shallowEqual);
-    const total = useSelector(({ entities: { total: invTotal } }) => (
-        (hasItems && (propsTotal || items?.length)) || invTotal)
-    , shallowEqual);
+    const total = useSelector(({ entities: { total: invTotal } }) => {
+        if (hasItems) {
+            return propsTotal !== undefined ? propsTotal : items?.length;
+        }
+
+        return invTotal;
+    }, shallowEqual);
     const pagination = {
         page,
         perPage,
         total
     };
     const sortBy = useSelector(({ entities: { sortBy: invSortBy } }) => (
-        (hasItems && propsSortBy) || invSortBy
+        hasItems ? propsSortBy : invSortBy
     ), shallowEqual);
 
     return (
