@@ -85,6 +85,7 @@ const InventoryTable = forwardRef(({
                     perPage={ pagination.perPage }
                     hasItems={ hasItems }
                     onRefresh={ onRefresh }
+                    showTags={ showTags }
                 />
             </TableToolbar>
         </Fragment>
