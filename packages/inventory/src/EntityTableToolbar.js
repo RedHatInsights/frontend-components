@@ -69,7 +69,7 @@ class ContextEntityTableToolbar extends Component {
     }
 
     onSetTextFilter = (value, debounced = true) => {
-        const { perPage, filters } = this.props;
+        const { perPage, filters = [] } = this.props;
         const textualFilter = filters.find(oneFilter => oneFilter.value === TEXT_FILTER);
         if (textualFilter) {
             textualFilter.filter = value;
@@ -82,7 +82,7 @@ class ContextEntityTableToolbar extends Component {
     }
 
     onSetFilter = (value, filterKey, debounced = true) => {
-        const { perPage, filters } = this.props;
+        const { perPage, filters = [] } = this.props;
         const refresh = debounced ? this.debouncedRefresh : this.updateData;
         const newFilters = [
             ...filters.filter(oneFilter => !oneFilter.hasOwnProperty(filterKey)),
@@ -278,6 +278,7 @@ class ContextEntityTableToolbar extends Component {
             ...(showTags && !hasItems) ? [ this.createTagsFilter() ] : [],
             ...(filterConfig && filterConfig.items) || []
         ];
+
         return <Fragment>
             <PrimaryToolbar
                 {...props}
@@ -344,7 +345,6 @@ ContextEntityTableToolbar.propTypes = {
 EntityTableToolbar.defaultProps = {
     showTags: false,
     activeFiltersConfig: {},
-    filters: [],
     allTags: [],
     getAllTags: () => undefined,
     onClearFilters: () => undefined

@@ -82,7 +82,7 @@ function entitiesLoaded(state, { payload: { results, per_page: perPage, page, co
 
     return {
         ...state,
-        activeFilters: filters || [],
+        activeFilters: filters,
         loaded: loaded === undefined || loaded,
         // filter data only if we are loaded
         rows: mergeArraysByKey([ state.rows, results ]).filter(item => !loaded ? true : item.created),
