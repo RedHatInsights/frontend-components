@@ -49,10 +49,7 @@ const TopBar = ({
                             {
                                 showTags &&
                                 <FlexItem>
-                                    {loaded ?
-                                        <TagWithDialog count={ entity && entity.tags && entity.tags.length } systemId={ entity && entity.id } /> :
-                                        <Skeleton size={ SkeletonSize.sm }>&nbsp;</Skeleton>
-                                    }
+                                    <TagWithDialog count={ entity && entity.tags && entity.tags.length } systemId={ entity && entity.id } />
                                     <TagsModal />
                                 </FlexItem>
                             }

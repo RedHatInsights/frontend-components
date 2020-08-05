@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailWrapper DOM should pass correct props to BasicInfo 1`] = `
+<BasicInfo
+  hideInvLink={false}
+  showTags={false}
+/>
+`;
+
+exports[`DetailWrapper DOM should render children 1`] = `
+<div
+  className="test"
+>
+  something
+</div>
+`;
+
+exports[`DetailWrapper DOM should render drawerChildren 1`] = `
+<div
+  className="test"
+>
+  something
+</div>
+`;
+
+exports[`DetailWrapper DOM should render with data 1`] = `
+<div
+  className="pf-c-drawer pf-m-expanded ins-c-inventory__drawer "
+  onExpand={[Function]}
+>
+  <div
+    className="pf-c-drawer__main"
+  >
+    <div
+      className="pf-c-drawer__content"
+    >
+      <div
+        className="pf-c-drawer__body"
+      />
+    </div>
+    <div
+      className="pf-c-drawer__panel"
+      hidden={false}
+    >
+      <div
+        className="pf-c-drawer__body"
+      >
+        <div
+          className="pf-c-drawer__head"
+        >
+          <div
+            className="pf-l-stack ins-c-inventory__drawer--content"
+          >
+            <div
+              className="pf-l-stack__item"
+            >
+              <div
+                className="pf-l-stack pf-m-gutter"
+              >
+                <div
+                  className="pf-l-stack__item"
+                >
+                  <div
+                    className="pf-l-split"
+                  >
+                    <div
+                      className="pf-l-split__item pf-m-fill"
+                    >
+                      <h4
+                        className="pf-c-title pf-m-xl"
+                      />
+                    </div>
+                    <div
+                      className="pf-l-split__item"
+                    >
+                      <a
+                        className="ins-c-entity-detail__inv-link"
+                        href="./insights/inventory/undefined"
+                      >
+                        Open in Inventory
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="pf-l-stack__item pf-m-fill"
+            />
+          </div>
+          <div
+            className="pf-c-drawer__actions"
+          >
+            <div
+              className="pf-c-drawer__close"
+              onClick={[Function]}
+            >
+              <button
+                aria-disabled={null}
+                aria-label="Close drawer panel"
+                className="pf-c-button pf-m-plain"
+                data-ouia-component-id={null}
+                data-ouia-component-type="PF4/Button"
+                data-ouia-safe={true}
+                disabled={false}
+                onClick={[Function]}
+                tabIndex={null}
+                type="button"
+              >
+                <svg
+                  aria-hidden={true}
+                  aria-labelledby={null}
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style={
+                    Object {
+                      "verticalAlign": "-0.125em",
+                    }
+                  }
+                  viewBox="0 0 352 512"
+                  width="1em"
+                >
+                  <path
+                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                    transform=""
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DetailWrapper DOM should render without data 1`] = `
+<div
+  className="pf-c-drawer ins-c-inventory__drawer "
+  onExpand={[Function]}
+>
+  <div
+    className="pf-c-drawer__main"
+  >
+    <div
+      className="pf-c-drawer__content"
+    >
+      <div
+        className="pf-c-drawer__body"
+      />
+    </div>
+    <div
+      className="pf-c-drawer__panel"
+      hidden={true}
+    >
+      <div
+        className="pf-c-drawer__body"
+      >
+        <div
+          className="pf-c-drawer__head"
+        >
+          <div
+            className="pf-l-stack ins-c-inventory__drawer--content"
+          >
+            <div
+              className="pf-l-stack__item"
+            >
+              <div
+                className="pf-l-stack pf-m-gutter"
+              >
+                <div
+                  className="pf-l-stack__item"
+                >
+                  <div
+                    className="pf-l-split"
+                  >
+                    <div
+                      className="pf-l-split__item pf-m-fill"
+                    >
+                      <h4
+                        className="pf-c-title pf-m-xl"
+                      />
+                    </div>
+                    <div
+                      className="pf-l-split__item"
+                    >
+                      <a
+                        className="ins-c-entity-detail__inv-link"
+                        href="./insights/inventory/undefined"
+                      >
+                        Open in Inventory
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="pf-l-stack__item pf-m-fill"
+            />
+          </div>
+          <div
+            className="pf-c-drawer__actions"
+          >
+            <div
+              className="pf-c-drawer__close"
+              onClick={[Function]}
+            >
+              <button
+                aria-disabled={null}
+                aria-label="Close drawer panel"
+                className="pf-c-button pf-m-plain"
+                data-ouia-component-id={null}
+                data-ouia-component-type="PF4/Button"
+                data-ouia-safe={true}
+                disabled={false}
+                onClick={[Function]}
+                tabIndex={null}
+                type="button"
+              >
+                <svg
+                  aria-hidden={true}
+                  aria-labelledby={null}
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  style={
+                    Object {
+                      "verticalAlign": "-0.125em",
+                    }
+                  }
+                  viewBox="0 0 352 512"
+                  width="1em"
+                >
+                  <path
+                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                    transform=""
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -5,16 +5,17 @@ import { Split, SplitItem, StackItem, Stack, Title, Chip, ChipGroup } from '@pat
 import { useSelector } from 'react-redux';
 
 const BasicInfo = ({ hideInvLink, showTags }) => {
-    const entity = useSelector(({ entityDetails: { entity } }) => entity);
-    const tags = useSelector(({ entityDetails: { entity } }) => entity?.tags || []);
+    const displayName = useSelector(({ entityDetails: { entity } }) => entity?.display_name);
+    const systemId = useSelector(({ entityDetails: { entity } }) => entity?.id);
+    const tags = useSelector(({ entityDetails: { entity } }) => entity?.tags);
     return <Stack hasGutter>
         <StackItem>
             <Split>
                 <SplitItem isFilled>
-                    <Title headingLevel="h4" size='xl'>{ entity?.display_name }</Title>
+                    <Title headingLevel="h4" size='xl'>{ displayName }</Title>
                 </SplitItem>
                 {!hideInvLink && <SplitItem>
-                    <a className='ins-c-entity-detail__inv-link' href={`./insights/inventory/${entity.id}`}>Open in Inventory</a>
+                    <a className='ins-c-entity-detail__inv-link' href={`./insights/inventory/${systemId}`}>Open in Inventory</a>
                 </SplitItem>}
             </Split>
         </StackItem>
@@ -48,7 +49,7 @@ BasicInfo.propTypes = {
 };
 
 BasicInfo.defaultProps = {
-    hideInvLink: true,
+    hideInvLink: false,
     showTags: false
 };
 

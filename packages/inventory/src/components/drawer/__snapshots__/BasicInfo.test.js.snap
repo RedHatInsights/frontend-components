@@ -1,0 +1,329 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasicInfo should render with data 1`] = `
+<div
+  className="pf-l-stack pf-m-gutter"
+>
+  <div
+    className="pf-l-stack__item"
+  >
+    <div
+      className="pf-l-split"
+    >
+      <div
+        className="pf-l-split__item pf-m-fill"
+      >
+        <h4
+          className="pf-c-title pf-m-xl"
+        >
+          something
+        </h4>
+      </div>
+      <div
+        className="pf-l-split__item"
+      >
+        <a
+          className="ins-c-entity-detail__inv-link"
+          href="./insights/inventory/some-id"
+        >
+          Open in Inventory
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BasicInfo should render with no inv link 1`] = `
+<div
+  className="pf-l-stack pf-m-gutter"
+>
+  <div
+    className="pf-l-stack__item"
+  >
+    <div
+      className="pf-l-split"
+    >
+      <div
+        className="pf-l-split__item pf-m-fill"
+      >
+        <h4
+          className="pf-c-title pf-m-xl"
+        >
+          something
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BasicInfo should render with tags 1`] = `
+<div
+  className="pf-l-stack pf-m-gutter"
+>
+  <div
+    className="pf-l-stack__item"
+  >
+    <div
+      className="pf-l-split"
+    >
+      <div
+        className="pf-l-split__item pf-m-fill"
+      >
+        <h4
+          className="pf-c-title pf-m-xl"
+        >
+          something
+        </h4>
+      </div>
+      <div
+        className="pf-l-split__item"
+      >
+        <a
+          className="ins-c-entity-detail__inv-link"
+          href="./insights/inventory/some-id"
+        >
+          Open in Inventory
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="pf-l-stack__item"
+  >
+    <div
+      className="pf-l-split pf-m-gutter"
+    >
+      <div
+        className="pf-l-split__item"
+      >
+        Tags:
+      </div>
+      <div
+        className="pf-l-split__item"
+      >
+        <div
+          className="pf-c-chip-group"
+        >
+          <ul
+            aria-label="Chip group category"
+            className="pf-c-chip-group__list"
+            role="list"
+          >
+            <li
+              className="pf-c-chip-group__list-item"
+              key="0"
+            >
+              <div
+                className="pf-c-chip"
+                data-ouia-component-id={4}
+                data-ouia-component-type="PF4/Chip"
+                data-ouia-safe={true}
+              >
+                <span
+                  className="pf-c-chip__text"
+                  id="pf-random-id-1"
+                >
+                  one/
+                  key
+                  =value
+                </span>
+                <button
+                  aria-disabled={null}
+                  aria-label="close"
+                  aria-labelledby="remove_pf-random-id-1 pf-random-id-1"
+                  className="pf-c-button pf-m-plain"
+                  data-ouia-component-id={null}
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe={true}
+                  disabled={false}
+                  id="remove_pf-random-id-1"
+                  onClick={[Function]}
+                  tabIndex={null}
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    aria-labelledby={null}
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style={
+                      Object {
+                        "verticalAlign": "-0.125em",
+                      }
+                    }
+                    viewBox="0 0 352 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      transform=""
+                    />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              className="pf-c-chip-group__list-item"
+              key="1"
+            >
+              <div
+                className="pf-c-chip"
+                data-ouia-component-id={5}
+                data-ouia-component-type="PF4/Chip"
+                data-ouia-safe={true}
+              >
+                <span
+                  className="pf-c-chip__text"
+                  id="pf-random-id-2"
+                >
+                  key
+                  =value
+                </span>
+                <button
+                  aria-disabled={null}
+                  aria-label="close"
+                  aria-labelledby="remove_pf-random-id-2 pf-random-id-2"
+                  className="pf-c-button pf-m-plain"
+                  data-ouia-component-id={null}
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe={true}
+                  disabled={false}
+                  id="remove_pf-random-id-2"
+                  onClick={[Function]}
+                  tabIndex={null}
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    aria-labelledby={null}
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style={
+                      Object {
+                        "verticalAlign": "-0.125em",
+                      }
+                    }
+                    viewBox="0 0 352 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      transform=""
+                    />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              className="pf-c-chip-group__list-item"
+              key="2"
+            >
+              <div
+                className="pf-c-chip"
+                data-ouia-component-id={6}
+                data-ouia-component-type="PF4/Chip"
+                data-ouia-safe={true}
+              >
+                <span
+                  className="pf-c-chip__text"
+                  id="pf-random-id-3"
+                >
+                  one/
+                  key
+                </span>
+                <button
+                  aria-disabled={null}
+                  aria-label="close"
+                  aria-labelledby="remove_pf-random-id-3 pf-random-id-3"
+                  className="pf-c-button pf-m-plain"
+                  data-ouia-component-id={null}
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe={true}
+                  disabled={false}
+                  id="remove_pf-random-id-3"
+                  onClick={[Function]}
+                  tabIndex={null}
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    aria-labelledby={null}
+                    fill="currentColor"
+                    height="1em"
+                    role="img"
+                    style={
+                      Object {
+                        "verticalAlign": "-0.125em",
+                      }
+                    }
+                    viewBox="0 0 352 512"
+                    width="1em"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      transform=""
+                    />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              className="pf-c-chip-group__list-item"
+            >
+              <button
+                className="pf-c-chip pf-m-overflow"
+                data-ouia-component-id={7}
+                data-ouia-component-type="PF4/OverflowChip"
+                data-ouia-safe={true}
+                onClick={[Function]}
+              >
+                <span
+                  className="pf-c-chip__text"
+                >
+                  1 more
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BasicInfo should render without data 1`] = `
+<div
+  className="pf-l-stack pf-m-gutter"
+>
+  <div
+    className="pf-l-stack__item"
+  >
+    <div
+      className="pf-l-split"
+    >
+      <div
+        className="pf-l-split__item pf-m-fill"
+      >
+        <h4
+          className="pf-c-title pf-m-xl"
+        />
+      </div>
+      <div
+        className="pf-l-split__item"
+      >
+        <a
+          className="ins-c-entity-detail__inv-link"
+          href="./insights/inventory/undefined"
+        >
+          Open in Inventory
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
