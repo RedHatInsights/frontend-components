@@ -11,7 +11,7 @@ import {
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleDrawer } from '../../redux/actions';
-import { BasicInfo } from '../drawer';
+import { BasicInfo, SystemIssues } from '../drawer';
 import { Stack, StackItem } from '@patternfly/react-core';
 
 const DetailWrapper = ({ children, hideInvLink, showTags, drawerChildren, className, ...props }) => {
@@ -30,6 +30,9 @@ const DetailWrapper = ({ children, hideInvLink, showTags, drawerChildren, classN
                         <Stack className="ins-c-inventory__drawer--content">
                             <StackItem>
                                 <BasicInfo hideInvLink={ hideInvLink } showTags={ showTags } />
+                            </StackItem>
+                            <StackItem>
+                                <SystemIssues isOpened={isExpanded} />
                             </StackItem>
                             <StackItem isFilled>
                                 {drawerChildren}

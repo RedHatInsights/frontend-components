@@ -13,7 +13,7 @@ const BasicInfo = ({ hideInvLink, showTags }) => {
         <StackItem>
             <Split>
                 <SplitItem isFilled>
-                    <Title headingLevel="h4" size='xl'>{ displayName }</Title>
+                    <Title headingLevel="h3" size='xl'>{ displayName }</Title>
                 </SplitItem>
                 {!hideInvLink && <SplitItem>
                     <a className='ins-c-entity-detail__inv-link' href={`./insights/inventory/${systemId}`}>Open in Inventory</a>
