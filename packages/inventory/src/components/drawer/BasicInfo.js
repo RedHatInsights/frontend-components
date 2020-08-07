@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -28,13 +29,13 @@ const BasicInfo = ({ hideInvLink, showTags }) => {
                     </SplitItem>
                     <SplitItem>
                         <ChipGroup>
-                            {tags.map((item, key) => (
-                                <Chip key={key}>
+                            {tags?.length !== 0 ? tags?.map((item, key) => (
+                                <Chip key={key} isReadOnly>
                                     {item?.namespace && `${item?.namespace}/`}
                                     {item?.key}
                                     {item?.value && `=${item?.value}`}
                                 </Chip>
-                            ))}
+                            )) : 'No tags'}
                         </ChipGroup>
                     </SplitItem>
                 </Split>
