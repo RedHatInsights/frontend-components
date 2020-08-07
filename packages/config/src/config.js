@@ -86,7 +86,11 @@ module.exports = ({
             }]
         },
         resolve: {
-            extensions: [ '.ts', '.tsx', '.mjs', '.js', '.scss' ]
+            extensions: [ '.ts', '.tsx', '.mjs', '.js', '.scss' ],
+            alias: {
+                customReact: 'react',
+                PFReactCore: '@patternfly/react-core'
+            }
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,
