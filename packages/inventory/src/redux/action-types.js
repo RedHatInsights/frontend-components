@@ -1,3 +1,13 @@
+const makeActions = (actions) => {
+    return actions?.reduce?.((acc, curr) => ({
+        ...acc,
+        [curr]: curr,
+        [`${curr}_PENDING`]: `${curr}_PENDING`,
+        [`${curr}_FULFILLED`]: `${curr}_FULFILLED`,
+        [`${curr}_REJECTED`]: `${curr}_REJECTED`
+    }), {});
+};
+
 const asyncInventory = [
     'LOAD_ENTITIES',
     'LOAD_ENTITY',
@@ -7,30 +17,19 @@ const asyncInventory = [
     'SET_ANSIBLE_HOST',
     'LOAD_TAGS',
     'ALL_TAGS'
-].reduce((acc, curr) => [
-    ...acc,
-    ...[ curr, `${curr}_PENDING`, `${curr}_FULFILLED`, `${curr}_REJECTED` ]
-], []);
+];
 
-export const INVENTORY_ACTION_TYPES = [
-    ...asyncInventory
-]
-.reduce((acc, curr) => {
-    acc[curr] = curr;
-    return acc;
-},
-{}
-);
+const systemIssues = [
+    'LOAD_ADVISOR_RECOMMENDATIONS',
+    'LOAD_APPLICABLE_CVES',
+    'LOAD_APPLICABLE_ADVISORIES',
+    'LOAD_COMPLIANCE_POLICIES'
+];
 
-export const ACTION_TYPES = [
-    ...asyncInventory
-]
-.reduce((acc, curr) => {
-    acc[curr] = curr;
-    return acc;
-},
-{}
-);
+export const INVENTORY_ACTION_TYPES = makeActions(asyncInventory);
+export const ACTION_TYPES = INVENTORY_ACTION_TYPES;
+
+export const SYSTEM_ISSUE_TYPES = makeActions(systemIssues);
 
 export const UPDATE_ENTITIES = 'UPDATE_ENTITIES';
 export const SELECT_ENTITY = 'SELECT_ENTITY';

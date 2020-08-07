@@ -66,7 +66,7 @@ exports[`DetailWrapper DOM should render with data 1`] = `
                     <div
                       className="pf-l-split__item pf-m-fill"
                     >
-                      <h4
+                      <h3
                         className="pf-c-title pf-m-xl"
                       />
                     </div>
@@ -82,6 +82,88 @@ exports[`DetailWrapper DOM should render with data 1`] = `
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div
+              className="pf-l-stack__item"
+            >
+              <div
+                className="pf-l-stack pf-m-gutter ins-c-inventory__drawer-system-issues"
+              >
+                <div
+                  className="pf-l-stack__item"
+                >
+                  <h4
+                    className="pf-c-title pf-m-lg"
+                  >
+                    Top system issues
+                  </h4>
+                </div>
+                <div
+                  className="pf-l-stack__item"
+                >
+                  <div
+                    className="pf-l-level"
+                  >
+                    <div>
+                      <div
+                        className="pf-l-stack pf-m-gutter"
+                      >
+                        <div
+                          className="pf-l-stack__item"
+                        >
+                          Applicable CVEs
+                        </div>
+                        <div
+                          className="pf-l-stack__item"
+                        >
+                          <div
+                            className="ins-c-skeleton ins-c-skeleton__md"
+                          >
+                             
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        className="pf-l-stack pf-m-gutter"
+                      >
+                        <div
+                          className="pf-l-stack__item"
+                        >
+                          Applicable advisories
+                        </div>
+                        <div
+                          className="pf-l-stack__item"
+                        >
+                          <div
+                            className="ins-c-skeleton ins-c-skeleton__md"
+                          >
+                             
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="pf-l-stack__item"
+                >
+                  <div
+                    className="ins-c-skeleton ins-c-skeleton__md"
+                  >
+                     
+                  </div>
+                </div>
+                <div
+                  className="ins-c-skeleton ins-c-skeleton__md"
+                >
+                   
+                </div>
+                <div
+                  className="pf-l-stack__item"
+                />
               </div>
             </div>
             <div
@@ -179,7 +261,7 @@ exports[`DetailWrapper DOM should render without data 1`] = `
                     <div
                       className="pf-l-split__item pf-m-fill"
                     >
-                      <h4
+                      <h3
                         className="pf-c-title pf-m-xl"
                       />
                     </div>
@@ -195,6 +277,88 @@ exports[`DetailWrapper DOM should render without data 1`] = `
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div
+              className="pf-l-stack__item"
+            >
+              <div
+                className="pf-l-stack pf-m-gutter ins-c-inventory__drawer-system-issues"
+              >
+                <div
+                  className="pf-l-stack__item"
+                >
+                  <h4
+                    className="pf-c-title pf-m-lg"
+                  >
+                    Top system issues
+                  </h4>
+                </div>
+                <div
+                  className="pf-l-stack__item"
+                >
+                  <div
+                    className="pf-l-level"
+                  >
+                    <div>
+                      <div
+                        className="pf-l-stack pf-m-gutter"
+                      >
+                        <div
+                          className="pf-l-stack__item"
+                        >
+                          Applicable CVEs
+                        </div>
+                        <div
+                          className="pf-l-stack__item"
+                        >
+                          <div
+                            className="ins-c-skeleton ins-c-skeleton__md"
+                          >
+                             
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        className="pf-l-stack pf-m-gutter"
+                      >
+                        <div
+                          className="pf-l-stack__item"
+                        >
+                          Applicable advisories
+                        </div>
+                        <div
+                          className="pf-l-stack__item"
+                        >
+                          <div
+                            className="ins-c-skeleton ins-c-skeleton__md"
+                          >
+                             
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="pf-l-stack__item"
+                >
+                  <div
+                    className="ins-c-skeleton ins-c-skeleton__md"
+                  >
+                     
+                  </div>
+                </div>
+                <div
+                  className="ins-c-skeleton ins-c-skeleton__md"
+                >
+                   
+                </div>
+                <div
+                  className="pf-l-stack__item"
+                />
               </div>
             </div>
             <div
