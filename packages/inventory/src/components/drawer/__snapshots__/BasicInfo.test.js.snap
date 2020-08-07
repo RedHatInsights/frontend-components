@@ -13,11 +13,11 @@ exports[`BasicInfo should render with data 1`] = `
       <div
         className="pf-l-split__item pf-m-fill"
       >
-        <h4
+        <h3
           className="pf-c-title pf-m-xl"
         >
           something
-        </h4>
+        </h3>
       </div>
       <div
         className="pf-l-split__item"
@@ -47,11 +47,11 @@ exports[`BasicInfo should render with no inv link 1`] = `
       <div
         className="pf-l-split__item pf-m-fill"
       >
-        <h4
+        <h3
           className="pf-c-title pf-m-xl"
         >
           something
-        </h4>
+        </h3>
       </div>
     </div>
   </div>
@@ -71,11 +71,11 @@ exports[`BasicInfo should render with tags 1`] = `
       <div
         className="pf-l-split__item pf-m-fill"
       >
-        <h4
+        <h3
           className="pf-c-title pf-m-xl"
         >
           something
-        </h4>
+        </h3>
       </div>
       <div
         className="pf-l-split__item"
@@ -207,7 +207,7 @@ exports[`BasicInfo should render without data 1`] = `
       <div
         className="pf-l-split__item pf-m-fill"
       >
-        <h4
+        <h3
           className="pf-c-title pf-m-xl"
         />
       </div>

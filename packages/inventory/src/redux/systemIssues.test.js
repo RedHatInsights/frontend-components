@@ -240,13 +240,27 @@ describe('compliance', () => {
                     some: 'value'
                 }
             }
-        }, {});
+        }, {
+            payload: {
+                data: {
+                    system: {
+                        profiles: [{
+                            id: 'something',
+                            name: 'some name'
+                        }]
+                    }
+                }
+            }
+        });
         expect(newState).toMatchObject({
             systemIssues: {
                 test: 'unchanged',
                 compliance: {
                     isLoaded: true,
-                    profiles: undefined
+                    profiles: [{
+                        id: 'something',
+                        name: 'some name'
+                    }]
                 }
             }
         });

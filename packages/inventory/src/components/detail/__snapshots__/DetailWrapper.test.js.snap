@@ -161,9 +161,6 @@ exports[`DetailWrapper DOM should render with data 1`] = `
                 >
                    
                 </div>
-                <div
-                  className="pf-l-stack__item"
-                />
               </div>
             </div>
             <div
@@ -356,9 +353,6 @@ exports[`DetailWrapper DOM should render without data 1`] = `
                 >
                    
                 </div>
-                <div
-                  className="pf-l-stack__item"
-                />
               </div>
             </div>
             <div

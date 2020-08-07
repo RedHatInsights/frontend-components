@@ -113,8 +113,8 @@ const SystemIssues = ({ isOpened }) => {
         {
             compliance?.isLoaded ?
                 (compliance?.profiles ?
-                    compliance?.profiles?.map(({ id, name }) => (
-                        <a href={`./insights/compliance/reports/${id}`}>{name}</a>
+                    compliance?.profiles?.map(({ id, name }, key) => (
+                        <a key={key} href={`./insights/compliance/reports/${id}`}>{name}</a>
                     ))
                     : <span>
                         System fully compliant!
@@ -122,7 +122,6 @@ const SystemIssues = ({ isOpened }) => {
                 ) :
                 <Skeleton size={ SkeletonSize.md } />
         }
-        <StackItem></StackItem>
     </Stack>;
 };
 
