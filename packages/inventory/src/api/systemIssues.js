@@ -1,25 +1,11 @@
 import instance from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
+export const systemIssuesInstance = instance;
 
 export const cves = async (systemId) => {
     try {
-        const [ low, moderate, important, critical ] = await Promise.all([{
-            from: '0',
-            to: '3.9'
-        }, {
-            from: '4',
-            to: '7.9'
-        }, {
-            from: '8',
-            to: '10'
-        }].map(({ from, to }) => (
+        const [ low, moderate, important, critical ] = await Promise.all([ 2, 4, 5, 7 ].map((impact) => (
             instance.get(
-                `/api/vulnerability//v1/systems/${
-                    systemId
-                }/cves?page=1&page_size=20&sort=-public_date&cvss_from=${
-                    from
-                }&cvss_to=${
-                    to
-                }`
+                `/api/vulnerability//v1/systems/${systemId}/cves?page=1&page_size=1&impact=${impact}`
             )
         )));
         return { low, moderate, important, critical };
