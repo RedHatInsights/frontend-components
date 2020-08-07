@@ -77,7 +77,7 @@ export function isPending(state, type) {
         ...state,
         systemIssues: {
             ...state?.systemIssues,
-            [type]: { isLoaded: false }
+            ...type && { [type]: { isLoaded: false } }
         }
     };
 }
