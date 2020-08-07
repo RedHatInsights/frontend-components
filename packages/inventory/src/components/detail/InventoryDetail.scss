@@ -56,6 +56,9 @@
 }
 
 .ins-c-inventory__drawer {
+    .pf-c-drawer__head {
+      padding: var(--pf-global--spacer--lg);
+    }
   .pf-c-drawer__panel {
     overflow-x: hidden;
     flex-basis: var(--pf-c-drawer__panel--FlexBasis);
@@ -66,6 +69,14 @@
   }
   
   .ins-c-inventory__drawer--content {
+      .ins-c-inventory__drawer--facts {
+        .ins-entity-facts div span:first-child { padding-right: var(--pf-global--spacer--sm); }
+        .pf-l-grid:not(.ins-entity-facts) .pf-l-grid__item:first-of-type {
+            dd:nth-child(2), dd:nth-child(4), dd:nth-child(6) {
+                grid-column: 1;
+            }
+          }
+      }
     > .pf-l-stack__item {
       &:not(:last-child):before {
         content: " ";
@@ -85,7 +96,7 @@
     > * {
       > * { padding-left: var(--pf-global--spacer--lg); }
 
-      &:nth-child(even):after {
+      &:nth-child(odd):after {
         content: " ";
         display: block;
         position: relative;
