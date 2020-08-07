@@ -1,6 +1,7 @@
 module.exports = {
     externals: [
-        /^@patternfly\/.*/,
+        /^@patternfly\/react-core.*/,
+        /^@patternfly\/react-icons.*/,
         {
             '@patternfly/react-icons': {
                 commonjs: '@patternfly/react-icons',
@@ -15,9 +16,9 @@ module.exports = {
                 root: 'PFReactCore'
             },
             '@patternfly/react-table': {
-                commonjs: '@patternfly/react-table',
-                commonjs2: '@patternfly/react-table',
-                amd: '@patternfly/react-table',
+                commonjs: 'PFReactTable',
+                commonjs2: 'PFReactTable',
+                amd: 'PFReactTable',
                 root: 'PFReactTable'
             },
             '@redhat-cloud-services/frontend-components-utilities': '@redhat-cloud-services/frontend-components-utilities',
@@ -31,7 +32,7 @@ module.exports = {
             'react-dom': 'react-dom',
             redux: 'redux',
             axios: 'axios',
-            react: 'react'
+            react: 'customReact'
         }
     ]
 };
