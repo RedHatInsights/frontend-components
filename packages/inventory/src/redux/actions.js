@@ -9,7 +9,8 @@ import {
     ENTITIES_LOADING,
     CLEAR_FILTERS,
     TOGGLE_TAG_MODAL,
-    CONFIG_CHANGED
+    CONFIG_CHANGED,
+    TOGGLE_DRAWER
 } from './action-types';
 import { getEntities, getEntitySystemProfile, hosts, getAllTags, getTags } from '../api';
 
@@ -158,4 +159,9 @@ export const deleteEntity = (systems, displayName) => ({
 export const configChanged = (config) => ({
     type: CONFIG_CHANGED,
     payload: config
+});
+
+export const toggleDrawer = (isOpened) => ({
+    type: TOGGLE_DRAWER,
+    payload: { isOpened }
 });
