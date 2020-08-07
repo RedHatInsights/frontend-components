@@ -157,7 +157,7 @@ class InventoryRuleList extends Component {
                     selected,
                     cells: [
                         {
-                            title: <div className='pf-m-center'>
+                            title: <div>
                                 {resolution.has_playbook ? <input
                                     aria-label='select-checkbox'
                                     type="checkbox"
@@ -174,7 +174,7 @@ class InventoryRuleList extends Component {
                             </div>
                         },
                         {
-                            title: <div className='pf-m-center' key={key} style={{ verticalAlign: 'top' }}>
+                            title: <div key={key} style={{ verticalAlign: 'top' }}>
                                 <Tooltip key={key} position={TooltipPosition.bottom} content={<span>The <strong>likelihood</strong> that this will be
                                 a problem is {LIKELIHOOD_LABEL[rule.likelihood]}. The <strong>impact</strong> of the problem would be
                                 &nbsp;{IMPACT_LABEL[rule.impact.impact]} if it occurred.</span>}>
@@ -183,7 +183,7 @@ class InventoryRuleList extends Component {
                             </div >
                         },
                         {
-                            title: <div className='pf-m-center ' key={key}>
+                            title: <div className='ins-c-center-text' key={key}>
                                 {resolution.has_playbook ?
                                     <CheckCircleIcon className='successColorOverride' />
                                     : 'No'}
