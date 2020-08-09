@@ -118,6 +118,12 @@ These tasks are preconfigured
 To test changes from packages in this repository in other applications follow these steps:
 
 1. Run `npm install` in the root of the `frontend-components` working copy
+2. Remove `react` and `react-dom` from `node_modules`
+  ```
+  rm -rf node_modules/react; rm -rf node_modules/react-dom
+  ```
+  This is because we want to use hooks and different reacts are not playing nicely with hooks [facebook/react/issues/15315](https://github.com/facebook/react/issues/15315)
+
 2. Change into the directory of the package you are working on, for example `cd packages/components` and run `npm link`*
 3. Change into the directory of the application you'd like to include the package and run `npm link @redhat-cloud-services/frontend-components`*
 

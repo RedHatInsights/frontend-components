@@ -63,7 +63,8 @@
             "^lodash-es$": "lodash",
             "customReact": "react",
             "reactRedux": "react-redux",
-            "PFReactCore": "@patternfly/react-core"
+            "PFReactCore": "@patternfly/react-core",
+            "PFReactTable": "@patternfly/react-table"
         },
         "testURL": "http://localhost:5000/"
     },
