@@ -1,0 +1,13 @@
+.ins-c-tagfilter {
+    .ins-c-tagfilter__option label {
+        display: flex;
+        width: 100%;
+        .pf-c-badge {
+            margin-left: auto;
+            padding-top: 3px;
+        }
+    }
+    .pf-c-select__menu-group-title:empty { display: none; }
+
+    .pf-c-select__menu > div { padding-top: 0; }
+}
