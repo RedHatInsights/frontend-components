@@ -67,7 +67,7 @@ Array [
                       <div
                         class="pf-c-tooltip__content"
                       >
-                        System scheduled for inventory removal in -18483 days
+                        System scheduled for inventory removal in 0 days
                       </div>
                     </div>
                   </div>
@@ -81,7 +81,7 @@ Array [
                   <div
                     className="pf-c-tooltip__content"
                   >
-                    System scheduled for inventory removal in -18483 days
+                    System scheduled for inventory removal in 0 days
                   </div>
                 </div>
               </Portal>,
@@ -154,7 +154,7 @@ Array [
                       <div
                         class="pf-c-tooltip__content"
                       >
-                        System scheduled for inventory removal in -18483 days
+                        System scheduled for inventory removal in 0 days
                       </div>
                     </div>
                   </div>
@@ -168,7 +168,7 @@ Array [
                   <div
                     className="pf-c-tooltip__content"
                   >
-                    System scheduled for inventory removal in -18483 days
+                    System scheduled for inventory removal in 0 days
                   </div>
                 </div>
               </Portal>,
@@ -434,7 +434,7 @@ exports[`DetailWrapper DOM should render with data 1`] = `
                               <div
                                 class="pf-c-tooltip__content"
                               >
-                                System scheduled for inventory removal in -18483 days
+                                System scheduled for inventory removal in 0 days
                               </div>
                             </div>
                           </div>
@@ -448,7 +448,7 @@ exports[`DetailWrapper DOM should render with data 1`] = `
                           <div
                             className="pf-c-tooltip__content"
                           >
-                            System scheduled for inventory removal in -18483 days
+                            System scheduled for inventory removal in 0 days
                           </div>
                         </div>
                       </Portal>,

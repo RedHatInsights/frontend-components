@@ -48,7 +48,10 @@ describe('DetailWrapper', () => {
                 loaded: true,
                 entity: {
                     id: 'some-id',
-                    updated: new Date()
+                    updated: new Date(),
+                    culled_timestamp: new Date(),
+                    stale_warning_timestamp: new Date(),
+                    stale_timestamp: new Date()
                 },
                 isToggleOpened: true
             }

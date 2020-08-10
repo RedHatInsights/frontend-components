@@ -38,6 +38,7 @@ const FactsInfo = ({ entity, loaded, ...props }) => (
                                     culled={getFact('culled_timestamp', entity)}
                                     staleWarning={getFact('stale_warning_timestamp', entity)}
                                     stale={getFact('stale_timestamp', entity)}
+                                    currDate={new Date()}
                                 >
                                     <DateFormat date={getFact('updated', entity)} type="exact" />
                                 </CullingInformation> : <DateFormat date={getFact('updated', entity)} type="exact" />
