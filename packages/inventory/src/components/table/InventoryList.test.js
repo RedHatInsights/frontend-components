@@ -77,12 +77,13 @@ describe('InventoryList', () => {
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp sortBy={sortBy} />);
+            const actionsAfterMount = store.getActions();
             wrapper.setProps({
                 showTags: true
             });
             wrapper.update();
             const actions = store.getActions();
-            expect(actions.length).toBe(0);
+            expect(actions.length).toBe(actionsAfterMount.length);
         });
 
         it('should fire refresh after changing items', () => {
