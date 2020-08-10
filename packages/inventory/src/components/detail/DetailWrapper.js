@@ -4,19 +4,25 @@ import {
     DrawerPanelContent,
     DrawerContent,
     DrawerContentBody,
-    DrawerHead,
+    DrawerPanelBody,
     DrawerActions,
+    DrawerHead,
     DrawerCloseButton
 } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, useStore } from 'react-redux';
 import { toggleDrawer } from '../../redux/actions';
 import { BasicInfo, SystemIssues } from '../drawer';
 import { Stack, StackItem } from '@patternfly/react-core';
+import FactsInfo from './FactsInfo';
 
-const DetailWrapper = ({ children, hideInvLink, showTags, drawerChildren, className, ...props }) => {
+const DetailWrapper = ({ children, hideInvLink, showTags, Wrapper, className, appName, ...props }) => {
     const dispatch = useDispatch();
+    const store = useStore();
     const isExpanded = useSelector(({ entityDetails: { isToggleOpened } }) => isToggleOpened);
+    const entity = useSelector(({ entityDetails: { entity } }) => entity);
+    const loaded = useSelector(({ entityDetails: { loaded } }) => loaded);
+
     return <Drawer
         className={`ins-c-inventory__drawer ${className || ''}`}
         isExpanded={isExpanded}
@@ -27,21 +33,30 @@ const DetailWrapper = ({ children, hideInvLink, showTags, drawerChildren, classN
             panelContent={
                 <DrawerPanelContent>
                     <DrawerHead>
-                        <Stack className="ins-c-inventory__drawer--content">
-                            <StackItem>
-                                <BasicInfo hideInvLink={ hideInvLink } showTags={ showTags } />
-                            </StackItem>
-                            <StackItem>
-                                <SystemIssues isOpened={isExpanded} />
-                            </StackItem>
-                            <StackItem isFilled>
-                                {drawerChildren}
-                            </StackItem>
-                        </Stack>
+                        <BasicInfo hideInvLink={ hideInvLink } showTags={ showTags } />
                         <DrawerActions>
                             <DrawerCloseButton onClick={() =>  dispatch(toggleDrawer(false))} />
                         </DrawerActions>
                     </DrawerHead>
+                    <DrawerPanelBody>
+                        <Stack className="ins-c-inventory__drawer--content">
+                            <StackItem>
+                                <SystemIssues isOpened={isExpanded} />
+                            </StackItem>
+                            <StackItem isFilled className="ins-c-inventory__drawer--facts">
+                                <FactsInfo entity={entity} loaded={loaded} />
+                                {
+                                    isExpanded &&
+                                    loaded &&
+                                    Wrapper &&
+                                    <Wrapper
+                                        store={store}
+                                        appName={appName}
+                                    />
+                                }
+                            </StackItem>
+                        </Stack>
+                    </DrawerPanelBody>
                 </DrawerPanelContent>
             }
         >
@@ -55,7 +70,19 @@ const DetailWrapper = ({ children, hideInvLink, showTags, drawerChildren, classN
 DetailWrapper.propTypes = {
     children: PropTypes.any,
     hideInvLink: PropTypes.bool,
-    showTags: PropTypes.bool
+    showTags: PropTypes.bool,
+    appName: PropTypes.oneOf([
+        'general_information',
+        'advisor',
+        'insights',
+        'compliance',
+        'vulnerabilities',
+        'patch'
+    ])
+};
+
+DetailWrapper.defaultProps = {
+    appName: 'general_information'
 };
 
 export default DetailWrapper;
