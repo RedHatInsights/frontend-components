@@ -81,7 +81,7 @@ class Truncate extends React.Component {
                             dangerouslySetInnerHTML={ this.dangerousHtml(showText === false ? `${trimmedText}${textOverflow ? '...' : '' }`
                                 : this.props.text) } />
                     </StackItem>
-                    { textOverflow && <StackItem>
+                    { textOverflow && <StackItem className={this.props.spaceBetween && 'pf-u-mt-sm'}>
                         { showText === false ? expandButton : collapseButton }
                     </StackItem>
                     }
@@ -99,7 +99,8 @@ Truncate.propTypes = {
     length: propTypes.number,
     expandText: propTypes.string,
     collapseText: propTypes.string,
-    inline: propTypes.bool
+    inline: propTypes.bool,
+    spaceBetween: propTypes.bool
 };
 
 Truncate.defaultProps = {
