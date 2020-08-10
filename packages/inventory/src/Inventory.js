@@ -52,15 +52,15 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
                 cmp={ TagWithDialog }
             />
         ),
-        DetailWrapper: React.forwardRef(
+        DetailWrapper: showInventoryDrawer ? React.forwardRef(
             (props, ref) => <RenderWrapper
                 { ...props }
-                {...showInventoryDrawer && { Wrapper } }
+                Wrapper={Wrapper}
                 inventoryRef={ ref }
                 store={ store }
                 cmp={ DetailWrapper }
             />
-        ),
+        ) : React.Fragment,
         ...inventoryFitlers
     };
 }
