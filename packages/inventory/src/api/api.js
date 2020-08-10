@@ -151,8 +151,8 @@ export function getAllTags(search, { filters, pagination } = { pagination: {} })
     } = filters ? filters.reduce(filtersReducer, defaultFilters) : defaultFilters;
     return tags.apiTagGetTags(
         tagFilters ? constructTags(tagFilters) : undefined,
-        undefined,
-        undefined,
+        'tag',
+        'ASC',
         (pagination && pagination.perPage) || 10,
         (pagination && pagination.page) || 1,
         staleFilter,

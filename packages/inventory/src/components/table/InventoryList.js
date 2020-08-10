@@ -49,6 +49,10 @@ class ContextInventoryList extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.onRefreshData({});
+    }
+
     render() {
         const { showHealth, ...props } = this.props;
         return (
