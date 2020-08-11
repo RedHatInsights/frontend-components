@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config",
-    "version": "2.1.1",
+    "version": "2.1.3",
     "description": "Config plugins and settings for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -30,6 +30,7 @@
         "lodash-webpack-plugin": "^0.11.5",
         "mini-css-extract-plugin": "^0.6.0",
         "node-sass": "^4.12.0",
+        "react-router-sitemap": "^1.2.0",
         "sass-loader": "^7.1.0",
         "source-map-loader": "^0.2.4",
         "style-loader": "^0.23.1",

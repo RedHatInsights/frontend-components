@@ -1,4 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { resolve } = require('path');
 const { externals } = require('./webpack.constants.js');
 const { buildPlugins } = require('./webpack.plugins.js');
@@ -7,7 +9,8 @@ module.exports = (env) => ({
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     devtool: 'source-map',
     optimization: {
-        minimize: process.env.NODE_ENV === 'production'
+        minimize: process.env.NODE_ENV === 'production',
+        minimizer: [ new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({}) ]
     },
     entry: {
         index: './src/index.js',

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { DeleteModal } from '../../shared';
+import { DeleteModal, TagsModal, TagWithDialog } from '../../shared';
 import { Split, SplitItem } from '@patternfly/react-core/dist/esm/layouts/Split';
 import { Title } from '@patternfly/react-core/dist/esm/components/Title';
 import { Button } from '@patternfly/react-core/dist/esm/components/Button';
@@ -13,6 +13,8 @@ import {
     KebabToggle
 } from '@patternfly/react-core/dist/esm/components/Dropdown';
 import { redirectToInventoryList } from './helpers';
+import { useDispatch } from 'react-redux';
+import { toggleDrawer } from '../../redux/actions';
 
 /**
  * Top inventory bar with title, buttons (namely remove from inventory and inventory detail button) and actions.
@@ -27,8 +29,11 @@ const TopBar = ({
     addNotification,
     hideInvLink,
     onBackToListClick,
-    showDelete
+    showDelete,
+    showInventoryDrawer,
+    showTags
 }) => {
+    const dispatch = useDispatch();
     const [ isOpen, setIsOpen ] = useState(false);
     const [ isModalOpen, setIsModalOpen ] = useState(false);
     const inventoryActions = [ ... actions || [] ];
@@ -37,7 +42,18 @@ const TopBar = ({
             <SplitItem isFilled>
                 {
                     loaded ? (
-                        <Title headingLevel="h1" size='2xl'>{ entity && entity.display_name }</Title>
+                        <Flex>
+                            <FlexItem>
+                                <Title headingLevel="h1" size='2xl'>{ entity && entity.display_name }</Title>
+                            </FlexItem>
+                            {
+                                showTags &&
+                                <FlexItem>
+                                    <TagWithDialog count={ entity && entity.tags && entity.tags.length } systemId={ entity && entity.id } />
+                                    <TagsModal />
+                                </FlexItem>
+                            }
+                        </Flex>
                     ) :
                         <Skeleton size={ SkeletonSize.md } />
                 }
@@ -81,6 +97,14 @@ const TopBar = ({
                                                 ) : []) ] }
                                         />
                                     </FlexItem>)}
+                                <FlexItem>
+                                    {
+                                        showInventoryDrawer &&
+                                        <Button onClick={() => dispatch(toggleDrawer(true))}>
+                                            Show more information
+                                        </Button>
+                                    }
+                                </FlexItem>
                             </Flex>
                             :
                             <Skeleton size={ SkeletonSize.lg } />
@@ -117,6 +141,8 @@ TopBar.propTypes = {
     loaded: PropTypes.bool,
     showDelete: PropTypes.bool,
     hideInvLink: PropTypes.bool,
+    showInventoryDrawer: PropTypes.bool,
+    showTags: PropTypes.bool,
     actions: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.string,
         title: PropTypes.node,
@@ -132,6 +158,7 @@ TopBar.defaultProps = {
     loaded: false,
     hideInvLink: false,
     showDelete: false,
+    showInventoryDrawer: false,
     deleteEntity: () => undefined,
     addNotification: () => undefined,
     onBackToListClick: () => undefined

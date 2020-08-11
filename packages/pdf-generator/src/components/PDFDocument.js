@@ -18,6 +18,7 @@ const PDFDocument = ({
     title,
     reportName,
     size,
+    allPagesHaveTitle,
     ...props
 }) => {
     const appliedStyles = styles(style);
@@ -34,10 +35,12 @@ const PDFDocument = ({
                             Prepared {DateFormat({ date: new Date(), type: 'exact' }).props.children}
                         </Text>
                     </View>
-                    <View>
-                        <Text style={[ appliedStyles.reportName, appliedStyles.largeSpacing, appliedStyles.displayFont ]}>
-                            {reportName} {type}
-                        </Text>
+                    <View style={appliedStyles.largeSpacing}>
+                        {(allPagesHaveTitle || key === 0) && (
+                            <Text style={[ appliedStyles.reportName, appliedStyles.displayFont ]}>
+                                {reportName} {type}
+                            </Text>
+                        )}
                     </View>
                     <View>
                         <Text style={ appliedStyles.displayFont }>
@@ -94,14 +97,16 @@ PDFDocument.propTypes = {
     ]),
     style: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
-    })
+    }),
+    allPagesHaveTitle: PropTypes.bool
 };
 PDFDocument.defaultProps = {
     size: 'A4',
     reportName: 'Executive report:',
     pages: [],
     title: '',
-    type: 'Default'
+    type: 'Default',
+    allPagesHaveTitle: true
 };
 
 export default PDFDocument;

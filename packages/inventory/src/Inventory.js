@@ -1,10 +1,11 @@
 import React from 'react';
-import { AppInfo, InventoryDetail, FullDetail } from './components/detail';
+import { AppInfo, InventoryDetail, FullDetail, DetailWrapper } from './components/detail';
 import { TagWithDialog, RenderWrapper } from './shared';
 import { InventoryTable } from './components/table';
 import * as inventoryFitlers from './components/filters';
 
-export function inventoryConnector(store, componentsMapper) {
+export function inventoryConnector(store, componentsMapper, Wrapper) {
+    const showInventoryDrawer = Boolean(Wrapper);
     return {
         InventoryTable: React.forwardRef(
             (props, ref) => <RenderWrapper
@@ -29,6 +30,7 @@ export function inventoryConnector(store, componentsMapper) {
                 {...componentsMapper}
                 inventoryRef={ ref }
                 store={ store }
+                showInventoryDrawer={ showInventoryDrawer }
                 cmp={ InventoryDetail }
             />
         ),
@@ -38,6 +40,7 @@ export function inventoryConnector(store, componentsMapper) {
                 {...componentsMapper}
                 inventoryRef={ ref }
                 store={ store }
+                showInventoryDrawer={ showInventoryDrawer }
                 cmp={ FullDetail }
             />
         ),
@@ -49,6 +52,15 @@ export function inventoryConnector(store, componentsMapper) {
                 cmp={ TagWithDialog }
             />
         ),
+        DetailWrapper: showInventoryDrawer ? React.forwardRef(
+            (props, ref) => <RenderWrapper
+                { ...props }
+                Wrapper={Wrapper}
+                inventoryRef={ ref }
+                store={ store }
+                cmp={ DetailWrapper }
+            />
+        ) : React.Fragment,
         ...inventoryFitlers
     };
 }

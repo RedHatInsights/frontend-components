@@ -10,6 +10,16 @@ import global_Color_light_300 from '@patternfly/react-tokens/dist/js/global_Colo
 import global_Color_dark_200 from '@patternfly/react-tokens/dist/js/global_Color_dark_200';
 import global_Color_dark_100 from '@patternfly/react-tokens/dist/js/global_Color_dark_100';
 import chart_color_red_100 from '@patternfly/react-tokens/dist/js/chart_color_red_100';
+import chart_color_red_200 from '@patternfly/react-tokens/dist/js/chart_color_red_200';
+import chart_color_red_300 from '@patternfly/react-tokens/dist/js/chart_color_red_300';
+import global_primary_color_100 from '@patternfly/react-tokens/dist/js/global_primary_color_100';
+import global_palette_blue_50 from '@patternfly/react-tokens/dist/js/global_palette_blue_50';
+import global_palette_blue_600 from '@patternfly/react-tokens/dist/js/global_palette_blue_600';
+import global_palette_gold_50 from '@patternfly/react-tokens/dist/js/global_palette_gold_50';
+import global_palette_gold_700 from '@patternfly/react-tokens/dist/js/global_palette_gold_700';
+import global_palette_orange_600 from '@patternfly/react-tokens/dist/js/global_palette_orange_600';
+import global_palette_red_50 from '@patternfly/react-tokens/dist/js/global_palette_red_50';
+import global_palette_red_200 from '@patternfly/react-tokens/dist/js/global_palette_red_200';
 import { fontTypes, generateFonts, redhatFont } from './fonts';
 
 Font.register({ family: 'Overpass', fonts: generateFonts(fontTypes) });
@@ -93,6 +103,26 @@ export default (style = {}) => StyleSheet.create({
     },
     defaultColor: {
         color: global_Color_light_300.value
+    },
+    labelColorsLow: {
+        bgColor: global_palette_blue_50.value,
+        textColor: global_palette_blue_600.value,
+        iconColor: global_primary_color_100.value
+    },
+    labelColorsModerate: {
+        bgColor: global_palette_gold_50.value,
+        textColor: global_palette_gold_700.value,
+        iconColor: chart_global_warning_Color_200.value
+    },
+    labelColorsImportant: {
+        bgColor: '#fff5ec',
+        textColor: global_palette_orange_600.value,
+        iconColor: chart_global_warning_Color_100.value
+    },
+    labelColorsCrit: {
+        bgColor: global_palette_red_50.value,
+        textColor: chart_color_red_300.value,
+        iconColor: chart_color_red_200.value
     },
     compactCellPadding: {
         paddingLeft: c_table_m_compact_cell_PaddingLeft.value,

@@ -1,6 +1,5 @@
 module.exports = {
     externals: [
-        /^@patternfly\/react-core.*/,
         /^@patternfly\/react-icons.*/,
         {
             '@patternfly/react-icons': {
@@ -8,12 +7,6 @@ module.exports = {
                 commonjs2: '@patternfly/react-icons',
                 amd: '@patternfly/react-icons',
                 root: 'PFReactIcons'
-            },
-            '@patternfly/react-core': {
-                commonjs: '@patternfly/react-core',
-                commonjs2: '@patternfly/react-core',
-                amd: '@patternfly/react-core',
-                root: 'PFReactCore'
             },
             '@patternfly/react-table': {
                 commonjs: 'PFReactTable',
@@ -34,6 +27,13 @@ module.exports = {
             redux: 'redux',
             axios: 'axios',
             react: 'customReact'
+        },
+        function(context, request, callback) {
+            if (/^@patternfly\/react-core.*/.test(request)) {
+                return callback(null, 'PFReactCore');
+            }
+
+            callback();
         }
     ]
 };
