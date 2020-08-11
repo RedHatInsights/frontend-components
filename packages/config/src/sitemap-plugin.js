@@ -11,7 +11,7 @@ class SitemapPlugin {
         compiler.hooks.emit.tapAsync('SitemapPlugin', (compilation, callback) => {
             const packageJson = require(resolve(this.rootFolder, 'package.json'));
 
-            const paths = Object.values(packageJson.routes).map(value => value.path || value);
+            const paths = Object.values(packageJson?.routes || {}).map(value => value.path || value);
             const hostname = 'https://cloud.redhat.com';
 
             const sitemap = Sitemap.sitemapBuilder(hostname, paths);
