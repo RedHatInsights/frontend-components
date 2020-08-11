@@ -41,6 +41,8 @@ module.exports = ({
         ...replacePlugin || []
     ]);
 
+    const SitemapGenerator = new(require('./sitemap-plugin'))(rootFolder);
+
     return [
         WriteFileWebpackPlugin,
         SourceMapsPlugin,
@@ -49,6 +51,7 @@ module.exports = ({
         CleanWebpackPlugin,
         HtmlWebpackPlugin,
         HtmlReplaceWebpackPlugin,
-        WebpackHotModuleReplacement
+        WebpackHotModuleReplacement,
+        SitemapGenerator
     ];
 };
