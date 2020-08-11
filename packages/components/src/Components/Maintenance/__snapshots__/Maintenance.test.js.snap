@@ -46,7 +46,9 @@ exports[`Maintenance component should render with new description 1`] = `
     Maintenance in progress
   </Component>
   <Component>
-    <Component />
+    <span>
+       test 
+    </span>
   </Component>
 </Component>
 `;

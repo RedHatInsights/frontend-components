@@ -16,7 +16,7 @@ const Maintenance = ({ startTime, endTime, timeZone, description }) => {
             <Title headingLevel='h4' size='lg'>Maintenance in progress</Title>
             <EmptyStateBody>
                 { description
-                    ? { description }
+                    ? description
                     : <Stack>
                         <StackItem>We are currently undergoing scheduled maintenance from {startTime}-{endTime} {timeZone}.</StackItem>
                         <StackItem>We will be back shortly, thank you for your patience.</StackItem>
