@@ -7,14 +7,22 @@ const hour = minute * 60;
 const day = hour * 24;
 const month = day * 30; // let's count that every month has 30 days
 const year = day * 365;
-const formatTime = (number, unit) => `${number} ${number > 1 ? `${unit}s` : unit} ago`;
+const formatTime = (number, unit) => {
+    const rounded = Math.round(number);
+    const unitPlural = rounded > 1 ? `${unit}s` : unit;
+    if (number < rounded) {
+        return `almost ${rounded} ${unitPlural} ago`;
+    } else {
+        return `${rounded} ${unitPlural} ago`;
+    }
+};
 
 const relativeTimeTable = [
-    { rightBound: Infinity, description: date => formatTime(Math.round(date / (year)), 'year') },
-    { rightBound: year, description: date => formatTime(Math.round(date / (month)), 'month') },
-    { rightBound: month, description: date => formatTime(Math.round(date / (day)), 'day') },
-    { rightBound: day, description: date => formatTime(Math.round(date / (hour)), 'hour') },
-    { rightBound: hour, description: date => formatTime(Math.round(date / (minute)), 'minute') },
+    { rightBound: Infinity, description: date => formatTime(date / year, 'year') },
+    { rightBound: year, description: date => formatTime(date / month, 'month') },
+    { rightBound: month, description: date => formatTime(date / day, 'day') },
+    { rightBound: day, description: date => formatTime(date / hour, 'hour') },
+    { rightBound: hour, description: date => formatTime(date / minute, 'minute') },
     { rightBound: minute, description: () => 'Just now' }
 ];
 

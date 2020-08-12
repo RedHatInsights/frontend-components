@@ -4,13 +4,17 @@ describe('dateStringByType component', () => {
     const date = new Date('Dec 31 2019 00:00:00 UTC');
     const tenSecondsAgo = new Date('Dec 30 2019 23:59:50 UTC');
     const tenMinutesAgo = new Date('Dec 30 2019 23:50:00 UTC');
+    const almostHourAgo = new Date('Dec 30 2019 23:01:00 UTC');
     const hourAgo = new Date('Dec 30 2019 23:00:00 UTC');
+    const almostTwoHoursAgo = new Date('Dec 30 2019 22:29:00 UTC');
     const fourHoursAgo = new Date('Dec 30 2019 20:00:00 UTC');
     const dayAgo = new Date('Dec 30 2019 00:00:00 UTC');
     const twoDaysAgo = new Date('Dec 29 2019 00:00:00 UTC');
     const weekAgo = new Date('Dec 24 2019 00:00:00 UTC');
+    // Note Dec 31 - Dec 1 is less than calendaric month but is >= 30 days.
     const monthAgo = new Date('Dec 1 2019 00:00:00 UTC');
     const monthAgo2 = new Date('Nov 30 2019 00:00:00 UTC');
+    const almostTwoMonthsAgo = new Date('Nov 2 2019 00:00:00 UTC');
     const twoMonthsAgo = new Date('Nov 1 2019 00:00:00 UTC');
     const twoMonthsAgo2 = new Date('Oct 31 2019 00:00:00 UTC');
     const sixMonthsAgo = new Date('Jun 30 2019 00:00:00 UTC');
@@ -42,8 +46,16 @@ describe('dateStringByType component', () => {
         expect(dateStringByType('relative')(tenMinutesAgo)).toEqual('10 minutes ago');
     });
 
+    it('Relative datetime matches 59 minutes ago', () => {
+        expect(dateStringByType('relative')(almostHourAgo)).toEqual('59 minutes ago');
+    });
+
     it('Relative datetime matches 1 hour ago', () => {
         expect(dateStringByType('relative')(hourAgo)).toEqual('1 hour ago');
+    });
+
+    it('Relative datetime matches almost 2 hours ago', () => {
+        expect(dateStringByType('relative')(almostTwoHoursAgo)).toEqual('almost 2 hours ago');
     });
 
     it('Relative datetime matches 4 hours ago', () => {
@@ -66,8 +78,12 @@ describe('dateStringByType component', () => {
         expect(dateStringByType('relative')(monthAgo)).toEqual('1 month ago');
     });
 
-    it('Relative datetime matches 1 months ago', () => {
+    it('Relative datetime matches month ago', () => {
         expect(dateStringByType('relative')(monthAgo2)).toEqual('1 month ago');
+    });
+
+    it('Relative datetime matches almost 2 months ago', () => {
+        expect(dateStringByType('relative')(almostTwoMonthsAgo)).toEqual('almost 2 months ago');
     });
 
     it('Relative datetime matches 2 months ago', () => {
