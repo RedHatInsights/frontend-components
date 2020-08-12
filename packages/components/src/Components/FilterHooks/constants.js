@@ -2,50 +2,58 @@ import React from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
 
 export function mapGroups(currSelection, valuesKey = 'values') {
-    return Object.entries(currSelection).map(([ groupKey, groupValue ]) => {
+    return Object.entries(currSelection || {}).map(([ groupKey, groupValue ]) => {
         const values = constructValues(groupValue, groupKey);
-        if (values && values.length > 0) {
+        if (values?.length > 0) {
             return {
                 type: 'tags',
                 key: groupKey,
-                category: values[0].group.label,
+                category: values[0]?.group?.value || values[0]?.group?.label,
                 [valuesKey]: values
             };
         }
     }).filter(Boolean);
 }
 
-export function constructValues(groupValue) {
-    return Object.entries(groupValue).map(([ key, { isSelected, group, item }]) => {
+export function constructValues(groupValue, groupKey) {
+    return Object.entries(groupValue || {}).map(([ key, { isSelected, group, value, item }]) => {
         if (isSelected) {
-            const { tag: { key: tagKey, value: tagValue } } = item.meta;
+            const { key: tagKey, value: tagValue } = item?.meta?.tag || {
+                key: groupKey,
+                value: value || item?.tagValue
+            };
             return {
                 key,
                 tagKey,
                 value: tagValue,
-                name: `${tagKey}=${tagValue}`,
-                group
+                name: `${tagKey}${tagValue ? `=${tagValue}` : ''}`,
+                group: { value: groupKey, ...group }
             };
         }
     }).filter(Boolean);
 }
 
 export function constructGroups(allTags, item = 'item') {
-    return allTags.map(({ name, tags, type = 'checkbox' }) => ({
+    return allTags.map(({ name, tags, type = 'checkbox', ...rest }) => ({
+        ...rest,
         label: name,
         value: name,
         type,
         items: tags.map(({ count, tag: { key: tagKey, value } }) => ({
             className: 'ins-c-tagfilter__option',
             label: <React.Fragment>
-                <div className="ins-c-tagfilter__option-value">{tagKey}={value}</div>
-                <Tooltip
-                    position="right"
-                    enableFlip
-                    content={`Applicable to ${count} ${item}${count === 1 ? '' : 's'}.`}
-                >
-                    <Badge isRead={count <= 0}>{ count }</Badge>
-                </Tooltip>
+                <div className="ins-c-tagfilter__option-value">{tagKey}{value ? `=${value}` : ''}</div>
+                {
+                    count !== undefined && (
+                        <Tooltip
+                            position="right"
+                            enableFlip
+                            content={`Applicable to ${count} ${item}${count === 1 ? '' : 's'}.`}
+                        >
+                            <Badge isRead={count <= 0}>{ count }</Badge>
+                        </Tooltip>
+                    )
+                }
             </React.Fragment>,
             meta: {
                 count,
@@ -54,7 +62,8 @@ export function constructGroups(allTags, item = 'item') {
                     value
                 }
             },
-            value: tagKey
+            value: tagKey,
+            tagValue: value
         }))
     }));
 }

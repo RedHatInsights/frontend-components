@@ -70,16 +70,16 @@ export default class TagModal extends React.Component {
                 className={classNames('ins-c-tag-modal', className)}
                 isOpen={isOpen}
                 title={title || `Tags for ${systemName}`}
-                onClose={toggleModal}
+                onClose={(e) => toggleModal(e, false)}
                 {...onApply && {
                     actions: [
-                        <Button key="confirm" variant="primary" onClick={() => {
+                        <Button key="confirm" variant="primary" onClick={(e) => {
                             onApply();
-                            toggleModal();
+                            toggleModal(e, true);
                         }}>
                             Apply tags
                         </Button>,
-                        <Button key="cancel" variant="link" onClick={() => toggleModal()}>
+                        <Button key="cancel" variant="link" onClick={(e) => toggleModal(e, false)}>
                             Cancel
                         </Button>
                     ]

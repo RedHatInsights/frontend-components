@@ -119,3 +119,14 @@ If you see Jest errors after applying `babel-plugin-transform-imports` plugin yo
   * [dark](doc/dark.md)
   * [breadcrumbs](doc/breadcrumbs.md)
   * [reboot](doc/reboot.md)
+
+## Running single start
+
+If you want to run start for a specific bundle type `ESM|CJS|UMD` in order to make the run faster you can run lerna 
+exec command from root folder
+
+Example of CJS build
+
+```
+npx lerna exec --scope=@redhat-cloud-services/frontend-components npm -- run start:cjs
+```

@@ -58,7 +58,7 @@ export const useTagsFilter = (
         },
         ...loaded && allTags.length > 0 ? {
             groups: [
-                ...constructGroups(state.allTags, itemText)
+                ...constructGroups(allTags, itemText)
             ]
         } : {
             items: [
