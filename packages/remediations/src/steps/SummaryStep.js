@@ -7,7 +7,6 @@ import {
     Stack,
     StackItem
 } from '@patternfly/react-core';
-import { RebootingIcon } from '@patternfly/react-icons';
 
 import IssueTable from './IssueTable';
 
