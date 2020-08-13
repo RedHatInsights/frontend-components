@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Button, TextContent, Text, TextVariants } from '@patternfly/react-core';
+import { Modal, Button, Title } from '@patternfly/react-core';
 import { ExclamationTriangleIcon } from '@patternfly/react-icons';
 import { useIntl, FormattedMessage } from 'react-intl';
 
@@ -13,12 +13,10 @@ const CloseModal = ({ onExit, onStay, isOpen, title, exitTitle, stayTitle, descr
             title={title}
             aria-label={intl.formatMessage({ id: 'wizard.closeAriaLabel', defaultMessage: 'Close add source wizard' })}
             header={
-                <TextContent>
-                    <ExclamationTriangleIcon size="lg" className="ins-c-source__warning-icon" />
-                    <Text component={TextVariants.h1}>
-                        {title}
-                    </Text>
-                </TextContent>
+                <Title headingLevel="h1" size="2xl">
+                    <ExclamationTriangleIcon size="sm" className="ins-c-source__warning-icon" />
+                    {title}
+                </Title>
             }
             isOpen={isOpen}
             onClose={onStay}
