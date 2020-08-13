@@ -292,51 +292,175 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                       <div
                         className="margin-bottom-md"
                       >
-                        <div
-                          className="ins-c-policy-card ins-m-noncompliant"
+                        <Tooltip
+                          appendTo={[Function]}
+                          aria="describedby"
+                          boundary="window"
+                          className=""
+                          content="The system compliance score is calculated by OpenSCAP and is a normalized weighted sum of rules selected for this policy."
+                          distance={15}
+                          enableFlip={true}
+                          entryDelay={500}
+                          exitDelay={500}
+                          flipBehavior={
+                            Array [
+                              "top",
+                              "right",
+                              "bottom",
+                              "left",
+                              "top",
+                              "right",
+                              "bottom",
+                            ]
+                          }
+                          id=""
+                          isAppLauncher={false}
+                          isContentLeftAligned={false}
+                          isVisible={false}
+                          maxWidth="18.75rem"
+                          position="top"
+                          tippyProps={Object {}}
+                          trigger="mouseenter focus"
+                          zIndex={9999}
                         >
-                          <ExclamationCircleIcon
-                            color="currentColor"
-                            noVerticalAlign={false}
-                            size="sm"
-                          >
-                            <svg
-                              aria-hidden={true}
-                              aria-labelledby={null}
-                              fill="currentColor"
-                              height="1em"
-                              role="img"
-                              style={
-                                Object {
-                                  "verticalAlign": "-0.125em",
-                                }
+                          <PopoverBase
+                            appendTo={[Function]}
+                            aria="describedby"
+                            arrow={true}
+                            boundary="window"
+                            content={
+                              <div
+                                className=""
+                                id=""
+                                role="tooltip"
+                              >
+                                <Unknown
+                                  isLeftAligned={false}
+                                >
+                                  The system compliance score is calculated by OpenSCAP and is a normalized weighted sum of rules selected for this policy.
+                                </Unknown>
+                              </div>
+                            }
+                            delay={
+                              Array [
+                                500,
+                                500,
+                              ]
+                            }
+                            distance={15}
+                            flip={true}
+                            flipBehavior={
+                              Array [
+                                "top",
+                                "right",
+                                "bottom",
+                                "left",
+                                "top",
+                                "right",
+                                "bottom",
+                              ]
+                            }
+                            isVisible={false}
+                            lazy={true}
+                            maxWidth="18.75rem"
+                            onCreate={[Function]}
+                            placement="top"
+                            popperOptions={
+                              Object {
+                                "modifiers": Object {
+                                  "hide": Object {
+                                    "enabled": true,
+                                  },
+                                  "preventOverflow": Object {
+                                    "enabled": true,
+                                  },
+                                },
                               }
-                              viewBox="0 0 512 512"
-                              width="1em"
-                            >
-                              <path
-                                d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
-                                transform=""
-                              />
-                            </svg>
-                          </ExclamationCircleIcon>
-                           Noncompliant
-                        </div>
-                        <Component
-                          component="small"
-                        >
-                          <small
-                            className=""
-                            data-pf-content={true}
+                            }
+                            theme="pf-tooltip"
+                            trigger="mouseenter focus"
+                            zIndex={9999}
                           >
-                            30
-                             of 
-                            40
-                             rules passed (
-                            75%
-                            )
-                          </small>
-                        </Component>
+                            <div
+                              className="ins-c-policy-card ins-m-noncompliant"
+                            >
+                              <ExclamationCircleIcon
+                                color="currentColor"
+                                noVerticalAlign={false}
+                                size="sm"
+                              >
+                                <svg
+                                  aria-hidden={true}
+                                  aria-labelledby={null}
+                                  fill="currentColor"
+                                  height="1em"
+                                  role="img"
+                                  style={
+                                    Object {
+                                      "verticalAlign": "-0.125em",
+                                    }
+                                  }
+                                  viewBox="0 0 512 512"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
+                                    transform=""
+                                  />
+                                </svg>
+                              </ExclamationCircleIcon>
+                               Noncompliant
+                            </div>
+                            <Component
+                              component="small"
+                            >
+                              <small
+                                className=""
+                                data-pf-content={true}
+                              >
+                                30
+                                 of 
+                                40
+                                 rules passed (
+                                75%
+                                )
+                              </small>
+                            </Component>
+                            <Portal
+                              containerInfo={
+                                <div>
+                                  <div
+                                    class=""
+                                    id=""
+                                    role="tooltip"
+                                  >
+                                    <div
+                                      class="pf-c-tooltip__content"
+                                    >
+                                      The system compliance score is calculated by OpenSCAP and is a normalized weighted sum of rules selected for this policy.
+                                    </div>
+                                  </div>
+                                </div>
+                              }
+                            >
+                              <div
+                                className=""
+                                id=""
+                                role="tooltip"
+                              >
+                                <Component
+                                  isLeftAligned={false}
+                                >
+                                  <div
+                                    className="pf-c-tooltip__content"
+                                  >
+                                    The system compliance score is calculated by OpenSCAP and is a normalized weighted sum of rules selected for this policy.
+                                  </div>
+                                </Component>
+                              </div>
+                            </Portal>
+                          </PopoverBase>
+                        </Tooltip>
                       </div>
                       <div
                         className="margin-bottom-md"
@@ -776,51 +900,175 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                       <div
                         className="margin-bottom-md"
                       >
-                        <div
-                          className="ins-c-policy-card ins-m-noncompliant"
+                        <Tooltip
+                          appendTo={[Function]}
+                          aria="describedby"
+                          boundary="window"
+                          className=""
+                          content="The system compliance score is calculated by OpenSCAP and is a normalized weighted sum of rules selected for this policy."
+                          distance={15}
+                          enableFlip={true}
+                          entryDelay={500}
+                          exitDelay={500}
+                          flipBehavior={
+                            Array [
+                              "top",
+                              "right",
+                              "bottom",
+                              "left",
+                              "top",
+                              "right",
+                              "bottom",
+                            ]
+                          }
+                          id=""
+                          isAppLauncher={false}
+                          isContentLeftAligned={false}
+                          isVisible={false}
+                          maxWidth="18.75rem"
+                          position="top"
+                          tippyProps={Object {}}
+                          trigger="mouseenter focus"
+                          zIndex={9999}
                         >
-                          <ExclamationCircleIcon
-                            color="currentColor"
-                            noVerticalAlign={false}
-                            size="sm"
-                          >
-                            <svg
-                              aria-hidden={true}
-                              aria-labelledby={null}
-                              fill="currentColor"
-                              height="1em"
-                              role="img"
-                              style={
-                                Object {
-                                  "verticalAlign": "-0.125em",
-                                }
+                          <PopoverBase
+                            appendTo={[Function]}
+                            aria="describedby"
+                            arrow={true}
+                            boundary="window"
+                            content={
+                              <div
+                                className=""
+                                id=""
+                                role="tooltip"
+                              >
+                                <Unknown
+                                  isLeftAligned={false}
+                                >
+                                  The system compliance score is calculated by OpenSCAP and is a normalized weighted sum of rules selected for this policy.
+                                </Unknown>
+                              </div>
+                            }
+                            delay={
+                              Array [
+                                500,
+                                500,
+                              ]
+                            }
+                            distance={15}
+                            flip={true}
+                            flipBehavior={
+                              Array [
+                                "top",
+                                "right",
+                                "bottom",
+                                "left",
+                                "top",
+                                "right",
+                                "bottom",
+                              ]
+                            }
+                            isVisible={false}
+                            lazy={true}
+                            maxWidth="18.75rem"
+                            onCreate={[Function]}
+                            placement="top"
+                            popperOptions={
+                              Object {
+                                "modifiers": Object {
+                                  "hide": Object {
+                                    "enabled": true,
+                                  },
+                                  "preventOverflow": Object {
+                                    "enabled": true,
+                                  },
+                                },
                               }
-                              viewBox="0 0 512 512"
-                              width="1em"
-                            >
-                              <path
-                                d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
-                                transform=""
-                              />
-                            </svg>
-                          </ExclamationCircleIcon>
-                           Noncompliant
-                        </div>
-                        <Component
-                          component="small"
-                        >
-                          <small
-                            className=""
-                            data-pf-content={true}
+                            }
+                            theme="pf-tooltip"
+                            trigger="mouseenter focus"
+                            zIndex={9999}
                           >
-                            30
-                             of 
-                            40
-                             rules passed (
-                            75%
-                            )
-                          </small>
-                        </Component>
+                            <div
+                              className="ins-c-policy-card ins-m-noncompliant"
+                            >
+                              <ExclamationCircleIcon
+                                color="currentColor"
+                                noVerticalAlign={false}
+                                size="sm"
+                              >
+                                <svg
+                                  aria-hidden={true}
+                                  aria-labelledby={null}
+                                  fill="currentColor"
+                                  height="1em"
+                                  role="img"
+                                  style={
+                                    Object {
+                                      "verticalAlign": "-0.125em",
+                                    }
+                                  }
+                                  viewBox="0 0 512 512"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
+                                    transform=""
+                                  />
+                                </svg>
+                              </ExclamationCircleIcon>
+                               Noncompliant
+                            </div>
+                            <Component
+                              component="small"
+                            >
+                              <small
+                                className=""
+                                data-pf-content={true}
+                              >
+                                30
+                                 of 
+                                40
+                                 rules passed (
+                                75%
+                                )
+                              </small>
+                            </Component>
+                            <Portal
+                              containerInfo={
+                                <div>
+                                  <div
+                                    class=""
+                                    id=""
+                                    role="tooltip"
+                                  >
+                                    <div
+                                      class="pf-c-tooltip__content"
+                                    >
+                                      The system compliance score is calculated by OpenSCAP and is a normalized weighted sum of rules selected for this policy.
+                                    </div>
+                                  </div>
+                                </div>
+                              }
+                            >
+                              <div
+                                className=""
+                                id=""
+                                role="tooltip"
+                              >
+                                <Component
+                                  isLeftAligned={false}
+                                >
+                                  <div
+                                    className="pf-c-tooltip__content"
+                                  >
+                                    The system compliance score is calculated by OpenSCAP and is a normalized weighted sum of rules selected for this policy.
+                                  </div>
+                                </Component>
+                              </div>
+                            </Portal>
+                          </PopoverBase>
+                        </Tooltip>
                       </div>
                       <div
                         className="margin-bottom-md"
