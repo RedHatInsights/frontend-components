@@ -89,7 +89,8 @@ module.exports = ({
             extensions: [ '.ts', '.tsx', '.mjs', '.js', '.scss' ],
             alias: {
                 customReact: 'react',
-                PFReactCore: '@patternfly/react-core'
+                PFReactCore: '@patternfly/react-core',
+                PFReactTable: '@patternfly/react-table'
             }
         },
         devServer: {
