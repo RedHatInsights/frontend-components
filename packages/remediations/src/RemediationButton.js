@@ -27,7 +27,7 @@ class RemediationButton extends React.Component {
             getLoader()({
                 ReactRedux,
                 react: React,
-                reactCore,
+                pfReact: reactCore,
                 pfReactTable
             }),
             insights.chrome.getUserPermissions('remediations')
