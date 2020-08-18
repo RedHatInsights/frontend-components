@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Text, TextContent } from '@patternfly/react-core';
+import { Modal, Button, Title } from '@patternfly/react-core';
 import { ExclamationTriangleIcon } from '@patternfly/react-icons';
 
 import CloseModal from '../../addSourceWizard/CloseModal';
@@ -30,8 +30,7 @@ describe('CloseModal', () => {
         expect(wrapper.find(Modal)).toHaveLength(1);
         expect(wrapper.find(Button)).toHaveLength(3);
         expect(wrapper.find(ExclamationTriangleIcon)).toHaveLength(1);
-        expect(wrapper.find(Text)).toHaveLength(1);
-        expect(wrapper.find(TextContent)).toHaveLength(1);
+        expect(wrapper.find(Title)).toHaveLength(1);
     });
 
     it('renders correctly with custom title', () => {
@@ -45,9 +44,7 @@ describe('CloseModal', () => {
         expect(wrapper.find(Modal)).toHaveLength(1);
         expect(wrapper.find(Button)).toHaveLength(3);
         expect(wrapper.find(ExclamationTriangleIcon)).toHaveLength(1);
-        expect(wrapper.find(Text)).toHaveLength(1);
-        expect(wrapper.find(Text).text()).toEqual(initialProps.title);
-        expect(wrapper.find(TextContent)).toHaveLength(1);
+        expect(wrapper.find(Title).text()).toEqual(initialProps.title);
     });
 
     it('calls onExit', () => {

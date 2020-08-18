@@ -14,6 +14,9 @@ import { Tab } from '@patternfly/react-core/dist/esm/components/Tabs/Tab';
 import { Tabs } from '@patternfly/react-core/dist/esm/components/Tabs/Tabs';
 import { Button } from '@patternfly/react-core/dist/esm/components/Button/Button';
 import { Checkbox } from '@patternfly/react-core/dist/esm/components/Checkbox/Checkbox';
+import { Switch } from '@patternfly/react-core/dist/esm/components/Switch/Switch';
+import { Form } from '@patternfly/react-core/dist/esm/components/Form/Form';
+import { Label } from '@patternfly/react-core/dist/esm/components/Label';
 import {
     EmptyState,
     EmptyStateBody,
@@ -112,5 +115,8 @@ export const reactCore = {
     DrawerPanelBody,
     DrawerActions,
     DrawerHead,
-    DrawerCloseButton
+    DrawerCloseButton,
+    Switch,
+    Form,
+    Label
 };
