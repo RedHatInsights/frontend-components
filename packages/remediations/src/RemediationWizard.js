@@ -30,7 +30,7 @@ function createNotification (id, name, isNewSwitch) {
     return {
         variant: 'success',
         title: `Playbook ${verb}`,
-        description: <span>You have succesfully { verb } <a href={ remediationUrl(id) } >{ name }</a>.</span>,
+        description: <span>You have successfully { verb } <a href={ remediationUrl(id) } >{ name }</a>.</span>,
         dismissable: true
     };
 }
