@@ -457,118 +457,124 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
 `;
 
 exports[`DownloadButton component should render CSV and JSON by default 1`] = `
-<Component
-  dropdownItems={
-    Array [
+<Fragment>
+  <Component
+    dropdownItems={
+      Array [
+        <Unknown
+          component="button"
+          onClick={[Function]}
+        >
+          Export to CSV
+        </Unknown>,
+        <Unknown
+          component="button"
+          onClick={[Function]}
+        >
+          Export to JSON
+        </Unknown>,
+      ]
+    }
+    isOpen={false}
+    isPlain={true}
+    onSelect={[Function]}
+    toggle={
       <Unknown
-        component="button"
-        onClick={[Function]}
+        onToggle={[Function]}
+        toggleIndicator={null}
       >
-        Export to CSV
-      </Unknown>,
-      <Unknown
-        component="button"
-        onClick={[Function]}
-      >
-        Export to JSON
-      </Unknown>,
-    ]
-  }
-  isOpen={false}
-  isPlain={true}
-  onSelect={[Function]}
-  toggle={
-    <Unknown
-      onToggle={[Function]}
-      toggleIndicator={null}
-    >
-      <ExportIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-    </Unknown>
-  }
-/>
+        <ExportIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </Unknown>
+    }
+  />
+</Fragment>
 `;
 
 exports[`DownloadButton component should render custom items 1`] = `
-<Component
-  dropdownItems={
-    Array [
+<Fragment>
+  <Component
+    dropdownItems={
+      Array [
+        <Unknown
+          component="button"
+          onClick={[Function]}
+        >
+          Export to CSV
+        </Unknown>,
+        <Unknown
+          component="button"
+          onClick={[Function]}
+        >
+          Export to JSON
+        </Unknown>,
+        <Unknown
+          component="button"
+        />,
+      ]
+    }
+    isOpen={false}
+    isPlain={true}
+    onSelect={[Function]}
+    toggle={
       <Unknown
-        component="button"
-        onClick={[Function]}
+        onToggle={[Function]}
+        toggleIndicator={null}
       >
-        Export to CSV
-      </Unknown>,
-      <Unknown
-        component="button"
-        onClick={[Function]}
-      >
-        Export to JSON
-      </Unknown>,
-      <Unknown
-        component="button"
-      />,
-    ]
-  }
-  isOpen={false}
-  isPlain={true}
-  onSelect={[Function]}
-  toggle={
-    <Unknown
-      onToggle={[Function]}
-      toggleIndicator={null}
-    >
-      <ExportIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-    </Unknown>
-  }
-/>
+        <ExportIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </Unknown>
+    }
+  />
+</Fragment>
 `;
 
 exports[`DownloadButton component should render disabled 1`] = `
-<Component
-  dropdownItems={
-    Array [
+<Fragment>
+  <Component
+    dropdownItems={
+      Array [
+        <Unknown
+          component="button"
+          isDisabled={true}
+          onClick={[Function]}
+        >
+          Export to CSV
+        </Unknown>,
+        <Unknown
+          component="button"
+          isDisabled={true}
+          onClick={[Function]}
+        >
+          Export to JSON
+        </Unknown>,
+        <Unknown
+          component="button"
+        />,
+      ]
+    }
+    isOpen={false}
+    isPlain={true}
+    onSelect={[Function]}
+    toggle={
       <Unknown
-        component="button"
         isDisabled={true}
-        onClick={[Function]}
+        onToggle={[Function]}
+        toggleIndicator={null}
       >
-        Export to CSV
-      </Unknown>,
-      <Unknown
-        component="button"
-        isDisabled={true}
-        onClick={[Function]}
-      >
-        Export to JSON
-      </Unknown>,
-      <Unknown
-        component="button"
-      />,
-    ]
-  }
-  isOpen={false}
-  isPlain={true}
-  onSelect={[Function]}
-  toggle={
-    <Unknown
-      isDisabled={true}
-      onToggle={[Function]}
-      toggleIndicator={null}
-    >
-      <ExportIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-    </Unknown>
-  }
-/>
+        <ExportIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </Unknown>
+    }
+  />
+</Fragment>
 `;
