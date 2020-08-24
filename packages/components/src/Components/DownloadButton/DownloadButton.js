@@ -1,5 +1,6 @@
+import { Dropdown, DropdownItem, DropdownToggle, Tooltip } from '@patternfly/react-core';
 import React, { Component } from 'react';
-import { Dropdown, DropdownToggle, DropdownItem } from '@patternfly/react-core';
+
 import { ExportIcon } from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
 
@@ -20,11 +21,20 @@ class DownloadButton extends Component {
         });
     }
 
+    conditionallyTooltip = (children) => {
+        const { tooltipText } = this.props;
+        return <React.Fragment>
+            {tooltipText ? <Tooltip distance={0} content={tooltipText}>
+                {children}
+            </Tooltip> : children}
+        </React.Fragment>;
+    };
+
     render() {
         const { isOpen } = this.state;
         const { extraItems, onSelect, isDisabled, ...props } = this.props;
-        return (
-            <Dropdown
+        return <React.Fragment>
+            {this.conditionallyTooltip(<Dropdown
                 { ...props }
                 isPlain
                 onSelect={ this.onSelect }
@@ -45,13 +55,14 @@ class DownloadButton extends Component {
                         Export to JSON</DropdownItem>,
                     ...extraItems
                 ] }
-            />
-        );
+            />)}
+        </React.Fragment>;
     }
 }
 
 DownloadButton.propTypes = {
     extraItems: PropTypes.arrayOf(PropTypes.node),
+    tooltipText: PropTypes.node,
     onSelect: PropTypes.func
 };
 DownloadButton.defaultProps = {
