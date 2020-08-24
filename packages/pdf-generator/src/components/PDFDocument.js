@@ -35,7 +35,7 @@ const PDFDocument = ({
                             Prepared {DateFormat({ date: new Date(), type: 'exact' }).props.children}
                         </Text>
                     </View>
-                    <View style={appliedStyles.largeSpacing}>
+                    <View style={appliedStyles.reportNameWrapper}>
                         {(allPagesHaveTitle || key === 0) && (
                             <Text style={[ appliedStyles.reportName, appliedStyles.displayFont ]}>
                                 {reportName} {type}
