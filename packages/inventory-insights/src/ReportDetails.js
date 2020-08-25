@@ -9,7 +9,7 @@ import marked from 'marked';
 import propTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
 import { Card, CardBody, StackItem, CardHeader, Stack } from '@patternfly/react-core';
-import { BullseyeIcon, ThumbsUpIcon, LightbulbIcon, InfoCircleIcon } from '@patternfly/react-icons';
+import { BullseyeIcon, ThumbsUpIcon, LightbulbIcon, InfoCircleIcon, ExternalLinkAltIcon } from '@patternfly/react-icons';
 
 const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
     const rule = report.rule || report;

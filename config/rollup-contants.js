@@ -49,7 +49,6 @@ export const globals = {
 };
 
 export const rollupConfig = (external, plugins, globals, name, entries = [ globMapper('src/**/index.js') ], outputDir = './') => {
-    console.warn(JSON.stringify(entries), process.env.FORMAT);
     if (process.env.FORMAT === 'umd' || !process.env.FORMAT) {
         return [ ...Object.entries(entries[1] || entries[0]).map(([ key, input ]) => ({
             input,
