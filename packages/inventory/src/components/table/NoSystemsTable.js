@@ -1,8 +1,6 @@
 import React from 'react';
-import { EmptyTable } from '@redhat-cloud-services/frontend-components/components/esm/EmptyTable';
-import { Title } from '@patternfly/react-core/dist/esm/components/Title';
-import { EmptyStateBody, EmptyState, EmptyStateVariant } from '@patternfly/react-core/dist/esm/components/EmptyState';
-import { Bullseye } from '@patternfly/react-core/dist/esm/layouts/Bullseye';
+import { EmptyTable } from '@redhat-cloud-services/frontend-components';
+import { Bullseye, EmptyStateBody, EmptyState, EmptyStateVariant, Title } from '@patternfly/react-core';
 
 /**
  * Empty state stable when no systems are found.

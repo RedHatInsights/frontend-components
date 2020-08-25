@@ -48,29 +48,34 @@ export const globals = {
     'react-redux': 'reactRedux'
 };
 
-export const rollupConfig = (external, plugins, globals, name, entries = [ globMapper('src/**/index.js') ], outputDir = './') => ([
-    ...[ 'esm', 'cjs' ].map(env => ({
+export const rollupConfig = (external, plugins, globals, name, entries = [ globMapper('src/**/index.js') ], outputDir = './') => {
+    console.warn(JSON.stringify(entries), process.env.FORMAT);
+    if (process.env.FORMAT === 'umd' || !process.env.FORMAT) {
+        return [ ...Object.entries(entries[1] || entries[0]).map(([ key, input ]) => ({
+            input,
+            output: {
+                file: `${outputDir}${key}.js`,
+                format: 'umd',
+                name: `${name}-${key}`,
+                globals,
+                exports: 'named'
+            },
+            external,
+            plugins
+        }))
+        ];
+    }
+
+    return  {
         input: entries[0],
         output: {
-            dir: `${outputDir}${env}`,
-            format: env,
+            dir: `${outputDir}${process.env.FORMAT}`,
             name,
             globals,
             exports: 'named'
+
         },
         external,
         plugins
-    })),
-    ...Object.entries(entries[1] || entries[0]).map(([ key, input ]) => ({
-        input,
-        output: {
-            file: `${outputDir}${key}.js`,
-            format: 'umd',
-            name: `${name}-${key}`,
-            globals,
-            exports: 'named'
-        },
-        external,
-        plugins
-    }))
-]);
+    };
+};

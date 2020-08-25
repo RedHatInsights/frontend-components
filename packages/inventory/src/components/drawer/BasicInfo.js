@@ -2,10 +2,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Stack, StackItem } from '@patternfly/react-core/dist/esm/layouts/Stack';
-import { Split, SplitItem } from '@patternfly/react-core/dist/esm/layouts/Split';
-import { Title } from '@patternfly/react-core/dist/esm/components/Title';
-import { Chip, ChipGroup } from '@patternfly/react-core/dist/esm/components/ChipGroup';
+import { Chip, ChipGroup, Split, SplitItem, Stack, StackItem, Title } from '@patternfly/react-core';
 import { useSelector } from 'react-redux';
 
 const BasicInfo = ({ hideInvLink, showTags }) => {

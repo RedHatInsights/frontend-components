@@ -1,16 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal } from '@patternfly/react-core/dist/esm/components/Modal/Modal';
-import { Split } from '@patternfly/react-core/dist/esm/layouts/Split/Split';
-import { SplitItem } from '@patternfly/react-core/dist/esm/layouts/Split/SplitItem';
-import { Stack } from '@patternfly/react-core/dist/esm/layouts/Stack/Stack';
-import { StackItem } from '@patternfly/react-core/dist/esm/layouts/Stack/StackItem';
-import { Level } from '@patternfly/react-core/dist/esm/layouts/Level/Level';
-import { LevelItem } from '@patternfly/react-core/dist/esm/layouts/Level/LevelItem';
-import { Button } from '@patternfly/react-core/dist/esm/components/Button/Button';
-import { ClipboardCopy } from '@patternfly/react-core/dist/esm/components/ClipboardCopy/ClipboardCopy';
+import { Button, ClipboardCopy, Level, LevelItem, Modal, Split, SplitItem, Stack, StackItem } from '@patternfly/react-core';
 
-import ExclamationTriangleIcon from  '@patternfly/react-icons/dist/esm/icons/exclamation-triangle-icon';
+import { ExclamationTriangleIcon } from  '@patternfly/react-icons';
 
 const DeleteModal = ({ handleModalToggle, isModalOpen, currentSytems, onConfirm }) => {
     let systemToRemove;
