@@ -40,46 +40,46 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <Component>
+      <ToolbarItem>
         <div>
           Loading...
         </div>
-      </Component>
-      <Component
+      </ToolbarItem>
+      <ToolbarItem
         className="ins-c-primary-toolbar__filter"
       >
         <div>
           Loading...
         </div>
-      </Component>
+      </ToolbarItem>
     </ForwardRef>
     <div>
       Loading...
     </div>
-    <Component
+    <ToolbarItem
       className="ins-c-primary-toolbar__sort-by"
     >
       <div>
         Loading...
       </div>
-    </Component>
-    <Component
+    </ToolbarItem>
+    <ToolbarItem
       className="ins-c-primary-toolbar__pagination"
     >
       <div>
         Loading...
       </div>
-    </Component>
+    </ToolbarItem>
   </ToolbarContent>
   <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
-    <Component>
+    <ToolbarItem>
       <div>
         Loading...
       </div>
-    </Component>
+    </ToolbarItem>
   </ToolbarContent>
 </Toolbar>
 `;
@@ -111,7 +111,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <Component>
+      <ToolbarItem>
         <BulkSelect
           checked={false}
           className=""
@@ -126,8 +126,8 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           }
           onSelect={[MockFunction]}
         />
-      </Component>
-      <Component
+      </ToolbarItem>
+      <ToolbarItem
         className="ins-c-primary-toolbar__filter"
       >
         <ConditionalFilter
@@ -153,21 +153,21 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
           }
           value=""
         />
-      </Component>
+      </ToolbarItem>
     </ForwardRef>
     <Actions
       actions={
         Array [
-          <Unknown
+          <Button
             onClick={[MockFunction]}
           >
              Some action
-          </Unknown>,
-          <Unknown
+          </Button>,
+          <Button
             onClick={[MockFunction]}
           >
             Another button
-          </Unknown>,
+          </Button>,
           Object {
             "label": "Or objects",
             "onClick": [MockFunction],
@@ -205,15 +205,15 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         ]
       }
     />
-    <Component
+    <ToolbarItem
       className="ins-c-primary-toolbar__sort-by"
     >
       <SortBy
         direction="asc"
         onSortChange={[MockFunction]}
       />
-    </Component>
-    <Component
+    </ToolbarItem>
+    <ToolbarItem
       className="ins-c-primary-toolbar__pagination"
     >
       <Pagination
@@ -233,7 +233,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         onPerPageSelect={[MockFunction]}
         onPreviousClick={[Function]}
         onSetPage={[MockFunction]}
-        ouiaId={null}
+        ouiaSafe={true}
         page={1}
         perPage={10}
         perPageOptions={
@@ -275,13 +275,13 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         variant="top"
         widgetId="pagination-options-menu"
       />
-    </Component>
+    </ToolbarItem>
   </ToolbarContent>
   <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
-    <Component>
+    <ToolbarItem>
       <FilterChips
         filters={
           Array [
@@ -311,7 +311,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         }
         onDelete={[MockFunction]}
       />
-    </Component>
+    </ToolbarItem>
   </ToolbarContent>
 </Toolbar>
 `;
@@ -330,7 +330,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <Component>
+      <ToolbarItem>
         <BulkSelect
           checked={false}
           className=""
@@ -345,7 +345,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
           }
           onSelect={[MockFunction]}
         />
-      </Component>
+      </ToolbarItem>
     </ForwardRef>
   </ToolbarContent>
 </Toolbar>
@@ -365,7 +365,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <Component
+      <ToolbarItem
         className="ins-c-primary-toolbar__filter"
       >
         <ConditionalFilter
@@ -391,7 +391,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
           }
           value=""
         />
-      </Component>
+      </ToolbarItem>
     </ForwardRef>
   </ToolbarContent>
 </Toolbar>
@@ -411,7 +411,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
       className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
       variant="filter-group"
     >
-      <Component>
+      <ToolbarItem>
         <BulkSelect
           checked={false}
           className=""
@@ -426,8 +426,8 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
           }
           onSelect={[MockFunction]}
         />
-      </Component>
-      <Component
+      </ToolbarItem>
+      <ToolbarItem
         className="ins-c-primary-toolbar__filter"
       >
         <ConditionalFilter
@@ -453,7 +453,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
           }
           value=""
         />
-      </Component>
+      </ToolbarItem>
     </ForwardRef>
     <Actions
       actions={Array []}
@@ -483,15 +483,15 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         ]
       }
     />
-    <Component
+    <ToolbarItem
       className="ins-c-primary-toolbar__sort-by"
     >
       <SortBy
         direction="asc"
         onSortChange={[MockFunction]}
       />
-    </Component>
-    <Component
+    </ToolbarItem>
+    <ToolbarItem
       className="ins-c-primary-toolbar__pagination"
     >
       <Pagination
@@ -511,7 +511,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         onPerPageSelect={[MockFunction]}
         onPreviousClick={[Function]}
         onSetPage={[MockFunction]}
-        ouiaId={null}
+        ouiaSafe={true}
         page={1}
         perPage={10}
         perPageOptions={
@@ -553,13 +553,13 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         variant="top"
         widgetId="pagination-options-menu"
       />
-    </Component>
+    </ToolbarItem>
   </ToolbarContent>
   <ToolbarContent
     isExpanded={false}
     showClearFiltersButton={false}
   >
-    <Component>
+    <ToolbarItem>
       <FilterChips
         filters={
           Array [
@@ -589,7 +589,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         }
         onDelete={[MockFunction]}
       />
-    </Component>
+    </ToolbarItem>
   </ToolbarContent>
 </Toolbar>
 `;

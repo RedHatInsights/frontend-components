@@ -2,46 +2,46 @@
 
 exports[`Actions - component should render actionObject as first action 1`] = `
 <Fragment>
-  <Component
+  <ToolbarItem
     className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
-    <Component
+    <Button
       onClick={[MockFunction]}
     >
       Some title
-    </Component>
-  </Component>
-  <Component
+    </Button>
+  </ToolbarItem>
+  <ToolbarItem
     className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Component
+    <Dropdown
       dropdownItems={
         Array [
-          <Unknown
+          <DropdownItem
             className="ins-c-primary-toolbar__first-action "
             component="button"
             onClick={[Function]}
           >
             Some title
-          </Unknown>,
+          </DropdownItem>,
         ]
       }
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
       toggle={
-        <Unknown
+        <KebabToggle
           onToggle={[Function]}
         />
       }
     />
-  </Component>
+  </ToolbarItem>
 </Fragment>
 `;
 
 exports[`Actions - component should render actions and overflow 1`] = `
 <Fragment>
-  <Component
+  <ToolbarItem
     className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
@@ -50,14 +50,14 @@ exports[`Actions - component should render actions and overflow 1`] = `
     >
       Some button
     </button>
-  </Component>
-  <Component
+  </ToolbarItem>
+  <ToolbarItem
     className=" ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Component
+    <Dropdown
       dropdownItems={
         Array [
-          <Unknown
+          <DropdownItem
             className="ins-c-primary-toolbar__first-action "
             component="div"
             onClick={[Function]}
@@ -67,29 +67,29 @@ exports[`Actions - component should render actions and overflow 1`] = `
             >
               Some button
             </button>
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             component="button"
             onClick={[Function]}
           >
             Some title
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             component="button"
             onClick={[Function]}
           >
             Custom props
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             component="button"
             onClick={[Function]}
           >
             plain string
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownSeparator
             className="ins-c-primary-toolbar__overflow-actions-separator"
           />,
-          <Unknown
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="div"
             onClick={[Function]}
@@ -99,52 +99,52 @@ exports[`Actions - component should render actions and overflow 1`] = `
             >
               Some button
             </button>
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="button"
             onClick={[Function]}
           >
             Some title
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="button"
             onClick={[Function]}
           >
             Custom props
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="button"
             onClick={[Function]}
           >
             plain string
-          </Unknown>,
+          </DropdownItem>,
         ]
       }
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
       toggle={
-        <Unknown
+        <KebabToggle
           onToggle={[Function]}
         />
       }
     />
-  </Component>
+  </ToolbarItem>
 </Fragment>
 `;
 
 exports[`Actions - component should render empty actions 1`] = `
 <Fragment>
-  <Component
+  <ToolbarItem
     className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Component
+    <Dropdown
       dropdownItems={
         Array [
-          <Unknown
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="div"
             onClick={[Function]}
@@ -154,46 +154,46 @@ exports[`Actions - component should render empty actions 1`] = `
             >
               Some button
             </button>
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="button"
             onClick={[Function]}
           >
             Some title
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="button"
             onClick={[Function]}
           >
             Custom props
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="button"
             onClick={[Function]}
           >
             plain string
-          </Unknown>,
+          </DropdownItem>,
         ]
       }
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
       toggle={
-        <Unknown
+        <KebabToggle
           onToggle={[Function]}
         />
       }
     />
-  </Component>
+  </ToolbarItem>
 </Fragment>
 `;
 
 exports[`Actions - component should render just actions 1`] = `
 <Fragment>
-  <Component
+  <ToolbarItem
     className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
@@ -202,14 +202,14 @@ exports[`Actions - component should render just actions 1`] = `
     >
       Some button
     </button>
-  </Component>
-  <Component
+  </ToolbarItem>
+  <ToolbarItem
     className=" ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Component
+    <Dropdown
       dropdownItems={
         Array [
-          <Unknown
+          <DropdownItem
             className="ins-c-primary-toolbar__first-action "
             component="div"
             onClick={[Function]}
@@ -219,37 +219,37 @@ exports[`Actions - component should render just actions 1`] = `
             >
               Some button
             </button>
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             component="button"
             onClick={[Function]}
           >
             Some title
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             component="button"
             onClick={[Function]}
           >
             Custom props
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             component="button"
             onClick={[Function]}
           >
             plain string
-          </Unknown>,
+          </DropdownItem>,
         ]
       }
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
       toggle={
-        <Unknown
+        <KebabToggle
           onToggle={[Function]}
         />
       }
     />
-  </Component>
+  </ToolbarItem>
 </Fragment>
 `;
 
@@ -257,7 +257,7 @@ exports[`Actions - component should render no data 1`] = `<Fragment />`;
 
 exports[`Actions - component should render one action 1`] = `
 <Fragment>
-  <Component
+  <ToolbarItem
     className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
@@ -266,14 +266,14 @@ exports[`Actions - component should render one action 1`] = `
     >
       Some button
     </button>
-  </Component>
-  <Component
+  </ToolbarItem>
+  <ToolbarItem
     className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Component
+    <Dropdown
       dropdownItems={
         Array [
-          <Unknown
+          <DropdownItem
             className="ins-c-primary-toolbar__first-action "
             component="div"
             onClick={[Function]}
@@ -283,25 +283,25 @@ exports[`Actions - component should render one action 1`] = `
             >
               Some button
             </button>
-          </Unknown>,
+          </DropdownItem>,
         ]
       }
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
       toggle={
-        <Unknown
+        <KebabToggle
           onToggle={[Function]}
         />
       }
     />
-  </Component>
+  </ToolbarItem>
 </Fragment>
 `;
 
 exports[`Actions - component should render one action and multiple overflow 1`] = `
 <Fragment>
-  <Component
+  <ToolbarItem
     className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
   >
     <button
@@ -310,14 +310,14 @@ exports[`Actions - component should render one action and multiple overflow 1`] 
     >
       Some button
     </button>
-  </Component>
-  <Component
+  </ToolbarItem>
+  <ToolbarItem
     className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
   >
-    <Component
+    <Dropdown
       dropdownItems={
         Array [
-          <Unknown
+          <DropdownItem
             className="ins-c-primary-toolbar__first-action "
             component="div"
             onClick={[Function]}
@@ -327,11 +327,11 @@ exports[`Actions - component should render one action and multiple overflow 1`] 
             >
               Some button
             </button>
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownSeparator
             className="ins-c-primary-toolbar__overflow-actions-separator"
           />,
-          <Unknown
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="div"
             onClick={[Function]}
@@ -341,59 +341,59 @@ exports[`Actions - component should render one action and multiple overflow 1`] 
             >
               Some button
             </button>
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="button"
             onClick={[Function]}
           >
             Some title
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="button"
             onClick={[Function]}
           >
             Custom props
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             className="ins-c-primary-toolbar__overflow-actions"
             component="button"
             onClick={[Function]}
           >
             plain string
-          </Unknown>,
+          </DropdownItem>,
         ]
       }
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
       toggle={
-        <Unknown
+        <KebabToggle
           onToggle={[Function]}
         />
       }
     />
-  </Component>
+  </ToolbarItem>
 </Fragment>
 `;
 
 exports[`overflowActionsMapper should render action object 1`] = `
 <div>
-  <Component
+  <DropdownItem
     className="ins-c-primary-toolbar__overflow-actions"
     component="button"
     key="undefined-overflow"
     onClick={[Function]}
   >
     Some title
-  </Component>
+  </DropdownItem>
 </div>
 `;
 
 exports[`overflowActionsMapper should render component 1`] = `
 <div>
-  <Component
+  <DropdownItem
     className="ins-c-primary-toolbar__overflow-actions"
     component="div"
     key="btn"
@@ -405,19 +405,19 @@ exports[`overflowActionsMapper should render component 1`] = `
     >
       Some button
     </button>
-  </Component>
+  </DropdownItem>
 </div>
 `;
 
 exports[`overflowActionsMapper should render plain string 1`] = `
 <div>
-  <Component
+  <DropdownItem
     className="ins-c-primary-toolbar__overflow-actions"
     component="button"
     key="undefined-overflow"
     onClick={[Function]}
   >
     Custom props
-  </Component>
+  </DropdownItem>
 </div>
 `;

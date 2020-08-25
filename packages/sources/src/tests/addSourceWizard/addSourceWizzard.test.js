@@ -170,7 +170,7 @@ describe('AddSourceWizard', () => {
         wrapper.update();
 
         await act(async () => {
-            wrapper.find(Button).at(CANCEL_BUTTON_INDEX).simulate('click');
+            wrapper.find('Button').at(CANCEL_BUTTON_INDEX).simulate('click');
         });
 
         wrapper.update();
@@ -213,7 +213,7 @@ describe('AddSourceWizard', () => {
         wrapper.update();
 
         await act(async () => {
-            wrapper.find(Button).at(CANCEL_BUTTON_INDEX).simulate('click');
+            wrapper.find('Button').at(CANCEL_BUTTON_INDEX).simulate('click');
         });
         wrapper.update();
 

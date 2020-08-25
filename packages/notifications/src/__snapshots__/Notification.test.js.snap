@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Notification component pagination should render correctly 1`] = `
-<Component
+<Alert
   actionClose={null}
   className="notification-item"
   id="Foo"
@@ -11,11 +11,11 @@ exports[`Notification component pagination should render correctly 1`] = `
   variant="success"
 >
   description
-</Component>
+</Alert>
 `;
 
 exports[`Notification component should render correctly 1`] = `
-<Component
+<Alert
   actionClose={null}
   className="notification-item"
   id="Foo"
@@ -25,11 +25,11 @@ exports[`Notification component should render correctly 1`] = `
   variant="success"
 >
   description
-</Component>
+</Alert>
 `;
 
 exports[`Notification component should render correctly with HTML description 1`] = `
-<Component
+<Alert
   actionClose={null}
   className="notification-item"
   id="Foo"
@@ -39,11 +39,11 @@ exports[`Notification component should render correctly with HTML description 1`
   variant="success"
 >
   Some textanother
-</Component>
+</Alert>
 `;
 
 exports[`Notification component should render correctly with HTML title 1`] = `
-<Component
+<Alert
   actionClose={null}
   className="notification-item"
   id="Foo"
@@ -53,13 +53,13 @@ exports[`Notification component should render correctly with HTML title 1`] = `
   variant="success"
 >
   description
-</Component>
+</Alert>
 `;
 
 exports[`Notification component should render correctly with dismiss button 1`] = `
-<Component
+<Alert
   actionClose={
-    <Unknown
+    <AlertActionCloseButton
       aria-label="close-notification"
       onClick={[Function]}
       variant="plain"
@@ -69,7 +69,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
         noVerticalAlign={false}
         size="sm"
       />
-    </Unknown>
+    </AlertActionCloseButton>
   }
   className="notification-item"
   id="Foo"
@@ -81,7 +81,7 @@ exports[`Notification component should render correctly with dismiss button 1`] 
 `;
 
 exports[`Notification component should render correctly with sentryId 1`] = `
-<Component
+<Alert
   actionClose={null}
   className="notification-item"
   id="Foo"
@@ -91,19 +91,19 @@ exports[`Notification component should render correctly with sentryId 1`] = `
   variant="success"
 >
   description
-  <Component>
-    <Component
+  <TextContent>
+    <Text
       component="small"
     >
       Tracking Id: 
       some-UUID
-    </Component>
-  </Component>
-</Component>
+    </Text>
+  </TextContent>
+</Alert>
 `;
 
 exports[`Notification component should render correctly withouth description 1`] = `
-<Component
+<Alert
   actionClose={null}
   className="notification-item"
   id="Foo"

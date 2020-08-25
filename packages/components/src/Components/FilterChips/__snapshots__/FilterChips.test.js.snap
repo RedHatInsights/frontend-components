@@ -46,11 +46,11 @@ exports[`FilterChips component should render 1`] = `
       tooltipPosition="top"
     >
       Chip 2
-      <Component
+      <Badge
         key="chip_badge_undefined"
       >
         3
-      </Component>
+      </Badge>
     </Chip>
   </ChipGroup>
   <ChipGroup
@@ -103,11 +103,11 @@ exports[`FilterChips component should render 1`] = `
       Chip 4
     </Chip>
   </ChipGroup>
-  <Component
+  <Button
     onClick={[Function]}
     variant="link"
   >
     Clear filters
-  </Component>
+  </Button>
 </span>
 `;

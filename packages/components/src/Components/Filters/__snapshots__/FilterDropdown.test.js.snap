@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterDropdown component should render 1`] = `
-<Component
+<Dropdown
   className="ins-c-filter__dropdown"
   isOpen={false}
   toggle={
-    <Unknown
+    <DropdownToggle
       onToggle={[Function]}
     >
       Filters
-    </Unknown>
+    </DropdownToggle>
   }
 >
   <div
     className="pf-c-dropdown__menu-item"
   >
-    <Component
+    <Level
       key="0"
     >
       <FilterInput
@@ -31,27 +31,27 @@ exports[`FilterDropdown component should render 1`] = `
         type=""
         value=""
       />
-    </Component>
+    </Level>
   </div>
-</Component>
+</Dropdown>
 `;
 
 exports[`FilterDropdown component should render with a component as label 1`] = `
-<Component
+<Dropdown
   className="ins-c-filter__dropdown"
   isOpen={false}
   toggle={
-    <Unknown
+    <DropdownToggle
       onToggle={[Function]}
     >
       <React.Fragment />
-    </Unknown>
+    </DropdownToggle>
   }
 >
   <div
     className="pf-c-dropdown__menu-item"
   >
-    <Component
+    <Level
       key="0"
     >
       <FilterInput
@@ -67,7 +67,7 @@ exports[`FilterDropdown component should render with a component as label 1`] = 
         type=""
         value=""
       />
-    </Component>
+    </Level>
   </div>
-</Component>
+</Dropdown>
 `;

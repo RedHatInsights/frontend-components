@@ -19,7 +19,7 @@ exports[`TreeTable decorator should render correctly - with data tree collapsed 
   <div
     className="pf-c-treeview__toggle"
   >
-    <Component
+    <Button
       onClick={[Function]}
       variant="plain"
     >
@@ -30,7 +30,7 @@ exports[`TreeTable decorator should render correctly - with data tree collapsed 
         noVerticalAlign={false}
         size="sm"
       />
-    </Component>
+    </Button>
   </div>
   <div
     className="pf-c-treeview__control-text"
@@ -47,7 +47,7 @@ exports[`TreeTable decorator should render correctly - with data tree opened 1`]
   <div
     className="pf-c-treeview__toggle"
   >
-    <Component
+    <Button
       onClick={[Function]}
       variant="plain"
     >
@@ -58,7 +58,7 @@ exports[`TreeTable decorator should render correctly - with data tree opened 1`]
         noVerticalAlign={false}
         size="sm"
       />
-    </Component>
+    </Button>
   </div>
   <div
     className="pf-c-treeview__control-text"

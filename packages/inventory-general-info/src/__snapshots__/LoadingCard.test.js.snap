@@ -27,81 +27,81 @@ exports[`Clickable should render 1`] = `
 `;
 
 exports[`Loading card render - isLoading: false 1`] = `
-<Component
+<Stack
   hasGutter={true}
 >
-  <Component>
-    <Component>
-      <Component
+  <StackItem>
+    <TextContent>
+      <Text
         component="h1"
       >
         Card that is loaded
-      </Component>
-    </Component>
-  </Component>
-  <Component
+      </Text>
+    </TextContent>
+  </StackItem>
+  <StackItem
     isFilled={true}
   >
-    <Component>
-      <Component
+    <TextContent>
+      <TextList
         component="dl"
       />
-    </Component>
-  </Component>
-</Component>
+    </TextContent>
+  </StackItem>
+</Stack>
 `;
 
 exports[`Loading card render - isLoading: true 1`] = `
-<Component
+<Stack
   hasGutter={true}
 >
-  <Component>
-    <Component>
-      <Component
+  <StackItem>
+    <TextContent>
+      <Text
         component="h1"
       >
         Card that is loading
-      </Component>
-    </Component>
-  </Component>
-  <Component
+      </Text>
+    </TextContent>
+  </StackItem>
+  <StackItem
     isFilled={true}
   >
-    <Component>
-      <Component
+    <TextContent>
+      <TextList
         component="dl"
       />
-    </Component>
-  </Component>
-</Component>
+    </TextContent>
+  </StackItem>
+</Stack>
 `;
 
 exports[`Loading card render 1`] = `
-<Component
+<Stack
   hasGutter={true}
 >
-  <Component>
-    <Component>
-      <Component
+  <StackItem>
+    <TextContent>
+      <Text
         component="h1"
       >
         Some title
-      </Component>
-    </Component>
-  </Component>
-  <Component
+      </Text>
+    </TextContent>
+  </StackItem>
+  <StackItem
     isFilled={true}
   >
-    <Component>
-      <Component
+    <TextContent>
+      <TextList
         component="dl"
       >
-        <Component
+        <TextListItem
           component="dt"
         >
           test-title
-        </Component>
-        <Component
+        </TextListItem>
+        <TextListItem
           component="dd"
         >
           <Clickable
@@ -114,71 +114,71 @@ exports[`Loading card render 1`] = `
               }
             }
           />
-        </Component>
-        <Component
+        </TextListItem>
+        <TextListItem
           component="dt"
         >
           just title
-        </Component>
-        <Component
+        </TextListItem>
+        <TextListItem
           component="dd"
         >
           Not available
-        </Component>
-      </Component>
-    </Component>
-  </Component>
-</Component>
+        </TextListItem>
+      </TextList>
+    </TextContent>
+  </StackItem>
+</Stack>
 `;
 
 exports[`should render loading bars 1`] = `
-<Component
+<Stack
   hasGutter={true}
 >
-  <Component>
-    <Component>
-      <Component
+  <StackItem>
+    <TextContent>
+      <Text
         component="h1"
       >
         Some title
-      </Component>
-    </Component>
-  </Component>
-  <Component
+      </Text>
+    </TextContent>
+  </StackItem>
+  <StackItem
     isFilled={true}
   >
-    <Component>
-      <Component
+    <TextContent>
+      <TextList
         component="dl"
       >
-        <Component
+        <TextListItem
           component="dt"
         >
           test-title
-        </Component>
-        <Component
+        </TextListItem>
+        <TextListItem
           component="dd"
         >
           <Skeleton
             isDark={false}
             size="md"
           />
-        </Component>
-        <Component
+        </TextListItem>
+        <TextListItem
           component="dt"
         >
           just title
-        </Component>
-        <Component
+        </TextListItem>
+        <TextListItem
           component="dd"
         >
           <Skeleton
             isDark={false}
             size="sm"
           />
-        </Component>
-      </Component>
-    </Component>
-  </Component>
-</Component>
+        </TextListItem>
+      </TextList>
+    </TextContent>
+  </StackItem>
+</Stack>
 `;

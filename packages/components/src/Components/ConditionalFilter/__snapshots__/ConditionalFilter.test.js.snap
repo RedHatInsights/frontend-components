@@ -2,55 +2,55 @@
 
 exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component>
-      <Component
+    <SplitItem>
+      <Dropdown
         className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
-            <Unknown
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 1
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 2
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Checkbox
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Radio filter
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={true}
               onClick={[Function]}
             >
               No value
-            </Unknown>,
+            </DropdownItem>,
           ]
         }
         isOpen={false}
         onSelect={[Function]}
         toggle={
-          <Unknown
+          <DropdownToggle
             className=""
             isDisabled={true}
             onToggle={[Function]}
@@ -65,11 +65,11 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
             >
               No value
             </span>
-          </Unknown>
+          </DropdownToggle>
         }
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
       <Text
@@ -78,8 +78,8 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
         placeholder="Filter by no value"
         value=""
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;
 
@@ -102,55 +102,55 @@ exports[`ConditionalFilter render should render correctly 1`] = `
 
 exports[`ConditionalFilter render should render correctly checkbox with value checkbox-filter 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component>
-      <Component
+    <SplitItem>
+      <Dropdown
         className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
-            <Unknown
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 1
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 2
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={true}
               onClick={[Function]}
             >
               Checkbox
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Radio filter
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               No value
-            </Unknown>,
+            </DropdownItem>,
           ]
         }
         isOpen={false}
         onSelect={[Function]}
         toggle={
-          <Unknown
+          <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
@@ -165,11 +165,11 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
             >
               Checkbox
             </span>
-          </Unknown>
+          </DropdownToggle>
         }
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
       <Checkbox
@@ -196,62 +196,62 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
         placeholder="Filter by checkbox"
         value={Array []}
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;
 
 exports[`ConditionalFilter render should render correctly no value with value undefined 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component>
-      <Component
+    <SplitItem>
+      <Dropdown
         className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
-            <Unknown
+            <DropdownItem
               component="button"
               isHovered={true}
               onClick={[Function]}
             >
               Simple text 1
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 2
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Checkbox
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Radio filter
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               No value
-            </Unknown>,
+            </DropdownItem>,
           ]
         }
         isOpen={false}
         onSelect={[Function]}
         toggle={
-          <Unknown
+          <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
@@ -266,11 +266,11 @@ exports[`ConditionalFilter render should render correctly no value with value un
             >
               Simple text 1
             </span>
-          </Unknown>
+          </DropdownToggle>
         }
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
       <Text
@@ -280,62 +280,62 @@ exports[`ConditionalFilter render should render correctly no value with value un
         placeholder="Filter by simple text 1"
         value=""
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;
 
 exports[`ConditionalFilter render should render correctly radio filter with value radio-filter 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component>
-      <Component
+    <SplitItem>
+      <Dropdown
         className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
-            <Unknown
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 1
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 2
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Checkbox
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={true}
               onClick={[Function]}
             >
               Radio filter
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               No value
-            </Unknown>,
+            </DropdownItem>,
           ]
         }
         isOpen={false}
         onSelect={[Function]}
         toggle={
-          <Unknown
+          <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
@@ -350,11 +350,11 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
             >
               Radio filter
             </span>
-          </Unknown>
+          </DropdownToggle>
         }
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
       <Radio
@@ -377,62 +377,62 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
         onChange={[Function]}
         placeholder="Filter by radio filter"
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;
 
 exports[`ConditionalFilter render should render correctly simple text 1 with value simple-text-1 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component>
-      <Component
+    <SplitItem>
+      <Dropdown
         className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
-            <Unknown
+            <DropdownItem
               component="button"
               isHovered={true}
               onClick={[Function]}
             >
               Simple text 1
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 2
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Checkbox
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Radio filter
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               No value
-            </Unknown>,
+            </DropdownItem>,
           ]
         }
         isOpen={false}
         onSelect={[Function]}
         toggle={
-          <Unknown
+          <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
@@ -447,11 +447,11 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
             >
               Simple text 1
             </span>
-          </Unknown>
+          </DropdownToggle>
         }
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
       <Text
@@ -461,62 +461,62 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
         placeholder="Filter by simple text 1"
         value=""
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;
 
 exports[`ConditionalFilter render should render correctly simple text 2 with value simple-text-2 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component>
-      <Component
+    <SplitItem>
+      <Dropdown
         className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
-            <Unknown
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 1
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={true}
               onClick={[Function]}
             >
               Simple text 2
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Checkbox
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Radio filter
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               No value
-            </Unknown>,
+            </DropdownItem>,
           ]
         }
         isOpen={false}
         onSelect={[Function]}
         toggle={
-          <Unknown
+          <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
@@ -531,11 +531,11 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
             >
               Simple text 2
             </span>
-          </Unknown>
+          </DropdownToggle>
         }
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
       <Text
@@ -545,62 +545,62 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
         placeholder="Filter by simple text 2"
         value="some-value blaa"
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;
 
 exports[`ConditionalFilter render should render correctly with config - each item as disabled 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component>
-      <Component
+    <SplitItem>
+      <Dropdown
         className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
-            <Unknown
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 1
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 2
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Checkbox
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Radio filter
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={true}
               onClick={[Function]}
             >
               No value
-            </Unknown>,
+            </DropdownItem>,
           ]
         }
         isOpen={false}
         onSelect={[Function]}
         toggle={
-          <Unknown
+          <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
@@ -615,11 +615,11 @@ exports[`ConditionalFilter render should render correctly with config - each ite
             >
               No value
             </span>
-          </Unknown>
+          </DropdownToggle>
         }
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
       <Text
@@ -628,62 +628,62 @@ exports[`ConditionalFilter render should render correctly with config - each ite
         placeholder="Filter by no value"
         value=""
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;
 
 exports[`ConditionalFilter render should render correctly with config 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component>
-      <Component
+    <SplitItem>
+      <Dropdown
         className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
-            <Unknown
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 1
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 2
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Checkbox
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Radio filter
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={true}
               onClick={[Function]}
             >
               No value
-            </Unknown>,
+            </DropdownItem>,
           ]
         }
         isOpen={false}
         onSelect={[Function]}
         toggle={
-          <Unknown
+          <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
@@ -698,11 +698,11 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
             >
               No value
             </span>
-          </Unknown>
+          </DropdownToggle>
         }
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
       <Text
@@ -711,17 +711,17 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
         placeholder="Filter by no value"
         value=""
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;
 
 exports[`ConditionalFilter render should render correctly with one filter 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component
+    <SplitItem
       isFilled={true}
     >
       <Text
@@ -730,62 +730,62 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
         placeholder="Filter by simple text 1"
         value=""
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;
 
 exports[`ConditionalFilter render should render correctly with with the active label hidden 1`] = `
 <Fragment>
-  <Component
+  <Split
     className="ins-c-conditional-filter"
   >
-    <Component>
-      <Component
+    <SplitItem>
+      <Dropdown
         className="ins-c-conditional-filter__group"
         dropdownItems={
           Array [
-            <Unknown
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 1
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Simple text 2
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Checkbox
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={false}
               onClick={[Function]}
             >
               Radio filter
-            </Unknown>,
-            <Unknown
+            </DropdownItem>,
+            <DropdownItem
               component="button"
               isHovered={true}
               onClick={[Function]}
             >
               No value
-            </Unknown>,
+            </DropdownItem>,
           ]
         }
         isOpen={false}
         onSelect={[Function]}
         toggle={
-          <Unknown
+          <DropdownToggle
             className="ins-c-conditional-filter__no-label"
             isDisabled={false}
             onToggle={[Function]}
@@ -795,11 +795,11 @@ exports[`ConditionalFilter render should render correctly with with the active l
               noVerticalAlign={false}
               size="sm"
             />
-          </Unknown>
+          </DropdownToggle>
         }
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
       <Text
@@ -808,7 +808,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
         placeholder="Filter by no value"
         value=""
       />
-    </Component>
-  </Component>
+    </SplitItem>
+  </Split>
 </Fragment>
 `;

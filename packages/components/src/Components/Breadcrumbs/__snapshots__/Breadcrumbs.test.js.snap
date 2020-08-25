@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumbs component should render correctly no current 1`] = `
-<Component
+<Breadcrumb
   className="ins-c-breadcrumbs"
 >
-  <Component
+  <BreadcrumbItem
     data-key={0}
     key="0"
   >
@@ -14,8 +14,8 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
     >
       First
     </a>
-  </Component>
-  <Component
+  </BreadcrumbItem>
+  <BreadcrumbItem
     data-key={1}
     key="1"
   >
@@ -27,29 +27,29 @@ exports[`Breadcrumbs component should render correctly no current 1`] = `
         Second
       </span>
     </a>
-  </Component>
-</Component>
+  </BreadcrumbItem>
+</Breadcrumb>
 `;
 
 exports[`Breadcrumbs component should render correctly no items 1`] = `
-<Component
+<Breadcrumb
   className="ins-c-breadcrumbs"
 >
-  <Component
+  <BreadcrumbItem
     isActive={true}
   >
      
     Something
      
-  </Component>
-</Component>
+  </BreadcrumbItem>
+</Breadcrumb>
 `;
 
 exports[`Breadcrumbs component should render correctly with items and current item 1`] = `
-<Component
+<Breadcrumb
   className="ins-c-breadcrumbs"
 >
-  <Component
+  <BreadcrumbItem
     data-key={0}
     key="0"
   >
@@ -59,8 +59,8 @@ exports[`Breadcrumbs component should render correctly with items and current it
     >
       First
     </a>
-  </Component>
-  <Component
+  </BreadcrumbItem>
+  <BreadcrumbItem
     data-key={1}
     key="1"
   >
@@ -72,13 +72,13 @@ exports[`Breadcrumbs component should render correctly with items and current it
         Second
       </span>
     </a>
-  </Component>
-  <Component
+  </BreadcrumbItem>
+  <BreadcrumbItem
     isActive={true}
   >
      
     Something
      
-  </Component>
-</Component>
+  </BreadcrumbItem>
+</Breadcrumb>
 `;

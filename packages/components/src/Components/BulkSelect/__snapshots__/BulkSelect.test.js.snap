@@ -15,22 +15,22 @@ exports[`BulkSelect should render correctly - no data 1`] = `
 
 exports[`BulkSelect should render correctly - null checked 1`] = `
 <Fragment>
-  <Component
+  <Dropdown
     className="ins-c-bulk-select"
     dropdownItems={
       Array [
-        <Unknown
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
           Select all
-        </Unknown>,
+        </DropdownItem>,
       ]
     }
     isOpen={false}
     onSelect={[Function]}
     toggle={
-      <Unknown
+      <DropdownToggle
         isDisabled={false}
         onToggle={[Function]}
         splitButtonItems={
@@ -58,29 +58,29 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
 
 exports[`BulkSelect should render correctly 1`] = `
 <Fragment>
-  <Component
+  <Dropdown
     className="ins-c-bulk-select"
     dropdownItems={
       Array [
-        <Unknown
+        <DropdownItem
           className="ins-c-bulk-select__selected"
           isDisabled={true}
         >
           30
            Selected
-        </Unknown>,
-        <Unknown
+        </DropdownItem>,
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
           Select all
-        </Unknown>,
+        </DropdownItem>,
       ]
     }
     isOpen={false}
     onSelect={[Function]}
     toggle={
-      <Unknown
+      <DropdownToggle
         isDisabled={false}
         onToggle={[Function]}
         splitButtonItems={
@@ -108,22 +108,22 @@ exports[`BulkSelect should render correctly 1`] = `
 
 exports[`BulkSelect should render correctly 2`] = `
 <Fragment>
-  <Component
+  <Dropdown
     className="ins-c-bulk-select"
     dropdownItems={
       Array [
-        <Unknown
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
           Select all
-        </Unknown>,
+        </DropdownItem>,
       ]
     }
     isOpen={false}
     onSelect={[Function]}
     toggle={
-      <Unknown
+      <DropdownToggle
         isDisabled={false}
         onToggle={[Function]}
         splitButtonItems={
