@@ -241,9 +241,11 @@ exports[`SystemRulesTable component should render 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -972,7 +974,7 @@ exports[`SystemRulesTable component should render 1`] = `
     sortBy={Object {}}
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -1377,8 +1379,10 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -1416,7 +1420,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
     sortBy={Object {}}
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -1737,9 +1741,11 @@ exports[`SystemRulesTable component should render search results by rule name 1`
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -1826,7 +1832,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
     sortBy={Object {}}
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -2147,9 +2153,11 @@ exports[`SystemRulesTable component should render search results on any page, re
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -2236,7 +2244,7 @@ exports[`SystemRulesTable component should render search results on any page, re
     sortBy={Object {}}
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -2548,9 +2556,11 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -3279,7 +3289,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
     sortBy={Object {}}
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -3591,9 +3601,11 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -4309,7 +4321,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     }
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -4570,8 +4582,10 @@ exports[`SystemRulesTable component should render without remediations if prop p
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -5300,7 +5314,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
     sortBy={Object {}}
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -5598,8 +5612,10 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -5637,7 +5653,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     sortBy={Object {}}
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -5924,9 +5940,11 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -6545,7 +6563,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     sortBy={Object {}}
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -6843,8 +6861,10 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -6882,7 +6902,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
     sortBy={Object {}}
     variant={null}
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
