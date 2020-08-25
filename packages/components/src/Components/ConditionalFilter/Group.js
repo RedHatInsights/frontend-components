@@ -15,7 +15,8 @@ class Group extends Component {
     state = {
         isExpanded: false,
         selected: {},
-        filterBy: ''
+        filterBy: '',
+        isCollapsed: true
     }
 
     onToggle = isExpanded => {
@@ -23,6 +24,12 @@ class Group extends Component {
             isExpanded
         });
     };
+
+    toggleCollapsed = () => {
+        this.setState({
+            isCollapsed: !this.state.isCollapsed
+        });
+    }
 
     componentDidUpdate({ selected: prevSelected, filterBy: prevFilterBy }) {
         const { selected, filterBy } = this.props;
@@ -39,7 +46,7 @@ class Group extends Component {
         }
     }
 
-    mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, variant, items, ...group }, groupKey) => {
+    filterItems = (items, groupLabel, groupValue) => {
         const { onFilter } = this.props;
         const { filterBy } = this.state;
         let input;
@@ -54,10 +61,13 @@ class Group extends Component {
                 (groupValue && input.test(groupValue)) ||
                 (groupLabel && input.test(groupLabel)) ||
                 (item.value && input.test(item.value)) ||
-                (item.label && input.test(item.label)) ||
-                item.isPersistentAction
+                (item.label && input.test(item.label))
             )
-        ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
+        );
+    };
+
+    mapItems = ({ groupValue, onSelect, groupLabel, groupId, type, variant, items, ...group }, groupKey) =>
+        items.map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
                 {...item}
                 label={groupLabel || ''}
@@ -67,10 +77,6 @@ class Group extends Component {
                     if (e.target.tagName !== 'INPUT') {
                         e.preventDefault();
                         e.stopPropagation();
-                    }
-
-                    if (item.isPersistentAction) {
-                        return onClick();
                     }
 
                     const clickedGroup = {
@@ -140,7 +146,6 @@ class Group extends Component {
                 }
             </SelectOption>
         ));
-    }
 
     calculateSelected = ({ type }, groupKey, itemKey) => {
         const { selected } = this.state;
@@ -229,7 +234,21 @@ class Group extends Component {
 
     render() {
         const { isExpanded, filterBy } = this.state;
-        const { groups, items, placeholder, className, selected, isFilterable, isDisabled, onFilter, onShowMore, showMoreTitle, showMoreOptions } = this.props;
+        const {
+            groups,
+            items,
+            placeholder,
+            className,
+            selected,
+            isFilterable,
+            isDisabled,
+            maxFilterItems,
+            onFilter,
+            isFilterExpandable,
+            onShowChange,
+            showMoreTitle,
+            showLessTitle,
+            showMoreOptions } = this.props;
         const filterItems = items || groups;
 
         const showMore = {
@@ -237,12 +256,31 @@ class Group extends Component {
             variant: showMoreOptions?.variant || 'link',
             items: [{
                 ...showMoreOptions,
-                label: showMoreTitle,
+                label: this.state.isCollapsed ? showMoreTitle : showLessTitle,
                 type: groupType.button,
-                onClick: onShowMore,
-                isPersistentAction: true
+                onClick: onShowChange ? onShowChange : this.toggleCollapsed
             }]
         };
+
+        const { groups: filteredGroups, itemTotal } = groups.reduce((acc, group) => {
+            const prefilteredItems = this.filterItems(group.items, group.label, group.value, group, maxFilterItems);
+            const sliceData = isFilterExpandable && this.state.isCollapsed;
+            return (
+                sliceData && acc.itemCount >= maxFilterItems
+                    ? acc
+                    : { groups: [
+                        ...acc.groups,
+                        (sliceData && prefilteredItems.length + acc.itemCount > maxFilterItems)
+                            ? { ...group, items: prefilteredItems.slice(0, maxFilterItems - acc.itemCount) }
+                            : { ...group, items: prefilteredItems }
+                    ],
+                    itemCount: sliceData
+                        ? Math.min(prefilteredItems.length + acc.itemCount, maxFilterItems)
+                        : prefilteredItems.length + acc.itemCount,
+                    itemTotal: prefilteredItems.length + acc.itemCount
+                    }
+            );
+        }, { groups: [], itemCount: 0, itemTotal: 0 });
 
         return (<Fragment>
             { !filterItems || (filterItems && filterItems.length <= 0) ? <Text { ...this.props } value={ `${selected}` } /> : <Select
@@ -259,32 +297,52 @@ class Group extends Component {
                 { ...(isFilterable || onFilter) && { onFilter: this.customFilter } }
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
-                { groups && groups.length > 0 ? (
-                    [
-                        ...groups,
-                        ...onShowMore ? [ showMore ] : []
-                    ].map(({
-                        value: groupValue,
-                        onSelect,
-                        label: groupLabel,
-                        id: groupId,
-                        type,
-                        items,
-                        ...group
-                    }, groupKey) => {
-                        const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey)
-                        .filter(Boolean);
-                        return (<SelectGroup
-                            {...group}
-                            key={groupId || groupValue || groupKey}
-                            value={groupId || groupValue || groupKey}
-                            label={groupLabel || ''}
-                            id={groupId || `group-${groupValue || groupKey}`}
-                        >{filteredItems}</SelectGroup>);
-                    })
-                ) : (
-                    this.mapItems({ items })
-                ) }
+                <div className="ins-c-select__scrollable-section">
+                    { groups && groups.length > 0 ? (
+                        filteredGroups.map(({
+                            value: groupValue,
+                            onSelect,
+                            label: groupLabel,
+                            id: groupId,
+                            type,
+                            items,
+                            ...group
+                        }, groupKey) => {
+                            const selectOptions = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey)
+                            .filter(Boolean);
+                            return (<SelectGroup
+                                {...group}
+                                key={groupId || groupValue || groupKey}
+                                value={groupId || groupValue || groupKey}
+                                label={groupLabel || ''}
+                                id={groupId || `group-${groupValue || groupKey}`}
+                            >
+                                {selectOptions}
+                            </SelectGroup>);
+                        })
+                    ) : (
+                        this.mapItems({ items })
+                    ) }
+                </div>
+                {isFilterExpandable && itemTotal > maxFilterItems ?
+                    <SelectGroup>
+                        <Button
+                            {...showMore.items[0]}
+                            className="pf-c-select__menu-item"
+                            variant={showMore.variant}
+                            onClick={showMore.items[0].onClick}
+                        >
+                            {showMore.items[0].label}
+                        </Button>
+                    </SelectGroup>
+                    : <Fragment />}
+                { itemTotal === 0 ?
+                    <SelectGroup>
+                        <div className="pf-c-select__menu-item ins-c-select__action">
+                            No results
+                        </div>
+                    </SelectGroup>
+                    : <Fragment />}
             </Select> }
         </Fragment>);
     }
@@ -325,9 +383,11 @@ Group.propTypes = {
     filterBy: PropTypes.string,
     items: itemsProps,
     isFilterable: PropTypes.bool,
+    maxFilterItems: PropTypes.number,
     onFilter: PropTypes.func,
-    onShowMore: PropTypes.func,
+    onShowChange: PropTypes.func,
     showMoreTitle: PropTypes.string,
+    showLessTitle: PropTypes.string,
     isDisabled: PropTypes.bool,
     showMoreOptions: PropTypes.shape({
         variant: PropTypes.string,
@@ -342,7 +402,8 @@ Group.defaultProps = {
     selected: {},
     filterBy: '',
     onChange: () => undefined,
-    showMoreTitle: 'Show more',
+    showMoreTitle: 'See more',
+    showLessTitle: 'See less',
     groups: [],
     isFilterable: false,
     isDisabled: false

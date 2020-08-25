@@ -24,7 +24,7 @@ class ConditionalFilter extends Component {
     }
 
     render() {
-        const { items, value, id, onChange, placeholder, hideLabel, isDisabled, ...props } = this.props;
+        const { items, value, id, onChange, placeholder, hideLabel, isDisabled, maxFilterItems, isFilterExpandable, ...props } = this.props;
         const { isOpen, stateValue } = this.state;
         const currentValue = onChange ? value : stateValue;
         const activeItem = items && items.length && (
@@ -84,7 +84,9 @@ class ConditionalFilter extends Component {
                                 ActiveComponent && <SplitItem isFilled>
                                     <ActiveComponent
                                         {...(activeItem.showMoreTitle && { showMoreTitle: activeItem.showMoreTitle })}
-                                        {...(activeItem.onShowMore && { onShowMore: activeItem.onShowMore })}
+                                        {...(activeItem.onShowChange && { onShowChange: activeItem.onShowChange })}
+                                        {...(isFilterExpandable && { isFilterExpandable })}
+                                        {...(maxFilterItems && { maxFilterItems })}
                                         {
                                         ...activeItem.type !== conditionalFilterType.custom &&
                                             {

@@ -21,6 +21,17 @@
     }
 
     .pf-l-split__item {
+        .pf-c-select__menu {
+            .ins-c-select__scrollable-section {
+                max-height: 365px; 
+                overflow: auto;
+            }
+
+            .ins-c-select__action {
+                background: var(--pf-global--palette--white);
+            }
+        }
+
         .pf-c-select__menu-group {
             .pf-c-select__menu-group-title:empty {
                 display: none;
