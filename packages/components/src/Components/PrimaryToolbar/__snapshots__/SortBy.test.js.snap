@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PrimaryToolbar should render desc direction 1`] = `
-<Component
+<Button
   onClick={[Function]}
   variant="plain"
 >
@@ -10,11 +10,11 @@ exports[`PrimaryToolbar should render desc direction 1`] = `
     noVerticalAlign={false}
     size="sm"
   />
-</Component>
+</Button>
 `;
 
 exports[`PrimaryToolbar should render no data 1`] = `
-<Component
+<Button
   onClick={[Function]}
   variant="plain"
 >
@@ -23,5 +23,5 @@ exports[`PrimaryToolbar should render no data 1`] = `
     noVerticalAlign={false}
     size="sm"
   />
-</Component>
+</Button>
 `;

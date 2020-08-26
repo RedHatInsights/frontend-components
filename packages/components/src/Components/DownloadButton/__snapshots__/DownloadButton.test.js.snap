@@ -4,29 +4,29 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
 <DownloadButton
   extraItems={
     Array [
-      <Unknown
+      <DropdownItem
         component="button"
       />,
     ]
   }
   onSelect={[Function]}
 >
-  <Component
+  <Dropdown
     dropdownItems={
       Array [
-        <Unknown
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
           Export to CSV
-        </Unknown>,
-        <Unknown
+        </DropdownItem>,
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
           Export to JSON
-        </Unknown>,
-        <Unknown
+        </DropdownItem>,
+        <DropdownItem
           component="button"
         />,
       ]
@@ -35,7 +35,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
     isPlain={true}
     onSelect={[Function]}
     toggle={
-      <Unknown
+      <DropdownToggle
         onToggle={[Function]}
         toggleIndicator={null}
       >
@@ -44,7 +44,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
           noVerticalAlign={false}
           size="sm"
         />
-      </Unknown>
+      </DropdownToggle>
     }
   >
     <DropdownWithContext
@@ -53,19 +53,19 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       direction="down"
       dropdownItems={
         Array [
-          <Unknown
+          <DropdownItem
             component="button"
             onClick={[Function]}
           >
             Export to CSV
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             component="button"
             onClick={[Function]}
           >
             Export to JSON
-          </Unknown>,
-          <Unknown
+          </DropdownItem>,
+          <DropdownItem
             component="button"
           />,
         ]
@@ -73,11 +73,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       isGrouped={false}
       isOpen={true}
       isPlain={true}
+      menuAppendTo="inline"
       onSelect={[Function]}
-      ouiaComponentType="Dropdown"
       position="left"
       toggle={
-        <Unknown
+        <DropdownToggle
           onToggle={[Function]}
           toggleIndicator={null}
         >
@@ -86,7 +86,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             noVerticalAlign={false}
             size="sm"
           />
-        </Unknown>
+        </DropdownToggle>
       }
     >
       <div
@@ -95,9 +95,10 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         data-ouia-component-type="PF4/Dropdown"
         data-ouia-safe={true}
       >
-        <Component
+        <DropdownToggle
           aria-haspopup={true}
-          id="pf-toggle-id-1"
+          getMenuRef={[Function]}
+          id="pf-dropdown-toggle-id-1"
           isOpen={true}
           isPlain={true}
           key=".0"
@@ -115,7 +116,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   aria-expanded="true"
                   aria-haspopup="true"
                   class="pf-c-dropdown__toggle pf-m-plain"
-                  id="pf-toggle-id-1"
+                  id="pf-dropdown-toggle-id-1"
                   type="button"
                 >
                   <span>
@@ -136,7 +137,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   </span>
                 </button>
                 <ul
-                  aria-labelledby="pf-toggle-id-1"
+                  aria-labelledby="pf-dropdown-toggle-id-1"
                   class="pf-c-dropdown__menu"
                   role="menu"
                 >
@@ -181,7 +182,8 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             aria-haspopup={true}
             bubbleEvent={false}
             className=""
-            id="pf-toggle-id-1"
+            getMenuRef={[Function]}
+            id="pf-dropdown-toggle-id-1"
             isActive={false}
             isDisabled={false}
             isOpen={true}
@@ -202,7 +204,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     aria-expanded="true"
                     aria-haspopup="true"
                     class="pf-c-dropdown__toggle pf-m-plain"
-                    id="pf-toggle-id-1"
+                    id="pf-dropdown-toggle-id-1"
                     type="button"
                   >
                     <span>
@@ -223,7 +225,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     </span>
                   </button>
                   <ul
-                    aria-labelledby="pf-toggle-id-1"
+                    aria-labelledby="pf-dropdown-toggle-id-1"
                     class="pf-c-dropdown__menu"
                     role="menu"
                   >
@@ -268,7 +270,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               aria-haspopup={true}
               className="pf-c-dropdown__toggle pf-m-plain"
               disabled={false}
-              id="pf-toggle-id-1"
+              id="pf-dropdown-toggle-id-1"
               onClick={[Function]}
               onKeyDown={[Function]}
               type="button"
@@ -304,9 +306,9 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               </span>
             </button>
           </Toggle>
-        </Component>
+        </DropdownToggle>
         <DropdownMenu
-          aria-labelledby="pf-toggle-id-1"
+          aria-labelledby="pf-dropdown-toggle-id-1"
           autoFocus={false}
           className=""
           component="ul"
@@ -314,15 +316,16 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
           isOpen={true}
           openedOnEnter={false}
           position="left"
+          setMenuComponentRef={[Function]}
         >
           <ul
-            aria-labelledby="pf-toggle-id-1"
+            aria-labelledby="pf-dropdown-toggle-id-1"
             autoFocus={false}
             className="pf-c-dropdown__menu"
             hidden={false}
             role="menu"
           >
-            <Component
+            <DropdownItem
               component="button"
               index={0}
               key=".$download-csv"
@@ -337,6 +340,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "sendRef": [Function],
                   }
                 }
+                description={null}
                 enterTriggersArrowDown={false}
                 icon={null}
                 index={0}
@@ -345,6 +349,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 isPlainText={false}
                 onClick={[Function]}
                 role="menuitem"
+                styleChildren={true}
                 tabIndex={-1}
                 tooltipProps={Object {}}
               >
@@ -364,8 +369,8 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   </button>
                 </li>
               </InternalDropdownItem>
-            </Component>
-            <Component
+            </DropdownItem>
+            <DropdownItem
               component="button"
               index={1}
               key=".$download-json"
@@ -380,6 +385,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "sendRef": [Function],
                   }
                 }
+                description={null}
                 enterTriggersArrowDown={false}
                 icon={null}
                 index={1}
@@ -388,6 +394,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 isPlainText={false}
                 onClick={[Function]}
                 role="menuitem"
+                styleChildren={true}
                 tabIndex={-1}
                 tooltipProps={Object {}}
               >
@@ -407,8 +414,8 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   </button>
                 </li>
               </InternalDropdownItem>
-            </Component>
-            <Component
+            </DropdownItem>
+            <DropdownItem
               component="button"
               index={2}
               key=".$extra-1"
@@ -422,6 +429,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "sendRef": [Function],
                   }
                 }
+                description={null}
                 enterTriggersArrowDown={false}
                 icon={null}
                 index={2}
@@ -430,6 +438,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                 isPlainText={false}
                 onClick={[Function]}
                 role="menuitem"
+                styleChildren={true}
                 tabIndex={-1}
                 tooltipProps={Object {}}
               >
@@ -447,39 +456,39 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   />
                 </li>
               </InternalDropdownItem>
-            </Component>
+            </DropdownItem>
           </ul>
         </DropdownMenu>
       </div>
     </DropdownWithContext>
-  </Component>
+  </Dropdown>
 </DownloadButton>
 `;
 
 exports[`DownloadButton component should render CSV and JSON by default 1`] = `
 <Fragment>
-  <Component
+  <Dropdown
     dropdownItems={
       Array [
-        <Unknown
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
           Export to CSV
-        </Unknown>,
-        <Unknown
+        </DropdownItem>,
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
           Export to JSON
-        </Unknown>,
+        </DropdownItem>,
       ]
     }
     isOpen={false}
     isPlain={true}
     onSelect={[Function]}
     toggle={
-      <Unknown
+      <DropdownToggle
         onToggle={[Function]}
         toggleIndicator={null}
       >
@@ -488,7 +497,7 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
           noVerticalAlign={false}
           size="sm"
         />
-      </Unknown>
+      </DropdownToggle>
     }
   />
 </Fragment>
@@ -496,22 +505,22 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
 
 exports[`DownloadButton component should render custom items 1`] = `
 <Fragment>
-  <Component
+  <Dropdown
     dropdownItems={
       Array [
-        <Unknown
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
           Export to CSV
-        </Unknown>,
-        <Unknown
+        </DropdownItem>,
+        <DropdownItem
           component="button"
           onClick={[Function]}
         >
           Export to JSON
-        </Unknown>,
-        <Unknown
+        </DropdownItem>,
+        <DropdownItem
           component="button"
         />,
       ]
@@ -520,7 +529,7 @@ exports[`DownloadButton component should render custom items 1`] = `
     isPlain={true}
     onSelect={[Function]}
     toggle={
-      <Unknown
+      <DropdownToggle
         onToggle={[Function]}
         toggleIndicator={null}
       >
@@ -529,7 +538,7 @@ exports[`DownloadButton component should render custom items 1`] = `
           noVerticalAlign={false}
           size="sm"
         />
-      </Unknown>
+      </DropdownToggle>
     }
   />
 </Fragment>
@@ -537,24 +546,24 @@ exports[`DownloadButton component should render custom items 1`] = `
 
 exports[`DownloadButton component should render disabled 1`] = `
 <Fragment>
-  <Component
+  <Dropdown
     dropdownItems={
       Array [
-        <Unknown
+        <DropdownItem
           component="button"
           isDisabled={true}
           onClick={[Function]}
         >
           Export to CSV
-        </Unknown>,
-        <Unknown
+        </DropdownItem>,
+        <DropdownItem
           component="button"
           isDisabled={true}
           onClick={[Function]}
         >
           Export to JSON
-        </Unknown>,
-        <Unknown
+        </DropdownItem>,
+        <DropdownItem
           component="button"
         />,
       ]
@@ -563,7 +572,7 @@ exports[`DownloadButton component should render disabled 1`] = `
     isPlain={true}
     onSelect={[Function]}
     toggle={
-      <Unknown
+      <DropdownToggle
         isDisabled={true}
         onToggle={[Function]}
         toggleIndicator={null}
@@ -573,7 +582,7 @@ exports[`DownloadButton component should render disabled 1`] = `
           noVerticalAlign={false}
           size="sm"
         />
-      </Unknown>
+      </DropdownToggle>
     }
   />
 </Fragment>

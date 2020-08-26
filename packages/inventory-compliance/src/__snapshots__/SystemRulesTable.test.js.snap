@@ -126,7 +126,7 @@ exports[`SystemRulesTable component should render 1`] = `
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       <ConnectFunction
         allSystems={
           Array [
@@ -176,11 +176,11 @@ exports[`SystemRulesTable component should render 1`] = `
         }
         selectedRules={Array []}
       />
-    </Component>
-    <Component>
+    </ToolbarItem>
+    <ToolbarItem>
       52
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -997,7 +997,7 @@ exports[`SystemRulesTable component should render 1`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -1262,7 +1262,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       <ConnectFunction
         allSystems={
           Array [
@@ -1312,11 +1312,11 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
         }
         selectedRules={Array []}
       />
-    </Component>
-    <Component>
+    </ToolbarItem>
+    <ToolbarItem>
       0
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -1390,23 +1390,23 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
                 "colSpan": 5,
               },
               "title": <EmptyTable>
-                <Unknown>
-                  <Unknown
+                <Bullseye>
+                  <EmptyState
                     variant="full"
                   >
-                    <Unknown
+                    <Title
                       headingLevel="h5"
                       size="lg"
                     >
                       No matching rules found
-                    </Unknown>
-                    <Unknown>
+                    </Title>
+                    <EmptyStateBody>
                       This filter criteria matches no rules. 
                       <br />
                        Try changing your filter settings.
-                    </Unknown>
-                  </Unknown>
-                </Unknown>
+                    </EmptyStateBody>
+                  </EmptyState>
+                </Bullseye>
               </EmptyTable>,
             },
           ],
@@ -1441,7 +1441,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -1622,7 +1622,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       <ConnectFunction
         allSystems={
           Array [
@@ -1672,11 +1672,11 @@ exports[`SystemRulesTable component should render search results by rule name 1`
         }
         selectedRules={Array []}
       />
-    </Component>
-    <Component>
+    </ToolbarItem>
+    <ToolbarItem>
       1
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -1851,7 +1851,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -2032,7 +2032,7 @@ exports[`SystemRulesTable component should render search results on any page, re
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       <ConnectFunction
         allSystems={
           Array [
@@ -2082,11 +2082,11 @@ exports[`SystemRulesTable component should render search results on any page, re
         }
         selectedRules={Array []}
       />
-    </Component>
-    <Component>
+    </ToolbarItem>
+    <ToolbarItem>
       1
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -2261,7 +2261,7 @@ exports[`SystemRulesTable component should render search results on any page, re
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -2433,7 +2433,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       <ConnectFunction
         allSystems={
           Array [
@@ -2483,11 +2483,11 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
         }
         selectedRules={Array []}
       />
-    </Component>
-    <Component>
+    </ToolbarItem>
+    <ToolbarItem>
       52
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -3304,7 +3304,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -3476,7 +3476,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       <ConnectFunction
         allSystems={
           Array [
@@ -3526,11 +3526,11 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
         }
         selectedRules={Array []}
       />
-    </Component>
-    <Component>
+    </ToolbarItem>
+    <ToolbarItem>
       52
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -4334,7 +4334,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -4506,10 +4506,10 @@ exports[`SystemRulesTable component should render without remediations if prop p
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       52
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -5325,7 +5325,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -5504,7 +5504,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       <ConnectFunction
         allSystems={
           Array [
@@ -5554,11 +5554,11 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
         }
         selectedRules={Array []}
       />
-    </Component>
-    <Component>
+    </ToolbarItem>
+    <ToolbarItem>
       0
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -5611,23 +5611,23 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                 "colSpan": 5,
               },
               "title": <EmptyTable>
-                <Unknown>
-                  <Unknown
+                <Bullseye>
+                  <EmptyState
                     variant="full"
                   >
-                    <Unknown
+                    <Title
                       headingLevel="h5"
                       size="lg"
                     >
                       No matching rules found
-                    </Unknown>
-                    <Unknown>
+                    </Title>
+                    <EmptyStateBody>
                       This filter criteria matches no rules. 
                       <br />
                        Try changing your filter settings.
-                    </Unknown>
-                  </Unknown>
-                </Unknown>
+                    </EmptyStateBody>
+                  </EmptyState>
+                </Bullseye>
               </EmptyTable>,
             },
           ],
@@ -5662,7 +5662,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -5830,7 +5830,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       <ConnectFunction
         allSystems={
           Array [
@@ -5880,11 +5880,11 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
         }
         selectedRules={Array []}
       />
-    </Component>
-    <Component>
+    </ToolbarItem>
+    <ToolbarItem>
       52
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -6570,7 +6570,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -6749,7 +6749,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
     }
     toggleIsExpanded={[Function]}
   >
-    <Component>
+    <ToolbarItem>
       <ConnectFunction
         allSystems={
           Array [
@@ -6799,11 +6799,11 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
         }
         selectedRules={Array []}
       />
-    </Component>
-    <Component>
+    </ToolbarItem>
+    <ToolbarItem>
       0
        results
-    </Component>
+    </ToolbarItem>
   </PrimaryToolbar>
   <Table
     aria-label="Rules table"
@@ -6856,23 +6856,23 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
                 "colSpan": 5,
               },
               "title": <EmptyTable>
-                <Unknown>
-                  <Unknown
+                <Bullseye>
+                  <EmptyState
                     variant="full"
                   >
-                    <Unknown
+                    <Title
                       headingLevel="h5"
                       size="lg"
                     >
                       No matching rules found
-                    </Unknown>
-                    <Unknown>
+                    </Title>
+                    <EmptyStateBody>
                       This filter criteria matches no rules. 
                       <br />
                        Try changing your filter settings.
-                    </Unknown>
-                  </Unknown>
-                </Unknown>
+                    </EmptyStateBody>
+                  </EmptyState>
+                </Bullseye>
               </EmptyTable>,
             },
           ],
@@ -6907,7 +6907,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={

@@ -36,8 +36,10 @@ exports[`SystemCard should render correctly - no data 1`] = `
             Host name
           </span>
           <button
+            aria-disabled="false"
             aria-label="Action for Host name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-id="0"
             data-ouia-component-type="PF4/Button"
             data-ouia-safe="true"
             type="button"
@@ -76,8 +78,10 @@ exports[`SystemCard should render correctly - no data 1`] = `
             Display name
           </span>
           <button
+            aria-disabled="false"
             aria-label="Action for Display name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-id="1"
             data-ouia-component-type="PF4/Button"
             data-ouia-safe="true"
             type="button"
@@ -116,8 +120,10 @@ exports[`SystemCard should render correctly - no data 1`] = `
             Ansible hostname
           </span>
           <button
+            aria-disabled="false"
             aria-label="Action for Ansible hostname"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-id="2"
             data-ouia-component-type="PF4/Button"
             data-ouia-safe="true"
             type="button"
@@ -254,8 +260,10 @@ exports[`SystemCard should render correctly with data 1`] = `
             Host name
           </span>
           <button
+            aria-disabled="false"
             aria-label="Action for Host name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-id="3"
             data-ouia-component-type="PF4/Button"
             data-ouia-safe="true"
             type="button"
@@ -290,8 +298,10 @@ exports[`SystemCard should render correctly with data 1`] = `
             Display name
           </span>
           <button
+            aria-disabled="false"
             aria-label="Action for Display name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-id="4"
             data-ouia-component-type="PF4/Button"
             data-ouia-safe="true"
             type="button"
@@ -345,8 +355,10 @@ exports[`SystemCard should render correctly with data 1`] = `
             Ansible hostname
           </span>
           <button
+            aria-disabled="false"
             aria-label="Action for Ansible hostname"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-id="5"
             data-ouia-component-type="PF4/Button"
             data-ouia-safe="true"
             type="button"
@@ -482,8 +494,10 @@ exports[`SystemCard should render correctly with rhsm facts 1`] = `
             Host name
           </span>
           <button
+            aria-disabled="false"
             aria-label="Action for Host name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-id="6"
             data-ouia-component-type="PF4/Button"
             data-ouia-safe="true"
             type="button"
@@ -518,8 +532,10 @@ exports[`SystemCard should render correctly with rhsm facts 1`] = `
             Display name
           </span>
           <button
+            aria-disabled="false"
             aria-label="Action for Display name"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-id="7"
             data-ouia-component-type="PF4/Button"
             data-ouia-safe="true"
             type="button"
@@ -573,8 +589,10 @@ exports[`SystemCard should render correctly with rhsm facts 1`] = `
             Ansible hostname
           </span>
           <button
+            aria-disabled="false"
             aria-label="Action for Ansible hostname"
             class="pf-c-button pf-m-plain ins-active-general_information__popover-icon"
+            data-ouia-component-id="8"
             data-ouia-component-type="PF4/Button"
             data-ouia-safe="true"
             type="button"

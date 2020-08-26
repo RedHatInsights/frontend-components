@@ -84,21 +84,21 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
       }
       title="Configuration"
     >
-      <Component
+      <Stack
         hasGutter={true}
       >
         <div
           className="pf-l-stack pf-m-gutter"
         >
-          <Component>
+          <StackItem>
             <div
               className="pf-l-stack__item"
             >
-              <Component>
+              <TextContent>
                 <div
                   className="pf-c-content"
                 >
-                  <Component
+                  <Text
                     component="h1"
                   >
                     <h1
@@ -107,29 +107,29 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                     >
                       Configuration
                     </h1>
-                  </Component>
+                  </Text>
                 </div>
-              </Component>
+              </TextContent>
             </div>
-          </Component>
-          <Component
+          </StackItem>
+          <StackItem
             isFilled={true}
           >
             <div
               className="pf-l-stack__item pf-m-fill"
             >
-              <Component>
+              <TextContent>
                 <div
                   className="pf-c-content"
                 >
-                  <Component
+                  <TextList
                     component="dl"
                   >
                     <dl
                       className=""
                       data-pf-content={true}
                     >
-                      <Component
+                      <TextListItem
                         component="dt"
                       >
                         <dt
@@ -138,8 +138,8 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                         >
                           Installed packages
                         </dt>
-                      </Component>
-                      <Component
+                      </TextListItem>
+                      <TextListItem
                         component="dd"
                       >
                         <dd
@@ -164,8 +164,8 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             </a>
                           </Clickable>
                         </dd>
-                      </Component>
-                      <Component
+                      </TextListItem>
+                      <TextListItem
                         component="dt"
                       >
                         <dt
@@ -174,8 +174,8 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                         >
                           Services
                         </dt>
-                      </Component>
-                      <Component
+                      </TextListItem>
+                      <TextListItem
                         component="dd"
                       >
                         <dd
@@ -200,8 +200,8 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             </a>
                           </Clickable>
                         </dd>
-                      </Component>
-                      <Component
+                      </TextListItem>
+                      <TextListItem
                         component="dt"
                       >
                         <dt
@@ -210,8 +210,8 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                         >
                           Running processes
                         </dt>
-                      </Component>
-                      <Component
+                      </TextListItem>
+                      <TextListItem
                         component="dd"
                       >
                         <dd
@@ -236,8 +236,8 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             </a>
                           </Clickable>
                         </dd>
-                      </Component>
-                      <Component
+                      </TextListItem>
+                      <TextListItem
                         component="dt"
                       >
                         <dt
@@ -246,8 +246,8 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                         >
                           Repositories
                         </dt>
-                      </Component>
-                      <Component
+                      </TextListItem>
+                      <TextListItem
                         component="dd"
                       >
                         <dd
@@ -272,15 +272,15 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             </a>
                           </Clickable>
                         </dd>
-                      </Component>
+                      </TextListItem>
                     </dl>
-                  </Component>
+                  </TextList>
                 </div>
-              </Component>
+              </TextContent>
             </div>
-          </Component>
+          </StackItem>
         </div>
-      </Component>
+      </Stack>
     </LoadingCard>
   </ConfigurationCard>
 </ConnectFunction>
