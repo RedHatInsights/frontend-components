@@ -2,35 +2,45 @@ import React from 'react';
 import { Badge, Tooltip } from '@patternfly/react-core';
 
 export function mapGroups(currSelection, valuesKey = 'values') {
-    return Object.entries(currSelection || {}).map(([ groupKey, groupValue ]) => {
+    return Object.entries(currSelection || {}).reduce((acc, [ groupKey, groupValue ]) => {
         const values = constructValues(groupValue, groupKey);
-        if (values?.length > 0) {
-            return {
-                type: 'tags',
-                key: groupKey,
-                category: values[0]?.group?.value || values[0]?.group?.label,
-                [valuesKey]: values
-            };
+        if (values.length > 0) {
+            return [
+                ...acc,
+                {
+                    type: 'tags',
+                    key: groupKey,
+                    category: values[0]?.group?.value || values[0]?.group?.label,
+                    [valuesKey]: values
+                }
+            ];
         }
-    }).filter(Boolean);
+
+        return acc;
+    }, []);
 }
 
 export function constructValues(groupValue, groupKey) {
-    return Object.entries(groupValue || {}).map(([ key, { isSelected, group, value, item }]) => {
+    return Object.entries(groupValue || {}).reduce((acc, [ key, { isSelected, group, value, item }]) => {
         if (isSelected) {
             const { key: tagKey, value: tagValue } = item?.meta?.tag || {
                 key: groupKey,
                 value: value || item?.tagValue
             };
-            return {
-                key,
-                tagKey,
-                value: tagValue,
-                name: `${tagKey}${tagValue ? `=${tagValue}` : ''}`,
-                group: { value: groupKey, ...group }
-            };
+            return [
+                ...acc,
+                {
+                    key,
+                    tagKey,
+                    value: tagValue,
+                    name: `${tagKey}${tagValue ? `=${tagValue}` : ''}`,
+                    group: { value: groupKey, ...group }
+                }
+            ];
         }
-    }).filter(Boolean);
+
+        return acc;
+    }, []);
 }
 
 export function constructGroups(allTags, item = 'item') {

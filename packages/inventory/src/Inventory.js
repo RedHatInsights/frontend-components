@@ -6,7 +6,6 @@ import * as inventoryFitlers from './components/filters';
 
 export function inventoryConnector(store, componentsMapper, Wrapper) {
     const showInventoryDrawer = Boolean(Wrapper);
-    console.log(showInventoryDrawer, 'dd');
     return {
         InventoryTable: React.forwardRef(
             (props, ref) => <RenderWrapper

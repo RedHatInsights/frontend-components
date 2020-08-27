@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { constructGroups, mapGroups } from './constants';
-import { Spinner } from '@patternfly/react-core/dist/esm/components/Spinner';
+import { Spinner } from '@patternfly/react-core';
 
 export const tagsFilterState = { tagsFilter: {} };
 export const TAGS_FILTER = 'TAGS_FILTER';
@@ -72,5 +72,12 @@ export const useTagsFilter = (
             ]
         }
     };
-    return [ filter, mapGroups(selectedTags, 'chips'), selectedTags, setValue, filterTagsBy, seFilterTagsBy ];
+    return {
+        filter,
+        chips: mapGroups(selectedTags, 'chips'),
+        selectedTags,
+        setValue,
+        filterTagsBy,
+        seFilterTagsBy
+    };
 };
