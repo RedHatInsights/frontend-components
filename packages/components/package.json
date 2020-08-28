@@ -13,10 +13,7 @@
         "build": "npm run build:js && npm run build:css",
         "build:js": "tsc && rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
         "build:css": "node ./create-styles.js && copyfiles ./components/index.* ./ -f",
-        "start": "rollup -c ./config/rollup.config.js -w",
-        "start:esm": "rollup -c ./config/rollup.config.js -w --configESM",
-        "start:cjs": "rollup -c ./config/rollup.config.js -w --configCJS",
-        "start:umd": "rollup -c ./config/rollup.config.js -w --configUMD"
+        "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
         "type": "git",

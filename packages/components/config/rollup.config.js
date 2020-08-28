@@ -68,23 +68,11 @@ const plugins = [
     })
 ];
 
-export default ({ configESM, configCJS, configUMD }) => {
-    const [ esm, cjs, umd ] = rollupConfig(
-        external(externalDeps({ ...dependencies, ...peerDependencies })),
-        plugins,
-        globals,
-        name,
-        [ globMapper('src/**/index.js') ],
-        './components/'
-    );
-
-    if (configESM) {
-        return [ esm ];
-    } else if (configUMD) {
-        return [ umd ];
-    } else if (configCJS) {
-        return [ cjs ];
-    } else {
-        return [ esm, umd, cjs ];
-    }
-};
+export default rollupConfig(
+    external(externalDeps({ ...dependencies, ...peerDependencies })),
+    plugins,
+    globals,
+    name,
+    [ globMapper('src/**/index.js') ],
+    './components/'
+);
