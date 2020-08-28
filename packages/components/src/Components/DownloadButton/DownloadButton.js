@@ -24,7 +24,7 @@ class DownloadButton extends Component {
     conditionallyTooltip = (children) => {
         const { tooltipText } = this.props;
         return <React.Fragment>
-            {tooltipText ? <Tooltip distance={0} content={tooltipText}>
+            {tooltipText ? <Tooltip content={tooltipText}>
                 {children}
             </Tooltip> : children}
         </React.Fragment>;
