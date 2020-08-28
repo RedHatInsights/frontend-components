@@ -149,3 +149,7 @@
     .pf-c-drawer__panel { flex-basis: calc(var(--pf-c-drawer__panel--FlexBasis) * 1.5); }
   }
 }
+
+.ins-c-inventory__tags-modal .ins-c-primary-toolbar .pf-c-toolbar__content {
+    padding: 0;
+}
