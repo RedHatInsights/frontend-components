@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { constructGroups, mapGroups } from '../../shared';
-import { Spinner } from '@patternfly/react-core/dist/esm/components/Spinner';
+import { Spinner } from '@patternfly/react-core';
 
 export const tagsFilterState = { tagsFilter: {} };
 export const TAGS_FILTER = 'TAGS_FILTER';

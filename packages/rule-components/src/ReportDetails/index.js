@@ -8,7 +8,7 @@ import {
     Title,
     Text
 } from '@patternfly/react-core';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
+import { DateFormat } from '@redhat-cloud-services/frontend-components';
 import RuleFeedback, { feedback } from './RuleFeedback';
 import Markdown from '../Markdown';
 import { riskOfChangeMeta, totalRiskMeta } from './constants';

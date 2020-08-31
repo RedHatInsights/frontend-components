@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
-import { Grid, GridItem } from '@patternfly/react-core/dist/esm/layouts/Grid';
+import { Grid, GridItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import './InventoryList.scss';
 import { loadSystems } from '../../shared';

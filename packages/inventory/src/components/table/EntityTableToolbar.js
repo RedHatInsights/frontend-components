@@ -3,8 +3,7 @@
 import React, { Fragment, useEffect, useCallback, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/esm/PrimaryToolbar';
+import { PrimaryToolbar, Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
 import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from '../../redux/actions';
 import debounce from 'lodash/debounce';
 import flatMap from 'lodash/flatMap';
