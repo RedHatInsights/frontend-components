@@ -11,7 +11,7 @@ import {
     TOGGLE_TAG_MODAL,
     CONFIG_CHANGED
 } from './action-types';
-import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities';
+import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import { CullingInformation, DateFormat } from '@redhat-cloud-services/frontend-components';
 import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
