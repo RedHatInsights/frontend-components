@@ -37,7 +37,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
           "title": "Name",
         },
         Object {
-          "title": "Tag Source",
+          "title": "Tag source",
         },
       ]
     }
@@ -175,7 +175,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
           "title": "Name",
         },
         Object {
-          "title": "Tag Source",
+          "title": "Tag source",
         },
       ]
     }

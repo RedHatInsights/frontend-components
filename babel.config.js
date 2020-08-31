@@ -36,7 +36,10 @@ const frontendComponentsMappe = {
     TableVariant: 'Table',
     TableHeader: 'Table',
     TableBody: 'Table',
-    TableFooter: 'Table'
+    TableFooter: 'Table',
+    useTagsFilter: 'FilterHooks',
+    tagsFilterState: 'FilterHooks',
+    tagsFilterReducer: 'FilterHooks'
 };
 
 const createPfReactTransform = (env) => [

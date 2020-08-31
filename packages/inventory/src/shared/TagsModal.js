@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toggleTagModal, fetchAllTags, loadTags } from '../redux/actions';
 import { TagModal } from '@redhat-cloud-services/frontend-components';
+import { cellWidth } from '@patternfly/react-table';
 import debounce from 'lodash/debounce';
 import flatten from 'lodash/flatten';
 
@@ -24,6 +25,18 @@ class TagsModal extends React.Component {
         }
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.filterTagsBy !== this.props.filterTagsBy) {
+            this.setState({ filterTagsBy: this.props.filterTagsBy });
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.filterTagsBy) {
+            this.setState({ filterTagsBy: this.props.filterTagsBy });
+        }
+    }
+
     render() {
         const {
             showTagDialog,
@@ -31,6 +44,7 @@ class TagsModal extends React.Component {
             activeSystemTag,
             tagsCount,
             onToggleTagModal,
+            onToggleModal,
             pagination,
             loaded,
             onApply
@@ -38,6 +52,7 @@ class TagsModal extends React.Component {
         const { filterTagsBy, selected } = this.state;
         return (
             <TagModal
+                className="ins-c-inventory__tags-modal"
                 tableProps={{
                     canSelectAll: false
                 }}
@@ -61,6 +76,7 @@ class TagsModal extends React.Component {
                         selected: [],
                         filterTagsBy: ''
                     });
+                    onToggleModal();
                     onToggleTagModal();
                 }}
                 filters={[
@@ -80,15 +96,15 @@ class TagsModal extends React.Component {
                 onUpdateData={ this.fetchTags }
                 columns={ [
                     { title: 'Name' },
-                    { title: 'Value' },
-                    { title: 'Tag Sources' }
+                    { title: 'Value', transforms: [ cellWidth(30) ] },
+                    { title: 'Tag source', transforms: [ cellWidth(30) ] }
                 ] }
                 {...!activeSystemTag && {
                     onSelect: (selected) => this.setState({ selected }),
                     selected,
                     onApply: () => onApply && onApply(selected)
                 }}
-                systemName={ activeSystemTag ?
+                title={ activeSystemTag ?
                     `${activeSystemTag.display_name} (${tagsCount})` :
                     `All tags in inventory (${tagsCount})`
                 }
@@ -104,6 +120,7 @@ TagsModal.propTypes = {
         value: PropTypes.node,
         namespace: PropTypes.node
     })),
+    filterTagsBy: PropTypes.string,
     tagsCount: PropTypes.number,
     activeSystemTag: PropTypes.shape({
         id: PropTypes.string,
@@ -117,13 +134,16 @@ TagsModal.propTypes = {
     loaded: PropTypes.bool,
     onToggleTagModal: PropTypes.func,
     fetchAllTags: PropTypes.func,
-    onApply: PropTypes.func
+    onApply: PropTypes.func,
+    onToggleModal: PropTypes.func
 };
 
 TagsModal.defaultProps = {
     showTagDialog: false,
     loaded: false,
-    tagsCount: 0
+    tagsCount: 0,
+    filterTagsBy: '',
+    onToggleModal: () => undefined
 };
 
 export default connect(({ entities, entityDetails }) => {

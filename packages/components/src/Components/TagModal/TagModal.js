@@ -124,7 +124,7 @@ export default class TagModal extends React.Component {
                 /> }
                 {children}
                 {loaded ? <Table
-                    aria-label={`${systemName} tags`}
+                    aria-label={title || `${systemName} tags`}
                     variant="compact"
                     className="ins-c-tag-modal__table"
                     cells={columns}
@@ -203,7 +203,7 @@ TagModal.defaultProps = {
     toggleModal: () => undefined,
     columns: [
         { title: 'Name' },
-        { title: 'Tag Source' }
+        { title: 'Tag source' }
     ],
     onUpdateData: () => undefined,
     rows: [],
