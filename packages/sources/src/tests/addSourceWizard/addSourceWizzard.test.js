@@ -1,8 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import { Button } from '@patternfly/react-core';
-
 import { AddSourceWizard } from '../../addSourceWizard/index';
 import Form from '../../addSourceWizard/SourceAddModal';
 import Modal from '../../addSourceWizard/SourceAddModal';

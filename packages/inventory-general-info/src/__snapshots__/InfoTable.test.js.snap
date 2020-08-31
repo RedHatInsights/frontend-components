@@ -810,8 +810,10 @@ exports[`InfoTable api expandable should open 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -1061,7 +1063,7 @@ exports[`InfoTable api expandable should open 1`] = `
         data-ouia-safe={true}
         role="grid"
       >
-        <Component>
+        <TableHeader>
           <ContextHeader
             headerRows={null}
           >
@@ -1238,7 +1240,7 @@ exports[`InfoTable api expandable should open 1`] = `
                 <thead
                   className=""
                 >
-                  <Component
+                  <HeaderRow
                     key="0-header-row"
                     renderers={
                       Object {
@@ -1397,7 +1399,7 @@ exports[`InfoTable api expandable should open 1`] = `
                     rowIndex={0}
                   >
                     <tr>
-                      <Component
+                      <HeaderCell
                         component="td"
                         data-key={0}
                         data-label=""
@@ -1410,8 +1412,8 @@ exports[`InfoTable api expandable should open 1`] = `
                           data-label=""
                           onMouseEnter={[Function]}
                         />
-                      </Component>
-                      <Component
+                      </HeaderCell>
+                      <HeaderCell
                         data-key={1}
                         data-label="One cell"
                         key="1-header"
@@ -1426,8 +1428,8 @@ exports[`InfoTable api expandable should open 1`] = `
                         >
                           One cell
                         </th>
-                      </Component>
-                      <Component
+                      </HeaderCell>
+                      <HeaderCell
                         data-key={2}
                         data-label="Second one"
                         key="2-header"
@@ -1442,14 +1444,14 @@ exports[`InfoTable api expandable should open 1`] = `
                         >
                           Second one
                         </th>
-                      </Component>
+                      </HeaderCell>
                     </tr>
-                  </Component>
+                  </HeaderRow>
                 </thead>
               </BaseHeader>
             </Component>
           </ContextHeader>
-        </Component>
+        </TableHeader>
         <Component>
           <ContextBody
             className=""
@@ -2563,7 +2565,7 @@ exports[`InfoTable api expandable should open 1`] = `
                   ]
                 }
               >
-                <Component
+                <BodyWrapper
                   className=""
                   headerRows={null}
                   mappedRows={
@@ -2985,7 +2987,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className="pf-c-table__toggle"
                             data-key={0}
                             data-label=""
@@ -2997,7 +2999,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node0 expandable-toggle0"
                                 id="expandable-toggle0"
                                 isOpen={true}
@@ -3057,10 +3059,10 @@ exports[`InfoTable api expandable should open 1`] = `
                                     </div>
                                   </button>
                                 </Button>
-                              </Component>
+                              </CollapseColumn>
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={1}
                             data-label="One cell"
                             isVisible={true}
@@ -3074,8 +3076,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               first
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             isVisible={true}
@@ -3089,7 +3091,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               second
                             </td>
-                          </Component>
+                          </BodyCell>
                         </tr>
                       </RowWrapper>
                     </BodyRow>
@@ -3317,7 +3319,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className=""
                             data-key={0}
                             data-label=""
@@ -3329,14 +3331,14 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node1 expandable-toggle1"
                                 id="expandable-toggle1"
                                 onToggle={[Function]}
                               />
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             className=""
                             colSpan={2}
                             data-key={1}
@@ -3354,8 +3356,8 @@ exports[`InfoTable api expandable should open 1`] = `
                               id="expanded-content1"
                               onMouseEnter={[Function]}
                             />
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-1"
@@ -3593,7 +3595,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className="pf-c-table__toggle"
                             data-key={0}
                             data-label=""
@@ -3605,7 +3607,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node2 expandable-toggle2"
                                 id="expandable-toggle2"
                                 isOpen={false}
@@ -3665,10 +3667,10 @@ exports[`InfoTable api expandable should open 1`] = `
                                     </div>
                                   </button>
                                 </Button>
-                              </Component>
+                              </CollapseColumn>
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={1}
                             data-label="One cell"
                             isVisible={true}
@@ -3682,8 +3684,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               second from title
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-2"
@@ -3915,7 +3917,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           hidden={true}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className=""
                             data-key={0}
                             data-label=""
@@ -3927,14 +3929,14 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node3 expandable-toggle3"
                                 id="expandable-toggle3"
                                 onToggle={[Function]}
                               />
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             className=""
                             colSpan={2}
                             data-key={1}
@@ -3948,12 +3950,11 @@ exports[`InfoTable api expandable should open 1`] = `
                               className=""
                               colSpan={2}
                               data-key={1}
-                              data-label="One cell"
                               id="expanded-content3"
                               onMouseEnter={[Function]}
                             />
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-3"
@@ -4201,7 +4202,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className="pf-c-table__toggle"
                             data-key={0}
                             data-label=""
@@ -4213,7 +4214,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node4 expandable-toggle4"
                                 id="expandable-toggle4"
                                 isOpen={false}
@@ -4273,10 +4274,10 @@ exports[`InfoTable api expandable should open 1`] = `
                                     </div>
                                   </button>
                                 </Button>
-                              </Component>
+                              </CollapseColumn>
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={1}
                             data-label="One cell"
                             isVisible={true}
@@ -4290,8 +4291,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               multiple
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             isVisible={true}
@@ -4305,7 +4306,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               cells
                             </td>
-                          </Component>
+                          </BodyCell>
                         </tr>
                       </RowWrapper>
                     </BodyRow>
@@ -4533,7 +4534,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           hidden={true}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className=""
                             data-key={0}
                             data-label=""
@@ -4545,14 +4546,14 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node5 expandable-toggle5"
                                 id="expandable-toggle5"
                                 onToggle={[Function]}
                               />
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             className=""
                             colSpan={2}
                             data-key={1}
@@ -4566,12 +4567,11 @@ exports[`InfoTable api expandable should open 1`] = `
                               className=""
                               colSpan={2}
                               data-key={1}
-                              data-label="One cell"
                               id="expanded-content5"
                               onMouseEnter={[Function]}
                             />
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-5"
@@ -4805,7 +4805,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className="pf-c-table__toggle"
                             data-key={0}
                             data-label=""
@@ -4817,7 +4817,7 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node6 expandable-toggle6"
                                 id="expandable-toggle6"
                                 isOpen={false}
@@ -4877,10 +4877,10 @@ exports[`InfoTable api expandable should open 1`] = `
                                     </div>
                                   </button>
                                 </Button>
-                              </Component>
+                              </CollapseColumn>
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={1}
                             data-label="One cell"
                             isVisible={true}
@@ -4894,8 +4894,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               child
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-6"
@@ -5127,7 +5127,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           hidden={true}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className=""
                             data-key={0}
                             data-label=""
@@ -5139,14 +5139,14 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node7 expandable-toggle7"
                                 id="expandable-toggle7"
                                 onToggle={[Function]}
                               />
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             className=""
                             colSpan={2}
                             data-key={1}
@@ -5160,12 +5160,11 @@ exports[`InfoTable api expandable should open 1`] = `
                               className=""
                               colSpan={2}
                               data-key={1}
-                              data-label="One cell"
                               id="expanded-content7"
                               onMouseEnter={[Function]}
                             />
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-7"
@@ -5175,7 +5174,7 @@ exports[`InfoTable api expandable should open 1`] = `
                       </RowWrapper>
                     </BodyRow>
                   </tbody>
-                </Component>
+                </BodyWrapper>
               </BaseBody>
             </Component>
           </ContextBody>
@@ -5981,7 +5980,7 @@ exports[`InfoTable api should paginate to last page 1`] = `
   hidden={false}
   onMouseDown={[Function]}
 >
-  <Component
+  <BodyCell
     data-key={0}
     data-label="One cell"
     isVisible={true}
@@ -5995,8 +5994,8 @@ exports[`InfoTable api should paginate to last page 1`] = `
     >
       0-0
     </td>
-  </Component>
-  <Component
+  </BodyCell>
+  <BodyCell
     data-key={1}
     data-label="Second one"
     isVisible={true}
@@ -6010,7 +6009,7 @@ exports[`InfoTable api should paginate to last page 1`] = `
     >
       0-1
     </td>
-  </Component>
+  </BodyCell>
 </tr>
 `;
 
@@ -6023,7 +6022,7 @@ exports[`InfoTable api should paginate to last page 2`] = `
   hidden={false}
   onMouseDown={[Function]}
 >
-  <Component
+  <BodyCell
     data-key={0}
     data-label="One cell"
     isVisible={true}
@@ -6037,8 +6036,8 @@ exports[`InfoTable api should paginate to last page 2`] = `
     >
       40-0
     </td>
-  </Component>
-  <Component
+  </BodyCell>
+  <BodyCell
     data-key={1}
     data-label="Second one"
     isVisible={true}
@@ -6052,7 +6051,7 @@ exports[`InfoTable api should paginate to last page 2`] = `
     >
       40-1
     </td>
-  </Component>
+  </BodyCell>
 </tr>
 `;
 
@@ -6065,7 +6064,7 @@ exports[`InfoTable api should paginate to next page 1`] = `
   hidden={false}
   onMouseDown={[Function]}
 >
-  <Component
+  <BodyCell
     data-key={0}
     data-label="One cell"
     isVisible={true}
@@ -6079,8 +6078,8 @@ exports[`InfoTable api should paginate to next page 1`] = `
     >
       0-0
     </td>
-  </Component>
-  <Component
+  </BodyCell>
+  <BodyCell
     data-key={1}
     data-label="Second one"
     isVisible={true}
@@ -6094,7 +6093,7 @@ exports[`InfoTable api should paginate to next page 1`] = `
     >
       0-1
     </td>
-  </Component>
+  </BodyCell>
 </tr>
 `;
 
@@ -6107,7 +6106,7 @@ exports[`InfoTable api should paginate to next page 2`] = `
   hidden={false}
   onMouseDown={[Function]}
 >
-  <Component
+  <BodyCell
     data-key={0}
     data-label="One cell"
     isVisible={true}
@@ -6121,8 +6120,8 @@ exports[`InfoTable api should paginate to next page 2`] = `
     >
       10-0
     </td>
-  </Component>
-  <Component
+  </BodyCell>
+  <BodyCell
     data-key={1}
     data-label="Second one"
     isVisible={true}
@@ -6136,7 +6135,7 @@ exports[`InfoTable api should paginate to next page 2`] = `
     >
       10-1
     </td>
-  </Component>
+  </BodyCell>
 </tr>
 `;
 
@@ -6176,8 +6175,10 @@ exports[`InfoTable should render expandable set to true 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -6233,7 +6234,7 @@ exports[`InfoTable should render expandable set to true 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -6339,7 +6340,9 @@ exports[`InfoTable should render multiple cells 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -6368,7 +6371,7 @@ exports[`InfoTable should render multiple cells 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -6469,7 +6472,9 @@ exports[`InfoTable should render no data 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={Array []}
@@ -6481,7 +6486,7 @@ exports[`InfoTable should render no data 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -6592,7 +6597,9 @@ exports[`InfoTable should render onSort set 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -6621,7 +6628,7 @@ exports[`InfoTable should render onSort set 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar

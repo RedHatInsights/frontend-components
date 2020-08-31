@@ -4,13 +4,9 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdvisorData, getComplianceData, getPatchData, getVulnData } from '../../redux/actions';
-import { Stack, StackItem } from '@patternfly/react-core/dist/esm/layouts/Stack';
-import { Level, LevelItem } from '@patternfly/react-core/dist/esm/layouts/Level';
-import { Title } from '@patternfly/react-core/dist/esm/components/Title';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
-import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
-import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
-import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
+import { Level, LevelItem, Stack, StackItem, Title } from '@patternfly/react-core';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { BugIcon, EnhancementIcon, SecurityIcon } from '@patternfly/react-icons';
 
 const SystemIssues = ({ isOpened }) => {
     const dispatch = useDispatch();
