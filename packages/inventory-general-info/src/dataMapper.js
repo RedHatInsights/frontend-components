@@ -9,15 +9,24 @@ import {
     OutlinedArrowAltCircleDownIcon
 } from '@patternfly/react-icons';
 import { sortable } from '@patternfly/react-table';
+import { Tooltip } from '@patternfly/react-core';
 
 export const statusHelper = {
-    UP: <OutlinedArrowAltCircleUpIcon className="ins-c-inventory__detail--up" />,
-    DOWN: <OutlinedArrowAltCircleDownIcon className="ins-c-inventory__detail--down" />
+    UP: <Tooltip content="Service is running">
+        <OutlinedArrowAltCircleUpIcon className="ins-c-inventory__detail--up" />
+    </Tooltip>,
+    DOWN: <Tooltip content="Service has stopped">
+        <OutlinedArrowAltCircleDownIcon className="ins-c-inventory__detail--down" />
+    </Tooltip>
 };
 
 export const enabledHelper = {
-    true: <CheckCircleIcon className="ins-c-inventory__detail--enabled" />,
-    false: <TimesIcon className="ins-c-inventory__detail--disabled" />
+    true: <Tooltip content="Source enabled">
+        <CheckCircleIcon className="ins-c-inventory__detail--enabled" />
+    </Tooltip>,
+    false: <Tooltip content="Source disabled">
+        <TimesIcon className="ins-c-inventory__detail--disabled" />
+    </Tooltip>
 };
 
 export const diskMapper = (devices = []) => ({
@@ -79,7 +88,9 @@ export const productsMapper = (products = []) => ({
         product.name,
         {
             title: statusHelper[product.status] ||
+            <Tooltip content="Unknown service status">
                 <OutlinedQuestionCircleIcon className="ins-c-inventory__detail--unknown" />
+            </Tooltip>
         }
     ]))
 });
@@ -110,7 +121,9 @@ export const interfaceMapper = (data = []) => ({
         item.name,
         {
             title: statusHelper[item.state] ||
+            <Tooltip content="Unknown service status">
                 <OutlinedQuestionCircleIcon className="ins-c-inventory__detail--unknown" />
+            </Tooltip>
         },
         item.type
     ]))
