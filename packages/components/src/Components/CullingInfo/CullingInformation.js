@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExclamationTriangleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-triangle-icon';
-import ExclamationCircleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-circle-icon';
-import { Tooltip } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
+import { ExclamationCircleIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
+import { Tooltip } from '@patternfly/react-core';
 import classnames from 'classnames';
 import './CullingInformation.scss';
 

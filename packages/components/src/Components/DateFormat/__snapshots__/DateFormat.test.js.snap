@@ -3,40 +3,12 @@
 exports[`DateFormat component DateFormat renders with date integer 1`] = `
 <Fragment>
   <Tooltip
-    appendTo={[Function]}
-    aria="describedby"
-    boundary="window"
-    className=""
     content={
       <div>
         
         01 Jan 1970 00:00 UTC
       </div>
     }
-    distance={15}
-    enableFlip={true}
-    entryDelay={500}
-    exitDelay={500}
-    flipBehavior={
-      Array [
-        "top",
-        "right",
-        "bottom",
-        "left",
-        "top",
-        "right",
-        "bottom",
-      ]
-    }
-    id=""
-    isAppLauncher={false}
-    isContentLeftAligned={false}
-    isVisible={false}
-    maxWidth="18.75rem"
-    position="top"
-    tippyProps={Object {}}
-    trigger="mouseenter focus"
-    zIndex={9999}
   >
     <span>
       Just now
@@ -60,40 +32,12 @@ exports[`DateFormat component DateFormat renders with date integer 3`] = `
 exports[`DateFormat component DateFormat renders with date object 1`] = `
 <Fragment>
   <Tooltip
-    appendTo={[Function]}
-    aria="describedby"
-    boundary="window"
-    className=""
     content={
       <div>
         
         31 Dec 2019 00:00 UTC
       </div>
     }
-    distance={15}
-    enableFlip={true}
-    entryDelay={500}
-    exitDelay={500}
-    flipBehavior={
-      Array [
-        "top",
-        "right",
-        "bottom",
-        "left",
-        "top",
-        "right",
-        "bottom",
-      ]
-    }
-    id=""
-    isAppLauncher={false}
-    isContentLeftAligned={false}
-    isVisible={false}
-    maxWidth="18.75rem"
-    position="top"
-    tippyProps={Object {}}
-    trigger="mouseenter focus"
-    zIndex={9999}
   >
     <span>
       Just now
@@ -105,40 +49,12 @@ exports[`DateFormat component DateFormat renders with date object 1`] = `
 exports[`DateFormat component DateFormat renders with date string 1`] = `
 <Fragment>
   <Tooltip
-    appendTo={[Function]}
-    aria="describedby"
-    boundary="window"
-    className=""
     content={
       <div>
         
         31 Dec 2019 00:00 UTC
       </div>
     }
-    distance={15}
-    enableFlip={true}
-    entryDelay={500}
-    exitDelay={500}
-    flipBehavior={
-      Array [
-        "top",
-        "right",
-        "bottom",
-        "left",
-        "top",
-        "right",
-        "bottom",
-      ]
-    }
-    id=""
-    isAppLauncher={false}
-    isContentLeftAligned={false}
-    isVisible={false}
-    maxWidth="18.75rem"
-    position="top"
-    tippyProps={Object {}}
-    trigger="mouseenter focus"
-    zIndex={9999}
   >
     <span>
       Just now

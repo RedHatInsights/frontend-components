@@ -78,6 +78,7 @@ export default rollupConfig(
         costManagementAuthentication: 'src/api/costManagementAuthentication.js',
         handleError: 'src/api/handleError.js',
         filterApps: 'src/utilities/filterApps.js',
+        filterTypes: 'src/utilities/filterTypes.js',
         CloseModal: 'src/addSourceWizard/CloseModal.js',
         hardcodedSchemas: 'src/addSourceWizard/hardcodedSchemas.js',
         AuthSelect: 'src/sourceFormRenderer/components/AuthSelect.js',

@@ -10,8 +10,10 @@
         "access": "public"
     },
     "scripts": {
-        "build": "npm run build:js && npm run build:css",
-        "build:js": "tsc && rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
+        "build": "npm run build:js && npm run build:esm && npm run build:umd && npm run build:css",
+        "build:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
+        "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
+        "build:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",
         "build:css": "node ./create-styles.js && copyfiles ./components/index.* ./ -f",
         "start": "rollup -c ./config/rollup.config.js -w"
     },

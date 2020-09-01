@@ -11,7 +11,7 @@ import {
     StackItem
 } from '@patternfly/react-core';
 
-import { Reboot } from '@redhat-cloud-services/frontend-components/components/Reboot';
+import { Reboot } from '@redhat-cloud-services/frontend-components';
 import './IssueResolutionStep.scss';
 
 function isSelectedByDefault ({ id }, index, issue, state) {

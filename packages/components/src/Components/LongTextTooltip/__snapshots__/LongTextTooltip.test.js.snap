@@ -58,68 +58,18 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
   tooltipPosition="top"
 >
   <Tooltip
-    appendTo={[Function]}
-    aria="describedby"
-    boundary="window"
-    className=""
     content={
       <div>
         Lorem Impsum
       </div>
     }
-    distance={15}
-    enableFlip={true}
-    entryDelay={500}
-    exitDelay={500}
-    flipBehavior={
-      Array [
-        "top",
-        "right",
-        "bottom",
-        "left",
-        "top",
-        "right",
-        "bottom",
-      ]
-    }
-    id=""
-    isAppLauncher={false}
-    isContentLeftAligned={false}
-    isVisible={false}
     maxWidth="50vw"
     position="top"
-    tippyProps={Object {}}
-    trigger="mouseenter focus"
-    zIndex={9999}
   >
-    <PopoverBase
+    <Popper
       appendTo={[Function]}
-      aria="describedby"
-      arrow={true}
-      boundary="window"
-      content={
-        <div
-          className=""
-          id=""
-          role="tooltip"
-        >
-          <Unknown
-            isLeftAligned={false}
-          >
-            <div>
-              Lorem Impsum
-            </div>
-          </Unknown>
-        </div>
-      }
-      delay={
-        Array [
-          500,
-          500,
-        ]
-      }
       distance={15}
-      flip={true}
+      enableFlip={true}
       flipBehavior={
         Array [
           "top",
@@ -132,67 +82,65 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
         ]
       }
       isVisible={false}
-      lazy={true}
-      maxWidth="50vw"
-      onCreate={[Function]}
+      onBlur={[Function]}
+      onDocumentClick={false}
+      onDocumentKeyDown={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onTriggerEnter={[Function]}
       placement="top"
-      popperOptions={
-        Object {
-          "modifiers": Object {
-            "hide": Object {
-              "enabled": true,
-            },
-            "preventOverflow": Object {
-              "enabled": true,
-            },
-          },
-        }
-      }
-      theme="pf-tooltip"
-      trigger="mouseenter focus"
-      zIndex={9999}
-    >
-      <div>
-        …
-      </div>
-      <Portal
-        containerInfo={
-          <div>
-            <div
-              class=""
-              id=""
-              role="tooltip"
-            >
-              <div
-                class="pf-c-tooltip__content"
-              >
-                <div>
-                  Lorem Impsum
-                </div>
-              </div>
-            </div>
-          </div>
-        }
-      >
+      popper={
         <div
-          className=""
-          id=""
+          className="pf-c-tooltip"
+          id="pf-tooltip-1"
           role="tooltip"
+          style={
+            Object {
+              "maxWidth": "50vw",
+              "opacity": 0,
+              "transition": "opacity 300ms cubic-bezier(.54, 1.5, .38, 1.11)",
+            }
+          }
         >
-          <Component
+          <TooltipArrow />
+          <TooltipContent
             isLeftAligned={false}
           >
-            <div
-              className="pf-c-tooltip__content"
-            >
-              <div>
-                Lorem Impsum
-              </div>
+            <div>
+              Lorem Impsum
             </div>
-          </Component>
+          </TooltipContent>
         </div>
-      </Portal>
-    </PopoverBase>
+      }
+      popperMatchesTriggerWidth={false}
+      positionModifiers={
+        Object {
+          "bottom": "pf-m-bottom",
+          "left": "pf-m-left",
+          "right": "pf-m-right",
+          "top": "pf-m-top",
+        }
+      }
+      trigger={
+        <div
+          aria-describedby="pf-tooltip-1"
+        >
+          …
+        </div>
+      }
+      zIndex={9999}
+    >
+      <FindRefWrapper
+        onFoundRef={[Function]}
+      >
+        <div
+          aria-describedby="pf-tooltip-1"
+        >
+          …
+        </div>
+      </FindRefWrapper>
+    </Popper>
   </Tooltip>
 </LongTextTooltip>
 `;

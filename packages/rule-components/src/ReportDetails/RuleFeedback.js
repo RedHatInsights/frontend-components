@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/thumbs-up-icon';
-import OutlinedThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumbs-up-icon';
-import ThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/thumbs-down-icon';
-import OutlinedThumbsDownIcon from '@patternfly/react-icons/dist/js/icons/outlined-thumbs-down-icon';
 import { Button } from '@patternfly/react-core';
+import { ThumbsUpIcon } from '@patternfly/react-icons';
+import { OutlinedThumbsUpIcon } from '@patternfly/react-icons';
+import { ThumbsDownIcon } from '@patternfly/react-icons';
+import { OutlinedThumbsDownIcon } from '@patternfly/react-icons';
 
 export const feedback = { negative: -1, neutral: 0, positive: 1 };
 // ruleId - is id of current rule

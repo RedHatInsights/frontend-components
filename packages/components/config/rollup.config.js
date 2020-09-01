@@ -63,7 +63,7 @@ const plugins = [
             { src: 'src/**/*.d.ts', dest: './components' }
 
         ],
-        overwrite: false,
+        overwrite: true,
         hook: 'writeBundle'
     })
 ];

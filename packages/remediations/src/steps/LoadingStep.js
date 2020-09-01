@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/Skeleton';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
 import { Stack, StackItem } from '@patternfly/react-core';
 
 import './LoadingStep.scss';

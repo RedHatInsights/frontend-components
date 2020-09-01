@@ -239,7 +239,7 @@ class Group extends Component {
                 ...showMoreOptions,
                 label: showMoreTitle,
                 type: groupType.button,
-                onClick: onShowMore,
+                onClick: (e) => onShowMore(e, () => this.setState({ isExpanded: false })),
                 isPersistentAction: true
             }]
         };

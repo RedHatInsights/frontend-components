@@ -3,7 +3,7 @@
 exports[`EntityTable DOM should render correctly 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -11,6 +11,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
   hasNoBodyWrapper={false}
   isOpen={false}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"
@@ -92,7 +93,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
 exports[`EntityTable DOM should render correctly with multiple systems - count 1 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -100,6 +101,7 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 1
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"
@@ -182,7 +184,7 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 1
 exports[`EntityTable DOM should render correctly with multiple systems - count 2 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -190,6 +192,7 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 2
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"
@@ -272,7 +275,7 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 2
 exports[`EntityTable DOM should render correctly with one system 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -280,6 +283,7 @@ exports[`EntityTable DOM should render correctly with one system 1`] = `
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"
@@ -362,7 +366,7 @@ exports[`EntityTable DOM should render correctly with one system 1`] = `
 exports[`EntityTable DOM should render correctly with one system 2`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -370,6 +374,7 @@ exports[`EntityTable DOM should render correctly with one system 2`] = `
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"

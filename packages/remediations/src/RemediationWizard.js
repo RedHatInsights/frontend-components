@@ -3,7 +3,7 @@ import keyBy from 'lodash/keyBy';
 import transform from 'lodash/transform';
 
 import * as api from './api/';
-import { Wizard } from '@redhat-cloud-services/frontend-components/components/Wizard';
+import { Wizard } from '@redhat-cloud-services/frontend-components';
 import Deferred from '@redhat-cloud-services/frontend-components-utilities/files/Deffered';
 import { remediationUrl } from './utils';
 
@@ -30,7 +30,7 @@ function createNotification (id, name, isNewSwitch) {
     return {
         variant: 'success',
         title: `Playbook ${verb}`,
-        description: <span>You have succesfully { verb } <a href={ remediationUrl(id) } >{ name }</a>.</span>,
+        description: <span>You have successfully { verb } <a href={ remediationUrl(id) } >{ name }</a>.</span>,
         dismissable: true
     };
 }

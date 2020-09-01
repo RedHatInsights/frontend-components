@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Notification Pagination component should render correctly 1`] = `
-<Component
+<Card
   className="notification-item"
 >
-  <Component>
-    <Component>
-      <Component>
-        <Component
+  <CardBody>
+    <Level>
+      <LevelItem>
+        <Button
           className="ins-c-pagination__clear-all"
           onClick={[Function]}
           variant="link"
         >
           Clear all
-        </Component>
-      </Component>
-      <Component>
+        </Button>
+      </LevelItem>
+      <LevelItem>
         <Pagination
           className=""
           defaultToFullPage={false}
@@ -33,7 +33,7 @@ exports[`Notification Pagination component should render correctly 1`] = `
           onPerPageSelect={[Function]}
           onPreviousClick={[Function]}
           onSetPage={[Function]}
-          ouiaId={null}
+          ouiaSafe={true}
           page={1}
           perPage={5}
           perPageOptions={
@@ -53,8 +53,8 @@ exports[`Notification Pagination component should render correctly 1`] = `
           variant="bottom"
           widgetId="pagination-options-menu"
         />
-      </Component>
-    </Component>
-  </Component>
-</Component>
+      </LevelItem>
+    </Level>
+  </CardBody>
+</Card>
 `;

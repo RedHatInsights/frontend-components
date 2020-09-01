@@ -178,6 +178,7 @@ exports[`BasicInfo should render with tags 1`] = `
                 data-ouia-component-type="PF4/OverflowChip"
                 data-ouia-safe={true}
                 onClick={[Function]}
+                type="button"
               >
                 <span
                   className="pf-c-chip__text"

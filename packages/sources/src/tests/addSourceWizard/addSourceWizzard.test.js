@@ -1,8 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import { Button } from '@patternfly/react-core';
-
 import { AddSourceWizard } from '../../addSourceWizard/index';
 import Form from '../../addSourceWizard/SourceAddModal';
 import Modal from '../../addSourceWizard/SourceAddModal';
@@ -170,7 +168,7 @@ describe('AddSourceWizard', () => {
         wrapper.update();
 
         await act(async () => {
-            wrapper.find(Button).at(CANCEL_BUTTON_INDEX).simulate('click');
+            wrapper.find('Button').at(CANCEL_BUTTON_INDEX).simulate('click');
         });
 
         wrapper.update();
@@ -213,7 +211,7 @@ describe('AddSourceWizard', () => {
         wrapper.update();
 
         await act(async () => {
-            wrapper.find(Button).at(CANCEL_BUTTON_INDEX).simulate('click');
+            wrapper.find('Button').at(CANCEL_BUTTON_INDEX).simulate('click');
         });
         wrapper.update();
 

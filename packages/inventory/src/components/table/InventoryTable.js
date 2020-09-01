@@ -1,7 +1,7 @@
 import React, { Fragment, forwardRef } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
-import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/esm/TableToolbar';
+import { TableToolbar } from '@redhat-cloud-services/frontend-components';
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 

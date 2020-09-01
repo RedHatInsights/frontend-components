@@ -18,6 +18,7 @@ const PDFDocument = ({
     title,
     reportName,
     size,
+    orientation,
     allPagesHaveTitle,
     ...props
 }) => {
@@ -27,7 +28,7 @@ const PDFDocument = ({
         height: '100%'
     }}>
         {pages.map((page, key) => (
-            <Page size={size} key={key} style={[ appliedStyles.page, appliedStyles.text ]}>
+            <Page size={size} orientation={orientation} key={key} style={[ appliedStyles.page, appliedStyles.text ]}>
                 {<React.Fragment>
                     <View style={appliedStyles.headerContainer}>
                         <RHLogo />
@@ -80,6 +81,7 @@ PDFDocument.propTypes = {
         PropTypes.array,
         PropTypes.number
     ]),
+    orientation: PropTypes.string,
     reportName: PropTypes.string,
     type: PropTypes.string,
     title: PropTypes.oneOfType([

@@ -77,7 +77,7 @@ exports[`InfoTable api expandable should open 1`] = `
             <div
               className="pf-c-toolbar__content-section"
             >
-              <Component
+              <ToolbarItem
                 className="ins-c-primary-toolbar__pagination"
               >
                 <div
@@ -100,7 +100,7 @@ exports[`InfoTable api expandable should open 1`] = `
                     onPerPageSelect={[Function]}
                     onPreviousClick={[Function]}
                     onSetPage={[Function]}
-                    ouiaId={null}
+                    ouiaSafe={true}
                     page={1}
                     perPage={10}
                     perPageOptions={
@@ -144,7 +144,7 @@ exports[`InfoTable api expandable should open 1`] = `
                   >
                     <div
                       className="pf-c-pagination pf-m-compact"
-                      data-ouia-component-id={null}
+                      data-ouia-component-id={23}
                       data-ouia-component-type="PF4/Pagination"
                       data-ouia-safe={true}
                       id="pagination-options-menu-2"
@@ -152,7 +152,7 @@ exports[`InfoTable api expandable should open 1`] = `
                       <div
                         className="pf-c-pagination__total-items"
                       >
-                        <Component
+                        <ToggleTemplate
                           firstIndex={1}
                           itemCount={4}
                           itemsTitle=""
@@ -169,7 +169,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             4
                           </b>
                            
-                        </Component>
+                        </ToggleTemplate>
                       </div>
                       <PaginationOptionsMenu
                         className=""
@@ -216,7 +216,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           direction="down"
                           dropdownItems={
                             Array [
-                              <Unknown
+                              <DropdownItem
                                 className="pf-m-selected"
                                 component="button"
                                 data-action="per-page-10"
@@ -233,8 +233,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                     size="sm"
                                   />
                                 </div>
-                              </Unknown>,
-                              <Unknown
+                              </DropdownItem>,
+                              <DropdownItem
                                 className=""
                                 component="button"
                                 data-action="per-page-20"
@@ -242,8 +242,8 @@ exports[`InfoTable api expandable should open 1`] = `
                               >
                                 20
                                  per page
-                              </Unknown>,
-                              <Unknown
+                              </DropdownItem>,
+                              <DropdownItem
                                 className=""
                                 component="button"
                                 data-action="per-page-50"
@@ -251,8 +251,8 @@ exports[`InfoTable api expandable should open 1`] = `
                               >
                                 50
                                  per page
-                              </Unknown>,
-                              <Unknown
+                              </DropdownItem>,
+                              <DropdownItem
                                 className=""
                                 component="button"
                                 data-action="per-page-100"
@@ -260,17 +260,17 @@ exports[`InfoTable api expandable should open 1`] = `
                               >
                                 100
                                  per page
-                              </Unknown>,
+                              </DropdownItem>,
                             ]
                           }
                           isGrouped={false}
                           isOpen={false}
                           isPlain={true}
+                          menuAppendTo="inline"
                           onSelect={[Function]}
-                          ouiaComponentType="Dropdown"
                           position="left"
                           toggle={
-                            <Unknown
+                            <OptionsToggle
                               firstIndex={1}
                               isDisabled={false}
                               isOpen={false}
@@ -289,14 +289,15 @@ exports[`InfoTable api expandable should open 1`] = `
                         >
                           <div
                             className="pf-c-options-menu"
-                            data-ouia-component-id={11}
-                            data-ouia-component-type="PF4/Dropdown"
+                            data-ouia-component-id={24}
+                            data-ouia-component-type="PF4/PaginationOptionsMenu"
                             data-ouia-safe={true}
                           >
-                            <Component
+                            <OptionsToggle
                               aria-haspopup={true}
                               firstIndex={1}
-                              id="pf-toggle-id-2"
+                              getMenuRef={[Function]}
+                              id="pf-dropdown-toggle-id-2"
                               isDisabled={false}
                               isOpen={false}
                               isPlain={true}
@@ -312,8 +313,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                 Object {
                                   "current": <div
                                     class="pf-c-options-menu"
-                                    data-ouia-component-id="11"
-                                    data-ouia-component-type="PF4/Dropdown"
+                                    data-ouia-component-id="24"
+                                    data-ouia-component-type="PF4/PaginationOptionsMenu"
                                     data-ouia-safe="true"
                                   >
                                     <div
@@ -375,7 +376,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                 <span
                                   className="pf-c-options-menu__toggle-text"
                                 >
-                                  <Component
+                                  <ToggleTemplate
                                     firstIndex={1}
                                     itemCount={4}
                                     itemsTitle=""
@@ -392,9 +393,9 @@ exports[`InfoTable api expandable should open 1`] = `
                                       4
                                     </b>
                                      
-                                  </Component>
+                                  </ToggleTemplate>
                                 </span>
-                                <Component
+                                <DropdownToggle
                                   aria-label="Items per page"
                                   className="pf-c-options-menu__toggle-button"
                                   id="pagination-options-menu-toggle-2"
@@ -406,8 +407,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                     Object {
                                       "current": <div
                                         class="pf-c-options-menu"
-                                        data-ouia-component-id="11"
-                                        data-ouia-component-type="PF4/Dropdown"
+                                        data-ouia-component-id="24"
+                                        data-ouia-component-type="PF4/PaginationOptionsMenu"
                                         data-ouia-safe="true"
                                       >
                                         <div
@@ -464,6 +465,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                     aria-label="Items per page"
                                     bubbleEvent={false}
                                     className="pf-c-options-menu__toggle-button"
+                                    getMenuRef={null}
                                     id="pagination-options-menu-toggle-2"
                                     isActive={false}
                                     isDisabled={false}
@@ -477,8 +479,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                       Object {
                                         "current": <div
                                           class="pf-c-options-menu"
-                                          data-ouia-component-id="11"
-                                          data-ouia-component-type="PF4/Dropdown"
+                                          data-ouia-component-id="24"
+                                          data-ouia-component-type="PF4/PaginationOptionsMenu"
                                           data-ouia-safe="true"
                                         >
                                           <div
@@ -572,9 +574,9 @@ exports[`InfoTable api expandable should open 1`] = `
                                       </span>
                                     </button>
                                   </Toggle>
-                                </Component>
+                                </DropdownToggle>
                               </div>
-                            </Component>
+                            </OptionsToggle>
                           </div>
                         </DropdownWithContext>
                       </PaginationOptionsMenu>
@@ -607,7 +609,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           <div
                             className="pf-c-pagination__nav-control"
                           >
-                            <Component
+                            <Button
                               aria-label="Go to previous page"
                               data-action="previous"
                               isDisabled={true}
@@ -615,11 +617,11 @@ exports[`InfoTable api expandable should open 1`] = `
                               variant="plain"
                             >
                               <button
-                                aria-disabled={null}
+                                aria-disabled={true}
                                 aria-label="Go to previous page"
-                                className="pf-c-button pf-m-plain"
+                                className="pf-c-button pf-m-plain pf-m-disabled"
                                 data-action="previous"
-                                data-ouia-component-id={null}
+                                data-ouia-component-id={25}
                                 data-ouia-component-type="PF4/Button"
                                 data-ouia-safe={true}
                                 disabled={true}
@@ -653,12 +655,12 @@ exports[`InfoTable api expandable should open 1`] = `
                                   </svg>
                                 </AngleLeftIcon>
                               </button>
-                            </Component>
+                            </Button>
                           </div>
                           <div
                             className="pf-c-pagination__nav-control"
                           >
-                            <Component
+                            <Button
                               aria-label="Go to next page"
                               data-action="next"
                               isDisabled={true}
@@ -666,11 +668,11 @@ exports[`InfoTable api expandable should open 1`] = `
                               variant="plain"
                             >
                               <button
-                                aria-disabled={null}
+                                aria-disabled={true}
                                 aria-label="Go to next page"
-                                className="pf-c-button pf-m-plain"
+                                className="pf-c-button pf-m-plain pf-m-disabled"
                                 data-action="next"
-                                data-ouia-component-id={null}
+                                data-ouia-component-id={26}
                                 data-ouia-component-type="PF4/Button"
                                 data-ouia-safe={true}
                                 disabled={true}
@@ -704,14 +706,14 @@ exports[`InfoTable api expandable should open 1`] = `
                                   </svg>
                                 </AngleRightIcon>
                               </button>
-                            </Component>
+                            </Button>
                           </div>
                         </nav>
                       </Navigation>
                     </div>
                   </Pagination>
                 </div>
-              </Component>
+              </ToolbarItem>
             </div>
             <ToolbarExpandableContent
               chipContainerRef={
@@ -808,8 +810,10 @@ exports[`InfoTable api expandable should open 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -1034,7 +1038,7 @@ exports[`InfoTable api expandable should open 1`] = `
           },
         ]
       }
-      data-ouia-component-id={12}
+      data-ouia-component-id={27}
       data-ouia-component-type="PF4/Table"
       data-ouia-safe={true}
       renderers={
@@ -1054,12 +1058,12 @@ exports[`InfoTable api expandable should open 1`] = `
       <table
         aria-label="General information dialog table"
         className="pf-c-table pf-m-grid-md pf-m-compact pf-m-expandable"
-        data-ouia-component-id={12}
+        data-ouia-component-id={27}
         data-ouia-component-type="PF4/Table"
         data-ouia-safe={true}
         role="grid"
       >
-        <Component>
+        <TableHeader>
           <ContextHeader
             headerRows={null}
           >
@@ -1236,7 +1240,7 @@ exports[`InfoTable api expandable should open 1`] = `
                 <thead
                   className=""
                 >
-                  <Component
+                  <HeaderRow
                     key="0-header-row"
                     renderers={
                       Object {
@@ -1395,7 +1399,7 @@ exports[`InfoTable api expandable should open 1`] = `
                     rowIndex={0}
                   >
                     <tr>
-                      <Component
+                      <HeaderCell
                         component="td"
                         data-key={0}
                         data-label=""
@@ -1408,8 +1412,8 @@ exports[`InfoTable api expandable should open 1`] = `
                           data-label=""
                           onMouseEnter={[Function]}
                         />
-                      </Component>
-                      <Component
+                      </HeaderCell>
+                      <HeaderCell
                         data-key={1}
                         data-label="One cell"
                         key="1-header"
@@ -1424,8 +1428,8 @@ exports[`InfoTable api expandable should open 1`] = `
                         >
                           One cell
                         </th>
-                      </Component>
-                      <Component
+                      </HeaderCell>
+                      <HeaderCell
                         data-key={2}
                         data-label="Second one"
                         key="2-header"
@@ -1440,14 +1444,14 @@ exports[`InfoTable api expandable should open 1`] = `
                         >
                           Second one
                         </th>
-                      </Component>
+                      </HeaderCell>
                     </tr>
-                  </Component>
+                  </HeaderRow>
                 </thead>
               </BaseHeader>
             </Component>
           </ContextHeader>
-        </Component>
+        </TableHeader>
         <Component>
           <ContextBody
             className=""
@@ -2561,7 +2565,7 @@ exports[`InfoTable api expandable should open 1`] = `
                   ]
                 }
               >
-                <Component
+                <BodyWrapper
                   className=""
                   headerRows={null}
                   mappedRows={
@@ -2977,13 +2981,13 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         <tr
                           className=""
-                          data-ouia-component-id={13}
+                          data-ouia-component-id={28}
                           data-ouia-component-type="PF4/TableRow"
                           data-ouia-safe={true}
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className="pf-c-table__toggle"
                             data-key={0}
                             data-label=""
@@ -2995,13 +2999,13 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node0 expandable-toggle0"
                                 id="expandable-toggle0"
                                 isOpen={true}
                                 onToggle={[Function]}
                               >
-                                <Component
+                                <Button
                                   aria-expanded={true}
                                   aria-label="Details"
                                   aria-labelledby="simple-node0 expandable-toggle0"
@@ -3011,18 +3015,17 @@ exports[`InfoTable api expandable should open 1`] = `
                                   variant="plain"
                                 >
                                   <button
-                                    aria-disabled={null}
+                                    aria-disabled={false}
                                     aria-expanded={true}
                                     aria-label="Details"
                                     aria-labelledby="simple-node0 expandable-toggle0"
                                     className="pf-c-button pf-m-plain pf-m-expanded"
-                                    data-ouia-component-id={null}
+                                    data-ouia-component-id={29}
                                     data-ouia-component-type="PF4/Button"
                                     data-ouia-safe={true}
                                     disabled={false}
                                     id="expandable-toggle0"
                                     onClick={[Function]}
-                                    tabIndex={null}
                                     type="button"
                                   >
                                     <div
@@ -3055,11 +3058,11 @@ exports[`InfoTable api expandable should open 1`] = `
                                       </AngleDownIcon>
                                     </div>
                                   </button>
-                                </Component>
-                              </Component>
+                                </Button>
+                              </CollapseColumn>
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={1}
                             data-label="One cell"
                             isVisible={true}
@@ -3073,8 +3076,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               first
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             isVisible={true}
@@ -3088,7 +3091,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               second
                             </td>
-                          </Component>
+                          </BodyCell>
                         </tr>
                       </RowWrapper>
                     </BodyRow>
@@ -3310,13 +3313,13 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         <tr
                           className="pf-c-table__expandable-row pf-m-expanded"
-                          data-ouia-component-id={14}
+                          data-ouia-component-id={30}
                           data-ouia-component-type="PF4/TableRow"
                           data-ouia-safe={true}
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className=""
                             data-key={0}
                             data-label=""
@@ -3328,14 +3331,14 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node1 expandable-toggle1"
                                 id="expandable-toggle1"
                                 onToggle={[Function]}
                               />
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             className=""
                             colSpan={2}
                             data-key={1}
@@ -3353,8 +3356,8 @@ exports[`InfoTable api expandable should open 1`] = `
                               id="expanded-content1"
                               onMouseEnter={[Function]}
                             />
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-1"
@@ -3586,13 +3589,13 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         <tr
                           className=""
-                          data-ouia-component-id={15}
+                          data-ouia-component-id={31}
                           data-ouia-component-type="PF4/TableRow"
                           data-ouia-safe={true}
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className="pf-c-table__toggle"
                             data-key={0}
                             data-label=""
@@ -3604,13 +3607,13 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node2 expandable-toggle2"
                                 id="expandable-toggle2"
                                 isOpen={false}
                                 onToggle={[Function]}
                               >
-                                <Component
+                                <Button
                                   aria-expanded={false}
                                   aria-label="Details"
                                   aria-labelledby="simple-node2 expandable-toggle2"
@@ -3620,18 +3623,17 @@ exports[`InfoTable api expandable should open 1`] = `
                                   variant="plain"
                                 >
                                   <button
-                                    aria-disabled={null}
+                                    aria-disabled={false}
                                     aria-expanded={false}
                                     aria-label="Details"
                                     aria-labelledby="simple-node2 expandable-toggle2"
                                     className="pf-c-button pf-m-plain"
-                                    data-ouia-component-id={null}
+                                    data-ouia-component-id={32}
                                     data-ouia-component-type="PF4/Button"
                                     data-ouia-safe={true}
                                     disabled={false}
                                     id="expandable-toggle2"
                                     onClick={[Function]}
-                                    tabIndex={null}
                                     type="button"
                                   >
                                     <div
@@ -3664,11 +3666,11 @@ exports[`InfoTable api expandable should open 1`] = `
                                       </AngleDownIcon>
                                     </div>
                                   </button>
-                                </Component>
-                              </Component>
+                                </Button>
+                              </CollapseColumn>
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={1}
                             data-label="One cell"
                             isVisible={true}
@@ -3682,8 +3684,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               second from title
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-2"
@@ -3909,13 +3911,13 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         <tr
                           className="pf-c-table__expandable-row"
-                          data-ouia-component-id={16}
+                          data-ouia-component-id={33}
                           data-ouia-component-type="PF4/TableRow"
                           data-ouia-safe={true}
                           hidden={true}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className=""
                             data-key={0}
                             data-label=""
@@ -3927,14 +3929,14 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node3 expandable-toggle3"
                                 id="expandable-toggle3"
                                 onToggle={[Function]}
                               />
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             className=""
                             colSpan={2}
                             data-key={1}
@@ -3948,12 +3950,11 @@ exports[`InfoTable api expandable should open 1`] = `
                               className=""
                               colSpan={2}
                               data-key={1}
-                              data-label="One cell"
                               id="expanded-content3"
                               onMouseEnter={[Function]}
                             />
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-3"
@@ -4195,13 +4196,13 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         <tr
                           className=""
-                          data-ouia-component-id={17}
+                          data-ouia-component-id={34}
                           data-ouia-component-type="PF4/TableRow"
                           data-ouia-safe={true}
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className="pf-c-table__toggle"
                             data-key={0}
                             data-label=""
@@ -4213,13 +4214,13 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node4 expandable-toggle4"
                                 id="expandable-toggle4"
                                 isOpen={false}
                                 onToggle={[Function]}
                               >
-                                <Component
+                                <Button
                                   aria-expanded={false}
                                   aria-label="Details"
                                   aria-labelledby="simple-node4 expandable-toggle4"
@@ -4229,18 +4230,17 @@ exports[`InfoTable api expandable should open 1`] = `
                                   variant="plain"
                                 >
                                   <button
-                                    aria-disabled={null}
+                                    aria-disabled={false}
                                     aria-expanded={false}
                                     aria-label="Details"
                                     aria-labelledby="simple-node4 expandable-toggle4"
                                     className="pf-c-button pf-m-plain"
-                                    data-ouia-component-id={null}
+                                    data-ouia-component-id={35}
                                     data-ouia-component-type="PF4/Button"
                                     data-ouia-safe={true}
                                     disabled={false}
                                     id="expandable-toggle4"
                                     onClick={[Function]}
-                                    tabIndex={null}
                                     type="button"
                                   >
                                     <div
@@ -4273,11 +4273,11 @@ exports[`InfoTable api expandable should open 1`] = `
                                       </AngleDownIcon>
                                     </div>
                                   </button>
-                                </Component>
-                              </Component>
+                                </Button>
+                              </CollapseColumn>
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={1}
                             data-label="One cell"
                             isVisible={true}
@@ -4291,8 +4291,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               multiple
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             isVisible={true}
@@ -4306,7 +4306,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               cells
                             </td>
-                          </Component>
+                          </BodyCell>
                         </tr>
                       </RowWrapper>
                     </BodyRow>
@@ -4528,13 +4528,13 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         <tr
                           className="pf-c-table__expandable-row"
-                          data-ouia-component-id={18}
+                          data-ouia-component-id={36}
                           data-ouia-component-type="PF4/TableRow"
                           data-ouia-safe={true}
                           hidden={true}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className=""
                             data-key={0}
                             data-label=""
@@ -4546,14 +4546,14 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node5 expandable-toggle5"
                                 id="expandable-toggle5"
                                 onToggle={[Function]}
                               />
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             className=""
                             colSpan={2}
                             data-key={1}
@@ -4567,12 +4567,11 @@ exports[`InfoTable api expandable should open 1`] = `
                               className=""
                               colSpan={2}
                               data-key={1}
-                              data-label="One cell"
                               id="expanded-content5"
                               onMouseEnter={[Function]}
                             />
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-5"
@@ -4800,13 +4799,13 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         <tr
                           className=""
-                          data-ouia-component-id={19}
+                          data-ouia-component-id={37}
                           data-ouia-component-type="PF4/TableRow"
                           data-ouia-safe={true}
                           hidden={false}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className="pf-c-table__toggle"
                             data-key={0}
                             data-label=""
@@ -4818,13 +4817,13 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node6 expandable-toggle6"
                                 id="expandable-toggle6"
                                 isOpen={false}
                                 onToggle={[Function]}
                               >
-                                <Component
+                                <Button
                                   aria-expanded={false}
                                   aria-label="Details"
                                   aria-labelledby="simple-node6 expandable-toggle6"
@@ -4834,18 +4833,17 @@ exports[`InfoTable api expandable should open 1`] = `
                                   variant="plain"
                                 >
                                   <button
-                                    aria-disabled={null}
+                                    aria-disabled={false}
                                     aria-expanded={false}
                                     aria-label="Details"
                                     aria-labelledby="simple-node6 expandable-toggle6"
                                     className="pf-c-button pf-m-plain"
-                                    data-ouia-component-id={null}
+                                    data-ouia-component-id={38}
                                     data-ouia-component-type="PF4/Button"
                                     data-ouia-safe={true}
                                     disabled={false}
                                     id="expandable-toggle6"
                                     onClick={[Function]}
-                                    tabIndex={null}
                                     type="button"
                                   >
                                     <div
@@ -4878,11 +4876,11 @@ exports[`InfoTable api expandable should open 1`] = `
                                       </AngleDownIcon>
                                     </div>
                                   </button>
-                                </Component>
-                              </Component>
+                                </Button>
+                              </CollapseColumn>
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={1}
                             data-label="One cell"
                             isVisible={true}
@@ -4896,8 +4894,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             >
                               child
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-6"
@@ -5123,13 +5121,13 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         <tr
                           className="pf-c-table__expandable-row"
-                          data-ouia-component-id={20}
+                          data-ouia-component-id={39}
                           data-ouia-component-type="PF4/TableRow"
                           data-ouia-safe={true}
                           hidden={true}
                           onMouseDown={[Function]}
                         >
-                          <Component
+                          <BodyCell
                             className=""
                             data-key={0}
                             data-label=""
@@ -5141,14 +5139,14 @@ exports[`InfoTable api expandable should open 1`] = `
                               data-key={0}
                               onMouseEnter={[Function]}
                             >
-                              <Component
+                              <CollapseColumn
                                 aria-labelledby="simple-node7 expandable-toggle7"
                                 id="expandable-toggle7"
                                 onToggle={[Function]}
                               />
                             </td>
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             className=""
                             colSpan={2}
                             data-key={1}
@@ -5162,12 +5160,11 @@ exports[`InfoTable api expandable should open 1`] = `
                               className=""
                               colSpan={2}
                               data-key={1}
-                              data-label="One cell"
                               id="expanded-content7"
                               onMouseEnter={[Function]}
                             />
-                          </Component>
-                          <Component
+                          </BodyCell>
+                          <BodyCell
                             data-key={2}
                             data-label="Second one"
                             key="col-2-row-7"
@@ -5177,7 +5174,7 @@ exports[`InfoTable api expandable should open 1`] = `
                       </RowWrapper>
                     </BodyRow>
                   </tbody>
-                </Component>
+                </BodyWrapper>
               </BaseBody>
             </Component>
           </ContextBody>
@@ -5217,7 +5214,7 @@ exports[`InfoTable api expandable should open 1`] = `
             onPerPageSelect={[Function]}
             onPreviousClick={[Function]}
             onSetPage={[Function]}
-            ouiaId={null}
+            ouiaSafe={true}
             page={1}
             perPage={10}
             perPageOptions={
@@ -5261,7 +5258,7 @@ exports[`InfoTable api expandable should open 1`] = `
           >
             <div
               className="pf-c-pagination pf-m-bottom"
-              data-ouia-component-id={null}
+              data-ouia-component-id={40}
               data-ouia-component-type="PF4/Pagination"
               data-ouia-safe={true}
               id="pagination-options-menu-3"
@@ -5311,7 +5308,7 @@ exports[`InfoTable api expandable should open 1`] = `
                   direction="up"
                   dropdownItems={
                     Array [
-                      <Unknown
+                      <DropdownItem
                         className="pf-m-selected"
                         component="button"
                         data-action="per-page-10"
@@ -5328,8 +5325,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             size="sm"
                           />
                         </div>
-                      </Unknown>,
-                      <Unknown
+                      </DropdownItem>,
+                      <DropdownItem
                         className=""
                         component="button"
                         data-action="per-page-20"
@@ -5337,8 +5334,8 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         20
                          per page
-                      </Unknown>,
-                      <Unknown
+                      </DropdownItem>,
+                      <DropdownItem
                         className=""
                         component="button"
                         data-action="per-page-50"
@@ -5346,8 +5343,8 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         50
                          per page
-                      </Unknown>,
-                      <Unknown
+                      </DropdownItem>,
+                      <DropdownItem
                         className=""
                         component="button"
                         data-action="per-page-100"
@@ -5355,17 +5352,17 @@ exports[`InfoTable api expandable should open 1`] = `
                       >
                         100
                          per page
-                      </Unknown>,
+                      </DropdownItem>,
                     ]
                   }
                   isGrouped={false}
                   isOpen={false}
                   isPlain={true}
+                  menuAppendTo="inline"
                   onSelect={[Function]}
-                  ouiaComponentType="Dropdown"
                   position="left"
                   toggle={
-                    <Unknown
+                    <OptionsToggle
                       firstIndex={1}
                       isDisabled={false}
                       isOpen={false}
@@ -5384,14 +5381,15 @@ exports[`InfoTable api expandable should open 1`] = `
                 >
                   <div
                     className="pf-c-options-menu pf-m-top"
-                    data-ouia-component-id={21}
-                    data-ouia-component-type="PF4/Dropdown"
+                    data-ouia-component-id={41}
+                    data-ouia-component-type="PF4/PaginationOptionsMenu"
                     data-ouia-safe={true}
                   >
-                    <Component
+                    <OptionsToggle
                       aria-haspopup={true}
                       firstIndex={1}
-                      id="pf-toggle-id-3"
+                      getMenuRef={[Function]}
+                      id="pf-dropdown-toggle-id-3"
                       isDisabled={false}
                       isOpen={false}
                       isPlain={true}
@@ -5407,8 +5405,8 @@ exports[`InfoTable api expandable should open 1`] = `
                         Object {
                           "current": <div
                             class="pf-c-options-menu pf-m-top"
-                            data-ouia-component-id="21"
-                            data-ouia-component-type="PF4/Dropdown"
+                            data-ouia-component-id="41"
+                            data-ouia-component-type="PF4/PaginationOptionsMenu"
                             data-ouia-safe="true"
                           >
                             <div
@@ -5470,7 +5468,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         <span
                           className="pf-c-options-menu__toggle-text"
                         >
-                          <Component
+                          <ToggleTemplate
                             firstIndex={1}
                             itemCount={4}
                             itemsTitle=""
@@ -5487,9 +5485,9 @@ exports[`InfoTable api expandable should open 1`] = `
                               4
                             </b>
                              
-                          </Component>
+                          </ToggleTemplate>
                         </span>
-                        <Component
+                        <DropdownToggle
                           aria-label="Items per page"
                           className="pf-c-options-menu__toggle-button"
                           id="pagination-options-menu-toggle-3"
@@ -5501,8 +5499,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             Object {
                               "current": <div
                                 class="pf-c-options-menu pf-m-top"
-                                data-ouia-component-id="21"
-                                data-ouia-component-type="PF4/Dropdown"
+                                data-ouia-component-id="41"
+                                data-ouia-component-type="PF4/PaginationOptionsMenu"
                                 data-ouia-safe="true"
                               >
                                 <div
@@ -5559,6 +5557,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             aria-label="Items per page"
                             bubbleEvent={false}
                             className="pf-c-options-menu__toggle-button"
+                            getMenuRef={null}
                             id="pagination-options-menu-toggle-3"
                             isActive={false}
                             isDisabled={false}
@@ -5572,8 +5571,8 @@ exports[`InfoTable api expandable should open 1`] = `
                               Object {
                                 "current": <div
                                   class="pf-c-options-menu pf-m-top"
-                                  data-ouia-component-id="21"
-                                  data-ouia-component-type="PF4/Dropdown"
+                                  data-ouia-component-id="41"
+                                  data-ouia-component-type="PF4/PaginationOptionsMenu"
                                   data-ouia-safe="true"
                                 >
                                   <div
@@ -5667,9 +5666,9 @@ exports[`InfoTable api expandable should open 1`] = `
                               </span>
                             </button>
                           </Toggle>
-                        </Component>
+                        </DropdownToggle>
                       </div>
-                    </Component>
+                    </OptionsToggle>
                   </div>
                 </DropdownWithContext>
               </PaginationOptionsMenu>
@@ -5702,7 +5701,7 @@ exports[`InfoTable api expandable should open 1`] = `
                   <div
                     className="pf-c-pagination__nav-control pf-m-first"
                   >
-                    <Component
+                    <Button
                       aria-label="Go to first page"
                       data-action="first"
                       isDisabled={true}
@@ -5710,11 +5709,11 @@ exports[`InfoTable api expandable should open 1`] = `
                       variant="plain"
                     >
                       <button
-                        aria-disabled={null}
+                        aria-disabled={true}
                         aria-label="Go to first page"
-                        className="pf-c-button pf-m-plain"
+                        className="pf-c-button pf-m-plain pf-m-disabled"
                         data-action="first"
-                        data-ouia-component-id={null}
+                        data-ouia-component-id={42}
                         data-ouia-component-type="PF4/Button"
                         data-ouia-safe={true}
                         disabled={true}
@@ -5748,12 +5747,12 @@ exports[`InfoTable api expandable should open 1`] = `
                           </svg>
                         </AngleDoubleLeftIcon>
                       </button>
-                    </Component>
+                    </Button>
                   </div>
                   <div
                     className="pf-c-pagination__nav-control"
                   >
-                    <Component
+                    <Button
                       aria-label="Go to previous page"
                       data-action="previous"
                       isDisabled={true}
@@ -5761,11 +5760,11 @@ exports[`InfoTable api expandable should open 1`] = `
                       variant="plain"
                     >
                       <button
-                        aria-disabled={null}
+                        aria-disabled={true}
                         aria-label="Go to previous page"
-                        className="pf-c-button pf-m-plain"
+                        className="pf-c-button pf-m-plain pf-m-disabled"
                         data-action="previous"
-                        data-ouia-component-id={null}
+                        data-ouia-component-id={43}
                         data-ouia-component-type="PF4/Button"
                         data-ouia-safe={true}
                         disabled={true}
@@ -5799,7 +5798,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           </svg>
                         </AngleLeftIcon>
                       </button>
-                    </Component>
+                    </Button>
                   </div>
                   <div
                     className="pf-c-pagination__nav-page-select"
@@ -5825,7 +5824,7 @@ exports[`InfoTable api expandable should open 1`] = `
                   <div
                     className="pf-c-pagination__nav-control"
                   >
-                    <Component
+                    <Button
                       aria-label="Go to next page"
                       data-action="next"
                       isDisabled={true}
@@ -5833,11 +5832,11 @@ exports[`InfoTable api expandable should open 1`] = `
                       variant="plain"
                     >
                       <button
-                        aria-disabled={null}
+                        aria-disabled={true}
                         aria-label="Go to next page"
-                        className="pf-c-button pf-m-plain"
+                        className="pf-c-button pf-m-plain pf-m-disabled"
                         data-action="next"
-                        data-ouia-component-id={null}
+                        data-ouia-component-id={44}
                         data-ouia-component-type="PF4/Button"
                         data-ouia-safe={true}
                         disabled={true}
@@ -5871,12 +5870,12 @@ exports[`InfoTable api expandable should open 1`] = `
                           </svg>
                         </AngleRightIcon>
                       </button>
-                    </Component>
+                    </Button>
                   </div>
                   <div
                     className="pf-c-pagination__nav-control pf-m-last"
                   >
-                    <Component
+                    <Button
                       aria-label="Go to last page"
                       data-action="last"
                       isDisabled={true}
@@ -5884,11 +5883,11 @@ exports[`InfoTable api expandable should open 1`] = `
                       variant="plain"
                     >
                       <button
-                        aria-disabled={null}
+                        aria-disabled={true}
                         aria-label="Go to last page"
-                        className="pf-c-button pf-m-plain"
+                        className="pf-c-button pf-m-plain pf-m-disabled"
                         data-action="last"
-                        data-ouia-component-id={null}
+                        data-ouia-component-id={45}
                         data-ouia-component-type="PF4/Button"
                         data-ouia-safe={true}
                         disabled={true}
@@ -5922,7 +5921,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           </svg>
                         </AngleDoubleRightIcon>
                       </button>
-                    </Component>
+                    </Button>
                   </div>
                 </nav>
               </Navigation>
@@ -5975,13 +5974,13 @@ exports[`InfoTable api expandable should open 1`] = `
 exports[`InfoTable api should paginate to last page 1`] = `
 <tr
   className=""
-  data-ouia-component-id={137}
+  data-ouia-component-id={264}
   data-ouia-component-type="PF4/TableRow"
   data-ouia-safe={true}
   hidden={false}
   onMouseDown={[Function]}
 >
-  <Component
+  <BodyCell
     data-key={0}
     data-label="One cell"
     isVisible={true}
@@ -5995,8 +5994,8 @@ exports[`InfoTable api should paginate to last page 1`] = `
     >
       0-0
     </td>
-  </Component>
-  <Component
+  </BodyCell>
+  <BodyCell
     data-key={1}
     data-label="Second one"
     isVisible={true}
@@ -6010,20 +6009,20 @@ exports[`InfoTable api should paginate to last page 1`] = `
     >
       0-1
     </td>
-  </Component>
+  </BodyCell>
 </tr>
 `;
 
 exports[`InfoTable api should paginate to last page 2`] = `
 <tr
   className=""
-  data-ouia-component-id={150}
+  data-ouia-component-id={285}
   data-ouia-component-type="PF4/TableRow"
   data-ouia-safe={true}
   hidden={false}
   onMouseDown={[Function]}
 >
-  <Component
+  <BodyCell
     data-key={0}
     data-label="One cell"
     isVisible={true}
@@ -6037,8 +6036,8 @@ exports[`InfoTable api should paginate to last page 2`] = `
     >
       40-0
     </td>
-  </Component>
-  <Component
+  </BodyCell>
+  <BodyCell
     data-key={1}
     data-label="Second one"
     isVisible={true}
@@ -6052,20 +6051,20 @@ exports[`InfoTable api should paginate to last page 2`] = `
     >
       40-1
     </td>
-  </Component>
+  </BodyCell>
 </tr>
 `;
 
 exports[`InfoTable api should paginate to next page 1`] = `
 <tr
   className=""
-  data-ouia-component-id={83}
+  data-ouia-component-id={174}
   data-ouia-component-type="PF4/TableRow"
   data-ouia-safe={true}
   hidden={false}
   onMouseDown={[Function]}
 >
-  <Component
+  <BodyCell
     data-key={0}
     data-label="One cell"
     isVisible={true}
@@ -6079,8 +6078,8 @@ exports[`InfoTable api should paginate to next page 1`] = `
     >
       0-0
     </td>
-  </Component>
-  <Component
+  </BodyCell>
+  <BodyCell
     data-key={1}
     data-label="Second one"
     isVisible={true}
@@ -6094,20 +6093,20 @@ exports[`InfoTable api should paginate to next page 1`] = `
     >
       0-1
     </td>
-  </Component>
+  </BodyCell>
 </tr>
 `;
 
 exports[`InfoTable api should paginate to next page 2`] = `
 <tr
   className=""
-  data-ouia-component-id={96}
+  data-ouia-component-id={195}
   data-ouia-component-type="PF4/TableRow"
   data-ouia-safe={true}
   hidden={false}
   onMouseDown={[Function]}
 >
-  <Component
+  <BodyCell
     data-key={0}
     data-label="One cell"
     isVisible={true}
@@ -6121,8 +6120,8 @@ exports[`InfoTable api should paginate to next page 2`] = `
     >
       10-0
     </td>
-  </Component>
-  <Component
+  </BodyCell>
+  <BodyCell
     data-key={1}
     data-label="Second one"
     isVisible={true}
@@ -6136,7 +6135,7 @@ exports[`InfoTable api should paginate to next page 2`] = `
     >
       10-1
     </td>
-  </Component>
+  </BodyCell>
 </tr>
 `;
 
@@ -6176,8 +6175,10 @@ exports[`InfoTable should render expandable set to true 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onCollapse={[Function]}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -6233,7 +6234,7 @@ exports[`InfoTable should render expandable set to true 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -6257,7 +6258,7 @@ exports[`InfoTable should render expandable set to true 1`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -6339,7 +6340,9 @@ exports[`InfoTable should render multiple cells 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -6368,7 +6371,7 @@ exports[`InfoTable should render multiple cells 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -6392,7 +6395,7 @@ exports[`InfoTable should render multiple cells 1`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -6469,7 +6472,9 @@ exports[`InfoTable should render no data 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={Array []}
@@ -6481,7 +6486,7 @@ exports[`InfoTable should render no data 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -6505,7 +6510,7 @@ exports[`InfoTable should render no data 1`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -6592,7 +6597,9 @@ exports[`InfoTable should render onSort set 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
     onSort={[Function]}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -6621,7 +6628,7 @@ exports[`InfoTable should render onSort set 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -6645,7 +6652,7 @@ exports[`InfoTable should render onSort set 1`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={
@@ -6711,27 +6718,27 @@ exports[`InfoTable should render one cell 1`] = `
     }
     toggleIsExpanded={[Function]}
   />
-  <Component>
-    <Component
+  <TextContent>
+    <Text
       component="small"
       key="0"
     >
       first
-    </Component>
-    <Component
+    </Text>
+    <Text
       component="small"
       key="1"
     >
       second from title
-    </Component>
-    <Component
+    </Text>
+    <Text
       component="small"
       key="2"
     >
       multiple
       cells
-    </Component>
-  </Component>
+    </Text>
+  </TextContent>
   <TableToolbar
     className="ins-c-inventory__table--toolbar"
     isFooter={true}
@@ -6753,7 +6760,7 @@ exports[`InfoTable should render one cell 1`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={1}
       perPage={10}
       perPageOptions={

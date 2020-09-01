@@ -10,13 +10,13 @@ exports[`SimpleTableFilter component should render correctly with custom filter 
     placeholder="Search items"
     widget-id="filter"
   />
-  <Component
+  <Button
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Custom title
-  </Component>
+  </Button>
 </div>
 `;
 
@@ -30,13 +30,13 @@ exports[`SimpleTableFilter component should render correctly with custom placeho
     placeholder="Custom placeholder"
     widget-id="filter"
   />
-  <Component
+  <Button
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Filter
-  </Component>
+  </Button>
 </div>
 `;
 
@@ -50,13 +50,13 @@ exports[`SimpleTableFilter component should render correctly with filter button 
     placeholder="Search items"
     widget-id="filter"
   />
-  <Component
+  <Button
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Filter
-  </Component>
+  </Button>
 </div>
 `;
 
@@ -64,26 +64,26 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
 <div
   className="pf-c-input-group ins-c-filter  "
 >
-  <Component
+  <Dropdown
     dropdownItems={
       Array [
-        <Unknown
+        <DropdownItem
           component="button"
           data-key="one"
           onClick={[Function]}
         >
           one
-        </Unknown>,
+        </DropdownItem>,
       ]
     }
     isOpen={false}
     onSelect={[Function]}
     toggle={
-      <Unknown
+      <DropdownToggle
         onToggle={[Function]}
       >
         Dropdown
-      </Unknown>
+      </DropdownToggle>
     }
   />
   <Input
@@ -92,13 +92,13 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
     placeholder="Search items"
     widget-id="filter"
   />
-  <Component
+  <Button
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Filter
-  </Component>
+  </Button>
 </div>
 `;
 
@@ -106,26 +106,26 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
 <div
   className="pf-c-input-group ins-c-filter  "
 >
-  <Component
+  <Dropdown
     dropdownItems={
       Array [
-        <Unknown
+        <DropdownItem
           component="button"
           data-key="one"
           onClick={[Function]}
         >
           one
-        </Unknown>,
+        </DropdownItem>,
       ]
     }
     isOpen={false}
     onSelect={[Function]}
     toggle={
-      <Unknown
+      <DropdownToggle
         onToggle={[Function]}
       >
         Filter by
-      </Unknown>
+      </DropdownToggle>
     }
   />
   <Input
@@ -134,13 +134,13 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
     placeholder="Search items"
     widget-id="filter"
   />
-  <Component
+  <Button
     action="filter"
     onClick={[Function]}
     variant="secondary"
   >
     Filter
-  </Component>
+  </Button>
 </div>
 `;
 
