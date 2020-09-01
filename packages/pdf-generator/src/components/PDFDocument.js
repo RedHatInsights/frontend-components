@@ -20,6 +20,7 @@ const PDFDocument = ({
     size,
     orientation,
     allPagesHaveTitle,
+    footer,
     ...props
 }) => {
     const appliedStyles = styles(style);
@@ -52,19 +53,22 @@ const PDFDocument = ({
                 <View style={appliedStyles.smallSpacing}>
                     {page}
                 </View>
-                <View style={[ appliedStyles.flexRow, {
+                <View style={[{
                     marginTop: 'auto'
                 }]}>
-                    <Text style={[{
-                        marginLeft: 'auto'
-                    }]}>
-                        { key + 1 } of {pages.length}
-                    </Text>
-                    <Text style={[{
-                        marginLeft: 'auto'
-                    }, appliedStyles.thirdTitle ]}>
-                        redhat.com
-                    </Text>
+                    {footer}
+                    <View style={[ appliedStyles.flexRow ]}>
+                        <Text style={[{
+                            marginLeft: 'auto'
+                        }]}>
+                            { key + 1 } of {pages.length}
+                        </Text>
+                        <Text style={[{
+                            marginLeft: 'auto'
+                        }, appliedStyles.thirdTitle ]}>
+                            redhat.com
+                        </Text>
+                    </View>
                 </View>
             </Page>
         ))}
@@ -100,7 +104,8 @@ PDFDocument.propTypes = {
     style: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
     }),
-    allPagesHaveTitle: PropTypes.bool
+    allPagesHaveTitle: PropTypes.bool,
+    footer: PropTypes.node
 };
 PDFDocument.defaultProps = {
     size: 'A4',
