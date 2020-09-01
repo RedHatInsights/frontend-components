@@ -1,5 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import ReactDom from 'react-dom';
+
 import {
     EmptyState, EmptyStateBody,
     Title,
@@ -9,7 +11,13 @@ import { HourglassHalfIcon } from '@patternfly/react-icons';
 
 import './maintenance.scss';
 
-const Maintenance = ({ startTime, endTime, timeZone, description }) => {
+const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, description, redirectLink}) => {
+
+
+    const handleClick = () => {
+
+    }
+
     return (
         <EmptyState className='ins-c-empty-state__maintenance'>
             <EmptyStateIcon icon={HourglassHalfIcon}/>
@@ -18,8 +26,17 @@ const Maintenance = ({ startTime, endTime, timeZone, description }) => {
                 { description
                     ? description
                     : <Stack>
-                        <StackItem>We are currently undergoing scheduled maintenance from {startTime}-{endTime} {timeZone}.</StackItem>
-                        <StackItem>We will be back shortly, thank you for your patience.</StackItem>
+                        <StackItem>We are currently undergoing scheduled maintenance and will be</StackItem>
+                        <StackItem>unavailable from from {utcStartTime}-{utcEndTime} UTC ({startTime}-{endTime} {timeZone}.)</StackItem>
+                        <StackItem>For more information please visit <a href="https://status.redhat.com/incidents/qw4mmmyzwzdg">status.redhat.com</a></StackItem>
+                        {/* <StackItem>
+                            <Button onClick={() => handleClick()}>
+                                <Link to="">
+                                    <Button>Return to Homepage</Button>                             
+                                </Link>
+                                Return to Homepage
+                            </Button>
+                        </StackItem> */}
                     </Stack>
                 }
             </EmptyStateBody>
@@ -28,16 +45,22 @@ const Maintenance = ({ startTime, endTime, timeZone, description }) => {
 };
 
 Maintenance.propTypes = {
+    utcStartTime: propTypes.string,
+    utcEndTime: propTypes.string, 
     startTime: propTypes.string,
     endTime: propTypes.string,
     timeZone: propTypes.string,
-    description: propTypes.node
+    description: propTypes.node,
+    redirectLink: propTypes.string
 };
 
 Maintenance.defaultProps = {
+    utcStartTime: '10am',
+    utcEndTime: '12am',
     startTime: '6am',
     endTime: '8am',
-    timeZone: 'EST'
+    timeZone: 'EST', 
+    redirectLink: ''
 };
 
 export default Maintenance;
