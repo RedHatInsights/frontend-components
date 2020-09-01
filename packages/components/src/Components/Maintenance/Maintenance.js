@@ -29,14 +29,6 @@ const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, d
                         <StackItem>We are currently undergoing scheduled maintenance and will be</StackItem>
                         <StackItem>unavailable from from {utcStartTime}-{utcEndTime} UTC ({startTime}-{endTime} {timeZone}.)</StackItem>
                         <StackItem>For more information please visit <a href="https://status.redhat.com/incidents/qw4mmmyzwzdg">status.redhat.com</a></StackItem>
-                        {/* <StackItem>
-                            <Button onClick={() => handleClick()}>
-                                <Link to="">
-                                    <Button>Return to Homepage</Button>                             
-                                </Link>
-                                Return to Homepage
-                            </Button>
-                        </StackItem> */}
                     </Stack>
                 }
             </EmptyStateBody>
