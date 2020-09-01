@@ -36,7 +36,10 @@ const frontendComponentsMappe = {
     TableVariant: 'Table',
     TableHeader: 'Table',
     TableBody: 'Table',
-    TableFooter: 'Table'
+    TableFooter: 'Table',
+    useTagsFilter: 'FilterHooks',
+    tagsFilterState: 'FilterHooks',
+    tagsFilterReducer: 'FilterHooks'
 };
 
 const createPfReactTransform = (env) => [
@@ -53,7 +56,7 @@ const createPfReactTransform = (env) => [
                     throw new Error(`File with importName ${importName} does not exist. Glob path: ${pathname}`);
                 }
 
-                res = res.replace(path.resolve(__dirname, '../../node_modules/'), '');
+                res = res.split('/node_modules/').pop();
                 res = res.replace(/^\//, '');
                 return res;
             },
@@ -78,7 +81,7 @@ const createPfReactTransform = (env) => [
                     throw new Error(`File with importName ${importName} does not exist`);
                 }
 
-                res = res.replace(path.resolve(__dirname, '../../node_modules/'), '');
+                res = res.split('/node_modules/').pop();
                 res = res.replace(/^\//, '');
                 return res;
             },

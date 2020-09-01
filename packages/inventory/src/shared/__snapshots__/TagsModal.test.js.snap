@@ -22,7 +22,9 @@ exports[`TagsModal DOM should render activeSystemTag 1`] = `
     }
     fetchAllTags={[Function]}
     fetchTagsForSystem={[Function]}
+    filterTagsBy=""
     loaded={true}
+    onToggleModal={[Function]}
     onToggleTagModal={[Function]}
     pagination={
       Object {
@@ -62,7 +64,9 @@ exports[`TagsModal DOM should render alltags 1`] = `
   <TagsModal
     fetchAllTags={[Function]}
     fetchTagsForSystem={[Function]}
+    filterTagsBy=""
     loaded={true}
+    onToggleModal={[Function]}
     onToggleTagModal={[Function]}
     pagination={
       Object {
@@ -102,7 +106,9 @@ exports[`TagsModal DOM should render loading state correctly 1`] = `
   <TagsModal
     fetchAllTags={[Function]}
     fetchTagsForSystem={[Function]}
+    filterTagsBy=""
     loaded={false}
+    onToggleModal={[Function]}
     onToggleTagModal={[Function]}
     pagination={
       Object {
