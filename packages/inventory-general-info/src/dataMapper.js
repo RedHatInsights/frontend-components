@@ -12,28 +12,20 @@ import { sortable } from '@patternfly/react-table';
 import { Tooltip } from '@patternfly/react-core';
 
 export const statusHelper = {
-    UP: <Tooltip content={<div>
-        Service is running
-    </div>}>
-        <span><OutlinedArrowAltCircleUpIcon className="ins-c-inventory__detail--up" /></span>
+    UP: <Tooltip content="Service is running">
+        <OutlinedArrowAltCircleUpIcon className="ins-c-inventory__detail--up" />
     </Tooltip>,
-    DOWN: <Tooltip content={<div>
-        Service is stopped
-    </div>}>
-        <span><OutlinedArrowAltCircleDownIcon className="ins-c-inventory__detail--down" /></span>
+    DOWN: <Tooltip content="Service has stopped">
+        <OutlinedArrowAltCircleDownIcon className="ins-c-inventory__detail--down" />
     </Tooltip>
 };
 
 export const enabledHelper = {
-    true: <Tooltip content={<div>
-        Source enabled
-    </div>}>
-        <span><CheckCircleIcon className="ins-c-inventory__detail--enabled" /></span>
+    true: <Tooltip content="Source enabled">
+        <CheckCircleIcon className="ins-c-inventory__detail--enabled" />
     </Tooltip>,
-    false: <Tooltip content={<div>
-        Source disabled
-    </div>}>
-        <span><TimesIcon className="ins-c-inventory__detail--disabled" /></span>
+    false: <Tooltip content="Source disabled">
+        <TimesIcon className="ins-c-inventory__detail--disabled" />
     </Tooltip>
 };
 
@@ -96,7 +88,9 @@ export const productsMapper = (products = []) => ({
         product.name,
         {
             title: statusHelper[product.status] ||
+            <Tooltip content="Unknown service status">
                 <OutlinedQuestionCircleIcon className="ins-c-inventory__detail--unknown" />
+            </Tooltip>
         }
     ]))
 });
@@ -127,10 +121,8 @@ export const interfaceMapper = (data = []) => ({
         item.name,
         {
             title: statusHelper[item.state] ||
-            <Tooltip content={<div>
-                Unknown service status
-            </div>}>
-                <span><OutlinedQuestionCircleIcon className="ins-c-inventory__detail--unknown" /></span>
+            <Tooltip content="Unknown service status">
+                <OutlinedQuestionCircleIcon className="ins-c-inventory__detail--unknown" />
             </Tooltip>
         },
         item.type

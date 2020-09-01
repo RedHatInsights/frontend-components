@@ -241,20 +241,14 @@ Object {
       "test-name",
       Object {
         "title": <Tooltip
-          content={
-            <div>
-              Service is running
-            </div>
-          }
+          content="Service is running"
         >
-          <span>
-            <OutlinedArrowAltCircleUpIcon
-              className="ins-c-inventory__detail--up"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <OutlinedArrowAltCircleUpIcon
+            className="ins-c-inventory__detail--up"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
       "test-type",
@@ -265,20 +259,14 @@ Object {
       "test-name2",
       Object {
         "title": <Tooltip
-          content={
-            <div>
-              Service is stopped
-            </div>
-          }
+          content="Service has stopped"
         >
-          <span>
-            <OutlinedArrowAltCircleDownIcon
-              className="ins-c-inventory__detail--down"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <OutlinedArrowAltCircleDownIcon
+            className="ins-c-inventory__detail--down"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
       "test-type2",
@@ -289,20 +277,14 @@ Object {
       "test-name2",
       Object {
         "title": <Tooltip
-          content={
-            <div>
-              Unknown service status
-            </div>
-          }
+          content="Unknown service status"
         >
-          <span>
-            <OutlinedQuestionCircleIcon
-              className="ins-c-inventory__detail--unknown"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <OutlinedQuestionCircleIcon
+            className="ins-c-inventory__detail--unknown"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
       "test-type2",
@@ -341,34 +323,46 @@ Object {
     Array [
       "test-name",
       Object {
-        "title": <OutlinedQuestionCircleIcon
-          className="ins-c-inventory__detail--unknown"
-          color="currentColor"
-          noVerticalAlign={false}
-          size="sm"
-        />,
+        "title": <Tooltip
+          content="Unknown service status"
+        >
+          <OutlinedQuestionCircleIcon
+            className="ins-c-inventory__detail--unknown"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
+        </Tooltip>,
       },
     ],
     Array [
       "test-name",
       Object {
-        "title": <OutlinedQuestionCircleIcon
-          className="ins-c-inventory__detail--unknown"
-          color="currentColor"
-          noVerticalAlign={false}
-          size="sm"
-        />,
+        "title": <Tooltip
+          content="Unknown service status"
+        >
+          <OutlinedQuestionCircleIcon
+            className="ins-c-inventory__detail--unknown"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
+        </Tooltip>,
       },
     ],
     Array [
       "test-name",
       Object {
-        "title": <OutlinedQuestionCircleIcon
-          className="ins-c-inventory__detail--unknown"
-          color="currentColor"
-          noVerticalAlign={false}
-          size="sm"
-        />,
+        "title": <Tooltip
+          content="Unknown service status"
+        >
+          <OutlinedQuestionCircleIcon
+            className="ins-c-inventory__detail--unknown"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
+        </Tooltip>,
       },
     ],
   ],
@@ -494,39 +488,27 @@ Object {
       Object {
         "sortValue": "true",
         "title": <Tooltip
-          content={
-            <div>
-              Source enabled
-            </div>
-          }
+          content="Source enabled"
         >
-          <span>
-            <CheckCircleIcon
-              className="ins-c-inventory__detail--enabled"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <CheckCircleIcon
+            className="ins-c-inventory__detail--enabled"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
       Object {
         "sortValue": "false",
         "title": <Tooltip
-          content={
-            <div>
-              Source disabled
-            </div>
-          }
+          content="Source disabled"
         >
-          <span>
-            <TimesIcon
-              className="ins-c-inventory__detail--disabled"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <TimesIcon
+            className="ins-c-inventory__detail--disabled"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
     ],
@@ -538,39 +520,27 @@ Object {
       Object {
         "sortValue": "true",
         "title": <Tooltip
-          content={
-            <div>
-              Source enabled
-            </div>
-          }
+          content="Source enabled"
         >
-          <span>
-            <CheckCircleIcon
-              className="ins-c-inventory__detail--enabled"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <CheckCircleIcon
+            className="ins-c-inventory__detail--enabled"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
       Object {
         "sortValue": "true",
         "title": <Tooltip
-          content={
-            <div>
-              Source enabled
-            </div>
-          }
+          content="Source enabled"
         >
-          <span>
-            <CheckCircleIcon
-              className="ins-c-inventory__detail--enabled"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <CheckCircleIcon
+            className="ins-c-inventory__detail--enabled"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
     ],
@@ -582,39 +552,27 @@ Object {
       Object {
         "sortValue": "false",
         "title": <Tooltip
-          content={
-            <div>
-              Source disabled
-            </div>
-          }
+          content="Source disabled"
         >
-          <span>
-            <TimesIcon
-              className="ins-c-inventory__detail--disabled"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <TimesIcon
+            className="ins-c-inventory__detail--disabled"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
       Object {
         "sortValue": "false",
         "title": <Tooltip
-          content={
-            <div>
-              Source disabled
-            </div>
-          }
+          content="Source disabled"
         >
-          <span>
-            <TimesIcon
-              className="ins-c-inventory__detail--disabled"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <TimesIcon
+            className="ins-c-inventory__detail--disabled"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
     ],
@@ -626,39 +584,27 @@ Object {
       Object {
         "sortValue": "undefined",
         "title": <Tooltip
-          content={
-            <div>
-              Source disabled
-            </div>
-          }
+          content="Source disabled"
         >
-          <span>
-            <TimesIcon
-              className="ins-c-inventory__detail--disabled"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <TimesIcon
+            className="ins-c-inventory__detail--disabled"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
       Object {
         "sortValue": "false",
         "title": <Tooltip
-          content={
-            <div>
-              Source disabled
-            </div>
-          }
+          content="Source disabled"
         >
-          <span>
-            <TimesIcon
-              className="ins-c-inventory__detail--disabled"
-              color="currentColor"
-              noVerticalAlign={false}
-              size="sm"
-            />
-          </span>
+          <TimesIcon
+            className="ins-c-inventory__detail--disabled"
+            color="currentColor"
+            noVerticalAlign={false}
+            size="sm"
+          />
         </Tooltip>,
       },
     ],
@@ -708,9 +654,7 @@ exports[`should return DOWN 1`] = `
       <TooltipContent
         isLeftAligned={false}
       >
-        <div>
-          Service is stopped
-        </div>
+        Service has stopped
       </TooltipContent>
     </div>
   }
@@ -724,16 +668,13 @@ exports[`should return DOWN 1`] = `
     }
   }
   trigger={
-    <span
+    <OutlinedArrowAltCircleDownIcon
       aria-describedby="pf-tooltip-2"
-    >
-      <OutlinedArrowAltCircleDownIcon
-        className="ins-c-inventory__detail--down"
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-    </span>
+      className="ins-c-inventory__detail--down"
+      color="currentColor"
+      noVerticalAlign={false}
+      size="sm"
+    />
   }
   zIndex={9999}
 />
@@ -781,9 +722,7 @@ exports[`should return UP 1`] = `
       <TooltipContent
         isLeftAligned={false}
       >
-        <div>
-          Service is running
-        </div>
+        Service is running
       </TooltipContent>
     </div>
   }
@@ -797,16 +736,13 @@ exports[`should return UP 1`] = `
     }
   }
   trigger={
-    <span
+    <OutlinedArrowAltCircleUpIcon
       aria-describedby="pf-tooltip-1"
-    >
-      <OutlinedArrowAltCircleUpIcon
-        className="ins-c-inventory__detail--up"
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-    </span>
+      className="ins-c-inventory__detail--up"
+      color="currentColor"
+      noVerticalAlign={false}
+      size="sm"
+    />
   }
   zIndex={9999}
 />
@@ -854,9 +790,7 @@ exports[`should return false 1`] = `
       <TooltipContent
         isLeftAligned={false}
       >
-        <div>
-          Source disabled
-        </div>
+        Source disabled
       </TooltipContent>
     </div>
   }
@@ -870,16 +804,13 @@ exports[`should return false 1`] = `
     }
   }
   trigger={
-    <span
+    <TimesIcon
       aria-describedby="pf-tooltip-4"
-    >
-      <TimesIcon
-        className="ins-c-inventory__detail--disabled"
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-    </span>
+      className="ins-c-inventory__detail--disabled"
+      color="currentColor"
+      noVerticalAlign={false}
+      size="sm"
+    />
   }
   zIndex={9999}
 />
@@ -927,9 +858,7 @@ exports[`should return true 1`] = `
       <TooltipContent
         isLeftAligned={false}
       >
-        <div>
-          Source enabled
-        </div>
+        Source enabled
       </TooltipContent>
     </div>
   }
@@ -943,16 +872,13 @@ exports[`should return true 1`] = `
     }
   }
   trigger={
-    <span
+    <CheckCircleIcon
       aria-describedby="pf-tooltip-3"
-    >
-      <CheckCircleIcon
-        className="ins-c-inventory__detail--enabled"
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-    </span>
+      className="ins-c-inventory__detail--enabled"
+      color="currentColor"
+      noVerticalAlign={false}
+      size="sm"
+    />
   }
   zIndex={9999}
 />
