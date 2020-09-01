@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Pagination, PaginationVariant } from '@patternfly/react-core';
+import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/esm/components/Pagination';
 import { entitiesLoading } from '../../redux/actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';

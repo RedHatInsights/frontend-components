@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridItem } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize, DateFormat, CullingInformation } from '@redhat-cloud-services/frontend-components';
+import { Grid, GridItem } from '@patternfly/react-core/dist/esm/layouts/Grid';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
+import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/esm/CullingInfo';
 import { getFact } from './helpers';
 
 /**

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toggleTagModal, fetchAllTags, loadTags } from '../redux/actions';
-import { TagModal } from '@redhat-cloud-services/frontend-components';
+import { TagModal } from '@redhat-cloud-services/frontend-components/components/esm/TagModal';
 import { cellWidth } from '@patternfly/react-table';
 import debounce from 'lodash/debounce';
 import flatten from 'lodash/flatten';
