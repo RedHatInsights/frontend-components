@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
-import { Badge, Tooltip } from '@patternfly/react-core';
+import { Badge } from '@patternfly/react-core/dist/js/components/Badge/Badge';
+import { Tooltip } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
 import { loadEntities } from '../redux/actions';
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';

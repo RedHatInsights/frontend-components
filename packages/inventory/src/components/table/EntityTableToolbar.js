@@ -3,7 +3,9 @@
 import React, { Fragment, useEffect, useCallback, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { PrimaryToolbar, Skeleton, SkeletonSize, tagsFilterState, tagsFilterReducer } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
+import { tagsFilterState, tagsFilterReducer } from '@redhat-cloud-services/frontend-components/components/cjs/FilterHooks';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/PrimaryToolbar';
 import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from '../../redux/actions';
 import debounce from 'lodash/debounce';
 import flatMap from 'lodash/flatMap';
@@ -84,6 +86,7 @@ const EntityTableToolbar = ({
         filterTagsBy,
         seFilterTagsBy
     } = useTagsFilter(allTags, allTagsLoaded, additionalTagsCount, () => dispatch(toggleTagModal(true)), reducer);
+
     /**
      * Debounced function for fetching all tags.
      */

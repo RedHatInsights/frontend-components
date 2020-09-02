@@ -1,4 +1,4 @@
-import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
+import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/ReducerRegistry';
 import entitiesReducer, { defaultState as entitiesDefault } from './entities';
 import entityDetailsReducer, { defaultState as entityDefault } from './entityDetails';
 
