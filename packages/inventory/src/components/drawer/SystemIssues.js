@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdvisorData, getComplianceData, getPatchData, getVulnData } from '../../redux/actions';
@@ -36,7 +36,7 @@ const SystemIssues = ({ isOpened }) => {
             <Level>
                 <LevelItem>
                     <Stack hasGutter>
-                        <StackItem>
+                        <StackItem className="ins-c-inventory__drawer--title">
                             Applicable CVEs
                         </StackItem>
                         <StackItem>
@@ -71,7 +71,7 @@ const SystemIssues = ({ isOpened }) => {
                 </LevelItem>
                 <LevelItem>
                     <Stack hasGutter>
-                        <StackItem>
+                        <StackItem className="ins-c-inventory__drawer--title">
                             Applicable advisories
                         </StackItem>
                         <StackItem>
@@ -106,7 +106,7 @@ const SystemIssues = ({ isOpened }) => {
                 advisor?.isLoaded ?
                     <span>
                         <span className="ins-m-critical">
-                            {advisor?.criticalCount?.length || 0} critial
+                            {advisor?.criticalCount?.length || 0} critical
                         </span> recommendations in <a href={`./insights/advisor/systems/${systemId}`}>Advisor</a>
                     </span> :
                     <Skeleton size={ SkeletonSize.md } />
@@ -114,12 +114,13 @@ const SystemIssues = ({ isOpened }) => {
         </StackItem>
         {
             compliance?.isLoaded ?
-                (compliance?.profiles ?
-                    compliance?.profiles?.map(({ id, name }, key) => (
-                        <a key={key} href={`./insights/compliance/reports/${id}`}>{name}</a>
-                    ))
-                    : <span>
-                        System fully compliant!
+                (compliance?.profiles &&
+                    <span>
+                        System above compliance threshold for <a
+                            href={'./insights/compliance/reports/'}
+                        >
+                            {compliance?.profiles?.length} {compliance?.profiles?.length > 1 ? 'policies' : 'policy'}
+                        </a>
                     </span>
                 ) :
                 <Skeleton size={ SkeletonSize.md } />
