@@ -8,12 +8,12 @@ import {
     DrawerActions,
     DrawerHead,
     DrawerCloseButton
-} from '@patternfly/react-core/dist/esm/components/Drawer';
+} from '@patternfly/react-core/dist/js/components/Drawer';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch, useStore } from 'react-redux';
 import { toggleDrawer } from '../../redux/actions';
 import { BasicInfo, SystemIssues } from '../drawer';
-import { Stack, StackItem } from '@patternfly/react-core/dist/esm/layouts/Stack';
+import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack';
 import FactsInfo from './FactsInfo';
 
 const DetailWrapper = ({ children, hideInvLink, showTags, Wrapper, className, appName, ...props }) => {
