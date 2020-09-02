@@ -6,14 +6,14 @@ import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
-import { dependencies, name } from './package.json';
+import { dependencies, name } from '../package.json';
 import {
     rollupConfig,
     externalDeps,
     external,
     globals,
     globMapper
-} from '../../config/rollup-contants';
+} from '../../../config/rollup-contants';
 
 const commonjsOptions = {
     ignoreGlobal: true,

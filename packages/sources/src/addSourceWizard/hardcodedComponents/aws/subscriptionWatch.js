@@ -59,7 +59,7 @@ export const IAMPolicyDescription = () =>  {
     const [ config, setConfig ] = useState();
 
     useEffect(() => {
-        getSubWatchConfig().then((conf) => setConfig(conf)).catch((e) => {
+        getSubWatchConfig().then((conf) => setConfig(conf?.aws_policies?.traditional_inspection)).catch((e) => {
             console.error(e);
             setConfig(intl.formatMessage({
                 id: 'subwatch.iampolicy.subWatchConfigError',

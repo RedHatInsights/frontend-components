@@ -48,29 +48,36 @@ export const globals = {
     'react-redux': 'reactRedux'
 };
 
-export const rollupConfig = (external, plugins, globals, name, entries = [ globMapper('src/**/index.js') ], outputDir = './') => ([
-    ...[ 'esm', 'cjs' ].map(env => ({
+export const rollupConfig = (external, plugins, globals, name, entries = [ globMapper('src/**/index.js') ], outputDir = './') => {
+    const outputBuilder = (format) => ({
         input: entries[0],
         output: {
-            dir: `${outputDir}${env}`,
-            format: env,
+            dir: `${outputDir}${format}`,
+            format,
             name,
             globals,
             exports: 'named'
         },
         external,
         plugins
-    })),
-    ...Object.entries(entries[1] || entries[0]).map(([ key, input ]) => ({
-        input,
-        output: {
-            file: `${outputDir}${key}.js`,
-            format: 'umd',
-            name: `${name}-${key}`,
-            globals,
-            exports: 'named'
-        },
-        external,
-        plugins
-    }))
-]);
+    });
+
+    return [
+        ...process.env.FORMAT === 'umd' || !process.env.FORMAT ? [
+            ...Object.entries(entries[1] || entries[0]).map(([ key, input ]) => ({
+                input,
+                output: {
+                    file: `${outputDir}${key}.js`,
+                    format: 'umd',
+                    name: `${name}-${key}`,
+                    globals,
+                    exports: 'named'
+                },
+                external,
+                plugins
+            }))
+        ] : [],
+        ...process.env.FORMAT === 'cjs' || !process.env.FORMAT ? [ outputBuilder('cjs') ] : [],
+        ...process.env.FORMAT === 'esm' || !process.env.FORMAT ? [ outputBuilder('esm') ] : []
+    ];
+};

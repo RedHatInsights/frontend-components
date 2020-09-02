@@ -1,5 +1,5 @@
 import React from 'react';
-import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
+import { Battery } from '@redhat-cloud-services/frontend-components';
 import { severity } from '../RuleTable/constants';
 
 export default ({ onChange, value, ...props } = { onChange: () => undefined }) => ({

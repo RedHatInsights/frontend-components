@@ -8,7 +8,9 @@ import createSchema from './SourceAddSchema';
 import { doLoadSourceTypes, doLoadApplicationTypes } from '../api/index';
 import LoadingStep from './steps/LoadingStep';
 import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
+
 import filterApps from '../utilities/filterApps';
+import filterTypes from '../utilities/filterTypes';
 
 const initialValues = {
     schema: {},
@@ -21,7 +23,7 @@ const reducer = (state, { type, sourceTypes, applicationTypes, container, disabl
         case 'loaded':
             return {
                 ...state,
-                schema: createSchema(sourceTypes.filter(type => type.schema), applicationTypes.filter(filterApps), disableAppSelection, container, intl),
+                schema: createSchema(sourceTypes.filter(filterTypes), applicationTypes.filter(filterApps), disableAppSelection, container, intl),
                 isLoading: false,
                 sourceTypes
             };

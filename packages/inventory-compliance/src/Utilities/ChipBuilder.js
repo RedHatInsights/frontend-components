@@ -1,4 +1,4 @@
-import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/components/ConditionalFilter';
+import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
 
 class ChipBuilder {
     constructor(filterConfig) {

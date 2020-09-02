@@ -1,17 +1,17 @@
 import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { DeleteModal, TagsModal, TagWithDialog } from '../../shared';
-import { Split, SplitItem } from '@patternfly/react-core/dist/esm/layouts/Split';
-import { Title } from '@patternfly/react-core/dist/esm/components/Title';
-import { Button } from '@patternfly/react-core/dist/esm/components/Button';
-import { Flex, FlexItem } from '@patternfly/react-core/dist/esm/layouts/Flex';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
+import { Split, SplitItem } from '@patternfly/react-core/dist/js/layouts/Split';
+import { Title } from '@patternfly/react-core/dist/js/components/Title';
+import { Button } from '@patternfly/react-core/dist/js/components/Button';
+import { Flex, FlexItem } from '@patternfly/react-core/dist/js/layouts/Flex';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
 import {
     Dropdown,
     DropdownItem,
     DropdownPosition,
     KebabToggle
-} from '@patternfly/react-core/dist/esm/components/Dropdown';
+} from '@patternfly/react-core/dist/js/components/Dropdown';
 import { redirectToInventoryList } from './helpers';
 import { useDispatch } from 'react-redux';
 import { toggleDrawer } from '../../redux/actions';

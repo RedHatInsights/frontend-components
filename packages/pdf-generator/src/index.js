@@ -9,4 +9,5 @@ export { default as Battery } from './components/Battery';
 export { default as Chart } from './components/Chart';
 export { default as Paragraph } from './components/Paragraph';
 export { default as InsightsLabel } from './components/InsightsLabel';
+export { default as CSAwIcon } from './components/CSAwIcon';
 export * from './utils/text';
