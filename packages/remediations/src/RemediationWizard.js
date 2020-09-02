@@ -3,7 +3,7 @@ import keyBy from 'lodash/keyBy';
 import transform from 'lodash/transform';
 
 import * as api from './api/';
-import { Wizard } from '@redhat-cloud-services/frontend-components';
+import { Wizard } from '@redhat-cloud-services/frontend-components/components/cjs/Wizard';
 import Deferred from '@redhat-cloud-services/frontend-components-utilities/files/Deffered';
 import { remediationUrl } from './utils';
 
