@@ -10,7 +10,7 @@ import {
     TableGridBreakpoint,
     TableVariant
 } from '@patternfly/react-table';
-import { SkeletonTable } from '@redhat-cloud-services/frontend-components';
+import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/cjs/SkeletonTable';
 import { createRows, createColumns } from './helpers';
 
 /**
