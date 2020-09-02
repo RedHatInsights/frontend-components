@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 
 import {
@@ -11,7 +11,7 @@ import {
     TextInput,
     Stack, StackItem
 } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
 
 import './ExistingOrNew.scss';
 
