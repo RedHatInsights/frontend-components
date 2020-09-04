@@ -221,8 +221,8 @@ describe('SourceWizardSummary component', () => {
                     [ 'Application', 'Not selected' ],
                     [ 'Source type', 'Ansible Tower' ],
                     [ 'Authentication type', 'Username and password' ],
-                    [ 'User name', 'user_name' ],
-                    [ 'Secret Key', '●●●●●●●●●●●●' ],
+                    [ 'Username', 'user_name' ],
+                    [ 'Password', '●●●●●●●●●●●●' ],
                     [ 'Hostname', 'neznam.cz' ],
                     [ 'Verify SSL', 'Yes' ],
                     [ 'Certificate authority', 'authority' ]

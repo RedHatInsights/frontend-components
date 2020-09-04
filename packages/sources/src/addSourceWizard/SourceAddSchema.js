@@ -117,7 +117,7 @@ export const nextStep = ({ values: { application, source_type } }) => {
 const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => ({
     title: intl.formatMessage({
         id: 'wizard.chooseAppAndType',
-        defaultMessage: 'Choose application and source type'
+        defaultMessage: 'Application and source type'
     }),
     name: 'types_step',
     nextStep,
@@ -127,14 +127,14 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => 
             name: 'application.application_type_id',
             label: intl.formatMessage({
                 id: 'wizard.selectYourApplication',
-                defaultMessage: 'A. Select your application'
+                defaultMessage: 'A. Select application'
             }),
             // eslint-disable-next-line react/display-name
             options: compileAllApplicationComboOptions(applicationTypes, intl),
             mutator: appMutator(applicationTypes),
             description: intl.formatMessage({
                 id: 'wizard.selectAppWarning',
-                defaultMessage: 'Selecting an application will limit the available source types. You can assign an application to your source now or after adding your source.'
+                defaultMessage: 'Selecting an application will limit the available source types. You can attach an application to this source using the dropdown below, or by clicking ‘Manage applications’ after source creation.'
             }),
             isDisabled: disableAppSelection,
             placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' })
@@ -145,7 +145,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => 
             isRequired: true,
             label: intl.formatMessage({
                 id: 'wizard.selectYourSourceType',
-                defaultMessage: 'B. Select your source type'
+                defaultMessage: 'B. Select source type'
             }),
             iconMapper: iconMapper(sourceTypes),
             validate: [{
@@ -180,8 +180,8 @@ export const NameDescription = () => {
 
 const nameStep = (intl) => ({
     title: intl.formatMessage({
-        id: 'wizard.enterSourceName',
-        defaultMessage: 'Enter source name'
+        id: 'wizard.name',
+        defaultMessage: 'Name'
     }),
     name: 'name_step',
     nextStep: 'types_step',
