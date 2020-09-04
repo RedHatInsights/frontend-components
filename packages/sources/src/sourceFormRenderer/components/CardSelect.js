@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardBody, FormGroup, Grid, GridItem, Bullseye, CardTitle } from '@patternfly/react-core';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
@@ -15,6 +15,13 @@ const handleKeyPress = (event, value, onClick) => {
 const CardSelect = (originalProps) => {
     const { isRequired, label, helperText, hideLabel, meta, input, options, mutator, DefaultIcon, iconMapper, ...props } = useFieldApi(originalProps);
     const formOptions = useFormApi();
+    const [ icons ] = useState(() => {
+        const components = {};
+
+        options.forEach(({ value }) => components[value] = iconMapper(value, DefaultIcon));
+
+        return components;
+    });
 
     const isMulti = props.isMulti || props.multi;
     const isDisabled = props.isDisabled || props.isReadOnly;
@@ -44,7 +51,7 @@ const CardSelect = (originalProps) => {
             return undefined;
         }
 
-        const Component = iconMapper(value, DefaultIcon);
+        const Component = icons[value];
 
         return (
             <GridItem sm={ 6 } md={ 4 } key={ value }>
