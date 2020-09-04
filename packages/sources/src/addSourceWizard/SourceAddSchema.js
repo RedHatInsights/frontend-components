@@ -134,6 +134,7 @@ const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => 
             mutator: appMutator(applicationTypes),
             description: intl.formatMessage({
                 id: 'wizard.selectAppWarning',
+                // eslint-disable-next-line max-len
                 defaultMessage: 'Selecting an application will limit the available source types. You can attach an application to this source using the dropdown below, or by clicking ‘Manage applications’ after source creation.'
             }),
             isDisabled: disableAppSelection,
