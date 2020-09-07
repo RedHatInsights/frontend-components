@@ -176,32 +176,34 @@ const EntityTableToolbar = ({
         refresh({ page: 1, perPage, filters: newFilters });
     };
 
+    const shouldReload = page && perPage && filters && (!hasItems || items) && loaded;
+
     useEffect(() => {
-        if (page && perPage && filters && showTags && !hasItems) {
+        if (shouldReload && showTags) {
             debounceGetAllTags(filterTagsBy, { filters });
         }
     }, [ filterTagsBy ]);
 
     useEffect(() => {
-        if (page && perPage && filters && (!hasItems || items)) {
+        if (shouldReload) {
             onSetTextFilter(textFilter, true);
         }
     }, [ textFilter ]);
 
     useEffect(() => {
-        if (page && perPage && filters && (!hasItems || items)) {
+        if (shouldReload) {
             onSetFilter(staleFilter, 'staleFilter', debouncedRefresh);
         }
     }, [ staleFilter ]);
 
     useEffect(() => {
-        if (page && perPage && filters && (!hasItems || items)) {
+        if (shouldReload) {
             onSetFilter(registeredWithFilter, 'registeredWithFilter', debouncedRefresh);
         }
     }, [ registeredWithFilter ]);
 
     useEffect(() => {
-        if (page && perPage && filters && showTags && !hasItems) {
+        if (shouldReload && showTags) {
             onSetFilter(mapGroups(selectedTags), 'tagFilters', debouncedRefresh);
         }
     }, [ selectedTags ]);
