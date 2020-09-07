@@ -262,7 +262,7 @@ exports[`DetailWrapper DOM should render with data 1`] = `
                       className="pf-l-stack pf-m-gutter"
                     >
                       <div
-                        className="pf-l-stack__item"
+                        className="pf-l-stack__item ins-c-inventory__drawer--title"
                       >
                         Applicable CVEs
                       </div>
@@ -282,7 +282,7 @@ exports[`DetailWrapper DOM should render with data 1`] = `
                       className="pf-l-stack pf-m-gutter"
                     >
                       <div
-                        className="pf-l-stack__item"
+                        className="pf-l-stack__item ins-c-inventory__drawer--title"
                       >
                         Applicable advisories
                       </div>

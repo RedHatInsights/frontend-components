@@ -24,7 +24,7 @@ exports[`SystemIssues DOM should render correctly with data - closed 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable CVEs
           </div>
@@ -83,7 +83,7 @@ exports[`SystemIssues DOM should render correctly with data - closed 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable advisories
           </div>
@@ -190,7 +190,7 @@ exports[`SystemIssues DOM should render correctly with data - closed 1`] = `
         className="ins-m-critical"
       >
         1
-         critial
+         critical
       </span>
        recommendations in 
       <a
@@ -200,12 +200,16 @@ exports[`SystemIssues DOM should render correctly with data - closed 1`] = `
       </a>
     </span>
   </div>
-  <a
-    href="./insights/compliance/reports/something"
-    key="0"
-  >
-    some name
-  </a>
+  <span>
+    System above compliance threshold for 
+    <a
+      href="./insights/compliance/reports/"
+    >
+      1
+       
+      policy
+    </a>
+  </span>
 </div>
 `;
 
@@ -233,7 +237,7 @@ exports[`SystemIssues DOM should render correctly with data - opened 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable CVEs
           </div>
@@ -292,7 +296,7 @@ exports[`SystemIssues DOM should render correctly with data - opened 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable advisories
           </div>
@@ -399,7 +403,7 @@ exports[`SystemIssues DOM should render correctly with data - opened 1`] = `
         className="ins-m-critical"
       >
         1
-         critial
+         critical
       </span>
        recommendations in 
       <a
@@ -409,12 +413,16 @@ exports[`SystemIssues DOM should render correctly with data - opened 1`] = `
       </a>
     </span>
   </div>
-  <a
-    href="./insights/compliance/reports/something"
-    key="0"
-  >
-    some name
-  </a>
+  <span>
+    System above compliance threshold for 
+    <a
+      href="./insights/compliance/reports/"
+    >
+      1
+       
+      policy
+    </a>
+  </span>
 </div>
 `;
 
@@ -442,7 +450,7 @@ exports[`SystemIssues DOM should render correctly with no advisor 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable CVEs
           </div>
@@ -501,7 +509,7 @@ exports[`SystemIssues DOM should render correctly with no advisor 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable advisories
           </div>
@@ -608,7 +616,7 @@ exports[`SystemIssues DOM should render correctly with no advisor 1`] = `
         className="ins-m-critical"
       >
         0
-         critial
+         critical
       </span>
        recommendations in 
       <a
@@ -618,12 +626,16 @@ exports[`SystemIssues DOM should render correctly with no advisor 1`] = `
       </a>
     </span>
   </div>
-  <a
-    href="./insights/compliance/reports/something"
-    key="0"
-  >
-    some name
-  </a>
+  <span>
+    System above compliance threshold for 
+    <a
+      href="./insights/compliance/reports/"
+    >
+      1
+       
+      policy
+    </a>
+  </span>
 </div>
 `;
 
@@ -651,7 +663,7 @@ exports[`SystemIssues DOM should render correctly with no compliance 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable CVEs
           </div>
@@ -710,7 +722,7 @@ exports[`SystemIssues DOM should render correctly with no compliance 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable advisories
           </div>
@@ -817,7 +829,7 @@ exports[`SystemIssues DOM should render correctly with no compliance 1`] = `
         className="ins-m-critical"
       >
         1
-         critial
+         critical
       </span>
        recommendations in 
       <a
@@ -827,9 +839,6 @@ exports[`SystemIssues DOM should render correctly with no compliance 1`] = `
       </a>
     </span>
   </div>
-  <span>
-    System fully compliant!
-  </span>
 </div>
 `;
 
@@ -857,7 +866,7 @@ exports[`SystemIssues DOM should render correctly with no cve 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable CVEs
           </div>
@@ -916,7 +925,7 @@ exports[`SystemIssues DOM should render correctly with no cve 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable advisories
           </div>
@@ -1023,7 +1032,7 @@ exports[`SystemIssues DOM should render correctly with no cve 1`] = `
         className="ins-m-critical"
       >
         1
-         critial
+         critical
       </span>
        recommendations in 
       <a
@@ -1033,12 +1042,16 @@ exports[`SystemIssues DOM should render correctly with no cve 1`] = `
       </a>
     </span>
   </div>
-  <a
-    href="./insights/compliance/reports/something"
-    key="0"
-  >
-    some name
-  </a>
+  <span>
+    System above compliance threshold for 
+    <a
+      href="./insights/compliance/reports/"
+    >
+      1
+       
+      policy
+    </a>
+  </span>
 </div>
 `;
 
@@ -1066,7 +1079,7 @@ exports[`SystemIssues DOM should render correctly with no patch 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable CVEs
           </div>
@@ -1125,7 +1138,7 @@ exports[`SystemIssues DOM should render correctly with no patch 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable advisories
           </div>
@@ -1229,7 +1242,7 @@ exports[`SystemIssues DOM should render correctly with no patch 1`] = `
         className="ins-m-critical"
       >
         1
-         critial
+         critical
       </span>
        recommendations in 
       <a
@@ -1239,12 +1252,16 @@ exports[`SystemIssues DOM should render correctly with no patch 1`] = `
       </a>
     </span>
   </div>
-  <a
-    href="./insights/compliance/reports/something"
-    key="0"
-  >
-    some name
-  </a>
+  <span>
+    System above compliance threshold for 
+    <a
+      href="./insights/compliance/reports/"
+    >
+      1
+       
+      policy
+    </a>
+  </span>
 </div>
 `;
 
@@ -1272,7 +1289,7 @@ exports[`SystemIssues DOM should render without any data 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable CVEs
           </div>
@@ -1292,7 +1309,7 @@ exports[`SystemIssues DOM should render without any data 1`] = `
           className="pf-l-stack pf-m-gutter"
         >
           <div
-            className="pf-l-stack__item"
+            className="pf-l-stack__item ins-c-inventory__drawer--title"
           >
             Applicable advisories
           </div>
