@@ -177,31 +177,31 @@ const EntityTableToolbar = ({
     };
 
     useEffect(() => {
-        if (page && perPage && filters && showTags && !hasItems) {
+        if (page && perPage && filters && showTags && !hasItems && loaded) {
             debounceGetAllTags(filterTagsBy, { filters });
         }
     }, [ filterTagsBy ]);
 
     useEffect(() => {
-        if (page && perPage && filters && (!hasItems || items)) {
+        if (page && perPage && filters && (!hasItems || items) && loaded) {
             onSetTextFilter(textFilter, true);
         }
     }, [ textFilter ]);
 
     useEffect(() => {
-        if (page && perPage && filters && (!hasItems || items)) {
+        if (page && perPage && filters && (!hasItems || items) && loaded) {
             onSetFilter(staleFilter, 'staleFilter', debouncedRefresh);
         }
     }, [ staleFilter ]);
 
     useEffect(() => {
-        if (page && perPage && filters && (!hasItems || items)) {
+        if (page && perPage && filters && (!hasItems || items) && loaded) {
             onSetFilter(registeredWithFilter, 'registeredWithFilter', debouncedRefresh);
         }
     }, [ registeredWithFilter ]);
 
     useEffect(() => {
-        if (page && perPage && filters && showTags && !hasItems) {
+        if (page && perPage && filters && showTags && !hasItems && loaded) {
             onSetFilter(mapGroups(selectedTags), 'tagFilters', debouncedRefresh);
         }
     }, [ selectedTags ]);
