@@ -142,7 +142,7 @@ export const IAMPolicyDescription = () => {
     const formOptions = useFormApi();
     const intl = useIntl();
 
-    const s3Bucket = formOptions.getState().values.billing_source ? formOptions.getState().values.billing_source.bucket : undefined;
+    const s3Bucket = formOptions.getState().values.billing_source?.data_source?.bucket;
 
     if (!s3Bucket) {
         return (<Text component={ TextVariants.p }>

@@ -319,7 +319,7 @@ export default {
                 [COST_MANAGEMENT_APP_NAME]: {
                     skipSelection: true,
                     'authentication.password': arnField,
-                    'billing_source.bucket': {
+                    'billing_source.data_source.bucket': {
                         placeholder: 'cost-usage-bucket',
                         validate: [{
                             type: validatorTypes.REQUIRED
@@ -341,7 +341,7 @@ export default {
                             component: 'description',
                             Content: AwsArn.UsageDescription
                         },  {
-                            name: 'billing_source.bucket',
+                            name: 'billing_source.data_source.bucket',
                             component: componentTypes.TEXT_FIELD,
                             label: <FormattedMessage id="cost.arn.s3Label" defaultMessage="S3 bucket name" />
                         }, {

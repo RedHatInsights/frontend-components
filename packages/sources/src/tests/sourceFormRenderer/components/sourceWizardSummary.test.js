@@ -142,7 +142,7 @@ describe('SourceWizardSummary component', () => {
                         application: { application_type_id: '2' },
                         source_type: 'amazon',
                         authentication: { password: 'arn:aws:132', authtype: 'arn' },
-                        billing_source: { bucket: 'gfghf' },
+                        billing_source: { data_source: { bucket: 'gfghf' } },
                         fixasyncvalidation: '',
                         endpoint: { role: 'aws' }
                     }

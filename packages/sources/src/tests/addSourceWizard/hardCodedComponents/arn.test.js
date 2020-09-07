@@ -28,7 +28,9 @@ describe('AWS-ARN hardcoded schemas', () => {
             getState: () => ({
                 values: {
                     billing_source: {
-                        bucket: S3_BUCKET_NAME
+                        data_source: {
+                            bucket: S3_BUCKET_NAME
+                        }
                     }
                 }
             })
@@ -52,7 +54,9 @@ describe('AWS-ARN hardcoded schemas', () => {
             getState: () => ({
                 values: {
                     billing_source: {
-                        bucket: S3_BUCKET_NAME
+                        data_source: {
+                            bucket: S3_BUCKET_NAME
+                        }
                     }
                 }
             })
