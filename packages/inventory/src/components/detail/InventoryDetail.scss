@@ -76,9 +76,10 @@
             }
             div span:first-child { padding-right: var(--pf-global--spacer--sm); }
         }
-        .pf-l-grid:not(.ins-entity-facts) .pf-l-grid__item:first-of-type {
-            dd { grid-column: 1; }
-          }
+        .pf-l-grid:not(.ins-entity-facts) {
+            a.ins-c-inventory__detail--action { display: none }
+            .pf-l-grid__item:first-of-type dd { grid-column: 1; }
+        }
       }
     > .pf-l-stack__item {
       &:not(:last-child):before {
