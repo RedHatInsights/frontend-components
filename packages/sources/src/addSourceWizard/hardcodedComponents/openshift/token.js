@@ -19,7 +19,7 @@ export const DescriptionSummary = () => {
             }) }
 
         </Text>
-        <TextList component='ul'>
+        <TextList component='ol'>
             <TextListItem component='li'>
                 { intl.formatMessage({
                     id: 'openshift.token.logIn',
@@ -41,7 +41,7 @@ export const DescriptionSummary = () => {
             <TextListItem component='li'>
                 { intl.formatMessage({
                     id: 'openshift.token.copyToken',
-                    defaultMessage: 'Copy the token and paste it in the Token field:'
+                    defaultMessage: 'Copy the token and paste it in the Token field'
                 }) }
             </TextListItem>
         </TextList>

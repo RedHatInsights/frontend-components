@@ -346,7 +346,9 @@ describe('doCreateSource', () => {
             const APP_ID = COST_MANAGEMENT_APP.id;
             const BILLING_SOURCE_DATA = {
                 billing_source: {
-                    bucket: 'bucket'
+                    data_source: {
+                        bucket: 'bucket'
+                    }
                 }
             };
 

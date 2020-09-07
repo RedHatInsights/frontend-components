@@ -106,7 +106,7 @@ export const IAMRoleDescription = () => {
                 defaultMessage: 'To delegate account access, create an IAM role to associate with your IAM policy.'
             }) }
         </Text>
-        <TextList>
+        <TextList component={TextListVariants.ol}>
             <TextListItem>
                 { intl.formatMessage({
                     id: 'cost.iamrole.createNewRole',
@@ -142,7 +142,7 @@ export const IAMPolicyDescription = () => {
     const formOptions = useFormApi();
     const intl = useIntl();
 
-    const s3Bucket = formOptions.getState().values.billing_source ? formOptions.getState().values.billing_source.bucket : undefined;
+    const s3Bucket = formOptions.getState().values.billing_source?.data_source?.bucket;
 
     if (!s3Bucket) {
         return (<Text component={ TextVariants.p }>
@@ -258,7 +258,7 @@ export const ArnDescription = () => {
                 defaultMessage: 'To enable account access, capture the ARN associated with the role you just created.'
             }) }
         </Text>
-        <TextList>
+        <TextList component={TextListVariants.ol}>
             <TextListItem>
                 { intl.formatMessage({
                     id: 'cost.arn.selectRole',

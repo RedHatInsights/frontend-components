@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
-import { Tabs, Tab } from '@patternfly/react-core';
+import { Tabs, Tab } from '@patternfly/react-core/dist/js/components/Tabs';
 import { detailSelect } from '../../redux/actions';
 
 /**

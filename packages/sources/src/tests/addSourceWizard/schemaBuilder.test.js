@@ -364,7 +364,7 @@ describe('schema builder', () => {
             const schema = schemaBuilder(sourceTypes.filter(({ schema }) => schema), applicationTypes);
 
             expect(schema).toEqual(expect.arrayContaining([ expect.any(Object) ]));
-            expect(schema).toHaveLength(27);
+            expect(schema).toHaveLength(29);
         });
     });
 });

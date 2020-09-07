@@ -42,6 +42,18 @@ const frontendComponentsMappe = {
     tagsFilterReducer: 'FilterHooks'
 };
 
+const iconMapper = {
+    AnsibeTowerIcon: 'ansibeTower-icon',
+    ChartSpikeIcon: 'chartSpike-icon'
+};
+
+const notificationsMapper = {
+    REMOVE_NOTIFICATION: 'actionTypes',
+    ADD_NOTIFICATION: 'actionTypes',
+    NotificationsPortal: 'NotificationPortal',
+    addNotification: 'actions'
+};
+
 const createPfReactTransform = (env) => [
     'transform-imports',
     {
@@ -65,7 +77,7 @@ const createPfReactTransform = (env) => [
         },
         '@patternfly/react-icons': {
             transform: (importName) =>
-                `@patternfly/react-icons/dist/${env}/icons/${importName
+                `@patternfly/react-icons/dist/${env}/icons/${iconMapper[importName] || importName
                 .split(/(?=[A-Z])/)
                 .join('-')
                 .toLowerCase()}`,
@@ -131,7 +143,7 @@ const createFrontendComponentsTransform = env => [
             skipDefaultConversion: true
         },
         '@redhat-cloud-services/frontend-components-notifications': {
-            transform: (importName) => `@redhat-cloud-services/frontend-components-notifications/${env}/${importName}.js`,
+            transform: (importName) => `@redhat-cloud-services/frontend-components-notifications/${env}/${notificationsMapper[importName] || importName}.js`,
             preventFullImport: true,
             skipDefaultConversion: true
         },

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 
 import {
@@ -11,13 +11,16 @@ import {
     TextInput,
     Stack, StackItem
 } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
 
 import './ExistingOrNew.scss';
 
 function ExistingOrNewStep(props) {
 
     const { name, nameValid, isNewSwitch, existingRemediations, selectedRemediationId } = props.state;
+
+    existingRemediations &&
+        existingRemediations.sort((a, b) => (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : -1);
 
     return (
         <React.Fragment>

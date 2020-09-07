@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from '@patternfly/react-core/dist/js/components/Button';
 import {
-    Button,
     EmptyState,
     EmptyStateVariant,
     EmptyStateIcon,
-    EmptyStateBody,
-    Title
-} from '@patternfly/react-core';
-import { CubesIcon } from '@patternfly/react-icons';
+    EmptyStateBody
+} from '@patternfly/react-core/dist/js/components/EmptyState';
+import { Title } from '@patternfly/react-core/dist/js/components/Title';
+import CubesIcon from '@patternfly/react-icons/dist/js/icons/cubes-icon';
 import { redirectToInventoryList } from './helpers';
 
 /**

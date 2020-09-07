@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextListItem, TextContent } from '@patternfly/react-core';
+import { TextListItem, TextContent, Alert } from '@patternfly/react-core';
 
 import Summary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
 import applicationTypes, { COST_MANAGEMENT_APP } from '../../helpers/applicationTypes';
@@ -74,16 +74,20 @@ describe('SourceWizardSummary component', () => {
                     [ 'SSL Certificate', 'authority' ]
                 ]
             );
+
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('name is first', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
             expect(wrapper.find(TextListItem).at(1).children().first().text()).toEqual('openshift');
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('type is third', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
             expect(wrapper.find(TextListItem).at(5).children().first().text()).toEqual('OpenShift Container Platform');
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('amazon', () => {
@@ -107,6 +111,8 @@ describe('SourceWizardSummary component', () => {
             expect(wrapper.contains('Secret Key')).toEqual(false);
             expect(wrapper.contains('Access key ID')).toEqual(true);
             expect(wrapper.contains('Secret access key')).toEqual(true);
+
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('amazon - ARN', () => {
@@ -124,9 +130,11 @@ describe('SourceWizardSummary component', () => {
                     [ 'S3 bucket name', '-' ],
                     [ 'ARN', '123456' ] ]
             );
+
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
-        it('amazon - ARN cost management - include appended field from DB', () => {
+        it('amazon - ARN cost management - include appended field from DB and rbac alert message', () => {
             formOptions = {
                 getState: () => ({
                     values: {
@@ -134,7 +142,7 @@ describe('SourceWizardSummary component', () => {
                         application: { application_type_id: '2' },
                         source_type: 'amazon',
                         authentication: { password: 'arn:aws:132', authtype: 'arn' },
-                        billing_source: { bucket: 'gfghf' },
+                        billing_source: { data_source: { bucket: 'gfghf' } },
                         fixasyncvalidation: '',
                         endpoint: { role: 'aws' }
                     }
@@ -159,9 +167,14 @@ describe('SourceWizardSummary component', () => {
 
             expect(wrapper.find(TextContent).html().includes('ARN')).toEqual(true);
             expect(wrapper.find(TextContent).html().includes('arn:aws:132')).toEqual(true);
+
+            expect(wrapper.find(Alert).props().title).toEqual('Manage permissions in User Access');
+            expect(wrapper.find(Alert).props().children).toEqual(
+                'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
+            );
         });
 
-        it('openshift cost management - include appended field from DB', () => {
+        it('openshift cost management - include appended field from DB and rbac alert message', () => {
             formOptions = {
                 getState: () => ({
                     values: {
@@ -190,6 +203,11 @@ describe('SourceWizardSummary component', () => {
 
             expect(wrapper.find(TextContent).find({ defaultMessage: 'Cluster Identifier' })).toHaveLength(1);
             expect(wrapper.find(TextContent).html().includes('CLUSTER ID123')).toEqual(true);
+
+            expect(wrapper.find(Alert).props().title).toEqual('Manage permissions in User Access');
+            expect(wrapper.find(Alert).props().children).toEqual(
+                'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
+            );
         });
 
         it('ansible-tower', () => {
@@ -203,13 +221,15 @@ describe('SourceWizardSummary component', () => {
                     [ 'Application', 'Not selected' ],
                     [ 'Source type', 'Ansible Tower' ],
                     [ 'Authentication type', 'Username and password' ],
-                    [ 'User name', 'user_name' ],
-                    [ 'Secret Key', '●●●●●●●●●●●●' ],
+                    [ 'Username', 'user_name' ],
+                    [ 'Password', '●●●●●●●●●●●●' ],
                     [ 'Hostname', 'neznam.cz' ],
                     [ 'Verify SSL', 'Yes' ],
                     [ 'Certificate authority', 'authority' ]
                 ]
             );
+
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('selected Catalog application, is second', () => {
@@ -252,6 +272,7 @@ describe('SourceWizardSummary component', () => {
             );
             expect(wrapper.find(TextListItem).at(3).children().first().text()).not.toEqual('Catalog');
             expect(wrapper.contains('Catalog')).toEqual(false);
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('do not contain hidden field', () => {
