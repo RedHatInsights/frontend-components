@@ -54,8 +54,7 @@ class Group extends Component {
                 (groupValue && input.test(groupValue)) ||
                 (groupLabel && input.test(groupLabel)) ||
                 (item.value && input.test(item.value)) ||
-                (item.label && input.test(item.label)) ||
-                item.isPersistentAction
+                (item.label && input.test(item.label))
             )
         ).map(({ value, isChecked, onClick, label, props: itemProps, id, ...item }, key) => (
             <SelectOption
@@ -67,10 +66,6 @@ class Group extends Component {
                     if (e.target.tagName !== 'INPUT') {
                         e.preventDefault();
                         e.stopPropagation();
-                    }
-
-                    if (item.isPersistentAction) {
-                        return onClick();
                     }
 
                     const clickedGroup = {
@@ -134,7 +129,7 @@ class Group extends Component {
                                     {label}
                                 </Button>
                                 : [
-                                // we have to wrap it in array, otherwise PF will complain
+                                    // we have to wrap it in array, otherwise PF will complain
                                     (type !== groupType.checkbox && type !== groupType.radio) ? label : ''
                                 ]
                 }
@@ -239,8 +234,7 @@ class Group extends Component {
                 ...showMoreOptions,
                 label: showMoreTitle,
                 type: groupType.button,
-                onClick: (e) => onShowMore(e, () => this.setState({ isExpanded: false })),
-                isPersistentAction: true
+                onClick: (e) => onShowMore(e, () => this.setState({ isExpanded: false }))
             }]
         };
 
@@ -259,32 +253,43 @@ class Group extends Component {
                 { ...(isFilterable || onFilter) && { onFilter: this.customFilter } }
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
-                { groups && groups.length > 0 ? (
-                    [
-                        ...groups,
-                        ...onShowMore ? [ showMore ] : []
-                    ].map(({
-                        value: groupValue,
-                        onSelect,
-                        label: groupLabel,
-                        id: groupId,
-                        type,
-                        items,
-                        ...group
-                    }, groupKey) => {
-                        const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey)
-                        .filter(Boolean);
-                        return (<SelectGroup
-                            {...group}
-                            key={groupId || groupValue || groupKey}
-                            value={groupId || groupValue || groupKey}
-                            label={groupLabel || ''}
-                            id={groupId || `group-${groupValue || groupKey}`}
-                        >{filteredItems}</SelectGroup>);
-                    })
-                ) : (
-                    this.mapItems({ items })
-                ) }
+                <div className="ins-c-select__scrollable-section">
+                    { groups && groups.length > 0 ? (
+                        groups.map(({
+                            value: groupValue,
+                            onSelect,
+                            label: groupLabel,
+                            id: groupId,
+                            type,
+                            items,
+                            ...group
+                        }, groupKey) => {
+                            const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey)
+                            .filter(Boolean);
+                            return (<SelectGroup
+                                {...group}
+                                key={groupId || groupValue || groupKey}
+                                value={groupId || groupValue || groupKey}
+                                label={groupLabel || ''}
+                                id={groupId || `group-${groupValue || groupKey}`}
+                            >{filteredItems}</SelectGroup>);
+                        })
+                    ) : (
+                        this.mapItems({ items })
+                    ) }
+                </div>
+                { onShowMore ?
+                    <SelectGroup>
+                        <Button
+                            {...showMore.items[0]}
+                            className="pf-c-select__menu-item"
+                            variant={showMore.variant}
+                            onClick={showMore.items[0].onClick}
+                        >
+                            {showMore.items[0].label}
+                        </Button>
+                    </SelectGroup>
+                    : <Fragment />}
             </Select> }
         </Fragment>);
     }
