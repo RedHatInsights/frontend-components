@@ -1,9 +1,8 @@
 import React from 'react';
 import { Stack, StackItem } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons/';
+import DefaultErrorMessage from './DefaultErrorMessage';
 import propTypes from 'prop-types';
-import './ErrorState.styles.scss';
-
 import {
     Title,
     EmptyState,
@@ -13,35 +12,7 @@ import {
     Button
 } from '@patternfly/react-core';
 
-const ErrorState = ({ errorTitle, errorDescription }) => {
-
-    const renderDescription = () => {
-        console.log('This is our error description: ', errorDescription);
-
-        if (errorDescription.length > 0) {
-            console.log('Rendering a description: ');
-
-            return (
-                <Stack>
-                    <StackItem>
-                        {errorDescription}
-                    </StackItem>
-                </Stack>
-            );
-        }
-
-        return (
-            <Stack>
-                <StackItem>
-                    There was a problem accessing the request. Please try again.
-                </StackItem>
-                <StackItem>
-                    If the problem persists, contact <a href="https://access.redhat.com/support?extIdCarryOver=true&sc_cid=701f2000001Css0AAC">
-                    Red Hat Supprt</a> or check out our <a href="status.redhat.com"> status page</a> for known outages.
-                </StackItem>
-            </Stack>
-        );
-    };
+const ErrorState = ({ errorTitle, errorDescription, redirectLink }) => {
 
     return (
         <EmptyState variant={EmptyStateVariant.large}>
@@ -50,14 +21,21 @@ const ErrorState = ({ errorTitle, errorDescription }) => {
                 {errorTitle}
             </Title>
             <EmptyStateBody>
-                <>
-                    {renderDescription()}
-                </>
+                <Stack>
+                    { !errorDescription && (
+                            <StackItem>
+                                There was a problem accessing the request. Please try again.
+                            </StackItem>
+                    )}
+                    <StackItem>
+                        { errorDescription || <DefaultErrorMessage />}
+                    </StackItem>
+                </Stack>
             </EmptyStateBody>
             {               
                 document.referrer ? 
                     <Button variant="primary" onClick={ () => history.back() }>Return to Previous Page</Button> :
-                    <Button variant="primary" component="a" href=".">Go to Home Page</Button>
+                    <Button variant="primary" component="a" href="." target="_blank" rel='noopener noreferrer'>Go to Home Page</Button>
             }
         </EmptyState>
     );
@@ -65,12 +43,13 @@ const ErrorState = ({ errorTitle, errorDescription }) => {
 
 ErrorState.propTypes = {
     errorTitle: propTypes.string,
-    errorDescription: propTypes.string
+    errorDescription: propTypes.string, 
+    redirectLink: propTypes.string
 };
 
 ErrorState.defaultProps = {
     errorTitle: 'Something went wrong',
-    errorDescription: 'There was a problem accessing the request. Please try again.'
+    redirectLink: 'https://access.redhat.com/support?extIdCarryOver=true&sc_cid=701f2000001Css0AAC'
 };
 
 export default ErrorState;
