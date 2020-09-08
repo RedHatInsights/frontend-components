@@ -10,7 +10,7 @@ import { HourglassHalfIcon } from '@patternfly/react-icons';
 
 import './maintenance.scss';
 
-const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, description, redirectLink, ...props}) => {
+const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, description, redirectLink, className, ...props}) => {
 
     return (
         <EmptyState className='ins-c-empty-state__maintenance'>
