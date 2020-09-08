@@ -1,12 +1,6 @@
 import React from 'react';
-
-import { Title } from '@patternfly/react-core/dist/js/components/Title/Title';
-
-import { EmptyState, EmptyStateVariant } from '@patternfly/react-core/dist/js/components/EmptyState/EmptyState';
-import { EmptyStateBody } from '@patternfly/react-core/dist/js/components/EmptyState/EmptyStateBody';
-import { EmptyStateIcon } from '@patternfly/react-core/dist/js/components/EmptyState/EmptyStateIcon';
-
-import ExclamationCircleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-circle-icon';
+import { EmptyState, EmptyStateIcon,  EmptyStateVariant, EmptyStateBody, Title } from '@patternfly/react-core';
+import { ExclamationCircleIcon } from '@patternfly/react-icons';
 
 const Unavailable = () => {
     return (

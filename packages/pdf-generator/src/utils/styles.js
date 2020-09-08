@@ -19,7 +19,9 @@ import global_palette_gold_50 from '@patternfly/react-tokens/dist/js/global_pale
 import global_palette_gold_700 from '@patternfly/react-tokens/dist/js/global_palette_gold_700';
 import global_palette_orange_600 from '@patternfly/react-tokens/dist/js/global_palette_orange_600';
 import global_palette_red_50 from '@patternfly/react-tokens/dist/js/global_palette_red_50';
-import global_palette_red_200 from '@patternfly/react-tokens/dist/js/global_palette_red_200';
+import global_palette_black_900 from '@patternfly/react-tokens/dist/js/global_palette_black_900';
+import global_palette_black_100 from '@patternfly/react-tokens/dist/js/global_palette_black_100';
+
 import { fontTypes, generateFonts, redhatFont } from './fonts';
 
 Font.register({ family: 'Overpass', fonts: generateFonts(fontTypes) });
@@ -51,6 +53,9 @@ export default (style = {}) => StyleSheet.create({
         fontSize: 9,
         fontStyle: 'italic',
         color: '#6e6b6c'
+    },
+    reportNameWrapper: {
+        margin: '30, 0, 15'
     },
     reportName: {
         fontSize: 28,
@@ -128,5 +133,13 @@ export default (style = {}) => StyleSheet.create({
         paddingLeft: c_table_m_compact_cell_PaddingLeft.value,
         paddingBottom: c_table_m_compact_cell_PaddingBottom.value,
         paddingTop: c_table_m_compact_cell_PaddingTop.value
+    },
+    csawIconColors: {
+        shapeFill: global_palette_black_900.value,
+        eyeFill: global_palette_black_100.value
+    },
+    csawIconSizes: {
+        width: 16,
+        height: 16
     }
 });

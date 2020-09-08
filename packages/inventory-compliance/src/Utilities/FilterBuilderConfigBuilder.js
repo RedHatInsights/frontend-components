@@ -1,7 +1,7 @@
 import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY, UNKNOWN_SEVERITY } from '../Constants';
 import {
     conditionalFilterType
-} from '@redhat-cloud-services/frontend-components/components/ConditionalFilter';
+} from '@redhat-cloud-services/frontend-components';
 
 const filterRulesWithAllValues = (rules, values, valueCheck) => rules.filter((rule) => (
     values.map((value) => valueCheck(rule, value)).filter(v => !!v).length > 0

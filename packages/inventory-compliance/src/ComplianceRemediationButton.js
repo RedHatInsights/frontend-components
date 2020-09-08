@@ -4,8 +4,8 @@ import RemediationButton from '@redhat-cloud-services/frontend-components-remedi
 import flatten from 'lodash/flatten';
 import { connect } from 'react-redux';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
-import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
 import { global_BackgroundColor_100 as globalBackgroundColor100 } from '@patternfly/react-tokens';
+import { AnsibeTowerIcon } from '@patternfly/react-icons';
 
 class ComplianceRemediationButton extends React.Component {
     formatRule = ({ title, refId }, profile, system) => ({
