@@ -4,7 +4,7 @@ const WriteFileWebpackPlugin = new(require('write-file-webpack-plugin'))();
 const SourceMapsPlugin = new SourceMapDevToolPlugin({
     test: /src\/.*\.js$/i,
     exclude: /(node_modules|bower_components)/i,
-    filename: `sourcemaps/[name].js.map`
+    filename: `sourcemaps/[name][hash].js.map`
 });
 const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({
     currying: true,
@@ -14,8 +14,8 @@ const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({
     shorthands: true
 });
 const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
-    chunkFilename: 'css/[name].css',
-    filename: 'css/[name].css'
+    chunkFilename: 'css/[name].[hash].css',
+    filename: 'css/[name].[hash].css'
 });
 const CleanWebpackPlugin = new(require('clean-webpack-plugin'))();
 const WebpackHotModuleReplacement = new HotModuleReplacementPlugin();
