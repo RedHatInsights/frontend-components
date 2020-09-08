@@ -12,10 +12,10 @@ import {
     Button
 } from '@patternfly/react-core';
 
-const ErrorState = ({ errorTitle, errorDescription, redirectLink }) => {
+const ErrorState = ({ errorTitle, errorDescription, ...props}) => {
 
     return (
-        <EmptyState variant={EmptyStateVariant.large}>
+        <EmptyState variant={EmptyStateVariant.large} {...props}>
             <EmptyStateIcon icon={ExclamationCircleIcon} />
             <Title headingLevel='h4' size='lg'>
                 {errorTitle}
@@ -43,13 +43,11 @@ const ErrorState = ({ errorTitle, errorDescription, redirectLink }) => {
 
 ErrorState.propTypes = {
     errorTitle: propTypes.string,
-    errorDescription: propTypes.string, 
-    redirectLink: propTypes.string
+    errorDescription: propTypes.string
 };
 
 ErrorState.defaultProps = {
     errorTitle: 'Something went wrong',
-    redirectLink: 'https://access.redhat.com/support?extIdCarryOver=true&sc_cid=701f2000001Css0AAC'
 };
 
 export default ErrorState;

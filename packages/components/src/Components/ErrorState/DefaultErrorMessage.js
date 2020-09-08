@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
+import propTypes from 'prop-types';
 
-const DefaultErrorMessage = () => {
+const DefaultErrorMessage = ({redirectLink}) => {
+    const redirectLink = 'https://access.redhat.com/support';
+
     return (
         <>
-            If the problem persists, contact <a href="https://access.redhat.com/support?extIdCarryOver=true&sc_cid=701f2000001Css0AAC">
-            Red Hat Supprt</a> or check out our <a href="status.redhat.com"> status page</a> for known outages.
+                If the problem persists, contact <a href={redirectLink}>
+                Red Hat Supprt</a> or check out our <a href="status.redhat.com"> status page</a> for known outages.
         </>
     )
 }
