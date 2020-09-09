@@ -12,7 +12,7 @@ import {
     Button
 } from '@patternfly/react-core';
 
-const ErrorState = ({ errorTitle, errorDescription, ...props}) => {
+const ErrorState = ({ errorTitle, errorDescription, ...props }) => {
 
     return (
         <EmptyState variant={EmptyStateVariant.large} {...props}>
@@ -23,17 +23,17 @@ const ErrorState = ({ errorTitle, errorDescription, ...props}) => {
             <EmptyStateBody>
                 <Stack>
                     { !errorDescription && (
-                            <StackItem>
-                                There was a problem accessing the request. Please try again.
-                            </StackItem>
+                        <StackItem>
+                            There was a problem accessing the request. Please try again.
+                        </StackItem>
                     )}
                     <StackItem>
                         { errorDescription || <DefaultErrorMessage />}
                     </StackItem>
                 </Stack>
             </EmptyStateBody>
-            {               
-                document.referrer ? 
+            {
+                document.referrer ?
                     <Button variant="primary" onClick={ () => history.back() }>Return to Previous Page</Button> :
                     <Button variant="primary" component="a" href="." target="_blank" rel='noopener noreferrer'>Go to Home Page</Button>
             }
@@ -47,7 +47,7 @@ ErrorState.propTypes = {
 };
 
 ErrorState.defaultProps = {
-    errorTitle: 'Something went wrong',
+    errorTitle: 'Something went wrong'
 };
 
 export default ErrorState;
