@@ -6,8 +6,8 @@ const DefaultErrorMessage = () => {
 
     return (
         <>
-                If the problem persists, contact <a href={redirectLink}>
-                Red Hat Supprt</a> or check out our <a href={statusLink}> status page</a> for known outages.
+            If the problem persists, contact <a href={redirectLink}>
+            Red Hat Supprt</a> or check out our <a href={statusLink}> status page</a> for known outages.
         </>
     );
 };
