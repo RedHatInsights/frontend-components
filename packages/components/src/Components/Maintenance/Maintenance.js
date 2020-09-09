@@ -1,19 +1,23 @@
 import React from 'react';
 import propTypes from 'prop-types';
-
+import classNames from 'classnames';
 import {
     EmptyState, EmptyStateBody,
     Title,
     Stack, StackItem, EmptyStateIcon
 } from '@patternfly/react-core';
 import { HourglassHalfIcon } from '@patternfly/react-icons';
-
 import './maintenance.scss';
 
 const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, description, redirectLink, className, ...props}) => {
 
+    const emptyStateClassName = classNames(
+        className,
+        'ins-c-empty-state__maintenance'
+    );
+
     return (
-        <EmptyState className='ins-c-empty-state__maintenance'>
+        <EmptyState className={emptyStateClassName} {...props}>
             <EmptyStateIcon icon={HourglassHalfIcon}/>
             <Title headingLevel='h4' size='lg'>Maintenance in progress</Title>
             <EmptyStateBody>
@@ -21,7 +25,7 @@ const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, d
                     ? description
                     : <Stack>
                         <StackItem>We are currently undergoing scheduled maintenance and will be</StackItem>
-                        <StackItem>unavailable from from {utcStartTime}-{utcEndTime} UTC ({startTime}-{endTime} {timeZone}.)</StackItem>
+                        <StackItem>unavailable from from {utcStartTime}-{utcEndTime} UTC ({startTime}-{endTime} {timeZone}).</StackItem>
                         <StackItem>For more information please visit <a href={redirectLink}>status.redhat.com</a></StackItem>
                     </Stack>
                 }
@@ -46,7 +50,7 @@ Maintenance.defaultProps = {
     startTime: '6am',
     endTime: '8am',
     timeZone: 'EST', 
-    redirectLink: 'https://status.redhat.com/incidents/qw4mmmyzwzdg'
+    redirectLink: 'https://status.redhat.com/incidents'
 };
 
 export default Maintenance;
