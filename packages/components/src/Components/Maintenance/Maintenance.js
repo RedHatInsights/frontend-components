@@ -9,7 +9,7 @@ import {
 import { HourglassHalfIcon } from '@patternfly/react-icons';
 import './maintenance.scss';
 
-const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, description, redirectLink, className, ...props}) => {
+const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, description, redirectLink, className, ...props }) => {
 
     const emptyStateClassName = classNames(
         className,
@@ -36,7 +36,7 @@ const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, d
 
 Maintenance.propTypes = {
     utcStartTime: propTypes.string,
-    utcEndTime: propTypes.string, 
+    utcEndTime: propTypes.string,
     startTime: propTypes.string,
     endTime: propTypes.string,
     timeZone: propTypes.string,
@@ -49,7 +49,7 @@ Maintenance.defaultProps = {
     utcEndTime: '12am',
     startTime: '6am',
     endTime: '8am',
-    timeZone: 'EST', 
+    timeZone: 'EST',
     redirectLink: 'https://status.redhat.com/incidents'
 };
 
