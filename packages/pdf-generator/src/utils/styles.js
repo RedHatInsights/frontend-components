@@ -54,6 +54,9 @@ export default (style = {}) => StyleSheet.create({
         fontStyle: 'italic',
         color: '#6e6b6c'
     },
+    reportNameWrapper: {
+        margin: '30, 0, 15'
+    },
     reportName: {
         fontSize: 28,
         color: chart_color_red_100.value

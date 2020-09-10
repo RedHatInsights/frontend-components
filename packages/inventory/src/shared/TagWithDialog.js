@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TagCount } from '@redhat-cloud-services/frontend-components';
+import { TagCount } from '@redhat-cloud-services/frontend-components/components/cjs/TagCount';
 import { loadTags, toggleTagModal } from '../redux/actions';
 
 const TagWithDialog = ({ count, loadTags, systemId }) => (
