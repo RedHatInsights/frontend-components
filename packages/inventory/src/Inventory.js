@@ -30,7 +30,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
                 {...componentsMapper}
                 inventoryRef={ ref }
                 store={ store }
-                showInventoryDrawer={ showInventoryDrawer }
+                showInventoryDrawer={ showInventoryDrawer && !props.hideInvDrawer }
                 cmp={ InventoryDetail }
             />
         ),

@@ -44,10 +44,10 @@ module.exports = ({
             App: appEntry
         },
         output: {
-            filename: 'js/[name].js',
+            filename: 'js/[name].[hash].js',
             path: `${rootFolder || ''}/dist`,
             publicPath,
-            chunkFilename: 'js/[name].js'
+            chunkFilename: 'js/[name].[hash].js'
         },
         module: {
             rules: [{

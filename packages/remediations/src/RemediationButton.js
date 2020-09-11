@@ -52,7 +52,7 @@ class RemediationButton extends React.Component {
         if (this.state.remediations && !this.state.hasPermission) {
             return (
                 <reactCore.Tooltip
-                    content="You do not have correct permissions to execute remediations on this entity."
+                    content="You do not have correct permissions to remediate this entity."
                 >
                     <span>
                         <reactCore.Button isDisabled>

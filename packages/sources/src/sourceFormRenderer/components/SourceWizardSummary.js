@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { TextContent, TextListItem, TextListItemVariants, TextListVariants, TextList } from '@patternfly/react-core';
+import { TextContent, TextListItem, TextListItemVariants, TextListVariants, TextList, Alert } from '@patternfly/react-core';
 import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps, shouldSkipEndpoint } from '../../addSourceWizard/schemaBuilder';
 import ValuePopover from './ValuePopover';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
+import { COST_MANAGEMENT_APP_NAME } from '../../api/constants';
 
 export const createItem = (formField, values, stepKeys) => {
     let value = get(values, formField.name);
@@ -121,43 +122,57 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
     ));
 
     return (
-        <TextContent>
-            <TextList component={ TextListVariants.dl }>
-                <TextListItem component={ TextListItemVariants.dt }>
-                    { intl.formatMessage({
-                        id: 'wizard.name',
-                        defaultMessage: 'Name'
-                    }) }
-                </TextListItem>
-                <TextListItem component={ TextListItemVariants.dd }>{ values.source.name }</TextListItem>
-                { showApp && <React.Fragment>
+        <React.Fragment>
+            <TextContent>
+                <TextList component={ TextListVariants.dl }>
                     <TextListItem component={ TextListItemVariants.dt }>
                         { intl.formatMessage({
-                            id: 'wizard.application',
-                            defaultMessage: 'Application'
+                            id: 'wizard.name',
+                            defaultMessage: 'Name'
                         }) }
                     </TextListItem>
-                    <TextListItem component={ TextListItemVariants.dd }>{ display_name }</TextListItem>
-                </React.Fragment> }
-                <TextListItem component={ TextListItemVariants.dt }>
-                    { intl.formatMessage({
-                        id: 'wizard.sourceType',
-                        defaultMessage: 'Source type'
-                    }) }
-                </TextListItem>
-                <TextListItem component={ TextListItemVariants.dd }>{ type.product_name }</TextListItem>
-                { !skipEndpoint && authType && showAuthType && <React.Fragment>
+                    <TextListItem component={ TextListItemVariants.dd }>{ values.source.name }</TextListItem>
+                    { showApp && <React.Fragment>
+                        <TextListItem component={ TextListItemVariants.dt }>
+                            { intl.formatMessage({
+                                id: 'wizard.application',
+                                defaultMessage: 'Application'
+                            }) }
+                        </TextListItem>
+                        <TextListItem component={ TextListItemVariants.dd }>{ display_name }</TextListItem>
+                    </React.Fragment> }
                     <TextListItem component={ TextListItemVariants.dt }>
                         { intl.formatMessage({
-                            id: 'wizard.authenticationType',
-                            defaultMessage: 'Authentication type'
+                            id: 'wizard.sourceType',
+                            defaultMessage: 'Source type'
                         }) }
                     </TextListItem>
-                    <TextListItem component={ TextListItemVariants.dd }>{ authType.name }</TextListItem>
-                </React.Fragment> }
-                { valuesList }
-            </TextList>
-        </TextContent>
+                    <TextListItem component={ TextListItemVariants.dd }>{ type.product_name }</TextListItem>
+                    { !skipEndpoint && authType && showAuthType && <React.Fragment>
+                        <TextListItem component={ TextListItemVariants.dt }>
+                            { intl.formatMessage({
+                                id: 'wizard.authenticationType',
+                                defaultMessage: 'Authentication type'
+                            }) }
+                        </TextListItem>
+                        <TextListItem component={ TextListItemVariants.dd }>{ authType.name }</TextListItem>
+                    </React.Fragment> }
+                    { valuesList }
+                </TextList>
+            </TextContent>
+            {name === COST_MANAGEMENT_APP_NAME && (
+                <Alert
+                    variant="info"
+                    isInline
+                    title={intl.formatMessage({ id: 'cost.rbacWarningTitle', defaultMessage: 'Manage permissions in User Access' })}
+                >
+                    {intl.formatMessage({
+                        id: 'cost.rbacWarningDescription',
+                        defaultMessage: 'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
+                    })}
+                </Alert>
+            )}
+        </React.Fragment>
     );
 };
 
