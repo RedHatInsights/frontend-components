@@ -119,7 +119,7 @@ const sourceTypes = [
                         name: 'billing_source.data_source.bucket',
                         component: 'text-field',
                         label: 'S3 bucket name',
-                        stepKey: 'amazon-arn-additional-step',
+                        stepKey: 'cost-management',
                         isRequired: true,
                         validate: [
                             { type: 'required-validator' },
