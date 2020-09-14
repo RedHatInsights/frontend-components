@@ -127,7 +127,6 @@ describe('SourceWizardSummary component', () => {
                     [ 'Application', 'Not selected' ],
                     [ 'Source type', 'Amazon Web Services' ],
                     [ 'Authentication type', 'ARN' ],
-                    [ 'S3 bucket name', '-' ],
                     [ 'ARN', '123456' ] ]
             );
 
