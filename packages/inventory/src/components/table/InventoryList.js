@@ -50,7 +50,7 @@ class ContextInventoryList extends React.Component {
     }
 
     componentDidMount() {
-        this.onRefreshData({});
+        !this.onRefresh && this.onRefreshData({});
     }
 
     render() {
