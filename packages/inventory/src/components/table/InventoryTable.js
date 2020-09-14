@@ -23,6 +23,7 @@ const InventoryTable = forwardRef(({
     filters,
     showTags,
     sortBy: propsSortBy,
+    customFilters,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
@@ -54,6 +55,7 @@ const InventoryTable = forwardRef(({
         <Fragment>
             <EntityTableToolbar
                 { ...props }
+                customFilters={customFilters}
                 items={ items }
                 onRefresh={onRefresh}
                 filters={ filters }
@@ -67,6 +69,7 @@ const InventoryTable = forwardRef(({
             </EntityTableToolbar>
             <InventoryList
                 { ...props }
+                customFilters={customFilters}
                 ref={ref}
                 hasItems={ hasItems }
                 onRefresh={ onRefresh }
@@ -78,6 +81,7 @@ const InventoryTable = forwardRef(({
             />
             <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                 <Pagination
+                    customFilters={customFilters}
                     isFull
                     items={ items }
                     total={ pagination.total }
