@@ -81,10 +81,15 @@ class SystemPolicyCard extends React.Component {
                         </Tooltip> }
                     </TextContent>
                     <div className='margin-bottom-md' >
-                        { this.complianceIcon(compliant) }
-                        <Text component={ TextVariants.small }>
-                            { rulesPassed } of { rulesPassed + rulesFailed } rules passed ({ passedPercentage })
-                        </Text>
+                        <Tooltip content={
+                            'The system compliance score is calculated by OpenSCAP and ' +
+                            'is a normalized weighted sum of rules selected for this policy.'
+                        }>
+                            { this.complianceIcon(compliant) }
+                            <Text component={ TextVariants.small }>
+                                { rulesPassed } of { rulesPassed + rulesFailed } rules passed ({ passedPercentage })
+                            </Text>
+                        </Tooltip>
                     </div>
                     <div className='margin-bottom-md' >
                         <Text

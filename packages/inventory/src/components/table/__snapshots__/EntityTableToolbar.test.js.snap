@@ -312,11 +312,11 @@ exports[`EntityTableToolbar DOM should render correctly - with custom activeFilt
         },
         Object {
           "filterValues": Object {
-            "className": "ins-c-inventory__tags-filter",
+            "className": "ins-c-tagfilter",
             "filterBy": "",
             "items": Array [
               Object {
-                "className": "ins-c-inventory__tags-tail",
+                "className": "ins-c-tagfilter__tail",
                 "isDisabled": true,
                 "label": <span>
                    
@@ -783,11 +783,11 @@ exports[`EntityTableToolbar DOM should render correctly - with tags 1`] = `
         },
         Object {
           "filterValues": Object {
-            "className": "ins-c-inventory__tags-filter",
+            "className": "ins-c-tagfilter",
             "filterBy": "",
             "items": Array [
               Object {
-                "className": "ins-c-inventory__tags-tail",
+                "className": "ins-c-tagfilter__tail",
                 "isDisabled": true,
                 "label": <span>
                    
@@ -828,6 +828,7 @@ exports[`EntityTableToolbar DOM should render correctly - with tags 2`] = `
 <TagsModal
   fetchAllTags={[Function]}
   fetchTagsForSystem={[Function]}
+  filterTagsBy=""
   filters={
     Array [
       Object {},
@@ -835,6 +836,7 @@ exports[`EntityTableToolbar DOM should render correctly - with tags 2`] = `
   }
   loaded={false}
   onApply={[Function]}
+  onToggleModal={[Function]}
   onToggleTagModal={[Function]}
   pagination={
     Object {

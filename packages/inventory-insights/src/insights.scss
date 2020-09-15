@@ -78,6 +78,10 @@
     }
 }
 
+.ins-c-report-details-icon {
+    margin-right: var(--pf-global--spacer--sm);
+}
+
 .smallFontSizeOverride{
     font-size: $ins-fontSize--sm;
 }
@@ -108,4 +112,8 @@
 
 .ins-c-background__default {
     color: var(--pf-global--BackgroundColor--100);
+}
+
+.ins-c-center-text{
+    text-align: center;
 }

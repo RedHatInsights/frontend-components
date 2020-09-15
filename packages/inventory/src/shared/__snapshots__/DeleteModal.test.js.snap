@@ -3,7 +3,7 @@
 exports[`EntityTable DOM should render correctly 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -11,40 +11,41 @@ exports[`EntityTable DOM should render correctly 1`] = `
   hasNoBodyWrapper={false}
   isOpen={false}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"
 >
-  <Component
+  <Split
     hasGutter={true}
   >
-    <Component>
+    <SplitItem>
       <ExclamationTriangleIcon
         className="ins-m-alert"
         color="currentColor"
         noVerticalAlign={false}
         size="xl"
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
-      <Component
+      <Stack
         hasGutter={true}
       >
-        <Component>
+        <StackItem>
            will be removed from all 
           localhost:5000
            applications and services. You need to re-register the 
           system
            to add it back to your inventory.
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           To disable the daily upload for this 
           system
           , use the following command:
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           <ClipboardCopy
             clickTip="Successfully copied to clipboard!"
             entryDelay={100}
@@ -64,35 +65,35 @@ exports[`EntityTable DOM should render correctly 1`] = `
           >
             insights-client --unregister
           </ClipboardCopy>
-        </Component>
-      </Component>
-    </Component>
-  </Component>
-  <Component
+        </StackItem>
+      </Stack>
+    </SplitItem>
+  </Split>
+  <Level
     hasGutter={true}
   >
-    <Component>
-      <Component
+    <LevelItem>
+      <Button
         onClick={[Function]}
         variant="danger"
       >
         Remove
-      </Component>
-      <Component
+      </Button>
+      <Button
         onClick={[Function]}
         variant="link"
       >
         Cancel
-      </Component>
-    </Component>
-  </Component>
+      </Button>
+    </LevelItem>
+  </Level>
 </Modal>
 `;
 
 exports[`EntityTable DOM should render correctly with multiple systems - count 1 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -100,41 +101,42 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 1
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"
 >
-  <Component
+  <Split
     hasGutter={true}
   >
-    <Component>
+    <SplitItem>
       <ExclamationTriangleIcon
         className="ins-m-alert"
         color="currentColor"
         noVerticalAlign={false}
         size="xl"
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
-      <Component
+      <Stack
         hasGutter={true}
       >
-        <Component>
+        <StackItem>
           something
            will be removed from all 
           localhost:5000
            applications and services. You need to re-register the 
           system
            to add it back to your inventory.
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           To disable the daily upload for this 
           system
           , use the following command:
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           <ClipboardCopy
             clickTip="Successfully copied to clipboard!"
             entryDelay={100}
@@ -154,35 +156,35 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 1
           >
             insights-client --unregister
           </ClipboardCopy>
-        </Component>
-      </Component>
-    </Component>
-  </Component>
-  <Component
+        </StackItem>
+      </Stack>
+    </SplitItem>
+  </Split>
+  <Level
     hasGutter={true}
   >
-    <Component>
-      <Component
+    <LevelItem>
+      <Button
         onClick={[Function]}
         variant="danger"
       >
         Remove
-      </Component>
-      <Component
+      </Button>
+      <Button
         onClick={[Function]}
         variant="link"
       >
         Cancel
-      </Component>
-    </Component>
-  </Component>
+      </Button>
+    </LevelItem>
+  </Level>
 </Modal>
 `;
 
 exports[`EntityTable DOM should render correctly with multiple systems - count 2 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -190,41 +192,42 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 2
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"
 >
-  <Component
+  <Split
     hasGutter={true}
   >
-    <Component>
+    <SplitItem>
       <ExclamationTriangleIcon
         className="ins-m-alert"
         color="currentColor"
         noVerticalAlign={false}
         size="xl"
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
-      <Component
+      <Stack
         hasGutter={true}
       >
-        <Component>
+        <StackItem>
           2 systems
            will be removed from all 
           localhost:5000
            applications and services. You need to re-register the 
           systems
            to add it back to your inventory.
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           To disable the daily upload for this 
           systems
           , use the following command:
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           <ClipboardCopy
             clickTip="Successfully copied to clipboard!"
             entryDelay={100}
@@ -244,35 +247,35 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 2
           >
             insights-client --unregister
           </ClipboardCopy>
-        </Component>
-      </Component>
-    </Component>
-  </Component>
-  <Component
+        </StackItem>
+      </Stack>
+    </SplitItem>
+  </Split>
+  <Level
     hasGutter={true}
   >
-    <Component>
-      <Component
+    <LevelItem>
+      <Button
         onClick={[Function]}
         variant="danger"
       >
         Remove
-      </Component>
-      <Component
+      </Button>
+      <Button
         onClick={[Function]}
         variant="link"
       >
         Cancel
-      </Component>
-    </Component>
-  </Component>
+      </Button>
+    </LevelItem>
+  </Level>
 </Modal>
 `;
 
 exports[`EntityTable DOM should render correctly with one system 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -280,41 +283,42 @@ exports[`EntityTable DOM should render correctly with one system 1`] = `
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"
 >
-  <Component
+  <Split
     hasGutter={true}
   >
-    <Component>
+    <SplitItem>
       <ExclamationTriangleIcon
         className="ins-m-alert"
         color="currentColor"
         noVerticalAlign={false}
         size="xl"
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
-      <Component
+      <Stack
         hasGutter={true}
       >
-        <Component>
+        <StackItem>
           something
            will be removed from all 
           localhost:5000
            applications and services. You need to re-register the 
           system
            to add it back to your inventory.
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           To disable the daily upload for this 
           system
           , use the following command:
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           <ClipboardCopy
             clickTip="Successfully copied to clipboard!"
             entryDelay={100}
@@ -334,35 +338,35 @@ exports[`EntityTable DOM should render correctly with one system 1`] = `
           >
             insights-client --unregister
           </ClipboardCopy>
-        </Component>
-      </Component>
-    </Component>
-  </Component>
-  <Component
+        </StackItem>
+      </Stack>
+    </SplitItem>
+  </Split>
+  <Level
     hasGutter={true}
   >
-    <Component>
-      <Component
+    <LevelItem>
+      <Button
         onClick={[Function]}
         variant="danger"
       >
         Remove
-      </Component>
-      <Component
+      </Button>
+      <Button
         onClick={[Function]}
         variant="link"
       >
         Cancel
-      </Component>
-    </Component>
-  </Component>
+      </Button>
+    </LevelItem>
+  </Level>
 </Modal>
 `;
 
 exports[`EntityTable DOM should render correctly with one system 2`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -370,41 +374,42 @@ exports[`EntityTable DOM should render correctly with one system 2`] = `
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
   variant="small"
 >
-  <Component
+  <Split
     hasGutter={true}
   >
-    <Component>
+    <SplitItem>
       <ExclamationTriangleIcon
         className="ins-m-alert"
         color="currentColor"
         noVerticalAlign={false}
         size="xl"
       />
-    </Component>
-    <Component
+    </SplitItem>
+    <SplitItem
       isFilled={true}
     >
-      <Component
+      <Stack
         hasGutter={true}
       >
-        <Component>
+        <StackItem>
           something
            will be removed from all 
           localhost:5000
            applications and services. You need to re-register the 
           system
            to add it back to your inventory.
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           To disable the daily upload for this 
           system
           , use the following command:
-        </Component>
-        <Component>
+        </StackItem>
+        <StackItem>
           <ClipboardCopy
             clickTip="Successfully copied to clipboard!"
             entryDelay={100}
@@ -424,27 +429,27 @@ exports[`EntityTable DOM should render correctly with one system 2`] = `
           >
             insights-client --unregister
           </ClipboardCopy>
-        </Component>
-      </Component>
-    </Component>
-  </Component>
-  <Component
+        </StackItem>
+      </Stack>
+    </SplitItem>
+  </Split>
+  <Level
     hasGutter={true}
   >
-    <Component>
-      <Component
+    <LevelItem>
+      <Button
         onClick={[Function]}
         variant="danger"
       >
         Remove
-      </Component>
-      <Component
+      </Button>
+      <Button
         onClick={[Function]}
         variant="link"
       >
         Cancel
-      </Component>
-    </Component>
-  </Component>
+      </Button>
+    </LevelItem>
+  </Level>
 </Modal>
 `;

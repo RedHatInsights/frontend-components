@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table, TableBody, TableHeader, sortable } from '@patternfly/react-table';
 import { Bullseye, EmptyState, EmptyStateIcon, Title, EmptyStateBody, EmptyStateVariant } from '@patternfly/react-core';
-import SearchIcon from '@patternfly/react-icons/dist/js/icons/search-icon';
-import { Skeleton } from '@redhat-cloud-services/frontend-components/components/Skeleton';
-import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/TableToolbar';
-import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/js/components/Pagination';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
+import { SearchIcon } from '@patternfly/react-icons';
+import { Skeleton, TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
+import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import flatten from 'lodash/flatten';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
@@ -188,7 +186,7 @@ class RuleTable extends Component {
                                 heightAuto: true,
                                 cells: [
                                     {
-                                        props: { colSpan: columns.length },
+                                        props: { colSpan: columns.length + Boolean(actions) },
                                         title: (
                                             <Bullseye>
                                                 <EmptyState variant={EmptyStateVariant.small}>

@@ -44,10 +44,10 @@ module.exports = ({
             App: appEntry
         },
         output: {
-            filename: 'js/[name].js',
+            filename: 'js/[name].[hash].js',
             path: `${rootFolder || ''}/dist`,
             publicPath,
-            chunkFilename: 'js/[name].js'
+            chunkFilename: 'js/[name].[hash].js'
         },
         module: {
             rules: [{
@@ -86,7 +86,12 @@ module.exports = ({
             }]
         },
         resolve: {
-            extensions: [ '.ts', '.tsx', '.mjs', '.js', '.scss' ]
+            extensions: [ '.ts', '.tsx', '.mjs', '.js', '.scss' ],
+            alias: {
+                customReact: 'react',
+                PFReactCore: '@patternfly/react-core',
+                PFReactTable: '@patternfly/react-table'
+            }
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,

@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Maintenance component should render with default props 1`] = `
-<Component
+<EmptyState
   className="ins-c-empty-state__maintenance"
 >
-  <Component
+  <EmptyStateIcon
     icon={[Function]}
   />
-  <Component
+  <Title
     headingLevel="h4"
     size="lg"
   >
     Maintenance in progress
-  </Component>
-  <Component>
-    <Component>
-      <Component>
+  </Title>
+  <EmptyStateBody>
+    <Stack>
+      <StackItem>
         We are currently undergoing scheduled maintenance from 
         6am
         -
@@ -23,50 +23,52 @@ exports[`Maintenance component should render with default props 1`] = `
          
         EST
         .
-      </Component>
-      <Component>
+      </StackItem>
+      <StackItem>
         We will be back shortly, thank you for your patience.
-      </Component>
-    </Component>
-  </Component>
-</Component>
+      </StackItem>
+    </Stack>
+  </EmptyStateBody>
+</EmptyState>
 `;
 
 exports[`Maintenance component should render with new description 1`] = `
-<Component
+<EmptyState
   className="ins-c-empty-state__maintenance"
 >
-  <Component
+  <EmptyStateIcon
     icon={[Function]}
   />
-  <Component
+  <Title
     headingLevel="h4"
     size="lg"
   >
     Maintenance in progress
-  </Component>
-  <Component>
-    <Component />
-  </Component>
-</Component>
+  </Title>
+  <EmptyStateBody>
+    <span>
+       test 
+    </span>
+  </EmptyStateBody>
+</EmptyState>
 `;
 
 exports[`Maintenance component should render with times 1`] = `
-<Component
+<EmptyState
   className="ins-c-empty-state__maintenance"
 >
-  <Component
+  <EmptyStateIcon
     icon={[Function]}
   />
-  <Component
+  <Title
     headingLevel="h4"
     size="lg"
   >
     Maintenance in progress
-  </Component>
-  <Component>
-    <Component>
-      <Component>
+  </Title>
+  <EmptyStateBody>
+    <Stack>
+      <StackItem>
         We are currently undergoing scheduled maintenance from 
         12am
         -
@@ -74,11 +76,11 @@ exports[`Maintenance component should render with times 1`] = `
          
         EST
         .
-      </Component>
-      <Component>
+      </StackItem>
+      <StackItem>
         We will be back shortly, thank you for your patience.
-      </Component>
-    </Component>
-  </Component>
-</Component>
+      </StackItem>
+    </Stack>
+  </EmptyStateBody>
+</EmptyState>
 `;

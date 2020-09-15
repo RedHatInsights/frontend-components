@@ -5,7 +5,7 @@ exports[`InvalidObject component should render 1`] = `
   <section
     className="pf-l-page__main-section pf-c-page__main-section ins-c-component_invalid-componet"
   >
-    <Component
+    <Title
       headingLevel="h1"
       size="3xl"
     >
@@ -14,7 +14,7 @@ exports[`InvalidObject component should render 1`] = `
       >
         404: It's true. We've lost it.
       </h1>
-    </Component>
+    </Title>
     <Icon404>
       <svg
         className="Icon404"
@@ -255,7 +255,7 @@ exports[`InvalidObject component should render 1`] = `
         </g>
       </svg>
     </Icon404>
-    <Component
+    <Title
       className="ins-c-text__sorry"
       headingLevel="h1"
       size="xl"
@@ -265,8 +265,8 @@ exports[`InvalidObject component should render 1`] = `
       >
         Sorry, we couldn't find what you're looking for. The page you requested may have changed or moved.
       </h1>
-    </Component>
-    <Component
+    </Title>
+    <Button
       component="a"
       href="http://localhost:5000"
       variant="link"
@@ -275,17 +275,16 @@ exports[`InvalidObject component should render 1`] = `
         aria-disabled={false}
         aria-label={null}
         className="pf-c-button pf-m-link"
-        data-ouia-component-id={null}
+        data-ouia-component-id={0}
         data-ouia-component-type="PF4/Button"
         data-ouia-safe={true}
         disabled={null}
         href="http://localhost:5000"
-        tabIndex={null}
         type={null}
       >
         Return to homepage
       </a>
-    </Component>
+    </Button>
   </section>
 </InvalidObject>
 `;

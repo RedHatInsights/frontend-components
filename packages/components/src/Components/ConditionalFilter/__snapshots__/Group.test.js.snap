@@ -29,17 +29,20 @@ exports[`Group - component render should render correctly placeholder 1`] = `
     direction="down"
     hasInlineFilter={false}
     inlineFilterPlaceholderText={null}
+    inputIdPrefix=""
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
     isOpen={false}
     isPlain={false}
+    menuAppendTo="inline"
     noResultsFoundText="No results found"
     onClear={[Function]}
     onCreateOption={[Function]}
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    ouiaSafe={true}
     placeholderText="some placeholder"
     removeSelectionAriaLabel="Remove"
     selections={null}
@@ -50,173 +53,183 @@ exports[`Group - component render should render correctly placeholder 1`] = `
     variant="single"
     width=""
   >
-    <Component
-      id="group-0"
-      key="0"
-      label="First value"
-      value={0}
+    <div
+      className="ins-c-select__scrollable-section"
     >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
+      <SelectGroup
+        id="group-0"
         key="0"
-        keyHandler={[Function]}
         label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="first"
+        value={0}
       >
-        First value
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        Second value
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-second"
-      key="second"
-      label="Second value"
-      value="second"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="first"
+        >
+          First value
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          Second value
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-second"
+        key="second"
         label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="second"
       >
-        <Checkbox
+        <SelectOption
           className=""
-          id="1-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First checkbox"
-          name="1-0"
-          onChange={[Function]}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="some-value"
-      >
-        <Checkbox
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Checkbox
+            className=""
+            id="1-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First checkbox"
+            name="1-0"
+            onChange={[Function]}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="some-value"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second checkbox"
-          name="some-value"
-          onChange={[Function]}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-third"
-      key="third"
-      label="Third value"
-      value="third"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="some-value"
+        >
+          <Checkbox
+            className=""
+            id="some-value"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second checkbox"
+            name="some-value"
+            onChange={[Function]}
+          />
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-third"
+        key="third"
         label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="third"
       >
-        <Radio
+        <SelectOption
           className=""
-          id="2-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First radio"
-          name="2-0"
-          onChange={[Function]}
-          value={0}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        <Radio
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Radio
+            className=""
+            id="2-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First radio"
+            name="2-0"
+            onChange={[Function]}
+            value={0}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="2-1"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second radio"
-          name="2-1"
-          onChange={[Function]}
-          value={1}
-        />
-      </SelectOption>
-    </Component>
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          <Radio
+            className=""
+            id="2-1"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second radio"
+            name="2-1"
+            onChange={[Function]}
+            value={1}
+          />
+        </SelectOption>
+      </SelectGroup>
+    </div>
   </Select>
 </Fragment>
 `;
@@ -234,17 +247,20 @@ exports[`Group - component render should render correctly with items - isDisable
     direction="down"
     hasInlineFilter={false}
     inlineFilterPlaceholderText={null}
+    inputIdPrefix=""
     isCreatable={false}
     isDisabled={true}
     isGrouped={true}
     isOpen={false}
     isPlain={false}
+    menuAppendTo="inline"
     noResultsFoundText="No results found"
     onClear={[Function]}
     onCreateOption={[Function]}
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
     selections={null}
@@ -255,173 +271,183 @@ exports[`Group - component render should render correctly with items - isDisable
     variant="single"
     width=""
   >
-    <Component
-      id="group-0"
-      key="0"
-      label="First value"
-      value={0}
+    <div
+      className="ins-c-select__scrollable-section"
     >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
+      <SelectGroup
+        id="group-0"
         key="0"
-        keyHandler={[Function]}
         label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="first"
+        value={0}
       >
-        First value
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        Second value
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-second"
-      key="second"
-      label="Second value"
-      value="second"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="first"
+        >
+          First value
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          Second value
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-second"
+        key="second"
         label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="second"
       >
-        <Checkbox
+        <SelectOption
           className=""
-          id="1-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First checkbox"
-          name="1-0"
-          onChange={[Function]}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="some-value"
-      >
-        <Checkbox
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Checkbox
+            className=""
+            id="1-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First checkbox"
+            name="1-0"
+            onChange={[Function]}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="some-value"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second checkbox"
-          name="some-value"
-          onChange={[Function]}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-third"
-      key="third"
-      label="Third value"
-      value="third"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="some-value"
+        >
+          <Checkbox
+            className=""
+            id="some-value"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second checkbox"
+            name="some-value"
+            onChange={[Function]}
+          />
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-third"
+        key="third"
         label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="third"
       >
-        <Radio
+        <SelectOption
           className=""
-          id="2-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First radio"
-          name="2-0"
-          onChange={[Function]}
-          value={0}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        <Radio
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Radio
+            className=""
+            id="2-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First radio"
+            name="2-0"
+            onChange={[Function]}
+            value={0}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="2-1"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second radio"
-          name="2-1"
-          onChange={[Function]}
-          value={1}
-        />
-      </SelectOption>
-    </Component>
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          <Radio
+            className=""
+            id="2-1"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second radio"
+            name="2-1"
+            onChange={[Function]}
+            value={1}
+          />
+        </SelectOption>
+      </SelectGroup>
+    </div>
   </Select>
 </Fragment>
 `;
@@ -439,17 +465,20 @@ exports[`Group - component render should render correctly with items 1`] = `
     direction="down"
     hasInlineFilter={false}
     inlineFilterPlaceholderText={null}
+    inputIdPrefix=""
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
     isOpen={false}
     isPlain={false}
+    menuAppendTo="inline"
     noResultsFoundText="No results found"
     onClear={[Function]}
     onCreateOption={[Function]}
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
     selections={null}
@@ -460,173 +489,183 @@ exports[`Group - component render should render correctly with items 1`] = `
     variant="single"
     width=""
   >
-    <Component
-      id="group-0"
-      key="0"
-      label="First value"
-      value={0}
+    <div
+      className="ins-c-select__scrollable-section"
     >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
+      <SelectGroup
+        id="group-0"
         key="0"
-        keyHandler={[Function]}
         label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="first"
+        value={0}
       >
-        First value
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        Second value
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-second"
-      key="second"
-      label="Second value"
-      value="second"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="first"
+        >
+          First value
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          Second value
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-second"
+        key="second"
         label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="second"
       >
-        <Checkbox
+        <SelectOption
           className=""
-          id="1-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First checkbox"
-          name="1-0"
-          onChange={[Function]}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="some-value"
-      >
-        <Checkbox
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Checkbox
+            className=""
+            id="1-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First checkbox"
+            name="1-0"
+            onChange={[Function]}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="some-value"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second checkbox"
-          name="some-value"
-          onChange={[Function]}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-third"
-      key="third"
-      label="Third value"
-      value="third"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="some-value"
+        >
+          <Checkbox
+            className=""
+            id="some-value"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second checkbox"
+            name="some-value"
+            onChange={[Function]}
+          />
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-third"
+        key="third"
         label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="third"
       >
-        <Radio
+        <SelectOption
           className=""
-          id="2-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First radio"
-          name="2-0"
-          onChange={[Function]}
-          value={0}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        <Radio
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Radio
+            className=""
+            id="2-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First radio"
+            name="2-0"
+            onChange={[Function]}
+            value={0}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="2-1"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second radio"
-          name="2-1"
-          onChange={[Function]}
-          value={1}
-        />
-      </SelectOption>
-    </Component>
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          <Radio
+            className=""
+            id="2-1"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second radio"
+            name="2-1"
+            onChange={[Function]}
+            value={1}
+          />
+        </SelectOption>
+      </SelectGroup>
+    </div>
   </Select>
 </Fragment>
 `;
@@ -644,17 +683,20 @@ exports[`Group - component render should render correctly with items and default
     direction="down"
     hasInlineFilter={false}
     inlineFilterPlaceholderText={null}
+    inputIdPrefix=""
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
     isOpen={false}
     isPlain={false}
+    menuAppendTo="inline"
     noResultsFoundText="No results found"
     onClear={[Function]}
     onCreateOption={[Function]}
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
     selections={null}
@@ -665,173 +707,183 @@ exports[`Group - component render should render correctly with items and default
     variant="single"
     width=""
   >
-    <Component
-      id="group-0"
-      key="0"
-      label="First value"
-      value={0}
+    <div
+      className="ins-c-select__scrollable-section"
     >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
+      <SelectGroup
+        id="group-0"
         key="0"
-        keyHandler={[Function]}
         label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="first"
+        value={0}
       >
-        First value
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        Second value
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-second"
-      key="second"
-      label="Second value"
-      value="second"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="first"
+        >
+          First value
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          Second value
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-second"
+        key="second"
         label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="second"
       >
-        <Checkbox
+        <SelectOption
           className=""
-          id="1-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First checkbox"
-          name="1-0"
-          onChange={[Function]}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="some-value"
-      >
-        <Checkbox
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Checkbox
+            className=""
+            id="1-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First checkbox"
+            name="1-0"
+            onChange={[Function]}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="some-value"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second checkbox"
-          name="some-value"
-          onChange={[Function]}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-third"
-      key="third"
-      label="Third value"
-      value="third"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="some-value"
+        >
+          <Checkbox
+            className=""
+            id="some-value"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second checkbox"
+            name="some-value"
+            onChange={[Function]}
+          />
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-third"
+        key="third"
         label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="third"
       >
-        <Radio
+        <SelectOption
           className=""
-          id="2-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First radio"
-          name="2-0"
-          onChange={[Function]}
-          value={0}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        <Radio
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Radio
+            className=""
+            id="2-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First radio"
+            name="2-0"
+            onChange={[Function]}
+            value={0}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="2-1"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second radio"
-          name="2-1"
-          onChange={[Function]}
-          value={1}
-        />
-      </SelectOption>
-    </Component>
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          <Radio
+            className=""
+            id="2-1"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second radio"
+            name="2-1"
+            onChange={[Function]}
+            value={1}
+          />
+        </SelectOption>
+      </SelectGroup>
+    </div>
   </Select>
 </Fragment>
 `;
@@ -849,17 +901,20 @@ exports[`Group - component render should render correctly with items and selecte
     direction="down"
     hasInlineFilter={false}
     inlineFilterPlaceholderText={null}
+    inputIdPrefix=""
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
     isOpen={false}
     isPlain={false}
+    menuAppendTo="inline"
     noResultsFoundText="No results found"
     onClear={[Function]}
     onCreateOption={[Function]}
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
     selections={null}
@@ -870,173 +925,183 @@ exports[`Group - component render should render correctly with items and selecte
     variant="single"
     width=""
   >
-    <Component
-      id="group-0"
-      key="0"
-      label="First value"
-      value={0}
+    <div
+      className="ins-c-select__scrollable-section"
     >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
+      <SelectGroup
+        id="group-0"
         key="0"
-        keyHandler={[Function]}
         label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="first"
+        value={0}
       >
-        First value
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        Second value
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-second"
-      key="second"
-      label="Second value"
-      value="second"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="first"
+        >
+          First value
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          Second value
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-second"
+        key="second"
         label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="second"
       >
-        <Checkbox
+        <SelectOption
           className=""
-          id="1-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First checkbox"
-          name="1-0"
-          onChange={[Function]}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="some-value"
-      >
-        <Checkbox
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Checkbox
+            className=""
+            id="1-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First checkbox"
+            name="1-0"
+            onChange={[Function]}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="some-value"
-          isChecked={true}
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second checkbox"
-          name="some-value"
-          onChange={[Function]}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-third"
-      key="third"
-      label="Third value"
-      value="third"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="some-value"
+        >
+          <Checkbox
+            className=""
+            id="some-value"
+            isChecked={true}
+            isDisabled={false}
+            isValid={true}
+            label="Second checkbox"
+            name="some-value"
+            onChange={[Function]}
+          />
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-third"
+        key="third"
         label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="third"
       >
-        <Radio
+        <SelectOption
           className=""
-          id="2-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First radio"
-          name="2-0"
-          onChange={[Function]}
-          value={0}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        <Radio
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Radio
+            className=""
+            id="2-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First radio"
+            name="2-0"
+            onChange={[Function]}
+            value={0}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="2-1"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second radio"
-          name="2-1"
-          onChange={[Function]}
-          value={1}
-        />
-      </SelectOption>
-    </Component>
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          <Radio
+            className=""
+            id="2-1"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second radio"
+            name="2-1"
+            onChange={[Function]}
+            value={1}
+          />
+        </SelectOption>
+      </SelectGroup>
+    </div>
   </Select>
 </Fragment>
 `;
@@ -1054,17 +1119,20 @@ exports[`Group - component render show more should render correctly with items a
     direction="down"
     hasInlineFilter={false}
     inlineFilterPlaceholderText={null}
+    inputIdPrefix=""
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
     isOpen={false}
     isPlain={false}
+    menuAppendTo="inline"
     noResultsFoundText="No results found"
     onClear={[Function]}
     onCreateOption={[Function]}
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
     selections={null}
@@ -1075,206 +1143,199 @@ exports[`Group - component render show more should render correctly with items a
     variant="single"
     width=""
   >
-    <Component
-      id="group-0"
-      key="0"
-      label="First value"
-      value={0}
+    <div
+      className="ins-c-select__scrollable-section"
     >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
+      <SelectGroup
+        id="group-0"
         key="0"
-        keyHandler={[Function]}
         label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="first"
+        value={0}
       >
-        First value
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        Second value
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-second"
-      key="second"
-      label="Second value"
-      value="second"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
-      >
-        <Checkbox
+        <SelectOption
           className=""
-          id="1-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First checkbox"
-          name="1-0"
-          onChange={[Function]}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="some-value"
-      >
-        <Checkbox
-          className=""
-          id="some-value"
-          isChecked={false}
-          isDisabled={false}
-          isValid={true}
-          label="Second checkbox"
-          name="some-value"
-          onChange={[Function]}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-third"
-      key="third"
-      label="Third value"
-      value="third"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
-      >
-        <Radio
-          className=""
-          id="2-0"
-          isChecked={false}
-          isDisabled={false}
-          isValid={true}
-          label="First radio"
-          name="2-0"
-          onChange={[Function]}
-          value={0}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        <Radio
-          className=""
-          id="2-1"
-          isChecked={false}
-          isDisabled={false}
-          isValid={true}
-          label="Second radio"
-          name="2-1"
-          onChange={[Function]}
-          value={1}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-3"
-      key="3"
-      label=""
-      value={3}
-      variant="link"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPersistentAction={true}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label=""
-        onClick={[Function]}
-        sendRef={[Function]}
-        type="button"
-        value=""
-      >
-        <Component
-          className="pf-c-select__option-button some-test-class"
-          variant="link"
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="first"
         >
-          Show more
-        </Component>
-      </SelectOption>
-    </Component>
+          First value
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          Second value
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-second"
+        key="second"
+        label="Second value"
+        value="second"
+      >
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Checkbox
+            className=""
+            id="1-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First checkbox"
+            name="1-0"
+            onChange={[Function]}
+          />
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="some-value"
+        >
+          <Checkbox
+            className=""
+            id="some-value"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second checkbox"
+            name="some-value"
+            onChange={[Function]}
+          />
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-third"
+        key="third"
+        label="Third value"
+        value="third"
+      >
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Radio
+            className=""
+            id="2-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First radio"
+            name="2-0"
+            onChange={[Function]}
+            value={0}
+          />
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          <Radio
+            className=""
+            id="2-1"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second radio"
+            name="2-1"
+            onChange={[Function]}
+            value={1}
+          />
+        </SelectOption>
+      </SelectGroup>
+    </div>
+    <SelectGroup>
+      <Button
+        className="pf-c-select__menu-item"
+        label="Show more"
+        onClick={[Function]}
+        props={
+          Object {
+            "className": "some-test-class",
+          }
+        }
+        type="button"
+        variant="link"
+      >
+        Show more
+      </Button>
+    </SelectGroup>
   </Select>
 </Fragment>
 `;
@@ -1292,17 +1353,20 @@ exports[`Group - component render show more should render correctly with items a
     direction="down"
     hasInlineFilter={false}
     inlineFilterPlaceholderText={null}
+    inputIdPrefix=""
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
     isOpen={false}
     isPlain={false}
+    menuAppendTo="inline"
     noResultsFoundText="No results found"
     onClear={[Function]}
     onCreateOption={[Function]}
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
     selections={null}
@@ -1313,206 +1377,194 @@ exports[`Group - component render show more should render correctly with items a
     variant="single"
     width=""
   >
-    <Component
-      id="group-0"
-      key="0"
-      label="First value"
-      value={0}
+    <div
+      className="ins-c-select__scrollable-section"
     >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
+      <SelectGroup
+        id="group-0"
         key="0"
-        keyHandler={[Function]}
         label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="first"
+        value={0}
       >
-        First value
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        Second value
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-second"
-      key="second"
-      label="Second value"
-      value="second"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
-      >
-        <Checkbox
+        <SelectOption
           className=""
-          id="1-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First checkbox"
-          name="1-0"
-          onChange={[Function]}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="some-value"
-      >
-        <Checkbox
-          className=""
-          id="some-value"
-          isChecked={false}
-          isDisabled={false}
-          isValid={true}
-          label="Second checkbox"
-          name="some-value"
-          onChange={[Function]}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-third"
-      key="third"
-      label="Third value"
-      value="third"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
-      >
-        <Radio
-          className=""
-          id="2-0"
-          isChecked={false}
-          isDisabled={false}
-          isValid={true}
-          label="First radio"
-          name="2-0"
-          onChange={[Function]}
-          value={0}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        <Radio
-          className=""
-          id="2-1"
-          isChecked={false}
-          isDisabled={false}
-          isValid={true}
-          label="Second radio"
-          name="2-1"
-          onChange={[Function]}
-          value={1}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-3"
-      key="3"
-      label=""
-      value={3}
-      variant="link"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPersistentAction={true}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label=""
-        onClick={[Function]}
-        sendRef={[Function]}
-        type="button"
-        value=""
-      >
-        <Component
-          className="pf-c-select__option-button "
-          variant="link"
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="first"
         >
-          some title
-        </Component>
-      </SelectOption>
-    </Component>
+          First value
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          Second value
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-second"
+        key="second"
+        label="Second value"
+        value="second"
+      >
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Checkbox
+            className=""
+            id="1-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First checkbox"
+            name="1-0"
+            onChange={[Function]}
+          />
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="some-value"
+        >
+          <Checkbox
+            className=""
+            id="some-value"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second checkbox"
+            name="some-value"
+            onChange={[Function]}
+          />
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-third"
+        key="third"
+        label="Third value"
+        value="third"
+      >
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Radio
+            className=""
+            id="2-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First radio"
+            name="2-0"
+            onChange={[Function]}
+            value={0}
+          />
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          <Radio
+            className=""
+            id="2-1"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second radio"
+            name="2-1"
+            onChange={[Function]}
+            value={1}
+          />
+        </SelectOption>
+      </SelectGroup>
+    </div>
+    <SelectGroup>
+      <Button
+        className="pf-c-select__menu-item"
+        label="some title"
+        onClick={[Function]}
+        type="button"
+        variant="link"
+      >
+        some title
+      </Button>
+    </SelectGroup>
   </Select>
 </Fragment>
 `;
@@ -1530,17 +1582,20 @@ exports[`Group - component render show more should render correctly with items a
     direction="down"
     hasInlineFilter={false}
     inlineFilterPlaceholderText={null}
+    inputIdPrefix=""
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
     isOpen={false}
     isPlain={false}
+    menuAppendTo="inline"
     noResultsFoundText="No results found"
     onClear={[Function]}
     onCreateOption={[Function]}
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
     selections={null}
@@ -1551,206 +1606,194 @@ exports[`Group - component render show more should render correctly with items a
     variant="single"
     width=""
   >
-    <Component
-      id="group-0"
-      key="0"
-      label="First value"
-      value={0}
+    <div
+      className="ins-c-select__scrollable-section"
     >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
+      <SelectGroup
+        id="group-0"
         key="0"
-        keyHandler={[Function]}
         label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="first"
+        value={0}
       >
-        First value
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        Second value
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-second"
-      key="second"
-      label="Second value"
-      value="second"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
-      >
-        <Checkbox
+        <SelectOption
           className=""
-          id="1-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First checkbox"
-          name="1-0"
-          onChange={[Function]}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="some-value"
-      >
-        <Checkbox
-          className=""
-          id="some-value"
-          isChecked={false}
-          isDisabled={false}
-          isValid={true}
-          label="Second checkbox"
-          name="some-value"
-          onChange={[Function]}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-third"
-      key="third"
-      label="Third value"
-      value="third"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
-      >
-        <Radio
-          className=""
-          id="2-0"
-          isChecked={false}
-          isDisabled={false}
-          isValid={true}
-          label="First radio"
-          name="2-0"
-          onChange={[Function]}
-          value={0}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        <Radio
-          className=""
-          id="2-1"
-          isChecked={false}
-          isDisabled={false}
-          isValid={true}
-          label="Second radio"
-          name="2-1"
-          onChange={[Function]}
-          value={1}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-3"
-      key="3"
-      label=""
-      value={3}
-      variant="link"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPersistentAction={true}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label=""
-        onClick={[Function]}
-        sendRef={[Function]}
-        type="button"
-        value=""
-      >
-        <Component
-          className="pf-c-select__option-button "
-          variant="link"
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="first"
         >
-          Show more
-        </Component>
-      </SelectOption>
-    </Component>
+          First value
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          Second value
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-second"
+        key="second"
+        label="Second value"
+        value="second"
+      >
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Checkbox
+            className=""
+            id="1-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First checkbox"
+            name="1-0"
+            onChange={[Function]}
+          />
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="some-value"
+        >
+          <Checkbox
+            className=""
+            id="some-value"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second checkbox"
+            name="some-value"
+            onChange={[Function]}
+          />
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-third"
+        key="third"
+        label="Third value"
+        value="third"
+      >
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Radio
+            className=""
+            id="2-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First radio"
+            name="2-0"
+            onChange={[Function]}
+            value={0}
+          />
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          <Radio
+            className=""
+            id="2-1"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second radio"
+            name="2-1"
+            onChange={[Function]}
+            value={1}
+          />
+        </SelectOption>
+      </SelectGroup>
+    </div>
+    <SelectGroup>
+      <Button
+        className="pf-c-select__menu-item"
+        label="Show more"
+        onClick={[Function]}
+        type="button"
+        variant="link"
+      >
+        Show more
+      </Button>
+    </SelectGroup>
   </Select>
 </Fragment>
 `;
@@ -1768,17 +1811,20 @@ exports[`Group - component render show more should render correctly with items a
     direction="down"
     hasInlineFilter={false}
     inlineFilterPlaceholderText={null}
+    inputIdPrefix=""
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
     isOpen={false}
     isPlain={false}
+    menuAppendTo="inline"
     noResultsFoundText="No results found"
     onClear={[Function]}
     onCreateOption={[Function]}
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
     selections={null}
@@ -1789,207 +1835,194 @@ exports[`Group - component render show more should render correctly with items a
     variant="single"
     width=""
   >
-    <Component
-      id="group-0"
-      key="0"
-      label="First value"
-      value={0}
+    <div
+      className="ins-c-select__scrollable-section"
     >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
+      <SelectGroup
+        id="group-0"
         key="0"
-        keyHandler={[Function]}
         label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="first"
+        value={0}
       >
-        First value
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="First value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        Second value
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-second"
-      key="second"
-      label="Second value"
-      value="second"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="first"
+        >
+          First value
+        </SelectOption>
+        <SelectOption
+          className=""
+          component="button"
+          index={0}
+          inputId=""
+          isChecked={false}
+          isDisabled={false}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="First value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          Second value
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-second"
+        key="second"
         label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="second"
       >
-        <Checkbox
+        <SelectOption
           className=""
-          id="1-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First checkbox"
-          name="1-0"
-          onChange={[Function]}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Second value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="some-value"
-      >
-        <Checkbox
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Checkbox
+            className=""
+            id="1-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First checkbox"
+            name="1-0"
+            onChange={[Function]}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="some-value"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second checkbox"
-          name="some-value"
-          onChange={[Function]}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-third"
-      key="third"
-      label="Third value"
-      value="third"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Second value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="some-value"
+        >
+          <Checkbox
+            className=""
+            id="some-value"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second checkbox"
+            name="some-value"
+            onChange={[Function]}
+          />
+        </SelectOption>
+      </SelectGroup>
+      <SelectGroup
+        id="group-third"
+        key="third"
         label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value=""
+        value="third"
       >
-        <Radio
+        <SelectOption
           className=""
-          id="2-0"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="First radio"
-          name="2-0"
-          onChange={[Function]}
-          value={0}
-        />
-      </SelectOption>
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPlaceholder={false}
-        isSelected={false}
-        key="1"
-        keyHandler={[Function]}
-        label="Third value"
-        onClick={[Function]}
-        sendRef={[Function]}
-        value="1"
-      >
-        <Radio
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="0"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value=""
+        >
+          <Radio
+            className=""
+            id="2-0"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="First radio"
+            name="2-0"
+            onChange={[Function]}
+            value={0}
+          />
+        </SelectOption>
+        <SelectOption
           className=""
-          id="2-1"
+          component="button"
+          index={0}
+          inputId=""
           isChecked={false}
           isDisabled={false}
-          isValid={true}
-          label="Second radio"
-          name="2-1"
-          onChange={[Function]}
-          value={1}
-        />
-      </SelectOption>
-    </Component>
-    <Component
-      id="group-3"
-      key="3"
-      label=""
-      value={3}
-      variant="default"
-    >
-      <SelectOption
-        className=""
-        component="button"
-        index={0}
-        isChecked={false}
-        isDisabled={false}
-        isNoResultsOption={false}
-        isPersistentAction={true}
-        isPlaceholder={false}
-        isSelected={false}
-        key="0"
-        keyHandler={[Function]}
-        label=""
+          isNoResultsOption={false}
+          isPlaceholder={false}
+          isSelected={false}
+          key="1"
+          keyHandler={[Function]}
+          label="Third value"
+          onClick={[Function]}
+          sendRef={[Function]}
+          value="1"
+        >
+          <Radio
+            className=""
+            id="2-1"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Second radio"
+            name="2-1"
+            onChange={[Function]}
+            value={1}
+          />
+        </SelectOption>
+      </SelectGroup>
+    </div>
+    <SelectGroup>
+      <Button
+        className="pf-c-select__menu-item"
+        label="Show more"
         onClick={[Function]}
-        sendRef={[Function]}
         type="button"
-        value=""
         variant="default"
       >
-        <Component
-          className="pf-c-select__option-button "
-          variant="default"
-        >
-          Show more
-        </Component>
-      </SelectOption>
-    </Component>
+        Show more
+      </Button>
+    </SelectGroup>
   </Select>
 </Fragment>
 `;

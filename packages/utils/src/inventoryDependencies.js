@@ -1,61 +1,133 @@
-import { Tabs } from '@patternfly/react-core/dist/js/components/Tabs/Tabs';
-import { Tab } from '@patternfly/react-core/dist/js/components/Tabs/Tab';
-import { Tooltip } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
-import { Badge } from '@patternfly/react-core/dist/js/components/Badge/Badge';
-import { Title } from '@patternfly/react-core/dist/js/components/Title/Title';
-import { Grid } from '@patternfly/react-core/dist/js/layouts/Grid/Grid';
-import { GridItem } from '@patternfly/react-core/dist/js/layouts/Grid/GridItem';
-import { Card } from '@patternfly/react-core/dist/js/components/Card/Card';
-import { CardBody } from '@patternfly/react-core/dist/js/components/Card/CardBody';
-import { CardHeader } from '@patternfly/react-core/dist/js/components/Card/CardHeader';
-import { SplitItem } from '@patternfly/react-core/dist/js/layouts/Split/SplitItem';
-import { Split } from '@patternfly/react-core/dist/js/layouts/Split/Split';
-import { Dropdown } from '@patternfly/react-core/dist/js/components/Dropdown/Dropdown';
-import { DropdownItem } from '@patternfly/react-core/dist/js/components/Dropdown/DropdownItem';
-import { DropdownPosition } from '@patternfly/react-core/dist/js/components/Dropdown/dropdownConstants';
-import { DropdownToggle } from '@patternfly/react-core/dist/js/components/Dropdown/DropdownToggle';
-import { EmptyStateBody } from '@patternfly/react-core/dist/js/components/EmptyState/EmptyStateBody';
-import { Bullseye } from '@patternfly/react-core/dist/js/layouts/Bullseye/Bullseye';
-import { EmptyState, EmptyStateVariant } from '@patternfly/react-core/dist/js/components/EmptyState/EmptyState';
-import { Spinner } from '@patternfly/react-core/dist/js/components/Spinner/Spinner';
-import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
-import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/js/components/Pagination/Pagination';
-
-import ShieldAltIcon from '@patternfly/react-icons/dist/js/icons/shield-alt-icon';
-import DollarSignIcon from '@patternfly/react-icons/dist/js/icons/dollar-sign-icon';
-import WrenchIcon from '@patternfly/react-icons/dist/js/icons/wrench-icon';
-import CertificateIcon from '@patternfly/react-icons/dist/js/icons/certificate-icon';
-
-export const reactIcons = {
-    ShieldAltIcon,
-    DollarSignIcon,
-    WrenchIcon,
-    CertificateIcon
-};
-
-export const reactCore = {
-    Tabs,
-    Tab,
-    Tooltip,
+import {
     Badge,
-    Title,
-    Grid,
-    GridItem,
-    Card,
-    CardBody,
-    CardHeader,
-    SplitItem,
-    Split,
+    Bullseye,
+    Button,
+    Checkbox,
+    ClipboardCopy,
     Dropdown,
     DropdownItem,
     DropdownPosition,
     DropdownToggle,
-    EmptyStateBody,
-    Bullseye,
+    DropdownToggleCheckbox,
+    TextInput,
+    Grid,
+    GridItem,
+    Tab,
+    Tabs,
+    Switch,
+    Form,
+    FormGroup,
+    FormSelect,
+    FormSelectOption,
+    Label,
     EmptyState,
+    EmptyStateBody,
+    EmptyStateIcon,
     EmptyStateVariant,
+    Select,
+    SelectOption,
+    SelectVariant,
+    SelectGroup,
+    Radio,
+    ChipGroup,
+    Chip,
+    Title,
+    Split,
+    SplitItem,
     Spinner,
-    Button,
+    Flex,
+    FlexItem,
     Pagination,
-    PaginationVariant
+    PaginationVariant,
+    Tooltip,
+    Modal,
+    Stack,
+    StackItem,
+    Level,
+    LevelItem,
+    KebabToggle,
+    Toolbar,
+    ToolbarItem,
+    ToolbarContent,
+    ToolbarGroup,
+    Drawer,
+    DrawerPanelContent,
+    DrawerContent,
+    DrawerContentBody,
+    DrawerPanelBody,
+    DrawerActions,
+    DrawerHead,
+    DrawerCloseButton
+} from '@patternfly/react-core';
+
+import {
+    CubesIcon,
+    ExclamationTriangleIcon
+} from '@patternfly/react-icons';
+
+export const reactIcons = {
+    CubesIcon,
+    ExclamationTriangleIcon
+};
+
+export const reactCore = {
+    Badge,
+    Bullseye,
+    Button,
+    Checkbox,
+    ClipboardCopy,
+    Dropdown,
+    DropdownItem,
+    DropdownPosition,
+    DropdownToggle,
+    EmptyState,
+    EmptyStateBody,
+    EmptyStateIcon,
+    EmptyStateVariant,
+    Flex,
+    FlexItem,
+    Grid,
+    GridItem,
+    KebabToggle,
+    Level,
+    LevelItem,
+    Modal,
+    Pagination,
+    PaginationVariant,
+    Split,
+    SplitItem,
+    Stack,
+    StackItem,
+    Spinner,
+    Tab,
+    Tabs,
+    Title,
+    Tooltip,
+    Toolbar,
+    ToolbarItem,
+    ToolbarContent,
+    ToolbarGroup,
+    TextInput,
+    ChipGroup,
+    Chip,
+    DropdownToggleCheckbox,
+    Select,
+    SelectOption,
+    SelectVariant,
+    SelectGroup,
+    Radio,
+    Drawer,
+    DrawerPanelContent,
+    DrawerContent,
+    DrawerContentBody,
+    DrawerPanelBody,
+    DrawerActions,
+    DrawerHead,
+    DrawerCloseButton,
+    Switch,
+    Form,
+    Label,
+    FormGroup,
+    FormSelect,
+    FormSelectOption
 };

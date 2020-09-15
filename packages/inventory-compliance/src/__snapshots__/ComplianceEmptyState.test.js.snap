@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ComplianceEmptyState expect to render different message if many policies exist 1`] = `
-<Component>
-  <Component>
-    <Component
+<Bullseye>
+  <EmptyState>
+    <EmptyStateIcon
       icon={[Function]}
       size="xl"
       style={
@@ -15,15 +15,15 @@ exports[`ComplianceEmptyState expect to render different message if many policie
       title="Compliance"
     />
     <br />
-    <Component
+    <Title
       headingLevel="h1"
       size="lg"
     >
       No policies
-    </Component>
+    </Title>
     <br />
-    <Component>
-      <Component>
+    <EmptyStateBody>
+      <TextContent>
         <a
           href="insights/compliance/scappolicies"
         >
@@ -36,23 +36,23 @@ exports[`ComplianceEmptyState expect to render different message if many policie
          been created but 
         have
          no reports.
-      </Component>
-      <Component>
+      </TextContent>
+      <TextContent>
         The Compliance service uses SCAP policies to track your organization's adherence to compliance requirements.
-      </Component>
-      <Component>
+      </TextContent>
+      <TextContent>
         Get started by adding a policy, or read documentation about how to connect OpenSCAP to the Compliance service.
-      </Component>
-    </Component>
-    <Component
+      </TextContent>
+    </EmptyStateBody>
+    <Button
       component="a"
       href="/insights/compliance/scappolicies"
       variant="primary"
     >
       Create new policy
-    </Component>
-    <Component>
-      <Component
+    </Button>
+    <EmptyStateSecondaryActions>
+      <Button
         component="a"
         href="https://access.redhat.com/documentation/en-us/red_hat_insights/2020-04/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index"
         rel="noopener noreferrer"
@@ -60,16 +60,16 @@ exports[`ComplianceEmptyState expect to render different message if many policie
         variant="link"
       >
         Learn about OpenSCAP and Compliance
-      </Component>
-    </Component>
-  </Component>
-</Component>
+      </Button>
+    </EmptyStateSecondaryActions>
+  </EmptyState>
+</Bullseye>
 `;
 
 exports[`ComplianceEmptyState expect to render different message if one policy exists 1`] = `
-<Component>
-  <Component>
-    <Component
+<Bullseye>
+  <EmptyState>
+    <EmptyStateIcon
       icon={[Function]}
       size="xl"
       style={
@@ -81,15 +81,15 @@ exports[`ComplianceEmptyState expect to render different message if one policy e
       title="Compliance"
     />
     <br />
-    <Component
+    <Title
       headingLevel="h1"
       size="lg"
     >
       No policies
-    </Component>
+    </Title>
     <br />
-    <Component>
-      <Component>
+    <EmptyStateBody>
+      <TextContent>
         <a
           href="insights/compliance/scappolicies"
         >
@@ -102,23 +102,23 @@ exports[`ComplianceEmptyState expect to render different message if one policy e
          been created but 
         has
          no reports.
-      </Component>
-      <Component>
+      </TextContent>
+      <TextContent>
         The Compliance service uses SCAP policies to track your organization's adherence to compliance requirements.
-      </Component>
-      <Component>
+      </TextContent>
+      <TextContent>
         Get started by adding a policy, or read documentation about how to connect OpenSCAP to the Compliance service.
-      </Component>
-    </Component>
-    <Component
+      </TextContent>
+    </EmptyStateBody>
+    <Button
       component="a"
       href="/insights/compliance/scappolicies"
       variant="primary"
     >
       Create new policy
-    </Component>
-    <Component>
-      <Component
+    </Button>
+    <EmptyStateSecondaryActions>
+      <Button
         component="a"
         href="https://access.redhat.com/documentation/en-us/red_hat_insights/2020-04/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index"
         rel="noopener noreferrer"
@@ -126,16 +126,16 @@ exports[`ComplianceEmptyState expect to render different message if one policy e
         variant="link"
       >
         Learn about OpenSCAP and Compliance
-      </Component>
-    </Component>
-  </Component>
-</Component>
+      </Button>
+    </EmptyStateSecondaryActions>
+  </EmptyState>
+</Bullseye>
 `;
 
 exports[`ComplianceEmptyState expect to render without error if no policies exist 1`] = `
-<Component>
-  <Component>
-    <Component
+<Bullseye>
+  <EmptyState>
+    <EmptyStateIcon
       icon={[Function]}
       size="xl"
       style={
@@ -147,30 +147,30 @@ exports[`ComplianceEmptyState expect to render without error if no policies exis
       title="Compliance"
     />
     <br />
-    <Component
+    <Title
       headingLevel="h1"
       size="lg"
     >
       No policies
-    </Component>
+    </Title>
     <br />
-    <Component>
-      <Component>
+    <EmptyStateBody>
+      <TextContent>
         The Compliance service uses SCAP policies to track your organization's adherence to compliance requirements.
-      </Component>
-      <Component>
+      </TextContent>
+      <TextContent>
         Get started by adding a policy, or read documentation about how to connect OpenSCAP to the Compliance service.
-      </Component>
-    </Component>
-    <Component
+      </TextContent>
+    </EmptyStateBody>
+    <Button
       component="a"
       href="/insights/compliance/scappolicies"
       variant="primary"
     >
       Create new policy
-    </Component>
-    <Component>
-      <Component
+    </Button>
+    <EmptyStateSecondaryActions>
+      <Button
         component="a"
         href="https://access.redhat.com/documentation/en-us/red_hat_insights/2020-04/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index"
         rel="noopener noreferrer"
@@ -178,8 +178,8 @@ exports[`ComplianceEmptyState expect to render without error if no policies exis
         variant="link"
       >
         Learn about OpenSCAP and Compliance
-      </Component>
-    </Component>
-  </Component>
-</Component>
+      </Button>
+    </EmptyStateSecondaryActions>
+  </EmptyState>
+</Bullseye>
 `;

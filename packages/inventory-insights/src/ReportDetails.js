@@ -1,23 +1,15 @@
 import '@redhat-cloud-services/frontend-components/components/section.scss';
 import './insights.scss';
 
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/Skeleton';
-import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
-
-import BullseyeIcon from '@patternfly/react-icons/dist/js/icons/bullseye-icon';
-import { Card } from '@patternfly/react-core/dist/js/components/Card/Card';
-import { CardBody } from '@patternfly/react-core/dist/js/components/Card/CardBody';
-import { CardHeader } from '@patternfly/react-core/dist/js/components/Card/CardHeader';
-import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
-import InfoCircleIcon from '@patternfly/react-icons/dist/js/icons/info-circle-icon';
-import LightbulbIcon from '@patternfly/react-icons/dist/js/icons/lightbulb-icon';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
 import React from 'react';
-import ThumbsUpIcon from '@patternfly/react-icons/dist/js/icons/thumbs-up-icon';
 import classNames from 'classnames';
 import doT from 'dot';
 import marked from 'marked';
 import propTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
+import { Card, CardBody, StackItem, CardHeader, Stack } from '@patternfly/react-core';
+import { BullseyeIcon, ThumbsUpIcon, LightbulbIcon, InfoCircleIcon, ExternalLinkAltIcon } from '@patternfly/react-icons';
 
 const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
     const rule = report.rule || report;
@@ -67,7 +59,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                 <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
-                            <BullseyeIcon />
+                            <BullseyeIcon className='ins-c-report-details-icon'/>
                             <strong> Detected issues</strong>
                         </CardHeader>
                         <CardBody>
@@ -78,7 +70,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                 <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
-                            <ThumbsUpIcon />
+                            <ThumbsUpIcon className='ins-c-report-details-icon'/>
                             <strong> Steps to resolve</strong>
                         </CardHeader>
                         <CardBody>
@@ -89,7 +81,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                 {rule.node_id && <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
-                            <LightbulbIcon /><strong> Related Knowledgebase article </strong>
+                            <LightbulbIcon className='ins-c-report-details-icon'/><strong> Related Knowledgebase article </strong>
                         </CardHeader>
                         <CardBody>
                             {kbaLoading ? <Skeleton size={SkeletonSize.sm} />
@@ -102,7 +94,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                 {rule.more_info && <StackItem>
                     <Card className='ins-m-card__flat'>
                         <CardHeader>
-                            <InfoCircleIcon /><strong> Additional info </strong>
+                            <InfoCircleIcon className='ins-c-report-details-icon'/><strong> Additional info </strong>
                         </CardHeader>
                         <CardBody>
                             {templateProcessor(rule.more_info)}

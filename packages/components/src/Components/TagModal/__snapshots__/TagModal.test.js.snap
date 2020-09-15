@@ -3,7 +3,7 @@
 exports[`TagCount component Render the modal open with row of tags 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -11,6 +11,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Tags for paul.localhost.com"
   variant="default"
@@ -36,7 +37,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
           "title": "Name",
         },
         Object {
-          "title": "Tag Source",
+          "title": "Tag source",
         },
       ]
     }
@@ -46,6 +47,8 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -62,7 +65,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -86,7 +89,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={0}
       perPage={10}
       perPageOptions={
@@ -135,7 +138,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
 exports[`TagCount component Render the modal with a child component 1`] = `
 <Modal
   actions={Array []}
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -143,6 +146,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   hasNoBodyWrapper={false}
   isOpen={true}
   onClose={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Tags for paul.localhost.com"
   variant="default"
@@ -171,7 +175,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
           "title": "Name",
         },
         Object {
-          "title": "Tag Source",
+          "title": "Tag source",
         },
       ]
     }
@@ -181,6 +185,8 @@ exports[`TagCount component Render the modal with a child component 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isStickyHeader={false}
+    ouiaSafe={true}
     role="grid"
     rowLabeledBy="simple-node"
     rows={
@@ -192,23 +198,23 @@ exports[`TagCount component Render the modal with a child component 1`] = `
                 "colSpan": 2,
               },
               "title": <EmptyTable>
-                <Unknown>
-                  <Unknown
+                <Bullseye>
+                  <EmptyState
                     variant="full"
                   >
-                    <Unknown
+                    <Title
                       headingLevel="h5"
                       size="lg"
                     >
                       No tags found
-                    </Unknown>
-                    <Unknown>
+                    </Title>
+                    <EmptyStateBody>
                       This filter criteria matches no tags. 
                       <br />
                        Try changing your filter settings.
-                    </Unknown>
-                  </Unknown>
-                </Unknown>
+                    </EmptyStateBody>
+                  </EmptyState>
+                </Bullseye>
               </EmptyTable>,
             },
           ],
@@ -217,7 +223,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
     }
     variant="compact"
   >
-    <Component />
+    <TableHeader />
     <Component />
   </Table>
   <TableToolbar
@@ -241,7 +247,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
       onPerPageSelect={[Function]}
       onPreviousClick={[Function]}
       onSetPage={[Function]}
-      ouiaId={null}
+      ouiaSafe={true}
       page={0}
       perPage={10}
       perPageOptions={

@@ -4,7 +4,7 @@ import { useTagsFilter } from './useTagsFilter';
 import { mount } from 'enzyme';
 
 const HookRender = ({ hookAccessor, hookNotify, loaded = true, additionalTagsCount = 0, onShowMoreClick, tagsLoaded }) => {
-    const [ filter, chip, value, setValue, fitlerBy, setFilterBy ] = useTagsFilter(
+    const { tagsFilter, tagsChip, selectedTags, setSelectedTags, filterTagsBy, seFilterTagsBy } = useTagsFilter(
         [{
             name: 'something',
             tags: [{
@@ -17,25 +17,33 @@ const HookRender = ({ hookAccessor, hookNotify, loaded = true, additionalTagsCou
         onShowMoreClick
     );
     useEffect(() => {
-        if (filter.filterValues.items && filter.filterValues.items.length !== 0) {
-            tagsLoaded && tagsLoaded([ filter, chip, value, setValue, fitlerBy, setFilterBy ]);
+        if (tagsFilter.filterValues.items && tagsFilter.filterValues.items.length !== 0) {
+            tagsLoaded && tagsLoaded([
+                tagsFilter, tagsChip, selectedTags, setSelectedTags, filterTagsBy, seFilterTagsBy
+            ]);
         }
-    }, [ filter ]);
+    }, [ tagsFilter ]);
     useEffect(() => {
-        if (filter.filterValues.groups && filter.filterValues.groups.length !== 0) {
-            hookAccessor && hookAccessor([ filter, chip, value, setValue, fitlerBy, setFilterBy ]);
+        if (tagsFilter.filterValues.groups && tagsFilter.filterValues.groups.length !== 0) {
+            hookAccessor && hookAccessor([
+                tagsFilter, tagsChip, selectedTags, setSelectedTags, filterTagsBy, seFilterTagsBy
+            ]);
         }
-    }, [ filter ]);
+    }, [ tagsFilter ]);
     useEffect(() => {
-        if (Object.keys(value).length !== 0) {
-            hookNotify && hookNotify([ filter, chip, value, setValue, fitlerBy, setFilterBy ]);
+        if (Object.keys(selectedTags).length !== 0) {
+            hookNotify && hookNotify([
+                tagsFilter, tagsChip, selectedTags, setSelectedTags, filterTagsBy, seFilterTagsBy
+            ]);
         }
-    }, [ value ]);
+    }, [ selectedTags ]);
     useEffect(() => {
-        if (fitlerBy.length !== 0) {
-            hookNotify && hookNotify([ filter, chip, value, setValue, fitlerBy, setFilterBy ]);
+        if (filterTagsBy.length !== 0) {
+            hookNotify && hookNotify([
+                tagsFilter, tagsChip, selectedTags, setSelectedTags, filterTagsBy, seFilterTagsBy
+            ]);
         }
-    }, [ fitlerBy ]);
+    }, [ filterTagsBy ]);
 
     return <Fragment />;
 };
@@ -78,7 +86,7 @@ describe('useTagsFilter', () => {
             expect(filter.filterValues.filterBy).toBe('');
             expect(filter.filterValues.items).toMatchObject([{
                 isDisabled: true,
-                className: 'ins-c-inventory__tags-tail'
+                className: 'ins-c-tagfilter__tail'
             }]);
         };
 

@@ -26,7 +26,6 @@ const Table = ({
             withHeader && <View style={{
                 ...appliedStyles.flexRow,
                 ...appliedStyles.compactCellPadding,
-                justifyContent: 'flex-start',
                 ...headerStyles
             }}>
                 {header.map((cell, key) => (

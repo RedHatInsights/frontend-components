@@ -3,6 +3,9 @@
 exports[`SystemPolicyCard component should render 1`] = `
 <article
   class="pf-c-card"
+  data-ouia-component-id="0"
+  data-ouia-component-type="PF4/Card"
+  data-ouia-safe="true"
 >
   <div
     class="pf-c-card__body"
@@ -28,7 +31,9 @@ exports[`SystemPolicyCard component should render 1`] = `
           </span>
         </span>
       </h4>
-      <span>
+      <span
+        aria-describedby="pf-tooltip-1"
+      >
         External policy 
         <svg
           aria-hidden="true"

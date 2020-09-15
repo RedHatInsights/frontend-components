@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridItem } from '@patternfly/react-core/dist/esm/layouts/Grid';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
-import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/esm/CullingInfo';
+import { Grid, GridItem } from '@patternfly/react-core/dist/js/layouts/Grid';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/cjs/DateFormat';
+import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/cjs/CullingInfo';
 import { getFact } from './helpers';
 
 /**
@@ -38,6 +38,7 @@ const FactsInfo = ({ entity, loaded, ...props }) => (
                                     culled={getFact('culled_timestamp', entity)}
                                     staleWarning={getFact('stale_warning_timestamp', entity)}
                                     stale={getFact('stale_timestamp', entity)}
+                                    currDate={new Date()}
                                 >
                                     <DateFormat date={getFact('updated', entity)} type="exact" />
                                 </CullingInformation> : <DateFormat date={getFact('updated', entity)} type="exact" />

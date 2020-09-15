@@ -166,20 +166,20 @@ describe('mapData', () => {
 
 describe('getAllTags', () => {
     it('should generate get all tags call', async () => {
-        mockTags.onGet('/api/inventory/v1/tags?per_page=10&page=1&staleness=fresh&staleness=stale&registered_with=insights').replyOnce(200, { test: 'test' });
+        mockTags.onGet('/api/inventory/v1/tags?order_by=tag&order_how=ASC&per_page=10&page=1&staleness=fresh&staleness=stale&registered_with=insights').replyOnce(200, { test: 'test' });
         const data = await getAllTags();
         expect(data).toMatchObject({ test: 'test' });
     });
 
     it('should generate get all tags call with search', async () => {
-        mockTags.onGet('/api/inventory/v1/tags?per_page=10&page=1&staleness=fresh&staleness=stale&search=something&registered_with=insights').replyOnce(200, { test: 'test' });
+        mockTags.onGet('/api/inventory/v1/tags?order_by=tag&order_how=ASC&per_page=10&page=1&staleness=fresh&staleness=stale&search=something&registered_with=insights').replyOnce(200, { test: 'test' });
         const data = await getAllTags('something');
         expect(data).toMatchObject({ test: 'test' });
     });
 
     describe('tagFilters', () => {
         it('should generate get all tags call with tagFilters', async () => {
-            mockTags.onGet('/api/inventory/v1/tags?tags=namespace%2Fsome%20key%3Dsome%20value&tags=some%20key&per_page=10&page=1&staleness=fresh&staleness=stale&registered_with=insights').replyOnce(200, { test: 'test' });
+            mockTags.onGet('/api/inventory/v1/tags?tags=namespace%2Fsome%20key%3Dsome%20value&tags=some%20key&order_by=tag&order_how=ASC&per_page=10&page=1&staleness=fresh&staleness=stale&registered_with=insights').replyOnce(200, { test: 'test' });
             const data = await getAllTags(undefined, {
                 filters: [{
                     tagFilters: [{
@@ -202,7 +202,7 @@ describe('getAllTags', () => {
         });
 
         it('should generate get all tags call with staleFilter', async () => {
-            mockTags.onGet('/api/inventory/v1/tags?per_page=10&page=1&staleness=something&registered_with=insights').replyOnce(200, { test: 'test' });
+            mockTags.onGet('/api/inventory/v1/tags?order_by=tag&order_how=ASC&per_page=10&page=1&staleness=something&registered_with=insights').replyOnce(200, { test: 'test' });
             const data = await getAllTags(undefined, {
                 filters: [{
                     staleFilter: [ 'something' ]
@@ -212,7 +212,7 @@ describe('getAllTags', () => {
         });
 
         it('should generate get all tags call with registeredWithFilter', async () => {
-            mockTags.onGet('/api/inventory/v1/tags?per_page=10&page=1&staleness=fresh&staleness=stale&registered_with=something').replyOnce(200, { test: 'test' });
+            mockTags.onGet('/api/inventory/v1/tags?order_by=tag&order_how=ASC&per_page=10&page=1&staleness=fresh&staleness=stale&registered_with=something').replyOnce(200, { test: 'test' });
             const data = await getAllTags(undefined, {
                 filters: [{
                     registeredWithFilter: [ 'something' ]
@@ -224,7 +224,7 @@ describe('getAllTags', () => {
 
     describe('pagination', () => {
         it('should generate get all tags call with perPage', async () => {
-            mockTags.onGet('/api/inventory/v1/tags?per_page=50&page=1&staleness=fresh&staleness=stale&registered_with=insights').replyOnce(200, { test: 'test' });
+            mockTags.onGet('/api/inventory/v1/tags?order_by=tag&order_how=ASC&per_page=50&page=1&staleness=fresh&staleness=stale&registered_with=insights').replyOnce(200, { test: 'test' });
             const data = await getAllTags(undefined, {
                 pagination: {
                     perPage: 50
@@ -234,7 +234,7 @@ describe('getAllTags', () => {
         });
 
         it('should generate get all tags call with page', async () => {
-            mockTags.onGet('/api/inventory/v1/tags?per_page=10&page=20&staleness=fresh&staleness=stale&registered_with=insights').replyOnce(200, { test: 'test' });
+            mockTags.onGet('/api/inventory/v1/tags?order_by=tag&order_how=ASC&per_page=10&page=20&staleness=fresh&staleness=stale&registered_with=insights').replyOnce(200, { test: 'test' });
             const data = await getAllTags(undefined, {
                 pagination: {
                     page: 20

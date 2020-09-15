@@ -2,7 +2,7 @@
 
 exports[`Unavailable component should render 1`] = `
 <Unavailable>
-  <Component
+  <EmptyState
     className="ins-c-empty-state__unavailable pf-m-redhat-font"
     variant="large"
   >
@@ -12,7 +12,7 @@ exports[`Unavailable component should render 1`] = `
       <div
         className="pf-c-empty-state__content"
       >
-        <Component
+        <EmptyStateIcon
           icon={[Function]}
         >
           <ExclamationCircleIcon
@@ -43,8 +43,8 @@ exports[`Unavailable component should render 1`] = `
               />
             </svg>
           </ExclamationCircleIcon>
-        </Component>
-        <Component
+        </EmptyStateIcon>
+        <Title
           headingLevel="h5"
           size="lg"
         >
@@ -53,14 +53,14 @@ exports[`Unavailable component should render 1`] = `
           >
             This page is temporarily unavailable
           </h5>
-        </Component>
-        <Component>
+        </Title>
+        <EmptyStateBody>
           <div
             className="pf-c-empty-state__body"
           >
             Try refreshing the page. If the problem persists, contact your organization administrator or visit our
             <a
-              href="./status"
+              href="https://status.redhat.com/"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -68,9 +68,9 @@ exports[`Unavailable component should render 1`] = `
             </a>
              for known outages.
           </div>
-        </Component>
+        </EmptyStateBody>
       </div>
     </div>
-  </Component>
+  </EmptyState>
 </Unavailable>
 `;

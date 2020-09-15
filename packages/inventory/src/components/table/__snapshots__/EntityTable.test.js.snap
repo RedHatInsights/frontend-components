@@ -33,6 +33,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
       >
         <button
           class="pf-c-table__button"
+          type="button"
         >
           <div
             class="pf-c-table__button-content"
@@ -93,7 +94,9 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
           class="ins-composed-col"
         >
           <div />
-          <div>
+          <div
+            class=""
+          >
             <a
               href="/testing-id"
               widget="col"
@@ -171,13 +174,18 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-lg"
+  isStickyHeader={false}
   onSelect={[Function]}
   onSort={[Function]}
+  ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
     Array [
       Object {
+        "actionProps": Object {
+          "data-ouia-component-id": "testing-id-actions-kebab",
+        },
         "cells": Array [
           "data",
           "data",
@@ -227,21 +235,28 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isStickyHeader={false}
   onCollapse={[Function]}
   onSelect={[Function]}
   onSort={[Function]}
+  ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
     Array [
       Object {
+        "actionProps": Object {
+          "data-ouia-component-id": "testing-id-actions-kebab",
+        },
         "cells": Array [
           Object {
             "title": <div
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -380,20 +395,27 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isStickyHeader={false}
   onSelect={[Function]}
   onSort={[Function]}
+  ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
     Array [
       Object {
+        "actionProps": Object {
+          "data-ouia-component-id": "testing-id-actions-kebab",
+        },
         "cells": Array [
           Object {
             "title": <div
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -444,19 +466,26 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isStickyHeader={false}
   onSort={[Function]}
+  ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
     Array [
       Object {
+        "actionProps": Object {
+          "data-ouia-component-id": "testing-id-actions-kebab",
+        },
         "cells": Array [
           Object {
             "title": <div
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -516,6 +545,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
       >
         <button
           class="pf-c-table__button"
+          type="button"
         >
           <div
             class="pf-c-table__button-content"
@@ -576,7 +606,9 @@ exports[`EntityTable DOM should render correctly 1`] = `
           class="ins-composed-col"
         >
           <div />
-          <div>
+          <div
+            class=""
+          >
             <a
               href="/testing-id"
               widget="col"
@@ -619,21 +651,28 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isStickyHeader={false}
   onCollapse={[Function]}
   onSelect={[Function]}
   onSort={[Function]}
+  ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
     Array [
       Object {
+        "actionProps": Object {
+          "data-ouia-component-id": "testing-id-actions-kebab",
+        },
         "cells": Array [
           Object {
             "title": <div
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -684,19 +723,26 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isStickyHeader={false}
   onSort={[Function]}
+  ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
     Array [
       Object {
+        "actionProps": Object {
+          "data-ouia-component-id": "testing-id-actions-kebab",
+        },
         "cells": Array [
           Object {
             "title": <div
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}
@@ -747,20 +793,27 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
   dropdownPosition="right"
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
+  isStickyHeader={false}
   onSelect={[Function]}
   onSort={[Function]}
+  ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
   rows={
     Array [
       Object {
+        "actionProps": Object {
+          "data-ouia-component-id": "testing-id-actions-kebab",
+        },
         "cells": Array [
           Object {
             "title": <div
               className="ins-composed-col"
             >
               <div />
-              <div>
+              <div
+                className=""
+              >
                 <a
                   href="/testing-id"
                   onClick={[Function]}

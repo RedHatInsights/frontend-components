@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TagCount } from '@redhat-cloud-services/frontend-components/components/esm/TagCount';
+import { TagCount } from '@redhat-cloud-services/frontend-components/components/cjs/TagCount';
 import { loadTags, toggleTagModal } from '../redux/actions';
 
 const TagWithDialog = ({ count, loadTags, systemId }) => (
-    <span onClick={(e) => e.stopPropagation()} className="ins-c-inventory__list-tags">
+    <span
+        onClick={(e) => e.stopPropagation()}
+        className="ins-c-inventory__list-tags"
+        data-ouia-component-id={`${systemId}-tag-button`}
+    >
         <TagCount count={count} onTagClick={ () => loadTags(systemId, count) } />
     </span>
 );

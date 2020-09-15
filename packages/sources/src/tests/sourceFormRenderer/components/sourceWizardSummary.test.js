@@ -1,6 +1,5 @@
 import React from 'react';
-import toJson from 'enzyme-to-json';
-import { TextListItem, TextContent } from '@patternfly/react-core';
+import { TextListItem, TextContent, Alert } from '@patternfly/react-core';
 
 import Summary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
 import applicationTypes, { COST_MANAGEMENT_APP } from '../../helpers/applicationTypes';
@@ -59,36 +58,82 @@ describe('SourceWizardSummary component', () => {
 
         it('openshift', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
-            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+
+            const headers = wrapper.find('dt').map(item => item.text());
+            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'openshift' ],
+                    [ 'Application', 'Not selected' ],
+                    [ 'Source type', 'OpenShift Container Platform' ],
+                    [ 'Authentication type', 'Token' ],
+                    [ 'Token', '●●●●●●●●●●●●' ],
+                    [ 'URL', 'neznam.cz' ],
+                    [ 'Verify SSL', 'Yes' ],
+                    [ 'SSL Certificate', 'authority' ]
+                ]
+            );
+
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('name is first', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
             expect(wrapper.find(TextListItem).at(1).children().first().text()).toEqual('openshift');
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('type is third', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
             expect(wrapper.find(TextListItem).at(5).children().first().text()).toEqual('OpenShift Container Platform');
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('amazon', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon', 'access_key_secret_key') } />);
-            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+
+            const headers = wrapper.find('dt').map(item => item.text());
+            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'openshift' ],
+                    [ 'Application', 'Not selected' ],
+                    [ 'Source type', 'Amazon Web Services' ],
+                    [ 'Authentication type', 'AWS Secret Key' ],
+                    [ 'Access key ID', 'user_name' ],
+                    [ 'Secret access key', '●●●●●●●●●●●●' ] ]
+            );
 
             // use labels from hardcoded schemas
             expect(wrapper.contains('Access Key')).toEqual(false);
             expect(wrapper.contains('Secret Key')).toEqual(false);
             expect(wrapper.contains('Access key ID')).toEqual(true);
             expect(wrapper.contains('Secret access key')).toEqual(true);
+
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('amazon - ARN', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon', 'arn') } />);
-            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+
+            const headers = wrapper.find('dt').map(item => item.text());
+            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'openshift' ],
+                    [ 'Application', 'Not selected' ],
+                    [ 'Source type', 'Amazon Web Services' ],
+                    [ 'Authentication type', 'ARN' ],
+                    [ 'ARN', '123456' ] ]
+            );
+
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
-        it('amazon - ARN cost management - include appended field from DB', () => {
+        it('amazon - ARN cost management - include appended field from DB and rbac alert message', () => {
             formOptions = {
                 getState: () => ({
                     values: {
@@ -96,7 +141,7 @@ describe('SourceWizardSummary component', () => {
                         application: { application_type_id: '2' },
                         source_type: 'amazon',
                         authentication: { password: 'arn:aws:132', authtype: 'arn' },
-                        billing_source: { bucket: 'gfghf' },
+                        billing_source: { data_source: { bucket: 'gfghf' } },
                         fixasyncvalidation: '',
                         endpoint: { role: 'aws' }
                     }
@@ -104,13 +149,31 @@ describe('SourceWizardSummary component', () => {
             };
 
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
-            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+
+            const headers = wrapper.find('dt').map(item => item.text());
+            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'cosi' ],
+                    [ 'Application', 'Cost Management' ],
+                    [ 'Source type', 'Amazon Web Services' ],
+                    [ 'Authentication type', 'ARN' ],
+                    [ 'S3 bucket name', 'gfghf' ],
+                    [ 'ARN', 'arn:aws:132' ]
+                ]
+            );
 
             expect(wrapper.find(TextContent).html().includes('ARN')).toEqual(true);
             expect(wrapper.find(TextContent).html().includes('arn:aws:132')).toEqual(true);
+
+            expect(wrapper.find(Alert).props().title).toEqual('Manage permissions in User Access');
+            expect(wrapper.find(Alert).props().children).toEqual(
+                'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
+            );
         });
 
-        it('openshift cost management - include appended field from DB', () => {
+        it('openshift cost management - include appended field from DB and rbac alert message', () => {
             formOptions = {
                 getState: () => ({
                     values: {
@@ -124,28 +187,91 @@ describe('SourceWizardSummary component', () => {
             };
 
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
-            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+
+            const headers = wrapper.find('dt').map(item => item.text());
+            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'cosi' ],
+                    [ 'Application', 'Cost Management' ],
+                    [ 'Source type', 'OpenShift Container Platform' ],
+                    [ 'Cluster Identifier', 'CLUSTER ID123' ]
+                ]
+            );
 
             expect(wrapper.find(TextContent).find({ defaultMessage: 'Cluster Identifier' })).toHaveLength(1);
             expect(wrapper.find(TextContent).html().includes('CLUSTER ID123')).toEqual(true);
+
+            expect(wrapper.find(Alert).props().title).toEqual('Manage permissions in User Access');
+            expect(wrapper.find(Alert).props().children).toEqual(
+                'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
+            );
         });
 
         it('ansible-tower', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
-            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+            const headers = wrapper.find('dt').map(item => item.text());
+            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'openshift' ],
+                    [ 'Application', 'Not selected' ],
+                    [ 'Source type', 'Ansible Tower' ],
+                    [ 'Authentication type', 'Username and password' ],
+                    [ 'Username', 'user_name' ],
+                    [ 'Password', '●●●●●●●●●●●●' ],
+                    [ 'Hostname', 'neznam.cz' ],
+                    [ 'Verify SSL', 'Yes' ],
+                    [ 'Certificate authority', 'authority' ]
+                ]
+            );
+
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('selected Catalog application, is second', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1') } />);
-            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+            const headers = wrapper.find('dt').map(item => item.text());
+            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'openshift' ],
+                    [ 'Application', 'Catalog' ],
+                    [ 'Source type', 'Ansible Tower' ],
+                    [ 'Authentication type', 'Username and password' ],
+                    [ 'Hostname', 'neznam.cz' ],
+                    [ 'Verify SSL', 'Yes' ],
+                    [ 'Certificate authority', 'authority' ],
+                    [ 'Username', 'user_name' ],
+                    [ 'Password', '●●●●●●●●●●●●' ]
+                ]
+            );
             expect(wrapper.find(TextListItem).at(3).children().first().text()).toEqual('Catalog');
         });
 
         it('hide application', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1') } showApp={ false }/>);
-            expect(toJson(wrapper.find(TextContent))).toMatchSnapshot();
+            const headers = wrapper.find('dt').map(item => item.text());
+            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'openshift' ],
+                    [ 'Source type', 'Ansible Tower' ],
+                    [ 'Authentication type', 'Username and password' ],
+                    [ 'Hostname', 'neznam.cz' ],
+                    [ 'Verify SSL', 'Yes' ],
+                    [ 'Certificate authority', 'authority' ],
+                    [ 'Username', 'user_name' ],
+                    [ 'Password', '●●●●●●●●●●●●' ]
+                ]
+            );
             expect(wrapper.find(TextListItem).at(3).children().first().text()).not.toEqual('Catalog');
             expect(wrapper.contains('Catalog')).toEqual(false);
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('do not contain hidden field', () => {
@@ -312,7 +438,7 @@ describe('SourceWizardSummary component', () => {
 
             expect(createItem(field, values, availableStepKeys)).toEqual({
                 label: 'Label 1',
-                value: <FormattedMessage id="wizard.Yes" defaultMessage="Yes" />
+                value: <FormattedMessage id="wizard.yes" defaultMessage="Yes" />
             });
         });
 
@@ -325,7 +451,7 @@ describe('SourceWizardSummary component', () => {
 
             expect(createItem(field, values, availableStepKeys)).toEqual({
                 label: 'Label 1',
-                value: <FormattedMessage id="wizard.No" defaultMessage="No" />
+                value: <FormattedMessage id="wizard.no" defaultMessage="No" />
             });
         });
 

@@ -3,33 +3,18 @@ import './insights.scss';
 
 import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, IMPACT_LABEL, LIKELIHOOD_LABEL } from './Constants';
 import React, { Component, Fragment } from 'react';
-import { SortByDirection, Table, TableBody, TableHeader, cellWidth, sortable } from '@patternfly/react-table';
-import { Stack, StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/index';
-import { Tooltip, TooltipPosition } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
+import { SortByDirection, Table, TableBody, TableHeader, cellWidth, fitContent, sortable } from '@patternfly/react-table';
 import { flatten, sortBy } from 'lodash';
+import { Button, Bullseye, Card, CardBody, Stack, StackItem, Tooltip, TooltipPosition, ToolbarItem, ClipboardCopy } from '@patternfly/react-core';
+import { CheckCircleIcon, PficonSatelliteIcon, ExternalLinkAltIcon, AnsibeTowerIcon, TimesCircleIcon, CheckIcon, ChartSpikeIcon } from '@patternfly/react-icons';
 
 import API from './Api';
-import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
-import { Bullseye } from '@patternfly/react-core/dist/js/layouts/Bullseye/Bullseye';
-import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
-import { Card } from '@patternfly/react-core/dist/js/components/Card/Card';
-import { CardBody } from '@patternfly/react-core/dist/js/components/Card/CardBody';
-import ChartSpikeIcon from '@patternfly/react-icons/dist/js/icons/chartSpike-icon';
-import CheckCircleIcon from '@patternfly/react-icons/dist/js/icons/check-circle-icon';
-import CheckIcon from '@patternfly/react-icons/dist/js/icons/check-icon';
-import { ClipboardCopy } from '@patternfly/react-core/dist/js/components/ClipboardCopy/ClipboardCopy';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
-import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
-import { InsightsLabel } from '@redhat-cloud-services/frontend-components/components/InsightsLabel';
+import { DateFormat, InsightsLabel, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 import { List } from 'react-content-loader';
 import MessageState from './MessageState';
-import PficonSatelliteIcon from '@patternfly/react-icons/dist/js/icons/pficon-satellite-icon';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
 import PropTypes from 'prop-types';
 import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import ReportDetails from './ReportDetails';
-import TimesCircleIcon from '@patternfly/react-icons/dist/js/icons/times-circle-icon';
-import { ToolbarItem } from '@patternfly/react-core/dist/js/components/Toolbar';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { connect } from 'react-redux';
 
@@ -43,8 +28,8 @@ class InventoryRuleList extends Component {
             { title: 'Added', transforms: [ sortable, cellWidth(15) ] },
             { title: 'Total risk', transforms: [ sortable ] },
             {
-                title: <span>{AnsibeTowerIcon && <AnsibeTowerIcon size='md' />}Ansible</span>,
-                transforms: [ sortable ],
+                title: <span>{AnsibeTowerIcon && <AnsibeTowerIcon size='md' />} Ansible</span>,
+                transforms: [ sortable, fitContent ],
                 dataLabel: 'Ansible'
             }
         ],
@@ -82,7 +67,7 @@ class InventoryRuleList extends Component {
             const activeRuleFirstReportsData = this.activeRuleFirst(reportsFetch);
             this.fetchKbaDetails(activeRuleFirstReportsData);
             this.setState({
-                rows: this.buildRows(activeRuleFirstReportsData, {}, filters, rows, true, searchValue, true),
+                rows: this.buildRows(activeRuleFirstReportsData, {}, filters, rows, searchValue, true),
                 inventoryReportFetchStatus: 'fulfilled',
                 activeReports: activeRuleFirstReportsData
             });
@@ -110,7 +95,7 @@ class InventoryRuleList extends Component {
             )).data.response.docs;
             this.setState({
                 kbaDetailsData: kbaDetailsFetch,
-                rows: this.buildRows(reportsData, kbaDetailsFetch, filters, rows, true, searchValue)
+                rows: this.buildRows(reportsData, kbaDetailsFetch, filters, rows, searchValue)
             });
         } catch (error) {
             console.error(error, 'KBA fetch failed.');
@@ -136,23 +121,28 @@ class InventoryRuleList extends Component {
         });
     };
 
-    buildRows = (activeReports, kbaDetails, filters, rows, isOpenDefault = true, searchValue = '', kbaLoading = false) => {
+    buildRows = (activeReports, kbaDetails, filters, rows, searchValue = '', kbaLoading = false) => {
         const builtRows = flatten(activeReports.map((value, key) => {
+            console.error(activeReports);
             const rule = value.rule;
             const resolution = value.resolution;
             const kbaDetail = Object.keys(kbaDetails).length ? kbaDetails.filter(article => article.id === value.rule.node_id)[0] : {};
             const entity = rows.filter((rowVal, rowKey) => rowKey % 2 === 0 && rowVal.rule.rule_id === rule.rule_id && rowVal);
             const selected = entity.length ? entity[0].selected : false;
-            const isOpen = entity.length ? entity[0].isOpen : false;
+            const isOpen = rows.length ? (
+                entity.length ? entity[0].isOpen : false
+            ) : (
+                key === 0 ? true : false
+            );
             const reportRow = [
                 {
                     rule,
                     resolution,
-                    isOpen: isOpen || isOpenDefault,
+                    isOpen,
                     selected,
                     cells: [
                         {
-                            title: <div className='pf-m-center'>
+                            title: <div>
                                 {resolution.has_playbook ? <input
                                     aria-label='select-checkbox'
                                     type="checkbox"
@@ -169,7 +159,7 @@ class InventoryRuleList extends Component {
                             </div>
                         },
                         {
-                            title: <div className='pf-m-center' key={key} style={{ verticalAlign: 'top' }}>
+                            title: <div key={key} style={{ verticalAlign: 'top' }}>
                                 <Tooltip key={key} position={TooltipPosition.bottom} content={<span>The <strong>likelihood</strong> that this will be
                                 a problem is {LIKELIHOOD_LABEL[rule.likelihood]}. The <strong>impact</strong> of the problem would be
                                 &nbsp;{IMPACT_LABEL[rule.impact.impact]} if it occurred.</span>}>
@@ -178,7 +168,7 @@ class InventoryRuleList extends Component {
                             </div >
                         },
                         {
-                            title: <div className='pf-m-center ' key={key}>
+                            title: <div className='ins-c-center-text' key={key}>
                                 {resolution.has_playbook ?
                                     <CheckCircleIcon className='successColorOverride' />
                                     : 'No'}
@@ -239,11 +229,12 @@ class InventoryRuleList extends Component {
         };
         const sortedReportsDirectional = direction === SortByDirection.asc ? sortedReports[index] : sortedReports[index].reverse();
         this.setState({
+            activeReports: sortedReportsDirectional,
             sortBy: {
                 index,
                 direction
             },
-            rows: this.buildRows(sortedReportsDirectional, kbaDetailsData, filters, rows, false, searchValue)
+            rows: this.buildRows(sortedReportsDirectional, kbaDetailsData, filters, rows, searchValue)
         });
     };
 
@@ -256,13 +247,13 @@ class InventoryRuleList extends Component {
     onFilterChange = (param, values) => {
         const { filters, activeReports, kbaDetailsData, searchValue, rows } = this.state;
         const newFilters = values.length > 0 ? { ...filters, ...{ [param]: values } } : this.removeFilterParam(param);
-        const builtRows = this.buildRows(activeReports, kbaDetailsData, newFilters, rows, false, searchValue);
+        const builtRows = this.buildRows(activeReports, kbaDetailsData, newFilters, rows, searchValue);
         this.setState({ rows: builtRows, filters: newFilters });
     };
 
     onInputChange = (value) => {
         const { activeReports, kbaDetailsData, filters, rows } = this.state;
-        const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, false, value);
+        const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, value);
         this.setState({ searchValue: value, rows: builtRows });
     };
 
@@ -272,7 +263,7 @@ class InventoryRuleList extends Component {
             rows: this.buildRows(
                 activeReports, kbaDetailsData, filters,
                 rows.map((oneRow) => oneRow.rule && oneRow.rule.rule_id === rule.rule_id ? { ...oneRow, selected: isSelected } : { ...oneRow }),
-                false, searchValue
+                searchValue
             )
         });
     };
@@ -288,8 +279,7 @@ class InventoryRuleList extends Component {
                 rows.map((row, index) => (
                     // We need to use mod 2 here to ignore children with no has_playbook param
                     index % 2 === 0 && row.resolution.has_playbook ? { ...row, selected: isSelected } : row
-                )),
-                false, searchValue
+                )), searchValue
             )
         });
     }
@@ -322,12 +312,12 @@ class InventoryRuleList extends Component {
     onChipDelete = (event, itemsToRemove, isAll) => {
         const { filters, activeReports, kbaDetailsData, rows } = this.state;
         if (isAll) {
-            const builtRows = this.buildRows(activeReports, kbaDetailsData, {}, rows, false, '');
+            const builtRows = this.buildRows(activeReports, kbaDetailsData, {}, rows, '');
             this.setState({ rows: builtRows, filters: {}, searchValue: '' });
         } else {
             itemsToRemove.map(item => {
                 if (item.category === 'Description') {
-                    const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, false, '');
+                    const builtRows = this.buildRows(activeReports, kbaDetailsData, filters, rows, '');
                     this.setState({ rows: builtRows, searchValue: '' });
                 } else {
                     this.onFilterChange(item.urlParam, filters[item.urlParam].filter(value => String(value) !== String(item.chips[0].value)));

@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
-import { Badge, Tooltip } from '@patternfly/react-core';
+import { Badge } from '@patternfly/react-core/dist/js/components/Badge/Badge';
+import { Tooltip } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
 import { loadEntities } from '../redux/actions';
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
@@ -141,18 +142,21 @@ export const loadSystems = (options, showTags) => {
     // eslint-disable-next-line camelcase
     const currPerPage = options?.perPage || options?.per_page;
 
-    const limitedItems = options?.items?.slice(
+    const limitedItems = options?.items?.length > currPerPage ? options?.items?.slice(
         (options?.page - 1) * currPerPage, options?.page * currPerPage
-    );
+    ) : options?.items;
+
     const config = {
         ...options.hasItems && {
             sortBy: options?.sortBy?.key,
             orderDirection: options?.sortBy?.direction?.toUpperCase()
         },
+        ...options,
         // eslint-disable-next-line camelcase
         per_page: currPerPage,
-        filters: options.activeFilters,
-        ...options,
+        filters: options?.filters || options?.activeFilters,
+        orderBy: options?.orderBy || options?.sortBy?.key,
+        orderDirection: options?.orderDirection?.toUpperCase() || options?.sortBy?.direction?.toUpperCase(),
         ...limitedItems?.length > 0 && {
             itemsPage: options?.page,
             page: 1

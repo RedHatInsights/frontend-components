@@ -11,9 +11,9 @@ import {
     TOGGLE_TAG_MODAL,
     CONFIG_CHANGED
 } from './action-types';
-import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/esm/helpers';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/esm/DateFormat';
-import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/esm/CullingInfo';
+import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/cjs/DateFormat';
+import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/cjs/CullingInfo';
 import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
 import TitleColumn from '../components/table/TitleColumn';
@@ -73,7 +73,7 @@ function entitiesPending(state, { meta }) {
     return {
         ...state,
         columns: mergeArraysByKey([
-            defaultColumns.filter(({ key }) => key !== 'tags' || (meta && meta.showTags)),
+            defaultColumns.filter(({ key }) => key !== 'tags' || meta?.showTags),
             state.columns
         ], 'key'),
         rows: [],

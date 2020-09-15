@@ -1,4 +1,4 @@
-@import '~@redhat-cloud-services/frontend-components/components/battery.scss';
+@import '~@redhat-cloud-services/frontend-components/components/InsightsLabel.css';
 @import '~@redhat-cloud-services/frontend-components/components/skeleton.scss';
 @import '~@redhat-cloud-services/frontend-components/components/TableToolbar.scss';
 @import '~@redhat-cloud-services/frontend-components/components/primary-toolbar.scss';
@@ -29,8 +29,19 @@
         }
 
     }
-    div.battery {
-        display: block;
+
+    .pf-c-data-toolbar__content {
+        position: relative;
+        padding-right: var(--pf-c-data-toolbar__content--PaddingRight);
+        padding-left: var(--pf-c-data-toolbar__content--PaddingLeft);
+    }
+
+    .ins-c-primary-toolbar {
+        padding: var(--pf-global--spacer--md);
+    }
+
+    .pf-c-empty-state {
+        flex-direction: column;
     }
 }
 

@@ -4,25 +4,25 @@ exports[`Wizard component should render correctly default 1`] = `
 <Modal
   actions={
     Array [
-      <Unknown
+      <Button
         action="next"
         isDisabled={false}
         onClick={[Function]}
         variant="primary"
       >
         Next
-      </Unknown>,
+      </Button>,
       false,
-      <Unknown
+      <Button
         action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Unknown>,
+      </Button>,
     ]
   }
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -55,6 +55,7 @@ exports[`Wizard component should render correctly default 1`] = `
   isOpen={true}
   onClose={[Function]}
   onKeyPress={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Some title"
   variant="large"
@@ -72,25 +73,25 @@ exports[`Wizard component should render correctly large 1`] = `
 <Modal
   actions={
     Array [
-      <Unknown
+      <Button
         action="next"
         isDisabled={false}
         onClick={[Function]}
         variant="primary"
       >
         Next
-      </Unknown>,
+      </Button>,
       false,
-      <Unknown
+      <Button
         action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Unknown>,
+      </Button>,
     ]
   }
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -123,6 +124,7 @@ exports[`Wizard component should render correctly large 1`] = `
   isOpen={true}
   onClose={[Function]}
   onKeyPress={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Some title"
   variant="large"
@@ -140,25 +142,25 @@ exports[`Wizard component should render correctly one page 1`] = `
 <Modal
   actions={
     Array [
-      <Unknown
+      <Button
         action="confirm"
         isDisabled={false}
         onClick={[Function]}
         variant="primary"
       >
         Confirm
-      </Unknown>,
+      </Button>,
       false,
-      <Unknown
+      <Button
         action="cancel"
         onClick={[Function]}
         variant="secondary"
       >
         Cancel
-      </Unknown>,
+      </Button>,
     ]
   }
-  appendTo={<body />}
+  appendTo={[Function]}
   aria-describedby=""
   aria-label=""
   aria-labelledby=""
@@ -174,6 +176,7 @@ exports[`Wizard component should render correctly one page 1`] = `
   isOpen={true}
   onClose={[Function]}
   onKeyPress={[Function]}
+  ouiaSafe={true}
   showClose={true}
   title="Some title"
   variant="large"

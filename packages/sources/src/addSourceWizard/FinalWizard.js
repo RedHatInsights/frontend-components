@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Wizard, Button, Text } from '@patternfly/react-core';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import FinishedStep from './steps/FinishedStep';
@@ -49,11 +49,17 @@ const FinalWizard = ({
             successfulMessage={ intl.formatMessage({ id: 'wizard.removeSourceSuccessDescription', defaultMessage: 'Source was successfully removed.' }) }
             hideSourcesButton={ hideSourcesButton }
             returnButtonTitle={ returnButtonTitle }
-            secondaryActions={<Button variant="link" onClick={ reset }><FormattedMessage id="wizard.addAnotherSource" defaultMessage="Add another source"/></Button>}
+            secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
+                id: 'wizard.addAnotherSource',
+                defaultMessage: 'Add another source'
+            }) }</Button>}
         />;
     } else if (isDeletingSource) {
         step = <LoadingStep
-            customText={<FormattedMessage id="wizard.removingSource" defaultMessage="Removing source"/>}
+            customText={intl.formatMessage({
+                id: 'wizard.removingSource',
+                defaultMessage: 'Removing source'
+            })}
         />;
     } else if (isFinished) {
         if (createdSource.applications[0]?.availability_status === 'available') {
@@ -62,7 +68,10 @@ const FinalWizard = ({
                 successfulMessage={ successfulMessage }
                 hideSourcesButton={ hideSourcesButton }
                 returnButtonTitle={ returnButtonTitle }
-                secondaryActions={<Button variant="link" onClick={ reset }><FormattedMessage id="wizard.addAnotherSource" defaultMessage="Add another source"/></Button>}
+                secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
+                    id: 'wizard.addAnotherSource',
+                    defaultMessage: 'Add another source'
+                }) }</Button>}
             />;
         } else if (createdSource.applications[0]?.availability_status === 'unavailable') {
             step = <ErroredStep
@@ -84,7 +93,10 @@ const FinalWizard = ({
             step = <TimeoutStep
                 onClose={ afterSubmit }
                 returnButtonTitle={ returnButtonTitle }
-                secondaryActions={<Button variant="link" onClick={ reset }><FormattedMessage id="wizard.addAnotherSource" defaultMessage="Add another source"/></Button>}
+                secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
+                    id: 'wizard.addAnotherSource',
+                    defaultMessage: 'Add another source'
+                }) }</Button>}
             />;
         } else {
             step = <FinishedStep
@@ -92,7 +104,10 @@ const FinalWizard = ({
                 successfulMessage={ successfulMessage }
                 hideSourcesButton={ hideSourcesButton }
                 returnButtonTitle={ returnButtonTitle }
-                secondaryActions={<Button variant="link" onClick={ reset }><FormattedMessage id="wizard.addAnotherSource" defaultMessage="Add another source"/></Button>}
+                secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
+                    id: 'wizard.addAnotherSource',
+                    defaultMessage: 'Add another source'
+                }) }</Button>}
             />;
         }
     } else if (isErrored) {
@@ -104,11 +119,18 @@ const FinalWizard = ({
                     {intl.formatMessage({ id: 'wizard.openTicket', defaultMessage: 'Open a support case' })}
                 </Text>
             }
-            returnButtonTitle={ <FormattedMessage id="wizard.retryText" defaultMessage="Retry"/> }
+            returnButtonTitle={ intl.formatMessage({
+                id: 'wizard.retryText',
+                defaultMessage: 'Retry'
+            })
+            }
         />;
     } else {
         step = <LoadingStep
-            customText={<FormattedMessage id="wizard.loadingText" defaultMessage="Validating source credentials"/>}
+            customText={intl.formatMessage({
+                id: 'wizard.loadingText',
+                defaultMessage: 'Validating source credentials'
+            })}
             onClose={afterError}
             cancelTitle={intl.formatMessage({ id: 'wizard.close', defaultMessage: 'Close' })}
         />;

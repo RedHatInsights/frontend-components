@@ -18,6 +18,9 @@ const PDFDocument = ({
     title,
     reportName,
     size,
+    orientation,
+    allPagesHaveTitle,
+    footer,
     ...props
 }) => {
     const appliedStyles = styles(style);
@@ -26,7 +29,7 @@ const PDFDocument = ({
         height: '100%'
     }}>
         {pages.map((page, key) => (
-            <Page size={size} key={key} style={[ appliedStyles.page, appliedStyles.text ]}>
+            <Page size={size} orientation={orientation} key={key} style={[ appliedStyles.page, appliedStyles.text ]}>
                 {<React.Fragment>
                     <View style={appliedStyles.headerContainer}>
                         <RHLogo />
@@ -34,10 +37,12 @@ const PDFDocument = ({
                             Prepared {DateFormat({ date: new Date(), type: 'exact' }).props.children}
                         </Text>
                     </View>
-                    <View>
-                        <Text style={[ appliedStyles.reportName, appliedStyles.largeSpacing, appliedStyles.displayFont ]}>
-                            {reportName} {type}
-                        </Text>
+                    <View style={appliedStyles.reportNameWrapper}>
+                        {(allPagesHaveTitle || key === 0) && (
+                            <Text style={[ appliedStyles.reportName, appliedStyles.displayFont ]}>
+                                {reportName} {type}
+                            </Text>
+                        )}
                     </View>
                     <View>
                         <Text style={ appliedStyles.displayFont }>
@@ -48,19 +53,22 @@ const PDFDocument = ({
                 <View style={appliedStyles.smallSpacing}>
                     {page}
                 </View>
-                <View style={[ appliedStyles.flexRow, {
+                <View style={[{
                     marginTop: 'auto'
                 }]}>
-                    <Text style={[{
-                        marginLeft: 'auto'
-                    }]}>
-                        { key + 1 } of {pages.length}
-                    </Text>
-                    <Text style={[{
-                        marginLeft: 'auto'
-                    }, appliedStyles.thirdTitle ]}>
-                        redhat.com
-                    </Text>
+                    {footer}
+                    <View style={[ appliedStyles.flexRow ]}>
+                        <Text style={[{
+                            marginLeft: 'auto'
+                        }]}>
+                            { key + 1 } of {pages.length}
+                        </Text>
+                        <Text style={[{
+                            marginLeft: 'auto'
+                        }, appliedStyles.thirdTitle ]}>
+                            redhat.com
+                        </Text>
+                    </View>
                 </View>
             </Page>
         ))}
@@ -77,6 +85,7 @@ PDFDocument.propTypes = {
         PropTypes.array,
         PropTypes.number
     ]),
+    orientation: PropTypes.string,
     reportName: PropTypes.string,
     type: PropTypes.string,
     title: PropTypes.oneOfType([
@@ -94,14 +103,17 @@ PDFDocument.propTypes = {
     ]),
     style: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
-    })
+    }),
+    allPagesHaveTitle: PropTypes.bool,
+    footer: PropTypes.node
 };
 PDFDocument.defaultProps = {
     size: 'A4',
     reportName: 'Executive report:',
     pages: [],
     title: '',
-    type: 'Default'
+    type: 'Default',
+    allPagesHaveTitle: true
 };
 
 export default PDFDocument;

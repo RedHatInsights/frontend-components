@@ -60,10 +60,10 @@ describe('should create dummy config with no options', () => {
 
     test('output', () => {
         expect(output).toEqual({
-            filename: 'js/[name].js',
+            filename: 'js/[name].[hash].js',
             path: '/dist',
             publicPath: undefined,
-            chunkFilename: 'js/[name].js'
+            chunkFilename: 'js/[name].[hash].js'
         });
     });
 

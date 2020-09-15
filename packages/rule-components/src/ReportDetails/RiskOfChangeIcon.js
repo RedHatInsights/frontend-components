@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SecurityIcon } from '@patternfly/react-icons';
+import { riskOfChangeMeta } from './constants';
 
 /**
  * This is the RiskOfChangeIcon component
@@ -12,8 +13,9 @@ import { SecurityIcon } from '@patternfly/react-icons';
  * 4 - critical - worst case scenario
  * Also accepts a label which can be made invisible
  */
-const RiskOfChangeIcon = ({ severity, label, ...props }) => (
-    <>
+const RiskOfChangeIcon = ({ value, ...props }) => {
+    const label = riskOfChangeMeta[value - 1] && riskOfChangeMeta[value - 1].label;
+    return <div className={ `ins-c-rule__battery battery ins-c-rule__severity-level-${ value }` }>
         <i
             widget-type='InsightsBattery'
             widget-id={ label }
@@ -25,19 +27,15 @@ const RiskOfChangeIcon = ({ severity, label, ...props }) => (
             label && label.length > 0 &&
             <span className="ins-c-risk-of-change__label">{ label }</span>
         }
-    </>
-);
+    </div>;
+};
 
 RiskOfChangeIcon.propTypes = {
-    severity: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-    ]).isRequired,
-    label: PropTypes.string.isRequired
+    value: PropTypes.number.isRequired
 };
 
 RiskOfChangeIcon.defaultProps = {
-    severity: 'null'
+    severity: 0
 };
 
 export default RiskOfChangeIcon;

@@ -23,7 +23,8 @@ describe('AWS-ARN hardcoded schemas', () => {
     });
 
     it('IAM POLICY is rendered correctly', async () => {
-        const CONFIG = { some: 'fake', config: 'oh yeah' };
+        const IAM_POLICY = { version: '1234' };
+        const CONFIG = { some: 'fake', config: 'oh yeah', aws_policies: { traditional_inspection: IAM_POLICY } };
         api.getSubWatchConfig = jest.fn().mockImplementation(() => Promise.resolve(CONFIG));
 
         let wrapper;
@@ -40,7 +41,7 @@ describe('AWS-ARN hardcoded schemas', () => {
         expect(wrapper.find(TextListItem)).toHaveLength(3);
         expect(wrapper.find(ClipboardCopy)).toHaveLength(1);
 
-        expect(wrapper.find('input').props().value).toEqual(JSON.stringify(CONFIG, null, 2));
+        expect(wrapper.find('input').props().value).toEqual(JSON.stringify(IAM_POLICY, null, 2));
     });
 
     it('IAM POLICY is rendered correctly with error', async () => {

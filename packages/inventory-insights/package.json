@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-insights",
-    "version": "2.5.2",
+    "version": "2.5.5",
     "description": "Rules detail page for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",
@@ -8,7 +8,10 @@
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./config/rollup.config.js --environment NODE_ENV:production",
+        "build": "npm run build:js && npm run build:esm && npm run build:umd",
+        "build:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
+        "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
+        "build:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",
         "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {

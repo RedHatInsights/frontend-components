@@ -1,14 +1,13 @@
 import React, { useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/esm/Skeleton';
 import PropTypes from 'prop-types';
 import { loadEntity, deleteEntity } from '../../redux/actions';
 import './InventoryDetail.scss';
 import SystemNotFound from './SystemNotFound';
 import TopBar from './TopBar';
 import FactsInfo from './FactsInfo';
-import { TagsModal, TagWithDialog, reloadWrapper } from '../../shared';
+import { reloadWrapper } from '../../shared';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import ApplicationDetails from './ApplicationDetails';
 import './InventoryDetail.scss';
@@ -25,7 +24,8 @@ const InventoryDetail = ({
     onTabSelect,
     onBackToListClick,
     showDelete,
-    appList
+    appList,
+    showInventoryDrawer
 }) => {
     const { inventoryId } = useParams();
     const dispatch = useDispatch();
@@ -55,15 +55,11 @@ const InventoryDetail = ({
                 } }
                 addNotification={ (payload) => dispatch(addNotification(payload))}
                 hideInvLink={ hideInvLink }
+                showInventoryDrawer={ showInventoryDrawer }
                 showDelete={ showDelete }
+                showTags={ showTags }
             />
             <FactsInfo loaded={ loaded } entity={ entity } />
-            {
-                showTags && (loaded ?
-                    <TagWithDialog count={ entity && entity.tags && entity.tags.length } systemId={ entity && entity.id } /> :
-                    <Skeleton size={ SkeletonSize.sm }>&nbsp;</Skeleton>)
-            }
-            {showTags &&  <TagsModal />}
         </Fragment>}
         <ApplicationDetails onTabSelect={ onTabSelect } appList={ appList } />
     </div>;
@@ -74,6 +70,7 @@ InventoryDetail.propTypes = {
     hideBack: PropTypes.bool,
     showTags: PropTypes.bool,
     showDelete: PropTypes.bool,
+    showInventoryDrawer: PropTypes.bool,
     actions: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.node,
         onClick: PropTypes.func,
@@ -91,7 +88,6 @@ InventoryDetail.defaultProps = {
     actions: [],
     hideInvLink: false,
     showTags: false,
-    onTabSelect: () => undefined,
     onBackToListClick: () => undefined
 };
 
