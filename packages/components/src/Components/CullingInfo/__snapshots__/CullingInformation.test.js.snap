@@ -3,7 +3,7 @@
 exports[`CullingInformation it should render correctly without any date 1`] = `
 <Fragment>
   <Tooltip
-    content="System scheduled for inventory removal in -18297 days"
+    content="System scheduled for inventory removal in -18296 days"
     position="bottom"
   >
     <span
