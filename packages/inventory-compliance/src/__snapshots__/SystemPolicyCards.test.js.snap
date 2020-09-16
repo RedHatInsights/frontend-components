@@ -36,11 +36,10 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
     }
   >
     <Grid
-      gutter="md"
+      hasGutter={true}
     >
       <div
-        className="pf-l-grid"
-        gutter="md"
+        className="pf-l-grid pf-m-gutter"
       >
         <GridItem
           key="0"
@@ -574,11 +573,10 @@ exports[`SystemPolicyCards component should render real table 1`] = `
     }
   >
     <Grid
-      gutter="md"
+      hasGutter={true}
     >
       <div
-        className="pf-l-grid"
-        gutter="md"
+        className="pf-l-grid pf-m-gutter"
       >
         <GridItem
           key="0"
