@@ -13,7 +13,7 @@
         "build:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
         "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
         "build:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",
-        "start": "rollup -c ./rollup.config.js -w"
+        "start": "rollup -c ./config/rollup.config.js -w"
     },
     "repository": {
         "type": "git",

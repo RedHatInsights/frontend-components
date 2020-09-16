@@ -123,10 +123,11 @@ To test changes from packages in this repository in other applications follow th
   rm -rf node_modules/react; rm -rf node_modules/react-dom
   ```
   This is because we want to use hooks and different reacts are not playing nicely with hooks [facebook/react/issues/15315](https://github.com/facebook/react/issues/15315)
-3. Link `react` and `react-dom` from your application.
+
+3. Link `react` and `react-dom` from your application. Running from folder that contains your application and frontend components. Running `ls` in this folder would yield `<application-folder>  insights-proxy  frontend-components`
 ```
-ln -s $PWD/insights-inventory-frontend/node_modules/react frontend-components/node_modules/react
-ln -s $PWD/insights-inventory-frontend/node_modules/react-dom frontend-components/node_modules/react-dom
+ln -s $PWD/<application-folder>/node_modules/react frontend-components/node_modules/react
+ln -s $PWD/<application-folder>/node_modules/react-dom frontend-components/node_modules/react-dom
 ```
 
 4. Change into the directory of the package you are working on, for example `cd packages/components` and run `npm link`*
