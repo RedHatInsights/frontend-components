@@ -1,5 +1,4 @@
 .ins-c-primary-toolbar {
-    padding: var(--pf-global--spacer--md);
     .pf-c-toolbar__item.ins-c-primary-toolbar__first-action {
         display: initial;
     }
@@ -34,8 +33,6 @@
 
 @media only screen and (max-width: 768px) {
     .ins-c-primary-toolbar {
-        padding: var(--pf-global--spacer--sm);
-
         .pf-c-toolbar__item.ins-c-primary-toolbar__first-action {
             display: none;
         }
