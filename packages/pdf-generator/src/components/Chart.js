@@ -10,12 +10,20 @@ import { getLightThemeColors } from '@patternfly/react-charts/dist/js/components
 import Table from './Table';
 import styles from '../utils/styles';
 import rgbHex from 'rgb-hex';
+import flatten from 'lodash/flatten';
 
 const appliedStyles = styles();
 
 const chartMapper = {
     pie: {
         component: ChartPie,
+        chartProps: {
+            allowTooltip: false,
+            labelRadius: 45,
+            labels: ({ datum }) => `${datum.y}%`,
+            style: { labels: { fill: '#FFFFFF' } }
+        },
+        showLabels: true,
         width: 80
     },
     donut: {
@@ -37,20 +45,26 @@ class Chart extends Component {
         document.body.appendChild(el);
         el.style.display = 'none';
         ReactDOM.render(
-            <Chart data={ data } { ...props } />,
+            <Chart data={ data } {...currChart.chartProps} { ...props } />,
             el,
         );
 
         const paths = Array.from(el.querySelectorAll('path')).map((path) => path.getAttribute('d'));
-        const texts = Array.from(el.querySelectorAll('text tspan')).map((text) => ({
-            text: text.innerHTML,
-            style: text.getAttribute('style').split(';').reduce((acc, curr) => {
-                const [ key, val ] = curr.split(':');
-                return {
-                    ...acc,
-                    ...key && { [key.trim()]: val.trim() }
-                };
-            }, {})
+        const texts = flatten(Array.from(el.querySelectorAll('text')).map((textEl, key) => {
+            return Array.from(textEl.querySelectorAll('tspan')).map((text) => ({
+                text: text.innerHTML,
+                ...currChart.showLabels && {
+                    coords: [ textEl.getAttribute('x'), textEl.getAttribute('y') ],
+                    shift: data[key]?.y < 20 ? 0.65 : 0
+                },
+                style: text.getAttribute('style').split(';').reduce((acc, curr) => {
+                    const [ key, val ] = curr.split(':');
+                    return {
+                        ...acc,
+                        ...key && { [key.trim()]: val.trim() }
+                    };
+                }, {})
+            }));
         }));
         // let's clean up the placeholder chart
         ReactDOM.unmountComponentAtNode(el);
@@ -91,6 +105,7 @@ class Chart extends Component {
                         const currText = texts[key];
                         if (currText) {
                             const fontSize = parseInt(currText.style['font-size'].replace('px', '')) * 2;
+                            const coords = currText.coords;
                             const color = rgbHex(
                                 ...currText
                                 .style
@@ -100,7 +115,19 @@ class Chart extends Component {
                                 .map(item => parseInt(item, 10))
                             );
                             fill(`#${color}`).fontSize(fontSize);
-                            text(currText.text, -(currText.text.length * (fontSize / 4)), (24 * key) - fontSize);
+                            if (coords) {
+                                const [ xshift, yshift ] = [
+                                    coords?.[0] > (fontSize + currChart.width) ?
+                                        0.5 :
+                                        -2 + (currText?.shift || 0),
+                                    coords?.[1] > 100 ?
+                                        coords?.[0] < (fontSize + currChart.width) ? 0.5 : 1
+                                        : -2 - (currText?.shift || 0)
+                                ];
+                                text(currText.text, xshift * fontSize, yshift * fontSize);
+                            } else {
+                                text(currText.text, -(currText.text.length * (fontSize / 4)), (24 * key) - fontSize);
+                            }
                         }
                     });
                 }
@@ -156,7 +183,7 @@ Chart.propTypes = {
     ])
 };
 Chart.defaultProps = {
-    colorSchema: 'multi-ordered'
+    colorSchema: 'multiOrdered'
 };
 
 export default Chart;
