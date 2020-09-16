@@ -50,8 +50,8 @@ class Chart extends Component {
         );
 
         const paths = Array.from(el.querySelectorAll('path')).map((path) => path.getAttribute('d'));
-        const texts = flatten(Array.from(el.querySelectorAll('text')).map((textEl, key) => {
-            return Array.from(textEl.querySelectorAll('tspan')).map((text) => ({
+        const texts = flatten(Array.from(el.querySelectorAll('text')).map((textEl, key) => (
+            Array.from(textEl.querySelectorAll('tspan')).map((text) => ({
                 text: text.innerHTML,
                 ...currChart.showLabels && {
                     coords: [ textEl.getAttribute('x'), textEl.getAttribute('y') ],
@@ -64,8 +64,8 @@ class Chart extends Component {
                         ...key && { [key.trim()]: val.trim() }
                     };
                 }, {})
-            }));
-        }));
+            }))
+        )));
         // let's clean up the placeholder chart
         ReactDOM.unmountComponentAtNode(el);
         el.remove();
