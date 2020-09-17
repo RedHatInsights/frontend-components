@@ -17,13 +17,13 @@ exports[`NotAuthorized component should render 1`] = `
       Foo
     </Title>
     <EmptyStateBody>
-      Contact your organization administrator(s) or visit 
+      Contact your organization administrator(s) for more information or visit 
       <a
         href="./settings/my-user-access"
       >
          My User Access 
       </a>
-       for more information.
+       to learn more about your permissions.
     </EmptyStateBody>
     <Button
       component="a"
