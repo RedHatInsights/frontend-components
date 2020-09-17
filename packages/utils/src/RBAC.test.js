@@ -14,6 +14,9 @@ describe('RBAC utilities', () => {
         it('returns true and at least one required permissions exists', () => {
             expect(doesHavePermissions([ 'cost-management:rate:write', 'cost-management:cluster:write' ], requiredPermissions)).toBe(true);
         });
+        it('return true for permission object', () => {
+            expect(doesHavePermissions([{ permission: 'cost-management:rate:write' }, 'cost-management:cluster:write' ], requiredPermissions)).toBe(true);
+        });
     });
     describe('ger RBAC', () => {
         it('returns permission list and is org admin', async  () => {

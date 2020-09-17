@@ -124,8 +124,14 @@ To test changes from packages in this repository in other applications follow th
   ```
   This is because we want to use hooks and different reacts are not playing nicely with hooks [facebook/react/issues/15315](https://github.com/facebook/react/issues/15315)
 
-2. Change into the directory of the package you are working on, for example `cd packages/components` and run `npm link`*
-3. Change into the directory of the application you'd like to include the package and run `npm link @redhat-cloud-services/frontend-components`*
+3. Link `react` and `react-dom` from your application. Running from folder that contains your application and frontend components. Running `ls` in this folder would yield `<application-folder>  insights-proxy  frontend-components`
+```
+ln -s $PWD/<application-folder>/node_modules/react frontend-components/node_modules/react
+ln -s $PWD/<application-folder>/node_modules/react-dom frontend-components/node_modules/react-dom
+```
+
+4. Change into the directory of the package you are working on, for example `cd packages/components` and run `npm link`*
+5. Change into the directory of the application you'd like to include the package and run `npm link @redhat-cloud-services/frontend-components`*
 
 After these steps the package you want to test should be linked and the last `npm link` command should have returned the paths it linked the package from.
 

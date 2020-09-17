@@ -37,7 +37,7 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
     showClearFiltersButton={false}
   >
     <ForwardRef
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
       variant="filter-group"
     >
       <ToolbarItem>
@@ -108,7 +108,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
     showClearFiltersButton={false}
   >
     <ForwardRef
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
       variant="filter-group"
     >
       <ToolbarItem>
@@ -327,7 +327,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
     showClearFiltersButton={false}
   >
     <ForwardRef
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
       variant="filter-group"
     >
       <ToolbarItem>
@@ -362,7 +362,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
     showClearFiltersButton={false}
   >
     <ForwardRef
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
       variant="filter-group"
     >
       <ToolbarItem
@@ -408,7 +408,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
     showClearFiltersButton={false}
   >
     <ForwardRef
-      className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
+      className="ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
       variant="filter-group"
     >
       <ToolbarItem>
