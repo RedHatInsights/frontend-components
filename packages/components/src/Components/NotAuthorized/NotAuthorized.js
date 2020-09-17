@@ -21,7 +21,7 @@ const NotAuthorized = ({ serviceName }) => {
                 <EmptyStateIcon icon={ LockIcon } />
                 <Title headingLevel="h5" size="lg"> You do not have access to { serviceName }</Title>
                 <EmptyStateBody>
-                    Contact your organization administrator(s) for more information.
+                    Contact your organization administrator(s) or visit <a href={`./${window.insights.chrome.isBeta() ? 'beta/' : ''}settings/my-user-access`}> My User Access </a> for more information.
                 </EmptyStateBody>
                 {
                     document.referrer ?
