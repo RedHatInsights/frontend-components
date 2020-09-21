@@ -42,12 +42,12 @@ describe('DateFormat component', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it('DateFormat renders with date integer', () => {
+    it('DateFormat renders exact with date integer', () => {
         const wrapper = shallow(<DateFormat date={10} type='exact'/>);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it('DateFormat renders with date integer', () => {
+    it('DateFormat renders onlyDate with date integer', () => {
         const wrapper = shallow(<DateFormat date={10} type='onlyDate'/>);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
