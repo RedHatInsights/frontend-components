@@ -2,6 +2,7 @@ import React, { Fragment, forwardRef } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/TableToolbar';
+import { NotAuthorized } from '@redhat-cloud-services/frontend-components/components/cjs/NotAuthorized';
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 
@@ -24,6 +25,8 @@ const InventoryTable = forwardRef(({
     showTags,
     sortBy: propsSortBy,
     customFilters,
+    hasAccess,
+    isFullView = false,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
@@ -52,47 +55,60 @@ const InventoryTable = forwardRef(({
     ), shallowEqual);
 
     return (
-        <Fragment>
-            <EntityTableToolbar
-                { ...props }
-                customFilters={customFilters}
-                items={ items }
-                onRefresh={onRefresh}
-                filters={ filters }
-                hasItems={ hasItems }
-                total={ pagination.total }
-                page={ pagination.page }
-                perPage={ pagination.perPage }
-                showTags={ showTags }
-            >
-                { children }
-            </EntityTableToolbar>
-            <InventoryList
-                { ...props }
-                customFilters={customFilters}
-                ref={ref}
-                hasItems={ hasItems }
-                onRefresh={ onRefresh }
-                items={ items }
-                page={ pagination.page }
-                sortBy={ sortBy }
-                perPage={ pagination.perPage }
-                showTags={ showTags }
-            />
-            <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
-                <Pagination
+        (hasAccess === false && isFullView) ?
+            <NotAuthorized
+                serviceName="Inventory"
+                description={
+                    <Fragment>
+                        <div>Your organization administrator must grant</div>
+                        <div>you inventory access to view your systems.</div>
+                    </Fragment>
+                }
+            /> :
+            <Fragment>
+                <EntityTableToolbar
+                    { ...props }
                     customFilters={customFilters}
-                    isFull
+                    hasAccess={hasAccess}
                     items={ items }
+                    onRefresh={onRefresh}
+                    filters={ filters }
+                    hasItems={ hasItems }
                     total={ pagination.total }
                     page={ pagination.page }
                     perPage={ pagination.perPage }
+                    showTags={ showTags }
+                >
+                    { children }
+                </EntityTableToolbar>
+                <InventoryList
+                    { ...props }
+                    customFilters={customFilters}
+                    hasAccess={hasAccess}
+                    ref={ref}
                     hasItems={ hasItems }
                     onRefresh={ onRefresh }
+                    items={ items }
+                    page={ pagination.page }
+                    sortBy={ sortBy }
+                    perPage={ pagination.perPage }
                     showTags={ showTags }
                 />
-            </TableToolbar>
-        </Fragment>
+                <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
+                    <Pagination
+                        customFilters={customFilters}
+                        hasAccess={hasAccess}
+                        isFull
+                        items={ items }
+                        total={ pagination.total }
+                        page={ pagination.page }
+                        perPage={ pagination.perPage }
+                        hasItems={ hasItems }
+                        onRefresh={ onRefresh }
+                        showTags={ showTags }
+                    />
+                </TableToolbar>
+            </Fragment>
     );
 });
 

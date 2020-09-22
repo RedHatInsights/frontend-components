@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment, Component } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
 import { Grid, GridItem } from '@patternfly/react-core/dist/js/layouts/Grid';
+import { NotAuthorized } from '@redhat-cloud-services/frontend-components/components/cjs/NotAuthorized';
 import PropTypes from 'prop-types';
 import './InventoryList.scss';
 import { loadSystems } from '../../shared';
@@ -10,7 +11,7 @@ import isEqual from 'lodash/isEqual';
 /**
  * Component that works as a side channel for consumers to notify inventory of new data changes.
  */
-class ContextInventoryList extends React.Component {
+class ContextInventoryList extends Component {
     /**
      * If conumer wants to change data they can call this function via component ref.
      * @param {*} options new options to be applied, like pagination, filters, etc.
@@ -69,17 +70,30 @@ class ContextInventoryList extends React.Component {
 /**
  * Component that consumes active filters and passes them down to component.
  */
-const InventoryList = React.forwardRef((props, ref) => {
+const InventoryList = React.forwardRef(({ hasAccess, ...props }, ref) => {
     const dispatch = useDispatch();
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
-    return (
-        <ContextInventoryList
-            { ...props }
-            ref={ref}
-            activeFilters={ activeFilters }
-            loadEntities={ (config, showTags) => dispatch(loadSystems(config, showTags)) }
-        />
-    );
+    return !hasAccess ?
+        <div className="ins-c-inventory__no-access">
+            <NotAuthorized
+                serviceName="Inventory"
+                showReturnButton={false}
+                description={
+                    <Fragment>
+                        <div>Your organization administrator must grant</div>
+                        <div>you inventory access to view your systems.</div>
+                    </Fragment>
+                }
+            />
+        </div>
+        : (
+            <ContextInventoryList
+                { ...props }
+                ref={ref}
+                activeFilters={ activeFilters }
+                loadEntities={ (config, showTags) => dispatch(loadSystems(config, showTags)) }
+            />
+        );
 });
 
 ContextInventoryList.propTypes = {
