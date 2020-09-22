@@ -62,3 +62,21 @@ exports[`DateFormat component DateFormat renders with date string 1`] = `
   </Tooltip>
 </Fragment>
 `;
+
+exports[`DateFormat component DateFormat treats date bogus string as invalid 1`] = `
+<Fragment>
+  Invalid date
+</Fragment>
+`;
+
+exports[`DateFormat component DateFormat treats date null as invalid 1`] = `
+<Fragment>
+  Invalid date
+</Fragment>
+`;
+
+exports[`DateFormat component DateFormat treats date undefined as invalid 1`] = `
+<Fragment>
+  Invalid date
+</Fragment>
+`;
