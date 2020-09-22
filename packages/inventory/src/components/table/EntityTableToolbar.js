@@ -56,6 +56,7 @@ const EntityTableToolbar = ({
     isLoaded,
     items,
     sortBy,
+    customFilters,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -92,7 +93,10 @@ const EntityTableToolbar = ({
      */
     const debounceGetAllTags = useCallback(debounce((config, options) => {
         if (showTags && !hasItems) {
-            dispatch(fetchAllTags(config, options));
+            dispatch(fetchAllTags({
+                ...customFilters,
+                ...config
+            }, options));
         }
     }, 800), []);
 
@@ -102,7 +106,7 @@ const EntityTableToolbar = ({
     const onRefreshData = useCallback((options) => {
         dispatch(loadSystems(options, showTags));
         if (showTags && !hasItems) {
-            dispatch(fetchAllTags(filterTagsBy, { filters: options.filters }));
+            dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options.filters }));
         }
     });
 
@@ -124,8 +128,11 @@ const EntityTableToolbar = ({
         };
         onRefresh ? onRefresh(params, (options) => {
             dispatch(entitiesLoading());
-            onRefreshData({ ...params, ...options });
-        }) : onRefreshData(params);
+            onRefreshData({ ...params, ...customFilters, ...options });
+        }) : onRefreshData({
+            ...customFilters,
+            ...params
+        });
     };
 
     /**
@@ -302,6 +309,7 @@ const EntityTableToolbar = ({
         {
             showTags &&
             <TagsModal
+                customFilters={customFilters}
                 filterTagsBy={filterTagsBy}
                 onApply={(selected) => setSelectedTags(arrayToSelection(selected))}
                 onToggleModal={() => seFilterTagsBy('')}
@@ -324,7 +332,13 @@ EntityTableToolbar.propTypes = {
     pagination: PrimaryToolbar.propTypes.pagination,
     actionsConfig: PrimaryToolbar.propTypes.actionsConfig,
     activeFiltersConfig: PrimaryToolbar.propTypes.activeFiltersConfig,
-    onRefreshData: PropTypes.func
+    onRefreshData: PropTypes.func,
+    customFilters: PropTypes.shape({
+        tags: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.arrayOf(PropTypes.string)
+        ])
+    })
 };
 
 EntityTableToolbar.defaultProps = {
