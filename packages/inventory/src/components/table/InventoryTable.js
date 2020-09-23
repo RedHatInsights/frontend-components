@@ -2,9 +2,9 @@ import React, { Fragment, forwardRef } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/TableToolbar';
-import { NotAuthorized } from '@redhat-cloud-services/frontend-components/components/cjs/NotAuthorized';
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
+import AccessDenied from '../../shared/AccessDenied';
 
 /**
  * This component is used to combine all essential components together:
@@ -56,15 +56,7 @@ const InventoryTable = forwardRef(({
 
     return (
         (hasAccess === false && isFullView) ?
-            <NotAuthorized
-                serviceName="Inventory"
-                description={
-                    <Fragment>
-                        <div>Your organization administrator must grant</div>
-                        <div>you inventory access to view your systems.</div>
-                    </Fragment>
-                }
-            /> :
+            <AccessDenied /> :
             <Fragment>
                 <EntityTableToolbar
                     { ...props }

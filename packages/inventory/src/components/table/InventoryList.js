@@ -1,12 +1,12 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
 import { Grid, GridItem } from '@patternfly/react-core/dist/js/layouts/Grid';
-import { NotAuthorized } from '@redhat-cloud-services/frontend-components/components/cjs/NotAuthorized';
 import PropTypes from 'prop-types';
 import './InventoryList.scss';
 import { loadSystems } from '../../shared';
 import isEqual from 'lodash/isEqual';
+import AccessDenied from '../../shared/AccessDenied';
 
 /**
  * Component that works as a side channel for consumers to notify inventory of new data changes.
@@ -75,16 +75,7 @@ const InventoryList = React.forwardRef(({ hasAccess, ...props }, ref) => {
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
     return !hasAccess ?
         <div className="ins-c-inventory__no-access">
-            <NotAuthorized
-                serviceName="Inventory"
-                showReturnButton={false}
-                description={
-                    <Fragment>
-                        <div>Your organization administrator must grant</div>
-                        <div>you inventory access to view your systems.</div>
-                    </Fragment>
-                }
-            />
+            <AccessDenied showReturnButton={false} />
         </div>
         : (
             <ContextInventoryList
