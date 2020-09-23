@@ -4,7 +4,9 @@ import { dateByType } from './helper';
 
 export default function DateFormat({ date, type = 'relative', extraTitle, tooltipProps = {} }) {
     const dateObj = date instanceof Date ? date : new Date(date);
-    const dateType = dateObj.toString() === 'Invalid Date' ? 'invalid' : type;
+    // Prevent treating null as valid. (new Date(null) == new Date(0) returns 1970 Jan 1)
+    const invalid = date === undefined || date === null || dateObj.toString() === 'Invalid Date';
+    const dateType = invalid ? 'invalid' : type;
     return (
         <React.Fragment>
             {dateByType(dateType, tooltipProps, extraTitle)(dateObj)}
