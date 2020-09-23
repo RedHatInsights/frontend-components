@@ -7,3 +7,9 @@
         display: none;
     }
 }
+
+.ins-c-chip-filters {
+    .pf-c-chip-group:not(:last-child) {
+        margin-right: var(--pf-global--spacer--sm);
+    }
+}

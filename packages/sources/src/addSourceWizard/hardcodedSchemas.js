@@ -56,6 +56,26 @@ const subsWatchArnField = {
     label: <FormattedMessage id="wizard.arn" defaultMessage="ARN" />
 };
 
+const ansibleTowerURL = {
+    isRequired: true,
+    validate: [
+        { type: validatorTypes.REQUIRED },
+        {
+            type: validatorTypes.PATTERN,
+            message: <FormattedMessage id="catalog.urlPatternMessage" defaultMessage="URL must start with https:// or http://" />,
+            pattern: /^https{0,1}:\/\//
+        },
+        { type: validatorTypes.URL }
+    ],
+    helperText: <FormHelperText isHidden={false}>
+        <FormattedMessage
+            id="catalog.hostnameHelper"
+            defaultMessage="For example, https://myansibleinstance.example.com/ or https://127.0.0.1/"
+        />
+    </FormHelperText>,
+    label: <FormattedMessage id="wizard.hostname" defaultMessage="Hostname" />
+};
+
 export default {
     openshift: {
         authentication: {
@@ -518,25 +538,7 @@ export default {
                         validate: [{ type: validatorTypes.REQUIRED }],
                         label: <FormattedMessage id="wizard.password" defaultMessage="Password" />
                     },
-                    url: {
-                        isRequired: true,
-                        validate: [
-                            { type: validatorTypes.REQUIRED },
-                            {
-                                type: validatorTypes.PATTERN,
-                                message: <FormattedMessage id="catalog.urlPatternMessage" defaultMessage="URL must start with https:// or http://" />,
-                                pattern: /^https{0,1}:\/\//
-                            },
-                            { type: validatorTypes.URL }
-                        ],
-                        helperText: <FormHelperText isHidden={false}>
-                            <FormattedMessage
-                                id="catalog.hostnameHelper"
-                                defaultMessage="For example, https://myansibleinstance.example.com/ or https://127.0.0.1/"
-                            />
-                        </FormHelperText>,
-                        label: <FormattedMessage id="wizard.hostname" defaultMessage="Hostname" />
-                    },
+                    url: ansibleTowerURL,
                     'endpoint.certificate_authority': {
                         label: <FormattedMessage id="wizard.certificateAuthoriy" defaultMessage="Certificate authority" />
                     },
@@ -601,25 +603,7 @@ export default {
                         validate: [{ type: validatorTypes.REQUIRED }],
                         label: <FormattedMessage id="wizard.password" defaultMessage="Password" />
                     },
-                    url: {
-                        isRequired: true,
-                        validate: [
-                            { type: validatorTypes.REQUIRED },
-                            {
-                                type: validatorTypes.PATTERN,
-                                message: <FormattedMessage id="catalog.urlPatternMessage" defaultMessage="URL must start with https:// or http://" />,
-                                pattern: /^https{0,1}:\/\//
-                            },
-                            { type: validatorTypes.URL }
-                        ],
-                        helperText: <FormHelperText isHidden={false}>
-                            <FormattedMessage
-                                id="catalog.hostnameHelper"
-                                defaultMessage="For example, https://myansibleinstance.example.com/ or https://127.0.0.1/"
-                            />
-                        </FormHelperText>,
-                        label: <FormattedMessage id="wizard.hostname" defaultMessage="Hostname" />
-                    },
+                    url: ansibleTowerURL,
                     'endpoint.certificate_authority': {
                         label: <FormattedMessage id="wizard.certificateAuthoriy" defaultMessage="Certificate authority" />
                     },
@@ -676,12 +660,7 @@ export default {
             }
         },
         endpoint: {
-            url: {
-                isRequired: true,
-                validate: [{ type: validatorTypes.REQUIRED }],
-                placeholder: 'https://',
-                label: <FormattedMessage id="wizard.hostname" defaultMessage="Hostname" />
-            },
+            url: ansibleTowerURL,
             'endpoint.certificate_authority': {
                 label: <FormattedMessage id="wizard.certificateAuthority" defaultMessage="Certificate authority" />
             },

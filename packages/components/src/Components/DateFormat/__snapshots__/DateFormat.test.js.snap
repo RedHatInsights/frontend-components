@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DateFormat component DateFormat renders exact with date integer 1`] = `
+<Fragment>
+  01 Jan 1970 00:00 UTC
+</Fragment>
+`;
+
+exports[`DateFormat component DateFormat renders onlyDate with date integer 1`] = `
+<Fragment>
+  01 Jan 1970
+</Fragment>
+`;
+
 exports[`DateFormat component DateFormat renders with date integer 1`] = `
 <Fragment>
   <Tooltip
@@ -14,18 +26,6 @@ exports[`DateFormat component DateFormat renders with date integer 1`] = `
       Just now
     </span>
   </Tooltip>
-</Fragment>
-`;
-
-exports[`DateFormat component DateFormat renders with date integer 2`] = `
-<Fragment>
-  01 Jan 1970 00:00 UTC
-</Fragment>
-`;
-
-exports[`DateFormat component DateFormat renders with date integer 3`] = `
-<Fragment>
-  01 Jan 1970
 </Fragment>
 `;
 
@@ -60,5 +60,23 @@ exports[`DateFormat component DateFormat renders with date string 1`] = `
       Just now
     </span>
   </Tooltip>
+</Fragment>
+`;
+
+exports[`DateFormat component DateFormat treats date bogus string as invalid 1`] = `
+<Fragment>
+  Invalid date
+</Fragment>
+`;
+
+exports[`DateFormat component DateFormat treats date null as invalid 1`] = `
+<Fragment>
+  Invalid date
+</Fragment>
+`;
+
+exports[`DateFormat component DateFormat treats date undefined as invalid 1`] = `
+<Fragment>
+  Invalid date
 </Fragment>
 `;

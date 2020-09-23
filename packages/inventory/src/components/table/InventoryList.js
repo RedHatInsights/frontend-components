@@ -16,7 +16,7 @@ class ContextInventoryList extends React.Component {
      * @param {*} options new options to be applied, like pagination, filters, etc.
      */
     onRefreshData = (options = {}) => {
-        const { page, perPage, items, hasItems, sortBy, activeFilters, showTags } = this.props;
+        const { page, perPage, items, hasItems, sortBy, activeFilters, showTags, customFilters } = this.props;
         this.props.loadEntities && this.props.loadEntities({
             page,
             perPage,
@@ -24,6 +24,7 @@ class ContextInventoryList extends React.Component {
             hasItems,
             sortBy,
             activeFilters,
+            ...customFilters,
             ...options
         }, showTags);
     }
@@ -50,7 +51,7 @@ class ContextInventoryList extends React.Component {
     }
 
     componentDidMount() {
-        this.onRefreshData({});
+        !this.onRefresh && this.onRefreshData({});
     }
 
     render() {
@@ -111,7 +112,13 @@ InventoryList.propTypes = {
             title: PropTypes.node
         })
     ]),
-    entities: PropTypes.arrayOf(PropTypes.any)
+    entities: PropTypes.arrayOf(PropTypes.any),
+    customFilters: PropTypes.shape({
+        tags: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.arrayOf(PropTypes.string)
+        ])
+    })
 };
 
 export default InventoryList;

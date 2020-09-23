@@ -54,7 +54,7 @@ class PrimaryToolbar extends Component {
                     {
                         (bulkSelect || filterConfig || dedicatedAction) &&
                         <ToolbarGroup
-                            className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
+                            className="ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
                             variant="filter-group"
                         >
                             {
