@@ -3,6 +3,7 @@ import { AppInfo, InventoryDetail, FullDetail, DetailWrapper } from './component
 import { TagWithDialog, RenderWrapper } from './shared';
 import { InventoryTable } from './components/table';
 import * as inventoryFitlers from './components/filters';
+import AccessDenied from './shared/AccessDenied';
 
 export function inventoryConnector(store, componentsMapper, Wrapper) {
     const showInventoryDrawer = Boolean(Wrapper);
@@ -17,6 +18,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
         ),
         AppInfo: React.forwardRef(
             (props, ref) => <RenderWrapper
+                hideLoader
                 { ...props }
                 {...componentsMapper}
                 inventoryRef={ ref }
@@ -26,6 +28,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
         ),
         InventoryDetailHead: React.forwardRef(
             (props, ref) => <RenderWrapper
+                hideLoader
                 { ...props }
                 {...componentsMapper}
                 inventoryRef={ ref }
@@ -36,6 +39,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
         ),
         InventoryDetail: React.forwardRef(
             (props, ref) => <RenderWrapper
+                hideLoader
                 { ...props }
                 {...componentsMapper}
                 inventoryRef={ ref }
@@ -52,15 +56,21 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
                 cmp={ TagWithDialog }
             />
         ),
-        DetailWrapper: showInventoryDrawer ? React.forwardRef(
+        DetailWrapper: React.forwardRef(
             (props, ref) => <RenderWrapper
                 { ...props }
                 Wrapper={Wrapper}
                 inventoryRef={ ref }
                 store={ store }
-                cmp={ DetailWrapper }
+                cmp={ (props) => {
+                    if (props.hasAccess === false) {
+                        return <AccessDenied />;
+                    }
+
+                    return showInventoryDrawer ? <DetailWrapper {...props} /> : <React.Fragment {...props} />;
+                } }
             />
-        ) : React.Fragment,
+        ),
         ...inventoryFitlers
     };
 }

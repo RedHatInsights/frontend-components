@@ -9,6 +9,7 @@ import TopBar from './TopBar';
 import FactsInfo from './FactsInfo';
 import { reloadWrapper } from '../../shared';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import { NotAuthorized } from '@redhat-cloud-services/frontend-components/components/cjs/NotAuthorized';
 import ApplicationDetails from './ApplicationDetails';
 import './InventoryDetail.scss';
 
@@ -38,7 +39,7 @@ const InventoryDetail = ({
         }
     }, []);
     return <div className="ins-entity-detail">
-        { loaded && !entity ? (
+        {loaded && !entity ? (
             <SystemNotFound
                 onBackToListClick={onBackToListClick}
                 inventoryId={location.pathname.split('/')[location.pathname.split('/').length - 1]}
@@ -60,7 +61,8 @@ const InventoryDetail = ({
                 showTags={ showTags }
             />
             <FactsInfo loaded={ loaded } entity={ entity } />
-        </Fragment>}
+        </Fragment>
+        }
         <ApplicationDetails onTabSelect={ onTabSelect } appList={ appList } />
     </div>;
 };
