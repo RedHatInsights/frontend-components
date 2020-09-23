@@ -38,6 +38,16 @@ describe('InventoryList', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('should render correctly - with no access', () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<MemoryRouter>
+            <Provider store={ store }>
+                <InventoryList hasAccess={false}/>
+            </Provider>
+        </MemoryRouter>);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     describe('API', () => {
         it('should fire refresh after changing sort', () => {
             mock.onGet('/api/inventory/v1/hosts').reply(200, {});

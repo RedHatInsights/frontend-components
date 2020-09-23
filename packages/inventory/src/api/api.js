@@ -72,7 +72,8 @@ export function getEntities(items, {
     per_page: perPage,
     page,
     orderBy = 'updated',
-    orderDirection = 'DESC'
+    orderDirection = 'DESC',
+    ...options
 }, showTags) {
     const {
         hostnameOrId,
@@ -106,7 +107,10 @@ export function getEntities(items, {
             orderBy,
             orderDirection,
             staleFilter,
-            constructTags(tagFilters),
+            [
+                ...constructTags(tagFilters),
+                ...options.tags || []
+            ],
             registeredWithFilter,
             { cancelToken: controller && controller.token }
         )
@@ -143,14 +147,17 @@ export function getTags(systemId, search, { pagination } = { pagination: {} }) {
     );
 }
 
-export function getAllTags(search, { filters, pagination } = { pagination: {} }) {
+export function getAllTags(search, { filters, pagination, ...options } = { pagination: {} }) {
     const {
         tagFilters,
         staleFilter,
         registeredWithFilter
     } = filters ? filters.reduce(filtersReducer, defaultFilters) : defaultFilters;
     return tags.apiTagGetTags(
-        tagFilters ? constructTags(tagFilters) : undefined,
+        [
+            ...tagFilters ? constructTags(tagFilters) : [],
+            ...options.tags || []
+        ],
         'tag',
         'ASC',
         (pagination && pagination.perPage) || 10,
