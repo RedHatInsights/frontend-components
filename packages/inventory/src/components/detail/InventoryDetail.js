@@ -26,8 +26,7 @@ const InventoryDetail = ({
     onBackToListClick,
     showDelete,
     appList,
-    showInventoryDrawer,
-    hasAccess
+    showInventoryDrawer
 }) => {
     const { inventoryId } = useParams();
     const dispatch = useDispatch();
@@ -40,39 +39,29 @@ const InventoryDetail = ({
         }
     }, []);
     return <div className="ins-entity-detail">
-        {
-            hasAccess === false ?
-                <NotAuthorized
-                    serviceName="Inventory"
-                    description={
-                        <Fragment>
-                            <div>Your organization administrator must grant</div>
-                            <div>you inventory access to view your systems.</div>
-                        </Fragment>
-                    }
-                /> : loaded && !entity ? (
-                    <SystemNotFound
-                        onBackToListClick={onBackToListClick}
-                        inventoryId={location.pathname.split('/')[location.pathname.split('/').length - 1]}
-                    />
-                ) : <Fragment>
-                    <TopBar
-                        entity={ entity }
-                        loaded={ loaded }
-                        onBackToListClick={ onBackToListClick }
-                        actions={ actions }
-                        deleteEntity={ (systems, displayName, callback) => {
-                            const action = deleteEntity(systems, displayName);
-                            dispatch(reloadWrapper(action, callback));
-                        } }
-                        addNotification={ (payload) => dispatch(addNotification(payload))}
-                        hideInvLink={ hideInvLink }
-                        showInventoryDrawer={ showInventoryDrawer }
-                        showDelete={ showDelete }
-                        showTags={ showTags }
-                    />
-                    <FactsInfo loaded={ loaded } entity={ entity } />
-                </Fragment>
+        {loaded && !entity ? (
+            <SystemNotFound
+                onBackToListClick={onBackToListClick}
+                inventoryId={location.pathname.split('/')[location.pathname.split('/').length - 1]}
+            />
+        ) : <Fragment>
+            <TopBar
+                entity={ entity }
+                loaded={ loaded }
+                onBackToListClick={ onBackToListClick }
+                actions={ actions }
+                deleteEntity={ (systems, displayName, callback) => {
+                    const action = deleteEntity(systems, displayName);
+                    dispatch(reloadWrapper(action, callback));
+                } }
+                addNotification={ (payload) => dispatch(addNotification(payload))}
+                hideInvLink={ hideInvLink }
+                showInventoryDrawer={ showInventoryDrawer }
+                showDelete={ showDelete }
+                showTags={ showTags }
+            />
+            <FactsInfo loaded={ loaded } entity={ entity } />
+        </Fragment>
         }
         <ApplicationDetails onTabSelect={ onTabSelect } appList={ appList } />
     </div>;
@@ -83,7 +72,6 @@ InventoryDetail.propTypes = {
     hideBack: PropTypes.bool,
     showTags: PropTypes.bool,
     showDelete: PropTypes.bool,
-    hasAccess: PropTypes.bool,
     showInventoryDrawer: PropTypes.bool,
     actions: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.node,

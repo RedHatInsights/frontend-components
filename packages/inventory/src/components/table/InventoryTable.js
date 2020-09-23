@@ -25,7 +25,7 @@ const InventoryTable = forwardRef(({
     showTags,
     sortBy: propsSortBy,
     customFilters,
-    hasAccess,
+    hasAccess = true,
     isFullView = false,
     ...props
 }, ref) => {

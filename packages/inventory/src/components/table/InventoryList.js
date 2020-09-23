@@ -126,4 +126,8 @@ InventoryList.propTypes = {
     })
 };
 
+InventoryList.defaultProps = {
+    hasAccess: true
+};
+
 export default InventoryList;

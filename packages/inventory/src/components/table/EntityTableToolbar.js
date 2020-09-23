@@ -292,6 +292,7 @@ const EntityTableToolbar = ({
         ] : [],
         ...filterConfig?.items || []
     ];
+
     return <Fragment>
         <PrimaryToolbar
             {...props}
@@ -340,6 +341,7 @@ const EntityTableToolbar = ({
 
 EntityTableToolbar.propTypes = {
     showTags: PropTypes.bool,
+    hasAccess: PropTypes.bool,
     filterConfig: PropTypes.shape(PrimaryToolbar.propTypes.filterConfig),
     total: PropTypes.number,
     filters: PropTypes.array,
@@ -363,6 +365,7 @@ EntityTableToolbar.propTypes = {
 
 EntityTableToolbar.defaultProps = {
     showTags: false,
+    hasAccess: true,
     activeFiltersConfig: {},
     filters: []
 };

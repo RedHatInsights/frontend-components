@@ -119,7 +119,8 @@ FooterPagination.defaultProps = {
     total: 0,
     loaded: false,
     isFull: false,
-    direction: 'up'
+    direction: 'up',
+    hasAccess: true
 };
 
 function stateToProps(
