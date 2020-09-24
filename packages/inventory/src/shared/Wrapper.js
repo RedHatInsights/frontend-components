@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { usePermissions } from '@redhat-cloud-services/frontend-components-utilities/files/RBACHook';
 import { Spinner } from '@patternfly/react-core/dist/js/components/Spinner';
@@ -6,11 +6,8 @@ import { Spinner } from '@patternfly/react-core/dist/js/components/Spinner';
 const RenderWrapper = ({ cmp: Component, hideLoader, inventoryRef, store, ...props }) => {
     const { hasAccess } = usePermissions('inventory', [ 'inventory:*:*', 'inventory:hosts:read' ]);
     return (
-        hasAccess === undefined ?
-            (hideLoader ?
-                <Fragment /> :
-                <Spinner />
-            ) :
+        (hasAccess === undefined && !hideLoader) ?
+            <Spinner /> :
             <Component
                 {...props}
                 { ...inventoryRef && {
