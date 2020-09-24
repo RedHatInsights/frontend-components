@@ -123,6 +123,7 @@ In [hardcodedSchema](src/addSourceWizard/hardcodedSchemas.js), there is an objec
 |`additionalSteps`|Defines additional steps.|
 |`skipSelection`|If there is only one authType, this flag will cause to skip the selection page.|
 |`skipEndpoint`|If it is set to `true`, all `endpoint.*` and `authentications.*` values will be ignored and no endpoint step will be shown to user.|
+|`useApplicationAuth`|If it is set to `true`, the `authentication` record will be linked to a `application`, not `endpoint`. Use if you want to avoid using topology for checking source status.|
 
 # Additional components
 
