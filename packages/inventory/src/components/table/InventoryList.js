@@ -52,7 +52,7 @@ class ContextInventoryList extends Component {
     }
 
     componentDidMount() {
-        !this.onRefresh && this.onRefreshData({});
+        !this.props.onRefresh && this.onRefreshData({});
     }
 
     render() {

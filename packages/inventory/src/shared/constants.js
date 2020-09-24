@@ -109,7 +109,7 @@ export const arrayToSelection = (selected) => selected.reduce((acc, { cells: [ k
     }
 }), {});
 
-export function reduceFilters(filters) {
+export function reduceFilters(filters = []) {
     return filters.reduce((acc, oneFilter) => {
         if (oneFilter.value === TEXT_FILTER) {
             return { ...acc, textFilter: oneFilter.filter };
