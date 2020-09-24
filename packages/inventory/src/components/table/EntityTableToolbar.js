@@ -73,7 +73,7 @@ const EntityTableToolbar = ({
         ...registeredWithFilterState,
         ...tagsFilterState
     });
-    const filters = useSelector(({ entities: { activeFilters } }) => activeFilters || []);
+    const filters = useSelector(({ entities: { activeFilters } }) => activeFilters);
     const loaded = useSelector(({ entities: { loaded } }) => !hasAccess || (
         hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded
     ));
@@ -166,11 +166,11 @@ const EntityTableToolbar = ({
      * @param {*} debounced if debounce function should be used.
      */
     const onSetTextFilter = (value, debounced = true) => {
-        const textualFilter = filters.find(oneFilter => oneFilter.value === TEXT_FILTER);
+        const textualFilter = filters?.find(oneFilter => oneFilter.value === TEXT_FILTER);
         if (textualFilter) {
             textualFilter.filter = value;
         } else {
-            filters.push({ value: TEXT_FILTER, filter: value });
+            filters?.push({ value: TEXT_FILTER, filter: value });
         }
 
         const refresh = debounced ? debouncedRefresh : updateData;
@@ -185,7 +185,7 @@ const EntityTableToolbar = ({
      */
     const onSetFilter = (value, filterKey, refresh) => {
         const newFilters = [
-            ...filters.filter(oneFilter => !oneFilter.hasOwnProperty(filterKey)),
+            ...filters?.filter(oneFilter => !oneFilter.hasOwnProperty(filterKey)),
             { [filterKey]: value }
         ];
         refresh({ page: 1, perPage, filters: newFilters });
@@ -280,7 +280,7 @@ const EntityTableToolbar = ({
         ).filter(Boolean).length > 0 ||
         (staleFilter?.length > 0) ||
         (registeredWithFilter?.length > 0) ||
-        (activeFiltersConfig && activeFiltersConfig.filters && activeFiltersConfig.filters.length > 0);
+        (activeFiltersConfig?.filters?.length > 0);
     };
 
     const inventoryFilters = [
@@ -301,11 +301,11 @@ const EntityTableToolbar = ({
                 isDisabled: !hasAccess
             }}
             className={`ins-c-inventory__table--toolbar ${hasItems ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
-            {...inventoryFilters.length > 0 && {
+            {...inventoryFilters?.length > 0 && {
                 filterConfig: {
                     ...filterConfig || {},
                     isDisabled: !hasAccess,
-                    items: inventoryFilters.map(filter => ({
+                    items: inventoryFilters?.map(filter => ({
                         ...filter,
                         filterValues: {
                             ...filter?.filterValues,
