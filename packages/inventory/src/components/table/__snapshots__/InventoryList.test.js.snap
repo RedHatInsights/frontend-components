@@ -5,7 +5,7 @@ exports[`InventoryList should render correctly - with no access 1`] = `
   class="ins-c-inventory__no-access"
 >
   <div
-    class="pf-c-empty-state ins-c-not-authorized"
+    class="pf-c-empty-state ins-c-not-authorized "
   >
     <div
       class="pf-c-empty-state__content"
@@ -28,23 +28,18 @@ exports[`InventoryList should render correctly - with no access 1`] = `
       <h5
         class="pf-c-title pf-m-lg"
       >
-         You do not have access to Inventory
+        You do not have access to Inventory
       </h5>
       <div
         class="pf-c-empty-state__body"
       >
-        Contact your organization administrator(s) for more information.
+        <div>
+          Your organization administrator must grant
+        </div>
+        <div>
+          you inventory access to view your systems.
+        </div>
       </div>
-      <a
-        aria-disabled="false"
-        class="pf-c-button pf-m-primary"
-        data-ouia-component-id="2"
-        data-ouia-component-type="PF4/Button"
-        data-ouia-safe="true"
-        href="."
-      >
-        Go to landing page
-      </a>
     </div>
   </div>
 </div>
