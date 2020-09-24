@@ -72,7 +72,7 @@ exports[`SystemPolicyCard component should render 1`] = `
             transform=""
           />
         </svg>
-         Noncompliant
+         Not compliant
       </div>
       <small
         class=""

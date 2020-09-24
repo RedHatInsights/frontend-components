@@ -29,7 +29,7 @@ class SystemPolicyCard extends React.Component {
                 <CheckCircleIcon /> Compliant
             </div> :
             <div className='ins-c-policy-card ins-m-noncompliant'>
-                <ExclamationCircleIcon/> Noncompliant
+                <ExclamationCircleIcon/> Not compliant
             </div>;
     }
 

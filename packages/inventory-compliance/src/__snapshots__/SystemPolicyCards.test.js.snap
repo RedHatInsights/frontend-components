@@ -275,7 +275,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                               />
                             </svg>
                           </ExclamationCircleIcon>
-                           Noncompliant
+                           Not compliant
                         </div>
                         <Text
                           component="small"
@@ -805,7 +805,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                               />
                             </svg>
                           </ExclamationCircleIcon>
-                           Noncompliant
+                           Not compliant
                         </div>
                         <Text
                           component="small"
