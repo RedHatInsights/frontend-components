@@ -51,6 +51,26 @@ describe('NoSystemsTable', () => {
         expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
     });
 
+    it('should render correctly - with no access', () => {
+        const store = mockStore(initialState);
+        const wrapper = mount(<Provider store={ store }>
+            <Router>
+                <InventoryTable hasAccess={false}/>
+            </Router>
+        </Provider>);
+        expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
+    });
+
+    it('should render correctly - with no access and full view', () => {
+        const store = mockStore(initialState);
+        const wrapper = mount(<Provider store={ store }>
+            <Router>
+                <InventoryTable hasAccess={false} isFullView/>
+            </Router>
+        </Provider>);
+        expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
+    });
+
     it('should render correctly with items', () => {
         const store = mockStore(initialState);
         const wrapper = mount(<Provider store={ store }>

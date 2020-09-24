@@ -4,6 +4,7 @@ import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/TableToolbar';
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
+import AccessDenied from '../../shared/AccessDenied';
 
 /**
  * This component is used to combine all essential components together:
@@ -24,6 +25,8 @@ const InventoryTable = forwardRef(({
     showTags,
     sortBy: propsSortBy,
     customFilters,
+    hasAccess = true,
+    isFullView = false,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
@@ -52,47 +55,52 @@ const InventoryTable = forwardRef(({
     ), shallowEqual);
 
     return (
-        <Fragment>
-            <EntityTableToolbar
-                { ...props }
-                customFilters={customFilters}
-                items={ items }
-                onRefresh={onRefresh}
-                filters={ filters }
-                hasItems={ hasItems }
-                total={ pagination.total }
-                page={ pagination.page }
-                perPage={ pagination.perPage }
-                showTags={ showTags }
-            >
-                { children }
-            </EntityTableToolbar>
-            <InventoryList
-                { ...props }
-                customFilters={customFilters}
-                ref={ref}
-                hasItems={ hasItems }
-                onRefresh={ onRefresh }
-                items={ items }
-                page={ pagination.page }
-                sortBy={ sortBy }
-                perPage={ pagination.perPage }
-                showTags={ showTags }
-            />
-            <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
-                <Pagination
+        (hasAccess === false && isFullView) ?
+            <AccessDenied /> :
+            <Fragment>
+                <EntityTableToolbar
+                    { ...props }
                     customFilters={customFilters}
-                    isFull
+                    hasAccess={hasAccess}
                     items={ items }
+                    onRefresh={onRefresh}
+                    filters={ filters }
+                    hasItems={ hasItems }
                     total={ pagination.total }
                     page={ pagination.page }
                     perPage={ pagination.perPage }
+                    showTags={ showTags }
+                >
+                    { children }
+                </EntityTableToolbar>
+                <InventoryList
+                    { ...props }
+                    customFilters={customFilters}
+                    hasAccess={hasAccess}
+                    ref={ref}
                     hasItems={ hasItems }
                     onRefresh={ onRefresh }
+                    items={ items }
+                    page={ pagination.page }
+                    sortBy={ sortBy }
+                    perPage={ pagination.perPage }
                     showTags={ showTags }
                 />
-            </TableToolbar>
-        </Fragment>
+                <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
+                    <Pagination
+                        customFilters={customFilters}
+                        hasAccess={hasAccess}
+                        isFull
+                        items={ items }
+                        total={ pagination.total }
+                        page={ pagination.page }
+                        perPage={ pagination.perPage }
+                        hasItems={ hasItems }
+                        onRefresh={ onRefresh }
+                        showTags={ showTags }
+                    />
+                </TableToolbar>
+            </Fragment>
     );
 });
 

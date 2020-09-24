@@ -57,6 +57,8 @@ const EntityTableToolbar = ({
     items,
     sortBy,
     customFilters,
+    hasAccess,
+    bulkSelect,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -72,7 +74,9 @@ const EntityTableToolbar = ({
         ...tagsFilterState
     });
     const filters = useSelector(({ entities: { activeFilters } }) => activeFilters || []);
-    const loaded = useSelector(({ entities: { loaded } }) => hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded);
+    const loaded = useSelector(({ entities: { loaded } }) => !hasAccess || (
+        hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded
+    ));
     const allTagsLoaded = useSelector(({ entities: { allTagsLoaded } }) => allTagsLoaded);
     const allTags = useSelector(({ entities: { allTags } }) => allTags);
     const additionalTagsCount = useSelector(({ entities: { additionalTagsCount } }) => additionalTagsCount);
@@ -92,7 +96,7 @@ const EntityTableToolbar = ({
      * Debounced function for fetching all tags.
      */
     const debounceGetAllTags = useCallback(debounce((config, options) => {
-        if (showTags && !hasItems) {
+        if (showTags && !hasItems && hasAccess) {
             dispatch(fetchAllTags({
                 ...customFilters,
                 ...config
@@ -104,9 +108,11 @@ const EntityTableToolbar = ({
      * Function to dispatch load systems and fetch all tags.
      */
     const onRefreshData = useCallback((options) => {
-        dispatch(loadSystems(options, showTags));
-        if (showTags && !hasItems) {
-            dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options.filters }));
+        if (hasAccess) {
+            dispatch(loadSystems(options, showTags));
+            if (showTags && !hasItems) {
+                dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options.filters }));
+            }
         }
     });
 
@@ -118,21 +124,23 @@ const EntityTableToolbar = ({
      * @param {*} config new config to fetch data.
      */
     const updateData = (config) => {
-        const params = {
-            items,
-            page,
-            per_page: perPage,
-            filters,
-            hasItems,
-            ...config
-        };
-        onRefresh ? onRefresh(params, (options) => {
-            dispatch(entitiesLoading());
-            onRefreshData({ ...params, ...customFilters, ...options });
-        }) : onRefreshData({
-            ...customFilters,
-            ...params
-        });
+        if (hasAccess) {
+            const params = {
+                items,
+                page,
+                per_page: perPage,
+                filters,
+                hasItems,
+                ...config
+            };
+            onRefresh ? onRefresh(params, (options) => {
+                dispatch(entitiesLoading());
+                onRefreshData({ ...params, ...customFilters, ...options });
+            }) : onRefreshData({
+                ...customFilters,
+                ...params
+            });
+        }
     };
 
     /**
@@ -284,21 +292,34 @@ const EntityTableToolbar = ({
         ] : [],
         ...filterConfig?.items || []
     ];
+
     return <Fragment>
         <PrimaryToolbar
             {...props}
+            bulkSelect={{
+                ...bulkSelect,
+                isDisabled: !hasAccess
+            }}
             className={`ins-c-inventory__table--toolbar ${hasItems ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
             {...inventoryFilters.length > 0 && {
                 filterConfig: {
                     ...filterConfig || {},
-                    items: inventoryFilters
+                    isDisabled: !hasAccess,
+                    items: inventoryFilters.map(filter => ({
+                        ...filter,
+                        filterValues: {
+                            ...filter?.filterValues,
+                            isDisabled: !hasAccess
+                        }
+                    }))
                 }
             }}
-            { ...isFilterSelected() && { activeFiltersConfig: constructFilters() } }
+            { ...isFilterSelected() && hasAccess && { activeFiltersConfig: constructFilters() } }
             actionsConfig={ loaded ? actionsConfig : null }
             pagination={loaded ? {
                 page,
-                itemCount: total,
+                itemCount: !hasAccess ? 0 : total,
+                isDisabled: !hasAccess,
                 perPage,
                 onSetPage: (_e, newPage) => updateData({ page: newPage, per_page: perPage, filters }),
                 onPerPageSelect: (_e, newPerPage) => updateData({ page: 1, per_page: newPerPage, filters })
@@ -320,6 +341,7 @@ const EntityTableToolbar = ({
 
 EntityTableToolbar.propTypes = {
     showTags: PropTypes.bool,
+    hasAccess: PropTypes.bool,
     filterConfig: PropTypes.shape(PrimaryToolbar.propTypes.filterConfig),
     total: PropTypes.number,
     filters: PropTypes.array,
@@ -343,6 +365,7 @@ EntityTableToolbar.propTypes = {
 
 EntityTableToolbar.defaultProps = {
     showTags: false,
+    hasAccess: true,
     activeFiltersConfig: {},
     filters: []
 };

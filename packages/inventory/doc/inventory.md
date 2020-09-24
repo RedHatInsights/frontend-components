@@ -540,6 +540,12 @@ class SomeCmp extends React.Component {
 }
 ```
 
+### Using RBAC with inventory
+
+By default inventory component will check `['inventory:*:*', 'inventory:hosts:read']` in RBAC. If any is found it means that the user has access to inventory host list and will show either container view or full page view.
+
+If you are using just inventory table in your screen please pass `isFullView={true}` to connected inventory component so the component will render in full page view instead of container view.
+
 ### Changing list of entities
 If you want to change list of entities you should change them in redux store so the changes are reflected in entity table automatically.
 
@@ -600,6 +606,7 @@ class SomeCmp extends React.Component {
   //...
 }
 ```
+
 ### Changing detail
 If you want to change detail of selected entity you should change it in redux store so the changes are reflected in entity detail automatically.
 
@@ -670,6 +677,7 @@ class SomeCmp extends React.Component {
   //...
 }
 ```
+
 ### Add custom app entity detail
 If you want to display some information in entity detail you have option to do so, by adding details to store based on your application.
 
@@ -729,7 +737,6 @@ export function entityDetailReducer(INVENTORY_ACTIONS) {
   }
 }
 ```
-
 
 **Please write these application specific details in some place where others can benefit from your implementation.**
 
@@ -792,31 +799,3 @@ Given store will look like
   * Registered: TODO
 * tags - tags data
 
-### Mock data
-To add your own data to inventory you can do that by passing some specific data to inventory endpoint, please do this only on test server.
-
-```JS
-window.insights.chrome.auth.getUser().then(
-    data => fetch('/r/insights/platform/inventory/api/hosts', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "display_name": "Test computer",
-            "account": data.account_number,
-            "insights_id": "abc-123",
-            facts: [
-                {
-                    facts: {
-                        hostname: `server01.redhat.com`,
-                                machine_id: `c1497de-0ec7-43bb-a8a6-35cabd59e0bf`,
-                                release: 'Red Hat Enterprise Linux Server release 7.5 (Maipo)',
-                    },
-                    namespace: 'inventory'
-                }
-            ]
-        })
-}));
-```

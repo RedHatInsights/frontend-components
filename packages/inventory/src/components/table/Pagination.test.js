@@ -35,6 +35,12 @@ describe('Pagination', () => {
             expect(wrapper.find('button[disabled=""]').length).toBe(5);
         });
 
+        it('should render correctly - with no access', () => {
+            const store = mockStore(initialState);
+            const wrapper = render(<Pagination store={ store } hasAccess={false} />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
         it('should render correctly with data and props', () => {
             const store = mockStore(initialState);
             const wrapper = render(<Pagination store={ store } page={1} perPage={50} total={500} />);

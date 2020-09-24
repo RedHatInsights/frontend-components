@@ -1,31 +1,138 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotAuthorized component should render 1`] = `
-<Fragment>
-  <EmptyState
-    className="ins-c-not-authorized"
-    variant="full"
+exports[`NotAuthorized component should apply custom styles 1`] = `
+<EmptyState
+  className="ins-c-not-authorized something"
+  variant="full"
+>
+  <EmptyStateIcon
+    icon={[Function]}
+  />
+  <Title
+    headingLevel="h5"
+    size="lg"
   >
-    <EmptyStateIcon
-      icon={[Function]}
-    />
-    <Title
-      headingLevel="h5"
-      size="lg"
+    You do not have access to 
+  </Title>
+  <EmptyStateBody>
+    Contact your organization administrator(s) for more information.
+  </EmptyStateBody>
+  <Button
+    component="a"
+    href="."
+    variant="primary"
+  >
+    Go to landing page
+  </Button>
+</EmptyState>
+`;
+
+exports[`NotAuthorized component should not show buttons 1`] = `
+<EmptyState
+  className="ins-c-not-authorized "
+  variant="full"
+>
+  <EmptyStateIcon
+    icon={[Function]}
+  />
+  <Title
+    headingLevel="h5"
+    size="lg"
+  >
+    You do not have access to 
+  </Title>
+  <EmptyStateBody>
+    Contact your organization administrator(s) for more information.
+  </EmptyStateBody>
+</EmptyState>
+`;
+
+exports[`NotAuthorized component should render 1`] = `
+<EmptyState
+  className="ins-c-not-authorized "
+  variant="full"
+>
+  <EmptyStateIcon
+    icon={[Function]}
+  />
+  <Title
+    headingLevel="h5"
+    size="lg"
+  >
+    You do not have access to 
+    Foo
+  </Title>
+  <EmptyStateBody>
+    Contact your organization administrator(s) for more information.
+  </EmptyStateBody>
+  <Button
+    component="a"
+    href="."
+    variant="primary"
+  >
+    Go to landing page
+  </Button>
+</EmptyState>
+`;
+
+exports[`NotAuthorized component should show custom description 1`] = `
+<EmptyState
+  className="ins-c-not-authorized "
+  variant="full"
+>
+  <EmptyStateIcon
+    icon={[Function]}
+  />
+  <Title
+    headingLevel="h5"
+    size="lg"
+  >
+    You do not have access to 
+  </Title>
+  <EmptyStateBody>
+    Some text
+  </EmptyStateBody>
+  <Button
+    component="a"
+    href="."
+    variant="primary"
+  >
+    Go to landing page
+  </Button>
+</EmptyState>
+`;
+
+exports[`NotAuthorized component should use custom icon 1`] = `
+<div
+  className="pf-c-empty-state ins-c-not-authorized "
+>
+  <div
+    className="pf-c-empty-state__content"
+  >
+    some Icon!
+    <h5
+      className="pf-c-title pf-m-lg"
     >
-       You do not have access to 
-      Foo
-    </Title>
-    <EmptyStateBody>
+      You do not have access to 
+    </h5>
+    <div
+      className="pf-c-empty-state__body"
+    >
       Contact your organization administrator(s) for more information.
-    </EmptyStateBody>
-    <Button
-      component="a"
+    </div>
+    <a
+      aria-disabled={false}
+      aria-label={null}
+      className="pf-c-button pf-m-primary"
+      data-ouia-component-id={0}
+      data-ouia-component-type="PF4/Button"
+      data-ouia-safe={true}
+      disabled={null}
       href="."
-      variant="primary"
+      type={null}
     >
       Go to landing page
-    </Button>
-  </EmptyState>
-</Fragment>
+    </a>
+  </div>
+</div>
 `;
