@@ -72,13 +72,18 @@ exports[`SystemPolicyCard component should render 1`] = `
             transform=""
           />
         </svg>
-         Noncompliant
+         Not compliant
       </div>
       <small
         class=""
         data-pf-content="true"
       >
-        30 of 40 rules passed (75%)
+        10 rules failed 
+        <span
+          aria-describedby="pf-tooltip-2"
+        >
+          (Score: 75%)
+        </span>
       </small>
     </div>
     <div
