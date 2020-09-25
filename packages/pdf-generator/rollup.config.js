@@ -10,6 +10,7 @@ import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
+import rollupPlugins from '../../config/rollup-plugins';
 
 const external = createFilter(
     Object.keys(dependencies).map(item => item.includes('@patternfly') ? `${item}/**` : item),
@@ -36,6 +37,7 @@ const babelOptions = {
 };
 
 const plugins = [
+    ...rollupPlugins,
     nodeResolve({
         browser: true
     }),

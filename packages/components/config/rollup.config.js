@@ -16,6 +16,7 @@ import {
     globals
 } from '../../../config/rollup-contants';
 import copy from 'rollup-plugin-copy';
+import rollupPlugins from '../../../config/rollup-plugins';
 
 const commonjsOptions = {
     ignoreGlobal: true,
@@ -41,6 +42,7 @@ const babelOptions = {
 };
 
 const plugins = [
+    ...rollupPlugins,
     nodeResolve({
         browser: true
     }),

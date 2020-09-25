@@ -14,6 +14,7 @@ import {
     external,
     globals
 } from '../../../config/rollup-contants';
+import rollupPlugins from '../../../config/rollup-plugins';
 
 const entryMapper = {
     ReducerRegistry: './src/ReducerRegistry.js',
@@ -52,6 +53,7 @@ const babelOptions = {
 };
 
 const plugins = [
+    ...rollupPlugins,
     nodeResolve(),
     babel(babelOptions),
     commonjs(commonjsOptions),
