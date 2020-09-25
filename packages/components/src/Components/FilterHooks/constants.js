@@ -52,7 +52,11 @@ export function constructGroups(allTags, item = 'item') {
         items: tags.map(({ count, tag: { key: tagKey, value } }) => ({
             className: 'ins-c-tagfilter__option',
             label: <React.Fragment>
-                <div className="ins-c-tagfilter__option-value">{tagKey}{value ? `=${value}` : ''}</div>
+                <Tooltip
+                    content={`${tagKey}${value ? `=${value}` : ''}`}
+                >
+                    <div className="ins-c-tagfilter__option-value">{tagKey}{value ? `=${value}` : ''}</div>
+                </Tooltip>
                 {
                     count !== undefined && (
                         <Tooltip
