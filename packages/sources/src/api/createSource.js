@@ -73,11 +73,11 @@ export const doCreateSource = async (formData, sourceTypes, timetoutedApps = [])
 
         let authenticationDataOut;
 
-        if (endpointDataOut) {
+        if (endpointDataOut || (formData.authentication && applicationDataOut?.id)) {
             const authenticationData = {
                 ...formData.authentication,
-                resource_id: endpointDataOut.id,
-                resource_type: 'Endpoint'
+                resource_id: endpointDataOut?.id || applicationDataOut?.id,
+                resource_type: endpointDataOut?.id ? 'Endpoint' : 'Application'
             };
 
             authenticationDataOut = await getSourcesApi().createAuthentication(authenticationData);
