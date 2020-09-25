@@ -1,6 +1,4 @@
 import React from 'react';
-import * as pfReactTable from '@patternfly/react-table';
-import * as ReactRedux from 'react-redux';
 
 import propTypes from 'prop-types';
 import { reactCore } from '../../utils/src/inventoryDependencies';
@@ -24,12 +22,8 @@ class RemediationButton extends React.Component {
 
     componentDidMount() {
         Promise.all([
-            getLoader()({
-                ReactRedux,
-                react: React,
-                pfReact: reactCore,
-                pfReactTable
-            }),
+            // Remediations does not require external deps anymore
+            getLoader()({}),
             insights.chrome.getUserPermissions('remediations')
         ]).then(([
             remediations,
