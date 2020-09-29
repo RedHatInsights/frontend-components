@@ -15,7 +15,7 @@ exports[`NotAuthorized component should apply custom styles 1`] = `
     You do not have access to 
   </Title>
   <EmptyStateBody>
-    Contact your organization administrator(s) for more information.
+    <ContactBody />
   </EmptyStateBody>
   <Button
     component="a"
@@ -42,7 +42,7 @@ exports[`NotAuthorized component should not show buttons 1`] = `
     You do not have access to 
   </Title>
   <EmptyStateBody>
-    Contact your organization administrator(s) for more information.
+    <ContactBody />
   </EmptyStateBody>
 </EmptyState>
 `;
@@ -63,7 +63,7 @@ exports[`NotAuthorized component should render 1`] = `
     Foo
   </Title>
   <EmptyStateBody>
-    Contact your organization administrator(s) for more information.
+    <ContactBody />
   </EmptyStateBody>
   <Button
     component="a"
@@ -118,7 +118,15 @@ exports[`NotAuthorized component should use custom icon 1`] = `
     <div
       className="pf-c-empty-state__body"
     >
-      Contact your organization administrator(s) for more information.
+      Array [
+        "Contact your organization administrator(s) for more information or visit ",
+        <a
+          href="./settings/my-user-access"
+        >
+          My User Access
+        </a>,
+        "  to learn more about your permissions.",
+      ]
     </div>
     <a
       aria-disabled={false}
