@@ -18,12 +18,6 @@ import './RemediationWizard.scss';
 
 const nameRegex = /^$|^.*[\w\d]+.*$/;
 
-let mountedInstance = false;
-
-export function getMountedInstance () {
-    return mountedInstance;
-}
-
 function createNotification (id, name, isNewSwitch) {
     const verb = isNewSwitch ? 'created' : 'updated';
 
@@ -38,13 +32,9 @@ function createNotification (id, name, isNewSwitch) {
 /* eslint camelcase: off */
 class RemediationWizard extends Component {
 
-    constructor (props) {
-        super(props);
-        this.setState = this.setState.bind(this);
-        this.state = {
-            open: false
-        };
-    };
+    state = {
+        open: false
+    }
 
     setOpen = open => {
         this.setState({ open });
@@ -158,14 +148,6 @@ class RemediationWizard extends Component {
             getNotification: () => createNotification(id, name, isNewSwitch)
         });
     };
-
-    componentDidMount () {
-        mountedInstance = this;
-    }
-
-    componentWillUnmount () {
-        mountedInstance = false;
-    }
 
     /*
      * Accessing state

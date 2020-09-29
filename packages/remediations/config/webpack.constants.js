@@ -8,12 +8,7 @@ module.exports = {
                 amd: '@patternfly/react-icons',
                 root: 'PFReactIcons'
             },
-            '@patternfly/react-table': {
-                commonjs: 'PFReactTable',
-                commonjs2: 'PFReactTable',
-                amd: 'PFReactTable',
-                root: 'PFReactTable'
-            },
+            '@patternfly/react-table': '@patternfly/react-table',
             '@redhat-cloud-services/frontend-components-utilities': '@redhat-cloud-services/frontend-components-utilities',
             '@redhat-cloud-services/frontend-components': '@redhat-cloud-services/frontend-components',
             '@redhat-cloud-services/frontend-components-notifications': '@redhat-cloud-services/frontend-components-notifications',
@@ -25,11 +20,11 @@ module.exports = {
             'react-dom': 'react-dom',
             redux: 'redux',
             axios: 'axios',
-            react: 'customReact'
+            react: 'react'
         },
         function(context, request, callback) {
             if (/^@patternfly\/react-core.*/.test(request)) {
-                return callback(null, 'PFReactCore');
+                return callback(null, '@patternfly/react-core');
             }
 
             callback();
