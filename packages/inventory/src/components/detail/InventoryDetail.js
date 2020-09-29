@@ -8,7 +8,7 @@ import SystemNotFound from './SystemNotFound';
 import TopBar from './TopBar';
 import FactsInfo from './FactsInfo';
 import { reloadWrapper } from '../../shared';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
 import { NotAuthorized } from '@redhat-cloud-services/frontend-components/components/cjs/NotAuthorized';
 import ApplicationDetails from './ApplicationDetails';
 import './InventoryDetail.scss';
