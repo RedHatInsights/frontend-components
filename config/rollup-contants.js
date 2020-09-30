@@ -29,7 +29,9 @@ export const external = (externalDeps) => createFilter(
     [
         ...externalDeps,
         'react',
-        'react-dom'
+        'react-dom',
+        'redux',
+        'react-redux'
     ],
     null,
     { resolve: false }
@@ -45,6 +47,7 @@ export const globals = {
     '@redhat-cloud-services/frontend-components': '@redhat-cloud-services/frontend-components',
     'react-router-dom': 'reactRouterDom',
     classnames: 'classNames',
+    redux: 'redux',
     'react-redux': 'reactRedux'
 };
 
