@@ -30,7 +30,8 @@ global.window.insights = {
                 }
             }))
         },
-        getUserPermissions: () => new Promise((res) => res([]))
+        getUserPermissions: () => new Promise((res) => res([])),
+        isBeta: () => false
     }
 };
 jest.mock('react', () => ({
