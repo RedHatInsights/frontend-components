@@ -115,7 +115,9 @@ These tasks are preconfigured
 
 ## Running locally
 
-To test changes from packages in this repository in other applications follow these steps:
+There are two ways to test changes from packages in this repository in other applications: Using `npm link` or `yalc`.
+
+### Using `npm link`
 
 1. Run `npm install` in the root of the `frontend-components` working copy
 2. Remove `react` and `react-dom` from `node_modules`
@@ -138,6 +140,27 @@ After these steps the package you want to test should be linked and the last `np
 When linked successfully you can build the package(s) by running either  `npm start -- --scope=@redhat-cloud-services/frontend-components` or `npm run build -- --scope=@redhat-cloud-services/frontend-components` in the `frontend-components` working copy.
 
 Both will build the `@redhat-cloud-services/frontend-components` package, to build all packages run these commands without `-- --scope=@redhat-cloud-services/frontend-components`.*
+
+Once the packages are built the application the package is linked in should also be able to build and include any changes made locally in the `frontend-components` packages.
+
+_* Depending on what package you are working on this arguments need to change accordingly._
+
+### Using `yalc`
+
+yalc acts as very simple local repository for your locally developed packages that you want to share across your local environment.
+
+1. Install [yalc](https://github.com/whitecolor/yalc) globally. e.g. `npm install -g yalc`.
+2. Run `npm install` in the root of the `frontend-components` working copy.
+3. Change into the directory of the package you are working on, for example `cd packages/components` and run `yalc publish`*
+4. Change into the directory of the application you'd like to include the package and run `yalc add @redhat-cloud-services/frontend-components`*
+
+After these steps the package you want to test should be linked and the `yalc add` command should have returned the paths it linked the package from.
+
+When added successfully you can build the package(s) by running `npm run build -- --scope=@redhat-cloud-services/frontend-components` in the `frontend-components` working copy and pushing by going into the directory of the package and running `yalc push`.
+
+`yalc` does not watch the files, but if you would like to do this automatically you can build the package(s) by running: `npm start -- --scope=@redhat-cloud-services/frontend-components` and having a separate terminal that does the local publishing of the packages by running: `watch -n 0.5 yalc publish --push --changed`. This will publish the package only when there are changes.
+
+To build all packages run these commands without `-- --scope=@redhat-cloud-services/frontend-components`.*
 
 Once the packages are built the application the package is linked in should also be able to build and include any changes made locally in the `frontend-components` packages.
 
