@@ -8,8 +8,8 @@ import { global_BackgroundColor_100 as globalBackgroundColor100 } from '@pattern
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 
 class ComplianceRemediationButton extends React.Component {
-    formatRule = ({ title, refId }, profile, system) => ({
-        id: `ssg:rhel7|${profile.split('xccdf_org.ssgproject.')[1]}|${refId}`,
+    formatRule = ({ title, remediationIssueId }, system) => ({
+        id: remediationIssueId,
         description: title,
         systems: [
             system
@@ -32,7 +32,7 @@ class ComplianceRemediationButton extends React.Component {
 
     rulesWithRemediations = (rules, system) => {
         return rules.filter(rule => rule.remediationAvailable).map(
-            rule => this.formatRule(rule, this.ruleProfile(rule, system).refId, system.id)
+            rule => this.formatRule(rule, system.id)
         );
     }
 
