@@ -49,35 +49,38 @@ export function constructGroups(allTags, item = 'item') {
         label: name,
         value: name,
         type,
-        items: tags.map(({ count, tag: { key: tagKey, value } }) => ({
-            className: 'ins-c-tagfilter__option',
-            label: <React.Fragment>
-                <Tooltip
-                    content={`${tagKey}${value ? `=${value}` : ''}`}
-                >
-                    <div className="ins-c-tagfilter__option-value">{tagKey}{value ? `=${value}` : ''}</div>
-                </Tooltip>
-                {
-                    count !== undefined && (
-                        <Tooltip
-                            position="right"
-                            enableFlip
-                            content={`Applicable to ${count} ${item}${count === 1 ? '' : 's'}.`}
-                        >
-                            <Badge isRead={count <= 0}>{ count }</Badge>
-                        </Tooltip>
-                    )
-                }
-            </React.Fragment>,
-            meta: {
-                count,
-                tag: {
-                    key: tagKey,
-                    value
-                }
-            },
-            value: tagKey,
-            tagValue: value
-        }))
+        items: tags.map(({ count, tag: { key: tagKey, value } }) => {
+            const tagText = `${tagKey}${value ? `=${value}` : ''}`;
+            return ({
+                className: 'ins-c-tagfilter__option',
+                label: <React.Fragment>
+                    <Tooltip
+                        content={tagText}
+                    >
+                        <div className="ins-c-tagfilter__option-value">{tagText}</div>
+                    </Tooltip>
+                    {
+                        count !== undefined && (
+                            <Tooltip
+                                position="right"
+                                enableFlip
+                                content={`Applicable to ${count} ${item}${count === 1 ? '' : 's'}.`}
+                            >
+                                <Badge isRead={count <= 0}>{ count }</Badge>
+                            </Tooltip>
+                        )
+                    }
+                </React.Fragment>,
+                meta: {
+                    count,
+                    tag: {
+                        key: tagKey,
+                        value
+                    }
+                },
+                value: tagKey,
+                tagValue: value
+            });
+        })
     }));
 }
