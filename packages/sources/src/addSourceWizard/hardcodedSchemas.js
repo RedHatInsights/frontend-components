@@ -421,6 +421,7 @@ export default {
                     'authentication.password': subsWatchArnField
                 },
                 [CLOUD_METER_APP_NAME]: {
+                    useApplicationAuth: true,
                     skipSelection: true,
                     'authentication.password': subsWatchArnField,
                     additionalSteps: [{
