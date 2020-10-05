@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { Pagination, PaginationVariant, ToolbarItem } from '@patternfly/react-core';
-import { CheckCircleIcon, ExclamationCircleIcon } from '@patternfly/react-icons';
-import { Table, TableHeader, TableBody } from '@patternfly/react-table';
+import { CheckCircleIcon, ExclamationCircleIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
+import { Table, TableHeader, TableBody, sortable } from '@patternfly/react-table';
 import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 
 import './compliance.scss';
@@ -13,6 +13,15 @@ import {
 } from './Utilities';
 import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
 import ComplianceRemediationButton from './ComplianceRemediationButton';
+
+export const columns = [
+    { title: 'Rule', transforms: [ sortable ] },
+    { title: 'Policy', transforms: [ sortable ] },
+    { title: 'Severity', transforms: [ sortable ] },
+    { title: 'Passed', transforms: [ sortable ] },
+    { title: <React.Fragment><AnsibeTowerIcon /> Ansible</React.Fragment>,
+        original: 'Ansible', transforms: [ sortable ] }
+];
 
 class SystemRulesTable extends React.Component {
     config = buildFilterConfig({
@@ -388,7 +397,8 @@ SystemRulesTable.defaultProps = {
     selectedFilter: false,
     remediationsEnabled: true,
     tailoringEnabled: false,
-    selectedRefIds: []
+    selectedRefIds: [],
+    columns: columns
 };
 
 export default SystemRulesTable;
