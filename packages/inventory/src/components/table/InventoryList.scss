@@ -22,6 +22,8 @@
     }
 
     .ins-c-chip-filters .pf-c-chip-group:not(:last-of-type) { margin-right: var(--pf-global--spacer--xs); }
+
+    .ins-c-tagfilter { width: initial; }
 }
 
 .ins-c-table__empty {
