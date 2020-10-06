@@ -1,8 +1,19 @@
 import buildFilterConfig from './FilterBuilderConfigBuilder';
 import FilterConfigBuilder from './FilterConfigBuilder';
+import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
 
 describe('FilterConfigBuilder', () => {
-    const config = buildFilterConfig({ selectedFilter: true, showPassFailFilter: true, policies: [] });
+    const config = [
+        {
+            type: conditionalFilterType.checkbox,
+            label: 'Filter with multiple spaces',
+            items: [
+                { label: 'Show ', value: 'show' }
+            ],
+            filter: () => ([])
+        },
+        ...buildFilterConfig({ selectedFilter: true, showPassFailFilter: true, policies: [] })
+    ];
     let builder;
 
     beforeEach(() => {
@@ -18,6 +29,11 @@ describe('FilterConfigBuilder', () => {
         const builtConfig = builder.buildConfiguration(config, ()=> ({}), states);
 
         expect(builtConfig).toMatchSnapshot();
+    });
+    describe('initialDefaultState', () => {
+        it('to return a matching category label', () => {
+            expect(builder.initialDefaultState()).toMatchSnapshot();
+        });
     });
 
     describe('categoryLabelForValue', () => {
