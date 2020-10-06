@@ -80,6 +80,15 @@ describe('EntityTableToolbar', () => {
             expect(toJson(wrapper.find('TagsModal'), { mode: 'shallow' })).toMatchSnapshot();
         });
 
+        it('should render correctly - with no access', () => {
+            const store = mockStore(initialState);
+            const wrapper = mount(<Provider store={store}>
+                <EntityTableToolbar hasAccess={false} />
+            </Provider>);
+            expect(toJson(wrapper.find('PrimaryToolbar'), { mode: 'shallow' })).toMatchSnapshot();
+            expect(toJson(wrapper.find('TagsModal'), { mode: 'shallow' })).toMatchSnapshot();
+        });
+
         it('should render correctly - with items', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<Provider store={store}>

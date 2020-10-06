@@ -19,6 +19,9 @@ function ExistingOrNewStep(props) {
 
     const { name, nameValid, isNewSwitch, existingRemediations, selectedRemediationId } = props.state;
 
+    existingRemediations &&
+        existingRemediations.sort((a, b) => (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : -1);
+
     return (
         <React.Fragment>
             <Form className="ins-c-existing-or-new">

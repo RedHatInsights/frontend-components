@@ -1,13 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 import SystemPolicyCards from './SystemPolicyCards';
-import SystemRulesTable from './SystemRulesTable';
+import SystemRulesTable, { columns } from './SystemRulesTable';
 import ComplianceEmptyState from './ComplianceEmptyState';
-import { Query } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { ApolloProvider } from 'react-apollo';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
-import { columns } from './defaultColumns';
+import { Spinner } from '@redhat-cloud-services/frontend-components';
 import './compliance.scss';
 import { ErrorCard } from './PresentationalComponents';
 import { IntlProvider } from 'react-intl';
@@ -49,62 +48,61 @@ query System($systemId: String!){
 }
 `;
 
-const SystemQuery = ({ data, loading, hidePassed }) => (
+const SystemQuery = ({ data: { system }, loading, hidePassed }) => (
     <React.Fragment>
-        <SystemPolicyCards policies={ data.system && data.system.profiles } loading={ loading } />
+        <SystemPolicyCards policies={ system?.profiles } loading={ loading } />
         <br/>
         <SystemRulesTable hidePassed={ hidePassed }
-            system={ data.system }
+            system={ system }
             columns={ columns }
-            profileRules={ data.system && data.system.profiles.map((profile) => ({
-                system: data.system.id,
+            profileRules={ system?.profiles.map((profile) => ({
+                system: system.id,
                 profile: { refId: profile.refId, name: profile.name },
                 rules: profile.rules
             })) }
-            loading={ loading }
-        />
+            loading={ loading } />
     </React.Fragment>
 );
 
-class SystemDetails extends Component {
-    componentWillUnmount() {
-        const { client } = this.props;
-        client && client.clearStore && client.clearStore();
+SystemQuery.propTypes = {
+    data: propTypes.shape({
+        system: propTypes.shape({
+            profiles: propTypes.array
+        })
+    }),
+    loading: propTypes.bool,
+    hidePassed: propTypes.bool
+};
+
+SystemQuery.defaultProps = {
+    loading: true
+};
+
+const SystemDetails = ({ inventoryId, hidePassed, client }) => {
+    let { data, error, loading } = useQuery(QUERY, {
+        variables: { systemId: inventoryId },
+        client: client
+    });
+    const is404 = error?.networkError?.statusCode === 404;
+
+    if (loading) {
+        return <Spinner/>;
     }
 
-    renderError = (error, system) => {
+    if (error && !is404) {
         const errorMsg = `Oops! Error loading System data: ${error}`;
-        return !system || (error.networkError && error.networkError.statusCode === 404) ?
+        return <ErrorCard message={errorMsg} />;
+    }
+
+    return <React.Fragment>
+        { !data?.system || is404 ?
             <ComplianceEmptyState title='No policies are reporting for this system' /> :
-            <ErrorCard message={errorMsg} />;
-    }
-
-    render() {
-        const { inventoryId, hidePassed, client } = this.props;
-
-        return (
-            <ApolloProvider client={ client }>
-                <Query query={ QUERY } variables={ { systemId: inventoryId } }>
-                    { ({ data, error, loading }) => (
-                        error || !data?.system ?
-                            this.renderError(error, data?.system) :
-                            <SystemQuery hidePassed={ hidePassed } data={ data } error={ error } loading={ loading } />
-                    ) }
-                </Query>
-            </ApolloProvider>
-        );
-    }
-}
+            <SystemQuery hidePassed={ hidePassed } data={ data } loading={ loading } /> }
+    </React.Fragment>;
+};
 
 SystemDetails.propTypes = {
     inventoryId: propTypes.string,
-    columns: propTypes.shape([
-        {
-            title: propTypes.oneOfType([ propTypes.string, propTypes.object ]).isRequired,
-            transforms: propTypes.array.isRequired,
-            original: propTypes.string
-        }
-    ]),
     client: propTypes.object,
     hidePassed: propTypes.bool
 };
@@ -119,27 +117,8 @@ SystemDetails.defaultProps = {
     })
 };
 
-SystemQuery.propTypes = {
-    data: propTypes.shape({
-        system: propTypes.shape({
-            profiles: propTypes.array
-        })
-    }),
-    loading: propTypes.bool,
-    hidePassed: propTypes.bool
-};
-
-SystemQuery.defaultProps = {
-    data: {
-        system: {
-            profiles: []
-        }
-    },
-    loading: true
-};
-
 const WrappedSystemDetails = ({ customItnl, intlProps, ...props }) => {
-    const IntlWrapper = customItnl ? IntlProvider : Fragment;
+    const IntlWrapper = customItnl ? IntlProvider : React.Fragment;
 
     return <IntlWrapper { ...customItnl && intlProps } >
         <SystemDetails { ...props } />

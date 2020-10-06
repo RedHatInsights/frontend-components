@@ -310,7 +310,8 @@ describe('doCreateSource', () => {
             const FORM_DATA = {
                 ...INITIAL_VALUES,
                 application: { ...APPLICATION_FORM_DATA, application_type_id: APP_ID },
-                endpoint: undefined
+                endpoint: undefined,
+                authentication: undefined
             };
 
             const EXPECTED_RESULT = {
@@ -342,11 +343,63 @@ describe('doCreateSource', () => {
             expect(checkAppMock).toHaveBeenCalledWith(CREATE_APPLICATION_DATA_OUT.id, 0);
         });
 
+        it('create source with app and no endpoint set', async () => {
+            const APP_ID = COST_MANAGEMENT_APP.id;
+
+            const FORM_DATA = {
+                ...INITIAL_VALUES,
+                application: { ...APPLICATION_FORM_DATA, application_type_id: APP_ID },
+                endpoint: undefined,
+                authentication: AUTHENTICATION_FORM_DATA
+            };
+
+            const EXPECTED_RESULT = {
+                id: CREATED_SOURCE_ID,
+                endpoint: [ undefined ],
+                applications: [{
+                    ...CREATE_APPLICATION_DATA_OUT
+                }]
+            };
+
+            const EXPECTED_CREATE_APPLICATION_ARG = {
+                ...APPLICATION_FORM_DATA,
+                source_id: CREATED_SOURCE_ID,
+                application_type_id: APP_ID
+            };
+
+            EXPECTED_AUTHENTICATION_SOURCE_ARG = {
+                ...AUTHENTICATION_FORM_DATA,
+                resource_id: CREATE_APPLICATION_DATA_OUT.id,
+                resource_type: 'Application'
+            };
+
+            EXPECTED_CREATE_AUTH_APP_ARG = {
+                application_id: CREATE_APPLICATION_DATA_OUT.id,
+                authentication_id: CREATE_AUTHENTICATION_DATA_OUT.id
+            };
+
+            api.getSourcesApi = () => mocks;
+
+            const result = await doCreateSource(FORM_DATA, sourceTypes);
+
+            expect(result).toEqual(EXPECTED_RESULT);
+
+            expect(createSource).toHaveBeenCalledWith(EXPECTED_CREATE_SOURCE_ARG);
+            expect(createEndpoint).not.toHaveBeenCalled();
+            expect(createAuthentication).toHaveBeenCalledWith(EXPECTED_AUTHENTICATION_SOURCE_ARG);
+            expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
+            expect(patchSource).not.toHaveBeenCalled();
+            expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
+            expect(checkAppMock).toHaveBeenCalledWith(CREATE_APPLICATION_DATA_OUT.id, 0);
+        });
+
         it('create source with app billing source', async () => {
             const APP_ID = COST_MANAGEMENT_APP.id;
             const BILLING_SOURCE_DATA = {
                 billing_source: {
-                    bucket: 'bucket'
+                    data_source: {
+                        bucket: 'bucket'
+                    }
                 }
             };
 

@@ -18,4 +18,10 @@ describe('Tower Catalog', () => {
         expect(wrapper.find(TextContent)).toHaveLength(1);
         expect(wrapper.find(Text)).toHaveLength(1);
     });
+
+    it('AllFieldsRequired', () => {
+        const wrapper = mount(<TowerCatalog.AllFieldAreRequired />);
+
+        expect(wrapper.find(Text)).toHaveLength(1);
+    });
 });

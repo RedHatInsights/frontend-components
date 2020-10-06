@@ -12,7 +12,8 @@ import {
     shouldSkipSelection,
     getAdditionalStepKeys,
     createGenericAuthTypeSelection,
-    createSpecificAuthTypeSelection
+    createSpecificAuthTypeSelection,
+    shouldUseAppAuth
 } from '../../addSourceWizard/schemaBuilder';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import sourceTypes, { AMAZON_TYPE, OPENSHIFT_TYPE, AZURE_TYPE } from '../helpers/sourceTypes';
@@ -67,6 +68,16 @@ describe('schema builder', () => {
             expect(getAdditionalSteps('amazon', 'arn', COST_MANAGEMENT_APP.name)).toEqual(
                 hardcodedSchemas.amazon.authentication.arn[COST_MANAGEMENT_APP.name].additionalSteps
             );
+        });
+    });
+
+    describe('shouldUseAppAuth', () => {
+        it('returns true for amazon-arn-cost', () => {
+            expect(shouldUseAppAuth('amazon', 'arn', COST_MANAGEMENT_APP.name)).toEqual(true);
+        });
+
+        it('returns false for tower-username-topology', () => {
+            expect(shouldUseAppAuth('ansible-tower', 'username_password', TOPOLOGY_INV_APP.name)).toEqual(false);
         });
     });
 
@@ -327,6 +338,20 @@ describe('schema builder', () => {
                 expect(createSpecificAuthTypeSelection(AZURE_TYPE, TOPOLOGY_INV_APP, APPEND_ENDPOINT_FIELDS)).toEqual(expectedSchema);
             });
 
+            it('generate single selection - do not append endpoint fields for azure/cost', () => {
+                const ENDPOINT_FIELDS = [{ name: 'endpoint' }];
+
+                expect(createSpecificAuthTypeSelection(AZURE_TYPE, COST_MANAGEMENT_APP, ENDPOINT_FIELDS).fields.map(({ name }) => name)).toEqual(
+                    [
+                        'authentication.authtype',
+                        'azure-storage-account-description',
+                        'all-required',
+                        'billing_source.data_source.resource_group',
+                        'billing_source.data_source.storage_account'
+                    ]
+                );
+            });
+
             it('generate single selection with endpoints', () => {
                 const fields = AZURE_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey);
                 const expectedName = `${AZURE_TYPE.name}-${TOPOLOGY_INV_APP.id}`;
@@ -364,7 +389,7 @@ describe('schema builder', () => {
             const schema = schemaBuilder(sourceTypes.filter(({ schema }) => schema), applicationTypes);
 
             expect(schema).toEqual(expect.arrayContaining([ expect.any(Object) ]));
-            expect(schema).toHaveLength(27);
+            expect(schema).toHaveLength(29);
         });
     });
 });

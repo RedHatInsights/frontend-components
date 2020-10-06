@@ -15,6 +15,6 @@ export function doesHavePermissions(userPermissions, permissionList) {
     }
 
     return userPermissions.some((access) => {
-        return permissionList.includes(access);
+        return permissionList.includes(access?.permission || access);
     });
 }

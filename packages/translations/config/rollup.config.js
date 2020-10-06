@@ -13,6 +13,7 @@ import {
     external,
     globals
 } from '../../../config/rollup-contants';
+import rollupPlugins from '../../../config/rollup-plugins';
 
 const entryMapper = {
     index: './src/index.js',
@@ -40,6 +41,7 @@ const babelOptions = {
 };
 
 const plugins = [
+    ...rollupPlugins,
     nodeResolve({
         browser: true
     }),

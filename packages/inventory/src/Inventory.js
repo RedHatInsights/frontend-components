@@ -3,6 +3,7 @@ import { AppInfo, InventoryDetail, FullDetail, DetailWrapper } from './component
 import { TagWithDialog, RenderWrapper } from './shared';
 import { InventoryTable } from './components/table';
 import * as inventoryFitlers from './components/filters';
+import DetailRenderer from './components/detail/DetailRenderer';
 
 export function inventoryConnector(store, componentsMapper, Wrapper) {
     const showInventoryDrawer = Boolean(Wrapper);
@@ -17,6 +18,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
         ),
         AppInfo: React.forwardRef(
             (props, ref) => <RenderWrapper
+                hideLoader
                 { ...props }
                 {...componentsMapper}
                 inventoryRef={ ref }
@@ -26,16 +28,18 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
         ),
         InventoryDetailHead: React.forwardRef(
             (props, ref) => <RenderWrapper
+                hideLoader
                 { ...props }
                 {...componentsMapper}
                 inventoryRef={ ref }
                 store={ store }
-                showInventoryDrawer={ showInventoryDrawer }
+                showInventoryDrawer={ showInventoryDrawer && !props.hideInvDrawer }
                 cmp={ InventoryDetail }
             />
         ),
         InventoryDetail: React.forwardRef(
             (props, ref) => <RenderWrapper
+                hideLoader
                 { ...props }
                 {...componentsMapper}
                 inventoryRef={ ref }
@@ -52,15 +56,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
                 cmp={ TagWithDialog }
             />
         ),
-        DetailWrapper: showInventoryDrawer ? React.forwardRef(
-            (props, ref) => <RenderWrapper
-                { ...props }
-                Wrapper={Wrapper}
-                inventoryRef={ ref }
-                store={ store }
-                cmp={ DetailWrapper }
-            />
-        ) : React.Fragment,
+        DetailWrapper: DetailRenderer,
         ...inventoryFitlers
     };
 }

@@ -24,6 +24,7 @@ const frontendComponentsMappe = {
     NullBattery: 'Battery',
     ConnectedBreadcrumbs: 'Breadcrumbs',
     ConditionalFilterType: 'ConditionalFilter',
+    conditionalFilterType: 'ConditionalFilter',
     groupType: 'ConditionalFilter',
     DarkContext: 'Dark',
     FilterDropdown: 'Filters',

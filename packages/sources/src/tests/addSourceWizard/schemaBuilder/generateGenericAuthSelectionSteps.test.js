@@ -13,6 +13,15 @@ jest.mock('../../../addSourceWizard/hardcodedSchemas', () => ({
                 }
             }
         }
+    },
+    useAppAuth: {
+        authentication: {
+            token: {
+                generic: {
+                    useApplicationAuth: true
+                }
+            }
+        }
     }
 }));
 
@@ -92,7 +101,12 @@ describe('generate auth selection pages', () => {
 
     describe('createGenericAuthTypeSelection', () => {
         it('generate single selection', () => {
-            const fields = ONE_SINGLE_SELECTION_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey);
+            const ENDPOINT_FIELDS = [{ name: 'endpoint' }];
+
+            const fields = [
+                ...ENDPOINT_FIELDS,
+                ...ONE_SINGLE_SELECTION_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey)
+            ];
 
             expectedSchema = expect.objectContaining({
                 fields: expect.arrayContaining(fields),
@@ -101,7 +115,27 @@ describe('generate auth selection pages', () => {
                 nextStep: 'summary'
             });
 
-            expect(createGenericAuthTypeSelection(ONE_SINGLE_SELECTION_TYPE, APPEND_ENDPOINT_FIELDS, NOT_EDITING)).toEqual(expectedSchema);
+            expect(createGenericAuthTypeSelection(ONE_SINGLE_SELECTION_TYPE, ENDPOINT_FIELDS, NOT_EDITING)).toEqual(expectedSchema);
+        });
+
+        it('do not containe endpoint fields when useApplicationAuth set', () => {
+            const ENDPOINT_FIELDS = [{ name: 'endpoint' }];
+
+            const TYPE = {
+                ...ONE_SINGLE_SELECTION_TYPE,
+                name: 'useAppAuth'
+            };
+
+            const fields = ONE_SINGLE_SELECTION_TYPE.schema.authentication[0].fields.filter(({ stepKey }) => !stepKey);
+
+            expectedSchema = expect.objectContaining({
+                fields: expect.arrayContaining(fields),
+                title: expect.any(Object),
+                name: TYPE.name,
+                nextStep: 'summary'
+            });
+
+            expect(createGenericAuthTypeSelection(TYPE, ENDPOINT_FIELDS, NOT_EDITING)).toEqual(expectedSchema);
         });
 
         it('generate single selection with additional steps', () => {
