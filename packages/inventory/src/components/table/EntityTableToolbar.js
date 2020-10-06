@@ -97,12 +97,12 @@ const EntityTableToolbar = ({
      */
     const debounceGetAllTags = useCallback(debounce((config, options) => {
         if (showTags && !hasItems && hasAccess) {
-            dispatch(fetchAllTags({
+            dispatch(fetchAllTags(config, {
                 ...customFilters,
-                ...config
-            }, options));
+                ...options
+            }));
         }
-    }, 800), []);
+    }, 800), [ customFilters?.tags ]);
 
     /**
      * Function to dispatch load systems and fetch all tags.
@@ -114,7 +114,7 @@ const EntityTableToolbar = ({
                 dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options.filters }));
             }
         }
-    });
+    }, [ customFilters?.tags ]);
 
     /**
      * Function used to update data, it either calls `onRefresh` from props or dispatches `onRefreshData`.
@@ -197,7 +197,7 @@ const EntityTableToolbar = ({
         if (shouldReload && showTags) {
             debounceGetAllTags(filterTagsBy, { filters });
         }
-    }, [ filterTagsBy ]);
+    }, [ filterTagsBy, customFilters?.tags ]);
 
     useEffect(() => {
         if (shouldReload) {
