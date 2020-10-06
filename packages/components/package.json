@@ -15,7 +15,10 @@
         "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
         "build:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",
         "build:css": "node ./create-styles.js && copyfiles ./components/index.* ./ -f",
-        "start": "rollup -c ./config/rollup.config.js -w"
+        "start": "rollup -c ./config/rollup.config.js -w",
+        "start:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js -w --format=cjs --environment FORMAT:cjs",
+        "start:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js -w --environment FORMAT:esm",
+        "start:umd": "rollup -c ./config/rollup.config.js -w --format=umd --environment FORMAT:umd"
     },
     "repository": {
         "type": "git",
