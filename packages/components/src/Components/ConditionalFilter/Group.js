@@ -253,7 +253,7 @@ class Group extends Component {
                 { ...(isFilterable || onFilter) && { onFilter: this.customFilter } }
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
-                <div className="ins-c-select__scrollable-section">
+                <div className="ins-c-select__scrollable-section" value="">
                     { groups && groups.length > 0 ? (
                         groups.map(({
                             value: groupValue,
@@ -285,11 +285,12 @@ class Group extends Component {
                             className="pf-c-select__menu-item"
                             variant={showMore.variant}
                             onClick={showMore.items[0].onClick}
+                            value="Show more"
                         >
                             {showMore.items[0].label}
                         </Button>
                     </SelectGroup>
-                    : <Fragment />}
+                    : <Fragment value="" />}
             </Select> }
         </Fragment>);
     }
