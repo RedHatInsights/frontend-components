@@ -6,8 +6,7 @@ Array [
     aria-describedby="pf-tooltip-1"
     className="ins-c-tagfilter__option-value"
   >
-    someKey
-    =someValue
+    someKey=someValue
   </div>,
   <span
     aria-describedby="pf-tooltip-2"
@@ -24,8 +23,7 @@ Array [
     aria-describedby="pf-tooltip-3"
     className="ins-c-tagfilter__option-value"
   >
-    someKey
-    =someValue
+    someKey=someValue
   </div>,
   <span
     aria-describedby="pf-tooltip-4"
