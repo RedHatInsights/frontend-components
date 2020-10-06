@@ -29,7 +29,7 @@ class SystemPolicyCard extends React.Component {
                 <CheckCircleIcon /> Compliant
             </div> :
             <div className='ins-c-policy-card ins-m-noncompliant'>
-                <ExclamationCircleIcon/> Noncompliant
+                <ExclamationCircleIcon/> Not compliant
             </div>;
     }
 
@@ -54,7 +54,7 @@ class SystemPolicyCard extends React.Component {
     }
 
     render() {
-        const { policy, benchmark, rulesPassed, rulesFailed, compliant, lastScanned, score } = this.state.policy;
+        const { policy, benchmark, rulesFailed, compliant, lastScanned, score } = this.state.policy;
         const { refIdTruncated, cardTitle } = this.state;
         const passedPercentage = this.fixedPercentage(score);
         const FormattedRelativeCmp = FormattedRelativeTime || FormattedRelative || Fragment;
@@ -81,15 +81,20 @@ class SystemPolicyCard extends React.Component {
                         </Tooltip> }
                     </TextContent>
                     <div className='margin-bottom-md' >
-                        <Tooltip content={
-                            'The system compliance score is calculated by OpenSCAP and ' +
-                            'is a normalized weighted sum of rules selected for this policy.'
-                        }>
-                            { this.complianceIcon(compliant) }
-                            <Text component={ TextVariants.small }>
-                                { rulesPassed } of { rulesPassed + rulesFailed } rules passed ({ passedPercentage })
-                            </Text>
-                        </Tooltip>
+                        { this.complianceIcon(compliant) }
+                        <Text component={ TextVariants.small }>
+                            { rulesFailed } rule{ rulesFailed === 1 ? '' : 's' } failed
+                            {' '}
+                            <Tooltip
+                                position='bottom'
+                                maxWidth='22em'
+                                content={
+                                    'The system compliance score is calculated by OpenSCAP and ' +
+                                    'is a normalized weighted sum of rules selected for this policy.'
+                                }>
+                                <span>(Score: { passedPercentage })</span>
+                            </Tooltip>
+                        </Text>
                     </div>
                     <div className='margin-bottom-md' >
                         <Text

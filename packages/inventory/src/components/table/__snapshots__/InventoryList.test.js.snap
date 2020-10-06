@@ -1,5 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`InventoryList should render correctly - with no access 1`] = `
+<div
+  class="ins-c-inventory__no-access"
+>
+  <div
+    class="pf-c-empty-state ins-c-not-authorized "
+  >
+    <div
+      class="pf-c-empty-state__content"
+    >
+      <svg
+        aria-hidden="true"
+        class="pf-c-empty-state__icon"
+        fill="currentColor"
+        height="1em"
+        role="img"
+        style="vertical-align:-0.125em"
+        viewBox="0 0 448 512"
+        width="1em"
+      >
+        <path
+          d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"
+          transform=""
+        />
+      </svg>
+      <h5
+        class="pf-c-title pf-m-lg"
+      >
+        You do not have access to Inventory
+      </h5>
+      <div
+        class="pf-c-empty-state__body"
+      >
+        <div>
+          Your organization administrator must grant
+        </div>
+        <div>
+          you inventory access to view your systems.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`InventoryList should render correctly 1`] = `
 <div
   class="pf-l-grid ins-inventory-list"

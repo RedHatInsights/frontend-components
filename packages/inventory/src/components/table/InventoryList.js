@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
 import { Grid, GridItem } from '@patternfly/react-core/dist/js/layouts/Grid';
@@ -6,17 +6,18 @@ import PropTypes from 'prop-types';
 import './InventoryList.scss';
 import { loadSystems } from '../../shared';
 import isEqual from 'lodash/isEqual';
+import AccessDenied from '../../shared/AccessDenied';
 
 /**
  * Component that works as a side channel for consumers to notify inventory of new data changes.
  */
-class ContextInventoryList extends React.Component {
+class ContextInventoryList extends Component {
     /**
      * If conumer wants to change data they can call this function via component ref.
      * @param {*} options new options to be applied, like pagination, filters, etc.
      */
     onRefreshData = (options = {}) => {
-        const { page, perPage, items, hasItems, sortBy, activeFilters, showTags } = this.props;
+        const { page, perPage, items, hasItems, sortBy, activeFilters, showTags, customFilters } = this.props;
         this.props.loadEntities && this.props.loadEntities({
             page,
             perPage,
@@ -24,6 +25,7 @@ class ContextInventoryList extends React.Component {
             hasItems,
             sortBy,
             activeFilters,
+            ...customFilters,
             ...options
         }, showTags);
     }
@@ -50,7 +52,9 @@ class ContextInventoryList extends React.Component {
     }
 
     componentDidMount() {
-        !this.onRefresh && this.onRefreshData({});
+        if (this.props.hasItems) {
+            this.onRefreshData({});
+        }
     }
 
     render() {
@@ -68,17 +72,21 @@ class ContextInventoryList extends React.Component {
 /**
  * Component that consumes active filters and passes them down to component.
  */
-const InventoryList = React.forwardRef((props, ref) => {
+const InventoryList = React.forwardRef(({ hasAccess, ...props }, ref) => {
     const dispatch = useDispatch();
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
-    return (
-        <ContextInventoryList
-            { ...props }
-            ref={ref}
-            activeFilters={ activeFilters }
-            loadEntities={ (config, showTags) => dispatch(loadSystems(config, showTags)) }
-        />
-    );
+    return !hasAccess ?
+        <div className="ins-c-inventory__no-access">
+            <AccessDenied showReturnButton={false} />
+        </div>
+        : (
+            <ContextInventoryList
+                { ...props }
+                ref={ref}
+                activeFilters={ activeFilters }
+                loadEntities={ (config, showTags) => dispatch(loadSystems(config, showTags)) }
+            />
+        );
 });
 
 ContextInventoryList.propTypes = {
@@ -111,7 +119,17 @@ InventoryList.propTypes = {
             title: PropTypes.node
         })
     ]),
-    entities: PropTypes.arrayOf(PropTypes.any)
+    entities: PropTypes.arrayOf(PropTypes.any),
+    customFilters: PropTypes.shape({
+        tags: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.arrayOf(PropTypes.string)
+        ])
+    })
+};
+
+InventoryList.defaultProps = {
+    hasAccess: true
 };
 
 export default InventoryList;

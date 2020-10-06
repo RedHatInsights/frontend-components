@@ -21,12 +21,18 @@ class FooterPagination extends Component {
      * @param {*} pagination contains new pagination config.
      */
     updatePagination = (pagination) => {
-        const { onRefresh, dataLoading, loadEntities, showTags } = this.props;
+        const { onRefresh, dataLoading, loadEntities, showTags, customFilters } = this.props;
         if (onRefresh) {
             dataLoading();
-            onRefresh(pagination, (options) => loadEntities(options, showTags));
+            onRefresh(pagination, (options) => loadEntities({
+                ...customFilters,
+                ...options
+            }, showTags));
         } else {
-            loadEntities(pagination, showTags);
+            loadEntities({
+                ...customFilters,
+                ...pagination
+            }, showTags);
         }
     }
 
@@ -66,7 +72,7 @@ class FooterPagination extends Component {
     }
 
     render() {
-        const { total, page, perPage, loaded, direction, isFull, hasItems } = this.props;
+        const { total, page, perPage, loaded, direction, isFull, hasItems, hasAccess } = this.props;
         const { page: statePage } = this.state;
         const extra = isFull ? {
             variant: PaginationVariant.bottom
@@ -74,9 +80,10 @@ class FooterPagination extends Component {
 
         return (
             <Fragment>
-                { loaded && (
+                { (loaded || !hasAccess) && (
                     <Pagination
                         { ...extra }
+                        isDisabled={!hasAccess}
                         itemCount={ total }
                         page={ hasItems ? page : statePage || page }
                         perPage={ perPage }
@@ -95,8 +102,15 @@ const propTypes = {
     total: PropTypes.number,
     loaded: PropTypes.bool,
     isFull: PropTypes.bool,
+    hasAccess: PropTypes.bool,
     onRefresh: PropTypes.func,
-    direction: PropTypes.string
+    direction: PropTypes.string,
+    customFilters: PropTypes.shape({
+        tags: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.arrayOf(PropTypes.string)
+        ])
+    })
 };
 
 FooterPagination.propTypes = propTypes;
@@ -105,7 +119,8 @@ FooterPagination.defaultProps = {
     total: 0,
     loaded: false,
     isFull: false,
-    direction: 'up'
+    direction: 'up',
+    hasAccess: true
 };
 
 function stateToProps(

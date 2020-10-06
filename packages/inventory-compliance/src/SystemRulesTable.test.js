@@ -5,9 +5,8 @@ import SystemRulesTable from './SystemRulesTable';
 import { SortByDirection } from '@patternfly/react-table';
 import { TITLE_COLUMN } from './Constants';
 import { remediationsResponse, system, profileRules } from './Fixtures';
-import { columns } from './defaultColumns';
+import { columns } from './SystemRulesTable';
 import debounce from 'lodash/debounce';
-import { ANSIBLE_ICON } from './Constants';
 
 jest.mock('lodash/debounce');
 debounce.mockImplementation(fn => fn);
@@ -172,7 +171,7 @@ describe('SystemRulesTable component', () => {
                     columns={ [
                         { title: 'Rule' },
                         { title: 'Severity' },
-                        { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible' }
+                        { title: 'Ansible' }
                     ] }
                 />
             );
@@ -192,7 +191,7 @@ describe('SystemRulesTable component', () => {
                     columns={ [
                         { title: 'Rule' },
                         { title: 'Severity' },
-                        { title: <React.Fragment>{ ANSIBLE_ICON } Ansible</React.Fragment>, original: 'Ansible' }
+                        { title: 'Ansible' }
                     ] }
                 />
             );

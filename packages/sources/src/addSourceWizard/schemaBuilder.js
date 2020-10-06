@@ -33,6 +33,9 @@ export const getOnlyHiddenFields = (typeName, authName, appName = 'generic') =>
 export const getAdditionalStepFields = (fields, stepKey) => fields.filter(field => field.stepKey === stepKey)
 .map(({ stepKey, ...field }) => field);
 
+export const shouldUseAppAuth = (typeName, authName, appName = 'generic') =>
+    get(hardcodedSchemas, [ typeName, 'authentication', authName, appName, 'useApplicationAuth' ], false);
+
 export const getNoStepsFields = (fields, additionalStepKeys = []) => fields.filter(field => !field.stepKey || additionalStepKeys.includes(field.stepKey));
 
 export const injectAuthFieldsInfo = (fields, type, auth, applicationName) => fields.map((field) => {
@@ -93,7 +96,7 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
     const auths = type.schema.authentication;
     const hasMultipleAuthTypes = auths.length > 1;
 
-    const fields = [ ...endpointFields ];
+    let fields = [ ...endpointFields ];
     const stepMapper = {};
 
     if (hasMultipleAuthTypes) {
@@ -104,6 +107,10 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
 
             const onlyHiddenFields = getOnlyHiddenFields(type.name, auth.type);
             const authFields = onlyHiddenFields ? auth.fields.filter(({ hideField }) => hideField) : auth.fields;
+
+            if (shouldUseAppAuth(type.name, auth.type)) {
+                fields = [];
+            }
 
             fields.push({
                 component: 'auth-select',
@@ -159,6 +166,10 @@ export const createGenericAuthTypeSelection = (type, endpointFields, disableAuth
 
         let stepProps = {};
 
+        if (shouldUseAppAuth(type.name, auth.type)) {
+            fields = [];
+        }
+
         if (hasCustomStep) {
             const firstAdditonalStep = getAdditionalSteps(type.name, auth.type).find(({ name }) => !name);
             const additionalFields = getAdditionalStepFields(auth.fields, additionalStepName);
@@ -194,12 +205,16 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
     const supportedAuthTypes = appType.supported_authentication_types[type.name];
     const hasMultipleAuthTypes = supportedAuthTypes.length > 1;
 
-    const fields = [ ...endpointFields ];
+    let fields = [ ...endpointFields ];
     const stepMapper = {};
 
     if (hasMultipleAuthTypes) {
         auths.filter(({ type: authType }) => supportedAuthTypes.includes(authType)).forEach((auth) => {
             const appName = hardcodedSchema(type.name, auth.type, appType.name) ? appType.name : 'generic';
+
+            if (shouldUseAppAuth(type.name, auth.type, appName)) {
+                fields = [];
+            }
 
             const skipEndpoint = shouldSkipEndpoint(type.name, auth.type, appName);
             const customSteps = hasCustomSteps(type.name, auth.type, appName);
@@ -264,6 +279,10 @@ export const createSpecificAuthTypeSelection = (type, appType, endpointFields, d
 
         const skipEndpoint = shouldSkipEndpoint(type.name, auth.type, appName);
         const customSteps = hasCustomSteps(type.name, auth.type, appName);
+
+        if (shouldUseAppAuth(type.name, auth.type, appName)) {
+            fields = [];
+        }
 
         let nextStep;
 

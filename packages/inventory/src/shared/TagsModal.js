@@ -17,9 +17,9 @@ class TagsModal extends React.Component {
 
     fetchTags = (pagination) => {
         const { filterTagsBy } = this.state;
-        const { fetchAllTags, fetchTagsForSystem, activeSystemTag, tagsCount, filters } = this.props;
+        const { fetchAllTags, fetchTagsForSystem, activeSystemTag, tagsCount, filters, customFilters } = this.props;
         if (!activeSystemTag) {
-            fetchAllTags(filterTagsBy, { pagination, filters });
+            fetchAllTags(filterTagsBy, { ...customFilters, pagination, filters });
         } else {
             fetchTagsForSystem(activeSystemTag.id, filterTagsBy, { pagination }, tagsCount);
         }
@@ -135,7 +135,13 @@ TagsModal.propTypes = {
     onToggleTagModal: PropTypes.func,
     fetchAllTags: PropTypes.func,
     onApply: PropTypes.func,
-    onToggleModal: PropTypes.func
+    onToggleModal: PropTypes.func,
+    customFilters: PropTypes.shape({
+        tags: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.arrayOf(PropTypes.string)
+        ])
+    })
 };
 
 TagsModal.defaultProps = {

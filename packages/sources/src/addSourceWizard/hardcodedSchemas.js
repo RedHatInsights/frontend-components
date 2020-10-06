@@ -152,6 +152,7 @@ export default {
         authentication: {
             tenant_id_client_id_client_secret: {
                 [COST_MANAGEMENT_APP_NAME]: {
+                    useApplicationAuth: true,
                     skipSelection: true,
                     'credentials.subscription_id': {
                         placeholder: '',
@@ -337,6 +338,7 @@ export default {
                     'authentication.password': arnField
                 },
                 [COST_MANAGEMENT_APP_NAME]: {
+                    useApplicationAuth: true,
                     skipSelection: true,
                     'authentication.password': arnField,
                     'billing_source.data_source.bucket': {
@@ -419,6 +421,7 @@ export default {
                     'authentication.password': subsWatchArnField
                 },
                 [CLOUD_METER_APP_NAME]: {
+                    useApplicationAuth: true,
                     skipSelection: true,
                     'authentication.password': subsWatchArnField,
                     additionalSteps: [{
