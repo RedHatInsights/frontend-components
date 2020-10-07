@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { usePermissions } from '@redhat-cloud-services/frontend-components-utilities/files/RBACHook';
 import { Spinner } from '@patternfly/react-core/dist/js/components/Spinner';
 
-const RenderWrapper = ({ cmp: Component, hideLoader, inventoryRef, store, ...props }) => {
+const RenderWrapper = ({ cmp: Component, hideLoader, isRbacEnabled, inventoryRef, store, ...props }) => {
     const { hasAccess } = usePermissions('inventory', [ 'inventory:*:*', 'inventory:hosts:read' ]);
     return (
         (hasAccess === undefined && !hideLoader) ?
@@ -13,7 +13,7 @@ const RenderWrapper = ({ cmp: Component, hideLoader, inventoryRef, store, ...pro
                 { ...inventoryRef && {
                     ref: inventoryRef
                 }}
-                hasAccess={hasAccess}
+                hasAccess={isRbacEnabled ? hasAccess : true}
                 store={ store }
             />
     );
@@ -23,7 +23,8 @@ RenderWrapper.propTypes = {
     cmp: PropTypes.any,
     inventoryRef: PropTypes.any,
     store: PropTypes.object,
-    customRender: PropTypes.bool
+    customRender: PropTypes.bool,
+    isRbacEnabled: PropTypes.bool
 };
 
 export default RenderWrapper;
