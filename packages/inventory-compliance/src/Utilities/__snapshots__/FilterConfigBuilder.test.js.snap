@@ -6,6 +6,16 @@ exports[`FilterConfigBuilder categoryLabelForValue to return a matching category
 
 exports[`FilterConfigBuilder categoryLabelForValue to return a matching category label 3`] = `"Search term"`;
 
+exports[`FilterConfigBuilder initialDefaultState to return a matching category label 1`] = `
+Object {
+  "filterwithmultiplespaces": Array [],
+  "name": "",
+  "passed": undefined,
+  "selected": Array [],
+  "severity": Array [],
+}
+`;
+
 exports[`FilterConfigBuilder labelForValue to return a matching label 1`] = `"true"`;
 
 exports[`FilterConfigBuilder labelForValue to return a matching label 2`] = `"0-49"`;
@@ -17,6 +27,21 @@ Object {
   "compliancescore": Array [],
   "compliant": Array [],
   "items": Array [
+    Object {
+      "filterValues": Object {
+        "items": Array [
+          Object {
+            "label": "Show ",
+            "value": "show",
+          },
+        ],
+        "onChange": [Function],
+        "value": undefined,
+      },
+      "id": "filterwithmultiplespaces",
+      "label": "Filter with multiple spaces",
+      "type": "checkbox",
+    },
     Object {
       "filterValues": Object {
         "onChange": [Function],

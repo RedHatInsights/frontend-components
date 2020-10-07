@@ -3,7 +3,7 @@ import FilterBuilder from './FilterBuilder';
 import ChipBuilder from './ChipBuilder';
 
 export const stringToId = (string) => (
-    string.replace(' ', '').toLowerCase()
+    string.split(' ').join('').toLowerCase()
 );
 
 class FilterConfigBuilder {
@@ -103,7 +103,7 @@ class FilterConfigBuilder {
     initialDefaultState = (defaultStates = {}) => {
         let initialState = {};
         this.config.forEach((filter) => {
-            const filterStateName = filter.label.replace(' ', '').toLowerCase();
+            const filterStateName = stringToId(filter.label);
             initialState[filterStateName] =
                 defaultStates[filterStateName] || this.defaultValueForFilter(filter);
         });
