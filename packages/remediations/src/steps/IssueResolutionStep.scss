@@ -1,5 +1,21 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
 
-.ins-c-resolution-option .pf-c-check{
-    align-items: baseline;
+.ins-c-resolution-option{
+    .pf-c-tile {
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        .pf-c-tile__header {
+            justify-content: left;
+        }
+        .pf-c-tile__body {
+            display: flex;
+            .pf-c-content {
+                margin-top: auto;
+            }
+        }
+    }
+    .ins-c-reboot-required {
+        color: #826110
+    }
 }

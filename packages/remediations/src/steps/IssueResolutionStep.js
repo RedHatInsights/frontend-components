@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 
 import propTypes from 'prop-types';
 
 import {
-    Form,
-    Label,
-    Split, SplitItem,
-    Radio,
+    Grid,
+    GridItem,
     Stack,
-    StackItem
+    StackItem,
+    TextContent,
+    Text,
+    Tile, Label
 } from '@patternfly/react-core';
 
-import { Reboot } from '@redhat-cloud-services/frontend-components/components/cjs/Reboot';
 import './IssueResolutionStep.scss';
 
 function isSelectedByDefault ({ id }, index, issue, state) {
@@ -25,54 +25,57 @@ function isSelectedByDefault ({ id }, index, issue, state) {
 }
 
 function IssueResolutionStep (props) {
+    console.log({ props });
+    const systems = props.state.open.data.systems.length;
     return (
-        <Stack gutter='sm'>
-            <StackItem>Please review the available resolution steps and make your selection:</StackItem>
+        <Stack hasGutter>
             <StackItem>
-                <Split gutter='sm'>
-                    <SplitItem>
-                        <Label>Action</Label>
-                    </SplitItem>
-                    <SplitItem isFilled>
-                        <h1 className='ins-m-text__bold'>{ props.state.issuesById[props.issue.id].description }</h1>
-                    </SplitItem>
-                </Split>
-
+                <TextContent>
+                    <Text component="h3">
+                        Playbook name: {props.state.name}
+                    </Text>
+                    <Text component="p">
+                        Review the possible resolution steps and select which to add to your playbook.
+                    </Text>
+                    <Text component="h3">
+                        { props.state.issuesById[props.issue.id].description }
+                    </Text>
+                    <Text component="p">
+                        Resolution affects {systems} {systems === 1 ? 'system' : 'systems'}.
+                    </Text>
+                </TextContent>
             </StackItem>
-
             <StackItem>
-                <Form>
+                <Grid hasGutter>
                     {
                         props.issue.resolutions.map((resolution, i) => (
-                            <div className="ins-c-resolution-option" key={ resolution.id }>
-                                <Radio
-                                    label={
-                                        <React.Fragment>
-                                            { resolution.description }
-                                            <Stack className='ins-c-resolution-choice__details'>
-                                                { /*
-                                                <StackItem>
-                                                    <Battery label="Risk of Change" severity={ resolution.resolution_risk } />
-                                                </StackItem>
-                                                */ }
-                                                { resolution.needs_reboot &&
-                                                    <StackItem>
-                                                        <Reboot red/>
-                                                    </StackItem>
-                                                }
-                                            </Stack>
-                                        </React.Fragment>
-                                    }
-                                    aria-label={ resolution.description }
-                                    id={ resolution.id }
-                                    name="radio"
-                                    defaultChecked={ isSelectedByDefault(resolution, i, props.issue, props.state) }
-                                    onChange={ () => props.onResolutionSwitch(props.issue.id, resolution.id) }
-                                />
-                            </div>
+                            <GridItem
+                                className="ins-c-resolution-option"
+                                sm={12}
+                                md={6}
+                                lg={4}
+                                xl={3}
+                                xl2={2}
+                                key={ resolution.id }>
+                                <Tile
+                                    onClick={() => props.onResolutionSwitch(props.issue.id, resolution.id)}
+                                    isSelected={isSelectedByDefault(resolution, i, props.issue, props.state)}
+                                    title={resolution.description}
+                                >
+                                    <TextContent className="pf-u-pt-md">
+                                        {
+                                            <Text className={resolution.needs_reboot ? 'ins-c-reboot-required' : ''} component="p" >
+                                                {resolution.needs_reboot ? (<b>Reboot required</b>) : 'Reboot not required'}
+                                            </Text>
+                                        }
+                                    </TextContent>
+
+                                </Tile>
+
+                            </GridItem>
                         ))
                     }
-                </Form>
+                </Grid>
             </StackItem>
         </Stack>
     );

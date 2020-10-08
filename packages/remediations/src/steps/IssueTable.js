@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 import orderBy from 'lodash/orderBy';
 
 import { Table, TableHeader, TableBody, TableVariant, sortable } from '@patternfly/react-table';
-import { CheckIcon } from '@patternfly/react-icons';
+import { CheckCircleIcon } from '@patternfly/react-icons';
 import './IssueTable.scss';
+import { Stack, StackItem, Text, TextContent } from '@patternfly/react-core';
 
 function needsRebootCell (needsReboot) {
     if (needsReboot) {
-        return <CheckIcon/>;
+        return <CheckCircleIcon color="green"/>;
     }
 
     return (' ');
@@ -16,14 +17,24 @@ function needsRebootCell (needsReboot) {
 
 function buildRows(issues, state, getResolution) {
     return issues.map(issue => {
-        const resolution = getResolution(issue.id);
+        const resolutions = getResolution(issue.id);
+        const { description, needs_reboot: needsReboot  } = resolutions?.[0] || {};
+        const alternate = resolutions.length - 1;
         return {
             cells: [
                 state.issuesById[issue.id].description,
-                resolution.description,
+                <Fragment key={`${issue.id}-description`}>
+                    <p>
+                        {description}
+                    </p>
+                    {alternate > 0 &&
+                    (
+                        <p>{alternate} alternate resolution</p>
+                    )}
+                </Fragment>,
                 {
-                    title: needsRebootCell(resolution.needs_reboot),
-                    value: resolution.needs_reboot
+                    title: needsRebootCell(needsReboot),
+                    value: needsReboot
                 },
                 getSystemCount(issue, state),
                 issueType(issue.id)
@@ -64,7 +75,7 @@ class IssueTable extends React.Component {
     onSort = (event, sortBy, sortDir) => this.setState({ sortBy, sortDir });
 
     render () {
-        const { sortBy, sortDir } = this.state;
+        const { sortBy, sortDir, name } = this.state;
         const rows = buildRows(this.props.issues, this.props.state, this.props.getResolution);
         const sorted = orderBy(rows, r => {
             const cell = r.cells[sortBy];
@@ -76,34 +87,46 @@ class IssueTable extends React.Component {
         }, [ this.state.sortDir ]);
 
         return (
-            <Table
-                aria-label='Actions'
-                className='ins-c-remediation-summary-table'
-                variant={ TableVariant.compact }
-                cells={ [
-                    {
-                        title: 'Action',
-                        transforms: [ sortable ]
-                    }, {
-                        title: 'Resolution'
-                    }, {
-                        title: 'Reboot required',
-                        transforms: [ sortable ]
-                    }, {
-                        title: 'Systems',
-                        transforms: [ sortable ]
-                    }, {
-                        title: 'Type',
-                        transforms: [ sortable ]
-                    }]
-                }
-                rows={ sorted }
-                onSort={ this.onSort }
-                sortBy={ { index: sortBy, direction: sortDir } }
-            >
-                <TableHeader />
-                <TableBody />
-            </Table>
+            <Stack hasGutter>
+                <StackItem>
+                    <TextContent>
+                        <Text component="h3">
+                            Playbook name: {name}
+                        </Text>
+                    </TextContent>
+                </StackItem>
+                <StackItem>
+                </StackItem>
+
+                <Table
+                    aria-label='Actions'
+                    className='ins-c-remediation-summary-table'
+                    variant={ TableVariant.compact }
+                    cells={ [
+                        {
+                            title: 'Action',
+                            transforms: [ sortable ]
+                        }, {
+                            title: 'Resolution'
+                        }, {
+                            title: 'Reboot required',
+                            transforms: [ sortable ]
+                        }, {
+                            title: 'Systems',
+                            transforms: [ sortable ]
+                        }, {
+                            title: 'Type',
+                            transforms: [ sortable ]
+                        }]
+                    }
+                    rows={ sorted }
+                    onSort={ this.onSort }
+                    sortBy={ { index: sortBy, direction: sortDir } }
+                >
+                    <TableHeader />
+                    <TableBody />
+                </Table>
+            </Stack>
         );
     }
 }

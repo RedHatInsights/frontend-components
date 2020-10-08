@@ -130,9 +130,9 @@ class RemediationWizard extends Component {
 
     createRemediation = (add, resolver) => {
         const name = this.state.name || 'Unnamed Playbook';
-
-        return api.createRemediation({ name, add, auto_reboot: this.state.autoRebootSwitch }, this.state.open.basePath)
-        .then(({ id }) => resolver(id, name, true));
+        console.log({ name, add, resolver });
+        // return api.createRemediation({ name, add, auto_reboot: this.state.autoRebootSwitch }, this.state.open.basePath)
+        // .then(({ id }) => resolver(id, name, true));
     };
 
     updateRemediation = (add, resolver) => {
@@ -177,23 +177,23 @@ class RemediationWizard extends Component {
     }
 
     getResolution = issueId => {
-        const resolutions = this.state.resolutions.find(r => r.id === issueId);
+        const { resolutions = [] } = this.state.resolutions.find(r => r.id === issueId) || {};
 
-        if (resolutions.resolutions.length > 1)  {
+        if (resolutions.length > 1)  {
             if (this.state.manualResolutionSelection && issueId in this.state.selectedResolutions) {
-                return resolutions.resolutions.find(r => r.id === this.state.selectedResolutions[issueId]);
+                return resolutions.filter(r => r.id === this.state.selectedResolutions[issueId]);
             }
 
             if (this.state.selectedRemediationId) {
                 const existing = this.state.selectedRemediation.issues.find(i => i.id === issueId);
 
                 if (existing) {
-                    return resolutions.resolutions.find(r => r.id === existing.resolution.id);
+                    return resolutions.filter(r => r.id === existing.resolution.id);
                 }
             }
         }
 
-        return resolutions.resolutions[0];
+        return resolutions;
     }
 
     /*
