@@ -65,6 +65,22 @@ export const filtersReducer = (acc, filter = {}) => ({
     ...'registeredWithFilter' in filter && { registeredWithFilter: filter.registeredWithFilter }
 });
 
+const generateFilter = (data, path = 'filter') =>
+    Object.entries(data || {}).reduce((acc, [ key, value ]) => {
+        const newPath = `${path || ''}[${key}]`;
+        if (value instanceof Function || value instanceof Date) {
+            return acc;
+        }
+
+        return {
+            ...acc,
+            ...(Array.isArray(value) || typeof value !== 'object')
+                ? { [newPath]: value } :
+                generateFilter(value, newPath)
+        };
+
+    }, {});
+
 export function getEntities(items, {
     controller,
     hasItems,
@@ -112,7 +128,13 @@ export function getEntities(items, {
                 ...options.tags || []
             ],
             registeredWithFilter,
-            { cancelToken: controller && controller.token }
+            undefined,
+            {
+                cancelToken: controller && controller.token,
+                ...options.filter && {
+                    query: generateFilter(options.filter)
+                }
+            }
         )
         .then((data) => showTags ? mapTags(data, { orderBy, orderDirection }) : data)
         .then(({ results = [], ...data } = {}) => ({
