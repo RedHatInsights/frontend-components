@@ -3,6 +3,7 @@ import flatMap from 'lodash/flatMap';
 export const INVENTORY_API_BASE = '/api/inventory/v1';
 
 import instance from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
+import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import { HostsApi, TagsApi } from '@redhat-cloud-services/host-inventory-client';
 import { defaultFilters } from '../shared/constants';
 
@@ -64,22 +65,6 @@ export const filtersReducer = (acc, filter = {}) => ({
     ...'staleFilter' in filter && { staleFilter: filter.staleFilter },
     ...'registeredWithFilter' in filter && { registeredWithFilter: filter.registeredWithFilter }
 });
-
-const generateFilter = (data, path = 'filter') =>
-    Object.entries(data || {}).reduce((acc, [ key, value ]) => {
-        const newPath = `${path || ''}[${key}]`;
-        if (value instanceof Function || value instanceof Date) {
-            return acc;
-        }
-
-        return {
-            ...acc,
-            ...(Array.isArray(value) || typeof value !== 'object')
-                ? { [newPath]: value } :
-                generateFilter(value, newPath)
-        };
-
-    }, {});
 
 export function getEntities(items, {
     controller,
