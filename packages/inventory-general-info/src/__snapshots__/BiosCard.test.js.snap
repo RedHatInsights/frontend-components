@@ -246,7 +246,7 @@ exports[`BiosCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          31 Mar 2014
+          01 Apr 2014
         </dd>
         <dt
           class=""
