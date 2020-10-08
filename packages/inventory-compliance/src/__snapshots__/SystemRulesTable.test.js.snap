@@ -204,16 +204,21 @@ exports[`SystemRulesTable component should render 1`] = `
           "title": "Severity",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "title": "Passed",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "original": "Ansible",
+          "props": Object {
+            "tooltip": "Ansible",
+          },
           "title": <React.Fragment>
             <AnsibeTowerIcon
               color="currentColor"
@@ -223,6 +228,7 @@ exports[`SystemRulesTable component should render 1`] = `
              Ansible
           </React.Fragment>,
           "transforms": Array [
+            [Function],
             [Function],
           ],
         },
@@ -1058,16 +1064,21 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
         "title": "Severity",
         "transforms": Array [
           [Function],
+          [Function],
         ],
       },
       Object {
         "title": "Passed",
         "transforms": Array [
           [Function],
+          [Function],
         ],
       },
       Object {
         "original": "Ansible",
+        "props": Object {
+          "tooltip": "Ansible",
+        },
         "title": <React.Fragment>
           <AnsibeTowerIcon
             color="currentColor"
@@ -1077,6 +1088,7 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
            Ansible
         </React.Fragment>,
         "transforms": Array [
+          [Function],
           [Function],
         ],
       },
@@ -1328,16 +1340,21 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
           "title": "Severity",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "title": "Passed",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "original": "Ansible",
+          "props": Object {
+            "tooltip": "Ansible",
+          },
           "title": <React.Fragment>
             <AnsibeTowerIcon
               color="currentColor"
@@ -1347,6 +1364,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
              Ansible
           </React.Fragment>,
           "transforms": Array [
+            [Function],
             [Function],
           ],
         },
@@ -1683,16 +1701,21 @@ exports[`SystemRulesTable component should render search results by rule name 1`
           "title": "Severity",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "title": "Passed",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "original": "Ansible",
+          "props": Object {
+            "tooltip": "Ansible",
+          },
           "title": <React.Fragment>
             <AnsibeTowerIcon
               color="currentColor"
@@ -1702,6 +1725,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
              Ansible
           </React.Fragment>,
           "transforms": Array [
+            [Function],
             [Function],
           ],
         },
@@ -2088,16 +2112,21 @@ exports[`SystemRulesTable component should render search results on any page, re
           "title": "Severity",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "title": "Passed",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "original": "Ansible",
+          "props": Object {
+            "tooltip": "Ansible",
+          },
           "title": <React.Fragment>
             <AnsibeTowerIcon
               color="currentColor"
@@ -2107,6 +2136,7 @@ exports[`SystemRulesTable component should render search results on any page, re
              Ansible
           </React.Fragment>,
           "transforms": Array [
+            [Function],
             [Function],
           ],
         },
@@ -2484,16 +2514,21 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "title": "Severity",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "title": "Passed",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "original": "Ansible",
+          "props": Object {
+            "tooltip": "Ansible",
+          },
           "title": <React.Fragment>
             <AnsibeTowerIcon
               color="currentColor"
@@ -2503,6 +2538,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
              Ansible
           </React.Fragment>,
           "transforms": Array [
+            [Function],
             [Function],
           ],
         },
@@ -3522,16 +3558,21 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "title": "Severity",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "title": "Passed",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "original": "Ansible",
+          "props": Object {
+            "tooltip": "Ansible",
+          },
           "title": <React.Fragment>
             <AnsibeTowerIcon
               color="currentColor"
@@ -3541,6 +3582,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
              Ansible
           </React.Fragment>,
           "transforms": Array [
+            [Function],
             [Function],
           ],
         },
@@ -4496,16 +4538,21 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "title": "Severity",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "title": "Passed",
           "transforms": Array [
             [Function],
+            [Function],
           ],
         },
         Object {
           "original": "Ansible",
+          "props": Object {
+            "tooltip": "Ansible",
+          },
           "title": <React.Fragment>
             <AnsibeTowerIcon
               color="currentColor"
@@ -4515,6 +4562,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
              Ansible
           </React.Fragment>,
           "transforms": Array [
+            [Function],
             [Function],
           ],
         },

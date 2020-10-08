@@ -2,12 +2,13 @@ import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoadingCard from './LoadingCard';
-import { PencilAltIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
+import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { propertiesSelector } from './selectors';
 import { editDisplayName, editAnsibleHost, systemProfile } from './redux/actions';
 import TextInputModal from './TextInputModal';
 import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory/actions';
 import { Popover, Button } from '@patternfly/react-core';
+import EditButton from './EditButton';
 
 const TitleWithPopover = ({ title, content }) => (
     <React.Fragment>
@@ -64,7 +65,7 @@ class SystemCard extends Component {
     };
 
     render() {
-        const { detailLoaded, entity, properties, setDisplayName, setAnsibleHost } = this.props;
+        const { detailLoaded, entity, properties, setDisplayName, setAnsibleHost, writePermissions } = this.props;
         const { isDisplayNameModalOpen, isAnsibleHostModalOpen } = this.state;
         return (
             <Fragment>
@@ -85,13 +86,7 @@ class SystemCard extends Component {
                             value: (
                                 <Fragment>
                                     { entity.display_name }
-                                    <a
-                                        className="ins-c-inventory__detail--action"
-                                        href={ `${window.location.href}/display_name` }
-                                        onClick={ this.onShowDisplayModal }
-                                    >
-                                        <PencilAltIcon />
-                                    </a>
+                                    <EditButton writePermissions={writePermissions} link="display_name" onClick={this.onShowDisplayModal} />
                                 </Fragment>
                             ), size: 'md'
                         },
@@ -102,13 +97,7 @@ class SystemCard extends Component {
                             value: (
                                 <Fragment>
                                     { this.getAnsibleHost() }
-                                    <a
-                                        className="ins-c-inventory__detail--action"
-                                        href={ `${window.location.href}/ansible_name` }
-                                        onClick={ this.onShowAnsibleModal }
-                                    >
-                                        <PencilAltIcon />
-                                    </a>
+                                    <EditButton writePermissions={writePermissions} link="ansible_name" onClick={this.onShowAnsibleModal} />
                                 </Fragment>
                             ), size: 'md'
                         },
@@ -163,7 +152,8 @@ SystemCard.propTypes = {
         }))
     }),
     setDisplayName: PropTypes.func,
-    setAnsibleHost: PropTypes.func
+    setAnsibleHost: PropTypes.func,
+    writePermissions: PropTypes.bool
 };
 SystemCard.defaultProps = {
     detailLoaded: false,

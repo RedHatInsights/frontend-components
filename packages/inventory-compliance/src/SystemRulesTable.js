@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Pagination, PaginationVariant, ToolbarItem } from '@patternfly/react-core';
 import { CheckCircleIcon, ExclamationCircleIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
-import { Table, TableHeader, TableBody, sortable } from '@patternfly/react-table';
+import { Table, TableHeader, TableBody, sortable, fitContent } from '@patternfly/react-table';
 import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 
 import './compliance.scss';
@@ -17,11 +17,15 @@ import ComplianceRemediationButton from './ComplianceRemediationButton';
 export const columns = [
     { title: 'Rule', transforms: [ sortable ] },
     { title: 'Policy', transforms: [ sortable ] },
-    { title: 'Severity', transforms: [ sortable ] },
-    { title: 'Passed', transforms: [ sortable ] },
+    { title: 'Severity', transforms: [ sortable, fitContent ] },
+    { title: 'Passed', transforms: [ sortable, fitContent ] },
     { title: <React.Fragment><AnsibeTowerIcon /> Ansible</React.Fragment>,
-        original: 'Ansible', transforms: [ sortable ] }
+        original: 'Ansible', props: { tooltip: 'Ansible' }, transforms: [ sortable, fitContent ] }
 ];
+
+export const selectColumns = (columnTitles) => (
+    columns.filter((column) => columnTitles.includes(column.original || column.title))
+);
 
 class SystemRulesTable extends React.Component {
     config = buildFilterConfig({

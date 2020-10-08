@@ -55,6 +55,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
   >
     <div
       className="ins-c-select__scrollable-section"
+      value=""
     >
       <SelectGroup
         id="group-0"
@@ -273,6 +274,7 @@ exports[`Group - component render should render correctly with items - isDisable
   >
     <div
       className="ins-c-select__scrollable-section"
+      value=""
     >
       <SelectGroup
         id="group-0"
@@ -491,6 +493,7 @@ exports[`Group - component render should render correctly with items 1`] = `
   >
     <div
       className="ins-c-select__scrollable-section"
+      value=""
     >
       <SelectGroup
         id="group-0"
@@ -709,6 +712,7 @@ exports[`Group - component render should render correctly with items and default
   >
     <div
       className="ins-c-select__scrollable-section"
+      value=""
     >
       <SelectGroup
         id="group-0"
@@ -927,6 +931,7 @@ exports[`Group - component render should render correctly with items and selecte
   >
     <div
       className="ins-c-select__scrollable-section"
+      value=""
     >
       <SelectGroup
         id="group-0"
@@ -1145,6 +1150,7 @@ exports[`Group - component render show more should render correctly with items a
   >
     <div
       className="ins-c-select__scrollable-section"
+      value=""
     >
       <SelectGroup
         id="group-0"
@@ -1331,6 +1337,7 @@ exports[`Group - component render show more should render correctly with items a
           }
         }
         type="button"
+        value="Show more"
         variant="link"
       >
         Show more
@@ -1379,6 +1386,7 @@ exports[`Group - component render show more should render correctly with items a
   >
     <div
       className="ins-c-select__scrollable-section"
+      value=""
     >
       <SelectGroup
         id="group-0"
@@ -1560,6 +1568,7 @@ exports[`Group - component render show more should render correctly with items a
         label="some title"
         onClick={[Function]}
         type="button"
+        value="Show more"
         variant="link"
       >
         some title
@@ -1608,6 +1617,7 @@ exports[`Group - component render show more should render correctly with items a
   >
     <div
       className="ins-c-select__scrollable-section"
+      value=""
     >
       <SelectGroup
         id="group-0"
@@ -1789,6 +1799,7 @@ exports[`Group - component render show more should render correctly with items a
         label="Show more"
         onClick={[Function]}
         type="button"
+        value="Show more"
         variant="link"
       >
         Show more
@@ -1837,6 +1848,7 @@ exports[`Group - component render show more should render correctly with items a
   >
     <div
       className="ins-c-select__scrollable-section"
+      value=""
     >
       <SelectGroup
         id="group-0"
@@ -2018,6 +2030,7 @@ exports[`Group - component render show more should render correctly with items a
         label="Show more"
         onClick={[Function]}
         type="button"
+        value="Show more"
         variant="default"
       >
         Show more

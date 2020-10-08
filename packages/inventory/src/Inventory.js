@@ -1,16 +1,17 @@
 import React from 'react';
-import { AppInfo, InventoryDetail, FullDetail, DetailWrapper } from './components/detail';
+import { AppInfo, InventoryDetail, FullDetail } from './components/detail';
 import { TagWithDialog, RenderWrapper } from './shared';
 import { InventoryTable } from './components/table';
 import * as inventoryFitlers from './components/filters';
 import DetailRenderer from './components/detail/DetailRenderer';
 
-export function inventoryConnector(store, componentsMapper, Wrapper) {
+export function inventoryConnector(store, componentsMapper, Wrapper, isRbacEnabled = true) {
     const showInventoryDrawer = Boolean(Wrapper);
     return {
         InventoryTable: React.forwardRef(
             (props, ref) => <RenderWrapper
                 { ...props }
+                isRbacEnabled={ isRbacEnabled }
                 inventoryRef={ ref }
                 store={ store }
                 cmp={ InventoryTable }
@@ -21,6 +22,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
                 hideLoader
                 { ...props }
                 {...componentsMapper}
+                isRbacEnabled={ isRbacEnabled }
                 inventoryRef={ ref }
                 store={ store }
                 cmp={ AppInfo }
@@ -31,6 +33,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
                 hideLoader
                 { ...props }
                 {...componentsMapper}
+                isRbacEnabled={ isRbacEnabled }
                 inventoryRef={ ref }
                 store={ store }
                 showInventoryDrawer={ showInventoryDrawer && !props.hideInvDrawer }
@@ -42,6 +45,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
                 hideLoader
                 { ...props }
                 {...componentsMapper}
+                isRbacEnabled={ isRbacEnabled }
                 inventoryRef={ ref }
                 store={ store }
                 showInventoryDrawer={ showInventoryDrawer }
@@ -52,11 +56,18 @@ export function inventoryConnector(store, componentsMapper, Wrapper) {
             (props, ref) => <RenderWrapper
                 { ...props }
                 inventoryRef={ ref }
+                isRbacEnabled={ isRbacEnabled }
                 store={ store }
                 cmp={ TagWithDialog }
             />
         ),
-        DetailWrapper: DetailRenderer,
+        // eslint-disable-next-line react/display-name
+        DetailWrapper: (props) => <DetailRenderer
+            Wrapper={Wrapper}
+            isRbacEnabled={ isRbacEnabled }
+            showInventoryDrawer={ showInventoryDrawer }
+            {...props}
+        />,
         ...inventoryFitlers
     };
 }
