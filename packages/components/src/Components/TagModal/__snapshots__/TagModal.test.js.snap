@@ -14,7 +14,7 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   ouiaSafe={true}
   showClose={true}
   title="Tags for paul.localhost.com"
-  variant="default"
+  variant="medium"
 >
   <PrimaryToolbar
     pagination={
@@ -149,7 +149,7 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   ouiaSafe={true}
   showClose={true}
   title="Tags for paul.localhost.com"
-  variant="default"
+  variant="medium"
 >
   <PrimaryToolbar
     pagination={

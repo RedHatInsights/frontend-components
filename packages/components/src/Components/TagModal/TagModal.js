@@ -71,6 +71,7 @@ export default class TagModal extends React.Component {
                 isOpen={isOpen}
                 title={title || `Tags for ${systemName}`}
                 onClose={(e) => toggleModal(e, false)}
+                variant="medium"
                 {...onApply && {
                     actions: [
                         <Button key="confirm" variant="primary" onClick={(e) => {

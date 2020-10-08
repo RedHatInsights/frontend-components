@@ -56,13 +56,13 @@ class GeneralInformation extends Component {
 
     render() {
         const { isModalOpen, modalTitle, cells, rows, expandable, filters } = this.state;
-        const { store } = this.props;
+        const { store, writePermissions } = this.props;
         const Wrapper = store ? Provider : Fragment;
         return (
-            <Wrapper store={store}>
+            <Wrapper {...(store && { store })}>
                 <Grid sm={ 12 } md={ 6 } hasGutter>
                     <GridItem>
-                        <SystemCard handleClick={ this.handleModalToggle } />
+                        <SystemCard handleClick={ this.handleModalToggle } writePermissions={writePermissions} />
                     </GridItem>
                     <GridItem>
                         <OperatingSystemCard handleClick={ this.handleModalToggle } />
@@ -82,6 +82,7 @@ class GeneralInformation extends Component {
                     <Modal
                         width={ 'initial' }
                         title={ modalTitle || '' }
+                        aria-label={`${modalTitle || ''} modal`}
                         isOpen={ isModalOpen }
                         onClose={ () => this.handleModalToggle() }
                         className="ins-c-inventory__detail--dialog"
@@ -105,7 +106,8 @@ GeneralInformation.propTypes = {
         id: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
     }),
     loadSystemDetail: PropTypes.func,
-    store: PropTypes.any
+    store: PropTypes.any,
+    writePermissions: PropTypes.bool
 };
 GeneralInformation.defaultProps = {
     entity: {}

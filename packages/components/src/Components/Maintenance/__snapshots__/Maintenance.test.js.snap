@@ -16,16 +16,28 @@ exports[`Maintenance component should render with default props 1`] = `
   <EmptyStateBody>
     <Stack>
       <StackItem>
-        We are currently undergoing scheduled maintenance from 
+        We are currently undergoing scheduled maintenance and will be
+      </StackItem>
+      <StackItem>
+        unavailable from from 
+        10am
+        -
+        12am
+         UTC (
         6am
         -
         8am
          
         EST
-        .
+        ).
       </StackItem>
       <StackItem>
-        We will be back shortly, thank you for your patience.
+        For more information please visit 
+        <a
+          href="https://status.redhat.com/incidents"
+        >
+          status.redhat.com
+        </a>
       </StackItem>
     </Stack>
   </EmptyStateBody>
@@ -69,16 +81,28 @@ exports[`Maintenance component should render with times 1`] = `
   <EmptyStateBody>
     <Stack>
       <StackItem>
-        We are currently undergoing scheduled maintenance from 
+        We are currently undergoing scheduled maintenance and will be
+      </StackItem>
+      <StackItem>
+        unavailable from from 
+        10am
+        -
+        12am
+         UTC (
         12am
         -
         2am
          
         EST
-        .
+        ).
       </StackItem>
       <StackItem>
-        We will be back shortly, thank you for your patience.
+        For more information please visit 
+        <a
+          href="https://status.redhat.com/incidents"
+        >
+          status.redhat.com
+        </a>
       </StackItem>
     </Stack>
   </EmptyStateBody>

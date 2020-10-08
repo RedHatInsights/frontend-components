@@ -36,6 +36,7 @@ export default class TextInputModal extends Component {
                 variant="small"
                 title={ title }
                 className="ins-c-inventory__detail--edit"
+                aria-label={ ariaLabel ? `${ariaLabel} - modal` : 'input modal' }
                 isOpen={ isOpen }
                 onClose={ event => onCancel(event) }
                 actions={ [

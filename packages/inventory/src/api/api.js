@@ -3,6 +3,7 @@ import flatMap from 'lodash/flatMap';
 export const INVENTORY_API_BASE = '/api/inventory/v1';
 
 import instance from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
+import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import { HostsApi, TagsApi } from '@redhat-cloud-services/host-inventory-client';
 import { defaultFilters } from '../shared/constants';
 
@@ -112,7 +113,13 @@ export function getEntities(items, {
                 ...options.tags || []
             ],
             registeredWithFilter,
-            { cancelToken: controller && controller.token }
+            undefined,
+            {
+                cancelToken: controller && controller.token,
+                ...options.filter && {
+                    query: generateFilter(options.filter)
+                }
+            }
         )
         .then((data) => showTags ? mapTags(data, { orderBy, orderDirection }) : data)
         .then(({ results = [], ...data } = {}) => ({

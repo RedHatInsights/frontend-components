@@ -82,3 +82,19 @@ export function getBaseName(pathname, level = 2) {
         return `${acc}${pathName[key] || ''}${key < (level - 1) ? '/' : ''}`;
     }, release);
 }
+
+export const generateFilter = (data, path = 'filter') =>
+    Object.entries(data || {}).reduce((acc, [ key, value ]) => {
+        const newPath = `${path || ''}[${key}]`;
+        if (value instanceof Function || value instanceof Date) {
+            return acc;
+        }
+
+        return {
+            ...acc,
+            ...(Array.isArray(value) || typeof value !== 'object')
+                ? { [newPath]: value } :
+                generateFilter(value, newPath)
+        };
+
+    }, {});
