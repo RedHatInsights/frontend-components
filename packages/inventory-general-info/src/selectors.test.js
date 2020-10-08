@@ -60,7 +60,7 @@ it('biosSelector should return correct data', () => {
     expect(biosSelector(biosTest)).toEqual({
         vendor: 'test-vendor',
         version: 'test-version',
-        releaseDate: 1565702893431,
+        releaseDate: '04/01/2014',
         csm: []
     });
 });

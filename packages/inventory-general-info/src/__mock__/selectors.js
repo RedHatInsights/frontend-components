@@ -18,7 +18,7 @@ export const osTest = {
 export const biosTest = {
     bios_vendor: 'test-vendor',
     bios_version: 'test-version',
-    bios_release_date: 1565702893431,
+    bios_release_date: '04/01/2014',
     cpu_flags: []
 };
 
@@ -33,7 +33,7 @@ export const infraTest = {
 };
 
 export const rhsmFacts = {
-    CPU_CORES: '2',
+    CPU_CORES: 2,
     CPU_SOCKETS: 1,
     MEMORY: 2,
     ARCHITECTURE: 'x86_64',

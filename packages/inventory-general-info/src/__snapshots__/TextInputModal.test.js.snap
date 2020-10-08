@@ -29,7 +29,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
     }
     appendTo={[Function]}
     aria-describedby=""
-    aria-label=""
+    aria-label="input text - modal"
     aria-labelledby=""
     className="ins-c-inventory__detail--edit"
     hasNoBodyWrapper={false}
@@ -51,6 +51,8 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
             >
               <div
                 aria-describedby="pf-modal-part-5"
+                aria-label="input text - modal"
+                aria-labelledby="pf-modal-part-3"
                 aria-modal="true"
                 class="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
                 data-ouia-component-id="16"
@@ -148,7 +150,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
           ]
         }
         aria-describedby=""
-        aria-label=""
+        aria-label="input text - modal"
         aria-labelledby=""
         boxId="pf-modal-part-3"
         className="ins-c-inventory__detail--edit"
@@ -181,8 +183,8 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
               >
                 <ModalBox
                   aria-describedby="pf-modal-part-5"
-                  aria-label=""
-                  aria-labelledby=""
+                  aria-label="input text - modal"
+                  aria-labelledby="pf-modal-part-3"
                   className="ins-c-inventory__detail--edit"
                   data-ouia-component-id={16}
                   data-ouia-component-type="PF4/ModalContent"
@@ -193,8 +195,8 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                 >
                   <div
                     aria-describedby="pf-modal-part-5"
-                    aria-label={null}
-                    aria-labelledby={null}
+                    aria-label="input text - modal"
+                    aria-labelledby="pf-modal-part-3"
                     aria-modal="true"
                     className="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
                     data-ouia-component-id={16}
@@ -374,7 +376,7 @@ exports[`TextInputModal render should render aria label 1`] = `
   }
   appendTo={[Function]}
   aria-describedby=""
-  aria-label=""
+  aria-label="Some aria label - modal"
   aria-labelledby=""
   className="ins-c-inventory__detail--edit"
   hasNoBodyWrapper={false}
@@ -416,7 +418,7 @@ exports[`TextInputModal render should render open 1`] = `
   }
   appendTo={[Function]}
   aria-describedby=""
-  aria-label=""
+  aria-label="input text - modal"
   aria-labelledby=""
   className="ins-c-inventory__detail--edit"
   hasNoBodyWrapper={false}
@@ -458,7 +460,7 @@ exports[`TextInputModal render should render title 1`] = `
   }
   appendTo={[Function]}
   aria-describedby=""
-  aria-label=""
+  aria-label="input text - modal"
   aria-labelledby=""
   className="ins-c-inventory__detail--edit"
   hasNoBodyWrapper={false}
@@ -500,7 +502,7 @@ exports[`TextInputModal render should render without any props 1`] = `
   }
   appendTo={[Function]}
   aria-describedby=""
-  aria-label=""
+  aria-label="input text - modal"
   aria-labelledby=""
   className="ins-c-inventory__detail--edit"
   hasNoBodyWrapper={false}

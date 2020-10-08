@@ -29,11 +29,13 @@ export const generateFilters = (cells = [], filters = [], activeFilters = {}, on
     filters.map((filter, key) => {
         const activeKey = filter.index || key;
         const activeLabel = cells[activeKey] && (cells[activeKey].title || cells[activeKey]);
+
         return ({
-            value: activeKey,
+            value: String(activeKey),
             label: activeLabel,
-            type: filter.type || 'textual',
+            type: filter.type || 'text',
             filterValues: {
+                id: filter.id || `${activeLabel}-${activeKey}`,
                 onChange: (_e, newFilter) => onChange(activeKey, newFilter, activeLabel),
                 value: activeFilters[activeKey] && activeFilters[activeKey].value,
                 ...filter.options && { items: filter.options }
