@@ -1,7 +1,15 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { RowLoader, processDate, parseCvssScore, downloadFile, mergeArraysByKey, getBaseName } from './helpers';
+import {
+    RowLoader,
+    processDate,
+    parseCvssScore,
+    downloadFile,
+    mergeArraysByKey,
+    getBaseName,
+    generateFilter
+} from './helpers';
 
 describe('mergeArraysByKey', () => {
     it('should join two arrays by ID', () => {
@@ -155,5 +163,59 @@ describe('getBaseName', () => {
 
     it('should work with root level', () => {
         expect(getBaseName('/really/long/url/with/some/stuff', 0)).toBe('/');
+    });
+});
+
+describe('generateFilter', () => {
+    it('should generate filter for array', () => {
+        const result = generateFilter({
+            some: [ 1, 2 ]
+        });
+        expect(result).toMatchObject({
+            'filter[some]': [ 1, 2 ]
+        });
+    });
+
+    it('should generate nested filter', () => {
+        const result = generateFilter({
+            some: {
+                key: {
+                    obj: {
+                        nested: {
+                            really: {
+                                long: 'value'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        expect(result).toMatchObject({
+            'filter[some][key][obj][nested][really][long]': 'value'
+        });
+    });
+
+    it('should ignore Dates and Functions', () => {
+        const result = generateFilter({
+            some: () => '',
+            value: new Date(),
+            actual: {
+                value: 'value'
+            }
+        });
+        expect(result).toMatchObject({
+            'filter[actual][value]': 'value'
+        });
+    });
+
+    it('should allow custom prefix', () => {
+        const result = generateFilter({
+            actual: {
+                value: 'value'
+            }
+        }, '');
+        expect(result).toMatchObject({
+            '[actual][value]': 'value'
+        });
     });
 });
