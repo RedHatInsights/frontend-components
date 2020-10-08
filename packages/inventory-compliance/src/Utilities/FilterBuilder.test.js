@@ -19,7 +19,7 @@ const FILTER_CONFIGURATION = [
     },
     {
         type: conditionalFilterType.checkbox,
-        label: 'Compliance score',
+        label: 'Systems meeting compliance',
         filterString: (value) => {
             const scoreRange = value.split('-');
             return `compliance_score >= ${scoreRange[0]} and compliance_score <= ${scoreRange[1]}`;
@@ -59,16 +59,16 @@ describe('buildFilterString', () => {
             expect(filterBuilder.buildFilterString(testExampleState)).toMatchSnapshot();
         });
 
-        it('returns a filter for complianceStates', () => {
+        it('returns a filter for compliant', () => {
             const testExampleState = {
                 compliant: [ true ]
             };
             expect(filterBuilder.buildFilterString(testExampleState)).toMatchSnapshot();
         });
 
-        it('returns a filter for complianceStates', () => {
+        it('returns a filter for scores', () => {
             const testExampleState = {
-                compliancescore: [ '0-49', '50-69' ]
+                systemsmeetingcompliance: [ '0-49', '50-69' ]
             };
             expect(filterBuilder.buildFilterString(testExampleState)).toMatchSnapshot();
         });
