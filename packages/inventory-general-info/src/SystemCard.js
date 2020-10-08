@@ -65,7 +65,7 @@ class SystemCard extends Component {
     };
 
     render() {
-        const { detailLoaded, entity, properties, setDisplayName, setAnsibleHost } = this.props;
+        const { detailLoaded, entity, properties, setDisplayName, setAnsibleHost, writePermissions } = this.props;
         const { isDisplayNameModalOpen, isAnsibleHostModalOpen } = this.state;
         return (
             <Fragment>
@@ -86,7 +86,7 @@ class SystemCard extends Component {
                             value: (
                                 <Fragment>
                                     { entity.display_name }
-                                    <EditButton link="display_name" onClick={this.onShowDisplayModal} />
+                                    <EditButton writePermissions={writePermissions} link="display_name" onClick={this.onShowDisplayModal} />
                                 </Fragment>
                             ), size: 'md'
                         },
@@ -97,7 +97,7 @@ class SystemCard extends Component {
                             value: (
                                 <Fragment>
                                     { this.getAnsibleHost() }
-                                    <EditButton link="ansible_name" onClick={this.onShowAnsibleModal} />
+                                    <EditButton writePermissions={writePermissions} link="ansible_name" onClick={this.onShowAnsibleModal} />
                                 </Fragment>
                             ), size: 'md'
                         },
@@ -152,7 +152,8 @@ SystemCard.propTypes = {
         }))
     }),
     setDisplayName: PropTypes.func,
-    setAnsibleHost: PropTypes.func
+    setAnsibleHost: PropTypes.func,
+    writePermissions: PropTypes.bool
 };
 SystemCard.defaultProps = {
     detailLoaded: false,
