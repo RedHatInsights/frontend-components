@@ -148,7 +148,7 @@ InfoTable.propTypes = {
     filters: PropTypes.arrayOf(PropTypes.shape({
         index: PropTypes.number,
         title: PropTypes.string,
-        type: PropTypes.oneOfType([ 'text', 'checkbox', 'radio', 'group' ]),
+        type: PropTypes.oneOf([ 'text', 'checkbox', 'radio', 'group' ]),
         options: PropTypes.arrayOf(PropTypes.shape({
             value: PropTypes.oneOfType([ PropTypes.string, PropTypes.node ]),
             label: PropTypes.node

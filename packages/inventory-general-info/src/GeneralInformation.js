@@ -59,7 +59,7 @@ class GeneralInformation extends Component {
         const { store, writePermissions } = this.props;
         const Wrapper = store ? Provider : Fragment;
         return (
-            <Wrapper store={store}>
+            <Wrapper {...(store && { store })}>
                 <Grid sm={ 12 } md={ 6 } hasGutter>
                     <GridItem>
                         <SystemCard handleClick={ this.handleModalToggle } writePermissions={writePermissions} />
@@ -82,6 +82,7 @@ class GeneralInformation extends Component {
                     <Modal
                         width={ 'initial' }
                         title={ modalTitle || '' }
+                        aria-label={`${modalTitle || ''} modal`}
                         isOpen={ isModalOpen }
                         onClose={ () => this.handleModalToggle() }
                         className="ins-c-inventory__detail--dialog"

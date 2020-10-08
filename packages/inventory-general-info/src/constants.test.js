@@ -104,24 +104,24 @@ describe('generateFilters', () => {
                 { index: 2 }
             ]);
         expect(filters[0]).toMatchObject({
-            value: 0,
+            value: '0',
             label: 'Name'
         });
         expect(filters[1]).toMatchObject({
-            value: 1,
+            value: '1',
             label: 'Surname'
         });
         expect(filters[2]).toMatchObject({
-            value: 2,
+            value: '2',
             label: 'Third',
             filterValues: {
                 items: [{ label: 'ff' }]
             }
         });
         expect(filters[3]).toMatchObject({
-            value: 2,
+            value: '2',
             label: 'Third',
-            type: 'textual'
+            type: 'text'
         });
         expect(filters.length).toBe(4);
     });
