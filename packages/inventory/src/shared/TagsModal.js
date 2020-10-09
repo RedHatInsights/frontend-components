@@ -69,7 +69,7 @@ class TagsModal extends React.Component {
                     }))
                 }}
                 loaded={ loaded }
-                width="auto"
+                width="50%"
                 isOpen={ showTagDialog }
                 toggleModal={() => {
                     this.setState({

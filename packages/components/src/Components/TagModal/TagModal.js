@@ -9,7 +9,9 @@ import {
     EmptyStateVariant,
     Title,
     EmptyStateBody,
-    Button
+    Button,
+    ChipGroup,
+    Chip
 } from '@patternfly/react-core';
 import classNames from 'classnames';
 import {
@@ -63,7 +65,6 @@ export default class TagModal extends React.Component {
             primaryToolbarProps,
             ...props
         } = this.props;
-
         return (
             <Modal
                 {...props}
@@ -86,6 +87,16 @@ export default class TagModal extends React.Component {
                     ]
                 }}
             >
+                {selected?.length > 0 && <ChipGroup>
+                    {selected?.map(({ id, key }) => <Chip
+                        key={key}
+                        isTruncated
+                        onClick={() => onSelect(selected.filter(({ id: currId }) => currId !== id))}
+                    >
+                        {id}
+                    </Chip>)}
+                </ChipGroup>
+                }
                 {onUpdateData && <PrimaryToolbar
                     {...onSelect && pagination && {
                         bulkSelect: {

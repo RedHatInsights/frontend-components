@@ -1,3 +1,14 @@
 .ins-c-tag-modal {
     height: calc(var(--pf-global--spacer--4xl) + var(--pf-global--breakpoint--md));
+
+    .pf-c-chip-group {
+        background-color: var(--pf-global--BackgroundColor--100);
+
+        .pf-c-chip {
+            background-color: var(--pf-global--palette--blue-50);
+            border-radius: var(--pf-global--BorderRadius--lg);
+
+            &:before { border-style: none; }
+        }
+    }
 }
