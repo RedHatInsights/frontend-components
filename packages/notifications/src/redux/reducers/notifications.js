@@ -1,4 +1,3 @@
-import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
 import {
     ADD_NOTIFICATION,
     REMOVE_NOTIFICATION,
@@ -20,11 +19,18 @@ const clearNotifications = () => [];
 
 export const defaultState = [];
 
-export const notificationsReducers = {
-    [ADD_NOTIFICATION]: addNotification,
-    [REMOVE_NOTIFICATION]: removeNotification,
-    [CLEAR_NOTIFICATIONS]: clearNotifications
+export const notificationsReducers = (state = defaultState, action) => {
+    switch (action.type) {
+        case ADD_NOTIFICATION:
+            return addNotification(state, action);
+        case REMOVE_NOTIFICATION:
+            return removeNotification(state, action);
+        case CLEAR_NOTIFICATIONS:
+            return clearNotifications(state, action);
+        default:
+            return state;
+    }
 };
 
-export const notifications = applyReducerHash(notificationsReducers, defaultState);
+export const notifications = notificationsReducers;
 export default notifications;
