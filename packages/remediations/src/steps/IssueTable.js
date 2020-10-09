@@ -75,7 +75,8 @@ class IssueTable extends React.Component {
     onSort = (event, sortBy, sortDir) => this.setState({ sortBy, sortDir });
 
     render () {
-        const { sortBy, sortDir, name } = this.state;
+        const { sortBy, sortDir } = this.state;
+        const { state: { name } } = this.props;
         const rows = buildRows(this.props.issues, this.props.state, this.props.getResolution);
         const sorted = orderBy(rows, r => {
             const cell = r.cells[sortBy];

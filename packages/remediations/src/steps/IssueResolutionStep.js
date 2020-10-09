@@ -25,7 +25,6 @@ function isSelectedByDefault ({ id }, index, issue, state) {
 }
 
 function IssueResolutionStep (props) {
-    console.log({ props });
     const systems = props.state.open.data.systems.length;
     return (
         <Stack hasGutter>
@@ -55,7 +54,6 @@ function IssueResolutionStep (props) {
                                 md={6}
                                 lg={4}
                                 xl={3}
-                                xl2={2}
                                 key={ resolution.id }>
                                 <Tile
                                     onClick={() => props.onResolutionSwitch(props.issue.id, resolution.id)}

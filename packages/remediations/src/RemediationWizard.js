@@ -114,9 +114,9 @@ class RemediationWizard extends Component {
 
             const { isNewSwitch, manualResolutionSelection } = this.state;
             const { systems } = this.state.open.data;
-            const issues = this.state.open.data.issues.map(({ id, systems }) => ({
+            const issues = this.state.open.data.issues.map(({ id }) => ({
                 id,
-                resolution: manualResolutionSelection ? this.getResolution(id).id : undefined,
+                resolution: manualResolutionSelection ? this.getResolution(id)?.[0]?.id : undefined,
                 systems
             }));
 
@@ -130,9 +130,8 @@ class RemediationWizard extends Component {
 
     createRemediation = (add, resolver) => {
         const name = this.state.name || 'Unnamed Playbook';
-        console.log({ name, add, resolver });
-        // return api.createRemediation({ name, add, auto_reboot: this.state.autoRebootSwitch }, this.state.open.basePath)
-        // .then(({ id }) => resolver(id, name, true));
+        return api.createRemediation({ name, add, auto_reboot: this.state.autoRebootSwitch }, this.state.open.basePath)
+        .then(({ id }) => resolver(id, name, true));
     };
 
     updateRemediation = (add, resolver) => {
