@@ -1,15 +1,13 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import propTypes from 'prop-types';
 
 import {
-    Grid,
-    GridItem,
     Stack,
     StackItem,
     TextContent,
     Text,
-    Tile, Label
+    Tile
 } from '@patternfly/react-core';
 
 import './IssueResolutionStep.scss';
@@ -45,10 +43,10 @@ function IssueResolutionStep (props) {
                 </TextContent>
             </StackItem>
             <StackItem>
-                <Grid hasGutter>
+                <div className="ins-c-resolution-container">
                     {
                         props.issue.resolutions.map((resolution, i) => (
-                            <GridItem
+                            <div
                                 className="ins-c-resolution-option"
                                 sm={12}
                                 md={6}
@@ -70,10 +68,10 @@ function IssueResolutionStep (props) {
 
                                 </Tile>
 
-                            </GridItem>
+                            </div>
                         ))
                     }
-                </Grid>
+                </div>
             </StackItem>
         </Stack>
     );
