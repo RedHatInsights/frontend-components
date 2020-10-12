@@ -85,7 +85,7 @@ export function getBaseName(pathname, level = 2) {
 
 export const generateFilter = (data, path = 'filter') =>
     Object.entries(data || {}).reduce((acc, [ key, value ]) => {
-        const newPath = `${path || ''}[${key}]`;
+        const newPath = `${path || ''}[${key}]${Array.isArray(value) ? '[]' : ''}`;
         if (value instanceof Function || value instanceof Date) {
             return acc;
         }
