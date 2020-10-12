@@ -172,7 +172,7 @@ describe('generateFilter', () => {
             some: [ 1, 2 ]
         });
         expect(result).toMatchObject({
-            'filter[some]': [ 1, 2 ]
+            'filter[some][]': [ 1, 2 ]
         });
     });
 
