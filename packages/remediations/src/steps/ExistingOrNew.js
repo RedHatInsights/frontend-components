@@ -9,7 +9,7 @@ import {
     FormSelect,
     FormSelectOption,
     TextInput,
-    Stack, StackItem
+    Stack, StackItem, Title
 } from '@patternfly/react-core';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
 
@@ -25,12 +25,14 @@ function ExistingOrNewStep(props) {
     return (
         <React.Fragment>
             <Form className="ins-c-existing-or-new">
-                <Stack gutter='md'>
+                <Stack hasGutter>
                     <StackItem>
-                        <h1 className='ins-m-text__bold'>Do you want to modify an existing playbook or create a new one?</h1>
+                        <Title headingLevel="h2">
+                            Do you want to modify an existing playbook or create a new one?
+                        </Title>
                     </StackItem>
                     <StackItem>
-                        <Grid>
+                        <Grid hasGutter>
                             <GridItem sm={ 12 } md={ 6 } lg={ 3 }>
                                 <Radio
                                     label={ existingRemediations ? `Existing playbook (${existingRemediations.length})` : 'Existing playbook' }
@@ -62,7 +64,7 @@ function ExistingOrNewStep(props) {
                         </Grid>
                     </StackItem>
                     <StackItem>
-                        <Grid>
+                        <Grid hasGutter>
                             <GridItem sm={ 12 } md={ 6 } lg={ 3 }>
                                 <Radio
                                     label="Create new playbook"

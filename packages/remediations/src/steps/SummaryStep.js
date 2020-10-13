@@ -11,7 +11,7 @@ import {
 import IssueTable from './IssueTable';
 
 function isRebootNeeded (state, getResolution) {
-    if (state.open.data.issues.some(issue => getResolution(issue.id).needs_reboot)) {
+    if (state.open.data.issues.some(issue => getResolution(issue.id).needs_reboot)?.[0] || {}) {
         return true;
     }
 
@@ -35,18 +35,15 @@ function isAutoReboot (state) {
 }
 
 function SummaryStep(props) {
-
-    const { name } = props.state;
     const rebootNeeded = isRebootNeeded(props.state, props.getResolution);
 
     return (
-        <Stack gutter='sm'>
-            <StackItem><h1 className='ins-m-text__bold'>Playbook name: { name || 'Unnamed Playbook' }</h1></StackItem>
+        <Stack hasGutter>
             <StackItem>
                 <IssueTable issues={ props.state.open.data.issues } state={ props.state } getResolution={ props.getResolution } />
             </StackItem>
             <StackItem>
-                <Stack gutter='sm'>
+                <Stack hasGutter>
                     {
                         rebootNeeded ?
                             <StackItem><h1 className='ins-m-text__bold'>System reboot is required</h1></StackItem> :

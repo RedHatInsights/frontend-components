@@ -1,5 +1,33 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
 
-.ins-c-resolution-option .pf-c-check{
-    align-items: baseline;
+.ins-c-resolution-container {
+    display: flex;
+    flex-wrap: wrap;
 }
+.ins-c-resolution-option{
+    width: 50%;
+    padding: var(--pf-global--spacer--sm);
+    .pf-c-tile {
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        .pf-c-tile__header {
+            justify-content: left;
+        }
+        .pf-c-tile__body {
+            display: flex;
+            .pf-c-content {
+                margin-top: auto;
+            }
+        }
+    }
+    .ins-c-reboot-required {
+        color: var(--pf-global--warning-color--200)
+    }
+}
+
+@media screen and (max-width: 462px) {
+    .ins-c-resolution-option{
+        width: 100%;
+    }
+  }
