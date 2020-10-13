@@ -20,5 +20,8 @@
     "eslint-plugin-react": "^7.21.4",
     "prettier": "^2.1.2"
   },
-  "license": "Apache"
+  "license": "Apache",
+  "publishConfig": {
+    "access": "public"
+  }
 }
