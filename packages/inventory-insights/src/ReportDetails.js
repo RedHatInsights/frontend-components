@@ -1,15 +1,16 @@
 import '@redhat-cloud-services/frontend-components/components/section.scss';
 import './insights.scss';
 
+import { BullseyeIcon, ExternalLinkAltIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
+import { Card, CardBody, CardHeader, Stack, StackItem } from '@patternfly/react-core';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+
 import React from 'react';
 import classNames from 'classnames';
 import doT from 'dot';
 import marked from 'marked';
 import propTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
-import { Card, CardBody, StackItem, CardHeader, Stack } from '@patternfly/react-core';
-import { BullseyeIcon, ThumbsUpIcon, LightbulbIcon, InfoCircleIcon, ExternalLinkAltIcon } from '@patternfly/react-icons';
 
 const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
     const rule = report.rule || report;
@@ -97,7 +98,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
                             <InfoCircleIcon className='ins-c-report-details-icon'/><strong> Additional info </strong>
                         </CardHeader>
                         <CardBody>
-                            {templateProcessor(rule.more_info)}
+                            {templateProcessor(rule.more_info, report.details)}
                         </CardBody>
                     </Card>
                 </StackItem>
