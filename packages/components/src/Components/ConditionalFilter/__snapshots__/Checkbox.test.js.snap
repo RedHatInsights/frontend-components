@@ -100,6 +100,7 @@ exports[`Checkbox render should render correctly - disabled 1`] = `
 exports[`Checkbox render should render correctly 1`] = `
 <Fragment>
   <Text
+    aria-label="text input"
     isDisabled={false}
     items={Array []}
     onChange={[Function]}
