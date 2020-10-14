@@ -108,6 +108,8 @@ export const doCreateSource = async (formData, sourceTypes, timetoutedApps = [])
 
         await Promise.all(promisesSecondRound);
 
+        sourceDataOut?.id && getSourcesApi().checkAvailabilitySource(sourceDataOut.id);
+
         if (applicationDataOut) {
             const timeout = timetoutedApps.includes(applicationDataOut.application_type_id) ? 10000 : 0;
             applicationDataOut = await checkAppAvailability(applicationDataOut.id, timeout);
