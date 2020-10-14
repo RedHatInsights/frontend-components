@@ -37,7 +37,7 @@ const TableWithFilter = ({
     entityName
 }) => {
     const onRowSelect = ({ isSelected, rowId }) => {
-        const currRow = rows[rowId];
+        const currRow = rows?.[rowId];
         if (currRow) {
             onSelect(isSelected ? [ ...selected, currRow ] : selected.filter(({ id }) => id !== currRow.id));
         }
@@ -50,7 +50,6 @@ const TableWithFilter = ({
                     bulkSelect: {
                         count: selected?.length,
                         onSelect: (isSelected) => {
-                            console.log('mhhh');
                             if (isSelected) {
                                 onSelect(unique?.([ ...rows, ...selected ]));
                             } else {
@@ -63,7 +62,7 @@ const TableWithFilter = ({
                             onClick: () => onSelect([])
                         },
                         {
-                            ...loaded && rows && rows.length > 0 ? {
+                            ...loaded && rows?.length > 0 ? {
                                 title: `Select page (${ rows.length })`,
                                 onClick: () => onSelect(unique([ ...rows, ...selected ]))
                             } : {}

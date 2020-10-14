@@ -71,6 +71,8 @@ class TagModal extends Component {
             ...props
         } = this.props;
 
+        const isTabbed = Array.isArray(tabNames);
+
         return (
             <Modal
                 {...props}
@@ -85,7 +87,7 @@ class TagModal extends Component {
                             onApply();
                             toggleModal(e, true);
                         }}>
-                            Apply {Array.isArray(tabNames) ? 'selected' : 'tags'}
+                            Apply {isTabbed ? 'selected' : 'tags'}
                         </Button>,
                         <Button key="cancel" variant="link" onClick={(e) => toggleModal(e, false)}>
                             Cancel
@@ -93,33 +95,31 @@ class TagModal extends Component {
                     ]
                 }}
             >
-                {Array.isArray(tabNames) ?
-                    <Fragment>
-                        <Tabs activeKey={this.state.activeTabKey} onSelect={this.handleTabClick}>
-                            {
-                                tabNames.map((item, key) => (
-                                    <Tab
-                                        key={key}
-                                        eventKey={key}
-                                        title={<TabTitleText>All {item}</TabTitleText>}
-                                    >
-                                        {
-                                            this.renderTable(
-                                                rows?.[key],
-                                                columns?.[key],
-                                                pagination?.[key],
-                                                loaded?.[key],
-                                                filters?.[key],
-                                                selected?.[key],
-                                                onSelect?.[key],
-                                                onUpdateData?.[key]
-                                            )
-                                        }
-                                    </Tab>
-                                ))
-                            }
-                        </Tabs>
-                    </Fragment> :
+                {isTabbed ?
+                    <Tabs activeKey={this.state.activeTabKey} onSelect={this.handleTabClick}>
+                        {
+                            tabNames.map((item, key) => (
+                                <Tab
+                                    key={key}
+                                    eventKey={key}
+                                    title={<TabTitleText>All {item}</TabTitleText>}
+                                >
+                                    {
+                                        this.renderTable(
+                                        rows?.[key],
+                                        columns?.[key],
+                                        pagination?.[key],
+                                        loaded?.[key],
+                                        filters?.[key],
+                                        selected?.[key],
+                                        onSelect?.[key],
+                                        onUpdateData?.[key]
+                                        )
+                                    }
+                                </Tab>
+                            ))
+                        }
+                    </Tabs> :
                     this.renderTable(
                         rows,
                         columns,
