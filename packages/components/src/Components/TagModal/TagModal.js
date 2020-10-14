@@ -1,4 +1,4 @@
-import React, { Component, Fragment, createRef } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './tagModal.scss';
 import {
@@ -6,8 +6,7 @@ import {
     Button,
     Tabs,
     Tab,
-    TabTitleText,
-    TabContent
+    TabTitleText
 } from '@patternfly/react-core';
 import classNames from 'classnames';
 import TableWithFilter from './TableWithFilter';
@@ -23,26 +22,17 @@ const unique = (arr) => (
 );
 
 class TagModal extends Component {
-    contentRefs = [];
     state = {
         selectedTab: 0
     };
-
-    componentDidMount() {
-        const { tabNames } = this.props;
-        if (Array.isArray(tabNames)) {
-            tabNames.forEach((_item, key) => {
-                this.contentRefs[key] = createRef();
-            });
-        }
-    }
 
     handleTabClick = (_event, tabIndex) => {
         this.setState({ activeTabKey: tabIndex });
     };
 
-    renderTable = (rows, columns, pagination, loaded, filters) => (
+    renderTable = (rows, columns, pagination, loaded, filters, selected, onSelect, onUpdateData) => (
         <TableWithFilter
+            {...this.props}
             rows={rows}
             pagination={pagination}
             loaded={loaded}
@@ -52,7 +42,9 @@ class TagModal extends Component {
             title={this.props.title}
             systemName={this.props.systemName}
             columns={columns}
-            {...this.props}
+            onSelect={onSelect}
+            onUpdateData={onUpdateData}
+            selected={selected}
         >
             {this.props.children}
         </TableWithFilter>
@@ -73,6 +65,9 @@ class TagModal extends Component {
             filters,
             onApply,
             tabNames,
+            onSelect,
+            onUpdateData,
+            selected,
             ...props
         } = this.props;
 
@@ -90,7 +85,7 @@ class TagModal extends Component {
                             onApply();
                             toggleModal(e, true);
                         }}>
-                            Apply tags
+                            Apply {Array.isArray(tabNames) ? 'selected' : 'tags'}
                         </Button>,
                         <Button key="cancel" variant="link" onClick={(e) => toggleModal(e, false)}>
                             Cancel
@@ -107,37 +102,42 @@ class TagModal extends Component {
                                         key={key}
                                         eventKey={key}
                                         title={<TabTitleText>All {item}</TabTitleText>}
-                                        tabContentId={`refTab${key}Section`}
-                                        tabContentRef={this.contentRefs[key]}
-                                    />
+                                    >
+                                        {
+                                            this.renderTable(
+                                                rows?.[key],
+                                                columns?.[key],
+                                                pagination?.[key],
+                                                loaded?.[key],
+                                                filters?.[key],
+                                                selected?.[key],
+                                                onSelect?.[key],
+                                                onUpdateData?.[key]
+                                            )
+                                        }
+                                    </Tab>
                                 ))
                             }
                         </Tabs>
-                        <div>
-                            {
-                                tabNames.map((item, key) => (
-                                    <TabContent
-                                        key={key}
-                                        eventKey={key}
-                                        id={`refTab${key}Section`}
-                                        ref={this.contentRefs[key]}
-                                        aria-label={`All ${item}`}
-                                    >
-                                        {this.renderTable(rows, columns, pagination, loaded, filters)}
-                                    </TabContent>
-                                ))
-                            }
-                        </div>
                     </Fragment> :
-                    this.renderTable(rows, columns, pagination, loaded, filters)}
+                    this.renderTable(
+                        rows,
+                        columns,
+                        pagination,
+                        loaded,
+                        filters,
+                        selected,
+                        onSelect,
+                        onUpdateData
+                    )}
             </Modal>
         );
     }
 }
 
 TagModal.propTypes = {
-    tabNames: PropTypes.string,
-    loaded: PropTypes.bool,
+    tabNames: PropTypes.arrayOf(PropTypes.string),
+    loaded: PropTypes.oneOfType([ PropTypes.bool, PropTypes.arrayOf(PropTypes.bool) ]),
     title: PropTypes.string,
     systemName: PropTypes.string,
     isOpen: PropTypes.bool,
@@ -148,13 +148,12 @@ TagModal.propTypes = {
     tableProps: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
     }),
-    onSelect: PropTypes.func,
-    onUpdateData: PropTypes.func,
-    pagination: PropTypes.shape({
-        count: PropTypes.number,
-        page: PropTypes.number,
-        perPage: PropTypes.number
-    }),
+    onSelect: PropTypes.oneOfType([ PropTypes.func, PropTypes.arrayOf(PropTypes.func) ]),
+    onUpdateData: PropTypes.oneOfType([ PropTypes.func, PropTypes.arrayOf(PropTypes.func) ]),
+    pagination: PropTypes.oneOfType([
+        TableWithFilter.propTypes.pagination,
+        PropTypes.arrayOf(TableWithFilter.propTypes.pagination)
+    ]),
     primaryToolbarProps: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
     }),

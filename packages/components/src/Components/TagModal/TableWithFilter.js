@@ -48,15 +48,16 @@ const TableWithFilter = ({
             {onUpdateData && <PrimaryToolbar
                 {...onSelect && pagination && {
                     bulkSelect: {
-                        count: selected.length,
+                        count: selected?.length,
                         onSelect: (isSelected) => {
+                            console.log('mhhh');
                             if (isSelected) {
-                                onSelect(unique([ ...rows, ...selected ]));
+                                onSelect(unique?.([ ...rows, ...selected ]));
                             } else {
                                 onSelect(selected.filter(({ id }) => !rows.find(({ id: rowId }) => rowId === id)));
                             }
                         },
-                        checked: loaded && calculateChecked(rows, selected),
+                        checked: loaded && calculateChecked?.(rows, selected),
                         items: [{
                             title: 'Select none (0)',
                             onClick: () => onSelect([])
@@ -75,8 +76,8 @@ const TableWithFilter = ({
                     }
                 } }
                 pagination={loaded ? {
-                    ...pagination,
-                    itemCount: pagination.count,
+                    ...pagination || {},
+                    itemCount: pagination?.count,
                     onSetPage: (_e, page) => onUpdateData({ ...pagination, page }),
                     onPerPageSelect: (_e, perPage) => onUpdateData({ ...pagination, page: 1, perPage })
                 } : <Skeleton size="lg" />}
@@ -88,7 +89,7 @@ const TableWithFilter = ({
                 variant="compact"
                 className="ins-c-tag-modal__table"
                 cells={columns}
-                rows={rows.length ? rows : [{
+                rows={rows?.length ? rows : [{
                     cells: [{
                         title: (
                             <EmptyTable>
@@ -109,19 +110,19 @@ const TableWithFilter = ({
                         }
                     }]
                 }]}
-                {...onSelect && rows.length && {
+                {...onSelect && rows?.length && {
                     onSelect: (_event, isSelected, rowId) => onRowSelect({ isSelected, rowId })
                 }}
                 { ...tableProps }
             >
                 <TableHeader />
                 <TableBody />
-            </Table> : <SkeletonTable columns={columns} rowSize={pagination.perPage || 10} /> }
-            {onUpdateData && pagination && <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
+            </Table> : <SkeletonTable columns={columns} rowSize={pagination?.perPage || 10} /> }
+            {onUpdateData && pagination && loaded && <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                 <Pagination
-                    itemCount={pagination.count}
-                    perPage={pagination.perPage}
-                    page={pagination.page}
+                    itemCount={pagination?.count}
+                    perPage={pagination?.perPage}
+                    page={pagination?.page || 0}
                     variant="bottom"
                     onSetPage={(_event, page) => onUpdateData({ ...pagination, page })}
                     onPerPageSelect={(_event, perPage) => onUpdateData({ ...pagination, page: 1, perPage })}
