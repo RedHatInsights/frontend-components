@@ -3,6 +3,7 @@
 exports[`Text component render should render correctly - isDisabled 1`] = `
 <Fragment>
   <ForwardRef
+    aria-label="text input"
     className="ins-c-conditional-filter "
     id="test-id"
     isDisabled={true}
@@ -23,6 +24,7 @@ exports[`Text component render should render correctly - isDisabled 1`] = `
 exports[`Text component render should render correctly 1`] = `
 <Fragment>
   <ForwardRef
+    aria-label="text input"
     className="ins-c-conditional-filter "
     id="test-id"
     isDisabled={false}
@@ -43,6 +45,7 @@ exports[`Text component render should render correctly 1`] = `
 exports[`Text component render should render placeholder 1`] = `
 <Fragment>
   <ForwardRef
+    aria-label="text input"
     className="ins-c-conditional-filter "
     id="test-id"
     isDisabled={false}
@@ -64,6 +67,7 @@ exports[`Text component render should render placeholder 1`] = `
 exports[`Text component render should render value 1`] = `
 <Fragment>
   <ForwardRef
+    aria-label="text input"
     className="ins-c-conditional-filter "
     id="test-id"
     isDisabled={false}

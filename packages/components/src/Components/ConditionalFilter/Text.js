@@ -21,7 +21,8 @@ class Text extends Component {
         const changeCallback = onChange ? onChange : this.onChangeValue;
         return (
             <Fragment>
-                <TextInput { ...props }
+                <TextInput
+                    { ...props }
                     className={`ins-c-conditional-filter ${className || ''}`}
                     id={ id }
                     isDisabled={ isDisabled }
@@ -42,13 +43,15 @@ Text.propTypes = {
     placeholder: PropTypes.string,
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
-    isDisabled: PropTypes.bool
+    isDisabled: PropTypes.bool,
+    'aria-label': PropTypes.string
 };
 
 Text.defaultProps = {
     value: '',
     onSubmit: () => undefined,
-    isDisabled: false
+    isDisabled: false,
+    'aria-label': 'text input'
 };
 
 export default Text;

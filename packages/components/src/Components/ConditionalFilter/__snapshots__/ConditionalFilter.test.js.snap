@@ -73,6 +73,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
       isFilled={true}
     >
       <Text
+        aria-label="text input"
         isDisabled={false}
         onSubmit={[Function]}
         placeholder="Filter by no value"
@@ -89,6 +90,7 @@ exports[`ConditionalFilter render should render correctly 1`] = `
     className="ins-c-conditional-filter"
   >
     <Text
+      aria-label="text input"
       id="default-input"
       isDisabled={false}
       onChange={[Function]}
@@ -274,6 +276,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
       isFilled={true}
     >
       <Text
+        aria-label="text input"
         id=""
         isDisabled={false}
         onSubmit={[Function]}
@@ -455,6 +458,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
       isFilled={true}
     >
       <Text
+        aria-label="text input"
         id="simple-text-1"
         isDisabled={false}
         onSubmit={[Function]}
@@ -539,6 +543,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
       isFilled={true}
     >
       <Text
+        aria-label="text input"
         id="simple-text-2"
         isDisabled={false}
         onSubmit={[Function]}
@@ -623,6 +628,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
       isFilled={true}
     >
       <Text
+        aria-label="text input"
         isDisabled={true}
         onSubmit={[Function]}
         placeholder="Filter by no value"
@@ -706,6 +712,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
       isFilled={true}
     >
       <Text
+        aria-label="text input"
         isDisabled={false}
         onSubmit={[Function]}
         placeholder="Filter by no value"
@@ -725,6 +732,7 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
       isFilled={true}
     >
       <Text
+        aria-label="text input"
         isDisabled={false}
         onSubmit={[Function]}
         placeholder="Filter by simple text 1"
@@ -803,6 +811,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
       isFilled={true}
     >
       <Text
+        aria-label="text input"
         isDisabled={false}
         onSubmit={[Function]}
         placeholder="Filter by no value"

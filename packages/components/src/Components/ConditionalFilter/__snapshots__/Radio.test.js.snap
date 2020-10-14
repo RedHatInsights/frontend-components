@@ -3,6 +3,7 @@
 exports[`Radio render should render correctly 1`] = `
 <Fragment>
   <Text
+    aria-label="text input"
     isDisabled={false}
     items={Array []}
     onChange={[Function]}

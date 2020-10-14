@@ -24,7 +24,7 @@ class ConditionalFilter extends Component {
     }
 
     render() {
-        const { items, value, id, onChange, placeholder, hideLabel, isDisabled, ...props } = this.props;
+        const { items, value, onChange, placeholder, hideLabel, isDisabled, ...props } = this.props;
         const { isOpen, stateValue } = this.state;
         const currentValue = onChange ? value : stateValue;
         const activeItem = items && items.length && (
@@ -41,7 +41,6 @@ class ConditionalFilter extends Component {
                         <div className="ins-c-conditional-filter">
                             <Text { ...props }
                                 value={ currentValue }
-                                id={ id || 'default-input' }
                                 onChange={ (e) => onChangeCallback(e, e.target.value) }
                                 placeholder={ placeholder }
                                 widget-type='InsightsInput'
@@ -143,6 +142,7 @@ ConditionalFilter.defaultProps = {
     value: '',
     items: [],
     hideLabel: false,
-    isDisabled: false
+    isDisabled: false,
+    id: 'default-input'
 };
 export default ConditionalFilter;
