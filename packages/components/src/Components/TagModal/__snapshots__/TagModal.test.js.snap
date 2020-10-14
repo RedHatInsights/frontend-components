@@ -13,25 +13,13 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   onClose={[Function]}
   ouiaSafe={true}
   showClose={true}
+  tableProps={Object {}}
   title="Tags for paul.localhost.com"
   variant="medium"
 >
-  <PrimaryToolbar
-    pagination={
-      Object {
-        "count": 10,
-        "itemCount": 10,
-        "onPerPageSelect": [Function],
-        "onSetPage": [Function],
-      }
-    }
-    toggleIsExpanded={[Function]}
-  />
-  <Table
-    aria-label="paul.localhost.com tags"
-    borders={true}
-    canSelectAll={true}
-    cells={
+  <TableWithFilter
+    calculateChecked={[Function]}
+    columns={
       Array [
         Object {
           "title": "Name",
@@ -41,16 +29,15 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
         },
       ]
     }
-    className="ins-c-tag-modal__table"
-    contentId="expanded-content"
-    dropdownDirection="down"
-    dropdownPosition="right"
-    expandId="expandable-toggle"
-    gridBreakPoint="grid-md"
-    isStickyHeader={false}
-    ouiaSafe={true}
-    role="grid"
-    rowLabeledBy="simple-node"
+    entityName="tags"
+    isOpen={true}
+    loaded={true}
+    onUpdateData={[Function]}
+    pagination={
+      Object {
+        "count": 10,
+      }
+    }
     rows={
       Array [
         Array [
@@ -63,75 +50,11 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
         ],
       ]
     }
-    variant="compact"
-  >
-    <TableHeader />
-    <Component />
-  </Table>
-  <TableToolbar
-    className="ins-c-inventory__table--toolbar"
-    isFooter={true}
-  >
-    <Pagination
-      className=""
-      defaultToFullPage={false}
-      firstPage={1}
-      isCompact={false}
-      isDisabled={false}
-      itemCount={10}
-      itemsEnd={null}
-      itemsStart={null}
-      offset={0}
-      onFirstClick={[Function]}
-      onLastClick={[Function]}
-      onNextClick={[Function]}
-      onPageInput={[Function]}
-      onPerPageSelect={[Function]}
-      onPreviousClick={[Function]}
-      onSetPage={[Function]}
-      ouiaSafe={true}
-      page={0}
-      perPage={10}
-      perPageOptions={
-        Array [
-          Object {
-            "title": "10",
-            "value": 10,
-          },
-          Object {
-            "title": "20",
-            "value": 20,
-          },
-          Object {
-            "title": "50",
-            "value": 50,
-          },
-          Object {
-            "title": "100",
-            "value": 100,
-          },
-        ]
-      }
-      titles={
-        Object {
-          "currPage": "Current page",
-          "items": "",
-          "itemsPerPage": "Items per page",
-          "optionsToggle": "Items per page",
-          "page": "",
-          "paginationTitle": "Pagination",
-          "perPageSuffix": "per page",
-          "toFirstPage": "Go to first page",
-          "toLastPage": "Go to last page",
-          "toNextPage": "Go to next page",
-          "toPreviousPage": "Go to previous page",
-        }
-      }
-      toggleTemplate={[Function]}
-      variant="bottom"
-      widgetId="pagination-options-menu"
-    />
-  </TableToolbar>
+    systemName="paul.localhost.com"
+    tableProps={Object {}}
+    toggleModal={[Function]}
+    unique={[Function]}
+  />
 </Modal>
 `;
 
@@ -148,28 +71,13 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   onClose={[Function]}
   ouiaSafe={true}
   showClose={true}
+  tableProps={Object {}}
   title="Tags for paul.localhost.com"
   variant="medium"
 >
-  <PrimaryToolbar
-    pagination={
-      Object {
-        "count": 10,
-        "itemCount": 10,
-        "onPerPageSelect": [Function],
-        "onSetPage": [Function],
-      }
-    }
-    toggleIsExpanded={[Function]}
-  />
-  <h1>
-    I am a child component
-  </h1>
-  <Table
-    aria-label="paul.localhost.com tags"
-    borders={true}
-    canSelectAll={true}
-    cells={
+  <TableWithFilter
+    calculateChecked={[Function]}
+    columns={
       Array [
         Object {
           "title": "Name",
@@ -179,116 +87,256 @@ exports[`TagCount component Render the modal with a child component 1`] = `
         },
       ]
     }
-    className="ins-c-tag-modal__table"
-    contentId="expanded-content"
-    dropdownDirection="down"
-    dropdownPosition="right"
-    expandId="expandable-toggle"
-    gridBreakPoint="grid-md"
-    isStickyHeader={false}
-    ouiaSafe={true}
-    role="grid"
-    rowLabeledBy="simple-node"
-    rows={
-      Array [
-        Object {
-          "cells": Array [
-            Object {
-              "props": Object {
-                "colSpan": 2,
-              },
-              "title": <EmptyTable>
-                <Bullseye>
-                  <EmptyState
-                    variant="full"
-                  >
-                    <Title
-                      headingLevel="h5"
-                      size="lg"
-                    >
-                      No tags found
-                    </Title>
-                    <EmptyStateBody>
-                      This filter criteria matches no tags. 
-                      <br />
-                       Try changing your filter settings.
-                    </EmptyStateBody>
-                  </EmptyState>
-                </Bullseye>
-              </EmptyTable>,
-            },
-          ],
-        },
-      ]
+    entityName="tags"
+    isOpen={true}
+    loaded={true}
+    onUpdateData={[Function]}
+    pagination={
+      Object {
+        "count": 10,
+      }
     }
-    variant="compact"
+    rows={Array []}
+    systemName="paul.localhost.com"
+    tableProps={Object {}}
+    toggleModal={[Function]}
+    unique={[Function]}
   >
-    <TableHeader />
-    <Component />
-  </Table>
-  <TableToolbar
-    className="ins-c-inventory__table--toolbar"
-    isFooter={true}
+    <h1>
+      I am a child component
+    </h1>
+  </TableWithFilter>
+</Modal>
+`;
+
+exports[`Two tables should render two tables 1`] = `
+<Modal
+  actions={Array []}
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className="ins-c-tag-modal"
+  hasNoBodyWrapper={false}
+  isOpen={true}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  tableProps={Object {}}
+  title="Tags for paul.localhost.com"
+  variant="medium"
+>
+  <Tabs
+    activeKey={0}
+    component="div"
+    isBox={false}
+    isFilled={false}
+    isSecondary={false}
+    isVertical={false}
+    leftScrollAriaLabel="Scroll left"
+    mountOnEnter={false}
+    onSelect={[Function]}
+    ouiaSafe={true}
+    rightScrollAriaLabel="Scroll right"
+    unmountOnExit={false}
   >
-    <Pagination
-      className=""
-      defaultToFullPage={false}
-      firstPage={1}
-      isCompact={false}
-      isDisabled={false}
-      itemCount={10}
-      itemsEnd={null}
-      itemsStart={null}
-      offset={0}
-      onFirstClick={[Function]}
-      onLastClick={[Function]}
-      onNextClick={[Function]}
-      onPageInput={[Function]}
-      onPerPageSelect={[Function]}
-      onPreviousClick={[Function]}
-      onSetPage={[Function]}
-      ouiaSafe={true}
-      page={0}
-      perPage={10}
-      perPageOptions={
-        Array [
-          Object {
-            "title": "10",
-            "value": 10,
-          },
-          Object {
-            "title": "20",
-            "value": 20,
-          },
-          Object {
-            "title": "50",
-            "value": 50,
-          },
-          Object {
-            "title": "100",
-            "value": 100,
-          },
-        ]
+    <Tab
+      eventKey={0}
+      key="0"
+      title={
+        <TabTitleText>
+          All 
+          something
+        </TabTitleText>
       }
-      titles={
-        Object {
-          "currPage": "Current page",
-          "items": "",
-          "itemsPerPage": "Items per page",
-          "optionsToggle": "Items per page",
-          "page": "",
-          "paginationTitle": "Pagination",
-          "perPageSuffix": "per page",
-          "toFirstPage": "Go to first page",
-          "toLastPage": "Go to last page",
-          "toNextPage": "Go to next page",
-          "toPreviousPage": "Go to previous page",
+    >
+      <TableWithFilter
+        calculateChecked={[Function]}
+        columns={
+          Array [
+            Object {
+              "title": "one",
+            },
+          ]
         }
+        entityName="tags"
+        isOpen={true}
+        loaded={true}
+        rows={
+          Array [
+            Array [
+              "something",
+            ],
+          ]
+        }
+        systemName="paul.localhost.com"
+        tabNames={
+          Array [
+            "something",
+            "another",
+          ]
+        }
+        tableProps={Object {}}
+        toggleModal={[Function]}
+        unique={[Function]}
+      />
+    </Tab>
+    <Tab
+      eventKey={1}
+      key="1"
+      title={
+        <TabTitleText>
+          All 
+          another
+        </TabTitleText>
       }
-      toggleTemplate={[Function]}
-      variant="bottom"
-      widgetId="pagination-options-menu"
-    />
-  </TableToolbar>
+    >
+      <TableWithFilter
+        calculateChecked={[Function]}
+        columns={
+          Array [
+            Object {
+              "title": "two",
+            },
+          ]
+        }
+        entityName="tags"
+        isOpen={true}
+        loaded={true}
+        rows={
+          Array [
+            Array [
+              "another",
+            ],
+          ]
+        }
+        systemName="paul.localhost.com"
+        tabNames={
+          Array [
+            "something",
+            "another",
+          ]
+        }
+        tableProps={Object {}}
+        toggleModal={[Function]}
+        unique={[Function]}
+      />
+    </Tab>
+  </Tabs>
+</Modal>
+`;
+
+exports[`Two tables should render two tables in loading state 1`] = `
+<Modal
+  actions={Array []}
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className="ins-c-tag-modal"
+  hasNoBodyWrapper={false}
+  isOpen={true}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  tableProps={Object {}}
+  title="Tags for paul.localhost.com"
+  variant="medium"
+>
+  <Tabs
+    activeKey={0}
+    component="div"
+    isBox={false}
+    isFilled={false}
+    isSecondary={false}
+    isVertical={false}
+    leftScrollAriaLabel="Scroll left"
+    mountOnEnter={false}
+    onSelect={[Function]}
+    ouiaSafe={true}
+    rightScrollAriaLabel="Scroll right"
+    unmountOnExit={false}
+  >
+    <Tab
+      eventKey={0}
+      key="0"
+      title={
+        <TabTitleText>
+          All 
+          something
+        </TabTitleText>
+      }
+    >
+      <TableWithFilter
+        calculateChecked={[Function]}
+        columns={
+          Array [
+            Object {
+              "title": "one",
+            },
+          ]
+        }
+        entityName="tags"
+        isOpen={true}
+        rows={
+          Array [
+            Array [
+              "something",
+            ],
+          ]
+        }
+        systemName="paul.localhost.com"
+        tabNames={
+          Array [
+            "something",
+            "another",
+          ]
+        }
+        tableProps={Object {}}
+        toggleModal={[Function]}
+        unique={[Function]}
+      />
+    </Tab>
+    <Tab
+      eventKey={1}
+      key="1"
+      title={
+        <TabTitleText>
+          All 
+          another
+        </TabTitleText>
+      }
+    >
+      <TableWithFilter
+        calculateChecked={[Function]}
+        columns={
+          Array [
+            Object {
+              "title": "two",
+            },
+          ]
+        }
+        entityName="tags"
+        isOpen={true}
+        rows={
+          Array [
+            Array [
+              "another",
+            ],
+          ]
+        }
+        systemName="paul.localhost.com"
+        tabNames={
+          Array [
+            "something",
+            "another",
+          ]
+        }
+        tableProps={Object {}}
+        toggleModal={[Function]}
+        unique={[Function]}
+      />
+    </Tab>
+  </Tabs>
 </Modal>
 `;
