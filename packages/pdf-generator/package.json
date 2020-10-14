@@ -9,7 +9,8 @@
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./rollup.config.js",
+        "build": "npm run build:js",
+        "build:js": "rollup -c ./rollup.config.js",
         "start": "rollup -c ./rollup.config.js -w"
     },
     "repository": {

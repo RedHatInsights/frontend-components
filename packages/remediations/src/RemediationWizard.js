@@ -4,7 +4,7 @@ import transform from 'lodash/transform';
 
 import * as api from './api/';
 import { Wizard } from '@redhat-cloud-services/frontend-components/components/cjs/Wizard';
-import Deferred from '@redhat-cloud-services/frontend-components-utilities/files/Deffered';
+import Deferred from '@redhat-cloud-services/frontend-components-utilities/files/cjs/Deffered';
 import { remediationUrl } from './utils';
 
 import ExistingOrNew from './steps/ExistingOrNew';

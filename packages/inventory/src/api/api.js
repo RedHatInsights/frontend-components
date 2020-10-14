@@ -2,8 +2,8 @@ import 'abortcontroller-polyfill/dist/polyfill-patch-fetch';
 import flatMap from 'lodash/flatMap';
 export const INVENTORY_API_BASE = '/api/inventory/v1';
 
-import instance from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
-import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
+import instance from '@redhat-cloud-services/frontend-components-utilities/files/cjs/interceptors';
+import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { HostsApi, TagsApi } from '@redhat-cloud-services/host-inventory-client';
 import { defaultFilters } from '../shared/constants';
 
