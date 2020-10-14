@@ -298,7 +298,7 @@ const EntityTableToolbar = ({
             {...props}
             bulkSelect={{
                 ...bulkSelect,
-                isDisabled: !hasAccess
+                isDisabled: bulkSelect?.isDisabled || !hasAccess
             }}
             className={`ins-c-inventory__table--toolbar ${hasItems ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
             {...inventoryFilters?.length > 0 && {
