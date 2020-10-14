@@ -1,27 +1,15 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './tagModal.scss';
 import {
     Modal,
-    Pagination,
-    Bullseye,
-    EmptyState,
-    EmptyStateVariant,
-    Title,
-    EmptyStateBody,
-    Button
+    Button,
+    Tabs,
+    Tab,
+    TabTitleText
 } from '@patternfly/react-core';
 import classNames from 'classnames';
-import {
-    Table,
-    TableHeader,
-    TableBody
-} from '@patternfly/react-table';
-import { EmptyTable } from '../EmptyTable';
-import { TableToolbar } from '../TableToolbar';
-import { PrimaryToolbar } from '../PrimaryToolbar';
-import { Skeleton } from '../Skeleton';
-import { SkeletonTable } from '../SkeletonTable';
+import TableWithFilter from './TableWithFilter';
 
 const calculateChecked = (rows = [], selected) => (
     rows.every(({ id }) => selected && selected.find(({ id: selectedId }) => selectedId === id))
@@ -33,14 +21,34 @@ const unique = (arr) => (
     arr.filter(({ id }, index, arr) => arr.findIndex(({ id: currId }) => currId === id) === index)
 );
 
-export default class TagModal extends React.Component {
-    onSelect = ({ isSelected, rowId }) => {
-        const { rows, onSelect, selected } = this.props;
-        const currRow = rows[rowId];
-        if (currRow) {
-            onSelect(isSelected ? [ ...selected, currRow ] : selected.filter(({ id }) => id !== currRow.id));
-        }
-    }
+class TagModal extends Component {
+    state = {
+        selectedTab: 0
+    };
+
+    handleTabClick = (_event, tabIndex) => {
+        this.setState({ activeTabKey: tabIndex });
+    };
+
+    renderTable = (rows, columns, pagination, loaded, filters, selected, onSelect, onUpdateData) => (
+        <TableWithFilter
+            {...this.props}
+            rows={rows}
+            pagination={pagination}
+            loaded={loaded}
+            calculateChecked={calculateChecked}
+            unique={unique}
+            filters={filters}
+            title={this.props.title}
+            systemName={this.props.systemName}
+            columns={columns}
+            onSelect={onSelect}
+            onUpdateData={onUpdateData}
+            selected={selected}
+        >
+            {this.props.children}
+        </TableWithFilter>
+    );
 
     render() {
         const {
@@ -52,17 +60,18 @@ export default class TagModal extends React.Component {
             rows,
             columns,
             children,
-            tableProps,
             pagination,
-            onUpdateData,
             loaded,
             filters,
-            onSelect,
-            selected,
             onApply,
-            primaryToolbarProps,
+            tabNames,
+            onSelect,
+            onUpdateData,
+            selected,
             ...props
         } = this.props;
+
+        const isTabbed = Array.isArray(tabNames);
 
         return (
             <Modal
@@ -78,7 +87,7 @@ export default class TagModal extends React.Component {
                             onApply();
                             toggleModal(e, true);
                         }}>
-                            Apply tags
+                            Apply {isTabbed ? 'selected' : 'tags'}
                         </Button>,
                         <Button key="cancel" variant="link" onClick={(e) => toggleModal(e, false)}>
                             Cancel
@@ -86,95 +95,49 @@ export default class TagModal extends React.Component {
                     ]
                 }}
             >
-                {onUpdateData && <PrimaryToolbar
-                    {...onSelect && pagination && {
-                        bulkSelect: {
-                            count: selected.length,
-                            onSelect: (isSelected) => {
-                                if (isSelected) {
-                                    onSelect(unique([ ...rows, ...selected ]));
-                                } else {
-                                    onSelect(selected.filter(({ id }) => !rows.find(({ id: rowId }) => rowId === id)));
-                                }
-                            },
-                            checked: loaded && calculateChecked(rows, selected),
-                            items: [{
-                                title: 'Select none (0)',
-                                onClick: () => onSelect([])
-                            },
-                            {
-                                ...loaded && rows && rows.length > 0 ? {
-                                    title: `Select page (${ rows.length })`,
-                                    onClick: () => onSelect(unique([ ...rows, ...selected ]))
-                                } : {}
-                            }]
+                {isTabbed ?
+                    <Tabs activeKey={this.state.activeTabKey} onSelect={this.handleTabClick}>
+                        {
+                            tabNames.map((item, key) => (
+                                <Tab
+                                    key={key}
+                                    eventKey={key}
+                                    title={<TabTitleText>All {item}</TabTitleText>}
+                                >
+                                    {
+                                        this.renderTable(
+                                        rows?.[key],
+                                        columns?.[key],
+                                        pagination?.[key],
+                                        loaded?.[key],
+                                        filters?.[key],
+                                        selected?.[key],
+                                        onSelect?.[key],
+                                        onUpdateData?.[key]
+                                        )
+                                    }
+                                </Tab>
+                            ))
                         }
-                    }}
-                    {...filters && {
-                        filterConfig: {
-                            items: filters
-                        }
-                    } }
-                    pagination={loaded ? {
-                        ...pagination,
-                        itemCount: pagination.count,
-                        onSetPage: (_e, page) => onUpdateData({ ...pagination, page }),
-                        onPerPageSelect: (_e, perPage) => onUpdateData({ ...pagination, page: 1, perPage })
-                    } : <Skeleton size="lg" />}
-                    {...primaryToolbarProps}
-                /> }
-                {children}
-                {loaded ? <Table
-                    aria-label={title || `${systemName} tags`}
-                    variant="compact"
-                    className="ins-c-tag-modal__table"
-                    cells={columns}
-                    rows={rows.length ? rows : [{
-                        cells: [{
-                            title: (
-                                <EmptyTable>
-                                    <Bullseye>
-                                        <EmptyState variant={ EmptyStateVariant.full }>
-                                            <Title headingLevel="h5" size="lg">
-                                                No tags found
-                                            </Title>
-                                            <EmptyStateBody>
-                                                This filter criteria matches no tags. <br /> Try changing your filter settings.
-                                            </EmptyStateBody>
-                                        </EmptyState>
-                                    </Bullseye>
-                                </EmptyTable>
-                            ),
-                            props: {
-                                colSpan: columns.length
-                            }
-                        }]
-                    }]}
-                    {...onSelect && rows.length && {
-                        onSelect: (_event, isSelected, rowId) => this.onSelect({ isSelected, rowId })
-                    }}
-                    { ...tableProps }
-                >
-                    <TableHeader />
-                    <TableBody />
-                </Table> : <SkeletonTable columns={columns} rowSize={pagination.perPage || 10} /> }
-                {onUpdateData && pagination && <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
-                    <Pagination
-                        itemCount={pagination.count}
-                        perPage={pagination.perPage}
-                        page={pagination.page}
-                        variant="bottom"
-                        onSetPage={(_event, page) => onUpdateData({ ...pagination, page })}
-                        onPerPageSelect={(_event, perPage) => onUpdateData({ ...pagination, page: 1, perPage })}
-                    />
-                </TableToolbar> }
+                    </Tabs> :
+                    this.renderTable(
+                        rows,
+                        columns,
+                        pagination,
+                        loaded,
+                        filters,
+                        selected,
+                        onSelect,
+                        onUpdateData
+                    )}
             </Modal>
         );
     }
 }
 
 TagModal.propTypes = {
-    loaded: PropTypes.bool,
+    tabNames: PropTypes.arrayOf(PropTypes.string),
+    loaded: PropTypes.oneOfType([ PropTypes.bool, PropTypes.arrayOf(PropTypes.bool) ]),
     title: PropTypes.string,
     systemName: PropTypes.string,
     isOpen: PropTypes.bool,
@@ -185,13 +148,12 @@ TagModal.propTypes = {
     tableProps: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
     }),
-    onSelect: PropTypes.func,
-    onUpdateData: PropTypes.func,
-    pagination: PropTypes.shape({
-        count: PropTypes.number,
-        page: PropTypes.number,
-        perPage: PropTypes.number
-    }),
+    onSelect: PropTypes.oneOfType([ PropTypes.func, PropTypes.arrayOf(PropTypes.func) ]),
+    onUpdateData: PropTypes.oneOfType([ PropTypes.func, PropTypes.arrayOf(PropTypes.func) ]),
+    pagination: PropTypes.oneOfType([
+        TableWithFilter.propTypes.pagination,
+        PropTypes.arrayOf(TableWithFilter.propTypes.pagination)
+    ]),
     primaryToolbarProps: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
     }),
@@ -211,3 +173,5 @@ TagModal.defaultProps = {
     tableProps: {},
     pagination: { count: 10 }
 };
+
+export default TagModal;
