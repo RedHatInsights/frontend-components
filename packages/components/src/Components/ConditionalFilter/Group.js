@@ -279,7 +279,7 @@ class Group extends Component {
                     ) }
                 </div>
                 { onShowMore ?
-                    <SelectGroup>
+                    <SelectGroup value="">
                         <Button
                             {...showMore.items[0]}
                             className="pf-c-select__menu-item"
