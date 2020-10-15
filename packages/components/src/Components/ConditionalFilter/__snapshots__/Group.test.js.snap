@@ -1327,7 +1327,9 @@ exports[`Group - component render show more should render correctly with items a
         </SelectOption>
       </SelectGroup>
     </div>
-    <SelectGroup>
+    <SelectGroup
+      value=""
+    >
       <Button
         className="pf-c-select__menu-item"
         label="Show more"
@@ -1563,7 +1565,9 @@ exports[`Group - component render show more should render correctly with items a
         </SelectOption>
       </SelectGroup>
     </div>
-    <SelectGroup>
+    <SelectGroup
+      value=""
+    >
       <Button
         className="pf-c-select__menu-item"
         label="some title"
@@ -1794,7 +1798,9 @@ exports[`Group - component render show more should render correctly with items a
         </SelectOption>
       </SelectGroup>
     </div>
-    <SelectGroup>
+    <SelectGroup
+      value=""
+    >
       <Button
         className="pf-c-select__menu-item"
         label="Show more"
@@ -2025,7 +2031,9 @@ exports[`Group - component render show more should render correctly with items a
         </SelectOption>
       </SelectGroup>
     </div>
-    <SelectGroup>
+    <SelectGroup
+      value=""
+    >
       <Button
         className="pf-c-select__menu-item"
         label="Show more"
