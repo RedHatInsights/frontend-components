@@ -34,11 +34,6 @@ exports[`EntityTableToolbar DOM should render correctly - no data 1`] = `
       "onDelete": [Function],
     }
   }
-  bulkSelect={
-    Object {
-      "isDisabled": false,
-    }
-  }
   className="ins-c-inventory__table--toolbar "
   filterConfig={
     Object {
@@ -144,11 +139,6 @@ exports[`EntityTableToolbar DOM should render correctly - with children 1`] = `
         },
       ],
       "onDelete": [Function],
-    }
-  }
-  bulkSelect={
-    Object {
-      "isDisabled": false,
     }
   }
   className="ins-c-inventory__table--toolbar "
@@ -271,11 +261,6 @@ exports[`EntityTableToolbar DOM should render correctly - with custom activeFilt
         },
       ],
       "onDelete": [Function],
-    }
-  }
-  bulkSelect={
-    Object {
-      "isDisabled": false,
     }
   }
   className="ins-c-inventory__table--toolbar "
@@ -416,11 +401,6 @@ exports[`EntityTableToolbar DOM should render correctly - with custom filters 1`
       "onDelete": [Function],
     }
   }
-  bulkSelect={
-    Object {
-      "isDisabled": false,
-    }
-  }
   className="ins-c-inventory__table--toolbar "
   filterConfig={
     Object {
@@ -534,11 +514,6 @@ exports[`EntityTableToolbar DOM should render correctly - with default filters 1
       "onDelete": [Function],
     }
   }
-  bulkSelect={
-    Object {
-      "isDisabled": false,
-    }
-  }
   className="ins-c-inventory__table--toolbar "
   filterConfig={
     Object {
@@ -649,11 +624,6 @@ exports[`EntityTableToolbar DOM should render correctly - with default tag filte
       "onDelete": [Function],
     }
   }
-  bulkSelect={
-    Object {
-      "isDisabled": false,
-    }
-  }
   className="ins-c-inventory__table--toolbar "
   filterConfig={
     Object {
@@ -740,11 +710,6 @@ exports[`EntityTableToolbar DOM should render correctly - with items 1`] = `
       "onDelete": [Function],
     }
   }
-  bulkSelect={
-    Object {
-      "isDisabled": false,
-    }
-  }
   className="ins-c-inventory__table--toolbar ins-c-inventory__table--toolbar-has-items"
   filters={Array []}
   pagination={
@@ -763,11 +728,6 @@ exports[`EntityTableToolbar DOM should render correctly - with items 1`] = `
 
 exports[`EntityTableToolbar DOM should render correctly - with no access 1`] = `
 <PrimaryToolbar
-  bulkSelect={
-    Object {
-      "isDisabled": true,
-    }
-  }
   className="ins-c-inventory__table--toolbar "
   filterConfig={
     Object {
@@ -879,11 +839,6 @@ exports[`EntityTableToolbar DOM should render correctly - with tags 1`] = `
         },
       ],
       "onDelete": [Function],
-    }
-  }
-  bulkSelect={
-    Object {
-      "isDisabled": false,
     }
   }
   className="ins-c-inventory__table--toolbar "
@@ -1066,11 +1021,6 @@ exports[`EntityTableToolbar DOM should render correctly 1`] = `
         },
       ],
       "onDelete": [Function],
-    }
-  }
-  bulkSelect={
-    Object {
-      "isDisabled": false,
     }
   }
   className="ins-c-inventory__table--toolbar "
