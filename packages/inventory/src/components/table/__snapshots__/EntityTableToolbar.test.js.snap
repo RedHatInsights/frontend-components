@@ -339,11 +339,13 @@ exports[`EntityTableToolbar DOM should render correctly - with custom activeFilt
                   />
                    
                 </span>,
+                "value": "",
               },
             ],
             "onChange": [Function],
             "onFilter": [Function],
             "selected": Object {},
+            "value": "",
           },
           "label": "Tags",
           "placeholder": "Filter system by tag",
@@ -917,11 +919,13 @@ exports[`EntityTableToolbar DOM should render correctly - with tags 1`] = `
                   />
                    
                 </span>,
+                "value": "",
               },
             ],
             "onChange": [Function],
             "onFilter": [Function],
             "selected": Object {},
+            "value": "",
           },
           "label": "Tags",
           "placeholder": "Filter system by tag",
