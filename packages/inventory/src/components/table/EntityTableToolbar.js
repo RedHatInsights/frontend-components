@@ -296,9 +296,11 @@ const EntityTableToolbar = ({
     return <Fragment>
         <PrimaryToolbar
             {...props}
-            bulkSelect={{
-                ...bulkSelect,
-                isDisabled: bulkSelect?.isDisabled || !hasAccess
+            {...bulkSelect && {
+                bulkSelect: {
+                    ...bulkSelect,
+                    isDisabled: bulkSelect?.isDisabled || !hasAccess
+                }
             }}
             className={`ins-c-inventory__table--toolbar ${hasItems ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
             {...inventoryFilters?.length > 0 && {
