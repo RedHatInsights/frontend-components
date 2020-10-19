@@ -4,7 +4,11 @@ import { usePermissions } from '@redhat-cloud-services/frontend-components-utili
 import { Spinner } from '@patternfly/react-core/dist/js/components/Spinner';
 
 const RenderWrapper = ({ cmp: Component, hideLoader, isRbacEnabled, inventoryRef, store, ...props }) => {
-    const { hasAccess } = usePermissions('inventory', [ 'inventory:*:*', 'inventory:hosts:read' ]);
+    const { hasAccess } = usePermissions('inventory', [
+        'inventory:*:*',
+        'inventory:*:read',
+        'inventory:hosts:read'
+    ]);
     return (
         (hasAccess === undefined && !hideLoader) ?
             <Spinner /> :
