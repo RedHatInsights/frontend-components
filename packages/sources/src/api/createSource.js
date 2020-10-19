@@ -115,6 +115,10 @@ export const doCreateSource = async (formData, sourceTypes, timetoutedApps = [])
             applicationDataOut = await checkAppAvailability(applicationDataOut.id, timeout);
         }
 
+        if (endpointDataOut) {
+            endpointDataOut = await checkAppAvailability(endpointDataOut.id, undefined, undefined, 'getEndpoint');
+        }
+
         return {
             ...sourceDataOut,
             endpoint: [ endpointDataOut ],

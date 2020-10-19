@@ -3,7 +3,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { EmptyStateSecondaryActions, Button, Title, EmptyState, EmptyStateBody } from '@patternfly/react-core';
 
-import FinalWizard from '../../addSourceWizard/FinalWizard';
+import FinalWizard, { getSourceStatus } from '../../addSourceWizard/FinalWizard';
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
@@ -199,6 +199,25 @@ describe('Final wizard', () => {
         wrapper.update();
 
         expect(wrapper.find(MemoryRouter).instance().history.location.pathname).toEqual(`/sources/edit/${id}`);
+    });
+
+    it('when configuration failed, show endpoint error', async () => {
+        const ERROR_MSG = 'Some error message';
+
+        const wrapper = mount(<FinalWizard
+            { ...initialProps }
+            isFinished={ true }
+            createdSource={{
+                id,
+                endpoint: [{
+                    availability_status: 'unavailable',
+                    availability_status_error: ERROR_MSG
+                }]
+            }}
+        />);
+        expect(wrapper.find(ErroredStep)).toHaveLength(1);
+        expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Configuration unsuccessful');
+        expect(wrapper.find(EmptyStateBody).text()).toEqual(ERROR_MSG);
     });
 
     it('shows timeouted step', async () => {
