@@ -12,6 +12,30 @@ import TimeoutStep from './steps/TimeoutStep';
 import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 import { getSourcesApi } from '../api';
 
+export const getSourceStatus = source => {
+    const appStatus = source.applications?.[0]?.availability_status;
+    const endpointStatus = source.endpoint?.[0]?.availability_status;
+    const statuses = [ appStatus, endpointStatus ];
+
+    if (statuses.includes('unavailable')) {
+        return 'unavailable';
+    }
+
+    if (
+        (appStatus === 'available' && !source.endpoint?.[0])
+        || (endpointStatus === 'available' && !source.applications?.[0])
+        || (appStatus === 'available' && endpointStatus === 'available')
+    ) {
+        return 'available';
+    }
+
+    if (source.applications?.[0] || source.endpoint?.[0]) {
+        return 'timeout';
+    }
+
+    return 'finished';
+};
+
 const FinalWizard = ({
     afterSubmit,
     afterError,
@@ -62,53 +86,50 @@ const FinalWizard = ({
             })}
         />;
     } else if (isFinished) {
-        if (createdSource.applications[0]?.availability_status === 'available') {
-            step = <FinishedStep
-                onClose={ afterSubmit }
-                successfulMessage={ successfulMessage }
-                hideSourcesButton={ hideSourcesButton }
-                returnButtonTitle={ returnButtonTitle }
-                secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
-                    id: 'wizard.addAnotherSource',
-                    defaultMessage: 'Add another source'
-                }) }</Button>}
-            />;
-        } else if (createdSource.applications[0]?.availability_status === 'unavailable') {
-            step = <ErroredStep
-                onClose={ afterSubmit }
-                secondaryActions={<Button variant="link" onClick={ removeSource }>
-                    {intl.formatMessage({ id: 'wizard.removeSource', defaultMessage: 'Remove source' })}
-                </Button>}
-                Component={() => (
-                    <Link to={`/sources/edit/${createdSource.id}`}>
-                        <Button variant='primary' className="pf-u-mt-xl">
-                            { intl.formatMessage({ id: 'wizard.editSource', defaultMessage: 'Edit source' })}
-                        </Button>
-                    </Link>
-                )}
-                message={createdSource.applications[0]?.availability_status_error || intl.formatMessage({ id: 'wizard.unknownError', defaultMessage: 'Unknown error' })}
-                title={intl.formatMessage({ id: 'wizard.configurationUnsuccessful', defaultMessage: 'Configuration unsuccessful' })}
-            />;
-        } else if (createdSource.applications[0]) {
-            step = <TimeoutStep
-                onClose={ afterSubmit }
-                returnButtonTitle={ returnButtonTitle }
-                secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
-                    id: 'wizard.addAnotherSource',
-                    defaultMessage: 'Add another source'
-                }) }</Button>}
-            />;
-        } else {
-            step = <FinishedStep
-                onClose={ afterSubmit }
-                successfulMessage={ successfulMessage }
-                hideSourcesButton={ hideSourcesButton }
-                returnButtonTitle={ returnButtonTitle }
-                secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
-                    id: 'wizard.addAnotherSource',
-                    defaultMessage: 'Add another source'
-                }) }</Button>}
-            />;
+        switch (getSourceStatus(createdSource)) {
+            case 'unavailable':
+                step = <ErroredStep
+                    onClose={ afterSubmit }
+                    secondaryActions={<Button variant="link" onClick={ removeSource }>
+                        {intl.formatMessage({ id: 'wizard.removeSource', defaultMessage: 'Remove source' })}
+                    </Button>}
+                    Component={() => (
+                        <Link to={`/sources/edit/${createdSource.id}`}>
+                            <Button variant='primary' className="pf-u-mt-xl">
+                                { intl.formatMessage({ id: 'wizard.editSource', defaultMessage: 'Edit source' })}
+                            </Button>
+                        </Link>
+                    )}
+                    message={
+                        createdSource.applications?.[0]?.availability_status_error
+                        || createdSource.endpoint?.[0]?.availability_status_error
+                        || intl.formatMessage({ id: 'wizard.unknownError', defaultMessage: 'Unknown error' })
+                    }
+                    title={intl.formatMessage({ id: 'wizard.configurationUnsuccessful', defaultMessage: 'Configuration unsuccessful' })}
+                />;
+                break;
+            case 'timeout':
+                step = <TimeoutStep
+                    onClose={ afterSubmit }
+                    returnButtonTitle={ returnButtonTitle }
+                    secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
+                        id: 'wizard.addAnotherSource',
+                        defaultMessage: 'Add another source'
+                    }) }</Button>}
+                />;
+                break;
+            default:
+                step = <FinishedStep
+                    onClose={ afterSubmit }
+                    successfulMessage={ successfulMessage }
+                    hideSourcesButton={ hideSourcesButton }
+                    returnButtonTitle={ returnButtonTitle }
+                    secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
+                        id: 'wizard.addAnotherSource',
+                        defaultMessage: 'Add another source'
+                    }) }</Button>}
+                />;
+                break;
         }
     } else if (isErrored) {
         step = <ErroredStep

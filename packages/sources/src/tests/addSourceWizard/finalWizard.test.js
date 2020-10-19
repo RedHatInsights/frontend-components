@@ -3,7 +3,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { EmptyStateSecondaryActions, Button, Title, EmptyState, EmptyStateBody } from '@patternfly/react-core';
 
-import FinalWizard from '../../addSourceWizard/FinalWizard';
+import FinalWizard, { getSourceStatus } from '../../addSourceWizard/FinalWizard';
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
@@ -201,6 +201,25 @@ describe('Final wizard', () => {
         expect(wrapper.find(MemoryRouter).instance().history.location.pathname).toEqual(`/sources/edit/${id}`);
     });
 
+    it('when configuration failed, show endpoint error', async () => {
+        const ERROR_MSG = 'Some error message';
+
+        const wrapper = mount(<FinalWizard
+            { ...initialProps }
+            isFinished={ true }
+            createdSource={{
+                id,
+                endpoint: [{
+                    availability_status: 'unavailable',
+                    availability_status_error: ERROR_MSG
+                }]
+            }}
+        />);
+        expect(wrapper.find(ErroredStep)).toHaveLength(1);
+        expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Configuration unsuccessful');
+        expect(wrapper.find(EmptyStateBody).text()).toEqual(ERROR_MSG);
+    });
+
     it('shows timeouted step', async () => {
         const wrapper = mount(<FinalWizard
             { ...initialProps }
@@ -229,5 +248,101 @@ describe('Final wizard', () => {
         />);
         expect(wrapper.find(FinishedStep)).toHaveLength(1);
         expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Configuration successful');
+    });
+
+    describe('getSourceStatus', () => {
+        let source;
+
+        it('endpoint is unavailable', () => {
+            source = {
+                endpoint: [{
+                    availability_status: 'unavailable'
+                }]
+            };
+
+            expect(getSourceStatus(source)).toEqual('unavailable');
+        });
+
+        it('application is unavailable', () => {
+            source = {
+                applications: [{
+                    availability_status: 'unavailable'
+                }]
+            };
+
+            expect(getSourceStatus(source)).toEqual('unavailable');
+        });
+
+        it('endpoint is available', () => {
+            source = {
+                endpoint: [{
+                    availability_status: 'available'
+                }]
+            };
+
+            expect(getSourceStatus(source)).toEqual('available');
+        });
+
+        it('endpoint is available && applications is timeouted', () => {
+            source = {
+                endpoint: [{
+                    availability_status: 'available'
+                }],
+                applications: [{
+                    availability_status: 'null'
+                }]
+            };
+
+            expect(getSourceStatus(source)).toEqual('timeout');
+        });
+
+        it('application is available', () => {
+            source = {
+                applications: [{
+                    availability_status: 'available'
+                }]
+            };
+
+            expect(getSourceStatus(source)).toEqual('available');
+        });
+
+        it('endpoint && application are available', () => {
+            source = {
+                endpoint: [{
+                    availability_status: 'available'
+                }],
+                applications: [{
+                    availability_status: 'available'
+                }]
+            };
+
+            expect(getSourceStatus(source)).toEqual('available');
+        });
+
+        it('endpoint is timeouted', () => {
+            source = {
+                endpoint: [{
+                    availability_status: null
+                }]
+            };
+
+            expect(getSourceStatus(source)).toEqual('timeout');
+        });
+
+        it('application is timeouted', () => {
+            source = {
+                applications: [{
+                    availability_status: 'null'
+                }]
+            };
+
+            expect(getSourceStatus(source)).toEqual('timeout');
+        });
+
+        it('returns default', () => {
+            source = {};
+
+            expect(getSourceStatus(source)).toEqual('finished');
+        });
     });
 });
