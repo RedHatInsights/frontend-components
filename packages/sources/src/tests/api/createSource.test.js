@@ -105,7 +105,11 @@ describe('doCreateSource', () => {
 
             patchSource = jest.fn().mockImplementation(() => Promise.resolve(COST_MGMT_AUTH_OUT));
 
-            checkAppMock = jest.fn().mockImplementation(() => Promise.resolve(CREATE_APPLICATION_DATA_OUT));
+            checkAppMock = jest.fn().mockImplementation((id, timeout, delay, entity) =>
+                entity === 'getEndpoint'
+                    ? Promise.resolve(CREATE_EDNPOINT_DATA_OUT)
+                    : Promise.resolve(CREATE_APPLICATION_DATA_OUT)
+            );
             checkApp.checkAppAvailability = checkAppMock;
 
             checkAvailabilitySource = jest.fn();
@@ -168,7 +172,7 @@ describe('doCreateSource', () => {
             expect(createApplication).not.toHaveBeenCalled();
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
-            expect(checkAppMock).not.toHaveBeenCalled();
+            expect(checkAppMock).toHaveBeenCalledWith(CREATE_EDNPOINT_DATA_OUT.id, undefined, undefined, 'getEndpoint');
             expect(checkAvailabilitySource).toHaveBeenCalledWith(CREATE_SOURCE_DATA_OUT.id);
         });
 
@@ -230,7 +234,7 @@ describe('doCreateSource', () => {
             expect(createApplication).not.toHaveBeenCalled();
             expect(patchSource).not.toHaveBeenCalled();
             expect(createAuthApp).not.toHaveBeenCalled();
-            expect(checkAppMock).not.toHaveBeenCalled();
+            expect(checkAppMock).toHaveBeenCalledWith(CREATE_EDNPOINT_DATA_OUT.id, undefined, undefined, 'getEndpoint');
             expect(checkAvailabilitySource).toHaveBeenCalledWith(CREATE_SOURCE_DATA_OUT.id);
         });
 
