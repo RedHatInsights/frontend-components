@@ -15,7 +15,6 @@ class DownloadButton extends React.Component {
 
     updateAsyncPages() {
         const { asyncFunction } = this.props;
-
         if (asyncFunction) {
             this.setState({
                 asyncPages: []
@@ -43,6 +42,9 @@ class DownloadButton extends React.Component {
             asyncFunction,
             buttonProps,
             showButton,
+            onSuccess,
+            onLoading,
+            onError,
             ...props
         } = this.props;
 
@@ -57,7 +59,7 @@ class DownloadButton extends React.Component {
                             { showButton && <Button onClick={this.updateAsyncPages} { ...buttonProps }>{label}</Button> }
                             {this.state.asyncPages.length > 0 && (
                                 <BlobProvider document={<PDFDocument { ...props } pages={this.state.asyncPages} />}>
-                                    {({ blob }) => {
+                                    {({ blob, loading, error }) => {
                                         if (blob) {
                                             const link = document.createElement('a');
                                             link.href = URL.createObjectURL(blob);
@@ -68,7 +70,12 @@ class DownloadButton extends React.Component {
                                             this.setState({
                                                 asyncPages: []
                                             });
+
+                                            onSuccess();
                                         }
+
+                                        loading && onLoading();
+                                        error && onError();
 
                                         return <React.Fragment />;
                                     }}
@@ -94,7 +101,10 @@ DownloadButton.propTypes = {
     isPreview: PropTypes.bool,
     label: PropTypes.node,
     asyncFunction: PropTypes.func,
-    showButton: PropTypes.bool
+    showButton: PropTypes.bool,
+    onSuccess: PropTypes.func,
+    onLoading: PropTypes.func,
+    onError: PropTypes.func
 };
 
 DownloadButton.defaultProps = {
@@ -102,7 +112,10 @@ DownloadButton.defaultProps = {
     fileName: '',
     label: 'Download PDF',
     isPreview: false,
-    showButton: true
+    showButton: true,
+    onSuccess: () => undefined,
+    onError: () => undefined,
+    onLoading: () => undefined
 };
 
 export default DownloadButton;
