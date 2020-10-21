@@ -20,7 +20,8 @@ const ContactBody = () => <React.Fragment>
   to learn more about your permissions.
 </React.Fragment>;
 
-const NotAuthorized = ({ serviceName, icon: Icon, description, showReturnButton, className, ...props }) => {
+const NotAuthorized = ({ prevPageButtonText, toLandingPageText, title, actions, serviceName, icon: Icon, description, showReturnButton, className, ...props }) => {
+    const heading = title || `You do not have access to ${serviceName}`;
     return (
         <EmptyState
             variant={ EmptyStateVariant.full }
@@ -32,33 +33,48 @@ const NotAuthorized = ({ serviceName, icon: Icon, description, showReturnButton,
                 headingLevel="h5"
                 size="lg"
             >
-                You do not have access to { serviceName }
+                {heading}
             </Title>
             <EmptyStateBody>
-                { description || <ContactBody/> }
+                {description}
             </EmptyStateBody>
+            {actions}
             {
                 showReturnButton && (
                     document.referrer ?
-                        <Button variant="primary" onClick={ () => history.back() }>Return to previous page</Button> :
-                        <Button variant="primary" component="a" href=".">Go to landing page</Button>
+                        <Button variant="primary" onClick={ () => history.back() }>{prevPageButtonText}</Button> :
+                        <Button variant="primary" component="a" href=".">{toLandingPageText}</Button>
                 )
             }
         </EmptyState>
     );
 };
 
+const serviceNamePropType = (props, propName, componentName, ...args) => {
+    if (typeof props.title === 'undefined') {
+        return PropTypes.node.isRequired(props, propName, componentName, ...args);
+    }
+};
+
 NotAuthorized.propTypes = {
-    serviceName: PropTypes.node,
+    serviceName: serviceNamePropType,
     icon: PropTypes.func,
     description: PropTypes.node,
     showReturnButton: PropTypes.bool,
-    className: PropTypes.string
+    className: PropTypes.string,
+    title: PropTypes.node,
+    actions: PropTypes.oneOfType([ PropTypes.node, PropTypes.arrayOf(PropTypes.node) ]),
+    prevPageButtonText: PropTypes.node,
+    toLandingPageText: PropTypes.node
 };
 
 NotAuthorized.defaultProps = {
     icon: LockIcon,
-    showReturnButton: true
+    showReturnButton: true,
+    description: <ContactBody />,
+    actions: null,
+    prevPageButtonText: 'Return to previous page',
+    toLandingPageText: 'Go to landing page'
 };
 
 export default NotAuthorized;

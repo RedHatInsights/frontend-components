@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {
     EmptyState, EmptyStateBody,
@@ -9,7 +9,7 @@ import {
 import { HourglassHalfIcon } from '@patternfly/react-icons';
 import './maintenance.scss';
 
-const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, description, redirectLink, className, ...props }) => {
+const Maintenance = ({ title, utcStartTime, utcEndTime, startTime, endTime, timeZone, description, redirectLink, className, ...props }) => {
 
     const emptyStateClassName = classNames(
         className,
@@ -35,13 +35,15 @@ const Maintenance = ({ utcStartTime, utcEndTime, startTime, endTime, timeZone, d
 };
 
 Maintenance.propTypes = {
-    utcStartTime: propTypes.string,
-    utcEndTime: propTypes.string,
-    startTime: propTypes.string,
-    endTime: propTypes.string,
-    timeZone: propTypes.string,
-    description: propTypes.node,
-    redirectLink: propTypes.string
+    utcStartTime: PropTypes.string,
+    utcEndTime: PropTypes.string,
+    startTime: PropTypes.string,
+    endTime: PropTypes.string,
+    timeZone: PropTypes.string,
+    description: PropTypes.node,
+    redirectLink: PropTypes.string,
+    title: PropTypes.node,
+    className: PropTypes.string
 };
 
 Maintenance.defaultProps = {
@@ -50,7 +52,8 @@ Maintenance.defaultProps = {
     startTime: '6am',
     endTime: '8am',
     timeZone: 'EST',
-    redirectLink: 'https://status.redhat.com/incidents'
+    redirectLink: 'https://status.redhat.com/incidents',
+    title: 'Maintenance in progress'
 };
 
 export default Maintenance;
