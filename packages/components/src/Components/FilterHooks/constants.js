@@ -78,6 +78,7 @@ export function constructGroups(allTags, item = 'item') {
                         value
                     }
                 },
+                id: `${tagKey}-${value}`,
                 value: tagKey,
                 tagValue: value
             });
