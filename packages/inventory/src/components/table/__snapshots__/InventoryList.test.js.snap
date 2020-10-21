@@ -5,7 +5,7 @@ exports[`InventoryList should render correctly - with no access 1`] = `
   class="ins-c-inventory__no-access"
 >
   <div
-    class="pf-c-empty-state ins-c-not-authorized "
+    class="pf-c-empty-state ins-c-not-authorized ins-c-inventory__no--access"
   >
     <div
       class="pf-c-empty-state__content"
@@ -28,16 +28,13 @@ exports[`InventoryList should render correctly - with no access 1`] = `
       <h5
         class="pf-c-title pf-m-lg"
       >
-        You do not have access to Inventory
+        This application requires Inventory permissions
       </h5>
       <div
         class="pf-c-empty-state__body"
       >
         <div>
-          Your organization administrator must grant
-        </div>
-        <div>
-          you inventory access to view your systems.
+          To view the content of this page, you must be granted a minimum of inventory permissions from your Organization Administrator.
         </div>
       </div>
     </div>
