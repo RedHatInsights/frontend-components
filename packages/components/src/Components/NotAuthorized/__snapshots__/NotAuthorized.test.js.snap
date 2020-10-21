@@ -12,7 +12,7 @@ exports[`NotAuthorized component should apply custom styles 1`] = `
     headingLevel="h5"
     size="lg"
   >
-    You do not have access to 
+    You do not have access to Foo
   </Title>
   <EmptyStateBody>
     <ContactBody />
@@ -39,7 +39,7 @@ exports[`NotAuthorized component should not show buttons 1`] = `
     headingLevel="h5"
     size="lg"
   >
-    You do not have access to 
+    You do not have access to Foo
   </Title>
   <EmptyStateBody>
     <ContactBody />
@@ -59,12 +59,50 @@ exports[`NotAuthorized component should render 1`] = `
     headingLevel="h5"
     size="lg"
   >
-    You do not have access to 
-    Foo
+    You do not have access to Foo
   </Title>
   <EmptyStateBody>
     <ContactBody />
   </EmptyStateBody>
+  <Button
+    component="a"
+    href="."
+    variant="primary"
+  >
+    Go to landing page
+  </Button>
+</EmptyState>
+`;
+
+exports[`NotAuthorized component should show custom actions 1`] = `
+<EmptyState
+  className="ins-c-not-authorized "
+  variant="full"
+>
+  <EmptyStateIcon
+    icon={[Function]}
+  />
+  <Title
+    headingLevel="h5"
+    size="lg"
+  >
+    You do not have access to Foo
+  </Title>
+  <EmptyStateBody>
+    <ContactBody />
+  </EmptyStateBody>
+  <button
+    id="action-one"
+    key="1"
+  >
+    1
+  </button>
+  <button
+    id="action-one"
+    key="2"
+  >
+    2
+  </button>
   <Button
     component="a"
     href="."
@@ -87,10 +125,37 @@ exports[`NotAuthorized component should show custom description 1`] = `
     headingLevel="h5"
     size="lg"
   >
-    You do not have access to 
+    You do not have access to Foo
   </Title>
   <EmptyStateBody>
     Some text
+  </EmptyStateBody>
+  <Button
+    component="a"
+    href="."
+    variant="primary"
+  >
+    Go to landing page
+  </Button>
+</EmptyState>
+`;
+
+exports[`NotAuthorized component should show custom title 1`] = `
+<EmptyState
+  className="ins-c-not-authorized "
+  variant="full"
+>
+  <EmptyStateIcon
+    icon={[Function]}
+  />
+  <Title
+    headingLevel="h5"
+    size="lg"
+  >
+    Custom title
+  </Title>
+  <EmptyStateBody>
+    <ContactBody />
   </EmptyStateBody>
   <Button
     component="a"
@@ -113,7 +178,7 @@ exports[`NotAuthorized component should use custom icon 1`] = `
     <h5
       className="pf-c-title pf-m-lg"
     >
-      You do not have access to 
+      You do not have access to Foo
     </h5>
     <div
       className="pf-c-empty-state__body"
