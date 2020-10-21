@@ -187,6 +187,82 @@ describe('Group - component', () => {
             expect(onSelect).toHaveBeenCalled();
         });
 
+        it(`should select correct item with same values but different id`, () => {
+            const wrapper = mount(
+                <Group
+                    {...config}
+                    groups={[{
+                        label: 'First value',
+                        type: 'checkbox',
+                        items: [
+                            {
+                                label: 'First value',
+                                value: 'first',
+                                id: 'first-value'
+                            },
+                            {
+                                label: 'Second value',
+                                value: 'first',
+                                id: 'second-value'
+                            }
+                        ]
+                    }]}
+                    selected={{
+                        0: {
+                            first: {
+                                isSelected: true,
+                                item: {
+                                    id: 'first-value'
+                                }
+                            }
+                        }
+                    }}
+                />
+            );
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
+            wrapper.update();
+            expect(wrapper.find('input[type="checkbox"]').first().props().checked).toBe(true);
+            expect(wrapper.find('input[type="checkbox"]').at(1).props().checked).toBe(false);
+        });
+
+        it(`should select correct item with same values but different tagValue`, () => {
+            const wrapper = mount(
+                <Group
+                    {...config}
+                    groups={[{
+                        label: 'First value',
+                        type: 'checkbox',
+                        items: [
+                            {
+                                label: 'First value',
+                                value: 'first',
+                                tagValue: 'first'
+                            },
+                            {
+                                label: 'Second value',
+                                value: 'first',
+                                tagValue: 'second'
+                            }
+                        ]
+                    }]}
+                    selected={{
+                        0: {
+                            first: {
+                                isSelected: true,
+                                item: {
+                                    tagValue: 'first'
+                                }
+                            }
+                        }
+                    }}
+                />
+            );
+            wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
+            wrapper.update();
+            expect(wrapper.find('input[type="checkbox"]').first().props().checked).toBe(true);
+            expect(wrapper.find('input[type="checkbox"]').at(1).props().checked).toBe(false);
+        });
+
         [ 'check', 'radio' ].map((type, key) => {
             it(`should call item onChange - ${type}`, () => {
                 const onChange = jest.fn();

@@ -95,10 +95,9 @@ class Group extends Component {
                         <Checkbox
                             {...itemProps}
                             label={label}
-                            isChecked={
-                                isChecked ||
-                            this.isChecked(groupValue || groupKey, value || key) ||
-                            false
+                            isChecked={isChecked ||
+                                this.isChecked(groupValue || groupKey, value || key, id, item?.tagValue) ||
+                                false
                             }
                             onChange={(value, event) => {
                                 item.onChange && item.onChange(value, event);
@@ -109,7 +108,7 @@ class Group extends Component {
                             <Radio
                                 isChecked={
                                     isChecked ||
-                            this.isChecked(groupValue || groupKey, value || key) ||
+                            this.isChecked(groupValue || groupKey, value || key, id, item?.tagValue) ||
                             false
                                 }
                                 onChange={(value, event) => {
@@ -188,7 +187,7 @@ class Group extends Component {
         });
     };
 
-    isChecked = (groupValue, itemValue) => {
+    isChecked = (groupValue, itemValue, id, tagValue) => {
         const { selected: stateSelected } = this.state;
         const { selected: propSelected } = this.props;
         const selected = {
@@ -199,9 +198,19 @@ class Group extends Component {
             return false;
         }
 
-        return selected[groupValue][itemValue] instanceof Object ?
-            selected[groupValue][itemValue].isSelected :
-            Boolean(selected[groupValue][itemValue]);
+        if (selected[groupValue][itemValue] instanceof Object) {
+            if (selected[groupValue][itemValue].isSelected) {
+                if (selected[groupValue][itemValue]?.item?.id) {
+                    return id === selected[groupValue][itemValue]?.item?.id;
+                } else if (selected[groupValue][itemValue]?.item?.tagValue) {
+                    return tagValue === selected[groupValue][itemValue]?.item?.tagValue;
+                }
+            }
+
+            return selected[groupValue][itemValue].isSelected;
+        }
+
+        return Boolean(selected[groupValue][itemValue]);
     }
 
     customFilter = (e) => {
