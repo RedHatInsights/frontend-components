@@ -3,7 +3,7 @@
 ## Props
 
 |name|type|required|default|
-|---|---|---|---|---|
+|---|---|---|---|
 |utcStartTime|string|`false`|10am|
 |utcEndTime|string|`false`|12am|
 |startTime|string|`false`|6am|
