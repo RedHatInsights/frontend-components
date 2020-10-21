@@ -11,9 +11,10 @@ class DownloadButton extends React.Component {
         this.state = {
             asyncPages: []
         };
+
     }
 
-    updateAsyncPages() {
+    updateAsyncPages = () => {
         const { asyncFunction } = this.props;
         if (asyncFunction) {
             this.setState({
