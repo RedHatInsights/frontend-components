@@ -56,7 +56,12 @@ const InventoryTable = forwardRef(({
 
     return (
         (hasAccess === false && isFullView) ?
-            <AccessDenied /> :
+            <AccessDenied
+                title="You do not have access to Inventory"
+                description={<div>
+                    To view your systems, you must be granted inventory access from your Organization Administrator.
+                </div>}
+            /> :
             <Fragment>
                 <EntityTableToolbar
                     { ...props }
