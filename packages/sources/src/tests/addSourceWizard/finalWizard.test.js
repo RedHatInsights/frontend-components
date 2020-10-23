@@ -3,7 +3,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { EmptyStateSecondaryActions, Button, Title, EmptyState, EmptyStateBody } from '@patternfly/react-core';
 
-import FinalWizard, { getSourceStatus } from '../../addSourceWizard/FinalWizard';
+import FinalWizard from '../../addSourceWizard/FinalWizard';
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
@@ -17,6 +17,7 @@ import { MemoryRouter } from 'react-router-dom';
 describe('Final wizard', () => {
     let initialProps;
     let id;
+    let tmpInsights;
 
     beforeEach(() => {
         id = 'some-id';
@@ -34,6 +35,18 @@ describe('Final wizard', () => {
                 applications: []
             }
         };
+        tmpInsights = insights;
+        insights = {
+            ...insights,
+            chrome: {
+                ...insights.chrome,
+                getApp: () => 'sources'
+            }
+        };
+    });
+
+    afterEach(() => {
+        insights = tmpInsights;
     });
 
     it('contains loading step', () => {

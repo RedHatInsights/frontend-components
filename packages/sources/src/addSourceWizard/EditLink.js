@@ -10,11 +10,11 @@ const EditLink = ({ id }) => {
     const message =  intl.formatMessage({ id: 'wizard.editSource', defaultMessage: 'Edit source' });
 
     if (insights.chrome.getApp() === 'sources') {
-        <Link to={`/sources/edit/${id}`}>
+        return (<Link to={`/sources/edit/${id}`}>
             <Button variant='primary' className="pf-u-mt-xl">
                 { message }
             </Button>
-        </Link>;
+        </Link>);
     }
 
     return (

@@ -42,13 +42,14 @@ describe('Steps components', () => {
             expect(wrapper.find(EmptyState)).toHaveLength(1);
             expect(wrapper.find(Button)).toHaveLength(2);
 
-            expect(wrapper.find('a[href="/hybrid/settings/sources"]').length).toBe(1);
+            expect(wrapper.find('a')).toHaveLength(1);
+            expect(wrapper.find('a').props().href).toEqual('/settings/sources');
             expect(wrapper.find(EmptyStateBody).html().includes('Here I Am')).toBe(true);
         });
 
         it('renders without takemetosources button', () => {
             const wrapper = mount(<FinishedStep { ...initialProps } hideSourcesButton={ true }/>);
-            expect(wrapper.find('a[href="/hybrid/settings/sources"]').length).toBe(0);
+            expect(wrapper.find('a')).toHaveLength(0);
         });
 
         it('calls onClose function', () => {
