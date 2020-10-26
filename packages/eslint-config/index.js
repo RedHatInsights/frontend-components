@@ -22,6 +22,16 @@ module.exports = {
         'plugin:react/recommended',
         'prettier/react'
     ],
+    rules: {
+        'no-unused-vars': [
+            'error',
+            { ignoreRestSiblings: true }
+        ],
+        'prettier/prettier': [
+            'error',
+            { singleQuote: true }
+        ]
+    },
     parserOptions: {
         ecmaVersion: 7,
         sourceType: 'module'
