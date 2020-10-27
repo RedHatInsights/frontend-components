@@ -75,7 +75,7 @@ export const UsageDescription = () => {
                     <TextListItem>
                         { intl.formatMessage({
                             id: 'cost.usageDescription.reportPathPrefix',
-                            defaultMessage: 'Report path prefix: (leave blank)'
+                            defaultMessage: 'Report path prefix: cost'
                         }) }
                     </TextListItem>
                     <TextListItem>

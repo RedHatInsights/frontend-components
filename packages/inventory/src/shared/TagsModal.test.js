@@ -6,6 +6,8 @@ import toJson from 'enzyme-to-json';
 import TagsModal from './TagsModal';
 import debounce from 'lodash/debounce';
 
+import * as api from '../api/api';
+
 jest.mock('lodash/debounce');
 describe('TagsModal', () => {
     let initialState;
@@ -74,6 +76,11 @@ describe('TagsModal', () => {
     });
 
     describe('API', () => {
+        beforeEach(() => {
+            api.getTags = jest.fn().mockImplementation(() => Promise.resolve());
+            api.getAllTags = jest.fn().mockImplementation(() => Promise.resolve());
+        });
+
         it('should NOT call onApply select correct tag', () => {
             const onApply = jest.fn();
             const store = mockStore({

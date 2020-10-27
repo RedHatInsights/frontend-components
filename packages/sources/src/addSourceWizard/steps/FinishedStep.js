@@ -14,6 +14,8 @@ import {
 } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons';
 
+import computeSourcesUrl from '../../utilities/computeSourcesUrl';
+
 const FinishedStep = ({
     onClose,
     successfulMessage,
@@ -35,9 +37,15 @@ const FinishedStep = ({
             <Button variant="primary" onClick={ onClose } className="pf-u-mt-xl">{returnButtonTitle}</Button>
             { !hideSourcesButton && (
                 <EmptyStateSecondaryActions>
-                    <a href='/hybrid/settings/sources'>
-                        <Button variant="link">{linkText}</Button>
-                    </a>
+                    <Button
+                        variant="link"
+                        component='a'
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={computeSourcesUrl()}
+                    >
+                        {linkText}
+                    </Button>
                 </EmptyStateSecondaryActions>
             ) }
             {secondaryActions && (

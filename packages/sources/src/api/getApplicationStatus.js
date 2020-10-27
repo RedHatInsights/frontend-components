@@ -1,14 +1,32 @@
 import { getSourcesApi } from '.';
 import { delay } from './costManagementAuthentication';
 
-export const checkAppAvailability = (id, timeout = 10000, interval = 1000, entity = 'getApplication') => new Promise((res, rej) => {
+export const checkAppAvailability = (id, timeout = 10000, interval = 1000, entity = 'getApplication', updatedTime) => new Promise((res, rej) => {
     const start = Date.now();
 
     const checkSource = () => getSourcesApi()[entity](id).then(data => {
         const isTimeOuted = (Date.now() - start) >= timeout;
 
-        if (data.availability_status === 'available' || data.availability_status === 'unavailable' || isTimeOuted) {
+        if (isTimeOuted) {
+            if (updatedTime) {
+                return ({
+                    ...data,
+                    availability_status: null,
+                    availability_status_error: null
+                });
+            }
+
             return data;
+        }
+
+        if (data.availability_status === 'available' || data.availability_status === 'unavailable') {
+            if (updatedTime && new Date(data.last_checked_at || data.updated_at) > updatedTime) {
+                return data;
+            }
+
+            if (!updatedTime) {
+                return data;
+            }
         }
 
         return delay(interval).then(() => checkSource());
