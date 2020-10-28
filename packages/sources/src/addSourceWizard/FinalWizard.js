@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Wizard, Button, Text } from '@patternfly/react-core';
 import { useIntl } from 'react-intl';
-import { Link } from 'react-router-dom';
 
 import FinishedStep from './steps/FinishedStep';
 import ErroredStep from './steps/ErroredStep';
@@ -12,6 +11,7 @@ import TimeoutStep from './steps/TimeoutStep';
 import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 import { getSourcesApi } from '../api';
 import computeSourceStatus from '../utilities/computeSourceStatus';
+import EditLink from './EditLink';
 
 const FinalWizard = ({
     afterSubmit,
@@ -42,6 +42,11 @@ const FinalWizard = ({
         .catch(() => setIsDeleting(false));
     };
 
+    const addAnotherSourceButton = <Button variant="link" onClick={ reset }>{ intl.formatMessage({
+        id: 'wizard.addAnotherSource',
+        defaultMessage: 'Add another source'
+    }) }</Button>;
+
     let step;
     if (isAfterDeletion) {
         step = <FinishedStep
@@ -50,10 +55,7 @@ const FinalWizard = ({
             successfulMessage={ intl.formatMessage({ id: 'wizard.removeSourceSuccessDescription', defaultMessage: 'Source was successfully removed.' }) }
             hideSourcesButton={ hideSourcesButton }
             returnButtonTitle={ returnButtonTitle }
-            secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
-                id: 'wizard.addAnotherSource',
-                defaultMessage: 'Add another source'
-            }) }</Button>}
+            secondaryActions={ addAnotherSourceButton }
         />;
     } else if (isDeletingSource) {
         step = <LoadingStep
@@ -70,13 +72,7 @@ const FinalWizard = ({
                     secondaryActions={<Button variant="link" onClick={ removeSource }>
                         {intl.formatMessage({ id: 'wizard.removeSource', defaultMessage: 'Remove source' })}
                     </Button>}
-                    Component={() => (
-                        <Link to={`/sources/edit/${createdSource.id}`}>
-                            <Button variant='primary' className="pf-u-mt-xl">
-                                { intl.formatMessage({ id: 'wizard.editSource', defaultMessage: 'Edit source' })}
-                            </Button>
-                        </Link>
-                    )}
+                    Component={() => <EditLink id={createdSource.id} />}
                     message={
                         createdSource.applications?.[0]?.availability_status_error
                         || createdSource.endpoint?.[0]?.availability_status_error
@@ -89,10 +85,7 @@ const FinalWizard = ({
                 step = <TimeoutStep
                     onClose={ afterSubmit }
                     returnButtonTitle={ returnButtonTitle }
-                    secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
-                        id: 'wizard.addAnotherSource',
-                        defaultMessage: 'Add another source'
-                    }) }</Button>}
+                    secondaryActions={ addAnotherSourceButton }
                 />;
                 break;
             default:
@@ -101,10 +94,7 @@ const FinalWizard = ({
                     successfulMessage={ successfulMessage }
                     hideSourcesButton={ hideSourcesButton }
                     returnButtonTitle={ returnButtonTitle }
-                    secondaryActions={<Button variant="link" onClick={ reset }>{ intl.formatMessage({
-                        id: 'wizard.addAnotherSource',
-                        defaultMessage: 'Add another source'
-                    }) }</Button>}
+                    secondaryActions={ addAnotherSourceButton }
                 />;
                 break;
         }
@@ -113,15 +103,19 @@ const FinalWizard = ({
             onClose={ afterError }
             primaryAction={tryAgain}
             secondaryActions={
-                <Text component='a' target="_blank" href="https://access.redhat.com/support/cases/#/case/new/open-case?caseCreate=true" rel="noopener noreferrer">
+                <Text
+                    component='a'
+                    target="_blank"
+                    href="https://access.redhat.com/support/cases/#/case/new/open-case?caseCreate=true"
+                    rel="noopener noreferrer"
+                >
                     {intl.formatMessage({ id: 'wizard.openTicket', defaultMessage: 'Open a support case' })}
                 </Text>
             }
             returnButtonTitle={ intl.formatMessage({
                 id: 'wizard.retryText',
                 defaultMessage: 'Retry'
-            })
-            }
+            })}
         />;
     } else {
         step = <LoadingStep
