@@ -83,9 +83,11 @@ export function getBaseName(pathname, level = 2) {
     }, release);
 }
 
-export const generateFilter = (data, path = 'filter') =>
+export const generateFilter = (data, path = 'filter', options) =>
     Object.entries(data || {}).reduce((acc, [ key, value ]) => {
-        const newPath = `${path || ''}[${key}]${Array.isArray(value) ? '[]' : ''}`;
+        const newPath = `${path || ''}[${key}]${Array.isArray(value) ? `${
+            options?.arrayEnhancer ? `[${options.arrayEnhancer}]` : ''
+        }[]` : ''}`;
         if (value instanceof Function || value instanceof Date) {
             return acc;
         }
@@ -94,7 +96,7 @@ export const generateFilter = (data, path = 'filter') =>
             ...acc,
             ...(Array.isArray(value) || typeof value !== 'object')
                 ? { [newPath]: value } :
-                generateFilter(value, newPath)
+                generateFilter(value, newPath, options)
         };
 
     }, {});
