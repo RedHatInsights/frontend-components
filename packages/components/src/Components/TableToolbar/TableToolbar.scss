@@ -20,3 +20,9 @@
     @include rem('padding-left', 15px);
     border-left: 2px solid var(--pf-global--BorderColor--light);
 }
+
+@media only screen and (max-width: 768px) {
+	.ins-c-table__toolbar {
+	    padding: var(--pf-global--spacer--md) var(--pf-global--spacer--md);
+	}
+}
