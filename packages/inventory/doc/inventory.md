@@ -542,7 +542,7 @@ class SomeCmp extends React.Component {
 
 ### Using RBAC with inventory
 
-By default inventory component will check `['inventory:*:*', 'inventory:hosts:read']` in RBAC. If any is found it means that the user has access to inventory host list and will show either container view or full page view.
+By default inventory component will check `['inventory:*:*', 'inventory:*:read', 'inventory:hosts:read']` in RBAC. If any is found it means that the user has access to inventory host list and will show either container view or full page view.
 
 If you are using just inventory table in your screen please pass `isFullView={true}` to connected inventory component so the component will render in full page view instead of container view.
 
