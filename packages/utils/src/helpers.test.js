@@ -176,6 +176,15 @@ describe('generateFilter', () => {
         });
     });
 
+    it('should generate filter for array with enhancer', () => {
+        const result = generateFilter({
+            some: [ 1, 2 ]
+        }, undefined, { arrayEnhancer: 'contains' });
+        expect(result).toMatchObject({
+            'filter[some][contains][]': [ 1, 2 ]
+        });
+    });
+
     it('should generate nested filter', () => {
         const result = generateFilter({
             some: {
