@@ -58,6 +58,21 @@ describe('SystemCard', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('should render correctly with SAP IDS', () => {
+        const store = mockStore({
+            ...initialState,
+            systemProfileStore: {
+                systemProfile: {
+                    loaded: true,
+                    ...testProperties,
+                    sap_sids: [ 'AAA', 'BBB' ]
+                }
+            }
+        });
+        const wrapper = render(<SystemCard store={ store } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     it('should render correctly with rhsm facts', () => {
         const store = mockStore({
             ...initialState,
@@ -150,6 +165,34 @@ describe('SystemCard', () => {
             });
             wrapper.find('button[data-action="confirm"]').first().simulate('click');
             expect(store.getActions()[0].type).toBe('SET_ANSIBLE_HOST_PENDING');
+        });
+
+        it('should handle click on SAP identifiers', () => {
+            const store = mockStore({
+                ...initialState,
+                systemProfileStore: {
+                    systemProfile: {
+                        loaded: true,
+                        ...testProperties,
+                        sap_sids: [ 'AAA', 'BBB' ]
+                    }
+                }
+            });
+            const handleClick = jest.fn();
+
+            const wrapper = mount(<SystemCard store={ store } handleClick={handleClick}/>);
+            wrapper.find('dd a').last().simulate('click');
+            expect(handleClick).toHaveBeenCalledWith(
+                'SAP SIDs',
+                {
+                    cells: [{
+                        title: 'SID',
+                        transforms: expect.any(Array)
+                    }],
+                    filters: [{ type: 'textual' }],
+                    rows: [ [ 'AAA' ], [ 'BBB' ] ]
+                }
+            );
         });
     });
 });

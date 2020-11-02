@@ -13,7 +13,8 @@ export const propertiesSelector = ({
     number_of_sockets,
     cores_per_socket,
     ramSize,
-    disk_devices
+    disk_devices,
+    sap_sids
 } = {}, { facts } = { }) => ({
     cpuNumber: number_of_cpus || facts?.rhsm?.CPU_CORES,
     sockets: number_of_sockets || facts?.rhsm?.CPU_SOCKETS,
@@ -27,8 +28,9 @@ export const propertiesSelector = ({
         ...mount_point && safeParser(mount_point, 'mountpoint'),
         ...options && safeParser(options, 'options'),
         ...type && safeParser(type, 'mounttype')
-    })
-    )
+    }),
+    ),
+    sap_sids
 });
 
 export const operatingSystem = ({
