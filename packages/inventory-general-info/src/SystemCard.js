@@ -104,12 +104,12 @@ class SystemCard extends Component {
                         },
                         {
                             title: 'SAP',
-                            value: properties.sap_sids ? `${properties.sap_sids.length} identifiers` : 0,
+                            value: properties.sapIds ? `${properties.sapIds.length} identifiers` : 0,
                             target: 'sap_sids',
                             onClick: () => {
                                 handleClick(
-                                    'SAP SIDs',
-                                    generalMapper(properties.sap_sids, 'SID')
+                                    'SAP IDs (SID)',
+                                    generalMapper(properties.sapIds, 'SID')
                                 );
                             }
                         },
@@ -161,7 +161,8 @@ SystemCard.propTypes = {
             mount_point: PropTypes.string,
             options: PropTypes.shape({}),
             type: PropTypes.string
-        }))
+        })),
+        sapIds: PropTypes.arrayOf(PropTypes.string)
     }),
     setDisplayName: PropTypes.func,
     setAnsibleHost: PropTypes.func,

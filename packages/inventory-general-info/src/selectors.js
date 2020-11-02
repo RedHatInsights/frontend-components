@@ -30,7 +30,7 @@ export const propertiesSelector = ({
         ...type && safeParser(type, 'mounttype')
     }),
     ),
-    sap_sids
+    sapIds: sap_sids
 });
 
 export const operatingSystem = ({

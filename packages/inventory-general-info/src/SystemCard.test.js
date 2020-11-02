@@ -183,7 +183,7 @@ describe('SystemCard', () => {
             const wrapper = mount(<SystemCard store={ store } handleClick={handleClick}/>);
             wrapper.find('dd a').last().simulate('click');
             expect(handleClick).toHaveBeenCalledWith(
-                'SAP SIDs',
+                'SAP IDs (SID)',
                 {
                     cells: [{
                         title: 'SID',
