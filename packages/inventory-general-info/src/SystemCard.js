@@ -9,6 +9,7 @@ import TextInputModal from './TextInputModal';
 import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory/actions';
 import { Popover, Button } from '@patternfly/react-core';
 import EditButton from './EditButton';
+import { generalMapper } from './dataMapper';
 
 const TitleWithPopover = ({ title, content }) => (
     <React.Fragment>
@@ -65,7 +66,7 @@ class SystemCard extends Component {
     };
 
     render() {
-        const { detailLoaded, entity, properties, setDisplayName, setAnsibleHost, writePermissions } = this.props;
+        const { detailLoaded, entity, properties, setDisplayName, setAnsibleHost, writePermissions, handleClick } = this.props;
         const { isDisplayNameModalOpen, isAnsibleHostModalOpen } = this.state;
         return (
             <Fragment>
@@ -100,6 +101,17 @@ class SystemCard extends Component {
                                     <EditButton writePermissions={writePermissions} link="ansible_name" onClick={this.onShowAnsibleModal} />
                                 </Fragment>
                             ), size: 'md'
+                        },
+                        {
+                            title: 'SAP',
+                            value: properties.sapIds ? `${properties.sapIds.length} identifiers` : 0,
+                            target: 'sap_sids',
+                            onClick: () => {
+                                handleClick(
+                                    'SAP IDs (SID)',
+                                    generalMapper(properties.sapIds, 'SID')
+                                );
+                            }
                         },
                         { title: 'Number of CPUs', value: properties.cpuNumber },
                         { title: 'Sockets', value: properties.sockets },
@@ -149,11 +161,13 @@ SystemCard.propTypes = {
             mount_point: PropTypes.string,
             options: PropTypes.shape({}),
             type: PropTypes.string
-        }))
+        })),
+        sapIds: PropTypes.arrayOf(PropTypes.string)
     }),
     setDisplayName: PropTypes.func,
     setAnsibleHost: PropTypes.func,
-    writePermissions: PropTypes.bool
+    writePermissions: PropTypes.bool,
+    handleClick: PropTypes.func
 };
 SystemCard.defaultProps = {
     detailLoaded: false,
