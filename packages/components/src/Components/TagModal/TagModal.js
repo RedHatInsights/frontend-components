@@ -88,8 +88,8 @@ class TagModal extends Component {
                             variant="primary"
                             isDisabled={
                                 isTabbed ?
-                                    Object.values(selected).every(values => values?.length === 0) :
-                                    selected?.length === 0
+                                    Object.values(selected || {}).every(values => !values || values?.length === 0) :
+                                    !selected || selected?.length === 0
                             }
                             onClick={(e) => {
                                 onApply();
