@@ -109,6 +109,440 @@ exports[`TagCount component Render the modal with a child component 1`] = `
 </Modal>
 `;
 
+exports[`TagCount component Should render modal with disabled button 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        isDisabled={true}
+        onClick={[Function]}
+        variant="primary"
+      >
+        Apply 
+        tags
+      </Button>,
+      <Button
+        onClick={[Function]}
+        variant="link"
+      >
+        Cancel
+      </Button>,
+    ]
+  }
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className="ins-c-tag-modal"
+  hasNoBodyWrapper={false}
+  isOpen={true}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  tableProps={Object {}}
+  title="Tags for paul.localhost.com"
+  variant="medium"
+>
+  <TableWithFilter
+    calculateChecked={[Function]}
+    columns={
+      Array [
+        Object {
+          "title": "Name",
+        },
+        Object {
+          "title": "Tag source",
+        },
+      ]
+    }
+    entityName="tags"
+    isOpen={true}
+    loaded={true}
+    onApply={[MockFunction]}
+    onUpdateData={[Function]}
+    pagination={
+      Object {
+        "count": 10,
+      }
+    }
+    rows={
+      Array [
+        Array [
+          "key",
+          "value",
+        ],
+        Array [
+          "thing",
+          "otherthing",
+        ],
+      ]
+    }
+    systemName="paul.localhost.com"
+    tableProps={Object {}}
+    toggleModal={[Function]}
+    unique={[Function]}
+  />
+</Modal>
+`;
+
+exports[`TagCount component should render modal with enabled button 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        isDisabled={false}
+        onClick={[Function]}
+        variant="primary"
+      >
+        Apply 
+        tags
+      </Button>,
+      <Button
+        onClick={[Function]}
+        variant="link"
+      >
+        Cancel
+      </Button>,
+    ]
+  }
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className="ins-c-tag-modal"
+  hasNoBodyWrapper={false}
+  isOpen={true}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  tableProps={Object {}}
+  title="Tags for paul.localhost.com"
+  variant="medium"
+>
+  <TableWithFilter
+    calculateChecked={[Function]}
+    columns={
+      Array [
+        Object {
+          "title": "Name",
+        },
+        Object {
+          "title": "Tag source",
+        },
+      ]
+    }
+    entityName="tags"
+    isOpen={true}
+    loaded={true}
+    onApply={[MockFunction]}
+    onUpdateData={[Function]}
+    pagination={
+      Object {
+        "count": 10,
+      }
+    }
+    rows={
+      Array [
+        Array [
+          "key",
+          "value",
+        ],
+        Array [
+          "thing",
+          "otherthing",
+        ],
+      ]
+    }
+    selected={
+      Array [
+        "thing",
+      ]
+    }
+    systemName="paul.localhost.com"
+    tableProps={Object {}}
+    toggleModal={[Function]}
+    unique={[Function]}
+  />
+</Modal>
+`;
+
+exports[`Two tables Should render modal with disabled button 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        isDisabled={true}
+        onClick={[Function]}
+        variant="primary"
+      >
+        Apply 
+        selected
+      </Button>,
+      <Button
+        onClick={[Function]}
+        variant="link"
+      >
+        Cancel
+      </Button>,
+    ]
+  }
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className="ins-c-tag-modal"
+  hasNoBodyWrapper={false}
+  isOpen={true}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  tableProps={Object {}}
+  title="Tags for paul.localhost.com"
+  variant="medium"
+>
+  <Tabs
+    activeKey={0}
+    component="div"
+    isBox={false}
+    isFilled={false}
+    isSecondary={false}
+    isVertical={false}
+    leftScrollAriaLabel="Scroll left"
+    mountOnEnter={false}
+    onSelect={[Function]}
+    ouiaSafe={true}
+    rightScrollAriaLabel="Scroll right"
+    unmountOnExit={false}
+  >
+    <Tab
+      eventKey={0}
+      key="0"
+      title={
+        <TabTitleText>
+          All 
+          something
+        </TabTitleText>
+      }
+    >
+      <TableWithFilter
+        calculateChecked={[Function]}
+        columns={
+          Array [
+            Object {
+              "title": "one",
+            },
+          ]
+        }
+        entityName="tags"
+        isOpen={true}
+        loaded={true}
+        onApply={[MockFunction]}
+        rows={
+          Array [
+            Array [
+              "something",
+            ],
+          ]
+        }
+        systemName="paul.localhost.com"
+        tabNames={
+          Array [
+            "something",
+            "another",
+          ]
+        }
+        tableProps={Object {}}
+        toggleModal={[Function]}
+        unique={[Function]}
+      />
+    </Tab>
+    <Tab
+      eventKey={1}
+      key="1"
+      title={
+        <TabTitleText>
+          All 
+          another
+        </TabTitleText>
+      }
+    >
+      <TableWithFilter
+        calculateChecked={[Function]}
+        columns={
+          Array [
+            Object {
+              "title": "two",
+            },
+          ]
+        }
+        entityName="tags"
+        isOpen={true}
+        loaded={true}
+        onApply={[MockFunction]}
+        rows={
+          Array [
+            Array [
+              "another",
+            ],
+          ]
+        }
+        systemName="paul.localhost.com"
+        tabNames={
+          Array [
+            "something",
+            "another",
+          ]
+        }
+        tableProps={Object {}}
+        toggleModal={[Function]}
+        unique={[Function]}
+      />
+    </Tab>
+  </Tabs>
+</Modal>
+`;
+
+exports[`Two tables should render modal with enabled button 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        isDisabled={false}
+        onClick={[Function]}
+        variant="primary"
+      >
+        Apply 
+        selected
+      </Button>,
+      <Button
+        onClick={[Function]}
+        variant="link"
+      >
+        Cancel
+      </Button>,
+    ]
+  }
+  appendTo={[Function]}
+  aria-describedby=""
+  aria-label=""
+  aria-labelledby=""
+  className="ins-c-tag-modal"
+  hasNoBodyWrapper={false}
+  isOpen={true}
+  onClose={[Function]}
+  ouiaSafe={true}
+  showClose={true}
+  tableProps={Object {}}
+  title="Tags for paul.localhost.com"
+  variant="medium"
+>
+  <Tabs
+    activeKey={0}
+    component="div"
+    isBox={false}
+    isFilled={false}
+    isSecondary={false}
+    isVertical={false}
+    leftScrollAriaLabel="Scroll left"
+    mountOnEnter={false}
+    onSelect={[Function]}
+    ouiaSafe={true}
+    rightScrollAriaLabel="Scroll right"
+    unmountOnExit={false}
+  >
+    <Tab
+      eventKey={0}
+      key="0"
+      title={
+        <TabTitleText>
+          All 
+          something
+        </TabTitleText>
+      }
+    >
+      <TableWithFilter
+        calculateChecked={[Function]}
+        columns={
+          Array [
+            Object {
+              "title": "one",
+            },
+          ]
+        }
+        entityName="tags"
+        isOpen={true}
+        loaded={true}
+        onApply={[MockFunction]}
+        rows={
+          Array [
+            Array [
+              "something",
+            ],
+          ]
+        }
+        selected={
+          Array [
+            "thing",
+          ]
+        }
+        systemName="paul.localhost.com"
+        tabNames={
+          Array [
+            "something",
+            "another",
+          ]
+        }
+        tableProps={Object {}}
+        toggleModal={[Function]}
+        unique={[Function]}
+      />
+    </Tab>
+    <Tab
+      eventKey={1}
+      key="1"
+      title={
+        <TabTitleText>
+          All 
+          another
+        </TabTitleText>
+      }
+    >
+      <TableWithFilter
+        calculateChecked={[Function]}
+        columns={
+          Array [
+            Object {
+              "title": "two",
+            },
+          ]
+        }
+        entityName="tags"
+        isOpen={true}
+        loaded={true}
+        onApply={[MockFunction]}
+        rows={
+          Array [
+            Array [
+              "another",
+            ],
+          ]
+        }
+        systemName="paul.localhost.com"
+        tabNames={
+          Array [
+            "something",
+            "another",
+          ]
+        }
+        tableProps={Object {}}
+        toggleModal={[Function]}
+        unique={[Function]}
+      />
+    </Tab>
+  </Tabs>
+</Modal>
+`;
+
 exports[`Two tables should render two tables 1`] = `
 <Modal
   actions={Array []}
