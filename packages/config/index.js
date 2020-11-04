@@ -5,7 +5,7 @@ const fs = require('fs');
 const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
     branch: true
 });
-const betaBranhces = ['master', 'qa-beta', 'ci-beta', 'prod-beta'];
+const betaBranhces = ['master', 'qa-beta', 'ci-beta', 'prod-beta', 'main', 'devel'];
 
 const getAppEntry = (rootFolder, isProd) => {
     const jsAppEntry = isProd ? `${rootFolder}/src/entry.js` : `${rootFolder}/src/entry-dev.js`;
