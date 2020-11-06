@@ -164,6 +164,22 @@ exports[`GeneralInformation should render correctly - no data 1`] = `
               class=""
               data-pf-content="true"
             >
+              SAP
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              <div
+                class="ins-c-skeleton ins-c-skeleton__sm"
+              >
+                 
+              </div>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
               Number of CPUs
             </dt>
             <dd
@@ -991,6 +1007,18 @@ exports[`GeneralInformation should render correctly 1`] = `
                   />
                 </svg>
               </a>
+            </dd>
+            <dt
+              class=""
+              data-pf-content="true"
+            >
+              SAP
+            </dt>
+            <dd
+              class=""
+              data-pf-content="true"
+            >
+              None
             </dd>
             <dt
               class=""

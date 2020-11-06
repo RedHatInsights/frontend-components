@@ -83,10 +83,19 @@ class TagModal extends Component {
                 variant="medium"
                 {...onApply && {
                     actions: [
-                        <Button key="confirm" variant="primary" onClick={(e) => {
-                            onApply();
-                            toggleModal(e, true);
-                        }}>
+                        <Button
+                            key="confirm"
+                            variant="primary"
+                            isDisabled={
+                                isTabbed ?
+                                    Object.values(selected || {}).every(values => !values || values?.length === 0) :
+                                    !selected || selected?.length === 0
+                            }
+                            onClick={(e) => {
+                                onApply();
+                                toggleModal(e, true);
+                            }}
+                        >
                             Apply {isTabbed ? 'selected' : 'tags'}
                         </Button>,
                         <Button key="cancel" variant="link" onClick={(e) => toggleModal(e, false)}>
