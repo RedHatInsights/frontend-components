@@ -355,6 +355,62 @@ const sourceTypes = [
         },
         updated_at: '2019-09-11T14:03:04Z',
         vendor: 'Azure'
+    },
+    {
+        created_at: '2019-08-19T14:53:02Z',
+        id: '9',
+        name: 'gcp',
+        product_name: 'Google Cloud',
+        schema: {
+            authentication: [{
+                type: 'project_id',
+                name: 'Project ID',
+                fields: [
+                    {
+                        component: 'text-field',
+                        name: 'authentication.authtype',
+                        hideField: true,
+                        initialValue: 'project_id'
+                    },
+                    {
+                        component: 'text-field',
+                        name: 'authentication.project_id',
+                        label: 'Project ID',
+                        isRequired: true,
+                        validate: [
+                            {
+                                type: 'required'
+                            }
+                        ]
+                    },
+                    {
+                        component: 'text-field',
+                        name: 'authentication.dataset_id',
+                        label: 'Dataset ID',
+                        isRequired: true,
+                        validate: [
+                            {
+                                type: 'required'
+                            }
+                        ]
+                    }
+                ]
+            }],
+            endpoint: {
+                hidden: true,
+                fields: [
+                    {
+                        component: 'text-field',
+                        name: 'endpoint.role',
+                        hideField: true,
+                        initialValue: 'gcp'
+                    }
+                ]
+            }
+        },
+        updated_at: '2019-09-11T14:03:04Z',
+        vendor: 'Google',
+        icon_url: '/apps/frontend-assets/partners-icons/google-cloud.svg'
     }
 ];
 

@@ -170,6 +170,42 @@ describe('SourceWizardSummary component', () => {
             );
         });
 
+        it('google - cost management - include google - cost alert', () => {
+            formOptions = {
+                getState: () => ({
+                    values: {
+                        source: { name: 'cosi' },
+                        application: { application_type_id: '2' },
+                        source_type: 'gcp',
+                        authentication: { authtype: 'project_id', project_id: 'project_id_123', dataset_id: 'dataset_id_123' },
+                        fixasyncvalidation: ''
+                    }
+                })
+            };
+
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+
+            const headers = wrapper.find('dt').map(item => item.text());
+            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'cosi' ],
+                    [ 'Application', 'Cost Management' ],
+                    [ 'Source type', 'Google Cloud' ],
+                    [ 'Authentication type', 'Project ID' ],
+                    [ 'Project ID', 'project_id_123' ],
+                    [ 'Dataset ID', 'dataset_id_123' ]
+                ]
+            );
+
+            expect(wrapper.find(Alert).props().title).toEqual('Add resources to your projects in Billing');
+            expect(wrapper.find(Alert).props().children).toEqual(
+                // eslint-disable-next-line max-len
+                'In order for billing and usage data to be exported, you must have at least one resource created in one of your billing account projects. View your billing account projects under the ‘My Projects’ tab in the GCP Billing console.'
+            );
+        });
+
         it('openshift cost management - include appended field from DB and rbac alert message', () => {
             formOptions = {
                 getState: () => ({

@@ -35,12 +35,16 @@ const applicationTypes = [
             ],
             openshift: [
                 'token'
+            ],
+            gcp: [
+                'project_id'
             ]
         },
         supported_source_types: [
             'amazon',
             'azure',
-            'openshift'
+            'openshift',
+            'gcp'
         ],
         updated_at: '2019-09-16T19:56:12Z'
     },

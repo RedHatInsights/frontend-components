@@ -14,6 +14,7 @@ import * as SWAwsArn from './hardcodedComponents/aws/subscriptionWatch';
 
 import * as CMOpenshift from  './hardcodedComponents/openshift/costManagement';
 import * as CMAzure from './hardcodedComponents/azure/costManagement';
+import * as CMGoogle from './hardcodedComponents/gcp/costManagement';
 
 import * as TowerCatalog from './hardcodedComponents/tower/catalog';
 import * as Openshift from './hardcodedComponents/openshift/endpoint';
@@ -694,6 +695,93 @@ export default {
             },
             'endpoint.verify_ssl': {
                 initialValue: false
+            }
+        }
+    },
+    gcp: {
+        authentication: {
+            project_id: {
+                [COST_MANAGEMENT_APP_NAME]: {
+                    useApplicationAuth: true,
+                    skipSelection: true,
+                    'authentication.project_id': {
+                        component: 'text-field',
+                        label: 'Project ID',
+                        isRequired: true,
+                        validate: [
+                            {
+                                type: 'required'
+                            }
+                        ]
+                    },
+                    'authentication.authtype': {
+                        component: 'text-field',
+                        hideField: true,
+                        initialValue: 'project_id'
+                    },
+                    'authentication.dataset_id': {
+                        component: 'text-field',
+                        label: 'Dataset ID',
+                        isRequired: true,
+                        validate: [
+                            {
+                                type: 'required'
+                            }
+                        ]
+                    },
+                    additionalSteps: [{
+                        title: <FormattedMessage id="cost.gcp.projectTitle" defaultMessage="Project" />,
+                        fields: [{
+                            component: 'description',
+                            name: 'description-google',
+                            Content: CMGoogle.Project
+                        }, {
+                            name: 'authentication.project_id'
+                        }, {
+                            name: 'authentication.authtype'
+                        }],
+                        nextStep: 'cost-gcp-iam'
+                    }, {
+                        title: <FormattedMessage id="cost.gcp.iamTitle" defaultMessage="Create IAM role" />,
+                        fields: [{
+                            component: 'description',
+                            name: 'description-google',
+                            Content: CMGoogle.IAMRole
+                        }],
+                        nextStep: 'cost-gcp-access',
+                        name: 'cost-gcp-iam',
+                        substepOf: { name: 'eaa', title: <FormattedMessage id="cost.arn.enableAccountAccess" defaultMessage="Enable account access" /> }
+                    }, {
+                        title: <FormattedMessage id="cost.gcp.accessTitle" defaultMessage="Assign access" />,
+                        fields: [{
+                            component: 'description',
+                            name: 'description-google',
+                            Content: CMGoogle.AssignAccess
+                        }],
+                        name: 'cost-gcp-access',
+                        nextStep: 'cost-gcp-dataset',
+                        substepOf: 'eaa'
+                    }, {
+                        title: <FormattedMessage id="cost.gcp.datasetTitle" defaultMessage="Create dataset" />,
+                        fields: [{
+                            component: 'description',
+                            name: 'description-google',
+                            Content: CMGoogle.Dataset
+                        }, {
+                            name: 'authentication.dataset_id'
+                        }],
+                        name: 'cost-gcp-dataset',
+                        nextStep: 'cost-gcp-billing-export'
+                    }, {
+                        title: <FormattedMessage id="cost.gcp.billingExportTitle" defaultMessage="Billing export" />,
+                        fields: [{
+                            component: 'description',
+                            name: 'description-google',
+                            Content: CMGoogle.BillingExport
+                        }],
+                        name: 'cost-gcp-billing-export'
+                    }]
+                }
             }
         }
     }

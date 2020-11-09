@@ -9,6 +9,41 @@ import ValuePopover from './ValuePopover';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 import { COST_MANAGEMENT_APP_NAME } from '../../api/constants';
 
+const alertMapper = (appName, sourceType, intl) => {
+    if (appName === COST_MANAGEMENT_APP_NAME && sourceType === 'gcp') {
+        return (
+            <Alert
+                variant="info"
+                isInline
+                title={intl.formatMessage({ id: 'cost.google.rbacWarningTitle', defaultMessage: 'Add resources to your projects in Billing' })}
+            >
+                {intl.formatMessage({
+                    id: 'cost.google.rbacWarningDescription',
+                    // eslint-disable-next-line max-len
+                    defaultMessage: 'In order for billing and usage data to be exported, you must have at least one resource created in one of your billing account projects. View your billing account projects under the ‘My Projects’ tab in the GCP Billing console.'
+                })}
+            </Alert>
+        );
+    }
+
+    if (appName === COST_MANAGEMENT_APP_NAME) {
+        return (
+            <Alert
+                variant="info"
+                isInline
+                title={intl.formatMessage({ id: 'cost.rbacWarningTitle', defaultMessage: 'Manage permissions in User Access' })}
+            >
+                {intl.formatMessage({
+                    id: 'cost.rbacWarningDescription',
+                    defaultMessage: 'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
+                })}
+            </Alert>
+        );
+    }
+
+    return null;
+};
+
 export const createItem = (formField, values, stepKeys) => {
     let value = get(values, formField.name);
 
@@ -168,18 +203,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
                 </DescriptionListGroup> }
                 { valuesList }
             </DescriptionList>
-            {name === COST_MANAGEMENT_APP_NAME && (
-                <Alert
-                    variant="info"
-                    isInline
-                    title={intl.formatMessage({ id: 'cost.rbacWarningTitle', defaultMessage: 'Manage permissions in User Access' })}
-                >
-                    {intl.formatMessage({
-                        id: 'cost.rbacWarningDescription',
-                        defaultMessage: 'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
-                    })}
-                </Alert>
-            )}
+            {alertMapper(name, type.name, intl)}
         </React.Fragment>
     );
 };
