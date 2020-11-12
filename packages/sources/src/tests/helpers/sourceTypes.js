@@ -1,7 +1,7 @@
 const sourceTypes = [
     {
         created_at: '2019-03-26T14:05:45Z',
-        icon_url: '/openshift_logo.png',
+        icon_url: '/apps/frontend-assets/platform-logos/openshift-container-platform.svg',
         id: '1',
         name: 'openshift',
         product_name: 'OpenShift Container Platform',
@@ -78,7 +78,7 @@ const sourceTypes = [
     },
     {
         created_at: '2019-03-26T14:05:45Z',
-        icon_url: '/aws_logo.png',
+        icon_url: '/apps/frontend-assets/partners-icons/aws-long.svg',
         id: '2',
         name: 'amazon',
         product_name: 'Amazon Web Services',
@@ -172,6 +172,7 @@ const sourceTypes = [
         id: '3',
         name: 'ansible-tower',
         product_name: 'Ansible Tower',
+        icon_url: '/apps/frontend-assets/platform-logos/ansible-automation-platform.svg',
         schema: {
             authentication: [{
                 type: 'username_password',
@@ -311,6 +312,7 @@ const sourceTypes = [
         id: '8',
         name: 'azure',
         product_name: 'Microsoft Azure',
+        icon_url: '/apps/chrome/assets/images/partners-icons/microsoft-azure.svg',
         schema: {
             authentication: [{
                 type: 'tenant_id_client_id_client_secret',
