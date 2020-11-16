@@ -4,7 +4,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
 <Table
   aria-label="Loading"
   borders={true}
-  canSelectAll={true}
+  canSelectAll={false}
   cells={
     Array [
       Object {
@@ -46,6 +46,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  onSelect={false}
   ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
@@ -84,6 +85,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -118,6 +120,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -152,6 +155,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -186,6 +190,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -220,6 +225,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -254,6 +260,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -288,6 +295,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -322,6 +330,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -356,6 +365,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -390,6 +400,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -424,6 +435,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -458,6 +470,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -492,6 +505,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -526,6 +540,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -560,9 +575,11 @@ exports[`SkeletonTable component should render correctly 1`] = `
             />,
           },
         ],
+        "disableSelection": true,
       },
     ]
   }
+  selectVariant={null}
   variant={null}
 >
   <TableHeader />
@@ -570,11 +587,11 @@ exports[`SkeletonTable component should render correctly 1`] = `
 </Table>
 `;
 
-exports[`SkeletonTable component should render correctly with static columns 1`] = `
+exports[`SkeletonTable component should render correctly with checkboxes 1`] = `
 <Table
   aria-label="Loading"
   borders={true}
-  canSelectAll={true}
+  canSelectAll={false}
   cells={
     Array [
       "first",
@@ -588,6 +605,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  onSelect={true}
   ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
@@ -608,6 +626,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -624,6 +643,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -640,6 +660,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -656,6 +677,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -672,6 +694,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -688,6 +711,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -704,6 +728,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -720,6 +745,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -736,6 +762,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -752,6 +779,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -768,6 +796,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -784,6 +813,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -800,6 +830,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -816,6 +847,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
       Object {
         "cells": Array [
@@ -832,9 +864,589 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
             />,
           },
         ],
+        "disableSelection": true,
       },
     ]
   }
+  selectVariant="checkbox"
+  variant={null}
+>
+  <TableHeader />
+  <Component />
+</Table>
+`;
+
+exports[`SkeletonTable component should render correctly with radio buttons 1`] = `
+<Table
+  aria-label="Loading"
+  borders={true}
+  canSelectAll={false}
+  cells={
+    Array [
+      "first",
+      "second",
+    ]
+  }
+  className=""
+  contentId="expanded-content"
+  dropdownDirection="down"
+  dropdownPosition="right"
+  expandId="expandable-toggle"
+  gridBreakPoint="grid-md"
+  isStickyHeader={false}
+  onSelect={true}
+  ouiaSafe={true}
+  role="grid"
+  rowLabeledBy="simple-node"
+  rows={
+    Array [
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+    ]
+  }
+  selectVariant="radio"
+  variant={null}
+>
+  <TableHeader />
+  <Component />
+</Table>
+`;
+
+exports[`SkeletonTable component should render correctly with static columns 1`] = `
+<Table
+  aria-label="Loading"
+  borders={true}
+  canSelectAll={false}
+  cells={
+    Array [
+      "first",
+      "second",
+    ]
+  }
+  className=""
+  contentId="expanded-content"
+  dropdownDirection="down"
+  dropdownPosition="right"
+  expandId="expandable-toggle"
+  gridBreakPoint="grid-md"
+  isStickyHeader={false}
+  onSelect={false}
+  ouiaSafe={true}
+  role="grid"
+  rowLabeledBy="simple-node"
+  rows={
+    Array [
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+      Object {
+        "cells": Array [
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+          Object {
+            "title": <Skeleton
+              isDark={false}
+              size="md"
+            />,
+          },
+        ],
+        "disableSelection": true,
+      },
+    ]
+  }
+  selectVariant={null}
   variant={null}
 >
   <TableHeader />
@@ -846,7 +1458,7 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
 <Table
   aria-label="Loading"
   borders={true}
-  canSelectAll={true}
+  canSelectAll={false}
   cells={
     Array [
       Object {
@@ -888,10 +1500,12 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  onSelect={false}
   ouiaSafe={true}
   role="grid"
   rowLabeledBy="simple-node"
   rows={Array []}
+  selectVariant={null}
   variant={null}
 >
   <TableHeader />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TableHeader, TableBody } from '@patternfly/react-table';
+import { RowSelectVariant, Table, TableHeader, TableBody } from '@patternfly/react-table';
 import { Skeleton, SkeletonSize } from '../Skeleton';
 import PropTypes from 'prop-types';
 
@@ -19,19 +19,29 @@ class SkeletonTable extends React.Component {
     createRows = () => {
         const { colSize, rowSize, columns, paddingColumnSize } = this.props;
         const numberOfCols = columns ? columns.length : colSize;
-        return this.newArray(rowSize).map(() => ({ cells: this.newArray(paddingColumnSize).map(() => '').concat(
+        return this.newArray(rowSize).map(() => ({ disableSelection: true, cells: this.newArray(paddingColumnSize).map(() => '').concat(
             this.newArray(numberOfCols).map(() => ({ title: <Skeleton size={ SkeletonSize.md } /> }))
         ) }));
+    };
+
+    selectVariant = () => {
+        const { hasRadio } = this.props;
+
+        return hasRadio ? (RowSelectVariant?.radio || 'radio') : (RowSelectVariant?.checkbox || 'checkbox');
     };
 
     newArray = (size) => [ ...Array(size) ];
 
     render() {
+        const { canSelectAll, isSelectable, sortBy } = this.props;
         return (
             <Table cells={ this.getColumns() }
                 rows={ this.createRows() }
-                sortBy={ this.props.sortBy }
-                aria-label="Loading">
+                sortBy={ sortBy }
+                aria-label="Loading"
+                onSelect={ isSelectable }
+                selectVariant={ isSelectable ? this.selectVariant() : null }
+                canSelectAll={ canSelectAll }>
                 <TableHeader />
                 <TableBody />
             </Table>
@@ -47,12 +57,18 @@ SkeletonTable.propTypes = {
     sortBy: PropTypes.shape({
         index: PropTypes.number,
         direction: PropTypes.oneOf([ 'asc', 'desc' ])
-    })
+    }),
+    isSelectable: PropTypes.bool,
+    canSelectAll: PropTypes.bool,
+    hasRadio: PropTypes.bool
 };
 
 SkeletonTable.defaultProps = {
     rowSize: 0,
-    paddingColumnSize: 0
+    paddingColumnSize: 0,
+    canSelectAll: false,
+    isSelectable: false,
+    hasRadio: false
 };
 
 export default SkeletonTable;

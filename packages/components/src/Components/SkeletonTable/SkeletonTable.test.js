@@ -18,4 +18,25 @@ describe('SkeletonTable component', () => {
         const wrapper = shallow(<SkeletonTable columns={[ 'first', 'second' ]} rowSize={15} />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
+
+    it('should render correctly with checkboxes', () => {
+        const wrapper = shallow(<SkeletonTable
+            columns={[ 'first', 'second' ]}
+            rowSize={15}
+            isSelectable={ true }
+        />);
+
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('should render correctly with radio buttons', () => {
+        const wrapper = shallow(<SkeletonTable
+            columns={[ 'first', 'second' ]}
+            rowSize={15}
+            isSelectable={ true }
+            hasRadio={ true }
+        />);
+
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 });
