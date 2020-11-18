@@ -79,7 +79,7 @@ export function constructGroups(allTags, item = 'item') {
                     }
                 },
                 id: `${tagKey}-${value}`,
-                value: tagKey,
+                value: tagText,
                 tagValue: value
             });
         })
