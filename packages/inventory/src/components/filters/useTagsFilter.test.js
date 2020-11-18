@@ -64,7 +64,7 @@ describe('useTagsFilter', () => {
                         count: 10,
                         tag: { key: 'test', value: 'something' }
                     },
-                    value: 'test'
+                    value: 'test=something'
                 }],
                 label: 'something',
                 type: 'checkbox',

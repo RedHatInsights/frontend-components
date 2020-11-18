@@ -243,7 +243,7 @@ describe('constructGroups', () => {
                 value: 'someValue'
             }
         });
-        expect(result[0].items[0].value).toBe('someKey');
+        expect(result[0].items[0].value).toBe('someKey=someValue');
         expect(result[0].items[0].tagValue).toBe('someValue');
     });
 });
