@@ -15,6 +15,17 @@ import { getSubWatchConfig } from '../../../api/subscriptionWatch';
 
 export const IAMRoleDescription = () => {
     const intl = useIntl();
+    const [ config, setConfig ] = useState();
+
+    useEffect(() => {
+        getSubWatchConfig().then((conf) => setConfig(conf?.aws_account_id)).catch((e) => {
+            console.error(e);
+            setConfig(intl.formatMessage({
+                id: 'subwatch.iampolicy.subWatchConfigError',
+                defaultMessage: 'There is an error with loading of the configuration. Please go back and return to this step.'
+            }));
+        });
+    }, []);
 
     return (<TextContent>
         <Text component={ TextVariants.p }>
@@ -37,7 +48,7 @@ export const IAMRoleDescription = () => {
                 }) }
             </TextListItem>
             <ClipboardCopy className="pf-u-m-sm-on-sm" isReadOnly>
-        372779871274
+                { config || intl.formatMessage({ id: 'subwatch.iampolicy.loading', defaultMessage: 'Loading configuration...' })}
             </ClipboardCopy>
             <TextListItem>
                 { intl.formatMessage({
