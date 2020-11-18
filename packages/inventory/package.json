@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory",
-    "version": "2.4.25",
+    "version": "2.4.26",
     "description": "Inventory components for RedHat Cloud Services project.",
     "browser": "index.js",
     "publishConfig": {
