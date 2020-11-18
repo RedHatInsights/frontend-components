@@ -71,9 +71,20 @@ describe('AWS-ARN hardcoded schemas', () => {
         console.error = _cons;
     });
 
-    it('IAM ROLE is rendered correctly', () => {
+    it('IAM ROLE is rendered correctly', async () => {
         const CM_ID = '372779871274';
-        const wrapper = mount(<SubsAwsArn.IAMRoleDescription />);
+        const CONFIG = { aws_account_id: CM_ID };
+        api.getSubWatchConfig = jest.fn().mockImplementation(() => Promise.resolve(CONFIG));
+
+        let wrapper;
+
+        await act(async () => {
+            wrapper = mount(<SubsAwsArn.IAMRoleDescription />);
+        });
+
+        expect(wrapper.find('input').props().value).toEqual('Loading configuration...');
+
+        wrapper.update();
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
         expect(wrapper.find(Text)).toHaveLength(1);
@@ -81,5 +92,29 @@ describe('AWS-ARN hardcoded schemas', () => {
         expect(wrapper.find(TextListItem)).toHaveLength(4);
         expect(wrapper.find(ClipboardCopy)).toHaveLength(1);
         expect(wrapper.find(ClipboardCopy).html().includes(CM_ID)).toEqual(true);
+    });
+
+    it('IAM ROLE is rendered correctly with error', async () => {
+        const _cons = console.error;
+        console.error = jest.fn();
+
+        const ERROR = 'Something went wrong';
+        api.getSubWatchConfig = jest.fn().mockImplementation(() => Promise.reject(ERROR));
+        let wrapper;
+
+        await act(async () => {
+            wrapper = mount(<SubsAwsArn.IAMRoleDescription />);
+        });
+
+        expect(wrapper.find('input').props().value).toEqual('Loading configuration...');
+
+        wrapper.update();
+
+        expect(console.error).toHaveBeenCalledWith(ERROR);
+        expect(wrapper.find('input').props().value).toEqual(
+            'There is an error with loading of the configuration. Please go back and return to this step.',
+        );
+
+        console.error = _cons;
     });
 });
