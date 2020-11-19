@@ -57,7 +57,7 @@ export function filterToGroup(filter = [], valuesKey = 'values') {
             item: {
                 meta: {
                     tag: {
-                        key: curr.key,
+                        key: curr.tagKey,
                         value: curr.value
                     }
                 }

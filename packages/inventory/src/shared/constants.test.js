@@ -67,7 +67,7 @@ describe('reduceFilters', () => {
         const data = reduceFilters([{
             tagFilters: [{
                 key: 'something',
-                values: [{ key: 'test', value: 'some', group: 'another' }]
+                values: [{ key: 'test', tagKey: 'test', value: 'some', group: 'another' }]
             }]
         }]);
         expect(data.tagFilters).toMatchObject({ something: { test: { group: 'another', isSelected: true, item: { meta: { tag: { key: 'test', value: 'some' } } } } } });
