@@ -1,44 +1,4 @@
-import { constructValues, reloadWrapper, reduceFilters } from './constants';
-
-describe('constructValues', () => {
-    it('create empty array (no selection)', () => {
-        expect(constructValues({
-            something: {
-                isSelected: false,
-                group: {
-                    meta: {
-                        tag: {
-                            key: 'ff',
-                            value: 'fff'
-                        }
-                    }
-                }
-            }
-        }).length).toBe(0);
-    });
-
-    it('should create array with one selection', () => {
-        const data = constructValues({
-            something: {
-                isSelected: true,
-                item: {
-                    meta: {
-                        tag: {
-                            key: 'ff',
-                            value: 'fff'
-                        }
-                    }
-                },
-                group: 'bla'
-            },
-            another: {
-                isSelected: false
-            }
-        });
-        expect(data.length).toBe(1);
-        expect(data[0]).toMatchObject({ group: 'bla', key: 'something', name: 'ff=fff', tagKey: 'ff', value: 'fff' });
-    });
-});
+import { reloadWrapper, reduceFilters } from './constants';
 
 describe('reloadWrapper', () => {
     it('should call callback once promise is done', async () => {
