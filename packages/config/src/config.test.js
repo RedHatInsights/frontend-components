@@ -12,8 +12,7 @@ describe('should create dummy config with no options', () => {
         optimization,
         entry,
         output,
-        devServer,
-        serve
+        devServer
     } = configBuilder();
 
     const { mode: prodMode } = configBuilder({ mode: 'production' });
@@ -60,47 +59,32 @@ describe('should create dummy config with no options', () => {
 
     test('output', () => {
         expect(output).toEqual({
-            filename: 'js/[name].[hash].js',
+            filename: 'js/[name].[chunkhash].js',
             path: '/dist',
             publicPath: undefined,
-            chunkFilename: 'js/[name].[hash].js'
+            chunkFilename: 'js/[name].[chunkhash].js'
         });
     });
 
     test('devServer', () => {
         expect(devServer).toEqual({
             contentBase: '/dist',
+            contentBasePublicPath: undefined,
             hot: true,
             port: 8002,
             https: false,
             inline: true,
             disableHostCheck: true,
-            historyApiFallback: true
+            historyApiFallback: true,
+            writeToDisk: true
         });
-    });
-
-    test('serve', () => {
-        expect(serve).toMatchObject({
-            content: '/dist',
-            port: 8002,
-            dev: {
-                publicPath: undefined
-            }
-        });
-    });
-
-    test('serve add', () => {
-        const use = jest.fn();
-        serve.add({ use });
-        expect(use).toHaveBeenCalled();
     });
 });
 
 describe('rootFolder', () => {
     const {
         output,
-        devServer,
-        serve
+        devServer
     } = configBuilder({ rootFolder: '/some' });
     test('output', () => {
         expect(output.path).toBe('/some/dist');
@@ -108,10 +92,6 @@ describe('rootFolder', () => {
 
     test('devServer', () => {
         expect(devServer.contentBase).toBe('/some/dist');
-    });
-
-    test('serve', () => {
-        expect(serve.content).toBe('/some/dist');
     });
 });
 
@@ -124,31 +104,21 @@ test('appEntry correctly set', () => {
 
 describe('publicPath', () => {
     const {
-        output,
-        serve
+        output
     } = configBuilder({ publicPath: 'test-value' });
 
     test('output', () => {
         expect(output.publicPath).toBe('test-value');
     });
-
-    test('serve', () => {
-        expect(serve.dev).toEqual({ publicPath: 'test-value' });
-    });
 });
 
 describe('port', () => {
     const {
-        devServer,
-        serve
+        devServer
     } = configBuilder({ port: 1000 });
 
     test('devServer', () => {
         expect(devServer.port).toBe(1000);
-    });
-
-    test('serve', () => {
-        expect(serve.port).toBe(1000);
     });
 });
 

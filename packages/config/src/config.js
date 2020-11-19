@@ -44,16 +44,16 @@ module.exports = ({
             App: appEntry
         },
         output: {
-            filename: 'js/[name].[hash].js',
+            filename: 'js/[name].[chunkhash].js',
             path: `${rootFolder || ''}/dist`,
             publicPath,
-            chunkFilename: 'js/[name].[hash].js'
+            chunkFilename: 'js/[name].[chunkhash].js'
         },
         module: {
             rules: [{
                 test: /src\/.*\.js$/,
                 exclude: /(node_modules|bower_components)/i,
-                use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }, { loader: 'eslint-loader' }]
+                use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }]
             }, {
                 test: /src\/.*\.tsx?$/,
                 loader: 'ts-loader',
@@ -90,7 +90,14 @@ module.exports = ({
             alias: {
                 customReact: 'react',
                 PFReactCore: '@patternfly/react-core',
-                PFReactTable: '@patternfly/react-table'
+                PFReactTable: '@patternfly/react-table',
+                buffer: 'buffer'
+            },
+            fallback: {
+                path: require.resolve('path-browserify'),
+                stream: require.resolve('stream-browserify'),
+                zlib: require.resolve('browserify-zlib'),
+                assert: require.resolve('assert/')
             }
         },
         devServer: {
@@ -100,17 +107,9 @@ module.exports = ({
             https: https || false,
             inline: true,
             disableHostCheck: true,
-            historyApiFallback: true
-        },
-        serve: {
-            content: `${rootFolder || ''}/dist`,
-            port: port || 8002,
-            dev: {
-                publicPath
-            },
-            // https://github.com/webpack-contrib/webpack-serve/blob/master/docs/addons/history-fallback.config.js
-            add: app => app.use(convert(history({})))
-        },
-        node: { fs: 'empty' }
+            historyApiFallback: true,
+            contentBasePublicPath: publicPath,
+            writeToDisk: true
+        }
     };
 };

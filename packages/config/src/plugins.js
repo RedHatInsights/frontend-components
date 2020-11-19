@@ -1,23 +1,19 @@
 const { SourceMapDevToolPlugin, HotModuleReplacementPlugin } = require('webpack');
+const ESLintPlugin = new(require('eslint-webpack-plugin'))();
+const ProvidePlugin = new(require('webpack').ProvidePlugin)({
+    Buffer: [ 'buffer', 'Buffer' ]
+});
 
-const WriteFileWebpackPlugin = new(require('write-file-webpack-plugin'))();
 const SourceMapsPlugin = new SourceMapDevToolPlugin({
     test: /src\/.*\.js$/i,
     exclude: /(node_modules|bower_components)/i,
     filename: `sourcemaps/[name][hash].js.map`
 });
-const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({
-    currying: true,
-    flattening: true,
-    placeholders: true,
-    paths: true,
-    shorthands: true
-});
 const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
-    chunkFilename: 'css/[name].[hash].css',
-    filename: 'css/[name].[hash].css'
+    chunkFilename: 'css/[name].[contenthash].css',
+    filename: 'css/[name].[contenthash].css'
 });
-const CleanWebpackPlugin = new(require('clean-webpack-plugin'))();
+const CleanWebpackPlugin = new(require('clean-webpack-plugin').CleanWebpackPlugin)();
 const WebpackHotModuleReplacement = new HotModuleReplacementPlugin();
 
 module.exports = ({
@@ -42,13 +38,13 @@ module.exports = ({
     ]);
 
     return [
-        WriteFileWebpackPlugin,
         SourceMapsPlugin,
-        LodashWebpackPlugin,
         ExtractCssWebpackPlugin,
         CleanWebpackPlugin,
         HtmlWebpackPlugin,
         HtmlReplaceWebpackPlugin,
-        WebpackHotModuleReplacement
+        WebpackHotModuleReplacement,
+        ESLintPlugin,
+        ProvidePlugin
     ];
 };

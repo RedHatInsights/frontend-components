@@ -1,7 +1,7 @@
 import plugins from './plugins';
 
-const HTML_WEBPACK = 5;
-const REPLACE = 6;
+const HTML_WEBPACK = 3;
+const REPLACE = 4;
 
 describe('plugins generations, no option', () => {
     const enabledPlugins = plugins();
