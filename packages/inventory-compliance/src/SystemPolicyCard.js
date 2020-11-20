@@ -14,12 +14,12 @@ import {
 import PropTypes from 'prop-types';
 
 class SystemPolicyCard extends React.Component {
-    constructor(policy) {
-        super(policy);
+    constructor(props) {
+        super(props);
         this.state = {
-            cardTitle: <Truncate lines={ 1 }>{ policy.policy.name }</Truncate>,
-            refIdTruncated: <Truncate lines={ 1 }>{ policy.policy.refId }</Truncate>,
-            ...policy
+            cardTitle: <Truncate lines={ 1 }>{ props.policy.name }</Truncate>,
+            refIdTruncated: <Truncate lines={ 1 }>{ props.policy.refId }</Truncate>,
+            ...props
         };
     }
 
