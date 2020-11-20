@@ -20,6 +20,7 @@ query System($systemId: String!){
         name
         profiles {
             name
+            policyType
             refId
             compliant
             rulesFailed

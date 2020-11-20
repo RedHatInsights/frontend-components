@@ -18,6 +18,7 @@ class SystemPolicyCard extends React.Component {
         super(props);
         this.state = {
             cardTitle: <Truncate lines={ 1 }>{ props.policy.name }</Truncate>,
+            cardSubTitle: <Truncate lines={ 1 }>{ props.policy.policyType }</Truncate>,
             refIdTruncated: <Truncate lines={ 1 }>{ props.policy.refId }</Truncate>,
             ...props
         };
@@ -53,9 +54,17 @@ class SystemPolicyCard extends React.Component {
         this.setState({ cardTitle: <Truncate lines={ 1 }>{ this.state.cardTitle }</Truncate> });
     }
 
+    onSubTitleMouseover = () => {
+        this.setState({ cardSubTitle: this.state.policy.policyType });
+    }
+
+    onSubTitleMouseout = () => {
+        this.setState({ cardSubTitle: <Truncate lines={ 1 }>{ this.state.policy.policyType }</Truncate> });
+    }
+
     render() {
         const { policy, benchmark, rulesFailed, compliant, lastScanned, score } = this.state.policy;
-        const { refIdTruncated, cardTitle } = this.state;
+        const { refIdTruncated, cardTitle, cardSubTitle } = this.state;
         const passedPercentage = this.fixedPercentage(score);
         const FormattedRelativeCmp = FormattedRelativeTime || FormattedRelative || Fragment;
 
@@ -70,6 +79,15 @@ class SystemPolicyCard extends React.Component {
                         >
                             { cardTitle }
                         </Text>
+                        { policy &&
+                            <Text
+                                style={{ color: 'var(--pf-global--Color--200)' }}
+                                component={ TextVariants.small }
+                                onMouseEnter={ this.onSubTitleMouseover }
+                                onMouseLeave={ this.onSubTitleMouseout }>
+                                { cardSubTitle }
+                            </Text>
+                        }
                         { !policy && <Tooltip position='bottom' content={
                             <span>This policy report was uploaded into the Compliance application.
                             If you would like to manage your policy inside the Compliance application,
@@ -126,6 +144,7 @@ SystemPolicyCard.propTypes = {
         lastScanned: PropTypes.string,
         refId: PropTypes.string,
         name: PropTypes.string,
+        policyType: PropTypes.string,
         compliant: PropTypes.bool
     })
 };
