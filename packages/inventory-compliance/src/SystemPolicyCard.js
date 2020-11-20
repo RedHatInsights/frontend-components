@@ -79,7 +79,7 @@ class SystemPolicyCard extends React.Component {
                         >
                             { cardTitle }
                         </Text>
-                        { policy &&
+                        { policy ?
                             <Text
                                 style={{ color: 'var(--pf-global--Color--200)' }}
                                 component={ TextVariants.small }
@@ -87,16 +87,17 @@ class SystemPolicyCard extends React.Component {
                                 onMouseLeave={ this.onSubTitleMouseout }>
                                 { cardSubTitle }
                             </Text>
-                        }
-                        { !policy && <Tooltip position='bottom' content={
-                            <span>This policy report was uploaded into the Compliance application.
-                            If you would like to manage your policy inside the Compliance application,
-                            use the &quot;Create a policy&quot; wizard to create one and associate systems.</span>
-                        }>
-                            <span>
+                            :
+                            <Tooltip position='bottom' content={
+                                <TextContent>
+                                    This policy report was uploaded into the Compliance application.
+                                    If you would like to manage your policy inside the Compliance application,
+                                    use the &quot;Create a policy&quot; wizard to create one and associate systems.
+                                </TextContent>
+                            }>
                                 External policy <OutlinedQuestionCircleIcon className='grey-icon'/>
-                            </span>
-                        </Tooltip> }
+                            </Tooltip>
+                        }
                     </TextContent>
                     <div className='margin-bottom-md' >
                         { this.complianceIcon(compliant) }
