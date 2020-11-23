@@ -97,7 +97,9 @@ module.exports = ({
                 path: require.resolve('path-browserify'),
                 stream: require.resolve('stream-browserify'),
                 zlib: require.resolve('browserify-zlib'),
-                assert: require.resolve('assert/')
+                assert: require.resolve('assert/'),
+                buffer: require.resolve('buffer/'),
+                util: require.resolve('util/')
             }
         },
         devServer: {
