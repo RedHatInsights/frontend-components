@@ -24,7 +24,7 @@ export function constructValues(groupValue, groupKey) {
     return Object.entries(groupValue || {}).reduce((acc, [ key, { isSelected, group, value, item }]) => {
         if (isSelected) {
             const { key: tagKey, value: tagValue } = item?.meta?.tag || {
-                key: groupKey,
+                key: item?.tagKey || groupKey,
                 value: value || item?.tagValue
             };
             return [
