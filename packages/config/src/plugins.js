@@ -1,6 +1,7 @@
 const { SourceMapDevToolPlugin, HotModuleReplacementPlugin } = require('webpack');
 const ESLintPlugin = new(require('eslint-webpack-plugin'))();
 const ProvidePlugin = new(require('webpack').ProvidePlugin)({
+    process: 'process/browser.js',
     Buffer: [ 'buffer', 'Buffer' ]
 });
 
