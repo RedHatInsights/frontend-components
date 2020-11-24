@@ -87,7 +87,7 @@ describe('mapGroups', () => {
 });
 
 describe('constructValues', () => {
-    it('should build correctly', () => {
+    it('should build correctly - with meta', () => {
         const result = constructValues({
             something: {
                 isSelected: true,
@@ -98,6 +98,25 @@ describe('constructValues', () => {
                             value: 'someValue'
                         }
                     }
+                }
+            }
+        }, 'namespace');
+        expect(result).toMatchObject([{
+            key: 'something',
+            tagKey: 'namespace',
+            value: 'someValue',
+            name: 'namespace=someValue',
+            group: { value: 'namespace' }
+        }]);
+    });
+
+    it('should build correctly - without meta', () => {
+        const result = constructValues({
+            something: {
+                isSelected: true,
+                item: {
+                    tagKey: 'namespace',
+                    tagValue: 'someValue'
                 }
             }
         }, 'namespace');
@@ -243,7 +262,7 @@ describe('constructGroups', () => {
                 value: 'someValue'
             }
         });
-        expect(result[0].items[0].value).toBe('someKey');
+        expect(result[0].items[0].value).toBe('someKey=someValue');
         expect(result[0].items[0].tagValue).toBe('someValue');
     });
 });
