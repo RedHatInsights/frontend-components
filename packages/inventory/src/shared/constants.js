@@ -1,6 +1,4 @@
-import React, { createContext } from 'react';
-import { Badge } from '@patternfly/react-core/dist/js/components/Badge/Badge';
-import { Tooltip } from '@patternfly/react-core/dist/js/components/Tooltip/Tooltip';
+import { createContext } from 'react';
 import { loadEntities } from '../redux/actions';
 export const TEXT_FILTER = 'hostname_or_id';
 export const TEXTUAL_CHIP = 'textual';
@@ -19,35 +17,6 @@ export const defaultFilters = {
     registeredWithFilter: [ 'insights' ]
 };
 
-export function constructValues(groupValue) {
-    return Object.entries(groupValue).map(([ key, { isSelected, group, item }]) => {
-        if (isSelected) {
-            const { tag: { key: tagKey, value: tagValue } } = item.meta;
-            return {
-                key,
-                tagKey,
-                value: tagValue,
-                name: `${tagKey}=${tagValue}`,
-                group
-            };
-        }
-    }).filter(Boolean);
-}
-
-export function mapGroups(currSelection, valuesKey = 'values') {
-    return Object.entries(currSelection).map(([ groupKey, groupValue ]) => {
-        const values = constructValues(groupValue, groupKey);
-        if (values && values.length > 0) {
-            return {
-                type: 'tags',
-                key: groupKey,
-                category: values[0].group.label,
-                [valuesKey]: values
-            };
-        }
-    }).filter(Boolean);
-}
-
 export function filterToGroup(filter = [], valuesKey = 'values') {
     return filter.reduce((accGroup, group) => ({
         ...accGroup,
@@ -57,41 +26,13 @@ export function filterToGroup(filter = [], valuesKey = 'values') {
             item: {
                 meta: {
                     tag: {
-                        key: curr.key,
+                        key: curr.tagKey,
                         value: curr.value
                     }
                 }
             }
         } }), {})
     }), {});
-}
-
-export function constructGroups(allTags) {
-    return allTags.map(({ name, tags }) => ({
-        label: name,
-        value: name,
-        type: 'checkbox',
-        items: tags.map(({ count, tag: { key: tagKey, value } }) => ({
-            label: <React.Fragment>
-                <div className="ins-c-inventory__tags-filter--tag-name">{tagKey}={value}</div>
-                <Tooltip
-                    position="right"
-                    enableFlip
-                    content={`Applicable to ${count} system${count === 1 ? '' : 's'}.`}
-                >
-                    <Badge isRead={count <= 0}>{ count }</Badge>
-                </Tooltip>
-            </React.Fragment>,
-            meta: {
-                count,
-                tag: {
-                    key: tagKey,
-                    value
-                }
-            },
-            value: tagKey
-        }))
-    }));
 }
 
 export const arrayToSelection = (selected) => selected.reduce((acc, { cells: [ key, value, namespace ] }) => ({
