@@ -6,7 +6,7 @@ import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { propertiesSelector } from './selectors';
 import { editDisplayName, editAnsibleHost, systemProfile } from './redux/actions';
 import TextInputModal from './TextInputModal';
-import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory/actions';
+import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory';
 import { Popover, Button } from '@patternfly/react-core';
 import EditButton from './EditButton';
 import { generalMapper } from './dataMapper';

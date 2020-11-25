@@ -3,12 +3,19 @@
     "version": "2.4.28",
     "description": "Inventory components for RedHat Cloud Services project.",
     "browser": "index.js",
+    "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "NODE_ENV=production webpack --config config/webpack.config.js",
-        "start": "webpack --watch --config config/webpack.config.js"
+        "build": "npm run build:js && npm run build:esm && npm run build:umd",
+        "build:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
+        "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
+        "build:umd": "NODE_ENV=production webpack --config config/webpack.config.js",
+        "start": "rollup -c ./config/rollup.config.js -w",
+        "start:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js -w --format=cjs --environment FORMAT:cjs",
+        "start:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js -w --environment FORMAT:esm",
+        "start:umd": "webpack --watch --config config/webpack.config.js"
     },
     "repository": {
         "type": "git",
