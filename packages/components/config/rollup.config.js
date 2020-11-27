@@ -75,6 +75,11 @@ export default rollupConfig(
     plugins,
     globals,
     name,
-    [ globMapper('src/**/index.js') ],
+    [
+        globMapper('src/**/index.js'),
+        Object.entries(globMapper('src/**/index.js'))
+        .filter(([ key ]) => key !== 'Inventory')
+        .reduce((acc, [ key, value ]) => ({ ...acc, [key]: value }), {})
+    ],
     './components/'
 );
