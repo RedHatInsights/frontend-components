@@ -184,9 +184,12 @@ class SystemRulesTable extends React.Component {
     }
 
     updatePolicyFilterConfig = () => {
-        const policies = this.props.profileRules.map((p) => (
-            p.profile
-        )).filter((p) => !!p);
+        let policies = this.props.profileRules.filter(({ profile }) => !!profile).map(({ profile }) => (
+            {
+                id: profile.policy ? profile.policy.id : profile.id,
+                name: profile.name
+            }
+        ));
 
         if (policies.length > 1) {
             this.filterConfigBuilder.addConfigItem(POLICIES_FILTER_CONFIG(policies));

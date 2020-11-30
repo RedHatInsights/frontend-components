@@ -69,10 +69,12 @@ export const POLICIES_FILTER_CONFIG = (policies) => ({
     type: conditionalFilterType.checkbox,
     label: 'Policy',
     items: policies.map(policy => (
-        { label: policy.name, value: policy.refId }
+        { label: policy.name, value: policy.id }
     )),
     filter: (rules, values) => filterRulesWithAllValues(rules, values, (rule, value) => (
-        rule.profiles.filter((profile) => profile.refId === value).length > 0
+        rule.profiles.filter((profile) =>
+            profile.policy ? profile.policy.id === value : profile.id === value
+        ).length > 0
     ))
 });
 
