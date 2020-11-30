@@ -52,7 +52,7 @@ class SystemRulesTable extends React.Component {
 
     parentRowForRule = (rule) => {
         const {
-            title, identifier, policies, severity, compliant, rowKey,
+            title, identifier, profiles, severity, compliant, rowKey,
             remediationAvailable, refId, isOpen, isSelected
         } = rule;
         const cells = this.props.columns.map((column) => {
@@ -63,7 +63,7 @@ class SystemRulesTable extends React.Component {
                     cell = <RuleTitle title={ title } identifier={ identifier } />;
                     break;
                 case 'Policy':
-                    cell = policies.map((p) => p.name).slice(0, 1).join(', ');
+                    cell = profiles.map((p) => p.name).slice(0, 1).join(', ');
                     break;
                 case 'Severity':
                     cell = (severity.toLowerCase() === 'high' ? HIGH_SEVERITY :
