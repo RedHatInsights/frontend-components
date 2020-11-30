@@ -123,7 +123,11 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
 
     return (
         <React.Fragment>
-            <DescriptionList>
+            <DescriptionList
+                columnModifier={{
+                    default: '2Col'
+                }}
+            >
                 <DescriptionListGroup>
                     <DescriptionListTerm>
                         { intl.formatMessage({
