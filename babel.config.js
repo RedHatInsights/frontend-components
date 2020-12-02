@@ -55,6 +55,10 @@ const notificationsMapper = {
     addNotification: 'actions'
 };
 
+const inventoryMapper = {
+    loadEntity: 'actions'
+};
+
 const createPfReactTransform = (env) => [
     'transform-imports',
     {
@@ -124,7 +128,7 @@ const createFrontendComponentsTransform = env => [
             skipDefaultConversion: true
         },
         '@redhat-cloud-services/frontend-components-inventory': {
-            transform: (importName) => `@redhat-cloud-services/frontend-components-inventory/${env}/${importName}.js`,
+            transform: (importName) => `@redhat-cloud-services/frontend-components-inventory/${env}/${inventoryMapper[importName] || importName}.js`,
             preventFullImport: true,
             skipDefaultConversion: true
         },

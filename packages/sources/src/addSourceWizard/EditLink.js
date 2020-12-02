@@ -10,7 +10,7 @@ const EditLink = ({ id }) => {
     const message =  intl.formatMessage({ id: 'wizard.editSource', defaultMessage: 'Edit source' });
 
     if (insights.chrome.getApp() === 'sources') {
-        return (<Link to={`/sources/edit/${id}`}>
+        return (<Link to={`/sources/detail/${id}`}>
             <Button variant='primary' className="pf-u-mt-xl">
                 { message }
             </Button>
@@ -23,7 +23,7 @@ const EditLink = ({ id }) => {
             className="pf-u-mt-xl"
             component='a'
             target="_blank"
-            href={`${computeSourcesUrl()}/edit/${id}`}
+            href={`${computeSourcesUrl()}/detail/${id}`}
             rel="noopener noreferrer"
         >
             { message }
