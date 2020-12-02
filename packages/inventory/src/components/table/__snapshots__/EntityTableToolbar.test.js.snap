@@ -952,45 +952,9 @@ exports[`EntityTableToolbar DOM should render correctly - with tags 1`] = `
 
 exports[`EntityTableToolbar DOM should render correctly - with tags 2`] = `
 <TagsModal
-  fetchAllTags={[Function]}
-  fetchTagsForSystem={[Function]}
   filterTagsBy=""
-  filters={
-    Array [
-      Object {},
-    ]
-  }
-  loaded={false}
   onApply={[Function]}
   onToggleModal={[Function]}
-  onToggleTagModal={[Function]}
-  pagination={
-    Object {
-      "page": 1,
-      "perPage": 10,
-    }
-  }
-  showTagDialog={false}
-  tags={
-    Array [
-      Object {
-        "key": "some key",
-        "namespace": "something",
-        "value": "some value",
-      },
-      Object {
-        "key": "some key",
-        "namespace": "something",
-        "value": null,
-      },
-      Object {
-        "key": "some key",
-        "namespace": null,
-        "value": null,
-      },
-    ]
-  }
-  tagsCount={0}
 />
 `;
 

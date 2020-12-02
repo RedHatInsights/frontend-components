@@ -54,6 +54,54 @@ describe('SystemRulesTable component', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('should render filtered rows by policy', async () => {
+        let profileRulesWithExternal = [
+            ...profileRules,
+            {
+                system: 'aa9c4497-5707-4233-9e9b-1fded5423ef3',
+                profile: {
+                    id: 'f685817e-69d2-44af-96de-bd5944c4dbd3',
+                    refId: 'xccdf_org.ssgproject.content_profile_pci-dss',
+                    name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7'
+                },
+                rulesFailed: 0,
+                rulesPassed: 1,
+                rules: [
+                    {
+                        title: 'Use direct-lvm with the Device Mapper Storage Driver',
+                        severity: 'low',
+                        rationale: 'foorationale',
+                        refId: 'xccdf_org.ssgproject.content_rule_docker_storage_configured',
+                        description: 'foodescription',
+                        compliant: true,
+                        identifier: JSON.stringify({
+                            label: 'CCE-80441-9',
+                            system: 'https://nvd.nist.gov/cce/index.cfm'
+                        }),
+                        references: JSON.stringify([])
+                    }
+                ]
+            }
+        ];
+
+        const wrapper = shallow(
+            <SystemRulesTable
+                profileRules={ profileRulesWithExternal }
+                loading={ false }
+                system={ system }
+                itemsPerPage={ 100 }
+                columns={ columns }
+            />
+        );
+        const instance = wrapper.instance();
+        expect(instance.getRules().length).toEqual(53);
+        instance.updatePolicyFilterConfig();
+        await instance.onFilterUpdate('policy', [ 'ddf5aefb-ecc8-491a-a2ba-81bf17076361' ]);
+        expect(instance.getRules().length).toEqual(52);
+        await instance.onFilterUpdate('policy', [ 'f685817e-69d2-44af-96de-bd5944c4dbd3' ]);
+        expect(instance.getRules().length).toEqual(1);
+    });
+
     it('should render filtered rows by severity', async () => {
         const wrapper = shallow(
             <SystemRulesTable

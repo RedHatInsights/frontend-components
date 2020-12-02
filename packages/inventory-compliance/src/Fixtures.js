@@ -7,8 +7,12 @@ export const system = {
     id: 'aa9c4497-5707-4233-9e9b-1fded5423ef3',
     name: '3.example.com',
     profiles: [{
+        id: '99a661a8-8cb2-4adf-bf01-62f186493c04',
         refId: 'xccdf_org.ssgproject.content_profile_pci-dss',
         name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7',
+        policy: {
+            id: 'ddf5aefb-ecc8-491a-a2ba-81bf17076361'
+        },
         rules: [
             {
                 title: 'Use direct-lvm with the Device Mapper Storage Driver',
@@ -56,8 +60,12 @@ export const profileRules = [
     {
         system: 'aa9c4497-5707-4233-9e9b-1fded5423ef3',
         profile: {
+            id: '99a661a8-8cb2-4adf-bf01-62f186493c04',
             refId: 'xccdf_org.ssgproject.content_profile_pci-dss',
-            name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7'
+            name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7',
+            policy: {
+                id: 'ddf5aefb-ecc8-491a-a2ba-81bf17076361'
+            }
         },
         rulesFailed: 31,
         rulesPassed: 19,

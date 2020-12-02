@@ -1,133 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TagsModal DOM should render activeSystemTag 1`] = `
-<ContextProvider
-  value={null}
->
-  <TagsModal
-    activeSystemTag={
-      Object {
-        "page": 1,
-        "perPage": 10,
-        "tags": Array [
-          Object {
-            "key": "some",
-            "namespace": "something",
-            "value": "test",
-          },
-        ],
-        "tagsCount": 50,
-        "tagsLoaded": true,
-      }
-    }
-    fetchAllTags={[Function]}
-    fetchTagsForSystem={[Function]}
-    filterTagsBy=""
-    loaded={true}
-    onToggleModal={[Function]}
-    onToggleTagModal={[Function]}
-    pagination={
-      Object {
-        "page": 1,
-        "perPage": 10,
-      }
-    }
-    showTagDialog={true}
-    store={
-      Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
-    tags={
-      Array [
-        Object {
-          "key": "some",
-          "namespace": "something",
-          "value": "test",
-        },
-      ]
-    }
-    tagsCount={50}
-  />
-</ContextProvider>
+<TagsModal
+  filterTagsBy=""
+  onToggleModal={[Function]}
+/>
 `;
 
 exports[`TagsModal DOM should render alltags 1`] = `
-<ContextProvider
-  value={null}
->
-  <TagsModal
-    fetchAllTags={[Function]}
-    fetchTagsForSystem={[Function]}
-    filterTagsBy=""
-    loaded={true}
-    onToggleModal={[Function]}
-    onToggleTagModal={[Function]}
-    pagination={
-      Object {
-        "page": 1,
-        "perPage": 10,
-      }
+<TagsModal
+  filterTagsBy=""
+  onToggleModal={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
-    showTagDialog={true}
-    store={
-      Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
-    tags={
-      Array [
-        Object {
-          "key": "some",
-          "namespace": "something",
-          "value": "test",
-        },
-      ]
-    }
-    tagsCount={50}
-  />
-</ContextProvider>
+  }
+/>
 `;
 
 exports[`TagsModal DOM should render loading state correctly 1`] = `
-<ContextProvider
-  value={null}
->
-  <TagsModal
-    fetchAllTags={[Function]}
-    fetchTagsForSystem={[Function]}
-    filterTagsBy=""
-    loaded={false}
-    onToggleModal={[Function]}
-    onToggleTagModal={[Function]}
-    pagination={
-      Object {
-        "page": 1,
-        "perPage": 10,
-      }
-    }
-    showTagDialog={false}
-    store={
-      Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
-    tagsCount={0}
-  />
-</ContextProvider>
+<TagsModal
+  filterTagsBy=""
+  onToggleModal={[Function]}
+/>
 `;
