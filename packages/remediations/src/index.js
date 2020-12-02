@@ -1,7 +1,8 @@
 
 import validate from './validator';
 import RemediationWizard from './RemediationWizard';
-export { RemediationWizard };
+import NewRemediationWizard from './NewRemediationWizard';
+export { RemediationWizard, NewRemediationWizard };
 
 export function openWizard(data, basePath, wizardRef) {
 
