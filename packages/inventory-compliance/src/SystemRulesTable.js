@@ -345,7 +345,7 @@ class SystemRulesTable extends React.Component {
                     { remediationsEnabled &&
                         <ToolbarItem>
                             <ComplianceRemediationButton
-                                allSystems={ [{ id: system.id, profiles: system.profiles, ruleObjectsFailed: [] }] }
+                                allSystems={ [{ id: system.id, profiles: system.testResultProfiles, ruleObjectsFailed: [] }] }
                                 selectedRules={ selectedRulesWithRemediations } />
                         </ToolbarItem>
                     }
