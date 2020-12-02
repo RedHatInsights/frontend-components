@@ -211,7 +211,7 @@ describe('Final wizard', () => {
         });
         wrapper.update();
 
-        expect(wrapper.find(MemoryRouter).instance().history.location.pathname).toEqual(`/sources/edit/${id}`);
+        expect(wrapper.find(MemoryRouter).instance().history.location.pathname).toEqual(`/sources/detail/${id}`);
     });
 
     it('when configuration failed, show endpoint error', async () => {

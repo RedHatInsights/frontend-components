@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { TextContent, TextListItem, TextListItemVariants, TextListVariants, TextList, Alert } from '@patternfly/react-core';
+import { Alert, DescriptionListGroup, DescriptionListTerm, DescriptionListDescription, DescriptionList } from '@patternfly/react-core';
 import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps, shouldSkipEndpoint } from '../../addSourceWizard/schemaBuilder';
@@ -109,57 +109,63 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
     const valuesInfo = getAllFieldsValues(fields, values, availableStepKeys);
 
     const valuesList = valuesInfo.map(({ label, value }) => (
-        <React.Fragment key={ `${label}--${value}` }>
-            <TextListItem component={ TextListItemVariants.dt }>{ label }</TextListItem>
-            <TextListItem component={ TextListItemVariants.dd }>
+        <DescriptionListGroup key={ `${label}--${value}` }>
+            <DescriptionListTerm>{ label }</DescriptionListTerm>
+            <DescriptionListDescription>
                 { value.toString().length > 150 ?
                     <ValuePopover label={label} value={value} />
                     :
                     value
                 }
-            </TextListItem>
-        </React.Fragment>
+            </DescriptionListDescription>
+        </DescriptionListGroup>
     ));
 
     return (
         <React.Fragment>
-            <TextContent>
-                <TextList component={ TextListVariants.dl }>
-                    <TextListItem component={ TextListItemVariants.dt }>
+            <DescriptionList
+                columnModifier={{
+                    default: '2Col'
+                }}
+            >
+                <DescriptionListGroup>
+                    <DescriptionListTerm>
                         { intl.formatMessage({
                             id: 'wizard.name',
                             defaultMessage: 'Name'
                         }) }
-                    </TextListItem>
-                    <TextListItem component={ TextListItemVariants.dd }>{ values.source.name }</TextListItem>
-                    { showApp && <React.Fragment>
-                        <TextListItem component={ TextListItemVariants.dt }>
-                            { intl.formatMessage({
-                                id: 'wizard.application',
-                                defaultMessage: 'Application'
-                            }) }
-                        </TextListItem>
-                        <TextListItem component={ TextListItemVariants.dd }>{ display_name }</TextListItem>
-                    </React.Fragment> }
-                    <TextListItem component={ TextListItemVariants.dt }>
+                    </DescriptionListTerm>
+                    <DescriptionListDescription>{ values.source.name }</DescriptionListDescription>
+                </DescriptionListGroup>
+                { showApp && <DescriptionListGroup>
+                    <DescriptionListTerm>
+                        { intl.formatMessage({
+                            id: 'wizard.application',
+                            defaultMessage: 'Application'
+                        }) }
+                    </DescriptionListTerm>
+                    <DescriptionListDescription>{ display_name }</DescriptionListDescription>
+                </DescriptionListGroup> }
+                <DescriptionListGroup>
+                    <DescriptionListTerm>
                         { intl.formatMessage({
                             id: 'wizard.sourceType',
                             defaultMessage: 'Source type'
                         }) }
-                    </TextListItem>
-                    <TextListItem component={ TextListItemVariants.dd }>{ type.product_name }</TextListItem>
-                    { !skipEndpoint && authType && showAuthType && <React.Fragment>
-                        <TextListItem component={ TextListItemVariants.dt }>
-                            { intl.formatMessage({
-                                id: 'wizard.authenticationType',
-                                defaultMessage: 'Authentication type'
-                            }) }
-                        </TextListItem>
-                        <TextListItem component={ TextListItemVariants.dd }>{ authType.name }</TextListItem>
-                    </React.Fragment> }
-                    { valuesList }
-                </TextList>
-            </TextContent>
+                    </DescriptionListTerm>
+                    <DescriptionListDescription>{ type.product_name }</DescriptionListDescription>
+                </DescriptionListGroup>
+                { !skipEndpoint && authType && showAuthType && <DescriptionListGroup>
+                    <DescriptionListTerm>
+                        { intl.formatMessage({
+                            id: 'wizard.authenticationType',
+                            defaultMessage: 'Authentication type'
+                        }) }
+                    </DescriptionListTerm>
+                    <DescriptionListDescription>{ authType.name }</DescriptionListDescription>
+                </DescriptionListGroup> }
+                { valuesList }
+            </DescriptionList>
             {name === COST_MANAGEMENT_APP_NAME && (
                 <Alert
                     variant="info"

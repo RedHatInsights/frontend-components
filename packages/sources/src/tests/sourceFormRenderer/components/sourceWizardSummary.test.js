@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextListItem, TextContent, Alert } from '@patternfly/react-core';
+import { Alert, DescriptionListGroup, DescriptionListTerm, DescriptionListDescription } from '@patternfly/react-core';
 
 import Summary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
 import applicationTypes, { COST_MANAGEMENT_APP } from '../../helpers/applicationTypes';
@@ -19,6 +19,10 @@ describe('SourceWizardSummary component', () => {
                 <Summary {...props} />
             </RendererContext.Provider>
         );
+
+        const getListData = wrapper => wrapper
+        .find(DescriptionListGroup)
+        .map((group) => [ group.find(DescriptionListTerm).text(), group.find(DescriptionListDescription).text() ]);
 
         beforeEach(() => {
             formOptions = (source_type, authtype, application_type_id, validate = true) => ({
@@ -59,8 +63,7 @@ describe('SourceWizardSummary component', () => {
         it('openshift', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
 
-            const headers = wrapper.find('dt').map(item => item.text());
-            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+            const data = getListData(wrapper);
 
             expect(data).toEqual(
                 [
@@ -80,21 +83,20 @@ describe('SourceWizardSummary component', () => {
 
         it('name is first', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
-            expect(wrapper.find(TextListItem).at(1).children().first().text()).toEqual('openshift');
+            expect(wrapper.find(DescriptionListDescription).at(0).text()).toEqual('openshift');
             expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('type is third', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
-            expect(wrapper.find(TextListItem).at(5).children().first().text()).toEqual('OpenShift Container Platform');
+            expect(wrapper.find(DescriptionListDescription).at(2).text()).toEqual('OpenShift Container Platform');
             expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('amazon', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon', 'access_key_secret_key') } />);
 
-            const headers = wrapper.find('dt').map(item => item.text());
-            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+            const data = getListData(wrapper);
 
             expect(data).toEqual(
                 [
@@ -118,8 +120,7 @@ describe('SourceWizardSummary component', () => {
         it('amazon - ARN', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('amazon', 'arn') } />);
 
-            const headers = wrapper.find('dt').map(item => item.text());
-            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+            const data = getListData(wrapper);
 
             expect(data).toEqual(
                 [
@@ -150,8 +151,7 @@ describe('SourceWizardSummary component', () => {
 
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
 
-            const headers = wrapper.find('dt').map(item => item.text());
-            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+            const data = getListData(wrapper);
 
             expect(data).toEqual(
                 [
@@ -163,9 +163,6 @@ describe('SourceWizardSummary component', () => {
                     [ 'ARN', 'arn:aws:132' ]
                 ]
             );
-
-            expect(wrapper.find(TextContent).html().includes('ARN')).toEqual(true);
-            expect(wrapper.find(TextContent).html().includes('arn:aws:132')).toEqual(true);
 
             expect(wrapper.find(Alert).props().title).toEqual('Manage permissions in User Access');
             expect(wrapper.find(Alert).props().children).toEqual(
@@ -188,8 +185,7 @@ describe('SourceWizardSummary component', () => {
 
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
 
-            const headers = wrapper.find('dt').map(item => item.text());
-            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+            const data = getListData(wrapper);
 
             expect(data).toEqual(
                 [
@@ -200,9 +196,6 @@ describe('SourceWizardSummary component', () => {
                 ]
             );
 
-            expect(wrapper.find(TextContent).find({ defaultMessage: 'Cluster Identifier' })).toHaveLength(1);
-            expect(wrapper.find(TextContent).html().includes('CLUSTER ID123')).toEqual(true);
-
             expect(wrapper.find(Alert).props().title).toEqual('Manage permissions in User Access');
             expect(wrapper.find(Alert).props().children).toEqual(
                 'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
@@ -211,8 +204,7 @@ describe('SourceWizardSummary component', () => {
 
         it('ansible-tower', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
-            const headers = wrapper.find('dt').map(item => item.text());
-            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+            const data = getListData(wrapper);
 
             expect(data).toEqual(
                 [
@@ -233,8 +225,7 @@ describe('SourceWizardSummary component', () => {
 
         it('selected Catalog application, is second', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1') } />);
-            const headers = wrapper.find('dt').map(item => item.text());
-            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+            const data = getListData(wrapper);
 
             expect(data).toEqual(
                 [
@@ -249,13 +240,11 @@ describe('SourceWizardSummary component', () => {
                     [ 'Password', '●●●●●●●●●●●●' ]
                 ]
             );
-            expect(wrapper.find(TextListItem).at(3).children().first().text()).toEqual('Catalog');
         });
 
         it('hide application', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password', '1') } showApp={ false }/>);
-            const headers = wrapper.find('dt').map(item => item.text());
-            const data = wrapper.find('dd').map((item, index) => [ headers[index], item.text() ]);
+            const data = getListData(wrapper);
 
             expect(data).toEqual(
                 [
@@ -269,7 +258,6 @@ describe('SourceWizardSummary component', () => {
                     [ 'Password', '●●●●●●●●●●●●' ]
                 ]
             );
-            expect(wrapper.find(TextListItem).at(3).children().first().text()).not.toEqual('Catalog');
             expect(wrapper.contains('Catalog')).toEqual(false);
             expect(wrapper.find(Alert)).toHaveLength(0);
         });

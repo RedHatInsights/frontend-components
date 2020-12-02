@@ -4,18 +4,15 @@ import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import nodeGlobals from 'rollup-plugin-node-globals';
 import { terser } from 'rollup-plugin-terser';
-import scss from 'rollup-plugin-scss';
+import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
-import packageImporter from 'node-sass-package-importer';
 import { dependencies, peerDependencies, name } from '../package.json';
 import {
     rollupConfig,
-    globMapper,
     externalDeps,
     external,
     globals
 } from '../../../config/rollup-contants';
-import copy from 'rollup-plugin-copy';
 import rollupPlugins from '../../../config/rollup-plugins';
 
 const commonjsOptions = {
@@ -28,9 +25,6 @@ const commonjsOptions = {
             'isArray',
             'isEqualWith',
             'isEqual'
-        ],
-        'src/Components/ConditionalFilter/ConditionalFilter.js': [
-            'ConditionalFilterType'
         ]
     }
 };
@@ -53,21 +47,11 @@ const plugins = [
         keep_classnames: true,
         keep_fnames: true
     }),
-    scss({
-        output: 'index.css',
-        outputStyle: 'compressed',
-        importer: packageImporter()
+    postcss({
+        minimize: true,
+        extract: true
     }),
-    json(),
-    copy({
-        targets: [
-            { src: 'src/**/*.scss', dest: './components' },
-            { src: 'src/**/*.d.ts', dest: './components' }
-
-        ],
-        overwrite: true,
-        hook: 'writeBundle'
-    })
+    json()
 ];
 
 export default rollupConfig(
@@ -75,11 +59,10 @@ export default rollupConfig(
     plugins,
     globals,
     name,
-    [
-        globMapper('src/**/index.js'),
-        Object.entries(globMapper('src/**/index.js'))
-        .filter(([ key ]) => key !== 'Inventory')
-        .reduce((acc, [ key, value ]) => ({ ...acc, [key]: value }), {})
-    ],
-    './components/'
+    [{
+        index: 'src/index.js',
+        actions: 'src/redux/actions.js',
+        filters: 'src/components/filters/index.js'
+    }],
+    './'
 );
