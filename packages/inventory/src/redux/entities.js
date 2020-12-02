@@ -161,7 +161,7 @@ function selectFilter(state, { payload: { item: { items, ...item }, selected } }
 }
 
 export function showTags(state, { payload, meta }) {
-    const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity;
+    const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity || {};
     return {
         ...state,
         activeSystemTag: {
@@ -176,7 +176,7 @@ export function showTags(state, { payload, meta }) {
 }
 
 export function showTagsPending(state, { meta }) {
-    const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity;
+    const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity || {};
     return {
         ...state,
         activeSystemTag: {
