@@ -19,6 +19,7 @@ query System($systemId: String!){
         id
         name
         profiles {
+            id
             name
             policyType
             refId
@@ -56,9 +57,9 @@ const SystemQuery = ({ data: { system }, loading, hidePassed }) => (
         <SystemRulesTable hidePassed={ hidePassed }
             system={ system }
             columns={ columns }
-            profileRules={ system?.profiles.map((profile) => ({
+            profileRules={ system?.profiles.map(profile => ({
                 system: system.id,
-                profile: { refId: profile.refId, name: profile.name },
+                profile,
                 rules: profile.rules
             })) }
             loading={ loading } />

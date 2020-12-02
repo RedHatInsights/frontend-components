@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-compliance",
-    "version": "2.2.11",
+    "version": "2.2.12",
     "description": "Detail part of compliance for RedHat Cloud Services.",
     "browser": "index.js",
     "module": "esm/index.js",
