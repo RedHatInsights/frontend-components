@@ -1,8 +1,9 @@
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
 
 export default (container) => ({
     fields: [
         {
-            component: 'wizard',
+            component: componentTypes.WIZARD,
             name: 'wizzard',
             isDynamic: true,
             inModal: true,

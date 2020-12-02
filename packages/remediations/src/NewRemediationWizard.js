@@ -1,9 +1,10 @@
 import React, { Component, Fragment, createContext } from 'react';
-import componentMapper from '@data-driven-forms/pf4-component-mapper/dist/cjs/component-mapper';
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
 import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
 import schemaBuilder from './schema';
 import Deferred from '@redhat-cloud-services/frontend-components-utilities/files/Deffered';
+import Wizard from '@data-driven-forms/pf4-component-mapper/dist/cjs/wizard';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
 
 const RemediationWizardContext = createContext({
     success: false,
@@ -63,7 +64,7 @@ class RemediationWizard extends Component {
     render () {
 
         return (
-            this.state.open !== false ?
+            this.state.open ?
                 <RemediationWizardContext.Provider
                     value={{ ...this.state.wizardContextValue,
                         setWizardError: this.setWizardError,
@@ -74,7 +75,9 @@ class RemediationWizard extends Component {
                         container={this.container}
                         subscription={{ values: true }}
                         FormTemplate={this.getFormTemplate}
-                        componentMapper={{ ...componentMapper }}
+                        componentMapper={{
+                            [componentTypes.WIZARD]: Wizard
+                        }}
                         onSubmit={() => undefined}
                         onCancel={this.closeWizard}
                     />
