@@ -134,7 +134,11 @@ exports[`SystemRulesTable component should render 1`] = `
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
               "profiles": Array [
                 Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rules": Array [
                     Object {
@@ -299,9 +303,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -369,9 +377,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -439,9 +451,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -529,9 +545,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     },
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -598,9 +618,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -668,9 +692,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -738,9 +766,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -808,9 +840,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -878,9 +914,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -948,9 +988,13 @@ exports[`SystemRulesTable component should render 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -1270,7 +1314,11 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
               "profiles": Array [
                 Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rules": Array [
                     Object {
@@ -1631,7 +1679,11 @@ exports[`SystemRulesTable component should render search results by rule name 1`
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
               "profiles": Array [
                 Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rules": Array [
                     Object {
@@ -1804,9 +1856,13 @@ exports[`SystemRulesTable component should render search results by rule name 1`
                     },
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -2042,7 +2098,11 @@ exports[`SystemRulesTable component should render search results on any page, re
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
               "profiles": Array [
                 Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rules": Array [
                     Object {
@@ -2215,9 +2275,13 @@ exports[`SystemRulesTable component should render search results on any page, re
                     },
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -2444,7 +2508,11 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
               "profiles": Array [
                 Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rules": Array [
                     Object {
@@ -2609,9 +2677,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -2679,9 +2751,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -2749,9 +2825,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -2839,9 +2919,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     },
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -2908,9 +2992,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -2978,9 +3066,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -3048,9 +3140,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -3118,9 +3214,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -3188,9 +3288,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -3258,9 +3362,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -3488,7 +3596,11 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
               "profiles": Array [
                 Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rules": Array [
                     Object {
@@ -3653,9 +3765,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -3723,9 +3839,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -3793,9 +3913,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -3863,9 +3987,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -3933,9 +4061,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4003,9 +4135,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4073,9 +4209,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4143,9 +4283,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4213,9 +4357,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4283,9 +4431,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4632,9 +4784,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4702,9 +4858,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4772,9 +4932,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4862,9 +5026,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     },
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -4931,9 +5099,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -5001,9 +5173,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -5071,9 +5247,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -5141,9 +5321,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -5211,9 +5395,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -5281,9 +5469,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -5518,7 +5710,11 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
               "profiles": Array [
                 Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rules": Array [
                     Object {
@@ -5831,7 +6027,11 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
               "profiles": Array [
                 Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rules": Array [
                     Object {
@@ -5950,9 +6150,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6009,9 +6213,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6068,9 +6276,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6147,9 +6359,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     },
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6205,9 +6421,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6264,9 +6484,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6323,9 +6547,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6382,9 +6610,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6441,9 +6673,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6500,9 +6736,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                     "identifier": null,
                     "isOpen": false,
                     "isSelected": false,
-                    "policies": Array [
+                    "profiles": Array [
                       Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                         "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
                         "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                       },
                     ],
@@ -6737,7 +6977,11 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
               "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
               "profiles": Array [
                 Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
                   "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
                   "rules": Array [
                     Object {

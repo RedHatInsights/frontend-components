@@ -52,7 +52,7 @@ class SystemRulesTable extends React.Component {
 
     parentRowForRule = (rule) => {
         const {
-            title, identifier, policies, severity, compliant, rowKey,
+            title, identifier, profiles, severity, compliant, rowKey,
             remediationAvailable, refId, isOpen, isSelected
         } = rule;
         const cells = this.props.columns.map((column) => {
@@ -63,7 +63,7 @@ class SystemRulesTable extends React.Component {
                     cell = <RuleTitle title={ title } identifier={ identifier } />;
                     break;
                 case 'Policy':
-                    cell = policies.map((p) => p.name).slice(0, 1).join(', ');
+                    cell = profiles.map((p) => p.name).slice(0, 1).join(', ');
                     break;
                 case 'Severity':
                     cell = (severity.toLowerCase() === 'high' ? HIGH_SEVERITY :
@@ -184,9 +184,12 @@ class SystemRulesTable extends React.Component {
     }
 
     updatePolicyFilterConfig = () => {
-        const policies = this.props.profileRules.map((p) => (
-            p.profile
-        )).filter((p) => !!p);
+        let policies = this.props.profileRules.filter(({ profile }) => !!profile).map(({ profile }) => (
+            {
+                id: profile.policy ? profile.policy.id : profile.id,
+                name: profile.name
+            }
+        ));
 
         if (policies.length > 1) {
             this.filterConfigBuilder.addConfigItem(POLICIES_FILTER_CONFIG(policies));
