@@ -165,7 +165,7 @@ const AddSourceButton = (props) => {
     const [ isOpen, setIsOpen ] = useState(false);
 
     return (<React.Fragment>
-        <Button variant='primary' onClick={ () => setIsOpen(true) }>{WIZARD_TITLE}</Button>
+        <Button variant='primary' onClick={ () => setIsOpen(true) }>{WIZARD_TITLE()}</Button>
         <AddSourceWizard isOpen={ isOpen } onClose={ () => setIsOpen(false) } { ...props }/>
     </React.Fragment>);
 };
