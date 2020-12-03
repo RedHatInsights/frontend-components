@@ -28,9 +28,9 @@
         "@patternfly/react-core": ">=4.18.5",
         "@patternfly/react-icons": ">=4.3.5",
         "@patternfly/react-table": ">=4.5.7",
-        "prop-types": "^15.6.2",
-        "react": "^16.5.1",
-        "react-dom": "^16.5.1",
+        "prop-types": ">=15.6.2",
+        "react": ">=16.5.1",
+        "react-dom": ">=16.5.1",
         "react-redux": ">=5.0.7",
         "react-router-dom": ">=4.2.2"
     },
