@@ -5,10 +5,11 @@ module.exports = ({
     root,
     exposes,
     shared = [],
-    debug
+    debug,
+    moduleName
 }) => {
     const { dependencies, insights } = require(resolve(root, './package.json')) || {};
-    const appName = insights && insights.appname;
+    const appName = moduleName || (insights && insights.appname);
 
     const sharedDeps = [
         { lodash: { singleton: true, ...dependencies.lodash && { requiredVersion: dependencies.lodash } } },
