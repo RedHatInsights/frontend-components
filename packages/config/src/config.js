@@ -1,6 +1,4 @@
 /* eslint-disable camelcase */
-const history = require('connect-history-api-fallback');
-const convert = require('koa-connect');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = ({

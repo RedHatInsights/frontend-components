@@ -22,7 +22,8 @@ module.exports = ({
     appDeployment,
     htmlPlugin,
     replacePlugin,
-    insights
+    insights,
+    modules
 } = {}) => {
     const HtmlWebpackPlugin = new(require('html-webpack-plugin'))({
         title: 'My App',
@@ -43,7 +44,10 @@ module.exports = ({
 =======
     const SitemapGenerator = new(require('./sitemap-plugin'))(rootFolder);
 
-    const ChunkMapper = new(require('./chunk-mapper'))({ modules: insights.appname });
+    const ChunkMapper = new(require('../chunk-mapper'))({ modules: [
+        insights.appname,
+        ...modules || []
+    ] });
 
 >>>>>>> 0f1f85b0... Add chunk-mapper plugin
     return [

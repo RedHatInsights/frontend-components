@@ -1,4 +1,6 @@
 !/index.js
+!/chunk-mapper.js
+!/federated-modules.js
 !src/
 .babelrc
 babel.config.js
