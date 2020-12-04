@@ -77,6 +77,9 @@ const Ansible = ({ unsupported, className, ...props }) => {
 export default Ansible;
 
 Ansible.propTypes = {
+    /**
+     * Description that will generate MD docs file
+     */
     unsupported: propTypes.oneOfType([
         propTypes.bool,
         propTypes.number
