@@ -5,11 +5,12 @@ import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
 
-const DetailWrapper = ({ fallback, ...props }) => {
+const DetailWrapper = React.forwardRef(({ fallback, ...props }, ref) => {
     const history = useHistory();
     const store = useStore();
     return <ScalprumComponent
         history={history}
+        ref={ref}
         store={store}
         fallback={fallback}
         appName="chrome"
@@ -17,6 +18,7 @@ const DetailWrapper = ({ fallback, ...props }) => {
         scope="chrome"
         ErrorComponent={() => <Suspense fallback={fallback}>
             <AsyncInventory
+                ref={ref}
                 component="DetailWrapper"
                 {...props}
                 fallback={fallback} />
@@ -29,4 +31,4 @@ DetailWrapper.propTypes = {
     fallback: PropTypes.any
 };
 
-export default React.forwardRef((props, ref) => <DetailWrapper {...props} ref={ref} />);
+export default DetailWrapper;
