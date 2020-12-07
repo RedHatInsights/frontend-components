@@ -1,3 +1,20 @@
+# Install
+## It is critical that you run `npm i` in root and them `npm i` directly in this directory (/packages/docs). Otherwise there will be issues with react instances. I will fix this later on.
+
+# Generating files
+
+## Generate components pages
+
+To generate MD files from `/packages/components` run `yarn generate:components:docs` in this directory.
+
+## Adding an example
+
+Add new JS file to `/examples/<component name>/<example-name>.js`. The **component name** must be the same as the component MD file.
+
+Create normal React component and use default export. Component will be added to the MD file after running `yarn generate:components:docs` again.
+
+# Dev server
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
