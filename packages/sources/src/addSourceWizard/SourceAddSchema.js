@@ -6,7 +6,7 @@ import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
 import { schemaBuilder } from './schemaBuilder';
-import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
+import { getActiveVendor, REDHAT_VENDOR, WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 import ValidatorReset from './ValidatorReset';
 import { handleError } from '../api/handleError';
 import validated from '../sourceFormRenderer/resolveProps/validated';
@@ -114,46 +114,45 @@ export const nextStep = ({ values: { application, source_type } }) => {
     return resultedStep;
 };
 
-const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => ({
+export const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => ({
     title: intl.formatMessage({
         id: 'wizard.chooseAppAndType',
-        defaultMessage: 'Application and source type'
+        defaultMessage: 'Source type and application'
     }),
     name: 'types_step',
     nextStep,
     fields: [
-        {
-            component: 'enhanced-select',
-            name: 'application.application_type_id',
-            label: intl.formatMessage({
-                id: 'wizard.selectYourApplication',
-                defaultMessage: 'A. Select application'
-            }),
-            // eslint-disable-next-line react/display-name
-            options: compileAllApplicationComboOptions(applicationTypes, intl),
-            mutator: appMutator(applicationTypes),
-            description: intl.formatMessage({
-                id: 'wizard.selectAppWarning',
-                // eslint-disable-next-line max-len
-                defaultMessage: 'Selecting an application will limit the available source types. You can attach an application to this source using the dropdown below, or by clicking ‘Manage applications’ after source creation.'
-            }),
-            isDisabled: disableAppSelection,
-            placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' })
-        },
         {
             component: 'card-select',
             name: 'source_type',
             isRequired: true,
             label: intl.formatMessage({
                 id: 'wizard.selectYourSourceType',
-                defaultMessage: 'B. Select source type'
+                defaultMessage: 'A. Select your source type'
             }),
             iconMapper: iconMapper(sourceTypes),
             validate: [{
                 type: validatorTypes.REQUIRED
             }],
-            options: compileAllSourcesComboOptions(sourceTypes),
+            options: compileAllSourcesComboOptions(sourceTypes, applicationTypes),
             mutator: sourceTypeMutator(applicationTypes, sourceTypes)
+        },
+        {
+            component: 'enhanced-select',
+            name: 'application.application_type_id',
+            label: intl.formatMessage({
+                id: 'wizard.selectYourApplication',
+                defaultMessage: 'B. Select an application'
+            }),
+            options: compileAllApplicationComboOptions(applicationTypes, intl, sourceTypes),
+            mutator: appMutator(applicationTypes),
+            isDisabled: disableAppSelection,
+            placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' }),
+            ...(getActiveVendor() === REDHAT_VENDOR && {
+                isRequired: true,
+                validate: [{ type: validatorTypes.REQUIRED }]
+            }),
+            menuIsPortal: true
         },
         {
             component: 'description',
@@ -253,9 +252,9 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container, i
         fields: [{
             component: componentTypes.WIZARD,
             name: 'wizard',
-            title: WIZARD_TITLE,
+            title: WIZARD_TITLE(),
             inModal: true,
-            description: WIZARD_DESCRIPTION,
+            description: WIZARD_DESCRIPTION(),
             buttonLabels: {
                 submit: intl.formatMessage({
                     id: 'sources.add',

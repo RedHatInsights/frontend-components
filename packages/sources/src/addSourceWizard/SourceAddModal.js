@@ -9,8 +9,8 @@ import { doLoadSourceTypes, doLoadApplicationTypes } from '../api/index';
 import LoadingStep from './steps/LoadingStep';
 import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 
-import filterApps from '../utilities/filterApps';
-import filterTypes from '../utilities/filterTypes';
+import filterApps, { filterVendorAppTypes } from '../utilities/filterApps';
+import filterTypes, { filterVendorTypes } from '../utilities/filterTypes';
 
 const initialValues = {
     schema: {},
@@ -23,7 +23,13 @@ const reducer = (state, { type, sourceTypes, applicationTypes, container, disabl
         case 'loaded':
             return {
                 ...state,
-                schema: createSchema(sourceTypes.filter(filterTypes), applicationTypes.filter(filterApps), disableAppSelection, container, intl),
+                schema: createSchema(
+                    sourceTypes.filter(filterTypes).filter(filterVendorTypes),
+                    applicationTypes.filter(filterApps).filter(filterVendorAppTypes(sourceTypes)),
+                    disableAppSelection,
+                    container,
+                    intl
+                ),
                 isLoading: false,
                 sourceTypes
             };
@@ -85,8 +91,8 @@ const SourceAddModal = ({
         return <Wizard
             isOpen={ true }
             onClose={ onCancel }
-            title={WIZARD_TITLE}
-            description={WIZARD_DESCRIPTION}
+            title={WIZARD_TITLE()}
+            description={WIZARD_DESCRIPTION()}
             steps={ [{
                 name: 'Loading',
                 component: <LoadingStep onClose={ () => onCancel() }/>,
