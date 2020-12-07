@@ -5,7 +5,7 @@ import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
 
-const AppInfo = React.forwardRef(({ fallback, ...props }, ref) => {
+const AppInfo = ({ fallback, ...props }) => {
     const history = useHistory();
     const store = useStore();
     return <ScalprumComponent
@@ -15,20 +15,18 @@ const AppInfo = React.forwardRef(({ fallback, ...props }, ref) => {
         appName="chrome"
         module="./AppInfo"
         scope="chrome"
-        ref={ref}
         ErrorComponent={() => <Suspense fallback={fallback}>
             <AsyncInventory
-                ref={ref}
                 component="AppInfo"
                 {...props}
                 fallback={fallback} />
         </Suspense>}
         {...props}
     />;
-});
+};
 
 AppInfo.propTypes = {
     fallback: PropTypes.any
 };
 
-export default AppInfo;
+export default React.forwardRef((props, ref) => <AppInfo {...props} ref={ref} />);

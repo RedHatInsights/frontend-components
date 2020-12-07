@@ -6,7 +6,7 @@ import * as reactRouterDom from 'react-router-dom';
 import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
 import { useStore } from 'react-redux';
 
-const AsyncInventory = React.forwardRef(({ fallback, onLoad, component, ...props }, ref) => {
+const AsyncInventory = ({ fallback, onLoad, component, ...props }) => {
     const store = useStore();
     const [ InvCmp, setInvCmp ] = useState();
     useEffect(() => {
@@ -24,8 +24,8 @@ const AsyncInventory = React.forwardRef(({ fallback, onLoad, component, ...props
     }, []);
 
     const Fallback = fallback || Fragment;
-    return InvCmp ? <InvCmp ref={ref} {...props} /> : <Fallback />;
-});
+    return InvCmp ? <InvCmp {...props} /> : <Fallback />;
+};
 
 AsyncInventory.propTypes = {
     fallback: PropTypes.any,
@@ -33,4 +33,4 @@ AsyncInventory.propTypes = {
     component: PropTypes.string
 };
 
-export default AsyncInventory;
+export default React.forwardRef((props, ref) => <AsyncInventory {...props} ref={ref}/>);
