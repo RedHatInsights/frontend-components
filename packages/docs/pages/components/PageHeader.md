@@ -1,10 +1,11 @@
 # PageHeader
+This is a page header that mimics the patternfly layout for a header section
 
 ## Props
 
 |name|type|default|description|
 |----|----|-------|-----------|
-|children*|`any`|||
-|className|`string`|||
+|children*|any|||
+|className|string|||
 
 

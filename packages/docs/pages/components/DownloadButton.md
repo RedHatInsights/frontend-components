@@ -4,8 +4,8 @@
 
 |name|type|default|description|
 |----|----|-------|-----------|
-|extraItems|`Array of: node`|[]||
-|tooltipText|`node`|||
-|onSelect|`func`|() => undefined||
+|extraItems|Array of: node|[]||
+|tooltipText|node|||
+|onSelect|func|() => undefined||
 
 

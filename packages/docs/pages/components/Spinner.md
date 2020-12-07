@@ -4,7 +4,7 @@
 
 |name|type|default|description|
 |----|----|-------|-----------|
-|centered|`bool`|||
-|className|`string`|||
+|centered|bool|||
+|className|string|||
 
 
