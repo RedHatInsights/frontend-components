@@ -3,6 +3,7 @@ const withMDX = require('@next/mdx')({
 });
 const withCSS = require('@zeit/next-css');
 const resolve = require('resolve');
+const path = require('path');
 
 module.exports = withMDX(withCSS({
     pageExtensions: [ 'js', 'jsx', 'md', 'mdx' ],
@@ -29,7 +30,8 @@ module.exports = withMDX(withCSS({
                             res.match(/node_modules[/\\].*\.js/) &&
                             !res.match(/node_modules[/\\]webpack/) &&
                             !res.match(/node_modules[/\\]@patternfly\/react-core/) &&
-                            !res.match(/node_modules[/\\]@patternfly\/react-styles/)
+                            !res.match(/node_modules[/\\]@patternfly\/react-styles/) &&
+                            !res.match(/node_modules[/\\]@redhat-cloud-services\/frontend-components/)
                         ) {
                             return callback(null, `commonjs ${request}`);
                         }
@@ -39,6 +41,12 @@ module.exports = withMDX(withCSS({
                 );
             });
         }
+
+        config.resolve.alias = {
+            ...config.resolve.alias,
+            '@docs/example-component': path.resolve(__dirname, './components/example-component'),
+            '@docs/examples': path.resolve(__dirname, './examples')
+        };
 
         config.module.rules.push({
             test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
