@@ -108,6 +108,10 @@ async function traverseComponents() {
 
 async function run() {
     try {
+        if (!fse.existsSync(componentsDest)) {
+            fse.mkdirSync(componentsDest);
+        }
+
         await traverseComponents();
         process.exit(0);
     } catch (error) {
