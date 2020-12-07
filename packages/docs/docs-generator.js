@@ -6,6 +6,7 @@ const COMPONENTS_JSON = 'component-docs.json';
 
 //const firstComponents = Object.entries(components)[0];
 const componentsDest = path.resolve(__dirname, './pages/components');
+const navDest = path.resolve(__dirname, './components/navigation');
 
 const propTypeGeneratorMapper = {
     string: primitiveGenerator,
@@ -33,11 +34,11 @@ function primitiveGenerator({ name }) {
 }
 
 function enumGenerator({ value }) {
-    return value.map(({ value }) => value).join(' \| ');
+    return value.map(({ value }) => value).join(' &#124; ');
 }
 
 function unionGenerator({ value }) {
-    return `${value.map(type => propTypeGeneratorMapper[type.name](type)).join(' \| ')}`;
+    return `${value.map(type => propTypeGeneratorMapper[type.name](type)).join(' &#124; ')}`;
 }
 
 function arrayOfGenerator({ value }) {
@@ -49,7 +50,7 @@ function shapeGenerator({ value }) {
         ...acc,
         [`${name}${value.required ? '*' : ''}`]: propTypeGeneratorMapper[value.name](value)
     }), {});
-    return JSON.stringify(shape, null, 2);
+    return JSON.stringify(shape);
 }
 
 function getPropType(propType, file) {
@@ -68,12 +69,13 @@ function getPropType(propType, file) {
         }
     }
 
-    return JSON.stringify(propType, null, 2);
+    return JSON.stringify(propType);
 }
 
 async function generateMD(file, API) {
     const name = file.split('/').pop().replace('.js', '');
-    const content = `# ${API.displayName}
+    const content = `# ${API.displayName}${API.description ? `
+${API.description}` : ''}
 
 ${API.props ? `## Props
 
@@ -89,10 +91,11 @@ ${Object.entries(API.props).map(([ name, value ]) => `|${name}${value.required ?
 async function traverseComponents() {
     const components = fse.readJSONSync(path.resolve(__dirname, COMPONENTS_JSON));
     const foo = Object.entries(components);
-    console.log(foo[0]);
     const cmds = foo.map(([ name, API ]) => {
         return generateMD(name, API);
     });
+    const componentsNav = Object.keys(components).map(key => key.split('/').pop().replace('.js', '')).sort((a, b) => a.localeCompare(b));
+    fse.writeJsonSync(`${navDest}/components-navigation.json`, componentsNav);
     return Promise.all(cmds);
 }
 
