@@ -74,8 +74,15 @@ function getPropType(propType, file) {
 
 async function generateMD(file, API) {
     const name = file.split('/').pop().replace('.js', '');
-    const content = `# ${API.displayName}${API.description ? `
-${API.description}` : ''}
+    const examples = glob.sync(path.resolve(__dirname, `./examples/${name}/*.js`));
+    const content = `${examples.length > 0 ? `import ExampleComponent from '@docs/example-component'
+
+` : ''}# ${API.displayName}${API.description ? `
+${API.description}` : ''}${examples.length > 0 ? `
+${examples.map(example => {
+        const fileName = example.split('/').pop().replace('.js', '');
+        return `<ExampleComponent source="${name}/${fileName}" name="${fileName.replace('-', ' ')}" />`;
+    })}` : ''}
 
 ${API.props ? `## Props
 
