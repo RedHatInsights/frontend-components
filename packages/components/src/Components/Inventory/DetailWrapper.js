@@ -41,4 +41,4 @@ DetailWrapper.defaultProps = {
     fallback: <Bullseye><Spinner size="xl" /></Bullseye>
 };
 
-export default DetailWrapper;
+export default React.forwardRef((props, ref) => <DetailWrapper {...props} ref={ref} />);

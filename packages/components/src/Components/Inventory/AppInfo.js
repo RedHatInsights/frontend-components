@@ -41,4 +41,4 @@ AppInfo.defaultProps = {
     fallback: <Bullseye><Spinner size="xl" /></Bullseye>
 };
 
-export default AppInfo;
+export default React.forwardRef((props, ref) => <AppInfo {...props} ref={ref} />);
