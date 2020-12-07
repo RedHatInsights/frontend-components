@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "npm run generate:components:docs && next dev",
+    "build": "npm run generate:components:docs && next build",
+    "start": "npm run generate:components:docs && next start",
     "generate:components": "node ../../node_modules/react-docgen/bin/react-docgen.js ../components/src -x js --out component-docs.json --pretty /dev/null 2>&1",
     "generate:components:docs": "npm run generate:components && node docs-generator.js"
   },
