@@ -4,8 +4,8 @@
 
 |name|type|default|description|
 |----|----|-------|-----------|
-|centered|`bool`|||
-|children|`any`|||
-|className|`string`|||
+|centered|bool|||
+|children|any|||
+|className|string|||
 
 

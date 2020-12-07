@@ -4,6 +4,6 @@
 
 |name|type|default|description|
 |----|----|-------|-----------|
-|fallback|`any`|||
+|fallback|any|||
 
 

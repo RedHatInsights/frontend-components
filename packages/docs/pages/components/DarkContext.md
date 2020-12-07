@@ -4,6 +4,6 @@
 
 |name|type|default|description|
 |----|----|-------|-----------|
-|children|`node`|||
+|children|node|||
 
 

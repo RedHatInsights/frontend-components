@@ -4,8 +4,8 @@
 
 |name|type|default|description|
 |----|----|-------|-----------|
-|count|`number`|||
-|onTagClick|`func`|() => undefined||
-|className|`string`|||
+|count|number|||
+|onTagClick|func|() => undefined||
+|className|string|||
 
 
