@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components",
-    "version": "2.5.0",
+    "version": "2.5.1",
     "description": "Common components for RedHat Cloud Services project.",
     "browser": "components/index.js",
     "module": "components/esm/index.js",
@@ -34,13 +34,13 @@
         "@patternfly/react-table": ">=4.5.7",
         "@patternfly/react-core": ">=4.18.5",
         "@patternfly/react-icons": ">=4.3.5",
-        "classnames": "^2.2.5",
-        "prop-types": "^15.6.2",
-        "react": "^16.5.1",
-        "react-dom": "^16.5.1",
+        "classnames": ">=2.2.5",
+        "prop-types": ">=15.6.2",
+        "react": ">=16.5.1",
+        "react-dom": ">=16.5.1",
         "react-content-loader": ">=3.4.1",
         "react-redux": ">=5.0.7",
-        "react-router-dom": "^4.2.2",
+        "react-router-dom": ">=4.2.2",
         "lodash": ">=4.17.15"
     },
     "dependencies": {

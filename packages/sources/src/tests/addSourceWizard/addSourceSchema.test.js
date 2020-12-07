@@ -1,9 +1,12 @@
 import React from 'react';
-import { nextStep, iconMapper, NameDescription, SummaryDescription, sourceTypeMutator, appMutator } from '../../addSourceWizard/SourceAddSchema';
-import { OPENSHIFT_TYPE } from '../helpers/sourceTypes';
+import { nextStep, iconMapper, NameDescription, SummaryDescription, sourceTypeMutator, appMutator, typesStep } from '../../addSourceWizard/SourceAddSchema';
+import sourceTypes, { OPENSHIFT_TYPE } from '../helpers/sourceTypes';
+import applicationTypes from '../helpers/applicationTypes';
+
 import { TextContent, Text } from '@patternfly/react-core';
 
 import mount from '../__mocks__/mount';
+import { CLOUD_VENDOR, REDHAT_VENDOR } from '../../utilities/stringConstants';
 
 describe('Add source schema', () => {
     describe('nextStep', () => {
@@ -153,6 +156,48 @@ describe('Add source schema', () => {
             expect(mutator({ label: 'cost', value: 'cost' }, formOptions)).toEqual(
                 { label: 'cost', value: 'cost', isDisabled: true }
             );
+        });
+    });
+
+    describe('typesStep', () => {
+        let tmpLocation;
+
+        const INTL = { formatMessage: ({ defaultMessage }) => defaultMessage };
+
+        beforeEach(() => {
+            tmpLocation = Object.assign({}, window.location);
+
+            delete window.location;
+
+            window.location = {};
+        });
+
+        afterEach(() => {
+            window.location = tmpLocation;
+        });
+
+        it('cloud type selection', () => {
+            window.location.search = `activeVendor=${CLOUD_VENDOR}`;
+
+            const result = typesStep(sourceTypes, applicationTypes, false, INTL);
+
+            expect(result.fields).toHaveLength(3);
+            expect(result.fields[0].name).toEqual('source_type');
+            expect(result.fields[1].name).toEqual('application.application_type_id');
+            expect(result.fields[1].isRequired).toEqual(undefined);
+            expect(result.fields[1].validate).toEqual(undefined);
+        });
+
+        it('red hat type selection', () => {
+            window.location.search = `activeVendor=${REDHAT_VENDOR}`;
+
+            const result = typesStep(sourceTypes, applicationTypes, false, INTL);
+
+            expect(result.fields).toHaveLength(3);
+            expect(result.fields[0].name).toEqual('source_type');
+            expect(result.fields[1].name).toEqual('application.application_type_id');
+            expect(result.fields[1].isRequired).toEqual(true);
+            expect(result.fields[1].validate).toEqual([{ type: 'required' }]);
         });
     });
 });

@@ -7,11 +7,7 @@ import Select from '@data-driven-forms/pf4-component-mapper/dist/cjs/select';
 const EnhancedSelect = ({ mutator, options, ...props }) => {
     const formOptions = useFormApi();
 
-    return (
-        <div className="ins-c-sources__wizard--bigdescription">
-            <Select {...props} options={options.map((option) => mutator(option, formOptions))}/>
-        </div>
-    );
+    return <Select {...props} options={options.map((option) => mutator(option, formOptions))}/>;
 };
 
 EnhancedSelect.propTypes = {
