@@ -35,7 +35,6 @@ const SelectPlaybook = (props) => {
         async function fetchData() {
             const { data: existingRemediations } = await api.getRemediations();
             setExistingRemediations(existingRemediations);
-            setSelectedPlaybook(existingRemediations[0] || '');
         }
 
         fetchData();
@@ -107,8 +106,10 @@ const SelectPlaybook = (props) => {
                                     value={selectedPlaybook}
                                     aria-label="Select an existing playbook" >
                                     {existingRemediations.length
-                                        ? existingRemediations.map(({ id, name }) =>
-                                            <FormSelectOption key={id} value={id} label={name} />)
+                                        ? [ <FormSelectOption key='select-playbook-placeholder' value='' label='Select playbook' isDisabled />,
+                                            ...existingRemediations.map(({ id, name }) =>
+                                                <FormSelectOption key={id} value={id} label={name} />)
+                                        ]
                                         : <FormSelectOption key="empty" value="empty" label="No existing playbooks" />
                                     }
                                 </FormSelect>
