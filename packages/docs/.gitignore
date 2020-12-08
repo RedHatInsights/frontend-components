@@ -34,5 +34,5 @@ yarn-error.log*
 .vercel
 
 /component-docs.json
-
+/components-navigation.json
 /pages/components/*.md

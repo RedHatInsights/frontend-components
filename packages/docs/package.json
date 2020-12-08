@@ -6,7 +6,7 @@
     "dev": "npm run generate:components:docs && next dev",
     "build": "npm run generate:components:docs && next build",
     "start": "npm run generate:components:docs && next start",
-    "generate:components": "node ../../node_modules/react-docgen/bin/react-docgen.js ../components/src -x js --out component-docs.json --pretty /dev/null 2>&1",
+    "generate:components": "react-docgen ../components/src -x js --out component-docs.json --pretty /dev/null 2>&1",
     "generate:components:docs": "npm run generate:components && node docs-generator.js"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "@zeit/next-css": "^1.0.1",
     "next-transpile-modules": "^6.0.0",
     "raw-loader": "^4.0.2",
+    "react-docgen": "^5.3.1",
     "react-jss": "^10.5.0",
     "url-loader": "^4.1.1"
   }
