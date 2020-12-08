@@ -17,9 +17,8 @@ describe('SystemPolicyCard component', () => {
             name: 'PCI-DSS Policy',
             policyType: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7',
             compliant: false,
-            benchmark: {
-                version: '0.1.45'
-            },
+            supported: true,
+            ssgVersion: '0.1.45',
             policy: {
                 name: 'PCI-DSS Policy'
             }
@@ -43,9 +42,8 @@ describe('SystemPolicyCard component', () => {
             refId: 'xccdf_org.ssgproject.content_profile_pci-dss',
             name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7',
             compliant: false,
-            benchmark: {
-                version: '0.1.45'
-            }
+            supported: true,
+            ssgVersion: '0.1.45'
         };
         const wrapper = render(
             <IntlProvider locale={ navigator.language }>
