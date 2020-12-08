@@ -81,39 +81,25 @@ exports[`SystemPolicyCard component should render external policy 1`] = `
         </span>
       </small>
     </div>
-    <div
-      class="margin-bottom-md"
-    >
-      <p
-        class="wrap-break-word"
-        data-pf-content="true"
-      >
-        Profile: 
-        <span
-          width="0"
-        >
-          <span />
-          <span>
-            xccdf_org.ssgproject.content_profile_pci-dss
-          </span>
-          <span
-            style="position:fixed;visibility:hidden;top:0;left:0"
-          >
-            …
-          </span>
-        </span>
-        <br />
-        SSG version: 0.1.45
-      </p>
-    </div>
     <small
       class="margin-bottom-none"
       data-pf-content="true"
     >
-      Last scanned: 
-      <span>
-        6 months ago
-      </span>
+      <p
+        class=""
+        data-pf-content="true"
+      >
+        SSG version: 0.1.45
+      </p>
+      <p
+        class=""
+        data-pf-content="true"
+      >
+        Last scanned: 
+        <span>
+          6 months ago
+        </span>
+      </p>
     </small>
   </div>
 </article>
@@ -204,39 +190,25 @@ exports[`SystemPolicyCard component should render policy 1`] = `
         </span>
       </small>
     </div>
-    <div
-      class="margin-bottom-md"
-    >
-      <p
-        class="wrap-break-word"
-        data-pf-content="true"
-      >
-        Profile: 
-        <span
-          width="0"
-        >
-          <span />
-          <span>
-            xccdf_org.ssgproject.content_profile_pci-dss
-          </span>
-          <span
-            style="position:fixed;visibility:hidden;top:0;left:0"
-          >
-            …
-          </span>
-        </span>
-        <br />
-        SSG version: 0.1.45
-      </p>
-    </div>
     <small
       class="margin-bottom-none"
       data-pf-content="true"
     >
-      Last scanned: 
-      <span>
-        6 months ago
-      </span>
+      <p
+        class=""
+        data-pf-content="true"
+      >
+        SSG version: 0.1.45
+      </p>
+      <p
+        class=""
+        data-pf-content="true"
+      >
+        Last scanned: 
+        <span>
+          6 months ago
+        </span>
+      </p>
     </small>
   </div>
 </article>
