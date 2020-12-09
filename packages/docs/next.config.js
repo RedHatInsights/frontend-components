@@ -33,7 +33,8 @@ module.exports = withMDX(withCSS({
                             !res.match(/node_modules[/\\]@patternfly\/react-styles/) &&
                             !res.match(/node_modules[/\\]@patternfly\/react-icons/) &&
                             !res.match(/node_modules[/\\]@patternfly\/react-tokens/) &&
-                            !res.match(/node_modules[/\\]@redhat-cloud-services\/frontend-components/)
+                            !res.match(/node_modules[/\\]@redhat-cloud-services\/frontend-components/) &&
+                            !res.match(/node_modules[/\\]@redhat-cloud-services\/frontend-components\/*/)
                         ) {
                             return callback(null, `commonjs ${request}`);
                         }
