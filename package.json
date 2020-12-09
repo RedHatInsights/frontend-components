@@ -172,7 +172,7 @@
         "generate-translations": "npm run build && node packages/utils/src/mergeMessages.js",
         "test": "jest",
         "coverage": "codecov",
-        "prepare": "npm run bootstrap && npm run build",
+        "prepare": "npm run bootstrap",
         "playground": "lerna run --parallel start:dev",
         "release:bot": "node ./config/release.js",
         "lint": "eslint config packages/**/src/",
