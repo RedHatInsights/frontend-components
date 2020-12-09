@@ -13,7 +13,7 @@ import { DateFormat, InsightsLabel, PrimaryToolbar } from '@redhat-cloud-service
 import { List } from 'react-content-loader';
 import MessageState from './MessageState';
 import PropTypes from 'prop-types';
-import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
+import { RemediationButton } from '@redhat-cloud-services/frontend-components-remediations';
 import ReportDetails from './ReportDetails';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { connect } from 'react-redux';
