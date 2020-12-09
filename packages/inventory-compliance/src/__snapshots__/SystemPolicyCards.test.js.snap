@@ -9,9 +9,6 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
     policies={
       Array [
         Object {
-          "benchmark": Object {
-            "version": "0.1.45",
-          },
           "compliant": false,
           "lastScanned": "2019-03-06T06:20:13Z",
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -19,11 +16,10 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
           "rulesFailed": 10,
           "rulesPassed": 30,
           "score": 75,
+          "ssgVersion": "0.1.45",
+          "supported": true,
         },
         Object {
-          "benchmark": Object {
-            "version": "0.1.45",
-          },
           "compliant": false,
           "lastScanned": null,
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7 2",
@@ -31,6 +27,8 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
           "rulesFailed": 0,
           "rulesPassed": 0,
           "score": 0,
+          "ssgVersion": "0.1.45",
+          "supported": true,
         },
       ]
     }
@@ -54,9 +52,6 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
             <SystemPolicyCard
               policy={
                 Object {
-                  "benchmark": Object {
-                    "version": "0.1.45",
-                  },
                   "compliant": false,
                   "lastScanned": "2019-03-06T06:20:13Z",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -64,6 +59,8 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                   "rulesFailed": 10,
                   "rulesPassed": 30,
                   "score": 75,
+                  "ssgVersion": "0.1.45",
+                  "supported": true,
                 }
               }
             >
@@ -368,54 +365,6 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                           </small>
                         </Text>
                       </div>
-                      <div
-                        className="margin-bottom-md"
-                      >
-                        <Text
-                          className="wrap-break-word"
-                          onMouseEnter={[Function]}
-                          onMouseLeave={[Function]}
-                        >
-                          <p
-                            className="wrap-break-word"
-                            data-pf-content={true}
-                            onMouseEnter={[Function]}
-                            onMouseLeave={[Function]}
-                          >
-                            Profile: 
-                            <Truncate
-                              ellipsis="…"
-                              lines={1}
-                              trimWhitespace={false}
-                              width={0}
-                            >
-                              <span
-                                width={0}
-                              >
-                                <span />
-                                <span>
-                                  xccdf_org.ssgproject.content_profile_pci-dss
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "left": 0,
-                                      "position": "fixed",
-                                      "top": 0,
-                                      "visibility": "hidden",
-                                    }
-                                  }
-                                >
-                                  …
-                                </span>
-                              </span>
-                            </Truncate>
-                            <br />
-                            SSG version: 
-                            0.1.45
-                          </p>
-                        </Text>
-                      </div>
                       <Text
                         className="margin-bottom-none"
                         component="small"
@@ -424,15 +373,31 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                           className="margin-bottom-none"
                           data-pf-content={true}
                         >
-                          Last scanned: 
-                          <FormattedRelative
-                            updateInterval={10000}
-                            value={1551853213000}
-                          >
-                            <span>
-                              2 years ago
-                            </span>
-                          </FormattedRelative>
+                          <Text>
+                            <p
+                              className=""
+                              data-pf-content={true}
+                            >
+                              SSG version: 
+                              0.1.45
+                            </p>
+                          </Text>
+                          <Text>
+                            <p
+                              className=""
+                              data-pf-content={true}
+                            >
+                              Last scanned: 
+                              <FormattedRelative
+                                updateInterval={10000}
+                                value={1551853213000}
+                              >
+                                <span>
+                                  2 years ago
+                                </span>
+                              </FormattedRelative>
+                            </p>
+                          </Text>
                         </small>
                       </Text>
                     </div>
@@ -535,9 +500,6 @@ exports[`SystemPolicyCards component should render real table 1`] = `
     policies={
       Array [
         Object {
-          "benchmark": Object {
-            "version": "0.1.45",
-          },
           "compliant": false,
           "lastScanned": "2019-03-06T06:20:13Z",
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -545,11 +507,10 @@ exports[`SystemPolicyCards component should render real table 1`] = `
           "rulesFailed": 10,
           "rulesPassed": 30,
           "score": 75,
+          "ssgVersion": "0.1.45",
+          "supported": true,
         },
         Object {
-          "benchmark": Object {
-            "version": "0.1.45",
-          },
           "compliant": false,
           "lastScanned": null,
           "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7 2",
@@ -557,6 +518,8 @@ exports[`SystemPolicyCards component should render real table 1`] = `
           "rulesFailed": 0,
           "rulesPassed": 0,
           "score": 0,
+          "ssgVersion": "0.1.45",
+          "supported": true,
         },
       ]
     }
@@ -580,9 +543,6 @@ exports[`SystemPolicyCards component should render real table 1`] = `
             <SystemPolicyCard
               policy={
                 Object {
-                  "benchmark": Object {
-                    "version": "0.1.45",
-                  },
                   "compliant": false,
                   "lastScanned": "2019-03-06T06:20:13Z",
                   "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
@@ -590,6 +550,8 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                   "rulesFailed": 10,
                   "rulesPassed": 30,
                   "score": 75,
+                  "ssgVersion": "0.1.45",
+                  "supported": true,
                 }
               }
             >
@@ -894,54 +856,6 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                           </small>
                         </Text>
                       </div>
-                      <div
-                        className="margin-bottom-md"
-                      >
-                        <Text
-                          className="wrap-break-word"
-                          onMouseEnter={[Function]}
-                          onMouseLeave={[Function]}
-                        >
-                          <p
-                            className="wrap-break-word"
-                            data-pf-content={true}
-                            onMouseEnter={[Function]}
-                            onMouseLeave={[Function]}
-                          >
-                            Profile: 
-                            <Truncate
-                              ellipsis="…"
-                              lines={1}
-                              trimWhitespace={false}
-                              width={0}
-                            >
-                              <span
-                                width={0}
-                              >
-                                <span />
-                                <span>
-                                  xccdf_org.ssgproject.content_profile_pci-dss
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "left": 0,
-                                      "position": "fixed",
-                                      "top": 0,
-                                      "visibility": "hidden",
-                                    }
-                                  }
-                                >
-                                  …
-                                </span>
-                              </span>
-                            </Truncate>
-                            <br />
-                            SSG version: 
-                            0.1.45
-                          </p>
-                        </Text>
-                      </div>
                       <Text
                         className="margin-bottom-none"
                         component="small"
@@ -950,15 +864,31 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                           className="margin-bottom-none"
                           data-pf-content={true}
                         >
-                          Last scanned: 
-                          <FormattedRelative
-                            updateInterval={10000}
-                            value={1551853213000}
-                          >
-                            <span>
-                              2 years ago
-                            </span>
-                          </FormattedRelative>
+                          <Text>
+                            <p
+                              className=""
+                              data-pf-content={true}
+                            >
+                              SSG version: 
+                              0.1.45
+                            </p>
+                          </Text>
+                          <Text>
+                            <p
+                              className=""
+                              data-pf-content={true}
+                            >
+                              Last scanned: 
+                              <FormattedRelative
+                                updateInterval={10000}
+                                value={1551853213000}
+                              >
+                                <span>
+                                  2 years ago
+                                </span>
+                              </FormattedRelative>
+                            </p>
+                          </Text>
                         </small>
                       </Text>
                     </div>
