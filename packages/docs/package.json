@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "npm run generate:components:docs && next dev",
     "build": "npm run generate:components:docs && next build",
-    "start": "npm run generate:components:docs && next start",
+    "start": "npm run build && next start -H 0.0.0.0 -p ${PORT:-8080}",
     "generate:components": "react-docgen ../components/src -x js --out component-docs.json --pretty /dev/null 2>&1",
-    "generate:components:docs": "npm run generate:components && node docs-generator.js"
+    "generate:components:docs": "npm run generate:components && node docs-generator.js",
+    "serve": "npm run build && node server.js"
   },
   "dependencies": {
     "@patternfly/react-core": "^4.79.2",
