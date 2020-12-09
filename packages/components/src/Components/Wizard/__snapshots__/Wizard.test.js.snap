@@ -58,6 +58,8 @@ exports[`Wizard component should render correctly default 1`] = `
   ouiaSafe={true}
   showClose={true}
   title="Some title"
+  titleIconVariant={null}
+  titleLabel=""
   variant="large"
 >
   <div
@@ -127,6 +129,8 @@ exports[`Wizard component should render correctly large 1`] = `
   ouiaSafe={true}
   showClose={true}
   title="Some title"
+  titleIconVariant={null}
+  titleLabel=""
   variant="large"
 >
   <div
@@ -179,6 +183,8 @@ exports[`Wizard component should render correctly one page 1`] = `
   ouiaSafe={true}
   showClose={true}
   title="Some title"
+  titleIconVariant={null}
+  titleLabel=""
   variant="large"
 >
   <div

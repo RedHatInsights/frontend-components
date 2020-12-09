@@ -58,7 +58,7 @@ exports[`Notification portal should render notifications given as direct props 1
             <div
               aria-label="Success Alert"
               class="pf-c-alert pf-m-success notification-item"
-              data-ouia-component-id="0"
+              data-ouia-component-id="OUIA-Generated-Alert-success-1"
               data-ouia-component-type="PF4/Alert"
               data-ouia-safe="true"
               id="0"
@@ -77,7 +77,6 @@ exports[`Notification portal should render notifications given as direct props 1
                 >
                   <path
                     d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                    transform=""
                   />
                 </svg>
               </div>
@@ -98,7 +97,7 @@ exports[`Notification portal should render notifications given as direct props 1
                   aria-disabled="false"
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
-                  data-ouia-component-id="1"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-1"
                   data-ouia-component-type="PF4/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -114,7 +113,6 @@ exports[`Notification portal should render notifications given as direct props 1
                   >
                     <path
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                      transform=""
                     />
                   </svg>
                 </button>
@@ -132,7 +130,7 @@ exports[`Notification portal should render notifications given as direct props 1
             <div
               aria-label="Success Alert"
               class="pf-c-alert pf-m-success notification-item"
-              data-ouia-component-id="2"
+              data-ouia-component-id="OUIA-Generated-Alert-success-2"
               data-ouia-component-type="PF4/Alert"
               data-ouia-safe="true"
               id="0"
@@ -151,7 +149,6 @@ exports[`Notification portal should render notifications given as direct props 1
                 >
                   <path
                     d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                    transform=""
                   />
                 </svg>
               </div>
@@ -172,7 +169,7 @@ exports[`Notification portal should render notifications given as direct props 1
                   aria-disabled="false"
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
-                  data-ouia-component-id="3"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-2"
                   data-ouia-component-type="PF4/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -188,7 +185,6 @@ exports[`Notification portal should render notifications given as direct props 1
                   >
                     <path
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                      transform=""
                     />
                   </svg>
                 </button>
@@ -240,7 +236,7 @@ exports[`Notification portal should render notifications given as direct props 1
             <div
               aria-label="Success Alert"
               className="pf-c-alert pf-m-success notification-item"
-              data-ouia-component-id={2}
+              data-ouia-component-id="OUIA-Generated-Alert-success-2"
               data-ouia-component-type="PF4/Alert"
               data-ouia-safe={true}
               id="0"
@@ -274,7 +270,6 @@ exports[`Notification portal should render notifications given as direct props 1
                     >
                       <path
                         d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                        transform=""
                       />
                     </svg>
                   </CheckCircleIcon>
@@ -307,11 +302,12 @@ exports[`Notification portal should render notifications given as direct props 1
                       aria-disabled={false}
                       aria-label="close-notification"
                       className="pf-c-button pf-m-plain"
-                      data-ouia-component-id={3}
+                      data-ouia-component-id="OUIA-Generated-Button-plain-2"
                       data-ouia-component-type="PF4/Button"
                       data-ouia-safe={true}
                       disabled={false}
                       onClick={[Function]}
+                      role={null}
                       type="button"
                     >
                       <TimesIcon
@@ -335,7 +331,6 @@ exports[`Notification portal should render notifications given as direct props 1
                         >
                           <path
                             d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                            transform=""
                           />
                         </svg>
                       </TimesIcon>
@@ -415,7 +410,7 @@ exports[`Notification portal should render notifications given as direct props o
             <div
               aria-label="Success Alert"
               class="pf-c-alert pf-m-success notification-item"
-              data-ouia-component-id="0"
+              data-ouia-component-id="OUIA-Generated-Alert-success-1"
               data-ouia-component-type="PF4/Alert"
               data-ouia-safe="true"
               id="0"
@@ -434,7 +429,6 @@ exports[`Notification portal should render notifications given as direct props o
                 >
                   <path
                     d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                    transform=""
                   />
                 </svg>
               </div>
@@ -455,7 +449,7 @@ exports[`Notification portal should render notifications given as direct props o
                   aria-disabled="false"
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
-                  data-ouia-component-id="1"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-1"
                   data-ouia-component-type="PF4/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -471,7 +465,6 @@ exports[`Notification portal should render notifications given as direct props o
                   >
                     <path
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                      transform=""
                     />
                   </svg>
                 </button>
@@ -489,7 +482,7 @@ exports[`Notification portal should render notifications given as direct props o
             <div
               aria-label="Success Alert"
               class="pf-c-alert pf-m-success notification-item"
-              data-ouia-component-id="2"
+              data-ouia-component-id="OUIA-Generated-Alert-success-2"
               data-ouia-component-type="PF4/Alert"
               data-ouia-safe="true"
               id="0"
@@ -508,7 +501,6 @@ exports[`Notification portal should render notifications given as direct props o
                 >
                   <path
                     d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                    transform=""
                   />
                 </svg>
               </div>
@@ -529,7 +521,7 @@ exports[`Notification portal should render notifications given as direct props o
                   aria-disabled="false"
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
-                  data-ouia-component-id="3"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-2"
                   data-ouia-component-type="PF4/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -545,7 +537,6 @@ exports[`Notification portal should render notifications given as direct props o
                   >
                     <path
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                      transform=""
                     />
                   </svg>
                 </button>
@@ -563,7 +554,7 @@ exports[`Notification portal should render notifications given as direct props o
             <div
               aria-label="Success Alert"
               class="pf-c-alert pf-m-success notification-item"
-              data-ouia-component-id="4"
+              data-ouia-component-id="OUIA-Generated-Alert-success-3"
               data-ouia-component-type="PF4/Alert"
               data-ouia-safe="true"
               id="Direct notification"
@@ -582,7 +573,6 @@ exports[`Notification portal should render notifications given as direct props o
                 >
                   <path
                     d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                    transform=""
                   />
                 </svg>
               </div>
@@ -603,7 +593,7 @@ exports[`Notification portal should render notifications given as direct props o
                   aria-disabled="false"
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
-                  data-ouia-component-id="5"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-3"
                   data-ouia-component-type="PF4/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -619,7 +609,6 @@ exports[`Notification portal should render notifications given as direct props o
                   >
                     <path
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                      transform=""
                     />
                   </svg>
                 </button>
@@ -671,7 +660,7 @@ exports[`Notification portal should render notifications given as direct props o
             <div
               aria-label="Success Alert"
               className="pf-c-alert pf-m-success notification-item"
-              data-ouia-component-id={4}
+              data-ouia-component-id="OUIA-Generated-Alert-success-3"
               data-ouia-component-type="PF4/Alert"
               data-ouia-safe={true}
               id="Direct notification"
@@ -705,7 +694,6 @@ exports[`Notification portal should render notifications given as direct props o
                     >
                       <path
                         d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                        transform=""
                       />
                     </svg>
                   </CheckCircleIcon>
@@ -738,11 +726,12 @@ exports[`Notification portal should render notifications given as direct props o
                       aria-disabled={false}
                       aria-label="close-notification"
                       className="pf-c-button pf-m-plain"
-                      data-ouia-component-id={5}
+                      data-ouia-component-id="OUIA-Generated-Button-plain-3"
                       data-ouia-component-type="PF4/Button"
                       data-ouia-safe={true}
                       disabled={false}
                       onClick={[Function]}
+                      role={null}
                       type="button"
                     >
                       <TimesIcon
@@ -766,7 +755,6 @@ exports[`Notification portal should render notifications given as direct props o
                         >
                           <path
                             d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                            transform=""
                           />
                         </svg>
                       </TimesIcon>
@@ -835,7 +823,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
             <div
               aria-label="Success Alert"
               class="pf-c-alert pf-m-success notification-item"
-              data-ouia-component-id="0"
+              data-ouia-component-id="OUIA-Generated-Alert-success-1"
               data-ouia-component-type="PF4/Alert"
               data-ouia-safe="true"
               id="0"
@@ -854,7 +842,6 @@ exports[`Notification portal should render notifications given from store 1`] = 
                 >
                   <path
                     d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                    transform=""
                   />
                 </svg>
               </div>
@@ -875,7 +862,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
                   aria-disabled="false"
                   aria-label="close-notification"
                   class="pf-c-button pf-m-plain"
-                  data-ouia-component-id="1"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-1"
                   data-ouia-component-type="PF4/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -891,7 +878,6 @@ exports[`Notification portal should render notifications given from store 1`] = 
                   >
                     <path
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                      transform=""
                     />
                   </svg>
                 </button>
@@ -943,7 +929,7 @@ exports[`Notification portal should render notifications given from store 1`] = 
             <div
               aria-label="Success Alert"
               className="pf-c-alert pf-m-success notification-item"
-              data-ouia-component-id={0}
+              data-ouia-component-id="OUIA-Generated-Alert-success-1"
               data-ouia-component-type="PF4/Alert"
               data-ouia-safe={true}
               id="0"
@@ -977,7 +963,6 @@ exports[`Notification portal should render notifications given from store 1`] = 
                     >
                       <path
                         d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-                        transform=""
                       />
                     </svg>
                   </CheckCircleIcon>
@@ -1010,11 +995,12 @@ exports[`Notification portal should render notifications given from store 1`] = 
                       aria-disabled={false}
                       aria-label="close-notification"
                       className="pf-c-button pf-m-plain"
-                      data-ouia-component-id={1}
+                      data-ouia-component-id="OUIA-Generated-Button-plain-1"
                       data-ouia-component-type="PF4/Button"
                       data-ouia-safe={true}
                       disabled={false}
                       onClick={[Function]}
+                      role={null}
                       type="button"
                     >
                       <TimesIcon
@@ -1038,7 +1024,6 @@ exports[`Notification portal should render notifications given from store 1`] = 
                         >
                           <path
                             d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                            transform=""
                           />
                         </svg>
                       </TimesIcon>

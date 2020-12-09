@@ -91,7 +91,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
     >
       <div
         className="pf-c-dropdown pf-m-expanded"
-        data-ouia-component-id={1}
+        data-ouia-component-id="OUIA-Generated-Dropdown-1"
         data-ouia-component-type="PF4/Dropdown"
         data-ouia-safe={true}
       >
@@ -108,7 +108,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             Object {
               "current": <div
                 class="pf-c-dropdown pf-m-expanded"
-                data-ouia-component-id="1"
+                data-ouia-component-id="OUIA-Generated-Dropdown-1"
                 data-ouia-component-type="PF4/Dropdown"
                 data-ouia-safe="true"
               >
@@ -116,6 +116,9 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   aria-expanded="true"
                   aria-haspopup="true"
                   class="pf-c-dropdown__toggle pf-m-plain"
+                  data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                  data-ouia-component-type="PF4/DropdownToggle"
+                  data-ouia-safe="true"
                   id="pf-dropdown-toggle-id-1"
                   type="button"
                 >
@@ -126,12 +129,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       height="1em"
                       role="img"
                       style="vertical-align: -0.125em;"
-                      viewBox="0 64 1024 1024"
+                      viewBox="0 0 1024 1024"
                       width="1em"
                     >
                       <path
-                        d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
-                        transform="rotate(180 0 512) scale(-1 1)"
+                        d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
                       />
                     </svg>
                   </span>
@@ -145,7 +147,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     role="menuitem"
                   >
                     <button
+                      aria-disabled="false"
                       class="pf-c-dropdown__menu-item"
+                      data-ouia-component-id="OUIA-Generated-DropdownItem-1"
+                      data-ouia-component-type="PF4/DropdownItem"
+                      data-ouia-safe="true"
                       tabindex="-1"
                       type="button"
                     >
@@ -156,7 +162,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     role="menuitem"
                   >
                     <button
+                      aria-disabled="false"
                       class="pf-c-dropdown__menu-item"
+                      data-ouia-component-id="OUIA-Generated-DropdownItem-2"
+                      data-ouia-component-type="PF4/DropdownItem"
+                      data-ouia-safe="true"
                       tabindex="-1"
                       type="button"
                     >
@@ -167,7 +177,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     role="menuitem"
                   >
                     <button
+                      aria-disabled="false"
                       class="pf-c-dropdown__menu-item"
+                      data-ouia-component-id="OUIA-Generated-DropdownItem-3"
+                      data-ouia-component-type="PF4/DropdownItem"
+                      data-ouia-safe="true"
                       tabindex="-1"
                       type="button"
                     />
@@ -182,6 +196,9 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             aria-haspopup={true}
             bubbleEvent={false}
             className=""
+            data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+            data-ouia-component-type="PF4/DropdownToggle"
+            data-ouia-safe={true}
             getMenuRef={[Function]}
             id="pf-dropdown-toggle-id-1"
             isActive={false}
@@ -196,7 +213,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               Object {
                 "current": <div
                   class="pf-c-dropdown pf-m-expanded"
-                  data-ouia-component-id="1"
+                  data-ouia-component-id="OUIA-Generated-Dropdown-1"
                   data-ouia-component-type="PF4/Dropdown"
                   data-ouia-safe="true"
                 >
@@ -204,6 +221,9 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     aria-expanded="true"
                     aria-haspopup="true"
                     class="pf-c-dropdown__toggle pf-m-plain"
+                    data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                    data-ouia-component-type="PF4/DropdownToggle"
+                    data-ouia-safe="true"
                     id="pf-dropdown-toggle-id-1"
                     type="button"
                   >
@@ -214,12 +234,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                         height="1em"
                         role="img"
                         style="vertical-align: -0.125em;"
-                        viewBox="0 64 1024 1024"
+                        viewBox="0 0 1024 1024"
                         width="1em"
                       >
                         <path
-                          d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
-                          transform="rotate(180 0 512) scale(-1 1)"
+                          d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
                         />
                       </svg>
                     </span>
@@ -233,7 +252,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       role="menuitem"
                     >
                       <button
+                        aria-disabled="false"
                         class="pf-c-dropdown__menu-item"
+                        data-ouia-component-id="OUIA-Generated-DropdownItem-1"
+                        data-ouia-component-type="PF4/DropdownItem"
+                        data-ouia-safe="true"
                         tabindex="-1"
                         type="button"
                       >
@@ -244,7 +267,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       role="menuitem"
                     >
                       <button
+                        aria-disabled="false"
                         class="pf-c-dropdown__menu-item"
+                        data-ouia-component-id="OUIA-Generated-DropdownItem-2"
+                        data-ouia-component-type="PF4/DropdownItem"
+                        data-ouia-safe="true"
                         tabindex="-1"
                         type="button"
                       >
@@ -255,7 +282,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       role="menuitem"
                     >
                       <button
+                        aria-disabled="false"
                         class="pf-c-dropdown__menu-item"
+                        data-ouia-component-id="OUIA-Generated-DropdownItem-3"
+                        data-ouia-component-type="PF4/DropdownItem"
+                        data-ouia-safe="true"
                         tabindex="-1"
                         type="button"
                       />
@@ -269,6 +300,9 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               aria-expanded={true}
               aria-haspopup={true}
               className="pf-c-dropdown__toggle pf-m-plain"
+              data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+              data-ouia-component-type="PF4/DropdownToggle"
+              data-ouia-safe={true}
               disabled={false}
               id="pf-dropdown-toggle-id-1"
               onClick={[Function]}
@@ -294,12 +328,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                         "verticalAlign": "-0.125em",
                       }
                     }
-                    viewBox="0 64 1024 1024"
+                    viewBox="0 0 1024 1024"
                     width="1em"
                   >
                     <path
-                      d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
-                      transform="rotate(180 0 512) scale(-1 1)"
+                      d="M975.8,636.9 L870.9,741.8 L457.9,328.6 C452.1,322.8 445.4,319.9 437.9,319.9 C430.4,319.9 423.7,322.8 417.9,328.6 L328.8,417.7 C323,423.5 320.1,430.2 320.1,437.7 C320.1,445.2 323,451.9 328.8,457.7 L742,870.7 L636.9,975.8 C610.5,1002.2 619.4,1024 656.8,1024 L956,1024 C1014.5,1024 1024,1013.7 1024,955.9 L1024,656.7 C1023.9,619.4 1002.2,610.5 975.8,636.9 Z M128,128 L896,128 L896,361.7 C896.007942,370.182681 899.389907,378.313788 905.4,384.3 L996.7,475.6 C1006.8,485.7 1024,478.5 1024,464.3 L1024,22.7 C1024,16.1 1021.9,10.7 1017.6,6.4 C1013.3,2.1 1007.9,0 1001.3,0 L22.7,0 C16.1,0 10.7,2.1 6.4,6.4 C2.1,10.7 0,16.1 0,22.7 L0,1001.3 C0,1007.9 2.1,1013.3 6.4,1017.6 C10.7,1021.9 16.1,1024 22.7,1024 L463.4,1024 C469.862884,1023.98894 475.684489,1020.0908 478.156232,1014.11925 C480.627976,1008.14769 479.264428,1001.27548 474.7,996.7 L383.4,905.4 C377.413788,899.389907 369.282681,896.007942 360.8,896 L128,896 L128,128 Z"
                     />
                   </svg>
                 </ExportIcon>
@@ -340,10 +373,19 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "sendRef": [Function],
                   }
                 }
+                data-ouia-component-id="OUIA-Generated-DropdownItem-1"
+                data-ouia-component-type="PF4/DropdownItem"
+                data-ouia-safe={true}
                 description={null}
                 enterTriggersArrowDown={false}
                 icon={null}
                 index={0}
+                inoperableEvents={
+                  Array [
+                    "onClick",
+                    "onKeyPress",
+                  ]
+                }
                 isDisabled={false}
                 isHovered={false}
                 isPlainText={false}
@@ -360,8 +402,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   role="menuitem"
                 >
                   <button
+                    aria-disabled={false}
                     className="pf-c-dropdown__menu-item"
-                    disabled={false}
+                    data-ouia-component-id="OUIA-Generated-DropdownItem-1"
+                    data-ouia-component-type="PF4/DropdownItem"
+                    data-ouia-safe={true}
                     tabIndex={-1}
                     type="button"
                   >
@@ -385,10 +430,19 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "sendRef": [Function],
                   }
                 }
+                data-ouia-component-id="OUIA-Generated-DropdownItem-2"
+                data-ouia-component-type="PF4/DropdownItem"
+                data-ouia-safe={true}
                 description={null}
                 enterTriggersArrowDown={false}
                 icon={null}
                 index={1}
+                inoperableEvents={
+                  Array [
+                    "onClick",
+                    "onKeyPress",
+                  ]
+                }
                 isDisabled={false}
                 isHovered={false}
                 isPlainText={false}
@@ -405,8 +459,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   role="menuitem"
                 >
                   <button
+                    aria-disabled={false}
                     className="pf-c-dropdown__menu-item"
-                    disabled={false}
+                    data-ouia-component-id="OUIA-Generated-DropdownItem-2"
+                    data-ouia-component-type="PF4/DropdownItem"
+                    data-ouia-safe={true}
                     tabIndex={-1}
                     type="button"
                   >
@@ -429,10 +486,19 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "sendRef": [Function],
                   }
                 }
+                data-ouia-component-id="OUIA-Generated-DropdownItem-3"
+                data-ouia-component-type="PF4/DropdownItem"
+                data-ouia-safe={true}
                 description={null}
                 enterTriggersArrowDown={false}
                 icon={null}
                 index={2}
+                inoperableEvents={
+                  Array [
+                    "onClick",
+                    "onKeyPress",
+                  ]
+                }
                 isDisabled={false}
                 isHovered={false}
                 isPlainText={false}
@@ -449,8 +515,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   role="menuitem"
                 >
                   <button
+                    aria-disabled={false}
                     className="pf-c-dropdown__menu-item"
-                    disabled={false}
+                    data-ouia-component-id="OUIA-Generated-DropdownItem-3"
+                    data-ouia-component-type="PF4/DropdownItem"
+                    data-ouia-safe={true}
                     tabIndex={-1}
                     type="button"
                   />

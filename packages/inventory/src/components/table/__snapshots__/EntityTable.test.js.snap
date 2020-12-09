@@ -3,8 +3,8 @@
 exports[`EntityTable DOM should render correctly - compact 1`] = `
 <table
   aria-label="Host inventory"
-  class="pf-c-table pf-m-grid-md pf-m-compact ins-c-entity-table"
-  data-ouia-component-id="48"
+  class="ins-c-entity-table pf-c-table pf-m-grid-md pf-m-compact"
+  data-ouia-component-id="OUIA-Generated-Table-20"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -12,11 +12,17 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
   <thead
     class=""
   >
-    <tr>
+    <tr
+      class=""
+      data-ouia-component-id="OUIA-Generated-TableRow-33"
+      data-ouia-component-type="PF4/TableRow"
+      data-ouia-safe="true"
+    >
       <td
         class="pf-c-table__check"
         data-key="0"
         data-label=""
+        scope=""
       >
         <input
           aria-label="Select all rows"
@@ -57,7 +63,6 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
               >
                 <path
                   d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                  transform=""
                 />
               </svg>
             </span>
@@ -68,10 +73,11 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
   </thead>
   <tbody
     class=""
+    role="rowgroup"
   >
     <tr
       class=""
-      data-ouia-component-id="49"
+      data-ouia-component-id="OUIA-Generated-TableRow-34"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -80,7 +86,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
         data-key="0"
       >
         <input
-          aria-labelledby="simple-node0"
+          aria-label="Select row 0"
           name="checkrow0"
           type="checkbox"
         />
@@ -199,6 +205,7 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
       },
     ]
   }
+  selectVariant="checkbox"
   sortBy={
     Object {
       "direction": undefined,
@@ -273,6 +280,7 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
       },
     ]
   }
+  selectVariant="checkbox"
   sortBy={
     Object {
       "direction": undefined,
@@ -300,8 +308,8 @@ exports[`EntityTable DOM should render correctly - no data 1`] = `
 exports[`EntityTable DOM should render correctly - no rows 1`] = `
 <table
   aria-label="Host inventory"
-  class="pf-c-table pf-m-grid-md ins-c-entity-table"
-  data-ouia-component-id="32"
+  class="ins-c-entity-table pf-c-table pf-m-grid-md"
+  data-ouia-component-id="OUIA-Generated-Table-4"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -309,7 +317,12 @@ exports[`EntityTable DOM should render correctly - no rows 1`] = `
   <thead
     class=""
   >
-    <tr>
+    <tr
+      class=""
+      data-ouia-component-id="OUIA-Generated-TableRow-17"
+      data-ouia-component-type="PF4/TableRow"
+      data-ouia-safe="true"
+    >
       <th
         class=""
         data-key="0"
@@ -322,10 +335,11 @@ exports[`EntityTable DOM should render correctly - no rows 1`] = `
   </thead>
   <tbody
     class=""
+    role="rowgroup"
   >
     <tr
       class=""
-      data-ouia-component-id="33"
+      data-ouia-component-id="OUIA-Generated-TableRow-18"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -432,6 +446,7 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
       },
     ]
   }
+  selectVariant="checkbox"
   sortBy={
     Object {
       "direction": undefined,
@@ -502,6 +517,7 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
       },
     ]
   }
+  selectVariant="checkbox"
   sortBy={
     Object {
       "direction": undefined,
@@ -515,8 +531,8 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
 exports[`EntityTable DOM should render correctly 1`] = `
 <table
   aria-label="Host inventory"
-  class="pf-c-table pf-m-grid-md ins-c-entity-table"
-  data-ouia-component-id="66"
+  class="ins-c-entity-table pf-c-table pf-m-grid-md"
+  data-ouia-component-id="OUIA-Generated-Table-24"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -524,11 +540,17 @@ exports[`EntityTable DOM should render correctly 1`] = `
   <thead
     class=""
   >
-    <tr>
+    <tr
+      class=""
+      data-ouia-component-id="OUIA-Generated-TableRow-51"
+      data-ouia-component-type="PF4/TableRow"
+      data-ouia-safe="true"
+    >
       <td
         class="pf-c-table__check"
         data-key="0"
         data-label=""
+        scope=""
       >
         <input
           aria-label="Select all rows"
@@ -569,7 +591,6 @@ exports[`EntityTable DOM should render correctly 1`] = `
               >
                 <path
                   d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                  transform=""
                 />
               </svg>
             </span>
@@ -580,10 +601,11 @@ exports[`EntityTable DOM should render correctly 1`] = `
   </thead>
   <tbody
     class=""
+    role="rowgroup"
   >
     <tr
       class=""
-      data-ouia-component-id="67"
+      data-ouia-component-id="OUIA-Generated-TableRow-52"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -592,7 +614,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
         data-key="0"
       >
         <input
-          aria-labelledby="simple-node0"
+          aria-label="Select row 0"
           name="checkrow0"
           type="checkbox"
         />
@@ -689,6 +711,7 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
       },
     ]
   }
+  selectVariant="checkbox"
   sortBy={
     Object {
       "direction": undefined,
@@ -759,6 +782,7 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
       },
     ]
   }
+  selectVariant="checkbox"
   sortBy={
     Object {
       "direction": undefined,
@@ -830,6 +854,7 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
       },
     ]
   }
+  selectVariant="checkbox"
   sortBy={
     Object {
       "direction": undefined,

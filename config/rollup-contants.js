@@ -44,6 +44,7 @@ export const globals = {
     '@patternfly/react-core': '@patternfly/react-core',
     '@patternfly/react-icons': '@patternfly/react-icons',
     '@patternfly/react-table': '@patternfly/react-table',
+    '@patternfly/react-tokens': '@patternfly/react-tokens',
     '@redhat-cloud-services/frontend-components': '@redhat-cloud-services/frontend-components',
     'react-router-dom': 'reactRouterDom',
     classnames: 'classNames',
