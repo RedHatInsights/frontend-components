@@ -132,8 +132,8 @@ const FinalWizard = ({
         <Wizard
             isOpen={ true }
             onClose={ isFinished ? afterSubmit : afterError }
-            title={WIZARD_TITLE}
-            description={WIZARD_DESCRIPTION}
+            title={WIZARD_TITLE()}
+            description={WIZARD_DESCRIPTION()}
             steps={ [{
                 name: 'Finish',
                 component: step,

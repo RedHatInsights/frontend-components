@@ -58,6 +58,7 @@ exports[`TableWithFilter should render with data 1`] = `
         ],
       ]
     }
+    selectVariant="checkbox"
     variant="compact"
   >
     <TableHeader />
@@ -125,6 +126,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
         ],
       ]
     }
+    selectVariant="checkbox"
     variant="compact"
   >
     <TableHeader />
@@ -140,6 +142,7 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemsEnd={null}
       itemsStart={null}
       offset={0}
@@ -255,6 +258,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
         ],
       ]
     }
+    selectVariant="checkbox"
     variant="compact"
   >
     <TableHeader />
@@ -270,6 +274,7 @@ exports[`TableWithFilter should render with data and bulk select without calcula
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemsEnd={null}
       itemsStart={null}
       offset={0}
@@ -375,6 +380,7 @@ exports[`TableWithFilter should render with data and filters 1`] = `
         ],
       ]
     }
+    selectVariant="checkbox"
     variant="compact"
   >
     <TableHeader />
@@ -424,6 +430,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
         ],
       ]
     }
+    selectVariant="checkbox"
     variant="compact"
   >
     <TableHeader />
@@ -439,6 +446,7 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemsEnd={null}
       itemsStart={null}
       offset={0}

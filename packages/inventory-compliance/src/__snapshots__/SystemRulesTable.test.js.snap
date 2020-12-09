@@ -1014,6 +1014,7 @@ exports[`SystemRulesTable component should render 1`] = `
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
@@ -1031,6 +1032,7 @@ exports[`SystemRulesTable component should render 1`] = `
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={52}
       itemsEnd={null}
       itemsStart={null}
@@ -1462,6 +1464,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
@@ -1479,6 +1482,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={0}
       itemsEnd={null}
       itemsStart={null}
@@ -1881,6 +1885,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
@@ -1898,6 +1903,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={1}
       itemsEnd={null}
       itemsStart={null}
@@ -2300,6 +2306,7 @@ exports[`SystemRulesTable component should render search results on any page, re
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
@@ -2317,6 +2324,7 @@ exports[`SystemRulesTable component should render search results on any page, re
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={1}
       itemsEnd={null}
       itemsStart={null}
@@ -3388,6 +3396,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
@@ -3405,6 +3414,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={52}
       itemsEnd={null}
       itemsStart={null}
@@ -4457,6 +4467,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={
       Object {
         "direction": "asc",
@@ -4480,6 +4491,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={52}
       itemsEnd={null}
       itemsStart={null}
@@ -5495,6 +5507,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
@@ -5512,6 +5525,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={52}
       itemsEnd={null}
       itemsStart={null}
@@ -5823,6 +5837,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
@@ -5840,6 +5855,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={0}
       itemsEnd={null}
       itemsStart={null}
@@ -6762,6 +6778,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
@@ -6779,6 +6796,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={52}
       itemsEnd={null}
       itemsStart={null}
@@ -7090,6 +7108,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
         },
       ]
     }
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
@@ -7107,6 +7126,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
       firstPage={1}
       isCompact={false}
       isDisabled={false}
+      isSticky={false}
       itemCount={0}
       itemsEnd={null}
       itemsStart={null}

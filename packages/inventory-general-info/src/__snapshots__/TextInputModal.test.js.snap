@@ -38,6 +38,8 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
     ouiaSafe={true}
     showClose={true}
     title=""
+    titleIconVariant={null}
+    titleLabel=""
     variant="small"
   >
     <Portal
@@ -55,7 +57,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                 aria-labelledby="pf-modal-part-3"
                 aria-modal="true"
                 class="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
-                data-ouia-component-id="16"
+                data-ouia-component-id="OUIA-Generated-Modal-small-4"
                 data-ouia-component-type="PF4/ModalContent"
                 data-ouia-safe="true"
                 id="pf-modal-part-3"
@@ -65,7 +67,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                   aria-disabled="false"
                   aria-label="Close"
                   class="pf-c-button pf-m-plain"
-                  data-ouia-component-id="17"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-4"
                   data-ouia-component-type="PF4/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -81,7 +83,6 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                   >
                     <path
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                      transform=""
                     />
                   </svg>
                 </button>
@@ -105,7 +106,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                     aria-disabled="false"
                     class="pf-c-button pf-m-secondary"
                     data-action="cancel"
-                    data-ouia-component-id="18"
+                    data-ouia-component-id="OUIA-Generated-Button-secondary-4"
                     data-ouia-component-type="PF4/Button"
                     data-ouia-safe="true"
                     type="button"
@@ -116,7 +117,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                     aria-disabled="false"
                     class="pf-c-button pf-m-primary"
                     data-action="confirm"
-                    data-ouia-component-id="19"
+                    data-ouia-component-id="OUIA-Generated-Button-primary-4"
                     data-ouia-component-type="PF4/Button"
                     data-ouia-safe="true"
                     type="button"
@@ -159,9 +160,12 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
         isOpen={true}
         labelId="pf-modal-part-4"
         onClose={[Function]}
+        ouiaId="OUIA-Generated-Modal-small-4"
         ouiaSafe={true}
         showClose={true}
         title=""
+        titleIconVariant={null}
+        titleLabel=""
         variant="small"
       >
         <Backdrop>
@@ -186,7 +190,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                   aria-label="input text - modal"
                   aria-labelledby="pf-modal-part-3"
                   className="ins-c-inventory__detail--edit"
-                  data-ouia-component-id={16}
+                  data-ouia-component-id="OUIA-Generated-Modal-small-4"
                   data-ouia-component-type="PF4/ModalContent"
                   data-ouia-safe={true}
                   id="pf-modal-part-3"
@@ -199,7 +203,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                     aria-labelledby="pf-modal-part-3"
                     aria-modal="true"
                     className="pf-c-modal-box ins-c-inventory__detail--edit pf-m-sm"
-                    data-ouia-component-id={16}
+                    data-ouia-component-id="OUIA-Generated-Modal-small-4"
                     data-ouia-component-type="PF4/ModalContent"
                     data-ouia-safe={true}
                     id="pf-modal-part-3"
@@ -219,11 +223,12 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                           aria-disabled={false}
                           aria-label="Close"
                           className="pf-c-button pf-m-plain"
-                          data-ouia-component-id={17}
+                          data-ouia-component-id="OUIA-Generated-Button-plain-4"
                           data-ouia-component-type="PF4/Button"
                           data-ouia-safe={true}
                           disabled={false}
                           onClick={[Function]}
+                          role={null}
                           type="button"
                         >
                           <TimesIcon
@@ -247,7 +252,6 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                             >
                               <path
                                 d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                                transform=""
                               />
                             </svg>
                           </TimesIcon>
@@ -261,7 +265,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                         className="pf-c-modal-box__body"
                         id="pf-modal-part-5"
                       >
-                        <ForwardRef
+                        <TextInput
                           aria-label="input text"
                           onChange={[Function]}
                           type="text"
@@ -272,6 +276,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                             className=""
                             innerRef={null}
                             isDisabled={false}
+                            isLeftTruncated={false}
                             isReadOnly={false}
                             isRequired={false}
                             onChange={[Function]}
@@ -284,14 +289,16 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                               aria-label="input text"
                               className="pf-c-form-control"
                               disabled={false}
+                              onBlur={[Function]}
                               onChange={[Function]}
+                              onFocus={[Function]}
                               readOnly={false}
                               required={false}
                               type="text"
                               value=""
                             />
                           </TextInputBase>
-                        </ForwardRef>
+                        </TextInput>
                       </div>
                     </ModalBoxBody>
                     <ModalBoxFooter>
@@ -309,11 +316,12 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                             aria-label={null}
                             className="pf-c-button pf-m-secondary"
                             data-action="cancel"
-                            data-ouia-component-id={18}
+                            data-ouia-component-id="OUIA-Generated-Button-secondary-4"
                             data-ouia-component-type="PF4/Button"
                             data-ouia-safe={true}
                             disabled={false}
                             onClick={[Function]}
+                            role={null}
                             type="button"
                           >
                             Cancel
@@ -330,11 +338,12 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                             aria-label={null}
                             className="pf-c-button pf-m-primary"
                             data-action="confirm"
-                            data-ouia-component-id={19}
+                            data-ouia-component-id="OUIA-Generated-Button-primary-4"
                             data-ouia-component-type="PF4/Button"
                             data-ouia-safe={true}
                             disabled={false}
                             onClick={[Function]}
+                            role={null}
                             type="button"
                           >
                             Save
@@ -385,9 +394,11 @@ exports[`TextInputModal render should render aria label 1`] = `
   ouiaSafe={true}
   showClose={true}
   title=""
+  titleIconVariant={null}
+  titleLabel=""
   variant="small"
 >
-  <ForwardRef
+  <TextInput
     aria-label="Some aria label"
     onChange={[Function]}
     type="text"
@@ -427,9 +438,11 @@ exports[`TextInputModal render should render open 1`] = `
   ouiaSafe={true}
   showClose={true}
   title=""
+  titleIconVariant={null}
+  titleLabel=""
   variant="small"
 >
-  <ForwardRef
+  <TextInput
     aria-label="input text"
     onChange={[Function]}
     type="text"
@@ -469,9 +482,11 @@ exports[`TextInputModal render should render title 1`] = `
   ouiaSafe={true}
   showClose={true}
   title="Some title"
+  titleIconVariant={null}
+  titleLabel=""
   variant="small"
 >
-  <ForwardRef
+  <TextInput
     aria-label="input text"
     onChange={[Function]}
     type="text"
@@ -511,9 +526,11 @@ exports[`TextInputModal render should render without any props 1`] = `
   ouiaSafe={true}
   showClose={true}
   title=""
+  titleIconVariant={null}
+  titleLabel=""
   variant="small"
 >
-  <ForwardRef
+  <TextInput
     aria-label="input text"
     onChange={[Function]}
     type="text"

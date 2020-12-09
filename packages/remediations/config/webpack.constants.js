@@ -1,6 +1,11 @@
 module.exports = {
     externals: [
-        /^@patternfly\/react-icons.*/,
+        /@patternfly\/react-icons.*/,
+        /@redhat-cloud-services\/frontend-components.*/,
+        /@patternfly\/react-core.*/,
+        /@patternfly\/react-tokens.*/,
+        /@patternfly\/react-styles.*/,
+        /@patternfly\/react-table.*/,
         {
             '@patternfly/react-icons': {
                 commonjs: '@patternfly/react-icons',
@@ -21,13 +26,6 @@ module.exports = {
             redux: 'redux',
             axios: 'axios',
             react: 'react'
-        },
-        function(context, request, callback) {
-            if (/^@patternfly\/react-core.*/.test(request)) {
-                return callback(null, '@patternfly/react-core');
-            }
-
-            callback();
         }
     ]
 };
