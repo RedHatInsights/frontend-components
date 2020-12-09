@@ -28,11 +28,10 @@ query System($systemId: String!){
             rulesPassed
             lastScanned
             score
+            supported
+            ssgVersion
             policy {
                 id
-            }
-            benchmark {
-                version
             }
             rules {
                 title
