@@ -3,23 +3,33 @@ import PropTypes from 'prop-types';
 import {
     Page,
     PageHeader,
-    PageHeaderTools,
     PageSidebar
 } from '@patternfly/react-core';
+import { createUseStyles } from 'react-jss';
+import Link from 'next/link';
 import Navigation from '../navigation';
+import HeaderTools from './header-tools';
+
+const useStyles = createUseStyles({
+    page: {
+        height: '100vh !important'
+    },
+    logo: {
+        width: 100
+    }
+});
 
 const Layout = ({ children }) => {
     const [ isOpen, setIsOpen ] = useState(true);
-    const logoProps = {
-        href: 'https://patternfly.org',
-        onClick: () => console.log('clicked logo'),
-        target: '_blank'
-    };
+    const classes = useStyles();
     const Header = (
         <PageHeader
-            logo="Logo"
-            logoProps={logoProps}
-            headerTools={<PageHeaderTools>header-tools</PageHeaderTools>}
+            logo={
+                <Link href="/">
+                    <img className={classes.logo} src="/logo.svg" alt="logo"/>
+                </Link>
+            }
+            headerTools={<HeaderTools />}
             showNavToggle
             isNavOpen={isOpen}
             onNavToggle={() => setIsOpen(prev => !prev)}
@@ -27,7 +37,7 @@ const Layout = ({ children }) => {
     );
     const Sidebar = <PageSidebar nav={<Navigation />} isNavOpen={isOpen} />;
     return (
-        <Page header={Header} sidebar={Sidebar}>
+        <Page className={classes.page} header={Header} sidebar={Sidebar}>
             <div className="pf-u-p-md">
                 {children}
             </div>

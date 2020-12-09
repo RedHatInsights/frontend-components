@@ -9,7 +9,7 @@ const Navigation = () => {
     return (
         <Nav>
             <NavList>
-                <NavExpandable title="Components">
+                <NavExpandable title="Components" isExpanded={pathname.includes('/components')}>
                     {data.map(name => (
                         <NavItem
                             to={`/components/${name}`}
