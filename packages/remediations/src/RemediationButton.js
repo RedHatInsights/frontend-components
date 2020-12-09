@@ -1,9 +1,9 @@
 import React from 'react';
 
 import propTypes from 'prop-types';
-import { reactCore } from '../../utils/src/inventoryDependencies';
 
 import { CAN_REMEDIATE } from './utils';
+import { Button, Tooltip } from '@patternfly/react-core';
 
 function getLoader () {
     return (insights.experimental && insights.experimental.loadRemediations) || insights.loadRemediations;
@@ -45,25 +45,25 @@ class RemediationButton extends React.Component {
     render() {
         if (this.state.remediations && !this.state.hasPermission) {
             return (
-                <reactCore.Tooltip
+                <Tooltip
                     content="You do not have correct permissions to remediate this entity."
                 >
                     <span>
-                        <reactCore.Button isDisabled>
+                        <Button isDisabled>
                             { this.props.children }
-                        </reactCore.Button>
+                        </Button>
                     </span>
-                </reactCore.Tooltip>
+                </Tooltip>
             );
         }
 
         return (
             <React.Fragment>
-                <reactCore.Button
+                <Button
                     isDisabled={ this.props.isDisabled || this.state.remediations === false }
                     onClick={ this.onClick } >
                     { this.props.children }
-                </reactCore.Button>
+                </Button>
 
                 { this.state.remediations.RemediationWizard && <this.state.remediations.RemediationWizard /> }
             </React.Fragment>
