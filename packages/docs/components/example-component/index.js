@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Title } from '@patternfly/react-core';
+import { Title, Card, CardBody } from '@patternfly/react-core';
 import dynamic from 'next/dynamic';
+import classnames from 'classnames';
 import { createUseStyles } from 'react-jss'
 import ExpandablePanel from './expandable-panel';
 
@@ -13,13 +14,6 @@ const useStyles = createUseStyles({
   exampleContainer: {
     widht: '100%'
   },
-  componentContainer: {
-    width: '100%',
-    background: 'var(--pf-global--BackgroundColor--100)',
-    padding: 'var(--pf-global--spacer--md)',
-    marginTop: 'var(--pf-global--spacer--sm)',
-    marginBottom: 'var(--pf-global--spacer--sm)'
-  }
 })
 
 const ExampleComponent = ({ source, name }) => {
@@ -34,8 +28,8 @@ const ExampleComponent = ({ source, name }) => {
   }, [])
   return (
     <div className={classes.exampleContainer}>
-      <Title headingLevel="h2" className={classes.name}>{name}</Title>
-      {Component && <div className={classes.componentContainer}><Component /></div>}
+      <Title headingLevel="h2" className={classnames(classes.name, 'pf-u-mt-md', 'pf-u-mb-md')}>{name}</Title>
+      {Component && <Card className="pf-u-mb-md"><CardBody><Component /></CardBody></Card>}
       <ExpandablePanel sourceCode={sourceCode} />
     </div>
   )
