@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-remediations",
-    "version": "2.3.1",
+    "version": "2.3.3",
     "description": "Remediations components for RedHat Cloud Services project.",
     "browser": "index.js",
     "publishConfig": {
