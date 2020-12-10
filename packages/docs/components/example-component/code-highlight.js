@@ -11,6 +11,7 @@ const useStyles = createUseStyles({
         margin: '1em 0',
         padding: 16,
         overflow: 'auto',
+        borderRadius: 8,
         '& .token-line': {
             lineHeight: '1.3em',
             height: '1.3em'
