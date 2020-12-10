@@ -5,6 +5,8 @@ import classnames from 'classnames';
 import { Alert, Button, Toolbar, ToolbarContent, ToolbarItem } from '@patternfly/react-core';
 import { CodeIcon, CopyIcon } from '@patternfly/react-icons';
 import CodeHighlight from './code-highlight';
+import createCodeSandboxExample from './create-code-sandbox-template';
+import CodesandboxIcon from './codesandbox-svg-icons';
 
 const useToastStyles = createUseStyles({
     toast: {
@@ -43,6 +45,15 @@ const useStyles = createUseStyles({
     },
     firstItem: {
         marginLeft: 'auto'
+    },
+    imageIconButton: {
+        display: 'flex !important',
+        '& svg': {
+            width: 24,
+            height: 24,
+            transform: 'scale(.8)',
+            fill: 'var(--pf-c-button--m-plain--Color)'
+        }
     }
 });
 
@@ -87,9 +98,12 @@ const ExpandablePanel = ({ sourceCode }) => {
                         </Button>
                     </ToolbarItem>
                     <ToolbarItem>
-                        <Button>
-                            Code sandbox example link
-                        </Button>
+                        <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+                            <input type="hidden" name="parameters" value={createCodeSandboxExample(sourceCode)} />
+                            <Button className={classes.imageIconButton} type="submit" variant="plain">
+                                <CodesandboxIcon />
+                            </Button>
+                        </form>
                     </ToolbarItem>
                 </ToolbarContent>
             </Toolbar>
