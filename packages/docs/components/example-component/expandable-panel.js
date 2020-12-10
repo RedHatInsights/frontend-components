@@ -33,6 +33,31 @@ TimedToas.propTypes = {
     title: PropTypes.string.isRequired
 };
 
+const useToastStyles = createUseStyles({
+    toast: {
+        position: 'fixed !important',
+        bottom: 'var(--pf-global--spacer--md)',
+        right: 'var(--pf-global--spacer--md)',
+        cursor: 'pointer'
+    }
+});
+
+const TimedToas = ({ handleClose, title }) => {
+    const classes = useToastStyles();
+    useEffect(() => {
+        const timeout = setTimeout(handleClose, 3000);
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, []);
+    return (<Alert onClick={handleClose} className={classnames(classes.toast)} title={title} variant="info" />);
+};
+
+TimedToas.propTypes = {
+    handleClose: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired
+};
+
 const useStyles = createUseStyles({
     inconExpandExpanded: {
         transform: 'rotate(180deg)'
@@ -104,6 +129,9 @@ const ExpandablePanel = ({ sourceCode }) => {
                                 <CodesandboxIcon />
                             </Button>
                         </form>
+                        <Button>
+                            Code sandbox example link
+                        </Button>
                     </ToolbarItem>
                 </ToolbarContent>
             </Toolbar>
