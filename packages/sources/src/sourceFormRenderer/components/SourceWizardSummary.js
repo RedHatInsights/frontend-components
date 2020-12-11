@@ -10,7 +10,7 @@ import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form
 import { COST_MANAGEMENT_APP_NAME } from '../../api/constants';
 
 const alertMapper = (appName, sourceType, intl) => {
-    if (appName === COST_MANAGEMENT_APP_NAME && sourceType === 'gcp') {
+    if (appName === COST_MANAGEMENT_APP_NAME && sourceType === 'google') {
         return (
             <Alert
                 variant="info"

@@ -176,8 +176,9 @@ describe('SourceWizardSummary component', () => {
                     values: {
                         source: { name: 'cosi' },
                         application: { application_type_id: '2' },
-                        source_type: 'gcp',
-                        authentication: { authtype: 'project_id', project_id: 'project_id_123', dataset_id: 'dataset_id_123' },
+                        source_type: 'google',
+                        authentication: { authtype: 'project_id', password: 'project_id_123' },
+                        billing_source: { data_source: { dataset: 'dataset_id_123' } },
                         fixasyncvalidation: ''
                     }
                 })
@@ -192,7 +193,7 @@ describe('SourceWizardSummary component', () => {
                 [
                     [ 'Name', 'cosi' ],
                     [ 'Application', 'Cost Management' ],
-                    [ 'Source type', 'Google Cloud' ],
+                    [ 'Source type', 'Google Cloud Platform' ],
                     [ 'Authentication type', 'Project ID' ],
                     [ 'Project ID', 'project_id_123' ],
                     [ 'Dataset ID', 'dataset_id_123' ]

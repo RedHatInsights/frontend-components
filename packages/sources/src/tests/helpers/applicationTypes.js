@@ -36,7 +36,7 @@ const applicationTypes = [
             openshift: [
                 'token'
             ],
-            gcp: [
+            google: [
                 'project_id'
             ]
         },
