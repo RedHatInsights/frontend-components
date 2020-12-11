@@ -698,13 +698,13 @@ export default {
             }
         }
     },
-    gcp: {
+    google: {
         authentication: {
             project_id: {
                 [COST_MANAGEMENT_APP_NAME]: {
                     useApplicationAuth: true,
                     skipSelection: true,
-                    'authentication.project_id': {
+                    'authentication.password': {
                         component: 'text-field',
                         label: 'Project ID',
                         isRequired: true,
@@ -719,7 +719,7 @@ export default {
                         hideField: true,
                         initialValue: 'project_id'
                     },
-                    'authentication.dataset_id': {
+                    'billing_source.data_source.dataset': {
                         component: 'text-field',
                         label: 'Dataset ID',
                         isRequired: true,
@@ -736,7 +736,7 @@ export default {
                             name: 'description-google',
                             Content: CMGoogle.Project
                         }, {
-                            name: 'authentication.project_id'
+                            name: 'authentication.password'
                         }, {
                             name: 'authentication.authtype'
                         }],
@@ -768,7 +768,7 @@ export default {
                             name: 'description-google',
                             Content: CMGoogle.Dataset
                         }, {
-                            name: 'authentication.dataset_id'
+                            name: 'billing_source.data_source.dataset'
                         }],
                         name: 'cost-gcp-dataset',
                         nextStep: 'cost-gcp-billing-export'

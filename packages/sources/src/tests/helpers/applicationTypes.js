@@ -44,7 +44,7 @@ const applicationTypes = [
             'amazon',
             'azure',
             'openshift',
-            'gcp'
+            'google'
         ],
         updated_at: '2019-09-16T19:56:12Z'
     },

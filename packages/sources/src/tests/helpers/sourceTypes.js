@@ -361,8 +361,8 @@ const sourceTypes = [
     {
         created_at: '2019-08-19T14:53:02Z',
         id: '9',
-        name: 'gcp',
-        product_name: 'Google Cloud',
+        name: 'google',
+        product_name: 'Google Cloud Platform',
         schema: {
             authentication: [{
                 type: 'project_id',
@@ -372,11 +372,12 @@ const sourceTypes = [
                         component: 'text-field',
                         name: 'authentication.authtype',
                         hideField: true,
-                        initialValue: 'project_id'
+                        initialValue: 'project_id',
+                        initializeOnMount: true
                     },
                     {
                         component: 'text-field',
-                        name: 'authentication.project_id',
+                        name: 'authentication.password',
                         label: 'Project ID',
                         isRequired: true,
                         validate: [
@@ -387,7 +388,7 @@ const sourceTypes = [
                     },
                     {
                         component: 'text-field',
-                        name: 'authentication.dataset_id',
+                        name: 'billing_source.data_source.dataset',
                         label: 'Dataset ID',
                         isRequired: true,
                         validate: [
