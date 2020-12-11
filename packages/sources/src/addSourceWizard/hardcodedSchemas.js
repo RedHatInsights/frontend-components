@@ -740,29 +740,9 @@ export default {
                         }, {
                             name: 'authentication.authtype'
                         }],
-                        nextStep: 'cost-gcp-iam'
+                        nextStep: 'cost-gcp-dataset'
                     }, {
-                        title: <FormattedMessage id="cost.gcp.iamTitle" defaultMessage="Create IAM role" />,
-                        fields: [{
-                            component: 'description',
-                            name: 'description-google',
-                            Content: CMGoogle.IAMRole
-                        }],
-                        nextStep: 'cost-gcp-access',
-                        name: 'cost-gcp-iam',
-                        substepOf: { name: 'eaa', title: <FormattedMessage id="cost.arn.enableAccountAccess" defaultMessage="Enable account access" /> }
-                    }, {
-                        title: <FormattedMessage id="cost.gcp.accessTitle" defaultMessage="Assign access" />,
-                        fields: [{
-                            component: 'description',
-                            name: 'description-google',
-                            Content: CMGoogle.AssignAccess
-                        }],
-                        name: 'cost-gcp-access',
-                        nextStep: 'cost-gcp-dataset',
-                        substepOf: 'eaa'
-                    }, {
-                        title: <FormattedMessage id="cost.gcp.datasetTitle" defaultMessage="Create dataset" />,
+                        title: <FormattedMessage id="cost.gcp.datasetTitle" defaultMessage="BiqQuery dataset" />,
                         fields: [{
                             component: 'description',
                             name: 'description-google',
@@ -771,6 +751,15 @@ export default {
                             name: 'billing_source.data_source.dataset'
                         }],
                         name: 'cost-gcp-dataset',
+                        nextStep: 'cost-gcp-access'
+                    }, {
+                        title: <FormattedMessage id="cost.gcp.accessTitle" defaultMessage="Enable account access" />,
+                        fields: [{
+                            component: 'description',
+                            name: 'description-google',
+                            Content: CMGoogle.AssignAccess
+                        }],
+                        name: 'cost-gcp-access',
                         nextStep: 'cost-gcp-billing-export'
                     }, {
                         title: <FormattedMessage id="cost.gcp.billingExportTitle" defaultMessage="Billing export" />,
