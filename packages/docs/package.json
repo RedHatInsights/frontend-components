@@ -12,18 +12,23 @@
   "dependencies": {
     "@patternfly/react-core": "^4.79.2",
     "@patternfly/react-icons": "^4.7.18",
+    "@patternfly/react-table": "^4.19.24",
     "@redhat-cloud-services/frontend-components": "^2.5.1",
     "classnames": "^2.2.6",
     "next": "10.0.3",
     "prism-react-renderer": "^1.1.1",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^10.0.3",
     "@zeit/next-css": "^1.0.1",
     "codesandbox": "^2.2.1",
+    "file-loader": "^6.2.0",
     "next-transpile-modules": "^6.0.0",
     "raw-loader": "^4.0.2",
     "react-docgen": "^5.3.1",

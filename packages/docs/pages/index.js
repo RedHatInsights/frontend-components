@@ -1,15 +1,24 @@
+import { Text, TextContent, Title } from '@patternfly/react-core';
 import Head from 'next/head';
-import ExampleComponent from '@docs/example-component';
+import Link from 'next/link';
 
 export default function Home() {
     return (
         <div>
             <Head>
-                <title>Create Next App</title>
+                <title>Frontend components docs</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <h1>There will be dragons</h1>
-            <ExampleComponent source="Ansible/normal-example" name="Normal example" />
+            <Title headingLevel="h1" size="3xl">Welcome to frontend components DOCS preview.</Title>
+            <TextContent>
+                <Text>
+                    This is an early preview of new Frontend components documentaion. Component examples are not complete.
+                    Visit <Link href="/components/Ansible">Ansible icon</Link> to get a taste of waht is to come.
+                </Text>
+                <Text>
+                    Start by picking a component from the navigation.
+                </Text>
+            </TextContent>
         </div>
     );
 }
