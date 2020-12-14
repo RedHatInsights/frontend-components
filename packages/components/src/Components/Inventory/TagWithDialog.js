@@ -4,29 +4,33 @@ const AsyncInventory = React.lazy(() => import('./AsyncInventory'));
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
+import { Bullseye, Spinner } from '@patternfly/react-core';
 
-const TagWithDialog = ({ fallback, ...props }) => {
+const TagWithDialog = React.forwardRef((props, ref) => {
     const history = useHistory();
     const store = useStore();
-    return <ScalprumComponent
-        history={history}
-        store={store}
-        fallback={fallback}
-        appName="chrome"
-        module="./TagWithDialog"
-        scope="chrome"
-        ErrorComponent={() => <Suspense fallback={fallback}>
-            <AsyncInventory
-                component="TagWithDialog"
+    return (
+        <Suspense fallback={props.fallback}>
+            <ScalprumComponent
+                history={history}
+                store={store}
+                appName="chrome"
+                module="./TagWithDialog"
+                scope="chrome"
+                ErrorComponent={<AsyncInventory ref={ref} component="TagWithDialog" {...props} />}
+                ref={ref}
                 {...props}
-                fallback={fallback} />
-        </Suspense>}
-        {...props}
-    />;
-};
+            />
+        </Suspense>
+    );
+});
 
 TagWithDialog.propTypes = {
-    fallback: PropTypes.any
+    fallback: PropTypes.node
 };
 
-export default React.forwardRef((props, ref) => <TagWithDialog {...props} ref={ref} />);
+TagWithDialog.defaultProps = {
+    fallback: <Bullseye><Spinner size="xl" /></Bullseye>
+};
+
+export default TagWithDialog;

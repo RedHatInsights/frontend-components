@@ -23,8 +23,7 @@ const AsyncInventory = ({ fallback, onLoad, component, ...props }) => {
         })();
     }, []);
 
-    const Fallback = fallback || Fragment;
-    return InvCmp ? <InvCmp {...props} /> : <Fallback />;
+    return InvCmp ? <InvCmp {...props} /> : fallback || <Fragment />;
 };
 
 AsyncInventory.propTypes = {
