@@ -7,12 +7,14 @@ import classnames from 'classnames';
 const Navigation = () => {
     const { pathname } = useRouter();
     return (
-        <Nav>
+        <Nav ouiaId="docs-nav">
             <NavList>
-                <NavExpandable title="Components">
+                <NavExpandable ouiaId="components" id="components" title="Components" isExpanded={pathname.includes('/components')}>
                     {data.map(name => (
                         <NavItem
+                            id={`/components/${name}`}
                             to={`/components/${name}`}
+                            ouiaId={`/components/${name}`}
                             key={name}
                             component={({ children, ...props }) => (
                                 <Link {...props}>
