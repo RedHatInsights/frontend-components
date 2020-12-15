@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, TextContent, TextList, TextListItem, ClipboardCopy, Tooltip } from '@patternfly/react-core';
+import { Text, TextContent, TextList, TextListItem, ClipboardCopy } from '@patternfly/react-core';
 
 import * as Cm from '../../../addSourceWizard/hardcodedComponents/gcp/costManagement';
 import mount from '../../__mocks__/mount';
+import FormRenderer from '../../../sourceFormRenderer';
 
 describe('Cost Management Google steps components', () => {
     it('Project', () => {
@@ -23,12 +24,26 @@ describe('Cost Management Google steps components', () => {
     });
 
     it('Dataset', () => {
-        const wrapper = mount(<Cm.Dataset />);
+        const wrapper = mount(<FormRenderer
+            onSubmit={jest.fn()}
+            schema={{ fields: [{
+                name: 'field',
+                component: 'description',
+                Content: Cm.Dataset
+            }] }}
+            initialValues={{
+                authentication: {
+                    password: 'some-project-id'
+                }
+            }}
+        />);
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
         expect(wrapper.find(Text)).toHaveLength(1);
         expect(wrapper.find(TextList)).toHaveLength(1);
         expect(wrapper.find(TextListItem)).toHaveLength(4);
+
+        expect(wrapper.find(TextListItem).first().text()).toEqual('From the GCP BigQuery console, select your project (some-project-id).');
     });
 
     it('Billing export', () => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { Text, TextContent, TextVariants, TextList, TextListVariants, TextListItem, ClipboardCopy } from '@patternfly/react-core';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
 const b = (chunks) => <b key={`b-${chunks.length}-${Math.floor(Math.random() * 1000)}`}>{chunks}</b>;
 
@@ -21,6 +22,9 @@ export const Project = () => {
 
 export const Dataset = () => {
     const intl = useIntl();
+    const { getState } = useFormApi();
+
+    const projectId = getState().values.authentication?.password;
 
     return (
         <TextContent>
@@ -34,8 +38,8 @@ export const Dataset = () => {
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.dataset.firstStep',
-                        defaultMessage: 'From the GCP <b>BigQuery</b> console, select your <b>project</b>.'
-                    }, { b })}
+                        defaultMessage: 'From the GCP <b>BigQuery</b> console, select your project <b>({projectId})</b>.'
+                    }, { b, projectId })}
                 </TextListItem>
                 <TextListItem>
                     { intl.formatMessage({
