@@ -44,9 +44,8 @@
         "@redhat-cloud-services/frontend-components-remediations": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
         "@apollo/react-hooks": "^3.1.5",
-        "apollo-boost": "^0.1.23",
-        "graphql-tag": "^2.10.0",
-        "react-apollo": "^2.3.3",
+        "apollo-boost": "^0.4.7",
+        "graphql-tag": "^2.11.0",
         "react-truncate": "^2.4.0"
     }
 }
