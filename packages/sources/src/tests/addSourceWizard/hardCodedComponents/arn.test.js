@@ -86,7 +86,7 @@ describe('AWS-ARN hardcoded schemas', () => {
         const wrapper = mount(<AwsArn.TagsDescription />);
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
-        expect(wrapper.find(Text)).toHaveLength(1);
+        expect(wrapper.find(Text)).toHaveLength(4);
         expect(wrapper.find(TextList)).toHaveLength(1);
         expect(wrapper.find(TextListItem)).toHaveLength(2);
     });
