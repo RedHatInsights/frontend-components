@@ -1,0 +1,11 @@
+.ins-c-remediations-can-be-remediated { 
+    color: var(--pf-global--success-color--100);
+}
+.ins-c-remediations-cannot-be-remediated { 
+    color: var(--pf-global--warning-color--100);
+}
+.ins-c-remediations-select-playbook-expandable-content { 
+    margin-left: var(--pf-global--spacer--xl);
+    padding-left: var(--pf-global--spacer--md);
+    list-style-type: disc;
+}

@@ -18,7 +18,7 @@ query System($systemId: String!){
     system(id: $systemId) {
         id
         name
-        profiles {
+        testResultProfiles {
             id
             name
             policyType
@@ -28,11 +28,10 @@ query System($systemId: String!){
             rulesPassed
             lastScanned
             score
+            supported
+            ssgVersion
             policy {
                 id
-            }
-            benchmark {
-                version
             }
             rules {
                 title
@@ -52,12 +51,12 @@ query System($systemId: String!){
 
 const SystemQuery = ({ data: { system }, loading, hidePassed }) => (
     <React.Fragment>
-        <SystemPolicyCards policies={ system?.profiles } loading={ loading } />
+        <SystemPolicyCards policies={ system?.testResultProfiles } loading={ loading } />
         <br/>
         <SystemRulesTable hidePassed={ hidePassed }
             system={ system }
             columns={ columns }
-            profileRules={ system?.profiles.map(profile => ({
+            profileRules={ system?.testResultProfiles.map(profile => ({
                 system: system.id,
                 profile,
                 rules: profile.rules

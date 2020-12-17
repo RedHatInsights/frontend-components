@@ -117,6 +117,15 @@ const createFrontendComponentsTransform = env => [
             preventFullImport: true,
             skipDefaultConversion: true
         },
+        '@redhat-cloud-services/frontend-components-remediations': {
+            transform: (importName) => `@redhat-cloud-services/frontend-components-remediations/${
+                env
+            }/${
+                importName === 'RemediationButton' ? 'RemediationButton.js' : 'index.js'
+            }`,
+            preventFullImport: false,
+            skipDefaultConversion: false
+        },
         '@redhat-cloud-services/rule-components': {
             transform: (importName) => `@redhat-cloud-services/rule-components/dist/${env}/${importName}.js`,
             preventFullImport: true,

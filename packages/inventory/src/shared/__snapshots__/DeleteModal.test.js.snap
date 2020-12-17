@@ -14,6 +14,8 @@ exports[`EntityTable DOM should render correctly 1`] = `
   ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
+  titleIconVariant={null}
+  titleLabel=""
   variant="small"
 >
   <Split
@@ -104,6 +106,8 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 1
   ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
+  titleIconVariant={null}
+  titleLabel=""
   variant="small"
 >
   <Split
@@ -195,6 +199,8 @@ exports[`EntityTable DOM should render correctly with multiple systems - count 2
   ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
+  titleIconVariant={null}
+  titleLabel=""
   variant="small"
 >
   <Split
@@ -286,6 +292,8 @@ exports[`EntityTable DOM should render correctly with one system 1`] = `
   ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
+  titleIconVariant={null}
+  titleLabel=""
   variant="small"
 >
   <Split
@@ -377,6 +385,8 @@ exports[`EntityTable DOM should render correctly with one system 2`] = `
   ouiaSafe={true}
   showClose={true}
   title="Remove from inventory"
+  titleIconVariant={null}
+  titleLabel=""
   variant="small"
 >
   <Split

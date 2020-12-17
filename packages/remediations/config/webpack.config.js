@@ -14,7 +14,6 @@ module.exports = (env) => ({
     },
     entry: {
         index: './src/index.js',
-        RemediationButton: './src/RemediationButton.js',
         remediationsApi: './src/api/index.js'
     },
     output: {

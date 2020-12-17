@@ -9,7 +9,7 @@ const getSortable = (property, rule) => {
         case 'rule':
             return rule.title;
         case 'policy':
-            return rule.policies[0].name;
+            return rule.profiles[0].name;
         case 'severity':
             return rule.severity;
         case 'passed':

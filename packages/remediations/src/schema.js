@@ -1,4 +1,5 @@
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
 
 export default (container) => ({
     fields: [
@@ -15,7 +16,17 @@ export default (container) => ({
                 {
                     name: 'playbook',
                     title: 'Select playbook',
-                    fields: []
+                    fields: [{
+                        name: 'select-playbook',
+                        component: 'select-playbook',
+                        validate: [{
+                            type: validatorTypes.PATTERN,
+                            pattern: /^$|^.*[\w\d]+.*$/
+                        },
+                        {
+                            type: validatorTypes.REQUIRED
+                        }]
+                    }]
                 }
             ]
         }
