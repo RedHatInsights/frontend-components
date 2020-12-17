@@ -241,7 +241,7 @@ RuleTable.propTypes = {
     })),
     sort: PropTypes.string,
     emptyStateTitle: PropTypes.string,
-    emptyStateDescription: PropTypes.string,
+    emptyStateDescription: PropTypes.node,
     emptyStateIcon: PropTypes.node,
     defaultFilters: PropTypes.arrayOf(PropTypes.shape({})),
     fetchData: PropTypes.func,
