@@ -4,8 +4,8 @@ import { Popover, Text } from '@patternfly/react-core';
 import { ExclamationTriangleIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 
 const UnsupportedSSGVersion = ({ ssgVersion }) => {
-    const bodyContent = 'This system is running an unsupported version of the SCAP Security Guide (SSG).' +
-        'This information is based on the last report uploaded for this system to the Compliance service.';
+    const bodyContent = 'This system was using an incompatible version of the SSG at the time this report was generated.' +
+        ' Assessment of rules failed/passed on this system is a best-guess effort and may not be accurate.';
     const supportedConfigsLink = 'https://access.redhat.com/documentation/en-us/red_hat_insights/2020-10/' +
         'html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/' +
         'compl-assess-overview-con#compl-assess-supported-configurations-con';
