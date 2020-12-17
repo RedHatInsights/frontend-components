@@ -164,6 +164,8 @@ To build all packages run these commands without `-- --scope=@redhat-cloud-servi
 
 Once the packages are built the application the package is linked in should also be able to build and include any changes made locally in the `frontend-components` packages.
 
+To remove the package info from package.json and yalc.lock, run `yalc remove @redhat-cloud-services/frontend-components` to remove a single package; or `yalc remove --all` to remove all packages from a project.
+
 _* Depending on what package you are working on this arguments need to change accordingly._
 
 ## Creating new package
