@@ -18,7 +18,7 @@ const UnsupportedSSGVersion = ({ ssgVersion }) => {
 
     return <div className='pf-c-alert pf-m-warning pf-m-inline' style={ divStyle }>
         <ExclamationTriangleIcon className='ins-u-warning' style={ { marginRight: '.25em' } } />
-        <Text component={ 'strong' } className='ins-u-warning' style={ { color: 'var(--pf-global--palette--gold-500)' } }>
+        <Text component={ 'strong' } className='ins-c-warning-text'>
             Unsupported SSG version ({ ssgVersion })
         </Text>
         <Popover position='right' { ...{ bodyContent, footerContent } }>
