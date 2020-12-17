@@ -1,5 +1,14 @@
 import React from 'react';
-import { nextStep, iconMapper, NameDescription, SummaryDescription, sourceTypeMutator, appMutator, typesStep } from '../../addSourceWizard/SourceAddSchema';
+import {
+    nextStep,
+    iconMapper,
+    NameDescription,
+    SummaryDescription,
+    sourceTypeMutator,
+    appMutator,
+    typesStep,
+    compileAllApplicationComboOptions
+} from '../../addSourceWizard/SourceAddSchema';
 import sourceTypes, { OPENSHIFT_TYPE } from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
 
@@ -198,6 +207,50 @@ describe('Add source schema', () => {
             expect(result.fields[1].name).toEqual('application.application_type_id');
             expect(result.fields[1].isRequired).toEqual(true);
             expect(result.fields[1].validate).toEqual([{ type: 'required' }]);
+        });
+    });
+
+    describe('compileAllApplicationComboOptions', () => {
+        let tmpLocation;
+
+        const INTL = { formatMessage: ({ defaultMessage }) => defaultMessage };
+
+        const mockAppTypes = [
+            { name: 'google', display_name: 'Google Cloud Provider', id: '1' },
+            { name: 'aws', display_name: 'Amazon Web Services', id: '2' }
+        ];
+
+        beforeEach(() => {
+            tmpLocation = Object.assign({}, window.location);
+
+            delete window.location;
+
+            window.location = {};
+        });
+
+        afterEach(() => {
+            window.location = tmpLocation;
+        });
+
+        it('cloud type selection', () => {
+            window.location.search = `activeVendor=${CLOUD_VENDOR}`;
+
+            expect(compileAllApplicationComboOptions(mockAppTypes, INTL)).toEqual(
+                [
+                    { key: 'none', label: 'None' },
+                    { label: 'Amazon Web Services', value: '2' },
+                    { label: 'Google Cloud Provider', value: '1' }]
+            );
+        });
+
+        it('red hat type selection - is none', () => {
+            window.location.search = `activeVendor=${REDHAT_VENDOR}`;
+
+            expect(compileAllApplicationComboOptions(mockAppTypes, INTL)).toEqual(
+                [
+                    { label: 'Amazon Web Services', value: '2' },
+                    { label: 'Google Cloud Provider', value: '1' }]
+            );
         });
     });
 });
