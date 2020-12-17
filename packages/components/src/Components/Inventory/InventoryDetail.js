@@ -4,29 +4,33 @@ const AsyncInventory = React.lazy(() => import('./AsyncInventory'));
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
+import { Bullseye, Spinner } from '@patternfly/react-core';
 
-const InventoryDetail = ({ fallback, ...props }) => {
+const InventoryDetail = React.forwardRef((props, ref) => {
     const history = useHistory();
     const store = useStore();
-    return <ScalprumComponent
-        history={history}
-        store={store}
-        fallback={fallback}
-        appName="chrome"
-        module="./InventoryDetail"
-        scope="chrome"
-        ErrorComponent={() => <Suspense fallback={fallback}>
-            <AsyncInventory
-                component="InventoryDetail"
+    return (
+        <Suspense fallback={props.fallback}>
+            <ScalprumComponent
+                history={history}
+                store={store}
+                appName="chrome"
+                module="./InventoryDetail"
+                scope="chrome"
+                ErrorComponent={<AsyncInventory ref={ref} component="InventoryDetail" {...props} />}
+                ref={ref}
                 {...props}
-                fallback={fallback} />
-        </Suspense>}
-        {...props}
-    />;
-};
+            />
+        </Suspense>
+    );
+});
 
 InventoryDetail.propTypes = {
-    fallback: PropTypes.any
+    fallback: PropTypes.node
 };
 
-export default React.forwardRef((props, ref) => <InventoryDetail {...props} ref={ref} />);
+InventoryDetail.defaultProps = {
+    fallback: <Bullseye><Spinner size="xl" /></Bullseye>
+};
+
+export default InventoryDetail;

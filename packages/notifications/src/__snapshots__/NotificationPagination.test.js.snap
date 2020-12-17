@@ -22,6 +22,7 @@ exports[`Notification Pagination component should render correctly 1`] = `
           firstPage={1}
           isCompact={false}
           isDisabled={false}
+          isSticky={false}
           itemCount={10}
           itemsEnd={null}
           itemsStart={null}

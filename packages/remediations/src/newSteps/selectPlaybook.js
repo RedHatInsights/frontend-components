@@ -35,7 +35,6 @@ const SelectPlaybook = (props) => {
         async function fetchData() {
             const { data: existingRemediations } = await api.getRemediations();
             setExistingRemediations(existingRemediations);
-            setSelectedPlaybook(existingRemediations[0] || '');
         }
 
         fetchData();
@@ -62,18 +61,19 @@ const SelectPlaybook = (props) => {
                         { /* TODO: need real data here!!! */}
                         <ExclamationTriangleIcon /> 42 Issues cannot be remediated with Ansible
                     </Text>
-                    <Text className="ins-c-remediations-select-playbook-description">
+                    <Text className="pf-u-ml-md">
                         These issues <b>cannot</b> be added to a playbook. Review the remediation steps on the issue to find out how to fix
                     </Text>
                 </TextContent>
-                { /* TODO: need content here!!! */}
                 <ExpandableSection
-                    className="ins-c-remediations-select-playbook-description"
+                    className="'pf-u-ml-md"
                     toggleText={expandedIssues ? 'Show Less' : 'Show More'}
                     onToggle={(isExpanded) => setExpandedIssues(isExpanded)}
                     isExpanded={expandedIssues}
                 >
-                    This content is visible only when the component is expanded.
+                    <ul className="ins-c-remediations-select-playbook-expandable-content">
+                        { issues.map(issue => (<li key={issue.id}>{issue.id}</li>))}
+                    </ul>
                 </ExpandableSection>
             </StackItem>
             <StackItem>
@@ -107,8 +107,10 @@ const SelectPlaybook = (props) => {
                                     value={selectedPlaybook}
                                     aria-label="Select an existing playbook" >
                                     {existingRemediations.length
-                                        ? existingRemediations.map(({ id, name }) =>
-                                            <FormSelectOption key={id} value={id} label={name} />)
+                                        ? [ <FormSelectOption key='select-playbook-placeholder' value='' label='Select playbook' isDisabled />,
+                                            ...existingRemediations.map(({ id, name }) =>
+                                                <FormSelectOption key={id} value={id} label={name} />)
+                                        ]
                                         : <FormSelectOption key="empty" value="empty" label="No existing playbooks" />
                                     }
                                 </FormSelect>
