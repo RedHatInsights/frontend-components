@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 module.exports = ({
     port,
@@ -7,7 +8,8 @@ module.exports = ({
     appEntry,
     rootFolder,
     https,
-    mode
+    mode,
+    appName
 } = {}) => {
     return {
         mode: mode || (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
@@ -59,9 +61,15 @@ module.exports = ({
             }, {
                 test: /\.s?[ac]ss$/,
                 use: [
-                    process.env.NODE_ENV === 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'style-loader',
                     {
                         loader: 'css-loader'
+                    },
+                    {
+                        loader: path.resolve(__dirname, './custom-css-loader.js'),
+                        options: {
+                            prefix: appName
+                        }
                     },
                     {
                         loader: 'sass-loader'
