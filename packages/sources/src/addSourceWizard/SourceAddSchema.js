@@ -55,15 +55,15 @@ const compileAllSourcesComboOptions = (sourceTypes) => (
     ]
 );
 
-const compileAllApplicationComboOptions = (applicationTypes, intl) => (
+export const compileAllApplicationComboOptions = (applicationTypes, intl) => (
     [
-        {
+        ...(getActiveVendor() !== REDHAT_VENDOR ? [{
             label: intl.formatMessage({
                 id: 'wizard.none',
                 defaultMessage: 'None'
             }),
             key: 'none'
-        },
+        }] : []),
         ...applicationTypes.sort((a, b) => a.display_name.localeCompare(b.display_name)).map(t => ({
             value: t.id,
             label: t.display_name
