@@ -40,6 +40,7 @@ Object {
       },
       "id": "filterwithmultiplespaces",
       "label": "Filter with multiple spaces",
+      "placeholder": "Filter by filter with multiple spaces",
       "type": "checkbox",
     },
     Object {
@@ -49,6 +50,7 @@ Object {
       },
       "id": "name",
       "label": "Name",
+      "placeholder": "Filter by name",
       "type": "text",
     },
     Object {
@@ -119,6 +121,7 @@ Object {
       },
       "id": "severity",
       "label": "Severity",
+      "placeholder": "Filter by severity",
       "type": "checkbox",
     },
     Object {
@@ -138,6 +141,7 @@ Object {
       },
       "id": "passed",
       "label": "Passed",
+      "placeholder": "Filter by passed",
       "type": "radio",
     },
     Object {
@@ -153,6 +157,7 @@ Object {
       },
       "id": "selected",
       "label": "Selected",
+      "placeholder": "Filter by selected",
       "type": "checkbox",
     },
   ],
