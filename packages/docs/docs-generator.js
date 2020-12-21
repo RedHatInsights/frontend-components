@@ -72,6 +72,14 @@ function getPropType(propType, file) {
     return JSON.stringify(propType);
 }
 
+function generateDefaultValue(value) {
+    if (value.defaultValue) {
+        return `\`${value.defaultValue.value}\``;
+    }
+
+    return '';
+}
+
 async function generateMD(file, API) {
     const name = file.split('/').pop().replace('.js', '');
     const examples = glob.sync(path.resolve(__dirname, `./examples/${name}/*.js`));
@@ -88,7 +96,7 @@ ${API.props ? `## Props
 
 |name|type|default|description|
 |----|----|-------|-----------|
-${Object.entries(API.props).map(([ name, value ]) => `|${name}${value.required ? '*' : ''}|${getPropType(value.type, file)}|${value.defaultValue ? value.defaultValue.value : '' || ''}|${value.description ? value.description : ''}|
+${Object.entries(API.props).map(([ name, value ]) => `|${name}${value.required ? '*' : ''}|${getPropType(value.type, file)}|${generateDefaultValue(value)}|${value.description ? value.description : ''}|
 `).join('')}` : '\n'}
 
 `;
