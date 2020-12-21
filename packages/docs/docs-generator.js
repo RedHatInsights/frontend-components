@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const path = require('path');
 const glob = require('glob');
 const fse = require('fs-extra');
@@ -53,7 +54,11 @@ function shapeGenerator({ value }) {
     return JSON.stringify(shape);
 }
 
-function getPropType(propType, file) {
+function getPropType(propType, file, { description, name }) {
+    if (description && description.includes('@extensive')) {
+        return `Check the full prop type definition [here](#${name}).`;
+    }
+
     if (typeof propType === 'string') {
         return propType;
     }
@@ -91,10 +96,14 @@ function generateComponentDescription(description) {
     return { value: description };
 }
 
-function generateMDImports({ examples, description }) {
+function generateMDImports({ examples, description, extensiveProps }) {
     let imports = '';
     if (examples.length > 0) {
         imports = imports.concat(`import ExampleComponent from '@docs/example-component'`, '\n');
+    }
+
+    if (extensiveProps.length > 0) {
+        imports = imports.concat(`import ExtensiveProp from '@docs/extensive-prop'`, '\n');
     }
 
     if (description.deprecated) {
@@ -104,11 +113,36 @@ function generateMDImports({ examples, description }) {
     return imports;
 }
 
+function generatePropDescription(prop) {
+    if (!prop.description) {
+        return '';
+    }
+
+    if (prop.description && prop.description.includes('@extensive')) {
+        return prop.description.replace('@extensive', '');
+    }
+
+    return prop.description;
+}
+
+function getExtensiveProps(props, file) {
+    if (!props) {
+        return [];
+    }
+
+    return Object.entries(props)
+    .filter(([ , value ]) => value.description && value.description.includes('@extensive')).map(([ name, value ]) => {
+        return { name, value: getPropType(value, file, {}) };
+    });
+}
+
 async function generateMD(file, API) {
     const name = file.split('/').pop().replace('.js', '');
     const examples = glob.sync(path.resolve(__dirname, `./examples/${name}/*.js`));
     const description = generateComponentDescription(API.description);
-    const imports = generateMDImports({ examples, description });
+    const extensiveProps = getExtensiveProps(API.props, file);
+    const imports = generateMDImports({ examples, description, extensiveProps });
+
     const content = `${imports}
 # ${API.displayName}${description.value ? `
 ${description.value}` : ''}${examples.length > 0 ? `
@@ -121,9 +155,12 @@ ${API.props ? `## Props
 
 |name|type|default|description|
 |----|----|-------|-----------|
-${Object.entries(API.props).map(([ name, value ]) => `|${name}${value.required ? '*' : ''}|${getPropType(value.type, file)}|${generateDefaultValue(value)}|${value.description ? value.description : ''}|
+${Object.entries(API.props).map(([ name, value ]) => `|${name}${value.required ? '*' : ''}|${getPropType(value.type, file, { name, ...value })}|${generateDefaultValue(value)}|${generatePropDescription(value)}|
 `).join('')}` : '\n'}
 
+${extensiveProps.map((data) => `### <a name="${data.name}"></a>${data.name}
+
+<ExtensiveProp data={${JSON.stringify(data.value)}} />`)}
 `;
     return fse.writeFile(`${componentsDest}/${name}.md`, content);
 }
