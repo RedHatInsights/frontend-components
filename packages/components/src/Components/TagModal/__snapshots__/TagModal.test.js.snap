@@ -15,6 +15,8 @@ exports[`TagCount component Render the modal open with row of tags 1`] = `
   showClose={true}
   tableProps={Object {}}
   title="Tags for paul.localhost.com"
+  titleIconVariant={null}
+  titleLabel=""
   variant="medium"
 >
   <TableWithFilter
@@ -73,6 +75,8 @@ exports[`TagCount component Render the modal with a child component 1`] = `
   showClose={true}
   tableProps={Object {}}
   title="Tags for paul.localhost.com"
+  titleIconVariant={null}
+  titleLabel=""
   variant="medium"
 >
   <TableWithFilter
@@ -141,6 +145,8 @@ exports[`TagCount component Should render modal with disabled button 1`] = `
   showClose={true}
   tableProps={Object {}}
   title="Tags for paul.localhost.com"
+  titleIconVariant={null}
+  titleLabel=""
   variant="medium"
 >
   <TableWithFilter
@@ -217,6 +223,8 @@ exports[`TagCount component should render modal with enabled button 1`] = `
   showClose={true}
   tableProps={Object {}}
   title="Tags for paul.localhost.com"
+  titleIconVariant={null}
+  titleLabel=""
   variant="medium"
 >
   <TableWithFilter
@@ -298,6 +306,8 @@ exports[`Two tables Should render modal with disabled button 1`] = `
   showClose={true}
   tableProps={Object {}}
   title="Tags for paul.localhost.com"
+  titleIconVariant={null}
+  titleLabel=""
   variant="medium"
 >
   <Tabs
@@ -313,6 +323,7 @@ exports[`Two tables Should render modal with disabled button 1`] = `
     ouiaSafe={true}
     rightScrollAriaLabel="Scroll right"
     unmountOnExit={false}
+    variant="default"
   >
     <Tab
       eventKey={0}
@@ -434,6 +445,8 @@ exports[`Two tables should render modal with enabled button 1`] = `
   showClose={true}
   tableProps={Object {}}
   title="Tags for paul.localhost.com"
+  titleIconVariant={null}
+  titleLabel=""
   variant="medium"
 >
   <Tabs
@@ -449,6 +462,7 @@ exports[`Two tables should render modal with enabled button 1`] = `
     ouiaSafe={true}
     rightScrollAriaLabel="Scroll right"
     unmountOnExit={false}
+    variant="default"
   >
     <Tab
       eventKey={0}
@@ -558,6 +572,8 @@ exports[`Two tables should render two tables 1`] = `
   showClose={true}
   tableProps={Object {}}
   title="Tags for paul.localhost.com"
+  titleIconVariant={null}
+  titleLabel=""
   variant="medium"
 >
   <Tabs
@@ -573,6 +589,7 @@ exports[`Two tables should render two tables 1`] = `
     ouiaSafe={true}
     rightScrollAriaLabel="Scroll right"
     unmountOnExit={false}
+    variant="default"
   >
     <Tab
       eventKey={0}
@@ -675,6 +692,8 @@ exports[`Two tables should render two tables in loading state 1`] = `
   showClose={true}
   tableProps={Object {}}
   title="Tags for paul.localhost.com"
+  titleIconVariant={null}
+  titleLabel=""
   variant="medium"
 >
   <Tabs
@@ -690,6 +709,7 @@ exports[`Two tables should render two tables in loading state 1`] = `
     ouiaSafe={true}
     rightScrollAriaLabel="Scroll right"
     unmountOnExit={false}
+    variant="default"
   >
     <Tab
       eventKey={0}

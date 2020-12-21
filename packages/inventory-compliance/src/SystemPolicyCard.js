@@ -12,6 +12,7 @@ import {
     Tooltip
 } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
+import { UnsupportedSSGVersion } from './PresentationalComponents';
 
 class SystemPolicyCard extends React.Component {
     constructor(props) {
@@ -19,7 +20,6 @@ class SystemPolicyCard extends React.Component {
         this.state = {
             cardTitle: <Truncate lines={ 1 }>{ props.policy.name }</Truncate>,
             cardSubTitle: <Truncate lines={ 1 }>{ props.policy.policyType }</Truncate>,
-            refIdTruncated: <Truncate lines={ 1 }>{ props.policy.refId }</Truncate>,
             ...props
         };
     }
@@ -38,14 +38,6 @@ class SystemPolicyCard extends React.Component {
         (value).toFixed(fixed) + (withPercent ? '%' : '')
     );
 
-    onMouseover = () => {
-        this.setState({ refIdTruncated: this.state.policy.refId });
-    }
-
-    onMouseout = () => {
-        this.setState({ refIdTruncated: <Truncate lines={ 1 }>{ this.state.policy.refId }</Truncate> });
-    }
-
     onTitleMouseover = () => {
         this.setState({ cardTitle: this.state.policy.name });
     }
@@ -63,77 +55,70 @@ class SystemPolicyCard extends React.Component {
     }
 
     render() {
-        const { policy, benchmark, rulesFailed, compliant, lastScanned, score } = this.state.policy;
-        const { refIdTruncated, cardTitle, cardSubTitle } = this.state;
+        const {
+            policy, rulesFailed, compliant, lastScanned, score, ssgVersion, supported
+        } = this.state.policy;
+        const { cardTitle, cardSubTitle } = this.state;
         const passedPercentage = this.fixedPercentage(score);
         const FormattedRelativeCmp = FormattedRelativeTime || FormattedRelative || Fragment;
 
-        return (
-            <Card>
-                <CardBody>
-                    <TextContent className='margin-bottom-md'>
-                        <Text className='margin-bottom-top-none'
-                            component={ TextVariants.h4 }
-                            onMouseEnter={ this.onTitleMouseover }
-                            onMouseLeave={ this.onTitleMouseout }
-                        >
-                            { cardTitle }
-                        </Text>
-                        { policy ?
-                            <Text
-                                style={{ color: 'var(--pf-global--Color--200)' }}
-                                component={ TextVariants.small }
-                                onMouseEnter={ this.onSubTitleMouseover }
-                                onMouseLeave={ this.onSubTitleMouseout }>
-                                { cardSubTitle }
-                            </Text>
-                            :
-                            <Tooltip position='bottom' content={
-                                <TextContent>
-                                    This policy report was uploaded into the Compliance application.
-                                    If you would like to manage your policy inside the Compliance application,
-                                    use the &quot;Create a policy&quot; wizard to create one and associate systems.
-                                </TextContent>
-                            }>
-                                External policy <OutlinedQuestionCircleIcon className='grey-icon'/>
-                            </Tooltip>
-                        }
-                    </TextContent>
-                    <div className='margin-bottom-md' >
-                        { this.complianceIcon(compliant) }
-                        <Text component={ TextVariants.small }>
-                            { rulesFailed } rule{ rulesFailed === 1 ? '' : 's' } failed
-                            {' '}
-                            <Tooltip
-                                position='bottom'
-                                maxWidth='22em'
-                                content={
-                                    'The system compliance score is calculated by OpenSCAP and ' +
-                                    'is a normalized weighted sum of rules selected for this policy.'
-                                }>
-                                <span>(Score: { passedPercentage })</span>
-                            </Tooltip>
-                        </Text>
-                    </div>
-                    <div className='margin-bottom-md' >
-                        <Text
-                            component={ TextVariants.medium }
-                            onMouseEnter={ this.onMouseover }
-                            onMouseLeave={ this.onMouseout }
-                            className='wrap-break-word'
-                        >
-                            Profile: { refIdTruncated }
-                            <br/>
-                            SSG version: { benchmark.version }
-                        </Text>
-                    </div>
-                    <Text className='margin-bottom-none' component={ TextVariants.small }>
-                      Last scanned: <FormattedRelativeCmp value={ Date.parse(lastScanned) } />
+        return <Card>
+            <CardBody>
+                <TextContent className='margin-bottom-md'>
+                    <Text className='margin-bottom-top-none'
+                        component={ TextVariants.h4 }
+                        onMouseEnter={ this.onTitleMouseover }
+                        onMouseLeave={ this.onTitleMouseout }
+                    >
+                        { cardTitle }
                     </Text>
-                </CardBody>
-            </Card>
-            /* eslint-disable camelcase */
-        );
+                    { policy ?
+                        <Text
+                            style={{ color: 'var(--pf-global--Color--200)' }}
+                            component={ TextVariants.small }
+                            onMouseEnter={ this.onSubTitleMouseover }
+                            onMouseLeave={ this.onSubTitleMouseout }>
+                            { cardSubTitle }
+                        </Text>
+                        :
+                        <Tooltip position='bottom' content={
+                            <TextContent>
+                                This policy report was uploaded into the Compliance application.
+                                If you would like to manage your policy inside the Compliance application,
+                                use the &quot;Create a policy&quot; wizard to create one and associate systems.
+                            </TextContent>
+                        }>
+                            External policy <OutlinedQuestionCircleIcon className='grey-icon'/>
+                        </Tooltip>
+                    }
+                </TextContent>
+                <div className='margin-bottom-md' >
+                    { supported && this.complianceIcon(compliant) }
+                    <Text component={ TextVariants.small }>
+                        { rulesFailed } rule{ rulesFailed === 1 ? '' : 's' } failed
+                        {' '}
+                        <Tooltip
+                            position='bottom'
+                            maxWidth='22em'
+                            content={
+                                'The system compliance score is calculated by OpenSCAP and ' +
+                                'is a normalized weighted sum of rules selected for this policy.'
+                            }>
+                            <span>(Score: { passedPercentage })</span>
+                        </Tooltip>
+                    </Text>
+                </div>
+                <Text className='margin-bottom-none' component={ TextVariants.small }>
+                    <Text>
+                        SSG version: { ssgVersion }
+                    </Text>
+                    <Text>
+                        Last scanned: { lastScanned !== 'Never' ? <FormattedRelativeCmp value={ Date.parse(lastScanned) } /> : lastScanned }
+                    </Text>
+                </Text>
+                { !supported && <UnsupportedSSGVersion ssgVersion={ ssgVersion } /> }
+            </CardBody>
+        </Card>;
     };
 };
 
@@ -146,7 +131,9 @@ SystemPolicyCard.propTypes = {
         refId: PropTypes.string,
         name: PropTypes.string,
         policyType: PropTypes.string,
-        compliant: PropTypes.bool
+        compliant: PropTypes.bool,
+        ssgVersion: PropTypes.string,
+        supported: PropTypes.bool
     })
 };
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
+import { RemediationButton } from '@redhat-cloud-services/frontend-components-remediations';
 import flatten from 'lodash/flatten';
 import { connect } from 'react-redux';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
-import { global_BackgroundColor_100 as globalBackgroundColor100 } from '@patternfly/react-tokens';
+import globalBackgroundColor100 from '@patternfly/react-tokens/dist/js/global_BackgroundColor_100';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 
 class ComplianceRemediationButton extends React.Component {
