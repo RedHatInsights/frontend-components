@@ -108,11 +108,14 @@ const TextInputProps = {
 
 ConditionalFilter.propTypes = {
     hideLabel: PropTypes.bool,
+    /**
+     * @extensive
+     */
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string,
         label: PropTypes.node,
         value: PropTypes.string,
-        type: PropTypes.oneOf(Object.values(conditionalFilterType)),
+        type: PropTypes.oneOf([ 'text', 'checkbox', 'radio', 'custom', 'group' ]),
         filterValues: PropTypes.oneOfType([ PropTypes.shape(TextInputProps), PropTypes.shape({
             ...TextInputProps,
             value: PropTypes.oneOfType([
