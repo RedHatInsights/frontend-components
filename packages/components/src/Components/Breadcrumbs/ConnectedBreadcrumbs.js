@@ -1,8 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useEffect } from 'react';
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import Breadcrumbs from './Breadcrumbs';
 
+/**
+ * @deprecated
+ *
+ * Breadcrumbs from FE component shouldn't be used anymore.
+ *
+ * Use <a href="https://www.patternfly.org/v4/components/breadcrumb" target="_blank">Breadcrumbs</a> from PF repository.
+ */
 const ConnectedBreadcrumbs = (props) => {
     const history = useHistory();
     const location = useLocation();
