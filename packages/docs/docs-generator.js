@@ -30,7 +30,7 @@ const propTypeGeneratorMapper = {
 };
 
 function primitiveGenerator({ name }) {
-    return name;
+    return `\`${name}\``;
 }
 
 function enumGenerator({ value }) {
@@ -80,13 +80,38 @@ function generateDefaultValue(value) {
     return '';
 }
 
+function generateComponentDescription(description) {
+    if (description.includes('@deprecated')) {
+        return {
+            deprecated: true,
+            value: description.replace('@deprecated', '')
+        };
+    }
+
+    return { value: description };
+}
+
+function generateMDImports({ examples, description }) {
+    let imports = '';
+    if (examples.length > 0) {
+        imports = imports.concat(`import ExampleComponent from '@docs/example-component'`, '\n');
+    }
+
+    if (description.deprecated) {
+        imports = imports.concat(`import DeprecationWarn from '@docs/deprecation-warn'`, '\n\n', '<DeprecationWarn />', '\n');
+    }
+
+    return imports;
+}
+
 async function generateMD(file, API) {
     const name = file.split('/').pop().replace('.js', '');
     const examples = glob.sync(path.resolve(__dirname, `./examples/${name}/*.js`));
-    const content = `${examples.length > 0 ? `import ExampleComponent from '@docs/example-component'
-
-` : ''}# ${API.displayName}${API.description ? `
-${API.description}` : ''}${examples.length > 0 ? `
+    const description = generateComponentDescription(API.description);
+    const imports = generateMDImports({ examples, description });
+    const content = `${imports}
+# ${API.displayName}${description.value ? `
+${description.value}` : ''}${examples.length > 0 ? `
 ${examples.map(example => {
         const fileName = example.split('/').pop().replace('.js', '');
         return `<ExampleComponent source="${name}/${fileName}" name="${fileName.replace('-', ' ')}" />`;
