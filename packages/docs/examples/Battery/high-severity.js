@@ -15,15 +15,15 @@ const useStyle = createUseStyles({
     }
 });
 
-const LowSeverity = () => {
+const HighSeverity = () => {
     const classes = useStyle();
     return (
         <div className={classes.container}>
-            <Battery label="With prop: 1" severity={1} />
-            <Battery label="With prop: low" severity="low" />
-            <Battery label="With prop: info" severity="info" />
+            <Battery label="With prop: 3" severity={3} />
+            <Battery label="With prop: high" severity="high" />
+            <Battery label="With prop: error" severity="error" />
         </div>
     );
 };
 
-export default LowSeverity;
+export default HighSeverity;
