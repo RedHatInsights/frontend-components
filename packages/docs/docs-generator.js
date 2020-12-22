@@ -84,7 +84,7 @@ function getPropType(propType, file, { description, name }) {
 
 function generateDefaultValue(value) {
     if (value.defaultValue) {
-        return `\`${value.defaultValue.value}\``;
+        return `\`${value.defaultValue.value.replace(/\n/gm, '')}\``;
     }
 
     return '';
