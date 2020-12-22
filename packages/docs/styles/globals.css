@@ -11,3 +11,7 @@ body {
 .pf-c-page {
   min-height: 100vh;
 }
+
+.default-prop-spacer {
+  padding-left: 4px;
+}

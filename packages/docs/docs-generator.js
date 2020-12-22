@@ -9,6 +9,13 @@ const COMPONENTS_JSON = 'component-docs.json';
 const componentsDest = path.resolve(__dirname, './pages/components');
 const navDest = path.resolve(__dirname, './components/navigation');
 
+function newLineReplacer(str) {
+    return str.replace(/<br \/>\s+/gm, (str) => {
+        const spacers = str.match(/\s/gm || []);
+        return str.replace(/<br \/>\s/, `<br />${spacers.map(() => `<span className="default-prop-spacer"></span>`).join('')}`);
+    });
+}
+
 const propTypeGeneratorMapper = {
     string: primitiveGenerator,
     number: primitiveGenerator,
@@ -52,7 +59,7 @@ function shapeGenerator({ value }) {
         ...acc,
         [`${name}${value.required ? '*' : ''}`]: propTypeGeneratorMapper[value.name](value)
     }), {});
-    return `<code>${JSON.stringify(shape).replace(/("|\\")/gm, '').replace(/:/gm, ': ').replace(/,/gm, ', ')}</code>`;
+    return `<code>${newLineReplacer(JSON.stringify(shape, null, 2).replace(/\n/gm, '<br />').replace(/("|\\")/gm, '').replace(/:/gm, ': ').replace(/,/gm, ', '))}</code>`;
 }
 
 function getPropType(propType, file, { description, name }) {
@@ -79,12 +86,15 @@ function getPropType(propType, file, { description, name }) {
         }
     }
 
-    return typeof propType === 'object' ? `<code>${JSON.stringify(propType)}</code>` : `<code>${propType}</code>`;
+    return typeof propType === 'object' ? `<code>${newLineReplacer(JSON.stringify(propType, null, 2).replace(/\n/gm, '<br />'))}</code>` : `<code>${propType}</code>`;
 }
 
 function generateDefaultValue(value) {
     if (value.defaultValue) {
-        return `\`${value.defaultValue.value.replace(/\n/gm, '')}\``;
+        return `\`${newLineReplacer(JSON.stringify(value.defaultValue.value, null, 2)
+        .replace(/\\n/gm, '  ')
+        .replace(/(^"|\^"|"$|"(?=\{)|(?<=})")/gm, ''))
+        .replace(/((\\")(?=\s)|(?<==)(\\"))/gm, '"')}\``;
     }
 
     return '';
