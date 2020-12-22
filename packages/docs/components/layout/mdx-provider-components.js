@@ -1,9 +1,20 @@
 import { Title, Card, CardBody } from '@patternfly/react-core';
+import { createUseStyles } from 'react-jss';
+import classnames from 'classnames';
+
+const useTableStyles = createUseStyles({
+    card: {
+        overflowY: 'auto'
+    }
+});
 
 const H1 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h1" {...props} />;
 const H2 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h2" {...props} />;
 const H3 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h2" {...props} />;
-const Table = props => <Card className="pf-u-mb-lg"><CardBody><table className="pf-c-table pf-m-grid-md" {...props} /></CardBody></Card>;
+const Table = props => {
+    const classes = useTableStyles();
+    return <Card className={classnames('pf-u-mb-lg', classes.card)}><CardBody><table className="pf-c-table pf-m-grid-md" {...props} /></CardBody></Card>;
+};
 
 const components = {
     h1: H1,
