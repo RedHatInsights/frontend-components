@@ -31,7 +31,7 @@ const AppInfo = React.forwardRef((props, ref) => {
 });
 
 AppInfo.propTypes = {
-    /** React Suspense fallback component. [Learn more](https://reactjs.org/docs/code-splitting.html#reactlazy). */
+    /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
     fallback: PropTypes.node
 };
 
