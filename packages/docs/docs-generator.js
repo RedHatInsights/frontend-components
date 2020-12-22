@@ -27,7 +27,8 @@ const propTypeGeneratorMapper = {
     instanceOf: ({ value }) => value,
     enum: enumGenerator,
     custom: ({ raw }) => raw,
-    object: primitiveGenerator
+    object: primitiveGenerator,
+    undefined: primitiveGenerator
 };
 
 function primitiveGenerator({ name }) {
@@ -43,7 +44,7 @@ function unionGenerator({ value }) {
 }
 
 function arrayOfGenerator({ value }) {
-    return `Array of: ${propTypeGeneratorMapper[value.name](value)}`;
+    return `<code>Array of:</code> ${propTypeGeneratorMapper[value.name](value)}`;
 }
 
 function shapeGenerator({ value }) {
@@ -51,12 +52,16 @@ function shapeGenerator({ value }) {
         ...acc,
         [`${name}${value.required ? '*' : ''}`]: propTypeGeneratorMapper[value.name](value)
     }), {});
-    return JSON.stringify(shape);
+    return `<code>${JSON.stringify(shape).replace(/("|\\")/gm, '').replace(/:/gm, ': ').replace(/,/gm, ', ')}</code>`;
 }
 
 function getPropType(propType, file, { description, name }) {
     if (description && description.includes('@extensive')) {
         return `Check the full prop type definition [here](#${name}).`;
+    }
+
+    if (description && description.includes('@reference')) {
+        return `<code>Object</code>`;
     }
 
     if (typeof propType === 'string') {
@@ -74,7 +79,7 @@ function getPropType(propType, file, { description, name }) {
         }
     }
 
-    return JSON.stringify(propType);
+    return typeof propType === 'object' ? `<code>${JSON.stringify(propType)}</code>` : `<code>${propType}</code>`;
 }
 
 function generateDefaultValue(value) {
@@ -86,14 +91,13 @@ function generateDefaultValue(value) {
 }
 
 function generateComponentDescription(description) {
+    const result = { value: description };
     if (description.includes('@deprecated')) {
-        return {
-            deprecated: true,
-            value: description.replace('@deprecated', '')
-        };
+        result.deprecated = true;
+        result.value = result.value.replace('@deprecated', '');
     }
 
-    return { value: description };
+    return result;
 }
 
 function generateMDImports({ examples, description, extensiveProps }) {
@@ -118,11 +122,18 @@ function generatePropDescription(prop) {
         return '';
     }
 
+    const result = { ...prop };
+
     if (prop.description && prop.description.includes('@extensive')) {
-        return prop.description.replace('@extensive', '');
+        result.description.replace('@extensive', '');
     }
 
-    return prop.description;
+    if (prop.description.includes('@reference')) {
+        result.reference = true;
+        result.description = result.description.replace('@reference', '');
+    }
+
+    return result.description;
 }
 
 function getExtensiveProps(props, file) {

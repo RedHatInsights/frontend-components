@@ -141,12 +141,18 @@ PrimaryToolbar.propTypes = {
     id: PropTypes.oneOfType([ PropTypes.number, PropTypes.string ]),
     className: PropTypes.string,
     toggleIsExpanded: PropTypes.func,
+    /** @reference [BulkSelect props](/components/BulkSelect) */
     bulkSelect: PropTypes.shape(BulkSelect.propTypes),
+    /** @reference [ConditionalFilter props](/components/ConditionalFilter) */
     filterConfig: PropTypes.shape(ConditionalFilter.propTypes),
     dedicatedAction: PropTypes.node,
+    /** @reference [PF pagination props](https://www.patternfly.org/v4/components/pagination#pagination) */
     pagination: PropTypes.shape(Pagination.propTypes),
+    /** @reference [SortBy props](/components/SortBy) */
     sortByConfig: PropTypes.shape(SortBy.propTypes),
+    /** @reference [DownloadButton props](/components/DownloadButton) */
     exportConfig: PropTypes.shape(DownloadButton.propTypes),
+    /** @reference [FilterChips props](/components/FilterChips) */
     activeFiltersConfig: PropTypes.shape(FilterChips.propTypes),
     children: PropTypes.node,
     actionsConfig: PropTypes.shape({
