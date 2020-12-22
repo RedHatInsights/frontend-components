@@ -170,7 +170,7 @@ ${description.value}` : ''}${examples.length > 0 ? `
 ${examples.map(example => {
         const fileName = example.split('/').pop().replace('.js', '');
         return `<ExampleComponent source="${name}/${fileName}" name="${fileName.replace('-', ' ')}" />`;
-    })}` : ''}
+    }).join('')}` : ''}
 
 ${API.props ? `## Props
 
