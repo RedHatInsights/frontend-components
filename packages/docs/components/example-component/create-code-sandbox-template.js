@@ -3,8 +3,6 @@ import { getParameters } from 'codesandbox/lib/api/define';
 const html = `
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@patternfly/patternfly@latest/patternfly-base.css"/>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@patternfly/patternfly@latest/patternfly-addons.css"/>
   </head>
   <body>
     <div id="root"></div>
@@ -14,7 +12,9 @@ const html = `
 
 const renderSnippet = `import React from 'react';
 import ReactDOM from 'react-dom'
+import '@patternfly/react-core/dist/styles/base.css';
 import Example from './example'
+import '@redhat-cloud-services/frontend-components/index.css'
 
 ReactDOM.render(<Example />, document.getElementById('root'));
 
