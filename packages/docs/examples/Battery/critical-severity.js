@@ -15,15 +15,14 @@ const useStyle = createUseStyles({
     }
 });
 
-const LowSeverity = () => {
+const CriticalSeverity = () => {
     const classes = useStyle();
     return (
         <div className={classes.container}>
-            <Battery label="With prop: 1" severity={1} />
-            <Battery label="With prop: low" severity="low" />
-            <Battery label="With prop: info" severity="info" />
+            <Battery label="With prop: 4" severity={4} />
+            <Battery label="With prop: critical" severity="critical" />
         </div>
     );
 };
 
-export default LowSeverity;
+export default CriticalSeverity;
