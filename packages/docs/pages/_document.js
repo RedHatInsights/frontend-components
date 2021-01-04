@@ -27,7 +27,7 @@ class MyDocument extends Document {
                     <style id="ssr-style">{registry.toString()}</style>
                 </Fragment>
             )
-        }
+        };
     }
     render() {
         return (

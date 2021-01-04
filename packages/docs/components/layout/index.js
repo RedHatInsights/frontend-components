@@ -6,6 +6,7 @@ import {
     PageSidebar
 } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
+import classnames from 'classnames';
 import Link from 'next/link';
 import Navigation from '../navigation';
 import HeaderTools from './header-tools';
@@ -16,6 +17,17 @@ const useStyles = createUseStyles({
     },
     logo: {
         width: 100
+    },
+    content: {
+        marginLeft: 'initial',
+        marginRight: 'initial'
+    },
+    '@media (min-width: 1200px)': {
+        content: {
+            width: 900,
+            marginLeft: 'auto',
+            marginRight: 'auto'
+        }
     }
 });
 
@@ -38,7 +50,7 @@ const Layout = ({ children }) => {
     const Sidebar = <PageSidebar nav={<Navigation />} isNavOpen={isOpen} />;
     return (
         <Page className={classes.page} header={Header} sidebar={Sidebar}>
-            <div className="pf-u-p-md">
+            <div className={classnames('pf-u-p-md', classes.content)}>
                 {children}
             </div>
         </Page>

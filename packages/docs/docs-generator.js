@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const path = require('path');
 const glob = require('glob');
 const fse = require('fs-extra');
@@ -7,6 +8,13 @@ const COMPONENTS_JSON = 'component-docs.json';
 //const firstComponents = Object.entries(components)[0];
 const componentsDest = path.resolve(__dirname, './pages/components');
 const navDest = path.resolve(__dirname, './components/navigation');
+
+function newLineReplacer(str) {
+    return str.replace(/<br \/>\s+/gm, (str) => {
+        const spacers = str.match(/\s/gm || []);
+        return str.replace(/<br \/>\s/, `<br />${spacers.map(() => `<span className="default-prop-spacer"></span>`).join('')}`);
+    });
+}
 
 const propTypeGeneratorMapper = {
     string: primitiveGenerator,
@@ -26,11 +34,12 @@ const propTypeGeneratorMapper = {
     instanceOf: ({ value }) => value,
     enum: enumGenerator,
     custom: ({ raw }) => raw,
-    object: primitiveGenerator
+    object: primitiveGenerator,
+    undefined: primitiveGenerator
 };
 
 function primitiveGenerator({ name }) {
-    return name;
+    return `\`${name}\``;
 }
 
 function enumGenerator({ value }) {
@@ -42,7 +51,7 @@ function unionGenerator({ value }) {
 }
 
 function arrayOfGenerator({ value }) {
-    return `Array of: ${propTypeGeneratorMapper[value.name](value)}`;
+    return `<code>Array of:</code> ${propTypeGeneratorMapper[value.name](value)}`;
 }
 
 function shapeGenerator({ value }) {
@@ -50,10 +59,18 @@ function shapeGenerator({ value }) {
         ...acc,
         [`${name}${value.required ? '*' : ''}`]: propTypeGeneratorMapper[value.name](value)
     }), {});
-    return JSON.stringify(shape);
+    return `<code>${newLineReplacer(JSON.stringify(shape, null, 2).replace(/\n/gm, '<br />').replace(/("|\\")/gm, '').replace(/:/gm, ': ').replace(/,/gm, ', '))}</code>`;
 }
 
-function getPropType(propType, file) {
+function getPropType(propType, file, { description, name }) {
+    if (description && description.includes('@extensive')) {
+        return `Check the full prop type definition [here](#${name}).`;
+    }
+
+    if (description && description.includes('@reference')) {
+        return `<code>Object</code>`;
+    }
+
     if (typeof propType === 'string') {
         return propType;
     }
@@ -69,28 +86,102 @@ function getPropType(propType, file) {
         }
     }
 
-    return JSON.stringify(propType);
+    return typeof propType === 'object' ? `<code>${newLineReplacer(JSON.stringify(propType, null, 2).replace(/\n/gm, '<br />'))}</code>` : `<code>${propType}</code>`;
+}
+
+function generateDefaultValue(value) {
+    if (value.defaultValue) {
+        return `\`${newLineReplacer(JSON.stringify(value.defaultValue.value, null, 2)
+        .replace(/\\n/gm, '  ')
+        .replace(/(^"|\^"|"$|"(?=\{)|(?<=})")/gm, ''))
+        .replace(/((\\")(?=\s)|(?<==)(\\"))/gm, '"')}\``;
+    }
+
+    return '';
+}
+
+function generateComponentDescription(description) {
+    const result = { value: description };
+    if (description.includes('@deprecated')) {
+        result.deprecated = true;
+        result.value = result.value.replace('@deprecated', '');
+    }
+
+    return result;
+}
+
+function generateMDImports({ examples, description, extensiveProps }) {
+    let imports = '';
+    if (examples.length > 0) {
+        imports = imports.concat(`import ExampleComponent from '@docs/example-component'`, '\n');
+    }
+
+    if (extensiveProps.length > 0) {
+        imports = imports.concat(`import ExtensiveProp from '@docs/extensive-prop'`, '\n');
+    }
+
+    if (description.deprecated) {
+        imports = imports.concat(`import DeprecationWarn from '@docs/deprecation-warn'`, '\n\n', '<DeprecationWarn />', '\n');
+    }
+
+    return imports;
+}
+
+function generatePropDescription(prop) {
+    if (!prop.description) {
+        return '';
+    }
+
+    const result = { ...prop };
+
+    if (prop.description && prop.description.includes('@extensive')) {
+        result.description.replace('@extensive', '');
+    }
+
+    if (prop.description.includes('@reference')) {
+        result.reference = true;
+        result.description = result.description.replace('@reference', '');
+    }
+
+    return result.description;
+}
+
+function getExtensiveProps(props, file) {
+    if (!props) {
+        return [];
+    }
+
+    return Object.entries(props)
+    .filter(([ , value ]) => value.description && value.description.includes('@extensive')).map(([ name, value ]) => {
+        return { name, value: getPropType(value, file, {}) };
+    });
 }
 
 async function generateMD(file, API) {
     const name = file.split('/').pop().replace('.js', '');
     const examples = glob.sync(path.resolve(__dirname, `./examples/${name}/*.js`));
-    const content = `${examples.length > 0 ? `import ExampleComponent from '@docs/example-component'
+    const description = generateComponentDescription(API.description);
+    const extensiveProps = getExtensiveProps(API.props, file);
+    const imports = generateMDImports({ examples, description, extensiveProps });
 
-` : ''}# ${API.displayName}${API.description ? `
-${API.description}` : ''}${examples.length > 0 ? `
+    const content = `${imports}
+# ${API.displayName}${description.value ? `
+${description.value}` : ''}${examples.length > 0 ? `
 ${examples.map(example => {
         const fileName = example.split('/').pop().replace('.js', '');
         return `<ExampleComponent source="${name}/${fileName}" name="${fileName.replace('-', ' ')}" />`;
-    })}` : ''}
+    }).join('')}` : ''}
 
 ${API.props ? `## Props
 
 |name|type|default|description|
 |----|----|-------|-----------|
-${Object.entries(API.props).map(([ name, value ]) => `|${name}${value.required ? '*' : ''}|${getPropType(value.type, file)}|${value.defaultValue ? value.defaultValue.value : '' || ''}|${value.description ? value.description : ''}|
+${Object.entries(API.props).map(([ name, value ]) => `|${name}${value.required ? '*' : ''}|${getPropType(value.type, file, { name, ...value })}|${generateDefaultValue(value)}|${generatePropDescription(value)}|
 `).join('')}` : '\n'}
 
+${extensiveProps.map((data) => `### <a name="${data.name}"></a>${data.name}
+
+<ExtensiveProp data={${JSON.stringify(data.value)}} />`)}
 `;
     return fse.writeFile(`${componentsDest}/${name}.md`, content);
 }

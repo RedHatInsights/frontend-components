@@ -48,7 +48,9 @@ module.exports = withMDX(withCSS({
         config.resolve.alias = {
             ...config.resolve.alias,
             '@docs/example-component': path.resolve(__dirname, './components/example-component'),
-            '@docs/examples': path.resolve(__dirname, './examples')
+            '@docs/examples': path.resolve(__dirname, './examples'),
+            '@docs/deprecation-warn': path.resolve(__dirname, './components/deprecation-warn'),
+            '@docs/extensive-prop': path.resolve(__dirname, './components/extensive-prop')
         };
 
         config.module.rules.push({

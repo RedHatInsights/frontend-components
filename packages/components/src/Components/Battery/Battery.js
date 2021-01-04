@@ -82,10 +82,7 @@ const Battery = ({ severity, label, labelHidden, className, ...props }) => {
 export default Battery;
 
 Battery.propTypes = {
-    severity: propTypes.oneOfType([
-        propTypes.string.isRequired,
-        propTypes.number.isRequired
-    ]),
+    severity: propTypes.oneOf([ 1, 2, 3, 4, 'info', 'low', 'warn', 'medium', 'error', 'high', 'critical' ]),
     label: propTypes.string.isRequired,
     labelHidden: propTypes.bool
 };
