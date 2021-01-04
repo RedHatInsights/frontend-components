@@ -7,7 +7,8 @@ import {
     sourceTypeMutator,
     appMutator,
     typesStep,
-    compileAllApplicationComboOptions
+    compileAllApplicationComboOptions,
+    appMutatorRedHat
 } from '../../addSourceWizard/SourceAddSchema';
 import sourceTypes, { OPENSHIFT_TYPE } from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
@@ -166,6 +167,23 @@ describe('Add source schema', () => {
                 { label: 'cost', value: 'cost', isDisabled: true }
             );
         });
+
+        it('appMutatorRedHat - undfined when unable', () => {
+            const formOptions = {
+                getState: () => ({
+                    values: {
+                        source_type: 'amazon'
+                    }
+                })
+            };
+
+            const mutator = appMutatorRedHat(applicationTypes);
+
+            expect(mutator({ label: 'catalog', value: 'selected' }, formOptions)).toEqual(
+                { label: 'catalog', value: 'selected' }
+            );
+            expect(mutator({ label: 'cost', value: 'cost' }, formOptions)).toEqual(undefined);
+        });
     });
 
     describe('typesStep', () => {
@@ -192,9 +210,14 @@ describe('Add source schema', () => {
 
             expect(result.fields).toHaveLength(3);
             expect(result.fields[0].name).toEqual('source_type');
+            expect(result.fields[0].mutator).toEqual(expect.any(Function));
             expect(result.fields[1].name).toEqual('application.application_type_id');
+            expect(result.fields[1].component).toEqual('enhanced-select');
             expect(result.fields[1].isRequired).toEqual(undefined);
             expect(result.fields[1].validate).toEqual(undefined);
+            expect(result.fields[1].placeholder).toEqual(expect.any(String));
+            expect(result.fields[1].condition).toEqual(undefined);
+            expect(result.fields[1].mutator.toString()).toEqual(appMutator(applicationTypes).toString());
         });
 
         it('red hat type selection', () => {
@@ -204,9 +227,14 @@ describe('Add source schema', () => {
 
             expect(result.fields).toHaveLength(3);
             expect(result.fields[0].name).toEqual('source_type');
+            expect(result.fields[0].mutator).toEqual(undefined);
             expect(result.fields[1].name).toEqual('application.application_type_id');
+            expect(result.fields[1].component).toEqual('enhanced-radio');
             expect(result.fields[1].isRequired).toEqual(true);
             expect(result.fields[1].validate).toEqual([{ type: 'required' }]);
+            expect(result.fields[1].placeholder).toEqual(undefined);
+            expect(result.fields[1].condition).toEqual({ isNotEmpty: true, when: 'source_type' });
+            expect(result.fields[1].mutator.toString()).toEqual(appMutatorRedHat(applicationTypes).toString());
         });
     });
 
