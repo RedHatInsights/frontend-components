@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-compliance",
-    "version": "2.2.20",
+    "version": "2.2.21",
     "description": "Detail part of compliance for RedHat Cloud Services.",
     "browser": "index.js",
     "module": "esm/index.js",
@@ -28,7 +28,6 @@
         "@patternfly/react-core": ">=4.18.5",
         "@patternfly/react-icons": ">=4.3.5",
         "@patternfly/react-table": ">=4.5.7",
-        "@patternfly/react-tokens": ">=4.4.4",
         "react": ">=16.13.1",
         "react-dom": ">=16.13.1",
         "prop-types": ">=15.6.2",

@@ -85,6 +85,18 @@ export const appMutator = (appTypes) => (option, formOptions) => {
     };
 };
 
+export const appMutatorRedHat = (appTypes) => (option, formOptions) => {
+    const selectedSourceType = formOptions.getState().values.source_type;
+    const appType = appTypes.find(app => app.display_name === option.label);
+    const isEnabled = selectedSourceType ? appType.supported_source_types.includes(selectedSourceType) : true;
+
+    if (!isEnabled) {
+        return;
+    }
+
+    return option;
+};
+
 export const sourceTypeMutator = (appTypes, sourceTypes) => (option, formOptions) => {
     const selectedApp = formOptions.getState().values.application ? formOptions.getState().values.application.application_type_id : undefined;
     const appType = appTypes.find(app => app.id === selectedApp);
@@ -114,6 +126,59 @@ export const nextStep = ({ values: { application, source_type } }) => {
     return resultedStep;
 };
 
+const sourceTypeSelect = ({ intl, sourceTypes, applicationTypes }) => ({
+    component: 'card-select',
+    name: 'source_type',
+    isRequired: true,
+    label: intl.formatMessage({
+        id: 'wizard.selectYourSourceType',
+        defaultMessage: 'A. Select your source type'
+    }),
+    iconMapper: iconMapper(sourceTypes),
+    validate: [{
+        type: validatorTypes.REQUIRED
+    }],
+    options: compileAllSourcesComboOptions(sourceTypes, applicationTypes)
+});
+
+const cloudTypes = ({ intl, sourceTypes, applicationTypes, disableAppSelection }) => ([
+    {
+        ...sourceTypeSelect({ intl, sourceTypes, applicationTypes }),
+        mutator: sourceTypeMutator(applicationTypes, sourceTypes)
+    },
+    {
+        component: 'enhanced-select',
+        name: 'application.application_type_id',
+        label: intl.formatMessage({
+            id: 'wizard.selectYourApplication',
+            defaultMessage: 'B. Select an application'
+        }),
+        options: compileAllApplicationComboOptions(applicationTypes, intl, sourceTypes),
+        mutator: appMutator(applicationTypes),
+        isDisabled: disableAppSelection,
+        placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' }),
+        menuIsPortal: true
+    }
+]);
+
+const redhatTypes = ({ intl, sourceTypes, applicationTypes, disableAppSelection }) => ([
+    sourceTypeSelect({ intl, sourceTypes, applicationTypes }),
+    {
+        component: 'enhanced-radio',
+        name: 'application.application_type_id',
+        label: intl.formatMessage({
+            id: 'wizard.selectApplication',
+            defaultMessage: 'B. Application'
+        }),
+        options: compileAllApplicationComboOptions(applicationTypes, intl, sourceTypes),
+        mutator: appMutatorRedHat(applicationTypes),
+        isDisabled: disableAppSelection,
+        isRequired: true,
+        validate: [{ type: validatorTypes.REQUIRED }],
+        condition: { when: 'source_type', isNotEmpty: true }
+    }
+]);
+
 export const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => ({
     title: intl.formatMessage({
         id: 'wizard.chooseAppAndType',
@@ -122,38 +187,10 @@ export const typesStep = (sourceTypes, applicationTypes, disableAppSelection, in
     name: 'types_step',
     nextStep,
     fields: [
-        {
-            component: 'card-select',
-            name: 'source_type',
-            isRequired: true,
-            label: intl.formatMessage({
-                id: 'wizard.selectYourSourceType',
-                defaultMessage: 'A. Select your source type'
-            }),
-            iconMapper: iconMapper(sourceTypes),
-            validate: [{
-                type: validatorTypes.REQUIRED
-            }],
-            options: compileAllSourcesComboOptions(sourceTypes, applicationTypes),
-            mutator: sourceTypeMutator(applicationTypes, sourceTypes)
-        },
-        {
-            component: 'enhanced-select',
-            name: 'application.application_type_id',
-            label: intl.formatMessage({
-                id: 'wizard.selectYourApplication',
-                defaultMessage: 'B. Select an application'
-            }),
-            options: compileAllApplicationComboOptions(applicationTypes, intl, sourceTypes),
-            mutator: appMutator(applicationTypes),
-            isDisabled: disableAppSelection,
-            placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' }),
-            ...(getActiveVendor() === REDHAT_VENDOR && {
-                isRequired: true,
-                validate: [{ type: validatorTypes.REQUIRED }]
-            }),
-            menuIsPortal: true
-        },
+        ...(getActiveVendor() === REDHAT_VENDOR
+            ? redhatTypes({ intl, sourceTypes, applicationTypes, disableAppSelection })
+            : cloudTypes({ intl, sourceTypes, applicationTypes, disableAppSelection })
+        ),
         {
             component: 'description',
             name: 'fixasyncvalidation',
