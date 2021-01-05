@@ -8,17 +8,23 @@ import {
     Bullseye,
     Spinner,
     EmptyStateIcon,
-    Title
+    Title,
+    EmptyStateBody
 } from '@patternfly/react-core';
 import { FormattedMessage } from 'react-intl';
 
-const LoadingStep = ({ onClose, customText, cancelTitle }) => (
+const LoadingStep = ({ onClose, customText, cancelTitle, description }) => (
     <Bullseye>
         <EmptyState variant={ EmptyStateVariant.full } className="pf-u-mt-4xl">
             <EmptyStateIcon icon={ Spinner } className="pf-u-mb-0"/>
             <Title headingLevel="h2" size="xl" className="pf-u-mt-xl">
                 {customText}
             </Title>
+            {description && (
+                <EmptyStateBody className="ins-c-sources__wizard--step-text">
+                    {description}
+                </EmptyStateBody>
+            )}
             { onClose &&
         <EmptyStateSecondaryActions className="pf-u-mt-xl">
             <Button variant="link" onClick={ onClose }>{cancelTitle}</Button>
@@ -30,7 +36,8 @@ const LoadingStep = ({ onClose, customText, cancelTitle }) => (
 LoadingStep.propTypes = {
     onClose: PropTypes.func,
     customText: PropTypes.node,
-    cancelTitle: PropTypes.node
+    cancelTitle: PropTypes.node,
+    description: PropTypes.node
 };
 
 LoadingStep.defaultProps = {
