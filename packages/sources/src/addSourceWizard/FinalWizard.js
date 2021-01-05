@@ -128,7 +128,11 @@ const FinalWizard = ({
         step = <LoadingStep
             customText={intl.formatMessage({
                 id: 'wizard.loadingText',
-                defaultMessage: 'Validating source credentials'
+                defaultMessage: 'Validating credentials'
+            })}
+            description={intl.formatMessage({
+                id: 'wizard.loadingDescription',
+                defaultMessage: 'This could take a minute. If you prefer not to wait, close this dialog and the process will continue.'
             })}
             onClose={afterError}
             cancelTitle={intl.formatMessage({ id: 'wizard.close', defaultMessage: 'Close' })}

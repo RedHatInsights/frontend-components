@@ -55,7 +55,10 @@ describe('Final wizard', () => {
     it('contains loading step', () => {
         const wrapper = mount(<FinalWizard { ...initialProps }/>);
         expect(wrapper.find(LoadingStep)).toHaveLength(1);
-        expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Validating source credentials');
+        expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Validating credentials');
+        expect(wrapper.find(EmptyState).find(EmptyStateBody).text()).toEqual(
+            'This could take a minute. If you prefer not to wait, close this dialog and the process will continue.'
+        );
     });
 
     it('renders amazon finished step correctly', () => {
