@@ -125,6 +125,7 @@ const AddSourceWizard = ({
         createdSource={createdSource}
         tryAgain={() => onSubmit(values, state.sourceTypes)}
         afterSuccess={afterSuccess}
+        sourceTypes={state.sourceTypes}
     />;
 };
 

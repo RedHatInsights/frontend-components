@@ -90,6 +90,7 @@ export default rollupConfig(
         FinishedStep: 'src/addSourceWizard/steps/FinishedStep',
         ErroredStep: 'src/addSourceWizard/steps/ErroredStep',
         TimeoutStep: 'src/addSourceWizard/steps/TimeoutStep',
+        AmazonFinishedStep: 'src/addSourceWizard/steps/AmazonFinishedStep',
         getApplicationStatus: 'src/api/getApplicationStatus.js',
         constants: 'src/api/constants.js',
         validated: 'src/sourceFormRenderer/resolveProps/validated.js',
