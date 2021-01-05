@@ -4,6 +4,7 @@
     "description": "Detail part of compliance for RedHat Cloud Services.",
     "browser": "index.js",
     "module": "esm/index.js",
+    "main": "cjs/index.js",
     "publishConfig": {
         "access": "public"
     },
