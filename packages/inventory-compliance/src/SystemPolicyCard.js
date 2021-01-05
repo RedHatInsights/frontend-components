@@ -58,11 +58,11 @@ class SystemPolicyCard extends React.Component {
         const {
             policy, rulesFailed, compliant, lastScanned, score, ssgVersion, supported
         } = this.state.policy;
-        const { cardTitle, cardSubTitle } = this.state;
+        const { cardTitle, cardSubTitle, style } = this.state;
         const passedPercentage = this.fixedPercentage(score);
         const FormattedRelativeCmp = FormattedRelativeTime || FormattedRelative || Fragment;
 
-        return <Card>
+        return <Card style={ style }>
             <CardBody>
                 <TextContent className='margin-bottom-md'>
                     <Text className='margin-bottom-top-none'
@@ -133,7 +133,8 @@ SystemPolicyCard.propTypes = {
         policyType: PropTypes.string,
         compliant: PropTypes.bool,
         ssgVersion: PropTypes.string,
-        supported: PropTypes.bool
+        supported: PropTypes.bool,
+        style: PropTypes.object
     })
 };
 
