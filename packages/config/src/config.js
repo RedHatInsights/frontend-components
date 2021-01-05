@@ -51,6 +51,9 @@ module.exports = ({
         },
         module: {
             rules: [{
+                test: new RegExp(appEntry),
+                loader: path.resolve(__dirname, './chrome-render-loader.js')
+            }, {
                 test: /src\/.*\.js$/,
                 exclude: /(node_modules|bower_components)/i,
                 use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }]
