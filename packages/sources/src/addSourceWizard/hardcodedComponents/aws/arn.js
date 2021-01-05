@@ -114,7 +114,7 @@ export const IAMRoleDescription = () => {
             <TextListItem>
                 { intl.formatMessage({
                     id: 'cost.iamrole.createNewRole',
-                    defaultMessage: 'From the AWS Identity access management console, create a new role.'
+                    defaultMessage: 'From the AWS Identity Access Management console, create a new role.'
                 }) }
             </TextListItem>
             <TextListItem>
@@ -256,7 +256,7 @@ export const TagsDescription = () => {
             <TextListItem>
                 { intl.formatMessage({
                     id: 'cost.tags.selectTags',
-                    defaultMessage: 'Select the tags you want to use in the cost management application, and click Activate.'
+                    defaultMessage: 'Select the tags you want to use in the Cost Management application, and click Activate.'
                 }) }
             </TextListItem>
         </TextList>
