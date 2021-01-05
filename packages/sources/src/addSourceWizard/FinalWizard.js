@@ -7,6 +7,7 @@ import FinishedStep from './steps/FinishedStep';
 import ErroredStep from './steps/ErroredStep';
 import LoadingStep from './steps/LoadingStep';
 import TimeoutStep from './steps/TimeoutStep';
+import AmazonFinishedStep from './steps/AmazonFinishedStep';
 
 import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 import { getSourcesApi } from '../api';
@@ -24,7 +25,8 @@ const FinalWizard = ({
     reset,
     createdSource = {},
     tryAgain,
-    afterSuccess
+    afterSuccess,
+    sourceTypes
 }) => {
     const [ isDeletingSource, setIsDeleting ] = useState();
     const [ isAfterDeletion, setDeleted ] = useState();
@@ -89,13 +91,18 @@ const FinalWizard = ({
                 />;
                 break;
             default:
-                step = <FinishedStep
-                    onClose={ afterSubmit }
-                    successfulMessage={ successfulMessage }
-                    hideSourcesButton={ hideSourcesButton }
-                    returnButtonTitle={ returnButtonTitle }
-                    secondaryActions={ addAnotherSourceButton }
-                />;
+                if (createdSource.source_type_id === sourceTypes.find(({ name }) => name === 'amazon')?.id) {
+                    step = <AmazonFinishedStep onClose={ afterSubmit } />;
+                } else {
+                    step = <FinishedStep
+                        onClose={ afterSubmit }
+                        successfulMessage={ successfulMessage }
+                        hideSourcesButton={ hideSourcesButton }
+                        returnButtonTitle={ returnButtonTitle }
+                        secondaryActions={ addAnotherSourceButton }
+                    />;
+                }
+
                 break;
         }
     } else if (isErrored) {
@@ -154,7 +161,11 @@ FinalWizard.propTypes = {
     reset: PropTypes.func,
     createdSource: PropTypes.object,
     tryAgain: PropTypes.func,
-    afterSuccess: PropTypes.func
+    afterSuccess: PropTypes.func,
+    sourceTypes: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
+    }))
 };
 
 export default FinalWizard;
