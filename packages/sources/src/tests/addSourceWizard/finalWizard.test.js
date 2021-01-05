@@ -10,9 +10,11 @@ import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
 import TimeoutStep from '../../addSourceWizard/steps/TimeoutStep';
 
 import mount from '../__mocks__/mount';
+import sourceTypes, { AMAZON_TYPE } from '../helpers/sourceTypes';
 
 import * as api from '../../api';
 import { MemoryRouter } from 'react-router-dom';
+import AmazonFinishedStep from '../../addSourceWizard/steps/AmazonFinishedStep';
 
 describe('Final wizard', () => {
     let initialProps;
@@ -33,7 +35,8 @@ describe('Final wizard', () => {
             createdSource: {
                 id,
                 applications: []
-            }
+            },
+            sourceTypes
         };
         tmpInsights = insights;
         insights = {
@@ -53,6 +56,20 @@ describe('Final wizard', () => {
         const wrapper = mount(<FinalWizard { ...initialProps }/>);
         expect(wrapper.find(LoadingStep)).toHaveLength(1);
         expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Validating source credentials');
+    });
+
+    it('renders amazon finished step correctly', () => {
+        const wrapper = mount(<FinalWizard
+            { ...initialProps }
+            createdSource={{
+                id,
+                source_type_id: AMAZON_TYPE.id,
+                applications: []
+            }}
+            isFinished={ true }
+        />);
+        expect(wrapper.find(AmazonFinishedStep)).toHaveLength(1);
+        expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Amazon Web Services connection established');
     });
 
     it('renders finished step correctly', () => {
