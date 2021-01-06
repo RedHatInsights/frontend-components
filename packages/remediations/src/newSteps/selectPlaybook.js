@@ -144,7 +144,6 @@ const SelectPlaybook = (props) => {
                                 type="text"
                                 value={newPlaybookName}
                                 onChange={(val) => {
-                                    console.log('ONCHANGE', val);
                                     setNewPlaybookName(val);
                                     input.onChange(val);
                                     formOptions.change('playbook-name', val);
@@ -162,12 +161,8 @@ const SelectPlaybook = (props) => {
 };
 
 SelectPlaybook.propTypes = {
-    SelectPlaybookProps: propTypes.objectOf({
-        issues: propTypes.arrayOf(propTypes.string),
-        systems: propTypes.arrayOf(propTypes.object)
-    }),
+    SelectPlaybookProps: propTypes.object,
     props: propTypes.object
 };
 
 export default SelectPlaybook;
-
