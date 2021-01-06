@@ -461,6 +461,7 @@ export default {
                         title: <FormattedMessage id="cloudmeter.enterArn" defaultMessage="Enter ARN" />,
                         name: 'subs-arn',
                         substepOf: 'eaa',
+                        nextStep: 'subwatch-auto-registration',
                         fields: [{
                             name: 'arn-description',
                             component: 'description',
@@ -468,6 +469,22 @@ export default {
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.password'
+                        }]
+                    }, {
+                        name: 'subwatch-auto-registration',
+                        title: <FormattedMessage id="cloudmeter.autoRegistration" defaultMessage="Auto-registration" />,
+                        fields: [{
+                            component: componentTypes.PLAIN_TEXT,
+                            name: 'auto-registration-text',
+                            label: <FormattedMessage
+                                id="cloudmeter.autoRegistrationDescription"
+                                defaultMessage="With auto-registration, all Gold Image instances will be automatically connected to Subscription Watch."
+                            />
+                        }, {
+                            component: componentTypes.SWITCH,
+                            name: 'application.extra.auto_register',
+                            initialValue: true,
+                            label: <FormattedMessage id="cloudmeter.autoRegisterLabel" defaultMessage="Auto-register cloud instances" />
                         }]
                     }
                     ]

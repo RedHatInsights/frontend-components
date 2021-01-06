@@ -73,6 +73,16 @@ const applicationTypes = [
             'openshift'
         ],
         updated_at: '2019-09-23T14:04:02Z'
+    },
+    {
+        created_at: '2020-02-05T21:08:50Z',
+        dependent_applications: [],
+        display_name: 'Subscription Watch',
+        id: '5',
+        name: '/insights/platform/cloud-meter',
+        supported_authentication_types: { amazon: [ 'cloud-meter-arn' ] },
+        supported_source_types: [ 'amazon' ],
+        updated_at: '2020-02-18T19:38:52Z'
     }
 ];
 
@@ -80,3 +90,4 @@ export default applicationTypes;
 
 export const COST_MANAGEMENT_APP = applicationTypes[1];
 export const TOPOLOGY_INV_APP = applicationTypes[2];
+export const SUB_WATCH_APP = applicationTypes[3];
