@@ -134,25 +134,7 @@ class RemediationWizard extends Component {
         }
     }
 
-    getResolution = issueId => {
-        const { resolutions = [] } = this.state.resolutions.find(r => r.id === issueId) || {};
-
-        if (resolutions.length > 1)  {
-            if (this.state.manualResolutionSelection && issueId in this.state.selectedResolutions) {
-                return resolutions.filter(r => r.id === this.state.selectedResolutions[issueId]);
-            }
-
-            if (this.state.selectedRemediationId) {
-                const existing = this.state.selectedRemediation.issues.find(i => i.id === issueId);
-
-                if (existing) {
-                    return resolutions.filter(r => r.id === existing.resolution.id);
-                }
-            }
-        }
-
-        return resolutions;
-    }
+    getResolution = issueId => this.state.resolutions.find(r => r.id === issueId) || [];
 
     render () {
 

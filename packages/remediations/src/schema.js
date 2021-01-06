@@ -36,7 +36,7 @@ export default (container, issues) => ({
                         name: 'manual-resolution',
                         component: 'review-actions'
                     }],
-                    nextStep: ({ values }) => values['manual-resolution'] ? 'issue-resolution-0' : 'review'
+                    nextStep: ({ values }) => values['manual-resolution'] ? 'issue-resolution-0' : undefined
                 },
                 ...issues.map((issue, index) => (
                     {
@@ -50,7 +50,7 @@ export default (container, issues) => ({
                                 issue
                             }
                         ],
-                        nextStep: index < issues.length ? `issue-resolution-${index + 1}` : 'review',
+                        nextStep: index < issues.length ? `issue-resolution-${index + 1}` : undefined,
                         substepOf: 'Choose actions'
                     }
                 )),
