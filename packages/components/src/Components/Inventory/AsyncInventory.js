@@ -32,4 +32,9 @@ AsyncInventory.propTypes = {
     component: PropTypes.string
 };
 
+AsyncInventory.defaultProps = {
+    onLoad: () => undefined,
+    component: ''
+};
+
 export default React.forwardRef((props, ref) => <AsyncInventory {...props} ref={ref}/>);
