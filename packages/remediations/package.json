@@ -3,6 +3,8 @@
     "version": "2.3.4",
     "description": "Remediations components for RedHat Cloud Services project.",
     "browser": "index.js",
+    "main": "cjs/index.js",
+    "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
