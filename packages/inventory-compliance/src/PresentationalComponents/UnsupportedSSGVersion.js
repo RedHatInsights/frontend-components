@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { Popover, Text } from '@patternfly/react-core';
-import { ExclamationTriangleIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
+import { Popover, Alert } from '@patternfly/react-core';
+import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 
 const UnsupportedSSGVersion = ({ ssgVersion, style }) => {
     const bodyContent = 'This system was using an incompatible version of the SSG at the time this report was generated.' +
@@ -11,16 +11,19 @@ const UnsupportedSSGVersion = ({ ssgVersion, style }) => {
         'compl-assess-overview-con#compl-assess-supported-configurations-con';
     const footerContent = <a target='_blank' rel='noopener noreferrer' href={ supportedConfigsLink }>Supported SSG versions</a>;
 
-    return <div className='pf-c-alert pf-m-warning pf-m-inline' style={ style }>
-        <ExclamationTriangleIcon className='ins-u-warning' style={ { marginRight: '.25em' } } />
-        <Text component={ 'strong' } className='ins-c-warning-text'>
-            Unsupported SSG version ({ ssgVersion })
-            <Popover position='right' { ...{ bodyContent, footerContent } }>
-                <OutlinedQuestionCircleIcon
-                    style={ { marginLeft: '.5em', cursor: 'pointer', color: 'var(--pf-global--Color--200)' } } />
-            </Popover>
-        </Text>
-    </div>;
+    return <Alert
+        variant="warning"
+        isInline
+        style={ style }
+        title={
+            <React.Fragment>
+                Unsupported SSG version ({ ssgVersion })
+                <Popover position='right' { ...{ bodyContent, footerContent } }>
+                    <OutlinedQuestionCircleIcon
+                        style={ { marginLeft: '.5em', cursor: 'pointer', color: 'var(--pf-global--Color--200)' } } />
+                </Popover>
+            </React.Fragment>
+        } />;
 };
 
 UnsupportedSSGVersion.propTypes = {
