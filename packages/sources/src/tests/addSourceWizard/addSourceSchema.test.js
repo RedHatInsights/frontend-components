@@ -8,7 +8,8 @@ import {
     appMutator,
     typesStep,
     compileAllApplicationComboOptions,
-    appMutatorRedHat
+    appMutatorRedHat,
+    applicationStep
 } from '../../addSourceWizard/SourceAddSchema';
 import sourceTypes, { OPENSHIFT_TYPE } from '../helpers/sourceTypes';
 import applicationTypes from '../helpers/applicationTypes';
@@ -19,6 +20,8 @@ import mount from '../__mocks__/mount';
 import { CLOUD_VENDOR, REDHAT_VENDOR } from '../../utilities/stringConstants';
 
 describe('Add source schema', () => {
+    const INTL = { formatMessage: ({ defaultMessage }) => defaultMessage };
+
     describe('nextStep', () => {
         const OPENSHIFT = 'openshift';
         const APP_ID = '666';
@@ -189,8 +192,6 @@ describe('Add source schema', () => {
     describe('typesStep', () => {
         let tmpLocation;
 
-        const INTL = { formatMessage: ({ defaultMessage }) => defaultMessage };
-
         beforeEach(() => {
             tmpLocation = Object.assign({}, window.location);
 
@@ -235,6 +236,23 @@ describe('Add source schema', () => {
             expect(result.fields[1].placeholder).toEqual(undefined);
             expect(result.fields[1].condition).toEqual({ isNotEmpty: true, when: 'source_type' });
             expect(result.fields[1].mutator.toString()).toEqual(appMutatorRedHat(applicationTypes).toString());
+        });
+    });
+
+    describe('application step', () => {
+        it('generate steps and filters application not belonging to the type', () => {
+            const result = applicationStep(applicationTypes, 'amazon', INTL);
+
+            expect(result.title).toEqual('Application');
+            expect(result.fields.map(({ name }) => name)).toEqual([
+                'app-description', 'application.application_type_id', 'source_type'
+            ]);
+            expect(result.fields[1].options).toEqual([
+                { key: 'none', label: 'None' },
+                { label: 'Cost Management', value: '2' },
+                { label: 'Subscription Watch', value: '5' },
+                { label: 'Topological Inventory', value: '3' }
+            ]);
         });
     });
 

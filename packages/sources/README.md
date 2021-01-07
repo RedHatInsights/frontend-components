@@ -64,6 +64,7 @@ import { AddSourceWizard } from '@redhat-cloud-services/frontend-components-sour
 |disableAppSelection|bool|`false`|Flag to disable appSelection.|
 |hideSourcesButton|bool|`false`|hide 'Take me to sources' button.|
 |returnButtonTitle|node|`'Go back to sources'`|Title of the button shown after success submit. Put your own application name if you neeed.|
+|selectedType|string|`undefined`|A name of source type preselected - this will remove the source type selection. (Only for Cloud types.)|
 
 If you need to set up and **support only one application** you can provide filtered `applicationTypes` with the only one application, set up `disableAppSelection` to `false` and `initialValues` to:
 

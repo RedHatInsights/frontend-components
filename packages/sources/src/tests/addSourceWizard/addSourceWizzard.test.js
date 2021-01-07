@@ -16,6 +16,7 @@ import CloseModal from '../../addSourceWizard/CloseModal';
 import LoadingStep from '../../addSourceWizard/steps/LoadingStep';
 
 import mount from '../__mocks__/mount';
+import SourcesFormRenderer from '../../sourceFormRenderer';
 
 describe('AddSourceWizard', () => {
     let initialProps;
@@ -44,6 +45,8 @@ describe('AddSourceWizard', () => {
 
         expect(wrapper.find(Form)).toHaveLength(1);
         expect(wrapper.find(Modal)).toHaveLength(1);
+
+        expect(wrapper.find(SourcesFormRenderer).props().schema.fields[0].fields[1].title).toEqual('Source type and application');
     });
 
     it('renders correctly without sourceTypes', async () => {
@@ -263,5 +266,14 @@ describe('AddSourceWizard', () => {
         expect(wrapper.find(ErroredStep)).toHaveLength(1);
 
         jest.useRealTimers();
+    });
+
+    it('show application step when selectedType is set', async () => {
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } selectedType="amazon" />);
+        });
+        wrapper.update();
+
+        expect(wrapper.find(SourcesFormRenderer).props().schema.fields[0].fields[1].title).toEqual('Application');
     });
 });
