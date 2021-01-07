@@ -6,6 +6,7 @@ import Truncate from 'react-truncate';
 import {
     Card,
     CardBody,
+    CardFooter,
     Text,
     TextContent,
     TextVariants,
@@ -116,8 +117,20 @@ class SystemPolicyCard extends React.Component {
                         Last scanned: { lastScanned !== 'Never' ? <FormattedRelativeCmp value={ Date.parse(lastScanned) } /> : lastScanned }
                     </Text>
                 </Text>
-                { !supported && <UnsupportedSSGVersion ssgVersion={ ssgVersion } /> }
             </CardBody>
+            { !supported &&
+                <CardFooter style={{ padding: '0' }}>
+                    <UnsupportedSSGVersion
+                        ssgVersion={ ssgVersion }
+                        style={{
+                            paddingTop: 'var(--pf-c-alert--PaddingTop)',
+                            paddingRight: 'var(--pf-c-card--child--PaddingRight)',
+                            paddingLeft: 'var(--pf-c-card--child--PaddingLeft)',
+                            paddingBottom: 'var(--pf-c-alert--PaddingBottom)'
+                        }}
+                    />
+                </CardFooter>
+            }
         </Card>;
     };
 };
