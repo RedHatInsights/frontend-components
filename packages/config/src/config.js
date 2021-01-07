@@ -120,7 +120,6 @@ module.exports = ({
             inline: true,
             disableHostCheck: true,
             historyApiFallback: true,
-            contentBasePublicPath: publicPath,
             writeToDisk: true
         }
     };
