@@ -18,7 +18,7 @@ const initialValues = {
     isLoading: true
 };
 
-const reducer = (state, { type, sourceTypes, applicationTypes, container, disableAppSelection, intl }) => {
+const reducer = (state, { type, sourceTypes, applicationTypes, container, disableAppSelection, intl, selectedType }) => {
     switch (type) {
         case 'loaded':
             return {
@@ -28,7 +28,8 @@ const reducer = (state, { type, sourceTypes, applicationTypes, container, disabl
                     applicationTypes.filter(filterApps).filter(filterVendorAppTypes(sourceTypes)),
                     disableAppSelection,
                     container,
-                    intl
+                    intl,
+                    selectedType
                 ),
                 isLoading: false,
                 sourceTypes
@@ -43,7 +44,8 @@ const SourceAddModal = ({
     isCancelling,
     onCancel,
     values,
-    onSubmit
+    onSubmit,
+    selectedType
 }) => {
     const [{ schema, sourceTypes: stateSourceTypes, isLoading }, dispatch ] = useReducer(reducer, initialValues);
     const isMounted = useRef(false);
@@ -73,7 +75,8 @@ const SourceAddModal = ({
                     applicationTypes: applicationTypes || applicationTypesOut.applicationTypes,
                     disableAppSelection,
                     container: container.current,
-                    intl
+                    intl,
+                    selectedType
                 });
             }
         });
@@ -103,7 +106,10 @@ const SourceAddModal = ({
 
     return (
         <SourcesFormRenderer
-            initialValues={ values }
+            initialValues={ {
+                ...values,
+                ...(selectedType && { source_type: selectedType })
+            } }
             schema={ schema }
             onSubmit={ (values) => onSubmit(values, stateSourceTypes) }
             onCancel={ onCancel }
@@ -130,7 +136,8 @@ SourceAddModal.propTypes = {
     })),
     values: PropTypes.object,
     disableAppSelection: PropTypes.bool,
-    isCancelling: PropTypes.bool
+    isCancelling: PropTypes.bool,
+    selectedType: PropTypes.string
 };
 
 SourceAddModal.defaultProps = {

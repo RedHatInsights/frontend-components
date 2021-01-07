@@ -179,6 +179,41 @@ const redhatTypes = ({ intl, sourceTypes, applicationTypes, disableAppSelection 
     }
 ]);
 
+export const applicationStep = (applicationTypes, selectedType, intl) => ({
+    name: 'types_step',
+    title: intl.formatMessage({
+        id: 'wizard.Application',
+        defaultMessage: 'Application'
+    }),
+    nextStep,
+    fields: [{
+        component: componentTypes.PLAIN_TEXT,
+        name: 'app-description',
+        label: intl.formatMessage({
+            id: 'wizard.applicationDescription',
+            defaultMessage: 'Select an application to configure this source. You can connect additional applications after source creation.'
+        })
+    }, {
+        component: 'enhanced-select',
+        name: 'application.application_type_id',
+        label: intl.formatMessage({
+            id: 'wizard.selectYourApplicationNoPoint',
+            defaultMessage: 'Select an application'
+        }),
+        options: compileAllApplicationComboOptions(
+            applicationTypes.filter(({ supported_source_types }) => supported_source_types.includes(selectedType)),
+            intl
+        ),
+        mutator: appMutator(applicationTypes),
+        placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' }),
+        menuIsPortal: true
+    }, {
+        component: componentTypes.TEXT_FIELD,
+        name: 'source_type',
+        hideField: true
+    }]
+});
+
 export const typesStep = (sourceTypes, applicationTypes, disableAppSelection, intl) => ({
     title: intl.formatMessage({
         id: 'wizard.chooseAppAndType',
@@ -282,7 +317,7 @@ const summaryStep = (sourceTypes, applicationTypes, intl) => ({
     })
 });
 
-export default (sourceTypes, applicationTypes, disableAppSelection, container, intl) => {
+export default (sourceTypes, applicationTypes, disableAppSelection, container, intl, selectedType) => {
     setFirstValidated(true);
 
     return ({
@@ -315,7 +350,9 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container, i
             crossroads: [ 'application.application_type_id', 'source_type', 'auth_select' ],
             fields: [
                 nameStep(intl),
-                typesStep(sourceTypes, applicationTypes, disableAppSelection, intl),
+                selectedType
+                    ? applicationStep(applicationTypes, selectedType, intl)
+                    : typesStep(sourceTypes, applicationTypes, disableAppSelection, intl),
                 ...schemaBuilder(sourceTypes, applicationTypes),
                 summaryStep(sourceTypes, applicationTypes, intl)
             ]
