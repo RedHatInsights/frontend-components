@@ -3,12 +3,9 @@ import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
-import { CheckCircleIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
-// import { sortable } from '@patternfly/react-table';
 import * as api from '../api';
 import './selectPlaybook.scss';
 import {
-    ExpandableSection,
     FormGroup,
     Grid, GridItem,
     Radio,
@@ -28,7 +25,6 @@ const SelectPlaybook = (props) => {
     const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(false);
     const [ newPlaybookName, setNewPlaybookName ] = useState('');
     const [ selectedPlaybook, setSelectedPlaybook ] = useState('');
-    const [ expandedIssues, setExpandedIssues ] = useState(false);
     const nameValid = true;
 
     useEffect(() => {
@@ -48,33 +44,10 @@ const SelectPlaybook = (props) => {
                 <TextContent>
                     <Text>
                         You selected <b>{`${systems.length} ${pluralize(systems.length, 'system')}`} </b>
-                        to remediate with Ansible, which in total includes  <b>{`${issues.length} ${pluralize(issues.length, 'issue')}.`} </b>
-                    </Text>
-                    <Text className='ins-c-remediations-can-be-remediated pf-u-mb-0'>
-                        { /* TODO: need real data here!!! */}
-                        <CheckCircleIcon/> 99 Issues can be remediated with Ansible
-                    </Text>
-                    <Text className="ins-c-remediations-select-playbook-description">
-                        Issues can be added to an Ansible Playbook
-                    </Text>
-                    <Text className='ins-c-remediations-cannot-be-remediated pf-u-mb-0'>
-                        { /* TODO: need real data here!!! */}
-                        <ExclamationTriangleIcon /> 42 Issues cannot be remediated with Ansible
-                    </Text>
-                    <Text className="pf-u-ml-md">
-                        These issues <b>cannot</b> be added to a playbook. Review the remediation steps on the issue to find out how to fix
+                        to remediate with Ansible, which in total includes <b>{`${issues.length} ${pluralize(issues.length, 'issue')}`} </b>
+                        which can be remediated by Ansible.
                     </Text>
                 </TextContent>
-                <ExpandableSection
-                    className="'pf-u-ml-md"
-                    toggleText={expandedIssues ? 'Show Less' : 'Show More'}
-                    onToggle={(isExpanded) => setExpandedIssues(isExpanded)}
-                    isExpanded={expandedIssues}
-                >
-                    <ul className="ins-c-remediations-select-playbook-expandable-content">
-                        { issues.map(issue => (<li key={issue.id}>{issue.id}</li>))}
-                    </ul>
-                </ExpandableSection>
             </StackItem>
             <StackItem>
                 <Grid hasGutter>
@@ -144,7 +117,6 @@ const SelectPlaybook = (props) => {
                                 type="text"
                                 value={newPlaybookName}
                                 onChange={(val) => {
-                                    console.log('ONCHANGE', val);
                                     setNewPlaybookName(val);
                                     input.onChange(val);
                                     formOptions.change('playbook-name', val);
