@@ -30,7 +30,7 @@ class ComplianceRemediationButton extends React.Component {
     )
 
     rulesWithRemediations = (rules, system) => {
-        return rules.filter(rule => rule.remediationAvailable && system.supported).map(
+        return rules.filter(rule => rule.remediationAvailable).map(
             rule => this.formatRule(rule, this.ruleProfile(rule, system).refId, system.id)
         );
     }
