@@ -75,12 +75,12 @@ describe('Add source schema', () => {
 
             const imgProps = wrapper.find('img').props();
 
-            expect(imgProps.src).toEqual(OPENSHIFT_TYPE.icon_url);
+            expect(imgProps.src).toEqual('/apps/frontend-assets/red-hat-logos/stacked.svg');
             expect(imgProps.alt).toEqual(OPENSHIFT_TYPE.product_name);
         });
 
-        it('returns null when no iconUrl', () => {
-            sourceTypes = [{ ...OPENSHIFT_TYPE, icon_url: undefined }];
+        it('returns null when no iconUrl && no short url', () => {
+            sourceTypes = [{ ...OPENSHIFT_TYPE, icon_url: undefined, name: 'nonsense' }];
 
             const Icon = iconMapper(sourceTypes)(OPENSHIFT_TYPE.name, DefaultIcon);
 
