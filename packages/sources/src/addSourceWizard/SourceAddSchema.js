@@ -48,7 +48,11 @@ export const asyncValidatorDebouncedWrapper = (intl) => {
 
 const compileAllSourcesComboOptions = (sourceTypes) => (
     [
-        ...sourceTypes.sort((a, b) => a.product_name.localeCompare(b.product_name)).map(t => ({
+        ...sourceTypes.map((type) => (
+            {
+                ...type,
+                product_name: type.vendor === 'Red Hat' ? type.product_name.replace('Red Hat ', '') : type.product_name
+            })).sort((a, b) => a.product_name.localeCompare(b.product_name)).map(t => ({
             value: t.name,
             label: t.product_name
         }))
@@ -107,14 +111,27 @@ export const sourceTypeMutator = (appTypes, sourceTypes) => (option, formOptions
     };
 };
 
-export const iconMapper = sourceTypes => (name) => {
+const shortIcons = {
+    amazon: '/apps/frontend-assets/partners-icons/aws.svg',
+    'ansible-tower': '/apps/frontend-assets/red-hat-logos/stacked.svg',
+    azure: '/apps/frontend-assets/partners-icons/microsoft-azure-short.svg',
+    openshift: '/apps/frontend-assets/red-hat-logos/stacked.svg',
+    satellite: '/apps/frontend-assets/red-hat-logos/stacked.svg',
+    google: '/apps/frontend-assets/partners-icons/google-cloud-short.svg'
+};
+
+export const iconMapper = sourceTypes => (name) => {s
     const sourceType = sourceTypes.find((type) => type.name === name);
 
-    if (!sourceType || !sourceType.icon_url) {
+    if (!sourceType || (sourceType.icon_url && !shortIcons[name])) {
         return null;
     }
 
-    const Icon = () => <img src={sourceType.icon_url} alt={sourceType.product_name} className="ins-c-sources__wizard--icon" />;
+    const Icon = () => <img
+        src={shortIcons[name] || sourceType.icon_url}
+        alt={sourceType.product_name}
+        className={`ins-c-sources__wizard--icon ${sourceType.vendor === 'Red Hat' ? 'redhat-icon' : 'pf-u-mb-sm'}`}
+    />;
 
     return Icon;
 };
