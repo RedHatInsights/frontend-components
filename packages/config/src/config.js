@@ -69,7 +69,7 @@ module.exports = ({
                         loader: 'css-loader'
                     },
                     {
-                        loader: path.resolve(__dirname, './custom-css-loader.js'),
+                        loader: path.resolve(__dirname, './css-prefix-loader.js'),
                         options: {
                             prefix: appName
                         }
