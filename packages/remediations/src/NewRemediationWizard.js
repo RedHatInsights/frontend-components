@@ -155,7 +155,7 @@ class RemediationWizard extends Component {
                         FormTemplate={this.getFormTemplate}
                         initialValues={{
                             multiple: this.state.resolutions ? !!this.state.resolutions.find(r => r.resolutions.length > 1) : false,
-                            'manual-resolution': true,
+                            'manual-resolution': undefined,
                             'selected-resolutions': {}
                         }}
                         componentMapper={{

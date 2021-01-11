@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
@@ -18,6 +18,10 @@ const ReviewActions = (props) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
+
+    useEffect(() => {
+        formOptions.getState().values['manual-resolution'] === undefined && formOptions.change('manual-resolution', true);
+    }, []);
 
     const buildRows = () => {
         const sortedRecords = issuesMultiple.sort(
