@@ -26,16 +26,16 @@ const ReviewActions = (props) => {
                     a[Object.keys(a)[sortByState.index]] < b[Object.keys(b)[sortByState.index]] ? -1 : 0
             ) * (sortByState.direction === 'desc' ? -1 : 1));
 
-        return sortedRecords.map(record => ({
+        return sortedRecords.map((record, index) => ({
             cells: [
                 record.action,
-                <Fragment key={`${record.id}-description`}>
-                    <p>
+                <Fragment key={`${index}-description`}>
+                    <p key={`${index}-resolution`}>
                         {record.resolution}
                     </p>
                     {record.alternate > 0 &&
                         (
-                            <p>{record.alternate} alternate resolution</p>
+                            <p key={`${index}-alternate`}>{record.alternate} alternate resolution</p>
                         )}
                 </Fragment>,
                 {

@@ -134,7 +134,10 @@ class RemediationWizard extends Component {
         }
     }
 
-    getResolution = issueId => this.state.resolutions.find(r => r.id === issueId) || [];
+    getResolution = issueId => {
+        const { resolutions = [] } = this.state.resolutions.find(r => r.id === issueId) || {};
+        return resolutions;
+    }
 
     render () {
 
