@@ -1,6 +1,10 @@
 const loaderUtils = require('loader-utils');
 
 module.exports = function(source, meta) {
+    if (!meta) {
+        return source;
+    }
+
     const sources = meta.sources;
     const options = loaderUtils.getOptions(this);
 
