@@ -6,11 +6,6 @@ import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 
-/**
- * Inventory sub component.
- *
- * This component shows systems table connected to redux.
- */
 const BaseInvTable = (props) => {
     const history = useHistory();
     const store = useStore();
@@ -30,15 +25,20 @@ const BaseInvTable = (props) => {
     );
 };
 
-BaseInvTable.propTypes = {
+/**
+ * Inventory sub component.
+ *
+ * This component shows systems table connected to redux.
+ */
+const InvTable = React.forwardRef((props, ref) => <BaseInvTable innerRef={ref} {...props} />);
+
+InvTable.propTypes = {
     /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
     fallback: PropTypes.node
 };
 
-BaseInvTable.defaultProps = {
+InvTable.defaultProps = {
     fallback: <Bullseye><Spinner size="xl" /></Bullseye>
 };
-
-const InvTable = React.forwardRef((props, ref) => <BaseInvTable innerRef={ref} {...props} />);
 
 export default InvTable;

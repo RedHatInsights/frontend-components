@@ -6,11 +6,6 @@ import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 
-/**
- * Inventory sub component.
- *
- * This component wraps entire system detail in order to show loading state and drawer (if enabled).
- */
 const BaseDetailWrapper = (props) => {
     const history = useHistory();
     const store = useStore();
@@ -30,15 +25,20 @@ const BaseDetailWrapper = (props) => {
     );
 };
 
-BaseDetailWrapper.propTypes = {
+/**
+ * Inventory sub component.
+ *
+ * This component wraps entire system detail in order to show loading state and drawer (if enabled).
+ */
+const DetailWrapper = React.forwardRef((props, ref) => <BaseDetailWrapper innerRef={ref} {...props} />);
+
+DetailWrapper.propTypes = {
     /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
     fallback: PropTypes.node
 };
 
-BaseDetailWrapper.defaultProps = {
+DetailWrapper.defaultProps = {
     fallback: <Bullseye><Spinner size="xl" /></Bullseye>
 };
-
-const DetailWrapper = React.forwardRef((props, ref) => <BaseDetailWrapper innerRef={ref} {...props} />);
 
 export default DetailWrapper;

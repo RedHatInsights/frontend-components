@@ -6,11 +6,6 @@ import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 
-/**
- * Inventory sub component.
- *
- * This component shows system information (tags, facts and basic operations).
- */
 const BaseInventoryDetailHead = (props) => {
     const history = useHistory();
     const store = useStore();
@@ -30,15 +25,20 @@ const BaseInventoryDetailHead = (props) => {
     );
 };
 
-BaseInventoryDetailHead.propTypes = {
+/**
+ * Inventory sub component.
+ *
+ * This component shows system information (tags, facts and basic operations).
+ */
+const InventoryDetailHead = React.forwardRef((props, ref) => <BaseInventoryDetailHead innerProps={ref} {...props} />);
+
+InventoryDetailHead.propTypes = {
     /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
     fallback: PropTypes.node
 };
 
-BaseInventoryDetailHead.defaultProps = {
+InventoryDetailHead.defaultProps = {
     fallback: <Bullseye><Spinner size="xl" /></Bullseye>
 };
-
-const InventoryDetailHead = React.forwardRef((props, ref) => <BaseInventoryDetailHead innerProps={ref} {...props} />);
 
 export default InventoryDetailHead;

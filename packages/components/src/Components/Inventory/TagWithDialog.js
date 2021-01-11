@@ -30,15 +30,20 @@ const BaseTagWithDialog = (props) => {
     );
 };
 
-BaseTagWithDialog.propTypes = {
+/**
+ * Inventory sub component.
+ *
+ * This component shows systems table connected to redux.
+ */
+const TagWithDialog = React.forwardRef((props, ref) => <BaseTagWithDialog innerRef={ref} {...props} />);
+
+TagWithDialog.propTypes = {
     /** React Suspense fallback component. <a href="https://reactjs.org/docs/code-splitting.html#reactlazy" target="_blank">Learn more</a>. */
     fallback: PropTypes.node
 };
 
-BaseTagWithDialog.defaultProps = {
+TagWithDialog.defaultProps = {
     fallback: <Bullseye><Spinner size="xl" /></Bullseye>
 };
-
-const TagWithDialog = React.forwardRef((props, ref) => <BaseTagWithDialog innerRef={ref} {...props} />);
 
 export default TagWithDialog;
