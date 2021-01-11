@@ -13,7 +13,7 @@ module.exports = (env) => ({
         minimizer: [ new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({}) ]
     },
     entry: {
-        index: [ './src/index.js', './src/RemediationButton.js' ],
+        index: [ './src/index.js', './src/RemediationButton.js', './src/NewRemediationWizard.js', './src/RemediationWizard.js' ],
         remediationsApi: './src/api/index.js'
     },
     output: {

@@ -65,6 +65,13 @@ export default rollupConfig(
     }, {
         RemediationButton: 'src/RemediationButton.js',
         index: 'src/index.js'
+    }, {
+        RemediationWizard: 'src/RemediationWizard.js',
+        index: 'src/index.js'
+    },
+    {
+        NewRemediationWizard: 'src/NewRemediationWizard.js',
+        index: 'src/index.js'
     }],
     './'
 );
