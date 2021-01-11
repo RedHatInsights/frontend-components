@@ -33,5 +33,6 @@ export * from './Components/PrimaryToolbar';
 export * from './Components/DateFormat';
 export * from './Components/CullingInfo';
 export * from './Components/Unavailable';
+export * from './Components/ErrorState';
 export * from './Components/Maintenance';
 export * from './Components/FilterHooks';
