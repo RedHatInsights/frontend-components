@@ -11,7 +11,7 @@ import {
     StackItem
 } from '@patternfly/react-core';
 import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
-import { CheckCircleIcon } from '@patternfly/react-icons';
+import { CloseIcon, RedoIcon } from '@patternfly/react-icons';
 
 const ReviewActions = (props) => {
     const { issues, issuesMultiple } = props;
@@ -43,7 +43,7 @@ const ReviewActions = (props) => {
                         )}
                 </Fragment>,
                 {
-                    title: record.needsReboot ? <CheckCircleIcon color="green"/> : ' ',
+                    title: record.needsReboot ? <Fragment><RedoIcon/>{' Yes'}</Fragment> : <Fragment><CloseIcon/>{' No'}</Fragment>,
                     value: record.needsReboot
                 },
                 record.systems
