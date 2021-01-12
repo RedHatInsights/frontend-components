@@ -52,7 +52,10 @@ module.exports = ({
         module: {
             rules: [{
                 test: new RegExp(appEntry),
-                loader: path.resolve(__dirname, './chrome-render-loader.js')
+                loader: path.resolve(__dirname, './chrome-render-loader.js'),
+                options: {
+                    appName
+                }
             }, {
                 test: /src\/.*\.js$/,
                 exclude: /(node_modules|bower_components)/i,

@@ -1,6 +1,10 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config",
+<<<<<<< HEAD
     "version": "2.1.9",
+=======
+    "version": "3.0.0-beta17",
+>>>>>>> 73e49bf2... Add global className to root element in render loader.
     "description": "Config plugins and settings for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
