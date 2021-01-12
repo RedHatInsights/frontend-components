@@ -27,7 +27,7 @@ const IssueResolution = (props) => {
         <Stack hasGutter>
             <StackItem>
                 <Title headingLevel="h2">
-                    {`Choose action: ${issue.action}`}
+                    {`Choose action: ${issue.shortId}`}
                 </Title>
             </StackItem>
             <StackItem>

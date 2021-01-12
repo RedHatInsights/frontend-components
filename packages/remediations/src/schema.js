@@ -41,7 +41,7 @@ export default (container, issues) => ({
                 ...issues.map((issue, index) => (
                     {
                         name: `issue-resolution-${index}`,
-                        title: issue.action,
+                        title: issue.shortId,
                         showTitle: false,
                         fields: [
                             {

@@ -46,6 +46,7 @@ class RemediationWizard extends Component {
                 needsReboot,
                 systemsCount: issue.systems ? issue.systems.length : data.systems.length,
                 id: issue.id,
+                shortId: issue?.id?.split('|')?.slice(-1)?.[0] || issue.id,
                 alternate: resolutions.length - 1
             };
         }).filter(record => record.alternate > 1));
