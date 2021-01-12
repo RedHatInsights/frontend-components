@@ -44,13 +44,13 @@ class RemediationWizard extends Component {
                 action: issuesById[issue.id].description,
                 resolution: description,
                 needsReboot,
-                systems: issue.systems ? issue.systems.length : data.systems.length,
+                systemsCount: issue.systems ? issue.systems.length : data.systems.length,
                 id: issue.id,
                 alternate: resolutions.length - 1
             };
         }).filter(record => record.alternate > 1));
 
-    openWizard = (data, basePath) => {
+    openWizard = (data) => {
         const deferred = new Deferred();
         const issuesById = keyBy(data.issues, issue => issue.id);
 
@@ -134,10 +134,7 @@ class RemediationWizard extends Component {
         }
     }
 
-    getResolution = issueId => {
-        const { resolutions = [] } = this.state.resolutions.find(r => r.id === issueId) || {};
-        return resolutions;
-    }
+    getResolution = issueId => this.state.resolutions.find(r => r.id === issueId)?.resolutions || [];
 
     render () {
 
@@ -154,8 +151,8 @@ class RemediationWizard extends Component {
                         subscription={{ values: true }}
                         FormTemplate={this.getFormTemplate}
                         initialValues={{
-                            multiple: this.state.resolutions ? !!this.state.resolutions.find(r => r.resolutions.length > 1) : false,
-                            'manual-resolution': undefined,
+                            multiple: !!this.state.resolutions?.find(r => r.resolutions.length > 1),
+                            'manual-resolution': true,
                             'selected-resolutions': {}
                         }}
                         componentMapper={{

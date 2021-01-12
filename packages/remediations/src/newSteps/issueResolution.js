@@ -95,4 +95,3 @@ IssueResolution.propTypes = {
 };
 
 export default IssueResolution;
-
