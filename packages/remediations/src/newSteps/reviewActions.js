@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import propTypes from 'prop-types';
-import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
-import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
+import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import './reviewActions.scss';
 import {
     Radio,
