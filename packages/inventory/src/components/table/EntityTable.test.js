@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/display-name */
 import React from 'react';
 import EntityTable from './EntityTable';
@@ -9,6 +10,8 @@ import toJson from 'enzyme-to-json';
 import routeData from 'react-router';
 import { MemoryRouter } from 'react-router-dom';
 import TitleColumn from './TitleColumn';
+import InsightsDisconnected from '../../shared/InsightsDisconnected';
+import { defaultColumns } from '../../redux/entities';
 
 describe('EntityTable', () => {
     let initialState;
@@ -186,6 +189,31 @@ describe('EntityTable', () => {
                 </Provider>
             </MemoryRouter>);
             expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
+        it('should render correctly - disabled insights icon', () => {
+            initialState = {
+                entities: {
+                    ...initialState.entities,
+                    columns: defaultColumns,
+                    rows: [{
+                        id: 'testing-id',
+                        insights_id: null
+                    }, {
+                        id: 'testing-id-1',
+                        insights_id: 'some-id-herse'
+                    }]
+                }
+            };
+
+            const store = mockStore(initialState);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable/>
+                </Provider>
+            </MemoryRouter>);
+
+            expect(wrapper.find(InsightsDisconnected)).toHaveLength(1);
         });
     });
 

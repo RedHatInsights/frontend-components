@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
-import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
-import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
+import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
 import * as api from '../api';
 import './selectPlaybook.scss';
@@ -134,12 +134,8 @@ const SelectPlaybook = (props) => {
 };
 
 SelectPlaybook.propTypes = {
-    SelectPlaybookProps: propTypes.objectOf({
-        issues: propTypes.arrayOf(propTypes.string),
-        systems: propTypes.arrayOf(propTypes.object)
-    }),
+    SelectPlaybookProps: propTypes.object,
     props: propTypes.object
 };
 
 export default SelectPlaybook;
-

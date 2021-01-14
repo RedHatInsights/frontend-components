@@ -1,12 +1,15 @@
 import React, { Component, Fragment, createContext } from 'react';
+import keyBy from 'lodash/keyBy';
 import transform from 'lodash/transform';
-import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
-import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
+import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
+import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import schemaBuilder from './schema';
 import Deferred from '@redhat-cloud-services/frontend-components-utilities/files/Deffered';
-import Wizard from '@data-driven-forms/pf4-component-mapper/dist/cjs/wizard';
-import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
+import Wizard from '@data-driven-forms/pf4-component-mapper/dist/esm/wizard';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import SelectPlaybook from './newSteps/selectPlaybook';
+import ReviewActions from './newSteps/reviewActions';
+import IssueResolution from './newSteps/issueResolution';
 import * as api from './api';
 
 const RemediationWizardContext = createContext({
@@ -33,33 +36,66 @@ class RemediationWizard extends Component {
 
     getFormTemplate = (props) => <Pf4FormTemplate {...props} showFormControls={false} />;
 
-    openWizard = (data, basePath) => {
+    getIssuesMultiple = (data, issuesById) => (
+        data.issues.map(issue => {
+            const resolutions = this.getResolution(issue.id);
+            const { description, needs_reboot: needsReboot  } = resolutions?.[0] || {};
+            return {
+                action: issuesById[issue.id].description,
+                resolution: description,
+                needsReboot,
+                systemsCount: issue.systems ? issue.systems.length : data.systems.length,
+                id: issue.id,
+                shortId: issue?.id?.split('|')?.slice(-1)?.[0] || issue.id,
+                alternate: resolutions.length - 1
+            };
+        }).filter(record => record.alternate > 1));
+
+    openWizard = (data) => {
         const deferred = new Deferred();
-        this.setState({
-            open: true,
+        const issuesById = keyBy(data.issues, issue => issue.id);
 
-            schema: schemaBuilder(this.container.current),
+        this.loadResolutions(data.issues).then(
+            (values) => {
+                this.setState(values);
+                const issuesMultiple = this.getIssuesMultiple(data, issuesById);
+                this.setState({
+                    open: true,
 
-            wizardContextValue: {
-                success: false,
-                submitting: false,
-                error: undefined,
-                hideForm: false,
-                issues: data.issues,
-                systems: data.systems
-            },
-            mapperExtension: {
-                'select-playbook': {
-                    component: SelectPlaybook,
-                    SelectPlaybookProps: {
+                    schema: schemaBuilder(this.container.current, issuesMultiple),
+
+                    wizardContextValue: {
+                        success: false,
+                        submitting: false,
+                        error: undefined,
+                        hideForm: false,
                         issues: data.issues,
                         systems: data.systems
+                    },
+                    mapperExtension: {
+                        'select-playbook': {
+                            component: SelectPlaybook,
+                            SelectPlaybookProps: {
+                                issues: data.issues,
+                                systems: data.systems
+                            },
+                            loadResolutions: this.loadResolutions
+                        },
+                        'review-actions': {
+                            component: ReviewActions,
+                            issues: data.issues,
+                            issuesMultiple
+                        },
+                        'issue-resolution': {
+                            component: IssueResolution,
+                            systems: data.systems,
+                            issuesById: issuesById,
+                            getResolution: this.getResolution
+                        }
                     }
-                }
+                });
             }
-        });
-
-        this.loadResolutions(data.issues);
+        );
 
         return deferred.promise;
     }
@@ -93,11 +129,13 @@ class RemediationWizard extends Component {
                 return [ resolutions, errors ];
             }, [ [], [] ]);
 
-            this.setState({ resolutions, errors });
+            return { resolutions, errors };
         } catch (e) {
-            this.setState({ errors: [ 'Error obtaining resolution information. Please try again later.' ] });
+            return { errors: [ 'Error obtaining resolution information. Please try again later.' ] };
         }
     }
+
+    getResolution = issueId => this.state.resolutions.find(r => r.id === issueId)?.resolutions || [];
 
     render () {
 
@@ -113,6 +151,11 @@ class RemediationWizard extends Component {
                         container={this.container}
                         subscription={{ values: true }}
                         FormTemplate={this.getFormTemplate}
+                        initialValues={{
+                            multiple: !!this.state.resolutions?.find(r => r.resolutions.length > 1),
+                            'manual-resolution': true,
+                            'selected-resolutions': {}
+                        }}
                         componentMapper={{
                             [componentTypes.WIZARD]: Wizard,
                             ...this.state.mapperExtension
