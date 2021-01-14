@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
 
 const ExtensiveProp = ({ data }) => {
     const classes = useStyles();
-    const { required, description, defaultValue, ...src } = JSON.parse(data);
+    const { required, description, defaultValue, ...src } = data;
     return (
         <div className={classes.jsonContainer}>
             <ReactJson className="foo" theme="apathy" collapsed={3} src={src} />
