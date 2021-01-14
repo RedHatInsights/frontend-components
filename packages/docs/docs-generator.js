@@ -12,7 +12,7 @@ const navDest = path.resolve(__dirname, './components/navigation');
 function newLineReplacer(str) {
     return str.replace(/<br \/>\s+/gm, (str) => {
         const spacers = str.match(/\s/gm || []);
-        return str.replace(/<br \/>\s/, `<br />${spacers.map(() => `<span className="default-prop-spacer"></span>`).join('')}`);
+        return str.replace(/<br \/>\s/, `<br/>${spacers.map(() => `<span className=@@spacerPlaceholder></span>`).join('')}`);
     });
 }
 
@@ -57,7 +57,7 @@ function arrayOfGenerator({ value }) {
 function shapeGenerator({ value }) {
     const shape = Object.entries(value).reduce((acc, [ name, value ]) => ({
         ...acc,
-        [`${name}${value.required ? '*' : ''}`]: propTypeGeneratorMapper[value.name](value)
+        [`${name}${value.required ? '&#42;' : ''}`]: propTypeGeneratorMapper[value.name](value)
     }), {});
     return `<code>${newLineReplacer(JSON.stringify(shape, null, 2).replace(/\n/gm, '<br />').replace(/("|\\")/gm, '').replace(/:/gm, ': ').replace(/,/gm, ', '))}</code>`;
 }
@@ -146,15 +146,17 @@ function generatePropDescription(prop) {
     return result.description;
 }
 
-function getExtensiveProps(props, file) {
+function getExtensiveProps(props) {
     if (!props) {
         return [];
     }
 
-    return Object.entries(props)
+    const result = Object.entries(props)
     .filter(([ , value ]) => value.description && value.description.includes('@extensive')).map(([ name, value ]) => {
-        return { name, value: getPropType(value, file, {}) };
+        return { name, value: value.type };
     });
+
+    return result;
 }
 
 async function generateMD(file, API) {
@@ -176,12 +178,13 @@ ${API.props ? `## Props
 
 |name|type|default|description|
 |----|----|-------|-----------|
-${Object.entries(API.props).map(([ name, value ]) => `|${name}${value.required ? '*' : ''}|${getPropType(value.type, file, { name, ...value })}|${generateDefaultValue(value)}|${generatePropDescription(value)}|
+${Object.entries(API.props).map(([ name, value ]) => `|${name}${value.required ? `&#42;` : ''}|${getPropType(value.type, file, { name, ...value }).replace(/@@spacerPlaceholder/gm, '"default-prop-spacer"')}|${generateDefaultValue(value)}|${generatePropDescription(value)}|
 `).join('')}` : '\n'}
 
-${extensiveProps.map((data) => `### <a name="${data.name}"></a>${data.name}
+${extensiveProps.map((data) => {
+        return `### <a name="${data.name}"></a>${data.name}
 
-<ExtensiveProp data={${JSON.stringify(data.value)}} />`)}
+<ExtensiveProp data={${JSON.stringify(data.value)}} />`;})}
 `;
     return fse.writeFile(`${componentsDest}/${name}.md`, content);
 }

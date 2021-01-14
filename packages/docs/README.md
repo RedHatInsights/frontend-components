@@ -1,6 +1,3 @@
-# Install
-## It is critical that you run `npm i` in root and them `npm i` directly in this directory (/packages/docs). Otherwise there will be issues with react instances. I will fix this later on.
-
 # Generating files
 
 ## Generate components pages
