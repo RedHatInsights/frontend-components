@@ -1,4 +1,10 @@
 /index.js
 /index.css
+/index.scss
 /esm
 /cjs
+/redux
+/Notification
+/NotificationPagination
+/NotificationPortal
+/notificationsMiddleware

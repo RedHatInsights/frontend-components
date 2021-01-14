@@ -10,7 +10,6 @@
         "Utilities/"
     ],
     "dependencies": {
-        "@babel/core": "^7.9.0",
         "@patternfly/react-core": "^4.79.2",
         "@patternfly/react-icons": "^4.7.18",
         "@patternfly/react-table": "^4.19.24",
@@ -75,6 +74,8 @@
         "fontAwesome": "node_modules/font-awesome-sass/assets/stylesheets"
     },
     "devDependencies": {
+        "@babel/cli": "^7.12.10",
+        "@babel/core": "^7.12.10",
         "@babel/plugin-proposal-class-properties": "^7.8.3",
         "@babel/plugin-proposal-decorators": "^7.8.3",
         "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
