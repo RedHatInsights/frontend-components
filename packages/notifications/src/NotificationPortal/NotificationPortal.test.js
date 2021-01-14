@@ -2,9 +2,9 @@ import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
-import { NotificationsPortal } from './';
-import Notification from './Notification';
-import { REMOVE_NOTIFICATION } from './redux/action-types';
+import { NotificationsPortal } from '..';
+import Notification from '../Notification';
+import { REMOVE_NOTIFICATION } from '../redux/action-types';
 
 describe('Notification portal', () => {
     let initialProps;
