@@ -17,6 +17,16 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
   * [inventory-compliance](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-compliance#readme) - directly imported component with graphql to show compliance data
   * [inventory-insights](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-insights#readme) - directly imported component to show insights data
 
+## Generating docs and dev run
+
+First you have to generate MD files from `/packages/components` folder (it takes every JS file and generated MD files from JSDOCs) by running `npm run generate:components:docs`.
+
+To run docs server locally simply run `npm run docs` in root directory.
+
+### Adding an example
+
+Add new JS file to `/packages/docs/examples/<component name>/<example-name>.js`. The **component name** must be the same as the component MD file.
+
 ## Treeshaking PF with babel plugin
 
 Patternfly packages require some ehancements to be done in order to properly treeshake your bundles. You can either use direct imports or plugin that does that for you, there are actually 2 plugins to do this
