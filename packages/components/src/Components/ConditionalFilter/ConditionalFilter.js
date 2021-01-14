@@ -138,6 +138,7 @@ ConditionalFilter.propTypes = {
         }) ])
     })),
     ...TextInputProps,
+    id: PropTypes.string,
     isDisabled: PropTypes.bool
 };
 
