@@ -40,7 +40,8 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
             onClick: () => {
                 handleClick(
                     'Interfaces/NICs',
-                    interfaceMapper(infrastructure.nics)
+                    interfaceMapper(infrastructure.nics),
+                    'medium'
                 );
             }
         }
