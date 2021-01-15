@@ -4,7 +4,7 @@ export {
     ADD_NOTIFICATION,
     REMOVE_NOTIFICATION,
     CLEAR_NOTIFICATIONS
-} from './redux/action-types';
+} from './redux/actions/action-types';
 export {
     addNotification,
     removeNotification,

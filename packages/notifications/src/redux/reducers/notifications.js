@@ -2,7 +2,7 @@ import {
     ADD_NOTIFICATION,
     REMOVE_NOTIFICATION,
     CLEAR_NOTIFICATIONS
-} from '../action-types';
+} from '../actions/action-types';
 
 function generateID(type) {
     let text = 'cloud-services' + type + '-' + new Date().getTime() + Math.random().toString(36).slice(2);

@@ -9,14 +9,13 @@ const sourceFiles = glob.sync(`${root}/src/*/`).filter(item => !foldersBlackList
 
 async function createPackage(file) {
     const fileName = file.split('/').pop();
-    const esmSource = glob.sync(`${root}/esm/${fileName}/**/*.js`)[0];
+    const esmSource = glob.sync(`${root}/esm/${fileName}/**/index.js`)[0];
     const destFile = `${path.resolve(root, file.split('/src/').pop())}/package.json`;
     const esmRelative = path.relative(file.replace('/src', ''), esmSource);
     const content = {
         main: 'index.js',
         module: esmRelative
     };
-
     return fse.writeJSON(destFile, content);
 }
 
