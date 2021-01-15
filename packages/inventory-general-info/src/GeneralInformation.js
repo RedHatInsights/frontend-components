@@ -22,7 +22,8 @@ import './general-information.scss';
 class GeneralInformation extends Component {
     state = {
         isModalOpen: false,
-        modalTitle: ''
+        modalTitle: '',
+        modalVariant: 'small'
     };
 
     onSort = (_event, index, direction, customRows) => {
@@ -39,14 +40,15 @@ class GeneralInformation extends Component {
         });
     }
 
-    handleModalToggle = (modalTitle = '', { cells, rows, expandable, filters } = {}) => {
+    handleModalToggle = (modalTitle = '', { cells, rows, expandable, filters } = {}, modalVariant = 'small') => {
         rows && this.onSort(undefined, expandable ? 1 : 0, SortByDirection.asc, rows);
         this.setState(({ isModalOpen }) => ({
             isModalOpen: !isModalOpen,
             modalTitle,
             cells,
             expandable,
-            filters
+            filters,
+            modalVariant
         }));
     };
 
@@ -55,7 +57,7 @@ class GeneralInformation extends Component {
     };
 
     render() {
-        const { isModalOpen, modalTitle, cells, rows, expandable, filters } = this.state;
+        const { isModalOpen, modalTitle, cells, rows, expandable, filters, modalVariant } = this.state;
         const { store, writePermissions } = this.props;
         const Wrapper = store ? Provider : Fragment;
         return (
@@ -80,12 +82,12 @@ class GeneralInformation extends Component {
                         <CollectionCard handleClick={ this.handleModalToggle } />
                     </GridItem>
                     <Modal
-                        width={ 'initial' }
                         title={ modalTitle || '' }
                         aria-label={`${modalTitle || ''} modal`}
                         isOpen={ isModalOpen }
                         onClose={ () => this.handleModalToggle() }
                         className="ins-c-inventory__detail--dialog"
+                        variant={ modalVariant }
                     >
                         <InfoTable
                             cells={ cells }
