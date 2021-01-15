@@ -1,6 +1,6 @@
-import * as types from './actions/action-types';
-import * as reduxActions from './actions/notifications';
+export { default as actionTypes } from './actions/action-types';
+export * from './actions/action-types';
+export { default as notificationActions } from './actions/notifications';
+export * from './actions/notifications';
 
-export const actions = reduxActions;
-export const actionTypes = types;
 export { default as notificationsReducer } from './reducers/notifications';
