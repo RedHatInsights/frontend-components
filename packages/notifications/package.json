@@ -8,11 +8,12 @@
         "access": "public"
     },
     "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:post",
+        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
         "build:js": "BABEL_ENV=cjs babel src --out-dir ./ --ignore '**/*.test.js'",
         "build:esm": "BABEL_ENV=esm babel src --out-dir ./esm --ignore '**/*.test.js'",
-        "build:post": "node ../../scripts/build-styles.js && node ../../scripts/build-packages.js",
-        "start": ""
+        "build:css": "node ../../scripts/build-styles.js",
+        "build:packages": "node ../../scripts/build-packages.js",
+        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
     "repository": {
         "type": "git",

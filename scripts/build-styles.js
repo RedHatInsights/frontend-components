@@ -2,6 +2,7 @@ const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
 const sass = require('node-sass');
+const chokidar = require('chokidar');
 
 /**
  * Root path of the current package
@@ -19,7 +20,7 @@ async function buildStyle(file) {
         outFile
     }, function(err, result) {
         if (err) {
-            console.error(file, outFile)
+            console.error(file, outFile);
             throw err;
         }
 
@@ -52,4 +53,21 @@ async function run(files) {
     }
 }
 
-run(files);
+const args = process.argv.slice(2);
+
+if (args.includes('-w') || args.includes('--watch')) {
+    console.log(`Watching ${files.length} scss files in: ${root}`);
+    const watcher = chokidar.watch(files);
+    watcher
+    .on('add', path => {
+        console.log(`Compiling sass: ${path}`);
+        buildStyles([ path ]);
+    })
+    .on('change', path => {
+        console.log(`Compiling sass: ${path}`);
+        buildStyles([ path ]);
+    });
+
+} else {
+    run(files);
+}
