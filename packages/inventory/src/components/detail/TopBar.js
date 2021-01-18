@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { DeleteModal, TagsModal, TagWithDialog } from '../../shared';
 import { Split, SplitItem } from '@patternfly/react-core/dist/js/layouts/Split';
@@ -10,7 +10,7 @@ import {
     Dropdown,
     DropdownItem,
     DropdownPosition,
-    KebabToggle
+    DropdownToggle
 } from '@patternfly/react-core/dist/js/components/Dropdown';
 import { redirectToInventoryList } from './helpers';
 import { useDispatch } from 'react-redux';
@@ -36,7 +36,15 @@ const TopBar = ({
     const dispatch = useDispatch();
     const [ isOpen, setIsOpen ] = useState(false);
     const [ isModalOpen, setIsModalOpen ] = useState(false);
-    const inventoryActions = [ ... actions || [] ];
+    const inventoryActions = [
+        ...(!hideInvLink ? [{
+            title: 'View in Inventory',
+            component: 'a',
+            href: `./insights/inventory/${entity?.id}`
+        }] : []),
+        ... actions || []
+    ];
+
     return (
         <Split className="ins-c-inventory__detail--header">
             <SplitItem isFilled>
@@ -70,31 +78,26 @@ const TopBar = ({
                                         Delete
                                     </Button>
                                 </FlexItem>}
-                                {hideInvLink || (
-                                    <FlexItem>
-                                        <a className='ins-c-entity-detail__inv-link' href={`./insights/inventory/${entity.id}`}>View in Inventory</a>
-                                    </FlexItem>
-                                )}
-                                { inventoryActions && inventoryActions.length > 0 && (
+                                { inventoryActions?.length > 0 && (
                                     <FlexItem>
                                         <Dropdown
                                             onSelect={ () => setIsOpen(false) }
-                                            toggle={ <KebabToggle
+                                            toggle={ <DropdownToggle
                                                 onToggle={(isOpen) => setIsOpen(isOpen)}
-                                            />}
+                                            >Actions</DropdownToggle>}
                                             isOpen={ isOpen }
-                                            isPlain
                                             position={ DropdownPosition.right }
-                                            dropdownItems={ [ ...(inventoryActions ?
-                                                inventoryActions.map((action, key) => (
+                                            dropdownItems={
+                                                inventoryActions.map(({ title, ...action }, key) => (
                                                     <DropdownItem
-                                                        key={ action.key || key }
+                                                        key={ key }
                                                         component="button"
                                                         onClick={ (event) => action.onClick(event, action, action.key || key) }
+                                                        {...action}
                                                     >
-                                                        { action.title }
+                                                        { title }
                                                     </DropdownItem>)
-                                                ) : []) ] }
+                                                ) }
                                         />
                                     </FlexItem>)}
                                 <FlexItem>
