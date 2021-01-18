@@ -4,7 +4,6 @@ import { RemediationButton } from '@redhat-cloud-services/frontend-components-re
 import flatten from 'lodash/flatten';
 import { connect } from 'react-redux';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
-import globalBackgroundColor100 from '@patternfly/react-tokens/dist/js/global_BackgroundColor_100';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 
 class ComplianceRemediationButton extends React.Component {
@@ -31,7 +30,11 @@ class ComplianceRemediationButton extends React.Component {
     )
 
     rulesWithRemediations = (rules, system) => {
-        return rules.filter(rule => rule.remediationAvailable).map(
+        return rules.filter((rule) => (
+            rule.remediationAvailable &&
+            this.ruleProfile(rule, system).supported &&
+            rule.compliant === false
+        )).map(
             rule => this.formatRule(rule, this.ruleProfile(rule, system).refId, system.id)
         );
     }
@@ -54,9 +57,17 @@ class ComplianceRemediationButton extends React.Component {
         });
     }
 
-    noRemediationAvailable = () => {
+    remediationAvailable = () => {
         const { allSystems, selectedRules } = this.props;
-        return selectedRules.length === 0 && !allSystems.some((system) => system.ruleObjectsFailed.some((rule) => rule.remediationAvailable));
+        let rules = selectedRules.length ? selectedRules : allSystems.flatMap((system) => system.ruleObjectsFailed);
+        return rules.some((rule) => (
+            rule.remediationAvailable &&
+            (
+                rule.profiles?.some((profile) => profile.supported) ||
+                allSystems.some((system) => this.ruleProfile(rule, system).supported)
+            ) &&
+            rule.compliant === false
+        ));
     }
 
     render() {
@@ -65,11 +76,11 @@ class ComplianceRemediationButton extends React.Component {
         return (
             <React.Fragment>
                 <RemediationButton
-                    isDisabled={ this.noRemediationAvailable() }
+                    isDisabled={ !this.remediationAvailable() }
                     onRemediationCreated={ result => addNotification(result.getNotification()) }
                     dataProvider={ this.dataProvider }
                 >
-                    <AnsibeTowerIcon size='sm' color={globalBackgroundColor100.value} />
+                    <AnsibeTowerIcon size='sm' color='var(--pf-c-button--m-primary--Color)' />
                     &nbsp;Remediate
                 </RemediationButton>
             </React.Fragment>

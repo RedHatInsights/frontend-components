@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Alert, DescriptionListGroup, DescriptionListTerm, DescriptionListDescription, DescriptionList } from '@patternfly/react-core';
+import { Alert, DescriptionListGroup, DescriptionListTerm, DescriptionListDescription, DescriptionList, Label } from '@patternfly/react-core';
 import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps, shouldSkipEndpoint } from '../../addSourceWizard/schemaBuilder';
@@ -32,7 +32,12 @@ export const createItem = (formField, values, stepKeys) => {
 
     // Boolean value convert to Yes / No
     if (typeof value === 'boolean') {
-        value = value ? <FormattedMessage id="wizard.yes" defaultMessage="Yes" /> : <FormattedMessage id="wizard.no" defaultMessage="No" />;
+        value = value ? (<Label color="green">
+            <FormattedMessage id="wizard.enabled" defaultMessage="Enabled" />
+        </Label>)
+            : (<Label color="gray">
+                <FormattedMessage id="wizard.disabled" defaultMessage="Disabled" />
+            </Label>);
     }
 
     if (!value && formField.name === 'authentication.password' && get(values, 'authentication.id')) {
@@ -92,6 +97,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
         .map((step) => [ ...step.fields, ...authTypeFields.filter(({ stepKey }) => stepKey && step.name === stepKey) ])
         .flatMap(x => x)
         .filter(({ name }) => (
+            name.startsWith('application.extra') ||
             authTypeFields.find((field) => field.name === name) ||
             (hasCustomSteps && endpointFields.find((field) => field.name === name))
         ));
@@ -123,11 +129,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
 
     return (
         <React.Fragment>
-            <DescriptionList
-                columnModifier={{
-                    default: '2Col'
-                }}
-            >
+            <DescriptionList isHorizontal>
                 <DescriptionListGroup>
                     <DescriptionListTerm>
                         { intl.formatMessage({

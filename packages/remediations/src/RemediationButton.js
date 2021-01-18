@@ -85,3 +85,5 @@ RemediationButton.defaultProps = {
 };
 
 export default RemediationButton;
+
+export { RemediationButton };

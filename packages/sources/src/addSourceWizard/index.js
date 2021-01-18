@@ -58,7 +58,8 @@ const AddSourceWizard = ({
     returnButtonTitle,
     initialValues,
     onClose,
-    afterSuccess
+    afterSuccess,
+    selectedType
 }) => {
     const [
         { isErrored, isFinished, isSubmitted, values, error, isCancelling, createdSource, ...state },
@@ -107,6 +108,7 @@ const AddSourceWizard = ({
                 sourceTypes={ sourceTypes }
                 applicationTypes={ applicationTypes }
                 disableAppSelection={ disableAppSelection }
+                selectedType={selectedType}
             />
         </React.Fragment>
         );
@@ -125,6 +127,7 @@ const AddSourceWizard = ({
         createdSource={createdSource}
         tryAgain={() => onSubmit(values, state.sourceTypes)}
         afterSuccess={afterSuccess}
+        sourceTypes={state.sourceTypes}
     />;
 };
 
@@ -152,7 +155,8 @@ AddSourceWizard.propTypes = {
     }),
     disableAppSelection: PropTypes.bool,
     hideSourcesButton: PropTypes.bool,
-    returnButtonTitle: PropTypes.node
+    returnButtonTitle: PropTypes.node,
+    selectedType: PropTypes.string
 };
 
 AddSourceWizard.defaultProps = {

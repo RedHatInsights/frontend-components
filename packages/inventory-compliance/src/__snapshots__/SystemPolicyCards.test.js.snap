@@ -63,14 +63,30 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                   "supported": true,
                 }
               }
+              style={
+                Object {
+                  "height": "100%",
+                }
+              }
             >
-              <Card>
+              <Card
+                style={
+                  Object {
+                    "height": "100%",
+                  }
+                }
+              >
                 <article
                   className="pf-c-card"
                   data-ouia-component-id="OUIA-Generated-Card-1"
                   data-ouia-component-type="PF4/Card"
                   data-ouia-safe={true}
                   id=""
+                  style={
+                    Object {
+                      "height": "100%",
+                    }
+                  }
                 >
                   <CardBody>
                     <div
@@ -554,14 +570,30 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                   "supported": true,
                 }
               }
+              style={
+                Object {
+                  "height": "100%",
+                }
+              }
             >
-              <Card>
+              <Card
+                style={
+                  Object {
+                    "height": "100%",
+                  }
+                }
+              >
                 <article
                   className="pf-c-card"
                   data-ouia-component-id="OUIA-Generated-Card-5"
                   data-ouia-component-type="PF4/Card"
                   data-ouia-safe={true}
                   id=""
+                  style={
+                    Object {
+                      "height": "100%",
+                    }
+                  }
                 >
                   <CardBody>
                     <div

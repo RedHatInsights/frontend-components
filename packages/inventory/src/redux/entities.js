@@ -17,6 +17,7 @@ import { CullingInformation } from '@redhat-cloud-services/frontend-components/c
 import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
 import TitleColumn from '../components/table/TitleColumn';
+import InsightsDisconnected from '../shared/InsightsDisconnected';
 
 export const defaultState = {
     loaded: false,
@@ -29,7 +30,7 @@ export const defaultState = {
     }
 };
 
-const defaultColumns = [
+export const defaultColumns = [
     {
         key: 'display_name',
         title: 'Name',
@@ -50,18 +51,21 @@ const defaultColumns = [
             value,
             _id,
             {
-                culled_timestamp: culled, stale_warning_timestamp: staleWarn, stale_timestamp: stale
+                culled_timestamp: culled, stale_warning_timestamp: staleWarn, stale_timestamp: stale, insights_id: insightsId
             }) => {
             return CullingInformation ? <CullingInformation
                 culled={culled}
                 staleWarning={staleWarn}
                 stale={stale}
-                render={({ msg }) => <DateFormat date={ value } extraTitle={ (
-                    <React.Fragment>
-                        <div>{ msg }</div>
+                render={({ msg }) => <React.Fragment>
+                    <DateFormat date={ value } extraTitle={ (
+                        <React.Fragment>
+                            <div>{ msg }</div>
                         Last seen:{` `}
-                    </React.Fragment>
-                ) }/>
+                        </React.Fragment>
+                    ) }/>
+                    {!insightsId && <InsightsDisconnected />}
+                </React.Fragment>
                 }
             > <DateFormat date={ value } /> </CullingInformation> : new Date(value).toLocaleString();
         },

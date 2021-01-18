@@ -9,3 +9,4 @@ config/
 !/esm
 !/cjs
 !/*.css
+!/filters.js

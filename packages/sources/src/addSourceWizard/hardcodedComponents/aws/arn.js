@@ -1,6 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
 import {
+    Button,
+    ButtonVariant,
+    Popover,
     TextContent,
     Text,
     TextVariants,
@@ -12,6 +15,7 @@ import {
     ClipboardCopyVariant
 } from '@patternfly/react-core';
 import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
+import { QuestionCircleIcon } from '@patternfly/react-icons';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 import { useIntl } from 'react-intl';
 
@@ -110,7 +114,7 @@ export const IAMRoleDescription = () => {
             <TextListItem>
                 { intl.formatMessage({
                     id: 'cost.iamrole.createNewRole',
-                    defaultMessage: 'From the AWS Identity access management console, create a new role.'
+                    defaultMessage: 'From the AWS Identity Access Management console, create a new role.'
                 }) }
             </TextListItem>
             <TextListItem>
@@ -142,7 +146,10 @@ export const IAMPolicyDescription = () => {
     const formOptions = useFormApi();
     const intl = useIntl();
 
-    const s3Bucket = formOptions.getState().values.billing_source?.data_source?.bucket;
+    const values = formOptions.getState().values;
+    const s3Bucket = values.billing_source?.data_source?.bucket;
+    const aliasesEnabled = values.aws?.aliases?.enabled;
+    const orgUnitsEnabled = values.aws?.org_units?.enabled;
 
     if (!s3Bucket) {
         return (<Text component={ TextVariants.p }>
@@ -193,7 +200,7 @@ export const IAMPolicyDescription = () => {
                         ] }, {
                         Sid: 'VisualEditor1',
                         Effect: 'Allow',
-                        Action: [ 's3:HeadBucket', 'cur:DescribeReportDefinitions' ],
+                        Action: [ 's3:HeadBucket', 'cur:DescribeReportDefinitions', ...(aliasesEnabled ? [ 'iam:ListAccountAliases' ] : []), ...(orgUnitsEnabled ? [ 'organizations:List*', 'organizations:Describe*' ] : []) ],
                         Resource: '*'
                     }]
                 }, null, 2)}
@@ -225,10 +232,18 @@ export const TagsDescription = () => {
     const intl = useIntl();
 
     return (<TextContent>
-        <Text component={ TextVariants.p }>
+        <Text>
+            <Text component={ TextVariants.a } rel="noopener noreferrer" target="_blank" href={ENABLE_AWS_ACCOUNT} >
+                { intl.formatMessage({
+                    id: 'cost.tags.readMeLink',
+                    defaultMessage: 'Learn more'
+                }) }
+            </Text>
+        </Text>
+        <Text>
             { intl.formatMessage({
                 id: 'cost.tags.desciption',
-                defaultMessage: 'To use tags to organize your AWS resources in the cost management application, activate your tags in AWS to allow them to be imported automatically.'
+                defaultMessage: 'To use tags to organize your AWS resources in the Cost Management application, activate your tags in AWS to allow them to be imported automatically.'
             }) }
         </Text>
         <TextList component={TextListVariants.ol}>
@@ -241,10 +256,16 @@ export const TagsDescription = () => {
             <TextListItem>
                 { intl.formatMessage({
                     id: 'cost.tags.selectTags',
-                    defaultMessage: 'Select the tags you want to use in the cost management application, and click Activate.'
+                    defaultMessage: 'Select the tags you want to use in the Cost Management application, and click Activate.'
                 }) }
             </TextListItem>
         </TextList>
+        <Text>
+            { intl.formatMessage({
+                id: 'cost.tags.aliasessOrgUnits',
+                defaultMessage: 'To use account aliases and organizational units in the display and filter of AWS resources, select the following'
+            }) }
+        </Text>
     </TextContent>);
 };
 
@@ -273,4 +294,56 @@ export const ArnDescription = () => {
             </TextListItem>
         </TextList>
     </TextContent>);
+};
+
+export const IncludeAliasesLabel = () => {
+    const intl = useIntl();
+
+    return (<React.Fragment>
+        { intl.formatMessage({
+            id: 'cost.arn.includesAliases',
+            defaultMessage: 'Include AWS account aliases'
+        }) }
+        <span onClick={e => e.preventDefault()}>
+            <Popover
+                aria-label="Help text"
+                position="right"
+                maxWidth="40%"
+                bodyContent={ intl.formatMessage({
+                    id: 'cost.arn.includeAliasesPopover',
+                    defaultMessage: 'If there are account aliases, they will appear and be used for filtering when reporting on AWS accounts. This will include "iam:ListAccountAliases" to the Action of the IAM Policy.'
+                }) }
+            >
+                <Button variant={ButtonVariant.plain}>
+                    <QuestionCircleIcon className="pf-u-ml-sm"/>
+                </Button>
+            </Popover>
+        </span>
+    </React.Fragment>);
+};
+
+export const IncludeOrgUnitsLabel = () => {
+    const intl = useIntl();
+
+    return (<React.Fragment>
+        { intl.formatMessage({
+            id: 'cost.arn.includeOrgUnits',
+            defaultMessage: 'Include AWS organizational units'
+        }) }
+        <span onClick={e => e.preventDefault()}>
+            <Popover
+                aria-label="Help text"
+                position="right"
+                maxWidth="35%"
+                bodyContent={ intl.formatMessage({
+                    id: 'cost.arn.includeOrgUnitsPopover',
+                    defaultMessage: 'If there are organizational units, they will be used for filtering when reporting on AWS resources. This will include "organizations:List*" and "organizations:Describe*" to the Action of the IAM Policy'
+                }) }
+            >
+                <Button variant={ButtonVariant.plain}>
+                    <QuestionCircleIcon className="pf-u-ml-sm"/>
+                </Button>
+            </Popover>
+        </span>
+    </React.Fragment>);
 };

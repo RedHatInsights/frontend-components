@@ -60,9 +60,11 @@ export default rollupConfig(
     globals,
     name,
     [{
-        RemediationButton: 'src/RemediationButton.js'
+        RemediationButton: 'src/RemediationButton.js',
+        index: 'src/index.js'
     }, {
-        RemediationButton: 'src/RemediationButton.js'
+        RemediationButton: 'src/RemediationButton.js',
+        index: 'src/index.js'
     }],
     './'
 );
