@@ -66,7 +66,8 @@ class RemediationWizard extends Component {
             manualResolutionSelection: true,
             selectedResolutions: {},
 
-            errors: []
+            errors: [],
+            onRemediationCreated: data.onRemediationCreated
         });
 
         this.loadRemediations();
@@ -141,8 +142,8 @@ class RemediationWizard extends Component {
         .then(() => resolver(id, name, false));
     };
 
-    resolver = deferred => (id, name, isNewSwitch) => {
-        deferred.resolve({
+    resolver = () => (id, name, isNewSwitch) => {
+        this.state.onRemediationCreated({
             remediation: { id, name },
             getNotification: () => createNotification(id, name, isNewSwitch)
         });
