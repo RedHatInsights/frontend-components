@@ -21,10 +21,10 @@ const SelectPlaybook = (props) => {
     const { SelectPlaybookProps: { issues, systems } } = props;
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
-    const [ existingRemediations, setExistingRemediations ] = useState(false);
+    const [ existingRemediations, setExistingRemediations ] = useState([]);
     const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(false);
     const [ newPlaybookName, setNewPlaybookName ] = useState('');
-    const [ selectedPlaybook, setSelectedPlaybook ] = useState('');
+    const [ selectedPlaybook, setSelectedPlaybook ] = useState();
     const nameValid = true;
 
     useEffect(() => {
@@ -53,8 +53,8 @@ const SelectPlaybook = (props) => {
                 <Grid hasGutter>
                     <GridItem sm={12} md={6} lg={3}>
                         <Radio
-                            label={existingRemediations ? `Existing playbook (${existingRemediations.length})` : 'Existing playbook'}
-                            aria-label="Existing playbook"
+                            label={existingRemediations ? `Add to existing playbook (${existingRemediations.length})` : 'Add to existing playbook'}
+                            aria-label="Add to existing playbook"
                             id="existing"
                             name="radio"
                             isDisabled={!existingRemediations || !existingRemediations.length}
@@ -62,8 +62,8 @@ const SelectPlaybook = (props) => {
                             onChange={() => {
                                 setExistingPlaybookSelected(true);
                                 formOptions.change('existing-playbook-selected', true);
-                                input.onChange(selectedPlaybook);
-                                formOptions.change('playbook-name', selectedPlaybook);
+                                input.onChange(selectedPlaybook?.name || '');
+                                formOptions.change('existing-playbook', selectedPlaybook);
                             }}
                         />
                     </GridItem>
@@ -73,11 +73,13 @@ const SelectPlaybook = (props) => {
                                 <Skeleton size={SkeletonSize.lg} /> :
                                 <FormSelect
                                     onChange={val => {
-                                        setSelectedPlaybook(val);
-                                        input.onChange(val);
-                                        formOptions.change('selected-playbook', val);
+                                        api.getRemediation(val).then(remediation => {
+                                            setSelectedPlaybook(remediation);
+                                            existingPlaybookSelected && input.onChange(remediation.name);
+                                            existingPlaybookSelected && formOptions.change('existing-playbook', remediation);
+                                        });
                                     }}
-                                    value={selectedPlaybook}
+                                    value={selectedPlaybook?.id || ''}
                                     aria-label="Select an existing playbook" >
                                     {existingRemediations.length
                                         ? [ <FormSelectOption key='select-playbook-placeholder' value='' label='Select playbook' isDisabled />,
@@ -104,7 +106,7 @@ const SelectPlaybook = (props) => {
                                 setExistingPlaybookSelected(false);
                                 formOptions.change('existing-playbook-selected', false);
                                 input.onChange(newPlaybookName);
-                                formOptions.change('playbook-name', newPlaybookName);
+                                formOptions.change('existing-playbook', undefined);
                             }}
                         />
                     </GridItem>
@@ -118,8 +120,7 @@ const SelectPlaybook = (props) => {
                                 value={newPlaybookName}
                                 onChange={(val) => {
                                     setNewPlaybookName(val);
-                                    input.onChange(val);
-                                    formOptions.change('playbook-name', val);
+                                    existingPlaybookSelected || input.onChange(val);
                                 }}
                                 aria-label="Name your playbook"
                                 autoFocus
