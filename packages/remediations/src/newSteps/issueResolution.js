@@ -13,7 +13,7 @@ import {
 import { RedoIcon, CloseIcon } from '@patternfly/react-icons';
 
 const IssueResolution = (props) => {
-    const { systems, issuesById, getResolution, issue } = props;
+    const { systems, getResolution, issue } = props;
     const formOptions = useFormApi();
     const [ resolutions, setResolutions ] = useState([]);
 
@@ -36,7 +36,7 @@ const IssueResolution = (props) => {
                         Review the possible resolution steps and select which to add to your playbook.
                     </Text>
                     <Text className="ins-c-remediations-action-description">
-                        {issuesById[issue.id].description}
+                        {issue.action}
                     </Text>
                     <Text className="ins-c-remediations-action-description">
                         {`Resolution affects ${systems.length} ${pluralize(systems.length, 'system')}`}
@@ -66,7 +66,10 @@ const IssueResolution = (props) => {
                                     }
                                     title={resolution.description}
                                 >
-                                    <TextContent className="pf-u-pt-md">
+                                    <TextContent className="pf-u-pt-sm">
+                                        <Text className="ins-c-playbook-description">
+                                            {`Resolution from "${issue.id.split(/:|\|/)[1]}"`}
+                                        </Text>
                                         {
                                             <div className="ins-c-reboot-required">
                                                 {resolution.needs_reboot ? <RedoIcon/> : <CloseIcon/>}
@@ -89,7 +92,6 @@ const IssueResolution = (props) => {
 
 IssueResolution.propTypes = {
     systems: propTypes.array,
-    issuesById: propTypes.object,
     issue: propTypes.object,
     getResolution: propTypes.func
 };
