@@ -302,11 +302,13 @@ describe('schema builder', () => {
             it('generate multiple selection', () => {
                 const arnSelect = expect.objectContaining({ component: 'auth-select', authName: 'arn' });
                 const secretKey = expect.objectContaining({ component: 'auth-select', authName: 'access_key_secret_key' });
+                const arnCloudMeter = expect.objectContaining({ component: 'auth-select', authName: 'cloud-meter-arn' });
 
                 expectedSchema = expect.objectContaining({
                     fields: expect.arrayContaining([
                         arnSelect,
-                        secretKey
+                        secretKey,
+                        arnCloudMeter
                     ]),
                     title: expect.any(Object),
                     name: AMAZON_TYPE.name,
@@ -314,7 +316,8 @@ describe('schema builder', () => {
                         when: expect.any(String),
                         stepMapper: {
                             access_key_secret_key: 'amazon-access_key_secret_key-generic-additional-step',
-                            arn: 'summary'
+                            arn: 'summary',
+                            'cloud-meter-arn': 'summary'
                         }
                     }
                 });
@@ -389,7 +392,7 @@ describe('schema builder', () => {
             const schema = schemaBuilder(sourceTypes.filter(({ schema }) => schema), applicationTypes);
 
             expect(schema).toEqual(expect.arrayContaining([ expect.any(Object) ]));
-            expect(schema).toHaveLength(29);
+            expect(schema).toHaveLength(34);
         });
     });
 });

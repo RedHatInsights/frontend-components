@@ -6,6 +6,7 @@ import Truncate from 'react-truncate';
 import {
     Card,
     CardBody,
+    CardFooter,
     Text,
     TextContent,
     TextVariants,
@@ -58,11 +59,11 @@ class SystemPolicyCard extends React.Component {
         const {
             policy, rulesFailed, compliant, lastScanned, score, ssgVersion, supported
         } = this.state.policy;
-        const { cardTitle, cardSubTitle } = this.state;
+        const { cardTitle, cardSubTitle, style } = this.state;
         const passedPercentage = this.fixedPercentage(score);
         const FormattedRelativeCmp = FormattedRelativeTime || FormattedRelative || Fragment;
 
-        return <Card>
+        return <Card style={ style }>
             <CardBody>
                 <TextContent className='margin-bottom-md'>
                     <Text className='margin-bottom-top-none'
@@ -116,8 +117,20 @@ class SystemPolicyCard extends React.Component {
                         Last scanned: { lastScanned !== 'Never' ? <FormattedRelativeCmp value={ Date.parse(lastScanned) } /> : lastScanned }
                     </Text>
                 </Text>
-                { !supported && <UnsupportedSSGVersion ssgVersion={ ssgVersion } /> }
             </CardBody>
+            { !supported &&
+                <CardFooter style={{ padding: '0' }}>
+                    <UnsupportedSSGVersion
+                        ssgVersion={ ssgVersion }
+                        style={{
+                            paddingTop: 'var(--pf-c-alert--PaddingTop)',
+                            paddingRight: 'var(--pf-c-card--child--PaddingRight)',
+                            paddingLeft: 'var(--pf-c-card--child--PaddingLeft)',
+                            paddingBottom: 'var(--pf-c-alert--PaddingBottom)'
+                        }}
+                    />
+                </CardFooter>
+            }
         </Card>;
     };
 };
@@ -133,7 +146,8 @@ SystemPolicyCard.propTypes = {
         policyType: PropTypes.string,
         compliant: PropTypes.bool,
         ssgVersion: PropTypes.string,
-        supported: PropTypes.bool
+        supported: PropTypes.bool,
+        style: PropTypes.object
     })
 };
 

@@ -1,54 +1,19 @@
-$card-height: 90px;
+.ins-c-sources__wizard--tile {
+  width: 100%;
 
-.ins-c-sources__wizard--icon {
-  max-height: calc(#{$card-height} - 2 * var(--pf-global--spacer--md));
-  filter: grayscale(1) brightness(1.25);
-}
+  .ins-c-sources__wizard--icon {
+    height: 40px;
+  }
 
-.ins-c-sources__wizard--card {
-    height: $card-height;
-    cursor: pointer;
-
-    &:focus {
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.42), 0 4px 11px 0 rgba(0, 0, 0, 0.42);
-      outline: none;
-    }
-
-    &.selected {
-      border:1px solid;
-      border-color: var(--pf-global--primary-color--100);
-
-      .ins-c-sources__wizard--icon {
-        filter: none;
-      }
-    }
-
-    &:hover {
-      .ins-c-sources__wizard--icon {
-        filter: none;
-      }
-    }
-
-    &.disabled {
-      cursor: not-allowed;
-      background-color: var(--pf-global--BorderColor--100);
+  &.disabled {
+    .ins-c-sources__wizard--icon {
       opacity: 0.5;
-      pointer-events: none;
-
-      &:hover {
-        cursor: not-allowed;
-      }
     }
+  }
 
-    .disabled {
-      z-index: -1;
-    }
-
-    .text-elipsis {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
+  .redhat-icon {
+    height: 50px;
+  }
 }
 
 .ins-c-sources__wizard--step-text {

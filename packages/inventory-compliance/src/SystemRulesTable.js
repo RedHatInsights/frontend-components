@@ -113,7 +113,7 @@ class SystemRulesTable extends React.Component {
     )
 
     severitySorting = (property, rules, direction) => (
-        orderByArray(rules, property, [ 'high', 'medium', 'low', 'unkown' ], direction)
+        orderByArray(rules, property, [ 'high', 'medium', 'low', 'unknown' ], direction)
     )
 
     getSorter = (property) => {

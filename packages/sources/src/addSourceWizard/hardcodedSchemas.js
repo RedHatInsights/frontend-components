@@ -356,7 +356,7 @@ export default {
                         isRequired: true
                     },
                     additionalSteps: [{
-                        title: <FormattedMessage id="cost.arn.usageDescriptionTitle" defaultMessage="Cost and usage reporting" />,
+                        title: <FormattedMessage id="cost.arn.usageDescriptionTitle" defaultMessage="Configure cost and usage reporting" />,
                         nextStep: 'tags',
                         fields: [{
                             name: 'usage-description',
@@ -374,13 +374,21 @@ export default {
                             initializeOnMount: true
                         }]
                     }, {
-                        title: <FormattedMessage id="cost.arn.tagsStepTitle" defaultMessage="Activate cost allocation tags" />,
+                        title: <FormattedMessage id="cost.arn.tagsStepTitle" defaultMessage="Tags, aliases and organizational units" />,
                         name: 'tags',
                         nextStep: 'iam-policy',
                         fields: [{
                             name: 'tags-description',
                             component: 'description',
                             Content: AwsArn.TagsDescription
+                        }, {
+                            name: 'aws.aliases.enabled',
+                            component: componentTypes.CHECKBOX,
+                            label: <AwsArn.IncludeAliasesLabel />
+                        }, {
+                            name: 'aws.org_units.enabled',
+                            component: componentTypes.CHECKBOX,
+                            label: <AwsArn.IncludeOrgUnitsLabel />
                         }]
                     },
                     {
@@ -453,6 +461,7 @@ export default {
                         title: <FormattedMessage id="cloudmeter.enterArn" defaultMessage="Enter ARN" />,
                         name: 'subs-arn',
                         substepOf: 'eaa',
+                        nextStep: 'subwatch-auto-registration',
                         fields: [{
                             name: 'arn-description',
                             component: 'description',
@@ -460,6 +469,22 @@ export default {
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.password'
+                        }]
+                    }, {
+                        name: 'subwatch-auto-registration',
+                        title: <FormattedMessage id="cloudmeter.autoRegistration" defaultMessage="Auto-registration" />,
+                        fields: [{
+                            component: componentTypes.PLAIN_TEXT,
+                            name: 'auto-registration-text',
+                            label: <FormattedMessage
+                                id="cloudmeter.autoRegistrationDescription"
+                                defaultMessage="With auto-registration, all Gold Image instances will be automatically connected to Subscription Watch."
+                            />
+                        }, {
+                            component: componentTypes.SWITCH,
+                            name: 'application.extra.auto_register',
+                            initialValue: true,
+                            label: <FormattedMessage id="cloudmeter.autoRegisterLabel" defaultMessage="Auto-register cloud instances" />
                         }]
                     }
                     ]

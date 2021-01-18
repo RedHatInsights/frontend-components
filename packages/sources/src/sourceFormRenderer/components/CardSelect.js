@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardBody, FormGroup, Grid, GridItem, Bullseye, CardTitle } from '@patternfly/react-core';
+import { FormGroup, Grid, GridItem, Tile } from '@patternfly/react-core';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
@@ -55,27 +55,18 @@ const CardSelect = (originalProps) => {
 
         return (
             <GridItem sm={ 6 } md={ 4 } key={ value }>
-                <Card
-                    className={ `ins-c-sources__wizard--card${inputValue.includes(value) ? ' selected' : ''}${disabled ? ' disabled' : ''}` }
+                <Tile
+                    className={ `ins-c-sources__wizard--tile${disabled ? ' disabled' : ''}` }
                     onClick={ () => onClick(value) }
                     tabIndex={ disabled ? -1 : 0 }
                     onKeyPress={ (e) => handleKeyPress(e, value, onClick) }
-                    isHoverable={ !disabled }
-                    isCompact={ true }
-                >
-                    <div className={ disabled ? 'disabled' : '' }>
-                        {!Component && <CardTitle className='text-elipsis'>
-                            { label }
-                        </CardTitle>}
-                        {Component && (
-                            <CardBody>
-                                <Bullseye>
-                                    <Component size="md"/>
-                                </Bullseye>
-                            </CardBody>
-                        )}
-                    </div>
-                </Card>
+                    isDisabled={ disabled }
+                    title={label}
+                    isStacked
+                    isSelected={inputValue.includes(value)}
+                    {...(Component && { icon: <Component /> })}
+
+                />
             </GridItem>
         );
     });

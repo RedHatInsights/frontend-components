@@ -60,7 +60,8 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
             onClick: () => {
                 handleClick(
                     'Repositories',
-                    repositoriesMapper(configuration.repositories)
+                    repositoriesMapper(configuration.repositories),
+                    'medium'
                 );
             }
         }

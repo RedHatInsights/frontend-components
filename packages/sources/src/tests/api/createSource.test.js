@@ -127,7 +127,8 @@ describe('doCreateSource', () => {
             EXPECTED_AUTHENTICATION_SOURCE_ARG = {
                 ...AUTHENTICATION_FORM_DATA,
                 resource_id: CREATED_EDNPOINT_ID,
-                resource_type: 'Endpoint'
+                resource_type: 'Endpoint',
+                source_id: CREATED_SOURCE_ID
             };
             EXPECTED_CREATE_ENDPOINT_SOURCE_ARG = {
                 ...ENDPOINT_FORM_DATA,
@@ -385,7 +386,8 @@ describe('doCreateSource', () => {
             EXPECTED_AUTHENTICATION_SOURCE_ARG = {
                 ...AUTHENTICATION_FORM_DATA,
                 resource_id: CREATE_APPLICATION_DATA_OUT.id,
-                resource_type: 'Application'
+                resource_type: 'Application',
+                source_id: CREATED_SOURCE_ID
             };
 
             EXPECTED_CREATE_AUTH_APP_ARG = {

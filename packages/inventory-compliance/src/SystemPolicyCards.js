@@ -10,7 +10,7 @@ class SystemPolicyCards extends React.Component {
         return policies.filter((policy) => (policy.rulesFailed + policy.rulesPassed) > 0).map(
             (policy, i) =>
                 <GridItem sm={ 12 } md={ 12 } lg={ 6 } xl={ 4 } key={ i }>
-                    <SystemPolicyCard policy={ policy } />
+                    <SystemPolicyCard policy={ policy } style={{ height: '100%' }} />
                 </GridItem>
         );
     }

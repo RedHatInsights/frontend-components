@@ -6,6 +6,8 @@ export const stringToId = (string) => (
     string.split(' ').join('').toLowerCase()
 );
 
+const defaultPlaceholder = (label) => (`Filter by ${ label.toLowerCase() }`);
+
 class FilterConfigBuilder {
     chipBuilder = null;
     filterBuilder = null;
@@ -31,6 +33,7 @@ class FilterConfigBuilder {
     toTextFilterConfig = (item, handler, value) => ({
         type: conditionalFilterType.text,
         label: item.label,
+        placeholder: defaultPlaceholder(item.label),
         id: stringToId(item.label),
         filterValues: {
             value,
@@ -43,6 +46,7 @@ class FilterConfigBuilder {
     toCheckboxFilterConfig = (item, handler, value) => ({
         type: conditionalFilterType.checkbox,
         label: item.label,
+        placeholder: defaultPlaceholder(item.label),
         id: stringToId(item.label),
         filterValues: {
             value,
@@ -56,6 +60,7 @@ class FilterConfigBuilder {
     toRadioFilterConfig = (item, handler, value) => ({
         type: conditionalFilterType.radio,
         label: item.label,
+        placeholder: defaultPlaceholder(item.label),
         id: stringToId(item.label),
         filterValues: {
             value,

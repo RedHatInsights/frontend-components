@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, EmptyStateBody, Title, Bullseye, Spinner, EmptyState, EmptyStateSecondaryActions } from '@patternfly/react-core';
+import { Button, EmptyStateBody, Title, Bullseye, Spinner, EmptyState, EmptyStateSecondaryActions, Alert } from '@patternfly/react-core';
 import { CheckCircleIcon, ExclamationCircleIcon, WrenchIcon } from '@patternfly/react-icons';
 
 import FinishedStep from '../../addSourceWizard/steps/FinishedStep';
@@ -8,6 +8,7 @@ import ErroredStep from '../../addSourceWizard/steps/ErroredStep';
 import TimeoutStep from '../../addSourceWizard/steps/TimeoutStep';
 
 import mount from '../__mocks__/mount';
+import AmazonFinishedStep from '../../addSourceWizard/steps/AmazonFinishedStep';
 
 describe('Steps components', () => {
     let initialProps;
@@ -152,6 +153,31 @@ describe('Steps components', () => {
 
         it('calls onClose function', () => {
             const wrapper = mount(<TimeoutStep { ...initialProps }/>);
+            wrapper.find(Button).simulate('click');
+            expect(spyFunction).toHaveBeenCalled();
+        });
+    });
+
+    describe('AmazonFinishedStep', () => {
+        beforeEach(() => {
+            initialProps = {
+                onClose: spyFunction
+            };
+        });
+
+        it('renders correctly', () => {
+            const wrapper = mount(<AmazonFinishedStep { ...initialProps }/>);
+
+            expect(wrapper.find(Bullseye)).toHaveLength(1);
+            expect(wrapper.find(CheckCircleIcon)).toHaveLength(5);
+            expect(wrapper.find(EmptyState)).toHaveLength(1);
+            expect(wrapper.find(Button)).toHaveLength(1);
+            expect(wrapper.find(Alert)).toHaveLength(1);
+            expect(wrapper.find('a')).toHaveLength(5);
+        });
+
+        it('calls onClose function', () => {
+            const wrapper = mount(<AmazonFinishedStep { ...initialProps }/>);
             wrapper.find(Button).simulate('click');
             expect(spyFunction).toHaveBeenCalled();
         });

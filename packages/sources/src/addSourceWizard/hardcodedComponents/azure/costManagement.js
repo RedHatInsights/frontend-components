@@ -126,7 +126,7 @@ export const ExportSchedule = () => {
             <Text component={TextVariants.p}>
                 { intl.formatMessage({
                     id: 'cost.azure.storageAccountDescription',
-                    defaultMessage: 'Create a recurring task to export cost data to your Azure storage account, where cost management will retrieve the data.  {link}'
+                    defaultMessage: 'Create a recurring task to export cost data to your Azure storage account, where Cost Management will retrieve the data.  {link}'
                 }, {
                     link: <Text
                         key="link"

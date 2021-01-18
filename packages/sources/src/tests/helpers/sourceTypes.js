@@ -137,6 +137,19 @@ const sourceTypes = [
                             { type: 'length-validator', threshold: 10 }
                         ]
                     }]
+                },
+                {
+                    name: 'Subscription Watch ARN',
+                    type: 'cloud-meter-arn',
+                    fields: [
+                        { name: 'authentication.authtype', component: 'text-field', hideField: true, initialValue: 'cloud-meter-arn', initializeOnMount: true },
+                        {
+                            name: 'authentication.password',
+                            label: 'ARN',
+                            validate: [{ type: 'required' }, { type: 'pattern', pattern: '^arn:aws:.*' }, { type: 'min-length', threshold: 10 }],
+                            component: 'text-field',
+                            isRequired: true }
+                    ]
                 }
             ],
             endpoint: {

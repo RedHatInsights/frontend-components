@@ -1,8 +1,8 @@
 import React from 'react';
-import { Alert, DescriptionListGroup, DescriptionListTerm, DescriptionListDescription } from '@patternfly/react-core';
+import { Alert, DescriptionListGroup, DescriptionListTerm, DescriptionListDescription, Label } from '@patternfly/react-core';
 
 import Summary, { createItem } from '../../../sourceFormRenderer/components/SourceWizardSummary';
-import applicationTypes, { COST_MANAGEMENT_APP } from '../../helpers/applicationTypes';
+import applicationTypes, { COST_MANAGEMENT_APP, SUB_WATCH_APP } from '../../helpers/applicationTypes';
 import sourceTypes from '../../helpers/sourceTypes';
 import ValuePopover from '../../../sourceFormRenderer/components/ValuePopover';
 import RendererContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
@@ -73,7 +73,7 @@ describe('SourceWizardSummary component', () => {
                     [ 'Authentication type', 'Token' ],
                     [ 'Token', '●●●●●●●●●●●●' ],
                     [ 'URL', 'neznam.cz' ],
-                    [ 'Verify SSL', 'Yes' ],
+                    [ 'Verify SSL', 'Enabled' ],
                     [ 'SSL Certificate', 'authority' ]
                 ]
             );
@@ -202,6 +202,35 @@ describe('SourceWizardSummary component', () => {
             );
         });
 
+        it('amazon - ARN subwatch - includes auto registration', () => {
+            formOptions = {
+                getState: () => ({
+                    values: {
+                        source: { name: 'cosi' },
+                        application: { application_type_id: SUB_WATCH_APP.id, extra: { auto_register: true } },
+                        source_type: 'amazon',
+                        authentication: { password: 'arn:aws:132', authtype: 'cloud-meter-arn' },
+                        fixasyncvalidation: ''
+                    }
+                })
+            };
+
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions } />);
+
+            const data = getListData(wrapper);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'cosi' ],
+                    [ 'Application', 'Subscription Watch' ],
+                    [ 'Source type', 'Amazon Web Services' ],
+                    [ 'Authentication type', 'Subscription Watch ARN' ],
+                    [ 'ARN', 'arn:aws:132' ],
+                    [ 'Auto-register cloud instances', 'Enabled' ]
+                ]
+            );
+        });
+
         it('ansible-tower', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('ansible-tower', 'username_password') } />);
             const data = getListData(wrapper);
@@ -215,7 +244,7 @@ describe('SourceWizardSummary component', () => {
                     [ 'Username', 'user_name' ],
                     [ 'Password', '●●●●●●●●●●●●' ],
                     [ 'Hostname', 'neznam.cz' ],
-                    [ 'Verify SSL', 'Yes' ],
+                    [ 'Verify SSL', 'Enabled' ],
                     [ 'Certificate authority', 'authority' ]
                 ]
             );
@@ -234,7 +263,7 @@ describe('SourceWizardSummary component', () => {
                     [ 'Source type', 'Ansible Tower' ],
                     [ 'Authentication type', 'Username and password' ],
                     [ 'Hostname', 'neznam.cz' ],
-                    [ 'Verify SSL', 'Yes' ],
+                    [ 'Verify SSL', 'Enabled' ],
                     [ 'Certificate authority', 'authority' ],
                     [ 'Username', 'user_name' ],
                     [ 'Password', '●●●●●●●●●●●●' ]
@@ -252,7 +281,7 @@ describe('SourceWizardSummary component', () => {
                     [ 'Source type', 'Ansible Tower' ],
                     [ 'Authentication type', 'Username and password' ],
                     [ 'Hostname', 'neznam.cz' ],
-                    [ 'Verify SSL', 'Yes' ],
+                    [ 'Verify SSL', 'Enabled' ],
                     [ 'Certificate authority', 'authority' ],
                     [ 'Username', 'user_name' ],
                     [ 'Password', '●●●●●●●●●●●●' ]
@@ -322,16 +351,16 @@ describe('SourceWizardSummary component', () => {
             expect(wrapper.contains('token')).toEqual(false);
         });
 
-        it('render boolean as Yes', () => {
+        it('render boolean as Enabled', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') } />);
-            expect(wrapper.contains('Yes')).toEqual(true);
-            expect(wrapper.contains('No')).toEqual(false);
+            expect(wrapper.contains('Enabled')).toEqual(true);
+            expect(wrapper.contains('Disabled')).toEqual(false);
         });
 
         it('render boolean as No', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token', '1', false) } />);
-            expect(wrapper.contains('No')).toEqual(true);
-            expect(wrapper.contains('Yes')).toEqual(false);
+            expect(wrapper.contains('Enabled')).toEqual(false);
+            expect(wrapper.contains('Disabled')).toEqual(true);
         });
 
         it('render password as dots', () => {
@@ -426,7 +455,9 @@ describe('SourceWizardSummary component', () => {
 
             expect(createItem(field, values, availableStepKeys)).toEqual({
                 label: 'Label 1',
-                value: <FormattedMessage id="wizard.yes" defaultMessage="Yes" />
+                value: <Label color="green">
+                    <FormattedMessage id="wizard.enabled" defaultMessage="Enabled" />
+                </Label>
             });
         });
 
@@ -439,7 +470,9 @@ describe('SourceWizardSummary component', () => {
 
             expect(createItem(field, values, availableStepKeys)).toEqual({
                 label: 'Label 1',
-                value: <FormattedMessage id="wizard.no" defaultMessage="No" />
+                value: <Label color="gray">
+                    <FormattedMessage id="wizard.disabled" defaultMessage="Disabled" />
+                </Label>
             });
         });
 
