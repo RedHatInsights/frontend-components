@@ -5,7 +5,7 @@ export default (container, issues) => ({
     fields: [
         {
             component: componentTypes.WIZARD,
-            name: 'wizzard',
+            name: 'remediations-wizard',
             isDynamic: true,
             inModal: true,
             showTitles: true,
@@ -50,17 +50,19 @@ export default (container, issues) => ({
                                 issue
                             }
                         ],
-                        nextStep: index < issues.length ? `issue-resolution-${index + 1}` : 'review',
+                        nextStep: index < issues.length - 1 ? `issue-resolution-${index + 1}` : 'review',
                         substepOf: 'Choose actions'
                     }
                 )),
                 {
                     name: 'review',
                     title: 'Remediation review',
-                    fields: [{
-                        name: 'issue-resolution-review',
-                        component: 'select-playbook'
-                    }]
+                    fields: [
+                        {
+                            name: 'review',
+                            component: 'review'
+                        }
+                    ]
                 }
 
             ]
