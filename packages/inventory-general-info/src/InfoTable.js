@@ -42,12 +42,15 @@ class InfoTable extends Component {
     setFilter = (key, value, label) => {
         const { activeFilters } = this.state;
         const { [key]: currFilter, ...restFilter } = activeFilters;
-        this.setState({ activeFilters: {
-            ...restFilter,
-            ...value.length !== 0 && {
-                [key]: { key, value, label }
-            }
-        } });
+        this.setState({
+            activeFilters: {
+                ...restFilter,
+                ...value.length !== 0 && {
+                    [key]: { key, value, label }
+                }
+            },
+            pagination: { ...this.state.pagination, page: 1 }
+        });
     }
 
     onDeleteFilter = (_e, [ deleted ], deleteAll) => {
@@ -56,7 +59,8 @@ class InfoTable extends Component {
                 deleted,
                 deleteAll,
                 this.state.activeFilters
-            )
+            ),
+            pagination: { ...this.state.pagination, page: 1 }
         });
     }
 

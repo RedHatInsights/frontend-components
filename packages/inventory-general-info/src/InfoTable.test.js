@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme';
 import toJson, { shallowToJson } from 'enzyme-to-json';
 import InfoTable from './InfoTable';
 import { sortable } from '@patternfly/react-table';
+import { Pagination } from '@patternfly/react-core';
 
 describe('InfoTable', () => {
     describe('should render', () => {
@@ -140,6 +141,48 @@ describe('InfoTable', () => {
             wrapper.find('nav.pf-c-pagination__nav [data-action="next"]').first().simulate('click');
             expect(wrapper.find('table tbody tr').length).toBe(10);
             expect(toJson(wrapper.find('table tbody tr').first())).toMatchSnapshot();
+        });
+
+        it('should paginate to 1 when filtering', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={
+                    [ ...new Array(50) ]
+                    .map(
+                        (_e, index) => ([ ...new Array(2) ].map((_e, cell) =>`${index}-${cell}`))
+                    )
+                }
+                filters={[{ index: 0 }, { index: 1 }]}
+            />);
+
+            wrapper.find('nav.pf-c-pagination__nav [data-action="next"]').first().simulate('click');
+
+            expect(wrapper.find(Pagination).first().props().page).toEqual(2);
+
+            wrapper.find('input.ins-c-conditional-filter').first().simulate('change', { target: { value: '10-0' } });
+
+            expect(wrapper.find(Pagination).first().props().page).toEqual(1);
+        });
+
+        it('should paginate to 1 when removing filters', () => {
+            const wrapper = mount(<InfoTable
+                cells={ [{ title: 'One cell' }, 'Second one' ] }
+                rows={
+                    [ ...new Array(50) ].map(
+                        () => ([ ...new Array(2) ].map((_e, cell) =>`item-${cell}`))
+                    )
+                }
+                filters={[{ index: 0 }, { index: 1 }]}
+            />);
+
+            wrapper.find('input.ins-c-conditional-filter').first().simulate('change', { target: { value: 'item' } });
+            wrapper.find('nav.pf-c-pagination__nav [data-action="next"]').first().simulate('click');
+
+            expect(wrapper.find(Pagination).first().props().page).toEqual(2);
+
+            wrapper.find('.ins-c-chip-filters ul.pf-c-chip-group__list .pf-c-chip-group__list-item button').first().simulate('click');
+
+            expect(wrapper.find(Pagination).first().props().page).toEqual(1);
         });
 
         it('should change per page count', () => {
