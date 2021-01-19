@@ -20,7 +20,7 @@ function checkSystems (systems) {
 
 export default function validate (data) {
     assert(typeof data === 'object' && data !== null);
-    checkAllowedKeys(data, 'issues', 'systems');
+    checkAllowedKeys(data, 'issues', 'systems', 'onRemediationCreated');
     checkRequiredKeys(data, 'issues');
 
     assert(Array.isArray(data.issues), 'Issues must be an array');

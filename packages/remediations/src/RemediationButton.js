@@ -38,8 +38,7 @@ class RemediationButton extends React.Component {
 
     onClick = () => {
         Promise.resolve(this.props.dataProvider())
-        .then(data => this.state.remediations.openWizard(data))
-        .then(result => result && this.props.onRemediationCreated(result));
+        .then(data => this.state.remediations.openWizard({ ...data, onRemediationCreated: this.props.onRemediationCreated }));
     }
 
     render() {
