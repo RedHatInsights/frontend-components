@@ -147,8 +147,26 @@ class RemediationWizard extends Component {
         })
     );
 
-    render () {
+    onSubmit = (values) => {
+        const issues = this.state.data.issues.map(({ id }) => ({
+            id,
+            resolution: values['manual-resolution'] ? this.getResolution(id)?.[0]?.id : undefined,
+            systems: this.state.data.systems
+        }));
+        const add = { issues, systems: this.state.data.systems };
+        if (values['existing-playbook-selected']) {
+            const { id, name } = values['existing-playbook'];
+            // eslint-disable-next-line camelcase
+            api.patchRemediation(id, { add, auto_reboot: values['auto-reboot'] }, this.state.basePath)
+            .then(() => this.resolver(this.state.deferred)(id, name, false));
+        } else {
+        // eslint-disable-next-line camelcase
+            api.createRemediation({ name: values['select-playbook'], add, auto_reboot: values['auto-reboot'] }, this.state.basePath)
+            .then(({ id }) => this.resolver(this.state.deferred)(id, values['select-playbook'], true));
+        }
+    }
 
+    render () {
         return (
             this.state.open ?
                 <FormRenderer
@@ -166,24 +184,7 @@ class RemediationWizard extends Component {
                         ...this.state.mapperExtension
                     }}
                     onSubmit={(_, formOptions) => {
-                        const values = formOptions.getState().values;
-                        const issues = this.state.data.issues.map(({ id }) => ({
-                            id,
-                            resolution: values['manual-resolution'] ? this.getResolution(id)?.[0]?.id : undefined,
-                            systems: this.state.data.systems
-                        }));
-                        const add = { issues, systems: this.state.data.systems };
-                        if (values['existing-playbook-selected']) {
-                            const { id, name } = values['existing-playbook'];
-                            // eslint-disable-next-line camelcase
-                            api.patchRemediation(id, { add, auto_reboot: values['auto-reboot'] }, this.state.basePath)
-                            .then(() => this.resolver(this.state.deferred)(id, name, false));
-                        } else {
-                            // eslint-disable-next-line camelcase
-                            api.createRemediation({ name: values['select-playbook'], add, auto_reboot: values['auto-reboot'] }, this.state.basePath)
-                            .then(({ id }) => this.resolver(this.state.deferred)(id, values['select-playbook'], true));
-                        }
-
+                        this.onSubmit(formOptions.getState().values);
                         this.setOpen(false);
                     }}
                     onCancel={this.closeWizard}
