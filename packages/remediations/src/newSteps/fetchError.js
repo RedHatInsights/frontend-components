@@ -1,6 +1,8 @@
 import React from 'react';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
-import { Title, EmptyState,
+import {
+    Title,
+    EmptyState,
     EmptyStateVariant,
     EmptyStateIcon,
     EmptyStateBody } from '@patternfly/react-core';

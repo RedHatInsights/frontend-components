@@ -2,6 +2,7 @@ import React, { useState, Fragment, useEffect } from 'react';
 import propTypes from 'prop-types';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import {
+    Button,
     Text,
     TextContent,
     Stack,
@@ -17,7 +18,6 @@ import {
 } from '../utils';
 import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
 import { CloseIcon, ExclamationTriangleIcon, RedoIcon } from '@patternfly/react-icons';
-import { Button } from '@patternfly/react-core/dist/esm/components/Button/Button';
 import './review.scss';
 
 const Review = (props) => {
