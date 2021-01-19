@@ -69,7 +69,7 @@ const IssueResolution = (props) => {
                                 >
                                     <TextContent className="pf-u-pt-sm">
                                         <Text className="ins-c-playbook-description">
-                                            {`Resolution from "${issue.id.split(/:|\|/)[1]}"`}
+                                            Resolution from &quot;{issue.id.split(/:|\|/)[1]}&quot;
                                         </Text>
                                         {
                                             <div className="ins-c-reboot-required">

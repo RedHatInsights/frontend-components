@@ -15,7 +15,6 @@ import {
     MANUAL_RESOLUTION
 } from './utils';
 import * as api from './api';
-import Deferred from '@redhat-cloud-services/frontend-components-utilities/files/Deffered';
 import Wizard from '@data-driven-forms/pf4-component-mapper/dist/esm/wizard';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import SelectPlaybook from './newSteps/selectPlaybook';
@@ -30,7 +29,7 @@ function createNotification (id, name, isNewSwitch) {
     return {
         variant: 'success',
         title: `Playbook ${verb}`,
-        description: <span>You have successfully { isNewSwitch ? 'created' : 'updated' } <a href={ remediationUrl(id) } >{ name }</a>.</span>,
+        description: <span>You have successfully {verb} <a href={ remediationUrl(id) } >{ name }</a>.</span>,
         dismissable: true
     };
 }
@@ -70,7 +69,6 @@ class RemediationWizard extends Component {
         });
 
     openWizard = (data, basePath) => {
-        const deferred = new Deferred();
         const issuesById = keyBy(data.issues, issue => issue.id);
 
         this.loadResolutions(data.issues).then(
@@ -80,7 +78,6 @@ class RemediationWizard extends Component {
                 this.setState({
                     open: true,
                     data,
-                    deferred,
                     basePath,
                     onRemediationCreated: data.onRemediationCreated,
                     schema: schemaBuilder(this.container.current, issuesMultiple),
@@ -112,8 +109,6 @@ class RemediationWizard extends Component {
                 });
             }
         );
-
-        return deferred.promise;
     }
 
     closeWizard = () => {
@@ -147,7 +142,7 @@ class RemediationWizard extends Component {
 
     getResolution = issueId => this.state.resolutions.find(r => r.id === issueId)?.resolutions || [];
 
-    resolver = () => (id, name, isNewSwitch) => (
+    resolver = (id, name, isNewSwitch) => (
         this.state.onRemediationCreated({
             remediation: { id, name },
             getNotification: () => createNotification(id, name, isNewSwitch)
@@ -165,11 +160,11 @@ class RemediationWizard extends Component {
             const { id, name } = values[EXISTING_PLAYBOOK];
             // eslint-disable-next-line camelcase
             api.patchRemediation(id, { add, auto_reboot: values[AUTO_REBOOT] }, this.state.basePath)
-            .then(() => this.resolver(this.state.deferred)(id, name, false));
+            .then(() => this.resolver(id, name, false));
         } else {
         // eslint-disable-next-line camelcase
             api.createRemediation({ name: values[SELECT_PLAYBOOK], add, auto_reboot: values[AUTO_REBOOT] }, this.state.basePath)
-            .then(({ id }) => this.resolver(this.state.deferred)(id, values[SELECT_PLAYBOOK], true));
+            .then(({ id }) => this.resolver(id, values[SELECT_PLAYBOOK], true));
         }
     }
 

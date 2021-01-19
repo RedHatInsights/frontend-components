@@ -34,17 +34,15 @@ const Review = (props) => {
     const getResolution = issueId => {
         const allResolutions = resolutions.find(r => r.id === issueId)?.resolutions || [];
 
-        if (allResolutions.length > 1)  {
-            if (formOptions.getState().values[MANUAL_RESOLUTION] && issueId in formOptions.getState().values[SELECTED_RESOLUTIONS]) {
-                return allResolutions.filter(r => r.id === formOptions.getState().values[SELECTED_RESOLUTIONS][issueId]);
-            }
+        if (formOptions.getState().values[MANUAL_RESOLUTION] && issueId in formOptions.getState().values[SELECTED_RESOLUTIONS]) {
+            return allResolutions.filter(r => r.id === formOptions.getState().values[SELECTED_RESOLUTIONS][issueId]);
+        }
 
-            if (formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED]) {
-                const existing = selectedPlaybook?.issues?.find(i => i.id === issueId);
+        if (formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED]) {
+            const existing = selectedPlaybook?.issues?.find(i => i.id === issueId);
 
-                if (existing) {
-                    return allResolutions.filter(r => r.id === existing.resolution.id);
-                }
+            if (existing) {
+                return allResolutions.filter(r => r.id === existing.resolution.id);
             }
         }
 
