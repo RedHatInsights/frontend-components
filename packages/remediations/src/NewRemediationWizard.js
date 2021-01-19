@@ -88,10 +88,8 @@ class RemediationWizard extends Component {
                     mapperExtension: {
                         'select-playbook': {
                             component: this.state.errors.length > 0 ? FetchError : SelectPlaybook,
-                            SelectPlaybookProps: {
-                                issues: data.issues,
-                                systems: data.systems
-                            }
+                            issues: data.issues,
+                            systems: data.systems
                         },
                         'review-actions': {
                             component: ReviewActions,

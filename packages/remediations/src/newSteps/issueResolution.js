@@ -92,9 +92,17 @@ const IssueResolution = (props) => {
 };
 
 IssueResolution.propTypes = {
-    systems: propTypes.array,
-    issue: propTypes.object,
-    getResolution: propTypes.func
+    systems: propTypes.arrayOf(propTypes.string).isRequired,
+    issue: propTypes.shape({
+        id: propTypes.string,
+        shortId: propTypes.string,
+        action: propTypes.string,
+        alternate: propTypes.number,
+        needsReboot: propTypes.bool,
+        resolution: propTypes.string,
+        systemsCount: propTypes.number
+    }).isRequired,
+    getResolution: propTypes.func.isRequired
 };
 
 export default IssueResolution;

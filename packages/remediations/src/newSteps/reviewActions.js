@@ -120,8 +120,19 @@ const ReviewActions = (props) => {
 };
 
 ReviewActions.propTypes = {
-    issues: propTypes.array,
-    issuesMultiple: propTypes.array
+    issues: propTypes.arrayOf(propTypes.shape({
+        description: propTypes.string,
+        id: propTypes.string
+    })).isRequired,
+    issuesMultiple: propTypes.arrayOf(propTypes.shape({
+        id: propTypes.string,
+        shortId: propTypes.string,
+        action: propTypes.string,
+        alternate: propTypes.number,
+        needsReboot: propTypes.bool,
+        resolution: propTypes.string,
+        systemsCount: propTypes.number
+    })).isRequired
 };
 
 export default ReviewActions;

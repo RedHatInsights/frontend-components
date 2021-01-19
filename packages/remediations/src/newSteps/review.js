@@ -153,10 +153,22 @@ const Review = (props) => {
 };
 
 Review.propTypes = {
-    data: propTypes.object,
-    issuesById: propTypes.object,
-    getIssues: propTypes.func,
-    resolutions: propTypes.array
+    data: propTypes.shape({
+        issues: propTypes.array,
+        systems: propTypes.array,
+        onRemediationCreated: propTypes.func
+    }).isRequired,
+    issuesById: propTypes.shape({
+        [propTypes.string]: propTypes.shape({
+            id: propTypes.string,
+            description: propTypes.string
+        })
+    }).isRequired,
+    getIssues: propTypes.func.isRequired,
+    resolutions: propTypes.arrayOf(propTypes.shape({
+        id: propTypes.string,
+        resolutions: propTypes.array
+    })).isRequired
 };
 
 export default Review;

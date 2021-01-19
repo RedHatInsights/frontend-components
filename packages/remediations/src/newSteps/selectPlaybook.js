@@ -22,7 +22,7 @@ import {
 import './selectPlaybook.scss';
 
 const SelectPlaybook = (props) => {
-    const { SelectPlaybookProps: { issues, systems } } = props;
+    const { issues, systems } = props;
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState().values;
@@ -140,8 +140,11 @@ const SelectPlaybook = (props) => {
 };
 
 SelectPlaybook.propTypes = {
-    SelectPlaybookProps: propTypes.object,
-    props: propTypes.object
+    systems: propTypes.arrayOf(propTypes.string).isRequired,
+    issues: propTypes.arrayOf(propTypes.shape({
+        description: propTypes.string,
+        id: propTypes.string
+    })).isRequired
 };
 
 export default SelectPlaybook;
