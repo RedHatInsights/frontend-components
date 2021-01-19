@@ -25,10 +25,11 @@ const SelectPlaybook = (props) => {
     const { SelectPlaybookProps: { issues, systems } } = props;
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
+    const values = formOptions.getState().values;
     const [ existingRemediations, setExistingRemediations ] = useState([]);
-    const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(false);
-    const [ newPlaybookName, setNewPlaybookName ] = useState('');
-    const [ selectedPlaybook, setSelectedPlaybook ] = useState();
+    const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(values[EXISTING_PLAYBOOK_SELECTED]);
+    const [ newPlaybookName, setNewPlaybookName ] = useState(values[EXISTING_PLAYBOOK_SELECTED] ? '' : input.value);
+    const [ selectedPlaybook, setSelectedPlaybook ] = useState(values[EXISTING_PLAYBOOK]);
     const nameValid = true;
 
     useEffect(() => {
