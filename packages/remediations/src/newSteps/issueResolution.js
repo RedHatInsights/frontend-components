@@ -68,7 +68,7 @@ const IssueResolution = (props) => {
                                     title={resolution.description}
                                 >
                                     <TextContent className="pf-u-pt-sm">
-                                        <Text className="ins-c-playbook-description">
+                                        <Text className="pf-u-mb-sm ins-c-playbook-description">
                                             Resolution from &quot;{issue.id.split(/:|\|/)[1]}&quot;
                                         </Text>
                                         {

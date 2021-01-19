@@ -26,10 +26,11 @@ const SelectPlaybook = (props) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState().values;
-    const [ existingRemediations, setExistingRemediations ] = useState([]);
+    const [ existingRemediations, setExistingRemediations ] = useState();
     const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(values[EXISTING_PLAYBOOK_SELECTED]);
     const [ newPlaybookName, setNewPlaybookName ] = useState(values[EXISTING_PLAYBOOK_SELECTED] ? '' : input.value);
     const [ selectedPlaybook, setSelectedPlaybook ] = useState(values[EXISTING_PLAYBOOK]);
+    const [ isLoadingRemediation, setIsLoadingRemediation ] = useState(false);
     const nameValid = true;
 
     useEffect(() => {
@@ -74,26 +75,29 @@ const SelectPlaybook = (props) => {
                     </GridItem>
                     <GridItem sm={12} md={6} lg={4}>
                         {
-                            existingRemediations === false ?
-                                <Skeleton size={SkeletonSize.lg} /> :
+                            existingRemediations && !isLoadingRemediation ?
                                 <FormSelect
                                     onChange={val => {
+                                        setIsLoadingRemediation(true);
                                         api.getRemediation(val).then(remediation => {
                                             setSelectedPlaybook(remediation);
+                                            setIsLoadingRemediation(false);
                                             existingPlaybookSelected && input.onChange(remediation.name);
                                             existingPlaybookSelected && formOptions.change(EXISTING_PLAYBOOK, remediation);
                                         });
                                     }}
                                     value={selectedPlaybook?.id || ''}
                                     aria-label="Select an existing playbook" >
-                                    {existingRemediations.length
+                                    {existingRemediations?.length
                                         ? [ <FormSelectOption key='select-playbook-placeholder' value='' label='Select playbook' isDisabled />,
                                             ...existingRemediations.map(({ id, name }) =>
                                                 <FormSelectOption key={id} value={id} label={name} />)
                                         ]
                                         : <FormSelectOption key="empty" value="empty" label="No existing playbooks" />
                                     }
-                                </FormSelect>
+                                </FormSelect> :
+                                <Skeleton size={SkeletonSize.lg} />
+
                         }
                     </GridItem>
                 </Grid>
