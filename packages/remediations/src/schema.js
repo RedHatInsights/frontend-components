@@ -1,5 +1,10 @@
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/validator-types';
+import {
+    HAS_MULTIPLES,
+    SELECT_PLAYBOOK,
+    MANUAL_RESOLUTION
+} from './utils';
 
 export default (container, issues) => ({
     fields: [
@@ -17,7 +22,7 @@ export default (container, issues) => ({
                     name: 'playbook',
                     title: 'Select playbook',
                     fields: [{
-                        name: 'select-playbook',
+                        name: SELECT_PLAYBOOK,
                         component: 'select-playbook',
                         validate: [{
                             type: validatorTypes.PATTERN,
@@ -27,16 +32,16 @@ export default (container, issues) => ({
                             type: validatorTypes.REQUIRED
                         }]
                     }],
-                    nextStep: ({ values }) => values.multiple ? 'actions' : 'review'
+                    nextStep: ({ values }) => values[HAS_MULTIPLES] ? 'actions' : 'review'
                 },
                 {
                     name: 'actions',
                     title: 'Review and edit actions',
                     fields: [{
-                        name: 'manual-resolution',
+                        name: MANUAL_RESOLUTION,
                         component: 'review-actions'
                     }],
-                    nextStep: ({ values }) => values['manual-resolution'] ? 'issue-resolution-0' : 'review'
+                    nextStep: ({ values }) => values[MANUAL_RESOLUTION] ? 'issue-resolution-0' : 'review'
                 },
                 ...issues.map((issue, index) => (
                     {

@@ -7,6 +7,14 @@ import {
     Stack,
     StackItem
 } from '@patternfly/react-core';
+import {
+    AUTO_REBOOT,
+    SELECT_PLAYBOOK,
+    SELECTED_RESOLUTIONS,
+    EXISTING_PLAYBOOK_SELECTED,
+    EXISTING_PLAYBOOK,
+    MANUAL_RESOLUTION
+} from '../utils';
 import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
 import { CloseIcon, ExclamationTriangleIcon, RedoIcon } from '@patternfly/react-icons';
 import { Button } from '@patternfly/react-core/dist/esm/components/Button/Button';
@@ -17,21 +25,21 @@ const Review = (props) => {
     const formOptions = useFormApi();
     const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
 
-    const selectedPlaybook = formOptions.getState().values['existing-playbook'];
+    const selectedPlaybook = formOptions.getState().values[EXISTING_PLAYBOOK];
 
     useEffect(() => {
-        formOptions.change('auto-reboot', formOptions.getState().values['existing-playbook-selected'] && selectedPlaybook.auto_reboot);
+        formOptions.change(AUTO_REBOOT, formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED] && selectedPlaybook.auto_reboot);
     }, []);
 
     const getResolution = issueId => {
         const allResolutions = resolutions.find(r => r.id === issueId)?.resolutions || [];
 
         if (allResolutions.length > 1)  {
-            if (formOptions.getState().values['manual-resolution'] && issueId in formOptions.getState().values['selected-resolutions']) {
-                return allResolutions.filter(r => r.id === formOptions.getState().values['selected-resolutions'][issueId]);
+            if (formOptions.getState().values[MANUAL_RESOLUTION] && issueId in formOptions.getState().values[SELECTED_RESOLUTIONS]) {
+                return allResolutions.filter(r => r.id === formOptions.getState().values[SELECTED_RESOLUTIONS][issueId]);
             }
 
-            if (formOptions.getState().values['existing-playbook-selected']) {
+            if (formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED]) {
                 const existing = selectedPlaybook?.issues?.find(i => i.id === issueId);
 
                 if (existing) {
@@ -83,7 +91,7 @@ const Review = (props) => {
             <StackItem>
                 <TextContent>
                     <Text>
-                        Issues listed below will be added to the playbook <b>{formOptions.getState().values['select-playbook']}</b>.
+                        Issues listed below will be added to the playbook <b>{formOptions.getState().values[SELECT_PLAYBOOK]}</b>.
                     </Text>
                 </TextContent>
             </StackItem>
@@ -97,8 +105,8 @@ const Review = (props) => {
             <StackItem>
                 <TextContent>
                     <Text>
-                        The playbook <b>{formOptions.getState().values['select-playbook']}</b>
-                        { formOptions.getState().values['auto-reboot'] ?
+                        The playbook <b>{formOptions.getState().values[SELECT_PLAYBOOK]}</b>
+                        { formOptions.getState().values[AUTO_REBOOT] ?
                             ' does' :
                             <span className="ins-c-remediation-danger-text"> does not</span>
                         } auto reboot systems.
@@ -109,9 +117,9 @@ const Review = (props) => {
                 <Button
                     variant="link"
                     isInline
-                    onClick={ () => formOptions.change('auto-reboot', !formOptions.getState().values['auto-reboot']) }
+                    onClick={ () => formOptions.change(AUTO_REBOOT, !formOptions.getState().values[AUTO_REBOOT]) }
                 >
-                    Turn {formOptions.getState().values['auto-reboot'] ? 'off' : 'on'} autoreboot
+                    Turn {formOptions.getState().values[AUTO_REBOOT] ? 'off' : 'on'} autoreboot
                 </Button>
             </StackItem>
             <Table

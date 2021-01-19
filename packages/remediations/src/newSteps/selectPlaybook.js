@@ -4,7 +4,6 @@ import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-fie
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
 import * as api from '../api';
-import './selectPlaybook.scss';
 import {
     FormGroup,
     Grid, GridItem,
@@ -16,6 +15,11 @@ import {
     TextInput,
     Stack, StackItem
 } from '@patternfly/react-core';
+import {
+    EXISTING_PLAYBOOK_SELECTED,
+    EXISTING_PLAYBOOK
+} from '../utils';
+import './selectPlaybook.scss';
 
 const SelectPlaybook = (props) => {
     const { SelectPlaybookProps: { issues, systems } } = props;
@@ -61,9 +65,9 @@ const SelectPlaybook = (props) => {
                             defaultChecked={existingPlaybookSelected}
                             onChange={() => {
                                 setExistingPlaybookSelected(true);
-                                formOptions.change('existing-playbook-selected', true);
+                                formOptions.change(EXISTING_PLAYBOOK_SELECTED, true);
                                 input.onChange(selectedPlaybook?.name || '');
-                                formOptions.change('existing-playbook', selectedPlaybook);
+                                formOptions.change(EXISTING_PLAYBOOK, selectedPlaybook);
                             }}
                         />
                     </GridItem>
@@ -76,7 +80,7 @@ const SelectPlaybook = (props) => {
                                         api.getRemediation(val).then(remediation => {
                                             setSelectedPlaybook(remediation);
                                             existingPlaybookSelected && input.onChange(remediation.name);
-                                            existingPlaybookSelected && formOptions.change('existing-playbook', remediation);
+                                            existingPlaybookSelected && formOptions.change(EXISTING_PLAYBOOK, remediation);
                                         });
                                     }}
                                     value={selectedPlaybook?.id || ''}
@@ -104,9 +108,9 @@ const SelectPlaybook = (props) => {
                             defaultChecked={!existingPlaybookSelected}
                             onChange={() => {
                                 setExistingPlaybookSelected(false);
-                                formOptions.change('existing-playbook-selected', false);
+                                formOptions.change(EXISTING_PLAYBOOK_SELECTED, false);
                                 input.onChange(newPlaybookName);
-                                formOptions.change('existing-playbook', undefined);
+                                formOptions.change(EXISTING_PLAYBOOK, undefined);
                             }}
                         />
                     </GridItem>

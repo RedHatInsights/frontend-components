@@ -10,6 +10,7 @@ import {
     Tile,
     Title
 } from '@patternfly/react-core';
+import { SELECTED_RESOLUTIONS } from '../utils';
 import { RedoIcon, CloseIcon } from '@patternfly/react-icons';
 
 const IssueResolution = (props) => {
@@ -55,13 +56,13 @@ const IssueResolution = (props) => {
                                 xl={3}
                                 key={ resolution.id }>
                                 <Tile
-                                    onClick={() => formOptions.change('selected-resolutions', {
-                                        ...formOptions.getState().values['selected-resolutions'],
+                                    onClick={() => formOptions.change(SELECTED_RESOLUTIONS, {
+                                        ...formOptions.getState().values[SELECTED_RESOLUTIONS],
                                         [issue.id]: resolution.id
                                     })}
                                     isSelected={
-                                        formOptions.getState().values['selected-resolutions'][issue.id] ?
-                                            formOptions.getState().values['selected-resolutions'][issue.id] === resolution.id
+                                        formOptions.getState().values[SELECTED_RESOLUTIONS][issue.id] ?
+                                            formOptions.getState().values[SELECTED_RESOLUTIONS][issue.id] === resolution.id
                                             : index === 0
                                     }
                                     title={resolution.description}

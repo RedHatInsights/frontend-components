@@ -4,7 +4,16 @@ import transform from 'lodash/transform';
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
 import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import schemaBuilder from './schema';
-import { remediationUrl } from './utils';
+import {
+    remediationUrl,
+    AUTO_REBOOT,
+    HAS_MULTIPLES,
+    SELECT_PLAYBOOK,
+    SELECTED_RESOLUTIONS,
+    EXISTING_PLAYBOOK_SELECTED,
+    EXISTING_PLAYBOOK,
+    MANUAL_RESOLUTION
+} from './utils';
 import * as api from './api';
 import Deferred from '@redhat-cloud-services/frontend-components-utilities/files/Deffered';
 import Wizard from '@data-driven-forms/pf4-component-mapper/dist/esm/wizard';
@@ -150,19 +159,19 @@ class RemediationWizard extends Component {
     onSubmit = (values) => {
         const issues = this.state.data.issues.map(({ id }) => ({
             id,
-            resolution: values['manual-resolution'] ? this.getResolution(id)?.[0]?.id : undefined,
+            resolution: values[MANUAL_RESOLUTION] ? this.getResolution(id)?.[0]?.id : undefined,
             systems: this.state.data.systems
         }));
         const add = { issues, systems: this.state.data.systems };
-        if (values['existing-playbook-selected']) {
-            const { id, name } = values['existing-playbook'];
+        if (values[EXISTING_PLAYBOOK_SELECTED]) {
+            const { id, name } = values[EXISTING_PLAYBOOK];
             // eslint-disable-next-line camelcase
-            api.patchRemediation(id, { add, auto_reboot: values['auto-reboot'] }, this.state.basePath)
+            api.patchRemediation(id, { add, auto_reboot: values[AUTO_REBOOT] }, this.state.basePath)
             .then(() => this.resolver(this.state.deferred)(id, name, false));
         } else {
         // eslint-disable-next-line camelcase
-            api.createRemediation({ name: values['select-playbook'], add, auto_reboot: values['auto-reboot'] }, this.state.basePath)
-            .then(({ id }) => this.resolver(this.state.deferred)(id, values['select-playbook'], true));
+            api.createRemediation({ name: values[SELECT_PLAYBOOK], add, auto_reboot: values[AUTO_REBOOT] }, this.state.basePath)
+            .then(({ id }) => this.resolver(this.state.deferred)(id, values[SELECT_PLAYBOOK], true));
         }
     }
 
@@ -175,9 +184,10 @@ class RemediationWizard extends Component {
                     subscription={{ values: true }}
                     FormTemplate={this.getFormTemplate}
                     initialValues={{
-                        multiple: !!this.state.resolutions?.find(r => r.resolutions.length > 1),
-                        'manual-resolution': true,
-                        'selected-resolutions': {}
+                        [HAS_MULTIPLES]: !!this.state.resolutions?.find(r => r.resolutions.length > 1),
+                        [MANUAL_RESOLUTION]: true,
+                        [SELECTED_RESOLUTIONS]: {},
+                        [EXISTING_PLAYBOOK_SELECTED]: false
                     }}
                     componentMapper={{
                         [componentTypes.WIZARD]: Wizard,
