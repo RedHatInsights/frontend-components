@@ -6787,7 +6787,7 @@ exports[`InfoTable api expandable should open 1`] = `
 exports[`InfoTable api should paginate to last page 1`] = `
 <tr
   className=""
-  data-ouia-component-id="OUIA-Generated-TableRow-71"
+  data-ouia-component-id="OUIA-Generated-TableRow-93"
   data-ouia-component-type="PF4/TableRow"
   data-ouia-safe={true}
   hidden={false}
@@ -6867,7 +6867,7 @@ exports[`InfoTable api should paginate to last page 1`] = `
 exports[`InfoTable api should paginate to last page 2`] = `
 <tr
   className=""
-  data-ouia-component-id="OUIA-Generated-TableRow-71"
+  data-ouia-component-id="OUIA-Generated-TableRow-93"
   data-ouia-component-type="PF4/TableRow"
   data-ouia-safe={true}
   hidden={false}
