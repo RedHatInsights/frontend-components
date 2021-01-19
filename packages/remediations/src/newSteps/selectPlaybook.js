@@ -51,7 +51,7 @@ const SelectPlaybook = (props) => {
             </StackItem>
             <StackItem>
                 <Grid hasGutter>
-                    <GridItem sm={12} md={6} lg={3}>
+                    <GridItem sm={12} md={6} lg={4}>
                         <Radio
                             label={existingRemediations ? `Add to existing playbook (${existingRemediations.length})` : 'Add to existing playbook'}
                             aria-label="Add to existing playbook"
@@ -95,7 +95,7 @@ const SelectPlaybook = (props) => {
             </StackItem>
             <StackItem>
                 <Grid hasGutter>
-                    <GridItem sm={12} md={6} lg={3}>
+                    <GridItem sm={12} md={6} lg={4}>
                         <Radio
                             label="Create new playbook"
                             aria-label="Create new playbook"
