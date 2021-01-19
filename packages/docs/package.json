@@ -6,8 +6,9 @@
     "dev": "npm run generate:components:docs && next dev",
     "build": "npm run generate:components:docs && next build",
     "start": "npm run build && next start -H 0.0.0.0 -p ${PORT:-8080}",
-    "generate:components": "react-docgen ../components/src -x js --exclude [test.js,snap.js] --out component-docs.json --pretty",
+    "generate:components": "node docgen.js",
     "generate:components:docs": "npm run generate:components && node docs-generator.js",
+    "generate:watch": "concurrently \"npm run generate:components -- --watch\" \"npm run generate:components:docs -- --watch\"",
     "serve": "npm run build && node server.js"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "@next/mdx": "^10.0.5",
     "@zeit/next-css": "^1.0.1",
     "codesandbox": "^2.2.1",
+    "concurrently": "^5.3.0",
     "file-loader": "^6.2.0",
     "next-transpile-modules": "^6.0.0",
     "raw-loader": "^4.0.2",
