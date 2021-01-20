@@ -22,20 +22,38 @@ import {
     cves,
     compliance,
     advisor,
-    patch
+    patch,
+    filtersReducer
 } from '../api';
+import { defaultFilters } from '../shared/constants';
 
-export const loadEntities = (items = [], config, { showTags } = {}, getEntities = defaultGetEntities) => {
+export const loadEntities = (items = [], { filters, ...config }, { showTags } = {}, getEntities = defaultGetEntities) => {
     const itemIds = items.reduce((acc, curr) => (
         [
             ...acc,
             curr && typeof curr === 'string' ? curr : curr.id
         ]
     ), []).filter(Boolean);
+
+    const updatedFilters = filters ? filters.reduce(filtersReducer, {
+        ...defaultFilters,
+        ...filters.length === 0 && { registeredWithFilter: [] }
+    }) : defaultFilters;
+
+    const orderBy = config.orderBy || 'updated';
+    const orderDirection = config.orderDirection || 'DESC';
+
     return {
         type: ACTION_TYPES.LOAD_ENTITIES,
-        payload: getEntities(itemIds, config, showTags).then(({ results, ...data }) => ({
+        payload: getEntities(itemIds, {
+            filters: updatedFilters,
+            ...config,
+            orderBy,
+            orderDirection
+        }, showTags).then(({ results, ...data }) => ({
             ...data,
+            filters,
+            sortBy: { key: orderBy, direction: orderDirection },
             results: items.length > 0 ? items.map((item) => ({
                 ...item.id ? item : { id: item },
                 ...results.find(({ id }) => id === item || id === item.id) || {}
