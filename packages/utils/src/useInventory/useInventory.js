@@ -12,6 +12,7 @@ import {
     SortByDirection
 } from '@patternfly/react-table';
 
+console.error('"useInventory" hook is deprecated and will be removed in v4. Please use Chrome 2.0 compatible Inventory version.');
 export const useInventory = ({
     store,
     tableReducer,
