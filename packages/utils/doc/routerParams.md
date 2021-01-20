@@ -7,7 +7,7 @@ This utility is just wrapper over `withRouter` so anything which you want to use
 ### Usage
 ```JSX
 import React from 'react'
-import routerParams from '@redhat-cloud-services/frontend-components-utilities/files/RouterParams';
+import routerParams from '@redhat-cloud-services/frontend-components-utilities/RouterParams';
 
 const yourCmp = ({ match, location }) => {
   // do something with match and location
@@ -16,5 +16,5 @@ const yourCmp = ({ match, location }) => {
   )
 }
 
-export default withRouter(yourCmp);
+export default routerParams(yourCmp);
 ```

@@ -9,7 +9,7 @@ You can use notifications without the middleware. For that you will need the `No
 ```JSX
 import React, { Fragment } from 'react'
 import { Provider } from 'react-redux'
-import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';
 import { NotificationsPortal, notifications } from '@redhat-cloud-services/frontend-components-notifications';
 
 // you also need styles for the component
@@ -108,7 +108,7 @@ Like in the basic example, you must add your reducer and notifications container
 
 ```JSX
 import promiseMiddleware from 'redux-promise-middleware'
-import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';
 import { ..., notificationsMiddleware } from '@redhat-cloud-services/frontend-components-notifications';
 
 const registry = getRegistry({}, [promiseMiddleware(), notificationsMiddleware()]);

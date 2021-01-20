@@ -1,12 +1,14 @@
-## Inventory hook
+## (deprecated) Inventory hook
+
+Inventory hook is replaced by inventory federated module in chrome 2.0 and forwards.
 
 If you are using newer version of react, you can use hook that comes with this package to load inventory and reducers.
 
 ```JSX
 import React, { Fragment } from 'react';
 import { useStore } from 'react-redux';
-import { useInventory } from '@redhat-cloud-services/frontend-components-utilities/files/useInventory';
-import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import { useInventory } from '@redhat-cloud-services/frontend-components-utilities/useInventory';
+import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';
 import { entitiesReducer } from './redux/reducers/table';
 
 const MyCmp = () => {
