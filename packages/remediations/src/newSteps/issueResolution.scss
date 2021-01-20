@@ -21,6 +21,9 @@
             }
         }
     }
+    p.ins-c-playbook-description {
+        font-size: var(--pf-global--FontSize--sm);
+    }
     .ins-c-reboot-required {
         color: var(--pf-global--Color--100);
         svg {

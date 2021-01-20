@@ -10,10 +10,11 @@ import {
     Tile,
     Title
 } from '@patternfly/react-core';
+import { SELECTED_RESOLUTIONS } from '../utils';
 import { RedoIcon, CloseIcon } from '@patternfly/react-icons';
 
 const IssueResolution = (props) => {
-    const { systems, issuesById, getResolution, issue } = props;
+    const { systems, getResolution, issue } = props;
     const formOptions = useFormApi();
     const [ resolutions, setResolutions ] = useState([]);
 
@@ -36,7 +37,7 @@ const IssueResolution = (props) => {
                         Review the possible resolution steps and select which to add to your playbook.
                     </Text>
                     <Text className="ins-c-remediations-action-description">
-                        {issuesById[issue.id].description}
+                        {issue.action}
                     </Text>
                     <Text className="ins-c-remediations-action-description">
                         {`Resolution affects ${systems.length} ${pluralize(systems.length, 'system')}`}
@@ -55,18 +56,21 @@ const IssueResolution = (props) => {
                                 xl={3}
                                 key={ resolution.id }>
                                 <Tile
-                                    onClick={() => formOptions.change('selected-resolutions', {
-                                        ...formOptions.getState().values['selected-resolutions'],
+                                    onClick={() => formOptions.change(SELECTED_RESOLUTIONS, {
+                                        ...formOptions.getState().values[SELECTED_RESOLUTIONS],
                                         [issue.id]: resolution.id
                                     })}
                                     isSelected={
-                                        formOptions.getState().values['selected-resolutions'][issue.id] ?
-                                            formOptions.getState().values['selected-resolutions'][issue.id] === resolution.id
+                                        formOptions.getState().values[SELECTED_RESOLUTIONS][issue.id] ?
+                                            formOptions.getState().values[SELECTED_RESOLUTIONS][issue.id] === resolution.id
                                             : index === 0
                                     }
                                     title={resolution.description}
                                 >
-                                    <TextContent className="pf-u-pt-md">
+                                    <TextContent className="pf-u-pt-sm">
+                                        <Text className="pf-u-mb-sm ins-c-playbook-description">
+                                            Resolution from &quot;{issue.id.split(/:|\|/)[1]}&quot;
+                                        </Text>
                                         {
                                             <div className="ins-c-reboot-required">
                                                 {resolution.needs_reboot ? <RedoIcon/> : <CloseIcon/>}
@@ -88,10 +92,17 @@ const IssueResolution = (props) => {
 };
 
 IssueResolution.propTypes = {
-    systems: propTypes.array,
-    issuesById: propTypes.object,
-    issue: propTypes.object,
-    getResolution: propTypes.func
+    systems: propTypes.arrayOf(propTypes.string).isRequired,
+    issue: propTypes.shape({
+        id: propTypes.string,
+        shortId: propTypes.string,
+        action: propTypes.string,
+        alternate: propTypes.number,
+        needsReboot: propTypes.bool,
+        resolution: propTypes.string,
+        systemsCount: propTypes.number
+    }).isRequired,
+    getResolution: propTypes.func.isRequired
 };
 
 export default IssueResolution;
