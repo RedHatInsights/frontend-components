@@ -13,7 +13,7 @@
         "@patternfly/react-core": "^4.79.2",
         "@patternfly/react-icons": "^4.7.18",
         "@patternfly/react-table": "^4.19.24",
-        "@redhat-cloud-services/host-inventory-client": "1.0.48",
+        "@redhat-cloud-services/host-inventory-client": "1.0.91",
         "abortcontroller-polyfill": "^1.2.1",
         "apollo-boost": "^0.1.23",
         "axios": "^0.21.1",
