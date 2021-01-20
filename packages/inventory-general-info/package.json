@@ -37,7 +37,7 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
-        "@redhat-cloud-services/host-inventory-client": "1.0.48",
+        "@redhat-cloud-services/host-inventory-client": "1.0.91",
         "@redhat-cloud-services/frontend-components-inventory": "*"
     }
 }
