@@ -16,3 +16,11 @@ export function remediationUrl (id) {
 }
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
+
+export const AUTO_REBOOT = 'auto-reboot';
+export const HAS_MULTIPLES = 'has-multiples';
+export const SELECT_PLAYBOOK = 'select-playbook';
+export const SELECTED_RESOLUTIONS = 'selected-resolutions';
+export const MANUAL_RESOLUTION = 'manual-resolution';
+export const EXISTING_PLAYBOOK_SELECTED = 'existing-playbook-selected';
+export const EXISTING_PLAYBOOK = 'existing-playbook';
