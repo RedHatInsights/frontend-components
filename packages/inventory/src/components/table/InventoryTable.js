@@ -27,6 +27,7 @@ const InventoryTable = forwardRef(({
     customFilters,
     hasAccess = true,
     isFullView = false,
+    getEntities,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
@@ -75,6 +76,7 @@ const InventoryTable = forwardRef(({
                     page={ pagination.page }
                     perPage={ pagination.perPage }
                     showTags={ showTags }
+                    getEntities={ getEntities }
                 >
                     { children }
                 </EntityTableToolbar>
@@ -90,6 +92,7 @@ const InventoryTable = forwardRef(({
                     sortBy={ sortBy }
                     perPage={ pagination.perPage }
                     showTags={ showTags }
+                    getEntities={ getEntities }
                 />
                 <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                     <Pagination
@@ -103,6 +106,7 @@ const InventoryTable = forwardRef(({
                         hasItems={ hasItems }
                         onRefresh={ onRefresh }
                         showTags={ showTags }
+                        getEntities={ getEntities }
                     />
                 </TableToolbar>
             </Fragment>

@@ -14,7 +14,7 @@ import {
     SYSTEM_ISSUE_TYPES
 } from './action-types';
 import {
-    getEntities,
+    getEntities as defaultGetEntities,
     getEntitySystemProfile,
     hosts,
     getAllTags,
@@ -25,7 +25,7 @@ import {
     patch
 } from '../api';
 
-export const loadEntities = (items = [], config, { showTags } = {}) => {
+export const loadEntities = (items = [], config, { showTags } = {}, getEntities = defaultGetEntities) => {
     const itemIds = items.reduce((acc, curr) => (
         [
             ...acc,
@@ -62,7 +62,7 @@ export const filterSelect = (selectedItem) => ({
 
 export const loadEntity = (id, config, { showTags }) => ({
     type: ACTION_TYPES.LOAD_ENTITY,
-    payload: getEntities(id, config, showTags),
+    payload: defaultGetEntities(id, config, showTags),
     meta: {
         showTags
     }

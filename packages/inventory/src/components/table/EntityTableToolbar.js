@@ -58,6 +58,7 @@ const EntityTableToolbar = ({
     customFilters,
     hasAccess,
     bulkSelect,
+    getEntities,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -108,7 +109,7 @@ const EntityTableToolbar = ({
      */
     const onRefreshData = useCallback((options) => {
         if (hasAccess) {
-            dispatch(loadSystems(options, showTags));
+            dispatch(loadSystems(options, showTags, getEntities));
             if (showTags && !hasItems) {
                 dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options.filters }));
             }
@@ -363,7 +364,8 @@ EntityTableToolbar.propTypes = {
             PropTypes.object,
             PropTypes.arrayOf(PropTypes.string)
         ])
-    })
+    }),
+    getEntities: PropTypes.func
 };
 
 EntityTableToolbar.defaultProps = {

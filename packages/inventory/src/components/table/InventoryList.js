@@ -72,7 +72,7 @@ class ContextInventoryList extends Component {
 /**
  * Component that consumes active filters and passes them down to component.
  */
-const InventoryList = React.forwardRef(({ hasAccess, ...props }, ref) => {
+const InventoryList = React.forwardRef(({ hasAccess, getEntities, ...props }, ref) => {
     const dispatch = useDispatch();
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
     return !hasAccess ?
@@ -84,7 +84,7 @@ const InventoryList = React.forwardRef(({ hasAccess, ...props }, ref) => {
                 { ...props }
                 ref={ref}
                 activeFilters={ activeFilters }
-                loadEntities={ (config, showTags) => dispatch(loadSystems(config, showTags)) }
+                loadEntities={ (config, showTags) => dispatch(loadSystems(config, showTags, getEntities)) }
             />
         );
 });
@@ -125,7 +125,8 @@ InventoryList.propTypes = {
             PropTypes.object,
             PropTypes.arrayOf(PropTypes.string)
         ])
-    })
+    }),
+    getEntities: PropTypes.func
 };
 
 InventoryList.defaultProps = {
