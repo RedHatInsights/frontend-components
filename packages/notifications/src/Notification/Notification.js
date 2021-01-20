@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Alert, TextContent, Text, TextVariants, AlertActionCloseButton } from '@patternfly/react-core';
 import { CloseIcon } from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
-import './notifications.scss';
+import './notification.scss';
 
 /**
  * Add some enter and dismiss animation later when PF has designs

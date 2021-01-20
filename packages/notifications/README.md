@@ -20,25 +20,52 @@ This package is dependent on [@redhat-cloud-services/frontend-components-utiliti
 
 ## Treeshaking
 
-In order not to increase your bundle size you you should either import components trough direct imports or use babel plugin to change relative imports to direct imports. You can mix both direct imports and babel plugin, it's just convenient to use the babel plugin so you don't have to change all of your imports.
+In order not to decrease your bundle size you you should either import components trough direct imports or use babel plugin to change relative imports to direct imports. You can mix both direct imports and babel plugin, it's just convenient to use the babel plugin so you don't have to change all of your imports.
 
 ### Direct imports
 
-You can try `esm` or `cjs` whichever fits you more, generally `ems` modules should yield less code, but is considered bleading edge and could break your build, cjs (refers to commonjs) will work out of the box (it adds about 1 or 2 KB of code to each build). For instance `addNotification` can be imported as:
+It's recommended to use absolute import paths for improved build times. Import will be automatically resolved to ESM or CJS version of the build based on the environment.
 ```JSX
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/esm/actions';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+```
+### Migration V2 -> V3
+V3 of the packages has introduced improved build output for absolute import paths, It's no longer required to point towards ESM/CJS asset. This is now resolved at build time by the asset.
+
+**Remove ESM/CJS references**
+
+```jsx
+// v2
+import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/esm/NotificationsPortal';
+// v3
+import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
 ```
 
-or
+**Notification reducer, actions and action types have changed import path**
 
-```JSX
+The correct import path is now at: `@redhat-cloud-services/frontend-components-notifications/redux`
+
+For example: 
+```jsx
+// v2
+import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
+// v3
+import { notificationsReducer, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 ```
 
-If it breaks your build for some reason, you can always fallback to default `umd` index file, but this will most probably bloat your build and should be used as last resort.
+**Adjust babel transform import config**
 
-```JSX
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+If you are using babel transform imports plugin, you need to change the import path.
+```jsx
+// v2
+{
+  transform: (importName) => `@redhat-cloud-services/frontend-components-notifications/esm/${importName}`
+}
+// v3
+{
+  transform: (importName) => `@redhat-cloud-services/frontend-components-notifications/${importName}`
+}
+
 ```
 
 ### Babel plugins
@@ -53,8 +80,8 @@ Change your babel config to be javascript config `babel.config.js` so you can us
 
 ```JS
 notificationsMapper = {
-    addNotification: 'actions',
-    removeNotification: 'actions',
+    addNotification: 'redux',
+    removeNotification: 'redux',
 };
 module.exports = {
     presets: [
@@ -67,7 +94,7 @@ module.exports = {
             {
               '@redhat-cloud-services/frontend-components-notifications': {
                 transform: (importName) =>
-                  `@redhat-cloud-services/frontend-components-notifications/cjs/${notificationsMapper[importName] || importName}`,
+                  `@redhat-cloud-services/frontend-components-notifications/${notificationsMapper[importName] || importName}`,
                 preventFullImport: true,
               }
             },
@@ -77,8 +104,6 @@ module.exports = {
     ]
 };
 ```
-
-As with direct imports you can choose from `esm` and `cjs`.
 
 ### List of bundles
 * `index` - the entire notifications bundle, should be used as fallback if something does not exists in other modules
