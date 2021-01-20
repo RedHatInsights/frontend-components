@@ -32,7 +32,7 @@ const AppInfo = ({ componentMapper, appList }) => {
                         { Cmp ?
                             <Cmp
                                 store={store}
-                                inventoryId={entity.id}
+                                inventoryId={entity?.id}
                                 appName={activeApp?.name}
                             /> :
                             'missing component'}
