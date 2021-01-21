@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 const path = require('path');
 const glob = require('glob');
 const fse = require('fs-extra');
+const chokidar = require('chokidar');
 
 const COMPONENTS_JSON = 'component-docs.json';
 
-//const firstComponents = Object.entries(components)[0];
 const componentsDest = path.resolve(__dirname, './pages/components');
 const navDest = path.resolve(__dirname, './components/navigation');
 
@@ -207,11 +208,26 @@ async function run() {
         }
 
         await traverseComponents();
-        process.exit(0);
     } catch (error) {
         console.log(error);
         process.exit(1);
     }
 }
 
-run();
+const args = process.argv.slice(2);
+
+console.log('Generating MD files for components.\n');
+if (args.includes('-w') || args.includes('--watch')) {
+    const target = path.resolve(__dirname, COMPONENTS_JSON);
+    console.log(`Watching: ${path.resolve(__dirname, COMPONENTS_JSON)}`);
+    const watcher = chokidar.watch(target);
+    watcher.on('add', () => {
+        run();
+    }).on('change', () => {
+        console.log(`Generating updated MD files`);
+        run();
+    });
+
+} else {
+    run();
+}

@@ -4,6 +4,9 @@
 
 To generate MD files from `/packages/components` run `yarn generate:components:docs` in this directory.
 
+### Watch file changes
+To watch the source files for changes use `yarn generate:watch`. This command updates the MD files when any change is made to component source file.
+
 ## Adding an example
 
 Add new JS file to `/examples/<component name>/<example-name>.js`. The **component name** must be the same as the component MD file.
