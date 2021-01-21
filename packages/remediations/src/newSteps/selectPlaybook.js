@@ -4,7 +4,6 @@ import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-fie
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
 import * as api from '../api';
-import './selectPlaybook.scss';
 import {
     FormGroup,
     Grid, GridItem,
@@ -16,15 +15,22 @@ import {
     TextInput,
     Stack, StackItem
 } from '@patternfly/react-core';
+import {
+    EXISTING_PLAYBOOK_SELECTED,
+    EXISTING_PLAYBOOK
+} from '../utils';
+import './selectPlaybook.scss';
 
 const SelectPlaybook = (props) => {
-    const { SelectPlaybookProps: { issues, systems } } = props;
+    const { issues, systems } = props;
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
-    const [ existingRemediations, setExistingRemediations ] = useState(false);
-    const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(false);
-    const [ newPlaybookName, setNewPlaybookName ] = useState('');
-    const [ selectedPlaybook, setSelectedPlaybook ] = useState('');
+    const values = formOptions.getState().values;
+    const [ existingRemediations, setExistingRemediations ] = useState();
+    const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(values[EXISTING_PLAYBOOK_SELECTED]);
+    const [ newPlaybookName, setNewPlaybookName ] = useState(values[EXISTING_PLAYBOOK_SELECTED] ? '' : input.value);
+    const [ selectedPlaybook, setSelectedPlaybook ] = useState(values[EXISTING_PLAYBOOK]);
+    const [ isLoadingRemediation, setIsLoadingRemediation ] = useState(false);
     const nameValid = true;
 
     useEffect(() => {
@@ -51,49 +57,54 @@ const SelectPlaybook = (props) => {
             </StackItem>
             <StackItem>
                 <Grid hasGutter>
-                    <GridItem sm={12} md={6} lg={3}>
+                    <GridItem sm={12} md={6} lg={4}>
                         <Radio
-                            label={existingRemediations ? `Existing playbook (${existingRemediations.length})` : 'Existing playbook'}
-                            aria-label="Existing playbook"
+                            label={existingRemediations ? `Add to existing playbook (${existingRemediations.length})` : 'Add to existing playbook'}
+                            aria-label="Add to existing playbook"
                             id="existing"
                             name="radio"
                             isDisabled={!existingRemediations || !existingRemediations.length}
                             defaultChecked={existingPlaybookSelected}
                             onChange={() => {
                                 setExistingPlaybookSelected(true);
-                                formOptions.change('existing-playbook-selected', true);
-                                input.onChange(selectedPlaybook);
-                                formOptions.change('playbook-name', selectedPlaybook);
+                                formOptions.change(EXISTING_PLAYBOOK_SELECTED, true);
+                                input.onChange(selectedPlaybook?.name || '');
+                                formOptions.change(EXISTING_PLAYBOOK, selectedPlaybook);
                             }}
                         />
                     </GridItem>
                     <GridItem sm={12} md={6} lg={4}>
                         {
-                            existingRemediations === false ?
-                                <Skeleton size={SkeletonSize.lg} /> :
+                            existingRemediations && !isLoadingRemediation ?
                                 <FormSelect
                                     onChange={val => {
-                                        setSelectedPlaybook(val);
-                                        input.onChange(val);
-                                        formOptions.change('selected-playbook', val);
+                                        setIsLoadingRemediation(true);
+                                        api.getRemediation(val).then(remediation => {
+                                            setSelectedPlaybook(remediation);
+                                            setIsLoadingRemediation(false);
+                                            existingPlaybookSelected && input.onChange(remediation.name);
+                                            existingPlaybookSelected && formOptions.change(EXISTING_PLAYBOOK, remediation);
+                                        });
                                     }}
-                                    value={selectedPlaybook}
+                                    value={selectedPlaybook?.id || ''}
                                     aria-label="Select an existing playbook" >
-                                    {existingRemediations.length
+                                    {existingRemediations?.length
                                         ? [ <FormSelectOption key='select-playbook-placeholder' value='' label='Select playbook' isDisabled />,
                                             ...existingRemediations.map(({ id, name }) =>
                                                 <FormSelectOption key={id} value={id} label={name} />)
                                         ]
                                         : <FormSelectOption key="empty" value="empty" label="No existing playbooks" />
                                     }
-                                </FormSelect>
+                                </FormSelect> :
+                                <Skeleton size={SkeletonSize.lg} />
+
                         }
                     </GridItem>
                 </Grid>
             </StackItem>
             <StackItem>
                 <Grid hasGutter>
-                    <GridItem sm={12} md={6} lg={3}>
+                    <GridItem sm={12} md={6} lg={4}>
                         <Radio
                             label="Create new playbook"
                             aria-label="Create new playbook"
@@ -102,9 +113,9 @@ const SelectPlaybook = (props) => {
                             defaultChecked={!existingPlaybookSelected}
                             onChange={() => {
                                 setExistingPlaybookSelected(false);
-                                formOptions.change('existing-playbook-selected', false);
+                                formOptions.change(EXISTING_PLAYBOOK_SELECTED, false);
                                 input.onChange(newPlaybookName);
-                                formOptions.change('playbook-name', newPlaybookName);
+                                formOptions.change(EXISTING_PLAYBOOK, undefined);
                             }}
                         />
                     </GridItem>
@@ -118,8 +129,7 @@ const SelectPlaybook = (props) => {
                                 value={newPlaybookName}
                                 onChange={(val) => {
                                     setNewPlaybookName(val);
-                                    input.onChange(val);
-                                    formOptions.change('playbook-name', val);
+                                    existingPlaybookSelected || input.onChange(val);
                                 }}
                                 aria-label="Name your playbook"
                                 autoFocus
@@ -134,8 +144,11 @@ const SelectPlaybook = (props) => {
 };
 
 SelectPlaybook.propTypes = {
-    SelectPlaybookProps: propTypes.object,
-    props: propTypes.object
+    systems: propTypes.arrayOf(propTypes.string).isRequired,
+    issues: propTypes.arrayOf(propTypes.shape({
+        description: propTypes.string,
+        id: propTypes.string
+    })).isRequired
 };
 
 export default SelectPlaybook;

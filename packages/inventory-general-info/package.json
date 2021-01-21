@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-general-info",
-    "version": "2.2.11",
+    "version": "2.2.12",
     "description": "System info detail for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",
@@ -37,7 +37,7 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
-        "@redhat-cloud-services/host-inventory-client": "1.0.48",
+        "@redhat-cloud-services/host-inventory-client": "1.0.91",
         "@redhat-cloud-services/frontend-components-inventory": "*"
     }
 }

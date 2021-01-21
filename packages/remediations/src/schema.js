@@ -1,11 +1,16 @@
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/validator-types';
+import {
+    HAS_MULTIPLES,
+    SELECT_PLAYBOOK,
+    MANUAL_RESOLUTION
+} from './utils';
 
 export default (container, issues) => ({
     fields: [
         {
             component: componentTypes.WIZARD,
-            name: 'wizzard',
+            name: 'remediations-wizard',
             isDynamic: true,
             inModal: true,
             showTitles: true,
@@ -17,7 +22,7 @@ export default (container, issues) => ({
                     name: 'playbook',
                     title: 'Select playbook',
                     fields: [{
-                        name: 'select-playbook',
+                        name: SELECT_PLAYBOOK,
                         component: 'select-playbook',
                         validate: [{
                             type: validatorTypes.PATTERN,
@@ -27,16 +32,16 @@ export default (container, issues) => ({
                             type: validatorTypes.REQUIRED
                         }]
                     }],
-                    nextStep: ({ values }) => values.multiple ? 'actions' : 'review'
+                    nextStep: ({ values }) => values[HAS_MULTIPLES] ? 'actions' : 'review'
                 },
                 {
                     name: 'actions',
                     title: 'Review and edit actions',
                     fields: [{
-                        name: 'manual-resolution',
+                        name: MANUAL_RESOLUTION,
                         component: 'review-actions'
                     }],
-                    nextStep: ({ values }) => values['manual-resolution'] ? 'issue-resolution-0' : 'review'
+                    nextStep: ({ values }) => values[MANUAL_RESOLUTION] ? 'issue-resolution-0' : 'review'
                 },
                 ...issues.map((issue, index) => (
                     {
@@ -50,17 +55,19 @@ export default (container, issues) => ({
                                 issue
                             }
                         ],
-                        nextStep: index < issues.length ? `issue-resolution-${index + 1}` : 'review',
+                        nextStep: index < issues.length - 1 ? `issue-resolution-${index + 1}` : 'review',
                         substepOf: 'Choose actions'
                     }
                 )),
                 {
                     name: 'review',
                     title: 'Remediation review',
-                    fields: [{
-                        name: 'issue-resolution-review',
-                        component: 'select-playbook'
-                    }]
+                    fields: [
+                        {
+                            name: 'review',
+                            component: 'review'
+                        }
+                    ]
                 }
 
             ]

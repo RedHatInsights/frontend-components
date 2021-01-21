@@ -16,7 +16,7 @@ import './NotAuthorized.scss';
 
 const ContactBody = () => <React.Fragment>
   Contact your organization administrator(s) for more information or visit&nbsp;
-    <a href={`./${window.insights.chrome.isBeta() ? 'beta/' : ''}settings/my-user-access`}>My User Access</a>&nbsp;
+    <a href={`./settings/my-user-access`}>My User Access</a>&nbsp;
   to learn more about your permissions.
 </React.Fragment>;
 

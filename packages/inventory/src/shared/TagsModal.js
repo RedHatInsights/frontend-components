@@ -86,11 +86,11 @@ const TagsModal = ({
                     ...pagination,
                     count: tagsCount
                 },
-                rows: tags.map(({ key, value, namespace }) => ({
+                rows: tags?.map(({ key, value, namespace }) => ({
                     id: `${namespace}/${key}=${value}`,
                     selected: selected.find(({ id }) => id === `${namespace}/${key}=${value}`),
                     cells: [ key, value, namespace ]
-                }))
+                })) || []
             }}
             loaded={ loaded }
             width="auto"

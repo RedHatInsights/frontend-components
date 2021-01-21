@@ -30,6 +30,7 @@ class Text extends Component {
                     onChange={ (_inputValue, e) => changeCallback(e, e.target.value) }
                     widget-type="InsightsInput"
                     onKeyDown={ e => e.key === 'Enter' && onSubmit(e, value || stateValue) }
+                    data-ouia-component-type="PF4/TextInput"
                 />
                 <Icon size="sm" className="ins-c-search-icon" />
             </Fragment>
