@@ -1,6 +1,8 @@
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
+import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
+import { ExclamationTriangleIcon } from '@patternfly/react-icons';
 import {
     Button,
     Text,
@@ -9,19 +11,17 @@ import {
     StackItem
 } from '@patternfly/react-core';
 import {
+    buildRows,
+    getResolution,
     AUTO_REBOOT,
-    SELECT_PLAYBOOK,
-    SELECTED_RESOLUTIONS,
-    EXISTING_PLAYBOOK_SELECTED,
     EXISTING_PLAYBOOK,
-    MANUAL_RESOLUTION
+    EXISTING_PLAYBOOK_SELECTED,
+    SELECT_PLAYBOOK
 } from '../utils';
-import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
-import { CloseIcon, ExclamationTriangleIcon, RedoIcon } from '@patternfly/react-icons';
 import './review.scss';
 
 const Review = (props) => {
-    const { data, issuesById, getIssues, resolutions } = props;
+    const { data, issuesById, resolutions } = props;
     const formOptions = useFormApi();
     const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
 
@@ -31,58 +31,21 @@ const Review = (props) => {
         formOptions.change(AUTO_REBOOT, formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED] && selectedPlaybook.auto_reboot);
     }, []);
 
-    const getResolution = issueId => {
-        const allResolutions = resolutions.find(r => r.id === issueId)?.resolutions || [];
+    const records = data.issues.map(issue => {
+        const issueResolutions = getResolution(issue.id, formOptions.getState().values, resolutions);
+        const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
+        return {
+            action: issuesById[issue.id].description,
+            resolution: description,
+            needsReboot,
+            systemsCount: issue.systems ? issue.systems.length : data.systems.length,
+            id: issue.id,
+            shortId: issue?.id?.split('|')?.slice(-1)?.[0] || issue.id,
+            alternate: issueResolutions.length - 1
+        };
+    });
 
-        if (formOptions.getState().values[MANUAL_RESOLUTION] && issueId in formOptions.getState().values[SELECTED_RESOLUTIONS]) {
-            return allResolutions.filter(r => r.id === formOptions.getState().values[SELECTED_RESOLUTIONS][issueId]);
-        }
-
-        if (formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED]) {
-            const existing = selectedPlaybook?.issues?.find(i => i.id === issueId);
-
-            if (existing) {
-                return allResolutions.filter(r => r.id === existing.resolution.id);
-            }
-        }
-
-        return allResolutions;
-    };
-
-    const records = getIssues(data, issuesById, getResolution);
-
-    const sortedRecords = records.sort(
-        (a, b) => {
-            const key = Object.keys(a)[sortByState.index];
-            return (
-                (a[key] > b[key] ? 1 :
-                    a[key] < b[key] ? -1 : 0)
-                * (sortByState.direction === 'desc' ? -1 : 1)
-            );
-        }
-    );
-
-    const rows = sortedRecords.map((record, index) => ({
-        cells: [
-            record.action,
-            <Fragment key={`${index}-description`}>
-                <p key={`${index}-resolution`}>
-                    {record.resolution}
-                </p>
-                {record.alternate > 0 &&
-                    (
-                        <p key={`${index}-alternate`}>{record.alternate} alternate resolution</p>
-                    )}
-            </Fragment>,
-            {
-                title: record.needsReboot ? <Fragment><RedoIcon/>{' Yes'}</Fragment> : <Fragment><CloseIcon/>{' No'}</Fragment>,
-                value: record.needsReboot
-            },
-            record.systemsCount
-        ]
-    }));
-
-    const onSort = (event, index, direction) => setSortByState({ index, direction });
+    const rows = buildRows(records, sortByState);
 
     return (
         <Stack hasGutter>
@@ -140,7 +103,7 @@ const Review = (props) => {
                     }]
                 }
                 rows={ rows }
-                onSort={ onSort }
+                onSort={ (event, index, direction) => setSortByState({ index, direction }) }
                 sortBy={ sortByState }
             >
                 <TableHeader />
@@ -162,7 +125,6 @@ Review.propTypes = {
             description: propTypes.string
         })
     }).isRequired,
-    getIssues: propTypes.func.isRequired,
     resolutions: propTypes.arrayOf(propTypes.shape({
         id: propTypes.string,
         resolutions: propTypes.array
