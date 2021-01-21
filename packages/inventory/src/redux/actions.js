@@ -58,7 +58,8 @@ export const loadEntities = (items = [], { filters, ...config }, { showTags } = 
                 ...item.id ? item : { id: item },
                 ...results.find(({ id }) => id === item || id === item.id) || {}
             })) : results,
-            page: config.itemsPage || (data && data.page)
+            page: config.page || (data && data.page),
+            perPage: config.perPage || (data && data.perPage)
         })),
         meta: {
             showTags
