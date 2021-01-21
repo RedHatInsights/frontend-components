@@ -7,7 +7,7 @@ Because there are places where creating new reducer is too robust and might lead
 #### Usage of middleware listener
 ```javascript
 import { applyMiddleware } from 'redux';
-import MiddlewareListener from '@redhat-cloud-services/frontend-components-utilities/files/MiddlewareListener';
+import MiddlewareListener from '@redhat-cloud-services/frontend-components-utilities/MiddlewareListener';
 const listenerMiddleware = new MiddlewareListener();
 this.store = createStore(
     reducers,
@@ -44,7 +44,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';
 import promiseMiddleware from 'redux-promise-middleware';
 import App from './App';
 
@@ -64,7 +64,7 @@ ReactDOM.render(
 ```JSX
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import registryDecorator from '@redhat-cloud-services/frontend-components-utilities/Registry';
 
 //We'll bind registry to this class
 @registryDecorator()
@@ -99,7 +99,7 @@ Parameters:
 * `composeEnhancers` - default to `compose` from redux library
 
 ```javascript
-import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
+import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 import { middlewares } from './middlewareSettings';
 
 const reduxRegistry = new ReducerRegistry(initState, middlewares);
@@ -136,7 +136,7 @@ It's as easy as calling dispatchActionsToStore with multiple actions (either tro
 ```javascript
 import * as actions from './actions';
 import store from './singleton-store';
-import { dispatchActionsToStore } from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
+import { dispatchActionsToStore } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 
 export default dispatchActionsToStore(actions, store);
 ```

@@ -1,3 +1,13 @@
-files/
-Styles.css
-helpers.css
+# ignore everything in root that will be the destination of build output
+/*
+
+# white list allowed files
+!src
+!src/
+!src/*
+!.npmignore
+!.gitignore
+!babel.config.js
+!LICENSE
+!package.json
+!README.md

@@ -15,6 +15,14 @@ const files = glob.sync(`${root}/src/**/*.scss`);
 
 async function buildStyle(file) {
     const outFile = path.resolve(file.split('/src/').pop(), './').replace(/scss$/, 'css');
+    let targetDir = outFile.split('/');
+    targetDir.pop();
+    targetDir = targetDir.join('/').replace(root, '').replace(/^\//, '');
+
+    if (!fs.existsSync(path.resolve(root, targetDir))) {
+        fs.mkdirSync(targetDir);
+    }
+
     const render = sass.render({
         file,
         outFile

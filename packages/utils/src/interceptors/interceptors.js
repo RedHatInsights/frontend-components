@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as Sentry from '@sentry/browser';
+import { configureScope, captureException } from '@sentry/browser';
 
 export class HttpError extends Error {
     constructor(description) {
@@ -32,7 +32,7 @@ export function interceptor401(error) {
 
 export function interceptor500(error) {
     if (error.response && error.response.status >= 500 && error.response.status < 600) {
-        Sentry.configureScope((scope) => {
+        configureScope((scope) => {
             scope.setTag('request_id', error.response.req_id);
         });
     }
@@ -54,7 +54,7 @@ export function errorInterceptor(err) {
         }
         catch (customError) {
             if (!requestId) {
-                customError.sentryId = Sentry.captureException(customError);
+                customError.sentryId = captureException(customError);
             }
 
             customError.requestId = requestId;

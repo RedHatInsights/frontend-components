@@ -55,7 +55,7 @@ TimeoutStep.propTypes = {
 };
 
 TimeoutStep.defaultProps = {
-    title: <FormattedMessage id="wizard.uncompleteConfigurationTitle" defaultMessage="Configuration not yet complete"/>
+    title: <FormattedMessage id="wizard.uncompleteConfigurationTitle" defaultMessage="Configuration in progress"/>
 };
 
 export default TimeoutStep;
