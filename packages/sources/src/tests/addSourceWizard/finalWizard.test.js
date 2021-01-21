@@ -265,7 +265,7 @@ describe('Final wizard', () => {
             }}
         />);
         expect(wrapper.find(TimeoutStep)).toHaveLength(1);
-        expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Configuration not yet complete');
+        expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Configuration in progress');
     });
 
     it('shows successful step', async () => {
