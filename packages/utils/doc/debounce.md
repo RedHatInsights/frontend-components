@@ -8,7 +8,7 @@ This function is using [awesome-debounce-promise](https://github.com/slorber/awe
 
 ```JS
 import { apiCall } from './your/api';
-import debounce from '@redhat-cloud-services/frontend-components-utilities/files/debounce';
+import debounce from '@redhat-cloud-services/frontend-components-utilities/debounce';
 
 const debouncedFunc = debounce(apiCall);
 
@@ -21,7 +21,7 @@ for(i = 0; i < 5; i++) {
 2) Custom debounce time
 ```JS
 import { apiCall } from './your/api';
-import debounce from '@redhat-cloud-services/frontend-components-utilities/files/debounce';
+import debounce from '@redhat-cloud-services/frontend-components-utilities/debounce';
 
 const debouncedFunc = debounce(apiCall, 150);
 

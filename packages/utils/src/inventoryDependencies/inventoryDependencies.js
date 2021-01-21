@@ -1,3 +1,6 @@
+/**
+ * @deprecated this modules are deprectated and no longer required in chrome 2.0
+ */
 import {
     Badge,
     Bullseye,

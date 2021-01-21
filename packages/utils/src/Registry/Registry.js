@@ -1,4 +1,4 @@
-import ReducerRegistry from './ReducerRegistry';
+import ReducerRegistry from '../ReducerRegistry';
 export let registry;
 
 function init(initialState = {}, middleware = [], composeEnhancersDefault) {
