@@ -335,12 +335,12 @@ export default {
             arn: {
                 generic: {
                     includeStepKeyFields: [ 'arn' ],
-                    'authentication.password': arnField
+                    'authentication.username': arnField
                 },
                 [COST_MANAGEMENT_APP_NAME]: {
                     useApplicationAuth: true,
                     skipSelection: true,
-                    'authentication.password': arnField,
+                    'authentication.username': arnField,
                     'billing_source.data_source.bucket': {
                         placeholder: 'cost-usage-bucket',
                         validate: [{
@@ -426,12 +426,12 @@ export default {
             'cloud-meter-arn': {
                 generic: {
                     includeStepKeyFields: [ 'arn' ],
-                    'authentication.password': subsWatchArnField
+                    'authentication.username': subsWatchArnField
                 },
                 [CLOUD_METER_APP_NAME]: {
                     useApplicationAuth: true,
                     skipSelection: true,
-                    'authentication.password': subsWatchArnField,
+                    'authentication.username': subsWatchArnField,
                     additionalSteps: [{
                         title: <FormattedMessage id="cloudmeter.createIamPolicy" defaultMessage="Create IAM policy" />,
                         nextStep: 'subs-iam-role',
@@ -468,7 +468,7 @@ export default {
                             Content: SWAwsArn.ArnDescription
                         }, {
                             component: componentTypes.TEXT_FIELD,
-                            name: 'authentication.password'
+                            name: 'authentication.username'
                         }]
                     }, {
                         name: 'subwatch-auto-registration',
