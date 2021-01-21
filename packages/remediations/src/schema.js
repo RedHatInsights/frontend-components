@@ -3,10 +3,12 @@ import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/vali
 import {
     HAS_MULTIPLES,
     SELECT_PLAYBOOK,
-    MANUAL_RESOLUTION
+    MANUAL_RESOLUTION,
+    EXISTING_PLAYBOOK,
+    EXISTING_PLAYBOOK_SELECTED
 } from './utils';
 
-export default (container, issues) => ({
+export default issues => ({
     fields: [
         {
             component: componentTypes.WIZARD,
@@ -16,7 +18,6 @@ export default (container, issues) => ({
             showTitles: true,
             title: 'Remediate with Ansible',
             description: 'Add issues to an Ansible Playbook',
-            container,
             fields: [
                 {
                     name: 'playbook',
@@ -41,21 +42,31 @@ export default (container, issues) => ({
                         name: MANUAL_RESOLUTION,
                         component: 'review-actions'
                     }],
-                    nextStep: ({ values }) => values[MANUAL_RESOLUTION] ? 'issue-resolution-0' : 'review'
+                    nextStep: ({ values }) => {
+                        const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
+                            ? issues.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
+                            : issues;
+                        return values[MANUAL_RESOLUTION] ? filteredIssues[0].id : 'review';
+                    }
                 },
-                ...issues.map((issue, index) => (
+                ...issues.map(issue => (
                     {
-                        name: `issue-resolution-${index}`,
+                        name: issue.id,
                         title: issue.shortId,
                         showTitle: false,
                         fields: [
                             {
-                                name: `issue-resolution-${index}`,
+                                name: issue.id,
                                 component: 'issue-resolution',
                                 issue
                             }
                         ],
-                        nextStep: index < issues.length - 1 ? `issue-resolution-${index + 1}` : 'review',
+                        nextStep: ({ values }) => {
+                            const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
+                                ? issues.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
+                                : issues;
+                            return filteredIssues.slice(filteredIssues.findIndex(i => i.id === issue.id) + 1, filteredIssues.length)[0]?.id || 'review';
+                        },
                         substepOf: 'Choose actions'
                     }
                 )),
