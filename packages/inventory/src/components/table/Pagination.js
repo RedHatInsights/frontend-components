@@ -137,7 +137,17 @@ function stateToProps(
 function dispatchToProps(dispatch, props) {
     return {
         dataLoading: () => dispatch(entitiesLoading()),
-        loadEntities: (config, showTags) => dispatch(loadSystems(config, showTags, props.getEntites))
+        loadEntities: (config, showTags) => dispatch(
+            loadSystems(
+                {
+                    orderBy: props.sortBy?.key,
+                    orderDirection: props.sortBy?.direction,
+                    ...config
+                },
+                showTags,
+                props.getEntities
+            )
+        )
     };
 }
 

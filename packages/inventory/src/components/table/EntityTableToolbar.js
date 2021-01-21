@@ -131,7 +131,9 @@ const EntityTableToolbar = ({
                 per_page: perPage,
                 filters,
                 hasItems,
-                ...config
+                ...config,
+                orderDirection: sortBy?.direction,
+                orderBy: sortBy?.key
             };
             onRefresh ? onRefresh(params, (options) => {
                 dispatch(entitiesLoading());
@@ -146,7 +148,7 @@ const EntityTableToolbar = ({
     /**
      * Debounced `updateData` function.
      */
-    const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), []);
+    const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), [ sortBy?.key, sortBy?.direction ]);
 
     /**
      * Component did mount effect to calculate actual filters from redux.

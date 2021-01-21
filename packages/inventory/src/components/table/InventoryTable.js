@@ -77,6 +77,7 @@ const InventoryTable = forwardRef(({
                     perPage={ pagination.perPage }
                     showTags={ showTags }
                     getEntities={ getEntities }
+                    sortBy={ sortBy }
                 >
                     { children }
                 </EntityTableToolbar>
@@ -107,6 +108,7 @@ const InventoryTable = forwardRef(({
                         onRefresh={ onRefresh }
                         showTags={ showTags }
                         getEntities={ getEntities }
+                        sortBy={ sortBy }
                     />
                 </TableToolbar>
             </Fragment>
