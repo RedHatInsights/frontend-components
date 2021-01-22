@@ -72,19 +72,10 @@ export function getEntities(items, {
     filters,
     per_page: perPage,
     page,
-    orderBy = 'updated',
-    orderDirection = 'DESC',
+    orderBy,
+    orderDirection,
     ...options
 }, showTags) {
-    const {
-        hostnameOrId,
-        tagFilters,
-        staleFilter,
-        registeredWithFilter
-    } = filters ? filters.reduce(filtersReducer, {
-        ...defaultFilters,
-        ...filters.length === 0 && { registeredWithFilter: [] }
-    }) : defaultFilters;
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
         .then((data) => showTags ? mapTags(data) : data)
@@ -100,19 +91,19 @@ export function getEntities(items, {
         return hosts.apiHostGetHostList(
             undefined,
             undefined,
-            hostnameOrId,
+            filters.hostnameOrId,
             undefined,
             undefined,
             perPage,
             page,
             orderBy,
             orderDirection,
-            staleFilter,
+            filters.staleFilter,
             [
-                ...constructTags(tagFilters),
+                ...constructTags(filters.tagFilters),
                 ...options.tags || []
             ],
-            registeredWithFilter,
+            filters.registeredWithFilter,
             undefined,
             {
                 cancelToken: controller && controller.token,
