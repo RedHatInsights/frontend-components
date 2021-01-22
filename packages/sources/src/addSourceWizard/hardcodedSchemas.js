@@ -704,7 +704,7 @@ export default {
                 [COST_MANAGEMENT_APP_NAME]: {
                     useApplicationAuth: true,
                     skipSelection: true,
-                    'authentication.password': {
+                    'authentication.username': {
                         component: 'text-field',
                         label: 'Project ID',
                         isRequired: true,
@@ -717,9 +717,9 @@ export default {
                     'authentication.authtype': {
                         component: 'text-field',
                         hideField: true,
-                        initialValue: 'project_id'
+                        initialValue: 'project_id_service_account_json'
                     },
-                    'billing_source.data_source.dataset': {
+                    'application.extra.dataset': {
                         component: 'text-field',
                         label: 'Dataset ID',
                         isRequired: true,
@@ -736,30 +736,41 @@ export default {
                             name: 'description-google',
                             Content: CMGoogle.Project
                         }, {
-                            name: 'authentication.password'
+                            name: 'authentication.username'
                         }, {
                             name: 'authentication.authtype'
                         }],
-                        nextStep: 'cost-gcp-dataset'
+                        nextStep: 'cost-gcp-iam'
                     }, {
-                        title: <FormattedMessage id="cost.gcp.datasetTitle" defaultMessage="BiqQuery dataset" />,
+                        title: <FormattedMessage id="cost.gcp.iamTitle" defaultMessage="Create IAM role" />,
                         fields: [{
                             component: 'description',
                             name: 'description-google',
-                            Content: CMGoogle.Dataset
-                        }, {
-                            name: 'billing_source.data_source.dataset'
+                            Content: CMGoogle.IAMRole
                         }],
-                        name: 'cost-gcp-dataset',
-                        nextStep: 'cost-gcp-access'
+                        nextStep: 'cost-gcp-access',
+                        name: 'cost-gcp-iam',
+                        substepOf: { name: 'geaa', title: <FormattedMessage id="cost.arn.enableAccountAccess" defaultMessage="Enable account access" /> }
                     }, {
-                        title: <FormattedMessage id="cost.gcp.accessTitle" defaultMessage="Enable account access" />,
+                        title: <FormattedMessage id="cost.gcp.accessTitle" defaultMessage="Assign access" />,
                         fields: [{
                             component: 'description',
                             name: 'description-google',
                             Content: CMGoogle.AssignAccess
                         }],
                         name: 'cost-gcp-access',
+                        nextStep: 'cost-gcp-dataset',
+                        substepOf: 'geaa'
+                    }, {
+                        title: <FormattedMessage id="cost.gcp.datasetTitle" defaultMessage="Create dataset" />,
+                        fields: [{
+                            component: 'description',
+                            name: 'description-google',
+                            Content: CMGoogle.Dataset
+                        }, {
+                            name: 'application.extra.dataset'
+                        }],
+                        name: 'cost-gcp-dataset',
                         nextStep: 'cost-gcp-billing-export'
                     }, {
                         title: <FormattedMessage id="cost.gcp.billingExportTitle" defaultMessage="Billing export" />,

@@ -10,23 +10,7 @@ import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form
 import { COST_MANAGEMENT_APP_NAME } from '../../api/constants';
 
 const alertMapper = (appName, sourceType, intl) => {
-    if (appName === COST_MANAGEMENT_APP_NAME && sourceType === 'google') {
-        return (
-            <Alert
-                variant="info"
-                isInline
-                title={intl.formatMessage({ id: 'cost.google.rbacWarningTitle', defaultMessage: 'Add resources to your projects in Billing' })}
-            >
-                {intl.formatMessage({
-                    id: 'cost.google.rbacWarningDescription',
-                    // eslint-disable-next-line max-len
-                    defaultMessage: 'In order for billing and usage data to be exported, you must have at least one resource created in one of your billing account projects. View your billing account projects under the ‘My Projects’ tab in the GCP Billing console.'
-                })}
-            </Alert>
-        );
-    }
-
-    if (appName === COST_MANAGEMENT_APP_NAME) {
+    if (appName === COST_MANAGEMENT_APP_NAME && sourceType !== 'google') {
         return (
             <Alert
                 variant="info"

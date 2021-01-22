@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { Text, TextContent, TextVariants, TextList, TextListVariants, TextListItem, ClipboardCopy } from '@patternfly/react-core';
+import { Text, TextContent, TextVariants, TextList, TextListVariants, TextListItem, ClipboardCopy, Hint, HintTitle, HintBody } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 
 const b = (chunks) => <b key={`b-${chunks.length}-${Math.floor(Math.random() * 1000)}`}>{chunks}</b>;
@@ -10,12 +10,71 @@ export const Project = () => {
 
     return (
         <TextContent>
-            <Text component={TextVariants.p}>
+            <Text component={TextVariants.p} className="pf-u-mb-lg">
                 { intl.formatMessage({
                     id: 'cost.gcp.projectDescription',
-                    defaultMessage: 'Identify a project within your GCP billing account. This will be the project used to set up your billing export dataset.'
+                    defaultMessage:
+                    'Enter the ID of a project within your Google Cloud Platform (GCP) billing account. We’ll use this project to set up your BigQuery billing export.'
                 }) }
             </Text>
+            <Hint>
+                <HintTitle>
+                    {intl.formatMessage({
+                        id: 'cost.gcp.project.hintTitle',
+                        defaultMessage: 'GCP Recommendation'
+                    })}
+                </HintTitle>
+                <HintBody>
+                    {intl.formatMessage({
+                        id: 'cost.gcp.project.hintDescription',
+                        defaultMessage: 'Create a cloud project to contain all your billing administration needs.'
+                    })}
+                </HintBody>
+            </Hint>
+        </TextContent>
+    );
+};
+
+export const IAMRole = () => {
+    const intl = useIntl();
+
+    return (
+        <TextContent>
+            <Text component={TextVariants.p}>
+                { intl.formatMessage({
+                    id: 'cost.gcp.iamRoleDescription',
+                    defaultMessage: 'To specify GCP access permissions for Red Hat, create an Identity and Access Management (IAM) role.'
+                }) }
+            </Text>
+            <TextList component={TextListVariants.ol}>
+                <TextListItem>
+                    { intl.formatMessage({
+                        id: 'cost.gcp.iam.firstStep',
+                        defaultMessage: 'From the GCP console, navigate to <b>IAM & Admin > Roles.</b>'
+                    }, { b })}
+                </TextListItem>
+                <TextListItem>
+                    { intl.formatMessage({
+                        id: 'cost.gcp.iam.firstStepB',
+                        defaultMessage: 'Create a new role.'
+                    }, { b })}
+                </TextListItem>
+                <TextListItem>
+                    {intl.formatMessage({ id: 'cost.gcp.iam.secondStep', defaultMessage: 'Add the following permissions to your custom role:' })}
+                </TextListItem>
+                <TextList>
+                    <TextListItem><b>bigquery.jobs.create</b></TextListItem>
+                    <TextListItem><b>bigquery.tables.getData</b></TextListItem>
+                    <TextListItem><b>bigquery.tables.get</b></TextListItem>
+                    <TextListItem><b>bigquery.tables.list</b></TextListItem>
+                </TextList>
+                <TextListItem>
+                    { intl.formatMessage({
+                        id: 'cost.gcp.iam.thirdStep',
+                        defaultMessage: 'Click <b>Create role.</b>'
+                    }, { b })}
+                </TextListItem>
+            </TextList>
         </TextContent>
     );
 };
@@ -24,7 +83,7 @@ export const Dataset = () => {
     const intl = useIntl();
     const { getState } = useFormApi();
 
-    const projectId = getState().values.authentication?.password;
+    const projectId = getState().values.authentication?.username;
 
     return (
         <TextContent>
@@ -38,7 +97,7 @@ export const Dataset = () => {
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.dataset.firstStep',
-                        defaultMessage: 'From the GCP <b>BigQuery</b> console, select your project <b>({projectId})</b>.'
+                        defaultMessage: 'In the BigQuery console, select your project (<b>{projectId}</b>) from the navigation menu.'
                     }, { b, projectId })}
                 </TextListItem>
                 <TextListItem>
@@ -50,7 +109,7 @@ export const Dataset = () => {
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.dataset.thirdStep',
-                        defaultMessage: 'Enter a name for your dataset in the <b>Dataset ID</b> field.'
+                        defaultMessage: 'In the <b>Dataset ID</b> field, enter a name for your dataset.'
                     }, { b })}
                 </TextListItem>
                 <TextListItem>
@@ -72,20 +131,20 @@ export const AssignAccess = () => {
             <Text component={TextVariants.p}>
                 { intl.formatMessage({
                     id: 'cost.gcp.assignAccessDesc',
-                    defaultMessage: 'To delegate account access, add a new member to your dataset.'
+                    defaultMessage: 'To delegate account access, add a new member to your project.'
                 }) }
             </Text>
             <TextList component={TextListVariants.ol}>
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.access.firstStep',
-                        defaultMessage: 'From your dataset, click on the button labeled <b>Share Dataset</b>.'
+                        defaultMessage: 'In your IAM & Admin console, navigate to <b>IAM</b> and click <b>Add</b> to add a new member.'
                     }, { b })}
                 </TextListItem>
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.access.secondStep',
-                        defaultMessage: 'Paste the following value into the <b>Add members</b> field:'
+                        defaultMessage: 'Paste the following value into the <b>New members</b> field:'
                     }, { b })}
                 </TextListItem>
                 <ClipboardCopy className="pf-u-m-sm  pf-u-ml-0" isReadOnly>
@@ -94,13 +153,13 @@ export const AssignAccess = () => {
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.access.thirdStep',
-                        defaultMessage: 'Select <b>BigQuery User</b> from the role dropdown menu.'
+                        defaultMessage: 'Select the role you just created.'
                     }, { b })}
                 </TextListItem>
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.access.fourthStep',
-                        defaultMessage: 'Click <b>Add</b> to finish assigning permissions.'
+                        defaultMessage: 'Click <b>Save.</b>'
                     }, { b })}
                 </TextListItem>
             </TextList>
@@ -116,27 +175,33 @@ export const BillingExport = () => {
             <Text component={TextVariants.p}>
                 { intl.formatMessage({
                     id: 'cost.gcp.billingExport.description',
-                    defaultMessage: 'To enable the export of detailed billing data to BigQuery, set up daily cost export.'
+                    defaultMessage: 'To enable detailed billing data exports to BigQuery, set up daily cost export.'
                 }) }
             </Text>
             <TextList component={TextListVariants.ol}>
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.billingExport.firstStep',
-                        defaultMessage: 'From the <b>Billing</b> console, navigate to <b>Billing export</b>. Make sure you remain in the <b>BigQuery export</b> tab.'
+                        defaultMessage: 'In the Billing console, click <b>Billing export.</b>'
+                    }, { b })}
+                </TextListItem>
+                <TextListItem>
+                    { intl.formatMessage({
+                        id: 'cost.gcp.billingExport.firstStepB',
+                        defaultMessage: 'Click the <b>BigQuery export</b> tab.'
                     }, { b })}
                 </TextListItem>
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.billingExport.secondStep',
-                        defaultMessage: 'Under the section titled <b>Daily cost detail</b>, click <b>Edit settings.</b>'
+                        defaultMessage: 'In the <b>Daily cost detail</b> section, click <b>Edit settings.</b>'
                     }, { b })}
                 </TextListItem>
                 <TextListItem>
                     { intl.formatMessage({
                         id: 'cost.gcp.billingExport.thirdStep',
-                        defaultMessage: 'Select the correct <b>project</b> and <b>dataset</b> from the respective dropdown menus.'
-                    }, { b })}
+                        defaultMessage: 'Use the dropdown menus to select the correct project and dataset.'
+                    })}
                 </TextListItem>
                 <TextListItem>
                     { intl.formatMessage({
