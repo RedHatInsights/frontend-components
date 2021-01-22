@@ -43,6 +43,13 @@ exports[`NoSystemsTable should render correctly - with no access 1`] = `
     page={1}
     perPage={50}
     showTags={false}
+    sortBy={
+      Object {
+        "direction": "asc",
+        "index": 1,
+        "key": "one",
+      }
+    }
     total={500}
   />
   <ForwardRef
@@ -105,6 +112,13 @@ exports[`NoSystemsTable should render correctly 1`] = `
     page={1}
     perPage={50}
     showTags={false}
+    sortBy={
+      Object {
+        "direction": "asc",
+        "index": 1,
+        "key": "one",
+      }
+    }
     total={500}
   />
   <ForwardRef
@@ -185,6 +199,13 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
     page={5}
     perPage={20}
     showTags={false}
+    sortBy={
+      Object {
+        "direction": "asc",
+        "index": 1,
+        "key": "one",
+      }
+    }
     total={200}
   />
   <ForwardRef
@@ -278,6 +299,13 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
     page={5}
     perPage={20}
     showTags={false}
+    sortBy={
+      Object {
+        "direction": "asc",
+        "index": 1,
+        "key": "one",
+      }
+    }
     total={1}
   />
   <ForwardRef

@@ -58,6 +58,7 @@ const EntityTableToolbar = ({
     customFilters,
     hasAccess,
     bulkSelect,
+    getEntities,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -108,7 +109,7 @@ const EntityTableToolbar = ({
      */
     const onRefreshData = useCallback((options) => {
         if (hasAccess) {
-            dispatch(loadSystems(options, showTags));
+            dispatch(loadSystems(options, showTags, getEntities));
             if (showTags && !hasItems) {
                 dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options.filters }));
             }
@@ -130,7 +131,9 @@ const EntityTableToolbar = ({
                 per_page: perPage,
                 filters,
                 hasItems,
-                ...config
+                ...config,
+                orderDirection: sortBy?.direction,
+                orderBy: sortBy?.key
             };
             onRefresh ? onRefresh(params, (options) => {
                 dispatch(entitiesLoading());
@@ -145,7 +148,7 @@ const EntityTableToolbar = ({
     /**
      * Debounced `updateData` function.
      */
-    const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), []);
+    const debouncedRefresh = useCallback(debounce((config) => updateData(config), 800), [ sortBy?.key, sortBy?.direction ]);
 
     /**
      * Component did mount effect to calculate actual filters from redux.
@@ -363,7 +366,8 @@ EntityTableToolbar.propTypes = {
             PropTypes.object,
             PropTypes.arrayOf(PropTypes.string)
         ])
-    })
+    }),
+    getEntities: PropTypes.func
 };
 
 EntityTableToolbar.defaultProps = {

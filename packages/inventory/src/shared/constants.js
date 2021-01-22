@@ -79,7 +79,7 @@ export function reduceFilters(filters = []) {
     });
 }
 
-export const loadSystems = (options, showTags) => {
+export const loadSystems = (options, showTags, getEntities) => {
     // eslint-disable-next-line camelcase
     const currPerPage = options?.perPage || options?.per_page;
 
@@ -104,7 +104,7 @@ export const loadSystems = (options, showTags) => {
         }
     };
 
-    return loadEntities(limitedItems, config, { showTags });
+    return loadEntities(limitedItems, config, { showTags }, getEntities);
 };
 
 export const reloadWrapper = (event, callback) => {

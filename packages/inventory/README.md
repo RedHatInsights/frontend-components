@@ -21,4 +21,5 @@ This package is dependent on [@redhat-cloud-services/frontend-components-utiliti
 
 * Components
   * [inventory](https://github.com/RedHatInsights/frontend-components/blob/master/packages/inventory/doc/inventory.md)
+    * [custom fetch function](https://github.com/RedHatInsights/frontend-components/blob/master/packages/inventory/doc/custom_fetch.md)
   * [inventory_header](https://github.com/RedHatInsights/frontend-components/blob/master/packages/inventory/doc/inventory_header.md)
