@@ -1,5 +1,9 @@
 !/index.js
 !/index.css
+!/actions.js
+!/notifications.js
+!/notificationsReducer.js
+!/NotificationPortal.js
 src/
 .babelrc
 babel.config.js
