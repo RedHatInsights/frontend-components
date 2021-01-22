@@ -1,5 +1,4 @@
-import { conditionalFilterType, typeMapper } from './constants';
-import Text from './Text';
+import { conditionalFilterType, typeMapper } from './conditionalFilterConstants';
 
 it('should have correct types', () => {
     expect(Object.values(conditionalFilterType).length).toBe(5);
