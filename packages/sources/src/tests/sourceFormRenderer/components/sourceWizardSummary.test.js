@@ -175,10 +175,9 @@ describe('SourceWizardSummary component', () => {
                 getState: () => ({
                     values: {
                         source: { name: 'cosi' },
-                        application: { application_type_id: '2' },
+                        application: { application_type_id: '2', extra: { dataset: 'dataset_id_123' } },
                         source_type: 'google',
-                        authentication: { authtype: 'project_id', password: 'project_id_123' },
-                        billing_source: { data_source: { dataset: 'dataset_id_123' } },
+                        authentication: { authtype: 'project_id_service_account_json', username: 'project_id_123' },
                         fixasyncvalidation: ''
                     }
                 })
@@ -193,18 +192,14 @@ describe('SourceWizardSummary component', () => {
                 [
                     [ 'Name', 'cosi' ],
                     [ 'Application', 'Cost Management' ],
-                    [ 'Source type', 'Google Cloud Platform' ],
-                    [ 'Authentication type', 'Project ID' ],
+                    [ 'Source type', 'Google Cloud' ],
+                    [ 'Authentication type', 'Project ID and Service Account JSON' ],
                     [ 'Project ID', 'project_id_123' ],
                     [ 'Dataset ID', 'dataset_id_123' ]
                 ]
             );
 
-            expect(wrapper.find(Alert).props().title).toEqual('Add resources to your projects in Billing');
-            expect(wrapper.find(Alert).props().children).toEqual(
-                // eslint-disable-next-line max-len
-                'In order for billing and usage data to be exported, you must have at least one resource created in one of your billing account projects. View your billing account projects under the ‘My Projects’ tab in the GCP Billing console.'
-            );
+            expect(wrapper.find(Alert)).toHaveLength(1);
         });
 
         it('openshift cost management - include appended field from DB and rbac alert message', () => {

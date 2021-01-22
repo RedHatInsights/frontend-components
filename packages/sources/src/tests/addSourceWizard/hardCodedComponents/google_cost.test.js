@@ -33,7 +33,7 @@ describe('Cost Management Google steps components', () => {
             }] }}
             initialValues={{
                 authentication: {
-                    password: 'some-project-id'
+                    username: 'some-project-id'
                 }
             }}
         />);
@@ -43,7 +43,7 @@ describe('Cost Management Google steps components', () => {
         expect(wrapper.find(TextList)).toHaveLength(1);
         expect(wrapper.find(TextListItem)).toHaveLength(4);
 
-        expect(wrapper.find(TextListItem).first().text()).toEqual('From the GCP BigQuery console, select your project (some-project-id).');
+        expect(wrapper.find(TextListItem).first().text()).toEqual('In the BigQuery console, select your project (some-project-id) from the navigation menu.');
     });
 
     it('Billing export', () => {
@@ -53,5 +53,14 @@ describe('Cost Management Google steps components', () => {
         expect(wrapper.find(Text)).toHaveLength(1);
         expect(wrapper.find(TextList)).toHaveLength(1);
         expect(wrapper.find(TextListItem)).toHaveLength(4);
+    });
+
+    it('IAM Role', () => {
+        const wrapper = mount(<Cm.IAMRole />);
+
+        expect(wrapper.find(TextContent)).toHaveLength(1);
+        expect(wrapper.find(Text)).toHaveLength(1);
+        expect(wrapper.find(TextList)).toHaveLength(2);
+        expect(wrapper.find(TextListItem)).toHaveLength(8);
     });
 });
