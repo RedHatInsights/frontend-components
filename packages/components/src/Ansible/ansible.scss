@@ -1,0 +1,14 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+
+i.Ansible {
+    &.is-supported .st0{ fill: $ins-color--blue; }
+    &.is-unsupported { 
+        .st0, .st1, .st2 { fill: $ins-color--gray; }
+        cursor: not-allowed;
+    }
+    svg {
+        height: var(--pf-global--FontSize--xl);
+        position: relative;
+        @include rem('top', 4px);
+    }
+}

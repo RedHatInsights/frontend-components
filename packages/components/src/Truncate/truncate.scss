@@ -1,0 +1,5 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+
+.ins-c-truncate button, .ins-c-truncate + button { padding: 0; }
+
+.ins-c-truncate.is-inline { @include rem('margin-right', 10px); }

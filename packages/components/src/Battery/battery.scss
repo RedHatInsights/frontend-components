@@ -1,0 +1,47 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+
+@mixin setBatteryFont() {
+  position: relative;
+  @include rem(height, 28px);
+}
+
+i.ins-battery {
+  display: inline-block;
+  line-height: 0;
+  svg {
+    position: relative;
+    top: var(--pf-global--spacer--sm);
+    @include setBatteryFont;
+  }
+}
+
+// Setting the icons
+.ins-battery-1, .ins-battery-low, .ins-battery-info {
+  svg {
+    path { fill: $ins-color--gray; }
+  }
+}
+
+.ins-battery-2, .ins-battery-medium, .ins-battery-warn {
+  svg {
+    path { fill: $ins-color--medium; }
+  }
+}
+
+.ins-battery-3, .ins-battery-high, .ins-battery-error{
+  svg {
+    path { fill: $ins-color--high; }
+  }
+}
+
+.ins-battery-4, .ins-battery-critical {
+  svg {
+    path { fill: $ins-color--critical; }
+  }
+}
+
+.ins-battery-0, .ins-battery-null {
+  svg {
+    path { fill: $ins-color--gray; }
+  }
+}
