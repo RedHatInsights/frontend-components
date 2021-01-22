@@ -19,7 +19,7 @@ describe('Notification portal', () => {
         };
     });
 
-    it('should return no component when no notifications given', () => {
+    it.only('should return no component when no notifications given', () => {
         const t = () => {
             try {
                 new ReactWrapper(mount(<NotificationsPortal { ...initialProps } />));
