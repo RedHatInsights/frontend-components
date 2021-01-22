@@ -126,7 +126,7 @@ const sourceTypes = [
                             { type: 'pattern-validator', pattern: '^[A-Za-z0-9]+[A-Za-z0-9_-]*$' }
                         ]
                     }, {
-                        name: 'authentication.password',
+                        name: 'authentication.username',
                         component: 'text-field',
                         label: 'ARN',
                         stepKey: 'arn',
@@ -144,7 +144,7 @@ const sourceTypes = [
                     fields: [
                         { name: 'authentication.authtype', component: 'text-field', hideField: true, initialValue: 'cloud-meter-arn', initializeOnMount: true },
                         {
-                            name: 'authentication.password',
+                            name: 'authentication.username',
                             label: 'ARN',
                             validate: [{ type: 'required' }, { type: 'pattern', pattern: '^arn:aws:.*' }, { type: 'min-length', threshold: 10 }],
                             component: 'text-field',
