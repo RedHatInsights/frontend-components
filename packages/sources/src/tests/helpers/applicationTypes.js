@@ -37,7 +37,7 @@ const applicationTypes = [
                 'token'
             ],
             google: [
-                'project_id'
+                'project_id_service_account_json'
             ]
         },
         supported_source_types: [

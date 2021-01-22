@@ -362,34 +362,35 @@ const sourceTypes = [
         created_at: '2019-08-19T14:53:02Z',
         id: '9',
         name: 'google',
-        product_name: 'Google Cloud Platform',
+        product_name: 'Google Cloud',
         schema: {
             authentication: [{
-                type: 'project_id',
-                name: 'Project ID',
+                type: 'project_id_service_account_json',
+                name: 'Project ID and Service Account JSON',
                 fields: [
                     {
                         component: 'text-field',
                         name: 'authentication.authtype',
                         hideField: true,
-                        initialValue: 'project_id',
+                        initialValue: 'project_id_service_account_json',
                         initializeOnMount: true
                     },
                     {
+
                         component: 'text-field',
+                        name: 'authentication.username',
+                        label: 'Project ID'
+                    },
+                    {
+                        component: 'textarea',
                         name: 'authentication.password',
-                        label: 'Project ID',
-                        isRequired: true,
-                        validate: [
-                            {
-                                type: 'required'
-                            }
-                        ]
+                        label: 'Service Account JSON'
                     },
                     {
                         component: 'text-field',
-                        name: 'billing_source.data_source.dataset',
-                        label: 'Dataset ID',
+                        name: 'application.extra.dataset',
+                        label: 'Dataset name',
+                        stepKey: 'cost-management',
                         isRequired: true,
                         validate: [
                             {
@@ -406,7 +407,8 @@ const sourceTypes = [
                         component: 'text-field',
                         name: 'endpoint.role',
                         hideField: true,
-                        initialValue: 'gcp'
+                        initialValue: 'google',
+                        initializeOnMount: true
                     }
                 ]
             }

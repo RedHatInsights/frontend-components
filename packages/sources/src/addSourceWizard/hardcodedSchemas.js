@@ -700,7 +700,7 @@ export default {
     },
     google: {
         authentication: {
-            project_id: {
+            project_id_service_account_json: {
                 [COST_MANAGEMENT_APP_NAME]: {
                     useApplicationAuth: true,
                     skipSelection: true,
