@@ -128,7 +128,7 @@ describe('SourceWizardSummary component', () => {
                     [ 'Application', 'Not selected' ],
                     [ 'Source type', 'Amazon Web Services' ],
                     [ 'Authentication type', 'ARN' ],
-                    [ 'ARN', '123456' ] ]
+                    [ 'ARN', 'user_name' ] ]
             );
 
             expect(wrapper.find(Alert)).toHaveLength(0);
@@ -141,7 +141,7 @@ describe('SourceWizardSummary component', () => {
                         source: { name: 'cosi' },
                         application: { application_type_id: '2' },
                         source_type: 'amazon',
-                        authentication: { password: 'arn:aws:132', authtype: 'arn' },
+                        authentication: { username: 'arn:aws:132', authtype: 'arn' },
                         billing_source: { data_source: { bucket: 'gfghf' } },
                         fixasyncvalidation: '',
                         endpoint: { role: 'aws' }
@@ -209,7 +209,7 @@ describe('SourceWizardSummary component', () => {
                         source: { name: 'cosi' },
                         application: { application_type_id: SUB_WATCH_APP.id, extra: { auto_register: true } },
                         source_type: 'amazon',
-                        authentication: { password: 'arn:aws:132', authtype: 'cloud-meter-arn' },
+                        authentication: { username: 'arn:aws:132', authtype: 'cloud-meter-arn' },
                         fixasyncvalidation: ''
                     }
                 })
