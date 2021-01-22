@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import propTypes from 'prop-types';
 import keyBy from 'lodash/keyBy';
 import transform from 'lodash/transform';
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
@@ -36,40 +36,26 @@ function createNotification (id, name, isNewSwitch) {
     };
 }
 
-const initialState = {
-    open: false,
-    schema: {},
-    errors: []
-};
-
-function reducer(state, action) {
-    switch (action.type) {
-        case 'update':
-            return {
-                ...state,
-                ...action.payload
-            };
-        default:
-            throw new Error();
-    }
-}
-
 const RemediationWizard = ({
-    isOpen,
+    setOpen,
     data,
     basePath
 }) => {
 
-    const [ state, dispatch ] = useReducer(reducer, initialState);
+    const [ state, setState ] = useState({ errors: [] });
 
     const getIssuesMultiple = (issuesById, resolutions) =>
         data.issues.map(issue => {
+            const issueResolutions = resolutions.find(r => r.id === issue.id).resolutions;
+            const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
             return {
                 action: issuesById[issue.id].description,
                 systemsCount: issue.systems ? issue.systems.length : data.systems.length,
                 id: issue.id,
                 shortId: issue?.id?.split('|')?.slice(-1)?.[0] || issue.id,
-                alternate: resolutions.find(r => r.id === issue.id).resolutions?.length - 1
+                resolution: description,
+                needsReboot,
+                alternate: issueResolutions?.length - 1
             };
         }).filter(record => record.alternate > 0);
 
@@ -98,23 +84,19 @@ const RemediationWizard = ({
         loadResolutions(data.issues).then(
             (values) => {
                 const issuesMultiple = getIssuesMultiple(issuesById, values.resolutions);
-                dispatch({
-                    type: 'update',
-                    payload: {
-                        ...values,
-                        issuesById,
-                        issuesMultiple,
-                        basePath,
-                        onRemediationCreated: data.onRemediationCreated,
-                        schema: schemaBuilder(issuesMultiple),
-                        isOpen
-                    }
+                setState({
+                    ...state,
+                    ...values,
+                    schema: schemaBuilder(issuesMultiple),
+                    issuesById,
+                    issuesMultiple,
+                    basePath,
+                    onRemediationCreated: data.onRemediationCreated,
+                    isLoaded: true
                 });
             }
         );
     }, []);
-
-    const closeWizard = () => dispatch({ type: 'update', payload: { isOpen: false } });
 
     const resolver = (id, name, isNewSwitch) => state.onRemediationCreated({
         remediation: { id, name },
@@ -165,7 +147,7 @@ const RemediationWizard = ({
     };
 
     return (
-        state.isOpen ?
+        state.isLoaded ?
             <FormRenderer
                 schema={state.schema}
                 subscription={{ values: true }}
@@ -182,18 +164,24 @@ const RemediationWizard = ({
                 }}
                 onSubmit={(_, formOptions) => {
                     onSubmit(formOptions.getState().values);
-                    closeWizard();
+                    setOpen(false);
                 }}
-                onCancel={closeWizard}
-            />
-            : <Fragment/>
+                onCancel={() => setOpen(false)}
+            /> : null
     );
 };
 
 RemediationWizard.propTypes = {
-    isOpen: PropTypes.bool,
-    data: PropTypes.any,
-    basePath: PropTypes.any
+    setOpen: propTypes.func.isRequired,
+    data: propTypes.shape({
+        issues: propTypes.arrayOf(propTypes.shape({
+            description: propTypes.string,
+            id: propTypes.string
+        })),
+        systems: propTypes.arrayOf(propTypes.string),
+        onRemediationCreated: propTypes.func
+    }).isRequired,
+    basePath: propTypes.string
 };
 
 export default RemediationWizard;

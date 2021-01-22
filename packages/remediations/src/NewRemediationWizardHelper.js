@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import RemediationWizard from './NewRemediationWizard';
 
 class NewRemediationWizard extends Component {
@@ -15,9 +15,18 @@ class NewRemediationWizard extends Component {
         });
     }
 
+    setOpen = (value) => {
+        this.setState({ isOpen: value });
+    }
+
     render () {
         return (
-            this.state.isOpen ? <RemediationWizard {...this.state}/> : <Fragment/>
+            this.state.isOpen
+                ? <RemediationWizard
+                    data={this.state.data}
+                    basePath={this.state.basePath}
+                    setOpen={this.setOpen}/>
+                : null
         );
     }
 }

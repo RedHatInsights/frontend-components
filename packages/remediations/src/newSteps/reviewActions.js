@@ -24,8 +24,9 @@ const ReviewActions = (props) => {
     const formOptions = useFormApi();
     const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
 
-    const records = formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED]
-        ? issuesMultiple.filter(issue => !formOptions.getState().values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
+    const values = formOptions.getState().values;
+    const records = values[EXISTING_PLAYBOOK_SELECTED]
+        ? issuesMultiple.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
         : issuesMultiple;
 
     const rows = buildRows(records, sortByState);
@@ -106,6 +107,8 @@ ReviewActions.propTypes = {
         id: propTypes.string,
         shortId: propTypes.string,
         action: propTypes.string,
+        resolution: propTypes.string,
+        needsReboot: propTypes.bool,
         alternate: propTypes.number,
         systemsCount: propTypes.number
     })).isRequired
