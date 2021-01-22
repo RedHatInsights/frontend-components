@@ -13,7 +13,7 @@
         "build:esm": "BABEL_ENV=esm babel src --out-dir ./esm --ignore '**/*.test.js'",
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js",
-        "postinstall": "node ./postinstall.js",
+        "prepublishOnly": "node ./postinstall.js",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
     "repository": {
