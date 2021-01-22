@@ -16,6 +16,39 @@ yarn add @redhat-cloud-services/frontend-components
 
 This package is dependent on [@redhat-cloud-services/frontend-components-utilities](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components-utilities) and will automatically install it trough direct dependencies.
 
+## Migration v2 -> v3
+
+### Direct imports path changes
+
+- Remove `cjs` or `esm` from your import paths.
+- Remove the `components` fragment from your import path
+- Modules now have default value
+
+```jsx
+// v2
+import { Ansible } from '@redhat-cloud-services/frontend-components/components/cjs/Ansible';
+
+// v3
+import Ansible from '@redhat-cloud-services/frontend-components/Ansible';
+/** OR */
+import { Ansible } from '@redhat-cloud-services/frontend-components/Ansible';
+```
+
+### Sub components imports.
+
+When importing a partial component like `TextFilter` from `ConditionalFilter`, use direct import shorthand from `ConditionalFilter`. Do not import from `TextFilter` file directly!
+All imports must have at most only one level!
+
+```jsx
+// OK
+import { X } from '@redhat-cloud-services/frontend-components/<ModuleName>'
+// Wrong!!
+import X from '@redhat-cloud-services/frontend-components/<ModuleName>/X'
+
+```
+Deeper imports will break automatic csj/esm module resolution.
+
+
 ## Treeshaking
 
 In order not to increase your bundle size you you should either import components trough direct imports or use babel plugin to change relative imports to direct imports. You can mix both direct imports and babel plugin, it's just convenient to use the babel plugin so you don't have to change all of your imports.
@@ -23,22 +56,12 @@ In order not to increase your bundle size you you should either import component
 
 ### Direct imports
 
-You can try `esm` or `cjs` whichever fits you more, generally `ems` modules should yield less code, but is considered bleading edge and could break your build, cjs (refers to commonjs) will work out of the box (it adds about 1 or 2 KB of code to each build). For instance `tableToolbar` can be imported as:
+For speedy build times, you can use direct import paths For instance `tableToolbar` can be imported as:
 ```JSX
-import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/esm/TableToolbar';
+import TableToolbar from '@redhat-cloud-services/frontend-components/components/TableToolbar';
 ```
 
-or
-
-```JSX
-import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/TableToolbar';
-```
-
-If it breaks your build for some reason, you can always fallback to default `umd` files, but this will most probably bloat your build and should be used as last resort.
-
-```JSX
-import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/TableToolbar';
-```
+You can also use shorthand imports.
 
 ### Babel plugins
 
@@ -48,7 +71,8 @@ There are 2 plugins that can be used to change relative imports to direct import
 
 Since our components require a bit more setting up, we are recommending using `babel-plugin-transform-imports`.
 
-Change your babel config to be javascript config `babel.config.js` so you can use JS functions to properly transform your imports
+Change your babel config to be javascript config `babel.config.js` so you can use JS functions to properly transform your imports.
+Not every component has its own directory. You can use mapper to map component name to directory.
 
 ```JS
 const FECMapper = {
@@ -67,7 +91,7 @@ module.exports = {
             {
               '@redhat-cloud-services/frontend-components': {
                 transform: (importName) =>
-                  `@redhat-cloud-services/frontend-components/components/esm/${FECMapper[importName] || importName}`,
+                  `@redhat-cloud-services/frontend-components/${FECMapper[importName] || importName}`,
                 preventFullImport: false,
                 skipDefaultConversion: true
               }
@@ -79,19 +103,14 @@ module.exports = {
 };
 ```
 
-As with direct imports you can choose from `esm` and `cjs`, as a fallback you can use this tranform function (but this should only be used if for some reason `esm` or `cjs` is not working properly in your project)
+As with direct imports you can choose between `esm` and `cjs` output.
 
 ```JS
-transform: (importName) =>`@redhat-cloud-services/frontend-components/components/${FECMapper[importName] || importName}`,
+// cjs
+transform: (importName) =>`@redhat-cloud-services/frontend-components/${FECMapper[importName] || importName}`,
+// esm
+transform: (importName) =>`@redhat-cloud-services/frontend-components/esm/${FECMapper[importName] || importName}`,
 
-```
-
-#### Jest error
-
-If you see Jest errors after applying `babel-plugin-transform-imports` plugin you should add to your Jest config
-
-```JSON
-"transformIgnorePatterns": [ "/node_modules/(?!@redhat-cloud-services)" ],
 ```
 
 ## Documentation Links
@@ -119,3 +138,4 @@ If you see Jest errors after applying `babel-plugin-transform-imports` plugin yo
   * [dark](doc/dark.md)
   * [breadcrumbs](doc/breadcrumbs.md)
   * [reboot](doc/reboot.md)
+
