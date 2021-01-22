@@ -31,8 +31,7 @@ async function createPackage(file) {
     const esmRelative = path.relative(file.replace('/src', ''), esmSource);
     const content = {
         main: 'index.js',
-        module: esmRelative,
-        sideEffects: false
+        module: esmRelative
     };
     const typings = glob.sync(`${root}/src/${fileName}/*.d.ts`);
     let cmds = [];
