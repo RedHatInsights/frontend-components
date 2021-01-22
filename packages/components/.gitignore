@@ -1,9 +1,17 @@
-/components
-/index.js
-/index.css
-/index.d.ts
+# ignore everything in root that will be the destination of build output
+/*
 
-# Definition files
-*.d.ts
+# white list allowed files
+!src
+!src/
+!src/*
+!.npmignore
+!.gitignore
+!babel.config.js
+!LICENSE
+!package.json
+!README.md
+!tsconfig.json
+
 # Incremental ts info
 tsconfig.tsbuildinfo
