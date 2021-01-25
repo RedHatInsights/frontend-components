@@ -9,6 +9,25 @@ import ValuePopover from './ValuePopover';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
 import { COST_MANAGEMENT_APP_NAME } from '../../api/constants';
 
+const alertMapper = (appName, sourceType, intl) => {
+    if (appName === COST_MANAGEMENT_APP_NAME && sourceType !== 'google') {
+        return (
+            <Alert
+                variant="info"
+                isInline
+                title={intl.formatMessage({ id: 'cost.rbacWarningTitle', defaultMessage: 'Manage permissions in User Access' })}
+            >
+                {intl.formatMessage({
+                    id: 'cost.rbacWarningDescription',
+                    defaultMessage: 'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
+                })}
+            </Alert>
+        );
+    }
+
+    return null;
+};
+
 export const createItem = (formField, values, stepKeys) => {
     let value = get(values, formField.name);
 
@@ -168,18 +187,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
                 </DescriptionListGroup> }
                 { valuesList }
             </DescriptionList>
-            {name === COST_MANAGEMENT_APP_NAME && (
-                <Alert
-                    variant="info"
-                    isInline
-                    title={intl.formatMessage({ id: 'cost.rbacWarningTitle', defaultMessage: 'Manage permissions in User Access' })}
-                >
-                    {intl.formatMessage({
-                        id: 'cost.rbacWarningDescription',
-                        defaultMessage: 'Make sure to manage permissions for this source in custom roles that contain permissions for Cost Management.'
-                    })}
-                </Alert>
-            )}
+            {alertMapper(name, type.name, intl)}
         </React.Fragment>
     );
 };

@@ -1,6 +1,8 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
+import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
 import {
     Radio,
     Text,
@@ -8,49 +10,26 @@ import {
     Stack,
     StackItem
 } from '@patternfly/react-core';
-import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
-import { CloseIcon, RedoIcon } from '@patternfly/react-icons';
+import {
+    buildRows,
+    pluralize,
+    EXISTING_PLAYBOOK,
+    EXISTING_PLAYBOOK_SELECTED
+} from '../utils';
 import './reviewActions.scss';
 
 const ReviewActions = (props) => {
     const { issues, issuesMultiple } = props;
     const { input } = useFieldApi(props);
+    const formOptions = useFormApi();
     const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
 
-    const sortedRecords = issuesMultiple.sort(
-        (a, b) => {
-            const key = Object.keys(a)[sortByState.index];
-            return (
-                (a[key] > b[key] ? 1 :
-                    a[key] < b[key] ? -1 : 0)
-                * (sortByState.direction === 'desc' ? -1 : 1)
-            );
-        }
-    );
+    const values = formOptions.getState().values;
+    const records = values[EXISTING_PLAYBOOK_SELECTED]
+        ? issuesMultiple.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
+        : issuesMultiple;
 
-    const rows = sortedRecords.map((record, index) => ({
-        cells: [
-            record.action,
-            <Fragment key={`${index}-description`}>
-                <p key={`${index}-resolution`}>
-                    {record.resolution}
-                </p>
-                {record.alternate > 0 &&
-                    (
-                        <p key={`${index}-alternate`}>{record.alternate} alternate resolution</p>
-                    )}
-            </Fragment>,
-            {
-                title: record.needsReboot ? <Fragment><RedoIcon/>{' Yes'}</Fragment> : <Fragment><CloseIcon/>{' No'}</Fragment>,
-                value: record.needsReboot
-            },
-            record.systemsCount
-        ]
-    }));
-
-    const onSort = (event, index, direction) => setSortByState({ index, direction });
-
-    const pluralize = (count, str) => count > 1 ? str + 's' : str;
+    const rows = buildRows(records, sortByState);
 
     return (
         <Stack hasGutter>
@@ -97,7 +76,7 @@ const ReviewActions = (props) => {
                     }]
                 }
                 rows={ rows }
-                onSort={ onSort }
+                onSort={ (event, index, direction) => setSortByState({ index, direction }) }
                 sortBy={ sortByState }
             >
                 <TableHeader />
@@ -128,9 +107,9 @@ ReviewActions.propTypes = {
         id: propTypes.string,
         shortId: propTypes.string,
         action: propTypes.string,
-        alternate: propTypes.number,
-        needsReboot: propTypes.bool,
         resolution: propTypes.string,
+        needsReboot: propTypes.bool,
+        alternate: propTypes.number,
         systemsCount: propTypes.number
     })).isRequired
 };
