@@ -9,8 +9,10 @@ module.exports = ({
     rootFolder,
     https,
     mode,
-    appName
+    appName,
+    useFileHash = true
 } = {}) => {
+    const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
         mode: mode || (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
         devtool: 'source-map',
@@ -44,10 +46,10 @@ module.exports = ({
             App: appEntry
         },
         output: {
-            filename: 'js/[name].[chunkhash].js',
+            filename: filenameMask,
             path: `${rootFolder || ''}/dist`,
             publicPath,
-            chunkFilename: 'js/[name].[chunkhash].js'
+            chunkFilename: filenameMask
         },
         module: {
             rules: [{
