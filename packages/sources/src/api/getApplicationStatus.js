@@ -1,5 +1,5 @@
 import { getSourcesApi } from '.';
-import { delay } from './costManagementAuthentication';
+import { delay } from './delay';
 
 export const checkAppAvailability = (id, timeout = 10000, interval = 1000, entity = 'getApplication', updatedTime) => new Promise((res, rej) => {
     const start = Date.now();
