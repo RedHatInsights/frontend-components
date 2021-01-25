@@ -148,7 +148,7 @@ export const AssignAccess = () => {
                     }, { b })}
                 </TextListItem>
                 <ClipboardCopy className="pf-u-m-sm  pf-u-ml-0" isReadOnly>
-                    billing-export@red-hat-cost-management.iam.gserviceaccount.com
+                    test-billing-service-account@cloud-billing-292519.iam.gserviceaccount.com
                 </ClipboardCopy>
                 <TextListItem>
                     { intl.formatMessage({

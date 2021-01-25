@@ -20,7 +20,7 @@ describe('Cost Management Google steps components', () => {
         expect(wrapper.find(Text)).toHaveLength(1);
         expect(wrapper.find(TextList)).toHaveLength(1);
         expect(wrapper.find(TextListItem)).toHaveLength(4);
-        expect(wrapper.find(ClipboardCopy).props().children).toEqual('billing-export@red-hat-cost-management.iam.gserviceaccount.com');
+        expect(wrapper.find(ClipboardCopy).props().children).toEqual('test-billing-service-account@cloud-billing-292519.iam.gserviceaccount.com');
     });
 
     it('Dataset', () => {
