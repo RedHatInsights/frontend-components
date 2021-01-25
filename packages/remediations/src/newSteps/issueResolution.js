@@ -14,12 +14,12 @@ import { SELECTED_RESOLUTIONS } from '../utils';
 import { RedoIcon, CloseIcon } from '@patternfly/react-icons';
 
 const IssueResolution = (props) => {
-    const { systems, getResolution, issue } = props;
+    const { systems, resolutions, issue } = props;
     const formOptions = useFormApi();
-    const [ resolutions, setResolutions ] = useState([]);
+    const [ issueResolutions, setIssueResolutions ] = useState([]);
 
     useEffect(() => {
-        setResolutions(getResolution(issue.id));
+        setIssueResolutions(resolutions.find(r => r.id === issue.id)?.resolutions || []);
     }, []);
 
     const pluralize = (count, str) => count > 1 ? str + 's' : str;
@@ -47,7 +47,7 @@ const IssueResolution = (props) => {
             <StackItem>
                 <div className="ins-c-resolution-container">
                     {
-                        resolutions.map((resolution, index) => (
+                        issueResolutions.map((resolution, index) => (
                             <div
                                 className="ins-c-resolution-option"
                                 sm={12}
@@ -98,11 +98,12 @@ IssueResolution.propTypes = {
         shortId: propTypes.string,
         action: propTypes.string,
         alternate: propTypes.number,
-        needsReboot: propTypes.bool,
-        resolution: propTypes.string,
         systemsCount: propTypes.number
     }).isRequired,
-    getResolution: propTypes.func.isRequired
+    resolutions: propTypes.arrayOf(propTypes.shape({
+        id: propTypes.string,
+        resolutions: propTypes.array
+    })).isRequired
 };
 
 export default IssueResolution;

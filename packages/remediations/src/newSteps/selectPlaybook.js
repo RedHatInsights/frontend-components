@@ -16,8 +16,9 @@ import {
     Stack, StackItem
 } from '@patternfly/react-core';
 import {
-    EXISTING_PLAYBOOK_SELECTED,
-    EXISTING_PLAYBOOK
+    pluralize,
+    EXISTING_PLAYBOOK,
+    EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
 import './selectPlaybook.scss';
 
@@ -26,12 +27,12 @@ const SelectPlaybook = (props) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState().values;
+
     const [ existingRemediations, setExistingRemediations ] = useState();
     const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(values[EXISTING_PLAYBOOK_SELECTED]);
     const [ newPlaybookName, setNewPlaybookName ] = useState(values[EXISTING_PLAYBOOK_SELECTED] ? '' : input.value);
     const [ selectedPlaybook, setSelectedPlaybook ] = useState(values[EXISTING_PLAYBOOK]);
     const [ isLoadingRemediation, setIsLoadingRemediation ] = useState(false);
-    const nameValid = true;
 
     useEffect(() => {
         async function fetchData() {
@@ -41,8 +42,6 @@ const SelectPlaybook = (props) => {
 
         fetchData();
     }, []);
-
-    const pluralize = (count, str) => count > 1 ? str + 's' : str;
 
     return (
         <Stack hasGutter>
@@ -122,7 +121,6 @@ const SelectPlaybook = (props) => {
                     <GridItem sm={12} md={6} lg={4}>
                         <FormGroup
                             fieldId="remediation-name"
-                            validated={nameValid ? 'default' : 'error'}
                         >
                             <TextInput
                                 type="text"
@@ -133,7 +131,6 @@ const SelectPlaybook = (props) => {
                                 }}
                                 aria-label="Name your playbook"
                                 autoFocus
-                                validated={nameValid ? 'default' : 'error'}
                             />
                         </FormGroup>
                     </GridItem>
