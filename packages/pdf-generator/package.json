@@ -35,6 +35,7 @@
         "@patternfly/react-tokens": "^4.4.4",
         "@react-pdf/renderer": "^1.6.8",
         "@redhat-cloud-services/frontend-components": "*",
+        "@redhat-cloud-services/frontend-components-utilities": "*",
         "react": "16.12.0",
         "react-dom": "16.12.0",
         "rgb-hex": "^3.0.0"

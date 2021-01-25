@@ -51,7 +51,7 @@ Deeper imports will break automatic csj/esm module resolution.
 
 ## Treeshaking
 
-In order not to increase your bundle size you you should either import components trough direct imports or use babel plugin to change relative imports to direct imports. You can mix both direct imports and babel plugin, it's just convenient to use the babel plugin so you don't have to change all of your imports.
+In order not to improve your bundle size you you should either import components trough direct imports or use babel plugin to change relative imports to direct imports. You can mix both direct imports and babel plugin, it's just convenient to use the babel plugin so you don't have to change all of your imports.
 
 
 ### Direct imports

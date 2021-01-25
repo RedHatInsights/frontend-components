@@ -5,6 +5,9 @@
 !src
 !src/
 !src/*
+!config
+!config/
+!config/*
 !.npmignore
 !.gitignore
 !babel.config.js
@@ -12,6 +15,7 @@
 !package.json
 !README.md
 !tsconfig.json
+!pre-publish.js
 
 # Incremental ts info
 tsconfig.tsbuildinfo
