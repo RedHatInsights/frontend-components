@@ -5,7 +5,9 @@ import {
     SELECT_PLAYBOOK,
     MANUAL_RESOLUTION,
     EXISTING_PLAYBOOK,
-    EXISTING_PLAYBOOK_SELECTED
+    EXISTING_PLAYBOOK_SELECTED,
+    SELECTED_RESOLUTIONS,
+    AUTO_REBOOT
 } from './utils';
 
 export default issues => ({
@@ -32,6 +34,16 @@ export default issues => ({
                         {
                             type: validatorTypes.REQUIRED
                         }]
+                    },
+                    {
+                        name: EXISTING_PLAYBOOK_SELECTED,
+                        component: componentTypes.TEXT_FIELD,
+                        hideField: true
+                    },
+                    {
+                        name: EXISTING_PLAYBOOK,
+                        component: componentTypes.TEXT_FIELD,
+                        hideField: true
                     }],
                     nextStep: ({ values }) => values[HAS_MULTIPLES] ? 'actions' : 'review'
                 },
@@ -59,6 +71,11 @@ export default issues => ({
                                 name: issue.id,
                                 component: 'issue-resolution',
                                 issue
+                            },
+                            {
+                                name: SELECTED_RESOLUTIONS,
+                                component: componentTypes.TEXT_FIELD,
+                                hideField: true
                             }
                         ],
                         nextStep: ({ values }) => {
@@ -75,7 +92,7 @@ export default issues => ({
                     title: 'Remediation review',
                     fields: [
                         {
-                            name: 'review',
+                            name: AUTO_REBOOT,
                             component: 'review'
                         }
                     ]

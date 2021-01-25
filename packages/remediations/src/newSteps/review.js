@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
+import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
 import { ExclamationTriangleIcon } from '@patternfly/react-icons';
@@ -13,7 +14,6 @@ import {
 import {
     buildRows,
     getResolution,
-    AUTO_REBOOT,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED,
     SELECT_PLAYBOOK
@@ -22,13 +22,18 @@ import './review.scss';
 
 const Review = (props) => {
     const { data, issuesById, resolutions } = props;
+    const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
 
     const selectedPlaybook = formOptions.getState().values[EXISTING_PLAYBOOK];
 
     useEffect(() => {
-        formOptions.change(AUTO_REBOOT, formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED] && selectedPlaybook.auto_reboot);
+        input.onChange(
+            input.value !== undefined
+                ? input.value
+                : formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED] && selectedPlaybook.auto_reboot
+        );
     }, []);
 
     const records = data.issues.map(issue => {
@@ -67,7 +72,7 @@ const Review = (props) => {
                 <TextContent>
                     <Text>
                         The playbook <b>{formOptions.getState().values[SELECT_PLAYBOOK]}</b>
-                        { formOptions.getState().values[AUTO_REBOOT] ?
+                        { input.value ?
                             ' does' :
                             <span className="ins-c-remediation-danger-text"> does not</span>
                         } auto reboot systems.
@@ -78,9 +83,9 @@ const Review = (props) => {
                 <Button
                     variant="link"
                     isInline
-                    onClick={ () => formOptions.change(AUTO_REBOOT, !formOptions.getState().values[AUTO_REBOOT]) }
+                    onClick={ () => input.onChange(!input.value) }
                 >
-                    Turn {formOptions.getState().values[AUTO_REBOOT] ? 'off' : 'on'} autoreboot
+                    Turn {input.value ? 'off' : 'on'} autoreboot
                 </Button>
             </StackItem>
             <Table

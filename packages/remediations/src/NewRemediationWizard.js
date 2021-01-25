@@ -7,6 +7,7 @@ import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/fo
 import schemaBuilder from './schema';
 import * as api from './api';
 import Wizard from '@data-driven-forms/pf4-component-mapper/dist/esm/wizard';
+import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-field';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import SelectPlaybook from './newSteps/selectPlaybook';
 import ReviewActions from './newSteps/reviewActions';
@@ -160,10 +161,11 @@ const RemediationWizard = ({
                 }}
                 componentMapper={{
                     [componentTypes.WIZARD]: Wizard,
+                    [componentTypes.TEXT_FIELD]: TextField,
                     ...mapperExtension
                 }}
-                onSubmit={(_, formOptions) => {
-                    onSubmit(formOptions.getState().values);
+                onSubmit={(formValues) => {
+                    onSubmit(formValues);
                     setOpen(false);
                 }}
                 onCancel={() => setOpen(false)}
