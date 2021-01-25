@@ -1,7 +1,7 @@
 const sourceTypes = [
     {
         created_at: '2019-03-26T14:05:45Z',
-        icon_url: '/openshift_logo.png',
+        icon_url: '/apps/frontend-assets/platform-logos/openshift-container-platform.svg',
         id: '1',
         name: 'openshift',
         product_name: 'OpenShift Container Platform',
@@ -78,7 +78,7 @@ const sourceTypes = [
     },
     {
         created_at: '2019-03-26T14:05:45Z',
-        icon_url: '/aws_logo.png',
+        icon_url: '/apps/frontend-assets/partners-icons/aws-long.svg',
         id: '2',
         name: 'amazon',
         product_name: 'Amazon Web Services',
@@ -172,6 +172,7 @@ const sourceTypes = [
         id: '3',
         name: 'ansible-tower',
         product_name: 'Ansible Tower',
+        icon_url: '/apps/frontend-assets/platform-logos/ansible-automation-platform.svg',
         schema: {
             authentication: [{
                 type: 'username_password',
@@ -311,6 +312,7 @@ const sourceTypes = [
         id: '8',
         name: 'azure',
         product_name: 'Microsoft Azure',
+        icon_url: '/apps/chrome/assets/images/partners-icons/microsoft-azure.svg',
         schema: {
             authentication: [{
                 type: 'tenant_id_client_id_client_secret',
@@ -355,6 +357,65 @@ const sourceTypes = [
         },
         updated_at: '2019-09-11T14:03:04Z',
         vendor: 'Azure'
+    },
+    {
+        created_at: '2019-08-19T14:53:02Z',
+        id: '9',
+        name: 'google',
+        product_name: 'Google Cloud',
+        schema: {
+            authentication: [{
+                type: 'project_id_service_account_json',
+                name: 'Project ID and Service Account JSON',
+                fields: [
+                    {
+                        component: 'text-field',
+                        name: 'authentication.authtype',
+                        hideField: true,
+                        initialValue: 'project_id_service_account_json',
+                        initializeOnMount: true
+                    },
+                    {
+
+                        component: 'text-field',
+                        name: 'authentication.username',
+                        label: 'Project ID'
+                    },
+                    {
+                        component: 'textarea',
+                        name: 'authentication.password',
+                        label: 'Service Account JSON'
+                    },
+                    {
+                        component: 'text-field',
+                        name: 'application.extra.dataset',
+                        label: 'Dataset name',
+                        stepKey: 'cost-management',
+                        isRequired: true,
+                        validate: [
+                            {
+                                type: 'required'
+                            }
+                        ]
+                    }
+                ]
+            }],
+            endpoint: {
+                hidden: true,
+                fields: [
+                    {
+                        component: 'text-field',
+                        name: 'endpoint.role',
+                        hideField: true,
+                        initialValue: 'google',
+                        initializeOnMount: true
+                    }
+                ]
+            }
+        },
+        updated_at: '2019-09-11T14:03:04Z',
+        vendor: 'Google',
+        icon_url: '/apps/frontend-assets/partners-icons/google-cloud.svg'
     }
 ];
 

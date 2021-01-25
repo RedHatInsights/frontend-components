@@ -35,12 +35,16 @@ const applicationTypes = [
             ],
             openshift: [
                 'token'
+            ],
+            google: [
+                'project_id_service_account_json'
             ]
         },
         supported_source_types: [
             'amazon',
             'azure',
-            'openshift'
+            'openshift',
+            'google'
         ],
         updated_at: '2019-09-16T19:56:12Z'
     },
