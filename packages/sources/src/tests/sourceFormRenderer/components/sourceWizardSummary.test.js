@@ -199,7 +199,7 @@ describe('SourceWizardSummary component', () => {
                 ]
             );
 
-            expect(wrapper.find(Alert)).toHaveLength(1);
+            expect(wrapper.find(Alert)).toHaveLength(0);
         });
 
         it('openshift cost management - include appended field from DB and rbac alert message', () => {

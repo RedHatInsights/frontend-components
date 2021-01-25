@@ -52,7 +52,7 @@ describe('Cost Management Google steps components', () => {
         expect(wrapper.find(TextContent)).toHaveLength(1);
         expect(wrapper.find(Text)).toHaveLength(1);
         expect(wrapper.find(TextList)).toHaveLength(1);
-        expect(wrapper.find(TextListItem)).toHaveLength(4);
+        expect(wrapper.find(TextListItem)).toHaveLength(5);
     });
 
     it('IAM Role', () => {
