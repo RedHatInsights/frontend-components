@@ -77,7 +77,6 @@ export default rollupConfig(
         schemaBuilder: 'src/addSourceWizard/schemaBuilder.js',
         sourceFormRenderer: 'src/sourceFormRenderer/index.js',
         createSource: 'src/api/createSource.js',
-        costManagementAuthentication: 'src/api/costManagementAuthentication.js',
         handleError: 'src/api/handleError.js',
         filterApps: 'src/utilities/filterApps.js',
         filterTypes: 'src/utilities/filterTypes.js',
