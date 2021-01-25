@@ -11,8 +11,6 @@ import { WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 
 import filterApps, { filterVendorAppTypes } from '../utilities/filterApps';
 import filterTypes, { filterVendorTypes } from '../utilities/filterTypes';
-import sourceTypes from '../tests/helpers/sourceTypes';
-import applicationTypes from '../tests/helpers/applicationTypes';
 
 const initialValues = {
     schema: {},
@@ -40,6 +38,8 @@ const reducer = (state, { type, sourceTypes, applicationTypes, container, disabl
 };
 
 const SourceAddModal = ({
+    sourceTypes,
+    applicationTypes,
     disableAppSelection,
     isCancelling,
     onCancel,
