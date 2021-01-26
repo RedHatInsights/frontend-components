@@ -7,6 +7,7 @@ exports[`NoSystemsTable should render correctly - no data 1`] = `
     filters={Array []}
     hasAccess={true}
     hasItems={false}
+    hideFilters={Object {}}
     page={1}
     perPage={50}
     showTags={false}
@@ -40,6 +41,7 @@ exports[`NoSystemsTable should render correctly - with no access 1`] = `
     filters={Array []}
     hasAccess={false}
     hasItems={false}
+    hideFilters={Object {}}
     page={1}
     perPage={50}
     showTags={false}
@@ -109,6 +111,7 @@ exports[`NoSystemsTable should render correctly 1`] = `
     filters={Array []}
     hasAccess={true}
     hasItems={false}
+    hideFilters={Object {}}
     page={1}
     perPage={50}
     showTags={false}
@@ -189,6 +192,7 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
     filters={Array []}
     hasAccess={true}
     hasItems={true}
+    hideFilters={Object {}}
     items={
       Array [
         Object {
@@ -289,6 +293,7 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
     filters={Array []}
     hasAccess={true}
     hasItems={true}
+    hideFilters={Object {}}
     items={
       Array [
         Object {
