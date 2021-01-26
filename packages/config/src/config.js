@@ -74,9 +74,26 @@ module.exports = ({
                         loader: 'css-loader'
                     },
                     {
-                        loader: path.resolve(__dirname, './css-prefix-loader.js'),
+                        /**
+                         * Second sass loader used for scoping the css with class name.
+                         * Has to be included as second in order to re-scope already compiled sass files.
+                         * Second loader is required to avoid scoping mixins, includes and other sass partials. We want to only scope the CSS output.
+                         */
+                        loader: 'sass-loader',
                         options: {
-                            prefix: appName
+                            additionalData: function(content, loaderContext) {
+                                const { resourcePath, rootContext } = loaderContext;
+                                const relativePath = path.relative(rootContext, resourcePath);
+                                /**
+                                 * Add app class context for local style files.
+                                 * Context class is equal to app name and that class ass added to root element via the chrome-render-loader.
+                                 */
+                                if (relativePath.match(/^src/)) {
+                                    return `.${appName}{\n${content}\n}`;
+                                }
+
+                                return content;
+                            }
                         }
                     },
                     {
