@@ -14,7 +14,7 @@ const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
     chunkFilename: 'css/[name].[contenthash].css',
     filename: 'css/[name].[contenthash].css'
 });
-const CleanWebpackPlugin = new(require('clean-webpack-plugin').CleanWebpackPlugin)();
+const CleanWebpackPlugin = new(require('clean-webpack-plugin').CleanWebpackPlugin)({ cleanStaleWebpackAssets: false });
 const WebpackHotModuleReplacement = new HotModuleReplacementPlugin();
 
 module.exports = ({
