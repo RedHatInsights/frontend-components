@@ -1,7 +1,6 @@
 import { handleError } from './handleError';
 
 import { getSourcesApi } from './index';
-import { patchSource } from './costManagementAuthentication';
 import { checkAppAvailability } from './getApplicationStatus';
 
 export const parseUrl = url => {
@@ -84,30 +83,14 @@ export const doCreateSource = async (formData, sourceTypes, timetoutedApps = [])
             authenticationDataOut = await getSourcesApi().createAuthentication(authenticationData);
         }
 
-        const promisesSecondRound = [];
-
-        if (formData.credentials || formData.billing_source) {
-            const { credentials, billing_source } = formData;
-            let data = {};
-            data = credentials ? { authentication: { credentials } } : {};
-            data = billing_source ? { ...data, billing_source } : data;
-            promisesSecondRound.push(patchSource({ id: sourceDataOut.id, ...data }));
-        } else {
-            promises.push(Promise.resolve(undefined));
-        }
-
         if (authenticationDataOut && applicationDataOut) {
             const authAppData = {
                 application_id: applicationDataOut.id,
                 authentication_id: authenticationDataOut.id
             };
 
-            promisesSecondRound.push(getSourcesApi().createAuthApp(authAppData));
-        } else {
-            promises.push(Promise.resolve(undefined));
+            await getSourcesApi().createAuthApp(authAppData);
         }
-
-        await Promise.all(promisesSecondRound);
 
         sourceDataOut?.id && getSourcesApi().checkAvailabilitySource(sourceDataOut.id);
 

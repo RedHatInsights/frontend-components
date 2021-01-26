@@ -116,7 +116,7 @@ const sourceTypes = [
                         hideField: true,
                         initialValue: 'arn'
                     },  {
-                        name: 'billing_source.data_source.bucket',
+                        name: 'application.extra.bucket',
                         component: 'text-field',
                         label: 'S3 bucket name',
                         stepKey: 'cost-management',

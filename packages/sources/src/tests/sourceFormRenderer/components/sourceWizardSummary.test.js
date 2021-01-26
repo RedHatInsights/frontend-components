@@ -139,10 +139,9 @@ describe('SourceWizardSummary component', () => {
                 getState: () => ({
                     values: {
                         source: { name: 'cosi' },
-                        application: { application_type_id: '2' },
+                        application: { application_type_id: '2', extra: { bucket: 'gfghf' } },
                         source_type: 'amazon',
                         authentication: { username: 'arn:aws:132', authtype: 'arn' },
-                        billing_source: { data_source: { bucket: 'gfghf' } },
                         fixasyncvalidation: '',
                         endpoint: { role: 'aws' }
                     }

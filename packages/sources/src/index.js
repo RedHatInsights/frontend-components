@@ -2,7 +2,6 @@ export { AddSourceButton, AddSourceWizard } from './addSourceWizard/index';
 export { default as SourceWizardSummary } from './sourceFormRenderer/components/SourceWizardSummary';
 export { mapperExtension } from './sourceFormRenderer/index';
 export { parseUrl, urlOrHost } from './api/createSource';
-export { patchSource } from './api/costManagementAuthentication';
 export { handleError } from './api/handleError';
 export { default as filterApps } from '../src/utilities/filterApps';
 export { default as CloseModal } from '../src/addSourceWizard/CloseModal';
