@@ -147,7 +147,7 @@ export const IAMPolicyDescription = () => {
     const intl = useIntl();
 
     const values = formOptions.getState().values;
-    const s3Bucket = values.billing_source?.data_source?.bucket;
+    const s3Bucket = values.application?.extra?.bucket;
     const aliasesEnabled = values.aws?.aliases?.enabled;
     const orgUnitsEnabled = values.aws?.org_units?.enabled;
 
