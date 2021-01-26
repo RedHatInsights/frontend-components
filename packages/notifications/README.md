@@ -47,10 +47,10 @@ The correct import path is now at: `@redhat-cloud-services/frontend-components-n
 For example: 
 ```jsx
 // v2
-import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
 // v3
 import { notificationsReducer, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
 ```
 
 **Adjust babel transform import config**
