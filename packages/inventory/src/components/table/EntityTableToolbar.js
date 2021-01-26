@@ -59,6 +59,7 @@ const EntityTableToolbar = ({
     hasAccess,
     bulkSelect,
     getEntities,
+    hideFilters,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -109,7 +110,7 @@ const EntityTableToolbar = ({
      */
     const onRefreshData = useCallback((options) => {
         if (hasAccess) {
-            dispatch(loadSystems(options, showTags, getEntities));
+            dispatch(loadSystems({ ...options, hideFilters }, showTags, getEntities));
             if (showTags && !hasItems) {
                 dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options.filters }));
             }
@@ -133,7 +134,8 @@ const EntityTableToolbar = ({
                 hasItems,
                 ...config,
                 orderDirection: sortBy?.direction,
-                orderBy: sortBy?.key
+                orderBy: sortBy?.key,
+                hideFilters
             };
             onRefresh ? onRefresh(params, (options) => {
                 dispatch(entitiesLoading());
@@ -156,10 +158,10 @@ const EntityTableToolbar = ({
     useEffect(() => {
         const { textFilter, tagFilters, staleFilter, registeredWithFilter } = reduceFilters(filters);
         debouncedRefresh();
-        setTextFilter(textFilter);
-        setStaleFilter(staleFilter);
-        setRegisteredWithFilter(registeredWithFilter);
-        setSelectedTags(tagFilters);
+        !hideFilters.name && setTextFilter(textFilter);
+        !hideFilters.stale && setStaleFilter(staleFilter);
+        !hideFilters.registeredWith && setRegisteredWithFilter(registeredWithFilter);
+        !hideFilters.tags && setSelectedTags(tagFilters);
     }, []);
 
     /**
@@ -198,31 +200,31 @@ const EntityTableToolbar = ({
     const shouldReload = page && perPage && filters && (!hasItems || items) && loaded;
 
     useEffect(() => {
-        if (shouldReload && showTags) {
+        if (shouldReload && showTags && !hideFilters.tags) {
             debounceGetAllTags(filterTagsBy, { filters });
         }
     }, [ filterTagsBy, customFilters?.tags ]);
 
     useEffect(() => {
-        if (shouldReload) {
+        if (shouldReload && !hideFilters.name) {
             onSetTextFilter(textFilter, true);
         }
     }, [ textFilter ]);
 
     useEffect(() => {
-        if (shouldReload) {
+        if (shouldReload && !hideFilters.stale) {
             onSetFilter(staleFilter, 'staleFilter', debouncedRefresh);
         }
     }, [ staleFilter ]);
 
     useEffect(() => {
-        if (shouldReload) {
+        if (shouldReload && !hideFilters.registeredWith) {
             onSetFilter(registeredWithFilter, 'registeredWithFilter', debouncedRefresh);
         }
     }, [ registeredWithFilter ]);
 
     useEffect(() => {
-        if (shouldReload && showTags) {
+        if (shouldReload && showTags && !hideFilters.tags) {
             onSetFilter(mapGroups(selectedTags), 'tagFilters', debouncedRefresh);
         }
     }, [ selectedTags ]);
@@ -251,20 +253,20 @@ const EntityTableToolbar = ({
     const constructFilters = () => {
         return {
             filters: [
-                ...(showTags && !hasItems) ? tagsChip : [],
-                ...!hasItems ? nameChip : [],
-                ...!hasItems ? stalenessChip : [],
-                ...!hasItems ? registeredChip : [],
+                ...(showTags && !hasItems && !hideFilters.tags) ? tagsChip : [],
+                ...!hasItems && !hideFilters.name ? nameChip : [],
+                ...!hasItems && !hideFilters.stale ? stalenessChip : [],
+                ...!hasItems && !hideFilters.registeredWith ? registeredChip : [],
                 ...activeFiltersConfig?.filters || []
             ],
             onDelete: (e, [ deleted, ...restDeleted ], isAll) => {
                 if (isAll) {
                     updateData({ page: 1, perPage, filters: [] });
                     dispatch(clearFilters());
-                    setTextFilter('');
-                    setStaleFilter([]);
-                    setRegisteredWithFilter([]);
-                    setSelectedTags({});
+                    !hideFilters.name && setTextFilter('');
+                    !hideFilters.stale && setStaleFilter([]);
+                    !hideFilters.registeredWith && setRegisteredWithFilter([]);
+                    !hideFilters.tags && setSelectedTags({});
                 } else if (deleted.type) {
                     deleteMapper[deleted.type](deleted);
                 }
@@ -289,10 +291,10 @@ const EntityTableToolbar = ({
 
     const inventoryFilters = [
         ...!hasItems ? [
-            nameFilter,
-            stalenessFilter,
-            registeredFilter,
-            ...showTags ? [ tagsFilter ] : []
+            ...!hideFilters.name ? [ nameFilter ] : [],
+            ...!hideFilters.stale ? [ stalenessFilter ] : [],
+            ...!hideFilters.registeredWith ? [ registeredFilter ] : [],
+            ...showTags && !hideFilters.tags ? [ tagsFilter ] : []
         ] : [],
         ...filterConfig?.items || []
     ];
@@ -306,7 +308,7 @@ const EntityTableToolbar = ({
                     isDisabled: bulkSelect?.isDisabled || !hasAccess
                 }
             }}
-            className={`ins-c-inventory__table--toolbar ${hasItems ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
+            className={`ins-c-inventory__table--toolbar ${hasItems || !inventoryFilters.length ? 'ins-c-inventory__table--toolbar-has-items' : ''}`}
             {...inventoryFilters?.length > 0 && {
                 filterConfig: {
                     ...filterConfig || {},
@@ -334,7 +336,7 @@ const EntityTableToolbar = ({
             { children }
         </PrimaryToolbar>
         {
-            showTags &&
+            showTags && !hideFilters.tags &&
             <TagsModal
                 customFilters={customFilters}
                 filterTagsBy={filterTagsBy}
@@ -367,14 +369,21 @@ EntityTableToolbar.propTypes = {
             PropTypes.arrayOf(PropTypes.string)
         ])
     }),
-    getEntities: PropTypes.func
+    getEntities: PropTypes.func,
+    hideFilters: PropTypes.shape({
+        tags: PropTypes.bool,
+        name: PropTypes.bool,
+        registeredWith: PropTypes.bool,
+        stale: PropTypes.bool
+    })
 };
 
 EntityTableToolbar.defaultProps = {
     showTags: false,
     hasAccess: true,
     activeFiltersConfig: {},
-    filters: []
+    filters: [],
+    hideFilters: {}
 };
 
 export default EntityTableToolbar;

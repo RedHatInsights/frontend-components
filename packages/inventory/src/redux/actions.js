@@ -37,8 +37,13 @@ export const loadEntities = (items = [], { filters, ...config }, { showTags } = 
 
     const updatedFilters = filters ? filters.reduce(filtersReducer, {
         ...defaultFilters,
-        ...filters.length === 0 && { registeredWithFilter: [] }
-    }) : defaultFilters;
+        ...filters.length === 0 && { registeredWithFilter: [] },
+        ...(config.hideFilters?.stale && { staleFilter: undefined }),
+        ...(config.hideFilters?.registeredWith && { registeredWithFilter: undefined })
+    }) : { ...defaultFilters,
+        ...(config.hideFilters?.stale && { staleFilter: undefined }),
+        ...(config.hideFilters?.registeredWith && { registeredWithFilter: undefined })
+    };
 
     const orderBy = config.orderBy || 'updated';
     const orderDirection = config.orderDirection || 'DESC';
@@ -59,7 +64,8 @@ export const loadEntities = (items = [], { filters, ...config }, { showTags } = 
                 ...results.find(({ id }) => id === item || id === item.id) || {}
             })) : results,
             page: config.page || (data && data.page),
-            perPage: config.perPage || (data && data.perPage)
+            perPage: config.perPage || (data && data.perPage),
+            hideFilters: config.hideFilters
         })),
         meta: {
             showTags
