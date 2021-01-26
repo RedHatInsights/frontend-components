@@ -30,7 +30,7 @@ describe('Cost Management Azure steps components', () => {
     });
     test('Read Role description', () => {
         const wrapper = mount(
-            <RenderContext.Provider value={{ formOptions: { getState: () => ({ values: { credentials: { subscription_id: 'my-sub-id-1' } } }) } }}>
+            <RenderContext.Provider value={{ formOptions: { getState: () => ({ values: { application: { extra: { subscription_id: 'my-sub-id-1' } } } }) } }}>
                 <Cm.ReaderRoleDescription />
             </RenderContext.Provider>
         );
