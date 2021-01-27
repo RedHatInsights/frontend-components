@@ -1,0 +1,27 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
+
+section.ins-l-content {
+  padding: $ins-padding;
+}
+
+section.ins-l-button-group {
+  > * { display: inline; }
+  * + * { @include rem('margin-left', 5px); }
+  @include rem('margin', 24px 0);
+}
+
+section.ins-l-icon-group {
+  * + * { margin-left: 10px; }
+}
+
+section.ins-l-icon-group__with-major {
+  * + * { margin-left: 7.5px; }
+  .ins-battery:last-of-type {
+    padding-left: 15px;
+    border-left: 2px solid #eaeaea;
+    span.label{
+      font-weight: 500;
+      margin: 0 10px;
+    }
+  }
+}

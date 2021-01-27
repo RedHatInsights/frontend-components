@@ -1,24 +1,25 @@
 {
     "name": "@redhat-cloud-services/frontend-components",
-    "version": "2.5.10",
+    "version": "3.0.0-beta.4",
     "description": "Common components for RedHat Cloud Services project.",
-    "browser": "components/index.js",
-    "module": "components/esm/index.js",
-    "types": "components/index.d.ts",
+    "main": "index.js",
+    "module": "esm/index.js",
+    "types": "index.d.ts",
     "sideEffects": false,
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:umd && npm run build:css",
-        "build:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
-        "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
-        "build:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",
-        "build:css": "node ./create-styles.js && copyfiles ./components/index.* ./ -f",
-        "start": "rollup -c ./config/rollup.config.js -w",
-        "start:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js -w --format=cjs --environment FORMAT:cjs",
-        "start:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js -w --environment FORMAT:esm",
-        "start:umd": "rollup -c ./config/rollup.config.js -w --format=umd --environment FORMAT:umd"
+        "build": "npm run build:compatibility && npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
+        "build:js": "BABEL_ENV=cjs babel src --config-file ../../babel.v3.config.js --out-dir ./ --ignore '**/*.test.js'",
+        "build:esm": "BABEL_ENV=esm babel src --config-file ../../babel.v3.config.js --out-dir ./esm --ignore '**/*.test.js'",
+        "build:css": "node ../../scripts/build-styles.js",
+        "build:packages": "node ../../scripts/build-packages.js",
+        "build:compatibility": "npm run build:compatibility:js && npm run build:compatibility:esm && npm run build:compatibility:umd",
+        "build:compatibility:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
+        "build:compatibility:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
+        "build:compatibility:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",
+        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
     "repository": {
         "type": "git",
@@ -44,7 +45,7 @@
         "lodash": ">=4.17.15"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components-utilities": "*",
+        "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "sanitize-html": "^1.25.0",
         "@scalprum/core": "0.0.10",
         "@scalprum/react-core": "0.0.13"

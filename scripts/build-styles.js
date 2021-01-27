@@ -3,6 +3,7 @@ const glob = require('glob');
 const path = require('path');
 const sass = require('node-sass');
 const chokidar = require('chokidar');
+const packageImporter = require('node-sass-package-importer');
 
 /**
  * Root path of the current package
@@ -25,7 +26,8 @@ async function buildStyle(file) {
 
     const render = sass.render({
         file,
-        outFile
+        outFile,
+        importer: packageImporter()
     }, function(err, result) {
         if (err) {
             console.error(file, outFile);
