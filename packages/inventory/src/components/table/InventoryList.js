@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
 import { Grid, GridItem } from '@patternfly/react-core/dist/js/layouts/Grid';
 import PropTypes from 'prop-types';
@@ -72,7 +72,7 @@ class ContextInventoryList extends Component {
 /**
  * Component that consumes active filters and passes them down to component.
  */
-const InventoryList = React.forwardRef(({ hasAccess, getEntities, ...props }, ref) => {
+const InventoryList = React.forwardRef(({ hasAccess, getEntities, hideFilters, ...props }, ref) => {
     const dispatch = useDispatch();
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
     return !hasAccess ?
@@ -84,7 +84,7 @@ const InventoryList = React.forwardRef(({ hasAccess, getEntities, ...props }, re
                 { ...props }
                 ref={ref}
                 activeFilters={ activeFilters }
-                loadEntities={ (config, showTags) => dispatch(loadSystems(config, showTags, getEntities)) }
+                loadEntities={ (config, showTags) => dispatch(loadSystems({ ...config, hideFilters }, showTags, getEntities)) }
             />
         );
 });
@@ -126,7 +126,13 @@ InventoryList.propTypes = {
             PropTypes.arrayOf(PropTypes.string)
         ])
     }),
-    getEntities: PropTypes.func
+    getEntities: PropTypes.func,
+    hideFilters: PropTypes.shape({
+        tags: PropTypes.bool,
+        name: PropTypes.bool,
+        registeredWith: PropTypes.bool,
+        stale: PropTypes.bool
+    })
 };
 
 InventoryList.defaultProps = {

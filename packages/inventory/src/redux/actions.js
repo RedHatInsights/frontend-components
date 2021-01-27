@@ -35,10 +35,17 @@ export const loadEntities = (items = [], { filters, ...config }, { showTags } = 
         ]
     ), []).filter(Boolean);
 
+    const isFilterDisabled = (name) => config.hideFilters?.[name] || (config.hideFilters?.all && config.hideFilters?.[name] !== false);
+
     const updatedFilters = filters ? filters.reduce(filtersReducer, {
         ...defaultFilters,
-        ...filters.length === 0 && { registeredWithFilter: [] }
-    }) : defaultFilters;
+        ...filters.length === 0 && { registeredWithFilter: [] },
+        ...(isFilterDisabled('stale') && { staleFilter: undefined }),
+        ...(isFilterDisabled('registeredWith') && { registeredWithFilter: undefined })
+    }) : { ...defaultFilters,
+        ...(isFilterDisabled('stale') && { staleFilter: undefined }),
+        ...(isFilterDisabled('registeredWith') && { registeredWithFilter: undefined })
+    };
 
     const orderBy = config.orderBy || 'updated';
     const orderDirection = config.orderDirection || 'DESC';
@@ -59,7 +66,8 @@ export const loadEntities = (items = [], { filters, ...config }, { showTags } = 
                 ...results.find(({ id }) => id === item || id === item.id) || {}
             })) : results,
             page: config.page || (data && data.page),
-            perPage: config.perPage || (data && data.perPage)
+            perPage: config.perPage || (data && data.perPage),
+            hideFilters: config.hideFilters
         })),
         meta: {
             showTags
