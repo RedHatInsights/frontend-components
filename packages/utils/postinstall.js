@@ -5,7 +5,7 @@ const getDirectories = source => readdirSync(source, { withFileTypes: true })
 .filter(dirent => dirent.isDirectory())
 .map(dirent => dirent.name);
 
-copySync('./styles', './Utilities', (err) => err && console.log(err));
+copySync('./styles', './Utilities');
 
 const files = getDirectories('./').filter(item => ![ 'esm', 'files', 'doc', 'src', 'node_modules' ].includes(item));
 

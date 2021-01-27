@@ -100,7 +100,7 @@ export const ConfigureRolesDescription = () => {
 
 export const ReaderRoleDescription = () => {
     const form = useFormApi();
-    const { values: { credentials } } = form.getState();
+    const { values: { application } } = form.getState();
     const intl = useIntl();
 
     return (
@@ -112,7 +112,7 @@ export const ReaderRoleDescription = () => {
                 }) }
             </Text>
             <ClipboardCopy>{
-                `az role assignment create --role "Cost Management Reader" --assignee http://CostManagement --subscription ${credentials.subscription_id}`
+                `az role assignment create --role "Cost Management Reader" --assignee http://CostManagement --subscription ${application.extra.subscription_id}`
             }</ClipboardCopy>
         </TextContent>
     );

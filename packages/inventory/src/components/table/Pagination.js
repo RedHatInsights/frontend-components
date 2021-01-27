@@ -21,17 +21,19 @@ class FooterPagination extends Component {
      * @param {*} pagination contains new pagination config.
      */
     updatePagination = (pagination) => {
-        const { onRefresh, dataLoading, loadEntities, showTags, customFilters } = this.props;
+        const { onRefresh, dataLoading, loadEntities, showTags, customFilters, hideFilters } = this.props;
         if (onRefresh) {
             dataLoading();
             onRefresh(pagination, (options) => loadEntities({
                 ...customFilters,
-                ...options
+                ...options,
+                hideFilters
             }, showTags));
         } else {
             loadEntities({
                 ...customFilters,
-                ...pagination
+                ...pagination,
+                hideFilters
             }, showTags);
         }
     }
@@ -111,7 +113,13 @@ const propTypes = {
             PropTypes.arrayOf(PropTypes.string)
         ])
     }),
-    getEntities: PropTypes.func
+    getEntities: PropTypes.func,
+    hideFilters: PropTypes.shape({
+        tags: PropTypes.bool,
+        name: PropTypes.bool,
+        registeredWith: PropTypes.bool,
+        stale: PropTypes.bool
+    })
 };
 
 FooterPagination.propTypes = propTypes;

@@ -349,8 +349,8 @@ describe('schema builder', () => {
                         'authentication.authtype',
                         'azure-storage-account-description',
                         'all-required',
-                        'billing_source.data_source.resource_group',
-                        'billing_source.data_source.storage_account'
+                        'application.extra.resource_group',
+                        'application.extra.storage_account'
                     ]
                 );
             });

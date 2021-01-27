@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import { BrowserRouter as Router } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
+import { ConditionalFilter } from '@redhat-cloud-services/frontend-components/components/cjs/ConditionalFilter';
 
 describe('NoSystemsTable', () => {
     let initialState;
@@ -108,5 +109,44 @@ describe('NoSystemsTable', () => {
             </Router>
         </Provider>);
         expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
+    });
+
+    describe('hideFilters', () => {
+        it('should disable all filters', () => {
+            const store = mockStore(initialState);
+            const wrapper = mount(<Provider store={ store }>
+                <Router>
+                    <InventoryTable hideFilters={{ all: true }} showTags/>
+                </Router>
+            </Provider>);
+
+            expect(wrapper.find(ConditionalFilter)).toHaveLength(0);
+        });
+
+        it('should disable only one filter', () => {
+            const store = mockStore(initialState);
+            const wrapper = mount(<Provider store={ store }>
+                <Router>
+                    <InventoryTable hideFilters={{ name: true }} showTags/>
+                </Router>
+            </Provider>);
+
+            expect(wrapper.find(ConditionalFilter).props().items.map(({ value }) => value)).toEqual(
+                [ 'stale-status', 'source-registered-with', 'tags' ]
+            );
+        });
+
+        it('should disable all and enable one', () => {
+            const store = mockStore(initialState);
+            const wrapper = mount(<Provider store={ store }>
+                <Router>
+                    <InventoryTable hideFilters={{ all: true, name: false }} showTags/>
+                </Router>
+            </Provider>);
+
+            expect(wrapper.find(ConditionalFilter).props().items.map(({ value }) => value)).toEqual(
+                [ 'name-filter' ]
+            );
+        });
     });
 });

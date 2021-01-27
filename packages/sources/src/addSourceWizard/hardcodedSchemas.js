@@ -155,7 +155,7 @@ export default {
                 [COST_MANAGEMENT_APP_NAME]: {
                     useApplicationAuth: true,
                     skipSelection: true,
-                    'credentials.subscription_id': {
+                    'application.extra.subscription_id': {
                         placeholder: '',
                         validate: [{
                             type: validatorTypes.REQUIRED
@@ -169,7 +169,7 @@ export default {
                         }],
                         isRequired: true
                     },
-                    'billing_source.data_source.resource_group': {
+                    'application.extra.resource_group': {
                         placeholder: '',
                         validate: [{
                             type: validatorTypes.REQUIRED
@@ -182,7 +182,7 @@ export default {
                             />
                         }]
                     },
-                    'billing_source.data_source.storage_account': {
+                    'application.extra.storage_account': {
                         placeholder: '',
                         validate: [{
                             type: validatorTypes.REQUIRED
@@ -232,11 +232,11 @@ export default {
                             component: 'description',
                             Content: TowerCatalog.AllFieldAreRequired
                         }, {
-                            name: 'billing_source.data_source.resource_group',
+                            name: 'application.extra.resource_group',
                             component: componentTypes.TEXT_FIELD,
                             label: <FormattedMessage id="wizard.resourceGroupName" defaultMessage="Resource group name" />
                         }, {
-                            name: 'billing_source.data_source.storage_account',
+                            name: 'application.extra.storage_account',
                             component: componentTypes.TEXT_FIELD,
                             label: <FormattedMessage id="wizard.storageAccountName" defaultMessage="Storage account name" />
                         }]
@@ -249,7 +249,7 @@ export default {
                             component: 'description',
                             Content: CMAzure.SubscriptionID
                         }, {
-                            name: 'credentials.subscription_id',
+                            name: 'application.extra.subscription_id',
                             component: componentTypes.TEXT_FIELD,
                             label: <FormattedMessage id="wizard.subscriptionId" defaultMessage="Subscription ID" />
                         }]
@@ -342,7 +342,7 @@ export default {
                     useApplicationAuth: true,
                     skipSelection: true,
                     'authentication.username': arnField,
-                    'billing_source.data_source.bucket': {
+                    'application.extra.bucket': {
                         placeholder: 'cost-usage-bucket',
                         validate: [{
                             type: validatorTypes.REQUIRED
@@ -364,7 +364,7 @@ export default {
                             component: 'description',
                             Content: AwsArn.UsageDescription
                         },  {
-                            name: 'billing_source.data_source.bucket',
+                            name: 'application.extra.bucket',
                             component: componentTypes.TEXT_FIELD,
                             label: <FormattedMessage id="cost.arn.s3Label" defaultMessage="S3 bucket name" />
                         }, {

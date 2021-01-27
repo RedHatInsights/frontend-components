@@ -3,7 +3,6 @@ import sourceTypes, { OPENSHIFT_TYPE } from '../helpers/sourceTypes';
 import { COST_MANAGEMENT_APP } from '../helpers/applicationTypes';
 
 import * as api from '../../api/index';
-import * as cmAuthApi from '../../api/costManagementAuthentication';
 import * as errorHandling from '../../api/handleError';
 import * as checkApp from '../../api/getApplicationStatus';
 
@@ -411,123 +410,6 @@ describe('doCreateSource', () => {
             expect(checkAvailabilitySource).toHaveBeenCalledWith(CREATE_SOURCE_DATA_OUT.id);
         });
 
-        it('create source with app billing source', async () => {
-            const APP_ID = COST_MANAGEMENT_APP.id;
-            const BILLING_SOURCE_DATA = {
-                billing_source: {
-                    data_source: {
-                        bucket: 'bucket'
-                    }
-                }
-            };
-
-            const FORM_DATA = {
-                ...INITIAL_VALUES,
-                application: { ...APPLICATION_FORM_DATA, application_type_id: APP_ID },
-                ...BILLING_SOURCE_DATA
-            };
-            const EXPECTED_RESULT = {
-                id: CREATED_SOURCE_ID,
-                endpoint: [
-                    { ...CREATE_EDNPOINT_DATA_OUT }
-                ],
-                applications: [{
-                    ...CREATE_APPLICATION_DATA_OUT
-                }]
-            };
-
-            const EXPECTED_CREATE_APPLICATION_ARG = {
-                ...APPLICATION_FORM_DATA,
-                source_id: CREATED_SOURCE_ID,
-                application_type_id: APP_ID
-            };
-
-            const EXPECTED_BILLING_SOURCE_ARG = {
-                id: CREATED_SOURCE_ID,
-                ...BILLING_SOURCE_DATA
-            };
-
-            api.getSourcesApi = () => mocks;
-            cmAuthApi.patchSource = patchSource;
-            const result = await doCreateSource(FORM_DATA, sourceTypes);
-
-            expect(result).toEqual(EXPECTED_RESULT);
-
-            expect(createSource).toHaveBeenCalledWith(EXPECTED_CREATE_SOURCE_ARG);
-            expect(createEndpoint).toHaveBeenCalledWith(EXPECTED_CREATE_ENDPOINT_SOURCE_ARG);
-            expect(createAuthentication).toHaveBeenCalledWith(EXPECTED_AUTHENTICATION_SOURCE_ARG);
-            expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
-            expect(patchSource).toHaveBeenCalledWith(EXPECTED_BILLING_SOURCE_ARG);
-            expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
-            expect(checkAppMock).toHaveBeenCalledWith(CREATE_APPLICATION_DATA_OUT.id, 0);
-            expect(checkAvailabilitySource).toHaveBeenCalledWith(CREATE_SOURCE_DATA_OUT.id);
-        });
-
-        it('create source with app cost management source', async () => {
-            const APP_ID = COST_MANAGEMENT_APP.id;
-            const BILLING_SOURCE_DATA = {
-                billing_source: {
-                    data_source: {
-                        storage_account: 'sa',
-                        resource_group: 'rg'
-                    }
-                }
-            };
-            const CREDENTIALS = {
-                credentials: 'MY_CREDS_1'
-            };
-            const FORM_DATA = {
-                ...INITIAL_VALUES,
-                source_type: 'azure',
-                application: { ...APPLICATION_FORM_DATA, application_type_id: APP_ID },
-                ...CREDENTIALS,
-                ...BILLING_SOURCE_DATA
-            };
-            const EXPECTED_RESULT = {
-                id: CREATED_SOURCE_ID,
-                endpoint: [
-                    { ...CREATE_EDNPOINT_DATA_OUT }
-                ],
-                applications: [{
-                    ...CREATE_APPLICATION_DATA_OUT
-                }]
-            };
-
-            const EXPECTED_CREATE_APPLICATION_ARG = {
-                ...APPLICATION_FORM_DATA,
-                source_id: CREATED_SOURCE_ID,
-                application_type_id: APP_ID
-            };
-
-            const EXPECTED_CREDENTIALS_ARG = {
-                id: CREATED_SOURCE_ID,
-                billing_source: {
-                    data_source: {
-                        resource_group: 'rg',
-                        storage_account: 'sa'
-                    }
-                },
-                authentication: {
-                    credentials: 'MY_CREDS_1'
-                }
-            };
-
-            api.getSourcesApi = () => mocks;
-            cmAuthApi.patchSource = patchSource;
-
-            const result = await doCreateSource(FORM_DATA, sourceTypes);
-            expect(result).toEqual(EXPECTED_RESULT);
-
-            expect(createSource).toHaveBeenCalledWith({ ...EXPECTED_CREATE_SOURCE_ARG, source_type_id: '8' });
-            expect(createEndpoint).toHaveBeenCalledWith(EXPECTED_CREATE_ENDPOINT_SOURCE_ARG);
-            expect(createAuthentication).toHaveBeenCalledWith(EXPECTED_AUTHENTICATION_SOURCE_ARG);
-            expect(createApplication).toHaveBeenCalledWith(EXPECTED_CREATE_APPLICATION_ARG);
-            expect(patchSource).toHaveBeenCalledWith(EXPECTED_CREDENTIALS_ARG);
-            expect(createAuthApp).toHaveBeenCalledWith(EXPECTED_CREATE_AUTH_APP_ARG);
-            expect(checkAppMock).toHaveBeenCalledWith(CREATE_APPLICATION_DATA_OUT.id, 0);
-            expect(checkAvailabilitySource).toHaveBeenCalledWith(CREATE_SOURCE_DATA_OUT.id);
-        });
-
         describe('failures', () => {
             let ERROR_MESSAGE;
             let returnError;
@@ -646,31 +528,6 @@ describe('doCreateSource', () => {
                 expect(patchSource).not.toHaveBeenCalled();
                 expect(createAuthApp).not.toHaveBeenCalled();
                 expect(checkAppMock).not.toHaveBeenCalled();
-                expect(checkAvailabilitySource).not.toHaveBeenCalled();
-            });
-
-            it('source creation failed because of billing source', async () => {
-                const BILLING_SOURCE = { bucket: 'cosi' };
-
-                FORM_DATA = {
-                    ...FORM_DATA,
-                    application: { application_type_id: '1' },
-                    billing_source: BILLING_SOURCE
-                };
-
-                api.getSourcesApi = () => mocks;
-                cmAuthApi.patchSource = returnError;
-
-                let result;
-                try {
-                    result = await doCreateSource(FORM_DATA, sourceTypes);
-                } catch (error) {
-                    result = error;
-                }
-
-                expect(result).toEqual(ERROR_MESSAGE);
-                expect(returnError).toHaveBeenCalled();
-                expect(errorHandling.handleError).toHaveBeenCalledWith(ERROR_MESSAGE, CREATED_SOURCE_ID);
                 expect(checkAvailabilitySource).not.toHaveBeenCalled();
             });
         });
