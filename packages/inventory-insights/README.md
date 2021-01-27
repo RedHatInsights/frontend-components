@@ -16,3 +16,24 @@ yarn add @redhat-cloud-services/frontend-components-inventory-insights
 ```
 
 This package is dependent on [@redhat-cloud-services/frontend-components-utilities](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components-utilities), [@redhat-cloud-services/frontend-components](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components), [@redhat-cloud-services/frontend-components-remediations](https://www.npmjs.com/package/@redhat-cloud-services/frontend-components-remediations) and [@redhat-cloud-services/frontend-components-notifications](@redhat-cloud-services/frontend-components-notifications) will automatically install them trough direct dependencies.
+
+
+## Migration v2 -> v3
+
+### Import paths
+
+Its no longer required to directly reference cjs/esm version of the builds.
+
+```diff
+- import InventoryInsights from '@redhat-cloud-services/frontend-components-inventory-insights/esm'
++ import InventoryInsights from '@redhat-cloud-services/frontend-components-inventory-insights'
+```
+
+### Styling
+
+It is no longer required to import css separatelly. Styles are injected automatically when the component is used
+
+```diff
+- @import '@redhat-cloud-services/frontend-components/index.css';
+
+```
