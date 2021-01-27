@@ -35,14 +35,16 @@ export const loadEntities = (items = [], { filters, ...config }, { showTags } = 
         ]
     ), []).filter(Boolean);
 
+    const isFilterDisabled = (name) => config.hideFilters?.[name] || (config.hideFilters?.all && config.hideFilters?.[name] !== false);
+
     const updatedFilters = filters ? filters.reduce(filtersReducer, {
         ...defaultFilters,
         ...filters.length === 0 && { registeredWithFilter: [] },
-        ...(config.hideFilters?.stale && { staleFilter: undefined }),
-        ...(config.hideFilters?.registeredWith && { registeredWithFilter: undefined })
+        ...(isFilterDisabled('stale') && { staleFilter: undefined }),
+        ...(isFilterDisabled('registeredWith') && { registeredWithFilter: undefined })
     }) : { ...defaultFilters,
-        ...(config.hideFilters?.stale && { staleFilter: undefined }),
-        ...(config.hideFilters?.registeredWith && { registeredWithFilter: undefined })
+        ...(isFilterDisabled('stale') && { staleFilter: undefined }),
+        ...(isFilterDisabled('registeredWith') && { registeredWithFilter: undefined })
     };
 
     const orderBy = config.orderBy || 'updated';
