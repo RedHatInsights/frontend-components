@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Breadcrumb, BreadcrumbItem } from '@patternfly/react-core';
 
+/**
+ * @deprecated
+ *
+ * Breadcrumbs from FE component shouldn't be used anymore.
+ *
+ * Use <a href="https://www.patternfly.org/v4/components/breadcrumb" target="_blank">Breadcrumbs</a> from PF repository.
+ */
 const Breadcrumbs = ({ items, current, className, onNavigate, ...props }) => {
     console.warn('Breadcrumbs from FE component shouldn\'t be used anymore. \
 Instead use https://patternfly-react.surge.sh/documentation/react/components/breadcrumb from PF repository.');
