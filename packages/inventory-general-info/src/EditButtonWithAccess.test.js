@@ -5,7 +5,7 @@ import { PencilAltIcon } from '@patternfly/react-icons';
 
 import EditButton from './EditButton';
 
-jest.mock('@redhat-cloud-services/frontend-components-utilities/files/RBACHook', () => ({
+jest.mock('@redhat-cloud-services/frontend-components-utilities/RBACHook', () => ({
     esModule: true,
     usePermissions: () => ({ hasAccess: true })
 }));

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import LoadingCard from './LoadingCard';
 import { generalMapper } from './dataMapper';
 import { operatingSystem } from './selectors';
-import { DateFormat } from '@redhat-cloud-services/frontend-components';
+import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
 import { isDate } from './constants';
 
 const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (

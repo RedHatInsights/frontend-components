@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { usePermissions } from '@redhat-cloud-services/frontend-components-utilities/files/RBACHook';
+import { usePermissions } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 
 import { PencilAltIcon } from '@patternfly/react-icons';
 

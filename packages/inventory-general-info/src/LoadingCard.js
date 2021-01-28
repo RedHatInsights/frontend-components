@@ -11,7 +11,7 @@ import {
     TextListVariants,
     TextListItem
 } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
 export const Clickable = ({ item: { onClick, value, target } }) => (
     <Fragment>

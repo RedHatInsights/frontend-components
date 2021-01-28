@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { TextContent, Text, TextVariants, Pagination } from '@patternfly/react-core';
-import { PrimaryToolbar, TableToolbar } from '@redhat-cloud-services/frontend-components';
+import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import TableToolbar from '@redhat-cloud-services/frontend-components/TableToolbar';
 import { Table, TableHeader, TableBody, TableVariant, SortByDirection } from '@patternfly/react-table';
 import flatMap from 'lodash/flatMap';
 import { prepareRows, filterRows, generateFilters, onDeleteFilter } from './constants';

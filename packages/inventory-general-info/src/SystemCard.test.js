@@ -15,7 +15,7 @@ import promiseMiddleware from 'redux-promise-middleware';
 import { mock } from './__mock__/hostApi';
 import mockedData from './__mock__/mockedData.json';
 
-jest.mock('@redhat-cloud-services/frontend-components-utilities/files/RBACHook', () => ({
+jest.mock('@redhat-cloud-services/frontend-components-utilities/RBACHook', () => ({
     esModule: true,
     usePermissions: () => ({ hasAccess: true })
 }));
