@@ -1,22 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useEffect } from 'react';
+import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import Breadcrumbs from './Breadcrumbs';
-import { withRouter } from 'react-router-dom';
 
-class ConnectedBreadcrumbs extends Component {
-    constructor(props) {
-        super(props);
-        this.onNavigate = this.onNavigate.bind(this);
-        this.calculateBreadcrumbs = this.calculateBreadcrumbs.bind(this);
+/**
+ * @deprecated
+ *
+ * Breadcrumbs from FE component shouldn't be used anymore.
+ *
+ * Use <a href="https://www.patternfly.org/v4/components/breadcrumb" target="_blank">Breadcrumbs</a> from PF repository.
+ */
+const ConnectedBreadcrumbs = (props) => {
+    const history = useHistory();
+    const location = useLocation();
+    const match = useRouteMatch();
+    useEffect(() => {
         console.warn('This component will be removed in future release (next month March), do not use it anymore!');
-    }
+    }, []);
 
-    onNavigate(_event, _item, key) {
-        const { history } = this.props;
+    const onNavigate = (_event, _item, key) => {
         history.go(-key);
-    }
+    };
 
-    calculateBreadcrumbs() {
-        const { match, location, current, mappings } = this.props;
+    const calculateBreadcrumbs = () => {
+        const { current, mappings } = props;
         if (!current && mappings) {
             const root = match.path.split('/').slice(2);
             const rest = location.pathname.substring(match.path.length).split('/').slice(1);
@@ -30,19 +37,16 @@ class ConnectedBreadcrumbs extends Component {
                 current
             ];
         }
-    }
+    };
 
-    render() {
-        const { match, location, history, current, staticContext, dispatch, ...props } = this.props;
-        const mappedBreadcrumbs = this.calculateBreadcrumbs() || [];
-        return (
-            <Breadcrumbs { ...props }
-                items={ mappedBreadcrumbs.slice(0, -1).map(item => ({ title: item, navigate: item })) }
-                onNavigate={ this.onNavigate }
-                current={ mappedBreadcrumbs.slice(-1)[0] }
-            />
-        );
-    }
-}
+    const mappedBreadcrumbs = calculateBreadcrumbs() || [];
+    return (
+        <Breadcrumbs { ...props }
+            items={ mappedBreadcrumbs.slice(0, -1).map(item => ({ title: item, navigate: item })) }
+            onNavigate={ onNavigate }
+            current={ mappedBreadcrumbs.slice(-1)[0] }
+        />
+    );
+};
 
-export default withRouter(ConnectedBreadcrumbs);
+export default ConnectedBreadcrumbs;
