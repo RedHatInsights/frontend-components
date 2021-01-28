@@ -307,7 +307,10 @@ export const SummaryDescription = () => {
             <Text component={ TextVariants.p }>
                 { intl.formatMessage({
                     id: 'wizard.summaryDescription',
-                    defaultMessage: 'Review the information below and click Add to add your source. Use the Back button to make changes.'
+                    defaultMessage: 'Review the information below and click <b>Add</b> to add your source. To edit details in previous steps, click <b>Back</b>.'
+                }, {
+                    // eslint-disable-next-line react/display-name
+                    b: (chunks) => <b key={`b-${chunks.length}-${Math.floor(Math.random() * 1000)}`}>{chunks}</b>
                 }) }
             </Text>
         </TextContent>
