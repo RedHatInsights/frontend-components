@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LoadingCard from './LoadingCard';
-import { collectionInformationSelector } from './selectors';
+import LoadingCard from '../LoadingCard';
+import { collectionInformationSelector } from '../selectors';
 import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
 
 const CollectionCard = ({ detailLoaded, collectionInformation, entity }) => (<LoadingCard

@@ -10,10 +10,10 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SystemCard from './SystemCard';
 import configureStore from 'redux-mock-store';
-import { testProperties, rhsmFacts } from './__mock__/selectors';
+import { testProperties, rhsmFacts } from '../__mock__/selectors';
 import promiseMiddleware from 'redux-promise-middleware';
-import { mock } from './__mock__/hostApi';
-import mockedData from './__mock__/mockedData.json';
+import { mock } from '../__mock__/hostApi';
+import mockedData from '../__mock__/mockedData.json';
 
 jest.mock('@redhat-cloud-services/frontend-components-utilities/RBACHook', () => ({
     esModule: true,

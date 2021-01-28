@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LoadingCard from './LoadingCard';
-import { generalMapper, interfaceMapper } from './dataMapper';
-import { infrastructureSelector } from './selectors';
+import LoadingCard from '../LoadingCard';
+import { generalMapper, interfaceMapper } from '../dataMapper';
+import { infrastructureSelector } from '../selectors';
 
 const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<LoadingCard
     title="Infrastructure"

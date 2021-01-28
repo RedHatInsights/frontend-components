@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LoadingCard from './LoadingCard';
-import { generalMapper, repositoriesMapper } from './dataMapper';
-import { configurationSelector } from './selectors';
+import LoadingCard from '../LoadingCard';
+import { generalMapper, repositoriesMapper } from '../dataMapper';
+import { configurationSelector } from '../selectors';
 
 export function enabledRepos(repositories) {
     if (repositories) {

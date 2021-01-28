@@ -2,11 +2,11 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import ConfigurationCard from './ConfigurationCard';
+import InfrastructureCard from './InfrastructureCard';
 import configureStore from 'redux-mock-store';
-import { configTest } from './__mock__/selectors';
+import { infraTest, rhsmFacts } from '../__mock__/selectors';
 
-describe('ConfigurationCard', () => {
+describe('InfrastructureCard', () => {
     let initialState;
     let mockStore;
 
@@ -16,7 +16,13 @@ describe('ConfigurationCard', () => {
             systemProfileStore: {
                 systemProfile: {
                     loaded: true,
-                    ...configTest
+                    ...infraTest
+                }
+            }, entityDetails: {
+                entity: {
+                    facts: {
+                        rhsm: rhsmFacts
+                    }
                 }
             }
         };
@@ -24,13 +30,26 @@ describe('ConfigurationCard', () => {
 
     it('should render correctly - no data', () => {
         const store = mockStore({ systemProfileStore: {}, entityDetails: {} });
-        const wrapper = render(<ConfigurationCard store={ store } />);
+        const wrapper = render(<InfrastructureCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('should render correctly with data', () => {
         const store = mockStore(initialState);
-        const wrapper = render(<ConfigurationCard store={ store } />);
+        const wrapper = render(<InfrastructureCard store={ store } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('should render correctly with rhsm facts', () => {
+        const store = mockStore({
+            ...initialState,
+            systemProfileStore: {
+                systemProfile: {
+                    loaded: true
+                }
+            }
+        });
+        const wrapper = render(<InfrastructureCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
@@ -39,19 +58,13 @@ describe('ConfigurationCard', () => {
             systemProfileStore: {
                 systemProfile: {
                     loaded: true,
-                    ...configTest,
-                    repositories: {
-                        enabled: [{
-
-                        }],
-                        disabled: [{
-
-                        }]
-                    }
+                    ...infraTest
                 }
+            }, entityDetails: {
+                entity: {}
             }
         });
-        const wrapper = render(<ConfigurationCard store={ store } />);
+        const wrapper = render(<InfrastructureCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
@@ -59,16 +72,15 @@ describe('ConfigurationCard', () => {
         it('should NOT call handleClick', () => {
             const store = mockStore(initialState);
             const onClick = jest.fn();
-            const wrapper = mount(<ConfigurationCard store={ store } />);
+            const wrapper = mount(<InfrastructureCard store={ store } />);
             wrapper.find('dd a').first().simulate('click');
             expect(onClick).not.toHaveBeenCalled();
-            expect(toJson(wrapper)).toMatchSnapshot();
         });
 
         it('should call handleClick on packages', () => {
             const store = mockStore(initialState);
             const onClick = jest.fn();
-            const wrapper = mount(<ConfigurationCard handleClick={ onClick } store={ store } />);
+            const wrapper = mount(<InfrastructureCard handleClick={ onClick } store={ store } />);
             wrapper.find('dd a').first().simulate('click');
             expect(onClick).toHaveBeenCalled();
         });
@@ -76,7 +88,7 @@ describe('ConfigurationCard', () => {
         it('should call handleClick on services', () => {
             const store = mockStore(initialState);
             const onClick = jest.fn();
-            const wrapper = mount(<ConfigurationCard handleClick={ onClick } store={ store } />);
+            const wrapper = mount(<InfrastructureCard handleClick={ onClick } store={ store } />);
             wrapper.find('dd a').at(1).simulate('click');
             expect(onClick).toHaveBeenCalled();
         });
@@ -84,16 +96,8 @@ describe('ConfigurationCard', () => {
         it('should call handleClick on services', () => {
             const store = mockStore(initialState);
             const onClick = jest.fn();
-            const wrapper = mount(<ConfigurationCard handleClick={ onClick } store={ store } />);
+            const wrapper = mount(<InfrastructureCard handleClick={ onClick } store={ store } />);
             wrapper.find('dd a').at(2).simulate('click');
-            expect(onClick).toHaveBeenCalled();
-        });
-
-        it('should call handleClick on services', () => {
-            const store = mockStore(initialState);
-            const onClick = jest.fn();
-            const wrapper = mount(<ConfigurationCard handleClick={ onClick } store={ store } />);
-            wrapper.find('dd a').at(3).simulate('click');
             expect(onClick).toHaveBeenCalled();
         });
     });

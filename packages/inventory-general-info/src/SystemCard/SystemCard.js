@@ -1,15 +1,15 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LoadingCard from './LoadingCard';
+import LoadingCard from '../LoadingCard';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
-import { propertiesSelector } from './selectors';
-import { editDisplayName, editAnsibleHost, systemProfile } from './redux/actions';
-import TextInputModal from './TextInputModal';
+import { propertiesSelector } from '../selectors';
+import { editDisplayName, editAnsibleHost, systemProfile } from '../redux/actions';
+import TextInputModal from '../TextInputModal';
 import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory';
 import { Popover, Button } from '@patternfly/react-core';
-import EditButton from './EditButton';
-import { generalMapper } from './dataMapper';
+import EditButton from '../EditButton';
+import { generalMapper } from '../dataMapper';
 
 const TitleWithPopover = ({ title, content }) => (
     <React.Fragment>

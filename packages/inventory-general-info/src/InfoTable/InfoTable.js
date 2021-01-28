@@ -5,7 +5,7 @@ import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryTo
 import TableToolbar from '@redhat-cloud-services/frontend-components/TableToolbar';
 import { Table, TableHeader, TableBody, TableVariant, SortByDirection } from '@patternfly/react-table';
 import flatMap from 'lodash/flatMap';
-import { prepareRows, filterRows, generateFilters, onDeleteFilter } from './constants';
+import { prepareRows, filterRows, generateFilters, onDeleteFilter } from '../constants';
 class InfoTable extends Component {
     state = {
         sortBy: { index: 0, direction: SortByDirection.asc },

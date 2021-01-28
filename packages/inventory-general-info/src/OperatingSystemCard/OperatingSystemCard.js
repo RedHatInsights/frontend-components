@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LoadingCard from './LoadingCard';
-import { generalMapper } from './dataMapper';
-import { operatingSystem } from './selectors';
+import LoadingCard from '../LoadingCard';
+import { generalMapper } from '../dataMapper';
+import { operatingSystem } from '../selectors';
 import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
-import { isDate } from './constants';
+import { isDate } from '../constants';
 
 const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (
     <LoadingCard

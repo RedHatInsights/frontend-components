@@ -8,14 +8,14 @@ import {
 } from '@patternfly/react-core';
 import { SortByDirection } from '@patternfly/react-table';
 
-import { systemProfile } from './redux/actions';
-import InfoTable from './InfoTable';
-import OperatingSystemCard from './OperatingSystemCard';
-import SystemCard from './SystemCard';
-import BiosCard from './BiosCard';
-import InfrastructureCard from './InfrastructureCard';
-import ConfigurationCard from './ConfigurationCard';
-import CollectionCard from './CollectionCard';
+import { systemProfile } from '../redux/actions';
+import InfoTable from '../InfoTable';
+import OperatingSystemCard from '../OperatingSystemCard';
+import SystemCard from '../SystemCard';
+import BiosCard from '../BiosCard';
+import InfrastructureCard from '../InfrastructureCard';
+import ConfigurationCard from '../ConfigurationCard';
+import CollectionCard from '../CollectionCard';
 import { Provider } from 'react-redux';
 import './general-information.scss';
 

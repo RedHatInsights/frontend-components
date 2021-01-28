@@ -4,7 +4,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import BiosCard from './BiosCard';
 import configureStore from 'redux-mock-store';
-import { biosTest } from './__mock__/selectors';
+import { biosTest } from '../__mock__/selectors';
 
 describe('BiosCard', () => {
     let initialState;
