@@ -50,7 +50,8 @@ module.exports = (configurations) => {
             appDeployment,
             insights,
             publicPath,
-            appEntry
+            appEntry,
+            appName: insights.appname
         }),
         plugins: plugins({
             ...configurations,
