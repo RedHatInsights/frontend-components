@@ -1,26 +1,24 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins';
 .ins-c-general-information {
-    .ins-active-app-general_information {
-        .pf-c-content {
-            .pf-l-level div:first-child {
-                font-weight: var(--pf-global--FontWeight--bold);
-            }
+    .pf-c-content {
+        .pf-l-level div:first-child {
+            font-weight: var(--pf-global--FontWeight--bold);
         }
+    }
 
-        table {
-            td.ins-no-data {
-                text-align: center;
-            }
+    table {
+        td.ins-no-data {
+            text-align: center;
         }
+    }
 
-        .ins-active-general_information__popover-icon {
-            padding: 0;
-            margin-left: var(--pf-global--spacer--sm);
-        }
+    .ins-active-general_information__popover-icon {
+        padding: 0;
+        margin-left: var(--pf-global--spacer--sm);
+    }
 
-        dl dd {
-            word-break: break-all;
-        }
+    dl dd {
+        word-break: break-all;
     }
 
     .pf-c-modal-box .pf-c-table {

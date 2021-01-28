@@ -62,42 +62,44 @@ class GeneralInformation extends Component {
         const Wrapper = store ? Provider : Fragment;
         return (
             <Wrapper {...(store && { store })}>
-                <Grid sm={ 12 } md={ 6 } hasGutter className="ins-c-general-information">
-                    <GridItem>
-                        <SystemCard handleClick={ this.handleModalToggle } writePermissions={writePermissions} />
-                    </GridItem>
-                    <GridItem>
-                        <OperatingSystemCard handleClick={ this.handleModalToggle } />
-                    </GridItem>
-                    <GridItem>
-                        <BiosCard handleClick={ this.handleModalToggle } />
-                    </GridItem>
-                    <GridItem>
-                        <InfrastructureCard handleClick={ this.handleModalToggle } />
-                    </GridItem>
-                    <GridItem>
-                        <ConfigurationCard handleClick={ this.handleModalToggle } />
-                    </GridItem>
-                    <GridItem>
-                        <CollectionCard handleClick={ this.handleModalToggle } />
-                    </GridItem>
-                    <Modal
-                        title={ modalTitle || '' }
-                        aria-label={`${modalTitle || ''} modal`}
-                        isOpen={ isModalOpen }
-                        onClose={ () => this.handleModalToggle() }
-                        className="ins-c-inventory__detail--dialog"
-                        variant={ modalVariant }
-                    >
-                        <InfoTable
-                            cells={ cells }
-                            rows={ rows }
-                            expandable={ expandable }
-                            onSort={ this.onSort }
-                            filters={ filters }
-                        />
-                    </Modal>
-                </Grid>
+                <div className="ins-c-general-information">
+                    <Grid sm={ 12 } md={ 6 } hasGutter>
+                        <GridItem>
+                            <SystemCard handleClick={ this.handleModalToggle } writePermissions={writePermissions} />
+                        </GridItem>
+                        <GridItem>
+                            <OperatingSystemCard handleClick={ this.handleModalToggle } />
+                        </GridItem>
+                        <GridItem>
+                            <BiosCard handleClick={ this.handleModalToggle } />
+                        </GridItem>
+                        <GridItem>
+                            <InfrastructureCard handleClick={ this.handleModalToggle } />
+                        </GridItem>
+                        <GridItem>
+                            <ConfigurationCard handleClick={ this.handleModalToggle } />
+                        </GridItem>
+                        <GridItem>
+                            <CollectionCard handleClick={ this.handleModalToggle } />
+                        </GridItem>
+                        <Modal
+                            title={ modalTitle || '' }
+                            aria-label={`${modalTitle || ''} modal`}
+                            isOpen={ isModalOpen }
+                            onClose={ () => this.handleModalToggle() }
+                            className="ins-c-inventory__detail--dialog"
+                            variant={ modalVariant }
+                        >
+                            <InfoTable
+                                cells={ cells }
+                                rows={ rows }
+                                expandable={ expandable }
+                                onSort={ this.onSort }
+                                filters={ filters }
+                            />
+                        </Modal>
+                    </Grid>
+                </div>
             </Wrapper>
         );
     }
