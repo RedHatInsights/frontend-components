@@ -13,7 +13,6 @@ import Description from './components/Description';
 import CardSelect from './components/CardSelect';
 import AuthSelect from './components/AuthSelect';
 import Authentication from './components/Authentication';
-import EnhancedSelect from './components/EnhancedSelect';
 import EnhancedRadio from './components/EnhancedRadio';
 
 export const mapperExtension = {
@@ -22,7 +21,6 @@ export const mapperExtension = {
     'card-select': CardSelect,
     summary: SourceWizardSummary,
     authentication: Authentication,
-    'enhanced-select': EnhancedSelect,
     'enhanced-radio': EnhancedRadio
 };
 
