@@ -1,22 +1,28 @@
 /* eslint-disable camelcase */
 import './insights.scss';
 
-import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, IMPACT_LABEL, LIKELIHOOD_LABEL } from './Constants';
+import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, IMPACT_LABEL, LIKELIHOOD_LABEL } from '../Constants';
 import React, { Component, Fragment } from 'react';
 import { SortByDirection, Table, TableBody, TableHeader, cellWidth, fitContent, sortable } from '@patternfly/react-table';
 import { flatten, sortBy } from 'lodash';
 import { Button, Bullseye, Card, CardBody, Stack, StackItem, Tooltip, TooltipPosition, ToolbarItem, ClipboardCopy } from '@patternfly/react-core';
 import { CheckCircleIcon, PficonSatelliteIcon, ExternalLinkAltIcon, AnsibeTowerIcon, TimesCircleIcon, CheckIcon, ChartSpikeIcon } from '@patternfly/react-icons';
-
-import API from './Api';
-import { DateFormat, InsightsLabel, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
-import { List } from 'react-content-loader';
-import MessageState from './MessageState';
-import PropTypes from 'prop-types';
-import { RemediationButton } from '@redhat-cloud-services/frontend-components-remediations';
-import ReportDetails from './ReportDetails';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { connect } from 'react-redux';
+import { List } from 'react-content-loader';
+
+import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
+import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
+import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+/**
+ * TO DO Use v3 package once avaiable
+ */
+import { RemediationButton } from '@redhat-cloud-services/frontend-components-remediations';
+
+import API from '../Api';
+import PropTypes from 'prop-types';
+import ReportDetails from '../ReportDetails';
+import MessageState from '../MessageState';
 
 class InventoryRuleList extends Component {
     state = {
@@ -406,7 +412,7 @@ class InventoryRuleList extends Component {
             onDelete: this.onChipDelete
         };
 
-        return <Fragment>
+        return <div className="ins-c-inventory-insights__overrides">
             {inventoryReportFetchStatus === 'pending' ||
                 (inventoryReportFetchStatus === 'fulfilled' && hideResultsSatelliteManaged) ||
                 entity.insights_id === null ?
@@ -493,7 +499,7 @@ class InventoryRuleList extends Component {
                         : `This entity can not be found or might no longer be registered to Red Hat Insights.`} />
 
             }
-        </Fragment>;
+        </div>;
     }
 }
 

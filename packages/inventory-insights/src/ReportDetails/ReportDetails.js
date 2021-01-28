@@ -1,9 +1,8 @@
-import '@redhat-cloud-services/frontend-components/components/section.scss';
-import './insights.scss';
+import './report-details.scss';
 
 import { BullseyeIcon, ExternalLinkAltIcon, InfoCircleIcon, LightbulbIcon, ThumbsUpIcon } from '@patternfly/react-icons';
 import { Card, CardBody, CardHeader, Stack, StackItem } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
 import React from 'react';
 import classNames from 'classnames';
@@ -54,7 +53,7 @@ const ReportDetails = ({ report, kbaDetail, kbaLoading }) => {
         }
     };
 
-    return <Card style={{ boxShadow: 'none' }}>
+    return <Card className="ins-c-inventory-insights__report-details__override" style={{ boxShadow: 'none' }}>
         <CardBody>
             <Stack className={rulesCardClasses} widget-type='InsightsRulesCard' hasGutter>
                 <StackItem>
