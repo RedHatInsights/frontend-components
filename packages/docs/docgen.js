@@ -4,6 +4,7 @@ const reactDocs = require('react-docgen');
 const glob = require('glob');
 const fse = require('fs-extra');
 const chokidar = require('chokidar');
+const jsdocParser = require('jsdoc3-parser');
 
 const COMPONENTS_JSON = 'component-docs.json';
 
@@ -12,24 +13,87 @@ const files = glob.sync(`${componentsSrc}/**/*.js`);
 
 const args = process.argv.slice(2);
 
+function parseArrayObject(param) {
+    return param
+    .replace(/^Array.<{/, '{')
+    .replace(/}>$/, '}')
+    .replace(',', ',\n')
+    .replace(/^{/, '{\n')
+    .replace(/}$/, '\n}')
+    .replace(/(?<!:) /gm, '')
+    .replace(/^(?!({|}))/gm, '  ');
+}
+
+function parseParam(param) {
+    const copy = { ...param };
+    if (param.type && param.type.names) {
+        const names = param.type.names.map(name => {
+            if (name.includes('Array.<{')) {
+                return parseArrayObject(name);
+            }
+
+            return name;
+        });
+        copy.type.names = names;
+    }
+
+    return copy;
+}
+
 let content = {};
 function parseFile(file, content) {
-    const src = fse.readFileSync(file, { encoding: 'utf-8' });
-    try {
-        const componentInfo = reactDocs.parse(src);
-        content[file] = componentInfo;
-    } catch (error) {
-        console.log('\x1b[33m%s\x1b[0m', error.message, `File: ${file}`);
-    }
+    return new Promise(resolve => {
+        const src = fse.readFileSync(file, { encoding: 'utf-8' });
+        try {
+            const componentInfo = reactDocs.parse(src);
+            content[file] = componentInfo;
+            resolve();
+        } catch (error) {
+            if (!file.includes('index.js') && !file.includes('.test.js')) {
+                jsdocParser(file, function(error, ast) {
+                    if (error) {
+                        console.log(error);
+                    }
+
+                    const documented = ast
+                    .filter(({ undocumented, comment = '' }) => !undocumented && comment.includes('@generate'))
+                    .map(({ name, description, params, returns }) => {
+                        return {
+                            name,
+                            description,
+                            params: params.map(parseParam),
+                            returns: returns.map(parseParam)
+                        };
+                    });
+                    const src = {
+                        displayName: file.split('/').pop().replace('.js', ''),
+                        jsdoc: true,
+                        functions: documented
+                    };
+                    if (documented.length > 0) {
+                        content[file] = src;
+
+                    }
+
+                    resolve();
+                });
+            } else {
+                console.log('\x1b[33m%s\x1b[0m', error.message, `File: ${file}`);
+                resolve();
+            }
+
+        }
+    });
 }
 
 const target = path.resolve(__dirname, `./${COMPONENTS_JSON}`);
 
-function run(files) {
+async function run(files) {
     content = {};
-    files.forEach(file => {
-        parseFile(file, content);
+    const cmds = files.map(async file => {
+        await parseFile(file, content);
     });
+    await Promise.all(cmds);
     fse.writeJSONSync(target, content, { spaces: '\t' });
 }
 

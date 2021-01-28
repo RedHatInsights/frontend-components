@@ -4,6 +4,7 @@ const path = require('path');
 const glob = require('glob');
 const fse = require('fs-extra');
 const chokidar = require('chokidar');
+const nonReactGenerator = require('./non-react-generator');
 
 const COMPONENTS_JSON = 'component-docs.json';
 
@@ -194,9 +195,20 @@ async function traverseComponents() {
     const components = fse.readJSONSync(path.resolve(__dirname, COMPONENTS_JSON));
     const foo = Object.entries(components);
     const cmds = foo.map(([ name, API ]) => {
+        if (API.jsdoc) {
+            return nonReactGenerator(name, API);
+        }
+
         return generateMD(name, API);
     });
-    const componentsNav = Object.keys(components).map(key => key.split('/').pop().replace('.js', '')).sort((a, b) => a.localeCompare(b));
+    const componentsNav = Object.entries(components).map(([ key, { jsdoc }]) => {
+        if (jsdoc) {
+            let destName = key.split('/');
+            return destName.slice(destName.length - 2).join('-').replace('.js', '');
+        }
+
+        return key.split('/').pop().replace('.js', '');
+    }).sort((a, b) => a.localeCompare(b));
     fse.writeJsonSync(`${navDest}/components-navigation.json`, componentsNav);
     return Promise.all(cmds);
 }

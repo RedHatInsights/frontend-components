@@ -1,3 +1,9 @@
+/**
+ * @generate
+ * @description This doc is not correct. It is used as an example for debugging and configuring the doc generator for funcions.
+ * @param {Array<{level: Number, treeParent: Number}>} rows Tree table rows
+ * @returns {Array<{level: Number}>|undefined} rows
+ */
 export const sizeCalculator = (rows) => {
     let points = {};
 
