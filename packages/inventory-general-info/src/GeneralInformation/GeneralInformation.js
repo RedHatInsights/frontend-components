@@ -62,7 +62,7 @@ class GeneralInformation extends Component {
         const Wrapper = store ? Provider : Fragment;
         return (
             <Wrapper {...(store && { store })}>
-                <Grid sm={ 12 } md={ 6 } hasGutter>
+                <Grid sm={ 12 } md={ 6 } hasGutter className="ins-c-general-information">
                     <GridItem>
                         <SystemCard handleClick={ this.handleModalToggle } writePermissions={writePermissions} />
                     </GridItem>
