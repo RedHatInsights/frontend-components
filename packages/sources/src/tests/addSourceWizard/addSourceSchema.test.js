@@ -243,7 +243,7 @@ describe('Add source schema', () => {
         it('generate steps and filters application not belonging to the type', () => {
             const result = applicationStep(applicationTypes, 'amazon', INTL);
 
-            expect(result.title).toEqual('Application');
+            expect(result.title).toEqual('Select application');
             expect(result.fields.map(({ name }) => name)).toEqual([
                 'app-description', 'application.application_type_id', 'source_type'
             ]);

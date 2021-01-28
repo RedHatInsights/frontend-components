@@ -199,8 +199,8 @@ const redhatTypes = ({ intl, sourceTypes, applicationTypes, disableAppSelection 
 export const applicationStep = (applicationTypes, selectedType, intl) => ({
     name: 'types_step',
     title: intl.formatMessage({
-        id: 'wizard.Application',
-        defaultMessage: 'Application'
+        id: 'wizard.selectApplication',
+        defaultMessage: 'Select application'
     }),
     nextStep,
     fields: [{
@@ -269,8 +269,8 @@ export const NameDescription = () => {
 
 const nameStep = (intl) => ({
     title: intl.formatMessage({
-        id: 'wizard.name',
-        defaultMessage: 'Name'
+        id: 'wizard.nameSource',
+        defaultMessage: 'Name source'
     }),
     name: 'name_step',
     nextStep: 'types_step',
