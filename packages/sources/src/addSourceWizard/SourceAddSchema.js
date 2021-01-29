@@ -67,7 +67,7 @@ export const descriptionMapper = (type, intl) => ({
         id: 'cost.app.description',
         defaultMessage: 'Analyze, forecast, and optimize your Red Hat OpenShift cluster costs in hybrid cloud environments.'
     }),
-    [CLOUD_METER_APP_NAME]: <SubWatchDescription />
+    [CLOUD_METER_APP_NAME]: <SubWatchDescription id={type.id} />
 }[type.name]);
 
 export const labelMapper = (type, intl) => ({
