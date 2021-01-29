@@ -6,7 +6,7 @@ import { Table, TableHeader, TableBody, sortable, fitContent } from '@patternfly
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
 
-import './compliance.scss';
+import '../Compliance/compliance.scss';
 import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from '../PresentationalComponents';
 import {
     FilterConfigBuilder, buildFilterConfig, POLICIES_FILTER_CONFIG,
@@ -332,7 +332,7 @@ class SystemRulesTable extends React.Component {
         if (loading) {
             return <RuleLoadingTable columns={columns} />;
         } else {
-            return <React.Fragment>
+            return <div className="ins-c-compliance__scope">
                 <PrimaryToolbar
                     filterConfig={ filterConfig }
                     activeFiltersConfig={{
@@ -373,7 +373,7 @@ class SystemRulesTable extends React.Component {
                         variant={ PaginationVariant.bottom }
                     />
                 </TableToolbar>
-            </React.Fragment>;
+            </div>;
         }
     }
 }
