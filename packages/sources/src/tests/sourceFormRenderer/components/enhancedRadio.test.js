@@ -75,7 +75,7 @@ describe('EnhancedRadio', () => {
         ]);
     });
 
-    it('select first when source_type is changed and clear itself when it is unselected', async () => {
+    it('select first when source_type and the length is one', async () => {
         const mutator = (option) => option;
 
         const wrapper = mount(<FormRenderer
@@ -119,9 +119,64 @@ describe('EnhancedRadio', () => {
             source_type: 'some-value'
         });
         onSubmit.mockReset();
+    });
+
+    it('unselect app type when source type does not support it', async () => {
+        const mutator = (option, formOptions) => {
+            if (formOptions.getState().values.source_type === 'aws') {
+                if (option.value === 'second-option') {
+                    return;
+                }
+
+                return option;
+            }
+
+            if (option.value === 'aws-option') {
+                return { label: 'No application', value: '' };
+            }
+
+            return option;
+        };
+
+        let wrapper;
 
         await act(async() => {
-            wrapper.find('input').first().instance().value = '';
+            wrapper = mount(<FormRenderer
+                {...initialProps}
+                schema={{
+                    fields: [{
+                        component: componentTypes.TEXT_FIELD,
+                        name: 'source_type'
+                    }, {
+                        component: 'enhanced-radio',
+                        options: [
+                            { label: 'option', value: 'aws-option' },
+                            { label: 'option-1', value: 'second-option' }
+                        ],
+                        mutator,
+                        name: 'radio'
+                    }]
+                }}
+                initialValues={{
+                    source_type: 'aws'
+                }}
+            />);
+        });
+        wrapper.update();
+
+        await act(async() => {
+            wrapper.find('form').simulate('submit');
+        });
+        wrapper.update();
+
+        expect(onSubmit).toHaveBeenCalledWith({
+            radio: 'aws-option',
+            source_type: 'aws'
+        });
+        onSubmit.mockReset();
+
+        await act(async() => {
+            wrapper.find('input').first().instance().value = 'some-value';
             wrapper.find('input').first().simulate('change');
         });
         wrapper.update();
@@ -131,6 +186,9 @@ describe('EnhancedRadio', () => {
         });
         wrapper.update();
 
-        expect(onSubmit).toHaveBeenCalledWith({});
+        expect(onSubmit).toHaveBeenCalledWith({
+            source_type: 'some-value'
+        });
+        onSubmit.mockReset();
     });
 });

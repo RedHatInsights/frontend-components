@@ -274,6 +274,6 @@ describe('AddSourceWizard', () => {
         });
         wrapper.update();
 
-        expect(wrapper.find(SourcesFormRenderer).props().schema.fields[0].fields[1].title).toEqual('Application');
+        expect(wrapper.find(SourcesFormRenderer).props().schema.fields[0].fields[1].title).toEqual('Select application');
     });
 });

@@ -13,6 +13,8 @@ import { useIntl } from 'react-intl';
 
 import { getSubWatchConfig } from '../../../api/subscriptionWatch';
 
+const b = (chunks) => <b key={`b-${chunks.length}-${Math.floor(Math.random() * 1000)}`}>{chunks}</b>;
+
 export const IAMRoleDescription = () => {
     const intl = useIntl();
     const [ config, setConfig ] = useState();
@@ -38,13 +40,17 @@ export const IAMRoleDescription = () => {
             <TextListItem>
                 { intl.formatMessage({
                     id: 'subwatch.iamrole.createRole',
-                    defaultMessage: 'From the AWS Identity access management console, create a new role.'
+                    defaultMessage: 'From the AWS IAM console, create a new role.'
                 }) }
             </TextListItem>
             <TextListItem>
                 { intl.formatMessage({
                     id: 'subwatch.iamrole.pasteAccountID',
-                    defaultMessage: 'Select another AWS account from the list of trusted entities and paste the following value into the Account ID field:'
+                    defaultMessage:
+                        'Select <b>Another AWS account</b> from the list of trusted entities and paste the following value into the <b>Account{space}ID</b> field:'
+                }, {
+                    b,
+                    space: <React.Fragment>&nbsp;</React.Fragment>
                 }) }
             </TextListItem>
             <ClipboardCopy className="pf-u-m-sm-on-sm" isReadOnly>
@@ -63,6 +69,19 @@ export const IAMRoleDescription = () => {
                 }) }
             </TextListItem>
         </TextList>
+        <Text component={ TextVariants.p }>
+            { intl.formatMessage({
+                id: 'subwatch.iampolicy.BDoNotCloseYourBrowserBYouWillNeedToBeLoggedInToTheIamConsoleToComputeTheNextStep',
+                defaultMessage: '{bold} You will need to be logged in to the IAM console to complete the next step.'
+            }, {
+                bold: <b key="bold">
+                    { intl.formatMessage({
+                        id: 'subwatch.iampolicy.dontCloseBrowser',
+                        defaultMessage: 'Do not close your browser.'
+                    }) }
+                </b>
+            }) }
+        </Text>
     </TextContent>);
 };
 
@@ -84,14 +103,14 @@ export const IAMPolicyDescription = () =>  {
         <Text component={ TextVariants.p }>
             { intl.formatMessage({
                 id: 'subwatch.iampolicy.grantPermissions',
-                defaultMessage: 'To grant permissions to obtain subscription data, create an AWS identity access management (IAM) policy.'
+                defaultMessage: 'To grant Red Hat access to your Amazon Web Services (AWS) subscription data, create an AWS Identity and Access Management (IAM) policy.'
             }) }
         </Text>
         <TextList component={TextListVariants.ol}>
             <TextListItem>
                 { intl.formatMessage({
                     id: 'subwatch.iampolicy.signIn',
-                    defaultMessage: 'Sign in to the {link}.'
+                    defaultMessage: 'Log in to the {link}.'
                 }, {
                     link: <a
                         key='link'
@@ -100,7 +119,7 @@ export const IAMPolicyDescription = () =>  {
                         target="_blank">
                         { intl.formatMessage({
                             id: 'subwatch.iampolicy.IAMconsole',
-                            defaultMessage: 'AWS Identity Access Management* (IAM) console'
+                            defaultMessage: 'AWS Identity and Management (IAM) console'
                         }) }
                     </a>
                 }) }
@@ -124,7 +143,7 @@ export const IAMPolicyDescription = () =>  {
         <Text component={ TextVariants.p }>
             { intl.formatMessage({
                 id: 'subwatch.iampolicy.BDoNotCloseYourBrowserBYouWillNeedToBeLoggedInToTheIamConsoleToComputeTheNextStep',
-                defaultMessage: '{bold} You will need to be logged in to the IAM console to compute the next step.'
+                defaultMessage: '{bold} You will need to be logged in to the IAM console to complete the next step.'
             }, {
                 bold: <b key="bold">
                     { intl.formatMessage({
@@ -151,14 +170,14 @@ export const ArnDescription = () => {
             <TextListItem>
                 { intl.formatMessage({
                     id: 'subwatch.arn.selectRole',
-                    defaultMessage: 'From the Roles tab, select the role you just created.'
+                    defaultMessage: 'Navigate to the role that you just created. '
                 }) }
             </TextListItem>
             <TextListItem>
                 { intl.formatMessage({
                     id: 'subwatch.arn.copyArn',
-                    defaultMessage: 'From the Summary screen, copy the role ARN and paste it in the ARN field:'
-                }) }
+                    defaultMessage: 'From the <b>Summary</b> screen, copy the role ARN and paste it in the <b>ARN field</b> below.'
+                }, { b }) }
             </TextListItem>
         </TextList>
     </TextContent>);
