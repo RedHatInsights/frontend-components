@@ -6,13 +6,13 @@ import { Table, TableHeader, TableBody, sortable, fitContent } from '@patternfly
 import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
 
 import './compliance.scss';
-import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from './PresentationalComponents';
+import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from '../PresentationalComponents';
 import {
     FilterConfigBuilder, buildFilterConfig, POLICIES_FILTER_CONFIG,
     toRulesArray, orderByArray, orderRuleArrayByProp
-} from './Utilities';
-import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
-import ComplianceRemediationButton from './ComplianceRemediationButton';
+} from '../Utilities';
+import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from '../Constants';
+import ComplianceRemediationButton from '../ComplianceRemediationButton';
 
 export const columns = [
     { title: 'Rule', transforms: [ sortable ] },
