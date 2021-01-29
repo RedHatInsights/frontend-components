@@ -230,7 +230,7 @@ describe('Add source schema', () => {
             ]);
             expect(result.fields[1].options).toEqual([
                 { label: 'Cost Management', value: '2', description: 'Analyze, forecast, and optimize your Red Hat OpenShift cluster costs in hybrid cloud environments.' },
-                { label: expect.any(Object), value: '5', description: <SubWatchDescription /> },
+                { label: expect.any(Object), value: '5', description: <SubWatchDescription id="5"/> },
                 { label: 'Topological Inventory', value: '3', description: undefined },
                 { value: '', label: 'No application' }
             ]);
