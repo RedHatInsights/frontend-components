@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { Table, TableHeader, TableBody } from '@patternfly/react-table';
-import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import RowLoader from '@redhat-cloud-services/frontend-components-utilities/RowLoader';
 
 const RuleLoadingTable = ({ columns }) => (
     <Table

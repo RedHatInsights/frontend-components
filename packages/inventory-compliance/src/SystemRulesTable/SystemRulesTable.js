@@ -3,7 +3,8 @@ import propTypes from 'prop-types';
 import { Pagination, PaginationVariant, ToolbarItem } from '@patternfly/react-core';
 import { CheckCircleIcon, ExclamationCircleIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
 import { Table, TableHeader, TableBody, sortable, fitContent } from '@patternfly/react-table';
-import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
 
 import './compliance.scss';
 import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from '../PresentationalComponents';

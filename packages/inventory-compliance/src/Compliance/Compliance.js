@@ -6,7 +6,7 @@ import ComplianceEmptyState from '../ComplianceEmptyState';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
-import { Spinner } from '@redhat-cloud-services/frontend-components';
+import { Spinner } from '@redhat-cloud-services/frontend-components/Spinner';
 import './compliance.scss';
 import { ErrorCard } from '../PresentationalComponents';
 import { IntlProvider } from 'react-intl';
