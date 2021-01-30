@@ -111,7 +111,7 @@ export default {
                         }]
                     },
                     additionalSteps: [{
-                        title: <FormattedMessage id="cost.configureOperator" defaultMessage="Cost Management Operator" />,
+                        title: <FormattedMessage id="cost.configureOperator" defaultMessage="Install and configure operator" />,
                         fields: [{
                             component: 'description',
                             name: 'description-summary',

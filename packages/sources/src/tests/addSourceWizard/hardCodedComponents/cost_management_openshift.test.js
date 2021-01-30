@@ -7,7 +7,6 @@ describe('Cost Management OpenShift steps components', () => {
     test('Configure Cost Management Operator description', () => {
         const wrapper = mount(<OpCm.ConfigureCostOperator />);
 
-        expect(wrapper.find('ol')).toHaveLength(1);
-        expect(wrapper.find('li')).toHaveLength(2);
+        expect(wrapper.find('p')).toHaveLength(4);
     });
 });
