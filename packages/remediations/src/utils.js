@@ -1,6 +1,8 @@
+/* eslint-disable camelcase */
 import React, { Fragment } from 'react';
 import { CloseIcon, RedoIcon } from '@patternfly/react-icons';
 import urijs from 'urijs';
+import * as api from './api';
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
 
@@ -76,4 +78,36 @@ export const getResolution = (issueId, formValues, resolutions) => {
     }
 
     return issueResolutions;
+};
+
+function createNotification (id, name, isNewSwitch) {
+    const verb = isNewSwitch ? 'created' : 'updated';
+
+    return {
+        variant: 'success',
+        title: `Playbook ${verb}`,
+        description: <span>You have successfully {verb} <a href={ remediationUrl(id) } >{ name }</a>.</span>,
+        dismissable: true
+    };
+}
+
+export const submitRemediation = (formValues, data, basePath, resolutions) => {
+    const resolver = (id, name, isNewSwitch, onRemediationCreated) => onRemediationCreated({
+        remediation: { id, name },
+        getNotification: () => createNotification(id, name, isNewSwitch)
+    });
+    const issues = data.issues.map(({ id }) => ({
+        id,
+        resolution: getResolution(id, formValues, resolutions)?.[0]?.id,
+        systems: data.systems
+    }));
+    const add = { issues, systems: data.systems };
+    if (formValues[EXISTING_PLAYBOOK_SELECTED]) {
+        const { id, name } = formValues[EXISTING_PLAYBOOK];
+        api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
+        .then(() => resolver(id, name, false, data.onRemediationCreated));
+    } else {
+        api.createRemediation({ name: formValues[SELECT_PLAYBOOK], add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
+        .then(({ id }) => resolver(id, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated));
+    }
 };
