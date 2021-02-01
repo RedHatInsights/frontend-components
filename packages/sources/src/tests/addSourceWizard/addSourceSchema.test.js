@@ -116,10 +116,12 @@ describe('Add source schema', () => {
     describe('mutators', () => {
         const sourceTypes = [{
             product_name: 'Amazon',
-            name: 'amazon'
+            name: 'amazon',
+            id: 'amazon'
         }, {
             product_name: 'differen type',
-            name: 'ops'
+            name: 'ops',
+            id: 'openshift'
         }];
         const applicationTypes = [{
             id: 'selected',
@@ -166,7 +168,7 @@ describe('Add source schema', () => {
             expect(mutator({ label: 'catalog', value: 'selected' }, formOptions)).toEqual(
                 { label: 'catalog', value: 'selected' }
             );
-            expect(mutator({ label: 'cost', value: 'cost' }, formOptions)).toEqual(undefined);
+            expect(mutator({ label: 'cost this is label', value: 'cost' }, formOptions)).toEqual(undefined);
         });
     });
 
