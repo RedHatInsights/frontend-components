@@ -10,6 +10,47 @@ import {
     AUTO_REBOOT
 } from './utils';
 
+export const selectPlaybookFields = [{
+    name: SELECT_PLAYBOOK,
+    component: 'select-playbook',
+    validate: [{
+        type: validatorTypes.PATTERN,
+        pattern: /^$|^.*[\w\d]+.*$/
+    },
+    {
+        type: validatorTypes.REQUIRED
+    }]
+},
+{
+    name: EXISTING_PLAYBOOK_SELECTED,
+    component: componentTypes.TEXT_FIELD,
+    hideField: true
+},
+{
+    name: EXISTING_PLAYBOOK,
+    component: componentTypes.TEXT_FIELD,
+    hideField: true
+}];
+
+export const reviewActionsFields = [{
+    name: MANUAL_RESOLUTION,
+    component: 'review-actions'
+}];
+
+export const reviewActionsNextStep = (values, issues) => {
+    const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
+        ? issues.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
+        : issues;
+    return values[MANUAL_RESOLUTION] ? filteredIssues[0].id : 'review';
+};
+
+export const issueResolutionNextStep = (values, issues, issue) => {
+    const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
+        ? issues.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
+        : issues;
+    return filteredIssues.slice(filteredIssues.findIndex(i => i.id === issue.id) + 1, filteredIssues.length)[0]?.id || 'review';
+};
+
 export default issues => ({
     fields: [
         {
@@ -24,42 +65,14 @@ export default issues => ({
                 {
                     name: 'playbook',
                     title: 'Select playbook',
-                    fields: [{
-                        name: SELECT_PLAYBOOK,
-                        component: 'select-playbook',
-                        validate: [{
-                            type: validatorTypes.PATTERN,
-                            pattern: /^$|^.*[\w\d]+.*$/
-                        },
-                        {
-                            type: validatorTypes.REQUIRED
-                        }]
-                    },
-                    {
-                        name: EXISTING_PLAYBOOK_SELECTED,
-                        component: componentTypes.TEXT_FIELD,
-                        hideField: true
-                    },
-                    {
-                        name: EXISTING_PLAYBOOK,
-                        component: componentTypes.TEXT_FIELD,
-                        hideField: true
-                    }],
+                    fields: selectPlaybookFields,
                     nextStep: ({ values }) => values[HAS_MULTIPLES] ? 'actions' : 'review'
                 },
                 {
                     name: 'actions',
                     title: 'Review and edit actions',
-                    fields: [{
-                        name: MANUAL_RESOLUTION,
-                        component: 'review-actions'
-                    }],
-                    nextStep: ({ values }) => {
-                        const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
-                            ? issues.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
-                            : issues;
-                        return values[MANUAL_RESOLUTION] ? filteredIssues[0].id : 'review';
-                    }
+                    fields: reviewActionsFields,
+                    nextStep: ({ values }) => reviewActionsNextStep(values, issues)
                 },
                 ...issues.map(issue => (
                     {
@@ -78,12 +91,7 @@ export default issues => ({
                                 hideField: true
                             }
                         ],
-                        nextStep: ({ values }) => {
-                            const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
-                                ? issues.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
-                                : issues;
-                            return filteredIssues.slice(filteredIssues.findIndex(i => i.id === issue.id) + 1, filteredIssues.length)[0]?.id || 'review';
-                        },
+                        nextStep: ({ values }) => issueResolutionNextStep(values, issues, issue),
                         substepOf: 'Choose actions'
                     }
                 )),
