@@ -1,4 +1,4 @@
-import validate from './validator';
+import validate from '../validator';
 
 function validData () {
     return {
