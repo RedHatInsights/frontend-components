@@ -1,7 +1,7 @@
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import {
     stringToId
-} from './FilterConfigBuilder';
+} from './Helpers';
 
 class FilterBuilder {
     constructor(filterConfig) {
