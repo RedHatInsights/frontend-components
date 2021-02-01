@@ -19,3 +19,23 @@
 .ins-c-sources__wizard--step-text {
   max-width: 536px;
 }
+
+.ins-c-sources__wizard--radio {
+  .pf-c-radio:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}
+
+.ins-c-sources__wizard--rhel-mag-label {
+  position: relative;
+  top: -3px;
+}
+
+.ins-c-sources__wizard--rhel-mag-label {
+  position: relative;
+  top: -3px;
+}
+
+.ins-c-sources__wizard--rhel-desc-title {
+  color: initial;
+}
