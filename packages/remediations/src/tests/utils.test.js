@@ -8,7 +8,7 @@ import {
     SELECTED_RESOLUTIONS,
     EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
-import { remediationsWizardTestData } from './testData';
+import { remediationWizardTestData } from './testData';
 
 describe('getResolution', function () {
 
@@ -18,13 +18,13 @@ describe('getResolution', function () {
 
     beforeEach(() => {
         data = {
-            issues: remediationsWizardTestData.issues,
-            systems: remediationsWizardTestData.systems,
+            issues: remediationWizardTestData.issues,
+            systems: remediationWizardTestData.systems,
             onRemediationCreated: jest.fn()
         },
-        resolutions = remediationsWizardTestData.resolutions;
+        resolutions = remediationWizardTestData.resolutions;
         formValues = {
-            ...remediationsWizardTestData.formValues,
+            ...remediationWizardTestData.formValues,
             [EXISTING_PLAYBOOK]: {
                 auto_reboot: true,
                 id: 'id',

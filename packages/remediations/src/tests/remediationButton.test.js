@@ -4,7 +4,7 @@ import RemediationWizardHelper from '../NewRemediationWizardHelper';
 import RemediationButton from '../RemediationButton';
 import { mount } from 'enzyme';
 import { CAN_REMEDIATE } from '../utils';
-import { remediationsWizardTestData } from './testData';
+import { remediationWizardTestData } from './testData';
 
 describe('RemediationButton', () => {
 
@@ -15,7 +15,7 @@ describe('RemediationButton', () => {
     beforeEach(() => {
         initialProps = {
             dataProvider: () => ({
-                issues: remediationsWizardTestData.issues,
+                issues: remediationWizardTestData.issues,
                 systems: []
             })
         };

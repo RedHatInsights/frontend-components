@@ -8,7 +8,7 @@ import ReviewActions from '../../newSteps/reviewActions';
 import { reviewActionsFields } from '../../schema';
 import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED } from '../../utils';
 import { BodyRow } from '@patternfly/react-table/dist/js/components/Table/base';
-import { remediationsWizardTestData } from '../testData';
+import { remediationWizardTestData } from '../testData';
 
 const RendererWrapper = (props) => (
     <FormRenderer
@@ -17,8 +17,8 @@ const RendererWrapper = (props) => (
         componentMapper={{
             'review-actions': {
                 component: ReviewActions,
-                issues: remediationsWizardTestData.issues,
-                issuesMultiple: remediationsWizardTestData.issuesMultiple
+                issues: remediationWizardTestData.issues,
+                issuesMultiple: remediationWizardTestData.issuesMultiple
             }
         }}
         initialValues={{

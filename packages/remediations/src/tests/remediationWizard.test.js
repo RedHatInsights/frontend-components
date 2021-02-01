@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils';
 import * as dependency from '../api/index';
 import { mount } from 'enzyme';
 import RemediationWizard from '../NewRemediationWizard';
-import { remediationsWizardTestData } from './testData';
+import { remediationWizardTestData } from './testData';
 
 describe('RemediationWizard', () => {
     let initialProps;
@@ -13,8 +13,8 @@ describe('RemediationWizard', () => {
     beforeEach(() => {
         initialProps = {
             data: {
-                issues: remediationsWizardTestData.issues,
-                systems: remediationsWizardTestData.systems
+                issues: remediationWizardTestData.issues,
+                systems: remediationWizardTestData.systems
             },
             setOpen: jest.fn()
         };
@@ -23,7 +23,7 @@ describe('RemediationWizard', () => {
     it('should render wizard correctly', async () => {
         dependency.getResolutionsBatch = jest.fn(
             () => new Promise(
-                (resolve) => resolve(remediationsWizardTestData.issueResolutionsResponse)
+                (resolve) => resolve(remediationWizardTestData.issueResolutionsResponse)
             )
         );
 

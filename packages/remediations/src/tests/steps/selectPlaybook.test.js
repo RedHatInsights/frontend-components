@@ -9,7 +9,7 @@ import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-fie
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import { act } from 'react-dom/test-utils';
 import { selectPlaybookFields } from '../../schema';
-import { remediationsWizardTestData } from '../testData';
+import { remediationWizardTestData } from '../testData';
 
 const RendererWrapper = (props) => (
     <FormRenderer
@@ -19,8 +19,8 @@ const RendererWrapper = (props) => (
             [componentTypes.TEXT_FIELD]: TextField,
             'select-playbook': {
                 component: SelectPlaybook,
-                issues: remediationsWizardTestData.issues,
-                systems: remediationsWizardTestData.systems
+                issues: remediationWizardTestData.issues,
+                systems: remediationWizardTestData.systems
             }
         }}
         schema={{ fields: [] }}

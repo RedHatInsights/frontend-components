@@ -7,7 +7,7 @@ import { act } from 'react-dom/test-utils';
 import IssueResolution from '../../newSteps/issueResolution';
 import { SELECTED_RESOLUTIONS } from '../../utils';
 import { Tile } from '@patternfly/react-core';
-import { remediationsWizardTestData } from '../testData';
+import { remediationWizardTestData } from '../testData';
 
 const RendererWrapper = (props) => (
     <FormRenderer
@@ -16,9 +16,9 @@ const RendererWrapper = (props) => (
         componentMapper={{
             'issue-resolution': {
                 component: IssueResolution,
-                issues: remediationsWizardTestData.issues,
-                systems: remediationsWizardTestData.systems,
-                resolutions: remediationsWizardTestData.resolutions
+                issues: remediationWizardTestData.issues,
+                systems: remediationWizardTestData.systems,
+                resolutions: remediationWizardTestData.resolutions
             }
         }}
         initialValues={{
@@ -52,7 +52,7 @@ describe('ReviewActions', () => {
 
     beforeEach(() => {
         initialProps = {
-            issues: remediationsWizardTestData.issues
+            issues: remediationWizardTestData.issues
         };
         onSubmit = jest.fn();
     });

@@ -6,7 +6,7 @@ import {
     EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
 import schemaBuilder from '../schema';
-import { remediationsWizardTestData } from './testData';
+import { remediationWizardTestData } from './testData';
 
 describe('reviewActionsNextStep', function () {
 
@@ -14,7 +14,7 @@ describe('reviewActionsNextStep', function () {
 
     beforeEach(() => {
         formValues = {
-            ...remediationsWizardTestData.formValues,
+            ...remediationWizardTestData.formValues,
             [EXISTING_PLAYBOOK]: {
                 issues: [{
                     id: 'anotherId',
@@ -76,8 +76,8 @@ describe('schema', function () {
     let issuesMultiple;
 
     beforeEach(() => {
-        issuesMultiple = remediationsWizardTestData.issuesMultiple;
-        formValues = remediationsWizardTestData.formValues;
+        issuesMultiple = remediationWizardTestData.issuesMultiple;
+        formValues = remediationWizardTestData.formValues;
     });
 
     it('should render issues', () => {

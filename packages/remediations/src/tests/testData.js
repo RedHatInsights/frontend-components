@@ -5,7 +5,7 @@ import {
     EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
 
-export const remediationsWizardTestData = {
+export const remediationWizardTestData = {
 
     issues: [
         {
@@ -15,6 +15,17 @@ export const remediationsWizardTestData = {
     ],
 
     systems: [ 'system' ],
+
+    issuesById: {
+        testId: {
+            id: 'testId',
+            description: 'test_description'
+        },
+        testId2: {
+            id: 'testId',
+            description: 'description'
+        }
+    },
 
     issuesMultiple: [
         {
