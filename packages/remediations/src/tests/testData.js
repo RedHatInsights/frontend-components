@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export const remediationsWizardTestData = {
 
     issues: [
@@ -6,6 +7,17 @@ export const remediationsWizardTestData = {
             description: 'description'
         }
     ],
-    systems: []
-
+    systems: [ 'system' ],
+    issueResolutionsResponse: {
+        testId: {
+            id: 'testId',
+            resolution_risk: 3,
+            resolutions: [{
+                description: 'description',
+                id: 'resolution-id',
+                needs_reboot: true,
+                resolution_risk: 3
+            }]
+        }
+    }
 };
