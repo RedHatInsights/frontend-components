@@ -59,21 +59,25 @@ const AddSourceWizard = ({
     initialValues,
     onClose,
     afterSuccess,
-    selectedType
+    selectedType,
+    initialState,
+    submitCallback
 }) => {
     const [
         { isErrored, isFinished, isSubmitted, values, error, isCancelling, createdSource, ...state },
         dispatch
-    ] = useReducer(reducer, prepareInitialValues(initialValues));
+    ] = useReducer(reducer, { ...prepareInitialValues(initialValues), ...initialState });
 
     const onSubmit = (formValues, sourceTypes) => {
         dispatch({ type: 'prepareSubmitState', values: formValues, sourceTypes });
 
         return doCreateSource(formValues, sourceTypes, timeoutedApps(applicationTypes)).then((data) => {
             afterSuccess && afterSuccess(data);
+            submitCallback && submitCallback({ isSubmitted: true, createdSource: data, sourceTypes });
             dispatch({ type: 'setSubmitted', data });
         })
         .catch((error) => {
+            submitCallback && submitCallback({ isErrored: true, error, values: formValues, sourceTypes });
             dispatch({ type: 'setErrored', error });
         });
     };
@@ -156,7 +160,19 @@ AddSourceWizard.propTypes = {
     disableAppSelection: PropTypes.bool,
     hideSourcesButton: PropTypes.bool,
     returnButtonTitle: PropTypes.node,
-    selectedType: PropTypes.string
+    selectedType: PropTypes.string,
+    initialState: PropTypes.shape({
+        isSubmitted: PropTypes.bool,
+        isFinished: PropTypes.bool,
+        isErrored: PropTypes.bool,
+        isCancelling: PropTypes.bool,
+        values: PropTypes.shape({
+            [PropTypes.string]: PropTypes.oneOf([ PropTypes.string, PropTypes.array, PropTypes.number, PropTypes.bool ])
+        }),
+        createdSource: PropTypes.object,
+        error: PropTypes.node
+    }),
+    submitCallback: PropTypes.func
 };
 
 AddSourceWizard.defaultProps = {
