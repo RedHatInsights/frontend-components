@@ -4,6 +4,7 @@ import './tagCount.scss';
 import classNames from 'classnames';
 import { Button } from '@patternfly/react-core';
 import { TagIcon } from '@patternfly/react-icons';
+import './tagCount.scss';
 
 const TagCount = ({ count, onTagClick, className, ...props }) => {
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import './tab-layout.scss';
 
 const TabLayout = ({ children, items, classNames, active, onTabClick, ...props }) => (
     <section { ...props } className={ classnames(classNames, 'ins-tab-layout') } widget-type='InsightsTabs'>

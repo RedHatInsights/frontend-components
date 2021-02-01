@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Dropdown, DropdownToggle, Level } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import FilterInput from './FilterInput.js';
+import './filter-dropdown.scss';
 
 class FilterDropdown extends Component {
     state = {
