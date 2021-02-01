@@ -41,10 +41,6 @@ describe('SelectPlaybook', () => {
         onSubmit = jest.fn();
     });
 
-    afterEach(() => {
-        onSubmit.mockReset();
-    });
-
     it('should render correctly without remediations', async () => {
         dependency.getRemediations = jest.fn(() => new Promise((resolve) => resolve({ data: [{ id: 'remediationId', name: 'someName' }] })));
         let wrapper;

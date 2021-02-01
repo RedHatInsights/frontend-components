@@ -72,13 +72,8 @@ describe('issueResolutionNextStep', () => {
 
 describe('schema', () => {
 
-    let formValues;
-    let issuesMultiple;
-
-    beforeEach(() => {
-        issuesMultiple = remediationWizardTestData.issuesMultiple;
-        formValues = remediationWizardTestData.formValues;
-    });
+    const formValues = remediationWizardTestData.formValues;
+    const issuesMultiple = remediationWizardTestData.issuesMultiple;
 
     it('should render issues', () => {
         const schema = schemaBuilder(issuesMultiple);

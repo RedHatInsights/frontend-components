@@ -50,10 +50,6 @@ describe('ReviewActions', () => {
         onSubmit = jest.fn();
     });
 
-    afterEach(() => {
-        onSubmit.mockReset();
-    });
-
     it('should render correctly', async () => {
         let wrapper;
         await act(async() => {

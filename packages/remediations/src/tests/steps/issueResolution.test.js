@@ -57,10 +57,6 @@ describe('ReviewActions', () => {
         onSubmit = jest.fn();
     });
 
-    afterEach(() => {
-        onSubmit.mockReset();
-    });
-
     it('should render resolutions correctly', async () => {
         let wrapper;
         await act(async() => {
