@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Wizard, Button, Text } from '@patternfly/react-core';
+import { Wizard, Button, Text, TextContent } from '@patternfly/react-core';
 import { useIntl } from 'react-intl';
 
 import FinishedStep from './steps/FinishedStep';
@@ -130,10 +130,24 @@ const FinalWizard = ({
                 id: 'wizard.loadingText',
                 defaultMessage: 'Validating credentials'
             })}
-            description={intl.formatMessage({
-                id: 'wizard.loadingDescription',
-                defaultMessage: 'This could take a minute. If you prefer not to wait, close this dialog and the process will continue.'
-            })}
+            description={
+                <TextContent>
+                    <Text className="pf-u-mb-md">{
+                        intl.formatMessage({
+                            id: 'wizard.loadingDescription-a',
+                            defaultMessage:
+                            // eslint-disable-next-line max-len
+                            'This might take some time. You\'ll receive a notification if you are still in the Sources application when the process completes. Otherwise, you can check the status in the main sources table at any time.'
+                        })
+                    }</Text>
+                    <Text>{
+                        intl.formatMessage({
+                            id: 'wizard.loadingDescription-b',
+                            defaultMessage: 'In the meantime, you can close this window while the validation process continues.'
+                        })
+                    }</Text>
+                </TextContent>
+            }
             onClose={afterError}
             cancelTitle={intl.formatMessage({ id: 'wizard.close', defaultMessage: 'Close' })}
         />;
