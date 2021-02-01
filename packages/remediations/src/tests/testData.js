@@ -7,7 +7,9 @@ export const remediationsWizardTestData = {
             description: 'description'
         }
     ],
+
     systems: [ 'system' ],
+
     issueResolutionsResponse: {
         testId: {
             id: 'testId',
