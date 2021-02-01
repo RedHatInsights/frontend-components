@@ -8,7 +8,7 @@ import {
 import schemaBuilder from '../schema';
 import { remediationWizardTestData } from './testData';
 
-describe('reviewActionsNextStep', function () {
+describe('reviewActionsNextStep', () => {
 
     let formValues;
 
@@ -39,7 +39,7 @@ describe('reviewActionsNextStep', function () {
     });
 });
 
-describe('issueResolutionNextStep', function () {
+describe('issueResolutionNextStep', () => {
 
     let formValues;
 
@@ -70,7 +70,7 @@ describe('issueResolutionNextStep', function () {
     });
 });
 
-describe('schema', function () {
+describe('schema', () => {
 
     let formValues;
     let issuesMultiple;

@@ -1,6 +1,6 @@
 import validate from '../validator';
 
-function validData () {
+const validData = () => {
     return {
         issues: [{
             id: 'advisor:network_bond_opts_config_issue|NETWORK_BONDING_OPTS_DOUBLE_QUOTES_ISSUE',
@@ -18,9 +18,9 @@ function validData () {
             '3c3d725e-cbf0-4dac-a40f-4e7f027bcdc9'
         ]
     };
-}
+};
 
-describe('validator', function () {
+describe('validator', () => {
     it('passed on valid data', () => {
         validate(validData());
     });
@@ -88,7 +88,7 @@ describe('validator', function () {
         expect(() => validate(data)).toThrow(TypeError);
     });
 
-    describe('per-issue system definitions', function () {
+    describe('per-issue system definitions', () => {
         it('passed on per-issue system definition', () => {
             validate({
                 issues: [{

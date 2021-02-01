@@ -10,7 +10,7 @@ import {
 } from '../utils';
 import { remediationWizardTestData } from './testData';
 
-describe('getResolution', function () {
+describe('getResolution', () => {
 
     let data;
     let resolutions;
