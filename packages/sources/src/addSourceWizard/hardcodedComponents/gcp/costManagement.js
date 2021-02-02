@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Text, TextContent, TextVariants, TextList, TextListVariants, TextListItem, ClipboardCopy, Hint, HintTitle, HintBody } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
+
+import { getSourcesApi } from '../../../api';
 
 const b = (chunks) => <b key={`b-${chunks.length}-${Math.floor(Math.random() * 1000)}`}>{chunks}</b>;
 
@@ -125,6 +127,20 @@ export const Dataset = () => {
 
 export const AssignAccess = () => {
     const intl = useIntl();
+    const [ googleAccount, setGoogleAccount ] = useState();
+
+    useEffect(() => {
+        const errorMessage = intl.formatMessage({
+            id: 'cost.gcp.noAccount',
+            defaultMessage: 'There is an error with loading of the account address. Please go back and return to this step.'
+        });
+
+        getSourcesApi().getGoogleAccount().then((data) => setGoogleAccount(data?.data?.[0]?.payload || errorMessage))
+        .catch((e) => {
+            console.error(e);
+            setGoogleAccount(errorMessage);
+        });
+    }, []);
 
     return (
         <TextContent>
@@ -148,7 +164,7 @@ export const AssignAccess = () => {
                     }, { b })}
                 </TextListItem>
                 <ClipboardCopy className="pf-u-m-sm  pf-u-ml-0" isReadOnly>
-                    test-billing-service-account@cloud-billing-292519.iam.gserviceaccount.com
+                    {googleAccount || intl.formatMessage({ id: 'cost.gcp.access.loading', defaultMessage: 'Loading account address...' })}
                 </ClipboardCopy>
                 <TextListItem>
                     { intl.formatMessage({
