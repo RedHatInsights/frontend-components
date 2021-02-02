@@ -442,7 +442,7 @@ exports[`GeneralInformation should render correctly - no data 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                CSM
+                Compatibility Support Module
               </dt>
               <dd
                 class=""
@@ -1241,7 +1241,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                CSM
+                Compatibility Support Module
               </dt>
               <dd
                 class=""
