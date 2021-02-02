@@ -58,21 +58,24 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
         Array [
           Object {
             "onClick": [Function],
+            "plural": "packages",
             "target": "installed_packages",
             "title": "Installed packages",
-            "value": "1 packages",
+            "value": 1,
           },
           Object {
             "onClick": [Function],
+            "plural": "services",
             "target": "services",
             "title": "Services",
-            "value": "1 services",
+            "value": 1,
           },
           Object {
             "onClick": [Function],
+            "plural": "processes",
             "target": "running_processes",
             "title": "Running processes",
-            "value": "1 processes",
+            "value": 1,
           },
           Object {
             "onClick": [Function],
@@ -150,9 +153,10 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             item={
                               Object {
                                 "onClick": [Function],
+                                "plural": "packages",
                                 "target": "installed_packages",
                                 "title": "Installed packages",
-                                "value": "1 packages",
+                                "value": 1,
                               }
                             }
                           >
@@ -186,9 +190,10 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             item={
                               Object {
                                 "onClick": [Function],
+                                "plural": "services",
                                 "target": "services",
                                 "title": "Services",
-                                "value": "1 services",
+                                "value": 1,
                               }
                             }
                           >
@@ -222,9 +227,10 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             item={
                               Object {
                                 "onClick": [Function],
+                                "plural": "processes",
                                 "target": "running_processes",
                                 "title": "Running processes",
-                                "value": "1 processes",
+                                "value": 1,
                               }
                             }
                           >

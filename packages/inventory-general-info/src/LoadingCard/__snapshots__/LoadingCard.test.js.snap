@@ -1,32 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Clickable should render - 0 value 1`] = `
-<Fragment>
-  None
-</Fragment>
+exports[`LoadingCard Clickable should render - 0 value 1`] = `"None"`;
+
+exports[`LoadingCard Clickable should render - no data 1`] = `"Not available"`;
+
+exports[`LoadingCard Clickable should render 1`] = `
+<a
+  href="http://localhost:5000//some-target"
+  onClick={[Function]}
+>
+  15
+</a>
 `;
 
-exports[`Clickable should render - no data 1`] = `
-<Fragment>
-  <a
-    href="http://localhost:5000//undefined"
-    onClick={[Function]}
-  />
-</Fragment>
-`;
-
-exports[`Clickable should render 1`] = `
-<Fragment>
-  <a
-    href="http://localhost:5000//some-target"
-    onClick={[Function]}
-  >
-    15
-  </a>
-</Fragment>
-`;
-
-exports[`Loading card render - isLoading: false 1`] = `
+exports[`LoadingCard Loading card render - isLoading: false 1`] = `
 <Stack
   hasGutter={true}
 >
@@ -51,7 +38,7 @@ exports[`Loading card render - isLoading: false 1`] = `
 </Stack>
 `;
 
-exports[`Loading card render - isLoading: true 1`] = `
+exports[`LoadingCard Loading card render - isLoading: true 1`] = `
 <Stack
   hasGutter={true}
 >
@@ -76,7 +63,7 @@ exports[`Loading card render - isLoading: true 1`] = `
 </Stack>
 `;
 
-exports[`Loading card render 1`] = `
+exports[`LoadingCard Loading card render 1`] = `
 <Stack
   hasGutter={true}
 >
@@ -131,7 +118,7 @@ exports[`Loading card render 1`] = `
 </Stack>
 `;
 
-exports[`should render loading bars 1`] = `
+exports[`LoadingCard should render loading bars 1`] = `
 <Stack
   hasGutter={true}
 >

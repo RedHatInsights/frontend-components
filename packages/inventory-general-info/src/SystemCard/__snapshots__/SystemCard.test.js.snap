@@ -667,7 +667,7 @@ exports[`SystemCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          None
+          Not available
         </dd>
         <dt
           class=""
@@ -908,7 +908,7 @@ exports[`SystemCard should render correctly with rhsm facts 1`] = `
           class=""
           data-pf-content="true"
         >
-          None
+          Not available
         </dd>
         <dt
           class=""

@@ -19,7 +19,8 @@ const BiosCard = ({ bios, detailLoaded, handleClick }) => (<LoadingCard
         ) },
         {
             title: 'Compatibility Support Module',
-            value: bios.csm && bios.csm.length > 0 ? `${bios.csm.length} CSMs` : 0,
+            value: bios?.csm?.length,
+            plural: 'CSMs',
             target: 'csm',
             onClick: () => handleClick('CSM', generalMapper(bios.csm, 'CSM name'))
         }

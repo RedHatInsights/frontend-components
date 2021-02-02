@@ -12,8 +12,6 @@ export function enabledRepos(repositories) {
             repositories.disabled && repositories.disabled.length > 0 && `${repositories.disabled.length} disabled`
         ].filter(Boolean).join(' / ');
     }
-
-    return 0;
 }
 
 const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<LoadingCard
@@ -22,7 +20,8 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
     items={ [
         {
             title: 'Installed packages',
-            value: configuration.packages ? `${configuration.packages.length} packages` : 0,
+            value: configuration.packages?.length,
+            plural: 'packages',
             target: 'installed_packages',
             onClick: () => {
                 handleClick(
@@ -33,7 +32,8 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
         },
         {
             title: 'Services',
-            value: configuration.services ? `${configuration.services.length} services` : 0,
+            value: configuration.services?.length,
+            plural: 'services',
             target: 'services',
             onClick: () => {
                 handleClick(
@@ -44,7 +44,8 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
         },
         {
             title: 'Running processes',
-            value: configuration.processes ? `${configuration.processes.length} processes` : 0,
+            value: configuration.processes?.length,
+            plural: 'processes',
             target: 'running_processes',
             onClick: () => {
                 handleClick(

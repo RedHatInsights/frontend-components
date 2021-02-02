@@ -13,24 +13,21 @@ import {
 } from '@patternfly/react-core';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
-export const Clickable = ({ item: { onClick, value, target } }) => (
-    <Fragment>
-        {
-            value !== 0 ?
-                <a onClick={ event => {
-                    event.preventDefault();
-                    onClick(event, { value, target });
-                } } href={ `${window.location.href}/${target}` }>{ value }</a> :
-                'None'
-        }
-    </Fragment>
+export const Clickable = ({ item: { onClick, value, target, plural } }) => (
+    (value && value !== 0) ?
+        <a onClick={ event => {
+            event.preventDefault();
+            onClick(event, { value, target });
+        } } href={ `${window.location.href}/${target}` }>{ `${value}${plural ? ` ${plural}` : ''}` }</a> :
+        value === 0 ?  plural ? `0 ${plural}` : 'None' : 'Not available'
 );
 
 Clickable.propTypes = {
     item: PropTypes.shape({
         value: PropTypes.node,
         target: PropTypes.string,
-        onClick: PropTypes.func
+        onClick: PropTypes.func,
+        plural: PropTypes.node
     })
 };
 
@@ -61,7 +58,7 @@ const LoadingCard = ({ title, isLoading, items }) => {
                                     { !isLoading && (
                                         item.onClick ?
                                             <Clickable item={ item }/> :
-                                            (item.value || 'Not available')
+                                            (item.value || (item.value === 0 ? item.plural ? `0 ${item.plural}` : 'None' : 'Not available'))
                                     ) }
                                 </TextListItem>
                             </Fragment>
@@ -80,7 +77,8 @@ LoadingCard.propTypes = {
         title: PropTypes.node,
         value: PropTypes.node,
         onClick: PropTypes.func,
-        size: PropTypes.oneOf(Object.values(SkeletonSize))
+        size: PropTypes.oneOf(Object.values(SkeletonSize)),
+        plural: PropTypes.node
     }))
 };
 

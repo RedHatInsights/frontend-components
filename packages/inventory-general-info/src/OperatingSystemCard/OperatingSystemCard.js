@@ -22,7 +22,8 @@ const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (
             },
             {
                 title: 'Kernel modules',
-                value: systemInfo.kernelModules ? `${systemInfo.kernelModules.length} modules` : 0,
+                value: systemInfo.kernelModules?.length,
+                plural: 'modules',
                 target: 'kernel_modules',
                 onClick: () => {
                     handleClick(

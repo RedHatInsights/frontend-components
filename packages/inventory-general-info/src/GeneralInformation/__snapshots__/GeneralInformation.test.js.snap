@@ -1017,7 +1017,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                None
+                Not available
               </dd>
               <dt
                 class=""
@@ -1160,11 +1160,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                <a
-                  href="http://localhost:5000//kernel_modules"
-                >
-                  0 modules
-                </a>
+                0 modules
               </dd>
             </dl>
           </div>
@@ -1247,7 +1243,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                None
+                0 CSMs
               </dd>
             </dl>
           </div>

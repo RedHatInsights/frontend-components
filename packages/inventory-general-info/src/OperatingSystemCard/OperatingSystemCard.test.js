@@ -69,15 +69,29 @@ describe('OperatingSystemCard', () => {
     });
 
     describe('api', () => {
-        it('should NOT call handleClick', () => {
+        it('should not render modules clickable', () => {
             const store = mockStore(initialState);
-            const onClick = jest.fn();
             const wrapper = mount(<OperatingSystemCard store={ store } />);
-            wrapper.find('dd a').first().simulate('click');
-            expect(onClick).not.toHaveBeenCalled();
+            expect(wrapper.find('dd a')).toHaveLength(0);
         });
 
         it('should call handleClick on packages', () => {
+            initialState = {
+                systemProfileStore: {
+                    systemProfile: {
+                        loaded: true,
+                        ...osTest,
+                        kernel_modules: [ 'some-module' ]
+                    }
+                }, entityDetails: {
+                    entity: {
+                        facts: {
+                            rhsm: rhsmFacts
+                        }
+                    }
+                }
+            };
+
             const store = mockStore(initialState);
             const onClick = jest.fn();
             const wrapper = mount(<OperatingSystemCard handleClick={ onClick } store={ store } />);

@@ -13,7 +13,8 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
         { title: 'Vendor', value: infrastructure.vendor },
         {
             title: 'IPv4 addresses',
-            value: infrastructure.ipv4 ? `${infrastructure.ipv4.length} addresses` : 0,
+            value: infrastructure.ipv4?.length,
+            plural: 'addresses',
             target: 'ipv4',
             onClick: () => {
                 handleClick(
@@ -24,7 +25,8 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
         },
         {
             title: 'IPv6 addresses',
-            value: infrastructure.ipv6 ? `${infrastructure.ipv6.length} addresses` : 0,
+            value: infrastructure.ipv6?.length,
+            plural: 'addresses',
             target: 'ipv6',
             onClick: () => {
                 handleClick(
@@ -35,7 +37,8 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
         },
         {
             title: 'Interfaces/NICs',
-            value: infrastructure.nics ? `${infrastructure.nics.length} NICs` : 0,
+            value: infrastructure.nics?.length,
+            plural: 'NICs',
             target: 'interfaces',
             onClick: () => {
                 handleClick(
