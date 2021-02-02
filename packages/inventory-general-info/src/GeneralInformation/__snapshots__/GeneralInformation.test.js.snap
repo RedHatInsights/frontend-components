@@ -803,7 +803,7 @@ exports[`GeneralInformation should render correctly - no data 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                Rhel machine id
+                RHEL machine id
               </dt>
               <dd
                 class=""
@@ -1566,7 +1566,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                Rhel machine id
+                RHEL machine id
               </dt>
               <dd
                 class=""
