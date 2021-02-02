@@ -256,8 +256,7 @@ describe('SourceWizardSummary component', () => {
                     [ 'Application', 'Subscription Watch' ],
                     [ 'Source type', 'Amazon Web Services' ],
                     [ 'Authentication type', 'Subscription Watch ARN' ],
-                    [ 'ARN', 'arn:aws:132' ],
-                    [ 'Auto-register cloud instances', 'Enabled' ]
+                    [ 'ARN', 'arn:aws:132' ]
                 ]
             );
         });
