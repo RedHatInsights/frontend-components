@@ -15,27 +15,12 @@ import IssueResolution from './newSteps/issueResolution';
 import FetchError from './newSteps/fetchError';
 import Review from './newSteps/review';
 import {
-    getResolution,
-    remediationUrl,
-    AUTO_REBOOT,
+    submitRemediation,
     HAS_MULTIPLES,
-    SELECT_PLAYBOOK,
     SELECTED_RESOLUTIONS,
     EXISTING_PLAYBOOK_SELECTED,
-    EXISTING_PLAYBOOK,
     MANUAL_RESOLUTION
 } from './utils';
-
-function createNotification (id, name, isNewSwitch) {
-    const verb = isNewSwitch ? 'created' : 'updated';
-
-    return {
-        variant: 'success',
-        title: `Playbook ${verb}`,
-        description: <span>You have successfully {verb} <a href={ remediationUrl(id) } >{ name }</a>.</span>,
-        dismissable: true
-    };
-}
 
 const RemediationWizard = ({
     setOpen,
@@ -92,36 +77,11 @@ const RemediationWizard = ({
                     issuesById,
                     issuesMultiple,
                     basePath,
-                    onRemediationCreated: data.onRemediationCreated,
                     isLoaded: true
                 });
             }
         );
     }, []);
-
-    const resolver = (id, name, isNewSwitch) => state.onRemediationCreated({
-        remediation: { id, name },
-        getNotification: () => createNotification(id, name, isNewSwitch)
-    });
-
-    const onSubmit = (formValues) => {
-        const issues = data.issues.map(({ id }) => ({
-            id,
-            resolution: getResolution(id, formValues, state.resolutions)?.[0]?.id,
-            systems: data.systems
-        }));
-        const add = { issues, systems: data.systems };
-        if (formValues[EXISTING_PLAYBOOK_SELECTED]) {
-            const { id, name } = formValues[EXISTING_PLAYBOOK];
-            // eslint-disable-next-line camelcase
-            api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, state.basePath)
-            .then(() => resolver(id, name, false));
-        } else {
-            // eslint-disable-next-line camelcase
-            api.createRemediation({ name: formValues[SELECT_PLAYBOOK], add, auto_reboot: formValues[AUTO_REBOOT] }, state.basePath)
-            .then(({ id }) => resolver(id, formValues[SELECT_PLAYBOOK], true));
-        }
-    };
 
     const mapperExtension = {
         'select-playbook': {
@@ -165,7 +125,7 @@ const RemediationWizard = ({
                     ...mapperExtension
                 }}
                 onSubmit={(formValues) => {
-                    onSubmit(formValues);
+                    submitRemediation(formValues, data, basePath, state.resolutions);
                     setOpen(false);
                 }}
                 onCancel={() => setOpen(false)}

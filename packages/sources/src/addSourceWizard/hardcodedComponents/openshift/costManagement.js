@@ -4,54 +4,49 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
 
-const INSTALL_PREREQUISITE = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#installing_ocp_prerequisites`;
+const INSTALL_PREREQUISITE = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/index#assembly_koku_cost_management_installing`;
 
 export const ConfigureCostOperator = () => {
     const intl = useIntl();
 
     return (
         <TextContent>
-            <Text component={TextVariants.p}>
+            <Text>
                 { intl.formatMessage({
                     id: 'cost.openshift.description',
-                    defaultMessage: 'The Cost Management Operator collects the data required for Cost Management. This is supported for clusters that are OpenShift Container Platform version 4.3 or later. {more}'
+                    defaultMessage: 'For Red Hat OpenShift Container Platform 4.5 and later, install the {operator} from the OpenShift Container Platform web console.'
                 }, {
-                    more: <Text
-                        key="link"
-                        component={TextVariants.a}
-                        href={INSTALL_PREREQUISITE}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        { intl.formatMessage({
-                            id: 'wizard.learnMore',
-                            defaultMessage: 'Learn more'
-                        }) }
-                    </Text>
+                    operator: <b>koku-metrics-operator</b>
                 }) }
             </Text>
-            <TextContent className='list-align-left'>
-                <TextList component='ol'>
-                    <TextListItem component='li'>
-                        { intl.formatMessage({
-                            id: 'cost.openshift.installOperator',
-                            defaultMessage: 'Install the Cost Management Operator from OperatorHub on your cluster (search for {cost}).'
-                        }, {
-                            cost: <i key="italic">
-                                { intl.formatMessage({
-                                    id: 'cost.costManagement',
-                                    defaultMessage: 'cost management'
-                                }) }
-                            </i>
-                        }) }
-                    </TextListItem>
-                    <TextListItem component='li'>
-                        { intl.formatMessage({
-                            id: 'cost.openshift.aboutScreen',
-                            defaultMessage: 'When configuration is complete, enter the cluster identifier below. The cluster identifier can be found in the cluster\'s Help > About screen.'
-                        }) }
-                    </TextListItem>
-                </TextList>
-            </TextContent>
+            <Text>
+                <Text
+                    key="link"
+                    component={TextVariants.a}
+                    href={INSTALL_PREREQUISITE}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    { intl.formatMessage({
+                        id: 'wizard.learnMore',
+                        defaultMessage: 'Learn more'
+                    }) }
+                </Text>
+            </Text>
+            <Text>
+                { intl.formatMessage({
+                    id: 'cost.openshift.operator_configured',
+                    defaultMessage: 'If you configured the operator to create a source (create_source: true), {stop} here and {cancel} out of this flow.'
+                }, {
+                    cancel: <b>{intl.formatMessage({ id: 'cost.openshift.operator_cancel', defaultMessage: 'CANCEL' })}</b>,
+                    stop: <b>{intl.formatMessage({ id: 'cost.openshift.operator_stop', defaultMessage: 'STOP' })}</b>
+                }) }
+            </Text>
+            <Text>
+                { intl.formatMessage({
+                    id: 'cost.openshift.operator_not_configured',
+                    defaultMessage: 'Otherwise, enter the cluster identifier below. You can find the cluster identifier in the cluster’s Help > About screen.'
+                }) }
+            </Text>
         </TextContent>
     );
 };

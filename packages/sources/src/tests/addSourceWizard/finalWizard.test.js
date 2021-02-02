@@ -57,7 +57,8 @@ describe('Final wizard', () => {
         expect(wrapper.find(LoadingStep)).toHaveLength(1);
         expect(wrapper.find(EmptyState).find(Title).text()).toEqual('Validating credentials');
         expect(wrapper.find(EmptyState).find(EmptyStateBody).text()).toEqual(
-            'This could take a minute. If you prefer not to wait, close this dialog and the process will continue.'
+            // eslint-disable-next-line max-len
+            'This might take some time. You\'ll receive a notification if you are still in the Sources application when the process completes. Otherwise, you can check the status in the main sources table at any time.In the meantime, you can close this window while the validation process continues.'
         );
     });
 

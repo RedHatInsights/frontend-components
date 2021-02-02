@@ -59,21 +59,25 @@ const AddSourceWizard = ({
     initialValues,
     onClose,
     afterSuccess,
-    selectedType
+    selectedType,
+    initialWizardState,
+    submitCallback
 }) => {
     const [
         { isErrored, isFinished, isSubmitted, values, error, isCancelling, createdSource, ...state },
         dispatch
     ] = useReducer(reducer, prepareInitialValues(initialValues));
 
-    const onSubmit = (formValues, sourceTypes) => {
+    const onSubmit = (formValues, sourceTypes, wizardState) => {
         dispatch({ type: 'prepareSubmitState', values: formValues, sourceTypes });
 
         return doCreateSource(formValues, sourceTypes, timeoutedApps(applicationTypes)).then((data) => {
             afterSuccess && afterSuccess(data);
+            submitCallback && submitCallback({ isSubmitted: true, createdSource: data, sourceTypes });
             dispatch({ type: 'setSubmitted', data });
         })
         .catch((error) => {
+            submitCallback && submitCallback({ isErrored: true, error, values: formValues, sourceTypes, wizardState });
             dispatch({ type: 'setErrored', error });
         });
     };
@@ -109,6 +113,7 @@ const AddSourceWizard = ({
                 applicationTypes={ applicationTypes }
                 disableAppSelection={ disableAppSelection }
                 selectedType={selectedType}
+                initialWizardState={initialWizardState}
             />
         </React.Fragment>
         );
@@ -156,7 +161,9 @@ AddSourceWizard.propTypes = {
     disableAppSelection: PropTypes.bool,
     hideSourcesButton: PropTypes.bool,
     returnButtonTitle: PropTypes.node,
-    selectedType: PropTypes.string
+    selectedType: PropTypes.string,
+    initialWizardState: PropTypes.object,
+    submitCallback: PropTypes.func
 };
 
 AddSourceWizard.defaultProps = {

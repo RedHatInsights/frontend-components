@@ -40,7 +40,7 @@
         "coverageDirectory": "./coverage/",
         "collectCoverage": true,
         "transformIgnorePatterns": [
-            "node_modules/(?!@patternfly)"
+            "node_modules/(?!@patternfly|@data-driven-forms)"
         ],
         "collectCoverageFrom": [
             "<rootDir>/packages/**/src/**/*.js",

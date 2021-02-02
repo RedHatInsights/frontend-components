@@ -1,4 +1,4 @@
-import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
+import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 import { ACTION_TYPES } from './action-types';
 
 export const defaultState = { loaded: false };
