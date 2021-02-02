@@ -16,6 +16,7 @@
 !README.md
 !tsconfig.json
 !pre-publish.js
+!create-styles.js
 
 # Incremental ts info
 tsconfig.tsbuildinfo

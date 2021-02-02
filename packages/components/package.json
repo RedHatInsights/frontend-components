@@ -15,10 +15,11 @@
         "build:esm": "BABEL_ENV=esm babel src --config-file ../../babel.v3.config.js --out-dir ./esm --ignore '**/*.test.js'",
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js",
-        "build:compatibility": "npm run build:compatibility:js && npm run build:compatibility:esm && npm run build:compatibility:umd",
+        "build:compatibility": "npm run build:compatibility:js && npm run build:compatibility:esm && npm run build:compatibility:umd && npm run build:compatibility:css",
         "build:compatibility:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
         "build:compatibility:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
         "build:compatibility:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",
+        "build:compatibility:css": "node ./create-styles.js",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
     "repository": {
