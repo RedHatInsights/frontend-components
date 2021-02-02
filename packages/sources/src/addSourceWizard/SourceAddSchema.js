@@ -336,7 +336,7 @@ const summaryStep = (sourceTypes, applicationTypes, intl) => ({
     })
 });
 
-export default (sourceTypes, applicationTypes, disableAppSelection, container, intl, selectedType) => {
+export default (sourceTypes, applicationTypes, disableAppSelection, container, intl, selectedType, initialWizardState) => {
     setFirstValidated(true);
 
     return ({
@@ -366,6 +366,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container, i
             },
             container,
             showTitles: true,
+            initialState: initialWizardState,
             crossroads: [ 'application.application_type_id', 'source_type', 'auth_select' ],
             fields: [
                 nameStep(intl),

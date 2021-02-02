@@ -60,15 +60,15 @@ const AddSourceWizard = ({
     onClose,
     afterSuccess,
     selectedType,
-    initialState,
+    initialWizardState,
     submitCallback
 }) => {
     const [
         { isErrored, isFinished, isSubmitted, values, error, isCancelling, createdSource, ...state },
         dispatch
-    ] = useReducer(reducer, { ...prepareInitialValues(initialValues), ...initialState });
+    ] = useReducer(reducer, prepareInitialValues(initialValues));
 
-    const onSubmit = (formValues, sourceTypes) => {
+    const onSubmit = (formValues, sourceTypes, wizardState) => {
         dispatch({ type: 'prepareSubmitState', values: formValues, sourceTypes });
 
         return doCreateSource(formValues, sourceTypes, timeoutedApps(applicationTypes)).then((data) => {
@@ -77,7 +77,7 @@ const AddSourceWizard = ({
             dispatch({ type: 'setSubmitted', data });
         })
         .catch((error) => {
-            submitCallback && submitCallback({ isErrored: true, error, values: formValues, sourceTypes });
+            submitCallback && submitCallback({ isErrored: true, error, values: formValues, sourceTypes, wizardState });
             dispatch({ type: 'setErrored', error });
         });
     };
@@ -113,6 +113,7 @@ const AddSourceWizard = ({
                 applicationTypes={ applicationTypes }
                 disableAppSelection={ disableAppSelection }
                 selectedType={selectedType}
+                initialWizardState={initialWizardState}
             />
         </React.Fragment>
         );
@@ -161,17 +162,7 @@ AddSourceWizard.propTypes = {
     hideSourcesButton: PropTypes.bool,
     returnButtonTitle: PropTypes.node,
     selectedType: PropTypes.string,
-    initialState: PropTypes.shape({
-        isSubmitted: PropTypes.bool,
-        isFinished: PropTypes.bool,
-        isErrored: PropTypes.bool,
-        isCancelling: PropTypes.bool,
-        values: PropTypes.shape({
-            [PropTypes.string]: PropTypes.oneOf([ PropTypes.string, PropTypes.array, PropTypes.number, PropTypes.bool ])
-        }),
-        createdSource: PropTypes.object,
-        error: PropTypes.node
-    }),
+    initialWizardState: PropTypes.object,
     submitCallback: PropTypes.func
 };
 

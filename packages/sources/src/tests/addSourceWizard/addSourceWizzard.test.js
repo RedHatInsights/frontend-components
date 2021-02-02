@@ -225,7 +225,10 @@ describe('AddSourceWizard', () => {
             values: { source: { name: 'somename' } },
             isErrored: true,
             sourceTypes,
-            error: 'Error - wrong name'
+            error: 'Error - wrong name',
+            // because we are using form.submit in test instead of the button,
+            // the state is not included
+            wizardState: expect.any(Function)
         });
 
         jest.useRealTimers();
@@ -360,5 +363,14 @@ describe('AddSourceWizard', () => {
         wrapper.update();
 
         expect(wrapper.find(SourcesFormRenderer).props().schema.fields[0].fields[1].title).toEqual('Select application');
+    });
+
+    it('pass initialWizardState to wizard', async () => {
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } initialWizardState={{ some: 'state' }} />);
+        });
+        wrapper.update();
+
+        expect(wrapper.find(SourcesFormRenderer).props().schema.fields[0].initialState).toEqual({ some: 'state' });
     });
 });
