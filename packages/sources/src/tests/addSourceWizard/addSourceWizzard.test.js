@@ -146,6 +146,94 @@ describe('AddSourceWizard', () => {
         jest.useRealTimers();
     });
 
+    it('pass created source to submitCallback function when success', async () => {
+        jest.useFakeTimers();
+
+        const submitCallback = jest.fn();
+        createSource.doCreateSource = jest.fn(() => new Promise((resolve) => resolve({ name: 'source', applications: [] })));
+        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
+
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } submitCallback={ submitCallback } />);
+        });
+        wrapper.update();
+
+        await act(async () => {
+            wrapper.find('input').instance().value = 'somename';
+            wrapper.find('input').simulate('change');
+        });
+        wrapper.update();
+
+        await act(async () => {
+            jest.advanceTimersByTime(1000);
+        });
+        wrapper.update();
+
+        await act(async() => {
+            wrapper.find('form').simulate('submit');
+        });
+        wrapper.update();
+
+        await act(async () => {
+            jest.runAllTimers();
+        });
+        wrapper.update();
+
+        expect(submitCallback).toHaveBeenCalledWith({
+            createdSource: { name: 'source', applications: [] },
+            isSubmitted: true,
+            sourceTypes
+        });
+
+        jest.useRealTimers();
+    });
+
+    it('pass values to submitCallback function when errors', async () => {
+        jest.useFakeTimers();
+
+        const submitCallback = jest.fn();
+        createSource.doCreateSource = jest.fn(() => new Promise((_, reject) => reject('Error - wrong name')));
+        dependency.findSource = jest.fn(() => Promise.resolve({ data: { sources: [] } }));
+
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } submitCallback={ submitCallback } />);
+        });
+        wrapper.update();
+
+        await act(async () => {
+            wrapper.find('input').instance().value = 'somename';
+            wrapper.find('input').simulate('change');
+        });
+        wrapper.update();
+
+        await act(async () => {
+            jest.advanceTimersByTime(1000);
+        });
+        wrapper.update();
+
+        await act(async() => {
+            wrapper.find('form').simulate('submit');
+        });
+        wrapper.update();
+
+        await act(async () => {
+            jest.runAllTimers();
+        });
+        wrapper.update();
+
+        expect(submitCallback).toHaveBeenCalledWith({
+            values: { source: { name: 'somename' } },
+            isErrored: true,
+            sourceTypes,
+            error: 'Error - wrong name',
+            // because we are using form.submit in test instead of the button,
+            // the state is not included
+            wizardState: expect.any(Function)
+        });
+
+        jest.useRealTimers();
+    });
+
     it('pass values to onClose function', async () => {
         jest.useFakeTimers();
 
@@ -274,6 +362,15 @@ describe('AddSourceWizard', () => {
         });
         wrapper.update();
 
-        expect(wrapper.find(SourcesFormRenderer).props().schema.fields[0].fields[1].title).toEqual('Application');
+        expect(wrapper.find(SourcesFormRenderer).props().schema.fields[0].fields[1].title).toEqual('Select application');
+    });
+
+    it('pass initialWizardState to wizard', async () => {
+        await act(async() => {
+            wrapper = mount(<AddSourceWizard { ...initialProps } initialWizardState={{ some: 'state' }} />);
+        });
+        wrapper.update();
+
+        expect(wrapper.find(SourcesFormRenderer).props().schema.fields[0].initialState).toEqual({ some: 'state' });
     });
 });

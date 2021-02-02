@@ -5,8 +5,8 @@ import {
     NameDescription,
     SummaryDescription,
     sourceTypeMutator,
-    appMutator,
     typesStep,
+    compileAllSourcesComboOptions,
     compileAllApplicationComboOptions,
     appMutatorRedHat,
     applicationStep
@@ -18,6 +18,7 @@ import { TextContent, Text } from '@patternfly/react-core';
 
 import mount from '../__mocks__/mount';
 import { CLOUD_VENDOR, REDHAT_VENDOR } from '../../utilities/stringConstants';
+import SubWatchDescription from '../../addSourceWizard/descriptions/SubWatchDescription';
 
 describe('Add source schema', () => {
     const INTL = { formatMessage: ({ defaultMessage }) => defaultMessage };
@@ -115,10 +116,12 @@ describe('Add source schema', () => {
     describe('mutators', () => {
         const sourceTypes = [{
             product_name: 'Amazon',
-            name: 'amazon'
+            name: 'amazon',
+            id: 'amazon'
         }, {
             product_name: 'differen type',
-            name: 'ops'
+            name: 'ops',
+            id: 'openshift'
         }];
         const applicationTypes = [{
             id: 'selected',
@@ -151,26 +154,6 @@ describe('Add source schema', () => {
             );
         });
 
-        it('app type mutator limits available applications', () => {
-            const formOptions = {
-                getState: () => ({
-                    values: {
-                        source_type: 'amazon'
-                    }
-                })
-            };
-
-            const mutator = appMutator(applicationTypes);
-
-            expect(mutator({ label: 'none' }, formOptions)).toEqual({ label: 'none' });
-            expect(mutator({ label: 'catalog', value: 'selected' }, formOptions)).toEqual(
-                { label: 'catalog', value: 'selected', isDisabled: false }
-            );
-            expect(mutator({ label: 'cost', value: 'cost' }, formOptions)).toEqual(
-                { label: 'cost', value: 'cost', isDisabled: true }
-            );
-        });
-
         it('appMutatorRedHat - undfined when unable', () => {
             const formOptions = {
                 getState: () => ({
@@ -185,7 +168,7 @@ describe('Add source schema', () => {
             expect(mutator({ label: 'catalog', value: 'selected' }, formOptions)).toEqual(
                 { label: 'catalog', value: 'selected' }
             );
-            expect(mutator({ label: 'cost', value: 'cost' }, formOptions)).toEqual(undefined);
+            expect(mutator({ label: 'cost this is label', value: 'cost' }, formOptions)).toEqual(undefined);
         });
     });
 
@@ -213,12 +196,12 @@ describe('Add source schema', () => {
             expect(result.fields[0].name).toEqual('source_type');
             expect(result.fields[0].mutator).toEqual(expect.any(Function));
             expect(result.fields[1].name).toEqual('application.application_type_id');
-            expect(result.fields[1].component).toEqual('enhanced-select');
+            expect(result.fields[1].component).toEqual('enhanced-radio');
             expect(result.fields[1].isRequired).toEqual(undefined);
             expect(result.fields[1].validate).toEqual(undefined);
             expect(result.fields[1].placeholder).toEqual(expect.any(String));
             expect(result.fields[1].condition).toEqual(undefined);
-            expect(result.fields[1].mutator.toString()).toEqual(appMutator(applicationTypes).toString());
+            expect(result.fields[1].mutator.toString()).toEqual(appMutatorRedHat(applicationTypes).toString());
         });
 
         it('red hat type selection', () => {
@@ -243,28 +226,21 @@ describe('Add source schema', () => {
         it('generate steps and filters application not belonging to the type', () => {
             const result = applicationStep(applicationTypes, 'amazon', INTL);
 
-            expect(result.title).toEqual('Application');
+            expect(result.title).toEqual('Select application');
             expect(result.fields.map(({ name }) => name)).toEqual([
                 'app-description', 'application.application_type_id', 'source_type'
             ]);
             expect(result.fields[1].options).toEqual([
-                { key: 'none', label: 'None' },
-                { label: 'Cost Management', value: '2' },
-                { label: 'Subscription Watch', value: '5' },
-                { label: 'Topological Inventory', value: '3' }
+                { label: 'Cost Management', value: '2', description: 'Analyze, forecast, and optimize your Red Hat OpenShift cluster costs in hybrid cloud environments.' },
+                { label: expect.any(Object), value: '5', description: <SubWatchDescription id="5"/> },
+                { label: 'Topological Inventory', value: '3', description: undefined },
+                { value: '', label: 'No application' }
             ]);
         });
     });
 
-    describe('compileAllApplicationComboOptions', () => {
+    describe('compileAllSourcesComboOptions', () => {
         let tmpLocation;
-
-        const INTL = { formatMessage: ({ defaultMessage }) => defaultMessage };
-
-        const mockAppTypes = [
-            { name: 'google', display_name: 'Google Cloud Provider', id: '1' },
-            { name: 'aws', display_name: 'Amazon Web Services', id: '2' }
-        ];
 
         beforeEach(() => {
             tmpLocation = Object.assign({}, window.location);
@@ -281,21 +257,68 @@ describe('Add source schema', () => {
         it('cloud type selection', () => {
             window.location.search = `activeVendor=${CLOUD_VENDOR}`;
 
-            expect(compileAllApplicationComboOptions(mockAppTypes, INTL)).toEqual(
+            const mockSourceTypes = [
+                { name: 'google', product_name: 'Google Cloud Provider', id: '1' },
+                { name: 'aws', product_name: 'Amazon Web Services', id: '2' }
+            ];
+
+            expect(compileAllSourcesComboOptions(mockSourceTypes)).toEqual(
                 [
-                    { key: 'none', label: 'None' },
-                    { label: 'Amazon Web Services', value: '2' },
-                    { label: 'Google Cloud Provider', value: '1' }]
+                    { label: 'Amazon Web Services', value: 'aws' },
+                    { label: 'Google Cloud Provider', value: 'google' }]
+            );
+        });
+
+        it('red hat type selection - remove red hat', () => {
+            window.location.search = `activeVendor=${REDHAT_VENDOR}`;
+
+            const mockSourceTypes = [
+                { name: 'ops', product_name: 'Red Hat Openshift', vendor: 'Red Hat', id: '1' },
+                { name: 'sat', product_name: 'Red Hat Satellite', vendor: 'Red Hat', id: '2' }
+            ];
+
+            expect(compileAllSourcesComboOptions(mockSourceTypes)).toEqual(
+                [
+                    { label: 'Openshift', value: 'ops' },
+                    { label: 'Satellite', value: 'sat' }]
+            );
+        });
+    });
+
+    describe('compileAllApplicationComboOptions', () => {
+        let tmpLocation;
+
+        const mockAppTypes = [
+            { name: 'app', display_name: 'Application', id: '1' }
+        ];
+
+        const INTl = { formatMessage: ({ defaultMessage }) => defaultMessage };
+
+        beforeEach(() => {
+            tmpLocation = Object.assign({}, window.location);
+
+            delete window.location;
+
+            window.location = {};
+        });
+
+        afterEach(() => {
+            window.location = tmpLocation;
+        });
+
+        it('cloud type selection - has none application', () => {
+            window.location.search = `activeVendor=${CLOUD_VENDOR}`;
+
+            expect(compileAllApplicationComboOptions(mockAppTypes, INTl)).toEqual(
+                [{ label: 'Application', value: '1', description: undefined }, { label: 'No application', value: '' }]
             );
         });
 
         it('red hat type selection - is none', () => {
             window.location.search = `activeVendor=${REDHAT_VENDOR}`;
 
-            expect(compileAllApplicationComboOptions(mockAppTypes, INTL)).toEqual(
-                [
-                    { label: 'Amazon Web Services', value: '2' },
-                    { label: 'Google Cloud Provider', value: '1' }]
+            expect(compileAllApplicationComboOptions(mockAppTypes, INTl)).toEqual(
+                [{ label: 'Application', value: '1', description: undefined }]
             );
         });
     });

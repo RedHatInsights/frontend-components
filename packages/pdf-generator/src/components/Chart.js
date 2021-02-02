@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { CircleIconConfig } from '@patternfly/react-icons/dist/js/icons/circle-icon';
 import PropTypes from 'prop-types';
@@ -37,7 +37,7 @@ const chartMapper = {
     }
 };
 
-class Chart extends Component {
+class Chart extends React.Component {
     getChartData = (currChart) => {
         const { data, chartType, colorSchema, ...props } = this.props;
         const Chart = currChart.component;

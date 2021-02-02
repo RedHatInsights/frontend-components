@@ -18,7 +18,7 @@ const initialValues = {
     isLoading: true
 };
 
-const reducer = (state, { type, sourceTypes, applicationTypes, container, disableAppSelection, intl, selectedType }) => {
+const reducer = (state, { type, sourceTypes, applicationTypes, container, disableAppSelection, intl, selectedType, initialWizardState }) => {
     switch (type) {
         case 'loaded':
             return {
@@ -29,7 +29,8 @@ const reducer = (state, { type, sourceTypes, applicationTypes, container, disabl
                     disableAppSelection,
                     container,
                     intl,
-                    selectedType
+                    selectedType,
+                    initialWizardState
                 ),
                 isLoading: false,
                 sourceTypes
@@ -45,7 +46,8 @@ const SourceAddModal = ({
     onCancel,
     values,
     onSubmit,
-    selectedType
+    selectedType,
+    initialWizardState
 }) => {
     const [{ schema, sourceTypes: stateSourceTypes, isLoading }, dispatch ] = useReducer(reducer, initialValues);
     const isMounted = useRef(false);
@@ -76,7 +78,8 @@ const SourceAddModal = ({
                     disableAppSelection,
                     container: container.current,
                     intl,
-                    selectedType
+                    selectedType,
+                    initialWizardState
                 });
             }
         });
@@ -111,7 +114,7 @@ const SourceAddModal = ({
                 ...(selectedType && { source_type: selectedType })
             } }
             schema={ schema }
-            onSubmit={ (values) => onSubmit(values, stateSourceTypes) }
+            onSubmit={ (values, _formApi, wizardState) => onSubmit(values, stateSourceTypes, wizardState) }
             onCancel={ onCancel }
         />
     );
@@ -137,7 +140,8 @@ SourceAddModal.propTypes = {
     values: PropTypes.object,
     disableAppSelection: PropTypes.bool,
     isCancelling: PropTypes.bool,
-    selectedType: PropTypes.string
+    selectedType: PropTypes.string,
+    initialWizardState: PropTypes.object
 };
 
 SourceAddModal.defaultProps = {

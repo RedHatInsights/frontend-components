@@ -87,7 +87,7 @@ describe('AWS-ARN hardcoded schemas', () => {
         wrapper.update();
 
         expect(wrapper.find(TextContent)).toHaveLength(1);
-        expect(wrapper.find(Text)).toHaveLength(1);
+        expect(wrapper.find(Text)).toHaveLength(2);
         expect(wrapper.find(TextList)).toHaveLength(1);
         expect(wrapper.find(TextListItem)).toHaveLength(4);
         expect(wrapper.find(ClipboardCopy)).toHaveLength(1);
