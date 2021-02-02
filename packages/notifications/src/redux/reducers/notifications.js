@@ -9,7 +9,7 @@ function generateID(type) {
     return text;
 }
 
-const addNotification = (notifications, { payload }) => [ ...notifications, { ...payload, id: generateID('notyfication') }];
+const addNotification = (notifications, { payload }) => [ ...notifications, { id: generateID('notification'), ...payload }];
 const removeNotification = (notifications, { payload }) => {
     const index = notifications.findIndex(({ id }) => id === payload);
     return [ ...notifications.slice(0, index), ...notifications.slice(index + 1) ];
