@@ -1,12 +1,12 @@
 import React from 'react';
 
-import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
-import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
-import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
-import validatorMapper from '@data-driven-forms/react-form-renderer/dist/cjs/validator-mapper';
+import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/validator-types';
+import validatorMapper from '@data-driven-forms/react-form-renderer/dist/esm/validator-mapper';
 
-import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
-import componentMapper from '@data-driven-forms/pf4-component-mapper/dist/cjs/component-mapper';
+import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
+import componentMapper from '@data-driven-forms/pf4-component-mapper/dist/esm/component-mapper';
 
 import SourceWizardSummary from './components/SourceWizardSummary';
 import Description from './components/Description';
