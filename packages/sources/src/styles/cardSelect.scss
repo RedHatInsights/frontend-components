@@ -39,3 +39,9 @@
 .ins-c-sources__wizard--rhel-desc-title {
   color: initial;
 }
+
+.ins-c-sources__wizard--summary-description-list {
+  .pf-c-description-list__group {
+    grid-template-columns: 150px 1fr;
+  }
+}
