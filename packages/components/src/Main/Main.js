@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import ThemeContext from '../Dark/configContext';
+import './main.scss';
 
 const toKebab = text => text.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 

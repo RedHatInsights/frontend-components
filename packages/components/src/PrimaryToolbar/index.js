@@ -3,4 +3,3 @@ export { default as PrimaryToolbar } from './PrimaryToolbar';
 export { default as Actions } from './Actions';
 export { default as SortBy } from './SortBy';
 export * from './SortBy';
-import './primary-toolbar.scss';

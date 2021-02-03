@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Badge, Chip, ChipGroup, Button } from '@patternfly/react-core';
 import classNames from 'classnames';
+import './filter-chips.scss';
 
 const FilterChips = ({ className, filters, onDelete }) => {
     const groupedFilters = filters.filter(group => group.category).map(group =>  (
