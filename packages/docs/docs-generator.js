@@ -190,13 +190,32 @@ ${extensiveProps.map((data) => {
     return fse.writeFile(`${componentsDest}/${name}.md`, content);
 }
 
+function generateComponentsNavigation(components) {
+    const nav = Object.keys(components).reduce((nav, path) => {
+        let fragments = path.split('/');
+        const navName = fragments.pop().replace('.js', '');
+        const groupName = fragments.pop();
+        return {
+            ...nav,
+            [groupName]: [
+                ...nav[groupName] || [],
+                navName
+            ]
+        };
+    }, {});
+    return Object.entries(nav).map(([ key, value ]) => ({
+        group: key,
+        items: value.sort((a, b) => a.localeCompare(b))
+    })).sort((a, b) => a.group.localeCompare(b.group));
+}
+
 async function traverseComponents() {
     const components = fse.readJSONSync(path.resolve(__dirname, COMPONENTS_JSON));
     const foo = Object.entries(components);
     const cmds = foo.map(([ name, API ]) => {
         return generateMD(name, API);
     });
-    const componentsNav = Object.keys(components).map(key => key.split('/').pop().replace('.js', '')).sort((a, b) => a.localeCompare(b));
+    const componentsNav = generateComponentsNavigation(components);
     fse.writeJsonSync(`${navDest}/components-navigation.json`, componentsNav);
     return Promise.all(cmds);
 }
