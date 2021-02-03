@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@patternfly/react-core';
 import { AngleRightIcon } from '@patternfly/react-icons';
+import './styles.scss';
 
 export default (onCollapse) => (value = '', { rowData, ...props } = { rowData: {} }) => ({
     value,

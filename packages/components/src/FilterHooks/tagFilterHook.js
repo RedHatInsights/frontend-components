@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { constructGroups, mapGroups } from './constants';
 import { Spinner } from '@patternfly/react-core';
+import './tagFilterHook.scss';
 
 export const tagsFilterState = { tagsFilter: {} };
 export const TAGS_FILTER = 'TAGS_FILTER';

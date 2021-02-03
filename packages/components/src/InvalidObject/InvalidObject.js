@@ -4,6 +4,7 @@ import {
     Title,
     Button
 } from '@patternfly/react-core';
+import './invalidObject.scss';
 
 // Don't use chrome here because the 404 page on landing does not use chrome
 const isBeta = () => {

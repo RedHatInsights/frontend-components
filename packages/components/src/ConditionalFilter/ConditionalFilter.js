@@ -4,6 +4,7 @@ import { FilterIcon } from '@patternfly/react-icons';
 import Text from './TextFilter';
 import { conditionalFilterType, typeMapper } from './conditionalFilterConstants';
 import PropTypes from 'prop-types';
+import './conditional-filter.scss';
 
 class ConditionalFilter extends Component {
     state = {
