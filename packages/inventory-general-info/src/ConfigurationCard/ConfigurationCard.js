@@ -21,7 +21,7 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
         {
             title: 'Installed packages',
             value: configuration.packages?.length,
-            plural: 'packages',
+            singular: 'package',
             target: 'installed_packages',
             onClick: () => {
                 handleClick(
@@ -33,7 +33,7 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
         {
             title: 'Services',
             value: configuration.services?.length,
-            plural: 'services',
+            singular: 'service',
             target: 'services',
             onClick: () => {
                 handleClick(
@@ -45,6 +45,7 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
         {
             title: 'Running processes',
             value: configuration.processes?.length,
+            singular: 'process',
             plural: 'processes',
             target: 'running_processes',
             onClick: () => {

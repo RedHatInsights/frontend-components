@@ -73,7 +73,7 @@ describe('LoadingCard', () => {
             />);
 
             expect(wrapper.find('dd').text()).toEqual('None');
-            expect(wrapper.find(Clickable).find('a')).toHaveLength(0);
+            expect(wrapper.find(Clickable)).toHaveLength(0);
         });
 
         it(`should not be clickable when the value is 0 with plural`, () => {
@@ -86,14 +86,14 @@ describe('LoadingCard', () => {
                             onClick: jest.fn(),
                             title: 'test-title',
                             value: 0,
-                            plural: 'systems'
+                            singular: 'system'
                         }
                     ]
                 }
             />);
 
             expect(wrapper.find('dd').text()).toEqual('0 systems');
-            expect(wrapper.find(Clickable).find('a')).toHaveLength(0);
+            expect(wrapper.find(Clickable)).toHaveLength(0);
         });
 
         it(`should not be clickable when the value is undefined`, () => {
@@ -112,7 +112,7 @@ describe('LoadingCard', () => {
             />);
 
             expect(wrapper.find('dd').text()).toEqual('Not available');
-            expect(wrapper.find(Clickable).find('a')).toHaveLength(0);
+            expect(wrapper.find(Clickable)).toHaveLength(0);
         });
 
         it(`should be none when value is 0`, () => {
@@ -160,7 +160,7 @@ describe('LoadingCard', () => {
                         {
                             title: 'test-title',
                             value: 0,
-                            plural: 'systems'
+                            singular: 'system'
                         }
                     ]
                 }
@@ -180,13 +180,34 @@ describe('LoadingCard', () => {
                             onClick: jest.fn(),
                             title: 'test-title',
                             value: 23,
-                            plural: 'systems'
+                            singular: 'system'
                         }
                     ]
                 }
             />);
 
             expect(wrapper.find('dd').text()).toEqual('23 systems');
+            expect(wrapper.find(Clickable).find('a')).toHaveLength(1);
+        });
+
+        it(`should be clickable with custom plural`, () => {
+            const wrapper = mount(<LoadingCard
+                isLoading={ false }
+                title="Some title"
+                items={
+                    [
+                        {
+                            onClick: jest.fn(),
+                            title: 'test-title',
+                            value: 23,
+                            singular: 'process',
+                            plural: 'processes'
+                        }
+                    ]
+                }
+            />);
+
+            expect(wrapper.find('dd').text()).toEqual('23 processes');
             expect(wrapper.find(Clickable).find('a')).toHaveLength(1);
         });
     });

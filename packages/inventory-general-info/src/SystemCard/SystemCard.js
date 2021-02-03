@@ -105,7 +105,7 @@ class SystemCard extends Component {
                         {
                             title: 'SAP',
                             value: properties.sapIds?.length,
-                            plural: 'identifiers',
+                            singular: 'identifier',
                             target: 'sap_sids',
                             onClick: () => {
                                 handleClick(

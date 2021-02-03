@@ -13,13 +13,28 @@ import {
 } from '@patternfly/react-core';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
-export const Clickable = ({ item: { onClick, value, target, plural } }) => (
-    (value && value !== 0) ?
-        <a onClick={ event => {
+const valueToText = (value, singular, plural) => {
+    if ((value || value === 0) && singular) {
+        return value === 1 ? `1 ${singular}` : `${value} ${plural || `${singular}s`}`;
+    }
+
+    if (value === 0) {
+        return 'None';
+    }
+
+    return value || 'Not available';
+};
+
+export const Clickable = ({ item: { onClick, value, target, plural, singular } }) => (
+    <a
+        onClick={ event => {
             event.preventDefault();
             onClick(event, { value, target });
-        } } href={ `${window.location.href}/${target}` }>{ `${value}${plural ? ` ${plural}` : ''}` }</a> :
-        value === 0 ?  plural ? `0 ${plural}` : 'None' : 'Not available'
+        } }
+        href={ `${window.location.href}/${target}` }
+    >
+        { valueToText(value, singular, plural) }
+    </a>
 );
 
 Clickable.propTypes = {
@@ -27,7 +42,8 @@ Clickable.propTypes = {
         value: PropTypes.node,
         target: PropTypes.string,
         onClick: PropTypes.func,
-        plural: PropTypes.node
+        plural: PropTypes.string,
+        singular: PropTypes.string
     })
 };
 
@@ -56,9 +72,9 @@ const LoadingCard = ({ title, isLoading, items }) => {
                                 <TextListItem component={ TextListItemVariants.dd }>
                                     { isLoading && <Skeleton size={ item.size || SkeletonSize.sm } /> }
                                     { !isLoading && (
-                                        item.onClick ?
+                                        item.onClick && item.value ?
                                             <Clickable item={ item }/> :
-                                            (item.value || (item.value === 0 ? item.plural ? `0 ${item.plural}` : 'None' : 'Not available'))
+                                            valueToText(item.value, item.singular, item.plural)
                                     ) }
                                 </TextListItem>
                             </Fragment>
@@ -78,7 +94,8 @@ LoadingCard.propTypes = {
         value: PropTypes.node,
         onClick: PropTypes.func,
         size: PropTypes.oneOf(Object.values(SkeletonSize)),
-        plural: PropTypes.node
+        plural: PropTypes.string,
+        singular: PropTypes.string
     }))
 };
 

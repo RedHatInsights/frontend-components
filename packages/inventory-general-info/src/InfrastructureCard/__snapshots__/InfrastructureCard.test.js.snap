@@ -179,7 +179,7 @@ exports[`InfrastructureCard should render correctly with data 1`] = `
           <a
             href="http://localhost:5000//ipv4"
           >
-            1 addresses
+            1 address
           </a>
         </dd>
         <dt
@@ -193,9 +193,9 @@ exports[`InfrastructureCard should render correctly with data 1`] = `
           data-pf-content="true"
         >
           <a
-            href="http://localhost:5000//ipv6"
+            href="http://localhost:5000//undefined"
           >
-            1 addresses
+            1 address
           </a>
         </dd>
         <dt
@@ -211,7 +211,7 @@ exports[`InfrastructureCard should render correctly with data 1`] = `
           <a
             href="http://localhost:5000//interfaces"
           >
-            1 NICs
+            1 NIC
           </a>
         </dd>
       </dl>
@@ -379,7 +379,7 @@ exports[`InfrastructureCard should render enabled/disabled 1`] = `
           <a
             href="http://localhost:5000//ipv4"
           >
-            1 addresses
+            1 address
           </a>
         </dd>
         <dt
@@ -393,9 +393,9 @@ exports[`InfrastructureCard should render enabled/disabled 1`] = `
           data-pf-content="true"
         >
           <a
-            href="http://localhost:5000//ipv6"
+            href="http://localhost:5000//undefined"
           >
-            1 addresses
+            1 address
           </a>
         </dd>
         <dt
@@ -411,7 +411,7 @@ exports[`InfrastructureCard should render enabled/disabled 1`] = `
           <a
             href="http://localhost:5000//interfaces"
           >
-            1 NICs
+            1 NIC
           </a>
         </dd>
       </dl>

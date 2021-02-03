@@ -1,8 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoadingCard Clickable should render - 0 value 1`] = `"None"`;
+exports[`LoadingCard Clickable should render - 0 value 1`] = `
+<a
+  href="http://localhost:5000//some-target"
+  onClick={[Function]}
+>
+  None
+</a>
+`;
 
-exports[`LoadingCard Clickable should render - no data 1`] = `"Not available"`;
+exports[`LoadingCard Clickable should render - no data 1`] = `
+<a
+  href="http://localhost:5000//undefined"
+  onClick={[Function]}
+>
+  Not available
+</a>
+`;
 
 exports[`LoadingCard Clickable should render 1`] = `
 <a

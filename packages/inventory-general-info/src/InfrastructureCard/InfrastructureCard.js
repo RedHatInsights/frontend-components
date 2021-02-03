@@ -15,6 +15,7 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
             title: 'IPv4 addresses',
             value: infrastructure.ipv4?.length,
             plural: 'addresses',
+            singular: 'address',
             target: 'ipv4',
             onClick: () => {
                 handleClick(
@@ -27,7 +28,7 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
             title: 'IPv6 addresses',
             value: infrastructure.ipv6?.length,
             plural: 'addresses',
-            target: 'ipv6',
+            singular: 'address',
             onClick: () => {
                 handleClick(
                     'IPv6',
@@ -38,7 +39,7 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
         {
             title: 'Interfaces/NICs',
             value: infrastructure.nics?.length,
-            plural: 'NICs',
+            singular: 'NIC',
             target: 'interfaces',
             onClick: () => {
                 handleClick(
