@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
-import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/validator-types';
 import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
@@ -10,6 +10,9 @@ import { getActiveVendor, REDHAT_VENDOR, WIZARD_DESCRIPTION, WIZARD_TITLE } from
 import ValidatorReset from './ValidatorReset';
 import { handleError } from '../api/handleError';
 import validated from '../sourceFormRenderer/resolveProps/validated';
+import { COST_MANAGEMENT_APP_NAME, CLOUD_METER_APP_NAME } from '../api/constants';
+import { Label } from '@patternfly/react-core';
+import SubWatchDescription from './descriptions/SubWatchDescription';
 
 export const asyncValidator = async (value, sourceId = undefined, intl) => {
     if (!value) {
@@ -46,7 +49,7 @@ export const asyncValidatorDebouncedWrapper = (intl) => {
     return asyncValidatorDebounced;
 };
 
-const compileAllSourcesComboOptions = (sourceTypes) => (
+export const compileAllSourcesComboOptions = (sourceTypes) => (
     [
         ...sourceTypes.map((type) => (
             {
@@ -59,40 +62,41 @@ const compileAllSourcesComboOptions = (sourceTypes) => (
     ]
 );
 
+export const descriptionMapper = (type, intl) => ({
+    [COST_MANAGEMENT_APP_NAME]: intl.formatMessage({
+        id: 'cost.app.description',
+        defaultMessage: 'Analyze, forecast, and optimize your Red Hat OpenShift cluster costs in hybrid cloud environments.'
+    }),
+    [CLOUD_METER_APP_NAME]: <SubWatchDescription id={type.id} />
+}[type.name]);
+
+export const labelMapper = (type, intl) => ({
+    [CLOUD_METER_APP_NAME]: <span className="ins-c-sources__wizard--rhel-mag-label">RHEL management <Label className="pf-u-ml-sm" color="purple">{
+        intl.formatMessage({ id: 'sub.bundle', defaultMessage: 'Bundle' })
+    }</Label></span>
+}[type.name]);
+
 export const compileAllApplicationComboOptions = (applicationTypes, intl) => (
     [
-        ...(getActiveVendor() !== REDHAT_VENDOR ? [{
-            label: intl.formatMessage({
-                id: 'wizard.none',
-                defaultMessage: 'None'
-            }),
-            key: 'none'
-        }] : []),
         ...applicationTypes.sort((a, b) => a.display_name.localeCompare(b.display_name)).map(t => ({
             value: t.id,
-            label: t.display_name
-        }))
+            label: labelMapper(t, intl) || t.display_name,
+            description: descriptionMapper(t, intl)
+        })),
+        ...(getActiveVendor() !== REDHAT_VENDOR ? [{
+            label: intl.formatMessage({
+                id: 'wizard.noApplication',
+                defaultMessage: 'No application'
+            }),
+            value: ''
+        }] : [])
     ]
 );
 
-export const appMutator = (appTypes) => (option, formOptions) => {
-    if (!option.value) {
-        return option;
-    }
-
-    const selectedSourceType = formOptions.getState().values.source_type;
-    const appType = appTypes.find(app => app.display_name === option.label);
-    const isEnabled = selectedSourceType ? appType.supported_source_types.includes(selectedSourceType) : true;
-    return {
-        ...option,
-        isDisabled: !isEnabled
-    };
-};
-
 export const appMutatorRedHat = (appTypes) => (option, formOptions) => {
     const selectedSourceType = formOptions.getState().values.source_type;
-    const appType = appTypes.find(app => app.display_name === option.label);
-    const isEnabled = selectedSourceType ? appType.supported_source_types.includes(selectedSourceType) : true;
+    const appType = appTypes.find(app => app.id === option.value);
+    const isEnabled = selectedSourceType && appType ? appType.supported_source_types.includes(selectedSourceType) : true;
 
     if (!isEnabled) {
         return;
@@ -164,14 +168,14 @@ const cloudTypes = ({ intl, sourceTypes, applicationTypes, disableAppSelection }
         mutator: sourceTypeMutator(applicationTypes, sourceTypes)
     },
     {
-        component: 'enhanced-select',
+        component: 'enhanced-radio',
         name: 'application.application_type_id',
         label: intl.formatMessage({
             id: 'wizard.selectYourApplication',
             defaultMessage: 'B. Select an application'
         }),
         options: compileAllApplicationComboOptions(applicationTypes, intl, sourceTypes),
-        mutator: appMutator(applicationTypes),
+        mutator: appMutatorRedHat(applicationTypes),
         isDisabled: disableAppSelection,
         placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' }),
         menuIsPortal: true
@@ -199,8 +203,8 @@ const redhatTypes = ({ intl, sourceTypes, applicationTypes, disableAppSelection 
 export const applicationStep = (applicationTypes, selectedType, intl) => ({
     name: 'types_step',
     title: intl.formatMessage({
-        id: 'wizard.Application',
-        defaultMessage: 'Application'
+        id: 'wizard.selectApplication',
+        defaultMessage: 'Select application'
     }),
     nextStep,
     fields: [{
@@ -208,21 +212,16 @@ export const applicationStep = (applicationTypes, selectedType, intl) => ({
         name: 'app-description',
         label: intl.formatMessage({
             id: 'wizard.applicationDescription',
-            defaultMessage: 'Select an application to configure this source. You can connect additional applications after source creation.'
+            defaultMessage: 'Select an application to connect to your source. You can connect additional applications after source creation.'
         })
     }, {
-        component: 'enhanced-select',
+        component: 'enhanced-radio',
         name: 'application.application_type_id',
-        label: intl.formatMessage({
-            id: 'wizard.selectYourApplicationNoPoint',
-            defaultMessage: 'Select an application'
-        }),
         options: compileAllApplicationComboOptions(
             applicationTypes.filter(({ supported_source_types }) => supported_source_types.includes(selectedType)),
             intl
         ),
-        mutator: appMutator(applicationTypes),
-        placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' }),
+        mutator: appMutatorRedHat(applicationTypes),
         menuIsPortal: true
     }, {
         component: componentTypes.TEXT_FIELD,
@@ -269,8 +268,8 @@ export const NameDescription = () => {
 
 const nameStep = (intl) => ({
     title: intl.formatMessage({
-        id: 'wizard.name',
-        defaultMessage: 'Name'
+        id: 'wizard.nameSource',
+        defaultMessage: 'Name source'
     }),
     name: 'name_step',
     nextStep: 'types_step',
@@ -307,7 +306,10 @@ export const SummaryDescription = () => {
             <Text component={ TextVariants.p }>
                 { intl.formatMessage({
                     id: 'wizard.summaryDescription',
-                    defaultMessage: 'Review the information below and click Add to add your source. Use the Back button to make changes.'
+                    defaultMessage: 'Review the information below and click <b>Add</b> to add your source. To edit details in previous steps, click <b>Back</b>.'
+                }, {
+                    // eslint-disable-next-line react/display-name
+                    b: (chunks) => <b key={`b-${chunks.length}-${Math.floor(Math.random() * 1000)}`}>{chunks}</b>
                 }) }
             </Text>
         </TextContent>
@@ -334,7 +336,7 @@ const summaryStep = (sourceTypes, applicationTypes, intl) => ({
     })
 });
 
-export default (sourceTypes, applicationTypes, disableAppSelection, container, intl, selectedType) => {
+export default (sourceTypes, applicationTypes, disableAppSelection, container, intl, selectedType, initialWizardState) => {
     setFirstValidated(true);
 
     return ({
@@ -364,6 +366,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container, i
             },
             container,
             showTitles: true,
+            initialState: initialWizardState,
             crossroads: [ 'application.application_type_id', 'source_type', 'auth_select' ],
             fields: [
                 nameStep(intl),

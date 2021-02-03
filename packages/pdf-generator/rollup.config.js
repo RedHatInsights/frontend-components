@@ -13,14 +13,13 @@ import json from '@rollup/plugin-json';
 import rollupPlugins from '../../config/rollup-plugins';
 
 const external = createFilter(
-    Object.keys(dependencies).map(item => item.includes('@patternfly') ? `${item}/**` : item),
+    Object.keys(dependencies).map(item => item.includes('@patternfly') ? `${item}/**` : item)
+    .filter(item => item !== 'react' && item !== 'react-dom'),
     null,
     { resolve: false }
 );
 
 const globals = {
-    react: 'React',
-    'react-dom': 'ReactDOM',
     '@patternfly/react-core': '@patternfly/react-core',
     '@patternfly/react-icons': '@patternfly/react-icons'
 };

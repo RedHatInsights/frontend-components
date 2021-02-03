@@ -2,7 +2,7 @@ import React from 'react';
 import mount from '../../__mocks__/mount';
 import validated, { ValidatingSpinner } from '../../../sourceFormRenderer/resolveProps/validated';
 import { Spinner, FormHelperText } from '@patternfly/react-core';
-import Form from '@data-driven-forms/react-form-renderer/dist/cjs/form';
+import Form from '@data-driven-forms/react-form-renderer/dist/esm/form';
 
 describe('resolveProps - validated', () => {
     it('Spinner is renderer correctly', () => {

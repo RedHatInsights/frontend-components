@@ -65,6 +65,8 @@ import { AddSourceWizard } from '@redhat-cloud-services/frontend-components-sour
 |hideSourcesButton|bool|`false`|hide 'Take me to sources' button.|
 |returnButtonTitle|node|`'Go back to sources'`|Title of the button shown after success submit. Put your own application name if you neeed.|
 |selectedType|string|`undefined`|A name of source type preselected - this will remove the source type selection. (Only for Cloud types.)|
+|initialWizardState|object|`undefined`|An initial state passed to the wizard component. See [here](https://data-driven-forms.org/mappers/wizard?mapper=pf4#heading-pf4wizard#initialstate).|
+|submitCallback|function|`undefined`|An function that is always called when the submit finishes. `(state) => ...` In case of success, the state is a following object: `{createdSource, sourceTypes, isSubmitted: true}`, in case of any unhandled error: `{values, sourceTypes, isErrored, wizardState, error }` |
 
 If you need to set up and **support only one application** you can provide filtered `applicationTypes` with the only one application, set up `disableAppSelection` to `false` and `initialValues` to:
 

@@ -6,7 +6,7 @@ import get from 'lodash/get';
 import hardcodedSchemas from '../../addSourceWizard/hardcodedSchemas';
 import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps, shouldSkipEndpoint } from '../../addSourceWizard/schemaBuilder';
 import ValuePopover from './ValuePopover';
-import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import { COST_MANAGEMENT_APP_NAME } from '../../api/constants';
 
 const alertMapper = (appName, sourceType, intl) => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Radio } from '@patternfly/react-core';
 
-import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
-import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
+import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
+import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 
 import AuthSelect from '../../../sourceFormRenderer/components/AuthSelect';
 import mount from '../../__mocks__/mount';

@@ -5,7 +5,7 @@ import Summary, { createItem } from '../../../sourceFormRenderer/components/Sour
 import applicationTypes, { COST_MANAGEMENT_APP, SUB_WATCH_APP } from '../../helpers/applicationTypes';
 import sourceTypes from '../../helpers/sourceTypes';
 import ValuePopover from '../../../sourceFormRenderer/components/ValuePopover';
-import RendererContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
+import RendererContext from '@data-driven-forms/react-form-renderer/dist/esm/renderer-context';
 import mount from '../../__mocks__/mount';
 import { FormattedMessage } from 'react-intl';
 
@@ -256,8 +256,7 @@ describe('SourceWizardSummary component', () => {
                     [ 'Application', 'Subscription Watch' ],
                     [ 'Source type', 'Amazon Web Services' ],
                     [ 'Authentication type', 'Subscription Watch ARN' ],
-                    [ 'ARN', 'arn:aws:132' ],
-                    [ 'Auto-register cloud instances', 'Enabled' ]
+                    [ 'ARN', 'arn:aws:132' ]
                 ]
             );
         });

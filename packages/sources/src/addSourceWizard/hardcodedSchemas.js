@@ -2,8 +2,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FormHelperText } from '@patternfly/react-core';
 
-import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
-import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/validator-types';
 import SSLFormLabel from './SSLFormLabel';
 
 import * as OpenshiftToken from './hardcodedComponents/openshift/token';
@@ -111,7 +111,7 @@ export default {
                         }]
                     },
                     additionalSteps: [{
-                        title: <FormattedMessage id="cost.configureOperator" defaultMessage="Cost Management Operator" />,
+                        title: <FormattedMessage id="cost.configureOperator" defaultMessage="Install and configure operator" />,
                         fields: [{
                             component: 'description',
                             name: 'description-summary',
@@ -462,7 +462,6 @@ export default {
                         title: <FormattedMessage id="cloudmeter.enterArn" defaultMessage="Enter ARN" />,
                         name: 'subs-arn',
                         substepOf: 'eaa',
-                        nextStep: 'subwatch-auto-registration',
                         fields: [{
                             name: 'arn-description',
                             component: 'description',
@@ -470,22 +469,6 @@ export default {
                         }, {
                             component: componentTypes.TEXT_FIELD,
                             name: 'authentication.username'
-                        }]
-                    }, {
-                        name: 'subwatch-auto-registration',
-                        title: <FormattedMessage id="cloudmeter.autoRegistration" defaultMessage="Auto-registration" />,
-                        fields: [{
-                            component: componentTypes.PLAIN_TEXT,
-                            name: 'auto-registration-text',
-                            label: <FormattedMessage
-                                id="cloudmeter.autoRegistrationDescription"
-                                defaultMessage="With auto-registration, all Gold Image instances will be automatically connected to Subscription Watch."
-                            />
-                        }, {
-                            component: componentTypes.SWITCH,
-                            name: 'application.extra.auto_register',
-                            initialValue: true,
-                            label: <FormattedMessage id="cloudmeter.autoRegisterLabel" defaultMessage="Auto-register cloud instances" />
                         }]
                     }
                     ]
