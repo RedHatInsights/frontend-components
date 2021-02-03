@@ -19,7 +19,8 @@ export const getSourcesApi = () => ({
     getApplication: (id) => axiosInstanceInsights.get(`${SOURCES_API_BASE_V3}/applications/${id}`),
     getEndpoint: (id) => axiosInstanceInsights.get(`${SOURCES_API_BASE_V3}/endpoints/${id}`),
     removeSource: (id) => axiosInstanceInsights.delete(`${SOURCES_API_BASE_V3}/sources/${id}`),
-    checkAvailabilitySource: (id) => axiosInstanceInsights.post(`${SOURCES_API_BASE_V3}/sources/${id}/check_availability`)
+    checkAvailabilitySource: (id) => axiosInstanceInsights.post(`${SOURCES_API_BASE_V3}/sources/${id}/check_availability`),
+    getGoogleAccount: () => axiosInstanceInsights.get(`${SOURCES_API_BASE_V3}/app_meta_data?filter[name]=gcp_service_account`)
 });
 
 export const doLoadSourceTypes = () =>

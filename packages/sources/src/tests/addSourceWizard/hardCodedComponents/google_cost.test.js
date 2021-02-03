@@ -1,5 +1,7 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { Text, TextContent, TextList, TextListItem, ClipboardCopy } from '@patternfly/react-core';
+import * as api from '../../../api/index';
 
 import * as Cm from '../../../addSourceWizard/hardcodedComponents/gcp/costManagement';
 import mount from '../../__mocks__/mount';
@@ -13,14 +15,59 @@ describe('Cost Management Google steps components', () => {
         expect(wrapper.find(Text)).toHaveLength(1);
     });
 
-    it('Assign access', () => {
-        const wrapper = mount(<Cm.AssignAccess />);
+    describe('Assign access', () => {
+        it('successfully loads data', async () => {
+            const email = 'super-google-email@gmail.com';
 
-        expect(wrapper.find(TextContent)).toHaveLength(1);
-        expect(wrapper.find(Text)).toHaveLength(1);
-        expect(wrapper.find(TextList)).toHaveLength(1);
-        expect(wrapper.find(TextListItem)).toHaveLength(4);
-        expect(wrapper.find(ClipboardCopy).props().children).toEqual('test-billing-service-account@cloud-billing-292519.iam.gserviceaccount.com');
+            api.getSourcesApi = () => ({
+                getGoogleAccount: () => Promise.resolve({
+                    data: [
+                        { payload: email }
+                    ]
+                })
+            });
+
+            let wrapper;
+            await act(async () => {
+                wrapper = mount(<Cm.AssignAccess />);
+            });
+
+            expect(wrapper.find(ClipboardCopy).props().children).toEqual('Loading account address...');
+
+            wrapper.update();
+
+            expect(wrapper.find(TextContent)).toHaveLength(1);
+            expect(wrapper.find(Text)).toHaveLength(1);
+            expect(wrapper.find(TextList)).toHaveLength(1);
+            expect(wrapper.find(TextListItem)).toHaveLength(4);
+            expect(wrapper.find(ClipboardCopy).props().children).toEqual(email);
+        });
+
+        it('catches errors', async () => {
+            const _cons = console.error;
+            console.error = jest.fn();
+
+            const error = 'super-google-error';
+
+            api.getSourcesApi = () => ({
+                getGoogleAccount: () => Promise.reject(error)
+            });
+
+            let wrapper;
+
+            await act(async () => {
+                wrapper = mount(<Cm.AssignAccess />);
+            });
+
+            expect(wrapper.find(ClipboardCopy).props().children).toEqual('Loading account address...');
+
+            wrapper.update();
+
+            expect(wrapper.find(ClipboardCopy).props().children).toEqual('There is an error with loading of the account address. Please go back and return to this step.');
+            expect(console.error).toHaveBeenCalledWith(error);
+
+            console.error = _cons;
+        });
     });
 
     it('Dataset', () => {

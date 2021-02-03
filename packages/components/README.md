@@ -34,6 +34,14 @@ import Ansible from '@redhat-cloud-services/frontend-components/Ansible';
 import { Ansible } from '@redhat-cloud-services/frontend-components/Ansible';
 ```
 
+### Importing styles is no longer required
+
+Importing CSS for components is no longer required. Components import their styling whenever they are rendered for the first time.
+
+```diff
+-@import '~@redhat-cloud-services/frontend-components/index.css';
+```
+
 ### Sub components imports.
 
 When importing a partial component like `TextFilter` from `ConditionalFilter`, use direct import shorthand from `ConditionalFilter`. Do not import from `TextFilter` file directly!
