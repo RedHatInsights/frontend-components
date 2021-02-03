@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, ButtonVariant, Dropdown, DropdownToggle, DropdownItem } from '@patternfly/react-core';
 import { Input } from '../Input';
 import { SearchIcon } from '@patternfly/react-icons';
+import './simple-table-filter.scss';
 
 class SimpleFilter extends Component {
     state = {
