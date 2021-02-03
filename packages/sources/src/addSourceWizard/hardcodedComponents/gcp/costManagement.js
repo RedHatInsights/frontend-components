@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Text, TextContent, TextVariants, TextList, TextListVariants, TextListItem, ClipboardCopy, Hint, HintTitle, HintBody } from '@patternfly/react-core';
-import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 
 import { getSourcesApi } from '../../../api';
 

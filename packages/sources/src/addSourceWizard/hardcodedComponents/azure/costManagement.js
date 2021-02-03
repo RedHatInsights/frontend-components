@@ -11,7 +11,7 @@ import {
     TextListItemVariants
 } from '@patternfly/react-core';
 import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
-import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import { useIntl } from 'react-intl';
 
 const CREATE_AZURE_STORAGE = `${HCCM_DOCS_PREFIX}/html/getting_started_with_cost_management/assembly_adding_sources_cost#creating_an_azure_storage_account`;
