@@ -2,8 +2,10 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
-import FormRenderer, { componentTypes } from '@data-driven-forms/react-form-renderer';
-import { componentMapper, FormTemplate } from '@data-driven-forms/pf4-component-mapper';
+import { componentTypes } from '@data-driven-forms/react-form-renderer';
+import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
+import componentMapper from '@data-driven-forms/pf4-component-mapper/dist/esm/component-mapper';
+import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 
 import EnhancedRadio from '../../../sourceFormRenderer/components/EnhancedRadio';
 

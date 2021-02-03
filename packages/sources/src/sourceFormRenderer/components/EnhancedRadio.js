@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 
-import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
-import Radio from '@data-driven-forms/pf4-component-mapper/dist/cjs/radio';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
+import Radio from '@data-driven-forms/pf4-component-mapper/dist/esm/radio';
 
 const EnhancedRadio = ({ options, mutator, ...props }) => {
     const formOptions = useFormApi();

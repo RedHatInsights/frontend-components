@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
-import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/validator-types';
 import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';

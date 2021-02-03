@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { TextContent, Text, TextVariants, TextListItem, TextList } from '@patternfly/react-core';
+import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { HCCM_DOCS_PREFIX } from '../../../utilities/stringConstants';
@@ -16,7 +16,7 @@ export const ConfigureCostOperator = () => {
                     id: 'cost.openshift.description',
                     defaultMessage: 'For Red Hat OpenShift Container Platform 4.5 and later, install the {operator} from the OpenShift Container Platform web console.'
                 }, {
-                    operator: <b>koku-metrics-operator</b>
+                    operator: <b key="bold">koku-metrics-operator</b>
                 }) }
             </Text>
             <Text>
@@ -35,10 +35,10 @@ export const ConfigureCostOperator = () => {
             <Text>
                 { intl.formatMessage({
                     id: 'cost.openshift.operator_configured',
-                    defaultMessage: 'If you configured the operator to create a source (create_source: true), {stop} here and {cancel} out of this flow.'
+                    defaultMessage: 'If you configured the operator to create a source (create_source: true), <b>STOP</b> here and <b>CANCEL</b> out of this flow.'
                 }, {
-                    cancel: <b>{intl.formatMessage({ id: 'cost.openshift.operator_cancel', defaultMessage: 'CANCEL' })}</b>,
-                    stop: <b>{intl.formatMessage({ id: 'cost.openshift.operator_stop', defaultMessage: 'STOP' })}</b>
+                    // eslint-disable-next-line react/display-name
+                    b: (chunks) => <b key={`b-${chunks.length}-${Math.floor(Math.random() * 1000)}`}>{chunks}</b>
                 }) }
             </Text>
             <Text>

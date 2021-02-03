@@ -2,10 +2,10 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
-import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
-import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
-import TextField from '@data-driven-forms/pf4-component-mapper/dist/cjs/text-field';
-import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
+import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
+import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-field';
+import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 
 import ValidatorReset from '../../addSourceWizard/ValidatorReset';
 

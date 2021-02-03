@@ -7,7 +7,7 @@ import {
     ClipboardCopy
 } from '@patternfly/react-core';
 
-import RendererContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
+import RendererContext from '@data-driven-forms/react-form-renderer/dist/esm/renderer-context';
 
 import * as AwsArn from '../../../addSourceWizard/hardcodedComponents/aws/arn';
 import mount from '../../__mocks__/mount';
