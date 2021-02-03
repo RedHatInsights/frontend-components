@@ -148,7 +148,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
 
     return (
         <React.Fragment>
-            <DescriptionList isHorizontal>
+            <DescriptionList isHorizontal className="ins-c-sources__wizard--summary-description-list">
                 <DescriptionListGroup>
                     <DescriptionListTerm>
                         { intl.formatMessage({
