@@ -9,7 +9,7 @@ const packagePath = process.cwd();
 let sassInputs;
 
 try {
-    sassInputs = glob.sync(resolve(packagePath, 'src/Components/**/*.scss')).map(path => {
+    sassInputs = glob.sync(resolve(packagePath, 'src/**/*.scss')).map(path => {
         const [ name, file ] = path.split('/').slice(path.split('/').length - 2);
         return {
             path,
