@@ -23,7 +23,7 @@ const CollectionCard = ({ detailLoaded, collectionInformation, entity }) => (<Lo
         ) },
         { title: 'Insights id', value: entity && entity.insights_id },
         { title: 'Reporter', value: entity && entity.reporter },
-        { title: 'Rhel machine id', value: entity && entity.rhel_machine_id }
+        { title: 'RHEL machine id', value: entity && entity.rhel_machine_id }
     ] }
 />);
 

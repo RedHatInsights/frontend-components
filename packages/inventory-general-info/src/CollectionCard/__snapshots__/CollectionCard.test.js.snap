@@ -128,7 +128,7 @@ exports[`CollectionCard should render correctly - no data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Rhel machine id
+          RHEL machine id
         </dt>
         <dd
           class=""
@@ -250,7 +250,7 @@ exports[`CollectionCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Rhel machine id
+          RHEL machine id
         </dt>
         <dd
           class=""

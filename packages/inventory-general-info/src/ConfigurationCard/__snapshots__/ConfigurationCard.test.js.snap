@@ -58,21 +58,25 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
         Array [
           Object {
             "onClick": [Function],
+            "singular": "package",
             "target": "installed_packages",
             "title": "Installed packages",
-            "value": "1 packages",
+            "value": 1,
           },
           Object {
             "onClick": [Function],
+            "singular": "service",
             "target": "services",
             "title": "Services",
-            "value": "1 services",
+            "value": 1,
           },
           Object {
             "onClick": [Function],
+            "plural": "processes",
+            "singular": "process",
             "target": "running_processes",
             "title": "Running processes",
-            "value": "1 processes",
+            "value": 1,
           },
           Object {
             "onClick": [Function],
@@ -150,9 +154,10 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             item={
                               Object {
                                 "onClick": [Function],
+                                "singular": "package",
                                 "target": "installed_packages",
                                 "title": "Installed packages",
-                                "value": "1 packages",
+                                "value": 1,
                               }
                             }
                           >
@@ -160,7 +165,7 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                               href="http://localhost:5000//installed_packages"
                               onClick={[Function]}
                             >
-                              1 packages
+                              1 package
                             </a>
                           </Clickable>
                         </dd>
@@ -186,9 +191,10 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             item={
                               Object {
                                 "onClick": [Function],
+                                "singular": "service",
                                 "target": "services",
                                 "title": "Services",
-                                "value": "1 services",
+                                "value": 1,
                               }
                             }
                           >
@@ -196,7 +202,7 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                               href="http://localhost:5000//services"
                               onClick={[Function]}
                             >
-                              1 services
+                              1 service
                             </a>
                           </Clickable>
                         </dd>
@@ -222,9 +228,11 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                             item={
                               Object {
                                 "onClick": [Function],
+                                "plural": "processes",
+                                "singular": "process",
                                 "target": "running_processes",
                                 "title": "Running processes",
-                                "value": "1 processes",
+                                "value": 1,
                               }
                             }
                           >
@@ -232,7 +240,7 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                               href="http://localhost:5000//running_processes"
                               onClick={[Function]}
                             >
-                              1 processes
+                              1 process
                             </a>
                           </Clickable>
                         </dd>
@@ -425,7 +433,7 @@ exports[`ConfigurationCard should render correctly with data 1`] = `
           <a
             href="http://localhost:5000//installed_packages"
           >
-            1 packages
+            1 package
           </a>
         </dd>
         <dt
@@ -441,7 +449,7 @@ exports[`ConfigurationCard should render correctly with data 1`] = `
           <a
             href="http://localhost:5000//services"
           >
-            1 services
+            1 service
           </a>
         </dd>
         <dt
@@ -457,7 +465,7 @@ exports[`ConfigurationCard should render correctly with data 1`] = `
           <a
             href="http://localhost:5000//running_processes"
           >
-            1 processes
+            1 process
           </a>
         </dd>
         <dt
@@ -523,7 +531,7 @@ exports[`ConfigurationCard should render enabled/disabled 1`] = `
           <a
             href="http://localhost:5000//installed_packages"
           >
-            1 packages
+            1 package
           </a>
         </dd>
         <dt
@@ -539,7 +547,7 @@ exports[`ConfigurationCard should render enabled/disabled 1`] = `
           <a
             href="http://localhost:5000//services"
           >
-            1 services
+            1 service
           </a>
         </dd>
         <dt
@@ -555,7 +563,7 @@ exports[`ConfigurationCard should render enabled/disabled 1`] = `
           <a
             href="http://localhost:5000//running_processes"
           >
-            1 processes
+            1 process
           </a>
         </dd>
         <dt

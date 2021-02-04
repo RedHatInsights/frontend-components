@@ -80,7 +80,7 @@ exports[`BiosCard should render correctly - no data 1`] = `
           class=""
           data-pf-content="true"
         >
-          CSM
+          Compatibility Support Module
         </dt>
         <dd
           class=""
@@ -166,7 +166,7 @@ exports[`BiosCard should render correctly with data - wrong date 1`] = `
           class=""
           data-pf-content="true"
         >
-          CSM
+          Compatibility Support Module
         </dt>
         <dd
           class=""
@@ -175,7 +175,7 @@ exports[`BiosCard should render correctly with data - wrong date 1`] = `
           <a
             href="http://localhost:5000//csm"
           >
-            1 CSMs
+            1 CSM
           </a>
         </dd>
       </dl>
@@ -252,7 +252,7 @@ exports[`BiosCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          CSM
+          Compatibility Support Module
         </dt>
         <dd
           class=""
@@ -261,7 +261,7 @@ exports[`BiosCard should render correctly with data 1`] = `
           <a
             href="http://localhost:5000//csm"
           >
-            1 CSMs
+            1 CSM
           </a>
         </dd>
       </dl>

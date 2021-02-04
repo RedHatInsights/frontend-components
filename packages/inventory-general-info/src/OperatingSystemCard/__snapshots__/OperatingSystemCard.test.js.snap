@@ -200,11 +200,7 @@ exports[`OperatingSystemCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          <a
-            href="http://localhost:5000//kernel_modules"
-          >
-            0 modules
-          </a>
+          0 modules
         </dd>
       </dl>
     </div>
@@ -298,7 +294,7 @@ exports[`OperatingSystemCard should render correctly with rhsm facts 1`] = `
           class=""
           data-pf-content="true"
         >
-          None
+          Not available
         </dd>
       </dl>
     </div>
@@ -392,11 +388,7 @@ exports[`OperatingSystemCard should render enabled/disabled 1`] = `
           class=""
           data-pf-content="true"
         >
-          <a
-            href="http://localhost:5000//kernel_modules"
-          >
-            0 modules
-          </a>
+          0 modules
         </dd>
       </dl>
     </div>

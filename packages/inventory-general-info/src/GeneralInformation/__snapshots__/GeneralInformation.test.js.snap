@@ -442,7 +442,7 @@ exports[`GeneralInformation should render correctly - no data 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                CSM
+                Compatibility Support Module
               </dt>
               <dd
                 class=""
@@ -803,7 +803,7 @@ exports[`GeneralInformation should render correctly - no data 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                Rhel machine id
+                RHEL machine id
               </dt>
               <dd
                 class=""
@@ -1017,7 +1017,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                None
+                Not available
               </dd>
               <dt
                 class=""
@@ -1160,11 +1160,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                <a
-                  href="http://localhost:5000//kernel_modules"
-                >
-                  0 modules
-                </a>
+                0 modules
               </dd>
             </dl>
           </div>
@@ -1241,13 +1237,13 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                CSM
+                Compatibility Support Module
               </dt>
               <dd
                 class=""
                 data-pf-content="true"
               >
-                None
+                0 CSMs
               </dd>
             </dl>
           </div>
@@ -1335,7 +1331,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 data-pf-content="true"
               >
                 <a
-                  href="http://localhost:5000//ipv6"
+                  href="http://localhost:5000//undefined"
                 >
                   2 addresses
                 </a>
@@ -1404,7 +1400,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 <a
                   href="http://localhost:5000//installed_packages"
                 >
-                  1 packages
+                  1 package
                 </a>
               </dd>
               <dt
@@ -1420,7 +1416,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 <a
                   href="http://localhost:5000//services"
                 >
-                  1 services
+                  1 service
                 </a>
               </dd>
               <dt
@@ -1436,7 +1432,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 <a
                   href="http://localhost:5000//running_processes"
                 >
-                  1 processes
+                  1 process
                 </a>
               </dd>
               <dt
@@ -1566,7 +1562,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                Rhel machine id
+                RHEL machine id
               </dt>
               <dd
                 class=""

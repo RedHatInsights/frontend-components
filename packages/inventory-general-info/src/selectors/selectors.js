@@ -21,7 +21,7 @@ export const propertiesSelector = ({
     coresPerSocket: cores_per_socket || (
       facts?.rhsm?.CPU_CORES && facts?.rhsm?.CPU_CORES && Number(facts?.rhsm?.CPU_CORES, 10) / Number(facts?.rhsm?.CPU_SOCKETS, 10)
     ),
-    ramSize: ramSize || (facts?.rhsm?.MEMORY && `${facts?.rhsm?.MEMORY} GB`) || '0 B',
+    ramSize: ramSize || (facts?.rhsm?.MEMORY && `${facts?.rhsm?.MEMORY} GB`),
     storage: disk_devices && disk_devices.map(({ device, label, mount_point, options, type }) => ({
         ...device && safeParser(device, 'device'),
         label,
