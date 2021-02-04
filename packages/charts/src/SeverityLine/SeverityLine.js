@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Tooltip } from '@patternfly/react-core';
 import classNames from 'classnames';
+import './severity-line.scss';
 
 const chartMapper = (width) => ({
     1: '1',
