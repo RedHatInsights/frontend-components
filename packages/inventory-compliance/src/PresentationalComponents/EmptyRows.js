@@ -6,7 +6,7 @@ import {
     EmptyStateVariant,
     Title
 } from '@patternfly/react-core';
-import { EmptyTable } from '@redhat-cloud-services/frontend-components';
+import { EmptyTable } from '@redhat-cloud-services/frontend-components/EmptyTable';
 
 const EmptyRows = [{
     cells: [{

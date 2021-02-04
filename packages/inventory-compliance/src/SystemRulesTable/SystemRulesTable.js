@@ -3,16 +3,17 @@ import propTypes from 'prop-types';
 import { Pagination, PaginationVariant, ToolbarItem } from '@patternfly/react-core';
 import { CheckCircleIcon, ExclamationCircleIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
 import { Table, TableHeader, TableBody, sortable, fitContent } from '@patternfly/react-table';
-import { TableToolbar, PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
 
-import './compliance.scss';
-import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from './PresentationalComponents';
+import '../Compliance/compliance.scss';
+import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from '../PresentationalComponents';
 import {
     FilterConfigBuilder, buildFilterConfig, POLICIES_FILTER_CONFIG,
     toRulesArray, orderByArray, orderRuleArrayByProp
-} from './Utilities';
-import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from './Constants';
-import ComplianceRemediationButton from './ComplianceRemediationButton';
+} from '../Utilities';
+import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from '../Constants';
+import ComplianceRemediationButton from '../ComplianceRemediationButton';
 
 export const columns = [
     { title: 'Rule', transforms: [ sortable ] },
@@ -331,7 +332,7 @@ class SystemRulesTable extends React.Component {
         if (loading) {
             return <RuleLoadingTable columns={columns} />;
         } else {
-            return <React.Fragment>
+            return <div className="ins-c-compliance__scope">
                 <PrimaryToolbar
                     filterConfig={ filterConfig }
                     activeFiltersConfig={{
@@ -372,7 +373,7 @@ class SystemRulesTable extends React.Component {
                         variant={ PaginationVariant.bottom }
                     />
                 </TableToolbar>
-            </React.Fragment>;
+            </div>;
         }
     }
 }

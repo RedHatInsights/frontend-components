@@ -1,6 +1,6 @@
 import buildFilterConfig from './FilterBuilderConfigBuilder';
 import FilterConfigBuilder from './FilterConfigBuilder';
-import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
+import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 
 describe('FilterConfigBuilder', () => {
     const config = [
