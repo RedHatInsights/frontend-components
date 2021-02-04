@@ -8,6 +8,7 @@ import Segment from './Segment';
 import Tooltip from './Tooltip';
 import Labels from './Labels';
 import NodeElement from './NodeElement';
+import './matrix.scss';
 
 import { calculateFragements, callOnSegmentData } from './utils';
 
