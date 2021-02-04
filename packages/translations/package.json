@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-translations",
-    "version": "3.0.0-beta.1",
+    "version": "3.0.0",
     "description": "Translations package for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -32,7 +32,7 @@
         "prop-types": "^15.6.2",
         "react": "^16.5.1"
     },
-    "dependencies": {
+    "optionalDependencies": {
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0"
     },
     "devDependencies": {
