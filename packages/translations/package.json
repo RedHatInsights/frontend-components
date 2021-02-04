@@ -1,18 +1,21 @@
 {
     "name": "@redhat-cloud-services/frontend-components-translations",
-    "version": "2.1.0",
+    "version": "3.0.0-beta.1",
     "description": "Translations package for RedHat Cloud Services project.",
-    "browser": "index.js",
+    "main": "index.js",
     "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:umd",
-        "build:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
-        "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
-        "build:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",
-        "start": "rollup -c ./config/rollup.config.js -w"
+        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
+        "build:js": "BABEL_ENV=cjs babel src --config-file ../../babel.v3.config.js --out-dir ./ --ignore '**/*.test.js'",
+        "build:esm": "BABEL_ENV=esm babel src --config-file ../../babel.v3.config.js --out-dir ./esm --ignore '**/*.test.js'",
+        "build:css": "node ../../scripts/build-styles.js",
+        "build:packages": "node ../../scripts/build-packages.js",
+        "build:translations": "node ./pre-publish.js",
+        "prepublishOnly": "npm run build:translations",
+        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
     "repository": {
         "type": "git",
@@ -30,7 +33,7 @@
         "react": "^16.5.1"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components-utilities": "*"
+        "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0"
     },
     "devDependencies": {
         "babel-plugin-react-intl": "^4.1.5"
