@@ -10,9 +10,9 @@ import { getActiveVendor, NO_APPLICATION_VALUE, REDHAT_VENDOR, WIZARD_DESCRIPTIO
 import ValidatorReset from './ValidatorReset';
 import { handleError } from '../api/handleError';
 import validated from '../sourceFormRenderer/resolveProps/validated';
-import { COST_MANAGEMENT_APP_NAME, CLOUD_METER_APP_NAME } from '../api/constants';
-import { Label } from '@patternfly/react-core';
-import SubWatchDescription from './descriptions/SubWatchDescription';
+import configurationStep from './superKey/configurationStep';
+import { compileAllApplicationComboOptions } from './compileAllApplicationComboOptions';
+import applicationsStep from './superKey/applicationsStep';
 
 export const asyncValidator = async (value, sourceId = undefined, intl) => {
     if (!value) {
@@ -59,37 +59,6 @@ export const compileAllSourcesComboOptions = (sourceTypes) => (
             value: t.name,
             label: t.product_name
         }))
-    ]
-);
-
-export const descriptionMapper = (type, intl) => ({
-    [COST_MANAGEMENT_APP_NAME]: intl.formatMessage({
-        id: 'cost.app.description',
-        defaultMessage: 'Analyze, forecast, and optimize your Red Hat OpenShift cluster costs in hybrid cloud environments.'
-    }),
-    [CLOUD_METER_APP_NAME]: <SubWatchDescription id={type.id} />
-}[type.name]);
-
-export const labelMapper = (type, intl) => ({
-    [CLOUD_METER_APP_NAME]: <span className="ins-c-sources__wizard--rhel-mag-label">RHEL management <Label className="pf-u-ml-sm" color="purple">{
-        intl.formatMessage({ id: 'sub.bundle', defaultMessage: 'Bundle' })
-    }</Label></span>
-}[type.name]);
-
-export const compileAllApplicationComboOptions = (applicationTypes, intl) => (
-    [
-        ...applicationTypes.sort((a, b) => a.display_name.localeCompare(b.display_name)).map(t => ({
-            value: t.id,
-            label: labelMapper(t, intl) || t.display_name,
-            description: descriptionMapper(t, intl)
-        })),
-        ...(getActiveVendor() !== REDHAT_VENDOR ? [{
-            label: intl.formatMessage({
-                id: 'wizard.noApplication',
-                defaultMessage: 'No application'
-            }),
-            value: NO_APPLICATION_VALUE
-        }] : [])
     ]
 );
 
@@ -162,26 +131,6 @@ const sourceTypeSelect = ({ intl, sourceTypes, applicationTypes }) => ({
     options: compileAllSourcesComboOptions(sourceTypes, applicationTypes)
 });
 
-const cloudTypes = ({ intl, sourceTypes, applicationTypes, disableAppSelection }) => ([
-    {
-        ...sourceTypeSelect({ intl, sourceTypes, applicationTypes }),
-        mutator: sourceTypeMutator(applicationTypes, sourceTypes)
-    },
-    {
-        component: 'enhanced-radio',
-        name: 'application.application_type_id',
-        label: intl.formatMessage({
-            id: 'wizard.selectYourApplication',
-            defaultMessage: 'B. Select an application'
-        }),
-        options: compileAllApplicationComboOptions(applicationTypes, intl, sourceTypes),
-        mutator: appMutatorRedHat(applicationTypes),
-        isDisabled: disableAppSelection,
-        placeholder: intl.formatMessage({ id: 'wizard.chooseApp', defaultMessage: 'Choose application' }),
-        menuIsPortal: true
-    }
-]);
-
 const redhatTypes = ({ intl, sourceTypes, applicationTypes, disableAppSelection }) => ([
     sourceTypeSelect({ intl, sourceTypes, applicationTypes }),
     {
@@ -200,8 +149,8 @@ const redhatTypes = ({ intl, sourceTypes, applicationTypes, disableAppSelection 
     }
 ]);
 
-export const applicationStep = (applicationTypes, selectedType, intl) => ({
-    name: 'types_step',
+export const applicationStep = (applicationTypes, intl) => ({
+    name: 'application_step',
     title: intl.formatMessage({
         id: 'wizard.selectApplication',
         defaultMessage: 'Select application'
@@ -218,7 +167,7 @@ export const applicationStep = (applicationTypes, selectedType, intl) => ({
         component: 'enhanced-radio',
         name: 'application.application_type_id',
         options: compileAllApplicationComboOptions(
-            applicationTypes.filter(({ supported_source_types }) => supported_source_types.includes(selectedType)),
+            applicationTypes,
             intl
         ),
         mutator: appMutatorRedHat(applicationTypes),
@@ -238,10 +187,48 @@ export const typesStep = (sourceTypes, applicationTypes, disableAppSelection, in
     name: 'types_step',
     nextStep,
     fields: [
-        ...(getActiveVendor() === REDHAT_VENDOR
-            ? redhatTypes({ intl, sourceTypes, applicationTypes, disableAppSelection })
-            : cloudTypes({ intl, sourceTypes, applicationTypes, disableAppSelection })
-        ),
+        redhatTypes({ intl, sourceTypes, applicationTypes, disableAppSelection }),
+        {
+            component: 'description',
+            name: 'fixasyncvalidation',
+            Content: ValidatorReset
+        }
+    ]
+});
+
+export const hasSuperKeyType = (sourceType) => sourceType.schema.authentication.find(({ is_super_key, type }) => is_super_key || type === 'access_key_secret_key');
+
+export const cloudTypesStep = (sourceTypes, applicationTypes, intl) => ({
+    title: intl.formatMessage({
+        id: 'wizard.chooseAppAndType',
+        defaultMessage: 'Select source type'
+    }),
+    name: 'types_step',
+    nextStep: ({ values }) => {
+        if (!values.source_type) {
+            return;
+        }
+
+        const sourceType = sourceTypes.find(({ name }) => name === values.source_type);
+
+        return hasSuperKeyType(sourceType) ? 'configuration_step' : 'application_step';
+    },
+    fields: [
+        {
+            component: componentTypes.PLAIN_TEXT,
+            name: 'plain-text',
+            label: intl.formatMessage({
+                id: 'wizard.selectCloudType',
+                defaultMessage: 'Select a cloud provider to connect to your Red Hat account.'
+            })
+        },
+        {
+            ...sourceTypeSelect({ intl, sourceTypes, applicationTypes }),
+            label: intl.formatMessage({
+                id: 'wizard.selectCloudProvider',
+                defaultMessage: 'Select a cloud provider'
+            })
+        },
         {
             component: 'description',
             name: 'fixasyncvalidation',
@@ -266,13 +253,23 @@ export const NameDescription = () => {
     );
 };
 
-const nameStep = (intl) => ({
+const nameStep = (intl, selectedType, sourceTypes) => ({
     title: intl.formatMessage({
         id: 'wizard.nameSource',
         defaultMessage: 'Name source'
     }),
     name: 'name_step',
-    nextStep: 'types_step',
+    nextStep: () => {
+        if (selectedType) {
+            if (hasSuperKeyType(sourceTypes.find(({ name }) => name === selectedType))) {
+                return 'configuration_step';
+            }
+
+            return 'application_step';
+        }
+
+        return 'types_step';
+    },
     fields: [
         {
             component: 'description',
@@ -367,12 +364,15 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container, i
             container,
             showTitles: true,
             initialState: initialWizardState,
-            crossroads: [ 'application.application_type_id', 'source_type', 'auth_select' ],
+            crossroads: [ 'application.application_type_id', 'source_type', 'auth_select', 'source.is_super_key' ],
             fields: [
-                nameStep(intl),
-                selectedType
-                    ? applicationStep(applicationTypes, selectedType, intl)
-                    : typesStep(sourceTypes, applicationTypes, disableAppSelection, intl),
+                nameStep(intl, selectedType, sourceTypes),
+                !selectedType && getActiveVendor() === REDHAT_VENDOR
+                    ? typesStep(sourceTypes, applicationTypes, disableAppSelection, intl)
+                    : cloudTypesStep(sourceTypes, applicationTypes, intl),
+                configurationStep(intl, sourceTypes),
+                applicationsStep(applicationTypes, intl),
+                applicationStep(applicationTypes, intl),
                 ...schemaBuilder(sourceTypes, applicationTypes),
                 summaryStep(sourceTypes, applicationTypes, intl)
             ]
