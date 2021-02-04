@@ -1,14 +1,14 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import SystemPolicyCards from './SystemPolicyCards';
-import SystemRulesTable, { columns } from './SystemRulesTable';
-import ComplianceEmptyState from './ComplianceEmptyState';
+import SystemPolicyCards from '../SystemPolicyCards';
+import SystemRulesTable, { columns } from '../SystemRulesTable';
+import ComplianceEmptyState from '../ComplianceEmptyState';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
-import { Spinner } from '@redhat-cloud-services/frontend-components';
+import { Spinner } from '@redhat-cloud-services/frontend-components/Spinner';
 import './compliance.scss';
-import { ErrorCard } from './PresentationalComponents';
+import { ErrorCard } from '../PresentationalComponents';
 import { IntlProvider } from 'react-intl';
 
 const COMPLIANCE_API_ROOT = '/api/compliance';
@@ -95,11 +95,11 @@ const SystemDetails = ({ inventoryId, hidePassed, client }) => {
         return <ErrorCard message={errorMsg} />;
     }
 
-    return <React.Fragment>
+    return <div className="ins-c-compliance__scope">
         { !data?.system || is404 ?
             <ComplianceEmptyState title='No policies are reporting for this system' /> :
             <SystemQuery hidePassed={ hidePassed } data={ data } loading={ loading } /> }
-    </React.Fragment>;
+    </div>;
 };
 
 SystemDetails.propTypes = {

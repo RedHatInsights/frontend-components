@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SystemRulesTable from './SystemRulesTable';
 import { SortByDirection } from '@patternfly/react-table';
-import { TITLE_COLUMN } from './Constants';
-import { remediationsResponse, system, profileRules } from './Fixtures';
+import { TITLE_COLUMN } from '../Constants';
+import { remediationsResponse, system, profileRules } from '../Fixtures';
 import { columns } from './SystemRulesTable';
 import debounce from 'lodash/debounce';
 

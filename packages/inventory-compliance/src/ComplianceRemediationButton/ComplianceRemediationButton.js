@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { RemediationButton } from '@redhat-cloud-services/frontend-components-remediations';
 import flatten from 'lodash/flatten';
 import { connect } from 'react-redux';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 
 class ComplianceRemediationButton extends React.Component {

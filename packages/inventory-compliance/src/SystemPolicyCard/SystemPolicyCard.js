@@ -13,7 +13,7 @@ import {
     Tooltip
 } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
-import { UnsupportedSSGVersion } from './PresentationalComponents';
+import { UnsupportedSSGVersion } from '../PresentationalComponents';
 
 class SystemPolicyCard extends React.Component {
     constructor(props) {

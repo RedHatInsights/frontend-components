@@ -1,0 +1,62 @@
+.ins-c-compliance__scope {
+    .pf-c-card.ins-error-card div {
+        text-align: center;
+    }
+    
+    .ins-c-policy-card {
+        font-size: var(--pf-global--FontSize--lg);
+    }
+    
+    .ins-c-policy-card.ins-m-compliant {
+        color: var(--pf-global--success-color--200);
+    }
+    
+    .ins-c-policy-card.ins-m-noncompliant {
+        color: var(--pf-global--danger-color--100);
+    }
+    
+    .ins-c-compliance-system-rule-check {
+        color: var(--pf-global--success-color--200)
+    }
+    
+    .margin-bottom {
+        &-none {
+            margin-bottom: 0;
+        }
+    
+        &-sm {
+            margin-bottom: var(--pf-global--spacer--sm);
+        }
+    
+        &-md {
+            margin-bottom: var(--pf-global--spacer--md);
+        }
+    
+        &-lg {
+            margin-bottom: var(--pf-global--spacer--lg);
+        }
+    }
+    
+    .margin-top {
+        &-none {
+            margin-top: 0;
+        }
+    
+        &-lg {
+            margin-top: var(--pf-global--spacer--lg);
+        }
+    }
+    
+    .margin-bottom-top-none {
+        @extend .margin-top-none;
+        @extend .margin-bottom-none;
+    }
+    
+    .wrap-break-word {
+        word-wrap: break-word;
+    }
+    
+    .compliance-rules-table td[data-label=Severity] {
+        text-transform: capitalize;
+    }
+}

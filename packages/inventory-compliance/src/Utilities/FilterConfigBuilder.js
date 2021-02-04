@@ -1,4 +1,4 @@
-import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
+import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import FilterBuilder from './FilterBuilder';
 import ChipBuilder from './ChipBuilder';
 import { stringToId } from './Helpers';

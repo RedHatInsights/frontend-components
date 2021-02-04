@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SystemRulesTable component should render 1`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -1090,7 +1092,7 @@ exports[`SystemRulesTable component should render 1`] = `
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
 
 exports[`SystemRulesTable component should render a loading table 1`] = `
@@ -1147,7 +1149,9 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
 `;
 
 exports[`SystemRulesTable component should render filtered and search mixed results with the right parent 1`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -1543,11 +1547,13 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
 
 exports[`SystemRulesTable component should render search results by rule name 1`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -1967,11 +1973,13 @@ exports[`SystemRulesTable component should render search results by rule name 1`
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
 
 exports[`SystemRulesTable component should render search results on any page, returning to page 1 1`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -2391,11 +2399,13 @@ exports[`SystemRulesTable component should render search results on any page, re
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
 
 exports[`SystemRulesTable component should render sorted rows 1`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -3484,11 +3494,13 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
 
 exports[`SystemRulesTable component should render sorted rows 2`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -4564,11 +4576,13 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
 
 exports[`SystemRulesTable component should render without remediations if prop passed 1`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -5601,11 +5615,13 @@ exports[`SystemRulesTable component should render without remediations if prop p
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
 
 exports[`SystemRulesTable component tailoring rules should be able to filter by selected/unselected rules if tailoring is enabled 1`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -5934,11 +5950,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
 
 exports[`SystemRulesTable component tailoring rules should be able to filter by selected/unselected rules if tailoring is enabled 2`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -6878,11 +6896,13 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
 
 exports[`SystemRulesTable component tailoring rules should be able to show all selected rules if tailoring is enabled 1`] = `
-<Fragment>
+<div
+  className="ins-c-compliance__scope"
+>
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
@@ -7211,5 +7231,5 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
       widgetId="pagination-options-menu"
     />
   </TableToolbar>
-</Fragment>
+</div>
 `;
