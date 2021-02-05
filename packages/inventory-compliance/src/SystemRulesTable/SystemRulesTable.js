@@ -8,6 +8,8 @@ import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableTo
 
 import '../Compliance/compliance.scss';
 import { RuleChildRow, RuleTitle, RuleLoadingTable, EmptyRows } from '../PresentationalComponents';
+import { default as NewRulesTable } from '../Components/RulesTable';
+
 import {
     FilterConfigBuilder, buildFilterConfig, POLICIES_FILTER_CONFIG,
     toRulesArray, orderByArray, orderRuleArrayByProp
@@ -24,7 +26,7 @@ export const columns = [
         original: 'Ansible', props: { tooltip: 'Ansible' }, transforms: [ sortable, fitContent ] }
 ];
 
-export const selectColumns = (columnTitles) => (
+export const selectedColumns = (columnTitles) => (
     columns.filter((column) => columnTitles.includes(column.original || column.title))
 );
 
@@ -409,4 +411,9 @@ SystemRulesTable.defaultProps = {
     columns: columns
 };
 
-export default SystemRulesTable;
+const RulesTable = ({ newRules = true, ...props }) => {
+    const Component = newRules ? NewRulesTable : SystemRulesTable;
+    return <Component { ...props } />;
+};
+
+export default RulesTable;

@@ -53,7 +53,9 @@ const SystemQuery = ({ data: { system }, loading, hidePassed }) => (
     <React.Fragment>
         <SystemPolicyCards policies={ system?.testResultProfiles } loading={ loading } />
         <br/>
-        <SystemRulesTable hidePassed={ hidePassed }
+        <SystemRulesTable
+            remediationsEnabled
+            hidePassed={ hidePassed }
             system={ system }
             columns={ columns }
             profileRules={ system?.testResultProfiles.map(profile => ({
