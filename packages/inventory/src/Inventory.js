@@ -4,6 +4,7 @@ import { TagWithDialog, RenderWrapper } from './shared';
 import { InventoryTable } from './components/table';
 import * as inventoryFitlers from './components/filters';
 import DetailRenderer from './components/detail/DetailRenderer';
+import { getEntities } from './api';
 
 export function inventoryConnector(store, componentsMapper, Wrapper, isRbacEnabled = true) {
     const showInventoryDrawer = Boolean(Wrapper);
@@ -68,6 +69,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper, isRbacEnabl
             showInventoryDrawer={ showInventoryDrawer }
             {...props}
         />,
-        ...inventoryFitlers
+        ...inventoryFitlers,
+        getEntities
     };
 }
