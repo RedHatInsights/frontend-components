@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { FormattedRelative, FormattedRelativeTime } from 'react-intl';
+import React from 'react';
+import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
 import { CheckCircleIcon, ExclamationCircleIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import Truncate from 'react-truncate';
 
@@ -61,7 +61,6 @@ class SystemPolicyCard extends React.Component {
         } = this.state.policy;
         const { cardTitle, cardSubTitle, style } = this.state;
         const passedPercentage = this.fixedPercentage(score);
-        const FormattedRelativeCmp = FormattedRelativeTime || FormattedRelative || Fragment;
 
         return <Card style={ style }>
             <CardBody>
@@ -114,7 +113,7 @@ class SystemPolicyCard extends React.Component {
                         SSG version: { ssgVersion }
                     </Text>
                     <Text>
-                        Last scanned: { lastScanned !== 'Never' ? <FormattedRelativeCmp value={ Date.parse(lastScanned) } /> : lastScanned }
+                        Last scanned: { lastScanned !== 'Never' ? <DateFormat date={Date.parse(lastScanned)} type='relative' /> : lastScanned }
                     </Text>
                 </Text>
             </CardBody>
