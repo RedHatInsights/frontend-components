@@ -4,10 +4,12 @@ const path = require('path');
 const glob = require('glob');
 const fse = require('fs-extra');
 const chokidar = require('chokidar');
+const sortFile = require('./sort-files');
+const generateComponentsNavigation = require('./generate-components-nav');
 
 const COMPONENTS_JSON = 'component-docs.json';
 
-const componentsDest = path.resolve(__dirname, './pages/components');
+const componentsDest = path.resolve(__dirname, './pages');
 const navDest = path.resolve(__dirname, './components/navigation');
 
 function newLineReplacer(str) {
@@ -161,6 +163,7 @@ function getExtensiveProps(props) {
 }
 
 async function generateMD(file, API) {
+    const packageName = sortFile(file);
     const name = file.split('/').pop().replace('.js', '');
     const examples = glob.sync(path.resolve(__dirname, `./examples/${name}/*.js`));
     const description = generateComponentDescription(API.description);
@@ -187,26 +190,11 @@ ${extensiveProps.map((data) => {
 
 <ExtensiveProp data={${JSON.stringify(data.value)}} />`;})}
 `;
-    return fse.writeFile(`${componentsDest}/${name}.md`, content);
-}
+    if (!fse.existsSync(`${componentsDest}/${packageName}`)) {
+        fse.mkdirSync(`${componentsDest}/${packageName}`);
+    }
 
-function generateComponentsNavigation(components) {
-    const nav = Object.keys(components).reduce((nav, path) => {
-        let fragments = path.split('/');
-        const navName = fragments.pop().replace('.js', '');
-        const groupName = fragments.pop();
-        return {
-            ...nav,
-            [groupName]: [
-                ...nav[groupName] || [],
-                navName
-            ]
-        };
-    }, {});
-    return Object.entries(nav).map(([ key, value ]) => ({
-        group: key,
-        items: value.sort((a, b) => a.localeCompare(b))
-    })).sort((a, b) => a.group.localeCompare(b.group));
+    return fse.writeFile(`${componentsDest}/${packageName}/${name}.md`, content);
 }
 
 async function traverseComponents() {
@@ -222,10 +210,6 @@ async function traverseComponents() {
 
 async function run() {
     try {
-        if (!fse.existsSync(componentsDest)) {
-            fse.mkdirSync(componentsDest);
-        }
-
         await traverseComponents();
     } catch (error) {
         console.log(error);

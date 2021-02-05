@@ -7,7 +7,7 @@ const chokidar = require('chokidar');
 
 const COMPONENTS_JSON = 'component-docs.json';
 
-const componentsSrc = path.resolve(__dirname, '../components/src');
+const componentsSrc = path.resolve(__dirname, '../*/src');
 const files = glob.sync(`${componentsSrc}/**/*.js`);
 
 const args = process.argv.slice(2);
