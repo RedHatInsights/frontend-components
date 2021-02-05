@@ -404,14 +404,96 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                               data-pf-content={true}
                             >
                               Last scanned: 
-                              <FormattedRelative
-                                updateInterval={10000}
-                                value={1551853213000}
+                              <DateFormat
+                                date={1551853213000}
+                                type="relative"
                               >
-                                <span>
-                                  2 years ago
-                                </span>
-                              </FormattedRelative>
+                                <Tooltip
+                                  content={
+                                    <div>
+                                      
+                                      06 Mar 2019 06:20 UTC
+                                    </div>
+                                  }
+                                >
+                                  <Popper
+                                    appendTo={[Function]}
+                                    distance={15}
+                                    enableFlip={true}
+                                    flipBehavior={
+                                      Array [
+                                        "top",
+                                        "right",
+                                        "bottom",
+                                        "left",
+                                        "top",
+                                        "right",
+                                        "bottom",
+                                      ]
+                                    }
+                                    isVisible={false}
+                                    onBlur={[Function]}
+                                    onDocumentClick={false}
+                                    onDocumentKeyDown={[Function]}
+                                    onFocus={[Function]}
+                                    onMouseEnter={[Function]}
+                                    onMouseLeave={[Function]}
+                                    onTriggerEnter={[Function]}
+                                    placement="top"
+                                    popper={
+                                      <div
+                                        className="pf-c-tooltip"
+                                        id="pf-tooltip-3"
+                                        role="tooltip"
+                                        style={
+                                          Object {
+                                            "maxWidth": null,
+                                            "opacity": 0,
+                                            "transition": "opacity 300ms cubic-bezier(.54, 1.5, .38, 1.11)",
+                                          }
+                                        }
+                                      >
+                                        <TooltipArrow />
+                                        <TooltipContent
+                                          isLeftAligned={false}
+                                        >
+                                          <div>
+                                            
+                                            06 Mar 2019 06:20 UTC
+                                          </div>
+                                        </TooltipContent>
+                                      </div>
+                                    }
+                                    popperMatchesTriggerWidth={false}
+                                    positionModifiers={
+                                      Object {
+                                        "bottom": "pf-m-bottom",
+                                        "left": "pf-m-left",
+                                        "right": "pf-m-right",
+                                        "top": "pf-m-top",
+                                      }
+                                    }
+                                    trigger={
+                                      <span
+                                        aria-describedby="pf-tooltip-3"
+                                      >
+                                        2 years ago
+                                      </span>
+                                    }
+                                    zIndex={9999}
+                                  >
+                                    <FindRefWrapper
+                                      onFoundRef={[Function]}
+                                    >
+                                      <span
+                                        aria-describedby="pf-tooltip-3"
+                                      >
+                                        2 years ago
+                                      </span>
+                                    </FindRefWrapper>
+                                  </Popper>
+                                </Tooltip>
+                              </DateFormat>
                             </p>
                           </Text>
                         </small>
@@ -681,7 +763,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                               popper={
                                 <div
                                   className="pf-c-tooltip"
-                                  id="pf-tooltip-3"
+                                  id="pf-tooltip-4"
                                   role="tooltip"
                                   style={
                                     Object {
@@ -834,7 +916,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                 popper={
                                   <div
                                     className="pf-c-tooltip"
-                                    id="pf-tooltip-4"
+                                    id="pf-tooltip-5"
                                     role="tooltip"
                                     style={
                                       Object {
@@ -863,7 +945,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                 }
                                 trigger={
                                   <span
-                                    aria-describedby="pf-tooltip-4"
+                                    aria-describedby="pf-tooltip-5"
                                   >
                                     (Score: 
                                     75%
@@ -876,7 +958,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                   onFoundRef={[Function]}
                                 >
                                   <span
-                                    aria-describedby="pf-tooltip-4"
+                                    aria-describedby="pf-tooltip-5"
                                   >
                                     (Score: 
                                     75%
@@ -911,14 +993,96 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                               data-pf-content={true}
                             >
                               Last scanned: 
-                              <FormattedRelative
-                                updateInterval={10000}
-                                value={1551853213000}
+                              <DateFormat
+                                date={1551853213000}
+                                type="relative"
                               >
-                                <span>
-                                  2 years ago
-                                </span>
-                              </FormattedRelative>
+                                <Tooltip
+                                  content={
+                                    <div>
+                                      
+                                      06 Mar 2019 06:20 UTC
+                                    </div>
+                                  }
+                                >
+                                  <Popper
+                                    appendTo={[Function]}
+                                    distance={15}
+                                    enableFlip={true}
+                                    flipBehavior={
+                                      Array [
+                                        "top",
+                                        "right",
+                                        "bottom",
+                                        "left",
+                                        "top",
+                                        "right",
+                                        "bottom",
+                                      ]
+                                    }
+                                    isVisible={false}
+                                    onBlur={[Function]}
+                                    onDocumentClick={false}
+                                    onDocumentKeyDown={[Function]}
+                                    onFocus={[Function]}
+                                    onMouseEnter={[Function]}
+                                    onMouseLeave={[Function]}
+                                    onTriggerEnter={[Function]}
+                                    placement="top"
+                                    popper={
+                                      <div
+                                        className="pf-c-tooltip"
+                                        id="pf-tooltip-6"
+                                        role="tooltip"
+                                        style={
+                                          Object {
+                                            "maxWidth": null,
+                                            "opacity": 0,
+                                            "transition": "opacity 300ms cubic-bezier(.54, 1.5, .38, 1.11)",
+                                          }
+                                        }
+                                      >
+                                        <TooltipArrow />
+                                        <TooltipContent
+                                          isLeftAligned={false}
+                                        >
+                                          <div>
+                                            
+                                            06 Mar 2019 06:20 UTC
+                                          </div>
+                                        </TooltipContent>
+                                      </div>
+                                    }
+                                    popperMatchesTriggerWidth={false}
+                                    positionModifiers={
+                                      Object {
+                                        "bottom": "pf-m-bottom",
+                                        "left": "pf-m-left",
+                                        "right": "pf-m-right",
+                                        "top": "pf-m-top",
+                                      }
+                                    }
+                                    trigger={
+                                      <span
+                                        aria-describedby="pf-tooltip-6"
+                                      >
+                                        2 years ago
+                                      </span>
+                                    }
+                                    zIndex={9999}
+                                  >
+                                    <FindRefWrapper
+                                      onFoundRef={[Function]}
+                                    >
+                                      <span
+                                        aria-describedby="pf-tooltip-6"
+                                      >
+                                        2 years ago
+                                      </span>
+                                    </FindRefWrapper>
+                                  </Popper>
+                                </Tooltip>
+                              </DateFormat>
                             </p>
                           </Text>
                         </small>
