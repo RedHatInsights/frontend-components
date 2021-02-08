@@ -76,6 +76,13 @@ export const getStepKeys = (typeName, authName, appName = 'generic', appId) => [
     appId ? `${typeName}-${appId}` : undefined
 ].filter(Boolean);
 
+const DesctiptionListItem = ({ term, description, ...props }) => (<DescriptionListGroup {...props}>
+    <DescriptionListTerm>{ term }</DescriptionListTerm>
+    <DescriptionListDescription>
+        { description}
+    </DescriptionListDescription>
+</DescriptionListGroup>);
+
 const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthType }) => {
     const formOptions = useFormApi();
     const intl = useIntl();
@@ -91,6 +98,12 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
     if (hasAuthentication) {
         authType = type.schema.authentication.find(({ type }) => type === hasAuthentication);
         authTypeFields = authType && authType.fields ? authType.fields : [];
+    }
+
+    let applicatioNames;
+
+    if (values.source.is_super_key === 'true') {
+        applicatioNames = values.applications.map((app) => applicationTypes.find(type => type.id === app)?.display_name);
     }
 
     const application = values.application ? applicationTypes.find(type => type.id === values.application.application_type_id) : undefined;
@@ -134,57 +147,80 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
     const valuesInfo = getAllFieldsValues(fields, values, availableStepKeys);
 
     const valuesList = valuesInfo.map(({ label, value }) => (
-        <DescriptionListGroup key={ `${label}--${value}` }>
-            <DescriptionListTerm>{ label }</DescriptionListTerm>
-            <DescriptionListDescription>
-                { value.toString().length > 150 ?
-                    <ValuePopover label={label} value={value} />
-                    :
-                    value
-                }
-            </DescriptionListDescription>
-        </DescriptionListGroup>
+        <DesctiptionListItem
+            key={`${label}--${value}`}
+            term={label}
+            description={value.toString().length > 150 ?
+                <ValuePopover label={label} value={value} />
+                :
+                value}
+        />
     ));
 
     return (
         <React.Fragment>
             <DescriptionList isHorizontal className="ins-c-sources__wizard--summary-description-list">
-                <DescriptionListGroup>
-                    <DescriptionListTerm>
-                        { intl.formatMessage({
+                <DesctiptionListItem
+                    term={
+                        intl.formatMessage({
                             id: 'wizard.name',
                             defaultMessage: 'Name'
+                        })
+                    }
+                    description={values.source.name}
+                />
+                <DesctiptionListItem
+                    term={intl.formatMessage({
+                        id: 'wizard.sourceType',
+                        defaultMessage: 'Source type'
+                    })}
+                    description={type.product_name}
+                />
+                { showApp && values.source.is_super_key && (
+                    <DesctiptionListItem
+                        term={intl.formatMessage({
+                            id: 'wizard.configurationMode',
+                            defaultMessage: 'Configuration mode'
                         }) }
-                    </DescriptionListTerm>
-                    <DescriptionListDescription>{ values.source.name }</DescriptionListDescription>
-                </DescriptionListGroup>
-                { showApp && <DescriptionListGroup>
-                    <DescriptionListTerm>
-                        { intl.formatMessage({
+                        description={values.source.is_super_key === 'true' ? intl.formatMessage({
+                            id: 'wizard.accountAuth',
+                            defaultMessage: 'Account authorization'
+                        }) : intl.formatMessage({
+                            id: 'wizard.manualConfig',
+                            defaultMessage: 'Manual configuration'
+                        })}
+                    />
+                )}
+                { showApp && values.source.is_super_key === 'true' && (
+                    <DesctiptionListItem
+                        term={intl.formatMessage({
+                            id: 'wizard.applications',
+                            defaultMessage: 'Applications'
+                        }) }
+                        description={applicatioNames.length
+                            ? applicatioNames.map(app => <div key={app}>{app}</div>)
+                            : intl.formatMessage({ id: 'none', defaultMessage: 'None' })
+                        }
+                    />
+                )}
+                { showApp && values.source.is_super_key !== 'true' && (
+                    <DesctiptionListItem
+                        term={intl.formatMessage({
                             id: 'wizard.application',
                             defaultMessage: 'Application'
-                        }) }
-                    </DescriptionListTerm>
-                    <DescriptionListDescription>{ display_name }</DescriptionListDescription>
-                </DescriptionListGroup> }
-                <DescriptionListGroup>
-                    <DescriptionListTerm>
-                        { intl.formatMessage({
-                            id: 'wizard.sourceType',
-                            defaultMessage: 'Source type'
-                        }) }
-                    </DescriptionListTerm>
-                    <DescriptionListDescription>{ type.product_name }</DescriptionListDescription>
-                </DescriptionListGroup>
-                { !skipEndpoint && authType && showAuthType && <DescriptionListGroup>
-                    <DescriptionListTerm>
-                        { intl.formatMessage({
+                        })}
+                        description={display_name}
+                    />
+                ) }
+                { !skipEndpoint && authType && showAuthType && values.source.is_super_key !== 'true' && !values.application?.application_type_id && (
+                    <DesctiptionListItem
+                        term={intl.formatMessage({
                             id: 'wizard.authenticationType',
                             defaultMessage: 'Authentication type'
-                        }) }
-                    </DescriptionListTerm>
-                    <DescriptionListDescription>{ authType.name }</DescriptionListDescription>
-                </DescriptionListGroup> }
+                        })}
+                        description={authType.name}
+                    />
+                ) }
                 { valuesList }
             </DescriptionList>
             {alertMapper(name, type.name, intl)}
