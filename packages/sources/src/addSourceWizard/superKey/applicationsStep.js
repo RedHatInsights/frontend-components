@@ -24,10 +24,8 @@ const applicationsStep = (applicationTypes, intl) => ({
             id: 'applications.availableApplications',
             defaultMessage: 'Available applications'
         }),
-        options: compileAllApplicationComboOptions(
-            applicationTypes.filter(({ supported_source_types }) => supported_source_types.includes('amazon')),
-            intl
-        )
+        options: compileAllApplicationComboOptions(applicationTypes, intl),
+        applicationTypes
     }]
 });
 

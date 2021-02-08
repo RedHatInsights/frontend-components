@@ -187,7 +187,7 @@ export const typesStep = (sourceTypes, applicationTypes, disableAppSelection, in
     name: 'types_step',
     nextStep,
     fields: [
-        redhatTypes({ intl, sourceTypes, applicationTypes, disableAppSelection }),
+        ...redhatTypes({ intl, sourceTypes, applicationTypes, disableAppSelection }),
         {
             component: 'description',
             name: 'fixasyncvalidation',
