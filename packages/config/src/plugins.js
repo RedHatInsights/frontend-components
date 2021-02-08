@@ -1,30 +1,29 @@
 const { SourceMapDevToolPlugin, HotModuleReplacementPlugin } = require('webpack');
+const ESLintPlugin = new(require('eslint-webpack-plugin'))();
+const ProvidePlugin = new(require('webpack').ProvidePlugin)({
+    process: 'process/browser.js',
+    Buffer: [ 'buffer', 'Buffer' ]
+});
 
-const WriteFileWebpackPlugin = new(require('write-file-webpack-plugin'))();
 const SourceMapsPlugin = new SourceMapDevToolPlugin({
     test: /src\/.*\.js$/i,
     exclude: /(node_modules|bower_components)/i,
     filename: `sourcemaps/[name][hash].js.map`
 });
-const LodashWebpackPlugin = new(require('lodash-webpack-plugin'))({
-    currying: true,
-    flattening: true,
-    placeholders: true,
-    paths: true,
-    shorthands: true
-});
 const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
-    chunkFilename: 'css/[name].[hash].css',
-    filename: 'css/[name].[hash].css'
+    chunkFilename: 'css/[name].[contenthash].css',
+    filename: 'css/[name].[contenthash].css'
 });
-const CleanWebpackPlugin = new(require('clean-webpack-plugin'))();
+const CleanWebpackPlugin = new(require('clean-webpack-plugin').CleanWebpackPlugin)({ cleanStaleWebpackAssets: false });
 const WebpackHotModuleReplacement = new HotModuleReplacementPlugin();
 
 module.exports = ({
     rootFolder,
     appDeployment,
     htmlPlugin,
-    replacePlugin
+    replacePlugin,
+    insights,
+    modules
 } = {}) => {
     const HtmlWebpackPlugin = new(require('html-webpack-plugin'))({
         title: 'My App',
@@ -41,14 +40,20 @@ module.exports = ({
         ...replacePlugin || []
     ]);
 
+    const ChunkMapper = new(require('../chunk-mapper'))({ modules: [
+        ...insights ? [ insights.appname ] : [],
+        ...modules || []
+    ] });
+
     return [
-        WriteFileWebpackPlugin,
         SourceMapsPlugin,
-        LodashWebpackPlugin,
         ExtractCssWebpackPlugin,
         CleanWebpackPlugin,
         HtmlWebpackPlugin,
         HtmlReplaceWebpackPlugin,
-        WebpackHotModuleReplacement
+        WebpackHotModuleReplacement,
+        ESLintPlugin,
+        ProvidePlugin,
+        ChunkMapper
     ];
 };
