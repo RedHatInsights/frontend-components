@@ -45,6 +45,12 @@ export class ReducerRegistry {
     register(newReducers) {
         this.reducers = { ...this.reducers, ...newReducers };
         this.store.replaceReducer(combineReducers({ ...this.reducers }));
+        return () => {
+            this.reducers = Object.entries(this.reducers)
+            .filter(reducer => !Object.keys(newReducers).includes(reducer))
+            .reduce((acc, [ key, val ]) => ({ ...acc, [key]: val }), {});
+            this.store.replaceReducer(combineReducers({ ...this.reducers }));
+        };
     }
 }
 

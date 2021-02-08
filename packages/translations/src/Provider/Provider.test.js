@@ -1,7 +1,6 @@
 import React from 'react';
 import IntlProvider from './Provider';
 import { mount } from 'enzyme';
-import { LOCALSTORAGE_KEY } from './';
 import toJson from 'enzyme-to-json';
 describe('provider', () => {
     test('should render correctly', () => {
