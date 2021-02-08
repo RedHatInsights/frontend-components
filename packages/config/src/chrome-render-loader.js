@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 function chromeRenderLoader(source) {
     const loaderUtils = require('loader-utils');
     const options = loaderUtils.getOptions(this);
