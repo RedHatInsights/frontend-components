@@ -11,11 +11,12 @@ import {
     EmptyStateBody,
     Button
 } from '@patternfly/react-core';
+import './filter-chips.scss';
 
 const ErrorState = ({ errorTitle, errorDescription, ...props }) => {
 
     return (
-        <EmptyState variant={EmptyStateVariant.large} {...props}>
+        <EmptyState variant={EmptyStateVariant.large} {...props} className='ins-c-error-state'>
             <EmptyStateIcon icon={ExclamationCircleIcon} />
             <Title headingLevel='h4' size='lg'>
                 {errorTitle}
@@ -24,7 +25,7 @@ const ErrorState = ({ errorTitle, errorDescription, ...props }) => {
                 <Stack>
                     { !errorDescription && (
                         <StackItem>
-                            There was a problem accessing the request. Please try again.
+                            There was a problem processing the request. Please try again.
                         </StackItem>
                     )}
                     <StackItem>
@@ -34,8 +35,8 @@ const ErrorState = ({ errorTitle, errorDescription, ...props }) => {
             </EmptyStateBody>
             {
                 document.referrer ?
-                    <Button variant="primary" onClick={ () => history.back() }>Return to Previous Page</Button> :
-                    <Button variant="primary" component="a" href="." target="_blank" rel='noopener noreferrer'>Go to Home Page</Button>
+                    <Button variant="primary" onClick={ () => history.back() }>Return to last page</Button> :
+                    <Button variant="primary" component="a" href="." target="_blank" rel='noopener noreferrer'>Go to home page</Button>
             }
         </EmptyState>
     );
