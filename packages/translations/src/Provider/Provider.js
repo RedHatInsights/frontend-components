@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
-import { LOCALSTORAGE_KEY } from './';
-import translatedMessages from '../../../locales/data.json';
+import { LOCALSTORAGE_KEY } from '..';
+import translatedMessages from '../locales/data.json';
 
 const IntlProvider = ({
     locale,
