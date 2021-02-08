@@ -14,11 +14,11 @@ import mount from '../../__mocks__/mount';
 import { CheckCircleIcon } from '@patternfly/react-icons';
 
 describe('SubWatchDescription', () => {
-    it('Renders correctly when enabled', () => {
+    it('Renders correctly when enabled - not super key mode ', () => {
         const wrapper = mount(
             <FormRenderer
                 schema={{ fields: [{ name: 'desc', component: 'description', Content: () => <SubWatchDescription id="1" /> }] }}
-                initialValues={{ application: { application_type_id: '1' } }}
+                initialValues={{ application: { application_type_id: '1' }, source: { is_super_key: 'false' } }}
             />
         );
 
@@ -32,11 +32,32 @@ describe('SubWatchDescription', () => {
         expect(wrapper.find(CheckCircleIcon).first().props().fill).toEqual('#3E8635');
     });
 
-    it('Renders correctly when not enabled', () => {
+    it('Renders correctly when enabled - super key mode', () => {
         const wrapper = mount(
             <FormRenderer
                 schema={{ fields: [{ name: 'desc', component: 'description', Content: () => <SubWatchDescription id="1" /> }] }}
-                initialValues={{ application: { application_type_id: '2' } }}
+                initialValues={{ applications: [ '1' ], source: { is_super_key: 'true' } }}
+            />
+        );
+        expect(wrapper.find(CheckCircleIcon).first().props().fill).toEqual('#3E8635');
+    });
+
+    it('Renders correctly when not enabled - not super key mode', () => {
+        const wrapper = mount(
+            <FormRenderer
+                schema={{ fields: [{ name: 'desc', component: 'description', Content: () => <SubWatchDescription id="1" /> }] }}
+                initialValues={{ application: { application_type_id: '2' }, source: { is_super_key: 'false' } }}
+            />
+        );
+
+        expect(wrapper.find(CheckCircleIcon).first().props().fill).toEqual('#6A6E73');
+    });
+
+    it('Renders correctly when not enabled - super key mode', () => {
+        const wrapper = mount(
+            <FormRenderer
+                schema={{ fields: [{ name: 'desc', component: 'description', Content: () => <SubWatchDescription id="1" /> }] }}
+                initialValues={{ applications: [], source: { is_super_key: 'true' } }}
             />
         );
 
