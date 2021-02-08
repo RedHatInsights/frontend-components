@@ -11,7 +11,7 @@ import {
     EmptyStateBody,
     Button
 } from '@patternfly/react-core';
-import './filter-chips.scss';
+import './error-state.scss';
 
 const ErrorState = ({ errorTitle, errorDescription, ...props }) => {
 
