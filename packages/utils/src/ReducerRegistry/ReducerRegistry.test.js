@@ -20,11 +20,27 @@ it('should create store with prefilled state', () => {
     expect(reducerRegistry.getStore().getState()).toMatchObject({ some: 'value' });
 });
 
-it('should register new reucer', () => {
+it('should register new reducer', () => {
     const reducerRegistry = new ReducerRegistry();
     reducerRegistry.register({
         basic: (state = {}) => state
     });
+    expect(reducerRegistry).toMatchObject({
+        reducers: {
+            basic: expect.any(Function)
+        }
+    });
+});
+
+it('should register and unregister new reducer', () => {
+    const reducerRegistry = new ReducerRegistry();
+    reducerRegistry.register({
+        basic: (state = {}) => state
+    });
+    const unregister = reducerRegistry.register({
+        another: (state = {}) => state
+    });
+    unregister();
     expect(reducerRegistry).toMatchObject({
         reducers: {
             basic: expect.any(Function)
