@@ -32,9 +32,10 @@ class ChunkMapper {
                 }
             });
 
-            const outputPath = this.options.output || compiler.options.output.path;
-            mkdirSync(resolve(outputPath), { recursive: true });
-            writeFileSync(`${resolve(outputPath, 'fed-mods.json')}`, JSON.stringify(this.config, null, 4));
+            compilation.assets['fed-mods.json'] = {
+                source: () => JSON.stringify(this.config, null, 4),
+                size: () => JSON.stringify(this.config, null, 4).length
+            };
         });
     }
 }
