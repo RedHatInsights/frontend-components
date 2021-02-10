@@ -4,10 +4,12 @@ const path = require('path');
 const glob = require('glob');
 const fse = require('fs-extra');
 const chokidar = require('chokidar');
+const sortFile = require('./sort-files');
+const generateComponentsNavigation = require('./generate-components-nav');
 
 const COMPONENTS_JSON = 'component-docs.json';
 
-const componentsDest = path.resolve(__dirname, './pages/components');
+const componentsDest = path.resolve(__dirname, './pages');
 const navDest = path.resolve(__dirname, './components/navigation');
 
 function newLineReplacer(str) {
@@ -161,6 +163,7 @@ function getExtensiveProps(props) {
 }
 
 async function generateMD(file, API) {
+    const packageName = sortFile(file);
     const name = file.split('/').pop().replace('.js', '');
     const examples = glob.sync(path.resolve(__dirname, `./examples/${name}/*.js`));
     const description = generateComponentDescription(API.description);
@@ -187,7 +190,11 @@ ${extensiveProps.map((data) => {
 
 <ExtensiveProp data={${JSON.stringify(data.value)}} />`;})}
 `;
-    return fse.writeFile(`${componentsDest}/${name}.md`, content);
+    if (!fse.existsSync(`${componentsDest}/${packageName}`)) {
+        fse.mkdirSync(`${componentsDest}/${packageName}`);
+    }
+
+    return fse.writeFile(`${componentsDest}/${packageName}/${name}.md`, content);
 }
 
 async function traverseComponents() {
@@ -196,17 +203,13 @@ async function traverseComponents() {
     const cmds = foo.map(([ name, API ]) => {
         return generateMD(name, API);
     });
-    const componentsNav = Object.keys(components).map(key => key.split('/').pop().replace('.js', '')).sort((a, b) => a.localeCompare(b));
+    const componentsNav = generateComponentsNavigation(components);
     fse.writeJsonSync(`${navDest}/components-navigation.json`, componentsNav);
     return Promise.all(cmds);
 }
 
 async function run() {
     try {
-        if (!fse.existsSync(componentsDest)) {
-            fse.mkdirSync(componentsDest);
-        }
-
         await traverseComponents();
     } catch (error) {
         console.log(error);

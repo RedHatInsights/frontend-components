@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { componentTypes, validatorTypes } from '@data-driven-forms/react-form-renderer';
-import { componentMapper, FormTemplate } from '@data-driven-forms/pf4-component-mapper';
+import componentMapper from '@data-driven-forms/pf4-component-mapper/dist/esm/component-mapper';
+import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 
 import SourcesFormRenderer from '../../sourceFormRenderer';
 import Authentication from '../../sourceFormRenderer/components/Authentication';

@@ -24,9 +24,9 @@ const getAppEntry = (rootFolder, isProd) => {
 module.exports = (configurations) => {
     const { insights } = require(`${configurations.rootFolder}/package.json`);
     const gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
-    const appDeployment = (process.env.NODE_ENV === 'production' && betaBranhces.includes(gitBranch)) ?
+    const appDeployment = configurations.deployment || ((process.env.NODE_ENV === 'production' && betaBranhces.includes(gitBranch)) ?
         'beta/apps' :
-        'apps';
+        'apps');
 
     const publicPath = `/${appDeployment}/${insights.appname}/`;
     const appEntry = getAppEntry(configurations.rootFolder, process.env.NODE_ENV === 'production');
@@ -50,7 +50,8 @@ module.exports = (configurations) => {
             appDeployment,
             insights,
             publicPath,
-            appEntry
+            appEntry,
+            appName: insights.appname
         }),
         plugins: plugins({
             ...configurations,

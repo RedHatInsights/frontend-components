@@ -1,13 +1,13 @@
 import plugins from './plugins';
 
-const HTML_WEBPACK = 5;
-const REPLACE = 6;
+const HTML_WEBPACK = 3;
+const REPLACE = 4;
 
 describe('plugins generations, no option', () => {
     const enabledPlugins = plugins();
 
     it('should generate plugins', () => {
-        expect(enabledPlugins.length).toBe(8);
+        expect(enabledPlugins.length).toBe(9);
     });
 
     it('should generate correct template path for HtmlWebpackPlugin', () => {

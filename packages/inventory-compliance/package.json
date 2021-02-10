@@ -1,19 +1,19 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-compliance",
-    "version": "2.2.25",
+    "version": "3.0.1",
     "description": "Detail part of compliance for RedHat Cloud Services.",
-    "browser": "index.js",
     "module": "esm/index.js",
-    "main": "cjs/index.js",
+    "main": "index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:umd",
-        "build:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
-        "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
-        "build:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",
-        "start": "rollup -c ./config/rollup.config.js -w"
+        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
+        "build:js": "BABEL_ENV=cjs babel src --config-file ../../babel.v3.config.js --out-dir ./ --ignore '**/*.test.js','**/__mock__'",
+        "build:esm": "BABEL_ENV=esm babel src --config-file ../../babel.v3.config.js --out-dir ./esm --ignore '**/*.test.js','**/__mock__'",
+        "build:css": "node ../../scripts/build-styles.js",
+        "build:packages": "node ../../scripts/build-packages.js",
+        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
     "repository": {
         "type": "git",
@@ -39,10 +39,10 @@
         "lodash": "4.17.15"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components": "*",
-        "@redhat-cloud-services/frontend-components-notifications": "*",
+        "@redhat-cloud-services/frontend-components": ">=3.0.0",
+        "@redhat-cloud-services/frontend-components-notifications": ">=3.0.0",
         "@redhat-cloud-services/frontend-components-remediations": "*",
-        "@redhat-cloud-services/frontend-components-utilities": "*",
+        "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "@apollo/react-hooks": "^3.1.5",
         "apollo-boost": "^0.4.9",
         "graphql-tag": "^2.11.0",

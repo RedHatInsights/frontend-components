@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingCard Clickable should render - 0 value 1`] = `
+<a
+  href="http://localhost:5000//some-target"
+  onClick={[Function]}
+>
+  None
+</a>
+`;
+
+exports[`LoadingCard Clickable should render - no data 1`] = `
+<a
+  href="http://localhost:5000//undefined"
+  onClick={[Function]}
+>
+  Not available
+</a>
+`;
+
+exports[`LoadingCard Clickable should render 1`] = `
+<a
+  href="http://localhost:5000//some-target"
+  onClick={[Function]}
+>
+  15
+</a>
+`;
+
+exports[`LoadingCard Loading card render - isLoading: false 1`] = `
+<Stack
+  hasGutter={true}
+>
+  <StackItem>
+    <TextContent>
+      <Text
+        component="h1"
+      >
+        Card that is loaded
+      </Text>
+    </TextContent>
+  </StackItem>
+  <StackItem
+    isFilled={true}
+  >
+    <TextContent>
+      <TextList
+        component="dl"
+      />
+    </TextContent>
+  </StackItem>
+</Stack>
+`;
+
+exports[`LoadingCard Loading card render - isLoading: true 1`] = `
+<Stack
+  hasGutter={true}
+>
+  <StackItem>
+    <TextContent>
+      <Text
+        component="h1"
+      >
+        Card that is loading
+      </Text>
+    </TextContent>
+  </StackItem>
+  <StackItem
+    isFilled={true}
+  >
+    <TextContent>
+      <TextList
+        component="dl"
+      />
+    </TextContent>
+  </StackItem>
+</Stack>
+`;
+
+exports[`LoadingCard Loading card render 1`] = `
+<Stack
+  hasGutter={true}
+>
+  <StackItem>
+    <TextContent>
+      <Text
+        component="h1"
+      >
+        Some title
+      </Text>
+    </TextContent>
+  </StackItem>
+  <StackItem
+    isFilled={true}
+  >
+    <TextContent>
+      <TextList
+        component="dl"
+      >
+        <TextListItem
+          component="dt"
+        >
+          test-title
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <Clickable
+            item={
+              Object {
+                "onClick": [MockFunction],
+                "size": "md",
+                "title": "test-title",
+                "value": "some value",
+              }
+            }
+          />
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          just title
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          Not available
+        </TextListItem>
+      </TextList>
+    </TextContent>
+  </StackItem>
+</Stack>
+`;
+
+exports[`LoadingCard should render loading bars 1`] = `
+<Stack
+  hasGutter={true}
+>
+  <StackItem>
+    <TextContent>
+      <Text
+        component="h1"
+      >
+        Some title
+      </Text>
+    </TextContent>
+  </StackItem>
+  <StackItem
+    isFilled={true}
+  >
+    <TextContent>
+      <TextList
+        component="dl"
+      >
+        <TextListItem
+          component="dt"
+        >
+          test-title
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <Skeleton
+            isDark={false}
+            size="md"
+          />
+        </TextListItem>
+        <TextListItem
+          component="dt"
+        >
+          just title
+        </TextListItem>
+        <TextListItem
+          component="dd"
+        >
+          <Skeleton
+            isDark={false}
+            size="sm"
+          />
+        </TextListItem>
+      </TextList>
+    </TextContent>
+  </StackItem>
+</Stack>
+`;

@@ -34,5 +34,16 @@ yarn-error.log*
 .vercel
 
 /component-docs.json
-/components-navigation.json
 /pages/components/*.md
+/pages/utils/*.md
+/pages/charts/*.md
+/pages/inventory/*.md
+/pages/inventory-compliance/*.md
+/pages/inventory-general-info/*.md
+/pages/inventory-insights/*.md
+/pages/pdf-generator/*.md
+/pages/remediations/*.md
+/pages/rule-components/*.md
+/pages/sources/*.md
+/pages/translations/*.md
+components/navigation/components-navigation.json

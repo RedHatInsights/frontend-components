@@ -1,0 +1,589 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigurationCard api should NOT call handleClick 1`] = `
+<ConnectFunction
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ConfigurationCard
+    configuration={
+      Object {
+        "packages": Array [
+          "packages",
+        ],
+        "processes": Array [
+          "processes",
+        ],
+        "repositories": Object {
+          "disabled": Array [],
+          "enabled": Array [
+            Object {
+              "base_url": "test-url",
+              "enabled": true,
+              "gpgcheck": true,
+              "name": "test-name",
+            },
+          ],
+        },
+        "services": Array [
+          "services",
+        ],
+      }
+    }
+    detailLoaded={true}
+    dispatch={[Function]}
+    handleClick={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <LoadingCard
+      isLoading={false}
+      items={
+        Array [
+          Object {
+            "onClick": [Function],
+            "singular": "package",
+            "target": "installed_packages",
+            "title": "Installed packages",
+            "value": 1,
+          },
+          Object {
+            "onClick": [Function],
+            "singular": "service",
+            "target": "services",
+            "title": "Services",
+            "value": 1,
+          },
+          Object {
+            "onClick": [Function],
+            "plural": "processes",
+            "singular": "process",
+            "target": "running_processes",
+            "title": "Running processes",
+            "value": 1,
+          },
+          Object {
+            "onClick": [Function],
+            "target": "repositories",
+            "title": "Repositories",
+            "value": "1 enabled",
+          },
+        ]
+      }
+      title="Configuration"
+    >
+      <Stack
+        hasGutter={true}
+      >
+        <div
+          className="pf-l-stack pf-m-gutter"
+        >
+          <StackItem>
+            <div
+              className="pf-l-stack__item"
+            >
+              <TextContent>
+                <div
+                  className="pf-c-content"
+                >
+                  <Text
+                    component="h1"
+                  >
+                    <h1
+                      className=""
+                      data-pf-content={true}
+                    >
+                      Configuration
+                    </h1>
+                  </Text>
+                </div>
+              </TextContent>
+            </div>
+          </StackItem>
+          <StackItem
+            isFilled={true}
+          >
+            <div
+              className="pf-l-stack__item pf-m-fill"
+            >
+              <TextContent>
+                <div
+                  className="pf-c-content"
+                >
+                  <TextList
+                    component="dl"
+                  >
+                    <dl
+                      className=""
+                      data-pf-content={true}
+                    >
+                      <TextListItem
+                        component="dt"
+                      >
+                        <dt
+                          className=""
+                          data-pf-content={true}
+                        >
+                          Installed packages
+                        </dt>
+                      </TextListItem>
+                      <TextListItem
+                        component="dd"
+                      >
+                        <dd
+                          className=""
+                          data-pf-content={true}
+                        >
+                          <Clickable
+                            item={
+                              Object {
+                                "onClick": [Function],
+                                "singular": "package",
+                                "target": "installed_packages",
+                                "title": "Installed packages",
+                                "value": 1,
+                              }
+                            }
+                          >
+                            <a
+                              href="http://localhost:5000//installed_packages"
+                              onClick={[Function]}
+                            >
+                              1 package
+                            </a>
+                          </Clickable>
+                        </dd>
+                      </TextListItem>
+                      <TextListItem
+                        component="dt"
+                      >
+                        <dt
+                          className=""
+                          data-pf-content={true}
+                        >
+                          Services
+                        </dt>
+                      </TextListItem>
+                      <TextListItem
+                        component="dd"
+                      >
+                        <dd
+                          className=""
+                          data-pf-content={true}
+                        >
+                          <Clickable
+                            item={
+                              Object {
+                                "onClick": [Function],
+                                "singular": "service",
+                                "target": "services",
+                                "title": "Services",
+                                "value": 1,
+                              }
+                            }
+                          >
+                            <a
+                              href="http://localhost:5000//services"
+                              onClick={[Function]}
+                            >
+                              1 service
+                            </a>
+                          </Clickable>
+                        </dd>
+                      </TextListItem>
+                      <TextListItem
+                        component="dt"
+                      >
+                        <dt
+                          className=""
+                          data-pf-content={true}
+                        >
+                          Running processes
+                        </dt>
+                      </TextListItem>
+                      <TextListItem
+                        component="dd"
+                      >
+                        <dd
+                          className=""
+                          data-pf-content={true}
+                        >
+                          <Clickable
+                            item={
+                              Object {
+                                "onClick": [Function],
+                                "plural": "processes",
+                                "singular": "process",
+                                "target": "running_processes",
+                                "title": "Running processes",
+                                "value": 1,
+                              }
+                            }
+                          >
+                            <a
+                              href="http://localhost:5000//running_processes"
+                              onClick={[Function]}
+                            >
+                              1 process
+                            </a>
+                          </Clickable>
+                        </dd>
+                      </TextListItem>
+                      <TextListItem
+                        component="dt"
+                      >
+                        <dt
+                          className=""
+                          data-pf-content={true}
+                        >
+                          Repositories
+                        </dt>
+                      </TextListItem>
+                      <TextListItem
+                        component="dd"
+                      >
+                        <dd
+                          className=""
+                          data-pf-content={true}
+                        >
+                          <Clickable
+                            item={
+                              Object {
+                                "onClick": [Function],
+                                "target": "repositories",
+                                "title": "Repositories",
+                                "value": "1 enabled",
+                              }
+                            }
+                          >
+                            <a
+                              href="http://localhost:5000//repositories"
+                              onClick={[Function]}
+                            >
+                              1 enabled
+                            </a>
+                          </Clickable>
+                        </dd>
+                      </TextListItem>
+                    </dl>
+                  </TextList>
+                </div>
+              </TextContent>
+            </div>
+          </StackItem>
+        </div>
+      </Stack>
+    </LoadingCard>
+  </ConfigurationCard>
+</ConnectFunction>
+`;
+
+exports[`ConfigurationCard should render correctly - no data 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Configuration
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Installed packages
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Services
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Running processes
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Repositories
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ConfigurationCard should render correctly with data 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Configuration
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Installed packages
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//installed_packages"
+          >
+            1 package
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Services
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//services"
+          >
+            1 service
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Running processes
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//running_processes"
+          >
+            1 process
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Repositories
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//repositories"
+          >
+            1 enabled
+          </a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ConfigurationCard should render enabled/disabled 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Configuration
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Installed packages
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//installed_packages"
+          >
+            1 package
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Services
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//services"
+          >
+            1 service
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Running processes
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//running_processes"
+          >
+            1 process
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Repositories
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//repositories"
+          >
+            1 enabled / 1 disabled
+          </a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;

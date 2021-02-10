@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { TextInput } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
+import './conditional-filter.scss';
 
 class Text extends Component {
     state = {

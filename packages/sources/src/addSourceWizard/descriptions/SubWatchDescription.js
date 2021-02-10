@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Flex, FlexItem, Stack, StackItem, Text } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons';
-import useFormApi from '@data-driven-forms/react-form-renderer/dist/cjs/use-form-api';
+import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 
 const Point = ({ title, description, isEnabled, ...props }) => (
     <StackItem {...props}>

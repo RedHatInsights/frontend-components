@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
-import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/validator-types';
 import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
@@ -95,7 +95,7 @@ export const compileAllApplicationComboOptions = (applicationTypes, intl) => (
 
 export const appMutatorRedHat = (appTypes) => (option, formOptions) => {
     const selectedSourceType = formOptions.getState().values.source_type;
-    const appType = appTypes.find(app => app.display_name === option.label);
+    const appType = appTypes.find(app => app.id === option.value);
     const isEnabled = selectedSourceType && appType ? appType.supported_source_types.includes(selectedSourceType) : true;
 
     if (!isEnabled) {
@@ -336,7 +336,7 @@ const summaryStep = (sourceTypes, applicationTypes, intl) => ({
     })
 });
 
-export default (sourceTypes, applicationTypes, disableAppSelection, container, intl, selectedType) => {
+export default (sourceTypes, applicationTypes, disableAppSelection, container, intl, selectedType, initialWizardState) => {
     setFirstValidated(true);
 
     return ({
@@ -366,6 +366,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container, i
             },
             container,
             showTitles: true,
+            initialState: initialWizardState,
             crossroads: [ 'application.application_type_id', 'source_type', 'auth_select' ],
             fields: [
                 nameStep(intl),

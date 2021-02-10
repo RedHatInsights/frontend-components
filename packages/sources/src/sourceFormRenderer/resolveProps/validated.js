@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { Spinner, FormHelperText } from '@patternfly/react-core';
-import FormSpy from '@data-driven-forms/react-form-renderer/dist/cjs/form-spy';
+import FormSpy from '@data-driven-forms/react-form-renderer/dist/esm/form-spy';
 
 export const ValidatingSpinner = ({ validating }) => {
     const intl = useIntl();

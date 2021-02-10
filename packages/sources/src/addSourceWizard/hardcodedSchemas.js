@@ -2,8 +2,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FormHelperText } from '@patternfly/react-core';
 
-import componentTypes from '@data-driven-forms/react-form-renderer/dist/cjs/component-types';
-import validatorTypes from '@data-driven-forms/react-form-renderer/dist/cjs/validator-types';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
+import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/validator-types';
 import SSLFormLabel from './SSLFormLabel';
 
 import * as OpenshiftToken from './hardcodedComponents/openshift/token';
@@ -111,7 +111,7 @@ export default {
                         }]
                     },
                     additionalSteps: [{
-                        title: <FormattedMessage id="cost.configureOperator" defaultMessage="Cost Management Operator" />,
+                        title: <FormattedMessage id="cost.configureOperator" defaultMessage="Install and configure operator" />,
                         fields: [{
                             component: 'description',
                             name: 'description-summary',

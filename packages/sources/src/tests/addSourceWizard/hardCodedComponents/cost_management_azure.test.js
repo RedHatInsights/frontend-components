@@ -6,7 +6,7 @@ import {
 } from '@patternfly/react-core';
 
 import * as Cm from '../../../addSourceWizard/hardcodedComponents/azure/costManagement';
-import RenderContext from '@data-driven-forms/react-form-renderer/dist/cjs/renderer-context';
+import RenderContext from '@data-driven-forms/react-form-renderer/dist/esm/renderer-context';
 import mount from '../../__mocks__/mount';
 
 describe('Cost Management Azure steps components', () => {

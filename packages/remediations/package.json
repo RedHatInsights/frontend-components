@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-remediations",
-    "version": "2.3.9",
+    "version": "2.3.10",
     "description": "Remediations components for RedHat Cloud Services project.",
     "browser": "index.js",
     "main": "cjs/index.js",
@@ -36,6 +36,6 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
-        "urijs": "^1.19.1"
+        "urijs": "^1.19.4"
     }
 }

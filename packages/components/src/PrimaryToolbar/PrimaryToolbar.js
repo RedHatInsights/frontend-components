@@ -9,6 +9,7 @@ import { FilterChips } from '../FilterChips';
 import PropTypes from 'prop-types';
 import SortBy from './SortBy';
 import { SortByDirection } from '@patternfly/react-table';
+import './primary-toolbar.scss';
 
 class PrimaryToolbar extends Component {
     render() {

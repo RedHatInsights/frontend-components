@@ -3,8 +3,8 @@ import { mount } from 'enzyme';
 import CardSelect from '../../../sourceFormRenderer/components/CardSelect';
 import { Tile } from '@patternfly/react-core';
 import { AwsIcon, OpenshiftIcon } from '@patternfly/react-icons';
-import FormRenderer from '@data-driven-forms/react-form-renderer/dist/cjs/form-renderer';
-import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/cjs/form-template';
+import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
+import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 
 describe('CardSelect component', () => {
     let initialProps;

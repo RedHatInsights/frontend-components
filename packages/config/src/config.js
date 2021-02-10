@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
-const history = require('connect-history-api-fallback');
-const convert = require('koa-connect');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 module.exports = ({
     port,
@@ -9,8 +8,11 @@ module.exports = ({
     appEntry,
     rootFolder,
     https,
-    mode
+    mode,
+    appName,
+    useFileHash = true
 } = {}) => {
+    const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
         mode: mode || (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
         devtool: 'source-map',
@@ -44,16 +46,22 @@ module.exports = ({
             App: appEntry
         },
         output: {
-            filename: 'js/[name].[hash].js',
+            filename: filenameMask,
             path: `${rootFolder || ''}/dist`,
             publicPath,
-            chunkFilename: 'js/[name].[hash].js'
+            chunkFilename: filenameMask
         },
         module: {
             rules: [{
+                test: new RegExp(appEntry),
+                loader: path.resolve(__dirname, './chrome-render-loader.js'),
+                options: {
+                    appName
+                }
+            }, {
                 test: /src\/.*\.js$/,
                 exclude: /(node_modules|bower_components)/i,
-                use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }, { loader: 'eslint-loader' }]
+                use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }]
             }, {
                 test: /src\/.*\.tsx?$/,
                 loader: 'ts-loader',
@@ -61,9 +69,32 @@ module.exports = ({
             }, {
                 test: /\.s?[ac]ss$/,
                 use: [
-                    process.env.NODE_ENV === 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'style-loader',
                     {
                         loader: 'css-loader'
+                    },
+                    {
+                        /**
+                         * Second sass loader used for scoping the css with class name.
+                         * Has to be included as second in order to re-scope already compiled sass files.
+                         * Second loader is required to avoid scoping mixins, includes and other sass partials. We want to only scope the CSS output.
+                         */
+                        loader: 'sass-loader',
+                        options: {
+                            additionalData: function(content, loaderContext) {
+                                const { resourcePath, rootContext } = loaderContext;
+                                const relativePath = path.relative(rootContext, resourcePath);
+                                /**
+                                 * Add app class context for local style files.
+                                 * Context class is equal to app name and that class ass added to root element via the chrome-render-loader.
+                                 */
+                                if (relativePath.match(/^src/)) {
+                                    return `.${appName}{\n${content}\n}`;
+                                }
+
+                                return content;
+                            }
+                        }
                     },
                     {
                         loader: 'sass-loader'
@@ -90,7 +121,17 @@ module.exports = ({
             alias: {
                 customReact: 'react',
                 PFReactCore: '@patternfly/react-core',
-                PFReactTable: '@patternfly/react-table'
+                PFReactTable: '@patternfly/react-table',
+                buffer: 'buffer'
+            },
+            fallback: {
+                path: require.resolve('path-browserify'),
+                stream: require.resolve('stream-browserify'),
+                zlib: require.resolve('browserify-zlib'),
+                assert: require.resolve('assert/'),
+                buffer: require.resolve('buffer/'),
+                util: require.resolve('util/'),
+                process: 'process/browser.js'
             }
         },
         devServer: {
@@ -100,17 +141,8 @@ module.exports = ({
             https: https || false,
             inline: true,
             disableHostCheck: true,
-            historyApiFallback: true
-        },
-        serve: {
-            content: `${rootFolder || ''}/dist`,
-            port: port || 8002,
-            dev: {
-                publicPath
-            },
-            // https://github.com/webpack-contrib/webpack-serve/blob/master/docs/addons/history-fallback.config.js
-            add: app => app.use(convert(history({})))
-        },
-        node: { fs: 'empty' }
+            historyApiFallback: true,
+            writeToDisk: true
+        }
     };
 };

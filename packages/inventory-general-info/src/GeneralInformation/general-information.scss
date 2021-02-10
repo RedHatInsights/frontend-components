@@ -1,0 +1,59 @@
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/_mixins';
+.ins-c-general-information {
+    .pf-c-content {
+        .pf-l-level div:first-child {
+            font-weight: var(--pf-global--FontWeight--bold);
+        }
+    }
+
+    table {
+        td.ins-no-data {
+            text-align: center;
+        }
+    }
+
+    .ins-active-general_information__popover-icon {
+        padding: 0;
+        margin-left: var(--pf-global--spacer--sm);
+    }
+
+    dl dd {
+        word-break: break-all;
+    }
+
+    .pf-c-modal-box .pf-c-table {
+        white-space: nowrap;
+
+        .ins-c-inventory__detail--up {
+            fill: var(--pf-global--success-color--100);
+        }
+
+        .ins-c-inventory__detail--down {
+            fill: var(--pf-global--danger-color--100);
+        }
+
+        .ins-c-inventory__detail--unknown {
+            fill: var(--pf-global--warning-color--100);
+        }
+
+        .ins-c-inventory__detail--enabled {
+            fill: var(--pf-global--success-color--100)
+        }
+    }
+
+
+    .ins-c-inventory__detail--dialog {
+        @include rem('min-width', 350px);
+
+        .pf-c-table {
+            tbody tr td:first-child { padding-left: 0; }
+            thead tr th { padding-bottom: 0; }
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+    .pf-c-modal-box .pf-c-table {
+        white-space: normal;
+    }
+    }
+}

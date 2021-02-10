@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import classNames from 'classnames';
 
 import ThemeContext from '../Dark/configContext';
+import './page-header.scss';
 
 /**
  * This is a page header that mimics the patternfly layout for a header section
