@@ -219,6 +219,22 @@ exports[`SystemCard should render correctly - no data 1`] = `
           class=""
           data-pf-content="true"
         >
+          CPU flags
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <div
+            class="ins-c-skeleton ins-c-skeleton__sm"
+          >
+             
+          </div>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
           RAM
         </dt>
         <dd
@@ -468,6 +484,18 @@ exports[`SystemCard should render correctly with SAP IDS 1`] = `
           class=""
           data-pf-content="true"
         >
+          CPU flags
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          0 flags
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
           RAM
         </dt>
         <dd
@@ -709,6 +737,18 @@ exports[`SystemCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
+          CPU flags
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          0 flags
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
           RAM
         </dt>
         <dd
@@ -945,6 +985,18 @@ exports[`SystemCard should render correctly with rhsm facts 1`] = `
           data-pf-content="true"
         >
           2
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          CPU flags
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
         </dd>
         <dt
           class=""

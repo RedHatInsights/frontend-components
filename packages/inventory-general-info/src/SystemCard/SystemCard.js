@@ -117,6 +117,14 @@ class SystemCard extends Component {
                         { title: 'Number of CPUs', value: properties.cpuNumber },
                         { title: 'Sockets', value: properties.sockets },
                         { title: 'Cores per socket', value: properties.coresPerSocket },
+
+                        {
+                            title: 'CPU flags',
+                            value: properties?.cpuFlags?.length,
+                            singular: 'flag',
+                            target: 'flag',
+                            onClick: () => handleClick('CPU flags', generalMapper(properties.cpuFlags, 'flag name'))
+                        },
                         { title: 'RAM', value: properties.ramSize }
                     ] }
                 />

@@ -228,6 +228,22 @@ exports[`GeneralInformation should render correctly - no data 1`] = `
                 class=""
                 data-pf-content="true"
               >
+                CPU flags
+              </dt>
+              <dd
+                class=""
+                data-pf-content="true"
+              >
+                <div
+                  class="ins-c-skeleton ins-c-skeleton__sm"
+                >
+                   
+                </div>
+              </dd>
+              <dt
+                class=""
+                data-pf-content="true"
+              >
                 RAM
               </dt>
               <dd
@@ -427,22 +443,6 @@ exports[`GeneralInformation should render correctly - no data 1`] = `
                 data-pf-content="true"
               >
                 Release date
-              </dt>
-              <dd
-                class=""
-                data-pf-content="true"
-              >
-                <div
-                  class="ins-c-skeleton ins-c-skeleton__sm"
-                >
-                   
-                </div>
-              </dd>
-              <dt
-                class=""
-                data-pf-content="true"
-              >
-                Compatibility Support Module
               </dt>
               <dd
                 class=""
@@ -1059,6 +1059,18 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
+                CPU flags
+              </dt>
+              <dd
+                class=""
+                data-pf-content="true"
+              >
+                0 flags
+              </dd>
+              <dt
+                class=""
+                data-pf-content="true"
+              >
                 RAM
               </dt>
               <dd
@@ -1232,18 +1244,6 @@ exports[`GeneralInformation should render correctly 1`] = `
                 data-pf-content="true"
               >
                 01 Apr 2014
-              </dd>
-              <dt
-                class=""
-                data-pf-content="true"
-              >
-                Compatibility Support Module
-              </dt>
-              <dd
-                class=""
-                data-pf-content="true"
-              >
-                0 CSMs
               </dd>
             </dl>
           </div>

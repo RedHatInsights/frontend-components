@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoadingCard from '../LoadingCard';
-import { generalMapper } from '../dataMapper';
 import { biosSelector } from '../selectors';
 import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
 import { isDate } from '../constants';
 
-const BiosCard = ({ bios, detailLoaded, handleClick }) => (<LoadingCard
+const BiosCard = ({ bios, detailLoaded }) => (<LoadingCard
     title="BIOS"
     isLoading={ !detailLoaded }
     items={ [
@@ -16,14 +15,7 @@ const BiosCard = ({ bios, detailLoaded, handleClick }) => (<LoadingCard
         { title: 'Release date', value: (isDate(bios.releaseDate) ?
             <DateFormat date={ new Date(bios.releaseDate) } type="onlyDate" /> :
             'Not available'
-        ) },
-        {
-            title: 'Compatibility Support Module',
-            value: bios?.csm?.length,
-            singular: 'CSM',
-            target: 'csm',
-            onClick: () => handleClick('CSM', generalMapper(bios.csm, 'CSM name'))
-        }
+        ) }
     ] }
 />);
 

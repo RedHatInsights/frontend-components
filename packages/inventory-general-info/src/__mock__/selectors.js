@@ -4,7 +4,8 @@ export const testProperties = {
     number_of_sockets: 1,
     cores_per_socket: 1,
     ramSize: '5 MB',
-    disk_devices: []
+    disk_devices: [],
+    cpu_flags: []
 };
 
 export const osTest = {
@@ -18,8 +19,7 @@ export const osTest = {
 export const biosTest = {
     bios_vendor: 'test-vendor',
     bios_version: 'test-version',
-    bios_release_date: '04/01/2014',
-    cpu_flags: []
+    bios_release_date: '04/01/2014'
 };
 
 export const infraTest = {
