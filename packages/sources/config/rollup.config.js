@@ -93,7 +93,9 @@ export default rollupConfig(
         getApplicationStatus: 'src/api/getApplicationStatus.js',
         constants: 'src/api/constants.js',
         validated: 'src/sourceFormRenderer/resolveProps/validated.js',
-        computeSourceStatus: 'src/utilities/computeSourceStatus.js'
+        computeSourceStatus: 'src/utilities/computeSourceStatus.js',
+        SuperKeyCredentials: 'src/addSourceWizard/superKey/SuperKeyCredentials.js',
+        generateSuperKeyFields: 'src/addSourceWizard/superKey/generateSuperKeyFields.js'
     }, {
         index: 'src/index.js'
     }],
