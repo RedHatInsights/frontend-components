@@ -6,7 +6,7 @@ import { TextContent, Text, TextVariants } from '@patternfly/react-core';
 import debouncePromise from '../utilities/debouncePromise';
 import { findSource } from '../api';
 import { schemaBuilder } from './schemaBuilder';
-import { getActiveVendor, REDHAT_VENDOR, WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
+import { getActiveVendor, NO_APPLICATION_VALUE, REDHAT_VENDOR, WIZARD_DESCRIPTION, WIZARD_TITLE } from '../utilities/stringConstants';
 import ValidatorReset from './ValidatorReset';
 import { handleError } from '../api/handleError';
 import validated from '../sourceFormRenderer/resolveProps/validated';
@@ -88,7 +88,7 @@ export const compileAllApplicationComboOptions = (applicationTypes, intl) => (
                 id: 'wizard.noApplication',
                 defaultMessage: 'No application'
             }),
-            value: ''
+            value: NO_APPLICATION_VALUE
         }] : [])
     ]
 );
@@ -141,7 +141,7 @@ export const iconMapper = sourceTypes => (name) => {
 };
 
 export const nextStep = ({ values: { application, source_type } }) => {
-    const appId = application && application.application_type_id;
+    const appId = application && application.application_type_id !== NO_APPLICATION_VALUE && application.application_type_id;
     const resultedStep = appId ? `${source_type}-${appId}` : source_type;
 
     return resultedStep;
