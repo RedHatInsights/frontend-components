@@ -17,7 +17,7 @@ import applicationTypes from '../helpers/applicationTypes';
 import { TextContent, Text } from '@patternfly/react-core';
 
 import mount from '../__mocks__/mount';
-import { CLOUD_VENDOR, REDHAT_VENDOR } from '../../utilities/stringConstants';
+import { CLOUD_VENDOR, NO_APPLICATION_VALUE, REDHAT_VENDOR } from '../../utilities/stringConstants';
 import SubWatchDescription from '../../addSourceWizard/descriptions/SubWatchDescription';
 
 describe('Add source schema', () => {
@@ -234,7 +234,7 @@ describe('Add source schema', () => {
                 { label: 'Cost Management', value: '2', description: 'Analyze, forecast, and optimize your Red Hat OpenShift cluster costs in hybrid cloud environments.' },
                 { label: expect.any(Object), value: '5', description: <SubWatchDescription id="5"/> },
                 { label: 'Topological Inventory', value: '3', description: undefined },
-                { value: '', label: 'No application' }
+                { value: NO_APPLICATION_VALUE, label: 'No application' }
             ]);
         });
     });
@@ -310,7 +310,7 @@ describe('Add source schema', () => {
             window.location.search = `activeVendor=${CLOUD_VENDOR}`;
 
             expect(compileAllApplicationComboOptions(mockAppTypes, INTl)).toEqual(
-                [{ label: 'Application', value: '1', description: undefined }, { label: 'No application', value: '' }]
+                [{ label: 'Application', value: '1', description: undefined }, { label: 'No application', value: NO_APPLICATION_VALUE }]
             );
         });
 
