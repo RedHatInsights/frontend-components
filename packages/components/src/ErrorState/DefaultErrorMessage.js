@@ -2,7 +2,7 @@ import React from 'react';
 
 const DefaultErrorMessage = () => {
     const redirectLink = 'https://access.redhat.com/support';
-    const statusLink = 'status.redhat.com';
+    const statusLink = 'https://status.redhat.com';
 
     return (
         <>
