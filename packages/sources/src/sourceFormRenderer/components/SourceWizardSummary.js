@@ -103,7 +103,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
 
     let applicatioNames;
 
-    if (values.source.is_super_key === 'true') {
+    if (values.source.app_creation_workflow === 'account_authorization') {
         applicatioNames = values.applications.map((app) => applicationTypes.find(type => type.id === app)?.display_name);
     }
 
@@ -177,13 +177,13 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
                     })}
                     description={type.product_name}
                 />
-                { showApp && values.source.is_super_key && (
+                { showApp && values.source.app_creation_workflow && (
                     <DesctiptionListItem
                         term={intl.formatMessage({
                             id: 'wizard.configurationMode',
                             defaultMessage: 'Configuration mode'
                         }) }
-                        description={values.source.is_super_key === 'true' ? intl.formatMessage({
+                        description={values.source.app_creation_workflow === 'account_authorization' ? intl.formatMessage({
                             id: 'wizard.accountAuth',
                             defaultMessage: 'Account authorization'
                         }) : intl.formatMessage({
@@ -192,7 +192,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
                         })}
                     />
                 )}
-                { showApp && values.source.is_super_key === 'true' && (
+                { showApp && values.source.app_creation_workflow === 'account_authorization' && (
                     <DesctiptionListItem
                         term={intl.formatMessage({
                             id: 'wizard.applications',
@@ -204,7 +204,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
                         }
                     />
                 )}
-                { showApp && values.source.is_super_key !== 'true' && (
+                { showApp && values.source.app_creation_workflow !== 'account_authorization' && (
                     <DesctiptionListItem
                         term={intl.formatMessage({
                             id: 'wizard.application',
@@ -216,7 +216,7 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
                 { !skipEndpoint
                 && authType
                 && showAuthType
-                && values.source.is_super_key !== 'true'
+                && values.source.app_creation_workflow !== 'account_authorization'
                 && (!values.application?.application_type_id || values.application?.application_type_id === NO_APPLICATION_VALUE)
                 && (
                     <DesctiptionListItem

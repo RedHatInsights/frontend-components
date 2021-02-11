@@ -413,7 +413,7 @@ describe('AddSourceWizard', () => {
                 wrapper = mount(<AddSourceWizard
                     { ...initialProps }
                     selectedType="amazon"
-                    initialValues={{ source: { is_super_key: 'true' } }}
+                    initialValues={{ source: { app_creation_workflow: 'account_authorization' } }}
                 />);
             });
             wrapper.update();
@@ -433,7 +433,7 @@ describe('AddSourceWizard', () => {
                 wrapper = mount(<AddSourceWizard
                     { ...initialProps }
                     selectedType="amazon"
-                    initialValues={{ source: { is_super_key: 'false' } }}
+                    initialValues={{ source: { app_creation_workflow: 'manual_configuration' } }}
                 />);
             });
             wrapper.update();

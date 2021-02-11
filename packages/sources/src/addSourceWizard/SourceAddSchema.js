@@ -196,7 +196,7 @@ export const typesStep = (sourceTypes, applicationTypes, disableAppSelection, in
     ]
 });
 
-export const hasSuperKeyType = (sourceType) => sourceType.schema.authentication.find(({ is_super_key, type }) => is_super_key || type === 'access_key_secret_key');
+export const hasSuperKeyType = (sourceType) => sourceType.schema.authentication.find(({ is_superkey, type }) => is_superkey || type === 'access_key_secret_key');
 
 export const cloudTypesStep = (sourceTypes, applicationTypes, intl) => ({
     title: intl.formatMessage({
@@ -364,7 +364,7 @@ export default (sourceTypes, applicationTypes, disableAppSelection, container, i
             container,
             showTitles: true,
             initialState: initialWizardState,
-            crossroads: [ 'application.application_type_id', 'source_type', 'auth_select', 'source.is_super_key' ],
+            crossroads: [ 'application.application_type_id', 'source_type', 'auth_select', 'source.app_creation_workflow' ],
             fields: [
                 nameStep(intl, selectedType, sourceTypes),
                 !selectedType && getActiveVendor() === REDHAT_VENDOR

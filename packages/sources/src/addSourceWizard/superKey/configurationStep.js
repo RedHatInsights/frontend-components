@@ -11,11 +11,11 @@ const configurationStep = (intl, sourceTypes) => ({
         defaultMessage: 'Select configuration'
     }),
     nextStep: ({ values }) => {
-        if (!values.source?.is_super_key) {
+        if (!values.source?.app_creation_workflow) {
             return;
         }
 
-        return values.source?.is_super_key === 'true' ? 'select_applications' : 'application_step';
+        return values.source?.app_creation_workflow === 'account_authorization' ? 'select_applications' : 'application_step';
     },
     fields: [{
         component: componentTypes.PLAIN_TEXT,
@@ -23,7 +23,7 @@ const configurationStep = (intl, sourceTypes) => ({
         label: 'Configure your source manually or let us manage all necessary credentials by selecting Superkey configuration.'
     }, {
         component: componentTypes.RADIO,
-        name: 'source.is_super_key',
+        name: 'source.app_creation_workflow',
         label: intl.formatMessage({
             id: 'wizard.configurationMode',
             defaultMessage: 'Select a configuration mode'
@@ -44,7 +44,7 @@ const configurationStep = (intl, sourceTypes) => ({
                 defaultMessage:
                         'A new automated source configuration method. Provide your AWS account credentials and let Red Hat configure and manage your source for you.'
             }),
-            value: 'true'
+            value: 'account_authorization'
         }],
         validate: [{ type: validatorTypes.REQUIRED }]
     }, {
@@ -56,11 +56,11 @@ const configurationStep = (intl, sourceTypes) => ({
             Content: SuperKeyCredentials,
             sourceTypes
         }],
-        condition: { when: 'source.is_super_key', is: 'true' },
+        condition: { when: 'source.app_creation_workflow', is: 'account_authorization' },
         className: 'pf-u-ml-md'
     }, {
         component: componentTypes.RADIO,
-        name: 'source.is_super_key',
+        name: 'source.app_creation_workflow',
         options: [{
             label: intl.formatMessage({
                 id: 'wizard.manualAuth',
@@ -71,7 +71,7 @@ const configurationStep = (intl, sourceTypes) => ({
                 defaultMessage:
                     'Configure and manage your source manually if you do not wish to provide Superkey credentials. You will set up sources the same way you do today.'
             }),
-            value: 'false'
+            value: 'manual_configuration'
         }]
     }]
 });

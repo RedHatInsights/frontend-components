@@ -245,7 +245,7 @@ describe('SourceWizardSummary component', () => {
             formOptions = {
                 getState: () => ({
                     values: {
-                        source: { name: 'cosi', is_super_key: 'true' },
+                        source: { name: 'cosi', app_creation_workflow: 'account_authorization' },
                         applications: [ COST_MANAGEMENT_APP.id, TOPOLOGY_INV_APP.id ],
                         source_type: 'amazon',
                         authentication: { username: 'arn:aws:132', authtype: 'access_key_secret_key', password: 'secret_key' },
@@ -275,7 +275,7 @@ describe('SourceWizardSummary component', () => {
             formOptions = {
                 getState: () => ({
                     values: {
-                        source: { name: 'cosi', is_super_key: 'true' },
+                        source: { name: 'cosi', app_creation_workflow: 'account_authorization' },
                         applications: [],
                         source_type: 'amazon',
                         authentication: { username: 'arn:aws:132', authtype: 'access_key_secret_key', password: 'secret_key' },
@@ -305,7 +305,7 @@ describe('SourceWizardSummary component', () => {
             formOptions = {
                 getState: () => ({
                     values: {
-                        source: { name: 'cosi', is_super_key: 'false' },
+                        source: { name: 'cosi', app_creation_workflow: 'manual_configuration' },
                         applications: [],
                         source_type: 'amazon',
                         authentication: { username: 'arn:aws:132', authtype: 'access_key_secret_key', password: 'secret_key' },

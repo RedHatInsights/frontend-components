@@ -36,8 +36,8 @@ const SubWatchDescription = ({ id }) => {
 
     const values = getState().values;
 
-    const isEnabled = (values.source.is_super_key === 'true' && values.applications?.includes(id))
-    || (values.source.is_super_key !== false && values.application?.application_type_id === id);
+    const isEnabled = (values.source.app_creation_workflow === 'account_authorization' && values.applications?.includes(id))
+    || (values.source.app_creation_workflow !== 'account_authorization' && values.application?.application_type_id === id);
 
     return (
         <Stack>

@@ -3,7 +3,7 @@ import { getAdditionalAuthFields, getAdditionalStepKeys, getNoStepsFields, injec
 const generateSuperKeyFields = (sourceTypes, source_type) => {
     const authype = sourceTypes
     .find(({ name }) => name === source_type)?.schema.authentication
-    .find(({ is_super_key, type }) => is_super_key || type === 'access_key_secret_key');
+    .find(({ is_superkey, type }) => is_superkey || type === 'access_key_secret_key');
 
     const additionalIncludesStepKeys = getAdditionalStepKeys(source_type, authype.type);
 

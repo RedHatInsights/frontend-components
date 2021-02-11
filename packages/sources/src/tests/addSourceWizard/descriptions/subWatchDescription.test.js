@@ -18,7 +18,7 @@ describe('SubWatchDescription', () => {
         const wrapper = mount(
             <FormRenderer
                 schema={{ fields: [{ name: 'desc', component: 'description', Content: () => <SubWatchDescription id="1" /> }] }}
-                initialValues={{ application: { application_type_id: '1' }, source: { is_super_key: 'false' } }}
+                initialValues={{ application: { application_type_id: '1' }, source: { app_creation_workflow: 'manual_configuration' } }}
             />
         );
 
@@ -36,7 +36,7 @@ describe('SubWatchDescription', () => {
         const wrapper = mount(
             <FormRenderer
                 schema={{ fields: [{ name: 'desc', component: 'description', Content: () => <SubWatchDescription id="1" /> }] }}
-                initialValues={{ applications: [ '1' ], source: { is_super_key: 'true' } }}
+                initialValues={{ applications: [ '1' ], source: { app_creation_workflow: 'account_authorization' } }}
             />
         );
         expect(wrapper.find(CheckCircleIcon).first().props().fill).toEqual('#3E8635');
@@ -46,7 +46,7 @@ describe('SubWatchDescription', () => {
         const wrapper = mount(
             <FormRenderer
                 schema={{ fields: [{ name: 'desc', component: 'description', Content: () => <SubWatchDescription id="1" /> }] }}
-                initialValues={{ application: { application_type_id: '2' }, source: { is_super_key: 'false' } }}
+                initialValues={{ application: { application_type_id: '2' }, source: { app_creation_workflow: 'manual_configuration' } }}
             />
         );
 
@@ -57,7 +57,7 @@ describe('SubWatchDescription', () => {
         const wrapper = mount(
             <FormRenderer
                 schema={{ fields: [{ name: 'desc', component: 'description', Content: () => <SubWatchDescription id="1" /> }] }}
-                initialValues={{ applications: [], source: { is_super_key: 'true' } }}
+                initialValues={{ applications: [], source: { app_creation_workflow: 'account_authorization' } }}
             />
         );
 
