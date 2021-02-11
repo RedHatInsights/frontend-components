@@ -8,6 +8,7 @@ import ValuePopover from '../../../sourceFormRenderer/components/ValuePopover';
 import RendererContext from '@data-driven-forms/react-form-renderer/dist/esm/renderer-context';
 import mount from '../../__mocks__/mount';
 import { FormattedMessage } from 'react-intl';
+import { NO_APPLICATION_VALUE } from '../../../utilities/stringConstants';
 
 describe('SourceWizardSummary component', () => {
     describe('should render correctly', () => {
@@ -61,6 +62,27 @@ describe('SourceWizardSummary component', () => {
         });
 
         it('openshift', () => {
+            const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token', NO_APPLICATION_VALUE) }/>);
+
+            const data = getListData(wrapper);
+
+            expect(data).toEqual(
+                [
+                    [ 'Name', 'openshift' ],
+                    [ 'Application', 'Not selected' ],
+                    [ 'Source type', 'OpenShift Container Platform' ],
+                    [ 'Authentication type', 'Token' ],
+                    [ 'Token', '●●●●●●●●●●●●' ],
+                    [ 'URL', 'neznam.cz' ],
+                    [ 'Verify SSL', 'Enabled' ],
+                    [ 'SSL Certificate', 'authority' ]
+                ]
+            );
+
+            expect(wrapper.find(Alert)).toHaveLength(0);
+        });
+
+        it('openshift - NO_APPLICATION_VALUE set, ignore it', () => {
             const wrapper = mount(<SourceWizardSummary { ...initialProps } formOptions={ formOptions('openshift', 'token') }/>);
 
             const data = getListData(wrapper);

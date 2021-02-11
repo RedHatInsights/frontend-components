@@ -8,6 +8,7 @@ import componentMapper from '@data-driven-forms/pf4-component-mapper/dist/esm/co
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 
 import EnhancedRadio from '../../../sourceFormRenderer/components/EnhancedRadio';
+import { NO_APPLICATION_VALUE } from '../../../utilities/stringConstants';
 
 describe('EnhancedRadio', () => {
     let onSubmit;
@@ -102,7 +103,9 @@ describe('EnhancedRadio', () => {
         });
         wrapper.update();
 
-        expect(onSubmit).toHaveBeenCalledWith({});
+        expect(onSubmit).toHaveBeenCalledWith({
+            radio: NO_APPLICATION_VALUE
+        });
         onSubmit.mockReset();
 
         await act(async() => {
@@ -123,7 +126,7 @@ describe('EnhancedRadio', () => {
         onSubmit.mockReset();
     });
 
-    it('unselect app type when source type does not support it', async () => {
+    it('select first app type when source type does not support the current selection', async () => {
         const mutator = (option, formOptions) => {
             if (formOptions.getState().values.source_type === 'aws') {
                 if (option.value === 'second-option') {
@@ -189,6 +192,7 @@ describe('EnhancedRadio', () => {
         wrapper.update();
 
         expect(onSubmit).toHaveBeenCalledWith({
+            radio: '',
             source_type: 'some-value'
         });
         onSubmit.mockReset();
