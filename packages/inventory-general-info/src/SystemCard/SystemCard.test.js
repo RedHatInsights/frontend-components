@@ -194,5 +194,33 @@ describe('SystemCard', () => {
                 }
             );
         });
+
+        it('should handle click on cpu flags identifiers', () => {
+            const store = mockStore({
+                ...initialState,
+                systemProfileStore: {
+                    systemProfile: {
+                        loaded: true,
+                        ...testProperties,
+                        cpu_flags: [ 'flag_1', 'flag_2' ]
+                    }
+                }
+            });
+            const handleClick = jest.fn();
+
+            const wrapper = mount(<SystemCard store={ store } handleClick={handleClick}/>);
+            wrapper.find('dd a').last().simulate('click');
+            expect(handleClick).toHaveBeenCalledWith(
+                'CPU flags',
+                {
+                    cells: [{
+                        title: 'flag name',
+                        transforms: expect.any(Array)
+                    }],
+                    filters: [{ type: 'textual' }],
+                    rows: [ [ 'flag_1' ], [ 'flag_2' ] ]
+                }
+            );
+        });
     });
 });

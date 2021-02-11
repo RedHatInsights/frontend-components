@@ -22,7 +22,8 @@ it('propertiesSelector should return correct data', () => {
         sockets: 1,
         coresPerSocket: 1,
         ramSize: '5 MB',
-        storage: []
+        storage: [],
+        cpuFlags: []
     });
 });
 
@@ -60,8 +61,7 @@ it('biosSelector should return correct data', () => {
     expect(biosSelector(biosTest)).toEqual({
         vendor: 'test-vendor',
         version: 'test-version',
-        releaseDate: '04/01/2014',
-        csm: []
+        releaseDate: '04/01/2014'
     });
 });
 
@@ -69,8 +69,7 @@ it('biosSelector - no data', () => {
     expect(biosSelector()).toEqual({
         vendor: undefined,
         version: undefined,
-        releaseDate: undefined,
-        csm: undefined
+        releaseDate: undefined
     });
 });
 
