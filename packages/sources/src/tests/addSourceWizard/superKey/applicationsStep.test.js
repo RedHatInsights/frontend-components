@@ -6,6 +6,7 @@ import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/comp
 import applicationsStep from '../../../addSourceWizard/superKey/applicationsStep';
 import applicationTypes from '../../helpers/applicationTypes';
 import SubWatchDescription from '../../../addSourceWizard/descriptions/SubWatchDescription';
+import { NO_APPLICATION_VALUE } from '../../../utilities/stringConstants';
 
 describe('applicationsStep', () => {
     it('generates applications step', () => {
@@ -36,7 +37,7 @@ describe('applicationsStep', () => {
                     label: <span className="ins-c-sources__wizard--rhel-mag-label">RHEL management <Label className="pf-u-ml-sm" color="purple">Bundle</Label></span>,
                     value: '5'
                 },
-                { description: undefined, label: 'Topological Inventory', value: '3' }, { label: 'No application', value: '' }]
+                { description: undefined, label: 'Topological Inventory', value: '3' }, { label: 'No application', value: NO_APPLICATION_VALUE }]
         );
 
     });

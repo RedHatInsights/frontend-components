@@ -8,6 +8,7 @@ import { injectAuthFieldsInfo, injectEndpointFieldsInfo, getAdditionalSteps, sho
 import ValuePopover from './ValuePopover';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import { COST_MANAGEMENT_APP_NAME } from '../../api/constants';
+import { NO_APPLICATION_VALUE } from '../../utilities/stringConstants';
 
 const alertMapper = (appName, sourceType, intl) => {
     if (appName === COST_MANAGEMENT_APP_NAME && sourceType !== 'google') {
@@ -212,7 +213,12 @@ const SourceWizardSummary = ({ sourceTypes, applicationTypes, showApp, showAuthT
                         description={display_name}
                     />
                 ) }
-                { !skipEndpoint && authType && showAuthType && values.source.is_super_key !== 'true' && !values.application?.application_type_id && (
+                { !skipEndpoint
+                && authType
+                && showAuthType
+                && values.source.is_super_key !== 'true'
+                && (!values.application?.application_type_id || values.application?.application_type_id === NO_APPLICATION_VALUE)
+                && (
                     <DesctiptionListItem
                         term={intl.formatMessage({
                             id: 'wizard.authenticationType',

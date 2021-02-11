@@ -90,8 +90,8 @@ describe('SourceWizardSummary component', () => {
             expect(data).toEqual(
                 [
                     [ 'Name', 'openshift' ],
-                    [ 'Application', 'Not selected' ],
                     [ 'Source type', 'OpenShift Container Platform' ],
+                    [ 'Application', 'Not selected' ],
                     [ 'Authentication type', 'Token' ],
                     [ 'Token', '●●●●●●●●●●●●' ],
                     [ 'URL', 'neznam.cz' ],

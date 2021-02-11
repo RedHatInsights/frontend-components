@@ -8,7 +8,7 @@ const SuperKeyCredentials = ({ sourceTypes }) => {
 
     const values = getState().values;
 
-    return renderForm(generateSuperKeyFields(values.source_type, sourceTypes));
+    return renderForm(generateSuperKeyFields(sourceTypes, values.source_type));
 };
 
 SuperKeyCredentials.propTypes = {
