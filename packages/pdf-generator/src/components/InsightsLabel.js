@@ -41,7 +41,7 @@ const labelMapper = {
 
 const InsightsLabel = ({ variant, label, icon, ...props }) => {
     let { bgColor, iconColor, iconPath, width, text, textColor } = labelMapper[variant];
-    
+
     width = props.width ?? width;
 
     return <View style={appliedStyles.flexRow} {...props}>
@@ -53,7 +53,7 @@ const InsightsLabel = ({ variant, label, icon, ...props }) => {
                 borderRadius: 30
             }}
         />
-        {icon && 
+        {icon &&
             <Canvas
                 style={{
                     left: -width + 7,
@@ -80,7 +80,7 @@ const InsightsLabel = ({ variant, label, icon, ...props }) => {
 InsightsLabel.propTypes = {
     variant: PropTypes.number,
     label: PropTypes.string,
-    icon: PropTypes.bool 
+    icon: PropTypes.bool
 };
 
 InsightsLabel.defaultProps = {
