@@ -40,7 +40,7 @@ const FilterChips = ({ className, filters, onDelete }) => {
                     </Chip>
                 </ChipGroup>
             )) }
-            { filters.length > 0 && <Button variant="link" onClick={ (event) => onDelete(event, filters, true) }>Clear filters</Button> }
+            { filters.length > 0 && <Button variant="link" onClick={ (event) => onDelete(event, filters, true) }>Reset filters</Button> }
         </span>
     );
 };

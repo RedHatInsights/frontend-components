@@ -107,7 +107,7 @@ exports[`FilterChips component should render 1`] = `
     onClick={[Function]}
     variant="link"
   >
-    Clear filters
+    Reset filters
   </Button>
 </span>
 `;
