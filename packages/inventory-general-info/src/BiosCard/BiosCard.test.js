@@ -47,38 +47,4 @@ describe('BiosCard', () => {
         const wrapper = render(<BiosCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
-
-    it('should interact correctly with data', () => {
-        const onClick = jest.fn();
-        const store = mockStore({
-            systemProfileStore: {
-                systemProfile: {
-                    ...initialState.systemProfileStore.systemProfile,
-                    cpu_flags: [ 'one' ]
-                }
-            }
-        });
-        const wrapper = mount(<BiosCard store={ store } handleClick={ onClick } />);
-        wrapper.find('a').first().simulate('click', {
-            preventDefault: () => undefined
-        });
-        expect(onClick).toHaveBeenCalled();
-    });
-
-    it('should interact correctly with data', () => {
-        const onClick = jest.fn();
-        const store = mockStore({
-            systemProfileStore: {
-                systemProfile: {
-                    ...initialState.systemProfileStore.systemProfile,
-                    cpu_flags: [ 'one' ]
-                }
-            }
-        });
-        const wrapper = mount(<BiosCard store={ store } />);
-        wrapper.find('a').first().simulate('click', {
-            preventDefault: () => undefined
-        });
-        expect(onClick).not.toHaveBeenCalled();
-    });
 });

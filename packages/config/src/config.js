@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+let rewriteLineCounter = 0;
 
 module.exports = ({
     port,
@@ -10,7 +11,8 @@ module.exports = ({
     https,
     mode,
     appName,
-    useFileHash = true
+    useFileHash = true,
+    betaEnv = 'ci'
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
@@ -142,7 +144,24 @@ module.exports = ({
             inline: true,
             disableHostCheck: true,
             historyApiFallback: true,
-            writeToDisk: true
+            writeToDisk: true,
+            proxy: betaEnv ? {
+                [`https://${betaEnv}.foo.redhat.com:1337/beta`]: {
+                    target: `http${https ? 's' : ''}://localhost:${port || 8002}`,
+                    pathRewrite: function(path) {
+                        const pathRewrite = path.replace(/^\/beta\//, '/');
+                        if (rewriteLineCounter === 0) {
+                            // eslint-disable-next-line max-len
+                            console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]Warning, automatic beta rewrites are deprecated.`, 'Please use deployment configuration to use beta env: https://github.com/RedHatInsights/frontend-starter-app/pull/411');
+                            rewriteLineCounter += 1;
+                        }
+
+                        console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]PROXY: Rewriting from path to beta to stable:`, path, '->', pathRewrite);
+                        rewriteLineCounter += 1;
+                        return pathRewrite;
+                    }
+                }
+            } : undefined
         }
     };
 };

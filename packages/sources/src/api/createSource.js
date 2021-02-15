@@ -2,6 +2,7 @@ import { handleError } from './handleError';
 
 import { getSourcesApi } from './index';
 import { checkAppAvailability } from './getApplicationStatus';
+import { NO_APPLICATION_VALUE } from '../utilities/stringConstants';
 
 export const parseUrl = url => {
     if (!url) {
@@ -57,7 +58,7 @@ export const doCreateSource = async (formData, sourceTypes, timetoutedApps = [])
             promises.push(Promise.resolve(undefined));
         }
 
-        if (formData.application && formData.application.application_type_id) {
+        if (formData.application && formData.application.application_type_id && formData.application.application_type_id !== NO_APPLICATION_VALUE) {
             const applicationData = {
                 ...formData.application,
                 source_id: sourceDataOut.id

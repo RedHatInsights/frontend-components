@@ -5,6 +5,8 @@ import get from 'lodash/get';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import Radio from '@data-driven-forms/pf4-component-mapper/dist/esm/radio';
 
+import { NO_APPLICATION_VALUE } from '../../utilities/stringConstants';
+
 const EnhancedRadio = ({ options, mutator, ...props }) => {
     const formOptions = useFormApi();
 
@@ -19,11 +21,11 @@ const EnhancedRadio = ({ options, mutator, ...props }) => {
         if (
             selectedType &&
             (!selectedApp || !newOptions.map(({ value }) => value).includes(selectedApp))
-            && newOptions.length === 1
+            && newOptions.filter(option => option.value && option.value !== NO_APPLICATION_VALUE).length === 1
         ) {
             formOptions.change(props.name, newOptions[0].value);
         } else if (!newOptions.map(({ value }) => value).includes(selectedApp)) {
-            formOptions.change(props.name, undefined);
+            formOptions.change(props.name, NO_APPLICATION_VALUE);
         }
     }, [ selectedType ]);
 

@@ -5,6 +5,7 @@ import { COST_MANAGEMENT_APP } from '../helpers/applicationTypes';
 import * as api from '../../api/index';
 import * as errorHandling from '../../api/handleError';
 import * as checkApp from '../../api/getApplicationStatus';
+import { NO_APPLICATION_VALUE } from '../../utilities/stringConstants';
 
 describe('doCreateSource', () => {
     const HOST = 'mycluster.net';
@@ -151,6 +152,35 @@ describe('doCreateSource', () => {
         it('create source with no app', async () => {
             const FORM_DATA = {
                 ...INITIAL_VALUES
+            };
+            const EXPECTED_RESULT = {
+                id: CREATED_SOURCE_ID,
+                endpoint: [
+                    { ...CREATE_EDNPOINT_DATA_OUT }
+                ],
+                applications: [ undefined ]
+            };
+
+            api.getSourcesApi = () => mocks;
+
+            const result = await doCreateSource(FORM_DATA, sourceTypes);
+
+            expect(result).toEqual(EXPECTED_RESULT);
+
+            expect(createSource).toHaveBeenCalledWith(EXPECTED_CREATE_SOURCE_ARG);
+            expect(createEndpoint).toHaveBeenCalledWith(EXPECTED_CREATE_ENDPOINT_SOURCE_ARG);
+            expect(createAuthentication).toHaveBeenCalledWith(EXPECTED_AUTHENTICATION_SOURCE_ARG);
+            expect(createApplication).not.toHaveBeenCalled();
+            expect(patchSource).not.toHaveBeenCalled();
+            expect(createAuthApp).not.toHaveBeenCalled();
+            expect(checkAppMock).toHaveBeenCalledWith(CREATE_EDNPOINT_DATA_OUT.id, undefined, undefined, 'getEndpoint');
+            expect(checkAvailabilitySource).toHaveBeenCalledWith(CREATE_SOURCE_DATA_OUT.id);
+        });
+
+        it('create source with no app - ignore NO_APPLICATION_VALUE', async () => {
+            const FORM_DATA = {
+                ...INITIAL_VALUES,
+                application: { application_type_id: NO_APPLICATION_VALUE }
             };
             const EXPECTED_RESULT = {
                 id: CREATED_SOURCE_ID,

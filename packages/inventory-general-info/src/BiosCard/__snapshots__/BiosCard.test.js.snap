@@ -76,22 +76,6 @@ exports[`BiosCard should render correctly - no data 1`] = `
              
           </div>
         </dd>
-        <dt
-          class=""
-          data-pf-content="true"
-        >
-          Compatibility Support Module
-        </dt>
-        <dd
-          class=""
-          data-pf-content="true"
-        >
-          <div
-            class="ins-c-skeleton ins-c-skeleton__sm"
-          >
-             
-          </div>
-        </dd>
       </dl>
     </div>
   </div>
@@ -162,22 +146,6 @@ exports[`BiosCard should render correctly with data - wrong date 1`] = `
         >
           Not available
         </dd>
-        <dt
-          class=""
-          data-pf-content="true"
-        >
-          Compatibility Support Module
-        </dt>
-        <dd
-          class=""
-          data-pf-content="true"
-        >
-          <a
-            href="http://localhost:5000//csm"
-          >
-            1 CSM
-          </a>
-        </dd>
       </dl>
     </div>
   </div>
@@ -247,22 +215,6 @@ exports[`BiosCard should render correctly with data 1`] = `
           data-pf-content="true"
         >
           01 Apr 2014
-        </dd>
-        <dt
-          class=""
-          data-pf-content="true"
-        >
-          Compatibility Support Module
-        </dt>
-        <dd
-          class=""
-          data-pf-content="true"
-        >
-          <a
-            href="http://localhost:5000//csm"
-          >
-            1 CSM
-          </a>
         </dd>
       </dl>
     </div>

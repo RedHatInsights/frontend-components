@@ -14,7 +14,8 @@ export const propertiesSelector = ({
     cores_per_socket,
     ramSize,
     disk_devices,
-    sap_sids
+    sap_sids,
+    cpu_flags
 } = {}, { facts } = { }) => ({
     cpuNumber: number_of_cpus || facts?.rhsm?.CPU_CORES,
     sockets: number_of_sockets || facts?.rhsm?.CPU_SOCKETS,
@@ -30,7 +31,8 @@ export const propertiesSelector = ({
         ...type && safeParser(type, 'mounttype')
     }),
     ),
-    sapIds: sap_sids
+    sapIds: sap_sids,
+    cpuFlags: cpu_flags
 });
 
 export const operatingSystem = ({
@@ -50,13 +52,11 @@ export const operatingSystem = ({
 export const biosSelector = ({
     bios_vendor,
     bios_version,
-    bios_release_date,
-    cpu_flags
+    bios_release_date
 } = {}) => ({
     vendor: bios_vendor,
     version: bios_version,
-    releaseDate: bios_release_date,
-    csm: cpu_flags
+    releaseDate: bios_release_date
 });
 
 export const infrastructureSelector = ({
