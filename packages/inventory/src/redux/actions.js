@@ -65,8 +65,9 @@ export const loadEntities = (items = [], { filters, ...config }, { showTags } = 
                 ...item.id ? item : { id: item },
                 ...results.find(({ id }) => id === item || id === item.id) || {}
             })) : results,
-            page: config.page || (data && data.page),
-            perPage: config.perPage || (data && data.perPage),
+            page: config.page || (data?.page),
+            // eslint-disable-next-line camelcase
+            per_page: config.per_page || (data?.per_page),
             hideFilters: config.hideFilters
         })),
         meta: {
