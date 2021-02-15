@@ -17,6 +17,7 @@ const PDFDocument = ({
     style,
     title,
     reportName,
+    groupName,
     size,
     orientation,
     allPagesHaveTitle,
@@ -38,6 +39,9 @@ const PDFDocument = ({
                         </Text>
                     </View>
                     <View style={appliedStyles.reportNameWrapper}>
+                        <Text style={ appliedStyles.groupName }>
+                            {groupName}
+                        </Text>
                         {(allPagesHaveTitle || key === 0) && (
                             <Text style={[ appliedStyles.reportName, appliedStyles.displayFont ]}>
                                 {reportName} {type}
@@ -105,7 +109,8 @@ PDFDocument.propTypes = {
         [PropTypes.string]: PropTypes.any
     }),
     allPagesHaveTitle: PropTypes.bool,
-    footer: PropTypes.node
+    footer: PropTypes.node,
+    groupName: PropTypes.string
 };
 PDFDocument.defaultProps = {
     size: 'A4',
