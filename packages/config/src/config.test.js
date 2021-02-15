@@ -76,7 +76,8 @@ describe('should create dummy config with no options', () => {
             inline: true,
             disableHostCheck: true,
             historyApiFallback: true,
-            writeToDisk: true
+            writeToDisk: true,
+            proxy: expect.any(Object)
         });
     });
 });
