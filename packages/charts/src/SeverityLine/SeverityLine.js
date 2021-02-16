@@ -45,9 +45,9 @@ const SeverityLine = ({ title, value, className, tooltipMessage, config, chartPr
 
 SeverityLine.propTypes = {
     value: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
+    title: PropTypes.node.isRequired,
     className: PropTypes.string,
-    tooltipMessage: PropTypes.string,
+    tooltipMessage: PropTypes.node,
     config: PropTypes.shape({
         height: PropTypes.number,
         width: PropTypes.number
