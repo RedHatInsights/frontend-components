@@ -61,6 +61,10 @@ export default (style = {}) => StyleSheet.create({
         fontSize: 28,
         color: chart_color_red_100.value
     },
+    groupName: {
+        fontSize: 16,
+        color: chart_color_red_100.value
+    },
     largeSpacing: {
         margin: '30 0'
     },
