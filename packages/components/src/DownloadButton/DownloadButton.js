@@ -32,7 +32,7 @@ class DownloadButton extends Component {
 
     render() {
         const { isOpen } = this.state;
-        const { extraItems, onSelect, isDisabled, ...props } = this.props;
+        const { extraItems, onSelect, isDisabled, tooltipText, ...props } = this.props;
         return <React.Fragment>
             {this.conditionallyTooltip(<Dropdown
                 { ...props }

@@ -67,7 +67,7 @@ export const useTagsFilter = (
                 {
                     value: '',
                     label: !state.loaded ?
-                        <span> <Spinner size="md" /> </span> :
+                        <span key="no-tags-tooltip"> <Spinner size="md" /> </span> :
                         <div className="ins-c-tagfilter__no-tags"> No tags available </div>,
                     isDisabled: true,
                     className: 'ins-c-tagfilter__tail'
