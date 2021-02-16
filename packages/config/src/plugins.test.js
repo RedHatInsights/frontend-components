@@ -11,7 +11,7 @@ describe('plugins generations, no option', () => {
     });
 
     it('should generate correct template path for HtmlWebpackPlugin', () => {
-        expect(enabledPlugins[HTML_WEBPACK].options.template).toBe('/src/index.html');
+        expect(enabledPlugins[HTML_WEBPACK].userOptions.template).toBe('/src/index.html');
     });
 });
 
@@ -19,7 +19,7 @@ describe('rootFolder', () => {
     const enabledPlugins = plugins({ rootFolder: '/test/folder' });
 
     it('should generate correct template path for HtmlWebpackPlugin', () => {
-        expect(enabledPlugins[HTML_WEBPACK].options.template).toBe('/test/folder/src/index.html');
+        expect(enabledPlugins[HTML_WEBPACK].userOptions.template).toBe('/test/folder/src/index.html');
     });
 });
 
@@ -36,7 +36,7 @@ describe('appDeployment', () => {
 
 it('htmlPlugin should update', () => {
     const enabledPlugins = plugins({ htmlPlugin: { title: 'myTitle' } });
-    expect(enabledPlugins[HTML_WEBPACK].options.title).toBe('myTitle');
+    expect(enabledPlugins[HTML_WEBPACK].userOptions.title).toBe('myTitle');
 });
 
 it('replacePlugin should update', () => {
