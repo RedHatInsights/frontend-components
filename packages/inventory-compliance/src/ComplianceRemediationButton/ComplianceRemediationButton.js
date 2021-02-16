@@ -43,7 +43,8 @@ class ComplianceRemediationButton extends React.Component {
         const { allSystems, selectedRules } = this.props;
         const result = { systems: [], issues: [] };
         allSystems.forEach(async (system) => {
-            result.systems.push(system.id);
+            system.supported === true && result.systems.push(system.id);
+
             if (selectedRules.length !== 0) {
                 result.issues.push(this.rulesWithRemediations(selectedRules, system));
             } else {
