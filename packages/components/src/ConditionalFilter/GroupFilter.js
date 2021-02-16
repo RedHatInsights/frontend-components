@@ -299,7 +299,7 @@ class Group extends Component {
                             {showMore.items[0].label}
                         </Button>
                     </SelectGroup>
-                    : <Fragment value="" />}
+                    : <span hidden value=""></span>}
             </Select> }
         </Fragment>);
     }
