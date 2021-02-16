@@ -241,6 +241,10 @@ exports[`Group - component render should render correctly placeholder 1`] = `
         </SelectOption>
       </SelectGroup>
     </div>
+    <span
+      hidden={true}
+      value=""
+    />
   </Select>
 </Fragment>
 `;
@@ -469,6 +473,10 @@ exports[`Group - component render should render correctly with items - isDisable
         </SelectOption>
       </SelectGroup>
     </div>
+    <span
+      hidden={true}
+      value=""
+    />
   </Select>
 </Fragment>
 `;
@@ -697,6 +705,10 @@ exports[`Group - component render should render correctly with items 1`] = `
         </SelectOption>
       </SelectGroup>
     </div>
+    <span
+      hidden={true}
+      value=""
+    />
   </Select>
 </Fragment>
 `;
@@ -925,6 +937,10 @@ exports[`Group - component render should render correctly with items and default
         </SelectOption>
       </SelectGroup>
     </div>
+    <span
+      hidden={true}
+      value=""
+    />
   </Select>
 </Fragment>
 `;
@@ -1153,6 +1169,10 @@ exports[`Group - component render should render correctly with items and selecte
         </SelectOption>
       </SelectGroup>
     </div>
+    <span
+      hidden={true}
+      value=""
+    />
   </Select>
 </Fragment>
 `;
