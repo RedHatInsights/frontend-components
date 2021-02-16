@@ -13,14 +13,15 @@ module.exports = ({
     useFileHash = true,
     betaEnv = 'ci',
     sassPrefix,
-    deployment
+    deployment,
+    isProd
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
-        mode: mode || (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
-        devtool: 'source-map',
+        mode: mode || (isProd ? 'production' : 'development'),
+        devtool: isProd ? 'source-map' : 'cheap-module-source-map',
         optimization: {
-            minimize: (process.env.NODE_ENV || mode) === 'production',
+            minimize: isProd || mode === 'production',
             splitChunks: {
                 chunks: 'all',
                 maxInitialRequests: Infinity,
@@ -28,7 +29,7 @@ module.exports = ({
                 cacheGroups: {
                     reactVendor: {
                         test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                        name: 'reactvendor'
+                        name: 'reactVendor'
                     },
                     pfVendor: {
                         test: /[\\/]node_modules[\\/](@patternfly)[\\/]/,
@@ -72,7 +73,7 @@ module.exports = ({
             }, {
                 test: /\.s?[ac]ss$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader'
                     },
@@ -124,8 +125,7 @@ module.exports = ({
             alias: {
                 customReact: 'react',
                 PFReactCore: '@patternfly/react-core',
-                PFReactTable: '@patternfly/react-table',
-                buffer: 'buffer'
+                PFReactTable: '@patternfly/react-table'
             },
             fallback: {
                 path: require.resolve('path-browserify'),

@@ -45,6 +45,8 @@ module.exports = ({
         ...modules || []
     ] });
 
+    const MiniCssExtractPlugin = new MiniCssExtractPlugin();
+
     return [
         SourceMapsPlugin,
         ExtractCssWebpackPlugin,

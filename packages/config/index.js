@@ -22,14 +22,15 @@ const getAppEntry = (rootFolder, isProd) => {
 };
 
 module.exports = (configurations) => {
+    const isProd = configurations.isProd || process.env.NODE_ENV === 'production';
     const { insights } = require(`${configurations.rootFolder}/package.json`);
     const gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
-    const appDeployment = configurations.deployment || ((process.env.NODE_ENV === 'production' && betaBranhces.includes(gitBranch)) ?
+    const appDeployment = configurations.deployment || ((isProd && betaBranhces.includes(gitBranch)) ?
         'beta/apps' :
         'apps');
 
     const publicPath = `/${appDeployment}/${insights.appname}/`;
-    const appEntry = getAppEntry(configurations.rootFolder, process.env.NODE_ENV === 'production');
+    const appEntry = getAppEntry(configurations.rootFolder, isProd);
 
     /* eslint-disable no-console */
     if (configurations.debug) {
