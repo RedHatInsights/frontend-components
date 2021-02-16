@@ -1,6 +1,4 @@
 /* global require, module */
-const { resolve } = require('path');
-const { writeFileSync, mkdirSync } = require('fs');
 
 class ChunkMapper {
     constructor(options) {
@@ -19,8 +17,8 @@ class ChunkMapper {
                         ...(name === runtime
                             ? {
                                 entry: Array.from(files).map(item => `${prefix}${item}`).filter((file, _index, array) => {
-                                    if (array.find(item => RegExp('\\.hot-update\\.js$').test(item))) {
-                                        return RegExp('\\.hot-update\\.js$').test(file);
+                                    if (array.find(item => !RegExp('\\.hot-update\\.js$').test(item))) {
+                                        return !RegExp('\\.hot-update\\.js$').test(file);
                                     }
 
                                     return true;
