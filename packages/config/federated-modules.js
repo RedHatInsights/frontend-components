@@ -7,12 +7,13 @@ module.exports = ({
     shared = [],
     debug,
     moduleName,
-    useFileHash = true
+    useFileHash = true,
+    exclude = []
 }) => {
     const { dependencies, insights } = require(resolve(root, './package.json')) || {};
     const appName = moduleName || (insights && insights.appname);
 
-    const sharedDeps = [
+    let sharedDeps = [
         { lodash: { singleton: true, ...dependencies.lodash && { requiredVersion: dependencies.lodash } } },
         { axios: { singleton: true, ...dependencies.axios && { requiredVersion: dependencies.axios } } },
         ...dependencies.redux ? [{ redux: { singleton: true, requiredVersion: dependencies.redux } }] : [],
@@ -53,12 +54,17 @@ module.exports = ({
         }] : []
     ];
 
+    sharedDeps = sharedDeps.filter(entry => !exclude.includes(Object.keys(entry)[0]));
+
     if (debug) {
         console.log('Using package at path: ', resolve(root, './package.json'));
         console.log('Using appName: ', appName);
         console.log(`Using ${exposes ? 'custom' : 'default'} exposes`);
         console.log('Number of custom shared modules is: ', shared.length);
         console.log('Number of default shared modules is: ', sharedDeps.length);
+        if (exclude.length > 0) {
+            console.log('Excluding default packages', exclude);
+        }
     }
 
     return new ModuleFederationPlugin({
