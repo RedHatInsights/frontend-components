@@ -12,7 +12,8 @@ module.exports = ({
     mode,
     appName,
     useFileHash = true,
-    betaEnv = 'ci'
+    betaEnv = 'ci',
+    sassPrefix
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
@@ -91,7 +92,7 @@ module.exports = ({
                                  * Context class is equal to app name and that class ass added to root element via the chrome-render-loader.
                                  */
                                 if (relativePath.match(/^src/)) {
-                                    return `.${appName}{\n${content}\n}`;
+                                    return `${sassPrefix || `.${appName}`}{\n${content}\n}`;
                                 }
 
                                 return content;
