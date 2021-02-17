@@ -92,7 +92,7 @@ module.exports = ({
                                  * Context class is equal to app name and that class ass added to root element via the chrome-render-loader.
                                  */
                                 if (relativePath.match(/^src/)) {
-                                    return `.${appName}${sassPrefix ? `, .${sassPrefix}` : ''}{\n${content}\n}`;
+                                    return `${sassPrefix || `.${appName}`}{\n${content}\n}`;
                                 }
 
                                 return content;
