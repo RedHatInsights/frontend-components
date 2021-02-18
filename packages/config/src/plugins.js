@@ -22,7 +22,8 @@ module.exports = ({
     htmlPlugin,
     replacePlugin,
     insights,
-    modules
+    modules,
+    plugins
 } = {}) => {
     const HtmlWebpackPlugin = new(require('html-webpack-plugin'))({
         title: 'My App',
@@ -52,6 +53,7 @@ module.exports = ({
         HtmlReplaceWebpackPlugin,
         WebpackHotModuleReplacement,
         ProvidePlugin,
-        ChunkMapper
+        ChunkMapper,
+        ...(plugins || [])
     ];
 };
