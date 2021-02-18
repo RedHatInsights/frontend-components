@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 let rewriteLineCounter = 0;
 
