@@ -9,7 +9,7 @@ export const filterVendorAppTypes = (sourceTypes) => {
 
     return ({ supported_source_types }) => supported_source_types.find(type =>
         activeVendor === CLOUD_VENDOR
-            ? sourceTypes.find(({ name }) => type === name)?.vendor !== REDHAT_VENDOR
+            ? (sourceTypes.find(({ name }) => type === name)?.vendor || REDHAT_VENDOR) !== REDHAT_VENDOR
             : sourceTypes.find(({ name }) => type === name)?.vendor === REDHAT_VENDOR
     );
 };
