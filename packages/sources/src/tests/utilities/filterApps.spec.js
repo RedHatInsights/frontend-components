@@ -50,6 +50,22 @@ describe('filterApps', () => {
             ]);
         });
 
+        it('filters CLOUD source types when only cloud source types - when type is not, filter the app', () => {
+            const onlyCloudTypes = [
+                { id: '1', name: 'azure', vendor: 'Microsoft' },
+                { id: '2', name: 'aws', vendor: 'amazon' },
+                { id: '4', name: 'vmware', vendor: 'vmware' }
+            ];
+
+            window.location.search = `activeVendor=${CLOUD_VENDOR}`;
+
+            expect(appTypes.filter(filterVendorAppTypes(onlyCloudTypes))).toEqual([
+                { id: '123', name: 'cost', supported_source_types: [ 'aws' ] },
+                { id: '13', name: 'sub watch', supported_source_types: [ 'azure' ] },
+                { id: '9089', name: 'topology', supported_source_types: [ 'openshift', 'vmware' ] }
+            ]);
+        });
+
         it('filters RED HAT source types', () => {
             window.location.search = `activeVendor=${REDHAT_VENDOR}`;
 
