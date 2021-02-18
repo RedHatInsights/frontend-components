@@ -5,7 +5,7 @@ const fs = require('fs');
 const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
     branch: true
 });
-const betaBranhces = ['master', 'qa-beta', 'ci-beta', 'prod-beta', 'main', 'devel'];
+const betaBranches = ['master', 'qa-beta', 'ci-beta', 'prod-beta', 'main', 'devel'];
 
 const getAppEntry = (rootFolder, isProd) => {
     const jsAppEntry = isProd ? `${rootFolder}/src/entry.js` : `${rootFolder}/src/entry-dev.js`;
@@ -25,19 +25,21 @@ module.exports = (configurations) => {
     const isProd = configurations.isProd || process.env.NODE_ENV === 'production';
     const { insights } = require(`${configurations.rootFolder}/package.json`);
     const gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
-    const appDeployment = configurations.deployment || ((isProd && betaBranhces.includes(gitBranch)) ?
+    const appDeployment = configurations.deployment || ((isProd && betaBranches.includes(gitBranch)) ?
         'beta/apps' :
         'apps');
 
     const publicPath = `/${appDeployment}/${insights.appname}/`;
-    const appEntry = getAppEntry(configurations.rootFolder, isProd);
+    const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
+    const standalonePath = configurations.standalonePath || '../insights-standalone';
 
     /* eslint-disable no-console */
     if (configurations.debug) {
         console.log('~~~Using variables~~~');
         console.log(`Root folder: ${configurations.root}`);
+        console.log(`Is production: ${isProd}`);
         console.log(`Current branch: ${gitBranch}`);
-        console.log(`Beta branches: ${betaBranhces}`);
+        console.log(`Beta branches: ${betaBranches}`);
         console.log(`Using deployments: ${appDeployment}`);
         console.log(`Public path: ${publicPath}`);
         console.log(`App entry: ${appEntry}`);
@@ -52,13 +54,14 @@ module.exports = (configurations) => {
             insights,
             publicPath,
             appEntry,
-            appName: insights.appname
+            appName: insights.appname,
         }),
         plugins: plugins({
             ...configurations,
             appDeployment,
             insights,
-            publicPath
+            publicPath,
+            standalonePath
         })
     };
 };

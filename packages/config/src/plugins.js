@@ -1,3 +1,5 @@
+const { resolve } = require('path');
+const { readFileSync } = require('fs');
 const { SourceMapDevToolPlugin, HotModuleReplacementPlugin } = require('webpack');
 const ProvidePlugin = new(require('webpack').ProvidePlugin)({
     process: 'process/browser.js',
@@ -11,7 +13,8 @@ const SourceMapsPlugin = new SourceMapDevToolPlugin({
 });
 const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
     chunkFilename: 'css/[name].[contenthash].css',
-    filename: 'css/[name].[contenthash].css'
+    filename: 'css/[name].[contenthash].css',
+    ignoreOrder: true
 });
 const CleanWebpackPlugin = new(require('clean-webpack-plugin').CleanWebpackPlugin)({ cleanStaleWebpackAssets: false });
 const WebpackHotModuleReplacement = new HotModuleReplacementPlugin();
@@ -23,7 +26,9 @@ module.exports = ({
     replacePlugin,
     insights,
     modules,
-    plugins
+    plugins,
+    isStandalone,
+    standalonePath
 } = {}) => {
     const HtmlWebpackPlugin = new(require('html-webpack-plugin'))({
         title: 'My App',
@@ -37,6 +42,14 @@ module.exports = ({
             pattern: '@@env',
             replacement: appDeployment || ''
         },
+        ...isStandalone ? [{
+            pattern: /<\s*esi:include\s+src\s*=\s*"([^"]+)"\s*\/\s*>/gm,
+            replacement(_match, file) {
+                file = file.split('/').pop();
+                const snippet = resolve(standalonePath, 'repos', 'insights-chrome-build', 'snippets', file);
+                return readFileSync(snippet);
+            }
+        }] : [],
         ...replacePlugin || []
     ]);
 
@@ -45,15 +58,14 @@ module.exports = ({
         ...modules || []
     ] });
 
-    const MiniCssExtractPlugin = new MiniCssExtractPlugin();
-
     return [
-        SourceMapsPlugin,
+        // SourceMapsPlugin,
         ExtractCssWebpackPlugin,
         CleanWebpackPlugin,
         HtmlWebpackPlugin,
         HtmlReplaceWebpackPlugin,
-        WebpackHotModuleReplacement,
+        // WebpackHotModuleReplacement,
+        // ESLintPlugin,
         ProvidePlugin,
         ChunkMapper,
         ...(plugins || [])

@@ -2,6 +2,47 @@
 const path = require('path');
 let rewriteLineCounter = 0;
 
+
+function getProxyPaths({
+    betaEnv,
+    port,
+    isStandalone,
+    standalonePort,
+    proxyConfig
+}) {
+  if (proxyConfig) {
+      return proxyConfig;
+  }
+  if (isStandalone) {
+      return [{
+          context: ['/api', '/beta/apps/chrome', '/apps/chrome', '/config', '/silent-check-sso'],
+          target: `http://localhost:${standalonePort || 3101}`,
+          secure: false,
+          changeOrigin: true
+      }];
+  }
+  if (betaEnv) {
+      return {
+          [`https://${betaEnv}.foo.redhat.com:1337/beta`]: {
+            target: `https://localhost:${port || 8002}`,
+            pathRewrite: function(path) {
+                const pathRewrite = path.replace(/^\/beta\//, '/');
+                if (rewriteLineCounter === 0) {
+                    // eslint-disable-next-line max-len
+                    console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]Warning, automatic beta rewrites are deprecated.`, 'Please use deployment configuration to use beta env: https://github.com/RedHatInsights/frontend-starter-app/pull/411');
+                    rewriteLineCounter += 1;
+                }
+
+                console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]PROXY: Rewriting from path to beta to stable:`, path, '->', pathRewrite);
+                rewriteLineCounter += 1;
+                return pathRewrite;
+            }
+          }
+      };
+  }
+  return undefined;
+}
+
 module.exports = ({
     port,
     publicPath,
@@ -14,7 +55,10 @@ module.exports = ({
     betaEnv = 'ci',
     sassPrefix,
     deployment,
-    isProd
+    isProd,
+    isStandalone,
+    standalonePort,
+    proxyConfig
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
@@ -22,6 +66,7 @@ module.exports = ({
         devtool: isProd ? 'source-map' : 'cheap-module-source-map',
         optimization: {
             minimize: isProd || mode === 'production',
+            runtimeChunk: true,
             splitChunks: {
                 chunks: 'all',
                 maxInitialRequests: Infinity,
@@ -146,23 +191,7 @@ module.exports = ({
             disableHostCheck: true,
             historyApiFallback: true,
             writeToDisk: true,
-            proxy: !deployment && betaEnv ? {
-                [`https://${betaEnv}.foo.redhat.com:1337/beta`]: {
-                    target: `http${https ? 's' : ''}://localhost:${port || 8002}`,
-                    pathRewrite: function(path) {
-                        const pathRewrite = path.replace(/^\/beta\//, '/');
-                        if (rewriteLineCounter === 0) {
-                            // eslint-disable-next-line max-len
-                            console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]Warning, automatic beta rewrites are deprecated.`, 'Please use deployment configuration to use beta env: https://github.com/RedHatInsights/frontend-starter-app/pull/421/files');
-                            rewriteLineCounter += 1;
-                        }
-
-                        console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]PROXY: Rewriting from path to beta to stable:`, path, '->', pathRewrite);
-                        rewriteLineCounter += 1;
-                        return pathRewrite;
-                    }
-                }
-            } : undefined
+            proxy: getProxyPaths({betaEnv, port, isStandalone, standalonePort, proxyConfig})
         }
     };
 };
