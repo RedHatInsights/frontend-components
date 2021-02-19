@@ -1,30 +1,49 @@
 /* eslint-disable camelcase */
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 let rewriteLineCounter = 0;
 
 
 function getProxyPaths({
     betaEnv,
-    port,
+    port = 8002,
     isStandalone,
     standalonePort,
+    publicPath,
     proxyConfig
 }) {
   if (proxyConfig) {
       return proxyConfig;
   }
   if (isStandalone) {
-      return [{
-          context: ['/api', '/beta/apps/chrome', '/apps/chrome', '/config', '/silent-check-sso'],
-          target: `http://localhost:${standalonePort || 3101}`,
-          secure: false,
-          changeOrigin: true
-      }];
+      return [
+          {
+              context: [
+                  '/api',
+                  '/apps/chrome',
+                  '/beta/apps/chrome',
+                  '/config',
+                  '/beta/config',
+                  '/silent-check-sso',
+                  '/beta/silent-check-sso'
+              ],
+              target: `http://localhost:${standalonePort || 3101}`,
+              secure: false,
+              changeOrigin: true
+          },
+          {
+            // for fed-mods.json
+            context: [`/beta${publicPath}`],
+            target: `http://localhost:${port}`,
+            pathRewrite: path => path.replace(/^\/beta/, ''),
+            secure: false
+          }
+      ];
   }
   if (betaEnv) {
       return {
           [`https://${betaEnv}.foo.redhat.com:1337/beta`]: {
-            target: `https://localhost:${port || 8002}`,
+            target: `https://localhost:${port}`,
             pathRewrite: function(path) {
                 const pathRewrite = path.replace(/^\/beta\//, '/');
                 if (rewriteLineCounter === 0) {
@@ -54,7 +73,6 @@ module.exports = ({
     useFileHash = true,
     betaEnv = 'ci',
     sassPrefix,
-    deployment,
     isProd,
     isStandalone,
     standalonePort,
@@ -119,9 +137,7 @@ module.exports = ({
                 test: /\.s?[ac]ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader'
-                    },
+                    'css-loader',
                     {
                         /**
                          * Second sass loader used for scoping the css with class name.
@@ -184,14 +200,14 @@ module.exports = ({
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,
-            hot: true,
+            //hot: true,
             port: port || 8002,
             https: https || false,
             inline: true,
             disableHostCheck: true,
             historyApiFallback: true,
             writeToDisk: true,
-            proxy: getProxyPaths({betaEnv, port, isStandalone, standalonePort, proxyConfig})
+            proxy: getProxyPaths({betaEnv, port, isStandalone, standalonePort, publicPath, proxyConfig})
         }
     };
 };

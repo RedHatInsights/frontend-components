@@ -31,12 +31,12 @@ module.exports = (configurations) => {
 
     const publicPath = `/${appDeployment}/${insights.appname}/`;
     const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
-    const standalonePath = configurations.standalonePath || '../insights-standalone';
+    const standalonePath = configurations.standalonePath || require.resolve('insights-standalone/package.json').replace('package.json', '');
 
     /* eslint-disable no-console */
     if (configurations.debug) {
         console.log('~~~Using variables~~~');
-        console.log(`Root folder: ${configurations.root}`);
+        console.log(`Root folder: ${configurations.rootFolder}`);
         console.log(`Is production: ${isProd}`);
         console.log(`Current branch: ${gitBranch}`);
         console.log(`Beta branches: ${betaBranches}`);

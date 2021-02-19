@@ -12,20 +12,21 @@ class ChunkMapper {
             compilation.chunks.forEach(({ name, files, runtime }) => {
                 const modules = Array.isArray(this.options.modules) ? this.options.modules : [ this.options.modules ];
                 if (modules.find((oneEntry) => RegExp(`${oneEntry}$`).test(runtime))) {
-                    this.config[runtime] = {
-                        ...(this.config[runtime] || {}),
-                        ...(name === runtime
-                            ? {
-                                entry: Array.from(files).map(item => `${prefix}${item}`).filter((file, _index, array) => {
-                                    if (array.find(item => !RegExp('\\.hot-update\\.js$').test(item))) {
-                                        return !RegExp('\\.hot-update\\.js$').test(file);
-                                    }
+                    files = Array.from(files).map(item => `${prefix}${item}`);
+                    this.config[runtime] = this.config[runtime] || {};
+                    if (name === runtime) {
+                      this.config[runtime].entry = this.config[runtime].entry || [];
+                      this.config[runtime].entry.push(...files.filter((file, _index, array) => {
+                          if (array.find(item => !RegExp('\\.hot-update\\.js$').test(item))) {
+                              return !RegExp('\\.hot-update\\.js$').test(file);
+                          }
 
-                                    return true;
-                                })
-                            } : {
-                                modules: [ ...(this.config[runtime].modules || []), ...Array.from(files).map((item) => `${prefix}${item}`) ]
-                            })
+                          return true;
+                      }));
+                    }
+                    else {
+                      this.config[runtime].modules = this.config[runtime].modules || [];
+                      this.config[runtime].modules.push(...files)
                     };
                 }
             });
