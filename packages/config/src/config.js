@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { getProxyPaths: getStandalonePaths } = require('@redhat-cloud-services/insights-standalone');
 let rewriteLineCounter = 0;
 
-
 function getProxyPaths({
     betaEnv,
     port,
@@ -13,32 +12,35 @@ function getProxyPaths({
     publicPath,
     proxyConfig
 }) {
-  if (proxyConfig) {
-      return proxyConfig;
-  }
-  if (isStandalone) {
-      return getStandalonePaths(standalonePort, publicPath, port);
-  }
-  if (betaEnv) {
-      return {
-          [`https://${betaEnv}.foo.redhat.com:1337/beta`]: {
-            target: `https://localhost:${port}`,
-            pathRewrite: function(path) {
-                const pathRewrite = path.replace(/^\/beta\//, '/');
-                if (rewriteLineCounter === 0) {
-                    // eslint-disable-next-line max-len
-                    console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]Warning, automatic beta rewrites are deprecated.`, 'Please use deployment configuration to use beta env: https://github.com/RedHatInsights/frontend-starter-app/pull/411');
-                    rewriteLineCounter += 1;
-                }
+    if (proxyConfig) {
+        return proxyConfig;
+    }
 
-                console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]PROXY: Rewriting from path to beta to stable:`, path, '->', pathRewrite);
-                rewriteLineCounter += 1;
-                return pathRewrite;
+    if (isStandalone) {
+        return getStandalonePaths(standalonePort, publicPath, port);
+    }
+
+    if (betaEnv) {
+        return {
+            [`https://${betaEnv}.foo.redhat.com:1337/beta`]: {
+                target: `https://localhost:${port}`,
+                pathRewrite: function(path) {
+                    const pathRewrite = path.replace(/^\/beta\//, '/');
+                    if (rewriteLineCounter === 0) {
+                    // eslint-disable-next-line max-len
+                        console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]Warning, automatic beta rewrites are deprecated.`, 'Please use deployment configuration to use beta env: https://github.com/RedHatInsights/frontend-starter-app/pull/411');
+                        rewriteLineCounter += 1;
+                    }
+
+                    console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]PROXY: Rewriting from path to beta to stable:`, path, '->', pathRewrite);
+                    rewriteLineCounter += 1;
+                    return pathRewrite;
+                }
             }
-          }
-      };
-  }
-  return undefined;
+        };
+    }
+
+    return undefined;
 }
 
 module.exports = ({
@@ -186,7 +188,7 @@ module.exports = ({
             disableHostCheck: true,
             historyApiFallback: true,
             writeToDisk: true,
-            proxy: getProxyPaths({betaEnv, port, isStandalone, standalonePort, publicPath, proxyConfig})
+            proxy: getProxyPaths({ betaEnv, port, isStandalone, standalonePort, publicPath, proxyConfig })
         }
     };
 };
