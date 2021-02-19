@@ -1,5 +1,5 @@
 function jsVarName(s) {
-  return s
+    return s
     // Camel case dashes
     .replace(/-(\w)/g, (_, match) => match.toUpperCase())
     // Remove leading digits
