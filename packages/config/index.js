@@ -31,7 +31,7 @@ module.exports = (configurations) => {
 
     const publicPath = `/${appDeployment}/${insights.appname}/`;
     const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
-    const standalonePath = configurations.standalonePath || require.resolve('@redhat-cloud-services/insights-standalone/package.json').replace('package.json', '');
+    const chromePath = configurations.chromePath || require.resolve('@redhat-cloud-services/insights-standalone/package.json').replace('package.json', 'repos/insights-chrome-build');
 
     /* eslint-disable no-console */
     if (configurations.debug) {
@@ -61,7 +61,7 @@ module.exports = (configurations) => {
             appDeployment,
             insights,
             publicPath,
-            standalonePath
+            chromePath
         })
     };
 };

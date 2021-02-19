@@ -1,10 +1,9 @@
-const { resolve } = require('path');
-const { readFileSync } = require('fs');
 const { ProvidePlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
+const { getHtmlReplacements } = require('@redhat-cloud-services/insights-standalone');
 const ChunkMapperPlugin = require('../chunk-mapper');
 
 module.exports = ({
@@ -16,7 +15,7 @@ module.exports = ({
     modules,
     plugins,
     isStandalone,
-    standalonePath
+    chromePath
 } = {}) => {
     return [
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
@@ -35,14 +34,7 @@ module.exports = ({
                 pattern: '@@env',
                 replacement: appDeployment || ''
             },
-            ...isStandalone ? [{
-                pattern: /<\s*esi:include\s+src\s*=\s*"([^"]+)"\s*\/\s*>/gm,
-                replacement(_match, file) {
-                    file = file.split('/').pop();
-                    const snippet = resolve(standalonePath, 'repos/insights-chrome-build/snippets', file);
-                    return readFileSync(snippet);
-                }
-            }] : [],
+            ...isStandalone ? getHtmlReplacements(chromePath) : [],
             ...replacePlugin || []
         ]),
         new ChunkMapperPlugin(),
