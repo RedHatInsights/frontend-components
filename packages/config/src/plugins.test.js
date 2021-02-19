@@ -7,7 +7,7 @@ describe('plugins generations, no option', () => {
     const enabledPlugins = plugins();
 
     it('should generate plugins', () => {
-        expect(enabledPlugins.length).toBe(9);
+        expect(enabledPlugins.length).toBe(8);
     });
 
     it('should generate correct template path for HtmlWebpackPlugin', () => {

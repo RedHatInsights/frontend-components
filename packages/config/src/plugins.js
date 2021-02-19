@@ -1,5 +1,4 @@
 const { SourceMapDevToolPlugin, HotModuleReplacementPlugin } = require('webpack');
-const ESLintPlugin = new(require('eslint-webpack-plugin'))();
 const ProvidePlugin = new(require('webpack').ProvidePlugin)({
     process: 'process/browser.js',
     Buffer: [ 'buffer', 'Buffer' ]
@@ -23,7 +22,8 @@ module.exports = ({
     htmlPlugin,
     replacePlugin,
     insights,
-    modules
+    modules,
+    plugins
 } = {}) => {
     const HtmlWebpackPlugin = new(require('html-webpack-plugin'))({
         title: 'My App',
@@ -52,8 +52,8 @@ module.exports = ({
         HtmlWebpackPlugin,
         HtmlReplaceWebpackPlugin,
         WebpackHotModuleReplacement,
-        ESLintPlugin,
         ProvidePlugin,
-        ChunkMapper
+        ChunkMapper,
+        ...(plugins || [])
     ];
 };

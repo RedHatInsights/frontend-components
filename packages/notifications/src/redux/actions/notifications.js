@@ -13,3 +13,9 @@ export const removeNotification = index => ({
 export const clearNotifications = () => ({
     type: CLEAR_NOTIFICATIONS
 });
+
+export default {
+    addNotification,
+    removeNotification,
+    clearNotifications
+};
