@@ -17,6 +17,7 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme",
     "dependencies": {
+        "@redhat-cloud-services/insights-standalone": "^0.0.1",
         "assert": "^2.0.0",
         "babel-loader": "^8.2.1",
         "browserify-zlib": "^0.2.0",
@@ -36,7 +37,6 @@
         "sass-loader": "^10.1.0",
         "source-map-loader": "^1.1.2",
         "stream-browserify": "^3.0.0",
-        "style-loader": "^2.0.0",
         "ts-loader": "^8.0.11",
         "util": "^0.12.3",
         "webpack": "^5.6.0",

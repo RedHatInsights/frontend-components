@@ -1,12 +1,13 @@
 /* eslint-disable camelcase */
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { getProxyPaths: getStandalonePaths } = require('@redhat-cloud-services/insights-standalone');
 let rewriteLineCounter = 0;
 
 
 function getProxyPaths({
     betaEnv,
-    port = 8002,
+    port,
     isStandalone,
     standalonePort,
     publicPath,
@@ -16,29 +17,7 @@ function getProxyPaths({
       return proxyConfig;
   }
   if (isStandalone) {
-      return [
-          {
-              context: [
-                  '/api',
-                  '/apps/chrome',
-                  '/beta/apps/chrome',
-                  '/config',
-                  '/beta/config',
-                  '/silent-check-sso',
-                  '/beta/silent-check-sso'
-              ],
-              target: `http://localhost:${standalonePort || 3101}`,
-              secure: false,
-              changeOrigin: true
-          },
-          {
-            // for fed-mods.json
-            context: [`/beta${publicPath}`],
-            target: `http://localhost:${port}`,
-            pathRewrite: path => path.replace(/^\/beta/, ''),
-            secure: false
-          }
-      ];
+      return getStandalonePaths(standalonePort, publicPath, port);
   }
   if (betaEnv) {
       return {
@@ -63,7 +42,7 @@ function getProxyPaths({
 }
 
 module.exports = ({
-    port,
+    port = 8002,
     publicPath,
     appEntry,
     rootFolder,
@@ -200,8 +179,8 @@ module.exports = ({
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,
-            //hot: true,
-            port: port || 8002,
+            // hot: true, // Broken with ModuleFederation. Waiting for https://github.com/webpack/webpack-dev-server/pull/2920 to release
+            port: port,
             https: https || false,
             inline: true,
             disableHostCheck: true,

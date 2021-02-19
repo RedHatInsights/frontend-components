@@ -31,7 +31,7 @@ module.exports = (configurations) => {
 
     const publicPath = `/${appDeployment}/${insights.appname}/`;
     const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
-    const standalonePath = configurations.standalonePath || require.resolve('insights-standalone/package.json').replace('package.json', '');
+    const standalonePath = configurations.standalonePath || require.resolve('@redhat-cloud-services/insights-standalone/package.json').replace('package.json', '');
 
     /* eslint-disable no-console */
     if (configurations.debug) {
@@ -54,7 +54,7 @@ module.exports = (configurations) => {
             insights,
             publicPath,
             appEntry,
-            appName: insights.appname,
+            appName: insights.appname
         }),
         plugins: plugins({
             ...configurations,

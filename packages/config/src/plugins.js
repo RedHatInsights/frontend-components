@@ -45,7 +45,6 @@ module.exports = ({
             }] : [],
             ...replacePlugin || []
         ]),
-        // ESLintPlugin,
         new ChunkMapperPlugin(),
         new MiniCssExtractPlugin({
             chunkFilename: 'css/[name].[contenthash].css',
