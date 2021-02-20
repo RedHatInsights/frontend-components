@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 let rewriteLineCounter = 0;
 
@@ -12,7 +11,9 @@ module.exports = ({
     mode,
     appName,
     useFileHash = true,
-    betaEnv = 'ci'
+    betaEnv = 'ci',
+    sassPrefix,
+    deployment
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
@@ -91,7 +92,7 @@ module.exports = ({
                                  * Context class is equal to app name and that class ass added to root element via the chrome-render-loader.
                                  */
                                 if (relativePath.match(/^src/)) {
-                                    return `.${appName}{\n${content}\n}`;
+                                    return `${sassPrefix || `.${appName}`}{\n${content}\n}`;
                                 }
 
                                 return content;
@@ -145,14 +146,14 @@ module.exports = ({
             disableHostCheck: true,
             historyApiFallback: true,
             writeToDisk: true,
-            proxy: betaEnv ? {
+            proxy: !deployment && betaEnv ? {
                 [`https://${betaEnv}.foo.redhat.com:1337/beta`]: {
                     target: `http${https ? 's' : ''}://localhost:${port || 8002}`,
                     pathRewrite: function(path) {
                         const pathRewrite = path.replace(/^\/beta\//, '/');
                         if (rewriteLineCounter === 0) {
                             // eslint-disable-next-line max-len
-                            console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]Warning, automatic beta rewrites are deprecated.`, 'Please use deployment configuration to use beta env: https://github.com/RedHatInsights/frontend-starter-app/pull/411');
+                            console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]Warning, automatic beta rewrites are deprecated.`, 'Please use deployment configuration to use beta env: https://github.com/RedHatInsights/frontend-starter-app/pull/421/files');
                             rewriteLineCounter += 1;
                         }
 
