@@ -3,6 +3,7 @@ export default ({ onChange, value, ...props } = { onChange: () => undefined }) =
     label: 'Description',
     value: 'description',
     filterValues: {
+        'aria-label': 'Description Filter Input',
         value,
         onChange
     }
