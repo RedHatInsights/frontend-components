@@ -57,9 +57,6 @@ notifications:
 remediations:
   - packages/remediations/**/*
 
-sources:
-  - packages/sources/**/*
-
 translations:
   - packages/translations/**/*
 
