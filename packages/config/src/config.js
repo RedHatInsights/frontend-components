@@ -62,7 +62,7 @@ module.exports = ({
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
         mode: mode || (isProd ? 'production' : 'development'),
-        devtool: isProd ? 'source-map' : 'cheap-module-source-map',
+        devtool: isProd ? 'source-map' : 'eval-cheap-module-source-map',
         optimization: {
             minimize: isProd || mode === 'production',
             runtimeChunk: true,
