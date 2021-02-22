@@ -32,7 +32,7 @@ const InventoryDetail = ({
     const loaded = useSelector(({ entityDetails: { loaded } }) => loaded);
     const entity = useSelector(({ entityDetails: { entity } }) => entity);
     useEffect(() => {
-        const currId = inventoryId || location.pathname.split('/')[location.pathname.split('/').length - 1];
+        const currId = inventoryId || location.pathname.replace(/\/$/, '').split('/').pop();
         if (!entity || entity.id !== inventoryId || !loaded) {
             dispatch(loadEntity(currId, { hasItems: true }, { showTags }));
         }
