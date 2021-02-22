@@ -16,7 +16,7 @@ Monorepo of Red Hat Cloud services Components for applications in a React.js env
   * [inventory-vulnerabilities](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-vulnerabilities#readme) - directly imported component with redux store to show vulnerability data
   * [inventory-compliance](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-compliance#readme) - directly imported component with graphql to show compliance data
   * [inventory-insights](https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-insights#readme) - directly imported component to show insights data
-
+* [sources](https://github.com/RedHatInsights/sources-ui/) - Sources Wizard component was moved to Sources UI repository (it's also stored here in `sources_backup` branch)
 ## Generating docs and dev run
 
 First you have to generate MD files from `/packages/components` folder (it takes every JS file and generated MD files from JSDOCs) by running `npm run generate:components:docs`.
