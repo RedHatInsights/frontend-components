@@ -8,7 +8,7 @@ import {
     EXISTING_PLAYBOOK_SELECTED,
     SELECTED_RESOLUTIONS,
     AUTO_REBOOT
-} from './utils';
+} from '../utils';
 
 export const selectPlaybookFields = [{
     name: SELECT_PLAYBOOK,

@@ -8,7 +8,7 @@ import SelectPlaybook from '../../newSteps/selectPlaybook';
 import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-field';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import { act } from 'react-dom/test-utils';
-import { selectPlaybookFields } from '../../schema';
+import { selectPlaybookFields } from '../../NewRemediationWizard/schema';
 import { remediationWizardTestData } from '../testData';
 
 const RendererWrapper = (props) => (

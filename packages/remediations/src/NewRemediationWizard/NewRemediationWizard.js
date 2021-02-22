@@ -5,22 +5,22 @@ import transform from 'lodash/transform';
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
 import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import schemaBuilder from './schema';
-import * as api from './api';
+import * as api from '../api';
 import Wizard from '@data-driven-forms/pf4-component-mapper/dist/esm/wizard';
 import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-field';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
-import SelectPlaybook from './newSteps/selectPlaybook';
-import ReviewActions from './newSteps/reviewActions';
-import IssueResolution from './newSteps/issueResolution';
-import FetchError from './newSteps/fetchError';
-import Review from './newSteps/review';
+import SelectPlaybook from '../newSteps/selectPlaybook';
+import ReviewActions from '../newSteps/reviewActions';
+import IssueResolution from '../newSteps/issueResolution';
+import FetchError from '../newSteps/fetchError';
+import Review from '../newSteps/review';
 import {
     submitRemediation,
     HAS_MULTIPLES,
     SELECTED_RESOLUTIONS,
     EXISTING_PLAYBOOK_SELECTED,
     MANUAL_RESOLUTION
-} from './utils';
+} from '../utils';
 
 const RemediationWizard = ({
     setOpen,

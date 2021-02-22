@@ -1,11 +1,22 @@
-/index.js
-/RemediationButton.js
-/RemediationButton.css
-/remediationsApi.js
-/remediationsApi.css
-/index.css
-/esm
-/cjs
-/*.css
-*.txt
-*.jpg
+# ignore everything in root that will be the destination of build output
+/*
+
+# white list allowed files
+!src
+!src/
+!src/*
+!config
+!config/
+!config/*
+!.npmignore
+!.gitignore
+!babel.config.js
+!LICENSE
+!package.json
+!README.md
+!tsconfig.json
+!pre-publish.js
+!create-styles.js
+
+# Incremental ts info
+tsconfig.tsbuildinfo

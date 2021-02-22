@@ -1,18 +1,19 @@
 {
     "name": "@redhat-cloud-services/frontend-components-remediations",
-    "version": "2.3.10",
+    "version": "3.0.0-beta.2",
     "description": "Remediations components for RedHat Cloud Services project.",
-    "browser": "index.js",
-    "main": "cjs/index.js",
+    "main": "index.js",
     "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "NODE_ENV=production webpack --config config/webpack.config.js && npm run build:js && npm run build:esm",
-        "build:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
-        "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
-        "start": "webpack --watch --config config/webpack.config.js"
+        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
+        "build:js": "BABEL_ENV=cjs babel src --config-file ../../babel.v3.config.js --out-dir ./ --ignore '**/*.test.js','**/tests/*'",
+        "build:esm": "BABEL_ENV=esm babel src --config-file ../../babel.v3.config.js --out-dir ./esm --ignore '**/*.test.js''**/tests/*'",
+        "build:css": "node ../../scripts/build-styles.js",
+        "build:packages": "node ../../scripts/build-packages.js",
+        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
     "repository": {
         "type": "git",
@@ -34,8 +35,8 @@
         "react-redux": ">=5.0.7"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components": "*",
-        "@redhat-cloud-services/frontend-components-utilities": "*",
+        "@redhat-cloud-services/frontend-components": ">=3.0.0",
+        "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "urijs": "^1.19.4"
     }
 }
