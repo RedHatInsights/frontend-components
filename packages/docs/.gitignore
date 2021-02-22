@@ -44,6 +44,5 @@ yarn-error.log*
 /pages/pdf-generator/*.md
 /pages/remediations/*.md
 /pages/rule-components/*.md
-/pages/sources/*.md
 /pages/translations/*.md
 components/navigation/components-navigation.json
