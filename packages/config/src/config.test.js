@@ -27,6 +27,7 @@ describe('should create dummy config with no options', () => {
     test('optimization', () => {
         expect(optimization).toEqual({
             minimize: false,
+            runtimeChunk: true,
             splitChunks: {
                 chunks: 'all',
                 maxInitialRequests: Infinity,
@@ -34,7 +35,7 @@ describe('should create dummy config with no options', () => {
                 cacheGroups: {
                     reactVendor: {
                         test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                        name: 'reactvendor'
+                        name: 'reactVendor'
                     },
                     pfVendor: {
                         test: /[\\/]node_modules[\\/](@patternfly)[\\/]/,
@@ -69,8 +70,6 @@ describe('should create dummy config with no options', () => {
     test('devServer', () => {
         expect(devServer).toEqual({
             contentBase: '/dist',
-            contentBasePublicPath: undefined,
-            hot: true,
             port: 8002,
             https: false,
             inline: true,

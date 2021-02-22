@@ -19,6 +19,7 @@ module.exports = ({
 } = {}) => {
     return [
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+        new ChunkMapperPlugin(),
         new ProvidePlugin({
             process: 'process/browser.js',
             Buffer: [ 'buffer', 'Buffer' ]
@@ -37,7 +38,6 @@ module.exports = ({
             ...isStandalone ? getHtmlReplacements(chromePath) : [],
             ...replacePlugin || []
         ]),
-        new ChunkMapperPlugin(),
         new MiniCssExtractPlugin({
             chunkFilename: 'css/[name].[contenthash].css',
             filename: 'css/[name].[contenthash].css',
