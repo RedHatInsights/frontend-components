@@ -59,9 +59,9 @@ const InventoryTable = forwardRef(({
     return (
         (hasAccess === false && isFullView) ?
             <AccessDenied
-                title="You do not have access to Inventory"
+                title="This application requires Inventory permissions"
                 description={<div>
-                    To view your systems, you must be granted inventory access from your Organization Administrator.
+                    To view the content of this page, you must be granted a minimum of inventory permissions from your Organization Administrator.
                 </div>}
             /> :
             <Fragment>
