@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import { BrowserRouter as Router } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
-import { ConditionalFilter } from '@redhat-cloud-services/frontend-components/components/cjs/ConditionalFilter';
+import { ConditionalFilter } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 
 describe('NoSystemsTable', () => {
     let initialState;

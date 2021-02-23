@@ -7,3 +7,8 @@
 /*.css
 *.txt
 /filters.js
+/shared
+/redux
+/inventoryConnector
+/components
+/api

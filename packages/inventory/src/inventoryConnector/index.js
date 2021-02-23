@@ -1,9 +1,9 @@
 import React from 'react';
-import { AppInfo, InventoryDetail, FullDetail } from './components/detail';
-import { TagWithDialog, RenderWrapper } from './shared';
-import { InventoryTable } from './components/table';
-import * as inventoryFitlers from './components/filters';
-import DetailRenderer from './components/detail/DetailRenderer';
+import { AppInfo, InventoryDetail, FullDetail } from '../components/detail';
+import { TagWithDialog, RenderWrapper } from '../shared';
+import { InventoryTable } from '../components/table';
+import * as inventoryFitlers from '../components/filters';
+import DetailRenderer from '../components/detail/DetailRenderer';
 
 export function inventoryConnector(store, componentsMapper, Wrapper, isRbacEnabled = true) {
     const showInventoryDrawer = Boolean(Wrapper);

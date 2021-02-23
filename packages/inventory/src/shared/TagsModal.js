@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleTagModal, fetchAllTags, loadTags } from '../redux/actions';
-import { TagModal } from '@redhat-cloud-services/frontend-components/components/cjs/TagModal';
+import { toggleTagModal, fetchAllTags } from '../redux/actions';
+import { TagModal } from '@redhat-cloud-services/frontend-components/TagModal';
 import { cellWidth } from '@patternfly/react-table';
 import debounce from 'lodash/debounce';
 import flatten from 'lodash/flatten';
