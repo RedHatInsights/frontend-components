@@ -15,6 +15,7 @@ const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
 });
 const CleanWebpackPlugin = new(require('clean-webpack-plugin').CleanWebpackPlugin)({ cleanStaleWebpackAssets: false });
 const WebpackHotModuleReplacement = new HotModuleReplacementPlugin();
+const jsVarName = require('./jsVarName');
 
 module.exports = ({
     rootFolder,
@@ -41,7 +42,7 @@ module.exports = ({
     ]);
 
     const ChunkMapper = new(require('../chunk-mapper'))({ modules: [
-        ...insights ? [ insights.appname ] : [],
+        ...insights ? [ jsVarName(insights.appname) ] : [],
         ...modules || []
     ] });
 

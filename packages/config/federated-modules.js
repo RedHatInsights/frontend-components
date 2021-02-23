@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const { ModuleFederationPlugin } = require('webpack').container;
+const jsVarName = require('./src/jsVarName');
 
 module.exports = ({
     root,
@@ -11,7 +12,7 @@ module.exports = ({
     exclude = []
 }) => {
     const { dependencies, insights } = require(resolve(root, './package.json')) || {};
-    const appName = moduleName || (insights && insights.appname);
+    const appName = moduleName || (insights && jsVarName(insights.appname));
 
     let sharedDeps = [
         { lodash: { singleton: true, ...dependencies.lodash && { requiredVersion: dependencies.lodash } } },
