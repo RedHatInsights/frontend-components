@@ -1,4 +1,4 @@
-import validate from '../validator';
+import validate from '../validate';
 
 const validData = () => {
     return {

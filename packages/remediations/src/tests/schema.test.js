@@ -1,11 +1,10 @@
 /* eslint-disable camelcase */
-import { issueResolutionNextStep, reviewActionsNextStep } from '../schema';
+import schemaBuilder, { issueResolutionNextStep, reviewActionsNextStep } from '../NewRemediationWizard/schema';
 import {
     EXISTING_PLAYBOOK,
     MANUAL_RESOLUTION,
     EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
-import schemaBuilder from '../schema';
 import { remediationWizardTestData } from './testData';
 
 describe('reviewActionsNextStep', () => {
