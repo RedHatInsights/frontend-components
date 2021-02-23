@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react';
 import { CloseIcon, RedoIcon } from '@patternfly/react-icons';
 import urijs from 'urijs';
-import * as api from './api';
+import * as api from '../api';
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
 
