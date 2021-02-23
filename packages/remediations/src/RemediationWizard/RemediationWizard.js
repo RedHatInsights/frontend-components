@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import keyBy from 'lodash/keyBy';
 import transform from 'lodash/transform';
 
-import * as api from './api';
-import { Wizard } from '@redhat-cloud-services/frontend-components/components/cjs/Wizard';
-import Deferred from '@redhat-cloud-services/frontend-components-utilities/files/Deffered';
-import { remediationUrl } from './utils';
+import * as api from '../api';
+import { Wizard } from '@redhat-cloud-services/frontend-components/Wizard';
+import Deferred from '@redhat-cloud-services/frontend-components-utilities/Deffered';
+import { remediationUrl } from '../utils';
 
-import ExistingOrNew from './steps/ExistingOrNew';
-import ResolutionModeStep from './steps/ResolutionModeStep';
-import IssueResolutionStep from './steps/IssueResolutionStep';
-import SummaryStep from './steps/SummaryStep';
-import LoadingStep from './steps/LoadingStep';
-import ErrorStep from './steps/ErrorStep';
+import ExistingOrNew from '../steps/ExistingOrNew';
+import ResolutionModeStep from '../steps/ResolutionModeStep';
+import IssueResolutionStep from '../steps/IssueResolutionStep';
+import SummaryStep from '../steps/SummaryStep';
+import LoadingStep from '../steps/LoadingStep';
+import ErrorStep from '../steps/ErrorStep';
 
 import './RemediationWizard.scss';
 

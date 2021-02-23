@@ -17,10 +17,10 @@ module.exports = ({
     let sharedDeps = [
         { lodash: { singleton: true, ...dependencies.lodash && { requiredVersion: dependencies.lodash } } },
         { axios: { singleton: true, ...dependencies.axios && { requiredVersion: dependencies.axios } } },
-        ...dependencies.redux ? [{ redux: { singleton: true, requiredVersion: dependencies.redux } }] : [],
+        ...dependencies.redux ? [{ redux: { requiredVersion: dependencies.redux } }] : [],
         ...dependencies.react ? [{ react: { singleton: true, requiredVersion: dependencies.react } }] : [],
         ...dependencies['react-dom'] ? [{ 'react-dom': { singleton: true, requiredVersion: dependencies['react-dom'] } }] : [],
-        ...dependencies['react-router-dom'] ? [{ 'react-router-dom': { singleton: true, requiredVersion: dependencies['react-router-dom'] } }] : [],
+        ...dependencies['react-router-dom'] ? [{ 'react-router-dom': { requiredVersion: dependencies['react-router-dom'] } }] : [],
         ...dependencies['@patternfly/react-table'] ? [{ '@patternfly/react-table': { singleton: true, requiredVersion: dependencies['@patternfly/react-table'] } }] : [],
         ...dependencies['@patternfly/react-core'] ? [{ '@patternfly/react-core': { singleton: true, requiredVersion: dependencies['@patternfly/react-core'] } }] : [],
         ...dependencies['@patternfly/react-core'] ? [{ '@patternfly/react-icons': { singleton: true, requiredVersion: dependencies['@patternfly/react-icons'] } }] : [],
@@ -34,24 +34,21 @@ module.exports = ({
         },
         ...dependencies['@redhat-cloud-services/frontend-components'] ? [{
             '@redhat-cloud-services/frontend-components': {
-                singleton: true,
                 requiredVersion: dependencies['@redhat-cloud-services/frontend-components']
             }
         }] : [],
         ...dependencies['@redhat-cloud-services/frontend-components-utilities'] ? [{
             '@redhat-cloud-services/frontend-components-utilities': {
-                singleton: true,
                 requiredVersion: dependencies['@redhat-cloud-services/frontend-components-utilities']
             }
         }] : [],
         ...dependencies['@redhat-cloud-services/frontend-components-notifications'] ? [{
             '@redhat-cloud-services/frontend-components-notifications': {
-                singleton: true,
                 requiredVersion: dependencies['@redhat-cloud-services/frontend-components-notifications']
             }
         }] : [],
-        ...dependencies['react-redux'] ? [{ 'react-redux': { singleton: true, requiredVersion: dependencies['react-redux'] } }] : [],
-        ...dependencies['redux-promise-middleware'] ? [{ 'redux-promise-middleware': { singleton: true, requiredVersion: dependencies['redux-promise-middleware'] }
+        ...dependencies['react-redux'] ? [{ 'react-redux': { requiredVersion: dependencies['react-redux'] } }] : [],
+        ...dependencies['redux-promise-middleware'] ? [{ 'redux-promise-middleware': { requiredVersion: dependencies['redux-promise-middleware'] }
         }] : []
     ];
 
