@@ -73,11 +73,11 @@ exports[`NoSystemsTable should render correctly - with no access 1`] = `
       <AccessDenied
         description={
           <div>
-            To view the content of this page, you must be granted a minimum of inventory permissions from your Organization Administrator.
+            To view your systems, you must be granted inventory access from your Organization Administrator.
           </div>
         }
         showReturnButton={false}
-        title="This application requires Inventory permissions"
+        title="You do not have access to Inventory"
       />
     </div>
   </ForwardRef>
@@ -96,10 +96,10 @@ exports[`NoSystemsTable should render correctly - with no access and full view 1
   <AccessDenied
     description={
       <div>
-        To view your systems, you must be granted inventory access from your Organization Administrator.
+        To view the content of this page, you must be granted a minimum of inventory permissions from your Organization Administrator.
       </div>
     }
-    title="You do not have access to Inventory"
+    title="This application requires Inventory permissions"
   />
 </ForwardRef>
 `;
