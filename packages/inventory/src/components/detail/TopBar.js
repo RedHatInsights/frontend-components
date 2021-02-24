@@ -5,7 +5,7 @@ import { Split, SplitItem } from '@patternfly/react-core/dist/js/layouts/Split';
 import { Title } from '@patternfly/react-core/dist/js/components/Title';
 import { Button } from '@patternfly/react-core/dist/js/components/Button';
 import { Flex, FlexItem } from '@patternfly/react-core/dist/js/layouts/Flex';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 import {
     Dropdown,
     DropdownItem,

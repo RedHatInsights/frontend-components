@@ -10,3 +10,8 @@ config/
 !/cjs
 !/*.css
 !/filters.js
+!/shared
+!/redux
+!/inventoryConnector
+!/components
+!/api

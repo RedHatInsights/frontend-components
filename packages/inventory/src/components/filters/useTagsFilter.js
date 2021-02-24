@@ -1,4 +1,4 @@
-import { useTagsFilter as tagsFilter } from '@redhat-cloud-services/frontend-components/components/cjs/FilterHooks';
+import { useTagsFilter as tagsFilter } from '@redhat-cloud-services/frontend-components/FilterHooks';
 
 export const useTagsFilter = (
     allTags = [],

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { usePermissions } from '@redhat-cloud-services/frontend-components-utilities/files/RBACHook';
+import { usePermissions } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { Spinner } from '@patternfly/react-core/dist/js/components/Spinner';
 import DetailWrapper from './DetailWrapper';
 import AccessDenied from '../../shared/AccessDenied';

@@ -1,7 +1,7 @@
 import React, { Fragment, forwardRef } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
-import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/TableToolbar';
+import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 import AccessDenied from '../../shared/AccessDenied';

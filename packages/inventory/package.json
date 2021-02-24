@@ -2,21 +2,19 @@
     "name": "@redhat-cloud-services/frontend-components-inventory",
     "version": "2.4.45",
     "description": "Inventory components for RedHat Cloud Services project.",
-    "browser": "index.js",
+    "main": "index.js",
     "module": "esm/index.js",
     "publishConfig": {
         "access": "public"
     },
     "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:umd",
-        "build:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
-        "build:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
-        "build:umd": "NODE_ENV=production webpack --config config/webpack.config.js",
-        "start": "rollup -c ./config/rollup.config.js -w",
-        "start:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js -w --format=cjs --environment FORMAT:cjs",
-        "start:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js -w --environment FORMAT:esm",
-        "start:umd": "webpack --watch --config config/webpack.config.js"
-    },
+      "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
+      "build:js": "BABEL_ENV=cjs babel src --config-file ../../babel.v3.config.js --out-dir ./ --ignore '**/*.test.js','**/tests/*',**/__mock__/*",
+      "build:esm": "BABEL_ENV=esm babel src --config-file ../../babel.v3.config.js --out-dir ./esm --ignore '**/*.test.js','**/tests/*',**/__mock__/*",
+      "build:css": "node ../../scripts/build-styles.js",
+      "build:packages": "node ../../scripts/build-packages.js",
+      "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
+  },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/RedHatInsights/frontend-components.git"
@@ -39,9 +37,9 @@
         "react-content-loader": ">=3.4.1"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components": "^2.0.0",
-        "@redhat-cloud-services/frontend-components-notifications": "^2.0.0",
-        "@redhat-cloud-services/frontend-components-utilities": "^2.0.0",
+        "@redhat-cloud-services/frontend-components": ">=3.0.0",
+        "@redhat-cloud-services/frontend-components-notifications": ">=3.0.0",
+        "@redhat-cloud-services/frontend-components-utilities": ">3.0.0",
         "@redhat-cloud-services/host-inventory-client": "1.0.91",
         "axios": "^0.21.1"
     }
