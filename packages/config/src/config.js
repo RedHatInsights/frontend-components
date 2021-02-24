@@ -13,7 +13,8 @@ module.exports = ({
     useFileHash = true,
     betaEnv = 'ci',
     sassPrefix,
-    deployment
+    deployment,
+    skipChrome2 = false
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
@@ -59,7 +60,8 @@ module.exports = ({
                 test: new RegExp(appEntry),
                 loader: path.resolve(__dirname, './chrome-render-loader.js'),
                 options: {
-                    appName
+                    appName,
+                    skipChrome2
                 }
             }, {
                 test: /src\/.*\.js$/,
