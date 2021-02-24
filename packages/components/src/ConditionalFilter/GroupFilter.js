@@ -259,7 +259,7 @@ class Group extends Component {
                 placeholderText={ placeholder }
                 onClear={this.clearSelection}
                 selections={filterBy === '' ? null : filterBy}
-                { ...(isFilterable || onFilter) && { onFilter: this.customFilter } }
+                { ...(isFilterable || onFilter) && { onFilter: (e) => e && this.customFilter(e) } }
                 { ...groups && groups.length > 0 && { isGrouped: true }}
             >
                 <div className="ins-c-select__scrollable-section" value="">
