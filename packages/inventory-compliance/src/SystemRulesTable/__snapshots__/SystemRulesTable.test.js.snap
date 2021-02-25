@@ -180,6 +180,7 @@ exports[`SystemRulesTable component should render 1`] = `
                 },
               ],
               "ruleObjectsFailed": Array [],
+              "supported": true,
             },
           ]
         }
@@ -1367,6 +1368,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
                 },
               ],
               "ruleObjectsFailed": Array [],
+              "supported": true,
             },
           ]
         }
@@ -1739,6 +1741,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
                 },
               ],
               "ruleObjectsFailed": Array [],
+              "supported": true,
             },
           ]
         }
@@ -2165,6 +2168,7 @@ exports[`SystemRulesTable component should render search results on any page, re
                 },
               ],
               "ruleObjectsFailed": Array [],
+              "supported": true,
             },
           ]
         }
@@ -2582,6 +2586,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
                 },
               ],
               "ruleObjectsFailed": Array [],
+              "supported": true,
             },
           ]
         }
@@ -3677,6 +3682,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                 },
               ],
               "ruleObjectsFailed": Array [],
+              "supported": true,
             },
           ]
         }
@@ -5805,6 +5811,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                 },
               ],
               "ruleObjectsFailed": Array [],
+              "supported": true,
             },
           ]
         }
@@ -6129,6 +6136,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
                 },
               ],
               "ruleObjectsFailed": Array [],
+              "supported": true,
             },
           ]
         }
@@ -7086,6 +7094,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
                 },
               ],
               "ruleObjectsFailed": Array [],
+              "supported": true,
             },
           ]
         }

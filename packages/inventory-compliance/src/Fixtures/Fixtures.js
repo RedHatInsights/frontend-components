@@ -6,6 +6,7 @@ export const remediationsResponse = {
 export const system = {
     id: 'aa9c4497-5707-4233-9e9b-1fded5423ef3',
     name: '3.example.com',
+    supported: true,
     testResultProfiles: [{
         id: '99a661a8-8cb2-4adf-bf01-62f186493c04',
         refId: 'xccdf_org.ssgproject.content_profile_pci-dss',

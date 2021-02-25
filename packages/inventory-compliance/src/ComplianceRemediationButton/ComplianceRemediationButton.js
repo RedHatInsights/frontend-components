@@ -7,8 +7,8 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 
 class ComplianceRemediationButton extends React.Component {
-    formatRule = ({ title, refId }, profile, system) => ({
-        id: `ssg:rhel7|${profile.split('xccdf_org.ssgproject.')[1]}|${refId}`,
+    formatRule = ({ title, refId }, profile, system, majorOsVersion) => ({
+        id: `ssg:rhel${majorOsVersion}|${profile.split('xccdf_org.ssgproject.')[1]}|${refId}`,
         description: title,
         systems: [
             system
@@ -34,16 +34,20 @@ class ComplianceRemediationButton extends React.Component {
             rule.remediationAvailable &&
             this.ruleProfile(rule, system).supported &&
             rule.compliant === false
-        )).map(
-            rule => this.formatRule(rule, this.ruleProfile(rule, system).refId, system.id)
-        );
+        )).map((rule) => {
+            const profile = this.ruleProfile(rule, system);
+            return this.formatRule(
+                rule, profile.refId, system.id, profile.majorOsVersion
+            );
+        });
     }
 
     dataProvider = () => {
         const { allSystems, selectedRules } = this.props;
         const result = { systems: [], issues: [] };
-        allSystems.forEach(async (system) => {
-            system.supported === true && result.systems.push(system.id);
+
+        allSystems.filter((system) => (system.supported)).forEach(async (system) => {
+            result.systems.push(system.id);
 
             if (selectedRules.length !== 0) {
                 result.issues.push(this.rulesWithRemediations(selectedRules, system));
@@ -58,9 +62,15 @@ class ComplianceRemediationButton extends React.Component {
         });
     }
 
+    notEmptyData = async () => {
+        const data = await this.dataProvider();
+        return data.issues.length > 0 && data.systems.length > 0;
+    }
+
     remediationAvailable = () => {
         const { allSystems, selectedRules } = this.props;
         let rules = selectedRules.length ? selectedRules : allSystems.flatMap((system) => system.ruleObjectsFailed);
+
         return rules.some((rule) => (
             rule.remediationAvailable &&
             (
@@ -77,10 +87,9 @@ class ComplianceRemediationButton extends React.Component {
         return (
             <React.Fragment>
                 <RemediationButton
-                    isDisabled={ !this.remediationAvailable() }
+                    isDisabled={ !(this.remediationAvailable() && this.notEmptyData()) }
                     onRemediationCreated={ result => addNotification(result.getNotification()) }
-                    dataProvider={ this.dataProvider }
-                >
+                    dataProvider={ this.dataProvider }>
                     <AnsibeTowerIcon size='sm' color='var(--pf-c-button--m-primary--Color)' />
                     &nbsp;Remediate
                 </RemediationButton>
@@ -94,6 +103,7 @@ ComplianceRemediationButton.propTypes = {
     allSystems: propTypes.arrayOf(propTypes.shape({
         id: propTypes.string,
         name: propTypes.string,
+        supported: propTypes.bool.isRequired,
         profiles: propTypes.arrayOf(propTypes.shape({
             refId: propTypes.string,
             name: propTypes.string,
