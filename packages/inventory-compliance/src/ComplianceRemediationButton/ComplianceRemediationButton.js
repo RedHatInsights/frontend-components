@@ -42,8 +42,9 @@ class ComplianceRemediationButton extends React.Component {
     dataProvider = () => {
         const { allSystems, selectedRules } = this.props;
         const result = { systems: [], issues: [] };
-        allSystems.forEach(async (system) => {
-            system.supported === true && result.systems.push(system.id);
+
+        allSystems.filter((system) => (system.supported)).forEach(async (system) => {
+            result.systems.push(system.id);
 
             if (selectedRules.length !== 0) {
                 result.issues.push(this.rulesWithRemediations(selectedRules, system));
@@ -58,9 +59,15 @@ class ComplianceRemediationButton extends React.Component {
         });
     }
 
+    notEmptyData = async () => {
+        const data = await this.dataProvider();
+        return data.issues.length > 0 && data.systems.length > 0;
+    }
+
     remediationAvailable = () => {
         const { allSystems, selectedRules } = this.props;
         let rules = selectedRules.length ? selectedRules : allSystems.flatMap((system) => system.ruleObjectsFailed);
+
         return rules.some((rule) => (
             rule.remediationAvailable &&
             (
@@ -77,10 +84,9 @@ class ComplianceRemediationButton extends React.Component {
         return (
             <React.Fragment>
                 <RemediationButton
-                    isDisabled={ !this.remediationAvailable() }
+                    isDisabled={ !(this.remediationAvailable() && this.notEmptyData()) }
                     onRemediationCreated={ result => addNotification(result.getNotification()) }
-                    dataProvider={ this.dataProvider }
-                >
+                    dataProvider={ this.dataProvider }>
                     <AnsibeTowerIcon size='sm' color='var(--pf-c-button--m-primary--Color)' />
                     &nbsp;Remediate
                 </RemediationButton>
@@ -94,6 +100,7 @@ ComplianceRemediationButton.propTypes = {
     allSystems: propTypes.arrayOf(propTypes.shape({
         id: propTypes.string,
         name: propTypes.string,
+        supported: propTypes.bool.isRequired,
         profiles: propTypes.arrayOf(propTypes.shape({
             refId: propTypes.string,
             name: propTypes.string,
