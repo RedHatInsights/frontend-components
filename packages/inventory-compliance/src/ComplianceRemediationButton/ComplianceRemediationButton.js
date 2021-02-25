@@ -7,8 +7,8 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 
 class ComplianceRemediationButton extends React.Component {
-    formatRule = ({ title, refId }, profile, system) => ({
-        id: `ssg:rhel7|${profile.split('xccdf_org.ssgproject.')[1]}|${refId}`,
+    formatRule = ({ title, refId }, profile, system, majorOsVersion) => ({
+        id: `ssg:rhel${majorOsVersion}|${profile.split('xccdf_org.ssgproject.')[1]}|${refId}`,
         description: title,
         systems: [
             system
@@ -34,9 +34,12 @@ class ComplianceRemediationButton extends React.Component {
             rule.remediationAvailable &&
             this.ruleProfile(rule, system).supported &&
             rule.compliant === false
-        )).map(
-            rule => this.formatRule(rule, this.ruleProfile(rule, system).refId, system.id)
-        );
+        )).map((rule) => {
+            const profile = this.ruleProfile(rule, system);
+            return this.formatRule(
+                rule, profile.refId, system.id, profile.majorOsVersion
+            );
+        });
     }
 
     dataProvider = () => {
