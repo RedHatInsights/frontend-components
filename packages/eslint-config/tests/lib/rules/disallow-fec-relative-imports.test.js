@@ -32,7 +32,7 @@ ruleTester.run('fec-direct-import', rule, {
                     message: `Avoid using relative imports from @redhat-cloud-services/frontend-components. Use direct import path to X. Module may be found at import X from '@redhat-cloud-services/frontend-components/X'.`
                 }
             ],
-            output: 'import X from "@redhat-cloud-services/frontend-components/X"'
+            output: 'import A from "@redhat-cloud-services/frontend-components/A"\nimport X from "@redhat-cloud-services/frontend-components/X"\nimport Y from "@redhat-cloud-services/frontend-components/Y"\nimport { B } from "@redhat-cloud-services/frontend-components/B"'
         },
         {
             code: 'import { X } from "@redhat-cloud-services/frontend-components"',
@@ -52,3 +52,4 @@ ruleTester.run('fec-direct-import', rule, {
         }
     ]
 });
+
