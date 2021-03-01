@@ -14,10 +14,7 @@ import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
 import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
 import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-/**
- * TO DO Use v3 package once avaiable
- */
-import { RemediationButton } from '@redhat-cloud-services/frontend-components-remediations';
+import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 
 import API from '../Api';
 import PropTypes from 'prop-types';
