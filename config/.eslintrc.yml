@@ -121,3 +121,5 @@ rules:
   yoda:
     - error
     - never
+#  following rule will be enable once we start with clean up pahse
+#  rulesdir/disallow-fec-relative-imports: 2
