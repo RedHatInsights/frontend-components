@@ -1,3 +1,17 @@
+## Migration guide v2 -> v3
+
+### Import paths changes
+
+Do not import any assets from `dist` folder. Direct imports are anow available in the library root.
+```diff
+-import RuleTable, { severity } from '@redhat-cloud-services/rule-components/dist/cjs/RuleTable';
++import RuleTable, { severity } from '@redhat-cloud-services/rule-components/RuleTable';
+```
+
+### Import styles is not required
+
+Importing CSS/SCSS files is not required. Styles will be injected when components are used.
+
 ## Usage
 
 If you want to use rules table component please pass entire dataset from server to it and with columns you'll have the chance to properly show the rows.
@@ -5,10 +19,9 @@ If you want to use rules table component please pass entire dataset from server 
 ```JSX
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import RuleTable, { severity } from '@redhat-cloud-services/rule-components/dist/cjs/RuleTable';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
-import { Battery } from '@redhat-cloud-services/frontend-components/components/Battery';
-import '@redhat-cloud-services/frontend-components/components/Battery.css';
+import RuleTable, { severity } from '@redhat-cloud-services/rule-components/RuleTable';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/DateFormat';
+import { Battery } from '@redhat-cloud-services/frontend-components/Battery';
 import {
     descriptionFilter,
     totalRiskFilter,
@@ -19,7 +32,7 @@ import {
     riskOfChangeFilter,
     ruleStatusFilter,
     impactFilter
-} from '@redhat-cloud-services/rule-components/dist/cjs/RuleFilters';
+} from '@redhat-cloud-services/rule-components/dist/RuleFilters';
 import data from './data.json';
 
 class MyCmp extends Component {
