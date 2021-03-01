@@ -7,7 +7,7 @@ import {
     Document
 } from '@react-pdf/renderer';
 import RHLogo from './Logo';
-import { DateFormat } from '@redhat-cloud-services/frontend-components';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/DateFormat';
 import { customTitle } from '../utils/text';
 import styles from '../utils/styles';
 
