@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-const AsyncInventory = React.lazy(() => import('./AsyncInventory'));
+import InventoryLoadError from './InventoryLoadError';
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
@@ -17,7 +17,7 @@ const BaseInventoryDetailHead = (props) => {
                 appName="chrome"
                 module="./InventoryDetailHead"
                 scope="chrome"
-                ErrorComponent={<AsyncInventory component="InventoryDetailHead" {...props} />}
+                ErrorComponent={<InventoryLoadError component="InventoryDetailHead" {...props} />}
                 ref={props.innerRef}
                 {...props}
             />
@@ -38,7 +38,7 @@ InventoryDetailHead.propTypes = {
 };
 
 InventoryDetailHead.defaultProps = {
-    fallback: <Bullseye><Spinner size="xl" /></Bullseye>
+    fallback: <Bullseye className="pf-u-p-lg"><Spinner size="xl" /></Bullseye>
 };
 
 export default InventoryDetailHead;
