@@ -46,7 +46,13 @@ if (args.includes('-w') || args.includes('--watch')) {
         run();
     }).on('change', () => {
         console.log(`Generating updated MD files`);
-        run();
+        /**
+         * This timeout is required to wait until the file changes are commited.
+         * The FSE is trying to read the file before it was saved and can cause crashes
+         */
+        setTimeout(() => {
+            run();
+        }, 250);
     });
 
 } else {

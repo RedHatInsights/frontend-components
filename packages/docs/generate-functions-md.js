@@ -16,7 +16,6 @@ function createParams(item) {
     let content = '';
     if (item.params) {
         item.params.forEach(param => {
-            console.log(param);
             content = `${content}\n|${param.name}|<code>${param.type.names.join('&124;')}</code>|${param.description}`;
         });
     }
@@ -36,7 +35,6 @@ async function createItemMd(pathname, item) {
         content = `${content}\n## Params\n|Name|Type|Description|\n|---|---|---|${params}\n`;
     }
 
-    console.log(content);
     return fse.writeFile(pathname, content);
 }
 
