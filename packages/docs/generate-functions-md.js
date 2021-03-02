@@ -16,7 +16,7 @@ function createParams(item) {
     let content = '';
     if (item.params) {
         item.params.forEach(param => {
-            content = `${content}\n|${param.name}|<code>${param.type.names.join('&124;')}</code>|${param.description}`;
+            content = `${content}\n|${param.name}|<code>${param.type.names.join('&#124')}</code>|${param.description}`;
         });
     }
 
