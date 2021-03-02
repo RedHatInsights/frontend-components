@@ -38,7 +38,11 @@ function generateComponentsNavigation(components) {
         packageName: key,
         groups: Object.entries(groups).map(([ key, value ]) => ({
             group: key,
-            items: value.sort((a, b) => a.localeCompare(b))
+            items: value.sort((a, b) => {
+                const firsTitle = typeof a === 'object' ? a.title : a;
+                const secondTitle = typeof b === 'object' ? b.title : b
+                return firsTitle.localeCompare(secondTitle);
+            })
         })).sort((a, b) => a.group.localeCompare(b.group))
     })).sort((a, b) => a.packageName.localeCompare(b.packageName));
 }
