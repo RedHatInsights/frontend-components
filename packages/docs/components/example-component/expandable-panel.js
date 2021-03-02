@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
-import { Alert, Button, Toolbar, ToolbarContent, ToolbarItem } from '@patternfly/react-core';
-import { CodeIcon, CopyIcon } from '@patternfly/react-icons';
+import { Alert, Button, Toolbar, ToolbarContent, ToolbarItem, Tooltip } from '@patternfly/react-core';
+import { CodeIcon, CopyIcon, GithubIcon } from '@patternfly/react-icons';
 import CodeHighlight from './code-highlight';
 import createCodeSandboxExample from './create-code-sandbox-template';
 import CodesandboxIcon from './codesandbox-svg-icons';
@@ -44,7 +44,8 @@ const useStyles = createUseStyles({
         backgroundColor: 'transparent !important'
     },
     firstItem: {
-        marginLeft: 'auto'
+        marginLeft: 'auto',
+        display: 'flex'
     },
     imageIconButton: {
         display: 'flex !important',
@@ -57,7 +58,7 @@ const useStyles = createUseStyles({
     }
 });
 
-const ExpandablePanel = ({ sourceCode }) => {
+const ExpandablePanel = ({ sourceCode, source }) => {
     const [ isOpen, setIsOpen ] = useState(false);
     const [ toast, setToast ] = useState(undefined);
     const handleClose = () => setToast(undefined);
@@ -83,27 +84,38 @@ const ExpandablePanel = ({ sourceCode }) => {
             <Toolbar className={classnames('pf-u-p-0 pf-u-mb-md', classes.toolbar)}>
                 <ToolbarContent className="pf-u-p-0">
                     <ToolbarItem className={classes.firstItem}>
-                        <Button variant="plain" onClick={() => setIsOpen(prev => !prev)}>
-                            <CodeIcon className={classnames(classes.iconExpand, {
-                                [classes.inconExpandExpanded]: isOpen
-                            })} />
-                        </Button>
-                        <Button variant="plain" onClick={copyToClipboard}>
-                            <CopyIcon />
-                        </Button>
-                    </ToolbarItem>
-                    <ToolbarItem>
-                        <Button>
-                            GH source link
-                        </Button>
-                    </ToolbarItem>
-                    <ToolbarItem>
-                        <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
-                            <input type="hidden" name="parameters" value={createCodeSandboxExample(sourceCode)} />
-                            <Button className={classes.imageIconButton} type="submit" variant="plain">
-                                <CodesandboxIcon />
+                        <Tooltip content={<p>Open code example</p>}>
+                            <Button variant="plain" onClick={() => setIsOpen(prev => !prev)}>
+                                <CodeIcon className={classnames(classes.iconExpand, {
+                                    [classes.inconExpandExpanded]: isOpen
+                                })} />
                             </Button>
-                        </form>
+                        </Tooltip>
+                        <Tooltip content={<div>Copy code to clipboard</div>}>
+                            <Button variant="plain" onClick={copyToClipboard}>
+                                <CopyIcon />
+                            </Button>
+                        </Tooltip>
+                        <Tooltip content={<div>View source on GitHub</div>}>
+                            <Button
+                                component="a"
+                                target="_blank"
+                                href={`https://github.com/RedHatInsights/frontend-components/tree/master/packages/docs/examples/${source}.js`}
+                                variant="plain"
+                            >
+                                <GithubIcon />
+                            </Button>
+                        </Tooltip>
+                        <Tooltip content={<div>Open example in codesandbox</div>}>
+                            <div>
+                                <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank">
+                                    <input type="hidden" name="parameters" value={createCodeSandboxExample(sourceCode)} />
+                                    <Button className={classes.imageIconButton} type="submit" variant="plain">
+                                        <CodesandboxIcon />
+                                    </Button>
+                                </form>
+                            </div>
+                        </Tooltip>
                     </ToolbarItem>
                 </ToolbarContent>
             </Toolbar>
@@ -115,7 +127,8 @@ const ExpandablePanel = ({ sourceCode }) => {
 };
 
 ExpandablePanel.propTypes = {
-    sourceCode: PropTypes.string.isRequired
+    sourceCode: PropTypes.string.isRequired,
+    source: PropTypes.string.isRequired
 };
 
 export default ExpandablePanel;
