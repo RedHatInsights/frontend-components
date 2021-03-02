@@ -25,7 +25,8 @@ const InventoryDetail = ({
     onBackToListClick,
     showDelete,
     appList,
-    showInventoryDrawer
+    showInventoryDrawer,
+    children
 }) => {
     const { inventoryId } = useParams();
     const dispatch = useDispatch();
@@ -60,6 +61,7 @@ const InventoryDetail = ({
                 showTags={ showTags }
             />
             <FactsInfo loaded={ loaded } entity={ entity } />
+            {children}
         </Fragment>
         }
         <ApplicationDetails onTabSelect={ onTabSelect } appList={ appList } />
@@ -83,7 +85,8 @@ InventoryDetail.propTypes = {
         pageId: PropTypes.string
     })),
     onTabSelect: PropTypes.func,
-    onBackToListClick: PropTypes.func
+    onBackToListClick: PropTypes.func,
+    children: PropTypes.element
 };
 InventoryDetail.defaultProps = {
     actions: [],
