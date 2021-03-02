@@ -12,11 +12,38 @@ function getDescription(item) {
     return item.description;
 }
 
+function escapeHtml(unsafe) {
+    return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+    .replace(/\|/g, '&#124;')
+    .replace(/\*/g, '&#42;');
+}
+
+function getParamName(param) {
+    return escapeHtml(`${param.name}${param.optional ? '' : '*'}`);
+}
+
+function getParamType(param) {
+    return `<code>${escapeHtml(param.type.names.join('|'))}</code>`;
+}
+
+function getParamDefaultValue(param) {
+    return `<code>${escapeHtml(param.defaultvalue ? param.defaultvalue : '')}</code>`;
+}
+
+function getParamDescription(param) {
+    return escapeHtml(param.description || '');
+}
+
 function createParams(item) {
     let content = '';
     if (item.params) {
         item.params.forEach(param => {
-            content = `${content}\n|${param.name}|<code>${param.type.names.join('&#124')}</code>|${param.description}`;
+            content = `${content}\n|${getParamName(param)}|${getParamType(param)}|${getParamDefaultValue(param)}|${getParamDescription(param)}`;
         });
     }
 
@@ -32,7 +59,7 @@ async function createItemMd(pathname, item) {
     }
 
     if (params) {
-        content = `${content}\n## Params\n|Name|Type|Description|\n|---|---|---|${params}\n`;
+        content = `${content}\n## Params\n|Name|Type|Default|Description|\n|---|---|---|---|${params}\n`;
     }
 
     return fse.writeFile(pathname, content);
