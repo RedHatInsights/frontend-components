@@ -30,7 +30,7 @@ const ExampleComponent = ({ source, name }) => {
     <div className={classes.exampleContainer}>
       <Title headingLevel="h2" className={classnames(classes.name, 'pf-u-mt-md', 'pf-u-mb-md')}>{name}</Title>
       {Component && <Card className="pf-u-mb-md"><CardBody><Component /></CardBody></Card>}
-      <ExpandablePanel sourceCode={sourceCode} />
+      <ExpandablePanel source={source} sourceCode={sourceCode} />
     </div>
   )
 }

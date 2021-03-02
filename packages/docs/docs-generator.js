@@ -38,7 +38,8 @@ const propTypeGeneratorMapper = {
     enum: enumGenerator,
     custom: ({ raw }) => raw,
     object: primitiveGenerator,
-    undefined: primitiveGenerator
+    undefined: primitiveGenerator,
+    element: primitiveGenerator
 };
 
 function primitiveGenerator({ name }) {
@@ -46,7 +47,15 @@ function primitiveGenerator({ name }) {
 }
 
 function enumGenerator({ value }) {
-    return value.map(({ value }) => value).join(' &#124; ');
+    if (Array.isArray(value)) {
+        return value.map(({ value }) => value).join(' &#124; ');
+    }
+
+    if (typeof value === 'string') {
+        return value.replace(/\|/gm, '&#124;').replace(/\{/gm, '&#123;').replace(/\}/gm, '&#125;').replace(/\s/gm, '');
+    }
+
+    return value;
 }
 
 function unionGenerator({ value }) {
@@ -85,7 +94,7 @@ function getPropType(propType, file, { description, name }) {
 
         } catch (error) {
             console.warn('\x1b[33m%s\x1b[0m', `Warn: Error while generating prop types in ${file}.`);
-            console.warn('\x1b[33m%s\x1b[0m', JSON.stringify({ rest, value, name }, null, 2));
+            console.warn('\x1b[33m%s\x1b[0m', JSON.stringify({ rest, value, propType, error }, null, 2));
         }
     }
 
