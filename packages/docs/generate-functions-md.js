@@ -1,3 +1,4 @@
+const glob = require('glob');
 const path = require('path');
 const fse = require('fs-extra');
 const sortFile = require('./sort-files');
@@ -36,7 +37,7 @@ function getParamDefaultValue(param) {
 }
 
 function getParamDescription(param) {
-    return escapeHtml(param.description || '');
+    return param.description || '';
 }
 
 function createParams(item) {
@@ -50,12 +51,22 @@ function createParams(item) {
     return content;
 }
 
-async function createItemMd(pathname, item) {
+async function createItemMd(pathname, item, exampleName) {
+    const examples = glob.sync(path.resolve(__dirname, `./examples/${exampleName}/*.js`));
     const description = getDescription(item);
     const params = createParams(item);
     let content = `# ${item.name}\n`;
+
     if (description) {
         content = `${content}\n${description}\n`;
+    }
+
+    if (examples.length > 0) {
+        content = `import ExampleComponent from '@docs/example-component'\n\n${content}`;
+        examples.forEach(example => {
+            const fileName = example.split('/').pop().replace('.js', '');
+            content =  `${content}\n<ExampleComponent source="${exampleName}/${fileName}" name="${fileName.replace('-', ' ')}" />\n`;
+        });
     }
 
     if (params) {
@@ -72,7 +83,10 @@ async function generateMd(file, items) {
         fse.mkdirSync(`${mdDest}/${packageName}`);
     }
 
-    const cmds = items.map(item => createItemMd(`${mdDest}/${packageName}/${name}-${item.name}.md`, item));
+    const cmds = items.map(item => {
+        const exampleName = `${name}-${item.name}`;
+        return createItemMd(`${mdDest}/${packageName}/${exampleName}.md`, item, exampleName);
+    });
     return Promise.all(cmds);
 }
 
