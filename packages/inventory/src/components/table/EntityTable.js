@@ -123,7 +123,7 @@ const EntityTable = ({
 };
 
 EntityTable.propTypes = {
-    variant: PropTypes.oneOf(Object.values(TableVariant || {})),
+    variant: PropTypes.oneOf([ 'compact' ]),
     expandable: PropTypes.bool,
     onExpandClick: PropTypes.func,
     onSort: PropTypes.func,
