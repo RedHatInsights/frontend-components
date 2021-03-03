@@ -32,12 +32,21 @@ function toggleDrawer(state, { payload }) {
     };
 }
 
+function showTagsPending(state) {
+    return {
+        ...state,
+        tagModalLoaded: false
+    };
+}
+
 export default {
     [ACTION_TYPES.LOAD_ENTITIES_PENDING]: () => defaultState,
     [ACTION_TYPES.LOAD_ENTITY_PENDING]: entityDetailPending,
     [ACTION_TYPES.LOAD_ENTITY_FULFILLED]: entityDetailLoaded,
     [APPLICATION_SELECTED]: onApplicationSelected,
     [ACTION_TYPES.LOAD_TAGS]: showTags,
+    [ACTION_TYPES.LOAD_TAGS_PENDING]: showTagsPending,
+    [ACTION_TYPES.LOAD_TAGS_FULFILLED]: showTags,
     [TOGGLE_TAG_MODAL]: toggleTagModal,
     [TOGGLE_DRAWER]: toggleDrawer,
     ...systemIssuesReducer

@@ -31,13 +31,8 @@ const TagsModal = ({
         return entities?.allTagsPagination || statePagination;
     }, shallowEqual);
 
-    const loaded = useSelector(({ entities, entityDetails }) => {
-        if (entityDetails?.entity) {
-            return entityDetails?.loaded;
-        }
+    const loaded = useSelector(({ entities, entityDetails }) => entities?.tagModalLoaded || entityDetails?.tagModalLoaded);
 
-        return entities?.activeSystemTag?.tagsLoaded || (entities || entityDetails)?.allTagsLoaded;
-    });
     const activeSystemTag = useSelector(({ entities, entityDetails }) => entities?.activeSystemTag || entityDetails?.entity);
     const tags = useSelector(({ entities, entityDetails }) => {
         const activeTags = entities?.activeSystemTag?.tags || entityDetails?.entity?.tags;
