@@ -35,6 +35,7 @@ yarn-error.log*
 
 /component-docs.json
 /pages/components/*.md
+/pages/config/*.md
 /pages/utils/*.md
 /pages/charts/*.md
 /pages/inventory/*.md
