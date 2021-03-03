@@ -115,14 +115,14 @@ class TagModal extends Component {
                                 >
                                     {
                                         this.renderTable(
-                                        rows?.[key],
-                                        columns?.[key],
-                                        pagination?.[key],
-                                        loaded?.[key],
-                                        filters?.[key],
-                                        selected?.[key],
-                                        onSelect?.[key],
-                                        onUpdateData?.[key]
+                                            rows?.[key],
+                                            columns?.[key],
+                                            pagination?.[key],
+                                            loaded?.[key],
+                                            filters?.[key],
+                                            selected?.[key],
+                                            onSelect?.[key],
+                                            onUpdateData?.[key]
                                         )
                                     }
                                 </Tab>

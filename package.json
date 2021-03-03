@@ -76,6 +76,7 @@
     "devDependencies": {
         "@babel/cli": "^7.12.10",
         "@babel/core": "^7.12.10",
+        "@babel/eslint-parser": "^7.13.8",
         "@babel/plugin-proposal-class-properties": "^7.8.3",
         "@babel/plugin-proposal-decorators": "^7.8.3",
         "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
@@ -96,7 +97,6 @@
         "@scalprum/react-core": "0.0.7",
         "axios-mock-adapter": "^1.17.0",
         "babel-core": "^7.0.0-bridge.0",
-        "babel-eslint": "^10.1.0",
         "babel-jest": "^24.1.0",
         "babel-loader": "^7.1.4",
         "babel-plugin-lodash": "^3.3.2",
@@ -117,7 +117,7 @@
         "enzyme": "^3.6.0",
         "enzyme-adapter-react-16": "^1.12.1",
         "enzyme-to-json": "^3.3.4",
-        "eslint": "^5.6.0",
+        "eslint": "^7.21.0",
         "eslint-config-prettier": "^3.1.0",
         "eslint-plugin-react": "^7.11.1",
         "eslint-plugin-rulesdir": "^0.1.0",
@@ -185,7 +185,7 @@
         "generate:components:docs": "lerna run --parallel generate:components:docs",
         "playground": "lerna run --parallel start:dev",
         "release:bot": "node ./config/release.js",
-        "lint": "eslint config packages/**/src/",
+        "lint": "eslint packages/**/",
         "watch": "lerna exec --parallel --ignore=@redhat-cloud-services/frontend-components-config --no-private -- npm run build -- --watch"
     },
     "description": "Components for Red Hat Cloud Services",

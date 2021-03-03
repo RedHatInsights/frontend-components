@@ -20,7 +20,7 @@ export const propertiesSelector = ({
     cpuNumber: number_of_cpus || facts?.rhsm?.CPU_CORES,
     sockets: number_of_sockets || facts?.rhsm?.CPU_SOCKETS,
     coresPerSocket: cores_per_socket || (
-      facts?.rhsm?.CPU_CORES && facts?.rhsm?.CPU_CORES && Number(facts?.rhsm?.CPU_CORES, 10) / Number(facts?.rhsm?.CPU_SOCKETS, 10)
+        facts?.rhsm?.CPU_CORES && facts?.rhsm?.CPU_CORES && Number(facts?.rhsm?.CPU_CORES, 10) / Number(facts?.rhsm?.CPU_SOCKETS, 10)
     ),
     ramSize: ramSize || (facts?.rhsm?.MEMORY && `${facts?.rhsm?.MEMORY} GB`),
     storage: disk_devices && disk_devices.map(({ device, label, mount_point, options, type }) => ({
@@ -29,7 +29,7 @@ export const propertiesSelector = ({
         ...mount_point && safeParser(mount_point, 'mountpoint'),
         ...options && safeParser(options, 'options'),
         ...type && safeParser(type, 'mounttype')
-    }),
+    })
     ),
     sapIds: sap_sids,
     cpuFlags: cpu_flags
@@ -65,7 +65,7 @@ export const infrastructureSelector = ({
     network = {}
 } = {}, { facts } = {}) => ({
     type: infrastructure_type || (
-      facts?.rhsm?.IS_VIRTUAL !== undefined && (facts?.rhsm?.IS_VIRTUAL ? 'virtual' : 'physical')
+        facts?.rhsm?.IS_VIRTUAL !== undefined && (facts?.rhsm?.IS_VIRTUAL ? 'virtual' : 'physical')
     ) || undefined,
     vendor: infrastructure_vendor,
     ipv4: network.ipv4,
