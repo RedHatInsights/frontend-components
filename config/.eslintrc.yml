@@ -1,4 +1,4 @@
-parser: babel-eslint
+parser: '@babel/eslint-parser'
 settings:
   react:
     version: '16.0'
@@ -121,5 +121,6 @@ rules:
   yoda:
     - error
     - never
+  no-prototype-builtins: 1
 #  following rule will be enable once we start with clean up pahse
 #  rulesdir/disallow-fec-relative-imports: 2

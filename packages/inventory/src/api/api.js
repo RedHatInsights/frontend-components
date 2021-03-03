@@ -162,6 +162,6 @@ export function getAllTags(search, { filters, pagination, ...options } = { pagin
         (pagination && pagination.page) || 1,
         staleFilter,
         search,
-        registeredWithFilter,
+        registeredWithFilter
     );
 }
