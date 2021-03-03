@@ -168,6 +168,7 @@ export function showTags(state, { payload, meta }) {
     const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity || {};
     return {
         ...state,
+        tagModalLoaded: true,
         activeSystemTag: {
             ...activeSystemTag,
             tags: Object.values(payload.results)[0],
@@ -183,6 +184,7 @@ export function showTagsPending(state, { meta }) {
     const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity || {};
     return {
         ...state,
+        tagModalLoaded: false,
         activeSystemTag: {
             ...activeSystemTag,
             tagsCount: meta.tagsCount,

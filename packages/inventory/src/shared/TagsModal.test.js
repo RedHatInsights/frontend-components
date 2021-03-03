@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import promiseMiddleware from 'redux-promise-middleware';
 import { Provider } from 'react-redux';
@@ -18,7 +18,8 @@ describe('TagsModal', () => {
         mockStore = configureStore([ promiseMiddleware() ]);
         initialState = {
             entities: {
-                showTagDialog: true
+                showTagDialog: true,
+                tagModalLoaded: true
             }
         };
     });
