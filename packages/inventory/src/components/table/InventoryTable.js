@@ -1,7 +1,7 @@
 import React, { Fragment, forwardRef } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
-import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/TableToolbar';
+import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 import AccessDenied from '../../shared/AccessDenied';
@@ -59,9 +59,9 @@ const InventoryTable = forwardRef(({
     return (
         (hasAccess === false && isFullView) ?
             <AccessDenied
-                title="You do not have access to Inventory"
+                title="This application requires Inventory permissions"
                 description={<div>
-                    To view your systems, you must be granted inventory access from your Organization Administrator.
+                    To view the content of this page, you must be granted a minimum of inventory permissions from your Organization Administrator.
                 </div>}
             /> :
             <Fragment>

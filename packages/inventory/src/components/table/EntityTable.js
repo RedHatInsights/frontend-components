@@ -10,7 +10,7 @@ import {
     TableGridBreakpoint,
     TableVariant
 } from '@patternfly/react-table';
-import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/cjs/SkeletonTable';
+import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
 import { createRows, createColumns } from './helpers';
 
 /**
@@ -123,7 +123,7 @@ const EntityTable = ({
 };
 
 EntityTable.propTypes = {
-    variant: PropTypes.oneOf(Object.values(TableVariant || {})),
+    variant: PropTypes.oneOf([ 'compact' ]),
     expandable: PropTypes.bool,
     onExpandClick: PropTypes.func,
     onSort: PropTypes.func,

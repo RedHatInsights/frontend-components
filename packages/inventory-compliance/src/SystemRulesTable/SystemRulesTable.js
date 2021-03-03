@@ -346,7 +346,12 @@ class SystemRulesTable extends React.Component {
                     { remediationsEnabled &&
                         <ToolbarItem>
                             <ComplianceRemediationButton
-                                allSystems={ [{ id: system.id, profiles: system.testResultProfiles, ruleObjectsFailed: [] }] }
+                                allSystems={ [{
+                                    id: system.id,
+                                    profiles: system.testResultProfiles,
+                                    ruleObjectsFailed: [],
+                                    supported: system.supported
+                                }] }
                                 selectedRules={ selectedRulesWithRemediations } />
                         </ToolbarItem>
                     }
@@ -382,7 +387,12 @@ SystemRulesTable.propTypes = {
     profileRules: propTypes.array,
     loading: propTypes.bool,
     hidePassed: propTypes.bool,
-    system: propTypes.object,
+    system: propTypes.shape(
+        {
+            id: propTypes.string.isRequired,
+            supported: propTypes.bool.isRequired
+        }
+    ),
     remediationsEnabled: propTypes.bool,
     tailoringEnabled: propTypes.bool,
     selectedRefIds: propTypes.array,

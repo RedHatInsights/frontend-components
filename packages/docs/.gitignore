@@ -35,6 +35,7 @@ yarn-error.log*
 
 /component-docs.json
 /pages/components/*.md
+/pages/config/*.md
 /pages/utils/*.md
 /pages/charts/*.md
 /pages/inventory/*.md
@@ -44,6 +45,5 @@ yarn-error.log*
 /pages/pdf-generator/*.md
 /pages/remediations/*.md
 /pages/rule-components/*.md
-/pages/sources/*.md
 /pages/translations/*.md
 components/navigation/components-navigation.json

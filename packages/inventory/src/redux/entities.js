@@ -11,9 +11,9 @@ import {
     TOGGLE_TAG_MODAL,
     CONFIG_CHANGED
 } from './action-types';
-import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/cjs/DateFormat';
-import { CullingInformation } from '@redhat-cloud-services/frontend-components/components/cjs/CullingInfo';
+import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/DateFormat';
+import { CullingInformation } from '@redhat-cloud-services/frontend-components/CullingInfo';
 import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
 import TitleColumn from '../components/table/TitleColumn';
@@ -168,6 +168,7 @@ export function showTags(state, { payload, meta }) {
     const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity || {};
     return {
         ...state,
+        tagModalLoaded: true,
         activeSystemTag: {
             ...activeSystemTag,
             tags: Object.values(payload.results)[0],
@@ -183,6 +184,7 @@ export function showTagsPending(state, { meta }) {
     const { tags, ...activeSystemTag } = state.rows ? state.rows.find(({ id }) => meta.systemId === id) : state.entity || {};
     return {
         ...state,
+        tagModalLoaded: false,
         activeSystemTag: {
             ...activeSystemTag,
             tagsCount: meta.tagsCount,

@@ -3,3 +3,4 @@ export { default as SystemRulesTable, selectColumns as selectRulesTableColumns }
 export { default as ComplianceRemediationButton } from './ComplianceRemediationButton';
 export { default as ComplianceEmptyState } from './ComplianceEmptyState';
 export { ChipBuilder, FilterBuilder, FilterConfigBuilder } from './Utilities';
+export { supportedConfigsLink } from './PresentationalComponents/UnsupportedSSGVersion';

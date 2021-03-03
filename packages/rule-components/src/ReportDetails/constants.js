@@ -1,5 +1,4 @@
-import { InsightsLabel } from '@redhat-cloud-services/frontend-components';
-import RiskOfChangeIcon from './RiskOfChangeIcon';
+import { InsightsLabel } from '@redhat-cloud-services/frontend-components/InsightsLabel';
 
 export const totalRiskMeta = [
     {
@@ -21,28 +20,5 @@ export const totalRiskMeta = [
         label: 'Critical',
         description: 'Critical severity desc for total risk',
         IconComponent: InsightsLabel
-    }
-];
-
-export const riskOfChangeMeta = [
-    {
-        label: 'Very Low',
-        description: 'Very Low severity desc for risk of change',
-        IconComponent: RiskOfChangeIcon
-    },
-    {
-        label: 'Low',
-        description: 'Low severity desc for risk of change',
-        IconComponent: RiskOfChangeIcon
-    },
-    {
-        label: 'Moderate',
-        description: 'Moderate severity desc for risk of change',
-        IconComponent: RiskOfChangeIcon
-    },
-    {
-        label: 'High',
-        description: 'High severity desc for risk of change',
-        IconComponent: RiskOfChangeIcon
     }
 ];

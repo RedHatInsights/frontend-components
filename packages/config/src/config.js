@@ -13,12 +13,13 @@ module.exports = ({
     useFileHash = true,
     betaEnv = 'ci',
     sassPrefix,
-    deployment
+    deployment,
+    skipChrome2 = false
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
         mode: mode || (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
-        devtool: 'source-map',
+        devtool: mode === 'production' || process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-cheap-module-source-map',
         optimization: {
             minimize: (process.env.NODE_ENV || mode) === 'production',
             splitChunks: {
@@ -59,7 +60,8 @@ module.exports = ({
                 test: new RegExp(appEntry),
                 loader: path.resolve(__dirname, './chrome-render-loader.js'),
                 options: {
-                    appName
+                    appName,
+                    skipChrome2
                 }
             }, {
                 test: /src\/.*\.js$/,

@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/eslint-config-redhat-cloud-services",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Recommended eslint configuration used in cloud.redhat.com frontend apps.",
     "keywords": [
         "eslint",
@@ -14,6 +14,7 @@
         "eslint-config-prettier": "^6.12.0",
         "eslint-plugin-prettier": "^3.1.4",
         "eslint-plugin-react": "^7.21.4",
+        "eslint-plugin-rulesdir": "^0.1.0",
         "prettier": "^2.1.2"
     },
     "peerDependencies": {

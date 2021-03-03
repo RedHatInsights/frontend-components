@@ -5,7 +5,7 @@ import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import ReviewActions from '../../newSteps/reviewActions';
-import { reviewActionsFields } from '../../schema';
+import { reviewActionsFields } from '../../NewRemediationWizard/schema';
 import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED } from '../../utils';
 import { BodyRow } from '@patternfly/react-table/dist/js/components/Table/base';
 import { remediationWizardTestData } from '../testData';

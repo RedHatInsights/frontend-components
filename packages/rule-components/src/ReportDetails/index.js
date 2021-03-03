@@ -8,14 +8,13 @@ import {
     Title,
     Text
 } from '@patternfly/react-core';
-import { DateFormat } from '@redhat-cloud-services/frontend-components';
 import RuleFeedback, { feedback } from './RuleFeedback';
 import Markdown from '../Markdown';
-import { riskOfChangeMeta, totalRiskMeta } from './constants';
+import { totalRiskMeta } from './constants';
 import RiskDescription from './RiskDescription';
 import doT from 'dot';
-
-export { default as style } from './index.scss';
+import { riskOfChangeMeta } from './RiskOfChangeIcon';
+import './index.scss';
 
 const templateProcessor = (template, definitions) => (
     definitions

@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-compliance",
-    "version": "3.0.2",
+    "version": "3.0.5",
     "description": "Detail part of compliance for RedHat Cloud Services.",
     "module": "esm/index.js",
     "main": "index.js",
@@ -41,7 +41,7 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components": ">=3.0.0",
         "@redhat-cloud-services/frontend-components-notifications": ">=3.0.0",
-        "@redhat-cloud-services/frontend-components-remediations": "*",
+        "@redhat-cloud-services/frontend-components-remediations": ">=3.0.0",
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "@apollo/react-hooks": "^3.1.5",
         "apollo-boost": "^0.4.9",

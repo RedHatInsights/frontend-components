@@ -30,6 +30,7 @@ query System($systemId: String!){
             score
             supported
             ssgVersion
+            majorOsVersion
             policy {
                 id
             }
@@ -54,10 +55,13 @@ const SystemQuery = ({ data: { system }, loading, hidePassed }) => (
         <SystemPolicyCards policies={ system?.testResultProfiles } loading={ loading } />
         <br/>
         <SystemRulesTable hidePassed={ hidePassed }
-            system={ system }
+            system={ {
+                ...system,
+                supported: ((system?.testResultProfiles || []).filter((profile) => (profile.supported)).length > 0)
+            } }
             columns={ columns }
             profileRules={ system?.testResultProfiles.map(profile => ({
-                system: system.id,
+                system,
                 profile,
                 rules: profile.rules
             })) }

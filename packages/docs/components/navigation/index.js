@@ -35,26 +35,29 @@ const Navigation = () => {
                                 title={group}
                                 className={classes.capitalize}
                             >
-                                {items.map(name => (
-                                    <NavItem
-                                        id={`/${packageName}/${name}`}
-                                        to={`/${packageName}/${name}`}
-                                        ouiaId={`/${packageName}/${name}`}
-                                        key={name}
-                                        component={({ children, ...props }) => (
-                                            <Link {...props}>
-                                                <a className={classnames('pf-c-nav__link', {
+                                {items.map(item => {
+                                    const title = typeof item === 'object' ? item.title : item;
+                                    const name = typeof item === 'object' ? item.name : item;
+                                    return (
+                                        <NavItem
+                                            id={`/${packageName}/${name}`}
+                                            to={`/${packageName}/${name}`}
+                                            ouiaId={`/${packageName}/${name}`}
+                                            key={name}
+                                            component={({ children, ...props }) => (
+                                                <Link {...props}>
+                                                    <a className={classnames('pf-c-nav__link', {
                                                     // eslint-disable-next-line react/prop-types
-                                                    'pf-m-current': props.href === pathname
-                                                })}>
-                                                    {children}
-                                                </a>
-                                            </Link>
-                                        )}
-                                    >
-                                        {name}
-                                    </NavItem>
-                                ))}
+                                                        'pf-m-current': props.href === pathname
+                                                    })}>
+                                                        {children}
+                                                    </a>
+                                                </Link>
+                                            )}
+                                        >
+                                            {title}
+                                        </NavItem>
+                                    );})}
                             </NavGroup>
                         ))}
                     </NavExpandable>

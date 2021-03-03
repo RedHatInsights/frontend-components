@@ -161,11 +161,6 @@ const createFrontendComponentsTransform = env => [
             preventFullImport: true,
             skipDefaultConversion: true
         },
-        '@redhat-cloud-services/frontend-components-sources': {
-            transform: (importName) => `@redhat-cloud-services/frontend-components-sources/${env}/${importName}.js`,
-            preventFullImport: true,
-            skipDefaultConversion: true
-        },
         '@redhat-cloud-services/frontend-components-translations': {
             transform: (importName) => `@redhat-cloud-services/frontend-components-translations/${env}/${importName}.js`,
             preventFullImport: true,

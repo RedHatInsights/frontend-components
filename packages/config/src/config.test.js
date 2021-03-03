@@ -96,6 +96,31 @@ describe('rootFolder', () => {
     });
 });
 
+describe('module rules', () => {
+    test('length', () => {
+        const {
+            module
+        } = configBuilder({ appEntry: 'testEntry', appName: 'someName' });
+        expect(module.rules.length).toBe(6);
+    });
+
+    test('first to be chrome-render-loader', () => {
+        const {
+            module
+        } = configBuilder({ appEntry: 'testEntry', appName: 'someName' });
+        expect((new RegExp('packages/config/src/chrome-render-loader.js$')).test(module.rules[0].loader)).toBe(true);
+        expect((new RegExp(module.rules[0].rules)).test('testEntry')).toBe(true);
+        expect(module.rules[0].options.skipChrome2).toBe(false);
+    });
+
+    test('first to be chrome-render-loader', () => {
+        const {
+            module
+        } = configBuilder({ appEntry: 'testEntry', appName: 'someName', skipChrome2: true });
+        expect(module.rules[0].options.skipChrome2).toBe(true);
+    });
+});
+
 test('appEntry correctly set', () => {
     const {
         entry

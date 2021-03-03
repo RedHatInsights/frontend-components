@@ -27,13 +27,15 @@ exports[`InventoryList should render correctly - with no access 1`] = `
       <h5
         class="pf-c-title pf-m-lg"
       >
-        This application requires Inventory permissions
+        You do not have access to Inventory
       </h5>
       <div
         class="pf-c-empty-state__body"
       >
-        <div>
-          To view the content of this page, you must be granted a minimum of inventory permissions from your Organization Administrator.
+        <div
+          aria-describedby="pf-tooltip-1"
+        >
+          To view your systems, you must be granted inventory access from your Organization Administrator.
         </div>
       </div>
     </div>

@@ -1,3 +1,7 @@
+const rulesDirPlugin = require('eslint-plugin-rulesdir');
+const path = require('path');
+rulesDirPlugin.RULES_DIR = path.resolve(__dirname, './lib/rules');
+
 module.exports = {
     parser: '@babel/eslint-parser',
     env: {
@@ -13,7 +17,8 @@ module.exports = {
         }
     },
     plugins: [
-        'prettier'
+        'prettier',
+        'rulesdir'
     ],
     extends: [
         'eslint:recommended',
@@ -30,7 +35,8 @@ module.exports = {
         'prettier/prettier': [
             'error',
             { singleQuote: true }
-        ]
+        ],
+        'rulesdir/disallow-fec-relative-imports': 2
     },
     parserOptions: {
         ecmaVersion: 7,

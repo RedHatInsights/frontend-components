@@ -1,7 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SecurityIcon } from '@patternfly/react-icons';
-import { riskOfChangeMeta } from './constants';
+
+/**
+ * This was created to fix following circular dependency issue
+ * src/ReportDetails/constants.js -> src/ReportDetails/RiskOfChangeIcon.js -> src/ReportDetails/constants.js
+ * Please do net merge this constant back to constants.js unless the circular dependency will be removed
+ */
+export const riskOfChangeMeta = [
+    {
+        label: 'Very Low',
+        description: 'Very Low severity desc for risk of change',
+        IconComponent: RiskOfChangeIcon
+    },
+    {
+        label: 'Low',
+        description: 'Low severity desc for risk of change',
+        IconComponent: RiskOfChangeIcon
+    },
+    {
+        label: 'Moderate',
+        description: 'Moderate severity desc for risk of change',
+        IconComponent: RiskOfChangeIcon
+    },
+    {
+        label: 'High',
+        description: 'High severity desc for risk of change',
+        IconComponent: RiskOfChangeIcon
+    }
+];
 
 /**
  * This is the RiskOfChangeIcon component
@@ -13,7 +40,7 @@ import { riskOfChangeMeta } from './constants';
  * 4 - critical - worst case scenario
  * Also accepts a label which can be made invisible
  */
-const RiskOfChangeIcon = ({ value, ...props }) => {
+function RiskOfChangeIcon({ value, ...props }) {
     const label = riskOfChangeMeta[value - 1] && riskOfChangeMeta[value - 1].label;
     return <div className={ `ins-c-rule__battery battery ins-c-rule__severity-level-${ value }` }>
         <i
@@ -28,7 +55,7 @@ const RiskOfChangeIcon = ({ value, ...props }) => {
             <span className="ins-c-risk-of-change__label">{ label }</span>
         }
     </div>;
-};
+}
 
 RiskOfChangeIcon.propTypes = {
     value: PropTypes.number.isRequired

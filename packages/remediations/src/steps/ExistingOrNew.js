@@ -11,7 +11,7 @@ import {
     TextInput,
     Stack, StackItem, Title
 } from '@patternfly/react-core';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
 import './ExistingOrNew.scss';
 
