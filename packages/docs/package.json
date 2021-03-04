@@ -15,7 +15,7 @@
     "@patternfly/react-core": "^4.79.2",
     "@patternfly/react-icons": "^4.7.18",
     "@patternfly/react-table": "^4.19.24",
-    "@redhat-cloud-services/frontend-components": "^2.5.1",
+    "@redhat-cloud-services/frontend-components": "^3.0.10",
     "classnames": "^2.2.6",
     "next": "^10.0.5",
     "prism-react-renderer": "^1.1.1",

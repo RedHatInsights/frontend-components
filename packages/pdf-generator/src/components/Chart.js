@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { CircleIconConfig } from '@patternfly/react-icons/dist/js/icons/circle-icon';
 import PropTypes from 'prop-types';
 import { View, Canvas, Text } from '@react-pdf/renderer';
+import { ChartBar } from '@patternfly/react-charts/dist/js/components/ChartBar';
 import { ChartPie } from '@patternfly/react-charts/dist/js/components/ChartPie';
 import { ChartDonut } from '@patternfly/react-charts/dist/js/components/ChartDonut';
 import { ChartDonutUtilization } from '@patternfly/react-charts/dist/js/components/ChartDonutUtilization';
@@ -11,9 +12,10 @@ import Table from './Table';
 import styles from '../utils/styles';
 import rgbHex from 'rgb-hex';
 import flatten from 'lodash/flatten';
+import globalPaletteBlack300 from '@patternfly/react-tokens/dist/js/globalPaletteBlack300';
+import globalPaletteBlack700 from '@patternfly/react-tokens/dist/js/global_palette_black_700';
 
 const appliedStyles = styles();
-
 const chartMapper = {
     pie: {
         component: ChartPie,
@@ -24,16 +26,39 @@ const chartMapper = {
             style: { labels: { fill: '#FFFFFF' } }
         },
         showLabels: true,
-        width: 80
+        width: 80,
+        translate: {
+            x: 100,
+            y: 100
+        }
+    },
+    bar: {
+        component: ChartBar,
+        width: 200,
+        height: 200,
+        scale: 0.34,
+        lineChart: true,
+        translate: {
+            x: 100,
+            y: 0
+        }
     },
     donut: {
         component: ChartDonut,
-        width: 80
+        width: 80,
+        translate: {
+            x: 100,
+            y: 100
+        }
     },
     donutUtilization: {
         component: ChartDonutUtilization,
         width: 80,
-        colorScale: ([ color ]) => [ color, ...getLightThemeColors('gray').voronoi.colorScale ]
+        colorScale: ([ color ]) => [ color, ...getLightThemeColors('gray').voronoi.colorScale ],
+        translate: {
+            x: 100,
+            y: 100
+        }
     }
 };
 
@@ -46,7 +71,7 @@ class Chart extends React.Component {
         el.style.display = 'none';
         ReactDOM.render(
             <Chart data={ data } {...currChart.chartProps} { ...props } />,
-            el,
+            el
         );
 
         const paths = Array.from(el.querySelectorAll('path')).map((path) => path.getAttribute('d'));
@@ -66,6 +91,7 @@ class Chart extends React.Component {
                 }, {})
             }))
         )));
+
         // let's clean up the placeholder chart
         ReactDOM.unmountComponentAtNode(el);
         el.remove();
@@ -77,9 +103,10 @@ class Chart extends React.Component {
         const { data, chartType, colorSchema, ...props } = this.props;
         const currChart = chartMapper[chartType] || chartMapper.pie;
 
-        const colors = currChart.colorScale ?
-            currChart.colorScale(getLightThemeColors(colorSchema).voronoi.colorScale) :
-            getLightThemeColors(colorSchema).voronoi.colorScale;
+        const colors = currChart.colorScale
+            ? currChart.colorScale(getLightThemeColors(colorSchema).voronoi.colorScale)
+            : getLightThemeColors(colorSchema).voronoi.colorScale;
+
         const [ paths, texts ] = this.getChartData(currChart);
 
         return <View style={[
@@ -94,12 +121,15 @@ class Chart extends React.Component {
                 {...props}
                 style={{
                     width: currChart.width,
-                    height: 67
+                    height: currChart.height || 67
                 }}
-                paint={({ path, text, fill, scale, translate }) => {
+                paint={({ path, text, moveTo, lineTo, stroke, fill, scale, translate, fontSize, fillColor }) => {
                     paths.map((onePath, key) => {
                         scale(key === 0 ? 0.34 : 1);
-                        translate(key === 0 ? 100 : 0, key === 0 ? 100 : 0);
+                        translate(
+                            key === 0 ? currChart.translate.x : 0,
+                            key === 0 ? currChart.translate.y : 0
+                        );
                         path(onePath)
                         .fill(colors[key]);
                         const currText = texts[key];
@@ -130,39 +160,66 @@ class Chart extends React.Component {
                             }
                         }
                     });
-                }
-                }
-            />
-            <Table
-                withHeader
-                style={
-                    { width: 'auto', flex: 1 }
-                }
-                rowsStyle={{
-                    justifyContent: 'flex-start',
-                    ...appliedStyles.compactCellPadding
+
+                    if (currChart.lineChart) {
+                        let xshift = 35;
+                        let yshift = -35;
+                        const total = data.length;
+                        const [ maxY ] = data.sort((a, b) => b.y - a.y);
+                        const stepper = Math.floor(maxY.y / total);
+
+                        moveTo(0, 0);
+                        lineTo(0, 250);
+                        lineTo(500, 250);
+                        stroke(globalPaletteBlack300.value);
+                        fontSize(18);
+                        fillColor(globalPaletteBlack700.value);
+
+                        for (let i = 0; i < total; i++) {
+                            let valueY = String(i * stepper);
+                            let valueX = String(data[i].name);
+
+                            xshift += i === 0 ? 0 : 120;
+                            // y-axis labels
+                            text(valueY, yshift - valueY.length, 240 - (Math.floor(240 / total) * i));
+                            // x-axis labels
+                            text(valueX, xshift, 260);
+                        }
+                    }
                 }}
-                rows={[
-                    [ 'Legend' ],
-                    ...(Array.isArray(data) ? data : [ data ]).map(({ x, y }, key) => [
-                        <Canvas
-                            key={`${key}-bullet`}
-                            style={{
-                                padding: 3,
-                                width: 15,
-                                height: 10
-                            }}
-                            paint={({ path, scale }) => {
-                                scale(0.014);
-                                path(CircleIconConfig.svgPath).fill(colors[key]);
-                            }}
-                        />,
-                        <Text key={`${key}-text`}>
-                            {x}
-                        </Text>
-                    ])
-                ]}
             />
+            { props.legend &&
+                <Table
+                    withHeader
+                    style={
+                        { width: 'auto', flex: 1 }
+                    }
+                    rowsStyle={{
+                        justifyContent: 'flex-start',
+                        ...appliedStyles.compactCellPadding
+                    }}
+                    rows={[
+                        [ 'Legend' ],
+                        ...(Array.isArray(data) ? data : [ data ]).map(({ x, y }, key) => [
+                            <Canvas
+                                key={`${key}-bullet`}
+                                style={{
+                                    padding: 3,
+                                    width: 15,
+                                    height: 10
+                                }}
+                                paint={({ path, scale }) => {
+                                    scale(0.014);
+                                    path(CircleIconConfig.svgPath).fill(colors[key]);
+                                }}
+                            />,
+                            <Text key={`${key}-text`}>
+                                {x}
+                            </Text>
+                        ])
+                    ]}
+                />
+            }
         </View>;
     }
 }
@@ -183,7 +240,8 @@ Chart.propTypes = {
     ])
 };
 Chart.defaultProps = {
-    colorSchema: 'multiOrdered'
+    colorSchema: 'multiOrdered',
+    legend: true
 };
 
 export default Chart;
