@@ -5,5 +5,5 @@ it('should have correct types', () => {
 });
 
 it('should return correct type', () => {
-    expect(typeMapper.checkbox.name).toBe('Checkbox');
+    expect(typeMapper.checkbox.name).toBe('CheckboxFilter');
 });
