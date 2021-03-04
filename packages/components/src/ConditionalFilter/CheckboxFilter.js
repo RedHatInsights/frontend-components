@@ -6,7 +6,7 @@ import isEqual from 'lodash/isEqual';
 
 /**
  * CheckboxFilter is a part of the <a href="/components/ConditionalFilter">Conditional filter composite component</a>.
- * It was not designed to be used as a standlone component.
+ * It was not designed to be used as a standalone component.
  */
 class CheckboxFilter extends Component {
     state = {

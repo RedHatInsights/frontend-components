@@ -12,4 +12,4 @@ const DateFormats = () => {
     );
 };
 
-export  default DateFormats;
+export default DateFormats;

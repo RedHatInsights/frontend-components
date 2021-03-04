@@ -174,7 +174,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
     <SplitItem
       isFilled={true}
     >
-      <Checkbox
+      <CheckboxFilter
         id="checkbox-filter"
         isDisabled={false}
         items={
