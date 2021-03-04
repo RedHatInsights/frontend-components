@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
@@ -16,14 +16,18 @@ const ApplicationDetails = ({ onTabSelect, appList, ...props }) => {
     const searchParams = new URLSearchParams(search);
     const items = useSelector(({ entityDetails: { activeApps } }) => activeApps);
     const activeApp = useSelector(({ entityDetails: { activeApp } }) => activeApp);
-    const defaultApp = activeApp?.appName ||
-        searchParams.get('appName') ||
-        appList?.find(({ pageId, name }) => items?.[0]?.name === (
-            pageId ||
-            name
-        ))?.name ||
-        items?.[0]?.name;
+    const defaultApp = activeApp?.appName || appList?.find(({ pageId, name }) => items?.[0]?.name === (
+        pageId || name))?.name || items?.[0]?.name;
     const applications = appList || items;
+    useEffect(() => {
+        /**
+         * Initialize first inventory detail type
+         */
+        const appName = searchParams.get('appName');
+        if (appName) {
+            dispatch(detailSelect(appName));
+        }
+    }, []);
 
     return (
         <React.Fragment>

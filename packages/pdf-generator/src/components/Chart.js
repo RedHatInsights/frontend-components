@@ -71,7 +71,7 @@ class Chart extends React.Component {
         el.style.display = 'none';
         ReactDOM.render(
             <Chart data={ data } {...currChart.chartProps} { ...props } />,
-            el,
+            el
         );
 
         const paths = Array.from(el.querySelectorAll('path')).map((path) => path.getAttribute('d'));
