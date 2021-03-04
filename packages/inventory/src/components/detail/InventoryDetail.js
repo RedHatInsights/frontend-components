@@ -86,7 +86,7 @@ InventoryDetail.propTypes = {
     })),
     onTabSelect: PropTypes.func,
     onBackToListClick: PropTypes.func,
-    children: PropTypes.element
+    children: PropTypes.node
 };
 InventoryDetail.defaultProps = {
     actions: [],
