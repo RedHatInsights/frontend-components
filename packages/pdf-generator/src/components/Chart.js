@@ -12,7 +12,7 @@ import Table from './Table';
 import styles from '../utils/styles';
 import rgbHex from 'rgb-hex';
 import flatten from 'lodash/flatten';
-import globalPaletteBlack300 from '@patternfly/react-tokens/dist/js/globalPaletteBlack300';
+import globalPaletteBlack300 from '@patternfly/react-tokens/dist/js/global_palette_black_300';
 import globalPaletteBlack700 from '@patternfly/react-tokens/dist/js/global_palette_black_700';
 
 const appliedStyles = styles();
