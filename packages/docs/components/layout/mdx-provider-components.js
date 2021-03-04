@@ -1,6 +1,7 @@
 import { Title, Card, CardBody } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
+import Link from 'next/link';
 
 const useTableStyles = createUseStyles({
     card: {
@@ -8,6 +9,7 @@ const useTableStyles = createUseStyles({
     }
 });
 
+const A = ({ children, target,  ...props }) => <Link {...props}><a target={target}>{children}</a></Link>;
 const H1 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h1" {...props} />;
 const H2 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h2" {...props} />;
 const H3 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h2" {...props} />;
@@ -17,6 +19,7 @@ const Table = props => {
 };
 
 const components = {
+    a: A,
     h1: H1,
     h2: H2,
     h3: H3,
