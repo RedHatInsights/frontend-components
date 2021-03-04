@@ -4,7 +4,11 @@ import { Select, SelectOption, SelectVariant } from '@patternfly/react-core';
 import Text from './TextFilter';
 import isEqual from 'lodash/isEqual';
 
-class Checkbox extends Component {
+/**
+ * CheckboxFilter is a part of the <a href="/components/ConditionalFilter">Conditional filter composite component</a>.
+ * It was not designed to be used as a standalone component.
+ */
+class CheckboxFilter extends Component {
     state = {
         isExpanded: false,
         selected: []
@@ -78,27 +82,42 @@ class Checkbox extends Component {
     }
 }
 
-Checkbox.propTypes = {
+CheckboxFilter.propTypes = {
+    /**
+     * onChange event callback <br /><code>func(event, newSelection, currentSelection) => undefined</code>
+     */
     onChange: PropTypes.func,
+    /**
+     * List of selected values
+     */
     value: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.shape({
         label: PropTypes.node,
         value: PropTypes.string
     }) ])),
+    /**
+     * Select value placeholder
+     */
     placeholder: PropTypes.string,
+    /**
+     * List of available options
+     */
     items: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.string,
         label: PropTypes.node,
         id: PropTypes.string,
         onClick: PropTypes.func
     })),
+    /**
+     * Disabled flag
+     */
     isDisabled: PropTypes.bool
 };
 
-Checkbox.defaultProps = {
+CheckboxFilter.defaultProps = {
     items: [],
     value: [],
     onChange: () => undefined,
     isDisabled: false
 };
 
-export default Checkbox;
+export default CheckboxFilter;
