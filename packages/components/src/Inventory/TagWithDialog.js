@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-const AsyncInventory = React.lazy(() => import('./AsyncInventory'));
+import InventoryLoadError from './InventoryLoadError';
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
@@ -22,7 +22,7 @@ const BaseTagWithDialog = (props) => {
                 appName="chrome"
                 module="./TagWithDialog"
                 scope="chrome"
-                ErrorComponent={<AsyncInventory component="TagWithDialog" {...props} />}
+                ErrorComponent={<InventoryLoadError component="TagWithDialog" {...props} />}
                 ref={props.innerRef}
                 {...props}
             />
@@ -43,7 +43,7 @@ TagWithDialog.propTypes = {
 };
 
 TagWithDialog.defaultProps = {
-    fallback: <Bullseye><Spinner size="xl" /></Bullseye>
+    fallback: <Bullseye className="pf-u-p-lg"><Spinner size="xl" /></Bullseye>
 };
 
 export default TagWithDialog;

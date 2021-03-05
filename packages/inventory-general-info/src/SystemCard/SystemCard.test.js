@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
-jest.mock('@redhat-cloud-services/frontend-components-inventory/actions', () => ({
+jest.mock('@redhat-cloud-services/frontend-components-inventory/redux', () => ({
     loadEntity: jest.fn().mockImplementation(() => ({
         type: 'test-load-entity',
         payload: new Promise(res => res())

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { Ansible } from '@redhat-cloud-services/frontend-components';
+import Ansible from '@redhat-cloud-services/frontend-components/Ansible';
 
 const useStyle = createUseStyles({
     container: {

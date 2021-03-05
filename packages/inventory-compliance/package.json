@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-compliance",
-    "version": "3.0.5",
+    "version": "3.1.0",
     "description": "Detail part of compliance for RedHat Cloud Services.",
     "module": "esm/index.js",
     "main": "index.js",
@@ -9,8 +9,8 @@
     },
     "scripts": {
         "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
-        "build:js": "BABEL_ENV=cjs babel src --config-file ../../babel.v3.config.js --out-dir ./ --ignore '**/*.test.js','**/__mock__'",
-        "build:esm": "BABEL_ENV=esm babel src --config-file ../../babel.v3.config.js --out-dir ./esm --ignore '**/*.test.js','**/__mock__'",
+        "build:js": "BABEL_ENV=cjs babel src --config-file ./babel.config.js --out-dir ./ --ignore '**/*.test.js','**/__mock__'",
+        "build:esm": "BABEL_ENV=esm babel src --config-file ./babel.config.js --out-dir ./esm --ignore '**/*.test.js','**/__mock__'",
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""

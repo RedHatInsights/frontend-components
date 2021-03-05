@@ -8,6 +8,7 @@ const generateReactMD = require('./generate-react-md');
 const generateFunctionsMd = require('./generate-functions-md');
 
 const COMPONENTS_JSON = 'component-docs.json';
+const EXAMPLES_LOCATION = path.resolve(__dirname, './examples');
 
 const navDest = path.resolve(__dirname, './components/navigation');
 
@@ -39,8 +40,8 @@ const args = process.argv.slice(2);
 
 console.log('Generating MD files for components.\n');
 if (args.includes('-w') || args.includes('--watch')) {
-    const target = path.resolve(__dirname, COMPONENTS_JSON);
-    console.log(`Watching: ${path.resolve(__dirname, COMPONENTS_JSON)}`);
+    const target = [ path.resolve(__dirname, COMPONENTS_JSON), EXAMPLES_LOCATION ];
+    console.log(`Watching: ${target}`);
     const watcher = chokidar.watch(target);
     watcher.on('add', () => {
         run();
