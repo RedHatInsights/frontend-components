@@ -29,20 +29,16 @@
         "@patternfly/react-core": ">=4.18.5",
         "@patternfly/react-icons": ">=4.3.5",
         "@patternfly/react-table": ">=4.5.7",
-        "@data-driven-forms/pf4-component-mapper": "~2.21.0",
-        "@data-driven-forms/react-form-renderer": "^2.8.3",
         "prop-types": ">=15.6.2",
         "react": ">=16.5.1",
         "react-dom": ">=16.5.1",
         "react-redux": ">=5.0.7"
     },
     "dependencies": {
+        "@data-driven-forms/pf4-component-mapper": "^2.23.3",
+        "@data-driven-forms/react-form-renderer": "^2.23.3",
         "@redhat-cloud-services/frontend-components": ">=3.0.0",
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "urijs": "^1.19.4"
-    },
-    "devDependencies": {
-        "@data-driven-forms/pf4-component-mapper": "~2.21.0",
-        "@data-driven-forms/react-form-renderer": "^2.8.3"
     }
 }
