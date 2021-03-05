@@ -66,7 +66,7 @@ In order not to improve your bundle size you you should either import components
 
 For speedy build times, you can use direct import paths For instance `tableToolbar` can be imported as:
 ```JSX
-import TableToolbar from '@redhat-cloud-services/frontend-components/components/TableToolbar';
+import TableToolbar from '@redhat-cloud-services/frontend-components/TableToolbar';
 ```
 
 You can also use shorthand imports.
