@@ -3,10 +3,7 @@
 @import "~@patternfly/patternfly/sass-utilities/scss-variables.scss";
 @import "~@patternfly/patternfly/utilities/Flex/flex.scss";
 @import "~@patternfly/patternfly/utilities/Display/display.scss";
-@import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/all';
-@import '~@redhat-cloud-services/frontend-components/components/tagCount.scss';
-@import '~@redhat-cloud-services/frontend-components/components/tagModal.scss';
-@import '~@redhat-cloud-services/frontend-components/components/CullingInformation.scss';
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/all';
 
 .ins-c-inventory__no--access .pf-c-empty-state__body > div {
     max-width: 500px;

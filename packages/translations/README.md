@@ -127,7 +127,7 @@ You can use [babel-plugin-react-intl](https://www.npmjs.com/package/babel-plugin
 To join your messages to one JSON that can be uploaded to translate service and combine all languages together you can use `mergeMessages.js` from `@redhat-cloud-services/frontend-components-utilities`. For full describtion of how to pass custom config can be found at [mergeMessages.md](/RedHatInsights/frontend-components/blob/master/packages/utils/doc/mergeMessages.md), or by passing `--help` to `mergeMessages.js`
 
 ```bash
-node node_modules/@redhat-cloud-services/frontend-components-utilities/files/mergeMessages.js
+node node_modules/@redhat-cloud-services/frontend-components-utilities/mergeMessages.js
 ```
 
 ## Use messages in your app
