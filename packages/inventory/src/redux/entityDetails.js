@@ -1,7 +1,7 @@
 import { ACTION_TYPES, APPLICATION_SELECTED, TOGGLE_TAG_MODAL, TOGGLE_DRAWER } from './action-types';
-import { showTags, toggleTagModal } from './entities';
+import { showTags, toggleTagModalReducer } from './entities';
 import systemIssuesReducer from './systemIssues';
-export const defaultState = { loaded: false };
+export const entityDefaultState = { loaded: false };
 
 function entityDetailPending(state) {
     return {
@@ -40,14 +40,14 @@ function showTagsPending(state) {
 }
 
 export default {
-    [ACTION_TYPES.LOAD_ENTITIES_PENDING]: () => defaultState,
+    [ACTION_TYPES.LOAD_ENTITIES_PENDING]: () => entityDefaultState,
     [ACTION_TYPES.LOAD_ENTITY_PENDING]: entityDetailPending,
     [ACTION_TYPES.LOAD_ENTITY_FULFILLED]: entityDetailLoaded,
     [APPLICATION_SELECTED]: onApplicationSelected,
     [ACTION_TYPES.LOAD_TAGS]: showTags,
     [ACTION_TYPES.LOAD_TAGS_PENDING]: showTagsPending,
     [ACTION_TYPES.LOAD_TAGS_FULFILLED]: showTags,
-    [TOGGLE_TAG_MODAL]: toggleTagModal,
+    [TOGGLE_TAG_MODAL]: toggleTagModalReducer,
     [TOGGLE_DRAWER]: toggleDrawer,
     ...systemIssuesReducer
 };

@@ -1,14 +1,1 @@
-/index.js
-/actions.css
-/actions.js
-/index.css
-/esm
-/cjs
-/*.css
-*.txt
-/filters.js
-/shared
-/redux
-/inventoryConnector
-/components
-/api
+../../config/.gitignore

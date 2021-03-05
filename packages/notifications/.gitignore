@@ -1,14 +1,1 @@
-/index.js
-/index.css
-/index.scss
-/actions.js
-/notifications.js
-/notificationsReducer.js
-/NotificationPortal.js
-/esm
-/cjs
-/redux
-/Notification
-/NotificationPagination
-/NotificationPortal
-/notificationsMiddleware
+../../config/.gitignore
