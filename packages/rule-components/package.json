@@ -10,8 +10,8 @@
     },
     "scripts": {
         "build": "npm run build:umd && npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
-        "build:js": "BABEL_ENV=cjs babel src --config-file ../../babel.v3.config.js --out-dir ./ --ignore '**/*.test.js'",
-        "build:esm": "BABEL_ENV=esm babel src --config-file ../../babel.v3.config.js --out-dir ./esm --ignore '**/*.test.js'",
+        "build:js": "BABEL_ENV=cjs babel src --config-file ./babel.config.js --out-dir ./ --ignore '**/*.test.js'",
+        "build:esm": "BABEL_ENV=esm babel src --config-file ./babel.config.js --out-dir ./esm --ignore '**/*.test.js'",
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js",
         "build:umd": "rollup -c ./config/rollup.config.js --format=umd --environment NODE_ENV:production,FORMAT:umd",

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-const AsyncInventory = React.lazy(() => import('./AsyncInventory'));
+import InventoryLoadError from './InventoryLoadError';
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
@@ -17,7 +17,7 @@ const BaseDetailWrapper = (props) => {
                 appName="chrome"
                 module="./DetailWrapper"
                 scope="chrome"
-                ErrorComponent={<AsyncInventory component="DetailWrapper" {...props} />}
+                ErrorComponent={<InventoryLoadError component="DetailWrapper" {...props} />}
                 ref={props.innerRef}
                 {...props}
             />
@@ -38,7 +38,7 @@ DetailWrapper.propTypes = {
 };
 
 DetailWrapper.defaultProps = {
-    fallback: <Bullseye><Spinner size="xl" /></Bullseye>
+    fallback: <Bullseye className="pf-u-p-lg"><Spinner size="xl" /></Bullseye>
 };
 
 export default DetailWrapper;

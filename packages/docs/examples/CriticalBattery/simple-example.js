@@ -1,6 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { CriticalBattery } from '@redhat-cloud-services/frontend-components';
+import { CriticalBattery } from '@redhat-cloud-services/frontend-components/Battery';
 
 const useStyle = createUseStyles({
     container: {

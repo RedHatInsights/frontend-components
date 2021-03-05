@@ -122,5 +122,4 @@ rules:
     - error
     - never
   no-prototype-builtins: 1
-#  following rule will be enable once we start with clean up pahse
-#  rulesdir/disallow-fec-relative-imports: 2
+  rulesdir/disallow-fec-relative-imports: 2
