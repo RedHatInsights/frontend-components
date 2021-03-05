@@ -26,7 +26,7 @@ Assets are no longer under `/files` directory but directly at the root of the bu
 
 ```jsx
 // v2
-import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/Registry';
+import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';
 
 // v3
 import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';
@@ -42,7 +42,7 @@ RowLoader component is no longer a part of `helpers` file but is now a stand-alo
 
 ```jsx
 // v2
-import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/files/helpers'
+import { RowLoader } from '@redhat-cloud-services/frontend-components-utilities/helpers'
 // v3
 import RowLoader from '@redhat-cloud-services/frontend-components-utilities/RowLoader'
 ```
@@ -53,7 +53,7 @@ SCSS files are now under `styles` directory.
 
 ```scss
 /** v2 */
-@import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/all';
+@import '~@redhat-cloud-services/frontend-components-utilities/styles/all';
 /** v3 */
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/all''
 
@@ -68,7 +68,7 @@ This module is now deprecated. Use a new Inventory component compatible with chr
 Function `parseCvssScore` has been moved to a stand-alone file. Import path has changed.
 ```jsx
 // v2
-import { parseCvssScore } from '@redhat-cloud-services/frontend-components-utilities/files/helpers'
+import { parseCvssScore } from '@redhat-cloud-services/frontend-components-utilities/helpers'
 // v3
 import parseCvssScore from '@redhat-cloud-services/frontend-components-utilities/parseCvssScore'
 ```
