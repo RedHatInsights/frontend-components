@@ -16,7 +16,7 @@ import { HIGH_SEVERITY, MEDIUM_SEVERITY, LOW_SEVERITY } from '../Constants';
 import ComplianceRemediationButton from '../ComplianceRemediationButton';
 
 export const columns = [
-    { title: 'Rule', transforms: [ sortable ] },
+    { title: 'Name', transforms: [ sortable ] },
     { title: 'Policy', transforms: [ sortable ] },
     { title: 'Severity', transforms: [ sortable, fitContent ] },
     { title: 'Passed', transforms: [ sortable, fitContent ] },
@@ -60,7 +60,7 @@ class SystemRulesTable extends React.Component {
             let cell;
 
             switch (column.original || column.title) {
-                case 'Rule':
+                case 'Name':
                     cell = <RuleTitle title={ title } identifier={ identifier } />;
                     break;
                 case 'Policy':
