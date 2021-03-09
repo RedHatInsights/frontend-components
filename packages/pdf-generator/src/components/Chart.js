@@ -35,7 +35,7 @@ const chartMapper = {
     bar: {
         component: ChartBar,
         width: 200,
-        height: 200,
+        height: 100,
         scale: 0.34,
         lineChart: true,
         translate: {
@@ -165,8 +165,9 @@ class Chart extends React.Component {
                         let xshift = 35;
                         let yshift = -35;
                         const total = data.length;
-                        const [ maxY ] = data.sort((a, b) => b.y - a.y);
-                        const stepper = Math.floor(maxY.y / total);
+                        const [ maxY ] = [ ...data ].sort((a, b) => b.y - a.y);
+                        let stepper = maxY.y < total ? parseFloat(maxY.y / total).toFixed(1) : Math.ceil(maxY.y / total);
+                        stepper = stepper === 0 ? total : stepper;
 
                         moveTo(0, 0);
                         lineTo(0, 250);
@@ -176,12 +177,12 @@ class Chart extends React.Component {
                         fillColor(globalPaletteBlack700.value);
 
                         for (let i = 0; i < total; i++) {
-                            let valueY = String(i * stepper);
+                            let valueY = String(Number.isInteger(i * stepper) ? i * stepper : (i * stepper).toFixed(1));
                             let valueX = String(data[i].name);
 
                             xshift += i === 0 ? 0 : 120;
                             // y-axis labels
-                            text(valueY, yshift - valueY.length, 240 - (Math.floor(240 / total) * i));
+                            text(valueY, yshift - valueY.length, 240 - (Math.ceil(240 / total) * i));
                             // x-axis labels
                             text(valueX, xshift, 260);
                         }

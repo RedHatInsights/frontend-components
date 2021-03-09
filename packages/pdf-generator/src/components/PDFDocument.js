@@ -39,13 +39,16 @@ const PDFDocument = ({
                         </Text>
                     </View>
                     <View style={appliedStyles.reportNameWrapper}>
-                        <Text style={ appliedStyles.groupName }>
-                            {groupName}
-                        </Text>
+
                         {(allPagesHaveTitle || key === 0) && (
-                            <Text style={[ appliedStyles.reportName, appliedStyles.displayFont ]}>
-                                {reportName} {type}
-                            </Text>
+                            <React.Fragment>
+                                <Text style={ appliedStyles.groupName }>
+                                    {groupName}
+                                </Text>
+                                <Text style={[ appliedStyles.reportName, appliedStyles.displayFont ]}>
+                                    {reportName} {type}
+                                </Text>
+                            </React.Fragment>
                         )}
                     </View>
                     <View>
