@@ -217,7 +217,7 @@ describe('SystemRulesTable component', () => {
                     selectedFilter
                     tailoringEnabled
                     columns={ [
-                        { title: 'Rule' },
+                        { title: 'Name' },
                         { title: 'Severity' },
                         { title: 'Ansible' }
                     ] }
@@ -237,7 +237,7 @@ describe('SystemRulesTable component', () => {
                     selectedFilter
                     tailoringEnabled
                     columns={ [
-                        { title: 'Rule' },
+                        { title: 'Name' },
                         { title: 'Severity' },
                         { title: 'Ansible' }
                     ] }

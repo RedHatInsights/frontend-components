@@ -199,7 +199,7 @@ exports[`SystemRulesTable component should render 1`] = `
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
           "transforms": Array [
             [Function],
           ],
@@ -1101,7 +1101,7 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
   columns={
     Array [
       Object {
-        "title": "Rule",
+        "title": "Name",
         "transforms": Array [
           [Function],
         ],
@@ -1387,7 +1387,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
           "transforms": Array [
             [Function],
           ],
@@ -1760,7 +1760,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
           "transforms": Array [
             [Function],
           ],
@@ -2187,7 +2187,7 @@ exports[`SystemRulesTable component should render search results on any page, re
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
           "transforms": Array [
             [Function],
           ],
@@ -2605,7 +2605,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
           "transforms": Array [
             [Function],
           ],
@@ -3701,7 +3701,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
           "transforms": Array [
             [Function],
           ],
@@ -4728,7 +4728,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
           "transforms": Array [
             [Function],
           ],
@@ -5830,7 +5830,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
         },
         Object {
           "title": "Severity",
@@ -6155,7 +6155,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
         },
         Object {
           "title": "Severity",
@@ -7113,7 +7113,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
     cells={
       Array [
         Object {
-          "title": "Rule",
+          "title": "Name",
         },
         Object {
           "title": "Severity",

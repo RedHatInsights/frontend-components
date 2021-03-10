@@ -33,7 +33,7 @@ class SkeletonTable extends React.Component {
     newArray = (size) => [ ...Array(size) ];
 
     render() {
-        const { canSelectAll, isSelectable, sortBy } = this.props;
+        const { canSelectAll, isSelectable, sortBy, variant } = this.props;
         return (
             <Table cells={ this.getColumns() }
                 rows={ this.createRows() }
@@ -41,7 +41,8 @@ class SkeletonTable extends React.Component {
                 aria-label="Loading"
                 onSelect={ isSelectable }
                 selectVariant={ isSelectable ? this.selectVariant() : null }
-                canSelectAll={ canSelectAll }>
+                canSelectAll={ canSelectAll }
+                variant={ variant }>
                 <TableHeader />
                 <TableBody />
             </Table>
@@ -60,7 +61,8 @@ SkeletonTable.propTypes = {
     }),
     isSelectable: PropTypes.bool,
     canSelectAll: PropTypes.bool,
-    hasRadio: PropTypes.bool
+    hasRadio: PropTypes.bool,
+    variant: PropTypes.string
 };
 
 SkeletonTable.defaultProps = {
@@ -68,7 +70,8 @@ SkeletonTable.defaultProps = {
     paddingColumnSize: 0,
     canSelectAll: false,
     isSelectable: false,
-    hasRadio: false
+    hasRadio: false,
+    variant: null
 };
 
 export default SkeletonTable;
