@@ -34,7 +34,7 @@ module.exports = (configurations) => {
     /* eslint-disable no-console */
     if (configurations.debug) {
         console.log('~~~Using variables~~~');
-        console.log(`Root folder: ${configurations.root}`);
+        console.log(`Root folder: ${configurations.rootFolder}`);
         console.log(`Current branch: ${gitBranch}`);
         console.log(`Beta branches: ${betaBranhces}`);
         console.log(`Using deployments: ${appDeployment}`);

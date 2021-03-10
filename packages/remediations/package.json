@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-remediations",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "description": "Remediations components for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -9,8 +9,8 @@
     },
     "scripts": {
         "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
-        "build:js": "BABEL_ENV=cjs babel src --config-file ../../babel.v3.config.js --out-dir ./ --ignore '**/*.test.js','**/tests/*'",
-        "build:esm": "BABEL_ENV=esm babel src --config-file ../../babel.v3.config.js --out-dir ./esm --ignore '**/*.test.js''**/tests/*'",
+        "build:js": "BABEL_ENV=cjs babel src --config-file ./babel.config.js --out-dir ./ --ignore '**/*.test.js','**/tests/*'",
+        "build:esm": "BABEL_ENV=esm babel src --config-file ./babel.config.js --out-dir ./esm --ignore '**/*.test.js''**/tests/*'",
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
@@ -29,20 +29,16 @@
         "@patternfly/react-core": ">=4.18.5",
         "@patternfly/react-icons": ">=4.3.5",
         "@patternfly/react-table": ">=4.5.7",
-        "@data-driven-forms/pf4-component-mapper": "~2.21.0",
-        "@data-driven-forms/react-form-renderer": "^2.8.3",
         "prop-types": ">=15.6.2",
         "react": ">=16.5.1",
         "react-dom": ">=16.5.1",
         "react-redux": ">=5.0.7"
     },
     "dependencies": {
+        "@data-driven-forms/pf4-component-mapper": "^2.23.3",
+        "@data-driven-forms/react-form-renderer": "^2.23.3",
         "@redhat-cloud-services/frontend-components": ">=3.0.0",
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "urijs": "^1.19.4"
-    },
-    "devDependencies": {
-        "@data-driven-forms/pf4-component-mapper": "~2.21.0",
-        "@data-driven-forms/react-form-renderer": "^2.8.3"
     }
 }

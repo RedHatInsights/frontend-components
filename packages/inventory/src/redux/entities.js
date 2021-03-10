@@ -193,7 +193,7 @@ export function showTagsPending(state, { meta }) {
     };
 }
 
-export function toggleTagModal(state, { payload: { isOpen } }) {
+export function toggleTagModalReducer(state, { payload: { isOpen } }) {
     return {
         ...state,
         showTagDialog: isOpen,
@@ -237,6 +237,6 @@ export default {
     [CHANGE_SORT]: changeSort,
     [CLEAR_FILTERS]: clearFilters,
     [ENTITIES_LOADING]: (state, { payload: { isLoading } }) => ({ ...state, loaded: !isLoading }),
-    [TOGGLE_TAG_MODAL]: toggleTagModal,
+    [TOGGLE_TAG_MODAL]: toggleTagModalReducer,
     [CONFIG_CHANGED]: (state, { payload }) => ({ ...state, invConfig: payload })
 };

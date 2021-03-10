@@ -109,9 +109,6 @@ const TextInputProps = {
 
 ConditionalFilter.propTypes = {
     hideLabel: PropTypes.bool,
-    /**
-     * @extensive
-     */
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string,
         label: PropTypes.node,

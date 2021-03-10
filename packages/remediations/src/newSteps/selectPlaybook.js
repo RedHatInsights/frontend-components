@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/components/cjs/Skeleton';
+import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 import * as api from '../api';
 import {
     FormGroup,
