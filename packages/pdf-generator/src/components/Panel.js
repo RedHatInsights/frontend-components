@@ -14,6 +14,7 @@ const Panel = ({
     contentProps,
     children,
     description,
+    labels,
     ...props
 }) => (<View
     {...props}
@@ -33,11 +34,14 @@ const Panel = ({
         ...contentProps.style
     }}>
         {children}
-        <Text style={{
-            flex: 3
-        }}>
-            {customTitle(description)}
-        </Text>
+        <View style= {{ flex: 4 }}>
+            <View style={[ appliedStyles.panelLabels ]}>
+                { labels }
+            </View>
+            <Text>
+                {customTitle(description)}
+            </Text>
+        </View>
     </View>
 </View>);
 
@@ -47,7 +51,8 @@ Panel.propTypes = {
     titleProps: customProps,
     contentProps: customProps,
     children: PropTypes.node,
-    description: PropTypes.string
+    description: PropTypes.string,
+    labels: PropTypes.node
 };
 
 Panel.defaultProps = {
