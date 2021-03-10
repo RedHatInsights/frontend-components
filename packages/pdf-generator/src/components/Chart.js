@@ -100,7 +100,7 @@ class Chart extends React.Component {
     }
 
     render() {
-        const { data, chartType, colorSchema, ...props } = this.props;
+        const { data, chartType, colorSchema, legendHeader, ...props } = this.props;
         const currChart = chartMapper[chartType] || chartMapper.pie;
 
         const colors = currChart.colorScale
@@ -200,7 +200,7 @@ class Chart extends React.Component {
                         ...appliedStyles.compactCellPadding
                     }}
                     rows={[
-                        [ 'Legend' ],
+                        [ legendHeader ],
                         ...(Array.isArray(data) ? data : [ data ]).map(({ x, y }, key) => [
                             <Canvas
                                 key={`${key}-bullet`}
@@ -238,11 +238,14 @@ Chart.propTypes = {
         'multiUnordered',
         'orange',
         'purple'
-    ])
+    ]),
+    legend: PropTypes.bool,
+    legendHeader: PropTypes.string
 };
 Chart.defaultProps = {
     colorSchema: 'multiOrdered',
-    legend: true
+    legend: true,
+    legendHeader: 'Legend'
 };
 
 export default Chart;
