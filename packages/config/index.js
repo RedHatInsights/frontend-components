@@ -40,6 +40,8 @@ module.exports = (configurations) => {
         console.log(`Using deployments: ${appDeployment}`);
         console.log(`Public path: ${publicPath}`);
         console.log(`App entry: ${appEntry}`);
+        console.log(`Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
+        !configurations.useProxy && console.log('You can use webpack proxy (instead of using insights-proxy) by setting "useProxy". Check config documentation to see more details.');
         console.log('~~~~~~~~~~~~~~~~~~~~~');
     }
     /* eslint-enable no-console */
