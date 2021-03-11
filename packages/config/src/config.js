@@ -150,7 +150,9 @@ module.exports = ({
             localChrome,
             customProxy,
             appName,
-            publicPath
+            publicPath,
+            https,
+            port
         }) : {
             contentBase: `${rootFolder || ''}/dist`,
             hot: true,

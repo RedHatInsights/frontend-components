@@ -1,7 +1,7 @@
 const { readFileSync } = require('fs');
 const { sync } = require('glob');
 
-function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose }) {
+function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose, https = true, port }) {
     const target = betaEnv === 'prod' ? 'https://cloud.redhat.com/' : `https://${betaEnv}.cloud.redhat.com/`;
 
     const isNotCustomContext = (path) => customProxy.length > 0 ? customProxy.reduce((acc, curr) => acc && !curr.context(path), true) : true;
@@ -10,8 +10,8 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
         contentBase: `${rootFolder || ''}/dist`,
         index: `${rootFolder || ''}/dist/index.html`,
         host: `${betaEnv}.foo.redhat.com`,
-        port: 1337,
-        https: true,
+        port: port || 1337,
+        https,
         inline: true,
         disableHostCheck: true,
         historyApiFallback: true,
