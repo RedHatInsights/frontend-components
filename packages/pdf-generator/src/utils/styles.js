@@ -19,8 +19,6 @@ import global_palette_gold_50 from '@patternfly/react-tokens/dist/js/global_pale
 import global_palette_gold_700 from '@patternfly/react-tokens/dist/js/global_palette_gold_700';
 import global_palette_orange_600 from '@patternfly/react-tokens/dist/js/global_palette_orange_600';
 import global_palette_red_50 from '@patternfly/react-tokens/dist/js/global_palette_red_50';
-import global_palette_black_900 from '@patternfly/react-tokens/dist/js/global_palette_black_900';
-import global_palette_black_100 from '@patternfly/react-tokens/dist/js/global_palette_black_100';
 
 import { fontTypes, generateFonts, redhatFont } from './fonts';
 
@@ -100,6 +98,10 @@ export default (style = {}) => StyleSheet.create({
     flexColumn: {
         display: 'flex',
         flexDirection: 'column'
+    },
+    panelLabels: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly'
     },
     colorCrit: {
         color: chart_color_red_100.value
