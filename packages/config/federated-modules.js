@@ -15,18 +15,17 @@ module.exports = ({
     const appName = moduleName || (insights && jsVarName(insights.appname));
 
     let sharedDeps = [
-        { lodash: { singleton: true, ...dependencies.lodash && { requiredVersion: dependencies.lodash } } },
-        { axios: { singleton: true, ...dependencies.axios && { requiredVersion: dependencies.axios } } },
+        { lodash: { ...dependencies.lodash && { requiredVersion: dependencies.lodash } } },
+        { axios: { ...dependencies.axios && { requiredVersion: dependencies.axios } } },
         ...dependencies.redux ? [{ redux: { requiredVersion: dependencies.redux } }] : [],
         ...dependencies.react ? [{ react: { singleton: true, requiredVersion: dependencies.react } }] : [],
         ...dependencies['react-dom'] ? [{ 'react-dom': { singleton: true, requiredVersion: dependencies['react-dom'] } }] : [],
         ...dependencies['react-router-dom'] ? [{ 'react-router-dom': { requiredVersion: dependencies['react-router-dom'] } }] : [],
-        ...dependencies['@patternfly/react-table'] ? [{ '@patternfly/react-table': { singleton: true, requiredVersion: dependencies['@patternfly/react-table'] } }] : [],
-        ...dependencies['@patternfly/react-core'] ? [{ '@patternfly/react-core': { singleton: true, requiredVersion: dependencies['@patternfly/react-core'] } }] : [],
-        ...dependencies['@patternfly/react-core'] ? [{ '@patternfly/react-icons': { singleton: true, requiredVersion: dependencies['@patternfly/react-icons'] } }] : [],
+        ...dependencies['@patternfly/react-table'] ? [{ '@patternfly/react-table': { requiredVersion: dependencies['@patternfly/react-table'] } }] : [],
+        ...dependencies['@patternfly/react-core'] ? [{ '@patternfly/react-core': { requiredVersion: dependencies['@patternfly/react-core'] } }] : [],
+        ...dependencies['@patternfly/react-core'] ? [{ '@patternfly/react-icons': { requiredVersion: dependencies['@patternfly/react-icons'] } }] : [],
         {
             '@patternfly/react-tokens': {
-                singleton: true,
                 ...dependencies['@patternfly/react-tokens'] && {
                     requiredVersion: dependencies['@patternfly/react-tokens']
                 }
