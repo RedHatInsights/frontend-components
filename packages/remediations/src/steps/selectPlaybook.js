@@ -27,12 +27,17 @@ const SelectPlaybook = (props) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState().values;
+    const allSystems = [ ...new Set(issues.reduce((acc, curr) => [
+        ...acc,
+        ...(curr.systems || [])
+    ], [ ...systems ])) ];
 
     const [ existingRemediations, setExistingRemediations ] = useState();
     const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(values[EXISTING_PLAYBOOK_SELECTED]);
     const [ newPlaybookName, setNewPlaybookName ] = useState(values[EXISTING_PLAYBOOK_SELECTED] ? '' : input.value);
     const [ selectedPlaybook, setSelectedPlaybook ] = useState(values[EXISTING_PLAYBOOK]);
     const [ isLoadingRemediation, setIsLoadingRemediation ] = useState(false);
+    const [ systemsExpanded, setSystemsExpanded ] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -48,7 +53,7 @@ const SelectPlaybook = (props) => {
             <StackItem>
                 <TextContent>
                     <Text>
-                        You selected <b>{`${systems.length} ${pluralize(systems.length, 'system')}`} </b>
+                        You selected <b>{`${allSystems.length} ${pluralize(allSystems.length, 'system')}`} </b>
                         to remediate with Ansible, which in total includes <b>{`${issues.length} ${pluralize(issues.length, 'issue')}`} </b>
                         which can be remediated by Ansible.
                     </Text>

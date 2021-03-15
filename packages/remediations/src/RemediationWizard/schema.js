@@ -66,6 +66,15 @@ export default issues => ({
                     name: 'playbook',
                     title: 'Select playbook',
                     fields: selectPlaybookFields,
+                    nextStep: 'systems'
+                },
+                {
+                    name: 'systems',
+                    title: 'Review systems',
+                    fields: [{
+                        name: 'review-systems',
+                        component: 'review-systems'
+                    }],
                     nextStep: ({ values }) => values[HAS_MULTIPLES] ? 'actions' : 'review'
                 },
                 {

@@ -33,7 +33,7 @@
         "react-router-dom": "^5.2.0",
         "react-truncate": "^2.4.0",
         "redux": "^3.7.2",
-        "redux-promise-middleware": "^5.1.1",
+        "redux-promise-middleware": "^6.1.2",
         "urijs": "^1.19.1"
     },
     "jest": {

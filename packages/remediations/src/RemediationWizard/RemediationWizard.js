@@ -14,6 +14,7 @@ import ReviewActions from '../steps/reviewActions';
 import IssueResolution from '../steps/issueResolution';
 import FetchError from '../steps/fetchError';
 import Review from '../steps/review';
+import ReviewSystems from '../steps/reviewSystems';
 import {
     submitRemediation,
     HAS_MULTIPLES,
@@ -86,6 +87,11 @@ const RemediationWizard = ({
     const mapperExtension = {
         'select-playbook': {
             component: state.errors.length > 0 ? FetchError : SelectPlaybook,
+            issues: data.issues,
+            systems: data.systems
+        },
+        'review-systems': {
+            component: ReviewSystems,
             issues: data.issues,
             systems: data.systems
         },
