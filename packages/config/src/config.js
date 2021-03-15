@@ -1,5 +1,7 @@
 /* eslint-disable camelcase */
 const path = require('path');
+const proxy = require('./proxy');
+
 let rewriteLineCounter = 0;
 
 module.exports = ({
@@ -14,7 +16,10 @@ module.exports = ({
     betaEnv = 'ci',
     sassPrefix,
     deployment,
-    skipChrome2 = false
+    skipChrome2 = false,
+    useProxy,
+    localChrome,
+    customProxy
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
@@ -139,7 +144,16 @@ module.exports = ({
                 process: 'process/browser.js'
             }
         },
-        devServer: {
+        devServer: useProxy ? proxy({
+            betaEnv,
+            rootFolder,
+            localChrome,
+            customProxy,
+            appName,
+            publicPath,
+            https,
+            port
+        }) : {
             contentBase: `${rootFolder || ''}/dist`,
             hot: true,
             port: port || 8002,
