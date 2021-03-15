@@ -1,10 +1,19 @@
 const { readFileSync } = require('fs');
 const { sync } = require('glob');
 
-function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose, https = true, port }) {
+function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose, https = true, port, routes, routesPath }) {
     const target = betaEnv === 'prod' ? 'https://cloud.redhat.com/' : `https://${betaEnv}.cloud.redhat.com/`;
 
-    const isNotCustomContext = (path) => customProxy.length > 0 ? customProxy.reduce((acc, curr) => acc && !curr.context(path), true) : true;
+    let proxyRoutes = routes || (routesPath && require(routesPath));
+    proxyRoutes = proxyRoutes && (proxyRoutes.routes || proxyRoutes);
+
+    // eslint-disable-next-line no-console
+    proxyVerbose && proxyRoutes && console.log(`Using proxy routes: ${JSON.stringify(proxyRoutes, null, 2)}`);
+
+    const isNotCustomContext = (path) => {
+        const isRoutes = Object.keys(proxyRoutes || {}).some((route) => path.includes(route));
+        return customProxy.length > 0 ? customProxy.reduce((acc, curr) => acc && !curr.context(path), !isRoutes) : !isRoutes;
+    };
 
     return {
         contentBase: `${rootFolder || ''}/dist`,
@@ -54,6 +63,14 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
                     }
                 }
             }] : []),
+            ...proxyRoutes ? Object.entries(proxyRoutes).map(([ route, redirect ]) => ({
+                context: (path) => path.includes(route),
+                target: redirect.host || redirect === 'PORTAL_BACKEND_MARKER' ? target : redirect.host || redirect,
+                secure: false,
+                changeOrigin: true,
+                autoRewrite: true,
+                ws: true
+            })) : [],
             ...customProxy
         ]
     };
