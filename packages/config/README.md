@@ -62,6 +62,49 @@ INSIGHTS_CHROME=/Users/rvsiansk/insights-project/insights-chrome/build/
 
 To check what the proxy is doing with your local chrome settings you can set `proxyVerbose: true`.
 
+### Custom routes
+
+If you want to serve files or api from different URL you can either pass `routes` to config or `routesPath` for file which exports these routes.
+
+#### routes
+
+```JS
+  rootFolder: resolve(__dirname, '../'),
+  debug: true,
+  useFileHash: false,
+  deployment: process.env.BETA ? 'beta/apps' : 'apps',
+  useProxy: true,
+  routes: {
+      '/config/main.yml': { host: 'http://127.0.0.1:8889' }
+  },
+```
+
+#### routesPath
+
+```JS
+  rootFolder: resolve(__dirname, '../'),
+  debug: true,
+  useFileHash: false,
+  deployment: process.env.BETA ? 'beta/apps' : 'apps',
+  useProxy: true,
+  routesPath: process.env.CONFIG_PATH
+```
+
+```shell
+CONFIG_PATH=/home/khala/Documents/git/RedHatInsights/spandx.config.js
+```
+
+```JS
+module.exports = {
+  routes: {
+    '/api': { host: 'PORTAL_BACKEND_MARKER' },
+    '/config': { host: 'http://127.0.0.1:8889' },
+    '/beta/config': { host: 'http://127.0.0.1:8889' },
+  }
+};
+
+``` 
+
 ### Custom proxy settings
 
 You can add any additional custom proxy configuration. See [Webpack documentation](https://webpack.js.org/configuration/dev-server/#devserverproxy). Please, provide your configuration as an array of object containing `context` property.
