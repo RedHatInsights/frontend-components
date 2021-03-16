@@ -99,4 +99,24 @@ describe('OperatingSystemCard', () => {
             expect(onClick).toHaveBeenCalled();
         });
     });
+
+    [
+        'hasRelease',
+        'hasKernelRelease',
+        'hasArchitecture',
+        'hasLastBoot',
+        'hasKernelModules'
+    ].map((item) => it(`should not render ${item}`, () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<OperatingSystemCard store={ store } {...{ [item]: false }} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    }));
+
+    it('should render extra', () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<OperatingSystemCard store={ store } extra={[
+            { title: 'something', value: 'test' }
+        ]} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 });

@@ -58,30 +58,41 @@ class GeneralInformation extends Component {
 
     render() {
         const { isModalOpen, modalTitle, cells, rows, expandable, filters, modalVariant } = this.state;
-        const { store, writePermissions } = this.props;
+        const {
+            store,
+            writePermissions,
+            SystemCardWrapper,
+            OperatingSystemCardWrapper,
+            BiosCardWrapper,
+            InfrastructureCardWrapper,
+            ConfigurationCardWrapper,
+            CollectionCardWrapper,
+            children
+        } = this.props;
         const Wrapper = store ? Provider : Fragment;
         return (
             <Wrapper {...(store && { store })}>
                 <div className="ins-c-general-information">
                     <Grid sm={ 12 } md={ 6 } hasGutter>
-                        <GridItem>
-                            <SystemCard handleClick={ this.handleModalToggle } writePermissions={writePermissions} />
-                        </GridItem>
-                        <GridItem>
-                            <OperatingSystemCard handleClick={ this.handleModalToggle } />
-                        </GridItem>
-                        <GridItem>
-                            <BiosCard handleClick={ this.handleModalToggle } />
-                        </GridItem>
-                        <GridItem>
-                            <InfrastructureCard handleClick={ this.handleModalToggle } />
-                        </GridItem>
-                        <GridItem>
-                            <ConfigurationCard handleClick={ this.handleModalToggle } />
-                        </GridItem>
-                        <GridItem>
-                            <CollectionCard handleClick={ this.handleModalToggle } />
-                        </GridItem>
+                        {SystemCardWrapper && <GridItem>
+                            <SystemCardWrapper handleClick={ this.handleModalToggle } writePermissions={writePermissions} />
+                        </GridItem>}
+                        {OperatingSystemCardWrapper && <GridItem>
+                            <OperatingSystemCardWrapper handleClick={ this.handleModalToggle } />
+                        </GridItem>}
+                        {BiosCardWrapper && <GridItem>
+                            <BiosCardWrapper handleClick={ this.handleModalToggle } />
+                        </GridItem>}
+                        {InfrastructureCardWrapper && <GridItem>
+                            <InfrastructureCardWrapper handleClick={ this.handleModalToggle } />
+                        </GridItem>}
+                        {ConfigurationCardWrapper && <GridItem>
+                            <ConfigurationCardWrapper handleClick={ this.handleModalToggle } />
+                        </GridItem>}
+                        {CollectionCardWrapper && <GridItem>
+                            <CollectionCardWrapper handleClick={ this.handleModalToggle } />
+                        </GridItem>}
+                        {children}
                         <Modal
                             title={ modalTitle || '' }
                             aria-label={`${modalTitle || ''} modal`}
@@ -111,10 +122,22 @@ GeneralInformation.propTypes = {
     }),
     loadSystemDetail: PropTypes.func,
     store: PropTypes.any,
-    writePermissions: PropTypes.bool
+    writePermissions: PropTypes.bool,
+    SystemCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ]),
+    OperatingSystemCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ]),
+    BiosCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ]),
+    InfrastructureCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ]),
+    ConfigurationCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ]),
+    CollectionCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ])
 };
 GeneralInformation.defaultProps = {
-    entity: {}
+    entity: {},
+    SystemCardWrapper: SystemCard,
+    OperatingSystemCardWrapper: OperatingSystemCard,
+    BiosCardWrapper: BiosCard,
+    InfrastructureCardWrapper: InfrastructureCard,
+    ConfigurationCardWrapper: ConfigurationCard,
+    CollectionCardWrapper: CollectionCard
 };
 
 const mapStateToProps = ({

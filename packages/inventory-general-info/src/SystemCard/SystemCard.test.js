@@ -223,4 +223,28 @@ describe('SystemCard', () => {
             );
         });
     });
+
+    [
+        'hasHostName',
+        'hasDisplayName',
+        'hasAnsibleHostname',
+        'hasSAP',
+        'hasCPUs',
+        'hasSockets',
+        'hasCores',
+        'hasCPUFlags',
+        'hasRAM'
+    ].map((item) => it(`should not render ${item}`, () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<SystemCard store={ store } {...{ [item]: false }} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    }));
+
+    it('should render extra', () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<SystemCard store={ store } extra={[
+            { title: 'something', value: 'test' }
+        ]} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 });

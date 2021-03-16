@@ -1,5 +1,589 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CollectionCard should not render hasClient 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Collection information
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last check-in
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Jun 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Registered
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Apr 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Reporter
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          RHEL machine id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CollectionCard should not render hasInsightsId 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Collection information
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights client
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <span
+            aria-describedby="pf-tooltip-5"
+          >
+            test-client
+          </span>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last check-in
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Jun 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Registered
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Apr 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Reporter
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          RHEL machine id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CollectionCard should not render hasLastCheckIn 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Collection information
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights client
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <span
+            aria-describedby="pf-tooltip-3"
+          >
+            test-client
+          </span>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Registered
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Apr 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Reporter
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          RHEL machine id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CollectionCard should not render hasMachineId 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Collection information
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights client
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <span
+            aria-describedby="pf-tooltip-7"
+          >
+            test-client
+          </span>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last check-in
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Jun 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Registered
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Apr 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Reporter
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CollectionCard should not render hasRegistered 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Collection information
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights client
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <span
+            aria-describedby="pf-tooltip-4"
+          >
+            test-client
+          </span>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last check-in
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Jun 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Reporter
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          RHEL machine id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CollectionCard should not render hasReporter 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Collection information
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights client
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <span
+            aria-describedby="pf-tooltip-6"
+          >
+            test-client
+          </span>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last check-in
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Jun 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Registered
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Apr 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          RHEL machine id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`CollectionCard should render correctly - no data 1`] = `
 <div
   class="pf-l-stack pf-m-gutter"
@@ -233,6 +817,128 @@ exports[`CollectionCard should render correctly with data 1`] = `
           data-pf-content="true"
         >
           Not available
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CollectionCard should render extra 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Collection information
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights client
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <span
+            aria-describedby="pf-tooltip-8"
+          >
+            test-client
+          </span>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last check-in
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Jun 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Registered
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Apr 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Insights id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Reporter
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          RHEL machine id
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          something
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test
         </dd>
       </dl>
     </div>

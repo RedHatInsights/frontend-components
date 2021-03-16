@@ -97,4 +97,23 @@ describe('ConfigurationCard', () => {
             expect(onClick).toHaveBeenCalled();
         });
     });
+
+    [
+        'hasPackages',
+        'hasServices',
+        'hasProcesses',
+        'hasRepositories'
+    ].map((item) => it(`should not render ${item}`, () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<ConfigurationCard store={ store } {...{ [item]: false }} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    }));
+
+    it('should render extra', () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<ConfigurationCard store={ store } extra={[
+            { title: 'something', value: 'test' }
+        ]} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 });

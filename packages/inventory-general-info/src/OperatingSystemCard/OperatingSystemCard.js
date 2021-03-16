@@ -5,22 +5,32 @@ import LoadingCard from '../LoadingCard';
 import { generalMapper } from '../dataMapper';
 import { operatingSystem } from '../selectors';
 import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
-import { isDate } from '../constants';
+import { extraShape, isDate } from '../constants';
 
-const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (
+const OperatingSystemCard = ({
+    systemInfo,
+    detailLoaded,
+    handleClick,
+    hasRelease,
+    hasKernelRelease,
+    hasArchitecture,
+    hasLastBoot,
+    hasKernelModules,
+    extra
+}) => (
     <LoadingCard
         title="Operating system"
         isLoading={ !detailLoaded }
         items={ [
-            { title: 'Release', value: systemInfo.release },
-            { title: 'Kernel release', value: systemInfo.kernelRelease },
-            { title: 'Architecture', value: systemInfo.architecture },
-            { title: 'Last boot time', value: (isDate(systemInfo.bootTime) ?
+            ...hasRelease ? [{ title: 'Release', value: systemInfo.release }] : [],
+            ...hasKernelRelease ? [{ title: 'Kernel release', value: systemInfo.kernelRelease }] : [],
+            ...hasArchitecture ? [{ title: 'Architecture', value: systemInfo.architecture }] : [],
+            ...hasLastBoot ? [{ title: 'Last boot time', value: (isDate(systemInfo.bootTime) ?
                 <DateFormat date={ systemInfo.bootTime } type="onlyDate" /> :
                 'Not available'
             )
-            },
-            {
+            }] : [],
+            ...hasKernelModules ? [{
                 title: 'Kernel modules',
                 value: systemInfo.kernelModules?.length,
                 singular: 'module',
@@ -31,7 +41,8 @@ const OperatingSystemCard = ({ systemInfo, detailLoaded, handleClick }) => (
                         generalMapper(systemInfo.kernelModules, 'Module')
                     );
                 }
-            }
+            }] : [],
+            ...extra
         ] }
     />
 );
@@ -45,11 +56,23 @@ OperatingSystemCard.propTypes = {
         kernelRelease: PropTypes.string,
         bootTime: PropTypes.string,
         kernelModules: PropTypes.arrayOf(PropTypes.string)
-    })
+    }),
+    hasRelease: PropTypes.bool,
+    hasKernelRelease: PropTypes.bool,
+    hasArchitecture: PropTypes.bool,
+    hasLastBoot: PropTypes.bool,
+    hasKernelModules: PropTypes.bool,
+    extra: PropTypes.arrayOf(extraShape)
 };
 OperatingSystemCard.defaultProps = {
     detailLoaded: false,
-    handleClick: () => undefined
+    handleClick: () => undefined,
+    hasRelease: true,
+    hasKernelRelease: true,
+    hasArchitecture: true,
+    hasLastBoot: true,
+    hasKernelModules: true,
+    extra: []
 };
 
 export default connect(({

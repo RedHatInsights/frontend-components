@@ -4,14 +4,25 @@ import { connect } from 'react-redux';
 import LoadingCard from '../LoadingCard';
 import { generalMapper, interfaceMapper } from '../dataMapper';
 import { infrastructureSelector } from '../selectors';
+import { extraShape } from '../constants';
 
-const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<LoadingCard
+const InfrastructureCard = ({
+    infrastructure,
+    handleClick,
+    detailLoaded,
+    hasType,
+    hasVendor,
+    hasIPv4,
+    hasIPv6,
+    hasInterfaces,
+    extra
+}) => (<LoadingCard
     title="Infrastructure"
     isLoading={ !detailLoaded }
     items={ [
-        { title: 'Type', value: infrastructure.type },
-        { title: 'Vendor', value: infrastructure.vendor },
-        {
+        ...hasType ? [{ title: 'Type', value: infrastructure.type }] : [],
+        ...hasVendor ? [{ title: 'Vendor', value: infrastructure.vendor }] : [],
+        ...hasIPv4 ? [{
             title: 'IPv4 addresses',
             value: infrastructure.ipv4?.length,
             plural: 'addresses',
@@ -23,8 +34,8 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
                     generalMapper(infrastructure.ipv4, 'IP address')
                 );
             }
-        },
-        {
+        }] : [],
+        ...hasIPv6 ? [{
             title: 'IPv6 addresses',
             value: infrastructure.ipv6?.length,
             plural: 'addresses',
@@ -35,8 +46,8 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
                     generalMapper(infrastructure.ipv6, 'IP address')
                 );
             }
-        },
-        {
+        }] : [],
+        ...hasInterfaces ? [{
             title: 'Interfaces/NICs',
             value: infrastructure.nics?.length,
             singular: 'NIC',
@@ -48,7 +59,8 @@ const InfrastructureCard = ({ infrastructure, handleClick, detailLoaded }) => (<
                     'medium'
                 );
             }
-        }
+        }] : [],
+        ...extra
     ] }
 />);
 
@@ -61,11 +73,23 @@ InfrastructureCard.propTypes = {
         ipv4: PropTypes.array,
         ipv6: PropTypes.array,
         nics: PropTypes.array
-    })
+    }),
+    hasType: PropTypes.bool,
+    hasVendor: PropTypes.bool,
+    hasIPv4: PropTypes.bool,
+    hasIPv6: PropTypes.bool,
+    hasInterfaces: PropTypes.bool,
+    extra: PropTypes.arrayOf(extraShape)
 };
 InfrastructureCard.defaultProps = {
     detailLoaded: false,
-    handleClick: () => undefined
+    handleClick: () => undefined,
+    hasType: true,
+    hasVendor: true,
+    hasIPv4: true,
+    hasIPv6: true,
+    hasInterfaces: true,
+    extra: []
 };
 
 export default connect(({

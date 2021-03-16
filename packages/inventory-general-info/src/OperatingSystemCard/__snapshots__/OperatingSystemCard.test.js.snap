@@ -1,5 +1,415 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`OperatingSystemCard should not render hasArchitecture 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Operating system
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-release
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-kernel
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last boot time
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel modules
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          0 modules
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`OperatingSystemCard should not render hasKernelModules 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Operating system
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-release
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-kernel
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Architecture
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-arch
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last boot time
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`OperatingSystemCard should not render hasKernelRelease 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Operating system
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-release
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Architecture
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-arch
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last boot time
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel modules
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          0 modules
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`OperatingSystemCard should not render hasLastBoot 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Operating system
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-release
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-kernel
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Architecture
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-arch
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel modules
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          0 modules
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`OperatingSystemCard should not render hasRelease 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Operating system
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-kernel
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Architecture
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-arch
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last boot time
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel modules
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          0 modules
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`OperatingSystemCard should render correctly - no data 1`] = `
 <div
   class="pf-l-stack pf-m-gutter"
@@ -389,6 +799,112 @@ exports[`OperatingSystemCard should render enabled/disabled 1`] = `
           data-pf-content="true"
         >
           0 modules
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`OperatingSystemCard should render extra 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Operating system
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-release
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel release
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-kernel
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Architecture
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-arch
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Last boot time
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          Not available
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Kernel modules
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          0 modules
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          something
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test
         </dd>
       </dl>
     </div>

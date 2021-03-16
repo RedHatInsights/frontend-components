@@ -40,7 +40,12 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
     }
     detailLoaded={true}
     dispatch={[Function]}
+    extra={Array []}
     handleClick={[Function]}
+    hasPackages={true}
+    hasProcesses={true}
+    hasRepositories={true}
+    hasServices={true}
     store={
       Object {
         "clearActions": [Function],
@@ -292,6 +297,334 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
     </LoadingCard>
   </ConfigurationCard>
 </ConnectFunction>
+`;
+
+exports[`ConfigurationCard should not render hasPackages 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Configuration
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Services
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//services"
+          >
+            1 service
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Running processes
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//running_processes"
+          >
+            1 process
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Repositories
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//repositories"
+          >
+            1 enabled
+          </a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ConfigurationCard should not render hasProcesses 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Configuration
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Installed packages
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//installed_packages"
+          >
+            1 package
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Services
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//services"
+          >
+            1 service
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Repositories
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//repositories"
+          >
+            1 enabled
+          </a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ConfigurationCard should not render hasRepositories 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Configuration
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Installed packages
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//installed_packages"
+          >
+            1 package
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Services
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//services"
+          >
+            1 service
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Running processes
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//running_processes"
+          >
+            1 process
+          </a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ConfigurationCard should not render hasServices 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Configuration
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Installed packages
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//installed_packages"
+          >
+            1 package
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Running processes
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//running_processes"
+          >
+            1 process
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Repositories
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//repositories"
+          >
+            1 enabled
+          </a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`ConfigurationCard should render correctly - no data 1`] = `
@@ -581,6 +914,116 @@ exports[`ConfigurationCard should render enabled/disabled 1`] = `
           >
             1 enabled / 1 disabled
           </a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ConfigurationCard should render extra 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        Configuration
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Installed packages
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//installed_packages"
+          >
+            1 package
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Services
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//services"
+          >
+            1 service
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Running processes
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//running_processes"
+          >
+            1 process
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Repositories
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//repositories"
+          >
+            1 enabled
+          </a>
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          something
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test
         </dd>
       </dl>
     </div>
