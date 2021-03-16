@@ -12,12 +12,12 @@ const VersionTooltip = ({ egg, client }) => (
     <Tooltip
         content={
             <React.Fragment>
-                <p>RPM version: { egg || 'Not available' }</p>
-                <p>Dynamic update version: { client || 'Not available' }</p>
+                <p>RPM version: { client || 'Not available' }</p>
+                <p>Dynamic update version: { egg || 'Not available' }</p>
             </React.Fragment>
         }
     >
-        <span>{ egg || client || 'Not available' }</span>
+        <span>{ client || egg || 'Not available' }</span>
     </Tooltip>
 );
 

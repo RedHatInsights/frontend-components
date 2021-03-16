@@ -46,10 +46,10 @@ describe('CollectionCard', () => {
         const wrapper = mount(<CollectionCard store={ store } />);
         const tooltip = mount(wrapper.find(Tooltip).props().content);
         expect(tooltip.first().text()).toEqual(
-            "RPM version: test-egg"
+            'RPM version: test-client'
         );
         expect(tooltip.last().text()).toEqual(
-            "Dynamic update version: test-client"
+            'Dynamic update version: test-egg'
         );
     });
 });

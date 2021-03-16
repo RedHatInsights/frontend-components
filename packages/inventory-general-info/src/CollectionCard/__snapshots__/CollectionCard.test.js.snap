@@ -171,7 +171,7 @@ exports[`CollectionCard should render correctly with data 1`] = `
           <span
             aria-describedby="pf-tooltip-1"
           >
-            test-egg
+            test-client
           </span>
         </dd>
         <dt
