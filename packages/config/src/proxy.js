@@ -4,15 +4,25 @@ const { sync } = require('glob');
 function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose, https = true, port, routes, routesPath }) {
     const target = betaEnv === 'prod' ? 'https://cloud.redhat.com/' : `https://${betaEnv}.cloud.redhat.com/`;
 
-    let proxyRoutes = routes || (routesPath && require(routesPath));
-    proxyRoutes = proxyRoutes && (proxyRoutes.routes || proxyRoutes);
+    let proxyRoutes = routes;
+
+    if (routesPath) {
+        proxyRoutes = require(routesPath);
+    }
+
+    if (proxyRoutes) {
+        proxyRoutes = proxyRoutes.routes || proxyRoutes;
+    }
 
     // eslint-disable-next-line no-console
     proxyVerbose && proxyRoutes && console.log(`Using proxy routes: ${JSON.stringify(proxyRoutes, null, 2)}`);
 
     const isNotCustomContext = (path) => {
-        const isRoutes = Object.keys(proxyRoutes || {}).some((route) => path.includes(route));
-        return customProxy.length > 0 ? customProxy.reduce((acc, curr) => acc && !curr.context(path), !isRoutes) : !isRoutes;
+        if (Object.keys(proxyRoutes || {}).some((route) => path.includes(route))) {
+            return false;
+        }
+
+        return customProxy.length > 0 ? customProxy.reduce((acc, curr) => acc && !curr.context(path), true) : true;
     };
 
     return {
@@ -63,14 +73,18 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
                     }
                 }
             }] : []),
-            ...proxyRoutes ? Object.entries(proxyRoutes).map(([ route, redirect ]) => ({
-                context: (path) => path.includes(route),
-                target: redirect.host || redirect === 'PORTAL_BACKEND_MARKER' ? target : redirect.host || redirect,
-                secure: false,
-                changeOrigin: true,
-                autoRewrite: true,
-                ws: true
-            })) : [],
+            ...proxyRoutes ? Object.entries(proxyRoutes).map(([ route, redirect ]) => {
+                const currTarget = redirect.host || redirect;
+                return {
+                    context: (path) => path.includes(route),
+                    target: currTarget === 'PORTAL_BACKEND_MARKER' ? target : currTarget,
+                    secure: false,
+                    changeOrigin: true,
+                    autoRewrite: true,
+                    ws: true,
+                    ...redirect
+                };
+            }) : [],
             ...customProxy
         ]
     };
