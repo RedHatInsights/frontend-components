@@ -1,10 +1,11 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { render } from 'enzyme';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import CollectionCard from './CollectionCard';
 import configureStore from 'redux-mock-store';
 import { collectInfoTest } from '../__mock__/selectors';
+import { Tooltip } from '@patternfly/react-core';
 
 describe('CollectionCard', () => {
     let initialState;
@@ -38,5 +39,17 @@ describe('CollectionCard', () => {
         const store = mockStore(initialState);
         const wrapper = render(<CollectionCard store={ store } />);
         expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('renders tooltip for version', () => {
+        const store = mockStore(initialState);
+        const wrapper = mount(<CollectionCard store={ store } />);
+        const tooltip = mount(wrapper.find(Tooltip).props().content);
+        expect(tooltip.first().text()).toEqual(
+            "RPM version: test-egg"
+        );
+        expect(tooltip.last().text()).toEqual(
+            "Dynamic update version: test-client"
+        );
     });
 });
