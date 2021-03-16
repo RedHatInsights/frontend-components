@@ -75,6 +75,7 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
             }] : []),
             ...proxyRoutes ? Object.entries(proxyRoutes).map(([ route, redirect ]) => {
                 const currTarget = redirect.host || redirect;
+                delete redirect.host;
                 return {
                     context: (path) => path.includes(route),
                     target: currTarget === 'PORTAL_BACKEND_MARKER' ? target : currTarget,
@@ -82,7 +83,7 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
                     changeOrigin: true,
                     autoRewrite: true,
                     ws: true,
-                    ...redirect
+                    ...typeof redirect === 'object' ? redirect : {}
                 };
             }) : [],
             ...customProxy
