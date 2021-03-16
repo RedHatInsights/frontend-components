@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 /* eslint-disable camelcase */
 import React from 'react';
 import { render, mount } from 'enzyme';
@@ -72,6 +73,33 @@ describe('GeneralInformation', () => {
             <GeneralInformation />
         </Provider>);
         expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    describe('custom components', () => {
+        [
+            'SystemCardWrapper',
+            'OperatingSystemCardWrapper',
+            'BiosCardWrapper',
+            'InfrastructureCardWrapper',
+            'ConfigurationCardWrapper',
+            'CollectionCardWrapper'
+        ].map((item) => {
+            it(`should not render ${item}`, () => {
+                const store = mockStore(initialState);
+                const wrapper = render(<Provider store={ store }>
+                    <GeneralInformation {...{ [item]: false }} />
+                </Provider>);
+                expect(toJson(wrapper)).toMatchSnapshot();
+            });
+
+            it(`should render custom ${item}`, () => {
+                const store = mockStore(initialState);
+                const wrapper = render(<Provider store={ store }>
+                    <GeneralInformation {...{ [item]: () => <div>test</div> }} />
+                </Provider>);
+                expect(toJson(wrapper)).toMatchSnapshot();
+            });
+        });
     });
 
     describe('API', () => {

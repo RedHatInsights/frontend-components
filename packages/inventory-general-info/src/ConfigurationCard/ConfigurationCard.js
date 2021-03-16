@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LoadingCard from '../LoadingCard';
 import { generalMapper, repositoriesMapper } from '../dataMapper';
 import { configurationSelector } from '../selectors';
+import { extraShape } from '../constants';
 
 export function enabledRepos(repositories) {
     if (repositories) {
@@ -14,11 +15,20 @@ export function enabledRepos(repositories) {
     }
 }
 
-const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<LoadingCard
+const ConfigurationCard = ({
+    detailLoaded,
+    configuration,
+    handleClick,
+    hasPackages,
+    hasServices,
+    hasProcesses,
+    hasRepositories,
+    extra
+}) => (<LoadingCard
     title="Configuration"
     isLoading={ !detailLoaded }
     items={ [
-        {
+        ...hasPackages ? [{
             title: 'Installed packages',
             value: configuration.packages?.length,
             singular: 'package',
@@ -29,8 +39,8 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
                     generalMapper(configuration.packages, 'Package name')
                 );
             }
-        },
-        {
+        }] : [],
+        ...hasServices ? [{
             title: 'Services',
             value: configuration.services?.length,
             singular: 'service',
@@ -41,8 +51,8 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
                     generalMapper(configuration.services, 'Service name')
                 );
             }
-        },
-        {
+        }] : [],
+        ...hasProcesses ? [{
             title: 'Running processes',
             value: configuration.processes?.length,
             singular: 'process',
@@ -54,8 +64,8 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
                     generalMapper(configuration.processes, 'Process name')
                 );
             }
-        },
-        {
+        }] : [],
+        ...hasRepositories ? [{
             title: 'Repositories',
             value: enabledRepos(configuration.repositories),
             target: 'repositories',
@@ -66,7 +76,8 @@ const ConfigurationCard = ({ detailLoaded, configuration, handleClick }) => (<Lo
                     'medium'
                 );
             }
-        }
+        }] : [],
+        ...extra
     ] }
 />);
 
@@ -93,11 +104,21 @@ ConfigurationCard.propTypes = {
                 gpgcheck: PropTypes.bool
             }))
         })
-    })
+    }),
+    hasPackages: PropTypes.bool,
+    hasServices: PropTypes.bool,
+    hasProcesses: PropTypes.bool,
+    hasRepositories: PropTypes.bool,
+    extra: PropTypes.arrayOf(extraShape)
 };
 ConfigurationCard.defaultProps = {
     detailLoaded: false,
-    handleClick: () => undefined
+    handleClick: () => undefined,
+    hasPackages: true,
+    hasServices: true,
+    hasProcesses: true,
+    hasRepositories: true,
+    extra: []
 };
 
 export default connect(({

@@ -10,6 +10,7 @@ import { loadEntity } from '@redhat-cloud-services/frontend-components-inventory
 import { Popover, Button } from '@patternfly/react-core';
 import EditButton from '../EditButton';
 import { generalMapper } from '../dataMapper';
+import { extraShape } from '../constants';
 
 const TitleWithPopover = ({ title, content }) => (
     <React.Fragment>
@@ -66,7 +67,25 @@ class SystemCard extends Component {
     };
 
     render() {
-        const { detailLoaded, entity, properties, setDisplayName, setAnsibleHost, writePermissions, handleClick } = this.props;
+        const {
+            detailLoaded,
+            entity,
+            properties,
+            setDisplayName,
+            setAnsibleHost,
+            writePermissions,
+            handleClick,
+            hasHostName,
+            hasDisplayName,
+            hasAnsibleHostname,
+            hasSAP,
+            hasCPUs,
+            hasSockets,
+            hasCores,
+            hasCPUFlags,
+            hasRAM,
+            extra
+        } = this.props;
         const { isDisplayNameModalOpen, isAnsibleHostModalOpen } = this.state;
         return (
             <Fragment>
@@ -74,13 +93,13 @@ class SystemCard extends Component {
                     title="System properties"
                     isLoading={ !detailLoaded }
                     items={ [
-                        {
+                        ...hasHostName ? [{
                             title: <TitleWithPopover
                                 title='Host name'
                                 content='Name imported from the system.'/>,
                             value: entity.fqdn, size: 'md'
-                        },
-                        {
+                        }] : [],
+                        ...hasDisplayName ? [{
                             title: <TitleWithPopover
                                 title='Display name'
                                 content='System name displayed in an inventory list.'/>,
@@ -90,8 +109,8 @@ class SystemCard extends Component {
                                     <EditButton writePermissions={writePermissions} link="display_name" onClick={this.onShowDisplayModal} />
                                 </Fragment>
                             ), size: 'md'
-                        },
-                        {
+                        }] : [],
+                        ...hasAnsibleHostname ? [{
                             title: <TitleWithPopover
                                 title='Ansible hostname'
                                 content='Hostname that is used in playbooks by Remediations.'/>,
@@ -101,8 +120,8 @@ class SystemCard extends Component {
                                     <EditButton writePermissions={writePermissions} link="ansible_name" onClick={this.onShowAnsibleModal} />
                                 </Fragment>
                             ), size: 'md'
-                        },
-                        {
+                        }] : [],
+                        ...hasSAP ? [{
                             title: 'SAP',
                             value: properties.sapIds?.length,
                             singular: 'identifier',
@@ -113,19 +132,19 @@ class SystemCard extends Component {
                                     generalMapper(properties.sapIds, 'SID')
                                 );
                             }
-                        },
-                        { title: 'Number of CPUs', value: properties.cpuNumber },
-                        { title: 'Sockets', value: properties.sockets },
-                        { title: 'Cores per socket', value: properties.coresPerSocket },
-
-                        {
+                        }] : [],
+                        ...hasCPUs ? [{ title: 'Number of CPUs', value: properties.cpuNumber }] : [],
+                        ...hasSockets ? [{ title: 'Sockets', value: properties.sockets }] : [],
+                        ...hasCores ? [{ title: 'Cores per socket', value: properties.coresPerSocket }] : [],
+                        ...hasCPUFlags ? [{
                             title: 'CPU flags',
                             value: properties?.cpuFlags?.length,
                             singular: 'flag',
                             target: 'flag',
                             onClick: () => handleClick('CPU flags', generalMapper(properties.cpuFlags, 'flag name'))
-                        },
-                        { title: 'RAM', value: properties.ramSize }
+                        }] : [],
+                        ...hasRAM ? [{ title: 'RAM', value: properties.ramSize }] : [],
+                        ...extra
                     ] }
                 />
                 <TextInputModal
@@ -176,12 +195,32 @@ SystemCard.propTypes = {
     setDisplayName: PropTypes.func,
     setAnsibleHost: PropTypes.func,
     writePermissions: PropTypes.bool,
-    handleClick: PropTypes.func
+    handleClick: PropTypes.func,
+    hasHostName: PropTypes.bool,
+    hasDisplayName: PropTypes.bool,
+    hasAnsibleHostname: PropTypes.bool,
+    hasSAP: PropTypes.bool,
+    hasCPUs: PropTypes.bool,
+    hasSockets: PropTypes.bool,
+    hasCores: PropTypes.bool,
+    hasCPUFlags: PropTypes.bool,
+    hasRAM: PropTypes.bool,
+    extra: PropTypes.arrayOf(extraShape)
 };
 SystemCard.defaultProps = {
     detailLoaded: false,
     entity: {},
-    properties: {}
+    properties: {},
+    hasHostName: true,
+    hasDisplayName: true,
+    hasAnsibleHostname: true,
+    hasSAP: true,
+    hasCPUs: true,
+    hasSockets: true,
+    hasCores: true,
+    hasCPUFlags: true,
+    hasRAM: true,
+    extra: []
 };
 
 TitleWithPopover.propTypes = {

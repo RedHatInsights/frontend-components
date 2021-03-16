@@ -7,6 +7,7 @@ import { Tooltip } from '@patternfly/react-core';
 import LoadingCard from '../LoadingCard';
 import { collectionInformationSelector } from '../selectors';
 import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
+import { extraShape } from '../constants';
 
 const VersionTooltip = ({ egg, client }) => (
     <Tooltip
@@ -26,24 +27,36 @@ VersionTooltip.propTypes = {
     client: PropTypes.string
 };
 
-const CollectionCard = ({ detailLoaded, collectionInformation, entity }) => (<LoadingCard
+const CollectionCard = ({
+    detailLoaded,
+    collectionInformation,
+    entity,
+    hasClient,
+    hasLastCheckIn,
+    hasRegistered,
+    hasInsightsId,
+    hasReporter,
+    hasMachineId,
+    extra
+}) => (<LoadingCard
     title="Collection information"
     isLoading={ !detailLoaded }
     items={ [
-        { title: 'Insights client', value: <VersionTooltip egg={collectionInformation.egg} client={collectionInformation.client}/> },
-        { title: 'Last check-in', value: entity && (
+        ...hasClient ? [{ title: 'Insights client', value: <VersionTooltip egg={collectionInformation.egg} client={collectionInformation.client}/> }] : [],
+        ...hasLastCheckIn ? [{ title: 'Last check-in', value: entity && (
             DateFormat ?
                 <DateFormat date={ entity.updated } type="onlyDate" /> :
                 new Date(entity.updated).toLocaleString()
-        ) },
-        { title: 'Registered', value: entity && (
+        ) }] : [],
+        ...hasRegistered ? [{ title: 'Registered', value: entity && (
             DateFormat ?
                 <DateFormat date={entity.created} type="onlyDate" /> :
                 new Date(entity.created).toLocaleString()
-        ) },
-        { title: 'Insights id', value: entity && entity.insights_id },
-        { title: 'Reporter', value: entity && entity.reporter },
-        { title: 'RHEL machine id', value: entity && entity.rhel_machine_id }
+        ) }] : [],
+        ...hasInsightsId ? [{ title: 'Insights id', value: entity && entity.insights_id }] : [],
+        ...hasReporter ? [{ title: 'Reporter', value: entity && entity.reporter }] : [],
+        ...hasMachineId ? [{ title: 'RHEL machine id', value: entity && entity.rhel_machine_id }] : [],
+        ...extra
     ] }
 />);
 
@@ -56,10 +69,25 @@ CollectionCard.propTypes = {
     collectionInformation: PropTypes.shape({
         client: PropTypes.string,
         egg: PropTypes.string
-    })
+    }),
+    hasClient: PropTypes.bool,
+    hasLastCheckIn: PropTypes.bool,
+    hasRegistered: PropTypes.bool,
+    hasInsightsId: PropTypes.bool,
+    hasReporter: PropTypes.bool,
+    hasMachineId: PropTypes.bool,
+    extra: PropTypes.arrayOf(extraShape)
 };
 CollectionCard.defaultProps = {
-    detailLoaded: false
+    detailLoaded: false,
+    hasClient: true,
+    hasEgg: true,
+    hasLastCheckIn: true,
+    hasRegistered: true,
+    hasInsightsId: true,
+    hasReporter: true,
+    hasMachineId: true,
+    extra: []
 };
 
 export default connect(({

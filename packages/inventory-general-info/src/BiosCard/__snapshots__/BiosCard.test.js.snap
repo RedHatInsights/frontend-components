@@ -1,5 +1,179 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`BiosCard should not render hasReleaseDate 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        BIOS
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Vendor
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-vendor
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Version
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-version
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BiosCard should not render hasVendor 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        BIOS
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Version
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-version
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Release date
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Apr 2014
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BiosCard should not render hasVersion 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        BIOS
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Vendor
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-vendor
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Release date
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Apr 2014
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`BiosCard should render correctly - no data 1`] = `
 <div
   class="pf-l-stack pf-m-gutter"
@@ -215,6 +389,88 @@ exports[`BiosCard should render correctly with data 1`] = `
           data-pf-content="true"
         >
           01 Apr 2014
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BiosCard should render extra 1`] = `
+<div
+  class="pf-l-stack pf-m-gutter"
+>
+  <div
+    class="pf-l-stack__item"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <h1
+        class=""
+        data-pf-content="true"
+      >
+        BIOS
+      </h1>
+    </div>
+  </div>
+  <div
+    class="pf-l-stack__item pf-m-fill"
+  >
+    <div
+      class="pf-c-content"
+    >
+      <dl
+        class=""
+        data-pf-content="true"
+      >
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Vendor
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-vendor
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Version
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test-version
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          Release date
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          01 Apr 2014
+        </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          something
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          test
         </dd>
       </dl>
     </div>

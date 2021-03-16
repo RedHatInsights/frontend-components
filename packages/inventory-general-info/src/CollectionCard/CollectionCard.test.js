@@ -52,4 +52,25 @@ describe('CollectionCard', () => {
             'Dynamic update version: test-egg'
         );
     });
+
+    [
+        'hasClient',
+        'hasLastCheckIn',
+        'hasRegistered',
+        'hasInsightsId',
+        'hasReporter',
+        'hasMachineId'
+    ].map((item) => it(`should not render ${item}`, () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<CollectionCard store={ store } {...{ [item]: false }} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    }));
+
+    it('should render extra', () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<CollectionCard store={ store } extra={[
+            { title: 'something', value: 'test' }
+        ]} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 });

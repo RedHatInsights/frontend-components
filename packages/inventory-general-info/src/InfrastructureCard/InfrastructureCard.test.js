@@ -101,4 +101,24 @@ describe('InfrastructureCard', () => {
             expect(onClick).toHaveBeenCalled();
         });
     });
+
+    [
+        'hasType',
+        'hasVendor',
+        'hasIPv4',
+        'hasIPv6',
+        'hasInterfaces'
+    ].map((item) => it(`should not render ${item}`, () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<InfrastructureCard store={ store } {...{ [item]: false }} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    }));
+
+    it('should render extra', () => {
+        const store = mockStore(initialState);
+        const wrapper = render(<InfrastructureCard store={ store } extra={[
+            { title: 'something', value: 'test' }
+        ]} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 });

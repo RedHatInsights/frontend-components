@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const prepareRows = (rows = [], pagination = {}) => (
     rows
     .slice((pagination.page - 1) * pagination.perPage, pagination.page * pagination.perPage)
@@ -63,3 +65,11 @@ export const onDeleteFilter = (deleted = {}, deleteAll = false, activeFilters = 
         };
     }
 };
+
+export const extraShape = PropTypes.shape({
+    title: PropTypes.node,
+    value: PropTypes.node,
+    singular: PropTypes.node,
+    plural: PropTypes.node,
+    onClick: PropTypes.func
+});
