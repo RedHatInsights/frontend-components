@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-general-info",
-    "version": "3.0.2",
+    "version": "3.1.1",
     "description": "System info detail for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
