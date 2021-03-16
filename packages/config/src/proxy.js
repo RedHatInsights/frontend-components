@@ -1,10 +1,29 @@
 const { readFileSync } = require('fs');
 const { sync } = require('glob');
 
-function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose, https = true, port }) {
+function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose, https = true, port, routes, routesPath }) {
     const target = betaEnv === 'prod' ? 'https://cloud.redhat.com/' : `https://${betaEnv}.cloud.redhat.com/`;
 
-    const isNotCustomContext = (path) => customProxy.length > 0 ? customProxy.reduce((acc, curr) => acc && !curr.context(path), true) : true;
+    let proxyRoutes = routes;
+
+    if (routesPath) {
+        proxyRoutes = require(routesPath);
+    }
+
+    if (proxyRoutes) {
+        proxyRoutes = proxyRoutes.routes || proxyRoutes;
+    }
+
+    // eslint-disable-next-line no-console
+    proxyVerbose && proxyRoutes && console.log(`Using proxy routes: ${JSON.stringify(proxyRoutes, null, 2)}`);
+
+    const isNotCustomContext = (path) => {
+        if (Object.keys(proxyRoutes || {}).some((route) => path.includes(route))) {
+            return false;
+        }
+
+        return customProxy.length > 0 ? customProxy.reduce((acc, curr) => acc && !curr.context(path), true) : true;
+    };
 
     return {
         contentBase: `${rootFolder || ''}/dist`,
@@ -54,6 +73,19 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
                     }
                 }
             }] : []),
+            ...proxyRoutes ? Object.entries(proxyRoutes).map(([ route, redirect ]) => {
+                const currTarget = redirect.host || redirect;
+                delete redirect.host;
+                return {
+                    context: (path) => path.includes(route),
+                    target: currTarget === 'PORTAL_BACKEND_MARKER' ? target : currTarget,
+                    secure: false,
+                    changeOrigin: true,
+                    autoRewrite: true,
+                    ws: true,
+                    ...typeof redirect === 'object' ? redirect : {}
+                };
+            }) : [],
             ...customProxy
         ]
     };

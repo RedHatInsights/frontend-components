@@ -19,7 +19,10 @@ module.exports = ({
     skipChrome2 = false,
     useProxy,
     localChrome,
-    customProxy
+    customProxy,
+    proxyVerbose,
+    routes,
+    routesPath
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
@@ -152,7 +155,10 @@ module.exports = ({
             appName,
             publicPath,
             https,
-            port
+            port,
+            proxyVerbose,
+            routes,
+            routesPath
         }) : {
             contentBase: `${rootFolder || ''}/dist`,
             hot: true,
