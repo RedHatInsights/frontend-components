@@ -48,22 +48,6 @@ exports[`CollectionCard should render correctly - no data 1`] = `
           class=""
           data-pf-content="true"
         >
-          Egg
-        </dt>
-        <dd
-          class=""
-          data-pf-content="true"
-        >
-          <div
-            class="ins-c-skeleton ins-c-skeleton__sm"
-          >
-             
-          </div>
-        </dd>
-        <dt
-          class=""
-          data-pf-content="true"
-        >
           Last check-in
         </dt>
         <dd
@@ -184,19 +168,11 @@ exports[`CollectionCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          test-client
-        </dd>
-        <dt
-          class=""
-          data-pf-content="true"
-        >
-          Egg
-        </dt>
-        <dd
-          class=""
-          data-pf-content="true"
-        >
-          test-egg
+          <span
+            aria-describedby="pf-tooltip-1"
+          >
+            test-client
+          </span>
         </dd>
         <dt
           class=""

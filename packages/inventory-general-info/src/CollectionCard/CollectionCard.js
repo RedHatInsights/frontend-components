@@ -1,16 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+import { Tooltip } from '@patternfly/react-core';
+
 import LoadingCard from '../LoadingCard';
 import { collectionInformationSelector } from '../selectors';
 import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
+
+const VersionTooltip = ({ egg, client }) => (
+    <Tooltip
+        content={
+            <React.Fragment>
+                <p>RPM version: { client || 'Not available' }</p>
+                <p>Dynamic update version: { egg || 'Not available' }</p>
+            </React.Fragment>
+        }
+    >
+        <span>{ client || egg || 'Not available' }</span>
+    </Tooltip>
+);
+
+VersionTooltip.propTypes = {
+    egg: PropTypes.string,
+    client: PropTypes.string
+};
 
 const CollectionCard = ({ detailLoaded, collectionInformation, entity }) => (<LoadingCard
     title="Collection information"
     isLoading={ !detailLoaded }
     items={ [
-        { title: 'Insights client', value: collectionInformation.client },
-        { title: 'Egg', value: collectionInformation.egg },
+        { title: 'Insights client', value: <VersionTooltip egg={collectionInformation.egg} client={collectionInformation.client}/> },
         { title: 'Last check-in', value: entity && (
             DateFormat ?
                 <DateFormat date={ entity.updated } type="onlyDate" /> :
