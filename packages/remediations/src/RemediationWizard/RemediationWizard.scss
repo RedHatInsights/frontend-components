@@ -1,7 +1,0 @@
-@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all';
-
-.ins-c-remediation-modal {
-  .pf-c-modal-box__body {
-    > * + * { @include rem('margin-top', 20px); }
-  }
-}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import RemediationWizardHelper from '../NewRemediationWizard';
+import RemediationWizardHelper from '../RemediationWizard';
 import RemediationButton from '../RemediationButton/index';
 import { mount } from 'enzyme';
 import { CAN_REMEDIATE } from '../utils';

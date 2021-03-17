@@ -1,87 +1,51 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import propTypes from 'prop-types';
 import keyBy from 'lodash/keyBy';
 import transform from 'lodash/transform';
-
+import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
+import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
+import schemaBuilder from './schema';
 import * as api from '../api';
-import { Wizard } from '@redhat-cloud-services/frontend-components/Wizard';
-import Deferred from '@redhat-cloud-services/frontend-components-utilities/Deffered';
-import { remediationUrl } from '../utils';
+import Wizard from '@data-driven-forms/pf4-component-mapper/dist/esm/wizard';
+import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-field';
+import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
+import SelectPlaybook from '../steps/selectPlaybook';
+import ReviewActions from '../steps/reviewActions';
+import IssueResolution from '../steps/issueResolution';
+import FetchError from '../steps/fetchError';
+import Review from '../steps/review';
+import {
+    submitRemediation,
+    HAS_MULTIPLES,
+    SELECTED_RESOLUTIONS,
+    EXISTING_PLAYBOOK_SELECTED,
+    MANUAL_RESOLUTION
+} from '../utils';
 
-import ExistingOrNew from '../steps/ExistingOrNew';
-import ResolutionModeStep from '../steps/ResolutionModeStep';
-import IssueResolutionStep from '../steps/IssueResolutionStep';
-import SummaryStep from '../steps/SummaryStep';
-import LoadingStep from '../steps/LoadingStep';
-import ErrorStep from '../steps/ErrorStep';
+const RemediationWizard = ({
+    setOpen,
+    data,
+    basePath
+}) => {
 
-import './RemediationWizard.scss';
+    const [ state, setState ] = useState({ errors: [] });
 
-const nameRegex = /^$|^.*[\w\d]+.*$/;
+    const getIssuesMultiple = (issuesById, resolutions) =>
+        data.issues.map(issue => {
+            const issueResolutions = resolutions.find(r => r.id === issue.id).resolutions;
+            const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
+            return {
+                action: issuesById[issue.id].description,
+                systemsCount: issue.systems ? issue.systems.length : data.systems.length,
+                id: issue.id,
+                shortId: issue?.id?.split('|')?.slice(-1)?.[0] || issue.id,
+                resolution: description,
+                needsReboot,
+                alternate: issueResolutions?.length - 1
+            };
+        }).filter(record => record.alternate > 0);
 
-function createNotification (id, name, isNewSwitch) {
-    const verb = isNewSwitch ? 'created' : 'updated';
-
-    return {
-        variant: 'success',
-        title: `Playbook ${verb}`,
-        description: <span>You have successfully { verb } <a href={ remediationUrl(id) } >{ name }</a>.</span>,
-        dismissable: true
-    };
-}
-
-/* eslint camelcase: off */
-class RemediationWizard extends Component {
-
-    state = {
-        open: false
-    }
-
-    setOpen = open => {
-        this.setState({ open });
-    }
-
-    openWizard = (data, basePath) => {
-        const deferred = new Deferred();
-        const issuesById = keyBy(data.issues, issue => issue.id);
-
-        this.setState({
-            open: {
-                deferred,
-                data,
-                basePath
-            },
-
-            issuesById,
-
-            valid: true,
-
-            isNewSwitch: true,
-            name: '',
-            nameValid: true,
-            existingRemediations: false,
-            selectedRemediationId: false,
-            selectedRemediation: false,
-
-            resolutions: false,
-            manualResolutionSelection: true,
-            selectedResolutions: {},
-
-            errors: [],
-            onRemediationCreated: data.onRemediationCreated
-        });
-
-        this.loadRemediations();
-        this.loadResolutions(data.issues);
-
-        return deferred.promise;
-    }
-
-    loadRemediations = async () => {
-        const { data: existingRemediations } = await api.getRemediations();
-        this.setState({ existingRemediations });
-    }
-
-    loadResolutions = async (issues) => {
+    const loadResolutions = async (issues) => {
         try {
             const result = await api.getResolutionsBatch(issues.map(i => i.id));
 
@@ -95,217 +59,91 @@ class RemediationWizard extends Component {
                 return [ resolutions, errors ];
             }, [ [], [] ]);
 
-            this.setState({ resolutions, errors });
+            return { resolutions, errors };
         } catch (e) {
-            this.setState({ errors: [ 'Error obtaining resolution information. Please try again later.' ] });
-        }
-    }
-
-    closeWizard = submitted => {
-        const open = this.state.open;
-
-        if (!open) {
-            throw new Error('Wizard no longer mounted!');
-        }
-
-        if (submitted) {
-            if (!this.resolutionsLoaded() || this.state.errors.length) {
-                return false; // the wizard is not finished properly - do not let user submit it just yet
-            }
-
-            const { isNewSwitch, manualResolutionSelection } = this.state;
-            const { systems } = this.state.open.data;
-            const issues = this.state.open.data.issues.map(({ id }) => ({
-                id,
-                resolution: manualResolutionSelection ? this.getResolution(id)?.[0]?.id : undefined,
-                systems
-            }));
-
-            (isNewSwitch ? this.createRemediation : this.updateRemediation)({ issues, systems }, this.resolver(open.deferred));
-        } else {
-            open.deferred.resolve(false);
-        }
-
-        this.setOpen(false);
-    }
-
-    createRemediation = (add, resolver) => {
-        const name = this.state.name || 'Unnamed Playbook';
-        return api.createRemediation({ name, add, auto_reboot: this.state.autoRebootSwitch }, this.state.open.basePath)
-        .then(({ id }) => resolver(id, name, true));
-    };
-
-    updateRemediation = (add, resolver) => {
-        const { id, name } = this.state.selectedRemediation;
-
-        return api.patchRemediation(id, { add, auto_reboot: this.state.autoRebootSwitch }, this.state.open.basePath)
-        .then(() => resolver(id, name, false));
-    };
-
-    resolver = () => (id, name, isNewSwitch) => {
-        this.state.onRemediationCreated({
-            remediation: { id, name },
-            getNotification: () => createNotification(id, name, isNewSwitch)
-        });
-    };
-
-    /*
-     * Accessing state
-     */
-    getMultiResolutionIssues = () => {
-        return (this.state.resolutions || []).filter(issue => {
-            if (issue.resolutions.length > 1) {
-                if (this.state.selectedRemediation) {
-                    // if this issue is already part of the remediation we are adding into
-                    // let's not ask user about it again
-                    return !this.state.selectedRemediation.issues.some(i => i.id === issue.id);
-                }
-
-                return true;
-            }
-
-            return false;
-        });
-    }
-
-    resolutionsLoaded = () => {
-        return this.state.resolutions !== false;
-    }
-
-    selectedRemediationLoaded = () => {
-        return this.state.selectedRemediationId ? this.state.selectedRemediation : true;
-    }
-
-    getResolution = issueId => {
-        const { resolutions = [] } = this.state.resolutions.find(r => r.id === issueId) || {};
-
-        if (resolutions.length > 1)  {
-            if (this.state.manualResolutionSelection && issueId in this.state.selectedResolutions) {
-                return resolutions.filter(r => r.id === this.state.selectedResolutions[issueId]);
-            }
-
-            if (this.state.selectedRemediationId) {
-                const existing = this.state.selectedRemediation.issues.find(i => i.id === issueId);
-
-                if (existing) {
-                    return resolutions.filter(r => r.id === existing.resolution.id);
-                }
-            }
-        }
-
-        return resolutions;
-    }
-
-    /*
-     * State manipulation
-     */
-    onNameChange = name => this.setState({
-        name,
-        nameValid: nameRegex.test(name)
-    });
-
-    onIsNewSwitch = isNewSwitch => this.setState({
-        isNewSwitch,
-        selectedRemediation: this.onRemediationSelected(isNewSwitch ? false : this.state.existingRemediations[0].id)
-    });
-
-    onRemediationSelected = id => {
-        this.setState({ selectedRemediationId: id, selectedRemediation: false });
-        if (id) {
-            api.getRemediation(id).then(remediation => {
-                if (remediation.id === this.state.selectedRemediationId) {
-                    this.setState({ selectedRemediation: remediation });
-                }
-            });
+            return { errors: [ 'Error obtaining resolution information. Please try again later.' ] };
         }
     };
 
-    onManualResolutionSwitch = manualResolutionSelection => this.setState({ manualResolutionSelection });
-    onAutoRebootSwitch = autoRebootSwitch => this.setState({ autoRebootSwitch });
-    onResolutionSwitch = (issueId, resolutionId) => this.setState({
-        selectedResolutions: {
-            ...this.state.selectedResolutions,
-            [issueId]: resolutionId
-        }
-    });
-
-    onValidChange = valid => this.setState({ valid });
-
-    buildSteps = () => {
-        if (!this.state.open) {
-            return [];
-        }
-
-        const steps = [
-            <ExistingOrNew
-                key='RemediationNameStep'
-                state={ this.state }
-                onNameChange={ this.onNameChange }
-                onIsNewSwitch={ this.onIsNewSwitch }
-                onRemediationSelected={ this.onRemediationSelected }
-            />
-        ];
-
-        if (!this.resolutionsLoaded() || !this.selectedRemediationLoaded()) {
-            steps.push(<LoadingStep key='LoadingStep' onValidChange={ this.onValidChange }/>);
-            return steps;
-        }
-
-        // no valid resolutions
-        if (this.state.errors.length) {
-            steps.push(<ErrorStep key='ErrorStep' errors={ this.state.errors } onValidChange={ this.onValidChange }/>);
-            return steps;
-        }
-
-        const multiResolutionIssues = this.getMultiResolutionIssues();
-
-        if (multiResolutionIssues.length) {
-            steps.push(
-                <ResolutionModeStep
-                    key='ResolutionModeStep'
-                    multiResolutionIssues={ multiResolutionIssues }
-                    getResolution={ this.getResolution }
-                    state={ this.state }
-                    onManualResolutionSwitch={ this.onManualResolutionSwitch }
-                />
-            );
-        }
-
-        if (this.state.manualResolutionSelection) {
-            steps.push(...multiResolutionIssues.map(issue =>
-                <IssueResolutionStep key={ issue.id } issue={ issue } state={ this.state } onResolutionSwitch={ this.onResolutionSwitch } />
-            ));
-        }
-
-        steps.push(
-            <SummaryStep
-                key='SummaryStep'
-                state={ this.state }
-                getResolution={ this.getResolution }
-                onAutoRebootSwitch={ this.onAutoRebootSwitch }
-            />
+    useEffect(() => {
+        const issuesById = keyBy(data.issues, issue => issue.id);
+        loadResolutions(data.issues).then(
+            (values) => {
+                const issuesMultiple = getIssuesMultiple(issuesById, values.resolutions);
+                setState({
+                    ...state,
+                    ...values,
+                    schema: schemaBuilder(issuesMultiple),
+                    issuesById,
+                    issuesMultiple,
+                    basePath,
+                    isLoaded: true
+                });
+            }
         );
+    }, []);
 
-        return steps;
-    }
+    const mapperExtension = {
+        'select-playbook': {
+            component: state.errors.length > 0 ? FetchError : SelectPlaybook,
+            issues: data.issues,
+            systems: data.systems
+        },
+        'review-actions': {
+            component: ReviewActions,
+            issues: data.issues,
+            issuesMultiple: state.issuesMultiple
+        },
+        'issue-resolution': {
+            component: IssueResolution,
+            systems: data.systems,
+            resolutions: state.resolutions
+        },
+        review: {
+            component: Review,
+            data: data,
+            issuesById: state.issuesById,
+            resolutions: state.resolutions
+        }
+    };
 
-    render () {
-        const steps = this.buildSteps();
+    return (
+        state.isLoaded ?
+            <FormRenderer
+                schema={state.schema}
+                subscription={{ values: true }}
+                FormTemplate={(props) => <Pf4FormTemplate {...props} showFormControls={false} />}
+                initialValues={{
+                    [HAS_MULTIPLES]: !!state.resolutions?.find(r => r.resolutions.length > 1),
+                    [MANUAL_RESOLUTION]: true,
+                    [SELECTED_RESOLUTIONS]: {},
+                    [EXISTING_PLAYBOOK_SELECTED]: false
+                }}
+                componentMapper={{
+                    [componentTypes.WIZARD]: Wizard,
+                    [componentTypes.TEXT_FIELD]: TextField,
+                    ...mapperExtension
+                }}
+                onSubmit={(formValues) => {
+                    submitRemediation(formValues, data, basePath, state.resolutions);
+                    setOpen(false);
+                }}
+                onCancel={() => setOpen(false)}
+            /> : null
+    );
+};
 
-        return (
-            <Wizard
-                isLarge = { true }
-                isValidated={ this.state.valid && (this.state.nameValid || !this.state.isNewSwitch) }
-                title="Remediate with Ansible"
-                className='ins-c-remediation-modal'
-                onClose = { this.closeWizard }
-                isOpen= { this.state.open !== false }
-                isFooterLeftAligned
-                content = { steps }
-                confirmAction={ this.state.isNewSwitch ? 'Create' : 'Save' }
-            />
-        );
-    }
-}
+RemediationWizard.propTypes = {
+    setOpen: propTypes.func.isRequired,
+    data: propTypes.shape({
+        issues: propTypes.arrayOf(propTypes.shape({
+            description: propTypes.string,
+            id: propTypes.string
+        })),
+        systems: propTypes.arrayOf(propTypes.string),
+        onRemediationCreated: propTypes.func
+    }).isRequired,
+    basePath: propTypes.string
+};
 
 export default RemediationWizard;

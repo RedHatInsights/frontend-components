@@ -4,8 +4,8 @@ import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-r
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import ReviewActions from '../../newSteps/reviewActions';
-import { reviewActionsFields } from '../../NewRemediationWizard/schema';
+import ReviewActions from '../../steps/reviewActions';
+import { reviewActionsFields } from '../../RemediationWizard/schema';
 import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED } from '../../utils';
 import { BodyRow } from '@patternfly/react-table/dist/js/components/Table/base';
 import { remediationWizardTestData } from '../testData';

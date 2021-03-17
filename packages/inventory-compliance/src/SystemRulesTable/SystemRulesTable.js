@@ -259,7 +259,10 @@ class SystemRulesTable extends React.Component {
 
         let selectedRuleIds;
         if (this.selectAllCheckbox(key)) {
-            selectedRuleIds = this.getRules().map((rule) => rule.refId);
+            let ruleRefIds = this.getRules().map((rule) => rule.refId);
+            selectedRuleIds = selected ?
+                [ ...new Set([ ...selectedRefIds, ...ruleRefIds ]) ] :
+                selectedRefIds.filter((refId) => !ruleRefIds.includes(refId));
         } else {
             selectedRuleIds = selected ?
                 [ ...selectedRefIds, rowData.refId ] :
@@ -276,11 +279,14 @@ class SystemRulesTable extends React.Component {
         let selectedToRemediate;
 
         if (this.selectAllCheckbox(key)) {
-            selectedToRemediate = this.getRules().map((rule) => rule.rowKey);
+            let ruleRowKeys = this.getRules().map((rule) => rule.rowKey);
+            selectedToRemediate = selected ?
+                [ ...new Set([ ...currentlySelectToRemediate, ...ruleRowKeys ]) ] :
+                currentlySelectToRemediate.filter((rowKey) => !ruleRowKeys.includes(rowKey));
         } else {
             selectedToRemediate = selected ?
                 [ ...currentlySelectToRemediate, rowData.rowKey ] :
-                currentlySelectToRemediate.filter((refId) => (refId !== rowData.rowKey));
+                currentlySelectToRemediate.filter((rowKey) => (rowKey !== rowData.rowKey));
         }
 
         this.setState({

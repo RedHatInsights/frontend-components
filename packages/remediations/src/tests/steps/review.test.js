@@ -5,7 +5,7 @@ import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { AUTO_REBOOT } from '../../utils';
-import Review from '../../newSteps/review';
+import Review from '../../steps/review';
 import { BodyRow } from '@patternfly/react-table/dist/js/components/Table/base';
 import { remediationWizardTestData } from '../testData';
 
