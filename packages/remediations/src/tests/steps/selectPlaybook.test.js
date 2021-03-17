@@ -4,11 +4,11 @@ import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-r
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import { mount } from 'enzyme';
 import * as dependency from '../../api/index';
-import SelectPlaybook from '../../newSteps/selectPlaybook';
+import SelectPlaybook from '../../steps/selectPlaybook';
 import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-field';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import { act } from 'react-dom/test-utils';
-import { selectPlaybookFields } from '../../NewRemediationWizard/schema';
+import { selectPlaybookFields } from '../../RemediationWizard/schema';
 import { remediationWizardTestData } from '../testData';
 
 const RendererWrapper = (props) => (

@@ -4,7 +4,7 @@ import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-r
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import IssueResolution from '../../newSteps/issueResolution';
+import IssueResolution from '../../steps/issueResolution';
 import { SELECTED_RESOLUTIONS } from '../../utils';
 import { Tile } from '@patternfly/react-core';
 import { remediationWizardTestData } from '../testData';

@@ -1,2 +1,2 @@
-export { default } from './RemediationWizard';
-export { default as RemediationWizard } from './RemediationWizard';
+export { default } from './RemediationWizardHelper';
+export { default as RemediationWizard } from './RemediationWizardHelper';

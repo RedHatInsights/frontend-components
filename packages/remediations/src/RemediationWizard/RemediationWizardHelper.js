@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import RemediationWizard from './NewRemediationWizard';
+import BaseRemediationWizard from './RemediationWizard';
 
-class NewRemediationWizard extends Component {
+class RemediationWizard extends Component {
 
     state = {
         isOpen: false
@@ -22,7 +22,7 @@ class NewRemediationWizard extends Component {
     render () {
         return (
             this.state.isOpen
-                ? <RemediationWizard
+                ? <BaseRemediationWizard
                     data={this.state.data}
                     basePath={this.state.basePath}
                     setOpen={this.setOpen}/>
@@ -31,4 +31,4 @@ class NewRemediationWizard extends Component {
     }
 }
 
-export default NewRemediationWizard;
+export default RemediationWizard;

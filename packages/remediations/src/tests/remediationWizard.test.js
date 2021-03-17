@@ -3,7 +3,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import * as dependency from '../api/index';
 import { mount } from 'enzyme';
-import RemediationWizard from '../NewRemediationWizard/NewRemediationWizard';
+import RemediationWizard from '../RemediationWizard/RemediationWizard';
 import { remediationWizardTestData } from './testData';
 
 describe('RemediationWizard', () => {

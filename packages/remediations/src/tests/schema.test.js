@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import schemaBuilder, { issueResolutionNextStep, reviewActionsNextStep } from '../NewRemediationWizard/schema';
+import schemaBuilder, { issueResolutionNextStep, reviewActionsNextStep } from '../RemediationWizard/schema';
 import {
     EXISTING_PLAYBOOK,
     MANUAL_RESOLUTION,
