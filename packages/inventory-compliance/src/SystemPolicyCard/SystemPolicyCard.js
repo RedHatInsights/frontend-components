@@ -72,25 +72,13 @@ class SystemPolicyCard extends React.Component {
                     >
                         { cardTitle }
                     </Text>
-                    { policy ?
-                        <Text
-                            style={{ color: 'var(--pf-global--Color--200)' }}
-                            component={ TextVariants.small }
-                            onMouseEnter={ this.onSubTitleMouseover }
-                            onMouseLeave={ this.onSubTitleMouseout }>
-                            { cardSubTitle }
-                        </Text>
-                        :
-                        <Tooltip position='bottom' content={
-                            <TextContent>
-                                This policy report was uploaded into the Compliance application.
-                                If you would like to manage your policy inside the Compliance application,
-                                use the &quot;Create a policy&quot; wizard to create one and associate systems.
-                            </TextContent>
-                        }>
-                            External policy <OutlinedQuestionCircleIcon className='grey-icon'/>
-                        </Tooltip>
-                    }
+                    <Text
+                        style={{ color: 'var(--pf-global--Color--200)' }}
+                        component={ TextVariants.small }
+                        onMouseEnter={ this.onSubTitleMouseover }
+                        onMouseLeave={ this.onSubTitleMouseout }>
+                        { cardSubTitle }
+                    </Text>
                 </TextContent>
                 <div className='margin-bottom-md' >
                     { supported && this.complianceIcon(compliant) }

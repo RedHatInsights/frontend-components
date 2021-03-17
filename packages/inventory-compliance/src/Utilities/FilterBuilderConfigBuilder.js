@@ -72,9 +72,7 @@ export const POLICIES_FILTER_CONFIG = (policies) => ({
         { label: policy.name, value: policy.id }
     )),
     filter: (rules, values) => filterRulesWithAllValues(rules, values, (rule, value) => (
-        rule.profiles.filter((profile) =>
-            profile.policy ? profile.policy.id === value : profile.id === value
-        ).length > 0
+        rule.profiles.filter((profile) => profile.policy.id === value).length > 0
     ))
 });
 
