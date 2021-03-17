@@ -9,9 +9,9 @@ const InventoryLoadError = ({ component, ...props }) => {
         <div>
             <h1>Unable to load inventory component</h1>
             <h2>Failed to load {component}</h2>
-            <pre>
-                {JSON.stringify(props, null, 2)}
-            </pre>
+            <code>
+                More info can be found in browser console output.
+            </code>
         </div>
     );
 };
