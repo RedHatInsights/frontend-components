@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import { CloseIcon, RedoIcon } from '@patternfly/react-icons';
 import urijs from 'urijs';
 import * as api from '../api';
+import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry/ReducerRegistry';
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
 
@@ -13,6 +14,9 @@ export const SELECTED_RESOLUTIONS = 'selected-resolutions';
 export const MANUAL_RESOLUTION = 'manual-resolution';
 export const EXISTING_PLAYBOOK_SELECTED = 'existing-playbook-selected';
 export const EXISTING_PLAYBOOK = 'existing-playbook';
+export const SYSTEMS = 'systems';
+
+export const TOGGLE_BULK_SELECT = 'toggle-bulk-select';
 
 // Get the current group since we can be mounted at two urls
 export function getGroup () {
@@ -111,3 +115,78 @@ export const submitRemediation = (formValues, data, basePath, resolutions) => {
         .then(({ id }) => resolver(id, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated));
     }
 };
+
+const entitySelected = (state, { payload }, onSelect) => {
+    const selected = state.selected || new Map();
+    if (payload.selected) {
+        if (payload.id === 0) {
+            state.rows.forEach((row) => selected.set(row.id, row));
+        } else {
+            const selectedRow = state?.rows?.find(({ id } = {}) => id === payload.id);
+            selected.set(payload.id, { ...(selectedRow || {}), id: payload.id });
+        }
+    } else {
+        if (payload.id === 0) {
+            state.rows.forEach((row) => selected.delete(row.id));
+        } else if (payload.id === -1) {
+            selected.clear();
+        } else {
+            selected.delete(payload.id);
+        }
+    }
+
+    onSelect(new Map(selected));
+
+    return {
+        ...state,
+        selected: new Map(selected)
+    };
+};
+
+const loadEntitiesFulfilled = (state, onSelect) => {
+    let selected = state.selected || new Map();
+    if (!state.selected) {
+        state.rows.forEach((row) => {
+            selected.set(row.id, row);
+        });
+    }
+
+    onSelect(selected);
+    return ({
+        ...state,
+        selected,
+        rows: state.rows.map(({ id, ...row }) => ({
+            id,
+            ...row,
+            selected: !!selected?.get(id)
+        }))
+    });
+};
+
+const changeBulkSelect = (state, action, onSelect) => {
+    const removeSelected = !action.payload;
+    if (!removeSelected) {
+        state.rows.forEach((row) => {
+            state.selected.set(row.id, row);
+        });
+        onSelect(state.selected);
+    } else {
+        onSelect(new Map());
+    }
+
+    return ({
+        ...state,
+        selected: removeSelected ? new Map() : state.selected,
+        rows: state.rows.map(({ id, ...row }) => ({
+            id,
+            ...row,
+            selected: !removeSelected
+        }))
+    });
+};
+
+export const inventoryEntitiesReducer = (onSelect) => applyReducerHash({
+    SELECT_ENTITY: (state, action) => entitySelected(state, action, onSelect),
+    LOAD_ENTITIES_FULFILLED: (state) => loadEntitiesFulfilled(state, onSelect),
+    [TOGGLE_BULK_SELECT]: (state, action) => changeBulkSelect(state, action, onSelect)
+});

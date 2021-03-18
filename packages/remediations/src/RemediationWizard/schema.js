@@ -7,7 +7,8 @@ import {
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED,
     SELECTED_RESOLUTIONS,
-    AUTO_REBOOT
+    AUTO_REBOOT,
+    SYSTEMS
 } from '../utils';
 
 export const selectPlaybookFields = [{
@@ -72,8 +73,9 @@ export default issues => ({
                     name: 'systems',
                     title: 'Review systems',
                     fields: [{
-                        name: 'review-systems',
-                        component: 'review-systems'
+                        name: SYSTEMS,
+                        component: 'review-systems',
+                        validate: [{ type: 'validate-systems' }]
                     }],
                     nextStep: ({ values }) => values[HAS_MULTIPLES] ? 'actions' : 'review'
                 },
