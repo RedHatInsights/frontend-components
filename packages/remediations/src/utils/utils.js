@@ -103,9 +103,9 @@ export const submitRemediation = (formValues, data, basePath, resolutions) => {
     const issues = data.issues.map(({ id }) => ({
         id,
         resolution: getResolution(id, formValues, resolutions)?.[0]?.id,
-        systems: data.systems
+        systems: formValues.systems
     }));
-    const add = { issues, systems: data.systems };
+    const add = { issues, systems: formValues.systems };
     if (formValues[EXISTING_PLAYBOOK_SELECTED]) {
         const { id, name } = formValues[EXISTING_PLAYBOOK];
         api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)

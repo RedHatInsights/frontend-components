@@ -4,7 +4,12 @@
     }   
 }
 
-.ins-c-resolution-option{
+.ins-c-resolution-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ins-c-resolution-option {
     width: 50%;
     padding: var(--pf-global--spacer--sm);
     .pf-c-tile {

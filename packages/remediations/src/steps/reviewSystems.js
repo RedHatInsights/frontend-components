@@ -13,7 +13,7 @@ import promiseMiddleware from 'redux-promise-middleware';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
-import { inventoryEntitiesReducer as entitiesReducer, TOGGLE_BULK_SELECT } from '../utils';
+import { EXISTING_PLAYBOOK, inventoryEntitiesReducer as entitiesReducer, TOGGLE_BULK_SELECT } from '../utils';
 import './reviewSystems.scss';
 
 const ReviewSystems = (props) => {
@@ -32,12 +32,20 @@ const ReviewSystems = (props) => {
         rows: entities?.rows || []
     }));
 
-    const allSystems = [ ...new Set(issues.reduce((acc, curr) => [
+    const formValues = formOptions.getState().values;
+    const error = formOptions.getState().errors?.systems;
+    const playbook = formValues && formValues[EXISTING_PLAYBOOK];
+
+    const allNewSystems = [ ...new Set(issues.reduce((acc, curr) => [
         ...acc,
         ...(curr.systems || [])
     ], [ ...systems ])) ];
 
-    const error = formOptions.getState().errors?.systems;
+    const allSystems = playbook ? [ ...new Set(playbook.issues?.reduce((acc, curr) => [
+        ...acc,
+        ...(curr.systems?.map(system => system.id) || [])
+    ], [ ...allNewSystems ]))
+    ] : allNewSystems;
 
     const onRefresh = (options, callback) => {
         if (!callback && inventory && inventory.current) {

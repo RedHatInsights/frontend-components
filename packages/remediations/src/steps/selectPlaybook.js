@@ -37,7 +37,6 @@ const SelectPlaybook = (props) => {
     const [ newPlaybookName, setNewPlaybookName ] = useState(values[EXISTING_PLAYBOOK_SELECTED] ? '' : input.value);
     const [ selectedPlaybook, setSelectedPlaybook ] = useState(values[EXISTING_PLAYBOOK]);
     const [ isLoadingRemediation, setIsLoadingRemediation ] = useState(false);
-    const [ systemsExpanded, setSystemsExpanded ] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
