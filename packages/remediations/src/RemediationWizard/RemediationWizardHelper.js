@@ -10,7 +10,10 @@ class RemediationWizard extends Component {
     openWizard = (data, basePath) => {
         this.setState({
             isOpen: true,
-            data,
+            data: {
+                ...data,
+                systems: data.systems || []
+            },
             basePath
         });
     }

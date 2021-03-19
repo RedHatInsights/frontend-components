@@ -34,7 +34,7 @@ const RemediationWizard = ({
 
     const getIssuesMultiple = (issuesById, resolutions) =>
         data.issues.map(issue => {
-            const issueResolutions = resolutions.find(r => r.id === issue.id).resolutions;
+            const issueResolutions = resolutions.find(r => r.id === issue.id)?.resolutions || [];
             const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
             return {
                 action: issuesById[issue.id].description,
