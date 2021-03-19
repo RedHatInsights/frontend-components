@@ -61,7 +61,7 @@ export default issues => ({
             inModal: true,
             showTitles: true,
             title: 'Remediate with Ansible',
-            description: 'Add issues to an Ansible Playbook',
+            description: 'Add actions to an Ansible Playbook',
             fields: [
                 {
                     name: 'playbook',
