@@ -18,11 +18,7 @@ const BiosCard = ({ bios, detailLoaded, hasVendor, hasVersion, handleClick, hasR
         ) }] : [],
         ...extra.map(({ onClick, ...item }) => ({
             ...item,
-            ...onClick && {
-                onClick: () => {
-                    handleClick(...onClick() || []);
-                }
-            }
+            ...onClick && { onClick: (e) => onClick(e, handleClick) }
         }))
     ] }
 />);

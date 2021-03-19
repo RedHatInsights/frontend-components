@@ -146,11 +146,7 @@ class SystemCard extends Component {
                         ...hasRAM ? [{ title: 'RAM', value: properties.ramSize }] : [],
                         ...extra.map(({ onClick, ...item }) => ({
                             ...item,
-                            ...onClick && {
-                                onClick: () => {
-                                    handleClick(...onClick() || []);
-                                }
-                            }
+                            ...onClick && { onClick: (e) => onClick(e, handleClick) }
                         }))
                     ] }
                 />

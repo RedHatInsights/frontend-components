@@ -113,7 +113,7 @@ describe('ConfigurationCard', () => {
         const store = mockStore(initialState);
         const wrapper = render(<ConfigurationCard store={ store } extra={[
             { title: 'something', value: 'test' },
-            { title: 'with click', value: '1 tests', onClick: () => [ 'Something', {}, 'small' ] }
+            { title: 'with click', value: '1 tests', onClick: (_e, handleClick) => handleClick('Something', {}, 'small') }
         ]} />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
