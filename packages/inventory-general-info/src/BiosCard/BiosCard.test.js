@@ -57,7 +57,8 @@ describe('BiosCard', () => {
     it('should render extra', () => {
         const store = mockStore(initialState);
         const wrapper = render(<BiosCard store={ store } extra={[
-            { title: 'something', value: 'test' }
+            { title: 'something', value: 'test' },
+            { title: 'with click', value: '1 tests', onClick: (_e, handleClick) => handleClick('Something', {}, 'small') }
         ]} />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
