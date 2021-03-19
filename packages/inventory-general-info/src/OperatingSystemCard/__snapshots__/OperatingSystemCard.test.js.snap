@@ -906,6 +906,22 @@ exports[`OperatingSystemCard should render extra 1`] = `
         >
           test
         </dd>
+        <dt
+          class=""
+          data-pf-content="true"
+        >
+          with click
+        </dt>
+        <dd
+          class=""
+          data-pf-content="true"
+        >
+          <a
+            href="http://localhost:5000//undefined"
+          >
+            1 tests
+          </a>
+        </dd>
       </dl>
     </div>
   </div>

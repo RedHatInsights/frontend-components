@@ -42,7 +42,14 @@ const OperatingSystemCard = ({
                     );
                 }
             }] : [],
-            ...extra
+            ...extra.map(({ onClick, ...item }) => ({
+                ...item,
+                ...onClick && {
+                    onClick: () => {
+                        handleClick(...onClick() || []);
+                    }
+                }
+            }))
         ] }
     />
 );

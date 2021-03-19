@@ -60,7 +60,14 @@ const InfrastructureCard = ({
                 );
             }
         }] : [],
-        ...extra
+        ...extra.map(({ onClick, ...item }) => ({
+            ...item,
+            ...onClick && {
+                onClick: () => {
+                    handleClick(...onClick() || []);
+                }
+            }
+        }))
     ] }
 />);
 

@@ -6,7 +6,7 @@ import { biosSelector } from '../selectors';
 import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
 import { extraShape, isDate } from '../constants';
 
-const BiosCard = ({ bios, detailLoaded, hasVendor, hasVersion, hasReleaseDate, extra }) => (<LoadingCard
+const BiosCard = ({ bios, detailLoaded, hasVendor, hasVersion, handleClick, hasReleaseDate, extra }) => (<LoadingCard
     title="BIOS"
     isLoading={ !detailLoaded }
     items={ [
@@ -16,7 +16,14 @@ const BiosCard = ({ bios, detailLoaded, hasVendor, hasVersion, hasReleaseDate, e
             <DateFormat date={ new Date(bios.releaseDate) } type="onlyDate" /> :
             'Not available'
         ) }] : [],
-        ...extra
+        ...extra.map(({ onClick, ...item }) => ({
+            ...item,
+            ...onClick && {
+                onClick: () => {
+                    handleClick(...onClick() || []);
+                }
+            }
+        }))
     ] }
 />);
 

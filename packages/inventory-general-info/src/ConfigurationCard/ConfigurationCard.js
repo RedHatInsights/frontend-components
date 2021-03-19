@@ -77,7 +77,14 @@ const ConfigurationCard = ({
                 );
             }
         }] : [],
-        ...extra
+        ...extra.map(({ onClick, ...item }) => ({
+            ...item,
+            ...onClick && {
+                onClick: () => {
+                    handleClick(...onClick() || []);
+                }
+            }
+        }))
     ] }
 />);
 

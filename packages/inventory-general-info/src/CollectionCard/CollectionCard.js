@@ -31,6 +31,7 @@ const CollectionCard = ({
     detailLoaded,
     collectionInformation,
     entity,
+    handleClick,
     hasClient,
     hasLastCheckIn,
     hasRegistered,
@@ -56,7 +57,14 @@ const CollectionCard = ({
         ...hasInsightsId ? [{ title: 'Insights id', value: entity && entity.insights_id }] : [],
         ...hasReporter ? [{ title: 'Reporter', value: entity && entity.reporter }] : [],
         ...hasMachineId ? [{ title: 'RHEL machine id', value: entity && entity.rhel_machine_id }] : [],
-        ...extra
+        ...extra.map(({ onClick, ...item }) => ({
+            ...item,
+            ...onClick && {
+                onClick: () => {
+                    handleClick(...onClick() || []);
+                }
+            }
+        }))
     ] }
 />);
 
@@ -66,6 +74,7 @@ CollectionCard.propTypes = {
         updated: PropTypes.string,
         created: PropTypes.string
     }),
+    handleClick: PropTypes.func,
     collectionInformation: PropTypes.shape({
         client: PropTypes.string,
         egg: PropTypes.string
@@ -80,6 +89,7 @@ CollectionCard.propTypes = {
 };
 CollectionCard.defaultProps = {
     detailLoaded: false,
+    handleClick: () => undefined,
     hasClient: true,
     hasEgg: true,
     hasLastCheckIn: true,

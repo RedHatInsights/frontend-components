@@ -243,7 +243,8 @@ describe('SystemCard', () => {
     it('should render extra', () => {
         const store = mockStore(initialState);
         const wrapper = render(<SystemCard store={ store } extra={[
-            { title: 'something', value: 'test' }
+            { title: 'something', value: 'test' },
+            { title: 'with click', value: '1 tests', onClick: () => [ 'Something', {}, 'small' ] }
         ]} />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });

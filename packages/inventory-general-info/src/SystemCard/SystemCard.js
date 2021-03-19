@@ -144,7 +144,14 @@ class SystemCard extends Component {
                             onClick: () => handleClick('CPU flags', generalMapper(properties.cpuFlags, 'flag name'))
                         }] : [],
                         ...hasRAM ? [{ title: 'RAM', value: properties.ramSize }] : [],
-                        ...extra
+                        ...extra.map(({ onClick, ...item }) => ({
+                            ...item,
+                            ...onClick && {
+                                onClick: () => {
+                                    handleClick(...onClick() || []);
+                                }
+                            }
+                        }))
                     ] }
                 />
                 <TextInputModal
