@@ -2,6 +2,18 @@
 
 [![npm version](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-config.svg)](https://badge.fury.io/js/%40redhat-cloud-services%2Ffrontend-components-config)
 
+- [RedHat Cloud Services frontend components - webpack config](#redhat-cloud-services-frontend-components---webpack-config)
+  - [Webpack 5](#webpack-5)
+    - [Removed features with webpack 5](#removed-features-with-webpack-5)
+  - [useProxy](#useproxy)
+    - [localChrome](#localchrome)
+    - [Custom routes](#custom-routes)
+      - [routes](#routes)
+      - [routesPath](#routespath)
+    - [Custom proxy settings](#custom-proxy-settings)
+    - [Chrome 1 environments](#chrome-1-environments)
+      - [Prod environment example](#prod-environment-example)
+
 ## Webpack 5
 
 In order to use the new version of webpack and its federated medules you'll have to change your run script to use new [`webpack serve`](https://webpack.js.org/configuration/dev-server/).
@@ -103,7 +115,7 @@ module.exports = {
   }
 };
 
-``` 
+```
 
 ### Custom proxy settings
 
@@ -133,3 +145,36 @@ const { config: webpackConfig, plugins } = config({
 ```
 
 This configuration will redirect all API requests to QA environment, so you can check CI UI with QA data.
+
+### Chrome 1 environments
+
+To run your application in Chrome 1 environment, just add `appUrl` that contains entry url for your application.
+
+```jsx
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  debug: true,
+  useFileHash: false,
+  deployment: process.env.BETA ? 'beta/apps' : 'apps',
+  useProxy: true,
+  appUrl: process.env.BETA ? '/beta/settings/sources' : '/settings/sources'
+});
+```
+
+This settings will redirect all requests to `appUrl` to your local `index.html` file and will replace ESI tags for Chrome.
+
+#### Prod environment example
+
+```jsx
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  debug: true,
+  useFileHash: false,
+  deployment: process.env.BETA ? 'beta/apps' : 'apps',
+  useProxy: true,
+  betaEnv: 'prod',
+  appUrl: process.env.BETA ? '/beta/settings/sources' : '/settings/sources'
+});
+```
+
+Then go to `https://prod.foo.redhat.com:1337/` and you should be able to login and use your local UI build within production environment.

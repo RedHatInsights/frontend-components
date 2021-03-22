@@ -1,7 +1,14 @@
+/* eslint-disable no-console */
 const { readFileSync } = require('fs');
 const { sync } = require('glob');
+const ESI = require('nodesi');
 
-function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose, https = true, port, routes, routesPath }) {
+function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose, https = true, port = 1337, routes, routesPath, appUrl }) {
+    // disable self signed CERT checks for esi
+    if (appUrl) {
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+    }
+
     const target = betaEnv === 'prod' ? 'https://cloud.redhat.com/' : `https://${betaEnv}.cloud.redhat.com/`;
 
     let proxyRoutes = routes;
@@ -14,7 +21,18 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
         proxyRoutes = proxyRoutes.routes || proxyRoutes;
     }
 
-    // eslint-disable-next-line no-console
+    const esi = appUrl && new ESI({
+        allowedHosts: [ /^https:\/\/.*cloud.redhat.com$/ ],
+        baseUrl: `${https ? 'https' : 'http'}://${betaEnv}.foo.redhat.com:${port}`,
+        cache: false,
+        onError: (src, error) => {
+            console.error(
+                `An error occurred while resolving an ESI tag`
+            );
+            console.error(error);
+        }
+    });
+
     proxyVerbose && proxyRoutes && console.log(`Using proxy routes: ${JSON.stringify(proxyRoutes, null, 2)}`);
 
     const isNotCustomContext = (path) => {
@@ -25,11 +43,21 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
         return customProxy.length > 0 ? customProxy.reduce((acc, curr) => acc && !curr.context(path), true) : true;
     };
 
+    const customPaths = [
+        ...(localChrome ? [ process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/' ] : []),
+        ...(appUrl ? [ appUrl ] : [])
+    ];
+    const pathInCustomPaths = (path) => customPaths.some((customPath) => path.includes(customPath));
+
+    if (appUrl && proxyVerbose) {
+        console.log('\n\nServing index html on: ', appUrl, '\n\n');
+    }
+
     return {
         contentBase: `${rootFolder || ''}/dist`,
         index: `${rootFolder || ''}/dist/index.html`,
         host: `${betaEnv}.foo.redhat.com`,
-        port: port || 1337,
+        port,
         https,
         inline: true,
         disableHostCheck: true,
@@ -38,15 +66,32 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
         publicPath,
         proxy: [
             {
-                context: (path) => localChrome
-                    ? isNotCustomContext(path) && !path.includes(process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/') || path.includes('.svg')
-                    : isNotCustomContext(path),
+                context: (path) => (isNotCustomContext(path) && !pathInCustomPaths(path)) || path.includes('.svg'),
+                target,
+                secure: false,
+                changeOrigin: true,
+                autoRewrite: true
+            },
+            ...(appUrl ? [{
+                context: path => path.includes(appUrl),
                 target,
                 secure: false,
                 changeOrigin: true,
                 autoRewrite: true,
-                ws: true
-            },
+                selfHandleResponse: true,
+                // serve index.html from local and replace ESI tags for chrome
+                onProxyReq: async (_proxyReq, req, res) => {
+                    const localPath = sync(`${rootFolder}/dist/index.html`);
+
+                    proxyVerbose && console.log('serving locally', req.url, '--->', localPath[0], '\n\n');
+
+                    if (localPath[0]) {
+                        const localFile = readFileSync(localPath[0]);
+                        const newData = await esi.process(localFile.toString());
+                        res.end(newData);
+                    }
+                }
+            }] : []),
             ...(localChrome ? [{
                 context: (path) => path.includes(process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/') && !path.includes('.svg'),
                 target,
@@ -63,7 +108,6 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
 
                     const localPath = sync(`${localChrome}${newPath}`);
 
-                    // eslint-disable-next-line no-console
                     proxyVerbose && console.log('serving locally', req.url, '--->', newPath, '------>', localPath[0], '\n\n');
 
                     // if there is a local file with the same name, it's served
