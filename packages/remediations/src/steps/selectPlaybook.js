@@ -17,6 +17,7 @@ import {
 } from '@patternfly/react-core';
 import {
     pluralize,
+    dedupeArray,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
@@ -27,10 +28,10 @@ const SelectPlaybook = (props) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState().values;
-    const allSystems = [ ...new Set(issues.reduce((acc, curr) => [
+    const allSystems = dedupeArray(issues.reduce((acc, curr) => [
         ...acc,
         ...(curr.systems || [])
-    ], [ ...systems ])) ];
+    ], [ ...systems ]));
 
     const [ existingRemediations, setExistingRemediations ] = useState();
     const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(values[EXISTING_PLAYBOOK_SELECTED]);

@@ -33,6 +33,8 @@ export function remediationUrl (id) {
     return urijs(document.baseURI).segment(getGroup()).segment('remediations').segment(id).toString();
 }
 
+export const dedupeArray = (array) => [ ...new Set(array) ];
+
 export const pluralize = (count, str) => count > 1 ? str + 's' : str;
 
 const sortRecords = (records, sortByState) => records.sort(
