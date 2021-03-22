@@ -111,3 +111,217 @@ exports[`FilterChips component should render 1`] = `
   </Button>
 </span>
 `;
+
+exports[`FilterChips component should render group delete 1`] = `
+<span
+  className="ins-c-chip-filters"
+>
+  <ChipGroup
+    aria-label="Chip group category"
+    categoryName="Group 1"
+    closeBtnAriaLabel="Close chip group"
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    isClosable={true}
+    key="group_Group 1"
+    numChips={3}
+    onClick={[Function]}
+    tooltipPosition="top"
+  >
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      key="Chip 1"
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 1
+    </Chip>
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      key="Chip 2"
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 2
+      <Badge
+        key="chip_badge_undefined"
+      >
+        3
+      </Badge>
+    </Chip>
+  </ChipGroup>
+  <ChipGroup
+    aria-label="Chip group category"
+    categoryName=""
+    closeBtnAriaLabel="Close chip group"
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    isClosable={false}
+    key="group_plain_chip_Chip 3"
+    numChips={3}
+    onClick={[Function]}
+    tooltipPosition="top"
+  >
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 3
+    </Chip>
+  </ChipGroup>
+  <ChipGroup
+    aria-label="Chip group category"
+    categoryName=""
+    closeBtnAriaLabel="Close chip group"
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    isClosable={false}
+    key="group_plain_chip_Chip 4"
+    numChips={3}
+    onClick={[Function]}
+    tooltipPosition="top"
+  >
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 4
+    </Chip>
+  </ChipGroup>
+  <Button
+    onClick={[Function]}
+    variant="link"
+  >
+    Clear filters
+  </Button>
+</span>
+`;
+
+exports[`FilterChips component should render with custom delete message 1`] = `
+<span
+  className="ins-c-chip-filters"
+>
+  <ChipGroup
+    aria-label="Chip group category"
+    categoryName="Group 1"
+    closeBtnAriaLabel="Close chip group"
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    isClosable={false}
+    key="group_Group 1"
+    numChips={3}
+    onClick={[Function]}
+    tooltipPosition="top"
+  >
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      key="Chip 1"
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 1
+    </Chip>
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      key="Chip 2"
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 2
+      <Badge
+        key="chip_badge_undefined"
+      >
+        3
+      </Badge>
+    </Chip>
+  </ChipGroup>
+  <ChipGroup
+    aria-label="Chip group category"
+    categoryName=""
+    closeBtnAriaLabel="Close chip group"
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    isClosable={false}
+    key="group_plain_chip_Chip 3"
+    numChips={3}
+    onClick={[Function]}
+    tooltipPosition="top"
+  >
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 3
+    </Chip>
+  </ChipGroup>
+  <ChipGroup
+    aria-label="Chip group category"
+    categoryName=""
+    closeBtnAriaLabel="Close chip group"
+    collapsedText="\${remaining} more"
+    defaultIsOpen={false}
+    expandedText="Show Less"
+    isClosable={false}
+    key="group_plain_chip_Chip 4"
+    numChips={3}
+    onClick={[Function]}
+    tooltipPosition="top"
+  >
+    <Chip
+      className=""
+      closeBtnAriaLabel="close"
+      component="div"
+      isOverflowChip={false}
+      isReadOnly={false}
+      onClick={[Function]}
+      tooltipPosition="top"
+    >
+      Chip 4
+    </Chip>
+  </ChipGroup>
+  <Button
+    onClick={[Function]}
+    variant="link"
+  >
+    <div>
+      Some delete title
+    </div>
+  </Button>
+</span>
+`;
