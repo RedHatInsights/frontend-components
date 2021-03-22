@@ -117,38 +117,33 @@ export const submitRemediation = (formValues, data, basePath, resolutions) => {
 };
 
 const entitySelected = (state, { payload }, onSelect) => {
-    const selected = state.selected || new Map();
+    let selected = state.selected || [];
     if (payload.selected) {
-        if (payload.id === 0) {
-            state.rows.forEach((row) => selected.set(row.id, row));
-        } else {
-            const selectedRow = state?.rows?.find(({ id } = {}) => id === payload.id);
-            selected.set(payload.id, { ...(selectedRow || {}), id: payload.id });
-        }
+        selected = [
+            ...selected,
+            ...payload.id === 0 ? state.rows.map(row => row.id) : [ payload.id ]
+        ];
     } else {
         if (payload.id === 0) {
-            state.rows.forEach((row) => selected.delete(row.id));
-        } else if (payload.id === -1) {
-            selected.clear();
+            const rowsIds = state.rows.map(row => row.id);
+            selected = selected.filter(item => !rowsIds.includes(item));
         } else {
-            selected.delete(payload.id);
+            selected = payload.id === -1 ? [] : selected.filter(item => item !== payload.id);
         }
     }
 
-    onSelect(new Map(selected));
+    onSelect(selected);
 
     return {
         ...state,
-        selected: new Map(selected)
+        selected
     };
 };
 
 const loadEntitiesFulfilled = (state, onSelect, formValue) => {
-    let selected = state.selected || new Map();
+    let selected = state.selected || [];
     if (!state.selected) {
-        state.rows.forEach((row) => {
-            (!formValue || formValue.includes(row.id)) && selected.set(row.id, row);
-        });
+        selected = formValue ? formValue : state.rows.map(row => row.id);
     }
 
     onSelect(selected);
@@ -158,7 +153,7 @@ const loadEntitiesFulfilled = (state, onSelect, formValue) => {
         rows: state.rows.map(({ id, ...row }) => ({
             id,
             ...row,
-            selected: !!selected?.get(id)
+            selected: !!selected?.includes(id)
         }))
     });
 };
@@ -166,17 +161,19 @@ const loadEntitiesFulfilled = (state, onSelect, formValue) => {
 const changeBulkSelect = (state, action, onSelect) => {
     const removeSelected = !action.payload;
     if (!removeSelected) {
-        state.rows.forEach((row) => {
-            state.selected.set(row.id, row);
-        });
+        state.selected = [
+            ...state.selected,
+            ...state.rows.map(row => row.id)
+        ];
+
         onSelect(state.selected);
     } else {
-        onSelect(new Map());
+        onSelect([]);
     }
 
     return ({
         ...state,
-        selected: removeSelected ? new Map() : state.selected,
+        selected: removeSelected ? [] : state.selected,
         rows: state.rows.map(({ id, ...row }) => ({
             id,
             ...row,

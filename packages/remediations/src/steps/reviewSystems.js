@@ -27,7 +27,7 @@ const ReviewSystems = (props) => {
     const [ inventoryApi, setInventoryApi ] = useState();
 
     const { selected, loaded, rows } = useSelector(({ entities }) => ({
-        selected: entities?.selected || new Map(),
+        selected: entities?.selected || [],
         loaded: entities?.loaded,
         rows: entities?.rows || []
     }));
@@ -56,7 +56,7 @@ const ReviewSystems = (props) => {
     };
 
     const onSelect = (selected) => {
-        input.onChange(Array.from(selected.keys()));
+        input.onChange(selected);
     };
 
     const onSelectRows = (value) => {
@@ -100,7 +100,7 @@ const ReviewSystems = (props) => {
                             }
                             bulkSelect={{
                                 id: 'select-systems',
-                                count: selected.size,
+                                count: selected.length,
                                 items: [{
                                     title: 'Select none (0)',
                                     onClick: () => onSelectRows(false)
@@ -113,7 +113,7 @@ const ReviewSystems = (props) => {
                                         }
                                     } : {}
                                 }],
-                                checked: selected.size > 0,
+                                checked: selected.length > 0,
                                 onSelect: (value) => {
                                     onSelectRows(value);
                                 }
