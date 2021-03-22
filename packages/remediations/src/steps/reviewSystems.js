@@ -94,7 +94,7 @@ const ReviewSystems = (props) => {
                                 return data;
                             }}
                             onLoad={({ mergeWithEntities, api }) => {
-                                registry.register(mergeWithEntities(entitiesReducer(onSelect)));
+                                registry.register(mergeWithEntities(entitiesReducer(onSelect, input.value)));
                                 setInventoryApi(() => api);
                             }
                             }

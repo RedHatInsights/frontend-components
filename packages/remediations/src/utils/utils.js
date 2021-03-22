@@ -143,11 +143,11 @@ const entitySelected = (state, { payload }, onSelect) => {
     };
 };
 
-const loadEntitiesFulfilled = (state, onSelect) => {
+const loadEntitiesFulfilled = (state, onSelect, formValue) => {
     let selected = state.selected || new Map();
     if (!state.selected) {
         state.rows.forEach((row) => {
-            selected.set(row.id, row);
+            (!formValue || formValue.includes(row.id)) && selected.set(row.id, row);
         });
     }
 
@@ -185,8 +185,8 @@ const changeBulkSelect = (state, action, onSelect) => {
     });
 };
 
-export const inventoryEntitiesReducer = (onSelect) => applyReducerHash({
+export const inventoryEntitiesReducer = (onSelect, formValue) => applyReducerHash({
     SELECT_ENTITY: (state, action) => entitySelected(state, action, onSelect),
-    LOAD_ENTITIES_FULFILLED: (state) => loadEntitiesFulfilled(state, onSelect),
+    LOAD_ENTITIES_FULFILLED: (state) => loadEntitiesFulfilled(state, onSelect, formValue),
     [TOGGLE_BULK_SELECT]: (state, action) => changeBulkSelect(state, action, onSelect)
 });
