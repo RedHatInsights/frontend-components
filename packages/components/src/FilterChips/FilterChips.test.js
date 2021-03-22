@@ -39,6 +39,20 @@ describe('FilterChips component', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('should render with custom delete message', () => {
+        const wrapper = shallow(
+            <FilterChips filters={ filters } deleteTitle={<div>Some delete title</div>} />
+        );
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('should render group delete', () => {
+        const wrapper = shallow(
+            <FilterChips filters={ filters } onDeleteGroup={ () => undefined } />
+        );
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     describe('API', () => {
         it('should have default onDelete handle', () => {
             const onDelete = FilterChips.defaultProps.onDelete;
@@ -84,6 +98,43 @@ describe('FilterChips component', () => {
 
             wrapper.find(ChipGroup).forEach(group => group.simulate('click'));
             expect(onDelete).not.toHaveBeenCalled();
+        });
+
+        it('should have default onDeleteGroup handle', () => {
+            const onDelete = FilterChips.defaultProps.onDeleteGroup;
+            expect(onDelete).not.toBeDefined();
+        });
+
+        it('should call onDelete when deleting a single chip', () => {
+            const onDelete = jest.fn();
+            const newGroup = {
+                category: 'Group 2',
+                chips: [
+                    {
+                        name: 'Chip 1'
+                    }
+                ]
+            };
+            const wrapper = mount(<FilterChips filters={ [ ...filters, newGroup ] } onDeleteGroup={ onDelete } />);
+            wrapper.find('.pf-c-chip-group__close button').last().simulate('click');
+            expect(onDelete).toHaveBeenCalledWith(
+                expect.anything(),
+                [ newGroup ],
+                [{
+                    category: 'Group 1',
+                    chips: [
+                        {
+                            name: 'Chip 1',
+                            isRead: true
+                        },
+                        {
+                            name: 'Chip 2',
+                            count: 3
+                        }
+                    ]
+                }]
+            );
+            expect(onDelete).toHaveBeenCalledTimes(1);
         });
     });
 });

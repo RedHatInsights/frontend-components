@@ -4,9 +4,19 @@ import { Badge, Chip, ChipGroup, Button } from '@patternfly/react-core';
 import classNames from 'classnames';
 import './filter-chips.scss';
 
-const FilterChips = ({ className, filters, onDelete }) => {
-    const groupedFilters = filters.filter(group => group.category).map(group =>  (
-        <ChipGroup key={ `group_${group.category}` } categoryName={group.category}>
+const FilterChips = ({ className, filters, onDelete, deleteTitle, onDeleteGroup }) => {
+    const groups = filters.filter(group => group.category);
+    const groupedFilters = groups.map((group, groupKey) =>  (
+        <ChipGroup
+            key={ `group_${group.category}` }
+            categoryName={group.category}
+            {...onDeleteGroup && {
+                isClosable: true,
+                onClick: (event) => {
+                    event.stopPropagation();
+                    onDeleteGroup(event, [ group ], groups.filter((_item, key) => key !== groupKey));
+                } }}
+        >
             {group.chips.map(chip => (
                 <Chip
                     key={chip.name}
@@ -40,7 +50,7 @@ const FilterChips = ({ className, filters, onDelete }) => {
                     </Chip>
                 </ChipGroup>
             )) }
-            { filters.length > 0 && <Button variant="link" onClick={ (event) => onDelete(event, filters, true) }>Clear filters</Button> }
+            { filters.length > 0 && <Button variant="link" onClick={ (event) => onDelete(event, filters, true) }>{deleteTitle}</Button> }
         </span>
     );
 };
@@ -66,12 +76,15 @@ FilterChips.propTypes = {
             })
         ])
     ),
-    onDelete: PropTypes.func
+    onDelete: PropTypes.func,
+    onDeleteGroup: PropTypes.func,
+    deleteTitle: PropTypes.node
 };
 
 FilterChips.defaultProps = {
     filters: [],
-    onDelete: () => undefined
+    onDelete: () => undefined,
+    deleteTitle: 'Clear filters'
 };
 
 export default FilterChips;
