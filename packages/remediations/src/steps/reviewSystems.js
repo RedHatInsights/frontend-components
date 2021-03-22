@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, Fragment } from 'react';
+import React, { useRef, useEffect, useState, Fragment, useCallback } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
@@ -65,6 +65,18 @@ const ReviewSystems = (props) => {
         });
     };
 
+    const fetchSystemsInfo = useCallback(async (_i, config) => {
+        const systems = (allSystems || []).slice((config.page - 1) * config.per_page, config.page * config.per_page);
+        const data = await inventoryApi?.getEntities(systems, { ...config, hasItems: true, page: 1 }, true);
+        return {
+            ...data,
+            total: allSystems.length,
+            page: config.page,
+            // eslint-disable-next-line camelcase
+            per_page: config.per_page
+        };
+    }, [ allSystems ]);
+
     return (
         <Stack hasGutter>
             <StackItem>
@@ -84,14 +96,7 @@ const ReviewSystems = (props) => {
                             showTags
                             onRefresh={onRefresh}
                             ref={inventory}
-                            getEntities={async (_i, config) => {
-                                const invData = await inventoryApi?.getEntities(allSystems, {
-                                    ...config,
-                                    hasItems: true
-                                });
-                                const data = await inventoryApi?.mapTags(invData);
-                                return data;
-                            }}
+                            getEntities={(_i, config) => fetchSystemsInfo(_i, config)}
                             onLoad={({ mergeWithEntities, api }) => {
                                 registry.register(mergeWithEntities(entitiesReducer(onSelect, input.value)));
                                 setInventoryApi(() => api);
