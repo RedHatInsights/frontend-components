@@ -66,7 +66,7 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
         publicPath,
         proxy: [
             {
-                context: (path) => (isNotCustomContext(path) && !pathInCustomPaths(path)) || path.includes('.svg'),
+                context: (path) => isNotCustomContext(path) && !pathInCustomPaths(path),
                 target,
                 secure: false,
                 changeOrigin: true,
@@ -93,7 +93,7 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
                 }
             }] : []),
             ...(localChrome ? [{
-                context: (path) => path.includes(process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/') && !path.includes('.svg'),
+                context: (path) => path.includes(process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/'),
                 target,
                 secure: false,
                 changeOrigin: true,
@@ -102,18 +102,27 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
                 // When running chrome locally, we have to redirect all requests and serve files locally
                 selfHandleResponse: true,
                 onProxyReq: (_proxyReq, req, res) => {
-                    const newPath = req.url
-                    .replace(/\.([a-z]|\d)+\.[a-z]+$/, '**') //removeHash and add wilcard
-                    .replace(process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/', ''); //remove chrome URL
+                    let newPath = req.url;
+                    const fileType = req.url.match(/\.([a-z]|\d)+$/);
 
-                    const localPath = sync(`${localChrome}${newPath}`);
+                    newPath = newPath.replace(process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/', ''); //remove chrome URL
+
+                    let localPath = sync(`${localChrome}${newPath}`); // try to find it locally
+
+                    // if the file does not exist locally and it is a JS/CSS, let's try to remove hash
+                    if (localPath.length === 0 && fileType && (fileType[0] === '.js' || fileType[0] === '.css')) {
+                        newPath = newPath
+                        .replace(/\.([a-z]|\d)+\.[a-z]+$/, '**') //removeHash and add wilcard
+                        .concat(fileType[0]); // add file extension back
+
+                        localPath = sync(`${localChrome}${newPath}`);
+                    }
 
                     proxyVerbose && console.log('serving locally', req.url, '--->', newPath, '------>', localPath[0], '\n\n');
 
                     // if there is a local file with the same name, it's served
                     if (localPath[0]) {
-                        const localFile = readFileSync(localPath[0]);
-                        res.end(localFile);
+                        res.sendFile(localPath[0]);
                     }
                 }
             }] : []),
