@@ -55,14 +55,17 @@ describe('SystemRulesTable component', () => {
     });
 
     it('should render filtered rows by policy', async () => {
-        let profileRulesWithExternal = [
+        let profileRulesWithMultiplePolicies = [
             ...profileRules,
             {
                 system: 'aa9c4497-5707-4233-9e9b-1fded5423ef3',
                 profile: {
                     id: 'f685817e-69d2-44af-96de-bd5944c4dbd3',
                     refId: 'xccdf_org.ssgproject.content_profile_pci-dss',
-                    name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7'
+                    name: 'PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7',
+                    policy: {
+                        id: 'f685817e-69d2-44af-96de-bd5944c4dbd3'
+                    }
                 },
                 rulesFailed: 0,
                 rulesPassed: 1,
@@ -86,7 +89,7 @@ describe('SystemRulesTable component', () => {
 
         const wrapper = shallow(
             <SystemRulesTable
-                profileRules={ profileRulesWithExternal }
+                profileRules={ profileRulesWithMultiplePolicies }
                 loading={ false }
                 system={ system }
                 itemsPerPage={ 100 }
