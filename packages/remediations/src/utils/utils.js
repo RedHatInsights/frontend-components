@@ -184,6 +184,18 @@ const changeBulkSelect = (state, action, onSelect) => {
     });
 };
 
+export const fetchSystemsInfo = async (config, allSystems, { getEntities } = {}) => {
+    const systems = (allSystems || []).slice((config.page - 1) * config.per_page, config.page * config.per_page);
+    const data = await getEntities(systems, { ...config, hasItems: true, page: 1 }, true);
+    return {
+        ...data,
+        total: allSystems.length,
+        page: config.page,
+        // eslint-disable-next-line camelcase
+        per_page: config.per_page
+    };
+};
+
 export const inventoryEntitiesReducer = (onSelect, formValue) => applyReducerHash({
     SELECT_ENTITY: (state, action) => entitySelected(state, action, onSelect),
     LOAD_ENTITIES_FULFILLED: (state) => loadEntitiesFulfilled(state, onSelect, formValue),

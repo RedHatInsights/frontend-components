@@ -1,19 +1,25 @@
-import React, { useRef, useEffect, useState, Fragment, useCallback } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
+import promiseMiddleware from 'redux-promise-middleware';
+import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 import {
     Text,
     TextContent,
     Stack, StackItem
 } from '@patternfly/react-core';
+import {
+    dedupeArray,
+    fetchSystemsInfo,
+    inventoryEntitiesReducer as entitiesReducer,
+    EXISTING_PLAYBOOK,
+    TOGGLE_BULK_SELECT
+} from '../utils';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Provider, useDispatch, useSelector } from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
-import { dedupeArray, EXISTING_PLAYBOOK, inventoryEntitiesReducer as entitiesReducer, TOGGLE_BULK_SELECT } from '../utils';
 import './reviewSystems.scss';
 
 const ReviewSystems = (props) => {
@@ -24,7 +30,7 @@ const ReviewSystems = (props) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
 
-    const [ inventoryApi, setInventoryApi ] = useState();
+    const inventoryApi = useRef({});
 
     const { selected, loaded, rows } = useSelector(({ entities }) => ({
         selected: entities?.selected || [],
@@ -65,18 +71,6 @@ const ReviewSystems = (props) => {
         });
     };
 
-    const fetchSystemsInfo = useCallback(async (_i, config) => {
-        const systems = (allSystems || []).slice((config.page - 1) * config.per_page, config.page * config.per_page);
-        const data = await inventoryApi?.getEntities(systems, { ...config, hasItems: true, page: 1 }, true);
-        return {
-            ...data,
-            total: allSystems.length,
-            page: config.page,
-            // eslint-disable-next-line camelcase
-            per_page: config.per_page
-        };
-    }, [ allSystems ]);
-
     return (
         <Stack hasGutter>
             <StackItem>
@@ -96,10 +90,10 @@ const ReviewSystems = (props) => {
                             showTags
                             onRefresh={onRefresh}
                             ref={inventory}
-                            getEntities={(_i, config) => fetchSystemsInfo(_i, config)}
+                            getEntities={(_i, config) => fetchSystemsInfo(config, allSystems, inventoryApi.current)}
                             onLoad={({ mergeWithEntities, api }) => {
                                 registry.register(mergeWithEntities(entitiesReducer(onSelect, input.value)));
-                                setInventoryApi(() => api);
+                                inventoryApi.current = api;
                             }
                             }
                             bulkSelect={{
@@ -110,17 +104,13 @@ const ReviewSystems = (props) => {
                                     onClick: () => onSelectRows(false)
                                 },
                                 {
-                                    ...loaded && rows && rows.length > 0 ? {
+                                    ...loaded && rows.length > 0 ? {
                                         title: `Select page (${ rows.length })`,
-                                        onClick: () => {
-                                            onSelectRows(true);
-                                        }
+                                        onClick: () => onSelectRows(true)
                                     } : {}
                                 }],
                                 checked: selected.length > 0,
-                                onSelect: (value) => {
-                                    onSelectRows(value);
-                                }
+                                onSelect: (value) => onSelectRows(value)
                             }}
                             tableProps={{
                                 canSelectAll: false
@@ -156,15 +146,9 @@ const ReviewSystemsWithContext = (props) => {
         setRegistry(() => new ReducerRegistry({}, [ promiseMiddleware ]));
     }, []);
 
-    return (
-        <Fragment>
-            {
-                registry && registry?.store  && <Provider store={registry?.store}>
-                    <ReviewSystems {...props} registry={registry} />
-                </Provider>
-            }
-        </Fragment>
-    );
+    return registry?.store  ? <Provider store={registry.store}>
+        <ReviewSystems {...props} registry={registry} />
+    </Provider> : null;
 };
 
 export default ReviewSystemsWithContext;
