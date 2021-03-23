@@ -76,7 +76,16 @@ export const POLICIES_FILTER_CONFIG = (policies) => ({
     ))
 });
 
-const buildFilterConfig = ({ showPassFailFilter, policies, selectedFilter }) => {
+export const REMEDIATION_AVAILABLE_FILTER_CONFIG = {
+    type: conditionalFilterType.checkbox,
+    label: 'Remediation available',
+    items: [
+        { label: 'Remediation available', value: 'true' }
+    ],
+    filter: (rules, value) => rules.filter(rule => rule.remediationAvailable)
+};
+
+const buildFilterConfig = ({ showPassFailFilter, policies, selectedFilter, remediationAvailableFilter }) => {
     const config = [ ...BASE_FILTER_CONFIGURATION ];
 
     if (showPassFailFilter) {
@@ -89,6 +98,10 @@ const buildFilterConfig = ({ showPassFailFilter, policies, selectedFilter }) => 
 
     if (policies && policies.length > 1) {
         config.push(POLICIES_FILTER_CONFIG(policies));
+    }
+
+    if (remediationAvailableFilter) {
+        config.push(REMEDIATION_AVAILABLE_FILTER_CONFIG);
     }
 
     return config;

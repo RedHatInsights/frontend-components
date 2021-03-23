@@ -109,7 +109,7 @@ export const profileRules = [
                 refId: 'xccdf_org.ssgproject.content_rule_service_atd_disabled',
                 description: 'The at and batch commands can be used to schedule tasks that are meant to be executed only once. This allows delayed execution in a manner similar to cron, except that it is not recurring. The daemon atd keeps track of tasks scheduled via at and batch, and executes them at the specified time. The atd service can be disabled with the following command: $ sudo systemctl disable atd.service',
                 compliant: true,
-                remediationAvailable: false,
+                remediationAvailable: true,
                 identifier: null
             },
             {
@@ -129,7 +129,7 @@ export const profileRules = [
                 refId: 'xccdf_org.ssgproject.content_rule_service_oddjobd_disabled',
                 description: 'The oddjobd service exists to provide an interface and access control mechanism through which specified privileged tasks can run tasks for unprivileged client applications. Communication with oddjobd through the system message bus. The oddjobd service can be disabled with the following command: $ sudo systemctl disable oddjobd.service',
                 compliant: true,
-                remediationAvailable: false,
+                remediationAvailable: true,
                 identifier: null
             },
             {
@@ -149,7 +149,7 @@ export const profileRules = [
                 refId: 'xccdf_org.ssgproject.content_rule_service_abrtd_disabled',
                 description: 'The Automatic Bug Reporting Tool (abrtd) daemon collects and reports crash data when an application crash is detected. Using a variety of plugins, abrtd can email crash reports to system administrators, log crash reports to files, or forward crash reports to a centralized issue tracking system such as RHTSupport. The abrtd service can be disabled with the following command: $ sudo systemctl disable abrtd.service',
                 compliant: true,
-                remediationAvailable: false,
+                remediationAvailable: true,
                 identifier: null
             },
             {

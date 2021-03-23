@@ -29,8 +29,11 @@ export const selectColumns = (columnTitles) => (
 );
 
 class SystemRulesTable extends React.Component {
+    remediationAvailableFilter = this.props.remediationAvailableFilter || this.props.remediationsEnabled;
+
     config = buildFilterConfig({
         selectedFilter: this.props.selectedFilter,
+        remediationAvailableFilter: this.remediationAvailableFilter,
         showPassFailFilter: (this.props.columns.filter((c) => (c.title === 'Passed')).length > 0)
     });
     filterConfigBuilder = new FilterConfigBuilder(this.config);
@@ -47,7 +50,8 @@ class SystemRulesTable extends React.Component {
         openIds: [],
         activeFilters: this.filterConfigBuilder.initialDefaultState({
             selected: this.props.selectedFilter ? [ 'selected' ] : undefined,
-            passed: this.props.hidePassed ? 'failed' : undefined
+            passed: this.props.hidePassed ? 'failed' : undefined,
+            remediationAvailable: this.remediationAvailableFilter ? 'true' : undefined
         })
     };
 
@@ -403,6 +407,7 @@ SystemRulesTable.propTypes = {
     tailoringEnabled: propTypes.bool,
     selectedRefIds: propTypes.array,
     selectedFilter: propTypes.bool,
+    remediationAvailableFilter: propTypes.bool,
     handleSelect: propTypes.func,
     columns: propTypes.arrayOf(
         propTypes.shape(
@@ -419,6 +424,7 @@ SystemRulesTable.defaultProps = {
     profileRules: [{ rules: [] }],
     hidePassed: false,
     selectedFilter: false,
+    remediationAvailableFilter: false,
     remediationsEnabled: true,
     tailoringEnabled: false,
     selectedRefIds: [],

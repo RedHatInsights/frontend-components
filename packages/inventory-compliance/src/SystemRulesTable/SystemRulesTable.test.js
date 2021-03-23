@@ -105,6 +105,23 @@ describe('SystemRulesTable component', () => {
         expect(instance.getRules().length).toEqual(1);
     });
 
+    it('should render filtered rows by remediationAvailable', async () => {
+        const wrapper = shallow(
+            <SystemRulesTable
+                profileRules={ profileRules }
+                remediationAvailableFilter
+                loading={ false }
+                system={ system }
+                itemsPerPage={ 100 }
+                columns={ columns }
+            />
+        );
+        const instance = wrapper.instance();
+        expect(instance.getRules().length).toEqual(52);
+        await instance.onFilterUpdate('remediationAvailable', [ 'true' ]);
+        expect(instance.getRules().length).toEqual(3);
+    });
+
     it('should render filtered rows by severity', async () => {
         const wrapper = shallow(
             <SystemRulesTable
