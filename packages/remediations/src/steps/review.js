@@ -27,14 +27,7 @@ const Review = (props) => {
     const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
 
     const selectedPlaybook = formOptions.getState().values[EXISTING_PLAYBOOK];
-
-    useEffect(() => {
-        input.onChange(
-            input.value !== undefined
-                ? input.value
-                : formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED] && selectedPlaybook.auto_reboot
-        );
-    }, []);
+    const existingPlaybookSelected = formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED];
 
     const records = data.issues.map(issue => {
         const issueResolutions = getResolution(issue.id, formOptions.getState().values, resolutions);
@@ -49,6 +42,14 @@ const Review = (props) => {
             alternate: issueResolutions.length - 1
         };
     });
+
+    useEffect(() => {
+        input.onChange(
+            input.value !== ''
+                ? input.value
+                : (existingPlaybookSelected && selectedPlaybook.auto_reboot || records.some(record =>record.needsReboot))
+        );
+    }, []);
 
     const rows = buildRows(records, sortByState);
 
