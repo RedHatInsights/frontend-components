@@ -79,9 +79,9 @@ describe('ReviewActions', () => {
             wrapper = mount(<RendererWrapper schema={createSchema({})} {...initialProps} />);
         });
         wrapper.update();
-        expect(wrapper.find('Button[variant="link"]').props().children).toEqual([ 'Turn ', 'on', ' autoreboot' ]);
-        wrapper.find('Button[variant="link"]').simulate('click');
         expect(wrapper.find('Button[variant="link"]').props().children).toEqual([ 'Turn ', 'off', ' autoreboot' ]);
+        wrapper.find('Button[variant="link"]').simulate('click');
+        expect(wrapper.find('Button[variant="link"]').props().children).toEqual([ 'Turn ', 'on', ' autoreboot' ]);
     });
 
     it('should sort records correctly', async () => {
