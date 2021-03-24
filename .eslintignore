@@ -1,7 +1,6 @@
 src/demoData
 
 doc/
-images/
 node_modules/
 packages/*/**/*.js
 !packages/eslint-config/**/*.js
