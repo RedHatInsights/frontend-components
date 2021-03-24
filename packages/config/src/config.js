@@ -23,7 +23,8 @@ module.exports = ({
     proxyVerbose,
     routes,
     routesPath,
-    appUrl
+    appUrl,
+    exactUrl
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
@@ -160,7 +161,8 @@ module.exports = ({
             proxyVerbose,
             routes,
             routesPath,
-            appUrl
+            appUrl,
+            exactUrl
         }) : {
             contentBase: `${rootFolder || ''}/dist`,
             hot: true,

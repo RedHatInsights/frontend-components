@@ -3,7 +3,30 @@ const { readFileSync } = require('fs');
 const { sync } = require('glob');
 const ESI = require('nodesi');
 
-function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [], publicPath, proxyVerbose, https = true, port = 1337, routes, routesPath, appUrl }) {
+function createInsightsProxy({
+    betaEnv,
+    rootFolder,
+    localChrome,
+    customProxy = [],
+    publicPath,
+    proxyVerbose,
+    https = true,
+    port = 1337,
+    routes,
+    routesPath,
+    appUrl,
+    exactUrl
+}) {
+    let appUrls = appUrl;
+    if (appUrls && !Array.isArray(appUrls)) {
+        appUrls = [ appUrls ];
+    }
+
+    let comparator = (path, url) => path.includes(url);
+    if (exactUrl) {
+        comparator = (path, url) => path === url;
+    }
+
     // disable self signed CERT checks for esi
     if (appUrl) {
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
@@ -43,14 +66,13 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
         return customProxy.length > 0 ? customProxy.reduce((acc, curr) => acc && !curr.context(path), true) : true;
     };
 
-    const customPaths = [
-        ...(localChrome ? [ process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/' ] : []),
-        ...(appUrl ? [ appUrl ] : [])
-    ];
-    const pathInCustomPaths = (path) => customPaths.some((customPath) => path.includes(customPath));
+    const isChrome = (path) => localChrome && path.includes(process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/');
+    const pathInCustomUrl = (path) => appUrls.some((customPath) => comparator(path, customPath));
+    const removeHashQuery = (path) => path.replace(/(\?|#).*/, '');
 
     if (appUrl && proxyVerbose) {
-        console.log('\n\nServing index html on: ', appUrl, '\n\n');
+        console.log('\n\nServing HTML on: ', appUrls.join(', '));
+        console.log('Exact URL: ', exactUrl ? 'true' : 'false', '\n\n');
     }
 
     return {
@@ -66,14 +88,14 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
         publicPath,
         proxy: [
             {
-                context: (path) => isNotCustomContext(path) && !pathInCustomPaths(path),
+                context: (path) => isNotCustomContext(path) && !pathInCustomUrl(removeHashQuery(path)) && !isChrome(path),
                 target,
                 secure: false,
                 changeOrigin: true,
                 autoRewrite: true
             },
             ...(appUrl ? [{
-                context: path => path.includes(appUrl),
+                context: path => pathInCustomUrl(removeHashQuery(path)),
                 target,
                 secure: false,
                 changeOrigin: true,
@@ -81,9 +103,10 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
                 selfHandleResponse: true,
                 // serve index.html from local and replace ESI tags for chrome
                 onProxyReq: async (_proxyReq, req, res) => {
-                    const localPath = sync(`${rootFolder}/dist/index.html`);
+                    const fileName = removeHashQuery(req.url.split('/').pop()) || 'index.html';
+                    const localPath = sync(`${rootFolder}/dist/${fileName}`);
 
-                    proxyVerbose && console.log('serving locally', req.url, '--->', localPath[0], '\n\n');
+                    proxyVerbose && console.log('serving locally', req.url, '>', fileName, '--->', localPath[0], '\n\n');
 
                     if (localPath[0]) {
                         const localFile = readFileSync(localPath[0]);
@@ -93,7 +116,7 @@ function createInsightsProxy({ betaEnv, rootFolder, localChrome, customProxy = [
                 }
             }] : []),
             ...(localChrome ? [{
-                context: (path) => path.includes(process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/'),
+                context: (path) => isChrome(path),
                 target,
                 secure: false,
                 changeOrigin: true,
