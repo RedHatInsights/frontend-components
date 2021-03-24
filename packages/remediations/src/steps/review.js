@@ -16,7 +16,8 @@ import {
     getResolution,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED,
-    SELECT_PLAYBOOK
+    SELECT_PLAYBOOK,
+    SYSTEMS
 } from '../utils';
 import './review.scss';
 
@@ -36,7 +37,7 @@ const Review = (props) => {
             action: issuesById[issue.id].description,
             resolution: description,
             needsReboot,
-            systemsCount: issue.systems ? issue.systems.length : data.systems.length,
+            systemsCount: formOptions.getState().values[SYSTEMS]?.length || 0,
             id: issue.id,
             shortId: issue?.id?.split('|')?.slice(-1)?.[0] || issue.id,
             alternate: issueResolutions.length - 1

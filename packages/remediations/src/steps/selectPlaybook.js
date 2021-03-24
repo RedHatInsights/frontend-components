@@ -17,6 +17,7 @@ import {
 } from '@patternfly/react-core';
 import {
     pluralize,
+    dedupeArray,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
@@ -27,6 +28,10 @@ const SelectPlaybook = (props) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState().values;
+    const allSystems = dedupeArray(issues.reduce((acc, curr) => [
+        ...acc,
+        ...(curr.systems || [])
+    ], [ ...systems ]));
 
     const [ existingRemediations, setExistingRemediations ] = useState();
     const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(values[EXISTING_PLAYBOOK_SELECTED]);
@@ -48,7 +53,7 @@ const SelectPlaybook = (props) => {
             <StackItem>
                 <TextContent>
                     <Text>
-                        You selected <b>{`${systems.length} ${pluralize(systems.length, 'system')}`} </b>
+                        You selected <b>{`${allSystems.length} ${pluralize(allSystems.length, 'system')}`} </b>
                         to remediate with Ansible, which in total includes <b>{`${issues.length} ${pluralize(issues.length, 'issue')}`} </b>
                         which can be remediated by Ansible.
                     </Text>

@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import { CloseIcon, RedoIcon } from '@patternfly/react-icons';
 import urijs from 'urijs';
 import * as api from '../api';
+import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry/ReducerRegistry';
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
 
@@ -13,6 +14,9 @@ export const SELECTED_RESOLUTIONS = 'selected-resolutions';
 export const MANUAL_RESOLUTION = 'manual-resolution';
 export const EXISTING_PLAYBOOK_SELECTED = 'existing-playbook-selected';
 export const EXISTING_PLAYBOOK = 'existing-playbook';
+export const SYSTEMS = 'systems';
+
+export const TOGGLE_BULK_SELECT = 'toggle-bulk-select';
 
 // Get the current group since we can be mounted at two urls
 export function getGroup () {
@@ -28,6 +32,8 @@ export function getGroup () {
 export function remediationUrl (id) {
     return urijs(document.baseURI).segment(getGroup()).segment('remediations').segment(id).toString();
 }
+
+export const dedupeArray = (array) => [ ...new Set(array) ];
 
 export const pluralize = (count, str) => count > 1 ? str + 's' : str;
 
@@ -99,9 +105,9 @@ export const submitRemediation = (formValues, data, basePath, resolutions) => {
     const issues = data.issues.map(({ id }) => ({
         id,
         resolution: getResolution(id, formValues, resolutions)?.[0]?.id,
-        systems: data.systems
+        systems: formValues.systems
     }));
-    const add = { issues, systems: data.systems };
+    const add = { issues, systems: formValues.systems };
     if (formValues[EXISTING_PLAYBOOK_SELECTED]) {
         const { id, name } = formValues[EXISTING_PLAYBOOK];
         api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
@@ -111,3 +117,87 @@ export const submitRemediation = (formValues, data, basePath, resolutions) => {
         .then(({ id }) => resolver(id, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated));
     }
 };
+
+const entitySelected = (state, { payload }, onSelect) => {
+    let selected = state.selected || [];
+    if (payload.selected) {
+        selected = [
+            ...selected,
+            ...payload.id === 0 ? state.rows.map(row => row.id) : [ payload.id ]
+        ];
+    } else {
+        if (payload.id === 0) {
+            const rowsIds = state.rows.map(row => row.id);
+            selected = selected.filter(item => !rowsIds.includes(item));
+        } else {
+            selected = payload.id === -1 ? [] : selected.filter(item => item !== payload.id);
+        }
+    }
+
+    onSelect(selected);
+
+    return {
+        ...state,
+        selected
+    };
+};
+
+const loadEntitiesFulfilled = (state, onSelect, formValue) => {
+    let selected = state.selected || [];
+    if (!state.selected) {
+        selected = formValue ? formValue : state.rows.map(row => row.id);
+    }
+
+    onSelect(selected);
+    return ({
+        ...state,
+        selected,
+        rows: state.rows.map(({ id, ...row }) => ({
+            id,
+            ...row,
+            selected: !!selected?.includes(id)
+        }))
+    });
+};
+
+const changeBulkSelect = (state, action, onSelect) => {
+    const removeSelected = !action.payload;
+    if (!removeSelected) {
+        state.selected = [
+            ...state.selected,
+            ...state.rows.map(row => row.id)
+        ];
+
+        onSelect(state.selected);
+    } else {
+        onSelect([]);
+    }
+
+    return ({
+        ...state,
+        selected: removeSelected ? [] : state.selected,
+        rows: state.rows.map(({ id, ...row }) => ({
+            id,
+            ...row,
+            selected: !removeSelected
+        }))
+    });
+};
+
+export const fetchSystemsInfo = async (config, allSystems, { getEntities } = {}) => {
+    const systems = (allSystems || []).slice((config.page - 1) * config.per_page, config.page * config.per_page);
+    const data = await getEntities(systems, { ...config, hasItems: true, page: 1 }, true);
+    return {
+        ...data,
+        total: allSystems.length,
+        page: config.page,
+        // eslint-disable-next-line camelcase
+        per_page: config.per_page
+    };
+};
+
+export const inventoryEntitiesReducer = (onSelect, formValue) => applyReducerHash({
+    SELECT_ENTITY: (state, action) => entitySelected(state, action, onSelect),
+    LOAD_ENTITIES_FULFILLED: (state) => loadEntitiesFulfilled(state, onSelect, formValue),
+    [TOGGLE_BULK_SELECT]: (state, action) => changeBulkSelect(state, action, onSelect)
+});

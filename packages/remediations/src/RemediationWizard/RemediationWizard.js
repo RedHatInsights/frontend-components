@@ -14,12 +14,14 @@ import ReviewActions from '../steps/reviewActions';
 import IssueResolution from '../steps/issueResolution';
 import FetchError from '../steps/fetchError';
 import Review from '../steps/review';
+import ReviewSystems from '../steps/reviewSystems';
 import {
     submitRemediation,
     HAS_MULTIPLES,
     SELECTED_RESOLUTIONS,
     EXISTING_PLAYBOOK_SELECTED,
-    MANUAL_RESOLUTION
+    MANUAL_RESOLUTION,
+    SYSTEMS
 } from '../utils';
 
 const RemediationWizard = ({
@@ -32,7 +34,7 @@ const RemediationWizard = ({
 
     const getIssuesMultiple = (issuesById, resolutions) =>
         data.issues.map(issue => {
-            const issueResolutions = resolutions.find(r => r.id === issue.id).resolutions;
+            const issueResolutions = resolutions.find(r => r.id === issue.id)?.resolutions || [];
             const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
             return {
                 action: issuesById[issue.id].description,
@@ -89,6 +91,11 @@ const RemediationWizard = ({
             issues: data.issues,
             systems: data.systems
         },
+        'review-systems': {
+            component: ReviewSystems,
+            issues: data.issues,
+            systems: data.systems
+        },
         'review-actions': {
             component: ReviewActions,
             issues: data.issues,
@@ -107,6 +114,13 @@ const RemediationWizard = ({
         }
     };
 
+    const validatorMapper = {
+        'validate-systems': () => (value) => (
+            value && value.length > 0
+                ? undefined
+                : 'At least one system must be selected. Actions must be associated to a system to be added to a playbook.')
+    };
+
     return (
         state.isLoaded ?
             <FormRenderer
@@ -115,6 +129,7 @@ const RemediationWizard = ({
                 FormTemplate={(props) => <Pf4FormTemplate {...props} showFormControls={false} />}
                 initialValues={{
                     [HAS_MULTIPLES]: !!state.resolutions?.find(r => r.resolutions.length > 1),
+                    [SYSTEMS]: undefined,
                     [MANUAL_RESOLUTION]: true,
                     [SELECTED_RESOLUTIONS]: {},
                     [EXISTING_PLAYBOOK_SELECTED]: false
@@ -124,6 +139,7 @@ const RemediationWizard = ({
                     [componentTypes.TEXT_FIELD]: TextField,
                     ...mapperExtension
                 }}
+                validatorMapper={validatorMapper}
                 onSubmit={(formValues) => {
                     submitRemediation(formValues, data, basePath, state.resolutions);
                     setOpen(false);

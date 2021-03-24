@@ -77,7 +77,7 @@ describe('schema', () => {
     it('should render issues', () => {
         const schema = schemaBuilder(issuesMultiple);
         expect(schema.fields[0].fields[1].nextStep({ values: formValues })).toEqual('review');
-        expect(schema.fields[0].fields[2].name).toEqual('testId');
+        expect(schema.fields[0].fields[2].name).toEqual('actions');
         expect(schema.fields[0].fields[2].nextStep({ values: formValues })).toEqual('review');
     });
 

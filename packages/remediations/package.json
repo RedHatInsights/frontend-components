@@ -39,6 +39,7 @@
         "@data-driven-forms/react-form-renderer": "^2.23.3",
         "@redhat-cloud-services/frontend-components": ">=3.0.0",
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
+        "redux-promise-middleware": "^6.1.2",
         "urijs": "^1.19.4"
     }
 }

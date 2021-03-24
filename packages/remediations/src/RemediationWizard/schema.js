@@ -7,7 +7,8 @@ import {
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED,
     SELECTED_RESOLUTIONS,
-    AUTO_REBOOT
+    AUTO_REBOOT,
+    SYSTEMS
 } from '../utils';
 
 export const selectPlaybookFields = [{
@@ -60,12 +61,22 @@ export default issues => ({
             inModal: true,
             showTitles: true,
             title: 'Remediate with Ansible',
-            description: 'Add issues to an Ansible Playbook',
+            description: 'Add actions to an Ansible Playbook',
             fields: [
                 {
                     name: 'playbook',
                     title: 'Select playbook',
                     fields: selectPlaybookFields,
+                    nextStep: 'systems'
+                },
+                {
+                    name: 'systems',
+                    title: 'Review systems',
+                    fields: [{
+                        name: SYSTEMS,
+                        component: 'review-systems',
+                        validate: [{ type: 'validate-systems' }]
+                    }],
                     nextStep: ({ values }) => values[HAS_MULTIPLES] ? 'actions' : 'review'
                 },
                 {
