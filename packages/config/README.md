@@ -13,6 +13,8 @@
     - [Custom proxy settings](#custom-proxy-settings)
     - [Chrome 1 environments](#chrome-1-environments)
       - [Prod environment example](#prod-environment-example)
+      - [Multiple HTML entrypoints](#multiple-html-entrypoints)
+      - [Exact URL](#exact-url)
 
 ## Webpack 5
 
@@ -178,3 +180,41 @@ const { config: webpackConfig, plugins } = config({
 ```
 
 Then go to `https://prod.foo.redhat.com:1337/` and you should be able to login and use your local UI build within production environment.
+
+#### Multiple HTML entrypoints
+
+If your application has multiple HTML entrypoints, you can set an array of values in `appUrl`:
+
+*Following example shows landing-page configuration*
+
+```jsx
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  debug: true,
+  useFileHash: false,
+  deployment: process.env.BETA ? 'beta/apps' : 'apps',
+  useProxy: true,
+  appUrl: ['/beta/maintenance.html', '/beta/'],
+});
+```
+
+#### Exact URL
+
+In default, all requests **containing** your app url are redirected to local file. If you want to check the exact URL, you can do it via `exactUrl`
+
+```jsx
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  debug: true,
+  useFileHash: false,
+  deployment: process.env.BETA ? 'beta/apps' : 'apps',
+  useProxy: true,
+  appUrl: ['/beta/maintenance.html', '/beta/'],
+  exactUrl: true,
+});
+```
+
+`redhat.com/beta/` will be redirected to your local `index.html` file
+`redhat.com/beta/app` won`t be redirect to any of your local files
+
+In both cases queries and hashes are ignored.
