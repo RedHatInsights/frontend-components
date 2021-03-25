@@ -8,6 +8,12 @@ import { SYSTEMS } from '../../utils';
 import { remediationWizardTestData } from '../testData';
 import ReviewSystems from '../../steps/reviewSystems';
 
+jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
+    __esModule: true,
+    // eslint-disable-next-line react/display-name
+    InventoryTable: () => <div>Inventory</div>
+}));
+
 const RendererWrapper = (props) => (
     <FormRenderer
         onSubmit={() => {}}
