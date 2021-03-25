@@ -54,17 +54,6 @@ const PASS_FILTER_CONFIG = {
     ))
 };
 
-const SELECTED_FILTER_CONFIG = {
-    type: conditionalFilterType.checkbox,
-    label: 'Selected',
-    items: [
-        { label: 'Show selected rules', value: 'selected' }
-    ],
-    filter: (rules, value) => rules.filter((rule) => (
-        value[0] === 'selected' ? rule.isSelected === true : true
-    ))
-};
-
 export const POLICIES_FILTER_CONFIG = (policies) => ({
     type: conditionalFilterType.checkbox,
     label: 'Policy',
@@ -85,15 +74,11 @@ export const REMEDIATION_AVAILABLE_FILTER_CONFIG = {
     filter: (rules, value) => rules.filter(rule => rule.remediationAvailable)
 };
 
-const buildFilterConfig = ({ showPassFailFilter, policies, selectedFilter, remediationAvailableFilter }) => {
+const buildFilterConfig = ({ showPassFailFilter, policies, remediationAvailableFilter }) => {
     const config = [ ...BASE_FILTER_CONFIGURATION ];
 
     if (showPassFailFilter) {
         config.push(PASS_FILTER_CONFIG);
-    }
-
-    if (selectedFilter) {
-        config.push(SELECTED_FILTER_CONFIG);
     }
 
     if (policies && policies.length > 1) {

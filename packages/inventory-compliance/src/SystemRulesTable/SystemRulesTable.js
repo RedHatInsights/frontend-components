@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { Pagination, PaginationVariant, ToolbarItem } from '@patternfly/react-core';
+import { Pagination, PaginationVariant, Switch, ToolbarItem } from '@patternfly/react-core';
 import { CheckCircleIcon, ExclamationCircleIcon, AnsibeTowerIcon } from '@patternfly/react-icons';
 import { Table, TableHeader, TableBody, sortable, fitContent } from '@patternfly/react-table';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
@@ -32,7 +32,6 @@ class SystemRulesTable extends React.Component {
     remediationAvailableFilter = this.props.remediationAvailableFilter || this.props.remediationsEnabled;
 
     config = buildFilterConfig({
-        selectedFilter: this.props.selectedFilter,
         remediationAvailableFilter: this.remediationAvailableFilter,
         showPassFailFilter: (this.props.columns.filter((c) => (c.title === 'Passed')).length > 0)
     });
@@ -48,8 +47,8 @@ class SystemRulesTable extends React.Component {
         ruleCount: 0,
         selectedToRemediate: [],
         openIds: [],
+        selectedOnly: this.props.selectedFilter,
         activeFilters: this.filterConfigBuilder.initialDefaultState({
-            selected: this.props.selectedFilter ? [ 'selected' ] : undefined,
             passed: this.props.hidePassed ? 'failed' : undefined,
             remediationAvailable: this.remediationAvailableFilter ? 'true' : undefined
         })
@@ -158,7 +157,7 @@ class SystemRulesTable extends React.Component {
         )
     )
 
-    selectedRules = (rules) => {
+    addIsSelected = (rules) => {
         const { selectedRefIds, remediationsEnabled } = this.props;
         const { selectedToRemediate } = this.state;
 
@@ -172,6 +171,11 @@ class SystemRulesTable extends React.Component {
         });
     }
 
+    selectedRules = (rules) => {
+        rules = this.addIsSelected(rules);
+        return this.state.selectedOnly ? rules.filter(rule => rule.isSelected) : rules;
+    }
+
     openedRules = (rules) => (
         rules.map((rule) => ({
             ...rule,
@@ -182,8 +186,10 @@ class SystemRulesTable extends React.Component {
     getRules = () => {
         const rules = toRulesArray(this.props.profileRules);
         return this.sortedRules(
-            this.filteredRules(
-                this.selectedRules(this.openedRules(rules))
+            this.selectedRules(
+                this.filteredRules(
+                    this.openedRules(rules)
+                )
             )
         );
     }
@@ -315,7 +321,7 @@ class SystemRulesTable extends React.Component {
             sortBy, page, itemsPerPage, selectedToRemediate
         } = this.state;
         const {
-            remediationsEnabled, system, loading, columns, handleSelect
+            remediationsEnabled, system, loading, columns, handleSelect, selectedFilter
         } = this.props;
         const rules = this.getRules();
         const filterChips = this.chipBuilder.chipsFor(this.state.activeFilters);
@@ -363,6 +369,15 @@ class SystemRulesTable extends React.Component {
                                     supported: system.supported
                                 }] }
                                 selectedRules={ selectedRulesWithRemediations } />
+                        </ToolbarItem>
+                    }
+                    { selectedFilter &&
+                        <ToolbarItem>
+                            <Switch
+                                label='Selected only'
+                                isChecked={ this.state.selectedOnly }
+                                onChange={ isChecked => this.setState({ selectedOnly: isChecked }) }
+                            />
                         </ToolbarItem>
                     }
                     <ToolbarItem>

@@ -5742,16 +5742,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
-        "filters": Array [
-          Object {
-            "category": "Selected",
-            "chips": Array [
-              Object {
-                "name": "Show selected rules",
-              },
-            ],
-          },
-        ],
+        "filters": Array [],
         "onDelete": [Function],
       }
     }
@@ -5844,24 +5835,6 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": Array [
-                "selected",
-              ],
-            },
-            "id": "selected",
-            "label": "Selected",
-            "placeholder": "Filter by selected",
-            "type": "checkbox",
-          },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
                   "label": "Remediation available",
                   "value": "true",
                 },
@@ -5943,6 +5916,15 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           ]
         }
         selectedRules={Array []}
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <Switch
+        aria-label=""
+        isChecked={true}
+        isDisabled={false}
+        label="Selected only"
+        onChange={[Function]}
       />
     </ToolbarItem>
     <ToolbarItem>
@@ -6187,22 +6169,6 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": undefined,
-            },
-            "id": "selected",
-            "label": "Selected",
-            "placeholder": "Filter by selected",
-            "type": "checkbox",
-          },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
                   "label": "Remediation available",
                   "value": "true",
                 },
@@ -6284,6 +6250,15 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           ]
         }
         selectedRules={Array []}
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <Switch
+        aria-label=""
+        isChecked={false}
+        isDisabled={false}
+        label="Selected only"
+        onChange={[Function]}
       />
     </ToolbarItem>
     <ToolbarItem>
@@ -7057,16 +7032,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
   <PrimaryToolbar
     activeFiltersConfig={
       Object {
-        "filters": Array [
-          Object {
-            "category": "Selected",
-            "chips": Array [
-              Object {
-                "name": "Show selected rules",
-              },
-            ],
-          },
-        ],
+        "filters": Array [],
         "onDelete": [Function],
       }
     }
@@ -7159,24 +7125,6 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show selected rules",
-                  "value": "selected",
-                },
-              ],
-              "onChange": [Function],
-              "value": Array [
-                "selected",
-              ],
-            },
-            "id": "selected",
-            "label": "Selected",
-            "placeholder": "Filter by selected",
-            "type": "checkbox",
-          },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
                   "label": "Remediation available",
                   "value": "true",
                 },
@@ -7258,6 +7206,15 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
           ]
         }
         selectedRules={Array []}
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      <Switch
+        aria-label=""
+        isChecked={true}
+        isDisabled={false}
+        label="Selected only"
+        onChange={[Function]}
       />
     </ToolbarItem>
     <ToolbarItem>

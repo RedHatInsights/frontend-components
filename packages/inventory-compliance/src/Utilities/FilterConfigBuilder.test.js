@@ -12,7 +12,7 @@ describe('FilterConfigBuilder', () => {
             ],
             filter: () => ([])
         },
-        ...buildFilterConfig({ selectedFilter: true, showPassFailFilter: true, policies: [] })
+        ...buildFilterConfig({ showPassFailFilter: true, policies: [] })
     ];
     let builder;
 
