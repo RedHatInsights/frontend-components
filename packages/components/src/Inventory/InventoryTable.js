@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-import InventoryLoadError from './InventoryLoadError';
+const AsyncInventory = React.lazy(() => import('./AsyncInventory'));
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
@@ -17,7 +17,7 @@ const BaseInvTable = (props) => {
                 appName="chrome"
                 module="./InventoryTable"
                 scope="chrome"
-                ErrorComponent={<InventoryLoadError component="InventoryTable" {...props} />}
+                ErrorComponent={<AsyncInventory component="InventoryTable" {...props} />}
                 ref={props.innerRef}
                 {...props}
             />

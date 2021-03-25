@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-import InventoryLoadError from './InventoryLoadError';
+const AsyncInventory = React.lazy(() => import('./AsyncInventory'));
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
@@ -17,7 +17,7 @@ const BaseInventoryDetailHead = (props) => {
                 appName="chrome"
                 module="./InventoryDetailHead"
                 scope="chrome"
-                ErrorComponent={<InventoryLoadError component="InventoryDetailHead" {...props} />}
+                ErrorComponent={<AsyncInventory component="InventoryDetailHead" {...props} />}
                 ref={props.innerRef}
                 {...props}
             />
