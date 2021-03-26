@@ -116,6 +116,22 @@ exports[`SystemRulesTable component should render 1`] = `
             "placeholder": "Filter by passed",
             "type": "radio",
           },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
+            "type": "checkbox",
+          },
         ],
       }
     }
@@ -1304,6 +1320,22 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
             "placeholder": "Filter by passed",
             "type": "radio",
           },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
+            "type": "checkbox",
+          },
         ],
       }
     }
@@ -1676,6 +1708,22 @@ exports[`SystemRulesTable component should render search results by rule name 1`
             "label": "Passed",
             "placeholder": "Filter by passed",
             "type": "radio",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
+            "type": "checkbox",
           },
         ],
       }
@@ -2104,6 +2152,22 @@ exports[`SystemRulesTable component should render search results on any page, re
             "placeholder": "Filter by passed",
             "type": "radio",
           },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
+            "type": "checkbox",
+          },
         ],
       }
     }
@@ -2521,6 +2585,22 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
             "label": "Passed",
             "placeholder": "Filter by passed",
             "type": "radio",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
+            "type": "checkbox",
           },
         ],
       }
@@ -3618,6 +3698,22 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
             "placeholder": "Filter by passed",
             "type": "radio",
           },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
+            "type": "checkbox",
+          },
         ],
       }
     }
@@ -4014,7 +4110,12 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
               />,
             },
             Object {
-              "title": "No",
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
             },
           ],
           "isOpen": false,
@@ -4046,7 +4147,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "rationale": "The atd service could be used by an unsophisticated insider to carry out activities outside of a normal login session, which could complicate accountability. Furthermore, the need to schedule tasks with at or batch is not common.",
                     "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
                     "references": Array [],
-                    "remediationAvailable": false,
+                    "remediationAvailable": true,
                     "rowKey": "xccdf_org.ssgproject.content_rule_service_atd_disabled-xccdf_org.ssgproject.content_profile_pci-dss",
                     "severity": "medium",
                     "title": "Disable At Service (atd)",
@@ -4088,7 +4189,12 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
               />,
             },
             Object {
-              "title": "No",
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
             },
           ],
           "isOpen": false,
@@ -4120,7 +4226,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "rationale": "Mishandling crash data could expose sensitive information about vulnerabilities in software executing on the system, as well as sensitive information from within a process's address space or registers.",
                     "refId": "xccdf_org.ssgproject.content_rule_service_abrtd_disabled",
                     "references": Array [],
-                    "remediationAvailable": false,
+                    "remediationAvailable": true,
                     "rowKey": "xccdf_org.ssgproject.content_rule_service_abrtd_disabled-xccdf_org.ssgproject.content_profile_pci-dss",
                     "severity": "medium",
                     "title": "Disable Automatic Bug Reporting Tool (abrtd)",
@@ -4310,7 +4416,12 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
               />,
             },
             Object {
-              "title": "No",
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
             },
           ],
           "isOpen": false,
@@ -4342,7 +4453,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
                     "rationale": "The oddjobd service may provide necessary functionality in some environments, and can be disabled if it is not needed. Execution of tasks by privileged programs, on behalf of unprivileged ones, has traditionally been a source of privilege escalation security issues.",
                     "refId": "xccdf_org.ssgproject.content_rule_service_oddjobd_disabled",
                     "references": Array [],
-                    "remediationAvailable": false,
+                    "remediationAvailable": true,
                     "rowKey": "xccdf_org.ssgproject.content_rule_service_oddjobd_disabled-xccdf_org.ssgproject.content_profile_pci-dss",
                     "severity": "medium",
                     "title": "Disable Odd Job Daemon (oddjobd)",
@@ -5747,6 +5858,22 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
             "placeholder": "Filter by selected",
             "type": "checkbox",
           },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
+            "type": "checkbox",
+          },
         ],
       }
     }
@@ -6070,6 +6197,22 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
             "id": "selected",
             "label": "Selected",
             "placeholder": "Filter by selected",
+            "type": "checkbox",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
             "type": "checkbox",
           },
         ],
@@ -7028,6 +7171,22 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
             "id": "selected",
             "label": "Selected",
             "placeholder": "Filter by selected",
+            "type": "checkbox",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
             "type": "checkbox",
           },
         ],

@@ -10,7 +10,7 @@
     "scripts": {
         "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
         "build:js": "BABEL_ENV=cjs babel src --config-file ./babel.config.js --out-dir ./ --ignore '**/*.test.js','**/tests/*'",
-        "build:esm": "BABEL_ENV=esm babel src --config-file ./babel.config.js --out-dir ./esm --ignore '**/*.test.js''**/tests/*'",
+        "build:esm": "BABEL_ENV=esm babel src --config-file ./babel.config.js --out-dir ./esm --ignore '**/*.test.js','**/tests/*'",
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
