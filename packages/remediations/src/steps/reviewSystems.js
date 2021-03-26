@@ -21,14 +21,22 @@ import { Provider, useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import './reviewSystems.scss';
+import isEqual from 'lodash/isEqual';
 
 const ReviewSystems = ({ issues, systems, registry, ...props }) => {
+
     let dispatch = useDispatch();
     const inventory = useRef(null);
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
-
+    const selectedRef = useRef();
     const inventoryApi = useRef({});
+
+    const { selected, loaded, rows } = useSelector(({ entities }) => ({
+        selected: entities?.selected || [],
+        loaded: entities?.loaded,
+        rows: entities?.rows || []
+    }));
 
     const formValues = formOptions.getState().values;
     const error = formOptions.getState().errors?.systems;
@@ -52,10 +60,6 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
         }
     };
 
-    const onSelect = (selected) => {
-        input.onChange(selected);
-    };
-
     const onSelectRows = (value) => {
         dispatch({
             type: TOGGLE_BULK_SELECT,
@@ -63,11 +67,10 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
         });
     };
 
-    const { selected, loaded, rows } = useSelector(({ entities }) => ({
-        selected: entities?.selected || [],
-        loaded: entities?.loaded,
-        rows: entities?.rows || []
-    }));
+    if (!isEqual(selectedRef.current, selected)) {
+        selectedRef.current = selected;
+        input.onChange(selected);
+    }
 
     return (
         <Stack hasGutter>
@@ -90,7 +93,7 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
                             ref={inventory}
                             getEntities={(_i, config) => fetchSystemsInfo(config, allSystems, inventoryApi.current)}
                             onLoad={({ mergeWithEntities, api }) => {
-                                registry.register(mergeWithEntities(entitiesReducer(onSelect, input.value)));
+                                registry.register(mergeWithEntities(entitiesReducer(input.value)));
                                 inventoryApi.current = api;
                             }
                             }
