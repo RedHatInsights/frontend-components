@@ -67,10 +67,10 @@ function createInsightsProxy({
     };
 
     const isChrome = (path) => localChrome && path.includes(process.env.BETA ? '/beta/apps/chrome/' : '/apps/chrome/');
-    const pathInCustomUrl = (path) => appUrls.some((customPath) => comparator(path, customPath));
+    const pathInCustomUrl = (path) => appUrls && appUrls.some((customPath) => comparator(path, customPath));
     const removeHashQuery = (path) => path.replace(/(\?|#).*/, '');
 
-    if (appUrl && proxyVerbose) {
+    if (appUrls && proxyVerbose) {
         console.log('\n\nServing HTML on: ', appUrls.join(', '));
         console.log('Exact URL: ', exactUrl ? 'true' : 'false', '\n\n');
     }
