@@ -29,14 +29,11 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
     const inventory = useRef(null);
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
-    const selectedRef = useRef();
     const inventoryApi = useRef({});
 
-    const { selected, loaded, rows } = useSelector(({ entities }) => ({
-        selected: entities?.selected || [],
-        loaded: entities?.loaded,
-        rows: entities?.rows || []
-    }));
+    const rowsLength = useSelector(({ entities }) => (entities?.rows || []).length);
+    const selected = useSelector(({ entities }) => entities?.selected || []);
+    const loaded = useSelector(({ entities }) => entities?.loaded);
 
     const formValues = formOptions.getState().values;
     const error = formOptions.getState().errors?.systems;
@@ -67,10 +64,11 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
         });
     };
 
-    if (!isEqual(selectedRef.current, selected)) {
-        selectedRef.current = selected;
-        input.onChange(selected);
-    }
+    useEffect(() => {
+        if (!isEqual(input.value, selected)) {
+            input.onChange(selected);
+        }
+    });
 
     return (
         <Stack hasGutter>
@@ -92,11 +90,10 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
                             onRefresh={onRefresh}
                             ref={inventory}
                             getEntities={(_i, config) => fetchSystemsInfo(config, allSystems, inventoryApi.current)}
-                            onLoad={({ mergeWithEntities, api }) => {
-                                registry.register(mergeWithEntities(entitiesReducer(input.value)));
+                            onLoad={({ mergeWithEntities, api, INVENTORY_ACTION_TYPES }) => {
+                                registry.register(mergeWithEntities(entitiesReducer(allSystems, INVENTORY_ACTION_TYPES)));
                                 inventoryApi.current = api;
-                            }
-                            }
+                            }}
                             bulkSelect={{
                                 id: 'select-systems',
                                 count: selected.length,
@@ -105,8 +102,8 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
                                     onClick: () => onSelectRows(false)
                                 },
                                 {
-                                    ...loaded && rows.length > 0 ? {
-                                        title: `Select page (${ rows.length })`,
+                                    ...loaded && rowsLength > 0 ? {
+                                        title: `Select page (${ rowsLength })`,
                                         onClick: () => onSelectRows(true)
                                     } : {}
                                 }],

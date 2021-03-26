@@ -140,10 +140,10 @@ const entitySelected = (state, { payload }) => {
     };
 };
 
-const loadEntitiesFulfilled = (state, formValue) => {
+const loadEntitiesFulfilled = (state, allSystems) => {
     let selected = state.selected || [];
     if (!state.selected) {
-        selected = formValue ? formValue : state.rows.map(row => row.id);
+        selected = allSystems ? allSystems : state.rows.map(row => row.id);
     }
 
     return ({
@@ -189,8 +189,8 @@ export const fetchSystemsInfo = async (config, allSystems, { getEntities } = {})
     };
 };
 
-export const inventoryEntitiesReducer = (formValue) => applyReducerHash({
+export const inventoryEntitiesReducer = (allSystems, { LOAD_ENTITIES_FULFILLED }) => applyReducerHash({
     SELECT_ENTITY: (state, action) => entitySelected(state, action),
-    LOAD_ENTITIES_FULFILLED: (state) => loadEntitiesFulfilled(state, formValue),
-    [TOGGLE_BULK_SELECT]: (state, action) => changeBulkSelect(state, action)
+    [LOAD_ENTITIES_FULFILLED]: (state) => loadEntitiesFulfilled(state, allSystems),
+    [TOGGLE_BULK_SELECT]: changeBulkSelect
 });
