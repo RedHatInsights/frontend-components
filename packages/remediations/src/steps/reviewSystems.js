@@ -22,21 +22,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import './reviewSystems.scss';
 
-const ReviewSystems = (props) => {
-    const { issues, systems, registry } = props;
-
+const ReviewSystems = ({ issues, systems, registry, ...props }) => {
     let dispatch = useDispatch();
     const inventory = useRef(null);
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
 
     const inventoryApi = useRef({});
-
-    const { selected, loaded, rows } = useSelector(({ entities }) => ({
-        selected: entities?.selected || [],
-        loaded: entities?.loaded,
-        rows: entities?.rows || []
-    }));
 
     const formValues = formOptions.getState().values;
     const error = formOptions.getState().errors?.systems;
@@ -70,6 +62,12 @@ const ReviewSystems = (props) => {
             payload: value
         });
     };
+
+    const { selected, loaded, rows } = useSelector(({ entities }) => ({
+        selected: entities?.selected || [],
+        loaded: entities?.loaded,
+        rows: entities?.rows || []
+    }));
 
     return (
         <Stack hasGutter>
