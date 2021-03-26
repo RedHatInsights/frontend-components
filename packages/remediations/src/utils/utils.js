@@ -118,7 +118,7 @@ export const submitRemediation = (formValues, data, basePath, resolutions) => {
     }
 };
 
-const entitySelected = (state, { payload }, onSelect) => {
+const entitySelected = (state, { payload }) => {
     let selected = state.selected || [];
     if (payload.selected) {
         selected = [
@@ -134,21 +134,18 @@ const entitySelected = (state, { payload }, onSelect) => {
         }
     }
 
-    onSelect(selected);
-
     return {
         ...state,
         selected
     };
 };
 
-const loadEntitiesFulfilled = (state, onSelect, formValue) => {
+const loadEntitiesFulfilled = (state, allSystems) => {
     let selected = state.selected || [];
     if (!state.selected) {
-        selected = formValue ? formValue : state.rows.map(row => row.id);
+        selected = allSystems ? allSystems : state.rows.map(row => row.id);
     }
 
-    onSelect(selected);
     return ({
         ...state,
         selected,
@@ -160,17 +157,13 @@ const loadEntitiesFulfilled = (state, onSelect, formValue) => {
     });
 };
 
-const changeBulkSelect = (state, action, onSelect) => {
+const changeBulkSelect = (state, action) => {
     const removeSelected = !action.payload;
     if (!removeSelected) {
         state.selected = [
             ...state.selected,
             ...state.rows.map(row => row.id)
         ];
-
-        onSelect(state.selected);
-    } else {
-        onSelect([]);
     }
 
     return ({
@@ -196,8 +189,8 @@ export const fetchSystemsInfo = async (config, allSystems, { getEntities } = {})
     };
 };
 
-export const inventoryEntitiesReducer = (onSelect, formValue) => applyReducerHash({
-    SELECT_ENTITY: (state, action) => entitySelected(state, action, onSelect),
-    LOAD_ENTITIES_FULFILLED: (state) => loadEntitiesFulfilled(state, onSelect, formValue),
-    [TOGGLE_BULK_SELECT]: (state, action) => changeBulkSelect(state, action, onSelect)
+export const inventoryEntitiesReducer = (allSystems, { LOAD_ENTITIES_FULFILLED }) => applyReducerHash({
+    SELECT_ENTITY: (state, action) => entitySelected(state, action),
+    [LOAD_ENTITIES_FULFILLED]: (state) => loadEntitiesFulfilled(state, allSystems),
+    [TOGGLE_BULK_SELECT]: changeBulkSelect
 });

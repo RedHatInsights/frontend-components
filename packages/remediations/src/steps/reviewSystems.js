@@ -21,14 +21,19 @@ import { Provider, useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import './reviewSystems.scss';
+import isEqual from 'lodash/isEqual';
 
 const ReviewSystems = ({ issues, systems, registry, ...props }) => {
+
     let dispatch = useDispatch();
     const inventory = useRef(null);
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
-
     const inventoryApi = useRef({});
+
+    const rowsLength = useSelector(({ entities }) => (entities?.rows || []).length);
+    const selected = useSelector(({ entities }) => entities?.selected || []);
+    const loaded = useSelector(({ entities }) => entities?.loaded);
 
     const formValues = formOptions.getState().values;
     const error = formOptions.getState().errors?.systems;
@@ -52,10 +57,6 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
         }
     };
 
-    const onSelect = (selected) => {
-        input.onChange(selected);
-    };
-
     const onSelectRows = (value) => {
         dispatch({
             type: TOGGLE_BULK_SELECT,
@@ -63,11 +64,11 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
         });
     };
 
-    const { selected, loaded, rows } = useSelector(({ entities }) => ({
-        selected: entities?.selected || [],
-        loaded: entities?.loaded,
-        rows: entities?.rows || []
-    }));
+    useEffect(() => {
+        if (!isEqual(input.value, selected)) {
+            input.onChange(selected);
+        }
+    });
 
     return (
         <Stack hasGutter>
@@ -89,11 +90,10 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
                             onRefresh={onRefresh}
                             ref={inventory}
                             getEntities={(_i, config) => fetchSystemsInfo(config, allSystems, inventoryApi.current)}
-                            onLoad={({ mergeWithEntities, api }) => {
-                                registry.register(mergeWithEntities(entitiesReducer(onSelect, input.value)));
+                            onLoad={({ mergeWithEntities, api, INVENTORY_ACTION_TYPES }) => {
+                                registry.register(mergeWithEntities(entitiesReducer(allSystems, INVENTORY_ACTION_TYPES)));
                                 inventoryApi.current = api;
-                            }
-                            }
+                            }}
                             bulkSelect={{
                                 id: 'select-systems',
                                 count: selected.length,
@@ -102,8 +102,8 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
                                     onClick: () => onSelectRows(false)
                                 },
                                 {
-                                    ...loaded && rows.length > 0 ? {
-                                        title: `Select page (${ rows.length })`,
+                                    ...loaded && rowsLength > 0 ? {
+                                        title: `Select page (${ rowsLength })`,
                                         onClick: () => onSelectRows(true)
                                     } : {}
                                 }],
