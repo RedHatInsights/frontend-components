@@ -1,25 +1,24 @@
 /* eslint-disable camelcase */
 import './insights.scss';
 
+import { AnsibeTowerIcon, ChartSpikeIcon, CheckCircleIcon, CheckIcon, ExternalLinkAltIcon, PficonSatelliteIcon, TimesCircleIcon } from '@patternfly/react-icons';
 import { BASE_FETCH_URL, FILTER_CATEGORIES as FC, IMPACT_LABEL, LIKELIHOOD_LABEL } from '../Constants';
+import { Bullseye, Button, Card, CardBody, ClipboardCopy, Stack, StackItem, ToolbarItem, Tooltip, TooltipPosition } from '@patternfly/react-core';
 import React, { Component, Fragment } from 'react';
 import { SortByDirection, Table, TableBody, TableHeader, cellWidth, fitContent, sortable } from '@patternfly/react-table';
 import { flatten, sortBy } from 'lodash';
-import { Button, Bullseye, Card, CardBody, Stack, StackItem, Tooltip, TooltipPosition, ToolbarItem, ClipboardCopy } from '@patternfly/react-core';
-import { CheckCircleIcon, PficonSatelliteIcon, ExternalLinkAltIcon, AnsibeTowerIcon, TimesCircleIcon, CheckIcon, ChartSpikeIcon } from '@patternfly/react-icons';
-import { connect } from 'react-redux';
-import { List } from 'react-content-loader';
-
-import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
-import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
-import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 
 import API from '../Api';
-import PropTypes from 'prop-types';
-import ReportDetails from '../ReportDetails';
+import DateFormat from '@redhat-cloud-services/frontend-components/DateFormat';
+import InsightsLabel from '@redhat-cloud-services/frontend-components/InsightsLabel';
+import { List } from 'react-content-loader';
 import MessageState from '../MessageState';
+import PrimaryToolbar from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import PropTypes from 'prop-types';
+import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
+import ReportDetails from '../ReportDetails';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { connect } from 'react-redux';
 
 class InventoryRuleList extends Component {
     state = {
@@ -88,10 +87,8 @@ class InventoryRuleList extends Component {
         const kbaIds = reportsData.map(({ rule }) => rule.node_id).filter(x => x);
         try {
             const kbaDetailsFetch = (await API.get(
-                `https://access.redhat.com/hydra/rest/search/kcs?q=id:(${
-                    kbaIds.join(` OR `)
-                })&fl=view_uri,id,publishedTitle&rows=${
-                    kbaIds.length
+                `https://access.redhat.com/hydra/rest/search/kcs?q=id:(${kbaIds.join(` OR `)
+                })&fl=view_uri,id,publishedTitle&rows=${kbaIds.length
                 }&redhat_client=$ADVISOR`,
                 {},
                 { credentials: 'include' }
@@ -126,7 +123,6 @@ class InventoryRuleList extends Component {
 
     buildRows = (activeReports, kbaDetails, filters, rows, searchValue = '', kbaLoading = false) => {
         const builtRows = flatten(activeReports.map((value, key) => {
-            console.error(activeReports);
             const rule = value.rule;
             const resolution = value.resolution;
             const kbaDetail = Object.keys(kbaDetails).length ? kbaDetails.filter(article => article.id === value.rule.node_id)[0] : {};
@@ -456,10 +452,12 @@ class InventoryRuleList extends Component {
                                 <TableHeader />
                                 <TableBody />
                             </Table>
-                            {results === 0 &&
-                                <MessageState icon={TimesCircleIcon} title='No matching recommendations found'
-                                    text={`This filter criteria matches no recommendations. Try changing your filter settings.`} />
-                            }
+                            {results === 0 && <Card>
+                                <CardBody>
+                                    <MessageState title='No matching recommendations found'
+                                        text={`This filter criteria matches no recommendations. Try changing your filter settings.`} />
+                                </CardBody>
+                            </Card>}
                         </Fragment>
                         : entity.insights_id !== null ? <Card>
                             <CardBody>

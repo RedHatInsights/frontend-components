@@ -1,7 +1,7 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-insights",
     "version": "3.1.0",
-    "description": "Rules detail page for RedHat Cloud Services project.",
+    "description": "Advisor recommendation detail page for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
     "publishConfig": {
@@ -32,15 +32,16 @@
         "prop-types": ">=15.6.2",
         "react": ">=16.5.1",
         "react-content-loader": ">=3.4.1",
-        "react-redux": ">=7.2.0"
+        "react-redux": ">=7.2.0",
+        "axios": ">=0.21.1"
     },
     "dependencies": {
-        "@redhat-cloud-services/frontend-components": "^3.0.0-beta.4",
-        "@redhat-cloud-services/frontend-components-notifications": ">=3.0.0",
+        "@redhat-cloud-services/frontend-components": "^3.1.7",
+        "@redhat-cloud-services/frontend-components-notifications": "^3.1.0",
         "@redhat-cloud-services/frontend-components-remediations": "*",
-        "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
+        "@redhat-cloud-services/frontend-components-utilities": "^3.1.1",
         "dot": ">=1.1.3",
-        "marked": ">=1.1.0",
-        "sanitize-html": ">=2.3.2"
+        "marked": "^2.0.1",
+        "sanitize-html": "^2.3.3"
     }
 }
