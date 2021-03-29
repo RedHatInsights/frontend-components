@@ -336,6 +336,13 @@ class InventoryRuleList extends Component {
         const selectedItemsLength = this.getSelectedItems(rows).length;
         const selectableItemsLength = rows.filter(r => r.resolution && r.resolution.has_playbook).length;
         const actions = [
+            <RemediationButton
+                key='remediation-button'
+                isDisabled={selectedAnsibleRules.length === 0}
+                dataProvider={() => this.processRemediation(selectedAnsibleRules)}
+                onRemediationCreated={result => addNotification(result.getNotification())} >
+                {AnsibeTowerIcon && <AnsibeTowerIcon size='sm' className='ins-c-background__default' />} Remediate
+            </RemediationButton>,
             '', {
                 label: 'Collapse all',
                 onClick: () => this.onKebabClick('insights-collapse-all')
@@ -417,16 +424,7 @@ class InventoryRuleList extends Component {
                     filterConfig={{ items: filterConfigItems }}
                     pagination={<React.Fragment> {results === 1 ? `${results} Recommendation` : `${results} Recommendations`} </React.Fragment>}
                     activeFiltersConfig={activeFiltersConfig}
-                >
-                    <ToolbarItem className="remediationButtonOverride">
-                        <RemediationButton
-                            isDisabled={selectedAnsibleRules.length === 0}
-                            dataProvider={() => this.processRemediation(selectedAnsibleRules)}
-                            onRemediationCreated={result => addNotification(result.getNotification())} >
-                            {AnsibeTowerIcon && <AnsibeTowerIcon size='sm' className='ins-c-background__default' />} Remediate
-                        </RemediationButton>
-                    </ToolbarItem>
-                </PrimaryToolbar>
+                />
             }
             {inventoryReportFetchStatus === 'pending' && (
                 <Card>
