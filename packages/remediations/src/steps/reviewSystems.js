@@ -1,9 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+/* eslint-disable camelcase */
+import React, { useEffect, useRef } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
-import promiseMiddleware from 'redux-promise-middleware';
-import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 import {
     Text,
     TextContent,
@@ -17,11 +16,13 @@ import {
     TOGGLE_BULK_SELECT
 } from '../utils';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
-import './reviewSystems.scss';
 import isEqual from 'lodash/isEqual';
+import unionWith from 'lodash/unionWith';
+import uniqWith from 'lodash/uniqWith';
+import './reviewSystems.scss';
 
 const ReviewSystems = ({ issues, systems, registry, ...props }) => {
 
@@ -31,23 +32,31 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
     const formOptions = useFormApi();
     const inventoryApi = useRef({});
 
+    const formValues = formOptions.getState().values;
+    const error = formOptions.getState().errors?.systems;
+    const playbookSystems = formValues && formValues[EXISTING_PLAYBOOK] && uniqWith(formValues[EXISTING_PLAYBOOK].issues?.reduce((acc, curr) => [
+        ...acc,
+        ...(curr.systems.map(system => ({ id: system.id, display_name: system.display_name })))
+    ], []), isEqual) || [];
+
     const rowsLength = useSelector(({ entities }) => (entities?.rows || []).length);
     const selected = useSelector(({ entities }) => entities?.selected || []);
     const loaded = useSelector(({ entities }) => entities?.loaded);
+    const newSystemsNamed = useSelector(({ hostReducer: { hosts } }) => hosts?.map(host => (
+        { id: host.id, display_name: host.display_name })) || []
+    );
 
-    const formValues = formOptions.getState().values;
-    const error = formOptions.getState().errors?.systems;
-    const playbook = formValues && formValues[EXISTING_PLAYBOOK];
+    const allSystemsNamed = unionWith(playbookSystems, newSystemsNamed, isEqual);
 
     const allNewSystems = dedupeArray(issues.reduce((acc, curr) => [
         ...acc,
         ...(curr.systems || [])
     ], [ ...systems ]));
 
-    const allSystems = playbook ? dedupeArray(playbook.issues?.reduce((acc, curr) => [
-        ...acc,
-        ...(curr.systems?.map(system => system.id) || [])
-    ], [ ...allNewSystems ])) : allNewSystems;
+    const allSystems = dedupeArray([
+        ...allNewSystems,
+        ...(playbookSystems.map(system => system.id))
+    ]);
 
     const onRefresh = (options, callback) => {
         if (!callback && inventory && inventory.current) {
@@ -83,13 +92,17 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
                 {
                     <Router>
                         <InventoryTable
-                            hideFilters={{ all: true }}
+                            hideFilters={{
+                                tags: true,
+                                registeredWith: true,
+                                stale: true
+                            }}
                             noDetail
                             variant="compact"
                             showTags
                             onRefresh={onRefresh}
                             ref={inventory}
-                            getEntities={(_i, config) => fetchSystemsInfo(config, allSystems, inventoryApi.current)}
+                            getEntities={(_i, config) => fetchSystemsInfo(config, allSystemsNamed, inventoryApi.current)}
                             onLoad={({ mergeWithEntities, api, INVENTORY_ACTION_TYPES }) => {
                                 registry.register(mergeWithEntities(entitiesReducer(allSystems, INVENTORY_ACTION_TYPES)));
                                 inventoryApi.current = api;
@@ -136,16 +149,4 @@ ReviewSystems.propTypes = {
     registry: propTypes.object.isRequired
 };
 
-const ReviewSystemsWithContext = (props) => {
-    const [ registry, setRegistry ] = useState();
-
-    useEffect(() => {
-        setRegistry(() => new ReducerRegistry({}, [ promiseMiddleware ]));
-    }, []);
-
-    return registry?.store  ? <Provider store={registry.store}>
-        <ReviewSystems {...props} registry={registry} />
-    </Provider> : null;
-};
-
-export default ReviewSystemsWithContext;
+export default ReviewSystems;

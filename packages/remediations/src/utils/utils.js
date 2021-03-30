@@ -177,17 +177,39 @@ const changeBulkSelect = (state, action) => {
     });
 };
 
-export const fetchSystemsInfo = async (config, allSystems, { getEntities } = {}) => {
-    const systems = (allSystems || []).slice((config.page - 1) * config.per_page, config.page * config.per_page);
-    const data = await getEntities(systems, { ...config, hasItems: true, page: 1 }, true);
+export const fetchSystemsInfo = async (config, allSystemsNamed = [], { getEntities } = {}) => {
+    const hostnameOrId = config?.filters?.hostnameOrId?.toLowerCase();
+    const systems = (
+        hostnameOrId
+            ?
+            allSystemsNamed.reduce((acc, curr) => [
+                ...acc,
+                ...(curr.display_name.toLowerCase().includes(hostnameOrId) || curr.id.toLowerCase().includes(hostnameOrId)
+                    ? [ curr.id ]
+                    : []
+                )
+            ], [])
+            : allSystemsNamed.map(system => system.id)
+    );
+    const sliced = systems.slice((config.page - 1) * config.per_page, config.page * config.per_page);
+    const data = sliced.length > 0 ? await getEntities(systems, { ...config, hasItems: true, page: 1 }, true) : {};
     return {
         ...data,
-        total: allSystems.length,
+        total: systems.length,
         page: config.page,
-        // eslint-disable-next-line camelcase
         per_page: config.per_page
     };
 };
+
+export const splitArray = (inputArray, perChunk) => inputArray.reduce((resultArray, item, index) => {
+    const chunkIndex = Math.floor(index / perChunk);
+    if (!resultArray[chunkIndex]) {
+        resultArray[chunkIndex] = [];
+    }
+
+    resultArray[chunkIndex].push(item);
+    return resultArray;
+}, []);
 
 export const inventoryEntitiesReducer = (allSystems, { LOAD_ENTITIES_FULFILLED }) => applyReducerHash({
     SELECT_ENTITY: (state, action) => entitySelected(state, action),
