@@ -29,7 +29,7 @@ module.exports = ({
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
         mode: mode || (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
-        devtool: mode === 'production' || process.env.NODE_ENV === 'production' ? 'source-map' : 'eval-cheap-module-source-map',
+        devtool: false,
         optimization: {
             minimize: (process.env.NODE_ENV || mode) === 'production',
             splitChunks: {
@@ -75,8 +75,8 @@ module.exports = ({
                 }
             }, {
                 test: /src\/.*\.js$/,
-                exclude: /(node_modules|bower_components)/i,
-                use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }]
+                enforce: 'pre',
+                use: [{ loader: 'source-map-loader' }]
             }, {
                 test: /src\/.*\.tsx?$/,
                 loader: 'ts-loader',
