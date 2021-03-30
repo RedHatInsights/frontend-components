@@ -7,6 +7,8 @@ import { act } from 'react-dom/test-utils';
 import { SYSTEMS } from '../../utils';
 import { remediationWizardTestData } from '../testData';
 import ReviewSystems from '../../steps/reviewSystems';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
     __esModule: true,
@@ -39,10 +41,22 @@ const createSchema = () => ({
 
 describe('ReviewSystems', () => {
 
+    let mockStore = configureStore();
+
+    const initialState = {
+        hostReducer: {
+            hosts: []
+        }
+    };
+
     it('should render correctly', async () => {
+        const store = mockStore(initialState);
         let wrapper;
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema({})} />);
+            wrapper = mount(
+                <Provider store={store}>
+                    <RendererWrapper schema={createSchema({})} />
+                </Provider>);
         });
         expect(wrapper.find(ReviewSystems)).toHaveLength(1);
         expect(wrapper.find('Button[type="submit"]')).toHaveLength(2);
