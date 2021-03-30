@@ -32,7 +32,7 @@ const RemediationWizard = ({
 
     const [ state, setState ] = useState({ errors: [] });
 
-    const getIssuesMultiple = (issuesById, resolutions) =>
+    const getIssuesMultiple = (issuesById, resolutions = []) =>
         data.issues.map(issue => {
             const issueResolutions = resolutions.find(r => r.id === issue.id)?.resolutions || [];
             const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
