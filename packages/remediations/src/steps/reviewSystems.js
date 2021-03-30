@@ -101,12 +101,11 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
                                     title: 'Select none (0)',
                                     onClick: () => onSelectRows(false)
                                 },
-                                {
-                                    ...loaded && rowsLength > 0 ? {
-                                        title: `Select page (${ rowsLength })`,
-                                        onClick: () => onSelectRows(true)
-                                    } : {}
-                                }],
+                                ...loaded && rowsLength > 0 ? [{
+                                    title: `Select page (${ rowsLength })`,
+                                    onClick: () => onSelectRows(true)
+                                }] : []
+                                ],
                                 checked: selected.length > 0,
                                 onSelect: (value) => onSelectRows(value)
                             }}
