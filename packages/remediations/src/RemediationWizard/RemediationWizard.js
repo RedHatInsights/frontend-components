@@ -80,7 +80,7 @@ const RemediationWizard = ({
     const fetchHostNames = (systems = []) => {
         const perChunk = 50;
         const chunks = splitArray(systems, perChunk);
-        chunks.map(chunk => {
+        chunks.forEach(chunk => {
             dispatch(fetchHostsById(chunk, { page: 1, perPage: perChunk }));
         });
     };
@@ -183,7 +183,7 @@ RemediationWizard.propTypes = {
         onRemediationCreated: propTypes.func
     }).isRequired,
     basePath: propTypes.string,
-    registry: propTypes.object.isRequired
+    registry: propTypes.instanceOf(ReducerRegistry).isRequired
 };
 
 const RemediationWizardWithContext = (props) => {

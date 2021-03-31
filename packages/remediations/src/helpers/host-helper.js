@@ -4,6 +4,6 @@ import { HostsApi } from '@redhat-cloud-services/host-inventory-client';
 export const INVENTORY_API_BASE = '/api/inventory/v1';
 export const hosts = new HostsApi(undefined, INVENTORY_API_BASE, instance);
 
-export async function getHostsById(systems, { page, perPage }) {
-    return await hosts.apiHostGetHostById(systems, undefined, perPage, page);
+export function getHostsById(systems, { page, perPage }) {
+    return hosts.apiHostGetHostById(systems, undefined, perPage, page);
 }

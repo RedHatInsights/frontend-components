@@ -16,6 +16,7 @@ import {
     TOGGLE_BULK_SELECT
 } from '../utils';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
+import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
@@ -146,7 +147,7 @@ ReviewSystems.propTypes = {
         description: propTypes.string,
         id: propTypes.string
     })).isRequired,
-    registry: propTypes.object.isRequired
+    registry: propTypes.instanceOf(ReducerRegistry).isRequired
 };
 
 export default ReviewSystems;
