@@ -35,7 +35,7 @@ export function remediationUrl (id) {
 
 export const dedupeArray = (array) => [ ...new Set(array) ];
 
-export const pluralize = (count, str) => count > 1 ? str + 's' : str;
+export const pluralize = (count, str, fallback) => count > 1 ? (fallback || str + 's') : str;
 
 const sortRecords = (records, sortByState) => records.sort(
     (a, b) => {
