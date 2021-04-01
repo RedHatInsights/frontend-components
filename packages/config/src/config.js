@@ -76,7 +76,11 @@ module.exports = ({
             }, {
                 test: /src\/.*\.js$/,
                 enforce: 'pre',
-                use: [{ loader: 'source-map-loader' }]
+                use: [ 'source-map-loader' ]
+            }, {
+                test: /src\/.*\.js$/,
+                exclude: /(node_modules|bower_components)/i,
+                use: [ 'babel-loader' ]
             }, {
                 test: /src\/.*\.tsx?$/,
                 loader: 'ts-loader',
