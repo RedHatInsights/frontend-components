@@ -4,17 +4,27 @@ import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-r
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import { SYSTEMS } from '../../utils';
+import promiseMiddleware from 'redux-promise-middleware';
+import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED, SYSTEMS } from '../../utils';
 import { remediationWizardTestData } from '../testData';
 import ReviewSystems from '../../steps/reviewSystems';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
     __esModule: true,
     // eslint-disable-next-line react/display-name
     InventoryTable: () => <div>Inventory</div>
 }));
+
+jest.mock('../../utils', () => {
+    return {
+        dedupeArray: jest.fn((props) => props),
+        getPlaybookSystems: jest.fn(() => []),
+        SYSTEMS: 'systems'
+    };
+});
 
 const RendererWrapper = (props) => (
     <FormRenderer
@@ -27,25 +37,40 @@ const RendererWrapper = (props) => (
                 systems: remediationWizardTestData.systems
             }
         }}
+        initialValues={{
+            [EXISTING_PLAYBOOK_SELECTED]: true,
+            [EXISTING_PLAYBOOK]: {
+                issues: [{
+                    id: 'test',
+                    systems: [{ id: 'test', display_name: 'test' }]
+                }]
+            }
+        }}
         schema={{ fields: [] }}
         {...props}
     />
 );
 
-const createSchema = () => ({
+const schema = {
     fields: [{
         name: SYSTEMS,
-        component: 'review-systems'
+        component: 'review-systems',
+        issues: [{
+            id: 'test',
+            systems: [{ id: 'test', display_name: 'test' }]
+        }],
+        systems: [ 'test2' ],
+        registry: new ReducerRegistry({}, [ promiseMiddleware ])
     }]
-});
+};
 
 describe('ReviewSystems', () => {
 
-    let mockStore = configureStore();
+    let mockStore = configureStore([ promiseMiddleware ]);
 
     const initialState = {
         hostReducer: {
-            hosts: []
+            hosts: [{ id: 'test2', display_name: 'test2' }]
         }
     };
 
@@ -55,7 +80,7 @@ describe('ReviewSystems', () => {
         await act(async() => {
             wrapper = mount(
                 <Provider store={store}>
-                    <RendererWrapper schema={createSchema({})} />
+                    <RendererWrapper schema={schema} />
                 </Provider>);
         });
         expect(wrapper.find(ReviewSystems)).toHaveLength(1);

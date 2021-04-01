@@ -11,9 +11,11 @@ import {
 import {
     dedupeArray,
     fetchSystemsInfo,
+    getPlaybookSystems,
     inventoryEntitiesReducer as entitiesReducer,
     EXISTING_PLAYBOOK,
-    TOGGLE_BULK_SELECT
+    TOGGLE_BULK_SELECT,
+    EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
@@ -22,7 +24,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 import isEqual from 'lodash/isEqual';
 import unionWith from 'lodash/unionWith';
-import uniqWith from 'lodash/uniqWith';
 import './reviewSystems.scss';
 
 const ReviewSystems = ({ issues, systems, registry, ...props }) => {
@@ -35,10 +36,7 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
 
     const formValues = formOptions.getState().values;
     const error = formOptions.getState().errors?.systems;
-    const playbookSystems = formValues && formValues[EXISTING_PLAYBOOK] && uniqWith(formValues[EXISTING_PLAYBOOK].issues?.reduce((acc, curr) => [
-        ...acc,
-        ...(curr.systems.map(system => ({ id: system.id, display_name: system.display_name })))
-    ], []), isEqual) || [];
+    const playbookSystems = formValues && formValues[EXISTING_PLAYBOOK_SELECTED] ? getPlaybookSystems(formValues[EXISTING_PLAYBOOK]) : [];
 
     const rowsLength = useSelector(({ entities }) => (entities?.rows || []).length);
     const selected = useSelector(({ entities }) => entities?.selected || []);

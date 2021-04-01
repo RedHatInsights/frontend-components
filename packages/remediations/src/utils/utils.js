@@ -3,6 +3,8 @@ import React, { Fragment } from 'react';
 import { CloseIcon, RedoIcon } from '@patternfly/react-icons';
 import urijs from 'urijs';
 import * as api from '../api';
+import uniqWith from 'lodash/uniqWith';
+import isEqual from 'lodash/isEqual';
 import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry/ReducerRegistry';
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
@@ -118,7 +120,7 @@ export const submitRemediation = (formValues, data, basePath, resolutions) => {
     }
 };
 
-const entitySelected = (state, { payload }) => {
+export const entitySelected = (state, { payload }) => {
     let selected = state.selected || [];
     if (payload.selected) {
         selected = [
@@ -140,7 +142,7 @@ const entitySelected = (state, { payload }) => {
     };
 };
 
-const loadEntitiesFulfilled = (state, allSystems) => {
+export const loadEntitiesFulfilled = (state, allSystems) => {
     let selected = state.selected || [];
     if (!state.selected) {
         selected = allSystems ? allSystems : state.rows.map(row => row.id);
@@ -157,7 +159,7 @@ const loadEntitiesFulfilled = (state, allSystems) => {
     });
 };
 
-const changeBulkSelect = (state, action) => {
+export const changeBulkSelect = (state, action) => {
     const removeSelected = !action.payload;
     if (!removeSelected) {
         state.selected = [
@@ -192,7 +194,7 @@ export const fetchSystemsInfo = async (config, allSystemsNamed = [], { getEntiti
             : allSystemsNamed.map(system => system.id)
     );
     const sliced = systems.slice((config.page - 1) * config.per_page, config.page * config.per_page);
-    const data = sliced.length > 0 ? await getEntities(systems, { ...config, hasItems: true, page: 1 }, true) : {};
+    const data = sliced.length > 0 ? await getEntities(sliced, { ...config, hasItems: true, page: 1 }, true) : {};
     return {
         ...data,
         total: systems.length,
@@ -210,6 +212,11 @@ export const splitArray = (inputArray, perChunk) => inputArray.reduce((resultArr
     resultArray[chunkIndex].push(item);
     return resultArray;
 }, []);
+
+export const getPlaybookSystems = (playbook) => playbook && uniqWith(playbook.issues?.reduce((acc, curr) => [
+    ...acc,
+    ...(curr.systems.map(system => ({ id: system.id, display_name: system.display_name })))
+], []), isEqual) || [];
 
 export const inventoryEntitiesReducer = (allSystems, { LOAD_ENTITIES_FULFILLED }) => applyReducerHash({
     SELECT_ENTITY: (state, action) => entitySelected(state, action),
