@@ -13,7 +13,10 @@ import {
     Text,
     TextContent,
     TextInput,
-    Stack, StackItem
+    Stack, StackItem,
+    Popover,
+    Button,
+    Alert
 } from '@patternfly/react-core';
 import {
     pluralize,
@@ -22,9 +25,10 @@ import {
     EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
 import './selectPlaybook.scss';
+import { Fragment } from 'react';
 
 const SelectPlaybook = (props) => {
-    const { issues, systems } = props;
+    const { issues, systems, warnings, resolutionsCount } = props;
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState().values;
@@ -51,11 +55,26 @@ const SelectPlaybook = (props) => {
     return (
         <Stack hasGutter>
             <StackItem>
+                {warnings.length !== 0 && (
+                    <StackItem>
+                        <Alert variant="warning" isInline title={<Text>
+                            There {pluralize(warnings.length, 'was', 'were')} <Popover
+                                aria-label="Resolution error popover"
+                                bodyContent={<Fragment>
+                                    {warnings.map((warning, key) => <div key={key}>{warning}</div>)}
+                                </Fragment>}
+                            >
+                                <b><Button variant="link" isInline>{warnings.length}</Button> {pluralize(warnings.length, 'error')}</b>
+                            </Popover> while fetching resolutions for your issues! </Text>} />
+                    </StackItem>
+                )}
                 <TextContent>
                     <Text>
                         You selected <b>{`${allSystems.length} ${pluralize(allSystems.length, 'system')}`} </b>
                         to remediate with Ansible, which in total includes <b>{`${issues.length} ${pluralize(issues.length, 'issue')}`} </b>
-                        which can be remediated by Ansible.
+                        {issues.length !== resolutionsCount ? <Fragment>
+                            of which <b>{resolutionsCount} </b>
+                        </Fragment> : 'which'} can be remediated by Ansible.
                     </Text>
                 </TextContent>
             </StackItem>
@@ -150,7 +169,13 @@ SelectPlaybook.propTypes = {
     issues: propTypes.arrayOf(propTypes.shape({
         description: propTypes.string,
         id: propTypes.string
-    })).isRequired
+    })).isRequired,
+    warnings: propTypes.arrayOf(propTypes.string),
+    resolutionsCount: propTypes.number
+};
+
+SelectPlaybook.defaultProps = {
+    warnings: []
 };
 
 export default SelectPlaybook;

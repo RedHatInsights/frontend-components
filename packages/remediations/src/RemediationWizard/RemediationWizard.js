@@ -51,7 +51,7 @@ const RemediationWizard = ({
         try {
             const result = await api.getResolutionsBatch(issues.map(i => i.id));
 
-            const [ resolutions, errors ] = transform(result, ([ resolutions, errors ], value, key) => {
+            const [ resolutions, warnings ] = transform(result, ([ resolutions, errors ], value, key) => {
                 if (!value) {
                     errors.push(`Issue ${key} does not have Ansible support`);
                 } else {
@@ -61,7 +61,7 @@ const RemediationWizard = ({
                 return [ resolutions, errors ];
             }, [ [], [] ]);
 
-            return { resolutions, errors };
+            return { resolutions, warnings };
         } catch (e) {
             return { errors: [ 'Error obtaining resolution information. Please try again later.' ] };
         }
@@ -87,7 +87,9 @@ const RemediationWizard = ({
 
     const mapperExtension = {
         'select-playbook': {
-            component: state.errors.length > 0 ? FetchError : SelectPlaybook,
+            component: (state.errors.length > 0 || (state.resolutions || []).length === 0) ? FetchError : SelectPlaybook,
+            resolutionsCount: (state.resolutions || []).length,
+            warnings: state.warnings,
             issues: data.issues,
             systems: data.systems
         },
