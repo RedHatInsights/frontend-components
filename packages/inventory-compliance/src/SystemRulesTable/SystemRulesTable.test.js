@@ -263,10 +263,9 @@ describe('SystemRulesTable component', () => {
                     ] }
                 />
             );
-            const instance = wrapper.instance();
-            await instance.onFilterUpdate('selected', [ 'selected' ]);
+            expect(wrapper.state.selectedOnly === true);
             expect(toJson(wrapper)).toMatchSnapshot();
-            await instance.onFilterUpdate('selected', undefined);
+            wrapper.setState({ selectedOnly: false });
             expect(toJson(wrapper)).toMatchSnapshot();
         });
     });

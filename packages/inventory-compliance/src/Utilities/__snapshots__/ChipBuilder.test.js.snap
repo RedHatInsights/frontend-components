@@ -20,13 +20,5 @@ Array [
       },
     ],
   },
-  Object {
-    "category": "Selected",
-    "chips": Array [
-      Object {
-        "name": "all",
-      },
-    ],
-  },
 ]
 `;
