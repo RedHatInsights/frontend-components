@@ -101,7 +101,7 @@ describe('module rules', () => {
         const {
             module
         } = configBuilder({ appEntry: 'testEntry', appName: 'someName' });
-        expect(module.rules.length).toBe(6);
+        expect(module.rules.length).toBe(7);
     });
 
     test('first to be chrome-render-loader', () => {
