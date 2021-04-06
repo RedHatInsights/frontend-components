@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
@@ -35,8 +35,8 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
     const inventoryApi = useRef({});
 
     const formValues = formOptions.getState().values;
+    const playbook = formValues[EXISTING_PLAYBOOK];
     const error = formOptions.getState().errors?.systems;
-    const playbookSystems = formValues && formValues[EXISTING_PLAYBOOK_SELECTED] ? getPlaybookSystems(formValues[EXISTING_PLAYBOOK]) : [];
 
     const rowsLength = useSelector(({ entities }) => (entities?.rows || []).length);
     const selected = useSelector(({ entities }) => entities?.selected || []);
@@ -45,17 +45,29 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
         { id: host.id, display_name: host.display_name })) || []
     );
 
-    const allSystemsNamed = unionWith(playbookSystems, newSystemsNamed, isEqual);
+    const allSystems = useRef([]);
+    const [ allSystemsNamed, setAllSystemsNamed ] = useState([]);
 
-    const allNewSystems = dedupeArray(issues.reduce((acc, curr) => [
-        ...acc,
-        ...(curr.systems || [])
-    ], [ ...systems ]));
+    useEffect(() => {
+        const playbookSystems = formValues && formValues[EXISTING_PLAYBOOK_SELECTED]
+            ? getPlaybookSystems(playbook)
+            : [];
+        setAllSystemsNamed(unionWith(playbookSystems, newSystemsNamed, isEqual));
+        const allNewSystems = dedupeArray(issues.reduce((acc, curr) => [
+            ...acc,
+            ...(curr.systems || [])
+        ], [ ...systems ]));
+        allSystems.current = dedupeArray([
+            ...allNewSystems,
+            ...(playbookSystems.map(system => system.id))
+        ]);
+    }, [ playbook, issues, systems ]);
 
-    const allSystems = dedupeArray([
-        ...allNewSystems,
-        ...(playbookSystems.map(system => system.id))
-    ]);
+    useEffect(() => {
+        if (!isEqual(input.value, selected)) {
+            input.onChange(selected);
+        }
+    }, [ selected ]);
 
     const onRefresh = (options, callback) => {
         if (!callback && inventory && inventory.current) {
@@ -71,12 +83,6 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
             payload: value
         });
     };
-
-    useEffect(() => {
-        if (!isEqual(input.value, selected)) {
-            input.onChange(selected);
-        }
-    });
 
     return (
         <Stack hasGutter>
@@ -103,7 +109,7 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
                             ref={inventory}
                             getEntities={(_i, config) => fetchSystemsInfo(config, allSystemsNamed, inventoryApi.current)}
                             onLoad={({ mergeWithEntities, api, INVENTORY_ACTION_TYPES }) => {
-                                registry.register(mergeWithEntities(entitiesReducer(allSystems, INVENTORY_ACTION_TYPES)));
+                                registry.register(mergeWithEntities(entitiesReducer(allSystems.current, INVENTORY_ACTION_TYPES)));
                                 inventoryApi.current = api;
                             }}
                             bulkSelect={{

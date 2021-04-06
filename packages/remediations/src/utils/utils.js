@@ -162,10 +162,10 @@ export const loadEntitiesFulfilled = (state, allSystems) => {
 export const changeBulkSelect = (state, action) => {
     const removeSelected = !action.payload;
     if (!removeSelected) {
-        state.selected = [
+        state.selected = dedupeArray([
             ...state.selected,
             ...state.rows.map(row => row.id)
-        ];
+        ]);
     }
 
     return ({
