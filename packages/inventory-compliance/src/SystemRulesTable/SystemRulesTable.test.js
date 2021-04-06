@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SystemRulesTable from './SystemRulesTable';
+import { ToolbarItem } from '@patternfly/react-core';
 import { SortByDirection } from '@patternfly/react-table';
 import { TITLE_COLUMN } from '../Constants';
 import { remediationsResponse, system, profileRules } from '../Fixtures';
@@ -37,6 +38,19 @@ describe('SystemRulesTable component', () => {
                 loading={ false }
                 system={ system }
                 columns={ columns }
+            />
+        );
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('should render additional toolbar items', () => {
+        const wrapper = shallow(
+            <SystemRulesTable
+                profileRules={ profileRules }
+                loading={ false }
+                system={ system }
+                columns={ columns }
+                toolbarItems={ <ToolbarItem>Additional</ToolbarItem> }
             />
         );
         expect(toJson(wrapper)).toMatchSnapshot();
