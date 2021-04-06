@@ -321,7 +321,8 @@ class SystemRulesTable extends React.Component {
             sortBy, page, itemsPerPage, selectedToRemediate
         } = this.state;
         const {
-            remediationsEnabled, system, loading, columns, handleSelect, selectedFilter
+            remediationsEnabled, system, loading, columns, handleSelect, selectedFilter,
+            toolbarItems
         } = this.props;
         const rules = this.getRules();
         const filterChips = this.chipBuilder.chipsFor(this.state.activeFilters);
@@ -380,6 +381,7 @@ class SystemRulesTable extends React.Component {
                             />
                         </ToolbarItem>
                     }
+                    { toolbarItems }
                     <ToolbarItem>
                         { ruleCount } results
                     </ToolbarItem>
@@ -424,6 +426,7 @@ SystemRulesTable.propTypes = {
     selectedFilter: propTypes.bool,
     remediationAvailableFilter: propTypes.bool,
     handleSelect: propTypes.func,
+    toolbarItems: propTypes.node,
     columns: propTypes.arrayOf(
         propTypes.shape(
             {
