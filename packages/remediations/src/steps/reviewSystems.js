@@ -49,16 +49,13 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
     const [ allSystemsNamed, setAllSystemsNamed ] = useState([]);
 
     useEffect(() => {
-        const playbookSystems = formValues && formValues[EXISTING_PLAYBOOK_SELECTED]
-            ? getPlaybookSystems(playbook)
-            : [];
+        const playbookSystems = formValues?.[EXISTING_PLAYBOOK_SELECTED] ? getPlaybookSystems(playbook) : [];
         setAllSystemsNamed(unionWith(playbookSystems, newSystemsNamed, isEqual));
-        const allNewSystems = dedupeArray(issues.reduce((acc, curr) => [
-            ...acc,
-            ...(curr.systems || [])
-        ], [ ...systems ]));
         allSystems.current = dedupeArray([
-            ...allNewSystems,
+            ...dedupeArray(issues.reduce((acc, curr) => [
+                ...acc,
+                ...(curr.systems || [])
+            ], [ ...systems ])),
             ...(playbookSystems.map(system => system.id))
         ]);
     }, [ playbook, issues, systems ]);

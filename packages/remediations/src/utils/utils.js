@@ -203,15 +203,9 @@ export const fetchSystemsInfo = async (config, allSystemsNamed = [], { getEntiti
     };
 };
 
-export const splitArray = (inputArray, perChunk) => inputArray.reduce((resultArray, item, index) => {
-    const chunkIndex = Math.floor(index / perChunk);
-    if (!resultArray[chunkIndex]) {
-        resultArray[chunkIndex] = [];
-    }
-
-    resultArray[chunkIndex].push(item);
-    return resultArray;
-}, []);
+export const splitArray = (inputArray, perChunk) => [ ...new Array(Math.ceil(inputArray.length / perChunk)) ].map(
+    (_item, key) => inputArray.slice(key * perChunk, (key + 1) * perChunk)
+);
 
 export const getPlaybookSystems = (playbook) => playbook && uniqWith(playbook.issues?.reduce((acc, curr) => [
     ...acc,
