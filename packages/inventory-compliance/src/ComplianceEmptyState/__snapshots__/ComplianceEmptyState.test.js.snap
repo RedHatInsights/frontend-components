@@ -14,7 +14,6 @@ exports[`ComplianceEmptyState expect to render different message if many policie
       }
       title="Compliance"
     />
-    <br />
     <Title
       headingLevel="h1"
       size="lg"
@@ -44,13 +43,15 @@ exports[`ComplianceEmptyState expect to render different message if many policie
         Get started by adding a policy, or read documentation about how to connect OpenSCAP to the Compliance service.
       </TextContent>
     </EmptyStateBody>
-    <Button
-      component="a"
-      href="/insights/compliance/scappolicies"
-      variant="primary"
-    >
-      Create new policy
-    </Button>
+    <EmptyStatePrimary>
+      <Button
+        component="a"
+        href="/insights/compliance/scappolicies"
+        variant="primary"
+      >
+        Create new policy
+      </Button>
+    </EmptyStatePrimary>
     <EmptyStateSecondaryActions>
       <Button
         component="a"
@@ -80,7 +81,6 @@ exports[`ComplianceEmptyState expect to render different message if one policy e
       }
       title="Compliance"
     />
-    <br />
     <Title
       headingLevel="h1"
       size="lg"
@@ -110,13 +110,15 @@ exports[`ComplianceEmptyState expect to render different message if one policy e
         Get started by adding a policy, or read documentation about how to connect OpenSCAP to the Compliance service.
       </TextContent>
     </EmptyStateBody>
-    <Button
-      component="a"
-      href="/insights/compliance/scappolicies"
-      variant="primary"
-    >
-      Create new policy
-    </Button>
+    <EmptyStatePrimary>
+      <Button
+        component="a"
+        href="/insights/compliance/scappolicies"
+        variant="primary"
+      >
+        Create new policy
+      </Button>
+    </EmptyStatePrimary>
     <EmptyStateSecondaryActions>
       <Button
         component="a"
@@ -146,7 +148,6 @@ exports[`ComplianceEmptyState expect to render without error if no policies exis
       }
       title="Compliance"
     />
-    <br />
     <Title
       headingLevel="h1"
       size="lg"
@@ -162,13 +163,15 @@ exports[`ComplianceEmptyState expect to render without error if no policies exis
         Get started by adding a policy, or read documentation about how to connect OpenSCAP to the Compliance service.
       </TextContent>
     </EmptyStateBody>
-    <Button
-      component="a"
-      href="/insights/compliance/scappolicies"
-      variant="primary"
-    >
-      Create new policy
-    </Button>
+    <EmptyStatePrimary>
+      <Button
+        component="a"
+        href="/insights/compliance/scappolicies"
+        variant="primary"
+      >
+        Create new policy
+      </Button>
+    </EmptyStatePrimary>
     <EmptyStateSecondaryActions>
       <Button
         component="a"
