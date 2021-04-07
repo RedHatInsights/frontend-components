@@ -8,6 +8,7 @@ import {
     Bullseye,
     EmptyState,
     EmptyStateBody,
+    EmptyStatePrimary,
     EmptyStateSecondaryActions,
     EmptyStateIcon
 } from '@patternfly/react-core';
@@ -45,7 +46,6 @@ const ComplianceEmptyState = ({ title, mainButton, client }) => {
         <EmptyState>
             <EmptyStateIcon style={{ fontWeight: '500', color: 'var(--pf-global--primary-color--100)' }}
                 size="xl" title="Compliance" icon={CloudSecurityIcon} />
-            <br/>
             <Title headingLevel="h1" size="lg">{ title }</Title>
             <br/>
             <EmptyStateBody>
@@ -62,7 +62,9 @@ const ComplianceEmptyState = ({ title, mainButton, client }) => {
                     Compliance service.
                 </TextContent>
             </EmptyStateBody>
-            { mainButton }
+            <EmptyStatePrimary>
+                { mainButton }
+            </EmptyStatePrimary>
             <EmptyStateSecondaryActions>
                 <Button variant='link' component='a' target='_blank' rel='noopener noreferrer'
                     href={ `https://access.redhat.com/documentation/en-us/red_hat_insights/` +
