@@ -64,6 +64,20 @@ export const remediationWizardTestData = {
         }
     },
 
+    existingPlaybook: {
+        auto_reboot: true,
+        id: 'id',
+        issues: [{
+            id: 'test',
+            systems: [{ id: 'test2', display_name: 'test2' }]
+        }, {
+            id: 'test3',
+            systems: [{ id: 'test2', display_name: 'test2' }]
+        }],
+        name: 'test',
+        needs_reboot: false
+    },
+
     formValues: {
         [MANUAL_RESOLUTION]: false,
         [SELECTED_RESOLUTIONS]: [],

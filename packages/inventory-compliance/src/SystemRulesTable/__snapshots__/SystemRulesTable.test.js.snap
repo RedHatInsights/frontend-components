@@ -1165,6 +1165,1121 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
 />
 `;
 
+exports[`SystemRulesTable component should render additional toolbar items 1`] = `
+<div
+  className="ins-c-compliance__scope"
+>
+  <PrimaryToolbar
+    activeFiltersConfig={
+      Object {
+        "filters": Array [],
+        "onDelete": [Function],
+      }
+    }
+    filterConfig={
+      Object {
+        "hideLabel": true,
+        "items": Array [
+          Object {
+            "filterValues": Object {
+              "onChange": [Function],
+              "value": "",
+            },
+            "id": "name",
+            "label": "Name",
+            "placeholder": "Filter by name",
+            "type": "text",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": <React.Fragment>
+                    <ExclamationCircleIcon
+                      className="ins-u-failed"
+                      color="currentColor"
+                      noVerticalAlign={false}
+                      size="sm"
+                    />
+                     High
+                  </React.Fragment>,
+                  "value": "high",
+                },
+                Object {
+                  "label": <React.Fragment>
+                    <ExclamationTriangleIcon
+                      className="ins-u-warning"
+                      color="currentColor"
+                      noVerticalAlign={false}
+                      size="sm"
+                    />
+                     Medium
+                  </React.Fragment>,
+                  "value": "medium",
+                },
+                Object {
+                  "label": <React.Fragment>
+                    <svg
+                      height="1em"
+                      role="img"
+                      style={
+                        Object {
+                          "verticalAlign": "-0.125em",
+                        }
+                      }
+                      viewBox="0 0 18 18"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 0h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm6.67 10.46a1.67 1.67 0 1 0 0 3.338 1.67 1.67 0 0 0 0-3.338zm-1.586-6l.27 4.935a.435.435 0 0 0 .434.411H9.55c.232 0 .422-.18.435-.411l.27-4.936A.435.435 0 0 0 9.818 4h-2.3c-.25 0-.448.21-.435.46z"
+                        fill="#3A9CA6"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                     Low
+                  </React.Fragment>,
+                  "value": "low",
+                },
+                Object {
+                  "label": <React.Fragment>
+                    <QuestionCircleIcon
+                      color="currentColor"
+                      noVerticalAlign={false}
+                      size="sm"
+                    />
+                     Unknown
+                  </React.Fragment>,
+                  "value": "unknown",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "severity",
+            "label": "Severity",
+            "placeholder": "Filter by severity",
+            "type": "checkbox",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Show passed rules",
+                  "value": "passed",
+                },
+                Object {
+                  "label": "Hide passed rules",
+                  "value": "failed",
+                },
+              ],
+              "onChange": [Function],
+              "value": undefined,
+            },
+            "id": "passed",
+            "label": "Passed",
+            "placeholder": "Filter by passed",
+            "type": "radio",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Remediation available",
+                  "value": "true",
+                },
+              ],
+              "onChange": [Function],
+              "value": Array [],
+            },
+            "id": "remediationavailable",
+            "label": "Remediation available",
+            "placeholder": "Filter by remediation available",
+            "type": "checkbox",
+          },
+        ],
+      }
+    }
+    pagination={
+      Object {
+        "dropDirection": "down",
+        "itemCount": 52,
+        "onPerPageSelect": [Function],
+        "onSetPage": [Function],
+        "page": 1,
+        "perPage": 10,
+      }
+    }
+    toggleIsExpanded={[Function]}
+  >
+    <ToolbarItem>
+      <ConnectFunction
+        allSystems={
+          Array [
+            Object {
+              "id": "aa9c4497-5707-4233-9e9b-1fded5423ef3",
+              "profiles": Array [
+                Object {
+                  "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                  "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                  "policy": Object {
+                    "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                  },
+                  "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                  "rules": Array [
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80441-9\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                      "references": "[]",
+                      "severity": "low",
+                      "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "foodescription",
+                      "identifier": "{\\"label\\":\\"CCE-80440-1\\",\\"system\\":\\"https://nvd.nist.gov/cce/index.cfm\\"}",
+                      "rationale": "foorationale",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_docker_enabled",
+                      "references": "[]",
+                      "severity": "medium",
+                      "title": "Enable the Docker service",
+                    },
+                    Object {
+                      "compliant": true,
+                      "description": "The at and batch commands can be used to schedule tasks that are meant to be executed",
+                      "identifier": null,
+                      "rationale": "The atd service could be used by an unsophisticated insider to carry out activities ",
+                      "refId": "xccdf_org.ssgproject.content_rule_service_atd_disabled",
+                      "remediationAvailable": false,
+                      "severity": "medium",
+                      "title": "Disable At Service (atd)",
+                    },
+                  ],
+                },
+              ],
+              "ruleObjectsFailed": Array [],
+              "supported": true,
+            },
+          ]
+        }
+        selectedRules={Array []}
+      />
+    </ToolbarItem>
+    <ToolbarItem>
+      Additional
+    </ToolbarItem>
+    <ToolbarItem>
+      52
+       results
+    </ToolbarItem>
+  </PrimaryToolbar>
+  <Table
+    aria-label="Rules table"
+    borders={true}
+    canSelectAll={true}
+    cells={
+      Array [
+        Object {
+          "title": "Name",
+          "transforms": Array [
+            [Function],
+          ],
+        },
+        Object {
+          "title": "Policy",
+          "transforms": Array [
+            [Function],
+          ],
+        },
+        Object {
+          "title": "Severity",
+          "transforms": Array [
+            [Function],
+            [Function],
+          ],
+        },
+        Object {
+          "title": "Passed",
+          "transforms": Array [
+            [Function],
+            [Function],
+          ],
+        },
+        Object {
+          "original": "Ansible",
+          "props": Object {
+            "tooltip": "Ansible",
+          },
+          "title": <React.Fragment>
+            <AnsibeTowerIcon
+              color="currentColor"
+              noVerticalAlign={false}
+              size="sm"
+            />
+             Ansible
+          </React.Fragment>,
+          "transforms": Array [
+            [Function],
+            [Function],
+          ],
+        },
+      ]
+    }
+    className="compliance-rules-table"
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    isStickyHeader={false}
+    onCollapse={[Function]}
+    onSelect={[Function]}
+    onSort={[Function]}
+    ouiaSafe={true}
+    role="grid"
+    rowLabeledBy="simple-node"
+    rows={
+      Array [
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={null}
+                title="Verify that All World-Writable Directories Have Sticky Bits Set"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_dir_perms_world_writable_sticky_bits",
+          "rowKey": "xccdf_org.ssgproject.content_rule_dir_perms_world_writable_sticky_bits-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": true,
+                    "description": "When the so-called 'sticky bit' is set on a directory, only the owner of a given file may remove that file from the directory. Without the sticky bit, any user with write access to a directory may remove any file in the directory. Setting the sticky bit prevents users from removing each other's files. In cases where there is no reason for a directory to be world-writable, a better solution is to remove that permission rather than to set the sticky bit. However, if a directory is used by a particular application, consult that application's documentation instead of blindly changing modes. To set the sticky bit on a world-writable directory DIR, run the following command: $ sudo chmod +t DIR",
+                    "identifier": null,
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "Failing to set the sticky bit on public directories allows unauthorized users to delete files in the directory structure. The only authorized public directories are those temporary directories supplied with the system, or those designed to be temporary file repositories. The setting is normally reserved for directories used by the system, by users for temporary file storage (such as /tmp), and for directories requiring global read/write access.",
+                    "refId": "xccdf_org.ssgproject.content_rule_dir_perms_world_writable_sticky_bits",
+                    "references": Array [],
+                    "remediationAvailable": false,
+                    "rowKey": "xccdf_org.ssgproject.content_rule_dir_perms_world_writable_sticky_bits-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "medium",
+                    "title": "Verify that All World-Writable Directories Have Sticky Bits Set",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 0,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={null}
+                title="Verify File Hashes with RPM"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <ExclamationCircleIcon
+                  className="ins-u-failed"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 High
+              </React.Fragment>,
+            },
+            Object {
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_rpm_verify_hashes",
+          "rowKey": "xccdf_org.ssgproject.content_rule_rpm_verify_hashes-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": true,
+                    "description": "Without cryptographic integrity protections, system executables and files can be altered by unauthorized users without detection. The RPM package management system can check the hashes of installed software packages, including many that are important to system security. To verify that the cryptographic hash of system files and commands match vendor values, run the following command to list which files on the system have hashes that differ from what is expected by the RPM database: $ rpm -Va | grep '^..5' A \\"c\\" in the second column indicates that a file is a configuration file, which may appropriately be expected to change.  If the file was not expected to change, investigate the cause of the change using audit logs or other means. The package can then be reinstalled to restore the file. Run the following command to determine which package owns the file: $ rpm -qf FILENAME The package can be reinstalled from a yum repository using the command: $ sudo yum reinstall PACKAGENAME Alternatively, the package can be reinstalled from trusted media using the command: $ sudo rpm -Uvh PACKAGENAME",
+                    "identifier": null,
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "The hashes of important files like system executables should match the information given by the RPM database. Executables with erroneous hashes could be a sign of nefarious activity on the system.",
+                    "refId": "xccdf_org.ssgproject.content_rule_rpm_verify_hashes",
+                    "references": Array [],
+                    "remediationAvailable": false,
+                    "rowKey": "xccdf_org.ssgproject.content_rule_rpm_verify_hashes-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "high",
+                    "title": "Verify File Hashes with RPM",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 2,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={null}
+                title="Verify and Correct File Permissions with RPM"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <ExclamationCircleIcon
+                  className="ins-u-failed"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 High
+              </React.Fragment>,
+            },
+            Object {
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_rpm_verify_permissions",
+          "rowKey": "xccdf_org.ssgproject.content_rule_rpm_verify_permissions-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": true,
+                    "description": "The RPM package management system can check file access permissions of installed software packages, including many that are important to system security. Verify that the file permissions of system files and commands match vendor values. Check the file permissions with the following command: $ sudo rpm -Va | awk '{ if (substr($0,2,1)==\\"M\\") print $NF }' Output indicates files that do not match vendor defaults. After locating a file with incorrect permissions, run the following command to determine which package owns it: $ rpm -qf FILENAME Next, run the following command to reset its permissions to the correct values: $ sudo rpm --setperms PACKAGENAME",
+                    "identifier": null,
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "Permissions on system binaries and configuration files that are too generous could allow an unauthorized user to gain privileges that they should not have. The permissions set by the vendor should be maintained. Any deviations from this baseline should be investigated.",
+                    "refId": "xccdf_org.ssgproject.content_rule_rpm_verify_permissions",
+                    "references": Array [],
+                    "remediationAvailable": false,
+                    "rowKey": "xccdf_org.ssgproject.content_rule_rpm_verify_permissions-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "high",
+                    "title": "Verify and Correct File Permissions with RPM",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 4,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={
+                  Object {
+                    "label": "CCE-80441-9",
+                    "system": "https://nvd.nist.gov/cce/index.cfm",
+                  }
+                }
+                title="Use direct-lvm with the Device Mapper Storage Driver"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <svg
+                  height="1em"
+                  role="img"
+                  style={
+                    Object {
+                      "verticalAlign": "-0.125em",
+                    }
+                  }
+                  viewBox="0 0 18 18"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 0h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm6.67 10.46a1.67 1.67 0 1 0 0 3.338 1.67 1.67 0 0 0 0-3.338zm-1.586-6l.27 4.935a.435.435 0 0 0 .434.411H9.55c.232 0 .422-.18.435-.411l.27-4.936A.435.435 0 0 0 9.818 4h-2.3c-.25 0-.448.21-.435.46z"
+                    fill="#3A9CA6"
+                    fillRule="evenodd"
+                  />
+                </svg>
+                 Low
+              </React.Fragment>,
+            },
+            Object {
+              "title": <CheckCircleIcon
+                className="ins-u-passed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+          "rowKey": "xccdf_org.ssgproject.content_rule_docker_storage_configured-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": true,
+                    "description": "foodescription",
+                    "identifier": Object {
+                      "label": "CCE-80441-9",
+                      "system": "https://nvd.nist.gov/cce/index.cfm",
+                    },
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "foorationale",
+                    "refId": "xccdf_org.ssgproject.content_rule_docker_storage_configured",
+                    "references": Array [],
+                    "rowKey": "xccdf_org.ssgproject.content_rule_docker_storage_configured-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "low",
+                    "title": "Use direct-lvm with the Device Mapper Storage Driver",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 6,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={null}
+                title="Record Events that Modify User/Group Information"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "title": <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_audit_rules_usergroup_modification",
+          "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_usergroup_modification-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": false,
+                    "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, in order to capture events that modify account changes: -w /etc/group -p wa -k audit_rules_usergroup_modification -w /etc/passwd -p wa -k audit_rules_usergroup_modification -w /etc/gshadow -p wa -k audit_rules_usergroup_modification -w /etc/shadow -p wa -k audit_rules_usergroup_modification -w /etc/security/opasswd -p wa -k audit_rules_usergroup_modification",
+                    "identifier": null,
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "In addition to auditing new user and group accounts, these watches will alert the system administrator(s) to any modifications. Any unexpected users, groups, or modifications should be investigated for legitimacy.",
+                    "refId": "xccdf_org.ssgproject.content_rule_audit_rules_usergroup_modification",
+                    "references": Array [],
+                    "remediationAvailable": false,
+                    "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_usergroup_modification-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "medium",
+                    "title": "Record Events that Modify User/Group Information",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 8,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={null}
+                title="Record Events that Modify the System's Network Environment"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "title": <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_audit_rules_networkconfig_modification",
+          "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_networkconfig_modification-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": false,
+                    "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following lines to a file with suffix .rules in the directory /etc/audit/rules.d, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following lines to /etc/audit/audit.rules file, setting ARCH to either b32 or b64 as appropriate for your system: -a always,exit -F arch=ARCH -S sethostname,setdomainname -F key=audit_rules_networkconfig_modification -w /etc/issue -p wa -k audit_rules_networkconfig_modification -w /etc/issue.net -p wa -k audit_rules_networkconfig_modification -w /etc/hosts -p wa -k audit_rules_networkconfig_modification -w /etc/sysconfig/network -p wa -k audit_rules_networkconfig_modification",
+                    "identifier": null,
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "The network environment should not be modified by anything other than administrator action. Any change to network parameters should be audited.",
+                    "refId": "xccdf_org.ssgproject.content_rule_audit_rules_networkconfig_modification",
+                    "references": Array [],
+                    "remediationAvailable": false,
+                    "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_networkconfig_modification-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "medium",
+                    "title": "Record Events that Modify the System's Network Environment",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 10,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={null}
+                title="Record Events that Modify the System's Mandatory Access Controls"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "title": <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_audit_rules_mac_modification",
+          "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_mac_modification-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": false,
+                    "description": "If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -w /etc/selinux/ -p wa -k MAC-policy If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -w /etc/selinux/ -p wa -k MAC-policy",
+                    "identifier": null,
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "The system's mandatory access policy (SELinux) should not be arbitrarily changed by anything other than administrator action. All changes to MAC policy should be audited.",
+                    "refId": "xccdf_org.ssgproject.content_rule_audit_rules_mac_modification",
+                    "references": Array [],
+                    "remediationAvailable": false,
+                    "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_mac_modification-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "medium",
+                    "title": "Record Events that Modify the System's Mandatory Access Controls",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 12,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={null}
+                title="Record Events that Modify the System's Discretionary Access Controls - setxattr"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "title": <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_setxattr",
+          "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_setxattr-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": false,
+                    "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
+                    "identifier": null,
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+                    "refId": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_setxattr",
+                    "references": Array [],
+                    "remediationAvailable": false,
+                    "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_setxattr-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "medium",
+                    "title": "Record Events that Modify the System's Discretionary Access Controls - setxattr",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 14,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={null}
+                title="Record Events that Modify the System's Discretionary Access Controls - removexattr"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "title": <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_removexattr",
+          "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_removexattr-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": false,
+                    "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
+                    "identifier": null,
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+                    "refId": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_removexattr",
+                    "references": Array [],
+                    "remediationAvailable": false,
+                    "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_removexattr-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "medium",
+                    "title": "Record Events that Modify the System's Discretionary Access Controls - removexattr",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 16,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleTitle
+                identifier={null}
+                title="Record Events that Modify the System's Discretionary Access Controls - lsetxattr"
+              />,
+            },
+            Object {
+              "title": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+            },
+            Object {
+              "title": <React.Fragment>
+                <ExclamationTriangleIcon
+                  className="ins-u-warning"
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 Medium
+              </React.Fragment>,
+            },
+            Object {
+              "title": <ExclamationCircleIcon
+                className="ins-u-failed"
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />,
+            },
+            Object {
+              "title": "No",
+            },
+          ],
+          "isOpen": false,
+          "refId": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_lsetxattr",
+          "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_lsetxattr-xccdf_org.ssgproject.content_profile_pci-dss",
+          "selected": false,
+        },
+        Object {
+          "cells": Array [
+            Object {
+              "title": <RuleChildRow
+                rule={
+                  Object {
+                    "compliant": false,
+                    "description": "At a minimum, the audit system should collect file permission changes for all users and root. If the auditd daemon is configured to use the augenrules program to read audit rules during daemon startup (the default), add the following line to a file with suffix .rules in the directory /etc/audit/rules.d: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the auditd daemon is configured to use the auditctl utility to read audit rules during daemon startup, add the following line to /etc/audit/audit.rules file: -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod If the system is 64 bit then also add the following line: -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
+                    "identifier": null,
+                    "isOpen": false,
+                    "isSelected": false,
+                    "profiles": Array [
+                      Object {
+                        "id": "99a661a8-8cb2-4adf-bf01-62f186493c04",
+                        "name": "PCI-DSS v3 Control Baseline for Red Hat Enterprise Linux 7",
+                        "policy": Object {
+                          "id": "ddf5aefb-ecc8-491a-a2ba-81bf17076361",
+                        },
+                        "refId": "xccdf_org.ssgproject.content_profile_pci-dss",
+                      },
+                    ],
+                    "rationale": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+                    "refId": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_lsetxattr",
+                    "references": Array [],
+                    "remediationAvailable": false,
+                    "rowKey": "xccdf_org.ssgproject.content_rule_audit_rules_dac_modification_lsetxattr-xccdf_org.ssgproject.content_profile_pci-dss",
+                    "severity": "medium",
+                    "title": "Record Events that Modify the System's Discretionary Access Controls - lsetxattr",
+                  }
+                }
+              />,
+            },
+          ],
+          "parent": 18,
+        },
+      ]
+    }
+    selectVariant="checkbox"
+    sortBy={Object {}}
+    variant={null}
+  >
+    <TableHeader />
+    <Component />
+  </Table>
+  <TableToolbar
+    className="ins-c-inventory__table--toolbar"
+    isFooter={true}
+  >
+    <Pagination
+      className=""
+      defaultToFullPage={false}
+      dropDirection="up"
+      firstPage={1}
+      isCompact={false}
+      isDisabled={false}
+      isSticky={false}
+      itemCount={52}
+      itemsEnd={null}
+      itemsStart={null}
+      offset={0}
+      onFirstClick={[Function]}
+      onLastClick={[Function]}
+      onNextClick={[Function]}
+      onPageInput={[Function]}
+      onPerPageSelect={[Function]}
+      onPreviousClick={[Function]}
+      onSetPage={[Function]}
+      ouiaSafe={true}
+      page={1}
+      perPage={10}
+      perPageOptions={
+        Array [
+          Object {
+            "title": "10",
+            "value": 10,
+          },
+          Object {
+            "title": "20",
+            "value": 20,
+          },
+          Object {
+            "title": "50",
+            "value": 50,
+          },
+          Object {
+            "title": "100",
+            "value": 100,
+          },
+        ]
+      }
+      titles={
+        Object {
+          "currPage": "Current page",
+          "items": "",
+          "itemsPerPage": "Items per page",
+          "optionsToggle": "Items per page",
+          "page": "",
+          "paginationTitle": "Pagination",
+          "perPageSuffix": "per page",
+          "toFirstPage": "Go to first page",
+          "toLastPage": "Go to last page",
+          "toNextPage": "Go to next page",
+          "toPreviousPage": "Go to previous page",
+        }
+      }
+      toggleTemplate={[Function]}
+      variant="bottom"
+      widgetId="pagination-options-menu"
+    />
+  </TableToolbar>
+</div>
+`;
+
 exports[`SystemRulesTable component should render filtered and search mixed results with the right parent 1`] = `
 <div
   className="ins-c-compliance__scope"
