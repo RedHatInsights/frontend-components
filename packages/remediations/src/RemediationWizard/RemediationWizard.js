@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
+import { fetchHostsById } from '../redux/actions/host-actions';
+import { Provider, useDispatch } from 'react-redux';
+import promiseMiddleware from 'redux-promise-middleware';
+import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
+import hostReducer, { hostsInitialState } from '../redux/reducers/host-reducer';
+import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry/ReducerRegistry';
 import keyBy from 'lodash/keyBy';
 import transform from 'lodash/transform';
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
@@ -17,6 +23,7 @@ import Review from '../steps/review';
 import ReviewSystems from '../steps/reviewSystems';
 import {
     submitRemediation,
+    splitArray,
     HAS_MULTIPLES,
     SELECTED_RESOLUTIONS,
     EXISTING_PLAYBOOK_SELECTED,
@@ -27,8 +34,11 @@ import {
 const RemediationWizard = ({
     setOpen,
     data,
-    basePath
+    basePath,
+    registry
 }) => {
+
+    const dispatch = useDispatch();
 
     const [ state, setState ] = useState({ errors: [] });
 
@@ -67,7 +77,16 @@ const RemediationWizard = ({
         }
     };
 
+    const fetchHostNames = (systems = []) => {
+        const perChunk = 50;
+        const chunks = splitArray(systems, perChunk);
+        chunks.forEach(chunk => {
+            dispatch(fetchHostsById(chunk, { page: 1, perPage: perChunk }));
+        });
+    };
+
     useEffect(() => {
+        registry.register({ hostReducer: applyReducerHash(hostReducer, hostsInitialState) });
         const issuesById = keyBy(data.issues, issue => issue.id);
         loadResolutions(data.issues).then(
             (values) => {
@@ -83,6 +102,7 @@ const RemediationWizard = ({
                 });
             }
         );
+        fetchHostNames(data.systems);
     }, []);
 
     const mapperExtension = {
@@ -96,7 +116,8 @@ const RemediationWizard = ({
         'review-systems': {
             component: ReviewSystems,
             issues: data.issues,
-            systems: data.systems
+            systems: data.systems,
+            registry
         },
         'review-actions': {
             component: ReviewActions,
@@ -161,7 +182,20 @@ RemediationWizard.propTypes = {
         systems: propTypes.arrayOf(propTypes.string),
         onRemediationCreated: propTypes.func
     }).isRequired,
-    basePath: propTypes.string
+    basePath: propTypes.string,
+    registry: propTypes.instanceOf(ReducerRegistry).isRequired
 };
 
-export default RemediationWizard;
+const RemediationWizardWithContext = (props) => {
+    const [ registry, setRegistry ] = useState();
+
+    useEffect(() => {
+        setRegistry(() => new ReducerRegistry({}, [ promiseMiddleware ]));
+    }, []);
+
+    return registry?.store  ? <Provider store={registry.store}>
+        <RemediationWizard {...props} registry={registry} />
+    </Provider> : null;
+};
+
+export default RemediationWizardWithContext;
