@@ -256,8 +256,8 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
           "data-ouia-component-id": "testing-id-actions-kebab",
         },
         "cells": Array [
-          Object {
-            "title": <div
+          <React.Fragment>
+            <div
               className="ins-composed-col"
             >
               <div />
@@ -272,8 +272,8 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
                   data
                 </a>
               </div>
-            </div>,
-          },
+            </div>
+          </React.Fragment>,
         ],
         "id": "testing-id",
         "one": "data",
@@ -422,8 +422,8 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
           "data-ouia-component-id": "testing-id-actions-kebab",
         },
         "cells": Array [
-          Object {
-            "title": <div
+          <React.Fragment>
+            <div
               className="ins-composed-col"
             >
               <div />
@@ -438,8 +438,8 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
                   data
                 </a>
               </div>
-            </div>,
-          },
+            </div>
+          </React.Fragment>,
         ],
         "id": "testing-id",
         "one": "data",
@@ -493,8 +493,8 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
           "data-ouia-component-id": "testing-id-actions-kebab",
         },
         "cells": Array [
-          Object {
-            "title": <div
+          <React.Fragment>
+            <div
               className="ins-composed-col"
             >
               <div />
@@ -509,8 +509,8 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
                   data
                 </a>
               </div>
-            </div>,
-          },
+            </div>
+          </React.Fragment>,
         ],
         "id": "testing-id",
         "one": "data",
@@ -687,8 +687,8 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
           "data-ouia-component-id": "testing-id-actions-kebab",
         },
         "cells": Array [
-          Object {
-            "title": <div
+          <React.Fragment>
+            <div
               className="ins-composed-col"
             >
               <div />
@@ -703,8 +703,8 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
                   data
                 </a>
               </div>
-            </div>,
-          },
+            </div>
+          </React.Fragment>,
         ],
         "id": "testing-id",
         "one": "data",
@@ -758,8 +758,8 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
           "data-ouia-component-id": "testing-id-actions-kebab",
         },
         "cells": Array [
-          Object {
-            "title": <div
+          <React.Fragment>
+            <div
               className="ins-composed-col"
             >
               <div />
@@ -774,8 +774,8 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
                   data
                 </a>
               </div>
-            </div>,
-          },
+            </div>
+          </React.Fragment>,
         ],
         "id": "testing-id",
         "one": "data",
@@ -830,8 +830,8 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
           "data-ouia-component-id": "testing-id-actions-kebab",
         },
         "cells": Array [
-          Object {
-            "title": <div
+          <React.Fragment>
+            <div
               className="ins-composed-col"
             >
               <div />
@@ -846,8 +846,8 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
                   data
                 </a>
               </div>
-            </div>,
-          },
+            </div>
+          </React.Fragment>,
         ],
         "id": "testing-id",
         "one": "data",

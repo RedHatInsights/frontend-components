@@ -28,7 +28,7 @@ describe('buildCells', () => {
         expect(data.length).toBe(3);
         expect(data[0]).toBe('test');
         expect(data[1]).toBe('dot');
-        expect(data[2]).toMatchObject({ title: 'testing' });
+        expect(toJson(mount(data[2]))).toMatchSnapshot();
     });
 });
 
