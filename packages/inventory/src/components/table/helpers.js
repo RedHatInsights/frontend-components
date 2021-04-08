@@ -4,20 +4,17 @@ import { cellWidth, sortable, expandable } from '@patternfly/react-table';
 import get from 'lodash/get';
 import flatten from 'lodash/flatten';
 import TitleColumn from './TitleColumn';
+import { Fragment } from 'react';
 
 export const buildCells = (item, columns, extra) => {
     return columns.map(({ key, composed, renderFunc }) => {
-        const data = composed ? {
-            title: TitleColumn(
-                composed.map(key => get(item, key, ' ')),
-                item.id,
-                item,
-                extra
-            )
-        } : get(item, key, ' ');
-        return renderFunc ? {
-            title: renderFunc(data, item.id, item, extra)
-        } : data;
+        const data = composed ? <Fragment>{TitleColumn(
+            composed.map(key => get(item, key, ' ')),
+            item.id,
+            item,
+            extra
+        )}</Fragment> : get(item, key, ' ');
+        return renderFunc ? <Fragment>{ renderFunc(data, item.id, item, extra) }</Fragment> : data;
     });
 };
 
