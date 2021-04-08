@@ -446,7 +446,7 @@ class InventoryRuleList extends Component {
                     (activeReports.length > 0 ?
                         <Fragment>
                             <Table aria-label={'rule-table'} onCollapse={this.handleOnCollapse} rows={rows} cells={cols} sortBy={sortBy}
-                                canSelectAll={false} onSort={this.onSort}>
+                                canSelectAll={false} onSort={this.onSort} isStickyHeader>
                                 <TableHeader />
                                 <TableBody />
                             </Table>
