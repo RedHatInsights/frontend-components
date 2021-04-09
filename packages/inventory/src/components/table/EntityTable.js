@@ -43,7 +43,7 @@ const EntityTable = ({
     const rows = useSelector(({ entities: { rows } }) => rows);
     const columns = useSelector(
         ({ entities: { columns } }) => columns,
-        (next, prev) => next.some(
+        (next, prev) => next.every(
             ({ key }, index) => prev.findIndex(({ key: prevKey }) => prevKey === key) === index
         )
     );
