@@ -23,7 +23,7 @@ module.exports = ({
         ...dependencies['react-router-dom'] ? [{ 'react-router-dom': { requiredVersion: dependencies['react-router-dom'] } }] : [],
         ...dependencies['@patternfly/react-table'] ? [{ '@patternfly/react-table': { requiredVersion: dependencies['@patternfly/react-table'] } }] : [],
         ...dependencies['@patternfly/react-core'] ? [{ '@patternfly/react-core': { requiredVersion: dependencies['@patternfly/react-core'] } }] : [],
-        ...dependencies['@patternfly/react-core'] ? [{ '@patternfly/react-icons': { requiredVersion: dependencies['@patternfly/react-icons'] } }] : [],
+        ...dependencies['@patternfly/react-icons'] ? [{ '@patternfly/react-icons': { requiredVersion: dependencies['@patternfly/react-icons'] } }] : [],
         {
             '@patternfly/react-tokens': {
                 ...dependencies['@patternfly/react-tokens'] && {
