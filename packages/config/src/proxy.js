@@ -15,7 +15,8 @@ function createInsightsProxy({
     routes,
     routesPath,
     appUrl,
-    exactUrl
+    exactUrl,
+    disableFallback
 }) {
     let appUrls = appUrl;
     if (appUrls && !Array.isArray(appUrls)) {
@@ -104,7 +105,12 @@ function createInsightsProxy({
                 // serve index.html from local and replace ESI tags for chrome
                 onProxyReq: async (_proxyReq, req, res) => {
                     const fileName = removeHashQuery(req.url.split('/').pop()) || 'index.html';
-                    const localPath = sync(`${rootFolder}/dist/${fileName}`);
+                    let localPath = sync(`${rootFolder}/dist/${fileName}`);
+
+                    if (!localPath[0] && !disableFallback) {
+                        proxyVerbose && console.log(`page ${fileName} not found, fallback to index.html`);
+                        localPath = sync(`${rootFolder}/dist/index.html`);
+                    }
 
                     proxyVerbose && console.log('serving locally', req.url, '>', fileName, '--->', localPath[0], '\n\n');
 

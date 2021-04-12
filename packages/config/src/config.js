@@ -24,7 +24,8 @@ module.exports = ({
     routes,
     routesPath,
     appUrl,
-    exactUrl
+    exactUrl,
+    disableFallback
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
@@ -166,7 +167,8 @@ module.exports = ({
             routes,
             routesPath,
             appUrl,
-            exactUrl
+            exactUrl,
+            disableFallback
         }) : {
             contentBase: `${rootFolder || ''}/dist`,
             hot: true,
