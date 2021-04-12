@@ -165,6 +165,8 @@ const { config: webpackConfig, plugins } = config({
 
 This settings will redirect all requests to `appUrl` to your local `index.html` file and will replace ESI tags for Chrome.
 
+By default, all subroutes are (`/beta/settings/sources/new`) will be redirected to `index.html`, you can disable this behavior by setting `disableFallback: true`.
+
 #### Prod environment example
 
 ```jsx
