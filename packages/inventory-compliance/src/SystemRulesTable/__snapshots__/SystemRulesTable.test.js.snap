@@ -13,7 +13,6 @@ exports[`SystemRulesTable component should render 1`] = `
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -1178,7 +1177,6 @@ exports[`SystemRulesTable component should render additional toolbar items 1`] =
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -2330,7 +2328,6 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -2721,7 +2718,6 @@ exports[`SystemRulesTable component should render search results by rule name 1`
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -3164,7 +3160,6 @@ exports[`SystemRulesTable component should render search results on any page, re
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -3598,7 +3593,6 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -4710,7 +4704,6 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -5824,7 +5817,6 @@ exports[`SystemRulesTable component should render without remediations if prop p
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -6863,7 +6855,6 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -7197,7 +7188,6 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
@@ -8153,7 +8143,6 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
     }
     filterConfig={
       Object {
-        "hideLabel": true,
         "items": Array [
           Object {
             "filterValues": Object {
