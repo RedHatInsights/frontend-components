@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridItem } from '@patternfly/react-core/dist/js/layouts/Grid';
+import { Grid, GridItem } from '@patternfly/react-core';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 import { DateFormat } from '@redhat-cloud-services/frontend-components/DateFormat';
 import { CullingInformation } from '@redhat-cloud-services/frontend-components/CullingInfo';

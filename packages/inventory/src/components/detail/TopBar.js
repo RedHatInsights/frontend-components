@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { DeleteModal, TagsModal, TagWithDialog } from '../../shared';
-import { Split, SplitItem } from '@patternfly/react-core/dist/js/layouts/Split';
-import { Title } from '@patternfly/react-core/dist/js/components/Title';
-import { Button } from '@patternfly/react-core/dist/js/components/Button';
-import { Flex, FlexItem } from '@patternfly/react-core/dist/js/layouts/Flex';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 import {
     Dropdown,
     DropdownItem,
     DropdownPosition,
-    DropdownToggle
-} from '@patternfly/react-core/dist/js/components/Dropdown';
+    DropdownToggle,
+    Title,
+    Button,
+    Flex,
+    FlexItem,
+    Split,
+    SplitItem
+} from '@patternfly/react-core';
 import { redirectToInventoryList } from './helpers';
 import { useDispatch } from 'react-redux';
 import { toggleDrawer } from '../../redux/actions';

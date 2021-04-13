@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal } from '@patternfly/react-core/dist/js/components/Modal/Modal';
-import { Split } from '@patternfly/react-core/dist/js/layouts/Split/Split';
-import { SplitItem } from '@patternfly/react-core/dist/js/layouts/Split/SplitItem';
-import { Stack } from '@patternfly/react-core/dist/js/layouts/Stack/Stack';
-import { StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/StackItem';
-import { Level } from '@patternfly/react-core/dist/js/layouts/Level/Level';
-import { LevelItem } from '@patternfly/react-core/dist/js/layouts/Level/LevelItem';
-import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
-import { ClipboardCopy } from '@patternfly/react-core/dist/js/components/ClipboardCopy/ClipboardCopy';
+import {
+    ClipboardCopy,
+    Modal,
+    Split,
+    SplitItem,
+    Stack,
+    StackItem,
+    Level,
+    LevelItem,
+    Button
+} from '@patternfly/react-core';
 
 import ExclamationTriangleIcon from  '@patternfly/react-icons/dist/js/icons/exclamation-triangle-icon';
 
