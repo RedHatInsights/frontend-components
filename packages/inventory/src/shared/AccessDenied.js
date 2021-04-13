@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NotAuthorized } from '@redhat-cloud-services/frontend-components/NotAuthorized';
-import { Tooltip } from '@patternfly/react-core/dist/js/components/Tooltip';
+import { Tooltip } from '@patternfly/react-core';
 
 const AccessDenied = ({ title, description, ...props }) => (
     <NotAuthorized
