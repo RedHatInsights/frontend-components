@@ -60,7 +60,7 @@ class ContextInventoryList extends Component {
     render() {
         const { showHealth, ...props } = this.props;
         return (
-            <Grid guttter="sm" className="ins-inventory-list">
+            <Grid gutter="sm" className="ins-inventory-list">
                 <GridItem span={ 12 }>
                     <InventoryEntityTable { ...props } />
                 </GridItem>
