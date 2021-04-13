@@ -342,8 +342,7 @@ class SystemRulesTable extends React.Component {
             (remediationsEnabled ? this.onSelectToRemediate : this.onSelect);
         const filterConfig = this.filterConfigBuilder.buildConfiguration(
             this.onFilterUpdate,
-            this.state.activeFilters,
-            { hideLabel: true }
+            this.state.activeFilters
         );
 
         if (loading) {
