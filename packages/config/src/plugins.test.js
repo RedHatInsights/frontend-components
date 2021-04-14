@@ -1,12 +1,17 @@
 import plugins from './plugins';
 
-const HTML_WEBPACK = 3;
-const REPLACE = 4;
+const HTML_WEBPACK = 2;
+const REPLACE = 3;
 
 describe('plugins generations, no option', () => {
     const enabledPlugins = plugins();
 
     it('should generate plugins', () => {
+        expect(enabledPlugins.length).toBe(7);
+    });
+
+    it('should generate plugins with sourceMaps', () => {
+        const enabledPlugins = plugins({ generateSourceMaps: true });
         expect(enabledPlugins.length).toBe(8);
     });
 
