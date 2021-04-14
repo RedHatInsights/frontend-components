@@ -46,7 +46,7 @@ exports[`InventoryList should render correctly - with no access 1`] = `
 exports[`InventoryList should render correctly 1`] = `
 <div
   class="pf-l-grid ins-inventory-list"
-  guttter="sm"
+  gutter="sm"
 >
   <div
     class="pf-l-grid__item pf-m-12-col"
