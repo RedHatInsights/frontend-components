@@ -76,10 +76,6 @@ module.exports = ({
                 }
             }, {
                 test: /src\/.*\.js$/,
-                enforce: 'pre',
-                use: [ 'source-map-loader' ]
-            }, {
-                test: /src\/.*\.js$/,
                 exclude: /(node_modules|bower_components)/i,
                 use: [ 'babel-loader' ]
             }, {

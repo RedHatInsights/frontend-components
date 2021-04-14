@@ -6,6 +6,7 @@ const gitRevisionPlugin = new (require('git-revision-webpack-plugin'))({
     branch: true
 });
 const betaBranhces = ['master', 'qa-beta', 'ci-beta', 'prod-beta', 'main', 'devel'];
+const akamaiBranches = ['prod-beta', 'prod-stable']
 
 const getAppEntry = (rootFolder, isProd) => {
     const jsAppEntry = isProd ? `${rootFolder}/src/entry.js` : `${rootFolder}/src/entry-dev.js`;
@@ -30,12 +31,14 @@ module.exports = (configurations) => {
 
     const publicPath = `/${appDeployment}/${insights.appname}/`;
     const appEntry = getAppEntry(configurations.rootFolder, process.env.NODE_ENV === 'production');
+    const generateSourceMaps = !akamaiBranches.includes(gitBranch);
 
     /* eslint-disable no-console */
     if (configurations.debug) {
         console.log('~~~Using variables~~~');
         console.log(`Root folder: ${configurations.rootFolder}`);
         console.log(`Current branch: ${gitBranch}`);
+        !generateSourceMaps && console.log(`Source map generation for "${gitBranch}" deployment has been disabled.`)
         console.log(`Beta branches: ${betaBranhces}`);
         console.log(`Using deployments: ${appDeployment}`);
         console.log(`Public path: ${publicPath}`);
@@ -57,6 +60,7 @@ module.exports = (configurations) => {
         }),
         plugins: plugins({
             ...configurations,
+            generateSourceMaps,
             appDeployment,
             insights,
             publicPath

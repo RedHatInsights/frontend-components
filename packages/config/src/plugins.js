@@ -24,6 +24,7 @@ module.exports = ({
     replacePlugin,
     insights,
     modules,
+    generateSourceMaps,
     plugins
 } = {}) => {
     const HtmlWebpackPlugin = new(require('html-webpack-plugin'))({
@@ -47,7 +48,7 @@ module.exports = ({
     ] });
 
     return [
-        SourceMapsPlugin,
+        ...(generateSourceMaps ? [ SourceMapsPlugin ] : []),
         ExtractCssWebpackPlugin,
         CleanWebpackPlugin,
         HtmlWebpackPlugin,
