@@ -68,6 +68,26 @@ class FilterConfigBuilder {
         }
     });
 
+    toGroupedFilterConfig = (item, handler, value) => ({
+        type: conditionalFilterType.group,
+        label: item.label,
+        id: stringToId(item.label),
+        filterValues: {
+            selected: value,
+            onChange: (_event, selectedValues) => {
+                handler(stringToId(item.label), selectedValues);
+            },
+            groups: item.items.map((item) => ({
+                ...item,
+                type: 'checkbox',
+                items: item.items.map((subItem) => ({
+                    ...subItem,
+                    type: 'checkbox'
+                }))
+            }))
+        }
+    });
+
     toFilterConfigItem = (item, handler, value) => {
         switch (item.type) {
             case conditionalFilterType.text:
@@ -78,6 +98,9 @@ class FilterConfigBuilder {
 
             case conditionalFilterType.radio:
                 return this.toRadioFilterConfig(item, handler, value);
+
+            case conditionalFilterType.group:
+                return this.toGroupedFilterConfig(item, handler, value);
 
             default:
                 return null;
@@ -125,7 +148,11 @@ class FilterConfigBuilder {
     )
 
     getItemByLabelOrValue = (query, category) => {
-        const items = this.getCategoryForLabel(category).items;
+        const categoryConfig = this.getCategoryForLabel(category);
+        const items = categoryConfig.type !== conditionalFilterType.group ?
+            categoryConfig.items : categoryConfig.items.flatMap((item) => (
+                item.items.map((subItem) => ({ ...subItem, parentValue: item.value }))
+            ));
         const results = (items || []).filter((item) => (
             item.value === query || item.label === query
         ));
@@ -176,12 +203,25 @@ class FilterConfigBuilder {
             )
     )
 
+    removeFilterFromGroupFilterState = (currentState, filter, chipItem) => {
+        const { [chipItem.value]: _remove, ...newGroupState } = currentState[chipItem.parentValue];
+        return {
+            ...currentState,
+            [chipItem.parentValue]: newGroupState
+        };
+    }
+
     removeFilterWithChip = (chips, activeFilters) => {
         const chipCategory = chips.category;
-        const chipValue = this.valueForLabel(chips.chips[0].name, chipCategory);
+        const chipLabel = chips.chips[0].name;
+        const chipItem = this.getItemByLabelOrValue(chipLabel, chipCategory);
+        const chipValue = chipItem ? chipItem.value : chipLabel;
         const stateProp = stringToId(chipCategory);
         const currentState = activeFilters[stateProp];
-        const newFilterState = this.removeFilterFromFilterState(currentState, chipValue);
+        const isGroup = chipCategory.type !== conditionalFilterType.group;
+        const newFilterState = (isGroup ?
+            this.removeFilterFromGroupFilterState : this.removeFilterFromFilterState
+        )(currentState, chipValue, chipItem);
 
         return {
             ...activeFilters,

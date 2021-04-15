@@ -1,5 +1,11 @@
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 
+const findWithString = (value) => (
+    (item) => (
+        String(item.value) === String(value)
+    )
+);
+
 class ChipBuilder {
     constructor(filterConfig) {
         this.filterConfig = filterConfig;
@@ -23,6 +29,21 @@ class ChipBuilder {
         chips: [{ name: this.filterConfig.labelForValue(currentValue, category) }]
     } : null)
 
+    groupFilterChip = (category, currentValue = {}, categoryConfig) => {
+        const items = Object.keys(currentValue).flatMap((groupValue) => {
+            const group = categoryConfig.items.find(findWithString(groupValue));
+
+            return Object.keys(currentValue[groupValue]).map((itemValue) => (
+                currentValue[groupValue][itemValue] ? group?.items.find(findWithString(itemValue)) : null
+            ));
+        }).filter((v) => (!!v));
+
+        return currentValue && items.length > 0 ? {
+            category,
+            chips: items.map((item) => ({ name: item.label }))
+        } : null;
+    }
+
     chipFor = (filter, currentValue) => {
         const categoryConfig = this.filterConfig.getCategoryForLabel(filter);
         const { label, type } = categoryConfig ? categoryConfig : { label: filter, type: null };
@@ -36,6 +57,9 @@ class ChipBuilder {
 
             case conditionalFilterType.radio:
                 return this.radioFilterChip(label, currentValue);
+
+            case conditionalFilterType.group:
+                return this.groupFilterChip(label, currentValue, categoryConfig);
 
             default:
                 return null;

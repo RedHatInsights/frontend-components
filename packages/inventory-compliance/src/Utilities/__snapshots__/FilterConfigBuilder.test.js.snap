@@ -8,6 +8,7 @@ exports[`FilterConfigBuilder categoryLabelForValue to return a matching category
 
 exports[`FilterConfigBuilder initialDefaultState to return a matching category label 1`] = `
 Object {
+  "filtergroup": undefined,
   "filterwithmultiplespaces": Array [],
   "name": "",
   "passed": undefined,
@@ -25,6 +26,11 @@ exports[`FilterConfigBuilder returns a filterConfig 1`] = `
 Object {
   "compliancescore": Array [],
   "compliant": Array [],
+  "filtergroup": Object {
+    "1": Object {
+      "2": true,
+    },
+  },
   "items": Array [
     Object {
       "filterValues": Object {
@@ -41,6 +47,51 @@ Object {
       "label": "Filter with multiple spaces",
       "placeholder": "Filter by filter with multiple spaces",
       "type": "checkbox",
+    },
+    Object {
+      "filterValues": Object {
+        "groups": Array [
+          Object {
+            "items": Array [
+              Object {
+                "label": "Child 1",
+                "type": "checkbox",
+                "value": 1,
+              },
+              Object {
+                "label": "Child 2",
+                "type": "checkbox",
+                "value": 2,
+              },
+            ],
+            "label": "Parent 1",
+            "type": "checkbox",
+            "value": 1,
+          },
+          Object {
+            "items": Array [
+              Object {
+                "label": "Parent 2 Child 1",
+                "type": "checkbox",
+                "value": 1,
+              },
+              Object {
+                "label": "Parent 2 Child 2",
+                "type": "checkbox",
+                "value": 2,
+              },
+            ],
+            "label": "Parent 2",
+            "type": "checkbox",
+            "value": 2,
+          },
+        ],
+        "onChange": [Function],
+        "selected": undefined,
+      },
+      "id": "filtergroup",
+      "label": "Filter group",
+      "type": "group",
     },
     Object {
       "filterValues": Object {
