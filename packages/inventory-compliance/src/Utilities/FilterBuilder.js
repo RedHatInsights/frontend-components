@@ -19,6 +19,9 @@ class FilterBuilder {
                 return [ filterString(value) ];
             case conditionalFilterType.checkbox:
                 return value.map((filter) => (filterString(filter)));
+            case conditionalFilterType.group:
+                return filterString(value);
+
             default:
                 return [];
         }

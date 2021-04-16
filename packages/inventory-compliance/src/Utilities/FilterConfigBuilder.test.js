@@ -12,6 +12,19 @@ describe('FilterConfigBuilder', () => {
             ],
             filter: () => ([])
         },
+        {
+            type: conditionalFilterType.group,
+            label: 'Filter group',
+            items: [
+                { label: 'Parent 1', value: 1, items: [
+                    { label: 'Child 1', value: 1 }, { label: 'Child 2', value: 2 }
+                ] },
+                { label: 'Parent 2', value: 2, items: [
+                    { label: 'Parent 2 Child 1', value: 1 }, { label: 'Parent 2 Child 2', value: 2 }
+                ] }
+            ],
+            filter: () => ([])
+        },
         ...buildFilterConfig({ showPassFailFilter: true, policies: [] })
     ];
     let builder;
@@ -24,7 +37,8 @@ describe('FilterConfigBuilder', () => {
         const states = {
             name: '',
             compliant: [],
-            compliancescore: []
+            compliancescore: [],
+            filtergroup: { 1: { 2: true } }
         };
         const builtConfig = builder.buildConfiguration(config, ()=> ({}), states);
 
