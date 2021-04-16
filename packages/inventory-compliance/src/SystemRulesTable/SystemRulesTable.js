@@ -388,6 +388,7 @@ class SystemRulesTable extends React.Component {
                 <Table
                     className='compliance-rules-table'
                     aria-label='Rules table'
+                    isStickyHeader
                     cells={ columns }
                     onCollapse={ this.onCollapse }
                     onSort={ this.onSort }
