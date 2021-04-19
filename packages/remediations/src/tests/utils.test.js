@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import React from 'react';
 import * as dependency from '../api/index';
 import {
     entitySelected,
@@ -12,7 +13,8 @@ import {
     EXISTING_PLAYBOOK_SELECTED,
     fetchSystemsInfo,
     splitArray,
-    getPlaybookSystems
+    getPlaybookSystems,
+    createNotification
 } from '../utils';
 import { remediationWizardTestData } from './testData';
 
@@ -105,6 +107,14 @@ describe('submitRemediation', () => {
         submitRemediation({ ...formValues, [EXISTING_PLAYBOOK_SELECTED]: false }, data, undefined, resolutions);
         expect(createFunction).toHaveBeenCalledTimes(1);
     });
+
+    it('should handle error', () => {
+        const createFunction = jest.fn(() => Promise.reject('error'));
+        dependency.createRemediation = createFunction;
+        submitRemediation({ ...formValues, [EXISTING_PLAYBOOK_SELECTED]: false }, data, undefined, resolutions);
+        expect(createFunction).toHaveBeenCalledTimes(1);
+    });
+
 });
 
 describe('entitySelected', () => {
@@ -235,5 +245,18 @@ describe('getPlaybookSystems', () => {
         const value = getPlaybookSystems(remediationWizardTestData.existingPlaybook);
         expect(value).toEqual([{ id: 'test2', display_name: 'test2' }]);
         expect(getPlaybookSystems()).toEqual([]);
+    });
+});
+
+describe('createNotification', () => {
+
+    it('should get succes notification', () => {
+        const value = createNotification('id', 'name', false);
+        expect(value.variant).toEqual('success');
+    });
+
+    it('should get danger notification', () => {
+        const value = createNotification('id', 'name', false, true);
+        expect(value.variant).toEqual('danger');
     });
 });

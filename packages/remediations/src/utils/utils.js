@@ -88,21 +88,27 @@ export const getResolution = (issueId, formValues, resolutions) => {
     return issueResolutions;
 };
 
-function createNotification (id, name, isNewSwitch) {
+export function createNotification(id, name, isNewSwitch, error = false) {
     const verb = isNewSwitch ? 'created' : 'updated';
-
-    return {
-        variant: 'success',
-        title: `Playbook ${verb}`,
-        description: <span>You have successfully {verb} <a href={ remediationUrl(id) } >{ name }</a>.</span>,
-        dismissable: true
-    };
+    return error
+        ? {
+            variant: 'danger',
+            title: `Failed to ${verb.slice(0, -1)} playbook`,
+            description: <span>Playbook was not {verb} successfully.</span>,
+            dismissable: true
+        }
+        : {
+            variant: 'success',
+            title: `Playbook ${verb}`,
+            description: <span>You have successfully {verb} <a href={remediationUrl(id)}>{name}</a>.</span>,
+            dismissable: true
+        };
 }
 
 export const submitRemediation = (formValues, data, basePath, resolutions) => {
-    const resolver = (id, name, isNewSwitch, onRemediationCreated) => onRemediationCreated({
+    const resolver = (id, name, isNewSwitch, onRemediationCreated, error) => onRemediationCreated({
         remediation: { id, name },
-        getNotification: () => createNotification(id, name, isNewSwitch)
+        getNotification: () => createNotification(id, name, isNewSwitch, error)
     });
     const issues = data.issues.map(({ id }) => ({
         id,
@@ -113,10 +119,12 @@ export const submitRemediation = (formValues, data, basePath, resolutions) => {
     if (formValues[EXISTING_PLAYBOOK_SELECTED]) {
         const { id, name } = formValues[EXISTING_PLAYBOOK];
         api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
-        .then(() => resolver(id, name, false, data.onRemediationCreated));
+        .then(() => resolver(id, name, false, data.onRemediationCreated))
+        .catch(() => resolver(null, name, false, data.onRemediationCreated, true));
     } else {
         api.createRemediation({ name: formValues[SELECT_PLAYBOOK], add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
-        .then(({ id }) => resolver(id, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated));
+        .then(({ id }) => resolver(id, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated))
+        .catch(() => resolver(null, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated, true));
     }
 };
 
