@@ -37,6 +37,13 @@ export const defaultColumns = [
         renderFunc: TitleColumn
     },
     {
+        key: 'system_profile',
+        title: 'OS release',
+        // eslint-disable-next-line react/display-name
+        renderFunc: (systemProfile) => systemProfile.os_release || 'Not available',
+        props: { isStatic: true }
+    },
+    {
         key: 'tags',
         title: 'Tags',
         props: { width: 25, isStatic: true },

@@ -3,7 +3,7 @@ import flatMap from 'lodash/flatMap';
 export const INVENTORY_API_BASE = '/api/inventory/v1';
 
 import instance from '@redhat-cloud-services/frontend-components-utilities/interceptors';
-import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { generateFilter, mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { HostsApi, TagsApi } from '@redhat-cloud-services/host-inventory-client';
 import { defaultFilters } from '../shared/constants';
 
@@ -78,6 +78,35 @@ export function getEntities(items, {
 }, showTags) {
     if (hasItems && items.length > 0) {
         return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
+        .then(async (data) => {
+            let result;
+
+            try {
+                result = await hosts.apiHostGetHostSystemProfileById(
+                    items,
+                    perPage,
+                    page,
+                    orderBy,
+                    undefined,
+                    undefined,
+                    undefined,
+                    {
+                        cancelToken: controller && controller.token,
+                        query: { 'fields[system_profile]': [ 'os_release' ]
+                        }
+                    });
+            } catch (e) {
+                console.error(e);
+            }
+
+            return {
+                ...data,
+                results: mergeArraysByKey([
+                    data?.results,
+                    result?.results || []
+                ])
+            };
+        })
         .then((data) => showTags ? mapTags(data) : data)
         .then(({ results = [], ...data } = {}) => ({
             ...data,
@@ -105,10 +134,12 @@ export function getEntities(items, {
             ],
             filters.registeredWithFilter,
             undefined,
+            undefined,
             {
                 cancelToken: controller && controller.token,
-                ...options.filter && {
-                    query: generateFilter(options.filter)
+                query: {
+                    ...generateFilter(options.filter),
+                    'fields[system_profile]': [ 'os_release' ]
                 }
             }
         )
