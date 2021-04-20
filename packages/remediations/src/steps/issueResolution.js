@@ -10,12 +10,13 @@ import {
     Tile,
     Title
 } from '@patternfly/react-core';
-import { SELECTED_RESOLUTIONS } from '../utils';
+import { RESOLUTIONS, SELECTED_RESOLUTIONS } from '../utils';
 import { RedoIcon, CloseIcon } from '@patternfly/react-icons';
 
 const IssueResolution = (props) => {
-    const { systems, resolutions, issue } = props;
+    const { systems, issue } = props;
     const formOptions = useFormApi();
+    const resolutions = formOptions.getState().values[RESOLUTIONS];
     const [ issueResolutions, setIssueResolutions ] = useState([]);
 
     useEffect(() => {
@@ -99,11 +100,7 @@ IssueResolution.propTypes = {
         action: propTypes.string,
         alternate: propTypes.number,
         systemsCount: propTypes.number
-    }).isRequired,
-    resolutions: propTypes.arrayOf(propTypes.shape({
-        id: propTypes.string,
-        resolutions: propTypes.array
-    })).isRequired
+    }).isRequired
 };
 
 export default IssueResolution;

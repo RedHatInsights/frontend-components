@@ -17,6 +17,8 @@ export const MANUAL_RESOLUTION = 'manual-resolution';
 export const EXISTING_PLAYBOOK_SELECTED = 'existing-playbook-selected';
 export const EXISTING_PLAYBOOK = 'existing-playbook';
 export const SYSTEMS = 'systems';
+export const RESOLUTIONS = 'resolutions';
+export const ISSUES_MULTIPLE = 'issues-multiple';
 
 export const TOGGLE_BULK_SELECT = 'toggle-bulk-select';
 
@@ -50,14 +52,14 @@ const sortRecords = (records, sortByState) => records.sort(
     }
 );
 
-export const buildRows = (records, sortByState) => sortRecords(records, sortByState).map((record, index) => ({
+export const buildRows = (records, sortByState, showAlternate) => sortRecords(records, sortByState).map((record, index) => ({
     cells: [
         record.action,
         <Fragment key={`${index}-description`}>
             <p key={`${index}-resolution`}>
                 {record.resolution}
             </p>
-            {record.alternate > 0 &&
+            {showAlternate && record.alternate > 0 &&
                 (
                     <p key={`${index}-alternate`}>{record.alternate} alternate {pluralize(record.alternate, 'resolution')}</p>
                 )}
@@ -70,8 +72,8 @@ export const buildRows = (records, sortByState) => sortRecords(records, sortBySt
     ]
 }));
 
-export const getResolution = (issueId, formValues, resolutions) => {
-    const issueResolutions = resolutions.find(r => r.id === issueId)?.resolutions || [];
+export const getResolution = (issueId, formValues) => {
+    const issueResolutions = formValues[RESOLUTIONS].find(r => r.id === issueId)?.resolutions || [];
 
     if (formValues[MANUAL_RESOLUTION] && issueId in formValues[SELECTED_RESOLUTIONS]) {
         return issueResolutions.filter(r => r.id === formValues[SELECTED_RESOLUTIONS][issueId]);
@@ -105,14 +107,14 @@ export function createNotification(id, name, isNewSwitch, error = false) {
         };
 }
 
-export const submitRemediation = (formValues, data, basePath, resolutions) => {
+export const submitRemediation = (formValues, data, basePath) => {
     const resolver = (id, name, isNewSwitch, onRemediationCreated, error) => onRemediationCreated({
         remediation: { id, name },
         getNotification: () => createNotification(id, name, isNewSwitch, error)
     });
     const issues = data.issues.map(({ id }) => ({
         id,
-        resolution: getResolution(id, formValues, resolutions)?.[0]?.id,
+        resolution: getResolution(id, formValues)?.[0]?.id,
         systems: formValues.systems
     }));
     const add = { issues, systems: formValues.systems };
@@ -225,3 +227,20 @@ export const inventoryEntitiesReducer = (allSystems, { LOAD_ENTITIES_FULFILLED }
     [LOAD_ENTITIES_FULFILLED]: (state) => loadEntitiesFulfilled(state, allSystems),
     [TOGGLE_BULK_SELECT]: changeBulkSelect
 });
+
+export const shortenIssueId = (issueId) => issueId?.split('|')?.slice(-1)?.[0] || issueId;
+
+export const getIssuesMultiple = (issues = [], systems = [], resolutions = []) =>
+    issues.map(issue => {
+        const issueResolutions = resolutions.find(r => r.id === issue.id)?.resolutions || [];
+        const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
+        return {
+            action: issues.find(i => i.id === issue.id).description,
+            systemsCount: issue.systems ? issue.systems.length : systems.length,
+            id: issue.id,
+            shortId: shortenIssueId(issue.id),
+            resolution: description,
+            needsReboot,
+            alternate: issueResolutions?.length - 1
+        };
+    }).filter(record => record.alternate > 0);

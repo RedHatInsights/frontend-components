@@ -22,7 +22,7 @@ import {
 import './review.scss';
 
 const Review = (props) => {
-    const { data, issuesById, resolutions } = props;
+    const { data, issuesById } = props;
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
@@ -31,16 +31,13 @@ const Review = (props) => {
     const existingPlaybookSelected = formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED];
 
     const records = data.issues.map(issue => {
-        const issueResolutions = getResolution(issue.id, formOptions.getState().values, resolutions);
+        const issueResolutions = getResolution(issue.id, formOptions.getState().values);
         const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
         return {
             action: issuesById[issue.id].description,
             resolution: description,
             needsReboot,
-            systemsCount: formOptions.getState().values[SYSTEMS]?.length || 0,
-            id: issue.id,
-            shortId: issue?.id?.split('|')?.slice(-1)?.[0] || issue.id,
-            alternate: issueResolutions.length - 1
+            systemsCount: formOptions.getState().values[SYSTEMS]?.length || 0
         };
     });
 
@@ -52,7 +49,7 @@ const Review = (props) => {
         );
     }, []);
 
-    const rows = buildRows(records, sortByState);
+    const rows = buildRows(records, sortByState, false);
 
     return (
         <Stack hasGutter>
@@ -131,11 +128,7 @@ Review.propTypes = {
             id: propTypes.string,
             description: propTypes.string
         })
-    }).isRequired,
-    resolutions: propTypes.arrayOf(propTypes.shape({
-        id: propTypes.string,
-        resolutions: propTypes.array
-    })).isRequired
+    }).isRequired
 };
 
 export default Review;

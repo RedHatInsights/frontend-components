@@ -1,14 +1,16 @@
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import validatorTypes from '@data-driven-forms/react-form-renderer/dist/esm/validator-types';
 import {
-    HAS_MULTIPLES,
     SELECT_PLAYBOOK,
     MANUAL_RESOLUTION,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED,
     SELECTED_RESOLUTIONS,
     AUTO_REBOOT,
-    SYSTEMS
+    SYSTEMS,
+    ISSUES_MULTIPLE,
+    RESOLUTIONS,
+    shortenIssueId
 } from '../utils';
 
 export const selectPlaybookFields = [{
@@ -31,6 +33,11 @@ export const selectPlaybookFields = [{
     name: EXISTING_PLAYBOOK,
     component: componentTypes.TEXT_FIELD,
     hideField: true
+},
+{
+    name: RESOLUTIONS,
+    component: componentTypes.TEXT_FIELD,
+    hideField: true
 }];
 
 export const reviewActionsFields = [{
@@ -38,17 +45,19 @@ export const reviewActionsFields = [{
     component: 'review-actions'
 }];
 
-export const reviewActionsNextStep = (values, issues) => {
+export const reviewActionsNextStep = (values) => {
     const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
-        ? issues.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
-        : issues;
+        ? values[ISSUES_MULTIPLE].filter(
+            issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id)
+        )
+        : values[ISSUES_MULTIPLE];
     return values[MANUAL_RESOLUTION] ? filteredIssues[0].id : 'review';
 };
 
-export const issueResolutionNextStep = (values, issues, issue) => {
+export const issueResolutionNextStep = (values, issue) => {
     const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
-        ? issues.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
-        : issues;
+        ? values[ISSUES_MULTIPLE].filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
+        : values[ISSUES_MULTIPLE];
     return filteredIssues.slice(filteredIssues.findIndex(i => i.id === issue.id) + 1, filteredIssues.length)[0]?.id || 'review';
 };
 
@@ -77,7 +86,7 @@ export default issues => ({
                         component: 'review-systems',
                         validate: [{ type: 'validate-systems' }]
                     }],
-                    nextStep: ({ values }) => values[HAS_MULTIPLES] ? 'actions' : 'review'
+                    nextStep: ({ values }) => values[ISSUES_MULTIPLE].length > 1 ? 'actions' : 'review'
                 },
                 {
                     name: 'actions',
@@ -88,7 +97,7 @@ export default issues => ({
                 ...issues.map(issue => (
                     {
                         name: issue.id,
-                        title: issue.shortId,
+                        title: shortenIssueId(issue.id),
                         showTitle: false,
                         fields: [
                             {
@@ -102,7 +111,7 @@ export default issues => ({
                                 hideField: true
                             }
                         ],
-                        nextStep: ({ values }) => issueResolutionNextStep(values, issues, issue),
+                        nextStep: ({ values }) => issueResolutionNextStep(values, issue),
                         substepOf: 'Choose actions'
                     }
                 )),

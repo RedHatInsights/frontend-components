@@ -1,35 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
 import propTypes from 'prop-types';
 import { fetchHostsById } from '../redux/actions/host-actions';
+import { fetchResolutions } from '../redux/actions/resolution-actions';
 import { Provider, useDispatch } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 import hostReducer, { hostsInitialState } from '../redux/reducers/host-reducer';
 import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry/ReducerRegistry';
 import keyBy from 'lodash/keyBy';
-import transform from 'lodash/transform';
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
 import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import schemaBuilder from './schema';
-import * as api from '../api';
 import Wizard from '@data-driven-forms/pf4-component-mapper/dist/esm/wizard';
 import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-field';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import SelectPlaybook from '../steps/selectPlaybook';
 import ReviewActions from '../steps/reviewActions';
 import IssueResolution from '../steps/issueResolution';
-import FetchError from '../steps/fetchError';
 import Review from '../steps/review';
 import ReviewSystems from '../steps/reviewSystems';
+import resolutionsReducer, { resolutionsInitialState } from '../redux/reducers/resolutions-reducer';
 import {
+    dedupeArray,
     submitRemediation,
     splitArray,
-    HAS_MULTIPLES,
     SELECTED_RESOLUTIONS,
     EXISTING_PLAYBOOK_SELECTED,
     MANUAL_RESOLUTION,
     SYSTEMS,
-    dedupeArray
+    RESOLUTIONS,
+    ISSUES_MULTIPLE
 } from '../utils';
 
 const RemediationWizard = ({
@@ -48,42 +48,8 @@ const RemediationWizard = ({
 
     const dispatch = useDispatch();
 
-    const [ state, setState ] = useState({ errors: [] });
-
-    const getIssuesMultiple = (issuesById, resolutions = []) =>
-        data.issues.map(issue => {
-            const issueResolutions = resolutions.find(r => r.id === issue.id)?.resolutions || [];
-            const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
-            return {
-                action: issuesById[issue.id].description,
-                systemsCount: issue.systems ? issue.systems.length : data.systems.length,
-                id: issue.id,
-                shortId: issue?.id?.split('|')?.slice(-1)?.[0] || issue.id,
-                resolution: description,
-                needsReboot,
-                alternate: issueResolutions?.length - 1
-            };
-        }).filter(record => record.alternate > 0);
-
-    const loadResolutions = async (issues) => {
-        try {
-            const result = await api.getResolutionsBatch(issues.map(i => i.id));
-
-            const [ resolutions, warnings ] = transform(result, ([ resolutions, errors ], value, key) => {
-                if (!value) {
-                    errors.push(`Issue ${key} does not have Ansible support`);
-                } else {
-                    resolutions.push(value);
-                }
-
-                return [ resolutions, errors ];
-            }, [ [], [] ]);
-
-            return { resolutions, warnings };
-        } catch (e) {
-            return { errors: [ 'Error obtaining resolution information. Please try again later.' ] };
-        }
-    };
+    const issuesById = keyBy(data.issues, issue => issue.id);
+    const [ schema, setSchema ] = useState();
 
     const fetchHostNames = (systems = []) => {
         const perChunk = 50;
@@ -94,30 +60,18 @@ const RemediationWizard = ({
     };
 
     useEffect(() => {
-        registry.register({ hostReducer: applyReducerHash(hostReducer, hostsInitialState) });
-        const issuesById = keyBy(data.issues, issue => issue.id);
-        loadResolutions(data.issues).then(
-            (values) => {
-                const issuesMultiple = getIssuesMultiple(issuesById, values.resolutions);
-                setState({
-                    ...state,
-                    ...values,
-                    schema: schemaBuilder(issuesMultiple),
-                    issuesById,
-                    issuesMultiple,
-                    basePath,
-                    isLoaded: true
-                });
-            }
-        );
+        setSchema(schemaBuilder(data.issues));
+        registry.register({
+            hostReducer: applyReducerHash(hostReducer, hostsInitialState),
+            resolutionsReducer: applyReducerHash(resolutionsReducer, resolutionsInitialState)
+        });
+        dispatch(fetchResolutions(data.issues));
         fetchHostNames(allSystems.current);
     }, []);
 
     const mapperExtension = {
         'select-playbook': {
-            component: (state.errors.length > 0 || (state.resolutions || []).length === 0) ? FetchError : SelectPlaybook,
-            resolutionsCount: (state.resolutions || []).length,
-            warnings: state.warnings,
+            component: SelectPlaybook,
             issues: data.issues,
             allSystems: allSystems.current
         },
@@ -129,19 +83,16 @@ const RemediationWizard = ({
         },
         'review-actions': {
             component: ReviewActions,
-            issues: data.issues,
-            issuesMultiple: state.issuesMultiple
+            issues: data.issues
         },
         'issue-resolution': {
             component: IssueResolution,
-            systems: data.systems,
-            resolutions: state.resolutions
+            systems: data.systems
         },
         review: {
             component: Review,
-            data: data,
-            issuesById: state.issuesById,
-            resolutions: state.resolutions
+            data,
+            issuesById: issuesById
         }
     };
 
@@ -153,13 +104,14 @@ const RemediationWizard = ({
     };
 
     return (
-        state.isLoaded ?
+        schema ?
             <FormRenderer
-                schema={state.schema}
+                schema={schema}
                 subscription={{ values: true }}
                 FormTemplate={(props) => <Pf4FormTemplate {...props} showFormControls={false} />}
                 initialValues={{
-                    [HAS_MULTIPLES]: !!state.resolutions?.find(r => r.resolutions.length > 1),
+                    [RESOLUTIONS]: [],
+                    [ISSUES_MULTIPLE]: data.issues,
                     [SYSTEMS]: undefined,
                     [MANUAL_RESOLUTION]: true,
                     [SELECTED_RESOLUTIONS]: {},
@@ -172,7 +124,7 @@ const RemediationWizard = ({
                 }}
                 validatorMapper={validatorMapper}
                 onSubmit={(formValues) => {
-                    submitRemediation(formValues, data, basePath, state.resolutions);
+                    submitRemediation(formValues, data, basePath);
                     setOpen(false);
                 }}
                 onCancel={() => setOpen(false)}
