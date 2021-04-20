@@ -2,8 +2,8 @@
     "name": "@redhat-cloud-services/rule-components",
     "version": "3.1.0",
     "description": "Components to be used when showing rule information",
-    "browser": "dist/cjs/index.js",
-    "module": "dist/esm/index.js",
+    "main": "index.js",
+    "module": "esm/index.js",
     "sideEffects": false,
     "publishConfig": {
         "access": "public"
