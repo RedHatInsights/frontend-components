@@ -3,7 +3,7 @@ import flatMap from 'lodash/flatMap';
 export const INVENTORY_API_BASE = '/api/inventory/v1';
 
 import instance from '@redhat-cloud-services/frontend-components-utilities/interceptors';
-import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { generateFilter, mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { HostsApi, TagsApi } from '@redhat-cloud-services/host-inventory-client';
 import { defaultFilters } from '../shared/constants';
 
@@ -66,7 +66,7 @@ export const filtersReducer = (acc, filter = {}) => ({
     ...'registeredWithFilter' in filter && { registeredWithFilter: filter.registeredWithFilter }
 });
 
-export function getEntities(items, {
+export async function getEntities(items, {
     controller,
     hasItems,
     filters,
@@ -74,19 +74,52 @@ export function getEntities(items, {
     page,
     orderBy,
     orderDirection,
+    fields = { system_profile: [ 'os_release' ] },
     ...options
 }, showTags) {
     if (hasItems && items.length > 0) {
-        return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
-        .then((data) => showTags ? mapTags(data) : data)
-        .then(({ results = [], ...data } = {}) => ({
+        let data = await hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token });
+
+        if (fields && Object.keys(fields).length) {
+            try {
+                const result = await hosts.apiHostGetHostSystemProfileById(
+                    items,
+                    perPage,
+                    page,
+                    orderBy,
+                    undefined,
+                    undefined,
+                    undefined,
+                    {
+                        cancelToken: controller && controller.token,
+                        query: generateFilter(fields, 'fields')
+                    }
+                );
+
+                data = {
+                    ...data,
+                    results: mergeArraysByKey([
+                        data?.results,
+                        result?.results || []
+                    ])
+                };
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        data = showTags ? await mapTags(data) : data;
+
+        data = {
             ...data,
             filters,
-            results: results.map(result => mapData({
+            results: data.results.map(result => mapData({
                 ...result,
                 display_name: result.display_name || result.fqdn || result.id
             }))
-        }));
+        };
+
+        return data;
     } else if (!hasItems) {
         return hosts.apiHostGetHostList(
             undefined,
@@ -105,10 +138,12 @@ export function getEntities(items, {
             ],
             filters.registeredWithFilter,
             undefined,
+            undefined,
             {
                 cancelToken: controller && controller.token,
-                ...options.filter && {
-                    query: generateFilter(options.filter)
+                query: {
+                    ...(options.filter && Object.keys(options.filter).length && generateFilter(options.filter)),
+                    ...(fields && Object.keys(fields).length && generateFilter(fields, 'fields'))
                 }
             }
         )
@@ -123,13 +158,11 @@ export function getEntities(items, {
         }));
     }
 
-    return new Promise((res) => {
-        res({
-            page,
-            per_page: perPage,
-            results: []
-        });
-    });
+    return {
+        page,
+        per_page: perPage,
+        results: []
+    };
 }
 
 export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);
