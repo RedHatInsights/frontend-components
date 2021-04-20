@@ -92,7 +92,7 @@ export async function getEntities(items, {
                     undefined,
                     {
                         cancelToken: controller && controller.token,
-                        query: { ...generateFilter(fields, 'fields') }
+                        query: generateFilter(fields, 'fields')
                     }
                 );
 
@@ -142,8 +142,8 @@ export async function getEntities(items, {
             {
                 cancelToken: controller && controller.token,
                 query: {
-                    ...generateFilter(options.filter),
-                    ...generateFilter(fields, 'fields')
+                    ...(options.filter && Object.keys(options.filter).length && generateFilter(options.filter)),
+                    ...(fields && Object.keys(fields).length && generateFilter(fields, 'fields'))
                 }
             }
         )
