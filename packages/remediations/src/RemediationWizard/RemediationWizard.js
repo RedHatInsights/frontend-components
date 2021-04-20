@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import propTypes from 'prop-types';
 import { fetchHostsById } from '../redux/actions/host-actions';
 import { Provider, useDispatch } from 'react-redux';
@@ -28,7 +28,8 @@ import {
     SELECTED_RESOLUTIONS,
     EXISTING_PLAYBOOK_SELECTED,
     MANUAL_RESOLUTION,
-    SYSTEMS
+    SYSTEMS,
+    dedupeArray
 } from '../utils';
 
 const RemediationWizard = ({
@@ -37,6 +38,13 @@ const RemediationWizard = ({
     basePath,
     registry
 }) => {
+
+    const allSystems = useRef(
+        dedupeArray(data.issues.reduce((acc, curr) => [
+            ...acc,
+            ...(curr.systems || [])
+        ], [ ...data.systems ]))
+    );
 
     const dispatch = useDispatch();
 
@@ -102,7 +110,7 @@ const RemediationWizard = ({
                 });
             }
         );
-        fetchHostNames(data.systems);
+        fetchHostNames(allSystems.current);
     }, []);
 
     const mapperExtension = {
@@ -111,7 +119,7 @@ const RemediationWizard = ({
             resolutionsCount: (state.resolutions || []).length,
             warnings: state.warnings,
             issues: data.issues,
-            systems: data.systems
+            allSystems: allSystems.current
         },
         'review-systems': {
             component: ReviewSystems,
