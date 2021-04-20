@@ -20,7 +20,6 @@ import {
 } from '@patternfly/react-core';
 import {
     pluralize,
-    dedupeArray,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED
 } from '../utils';
@@ -28,14 +27,10 @@ import './selectPlaybook.scss';
 import { Fragment } from 'react';
 
 const SelectPlaybook = (props) => {
-    const { issues, systems, warnings, resolutionsCount } = props;
+    const { issues, allSystems, warnings, resolutionsCount } = props;
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState().values;
-    const allSystems = dedupeArray(issues.reduce((acc, curr) => [
-        ...acc,
-        ...(curr.systems || [])
-    ], [ ...systems ]));
 
     const [ existingRemediations, setExistingRemediations ] = useState();
     const [ existingPlaybookSelected, setExistingPlaybookSelected ] = useState(values[EXISTING_PLAYBOOK_SELECTED]);
@@ -165,7 +160,7 @@ const SelectPlaybook = (props) => {
 };
 
 SelectPlaybook.propTypes = {
-    systems: propTypes.arrayOf(propTypes.string).isRequired,
+    allSystems: propTypes.arrayOf(propTypes.string).isRequired,
     issues: propTypes.arrayOf(propTypes.shape({
         description: propTypes.string,
         id: propTypes.string
