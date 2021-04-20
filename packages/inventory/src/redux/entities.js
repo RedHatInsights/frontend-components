@@ -18,6 +18,7 @@ import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
 import TitleColumn from '../components/table/TitleColumn';
 import InsightsDisconnected from '../shared/InsightsDisconnected';
+import { wrappable } from '@patternfly/react-table';
 
 export const defaultState = {
     loaded: false,
@@ -41,7 +42,8 @@ export const defaultColumns = [
         title: 'OS release',
         // eslint-disable-next-line react/display-name
         renderFunc: (systemProfile) => systemProfile.os_release || 'Not available',
-        props: { isStatic: true }
+        props: { isStatic: true },
+        transforms: [ wrappable ]
     },
     {
         key: 'tags',
