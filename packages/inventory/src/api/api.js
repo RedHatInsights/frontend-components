@@ -74,6 +74,7 @@ export function getEntities(items, {
     page,
     orderBy,
     orderDirection,
+    fields = { system_profile: [ 'os_release' ] },
     ...options
 }, showTags) {
     if (hasItems && items.length > 0) {
@@ -92,8 +93,7 @@ export function getEntities(items, {
                     undefined,
                     {
                         cancelToken: controller && controller.token,
-                        query: { 'fields[system_profile]': [ 'os_release' ]
-                        }
+                        query: { ...generateFilter(fields, 'fields') }
                     });
             } catch (e) {
                 console.error(e);
@@ -139,7 +139,7 @@ export function getEntities(items, {
                 cancelToken: controller && controller.token,
                 query: {
                     ...generateFilter(options.filter),
-                    'fields[system_profile]': [ 'os_release' ]
+                    ...generateFilter(fields, 'fields')
                 }
             }
         )
