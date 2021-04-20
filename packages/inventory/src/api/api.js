@@ -66,7 +66,7 @@ export const filtersReducer = (acc, filter = {}) => ({
     ...'registeredWithFilter' in filter && { registeredWithFilter: filter.registeredWithFilter }
 });
 
-export function getEntities(items, {
+export async function getEntities(items, {
     controller,
     hasItems,
     filters,
@@ -78,12 +78,11 @@ export function getEntities(items, {
     ...options
 }, showTags) {
     if (hasItems && items.length > 0) {
-        return hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token })
-        .then(async (data) => {
-            let result;
+        let data = await hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token });
 
+        if (fields && Object.keys(fields).length) {
             try {
-                result = await hosts.apiHostGetHostSystemProfileById(
+                const result = await hosts.apiHostGetHostSystemProfileById(
                     items,
                     perPage,
                     page,
@@ -94,28 +93,33 @@ export function getEntities(items, {
                     {
                         cancelToken: controller && controller.token,
                         query: { ...generateFilter(fields, 'fields') }
-                    });
+                    }
+                );
+
+                data = {
+                    ...data,
+                    results: mergeArraysByKey([
+                        data?.results,
+                        result?.results || []
+                    ])
+                };
             } catch (e) {
                 console.error(e);
             }
+        }
 
-            return {
-                ...data,
-                results: mergeArraysByKey([
-                    data?.results,
-                    result?.results || []
-                ])
-            };
-        })
-        .then((data) => showTags ? mapTags(data) : data)
-        .then(({ results = [], ...data } = {}) => ({
+        data = showTags ? await mapTags(data) : data;
+
+        data = {
             ...data,
             filters,
-            results: results.map(result => mapData({
+            results: data.results.map(result => mapData({
                 ...result,
                 display_name: result.display_name || result.fqdn || result.id
             }))
-        }));
+        };
+
+        return data;
     } else if (!hasItems) {
         return hosts.apiHostGetHostList(
             undefined,
@@ -154,13 +158,11 @@ export function getEntities(items, {
         }));
     }
 
-    return new Promise((res) => {
-        res({
-            page,
-            per_page: perPage,
-            results: []
-        });
-    });
+    return {
+        page,
+        per_page: perPage,
+        results: []
+    };
 }
 
 export const getEntitySystemProfile = (item) => hosts.apiHostGetHostSystemProfileById([ item ]);
