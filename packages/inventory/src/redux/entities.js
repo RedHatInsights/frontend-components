@@ -42,7 +42,7 @@ export const defaultColumns = [
         title: 'OS release',
         // eslint-disable-next-line react/display-name
         renderFunc: (systemProfile) => systemProfile.os_release || 'Not available',
-        props: { isStatic: true },
+        props: { width: 25, isStatic: true },
         transforms: [ wrappable ]
     },
     {
