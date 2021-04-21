@@ -41,8 +41,11 @@ export const defaultColumns = [
         key: 'system_profile',
         title: 'OS release',
         // eslint-disable-next-line react/display-name
-        renderFunc: (systemProfile) => systemProfile.os_release || 'Not available',
-        props: { width: 25, isStatic: true },
+        renderFunc: (systemProfile) => (
+            (systemProfile?.operating_system?.major && systemProfile?.operating_system?.minor)
+            && `${systemProfile?.operating_system?.major}.${systemProfile?.operating_system?.minor}`
+        ) || 'Not available',
+        props: { width: 15, isStatic: true },
         transforms: [ wrappable ]
     },
     {

@@ -74,7 +74,7 @@ export async function getEntities(items, {
     page,
     orderBy,
     orderDirection,
-    fields = { system_profile: [ 'os_release' ] },
+    fields = { system_profile: [ 'operating_system' ] },
     ...options
 }, showTags) {
     if (hasItems && items.length > 0) {
