@@ -65,15 +65,15 @@ class PrimaryToolbar extends Component {
                                 <ToolbarItem>
                                     {
                                         React.isValidElement(expandAll) ? expandAll : (
-                                              <Button
+                                            <Button
                                                 variant="plain"
                                                 aria-label={`${expandAll.isAllExpanded ? 'Collapse' : 'Expand'} all`}
                                                 onClick={(e) => expandAll.onClick(e, !expandAll.isAllExpanded)}
-                                              >
-                                                  <ToolbarExpandIconWrapper>
-                                                      {expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}
-                                                  </ToolbarExpandIconWrapper>
-                                              </Button>
+                                            >
+                                                <ToolbarExpandIconWrapper>
+                                                    {expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}
+                                                </ToolbarExpandIconWrapper>
+                                            </Button>
                                         )
                                     }
                                 </ToolbarItem>
