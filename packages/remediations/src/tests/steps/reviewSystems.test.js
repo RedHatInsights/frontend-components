@@ -5,11 +5,11 @@ import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import promiseMiddleware from 'redux-promise-middleware';
+import configureStore from 'redux-mock-store';
 import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED, SYSTEMS } from '../../utils';
 import { remediationWizardTestData } from '../testData';
 import ReviewSystems from '../../steps/reviewSystems';
 import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({

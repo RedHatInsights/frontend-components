@@ -2,8 +2,34 @@
 import {
     MANUAL_RESOLUTION,
     SELECTED_RESOLUTIONS,
-    EXISTING_PLAYBOOK_SELECTED
+    EXISTING_PLAYBOOK_SELECTED,
+    ISSUES_MULTIPLE,
+    RESOLUTIONS
 } from '../utils';
+
+const resolutions = [{
+    id: 'testId',
+    resolution_risk: 3,
+    resolutions: [{
+        description: 'test',
+        id: 'test1',
+        needs_reboot: true,
+        resolution_risk: 3
+    },
+    {
+        description: 'test',
+        id: 'test2',
+        needs_reboot: true,
+        resolution_risk: 3
+    }]
+}];
+
+const issuesMultiple = [
+    {
+        id: 'testId',
+        description: 'description'
+    }
+];
 
 export const remediationWizardTestData = {
 
@@ -27,41 +53,13 @@ export const remediationWizardTestData = {
         }
     },
 
-    issuesMultiple: [
-        {
-            id: 'testId',
-            description: 'description'
-        }
-    ],
+    resolutions,
 
-    resolutions: [{
-        id: 'testId',
-        resolution_risk: 3,
-        resolutions: [{
-            description: 'test',
-            id: 'test1',
-            needs_reboot: true,
-            resolution_risk: 3
-        },
-        {
-            description: 'test',
-            id: 'test2',
-            needs_reboot: true,
-            resolution_risk: 3
-        }]
-    }],
+    issuesMultiple,
 
     issueResolutionsResponse: {
-        testId: {
-            id: 'testId',
-            resolution_risk: 3,
-            resolutions: [{
-                description: 'description',
-                id: 'resolution-id',
-                needs_reboot: true,
-                resolution_risk: 3
-            }]
-        }
+        resolutions,
+        errors: []
     },
 
     existingPlaybook: {
@@ -81,6 +79,8 @@ export const remediationWizardTestData = {
     formValues: {
         [MANUAL_RESOLUTION]: false,
         [SELECTED_RESOLUTIONS]: [],
-        [EXISTING_PLAYBOOK_SELECTED]: false
+        [EXISTING_PLAYBOOK_SELECTED]: false,
+        [ISSUES_MULTIPLE]: issuesMultiple,
+        [RESOLUTIONS]: resolutions
     }
 };

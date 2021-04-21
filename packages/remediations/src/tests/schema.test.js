@@ -3,7 +3,8 @@ import schemaBuilder, { issueResolutionNextStep, reviewActionsNextStep } from '.
 import {
     EXISTING_PLAYBOOK,
     MANUAL_RESOLUTION,
-    EXISTING_PLAYBOOK_SELECTED
+    EXISTING_PLAYBOOK_SELECTED,
+    ISSUES_MULTIPLE
 } from '../utils';
 import { remediationWizardTestData } from './testData';
 
@@ -44,18 +45,18 @@ describe('issueResolutionNextStep', () => {
 
     beforeEach(() => {
         formValues = {
-            ...formValues,
             [EXISTING_PLAYBOOK]: {
                 issues: [{
                     id: 'testId2',
                     resolution: { id: 'test' }
                 }]
-            }
+            },
+            [ISSUES_MULTIPLE]: []
         };
     });
 
     it('should return review on no issues', () => {
-        const value = issueResolutionNextStep(formValues, [], undefined);
+        const value = issueResolutionNextStep(formValues, undefined);
         expect(value).toEqual('review');
     });
 
@@ -63,8 +64,9 @@ describe('issueResolutionNextStep', () => {
         const value = issueResolutionNextStep({
             ...formValues,
             [MANUAL_RESOLUTION]: true,
-            [EXISTING_PLAYBOOK_SELECTED]: true
-        }, [{ id: 'testId' }, { id: 'testId2' }, { id: 'testId3' }], { id: 'testId' });
+            [EXISTING_PLAYBOOK_SELECTED]: true,
+            [ISSUES_MULTIPLE]: [{ id: 'testId' }, { id: 'testId2' }, { id: 'testId3' }]
+        }, { id: 'testId' });
         expect(value).toEqual('testId3');
     });
 });
@@ -72,10 +74,9 @@ describe('issueResolutionNextStep', () => {
 describe('schema', () => {
 
     const formValues = remediationWizardTestData.formValues;
-    const issuesMultiple = remediationWizardTestData.issuesMultiple;
 
     it('should render issues', () => {
-        const schema = schemaBuilder(issuesMultiple);
+        const schema = schemaBuilder(remediationWizardTestData.issues);
         expect(schema.fields[0].fields[1].nextStep({ values: formValues })).toEqual('review');
         expect(schema.fields[0].fields[2].name).toEqual('actions');
         expect(schema.fields[0].fields[2].nextStep({ values: formValues })).toEqual('review');

@@ -6,7 +6,7 @@ import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import ReviewActions from '../../steps/reviewActions';
 import { reviewActionsFields } from '../../RemediationWizard/schema';
-import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED } from '../../utils';
+import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED, ISSUES_MULTIPLE, RESOLUTIONS } from '../../utils';
 import { BodyRow } from '@patternfly/react-table/dist/js/components/Table/base';
 import { remediationWizardTestData } from '../testData';
 
@@ -17,8 +17,7 @@ const RendererWrapper = (props) => (
         componentMapper={{
             'review-actions': {
                 component: ReviewActions,
-                issues: remediationWizardTestData.issues,
-                issuesMultiple: remediationWizardTestData.issuesMultiple
+                issues: remediationWizardTestData.issues
             }
         }}
         initialValues={{
@@ -31,7 +30,9 @@ const RendererWrapper = (props) => (
                 }],
                 name: 'test',
                 needs_reboot: false
-            }
+            },
+            [RESOLUTIONS]: remediationWizardTestData.resolutions,
+            [ISSUES_MULTIPLE]: remediationWizardTestData.issuesMultiple
         }}
         schema={{ fields: [] }}
         {...props}
@@ -53,7 +54,7 @@ describe('ReviewActions', () => {
     it('should render correctly', async () => {
         let wrapper;
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema({})} />);
+            wrapper = mount(<RendererWrapper schema={createSchema()} />);
         });
         expect(wrapper.find('input[type="radio"]')).toHaveLength(2);
         expect(wrapper.find('table')).toHaveLength(1);
@@ -63,7 +64,7 @@ describe('ReviewActions', () => {
     it('should sort table & submit review option', async () => {
         let wrapper;
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema({})} onSubmit={onSubmit}/>);
+            wrapper = mount(<RendererWrapper schema={createSchema()} onSubmit={onSubmit}/>);
         });
         wrapper.find('button[className="pf-c-table__button"]').last().simulate('click');
         wrapper.find('input[type="radio"]').first().simulate('change', {
@@ -76,7 +77,7 @@ describe('ReviewActions', () => {
     it('should submit accept option', async () => {
         let wrapper;
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema({})} onSubmit={onSubmit}/>);
+            wrapper = mount(<RendererWrapper schema={createSchema()} onSubmit={onSubmit}/>);
         });
         wrapper.find('input[type="radio"]').last().simulate('change', {
             target: { checked: true } });

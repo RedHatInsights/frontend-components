@@ -4,7 +4,7 @@ import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-r
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import { AUTO_REBOOT } from '../../utils';
+import { AUTO_REBOOT, RESOLUTIONS } from '../../utils';
 import Review from '../../steps/review';
 import { BodyRow } from '@patternfly/react-table/dist/js/components/Table/base';
 import { remediationWizardTestData } from '../testData';
@@ -27,9 +27,11 @@ const RendererWrapper = (props) => (
                     ],
                     systems: remediationWizardTestData.systems
                 },
-                issuesById: remediationWizardTestData.issuesById,
-                resolutions: remediationWizardTestData.resolutions
+                issuesById: remediationWizardTestData.issuesById
             }
+        }}
+        initialValues={{
+            [RESOLUTIONS]: remediationWizardTestData.resolutions
         }}
         schema={{ fields: [] }}
         subscription={{ values: true }}
@@ -46,7 +48,7 @@ const createSchema = () => ({
     ]
 });
 
-describe('ReviewActions', () => {
+describe('Review', () => {
 
     let initialProps;
     let onSubmit;

@@ -14,22 +14,23 @@ import {
     buildRows,
     pluralize,
     EXISTING_PLAYBOOK,
-    EXISTING_PLAYBOOK_SELECTED
+    EXISTING_PLAYBOOK_SELECTED,
+    ISSUES_MULTIPLE
 } from '../utils';
 import './reviewActions.scss';
 
 const ReviewActions = (props) => {
-    const { issues, issuesMultiple } = props;
+    const { issues } = props;
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
 
     const values = formOptions.getState().values;
     const records = values[EXISTING_PLAYBOOK_SELECTED]
-        ? issuesMultiple.filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
-        : issuesMultiple;
+        ? values[ISSUES_MULTIPLE].filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
+        : values[ISSUES_MULTIPLE];
 
-    const rows = buildRows(records, sortByState);
+    const rows = buildRows(records, sortByState, true);
 
     return (
         <Stack hasGutter>
@@ -102,15 +103,6 @@ ReviewActions.propTypes = {
     issues: propTypes.arrayOf(propTypes.shape({
         description: propTypes.string,
         id: propTypes.string
-    })).isRequired,
-    issuesMultiple: propTypes.arrayOf(propTypes.shape({
-        id: propTypes.string,
-        shortId: propTypes.string,
-        action: propTypes.string,
-        resolution: propTypes.string,
-        needsReboot: propTypes.bool,
-        alternate: propTypes.number,
-        systemsCount: propTypes.number
     })).isRequired
 };
 
