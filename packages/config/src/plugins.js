@@ -5,9 +5,9 @@ const ProvidePlugin = new(require('webpack').ProvidePlugin)({
 });
 
 const SourceMapsPlugin = new SourceMapDevToolPlugin({
-    test: /src\/.*\.js$/i,
+    test: 'js',
     exclude: /(node_modules|bower_components)/i,
-    filename: `sourcemaps/[name][hash].js.map`
+    filename: `sourcemaps/[name].[hash].js.map`
 });
 const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
     chunkFilename: 'css/[name].[contenthash].css',

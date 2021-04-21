@@ -152,7 +152,7 @@ class PrimaryToolbar extends Component {
                         <ToolbarContent>
                             <ToolbarItem>{activeFiltersConfig}</ToolbarItem>
                         </ToolbarContent>
-                        : activeFiltersConfig !== undefined && activeFiltersConfig.filters.length > 0 &&
+                        : activeFiltersConfig !== undefined && (activeFiltersConfig.filters.length > 0 || activeFiltersConfig.showDeleteButton === true) &&
                         <ToolbarContent>
                             <ToolbarItem><FilterChips {...activeFiltersConfig} /></ToolbarItem>
                         </ToolbarContent>
