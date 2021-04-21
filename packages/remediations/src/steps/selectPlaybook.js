@@ -5,7 +5,7 @@ import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 import * as api from '../api';
 import { Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 import FetchError from './fetchError';
 import {
     FormGroup,
@@ -45,7 +45,10 @@ const SelectPlaybook = (props) => {
     const [ selectedPlaybook, setSelectedPlaybook ] = useState(values[EXISTING_PLAYBOOK]);
     const [ isLoadingRemediation, setIsLoadingRemediation ] = useState(false);
 
-    const { errors = [], warnings = [], resolutions = [], isLoading } = useSelector(({ resolutionsReducer }) => resolutionsReducer);
+    const errors = useSelector(({ resolutionsReducer }) => resolutionsReducer?.errors || [], shallowEqual);
+    const warnings = useSelector(({ resolutionsReducer }) => resolutionsReducer?.warnings || [], shallowEqual);
+    const resolutions = useSelector(({ resolutionsReducer }) => resolutionsReducer?.resolutions || [], shallowEqual);
+    const isLoading = useSelector(({ resolutionsReducer }) => resolutionsReducer?.isLoading);
 
     useEffect(() => {
         async function fetchData() {
