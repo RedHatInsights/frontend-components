@@ -52,10 +52,10 @@ const ReviewActions = (props) => {
                     isChecked={input.value}
                     onChange={() => input.onChange(true)}
                 />
-                <Text className="ins-c-remediations-choose-actions-description">
+                {issues.length - rows.length > 0 && <Text className="ins-c-remediations-choose-actions-description">
                     {`The ${issues.length - rows.length} other selected ${pluralize(issues.length - rows.length, 'issue')} 
                     ${issues.length - rows.length > 1 ? 'do' : 'does'} not have multiple resolution options.`}
-                </Text>
+                </Text>}
             </StackItem>
             <Table
                 aria-label='Actions'
