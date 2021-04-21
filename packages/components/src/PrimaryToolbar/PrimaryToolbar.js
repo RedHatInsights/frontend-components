@@ -1,4 +1,5 @@
-import { Toolbar, ToolbarContent, ToolbarGroup, ToolbarItem, Pagination } from '@patternfly/react-core';
+import { Toolbar, ToolbarContent, ToolbarGroup, ToolbarItem, Pagination, Button, ToolbarExpandIconWrapper } from '@patternfly/react-core';
+import { AngleDownIcon, AngleRightIcon } from '@patternfly/react-icons';
 import React, { Component } from 'react';
 
 import Actions from './Actions';
@@ -26,6 +27,7 @@ class PrimaryToolbar extends Component {
             activeFiltersConfig,
             children,
             exportConfig,
+            expandAll,
             ...props
         } = this.props;
         const overflowActions = [
@@ -53,11 +55,33 @@ class PrimaryToolbar extends Component {
             >
                 <ToolbarContent>
                     {
-                        (bulkSelect || filterConfig || dedicatedAction) &&
+                        (expandAll || bulkSelect || filterConfig || dedicatedAction) &&
                         <ToolbarGroup
                             className="ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
                             variant="filter-group"
                         >
+                            {
+                                expandAll &&
+                                <ToolbarItem>
+                                    {
+                                        React.isValidElement(expandAll) ? expandAll : (
+                                            expandAll.isAllExpanded ? (
+                                                <Button variant="plain" aria-label="Collapse all" onClick={() => expandAll.onClick(false)}>
+                                                    <ToolbarExpandIconWrapper>
+                                                        <AngleDownIcon />
+                                                    </ToolbarExpandIconWrapper>
+                                                </Button>
+                                            ) : (
+                                                <Button variant="plain" aria-label="Expand all" onClick={() => expandAll.onClick(true)}>
+                                                    <ToolbarExpandIconWrapper>
+                                                        <AngleRightIcon />
+                                                    </ToolbarExpandIconWrapper>
+                                                </Button>
+                                            )
+                                        )
+                                    }
+                                </ToolbarItem>
+                            }
                             {
                                 bulkSelect &&
                                 <ToolbarItem>
@@ -160,7 +184,14 @@ PrimaryToolbar.propTypes = {
         actions: Actions.propTypes.actions,
         dropdownProps: Actions.propTypes.dropdownProps,
         onSelect: Actions.propTypes.onSelect
-    })
+    }),
+    expandAll: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.shape({
+            onClick: PropTypes.func,
+            isAllExpanded: PropTypes.bool
+        })
+    ])
 };
 
 PrimaryToolbar.defaultProps = {
