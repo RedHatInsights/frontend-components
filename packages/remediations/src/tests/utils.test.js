@@ -49,7 +49,7 @@ describe('getResolution', () => {
     });
 
     it('should return all when no values', () => {
-        const value = getResolution('testId', formValues, resolutions);
+        const value = getResolution('testId', formValues);
         expect(value).toEqual(resolutions[0].resolutions);
     });
 
@@ -58,7 +58,7 @@ describe('getResolution', () => {
             ...formValues,
             [MANUAL_RESOLUTION]: true,
             [SELECTED_RESOLUTIONS]: { testId: 'test1' }
-        }, resolutions);
+        });
         expect(value).toEqual([
             resolutions[0].resolutions[0] ]);
     });
@@ -72,7 +72,7 @@ describe('getResolution', () => {
                     resolution: { id: 'test2' }
                 }]
             }
-        }, resolutions);
+        });
         expect(value).toEqual([
             resolutions[0].resolutions[1] ]);
     });
@@ -97,14 +97,14 @@ describe('submitRemediation', () => {
     it('should update remediation correctly', () => {
         const updateFunction = jest.fn(() => Promise.resolve());
         dependency.patchRemediation = updateFunction;
-        submitRemediation(formValues, data, undefined, resolutions);
+        submitRemediation(formValues, data);
         expect(updateFunction).toHaveBeenCalledTimes(1);
     });
 
     it('should create remediation correctly', () => {
         const createFunction = jest.fn(() => Promise.resolve({ id: 'tesdId' }));
         dependency.createRemediation = createFunction;
-        submitRemediation({ ...formValues, [EXISTING_PLAYBOOK_SELECTED]: false }, data, undefined, resolutions);
+        submitRemediation({ ...formValues, [EXISTING_PLAYBOOK_SELECTED]: false }, data, undefined);
         expect(createFunction).toHaveBeenCalledTimes(1);
     });
 

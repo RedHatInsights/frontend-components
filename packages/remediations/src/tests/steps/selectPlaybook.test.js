@@ -7,9 +7,12 @@ import * as dependency from '../../api/index';
 import SelectPlaybook from '../../steps/selectPlaybook';
 import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-field';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
+import promiseMiddleware from 'redux-promise-middleware';
+import configureStore from 'redux-mock-store';
 import { act } from 'react-dom/test-utils';
 import { selectPlaybookFields } from '../../RemediationWizard/schema';
 import { remediationWizardTestData } from '../testData';
+import { Provider } from 'react-redux';
 
 const RendererWrapper = (props) => (
     <FormRenderer
@@ -37,18 +40,36 @@ describe('SelectPlaybook', () => {
     let initialProps;
     let onSubmit;
 
+    let mockStore = configureStore([ promiseMiddleware ]);
+
+    const initialState = {
+        hostReducer: {
+            hosts: [{ id: 'test2', display_name: 'test2' }]
+        },
+        resolutionsReducer: {
+            isLoading: false,
+            resolutions: remediationWizardTestData.resolutions,
+            errors: [],
+            warnings: []
+        }
+    };
+
     beforeEach(() => {
         onSubmit = jest.fn();
     });
 
     it('should render correctly without remediations', async () => {
         dependency.getRemediations = jest.fn(() => new Promise((resolve) => resolve({ data: [{ id: 'remediationId', name: 'someName' }] })));
+        const store = mockStore(initialState);
         let wrapper;
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema({})} {...initialProps} />);
+            wrapper = mount(
+                <Provider store={store}>
+                    <RendererWrapper schema={createSchema({})} {...initialProps} />
+                </Provider>);
         });
         expect(wrapper.find('input[type="radio"]')).toHaveLength(2);
-        expect(wrapper.find('input[type="text"]')).toHaveLength(3);
+        expect(wrapper.find('input[type="text"]')).toHaveLength(4);
         expect(wrapper.find('FormSelect')).toHaveLength(0);
         expect(wrapper.find('Skeleton')).toHaveLength(1);
 
@@ -57,14 +78,17 @@ describe('SelectPlaybook', () => {
     it('should render correctly with remediations', async () => {
         dependency.getRemediations = jest.fn(() => new Promise((resolve) => resolve({ data: [{ id: 'remediationId', name: 'name' }] })));
         dependency.getRemediation = jest.fn(() => new Promise((resolve) => resolve({ id: 'remediationId', name: 'name' })));
-
+        const store = mockStore(initialState);
         let wrapper;
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema({})} {...initialProps} />);
+            wrapper = mount(
+                <Provider store={store}>
+                    <RendererWrapper schema={createSchema({})} {...initialProps} />
+                </Provider>);
         });
         wrapper.update();
         expect(wrapper.find('input[type="radio"]')).toHaveLength(2);
-        expect(wrapper.find('input[type="text"]')).toHaveLength(3);
+        expect(wrapper.find('input[type="text"]')).toHaveLength(4);
         expect(wrapper.find('FormSelect')).toHaveLength(1);
         expect(wrapper.find('Skeleton')).toHaveLength(0);
 
@@ -73,9 +97,13 @@ describe('SelectPlaybook', () => {
     it('should not submit empty', async () => {
         dependency.getRemediations = jest.fn(() => new Promise((resolve) => resolve({ data: [{ id: 'remediationId', name: 'name' }] })));
         dependency.getRemediation = jest.fn(() => new Promise((resolve) => resolve({ id: 'remediationId', name: 'name' })));
+        const store = mockStore(initialState);
         let wrapper;
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema({})} {...initialProps} onSubmit={onSubmit} />);
+            wrapper = mount(
+                <Provider store={store}>
+                    <RendererWrapper schema={createSchema({})} {...initialProps} onSubmit={onSubmit} />
+                </Provider>);
         });
         wrapper.find('Form').simulate('submit');
         expect(onSubmit).toHaveBeenCalledTimes(0);
@@ -84,9 +112,13 @@ describe('SelectPlaybook', () => {
     it('should submit new playbook', async () => {
         dependency.getRemediations = jest.fn(() => new Promise((resolve) => resolve({ data: [{ id: 'remediationId', name: 'name' }] })));
         dependency.getRemediation = jest.fn(() => new Promise((resolve) => resolve({ id: 'remediationId', name: 'name' })));
+        const store = mockStore(initialState);
         let wrapper;
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema({})} {...initialProps} onSubmit={onSubmit} />);
+            wrapper = mount(
+                <Provider store={store}>
+                    <RendererWrapper schema={createSchema({})} {...initialProps} onSubmit={onSubmit} />
+                </Provider>);
         });
         wrapper.find('input[type="radio"]').last().simulate('change');
         wrapper.find('input[type="text"]').first().instance().value = 'new';
@@ -98,9 +130,13 @@ describe('SelectPlaybook', () => {
     it('should submit existing playbook', async () => {
         dependency.getRemediations = jest.fn(() => new Promise((resolve) => resolve({ data: [{ id: 'remediationId', name: 'name' }] })));
         dependency.getRemediation = jest.fn(() => new Promise((resolve) => resolve({ id: 'remediationId', name: 'name' })));
+        const store = mockStore(initialState);
         let wrapper;
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema({})} {...initialProps} onSubmit={onSubmit} />);
+            wrapper = mount(
+                <Provider store={store}>
+                    <RendererWrapper schema={createSchema({})} {...initialProps} onSubmit={onSubmit} />
+                </Provider>);
         });
         wrapper.find('input[type="radio"]').first().simulate('change');
         await act(async() => {
