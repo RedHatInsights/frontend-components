@@ -65,19 +65,15 @@ class PrimaryToolbar extends Component {
                                 <ToolbarItem>
                                     {
                                         React.isValidElement(expandAll) ? expandAll : (
-                                            expandAll.isAllExpanded ? (
-                                                <Button variant="plain" aria-label="Collapse all" onClick={() => expandAll.onClick(false)}>
-                                                    <ToolbarExpandIconWrapper>
-                                                        <AngleDownIcon />
-                                                    </ToolbarExpandIconWrapper>
-                                                </Button>
-                                            ) : (
-                                                <Button variant="plain" aria-label="Expand all" onClick={() => expandAll.onClick(true)}>
-                                                    <ToolbarExpandIconWrapper>
-                                                        <AngleRightIcon />
-                                                    </ToolbarExpandIconWrapper>
-                                                </Button>
-                                            )
+                                              <Button
+                                                variant="plain"
+                                                aria-label={`${expandAll.isAllExpanded ? 'Collapse' : 'Expand'} all`}
+                                                onClick={(e) => expandAll.onClick(e, !expandAll.isAllExpanded)}
+                                              >
+                                                  <ToolbarExpandIconWrapper>
+                                                      {expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}
+                                                  </ToolbarExpandIconWrapper>
+                                              </Button>
                                         )
                                     }
                                 </ToolbarItem>
