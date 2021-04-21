@@ -4,7 +4,7 @@ import { Badge, Chip, ChipGroup, Button } from '@patternfly/react-core';
 import classNames from 'classnames';
 import './filter-chips.scss';
 
-const FilterChips = ({ className, filters, onDelete, deleteTitle, onDeleteGroup }) => {
+const FilterChips = ({ className, filters, onDelete, deleteTitle, showDeleteButton, onDeleteGroup }) => {
     const groups = filters.filter(group => group.category);
     const groupedFilters = groups.map((group, groupKey) =>  (
         <ChipGroup
@@ -50,7 +50,8 @@ const FilterChips = ({ className, filters, onDelete, deleteTitle, onDeleteGroup 
                     </Chip>
                 </ChipGroup>
             )) }
-            { filters.length > 0 && <Button variant="link" onClick={ (event) => onDelete(event, filters, true) }>{deleteTitle}</Button> }
+            { (showDeleteButton === true || (showDeleteButton === undefined && filters.length > 0)) &&
+                <Button variant="link" onClick={ (event) => onDelete(event, filters, true) }>{deleteTitle}</Button> }
         </span>
     );
 };
@@ -78,7 +79,8 @@ FilterChips.propTypes = {
     ),
     onDelete: PropTypes.func,
     onDeleteGroup: PropTypes.func,
-    deleteTitle: PropTypes.node
+    deleteTitle: PropTypes.node,
+    showDeleteButton: PropTypes.bool
 };
 
 FilterChips.defaultProps = {
