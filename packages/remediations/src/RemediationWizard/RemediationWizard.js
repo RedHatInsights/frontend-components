@@ -86,8 +86,7 @@ const RemediationWizard = ({
             issues: data.issues
         },
         'issue-resolution': {
-            component: IssueResolution,
-            systems: data.systems
+            component: IssueResolution
         },
         review: {
             component: Review,
