@@ -19,6 +19,7 @@ import groupBy from 'lodash/groupBy';
 import TitleColumn from '../components/table/TitleColumn';
 import InsightsDisconnected from '../shared/InsightsDisconnected';
 import { wrappable } from '@patternfly/react-table';
+import OperatingSystemFormatter from '../shared/OperatingSystemFormatter';
 
 export const defaultState = {
     loaded: false,
@@ -39,13 +40,10 @@ export const defaultColumns = [
     },
     {
         key: 'system_profile',
-        title: 'OS release',
+        title: 'Operating system',
         // eslint-disable-next-line react/display-name
-        renderFunc: (systemProfile) => (
-            (systemProfile?.operating_system?.major && systemProfile?.operating_system?.minor)
-            && `${systemProfile?.operating_system?.major}.${systemProfile?.operating_system?.minor}`
-        ) || 'Not available',
-        props: { width: 15, isStatic: true },
+        renderFunc: (systemProfile) => <OperatingSystemFormatter systemProfile={systemProfile} />,
+        props: { width: 20, isStatic: true },
         transforms: [ wrappable ]
     },
     {
