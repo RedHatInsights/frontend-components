@@ -130,8 +130,8 @@ describe('actionPropsGenerator', () => {
     });
 
     it('should allow custom component in object', () => {
-        const result = actionPropsGenerator({ ...actions[1], props: { component: 'div' } });
-        expect(result.component).toBe('div');
+        const result = actionPropsGenerator({ ...actions[1], props: { component: 'span' } });
+        expect(result.component).toBe('span');
     });
 });
 

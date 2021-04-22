@@ -19,7 +19,7 @@ export const overflowActionsMapper = (action, key) => (
 export const actionPropsGenerator = (action, key) => ({
     ...action.props,
     component: (action.props && action.props.component) ||
-        React.isValidElement(action.label || action) ? 'div' : 'button',
+        (React.isValidElement(action.label || action) ? 'div' : 'button'),
     onClick: (e) => action.onClick && action.onClick(e, action, key),
     children: action.label || action
 });
