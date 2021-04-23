@@ -43,13 +43,13 @@ const BASE_FILTER_CONFIGURATION = [
 ];
 
 const PASS_FILTER_CONFIG = {
-    type: conditionalFilterType.radio,
+    type: conditionalFilterType.checkbox,
     label: 'Passed',
     items: [
-        { label: 'Show passed rules', value: 'passed' },
-        { label: 'Hide passed rules', value: 'failed' }
+        { label: 'Passed rules', value: 'passed' },
+        { label: 'Failed rules', value: 'failed' }
     ],
-    filter: (rules, value) => rules.filter((rule) => (
+    filter: (rules, values) => anyFilterApply(rules, values, (rule, value) => (
         rule.compliant === (value === 'passed')
     ))
 };

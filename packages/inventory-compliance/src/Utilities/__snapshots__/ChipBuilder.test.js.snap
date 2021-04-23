@@ -6,9 +6,7 @@ Array [
     "category": "Passed",
     "chips": Array [
       Object {
-        "name": Array [
-          "passed",
-        ],
+        "name": "Passed rules",
       },
     ],
   },
