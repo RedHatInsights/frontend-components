@@ -11,10 +11,12 @@
       - [routes](#routes)
       - [routesPath](#routespath)
     - [Custom proxy settings](#custom-proxy-settings)
-    - [Chrome 1 environments](#chrome-1-environments)
+    - [Chrome 1 environments / application entry url](#chrome-1-environments--application-entry-url)
       - [Prod environment example](#prod-environment-example)
       - [Multiple HTML entrypoints](#multiple-html-entrypoints)
       - [Exact URL](#exact-url)
+    - [cookieTransform](#cookietransform)
+      - [custom entitlements](#custom-entitlements)
 
 ## Webpack 5
 
@@ -148,7 +150,7 @@ const { config: webpackConfig, plugins } = config({
 
 This configuration will redirect all API requests to QA environment, so you can check CI UI with QA data.
 
-### Chrome 1 environments
+### Chrome 1 environments / application entry url
 
 To run your application in Chrome 1 environment, just add `appUrl` that contains entry url for your application.
 
@@ -220,3 +222,31 @@ const { config: webpackConfig, plugins } = config({
 `redhat.com/beta/app` won`t be redirect to any of your local files
 
 In both cases queries and hashes are ignored.
+
+### cookieTransform
+
+For running local services you can use `cookieTransform` ([original function](https://github.com/RedHatInsights/insights-standalone/blob/1eef6cfc21f96304275683d090c6b8178a4d386f/index.js#L8), you can also check [insights-proxy implementation](https://github.com/RedHatInsights/insights-proxy/blob/1cdbc597681eac51998d8c2dd2dd6b5a2d4d03d6/spandx.config.js#L101)) in `onProxyReq` function. This function transform `jwt` cookie to `x-hr-identity` header.
+
+```jsx
+const cookieTransform = require('@redhat-cloud-services/frontend-components-config/src/cookieTransform');
+
+onProxyReq: (...args) => {
+    cookieTransform(...args);
+},
+```
+
+Routes passed via `routes` or `routesFile` attributes are using this transform automatically. If you override the `onProxyReq` function, you have to add it back manually.
+
+#### custom entitlements
+
+By default, the same entitlements as in insights-proxy are provided. You can rewrite them via the options object:
+
+```jsx
+cookieTransform(proxyReq, req, res, { entitlements });
+```
+
+You can also modify the whole identity object:
+
+```jsx
+cookieTransform(proxyReq, req, res, { entitlements, identity, user, internal });
+```
