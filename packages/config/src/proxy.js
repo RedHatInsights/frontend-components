@@ -2,6 +2,7 @@
 const { readFileSync } = require('fs');
 const { sync } = require('glob');
 const ESI = require('nodesi');
+const cookieTransform = require('./cookieTransform');
 
 function createInsightsProxy({
     betaEnv,
@@ -165,6 +166,9 @@ function createInsightsProxy({
                     changeOrigin: true,
                     autoRewrite: true,
                     ws: true,
+                    onProxyReq: (...args) => {
+                        cookieTransform(...args);
+                    },
                     ...typeof redirect === 'object' ? redirect : {}
                 };
             }) : [],
