@@ -244,3 +244,9 @@ By default, the same entitlements as in insights-proxy are provided. You can rew
 ```jsx
 cookieTransform(proxyReq, req, res, { entitlements });
 ```
+
+You can also modify the whole identity object:
+
+```jsx
+cookieTransform(proxyReq, req, res, { entitlements, identity, user, internal });
+```

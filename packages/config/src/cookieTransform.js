@@ -11,7 +11,7 @@ const defaultEntitlements = {
     ansible: { is_entitled: true }
 };
 
-function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlements }) {
+function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlements, user, internal, identity: customIdentity }) {
     const cookie = req.headers.cookie;
     const match = cookie && cookie.match(/cs_jwt=([^;]+);/);
     if (match) {
@@ -24,6 +24,7 @@ function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlemen
                 type: 'User',
                 auth_type: 'basic-auth',
                 account_number: payload.account_number + '',
+                ...customIdentity,
                 user: {
                     username: payload.username,
                     email: payload.email,
@@ -33,11 +34,13 @@ function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlemen
                     is_org_admin: payload.is_org_admin,
                     is_internal: payload.is_internal,
                     locale: 'en-US',
-                    user_id: payload.account_id
+                    user_id: payload.account_id,
+                    ...user
                 },
                 internal: {
                     org_id: payload.org_id,
-                    auth_time: payload.auth_time
+                    auth_time: payload.auth_time,
+                    ...internal
                 }
             }
         };
