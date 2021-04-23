@@ -41,7 +41,7 @@ export const dedupeArray = (array) => [ ...new Set(array) ];
 
 export const pluralize = (count, str, fallback) => count !== 1 ? (fallback || str + 's') : str;
 
-const sortRecords = (records, sortByState) => records.sort(
+const sortRecords = (records, sortByState) => [ ...records ].sort(
     (a, b) => {
         const key = Object.keys(a)[sortByState.index];
         return (
