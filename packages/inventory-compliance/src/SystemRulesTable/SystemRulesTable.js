@@ -43,7 +43,7 @@ class SystemRulesTable extends React.Component {
         page: 1,
         itemsPerPage: 10,
         rows: [],
-        sortBy: {},
+        sortBy: this.props.sortBy || {},
         ruleCount: 0,
         selectedToRemediate: [],
         openIds: [],
@@ -435,7 +435,12 @@ SystemRulesTable.propTypes = {
                 original: propTypes.string
             }
         )
-    )
+    ),
+    sortBy: propTypes.shape({
+        direction: propTypes.string,
+        index: propTypes.number,
+        property: propTypes.string
+    })
 };
 
 SystemRulesTable.defaultProps = {
