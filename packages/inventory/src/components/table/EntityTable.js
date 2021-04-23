@@ -11,6 +11,7 @@ import {
     TableVariant
 } from '@patternfly/react-table';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
+import NoSystemsTable from './NoSystemsTable';
 import { createRows, createColumns } from './helpers';
 
 /**
@@ -32,7 +33,8 @@ const EntityTable = ({
     onSort,
     expandable: isExpandable,
     onRowClick,
-    noDetail
+    noDetail,
+    noSystemsTable = <NoSystemsTable />
 }) => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -85,7 +87,8 @@ const EntityTable = ({
                             loaded,
                             onRowClick: onRowClick || defaultRowClick,
                             noDetail,
-                            sortBy
+                            sortBy,
+                            noSystemsTable
                         })
                     }
                     gridBreakPoint={
@@ -139,7 +142,8 @@ EntityTable.propTypes = {
         [PropTypes.string]: PropTypes.any
     }),
     onRowClick: PropTypes.func,
-    showTags: PropTypes.bool
+    showTags: PropTypes.bool,
+    noSystemsTable: PropTypes.node
 };
 
 EntityTable.defaultProps = {
