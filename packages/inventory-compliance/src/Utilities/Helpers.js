@@ -12,7 +12,7 @@ export const getSortable = (property, rule) => {
             return rule.severity;
         case 'passed':
             return rule.compliant;
-        case 'column-6':
+        case 'ansible':
             return rule.remediationAvailable;
         default:
             return rule.title;

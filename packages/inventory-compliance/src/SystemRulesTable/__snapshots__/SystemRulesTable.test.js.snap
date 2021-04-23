@@ -242,6 +242,7 @@ exports[`SystemRulesTable component should render 1`] = `
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -1144,6 +1145,7 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
       Object {
         "original": "Ansible",
         "props": Object {
+          "property": "ansible",
           "tooltip": "Ansible",
         },
         "title": <React.Fragment>
@@ -1409,6 +1411,7 @@ exports[`SystemRulesTable component should render additional toolbar items 1`] =
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -2559,6 +2562,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -2947,6 +2951,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -3389,6 +3394,7 @@ exports[`SystemRulesTable component should render search results on any page, re
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -3822,6 +3828,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -4933,6 +4940,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -5974,6 +5982,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
