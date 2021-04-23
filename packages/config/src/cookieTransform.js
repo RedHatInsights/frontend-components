@@ -2,21 +2,24 @@
 /* eslint-disable no-console */
 const jws = require('jws');
 
-function cookieTransform(proxyReq, req) {
+const defaultEntitlements = {
+    insights: { is_entitled: true },
+    smart_management: { is_entitled: true },
+    openshift: { is_entitled: true },
+    hybrid: { is_entitled: true },
+    migrations: { is_entitled: true },
+    ansible: { is_entitled: true }
+};
+
+function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlements }) {
     const cookie = req.headers.cookie;
     const match = cookie && cookie.match(/cs_jwt=([^;]+);/);
     if (match) {
         const cs_jwt = match[1];
         const { payload } = jws.decode(cs_jwt);
+
         const identity = {
-            entitlements: {
-                insights: { is_entitled: true },
-                smart_management: { is_entitled: true },
-                openshift: { is_entitled: true },
-                hybrid: { is_entitled: true },
-                migrations: { is_entitled: true },
-                ansible: { is_entitled: true }
-            },
+            entitlements,
             identity: {
                 type: 'User',
                 auth_type: 'basic-auth',

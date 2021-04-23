@@ -16,6 +16,7 @@
       - [Multiple HTML entrypoints](#multiple-html-entrypoints)
       - [Exact URL](#exact-url)
     - [cookieTransform](#cookietransform)
+      - [custom entitlements](#custom-entitlements)
 
 ## Webpack 5
 
@@ -234,4 +235,12 @@ onProxyReq: (...args) => {
 },
 ```
 
-Routes passed via `routes` or `routesFile` attribute are using this transform automatically.
+Routes passed via `routes` or `routesFile` attributes are using this transform automatically. If you override the `onProxyReq` function, you have to add it back manually.
+
+#### custom entitlements
+
+By default, the same entitlements as in insights-proxy are provided. You can rewrite them via the options object:
+
+```jsx
+cookieTransform(proxyReq, req, res, { entitlements });
+```
