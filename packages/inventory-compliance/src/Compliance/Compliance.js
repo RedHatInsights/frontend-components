@@ -54,7 +54,13 @@ const SystemQuery = ({ data: { system }, loading, hidePassed }) => (
     <React.Fragment>
         <SystemPolicyCards policies={ system?.testResultProfiles } loading={ loading } />
         <br/>
-        <SystemRulesTable hidePassed={ hidePassed }
+        <SystemRulesTable
+            hidePassed={ hidePassed }
+            sortBy={{
+                index: 4,
+                direction: 'asc',
+                property: 'severity'
+            }}
             system={ {
                 ...system,
                 supported: ((system?.testResultProfiles || []).filter((profile) => (profile.supported)).length > 0)

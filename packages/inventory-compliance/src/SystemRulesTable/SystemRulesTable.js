@@ -43,13 +43,13 @@ class SystemRulesTable extends React.Component {
         page: 1,
         itemsPerPage: 10,
         rows: [],
-        sortBy: {},
+        sortBy: this.props.sortBy || {},
         ruleCount: 0,
         selectedToRemediate: [],
         openIds: [],
         selectedOnly: this.props.selectedFilter,
         activeFilters: this.filterConfigBuilder.initialDefaultState({
-            passed: this.props.hidePassed ? 'failed' : undefined,
+            passed: this.props.hidePassed ? [ 'failed' ] : undefined,
             remediationAvailable: this.remediationAvailableFilter ? 'true' : undefined
         })
     };
@@ -435,7 +435,12 @@ SystemRulesTable.propTypes = {
                 original: propTypes.string
             }
         )
-    )
+    ),
+    sortBy: propTypes.shape({
+        direction: propTypes.string,
+        index: propTypes.number,
+        property: propTypes.string
+    })
 };
 
 SystemRulesTable.defaultProps = {
