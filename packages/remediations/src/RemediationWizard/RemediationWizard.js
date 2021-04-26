@@ -110,7 +110,7 @@ const RemediationWizard = ({
                 FormTemplate={(props) => <Pf4FormTemplate {...props} showFormControls={false} />}
                 initialValues={{
                     [RESOLUTIONS]: [],
-                    [ISSUES_MULTIPLE]: data.issues,
+                    [ISSUES_MULTIPLE]: [],
                     [SYSTEMS]: undefined,
                     [MANUAL_RESOLUTION]: true,
                     [SELECTED_RESOLUTIONS]: {},
