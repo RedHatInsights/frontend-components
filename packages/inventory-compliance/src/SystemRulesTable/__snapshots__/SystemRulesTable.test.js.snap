@@ -99,21 +99,21 @@ exports[`SystemRulesTable component should render 1`] = `
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -1263,21 +1263,21 @@ exports[`SystemRulesTable component should render additional toolbar items 1`] =
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -2416,21 +2416,21 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -2804,21 +2804,21 @@ exports[`SystemRulesTable component should render search results by rule name 1`
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -3246,21 +3246,21 @@ exports[`SystemRulesTable component should render search results on any page, re
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -3679,21 +3679,21 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -4790,21 +4790,21 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -5903,21 +5903,21 @@ exports[`SystemRulesTable component should render without remediations if prop p
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
         ],
       }
