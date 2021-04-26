@@ -49,7 +49,7 @@ class SystemRulesTable extends React.Component {
         openIds: [],
         selectedOnly: this.props.selectedFilter,
         activeFilters: this.filterConfigBuilder.initialDefaultState({
-            passed: this.props.hidePassed ? 'failed' : undefined,
+            passed: this.props.hidePassed ? [ 'failed' ] : undefined,
             remediationAvailable: this.remediationAvailableFilter ? 'true' : undefined
         })
     };
