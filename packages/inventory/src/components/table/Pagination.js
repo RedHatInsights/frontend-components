@@ -24,7 +24,8 @@ const FooterPagination = ({
     customFilters,
     hideFilters,
     showTags,
-    getEntities
+    getEntities,
+    paginationProps
 }) => {
     const dispatch = useDispatch();
     const loaded = useSelector(store => store?.entities?.loaded);
@@ -97,6 +98,7 @@ const FooterPagination = ({
             dropDirection={ direction }
             onSetPage={ onSetPage }
             onPerPageSelect={ onPerPageSelect }
+            {...paginationProps}
         />
     ) : null;
 };
@@ -121,7 +123,8 @@ FooterPagination.propTypes = {
         name: PropTypes.bool,
         registeredWith: PropTypes.bool,
         stale: PropTypes.bool
-    })
+    }),
+    paginationProps: PropTypes.object
 };
 
 FooterPagination.defaultProps = {

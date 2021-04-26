@@ -29,6 +29,7 @@ const InventoryTable = forwardRef(({
     isFullView = false,
     getEntities,
     hideFilters,
+    paginationProps,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
@@ -80,6 +81,7 @@ const InventoryTable = forwardRef(({
                     getEntities={ getEntities }
                     sortBy={ sortBy }
                     hideFilters={hideFilters}
+                    paginationProps={paginationProps}
                 >
                     { children }
                 </EntityTableToolbar>
@@ -113,6 +115,7 @@ const InventoryTable = forwardRef(({
                         getEntities={ getEntities }
                         sortBy={ sortBy }
                         hideFilters={ hideFilters }
+                        paginationProps={paginationProps}
                     />
                 </TableToolbar>
             </Fragment>
