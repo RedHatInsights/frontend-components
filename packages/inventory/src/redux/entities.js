@@ -43,13 +43,13 @@ export const defaultColumns = [
         title: 'Operating system',
         // eslint-disable-next-line react/display-name
         renderFunc: (systemProfile) => <OperatingSystemFormatter systemProfile={systemProfile} />,
-        props: { width: 20, isStatic: true },
+        props: { width: 10, isStatic: true },
         transforms: [ wrappable ]
     },
     {
         key: 'tags',
         title: 'Tags',
-        props: { width: 25, isStatic: true },
+        props: { width: 10, isStatic: true },
         // eslint-disable-next-line react/display-name
         renderFunc: (value, systemId) => <TagWithDialog count={value.length} systemId={systemId} />
     },
@@ -79,7 +79,7 @@ export const defaultColumns = [
                 }
             > <DateFormat date={ value } /> </CullingInformation> : new Date(value).toLocaleString();
         },
-        props: { width: 25 }
+        props: { width: 10 }
     }
 ];
 
