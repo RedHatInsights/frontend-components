@@ -60,6 +60,7 @@ const EntityTableToolbar = ({
     bulkSelect,
     getEntities,
     hideFilters,
+    paginationProps,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -337,7 +338,8 @@ const EntityTableToolbar = ({
                 isDisabled: !hasAccess,
                 perPage,
                 onSetPage: (_e, newPage) => updateData({ page: newPage, per_page: perPage, filters }),
-                onPerPageSelect: (_e, newPerPage) => updateData({ page: 1, per_page: newPerPage, filters })
+                onPerPageSelect: (_e, newPerPage) => updateData({ page: 1, per_page: newPerPage, filters }),
+                ...paginationProps
             } : <Skeleton size={SkeletonSize.lg} />}
         >
             { children }
@@ -382,7 +384,8 @@ EntityTableToolbar.propTypes = {
         name: PropTypes.bool,
         registeredWith: PropTypes.bool,
         stale: PropTypes.bool
-    })
+    }),
+    paginationProps: PropTypes.object
 };
 
 EntityTableToolbar.defaultProps = {
