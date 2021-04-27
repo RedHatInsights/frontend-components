@@ -17,6 +17,8 @@
       - [Exact URL](#exact-url)
     - [cookieTransform](#cookietransform)
       - [custom entitlements](#custom-entitlements)
+    - [Serving local files](#serving-local-files)
+      - [Example](#example)
 
 ## Webpack 5
 
@@ -249,4 +251,44 @@ You can also modify the whole identity object:
 
 ```jsx
 cookieTransform(proxyReq, req, res, { entitlements, identity, user, internal });
+```
+
+
+### Serving local files
+
+To serve a local file (such as `cloud-services-config`) you can use `serveLocalFile` function.
+
+*(url, filePath, target = 'https://ci.cloud.redhat.com') => proxyConfig*
+
+**url**
+
+Url of proxied file, it matches using `path.includes(url)`.
+
+**filePath**
+
+A path to your local file.
+
+**target**
+
+A current target. By default `https://ci.cloud.redhat.com`.
+
+#### Example
+
+```jsx
+const serverLocalFile = require('@redhat-cloud-services/frontend-components-config/src/serveLocalFile');
+
+const { config: webpackConfig, plugins } = config({
+  rootFolder: resolve(__dirname, '../'),
+  debug: true,
+  useFileHash: false,
+  deployment: process.env.BETA ? 'beta/apps' : 'apps',
+  useProxy: true,
+  appUrl: `/beta/settings/applications`,
+  customProxy: [
+    serveLocalFile(
+      '/beta/config/main.yml', // url
+      '/Users/rvsiansk/insights-project/cloud-services-config/main.yml' // localFile path
+    ),
+  ],
+});
 ```
