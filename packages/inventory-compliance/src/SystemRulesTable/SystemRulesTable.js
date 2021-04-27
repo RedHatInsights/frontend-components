@@ -20,8 +20,12 @@ export const columns = [
     { title: 'Policy', transforms: [ sortable ] },
     { title: 'Severity', transforms: [ sortable, fitContent ] },
     { title: 'Passed', transforms: [ sortable, fitContent ] },
-    { title: <React.Fragment><AnsibeTowerIcon /> Ansible</React.Fragment>,
-        original: 'Ansible', props: { tooltip: 'Ansible' }, transforms: [ sortable, fitContent ] }
+    {
+        title: <React.Fragment><AnsibeTowerIcon /> Ansible</React.Fragment>,
+        original: 'Ansible',
+        props: { tooltip: 'Ansible', property: 'ansible' },
+        transforms: [ sortable, fitContent ]
+    }
 ];
 
 export const selectColumns = (columnTitles) => (
@@ -134,7 +138,7 @@ class SystemRulesTable extends React.Component {
             sortBy: {
                 index,
                 direction,
-                property: extraData.property
+                property: extraData?.column?.props?.property || extraData?.property
             }
         })
     )
