@@ -20,7 +20,7 @@ exports[`NoSystemsTable should render correctly - no data 1`] = `
   >
     <ContextInventoryList
       hasItems={false}
-      loadEntities={[Function]}
+      onRefreshData={[Function]}
       page={1}
       perPage={50}
     />
@@ -148,7 +148,7 @@ exports[`NoSystemsTable should render correctly 1`] = `
         ]
       }
       hasItems={false}
-      loadEntities={[Function]}
+      onRefreshData={[Function]}
       page={1}
       perPage={50}
       sortBy={
@@ -250,7 +250,7 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
           },
         ]
       }
-      loadEntities={[Function]}
+      onRefreshData={[Function]}
       page={5}
       perPage={20}
       sortBy={
@@ -351,7 +351,7 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
           },
         ]
       }
-      loadEntities={[Function]}
+      onRefreshData={[Function]}
       page={5}
       perPage={20}
       sortBy={
