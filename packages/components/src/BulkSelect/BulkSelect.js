@@ -72,6 +72,7 @@ visible unless you update it.');
                             component="button"
                             key={ oneItem.key || key }
                             onClick={ (event) => oneItem.onClick && oneItem.onClick(event, oneItem, key) }
+                            { ...oneItem?.props }
                         >
                             { oneItem.title }
                         </DropdownItem>)
