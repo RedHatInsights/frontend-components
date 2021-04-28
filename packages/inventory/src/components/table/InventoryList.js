@@ -53,24 +53,29 @@ const InventoryList = React.forwardRef(({ hasAccess, getEntities, hideFilters, .
     const dispatch = useDispatch();
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
 
-    const loadEntities = (config, showTags) => dispatch(loadSystems({ ...config, hideFilters }, showTags, getEntities));
-
     /**
      * If conumer wants to change data they can call this function via component ref.
      * @param {*} options new options to be applied, like pagination, filters, etc.
      */
     const onRefreshData = (options = {}) => {
         const { page, perPage, items, hasItems, sortBy, activeFilters, showTags, customFilters } = props;
-        loadEntities({
-            page,
-            perPage,
-            items,
-            hasItems,
-            sortBy,
-            activeFilters,
-            ...customFilters,
-            ...options
-        }, showTags);
+        dispatch(
+            loadSystems(
+                {
+                    page,
+                    perPage,
+                    items,
+                    hasItems,
+                    sortBy,
+                    activeFilters,
+                    hideFilters,
+                    ...customFilters,
+                    ...options
+                },
+                showTags,
+                getEntities
+            )
+        );
     };
 
     if (ref) { ref.current = { onRefreshData }; }
