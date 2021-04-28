@@ -11,27 +11,9 @@ import AccessDenied from '../../shared/AccessDenied';
 /**
  * Component that works as a side channel for consumers to notify inventory of new data changes.
  */
-const ContextInventoryList = ({ showHealth, ...props }) => {
+const ContextInventoryList = ({ showHealth, onRefreshData, ...props }) => {
     const prevItems = useRef(props.items);
     const prevSortBy = useRef(props.sortBy);
-
-    /**
-     * If conumer wants to change data they can call this function via component ref.
-     * @param {*} options new options to be applied, like pagination, filters, etc.
-     */
-    const onRefreshData = (options = {}) => {
-        const { page, perPage, items, hasItems, sortBy, activeFilters, showTags, customFilters } = props;
-        props.loadEntities && props.loadEntities({
-            page,
-            perPage,
-            items,
-            hasItems,
-            sortBy,
-            activeFilters,
-            ...customFilters,
-            ...options
-        }, showTags);
-    };
 
     useEffect(() => {
         if (props.hasItems) {
@@ -70,6 +52,29 @@ const ContextInventoryList = ({ showHealth, ...props }) => {
 const InventoryList = React.forwardRef(({ hasAccess, getEntities, hideFilters, ...props }, ref) => {
     const dispatch = useDispatch();
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
+
+    const loadEntities = (config, showTags) => dispatch(loadSystems({ ...config, hideFilters }, showTags, getEntities));
+
+    /**
+     * If conumer wants to change data they can call this function via component ref.
+     * @param {*} options new options to be applied, like pagination, filters, etc.
+     */
+    const onRefreshData = (options = {}) => {
+        const { page, perPage, items, hasItems, sortBy, activeFilters, showTags, customFilters } = props;
+        loadEntities({
+            page,
+            perPage,
+            items,
+            hasItems,
+            sortBy,
+            activeFilters,
+            ...customFilters,
+            ...options
+        }, showTags);
+    };
+
+    if (ref) { ref.current = { onRefreshData }; }
+
     return !hasAccess ?
         <div className="ins-c-inventory__no-access">
             <AccessDenied showReturnButton={false} />
@@ -77,16 +82,16 @@ const InventoryList = React.forwardRef(({ hasAccess, getEntities, hideFilters, .
         : (
             <ContextInventoryList
                 { ...props }
-                ref={ref}
                 activeFilters={ activeFilters }
-                loadEntities={ (config, showTags) => dispatch(loadSystems({ ...config, hideFilters }, showTags, getEntities)) }
+                onRefreshData={ onRefreshData }
             />
         );
 });
 
 ContextInventoryList.propTypes = {
     ...InventoryList.propTypes,
-    setRefresh: PropTypes.func
+    setRefresh: PropTypes.func,
+    onRefreshData: PropTypes.func
 };
 ContextInventoryList.defaultProps = {
     perPage: 50,

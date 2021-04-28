@@ -8,12 +8,15 @@ import promiseMiddleware from 'redux-promise-middleware';
 import { MemoryRouter } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
 import { mock } from '../../__mock__/hostApi';
+import * as api from '../../api/api';
 
 describe('InventoryList', () => {
     let initialState;
     let mockStore;
+    let ref;
 
     beforeEach(() => {
+        ref = { current: undefined };
         mockStore = configureStore([ promiseMiddleware() ]);
         initialState = {
             entities: {
@@ -26,13 +29,15 @@ describe('InventoryList', () => {
                 total: 500
             }
         };
+        // eslint-disable-next-line no-import-assign
+        api.getEntities = jest.fn().mockImplementation(() => Promise.resolve({ results: [], total: 0 }));
     });
 
     it('should render correctly', () => {
         const store = mockStore(initialState);
         const wrapper = render(<MemoryRouter>
             <Provider store={ store }>
-                <InventoryList/>
+                <InventoryList ref={ref}/>
             </Provider>
         </MemoryRouter>);
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -42,7 +47,7 @@ describe('InventoryList', () => {
         const store = mockStore(initialState);
         const wrapper = render(<MemoryRouter>
             <Provider store={ store }>
-                <InventoryList hasAccess={false}/>
+                <InventoryList hasAccess={false} ref={ref}/>
             </Provider>
         </MemoryRouter>);
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -59,7 +64,7 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} />
+                    <InventoryList {...props} ref={ref} />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp sortBy={sortBy} />);
@@ -83,7 +88,7 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} />
+                    <InventoryList {...props} ref={ref} />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp sortBy={sortBy} />);
@@ -101,16 +106,43 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} />
+                    <InventoryList {...props} ref={ref} />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp items={[{ children: () => <div>test</div>, isOpen: false, id: 'fff' }]} hasItems />);
+            const initialActions = store.getActions();
+            expect(initialActions.map(({ type }) => type)).toEqual(
+                [ 'LOAD_ENTITIES_PENDING' ]
+            );
             wrapper.setProps({
                 items: [{ children: () => <div>test</div>, isOpen: false, id: 'something' }]
             });
             wrapper.update();
             const actions = store.getActions();
-            expect(actions[0].type).toBe('LOAD_ENTITIES_PENDING');
+            expect(actions.map(({ type }) => type)).toEqual(
+                [ 'LOAD_ENTITIES_PENDING', 'LOAD_ENTITIES_PENDING' ]
+            );
+        });
+
+        it('should fire refresh calling it from ref', () => {
+            mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
+            const store = mockStore(initialState);
+            const Cmp = (props) => <MemoryRouter>
+                <Provider store={ store }>
+                    <InventoryList {...props} ref={ref} />
+                </Provider>
+            </MemoryRouter>;
+            const wrapper = mount(<Cmp items={[{ children: () => <div>test</div>, isOpen: false, id: 'fff' }]} hasItems />);
+            const initialActions = store.getActions();
+            expect(initialActions.map(({ type }) => type)).toEqual(
+                [ 'LOAD_ENTITIES_PENDING' ]
+            );
+            ref.current.onRefreshData();
+            wrapper.update();
+            const actions = store.getActions();
+            expect(actions.map(({ type }) => type)).toEqual(
+                [ 'LOAD_ENTITIES_PENDING', 'LOAD_ENTITIES_PENDING' ]
+            );
         });
     });
 });
