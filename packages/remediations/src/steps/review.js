@@ -110,7 +110,7 @@ const Review = (props) => {
                 onSort={ (event, index, direction) => setSortByState({ index, direction }) }
                 sortBy={ sortByState }
             >
-                <TableHeader />
+                <TableHeader noWrap />
                 <TableBody />
             </Table>
         </Stack >

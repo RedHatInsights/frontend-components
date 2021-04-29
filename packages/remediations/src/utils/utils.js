@@ -65,7 +65,7 @@ export const buildRows = (records, sortByState, showAlternate) => sortRecords(re
                 )}
         </Fragment>,
         {
-            title: record.needsReboot ? <Fragment><RedoIcon/>{' Yes'}</Fragment> : <Fragment><CloseIcon/>{' No'}</Fragment>,
+            title: record.needsReboot ? <div><RedoIcon className="pf-u-mr-sm"/>Yes</div> : <div><CloseIcon className="pf-u-mr-sm"/>No</div>,
             value: record.needsReboot
         },
         record.systemsCount
