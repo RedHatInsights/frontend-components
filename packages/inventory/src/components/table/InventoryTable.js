@@ -2,6 +2,7 @@ import React, { Fragment, forwardRef } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
+import { ErrorState } from '@redhat-cloud-services/frontend-components/ErrorState';
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 import AccessDenied from '../../shared/AccessDenied';
@@ -30,9 +31,13 @@ const InventoryTable = forwardRef(({
     getEntities,
     hideFilters,
     paginationProps,
+    errorState = <ErrorState />,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
+    const error = useSelector(({ entities }) => (
+        entities?.error
+    ));
     const page = useSelector(({ entities: { page: invPage } }) => (
         hasItems ? propsPage : (invPage || 1)
     )
@@ -65,7 +70,7 @@ const InventoryTable = forwardRef(({
                     To view the content of this page, you must be granted a minimum of inventory permissions from your Organization Administrator.
                 </div>}
             /> :
-            <Fragment>
+            !error ? <Fragment>
                 <EntityTableToolbar
                     { ...props }
                     customFilters={customFilters}
@@ -118,7 +123,7 @@ const InventoryTable = forwardRef(({
                         paginationProps={paginationProps}
                     />
                 </TableToolbar>
-            </Fragment>
+            </Fragment> : errorState
     );
 });
 
