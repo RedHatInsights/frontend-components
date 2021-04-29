@@ -1,12 +1,11 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-unused-vars */
 import React, { Fragment, useEffect, useCallback, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 import { tagsFilterState, tagsFilterReducer, mapGroups } from '@redhat-cloud-services/frontend-components/FilterHooks';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
-import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from '../../redux/actions';
+import { fetchAllTags, clearFilters, toggleTagModal } from '../../redux/actions';
 import debounce from 'lodash/debounce';
 import flatMap from 'lodash/flatMap';
 import {
@@ -17,8 +16,7 @@ import {
     STALE_CHIP,
     REGISTERED_CHIP,
     TAG_CHIP,
-    arrayToSelection,
-    loadSystems
+    arrayToSelection
 } from '../../shared';
 import { onDeleteFilter, onDeleteTag } from './helpers';
 import {
@@ -58,9 +56,9 @@ const EntityTableToolbar = ({
     customFilters,
     hasAccess,
     bulkSelect,
-    getEntities,
     hideFilters,
     paginationProps,
+    onRefreshData,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -109,11 +107,11 @@ const EntityTableToolbar = ({
     /**
      * Function to dispatch load systems and fetch all tags.
      */
-    const onRefreshData = useCallback((options) => {
+    const onRefreshDataInner = useCallback((options) => {
         if (hasAccess) {
-            dispatch(loadSystems({ ...options, hideFilters }, showTags, getEntities));
+            onRefreshData(options);
             if (showTags && !hasItems) {
-                dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options.filters }));
+                dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options?.filters || filters }));
             }
         }
     }, [ customFilters?.tags ]);
@@ -134,24 +132,7 @@ const EntityTableToolbar = ({
      */
     const updateData = (config) => {
         if (hasAccess) {
-            const params = {
-                items,
-                page,
-                per_page: perPage,
-                filters,
-                hasItems,
-                ...config,
-                orderDirection: sortBy?.direction,
-                orderBy: sortBy?.key,
-                hideFilters
-            };
-            onRefresh ? onRefresh(params, (options) => {
-                dispatch(entitiesLoading());
-                onRefreshData({ ...params, ...customFilters, ...options });
-            }) : onRefreshData({
-                ...customFilters,
-                ...params
-            });
+            onRefreshDataInner(config);
         }
     };
 
@@ -269,7 +250,7 @@ const EntityTableToolbar = ({
             ],
             onDelete: (e, [ deleted, ...restDeleted ], isAll) => {
                 if (isAll) {
-                    updateData({ page: 1, perPage, filters: [] });
+                    updateData({ page: 1, filters: [] });
                     dispatch(clearFilters());
                     enabledFilters.name && setTextFilter('');
                     enabledFilters.stale && setStaleFilter([]);
@@ -337,8 +318,8 @@ const EntityTableToolbar = ({
                 itemCount: !hasAccess ? 0 : total,
                 isDisabled: !hasAccess,
                 perPage,
-                onSetPage: (_e, newPage) => updateData({ page: newPage, per_page: perPage, filters }),
-                onPerPageSelect: (_e, newPerPage) => updateData({ page: 1, per_page: newPerPage, filters }),
+                onSetPage: (_e, newPage) => updateData({ page: newPage }),
+                onPerPageSelect: (_e, newPerPage) => updateData({ page: 1, per_page: newPerPage }),
                 ...paginationProps
             } : <Skeleton size={SkeletonSize.lg} />}
         >
@@ -378,7 +359,6 @@ EntityTableToolbar.propTypes = {
             PropTypes.arrayOf(PropTypes.string)
         ])
     }),
-    getEntities: PropTypes.func,
     hideFilters: PropTypes.shape({
         tags: PropTypes.bool,
         name: PropTypes.bool,
