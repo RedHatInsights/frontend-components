@@ -62,15 +62,29 @@ const chartMapper = {
     }
 };
 
+const calcRoundPerc = (data) => {
+    const sum = data.reduce((sum, val) => val.y + sum, 0);
+    const percData = data.map(x => ({ ...x, y: x.y / sum * 100 }));
+    // round down percentage, calculate error margin, sort by error
+    const roundedPerc = percData.map(({ y, ...rest }) => (
+        { y: Math.floor(y), err: Math.sqrt(y) * Math.abs(y - Math.floor(y)), ...rest })
+    ).sort((a, b) => a.err < b.err ? 1 : -1);
+    const percSum = roundedPerc.reduce((sum, a) => a.y + sum, 0);
+    // distribute reminder % points to make 100%
+    const hundredPerc = roundedPerc.map((val, i) => i < 100 - percSum ? { ...val, y: val.y + 1 } : val);
+    return hundredPerc;
+};
+
 class Chart extends React.Component {
     getChartData = (currChart) => {
         const { data, chartType, colorSchema, ...props } = this.props;
+        const newData = calcRoundPerc(data);
         const Chart = currChart.component;
         const el = document.createElement('div');
         document.body.appendChild(el);
         el.style.display = 'none';
         ReactDOM.render(
-            <Chart data={ data } {...currChart.chartProps} { ...props } />,
+            <Chart data={newData.sort((a, b) => a.y < b.y ? 1 : -1) } {...currChart.chartProps} { ...props } />,
             el
         );
 
