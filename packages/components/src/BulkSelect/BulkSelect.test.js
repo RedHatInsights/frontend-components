@@ -40,6 +40,23 @@ describe('BulkSelect', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
+    it('should render custom props', () => {
+        const wrapper = shallow(<BulkSelect items={ [
+            {
+                title: 'Select none',
+                onClick: jest.fn(),
+                props: {
+                    isDisabled: true
+                }
+            },
+            {
+                title: 'Select all',
+                onClick: jest.fn()
+            }
+        ] } />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     describe('API', () => {
         it('should call on select with no items', () => {
             const onSelect = jest.fn();
