@@ -2,6 +2,7 @@
 /*
 
 # white list allowed files
+!doc
 !src
 !src/
 !src/*
