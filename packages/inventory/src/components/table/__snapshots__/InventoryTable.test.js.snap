@@ -8,6 +8,7 @@ exports[`NoSystemsTable should render correctly - no data 1`] = `
     hasAccess={true}
     hasItems={false}
     hideFilters={Object {}}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     showTags={false}
@@ -15,6 +16,7 @@ exports[`NoSystemsTable should render correctly - no data 1`] = `
   <ForwardRef
     hasAccess={true}
     hasItems={false}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
   >
@@ -42,6 +44,7 @@ exports[`NoSystemsTable should render correctly - with no access 1`] = `
     hasAccess={false}
     hasItems={false}
     hideFilters={Object {}}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     showTags={false}
@@ -57,6 +60,7 @@ exports[`NoSystemsTable should render correctly - with no access 1`] = `
   <ForwardRef
     hasAccess={false}
     hasItems={false}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     sortBy={
@@ -112,6 +116,7 @@ exports[`NoSystemsTable should render correctly 1`] = `
     hasAccess={true}
     hasItems={false}
     hideFilters={Object {}}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     showTags={false}
@@ -127,6 +132,7 @@ exports[`NoSystemsTable should render correctly 1`] = `
   <ForwardRef
     hasAccess={true}
     hasItems={false}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     sortBy={
@@ -200,6 +206,7 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
         },
       ]
     }
+    onRefreshData={[Function]}
     page={5}
     perPage={20}
     showTags={false}
@@ -222,6 +229,7 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
         },
       ]
     }
+    onRefreshData={[Function]}
     page={5}
     perPage={20}
     sortBy={
@@ -301,6 +309,7 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
         },
       ]
     }
+    onRefreshData={[Function]}
     page={5}
     perPage={20}
     showTags={false}
@@ -323,6 +332,7 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
         },
       ]
     }
+    onRefreshData={[Function]}
     page={5}
     perPage={20}
     sortBy={

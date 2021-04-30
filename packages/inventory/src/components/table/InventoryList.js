@@ -1,10 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import InventoryEntityTable from './EntityTable';
 import { Grid, GridItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import './InventoryList.scss';
-import { loadSystems } from '../../shared';
 import isEqual from 'lodash/isEqual';
 import AccessDenied from '../../shared/AccessDenied';
 
@@ -41,7 +40,7 @@ const ContextInventoryList = ({ showHealth, onRefreshData, ...props }) => {
 
     return (<Grid gutter="sm" className="ins-inventory-list">
         <GridItem span={ 12 }>
-            <InventoryEntityTable { ...props } />
+            <InventoryEntityTable { ...props } onRefreshData={onRefreshData} />
         </GridItem>
     </Grid>);
 };
@@ -49,36 +48,14 @@ const ContextInventoryList = ({ showHealth, onRefreshData, ...props }) => {
 /**
  * Component that consumes active filters and passes them down to component.
  */
-const InventoryList = React.forwardRef(({ hasAccess, getEntities, hideFilters, ...props }, ref) => {
-    const dispatch = useDispatch();
+const InventoryList = React.forwardRef(({ hasAccess, onRefreshData, ...props }, ref) => {
     const activeFilters = useSelector(({ entities: { activeFilters } }) => activeFilters);
 
-    /**
-     * If conumer wants to change data they can call this function via component ref.
-     * @param {*} options new options to be applied, like pagination, filters, etc.
-     */
-    const onRefreshData = (options = {}) => {
-        const { page, perPage, items, hasItems, sortBy, activeFilters, showTags, customFilters } = props;
-        dispatch(
-            loadSystems(
-                {
-                    page,
-                    perPage,
-                    items,
-                    hasItems,
-                    sortBy,
-                    activeFilters,
-                    hideFilters,
-                    ...customFilters,
-                    ...options
-                },
-                showTags,
-                getEntities
-            )
-        );
-    };
-
-    if (ref) { ref.current = { onRefreshData }; }
+    if (ref) {
+        ref.current = {
+            onRefreshData: (params, disableRefresh = true) => onRefreshData(params, disableRefresh)
+        };
+    }
 
     return !hasAccess ?
         <div className="ins-c-inventory__no-access">
@@ -137,7 +114,8 @@ InventoryList.propTypes = {
         name: PropTypes.bool,
         registeredWith: PropTypes.bool,
         stale: PropTypes.bool
-    })
+    }),
+    onRefreshData: PropTypes.func
 };
 
 InventoryList.defaultProps = {
