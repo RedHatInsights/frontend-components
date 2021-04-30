@@ -243,7 +243,7 @@ export default {
     [ACTION_TYPES.LOAD_ENTITIES_REJECTED]: loadingRejected,
     [ACTION_TYPES.LOAD_TAGS_PENDING]: showTagsPending,
     [ACTION_TYPES.LOAD_TAGS_FULFILLED]: showTags,
-    [ACTION_TYPES.LOAD_TAGS_REJECTED]: loadingRejected,
+    [ACTION_TYPES.ALL_TAGS_REJECTED]: loadingRejected,
     [UPDATE_ENTITIES]: entitiesLoaded,
     [SHOW_ENTITIES]: (state, action) => entitiesLoaded(state, {
         payload: {
