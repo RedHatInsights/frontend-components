@@ -9,9 +9,11 @@ import {
     TableHeader,
     TableGridBreakpoint
 } from '@patternfly/react-table';
+import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/helpers/helpers';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
 import NoSystemsTable from './NoSystemsTable';
 import { createRows, createColumns } from './helpers';
+import { defaultColumns } from '../../redux/entities';
 
 /**
  * The actual (PF)table component. It calculates each cell and every table property.
@@ -33,7 +35,10 @@ const EntityTable = ({
     expandable: isExpandable,
     onRowClick,
     noDetail,
-    noSystemsTable = <NoSystemsTable />
+    noSystemsTable = <NoSystemsTable />,
+    showTags,
+    columns: columnsProp,
+    disableDefaultColumns
 }) => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -42,7 +47,7 @@ const EntityTable = ({
         hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded
     ), shallowEqual);
     const rows = useSelector(({ entities: { rows } }) => rows);
-    const columns = useSelector(
+    const columnsRedux = useSelector(
         ({ entities: { columns } }) => columns,
         (next, prev) => next.every(
             ({ key }, index) => prev.findIndex(({ key: prevKey }) => prevKey === key) === index
@@ -61,6 +66,16 @@ const EntityTable = ({
 
         onSort?.({ index, key, direction });
     };
+
+    const disabledColumns = Array.isArray(disableDefaultColumns) ? disableDefaultColumns : [];
+    const defaultColumnsFiltered = defaultColumns.filter(({ key }) =>
+        (key === 'tags' && showTags) || (key !== 'tags' && !disabledColumns.includes(key))
+    );
+
+    const columns = mergeArraysByKey([
+        typeof disableDefaultColumns === 'boolean' && disableDefaultColumns ? [] : defaultColumnsFiltered,
+        columnsProp || columnsRedux || []
+    ], 'key');
 
     const cells = loaded && createColumns(columns, hasItems, rows, isExpandable);
 
@@ -142,7 +157,8 @@ EntityTable.propTypes = {
     }),
     onRowClick: PropTypes.func,
     showTags: PropTypes.bool,
-    noSystemsTable: PropTypes.node
+    noSystemsTable: PropTypes.node,
+    disableDefaultColumns: PropTypes.oneOfType([ PropTypes.bool, PropTypes.arrayOf(PropTypes.string) ])
 };
 
 EntityTable.defaultProps = {
@@ -151,7 +167,6 @@ EntityTable.defaultProps = {
     expandable: false,
     hasCheckbox: true,
     showActions: false,
-    columns: [],
     rows: [],
     onExpandClick: () => undefined,
     tableProps: {}
