@@ -433,6 +433,30 @@ exports[`EntityTable DOM should render correctly - with customNoSystemsTable 1`]
       <th
         class=""
         data-key="0"
+        data-label="Name"
+        scope="col"
+      >
+        Name
+      </th>
+      <th
+        class="pf-m-wrap pf-m-width-10"
+        data-key="1"
+        data-label="Operating system"
+        scope="col"
+      >
+        Operating system
+      </th>
+      <th
+        class="pf-m-width-10"
+        data-key="2"
+        data-label="Last seen"
+        scope="col"
+      >
+        Last seen
+      </th>
+      <th
+        class=""
+        data-key="3"
         data-label="One"
         scope="col"
       >
@@ -452,9 +476,9 @@ exports[`EntityTable DOM should render correctly - with customNoSystemsTable 1`]
     >
       <td
         class=""
-        colspan="1"
+        colspan="4"
         data-key="0"
-        data-label="One"
+        data-label="Name"
       >
         <div>
           NO SYSTEMS
