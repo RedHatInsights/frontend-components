@@ -8,12 +8,12 @@ import promiseMiddleware from 'redux-promise-middleware';
 import { MemoryRouter } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
 import { mock } from '../../__mock__/hostApi';
-import * as api from '../../api/api';
 
 describe('InventoryList', () => {
     let initialState;
     let mockStore;
     let ref;
+    let onRefreshData;
 
     beforeEach(() => {
         ref = { current: undefined };
@@ -29,15 +29,14 @@ describe('InventoryList', () => {
                 total: 500
             }
         };
-        // eslint-disable-next-line no-import-assign
-        api.getEntities = jest.fn().mockImplementation(() => Promise.resolve({ results: [], total: 0 }));
+        onRefreshData = jest.fn().mockImplementation(() => Promise.resolve({ results: [], total: 0 }));
     });
 
     it('should render correctly', () => {
         const store = mockStore(initialState);
         const wrapper = render(<MemoryRouter>
             <Provider store={ store }>
-                <InventoryList ref={ref}/>
+                <InventoryList ref={ref} onRefreshData={onRefreshData} />
             </Provider>
         </MemoryRouter>);
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -47,7 +46,7 @@ describe('InventoryList', () => {
         const store = mockStore(initialState);
         const wrapper = render(<MemoryRouter>
             <Provider store={ store }>
-                <InventoryList hasAccess={false} ref={ref}/>
+                <InventoryList hasAccess={false} ref={ref} onRefreshData={onRefreshData} />
             </Provider>
         </MemoryRouter>);
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -64,10 +63,13 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} ref={ref} />
+                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp sortBy={sortBy} />);
+
+            onRefreshData.mockClear();
+
             wrapper.setProps({
                 sortBy: {
                     ...sortBy,
@@ -75,8 +77,8 @@ describe('InventoryList', () => {
                 }
             });
             wrapper.update();
-            const actions = store.getActions();
-            expect(actions[0].type).toBe('LOAD_ENTITIES_PENDING');
+
+            expect(onRefreshData).toHaveBeenCalled();
         });
 
         it('should not fire refresh after changing props', () => {
@@ -88,17 +90,16 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} ref={ref} />
+                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp sortBy={sortBy} />);
-            const actionsAfterMount = store.getActions();
+            onRefreshData.mockClear();
             wrapper.setProps({
                 showTags: true
             });
             wrapper.update();
-            const actions = store.getActions();
-            expect(actions.length).toBe(actionsAfterMount.length);
+            expect(onRefreshData).not.toHaveBeenCalled();
         });
 
         it('should fire refresh after changing items', () => {
@@ -106,22 +107,16 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} ref={ref} />
+                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp items={[{ children: () => <div>test</div>, isOpen: false, id: 'fff' }]} hasItems />);
-            const initialActions = store.getActions();
-            expect(initialActions.map(({ type }) => type)).toEqual(
-                [ 'LOAD_ENTITIES_PENDING' ]
-            );
+            onRefreshData.mockClear();
             wrapper.setProps({
                 items: [{ children: () => <div>test</div>, isOpen: false, id: 'something' }]
             });
             wrapper.update();
-            const actions = store.getActions();
-            expect(actions.map(({ type }) => type)).toEqual(
-                [ 'LOAD_ENTITIES_PENDING', 'LOAD_ENTITIES_PENDING' ]
-            );
+            expect(onRefreshData).toHaveBeenCalled();
         });
 
         it('should fire refresh calling it from ref', () => {
@@ -129,20 +124,14 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} ref={ref} />
+                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp items={[{ children: () => <div>test</div>, isOpen: false, id: 'fff' }]} hasItems />);
-            const initialActions = store.getActions();
-            expect(initialActions.map(({ type }) => type)).toEqual(
-                [ 'LOAD_ENTITIES_PENDING' ]
-            );
+            onRefreshData.mockClear();
             ref.current.onRefreshData();
             wrapper.update();
-            const actions = store.getActions();
-            expect(actions.map(({ type }) => type)).toEqual(
-                [ 'LOAD_ENTITIES_PENDING', 'LOAD_ENTITIES_PENDING' ]
-            );
+            expect(onRefreshData).toHaveBeenCalled();
         });
     });
 });

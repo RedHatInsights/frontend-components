@@ -12,10 +12,9 @@ import { mock } from '../../__mock__/hostApi';
 describe('Pagination', () => {
     let initialState;
     let mockStore;
+    let onRefreshData;
 
-    const WrappedPagination = ({ store, ...props }) => <Provider store={store}>
-        <Pagination {...props}/>
-    </Provider>;
+    let WrappedPagination;
 
     beforeEach(() => {
         mockStore = configureStore([ promiseMiddleware() ]);
@@ -25,6 +24,12 @@ describe('Pagination', () => {
                 loaded: true
             }
         };
+        onRefreshData = jest.fn().mockImplementation(() => Promise.resolve({ results: [], total: 0 }));
+
+        // eslint-disable-next-line react/display-name
+        WrappedPagination = ({ store, ...props }) => <Provider store={store}>
+            <Pagination {...props} onRefreshData={onRefreshData}/>
+        </Provider>;
     });
 
     describe('render', () => {
@@ -69,56 +74,23 @@ describe('Pagination', () => {
     });
 
     describe('API', () => {
-        it('should call perPage change without onRefresh', () => {
+        it('should call perPage change', () => {
             mock.onGet('/api/inventory/v1/hosts').reply(200, {});
             const store = mockStore(initialState);
             const wrapper = mount(<WrappedPagination store={ store } page={1} perPage={50} total={500} />);
             wrapper.find('.pf-c-options-menu__toggle button').first().simulate('click');
             wrapper.update();
             wrapper.find('ul.pf-c-options-menu__menu li button').first().simulate('click');
-            const actions = store.getActions();
-            expect(actions[0].meta).toMatchObject({ showTags: undefined });
-            expect(actions[0].type).toBe('LOAD_ENTITIES_PENDING');
+            expect(onRefreshData).toHaveBeenCalledWith({ page: 1, per_page: 10 });
         });
 
-        it('should call perPage change with onRefresh', () => {
-            const onRefresh = jest.fn();
-            const store = mockStore(initialState);
-            const wrapper = mount(<WrappedPagination store={ store } page={1} perPage={50} total={500} onRefresh={onRefresh} />);
-            wrapper.find('.pf-c-options-menu__toggle button').first().simulate('click');
-            wrapper.update();
-            wrapper.find('ul.pf-c-options-menu__menu li button').first().simulate('click');
-            const actions = store.getActions();
-            expect(onRefresh).toHaveBeenCalled();
-            expect(onRefresh.mock.calls[0][0]).toMatchObject({
-                page: 1, per_page: 10, filters: [{}]
-            });
-            expect(actions[0].type).toBe('ENTITIES_LOADING');
-        });
-
-        it('should call onSetPage change without onRefresh - button', () => {
+        it('should call onSetPage change without', () => {
             mock.onGet('/api/inventory/v1/hosts').reply(200, {});
             const store = mockStore(initialState);
             const wrapper = mount(<WrappedPagination store={ store } page={1} perPage={50} total={500} />);
             wrapper.find('.pf-c-pagination__nav-control button[data-action="next"]').first().simulate('click');
             wrapper.update();
-            const actions = store.getActions();
-            expect(actions[0].meta).toMatchObject({ showTags: undefined });
-            expect(actions[0].type).toBe('LOAD_ENTITIES_PENDING');
-        });
-
-        it('should call onSetPage change with onRefresh - button', () => {
-            const onRefresh = jest.fn();
-            const store = mockStore(initialState);
-            const wrapper = mount(<WrappedPagination store={ store } page={1} perPage={50} total={500} onRefresh={onRefresh} />);
-            wrapper.find('.pf-c-pagination__nav-control button[data-action="next"]').first().simulate('click');
-            wrapper.update();
-            const actions = store.getActions();
-            expect(onRefresh).toHaveBeenCalled();
-            expect(onRefresh.mock.calls[0][0]).toMatchObject({
-                page: 2, per_page: 50, filters: [{}]
-            });
-            expect(actions[0].type).toBe('ENTITIES_LOADING');
+            expect(onRefreshData).toHaveBeenCalledWith({ page: 2 });
         });
     });
 });

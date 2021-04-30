@@ -7,7 +7,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
-import { mock, mockTags } from '../../__mock__/hostApi';
+import { mockTags } from '../../__mock__/hostApi';
 import TitleColumn from './TitleColumn';
 import debounce from 'lodash/debounce';
 
@@ -16,7 +16,10 @@ jest.mock('lodash/debounce');
 describe('EntityTableToolbar', () => {
     let initialState;
     let mockStore;
+    let onRefreshData;
+
     beforeEach(() => {
+        onRefreshData = jest.fn();
         debounce.mockImplementation(require.requireActual('lodash/debounce'));
         mockStore = configureStore([ promiseMiddleware() ]);
         initialState = {
@@ -67,7 +70,7 @@ describe('EntityTableToolbar', () => {
                 }
             });
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar />
+                <EntityTableToolbar onRefreshData={onRefreshData}/>
             </Provider>);
             expect(toJson(wrapper.find('PrimaryToolbar'), { mode: 'shallow' })).toMatchSnapshot();
         });
@@ -75,7 +78,7 @@ describe('EntityTableToolbar', () => {
         it('should render correctly - with tags', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar showTags />
+                <EntityTableToolbar showTags onRefreshData={onRefreshData}/>
             </Provider>);
             expect(toJson(wrapper.find('PrimaryToolbar'), { mode: 'shallow' })).toMatchSnapshot();
             expect(toJson(wrapper.find('TagsModal'), { mode: 'shallow' })).toMatchSnapshot();
@@ -84,7 +87,7 @@ describe('EntityTableToolbar', () => {
         it('should render correctly - with no access', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar hasAccess={false} />
+                <EntityTableToolbar hasAccess={false} onRefreshData={onRefreshData}/>
             </Provider>);
             expect(toJson(wrapper.find('PrimaryToolbar'), { mode: 'shallow' })).toMatchSnapshot();
             expect(toJson(wrapper.find('TagsModal'), { mode: 'shallow' })).toMatchSnapshot();
@@ -93,7 +96,7 @@ describe('EntityTableToolbar', () => {
         it('should render correctly - with items', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar hasItems />
+                <EntityTableToolbar hasItems onRefreshData={onRefreshData}/>
             </Provider>);
             expect(toJson(wrapper.find('PrimaryToolbar'), { mode: 'shallow' })).toMatchSnapshot();
         });
@@ -101,7 +104,7 @@ describe('EntityTableToolbar', () => {
         it('should render correctly - with custom filters', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar filterConfig={{
+                <EntityTableToolbar onRefreshData={onRefreshData} filterConfig={{
                     items: [{ label: 'Filter by text' }]
                 }} />
             </Provider>);
@@ -111,7 +114,7 @@ describe('EntityTableToolbar', () => {
         it('should render correctly - with custom activeFilters', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar activeFiltersConfig={{
+                <EntityTableToolbar onRefreshData={onRefreshData} activeFiltersConfig={{
                     filters: [{
                         category: 'Some',
                         chips: [{
@@ -133,7 +136,7 @@ describe('EntityTableToolbar', () => {
                 }
             });
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar />
+                <EntityTableToolbar onRefreshData={onRefreshData} />
             </Provider>);
             expect(toJson(wrapper.find('PrimaryToolbar'), { mode: 'shallow' })).toMatchSnapshot();
         });
@@ -154,7 +157,7 @@ describe('EntityTableToolbar', () => {
                 }
             });
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar />
+                <EntityTableToolbar onRefreshData={onRefreshData} />
             </Provider>);
             expect(toJson(wrapper.find('PrimaryToolbar'), { mode: 'shallow' })).toMatchSnapshot();
         });
@@ -162,7 +165,7 @@ describe('EntityTableToolbar', () => {
         it('should render correctly - with children', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar><div>something</div></EntityTableToolbar>
+                <EntityTableToolbar onRefreshData={onRefreshData}><div>something</div></EntityTableToolbar>
             </Provider>);
             expect(toJson(wrapper.find('PrimaryToolbar'), { mode: 'shallow' })).toMatchSnapshot();
         });
@@ -170,7 +173,7 @@ describe('EntityTableToolbar', () => {
         it('should render correctly', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar page={1} total={500} perPage={50} />
+                <EntityTableToolbar page={1} total={500} perPage={50} onRefreshData={onRefreshData} />
             </Provider>);
             expect(toJson(wrapper.find('PrimaryToolbar'), { mode: 'shallow' })).toMatchSnapshot();
         });
@@ -179,72 +182,82 @@ describe('EntityTableToolbar', () => {
     describe('API', () => {
         describe('pagination', () => {
             it('should set page ', () => {
-                mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
                 mockTags.onGet(/\/api\/inventory\/v1.*/).reply(200, { results: [] });
                 const store = mockStore(initialState);
                 const wrapper = mount(<Provider store={store}>
-                    <EntityTableToolbar page={1} total={500} perPage={50} />
+                    <EntityTableToolbar page={1} total={500} perPage={50} onRefreshData={onRefreshData} />
                 </Provider>);
                 wrapper.find('button[data-action="next"]').first().simulate('click');
-                const actions = store.getActions();
-                expect(actions.length).toBe(1);
-                expect(actions[0]).toMatchObject({ meta: { showTags: false }, type: 'LOAD_ENTITIES_PENDING' });
+
+                expect(onRefreshData).toHaveBeenCalledWith({ page: 2 });
             });
 
             it('should set per page ', () => {
-                mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
                 mockTags.onGet(/\/api\/inventory\/v1.*/).reply(200, { results: [] });
                 const store = mockStore(initialState);
                 const wrapper = mount(<Provider store={store}>
-                    <EntityTableToolbar page={1} total={500} perPage={50} />
+                    <EntityTableToolbar page={1} total={500} perPage={50} onRefreshData={onRefreshData} />
                 </Provider>);
                 wrapper.find('.pf-c-options-menu__toggle button.pf-c-options-menu__toggle-button').first().simulate('click');
                 wrapper.update();
                 wrapper.find('ul.pf-c-options-menu__menu button[data-action="per-page-10"]').simulate('click');
-                const actions = store.getActions();
-                expect(actions.length).toBe(1);
-                expect(actions[0]).toMatchObject({ meta: { showTags: false }, type: 'LOAD_ENTITIES_PENDING' });
+                expect(onRefreshData).toHaveBeenCalledWith({ page: 1, per_page: 10 });
             });
         });
 
         describe('delete filter', () => {
-            it('should dispatch action on delete filter', () => {
+            it('should dispatch action on delete filter', async () => {
                 debounce.mockImplementation(fn => fn);
-                mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
+
                 mockTags.onGet(/\/api\/inventory\/v1.*/).reply(200, { results: [] });
                 const store = mockStore(initialState);
                 const wrapper = mount(<Provider store={store}>
-                    <EntityTableToolbar page={1} total={500} perPage={50} />
+                    <EntityTableToolbar page={1} total={500} perPage={50} onRefreshData={onRefreshData} />
                 </Provider>);
-                const orignalActionsLength = store.getActions().length;
-                wrapper.find('.pf-c-chip-group__list li div button').first().simulate('click');
-                wrapper.find('.pf-c-chip-group__list li div button').last().simulate('click');
-                const actions = store.getActions();
-                expect(actions.length).toBe(orignalActionsLength + 1);
-                expect(actions[actions.length - 1]).toMatchObject({ meta: { showTags: false }, type: 'LOAD_ENTITIES_PENDING' });
+                onRefreshData.mockClear();
+
+                await act(async () => {
+                    wrapper.find('.pf-c-chip-group__list li div button').first().simulate('click');
+                });
+                wrapper.update();
+                expect(onRefreshData).toHaveBeenCalledWith(
+                    { filters: [{}, { filter: '', value: 'hostname_or_id' }, { staleFilter: [ 'stale' ] }], page: 1, perPage: 50 }
+                );
+                onRefreshData.mockClear();
+                await act(async () => {
+                    wrapper.find('.pf-c-chip-group__list li div button').last().simulate('click');
+                });
+                wrapper.update();
+                expect(onRefreshData).toHaveBeenCalledWith(
+                    { filters: [{}, { filter: '', value: 'hostname_or_id' }, { registeredWithFilter: [] }], page: 1, perPage: 50 }
+                );
             });
 
-            it('should remove textual filter', () => {
+            it('should remove textual filter', async () => {
                 debounce.mockImplementation(fn => fn);
-                mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
                 mockTags.onGet(/\/api\/inventory\/v1.*/).reply(200, { results: [] });
                 const store = mockStore({
                     entities: {
                         ...initialState.entities,
+                        loaded: true,
                         activeFilters: [{ value: 'hostname_or_id', filter: 'test' }]
                     }
                 });
                 const wrapper = mount(<Provider store={store}>
-                    <EntityTableToolbar page={1} total={500} perPage={50} />
+                    <EntityTableToolbar page={1} total={500} perPage={50} onRefreshData={onRefreshData} />
                 </Provider>);
-                wrapper.find('.pf-c-chip-group__list li div button').first().simulate('click');
-                const actions = store.getActions();
-                expect(actions[actions.length - 1]).toMatchObject({ meta: { showTags: false }, type: 'LOAD_ENTITIES_PENDING' });
+                onRefreshData.mockClear();
+                await act(async () => {
+                    wrapper.find('.pf-c-chip-group__list li div button').first().simulate('click');
+                });
+                wrapper.update();
+                expect(onRefreshData).toHaveBeenCalledWith(
+                    { filters: [{ filter: '', value: 'hostname_or_id' }], page: 1, perPage: 50 }
+                );
             });
 
-            it('should remove tag filter', () => {
+            it('should remove tag filter', async () => {
                 debounce.mockImplementation(fn => fn);
-                mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
                 mockTags.onGet(/\/api\/inventory\/v1.*/).reply(200, { results: [] });
                 const store = mockStore({
                     entities: {
@@ -261,66 +274,53 @@ describe('EntityTableToolbar', () => {
                     }
                 });
                 const wrapper = mount(<Provider store={store}>
-                    <EntityTableToolbar page={1} total={500} perPage={50} showTags />
+                    <EntityTableToolbar page={1} total={500} perPage={50} showTags onRefreshData={onRefreshData} />
                 </Provider>);
-                wrapper.find('.pf-c-chip-group__list li div button').first().simulate('click');
-                const actions = store.getActions();
-                expect(actions[actions.length - 1]).toMatchObject({ type: 'ALL_TAGS_PENDING' });
+                onRefreshData.mockClear();
+                await act(async () => {
+                    wrapper.find('.pf-c-chip-group__list li div button').first().simulate('click');
+                });
+                wrapper.update();
+                expect(onRefreshData).toHaveBeenCalledWith(
+                    { filters: [{ filter: '', value: 'hostname_or_id' }, { tagFilters: [] }], page: 1, perPage: 50 }
+                );
             });
 
             it('should dispatch action on delete all filters', () => {
-                mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
                 mockTags.onGet(/\/api\/inventory\/v1.*/).reply(200, { results: [] });
                 const store = mockStore(initialState);
                 const wrapper = mount(<Provider store={store}>
-                    <EntityTableToolbar page={1} total={500} perPage={50} />
+                    <EntityTableToolbar page={1} total={500} perPage={50} onRefreshData={onRefreshData} />
                 </Provider>);
                 wrapper.find('.ins-c-chip-filters button.pf-m-link').last().simulate('click');
                 const actions = store.getActions();
-                expect(actions.length).toBe(2);
+                expect(actions.length).toBe(1);
                 expect(actions[actions.length - 1]).toMatchObject({ type: 'CLEAR_FILTERS' });
+                expect(onRefreshData).toHaveBeenCalledWith({ filters: [], page: 1 });
             });
 
             it('should call function on delete filter', () => {
-                mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
                 mockTags.onGet(/\/api\/inventory\/v1.*/).reply(200, { results: [] });
                 const onDelete = jest.fn();
                 const store = mockStore(initialState);
                 const wrapper = mount(<Provider store={store}>
                     <EntityTableToolbar page={1} total={500} perPage={50} activeFiltersConfig={{
                         onDelete
-                    }} />
+                    }} onRefreshData={onRefreshData} />
                 </Provider>);
                 wrapper.find('.pf-c-chip-group__list li div button').first().simulate('click');
                 expect(onDelete).toHaveBeenCalled();
             });
         });
 
-        it('should call onRefresh', () => {
-            const onRefresh = jest.fn((_par, callback) => callback());
-            debounce.mockImplementation(fn => fn);
-            mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
-            mockTags.onGet(/\/api\/inventory\/v1.*/).reply(200, { results: [] });
-            const store = mockStore(initialState);
-            const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar page={1} total={500} perPage={50} onRefresh={onRefresh} />
-            </Provider>);
-            wrapper.find('.pf-c-options-menu__toggle button.pf-c-options-menu__toggle-button').first().simulate('click');
-            wrapper.update();
-            wrapper.find('ul.pf-c-options-menu__menu button[data-action="per-page-10"]').simulate('click');
-            const actions = store.getActions();
-            expect(actions[0]).toMatchObject({ type: 'ENTITIES_LOADING' });
-        });
-
         it('trim leading/trailling whitespace ', async () => {
-            const onRefresh = jest.fn((_par, callback) => callback());
             debounce.mockImplementation(fn => fn);
-            mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
+
             mockTags.onGet(/\/api\/inventory\/v1.*/).reply(200, { results: [] });
             const store = mockStore(initialState);
 
             const wrapper = mount(<Provider store={store}>
-                <EntityTableToolbar page={1} total={500} perPage={50} onRefresh={onRefresh} />
+                <EntityTableToolbar page={1} total={500} perPage={50} onRefreshData={onRefreshData} />
             </Provider>);
 
             await act(async () => {

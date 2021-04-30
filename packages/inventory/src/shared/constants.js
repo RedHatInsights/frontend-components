@@ -80,11 +80,8 @@ export function reduceFilters(filters = []) {
 }
 
 export const loadSystems = (options, showTags, getEntities) => {
-    // eslint-disable-next-line camelcase
-    const currPerPage = options?.perPage || options?.per_page;
-
-    const limitedItems = options?.items?.length > currPerPage ? options?.items?.slice(
-        (options?.page - 1) * currPerPage, options?.page * currPerPage
+    const limitedItems = options?.items?.length > options.per_page ? options?.items?.slice(
+        (options?.page - 1) * options.per_page, options?.page * options.per_page
     ) : options?.items;
 
     const config = {
@@ -93,8 +90,6 @@ export const loadSystems = (options, showTags, getEntities) => {
             orderDirection: options?.sortBy?.direction?.toUpperCase()
         },
         ...options,
-        // eslint-disable-next-line camelcase
-        per_page: currPerPage,
         filters: options?.filters || options?.activeFilters,
         orderBy: options?.orderBy || options?.sortBy?.key,
         orderDirection: options?.orderDirection?.toUpperCase() || options?.sortBy?.direction?.toUpperCase(),

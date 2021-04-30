@@ -7,8 +7,7 @@ import {
     Table as PfTable,
     TableBody,
     TableHeader,
-    TableGridBreakpoint,
-    TableVariant
+    TableGridBreakpoint
 } from '@patternfly/react-table';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
 import NoSystemsTable from './NoSystemsTable';

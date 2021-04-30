@@ -1,11 +1,13 @@
+/* eslint-disable camelcase */
 import React, { Fragment, forwardRef } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector, shallowEqual, useStore, useDispatch } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
 import { ErrorState } from '@redhat-cloud-services/frontend-components/ErrorState';
 import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 import AccessDenied from '../../shared/AccessDenied';
+import { loadSystems } from '../../shared';
 
 /**
  * This component is used to combine all essential components together:
@@ -61,6 +63,50 @@ const InventoryTable = forwardRef(({
     const sortBy = useSelector(({ entities: { sortBy: invSortBy } }) => (
         hasItems ? propsSortBy : invSortBy
     ), shallowEqual);
+    const dispatch = useDispatch();
+    const store = useStore();
+
+    /**
+     * If consumer wants to change data they can call this function via component ref.
+     * @param {*} options new options to be applied, like pagination, filters, etc.
+     */
+    const onRefreshData = (options = {}, disableOnRefresh) => {
+        const { activeFilters } = store.getState().entities;
+
+        // eslint-disable-next-line camelcase
+        const currPerPage = options?.per_page || options?.perPage || perPage;
+
+        const params = {
+            page,
+            per_page: currPerPage,
+            items,
+            sortBy,
+            hideFilters,
+            filters: activeFilters,
+            ...customFilters,
+            ...options
+        };
+
+        if (onRefresh && !disableOnRefresh) {
+            onRefresh(params, (options) => {
+                dispatch(
+                    loadSystems(
+                        { ...params, ...options },
+                        showTags,
+                        getEntities
+                    )
+                );
+            });
+        } else {
+            dispatch(
+                loadSystems(
+                    params,
+                    showTags,
+                    getEntities
+                )
+            );
+        }
+    };
 
     return (
         (hasAccess === false && isFullView) ?
@@ -76,14 +122,13 @@ const InventoryTable = forwardRef(({
                     customFilters={customFilters}
                     hasAccess={hasAccess}
                     items={ items }
-                    onRefresh={onRefresh}
                     filters={ filters }
                     hasItems={ hasItems }
                     total={ pagination.total }
                     page={ pagination.page }
                     perPage={ pagination.perPage }
                     showTags={ showTags }
-                    getEntities={ getEntities }
+                    onRefreshData={onRefreshData}
                     sortBy={ sortBy }
                     hideFilters={hideFilters}
                     paginationProps={paginationProps}
@@ -96,30 +141,22 @@ const InventoryTable = forwardRef(({
                     hasAccess={hasAccess}
                     ref={ref}
                     hasItems={ hasItems }
-                    onRefresh={ onRefresh }
                     items={ items }
                     page={ pagination.page }
                     sortBy={ sortBy }
                     perPage={ pagination.perPage }
                     showTags={ showTags }
-                    getEntities={ getEntities }
-                    hideFilters={ hideFilters }
+                    onRefreshData={onRefreshData}
                 />
                 <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                     <Pagination
-                        customFilters={customFilters}
                         hasAccess={hasAccess}
                         isFull
-                        items={ items }
                         total={ pagination.total }
                         page={ pagination.page }
                         perPage={ pagination.perPage }
                         hasItems={ hasItems }
-                        onRefresh={ onRefresh }
-                        showTags={ showTags }
-                        getEntities={ getEntities }
-                        sortBy={ sortBy }
-                        hideFilters={ hideFilters }
+                        onRefreshData={onRefreshData}
                         paginationProps={paginationProps}
                     />
                 </TableToolbar>
