@@ -52,6 +52,36 @@ describe('NoSystemsTable', () => {
         expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
     });
 
+    it('should render correctly with error', () => {
+        const store = mockStore({
+            entities: {
+                ...initialState.entities,
+                error: new Error('Loading error')
+            }
+        });
+        const wrapper = mount(<Provider store={ store }>
+            <Router>
+                <InventoryTable/>
+            </Router>
+        </Provider>);
+        expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
+    });
+
+    it('should render correctly with custom error', () => {
+        const store = mockStore({
+            entities: {
+                ...initialState.entities,
+                error: new Error('Loading error')
+            }
+        });
+        const wrapper = mount(<Provider store={ store }>
+            <Router>
+                <InventoryTable errorState={ <div>CUSTOM ERROR STATE</div> } />
+            </Router>
+        </Provider>);
+        expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
+    });
+
     it('should render correctly - with no access', () => {
         const store = mockStore(initialState);
         const wrapper = mount(<Provider store={ store }>

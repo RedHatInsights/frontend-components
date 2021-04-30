@@ -122,6 +122,13 @@ function entitiesLoaded(state, { payload: { results, per_page: perPage, page, co
     };
 }
 
+function loadingRejected(state, { payload }) {
+    return {
+        ...state,
+        error: payload
+    };
+}
+
 function selectEntity(state, { payload }) {
     const rows = [ ...state.rows ];
     const toSelect = [].concat(payload);
@@ -233,8 +240,10 @@ export default {
     [ACTION_TYPES.ALL_TAGS_PENDING]: (state) => ({ ...state, allTagsLoaded: false }),
     [ACTION_TYPES.LOAD_ENTITIES_PENDING]: entitiesPending,
     [ACTION_TYPES.LOAD_ENTITIES_FULFILLED]: entitiesLoaded,
+    [ACTION_TYPES.LOAD_ENTITIES_REJECTED]: loadingRejected,
     [ACTION_TYPES.LOAD_TAGS_PENDING]: showTagsPending,
     [ACTION_TYPES.LOAD_TAGS_FULFILLED]: showTags,
+    [ACTION_TYPES.ALL_TAGS_REJECTED]: loadingRejected,
     [UPDATE_ENTITIES]: entitiesLoaded,
     [SHOW_ENTITIES]: (state, action) => entitiesLoaded(state, {
         payload: {

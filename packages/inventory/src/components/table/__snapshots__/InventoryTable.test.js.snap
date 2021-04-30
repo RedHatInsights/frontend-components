@@ -173,6 +173,28 @@ exports[`NoSystemsTable should render correctly 1`] = `
 </ForwardRef>
 `;
 
+exports[`NoSystemsTable should render correctly with custom error 1`] = `
+<ForwardRef
+  errorState={
+    <div>
+      CUSTOM ERROR STATE
+    </div>
+  }
+>
+  <div>
+    CUSTOM ERROR STATE
+  </div>
+</ForwardRef>
+`;
+
+exports[`NoSystemsTable should render correctly with error 1`] = `
+<ForwardRef>
+  <ErrorState
+    errorTitle="Something went wrong"
+  />
+</ForwardRef>
+`;
+
 exports[`NoSystemsTable should render correctly with items 1`] = `
 <ForwardRef
   items={
