@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterConfigBuilder categoryLabelForValue to return a matching category label 1`] = `"Compliant"`;
+
+exports[`FilterConfigBuilder categoryLabelForValue to return a matching category label 2`] = `"Systems meeting compliance"`;
+
+exports[`FilterConfigBuilder categoryLabelForValue to return a matching category label 3`] = `"Search term"`;
+
+exports[`FilterConfigBuilder initialDefaultState to return a matching category label 1`] = `
+Object {
+  "compliant": Array [],
+  "name": "",
+  "systemsmeetingcompliance": Array [],
+}
+`;
+
+exports[`FilterConfigBuilder labelForValue to return a matching label 1`] = `"Compliant"`;
+
+exports[`FilterConfigBuilder labelForValue to return a matching label 2`] = `"0-49"`;
+
+exports[`FilterConfigBuilder labelForValue to return a matching label 3`] = `"Search term"`;
+
+exports[`FilterConfigBuilder returns a filterConfig 1`] = `
+Object {
+  "compliancescore": Array [],
+  "compliant": Array [],
+  "items": Array [
+    Object {
+      "filterValues": Object {
+        "onChange": [Function],
+        "value": "",
+      },
+      "id": "name",
+      "label": "Name",
+      "placeholder": "Filter by name",
+      "type": "text",
+    },
+    Object {
+      "filterValues": Object {
+        "items": Array [
+          Object {
+            "label": "Compliant",
+            "value": "true",
+          },
+          Object {
+            "label": "Non-compliant",
+            "value": "false",
+          },
+        ],
+        "onChange": [Function],
+        "value": undefined,
+      },
+      "id": "compliant",
+      "label": "Compliant",
+      "placeholder": "Filter by compliant",
+      "type": "checkbox",
+    },
+    Object {
+      "filterValues": Object {
+        "items": Array [
+          Object {
+            "label": "90 - 100%",
+            "value": "90-100",
+          },
+          Object {
+            "label": "70 - 89%",
+            "value": "70-89",
+          },
+          Object {
+            "label": "50 - 69%",
+            "value": "50-69",
+          },
+          Object {
+            "label": "Less than 50%",
+            "value": "0-49",
+          },
+        ],
+        "onChange": [Function],
+        "value": undefined,
+      },
+      "id": "systemsmeetingcompliance",
+      "label": "Systems meeting compliance",
+      "placeholder": "Filter by systems meeting compliance",
+      "type": "checkbox",
+    },
+  ],
+  "name": "",
+}
+`;
+
+exports[`FilterConfigBuilder valueForLabel to return a matching value 1`] = `"false"`;
+
+exports[`FilterConfigBuilder valueForLabel to return a matching value 2`] = `"50 - 69%"`;
+
+exports[`FilterConfigBuilder valueForLabel to return a matching value 3`] = `"Search term"`;

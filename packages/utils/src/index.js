@@ -14,3 +14,5 @@ export * from './Registry';
 export { default as routerParams } from './RouterParams';
 export { default as RowLoader } from './RowLoader';
 export { useInventory } from './useInventory';
+export { default as useTableTools } from './useTableTools';
+export * from './useTableTools';

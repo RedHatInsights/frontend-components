@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useRowsBuilder returns a rows configuration 1`] = `
+Object {
+  "all": Array [
+    [Function],
+  ],
+  "current": [Function],
+  "error": undefined,
+}
+`;

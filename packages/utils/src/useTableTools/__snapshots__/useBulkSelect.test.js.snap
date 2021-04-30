@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useBulkSelect returns a bulk select configuration 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "clearSelection": [Function],
+      "tableProps": Object {
+        "canSelectAll": false,
+        "onSelect": [Function],
+      },
+      "toolbarProps": Object {
+        "bulkSelect": Object {
+          "checked": false,
+          "isDisabled": false,
+          "items": Array [
+            Object {
+              "onClick": [Function],
+              "props": Object {
+                "isDisabled": true,
+              },
+              "title": "Select none",
+            },
+            Object {
+              "onClick": [Function],
+              "title": "Select page 20",
+            },
+            Object {
+              "onClick": [Function],
+              "title": "Select all 20",
+            },
+          ],
+          "onSelect": [Function],
+          "toggleProps": Object {
+            "children": Array [
+              "0 selected",
+              " ",
+            ],
+          },
+        },
+      },
+      "transformer": [Function],
+    },
+  ],
+  "current": Object {
+    "clearSelection": [Function],
+    "tableProps": Object {
+      "canSelectAll": false,
+      "onSelect": [Function],
+    },
+    "toolbarProps": Object {
+      "bulkSelect": Object {
+        "checked": false,
+        "isDisabled": false,
+        "items": Array [
+          Object {
+            "onClick": [Function],
+            "props": Object {
+              "isDisabled": true,
+            },
+            "title": "Select none",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Select page 20",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Select all 20",
+          },
+        ],
+        "onSelect": [Function],
+        "toggleProps": Object {
+          "children": Array [
+            "0 selected",
+            " ",
+          ],
+        },
+      },
+    },
+    "transformer": [Function],
+  },
+  "error": undefined,
+}
+`;

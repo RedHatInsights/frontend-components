@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useTableSort returns a table sort configuration 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "columns": Array [
+        Object {
+          "key": "name",
+          "renderFunc": [Function],
+          "sortByProperty": "name",
+          "title": "Name",
+        },
+        Object {
+          "key": "description",
+          "title": "Description",
+        },
+        Object {
+          "renderFunc": [Function],
+          "sortByFunction": [Function],
+          "title": "Severity sorted by function",
+          "transforms": Array [
+            [Function],
+          ],
+        },
+        Object {
+          "renderFunc": [Function],
+          "sortByArray": Array [
+            "high",
+            "medium",
+            "low",
+            "unknown",
+          ],
+          "sortByProperty": "severity",
+          "title": "Severity by Array",
+        },
+      ],
+      "sorter": [Function],
+      "tableProps": Object {
+        "onSort": [Function],
+        "sortBy": Object {
+          "direction": "desc",
+          "index": 0,
+        },
+      },
+    },
+  ],
+  "current": Object {
+    "columns": Array [
+      Object {
+        "key": "name",
+        "renderFunc": [Function],
+        "sortByProperty": "name",
+        "title": "Name",
+      },
+      Object {
+        "key": "description",
+        "title": "Description",
+      },
+      Object {
+        "renderFunc": [Function],
+        "sortByFunction": [Function],
+        "title": "Severity sorted by function",
+        "transforms": Array [
+          [Function],
+        ],
+      },
+      Object {
+        "renderFunc": [Function],
+        "sortByArray": Array [
+          "high",
+          "medium",
+          "low",
+          "unknown",
+        ],
+        "sortByProperty": "severity",
+        "title": "Severity by Array",
+      },
+    ],
+    "sorter": [Function],
+    "tableProps": Object {
+      "onSort": [Function],
+      "sortBy": Object {
+        "direction": "desc",
+        "index": 0,
+      },
+    },
+  },
+  "error": undefined,
+}
+`;

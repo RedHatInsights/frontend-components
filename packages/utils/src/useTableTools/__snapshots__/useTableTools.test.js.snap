@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useTableTools returns default pagintated rows 1`] = `
+Array [
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #9",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "medium",
+      },
+      Object {
+        "title": "medium",
+      },
+    ],
+    "itemId": 9,
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #8",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "high",
+      },
+      Object {
+        "title": "high",
+      },
+    ],
+    "itemId": 8,
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #7",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "unknown",
+      },
+      Object {
+        "title": "unknown",
+      },
+    ],
+    "itemId": 7,
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #6",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "low",
+      },
+      Object {
+        "title": "low",
+      },
+    ],
+    "itemId": 6,
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #5",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "medium",
+      },
+      Object {
+        "title": "medium",
+      },
+    ],
+    "itemId": 5,
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #4",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "high",
+      },
+      Object {
+        "title": "high",
+      },
+    ],
+    "itemId": 4,
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #30",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "low",
+      },
+      Object {
+        "title": "low",
+      },
+    ],
+    "itemId": 30,
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #3",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "unknown",
+      },
+      Object {
+        "title": "unknown",
+      },
+    ],
+    "itemId": 3,
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #29",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "medium",
+      },
+      Object {
+        "title": "medium",
+      },
+    ],
+    "itemId": 29,
+  },
+  Object {
+    "cells": Array [
+      Object {
+        "title": "TEST ITEM #28",
+      },
+      Object {
+        "title": "DESCRIPTION",
+      },
+      Object {
+        "title": "high",
+      },
+      Object {
+        "title": "high",
+      },
+    ],
+    "itemId": 28,
+  },
+]
+`;
+
+exports[`useTableTools returns toolbarProps and tableProps for filters when a filter config is passed 1`] = `
+Object {
+  "activeFiltersConfig": Object {
+    "filters": Array [],
+    "onDelete": [Function],
+  },
+  "filterConfig": Object {
+    "items": Array [
+      Object {
+        "filterValues": Object {
+          "onChange": [Function],
+          "value": undefined,
+        },
+        "id": "name",
+        "label": "Name",
+        "placeholder": "Filter by name",
+        "type": "text",
+      },
+      Object {
+        "filterValues": Object {
+          "items": Array [
+            Object {
+              "label": "OPTION 1",
+              "value": "OPTION 1",
+            },
+            Object {
+              "label": "OPTION 2",
+              "value": "OPTION 2",
+            },
+            Object {
+              "label": "OPTION 3",
+              "value": "OPTION 3",
+            },
+          ],
+          "onChange": [Function],
+          "value": undefined,
+        },
+        "id": "chackboxfilter",
+        "label": "Chackbox Filter",
+        "placeholder": "Filter by chackbox filter",
+        "type": "checkbox",
+      },
+    ],
+  },
+  "pagination": Object {
+    "itemCount": 30,
+    "onPerPageSelect": [Function],
+    "onSetPage": [Function],
+    "page": 1,
+    "perPage": 10,
+  },
+}
+`;

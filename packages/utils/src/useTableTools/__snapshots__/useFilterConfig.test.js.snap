@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useFilterConfig returns a filter config configuration 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "activeFilters": Object {},
+      "addConfigItem": [Function],
+      "buildFilterString": [Function],
+      "filter": [Function],
+      "filterConfigBuilder": FilterConfigBuilder {
+        "addConfigItem": [Function],
+        "applyFilterToObjectArray": [Function],
+        "buildConfiguration": [Function],
+        "categoryLabelForValue": [Function],
+        "chipBuilder": ChipBuilder {
+          "checkboxFilterChip": [Function],
+          "chipFor": [Function],
+          "chipsFor": [Function],
+          "config": Array [],
+          "filterConfig": [Circular],
+          "radioFilterChip": [Function],
+          "textFilterChip": [Function],
+        },
+        "config": Array [
+          Object {
+            "filter": [Function],
+            "items": Array [
+              Object {
+                "label": "Show ",
+                "value": "show",
+              },
+            ],
+            "label": "Filter with multiple spaces",
+            "type": "checkbox",
+          },
+          Object {
+            "filter": [Function],
+            "label": "Name",
+            "type": "text",
+          },
+        ],
+        "defaultValueForFilter": [Function],
+        "filterBuilder": null,
+        "getCategoryForLabel": [Function],
+        "getChipBuilder": [Function],
+        "getFilterBuilder": [Function],
+        "getItemByLabelOrValue": [Function],
+        "initialDefaultState": [Function],
+        "labelForValue": [Function],
+        "removeFilterFromFilterState": [Function],
+        "removeFilterWithChip": [Function],
+        "toCheckboxFilterConfig": [Function],
+        "toFilterConfigItem": [Function],
+        "toRadioFilterConfig": [Function],
+        "toTextFilterConfig": [Function],
+        "valueForLabel": [Function],
+      },
+      "toolbarProps": Object {
+        "activeFiltersConfig": Object {
+          "filters": Array [],
+          "onDelete": [Function],
+        },
+        "filterConfig": Object {
+          "items": Array [],
+        },
+      },
+    },
+  ],
+  "current": Object {
+    "activeFilters": Object {},
+    "addConfigItem": [Function],
+    "buildFilterString": [Function],
+    "filter": [Function],
+    "filterConfigBuilder": FilterConfigBuilder {
+      "addConfigItem": [Function],
+      "applyFilterToObjectArray": [Function],
+      "buildConfiguration": [Function],
+      "categoryLabelForValue": [Function],
+      "chipBuilder": ChipBuilder {
+        "checkboxFilterChip": [Function],
+        "chipFor": [Function],
+        "chipsFor": [Function],
+        "config": Array [],
+        "filterConfig": [Circular],
+        "radioFilterChip": [Function],
+        "textFilterChip": [Function],
+      },
+      "config": Array [
+        Object {
+          "filter": [Function],
+          "items": Array [
+            Object {
+              "label": "Show ",
+              "value": "show",
+            },
+          ],
+          "label": "Filter with multiple spaces",
+          "type": "checkbox",
+        },
+        Object {
+          "filter": [Function],
+          "label": "Name",
+          "type": "text",
+        },
+      ],
+      "defaultValueForFilter": [Function],
+      "filterBuilder": null,
+      "getCategoryForLabel": [Function],
+      "getChipBuilder": [Function],
+      "getFilterBuilder": [Function],
+      "getItemByLabelOrValue": [Function],
+      "initialDefaultState": [Function],
+      "labelForValue": [Function],
+      "removeFilterFromFilterState": [Function],
+      "removeFilterWithChip": [Function],
+      "toCheckboxFilterConfig": [Function],
+      "toFilterConfigItem": [Function],
+      "toRadioFilterConfig": [Function],
+      "toTextFilterConfig": [Function],
+      "valueForLabel": [Function],
+    },
+    "toolbarProps": Object {
+      "activeFiltersConfig": Object {
+        "filters": Array [],
+        "onDelete": [Function],
+      },
+      "filterConfig": Object {
+        "items": Array [],
+      },
+    },
+  },
+  "error": undefined,
+}
+`;
