@@ -1,5 +1,4 @@
 import React from 'react';
-import NoSystemsTable from './NoSystemsTable';
 import { cellWidth, sortable, expandable } from '@patternfly/react-table';
 import get from 'lodash/get';
 import flatten from 'lodash/flatten';
@@ -18,11 +17,11 @@ export const buildCells = (item, columns, extra) => {
     });
 };
 
-export const createRows = (rows = [], columns = [], { actions, expandable, ...extra } = {}) => {
+export const createRows = (rows = [], columns = [], { actions, expandable, noSystemsTable, ...extra } = {}) => {
     if (rows.length === 0) {
         return [{
             cells: [{
-                title: <NoSystemsTable />,
+                title: noSystemsTable,
                 props: {
                     colSpan: columns.length + Boolean(actions)
                 }

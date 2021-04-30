@@ -42,15 +42,11 @@ describe('createRows', () => {
     const cells = [{ key: 'first' }, { key: 'second.dot' }, { key: 'third' }];
     it('should create empty table', () => {
         const data = createRows();
-        const wrapper = mount(data[0].cells[0].title);
-        expect(toJson(wrapper)).toMatchSnapshot();
         expect(data[0].cells[0].props.colSpan).toBe(0);
     });
 
     it('should create empty table with actions', () => {
         const data = createRows([], cells, { actions: [] });
-        const wrapper = mount(data[0].cells[0].title);
-        expect(toJson(wrapper)).toMatchSnapshot();
         expect(data[0].cells[0].props.colSpan).toBe(4);
     });
 

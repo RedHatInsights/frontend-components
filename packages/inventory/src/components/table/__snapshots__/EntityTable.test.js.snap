@@ -4,7 +4,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
 <table
   aria-label="Host inventory"
   class="ins-c-entity-table pf-c-table pf-m-grid-md pf-m-compact"
-  data-ouia-component-id="OUIA-Generated-Table-20"
+  data-ouia-component-id="OUIA-Generated-Table-22"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -14,7 +14,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-33"
+      data-ouia-component-id="OUIA-Generated-TableRow-35"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -77,7 +77,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-34"
+      data-ouia-component-id="OUIA-Generated-TableRow-36"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -457,6 +457,59 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
 />
 `;
 
+exports[`EntityTable DOM should render correctly - with customNoSystemsTable 1`] = `
+<table
+  aria-label="Host inventory"
+  class="ins-c-entity-table pf-c-table pf-m-grid-md"
+  data-ouia-component-id="OUIA-Generated-Table-6"
+  data-ouia-component-type="PF4/Table"
+  data-ouia-safe="true"
+  role="grid"
+>
+  <thead
+    class=""
+  >
+    <tr
+      class=""
+      data-ouia-component-id="OUIA-Generated-TableRow-19"
+      data-ouia-component-type="PF4/TableRow"
+      data-ouia-safe="true"
+    >
+      <th
+        class=""
+        data-key="0"
+        data-label="One"
+        scope="col"
+      >
+        One
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    class=""
+    role="rowgroup"
+  >
+    <tr
+      class=""
+      data-ouia-component-id="OUIA-Generated-TableRow-20"
+      data-ouia-component-type="PF4/TableRow"
+      data-ouia-safe="true"
+    >
+      <td
+        class=""
+        colspan="1"
+        data-key="0"
+        data-label="One"
+      >
+        <div>
+          NO SYSTEMS
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
 exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
 <Table
   aria-label="Host inventory"
@@ -532,7 +585,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
 <table
   aria-label="Host inventory"
   class="ins-c-entity-table pf-c-table pf-m-grid-md"
-  data-ouia-component-id="OUIA-Generated-Table-24"
+  data-ouia-component-id="OUIA-Generated-Table-26"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -542,7 +595,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-51"
+      data-ouia-component-id="OUIA-Generated-TableRow-53"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -605,7 +658,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-52"
+      data-ouia-component-id="OUIA-Generated-TableRow-54"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >

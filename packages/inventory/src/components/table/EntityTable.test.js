@@ -69,6 +69,22 @@ describe('EntityTable', () => {
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
+        it('should render correctly - with customNoSystemsTable', () => {
+            const store = mockStore({
+                entities: {
+                    loaded: true,
+                    columns: [{ key: 'one', title: 'One' }],
+                    rows: []
+                }
+            });
+            const wrapper = render(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable noSystemsTable={ <div>NO SYSTEMS</div> } />
+                </Provider>
+            </MemoryRouter>);
+            expect(toJson(wrapper)).toMatchSnapshot();
+        });
+
         it('should render correctly - grid breakpoints', () => {
             const store = mockStore({
                 entities: {
