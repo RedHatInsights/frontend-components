@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React from 'react';
 import Pagination from './Pagination';
@@ -5,6 +6,7 @@ import { render, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
+import { Provider } from 'react-redux';
 
 jest.mock('../../redux/actions', () => {
     const actions = jest.requireActual('../../redux/actions');

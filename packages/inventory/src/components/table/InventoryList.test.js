@@ -130,7 +130,6 @@ describe('InventoryList', () => {
         });
 
         it('should fire refresh calling it from ref', () => {
-            mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
