@@ -14,7 +14,7 @@
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js",
         "build:translations": "node ./pre-publish.js",
-        "extract": "formatjs extract --out-file build/messages/src/messages.json",
+        "extract": "formatjs extract -- \"src/**/*.{js,jsx}\" --out-file build/messages/src/messages.json",
         "prepublishOnly": "npm run build:translations",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
