@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { Fragment, forwardRef } from 'react';
+import React, { Fragment, forwardRef, useEffect, useRef } from 'react';
 import { useSelector, shallowEqual, useStore, useDispatch } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
@@ -8,6 +8,23 @@ import InventoryList from './InventoryList';
 import Pagination from './Pagination';
 import AccessDenied from '../../shared/AccessDenied';
 import { loadSystems } from '../../shared';
+import isEqual from 'lodash/isEqual';
+
+/**
+ * A helper function to store props and to always return the latest state.
+ * For example, EntityTableToolbar wraps OnRefreshData in a callback, so we need this
+ * to get the latest props and not the props at the time of when the function is
+ * being wrapped in callback.
+ */
+const propsCache = () => {
+    let cache = {};
+
+    const updateProps = (props) => { cache = props; };
+
+    const getProps = () => cache;
+
+    return { updateProps, getProps };
+};
 
 /**
  * This component is used to combine all essential components together:
@@ -34,6 +51,7 @@ const InventoryTable = forwardRef(({
     hideFilters,
     paginationProps,
     errorState = <ErrorState />,
+    autoRefresh,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
@@ -63,8 +81,21 @@ const InventoryTable = forwardRef(({
     const sortBy = useSelector(({ entities: { sortBy: invSortBy } }) => (
         hasItems ? propsSortBy : invSortBy
     ), shallowEqual);
+
     const dispatch = useDispatch();
     const store = useStore();
+
+    const cache = useRef(propsCache());
+    cache.current.updateProps({
+        page,
+        perPage,
+        items,
+        sortBy,
+        hideFilters,
+        showTags,
+        getEntities,
+        customFilters
+    });
 
     /**
      * If consumer wants to change data they can call this function via component ref.
@@ -72,18 +103,19 @@ const InventoryTable = forwardRef(({
      */
     const onRefreshData = (options = {}, disableOnRefresh) => {
         const { activeFilters } = store.getState().entities;
+        const cachedProps = cache.current?.getProps() || {};
 
         // eslint-disable-next-line camelcase
-        const currPerPage = options?.per_page || options?.perPage || perPage;
+        const currPerPage = options?.per_page || options?.perPage || cachedProps.perPage;
 
         const params = {
-            page,
+            page: cachedProps.page,
             per_page: currPerPage,
-            items,
-            sortBy,
-            hideFilters,
+            items: cachedProps.items,
+            sortBy: cachedProps.sortBy,
+            hideFilters: cachedProps.hideFilters,
             filters: activeFilters,
-            ...customFilters,
+            ...cachedProps.customFilters,
             ...options
         };
 
@@ -92,8 +124,8 @@ const InventoryTable = forwardRef(({
                 dispatch(
                     loadSystems(
                         { ...params, ...options },
-                        showTags,
-                        getEntities
+                        cachedProps.showTags,
+                        cachedProps.getEntities
                     )
                 );
             });
@@ -101,12 +133,20 @@ const InventoryTable = forwardRef(({
             dispatch(
                 loadSystems(
                     params,
-                    showTags,
-                    getEntities
+                    cachedProps.showTags,
+                    cachedProps.getEntities
                 )
             );
         }
     };
+
+    const prevFilters = useRef(customFilters);
+    useEffect(() => {
+        if (autoRefresh && !isEqual(prevFilters.current, customFilters)) {
+            onRefreshData();
+            prevFilters.current = customFilters;
+        }
+    });
 
     return (
         (hasAccess === false && isFullView) ?
