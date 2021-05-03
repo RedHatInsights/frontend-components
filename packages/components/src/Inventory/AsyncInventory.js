@@ -29,7 +29,8 @@ const AsyncInventory = ({ fallback, onLoad, innerRef, component, ...props }) => 
 AsyncInventory.propTypes = {
     fallback: PropTypes.any,
     onLoad: PropTypes.func,
-    component: PropTypes.string
+    component: PropTypes.string,
+    innerRef: PropTypes.object
 };
 
 AsyncInventory.defaultProps = {

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -68,7 +69,10 @@ CollectionCard.propTypes = {
     detailLoaded: PropTypes.bool,
     entity: PropTypes.shape({
         updated: PropTypes.string,
-        created: PropTypes.string
+        created: PropTypes.string,
+        insights_id: PropTypes.string,
+        reporter: PropTypes.string,
+        rhel_machine_id: PropTypes.string
     }),
     handleClick: PropTypes.func,
     collectionInformation: PropTypes.shape({

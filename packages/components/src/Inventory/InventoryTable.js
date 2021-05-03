@@ -25,6 +25,11 @@ const BaseInvTable = (props) => {
     );
 };
 
+BaseInvTable.propTypes = {
+    fallback: PropTypes.node,
+    innerRef: PropTypes.object
+};
+
 /**
  * Inventory sub component.
  *

@@ -29,7 +29,9 @@ const InsightsLabel = ({ value, text, hideIcon, className, rest }) => {
 InsightsLabel.propTypes = {
     value: PropTypes.number,
     text: PropTypes.node,
-    hideIcon: PropTypes.bool
+    hideIcon: PropTypes.bool,
+    className: PropTypes.string,
+    rest: PropTypes.object
 };
 
 InsightsLabel.defaultProps = {

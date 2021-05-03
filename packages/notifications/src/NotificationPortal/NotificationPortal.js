@@ -51,7 +51,8 @@ Portal.propTypes = {
         dismissable: PropTypes.bool
     })),
     removeNotification: PropTypes.func.isRequired,
-    onClearAll: PropTypes.func
+    onClearAll: PropTypes.func,
+    rootId: PropTypes.string
 };
 
 const mapStateToProps = ({ notifications }, initialProps) => ({

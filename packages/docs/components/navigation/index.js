@@ -1,4 +1,5 @@
 import data from './components-navigation.json';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Nav, NavExpandable, NavGroup, NavItem, NavList } from '@patternfly/react-core';
@@ -77,6 +78,19 @@ const NavigationGroup = ({ group, items, packageName }) => {
             })}
         </NavGroup>
     );
+};
+
+NavigationGroup.propTypes = {
+    group: PropTypes.string.isRequired,
+    packageName: PropTypes.string,
+    href: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+            title: PropTypes.string,
+            name: PropTypes.string
+        })
+    ]))
 };
 
 const Navigation = () => {

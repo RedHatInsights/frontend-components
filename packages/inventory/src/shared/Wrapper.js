@@ -28,7 +28,8 @@ RenderWrapper.propTypes = {
     inventoryRef: PropTypes.any,
     store: PropTypes.object,
     customRender: PropTypes.bool,
-    isRbacEnabled: PropTypes.bool
+    isRbacEnabled: PropTypes.bool,
+    hideLoader: PropTypes.bool
 };
 
 export default RenderWrapper;

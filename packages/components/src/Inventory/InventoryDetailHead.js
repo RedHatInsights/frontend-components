@@ -25,6 +25,11 @@ const BaseInventoryDetailHead = (props) => {
     );
 };
 
+BaseInventoryDetailHead.propTypes = {
+    fallback: PropTypes.node,
+    innerRef: PropTypes.object
+};
+
 /**
  * Inventory sub component.
  *

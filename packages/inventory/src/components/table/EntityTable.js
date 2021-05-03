@@ -165,7 +165,8 @@ EntityTable.propTypes = {
         direction: PropTypes.oneOf([ 'asc', 'desc' ])
     }),
     tableProps: PropTypes.shape({
-        [PropTypes.string]: PropTypes.any
+        [PropTypes.string]: PropTypes.any,
+        RowWrapper: PropTypes.elementType
     }),
     onRowClick: PropTypes.func,
     showTags: PropTypes.bool,
@@ -173,7 +174,10 @@ EntityTable.propTypes = {
     disableDefaultColumns: PropTypes.oneOfType([ PropTypes.bool, PropTypes.arrayOf(PropTypes.string) ]),
     loaded: PropTypes.bool,
     columnsCounter: PropTypes.number,
-    columns: PropTypes.oneOfType([ PropTypes.array, PropTypes.func ])
+    columns: PropTypes.oneOfType([ PropTypes.array, PropTypes.func ]),
+    isLoaded: PropTypes.bool,
+    actions: PropTypes.object,
+    noDetail: PropTypes.any
 };
 
 EntityTable.defaultProps = {

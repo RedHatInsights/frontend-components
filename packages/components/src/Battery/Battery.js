@@ -84,7 +84,8 @@ export default Battery;
 Battery.propTypes = {
     severity: propTypes.oneOf([ 1, 2, 3, 4, 'info', 'low', 'warn', 'medium', 'error', 'high', 'critical' ]),
     label: propTypes.string.isRequired,
-    labelHidden: propTypes.bool
+    labelHidden: propTypes.bool,
+    className: propTypes.string
 };
 
 Battery.defaultProps = {

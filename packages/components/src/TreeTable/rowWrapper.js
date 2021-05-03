@@ -30,7 +30,8 @@ TreeRowWrapper.propTypes = {
         }),
         posinset: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
     })),
-    className: PropTypes.string
+    className: PropTypes.string,
+    row: PropTypes.object
 };
 
 export default TreeRowWrapper;

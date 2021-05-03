@@ -78,7 +78,9 @@ CullingInformation.propTypes = {
     staleWarning: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
     stale: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
     currDate: PropTypes.oneOfType([ PropTypes.string, PropTypes.number, PropTypes.instanceOf(Date) ]),
-    render: PropTypes.func
+    render: PropTypes.func,
+    className: PropTypes.string,
+    children: PropTypes.node
 };
 CullingInformation.defaultProps = {
     culled: new Date(0),

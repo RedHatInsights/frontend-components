@@ -84,7 +84,8 @@ Radio.propTypes = {
         isChecked: PropTypes.bool,
         onChange: PropTypes.func
     })),
-    isDisabled: PropTypes.bool
+    isDisabled: PropTypes.bool,
+    className: PropTypes.string
 };
 
 Radio.defaultProps = {
