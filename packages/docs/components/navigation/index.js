@@ -83,10 +83,11 @@ const NavigationGroup = ({ group, items, packageName }) => {
 NavigationGroup.propTypes = {
     group: PropTypes.string.isRequired,
     packageName: PropTypes.string,
+    href: PropTypes.string,
     items: PropTypes.arrayOf(PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.shape({
-            href: PropTypes.string.isRequired,
+            href: PropTypes.string,
             title: PropTypes.string,
             name: PropTypes.string
         })

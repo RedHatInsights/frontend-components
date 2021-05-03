@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React from 'react';
 import { act } from 'react-dom/test-utils';
@@ -10,6 +11,20 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
 import { ConditionalFilter } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import * as actions from '../../shared/constants';
+
+jest.mock('../../redux/actions', () => {
+    const actions = jest.requireActual('../../redux/actions');
+    const { ACTION_TYPES } = jest.requireActual('../../redux/action-types');
+    return {
+        __esModule: true,
+        ...actions,
+        loadEntities: () => ({
+            type: ACTION_TYPES.LOAD_ENTITIES,
+            payload: () => Promise.resolve({}),
+            meta: { showTags: undefined }
+        })
+    };
+});
 
 describe('InventoryTable', () => {
     let initialState;
