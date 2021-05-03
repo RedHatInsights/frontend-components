@@ -2,7 +2,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 
 import { Dropdown, DropdownItem } from '@patternfly/react-core';
 

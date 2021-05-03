@@ -6,7 +6,7 @@ jest.mock('loader-utils', () => ({
     })
 }));
 
-describe.only('chromeRenderLoader', () => {
+describe('chromeRenderLoader', () => {
     beforeAll(() => {
         global.insights = {
             chrome: {

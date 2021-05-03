@@ -3,6 +3,8 @@
 exports[`Checkbox render should render correctly - disabled 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -29,6 +31,7 @@ exports[`Checkbox render should render correctly - disabled 1`] = `
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -37,6 +40,7 @@ exports[`Checkbox render should render correctly - disabled 1`] = `
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="checkbox"
     width=""
   >
@@ -119,6 +123,8 @@ exports[`Checkbox render should render correctly 1`] = `
 exports[`Checkbox render should render correctly placeholder 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -145,6 +151,7 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText="some placeholder"
     removeSelectionAriaLabel="Remove"
@@ -153,6 +160,7 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="checkbox"
     width=""
   >
@@ -222,6 +230,8 @@ exports[`Checkbox render should render correctly placeholder 1`] = `
 exports[`Checkbox render should render correctly with items 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -248,6 +258,7 @@ exports[`Checkbox render should render correctly with items 1`] = `
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -256,6 +267,7 @@ exports[`Checkbox render should render correctly with items 1`] = `
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="checkbox"
     width=""
   >
@@ -325,6 +337,8 @@ exports[`Checkbox render should render correctly with items 1`] = `
 exports[`Checkbox render should render correctly with items and default object value 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -351,6 +365,7 @@ exports[`Checkbox render should render correctly with items and default object v
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -363,6 +378,7 @@ exports[`Checkbox render should render correctly with items and default object v
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="checkbox"
     width=""
   >
@@ -432,6 +448,8 @@ exports[`Checkbox render should render correctly with items and default object v
 exports[`Checkbox render should render correctly with items and default value 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -458,6 +476,7 @@ exports[`Checkbox render should render correctly with items and default value 1`
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -470,6 +489,7 @@ exports[`Checkbox render should render correctly with items and default value 1`
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="checkbox"
     width=""
   >
@@ -539,6 +559,8 @@ exports[`Checkbox render should render correctly with items and default value 1`
 exports[`Checkbox render should render correctly with items and selected value 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -565,6 +587,7 @@ exports[`Checkbox render should render correctly with items and selected value 1
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -573,6 +596,7 @@ exports[`Checkbox render should render correctly with items and selected value 1
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="checkbox"
     width=""
   >

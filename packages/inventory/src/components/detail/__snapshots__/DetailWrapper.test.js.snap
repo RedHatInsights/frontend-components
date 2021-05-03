@@ -32,7 +32,6 @@ Array [
           </span>
           <span>
             <span
-              aria-describedby="pf-tooltip-3"
               className="ins-c-inventory__culling-danger"
             >
               <svg
@@ -88,7 +87,6 @@ Array [
           </span>
           <span>
             <span
-              aria-describedby="pf-tooltip-3"
               className="ins-c-inventory__culling-danger"
             >
               <svg
@@ -336,7 +334,6 @@ exports[`DetailWrapper DOM should render with data 1`] = `
                   </span>
                   <span>
                     <span
-                      aria-describedby="pf-tooltip-1"
                       className="ins-c-inventory__culling-danger"
                     >
                       <svg

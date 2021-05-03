@@ -2,7 +2,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import { Provider } from 'react-redux';
 import toJson from 'enzyme-to-json';
 import TagsModal from './TagsModal';

@@ -129,6 +129,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "currPage": "Current page",
                         "items": "",
                         "itemsPerPage": "Items per page",
+                        "ofWord": "of",
                         "optionsToggle": "Items per page",
                         "page": "",
                         "paginationTitle": "Pagination",
@@ -158,6 +159,7 @@ exports[`InfoTable api expandable should open 1`] = `
                           itemCount={4}
                           itemsTitle=""
                           lastIndex={4}
+                          ofWord="of"
                         >
                           <b>
                             1
@@ -165,7 +167,8 @@ exports[`InfoTable api expandable should open 1`] = `
                             4
                           </b>
                            
-                          of 
+                          of
+                           
                           <b>
                             4
                           </b>
@@ -328,7 +331,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                           4
                                         </b>
                                          
-                                        of 
+                                        of
+                                         
                                         <b>
                                           4
                                         </b>
@@ -389,7 +393,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                       4
                                     </b>
                                      
-                                    of 
+                                    of
+                                     
                                     <b>
                                       4
                                     </b>
@@ -423,7 +428,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                               4
                                             </b>
                                              
-                                            of 
+                                            of
+                                             
                                             <b>
                                               4
                                             </b>
@@ -499,7 +505,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                                 4
                                               </b>
                                                
-                                              of 
+                                              of
+                                               
                                               <b>
                                                 4
                                               </b>
@@ -595,6 +602,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         isCompact={true}
                         isDisabled={false}
                         lastPage={1}
+                        ofWord="of"
                         onFirstClick={[Function]}
                         onLastClick={[Function]}
                         onNextClick={[Function]}
@@ -806,6 +814,7 @@ exports[`InfoTable api expandable should open 1`] = `
     aria-label="General information dialog table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         "One cell",
@@ -819,6 +828,7 @@ exports[`InfoTable api expandable should open 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={false}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSort={[Function]}
     ouiaSafe={true}
@@ -921,6 +931,7 @@ exports[`InfoTable api expandable should open 1`] = `
               "allRowsSelected": false,
               "areActionsDisabled": undefined,
               "canSelectAll": true,
+              "canSortFavorites": true,
               "contentId": "expanded-content",
               "dropdownDirection": "down",
               "dropdownPosition": "right",
@@ -928,6 +939,7 @@ exports[`InfoTable api expandable should open 1`] = `
               "firstUserColumnIndex": 1,
               "onCollapse": [Function],
               "onExpand": undefined,
+              "onFavorite": undefined,
               "onRowEdit": undefined,
               "onSelect": undefined,
               "onSort": [Function],
@@ -971,6 +983,7 @@ exports[`InfoTable api expandable should open 1`] = `
               "allRowsSelected": false,
               "areActionsDisabled": undefined,
               "canSelectAll": true,
+              "canSortFavorites": true,
               "contentId": "expanded-content",
               "dropdownDirection": "down",
               "dropdownPosition": "right",
@@ -978,6 +991,7 @@ exports[`InfoTable api expandable should open 1`] = `
               "firstUserColumnIndex": 1,
               "onCollapse": [Function],
               "onExpand": undefined,
+              "onFavorite": undefined,
               "onRowEdit": undefined,
               "onSelect": undefined,
               "onSort": [Function],
@@ -1020,6 +1034,7 @@ exports[`InfoTable api expandable should open 1`] = `
               "allRowsSelected": false,
               "areActionsDisabled": undefined,
               "canSelectAll": true,
+              "canSortFavorites": true,
               "contentId": "expanded-content",
               "dropdownDirection": "down",
               "dropdownPosition": "right",
@@ -1027,6 +1042,7 @@ exports[`InfoTable api expandable should open 1`] = `
               "firstUserColumnIndex": 1,
               "onCollapse": [Function],
               "onExpand": undefined,
+              "onFavorite": undefined,
               "onRowEdit": undefined,
               "onSelect": undefined,
               "onSort": [Function],
@@ -1055,6 +1071,7 @@ exports[`InfoTable api expandable should open 1`] = `
       }
       gridBreakPoint="grid-md"
       isStickyHeader={false}
+      isTreeTable={false}
       ouiaSafe={true}
       renderers={
         Object {
@@ -1077,6 +1094,7 @@ exports[`InfoTable api expandable should open 1`] = `
         className=""
         gridBreakPoint="grid-md"
         isStickyHeader={false}
+        isTreeTable={false}
         ouiaSafe={true}
         role="grid"
         variant="compact"
@@ -1088,6 +1106,7 @@ exports[`InfoTable api expandable should open 1`] = `
           gridBreakPoint="grid-md"
           innerRef={null}
           isStickyHeader={false}
+          isTreeTable={false}
           ouiaSafe={true}
           role="grid"
           variant="compact"
@@ -1130,6 +1149,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
                             "canSelectAll": true,
+                            "canSortFavorites": true,
                             "contentId": "expanded-content",
                             "dropdownDirection": "down",
                             "dropdownPosition": "right",
@@ -1137,6 +1157,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "firstUserColumnIndex": 1,
                             "onCollapse": [Function],
                             "onExpand": undefined,
+                            "onFavorite": undefined,
                             "onRowEdit": undefined,
                             "onSelect": undefined,
                             "onSort": [Function],
@@ -1180,6 +1201,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
                             "canSelectAll": true,
+                            "canSortFavorites": true,
                             "contentId": "expanded-content",
                             "dropdownDirection": "down",
                             "dropdownPosition": "right",
@@ -1187,6 +1209,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "firstUserColumnIndex": 1,
                             "onCollapse": [Function],
                             "onExpand": undefined,
+                            "onFavorite": undefined,
                             "onRowEdit": undefined,
                             "onSelect": undefined,
                             "onSort": [Function],
@@ -1229,6 +1252,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
                             "canSelectAll": true,
+                            "canSortFavorites": true,
                             "contentId": "expanded-content",
                             "dropdownDirection": "down",
                             "dropdownPosition": "right",
@@ -1236,6 +1260,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "firstUserColumnIndex": 1,
                             "onCollapse": [Function],
                             "onExpand": undefined,
+                            "onFavorite": undefined,
                             "onRowEdit": undefined,
                             "onSelect": undefined,
                             "onSort": [Function],
@@ -1338,6 +1363,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                     "allRowsSelected": false,
                                     "areActionsDisabled": undefined,
                                     "canSelectAll": true,
+                                    "canSortFavorites": true,
                                     "contentId": "expanded-content",
                                     "dropdownDirection": "down",
                                     "dropdownPosition": "right",
@@ -1345,6 +1371,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                     "firstUserColumnIndex": 1,
                                     "onCollapse": [Function],
                                     "onExpand": undefined,
+                                    "onFavorite": undefined,
                                     "onRowEdit": undefined,
                                     "onSelect": undefined,
                                     "onSort": [Function],
@@ -1388,6 +1415,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                     "allRowsSelected": false,
                                     "areActionsDisabled": undefined,
                                     "canSelectAll": true,
+                                    "canSortFavorites": true,
                                     "contentId": "expanded-content",
                                     "dropdownDirection": "down",
                                     "dropdownPosition": "right",
@@ -1395,6 +1423,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                     "firstUserColumnIndex": 1,
                                     "onCollapse": [Function],
                                     "onExpand": undefined,
+                                    "onFavorite": undefined,
                                     "onRowEdit": undefined,
                                     "onSelect": undefined,
                                     "onSort": [Function],
@@ -1437,6 +1466,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                     "allRowsSelected": false,
                                     "areActionsDisabled": undefined,
                                     "canSelectAll": true,
+                                    "canSortFavorites": true,
                                     "contentId": "expanded-content",
                                     "dropdownDirection": "down",
                                     "dropdownPosition": "right",
@@ -1444,6 +1474,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                     "firstUserColumnIndex": 1,
                                     "onCollapse": [Function],
                                     "onExpand": undefined,
+                                    "onFavorite": undefined,
                                     "onRowEdit": undefined,
                                     "onSelect": undefined,
                                     "onSort": [Function],
@@ -1516,7 +1547,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                           data-key={0}
                                           data-label=""
                                           onMouseEnter={[Function]}
-                                          scope=""
+                                          scope={null}
                                         />
                                       </ThBase>
                                     </Th>
@@ -1633,6 +1664,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "allRowsSelected": false,
                         "areActionsDisabled": undefined,
                         "canSelectAll": true,
+                        "canSortFavorites": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -1640,6 +1672,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "firstUserColumnIndex": 1,
                         "onCollapse": [Function],
                         "onExpand": undefined,
+                        "onFavorite": undefined,
                         "onRowEdit": undefined,
                         "onSelect": undefined,
                         "onSort": [Function],
@@ -1683,6 +1716,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "allRowsSelected": false,
                         "areActionsDisabled": undefined,
                         "canSelectAll": true,
+                        "canSortFavorites": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -1690,6 +1724,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "firstUserColumnIndex": 1,
                         "onCollapse": [Function],
                         "onExpand": undefined,
+                        "onFavorite": undefined,
                         "onRowEdit": undefined,
                         "onSelect": undefined,
                         "onSort": [Function],
@@ -1732,6 +1767,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "allRowsSelected": false,
                         "areActionsDisabled": undefined,
                         "canSelectAll": true,
+                        "canSortFavorites": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -1739,6 +1775,7 @@ exports[`InfoTable api expandable should open 1`] = `
                         "firstUserColumnIndex": 1,
                         "onCollapse": [Function],
                         "onExpand": undefined,
+                        "onFavorite": undefined,
                         "onRowEdit": undefined,
                         "onSelect": undefined,
                         "onSort": [Function],
@@ -2242,6 +2279,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
                             "canSelectAll": true,
+                            "canSortFavorites": true,
                             "contentId": "expanded-content",
                             "dropdownDirection": "down",
                             "dropdownPosition": "right",
@@ -2249,6 +2287,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "firstUserColumnIndex": 1,
                             "onCollapse": [Function],
                             "onExpand": undefined,
+                            "onFavorite": undefined,
                             "onRowEdit": undefined,
                             "onSelect": undefined,
                             "onSort": [Function],
@@ -2292,6 +2331,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
                             "canSelectAll": true,
+                            "canSortFavorites": true,
                             "contentId": "expanded-content",
                             "dropdownDirection": "down",
                             "dropdownPosition": "right",
@@ -2299,6 +2339,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "firstUserColumnIndex": 1,
                             "onCollapse": [Function],
                             "onExpand": undefined,
+                            "onFavorite": undefined,
                             "onRowEdit": undefined,
                             "onSelect": undefined,
                             "onSort": [Function],
@@ -2341,6 +2382,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
                             "canSelectAll": true,
+                            "canSortFavorites": true,
                             "contentId": "expanded-content",
                             "dropdownDirection": "down",
                             "dropdownPosition": "right",
@@ -2348,6 +2390,7 @@ exports[`InfoTable api expandable should open 1`] = `
                             "firstUserColumnIndex": 1,
                             "onCollapse": [Function],
                             "onExpand": undefined,
+                            "onFavorite": undefined,
                             "onRowEdit": undefined,
                             "onSelect": undefined,
                             "onSort": [Function],
@@ -3014,6 +3057,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3021,6 +3065,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -3064,6 +3109,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3071,6 +3117,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -3113,6 +3160,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3120,6 +3168,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -3434,6 +3483,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3441,6 +3491,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -3484,6 +3535,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3491,6 +3543,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -3533,6 +3586,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3540,6 +3594,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -3785,6 +3840,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3792,6 +3848,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -3835,6 +3892,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3842,6 +3900,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -3884,6 +3943,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3891,6 +3951,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -4164,6 +4225,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4171,6 +4233,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -4214,6 +4277,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4221,6 +4285,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -4263,6 +4328,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4270,6 +4336,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -4515,6 +4582,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4522,6 +4590,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -4565,6 +4634,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4572,6 +4642,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -4614,6 +4685,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4621,6 +4693,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -4935,6 +5008,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4942,6 +5016,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -4985,6 +5060,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4992,6 +5068,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -5034,6 +5111,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -5041,6 +5119,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -5286,6 +5365,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -5293,6 +5373,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -5336,6 +5417,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -5343,6 +5425,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -5385,6 +5468,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -5392,6 +5476,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -5661,6 +5746,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -5668,6 +5754,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -5711,6 +5798,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -5718,6 +5806,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -5760,6 +5849,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": true,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -5767,6 +5857,7 @@ exports[`InfoTable api expandable should open 1`] = `
                                       "firstUserColumnIndex": 1,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": undefined,
                                       "onSort": [Function],
@@ -6048,6 +6139,7 @@ exports[`InfoTable api expandable should open 1`] = `
                 "currPage": "Current page",
                 "items": "",
                 "itemsPerPage": "Items per page",
+                "ofWord": "of",
                 "optionsToggle": "Items per page",
                 "page": "",
                 "paginationTitle": "Pagination",
@@ -6225,7 +6317,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                   4
                                 </b>
                                  
-                                of 
+                                of
+                                 
                                 <b>
                                   4
                                 </b>
@@ -6286,7 +6379,8 @@ exports[`InfoTable api expandable should open 1`] = `
                               4
                             </b>
                              
-                            of 
+                            of
+                             
                             <b>
                               4
                             </b>
@@ -6320,7 +6414,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                       4
                                     </b>
                                      
-                                    of 
+                                    of
+                                     
                                     <b>
                                       4
                                     </b>
@@ -6396,7 +6491,8 @@ exports[`InfoTable api expandable should open 1`] = `
                                         4
                                       </b>
                                        
-                                      of 
+                                      of
+                                       
                                       <b>
                                         4
                                       </b>
@@ -6492,6 +6588,7 @@ exports[`InfoTable api expandable should open 1`] = `
                 isCompact={false}
                 isDisabled={false}
                 lastPage={1}
+                ofWord="of"
                 onFirstClick={[Function]}
                 onLastClick={[Function]}
                 onNextClick={[Function]}
@@ -6630,7 +6727,8 @@ exports[`InfoTable api expandable should open 1`] = `
                     <span
                       aria-hidden="true"
                     >
-                      of 
+                      of
+                       
                       1
                     </span>
                   </div>
@@ -7128,6 +7226,7 @@ exports[`InfoTable should render expandable set to true 1`] = `
     aria-label="General information dialog table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         "One cell",
@@ -7141,6 +7240,7 @@ exports[`InfoTable should render expandable set to true 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={false}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSort={[Function]}
     ouiaSafe={true}
@@ -7253,6 +7353,7 @@ exports[`InfoTable should render expandable set to true 1`] = `
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -7295,6 +7396,7 @@ exports[`InfoTable should render multiple cells 1`] = `
     aria-label="General information dialog table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         "One cell",
@@ -7308,6 +7410,7 @@ exports[`InfoTable should render multiple cells 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={false}
+    isTreeTable={false}
     onSort={[Function]}
     ouiaSafe={true}
     role="grid"
@@ -7392,6 +7495,7 @@ exports[`InfoTable should render multiple cells 1`] = `
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -7434,6 +7538,7 @@ exports[`InfoTable should render no data 1`] = `
     aria-label="General information dialog table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={Array []}
     className=""
     contentId="expanded-content"
@@ -7442,6 +7547,7 @@ exports[`InfoTable should render no data 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={false}
+    isTreeTable={false}
     onSort={[Function]}
     ouiaSafe={true}
     role="grid"
@@ -7509,6 +7615,7 @@ exports[`InfoTable should render no data 1`] = `
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -7551,6 +7658,7 @@ exports[`InfoTable should render onSort set 1`] = `
     aria-label="General information dialog table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -7569,6 +7677,7 @@ exports[`InfoTable should render onSort set 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={false}
+    isTreeTable={false}
     onSort={[Function]}
     ouiaSafe={true}
     role="grid"
@@ -7653,6 +7762,7 @@ exports[`InfoTable should render onSort set 1`] = `
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -7762,6 +7872,7 @@ exports[`InfoTable should render one cell 1`] = `
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
