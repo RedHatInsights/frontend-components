@@ -26,20 +26,20 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory-general-info#readme",
     "peerDependencies": {
-        "@patternfly/react-core": ">=4.18.5",
-        "@patternfly/react-icons": ">=4.3.5",
-        "@patternfly/react-table": ">=4.5.7",
-        "prop-types": ">=15.6.2",
-        "react": ">=16.5.1",
-        "react-dom": ">=16.5.1",
-        "react-redux": ">=5.0.7",
-        "react-router-dom": ">=4.2.2"
+        "@patternfly/react-core": "^4.115.2",
+        "@patternfly/react-icons": "^4.10.2",
+        "@patternfly/react-table": "^4.26.7",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components": ">=3.0.0",
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "@redhat-cloud-services/host-inventory-client": "1.0.91",
         "@redhat-cloud-services/frontend-components-inventory": "*",
-        "abortcontroller-polyfill": "^1.7.1"
+        "abortcontroller-polyfill": "^1.7.1",
+        "prop-types": "^15.7.2",
+        "redux": "^4.1.0",
+        "react-redux": "^7.2.4"
     }
 }

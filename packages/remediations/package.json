@@ -30,8 +30,8 @@
         "@patternfly/react-icons": ">=4.3.5",
         "@patternfly/react-table": ">=4.5.7",
         "prop-types": ">=15.6.2",
-        "react": ">=16.5.1",
-        "react-dom": ">=16.5.1",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0",
         "react-redux": ">=5.0.7"
     },
     "dependencies": {

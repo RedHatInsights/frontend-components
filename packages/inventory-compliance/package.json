@@ -29,13 +29,13 @@
         "@patternfly/react-core": ">=4.18.5",
         "@patternfly/react-icons": ">=4.3.5",
         "@patternfly/react-table": ">=4.5.7",
-        "react": ">=16.13.1",
-        "react-dom": ">=16.13.1",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0",
         "prop-types": ">=15.6.2",
         "react-redux": ">=5.0.7",
         "react-router-dom": ">=5.2.0",
         "react-content-loader": ">=5.0.4",
-        "lodash": "4.17.15"
+        "lodash": "^4.17.21"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components": ">=3.0.0",
