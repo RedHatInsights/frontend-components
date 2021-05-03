@@ -121,12 +121,12 @@
     },
     "scripts": {
         "clean": "lerna clean -y && rm -rf node_modules",
+        "postinstall": "npm run build",
         "start": "lerna run --parallel start --ignore=docs",
         "build": "lerna run build --stream --no-private --ignore=@redhat-cloud-services/frontend-components-config*",
         "generate-translations": "npm run build && node packages/utils/src/mergeMessages.js",
         "test": "jest",
         "coverage": "codecov",
-        "prepare": "npm run build",
         "docs": "lerna run --parallel dev",
         "generate:components:docs": "lerna run --parallel generate:components:docs",
         "playground": "lerna run --parallel start:dev",
