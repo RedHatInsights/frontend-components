@@ -1,4 +1,6 @@
+/* eslint-disable camelcase */
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import InventoryTable from './InventoryTable';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
@@ -7,10 +9,12 @@ import promiseMiddleware from 'redux-promise-middleware';
 import { BrowserRouter as Router } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
 import { ConditionalFilter } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
+import * as actions from '../../shared/constants';
 
 describe('NoSystemsTable', () => {
     let initialState;
     let mockStore;
+    let spy;
 
     beforeEach(() => {
         mockStore = configureStore([ promiseMiddleware() ]);
@@ -30,6 +34,11 @@ describe('NoSystemsTable', () => {
                 }
             }
         };
+        spy = jest.spyOn(actions, 'loadSystems').mockImplementation(() => ({ type: 'reload' }));
+    });
+
+    afterEach(() => {
+        spy.mockRestore();
     });
 
     it('should render correctly - no data', () => {
@@ -139,6 +148,54 @@ describe('NoSystemsTable', () => {
             </Router>
         </Provider>);
         expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
+    });
+
+    describe('autoRefresh', () => {
+        class Dummy extends React.Component {
+            render() {
+                const { store, ...props } = this.props;
+
+                return (
+                    <Provider store={ store }>
+                        <Router>
+                            <InventoryTable {...props} />
+                        </Router>
+                    </Provider>
+                );
+            }
+        }
+
+        it('should not reload on customFilters', async () => {
+            const store = mockStore(initialState);
+            const wrapper = mount(<Dummy store={ store } />);
+
+            await act(async () => {
+                wrapper.setProps({ customFilters: { system_profile: { sap_ids: [ 'id1' ] } } });
+            });
+            wrapper.update();
+
+            expect(spy).not.toHaveBeenCalled();
+        });
+
+        it('should reload on customFilters', async () =>{
+            const store = mockStore(initialState);
+            const wrapper = mount(<Dummy store={ store } autoRefresh />);
+
+            await act(async () => {
+                wrapper.setProps({ customFilters: { system_profile: { sap_ids: [ 'id1' ] } } });
+            });
+            wrapper.update();
+
+            expect(spy).toHaveBeenCalled();
+            spy.mockClear();
+
+            await act(async () => {
+                wrapper.setProps({ customFilters: { system_profile: { sap_ids: [ 'id1' ] } } });
+            });
+            wrapper.update();
+
+            expect(spy).not.toHaveBeenCalled();
+        });
     });
 
     describe('hideFilters', () => {
