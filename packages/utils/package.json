@@ -38,6 +38,7 @@
         "awesome-debounce-promise": "^2.1.0",
         "axios": "^0.21.1",
         "commander": ">=2.20.0",
+        "mkdirp": "^1.0.4",
         "react-content-loader": ">=3.4.1"
     },
     "sideEffects": false

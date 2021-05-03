@@ -28,6 +28,7 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/components#readme",
     "peerDependencies": {
+        "@patternfly/patternfly": ">=4.102.2",
         "@patternfly/react-table": ">=4.5.7",
         "@patternfly/react-core": ">=4.18.5",
         "@patternfly/react-icons": ">=4.3.5",

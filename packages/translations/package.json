@@ -8,12 +8,13 @@
         "access": "public"
     },
     "scripts": {
-        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
+        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages && npm run extract",
         "build:js": "BABEL_ENV=cjs babel src --config-file ./babel.config.js --out-dir ./ --ignore '**/*.test.js'",
         "build:esm": "BABEL_ENV=esm babel src --config-file ./babel.config.js --out-dir ./esm --ignore '**/*.test.js'",
         "build:css": "node ../../scripts/build-styles.js",
         "build:packages": "node ../../scripts/build-packages.js",
         "build:translations": "node ./pre-publish.js",
+        "extract": "formatjs extract --out-file build/messages/src/messages.json",
         "prepublishOnly": "npm run build:translations",
         "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
@@ -27,8 +28,10 @@
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/translations#readme",
+    "dependencies": {
+        "react-intl": "^5.17.4"
+    },
     "peerDependencies": {
-        "react-intl": ">=3.0.0",
         "prop-types": "^15.6.2",
         "react": "^16.5.1"
     },
@@ -36,6 +39,6 @@
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0"
     },
     "devDependencies": {
-        "babel-plugin-react-intl": "^4.1.5"
+        "@formatjs/cli": "^4.2.11"
     }
 }

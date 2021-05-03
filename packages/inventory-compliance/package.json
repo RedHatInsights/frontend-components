@@ -35,7 +35,6 @@
         "react-redux": ">=5.0.7",
         "react-router-dom": ">=5.2.0",
         "react-content-loader": ">=5.0.4",
-        "react-intl": ">=2.8.0",
         "lodash": "4.17.15"
     },
     "dependencies": {
@@ -45,7 +44,9 @@
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "@apollo/react-hooks": "^3.1.5",
         "apollo-boost": "^0.4.9",
+        "graphql": "^14.3.1",
         "graphql-tag": "^2.11.0",
+        "react-intl": "^5.17.4",
         "react-truncate": "^2.4.0"
     }
 }

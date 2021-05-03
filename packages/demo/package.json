@@ -31,6 +31,15 @@
         "@redhat-cloud-services/frontend-components-pdf-generator": "*"
     },
     "devDependencies": {
-        "webpack-dev-server": "^3.3.1"
+        "babel-loader": "^8.2.2",
+        "css-loader": "^5.2.4",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.3.1",
+        "mini-css-extract-plugin": "^1.6.0",
+        "sass-loader": "^11.0.1",
+        "source-map-loader": "^2.0.1",
+        "webpack": "^5.36.2",
+        "webpack-dev-server": "^3.11.2",
+        "write-file-webpack-plugin": "^4.5.1"
     }
 }
