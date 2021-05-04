@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 /* eslint-disable react/display-name */
 import React from 'react';
@@ -47,7 +48,7 @@ describe('EntityTable', () => {
             });
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable/>
+                    <EntityTable disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             expect(toJson(wrapper.find('EntityTable'), { mode: 'shallow' })).toMatchSnapshot();
@@ -63,7 +64,7 @@ describe('EntityTable', () => {
             });
             const wrapper = render(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable/>
+                    <EntityTable disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             expect(toJson(wrapper)).toMatchSnapshot();
@@ -94,7 +95,7 @@ describe('EntityTable', () => {
             });
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable/>
+                    <EntityTable disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
@@ -104,7 +105,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable hasCheckbox={false} />
+                    <EntityTable hasCheckbox={false} disableDefaultColumns />
                 </Provider>
             </MemoryRouter>);
             expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
@@ -114,7 +115,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable expandable />
+                    <EntityTable expandable disableDefaultColumns />
                 </Provider>
             </MemoryRouter>);
             expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
@@ -124,7 +125,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable actions={[]} />
+                    <EntityTable actions={[]} disableDefaultColumns />
                 </Provider>
             </MemoryRouter>);
             expect(toJson(wrapper.find('Table'), { mode: 'shallow' })).toMatchSnapshot();
@@ -135,7 +136,7 @@ describe('EntityTable', () => {
                 const store = mockStore(initialState);
                 const wrapper = mount(<MemoryRouter>
                     <Provider store={ store }>
-                        <EntityTable sortBy={{
+                        <EntityTable disableDefaultColumns sortBy={{
                             key: 'one',
                             directions: 'asc'
                         }} />
@@ -150,6 +151,7 @@ describe('EntityTable', () => {
                     <Provider store={ store }>
                         <EntityTable
                             hasCheckbox={false}
+                            disableDefaultColumns
                             sortBy={{
                                 key: 'one',
                                 directions: 'asc'
@@ -166,6 +168,7 @@ describe('EntityTable', () => {
                     <Provider store={ store }>
                         <EntityTable
                             expandable
+                            disableDefaultColumns
                             sortBy={{
                                 key: 'one',
                                 directions: 'asc'
@@ -181,7 +184,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = render(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable variant="compact" />
+                    <EntityTable disableDefaultColumns variant="compact" />
                 </Provider>
             </MemoryRouter>);
             expect(toJson(wrapper)).toMatchSnapshot();
@@ -191,7 +194,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = render(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable hasItems isLoaded={false} />
+                    <EntityTable disableDefaultColumns hasItems isLoaded={false} />
                 </Provider>
             </MemoryRouter>);
             expect(toJson(wrapper.find('EntityTable'), { mode: 'shallow' })).toMatchSnapshot();
@@ -225,11 +228,124 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable/>
+                    <EntityTable disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
 
             expect(wrapper.find(InsightsDisconnected)).toHaveLength(1);
+        });
+
+        it('should render correctly - custom columns via props', () => {
+            initialState = {
+                entities: {
+                    ...initialState.entities,
+                    rows: [{
+                        id: 'testing-id',
+                        insights_id: null,
+                        secret_attribute: 'super_secret_1',
+                        display_name: 'name_1'
+                    }, {
+                        id: 'testing-id-1',
+                        insights_id: 'some-id-herse',
+                        secret_attribute: 'super_secret_2',
+                        display_name: 'name_2'
+                    }]
+                }
+            };
+
+            const CustomCell = ({ children }) => <h1>{children}</h1>;
+
+            const store = mockStore(initialState);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable
+                        columns={
+                            [
+                                {
+                                    key: 'display_name',
+                                    renderFunc: (name) => <CustomCell>{name}</CustomCell>
+                                },
+                                {
+                                    key: 'secret_attribute',
+                                    title: 'Secret attribute',
+                                    renderFunc: (secret_attribute) => <CustomCell>{secret_attribute}</CustomCell>
+                                }
+                            ]
+                        }
+                    />
+                </Provider>
+            </MemoryRouter>);
+
+            expect(wrapper.find('table').find('th')).toHaveLength(4);
+            expect(wrapper.find('table').find('th').last().text()).toEqual('Secret attribute');
+            expect(wrapper.find('table').find(CustomCell)).toHaveLength(4);
+
+            const texts = wrapper.find('table').find(CustomCell).map(cell => cell.text());
+
+            expect(texts).toEqual(
+                [ 'name_1', 'super_secret_1', 'name_2', 'super_secret_2' ]
+            );
+        });
+
+        it('should disable just one default column', () => {
+            initialState = {
+                entities: {
+                    ...initialState.entities,
+                    columns: undefined,
+                    rows: [{
+                        id: 'testing-id',
+                        insights_id: null,
+                        secret_attribute: 'super_secret_1',
+                        display_name: 'name_1'
+                    }]
+                }
+            };
+
+            const store = mockStore(initialState);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable
+                        disableDefaultColumns={[ 'display_name' ]}
+                    />
+                </Provider>
+            </MemoryRouter>);
+
+            const texts = wrapper.find('table').find('th').map(cell => cell.text());
+            expect(texts).toEqual(
+                [ 'Operating system', 'Last seen' ]
+            );
+            expect(wrapper.find('table').find('th')).toHaveLength(2);
+        });
+
+        it('should disable just one default column + showTags', () => {
+            initialState = {
+                entities: {
+                    ...initialState.entities,
+                    columns: undefined,
+                    rows: [{
+                        id: 'testing-id',
+                        insights_id: null,
+                        secret_attribute: 'super_secret_1',
+                        display_name: 'name_1'
+                    }]
+                }
+            };
+
+            const store = mockStore(initialState);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable
+                        disableDefaultColumns={[ 'display_name' ]}
+                        showTags
+                    />
+                </Provider>
+            </MemoryRouter>);
+
+            const texts = wrapper.find('table').find('th').map(cell => cell.text());
+            expect(texts).toEqual(
+                [ 'Operating system', 'Tags', 'Last seen' ]
+            );
+            expect(wrapper.find('table').find('th')).toHaveLength(3);
         });
     });
 
@@ -238,7 +354,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable/>
+                    <EntityTable disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             wrapper.find('table tbody tr a[widget="col"]').first().simulate('click');
@@ -250,7 +366,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable onRowClick={onRowClick} />
+                    <EntityTable disableDefaultColumns onRowClick={onRowClick} />
                 </Provider>
             </MemoryRouter>);
             wrapper.find('table tbody tr a[widget="col"]').first().simulate('click');
@@ -270,7 +386,7 @@ describe('EntityTable', () => {
             });
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable expandable />
+                    <EntityTable disableDefaultColumns expandable />
                 </Provider>
             </MemoryRouter>);
             wrapper.find('.pf-c-table__toggle button').first().simulate('click');
@@ -290,7 +406,7 @@ describe('EntityTable', () => {
             });
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable expandable onExpandClick={onExpand} />
+                    <EntityTable disableDefaultColumns expandable onExpandClick={onExpand} />
                 </Provider>
             </MemoryRouter>);
             wrapper.find('.pf-c-table__toggle button').first().simulate('click');
@@ -301,7 +417,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable expandable />
+                    <EntityTable expandable disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             wrapper.find('table tbody tr .pf-c-table__check input').first().simulate('change', {
@@ -318,7 +434,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable expandable />
+                    <EntityTable expandable disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             wrapper.find('table tbody tr .pf-c-table__check input').first().simulate('change', {
@@ -335,7 +451,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable />
+                    <EntityTable disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             wrapper.find('table thead input[name="check-all"]').first().simulate('change', {
@@ -352,7 +468,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable />
+                    <EntityTable disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             wrapper.find('table thead th.pf-c-table__sort button').first().simulate('click');
@@ -369,7 +485,7 @@ describe('EntityTable', () => {
             const store = mockStore(initialState);
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable onSort={onSort} />
+                    <EntityTable onSort={onSort} disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             wrapper.find('table thead th.pf-c-table__sort button').first().simulate('click');
@@ -386,7 +502,7 @@ describe('EntityTable', () => {
             });
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
-                    <EntityTable onSort={onSort} />
+                    <EntityTable onSort={onSort} disableDefaultColumns/>
                 </Provider>
             </MemoryRouter>);
             wrapper.find('table thead th.pf-c-table__sort button').first().simulate('click');
