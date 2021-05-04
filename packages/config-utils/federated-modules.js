@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 const { ModuleFederationPlugin } = require('webpack').container;
-const jsVarName = require('./src/jsVarName');
+const jsVarName = require('./jsVarName');
 
 module.exports = ({
     root,
