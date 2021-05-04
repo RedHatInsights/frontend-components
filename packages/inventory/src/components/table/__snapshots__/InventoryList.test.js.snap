@@ -71,30 +71,6 @@ exports[`InventoryList should render correctly 1`] = `
           <th
             class=""
             data-key="0"
-            data-label="Name"
-            scope="col"
-          >
-            Name
-          </th>
-          <th
-            class="pf-m-wrap pf-m-width-10"
-            data-key="1"
-            data-label="Operating system"
-            scope="col"
-          >
-            Operating system
-          </th>
-          <th
-            class="pf-m-width-10"
-            data-key="2"
-            data-label="Last seen"
-            scope="col"
-          >
-            Last seen
-          </th>
-          <th
-            class=""
-            data-key="3"
             data-label="One"
             scope="col"
           >
@@ -114,9 +90,9 @@ exports[`InventoryList should render correctly 1`] = `
         >
           <td
             class=""
-            colspan="4"
+            colspan="1"
             data-key="0"
-            data-label="Name"
+            data-label="One"
           >
             <div
               class="ins-c-table__empty"
