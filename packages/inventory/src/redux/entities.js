@@ -83,9 +83,13 @@ export const defaultColumns = [
     }
 ];
 
-function entitiesPending(state) {
+function entitiesPending(state, { meta }) {
     return {
         ...state,
+        columns: mergeArraysByKey([
+            defaultColumns.filter(({ key }) => key !== 'tags' || meta?.showTags),
+            state.columns
+        ], 'key'),
         rows: [],
         loaded: false
     };

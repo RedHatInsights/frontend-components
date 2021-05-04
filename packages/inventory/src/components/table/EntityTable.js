@@ -69,14 +69,18 @@ const EntityTable = ({
 
     const columns = useRef([]);
     useMemo(() => {
-        const disabledColumns = Array.isArray(disableDefaultColumns) ? disableDefaultColumns : [];
-        const defaultColumnsFiltered = defaultColumns.filter(({ key }) =>
-            (key === 'tags' && showTags) || (key !== 'tags' && !disabledColumns.includes(key))
-        );
-        columns.current = mergeArraysByKey([
-            typeof disableDefaultColumns === 'boolean' && disableDefaultColumns ? [] : defaultColumnsFiltered,
-            columnsProp || columnsRedux || []
-        ], 'key');
+        if (columnsProp) {
+            const disabledColumns = Array.isArray(disableDefaultColumns) ? disableDefaultColumns : [];
+            const defaultColumnsFiltered = defaultColumns.filter(({ key }) =>
+                (key === 'tags' && showTags) || (key !== 'tags' && !disabledColumns.includes(key))
+            );
+            columns.current = mergeArraysByKey([
+                typeof disableDefaultColumns === 'boolean' && disableDefaultColumns ? [] : defaultColumnsFiltered,
+                columnsProp
+            ], 'key');
+        } else {
+            columns.current = columnsRedux;
+        }
     }, [
         showTags,
         Array.isArray(disableDefaultColumns) ? disableDefaultColumns.join() : disableDefaultColumns,

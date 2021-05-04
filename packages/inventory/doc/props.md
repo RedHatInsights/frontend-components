@@ -12,6 +12,7 @@
   - [onRefresh](#onrefresh)
   - [tableProps](#tableprops)
   - [paginationProps](#paginationprops)
+  - [autoRefresh](#autorefresh)
 
 # Props
 
@@ -41,7 +42,7 @@ An array of columns definitions. They are merged with default columns by their k
 
 *boolean | string[]*
 
-You can disable default columns. If you set this prop to `true`, then all the default columns are disabled. Or you can provide an array of keys to disable just specific ones: `[ 'display_name', 'last_seen' ]`.
+You can disable default columns. If you set this prop to `true`, then all the default columns are disabled. Or you can provide an array of keys to disable just specific ones: `[ 'display_name', 'last_seen' ]`. **This prop is working only with `columns` prop!** If you are changing columns via reducer, nothing changes. But you should consider migrating your application to use the prop.
 
 ## ref
 
@@ -84,3 +85,9 @@ Props passed to table component.
 *object*
 
 Props passed to paginations components.
+
+## autoRefresh
+
+*boolean*
+
+When `true`, the table is refreshed when `customFilters` are changed.

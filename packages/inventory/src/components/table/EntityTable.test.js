@@ -291,7 +291,6 @@ describe('EntityTable', () => {
             initialState = {
                 entities: {
                     ...initialState.entities,
-                    columns: undefined,
                     rows: [{
                         id: 'testing-id',
                         insights_id: null,
@@ -305,6 +304,7 @@ describe('EntityTable', () => {
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
                     <EntityTable
+                        columns={[]}
                         disableDefaultColumns={[ 'display_name' ]}
                     />
                 </Provider>
@@ -335,6 +335,7 @@ describe('EntityTable', () => {
             const wrapper = mount(<MemoryRouter>
                 <Provider store={ store }>
                     <EntityTable
+                        columns={[]}
                         disableDefaultColumns={[ 'display_name' ]}
                         showTags
                     />
