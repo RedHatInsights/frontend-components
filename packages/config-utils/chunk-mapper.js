@@ -1,5 +1,3 @@
-/* global require, module */
-
 class ChunkMapper {
     constructor(options) {
         this.config = {};

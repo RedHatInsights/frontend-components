@@ -7,6 +7,7 @@
     - [Disable chrome 2](#disable-chrome-2)
   - [Chunk mapper](#chunk-mapper)
   - [Federated modules](#federated-modules)
+    - [List of shared deps](#list-of-shared-deps)
 
 ## Chrome render loader
 
@@ -93,3 +94,22 @@ We've aimed for easy plug and play, but feel free to override any fed mods parti
 * `moduleName` - used to generate the file under this name (generally your `insights.appname` - if you have dashes in your name replace them with cammel case)
 * `useFileHash` - in order to prevent caching we are using file hashes, you might want to turn this off in your dev env
 * `exclude` - if you want to exclude any shared module you can do it trough here (even for general dependencies added by us)
+
+#### List of shared deps
+
+This packages exposes these shared dependencies
+* `lodash` - version taken from your `package.json`
+* `axios` - version taken from your `package.json`
+* `redux` - version taken from your `package.json`
+* `react` - version taken from your `package.json`, treated as singleton
+* `react-dom` - version taken from your `package.json`, treated as singleton
+* `react-router-dom` - version taken from your `package.json`
+* `react-redux` - version taken from your `package.json`
+* `redux-promise-middleware` - version taken from your `package.json`
+* `@patternfly/react-table` - version taken from your `package.json`
+* `@patternfly/react-core` - version taken from your `package.json`
+* `@patternfly/react-icons` - version taken from your `package.json`
+* `@patternfly/react-tokens` - version taken from your `package.json`
+* `@redhat-cloud-services/frontend-components` - version taken from your `package.json`
+* `@redhat-cloud-services/frontend-components-utilities` - version taken from your `package.json`
+* `@redhat-cloud-services/frontend-components-notifications` - version taken from your `package.json`
