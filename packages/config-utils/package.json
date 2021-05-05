@@ -1,22 +1,22 @@
 {
-  "name": "@redhat-cloud-services/frontend-components-config-utilities",
-  "version": "0.0.1",
-  "description": "Utilities for shared config used in RedHat Cloud Services project.",
-  "main": "index.js",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RedHatInsights/frontend-components.git"
-  },
-  "author": "",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/RedHatInsights/frontend-components/issues"
-  },
-  "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
-  "peerDependencies": {
-    "webpack": ">=5.0.0"
-  }
+    "name": "@redhat-cloud-services/frontend-components-config-utilities",
+    "version": "1.0.0",
+    "description": "Utilities for shared config used in RedHat Cloud Services project.",
+    "main": "index.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/RedHatInsights/frontend-components/issues"
+    },
+    "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
+    "peerDependencies": {
+        "webpack": ">=5.0.0"
+    }
 }
