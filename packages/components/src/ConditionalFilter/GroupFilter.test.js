@@ -43,6 +43,19 @@ const config = {
                     label: 'Second radio'
                 }
             ]
+        },
+        {
+            label: 'Groupselectable value',
+            groupSelectable: true,
+            items: [
+                {
+                    label: 'First value',
+                    value: 'first'
+                },
+                {
+                    label: 'Second value'
+                }
+            ]
         }
     ]
 };
@@ -135,6 +148,17 @@ describe('Group - component', () => {
             wrapper.find('.pf-c-select__menu-item').first().simulate('click');
             expect(onChange).toHaveBeenCalled();
         });
+
+        it('should call onChange when group is clicked', () => {
+            const onChange = jest.fn();
+            const wrapper = mount(<Group {...config} onChange={ onChange } />);
+            expect(toJson(wrapper)).toMatchSnapshot();
+            wrapper.find('button.pf-c-select__toggle-button').last().simulate('click');
+            wrapper.update();
+            wrapper.find('.pf-c-select__menu-item').last().simulate('click');
+            expect(onChange).toHaveBeenCalled();
+        });
+
         it('should update selected', () => {
             const wrapper = mount(<Group {...config} />);
             wrapper.find('button.pf-c-select__toggle-button').first().simulate('click');
