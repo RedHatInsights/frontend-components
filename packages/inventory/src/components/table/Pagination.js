@@ -57,7 +57,7 @@ FooterPagination.propTypes = {
     hasAccess: PropTypes.bool,
     direction: PropTypes.string,
     paginationProps: PropTypes.object,
-    loaded: PropTypes.object
+    loaded: PropTypes.bool
 };
 
 FooterPagination.defaultProps = {
