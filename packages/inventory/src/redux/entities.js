@@ -231,13 +231,14 @@ export function allTags(state, { payload: { results, total, page, per_page: perP
         },
         additionalTagsCount: total > perPage ? total - perPage : 0,
         allTagsTotal: total,
-        allTagsLoaded: true
+        allTagsLoaded: true,
+        tagModalLoaded: true
     };
 }
 
 export default {
     [ACTION_TYPES.ALL_TAGS_FULFILLED]: allTags,
-    [ACTION_TYPES.ALL_TAGS_PENDING]: (state) => ({ ...state, allTagsLoaded: false }),
+    [ACTION_TYPES.ALL_TAGS_PENDING]: (state) => ({ ...state, allTagsLoaded: false, tagModalLoaded: false }),
     [ACTION_TYPES.LOAD_ENTITIES_PENDING]: entitiesPending,
     [ACTION_TYPES.LOAD_ENTITIES_FULFILLED]: entitiesLoaded,
     [ACTION_TYPES.LOAD_ENTITIES_REJECTED]: loadingRejected,
