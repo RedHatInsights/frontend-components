@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import { Pagination, PaginationVariant } from '@patternfly/react-core';
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 /**
@@ -11,16 +10,13 @@ const FooterPagination = ({
     total,
     page,
     perPage,
-    isLoaded,
     direction,
     isFull,
-    hasItems,
     hasAccess,
     paginationProps,
-    onRefreshData
+    onRefreshData,
+    loaded
 }) => {
-    const loaded = useSelector(store => store?.entities?.loaded);
-
     /**
      * Thi method sets new page and combines previous props to apply sort, filters etc.
      * @param {*} event html event to figure if target was input.
@@ -36,9 +32,7 @@ const FooterPagination = ({
      */
     const onPerPageSelect = (_event, perPageArg) => onRefreshData({ page: 1, per_page: perPageArg });
 
-    const finalIsLoaded = hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded;
-
-    return (finalIsLoaded || !hasAccess) ? (
+    return (loaded || !hasAccess) ? (
         <Pagination
             { ...isFull && {
                 variant: PaginationVariant.bottom
@@ -59,17 +53,15 @@ FooterPagination.propTypes = {
     perPage: PropTypes.number,
     total: PropTypes.number,
     page: PropTypes.number,
-    isLoaded: PropTypes.bool,
     isFull: PropTypes.bool,
     hasAccess: PropTypes.bool,
-    hasItems: PropTypes.bool,
     direction: PropTypes.string,
-    paginationProps: PropTypes.object
+    paginationProps: PropTypes.object,
+    loaded: PropTypes.object
 };
 
 FooterPagination.defaultProps = {
     total: 0,
-    isLoaded: false,
     isFull: false,
     direction: 'up',
     hasAccess: true

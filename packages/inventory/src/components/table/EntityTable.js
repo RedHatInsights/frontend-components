@@ -1,7 +1,7 @@
 import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { selectEntity, setSort } from '../../redux/actions';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import {
     Table as PfTable,
@@ -23,7 +23,6 @@ import { defaultColumns } from '../../redux/entities';
  */
 const EntityTable = ({
     hasItems,
-    isLoaded,
     expandable,
     onExpandClick,
     hasCheckbox,
@@ -38,14 +37,12 @@ const EntityTable = ({
     noSystemsTable = <NoSystemsTable />,
     showTags,
     columns: columnsProp,
-    disableDefaultColumns
+    disableDefaultColumns,
+    loaded
 }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
-    const loaded = useSelector(({ entities: { loaded } }) => (
-        hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded
-    ), shallowEqual);
     const rows = useSelector(({ entities: { rows } }) => rows);
     const columnsRedux = useSelector(
         ({ entities: { columns } }) => columns,
@@ -169,7 +166,8 @@ EntityTable.propTypes = {
     onRowClick: PropTypes.func,
     showTags: PropTypes.bool,
     noSystemsTable: PropTypes.node,
-    disableDefaultColumns: PropTypes.oneOfType([ PropTypes.bool, PropTypes.arrayOf(PropTypes.string) ])
+    disableDefaultColumns: PropTypes.oneOfType([ PropTypes.bool, PropTypes.arrayOf(PropTypes.string) ]),
+    loaded: PropTypes.bool
 };
 
 EntityTable.defaultProps = {

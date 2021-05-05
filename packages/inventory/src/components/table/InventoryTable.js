@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { Fragment, forwardRef, useEffect, useRef } from 'react';
+import React, { Fragment, forwardRef, useEffect, useRef, useState } from 'react';
 import { useSelector, shallowEqual, useStore, useDispatch } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
@@ -52,6 +52,8 @@ const InventoryTable = forwardRef(({
     paginationProps,
     errorState = <ErrorState />,
     autoRefresh,
+    isLoaded,
+    initialLoading,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
@@ -81,6 +83,22 @@ const InventoryTable = forwardRef(({
     const sortBy = useSelector(({ entities: { sortBy: invSortBy } }) => (
         hasItems ? propsSortBy : invSortBy
     ), shallowEqual);
+
+    const reduxLoaded = useSelector(({ entities }) => (
+        hasItems && isLoaded !== undefined ? (isLoaded && entities?.loaded) : entities?.loaded
+    ), shallowEqual);
+
+    /**
+     * If initialLoading is set to true, then the component should be in loading state until
+     * entities.loaded is false (and then we can use the redux loading state and forget this one)
+     */
+    const [ initialLoadingActive, disableInitialLoading ] = useState(initialLoading);
+    useEffect(() => {
+        if (!reduxLoaded) {
+            disableInitialLoading();
+        }
+    }, [ reduxLoaded ]);
+    const loaded = reduxLoaded && !initialLoadingActive;
 
     const dispatch = useDispatch();
     const store = useStore();
@@ -172,6 +190,7 @@ const InventoryTable = forwardRef(({
                     sortBy={ sortBy }
                     hideFilters={hideFilters}
                     paginationProps={paginationProps}
+                    loaded={loaded}
                 >
                     { children }
                 </EntityTableToolbar>
@@ -187,6 +206,7 @@ const InventoryTable = forwardRef(({
                     perPage={ pagination.perPage }
                     showTags={ showTags }
                     onRefreshData={onRefreshData}
+                    loaded={loaded}
                 />
                 <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                     <Pagination
@@ -198,6 +218,7 @@ const InventoryTable = forwardRef(({
                         hasItems={ hasItems }
                         onRefreshData={onRefreshData}
                         paginationProps={paginationProps}
+                        loaded={loaded}
                     />
                 </TableToolbar>
             </Fragment> : errorState
