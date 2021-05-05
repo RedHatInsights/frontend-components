@@ -86,7 +86,7 @@ const InventoryTable = forwardRef(({
 
     const reduxLoaded = useSelector(({ entities }) => (
         hasItems && isLoaded !== undefined ? (isLoaded && entities?.loaded) : entities?.loaded
-    ), shallowEqual);
+    ));
 
     /**
      * If initialLoading is set to true, then the component should be in loading state until
