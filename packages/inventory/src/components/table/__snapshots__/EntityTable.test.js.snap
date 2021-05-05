@@ -132,6 +132,46 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
           [Function],
         ],
       },
+      Object {
+        "cellFormatters": Array [],
+        "key": "one",
+        "title": "One",
+        "transforms": Array [
+          [Function],
+        ],
+      },
+      Object {
+        "cellFormatters": Array [],
+        "key": "one",
+        "title": "One",
+        "transforms": Array [
+          [Function],
+        ],
+      },
+      Object {
+        "cellFormatters": Array [],
+        "key": "one",
+        "title": "One",
+        "transforms": Array [
+          [Function],
+        ],
+      },
+      Object {
+        "cellFormatters": Array [],
+        "key": "one",
+        "title": "One",
+        "transforms": Array [
+          [Function],
+        ],
+      },
+      Object {
+        "cellFormatters": Array [],
+        "key": "one",
+        "title": "One",
+        "transforms": Array [
+          [Function],
+        ],
+      },
     ]
   }
   className="ins-c-entity-table"
@@ -139,7 +179,7 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
   dropdownDirection="down"
   dropdownPosition="right"
   expandId="expandable-toggle"
-  gridBreakPoint="grid-md"
+  gridBreakPoint="grid-lg"
   isStickyHeader={false}
   onSelect={[Function]}
   onSort={[Function]}
@@ -153,6 +193,11 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
           "data-ouia-component-id": "testing-id-actions-kebab",
         },
         "cells": Array [
+          "data",
+          "data",
+          "data",
+          "data",
+          "data",
           "data",
         ],
         "id": "testing-id",
@@ -433,30 +478,6 @@ exports[`EntityTable DOM should render correctly - with customNoSystemsTable 1`]
       <th
         class=""
         data-key="0"
-        data-label="Name"
-        scope="col"
-      >
-        Name
-      </th>
-      <th
-        class="pf-m-wrap pf-m-width-10"
-        data-key="1"
-        data-label="Operating system"
-        scope="col"
-      >
-        Operating system
-      </th>
-      <th
-        class="pf-m-width-10"
-        data-key="2"
-        data-label="Last seen"
-        scope="col"
-      >
-        Last seen
-      </th>
-      <th
-        class=""
-        data-key="3"
         data-label="One"
         scope="col"
       >
@@ -476,9 +497,9 @@ exports[`EntityTable DOM should render correctly - with customNoSystemsTable 1`]
     >
       <td
         class=""
-        colspan="4"
+        colspan="1"
         data-key="0"
-        data-label="Name"
+        data-label="One"
       >
         <div>
           NO SYSTEMS
@@ -594,92 +615,6 @@ exports[`EntityTable DOM should render correctly 1`] = `
         aria-sort="none"
         class="pf-c-table__sort"
         data-key="1"
-        data-label="Name"
-        scope="col"
-      >
-        <button
-          class="pf-c-table__button"
-          type="button"
-        >
-          <div
-            class="pf-c-table__button-content"
-          >
-            <span
-              class="pf-c-table__text"
-            >
-              Name
-            </span>
-            <span
-              class="pf-c-table__sort-indicator"
-            >
-              <svg
-                aria-hidden="true"
-                fill="currentColor"
-                height="1em"
-                role="img"
-                style="vertical-align:-0.125em"
-                viewBox="0 0 256 512"
-                width="1em"
-              >
-                <path
-                  d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                />
-              </svg>
-            </span>
-          </div>
-        </button>
-      </th>
-      <th
-        class="pf-m-wrap pf-m-width-10"
-        data-key="2"
-        data-label="Operating system"
-        scope="col"
-      >
-        Operating system
-      </th>
-      <th
-        aria-sort="none"
-        class="pf-m-width-10 pf-c-table__sort"
-        data-key="3"
-        data-label="Last seen"
-        scope="col"
-      >
-        <button
-          class="pf-c-table__button"
-          type="button"
-        >
-          <div
-            class="pf-c-table__button-content"
-          >
-            <span
-              class="pf-c-table__text"
-            >
-              Last seen
-            </span>
-            <span
-              class="pf-c-table__sort-indicator"
-            >
-              <svg
-                aria-hidden="true"
-                fill="currentColor"
-                height="1em"
-                role="img"
-                style="vertical-align:-0.125em"
-                viewBox="0 0 256 512"
-                width="1em"
-              >
-                <path
-                  d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                />
-              </svg>
-            </span>
-          </div>
-        </button>
-      </th>
-      <th
-        aria-sort="none"
-        class="pf-c-table__sort"
-        data-key="4"
         data-label="One"
         scope="col"
       >
@@ -740,78 +675,6 @@ exports[`EntityTable DOM should render correctly 1`] = `
       <td
         class=""
         data-key="1"
-        data-label="Name"
-      >
-        <div
-          class="ins-composed-col"
-        >
-          <div />
-          <div
-            class=""
-          >
-            <a
-              href="/testing-id"
-              widget="col"
-            >
-               
-            </a>
-          </div>
-        </div>
-      </td>
-      <td
-        class=""
-        data-key="2"
-        data-label="Operating system"
-      >
-        <span>
-          Not available
-        </span>
-      </td>
-      <td
-        class=""
-        data-key="3"
-        data-label="Last seen"
-      >
-        <span
-          class="ins-c-inventory__culling-danger"
-        >
-          <svg
-            aria-hidden="true"
-            fill="currentColor"
-            height="1em"
-            role="img"
-            style="vertical-align:-0.125em"
-            viewBox="0 0 512 512"
-            width="1em"
-          >
-            <path
-              d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"
-            />
-          </svg>
-          Invalid date
-          <span
-            aria-describedby="pf-tooltip-1"
-            class="pf-u-ml-sm ins-c-inventor__disconnected-icon"
-          >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              height="1em"
-              role="img"
-              style="vertical-align:-0.125em"
-              viewBox="0 0 1024 1024"
-              width="1em"
-            >
-              <path
-                d="M107.625758,511.919812 C107.647579,453.639819 120.473237,396.076275 145.195758,343.299812 L66.0757577,263.919812 C64.9757577,266.019812 63.7857577,268.019812 62.6857577,270.119812 C-38.2858609,455.136708 -13.6478565,683.418046 124.475758,842.629812 C134.640866,854.227038 149.304208,860.890207 164.725758,860.920803 C177.621501,860.999229 190.089847,856.300444 199.725758,847.729812 C222.045758,828.339812 224.235758,794.349812 204.725758,771.959812 C142.116482,699.791587 107.639971,607.46129 107.625758,511.919812 Z M298.965758,512.769812 C298.965758,507.959812 299.165758,503.349812 299.465758,498.849812 L223.695758,422.919812 C195.943021,511.49644 210.859555,607.936744 264.075758,683.989812 C272.417691,695.880397 286.040845,702.947712 300.565758,702.92092 C309.717884,702.984827 318.661486,700.187766 326.145758,694.919812 C346.244069,680.682503 351.030068,652.865563 336.845758,632.729812 C312.094475,597.618928 298.858215,555.687799 298.965758,512.729812 L298.965758,512.769812 Z M903.425758,837.839812 C1064.25516,648.181373 1062.68818,369.557312 899.735758,181.719812 C890.46515,170.983736 877.290268,164.395355 863.139154,163.418898 C848.98804,162.442441 835.033106,167.158807 824.375758,176.519812 C802.005758,195.919812 799.815758,229.919812 819.185758,252.309812 C945.123654,397.620078 948.572544,612.370403 827.365758,761.649812 L754.005758,688.159812 C755.244385,686.815558 756.37773,685.377981 757.395758,683.859812 C792.844775,633.759435 811.790626,573.852791 811.595758,512.479812 C811.595758,450.189812 792.735758,390.599812 756.695758,340.199812 C749.880846,330.567 739.510358,324.044705 727.876268,322.074416 C716.242178,320.104127 704.302408,322.848071 694.695758,329.699812 C674.625758,343.899812 670.135758,371.699812 684.215758,391.799812 C733.317078,460.966176 735.688504,552.965658 690.215758,624.569812 L615.045758,549.479812 C619.447596,537.503845 621.679174,524.839047 621.635758,512.079812 C621.657896,451.518897 572.616613,402.388105 512.055758,402.299812 C499.315423,402.259246 486.670236,404.494336 474.715758,408.899812 L82.6457577,15.6398121 C64.3651324,-2.58558468 34.7711544,-2.54081316 16.5457577,15.7398121 C-1.67963909,34.0204373 -1.63486757,63.6144153 16.6457577,81.8398121 L120.475758,185.919812 L196.535758,261.919812 L333.185758,398.799812 L408.845758,474.589812 L549.005758,614.969812 L941.455758,1008.21981 C959.733621,1026.4673 989.34327,1026.44268 1007.59076,1008.16481 C1025.83825,989.886948 1025.81362,960.2773 1007.53576,942.029812 L903.425758,837.839812 Z"
-              />
-            </svg>
-          </span>
-        </span>
-      </td>
-      <td
-        class=""
-        data-key="4"
         data-label="One"
       >
         <div
