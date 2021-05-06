@@ -38,7 +38,8 @@ const EntityTable = ({
     showTags,
     columns: columnsProp,
     disableDefaultColumns,
-    loaded
+    loaded,
+    columnsCounter
 }) => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -66,7 +67,9 @@ const EntityTable = ({
 
     const columns = useRef([]);
     useMemo(() => {
-        if (columnsProp) {
+        if (typeof columnsProp === 'function') {
+            columns.current = columnsProp(defaultColumns);
+        } else if (columnsProp) {
             const disabledColumns = Array.isArray(disableDefaultColumns) ? disableDefaultColumns : [];
             const defaultColumnsFiltered = defaultColumns.filter(({ key }) =>
                 (key === 'tags' && showTags) || (key !== 'tags' && !disabledColumns.includes(key))
@@ -81,8 +84,9 @@ const EntityTable = ({
     }, [
         showTags,
         Array.isArray(disableDefaultColumns) ? disableDefaultColumns.join() : disableDefaultColumns,
-        Array.isArray(columnsProp) ? columnsProp.map(({ key }) => key).join() : columnsProp,
-        Array.isArray(columnsRedux) ? columnsRedux.map(({ key }) => key).join() : columnsRedux
+        Array.isArray(columnsProp) ? columnsProp.map(({ key }) => key).join() : typeof columnsProp === 'function' ? 'function' : columnsProp,
+        Array.isArray(columnsRedux) ? columnsRedux.map(({ key }) => key).join() : columnsRedux,
+        columnsCounter
     ]);
 
     const cells = loaded && createColumns(columns.current, hasItems, rows, isExpandable);
@@ -167,7 +171,9 @@ EntityTable.propTypes = {
     showTags: PropTypes.bool,
     noSystemsTable: PropTypes.node,
     disableDefaultColumns: PropTypes.oneOfType([ PropTypes.bool, PropTypes.arrayOf(PropTypes.string) ]),
-    loaded: PropTypes.bool
+    loaded: PropTypes.bool,
+    columnsCounter: PropTypes.number,
+    columns: PropTypes.oneOfType([ PropTypes.array, PropTypes.func ])
 };
 
 EntityTable.defaultProps = {

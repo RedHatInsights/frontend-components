@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/display-name */
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import EntityTable from './EntityTable';
 import { render, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
@@ -288,6 +289,132 @@ describe('EntityTable', () => {
             expect(texts).toEqual(
                 [ 'name_1', 'super_secret_1', 'name_2', 'super_secret_2' ]
             );
+        });
+
+        it('should render correctly - custom columns via prop function', () => {
+            initialState = {
+                entities: {
+                    ...initialState.entities,
+                    rows: [{
+                        id: 'testing-id',
+                        insights_id: null,
+                        secret_attribute: 'super_secret_1',
+                        display_name: 'name_1'
+                    }]
+                }
+            };
+
+            const CustomCell = ({ children }) => <h1>{children}</h1>;
+
+            const getColumns = jest.fn().mockImplementation(() => [
+                {
+                    key: 'display_name',
+                    title: 'Display name',
+                    renderFunc: (name) => <CustomCell>{name}</CustomCell>
+                },
+                {
+                    key: 'secret_attribute',
+                    title: 'Secret attribute',
+                    renderFunc: (secret_attribute) => <CustomCell>{secret_attribute}</CustomCell>
+                }
+            ]);
+
+            const store = mockStore(initialState);
+            const wrapper = mount(<MemoryRouter>
+                <Provider store={ store }>
+                    <EntityTable
+                        loaded
+                        columns={getColumns}
+                    />
+                </Provider>
+            </MemoryRouter>);
+
+            expect(getColumns.mock.calls.length).toEqual(1);
+            expect(getColumns).toHaveBeenCalledWith(defaultColumns);
+
+            expect(wrapper.find('table').find('th')).toHaveLength(2);
+            expect(wrapper.find('table').find('th').last().text()).toEqual('Secret attribute');
+            expect(wrapper.find('table').find(CustomCell)).toHaveLength(2);
+
+            const texts = wrapper.find('table').find(CustomCell).map(cell => cell.text());
+
+            expect(texts).toEqual(
+                [ 'name_1', 'super_secret_1' ]
+            );
+        });
+
+        it('control columns function prop via columnsCounter', async () => {
+            initialState = {
+                entities: {
+                    ...initialState.entities,
+                    rows: [{
+                        id: 'testing-id',
+                        insights_id: null,
+                        secret_attribute: 'super_secret_1',
+                        display_name: 'name_1'
+                    }]
+                }
+            };
+
+            const CustomCell = ({ children }) => <h1>{children}</h1>;
+
+            const getColumns = jest.fn().mockImplementation(() => [
+                {
+                    key: 'display_name',
+                    title: 'Display name',
+                    renderFunc: (name) => <CustomCell>{name}</CustomCell>
+                }
+            ]);
+
+            const store = mockStore(initialState);
+
+            class Dummy extends React.Component {
+                render() {
+                    return (
+                        <MemoryRouter>
+                            <Provider store={ store }>
+                                <EntityTable
+                                    loaded
+                                    columns={getColumns}
+                                    {...this.props}
+                                />
+                            </Provider>
+                        </MemoryRouter>
+                    );
+                }
+            }
+
+            const wrapper = mount(<Dummy />);
+
+            expect(getColumns.mock.calls.length).toEqual(1);
+
+            await act(async () => {
+                wrapper.setProps({ some_prop: '1' });
+            });
+            wrapper.update();
+
+            expect(getColumns.mock.calls.length).toEqual(1);
+
+            await act(async () => {
+                wrapper.setProps({ columnsCounter: 1 });
+            });
+            wrapper.update();
+
+            expect(getColumns.mock.calls.length).toEqual(2);
+
+            await act(async () => {
+                wrapper.setProps({ columnsCounter: 1 });
+            });
+            wrapper.update();
+
+            expect(getColumns.mock.calls.length).toEqual(2);
+
+            await act(async () => {
+                wrapper.setProps({ columnsCounter: 2 });
+            });
+            wrapper.update();
+
+            expect(getColumns.mock.calls.length).toEqual(3);
         });
 
         it('should disable just one default column', () => {
