@@ -8,8 +8,10 @@ import {
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
 import Link from 'next/link';
-import Navigation from '../navigation';
+import ComponentsNavigation from '../navigation/components-navigation';
 import HeaderTools from './header-tools';
+import useNavigation from './use-navigation';
+import navigationMapper from '../navigation/navigation-mapper';
 
 const useStyles = createUseStyles({
     page: {
@@ -17,6 +19,9 @@ const useStyles = createUseStyles({
     },
     logo: {
         width: 100
+    },
+    platExGuy: {
+        maxHeight: '100%'
     },
     content: {
         marginLeft: 'initial',
@@ -33,6 +38,7 @@ const useStyles = createUseStyles({
 
 const Layout = ({ children }) => {
     const [ isOpen, setIsOpen ] = useState(true);
+    const navId = useNavigation();
     const classes = useStyles();
     const Header = (
         <PageHeader
@@ -47,7 +53,9 @@ const Layout = ({ children }) => {
             onNavToggle={() => setIsOpen(prev => !prev)}
         />
     );
-    const Sidebar = <PageSidebar nav={<Navigation />} isNavOpen={isOpen} />;
+    const NavComponent = navigationMapper[navId];
+    console.log({ NavComponent });
+    const Sidebar = <PageSidebar nav={NavComponent ? <NavComponent /> : undefined} isNavOpen={NavComponent && isOpen} />;
     return (
         <Page className={classes.page} header={Header} sidebar={Sidebar}>
             <div className={classnames('pf-u-p-md', classes.content)}>
