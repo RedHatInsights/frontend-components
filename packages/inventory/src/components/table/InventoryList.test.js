@@ -36,7 +36,7 @@ describe('InventoryList', () => {
         const store = mockStore(initialState);
         const wrapper = render(<MemoryRouter>
             <Provider store={ store }>
-                <InventoryList ref={ref} onRefreshData={onRefreshData} />
+                <InventoryList ref={ref} onRefreshData={onRefreshData} loaded />
             </Provider>
         </MemoryRouter>);
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -46,7 +46,7 @@ describe('InventoryList', () => {
         const store = mockStore(initialState);
         const wrapper = render(<MemoryRouter>
             <Provider store={ store }>
-                <InventoryList hasAccess={false} ref={ref} onRefreshData={onRefreshData} />
+                <InventoryList hasAccess={false} ref={ref} onRefreshData={onRefreshData} loaded />
             </Provider>
         </MemoryRouter>);
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -63,7 +63,7 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} />
+                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} loaded />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp sortBy={sortBy} />);
@@ -90,7 +90,7 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} />
+                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} loaded />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp sortBy={sortBy} />);
@@ -107,7 +107,7 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} />
+                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} loaded />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp items={[{ children: () => <div>test</div>, isOpen: false, id: 'fff' }]} hasItems />);
@@ -124,7 +124,7 @@ describe('InventoryList', () => {
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
-                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} />
+                    <InventoryList {...props} ref={ref} onRefreshData={onRefreshData} loaded />
                 </Provider>
             </MemoryRouter>;
             const wrapper = mount(<Cmp items={[{ children: () => <div>test</div>, isOpen: false, id: 'fff' }]} hasItems />);

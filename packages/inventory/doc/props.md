@@ -13,6 +13,7 @@
   - [tableProps](#tableprops)
   - [paginationProps](#paginationprops)
   - [autoRefresh](#autorefresh)
+  - [initialLoading](#initialloading)
 
 # Props
 
@@ -91,3 +92,9 @@ Props passed to paginations components.
 *boolean*
 
 When `true`, the table is refreshed when `customFilters` are changed.
+
+## initialLoading
+
+*boolean*
+
+When `true`, the table is in loading state on mount until `entities.loaded` is set to `false` (and from that point, `loaded` is the only determinator.). Use when users can go back to already loaded table, this prop ensures that there will be no change from `loaded` > `loading` > `loaded`.

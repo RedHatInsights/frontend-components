@@ -59,6 +59,7 @@ const EntityTableToolbar = ({
     hideFilters,
     paginationProps,
     onRefreshData,
+    loaded,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -74,9 +75,6 @@ const EntityTableToolbar = ({
         ...tagsFilterState
     });
     const filters = useSelector(({ entities: { activeFilters } }) => activeFilters);
-    const loaded = useSelector(({ entities: { loaded } }) => !hasAccess || (
-        hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded
-    ));
     const allTagsLoaded = useSelector(({ entities: { allTagsLoaded } }) => allTagsLoaded);
     const allTags = useSelector(({ entities: { allTags } }) => allTags);
     const additionalTagsCount = useSelector(({ entities: { additionalTagsCount } }) => additionalTagsCount);
@@ -365,7 +363,8 @@ EntityTableToolbar.propTypes = {
         registeredWith: PropTypes.bool,
         stale: PropTypes.bool
     }),
-    paginationProps: PropTypes.object
+    paginationProps: PropTypes.object,
+    loaded: PropTypes.bool
 };
 
 EntityTableToolbar.defaultProps = {
