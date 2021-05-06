@@ -316,8 +316,8 @@ const EntityTableToolbar = ({
                 itemCount: !hasAccess ? 0 : total,
                 isDisabled: !hasAccess,
                 perPage,
-                onSetPage: (_e, newPage) => updateData({ page: newPage }),
-                onPerPageSelect: (_e, newPerPage) => updateData({ page: 1, per_page: newPerPage }),
+                onSetPage: (_e, newPage) => onRefreshData({ page: newPage }),
+                onPerPageSelect: (_e, newPerPage) => onRefreshData({ page: 1, per_page: newPerPage }),
                 ...paginationProps
             } : <Skeleton size={SkeletonSize.lg} />}
         >
