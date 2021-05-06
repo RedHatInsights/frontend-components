@@ -11,7 +11,7 @@ import toJson from 'enzyme-to-json';
 import { ConditionalFilter } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import * as actions from '../../shared/constants';
 
-describe('NoSystemsTable', () => {
+describe('InventoryTable', () => {
     let initialState;
     let mockStore;
     let spy;

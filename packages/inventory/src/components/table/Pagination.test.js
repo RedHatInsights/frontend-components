@@ -28,14 +28,14 @@ describe('Pagination', () => {
 
         // eslint-disable-next-line react/display-name
         WrappedPagination = ({ store, ...props }) => <Provider store={store}>
-            <Pagination {...props} onRefreshData={onRefreshData}/>
+            <Pagination loaded {...props} onRefreshData={onRefreshData}/>
         </Provider>;
     });
 
     describe('render', () => {
         it('should render correctly - no data', () => {
             const store = mockStore({ entities: {} });
-            const wrapper = render(<WrappedPagination store={ store } />);
+            const wrapper = render(<WrappedPagination store={ store } loaded={false} />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
@@ -64,12 +64,6 @@ describe('Pagination', () => {
             const wrapper = render(<WrappedPagination store={ store } page={1} perPage={50} total={500} isFull />);
             expect(toJson(wrapper)).toMatchSnapshot();
             expect(wrapper.find('button[disabled=""]').length).toBe(2);
-        });
-
-        it('should render correctly with hasItems and isLoaded false', () => {
-            const store = mockStore(initialState);
-            const wrapper = render(<WrappedPagination store={ store } hasItems isLoaded={false} />);
-            expect(toJson(wrapper)).toMatchSnapshot();
         });
     });
 
