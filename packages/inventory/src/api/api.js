@@ -101,7 +101,7 @@ export async function getEntities(items, {
                     results: mergeArraysByKey([
                         data?.results,
                         result?.results || []
-                    ])
+                    ], 'id')
                 };
             } catch (e) {
                 console.error(e);

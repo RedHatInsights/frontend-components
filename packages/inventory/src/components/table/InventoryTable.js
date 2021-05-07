@@ -9,6 +9,7 @@ import Pagination from './Pagination';
 import AccessDenied from '../../shared/AccessDenied';
 import { loadSystems } from '../../shared';
 import isEqual from 'lodash/isEqual';
+import { entitiesLoading } from '../../redux/actions';
 
 /**
  * A helper function to store props and to always return the latest state.
@@ -54,6 +55,7 @@ const InventoryTable = forwardRef(({
     autoRefresh,
     isLoaded,
     initialLoading,
+    ignoreRefresh,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
@@ -112,7 +114,8 @@ const InventoryTable = forwardRef(({
         hideFilters,
         showTags,
         getEntities,
-        customFilters
+        customFilters,
+        hasItems
     });
 
     /**
@@ -133,11 +136,13 @@ const InventoryTable = forwardRef(({
             sortBy: cachedProps.sortBy,
             hideFilters: cachedProps.hideFilters,
             filters: activeFilters,
+            hasItems: cachedProps.hasItems,
             ...cachedProps.customFilters,
             ...options
         };
 
         if (onRefresh && !disableOnRefresh) {
+            dispatch(entitiesLoading());
             onRefresh(params, (options) => {
                 dispatch(
                     loadSystems(
@@ -207,6 +212,7 @@ const InventoryTable = forwardRef(({
                     showTags={ showTags }
                     onRefreshData={onRefreshData}
                     loaded={loaded}
+                    ignoreRefresh={ignoreRefresh}
                 />
                 <TableToolbar isFooter className="ins-c-inventory__table--toolbar">
                     <Pagination
