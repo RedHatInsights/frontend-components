@@ -15,7 +15,7 @@ describe('TagsModal', () => {
     let initialState;
     let mockStore;
     beforeEach(() => {
-        debounce.mockImplementation(require.requireActual('lodash/debounce'));
+        debounce.mockImplementation(jest.requireActual('lodash/debounce'));
         mockStore = configureStore([ promiseMiddleware() ]);
         initialState = {
             entities: {
