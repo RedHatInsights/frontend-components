@@ -60,6 +60,7 @@ const EntityTableToolbar = ({
     paginationProps,
     onRefreshData,
     loaded,
+    showTagModal,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -324,8 +325,7 @@ const EntityTableToolbar = ({
             { children }
         </PrimaryToolbar>
         {
-            showTags && enabledFilters.tags &&
-            <TagsModal
+            (showTags || enabledFilters.tags || showTagModal) && <TagsModal
                 customFilters={customFilters}
                 filterTagsBy={filterTagsBy}
                 onApply={(selected) => setSelectedTags(arrayToSelection(selected))}

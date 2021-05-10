@@ -16,6 +16,7 @@
   - [autoRefresh](#autorefresh)
   - [initialLoading](#initialloading)
   - [ignoreRefresh](#ignorerefresh)
+  - [showTagModal](#showtagmodal)
 
 # Props
 
@@ -112,3 +113,9 @@ When `true`, the table is in loading state on mount until `entities.loaded` is s
 *boolean = true*
 
 On the initial mount and when items/sortBy are changed, the inventoryTable ignores `onRefresh` prop. By setting the prop to false, you can control this behavior.
+
+## showTagModal
+
+*boolean*
+
+Will enable TagModal even the filter or the column is not shown.

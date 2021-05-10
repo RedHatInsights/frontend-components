@@ -56,6 +56,7 @@ const InventoryTable = forwardRef(({
     isLoaded,
     initialLoading,
     ignoreRefresh,
+    showTagModal,
     ...props
 }, ref) => {
     const hasItems = Boolean(items);
@@ -166,7 +167,7 @@ const InventoryTable = forwardRef(({
     const prevFilters = useRef(customFilters);
     useEffect(() => {
         if (autoRefresh && !isEqual(prevFilters.current, customFilters)) {
-            onRefreshData();
+            onRefreshData({ page: 1 });
             prevFilters.current = customFilters;
         }
     });
@@ -196,6 +197,7 @@ const InventoryTable = forwardRef(({
                     hideFilters={hideFilters}
                     paginationProps={paginationProps}
                     loaded={loaded}
+                    showTagModal={showTagModal}
                 >
                     { children }
                 </EntityTableToolbar>

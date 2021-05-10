@@ -808,7 +808,13 @@ exports[`EntityTableToolbar DOM should render correctly - with no access 1`] = `
 />
 `;
 
-exports[`EntityTableToolbar DOM should render correctly - with no access 2`] = `null`;
+exports[`EntityTableToolbar DOM should render correctly - with no access 2`] = `
+<TagsModal
+  filterTagsBy=""
+  onApply={[Function]}
+  onToggleModal={[Function]}
+/>
+`;
 
 exports[`EntityTableToolbar DOM should render correctly - with tags 1`] = `
 <PrimaryToolbar
