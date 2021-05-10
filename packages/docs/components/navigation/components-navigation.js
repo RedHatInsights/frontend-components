@@ -1,4 +1,5 @@
 import data from './components-navigation.json';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Nav, NavExpandable, NavGroup, NavItem, NavList } from '@patternfly/react-core';
@@ -17,31 +18,39 @@ const useStyles = createUseStyles({
     }
 });
 
+const NavLink = ({ href, children }) => {
+    const { pathname } = useRouter();
+    return (
+        <NavItem
+            id={href}
+            to={href}
+            ouiaId={href}
+            component={({ children, ...props }) => (
+                <Link {...props}>
+                    <a className={classnames('pf-c-nav__link', {
+                        'pf-m-current': props.href === pathname
+                    })}>
+                        {children}
+                    </a>
+                </Link>
+            )}
+        >
+            {children}
+        </NavItem>
+
+    );
+};
+
 const NavigationGroup = ({ group, items, packageName }) => {
     const classes = useStyles();
-    const { pathname } = useRouter();
     if (items.length === 1) {
         const  item = items[0];
         const title = typeof item === 'object' ? item.title : item;
         const name = typeof item === 'object' ? item.name : item;
         return (
-            <NavItem
-                id={`/fec/${packageName}/${name}`}
-                to={`/fec/${packageName}/${name}`}
-                ouiaId={`/fec/${packageName}/${name}`}
-                key={name}
-                component={({ children, ...props }) => (
-                    <Link {...props}>
-                        <a className={classnames('pf-c-nav__link', {
-                            'pf-m-current': props.href === pathname
-                        })}>
-                            {children}
-                        </a>
-                    </Link>
-                )}
-            >
+            <NavLink href={`/fec/${packageName}/${name}`} key={name}>
                 {title}
-            </NavItem>
+            </NavLink>
         );
     }
 
@@ -55,33 +64,23 @@ const NavigationGroup = ({ group, items, packageName }) => {
                 const title = typeof item === 'object' ? item.title : item;
                 const name = typeof item === 'object' ? item.name : item;
                 return (
-                    <NavItem
-                        id={`/fec/${packageName}/${name}`}
-                        to={`/fec/${packageName}/${name}`}
-                        ouiaId={`/fec/${packageName}/${name}`}
-                        key={name}
-                        component={({ children, ...props }) => (
-                            <Link {...props}>
-                                <a className={classnames('pf-c-nav__link', classes.groupLink, {
-                                // eslint-disable-next-line react/prop-types
-                                    'pf-m-current': props.href === pathname
-                                })}>
-                                    {children}
-                                </a>
-                            </Link>
-                        )}
-                    >
+                    <NavLink key={name} href={`/fec/${packageName}/${name}`}>
                         {title}
-                    </NavItem>
+                    </NavLink>
                 );
             })}
         </NavGroup>
     );
 };
 
+NavigationGroup.propTypes = {
+    group: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.shape({ name: PropTypes.string, title: PropTypes.string }) ])),
+    packageName: PropTypes.string.isRequired
+};
+
 const Navigation = () => {
     const { pathname } = useRouter();
-    // const classes = useStyles();
     return (
         <Nav ouiaId="docs-nav">
             <NavList>
