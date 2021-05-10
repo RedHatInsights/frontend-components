@@ -69,7 +69,7 @@ export const createColumns = (columns, hasItems, rows, isExpandable) => (
         transforms: [
             ...transforms || [],
             ...props?.width ? [ cellWidth(props.width) ] : [],
-            ...hasItems || rows.length <= 0 || (props && props.isStatic) ? [] : [ sortable ]
+            ...hasItems || rows.length <= 0 || (props && props.isStatic) || transforms?.includes(sortable) ? [] : [ sortable ]
         ],
         cellFormatters: [
             ...cellFormatters || [],
