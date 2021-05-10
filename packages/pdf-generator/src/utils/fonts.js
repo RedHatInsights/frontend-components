@@ -1,7 +1,7 @@
 const fontBaseUrl = 'https://overpass-30e2.kxcdn.com/';
 const RHFontUrl = (window.location.hostname.includes('foo.redhat.com') || window.location.hostname.includes('cloud.redhat.com'))
     ? `${window.location.origin}/apps/frontend-assets/fonts/RedHat/RedHatDisplay`
-    : 'https://raw.githubusercontent.com/RedHatOfficial/RedHatFont/master/TTF/RedHatDisplay';
+    : 'https://raw.githubusercontent.com/RedHatOfficial/RedHatFont/master/fonts/proportional/static/ttf/RedHatDisplay';
 
 export const fontTypes = [ 'thin', 'extralight', 'light', 'semibold', 'bold', 'extrabold', 'heavy' ];
 

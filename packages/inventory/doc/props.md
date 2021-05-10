@@ -15,6 +15,7 @@
   - [paginationProps](#paginationprops)
   - [autoRefresh](#autorefresh)
   - [initialLoading](#initialloading)
+  - [ignoreRefresh](#ignorerefresh)
 
 # Props
 
@@ -105,3 +106,9 @@ When `true`, the table is refreshed when `customFilters` are changed.
 *boolean*
 
 When `true`, the table is in loading state on mount until `entities.loaded` is set to `false` (and from that point, `loaded` is the only determinator.). Use when users can go back to already loaded table, this prop ensures that there will be no change from `loaded` > `loading` > `loaded`.
+
+## ignoreRefresh
+
+*boolean = true*
+
+On the initial mount and when items/sortBy are changed, the inventoryTable ignores `onRefresh` prop. By setting the prop to false, you can control this behavior.

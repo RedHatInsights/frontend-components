@@ -7,16 +7,18 @@ import './InventoryList.scss';
 import isEqual from 'lodash/isEqual';
 import AccessDenied from '../../shared/AccessDenied';
 
+const convertItem = ({ children, isOpen, ...item }) => item;
+
 /**
  * Component that works as a side channel for consumers to notify inventory of new data changes.
  */
-const ContextInventoryList = ({ showHealth, onRefreshData, ...props }) => {
+const ContextInventoryList = ({ showHealth, onRefreshData, ignoreRefresh, ...props }) => {
     const prevItems = useRef(props.items);
     const prevSortBy = useRef(props.sortBy);
 
     useEffect(() => {
         if (props.hasItems) {
-            onRefreshData();
+            onRefreshData({}, ignoreRefresh);
         }
     }, []);
 
@@ -27,14 +29,14 @@ const ContextInventoryList = ({ showHealth, onRefreshData, ...props }) => {
      * @param {*} prevProps previous props - items, hasItems, sortBy.
      */
     useEffect(() => {
-        if (props.hasItems && !isEqual(prevItems.current, props.items)) {
+        if (props.hasItems && !isEqual(prevItems.current.map(convertItem), props.items.map(convertItem))) {
             prevItems.current = props.items;
-            onRefreshData();
+            onRefreshData({}, ignoreRefresh);
         }
 
         if (!props.hasItems && !isEqual(prevSortBy.current, props.sortBy)) {
             prevSortBy.current = props.sortBy;
-            onRefreshData();
+            onRefreshData({}, ignoreRefresh);
         }
     });
 
@@ -73,11 +75,13 @@ const InventoryList = React.forwardRef(({ hasAccess, onRefreshData, ...props }, 
 ContextInventoryList.propTypes = {
     ...InventoryList.propTypes,
     setRefresh: PropTypes.func,
-    onRefreshData: PropTypes.func
+    onRefreshData: PropTypes.func,
+    ignoreRefresh: PropTypes.bool
 };
 ContextInventoryList.defaultProps = {
     perPage: 50,
-    page: 1
+    page: 1,
+    ignoreRefresh: true
 };
 InventoryList.propTypes = {
     showTags: PropTypes.bool,

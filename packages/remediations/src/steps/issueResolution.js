@@ -13,7 +13,7 @@ import {
     Popover,
     Button
 } from '@patternfly/react-core';
-import { pluralize, RESOLUTIONS, SELECTED_RESOLUTIONS, SYSTEMS } from '../utils';
+import { pluralize, shortenIssueId, RESOLUTIONS, SELECTED_RESOLUTIONS, SYSTEMS } from '../utils';
 import { RedoIcon, CloseIcon } from '@patternfly/react-icons';
 import uniqBy from 'lodash/uniqBy';
 import differenceWith from 'lodash/differenceWith';
@@ -32,7 +32,7 @@ const IssueResolution = ({ issue }) => {
         <Stack hasGutter>
             <StackItem>
                 <Title headingLevel="h2">
-                    {`Choose action: ${issue.shortId}`}
+                    {`Choose action: ${shortenIssueId(issue.id)}`}
                 </Title>
             </StackItem>
             <StackItem>
