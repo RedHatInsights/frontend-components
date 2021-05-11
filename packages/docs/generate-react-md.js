@@ -5,7 +5,7 @@ const glob = require('glob');
 const fse = require('fs-extra');
 const sortFile = require('./sort-files');
 
-const componentsDest = path.resolve(__dirname, './pages');
+const componentsDest = path.resolve(__dirname, './pages/fec');
 
 function newLineReplacer(str) {
     return str.replace(/<br \/>\s+/gm, (str) => {
@@ -194,6 +194,10 @@ ${extensiveProps.map((data) => {
 
 <ExtensiveProp data={${JSON.stringify(data.value)}} />`;})}
 `;
+    if (!fse.existsSync(componentsDest)) {
+        fse.mkdirSync(componentsDest);
+    }
+
     if (!fse.existsSync(`${componentsDest}/${packageName}`)) {
         fse.mkdirSync(`${componentsDest}/${packageName}`);
     }

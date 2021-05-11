@@ -1,0 +1,21 @@
+[{
+  "title": "Getting started",
+  "href": "/getting-started"
+},{
+  "title": "Common issues",
+  "href": "/common issues"
+},{
+  "title": "New application setup",
+  "href": "/app-setup"
+},{
+  "title": "Chrome",
+  "href": "/chrome"
+},{
+  "title": "Module federation",
+  "href": "/fed"
+},{
+  "title": "Frontend component documentation",
+  "href": "/fec"
+}, {
+  "title": "Whatever else we need"
+}]
