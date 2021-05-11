@@ -17,7 +17,8 @@ const mapper = {
 
 const iconMapper = {
     AnsibeTowerIcon: 'ansibeTower-icon',
-    ChartSpikeIcon: 'chartSpike-icon'
+    ChartSpikeIcon: 'chartSpike-icon',
+    CloudServerIcon: 'cloudServer-icon'
 };
 
 const createPfReactTransform = (env) => [
