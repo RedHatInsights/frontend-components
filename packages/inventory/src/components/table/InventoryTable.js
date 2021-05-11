@@ -253,7 +253,10 @@ InventoryTable.propTypes = {
     getEntities: PropTypes.func,
     hideFilters: PropTypes.func,
     paginationProps: PropTypes.object,
-    errorState: PropTypes.node
+    errorState: PropTypes.node,
+    isLoaded: PropTypes.bool,
+    initialLoading: PropTypes.bool,
+    ignoreRefresh: PropTypes.bool
 };
 
 export default InventoryTable;
