@@ -1,5 +1,5 @@
 const glob = require('glob');
-const sass = require('node-sass');
+const sass = require('sass');
 const { resolve } = require('path');
 const fse = require('fs-extra');
 const packageImporter = require('node-sass-package-importer');

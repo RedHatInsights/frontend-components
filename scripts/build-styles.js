@@ -1,7 +1,7 @@
 const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
-const sass = require('node-sass');
+const sass = require('sass');
 const chokidar = require('chokidar');
 const packageImporter = require('node-sass-package-importer');
 
