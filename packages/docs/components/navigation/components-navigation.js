@@ -48,7 +48,7 @@ const NavigationGroup = ({ group, items, packageName }) => {
         const title = typeof item === 'object' ? item.title : item;
         const name = typeof item === 'object' ? item.name : item;
         return (
-            <NavLink href={`/fec/${packageName}/${name}`} key={name}>
+            <NavLink href={`/fec/modules/${packageName}/${name}`} key={name}>
                 {title}
             </NavLink>
         );
@@ -64,7 +64,7 @@ const NavigationGroup = ({ group, items, packageName }) => {
                 const title = typeof item === 'object' ? item.title : item;
                 const name = typeof item === 'object' ? item.name : item;
                 return (
-                    <NavLink key={name} href={`/fec/${packageName}/${name}`}>
+                    <NavLink key={name} href={`/fec/modules/${packageName}/${name}`}>
                         {title}
                     </NavLink>
                 );
@@ -90,7 +90,7 @@ const Navigation = () => {
                         ouiaId={packageName}
                         id={packageName}
                         title={packageName.replace(/-/gm, ' ')}
-                        isExpanded={pathname.includes(`/fec/${packageName}`)}
+                        isExpanded={pathname.includes(`/fec/modules/${packageName}`)}
                     >
                         {groups.map(({ group, items }) => (
                             <NavigationGroup key={group} group={group} items={items} packageName={packageName} />
