@@ -443,7 +443,7 @@ describe('EntityTable', () => {
 
             const texts = wrapper.find('table').find('th').map(cell => cell.text());
             expect(texts).toEqual(
-                [ 'Operating system', 'Last seen' ]
+                [ 'OS', 'Last seen' ]
             );
             expect(wrapper.find('table').find('th')).toHaveLength(2);
         });
@@ -476,7 +476,7 @@ describe('EntityTable', () => {
 
             const texts = wrapper.find('table').find('th').map(cell => cell.text());
             expect(texts).toEqual(
-                [ 'Operating system', 'Tags', 'Last seen' ]
+                [ 'Tags', 'OS', 'Last seen' ]
             );
             expect(wrapper.find('table').find('th')).toHaveLength(3);
         });

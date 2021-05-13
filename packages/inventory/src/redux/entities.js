@@ -18,8 +18,8 @@ import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
 import TitleColumn from '../components/table/TitleColumn';
 import InsightsDisconnected from '../shared/InsightsDisconnected';
-import { wrappable } from '@patternfly/react-table';
 import OperatingSystemFormatter from '../shared/OperatingSystemFormatter';
+import { Tooltip } from '@patternfly/react-core';
 
 export const defaultState = {
     loaded: false,
@@ -39,19 +39,18 @@ export const defaultColumns = [
         renderFunc: TitleColumn
     },
     {
-        key: 'system_profile',
-        title: 'Operating system',
-        // eslint-disable-next-line react/display-name
-        renderFunc: (systemProfile) => <OperatingSystemFormatter systemProfile={systemProfile} />,
-        props: { width: 10, isStatic: true },
-        transforms: [ wrappable ]
-    },
-    {
         key: 'tags',
         title: 'Tags',
         props: { width: 10, isStatic: true },
         // eslint-disable-next-line react/display-name
         renderFunc: (value, systemId) => <TagWithDialog count={value.length} systemId={systemId} />
+    },
+    {
+        key: 'system_profile',
+        title: <Tooltip content={<span>Operating system</span>}><span>OS</span></Tooltip>,
+        // eslint-disable-next-line react/display-name
+        renderFunc: (systemProfile) => <OperatingSystemFormatter systemProfile={systemProfile} />,
+        props: { width: 10, isStatic: true }
     },
     {
         key: 'updated',

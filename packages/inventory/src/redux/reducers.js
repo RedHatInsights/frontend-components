@@ -4,25 +4,25 @@ import entityDetailsReducer, { defaultState as entityDefault } from './entityDet
 
 export { entitiesReducer, entityDetailsReducer };
 
-export function mergeWithEntities(additionalReducers = (state) => state) {
+export function mergeWithEntities(additionalReducers = (state) => state, defaultState = {}) {
     return ({
         entities: (state, payload) => ({
             ...additionalReducers({
                 ...applyReducerHash({
                     ...entitiesReducer
-                }, entitiesDefault)(state, payload)
+                }, { ...entitiesDefault, ...defaultState })(state, payload)
             }, payload)
         })
     });
 }
 
-export function mergeWithDetail(additionalReducers = (state) => state) {
+export function mergeWithDetail(additionalReducers = (state) => state, defaultState = {}) {
     return ({
         entityDetails: (state, payload) => ({
             ...additionalReducers({
                 ...applyReducerHash({
                     ...entityDetailsReducer
-                }, entityDefault)(state, payload)
+                }, { ...entityDefault, ...defaultState })(state, payload)
             }, payload)
         })
     });
