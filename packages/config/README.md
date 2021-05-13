@@ -31,7 +31,7 @@ You'll also have to update your `webpack-cli` dependency to `>=4.2.0`, this pack
 
 ### Removed features with webpack 5
 
-The new version of webpack 5 changed plyfills and plugin configs, some packages are outdated, one example is `lodash-webpack-plugin` this plugin is no longer maintain anyways. You should be just fine by installing `lodash` directly, imports can stay the same as before `import get from 'lodash/get`.
+The new version of webpack 5 changed polyfills and plugin configs, some packages are outdated, one example is `lodash-webpack-plugin` this plugin is no longer maintain anyways. You should be just fine by installing `lodash` directly, imports can stay the same as before `import get from 'lodash/get'`.
 
 
 ## useProxy
@@ -227,7 +227,7 @@ In both cases queries and hashes are ignored.
 
 ### cookieTransform
 
-For running local services you can use `cookieTransform` ([original function](https://github.com/RedHatInsights/insights-standalone/blob/1eef6cfc21f96304275683d090c6b8178a4d386f/index.js#L8), you can also check [insights-proxy implementation](https://github.com/RedHatInsights/insights-proxy/blob/1cdbc597681eac51998d8c2dd2dd6b5a2d4d03d6/spandx.config.js#L101)) in `onProxyReq` function. This function transform `jwt` cookie to `x-hr-identity` header.
+For running local services you can use `cookieTransform` ([original function](https://github.com/RedHatInsights/insights-standalone/blob/1eef6cfc21f96304275683d090c6b8178a4d386f/index.js#L8), you can also check [insights-proxy implementation](https://github.com/RedHatInsights/insights-proxy/blob/1cdbc597681eac51998d8c2dd2dd6b5a2d4d03d6/spandx.config.js#L101)) in `onProxyReq` function. This function transform `jwt` cookie to `x-rh-identity` header.
 
 ```jsx
 const cookieTransform = require('@redhat-cloud-services/frontend-components-config-utilities/cookieTransform');
