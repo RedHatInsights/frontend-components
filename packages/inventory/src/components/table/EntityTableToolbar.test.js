@@ -20,7 +20,7 @@ describe('EntityTableToolbar', () => {
 
     beforeEach(() => {
         onRefreshData = jest.fn();
-        debounce.mockImplementation(require.requireActual('lodash/debounce'));
+        debounce.mockImplementation(jest.requireActual('lodash/debounce'));
         mockStore = configureStore([ promiseMiddleware() ]);
         initialState = {
             entities: {

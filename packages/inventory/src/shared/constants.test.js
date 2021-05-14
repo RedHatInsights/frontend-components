@@ -7,10 +7,9 @@ describe('reloadWrapper', () => {
         const data = reloadWrapper({
             payload: promise
         }, callback);
-        setImmediate(() => {
-            expect(callback).toHaveBeenCalled();
-        });
         expect(data).toBeDefined();
+        await promise;
+        expect(callback).toHaveBeenCalled();
     });
 });
 
