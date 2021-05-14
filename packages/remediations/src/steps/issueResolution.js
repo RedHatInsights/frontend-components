@@ -29,7 +29,7 @@ const IssueResolution = ({ issue }) => {
     const removedResolutions = differenceWith(issueResolutions, uniqueResolutions, isEqual);
 
     return (
-        <Stack hasGutter>
+        <Stack hasGutter data-component-ouia-id="wizard-issue-resolution">
             <StackItem>
                 <Title headingLevel="h2">
                     {`Choose action: ${shortenIssueId(issue.id)}`}
