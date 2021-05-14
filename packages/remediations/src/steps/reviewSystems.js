@@ -82,7 +82,7 @@ const ReviewSystems = ({ issues, systems, registry, ...props }) => {
     };
 
     return (
-        <Stack hasGutter>
+        <Stack hasGutter data-component-ouia-id="wizard-review-systems">
             <StackItem>
                 <TextContent>
                     <Text>

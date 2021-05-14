@@ -68,7 +68,7 @@ const SelectPlaybook = (props) => {
 
     return (
         errors.length <= 0 ?
-            <Stack hasGutter>
+            <Stack hasGutter data-component-ouia-id="wizard-select-playbook">
                 <StackItem>
                     {warnings.length !== 0 && (
                         <StackItem>
@@ -175,7 +175,7 @@ const SelectPlaybook = (props) => {
                         </GridItem>
                     </Grid>
                 </StackItem>
-            </Stack >
+            </Stack>
             : <FetchError/>
     );
 };

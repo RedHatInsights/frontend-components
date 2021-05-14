@@ -52,7 +52,7 @@ const Review = (props) => {
     const rows = buildRows(records, sortByState, false);
 
     return (
-        <Stack hasGutter>
+        <Stack hasGutter data-component-ouia-id="wizard-review">
             <StackItem>
                 <TextContent>
                     <Text>

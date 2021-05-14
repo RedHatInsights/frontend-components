@@ -117,7 +117,10 @@ const RemediationWizard = ({
                     [EXISTING_PLAYBOOK_SELECTED]: false
                 }}
                 componentMapper={{
-                    [componentTypes.WIZARD]: Wizard,
+                    [componentTypes.WIZARD]: {
+                        component: Wizard,
+                        'data-ouia-component-id': 'remediation-wizard'
+                    },
                     [componentTypes.TEXT_FIELD]: TextField,
                     ...mapperExtension
                 }}
