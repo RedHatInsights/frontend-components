@@ -73,12 +73,14 @@ const RemediationWizard = ({
         'select-playbook': {
             component: SelectPlaybook,
             issues: data.issues,
+            systems: data.systems,
             allSystems: allSystems.current
         },
         'review-systems': {
             component: ReviewSystems,
             issues: data.issues,
             systems: data.systems,
+            allSystems: allSystems.current,
             registry
         },
         'review-actions': {
@@ -97,7 +99,7 @@ const RemediationWizard = ({
 
     const validatorMapper = {
         'validate-systems': () => (value) => (
-            value && value.length > 0
+            value && Object.keys(value).length > 0
                 ? undefined
                 : 'At least one system must be selected. Actions must be associated to a system to be added to a playbook.')
     };
@@ -111,7 +113,7 @@ const RemediationWizard = ({
                 initialValues={{
                     [RESOLUTIONS]: [],
                     [ISSUES_MULTIPLE]: [],
-                    [SYSTEMS]: undefined,
+                    [SYSTEMS]: {},
                     [MANUAL_RESOLUTION]: true,
                     [SELECTED_RESOLUTIONS]: {},
                     [EXISTING_PLAYBOOK_SELECTED]: false

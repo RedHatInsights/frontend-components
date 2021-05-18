@@ -22,8 +22,8 @@ import isEqual from 'lodash/isEqual';
 const IssueResolution = ({ issue }) => {
     const formOptions = useFormApi();
     const resolutions = formOptions.getState().values[RESOLUTIONS];
-    const systems = formOptions.getState().values[SYSTEMS];
 
+    const systems = formOptions.getState().values[SYSTEMS][issue.id] || [];
     const issueResolutions = resolutions.find(r => r.id === issue.id)?.resolutions || [];
     const uniqueResolutions = uniqBy(issueResolutions, 'id');
     const removedResolutions = differenceWith(issueResolutions, uniqueResolutions, isEqual);
@@ -112,10 +112,9 @@ const IssueResolution = ({ issue }) => {
 IssueResolution.propTypes = {
     issue: propTypes.shape({
         id: propTypes.string,
-        shortId: propTypes.string,
         action: propTypes.string,
         alternate: propTypes.number,
-        systemsCount: propTypes.number
+        systems: propTypes.arrayOf(propTypes.string)
     }).isRequired
 };
 
