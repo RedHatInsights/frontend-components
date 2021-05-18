@@ -67,6 +67,8 @@ exports[`Group - component API should call onChange when group is clicked 1`] = 
   showMoreTitle="Show more"
 >
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -2917,6 +2919,7 @@ exports[`Group - component render show more should render correctly with items a
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -2925,6 +2928,7 @@ exports[`Group - component render show more should render correctly with items a
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
