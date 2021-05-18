@@ -256,7 +256,8 @@ InventoryTable.propTypes = {
     errorState: PropTypes.node,
     isLoaded: PropTypes.bool,
     initialLoading: PropTypes.bool,
-    ignoreRefresh: PropTypes.bool
+    ignoreRefresh: PropTypes.bool,
+    showTagModal: PropTypes.bool
 };
 
 export default InventoryTable;

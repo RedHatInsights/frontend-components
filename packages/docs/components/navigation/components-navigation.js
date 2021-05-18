@@ -41,6 +41,11 @@ const NavLink = ({ href, children }) => {
     );
 };
 
+NavLink.propTypes = {
+    href: PropTypes.string.isRequired,
+    children: PropTypes.node
+};
+
 const NavigationGroup = ({ group, items, packageName }) => {
     const classes = useStyles();
     if (items.length === 1) {

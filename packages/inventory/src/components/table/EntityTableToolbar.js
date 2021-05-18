@@ -371,7 +371,8 @@ EntityTableToolbar.propTypes = {
     isLoaded: PropTypes.bool,
     items: PropTypes.array,
     sortBy: PropTypes.object,
-    bulkSelect: PropTypes.object
+    bulkSelect: PropTypes.object,
+    showTagModal: PropTypes.bool
 };
 
 EntityTableToolbar.defaultProps = {
