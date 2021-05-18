@@ -6,6 +6,7 @@ import * as api from '../api';
 import uniqWith from 'lodash/uniqWith';
 import isEqual from 'lodash/isEqual';
 import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry/ReducerRegistry';
+import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
 
@@ -52,25 +53,61 @@ const sortRecords = (records, sortByState) => [ ...records ].sort(
     }
 );
 
-export const buildRows = (records, sortByState, showAlternate) => sortRecords(records, sortByState).map((record, index) => ({
-    cells: [
-        record.action,
-        <Fragment key={`${index}-description`}>
-            <p key={`${index}-resolution`}>
-                {record.resolution}
-            </p>
-            {showAlternate && record.alternate > 0 &&
-                (
-                    <p key={`${index}-alternate`}>{record.alternate} alternate {pluralize(record.alternate, 'resolution')}</p>
-                )}
-        </Fragment>,
-        {
-            title: record.needsReboot ? <div><RedoIcon className="pf-u-mr-sm"/>Yes</div> : <div><CloseIcon className="pf-u-mr-sm"/>No</div>,
-            value: record.needsReboot
-        },
-        record.systemsCount
-    ]
-}));
+export const buildRows = (records, sortByState, showAlternate) => sortRecords(records, sortByState).reduce((acc, curr, index) => [
+    ...acc,
+    {
+        isOpen: false,
+        cells: [
+            { title: curr.action },
+            { title: <Fragment key={`${index}-description`}>
+                <p key={`${index}-resolution`}>
+                    {curr.resolution}
+                </p>
+                {showAlternate && curr.alternate > 0 &&
+                    (
+                        <p key={`${index}-alternate`}>{curr.alternate} alternate {pluralize(curr.alternate, 'resolution')}</p>
+                    )}
+            </Fragment>
+            },
+            {
+                title: curr.needsReboot ? <div><RedoIcon className="pf-u-mr-sm"/>Yes</div> : <div><CloseIcon className="pf-u-mr-sm"/>No</div>
+            },
+            {
+                title: curr.systems?.length || 0,
+                props: { isOpen: false }
+            }
+        ]
+    },
+    ...(curr.systems?.length > 0 ? [{
+        parent: index * 2,
+        cells: [
+            {
+                title: (
+                    <Fragment>
+                        <Table
+                            aria-label="Systems affected"
+                            variant={TableVariant.compact}
+                            cells={[
+                                { title: 'Systems affected' }
+                            ]}
+                            rows={curr.systems.map(s => [ s ])}
+                            className="pf-m-no-border-rows"
+                        >
+                            <TableHeader />
+                            <TableBody />
+                        </Table>
+                    </Fragment>
+                ),
+                props: { colSpan: 4, className: 'pf-m-no-padding' }
+            }
+        ]
+    }] : []) ], []);
+
+export const onCollapse = (event, rowKey, isOpen, rows, setRows) => {
+    let temp = [ ...rows ];
+    rows[rowKey].isOpen = isOpen;
+    setRows(temp);
+};
 
 export const getResolution = (issueId, formValues) => {
     const issueResolutions = formValues[RESOLUTIONS].find(r => r.id === issueId)?.resolutions || [];
@@ -112,12 +149,18 @@ export const submitRemediation = (formValues, data, basePath) => {
         remediation: { id, name },
         getNotification: () => createNotification(id, name, isNewSwitch, error)
     });
-    const issues = data.issues.map(({ id }) => ({
-        id,
-        resolution: getResolution(id, formValues)?.[0]?.id,
-        systems: formValues.systems
-    }));
-    const add = { issues, systems: formValues.systems };
+    const playbook = formValues[EXISTING_PLAYBOOK];
+    const issues = data.issues.map(({ id }) => {
+        const playbookSystems = playbook?.issues?.find(i => i.id === id)?.systems?.map(s => s.id) || [];
+        return ({
+            id,
+            resolution: getResolution(id, formValues)?.[0]?.id,
+            systems: dedupeArray([
+                ...(formValues[EXISTING_PLAYBOOK_SELECTED] ? [] : playbookSystems),
+                ...(formValues[SYSTEMS][id] || [])
+            ])
+        });}).filter(issue => issue.systems.length > 0);
+    const add = { issues, systems: [] };
     if (formValues[EXISTING_PLAYBOOK_SELECTED]) {
         const { id, name } = formValues[EXISTING_PLAYBOOK];
         api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
@@ -236,9 +279,8 @@ export const getIssuesMultiple = (issues = [], systems = [], resolutions = []) =
         const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
         return {
             action: issues.find(i => i.id === issue.id).description,
-            systemsCount: issue.systems ? issue.systems.length : systems.length,
+            systems: dedupeArray([ ...(issue.systems || []), systems ]),
             id: issue.id,
-            shortId: shortenIssueId(issue.id),
             resolution: description,
             needsReboot,
             alternate: issueResolutions?.length - 1
