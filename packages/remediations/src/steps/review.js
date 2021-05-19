@@ -64,6 +64,10 @@ const Review = (props) => {
 
     const [ rows, setRows ] = useState(buildRows(records, sortByState, false));
 
+    useEffect(() => {
+        setRows(buildRows(records, sortByState, true));
+    }, [ sortByState ]);
+
     return (
         <Stack hasGutter data-component-ouia-id="wizard-review">
             <StackItem>

@@ -42,13 +42,18 @@ export const remediationWizardTestData = {
 
     systems: [ 'system' ],
 
+    selectedSystems: {
+        testId: [ 'system' ],
+        testId2: [ 'system' ]
+    },
+
     issuesById: {
         testId: {
             id: 'testId',
             description: 'test_description'
         },
         testId2: {
-            id: 'testId',
+            id: 'testId2',
             description: 'description'
         }
     },

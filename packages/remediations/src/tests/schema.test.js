@@ -4,7 +4,8 @@ import {
     EXISTING_PLAYBOOK,
     MANUAL_RESOLUTION,
     EXISTING_PLAYBOOK_SELECTED,
-    ISSUES_MULTIPLE
+    ISSUES_MULTIPLE,
+    SYSTEMS
 } from '../utils';
 import { remediationWizardTestData } from './testData';
 
@@ -20,7 +21,8 @@ describe('reviewActionsNextStep', () => {
                     id: 'anotherId',
                     resolution: { id: 'test2' }
                 }]
-            }
+            },
+            [SYSTEMS]: remediationWizardTestData.selectedSystems
         };
     });
 
@@ -33,7 +35,8 @@ describe('reviewActionsNextStep', () => {
         const value = reviewActionsNextStep({
             ...formValues,
             [MANUAL_RESOLUTION]: true,
-            [EXISTING_PLAYBOOK_SELECTED]: true
+            [EXISTING_PLAYBOOK_SELECTED]: true,
+            [SYSTEMS]: remediationWizardTestData.selectedSystems
         }, [{ id: 'testId' }]);
         expect(value).toEqual('testId');
     });
@@ -51,7 +54,8 @@ describe('issueResolutionNextStep', () => {
                     resolution: { id: 'test' }
                 }]
             },
-            [ISSUES_MULTIPLE]: []
+            [ISSUES_MULTIPLE]: [],
+            [SYSTEMS]: remediationWizardTestData.selectedSystems
         };
     });
 
@@ -73,7 +77,10 @@ describe('issueResolutionNextStep', () => {
 
 describe('schema', () => {
 
-    const formValues = remediationWizardTestData.formValues;
+    const formValues = {
+        ...remediationWizardTestData.formValues,
+        [SYSTEMS]: remediationWizardTestData.selectedSystems
+    };
 
     it('should render issues', () => {
         const schema = schemaBuilder(remediationWizardTestData.issues);

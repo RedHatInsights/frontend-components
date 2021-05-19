@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
@@ -14,6 +14,7 @@ import {
 import {
     buildRows,
     pluralize,
+    sortRecords,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED,
     ISSUES_MULTIPLE,
@@ -36,10 +37,14 @@ const ReviewActions = (props) => {
         ? values[ISSUES_MULTIPLE].filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
         : values[ISSUES_MULTIPLE]).map(issue => ({
         ...issue,
-        systems: (values[SYSTEMS][issue.id] || []).map(id => allSystemsNamed.find(system => system.id === id).name)
+        systems: (values[SYSTEMS][issue.id] || []).map(id => allSystemsNamed.find(system => system.id === id)?.name)
     })).filter(record => record.systems.length > 0);
 
     const [ rows, setRows ] = useState(buildRows(multiples, sortByState, true));
+
+    useEffect(() => {
+        setRows(buildRows(multiples, sortByState, true));
+    }, [ sortByState ]);
 
     return (
         <Stack hasGutter data-component-ouia-id="wizard-review-actions">
@@ -85,6 +90,7 @@ const ReviewActions = (props) => {
                         transforms: [ sortable ]
                     }, {
                         title: 'Systems',
+                        transforms: [ sortable ],
                         cellFormatters: [ expandable ]
                     }]
                 }
