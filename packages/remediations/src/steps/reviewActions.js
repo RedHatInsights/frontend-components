@@ -13,12 +13,11 @@ import {
 } from '@patternfly/react-core';
 import {
     buildRows,
+    onCollapse,
     pluralize,
-    sortRecords,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED,
     ISSUES_MULTIPLE,
-    onCollapse,
     SYSTEMS
 } from '../utils';
 import './reviewActions.scss';

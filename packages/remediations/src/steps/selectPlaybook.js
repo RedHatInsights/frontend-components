@@ -181,12 +181,12 @@ const SelectPlaybook = (props) => {
 };
 
 SelectPlaybook.propTypes = {
-    allSystems: propTypes.arrayOf(propTypes.string).isRequired,
     issues: propTypes.arrayOf(propTypes.shape({
         description: propTypes.string,
         id: propTypes.string
     })).isRequired,
-    systems: propTypes.arrayOf(propTypes.string).isRequired
+    systems: propTypes.arrayOf(propTypes.string).isRequired,
+    allSystems: propTypes.arrayOf(propTypes.string).isRequired
 };
 
 export default SelectPlaybook;

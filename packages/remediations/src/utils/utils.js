@@ -44,7 +44,7 @@ export const pluralize = (count, str, fallback) => count !== 1 ? (fallback || st
 
 const sortRecords = (records, sortByState) => [ ...records ].sort(
     (a, b) => {
-        const key = Object.keys(a)[sortByState.index];
+        const key = Object.keys(a)[sortByState.index - 1];
         return (
             (a[key] > b[key] ? 1 :
                 a[key] < b[key] ? -1 : 0)
@@ -279,10 +279,10 @@ export const getIssuesMultiple = (issues = [], systems = [], resolutions = []) =
         const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
         return {
             action: issues.find(i => i.id === issue.id).description,
-            systems: dedupeArray([ ...(issue.systems || []), systems ]),
-            id: issue.id,
             resolution: description,
             needsReboot,
+            systems: dedupeArray([ ...(issue.systems || []), systems ]),
+            id: issue.id,
             alternate: issueResolutions?.length - 1
         };
     }).filter(record => record.alternate > 0);

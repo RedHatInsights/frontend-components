@@ -65,7 +65,7 @@ const Review = (props) => {
     const [ rows, setRows ] = useState(buildRows(records, sortByState, false));
 
     useEffect(() => {
-        setRows(buildRows(records, sortByState, true));
+        setRows(buildRows(records, sortByState, false));
     }, [ sortByState ]);
 
     return (
@@ -120,6 +120,7 @@ const Review = (props) => {
                         transforms: [ sortable ]
                     }, {
                         title: 'Systems',
+                        transforms: [ sortable ],
                         cellFormatters: [ expandable ]
                     }]
                 }

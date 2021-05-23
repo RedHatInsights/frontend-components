@@ -40,7 +40,7 @@ const ReviewSystems = ({ issues, systems, allSystems, registry, ...props }) => {
 
     useEffect(() => {
         const value = issues.reduce((acc, curr) => {
-            const tempSystems = [ ...systems, ...curr.systems ].filter(id => selected?.includes(id));
+            const tempSystems = [ ...systems, ...(curr.systems || []) ].filter(id => selected?.includes(id));
             return ({
                 ...acc,
                 ...(tempSystems.length > 0 ? { [curr.id]: tempSystems } : {})

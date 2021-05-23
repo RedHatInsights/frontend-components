@@ -88,7 +88,7 @@ describe('Review', () => {
         expect(wrapper.find('Form')).toHaveLength(1);
         expect(wrapper.find('table')).toHaveLength(3);
         expect(wrapper.find(BodyRow)).toHaveLength(6);
-        expect(wrapper.find('button')).toHaveLength(7);
+        expect(wrapper.find('button')).toHaveLength(8);
     });
 
     it('should change autoreboot correctly', async () => {
@@ -117,9 +117,8 @@ describe('Review', () => {
         });
         wrapper.update();
         expect(wrapper.find('td').at(2).props().children).toEqual('test_description');
-        wrapper.find('button[className="pf-c-table__button"]').at(2).simulate('click');
-        wrapper.find('button[className="pf-c-table__button"]').at(2).simulate('click');
-        wrapper.find('button[className="pf-c-table__button"]').at(2).simulate('click');
+        wrapper.find('button[className="pf-c-table__button"]').first().simulate('click');
+        wrapper.find('button[className="pf-c-table__button"]').first().simulate('click');
         expect(wrapper.find('td').at(2).props().children).toEqual('description');
     });
 
