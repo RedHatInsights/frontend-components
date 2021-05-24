@@ -15,7 +15,7 @@ const ExtractCssWebpackPlugin = new(require('mini-css-extract-plugin'))({
 });
 const CleanWebpackPlugin = new(require('clean-webpack-plugin').CleanWebpackPlugin)({ cleanStaleWebpackAssets: false });
 const WebpackHotModuleReplacement = new HotModuleReplacementPlugin();
-const jsVarName = require('./jsVarName');
+const jsVarName = require('@redhat-cloud-services/frontend-components-config-utilities/jsVarName');
 
 module.exports = ({
     rootFolder,
@@ -42,7 +42,7 @@ module.exports = ({
         ...replacePlugin || []
     ]);
 
-    const ChunkMapper = new(require('../chunk-mapper'))({ modules: [
+    const ChunkMapper = new(require('@redhat-cloud-services/frontend-components-config-utilities/chunk-mapper'))({ modules: [
         ...insights ? [ jsVarName(insights.appname) ] : [],
         ...modules || []
     ] });
