@@ -119,7 +119,7 @@ describe('Review', () => {
         expect(wrapper.find('td').at(2).props().children).toEqual('test_description');
         wrapper.find('button[className="pf-c-table__button"]').first().simulate('click');
         wrapper.find('button[className="pf-c-table__button"]').first().simulate('click');
-        expect(wrapper.find('td').at(2).props().children).toEqual('description');
+        expect(wrapper.find('td').at(2).props().children).toEqual('test_description');
     });
 
     it('should submit the form', async () => {
