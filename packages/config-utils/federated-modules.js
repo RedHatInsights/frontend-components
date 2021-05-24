@@ -3,21 +3,21 @@ const { ModuleFederationPlugin } = require('webpack').container;
 const jsVarName = require('./jsVarName');
 
 const include = {
-  '@patternfly/react-core': {},
-  '@patternfly/react-table': {},
-  '@patternfly/react-tokens': {},
-  '@patternfly/react-icons': {},
-  '@redhat-cloud-services/frontend-components': {},
-  '@redhat-cloud-services/frontend-components-utilities': {},
-  '@redhat-cloud-services/frontend-components-notifications': {},
-  axios: {},
-  lodash: {},
-  redux: {},
-  'redux-promise-middleware': {},
-  react: { singleton: true },
-  'react-dom': { singleton: true },
-  'react-redux': {},
-  'react-router-dom': {},
+    '@patternfly/react-core': {},
+    '@patternfly/react-table': {},
+    '@patternfly/react-tokens': {},
+    '@patternfly/react-icons': {},
+    '@redhat-cloud-services/frontend-components': {},
+    '@redhat-cloud-services/frontend-components-utilities': {},
+    '@redhat-cloud-services/frontend-components-notifications': {},
+    axios: {},
+    lodash: {},
+    redux: {},
+    'redux-promise-middleware': {},
+    react: { singleton: true },
+    'react-dom': { singleton: true },
+    'react-redux': {},
+    'react-router-dom': {}
 };
 
 module.exports = ({
@@ -33,13 +33,13 @@ module.exports = ({
     const appName = moduleName || (insights && jsVarName(insights.appname));
 
     const sharedDeps = Object.entries(include)
-      .filter(([key]) => dependencies[key] && !exclude.includes(key))
-      .map(([key, val]) => ({
+    .filter(([ key ]) => dependencies[key] && !exclude.includes(key))
+    .map(([ key, val ]) => ({
         [key]: {
-          requiredVersion: dependencies[key],
-          ...val
+            requiredVersion: dependencies[key],
+            ...val
         }
-      }));
+    }));
 
     if (debug) {
         console.log('Using package at path: ', resolve(root, './package.json'));
