@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 const path = require('path');
-const proxy = require('./proxy');
+const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
 
 let rewriteLineCounter = 0;
 

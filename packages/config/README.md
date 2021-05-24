@@ -230,7 +230,7 @@ In both cases queries and hashes are ignored.
 For running local services you can use `cookieTransform` ([original function](https://github.com/RedHatInsights/insights-standalone/blob/1eef6cfc21f96304275683d090c6b8178a4d386f/index.js#L8), you can also check [insights-proxy implementation](https://github.com/RedHatInsights/insights-proxy/blob/1cdbc597681eac51998d8c2dd2dd6b5a2d4d03d6/spandx.config.js#L101)) in `onProxyReq` function. This function transform `jwt` cookie to `x-hr-identity` header.
 
 ```jsx
-const cookieTransform = require('@redhat-cloud-services/frontend-components-config/src/cookieTransform');
+const cookieTransform = require('@redhat-cloud-services/frontend-components-config-utilities/cookieTransform');
 
 onProxyReq: (...args) => {
     cookieTransform(...args);
@@ -275,7 +275,7 @@ A current target. By default `https://ci.cloud.redhat.com`.
 #### Example
 
 ```jsx
-const serverLocalFile = require('@redhat-cloud-services/frontend-components-config/src/serveLocalFile');
+const serverLocalFile = require('@redhat-cloud-services/frontend-components-config-utilities/serveLocalFile');
 
 const { config: webpackConfig, plugins } = config({
   rootFolder: resolve(__dirname, '../'),
