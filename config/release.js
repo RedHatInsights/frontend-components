@@ -93,6 +93,9 @@ const releaseComment = (pckgName, newVersion) => `
     packages.map(async (packageFolder) => {
         const packagePath = resolve(__dirname, `../${monorepoFolder}/${packageFolder}package.json`);
         const pckg = await readJson(packagePath);
+        if (pckg.private) {
+          return;
+        }
         const { stdout: version } = await exec(`npm view ${pckg.name} version`);
         const [ major, minor, bugfix ] = version.trim().split('.');
         const newVersion = releaseMapper(releaseType)(major, minor, bugfix);
