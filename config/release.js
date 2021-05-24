@@ -33,7 +33,7 @@ const calculatePackages = async (files) => {
     const packages = await Promise.all(
       files.map(async ({ filename }) => {
         const packageFolder = `${filename.substring(monorepoFolder.length + 1).split('/')[0]}/`;
-        (await exists(resolve(__dirname, `../${monorepoFolder}/${packageFolder}package.json`))) && packageFolder;
+        return (await exists(resolve(__dirname, `../${monorepoFolder}/${packageFolder}package.json`))) && packageFolder;
       })
     );
     return [ ...new Set(packages.filter(Boolean)) ];
