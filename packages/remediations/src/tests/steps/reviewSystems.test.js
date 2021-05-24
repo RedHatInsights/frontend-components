@@ -60,6 +60,7 @@ const schema = {
             systems: [{ id: 'test', display_name: 'test' }]
         }],
         systems: [ 'test2' ],
+        allSystems: [ 'test', 'test2' ],
         registry: new ReducerRegistry({}, [ promiseMiddleware ])
     }]
 };

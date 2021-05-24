@@ -23,6 +23,7 @@ const RendererWrapper = (props) => (
             'select-playbook': {
                 component: SelectPlaybook,
                 issues: remediationWizardTestData.issues,
+                systems: remediationWizardTestData.systems,
                 allSystems: remediationWizardTestData.systems
             }
         }}

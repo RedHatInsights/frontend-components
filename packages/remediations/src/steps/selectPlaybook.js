@@ -34,7 +34,7 @@ import {
 import './selectPlaybook.scss';
 
 const SelectPlaybook = (props) => {
-    const { issues, allSystems } = props;
+    const { issues, systems, allSystems } = props;
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState().values;
@@ -62,7 +62,7 @@ const SelectPlaybook = (props) => {
     useEffect(() => {
         if (differenceWith(resolutions, values[RESOLUTIONS], isEqual)?.length > 0) {
             formOptions.change(RESOLUTIONS, resolutions);
-            formOptions.change(ISSUES_MULTIPLE, getIssuesMultiple(issues, allSystems, resolutions));
+            formOptions.change(ISSUES_MULTIPLE, getIssuesMultiple(issues, systems, resolutions));
         }
     });
 
@@ -181,11 +181,12 @@ const SelectPlaybook = (props) => {
 };
 
 SelectPlaybook.propTypes = {
-    allSystems: propTypes.arrayOf(propTypes.string).isRequired,
     issues: propTypes.arrayOf(propTypes.shape({
         description: propTypes.string,
         id: propTypes.string
-    })).isRequired
+    })).isRequired,
+    systems: propTypes.arrayOf(propTypes.string).isRequired,
+    allSystems: propTypes.arrayOf(propTypes.string).isRequired
 };
 
 export default SelectPlaybook;
