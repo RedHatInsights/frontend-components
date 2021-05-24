@@ -24,7 +24,8 @@ const IntlProvider = ({
 };
 
 IntlProvider.propTypes = {
-    locale: PropTypes.string
+    locale: PropTypes.string,
+    messages: PropTypes.object
 };
 
 IntlProvider.defaultProps = {

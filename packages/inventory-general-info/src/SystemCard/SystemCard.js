@@ -193,7 +193,8 @@ SystemCard.propTypes = {
             options: PropTypes.shape({}),
             type: PropTypes.string
         })),
-        sapIds: PropTypes.arrayOf(PropTypes.string)
+        sapIds: PropTypes.arrayOf(PropTypes.string),
+        cpuFlags: PropTypes.array
     }),
     setDisplayName: PropTypes.func,
     setAnsibleHost: PropTypes.func,

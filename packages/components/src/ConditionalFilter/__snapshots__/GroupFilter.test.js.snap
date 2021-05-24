@@ -67,6 +67,8 @@ exports[`Group - component API should call onChange when group is clicked 1`] = 
   showMoreTitle="Show more"
 >
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -84,6 +86,7 @@ exports[`Group - component API should call onChange when group is clicked 1`] = 
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -93,6 +96,7 @@ exports[`Group - component API should call onChange when group is clicked 1`] = 
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -101,6 +105,7 @@ exports[`Group - component API should call onChange when group is clicked 1`] = 
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -119,6 +124,7 @@ exports[`Group - component API should call onChange when group is clicked 1`] = 
           className=""
           handleTypeaheadKeys={[Function]}
           hasClearButton={true}
+          hasFooter={false}
           id="pf-select-toggle-id-13"
           isActive={false}
           isDisabled={false}
@@ -260,6 +266,8 @@ exports[`Group - component render should render correctly 1`] = `
 exports[`Group - component render should render correctly placeholder 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -277,6 +285,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -286,6 +295,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText="some placeholder"
     removeSelectionAriaLabel="Remove"
@@ -294,6 +304,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -318,6 +329,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -338,6 +351,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -369,6 +384,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -398,6 +415,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -438,6 +457,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -468,6 +489,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -503,6 +526,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLoad={false}
+          isLoading={false}
           isNoResultsOption={false}
           isPlaceholder={false}
           isSelected={false}
@@ -534,6 +559,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -554,6 +581,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -580,6 +609,8 @@ exports[`Group - component render should render correctly placeholder 1`] = `
 exports[`Group - component render should render correctly with items - isDisabled 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -597,6 +628,7 @@ exports[`Group - component render should render correctly with items - isDisable
     isCreatable={false}
     isDisabled={true}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -606,6 +638,7 @@ exports[`Group - component render should render correctly with items - isDisable
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -614,6 +647,7 @@ exports[`Group - component render should render correctly with items - isDisable
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -638,6 +672,8 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -658,6 +694,8 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -689,6 +727,8 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -718,6 +758,8 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -758,6 +800,8 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -788,6 +832,8 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -823,6 +869,8 @@ exports[`Group - component render should render correctly with items - isDisable
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLoad={false}
+          isLoading={false}
           isNoResultsOption={false}
           isPlaceholder={false}
           isSelected={false}
@@ -854,6 +902,8 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -874,6 +924,8 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -900,6 +952,8 @@ exports[`Group - component render should render correctly with items - isDisable
 exports[`Group - component render should render correctly with items 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -917,6 +971,7 @@ exports[`Group - component render should render correctly with items 1`] = `
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -926,6 +981,7 @@ exports[`Group - component render should render correctly with items 1`] = `
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -934,6 +990,7 @@ exports[`Group - component render should render correctly with items 1`] = `
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -958,6 +1015,8 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -978,6 +1037,8 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1009,6 +1070,8 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1038,6 +1101,8 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1078,6 +1143,8 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1108,6 +1175,8 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1143,6 +1212,8 @@ exports[`Group - component render should render correctly with items 1`] = `
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLoad={false}
+          isLoading={false}
           isNoResultsOption={false}
           isPlaceholder={false}
           isSelected={false}
@@ -1174,6 +1245,8 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1194,6 +1267,8 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1220,6 +1295,8 @@ exports[`Group - component render should render correctly with items 1`] = `
 exports[`Group - component render should render correctly with items and default value 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -1237,6 +1314,7 @@ exports[`Group - component render should render correctly with items and default
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -1246,6 +1324,7 @@ exports[`Group - component render should render correctly with items and default
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -1254,6 +1333,7 @@ exports[`Group - component render should render correctly with items and default
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -1278,6 +1358,8 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1298,6 +1380,8 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1329,6 +1413,8 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1358,6 +1444,8 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1398,6 +1486,8 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1428,6 +1518,8 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1463,6 +1555,8 @@ exports[`Group - component render should render correctly with items and default
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLoad={false}
+          isLoading={false}
           isNoResultsOption={false}
           isPlaceholder={false}
           isSelected={false}
@@ -1494,6 +1588,8 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1514,6 +1610,8 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1540,6 +1638,8 @@ exports[`Group - component render should render correctly with items and default
 exports[`Group - component render should render correctly with items and selected value 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -1557,6 +1657,7 @@ exports[`Group - component render should render correctly with items and selecte
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -1566,6 +1667,7 @@ exports[`Group - component render should render correctly with items and selecte
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -1574,6 +1676,7 @@ exports[`Group - component render should render correctly with items and selecte
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -1598,6 +1701,8 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1618,6 +1723,8 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1649,6 +1756,8 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1678,6 +1787,8 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1718,6 +1829,8 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1748,6 +1861,8 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1783,6 +1898,8 @@ exports[`Group - component render should render correctly with items and selecte
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLoad={false}
+          isLoading={false}
           isNoResultsOption={false}
           isPlaceholder={false}
           isSelected={false}
@@ -1814,6 +1931,8 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1834,6 +1953,8 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1860,6 +1981,8 @@ exports[`Group - component render should render correctly with items and selecte
 exports[`Group - component render show more should render correctly with items and custom props 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -1877,6 +2000,7 @@ exports[`Group - component render show more should render correctly with items a
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -1886,6 +2010,7 @@ exports[`Group - component render show more should render correctly with items a
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -1894,6 +2019,7 @@ exports[`Group - component render show more should render correctly with items a
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -1918,6 +2044,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1938,6 +2066,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1969,6 +2099,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -1998,6 +2130,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2038,6 +2172,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2068,6 +2204,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2103,6 +2241,8 @@ exports[`Group - component render show more should render correctly with items a
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLoad={false}
+          isLoading={false}
           isNoResultsOption={false}
           isPlaceholder={false}
           isSelected={false}
@@ -2134,6 +2274,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2154,6 +2296,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2195,6 +2339,8 @@ exports[`Group - component render show more should render correctly with items a
 exports[`Group - component render show more should render correctly with items and custom text 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -2212,6 +2358,7 @@ exports[`Group - component render show more should render correctly with items a
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -2221,6 +2368,7 @@ exports[`Group - component render show more should render correctly with items a
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -2229,6 +2377,7 @@ exports[`Group - component render show more should render correctly with items a
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -2253,6 +2402,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2273,6 +2424,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2304,6 +2457,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2333,6 +2488,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2373,6 +2530,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2403,6 +2562,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2438,6 +2599,8 @@ exports[`Group - component render show more should render correctly with items a
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLoad={false}
+          isLoading={false}
           isNoResultsOption={false}
           isPlaceholder={false}
           isSelected={false}
@@ -2469,6 +2632,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2489,6 +2654,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2525,6 +2692,8 @@ exports[`Group - component render show more should render correctly with items a
 exports[`Group - component render show more should render correctly with items and default text 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -2542,6 +2711,7 @@ exports[`Group - component render show more should render correctly with items a
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -2551,6 +2721,7 @@ exports[`Group - component render show more should render correctly with items a
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -2559,6 +2730,7 @@ exports[`Group - component render show more should render correctly with items a
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -2583,6 +2755,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2603,6 +2777,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2634,6 +2810,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2663,6 +2841,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2703,6 +2883,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2733,6 +2915,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2768,6 +2952,8 @@ exports[`Group - component render show more should render correctly with items a
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLoad={false}
+          isLoading={false}
           isNoResultsOption={false}
           isPlaceholder={false}
           isSelected={false}
@@ -2799,6 +2985,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2819,6 +3007,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2855,6 +3045,8 @@ exports[`Group - component render show more should render correctly with items a
 exports[`Group - component render show more should render correctly with items and different variant 1`] = `
 <Fragment>
   <Select
+    aria-describedby=""
+    aria-invalid={false}
     aria-label="Select Input"
     aria-labelledby=""
     chipGroupComponent={null}
@@ -2872,6 +3064,7 @@ exports[`Group - component render show more should render correctly with items a
     isCreatable={false}
     isDisabled={false}
     isGrouped={true}
+    isInputValuePersisted={false}
     isOpen={false}
     isPlain={false}
     menuAppendTo="inline"
@@ -2881,6 +3074,7 @@ exports[`Group - component render show more should render correctly with items a
     onFilter={null}
     onSelect={[Function]}
     onToggle={[Function]}
+    onTypeaheadInputChanged={null}
     ouiaSafe={true}
     placeholderText=""
     removeSelectionAriaLabel="Remove"
@@ -2889,6 +3083,7 @@ exports[`Group - component render show more should render correctly with items a
     toggleIcon={null}
     toggleId={null}
     typeAheadAriaLabel=""
+    validated="default"
     variant="single"
     width=""
   >
@@ -2913,6 +3108,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2933,6 +3130,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2964,6 +3163,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -2993,6 +3194,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -3033,6 +3236,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -3063,6 +3268,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -3098,6 +3305,8 @@ exports[`Group - component render show more should render correctly with items a
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLoad={false}
+          isLoading={false}
           isNoResultsOption={false}
           isPlaceholder={false}
           isSelected={false}
@@ -3129,6 +3338,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}
@@ -3149,6 +3360,8 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLoad={false}
+            isLoading={false}
             isNoResultsOption={false}
             isPlaceholder={false}
             isSelected={false}

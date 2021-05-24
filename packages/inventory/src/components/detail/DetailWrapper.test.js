@@ -4,7 +4,7 @@ import DetailWrapper from './DetailWrapper';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
 import { mock } from '../../__mock__/systemIssues';
 

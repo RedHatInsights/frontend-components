@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './tagModal.scss';
 import {
@@ -166,7 +166,10 @@ TagModal.propTypes = {
     primaryToolbarProps: PropTypes.shape({
         [PropTypes.string]: PropTypes.any
     }),
-    selected: PropTypes.array
+    selected: PropTypes.array,
+    children: PropTypes.node,
+    filters: PropTypes.any,
+    onApply: PropTypes.func
 };
 
 TagModal.defaultProps = {

@@ -2,7 +2,13 @@
 
 exports[`SystemPolicyCards component should render loading state 1`] = `
 <IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
   locale="en-US"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
 >
   <SystemPolicyCards
     loading={true}
@@ -293,9 +299,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                   }
                                 }
                                 trigger={
-                                  <span
-                                    aria-describedby="pf-tooltip-1"
-                                  >
+                                  <span>
                                     (Score: 
                                     75%
                                     )
@@ -306,9 +310,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                 <FindRefWrapper
                                   onFoundRef={[Function]}
                                 >
-                                  <span
-                                    aria-describedby="pf-tooltip-1"
-                                  >
+                                  <span>
                                     (Score: 
                                     75%
                                     )
@@ -412,9 +414,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                       }
                                     }
                                     trigger={
-                                      <span
-                                        aria-describedby="pf-tooltip-2"
-                                      >
+                                      <span>
                                         2 years ago
                                       </span>
                                     }
@@ -423,9 +423,7 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                                     <FindRefWrapper
                                       onFoundRef={[Function]}
                                     >
-                                      <span
-                                        aria-describedby="pf-tooltip-2"
-                                      >
+                                      <span>
                                         2 years ago
                                       </span>
                                     </FindRefWrapper>
@@ -529,7 +527,13 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
 
 exports[`SystemPolicyCards component should render real table 1`] = `
 <IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
   locale="en-US"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
 >
   <SystemPolicyCards
     loading={false}
@@ -820,9 +824,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                   }
                                 }
                                 trigger={
-                                  <span
-                                    aria-describedby="pf-tooltip-3"
-                                  >
+                                  <span>
                                     (Score: 
                                     75%
                                     )
@@ -833,9 +835,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                 <FindRefWrapper
                                   onFoundRef={[Function]}
                                 >
-                                  <span
-                                    aria-describedby="pf-tooltip-3"
-                                  >
+                                  <span>
                                     (Score: 
                                     75%
                                     )
@@ -939,9 +939,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                       }
                                     }
                                     trigger={
-                                      <span
-                                        aria-describedby="pf-tooltip-4"
-                                      >
+                                      <span>
                                         2 years ago
                                       </span>
                                     }
@@ -950,9 +948,7 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                                     <FindRefWrapper
                                       onFoundRef={[Function]}
                                     >
-                                      <span
-                                        aria-describedby="pf-tooltip-4"
-                                      >
+                                      <span>
                                         2 years ago
                                       </span>
                                     </FindRefWrapper>

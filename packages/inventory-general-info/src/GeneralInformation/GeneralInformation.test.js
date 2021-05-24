@@ -7,7 +7,7 @@ import GeneralInformation from './GeneralInformation';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { osTest, biosTest, collectInfoTest, configTest, infraTest, testProperties } from '../__mock__/selectors';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import { mock } from '../__mock__/hostApi';
 import mockedData from '../__mock__/mockedData.json';
 

@@ -1,13 +1,26 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React from 'react';
 import Pagination from './Pagination';
 import { render, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux';
 
-import { mock } from '../../__mock__/hostApi';
+jest.mock('../../redux/actions', () => {
+    const actions = jest.requireActual('../../redux/actions');
+    const { ACTION_TYPES } = jest.requireActual('../../redux/action-types');
+    return {
+        __esModule: true,
+        ...actions,
+        loadEntities: () => ({
+            type: ACTION_TYPES.LOAD_ENTITIES,
+            payload: () => Promise.resolve({}),
+            meta: { showTags: undefined }
+        })
+    };
+});
 
 describe('Pagination', () => {
     let initialState;
@@ -69,7 +82,6 @@ describe('Pagination', () => {
 
     describe('API', () => {
         it('should call perPage change', () => {
-            mock.onGet('/api/inventory/v1/hosts').reply(200, {});
             const store = mockStore(initialState);
             const wrapper = mount(<WrappedPagination store={ store } page={1} perPage={50} total={500} />);
             wrapper.find('.pf-c-options-menu__toggle button').first().simulate('click');
@@ -79,7 +91,6 @@ describe('Pagination', () => {
         });
 
         it('should call onSetPage change without', () => {
-            mock.onGet('/api/inventory/v1/hosts').reply(200, {});
             const store = mockStore(initialState);
             const wrapper = mount(<WrappedPagination store={ store } page={1} perPage={50} total={500} />);
             wrapper.find('.pf-c-pagination__nav-control button[data-action="next"]').first().simulate('click');

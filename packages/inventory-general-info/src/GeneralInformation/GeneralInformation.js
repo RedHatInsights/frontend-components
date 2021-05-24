@@ -128,7 +128,8 @@ GeneralInformation.propTypes = {
     BiosCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ]),
     InfrastructureCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ]),
     ConfigurationCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ]),
-    CollectionCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ])
+    CollectionCardWrapper: PropTypes.oneOfType([ PropTypes.node, PropTypes.bool ]),
+    children: PropTypes.node
 };
 GeneralInformation.defaultProps = {
     entity: {},

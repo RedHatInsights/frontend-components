@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter, matchPath } from 'react-router-dom';
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
@@ -33,6 +34,16 @@ export const routerParams = (Component) => {
         }
     };
 
+    RouterParams.propTypes = {
+        match: PropTypes.shape({ params: PropTypes.object, path: PropTypes.string, url: PropTypes.string }).isRequired,
+        onPathChange: PropTypes.func,
+        location: PropTypes.shape({ pathname: PropTypes.string.isRequired }).isRequired,
+        routerData: PropTypes.shape({
+            params: PropTypes.object,
+            path: PropTypes.string
+        }).isRequired,
+        staticContext: PropTypes.any
+    };
     return withRouter(connect(({ routerData }) => ({ routerData }), (dispatch) => (
         {
             onPathChange: (data) => dispatch({

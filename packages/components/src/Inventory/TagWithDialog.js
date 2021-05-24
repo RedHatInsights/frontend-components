@@ -30,6 +30,11 @@ const BaseTagWithDialog = (props) => {
     );
 };
 
+BaseTagWithDialog.propTypes = {
+    fallback: PropTypes.node,
+    innerRef: PropTypes.object
+};
+
 /**
  * Inventory sub component.
  *

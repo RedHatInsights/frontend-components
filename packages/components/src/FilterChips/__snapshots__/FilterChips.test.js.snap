@@ -21,6 +21,7 @@ exports[`FilterChips component should render 1`] = `
     key="group_Group 1"
     numChips={3}
     onClick={[Function]}
+    onOverflowChipClick={[Function]}
     tooltipPosition="top"
   >
     <Chip
@@ -64,6 +65,7 @@ exports[`FilterChips component should render 1`] = `
     key="group_plain_chip_Chip 3"
     numChips={3}
     onClick={[Function]}
+    onOverflowChipClick={[Function]}
     tooltipPosition="top"
   >
     <Chip
@@ -89,6 +91,7 @@ exports[`FilterChips component should render 1`] = `
     key="group_plain_chip_Chip 4"
     numChips={3}
     onClick={[Function]}
+    onOverflowChipClick={[Function]}
     tooltipPosition="top"
   >
     <Chip
@@ -127,6 +130,7 @@ exports[`FilterChips component should render group delete 1`] = `
     key="group_Group 1"
     numChips={3}
     onClick={[Function]}
+    onOverflowChipClick={[Function]}
     tooltipPosition="top"
   >
     <Chip
@@ -170,6 +174,7 @@ exports[`FilterChips component should render group delete 1`] = `
     key="group_plain_chip_Chip 3"
     numChips={3}
     onClick={[Function]}
+    onOverflowChipClick={[Function]}
     tooltipPosition="top"
   >
     <Chip
@@ -195,6 +200,7 @@ exports[`FilterChips component should render group delete 1`] = `
     key="group_plain_chip_Chip 4"
     numChips={3}
     onClick={[Function]}
+    onOverflowChipClick={[Function]}
     tooltipPosition="top"
   >
     <Chip
@@ -233,6 +239,7 @@ exports[`FilterChips component should render with custom delete message 1`] = `
     key="group_Group 1"
     numChips={3}
     onClick={[Function]}
+    onOverflowChipClick={[Function]}
     tooltipPosition="top"
   >
     <Chip
@@ -276,6 +283,7 @@ exports[`FilterChips component should render with custom delete message 1`] = `
     key="group_plain_chip_Chip 3"
     numChips={3}
     onClick={[Function]}
+    onOverflowChipClick={[Function]}
     tooltipPosition="top"
   >
     <Chip
@@ -301,6 +309,7 @@ exports[`FilterChips component should render with custom delete message 1`] = `
     key="group_plain_chip_Chip 4"
     numChips={3}
     onClick={[Function]}
+    onOverflowChipClick={[Function]}
     tooltipPosition="top"
   >
     <Chip

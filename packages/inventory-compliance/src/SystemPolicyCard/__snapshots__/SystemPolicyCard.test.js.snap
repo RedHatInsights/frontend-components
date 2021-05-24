@@ -78,9 +78,7 @@ exports[`SystemPolicyCard component should render policy 1`] = `
         data-pf-content="true"
       >
         10 rules failed 
-        <span
-          aria-describedby="pf-tooltip-1"
-        >
+        <span>
           (Score: 75%)
         </span>
       </small>
@@ -100,9 +98,7 @@ exports[`SystemPolicyCard component should render policy 1`] = `
         data-pf-content="true"
       >
         Last scanned: 
-        <span
-          aria-describedby="pf-tooltip-2"
-        >
+        <span>
           6 months ago
         </span>
       </p>

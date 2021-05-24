@@ -3,9 +3,7 @@
 exports[`parseCvssScore cvssV2 should render correct tooltip content 1`] = `null`;
 
 exports[`parseCvssScore cvssV2 should render value in span 1`] = `
-<span
-  aria-describedby="pf-tooltip-2"
->
+<span>
   2.0
    
 </span>
@@ -14,9 +12,7 @@ exports[`parseCvssScore cvssV2 should render value in span 1`] = `
 exports[`parseCvssScore cvssV2 with labels should render correct tooltip content 1`] = `null`;
 
 exports[`parseCvssScore cvssV2 with labels should render value in span 1`] = `
-<span
-  aria-describedby="pf-tooltip-3"
->
+<span>
   2.0
    
   (CVSSv2)
@@ -26,9 +22,7 @@ exports[`parseCvssScore cvssV2 with labels should render value in span 1`] = `
 exports[`parseCvssScore cvssV3 1`] = `"2.0"`;
 
 exports[`parseCvssScore no cvss should render N/A in span 1`] = `
-<span
-  aria-describedby="pf-tooltip-1"
->
+<span>
   N/A
 </span>
 `;

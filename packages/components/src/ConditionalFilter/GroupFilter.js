@@ -408,7 +408,9 @@ Group.propTypes = {
         props: {
             [PropTypes.string]: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
         }
-    })
+    }),
+    placeholder: PropTypes.node,
+    className: PropTypes.string
 };
 
 Group.defaultProps = {

@@ -76,7 +76,8 @@ PaginationNav.propTypes = {
     perPageOptions: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.node,
         value: PropTypes.number
-    }))
+    })),
+    className: PropTypes.string
 };
 
 PaginationNav.defaultProps = {

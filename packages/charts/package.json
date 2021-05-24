@@ -29,14 +29,14 @@
         "@patternfly/react-core": ">=3.2.6",
         "@patternfly/react-icons": ">=3.7.4",
         "prop-types": ">=15.6.2",
-        "react": ">=16.5.1",
-        "react-dom": ">=16.5.1",
+        "react": "^16.14.0",
+        "react-dom": "^16.14.0",
         "react-router-dom": ">=4.2.2"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "c3": "^0.6.7",
-        "classnames": "^2.2.5",
+        "classnames": "^2.3.1",
         "d3": "^5.7.0"
     }
 }

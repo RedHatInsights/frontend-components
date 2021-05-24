@@ -361,10 +361,18 @@ EntityTableToolbar.propTypes = {
         tags: PropTypes.bool,
         name: PropTypes.bool,
         registeredWith: PropTypes.bool,
-        stale: PropTypes.bool
+        stale: PropTypes.bool,
+        all: PropTypes.bool
     }),
     paginationProps: PropTypes.object,
-    loaded: PropTypes.bool
+    loaded: PropTypes.bool,
+    onRefresh: PropTypes.func.isRequired,
+    hasCheckbox: PropTypes.bool,
+    isLoaded: PropTypes.bool,
+    items: PropTypes.array,
+    sortBy: PropTypes.object,
+    bulkSelect: PropTypes.object,
+    showTagModal: PropTypes.bool
 };
 
 EntityTableToolbar.defaultProps = {

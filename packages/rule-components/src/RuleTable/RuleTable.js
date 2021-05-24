@@ -263,7 +263,8 @@ RuleTable.propTypes = {
         ])
     }),
     toolbarProps: PropTypes.any,
-    loadingBars: PropTypes.number
+    loadingBars: PropTypes.number,
+    filters: PropTypes.object
 };
 
 RuleTable.defaultProps = {

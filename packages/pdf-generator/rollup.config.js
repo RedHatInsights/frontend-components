@@ -1,6 +1,4 @@
 /* eslint-disable camelcase */
-
-import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import { createFilter } from 'rollup-pluginutils';
 import { dependencies } from './package.json';
 import nodeResolve from '@rollup/plugin-node-resolve';
@@ -50,7 +48,6 @@ const plugins = [
     postcss({
         inject: true
     }),
-    sizeSnapshot({ snapshotPath: './size-snapshot.json' }),
     json()
 ];
 

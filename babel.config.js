@@ -94,13 +94,7 @@ module.exports = {
         'babel-plugin-lodash',
         '@babel/plugin-transform-react-display-name',
         '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-proposal-optional-chaining',
-        [
-            'react-intl',
-            {
-                messagesDir: './build/messages/'
-            }
-        ]
+        '@babel/plugin-proposal-optional-chaining'
     ],
     env: {
         cjs: {

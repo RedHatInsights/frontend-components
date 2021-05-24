@@ -5,6 +5,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
   aria-label="Loading"
   borders={true}
   canSelectAll={false}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -46,6 +47,7 @@ exports[`SkeletonTable component should render correctly 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={false}
   ouiaSafe={true}
   role="grid"
@@ -592,6 +594,7 @@ exports[`SkeletonTable component should render correctly with checkboxes 1`] = `
   aria-label="Loading"
   borders={true}
   canSelectAll={false}
+  canSortFavorites={true}
   cells={
     Array [
       "first",
@@ -605,6 +608,7 @@ exports[`SkeletonTable component should render correctly with checkboxes 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={true}
   ouiaSafe={true}
   role="grid"
@@ -881,6 +885,7 @@ exports[`SkeletonTable component should render correctly with radio buttons 1`] 
   aria-label="Loading"
   borders={true}
   canSelectAll={false}
+  canSortFavorites={true}
   cells={
     Array [
       "first",
@@ -894,6 +899,7 @@ exports[`SkeletonTable component should render correctly with radio buttons 1`] 
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={true}
   ouiaSafe={true}
   role="grid"
@@ -1170,6 +1176,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
   aria-label="Loading"
   borders={true}
   canSelectAll={false}
+  canSortFavorites={true}
   cells={
     Array [
       "first",
@@ -1183,6 +1190,7 @@ exports[`SkeletonTable component should render correctly with static columns 1`]
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={false}
   ouiaSafe={true}
   role="grid"
@@ -1459,6 +1467,7 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
   aria-label="Loading"
   borders={true}
   canSelectAll={false}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -1500,6 +1509,7 @@ exports[`SkeletonTable component should render correctly without rows 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={false}
   ouiaSafe={true}
   role="grid"
