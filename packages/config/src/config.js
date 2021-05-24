@@ -69,7 +69,7 @@ module.exports = ({
         module: {
             rules: [{
                 test: new RegExp(appEntry),
-                loader: path.resolve(__dirname, './chrome-render-loader.js'),
+                loader: require('@redhat-cloud-services/frontend-components-config-utilities/chrome-render-loader.js'),
                 options: {
                     appName,
                     skipChrome2
