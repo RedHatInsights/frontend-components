@@ -14,7 +14,8 @@ import {
     fetchSystemsInfo,
     splitArray,
     getPlaybookSystems,
-    createNotification
+    createNotification,
+    SYSTEMS
 } from '../utils';
 import { remediationWizardTestData } from './testData';
 
@@ -90,7 +91,8 @@ describe('submitRemediation', () => {
         formValues = {
             ...remediationWizardTestData.formValues,
             [EXISTING_PLAYBOOK]: remediationWizardTestData.existingPlaybook,
-            [EXISTING_PLAYBOOK_SELECTED]: true
+            [EXISTING_PLAYBOOK_SELECTED]: true,
+            [SYSTEMS]: remediationWizardTestData.selectedSystems
         };
     });
 
