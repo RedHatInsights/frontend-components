@@ -110,7 +110,8 @@ CheckboxFilter.propTypes = {
     /**
      * Disabled flag
      */
-    isDisabled: PropTypes.bool
+    isDisabled: PropTypes.bool,
+    className: PropTypes.string
 };
 
 CheckboxFilter.defaultProps = {

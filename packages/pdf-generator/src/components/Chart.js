@@ -254,7 +254,9 @@ Chart.propTypes = {
         'purple'
     ]),
     legend: PropTypes.bool,
-    legendHeader: PropTypes.string
+    legendHeader: PropTypes.string,
+    data: PropTypes.array,
+    chartType: PropTypes.string
 };
 Chart.defaultProps = {
     colorSchema: 'multiOrdered',

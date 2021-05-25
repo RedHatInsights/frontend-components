@@ -421,7 +421,8 @@ SystemRulesTable.propTypes = {
     system: propTypes.shape(
         {
             id: propTypes.string.isRequired,
-            supported: propTypes.bool.isRequired
+            supported: propTypes.bool.isRequired,
+            testResultProfiles: propTypes.any
         }
     ),
     remediationsEnabled: propTypes.bool,

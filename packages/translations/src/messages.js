@@ -3,7 +3,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
     cancel: {
         id: 'default.cancel',
-        description: 'Default cancel strinfg',
+        description: 'Default cancel string',
         defaultMessage: 'Cancel'
     },
     save: {

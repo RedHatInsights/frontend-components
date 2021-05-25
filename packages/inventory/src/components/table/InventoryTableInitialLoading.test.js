@@ -49,7 +49,7 @@ describe('InventoryTable - initial loading', () => {
         spy.mockRestore();
         jest.useFakeTimers();
 
-        const registry = new ReducerRegistry({}, [ promise() ]);
+        const registry = new ReducerRegistry({}, [ promise ]);
         registry.register({
             entities: applyReducerHash(entitiesReducer, initialState.entities)
         });

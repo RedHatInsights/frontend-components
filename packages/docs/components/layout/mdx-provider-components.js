@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Title, Card, CardBody } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';

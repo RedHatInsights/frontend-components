@@ -69,7 +69,8 @@ PaginationNext.propTypes = {
     onFirstPage: PropTypes.func,
     onLastPage: PropTypes.func,
     onPreviousPage: PropTypes.func,
-    onNextPage: PropTypes.func
+    onNextPage: PropTypes.func,
+    className: PropTypes.string
 };
 
 export default PaginationNext;

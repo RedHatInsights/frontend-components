@@ -7,7 +7,7 @@ import EntityTable from './EntityTable';
 import { render, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
 import routeData from 'react-router';
 import { MemoryRouter } from 'react-router-dom';

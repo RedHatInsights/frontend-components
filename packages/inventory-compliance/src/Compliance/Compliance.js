@@ -78,7 +78,8 @@ const SystemQuery = ({ data: { system }, loading, hidePassed }) => (
 SystemQuery.propTypes = {
     data: propTypes.shape({
         system: propTypes.shape({
-            profiles: propTypes.array
+            profiles: propTypes.array,
+            testResultProfiles: propTypes.array
         })
     }),
     loading: propTypes.bool,
@@ -134,6 +135,11 @@ const WrappedSystemDetails = ({ customItnl, intlProps, ...props }) => {
     return <IntlWrapper { ...customItnl && intlProps } >
         <SystemDetails { ...props } />
     </IntlWrapper>;
+};
+
+WrappedSystemDetails.propTypes = {
+    customItnl: propTypes.elementType,
+    intlProps: propTypes.object
 };
 
 export default WrappedSystemDetails;

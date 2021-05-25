@@ -25,6 +25,11 @@ const BaseAppInfo = (props) => {
     );
 };
 
+BaseAppInfo.propTypes = {
+    fallback: PropTypes.node,
+    innerRef: PropTypes.object
+};
+
 /**
  * Inventory sub component.
  *

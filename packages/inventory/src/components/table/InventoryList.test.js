@@ -4,10 +4,22 @@ import InventoryList from './InventoryList';
 import { render, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import { MemoryRouter } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
-import { mock } from '../../__mock__/hostApi';
+
+jest.mock('../../redux/actions', () => {
+    const actions = jest.requireActual('../../redux/actions');
+    const { ACTION_TYPES } = jest.requireActual('../../redux/action-types');
+    return {
+        __esModule: true,
+        ...actions,
+        loadEntities: () => ({
+            type: ACTION_TYPES.LOAD_ENTITIES,
+            payload: () => Promise.resolve([])
+        })
+    };
+});
 
 describe('InventoryList', () => {
     let initialState;
@@ -54,7 +66,6 @@ describe('InventoryList', () => {
 
     describe('API', () => {
         it('should fire refresh after changing sort', () => {
-            mock.onGet('/api/inventory/v1/hosts').reply(200, {});
             const sortBy = {
                 index: 1,
                 key: 'one',
@@ -103,7 +114,6 @@ describe('InventoryList', () => {
         });
 
         it('should fire refresh after changing items', () => {
-            mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>
@@ -120,7 +130,6 @@ describe('InventoryList', () => {
         });
 
         it('should fire refresh calling it from ref', () => {
-            mock.onGet(/\/api\/inventory\/v1\/hosts.*/).reply(200, {});
             const store = mockStore(initialState);
             const Cmp = (props) => <MemoryRouter>
                 <Provider store={ store }>

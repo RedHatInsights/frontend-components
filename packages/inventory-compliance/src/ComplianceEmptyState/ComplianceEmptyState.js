@@ -12,7 +12,7 @@ import {
     EmptyStateSecondaryActions,
     EmptyStateIcon
 } from '@patternfly/react-core';
-import { CloudSecurityIcon } from '@patternfly/react-icons';
+import { CloudServerIcon } from '@patternfly/react-icons';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { Spinner } from '@redhat-cloud-services/frontend-components/Spinner';
@@ -45,8 +45,7 @@ const ComplianceEmptyState = ({ title, mainButton, client }) => {
 
     return <Bullseye>
         <EmptyState>
-            <EmptyStateIcon style={{ fontWeight: '500', color: 'var(--pf-global--primary-color--100)' }}
-                size="xl" title="Compliance" icon={CloudSecurityIcon} />
+            <EmptyStateIcon style={{ color: 'var(--pf-global--Color--200)' }} size="xl" title="Compliance" icon={CloudServerIcon} />
             <Title headingLevel="h1" size="lg">{ title }</Title>
             <br/>
             <EmptyStateBody>

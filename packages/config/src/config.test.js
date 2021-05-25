@@ -108,7 +108,6 @@ describe('module rules', () => {
         const {
             module
         } = configBuilder({ appEntry: 'testEntry', appName: 'someName' });
-        expect((new RegExp('packages/config/src/chrome-render-loader.js$')).test(module.rules[0].loader)).toBe(true);
         expect((new RegExp(module.rules[0].rules)).test('testEntry')).toBe(true);
         expect(module.rules[0].options.skipChrome2).toBe(false);
     });

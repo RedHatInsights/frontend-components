@@ -100,7 +100,8 @@ BulkSelect.propTypes = {
     checked: PropTypes.bool,
     id: PropTypes.string,
     onSelect: PropTypes.func,
-    toggleProps: PropTypes.any
+    toggleProps: PropTypes.any,
+    isDisabled: PropTypes.bool
 };
 
 BulkSelect.defaultProps = {

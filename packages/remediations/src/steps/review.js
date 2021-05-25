@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
-import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
+import { Table, TableVariant, TableHeader, TableBody, sortable, expandable } from '@patternfly/react-table';
 import { ExclamationTriangleIcon } from '@patternfly/react-icons';
 import {
     Button,
@@ -14,21 +14,34 @@ import {
 import {
     buildRows,
     getResolution,
+    onCollapse,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED,
     SELECT_PLAYBOOK,
     SYSTEMS
 } from '../utils';
+import { useSelector } from 'react-redux';
 import './review.scss';
 
 const Review = (props) => {
-    const { data, issuesById } = props;
-    const { input } = useFieldApi(props);
     const formOptions = useFormApi();
-    const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
-
     const selectedPlaybook = formOptions.getState().values[EXISTING_PLAYBOOK];
     const existingPlaybookSelected = formOptions.getState().values[EXISTING_PLAYBOOK_SELECTED];
+    const systems = formOptions.getState().values[SYSTEMS];
+
+    const { data, issuesById } = {
+        ...props,
+        data: {
+            ...props.data,
+            issues: props.data.issues.filter(issue => systems[issue.id]?.length > 0)
+        }
+    };
+    const { input } = useFieldApi(props);
+    const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
+
+    const allSystemsNamed = useSelector(({ hostReducer: { hosts } }) => hosts?.map(host => (
+        { id: host.id, name: host.display_name })) || []
+    );
 
     const records = data.issues.map(issue => {
         const issueResolutions = getResolution(issue.id, formOptions.getState().values);
@@ -37,7 +50,7 @@ const Review = (props) => {
             action: issuesById[issue.id].description,
             resolution: description,
             needsReboot,
-            systemsCount: formOptions.getState().values[SYSTEMS]?.length || 0
+            systems: systems[issue.id].map(id => allSystemsNamed.find(system => system.id === id)?.name)
         };
     });
 
@@ -49,10 +62,14 @@ const Review = (props) => {
         );
     }, []);
 
-    const rows = buildRows(records, sortByState, false);
+    const [ rows, setRows ] = useState(buildRows(records, sortByState, false));
+
+    useEffect(() => {
+        setRows(buildRows(records, sortByState, false));
+    }, [ sortByState ]);
 
     return (
-        <Stack hasGutter>
+        <Stack hasGutter data-component-ouia-id="wizard-review">
             <StackItem>
                 <TextContent>
                     <Text>
@@ -103,11 +120,13 @@ const Review = (props) => {
                         transforms: [ sortable ]
                     }, {
                         title: 'Systems',
-                        transforms: [ sortable ]
+                        transforms: [ sortable ],
+                        cellFormatters: [ expandable ]
                     }]
                 }
                 rows={ rows }
                 onSort={ (event, index, direction) => setSortByState({ index, direction }) }
+                onCollapse={(event, rowKey, isOpen) => onCollapse(event, rowKey, isOpen, rows, setRows)}
                 sortBy={ sortByState }
             >
                 <TableHeader noWrap />

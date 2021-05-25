@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { AppInfo, InventoryDetail, FullDetail } from '../components/detail';
 import { TagWithDialog, RenderWrapper } from '../shared';
@@ -36,6 +37,7 @@ export function inventoryConnector(store, componentsMapper, Wrapper, isRbacEnabl
                 isRbacEnabled={ isRbacEnabled }
                 inventoryRef={ ref }
                 store={ store }
+                // eslint-disable-next-line react/prop-types
                 showInventoryDrawer={ showInventoryDrawer && !props.hideInvDrawer }
                 cmp={ InventoryDetail }
             />

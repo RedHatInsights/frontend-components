@@ -22,7 +22,6 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
         class="pf-c-table__check"
         data-key="0"
         data-label=""
-        scope=""
       >
         <input
           aria-label="Select all rows"
@@ -122,6 +121,7 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -181,6 +181,7 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-lg"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={[Function]}
   onSort={[Function]}
   ouiaSafe={true}
@@ -221,6 +222,7 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -243,6 +245,7 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onCollapse={[Function]}
   onSelect={[Function]}
   onSort={[Function]}
@@ -390,6 +393,7 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -410,6 +414,7 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={[Function]}
   onSort={[Function]}
   ouiaSafe={true}
@@ -515,6 +520,7 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -535,6 +541,7 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSort={[Function]}
   ouiaSafe={true}
   role="grid"
@@ -603,7 +610,6 @@ exports[`EntityTable DOM should render correctly 1`] = `
         class="pf-c-table__check"
         data-key="0"
         data-label=""
-        scope=""
       >
         <input
           aria-label="Select all rows"
@@ -705,6 +711,7 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -727,6 +734,7 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onCollapse={[Function]}
   onSelect={[Function]}
   onSort={[Function]}
@@ -780,6 +788,7 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -800,6 +809,7 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSort={[Function]}
   ouiaSafe={true}
   role="grid"
@@ -851,6 +861,7 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -871,6 +882,7 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={[Function]}
   onSort={[Function]}
   ouiaSafe={true}

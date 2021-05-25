@@ -46,7 +46,6 @@ module.exports = (env) => ({
             chunkFilename: '[name].css',
             filename: '[id].css'
         }),
-        new (require('lodash-webpack-plugin'))({ currying: true, flattening: true, placeholders: true, paths: true }),
         new (require('html-webpack-plugin'))({
             title: 'Playground',
             template: path.resolve(__dirname, './src/index.html')

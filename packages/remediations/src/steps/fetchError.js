@@ -18,7 +18,7 @@ const FetchError = (props) => {
     input.valid = false;
 
     return (
-        <EmptyState variant={ EmptyStateVariant.small }>
+        <EmptyState variant={ EmptyStateVariant.small } data-component-ouia-id="wizard-fetch-error">
             <EmptyStateIcon color={ red.value } icon={ ExclamationCircleIcon } />
             <Title headingLevel="h4" size="lg">
                 Unexpected error

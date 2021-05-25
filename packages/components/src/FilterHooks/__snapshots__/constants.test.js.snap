@@ -3,13 +3,11 @@
 exports[`constructGroups should build filter with empty badge 1`] = `
 Array [
   <div
-    aria-describedby="pf-tooltip-1"
     className="ins-c-tagfilter__option-value"
   >
     someKey=someValue
   </div>,
   <span
-    aria-describedby="pf-tooltip-2"
     className="pf-c-badge pf-m-read"
   >
     0
@@ -20,13 +18,11 @@ Array [
 exports[`constructGroups should render correctly 1`] = `
 Array [
   <div
-    aria-describedby="pf-tooltip-3"
     className="ins-c-tagfilter__option-value"
   >
     someKey=someValue
   </div>,
   <span
-    aria-describedby="pf-tooltip-4"
     className="pf-c-badge pf-m-unread"
   >
     1

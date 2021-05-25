@@ -5,7 +5,7 @@ import EntityTableToolbar from './EntityTableToolbar';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
 import { mockTags } from '../../__mock__/hostApi';
 import TitleColumn from './TitleColumn';
@@ -20,7 +20,7 @@ describe('EntityTableToolbar', () => {
 
     beforeEach(() => {
         onRefreshData = jest.fn();
-        debounce.mockImplementation(require.requireActual('lodash/debounce'));
+        debounce.mockImplementation(jest.requireActual('lodash/debounce'));
         mockStore = configureStore([ promiseMiddleware() ]);
         initialState = {
             entities: {

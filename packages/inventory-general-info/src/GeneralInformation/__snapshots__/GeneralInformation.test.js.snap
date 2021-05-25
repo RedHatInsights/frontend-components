@@ -601,9 +601,7 @@ exports[`GeneralInformation custom components should not render BiosCardWrapper 
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-6"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -1885,9 +1883,7 @@ exports[`GeneralInformation custom components should not render ConfigurationCar
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-10"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -2525,9 +2521,7 @@ exports[`GeneralInformation custom components should not render InfrastructureCa
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-8"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -3177,9 +3171,7 @@ exports[`GeneralInformation custom components should not render OperatingSystemC
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-4"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -3671,9 +3663,7 @@ exports[`GeneralInformation custom components should not render SystemCardWrappe
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-2"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -4354,9 +4344,7 @@ exports[`GeneralInformation custom components should render custom BiosCardWrapp
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-7"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -5652,9 +5640,7 @@ exports[`GeneralInformation custom components should render custom Configuration
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-11"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -6299,9 +6285,7 @@ exports[`GeneralInformation custom components should render custom Infrastructur
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-9"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -6958,9 +6942,7 @@ exports[`GeneralInformation custom components should render custom OperatingSyst
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-5"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -7459,9 +7441,7 @@ exports[`GeneralInformation custom components should render custom SystemCardWra
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-3"
-                >
+                <span>
                   test-client
                 </span>
               </dd>
@@ -9014,9 +8994,7 @@ exports[`GeneralInformation should render correctly 1`] = `
                 class=""
                 data-pf-content="true"
               >
-                <span
-                  aria-describedby="pf-tooltip-1"
-                >
+                <span>
                   test-client
                 </span>
               </dd>

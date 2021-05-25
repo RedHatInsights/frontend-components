@@ -1,4 +1,5 @@
 import Layout from '../components/layout';
+import PropTypes from 'prop-types';
 import { MDXProvider } from '@mdx-js/react';
 import components from '../components/layout/mdx-provider-components';
 import '@patternfly/react-styles/css/components/Table/table.css';
@@ -18,5 +19,10 @@ function MyApp({ Component, pageProps }) {
         </Layout>
     );
 }
+
+MyApp.propTypes = {
+    Component: PropTypes.elementType.isRequired,
+    pageProps: PropTypes.object
+};
 
 export default MyApp;

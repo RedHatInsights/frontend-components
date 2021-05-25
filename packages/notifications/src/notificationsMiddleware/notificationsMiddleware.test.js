@@ -1,6 +1,5 @@
-import React from 'react';
 import configureStore from 'redux-mock-store';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import { notificationsMiddleware } from '..';
 import { ADD_NOTIFICATION } from '../redux/actions/action-types';
 

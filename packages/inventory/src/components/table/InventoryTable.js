@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import React, { Fragment, forwardRef, useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, shallowEqual, useStore, useDispatch } from 'react-redux';
 import EntityTableToolbar from './EntityTableToolbar';
 import { TableToolbar } from '@redhat-cloud-services/frontend-components/TableToolbar';
@@ -34,7 +35,8 @@ const propsCache = () => {
  *   * Pagination - bottom pagination.
  * It also calculates pagination and sortBy from props or from store if consumer passed items or not.
  */
-const InventoryTable = forwardRef(({
+
+const InventoryTable = forwardRef(({ // eslint-disable-line react/display-name
     onRefresh,
     children,
     inventoryRef,
@@ -232,5 +234,30 @@ const InventoryTable = forwardRef(({
             </Fragment> : errorState
     );
 });
+
+InventoryTable.propTypes = {
+    autoRefresh: PropTypes.bool,
+    onRefresh: PropTypes.func,
+    children: PropTypes.node,
+    inventoryRef: PropTypes.object,
+    items: PropTypes.array,
+    total: PropTypes.number,
+    page: PropTypes.number,
+    perPage: PropTypes.number,
+    filters: PropTypes.any,
+    showTags: PropTypes.bool,
+    sortBy: PropTypes.string,
+    customFilters: PropTypes.any,
+    hasAccess: PropTypes.bool,
+    isFullView: PropTypes.bool,
+    getEntities: PropTypes.func,
+    hideFilters: PropTypes.func,
+    paginationProps: PropTypes.object,
+    errorState: PropTypes.node,
+    isLoaded: PropTypes.bool,
+    initialLoading: PropTypes.bool,
+    ignoreRefresh: PropTypes.bool,
+    showTagModal: PropTypes.bool
+};
 
 export default InventoryTable;

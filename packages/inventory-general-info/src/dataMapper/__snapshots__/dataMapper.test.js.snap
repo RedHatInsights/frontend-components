@@ -669,7 +669,6 @@ exports[`should return DOWN 1`] = `
   }
   trigger={
     <OutlinedArrowAltCircleDownIcon
-      aria-describedby="pf-tooltip-2"
       className="ins-c-inventory__detail--down"
       color="currentColor"
       noVerticalAlign={false}
@@ -737,7 +736,6 @@ exports[`should return UP 1`] = `
   }
   trigger={
     <OutlinedArrowAltCircleUpIcon
-      aria-describedby="pf-tooltip-1"
       className="ins-c-inventory__detail--up"
       color="currentColor"
       noVerticalAlign={false}
@@ -805,7 +803,6 @@ exports[`should return false 1`] = `
   }
   trigger={
     <TimesIcon
-      aria-describedby="pf-tooltip-4"
       className="ins-c-inventory__detail--disabled"
       color="currentColor"
       noVerticalAlign={false}
@@ -873,7 +870,6 @@ exports[`should return true 1`] = `
   }
   trigger={
     <CheckCircleIcon
-      aria-describedby="pf-tooltip-3"
       className="ins-c-inventory__detail--enabled"
       color="currentColor"
       noVerticalAlign={false}
