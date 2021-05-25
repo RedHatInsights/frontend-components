@@ -59,8 +59,9 @@ We provide additional options, that can help you control your notifications
   title: string,
   variant: ['success', 'danger', 'info', 'warning'],
   description: node?
-  dismissable: bool? // if is false, notification will disappear automatically after 5s, otherwise will show close button,
-  dismissDelay: number? // time period after which alert disappears in ms. Default value is 5000
+  dismissable: bool? // if is false, notification will not have the dismiss button,
+  dismissDelay: number? // time period after which alert disappears in ms. Default value is 8000
+  autoDismiss: bool? // true by default, if set to false, notification will not automatically disapear after dismissDelay
 }
 ```
 

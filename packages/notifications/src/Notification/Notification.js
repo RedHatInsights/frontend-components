@@ -8,7 +8,7 @@ import './notification.scss';
  * Add some enter and dismiss animation later when PF has designs
  */
 
-const DEFAULT_DELAY = 5000;
+const DEFAULT_DELAY = 8000;
 
 export class Notification extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ export class Notification extends Component {
     }
 
     setDismissTimeout = () => {
-        if (!this.props.dismissable) {
+        if (this.props.autoDismiss) {
             this.dismissTimeout = setTimeout(() => this.handleDismiss(), this.props.dismissDelay);
         }
     }
@@ -38,7 +38,7 @@ export class Notification extends Component {
     }
 
     render() {
-        const { description, dismissable, onDismiss, dismissDelay, title, sentryId, requestId, ...rest } = this.props;
+        const { description, dismissable, onDismiss, dismissDelay, title, sentryId, requestId, autoDismiss, ...rest } = this.props;
         return (
             <Alert
                 className="notification-item"
@@ -73,6 +73,7 @@ export class Notification extends Component {
 }
 
 Notification.propTypes = {
+    autoDismiss: PropTypes.bool,
     dismissable: PropTypes.bool,
     onDismiss: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
@@ -85,7 +86,9 @@ Notification.propTypes = {
 };
 
 Notification.defaultProps = {
-    dismissDelay: DEFAULT_DELAY
+    dismissDelay: DEFAULT_DELAY,
+    autoDismiss: true,
+    dismissable: true
 };
 
 export default Notification;
