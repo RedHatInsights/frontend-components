@@ -26,8 +26,8 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/inventory#readme",
     "peerDependencies": {
-        "react": ">=16.5.1 || >=17.0.0",
-        "react-dom": ">=16.5.1 || >=17.0.0",
+        "react": ">=16.8.0 || >=17.0.0",
+        "react-dom": ">=16.8.0 || >=17.0.0",
         "react-redux": ">=5.0.7",
         "react-router-dom": ">=4.2.2",
         "@patternfly/react-core": ">=4.18.5",

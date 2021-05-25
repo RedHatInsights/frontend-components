@@ -34,7 +34,6 @@ module.exports = ({
         mode: mode || (isProd ? 'production' : 'development'),
         devtool: false,
         optimization: {
-            runtimeChunk: true,
             splitChunks: {
                 chunks: 'all',
                 maxInitialRequests: Infinity,

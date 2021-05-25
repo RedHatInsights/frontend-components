@@ -33,7 +33,7 @@
     },
     "peerDependencies": {
         "prop-types": "^15.6.2",
-        "react": "^16.5.1 || ^17.0.0"
+        "react": "^16.8.0 || ^17.0.0"
     },
     "optionalDependencies": {
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0"
