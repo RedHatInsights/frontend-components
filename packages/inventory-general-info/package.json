@@ -29,8 +29,8 @@
         "@patternfly/react-core": "^4.115.2",
         "@patternfly/react-icons": "^4.10.2",
         "@patternfly/react-table": "^4.26.7",
-        "react": "^16.14.0",
-        "react-dom": "^16.14.0"
+        "react": ">=16.14.0 || >=17.0.0",
+        "react-dom": ">=16.14.0 || >=17.0.0"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components": ">=3.0.0",
