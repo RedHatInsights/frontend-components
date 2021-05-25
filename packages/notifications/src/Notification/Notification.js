@@ -7,9 +7,13 @@ import './notification.scss';
 /**
  * Add some enter and dismiss animation later when PF has designs
  */
-
 const DEFAULT_DELAY = 8000;
 
+/**
+ * This is a notification component used for showing toast notifications accross the platform UI.
+ * Component is used with notification reducer, notification portal and notification middleware.
+ * But can be also used as a standalone component.
+ */
 export class Notification extends Component {
     constructor(props) {
         super(props);
@@ -73,15 +77,45 @@ export class Notification extends Component {
 }
 
 Notification.propTypes = {
+    /**
+     * Flag to automatically call `onDismiss` after `dismissDelay` runs out.
+     */
     autoDismiss: PropTypes.bool,
+    /**
+     * Flag to show/hide notification close button.
+     */
     dismissable: PropTypes.bool,
+    /**
+     * Funcation called after dismiss action is triggered. (id) => void
+     */
     onDismiss: PropTypes.func.isRequired,
+    /**
+     * Unique ID
+     */
     id: PropTypes.string.isRequired,
-    variant: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    /**
+     * Alert variant. <a href="https://www.patternfly.org/v4/components/alert#types" target="_blank">More info.</a>
+     */
+    variant: PropTypes.oneOf([ 'info', 'success', 'warning', 'danger' ]).isRequired,
+    /**
+     * Alert title
+     */
+    title: PropTypes.node.isRequired,
+    /**
+     * Alert description
+     */
     description: PropTypes.node,
+    /**
+     * Time period after which `onDismiss` is called.
+     */
     dismissDelay: PropTypes.number,
+    /**
+     * Unique request ID.
+     */
     requestId: PropTypes.string,
+    /**
+     * Unique sentry error ID.
+     */
     sentryId: PropTypes.string
 };
 
