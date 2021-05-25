@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config",
-    "version": "4.0.29",
+    "version": "4.1.4",
     "description": "Config plugins and settings for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -30,7 +30,7 @@
         "html-webpack-plugin": "^5.1.0",
         "jws": "^4.0.0",
         "mini-css-extract-plugin": "^1.6.0",
-        "nodesi": "^1.15.0",
+        "nodesi": "^1.16.0",
         "path-browserify": "^1.0.1",
         "process": "^0.11.10",
         "sass": "^1.32.13",
