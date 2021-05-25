@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { fetchHostsById } from '../redux/actions/host-actions';
 import { fetchResolutions } from '../redux/actions/resolution-actions';
 import { Provider, useDispatch } from 'react-redux';
-import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
+import promiseMiddleware from 'redux-promise-middleware';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 import hostReducer, { hostsInitialState } from '../redux/reducers/host-reducer';
 import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry/ReducerRegistry';
