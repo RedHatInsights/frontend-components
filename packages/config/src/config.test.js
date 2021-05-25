@@ -26,7 +26,6 @@ describe('should create dummy config with no options', () => {
 
     test('optimization', () => {
         expect(optimization).toEqual({
-            runtimeChunk: true,
             splitChunks: {
                 chunks: 'all',
                 maxInitialRequests: Infinity,
