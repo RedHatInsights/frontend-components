@@ -17,7 +17,7 @@ const getAppEntry = (rootFolder, isProd) => {
         }
 
         if (entries.length > 0) {
-            return `rootFolder/${entries[0]}`;
+            return `${rootFolder}/${entries[0]}`;
         }
     }
 
@@ -26,7 +26,7 @@ const getAppEntry = (rootFolder, isProd) => {
         console.warn('Found multiple entry files. Using', entries[0]);
     }
 
-    return `rootFolder/${entries[0]}`;
+    return `${rootFolder}/${entries[0]}`;
 };
 
 module.exports = (configurations) => {
