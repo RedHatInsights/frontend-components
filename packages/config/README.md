@@ -12,7 +12,7 @@
       - [routesPath](#routespath)
     - [Custom proxy settings](#custom-proxy-settings)
     - [Chrome 1 environments / application entry url](#chrome-1-environments--application-entry-url)
-      - [Prod environment example](#prod-environment-example)
+      - [Different environments](#different-environments)
       - [Multiple HTML entrypoints](#multiple-html-entrypoints)
       - [Exact URL](#exact-url)
     - [cookieTransform](#cookietransform)
@@ -57,8 +57,6 @@ NODE_ENV=development BETA=true webpack serve --config config/dev.webpack.config.
 *Path to config can be different*
 
 Then you will find your application running on `https://ci.foo.redhat.com:1337/beta/...`. This works only with **Chrome 2** ready applications.
-
-You can change the environment by setting `betaEnv`, but unless the targeted environment is using Chrome 2.0, it won't work correctly.
 
 ### localChrome
 
@@ -171,22 +169,42 @@ This settings will redirect all requests to `appUrl` to your local `index.html` 
 
 By default, all subroutes are (`/beta/settings/sources/new`) will be redirected to `index.html`, you can disable this behavior by setting `disableFallback: true`.
 
-#### Prod environment example
+#### Different environments
+
+The proxy config automatically routes requests to the correct target.
 
 ```jsx
-const { config: webpackConfig, plugins } = config({
-  rootFolder: resolve(__dirname, '../'),
-  debug: true,
-  useFileHash: false,
-  deployment: process.env.BETA ? 'beta/apps' : 'apps',
-  useProxy: true,
-  betaEnv: 'prod',
-  appUrl: process.env.BETA ? '/beta/settings/sources' : '/settings/sources'
-});
+case 'ci.foo.redhat.com':    return 'https://ci.cloud.redhat.com/';
+case 'qa.foo.redhat.com':    return 'https://qa.cloud.redhat.com/';
+case 'stage.foo.redhat.com': return 'https://cloud.stage.redhat.com/';
+case 'prod.foo.redhat.com':  return 'https://cloud.redhat.com/';
 ```
 
-Then go to `https://prod.foo.redhat.com:1337/` and you should be able to login and use your local UI build within production environment.
+This `router` function is also available as a seperate module:
 
+```jsx
+const router = require('@redhat-cloud-services/frontend-components-config-utilities/router');
+
+...
+
+{
+  ...
+  customProxy: [
+    {
+      context: (path) => path.includes('/api/'),
+      target: defaultTarget,
+      // high-order function returning the router function (req) => ....
+      // defaultTarget can be empty, it is just a fallback
+      router: router(defaultTarget),
+      secure: false,
+      changeOrigin: true,
+      autoRewrite: true,
+      ws: true,
+    },
+  ],
+}
+
+```
 #### Multiple HTML entrypoints
 
 If your application has multiple HTML entrypoints, you can set an array of values in `appUrl`:
