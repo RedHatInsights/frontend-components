@@ -30,6 +30,7 @@ const getAppEntry = (rootFolder, isProd) => {
 
 module.exports = (configurations) => {
     configurations.isProd = configurations.isProd || process.env.NODE_ENV === 'production';
+    const isProd = configurations.isProd;
     const { insights } = require(`${configurations.rootFolder}/package.json`);
     const gitBranch = process.env.TRAVIS_BRANCH || process.env.BRANCH || gitRevisionPlugin.branch();
     const appDeployment = configurations.deployment || ((isProd && betaBranches.includes(gitBranch)) ?
