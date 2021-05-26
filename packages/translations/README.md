@@ -1,6 +1,6 @@
 # RedHat Cloud Services frontend components - translations
 
-This package is for setting [react-int](https://www.npmjs.com/package/react-intl) with default messages translated accross entire platform. For futher understanding how to pass messages and such follow up `react-int` documentation.
+This package is for setting [react-intl](https://www.npmjs.com/package/react-intl) with default messages translated accross entire platform. For futher understanding how to pass messages and such follow up `react-intl` documentation.
 
 
 ## Usage
@@ -19,10 +19,8 @@ class App extends Component {
     render() {
         return (
             <IntlProvider>
-                <React.Fragment>
-                    <NotificationsPortal />
-                    <Routes childProps={this.props} />
-                </React.Fragment>
+                <NotificationsPortal />
+                <Routes childProps={this.props} />
             </IntlProvider>
         );
     }
@@ -44,10 +42,8 @@ class App extends Component {
     render() {
         return (
             <IntlProvider messages={translatedMessages}>
-                <React.Fragment>
-                    <NotificationsPortal />
-                    <Routes childProps={this.props} />
-                </React.Fragment>
+                <NotificationsPortal />
+                <Routes childProps={this.props} />
             </IntlProvider>
         );
     }
@@ -83,10 +79,8 @@ class App extends Component {
     render() {
         return (
             <IntlProvider locale="cs">
-                <React.Fragment>
-                    <NotificationsPortal />
-                    <Routes childProps={this.props} />
-                </React.Fragment>
+                <NotificationsPortal />
+                <Routes childProps={this.props} />
             </IntlProvider>
         );
     }
@@ -111,10 +105,8 @@ class App extends Component {
         updateLocaleData([...localeDe])
         return (
             <IntlProvider>
-                <React.Fragment>
-                    <NotificationsPortal />
-                    <Routes childProps={this.props} />
-                </React.Fragment>
+                <NotificationsPortal />
+                <Routes childProps={this.props} />
             </IntlProvider>
         );
     }

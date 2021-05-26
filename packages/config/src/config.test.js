@@ -1,5 +1,5 @@
 /*
-port,
+    port,
     publicPath,
     appEntry,
     rootFolder,
@@ -26,7 +26,6 @@ describe('should create dummy config with no options', () => {
 
     test('optimization', () => {
         expect(optimization).toEqual({
-            minimize: false,
             splitChunks: {
                 chunks: 'all',
                 maxInitialRequests: Infinity,
@@ -34,19 +33,23 @@ describe('should create dummy config with no options', () => {
                 cacheGroups: {
                     reactVendor: {
                         test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                        name: 'reactvendor'
+                        name: 'reactVendor',
+                        priority: 10
                     },
                     pfVendor: {
                         test: /[\\/]node_modules[\\/](@patternfly)[\\/]/,
-                        name: 'pfVendor'
+                        name: 'pfVendor',
+                        priority: 10
                     },
                     rhcsVendor: {
                         test: /[\\/]node_modules[\\/](@redhat-cloud-services)[\\/]/,
-                        name: 'rhcsVendor'
+                        name: 'rhcsVendor',
+                        priority: 10
                     },
                     vendor: {
-                        test: /[\\/]node_modules[\\/](!react-dom)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
-                        name: 'vendor'
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendor',
+                        priority: 9
                     }
                 }
             }
@@ -69,8 +72,6 @@ describe('should create dummy config with no options', () => {
     test('devServer', () => {
         expect(devServer).toEqual({
             contentBase: '/dist',
-            contentBasePublicPath: undefined,
-            hot: true,
             port: 8002,
             https: false,
             inline: true,
