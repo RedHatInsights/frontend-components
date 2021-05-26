@@ -5,6 +5,7 @@ node_modules/
 packages/*/**/*.js
 !packages/eslint-config/**/*.js
 !packages/config-utils/*.js
+!packages/config/*.js
 !packages/docs/**/*.js
 !packages/*/src/**/*.js
 
