@@ -3,6 +3,7 @@ const { readFileSync } = require('fs');
 const { sync } = require('glob');
 const ESI = require('nodesi');
 const cookieTransform = require('./cookieTransform');
+const transformUrl = require('./router');
 
 function createInsightsProxy({
     betaEnv,
@@ -77,6 +78,8 @@ function createInsightsProxy({
         console.log('Exact URL: ', exactUrl ? 'true' : 'false', '\n\n');
     }
 
+    const router = transformUrl(target);
+
     return {
         contentBase: `${rootFolder || ''}/dist`,
         index: `${rootFolder || ''}/dist/index.html`,
@@ -94,7 +97,8 @@ function createInsightsProxy({
                 target,
                 secure: false,
                 changeOrigin: true,
-                autoRewrite: true
+                autoRewrite: true,
+                router
             },
             ...(appUrl ? [{
                 context: path => pathInCustomUrl(removeHashQuery(path)),
@@ -169,6 +173,7 @@ function createInsightsProxy({
                     onProxyReq: (...args) => {
                         cookieTransform(...args);
                     },
+                    ...(currTarget === 'PORTAL_BACKEND_MARKER' &&  { router }),
                     ...typeof redirect === 'object' ? redirect : {}
                 };
             }) : [],
