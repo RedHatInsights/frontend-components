@@ -203,8 +203,9 @@ exports[`Notification portal should render notifications given as direct props 1
         className="notifications-portal"
       >
         <Notification
+          autoDismiss={true}
           description="Some meaningfull description"
-          dismissDelay={5000}
+          dismissDelay={8000}
           dismissable={true}
           id="0"
           key="0"
@@ -627,8 +628,9 @@ exports[`Notification portal should render notifications given as direct props o
         className="notifications-portal"
       >
         <Notification
+          autoDismiss={true}
           description="Some meaningfull description"
-          dismissDelay={5000}
+          dismissDelay={8000}
           dismissable={true}
           id="Direct notification"
           key="Direct notification"
@@ -896,8 +898,9 @@ exports[`Notification portal should render notifications given from store 1`] = 
         className="notifications-portal"
       >
         <Notification
+          autoDismiss={true}
           description="Some meaningfull description"
-          dismissDelay={5000}
+          dismissDelay={8000}
           dismissable={true}
           id="0"
           key="0"
