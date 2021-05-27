@@ -32,7 +32,7 @@ import {
     ISSUES_MULTIPLE
 } from '../utils';
 
-const RemediationWizard = ({
+export const RemediationWizard = ({
     setOpen,
     data,
     basePath,
@@ -147,7 +147,9 @@ RemediationWizard.propTypes = {
         onRemediationCreated: propTypes.func
     }).isRequired,
     basePath: propTypes.string,
-    registry: propTypes.instanceOf(ReducerRegistry).isRequired
+    registry: propTypes.shape({
+        register: propTypes.func
+    }).isRequired
 };
 
 const RemediationWizardWithContext = (props) => {
