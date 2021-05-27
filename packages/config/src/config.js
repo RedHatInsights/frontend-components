@@ -146,6 +146,7 @@ module.exports = ({
                 zlib: require.resolve('browserify-zlib'),
                 assert: require.resolve('assert/'),
                 buffer: require.resolve('buffer/'),
+                url: require.resolve('url/'),
                 util: require.resolve('util/'),
                 process: 'process/browser.js'
             }
