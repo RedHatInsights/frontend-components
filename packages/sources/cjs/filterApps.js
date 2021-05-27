@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var TOPOLOGY_INV_NAME="/insights/platform/topological-inventory",filterApps=function filterApps(e){return e.name!==TOPOLOGY_INV_NAME};exports.TOPOLOGY_INV_NAME=TOPOLOGY_INV_NAME,exports.default=filterApps;
