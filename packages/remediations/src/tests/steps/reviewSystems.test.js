@@ -5,7 +5,7 @@ import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import configureStore from 'redux-mock-store';
-import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
+import promiseMiddleware from 'redux-promise-middleware';
 import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED, SYSTEMS } from '../../utils';
 import { remediationWizardTestData } from '../testData';
 import ReviewSystems from '../../steps/reviewSystems';
