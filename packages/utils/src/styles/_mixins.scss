@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Convert px to rem
 // =================================================================/
 @mixin rem($property, $values) {
@@ -16,7 +18,7 @@
     @if type-of($value) == number and not unitless($value) and (unit($value) == px) {
 
       // px value given - calculate rem value from font-size
-      $new-rem-value: $value / $font-size;
+      $new-rem-value: math.div($value, $font-size);
       $px-values: join($px-values, round($value));
       $rem-values: join($rem-values, unquote("#{$new-rem-value}rem"));
 
@@ -52,14 +54,14 @@
 // =================================================================/
 @mixin font-size($size, $line: $size * 1.4) {
   font-size: ($size);
-  font-size: ($size / $ins-fontSize) + rem;
+  font-size: math.div($size, $ins-fontSize) + rem;
 
   @if $line == 1 {
     line-height: 1;
 
   } @else if $line != null {
     line-height: $line;
-    line-height: ($line / $ins-fontSize) + rem;
+    line-height: math.div($line, $ins-fontSize) + rem;
   }
 }
 

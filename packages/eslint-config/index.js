@@ -24,8 +24,7 @@ module.exports = {
         'eslint:recommended',
         'prettier',
         'plugin:prettier/recommended',
-        'plugin:react/recommended',
-        'prettier/react'
+        'plugin:react/recommended'
     ],
     rules: {
         'no-unused-vars': [

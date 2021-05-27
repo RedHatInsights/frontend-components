@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-notifications",
-    "version": "3.1.0",
+    "version": "3.2.2",
     "description": "Notifications portal to show toast notifications for RedHat Cloud Services project.",
     "browser": "index.js",
     "module": "esm/index.js",
@@ -29,8 +29,8 @@
         "@patternfly/react-core": ">=4.18.5",
         "@patternfly/react-icons": ">=4.3.5",
         "prop-types": ">=15.6.2",
-        "react": "^16.14.0",
-        "react-dom": "^16.14.0",
+        "react": ">=16.14.0 || >=17.0.0",
+        "react-dom": ">=16.14.0 || >=17.0.0",
         "redux": ">=4.0.5",
         "react-redux": ">=5.0.7"
     },

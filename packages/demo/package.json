@@ -5,7 +5,7 @@
     "main": "index.js",
     "private": true,
     "scripts": {
-        "start:dev": "webpack-dev-server --max-old-space-size=4096 --max_old_space_size=4096"
+        "start:dev": "webpack serve --hot --open"
     },
     "repository": {
         "type": "git",
@@ -36,10 +36,10 @@
         "file-loader": "^6.2.0",
         "html-webpack-plugin": "^5.3.1",
         "mini-css-extract-plugin": "^1.6.0",
+        "redux": "^4.1.0",
+        "react-redux": "^7.2.4",
         "sass-loader": "^11.0.1",
-        "source-map-loader": "^2.0.1",
         "webpack": "^5.36.2",
-        "webpack-dev-server": "^3.11.2",
-        "write-file-webpack-plugin": "^4.5.1"
+        "webpack-dev-server": "^3.11.2"
     }
 }
