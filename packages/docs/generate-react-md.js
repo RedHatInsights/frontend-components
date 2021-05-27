@@ -5,7 +5,7 @@ const glob = require('glob');
 const fse = require('fs-extra');
 const sortFile = require('./sort-files');
 
-const componentsDest = path.resolve(__dirname, './pages/fec');
+const componentsDest = path.resolve(__dirname, './pages/fec/modules');
 
 function newLineReplacer(str) {
     return str.replace(/<br \/>\s+/gm, (str) => {
