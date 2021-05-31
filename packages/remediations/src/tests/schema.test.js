@@ -1,5 +1,8 @@
-/* eslint-disable camelcase */
-import schemaBuilder, { issueResolutionNextStep, reviewActionsNextStep } from '../RemediationWizard/schema';
+import schemaBuilder, {
+    issueResolutionNextStep,
+    reviewActionsNextStep,
+    reviewSystemsNextStep
+} from '../RemediationWizard/schema';
 import {
     EXISTING_PLAYBOOK,
     MANUAL_RESOLUTION,
@@ -54,7 +57,7 @@ describe('issueResolutionNextStep', () => {
                     resolution: { id: 'test' }
                 }]
             },
-            [ISSUES_MULTIPLE]: [],
+            [ISSUES_MULTIPLE]: [{ id: 'test' }],
             [SYSTEMS]: remediationWizardTestData.selectedSystems
         };
     });
@@ -72,6 +75,39 @@ describe('issueResolutionNextStep', () => {
             [ISSUES_MULTIPLE]: [{ id: 'testId' }, { id: 'testId2' }, { id: 'testId3' }]
         }, { id: 'testId' });
         expect(value).toEqual('testId3');
+    });
+});
+
+describe('reviewSystemsNextStep', () => {
+
+    let formValues;
+
+    beforeEach(() => {
+        formValues = {
+            [EXISTING_PLAYBOOK]: {
+                issues: [{
+                    id: 'testId2',
+                    resolution: { id: 'test' }
+                }]
+            },
+            [ISSUES_MULTIPLE]: [{ id: 'test' }],
+            [SYSTEMS]: remediationWizardTestData.selectedSystems
+        };
+    });
+
+    it('should return review on no issues', () => {
+        const value = reviewSystemsNextStep(formValues, undefined);
+        expect(value).toEqual('review');
+    });
+
+    it('should return actions on next issue', () => {
+        const value = reviewSystemsNextStep({
+            ...formValues,
+            [MANUAL_RESOLUTION]: true,
+            [EXISTING_PLAYBOOK_SELECTED]: true,
+            [ISSUES_MULTIPLE]: [{ id: 'testId' }]
+        });
+        expect(value).toEqual('actions');
     });
 });
 

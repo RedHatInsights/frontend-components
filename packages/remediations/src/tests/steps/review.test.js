@@ -12,6 +12,12 @@ import { BodyRow } from '@patternfly/react-table/dist/js/components/Table/base';
 import { remediationWizardTestData } from '../testData';
 import { Provider } from 'react-redux';
 
+jest.mock('../../common/SystemsTable', () => ({
+    __esModule: true,
+    // eslint-disable-next-line react/display-name
+    SystemsTableWithContext: () => <table></table>
+}));
+
 const RendererWrapper = (props) => (
     <FormRenderer
         onSubmit={() => {}}
@@ -87,7 +93,7 @@ describe('Review', () => {
         wrapper.update();
         expect(wrapper.find('Form')).toHaveLength(1);
         expect(wrapper.find('table')).toHaveLength(3);
-        expect(wrapper.find(BodyRow)).toHaveLength(6);
+        expect(wrapper.find(BodyRow)).toHaveLength(4);
         expect(wrapper.find('button')).toHaveLength(8);
     });
 
