@@ -31,8 +31,8 @@ const onRowClick = (event, key, { loaded, onRowClick: rowClick, noDetail }) => {
  */
 const TitleColumn = (data, id, item, props) => (
     <div className="ins-composed-col">
-        <div>{item?.os_release}</div>
-        <div className={props?.noDetail ? 'ins-m-nodetail' : ''}>
+        <div key="os_release">{item?.os_release}</div>
+        <div key="data" className={props?.noDetail ? 'ins-m-nodetail' : ''}>
             { props?.noDetail ?
                 data :
                 <a

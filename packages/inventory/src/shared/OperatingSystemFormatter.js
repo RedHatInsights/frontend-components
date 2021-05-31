@@ -22,7 +22,7 @@ OperatingSystemFormatter.propTypes = {
         major: PropTypes.number,
         minor: PropTypes.number,
         // eslint-disable-next-line camelcase
-        operating_system: PropTypes.shape({ name: PropTypes.string, major: PropTypes.string, minor: PropTypes.string })
+        operating_system: PropTypes.shape({ name: PropTypes.string, major: PropTypes.number, minor: PropTypes.number })
     })
 };
 

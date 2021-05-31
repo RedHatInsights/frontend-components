@@ -176,7 +176,7 @@ EntityTable.propTypes = {
     columnsCounter: PropTypes.number,
     columns: PropTypes.oneOfType([ PropTypes.array, PropTypes.func ]),
     isLoaded: PropTypes.bool,
-    actions: PropTypes.object,
+    actions: PropTypes.array,
     noDetail: PropTypes.any
 };
 
