@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
@@ -63,11 +63,11 @@ const ReviewSystems = ({ issues, systems, allSystems, registry, ...props }) => {
             </StackItem>
             <StackItem>
                 <Router>
-                    <SystemsTable 
-                        registry={registry} 
-                        allSystemsNamed={allSystemsNamed} 
-                        allSystems={allSystems} 
-                        hasCheckbox={true} 
+                    <SystemsTable
+                        registry={registry}
+                        allSystemsNamed={allSystemsNamed}
+                        allSystems={allSystems}
+                        hasCheckbox={true}
                         bulkSelect={{
                             id: 'select-systems',
                             count: selected.length,

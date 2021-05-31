@@ -52,20 +52,20 @@ const SystemsTable = ({ registry, allSystemsNamed, allSystems, hasCheckbox, disa
 };
 
 SystemsTable.defaultProps = {
-    disabledColumns: [], 
-    hasCheckbox: false,
+    disabledColumns: [],
+    hasCheckbox: false
 };
 
 SystemsTable.propTypes = {
-    registry: propTypes.instanceOf(ReducerRegistry).isRequired, 
+    registry: propTypes.instanceOf(ReducerRegistry).isRequired,
     allSystemsNamed: propTypes.arrayOf(propTypes.shape({
         id: propTypes.string,
         name: propTypes.string
     })).isRequired,
     allSystems: propTypes.arrayOf(propTypes.string).isRequired,
     hasCheckbox: propTypes.bool,
-    disabledColumns: propTypes.arrayOf(propTypes.string), 
-    bulkSelect: propTypes.object,
+    disabledColumns: propTypes.arrayOf(propTypes.string),
+    bulkSelect: propTypes.object
 };
 
 export const SystemsTableWithContext = (props) => {

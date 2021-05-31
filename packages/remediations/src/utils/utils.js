@@ -85,10 +85,10 @@ export const buildRows = (records, sortByState, showAlternate, allSystemsNamed) 
             {
                 title: (
                     <Router>
-                        <SystemsTableWithContext 
-                            allSystemsNamed={allSystemsNamed.filter((system) => curr.systems.includes(system.id))} 
-                            allSystems={curr.systems} 
-                            disabledColumns={['updated']}
+                        <SystemsTableWithContext
+                            allSystemsNamed={allSystemsNamed.filter((system) => curr.systems.includes(system.id))}
+                            allSystems={curr.systems}
+                            disabledColumns={[ 'updated' ]}
                         />
                     </Router>
                 ),

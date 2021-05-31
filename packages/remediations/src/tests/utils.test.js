@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import React from 'react';
 import * as dependency from '../api/index';
 import {
     entitySelected,

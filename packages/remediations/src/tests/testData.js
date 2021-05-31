@@ -88,6 +88,6 @@ export const remediationWizardTestData = {
         [EXISTING_PLAYBOOK_SELECTED]: false,
         [ISSUES_MULTIPLE]: issuesMultiple,
         [RESOLUTIONS]: resolutions,
-        [SYSTEMS]: { testId: ['system', 'system2'] }
+        [SYSTEMS]: { testId: [ 'system', 'system2' ] }
     }
 };
