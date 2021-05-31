@@ -50,7 +50,7 @@ const Review = (props) => {
             action: issuesById[issue.id].description,
             resolution: description,
             needsReboot,
-            systems: systems[issue.id].map(id => allSystemsNamed.find(system => system.id === id)?.name)
+            systems: systems[issue.id]
         };
     });
 
@@ -62,10 +62,10 @@ const Review = (props) => {
         );
     }, []);
 
-    const [ rows, setRows ] = useState(buildRows(records, sortByState, false));
+    const [ rows, setRows ] = useState(buildRows(records, sortByState, false, allSystemsNamed));
 
     useEffect(() => {
-        setRows(buildRows(records, sortByState, false));
+        setRows(buildRows(records, sortByState, false, allSystemsNamed));
     }, [ sortByState ]);
 
     return (

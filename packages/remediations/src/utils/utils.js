@@ -6,7 +6,8 @@ import * as api from '../api';
 import uniqWith from 'lodash/uniqWith';
 import isEqual from 'lodash/isEqual';
 import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry/ReducerRegistry';
-import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { SystemsTableWithContext } from '../common/SystemsTable';
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
 
@@ -53,7 +54,7 @@ const sortRecords = (records, sortByState) => [ ...records ].sort(
     }
 );
 
-export const buildRows = (records, sortByState, showAlternate) => sortRecords(records, sortByState).reduce((acc, curr, index) => [
+export const buildRows = (records, sortByState, showAlternate, allSystemsNamed) => sortRecords(records, sortByState).reduce((acc, curr, index) => [
     ...acc,
     {
         isOpen: false,
@@ -83,20 +84,13 @@ export const buildRows = (records, sortByState, showAlternate) => sortRecords(re
         cells: [
             {
                 title: (
-                    <Fragment>
-                        <Table
-                            aria-label="Systems affected"
-                            variant={TableVariant.compact}
-                            cells={[
-                                { title: 'Systems affected' }
-                            ]}
-                            rows={curr.systems.map(s => [ s ])}
-                            className="pf-m-no-border-rows"
-                        >
-                            <TableHeader />
-                            <TableBody />
-                        </Table>
-                    </Fragment>
+                    <Router>
+                        <SystemsTableWithContext 
+                            allSystemsNamed={allSystemsNamed.filter((system) => curr.systems.includes(system.id))} 
+                            allSystems={curr.systems} 
+                            disabledColumns={['updated']}
+                        />
+                    </Router>
                 ),
                 props: { colSpan: 4, className: 'pf-m-no-padding' }
             }
@@ -239,7 +233,7 @@ export const fetchSystemsInfo = async (config, allSystemsNamed = [], { getEntiti
             ?
             allSystemsNamed.reduce((acc, curr) => [
                 ...acc,
-                ...(curr.display_name.toLowerCase().includes(hostnameOrId) || curr.id.toLowerCase().includes(hostnameOrId)
+                ...(curr.name.toLowerCase().includes(hostnameOrId) || curr.id.toLowerCase().includes(hostnameOrId)
                     ? [ curr.id ]
                     : []
                 )
@@ -262,7 +256,7 @@ export const splitArray = (inputArray, perChunk) => [ ...new Array(Math.ceil(inp
 
 export const getPlaybookSystems = (playbook) => playbook && uniqWith(playbook.issues?.reduce((acc, curr) => [
     ...acc,
-    ...(curr.systems.map(system => ({ id: system.id, display_name: system.display_name })))
+    ...(curr.systems.map(system => ({ id: system.id, name: system.display_name })))
 ], []), isEqual) || [];
 
 export const inventoryEntitiesReducer = (allSystems, { LOAD_ENTITIES_FULFILLED }) => applyReducerHash({

@@ -36,13 +36,13 @@ const ReviewActions = (props) => {
         ? values[ISSUES_MULTIPLE].filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
         : values[ISSUES_MULTIPLE]).map(issue => ({
         ...issue,
-        systems: (values[SYSTEMS][issue.id] || []).map(id => allSystemsNamed.find(system => system.id === id)?.name)
-    })).filter(record => record.systems.length > 0);
+        systems: values[SYSTEMS][issue.id]
+    })).filter(record => (record.systems || []).length > 0);
 
-    const [ rows, setRows ] = useState(buildRows(multiples, sortByState, true));
+    const [ rows, setRows ] = useState(buildRows(multiples, sortByState, true, allSystemsNamed));
 
     useEffect(() => {
-        setRows(buildRows(multiples, sortByState, true));
+        setRows(buildRows(multiples, sortByState, true, allSystemsNamed));
     }, [ sortByState ]);
 
     return (
