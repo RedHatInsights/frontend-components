@@ -6,12 +6,14 @@
   - [Webpack 5](#webpack-5)
     - [Removed features with webpack 5](#removed-features-with-webpack-5)
   - [useProxy](#useproxy)
+    - [Attributes](#attributes)
+    - [Utilities](#utilities)
     - [localChrome](#localchrome)
     - [Custom routes](#custom-routes)
       - [routes](#routes)
       - [routesPath](#routespath)
     - [Custom proxy settings](#custom-proxy-settings)
-    - [Chrome 1 environments / application entry url](#chrome-1-environments--application-entry-url)
+    - [Application entry url](#application-entry-url)
       - [Different environments](#different-environments)
       - [Multiple HTML entrypoints](#multiple-html-entrypoints)
       - [Exact URL](#exact-url)
@@ -56,8 +58,29 @@ NODE_ENV=development BETA=true webpack serve --config config/dev.webpack.config.
 
 *Path to config can be different*
 
-Then you will find your application running on `https://ci.foo.redhat.com:1337/beta/...`. This works only with **Chrome 2** ready applications.
+Then you will find your application running on `https://(ci/qa/prod).foo.redhat.com:1337(/beta)/...`. This works only with **Chrome 2** ready applications. To get Chrome 1 applications to work, you have to also set the [appUrl](#application-entry-url) attribute.
 
+### Attributes
+
+|Attribute|Type|Description|
+|---------|----|-----------|
+|[useProxy](#useproxy)|`boolean`|Enables webpack proxy.|
+|[appUrl](#application-entry-url)|`string`\|`string[]`|An entrypoint for your application. Can be a single string or an array of multiple points. The proxy is firstly trying to match the entrypoint with an html file, but if this file does not exist, it's redirected to `index.html`.|
+|[exactUrl](#exact-url)|`boolean`|When enabled, the appUrl is matched only when the url is the same as the string.|
+|[localChrome](#localchrome)|`string`|Path to your local chrome build folder.|
+|[routes](#routes)|`object`|An object with additional routes.|
+|[routesPath](#routespath)|`string`|A path to an object with additional routes.|
+|[customProxy](#custom-proxy-settings)|`object[]`|An array of custom provided proxy configurations.|
+|disableFallback|`boolean`|Disables fallback index.html for `appUrl`.|
+|proxyVerbose|`boolean`|Shows basic log in the server console.|
+
+### Utilities
+
+|name|import|description|
+|----|------|-----------|
+|[serverLocalFile](#serving-local-files)|`@redhat-cloud-services/frontend-components-config-utilities/serveLocalFile`|Creates a config for serving single local files.|
+|[cookieTransform](#cookietransform)|`@redhat-cloud-services/frontend-components-config-utilities/cookieTransform`|Converts jwt-token to `x-rh-identity` header.|
+|[router](#different-environments)|`@redhat-cloud-services/frontend-components-config-utilities/router`|Redirects requests based on the current environment.|
 ### localChrome
 
 You can also easily run you application with a local build of Chrome by adding `localChrome: <absolute_path_to_chrome_build_folder>`.
@@ -111,6 +134,7 @@ CONFIG_PATH=/home/khala/Documents/git/RedHatInsights/spandx.config.js
 ```
 
 ```JS
+// /home/khala/Documents/git/RedHatInsights/spandx.config.js
 module.exports = {
   routes: {
     '/api': { host: 'PORTAL_BACKEND_MARKER' },
@@ -150,7 +174,7 @@ const { config: webpackConfig, plugins } = config({
 
 This configuration will redirect all API requests to QA environment, so you can check CI UI with QA data.
 
-### Chrome 1 environments / application entry url
+### Application entry url
 
 To run your application in Chrome 1 environment, just add `appUrl` that contains entry url for your application.
 
@@ -239,7 +263,7 @@ const { config: webpackConfig, plugins } = config({
 ```
 
 `redhat.com/beta/` will be redirected to your local `index.html` file
-`redhat.com/beta/app` won`t be redirect to any of your local files
+`redhat.com/beta/app` won`t be redirected to any of your local files
 
 In both cases queries and hashes are ignored.
 
