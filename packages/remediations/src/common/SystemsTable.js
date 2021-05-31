@@ -13,16 +13,6 @@ const SystemsTable = ({ registry, allSystemsNamed, allSystems, hasCheckbox, disa
 
     const inventory = useRef(null);
 
-    const inventoryApi = useRef({});
-
-    const onRefresh = (options, callback) => {
-        if (!callback && inventory && inventory.current) {
-            inventory.current.onRefreshData(options);
-        } else if (callback) {
-            callback(options);
-        }
-    };
-
     return (
         <InventoryTable
             hideFilters={{
@@ -36,12 +26,11 @@ const SystemsTable = ({ registry, allSystemsNamed, allSystems, hasCheckbox, disa
             hasCheckbox={hasCheckbox}
             showTags
             bulkSelect={bulkSelect}
-            onRefresh={onRefresh}
+            onRefresh={(options) => inventory.current.onRefreshData(options)}
             ref={inventory}
-            getEntities={(_i, config) => fetchSystemsInfo(config, allSystemsNamed, inventoryApi.current)}
-            onLoad={({ mergeWithEntities, api, INVENTORY_ACTION_TYPES }) => {
+            getEntities={(_i, config, showTags, defaultGetEntities) => fetchSystemsInfo(config, allSystemsNamed, defaultGetEntities)}
+            onLoad={({ mergeWithEntities, INVENTORY_ACTION_TYPES }) => {
                 registry.register(mergeWithEntities(entitiesReducer(allSystems, INVENTORY_ACTION_TYPES)));
-                inventoryApi.current = api;
             }}
             tableProps={{
                 canSelectAll: false

@@ -37,7 +37,7 @@ const ReviewActions = (props) => {
         : values[ISSUES_MULTIPLE]).map(issue => ({
         ...issue,
         systems: values[SYSTEMS][issue.id]
-    })).filter(record => (record.systems || []).length > 0);
+    })).filter(record => record?.systems?.length > 0);
 
     const [ rows, setRows ] = useState(buildRows(multiples, sortByState, true, allSystemsNamed));
 

@@ -203,7 +203,7 @@ describe('fetchSystemsInfo', () => {
         const value = await fetchSystemsInfo(
             { page: 1, per_page: 1 },
             [{ id: '123' }, { id: '456' }],
-            { getEntities: (systems) => Promise.resolve({ result: systems }) }
+            (systems) => Promise.resolve({ result: systems })
         );
         expect(value).toEqual({
             page: 1,
@@ -221,7 +221,7 @@ describe('fetchSystemsInfo', () => {
                 { id: '456', name: 'test' },
                 { id: '789', name: '12test' }
             ],
-            { getEntities: (systems) => Promise.resolve({ result: systems }) }
+            (systems) => Promise.resolve({ result: systems })
         );
         expect(value).toEqual({
             page: 1,

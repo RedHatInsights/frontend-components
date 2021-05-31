@@ -226,7 +226,7 @@ export const changeBulkSelect = (state, action) => {
     });
 };
 
-export const fetchSystemsInfo = async (config, allSystemsNamed = [], { getEntities } = {}) => {
+export const fetchSystemsInfo = async (config, allSystemsNamed = [], getEntities) => {
     const hostnameOrId = config?.filters?.hostnameOrId?.toLowerCase();
     const systems = (
         hostnameOrId
