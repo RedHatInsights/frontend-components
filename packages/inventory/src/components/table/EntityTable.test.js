@@ -27,7 +27,8 @@ describe('EntityTable', () => {
                 loaded: true,
                 rows: [{
                     id: 'testing-id',
-                    one: 'data'
+                    one: 'data',
+                    system_profile: {}
                 }],
                 columns: [{ key: 'one', title: 'One', renderFunc: TitleColumn }],
                 page: 1,
@@ -220,10 +221,12 @@ describe('EntityTable', () => {
                     columns: defaultColumns,
                     rows: [{
                         id: 'testing-id',
-                        insights_id: null
+                        insights_id: null,
+                        system_profile: {}
                     }, {
                         id: 'testing-id-1',
-                        insights_id: 'some-id-herse'
+                        insights_id: 'some-id-herse',
+                        system_profile: {}
                     }]
                 }
             };
@@ -246,12 +249,14 @@ describe('EntityTable', () => {
                         id: 'testing-id',
                         insights_id: null,
                         secret_attribute: 'super_secret_1',
-                        display_name: 'name_1'
+                        display_name: 'name_1',
+                        system_profile: {}
                     }, {
                         id: 'testing-id-1',
                         insights_id: 'some-id-herse',
                         secret_attribute: 'super_secret_2',
-                        display_name: 'name_2'
+                        display_name: 'name_2',
+                        system_profile: {}
                     }]
                 }
             };
@@ -299,7 +304,8 @@ describe('EntityTable', () => {
                         id: 'testing-id',
                         insights_id: null,
                         secret_attribute: 'super_secret_1',
-                        display_name: 'name_1'
+                        display_name: 'name_1',
+                        system_profile: {}
                     }]
                 }
             };
@@ -351,7 +357,8 @@ describe('EntityTable', () => {
                         id: 'testing-id',
                         insights_id: null,
                         secret_attribute: 'super_secret_1',
-                        display_name: 'name_1'
+                        display_name: 'name_1',
+                        system_profile: {}
                     }]
                 }
             };
@@ -425,7 +432,8 @@ describe('EntityTable', () => {
                         id: 'testing-id',
                         insights_id: null,
                         secret_attribute: 'super_secret_1',
-                        display_name: 'name_1'
+                        display_name: 'name_1',
+                        system_profile: {}
                     }]
                 }
             };
@@ -457,7 +465,8 @@ describe('EntityTable', () => {
                         id: 'testing-id',
                         insights_id: null,
                         secret_attribute: 'super_secret_1',
-                        display_name: 'name_1'
+                        display_name: 'name_1',
+                        system_profile: {}
                     }]
                 }
             };

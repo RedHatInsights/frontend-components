@@ -5,11 +5,14 @@ exports[`TitleColumn should render correctly no detail with data 1`] = `
   <div
     className="ins-composed-col"
   >
-    <div>
+    <div
+      key="os_release"
+    >
       os_release
     </div>
     <div
       className="ins-m-nodetail"
+      key="data"
     >
       something
     </div>
@@ -22,9 +25,12 @@ exports[`TitleColumn should render correctly with NO data 1`] = `
   <div
     className="ins-composed-col"
   >
-    <div />
+    <div
+      key="os_release"
+    />
     <div
       className=""
+      key="data"
     >
       <a
         href="/undefined"
@@ -41,11 +47,14 @@ exports[`TitleColumn should render correctly with data 1`] = `
   <div
     className="ins-composed-col"
   >
-    <div>
+    <div
+      key="os_release"
+    >
       os_release
     </div>
     <div
       className=""
+      key="data"
     >
       <a
         href="/some-id"
