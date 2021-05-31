@@ -68,6 +68,7 @@ class TagModal extends Component {
             onSelect,
             onUpdateData,
             selected,
+            tableProps,
             ...props
         } = this.props;
 

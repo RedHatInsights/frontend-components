@@ -61,6 +61,7 @@ const EntityTableToolbar = ({
     onRefreshData,
     loaded,
     showTagModal,
+    disableDefaultColumns,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -338,7 +339,7 @@ const EntityTableToolbar = ({
 EntityTableToolbar.propTypes = {
     showTags: PropTypes.bool,
     hasAccess: PropTypes.bool,
-    filterConfig: PropTypes.shape(PrimaryToolbar.propTypes.filterConfig),
+    filterConfig: PrimaryToolbar.propTypes.filterConfig,
     total: PropTypes.number,
     filters: PropTypes.array,
     hasItems: PropTypes.bool,
@@ -366,13 +367,14 @@ EntityTableToolbar.propTypes = {
     }),
     paginationProps: PropTypes.object,
     loaded: PropTypes.bool,
-    onRefresh: PropTypes.func.isRequired,
+    onRefresh: PropTypes.func,
     hasCheckbox: PropTypes.bool,
     isLoaded: PropTypes.bool,
     items: PropTypes.array,
     sortBy: PropTypes.object,
     bulkSelect: PropTypes.object,
-    showTagModal: PropTypes.bool
+    showTagModal: PropTypes.bool,
+    disableDefaultColumns: PropTypes.any
 };
 
 EntityTableToolbar.defaultProps = {
