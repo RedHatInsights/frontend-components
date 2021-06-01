@@ -12,10 +12,10 @@ import ReviewSystems from '../../steps/reviewSystems';
 import { Provider } from 'react-redux';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 
-jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
+jest.mock('../../common/SystemsTable', () => ({
     __esModule: true,
     // eslint-disable-next-line react/display-name
-    InventoryTable: () => <div>Inventory</div>
+    default: () => <table></table>
 }));
 
 jest.mock('../../utils', () => {
@@ -34,7 +34,9 @@ const RendererWrapper = (props) => (
             'review-systems': {
                 component: ReviewSystems,
                 issues: remediationWizardTestData.issues,
-                systems: remediationWizardTestData.systems
+                systems: remediationWizardTestData.systems,
+                allSystems: remediationWizardTestData.systems,
+                registry: {}
             }
         }}
         initialValues={{

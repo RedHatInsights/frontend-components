@@ -13,6 +13,12 @@ import { BodyRow } from '@patternfly/react-table/dist/js/components/Table/base';
 import { remediationWizardTestData } from '../testData';
 import { Provider } from 'react-redux';
 
+jest.mock('../../common/SystemsTable', () => ({
+    __esModule: true,
+    // eslint-disable-next-line react/display-name
+    SystemsTableWithContext: () => <table></table>
+}));
+
 const RendererWrapper = (props) => (
     <FormRenderer
         onSubmit={() => {}}
@@ -74,7 +80,7 @@ describe('ReviewActions', () => {
         });
         expect(wrapper.find('input[type="radio"]')).toHaveLength(2);
         expect(wrapper.find('table')).toHaveLength(2);
-        expect(wrapper.find(BodyRow)).toHaveLength(3);
+        expect(wrapper.find(BodyRow)).toHaveLength(2);
     });
 
     it('should sort table & submit review option', async () => {
