@@ -15,7 +15,7 @@ describe('TagCount component', () => {
     });
 
     it('should render a tag count of 11', () => {
-        const wrapper = shallow(<TagCount count="11"/>);
+        const wrapper = shallow(<TagCount count={11}/>);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 });
