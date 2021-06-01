@@ -203,6 +203,7 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -280,6 +281,7 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -448,6 +450,7 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -574,6 +577,7 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -769,6 +773,7 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -842,6 +847,7 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -916,6 +922,7 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }

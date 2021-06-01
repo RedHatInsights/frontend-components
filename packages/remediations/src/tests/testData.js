@@ -4,6 +4,7 @@ import {
     SELECTED_RESOLUTIONS,
     EXISTING_PLAYBOOK_SELECTED,
     ISSUES_MULTIPLE,
+    SYSTEMS,
     RESOLUTIONS
 } from '../utils';
 
@@ -86,6 +87,7 @@ export const remediationWizardTestData = {
         [SELECTED_RESOLUTIONS]: [],
         [EXISTING_PLAYBOOK_SELECTED]: false,
         [ISSUES_MULTIPLE]: issuesMultiple,
-        [RESOLUTIONS]: resolutions
+        [RESOLUTIONS]: resolutions,
+        [SYSTEMS]: { testId: [ 'system', 'system2' ] }
     }
 };
