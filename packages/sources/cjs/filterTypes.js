@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var filterTypes=function filterTypes(e){var t,i;return(null===(t=e.schema)||void 0===t?void 0:t.authentication)&&(null===(i=e.schema)||void 0===i?void 0:i.endpoint)};exports.default=filterTypes;
