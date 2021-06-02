@@ -8,6 +8,7 @@ import {
     fetchSystemsInfo,
     inventoryEntitiesReducer as entitiesReducer
 } from '../utils';
+import './systemsTable.scss';
 
 const SystemsTable = ({ registry, allSystemsNamed, allSystems, hasCheckbox, disabledColumns, bulkSelect }) => {
 
@@ -65,7 +66,9 @@ export const SystemsTableWithContext = (props) => {
     }, []);
 
     return registry?.store  ? <Provider store={registry.store}>
-        <SystemsTable {...props} registry={registry} />
+        <div className="ins-c-remediations-table-expandable">
+            <SystemsTable {...props} registry={registry} />
+        </div>
     </Provider> : null;
 };
 
