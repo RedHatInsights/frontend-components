@@ -320,7 +320,13 @@ class Group extends Component {
                             .filter(Boolean);
 
                             return (
-                                <div key={groupId || groupValue || groupKey}>
+                                /**
+                                 * DO NOT DELET THE EMPTY VALUE ON THE DIV ELEMENT
+                                 * If we delete it, it breaks the select filtering
+                                 * Here is the code that creates the runtime crash:
+                                 * https://github.com/patternfly/patternfly-react/blob/master/packages/react-core/src/components/Select/Select.tsx#L615
+                                 */
+                                <div key={groupId || groupValue || groupKey} value="">
                                     {
                                         groupSelectable && <SelectOption
                                             onClick={ (event) => {
