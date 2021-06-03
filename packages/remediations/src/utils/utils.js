@@ -81,6 +81,7 @@ export const buildRows = (records, sortByState, showAlternate, allSystemsNamed) 
     },
     ...(curr.systems?.length > 0 ? [{
         parent: index * 2,
+        fullWidth: true,
         cells: [
             {
                 title: (
@@ -92,7 +93,7 @@ export const buildRows = (records, sortByState, showAlternate, allSystemsNamed) 
                         />
                     </Router>
                 ),
-                props: { colSpan: 4, className: 'pf-m-no-padding' }
+                props: { colSpan: 5, className: 'pf-m-no-padding' }
             }
         ]
     }] : []) ], []);
