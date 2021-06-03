@@ -3,8 +3,6 @@ const path = require('path');
 const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-let rewriteLineCounter = 0;
-
 module.exports = ({
     port,
     publicPath,
@@ -14,22 +12,21 @@ module.exports = ({
     mode,
     appName,
     useFileHash = true,
-    betaEnv = 'ci',
+    env = 'ci-beta',
     sassPrefix,
-    deployment,
     skipChrome2 = false,
     useProxy,
     localChrome,
     customProxy,
-    proxyVerbose,
     routes,
     routesPath,
-    appUrl,
-    exactUrl,
-    disableFallback,
-    isProd
+    isProd,
+    standalone = false,
+    reposDir = 'repos'
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
+    port = port || useProxy ? 1337 : 8002;
+
     return {
         mode: mode || (isProd ? 'production' : 'development'),
         devtool: false,
@@ -151,46 +148,26 @@ module.exports = ({
                 process: 'process/browser.js'
             }
         },
-        devServer: useProxy ? proxy({
-            betaEnv,
-            rootFolder,
-            localChrome,
-            customProxy,
-            appName,
-            publicPath,
-            https,
-            port,
-            proxyVerbose,
-            routes,
-            routesPath,
-            appUrl,
-            exactUrl,
-            disableFallback
-        }) : {
+        devServer: {
             contentBase: `${rootFolder || ''}/dist`,
-            port: port || 8002,
+            host: useProxy ? `${betaEnv}.foo.redhat.com` : undefined,
+            port,
             https: https || false,
-            inline: true,
             disableHostCheck: true,
             historyApiFallback: true,
             writeToDisk: true,
-            proxy: !deployment && betaEnv ? {
-                [`https://${betaEnv}.foo.redhat.com:1337/beta`]: {
-                    target: `http${https ? 's' : ''}://localhost:${port || 8002}`,
-                    pathRewrite: function(path) {
-                        const pathRewrite = path.replace(/^\/beta\//, '/');
-                        if (rewriteLineCounter === 0) {
-                            // eslint-disable-next-line max-len
-                            console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]Warning, automatic beta rewrites are deprecated.`, 'Please use deployment configuration to use beta env: https://github.com/RedHatInsights/frontend-starter-app/pull/421/files');
-                            rewriteLineCounter += 1;
-                        }
-
-                        console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]PROXY: Rewriting from path to beta to stable:`, path, '->', pathRewrite);
-                        rewriteLineCounter += 1;
-                        return pathRewrite;
-                    }
-                }
-            } : undefined
+            serveIndex: true,
+            proxy: proxy({
+                env,
+                localChrome,
+                customProxy,
+                routes,
+                routesPath,
+                useProxy,
+                standalone,
+                port,
+                reposDir
+            })
         }
     };
 };

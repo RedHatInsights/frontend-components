@@ -2,16 +2,7 @@
 /* eslint-disable no-console */
 const jws = require('jws');
 
-const defaultEntitlements = {
-    insights: { is_entitled: true },
-    smart_management: { is_entitled: true },
-    openshift: { is_entitled: true },
-    hybrid: { is_entitled: true },
-    migrations: { is_entitled: true },
-    ansible: { is_entitled: true }
-};
-
-function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlements, user, internal, identity: customIdentity }) {
+function cookieTransform(proxyReq, req) {
     const cookie = req.headers.cookie;
     const match = cookie && cookie.match(/cs_jwt=([^;]+);/);
     if (match) {
@@ -19,12 +10,10 @@ function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlemen
         const { payload } = jws.decode(cs_jwt);
 
         const identity = {
-            entitlements,
             identity: {
                 type: 'User',
                 auth_type: 'basic-auth',
                 account_number: payload.account_number + '',
-                ...customIdentity,
                 user: {
                     username: payload.username,
                     email: payload.email,
@@ -34,13 +23,11 @@ function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlemen
                     is_org_admin: payload.is_org_admin,
                     is_internal: payload.is_internal,
                     locale: 'en-US',
-                    user_id: payload.account_id + '',
-                    ...user
+                    user_id: payload.account_id + ''
                 },
                 internal: {
                     org_id: payload.org_id,
-                    auth_time: payload.auth_time,
-                    ...internal
+                    auth_time: payload.auth_time
                 }
             }
         };
