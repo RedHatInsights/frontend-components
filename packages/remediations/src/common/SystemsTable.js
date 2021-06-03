@@ -66,7 +66,7 @@ export const SystemsTableWithContext = (props) => {
     }, []);
 
     return registry?.store  ? <Provider store={registry.store}>
-        <div className="ins-c-remediations-table-expandable">
+        <div className="pf-u-pl-lg">
             <SystemsTable {...props} registry={registry} />
         </div>
     </Provider> : null;
