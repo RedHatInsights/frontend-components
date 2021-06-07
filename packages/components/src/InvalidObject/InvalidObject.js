@@ -14,10 +14,11 @@ const isBeta = () => {
 const InvalidObject = ({ ...props }) => {
     return (
         <section {...props} className="pf-l-page__main-section pf-c-page__main-section ins-c-component_invalid-componet">
-            <Title headingLevel="h1" size='3xl'>404: It&apos;s true. We&apos;ve lost it.</Title>
+            <Title headingLevel="h1" size='3xl'>We lost that page</Title>
             <Icon404/>
             <Title headingLevel="h1" size='xl' className='ins-c-text__sorry'>
-                Sorry, we couldn&apos;t find what you&apos;re looking for. The page you requested may have changed or moved.</Title>
+              Let&apos;s find you a new one. Try a new search or return home.
+            </Title>
             <Button
                 variant="link"
                 component="a"
