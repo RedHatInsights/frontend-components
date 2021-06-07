@@ -41,7 +41,7 @@ describe('<TopBar />', () => {
         wrapper.update();
 
         expect(wrapper.find(DropdownItem).props()).toMatchObject({
-            children: 'View in Inventory',
+            children: 'View system in Inventory',
             component: 'a',
             href: `./insights/inventory/${entityId}`,
             index: 0,
@@ -81,7 +81,7 @@ describe('<TopBar />', () => {
 
         expect(wrapper.find(DropdownItem)).toHaveLength(2);
         expect(wrapper.find(DropdownItem).first().props()).toMatchObject({
-            children: 'View in Inventory',
+            children: 'View system in Inventory',
             component: 'a',
             href: `./insights/inventory/${entityId}`,
             index: 0,
