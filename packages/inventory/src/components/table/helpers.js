@@ -63,13 +63,15 @@ export const onDeleteTag = (deleted, selectedTags, onApplyTags) => {
     return selectedTags;
 };
 
+const includesSortable = (transforms) => transforms?.reduce((acc, fn) => acc || fn.toString().includes('onSort:'), false);
+
 export const createColumns = (columns, hasItems, rows, isExpandable) => (
     columns?.map(({ props, transforms, cellFormatters, ...oneCell }) => ({
         ...oneCell,
         transforms: [
             ...transforms || [],
             ...props?.width ? [ cellWidth(props.width) ] : [],
-            ...hasItems || rows.length <= 0 || (props && props.isStatic) || transforms?.includes(sortable) ? [] : [ sortable ]
+            ...hasItems || rows.length <= 0 || (props && props.isStatic) || transforms?.includes(sortable) || includesSortable(transforms) ? [] : [ sortable ]
         ],
         cellFormatters: [
             ...cellFormatters || [],
