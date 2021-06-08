@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 const path = require('path');
-const proxy = require('./proxy');
+const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 let rewriteLineCounter = 0;
 
@@ -25,14 +26,14 @@ module.exports = ({
     routesPath,
     appUrl,
     exactUrl,
-    disableFallback
+    disableFallback,
+    isProd
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     return {
-        mode: mode || (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
+        mode: mode || (isProd ? 'production' : 'development'),
         devtool: false,
         optimization: {
-            minimize: (process.env.NODE_ENV || mode) === 'production',
             splitChunks: {
                 chunks: 'all',
                 maxInitialRequests: Infinity,
@@ -40,19 +41,23 @@ module.exports = ({
                 cacheGroups: {
                     reactVendor: {
                         test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                        name: 'reactvendor'
+                        name: 'reactVendor',
+                        priority: 10
                     },
                     pfVendor: {
                         test: /[\\/]node_modules[\\/](@patternfly)[\\/]/,
-                        name: 'pfVendor'
+                        name: 'pfVendor',
+                        priority: 10
                     },
                     rhcsVendor: {
                         test: /[\\/]node_modules[\\/](@redhat-cloud-services)[\\/]/,
-                        name: 'rhcsVendor'
+                        name: 'rhcsVendor',
+                        priority: 10
                     },
                     vendor: {
-                        test: /[\\/]node_modules[\\/](!react-dom)(!react)(!@patternfly)(!@redhat-cloud-services)[\\/]/,
-                        name: 'vendor'
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendor',
+                        priority: 9
                     }
                 }
             }
@@ -85,10 +90,8 @@ module.exports = ({
             }, {
                 test: /\.s?[ac]ss$/,
                 use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader'
-                    },
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
                     {
                         /**
                          * Second sass loader used for scoping the css with class name.
@@ -112,9 +115,7 @@ module.exports = ({
                             }
                         }
                     },
-                    {
-                        loader: 'sass-loader'
-                    }
+                    'sass-loader'
                 ]
             }, {
                 test: /\.(woff(2)?|ttf|jpg|png|eot|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -137,8 +138,7 @@ module.exports = ({
             alias: {
                 customReact: 'react',
                 PFReactCore: '@patternfly/react-core',
-                PFReactTable: '@patternfly/react-table',
-                buffer: 'buffer'
+                PFReactTable: '@patternfly/react-table'
             },
             fallback: {
                 path: require.resolve('path-browserify'),
@@ -146,6 +146,7 @@ module.exports = ({
                 zlib: require.resolve('browserify-zlib'),
                 assert: require.resolve('assert/'),
                 buffer: require.resolve('buffer/'),
+                url: require.resolve('url/'),
                 util: require.resolve('util/'),
                 process: 'process/browser.js'
             }
@@ -167,7 +168,6 @@ module.exports = ({
             disableFallback
         }) : {
             contentBase: `${rootFolder || ''}/dist`,
-            hot: true,
             port: port || 8002,
             https: https || false,
             inline: true,

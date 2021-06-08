@@ -4,13 +4,13 @@ describe('reloadWrapper', () => {
     it('should call callback once promise is done', async () => {
         const callback = jest.fn();
         const promise = Promise.resolve('something');
-        const data = reloadWrapper({
+        const data = await reloadWrapper({
             payload: promise
         }, callback);
-        setImmediate(() => {
-            expect(callback).toHaveBeenCalled();
-        });
+        expect(callback).toHaveBeenCalled();
         expect(data).toBeDefined();
+        await promise;
+        expect(callback).toHaveBeenCalled();
     });
 });
 

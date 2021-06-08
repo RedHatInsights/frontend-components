@@ -5,7 +5,7 @@ import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import IssueResolution from '../../steps/issueResolution';
-import { RESOLUTIONS, SELECTED_RESOLUTIONS } from '../../utils';
+import { RESOLUTIONS, SELECTED_RESOLUTIONS, SYSTEMS } from '../../utils';
 import { Tile } from '@patternfly/react-core';
 import { remediationWizardTestData } from '../testData';
 
@@ -16,15 +16,15 @@ const RendererWrapper = (props) => (
         componentMapper={{
             'issue-resolution': {
                 component: IssueResolution,
-                issues: remediationWizardTestData.issues,
-                systems: remediationWizardTestData.systems
+                issues: remediationWizardTestData.issues
             }
         }}
         initialValues={{
             [SELECTED_RESOLUTIONS]: {
                 testId: 'test2'
             },
-            [RESOLUTIONS]: remediationWizardTestData.resolutions
+            [RESOLUTIONS]: remediationWizardTestData.resolutions,
+            [SYSTEMS]: remediationWizardTestData.systems
         }}
         schema={{ fields: [] }}
         {...props}

@@ -3,7 +3,7 @@ const path = require('path');
 const fse = require('fs-extra');
 const sortFile = require('./sort-files');
 
-const mdDest = path.resolve(__dirname, './pages');
+const mdDest = path.resolve(__dirname, './pages/fec/modules');
 
 function getDescription(item) {
     if (item.kind === 'class' && item.classdesc.length > 0) {

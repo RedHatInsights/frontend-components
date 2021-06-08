@@ -8,8 +8,7 @@ exports[`ComplianceEmptyState expect to render different message if many policie
       size="xl"
       style={
         Object {
-          "color": "var(--pf-global--primary-color--100)",
-          "fontWeight": "500",
+          "color": "var(--pf-global--Color--200)",
         }
       }
       title="Compliance"
@@ -55,7 +54,7 @@ exports[`ComplianceEmptyState expect to render different message if many policie
     <EmptyStateSecondaryActions>
       <Button
         component="a"
-        href="https://access.redhat.com/documentation/en-us/red_hat_insights/2020-04/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index"
+        href="https://access.redhat.com/documentation/en-us/red_hat_insights/2021/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index"
         rel="noopener noreferrer"
         target="_blank"
         variant="link"
@@ -75,8 +74,7 @@ exports[`ComplianceEmptyState expect to render different message if one policy e
       size="xl"
       style={
         Object {
-          "color": "var(--pf-global--primary-color--100)",
-          "fontWeight": "500",
+          "color": "var(--pf-global--Color--200)",
         }
       }
       title="Compliance"
@@ -122,7 +120,7 @@ exports[`ComplianceEmptyState expect to render different message if one policy e
     <EmptyStateSecondaryActions>
       <Button
         component="a"
-        href="https://access.redhat.com/documentation/en-us/red_hat_insights/2020-04/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index"
+        href="https://access.redhat.com/documentation/en-us/red_hat_insights/2021/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index"
         rel="noopener noreferrer"
         target="_blank"
         variant="link"
@@ -142,8 +140,7 @@ exports[`ComplianceEmptyState expect to render without error if no policies exis
       size="xl"
       style={
         Object {
-          "color": "var(--pf-global--primary-color--100)",
-          "fontWeight": "500",
+          "color": "var(--pf-global--Color--200)",
         }
       }
       title="Compliance"
@@ -175,7 +172,7 @@ exports[`ComplianceEmptyState expect to render without error if no policies exis
     <EmptyStateSecondaryActions>
       <Button
         component="a"
-        href="https://access.redhat.com/documentation/en-us/red_hat_insights/2020-04/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index"
+        href="https://access.redhat.com/documentation/en-us/red_hat_insights/2021/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index"
         rel="noopener noreferrer"
         target="_blank"
         variant="link"

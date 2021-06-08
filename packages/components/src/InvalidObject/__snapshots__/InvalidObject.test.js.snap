@@ -12,7 +12,7 @@ exports[`InvalidObject component should render 1`] = `
       <h1
         className="pf-c-title pf-m-3xl"
       >
-        404: It's true. We've lost it.
+        We lost that page
       </h1>
     </Title>
     <Icon404>
@@ -263,7 +263,7 @@ exports[`InvalidObject component should render 1`] = `
       <h1
         className="pf-c-title pf-m-xl ins-c-text__sorry"
       >
-        Sorry, we couldn't find what you're looking for. The page you requested may have changed or moved.
+        Let's find you a new one. Try a new search or return home.
       </h1>
     </Title>
     <Button

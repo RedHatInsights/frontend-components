@@ -4,7 +4,7 @@ import BasicInfo from './BasicInfo';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
 
 describe('BasicInfo', () => {

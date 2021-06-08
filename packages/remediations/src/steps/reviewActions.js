@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/dist/esm/use-field-api';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
-import { Table, TableVariant, TableHeader, TableBody, sortable } from '@patternfly/react-table';
+import { Table, TableVariant, TableHeader, TableBody, sortable, expandable } from '@patternfly/react-table';
 import {
     Radio,
     Text,
@@ -12,55 +13,70 @@ import {
 } from '@patternfly/react-core';
 import {
     buildRows,
+    onCollapse,
     pluralize,
     EXISTING_PLAYBOOK,
     EXISTING_PLAYBOOK_SELECTED,
-    ISSUES_MULTIPLE
+    ISSUES_MULTIPLE,
+    SYSTEMS
 } from '../utils';
 import './reviewActions.scss';
 
 const ReviewActions = (props) => {
-    const { issues } = props;
-    const { input } = useFieldApi(props);
     const formOptions = useFormApi();
-    const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
-
     const values = formOptions.getState().values;
-    const records = values[EXISTING_PLAYBOOK_SELECTED]
-        ? values[ISSUES_MULTIPLE].filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
-        : values[ISSUES_MULTIPLE];
+    const issues = props.issues.filter(issue => Object.keys(values[SYSTEMS]).includes(issue.id));
+    const { input } = useFieldApi(props);
+    const [ sortByState, setSortByState ] = useState({ index: undefined, direction: undefined });
+    const allSystemsNamed = useSelector(({ hostReducer: { hosts } }) => hosts?.map(host => (
+        { id: host.id, name: host.display_name })) || []
+    );
 
-    const rows = buildRows(records, sortByState, true);
+    const multiples = (values[EXISTING_PLAYBOOK_SELECTED]
+        ? values[ISSUES_MULTIPLE].filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
+        : values[ISSUES_MULTIPLE]).map(issue => ({
+        ...issue,
+        systems: values[SYSTEMS][issue.id]
+    })).filter(record => record?.systems?.length > 0);
+
+    const [ rows, setRows ] = useState(buildRows(multiples, sortByState, true, allSystemsNamed));
+
+    useEffect(() => {
+        setRows(buildRows(multiples, sortByState, true, allSystemsNamed));
+    }, [ sortByState ]);
 
     return (
-        <Stack hasGutter>
+        <Stack hasGutter data-component-ouia-id="wizard-review-actions">
             <StackItem>
                 <TextContent>
                     <Text>
                         You have selected <b>{`${issues.length} ${pluralize(issues.length, 'item')}`}</b> to remediate. <b>
-                            {rows.length} of {`${issues.length} ${pluralize(issues.length, 'item')}`}</b> allow for you to chose from multiple resolution steps.
+                            {multiples.length} of {`${issues.length} ${pluralize(issues.length, 'item')}`}</b>
+                        {multiples.length !== 1 ? ' allow' : ' allows'} for you to chose from multiple resolution steps.
                     </Text>
                 </TextContent>
             </StackItem>
             <StackItem>
                 <Radio
                     label={
-                        `Review and/or change the resolution steps for ${rows.length > 1 ? 'these' : 'this'} ${rows.length} ${pluralize(rows.length, 'action')}.`
+                        `Review and/or change the resolution steps for ${multiples.length !== 1 ? 'these' : 'this'}
+                         ${multiples.length} ${pluralize(multiples.length, 'action')}.`
                     }
                     id="change"
                     name="radio"
                     isChecked={input.value}
                     onChange={() => input.onChange(true)}
                 />
-                <Text className="ins-c-remediations-choose-actions-description">
-                    {`The ${issues.length - rows.length} other selected ${pluralize(issues.length - rows.length, 'issue')} 
-                    ${issues.length - rows.length > 1 ? 'do' : 'does'} not have multiple resolution options.`}
-                </Text>
+                {issues.length - multiples.length > 0 && <Text className="ins-c-remediations-choose-actions-description">
+                    {`The ${issues.length - multiples.length} other selected ${pluralize(issues.length - multiples.length, 'issue')} 
+                    ${issues.length - multiples.length !== 1 ? 'do' : 'does'} not have multiple resolution options.`}
+                </Text>}
             </StackItem>
             <Table
                 aria-label='Actions'
                 className='ins-c-remediation-summary-table'
                 variant={ TableVariant.compact }
+                onCollapse={(event, rowKey, isOpen) => onCollapse(event, rowKey, isOpen, rows, setRows)}
                 cells={ [
                     {
                         title: 'Action',
@@ -73,14 +89,15 @@ const ReviewActions = (props) => {
                         transforms: [ sortable ]
                     }, {
                         title: 'Systems',
-                        transforms: [ sortable ]
+                        transforms: [ sortable ],
+                        cellFormatters: [ expandable ]
                     }]
                 }
                 rows={ rows }
                 onSort={ (event, index, direction) => setSortByState({ index, direction }) }
                 sortBy={ sortByState }
             >
-                <TableHeader />
+                <TableHeader noWrap />
                 <TableBody />
             </Table>
             <StackItem>

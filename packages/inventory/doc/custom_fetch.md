@@ -2,6 +2,7 @@
   - [getEntities](#getentities)
     - [items](#items)
     - [config](#config)
+    - [defaultGetEntities](#defaultgetentities)
     - [result](#result)
       - [results](#results)
       - [total](#total)
@@ -22,7 +23,7 @@ Inventory components provides a simple way for changing its loading function. Th
 ## getEntities
 
 ```tsx
-getEntities = (items: array, config: Config, showTags: boolean) => result as Result
+getEntities = (items: array, config: Config, showTags: boolean, defaultGetEntities: function) => result as Result
 ```
 
 ### items
@@ -64,6 +65,19 @@ example:
       "direction":"asc"
    },
    "hasItems":false
+}
+```
+
+### defaultGetEntities
+
+As the 4th argument, the default `getEntities` function is passed, so you can grab it and enhance it.
+
+```jsx
+customGetEntities = async (_items, config, showTags, defaultGetEntities) => {
+    const items = await getCustomItems(config); // load your items and data
+    const result = await defaultGetEntities(items, config, showTags); // merge them with default api
+
+    return result;
 }
 ```
 

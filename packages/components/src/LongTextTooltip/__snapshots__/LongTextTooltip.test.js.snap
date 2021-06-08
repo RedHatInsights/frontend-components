@@ -123,9 +123,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
         }
       }
       trigger={
-        <div
-          aria-describedby="pf-tooltip-1"
-        >
+        <div>
           …
         </div>
       }
@@ -134,9 +132,7 @@ exports[`LongTextTooltip component should render content with maxLength shorter 
       <FindRefWrapper
         onFoundRef={[Function]}
       >
-        <div
-          aria-describedby="pf-tooltip-1"
-        >
+        <div>
           …
         </div>
       </FindRefWrapper>

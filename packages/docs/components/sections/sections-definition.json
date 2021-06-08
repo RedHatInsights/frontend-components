@@ -1,0 +1,34 @@
+[{
+  "title": "Create new Application UI",
+  "href": "/new-app-ui"
+},{
+  "title": "UI deployment process",
+  "href": "/deployment-process"
+},{
+  "title": "Chrome",
+  "href": "/chrome"
+},{
+  "title": "Cloud services config",
+  "href": "/csc"
+},{
+  "title": "Frontend component documentation",
+  "href": "/fec"
+},{
+  "title": "Module federation",
+  "href": "/fed"
+},{
+  "title": "Inventory components",
+  "href": "/inventory-components"
+},{
+  "title": "Proxies",
+  "href": "/proxies"
+},{
+  "title": "Insights standalone",
+  "href": "/insights-standalone"
+},{
+  "title": "Landing page",
+  "href": "/landing-page"
+},{
+  "title": "Common issues",
+  "href": "/common-issues"
+}]

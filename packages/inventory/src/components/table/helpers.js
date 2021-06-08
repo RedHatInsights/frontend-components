@@ -1,5 +1,4 @@
 import React from 'react';
-import NoSystemsTable from './NoSystemsTable';
 import { cellWidth, sortable, expandable } from '@patternfly/react-table';
 import get from 'lodash/get';
 import flatten from 'lodash/flatten';
@@ -18,11 +17,11 @@ export const buildCells = (item, columns, extra) => {
     });
 };
 
-export const createRows = (rows = [], columns = [], { actions, expandable, ...extra } = {}) => {
+export const createRows = (rows = [], columns = [], { actions, expandable, noSystemsTable, ...extra } = {}) => {
     if (rows.length === 0) {
         return [{
             cells: [{
-                title: <NoSystemsTable />,
+                title: noSystemsTable,
                 props: {
                     colSpan: columns.length + Boolean(actions)
                 }
@@ -64,13 +63,15 @@ export const onDeleteTag = (deleted, selectedTags, onApplyTags) => {
     return selectedTags;
 };
 
+const includesSortable = (transforms) => transforms?.reduce((acc, fn) => acc || fn.toString().includes('onSort:'), false);
+
 export const createColumns = (columns, hasItems, rows, isExpandable) => (
     columns?.map(({ props, transforms, cellFormatters, ...oneCell }) => ({
         ...oneCell,
         transforms: [
             ...transforms || [],
             ...props?.width ? [ cellWidth(props.width) ] : [],
-            ...hasItems || rows.length <= 0 || (props && props.isStatic) ? [] : [ sortable ]
+            ...hasItems || rows.length <= 0 || (props && props.isStatic) || transforms?.includes(sortable) || includesSortable(transforms) ? [] : [ sortable ]
         ],
         cellFormatters: [
             ...cellFormatters || [],

@@ -32,9 +32,7 @@ exports[`InventoryList should render correctly - with no access 1`] = `
       <div
         class="pf-c-empty-state__body"
       >
-        <div
-          aria-describedby="pf-tooltip-1"
-        >
+        <div>
           To view your systems, you must be granted inventory access from your Organization Administrator.
         </div>
       </div>

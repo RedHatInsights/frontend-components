@@ -218,7 +218,8 @@ class FilterConfigBuilder {
         const chipValue = chipItem ? chipItem.value : chipLabel;
         const stateProp = stringToId(chipCategory);
         const currentState = activeFilters[stateProp];
-        const isGroup = chipCategory.type !== conditionalFilterType.group;
+        const categoryConfig = this.getCategoryForLabel(chipCategory);
+        const isGroup = categoryConfig.type === conditionalFilterType.group;
         const newFilterState = (isGroup ?
             this.removeFilterFromGroupFilterState : this.removeFilterFromFilterState
         )(currentState, chipValue, chipItem);

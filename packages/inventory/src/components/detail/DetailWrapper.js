@@ -79,7 +79,9 @@ DetailWrapper.propTypes = {
         'compliance',
         'vulnerabilities',
         'patch'
-    ])
+    ]),
+    className: PropTypes.string,
+    Wrapper: PropTypes.elementType
 };
 
 DetailWrapper.defaultProps = {

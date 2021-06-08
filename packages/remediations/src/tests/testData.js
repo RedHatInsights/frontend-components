@@ -4,6 +4,7 @@ import {
     SELECTED_RESOLUTIONS,
     EXISTING_PLAYBOOK_SELECTED,
     ISSUES_MULTIPLE,
+    SYSTEMS,
     RESOLUTIONS
 } from '../utils';
 
@@ -42,13 +43,18 @@ export const remediationWizardTestData = {
 
     systems: [ 'system' ],
 
+    selectedSystems: {
+        testId: [ 'system' ],
+        testId2: [ 'system' ]
+    },
+
     issuesById: {
         testId: {
             id: 'testId',
             description: 'test_description'
         },
         testId2: {
-            id: 'testId',
+            id: 'testId2',
             description: 'description'
         }
     },
@@ -81,6 +87,7 @@ export const remediationWizardTestData = {
         [SELECTED_RESOLUTIONS]: [],
         [EXISTING_PLAYBOOK_SELECTED]: false,
         [ISSUES_MULTIPLE]: issuesMultiple,
-        [RESOLUTIONS]: resolutions
+        [RESOLUTIONS]: resolutions,
+        [SYSTEMS]: { testId: [ 'system', 'system2' ] }
     }
 };

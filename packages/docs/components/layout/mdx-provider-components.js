@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Title, Card, CardBody } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
@@ -10,7 +11,7 @@ const useTableStyles = createUseStyles({
 });
 
 const A = ({ children, target,  ...props }) => <Link {...props}><a target={target}>{children}</a></Link>;
-const H1 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h1" {...props} />;
+export const H1 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h1" {...props} />;
 const H2 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h2" {...props} />;
 const H3 = ({ className, ...props }) => <Title className="pf-u-mb-lg" headingLevel="h2" {...props} />;
 const Table = props => {

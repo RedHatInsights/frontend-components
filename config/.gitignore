@@ -5,6 +5,9 @@
 !src
 !src/
 !src/*
+!doc
+!doc/
+!doc/*
 !config
 !config/
 !config/*

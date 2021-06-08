@@ -41,7 +41,8 @@ const PanelItem = ({
 PanelItem.propTypes = {
     style: styleProps,
     children: PropTypes.node,
-    titleProps: customProps
+    titleProps: customProps,
+    title: PropTypes.node
 };
 
 PanelItem.defaultProps = {

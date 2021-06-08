@@ -28,6 +28,10 @@ const Pre = ({ children, ...props }) => {
     );
 };
 
+Pre.propTypes = {
+    children: PropTypes.node
+};
+
 const CodeHighlight = ({ sourceCode }) => {
     return (
         <Highlight {...defaultProps} theme={codeTheme} language="jsx" code={sourceCode}>

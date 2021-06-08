@@ -83,5 +83,6 @@ Ansible.propTypes = {
     unsupported: propTypes.oneOfType([
         propTypes.bool,
         propTypes.number
-    ])
+    ]),
+    className: propTypes.string
 };

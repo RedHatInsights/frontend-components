@@ -1,16 +1,35 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import InventoryTable from './InventoryTable';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import { BrowserRouter as Router } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
 import { ConditionalFilter } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
+import * as actions from '../../shared/constants';
 
-describe('NoSystemsTable', () => {
+jest.mock('../../redux/actions', () => {
+    const actions = jest.requireActual('../../redux/actions');
+    const { ACTION_TYPES } = jest.requireActual('../../redux/action-types');
+    return {
+        __esModule: true,
+        ...actions,
+        loadEntities: () => ({
+            type: ACTION_TYPES.LOAD_ENTITIES,
+            payload: () => Promise.resolve({}),
+            meta: { showTags: undefined }
+        })
+    };
+});
+
+describe('InventoryTable', () => {
     let initialState;
     let mockStore;
+    let spy;
 
     beforeEach(() => {
         mockStore = configureStore([ promiseMiddleware() ]);
@@ -30,6 +49,11 @@ describe('NoSystemsTable', () => {
                 }
             }
         };
+        spy = jest.spyOn(actions, 'loadSystems').mockImplementation(() => ({ type: 'reload' }));
+    });
+
+    afterEach(() => {
+        spy.mockRestore();
     });
 
     it('should render correctly - no data', () => {
@@ -47,6 +71,36 @@ describe('NoSystemsTable', () => {
         const wrapper = mount(<Provider store={ store }>
             <Router>
                 <InventoryTable/>
+            </Router>
+        </Provider>);
+        expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
+    });
+
+    it('should render correctly with error', () => {
+        const store = mockStore({
+            entities: {
+                ...initialState.entities,
+                error: new Error('Loading error')
+            }
+        });
+        const wrapper = mount(<Provider store={ store }>
+            <Router>
+                <InventoryTable/>
+            </Router>
+        </Provider>);
+        expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
+    });
+
+    it('should render correctly with custom error', () => {
+        const store = mockStore({
+            entities: {
+                ...initialState.entities,
+                error: new Error('Loading error')
+            }
+        });
+        const wrapper = mount(<Provider store={ store }>
+            <Router>
+                <InventoryTable errorState={ <div>CUSTOM ERROR STATE</div> } />
             </Router>
         </Provider>);
         expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
@@ -109,6 +163,54 @@ describe('NoSystemsTable', () => {
             </Router>
         </Provider>);
         expect(toJson(wrapper.find('ForwardRef').first(), { mode: 'shallow' })).toMatchSnapshot();
+    });
+
+    describe('autoRefresh', () => {
+        class Dummy extends React.Component {
+            render() {
+                const { store, ...props } = this.props;
+
+                return (
+                    <Provider store={ store }>
+                        <Router>
+                            <InventoryTable {...props} />
+                        </Router>
+                    </Provider>
+                );
+            }
+        }
+
+        it('should not reload on customFilters', async () => {
+            const store = mockStore(initialState);
+            const wrapper = mount(<Dummy store={ store } />);
+
+            await act(async () => {
+                wrapper.setProps({ customFilters: { system_profile: { sap_ids: [ 'id1' ] } } });
+            });
+            wrapper.update();
+
+            expect(spy).not.toHaveBeenCalled();
+        });
+
+        it('should reload on customFilters', async () =>{
+            const store = mockStore(initialState);
+            const wrapper = mount(<Dummy store={ store } autoRefresh />);
+
+            await act(async () => {
+                wrapper.setProps({ customFilters: { system_profile: { sap_ids: [ 'id1' ] } } });
+            });
+            wrapper.update();
+
+            expect(spy).toHaveBeenCalled();
+            spy.mockClear();
+
+            await act(async () => {
+                wrapper.setProps({ customFilters: { system_profile: { sap_ids: [ 'id1' ] } } });
+            });
+            wrapper.update();
+
+            expect(spy).not.toHaveBeenCalled();
+        });
     });
 
     describe('hideFilters', () => {

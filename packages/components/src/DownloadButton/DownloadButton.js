@@ -63,7 +63,8 @@ class DownloadButton extends Component {
 DownloadButton.propTypes = {
     extraItems: PropTypes.arrayOf(PropTypes.node),
     tooltipText: PropTypes.node,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    isDisabled: PropTypes.bool
 };
 DownloadButton.defaultProps = {
     extraItems: [],

@@ -12,11 +12,12 @@ import {
     EmptyStateSecondaryActions,
     EmptyStateIcon
 } from '@patternfly/react-core';
-import { CloudSecurityIcon } from '@patternfly/react-icons';
+import { CloudServerIcon } from '@patternfly/react-icons';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { Spinner } from '@redhat-cloud-services/frontend-components/Spinner';
 import { ErrorCard } from '../PresentationalComponents';
+import { EMPTYSTATE_LEARNMORE } from '../Constants';
 const COMPLIANCE_API_ROOT = '/api/compliance';
 
 const QUERY = gql`
@@ -44,8 +45,7 @@ const ComplianceEmptyState = ({ title, mainButton, client }) => {
 
     return <Bullseye>
         <EmptyState>
-            <EmptyStateIcon style={{ fontWeight: '500', color: 'var(--pf-global--primary-color--100)' }}
-                size="xl" title="Compliance" icon={CloudSecurityIcon} />
+            <EmptyStateIcon style={{ color: 'var(--pf-global--Color--200)' }} size="xl" title="Compliance" icon={CloudServerIcon} />
             <Title headingLevel="h1" size="lg">{ title }</Title>
             <br/>
             <EmptyStateBody>
@@ -66,9 +66,7 @@ const ComplianceEmptyState = ({ title, mainButton, client }) => {
                 { mainButton }
             </EmptyStatePrimary>
             <EmptyStateSecondaryActions>
-                <Button variant='link' component='a' target='_blank' rel='noopener noreferrer'
-                    href={ `https://access.redhat.com/documentation/en-us/red_hat_insights/` +
-                           `2020-04/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index` } >
+                <Button variant='link' component='a' target='_blank' rel='noopener noreferrer' href={ EMPTYSTATE_LEARNMORE }>
                     Learn about OpenSCAP and Compliance
                 </Button>
             </EmptyStateSecondaryActions>

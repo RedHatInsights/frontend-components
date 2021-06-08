@@ -1,0 +1,69 @@
+const { resolve } = require('path');
+const { ModuleFederationPlugin } = require('webpack').container;
+const jsVarName = require('./jsVarName');
+
+const include = {
+    '@patternfly/react-core': {},
+    '@patternfly/react-table': {},
+    '@patternfly/react-tokens': {},
+    '@patternfly/react-icons': {},
+    '@redhat-cloud-services/frontend-components': {},
+    '@redhat-cloud-services/frontend-components-utilities': {},
+    '@redhat-cloud-services/frontend-components-notifications': {},
+    axios: {},
+    lodash: {},
+    redux: {},
+    'redux-promise-middleware': {},
+    react: { singleton: true },
+    'react-dom': { singleton: true },
+    'react-redux': {},
+    'react-router-dom': {}
+};
+
+module.exports = ({
+    root,
+    exposes,
+    shared = [],
+    debug,
+    moduleName,
+    useFileHash = true,
+    exclude = []
+}) => {
+    const { dependencies, insights } = require(resolve(root, './package.json')) || {};
+    const appName = moduleName || (insights && jsVarName(insights.appname));
+
+    const sharedDeps = Object.entries(include)
+    .filter(([ key ]) => dependencies[key] && !exclude.includes(key))
+    .map(([ key, val ]) => ({
+        [key]: {
+            requiredVersion: dependencies[key],
+            ...val
+        }
+    }));
+
+    if (debug) {
+        console.log('Using package at path: ', resolve(root, './package.json'));
+        console.log('Using appName: ', appName);
+        console.log(`Using ${exposes ? 'custom' : 'default'} exposes`);
+        console.log('Number of custom shared modules is: ', shared.length);
+        console.log('Number of default shared modules is: ', sharedDeps.length);
+        if (exclude.length > 0) {
+            console.log('Excluding default packages', exclude);
+        }
+    }
+
+    return new ModuleFederationPlugin({
+        name: appName,
+        filename: `${appName}${useFileHash ? '.[chunkhash]' : ''}.js`,
+        library: { type: 'var', name: appName },
+        exposes: {
+            ...exposes || {
+                './RootApp': resolve(root, './src/AppEntry')
+            }
+        },
+        shared: [
+            ...sharedDeps,
+            ...shared
+        ]
+    });
+};

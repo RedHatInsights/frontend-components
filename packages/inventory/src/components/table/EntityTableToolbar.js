@@ -1,12 +1,11 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-unused-vars */
 import React, { Fragment, useEffect, useCallback, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 import { tagsFilterState, tagsFilterReducer, mapGroups } from '@redhat-cloud-services/frontend-components/FilterHooks';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
-import { fetchAllTags, clearFilters, entitiesLoading, toggleTagModal } from '../../redux/actions';
+import { fetchAllTags, clearFilters, toggleTagModal } from '../../redux/actions';
 import debounce from 'lodash/debounce';
 import flatMap from 'lodash/flatMap';
 import {
@@ -17,8 +16,7 @@ import {
     STALE_CHIP,
     REGISTERED_CHIP,
     TAG_CHIP,
-    arrayToSelection,
-    loadSystems
+    arrayToSelection
 } from '../../shared';
 import { onDeleteFilter, onDeleteTag } from './helpers';
 import {
@@ -58,8 +56,12 @@ const EntityTableToolbar = ({
     customFilters,
     hasAccess,
     bulkSelect,
-    getEntities,
     hideFilters,
+    paginationProps,
+    onRefreshData,
+    loaded,
+    showTagModal,
+    disableDefaultColumns,
     ...props
 }) => {
     const dispatch = useDispatch();
@@ -75,9 +77,6 @@ const EntityTableToolbar = ({
         ...tagsFilterState
     });
     const filters = useSelector(({ entities: { activeFilters } }) => activeFilters);
-    const loaded = useSelector(({ entities: { loaded } }) => !hasAccess || (
-        hasItems && isLoaded !== undefined ? (isLoaded && loaded) : loaded
-    ));
     const allTagsLoaded = useSelector(({ entities: { allTagsLoaded } }) => allTagsLoaded);
     const allTags = useSelector(({ entities: { allTags } }) => allTags);
     const additionalTagsCount = useSelector(({ entities: { additionalTagsCount } }) => additionalTagsCount);
@@ -108,11 +107,11 @@ const EntityTableToolbar = ({
     /**
      * Function to dispatch load systems and fetch all tags.
      */
-    const onRefreshData = useCallback((options) => {
+    const onRefreshDataInner = useCallback((options) => {
         if (hasAccess) {
-            dispatch(loadSystems({ ...options, hideFilters }, showTags, getEntities));
+            onRefreshData(options);
             if (showTags && !hasItems) {
-                dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options.filters }));
+                dispatch(fetchAllTags(filterTagsBy, { ...customFilters, filters: options?.filters || filters }));
             }
         }
     }, [ customFilters?.tags ]);
@@ -133,24 +132,7 @@ const EntityTableToolbar = ({
      */
     const updateData = (config) => {
         if (hasAccess) {
-            const params = {
-                items,
-                page,
-                per_page: perPage,
-                filters,
-                hasItems,
-                ...config,
-                orderDirection: sortBy?.direction,
-                orderBy: sortBy?.key,
-                hideFilters
-            };
-            onRefresh ? onRefresh(params, (options) => {
-                dispatch(entitiesLoading());
-                onRefreshData({ ...params, ...customFilters, ...options });
-            }) : onRefreshData({
-                ...customFilters,
-                ...params
-            });
+            onRefreshDataInner(config);
         }
     };
 
@@ -268,7 +250,7 @@ const EntityTableToolbar = ({
             ],
             onDelete: (e, [ deleted, ...restDeleted ], isAll) => {
                 if (isAll) {
-                    updateData({ page: 1, perPage, filters: [] });
+                    updateData({ page: 1, filters: [] });
                     dispatch(clearFilters());
                     enabledFilters.name && setTextFilter('');
                     enabledFilters.stale && setStaleFilter([]);
@@ -336,15 +318,15 @@ const EntityTableToolbar = ({
                 itemCount: !hasAccess ? 0 : total,
                 isDisabled: !hasAccess,
                 perPage,
-                onSetPage: (_e, newPage) => updateData({ page: newPage, per_page: perPage, filters }),
-                onPerPageSelect: (_e, newPerPage) => updateData({ page: 1, per_page: newPerPage, filters })
+                onSetPage: (_e, newPage) => onRefreshData({ page: newPage }),
+                onPerPageSelect: (_e, newPerPage) => onRefreshData({ page: 1, per_page: newPerPage }),
+                ...paginationProps
             } : <Skeleton size={SkeletonSize.lg} />}
         >
             { children }
         </PrimaryToolbar>
         {
-            showTags && enabledFilters.tags &&
-            <TagsModal
+            (showTags || enabledFilters.tags || showTagModal) && <TagsModal
                 customFilters={customFilters}
                 filterTagsBy={filterTagsBy}
                 onApply={(selected) => setSelectedTags(arrayToSelection(selected))}
@@ -357,7 +339,7 @@ const EntityTableToolbar = ({
 EntityTableToolbar.propTypes = {
     showTags: PropTypes.bool,
     hasAccess: PropTypes.bool,
-    filterConfig: PropTypes.shape(PrimaryToolbar.propTypes.filterConfig),
+    filterConfig: PrimaryToolbar.propTypes.filterConfig,
     total: PropTypes.number,
     filters: PropTypes.array,
     hasItems: PropTypes.bool,
@@ -376,13 +358,23 @@ EntityTableToolbar.propTypes = {
             PropTypes.arrayOf(PropTypes.string)
         ])
     }),
-    getEntities: PropTypes.func,
     hideFilters: PropTypes.shape({
         tags: PropTypes.bool,
         name: PropTypes.bool,
         registeredWith: PropTypes.bool,
-        stale: PropTypes.bool
-    })
+        stale: PropTypes.bool,
+        all: PropTypes.bool
+    }),
+    paginationProps: PropTypes.object,
+    loaded: PropTypes.bool,
+    onRefresh: PropTypes.func,
+    hasCheckbox: PropTypes.bool,
+    isLoaded: PropTypes.bool,
+    items: PropTypes.array,
+    sortBy: PropTypes.object,
+    bulkSelect: PropTypes.object,
+    showTagModal: PropTypes.bool,
+    disableDefaultColumns: PropTypes.any
 };
 
 EntityTableToolbar.defaultProps = {

@@ -1,8 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 import { createUseStyles } from 'react-jss';
 import classnames from 'classnames';
-import { Alert, Button, Toolbar, ToolbarContent, ToolbarItem, Tooltip } from '@patternfly/react-core';
+import { Alert, Button, ToolbarContent, ToolbarItem, Tooltip } from '@patternfly/react-core';
+const Toolbar = dynamic(() => import('@patternfly/react-core').then(mod => mod.Toolbar), { ssr: false });
 import { CodeIcon, CopyIcon, GithubIcon } from '@patternfly/react-icons';
 import CodeHighlight from './code-highlight';
 import createCodeSandboxExample from './create-code-sandbox-template';

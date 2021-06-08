@@ -4,18 +4,18 @@ import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-r
 import FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import promiseMiddleware from 'redux-promise-middleware';
 import configureStore from 'redux-mock-store';
+import promiseMiddleware from 'redux-promise-middleware';
 import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED, SYSTEMS } from '../../utils';
 import { remediationWizardTestData } from '../testData';
 import ReviewSystems from '../../steps/reviewSystems';
 import { Provider } from 'react-redux';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 
-jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
+jest.mock('../../common/SystemsTable', () => ({
     __esModule: true,
     // eslint-disable-next-line react/display-name
-    InventoryTable: () => <div>Inventory</div>
+    default: () => <table></table>
 }));
 
 jest.mock('../../utils', () => {
@@ -34,7 +34,9 @@ const RendererWrapper = (props) => (
             'review-systems': {
                 component: ReviewSystems,
                 issues: remediationWizardTestData.issues,
-                systems: remediationWizardTestData.systems
+                systems: remediationWizardTestData.systems,
+                allSystems: remediationWizardTestData.systems,
+                registry: {}
             }
         }}
         initialValues={{
@@ -60,6 +62,7 @@ const schema = {
             systems: [{ id: 'test', display_name: 'test' }]
         }],
         systems: [ 'test2' ],
+        allSystems: [ 'test', 'test2' ],
         registry: new ReducerRegistry({}, [ promiseMiddleware ])
     }]
 };

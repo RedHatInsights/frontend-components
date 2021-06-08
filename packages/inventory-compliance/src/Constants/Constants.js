@@ -18,3 +18,4 @@ export const HIGH_SEVERITY = <React.Fragment><ExclamationCircleIcon className='i
 export const MEDIUM_SEVERITY = <React.Fragment><ExclamationTriangleIcon className='ins-u-warning'/> Medium</React.Fragment>;
 export const LOW_SEVERITY = <React.Fragment>{ LowSeverityIcon } Low</React.Fragment>;
 export const UNKNOWN_SEVERITY = <React.Fragment><QuestionCircleIcon /> Unknown</React.Fragment>;
+export const EMPTYSTATE_LEARNMORE = 'https://access.redhat.com/documentation/en-us/red_hat_insights/2021/html/assessing_and_monitoring_security_policy_compliance_of_rhel_systems/index';

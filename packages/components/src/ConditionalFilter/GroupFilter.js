@@ -173,19 +173,60 @@ class Group extends Component {
         };
     }
 
-    onSelect = (event, group, item, groupKey, itemKey) => {
-        let newSelection = this.calculateSelected(group, groupKey, itemKey);
-        const { onChange } = this.props;
-
+    setNewSelection = (onChange, event, newSelection, group, item, groupKey, itemKey) => {
         if (onChange) {
-            onChange(event, newSelection, group, item, groupKey, itemKey);
+            if (group) {
+                onChange(event, newSelection, group, item, groupKey, itemKey);
+            } else {
+                onChange(event, newSelection);
+            }
+
             this.setState({ selected: {} });
         }
 
         this.setState({
             selected: newSelection
         });
+    }
+
+    onSelect = (event, group, item, groupKey, itemKey) => {
+        let newSelection = this.calculateSelected(group, groupKey, itemKey);
+        const { onChange } = this.props;
+
+        this.setNewSelection(onChange, event, newSelection, group, item, groupKey, itemKey);
     };
+
+    onGroupSelect = (event, groupValue, items) => {
+        const { onChange } = this.props;
+        const { selected: currentSelection } = this.state;
+        const allSelected = (Object.values(currentSelection[groupValue] || {})
+        .filter((value) => (value === true)).length) === items.length;
+
+        const newSelection = allSelected ? {} : {
+            ...currentSelection,
+            [groupValue]: items.reduce((selection, currentItem) => ({
+                ...selection,
+                [currentItem.value]: true
+            }), {})
+        };
+
+        this.setNewSelection(onChange, event, newSelection);
+    };
+
+    isGroupChecked = (groupValue, items) => {
+        const { selected: stateSelected } = this.state;
+        const { selected: propSelected } = this.props;
+        const selected = {
+            ...propSelected,
+            ...stateSelected
+        };
+        const selectedGroupValues = Object.values(selected[groupValue] || {}).filter((value) => (value === true));
+        const groupSelected = selectedGroupValues.length > 0 ? (
+            selectedGroupValues.length === items.length ? true : null
+        ) : false;
+
+        return groupSelected;
+    }
 
     isChecked = (groupValue, itemValue, id, tagValue) => {
         const { selected: stateSelected } = this.state;
@@ -194,6 +235,7 @@ class Group extends Component {
             ...propSelected,
             ...stateSelected
         };
+
         if (typeof selected[groupValue] === 'undefined') {
             return false;
         }
@@ -267,21 +309,43 @@ class Group extends Component {
                         groups.map(({
                             value: groupValue,
                             onSelect,
+                            groupSelectable,
                             label: groupLabel,
                             id: groupId,
                             type,
                             items,
                             ...group
                         }, groupKey) => {
-                            const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, type, items, ...group }, groupKey)
+                            const filteredItems = this.mapItems({ groupValue, onSelect, groupLabel, groupId, groupSelectable, type, items, ...group }, groupKey)
                             .filter(Boolean);
-                            return (<SelectGroup
-                                {...group}
-                                key={groupId || groupValue || groupKey}
-                                value={groupId || groupValue || groupKey}
-                                label={groupLabel || ''}
-                                id={groupId || `group-${groupValue || groupKey}`}
-                            >{filteredItems}</SelectGroup>);
+
+                            return (
+                                /**
+                                 * DO NOT DELET THE EMPTY VALUE ON THE DIV ELEMENT
+                                 * If we delete it, it breaks the select filtering
+                                 * Here is the code that creates the runtime crash:
+                                 * https://github.com/patternfly/patternfly-react/blob/master/packages/react-core/src/components/Select/Select.tsx#L615
+                                 */
+                                <div key={groupId || groupValue || groupKey} value="">
+                                    {
+                                        groupSelectable && <SelectOption
+                                            onClick={ (event) => {
+                                                this.onGroupSelect(event, groupValue || groupKey, items);
+                                            } }>
+                                            <Checkbox
+                                                isChecked={ this.isGroupChecked(groupValue || groupKey, items) }
+                                                label={ groupLabel } />
+                                        </SelectOption>
+                                    }
+                                    <SelectGroup
+                                        {...group}
+                                        className='pf-u-pl-sm'
+                                        label={ !groupSelectable && groupLabel }
+                                        value={groupId || groupValue || groupKey}
+                                        id={groupId || `group-${groupValue || groupKey}`}
+                                    >{filteredItems}</SelectGroup>
+                                </div>
+                            );
                         })
                     ) : (
                         this.mapItems({ items })
@@ -350,7 +414,9 @@ Group.propTypes = {
         props: {
             [PropTypes.string]: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
         }
-    })
+    }),
+    placeholder: PropTypes.node,
+    className: PropTypes.string
 };
 
 Group.defaultProps = {

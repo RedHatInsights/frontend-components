@@ -48,17 +48,24 @@ export const reviewActionsFields = [{
 export const reviewActionsNextStep = (values) => {
     const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
         ? values[ISSUES_MULTIPLE].filter(
-            issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id)
+            issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id) && Object.keys(values[SYSTEMS]).includes(issue.id)
         )
-        : values[ISSUES_MULTIPLE];
-    return values[MANUAL_RESOLUTION] ? filteredIssues[0].id : 'review';
+        : values[ISSUES_MULTIPLE].filter(issue => Object.keys(values[SYSTEMS]).includes(issue.id));
+    return values[MANUAL_RESOLUTION] ? filteredIssues[0]?.id : 'review';
 };
 
 export const issueResolutionNextStep = (values, issue) => {
     const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
-        ? values[ISSUES_MULTIPLE].filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id))
-        : values[ISSUES_MULTIPLE];
+        ? values[ISSUES_MULTIPLE].filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id && Object.keys(values[SYSTEMS]).includes(issue.id)))
+        : values[ISSUES_MULTIPLE].filter(issue => Object.keys(values[SYSTEMS]).includes(issue.id));
     return filteredIssues.slice(filteredIssues.findIndex(i => i.id === issue.id) + 1, filteredIssues.length)[0]?.id || 'review';
+};
+
+export const reviewSystemsNextStep = (values) => {
+    const filteredIssues = values[EXISTING_PLAYBOOK_SELECTED]
+        ? values[ISSUES_MULTIPLE].filter(issue => !values[EXISTING_PLAYBOOK].issues.some(i => i.id === issue.id && Object.keys(values[SYSTEMS]).includes(issue.id)))
+        : values[ISSUES_MULTIPLE].filter(issue => Object.keys(values[SYSTEMS]).includes(issue.id));
+    return filteredIssues.length > 0 ? 'actions' : 'review';
 };
 
 export default issues => ({
@@ -86,7 +93,7 @@ export default issues => ({
                         component: 'review-systems',
                         validate: [{ type: 'validate-systems' }]
                     }],
-                    nextStep: ({ values }) => values[ISSUES_MULTIPLE].length > 1 ? 'actions' : 'review'
+                    nextStep: ({ values }) => reviewSystemsNextStep(values)
                 },
                 {
                     name: 'actions',

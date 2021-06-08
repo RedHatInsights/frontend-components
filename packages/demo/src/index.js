@@ -1,87 +1,47 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { treeTable, TreeRowWrapper, sizeCalculator, collapseBuilder } from '../../components/src/Components/TreeTable';
-import './index.scss';
-import {
-    Table,
-    TableHeader,
-    TableBody,
-    textCenter
-} from '@patternfly/react-table';
 
-const origRows = [
-    {
-        cells: [ 'one', 'two', 'three', 'four', 'five' ],
-        isTreeOpen: true
-    },
-    {
-        cells: [
-            {
-                title: <div>one - 2</div>,
-                props: { title: 'hover title', colSpan: 3 }
-            },
-            'four - 2',
-            'five - 2'
-        ],
-        isTreeOpen: false,
-        treeParent: 0
-    },
-    {
-        cells: [
-            'one - 3',
-            'two - 3',
-            'three - 3',
-            'four - 3',
-            {
-                title: 'five - 3 (not centered)',
-                props: { textCenter: false }
-            }
-        ],
-        treeParent: 1
-    },
-    {
-        cells: [ 'one', 'two', 'three', 'four', 'five' ]
-    }
-];
+import { Provider, useDispatch } from 'react-redux';
+import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
+import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
+import { notificationsReducer, notificationActions } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 
-class MyCmp extends Component {
-    state = {
-        cells: [
-            { title: 'Repositories', cellTransforms: [ treeTable((...props) => this.collapseRows(...props)) ] },
-            'Branches',
-            { title: 'Pull requests' },
-            'Workspaces',
-            {
-                title: 'Last Commit',
-                transforms: [ textCenter ],
-                cellTransforms: [ textCenter ]
-            }
-        ],
-        rows: origRows
-    }
+const App = () => {
+    const dispatch = useDispatch();
+    const handleClick = () => {
+        dispatch({ type: 'prd' });
+        dispatch(notificationActions.addNotification({
+            variant: 'success',
+            title: 'foo'
+        }));
+    };
 
-    collapseRows = (...props) => {
-        const { rows } = this.state;
-        this.setState({
-            rows: collapseBuilder()(rows, ...props)
-        });
-    }
+    return (
+        <button onClick={handleClick}>Click me</button>
+    );
+};
 
-    render() {
-        const { cells, rows } = this.state;
-        return (
-            <Table
-                className="pf-m-expandable pf-c-treeview"
-                rowWrapper={TreeRowWrapper}
-                aria-label="Simple Table"
-                cells={cells}
-                rows={sizeCalculator(rows)}
-            >
-                <TableHeader />
-                <TableBody />
-            </Table>
-        );
-    }
-}
+const registry = new ReducerRegistry({}, [
+    notificationsMiddleware({
+        errorTitleKey: [ 'message' ],
+        errorDescriptionKey: [ 'errors', 'stack' ]
+    })
+]);
+
+registry.register({
+    notifications: notificationsReducer
+});
+
+const store = registry.getStore();
+
+const MyCmp = () => {
+    return (
+        <Provider store={store}>
+            <NotificationPortal />
+            <App />
+        </Provider>
+    );
+};
 
 ReactDOM.render(<MyCmp />, document.querySelector('.demo-app'));

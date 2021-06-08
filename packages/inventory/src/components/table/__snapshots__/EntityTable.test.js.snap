@@ -4,7 +4,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
 <table
   aria-label="Host inventory"
   class="ins-c-entity-table pf-c-table pf-m-grid-md pf-m-compact"
-  data-ouia-component-id="OUIA-Generated-Table-20"
+  data-ouia-component-id="OUIA-Generated-Table-22"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -14,7 +14,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-33"
+      data-ouia-component-id="OUIA-Generated-TableRow-35"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -22,7 +22,6 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
         class="pf-c-table__check"
         data-key="0"
         data-label=""
-        scope=""
       >
         <input
           aria-label="Select all rows"
@@ -77,7 +76,7 @@ exports[`EntityTable DOM should render correctly - compact 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-34"
+      data-ouia-component-id="OUIA-Generated-TableRow-36"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -122,6 +121,7 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -181,6 +181,7 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-lg"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={[Function]}
   onSort={[Function]}
   ouiaSafe={true}
@@ -202,6 +203,7 @@ exports[`EntityTable DOM should render correctly - grid breakpoints 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -221,6 +223,7 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -243,6 +246,7 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onCollapse={[Function]}
   onSelect={[Function]}
   onSort={[Function]}
@@ -277,6 +281,7 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -293,7 +298,7 @@ exports[`EntityTable DOM should render correctly - is expandable 1`] = `
 
 exports[`EntityTable DOM should render correctly - no data 1`] = `
 <EntityTable
-  columns={Array []}
+  disableDefaultColumns={true}
   expandable={false}
   hasCheckbox={true}
   loaded={false}
@@ -390,6 +395,7 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -410,6 +416,7 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={[Function]}
   onSort={[Function]}
   ouiaSafe={true}
@@ -443,6 +450,7 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -457,11 +465,65 @@ exports[`EntityTable DOM should render correctly - with actions 1`] = `
 />
 `;
 
+exports[`EntityTable DOM should render correctly - with customNoSystemsTable 1`] = `
+<table
+  aria-label="Host inventory"
+  class="ins-c-entity-table pf-c-table pf-m-grid-md"
+  data-ouia-component-id="OUIA-Generated-Table-6"
+  data-ouia-component-type="PF4/Table"
+  data-ouia-safe="true"
+  role="grid"
+>
+  <thead
+    class=""
+  >
+    <tr
+      class=""
+      data-ouia-component-id="OUIA-Generated-TableRow-19"
+      data-ouia-component-type="PF4/TableRow"
+      data-ouia-safe="true"
+    >
+      <th
+        class=""
+        data-key="0"
+        data-label="One"
+        scope="col"
+      >
+        One
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    class=""
+    role="rowgroup"
+  >
+    <tr
+      class=""
+      data-ouia-component-id="OUIA-Generated-TableRow-20"
+      data-ouia-component-type="PF4/TableRow"
+      data-ouia-safe="true"
+    >
+      <td
+        class=""
+        colspan="1"
+        data-key="0"
+        data-label="One"
+      >
+        <div>
+          NO SYSTEMS
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
 exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
 <Table
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -482,6 +544,7 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSort={[Function]}
   ouiaSafe={true}
   role="grid"
@@ -514,6 +577,7 @@ exports[`EntityTable DOM should render correctly - without checkbox 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -532,7 +596,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
 <table
   aria-label="Host inventory"
   class="ins-c-entity-table pf-c-table pf-m-grid-md"
-  data-ouia-component-id="OUIA-Generated-Table-24"
+  data-ouia-component-id="OUIA-Generated-Table-26"
   data-ouia-component-type="PF4/Table"
   data-ouia-safe="true"
   role="grid"
@@ -542,7 +606,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-51"
+      data-ouia-component-id="OUIA-Generated-TableRow-39"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -550,7 +614,6 @@ exports[`EntityTable DOM should render correctly 1`] = `
         class="pf-c-table__check"
         data-key="0"
         data-label=""
-        scope=""
       >
         <input
           aria-label="Select all rows"
@@ -605,7 +668,7 @@ exports[`EntityTable DOM should render correctly 1`] = `
   >
     <tr
       class=""
-      data-ouia-component-id="OUIA-Generated-TableRow-52"
+      data-ouia-component-id="OUIA-Generated-TableRow-40"
       data-ouia-component-type="PF4/TableRow"
       data-ouia-safe="true"
     >
@@ -652,6 +715,7 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -674,6 +738,7 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onCollapse={[Function]}
   onSelect={[Function]}
   onSort={[Function]}
@@ -708,6 +773,7 @@ exports[`EntityTable DOM sort by should render correctly - is expandable 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -727,6 +793,7 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -747,6 +814,7 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSort={[Function]}
   ouiaSafe={true}
   role="grid"
@@ -779,6 +847,7 @@ exports[`EntityTable DOM sort by should render correctly - without checkbox 1`] 
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }
@@ -798,6 +867,7 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
   aria-label="Host inventory"
   borders={true}
   canSelectAll={true}
+  canSortFavorites={true}
   cells={
     Array [
       Object {
@@ -818,6 +888,7 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
   expandId="expandable-toggle"
   gridBreakPoint="grid-md"
   isStickyHeader={false}
+  isTreeTable={false}
   onSelect={[Function]}
   onSort={[Function]}
   ouiaSafe={true}
@@ -851,6 +922,7 @@ exports[`EntityTable DOM sort by should render correctly 1`] = `
         ],
         "id": "testing-id",
         "one": "data",
+        "system_profile": Object {},
       },
     ]
   }

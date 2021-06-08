@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-utilities",
-    "version": "3.0.3",
+    "version": "3.1.2",
     "description": "Util functions for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -27,8 +27,8 @@
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/utils#readme",
     "peerDependencies": {
         "@patternfly/react-core": ">=4.18.5",
-        "react": ">=16.5.1",
-        "react-dom": ">=16.5.1",
+        "react": ">=16.14.0 || >=17.0.0",
+        "react-dom": ">=16.14.0 || >=17.0.0",
         "react-redux": ">=5.0.7",
         "react-router-dom": ">=4.2.2",
         "@patternfly/react-table": ">=2.1.6"
@@ -38,6 +38,7 @@
         "awesome-debounce-promise": "^2.1.0",
         "axios": "^0.21.1",
         "commander": ">=2.20.0",
+        "mkdirp": "^1.0.4",
         "react-content-loader": ">=3.4.1"
     },
     "sideEffects": false

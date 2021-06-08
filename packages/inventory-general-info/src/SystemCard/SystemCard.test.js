@@ -11,7 +11,7 @@ import toJson from 'enzyme-to-json';
 import SystemCard from './SystemCard';
 import configureStore from 'redux-mock-store';
 import { testProperties, rhsmFacts } from '../__mock__/selectors';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import { mock } from '../__mock__/hostApi';
 import mockedData from '../__mock__/mockedData.json';
 

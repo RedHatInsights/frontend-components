@@ -57,7 +57,7 @@ export const loadEntities = (items = [], { filters, ...config }, { showTags } = 
             ...config,
             orderBy,
             orderDirection
-        }, showTags).then(({ results, ...data }) => ({
+        }, showTags, defaultGetEntities).then(({ results, ...data }) => ({
             ...data,
             filters,
             sortBy: { key: orderBy, direction: orderDirection },

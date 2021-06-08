@@ -54,7 +54,13 @@ const SystemQuery = ({ data: { system }, loading, hidePassed }) => (
     <React.Fragment>
         <SystemPolicyCards policies={ system?.testResultProfiles } loading={ loading } />
         <br/>
-        <SystemRulesTable hidePassed={ hidePassed }
+        <SystemRulesTable
+            hidePassed={ hidePassed }
+            sortBy={{
+                index: 4,
+                direction: 'asc',
+                property: 'severity'
+            }}
             system={ {
                 ...system,
                 supported: ((system?.testResultProfiles || []).filter((profile) => (profile.supported)).length > 0)
@@ -72,7 +78,8 @@ const SystemQuery = ({ data: { system }, loading, hidePassed }) => (
 SystemQuery.propTypes = {
     data: propTypes.shape({
         system: propTypes.shape({
-            profiles: propTypes.array
+            profiles: propTypes.array,
+            testResultProfiles: propTypes.array
         })
     }),
     loading: propTypes.bool,
@@ -128,6 +135,11 @@ const WrappedSystemDetails = ({ customItnl, intlProps, ...props }) => {
     return <IntlWrapper { ...customItnl && intlProps } >
         <SystemDetails { ...props } />
     </IntlWrapper>;
+};
+
+WrappedSystemDetails.propTypes = {
+    customItnl: propTypes.elementType,
+    intlProps: propTypes.object
 };
 
 export default WrappedSystemDetails;

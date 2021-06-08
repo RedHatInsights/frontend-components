@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = (env) => ({
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
     optimization: {
         minimize: process.env.NODE_ENV === 'production'
     },
@@ -17,7 +17,7 @@ module.exports = (env) => ({
         rules: [{
             test: /src\/.*\.js$/,
             exclude: /(node_modules|bower_components)/i,
-            use: [{ loader: 'source-map-loader' }, { loader: 'babel-loader' }]
+            use: [{ loader: 'babel-loader' }]
         }, {
             test: /\.s?[ac]ss$/,
             use: [
@@ -40,13 +40,11 @@ module.exports = (env) => ({
         }]
     },
     plugins: [
-        new (require('write-file-webpack-plugin'))(),
         new (require('webpack').HotModuleReplacementPlugin)(),
         new MiniCssExtractPlugin({
             chunkFilename: '[name].css',
             filename: '[id].css'
         }),
-        new (require('lodash-webpack-plugin'))({ currying: true, flattening: true, placeholders: true, paths: true }),
         new (require('html-webpack-plugin'))({
             title: 'Playground',
             template: path.resolve(__dirname, './src/index.html')

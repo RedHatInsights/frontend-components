@@ -32,7 +32,7 @@ import {
     ISSUES_MULTIPLE
 } from '../utils';
 
-const RemediationWizard = ({
+export const RemediationWizard = ({
     setOpen,
     data,
     basePath,
@@ -73,12 +73,14 @@ const RemediationWizard = ({
         'select-playbook': {
             component: SelectPlaybook,
             issues: data.issues,
+            systems: data.systems,
             allSystems: allSystems.current
         },
         'review-systems': {
             component: ReviewSystems,
             issues: data.issues,
             systems: data.systems,
+            allSystems: allSystems.current,
             registry
         },
         'review-actions': {
@@ -86,8 +88,7 @@ const RemediationWizard = ({
             issues: data.issues
         },
         'issue-resolution': {
-            component: IssueResolution,
-            systems: data.systems
+            component: IssueResolution
         },
         review: {
             component: Review,
@@ -98,7 +99,7 @@ const RemediationWizard = ({
 
     const validatorMapper = {
         'validate-systems': () => (value) => (
-            value && value.length > 0
+            value && Object.values(value).filter(value => typeof value !== undefined).length
                 ? undefined
                 : 'At least one system must be selected. Actions must be associated to a system to be added to a playbook.')
     };
@@ -111,14 +112,17 @@ const RemediationWizard = ({
                 FormTemplate={(props) => <Pf4FormTemplate {...props} showFormControls={false} />}
                 initialValues={{
                     [RESOLUTIONS]: [],
-                    [ISSUES_MULTIPLE]: data.issues,
-                    [SYSTEMS]: undefined,
+                    [ISSUES_MULTIPLE]: [],
+                    [SYSTEMS]: {},
                     [MANUAL_RESOLUTION]: true,
                     [SELECTED_RESOLUTIONS]: {},
                     [EXISTING_PLAYBOOK_SELECTED]: false
                 }}
                 componentMapper={{
-                    [componentTypes.WIZARD]: Wizard,
+                    [componentTypes.WIZARD]: {
+                        component: Wizard,
+                        'data-ouia-component-id': 'remediation-wizard'
+                    },
                     [componentTypes.TEXT_FIELD]: TextField,
                     ...mapperExtension
                 }}
@@ -143,7 +147,9 @@ RemediationWizard.propTypes = {
         onRemediationCreated: propTypes.func
     }).isRequired,
     basePath: propTypes.string,
-    registry: propTypes.instanceOf(ReducerRegistry).isRequired
+    registry: propTypes.shape({
+        register: propTypes.func
+    }).isRequired
 };
 
 const RemediationWizardWithContext = (props) => {

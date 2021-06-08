@@ -132,9 +132,7 @@ exports[`CollectionCard should not render hasInsightsId 1`] = `
           class=""
           data-pf-content="true"
         >
-          <span
-            aria-describedby="pf-tooltip-5"
-          >
+          <span>
             test-client
           </span>
         </dd>
@@ -230,9 +228,7 @@ exports[`CollectionCard should not render hasLastCheckIn 1`] = `
           class=""
           data-pf-content="true"
         >
-          <span
-            aria-describedby="pf-tooltip-3"
-          >
+          <span>
             test-client
           </span>
         </dd>
@@ -328,9 +324,7 @@ exports[`CollectionCard should not render hasMachineId 1`] = `
           class=""
           data-pf-content="true"
         >
-          <span
-            aria-describedby="pf-tooltip-7"
-          >
+          <span>
             test-client
           </span>
         </dd>
@@ -426,9 +420,7 @@ exports[`CollectionCard should not render hasRegistered 1`] = `
           class=""
           data-pf-content="true"
         >
-          <span
-            aria-describedby="pf-tooltip-4"
-          >
+          <span>
             test-client
           </span>
         </dd>
@@ -524,9 +516,7 @@ exports[`CollectionCard should not render hasReporter 1`] = `
           class=""
           data-pf-content="true"
         >
-          <span
-            aria-describedby="pf-tooltip-6"
-          >
+          <span>
             test-client
           </span>
         </dd>
@@ -752,9 +742,7 @@ exports[`CollectionCard should render correctly with data 1`] = `
           class=""
           data-pf-content="true"
         >
-          <span
-            aria-describedby="pf-tooltip-1"
-          >
+          <span>
             test-client
           </span>
         </dd>
@@ -862,9 +850,7 @@ exports[`CollectionCard should render extra 1`] = `
           class=""
           data-pf-content="true"
         >
-          <span
-            aria-describedby="pf-tooltip-8"
-          >
+          <span>
             test-client
           </span>
         </dd>

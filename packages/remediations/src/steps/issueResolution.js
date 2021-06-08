@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 import useFormApi from '@data-driven-forms/react-form-renderer/dist/esm/use-form-api';
 import './issueResolution.scss';
@@ -8,31 +8,48 @@ import {
     Stack,
     StackItem,
     Tile,
-    Title
+    Title,
+    Alert,
+    Popover,
+    Button
 } from '@patternfly/react-core';
-import { RESOLUTIONS, SELECTED_RESOLUTIONS } from '../utils';
+import { pluralize, shortenIssueId, RESOLUTIONS, SELECTED_RESOLUTIONS, SYSTEMS } from '../utils';
 import { RedoIcon, CloseIcon } from '@patternfly/react-icons';
+import uniqBy from 'lodash/uniqBy';
+import differenceWith from 'lodash/differenceWith';
+import isEqual from 'lodash/isEqual';
 
-const IssueResolution = (props) => {
-    const { systems, issue } = props;
+const IssueResolution = ({ issue }) => {
     const formOptions = useFormApi();
     const resolutions = formOptions.getState().values[RESOLUTIONS];
-    const [ issueResolutions, setIssueResolutions ] = useState([]);
 
-    useEffect(() => {
-        setIssueResolutions(resolutions.find(r => r.id === issue.id)?.resolutions || []);
-    }, []);
-
-    const pluralize = (count, str) => count > 1 ? str + 's' : str;
+    const systems = formOptions.getState().values[SYSTEMS][issue.id] || [];
+    const issueResolutions = resolutions.find(r => r.id === issue.id)?.resolutions || [];
+    const uniqueResolutions = uniqBy(issueResolutions, 'id');
+    const removedResolutions = differenceWith(issueResolutions, uniqueResolutions, isEqual);
 
     return (
-        <Stack hasGutter>
+        <Stack hasGutter data-component-ouia-id="wizard-issue-resolution">
             <StackItem>
                 <Title headingLevel="h2">
-                    {`Choose action: ${issue.shortId}`}
+                    {`Choose action: ${shortenIssueId(issue.id)}`}
                 </Title>
             </StackItem>
             <StackItem>
+                {removedResolutions.length > 0 && (
+                    <StackItem className="pf-u-mb-sm">
+                        <Alert variant="warning" isInline title={
+                            <Text>
+                                There {pluralize(removedResolutions.length, 'was', 'were')} <Popover
+                                    aria-label="Resolution duplicates popover"
+                                    bodyContent={<Fragment>
+                                        {removedResolutions.map((resolution, key) => <div key={key}>{resolution.description}</div>)}
+                                    </Fragment>}
+                                >
+                                    <b><Button variant="link" isInline>{removedResolutions.length}</Button> {pluralize(removedResolutions.length, 'resolution')}</b>
+                                </Popover> removed due to duplication</Text>} />
+                    </StackItem>
+                )}
                 <TextContent>
                     <Text>
                         Review the possible resolution steps and select which to add to your playbook.
@@ -48,7 +65,7 @@ const IssueResolution = (props) => {
             <StackItem>
                 <div className="ins-c-resolution-container">
                     {
-                        issueResolutions.map((resolution, index) => (
+                        uniqueResolutions.map((resolution, index) => (
                             <div
                                 className="ins-c-resolution-option"
                                 sm={12}
@@ -93,13 +110,11 @@ const IssueResolution = (props) => {
 };
 
 IssueResolution.propTypes = {
-    systems: propTypes.arrayOf(propTypes.string).isRequired,
     issue: propTypes.shape({
         id: propTypes.string,
-        shortId: propTypes.string,
         action: propTypes.string,
         alternate: propTypes.number,
-        systemsCount: propTypes.number
+        systems: propTypes.arrayOf(propTypes.string)
     }).isRequired
 };
 

@@ -25,6 +25,11 @@ const BaseDetailWrapper = (props) => {
     );
 };
 
+BaseDetailWrapper.propTypes = {
+    fallback: PropTypes.node,
+    innerRef: PropTypes.object
+};
+
 /**
  * Inventory sub component.
  *

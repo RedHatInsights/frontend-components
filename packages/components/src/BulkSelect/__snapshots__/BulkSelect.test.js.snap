@@ -148,3 +148,53 @@ exports[`BulkSelect should render correctly 2`] = `
   />
 </Fragment>
 `;
+
+exports[`BulkSelect should render custom props 1`] = `
+<Fragment>
+  <Dropdown
+    className="ins-c-bulk-select"
+    dropdownItems={
+      Array [
+        <DropdownItem
+          component="button"
+          isDisabled={true}
+          onClick={[Function]}
+        >
+          Select none
+        </DropdownItem>,
+        <DropdownItem
+          component="button"
+          onClick={[Function]}
+        >
+          Select all
+        </DropdownItem>,
+      ]
+    }
+    isOpen={false}
+    onSelect={[Function]}
+    toggle={
+      <DropdownToggle
+        isDisabled={false}
+        onToggle={[Function]}
+        splitButtonItems={
+          Array [
+            <React.Fragment>
+              <DropdownToggleCheckbox
+                aria-label="Select all"
+                className=""
+                id="toggle-checkbox"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                onChange={[Function]}
+              >
+                
+              </DropdownToggleCheckbox>
+            </React.Fragment>,
+          ]
+        }
+      />
+    }
+  />
+</Fragment>
+`;

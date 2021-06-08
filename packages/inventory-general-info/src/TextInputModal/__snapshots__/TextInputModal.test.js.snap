@@ -181,6 +181,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                 }
               }
               paused={false}
+              preventScrollOnDeactivate={false}
             >
               <div
                 className="pf-l-bullseye"

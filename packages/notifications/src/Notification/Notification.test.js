@@ -1,4 +1,5 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Notification from './Notification';
@@ -60,18 +61,18 @@ describe('Notification component', () => {
         expect(onDismiss).toHaveBeenCalledWith(initialProps.id);
     });
 
-    it('should call dismiss function when timer runs out', (done) => {
+    it('should call dismiss function when timer runs out', () => {
+        jest.useFakeTimers();
         const onDismiss = jest.fn();
         const wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } onDismiss={ onDismiss } description={ undefined }/>);
-        setTimeout(() => {
-            wrapper.update();
-            expect(onDismiss).toHaveBeenCalledWith('Foo');
-            done();
-        }, 101);
+        jest.advanceTimersByTime(100);
+        wrapper.update();
+        expect(onDismiss).toHaveBeenCalledWith('Foo');
     });
 
     it('should clear interval on notification unmout', () => {
         const timeoutSpy = jest.spyOn(global, 'clearTimeout');
+        timeoutSpy.mockReset();
         let wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
         wrapper.unmount();
         expect(timeoutSpy).toHaveBeenCalledTimes(1);
@@ -79,21 +80,30 @@ describe('Notification component', () => {
 
         wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } dismissable description={ undefined }/>);
         expect(timeoutSpy).not.toHaveBeenCalled();
+        timeoutSpy.mockRestore();
     });
 
     it('should clear timeout on notification mouse enter', () => {
         const timeoutSpy = jest.spyOn(global, 'clearTimeout');
-        let wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
+        timeoutSpy.mockReset();
+        let wrapper;
+        act(() => {
+            wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
+        });
         wrapper.find('.pf-c-alert').simulate('mouseEnter');
         expect(timeoutSpy).toHaveBeenCalledTimes(1);
         timeoutSpy.mockRestore();
     });
 
-    it('should set timeout on notification mouse leave', () => {
+    it('should set timeout on notification mouse leave', async () => {
         const timeoutSpy = jest.spyOn(global, 'setTimeout');
-        let wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
+        let wrapper;
+        act(() => {
+            timeoutSpy.mockReset();
+            wrapper = mount(<Notification dismissDelay={ 100 } { ...initialProps } description={ undefined }/>);
+        });
         wrapper.find('.pf-c-alert').simulate('mouseLeave');
-        expect(timeoutSpy).toHaveBeenCalledTimes(2);
+        expect(timeoutSpy).toHaveBeenCalledTimes(3);
         timeoutSpy.mockRestore();
     });
 });

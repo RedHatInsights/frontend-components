@@ -18,8 +18,8 @@ import { TagWithDialog } from '../shared';
 import groupBy from 'lodash/groupBy';
 import TitleColumn from '../components/table/TitleColumn';
 import InsightsDisconnected from '../shared/InsightsDisconnected';
-import { wrappable } from '@patternfly/react-table';
 import OperatingSystemFormatter from '../shared/OperatingSystemFormatter';
+import { Tooltip } from '@patternfly/react-core';
 
 export const defaultState = {
     loaded: false,
@@ -39,19 +39,18 @@ export const defaultColumns = [
         renderFunc: TitleColumn
     },
     {
-        key: 'system_profile',
-        title: 'Operating system',
-        // eslint-disable-next-line react/display-name
-        renderFunc: (systemProfile) => <OperatingSystemFormatter systemProfile={systemProfile} />,
-        props: { width: 20, isStatic: true },
-        transforms: [ wrappable ]
-    },
-    {
         key: 'tags',
         title: 'Tags',
-        props: { width: 25, isStatic: true },
+        props: { width: 10, isStatic: true },
         // eslint-disable-next-line react/display-name
         renderFunc: (value, systemId) => <TagWithDialog count={value.length} systemId={systemId} />
+    },
+    {
+        key: 'system_profile',
+        title: <Tooltip content={<span>Operating system</span>}><span>OS</span></Tooltip>,
+        // eslint-disable-next-line react/display-name
+        renderFunc: (systemProfile) => <OperatingSystemFormatter systemProfile={systemProfile} />,
+        props: { width: 10, isStatic: true }
     },
     {
         key: 'updated',
@@ -79,7 +78,7 @@ export const defaultColumns = [
                 }
             > <DateFormat date={ value } /> </CullingInformation> : new Date(value).toLocaleString();
         },
-        props: { width: 25 }
+        props: { width: 10 }
     }
 ];
 
@@ -119,6 +118,13 @@ function entitiesLoaded(state, { payload: { results, per_page: perPage, page, co
         page: page !== undefined ? page : state.page,
         count: count !== undefined ? count : state.count,
         total: total !== undefined ? total : state.total
+    };
+}
+
+function loadingRejected(state, { payload }) {
+    return {
+        ...state,
+        error: payload
     };
 }
 
@@ -224,17 +230,20 @@ export function allTags(state, { payload: { results, total, page, per_page: perP
         },
         additionalTagsCount: total > perPage ? total - perPage : 0,
         allTagsTotal: total,
-        allTagsLoaded: true
+        allTagsLoaded: true,
+        tagModalLoaded: true
     };
 }
 
 export default {
     [ACTION_TYPES.ALL_TAGS_FULFILLED]: allTags,
-    [ACTION_TYPES.ALL_TAGS_PENDING]: (state) => ({ ...state, allTagsLoaded: false }),
+    [ACTION_TYPES.ALL_TAGS_PENDING]: (state) => ({ ...state, allTagsLoaded: false, tagModalLoaded: false }),
     [ACTION_TYPES.LOAD_ENTITIES_PENDING]: entitiesPending,
     [ACTION_TYPES.LOAD_ENTITIES_FULFILLED]: entitiesLoaded,
+    [ACTION_TYPES.LOAD_ENTITIES_REJECTED]: loadingRejected,
     [ACTION_TYPES.LOAD_TAGS_PENDING]: showTagsPending,
     [ACTION_TYPES.LOAD_TAGS_FULFILLED]: showTags,
+    [ACTION_TYPES.ALL_TAGS_REJECTED]: loadingRejected,
     [UPDATE_ENTITIES]: entitiesLoaded,
     [SHOW_ENTITIES]: (state, action) => entitiesLoaded(state, {
         payload: {

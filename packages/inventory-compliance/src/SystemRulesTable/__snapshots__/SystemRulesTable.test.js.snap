@@ -99,21 +99,21 @@ exports[`SystemRulesTable component should render 1`] = `
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -147,7 +147,7 @@ exports[`SystemRulesTable component should render 1`] = `
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -211,6 +211,7 @@ exports[`SystemRulesTable component should render 1`] = `
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -242,6 +243,7 @@ exports[`SystemRulesTable component should render 1`] = `
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -266,6 +268,7 @@ exports[`SystemRulesTable component should render 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
@@ -1093,6 +1096,7 @@ exports[`SystemRulesTable component should render 1`] = `
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -1144,6 +1148,7 @@ exports[`SystemRulesTable component should render a loading table 1`] = `
       Object {
         "original": "Ansible",
         "props": Object {
+          "property": "ansible",
           "tooltip": "Ansible",
         },
         "title": <React.Fragment>
@@ -1263,21 +1268,21 @@ exports[`SystemRulesTable component should render additional toolbar items 1`] =
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -1311,7 +1316,7 @@ exports[`SystemRulesTable component should render additional toolbar items 1`] =
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -1378,6 +1383,7 @@ exports[`SystemRulesTable component should render additional toolbar items 1`] =
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -1409,6 +1415,7 @@ exports[`SystemRulesTable component should render additional toolbar items 1`] =
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -1433,6 +1440,7 @@ exports[`SystemRulesTable component should render additional toolbar items 1`] =
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
@@ -2260,6 +2268,7 @@ exports[`SystemRulesTable component should render additional toolbar items 1`] =
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -2416,21 +2425,21 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -2464,7 +2473,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -2528,6 +2537,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -2559,6 +2569,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -2583,6 +2594,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSort={[Function]}
     ouiaSafe={true}
@@ -2678,6 +2690,7 @@ exports[`SystemRulesTable component should render filtered and search mixed resu
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -2804,21 +2817,21 @@ exports[`SystemRulesTable component should render search results by rule name 1`
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -2852,7 +2865,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -2916,6 +2929,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -2947,6 +2961,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -2971,6 +2986,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
@@ -3120,6 +3136,7 @@ exports[`SystemRulesTable component should render search results by rule name 1`
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -3246,21 +3263,21 @@ exports[`SystemRulesTable component should render search results on any page, re
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -3294,7 +3311,7 @@ exports[`SystemRulesTable component should render search results on any page, re
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -3358,6 +3375,7 @@ exports[`SystemRulesTable component should render search results on any page, re
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -3389,6 +3407,7 @@ exports[`SystemRulesTable component should render search results on any page, re
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -3413,6 +3432,7 @@ exports[`SystemRulesTable component should render search results on any page, re
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
@@ -3562,6 +3582,7 @@ exports[`SystemRulesTable component should render search results on any page, re
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -3679,21 +3700,21 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -3727,7 +3748,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -3791,6 +3812,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -3822,6 +3844,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -3846,6 +3869,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
@@ -4673,6 +4697,7 @@ exports[`SystemRulesTable component should render sorted rows 1`] = `
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -4790,21 +4815,21 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
           Object {
             "filterValues": Object {
@@ -4838,7 +4863,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -4902,6 +4927,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -4933,6 +4959,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -4957,6 +4984,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
@@ -5786,6 +5814,7 @@ exports[`SystemRulesTable component should render sorted rows 2`] = `
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -5903,21 +5932,21 @@ exports[`SystemRulesTable component should render without remediations if prop p
             "filterValues": Object {
               "items": Array [
                 Object {
-                  "label": "Show passed rules",
+                  "label": "Passed rules",
                   "value": "passed",
                 },
                 Object {
-                  "label": "Hide passed rules",
+                  "label": "Failed rules",
                   "value": "failed",
                 },
               ],
               "onChange": [Function],
-              "value": undefined,
+              "value": Array [],
             },
             "id": "passed",
             "label": "Passed",
             "placeholder": "Filter by passed",
-            "type": "radio",
+            "type": "checkbox",
           },
         ],
       }
@@ -5943,6 +5972,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -5974,6 +6004,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
         Object {
           "original": "Ansible",
           "props": Object {
+            "property": "ansible",
             "tooltip": "Ansible",
           },
           "title": <React.Fragment>
@@ -5998,6 +6029,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSort={[Function]}
     ouiaSafe={true}
@@ -6824,6 +6856,7 @@ exports[`SystemRulesTable component should render without remediations if prop p
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -6969,7 +7002,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -7042,6 +7075,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -7062,6 +7096,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSort={[Function]}
     ouiaSafe={true}
@@ -7157,6 +7192,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -7302,7 +7338,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -7375,6 +7411,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -7395,6 +7432,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSelect={[Function]}
     onSort={[Function]}
@@ -8112,6 +8150,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",
@@ -8257,7 +8296,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
     toggleIsExpanded={[Function]}
   >
     <ToolbarItem>
-      <ConnectFunction
+      <Connect(ComplianceRemediationButton)
         allSystems={
           Array [
             Object {
@@ -8330,6 +8369,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
     aria-label="Rules table"
     borders={true}
     canSelectAll={true}
+    canSortFavorites={true}
     cells={
       Array [
         Object {
@@ -8350,6 +8390,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[Function]}
     onSort={[Function]}
     ouiaSafe={true}
@@ -8445,6 +8486,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
           "currPage": "Current page",
           "items": "",
           "itemsPerPage": "Items per page",
+          "ofWord": "of",
           "optionsToggle": "Items per page",
           "page": "",
           "paginationTitle": "Pagination",

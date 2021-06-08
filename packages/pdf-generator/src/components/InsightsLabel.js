@@ -80,7 +80,8 @@ const InsightsLabel = ({ variant, label, icon, ...props }) => {
 InsightsLabel.propTypes = {
     variant: PropTypes.number,
     label: PropTypes.string,
-    icon: PropTypes.bool
+    icon: PropTypes.bool,
+    width: PropTypes.number
 };
 
 InsightsLabel.defaultProps = {

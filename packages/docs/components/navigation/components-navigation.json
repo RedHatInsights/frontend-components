@@ -1,0 +1,640 @@
+[
+	{
+		"packageName": "charts",
+		"groups": [
+			{
+				"group": "Donut",
+				"items": [
+					"Donut"
+				]
+			},
+			{
+				"group": "Gauge",
+				"items": [
+					"Gauge"
+				]
+			},
+			{
+				"group": "Matrix",
+				"items": [
+					"Axis",
+					"Labels",
+					"Matrix",
+					"NodeElement",
+					"Segment",
+					"Tooltip"
+				]
+			},
+			{
+				"group": "Pie",
+				"items": [
+					"Pie"
+				]
+			},
+			{
+				"group": "SeverityLine",
+				"items": [
+					"SeverityLine"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "components",
+		"groups": [
+			{
+				"group": "Ansible",
+				"items": [
+					"Ansible"
+				]
+			},
+			{
+				"group": "Battery",
+				"items": [
+					"Battery",
+					"CriticalBattery",
+					"HighBattery",
+					"LowBattery",
+					"MediumBattery",
+					"NullBattery"
+				]
+			},
+			{
+				"group": "Breadcrumbs",
+				"items": [
+					"Breadcrumbs",
+					"ConnectedBreadcrumbs"
+				]
+			},
+			{
+				"group": "BulkSelect",
+				"items": [
+					"BulkSelect"
+				]
+			},
+			{
+				"group": "ConditionalFilter",
+				"items": [
+					"CheckboxFilter",
+					"ConditionalFilter",
+					"GroupFilter",
+					"RadioFilter",
+					"TextFilter"
+				]
+			},
+			{
+				"group": "CullingInfo",
+				"items": [
+					"CullingInformation"
+				]
+			},
+			{
+				"group": "Dark",
+				"items": [
+					"DarkContext"
+				]
+			},
+			{
+				"group": "DateFormat",
+				"items": [
+					"DateFormat",
+					"helper"
+				]
+			},
+			{
+				"group": "DownloadButton",
+				"items": [
+					"DownloadButton"
+				]
+			},
+			{
+				"group": "EmptyTable",
+				"items": [
+					"EmptyTable"
+				]
+			},
+			{
+				"group": "ErrorState",
+				"items": [
+					"DefaultErrorMessage",
+					"ErrorState"
+				]
+			},
+			{
+				"group": "FilterChips",
+				"items": [
+					"FilterChips"
+				]
+			},
+			{
+				"group": "Filters",
+				"items": [
+					"FilterDropdown",
+					"FilterInput"
+				]
+			},
+			{
+				"group": "Input",
+				"items": [
+					"Input",
+					"LabeledInput"
+				]
+			},
+			{
+				"group": "InsightsLabel",
+				"items": [
+					"CriticalIcon",
+					"InsightsLabel"
+				]
+			},
+			{
+				"group": "InvalidObject",
+				"items": [
+					"icon-404",
+					"InvalidObject"
+				]
+			},
+			{
+				"group": "Inventory",
+				"items": [
+					"AppInfo",
+					"AsyncInventory",
+					"DetailWrapper",
+					"InventoryDetail",
+					"InventoryDetailHead",
+					"InventoryLoadError",
+					"InventoryTable",
+					"TagWithDialog"
+				]
+			},
+			{
+				"group": "LongTextTooltip",
+				"items": [
+					"LongTextTooltip"
+				]
+			},
+			{
+				"group": "Maintenance",
+				"items": [
+					"Maintenance"
+				]
+			},
+			{
+				"group": "NotAuthorized",
+				"items": [
+					"NotAuthorized"
+				]
+			},
+			{
+				"group": "PageHeader",
+				"items": [
+					"PageHeader",
+					"PageHeaderTitle"
+				]
+			},
+			{
+				"group": "Pagination",
+				"items": [
+					"Pagination",
+					"PaginationMenu",
+					"PaginationNav",
+					"PaginationNext"
+				]
+			},
+			{
+				"group": "PrimaryToolbar",
+				"items": [
+					"PrimaryToolbar",
+					"SortBy"
+				]
+			},
+			{
+				"group": "Reboot",
+				"items": [
+					"Reboot"
+				]
+			},
+			{
+				"group": "Section",
+				"items": [
+					"Section"
+				]
+			},
+			{
+				"group": "Shield",
+				"items": [
+					"Shield"
+				]
+			},
+			{
+				"group": "SimpleTableFilter",
+				"items": [
+					"SimpleTableFilter"
+				]
+			},
+			{
+				"group": "Skeleton",
+				"items": [
+					"Skeleton"
+				]
+			},
+			{
+				"group": "SkeletonTable",
+				"items": [
+					"SkeletonTable"
+				]
+			},
+			{
+				"group": "Spinner",
+				"items": [
+					"Spinner"
+				]
+			},
+			{
+				"group": "TabLayout",
+				"items": [
+					"TabLayout"
+				]
+			},
+			{
+				"group": "TableToolbar",
+				"items": [
+					"TableToolbar"
+				]
+			},
+			{
+				"group": "TagCount",
+				"items": [
+					"TagCount"
+				]
+			},
+			{
+				"group": "TagModal",
+				"items": [
+					"TableWithFilter",
+					"TagModal"
+				]
+			},
+			{
+				"group": "TreeTable",
+				"items": [
+					"rowWrapper"
+				]
+			},
+			{
+				"group": "Truncate",
+				"items": [
+					"Truncate"
+				]
+			},
+			{
+				"group": "Unavailable",
+				"items": [
+					"Unavailable"
+				]
+			},
+			{
+				"group": "Wizard",
+				"items": [
+					"Wizard"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "config",
+		"groups": [
+			{
+				"group": "src",
+				"items": [
+					{
+						"title": "loader",
+						"name": "config-loader"
+					}
+				]
+			}
+		]
+	},
+	{
+		"packageName": "inventory",
+		"groups": [
+			{
+				"group": "detail",
+				"items": [
+					"AppInfo",
+					"ApplicationDetails",
+					"DetailRenderer",
+					"DetailWrapper",
+					"FactsInfo",
+					"InventoryDetail",
+					"SystemNotFound",
+					"TopBar"
+				]
+			},
+			{
+				"group": "drawer",
+				"items": [
+					"BasicInfo",
+					"SystemIssues"
+				]
+			},
+			{
+				"group": "shared",
+				"items": [
+					"AccessDenied",
+					"DeleteModal",
+					"InsightsDisconnected",
+					"OperatingSystemFormatter",
+					"TagsModal",
+					"TagWithDialog",
+					"Wrapper"
+				]
+			},
+			{
+				"group": "table",
+				"items": [
+					"EntityTable",
+					"EntityTableToolbar",
+					"InventoryList",
+					"InventoryTable",
+					"NoSystemsTable",
+					"Pagination",
+					"TitleColumn"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "inventory-compliance",
+		"groups": [
+			{
+				"group": "Compliance",
+				"items": [
+					"Compliance"
+				]
+			},
+			{
+				"group": "ComplianceEmptyState",
+				"items": [
+					"ComplianceEmptyState"
+				]
+			},
+			{
+				"group": "ComplianceRemediationButton",
+				"items": [
+					"ComplianceRemediationButton"
+				]
+			},
+			{
+				"group": "PresentationalComponents",
+				"items": [
+					"ConditionalLink",
+					"ErrorCard",
+					"RuleChildRow",
+					"RuleLoadingTable",
+					"RuleTitle",
+					"UnsupportedSSGVersion"
+				]
+			},
+			{
+				"group": "SystemPolicyCard",
+				"items": [
+					"SystemPolicyCard"
+				]
+			},
+			{
+				"group": "SystemPolicyCards",
+				"items": [
+					"SystemPolicyCards"
+				]
+			},
+			{
+				"group": "SystemRulesTable",
+				"items": [
+					"SystemRulesTable"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "inventory-general-info",
+		"groups": [
+			{
+				"group": "BiosCard",
+				"items": [
+					"BiosCard"
+				]
+			},
+			{
+				"group": "CollectionCard",
+				"items": [
+					"CollectionCard"
+				]
+			},
+			{
+				"group": "ConfigurationCard",
+				"items": [
+					"ConfigurationCard"
+				]
+			},
+			{
+				"group": "EditButton",
+				"items": [
+					"EditButton"
+				]
+			},
+			{
+				"group": "GeneralInformation",
+				"items": [
+					"GeneralInformation"
+				]
+			},
+			{
+				"group": "InfoTable",
+				"items": [
+					"InfoTable"
+				]
+			},
+			{
+				"group": "InfrastructureCard",
+				"items": [
+					"InfrastructureCard"
+				]
+			},
+			{
+				"group": "OperatingSystemCard",
+				"items": [
+					"OperatingSystemCard"
+				]
+			},
+			{
+				"group": "SystemCard",
+				"items": [
+					"SystemCard"
+				]
+			},
+			{
+				"group": "TextInputModal",
+				"items": [
+					"TextInputModal"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "inventory-insights",
+		"groups": [
+			{
+				"group": "Insights",
+				"items": [
+					"Insights"
+				]
+			},
+			{
+				"group": "MessageState",
+				"items": [
+					"MessageState"
+				]
+			},
+			{
+				"group": "ReportDetails",
+				"items": [
+					"ReportDetails"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "pdf-generator",
+		"groups": [
+			{
+				"group": "components",
+				"items": [
+					"Battery",
+					"Chart",
+					"Column",
+					"InsightsLabel",
+					"Logo",
+					"Panel",
+					"PanelItem",
+					"Paragraph",
+					"PDFDocument",
+					"Section",
+					"Table"
+				]
+			},
+			{
+				"group": "src",
+				"items": [
+					"DownloadButton"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "remediations",
+		"groups": [
+			{
+				"group": "RemediationButton",
+				"items": [
+					"RemediationButton"
+				]
+			},
+			{
+				"group": "RemediationWizard",
+				"items": [
+					"RemediationWizard",
+					"RemediationWizardHelper"
+				]
+			},
+			{
+				"group": "steps",
+				"items": [
+					"fetchError",
+					"issueResolution",
+					"review",
+					"reviewActions",
+					"reviewSystems",
+					"selectPlaybook"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "rule-components",
+		"groups": [
+			{
+				"group": "Markdown",
+				"items": [
+					"Markdown"
+				]
+			},
+			{
+				"group": "ReportDetails",
+				"items": [
+					"RiskDescription",
+					"RiskOfChangeIcon",
+					"RuleFeedback"
+				]
+			},
+			{
+				"group": "RuleTable",
+				"items": [
+					"RuleTable"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "translations",
+		"groups": [
+			{
+				"group": "intlHelper",
+				"items": [
+					"intlHelper"
+				]
+			},
+			{
+				"group": "Provider",
+				"items": [
+					"Provider"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "utils",
+		"groups": [
+			{
+				"group": "debounce",
+				"items": [
+					{
+						"title": "debounceFunction",
+						"name": "debounce-debounceFunction"
+					}
+				]
+			},
+			{
+				"group": "parseCvssScore",
+				"items": [
+					"parseCvssScore"
+				]
+			},
+			{
+				"group": "ReducerRegistry",
+				"items": [
+					{
+						"title": "ReducerRegistry",
+						"name": "ReducerRegistry-ReducerRegistry"
+					}
+				]
+			},
+			{
+				"group": "RowLoader",
+				"items": [
+					"RowLoader"
+				]
+			}
+		]
+	}
+]

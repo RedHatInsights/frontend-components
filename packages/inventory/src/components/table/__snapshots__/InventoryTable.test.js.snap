@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NoSystemsTable should render correctly - no data 1`] = `
+exports[`InventoryTable should render correctly - no data 1`] = `
 <ForwardRef>
   <EntityTableToolbar
     activeFiltersConfig={Object {}}
@@ -8,6 +8,7 @@ exports[`NoSystemsTable should render correctly - no data 1`] = `
     hasAccess={true}
     hasItems={false}
     hideFilters={Object {}}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     showTags={false}
@@ -15,12 +16,14 @@ exports[`NoSystemsTable should render correctly - no data 1`] = `
   <ForwardRef
     hasAccess={true}
     hasItems={false}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
   >
     <ContextInventoryList
       hasItems={false}
-      loadEntities={[Function]}
+      ignoreRefresh={true}
+      onRefreshData={[Function]}
       page={1}
       perPage={50}
     />
@@ -32,7 +35,7 @@ exports[`NoSystemsTable should render correctly - no data 1`] = `
 </ForwardRef>
 `;
 
-exports[`NoSystemsTable should render correctly - with no access 1`] = `
+exports[`InventoryTable should render correctly - with no access 1`] = `
 <ForwardRef
   hasAccess={false}
 >
@@ -42,6 +45,8 @@ exports[`NoSystemsTable should render correctly - with no access 1`] = `
     hasAccess={false}
     hasItems={false}
     hideFilters={Object {}}
+    loaded={true}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     showTags={false}
@@ -57,6 +62,8 @@ exports[`NoSystemsTable should render correctly - with no access 1`] = `
   <ForwardRef
     hasAccess={false}
     hasItems={false}
+    loaded={true}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     sortBy={
@@ -88,7 +95,7 @@ exports[`NoSystemsTable should render correctly - with no access 1`] = `
 </ForwardRef>
 `;
 
-exports[`NoSystemsTable should render correctly - with no access and full view 1`] = `
+exports[`InventoryTable should render correctly - with no access and full view 1`] = `
 <ForwardRef
   hasAccess={false}
   isFullView={true}
@@ -104,7 +111,7 @@ exports[`NoSystemsTable should render correctly - with no access and full view 1
 </ForwardRef>
 `;
 
-exports[`NoSystemsTable should render correctly 1`] = `
+exports[`InventoryTable should render correctly 1`] = `
 <ForwardRef>
   <EntityTableToolbar
     activeFiltersConfig={Object {}}
@@ -112,6 +119,8 @@ exports[`NoSystemsTable should render correctly 1`] = `
     hasAccess={true}
     hasItems={false}
     hideFilters={Object {}}
+    loaded={true}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     showTags={false}
@@ -127,6 +136,8 @@ exports[`NoSystemsTable should render correctly 1`] = `
   <ForwardRef
     hasAccess={true}
     hasItems={false}
+    loaded={true}
+    onRefreshData={[Function]}
     page={1}
     perPage={50}
     sortBy={
@@ -148,7 +159,9 @@ exports[`NoSystemsTable should render correctly 1`] = `
         ]
       }
       hasItems={false}
-      loadEntities={[Function]}
+      ignoreRefresh={true}
+      loaded={true}
+      onRefreshData={[Function]}
       page={1}
       perPage={50}
       sortBy={
@@ -167,7 +180,29 @@ exports[`NoSystemsTable should render correctly 1`] = `
 </ForwardRef>
 `;
 
-exports[`NoSystemsTable should render correctly with items 1`] = `
+exports[`InventoryTable should render correctly with custom error 1`] = `
+<ForwardRef
+  errorState={
+    <div>
+      CUSTOM ERROR STATE
+    </div>
+  }
+>
+  <div>
+    CUSTOM ERROR STATE
+  </div>
+</ForwardRef>
+`;
+
+exports[`InventoryTable should render correctly with error 1`] = `
+<ForwardRef>
+  <ErrorState
+    errorTitle="Something went wrong"
+  />
+</ForwardRef>
+`;
+
+exports[`InventoryTable should render correctly with items 1`] = `
 <ForwardRef
   items={
     Array [
@@ -200,6 +235,8 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
         },
       ]
     }
+    loaded={true}
+    onRefreshData={[Function]}
     page={5}
     perPage={20}
     showTags={false}
@@ -222,6 +259,8 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
         },
       ]
     }
+    loaded={true}
+    onRefreshData={[Function]}
     page={5}
     perPage={20}
     sortBy={
@@ -243,6 +282,7 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
         ]
       }
       hasItems={true}
+      ignoreRefresh={true}
       items={
         Array [
           Object {
@@ -250,7 +290,8 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
           },
         ]
       }
-      loadEntities={[Function]}
+      loaded={true}
+      onRefreshData={[Function]}
       page={5}
       perPage={20}
       sortBy={
@@ -269,7 +310,7 @@ exports[`NoSystemsTable should render correctly with items 1`] = `
 </ForwardRef>
 `;
 
-exports[`NoSystemsTable should render correctly with items no totla 1`] = `
+exports[`InventoryTable should render correctly with items no totla 1`] = `
 <ForwardRef
   items={
     Array [
@@ -301,6 +342,8 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
         },
       ]
     }
+    loaded={true}
+    onRefreshData={[Function]}
     page={5}
     perPage={20}
     showTags={false}
@@ -323,6 +366,8 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
         },
       ]
     }
+    loaded={true}
+    onRefreshData={[Function]}
     page={5}
     perPage={20}
     sortBy={
@@ -344,6 +389,7 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
         ]
       }
       hasItems={true}
+      ignoreRefresh={true}
       items={
         Array [
           Object {
@@ -351,7 +397,8 @@ exports[`NoSystemsTable should render correctly with items no totla 1`] = `
           },
         ]
       }
-      loadEntities={[Function]}
+      loaded={true}
+      onRefreshData={[Function]}
       page={5}
       perPage={20}
       sortBy={

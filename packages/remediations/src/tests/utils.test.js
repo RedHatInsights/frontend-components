@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import React from 'react';
 import * as dependency from '../api/index';
 import {
     entitySelected,
@@ -14,7 +13,8 @@ import {
     fetchSystemsInfo,
     splitArray,
     getPlaybookSystems,
-    createNotification
+    createNotification,
+    SYSTEMS
 } from '../utils';
 import { remediationWizardTestData } from './testData';
 
@@ -90,7 +90,8 @@ describe('submitRemediation', () => {
         formValues = {
             ...remediationWizardTestData.formValues,
             [EXISTING_PLAYBOOK]: remediationWizardTestData.existingPlaybook,
-            [EXISTING_PLAYBOOK_SELECTED]: true
+            [EXISTING_PLAYBOOK_SELECTED]: true,
+            [SYSTEMS]: remediationWizardTestData.selectedSystems
         };
     });
 
@@ -202,7 +203,7 @@ describe('fetchSystemsInfo', () => {
         const value = await fetchSystemsInfo(
             { page: 1, per_page: 1 },
             [{ id: '123' }, { id: '456' }],
-            { getEntities: (systems) => Promise.resolve({ result: systems }) }
+            (systems) => Promise.resolve({ result: systems })
         );
         expect(value).toEqual({
             page: 1,
@@ -216,11 +217,11 @@ describe('fetchSystemsInfo', () => {
         const value = await fetchSystemsInfo(
             { page: 1, per_page: 2,  filters: { hostnameOrId: '12' } },
             [
-                { id: '123', display_name: 'test' },
-                { id: '456', display_name: 'test' },
-                { id: '789', display_name: '12test' }
+                { id: '123', name: 'test' },
+                { id: '456', name: 'test' },
+                { id: '789', name: '12test' }
             ],
-            { getEntities: (systems) => Promise.resolve({ result: systems }) }
+            (systems) => Promise.resolve({ result: systems })
         );
         expect(value).toEqual({
             page: 1,
@@ -243,7 +244,7 @@ describe('getPlaybookSystems', () => {
 
     it('should get playbook systems correctly', () => {
         const value = getPlaybookSystems(remediationWizardTestData.existingPlaybook);
-        expect(value).toEqual([{ id: 'test2', display_name: 'test2' }]);
+        expect(value).toEqual([{ id: 'test2', name: 'test2' }]);
         expect(getPlaybookSystems()).toEqual([]);
     });
 });

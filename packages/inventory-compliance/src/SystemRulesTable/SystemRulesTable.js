@@ -20,8 +20,12 @@ export const columns = [
     { title: 'Policy', transforms: [ sortable ] },
     { title: 'Severity', transforms: [ sortable, fitContent ] },
     { title: 'Passed', transforms: [ sortable, fitContent ] },
-    { title: <React.Fragment><AnsibeTowerIcon /> Ansible</React.Fragment>,
-        original: 'Ansible', props: { tooltip: 'Ansible' }, transforms: [ sortable, fitContent ] }
+    {
+        title: <React.Fragment><AnsibeTowerIcon /> Ansible</React.Fragment>,
+        original: 'Ansible',
+        props: { tooltip: 'Ansible', property: 'ansible' },
+        transforms: [ sortable, fitContent ]
+    }
 ];
 
 export const selectColumns = (columnTitles) => (
@@ -43,13 +47,13 @@ class SystemRulesTable extends React.Component {
         page: 1,
         itemsPerPage: 10,
         rows: [],
-        sortBy: {},
+        sortBy: this.props.sortBy || {},
         ruleCount: 0,
         selectedToRemediate: [],
         openIds: [],
         selectedOnly: this.props.selectedFilter,
         activeFilters: this.filterConfigBuilder.initialDefaultState({
-            passed: this.props.hidePassed ? 'failed' : undefined,
+            passed: this.props.hidePassed ? [ 'failed' ] : undefined,
             remediationAvailable: this.remediationAvailableFilter ? 'true' : undefined
         })
     };
@@ -134,7 +138,7 @@ class SystemRulesTable extends React.Component {
             sortBy: {
                 index,
                 direction,
-                property: extraData.property
+                property: extraData?.column?.props?.property || extraData?.property
             }
         })
     )
@@ -417,7 +421,8 @@ SystemRulesTable.propTypes = {
     system: propTypes.shape(
         {
             id: propTypes.string.isRequired,
-            supported: propTypes.bool.isRequired
+            supported: propTypes.bool.isRequired,
+            testResultProfiles: propTypes.any
         }
     ),
     remediationsEnabled: propTypes.bool,
@@ -435,7 +440,12 @@ SystemRulesTable.propTypes = {
                 original: propTypes.string
             }
         )
-    )
+    ),
+    sortBy: propTypes.shape({
+        direction: propTypes.string,
+        index: propTypes.number,
+        property: propTypes.string
+    })
 };
 
 SystemRulesTable.defaultProps = {

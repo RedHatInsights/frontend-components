@@ -833,5 +833,3 @@ exports[`Pagination render should render correctly with data and props 1`] = `
   </nav>
 </div>
 `;
-
-exports[`Pagination render should render correctly with hasItems and isLoaded false 1`] = `null`;

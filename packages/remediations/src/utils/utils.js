@@ -6,6 +6,8 @@ import * as api from '../api';
 import uniqWith from 'lodash/uniqWith';
 import isEqual from 'lodash/isEqual';
 import { applyReducerHash } from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry/ReducerRegistry';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { SystemsTableWithContext } from '../common/SystemsTable';
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
 
@@ -39,11 +41,11 @@ export function remediationUrl (id) {
 
 export const dedupeArray = (array) => [ ...new Set(array) ];
 
-export const pluralize = (count, str, fallback) => count > 1 ? (fallback || str + 's') : str;
+export const pluralize = (count, str, fallback) => count !== 1 ? (fallback || str + 's') : str;
 
-const sortRecords = (records, sortByState) => records.sort(
+const sortRecords = (records, sortByState) => [ ...records ].sort(
     (a, b) => {
-        const key = Object.keys(a)[sortByState.index];
+        const key = Object.keys(a)[sortByState.index - 1];
         return (
             (a[key] > b[key] ? 1 :
                 a[key] < b[key] ? -1 : 0)
@@ -52,25 +54,55 @@ const sortRecords = (records, sortByState) => records.sort(
     }
 );
 
-export const buildRows = (records, sortByState, showAlternate) => sortRecords(records, sortByState).map((record, index) => ({
-    cells: [
-        record.action,
-        <Fragment key={`${index}-description`}>
-            <p key={`${index}-resolution`}>
-                {record.resolution}
-            </p>
-            {showAlternate && record.alternate > 0 &&
-                (
-                    <p key={`${index}-alternate`}>{record.alternate} alternate {pluralize(record.alternate, 'resolution')}</p>
-                )}
-        </Fragment>,
-        {
-            title: record.needsReboot ? <Fragment><RedoIcon/>{' Yes'}</Fragment> : <Fragment><CloseIcon/>{' No'}</Fragment>,
-            value: record.needsReboot
-        },
-        record.systemsCount
-    ]
-}));
+export const buildRows = (records, sortByState, showAlternate, allSystemsNamed) => sortRecords(records, sortByState).reduce((acc, curr, index) => [
+    ...acc,
+    {
+        isOpen: false,
+        cells: [
+            { title: curr.action },
+            { title: <Fragment key={`${index}-description`}>
+                <p key={`${index}-resolution`}>
+                    {curr.resolution}
+                </p>
+                {showAlternate && curr.alternate > 0 &&
+                    (
+                        <p key={`${index}-alternate`}>{curr.alternate} alternate {pluralize(curr.alternate, 'resolution')}</p>
+                    )}
+            </Fragment>
+            },
+            {
+                title: curr.needsReboot ? <div><RedoIcon className="pf-u-mr-sm"/>Yes</div> : <div><CloseIcon className="pf-u-mr-sm"/>No</div>
+            },
+            {
+                title: curr.systems?.length || 0,
+                props: { isOpen: false }
+            }
+        ]
+    },
+    ...(curr.systems?.length > 0 ? [{
+        parent: index * 2,
+        fullWidth: true,
+        cells: [
+            {
+                title: (
+                    <Router>
+                        <SystemsTableWithContext
+                            allSystemsNamed={allSystemsNamed.filter((system) => curr.systems.includes(system.id))}
+                            allSystems={curr.systems}
+                            disabledColumns={[ 'updated' ]}
+                        />
+                    </Router>
+                ),
+                props: { colSpan: 5, className: 'pf-m-no-padding' }
+            }
+        ]
+    }] : []) ], []);
+
+export const onCollapse = (event, rowKey, isOpen, rows, setRows) => {
+    let temp = [ ...rows ];
+    rows[rowKey].isOpen = isOpen;
+    setRows(temp);
+};
 
 export const getResolution = (issueId, formValues) => {
     const issueResolutions = formValues[RESOLUTIONS].find(r => r.id === issueId)?.resolutions || [];
@@ -112,12 +144,18 @@ export const submitRemediation = (formValues, data, basePath) => {
         remediation: { id, name },
         getNotification: () => createNotification(id, name, isNewSwitch, error)
     });
-    const issues = data.issues.map(({ id }) => ({
-        id,
-        resolution: getResolution(id, formValues)?.[0]?.id,
-        systems: formValues.systems
-    }));
-    const add = { issues, systems: formValues.systems };
+    const playbook = formValues[EXISTING_PLAYBOOK];
+    const issues = data.issues.map(({ id }) => {
+        const playbookSystems = playbook?.issues?.find(i => i.id === id)?.systems?.map(s => s.id) || [];
+        return ({
+            id,
+            resolution: getResolution(id, formValues)?.[0]?.id,
+            systems: dedupeArray([
+                ...(formValues[EXISTING_PLAYBOOK_SELECTED] ? [] : playbookSystems),
+                ...(formValues[SYSTEMS][id] || [])
+            ])
+        });}).filter(issue => issue.systems.length > 0);
+    const add = { issues, systems: [] };
     if (formValues[EXISTING_PLAYBOOK_SELECTED]) {
         const { id, name } = formValues[EXISTING_PLAYBOOK];
         api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
@@ -189,14 +227,14 @@ export const changeBulkSelect = (state, action) => {
     });
 };
 
-export const fetchSystemsInfo = async (config, allSystemsNamed = [], { getEntities } = {}) => {
+export const fetchSystemsInfo = async (config, allSystemsNamed = [], getEntities) => {
     const hostnameOrId = config?.filters?.hostnameOrId?.toLowerCase();
     const systems = (
         hostnameOrId
             ?
             allSystemsNamed.reduce((acc, curr) => [
                 ...acc,
-                ...(curr.display_name.toLowerCase().includes(hostnameOrId) || curr.id.toLowerCase().includes(hostnameOrId)
+                ...(curr.name.toLowerCase().includes(hostnameOrId) || curr.id.toLowerCase().includes(hostnameOrId)
                     ? [ curr.id ]
                     : []
                 )
@@ -219,7 +257,7 @@ export const splitArray = (inputArray, perChunk) => [ ...new Array(Math.ceil(inp
 
 export const getPlaybookSystems = (playbook) => playbook && uniqWith(playbook.issues?.reduce((acc, curr) => [
     ...acc,
-    ...(curr.systems.map(system => ({ id: system.id, display_name: system.display_name })))
+    ...(curr.systems.map(system => ({ id: system.id, name: system.display_name })))
 ], []), isEqual) || [];
 
 export const inventoryEntitiesReducer = (allSystems, { LOAD_ENTITIES_FULFILLED }) => applyReducerHash({
@@ -236,11 +274,10 @@ export const getIssuesMultiple = (issues = [], systems = [], resolutions = []) =
         const { description, needs_reboot: needsReboot  } = issueResolutions?.[0] || {};
         return {
             action: issues.find(i => i.id === issue.id).description,
-            systemsCount: issue.systems ? issue.systems.length : systems.length,
-            id: issue.id,
-            shortId: shortenIssueId(issue.id),
             resolution: description,
             needsReboot,
+            systems: dedupeArray([ ...(issue.systems || []), systems ]),
+            id: issue.id,
             alternate: issueResolutions?.length - 1
         };
     }).filter(record => record.alternate > 0);

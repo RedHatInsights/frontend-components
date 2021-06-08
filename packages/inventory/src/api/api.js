@@ -78,15 +78,15 @@ export async function getEntities(items, {
     ...options
 }, showTags) {
     if (hasItems && items.length > 0) {
-        let data = await hosts.apiHostGetHostById(items, undefined, perPage, page, undefined, undefined, { cancelToken: controller && controller.token });
+        let data = await hosts.apiHostGetHostById(items, undefined, undefined, undefined, undefined, undefined, { cancelToken: controller && controller.token });
 
         if (fields && Object.keys(fields).length) {
             try {
                 const result = await hosts.apiHostGetHostSystemProfileById(
                     items,
-                    perPage,
-                    page,
-                    orderBy,
+                    undefined,
+                    undefined,
+                    undefined,
                     undefined,
                     undefined,
                     undefined,
@@ -101,7 +101,7 @@ export async function getEntities(items, {
                     results: mergeArraysByKey([
                         data?.results,
                         result?.results || []
-                    ])
+                    ], 'id')
                 };
             } catch (e) {
                 console.error(e);

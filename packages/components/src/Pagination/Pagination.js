@@ -75,7 +75,8 @@ Pagination.propTypes = {
     onFirstPage: PropTypes.func,
     onLastPage: PropTypes.func,
     onPreviousPage: PropTypes.func,
-    onNextPage: PropTypes.func
+    onNextPage: PropTypes.func,
+    page: PropTypes.number
 };
 
 Pagination.defaultProps = {

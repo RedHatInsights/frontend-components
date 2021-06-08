@@ -46,7 +46,10 @@ Text.propTypes = {
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
     isDisabled: PropTypes.bool,
-    'aria-label': PropTypes.string
+    'aria-label': PropTypes.string,
+    id: PropTypes.string,
+    icon: PropTypes.elementType,
+    className: PropTypes.string
 };
 
 Text.defaultProps = {

@@ -11,6 +11,7 @@ const readFile = (fileName) => util.promisify(fs.readFile)(fileName, 'utf8');
 const writeFile = (fileName, data) => util.promisify(fs.writeFile)(fileName, data, 'utf8');
 const readJson = (fileName) => readFile(fileName).then(JSON.parse);
 const writeJson = (fileName, data) => writeFile(fileName, JSON.stringify(data, null, 4) + '\n');
+const exists = (fileName) => util.promisify(fs.exists)(fileName);
 
 dotenv.config();
 const [ owner, repo ] = process.env.TRAVIS_REPO_SLUG.split('/');
@@ -28,8 +29,14 @@ const releaseMapper = (type) => {
     return mapper[type] || mapper.bugfix;
 };
 
-const calculatePackages = (files) => {
-    return [ ...new Set(files.map(({ filename }) => `${filename.substring(monorepoFolder.length + 1).split('/')[0]}/`)) ];
+const calculatePackages = async (files) => {
+    const packages = await Promise.all(
+      files.map(async ({ filename }) => {
+        const packageFolder = `${filename.substring(monorepoFolder.length + 1).split('/')[0]}/`;
+        return (await exists(resolve(__dirname, `../${monorepoFolder}/${packageFolder}package.json`))) && packageFolder;
+      })
+    );
+    return [ ...new Set(packages.filter(Boolean)) ];
 };
 
 const packageName = (pckgName, newVersion) => {
@@ -81,11 +88,14 @@ const releaseComment = (pckgName, newVersion) => `
         }
     }
 
-    const packages = calculatePackages(files);
+    const packages = await calculatePackages(files);
     console.log(`Running release for packages ${packages}`);
     packages.map(async (packageFolder) => {
         const packagePath = resolve(__dirname, `../${monorepoFolder}/${packageFolder}package.json`);
         const pckg = await readJson(packagePath);
+        if (pckg.private) {
+          return;
+        }
         const { stdout: version } = await exec(`npm view ${pckg.name} version`);
         const [ major, minor, bugfix ] = version.trim().split('.');
         const newVersion = releaseMapper(releaseType)(major, minor, bugfix);

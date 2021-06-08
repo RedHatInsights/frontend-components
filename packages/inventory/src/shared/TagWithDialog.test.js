@@ -3,9 +3,21 @@ import React from 'react';
 import TagWithDialog from './TagWithDialog';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import promiseMiddleware from 'redux-promise-middleware';
+import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
-import { mock } from '../__mock__/hostApi';
+
+jest.mock('../redux/actions', () => {
+    const actions = jest.requireActual('../redux/actions');
+    const ACTION_TYPES = jest.requireActual('../redux/action-types');
+    return {
+        __esModule: true,
+        ...actions,
+        loadTags: () => ({
+            type: ACTION_TYPES.LOAD_TAGS,
+            payload: () => Promise.resolve([])
+        })
+    };
+});
 
 describe('EntityTable', () => {
     let mockStore;
@@ -31,9 +43,8 @@ describe('EntityTable', () => {
         });
 
         it('should call actions', () => {
-            mock.onGet('*').reply(200, {});
             const store = mockStore({});
-            const wrapper = mount(<TagWithDialog store={store} count={10} systemId={'something'} />);
+            const wrapper = mount(<TagWithDialog store={store} count={10} systemId="something" />);
             wrapper.find('button').first().simulate('click');
             const actions = store.getActions();
             expect(actions.length).toBe(2);

@@ -1,0 +1,25 @@
+{
+    "name": "@redhat-cloud-services/frontend-components-config-utilities",
+    "version": "1.1.2",
+    "description": "Utilities for shared config used in RedHat Cloud Services project.",
+    "main": "index.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RedHatInsights/frontend-components.git"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/RedHatInsights/frontend-components/issues"
+    },
+    "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
+    "peerDependencies": {
+        "jws": "^4.0.0",
+        "glob": "^7.1.7",
+        "nodesi": "^1.15.0",
+        "webpack": ">=5.0.0"
+    }
+}

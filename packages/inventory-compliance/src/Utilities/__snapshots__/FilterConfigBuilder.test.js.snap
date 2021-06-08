@@ -11,7 +11,7 @@ Object {
   "filtergroup": undefined,
   "filterwithmultiplespaces": Array [],
   "name": "",
-  "passed": undefined,
+  "passed": Array [],
   "severity": Array [],
 }
 `;
@@ -178,11 +178,11 @@ Object {
       "filterValues": Object {
         "items": Array [
           Object {
-            "label": "Show passed rules",
+            "label": "Passed rules",
             "value": "passed",
           },
           Object {
-            "label": "Hide passed rules",
+            "label": "Failed rules",
             "value": "failed",
           },
         ],
@@ -192,7 +192,7 @@ Object {
       "id": "passed",
       "label": "Passed",
       "placeholder": "Filter by passed",
-      "type": "radio",
+      "type": "checkbox",
     },
   ],
   "name": "",

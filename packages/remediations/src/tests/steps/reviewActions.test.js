@@ -6,9 +6,18 @@ import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import ReviewActions from '../../steps/reviewActions';
 import { reviewActionsFields } from '../../RemediationWizard/schema';
-import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED, ISSUES_MULTIPLE, RESOLUTIONS } from '../../utils';
+import promiseMiddleware from 'redux-promise-middleware';
+import configureStore from 'redux-mock-store';
+import { EXISTING_PLAYBOOK, EXISTING_PLAYBOOK_SELECTED, ISSUES_MULTIPLE, RESOLUTIONS, SYSTEMS } from '../../utils';
 import { BodyRow } from '@patternfly/react-table/dist/js/components/Table/base';
 import { remediationWizardTestData } from '../testData';
+import { Provider } from 'react-redux';
+
+jest.mock('../../common/SystemsTable', () => ({
+    __esModule: true,
+    // eslint-disable-next-line react/display-name
+    SystemsTableWithContext: () => <table></table>
+}));
 
 const RendererWrapper = (props) => (
     <FormRenderer
@@ -32,7 +41,8 @@ const RendererWrapper = (props) => (
                 needs_reboot: false
             },
             [RESOLUTIONS]: remediationWizardTestData.resolutions,
-            [ISSUES_MULTIPLE]: remediationWizardTestData.issuesMultiple
+            [ISSUES_MULTIPLE]: remediationWizardTestData.issuesMultiple,
+            [SYSTEMS]: remediationWizardTestData.selectedSystems
         }}
         schema={{ fields: [] }}
         {...props}
@@ -42,6 +52,14 @@ const RendererWrapper = (props) => (
 const createSchema = () => ({
     fields: reviewActionsFields
 });
+
+let mockStore = configureStore([ promiseMiddleware ]);
+
+const initialState = {
+    hostReducer: {
+        hosts: [{ id: 'test2', display_name: 'test2' }]
+    }
+};
 
 describe('ReviewActions', () => {
 
@@ -53,18 +71,26 @@ describe('ReviewActions', () => {
 
     it('should render correctly', async () => {
         let wrapper;
+        const store = mockStore(initialState);
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema()} />);
+            wrapper = mount(
+                <Provider store={store}>
+                    <RendererWrapper schema={createSchema()} />
+                </Provider>);
         });
         expect(wrapper.find('input[type="radio"]')).toHaveLength(2);
-        expect(wrapper.find('table')).toHaveLength(1);
-        expect(wrapper.find(BodyRow)).toHaveLength(1);
+        expect(wrapper.find('table')).toHaveLength(2);
+        expect(wrapper.find(BodyRow)).toHaveLength(2);
     });
 
     it('should sort table & submit review option', async () => {
         let wrapper;
+        const store = mockStore(initialState);
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema()} onSubmit={onSubmit}/>);
+            wrapper = mount(
+                <Provider store={store}>
+                    <RendererWrapper schema={createSchema()} onSubmit={onSubmit}/>
+                </Provider>);
         });
         wrapper.find('button[className="pf-c-table__button"]').last().simulate('click');
         wrapper.find('input[type="radio"]').first().simulate('change', {
@@ -76,8 +102,12 @@ describe('ReviewActions', () => {
 
     it('should submit accept option', async () => {
         let wrapper;
+        const store = mockStore(initialState);
         await act(async() => {
-            wrapper = mount(<RendererWrapper schema={createSchema()} onSubmit={onSubmit}/>);
+            wrapper = mount(
+                <Provider store={store}>
+                    <RendererWrapper schema={createSchema()} onSubmit={onSubmit}/>
+                </Provider>);
         });
         wrapper.find('input[type="radio"]').last().simulate('change', {
             target: { checked: true } });
