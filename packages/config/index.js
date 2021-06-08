@@ -1,6 +1,10 @@
+const { sync } = require('glob');
+const path = require('path');
+const { readFileSync } = require('fs');
+const defaultStandaloneConfig = require('@redhat-cloud-services/frontend-components-config-utilities/standalone/config/default');
+const { resolvePath } = require('@redhat-cloud-services/frontend-components-config-utilities/standalone/helpers');
 const config = require('./src/config');
 const plugins = require('./src/plugins');
-const { sync } = require('glob');
 
 const gitRevisionPlugin = new(require('git-revision-webpack-plugin'))({
     branch: true
@@ -41,9 +45,10 @@ module.exports = (configurations) => {
     const publicPath = `/${appDeployment}/${insights.appname}/`;
     const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
     const generateSourceMaps = !akamaiBranches.includes(gitBranch);
+    const usingLocalChrome = configurations.useProxy || configurations.standalone || configurations.localChrome;
 
-    /* eslint-disable no-console */
     if (configurations.debug) {
+        /* eslint-disable no-console */
         console.log('~~~Using variables~~~');
         console.log(`Root folder: ${configurations.rootFolder}`);
         console.log(`Current branch: ${gitBranch}`);
@@ -53,11 +58,39 @@ module.exports = (configurations) => {
         console.log(`Public path: ${publicPath}`);
         console.log(`App entry: ${appEntry}`);
         console.log(`Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
-        // eslint-disable-next-line max-len, no-irregular-whitespace
-        !configurations.useProxy && console.log('You can use webpack proxy (instead of using insights-proxy) by setting "useProxy". Check config documentation to see more details.');
+        if(!(configurations.useProxy || configurations.standalone)) {
+          console.warn('Insights-proxy is deprecated in favor of "useProxy" or "standalone". See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
+        }
         console.log('~~~~~~~~~~~~~~~~~~~~~');
+        /* eslint-enable no-console */
     }
-    /* eslint-enable no-console */
+    // This is a one place where config + plugins overlap
+    // Clone standalone repos so we can modify HtmlReplaceWebpackPlugin
+    if (configurations.standalone === true) {
+      configurations.standalone = defaultStandaloneConfig;
+    }
+    if (configurations.standalone && configurations.localChrome) {
+      configurations.standalone.chrome.path = configurations.localChrome;
+    }
+    if (usingLocalChrome) {
+      configurations.reposDir = configurations.reposDir || 'repos';
+      const chromePath = configurations.standalone
+        ? resolvePath(configurations.reposDir, configurations.standalone.chrome.path)
+        : checkoutRepo({
+          repo: defaultStandaloneConfig.chrome.path,
+          reposDir: configurations.reposDir,
+          overwrite: true
+        });
+      configurations.replacePlugin = configurations.replacePlugin || [];
+      configurations.replacePlugin.push({
+        pattern: /<\s*esi:include\s+src\s*=\s*"([^"]+)"\s*\/\s*>/gm,
+        replacement(_match, file) {
+          file = file.split('/').pop();
+          const snippet = path.resolve(chromePath, 'snippets', file);
+          return readFileSync(snippet);
+        }
+      });
+    }
 
     return {
         config: config({

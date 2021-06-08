@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 
 const keycloakPort = 4001;
@@ -6,6 +7,7 @@ module.exports = {
     // Chrome handles its auth through keycloak
     services: {
         keycloak: {
+            // https://hub.docker.com/r/jboss/keycloak/
             args: [
                 `-p ${keycloakPort}:8080`,
                 "-e KEYCLOAK_USER=admin",
@@ -22,30 +24,30 @@ module.exports = {
     },
     // Where to find build assets. Can be a local path.
     path: 'https://github.com/redhatinsights/insights-chrome-build',
-    context: '/apps/chrome',
     keycloakUri: `http://localhost:${keycloakPort}`,
-    selfHandleResponse: true,
-    onProxyReq(_proxyReq, req, res, config) {
+    register({ app, config }) {
         const { path: chromePath, keycloakUri } = config.chrome;
-        const fileReq = req.url.replace(chromePrefix, '');
-        const diskPath = path.join(chromePath, fileReq);
-        if (!fs.existsSync(diskPath)) {
-            return res.status(404).end();
-        }
-        // These hardcoded strings for auth that need to be changed at runtime:
-        // https://github.com/redallen/insights-chrome/commit/de14093bd20105042f48627466d4fba17825a890
-        if (req.url.endsWith('.js')) {
-            let fileString = fs.readFileSync(diskPath, 'utf8');
-            fileString = fileString
-                .replace(/secure=true;/gm, '')
-                // This part gets minified weird. Let's just nuke https to http
-                .replace(/https:\/\//gm, 'http://');
-            if (keycloakUri) {
-                fileString = fileString.replace(/http:\/\/sso.qa.redhat.com/gm, keycloakUri);
-            }
-            res.end(fileString);
-        } else {
-            res.sendFile(diskPath);
-        }
+        app.get('(/beta)?/apps/chrome/*', (req, res) => {
+          const fileReq = req.url.replace('/beta', '').replace('/apps/chrome', '');
+          const diskPath = path.join(process.cwd(), chromePath, fileReq);
+          if (!fs.existsSync(diskPath)) {
+              return res.status(404).end();
+          }
+          // These hardcoded strings for auth that need to be changed at runtime:
+          // https://github.com/redallen/insights-chrome/commit/de14093bd20105042f48627466d4fba17825a890
+          if (req.url.endsWith('.js')) {
+              let fileString = fs.readFileSync(diskPath, 'utf8');
+              fileString = fileString
+                  .replace(/secure=true;/gm, '')
+                  // This part gets minified weird. Let's just nuke https to http
+                  .replace(/https:\/\//gm, 'http://');
+              if (keycloakUri) {
+                  fileString = fileString.replace(/http:\/\/sso.qa.redhat.com/gm, keycloakUri);
+              }
+              res.end(fileString);
+          } else {
+              res.sendFile(diskPath);
+          }
+        });
     }
 };

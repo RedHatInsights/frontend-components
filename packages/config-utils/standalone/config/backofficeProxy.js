@@ -5,8 +5,7 @@ const users = realms.find(f => f.id === 'redhat-external').users;
 // https://gitlab.cee.redhat.com/insights-platform/backoffice-proxy
 module.exports = {
     context: '/api/insights-services',
-    selfHandleResponse: true,
-    onProxyReq(_proxyReq, req, res) {
+    register({ req, res }) {
         if (req.url === '/') {
             res.json({ message: 'success' });
         } else if (req.url === '/v1/sendEmails') {

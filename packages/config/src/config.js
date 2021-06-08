@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 const path = require('path');
-const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
+const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/standalone/proxy');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = ({
@@ -157,7 +157,7 @@ module.exports = ({
             historyApiFallback: true,
             writeToDisk: true,
             serveIndex: true,
-            proxy: proxy({
+            ...proxy({
                 env,
                 localChrome,
                 customProxy,

@@ -8,9 +8,8 @@ const { checkoutRepo } = require('./helpers/checkout');
 const { startService } = require('./startService');
 const { NET } = require('./helpers');
 
-module.exports = async ({
+module.exports = ({
     env,
-    localChrome,
     customProxy = [],
     routes,
     routesPath,
@@ -20,6 +19,7 @@ module.exports = async ({
     reposDir
 }) => {
     const proxy = [];
+    const registry = [];
     const target = env === 'prod-stable'
         ? 'https://cloud.redhat.com/'
         : `https://${env.split('-')[0]}.cloud.redhat.com/`;
@@ -51,8 +51,9 @@ module.exports = async ({
     if (customProxy) {
         proxy.push(...customProxy);
     }
+    let standaloneConfig;
     if (standalone) {
-        const projects = getConfig(standalone, env, port);
+        standaloneConfig = getConfig(standalone, env, port);
         // Create network for services.
         execSync(`docker network inspect ${NET} >/dev/null 2>&1 || docker network create ${NET}`);
 
@@ -60,15 +61,18 @@ module.exports = async ({
         // If we manage the repos it's okay to overwrite the contents
         const overwrite = reposDir === 'repos';
         // Need to use for loop for `await`
-        for (let [projName, proj] of Object.entries(projects)) {
-            let { services, path, assets, onProxyReq, keycloakUri, ...rest } = proj;
+        for (const [projName, proj] of Object.entries(standaloneConfig)) {
+            const { services, path, assets, onProxyReq, keycloakUri, register, target, ...rest } = proj;
+            if (typeof register === 'function') {
+              registry.push(register);
+            }
 
             if (isGitUrl(path)) {
                 // Add typical branch if not included
                 if (!path.includes('#')) {
-                    path = `${path}#${env}`;
+                    proj.path = `${path}#${env}`;
                 }
-                path = checkoutRepo({ repo: path, reposDir, overwrite });
+                proj.path = checkoutRepo({ repo: proj.path, reposDir, overwrite });
             }
             Object.keys(assets || []).forEach(key => {
                 if (isGitUrl(assets[key])) {
@@ -78,27 +82,25 @@ module.exports = async ({
 
             // Resolve functions that depend on env, port, or assets
             if (typeof services === 'function') {
-                services = services({ env, port, assets });
+                proj.services = services({ env, port, assets });
             }
             // Start standalone services.
-            // Need to use for loop for `await`
             for (let [subServiceName, subService] of Object.entries(services || {})) {
                 const name = [projName, subServiceName].join('_');
-                await startService(services, name, subService)
+                startService(services, name, subService)
                 const port = getExposedPort(subService.args);
                 console.log("Container", name, "listening", port ? 'on' : '', port || '');
             }
 
-            proxy.push({
-                secure: false,
-                changeOrigin: true,
-                // https://github.com/chimurai/http-proxy-middleware#http-proxy-events
-                onProxyReq(proxyReq, req, res) {
-                   onProxyReq(proxyReq, req, res, config);
-                   cookieTransform(proxyReq, req);
-                },
-                ...rest
-            });
+            if (target) {
+              proxy.push({
+                  secure: false,
+                  changeOrigin: true,
+                  onProxyReq: cookieTransform,
+                  target,
+                  ...rest
+              });
+            }
         }
     }
     if (useProxy) {
@@ -113,10 +115,20 @@ module.exports = async ({
         });
     }
 
-    console.log('proxy', proxy);
-    return proxy;
+    return {
+      ...(proxy.length > 0 && { proxy }),
+      before(app, server, compiler) {
+        registry.forEach(cb => cb({
+          app,
+          server,
+          compiler,
+          config: standaloneConfig
+        }));
+      }
+    };
 }
 
+/*
 module.exports({
     env: 'ci-beta',
     useProxy: false,
@@ -124,3 +136,4 @@ module.exports({
     port: 1337,
     reposDir: 'repos'
 }).then(() => console.log('done'))
+*/

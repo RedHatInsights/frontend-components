@@ -1,4 +1,4 @@
-// These are the required services for insights-standalone to work.
+// These are the required services for insights-chrome to work.
 const chrome = require('./chrome');
 const config = require('./config');
 const entitlements = require('./entitlements');

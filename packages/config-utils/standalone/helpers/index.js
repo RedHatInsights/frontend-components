@@ -44,18 +44,7 @@ function resolvePath(reposDir, pathOrUrl) {
 
 // standalone: boolean | string | object
 function getConfig(standalone, env, port) {
-  let res = defaultConfig;
-  if (typeof standalone === 'object') {
-    res = merge(standalone, defaultConfig);
-  } else if (typeof standalone === 'string') {
-    try {
-      const config = require(process.cwd() + '/standalone.config');
-      res = merge(res, config);
-    }
-    catch {
-      console.warn('No standalone config provided');
-    }
-  }
+  let res = typeof standalone === 'object' ? standalone : defaultConfig;
 
   // Resolve functions that depend on env or port
   Object.keys(res || {})
