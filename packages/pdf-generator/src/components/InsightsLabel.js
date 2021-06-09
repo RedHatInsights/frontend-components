@@ -50,7 +50,8 @@ const InsightsLabel = ({ variant, label, icon, ...props }) => {
                 backgroundColor: bgColor,
                 width: width,
                 height: 20,
-                borderRadius: 30
+                borderRadius: 30,
+                ...props.labelStyle
             }}
         />
         {icon &&
@@ -59,7 +60,8 @@ const InsightsLabel = ({ variant, label, icon, ...props }) => {
                     left: -width + 7,
                     top: 5,
                     width: 10,
-                    height: 10
+                    height: 10,
+                    ...props.iconStyle
                 }}
                 paint={({ path, scale }) => {
                     scale(0.02);
@@ -70,7 +72,8 @@ const InsightsLabel = ({ variant, label, icon, ...props }) => {
         <Text style={{
             left: variant % 2 === 0 ? -width + 10 : -width + 7,
             top: 4,
-            color: textColor
+            color: textColor,
+            ...props.textStyle
         }}>
             { label ? label : text}
         </Text>
@@ -81,7 +84,10 @@ InsightsLabel.propTypes = {
     variant: PropTypes.number,
     label: PropTypes.string,
     icon: PropTypes.bool,
-    width: PropTypes.number
+    width: PropTypes.number,
+    labelStyle: PropTypes.object,
+    iconStyle: PropTypes.object,
+    textStyle: PropTypes.object
 };
 
 InsightsLabel.defaultProps = {
