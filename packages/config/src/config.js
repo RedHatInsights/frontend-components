@@ -4,7 +4,7 @@ const proxy = require('@redhat-cloud-services/frontend-components-config-utiliti
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = ({
-    port,
+    port = 1337,
     publicPath,
     appEntry,
     rootFolder,
@@ -25,7 +25,6 @@ module.exports = ({
     reposDir = 'repos'
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
-    port = port || useProxy ? 1337 : 8002;
 
     return {
         mode: mode || (isProd ? 'production' : 'development'),
@@ -150,13 +149,13 @@ module.exports = ({
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,
-            host: useProxy ? `${betaEnv}.foo.redhat.com` : '0.0.0.0',
+            host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
             port,
-            https: https || false,
+            https: https || Boolean(useProxy),
             disableHostCheck: true,
             // https://github.com/bripkens/connect-history-api-fallback
             historyApiFallback: {
-              // We should really implement the same logic of cloud-services-config
+              // We should really implement the same logic as cloud-services-config
               // and only redirect (/beta)?/bundle/app-name to /index.html
               //
               // Until then let known api calls fall through instead of returning /index.html

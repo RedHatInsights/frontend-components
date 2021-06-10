@@ -24,9 +24,10 @@ module.exports = ({
 }) => {
     const proxy = [];
     const registry = [];
+    const majorEnv = env.split('-')[0];
     const target = env === 'prod-stable'
         ? 'https://cloud.redhat.com/'
-        : `https://${env.split('-')[0]}.cloud.redhat.com/`;
+        : `https://${majorEnv === 'prod' ? '' : majorEnv + '.'}cloud.redhat.com/`;
 
     if (routesPath) {
         routes = require(routesPath);
@@ -117,11 +118,11 @@ module.exports = ({
     if (useProxy) {
         // Catch-all
         proxy.push({
-            context: () => true,
-            target,
             secure: false,
             changeOrigin: true,
             autoRewrite: true,
+            context: () => true,
+            target,
             router: router(target)
         });
     }
