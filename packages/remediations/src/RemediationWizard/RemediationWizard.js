@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import propTypes from 'prop-types';
 import { fetchHostsById } from '../redux/actions/host-actions';
 import { fetchResolutions } from '../redux/actions/resolution-actions';
@@ -11,14 +11,15 @@ import keyBy from 'lodash/keyBy';
 import FormRenderer from '@data-driven-forms/react-form-renderer/dist/esm/form-renderer';
 import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/dist/esm/form-template';
 import schemaBuilder from './schema';
-import Wizard from '@data-driven-forms/pf4-component-mapper/dist/esm/wizard';
+import WizardMapper from '@data-driven-forms/pf4-component-mapper/dist/esm/wizard';
+import { Modal, Wizard } from '@patternfly/react-core';
 import TextField from '@data-driven-forms/pf4-component-mapper/dist/esm/text-field';
 import componentTypes from '@data-driven-forms/react-form-renderer/dist/esm/component-types';
 import SelectPlaybook from '../steps/selectPlaybook';
+import ReviewSystems from '../steps/reviewSystems';
 import ReviewActions from '../steps/reviewActions';
 import IssueResolution from '../steps/issueResolution';
 import Review from '../steps/review';
-import ReviewSystems from '../steps/reviewSystems';
 import resolutionsReducer, { resolutionsInitialState } from '../redux/reducers/resolutions-reducer';
 import {
     dedupeArray,
@@ -31,6 +32,8 @@ import {
     RESOLUTIONS,
     ISSUES_MULTIPLE
 } from '../utils';
+import Progress from '../steps/progress';
+import { ModalVariant } from '@patternfly/react-core/dist/esm/components/Modal/Modal';
 
 export const RemediationWizard = ({
     setOpen,
@@ -47,6 +50,8 @@ export const RemediationWizard = ({
     );
 
     const dispatch = useDispatch();
+    const [ submitted, setSubmitted ] = useState(false);
+    const [ percent, setPercent ] = useState(0);
 
     const issuesById = keyBy(data.issues, issue => issue.id);
     const [ schema, setSchema ] = useState();
@@ -105,34 +110,71 @@ export const RemediationWizard = ({
     };
 
     return (
-        schema ?
-            <FormRenderer
-                schema={schema}
-                subscription={{ values: true }}
-                FormTemplate={(props) => <Pf4FormTemplate {...props} showFormControls={false} />}
-                initialValues={{
-                    [RESOLUTIONS]: [],
-                    [ISSUES_MULTIPLE]: [],
-                    [SYSTEMS]: {},
-                    [MANUAL_RESOLUTION]: true,
-                    [SELECTED_RESOLUTIONS]: {},
-                    [EXISTING_PLAYBOOK_SELECTED]: false
-                }}
-                componentMapper={{
-                    [componentTypes.WIZARD]: {
-                        component: Wizard,
-                        'data-ouia-component-id': 'remediation-wizard'
-                    },
-                    [componentTypes.TEXT_FIELD]: TextField,
-                    ...mapperExtension
-                }}
-                validatorMapper={validatorMapper}
-                onSubmit={(formValues) => {
-                    submitRemediation(formValues, data, basePath);
-                    setOpen(false);
-                }}
-                onCancel={() => setOpen(false)}
-            /> : null
+        <Fragment>
+            { schema && !submitted ?
+                <FormRenderer
+                    schema={schema}
+                    subscription={{ values: true }}
+                    FormTemplate={(props) => <Pf4FormTemplate {...props} showFormControls={false} />}
+                    initialValues={{
+                        [RESOLUTIONS]: [],
+                        [ISSUES_MULTIPLE]: [],
+                        [SYSTEMS]: {},
+                        [MANUAL_RESOLUTION]: true,
+                        [SELECTED_RESOLUTIONS]: {},
+                        [EXISTING_PLAYBOOK_SELECTED]: false
+                    }}
+                    componentMapper={{
+                        [componentTypes.WIZARD]: {
+                            component: WizardMapper,
+                            'data-ouia-component-id': 'remediation-wizard'
+                        },
+                        [componentTypes.TEXT_FIELD]: TextField,
+                        ...mapperExtension
+                    }}
+                    validatorMapper={validatorMapper}
+                    onSubmit={(formValues) => {
+                        setSubmitted(true);
+                        submitRemediation(formValues, data, basePath, percent, setPercent);
+                        //setOpen(false);
+                    }}
+                    onCancel={() => setOpen(false)}
+                /> : null
+            }
+            {
+                submitted ?
+                    <Modal
+                        isOpen
+                        variant={ModalVariant.large}
+                        showClose={false}
+                        hasNoBodyWrapper
+                        aria-describedby="wiz-modal-description"
+                        aria-labelledby="wiz-modal-title"
+                    >
+                        <Wizard
+                            title={'Remediate with Ansible'}
+                            description={'Add actions to an Ansible Playbook'}
+                            steps={[
+                                {
+                                    name: 'progress',
+                                    component: <Progress
+                                        onClose={() => {
+                                            setSubmitted(false);
+                                        }}
+                                        title={'Adding items to the playbook'}
+                                        percent={percent}
+                                    />,
+                                    isFinishedStep: true
+                                }
+                            ]}
+                            onClose={() => {
+                                setSubmitted(false);
+                            }}
+                        />
+                    </Modal>
+                    : null
+            }
+        </Fragment>
     );
 };
 

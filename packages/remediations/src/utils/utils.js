@@ -139,7 +139,14 @@ export function createNotification(id, name, isNewSwitch, error = false) {
         };
 }
 
-export const submitRemediation = (formValues, data, basePath) => {
+export const submitRemediation = (formValues, data, basePath, percent, setPercent) => {
+    let temp = percent;
+    const interval = setInterval(() => {
+        if (temp < 99) {
+            temp += 1;
+            setPercent(temp);
+        }
+    }, 100);
     const resolver = (id, name, isNewSwitch, onRemediationCreated, error) => onRemediationCreated({
         remediation: { id, name },
         getNotification: () => createNotification(id, name, isNewSwitch, error)
@@ -159,11 +166,25 @@ export const submitRemediation = (formValues, data, basePath) => {
     if (formValues[EXISTING_PLAYBOOK_SELECTED]) {
         const { id, name } = formValues[EXISTING_PLAYBOOK];
         api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
-        .then(() => resolver(id, name, false, data.onRemediationCreated))
+        .then(
+            () => {
+                //resolver(id, name, false, data.onRemediationCreated);
+                setTimeout(() => {
+                    console.log('foo');
+                    clearInterval(interval);
+                }, 10000000);
+            }
+        )
         .catch(() => resolver(null, name, false, data.onRemediationCreated, true));
     } else {
         api.createRemediation({ name: formValues[SELECT_PLAYBOOK], add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
-        .then(({ id }) => resolver(id, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated))
+        .then(({ id }) => {
+            //resolver(id, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated);
+            setTimeout(() => {
+                console.log('foo');
+                clearInterval(interval);
+            }, 10000000);
+        })
         .catch(() => resolver(null, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated, true));
     }
 };
