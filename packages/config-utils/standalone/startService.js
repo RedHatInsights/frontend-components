@@ -10,7 +10,7 @@ async function startService(services, name, subService) {
   // Wait for dependencies to start
   for (const dep of (subService.dependsOn || [])) {
     const [project, subService] = dep.split('_');
-    const { startMessage } = services[project][subService];
+    const { startMessage } = services[project].services[subService];
 
     console.log('Waiting for', dep);
     while (!execSync(`docker logs ${dep} 2>&1`).toString().includes(startMessage)) {
@@ -22,7 +22,7 @@ async function startService(services, name, subService) {
   }
 
   // Start container
-  execSync(`docker run --name ${name} --network ${NET} --detach --pull always ${args}`);
+  execSync(`docker run --detach --name ${name} --network ${NET} --pull always ${args}`);
 }
 
 function stopService(name) {

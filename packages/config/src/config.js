@@ -150,7 +150,7 @@ module.exports = ({
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,
-            host: useProxy ? `${betaEnv}.foo.redhat.com` : undefined,
+            host: useProxy ? `${betaEnv}.foo.redhat.com` : '0.0.0.0',
             port,
             https: https || false,
             disableHostCheck: true,

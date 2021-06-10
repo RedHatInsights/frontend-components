@@ -1,6 +1,5 @@
 const path = require('path');
-const merge = require('deepmerge');
-const defaultConfig = require('../config/default');
+const defaultServices = require('../services/default');
 
 // In: docker args array [string]
 // Out: [number] | null
@@ -44,7 +43,7 @@ function resolvePath(reposDir, pathOrUrl) {
 
 // standalone: boolean | string | object
 function getConfig(standalone, localChrome, env, port) {
-  let res = typeof standalone === 'object' ? standalone : defaultConfig;
+  let res = typeof standalone === 'object' ? standalone : defaultServices;
 
   if (localChrome) {
     configurations.standalone.chrome.path = localChrome;

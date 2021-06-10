@@ -1,3 +1,4 @@
+const path = require('path');
 // Rbac-config has master with 4 folders (ci,prod,qa,stage). Not sure what prod, qa branches are for (they're old)
 function getRbacConfigFolder(env) {
     if (env.startsWith('prod')) {

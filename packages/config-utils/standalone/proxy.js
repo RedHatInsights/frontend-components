@@ -9,7 +9,7 @@ const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./helpers/
 const { checkoutRepo } = require('./helpers/checkout');
 const { startService, stopService } = require('./startService');
 const { NET } = require('./helpers');
-const defaultStandaloneConfig = require('./config/default');
+const defaultServices = require('./services/default');
 
 module.exports = ({
     env,
@@ -90,9 +90,9 @@ module.exports = ({
             }
             // Start standalone services.
             const serviceNames = [];
-            for (let [subServiceName, subService] of Object.entries(services || {})) {
+            for (let [subServiceName, subService] of Object.entries(proj.services || {})) {
                 const name = [projName, subServiceName].join('_');
-                startService(services, name, subService);
+                startService(standaloneConfig, name, subService);
                 serviceNames.push(name);
                 const port = getExposedPort(subService.args);
                 console.log("Container", name, "listening", port ? 'on' : '', port || '');
@@ -134,7 +134,7 @@ module.exports = ({
           const chromePath = standaloneConfig
             ? resolvePath(reposDir, standaloneConfig.chrome.path)
             : checkoutRepo({
-              repo: defaultStandaloneConfig.chrome.path,
+              repo: defaultServices.chrome.path,
               reposDir,
               overwrite: true
             });
@@ -146,7 +146,7 @@ module.exports = ({
             if (req.method === 'GET' && ['', '.hmt', '.html'].includes(ext)) {
               const oldWrite = res.write.bind(res);
               res.write = chunk => {
-                if (res.getHeader('Content-Type').includes('text/html') && !res.writableEnded) {
+                if (res.getHeader('Content-Type').includes('text/html') && !res.headersSent && !res.writableEnded) {
                   if (chunk instanceof Buffer) {
                     chunk = chunk.toString();
                   }
@@ -177,12 +177,3 @@ module.exports = ({
     };
 }
 
-/*
-module.exports({
-    env: 'ci-beta',
-    useProxy: false,
-    standalone: true,
-    port: 1337,
-    reposDir: 'repos'
-}).then(() => console.log('done'))
-*/
