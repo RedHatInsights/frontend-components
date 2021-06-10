@@ -3,7 +3,7 @@ const path = require('path');
 
 const keycloakPort = 4001;
 
-module.exports = {
+module.exports = ({ port }) => ({
     // Chrome handles its auth through keycloak
     services: {
         keycloak: {
@@ -24,7 +24,11 @@ module.exports = {
     },
     // Where to find build assets. Can be a local path.
     path: 'https://github.com/redhatinsights/insights-chrome-build',
-    keycloakUri: `http://localhost:${keycloakPort}`,
+    keycloakUri: `http://localhost:${port}`,
+    context: [
+      '/auth'
+    ],
+    target: `http://localhost:${keycloakPort}`,
     register({ app, config }) {
         const { path: chromePath, keycloakUri } = config.chrome;
         app.get('(/beta)?/apps/chrome/*', (req, res) => {
@@ -42,7 +46,8 @@ module.exports = {
                   // This part gets minified weird. Let's just nuke https to http
                   .replace(/https:\/\//gm, 'http://');
               if (keycloakUri) {
-                  fileString = fileString.replace(/http:\/\/sso.qa.redhat.com/gm, keycloakUri);
+                  fileString = fileString
+                    .replace(/http:\/\/sso.qa.redhat.com/gm, keycloakUri);
               }
               res.end(fileString);
           } else {
@@ -50,4 +55,4 @@ module.exports = {
           }
         });
     }
-};
+});

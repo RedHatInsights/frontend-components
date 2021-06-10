@@ -25,6 +25,13 @@ async function startService(services, name, subService) {
   execSync(`docker run --name ${name} --network ${NET} --detach --pull always ${args}`);
 }
 
+function stopService(name) {
+  // stop container
+  console.log('stopping', name);
+  execSync(`docker stop ${name}`);
+}
+
 module.exports = {
-  startService
+  startService,
+  stopService
 };

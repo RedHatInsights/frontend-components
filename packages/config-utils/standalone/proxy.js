@@ -1,12 +1,15 @@
 /* eslint-disable no-console */
 // Webpack proxy config for `useProxy: true` or `standalone: true`
 const { execSync } = require('child_process');
+const path = require('path');
+const { readFileSync } = require('fs');
 const cookieTransform = require('./helpers/cookieTransform');
 const router = require('./helpers/router');
-const { getConfig, isGitUrl, getExposedPort } = require('./helpers/index');
+const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./helpers/index');
 const { checkoutRepo } = require('./helpers/checkout');
-const { startService } = require('./startService');
+const { startService, stopService } = require('./startService');
 const { NET } = require('./helpers');
+const defaultStandaloneConfig = require('./config/default');
 
 module.exports = ({
     env,
@@ -16,7 +19,8 @@ module.exports = ({
     useProxy,
     standalone,
     port,
-    reposDir
+    reposDir,
+    localChrome
 }) => {
     const proxy = [];
     const registry = [];
@@ -53,7 +57,7 @@ module.exports = ({
     }
     let standaloneConfig;
     if (standalone) {
-        standaloneConfig = getConfig(standalone, env, port);
+        standaloneConfig = getConfig(standalone, localChrome, env, port);
         // Create network for services.
         execSync(`docker network inspect ${NET} >/dev/null 2>&1 || docker network create ${NET}`);
 
@@ -85,12 +89,19 @@ module.exports = ({
                 proj.services = services({ env, port, assets });
             }
             // Start standalone services.
+            const serviceNames = [];
             for (let [subServiceName, subService] of Object.entries(services || {})) {
                 const name = [projName, subServiceName].join('_');
-                startService(services, name, subService)
+                startService(services, name, subService);
+                serviceNames.push(name);
                 const port = getExposedPort(subService.args);
                 console.log("Container", name, "listening", port ? 'on' : '', port || '');
             }
+            process.on("SIGINT", () => {
+              console.log();
+              serviceNames.forEach(stopService);
+              process.exit();
+            });
 
             if (target) {
               proxy.push({
@@ -118,6 +129,44 @@ module.exports = ({
     return {
       ...(proxy.length > 0 && { proxy }),
       before(app, server, compiler) {
+        app.enable('strict routing'); // trailing slashes are mean
+        if (standaloneConfig || localChrome) {
+          const chromePath = standaloneConfig
+            ? resolvePath(reposDir, standaloneConfig.chrome.path)
+            : checkoutRepo({
+              repo: defaultStandaloneConfig.chrome.path,
+              reposDir,
+              overwrite: true
+            });
+          const esiRegex = /<\s*esi:include\s+src\s*=\s*"([^"]+)"\s*\/\s*>/gm;
+          // Express middleware for <esi:include> tags
+          // Inspiration: https://github.com/knpwrs/connect-static-transform
+          app.use((req, res, next) => {
+            const ext = path.extname(req.url);
+            if (req.method === 'GET' && ['', '.hmt', '.html'].includes(ext)) {
+              const oldWrite = res.write.bind(res);
+              res.write = chunk => {
+                if (res.getHeader('Content-Type').includes('text/html') && !res.writableEnded) {
+                  if (chunk instanceof Buffer) {
+                    chunk = chunk.toString();
+                  }
+                  if (typeof chunk === 'string') {
+                    chunk = chunk.replace(esiRegex, (_match, file) => {
+                      file = file.split('/').pop();
+                      const snippet = path.resolve(chromePath, 'snippets', file);
+                      // console.log('snippet', snippet)
+                      return readFileSync(snippet);
+                    });
+                    res.setHeader('Content-Length', chunk.length);
+                  }
+                }
+                oldWrite(chunk);
+              }
+            }
+
+            next();
+          });
+        }
         registry.forEach(cb => cb({
           app,
           server,

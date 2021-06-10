@@ -43,9 +43,12 @@ function resolvePath(reposDir, pathOrUrl) {
 }
 
 // standalone: boolean | string | object
-function getConfig(standalone, env, port) {
+function getConfig(standalone, localChrome, env, port) {
   let res = typeof standalone === 'object' ? standalone : defaultConfig;
 
+  if (localChrome) {
+    configurations.standalone.chrome.path = localChrome;
+  }
   // Resolve functions that depend on env or port
   Object.keys(res || {})
     .filter(key => typeof res[key] === 'function')

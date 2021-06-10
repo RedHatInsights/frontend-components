@@ -1,8 +1,4 @@
 const { sync } = require('glob');
-const path = require('path');
-const { readFileSync } = require('fs');
-const defaultStandaloneConfig = require('@redhat-cloud-services/frontend-components-config-utilities/standalone/config/default');
-const { resolvePath } = require('@redhat-cloud-services/frontend-components-config-utilities/standalone/helpers');
 const config = require('./src/config');
 const plugins = require('./src/plugins');
 
@@ -45,7 +41,6 @@ module.exports = (configurations) => {
     const publicPath = `/${appDeployment}/${insights.appname}/`;
     const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
     const generateSourceMaps = !akamaiBranches.includes(gitBranch);
-    const usingLocalChrome = configurations.useProxy || configurations.standalone || configurations.localChrome;
 
     if (configurations.debug) {
         /* eslint-disable no-console */
@@ -63,33 +58,6 @@ module.exports = (configurations) => {
         }
         console.log('~~~~~~~~~~~~~~~~~~~~~');
         /* eslint-enable no-console */
-    }
-    // This is a one place where config + plugins overlap
-    // Clone standalone repos so we can modify HtmlReplaceWebpackPlugin
-    if (configurations.standalone === true) {
-      configurations.standalone = defaultStandaloneConfig;
-    }
-    if (configurations.standalone && configurations.localChrome) {
-      configurations.standalone.chrome.path = configurations.localChrome;
-    }
-    if (usingLocalChrome) {
-      configurations.reposDir = configurations.reposDir || 'repos';
-      const chromePath = configurations.standalone
-        ? resolvePath(configurations.reposDir, configurations.standalone.chrome.path)
-        : checkoutRepo({
-          repo: defaultStandaloneConfig.chrome.path,
-          reposDir: configurations.reposDir,
-          overwrite: true
-        });
-      configurations.replacePlugin = configurations.replacePlugin || [];
-      configurations.replacePlugin.push({
-        pattern: /<\s*esi:include\s+src\s*=\s*"([^"]+)"\s*\/\s*>/gm,
-        replacement(_match, file) {
-          file = file.split('/').pop();
-          const snippet = path.resolve(chromePath, 'snippets', file);
-          return readFileSync(snippet);
-        }
-      });
     }
 
     return {
