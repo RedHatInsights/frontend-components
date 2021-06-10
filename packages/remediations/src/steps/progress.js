@@ -33,7 +33,7 @@ const Progress = ({
     };
 
     return (
-        <EmptyState variant={EmptyStateVariant.large}>
+        <EmptyState variant={EmptyStateVariant.large} data-component-ouia-id="wizard-progress">
             <EmptyStateIcon
                 className="pf-u-mb-lg pf-u-mt-sm"
                 color={failed ? 'var(--pf-global--danger-color--100)' :
@@ -65,8 +65,9 @@ const Progress = ({
             {percent === 100 && <EmptyStateBody className="pf-c-progress-message-description pf-u-mb-md">
             You can remediate these systems directly from Insights by enabling
                 <Button
-                    variant="link"
                     className="pf-u-py-0 pf-u-px-xs"
+                    variant="link"
+                    ouiaId="CloudConnectorButton"
                     icon={<ExternalLinkSquareAltIcon />}
                     iconPosition="right"
                     isSmall
@@ -141,7 +142,7 @@ Progress.propTypes = {
     submitRemediation: PropTypes.func,
     setState: PropTypes.func,
     state: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         percent: PropTypes.number.isRequired,
         failed: PropTypes.bool.isRequired,
         formValues: PropTypes.shape({

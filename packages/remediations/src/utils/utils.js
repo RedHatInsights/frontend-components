@@ -156,10 +156,10 @@ export const submitRemediation = (formValues, data, basePath, setState) => {
     api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath) ||
     api.createRemediation({ name: formValues[SELECT_PLAYBOOK], add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)).then(({ id }) => {
         setState({ id, percent: 100 });
-        data.onRemediationCreated({
+        /*data.onRemediationCreated({
             remediation: { id, name },
             getNotification: () => createNotification(id, formValues[SELECT_PLAYBOOK], !isUpdate)
-        });
+        });*/
     }).catch(() => {
         setState({ failed: true });
     }).finally(() => clearInterval(interval));
