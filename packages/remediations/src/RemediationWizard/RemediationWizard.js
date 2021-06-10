@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useReducer, useRef, useState } from 'react';
 import propTypes from 'prop-types';
 import { fetchHostsById } from '../redux/actions/host-actions';
 import { fetchResolutions } from '../redux/actions/resolution-actions';
@@ -35,13 +35,33 @@ import {
 import Progress from '../steps/progress';
 import { ModalVariant } from '@patternfly/react-core/dist/esm/components/Modal/Modal';
 
+const initialState = {
+    submitted: false,
+    id: undefined,
+    percent: 0,
+    failed: false,
+    formValues: undefined
+};
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'schema':
+            return { ...state, schema: action.payload };
+        case 'formValues':
+            return { ...state, formValues: action.payload };
+        case 'state':
+            return { ...state, ...action.payload };
+        default:
+            throw new Error();
+    }
+};
+
 export const RemediationWizard = ({
     setOpen,
     data,
     basePath,
     registry
 }) => {
-
     const allSystems = useRef(
         dedupeArray(data.issues.reduce((acc, curr) => [
             ...acc,
@@ -50,11 +70,10 @@ export const RemediationWizard = ({
     );
 
     const dispatch = useDispatch();
-    const [ submitted, setSubmitted ] = useState(false);
-    const [ percent, setPercent ] = useState(0);
+
+    const [ state, setState ] = useReducer(reducer, initialState);
 
     const issuesById = keyBy(data.issues, issue => issue.id);
-    const [ schema, setSchema ] = useState();
 
     const fetchHostNames = (systems = []) => {
         const perChunk = 50;
@@ -65,7 +84,7 @@ export const RemediationWizard = ({
     };
 
     useEffect(() => {
-        setSchema(schemaBuilder(data.issues));
+        setState({ type: 'schema', payload: schemaBuilder(data.issues) });
         registry.register({
             hostReducer: applyReducerHash(hostReducer, hostsInitialState),
             resolutionsReducer: applyReducerHash(resolutionsReducer, resolutionsInitialState)
@@ -111,9 +130,9 @@ export const RemediationWizard = ({
 
     return (
         <Fragment>
-            { schema && !submitted ?
+            { state.schema && !state.submitted ?
                 <FormRenderer
-                    schema={schema}
+                    schema={state.schema}
                     subscription={{ values: true }}
                     FormTemplate={(props) => <Pf4FormTemplate {...props} showFormControls={false} />}
                     initialValues={{
@@ -134,15 +153,14 @@ export const RemediationWizard = ({
                     }}
                     validatorMapper={validatorMapper}
                     onSubmit={(formValues) => {
-                        setSubmitted(true);
-                        submitRemediation(formValues, data, basePath, percent, setPercent);
-                        //setOpen(false);
+                        setState({ type: 'state', payload: { submitted: true, formValues: formValues } });
+                        submitRemediation(formValues, data, basePath, (payload) => setState({ type: 'state', payload: payload }));
                     }}
                     onCancel={() => setOpen(false)}
                 /> : null
             }
             {
-                submitted ?
+                state.submitted ?
                     <Modal
                         isOpen
                         variant={ModalVariant.large}
@@ -159,16 +177,25 @@ export const RemediationWizard = ({
                                     name: 'progress',
                                     component: <Progress
                                         onClose={() => {
-                                            setSubmitted(false);
+                                            setState({ type: 'state', payload: { submitted: false, id: undefined, failed: false, formValues: undefined } });
                                         }}
                                         title={'Adding items to the playbook'}
-                                        percent={percent}
+                                        setOpen={setOpen}
+                                        submitRemediation={() => submitRemediation(
+                                            state.formValues,
+                                            data,
+                                            basePath,
+                                            (payload) => setState({ type: 'state', payload: payload })
+                                        )}
+                                        setState={(payload) => setState({ type: 'state', payload: payload })}
+                                        state={state}
                                     />,
                                     isFinishedStep: true
                                 }
                             ]}
                             onClose={() => {
-                                setSubmitted(false);
+                                setState({ type: 'state', payload: { submitted: false, id: undefined, failed: false, formValues: undefined } });
+                                setOpen(false);
                             }}
                         />
                     </Modal>
