@@ -97,23 +97,29 @@ describe('submitRemediation', () => {
 
     it('should update remediation correctly', () => {
         const updateFunction = jest.fn(() => Promise.resolve());
+        const setState = jest.fn();
         dependency.patchRemediation = updateFunction;
-        submitRemediation(formValues, data);
+        submitRemediation(formValues, data, undefined, setState);
         expect(updateFunction).toHaveBeenCalledTimes(1);
+        expect(setState).toHaveBeenCalled();
     });
 
     it('should create remediation correctly', () => {
         const createFunction = jest.fn(() => Promise.resolve({ id: 'tesdId' }));
+        const setState = jest.fn();
         dependency.createRemediation = createFunction;
-        submitRemediation({ ...formValues, [EXISTING_PLAYBOOK_SELECTED]: false }, data, undefined);
+        submitRemediation({ ...formValues, [EXISTING_PLAYBOOK_SELECTED]: false }, data, undefined, setState);
         expect(createFunction).toHaveBeenCalledTimes(1);
+        expect(setState).toHaveBeenCalled();
     });
 
     it('should handle error', () => {
         const createFunction = jest.fn(() => Promise.reject('error'));
+        const setState = jest.fn();
         dependency.createRemediation = createFunction;
-        submitRemediation({ ...formValues, [EXISTING_PLAYBOOK_SELECTED]: false }, data, undefined, resolutions);
+        submitRemediation({ ...formValues, [EXISTING_PLAYBOOK_SELECTED]: false }, data, undefined, setState);
         expect(createFunction).toHaveBeenCalledTimes(1);
+        expect(setState).toHaveBeenCalled();
     });
 
 });
@@ -254,10 +260,5 @@ describe('createNotification', () => {
     it('should get succes notification', () => {
         const value = createNotification('id', 'name', false);
         expect(value.variant).toEqual('success');
-    });
-
-    it('should get danger notification', () => {
-        const value = createNotification('id', 'name', false, true);
-        expect(value.variant).toEqual('danger');
     });
 });

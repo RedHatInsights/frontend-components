@@ -47,8 +47,6 @@ const reducer = (state, action) => {
     switch (action.type) {
         case 'schema':
             return { ...state, schema: action.payload };
-        case 'formValues':
-            return { ...state, formValues: action.payload };
         case 'state':
             return { ...state, ...action.payload };
         default:
