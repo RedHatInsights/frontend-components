@@ -97,7 +97,7 @@ We've aimed for easy plug and play, but feel free to override any fed mods parti
 
 #### List of shared deps
 
-This packages exposes these shared dependencies
+This packages exposes these federated shared dependencies
 * `lodash` - version taken from your `package.json`
 * `axios` - version taken from your `package.json`
 * `redux` - version taken from your `package.json`
