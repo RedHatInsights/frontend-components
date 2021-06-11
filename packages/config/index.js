@@ -53,9 +53,11 @@ module.exports = (configurations) => {
         console.log(`Public path: ${publicPath}`);
         console.log(`App entry: ${appEntry}`);
         console.log(`Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
-        if(!(configurations.useProxy || configurations.standalone)) {
-          console.warn('Insights-proxy is deprecated in favor of "useProxy" or "standalone". See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
+        if (!(configurations.useProxy || configurations.standalone)) {
+            console.warn('Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
+            console.warn('See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
         }
+
         console.log('~~~~~~~~~~~~~~~~~~~~~');
         /* eslint-enable no-console */
     }

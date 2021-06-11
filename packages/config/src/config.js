@@ -160,15 +160,15 @@ module.exports = ({
             disableHostCheck: true,
             // https://github.com/bripkens/connect-history-api-fallback
             historyApiFallback: {
-              // We should really implement the same logic as cloud-services-config
-              // and only redirect (/beta)?/bundle/app-name to /index.html
-              //
-              // Until then let known api calls fall through instead of returning /index.html
-              // for easier `fetch` debugging
-              rewrites: [
-                { from: /^\/api/, to: '/404.html' },
-                { from: /^(\/beta)?\/config/, to: '/404.html' },
-              ],
+                // We should really implement the same logic as cloud-services-config
+                // and only redirect (/beta)?/bundle/app-name to /index.html
+                //
+                // Until then let known api calls fall through instead of returning /index.html
+                // for easier `fetch` debugging
+                rewrites: [
+                    { from: /^\/api/, to: '/404.html' },
+                    { from: /^(\/beta)?\/config/, to: '/404.html' }
+                ]
             },
             writeToDisk: true,
             ...proxy({
