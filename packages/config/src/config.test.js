@@ -71,14 +71,19 @@ describe('should create dummy config with no options', () => {
 
     test('devServer', () => {
         expect(devServer).toEqual({
+            before: expect.any(Function),
             contentBase: '/dist',
-            port: 8002,
             https: false,
-            inline: true,
+            host: '0.0.0.0',
+            port: 1337,
             disableHostCheck: true,
-            historyApiFallback: true,
-            writeToDisk: true,
-            proxy: expect.any(Object)
+            historyApiFallback: {
+                rewrites: [
+                    { from: /^\/api/, to: '/404.html' },
+                    { from: /^(\/beta)?\/config/, to: '/404.html' }
+                ]
+            },
+            writeToDisk: true
         });
     });
 });
