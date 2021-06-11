@@ -8,7 +8,7 @@ module.exports = {
       // This is needed because otherwise express will add a trailing slash
       // like "/silent-check-sso.html/" which is bad for keycloak JS
       app.get('(/beta)?/*.html', (req, res) => {
-        const diskPath = path.join(process.cwd(), config.landing.path, req.url.replace('/beta', ''));
+        const diskPath = path.join(config.landing.path, req.url.replace('/beta', ''));
         res.sendFile(diskPath);
       });
       app.use('(/beta)?/apps/landing', staticLanding);

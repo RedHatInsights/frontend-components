@@ -41,7 +41,7 @@ function resolvePath(reposDir, pathOrUrl) {
     : pathOrUrl;
 }
 
-// standalone: boolean | string | object
+// standalone: boolean | object
 function getConfig(standalone, localChrome, env, port) {
   let res = typeof standalone === 'object' ? standalone : defaultServices;
 

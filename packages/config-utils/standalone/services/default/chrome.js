@@ -28,31 +28,62 @@ module.exports = ({ port }) => ({
     context: [
       '/auth'
     ],
-    target: `http://localhost:${keycloakPort}`,
-    register({ app, config }) {
-        const { path: chromePath, keycloakUri } = config.chrome;
-        app.get('(/beta)?/apps/chrome/*', (req, res) => {
-          const fileReq = req.url.replace('/beta', '').replace('/apps/chrome', '');
-          const diskPath = path.join(process.cwd(), chromePath, fileReq);
-          if (!fs.existsSync(diskPath)) {
-              return res.status(404).end();
-          }
-          // These hardcoded strings for auth that need to be changed at runtime:
-          // https://github.com/redallen/insights-chrome/commit/de14093bd20105042f48627466d4fba17825a890
-          if (req.url.endsWith('.js')) {
-              let fileString = fs.readFileSync(diskPath, 'utf8');
-              fileString = fileString
-                  .replace(/secure=true;/gm, '')
-                  // This part gets minified weird. Let's just nuke https to http
-                  .replace(/https:\/\//gm, 'http://');
-              if (keycloakUri) {
-                  fileString = fileString
-                    .replace(/http:\/\/sso.qa.redhat.com/gm, keycloakUri);
-              }
-              res.end(fileString);
-          } else {
-              res.sendFile(diskPath);
-          }
-        });
-    }
+    target: `http://localhost:${keycloakPort}`
 });
+
+// Also called when `localChrome` set
+module.exports.registerChrome = ({ app, chromePath, keycloakUri, https }) => {
+    const esiRegex = /<\s*esi:include\s+src\s*=\s*"([^"]+)"\s*\/\s*>/gm;
+    // Express middleware for <esi:include> tags
+    // Inspiration: https://github.com/knpwrs/connect-static-transform
+    app.use((req, res, next) => {
+        const ext = path.extname(req.url);
+        if (req.method === 'GET' && ['', '.hmt', '.html'].includes(ext)) {
+            const oldWrite = res.write.bind(res);
+            res.write = chunk => {
+            if (res.getHeader('Content-Type').includes('text/html') && !res.headersSent && !res.writableEnded) {
+                if (chunk instanceof Buffer) {
+                chunk = chunk.toString();
+                }
+                if (typeof chunk === 'string') {
+                chunk = chunk.replace(esiRegex, (_match, file) => {
+                    file = file.split('/').pop();
+                    const snippet = path.resolve(chromePath, 'snippets', file);
+                    // console.log('snippet', snippet)
+                    return fs.readFileSync(snippet);
+                });
+                res.setHeader('Content-Length', chunk.length);
+                }
+            }
+            oldWrite(chunk);
+            }
+        }
+
+        next();
+    });
+    // Serve files which respect `keycloakUri` and `https`.
+    app.get('(/beta)?/apps/chrome/*', (req, res) => {
+      const fileReq = req.url.replace('/beta', '').replace('/apps/chrome', '');
+      const diskPath = path.join(chromePath, fileReq);
+      if (!fs.existsSync(diskPath)) {
+          return res.status(404).end();
+      }
+      // These hardcoded strings for auth that need to be changed at runtime:
+      // https://github.com/redallen/insights-chrome/commit/de14093bd20105042f48627466d4fba17825a890
+      if (req.url.endsWith('.js')) {
+          let fileString = fs.readFileSync(diskPath, 'utf8');
+          if (!https) {
+            fileString = fileString
+                .replace(/secure=true;/gm, '')
+                .replace(/https:\/\//gm, 'http://');
+          }
+          if (keycloakUri) {
+              fileString = fileString
+                .replace(/http:\/\/sso.qa.redhat.com/gm, keycloakUri);
+          }
+          res.end(fileString);
+      } else {
+          res.sendFile(diskPath);
+      }
+    });
+};

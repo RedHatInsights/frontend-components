@@ -12,6 +12,7 @@ module.exports = ({
     mode,
     appName,
     useFileHash = true,
+    betaEnv,
     env = 'ci-beta',
     sassPrefix,
     skipChrome2 = false,
@@ -22,9 +23,13 @@ module.exports = ({
     routesPath,
     isProd,
     standalone = false,
-    reposDir = 'repos'
+    reposDir
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
+    if (betaEnv) {
+        env = `${betaEnv}-beta`;
+        console.warn('betaEnv is deprecated in favor of env');
+    }
 
     return {
         mode: mode || (isProd ? 'production' : 'development'),
@@ -149,9 +154,9 @@ module.exports = ({
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,
-            host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
             port,
             https: https || Boolean(useProxy),
+            host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
             disableHostCheck: true,
             // https://github.com/bripkens/connect-history-api-fallback
             historyApiFallback: {

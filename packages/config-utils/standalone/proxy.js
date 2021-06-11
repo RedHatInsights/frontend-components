@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
-// Webpack proxy config for `useProxy: true` or `standalone: true`
+// Webpack proxy and express config for `useProxy: true` or `standalone: true`
 const { execSync } = require('child_process');
 const path = require('path');
-const { readFileSync } = require('fs');
 const cookieTransform = require('./helpers/cookieTransform');
 const router = require('./helpers/router');
 const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./helpers/index');
@@ -10,6 +9,9 @@ const { checkoutRepo } = require('./helpers/checkout');
 const { startService, stopService } = require('./startService');
 const { NET } = require('./helpers');
 const defaultServices = require('./services/default');
+const { registerChrome } = require('./services/default/chrome');
+
+const defaultReposDir = path.join(__dirname, 'repos')
 
 module.exports = ({
     env,
@@ -19,7 +21,7 @@ module.exports = ({
     useProxy,
     standalone,
     port,
-    reposDir,
+    reposDir = defaultReposDir,
     localChrome
 }) => {
     const proxy = [];
@@ -64,7 +66,7 @@ module.exports = ({
 
         // Clone repos
         // If we manage the repos it's okay to overwrite the contents
-        const overwrite = reposDir === 'repos';
+        const overwrite = reposDir === defaultReposDir;
         // Need to use for loop for `await`
         for (const [projName, proj] of Object.entries(standaloneConfig)) {
             const { services, path, assets, onProxyReq, keycloakUri, register, target, ...rest } = proj;
@@ -139,34 +141,12 @@ module.exports = ({
               reposDir,
               overwrite: true
             });
-          const esiRegex = /<\s*esi:include\s+src\s*=\s*"([^"]+)"\s*\/\s*>/gm;
-          // Express middleware for <esi:include> tags
-          // Inspiration: https://github.com/knpwrs/connect-static-transform
-          app.use((req, res, next) => {
-            const ext = path.extname(req.url);
-            if (req.method === 'GET' && ['', '.hmt', '.html'].includes(ext)) {
-              const oldWrite = res.write.bind(res);
-              res.write = chunk => {
-                if (res.getHeader('Content-Type').includes('text/html') && !res.headersSent && !res.writableEnded) {
-                  if (chunk instanceof Buffer) {
-                    chunk = chunk.toString();
-                  }
-                  if (typeof chunk === 'string') {
-                    chunk = chunk.replace(esiRegex, (_match, file) => {
-                      file = file.split('/').pop();
-                      const snippet = path.resolve(chromePath, 'snippets', file);
-                      // console.log('snippet', snippet)
-                      return readFileSync(snippet);
-                    });
-                    res.setHeader('Content-Length', chunk.length);
-                  }
-                }
-                oldWrite(chunk);
-              }
-            }
-
-            next();
-          });
+          registerChrome({
+            app,
+            chromePath,
+            keycloakUri: standaloneConfig ? standaloneConfig.chrome.keycloakUri : null,
+            https: Boolean(server.options.https)
+          })
         }
         registry.forEach(cb => cb({
           app,
