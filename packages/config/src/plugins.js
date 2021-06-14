@@ -29,7 +29,14 @@ module.exports = ({
     new MiniCssExtractPlugin({
         chunkFilename: 'css/[name].[contenthash].css',
         filename: 'css/[name].[contenthash].css',
-        ignoreOrder: true
+        ignoreOrder: true,
+        insert: function(linkTag) {
+            if (linkTag.href && linkTag.href.includes('pfVendor')) {
+                document.head.insertBefore(linkTag, document.head.firstElementChild);
+            } else {
+                document.head.appendChild(linkTag);
+            }
+        }
     }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
