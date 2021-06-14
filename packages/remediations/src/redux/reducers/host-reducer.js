@@ -8,7 +8,7 @@ export const hostsInitialState = {
 
 const setLoadingState = (state) => ({ ...state, isLoading: true });
 
-const setHosts = (state, { payload }) => ({ ...state, hosts: [ ...state.hosts, ...payload.results ], isLoading: false });
+const setHosts = (state, { payload }) => ({ ...state, hosts: [ ...state.hosts, ...(payload.results || []) ], isLoading: false });
 
 export default {
     [`${FETCH_SELECTED_HOSTS}_FULFILLED`]: setHosts,

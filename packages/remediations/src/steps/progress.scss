@@ -1,0 +1,20 @@
+div.pf-c-empty-state__content {
+    max-width: 100%;
+    width: 80%;
+}
+
+div.pf-c-progress__description {
+    display: flex;
+}
+
+.pf-c-empty-state__body.pf-c-progress-bar {
+    margin: 0 12.5% 0 12.5%;
+}
+
+.pf-c-empty-state__body.pf-c-progress-message {
+    color: var(--pf-global--palette--black-900);
+}
+
+.pf-c-empty-state__body.pf-c-progress-message-description {
+    font-size: var(--pf-global--FontSize--sm);
+}
