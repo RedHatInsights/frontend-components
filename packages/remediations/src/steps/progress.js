@@ -10,7 +10,7 @@ import {
 } from '@patternfly/react-core';
 import ProgressBar from '../common/ProgressBar';
 import PropTypes from 'prop-types';
-import { CheckCircleIcon, ExclamationCircleIcon, ExternalLinkSquareAltIcon, InProgressIcon } from '@patternfly/react-icons';
+import { CheckCircleIcon, ExclamationCircleIcon, ExternalLinkAltIcon, InProgressIcon } from '@patternfly/react-icons';
 import { dedupeArray, getEnvUrl, pluralize, remediationUrl, SELECT_PLAYBOOK, SYSTEMS } from '../utils';
 import './progress.scss';
 
@@ -68,7 +68,7 @@ const Progress = ({
                     className="pf-u-py-0 pf-u-px-xs"
                     variant="link"
                     ouiaId="CloudConnectorButton"
-                    icon={<ExternalLinkSquareAltIcon />}
+                    icon={<ExternalLinkAltIcon />}
                     iconPosition="right"
                     isSmall
                     onClick={
@@ -128,7 +128,7 @@ const Progress = ({
                                 setOpen(false);
                                 window.location.href = remediationUrl(playbook.id);
                             }}>
-                            Open Playbook {playbook.name}
+                            Open playbook {playbook.name}
                         </Button>
                 }
             </EmptyStateSecondaryActions>
