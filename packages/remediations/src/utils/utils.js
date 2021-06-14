@@ -10,7 +10,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { SystemsTableWithContext } from '../common/SystemsTable';
 
 export const CAN_REMEDIATE = 'remediations:remediation:write';
-
 export const AUTO_REBOOT = 'auto-reboot';
 export const HAS_MULTIPLES = 'has-multiples';
 export const SELECT_PLAYBOOK = 'select-playbook';
@@ -21,23 +20,20 @@ export const EXISTING_PLAYBOOK = 'existing-playbook';
 export const SYSTEMS = 'systems';
 export const RESOLUTIONS = 'resolutions';
 export const ISSUES_MULTIPLE = 'issues-multiple';
-
 export const TOGGLE_BULK_SELECT = 'toggle-bulk-select';
 
 // Get the current group since we can be mounted at two urls
-export function getGroup () {
+export const getGroup = () => {
     const pathName = window.location.pathname.split('/');
+    return pathName[1] === 'beta' ? pathName[2] : pathName[1];
+};
 
-    if (pathName[1] === 'beta') {
-        return pathName[2];
-    }
+export const getEnvUrl = () => {
+    const pathName = window.location.pathname.split('/');
+    return pathName[1] === 'beta' ? 'beta/' : '';
+};
 
-    return pathName[1];
-}
-
-export function remediationUrl (id) {
-    return urijs(document.baseURI).segment(getGroup()).segment('remediations').segment(id).toString();
-}
+export const remediationUrl = (id) => urijs(document.baseURI).segment(getGroup()).segment('remediations').segment(id).toString();
 
 export const dedupeArray = (array) => [ ...new Set(array) ];
 
@@ -122,31 +118,22 @@ export const getResolution = (issueId, formValues) => {
     return issueResolutions;
 };
 
-export function createNotification(id, name, isNewSwitch, error = false) {
+export function createNotification(id, name, isNewSwitch) {
     const verb = isNewSwitch ? 'created' : 'updated';
-    return error
-        ? {
-            variant: 'danger',
-            title: `Failed to ${verb.slice(0, -1)} playbook`,
-            description: <span>Playbook was not {verb} successfully.</span>,
-            dismissable: true
-        }
-        : {
-            variant: 'success',
-            title: `Playbook ${verb}`,
-            description: <span>You have successfully {verb} <a href={remediationUrl(id)}>{name}</a>.</span>,
-            dismissable: true
-        };
+    return {
+        variant: 'success',
+        title: `Playbook ${verb}`,
+        description: <span>You have successfully {verb} <a href={remediationUrl(id)}>{name}</a>.</span>,
+        dismissable: true
+    };
 }
 
-export const submitRemediation = (formValues, data, basePath) => {
-    const resolver = (id, name, isNewSwitch, onRemediationCreated, error) => onRemediationCreated({
-        remediation: { id, name },
-        getNotification: () => createNotification(id, name, isNewSwitch, error)
-    });
-    const playbook = formValues[EXISTING_PLAYBOOK];
+export const submitRemediation = (formValues, data, basePath, setState) => {
+    let percent = 1;
+    setState({ percent });
+
     const issues = data.issues.map(({ id }) => {
-        const playbookSystems = playbook?.issues?.find(i => i.id === id)?.systems?.map(s => s.id) || [];
+        const playbookSystems = formValues[EXISTING_PLAYBOOK]?.issues?.find(i => i.id === id)?.systems?.map(s => s.id) || [];
         return ({
             id,
             resolution: getResolution(id, formValues)?.[0]?.id,
@@ -155,17 +142,28 @@ export const submitRemediation = (formValues, data, basePath) => {
                 ...(formValues[SYSTEMS][id] || [])
             ])
         });}).filter(issue => issue.systems.length > 0);
+
+    const interval = setInterval(() => {
+        percent < 99 && setState({ percent: ++percent });
+    }, (issues.length + Object.keys(formValues[SYSTEMS]).length) / 10);
+
     const add = { issues, systems: [] };
-    if (formValues[EXISTING_PLAYBOOK_SELECTED]) {
-        const { id, name } = formValues[EXISTING_PLAYBOOK];
-        api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
-        .then(() => resolver(id, name, false, data.onRemediationCreated))
-        .catch(() => resolver(null, name, false, data.onRemediationCreated, true));
-    } else {
-        api.createRemediation({ name: formValues[SELECT_PLAYBOOK], add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)
-        .then(({ id }) => resolver(id, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated))
-        .catch(() => resolver(null, formValues[SELECT_PLAYBOOK], true, data.onRemediationCreated, true));
-    }
+
+    const { id } = formValues[EXISTING_PLAYBOOK] || {};
+    const isUpdate = formValues[EXISTING_PLAYBOOK_SELECTED];
+
+    (isUpdate &&
+    api.patchRemediation(id, { add, auto_reboot: formValues[AUTO_REBOOT] }, basePath) ||
+    api.createRemediation({ name: formValues[SELECT_PLAYBOOK], add, auto_reboot: formValues[AUTO_REBOOT] }, basePath)).then(({ id }) => {
+        setState({ id, percent: 100 });
+        data.onRemediationCreated({
+            remediation: { id, name },
+            getNotification: () => createNotification(id, formValues[SELECT_PLAYBOOK], !isUpdate)
+        });
+    }).catch(() => {
+        setState({ failed: true });
+    }).finally(() => clearInterval(interval));
+
 };
 
 export const entitySelected = (state, { payload }) => {
