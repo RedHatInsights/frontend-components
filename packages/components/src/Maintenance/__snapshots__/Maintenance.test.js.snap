@@ -21,7 +21,7 @@ exports[`Maintenance component should render with default props 1`] = `
       <StackItem>
         unavailable from 
         10am
-        -
+         to 
         12am
          UTC (
         6am
@@ -87,7 +87,7 @@ exports[`Maintenance component should render with times 1`] = `
       <StackItem>
         unavailable from 
         10am
-        -
+         to 
         12am
          UTC (
         12am
