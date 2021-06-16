@@ -2,19 +2,19 @@
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
 const { execSync } = require('child_process');
 const path = require('path');
-const cookieTransform = require('./helpers/cookieTransform');
-const router = require('./helpers/router');
-const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./helpers/index');
-const { checkoutRepo } = require('./helpers/checkout');
-const { startService, stopService } = require('./startService');
-const { NET } = require('./helpers');
-const defaultServices = require('./services/default');
-const { registerChrome } = require('./services/default/chrome');
+const cookieTransform = require('./standalone/helpers/cookieTransform');
+const router = require('./standalone/helpers/router');
+const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./standalone/helpers/index');
+const { checkoutRepo } = require('./standalone/helpers/checkout');
+const { startService, stopService } = require('./standalone/startService');
+const { NET } = require('./standalone/helpers');
+const defaultServices = require('./standalone/services/default');
+const { registerChrome } = require('./standalone/services/default/chrome');
 
-const defaultReposDir = path.join(__dirname, 'repos')
+const defaultReposDir = path.join(__dirname, 'repos');
 
 module.exports = ({
-    env,
+    env = 'ci-beta',
     customProxy = [],
     routes,
     routesPath,
@@ -22,7 +22,10 @@ module.exports = ({
     standalone,
     port,
     reposDir = defaultReposDir,
-    localChrome
+    localChrome,
+    appUrl = [],
+    publicPath,
+    proxyVerbose
 }) => {
     const proxy = [];
     const registry = [];
@@ -30,15 +33,21 @@ module.exports = ({
     const target = env === 'prod-stable'
         ? 'https://cloud.redhat.com/'
         : `https://${majorEnv === 'prod' ? '' : majorEnv + '.'}cloud.redhat.com/`;
+    if (!Array.isArray(appUrl)) {
+        appUrl = [ appUrl ];
+    }
+
+    appUrl.push(publicPath);
 
     if (routesPath) {
         routes = require(routesPath);
     }
+
     if (routes) {
         routes = routes.routes || routes;
         console.log('Making proxy from SPANDX routes');
         proxy.push(
-            ...Object.entries(routes || {}).map(([route, redirect]) => {
+            ...Object.entries(routes || {}).map(([ route, redirect ]) => {
                 const currTarget = redirect.host || redirect;
                 delete redirect.host;
                 return {
@@ -55,9 +64,11 @@ module.exports = ({
             })
         );
     }
+
     if (customProxy) {
         proxy.push(...customProxy);
     }
+
     let standaloneConfig;
     if (standalone) {
         standaloneConfig = getConfig(standalone, localChrome, env, port);
@@ -68,10 +79,10 @@ module.exports = ({
         // If we manage the repos it's okay to overwrite the contents
         const overwrite = reposDir === defaultReposDir;
         // Need to use for loop for `await`
-        for (const [projName, proj] of Object.entries(standaloneConfig)) {
+        for (const [ projName, proj ] of Object.entries(standaloneConfig)) {
             const { services, path, assets, onProxyReq, keycloakUri, register, target, ...rest } = proj;
             if (typeof register === 'function') {
-              registry.push(register);
+                registry.push(register);
             }
 
             if (isGitUrl(path)) {
@@ -79,8 +90,10 @@ module.exports = ({
                 if (!path.includes('#')) {
                     proj.path = `${path}#${env}`;
                 }
+
                 proj.path = checkoutRepo({ repo: proj.path, reposDir, overwrite });
             }
+
             Object.keys(assets || []).forEach(key => {
                 if (isGitUrl(assets[key])) {
                     assets[key] = checkoutRepo({ repo: assets[key], reposDir, overwrite });
@@ -91,70 +104,91 @@ module.exports = ({
             if (typeof services === 'function') {
                 proj.services = services({ env, port, assets });
             }
+
             // Start standalone services.
             const serviceNames = [];
-            for (let [subServiceName, subService] of Object.entries(proj.services || {})) {
-                const name = [projName, subServiceName].join('_');
+            for (let [ subServiceName, subService ] of Object.entries(proj.services || {})) {
+                const name = [ projName, subServiceName ].join('_');
                 startService(standaloneConfig, name, subService);
                 serviceNames.push(name);
                 const port = getExposedPort(subService.args);
-                console.log("Container", name, "listening", port ? 'on' : '', port || '');
+                console.log('Container', name, 'listening', port ? 'on' : '', port || '');
             }
-            process.on("SIGINT", () => {
-              console.log();
-              serviceNames.forEach(stopService);
-              process.exit();
+
+            process.on('SIGINT', () => {
+                console.log();
+                serviceNames.forEach(stopService);
+                process.exit();
             });
 
             if (target) {
-              proxy.push({
-                  secure: false,
-                  changeOrigin: true,
-                  onProxyReq: cookieTransform,
-                  target,
-                  ...rest
-              });
+                proxy.push({
+                    secure: false,
+                    changeOrigin: true,
+                    onProxyReq: cookieTransform,
+                    target,
+                    ...rest
+                });
             }
         }
     }
+
     if (useProxy) {
         // Catch-all
         proxy.push({
             secure: false,
             changeOrigin: true,
             autoRewrite: true,
-            context: () => true,
+            context: url => {
+                const shouldProxy = !appUrl.find(u => url.startsWith(u));
+                if (shouldProxy) {
+                    console.log('proxy', url);
+                    return true;
+                }
+
+                return false;
+            },
             target,
             router: router(target)
         });
     }
 
     return {
-      ...(proxy.length > 0 && { proxy }),
-      before(app, server, compiler) {
-        app.enable('strict routing'); // trailing slashes are mean
-        if (standaloneConfig || localChrome) {
-          const chromePath = standaloneConfig
-            ? resolvePath(reposDir, standaloneConfig.chrome.path)
-            : checkoutRepo({
-              repo: defaultServices.chrome.path,
-              reposDir,
-              overwrite: true
-            });
-          registerChrome({
-            app,
-            chromePath,
-            keycloakUri: standaloneConfig ? standaloneConfig.chrome.keycloakUri : null,
-            https: Boolean(server.options.https)
-          })
+        ...(proxy.length > 0 && { proxy }),
+        before(app, server, compiler) {
+            app.enable('strict routing'); // trailing slashes are mean
+            let chromePath = localChrome;
+            if (standaloneConfig) {
+                chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
+            } else if (!localChrome && useProxy) {
+                if (typeof defaultServices.chrome === 'function') {
+                    defaultServices.chrome = defaultServices.chrome({});
+                }
+
+                chromePath = checkoutRepo({
+                    repo: `${defaultServices.chrome.path}#${env}`,
+                    reposDir,
+                    overwrite: true
+                });
+            }
+
+            if (chromePath) {
+                registerChrome({
+                    app,
+                    chromePath,
+                    keycloakUri: (standaloneConfig && standaloneConfig.chrome) ? standaloneConfig.chrome.keycloakUri : null,
+                    https: Boolean(server.options.https),
+                    proxyVerbose
+                });
+            }
+
+            registry.forEach(cb => cb({
+                app,
+                server,
+                compiler,
+                config: standaloneConfig
+            }));
         }
-        registry.forEach(cb => cb({
-          app,
-          server,
-          compiler,
-          config: standaloneConfig
-        }));
-      }
     };
-}
+};
 

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 const path = require('path');
-const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/standalone/proxy');
+const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = ({
@@ -13,7 +13,7 @@ module.exports = ({
     appName,
     useFileHash = true,
     betaEnv,
-    env = 'ci-beta',
+    env,
     sassPrefix,
     skipChrome2 = false,
     useProxy,
@@ -23,7 +23,9 @@ module.exports = ({
     routesPath,
     isProd,
     standalone = false,
-    reposDir
+    reposDir,
+    appUrl = [],
+    proxyVerbose
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     if (betaEnv) {
@@ -157,6 +159,7 @@ module.exports = ({
             port,
             https: https || Boolean(useProxy),
             host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
+            hot: false, // Use livereload instead of HMR which is spotty with federated modules
             disableHostCheck: true,
             // https://github.com/bripkens/connect-history-api-fallback
             historyApiFallback: {
@@ -168,7 +171,8 @@ module.exports = ({
                 rewrites: [
                     { from: /^\/api/, to: '/404.html' },
                     { from: /^(\/beta)?\/config/, to: '/404.html' }
-                ]
+                ],
+                verbose: proxyVerbose
             },
             writeToDisk: true,
             ...proxy({
@@ -180,7 +184,10 @@ module.exports = ({
                 useProxy,
                 standalone,
                 port,
-                reposDir
+                reposDir,
+                appUrl,
+                publicPath,
+                proxyVerbose
             })
         }
     };
