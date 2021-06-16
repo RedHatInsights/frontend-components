@@ -25,7 +25,7 @@ const Maintenance = ({ title, utcStartTime, utcEndTime, startTime, endTime, time
                     ? description
                     : <Stack>
                         <StackItem>We are currently undergoing scheduled maintenance and will be</StackItem>
-                        <StackItem>unavailable from {utcStartTime}-{utcEndTime} UTC ({startTime}-{endTime} {timeZone}).</StackItem>
+                        <StackItem>unavailable from {utcStartTime} to {utcEndTime} UTC ({startTime}-{endTime} {timeZone}).</StackItem>
                         <StackItem>For more information please visit <a href={redirectLink}>status.redhat.com</a>.</StackItem>
                     </Stack>
                 }

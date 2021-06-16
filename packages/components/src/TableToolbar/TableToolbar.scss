@@ -22,17 +22,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-	.ins-c-table__toolbar {
-	    padding: var(--pf-global--spacer--md) var(--pf-global--spacer--md);
-	}
-  .ins-c-table-empty-state.pf-m-grid-md.pf-c-table {
-    [data-label] {
-      --pf-c-table--cell--hidden-visible--Display: 0;
+    .ins-c-table__toolbar, .ins-c-table__toolbar-results {
+        padding: 0 0;
     }
-    tr:first-of-type {
-      > td::before { 
-        display: none; 
-      }
-    }
-  }
 }
