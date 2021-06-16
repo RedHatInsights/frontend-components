@@ -172,7 +172,7 @@ module.exports = ({
                     { from: /^\/api/, to: '/404.html' },
                     { from: /^(\/beta)?\/config/, to: '/404.html' }
                 ],
-                verbose: proxyVerbose
+                verbose: Boolean(proxyVerbose)
             },
             writeToDisk: true,
             ...proxy({

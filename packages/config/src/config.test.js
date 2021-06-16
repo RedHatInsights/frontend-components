@@ -76,12 +76,14 @@ describe('should create dummy config with no options', () => {
             https: false,
             host: '0.0.0.0',
             port: 1337,
+            hot: false,
             disableHostCheck: true,
             historyApiFallback: {
                 rewrites: [
                     { from: /^\/api/, to: '/404.html' },
                     { from: /^(\/beta)?\/config/, to: '/404.html' }
-                ]
+                ],
+                verbose: false
             },
             writeToDisk: true
         });
