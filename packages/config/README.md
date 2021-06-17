@@ -231,6 +231,23 @@ and your services can access `assets` as well:
 services: ({ env, port, assets }) => { ... }
 ```
 
+For example, to serve `main.yml` from the `prod-stable` branch in Github:
+```js
+const express = require('express');
+
+config(
+  standalone: {
+    servicesConfig: {
+        path: 'https://github.com/redhatinsights/cloud-services-config#prod-stable',
+        register({ app, config }) {
+            const staticConfig = express.static(config.servicesConfig.path);
+            app.use('(/beta)?/config', staticConfig);
+        }
+    }
+  }
+)
+```
+
 ##### Customizing default services
 The chrome, config, entitlements, and landing services are exposed for you to mutate:
 ```js
