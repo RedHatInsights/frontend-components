@@ -2,7 +2,7 @@
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
 const { execSync } = require('child_process');
 const path = require('path');
-const cookieTransform = require('./standalone/helpers/cookieTransform');
+const cookieTransform = require('./cookieTransform');
 const router = require('./standalone/helpers/router');
 const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./standalone/helpers/index');
 const { checkoutRepo } = require('./standalone/helpers/checkout');
