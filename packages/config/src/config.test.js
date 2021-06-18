@@ -72,6 +72,7 @@ describe('should create dummy config with no options', () => {
     test('devServer', () => {
         expect(devServer).toEqual({
             before: expect.any(Function),
+            onListening: expect.any(Function),
             contentBase: '/dist',
             https: false,
             host: '0.0.0.0',

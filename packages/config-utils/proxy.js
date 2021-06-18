@@ -30,9 +30,10 @@ module.exports = ({
     const proxy = [];
     const registry = [];
     const majorEnv = env.split('-')[0];
+    const minorEnv = majorEnv === 'prod' ? '' : `${majorEnv}.`;
     const target = env === 'prod-stable'
         ? 'https://cloud.redhat.com/'
-        : `https://${majorEnv === 'prod' ? '' : majorEnv + '.'}cloud.redhat.com/`;
+        : `https://${minorEnv}cloud.redhat.com/`;
     if (!Array.isArray(appUrl)) {
         appUrl = [ appUrl ];
     }
@@ -155,6 +156,22 @@ module.exports = ({
 
     return {
         ...(proxy.length > 0 && { proxy }),
+        onListening(server) {
+            if (useProxy || standaloneConfig) {
+                const host = useProxy ? `${majorEnv}.foo.redhat.com` : 'localhost';
+                const origin = `http${server.options.https ? 's' : ''}://${host}:${server.options.port}`;
+                console.log('App should run on:');
+
+                console.log('\u001b[34m'); // Use same webpack-dev-server blue
+                if (appUrl.length > 0) {
+                    appUrl.forEach(url => console.log(`  - ${origin}${url}`));
+                } else {
+                    console.log(`  - ${origin}`);
+                }
+
+                console.log('\u001b[0m');
+            }
+        },
         before(app, server, compiler) {
             app.enable('strict routing'); // trailing slashes are mean
             let chromePath = localChrome;
