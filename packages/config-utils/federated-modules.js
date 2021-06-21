@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { resolve } = require('path');
 const { ModuleFederationPlugin } = require('webpack').container;
 const jsVarName = require('./jsVarName');

@@ -17,9 +17,6 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
     "peerDependencies": {
-        "jws": "^4.0.0",
-        "glob": "^7.1.7",
-        "nodesi": "^1.15.0",
-        "webpack": ">=5.0.0"
+        "webpack": "^5.0.0"
     }
 }

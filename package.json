@@ -10,6 +10,7 @@
         "packages/charts",
         "packages/components",
         "packages/config",
+        "packages/config-utils",
         "packages/demo",
         "packages/docs",
         "packages/eslint-config",

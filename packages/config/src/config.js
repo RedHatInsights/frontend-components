@@ -3,10 +3,8 @@ const path = require('path');
 const proxy = require('@redhat-cloud-services/frontend-components-config-utilities/proxy');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-let rewriteLineCounter = 0;
-
 module.exports = ({
-    port,
+    port = 1337,
     publicPath,
     appEntry,
     rootFolder,
@@ -14,22 +12,27 @@ module.exports = ({
     mode,
     appName,
     useFileHash = true,
-    betaEnv = 'ci',
+    betaEnv,
+    env,
     sassPrefix,
-    deployment,
     skipChrome2 = false,
     useProxy,
     localChrome,
     customProxy,
-    proxyVerbose,
     routes,
     routesPath,
-    appUrl,
-    exactUrl,
-    disableFallback,
-    isProd
+    isProd,
+    standalone = false,
+    reposDir,
+    appUrl = [],
+    proxyVerbose
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
+    if (betaEnv) {
+        env = `${betaEnv}-beta`;
+        console.warn('betaEnv is deprecated in favor of env');
+    }
+
     return {
         mode: mode || (isProd ? 'production' : 'development'),
         devtool: false,
@@ -151,46 +154,41 @@ module.exports = ({
                 process: 'process/browser.js'
             }
         },
-        devServer: useProxy ? proxy({
-            betaEnv,
-            rootFolder,
-            localChrome,
-            customProxy,
-            appName,
-            publicPath,
-            https,
-            port,
-            proxyVerbose,
-            routes,
-            routesPath,
-            appUrl,
-            exactUrl,
-            disableFallback
-        }) : {
+        devServer: {
             contentBase: `${rootFolder || ''}/dist`,
-            port: port || 8002,
-            https: https || false,
-            inline: true,
+            port,
+            https: https || Boolean(useProxy),
+            host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
+            hot: false, // Use livereload instead of HMR which is spotty with federated modules
             disableHostCheck: true,
-            historyApiFallback: true,
+            // https://github.com/bripkens/connect-history-api-fallback
+            historyApiFallback: {
+                // We should really implement the same logic as cloud-services-config
+                // and only redirect (/beta)?/bundle/app-name to /index.html
+                //
+                // Until then let known api calls fall through instead of returning /index.html
+                // for easier `fetch` debugging
+                rewrites: [
+                    { from: /^\/api/, to: '/404.html' },
+                    { from: /^(\/beta)?\/config/, to: '/404.html' }
+                ],
+                verbose: Boolean(proxyVerbose)
+            },
             writeToDisk: true,
-            proxy: !deployment && betaEnv ? {
-                [`https://${betaEnv}.foo.redhat.com:1337/beta`]: {
-                    target: `http${https ? 's' : ''}://localhost:${port || 8002}`,
-                    pathRewrite: function(path) {
-                        const pathRewrite = path.replace(/^\/beta\//, '/');
-                        if (rewriteLineCounter === 0) {
-                            // eslint-disable-next-line max-len
-                            console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]Warning, automatic beta rewrites are deprecated.`, 'Please use deployment configuration to use beta env: https://github.com/RedHatInsights/frontend-starter-app/pull/421/files');
-                            rewriteLineCounter += 1;
-                        }
-
-                        console.warn('\x1b[33m%s\x1b[0m', `[${rewriteLineCounter}]PROXY: Rewriting from path to beta to stable:`, path, '->', pathRewrite);
-                        rewriteLineCounter += 1;
-                        return pathRewrite;
-                    }
-                }
-            } : undefined
+            ...proxy({
+                env,
+                localChrome,
+                customProxy,
+                routes,
+                routesPath,
+                useProxy,
+                standalone,
+                port,
+                reposDir,
+                appUrl,
+                publicPath,
+                proxyVerbose
+            })
         }
     };
 };
