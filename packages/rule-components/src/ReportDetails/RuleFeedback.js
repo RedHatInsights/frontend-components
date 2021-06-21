@@ -8,7 +8,7 @@ import { OutlinedThumbsDownIcon } from '@patternfly/react-icons';
 
 export const feedback = { negative: -1, neutral: 0, positive: 1 };
 // ruleId - is id of current rule
-// onFeedbackSent(ruleId, vote) is a callback which is called when feedback is changed
+// onFeedbackChanged(ruleId, vote) is a callback which is called when feedback is changed
 // where ruleId is id of the rule, vote is either -1, 0 or 1
 class RuleFeedback extends React.Component {
     state = { feedbackSaved: false }
