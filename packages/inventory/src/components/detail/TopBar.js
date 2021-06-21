@@ -40,7 +40,7 @@ const TopBar = ({
     const [ isModalOpen, setIsModalOpen ] = useState(false);
     const inventoryActions = [
         ...(!hideInvLink ? [{
-            title: 'View in Inventory',
+            title: 'View system in Inventory',
             component: 'a',
             href: `./insights/inventory/${entity?.id}`
         }] : []),
