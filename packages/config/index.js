@@ -42,8 +42,8 @@ module.exports = (configurations) => {
     const appEntry = configurations.appEntry || getAppEntry(configurations.rootFolder, isProd);
     const generateSourceMaps = !akamaiBranches.includes(gitBranch);
 
-    /* eslint-disable no-console */
     if (configurations.debug) {
+        /* eslint-disable no-console */
         console.log('~~~Using variables~~~');
         console.log(`Root folder: ${configurations.rootFolder}`);
         console.log(`Current branch: ${gitBranch}`);
@@ -53,11 +53,14 @@ module.exports = (configurations) => {
         console.log(`Public path: ${publicPath}`);
         console.log(`App entry: ${appEntry}`);
         console.log(`Use proxy: ${configurations.useProxy ? 'true' : 'false'}`);
-        // eslint-disable-next-line max-len, no-irregular-whitespace
-        !configurations.useProxy && console.log('You can use webpack proxy (instead of using insights-proxy) by setting "useProxy". Check config documentation to see more details.');
+        if (!(configurations.useProxy || configurations.standalone)) {
+            console.warn('Insights-proxy is deprecated in favor of "useProxy" or "standalone".');
+            console.warn('See https://github.com/RedHatInsights/frontend-components/blob/master/packages/config/README.md');
+        }
+
         console.log('~~~~~~~~~~~~~~~~~~~~~');
+        /* eslint-enable no-console */
     }
-    /* eslint-enable no-console */
 
     return {
         config: config({
