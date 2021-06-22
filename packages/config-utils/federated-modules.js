@@ -42,6 +42,15 @@ module.exports = ({
         }
     }));
 
+    /**
+     * Add scalprum and force it as singletong.
+     * It is required to share the context via `useChrome`.
+     * No application should be installing/interacting with scalprum directly.
+     */
+    if (dependencies['@redhat-cloud-services/frontend-components']) {
+        sharedDeps.push({ '@scalprum/react-core': { singleton: true } });
+    }
+
     if (debug) {
         console.log('Using package at path: ', resolve(root, './package.json'));
         console.log('Using appName: ', appName);

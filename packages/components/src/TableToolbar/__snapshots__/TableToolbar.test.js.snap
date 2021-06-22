@@ -4,8 +4,10 @@ exports[`TableToolbar component should render 1`] = `
 <Fragment>
   <Toolbar
     className="ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe={true}
   >
-     
     Some
   </Toolbar>
 </Fragment>
@@ -15,8 +17,10 @@ exports[`TableToolbar component should render a footer 1`] = `
 <Fragment>
   <Toolbar
     className="ins-c-table__toolbar ins-m-footer"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-8"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe={true}
   >
-     
     Footer
   </Toolbar>
 </Fragment>
@@ -26,8 +30,10 @@ exports[`TableToolbar component should render with results and selection of 1 1`
 <Fragment>
   <Toolbar
     className="ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-7"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe={true}
   >
-     
     Some
   </Toolbar>
   <div
@@ -55,8 +61,10 @@ exports[`TableToolbar component should render with results greater than 1 1`] = 
 <Fragment>
   <Toolbar
     className="ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-4"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe={true}
   >
-     
     Some
   </Toolbar>
   <div
@@ -77,8 +85,10 @@ exports[`TableToolbar component should render with results of 0 1`] = `
 <Fragment>
   <Toolbar
     className="ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-2"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe={true}
   >
-     
     Some
   </Toolbar>
   <div
@@ -99,8 +109,10 @@ exports[`TableToolbar component should render with results of 1 1`] = `
 <Fragment>
   <Toolbar
     className="ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-3"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe={true}
   >
-     
     Some
   </Toolbar>
   <div
@@ -121,8 +133,10 @@ exports[`TableToolbar component should render with selection of 0 1`] = `
 <Fragment>
   <Toolbar
     className="ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-5"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe={true}
   >
-     
     Some
   </Toolbar>
   <div
@@ -143,8 +157,10 @@ exports[`TableToolbar component should render with selection of 1 1`] = `
 <Fragment>
   <Toolbar
     className="ins-c-table__toolbar"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-6"
+    data-ouia-component-type="RHI/TableToolbar"
+    data-ouia-safe={true}
   >
-     
     Some
   </Toolbar>
   <div

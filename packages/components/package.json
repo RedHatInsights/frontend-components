@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components",
-    "version": "3.2.8",
+    "version": "3.3.0",
     "description": "Common components for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -44,7 +44,7 @@
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "sanitize-html": "^2.3.2",
         "@scalprum/core": "^0.0.11",
-        "@scalprum/react-core": "^0.0.16"
+        "@scalprum/react-core": "0.1.0-beta.1"
     },
     "devDependencies": {
         "@patternfly/patternfly": ">=4.102.2",
