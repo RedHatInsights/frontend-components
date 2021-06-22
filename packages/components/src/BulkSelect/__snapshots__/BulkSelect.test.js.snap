@@ -22,6 +22,7 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
         <DropdownItem
           component="button"
           onClick={[Function]}
+          ouiaId="OUIA-Generated-RHI/BulkSelect-4-0"
         >
           Select all
         </DropdownItem>,
@@ -29,10 +30,13 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
     }
     isOpen={false}
     onSelect={[Function]}
+    ouiaId="OUIA-Generated-RHI/BulkSelect-4"
+    ouiaSafe={true}
     toggle={
       <DropdownToggle
         isDisabled={false}
         onToggle={[Function]}
+        ouiaId="OUIA-Generated-RHI/BulkSelect-4-toggle"
         splitButtonItems={
           Array [
             <React.Fragment>
@@ -44,6 +48,7 @@ exports[`BulkSelect should render correctly - null checked 1`] = `
                 isDisabled={false}
                 isValid={true}
                 onChange={[Function]}
+                ouiaId="OUIA-Generated-RHI/BulkSelect-4-toggle-checkbox"
               >
                 
               </DropdownToggleCheckbox>
@@ -72,6 +77,7 @@ exports[`BulkSelect should render correctly 1`] = `
         <DropdownItem
           component="button"
           onClick={[Function]}
+          ouiaId="OUIA-Generated-RHI/BulkSelect-2-0"
         >
           Select all
         </DropdownItem>,
@@ -79,10 +85,13 @@ exports[`BulkSelect should render correctly 1`] = `
     }
     isOpen={false}
     onSelect={[Function]}
+    ouiaId="OUIA-Generated-RHI/BulkSelect-2"
+    ouiaSafe={true}
     toggle={
       <DropdownToggle
         isDisabled={false}
         onToggle={[Function]}
+        ouiaId="OUIA-Generated-RHI/BulkSelect-2-toggle"
         splitButtonItems={
           Array [
             <React.Fragment>
@@ -94,6 +103,7 @@ exports[`BulkSelect should render correctly 1`] = `
                 isDisabled={false}
                 isValid={true}
                 onChange={[Function]}
+                ouiaId="OUIA-Generated-RHI/BulkSelect-2-toggle-checkbox"
               >
                 30 selected
               </DropdownToggleCheckbox>
@@ -115,6 +125,7 @@ exports[`BulkSelect should render correctly 2`] = `
         <DropdownItem
           component="button"
           onClick={[Function]}
+          ouiaId="OUIA-Generated-RHI/BulkSelect-3-0"
         >
           Select all
         </DropdownItem>,
@@ -122,10 +133,13 @@ exports[`BulkSelect should render correctly 2`] = `
     }
     isOpen={false}
     onSelect={[Function]}
+    ouiaId="OUIA-Generated-RHI/BulkSelect-3"
+    ouiaSafe={true}
     toggle={
       <DropdownToggle
         isDisabled={false}
         onToggle={[Function]}
+        ouiaId="OUIA-Generated-RHI/BulkSelect-3-toggle"
         splitButtonItems={
           Array [
             <React.Fragment>
@@ -137,6 +151,7 @@ exports[`BulkSelect should render correctly 2`] = `
                 isDisabled={false}
                 isValid={true}
                 onChange={[Function]}
+                ouiaId="OUIA-Generated-RHI/BulkSelect-3-toggle-checkbox"
               >
                 
               </DropdownToggleCheckbox>
@@ -159,12 +174,14 @@ exports[`BulkSelect should render custom props 1`] = `
           component="button"
           isDisabled={true}
           onClick={[Function]}
+          ouiaId="OUIA-Generated-RHI/BulkSelect-5-0"
         >
           Select none
         </DropdownItem>,
         <DropdownItem
           component="button"
           onClick={[Function]}
+          ouiaId="OUIA-Generated-RHI/BulkSelect-5-1"
         >
           Select all
         </DropdownItem>,
@@ -172,10 +189,13 @@ exports[`BulkSelect should render custom props 1`] = `
     }
     isOpen={false}
     onSelect={[Function]}
+    ouiaId="OUIA-Generated-RHI/BulkSelect-5"
+    ouiaSafe={true}
     toggle={
       <DropdownToggle
         isDisabled={false}
         onToggle={[Function]}
+        ouiaId="OUIA-Generated-RHI/BulkSelect-5-toggle"
         splitButtonItems={
           Array [
             <React.Fragment>
@@ -187,6 +207,7 @@ exports[`BulkSelect should render custom props 1`] = `
                 isDisabled={false}
                 isValid={true}
                 onChange={[Function]}
+                ouiaId="OUIA-Generated-RHI/BulkSelect-5-toggle-checkbox"
               >
                 
               </DropdownToggleCheckbox>

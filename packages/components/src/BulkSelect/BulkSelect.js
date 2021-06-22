@@ -2,12 +2,14 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Dropdown, DropdownItem, DropdownToggle, DropdownToggleCheckbox, Checkbox } from '@patternfly/react-core';
+import { getDefaultOUIAId } from '@patternfly/react-core/';
 import './bulk-select.scss';
 
 class BulkSelect extends Component {
     state = {
         isOpen: false,
-        hasError: false
+        hasError: false,
+        ouiaStateId: getDefaultOUIAId('RHI/BulkSelect')
     }
 
     componentDidCatch = () => {
@@ -24,7 +26,8 @@ visible unless you update it.');
 
     render() {
         const { isOpen, hasError } = this.state;
-        const { id, isDisabled, items, onSelect, checked, toggleProps, count, className, ...props } = this.props;
+        const { id, isDisabled, items, onSelect, checked, toggleProps, count, className, ouiaId, ouiaSafe, ...props } = this.props;
+        const ouiaFinalId = ouiaId !== undefined ? ouiaId : this.state.ouiaStateId;
 
         return (
             <Fragment>
@@ -32,10 +35,13 @@ visible unless you update it.');
                     onSelect={ () => this.onToggle(false) }
                     { ...props }
                     className={ classnames(className, 'ins-c-bulk-select') }
+                    ouiaId={ouiaFinalId}
+                    ouiaSafe={ouiaSafe}
                     toggle={ (
                         <DropdownToggle
                             { ...toggleProps }
                             isDisabled={ isDisabled }
+                            ouiaId={ `${ouiaFinalId}-toggle` }
                             splitButtonItems={ [
                                 <Fragment key="split-checkbox">
                                     {
@@ -44,12 +50,14 @@ visible unless you update it.');
                                             aria-label="Select all"
                                             onChange={ onSelect }
                                             checked={ checked }
+                                            ouiaId={ `${ouiaFinalId}-toggle-checkbox` }
                                         /> :
                                             <DropdownToggleCheckbox
                                                 id={ id ? `${id}-toggle-checkbox` : 'toggle-checkbox' }
                                                 aria-label="Select all"
                                                 onChange={ onSelect }
                                                 isChecked={ checked }
+                                                ouiaId={ `${ouiaFinalId}-toggle-checkbox` }
                                             >{ count ? `${count} selected` : '' }</DropdownToggleCheckbox>
                                     }
                                 </Fragment>
@@ -71,6 +79,7 @@ visible unless you update it.');
                         ...items.map((oneItem, key) => <DropdownItem
                             component="button"
                             key={ oneItem.key || key }
+                            ouiaId={ `${ouiaFinalId}-${oneItem.key || key}` }
                             onClick={ (event) => oneItem.onClick && oneItem.onClick(event, oneItem, key) }
                             { ...oneItem?.props }
                         >
@@ -101,7 +110,9 @@ BulkSelect.propTypes = {
     id: PropTypes.string,
     onSelect: PropTypes.func,
     toggleProps: PropTypes.any,
-    isDisabled: PropTypes.bool
+    isDisabled: PropTypes.bool,
+    ouiaId: PropTypes.string,
+    ouiaSafe: PropTypes.bool
 };
 
 BulkSelect.defaultProps = {
@@ -109,7 +120,8 @@ BulkSelect.defaultProps = {
     isDisabled: false,
     items: [],
     checked: false,
-    onSelect: () => undefined
+    onSelect: () => undefined,
+    ouiaSafe: true
 };
 
 export default BulkSelect;
