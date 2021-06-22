@@ -125,6 +125,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
             ]
           }
           onSelect={[MockFunction]}
+          ouiaSafe={true}
         />
       </ToolbarItem>
       <ToolbarItem
@@ -348,6 +349,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
             ]
           }
           onSelect={[MockFunction]}
+          ouiaSafe={true}
         />
       </ToolbarItem>
     </ForwardRef>
@@ -430,6 +432,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
             ]
           }
           onSelect={[MockFunction]}
+          ouiaSafe={true}
         />
       </ToolbarItem>
       <ToolbarItem
