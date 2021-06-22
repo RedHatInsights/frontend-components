@@ -5,6 +5,7 @@ import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-componen
 import { DateFormat } from '@redhat-cloud-services/frontend-components/DateFormat';
 import { CullingInformation } from '@redhat-cloud-services/frontend-components/CullingInfo';
 import { getFact } from './helpers';
+import InsightsDisconnected from '../../shared/InsightsDisconnected';
 
 /**
  * Basic information about system.
@@ -46,6 +47,7 @@ const FactsInfo = ({ entity, loaded, ...props }) => (
                             <Skeleton size={ SkeletonSize.sm } />
                     }
                 </span>
+                {loaded && !getFact('insights_id', entity) && <InsightsDisconnected />}
             </div>
         </GridItem>
     </Grid>

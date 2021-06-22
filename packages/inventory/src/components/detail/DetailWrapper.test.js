@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { createPromise as promiseMiddleware } from 'redux-promise-middleware';
 import toJson from 'enzyme-to-json';
 import { mock } from '../../__mock__/systemIssues';
+import InsightsDisconnected from '../../shared/InsightsDisconnected';
 
 describe('DetailWrapper', () => {
     mock.onGet('/api/patch/v1/systems/test-id').reply(200, 'test');
@@ -91,6 +92,38 @@ describe('DetailWrapper', () => {
                 <DetailWrapper Wrapper={() => <div className="test">something</div>}/>
             </Provider>);
             expect(toJson(wrapper.find('.ins-c-inventory__drawer--facts'), { mode: 'deep' })).toMatchSnapshot();
+        });
+
+        it('should render disabled isnights icon when no insights_id', () => {
+            const store = mockStore(initialState);
+            const wrapper = mount(<Provider store={ store }>
+                <DetailWrapper Wrapper={() => <div className="test">something</div>}/>
+            </Provider>);
+
+            expect(wrapper.find(InsightsDisconnected)).toHaveLength(1);
+        });
+
+        it('should not render disabled isnights icon when insights_id', () => {
+            initialState = {
+                entityDetails: {
+                    loaded: true,
+                    entity: {
+                        id: 'some-id',
+                        updated: new Date(),
+                        culled_timestamp: new Date(),
+                        stale_warning_timestamp: new Date(),
+                        stale_timestamp: new Date(),
+                        insights_id: '12345'
+                    },
+                    isToggleOpened: true
+                }
+            };
+
+            const store = mockStore(initialState);
+            const wrapper = mount(<Provider store={ store }>
+                <DetailWrapper Wrapper={() => <div className="test">something</div>}/>
+            </Provider>);
+            expect(wrapper.find(InsightsDisconnected)).toHaveLength(0);
         });
 
         it('should render children', () => {
