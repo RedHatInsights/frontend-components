@@ -25,7 +25,8 @@ module.exports = ({
     standalone = false,
     reposDir,
     appUrl = [],
-    proxyVerbose
+    proxyVerbose,
+    useCloud
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     if (betaEnv) {
@@ -176,6 +177,7 @@ module.exports = ({
             },
             writeToDisk: true,
             ...proxy({
+                useCloud,
                 env,
                 localChrome,
                 customProxy,
