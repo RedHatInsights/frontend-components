@@ -25,15 +25,16 @@ module.exports = ({
     localChrome,
     appUrl = [],
     publicPath,
-    proxyVerbose
+    proxyVerbose,
+    useCloud = false
 }) => {
     const proxy = [];
     const registry = [];
     const majorEnv = env.split('-')[0];
     const minorEnv = majorEnv === 'prod' ? '' : `${majorEnv}.`;
     const target = env === 'prod-stable'
-        ? 'https://cloud.redhat.com/'
-        : `https://${minorEnv}cloud.redhat.com/`;
+        ? `https://${useCloud ? 'cloud' : 'console'}.redhat.com/`
+        : `https://${minorEnv}${useCloud ? 'cloud' : 'console'}.redhat.com/`;
     if (!Array.isArray(appUrl)) {
         appUrl = [ appUrl ];
     }
@@ -150,7 +151,7 @@ module.exports = ({
                 return false;
             },
             target,
-            router: router(target)
+            router: router(target, useCloud)
         });
     }
 
