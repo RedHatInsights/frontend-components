@@ -55,6 +55,7 @@ const { config: webpackConfig, plugins } = config({
 |[routes](#routes)|`object`|An object with additional routes.|
 |[routesPath](#routespath)|`string`|A path to an object with additional routes.|
 |[customProxy](#custom-proxy-settings)|`object[]`|An array of custom provided proxy configurations.|
+|[useCloud](#use-cloud)|`boolean`|Toggle to use old fallback to cloud.redhat.com paths instead of console.redhat.com.|
 
 ### localChrome
 
@@ -140,6 +141,10 @@ const { config: webpackConfig, plugins } = config({
 ```
 
 This configuration will redirect all API requests to QA environment, so you can check CI UI with QA data.
+
+### Use cloud
+
+If you want to run in legace mode please pass `useCloud: true` in your config, this way paths which does not match your proxy config (API for instance) will be passed to `cloud.redhat.com` (respective to your env `ci|qa|stage`). Without this all fallback routes will be redirected to `console.redhat.com`.
 
 ## standalone
 A way to run cloud.redhat.com apps from `localhost` offline.
