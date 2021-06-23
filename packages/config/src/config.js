@@ -4,7 +4,7 @@ const proxy = require('@redhat-cloud-services/frontend-components-config-utiliti
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = ({
-    port = 1337,
+    port,
     publicPath,
     appEntry,
     rootFolder,
@@ -34,6 +34,7 @@ module.exports = ({
         console.warn('betaEnv is deprecated in favor of env');
     }
 
+    const devServerPort = typeof port === 'number' ? port : useProxy || standalone ? 1337 : 8002;
     return {
         mode: mode || (isProd ? 'production' : 'development'),
         devtool: false,
@@ -157,7 +158,7 @@ module.exports = ({
         },
         devServer: {
             contentBase: `${rootFolder || ''}/dist`,
-            port,
+            port: devServerPort,
             https: https || Boolean(useProxy),
             host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
             hot: false, // Use livereload instead of HMR which is spotty with federated modules
@@ -185,7 +186,7 @@ module.exports = ({
                 routesPath,
                 useProxy,
                 standalone,
-                port,
+                port: devServerPort,
                 reposDir,
                 appUrl,
                 publicPath,

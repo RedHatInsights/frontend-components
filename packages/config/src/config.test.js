@@ -76,7 +76,7 @@ describe('should create dummy config with no options', () => {
             contentBase: '/dist',
             https: false,
             host: '0.0.0.0',
-            port: 1337,
+            port: 8002,
             hot: false,
             disableHostCheck: true,
             historyApiFallback: {
