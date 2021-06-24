@@ -71,22 +71,36 @@ describe('should create dummy config with no options', () => {
 
     test('devServer', () => {
         expect(devServer).toEqual({
-            before: expect.any(Function),
-            onListening: expect.any(Function),
             contentBase: '/dist',
-            https: false,
-            host: '0.0.0.0',
             port: 8002,
+            https: true,
             hot: false,
             disableHostCheck: true,
-            historyApiFallback: {
-                rewrites: [
-                    { from: /^\/api/, to: '/404.html' },
-                    { from: /^(\/beta)?\/config/, to: '/404.html' }
-                ],
-                verbose: false
-            },
-            writeToDisk: true
+            writeToDisk: true,
+            index: '/dist/index.html',
+            host: 'ci.foo.redhat.com',
+            inline: true,
+            historyApiFallback: true,
+            publicPath: undefined,
+            proxy: [
+                {
+                    context: expect.any(Function),
+                    target: 'https://ci.console.redhat.com/',
+                    secure: false,
+                    changeOrigin: true,
+                    autoRewrite: true,
+                    router: expect.any(Function)
+                },
+                {
+                    context: expect.any(Function),
+                    target: 'https://ci.console.redhat.com/',
+                    secure: false,
+                    changeOrigin: true,
+                    autoRewrite: true,
+                    selfHandleResponse: true,
+                    onProxyReq: expect.any(Function)
+                }
+            ]
         });
     });
 });
