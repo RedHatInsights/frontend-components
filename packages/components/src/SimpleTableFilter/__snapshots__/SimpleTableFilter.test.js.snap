@@ -7,6 +7,7 @@ exports[`SimpleTableFilter component should render correctly with custom filter 
   <Input
     onChange={[Function]}
     onKeyPress={[Function]}
+    ouiaSafe={true}
     placeholder="Search items"
     widget-id="filter"
   />
@@ -27,6 +28,7 @@ exports[`SimpleTableFilter component should render correctly with custom placeho
   <Input
     onChange={[Function]}
     onKeyPress={[Function]}
+    ouiaSafe={true}
     placeholder="Custom placeholder"
     widget-id="filter"
   />
@@ -47,6 +49,7 @@ exports[`SimpleTableFilter component should render correctly with filter button 
   <Input
     onChange={[Function]}
     onKeyPress={[Function]}
+    ouiaSafe={true}
     placeholder="Search items"
     widget-id="filter"
   />
@@ -89,6 +92,7 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
   <Input
     onChange={[Function]}
     onKeyPress={[Function]}
+    ouiaSafe={true}
     placeholder="Search items"
     widget-id="filter"
   />
@@ -131,6 +135,7 @@ exports[`SimpleTableFilter component should render correctly with filter opitons
   <Input
     onChange={[Function]}
     onKeyPress={[Function]}
+    ouiaSafe={true}
     placeholder="Search items"
     widget-id="filter"
   />
@@ -151,6 +156,7 @@ exports[`SimpleTableFilter component should render correctly without filter butt
   <Input
     onChange={[Function]}
     onKeyPress={[Function]}
+    ouiaSafe={true}
     placeholder="Search items"
     widget-id="filter"
   />
