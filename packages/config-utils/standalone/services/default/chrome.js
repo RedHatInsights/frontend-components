@@ -35,13 +35,14 @@ module.exports = ({ port }) => ({
 module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVerbose }) => {
     const esiRegex = /<\s*esi:include\s+src\s*=\s*"([^"]+)"\s*\/\s*>/gm;
     // Express middleware for <esi:include> tags
-    // Inspiration: https://github.com/knpwrs/connect-static-transform
+    // Unfortunately we have to alter the contents of ALL text/html responses like akamai
+    // This means modifying the response object directly.
     app.use((req, res, next) => {
         const ext = path.extname(req.url);
         if (req.method === 'GET' && ['', '.hmt', '.html'].includes(ext)) {
-            const oldWrite = res.write.bind(res);
-            res.write = chunk => {
-                if (res.getHeader('Content-Type').includes('text/html') && !res.headersSent && !res.writableEnded) {
+            function writeOrEnd(chunk, encoding, callback, oldFn) {
+                const ctype = res.getHeader('Content-Type');
+                if (ctype && ctype.includes('text/html') && !res.headersSent && !res.writableEnded) {
                     if (chunk instanceof Buffer) {
                         chunk = chunk.toString();
                     }
@@ -57,8 +58,13 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
                         res.setHeader('Content-Length', chunk.length);
                     }
                 }
-                oldWrite(chunk);
-            }
+                oldFn(chunk, encoding, callback);
+            };
+            // https://nodejs.org/api/http.html#http_class_http_serverresponse
+            const oldWrite = res.write.bind(res);
+            res.write = (chunk, encoding, callback) => writeOrEnd(chunk, encoding, callback, oldWrite);
+            const oldEnd = res.end.bind(res);
+            res.end = (chunk, encoding, callback) => writeOrEnd(chunk, encoding, callback, oldEnd);
         }
 
         next();
