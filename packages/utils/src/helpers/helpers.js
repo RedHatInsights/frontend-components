@@ -68,3 +68,5 @@ export const generateFilter = (data, path = 'filter', options) =>
         };
 
     }, {});
+
+export const toUpperCase = (text = '') => `${text.charAt(0).toUpperCase()}${text.slice(1)}`;
