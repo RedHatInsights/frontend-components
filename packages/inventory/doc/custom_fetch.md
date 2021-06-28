@@ -73,11 +73,21 @@ example:
 As the 4th argument, the default `getEntities` function is passed, so you can grab it and enhance it.
 
 ```jsx
-customGetEntities = async (_items, config, showTags, defaultGetEntities) => {
-    const items = await getCustomItems(config); // load your items and data
-    const result = await defaultGetEntities(items, config, showTags); // merge them with default api
+import { mergeArraysByKey } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 
-    return result;
+customGetEntities = async (_items, config, showTags, defaultGetEntities) => {
+    const customResult = await getCustomItems(config); // load your items and data
+    // example: { rows: [...], total: 637 }
+
+    const items = customResult.rows.map(({ id }) => id ); // has to be an array of IDs
+    const enhancedConfig = { ...config, hasItems: true }; // hasItems have to be set to true
+
+    const defaultData = await defaultGetEntities(items, enhancedConfig, showTags); // get default data for your items from inventory API
+
+    return {
+        results: mergeArraysByKey([ defaultData.results, customResult.rows ]) // merge common data and your data based on their ids (you can also use your own solution)
+        total: customResult.total
+    };
 }
 ```
 
