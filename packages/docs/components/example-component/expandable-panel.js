@@ -60,8 +60,8 @@ const useStyles = createUseStyles({
     }
 });
 
-const ExpandablePanel = ({ sourceCode, source }) => {
-    const [ isOpen, setIsOpen ] = useState(false);
+const ExpandablePanel = ({ codeOnly, sourceCode, source }) => {
+    const [ isOpen, setIsOpen ] = useState(!!codeOnly);
     const [ toast, setToast ] = useState(undefined);
     const handleClose = () => setToast(undefined);
     const classes = useStyles();
@@ -86,13 +86,15 @@ const ExpandablePanel = ({ sourceCode, source }) => {
             <Toolbar className={classnames('pf-u-p-0 pf-u-mb-md', classes.toolbar)}>
                 <ToolbarContent className="pf-u-p-0">
                     <ToolbarItem className={classes.firstItem}>
-                        <Tooltip content={<p>Open code example</p>}>
-                            <Button variant="plain" onClick={() => setIsOpen(prev => !prev)}>
-                                <CodeIcon className={classnames(classes.iconExpand, {
-                                    [classes.inconExpandExpanded]: isOpen
-                                })} />
-                            </Button>
-                        </Tooltip>
+                        {!codeOnly && (
+                            <Tooltip content={<p>Open code example</p>}>
+                                <Button variant="plain" onClick={() => setIsOpen(prev => !prev)}>
+                                    <CodeIcon className={classnames(classes.iconExpand, {
+                                        [classes.inconExpandExpanded]: isOpen
+                                    })} />
+                                </Button>
+                            </Tooltip>
+                        )}
                         <Tooltip content={<div>Copy code to clipboard</div>}>
                             <Button variant="plain" onClick={copyToClipboard}>
                                 <CopyIcon />
@@ -130,7 +132,8 @@ const ExpandablePanel = ({ sourceCode, source }) => {
 
 ExpandablePanel.propTypes = {
     sourceCode: PropTypes.string.isRequired,
-    source: PropTypes.string.isRequired
+    source: PropTypes.string.isRequired,
+    codeOnly: PropTypes.bool
 };
 
 export default ExpandablePanel;

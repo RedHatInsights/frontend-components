@@ -17,7 +17,7 @@ const useStyles = createUseStyles({
     }
 });
 
-const ExampleComponent = ({ source, name }) => {
+const ExampleComponent = ({ source, name, codeOnly }) => {
     const { current: Component } = useRef(dynamic(import(`@docs/examples/${source}`)));
     const [ sourceCode, setSourceCode ] = useState('');
     const classes = useStyles();
@@ -30,15 +30,16 @@ const ExampleComponent = ({ source, name }) => {
     return (
         <div className={classes.exampleContainer}>
             <Title headingLevel="h2" className={classnames(classes.name, 'pf-u-mt-md', 'pf-u-mb-md')}>{name}</Title>
-            {Component && <Card className="pf-u-mb-md"><CardBody><Component /></CardBody></Card>}
-            <ExpandablePanel source={source} sourceCode={sourceCode} />
+            {!codeOnly && Component && <Card className="pf-u-mb-md"><CardBody><Component /></CardBody></Card>}
+            <ExpandablePanel codeOnly={codeOnly} source={source} sourceCode={sourceCode} />
         </div>
     );
 };
 
 ExampleComponent.propTypes = {
     source: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string,
+    codeOnly: PropTypes.bool
 };
 
 export default ExampleComponent;
