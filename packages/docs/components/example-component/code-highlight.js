@@ -32,9 +32,9 @@ Pre.propTypes = {
     children: PropTypes.node
 };
 
-const CodeHighlight = ({ sourceCode }) => {
+const CodeHighlight = ({ sourceCode, language = 'jsx' }) => {
     return (
-        <Highlight {...defaultProps} theme={codeTheme} language="jsx" code={sourceCode}>
+        <Highlight {...defaultProps} theme={codeTheme} language={language} code={sourceCode}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <Pre className={className} style={style}>
                     <React.Fragment>
@@ -53,7 +53,8 @@ const CodeHighlight = ({ sourceCode }) => {
 };
 
 CodeHighlight.propTypes = {
-    sourceCode: PropTypes.string.isRequired
+    sourceCode: PropTypes.string.isRequired,
+    language: PropTypes.string
 };
 
 export default CodeHighlight;
