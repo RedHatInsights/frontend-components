@@ -1,0 +1,24 @@
+{
+	"index": {
+		"title": "Chrome",
+		"href": "/chrome"
+	},
+	"items": [
+		{
+			"title": "Chrome api",
+			"href": "/chrome/chrome-api"
+		},
+		{
+			"title": "Chrome navigation",
+			"href": "/chrome/chrome-navigation"
+		},
+		{
+			"title": "Contribute",
+			"href": "/chrome/contribute"
+		},
+		{
+			"title": "Local development",
+			"href": "/chrome/local-development"
+		}
+	]
+}
