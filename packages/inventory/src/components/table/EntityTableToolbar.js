@@ -305,6 +305,7 @@ const EntityTableToolbar = ({
                     items: inventoryFilters?.map(filter => ({
                         ...filter,
                         filterValues: {
+                            placeholder: filter?.filterValues?.placeholder || `Filter by ${filter?.label?.toLowerCase()}`,
                             ...filter?.filterValues,
                             isDisabled: !hasAccess
                         }
