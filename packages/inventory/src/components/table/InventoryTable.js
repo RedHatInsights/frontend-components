@@ -11,6 +11,7 @@ import AccessDenied from '../../shared/AccessDenied';
 import { loadSystems } from '../../shared';
 import isEqual from 'lodash/isEqual';
 import { entitiesLoading } from '../../redux/actions';
+import InventoryTableV2 from '../table-v2';
 
 /**
  * A helper function to store props and to always return the latest state.
@@ -260,4 +261,10 @@ InventoryTable.propTypes = {
     showTagModal: PropTypes.bool
 };
 
-export default InventoryTable;
+const TablesWrapper = ({ v2, ...props }) => v2 ? <InventoryTableV2 {...props} /> : <InventoryTable {...props} />;
+
+TablesWrapper.propTypes = {
+    v2: PropTypes.bool
+};
+
+export default TablesWrapper;
