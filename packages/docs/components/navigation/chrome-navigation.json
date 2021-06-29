@@ -19,6 +19,10 @@
 		{
 			"title": "Local development",
 			"href": "/chrome/local-development"
+		},
+		{
+			"title": "Visibility functions",
+			"href": "/chrome/visibility-functions"
 		}
 	]
 }
