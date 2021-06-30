@@ -22,21 +22,36 @@ import useCallbackReducer from './useCallbackReducer';
 import { getEntities as apiGetEntities } from './api';
 
 const initialStateReducer = {
-    orderBy: '',
-    orderDirection: '',
-    page: 0,
+    orderBy: 'updated',
+    orderDirection: 'DESC',
+    page: 1,
     perPage: 50,
     filters: {},
     entities: [],
     total: 0,
     loadingCounter: 0,
-    isLoaded: true,
+    isLoaded: false,
     error: false,
     selected: []
 };
 
 const reducer = (state, action) => {
+    console.log(action.type, action);
     switch (action.type) {
+        case 'selectNone':
+            return { ...state, selected: [] };
+        case 'selectPage':
+            return { ...state, selected: [ ...state.selected, ...state.entities.map(entity => !state.selected.includes(entity.id) && entity.id).filter(Boolean) ] };
+        case 'unselectPage':
+            return { ...state, selected: state.selected.filter(id => !state.entities.find((entity) => entity.id === id)) };
+        case 'selectEntity':
+            return { ...state, selected: action.payload.checked ? [ ...state.selected, action.payload.id ] : state.selected.filter((item) => item !== action.payload.id) };
+        case 'setLoaded':
+            return { ...state, isLoaded: false, ...action.payload.options };
+        case 'setResults':
+            return { ...state, total: action.payload.results.total, entities: action.payload.results.results, isLoaded: true };
+        case 'setError':
+            return { ...state, error: true };
         default:
             return state;
     }
@@ -55,7 +70,12 @@ const InventoryTable = ({
     disableDefaultColumns,
     columnsCounter,
     bulkSelect,
-    getEntities
+    hasCheckbox,
+    expandable,
+    actions,
+    noDetail,
+    getEntities,
+    selectAll
 }) => {
     const [ state, dispatch ] = useCallbackReducer(reducer, initialStateReducer);
     const columnsRef = useColumns({ columns, showTags, disableDefaultColumns, columnsCounter });
@@ -64,30 +84,31 @@ const InventoryTable = ({
     const location = useLocation();
 
     const refreshData = async (options) => {
-        dispatch({ type: 'entitiesPending', options }, async (state) => {
+        dispatch({ type: 'setLoaded', payload: { options } }, async (state) => {
             try {
-                const results = await apiGetEntities(
-                    items,
-                    filters,
-                    perPage,
-                    page,
-                    orderBy,
-                    orderDirection,
-                    fields = { system_profile: [ 'operating_system' ] },
-                    tags, // ?
-                    filter, // ?
+                const params = {
+                    filters: state.filters,
+                    perPage: state.perPage,
+                    page: state.page,
+                    orderBy: state.orderBy,
+                    orderDirection: state.orderDirection,
+                    tags: [], // ?
+                    filter: {}, // ?
                     showTags
-                );
+                };
 
+                const results = !getEntities ? await apiGetEntities(params) : await getEntities(params, apiGetEntities);
 
-            } catch {
+                dispatch({ type: 'setResults', payload: { results } });
+            } catch (e) {
+                console.error(e);
                 dispatch({ type: 'setError' });
             }
         });
     };
 
     useState(() => {
-
+        !state.isLoaded && refreshData();
     }, []);
 
     const noAccess = hasAccess === false;
@@ -109,8 +130,8 @@ const InventoryTable = ({
         itemCount: state.total,
         page: state.page,
         perPage: state.perPage,
-        onSetPage: () => null,
-        onPerPageSelect: () => null,
+        onSetPage: (_e, newPage) => refreshData({ page: newPage }),
+        onPerPageSelect: (_e, newPerPage) => refreshData({ page: 1, perPage: newPerPage }),
         ...paginationProps
     };
 
@@ -121,19 +142,40 @@ const InventoryTable = ({
         isCompact: false
     };
 
-    const { hasCheckbox, expandable, actions, noDetail, ...tablePropsRest } = tableProps;
-
     const cells = state.isLoaded && createColumns(columnsRef.current, false, state.entities, expandable);
 
     const defaultRowClick = (_event, key) => {
         history.push(`${location.pathname}${location.pathname.slice(-1) === '/' ? '' : '/'}${key}`);
     };
 
-    const onItemSelect = () => null;
+    const rows = createRows(
+        state.entities,
+        columnsRef.current,
+        {
+            actions,
+            expandable,
+            loaded: state.isLoaded,
+            onRowClick: onRowClick || defaultRowClick,
+            noDetail,
+            sortBy: state.orderBy,
+            noSystemsTable
+        });
+
+    state.selected.forEach(id => {
+        const index = rows.findIndex(row => row.id === id);
+        if (index >= 0) {
+            rows[index].selected = true;
+        }
+    });
+
+    const onItemSelect = (_event, checked, rowId) => {
+        const row = expandable ? state.entities[rowId / 2] : state.entities[rowId];
+        dispatch({ type: 'selectEntity', payload: { id: rowId === -1 ? 0 : row.id, checked } });
+    };
 
     const onExpandClick = () => null;
 
-    const onSortChange = () => null;
+    const onSortChange = (orderBy, orderDirection) => refreshData({ orderBy, orderDirection: orderDirection.toUpperCase() });
 
     return (<React.Fragment>
         <PrimaryToolbar
@@ -141,7 +183,23 @@ const InventoryTable = ({
             {...bulkSelect && {
                 bulkSelect: {
                     ...bulkSelect,
-                    isDisabled: bulkSelect?.isDisabled || noAccess
+                    count: state.selected.length,
+                    isDisabled: bulkSelect?.isDisabled || noAccess,
+                    checked: rows.every(({ selected }) => selected) || (rows.some(({ selected }) => selected) && null),
+                    onSelect: () => rows.some(({ selected }) => selected) ? dispatch({ type: 'unselectPage' }) : dispatch({ type: 'selectPage' }),
+                    items: [{
+                        title: 'Select none (0)',
+                        onClick: () => dispatch({ type: 'selectNone' })
+                    },
+                    ...state.isLoaded && rows?.length > 0 ? [{
+                        title: `Select page (${ rows.length })`,
+                        onClick: () => dispatch({ type: 'selectPage' })
+                    }] : [{}],
+                    ...selectAll && state.isLoaded && rows?.length > 0 ? [{
+                        title: `Select all (${ state.total })`,
+                        onClick: () => selectAll({ state, dispatch })
+                    }] : [{}]
+                    ]
                 }
             }}
         />
@@ -152,37 +210,23 @@ const InventoryTable = ({
         { state.isLoaded && !noAccess &&
             <PfTable
                 aria-label="Host inventory"
+                className="ins-c-entity-table"
                 cells={ cells }
-                rows={ createRows(
-                    state.entities,
-                    columnsRef.current,
-                    {
-                        actions,
-                        expandable,
-                        loaded: state.isLoaded,
-                        onRowClick: onRowClick || defaultRowClick,
-                        noDetail,
-                        sortBy: state.orderBy,
-                        noSystemsTable
-                    })
-                }
+                rows={ rows }
                 gridBreakPoint={
                     columnsRef.current?.length > 5 ? TableGridBreakpoint.gridLg : TableGridBreakpoint.gridMd
                 }
-                className="ins-c-entity-table"
-                onSort={ (event, index, direction) => {
+                onSort={ (_event, index, direction) => {
                     onSortChange(
-                        event,
                         cells[index - Boolean(hasCheckbox) - Boolean(expandable)]?.key,
-                        direction,
-                        index
+                        direction
                     );
                 } }
                 sortBy={ {
                     index: cells.findIndex(item => state.orderBy === item.key) + Boolean(hasCheckbox) + Boolean(expandable),
-                    direction: state.orderDirection
+                    direction: state.orderDirection.toLowerCase()
                 } }
-                { ...tablePropsRest }
+                { ...tableProps }
                 { ...{
                     ...hasCheckbox && state.entities.length !== 0 ? { onSelect: onItemSelect } : {},
                     ...expandable ? { onCollapse: onExpandClick } : {},
@@ -222,7 +266,12 @@ InventoryTable.propTypes = {
     onRowClick: PropTypes.func,
     disableDefaultColumns: PropTypes.oneOfType([ PropTypes.bool, PropTypes.arrayOf(PropTypes.string) ]),
     columnsCounter: PropTypes.number,
-    bulkSelect: PropTypes.object
+    bulkSelect: PropTypes.object,
+    hasCheckbox: PropTypes.bool,
+    expandable: PropTypes.bool,
+    actions: PropTypes.node,
+    noDetail: PropTypes.bool,
+    selectAll: PropTypes.func
     // isLoaded: PropTypes.bool,
     // initialLoading: PropTypes.bool,
     // ignoreRefresh: PropTypes.bool,
