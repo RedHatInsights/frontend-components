@@ -59,7 +59,7 @@ export async function getEntities({
             orderDirection,
             filters.staleFilter,
             [
-                ...constructTags(filters.tagFilters),
+                ...constructTags(filters.tagFilters || []),
                 ...tags || []
             ],
             filters.registeredWithFilter,
