@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import classnames from 'classnames';
 import { createUseStyles } from 'react-jss';
 import ExpandablePanel from './expandable-panel';
+import { H2 } from '../layout/mdx-provider-components';
 
 const useStyles = createUseStyles({
     name: {
@@ -29,7 +30,7 @@ const ExampleComponent = ({ source, name, codeOnly }) => {
     }, []);
     return (
         <div className={classes.exampleContainer}>
-            <Title headingLevel="h2" className={classnames(classes.name, 'pf-u-mt-md', 'pf-u-mb-md')}>{name}</Title>
+            <H2 className={classnames(classes.name)}>{name}</H2>
             {!codeOnly && Component && <Card className="pf-u-mb-md"><CardBody><Component /></CardBody></Card>}
             <ExpandablePanel codeOnly={codeOnly} source={source} sourceCode={sourceCode} />
         </div>
