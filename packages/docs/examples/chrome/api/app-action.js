@@ -9,7 +9,7 @@ const MyComponent = () => {
 
     return (
         <button onClick={handleClick}>
-          Open create dialong
+          Open create dialog
         </button>
     );
 };

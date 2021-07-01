@@ -63,7 +63,7 @@ A **promise** that returns authentication token if available.
 
 #### `auth.getUser`
 
-A **promise** that returns logged in user object.
+A **promise** that returns the logged-in user object.
 
 #### `auth.login`
 
@@ -71,11 +71,11 @@ A function that redirects the browser to Red Hat SSO.
 
 #### `auth.logout`
 
-A function that logs out current user and redirects the browser to landing page.
+A function that logs out a current user and redirects the browser to the landing page.
 
 ### `createCase`
 
-A function trough which a support case is create. By default, any support case contains following:
+A function through which a support case is created. By default, any support case contains the following:
 
 ```js
 {
@@ -86,7 +86,7 @@ A function trough which a support case is create. By default, any support case c
 ```
 
 <br />
-In addition to the default data you can also add additional options:
+In addition to the default data, you can also add additional options:
 <ExampleComponent codeOnly source="chrome/api/create-case.js" />
 
 ### `enable`
@@ -204,7 +204,7 @@ Initialize chrome. Sets up the chrome API  and adds `data-ouia-safe` to the appl
 
 ### `isBeta`
 
-A function that checks if the chrome is in beta environment.
+A function that checks if the chrome is in the beta environment.
 
 ```tsx
 function isBeta(): boolean
@@ -226,7 +226,7 @@ function isPenTest(): boolean
 
 ### `isChrome2`
 
-A flag that signalizes if the current environment is production environment
+A flag that signalizes if the current environment is the production environment
 
 ### `mapGlobalFilter`
 
@@ -290,7 +290,7 @@ on('NAVIGATION_TOGGLE', () => void)
 Register custom federated module to chrome modules library.
 
 <Alert className="pf-u-mb-sm pf-u-mt-sm" variant="info" isInline title="Not required for any chrome 2 application module">
-  If the application already migrated to chrome 2, this is not necessary. Chrome 2 includes all federated modules from chrome migrated applications by default.
+  If the application is already migrated to chrome 2, this is not necessary. Chrome 2 includes all federated modules from chrome-migrated applications by default.
 </Alert>
 
 ```tsx
