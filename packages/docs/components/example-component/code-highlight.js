@@ -34,7 +34,7 @@ Pre.propTypes = {
 
 const CodeHighlight = ({ sourceCode, language = 'jsx' }) => {
     return (
-        <Highlight {...defaultProps} theme={codeTheme} language={language} code={sourceCode}>
+        <Highlight {...defaultProps} theme={codeTheme} language={language} code={sourceCode.replace(/\n*$/, '')}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <Pre className={className} style={style}>
                     <React.Fragment>

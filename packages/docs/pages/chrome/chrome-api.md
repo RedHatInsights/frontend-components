@@ -118,8 +118,7 @@ A function that enables a short session to test automatic logouts.
 
 A function that will return the name of the current application:
 
-```jsx
-
+```tsx
 function getApp(): string | undefined
 
 // URL: https://ci.console.redhat.com/beta/insights/advisor/recommendations
@@ -130,8 +129,7 @@ getApp() // => 'advisor'
 
 A function that will return the name of the current bundle:
 
-```jsx
-
+```tsx
 function getBundle(): string
 
 // URL: https://ci.console.redhat.com/beta/insights/advisor/recommendations
@@ -142,7 +140,7 @@ getBundle() // => 'insights'
 
 A function that will return the name of the current environment:
 
-```jsx
+```tsx
 function getEnvironment(): string
 
 // URL: https://ci.console.redhat.com/beta/insights/advisor/recommendations
@@ -160,7 +158,6 @@ getBundle() // => 'prod'
 A **promise** that returns an array of all user permissions of the current user.
 
 ```tsx
-
 function getUserPermissions(): Promise<{permissions: string; resourceDefinitions: object[]}[]>
 
 getUserPermissions().then(console.log) // => [{permissions: 'foo:bar:baz', resourceDefinitions: []}, ...]
@@ -181,7 +178,6 @@ globalFilterScope('insights')  // => populate global filter with tags for system
 Function to toggle the global filter from the UI.
 
 ```tsx
-
 function hideGlobalFilter(hide = true): void
 ```
 
@@ -192,7 +188,6 @@ function hideGlobalFilter(hide = true): void
 </Alert>
 
 ```tsx
-
 function identifyApp(
   appName?: any /**Application name. ignored */,
   appTitle?: string /** New browser document title. */
@@ -212,7 +207,6 @@ Initialize chrome. Sets up the chrome API  and adds `data-ouia-safe` to the appl
 A function that checks if the chrome is in beta environment.
 
 ```tsx
-
 function isBeta(): boolean
 ```
 
@@ -227,7 +221,6 @@ A flag that signalizes if the current version of chrome is chrome 2
 A function that checks the browser cookies for `x-rh-insights-pentest` flag.
 
 ```tsx
-
 function isPenTest(): boolean
 ```
 
@@ -260,7 +253,6 @@ mapGlobalFilter()
 Used to register listeners on specific chrome public events
 
 ```tsx
-
 type publicEvent = 'APP_NAVIGATION' | 'NAVIGATION_TOGGLE' | 'GLOBAL_FILTER_UPDATE'
 
 function on(type: publicEvent, callback: Function): void
@@ -293,7 +285,7 @@ on('NAVIGATION_TOGGLE', () => void)
 
 ### `registerModule`
 
-**Add link to federated modules section**
+**Add a link to federated modules section**
 
 Register custom federated module to chrome modules library.
 
@@ -302,7 +294,6 @@ Register custom federated module to chrome modules library.
 </Alert>
 
 ```tsx
-
 function registerModule(module: string, manifestLocation: string): void
 
 registerModule('newModule', '/apps/newModule/js/fed-modules.json')
@@ -313,7 +304,6 @@ registerModule('newModule', '/apps/newModule/js/fed-modules.json')
 Function that updates the `document.title` property. Use to change the browser tab/window title.
 
 ```tsx
-
 function updateDocumentTitle(title: string): void
 
 updateDocumentTitle('New document title')
