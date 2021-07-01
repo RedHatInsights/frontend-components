@@ -1,4 +1,5 @@
 import { useReducer, useRef } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
 
 const useCallbackReducer = (reducer, initialState, initFn) => {
     const stateRef = useRef(initialState);
@@ -14,8 +15,12 @@ const useCallbackReducer = (reducer, initialState, initFn) => {
     const [ state, originalDispatch ] = useReducer(enhancedReducer, initialState, initFn);
 
     const enhancedDispatch = async (args, callback) => {
-        originalDispatch(args);
-        callback && await callback(stateRef.current);
+        if (callback) {
+            await originalDispatch(args);
+            await callback(cloneDeep(stateRef.current));
+        } else {
+            originalDispatch(args);
+        }
     };
 
     return [ state, enhancedDispatch ];

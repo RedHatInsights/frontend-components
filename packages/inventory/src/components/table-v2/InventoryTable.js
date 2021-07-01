@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
-import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
 import { ErrorState } from '@redhat-cloud-services/frontend-components/ErrorState';
 
@@ -20,6 +19,8 @@ import NoSystemsTable from '../table/NoSystemsTable';
 import useColumns from './useColumns';
 import useCallbackReducer from './useCallbackReducer';
 import { getEntities as apiGetEntities } from './api';
+import { getEnabledFilters } from './helpers';
+import TableToolbar from './TableToolbar';
 
 const initialStateReducer = {
     orderBy: 'updated',
@@ -38,6 +39,10 @@ const initialStateReducer = {
 const reducer = (state, action) => {
     console.log(action.type, action);
     switch (action.type) {
+        case 'setFilter':
+            return { ...state, filters: { ...state.filters, [action.payload.key]: action.payload.value } };
+        case 'selectAll':
+            return { ...state, selected: action.payload.selected };
         case 'selectNone':
             return { ...state, selected: [] };
         case 'selectPage':
@@ -75,8 +80,13 @@ const InventoryTable = ({
     actions,
     noDetail,
     getEntities,
-    selectAll
+    selectAll,
+    children,
+    hideFilters,
+    actionsConfig
 }) => {
+    const enabledFilters = useMemo(() => getEnabledFilters(hideFilters), [ hideFilters ]);
+
     const [ state, dispatch ] = useCallbackReducer(reducer, initialStateReducer);
     const columnsRef = useColumns({ columns, showTags, disableDefaultColumns, columnsCounter });
 
@@ -84,14 +94,15 @@ const InventoryTable = ({
     const location = useLocation();
 
     const refreshData = async (options) => {
-        dispatch({ type: 'setLoaded', payload: { options } }, async (state) => {
+        dispatch({ type: 'setLoaded', payload: { options } }, async (newState) => {
             try {
+                console.log({ newState });
                 const params = {
-                    filters: state.filters,
-                    perPage: state.perPage,
-                    page: state.page,
-                    orderBy: state.orderBy,
-                    orderDirection: state.orderDirection,
+                    filters: newState.filters,
+                    perPage: newState.perPage,
+                    page: newState.page,
+                    orderBy: newState.orderBy,
+                    orderDirection: newState.orderDirection,
                     tags: [], // ?
                     filter: {}, // ?
                     showTags
@@ -177,32 +188,20 @@ const InventoryTable = ({
 
     const onSortChange = (orderBy, orderDirection) => refreshData({ orderBy, orderDirection: orderDirection.toUpperCase() });
 
+    console.log(enabledFilters);
+
     return (<React.Fragment>
-        <PrimaryToolbar
-            pagination={state.isLoaded ? paginationConfig : <Skeleton size={SkeletonSize.lg} /> }
-            {...bulkSelect && {
-                bulkSelect: {
-                    ...bulkSelect,
-                    count: state.selected.length,
-                    isDisabled: bulkSelect?.isDisabled || noAccess,
-                    checked: rows.every(({ selected }) => selected) || (rows.some(({ selected }) => selected) && null),
-                    onSelect: () => rows.some(({ selected }) => selected) ? dispatch({ type: 'unselectPage' }) : dispatch({ type: 'selectPage' }),
-                    items: [{
-                        title: 'Select none (0)',
-                        onClick: () => dispatch({ type: 'selectNone' })
-                    },
-                    ...state.isLoaded && rows?.length > 0 ? [{
-                        title: `Select page (${ rows.length })`,
-                        onClick: () => dispatch({ type: 'selectPage' })
-                    }] : [{}],
-                    ...selectAll && state.isLoaded && rows?.length > 0 ? [{
-                        title: `Select all (${ state.total })`,
-                        onClick: () => selectAll({ state, dispatch })
-                    }] : [{}]
-                    ]
-                }
-            }}
-        />
+        <TableToolbar
+            state={state}
+            paginationConfig={paginationConfig}
+            actionsConfig={actionsConfig}
+            dispatch={dispatch}
+            enabledFilters={enabledFilters}
+            bulkSelect={bulkSelect}
+            rows={rows}
+            selectAll={selectAll}
+            noAccess={noAccess}
+        >{children}</TableToolbar>
         {!state.isLoaded && <SkeletonTable colSize={ columnsRef.current?.length || 3 } rowSize={ 15 } />}
         {state.isLoaded && noAccess && <div className="ins-c-inventory__no-access">
             <AccessDenied showReturnButton={false} />
@@ -241,6 +240,15 @@ const InventoryTable = ({
     </React.Fragment>);
 };
 
+/*
+        <TagsModal
+            customFilters={customFilters}
+            filterTagsBy={filterTagsBy}
+            onApply={(selected) => setSelectedTags(arrayToSelection(selected))}
+            onToggleModal={() => seFilterTagsBy('')}
+        />
+        */
+
 InventoryTable.propTypes = {
     // autoRefresh: PropTypes.bool,
     // onRefresh: PropTypes.func,
@@ -251,13 +259,19 @@ InventoryTable.propTypes = {
     // page: PropTypes.number,
     // perPage: PropTypes.number,
     // filters: PropTypes.any,
-    showTags: PropTypes.bool,
     // sortBy: PropTypes.object,
+    showTags: PropTypes.bool,
     customFilters: PropTypes.any,
     hasAccess: PropTypes.bool,
     isFullView: PropTypes.bool,
     getEntities: PropTypes.func,
-    hideFilters: PropTypes.object,
+    hideFilters: PropTypes.shape({
+        tags: PropTypes.bool,
+        name: PropTypes.bool,
+        registeredWith: PropTypes.bool,
+        stale: PropTypes.bool,
+        all: PropTypes.bool
+    }),
     paginationProps: PropTypes.object,
     errorState: PropTypes.node,
     tableProps: PropTypes.object,
@@ -271,7 +285,9 @@ InventoryTable.propTypes = {
     expandable: PropTypes.bool,
     actions: PropTypes.node,
     noDetail: PropTypes.bool,
-    selectAll: PropTypes.func
+    selectAll: PropTypes.func,
+    children: PropTypes.node,
+    actionsConfig: PrimaryToolbar.propTypes.actionsConfig
     // isLoaded: PropTypes.bool,
     // initialLoading: PropTypes.bool,
     // ignoreRefresh: PropTypes.bool,
