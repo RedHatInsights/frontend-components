@@ -96,7 +96,7 @@ Object containing functions that enable additional debugging options.
 
 A function that forces Pendo initialization.
 
-#### `enable.forcePendo`
+#### `enable.invTags`
 
 A function that enables experimental tags in inventory.
 #### `enable.iqe`
@@ -224,10 +224,9 @@ A function that checks the browser cookies for `x-rh-insights-pentest` flag.
 function isPenTest(): boolean
 ```
 
-### `isChrome2`
+### `isProd`
 
 A flag that signalizes if the current environment is the production environment
-
 ### `mapGlobalFilter`
 
 Transforms an object to a flat array of tags to `${namespace}/${key}=${value}` shape.
