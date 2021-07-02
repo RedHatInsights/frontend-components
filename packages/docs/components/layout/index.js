@@ -4,6 +4,8 @@ import {
     Page,
     PageHeader,
     PageSidebar,
+    Split,
+    SplitItem,
     Stack,
     StackItem
 } from '@patternfly/react-core';
@@ -14,6 +16,7 @@ import HeaderTools from './header-tools';
 import useNavigation from './use-navigation';
 import navigationMapper from '../navigation/navigation-mapper';
 import Breadcrumbs from './breadcrumbs';
+import TableOfContents from '../table-of-contents';
 
 const useStyles = createUseStyles({
     page: {
@@ -27,13 +30,20 @@ const useStyles = createUseStyles({
     },
     content: {
         marginLeft: 'initial',
-        marginRight: 'initial'
+        marginRight: 'initial',
+        width: 'calc(100% - 16px * 2)'
+    },
+    tableOfContents: {
+        display: 'none'
     },
     '@media (min-width: 1200px)': {
         content: {
             width: 900,
             marginLeft: 'auto',
             marginRight: 'auto'
+        },
+        tableOfContents: {
+            display: 'block'
         }
     }
 });
@@ -59,16 +69,23 @@ const Layout = ({ children }) => {
     const Sidebar = <PageSidebar nav={NavComponent && <NavComponent />} isNavOpen={isOpen} />;
     return (
         <Page className={classes.page} header={Header} sidebar={NavComponent && Sidebar}>
-            <div className={classnames('pf-u-p-md', classes.content)}>
-                <Stack hasGutter>
-                    <StackItem>
-                        <Breadcrumbs />
-                    </StackItem>
-                    <StackItem>
-                        {children}
-                    </StackItem>
-                </Stack>
-            </div>
+            <Split hasGutter>
+                <SplitItem isFilled>
+                    <div className={classnames('pf-u-p-md', classes.content)}>
+                        <Stack hasGutter>
+                            <StackItem>
+                                <Breadcrumbs />
+                            </StackItem>
+                            <StackItem id="docs-content">
+                                {children}
+                            </StackItem>
+                        </Stack>
+                    </div>
+                </SplitItem>
+                <SplitItem className={classes.tableOfContents}>
+                    <TableOfContents />
+                </SplitItem>
+            </Split>
         </Page>
     );
 };

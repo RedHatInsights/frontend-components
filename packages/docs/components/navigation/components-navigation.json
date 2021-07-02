@@ -186,6 +186,12 @@
 				]
 			},
 			{
+				"group": "NotConnected",
+				"items": [
+					"NotConnected"
+				]
+			},
+			{
 				"group": "PageHeader",
 				"items": [
 					"PageHeader",
@@ -535,6 +541,12 @@
 		"packageName": "remediations",
 		"groups": [
 			{
+				"group": "common",
+				"items": [
+					"ProgressBar"
+				]
+			},
+			{
 				"group": "RemediationButton",
 				"items": [
 					"RemediationButton"
@@ -543,7 +555,6 @@
 			{
 				"group": "RemediationWizard",
 				"items": [
-					"RemediationWizard",
 					"RemediationWizardHelper"
 				]
 			},
@@ -552,6 +563,7 @@
 				"items": [
 					"fetchError",
 					"issueResolution",
+					"progress",
 					"review",
 					"reviewActions",
 					"reviewSystems",
