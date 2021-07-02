@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 import { Skeleton, SkeletonSize } from '@redhat-cloud-services/frontend-components/Skeleton';
 
-import generateFilters from './filters';
+import { generateFilters, generateChips } from './filters';
 
 const TableToolbar = ({
     state,
@@ -18,9 +18,12 @@ const TableToolbar = ({
     children,
     noAccess
 }) => {
-    const [ textFilters, setTextFilter ] = useState({});
+    const [ filters, setFilter ] = useState(state.filters);
 
-    const updateTextFilter = (key, value) => setTextFilter({ ...textFilters, [key]: value });
+    const updateTextFilter = (key, value) => {
+        setFilter({ ...filters, [key]: value });
+        // debounce dispatch({ type: 'setFilter', payload: { key, value } })
+    };
 
     const bulkSelectConfig = useMemo(() => (
         {
@@ -52,15 +55,17 @@ const TableToolbar = ({
                 generateFilters(
                     enabledFilters,
                     {},
-                    state.filters,
-                    (key, value) => dispatch({ type: 'setFilter', payload: { key, value } }),
-                    textFilters,
+                    filters,
                     updateTextFilter
                 )
             }
             {...actionsConfig && { actionsConfig }}
             {...bulkSelect && {
                 bulkSelect: bulkSelectConfig
+            }}
+            activeFiltersConfig={{
+                filters: generateChips(filters),
+                onDelete: console.log
             }}
         >{children}</PrimaryToolbar>
     );

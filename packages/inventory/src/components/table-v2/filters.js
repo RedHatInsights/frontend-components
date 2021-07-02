@@ -1,4 +1,4 @@
-import { registered, staleness } from '../../shared';
+import { registered, REGISTERED_CHIP, staleness, STALE_CHIP, TEXTUAL_CHIP } from '../../shared';
 
 const textFilter = (value, onChange) => ({
     label: 'Name',
@@ -8,6 +8,14 @@ const textFilter = (value, onChange) => ({
         value,
         onChange: (_e, value) => onChange('name', value)
     }
+});
+
+const textChipFormatter = (value) => ({
+    category: 'Display name',
+    type: TEXTUAL_CHIP,
+    chips: [
+        { name: value }
+    ]
 });
 
 const stalenessFilter = (value, onChange) => ({
@@ -21,6 +29,13 @@ const stalenessFilter = (value, onChange) => ({
     }
 });
 
+const stalenessChipFormatter = (stalenessValue) => ({
+    category: 'Status',
+    type: STALE_CHIP,
+    chips: staleness.filter(({ value }) => stalenessValue.includes(value))
+    .map(({ label, ...props }) => ({ name: label, ...props }))
+});
+
 const registeredWithFilter = (value, onChange) => ({
     label: 'Source',
     value: 'source-registered-with',
@@ -32,22 +47,27 @@ const registeredWithFilter = (value, onChange) => ({
     }
 });
 
-const tagsFilter = (value, onChange) => ({
-    label: 'Source',
-    value: 'source-registered-with',
-    type: 'checkbox',
-    filterValues: {
-        value: value,
-        onChange: (_e, value) => onChange(value),
-        items: registered
-    }
+const registeredWithChipFormatter = (registeredWithValue) => ({
+    category: 'Source',
+    type: REGISTERED_CHIP,
+    chips: registered.filter(({ value }) => registeredWithValue.includes(value))
+    .map(({ label, ...props }) => ({ name: label, ...props }))
 });
 
-const generateFilters = (enabledFilters, customFilters, filter, onChange, textFilters, updateTextFilter) => ({ items: [
-    ...(enabledFilters.name ? [ textFilter(textFilters.name, updateTextFilter) ] : []),
+export const generateFilters = (enabledFilters, customFilters, filter, onChange) => ({ items: [
+    ...(enabledFilters.name ? [ textFilter(filter.name, onChange) ] : []),
     ...(enabledFilters.stale ? [ stalenessFilter(filter.stale, onChange) ] : []),
     ...(enabledFilters.registeredWith ? [ registeredWithFilter(filter.registeredWith, onChange) ] : [])
     //...(enabledFilters.tagsFilter ? [tagsFilter] : []),
 ] });
 
-export default generateFilters;
+const formatters = {
+    name: textChipFormatter,
+    stale: stalenessChipFormatter,
+    registeredWith: registeredWithChipFormatter
+};
+
+export const generateChips = (filters) => Object.keys(filters).map((filter) =>
+    (filters[filter] && !(Array.isArray(filters[filter]) && filters[filter].length === 0))
+    && formatters[filter](filters[filter]))
+.filter(Boolean);

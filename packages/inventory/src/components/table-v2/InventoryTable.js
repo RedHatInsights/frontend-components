@@ -188,8 +188,6 @@ const InventoryTable = ({
 
     const onSortChange = (orderBy, orderDirection) => refreshData({ orderBy, orderDirection: orderDirection.toUpperCase() });
 
-    console.log(enabledFilters);
-
     return (<React.Fragment>
         <TableToolbar
             state={state}
