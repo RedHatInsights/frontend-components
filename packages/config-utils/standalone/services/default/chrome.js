@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const glob = require('glob');
 
 const keycloakPort = 4001;
 
@@ -72,12 +73,22 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
     // Serve files which respect `keycloakUri` and `https`.
     app.get('(/beta)?/apps/chrome/*', (req, res) => {
         const fileReq = req.url.replace('/beta', '').replace('/apps/chrome', '');
-        const diskPath = path.join(chromePath, fileReq);
+        let diskPath = path.join(chromePath, fileReq);
         if (!fs.existsSync(diskPath)) {
-            if (proxyVerbose) {
-                console.log('not using localChrome for', req.url);
+            // Try ignoring the SHA in `/*.SHA.ext`
+            if (diskPath.match(/\/[^\/]+\.[^\/]+\.[^\/]+$/)) {
+              diskPath = diskPath.replace(/\w+\.(\w+)$/, (_, m) => `*${m}`);
             }
-            return next(); // fallback to proxy
+            const localFiles = glob.sync(diskPath);
+            if (localFiles.length === 1) {
+                diskPath = localFiles[0];
+                if (proxyVerbose) {
+                  console.log('localChrome', req.url, '->', diskPath);
+                }
+            } else if (proxyVerbose) {
+                console.log('not using localChrome for', req.url, `(could not find ${diskPath})`);
+                return next(); // fallback to proxy
+            }
         }
         // These hardcoded strings for auth need to be changed at runtime:
         // https://github.com/redallen/insights-chrome/commit/de14093bd20105042f48627466d4fba17825a890

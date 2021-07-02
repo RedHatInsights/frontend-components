@@ -142,7 +142,7 @@ module.exports = ({
             changeOrigin: true,
             autoRewrite: true,
             context: url => {
-                const shouldProxy = !appUrl.find(u => url.startsWith(u));
+                const shouldProxy = !appUrl.find(u => typeof u === 'string' ? url.startsWith(u) : u.test(url));
                 if (shouldProxy) {
                     console.log('proxy', url);
                     return true;
