@@ -16,9 +16,6 @@
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components#readme",
-    "dependencies": {
-        "nodesi": "^1.17.0"
-    },
     "peerDependencies": {
         "webpack": "^5.0.0"
     }

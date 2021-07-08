@@ -26,8 +26,7 @@ module.exports = ({
     reposDir,
     appUrl = [],
     proxyVerbose,
-    useCloud,
-    exactUrl
+    useCloud
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     if (betaEnv) {
@@ -161,8 +160,22 @@ module.exports = ({
             contentBase: `${rootFolder || ''}/dist`,
             port: devServerPort,
             https: https || Boolean(useProxy),
+            host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
             hot: false, // Use livereload instead of HMR which is spotty with federated modules
             disableHostCheck: true,
+            // https://github.com/bripkens/connect-history-api-fallback
+            historyApiFallback: {
+                // We should really implement the same logic as cloud-services-config
+                // and only redirect (/beta)?/bundle/app-name to /index.html
+                //
+                // Until then let known api calls fall through instead of returning /index.html
+                // for easier `fetch` debugging
+                rewrites: [
+                    { from: /^\/api/, to: '/404.html' },
+                    { from: /^(\/beta)?\/config/, to: '/404.html' }
+                ],
+                verbose: Boolean(proxyVerbose)
+            },
             writeToDisk: true,
             ...proxy({
                 useCloud,
@@ -172,14 +185,12 @@ module.exports = ({
                 routes,
                 routesPath,
                 useProxy,
-                rootFolder,
                 standalone,
                 port: devServerPort,
                 reposDir,
                 appUrl,
                 publicPath,
-                proxyVerbose,
-                exactUrl
+                proxyVerbose
             })
         }
     };

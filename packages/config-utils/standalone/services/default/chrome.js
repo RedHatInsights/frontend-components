@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const glob = require('glob');
 
 const keycloakPort = 4001;
 
@@ -35,13 +36,14 @@ module.exports = ({ port }) => ({
 module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVerbose }) => {
     const esiRegex = /<\s*esi:include\s+src\s*=\s*"([^"]+)"\s*\/\s*>/gm;
     // Express middleware for <esi:include> tags
-    // Inspiration: https://github.com/knpwrs/connect-static-transform
+    // Unfortunately we have to alter the contents of ALL text/html responses like akamai
+    // This means modifying the response object directly.
     app.use((req, res, next) => {
         const ext = path.extname(req.url);
         if (req.method === 'GET' && ['', '.hmt', '.html'].includes(ext)) {
-            const oldWrite = res.write.bind(res);
-            res.write = chunk => {
-                if (res.getHeader('Content-Type').includes('text/html') && !res.headersSent && !res.writableEnded) {
+            function writeOrEnd(chunk, encoding, callback, oldFn) {
+                const ctype = res.getHeader('Content-Type');
+                if (ctype && ctype.includes('text/html') && !res.headersSent && !res.writableEnded) {
                     if (chunk instanceof Buffer) {
                         chunk = chunk.toString();
                     }
@@ -57,8 +59,13 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
                         res.setHeader('Content-Length', chunk.length);
                     }
                 }
-                oldWrite(chunk);
-            }
+                oldFn(chunk, encoding, callback);
+            };
+            // https://nodejs.org/api/http.html#http_class_http_serverresponse
+            const oldWrite = res.write.bind(res);
+            res.write = (chunk, encoding, callback) => writeOrEnd(chunk, encoding, callback, oldWrite);
+            const oldEnd = res.end.bind(res);
+            res.end = (chunk, encoding, callback) => writeOrEnd(chunk, encoding, callback, oldEnd);
         }
 
         next();
@@ -66,12 +73,22 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
     // Serve files which respect `keycloakUri` and `https`.
     app.get('(/beta)?/apps/chrome/*', (req, res) => {
         const fileReq = req.url.replace('/beta', '').replace('/apps/chrome', '');
-        const diskPath = path.join(chromePath, fileReq);
+        let diskPath = path.join(chromePath, fileReq);
         if (!fs.existsSync(diskPath)) {
-            if (proxyVerbose) {
-                console.log('not using localChrome for', req.url);
+            // Try ignoring the SHA in `/*.SHA.ext`
+            if (diskPath.match(/\/[^\/]+\.[^\/]+\.[^\/]+$/)) {
+              diskPath = diskPath.replace(/\w+\.(\w+)$/, (_, m) => `*${m}`);
             }
-            return next(); // fallback to proxy
+            const localFiles = glob.sync(diskPath);
+            if (localFiles.length === 1) {
+                diskPath = localFiles[0];
+                if (proxyVerbose) {
+                  console.log('localChrome', req.url, '->', diskPath);
+                }
+            } else if (proxyVerbose) {
+                console.log('not using localChrome for', req.url, `(could not find ${diskPath})`);
+                return next(); // fallback to proxy
+            }
         }
         // These hardcoded strings for auth need to be changed at runtime:
         // https://github.com/redallen/insights-chrome/commit/de14093bd20105042f48627466d4fba17825a890
