@@ -46,6 +46,7 @@ class FilterInput extends Component {
                             onChange={ this.handleChange }
                             param={ param }
                             value={ value }
+                            ouiaId={ label }
                         />
                     );
                 case 'radio':
@@ -59,6 +60,7 @@ class FilterInput extends Component {
                             onChange={ this.handleChange }
                             param={ param }
                             value={ value }
+                            ouiaId={ label }
                         />
                     );
             }
