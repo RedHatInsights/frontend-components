@@ -11,6 +11,7 @@ exports[`FilterInput component should render a checkbox input 1`] = `
   label="label"
   onChange={[Function]}
   ouiaId="label"
+  ouiaSafe={true}
   param="param"
   value="value"
 />

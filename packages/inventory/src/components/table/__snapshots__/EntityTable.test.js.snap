@@ -369,6 +369,9 @@ exports[`EntityTable DOM should render correctly - no rows 1`] = `
               >
                 <h5
                   class="pf-c-title pf-m-lg"
+                  data-ouia-component-id="OUIA-Generated-Title-1"
+                  data-ouia-component-type="PF4/Title"
+                  data-ouia-safe="true"
                 >
                   No matching systems found
                 </h5>

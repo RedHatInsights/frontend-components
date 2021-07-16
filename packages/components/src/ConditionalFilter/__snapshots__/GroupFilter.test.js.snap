@@ -120,12 +120,12 @@ exports[`Group - component API should call onChange when group is clicked 1`] = 
       >
         <SelectToggle
           aria-label="Options menu"
-          aria-labelledby=" pf-select-toggle-id-13"
+          aria-labelledby=" pf-select-toggle-id-8"
           className=""
           handleTypeaheadKeys={[Function]}
           hasClearButton={true}
           hasFooter={false}
-          id="pf-select-toggle-id-13"
+          id="pf-select-toggle-id-8"
           isActive={false}
           isDisabled={false}
           isOpen={false}
@@ -161,9 +161,9 @@ exports[`Group - component API should call onChange when group is clicked 1`] = 
                     aria-expanded="false"
                     aria-haspopup="listbox"
                     aria-label="Options menu"
-                    aria-labelledby=" pf-select-toggle-id-13"
+                    aria-labelledby=" pf-select-toggle-id-8"
                     class="pf-c-button pf-c-select__toggle-button pf-m-plain"
-                    id="pf-select-toggle-id-13"
+                    id="pf-select-toggle-id-8"
                     type="button"
                   >
                     <svg
@@ -204,10 +204,10 @@ exports[`Group - component API should call onChange when group is clicked 1`] = 
               aria-expanded={false}
               aria-haspopup="listbox"
               aria-label="Options menu"
-              aria-labelledby=" pf-select-toggle-id-13"
+              aria-labelledby=" pf-select-toggle-id-8"
               className="pf-c-button pf-c-select__toggle-button pf-m-plain"
               disabled={false}
-              id="pf-select-toggle-id-13"
+              id="pf-select-toggle-id-8"
               onClick={[Function]}
               type="button"
             >
@@ -407,6 +407,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
               label="First checkbox"
               name="1-0"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
           <SelectOption
@@ -438,6 +439,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
               label="Second checkbox"
               name="some-value"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
         </SelectGroup>
@@ -547,6 +549,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isValid={true}
             label="Groupselectable value"
             onChange={[Function]}
+            ouiaSafe={true}
           />
         </SelectOption>
         <SelectGroup
@@ -754,6 +757,7 @@ exports[`Group - component render should render correctly with items - isDisable
               label="First checkbox"
               name="1-0"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
           <SelectOption
@@ -785,6 +789,7 @@ exports[`Group - component render should render correctly with items - isDisable
               label="Second checkbox"
               name="some-value"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
         </SelectGroup>
@@ -894,6 +899,7 @@ exports[`Group - component render should render correctly with items - isDisable
             isValid={true}
             label="Groupselectable value"
             onChange={[Function]}
+            ouiaSafe={true}
           />
         </SelectOption>
         <SelectGroup
@@ -1101,6 +1107,7 @@ exports[`Group - component render should render correctly with items 1`] = `
               label="First checkbox"
               name="1-0"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
           <SelectOption
@@ -1132,6 +1139,7 @@ exports[`Group - component render should render correctly with items 1`] = `
               label="Second checkbox"
               name="some-value"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
         </SelectGroup>
@@ -1241,6 +1249,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             isValid={true}
             label="Groupselectable value"
             onChange={[Function]}
+            ouiaSafe={true}
           />
         </SelectOption>
         <SelectGroup
@@ -1448,6 +1457,7 @@ exports[`Group - component render should render correctly with items and default
               label="First checkbox"
               name="1-0"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
           <SelectOption
@@ -1479,6 +1489,7 @@ exports[`Group - component render should render correctly with items and default
               label="Second checkbox"
               name="some-value"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
         </SelectGroup>
@@ -1588,6 +1599,7 @@ exports[`Group - component render should render correctly with items and default
             isValid={true}
             label="Groupselectable value"
             onChange={[Function]}
+            ouiaSafe={true}
           />
         </SelectOption>
         <SelectGroup
@@ -1795,6 +1807,7 @@ exports[`Group - component render should render correctly with items and selecte
               label="First checkbox"
               name="1-0"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
           <SelectOption
@@ -1826,6 +1839,7 @@ exports[`Group - component render should render correctly with items and selecte
               label="Second checkbox"
               name="some-value"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
         </SelectGroup>
@@ -1935,6 +1949,7 @@ exports[`Group - component render should render correctly with items and selecte
             isValid={true}
             label="Groupselectable value"
             onChange={[Function]}
+            ouiaSafe={true}
           />
         </SelectOption>
         <SelectGroup
@@ -2142,6 +2157,7 @@ exports[`Group - component render show more should render correctly with items a
               label="First checkbox"
               name="1-0"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
           <SelectOption
@@ -2173,6 +2189,7 @@ exports[`Group - component render show more should render correctly with items a
               label="Second checkbox"
               name="some-value"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
         </SelectGroup>
@@ -2282,6 +2299,7 @@ exports[`Group - component render show more should render correctly with items a
             isValid={true}
             label="Groupselectable value"
             onChange={[Function]}
+            ouiaSafe={true}
           />
         </SelectOption>
         <SelectGroup
@@ -2504,6 +2522,7 @@ exports[`Group - component render show more should render correctly with items a
               label="First checkbox"
               name="1-0"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
           <SelectOption
@@ -2535,6 +2554,7 @@ exports[`Group - component render show more should render correctly with items a
               label="Second checkbox"
               name="some-value"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
         </SelectGroup>
@@ -2644,6 +2664,7 @@ exports[`Group - component render show more should render correctly with items a
             isValid={true}
             label="Groupselectable value"
             onChange={[Function]}
+            ouiaSafe={true}
           />
         </SelectOption>
         <SelectGroup
@@ -2861,6 +2882,7 @@ exports[`Group - component render show more should render correctly with items a
               label="First checkbox"
               name="1-0"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
           <SelectOption
@@ -2892,6 +2914,7 @@ exports[`Group - component render show more should render correctly with items a
               label="Second checkbox"
               name="some-value"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
         </SelectGroup>
@@ -3001,6 +3024,7 @@ exports[`Group - component render show more should render correctly with items a
             isValid={true}
             label="Groupselectable value"
             onChange={[Function]}
+            ouiaSafe={true}
           />
         </SelectOption>
         <SelectGroup
@@ -3218,6 +3242,7 @@ exports[`Group - component render show more should render correctly with items a
               label="First checkbox"
               name="1-0"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
           <SelectOption
@@ -3249,6 +3274,7 @@ exports[`Group - component render show more should render correctly with items a
               label="Second checkbox"
               name="some-value"
               onChange={[Function]}
+              ouiaSafe={true}
             />
           </SelectOption>
         </SelectGroup>
@@ -3358,6 +3384,7 @@ exports[`Group - component render show more should render correctly with items a
             isValid={true}
             label="Groupselectable value"
             onChange={[Function]}
+            ouiaSafe={true}
           />
         </SelectOption>
         <SelectGroup
