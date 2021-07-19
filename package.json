@@ -122,8 +122,8 @@
         "whatwg-fetch": "^3.6.2"
     },
     "scripts": {
-        "clean": "lerna clean -y && rm -rf node_modules",
-        "postinstall": "npm run build",
+        "clean": "lerna clean -y && lerna exec rm -- -f package-lock.json && rm -rf node_modules",
+        "postinstall": "npm run build && lerna exec rm -- -f package-lock.json",
         "start": "lerna run --parallel start --ignore=docs",
         "build": "lerna run build --stream --no-private --ignore=@redhat-cloud-services/frontend-components-config*",
         "generate-translations": "npm run build && node packages/utils/src/mergeMessages.js",
