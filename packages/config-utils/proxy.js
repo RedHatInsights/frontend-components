@@ -27,6 +27,7 @@ module.exports = ({
     publicPath,
     proxyVerbose,
     useCloud = false,
+    useStage = false,
     target = ''
 }) => {
     const proxy = [];
@@ -34,17 +35,19 @@ module.exports = ({
     const majorEnv = env.split('-')[0];
     if (target === '') {
         target += 'https://';
-        if (useCloud && majorEnv !== 'prod') {
+        if (!useStage && majorEnv !== 'prod') {
             target += majorEnv + '.';
         }
 
         target += useCloud ? 'cloud' : 'console';
-        if (!useCloud && majorEnv !== 'prod') {
+        if (useStage && majorEnv !== 'prod') {
             target += '.stage';
         }
 
         target += '.redhat.com/';
     }
+
+    console.log('Proxing to', target);
 
     if (!Array.isArray(appUrl)) {
         appUrl = [ appUrl ];
