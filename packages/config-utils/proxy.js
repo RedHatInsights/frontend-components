@@ -27,7 +27,6 @@ module.exports = ({
     publicPath,
     proxyVerbose,
     useCloud = false,
-    useStage = false,
     target = ''
 }) => {
     const proxy = [];
@@ -35,12 +34,12 @@ module.exports = ({
     const majorEnv = env.split('-')[0];
     if (target === '') {
         target += 'https://';
-        if (!useStage && majorEnv !== 'prod') {
+        if (![ 'prod', 'stage' ].includes(majorEnv)) {
             target += majorEnv + '.';
         }
 
         target += useCloud ? 'cloud' : 'console';
-        if (useStage && majorEnv !== 'prod') {
+        if (majorEnv === 'stage') {
             target += '.stage';
         }
 
@@ -48,6 +47,12 @@ module.exports = ({
     }
 
     console.log('Proxing to', target);
+
+    if (env.startsWith('stage')) {
+        // stage-stable / stage-beta branches don't exist in build repos
+        // Currently stage pulls from QA
+        env = env.replace('stage', 'qa');
+    }
 
     if (!Array.isArray(appUrl)) {
         appUrl = [ appUrl ];
