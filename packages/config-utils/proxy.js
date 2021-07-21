@@ -27,10 +27,10 @@ module.exports = ({
     publicPath,
     proxyVerbose,
     useCloud = false,
-    target = ''
+    target = '',
+    registry = []
 }) => {
     const proxy = [];
-    const registry = [];
     const majorEnv = env.split('-')[0];
     if (target === '') {
         target += 'https://';
