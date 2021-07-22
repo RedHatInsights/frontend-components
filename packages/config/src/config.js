@@ -27,7 +27,8 @@ module.exports = ({
     appUrl = [],
     proxyVerbose,
     useCloud,
-    target
+    target,
+    registry
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     if (betaEnv) {
@@ -192,7 +193,8 @@ module.exports = ({
                 appUrl,
                 publicPath,
                 proxyVerbose,
-                target
+                target,
+                registry
             })
         }
     };
