@@ -26,15 +26,34 @@ module.exports = ({
     appUrl = [],
     publicPath,
     proxyVerbose,
-    useCloud = false
+    useCloud = false,
+    target = ''
 }) => {
     const proxy = [];
     const registry = [];
     const majorEnv = env.split('-')[0];
-    const minorEnv = majorEnv === 'prod' ? '' : `${majorEnv}.`;
-    const target = env === 'prod-stable'
-        ? `https://${useCloud ? 'cloud' : 'console'}.redhat.com/`
-        : `https://${minorEnv}${useCloud ? 'cloud' : 'console'}.redhat.com/`;
+    if (target === '') {
+        target += 'https://';
+        if (![ 'prod', 'stage' ].includes(majorEnv)) {
+            target += majorEnv + '.';
+        }
+
+        target += useCloud ? 'cloud' : 'console';
+        if (majorEnv === 'stage') {
+            target += '.stage';
+        }
+
+        target += '.redhat.com/';
+    }
+
+    console.log('Proxing to', target);
+
+    if (env.startsWith('stage')) {
+        // stage-stable / stage-beta branches don't exist in build repos
+        // Currently stage pulls from QA
+        env = env.replace('stage', 'qa');
+    }
+
     if (!Array.isArray(appUrl)) {
         appUrl = [ appUrl ];
     }
