@@ -48,8 +48,6 @@ module.exports = ({
         target += '.redhat.com/';
     }
 
-    console.log('Proxing to', target);
-
     let agent;
     if (env.startsWith('stage')) {
         // stage-stable / stage-beta branches don't exist in build repos
