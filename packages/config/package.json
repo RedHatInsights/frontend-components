@@ -29,6 +29,7 @@
         "glob": "^7.0.0",
         "html-replace-webpack-plugin": "^2.6.0",
         "html-webpack-plugin": "^5.3.1",
+        "https-proxy-agent": "^5.0.0",
         "mini-css-extract-plugin": "^1.6.0",
         "js-yaml": "^4.0.0",
         "jws": "^4.0.0",

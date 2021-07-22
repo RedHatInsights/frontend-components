@@ -52,6 +52,7 @@ const { config: webpackConfig, plugins } = config({
 |Attribute|Type|Description|
 |---------|----|-----------|
 |[useProxy](#useproxy)|`boolean`|Enables webpack proxy.|
+|[proxyURL](#proxyURL)|`string`|URL to proxy Akamai environment requests to.|
 |[localChrome](#localChrome)|`string`|Path to your local chrome build folder.|
 |[registry](#registry)|`(({ app, server, compiler, standaloneConfig }) => void)[]`|Express middleware to register.|
 |[routes](#routes)|`object`|An object with additional routes.|
