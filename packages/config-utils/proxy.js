@@ -2,6 +2,7 @@
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
 const { execSync } = require('child_process');
 const path = require('path');
+const HttpsProxyAgent = require('https-proxy-agent');
 const cookieTransform = require('./cookieTransform');
 const router = require('./standalone/helpers/router');
 const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./standalone/helpers/index');
@@ -19,6 +20,7 @@ module.exports = ({
     routes,
     routesPath,
     useProxy,
+    proxyURL = 'http://squid.corp.redhat.com:3128',
     standalone,
     port,
     reposDir = defaultReposDir,
@@ -46,12 +48,13 @@ module.exports = ({
         target += '.redhat.com/';
     }
 
-    console.log('Proxing to', target);
-
+    let agent;
     if (env.startsWith('stage')) {
         // stage-stable / stage-beta branches don't exist in build repos
         // Currently stage pulls from QA
         env = env.replace('stage', 'qa');
+        // QA and stage are deployed with Akamai which requires a corporate proxy
+        agent = new HttpsProxyAgent(proxyURL);
     }
 
     if (!Array.isArray(appUrl)) {
@@ -80,7 +83,8 @@ module.exports = ({
                     ws: true,
                     onProxyReq: cookieTransform,
                     ...(currTarget === 'PORTAL_BACKEND_MARKER' && { router }),
-                    ...typeof redirect === 'object' ? redirect : {}
+                    ...typeof redirect === 'object' ? redirect : {},
+                    ...(agent && { agent })
                 };
             })
         );
@@ -170,7 +174,8 @@ module.exports = ({
                 return false;
             },
             target,
-            router: router(target, useCloud)
+            router: router(target, useCloud),
+            ...(agent && { agent })
         });
     }
 
