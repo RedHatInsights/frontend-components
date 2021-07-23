@@ -22,7 +22,7 @@ async function startService(services, name, subService) {
   }
 
   // Start container
-  execSync(`docker run --detach --name ${name} --network ${NET} --pull always ${args}`);
+  execSync(`docker run --detach --name ${name} --network ${NET} --pull always ${args}`, { stdio: 'inherit' });
 }
 
 function stopService(name) {
