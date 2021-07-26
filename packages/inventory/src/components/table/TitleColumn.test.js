@@ -58,19 +58,5 @@ describe('TitleColumn', () => {
             wrapper.find('a').first().simulate('click');
             expect(onClick).not.toHaveBeenCalled();
         });
-
-        it('should NOT call onClick and call global open', () => {
-            const onClick = jest.fn();
-            const Cmp = () => TitleColumn(
-                'something',
-                'some-id',
-                { os_release: 'os_release' },
-                { onRowClick: onClick, loaded: true }
-            );
-            const wrapper = mount(<Cmp />);
-            wrapper.find('a').first().simulate('click', { ctrlKey: true });
-            expect(onClick).not.toHaveBeenCalled();
-            expect(open).toHaveBeenCalled();
-        });
     });
 });
