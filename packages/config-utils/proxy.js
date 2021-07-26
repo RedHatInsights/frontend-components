@@ -175,7 +175,14 @@ module.exports = ({
             },
             target,
             router: router(target, useCloud),
-            ...(agent && { agent })
+            ...(agent && {
+                agent,
+                headers: {
+                    // Staging Akamai CORS gives 403s for non-GET requests from non-origin hosts
+                    Host: target.replace('https://', ''),
+                    Origin: target
+                }
+            })
         });
     }
 
