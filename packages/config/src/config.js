@@ -17,6 +17,7 @@ module.exports = ({
     sassPrefix,
     skipChrome2 = false,
     useProxy,
+    proxyURL,
     localChrome,
     customProxy,
     routes,
@@ -26,7 +27,9 @@ module.exports = ({
     reposDir,
     appUrl = [],
     proxyVerbose,
-    useCloud
+    useCloud,
+    target,
+    registry
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     if (betaEnv) {
@@ -185,12 +188,15 @@ module.exports = ({
                 routes,
                 routesPath,
                 useProxy,
+                proxyURL,
                 standalone,
                 port: devServerPort,
                 reposDir,
                 appUrl,
                 publicPath,
-                proxyVerbose
+                proxyVerbose,
+                target,
+                registry
             })
         }
     };

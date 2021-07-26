@@ -2,6 +2,7 @@
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
 const { execSync } = require('child_process');
 const path = require('path');
+const HttpsProxyAgent = require('https-proxy-agent');
 const cookieTransform = require('./cookieTransform');
 const router = require('./standalone/helpers/router');
 const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./standalone/helpers/index');
@@ -19,6 +20,7 @@ module.exports = ({
     routes,
     routesPath,
     useProxy,
+    proxyURL = 'http://squid.corp.redhat.com:3128',
     standalone,
     port,
     reposDir = defaultReposDir,
@@ -26,15 +28,35 @@ module.exports = ({
     appUrl = [],
     publicPath,
     proxyVerbose,
-    useCloud = false
+    useCloud = false,
+    target = '',
+    registry = []
 }) => {
     const proxy = [];
-    const registry = [];
     const majorEnv = env.split('-')[0];
-    const minorEnv = majorEnv === 'prod' ? '' : `${majorEnv}.`;
-    const target = env === 'prod-stable'
-        ? `https://${useCloud ? 'cloud' : 'console'}.redhat.com/`
-        : `https://${minorEnv}${useCloud ? 'cloud' : 'console'}.redhat.com/`;
+    if (target === '') {
+        target += 'https://';
+        if (![ 'prod', 'stage' ].includes(majorEnv)) {
+            target += majorEnv + '.';
+        }
+
+        target += useCloud ? 'cloud' : 'console';
+        if (majorEnv === 'stage') {
+            target += '.stage';
+        }
+
+        target += '.redhat.com/';
+    }
+
+    let agent;
+    if (env.startsWith('stage')) {
+        // stage-stable / stage-beta branches don't exist in build repos
+        // Currently stage pulls from QA
+        env = env.replace('stage', 'qa');
+        // QA and stage are deployed with Akamai which requires a corporate proxy
+        agent = new HttpsProxyAgent(proxyURL);
+    }
+
     if (!Array.isArray(appUrl)) {
         appUrl = [ appUrl ];
     }
@@ -61,7 +83,8 @@ module.exports = ({
                     ws: true,
                     onProxyReq: cookieTransform,
                     ...(currTarget === 'PORTAL_BACKEND_MARKER' && { router }),
-                    ...typeof redirect === 'object' ? redirect : {}
+                    ...typeof redirect === 'object' ? redirect : {},
+                    ...(agent && { agent })
                 };
             })
         );
@@ -151,7 +174,8 @@ module.exports = ({
                 return false;
             },
             target,
-            router: router(target, useCloud)
+            router: router(target, useCloud),
+            ...(agent && { agent })
         });
     }
 
