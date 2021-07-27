@@ -26,17 +26,21 @@ import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 
-const Cmp = () => (
-  <AsyncComponent
-    store={useStore()}
-    history={useHistory}
-    appName="inventory"
-    module={`./InventoryTable`}
-    fallback="Loading"
-    ref={innerRef}
-    {...props}
-  />
-);
+const Cmp = () => {
+  const store = useStore();
+  const history = useHistory();
+  return (
+    <AsyncComponent
+      store={store}
+      history={history}
+      appName="inventory"
+      module={`./InventoryTable`}
+      fallback="Loading"
+      ref={innerRef}
+      {...props}
+    />
+  );
+}
 
 export default Cmp;
 ```
