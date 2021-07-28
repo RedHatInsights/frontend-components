@@ -141,7 +141,6 @@ module.exports = ({
             }
 
             process.on('SIGINT', () => {
-                console.log();
                 serviceNames.forEach(stopService);
                 process.exit();
             });
@@ -167,7 +166,10 @@ module.exports = ({
             context: url => {
                 const shouldProxy = !appUrl.find(u => typeof u === 'string' ? url.startsWith(u) : u.test(url));
                 if (shouldProxy) {
-                    console.log('proxy', url);
+                    if (proxyVerbose) {
+                        console.log('proxy', url);
+                    }
+
                     return true;
                 }
 
