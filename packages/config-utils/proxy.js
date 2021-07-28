@@ -100,12 +100,13 @@ module.exports = ({
         // Create network for services.
         execSync(`docker network inspect ${NET} >/dev/null 2>&1 || docker network create ${NET}`);
 
-        // Clone repos
+        // Clone repos and resolve functions
         // If we manage the repos it's okay to overwrite the contents
         const overwrite = reposDir === defaultReposDir;
-        // Need to use for loop for `await`
-        for (const [ projName, proj ] of Object.entries(standaloneConfig)) {
-            const { services, path, assets, onProxyReq, keycloakUri, register, target, ...rest } = proj;
+
+        // Resolve config functions for cross-service references
+        for (const [ _projName, proj ] of Object.entries(standaloneConfig)) {
+            const { services, path, assets, register } = proj;
             if (typeof register === 'function') {
                 registry.push(register);
             }
@@ -129,8 +130,11 @@ module.exports = ({
             if (typeof services === 'function') {
                 proj.services = services({ env, port, assets });
             }
+        }
 
-            // Start standalone services.
+        // Start standalone services.
+        for (const [ projName, proj ] of Object.entries(standaloneConfig)) {
+            const { services, path, assets, onProxyReq, keycloakUri, register, target, ...rest } = proj;
             const serviceNames = [];
             for (let [ subServiceName, subService ] of Object.entries(proj.services || {})) {
                 const name = [ projName, subServiceName ].join('_');
@@ -140,10 +144,7 @@ module.exports = ({
                 console.log('Container', name, 'listening', port ? 'on' : '', port || '');
             }
 
-            process.on('SIGINT', () => {
-                serviceNames.forEach(stopService);
-                process.exit();
-            });
+            process.on('SIGINT', () => serviceNames.forEach(stopService));
 
             if (target) {
                 proxy.push({
@@ -155,6 +156,8 @@ module.exports = ({
                 });
             }
         }
+
+        process.on('SIGINT', () => process.exit());
     }
 
     if (useProxy) {
