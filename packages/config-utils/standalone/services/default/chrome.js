@@ -39,7 +39,7 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
     // Unfortunately we have to alter the contents of ALL text/html responses like akamai
     // This means modifying the response object directly.
     app.use((req, res, next) => {
-        const ext = path.extname(req.url);
+        const ext = path.extname(req.url.replace(/\?.*/, ''));
         if (req.method === 'GET' && ['', '.hmt', '.html'].includes(ext)) {
             function writeOrEnd(chunk, encoding, callback, oldFn) {
                 const ctype = res.getHeader('Content-Type');
