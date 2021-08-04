@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ScalprumComponent } from '@scalprum/react-core';
 import { Bullseye, Spinner } from '@patternfly/react-core';
@@ -12,17 +12,15 @@ const BaseAsyncComponent = ({
     ...props
 }) => {
     return (
-        <Suspense fallback={fallback}>
-            <ScalprumComponent
-                appName={appName}
-                module={module}
-                scope={scope || appName}
-                ErrorComponent={fallback}
-                ref={innerRef}
-                fallback={fallback}
-                {...props}
-            />
-        </Suspense>
+        <ScalprumComponent
+            appName={appName}
+            module={module}
+            scope={scope || appName}
+            ErrorComponent={fallback}
+            ref={innerRef}
+            fallback={fallback}
+            {...props}
+        />
     );
 };
 
