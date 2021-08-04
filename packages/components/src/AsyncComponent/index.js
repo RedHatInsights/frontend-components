@@ -19,6 +19,7 @@ const BaseAsyncComponent = ({
                 scope={scope || appName}
                 ErrorComponent={fallback}
                 ref={innerRef}
+                fallback={fallback}
                 {...props}
             />
         </Suspense>
