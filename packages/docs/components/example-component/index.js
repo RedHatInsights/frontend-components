@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
     }
 });
 
-const ExampleComponent = ({ source, name, codeOnly }) => {
+const ExampleComponent = ({ language = 'jsx', source, name, codeOnly }) => {
     const { current: Component } = useRef(dynamic(import(`@docs/examples/${source}`)));
     const [ sourceCode, setSourceCode ] = useState('');
     const classes = useStyles();
@@ -32,7 +32,7 @@ const ExampleComponent = ({ source, name, codeOnly }) => {
         <div className={classes.exampleContainer}>
             <H2 className={classnames(classes.name)}>{name}</H2>
             {!codeOnly && Component && <Card className="pf-u-mb-md"><CardBody><Component /></CardBody></Card>}
-            <ExpandablePanel codeOnly={codeOnly} source={source} sourceCode={sourceCode} />
+            <ExpandablePanel language={language} codeOnly={codeOnly} source={source} sourceCode={sourceCode} />
         </div>
     );
 };
@@ -40,7 +40,8 @@ const ExampleComponent = ({ source, name, codeOnly }) => {
 ExampleComponent.propTypes = {
     source: PropTypes.string.isRequired,
     name: PropTypes.string,
-    codeOnly: PropTypes.bool
+    codeOnly: PropTypes.bool,
+    language: PropTypes.string
 };
 
 export default ExampleComponent;
