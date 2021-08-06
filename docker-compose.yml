@@ -1,0 +1,12 @@
+version: '3'
+services:
+  docs:
+    build: 
+      context: ./
+      dockerfile: Dockerfile.dev
+    command: sh -c "npm i && npm run watch"
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/docs
+  

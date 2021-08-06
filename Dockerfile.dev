@@ -1,0 +1,6 @@
+FROM registry.redhat.io/ubi8/nodejs-14
+USER root
+WORKDIR /docs
+COPY ./packages/components /docs/packages/components
+COPY ./packages/docs /docs/packages/docs
+WORKDIR /docs/packages/docs
