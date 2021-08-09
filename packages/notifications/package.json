@@ -30,12 +30,14 @@
         "@patternfly/react-icons": ">=4.3.5",
         "prop-types": ">=15.6.2",
         "react": ">=16.14.0 || >=17.0.0",
-        "react-dom": ">=16.14.0 || >=17.0.0",
-        "redux": ">=4.0.5",
-        "react-redux": ">=5.0.7"
+        "react-dom": ">=16.14.0 || >=17.0.0"
     },
     "dependencies": {
         "redux-promise-middleware": "6.1.2",
         "@redhat-cloud-services/frontend-components-utilities": "*"
+    },
+    "optionalDependencies": {
+        "redux": ">=4.0.5",
+        "react-redux": ">=5.0.7"
     }
 }
