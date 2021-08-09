@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Dropdown, DropdownToggle, Level } from '@patternfly/react-core';
+import { getDefaultOUIAId } from '@patternfly/react-core/';
 import PropTypes from 'prop-types';
 import FilterInput from './FilterInput.js';
 import './filter-dropdown.scss';
 
 class FilterDropdown extends Component {
     state = {
-        isOpen: false
+        isOpen: false,
+        ouiaStateId: getDefaultOUIAId('RHI/FilterDropdown')
     };
 
     addRemoveFilters = (selectedValue, filterName, type, isChecked) => {
@@ -27,14 +29,18 @@ class FilterDropdown extends Component {
     };
 
     render() {
-        const { hideCategories, filters, filterCategories, label } = this.props;
-        const { isOpen } = this.state;
+        const { hideCategories, filters, filterCategories, label, ouiaId, ouiaSafe } = this.props;
+        const { isOpen, ouiaStateId } = this.state;
+        const ouiaFinalId = ouiaId !== undefined ? ouiaId : ouiaStateId;
 
         return (
             <Dropdown
                 className="ins-c-filter__dropdown"
                 onSelect={ this.onSelect }
-                toggle={ <DropdownToggle onToggle={ this.onToggle }>{ label }</DropdownToggle> } isOpen={ isOpen }
+                toggle={ <DropdownToggle ouiaId={ ouiaFinalId } ouiaSafe={ ouiaSafe } onToggle={ this.onToggle }>{ label }</DropdownToggle> }
+                isOpen={ isOpen }
+                ouiaId={ouiaFinalId}
+                ouiaSafe={ouiaSafe}
             >
                 <div className='pf-c-dropdown__menu-item'>
                     { filterCategories.map(
@@ -86,7 +92,9 @@ FilterDropdown.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.node
-    ])
+    ]),
+    ouiaId: PropTypes.string,
+    ouiaSafe: PropTypes.bool
 };
 
 FilterDropdown.defaultProps = {
@@ -94,7 +102,8 @@ FilterDropdown.defaultProps = {
     removeFilter: Function.prototype,
     hideCategories: [],
     filters: {},
-    label: 'Filters'
+    label: 'Filters',
+    ouiaSafe: true
 };
 
 export default FilterDropdown;

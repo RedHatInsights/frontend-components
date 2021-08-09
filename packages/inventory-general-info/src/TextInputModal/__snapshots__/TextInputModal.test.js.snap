@@ -95,6 +95,9 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                     aria-invalid="false"
                     aria-label="input text"
                     class="pf-c-form-control"
+                    data-ouia-component-id="OUIA-Generated-TextInputBase-4"
+                    data-ouia-component-type="PF4/TextInput"
+                    data-ouia-safe="true"
                     type="text"
                     value=""
                   />
@@ -220,43 +223,51 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                         onClick={[Function]}
                         variant="plain"
                       >
-                        <button
-                          aria-disabled={false}
+                        <ButtonBase
                           aria-label="Close"
-                          className="pf-c-button pf-m-plain"
-                          data-ouia-component-id="OUIA-Generated-Button-plain-4"
-                          data-ouia-component-type="PF4/Button"
-                          data-ouia-safe={true}
-                          disabled={false}
+                          className=""
+                          innerRef={null}
                           onClick={[Function]}
-                          role={null}
-                          type="button"
+                          variant="plain"
                         >
-                          <TimesIcon
-                            color="currentColor"
-                            noVerticalAlign={false}
-                            size="sm"
+                          <button
+                            aria-disabled={false}
+                            aria-label="Close"
+                            className="pf-c-button pf-m-plain"
+                            data-ouia-component-id="OUIA-Generated-Button-plain-4"
+                            data-ouia-component-type="PF4/Button"
+                            data-ouia-safe={true}
+                            disabled={false}
+                            onClick={[Function]}
+                            role={null}
+                            type="button"
                           >
-                            <svg
-                              aria-hidden={true}
-                              aria-labelledby={null}
-                              fill="currentColor"
-                              height="1em"
-                              role="img"
-                              style={
-                                Object {
-                                  "verticalAlign": "-0.125em",
-                                }
-                              }
-                              viewBox="0 0 352 512"
-                              width="1em"
+                            <TimesIcon
+                              color="currentColor"
+                              noVerticalAlign={false}
+                              size="sm"
                             >
-                              <path
-                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                              />
-                            </svg>
-                          </TimesIcon>
-                        </button>
+                              <svg
+                                aria-hidden={true}
+                                aria-labelledby={null}
+                                fill="currentColor"
+                                height="1em"
+                                role="img"
+                                style={
+                                  Object {
+                                    "verticalAlign": "-0.125em",
+                                  }
+                                }
+                                viewBox="0 0 352 512"
+                                width="1em"
+                              >
+                                <path
+                                  d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                />
+                              </svg>
+                            </TimesIcon>
+                          </button>
+                        </ButtonBase>
                       </Button>
                     </ModalBoxCloseButton>
                     <ModalBoxBody
@@ -281,6 +292,7 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                             isReadOnly={false}
                             isRequired={false}
                             onChange={[Function]}
+                            ouiaSafe={true}
                             type="text"
                             validated="default"
                             value=""
@@ -289,6 +301,9 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                               aria-invalid={false}
                               aria-label="input text"
                               className="pf-c-form-control"
+                              data-ouia-component-id="OUIA-Generated-TextInputBase-4"
+                              data-ouia-component-type="PF4/TextInput"
+                              data-ouia-safe={true}
                               disabled={false}
                               onBlur={[Function]}
                               onChange={[Function]}
@@ -312,21 +327,28 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                           onClick={[Function]}
                           variant="secondary"
                         >
-                          <button
-                            aria-disabled={false}
-                            aria-label={null}
-                            className="pf-c-button pf-m-secondary"
+                          <ButtonBase
                             data-action="cancel"
-                            data-ouia-component-id="OUIA-Generated-Button-secondary-4"
-                            data-ouia-component-type="PF4/Button"
-                            data-ouia-safe={true}
-                            disabled={false}
+                            innerRef={null}
                             onClick={[Function]}
-                            role={null}
-                            type="button"
+                            variant="secondary"
                           >
-                            Cancel
-                          </button>
+                            <button
+                              aria-disabled={false}
+                              aria-label={null}
+                              className="pf-c-button pf-m-secondary"
+                              data-action="cancel"
+                              data-ouia-component-id="OUIA-Generated-Button-secondary-4"
+                              data-ouia-component-type="PF4/Button"
+                              data-ouia-safe={true}
+                              disabled={false}
+                              onClick={[Function]}
+                              role={null}
+                              type="button"
+                            >
+                              Cancel
+                            </button>
+                          </ButtonBase>
                         </Button>
                         <Button
                           data-action="confirm"
@@ -334,21 +356,28 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                           onClick={[Function]}
                           variant="primary"
                         >
-                          <button
-                            aria-disabled={false}
-                            aria-label={null}
-                            className="pf-c-button pf-m-primary"
+                          <ButtonBase
                             data-action="confirm"
-                            data-ouia-component-id="OUIA-Generated-Button-primary-4"
-                            data-ouia-component-type="PF4/Button"
-                            data-ouia-safe={true}
-                            disabled={false}
+                            innerRef={null}
                             onClick={[Function]}
-                            role={null}
-                            type="button"
+                            variant="primary"
                           >
-                            Save
-                          </button>
+                            <button
+                              aria-disabled={false}
+                              aria-label={null}
+                              className="pf-c-button pf-m-primary"
+                              data-action="confirm"
+                              data-ouia-component-id="OUIA-Generated-Button-primary-4"
+                              data-ouia-component-type="PF4/Button"
+                              data-ouia-safe={true}
+                              disabled={false}
+                              onClick={[Function]}
+                              role={null}
+                              type="button"
+                            >
+                              Save
+                            </button>
+                          </ButtonBase>
                         </Button>
                       </footer>
                     </ModalBoxFooter>

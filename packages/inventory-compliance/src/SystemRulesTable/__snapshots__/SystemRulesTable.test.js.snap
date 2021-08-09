@@ -7062,6 +7062,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
         aria-label=""
         isChecked={true}
         isDisabled={false}
+        isReversed={false}
         label="Selected only"
         onChange={[Function]}
       />
@@ -7398,6 +7399,7 @@ exports[`SystemRulesTable component tailoring rules should be able to filter by 
         aria-label=""
         isChecked={false}
         isDisabled={false}
+        isReversed={false}
         label="Selected only"
         onChange={[Function]}
       />
@@ -8356,6 +8358,7 @@ exports[`SystemRulesTable component tailoring rules should be able to show all s
         aria-label=""
         isChecked={true}
         isDisabled={false}
+        isReversed={false}
         label="Selected only"
         onChange={[Function]}
       />
