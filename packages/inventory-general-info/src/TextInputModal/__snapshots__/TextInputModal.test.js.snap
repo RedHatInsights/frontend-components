@@ -308,7 +308,6 @@ exports[`TextInputModal API onSubmit should NOT be called 1`] = `
                               onBlur={[Function]}
                               onChange={[Function]}
                               onFocus={[Function]}
-                              ouiaSafe={true}
                               readOnly={false}
                               required={false}
                               type="text"

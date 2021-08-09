@@ -95,7 +95,7 @@ exports[`Not connected component should render 1`] = `
               target="_blank"
               type={null}
             >
-              Learn about the Insights client
+              Learn how to activate the Insights client
             </a>
           </ButtonBase>
         </Button>

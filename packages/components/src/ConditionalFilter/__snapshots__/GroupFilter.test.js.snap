@@ -330,6 +330,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -340,6 +341,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -352,6 +354,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -362,6 +365,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -386,6 +390,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -396,6 +401,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Checkbox
@@ -418,6 +424,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -428,6 +435,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="some-value"
           >
             <Checkbox
@@ -462,6 +470,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -472,6 +481,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Radio
@@ -494,6 +504,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -504,6 +515,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             <Radio
@@ -532,6 +544,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLastOptionBeforeFooter={[Function]}
           isLoad={false}
           isLoading={false}
           isNoResultsOption={false}
@@ -540,6 +553,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
           keyHandler={[Function]}
           onClick={[Function]}
           sendRef={[Function]}
+          setViewMoreNextIndex={[Function]}
           value=""
         >
           <Checkbox
@@ -566,6 +580,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -576,6 +591,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -588,6 +604,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -598,6 +615,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -680,6 +698,7 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -690,6 +709,7 @@ exports[`Group - component render should render correctly with items - isDisable
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -702,6 +722,7 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -712,6 +733,7 @@ exports[`Group - component render should render correctly with items - isDisable
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -736,6 +758,7 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -746,6 +769,7 @@ exports[`Group - component render should render correctly with items - isDisable
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Checkbox
@@ -768,6 +792,7 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -778,6 +803,7 @@ exports[`Group - component render should render correctly with items - isDisable
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="some-value"
           >
             <Checkbox
@@ -812,6 +838,7 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -822,6 +849,7 @@ exports[`Group - component render should render correctly with items - isDisable
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Radio
@@ -844,6 +872,7 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -854,6 +883,7 @@ exports[`Group - component render should render correctly with items - isDisable
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             <Radio
@@ -882,6 +912,7 @@ exports[`Group - component render should render correctly with items - isDisable
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLastOptionBeforeFooter={[Function]}
           isLoad={false}
           isLoading={false}
           isNoResultsOption={false}
@@ -890,6 +921,7 @@ exports[`Group - component render should render correctly with items - isDisable
           keyHandler={[Function]}
           onClick={[Function]}
           sendRef={[Function]}
+          setViewMoreNextIndex={[Function]}
           value=""
         >
           <Checkbox
@@ -916,6 +948,7 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -926,6 +959,7 @@ exports[`Group - component render should render correctly with items - isDisable
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -938,6 +972,7 @@ exports[`Group - component render should render correctly with items - isDisable
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -948,6 +983,7 @@ exports[`Group - component render should render correctly with items - isDisable
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -1030,6 +1066,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1040,6 +1077,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -1052,6 +1090,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1062,6 +1101,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -1086,6 +1126,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1096,6 +1137,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Checkbox
@@ -1118,6 +1160,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1128,6 +1171,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="some-value"
           >
             <Checkbox
@@ -1162,6 +1206,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1172,6 +1217,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Radio
@@ -1194,6 +1240,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1204,6 +1251,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             <Radio
@@ -1232,6 +1280,7 @@ exports[`Group - component render should render correctly with items 1`] = `
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLastOptionBeforeFooter={[Function]}
           isLoad={false}
           isLoading={false}
           isNoResultsOption={false}
@@ -1240,6 +1289,7 @@ exports[`Group - component render should render correctly with items 1`] = `
           keyHandler={[Function]}
           onClick={[Function]}
           sendRef={[Function]}
+          setViewMoreNextIndex={[Function]}
           value=""
         >
           <Checkbox
@@ -1266,6 +1316,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1276,6 +1327,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -1288,6 +1340,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1298,6 +1351,7 @@ exports[`Group - component render should render correctly with items 1`] = `
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -1380,6 +1434,7 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1390,6 +1445,7 @@ exports[`Group - component render should render correctly with items and default
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -1402,6 +1458,7 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1412,6 +1469,7 @@ exports[`Group - component render should render correctly with items and default
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -1436,6 +1494,7 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1446,6 +1505,7 @@ exports[`Group - component render should render correctly with items and default
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Checkbox
@@ -1468,6 +1528,7 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1478,6 +1539,7 @@ exports[`Group - component render should render correctly with items and default
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="some-value"
           >
             <Checkbox
@@ -1512,6 +1574,7 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1522,6 +1585,7 @@ exports[`Group - component render should render correctly with items and default
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Radio
@@ -1544,6 +1608,7 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1554,6 +1619,7 @@ exports[`Group - component render should render correctly with items and default
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             <Radio
@@ -1582,6 +1648,7 @@ exports[`Group - component render should render correctly with items and default
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLastOptionBeforeFooter={[Function]}
           isLoad={false}
           isLoading={false}
           isNoResultsOption={false}
@@ -1590,6 +1657,7 @@ exports[`Group - component render should render correctly with items and default
           keyHandler={[Function]}
           onClick={[Function]}
           sendRef={[Function]}
+          setViewMoreNextIndex={[Function]}
           value=""
         >
           <Checkbox
@@ -1616,6 +1684,7 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1626,6 +1695,7 @@ exports[`Group - component render should render correctly with items and default
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -1638,6 +1708,7 @@ exports[`Group - component render should render correctly with items and default
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1648,6 +1719,7 @@ exports[`Group - component render should render correctly with items and default
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -1730,6 +1802,7 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1740,6 +1813,7 @@ exports[`Group - component render should render correctly with items and selecte
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -1752,6 +1826,7 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1762,6 +1837,7 @@ exports[`Group - component render should render correctly with items and selecte
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -1786,6 +1862,7 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1796,6 +1873,7 @@ exports[`Group - component render should render correctly with items and selecte
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Checkbox
@@ -1818,6 +1896,7 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1828,6 +1907,7 @@ exports[`Group - component render should render correctly with items and selecte
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="some-value"
           >
             <Checkbox
@@ -1862,6 +1942,7 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1872,6 +1953,7 @@ exports[`Group - component render should render correctly with items and selecte
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Radio
@@ -1894,6 +1976,7 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1904,6 +1987,7 @@ exports[`Group - component render should render correctly with items and selecte
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             <Radio
@@ -1932,6 +2016,7 @@ exports[`Group - component render should render correctly with items and selecte
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLastOptionBeforeFooter={[Function]}
           isLoad={false}
           isLoading={false}
           isNoResultsOption={false}
@@ -1940,6 +2025,7 @@ exports[`Group - component render should render correctly with items and selecte
           keyHandler={[Function]}
           onClick={[Function]}
           sendRef={[Function]}
+          setViewMoreNextIndex={[Function]}
           value=""
         >
           <Checkbox
@@ -1966,6 +2052,7 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1976,6 +2063,7 @@ exports[`Group - component render should render correctly with items and selecte
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -1988,6 +2076,7 @@ exports[`Group - component render should render correctly with items and selecte
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -1998,6 +2087,7 @@ exports[`Group - component render should render correctly with items and selecte
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -2080,6 +2170,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2090,6 +2181,7 @@ exports[`Group - component render show more should render correctly with items a
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -2102,6 +2194,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2112,6 +2205,7 @@ exports[`Group - component render show more should render correctly with items a
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -2136,6 +2230,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2146,6 +2241,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Checkbox
@@ -2168,6 +2264,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2178,6 +2275,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="some-value"
           >
             <Checkbox
@@ -2212,6 +2310,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2222,6 +2321,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Radio
@@ -2244,6 +2344,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2254,6 +2355,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             <Radio
@@ -2282,6 +2384,7 @@ exports[`Group - component render show more should render correctly with items a
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLastOptionBeforeFooter={[Function]}
           isLoad={false}
           isLoading={false}
           isNoResultsOption={false}
@@ -2290,6 +2393,7 @@ exports[`Group - component render show more should render correctly with items a
           keyHandler={[Function]}
           onClick={[Function]}
           sendRef={[Function]}
+          setViewMoreNextIndex={[Function]}
           value=""
         >
           <Checkbox
@@ -2316,6 +2420,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2326,6 +2431,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -2338,6 +2444,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2348,6 +2455,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -2445,6 +2553,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2455,6 +2564,7 @@ exports[`Group - component render show more should render correctly with items a
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -2467,6 +2577,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2477,6 +2588,7 @@ exports[`Group - component render show more should render correctly with items a
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -2501,6 +2613,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2511,6 +2624,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Checkbox
@@ -2533,6 +2647,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2543,6 +2658,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="some-value"
           >
             <Checkbox
@@ -2577,6 +2693,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2587,6 +2704,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Radio
@@ -2609,6 +2727,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2619,6 +2738,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             <Radio
@@ -2647,6 +2767,7 @@ exports[`Group - component render show more should render correctly with items a
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLastOptionBeforeFooter={[Function]}
           isLoad={false}
           isLoading={false}
           isNoResultsOption={false}
@@ -2655,6 +2776,7 @@ exports[`Group - component render show more should render correctly with items a
           keyHandler={[Function]}
           onClick={[Function]}
           sendRef={[Function]}
+          setViewMoreNextIndex={[Function]}
           value=""
         >
           <Checkbox
@@ -2681,6 +2803,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2691,6 +2814,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -2703,6 +2827,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2713,6 +2838,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -2805,6 +2931,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2815,6 +2942,7 @@ exports[`Group - component render show more should render correctly with items a
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -2827,6 +2955,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2837,6 +2966,7 @@ exports[`Group - component render show more should render correctly with items a
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -2861,6 +2991,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2871,6 +3002,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Checkbox
@@ -2893,6 +3025,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2903,6 +3036,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="some-value"
           >
             <Checkbox
@@ -2937,6 +3071,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2947,6 +3082,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Radio
@@ -2969,6 +3105,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -2979,6 +3116,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             <Radio
@@ -3007,6 +3145,7 @@ exports[`Group - component render show more should render correctly with items a
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLastOptionBeforeFooter={[Function]}
           isLoad={false}
           isLoading={false}
           isNoResultsOption={false}
@@ -3015,6 +3154,7 @@ exports[`Group - component render show more should render correctly with items a
           keyHandler={[Function]}
           onClick={[Function]}
           sendRef={[Function]}
+          setViewMoreNextIndex={[Function]}
           value=""
         >
           <Checkbox
@@ -3041,6 +3181,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3051,6 +3192,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -3063,6 +3205,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3073,6 +3216,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -3165,6 +3309,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3175,6 +3320,7 @@ exports[`Group - component render show more should render correctly with items a
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -3187,6 +3333,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3197,6 +3344,7 @@ exports[`Group - component render show more should render correctly with items a
             label="First value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
@@ -3221,6 +3369,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3231,6 +3380,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Checkbox
@@ -3253,6 +3403,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3263,6 +3414,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Second value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="some-value"
           >
             <Checkbox
@@ -3297,6 +3449,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3307,6 +3460,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value=""
           >
             <Radio
@@ -3329,6 +3483,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3339,6 +3494,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Third value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             <Radio
@@ -3367,6 +3523,7 @@ exports[`Group - component render show more should render correctly with items a
           isChecked={false}
           isDisabled={false}
           isFavorite={null}
+          isLastOptionBeforeFooter={[Function]}
           isLoad={false}
           isLoading={false}
           isNoResultsOption={false}
@@ -3375,6 +3532,7 @@ exports[`Group - component render show more should render correctly with items a
           keyHandler={[Function]}
           onClick={[Function]}
           sendRef={[Function]}
+          setViewMoreNextIndex={[Function]}
           value=""
         >
           <Checkbox
@@ -3401,6 +3559,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3411,6 +3570,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="first"
           >
             First value
@@ -3423,6 +3583,7 @@ exports[`Group - component render show more should render correctly with items a
             isChecked={false}
             isDisabled={false}
             isFavorite={null}
+            isLastOptionBeforeFooter={[Function]}
             isLoad={false}
             isLoading={false}
             isNoResultsOption={false}
@@ -3433,6 +3594,7 @@ exports[`Group - component render show more should render correctly with items a
             label="Groupselectable value"
             onClick={[Function]}
             sendRef={[Function]}
+            setViewMoreNextIndex={[Function]}
             value="1"
           >
             Second value
