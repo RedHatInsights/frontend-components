@@ -56,12 +56,10 @@ exports[`InfoTable api expandable should open 1`] = `
         "perPage": 10,
       }
     }
-    toggleIsExpanded={[Function]}
   >
     <Toolbar
       className=" ins-c-primary-toolbar"
       id="ins-primary-data-toolbar"
-      toggleIsExpanded={[Function]}
     >
       <div
         className="pf-c-toolbar  ins-c-primary-toolbar"
@@ -807,6 +805,7 @@ exports[`InfoTable api expandable should open 1`] = `
           }
           clearFiltersButtonText="Clear all filters"
           collapseListedFiltersBreakpoint="lg"
+          isExpanded={false}
           numberOfFilters={0}
           showClearFiltersButton={false}
         >
@@ -7365,7 +7364,6 @@ exports[`InfoTable should render expandable set to true 1`] = `
         "perPage": 10,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="General information dialog table"
@@ -7535,7 +7533,6 @@ exports[`InfoTable should render multiple cells 1`] = `
         "perPage": 10,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="General information dialog table"
@@ -7677,7 +7674,6 @@ exports[`InfoTable should render no data 1`] = `
         "perPage": 10,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="General information dialog table"
@@ -7797,7 +7793,6 @@ exports[`InfoTable should render onSort set 1`] = `
         "perPage": 10,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="General information dialog table"
@@ -7944,7 +7939,6 @@ exports[`InfoTable should render one cell 1`] = `
         "perPage": 10,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <TextContent>
     <Text

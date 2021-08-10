@@ -1,15 +1,21 @@
-import React, { Component, Fragment } from 'react';
-import { Dropdown, DropdownItem, DropdownToggle, SplitItem, Split } from '@patternfly/react-core';
+import React, { Component } from 'react';
+import { Dropdown, DropdownItem, DropdownToggle, SplitItem, Split, ToolbarItem, ToolbarGroup, ToolbarToggleGroup } from '@patternfly/react-core';
 import { FilterIcon } from '@patternfly/react-icons';
 import Text from './TextFilter';
 import { conditionalFilterType, typeMapper } from './conditionalFilterConstants';
 import PropTypes from 'prop-types';
 import './conditional-filter.scss';
+import { Fragment } from 'react';
+import classNames from 'classnames';
 
 class ConditionalFilter extends Component {
-    state = {
-        isOpen: false,
-        stateValue: undefined
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false,
+            stateValue: undefined,
+            Wrapper: this.getWrapper()
+        };
     }
 
     dropdownToggle = (isOpen) => {
@@ -24,9 +30,19 @@ class ConditionalFilter extends Component {
         });
     }
 
+    getWrapper = () => this.props.useMobileLayout ? (props) => <ToolbarToggleGroup {...props} breakpoint="md" toggleIcon={<FilterIcon />}></ToolbarToggleGroup> : Fragment
+
+    componentDidUpdate(prevProps) {
+        if (this.props.useMobileLayout !== prevProps.useMobileLayout) {
+            this.setState({
+                Wrapper: this.getWrapper()
+            });
+        }
+    }
+
     render() {
         const { items, value, onChange, placeholder, hideLabel, isDisabled, ...props } = this.props;
-        const { isOpen, stateValue } = this.state;
+        const { isOpen, stateValue, Wrapper } = this.state;
         const currentValue = onChange ? value : stateValue;
         const activeItem = items && items.length && (
             items.find((item, key) => item.value === currentValue || key === currentValue) ||
@@ -35,11 +51,38 @@ class ConditionalFilter extends Component {
         const onChangeCallback = onChange || this.onChange;
         const ActiveComponent = activeItem && (typeMapper[activeItem.type] || typeMapper.text);
         const capitalize = (string) => string[0].toUpperCase() + string.substring(1);
+
         return (
-            <Fragment>
+            <Wrapper>
+                {this.props.useMobileLayout && (
+                    <ToolbarGroup className="ins-c-conditional-filter mobile">
+                        {items.map((activeItem, key) => {
+                            const ActiveComponent = activeItem && (typeMapper[activeItem.type] || typeMapper.text);
+                            return (
+                                <ToolbarItem key={key}>
+                                    <ActiveComponent
+                                        {
+                                            ...activeItem.type !== conditionalFilterType.custom &&
+                        {
+                            placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
+                            id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
+                        }
+                                        }
+                                        { ...activeItem.filterValues }
+                                    />
+
+                                </ToolbarItem>
+                            );}
+                        )
+                        }
+                    </ToolbarGroup>
+
+                )}
                 {
                     !items || (items && items.length <= 0) ?
-                        <div className="ins-c-conditional-filter">
+                        <div className={classNames('ins-c-conditional-filter', {
+                            desktop: this.props.useMobileLayout
+                        })}>
                             <Text { ...props }
                                 value={ currentValue }
                                 onChange={ (e) => onChangeCallback(e, e.target.value) }
@@ -47,7 +90,9 @@ class ConditionalFilter extends Component {
                                 widget-type='InsightsInput'
                             />
                         </div> :
-                        <Split className="ins-c-conditional-filter">
+                        <Split className={classNames('ins-c-conditional-filter', {
+                            desktop: this.props.useMobileLayout
+                        })}>
                             { items.length > 1 &&
                                 <SplitItem>
                                     <Dropdown
@@ -96,7 +141,7 @@ class ConditionalFilter extends Component {
                             }
                         </Split>
                 }
-            </Fragment>
+            </Wrapper>
         );
     }
 }
@@ -137,7 +182,8 @@ ConditionalFilter.propTypes = {
     })),
     ...TextInputProps,
     id: PropTypes.string,
-    isDisabled: PropTypes.bool
+    isDisabled: PropTypes.bool,
+    useMobileLayout: PropTypes.bool
 };
 
 ConditionalFilter.defaultProps = {
@@ -145,6 +191,7 @@ ConditionalFilter.defaultProps = {
     items: [],
     hideLabel: false,
     isDisabled: false,
-    id: 'default-input'
+    id: 'default-input',
+    useMobileLayout: false
 };
 export default ConditionalFilter;
