@@ -28,6 +28,7 @@ class PrimaryToolbar extends Component {
             children,
             exportConfig,
             expandAll,
+            useMobileLayout,
             ...props
         } = this.props;
         const overflowActions = [
@@ -94,7 +95,7 @@ class PrimaryToolbar extends Component {
                                     {
                                         React.isValidElement(filterConfig) ?
                                             filterConfig :
-                                            <ConditionalFilter {...filterConfig} />
+                                            <ConditionalFilter useMobileLayout={useMobileLayout} {...filterConfig} />
                                     }
                                 </ToolbarItem>
                             }
@@ -187,11 +188,9 @@ PrimaryToolbar.propTypes = {
             onClick: PropTypes.func,
             isAllExpanded: PropTypes.bool
         })
-    ])
-};
-
-PrimaryToolbar.defaultProps = {
-    toggleIsExpanded: Function
+    ]),
+    /** Use PF [toolbar toggle component for conditional filter](https://www.patternfly.org/v4/components/toolbar/react/component-managed-toggle-groups/) */
+    useMobileLayout: PropTypes.bool
 };
 
 export default PrimaryToolbar;
