@@ -394,6 +394,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "onKeyPress",
                   ]
                 }
+                isAriaDisabled={false}
                 isDisabled={false}
                 isHovered={false}
                 isPlainText={false}
@@ -452,6 +453,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "onKeyPress",
                   ]
                 }
+                isAriaDisabled={false}
                 isDisabled={false}
                 isHovered={false}
                 isPlainText={false}
@@ -508,6 +510,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "onKeyPress",
                   ]
                 }
+                isAriaDisabled={false}
                 isDisabled={false}
                 isHovered={false}
                 isPlainText={false}

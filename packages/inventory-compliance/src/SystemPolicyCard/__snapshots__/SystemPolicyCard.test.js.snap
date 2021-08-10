@@ -16,6 +16,9 @@ exports[`SystemPolicyCard component should render policy 1`] = `
     >
       <h4
         class="margin-bottom-top-none"
+        data-ouia-component-id="OUIA-Generated-Text-1"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         <span
@@ -34,6 +37,9 @@ exports[`SystemPolicyCard component should render policy 1`] = `
       </h4>
       <small
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-2"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
         style="color:var(--pf-global--Color--200)"
       >
@@ -75,6 +81,9 @@ exports[`SystemPolicyCard component should render policy 1`] = `
       </div>
       <small
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-3"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         10 rules failed 
@@ -85,16 +94,25 @@ exports[`SystemPolicyCard component should render policy 1`] = `
     </div>
     <small
       class="margin-bottom-none"
+      data-ouia-component-id="OUIA-Generated-Text-4"
+      data-ouia-component-type="PF4/Text"
+      data-ouia-safe="true"
       data-pf-content="true"
     >
       <p
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-5"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         SSG version: 0.1.45
       </p>
       <p
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-6"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Last scanned: 
