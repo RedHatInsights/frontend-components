@@ -244,7 +244,7 @@ RuleTable.propTypes = {
     sort: PropTypes.string,
     emptyStateTitle: PropTypes.string,
     emptyStateDescription: PropTypes.node,
-    emptyStateIcon: PropTypes.node,
+    emptyStateIcon: PropTypes.elementType,
     defaultFilters: PropTypes.arrayOf(PropTypes.shape({})),
     fetchData: PropTypes.func,
     detail: PropTypes.oneOfType([ PropTypes.func, PropTypes.node ]),
