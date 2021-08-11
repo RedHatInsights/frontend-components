@@ -242,9 +242,9 @@ RuleTable.propTypes = {
         disableSort: PropTypes.bool
     })),
     sort: PropTypes.string,
-    emptyStateTitle: PropTypes.string,
+    emptyStateTitle: PropTypes.node,
     emptyStateDescription: PropTypes.node,
-    emptyStateIcon: PropTypes.node,
+    emptyStateIcon: PropTypes.elementType,
     defaultFilters: PropTypes.arrayOf(PropTypes.shape({})),
     fetchData: PropTypes.func,
     detail: PropTypes.oneOfType([ PropTypes.func, PropTypes.node ]),
