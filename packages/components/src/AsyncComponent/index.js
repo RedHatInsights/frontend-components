@@ -9,18 +9,22 @@ const BaseAsyncComponent = ({
     module,
     fallback,
     innerRef,
+    className,
     ...props
 }) => {
     return (
-        <ScalprumComponent
-            appName={appName}
-            module={module}
-            scope={scope || appName}
-            ErrorComponent={fallback}
-            ref={innerRef}
-            fallback={fallback}
-            {...props}
-        />
+        <section className={`${className || ''} ${appName}`}>
+            <ScalprumComponent
+                className={className}
+                appName={appName}
+                module={module}
+                scope={scope || appName}
+                ErrorComponent={fallback}
+                ref={innerRef}
+                fallback={fallback}
+                {...props}
+            />
+        </section>
     );
 };
 
