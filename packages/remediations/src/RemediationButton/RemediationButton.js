@@ -42,14 +42,16 @@ class RemediationButton extends React.Component {
     }
 
     render() {
+        const { children, buttonProps } = this.props;
+
         if (this.state.remediations && !this.state.hasPermission) {
             return (
                 <Tooltip
                     content="You do not have correct permissions to remediate this entity."
                 >
                     <span>
-                        <Button isDisabled>
-                            { this.props.children }
+                        <Button isDisabled { ...buttonProps }>
+                            { children }
                         </Button>
                     </span>
                 </Tooltip>
@@ -60,8 +62,10 @@ class RemediationButton extends React.Component {
             <React.Fragment>
                 <Button
                     isDisabled={ this.props.isDisabled || this.state.remediations === false }
-                    onClick={ this.onClick } >
-                    { this.props.children }
+                    onClick={ this.onClick }
+                    { ...buttonProps }
+                >
+                    { children }
                 </Button>
 
                 { this.state.remediations.RemediationWizard && <this.state.remediations.RemediationWizard /> }
@@ -74,7 +78,8 @@ RemediationButton.propTypes = {
     isDisabled: propTypes.bool,
     dataProvider: propTypes.func.isRequired,
     onRemediationCreated: propTypes.func,
-    children: propTypes.node
+    children: propTypes.node,
+    buttonProps: propTypes.object
 };
 
 RemediationButton.defaultProps = {
