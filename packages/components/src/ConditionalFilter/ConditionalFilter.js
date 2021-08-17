@@ -64,11 +64,11 @@ class ConditionalFilter extends Component {
                                         {
                                             ...activeItem.type !== conditionalFilterType.custom &&
                         {
-                            placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
-                            id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
+                            placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`
                         }
                                         }
                                         { ...activeItem.filterValues }
+                                        id={`${(activeItem.filterValues && activeItem.filterValues.id) || currentValue}-mobile`}
                                     />
 
                                 </ToolbarItem>
@@ -131,11 +131,11 @@ class ConditionalFilter extends Component {
                                         {
                                             ...activeItem.type !== conditionalFilterType.custom &&
                                             {
-                                                placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
-                                                id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
+                                                placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`
                                             }
                                         }
                                         { ...activeItem.filterValues }
+                                        id={`${(activeItem.filterValues && activeItem.filterValues.id) || currentValue}-desktop`}
                                     />
                                 </SplitItem>
                             }
