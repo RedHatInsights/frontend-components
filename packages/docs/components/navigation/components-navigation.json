@@ -158,7 +158,6 @@
 				"group": "Inventory",
 				"items": [
 					"AppInfo",
-					"AsyncInventory",
 					"DetailWrapper",
 					"InventoryDetail",
 					"InventoryDetailHead",

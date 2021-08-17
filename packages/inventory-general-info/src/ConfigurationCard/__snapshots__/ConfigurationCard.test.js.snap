@@ -112,6 +112,9 @@ exports[`ConfigurationCard api should NOT call handleClick 1`] = `
                   >
                     <h1
                       className=""
+                      data-ouia-component-id="OUIA-Generated-Text-4"
+                      data-ouia-component-type="PF4/Text"
+                      data-ouia-safe={true}
                       data-pf-content={true}
                     >
                       Configuration
@@ -311,6 +314,9 @@ exports[`ConfigurationCard should not render hasPackages 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-9"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Configuration
@@ -393,6 +399,9 @@ exports[`ConfigurationCard should not render hasProcesses 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-11"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Configuration
@@ -475,6 +484,9 @@ exports[`ConfigurationCard should not render hasRepositories 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-12"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Configuration
@@ -557,6 +569,9 @@ exports[`ConfigurationCard should not render hasServices 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-10"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Configuration
@@ -639,6 +654,9 @@ exports[`ConfigurationCard should render correctly - no data 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-1"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Configuration
@@ -737,6 +755,9 @@ exports[`ConfigurationCard should render correctly with data 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-2"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Configuration
@@ -835,6 +856,9 @@ exports[`ConfigurationCard should render enabled/disabled 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-3"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Configuration
@@ -933,6 +957,9 @@ exports[`ConfigurationCard should render extra 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-13"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Configuration

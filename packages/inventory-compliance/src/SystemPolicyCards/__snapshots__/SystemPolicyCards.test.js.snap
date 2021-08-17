@@ -112,6 +112,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                           >
                             <h4
                               className="margin-bottom-top-none"
+                              data-ouia-component-id="OUIA-Generated-Text-1"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
                               data-pf-content={true}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
@@ -157,6 +160,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                           >
                             <small
                               className=""
+                              data-ouia-component-id="OUIA-Generated-Text-2"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
                               data-pf-content={true}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
@@ -232,6 +238,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                         >
                           <small
                             className=""
+                            data-ouia-component-id="OUIA-Generated-Text-3"
+                            data-ouia-component-type="PF4/Text"
+                            data-ouia-safe={true}
                             data-pf-content={true}
                           >
                             10
@@ -327,11 +336,17 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                       >
                         <small
                           className="margin-bottom-none"
+                          data-ouia-component-id="OUIA-Generated-Text-4"
+                          data-ouia-component-type="PF4/Text"
+                          data-ouia-safe={true}
                           data-pf-content={true}
                         >
                           <Text>
                             <p
                               className=""
+                              data-ouia-component-id="OUIA-Generated-Text-5"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
                               data-pf-content={true}
                             >
                               SSG version: 
@@ -341,6 +356,9 @@ exports[`SystemPolicyCards component should render loading state 1`] = `
                           <Text>
                             <p
                               className=""
+                              data-ouia-component-id="OUIA-Generated-Text-6"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
                               data-pf-content={true}
                             >
                               Last scanned: 
@@ -637,6 +655,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                           >
                             <h4
                               className="margin-bottom-top-none"
+                              data-ouia-component-id="OUIA-Generated-Text-7"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
                               data-pf-content={true}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
@@ -682,6 +703,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                           >
                             <small
                               className=""
+                              data-ouia-component-id="OUIA-Generated-Text-8"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
                               data-pf-content={true}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
@@ -757,6 +781,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                         >
                           <small
                             className=""
+                            data-ouia-component-id="OUIA-Generated-Text-9"
+                            data-ouia-component-type="PF4/Text"
+                            data-ouia-safe={true}
                             data-pf-content={true}
                           >
                             10
@@ -852,11 +879,17 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                       >
                         <small
                           className="margin-bottom-none"
+                          data-ouia-component-id="OUIA-Generated-Text-10"
+                          data-ouia-component-type="PF4/Text"
+                          data-ouia-safe={true}
                           data-pf-content={true}
                         >
                           <Text>
                             <p
                               className=""
+                              data-ouia-component-id="OUIA-Generated-Text-11"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
                               data-pf-content={true}
                             >
                               SSG version: 
@@ -866,6 +899,9 @@ exports[`SystemPolicyCards component should render real table 1`] = `
                           <Text>
                             <p
                               className=""
+                              data-ouia-component-id="OUIA-Generated-Text-12"
+                              data-ouia-component-type="PF4/Text"
+                              data-ouia-safe={true}
                               data-pf-content={true}
                             >
                               Last scanned: 

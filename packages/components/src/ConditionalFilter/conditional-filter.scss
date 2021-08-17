@@ -1,6 +1,10 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
 .ins-c-conditional-filter {
+    &.mobile {
+        display: none !important;
+        visibility: hidden !important;
+    }
     .pf-c-select__toggle-wrapper .pf-c-select__toggle-text {
         @include rem('max-width', 150px);
     }
@@ -57,10 +61,15 @@
     }
 }
 
-@media only screen and (max-width: 406px) {
+@media only screen and (max-width: 768px) {
     .ins-c-conditional-filter {
-        .pf-c-select__toggle-wrapper .pf-c-select__toggle-text {
-            @include rem('max-width', 100px);
+        &.mobile {
+            visibility: visible !important;
+            display: grid !important;
+        }
+        &.desktop {
+            visibility: hidden;
+            display: none;
         }
     }
 }

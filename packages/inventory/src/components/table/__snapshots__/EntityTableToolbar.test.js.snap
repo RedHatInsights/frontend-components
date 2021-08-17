@@ -106,7 +106,6 @@ exports[`EntityTableToolbar DOM should render correctly - no data 1`] = `
       size="lg"
     />
   }
-  toggleIsExpanded={[Function]}
 />
 `;
 
@@ -219,7 +218,6 @@ exports[`EntityTableToolbar DOM should render correctly - with children 1`] = `
       "perPage": undefined,
     }
   }
-  toggleIsExpanded={[Function]}
 />
 `;
 
@@ -373,7 +371,6 @@ exports[`EntityTableToolbar DOM should render correctly - with custom activeFilt
       "perPage": undefined,
     }
   }
-  toggleIsExpanded={[Function]}
 />
 `;
 
@@ -493,7 +490,6 @@ exports[`EntityTableToolbar DOM should render correctly - with custom filters 1`
       "perPage": undefined,
     }
   }
-  toggleIsExpanded={[Function]}
 />
 `;
 
@@ -601,7 +597,6 @@ exports[`EntityTableToolbar DOM should render correctly - with default filters 1
       "perPage": undefined,
     }
   }
-  toggleIsExpanded={[Function]}
 />
 `;
 
@@ -714,7 +709,6 @@ exports[`EntityTableToolbar DOM should render correctly - with default tag filte
       "perPage": undefined,
     }
   }
-  toggleIsExpanded={[Function]}
 />
 `;
 
@@ -738,7 +732,6 @@ exports[`EntityTableToolbar DOM should render correctly - with items 1`] = `
       "perPage": undefined,
     }
   }
-  toggleIsExpanded={[Function]}
 />
 `;
 
@@ -820,7 +813,6 @@ exports[`EntityTableToolbar DOM should render correctly - with no access 1`] = `
       "perPage": undefined,
     }
   }
-  toggleIsExpanded={[Function]}
 />
 `;
 
@@ -971,7 +963,6 @@ exports[`EntityTableToolbar DOM should render correctly - with tags 1`] = `
       "perPage": undefined,
     }
   }
-  toggleIsExpanded={[Function]}
 />
 `;
 
@@ -1092,6 +1083,5 @@ exports[`EntityTableToolbar DOM should render correctly 1`] = `
       "perPage": 50,
     }
   }
-  toggleIsExpanded={[Function]}
 />
 `;

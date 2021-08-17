@@ -9,7 +9,6 @@ exports[`TableWithFilter should render loading and pagination 1`] = `
         size="lg"
       />
     }
-    toggleIsExpanded={[Function]}
   />
   <SkeletonTable
     canSelectAll={false}
@@ -98,7 +97,6 @@ exports[`TableWithFilter should render with data and bulk select with calculate 
         "page": 1,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="undefined tags"
@@ -233,7 +231,6 @@ exports[`TableWithFilter should render with data and bulk select without calcula
         "page": 1,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="undefined tags"
@@ -359,7 +356,6 @@ exports[`TableWithFilter should render with data and filters 1`] = `
         "onSetPage": [Function],
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="undefined tags"
@@ -411,7 +407,6 @@ exports[`TableWithFilter should render with data and pagination 1`] = `
         "page": 1,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="undefined tags"

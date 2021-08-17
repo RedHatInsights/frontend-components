@@ -32,9 +32,9 @@ NotConnected.propTypes = {
 };
 
 NotConnected.defaultProps = {
-    titleText: 'This system is not yet connected to Insights',
-    bodyText: 'Activate the Insights client for this system to get started.',
-    buttonText: 'Learn about the Insights client'
+    titleText: 'This system isn’t connected to Insights yet',
+    bodyText: 'To get started, activate the Insights client for this system.',
+    buttonText: 'Learn how to activate the Insights client'
 };
 
 export default NotConnected;
