@@ -77,6 +77,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
         id="undefined-desktop"
         isDisabled={false}
         onSubmit={[Function]}
+        ouiaId="undefined-desktop"
         placeholder="Filter by no value"
         value=""
       />
@@ -197,6 +198,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
           ]
         }
         onChange={[Function]}
+        ouiaId="checkbox-filter-desktop"
         placeholder="Filter by checkbox"
         value={Array []}
       />
@@ -282,6 +284,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
         id="-desktop"
         isDisabled={false}
         onSubmit={[Function]}
+        ouiaId="-desktop"
         placeholder="Filter by simple text 1"
         value=""
       />
@@ -380,6 +383,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
           ]
         }
         onChange={[Function]}
+        ouiaId="radio-filter-desktop"
         placeholder="Filter by radio filter"
       />
     </SplitItem>
@@ -464,6 +468,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
         id="simple-text-1-desktop"
         isDisabled={false}
         onSubmit={[Function]}
+        ouiaId="simple-text-1-desktop"
         placeholder="Filter by simple text 1"
         value=""
       />
@@ -549,6 +554,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
         id="simple-text-2-desktop"
         isDisabled={false}
         onSubmit={[Function]}
+        ouiaId="simple-text-2-desktop"
         placeholder="Filter by simple text 2"
         value="some-value blaa"
       />
@@ -634,6 +640,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
         id="undefined-desktop"
         isDisabled={true}
         onSubmit={[Function]}
+        ouiaId="undefined-desktop"
         placeholder="Filter by no value"
         value=""
       />
@@ -719,6 +726,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
         id="undefined-desktop"
         isDisabled={false}
         onSubmit={[Function]}
+        ouiaId="undefined-desktop"
         placeholder="Filter by no value"
         value=""
       />
@@ -740,6 +748,7 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
         id="undefined-desktop"
         isDisabled={false}
         onSubmit={[Function]}
+        ouiaId="undefined-desktop"
         placeholder="Filter by simple text 1"
         value=""
       />
@@ -820,6 +829,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
         id="undefined-desktop"
         isDisabled={false}
         onSubmit={[Function]}
+        ouiaId="undefined-desktop"
         placeholder="Filter by no value"
         value=""
       />

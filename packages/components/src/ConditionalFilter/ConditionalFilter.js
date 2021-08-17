@@ -69,6 +69,7 @@ class ConditionalFilter extends Component {
                                         }
                                         { ...activeItem.filterValues }
                                         id={`${(activeItem.filterValues && activeItem.filterValues.id) || currentValue}-mobile`}
+                                        ouiaId={`${(activeItem.filterValues && activeItem.filterValues.id) || currentValue}-mobile`}
                                     />
 
                                 </ToolbarItem>
@@ -136,6 +137,7 @@ class ConditionalFilter extends Component {
                                         }
                                         { ...activeItem.filterValues }
                                         id={`${(activeItem.filterValues && activeItem.filterValues.id) || currentValue}-desktop`}
+                                        ouiaId={`${(activeItem.filterValues && activeItem.filterValues.id) || currentValue}-desktop`}
                                     />
                                 </SplitItem>
                             }
