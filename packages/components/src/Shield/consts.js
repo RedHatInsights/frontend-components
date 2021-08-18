@@ -27,12 +27,15 @@ export const messageList = {
         integrity, or availability of resources, under certain circumstances. \
         These are the types of vulnerabilities that could have had a Critical \
         impact or Important impact but are less easily exploited based on a \
-        technical evaluation of the flaw, or affect unlikely configurations. ',
+        technical evaluation of the flaw, or affect unlikely configurations.',
     low:
         'This rating is given to all other issues that have a security \
         impact. These are the types of vulnerabilities that are believed to \
         require unlikely circumstances to be able to be exploited, or where \
-        a successful exploit would give minimal consequences. '
+        a successful exploit would give minimal consequences.',
+    unknown:
+        'Red Hat Product Security has determined that this vulnerability does \
+        not impact Red Hat products.'
 };
 
 /* I'm not shure that the list of impacts is ordered correctly by relevancy */
@@ -86,5 +89,10 @@ export const impactList = {
         title: 'Low',
         color: colorList.default,
         message: messageList.low
+    },
+    Unknown: {
+        title: 'Unknown',
+        color: colorList.default,
+        message: messageList.unknown
     }
 };
