@@ -2,21 +2,27 @@ import { Tooltip } from '@patternfly/react-core';
 import { QuestionIcon, SecurityIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
-import { colorList, impactList } from './consts';
+import { impactList } from './consts';
 
 const Shield = ({ impact, hasLabel, hasTooltip, size }) => {
-    const unknownLabel = 'Unknown';
-    const attributes = impactList[impact] || { title: unknownLabel, color: colorList.default };
-    const badge = impactList[impact] ? (
-        <SecurityIcon aria-hidden="false" aria-label={attributes.title} size={size} color={attributes.color} />
-    ) : (
-        <QuestionIcon aria-hidden="false" aria-label={unknownLabel} size={size} color={colorList.default} />
-    );
+    const attributes = impactList?.[impact] ?? impactList.Unknown;
+    const badgeProps = {
+        'aria-hidden': 'false',
+        'aria-label': attributes.title,
+        color: attributes.color,
+        size
+    };
+
+    const badge = attributes.title === 'Unknown'
+        ? <QuestionIcon {...badgeProps} />
+        : <SecurityIcon {...badgeProps} />;
+
     const body = (
         <span>
             {badge} {hasLabel && attributes.title}
         </span>
     );
+
     return (
         <span>
             {hasTooltip ?
