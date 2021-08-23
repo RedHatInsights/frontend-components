@@ -13,7 +13,7 @@ class ConditionalFilter extends Component {
     constructor(props) {
         if (!props.useMobileLayout) {
             console.warn(`The prop "useMobileLayout" is set to false. You are using an outdated mobile layout of conditional filter.
-            Please switch to new layout by adding "useMobileLayout=true" prop to the PrimaryToolbar or ConditionalFilter directly.
+            Please switch to new layout by adding "useMobileLayout={true}" prop to the PrimaryToolbar or ConditionalFilter directly.
             The new mobile layout will become the default in next minor release.`);
         }
 
