@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ScalprumComponent } from '@scalprum/react-core';
 import { Bullseye, Spinner } from '@patternfly/react-core';
+import classNames from 'classnames';
 
 const BaseAsyncComponent = ({
     appName,
@@ -10,10 +11,11 @@ const BaseAsyncComponent = ({
     fallback,
     innerRef,
     className,
+    component: Cmp,
     ...props
 }) => {
     return (
-        <section className={`${className || ''} ${appName}`}>
+        <Cmp className={classNames(className, appName)}>
             <ScalprumComponent
                 className={className}
                 appName={appName}
@@ -24,7 +26,7 @@ const BaseAsyncComponent = ({
                 fallback={fallback}
                 {...props}
             />
-        </section>
+        </Cmp>
     );
 };
 
@@ -46,7 +48,9 @@ AsynComponent.propTypes = {
     /** Loaded module, it has to start with `./`. */
     module: PropTypes.string.isRequired,
     /** Optional scope, if not passed appName is used. */
-    scope: PropTypes.string
+    scope: PropTypes.string,
+    /** Optional wrapper component */
+    component: PropTypes.string
 };
 
 AsynComponent.defaultProps = {
@@ -54,7 +58,8 @@ AsynComponent.defaultProps = {
         <Bullseye>
             <Spinner size="xl" />
         </Bullseye>
-    )
+    ),
+    component: 'section'
 };
 
 BaseAsyncComponent.propTypes = {
