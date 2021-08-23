@@ -11,7 +11,7 @@ import flatten from 'lodash/flatten';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import { calculateMeta, calculateActiveFilters, createRows } from './helpers';
-export { default as style } from './index.scss';
+import './index.scss';
 
 class RuleTable extends Component {
     state = {
