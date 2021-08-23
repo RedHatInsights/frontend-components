@@ -148,7 +148,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
               },
             ]
           }
-          useMobileLayout={false}
+          useMobileLayout={true}
           value=""
         />
       </ToolbarItem>
@@ -454,7 +454,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
               },
             ]
           }
-          useMobileLayout={false}
+          useMobileLayout={true}
           value=""
         />
       </ToolbarItem>
