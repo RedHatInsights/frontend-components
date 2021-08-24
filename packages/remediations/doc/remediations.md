@@ -107,69 +107,33 @@ Optionally, if the application uses [Notifications component](https://github.com
 ## Hot-loading the Wizard directly
 Should the `<RemediationButton/>` component not fit for some reason Remediation Wizard can be used directly.
 
-The component is hot-loaded using Javacript API provided by [insights-chrome](https://github.com/redhatinsights/insights-chrome).
-The API is currently considered experimental thus the `experimental` namespace.
+The component is exposed with federated modules, so all you have to do is load `RemediationWizard` module from `remediations` app. You will have to control the visibility of remediations wizard on your side, hence the `useState` 
 
-Here's an example of a component that invokes the Javascript API to hot-load Remediations support and stores the result in the component state:
 ```JSX
 import React from 'react';
-import * as ReactCore from '@patternfly/react-core';
+import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 
-    constructor(props) {
-        super(props);
-
-        // ...
-
-        insights.experimental.loadRemediations({
-            react: React, // <-- React and PF-react-core dependencies passed in so that the loaded component can link
-            reactCore: ReactCore
-        }).then(remediations => this.setState({ remediations }));
-```
-
-Next, the `RemediationWizard` component needs to be placed into the virtual DOM.
-The component should be rendered always.
-The actual modal will not be shown to the user until initiated programatically.
-```JSX
-    render() {
-        return (
-            // ...
-            { this.state.remediations && <this.state.remediations.RemediationWizard /> }
-            // ...
-```
-
-Next, a wizard hand-off handler needs to be implemented.
-This function sumarizes the choices made by the user so far (What CVE are they looking at? What systems did they check?) and passes that into Remediations.
-Afterwards, the Remediation wizard modal is opened where additional information is gathered.
-Once the user completes the wizard the information passed in is combined with information obtained by the wizard and a new remediation is created.
-
-The call to `openWizard()` opens the wizard modal.
-The function returns a promise that completes once the wizard is:
-* canceled (resolves with false)
-* completed (resolves with result object)
-
-Details of the remediation can be accessed in `result.remediation`.
-Optionally, if the application uses [Notifications component](https://github.com/RedHatInsights/insights-frontend-components/blob/master/doc/components/notifications.md) a notification informing of successful remediation creation is provided under `result.getNotification()`
-
-```JSX
-    onRemediationButton () {
-        const issue = `vulnerabilities:${this.state.cveName}`; // TODO: modify as needed based on user selection
-        const systems = ['34b9f7d9-fc81-4e0f-bef0-c4b402a1510e']; // modify as needed (e.g. based on user selection of system checkboxes in data table)
-
-        const promise = this.state.remediations.openWizard({
+const MyCmp = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <div>
+        <button onClick={() => setIsOpen(true)}>Show remediations wizard</button>
+        {isOpen && <AsyncComponent
+          appName="remediations"
+          module="./RemediationWizard"
+          setOpen={(isOpen) => setIsOpen(isOpen)}
+          data={{
             issues: [{
-                id: issue
+              id: `vulnerabilities:${this.state.cveName}` // TODO: modify as needed based on user selection
             }],
-            systems
-        })
+            systems: ['34b9f7d9-fc81-4e0f-bef0-c4b402a1510e'], // modify as needed (e.g. based on user selection of system checkboxes in data table)
+            onRemediationCreated: (data) => console.log(data)
+          }}
+        />}
+      </div>
+    );
+};
 
-        // optionally, a notification can be created once remediation creation is finished
-        promise.then(result => {
-            result && dispatchAction(addNotification(result.getNotification()));
-        });
-    }
-```
+export default MyCmp;
 
-Finally, a **Remediate with Ansible** button is added with `onRemediationButton` as its onClick handler:
-```JSX
-    <ReactCore.Button variant='primary' onClick={ this.onRemediationButton }>Remediate with Ansible</ReactCore.Button>
 ```
