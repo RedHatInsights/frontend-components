@@ -5,11 +5,11 @@ import classNames from 'classnames';
 import './filter-chips.scss';
 
 const FilterChips = ({ className, filters, onDelete, deleteTitle, showDeleteButton, onDeleteGroup }) => {
-    const groups = filters.filter(group => group.category);
+    const groups = filters.filter(group => Object.prototype.hasOwnProperty.call(group, 'category'));
     const groupedFilters = groups.map((group, groupKey) =>  (
         <ChipGroup
             key={ `group_${group.category}` }
-            categoryName={group.category}
+            categoryName={String(group.category) || ' '}
             {...onDeleteGroup && {
                 isClosable: true,
                 onClick: (event) => {
@@ -32,7 +32,7 @@ const FilterChips = ({ className, filters, onDelete, deleteTitle, showDeleteButt
         </ChipGroup>
     ));
 
-    const plainFilters = filters.filter(group => !(group.category));
+    const plainFilters = filters.filter(group => !(Object.prototype.hasOwnProperty.call(group, 'category')));
 
     return (
         <span className={classNames(className, 'ins-c-chip-filters')}>
