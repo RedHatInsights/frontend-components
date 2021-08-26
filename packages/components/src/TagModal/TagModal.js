@@ -30,7 +30,7 @@ class TagModal extends Component {
         this.setState({ activeTabKey: tabIndex });
     };
 
-    renderTable = (rows, columns, pagination, loaded, filters, selected, onSelect, onUpdateData) => (
+    renderTable = (rows, columns, pagination, loaded, filters, selected, onSelect, onUpdateData, bulkSelect) => (
         <TableWithFilter
             {...this.props}
             rows={rows}
@@ -45,6 +45,7 @@ class TagModal extends Component {
             onSelect={onSelect}
             onUpdateData={onUpdateData}
             selected={selected}
+            bulkSelect={bulkSelect}
         >
             {this.props.children}
         </TableWithFilter>
@@ -69,6 +70,7 @@ class TagModal extends Component {
             onUpdateData,
             selected,
             tableProps,
+            bulkSelect,
             ...props
         } = this.props;
 
@@ -123,7 +125,8 @@ class TagModal extends Component {
                                             filters?.[key],
                                             selected?.[key],
                                             onSelect?.[key],
-                                            onUpdateData?.[key]
+                                            onUpdateData?.[key],
+                                            bulkSelect?.[key]
                                         )
                                     }
                                 </Tab>
@@ -138,7 +141,8 @@ class TagModal extends Component {
                         filters,
                         selected,
                         onSelect,
-                        onUpdateData
+                        onUpdateData,
+                        bulkSelect
                     )}
             </Modal>
         );
@@ -160,6 +164,7 @@ TagModal.propTypes = {
     }),
     onSelect: PropTypes.oneOfType([ PropTypes.func, PropTypes.arrayOf(PropTypes.func) ]),
     onUpdateData: PropTypes.oneOfType([ PropTypes.func, PropTypes.arrayOf(PropTypes.func) ]),
+    bulkSelect: PropTypes.oneOfType([ PropTypes.any, PropTypes.arrayOf(PropTypes.any) ]),
     pagination: PropTypes.oneOfType([
         TableWithFilter.propTypes.pagination,
         PropTypes.arrayOf(TableWithFilter.propTypes.pagination)
