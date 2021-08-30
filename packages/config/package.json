@@ -24,7 +24,6 @@
         "buffer": "^6.0.3",
         "clean-webpack-plugin": "^3.0.0",
         "css-loader": "^5.2.6",
-        "file-loader": "^6.2.0",
         "git-revision-webpack-plugin": "^3.0.6",
         "glob": "^7.0.0",
         "html-replace-webpack-plugin": "^2.6.0",
