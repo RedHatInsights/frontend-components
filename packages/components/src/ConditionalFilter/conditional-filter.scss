@@ -59,6 +59,21 @@
     .pf-c-select__toggle-badge {
         display: none;
     }
+
+    .pf-c-menu-toggle {
+        padding: 0;
+        .pf-c-menu-toggle__text {
+            flex: 1;
+            input { border: none; }
+        }
+    }
+}
+
+.pf-c-menu {
+    .ins-c-menu__show--more {
+        &:hover { background: none; }
+        .pf-c-menu__item-text{ color: var(--pf-global--active-color--100); }
+    }
 }
 
 @media only screen and (max-width: 768px) {
