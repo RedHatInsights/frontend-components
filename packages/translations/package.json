@@ -28,13 +28,11 @@
         "url": "https://github.com/RedHatInsights/frontend-components/issues"
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/translations#readme",
-    "dependencies": {
-        "react-intl": "^5.17.4"
-    },
     "peerDependencies": {
         "prop-types": "^15.6.2",
         "react": ">=16.14.0 || >=17.0.0",
-        "react-dom": ">=16.14.0 || >=17.0.0"
+        "react-dom": ">=16.14.0 || >=17.0.0",
+        "react-intl": ">=5.17.4"
     },
     "optionalDependencies": {
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0"
