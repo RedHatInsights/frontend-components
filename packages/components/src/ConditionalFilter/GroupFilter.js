@@ -14,7 +14,9 @@ import {
     Popper,
     Radio
 } from '@patternfly/react-core';
-import { groupType, isChecked, calculateSelected, getGroupMenuItems, getMenuItems } from './groupFilterConstants';
+import { isChecked, calculateSelected, getGroupMenuItems, getMenuItems } from './groupFilterConstants';
+import groupType from './groupType';
+
 const Group = ({
     placeholder,
     onShowMore,
