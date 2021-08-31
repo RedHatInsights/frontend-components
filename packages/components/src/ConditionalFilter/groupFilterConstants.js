@@ -1,10 +1,4 @@
-
-export const groupType = {
-    checkbox: 'checkbox',
-    radio: 'radio',
-    button: 'button',
-    plain: 'plain'
-};
+import groupType from './groupType';
 
 export const isChecked = (groupValue, itemValue, id, tagValue, stateSelected, propSelected) => {
     const selected = {
