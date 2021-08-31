@@ -41,6 +41,8 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
     app.use((req, res, next) => {
         const ext = path.extname(req.url.replace(/\?.*/, ''));
         if (req.method === 'GET' && ['', '.hmt', '.html'].includes(ext)) {
+            // We can't handle encoded responses without a big gzip/zip/br dependency
+            delete req.headers['accept-encoding'];
             function writeOrEnd(chunk, encoding, callback, oldFn) {
                 const ctype = res.getHeader('Content-Type');
                 if (ctype && ctype.includes('text/html') && !res.headersSent && !res.writableEnded) {
