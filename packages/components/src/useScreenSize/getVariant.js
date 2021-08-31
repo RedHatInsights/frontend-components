@@ -5,13 +5,13 @@ const getVariant = () => {
 
     let result;
 
-    Object.entries(breakpoints).some(([ variant, size ]) => {
-        if (width > size) {
-            result = variant;
-        } else {
-            return true;
+    for (const [ variant, size ] of Object.entries(breakpoints)) {
+        if (size >= width) {
+            break;
         }
-    });
+
+        result = variant;
+    }
 
     return result;
 };
