@@ -1,7 +1,5 @@
 import breakpoints from './breakpoints';
 
-const variants = Object.keys(breakpoints);
-
-const isSmallScreen = screenSize => variants.indexOf(screenSize) <= variants.indexOf('sm');
+const isSmallScreen = screenSize => breakpoints?.[screenSize] <= breakpoints.sm;
 
 export default isSmallScreen;
