@@ -1,9 +1,9 @@
-import xsBreakpoint from '@patternfly/react-tokens/dist/esm/global_breakpoint_xs';
-import smBreakpoint from '@patternfly/react-tokens/dist/esm/global_breakpoint_sm';
-import mdBreakpoint from '@patternfly/react-tokens/dist/esm/global_breakpoint_md';
-import lgBreakpoint from '@patternfly/react-tokens/dist/esm/global_breakpoint_lg';
-import xlBreakpoint from '@patternfly/react-tokens/dist/esm/global_breakpoint_xl';
-import xxlBreakpoint from '@patternfly/react-tokens/dist/esm/global_breakpoint_2xl';
+import xsBreakpoint from '@patternfly/react-tokens/dist/js/global_breakpoint_xs';
+import smBreakpoint from '@patternfly/react-tokens/dist/js/global_breakpoint_sm';
+import mdBreakpoint from '@patternfly/react-tokens/dist/js/global_breakpoint_md';
+import lgBreakpoint from '@patternfly/react-tokens/dist/js/global_breakpoint_lg';
+import xlBreakpoint from '@patternfly/react-tokens/dist/js/global_breakpoint_xl';
+import xxlBreakpoint from '@patternfly/react-tokens/dist/js/global_breakpoint_2xl';
 
 const breakPoints = {
     xs: parseInt(xsBreakpoint.value.replace('px', '')),
