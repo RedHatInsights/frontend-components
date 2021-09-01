@@ -1,101 +1,85 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { PDFDownloadLink, PDFViewer, BlobProvider } from '@react-pdf/renderer';
+import { PDFViewer, usePDF } from '@react-pdf/renderer';
 import { Button } from '@patternfly/react-core';
 import PDFDocument from './components/PDFDocument';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 
-class DownloadButtonWrapper extends React.Component {
+const downloadBlob = (instance, fileName, onLoading, onError, onSuccess) => {
+    if (instance.blob) {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(instance.blob);
+        link.download = fileName;
+        document.body.append(link);
+        link.click();
+        link.remove();
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            asyncPages: []
-        };
-
+        onSuccess();
     }
 
-    updateAsyncPages = () => {
-        const { asyncFunction } = this.props;
+    instance.loading && onLoading();
+    instance.error && onError();
+};
+
+const DownloadButtonWrapper = ({
+    fileName,
+    label,
+    isPreview,
+    asyncFunction,
+    buttonProps,
+    showButton,
+    onSuccess,
+    onLoading,
+    onError,
+    pages,
+    ...props
+}) => {
+    const [ contextValue, setContextValue ] = useState([]);
+    const [ asyncPages, setAsyncPages ] = useState([]);
+    // eslint-disable-next-line react/display-name
+    const [ instance, updateInstance ] = usePDF({
+        document: <PDFDocument
+            {...props}
+            pages={asyncPages.length > 0 ? asyncPages : pages}
+            contextValue={contextValue}
+            setContextValue={(newPromise) => setContextValue((val) => [
+                ...val || [],
+                newPromise
+            ])}
+        />
+    });
+    const updateAsyncPages = (callback) => {
         if (asyncFunction) {
-            this.setState({
-                asyncPages: []
-            }, () => {
-                Promise.resolve(asyncFunction()).then(asyncPages => this.setState({
-                    asyncPages
-                }));
+            Promise.resolve(asyncFunction()).then(asyncPages => {
+                setAsyncPages(asyncPages);
+                callback?.();
             });
         }
-    }
+    };
 
-    componentDidMount() {
-        const { showButton } = this.props;
-
-        if (!showButton) {
-            this.updateAsyncPages();
+    useEffect(() => {
+        updateInstance();
+        if (asyncPages.length === 0 && !props.showButton) {
+            updateAsyncPages(downloadBlob(instance, fileName, onLoading, onError));
         }
-    }
 
-    render() {
-        const {
-            fileName,
-            label,
-            isPreview,
-            asyncFunction,
-            buttonProps,
-            showButton,
-            onSuccess,
-            onLoading,
-            onError,
-            ...props
-        } = this.props;
-
-        return (
-            <React.Fragment>
-                { isPreview
-                    ? <PDFViewer>
-                        <PDFDocument { ...props } />
-                    </PDFViewer>
-                    : asyncFunction
-                        ? <React.Fragment>
-                            { showButton && <Button onClick={this.updateAsyncPages} { ...buttonProps }>{label}</Button> }
-                            {this.state.asyncPages.length > 0 && (
-                                <BlobProvider document={<PDFDocument { ...props } pages={this.state.asyncPages} />}>
-                                    {({ blob, loading, error }) => {
-                                        if (blob) {
-                                            const link = document.createElement('a');
-                                            link.href = URL.createObjectURL(blob);
-                                            link.download = fileName;
-                                            document.body.append(link);
-                                            link.click();
-                                            link.remove();
-                                            this.setState({
-                                                asyncPages: []
-                                            });
-
-                                            onSuccess();
-                                        }
-
-                                        loading && onLoading();
-                                        error && onError();
-
-                                        return <React.Fragment />;
-                                    }}
-                                </BlobProvider>
-                            )}
-                        </React.Fragment>
-                        : <PDFDownloadLink
-                            document={<PDFDocument { ...props } />}
-                            fileName={fileName}
-                            {...props}
-                        >
-                            {label}
-                        </PDFDownloadLink>
-                }
-            </React.Fragment>
-        );
-    }
-}
+        Promise.all(contextValue).then(() => {
+            updateInstance();
+        });
+    }, [ asyncPages, contextValue ]);
+    const downloadButton = <Button onClick={() => updateAsyncPages(() => {
+        downloadBlob(instance, fileName, onLoading, onError);
+    })} { ...buttonProps }>{label}</Button>;
+    return (
+        <React.Fragment>
+            { isPreview
+                ? <PDFViewer src={instance.url}/>
+                : (asyncFunction && showButton) ? downloadButton
+                    : downloadButton
+            }
+        </React.Fragment>
+    );
+};
 
 DownloadButtonWrapper.propTypes = {
     ...PDFDocument.propTypes,

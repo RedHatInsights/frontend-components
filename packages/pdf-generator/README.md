@@ -174,6 +174,8 @@ There is `chartType` prop to define which chart should be used:
 * `pie`
 * `donut`
 * `donutUtilization`
+* `bar`
+* `lineChart`
 
 If you want to change the color schema for each chart you can do that by passing `colorSchema` prop. These schemas are tied to PF color schemas:
  * `blue`,
@@ -212,6 +214,65 @@ import { Chart } from '@redhat-cloud-services/frontend-components-pdf-generator'
 />
 ```
 ![Chart example](./doc/pie-chart.png)
+
+##### `donutUtilization`
+```JSX
+import { Chart } from '@redhat-cloud-services/frontend-components-pdf-generator';
+
+<Chart
+    chartType="donutUtilization"
+    subTitle="Pets"
+    title="75"
+    data={{ x: 'Cats', y: 75 }}
+/>
+```
+![Chart example](./doc/donut-utilization-chart.png)
+
+##### `bar`
+```JSX
+import { Chart } from '@redhat-cloud-services/frontend-components-pdf-generator';
+
+<Chart
+    chartType="bar"
+    subTitle="Pets"
+    title="100"
+    data={[
+        [{ name: 'Cats', x: '2015', y: 100 }],
+        [{ name: 'dogs', x: '2015', y: 90 }],
+        [{ name: 'monkeys', x: '2016', y: 20 }],
+        [{ name: 'squirrels', x: '2017', y: 50 }]
+    ]}
+    />
+/>
+```
+![Chart example](./doc/bar-chart.png)
+
+##### `lineChart`
+```JSX
+import { Chart } from '@redhat-cloud-services/frontend-components-pdf-generator';
+
+<Chart
+    chartType="lineChart"
+    subTitle="Pets"
+    title="100"
+    data={[
+        [
+            { name: 'some', x: '2015', y: 1 },
+            { name: 'some', x: '2016', y: 2 },
+            { name: 'some', x: '2017', y: 5 },
+            { name: 'some', x: '2018', y: 3 }
+        ],
+        [
+            { name: 'another', x: '2015', y: 5 },
+            { name: 'another', x: '2016', y: 2 },
+            { name: 'another', x: '2017', y: 4 },
+            { name: 'another', x: '2018', y: 8 }
+        ]
+    ]}
+/>
+```
+![Chart example](./doc/line-chart.png)
+
 
 #### 2) `Panel` and `PanelItem`
 ![Panel example](./doc/panel.png)

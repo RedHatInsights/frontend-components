@@ -1,14 +1,15 @@
+/* eslint-disable camelcase */
 /* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-    Canvas,
     Text as PDFText,
-    View
+    View,
+    Svg,
+    Path
 } from '@react-pdf/renderer';
 // eslint-disable-next-line camelcase
 import global_icon_Color_light from '@patternfly/react-tokens/dist/js/global_icon_Color_light';
-
 import styles from '../utils/styles';
 
 const appliedStyles = styles();
@@ -61,17 +62,19 @@ const Battery = ({ variant, text, ...props }) => {
         svg: '',
         title: 'Unknown'
     };
-    return <View {...props} style={appliedStyles.flexRow}>
-        <Canvas style={{
-            width: 20,
-            height: 21
-        }} paint={({ path, scale }) => {
-            scale(0.04);
-            // eslint-disable-next-line camelcase
-            path(defaultSvg).lineWidth('41.9638').stroke(global_icon_Color_light.value)
-            .path(currBattery.svg).fill(currBattery.color);
-        } }
-        />
+    return <View {...props} style={{
+        ...appliedStyles.flexRow,
+        justifyContent: 'flex-start'
+    }}>
+        <Svg width="20" height="20">
+            <Path transform="scale(0.04)" d={defaultSvg} strokeWidth={41} stroke={global_icon_Color_light.value} />
+            <Path
+                transform="scale(0.04)"
+                d={currBattery.svg}
+                fill={currBattery.color}
+                strokeWidth={3}
+            />
+        </Svg>
         <PDFText style={{
             alignSelf: 'center',
             color: currBattery.color

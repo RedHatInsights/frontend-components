@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { View, Canvas, Text } from '@react-pdf/renderer';
+import { View, Rect, Text, Svg, G, Path } from '@react-pdf/renderer';
 import styles from '../utils/styles';
 
 const appliedStyles = styles();
@@ -39,44 +39,23 @@ const labelMapper = {
     }
 };
 
-const InsightsLabel = ({ variant, label, icon, ...props }) => {
+const InsightsLabel = ({ variant, label, icon, labelStyle, iconStyle, textStyle, bgStyle, ...props }) => {
     let { bgColor, iconColor, iconPath, width, text, textColor } = labelMapper[variant];
 
     width = props.width ?? width;
 
     return <View style={appliedStyles.flexRow} {...props}>
-        <Canvas
-            style={{
-                backgroundColor: bgColor,
-                width: width,
-                height: 20,
-                borderRadius: 30,
-                ...props.labelStyle
-            }}
-        />
-        {icon &&
-            <Canvas
-                style={{
-                    left: -width + 7,
-                    top: 5,
-                    width: 10,
-                    height: 10,
-                    ...props.iconStyle
-                }}
-                paint={({ path, scale }) => {
-                    scale(0.02);
-                    path(iconPath).fill(iconColor);
-                }}
-            />
-        }
-        <Text style={{
-            left: variant % 2 === 0 ? -width + 10 : -width + 7,
-            top: 4,
-            color: textColor,
-            ...props.textStyle
-        }}>
-            { label ? label : text}
-        </Text>
+        <Svg width={width + 10} height="20" {...labelStyle}>
+            <Rect width="100%" height="100%" fill={bgColor} rx="10" ry="10" {...bgStyle} />
+            {icon &&
+                    <G transform="translate(10,5)">
+                        <Path transform="scale(0.02)" d={iconPath} fill={iconColor} {...iconStyle}/>
+                        <Text fill={textColor} fontSize={10} x={10} y={8} {...textStyle}>
+                            { label ? label : text}
+                        </Text>
+                    </G>
+            }
+        </Svg>
     </View>;
 };
 
@@ -87,7 +66,8 @@ InsightsLabel.propTypes = {
     width: PropTypes.number,
     labelStyle: PropTypes.object,
     iconStyle: PropTypes.object,
-    textStyle: PropTypes.object
+    textStyle: PropTypes.object,
+    bgStyle: PropTypes.object
 };
 
 InsightsLabel.defaultProps = {

@@ -11,6 +11,7 @@ import RHLogo from './Logo';
 import { DateFormat } from '@redhat-cloud-services/frontend-components/DateFormat';
 import { customTitle } from '../utils/text';
 import styles from '../utils/styles';
+import { PDFContext } from '../utils/consts';
 
 const PDFDocument = ({
     pages,
@@ -22,8 +23,7 @@ const PDFDocument = ({
     size,
     orientation,
     allPagesHaveTitle,
-    footer,
-    ...props
+    footer
 }) => {
     const appliedStyles = styles(style);
 
@@ -36,7 +36,7 @@ const PDFDocument = ({
                     <View style={appliedStyles.headerContainer}>
                         <RHLogo />
                         <Text style={appliedStyles.currDate}>
-                            Prepared {DateFormat({ date: new Date(), type: 'exact' }).props.children}
+                        Prepared {DateFormat({ date: new Date(), type: 'exact' }).props.children}
                         </Text>
                     </View>
                     <View style={appliedStyles.reportNameWrapper}>
@@ -74,7 +74,7 @@ const PDFDocument = ({
                         <Text style={[{
                             marginLeft: 'auto'
                         }, appliedStyles.thirdTitle ]}>
-                            redhat.com
+                        redhat.com
                         </Text>
                     </View>
                 </View>
@@ -125,4 +125,22 @@ PDFDocument.defaultProps = {
     allPagesHaveTitle: true
 };
 
-export default PDFDocument;
+const PDFDocumentWithContext = ({ contextValue, setContextValue, ...props }) => {
+    return (
+        <PDFContext.Provider value={{
+            value: contextValue,
+            setValue: setContextValue
+        }}>
+            <PDFDocument {...props} />
+        </PDFContext.Provider>
+    );
+};
+
+PDFDocumentWithContext.propTypes = {
+    contextValue: PropTypes.arrayOf(PropTypes.shape({
+        then: PropTypes.func
+    })),
+    setContextValue: PropTypes.func
+};
+
+export default PDFDocumentWithContext;

@@ -9,8 +9,12 @@
         "access": "public"
     },
     "scripts": {
-        "build": "rollup -c ./rollup.config.js",
-        "start": "rollup -c ./rollup.config.js -w"
+        "build": "npm run build:js && npm run build:esm && npm run build:css && npm run build:packages",
+        "build:js": "BABEL_ENV=cjs babel src --config-file ./babel.config.js --out-dir ./ --ignore '**/*.test.js'",
+        "build:esm": "BABEL_ENV=esm babel src --config-file ./babel.config.js --out-dir ./esm --ignore '**/*.test.js'",
+        "build:css": "node ../../scripts/build-styles.js",
+        "build:packages": "node ../../scripts/build-packages.js",
+        "start": "concurrently \"npm run build:esm -- --watch\" \"npm run build:js -- --watch\" \"npm run build:css -- --watch\""
     },
     "repository": {
         "type": "git",
@@ -29,17 +33,13 @@
     "author": "Red Hat",
     "license": "Apache-2.0",
     "dependencies": {
-        "@patternfly/react-charts": "^6.3.9",
+        "@patternfly/react-charts": ">=6.3.9",
         "@patternfly/react-core": ">=4.18.5",
-        "@patternfly/react-icons": "^3.15.3",
-        "@patternfly/react-styles": "^4.3.4",
-        "@patternfly/react-tokens": "^4.4.4",
-        "@react-pdf/renderer": "^1.6.8",
-        "@redhat-cloud-services/frontend-components": ">=3.0.0",
-        "react": "16.12.0",
-        "react-dom": "16.12.0",
-        "rgb-hex": "^3.0.0",
-        "@scalprum/react-core": ">=0.1.1"
+        "@patternfly/react-icons": ">=3.15.3",
+        "@patternfly/react-styles": ">=4.3.4",
+        "@patternfly/react-tokens": ">=4.4.4",
+        "@react-pdf/renderer": "^2.0.19",
+        "@redhat-cloud-services/frontend-components": ">=3.0.0"
     },
     "devDependencies": {
         "rollup": "^2.46.0",
