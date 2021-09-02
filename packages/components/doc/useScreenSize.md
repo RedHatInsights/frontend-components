@@ -3,6 +3,9 @@
   - [Breakpoints](#breakpoints)
   - [Variants](#variants)
   - [isSmallScreen](#issmallscreen)
+  - [Testing](#testing)
+    - [Using mock](#using-mock)
+    - [Not mocked](#not-mocked)
 
 # useScreenSize
 
@@ -47,5 +50,49 @@ const DummyComponent = () => {
     }
 
     return <div>Desktop content</div>;
+};
+```
+
+## Testing
+
+Here are some tips for simple testing different screen sizes in your testing environment.
+
+### Using mock
+
+1. Mock the hook
+
+```jsx
+jest.mock('@redhat-cloud-services/frontend-components/useScreenSize', () => ({
+  __esModule: true,
+  isSmallScreen: (size) => size === 'sm',
+  useScreenSize: () => global.mockWidth || 'md',
+}));
+```
+
+2. Set the size in a test before rendering and clean after the test is done
+
+```jsx
+it('should render dropdown on small screen', async () => {
+    global.mockWidth = 'sm';
+
+    wraper = ...
+
+    ...
+
+    global.mockWidth = undefined;
+});
+```
+
+### Not mocked
+
+To change a size of screen in your tests, use helper like this one:
+
+```jsx
+const changeSize = async (size) => {
+    await act(async () => {
+        global.innerWidth = size;
+        global.dispatchEvent(new Event('resize'));
+    });
+    wrapper.update(); // enzyme update, depends on your testing library
 };
 ```

@@ -146,4 +146,4 @@ transform: (importName) =>`@redhat-cloud-services/frontend-components/esm/${FECM
   * [dark](doc/dark.md)
   * [breadcrumbs](doc/breadcrumbs.md)
   * [reboot](doc/reboot.md)
-
+  * [useScreenSize](doc/useScreenSize.md)
