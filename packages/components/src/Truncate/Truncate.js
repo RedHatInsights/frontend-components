@@ -1,97 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import propTypes from 'prop-types';
-
 import classNames from 'classnames';
-
 import { Button, Stack, StackItem } from '@patternfly/react-core';
+import sanitizeHtml from 'sanitize-html';
 
 import './truncate.scss';
 
-import sanitizeHtml from 'sanitize-html';
+const dangerousHtml = (html) =>
+    ({ __html: sanitizeHtml(html) });
 
-class Truncate extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            showText: false
-        };
-        this.toggleText = this.toggleText.bind(this);
-    }
-
-    toggleText (event) {
+const Truncate = ({
+    text = '', length = 150, expandText = 'Read more', collapseText = 'Collapse',  className, inline, spaceBetween
+}) => {
+    const truncateClasses = classNames(
+        'ins-c-truncate',
+        className,
+        { [`is-inline`]: inline },
+        { [`is-block`]: !inline }
+    );
+    const trimmedText = text.substring(0, length);
+    const textOverflow = text.length > length;
+    const [ showText, setShowText ] = useState(false);
+    const toggleText = (event) => {
         event && event.preventDefault();
-        this.setState({
-            showText: !this.state.showText
-        });
-    }
+        setShowText(!showText);
+    };
 
-    dangerousHtml(text) {
-        return { __html: sanitizeHtml(text) };
-    }
+    const expandButton =
+        <Button
+            className='ins-c-expand-button'
+            variant='link'
+            onClick={ toggleText }>
+            { expandText }
+        </Button>;
+    const collapseButton =
+        <Button
+            className='ins-c-collapse-button'
+            variant='link'
+            onClick={ toggleText }>
+            { collapseText }
+        </Button>;
+    const textWithOverflow = showText === false ? `${trimmedText}${textOverflow ? '...' : '' }` : text;
+    const html = dangerousHtml(textWithOverflow);
 
-    render() {
-
-        const truncateClasses = classNames(
-            'ins-c-truncate',
-            this.props.className,
-            { [`is-inline`]: this.props.inline },
-            { [`is-block`]: !this.props.inline }
-        );
-
-        const trimmedText = this.props.text.substring(0, this.props.length);
-
-        const textOverflow = this.props.text.length > this.props.length;
-
-        const { showText } = this.state;
-
-        const expandButton =
-            <Button
-                className='ins-c-expand-button'
-                variant='link'
-                onClick={ this.toggleText }>
-                { this.props.expandText }
-            </Button>;
-
-        const collapseButton =
-            <Button
-                className='ins-c-collapse-button'
-                variant='link'
-                onClick={ this.toggleText }>
-                { this.props.collapseText }
-            </Button>;
-
-        if (this.props.inline) {
-            return (
-                <React.Fragment>
-                    <span
-                        className={ truncateClasses }
-                        widget-type='InsightsTruncateInline'
-                        dangerouslySetInnerHTML={ this.dangerousHtml(showText === false ? `${trimmedText}${textOverflow ? '...' : '' }`
-                            : this.props.text) } />
-                    { textOverflow && (showText === false ? expandButton : collapseButton) }
-                </React.Fragment>
-            );
-        } else {
-            return (
-                <Stack className={ truncateClasses }>
-                    <StackItem>
-                        <span
-                            widget-type='InsightsTruncateBlock'
-                            dangerouslySetInnerHTML={ this.dangerousHtml(showText === false ? `${trimmedText}${textOverflow ? '...' : '' }`
-                                : this.props.text) } />
-                    </StackItem>
-                    { textOverflow && <StackItem className={this.props.spaceBetween && 'pf-u-mt-sm'}>
-                        { showText === false ? expandButton : collapseButton }
-                    </StackItem>
-                    }
-                </Stack>
-            );
+    return inline ? <React.Fragment>
+        <span
+            className={ truncateClasses }
+            widget-type='InsightsTruncateInline'
+            dangerouslySetInnerHTML={ html } />
+        { textOverflow && (showText === false ? expandButton : collapseButton) }
+    </React.Fragment> : <Stack className={ truncateClasses }>
+        <StackItem>
+            <span
+                widget-type='InsightsTruncateBlock'
+                dangerouslySetInnerHTML={ html } />
+        </StackItem>
+        { textOverflow && <StackItem className={spaceBetween && 'pf-u-mt-sm'}>
+            { showText === false ? expandButton : collapseButton }
+        </StackItem>
         }
-    }
+    </Stack>;
 };
-
-export default Truncate;
 
 Truncate.propTypes = {
     className: propTypes.string,
@@ -103,9 +72,4 @@ Truncate.propTypes = {
     spaceBetween: propTypes.bool
 };
 
-Truncate.defaultProps = {
-    length: 150,
-    expandText: 'Read more',
-    collapseText: 'Collapse',
-    text: ''
-};
+export default Truncate;
