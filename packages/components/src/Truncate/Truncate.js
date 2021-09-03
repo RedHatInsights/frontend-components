@@ -10,7 +10,15 @@ const dangerousHtml = (html) =>
     ({ __html: sanitizeHtml(html) });
 
 const Truncate = ({
-    text = '', length = 150, expandText = 'Read more', collapseText = 'Collapse',  className, inline, spaceBetween
+    text = '',
+    length = 150,
+    expandText = 'Read more',
+    hideExpandText = false,
+    expandOnMouseOver = false,
+    collapseText = 'Collapse',
+    className,
+    inline,
+    spaceBetween
 }) => {
     const truncateClasses = classNames(
         'ins-c-truncate',
@@ -42,20 +50,26 @@ const Truncate = ({
         </Button>;
     const textWithOverflow = showText === false ? `${trimmedText}${textOverflow ? '...' : '' }` : text;
     const html = dangerousHtml(textWithOverflow);
+    const mouseOverHandler = expandOnMouseOver && {
+        onMouseEnter: () => setShowText(true),
+        onMouseLeave: () => setShowText(false)
+    };
 
     return inline ? <React.Fragment>
         <span
             className={ truncateClasses }
             widget-type='InsightsTruncateInline'
-            dangerouslySetInnerHTML={ html } />
-        { textOverflow && (showText === false ? expandButton : collapseButton) }
+            dangerouslySetInnerHTML={ html }
+            { ...mouseOverHandler }
+        />
+        { !hideExpandText && textOverflow && (showText === false ? expandButton : collapseButton) }
     </React.Fragment> : <Stack className={ truncateClasses }>
-        <StackItem>
+        <StackItem { ...mouseOverHandler }>
             <span
                 widget-type='InsightsTruncateBlock'
                 dangerouslySetInnerHTML={ html } />
         </StackItem>
-        { textOverflow && <StackItem className={spaceBetween && 'pf-u-mt-sm'}>
+        { !hideExpandText && textOverflow && <StackItem className={spaceBetween && 'pf-u-mt-sm'}>
             { showText === false ? expandButton : collapseButton }
         </StackItem>
         }
@@ -69,7 +83,9 @@ Truncate.propTypes = {
     expandText: propTypes.string,
     collapseText: propTypes.string,
     inline: propTypes.bool,
-    spaceBetween: propTypes.bool
+    spaceBetween: propTypes.bool,
+    hideExpandText: propTypes.bool,
+    expandOnMouseOver: propTypes.bool
 };
 
 export default Truncate;
