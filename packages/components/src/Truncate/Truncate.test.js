@@ -61,6 +61,20 @@ describe('Truncate component', () => {
                     const wrapper = shallow(<Truncate text={text} inline={isInline} length={1000} />);
                     expect(toJson(wrapper)).toMatchSnapshot();
                 });
+
+                it('hovering over toggles to collapse', () => {
+                    const wrapper = shallow(<Truncate length={50} inline={isInline} text={text} expandOnMouseOver hideExpandText />);
+                    const eventElement = isInline ? wrapper.find('.ins-c-truncate').first() : wrapper.find('.ins-c-truncate').first().children().first();
+
+                    expect(toJson(wrapper)).toMatchSnapshot();
+
+                    eventElement.simulate('mouseenter');
+                    expect(toJson(wrapper)).toMatchSnapshot();
+
+                    eventElement.simulate('mouseleave');
+                    expect(toJson(wrapper)).toMatchSnapshot();
+                });
+
             });
         });
     });
