@@ -50,18 +50,23 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
                         chunk = chunk.toString();
                     }
                     if (typeof chunk === 'string') {
+                        let hasEsi = false;
                         chunk = chunk.replace(esiRegex, (_match, file) => {
                             file = file.split('/').pop();
                             const snippet = path.resolve(chromePath, 'snippets', file);
                             if (proxyVerbose) {
                                 console.log('esi', req.url, file);
                             }
+                            hasEsi = true;
                             return fs.readFileSync(snippet);
                         });
-                        res.setHeader('Content-Length', chunk.length);
+                        // Assumption: the response won't be chunked.
+                        if (hasEsi) {
+                            res.setHeader('Content-Length', chunk.length);
+                        }
                     }
                 }
-                oldFn(chunk, encoding, callback);
+                return oldFn(chunk, encoding, callback);
             };
             // https://nodejs.org/api/http.html#http_class_http_serverresponse
             const oldWrite = res.write.bind(res);
