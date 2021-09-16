@@ -98,7 +98,7 @@ const getAttFromStyle = (element, type) => element
 ?.find(item => item.includes(`${type}: `))
 ?.replace?.(`${type}: `, '')?.trim();
 
-const getChartData = (currChart, chartProps, callback) => {
+const getChartData = (currChart, chartProps, wrapperProps, callback) => {
     let { data } = chartProps;
     const { chartType } = currChart;
     const { colorSchema, ...props } = chartProps;
@@ -116,13 +116,16 @@ const getChartData = (currChart, chartProps, callback) => {
     const Wrapper = [ 'bar', 'lineChart' ].includes(chartType) ? PFChart : Fragment;
     el.style.display = 'none';
     ReactDOM.render(
-        <Wrapper>
+        <Wrapper {...[ 'bar', 'lineChart' ].includes && {
+            domainPadding: { x: [ 30, 25 ] }
+        }} {...wrapperProps}>
             {[ 'bar', 'lineChart' ].includes(chartType) && <ChartAxis />}
             {[ 'bar', 'lineChart' ].includes(chartType) && <ChartAxis dependentAxis />}
             {Array.isArray(data?.[0]) ? <ChartGroup>
                 {data.map((subChartData, key) => (
                     <Chart key={key}
                         name={key}
+                        // domainPadding={{ x: [ 30, 25 ] }}
                         {...currChart.chartProps}
                         { ...props }
                         data={subChartData}
@@ -183,7 +186,7 @@ const groupData = (data) => {
     return Array.isArray(data[0]) ? data : data.map((value) => ([ value ]));
 };
 
-const Chart = ({ deferred, chartType, colorSchema, legendHeader, svgProps, data, ...props }) => {
+const Chart = ({ deferred, chartType, colorSchema, legendHeader, svgProps, chartWrapperProps, data, ...props }) => {
     const mappedData = [ 'lineChart', 'bar' ].includes(chartType) ? groupData(data) : data;
     const [ [ paths, texts, lines ], setChart ] = useState([]);
     const currChart = chartMapper[chartType] || chartMapper.pie;
@@ -194,7 +197,7 @@ const Chart = ({ deferred, chartType, colorSchema, legendHeader, svgProps, data,
         if (paths) {
             deferred.resolve();
         } else {
-            getChartData({ ...currChart, chartType }, { ...props, data: mappedData }, setChart);
+            getChartData({ ...currChart, chartType }, { ...props, data: mappedData }, chartWrapperProps, setChart);
         }
     }, [ paths ]);
     return <View style={[
@@ -205,11 +208,15 @@ const Chart = ({ deferred, chartType, colorSchema, legendHeader, svgProps, data,
             justifyContent: 'flex-start'
         }
     ]}>
-        <Svg width={currChart.width}
+        <Svg width={currChart.width * (props.legend ? 1 : 2)}
             height={currChart.height || currChart.width}
             {...svgProps}
         >
-            <G transform={`translate(${currChart.translate?.x || 0}, ${currChart.translate?.y || 0}) scale(${currChart.scale || '0.3'})`}>
+            <G transform={`translate(${
+                currChart.translate?.x || 0}, ${currChart.translate?.y || 0
+            }) scale(${
+                (currChart.scale || 0.3) * (props.legend ? 1 : 2)
+            })`}>
                 {lines?.map((line, key) => (<Line {...line} key={key}/>))}
                 {paths?.map((path, key) => <Path {...path} key={key} />)}
                 {texts?.map(({ text, style, coords, textAnchor }, key) => (
@@ -284,7 +291,8 @@ Chart.propTypes = {
     svgProps: PropTypes.object,
     deferred: PropTypes.shape({
         resolve: PropTypes.func
-    })
+    }),
+    chartWrapperProps: PropTypes.object
 };
 Chart.defaultProps = {
     colorSchema: 'multiOrdered',
