@@ -41,6 +41,6 @@
         "@redhat-cloud-services/frontend-components-notifications": ">=3.0.0",
         "@redhat-cloud-services/frontend-components-utilities": ">3.0.0",
         "@redhat-cloud-services/host-inventory-client": "1.0.96",
-        "axios": "^0.21.1"
+        "axios": "^0.21.4"
     }
 }
