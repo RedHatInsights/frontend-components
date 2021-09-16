@@ -36,7 +36,7 @@
     "dependencies": {
         "@sentry/browser": "^5.4.0",
         "awesome-debounce-promise": "^2.1.0",
-        "axios": "^0.21.1",
+        "axios": "^0.21.4",
         "commander": ">=2.20.0",
         "mkdirp": "^1.0.4",
         "react-content-loader": ">=3.4.1"
