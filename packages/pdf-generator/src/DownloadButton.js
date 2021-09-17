@@ -40,63 +40,67 @@ const DownloadButtonWrapper = ({
     const [ contextValue, setContextValue ] = useState([]);
     const [ asyncPages, setAsyncPages ] = useState([]);
     const [ shouldDownload, setShouldDownload ] = useState(false);
-    console.log(asyncFunction ? asyncPages : pages || [], 'this is pages!');
     // eslint-disable-next-line react/display-name
-    // const [ instance, updateInstance ] = usePDF({
-    //     document: <PDFDocument
-    //         // {...props}
-    //         pages={asyncFunction ? asyncPages : pages || []}
-    //         contextValue={contextValue}
-    //         setContextValue={(newPromise) => setContextValue((val) => [
-    //             ...val || [],
-    //             newPromise
-    //         ])}
-    //     />
-    // });
-    // const debounced = useCallback(debounce((currInstance) => {
-    //     downloadBlob(currInstance, fileName, onLoading, onError, onSuccess);
-    // }, 100), [ asyncFunction ? asyncPages.length : pages?.length ]);
+    const [ instance, updateInstance ] = usePDF({
+        document: <PDFDocument
+            {...props}
+            pages={asyncPages.length > 0 ? asyncPages : pages}
+            contextValue={contextValue}
+            setContextValue={(newPromise) => setContextValue((val) => [
+                ...val || [],
+                newPromise
+            ])}
+        />
+    });
+    const debounced = useCallback(debounce((currInstance) => {
+        downloadBlob(currInstance, fileName, onLoading, onError, onSuccess);
+    }, 100), [ asyncPages.length > 0 ? asyncPages.length : pages?.length ]);
     const updateAsyncPages = (callback) => {
         if (asyncFunction) {
             Promise.resolve(asyncFunction()).then(asyncPages => {
                 setAsyncPages(asyncPages);
-                // updateInstance();
+                updateInstance();
                 callback?.();
             });
         }
     };
 
-    // useEffect(() => {
-    //     updateInstance();
-    //     if (asyncPages.length === 0 && !showButton) {
-    //         updateAsyncPages(() => setShouldDownload(true));
-    //     }
+    useEffect(() => {
+        console.log(contextValue);
+        updateInstance();
+        if (asyncPages.length === 0 && !showButton) {
+            updateAsyncPages(() => setShouldDownload(true));
+        }
 
-    //     Promise.all(contextValue).then(() => {
-    //         updateInstance();
-    //     });
-    // }, [ asyncPages, contextValue ]);
+        Promise.all(contextValue).then(() => {
+            updateInstance();
+        });
+    }, [ asyncPages, contextValue ]);
 
-    // useEffect(() => {
-    //     console.log('am I here?', instance);
-    //     if (!instance.loading && shouldDownload) {
-    //         debounced(instance);
-    //     }
-    // }, [ instance.loading, instance?.blob?.size, shouldDownload ]);
-    console.log('instance!');
+    useEffect(() => {
+        console.log('am I here?', instance);
+        if (!instance.loading && shouldDownload) {
+            debounced(instance);
+        }
+    }, [ instance.loading, instance?.blob?.size, shouldDownload ]);
     const downloadButton = <Button
-        onClick={() => updateAsyncPages(() => setShouldDownload(true))}
+        onClick={() => {
+            if (asyncFunction) {
+                updateAsyncPages(() => setShouldDownload(true));
+            } else {
+                setShouldDownload(true);
+            }
+        }}
         { ...buttonProps }
     >
         {label}
     </Button>;
     return (
         <React.Fragment>
-            {/* { isPreview
+            { isPreview
                 ? <PDFViewer src={instance.url}/>
                 : asyncFunction && (showButton ? downloadButton : <Fragment />) || downloadButton
-            } */}
-            aaaaa
+            }
         </React.Fragment>
     );
 };
@@ -125,11 +129,11 @@ DownloadButtonWrapper.defaultProps = {
 };
 
 const DownloadButton = (props) => (
-  <AsyncComponent
-      appName="chrome"
-      module="./DownloadButton"
-      {...props}
-  />
+    <AsyncComponent
+        appName="chrome"
+        module="./DownloadButton"
+        {...props}
+    />
 );
 
 export { DownloadButtonWrapper };

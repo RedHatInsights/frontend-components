@@ -39,7 +39,8 @@
         "@patternfly/react-styles": ">=4.3.4",
         "@patternfly/react-tokens": ">=4.4.4",
         "@react-pdf/renderer": "^2.0.19",
-        "@redhat-cloud-services/frontend-components": ">=3.0.0"
+        "@redhat-cloud-services/frontend-components": ">=3.0.0",
+        "rgb-hex": "^4.0.0"
     },
     "devDependencies": {
         "rollup": "^2.46.0",

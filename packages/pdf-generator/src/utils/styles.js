@@ -22,7 +22,7 @@ import global_palette_red_50 from '@patternfly/react-tokens/dist/js/global_palet
 
 import { fontTypes, generateFonts, redhatFont } from './fonts';
 
-Font.register({ family: 'Overpass', fonts: generateFonts(fontTypes) });
+// Font.register({ family: 'Overpass', fonts: generateFonts(fontTypes) });
 
 const { RedHatDisplay, RedHatText } = redhatFont();
 
