@@ -8,7 +8,6 @@ import debounce from 'lodash/debounce';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 
 const downloadBlob = (instance, fileName, onLoading, onError, onSuccess) => {
-    console.log(onSuccess, instance.blob, 'is this defined? onSuccess');
     if (instance.blob) {
         const link = document.createElement('a');
         link.href = URL.createObjectURL(instance.blob);
@@ -66,7 +65,6 @@ const DownloadButtonWrapper = ({
     };
 
     useEffect(() => {
-        console.log(contextValue);
         updateInstance();
         if (asyncPages.length === 0 && !showButton) {
             updateAsyncPages(() => setShouldDownload(true));
@@ -78,7 +76,6 @@ const DownloadButtonWrapper = ({
     }, [ asyncPages, contextValue ]);
 
     useEffect(() => {
-        console.log('am I here?', instance);
         if (!instance.loading && shouldDownload) {
             debounced(instance);
         }
@@ -128,14 +125,15 @@ DownloadButtonWrapper.defaultProps = {
     onLoading: () => undefined
 };
 
-const DownloadButton = (props) => (
-    <AsyncComponent
-        appName="chrome"
-        module="./DownloadButton"
-        {...props}
-    />
-);
+const DownloadButton = (props) => (<AsyncComponent
+    appName="chrome"
+    module="./DownloadButton"
+    ErrorComponent={<DownloadButtonWrapper {...props} />}
+    {...props}
+/>);
 
 export { DownloadButtonWrapper };
+
+export { DownloadButton };
 
 export default DownloadButton;
