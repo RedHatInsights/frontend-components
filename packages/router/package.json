@@ -29,5 +29,10 @@
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/router#readme",
     "dependencies": {
         "react-router-dom": "^5.0.0"
+    },
+    "peerDependencies": {
+        "prop-types": "^15.0.0",
+        "react": "^17.0.0",
+        "react-dom": "^17.0.0"
     }
 }
