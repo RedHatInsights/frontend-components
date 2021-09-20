@@ -18,7 +18,7 @@ const include = {
     react: { singleton: true },
     'react-dom': { singleton: true },
     'react-redux': {},
-    'react-router-dom': {}
+    'react-router-dom': { singleton: true }
 };
 
 module.exports = ({
