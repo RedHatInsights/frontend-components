@@ -91,6 +91,10 @@ const Group = ({
         itemId={key}
         key={`${item.value}-${key}-item`}
         className={item?.className}
+        onClick={item.onClick && (type || item.type) === groupType.checkbox ? (e) => {
+            item.onClick();
+            e.preventDefault();
+        } : undefined}
     >
         {
             (type || item.type) === groupType.checkbox ?
@@ -112,6 +116,10 @@ const Group = ({
                     onChange={(value, event) => {
                         item?.onChange?.(value, event);
                     }}
+                    onClick={item.onClick ? (e) => {
+                        item.onClick();
+                        e.stopPropagation();
+                    } : undefined}
                     name={item?.name || item?.value || `${groupKey}-${key}`}
                     id={item?.id || item?.value || `${groupKey}-${key}`}
                 /> :
@@ -130,7 +138,7 @@ const Group = ({
                         false
                         }
                         onChange={(value, event) => {
-                            item.onChange && item.onChange(value, event);
+                            item?.onChange?.(value, event);
                         }}
                         value={item?.value || key}
                         name={item?.name || item?.value || `${groupKey}-${key}`}
