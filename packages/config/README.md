@@ -61,6 +61,7 @@ const { config: webpackConfig, plugins } = config({
 |[env](#env)|`string`|Environment to proxy against such as ci-beta.|
 |[useCloud](#use-cloud)|`boolean`|Toggle to use old fallback to cloud.redhat.com paths instead of console.redhat.com.|
 |[target](#target)|`string`|Override `env` and `useCloud` to use a custom URI.|
+|[htmlPlugin](#htmlPlugin) (deprecated)|`object`|Configure HTML webpack plugin|
 
 #### localChrome
 
@@ -180,6 +181,27 @@ If you want to run in legacy mode pass `useCloud: true` in your config, this way
 
 #### Target
 Override for the target `env` and `useCloud` build. Useful for cross-environment testing.
+
+#### HtmlPlugin (deprecated)
+
+Used to configure the [HTML webpack plugin](https://github.com/jantimon/html-webpack-plugin#readme)
+
+**This plugin is deprecated and is no longer required to run an application on the platform!**
+
+By default, the plugin no longer injects any javascript files into the HTML template. App-specific HTML templates will not be used after the migration to the new build pipeline.
+
+If you use the generated `index.html` file outside of the platform, and you require the script injection, append your own HTML plugin to the plugins arrays. Alternatively use following configuration:
+
+```js
+const config = require('@redhat-cloud-services/frontend-components-config');
+const { config: webpackConfig, plugins } = config({
+  ... // other configureations
+  htmlPlugin: {
+    inject: true,
+  },
+});
+
+```
 
 ## standalone
 A way to run cloud.redhat.com apps from `localhost` offline.
