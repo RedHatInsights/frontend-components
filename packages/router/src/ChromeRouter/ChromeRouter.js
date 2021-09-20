@@ -6,8 +6,30 @@ function prependPath(prefix = '', path = '') {
     return `${prefix.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 }
 
+function prependTo(prefix = '', to = '') {
+    let internalTo = to;
+    if (typeof to === 'string') {
+        return prependPath(prefix, to).replace(/\/$/, '');
+    }
+
+    if (typeof to === 'object' && typeof to.pathname === 'string') {
+        return {
+            ...to,
+            pathname: prependPath(prefix, to.pathname).replace(/\/$/, '')
+        };
+    }
+
+    return internalTo;
+}
+
 const ChromeRouter = ({ basename = '/', children }) => (
-    <ChromeRouterProvider value={{ basename, prependPath }}>
+    <ChromeRouterProvider
+        value={{
+            basename,
+            prependPath: (...args) => prependPath(basename, ...args),
+            prependTo: (...args) => prependTo(basename, ...args)
+        }}
+    >
         {children}
     </ChromeRouterProvider>
 );
