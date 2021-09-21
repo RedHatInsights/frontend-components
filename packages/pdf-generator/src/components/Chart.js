@@ -118,20 +118,27 @@ const getChartData = (currChart, chartProps, wrapperProps, callback) => {
     ReactDOM.render(
         <Wrapper {...[ 'bar', 'lineChart' ].includes && {
             domainPadding: { x: [ 30, 25 ] }
-        }} {...wrapperProps}>
+        }} themeColor={colorSchema} {...wrapperProps}>
             {[ 'bar', 'lineChart' ].includes(chartType) && <ChartAxis />}
             {[ 'bar', 'lineChart' ].includes(chartType) && <ChartAxis dependentAxis />}
-            {Array.isArray(data?.[0]) ? <ChartGroup>
-                {data.map((subChartData, key) => (
-                    <Chart key={key}
-                        name={key}
-                        // domainPadding={{ x: [ 30, 25 ] }}
-                        {...currChart.chartProps}
-                        { ...props }
-                        data={subChartData}
-                    />
-                ))}
-            </ChartGroup> : <Chart data={data} {...currChart.chartProps} { ...props } />}
+            {Array.isArray(data?.[0]) ?
+                <ChartGroup>
+                    {data.map((subChartData, key) => (
+                        <Chart key={key}
+                            name={key}
+                            // domainPadding={{ x: [ 30, 25 ] }}
+                            {...currChart.chartProps}
+                            { ...props }
+                            data={subChartData}
+                        />
+                    ))}
+                </ChartGroup> :
+                <Chart
+                    data={data}
+                    themeColor={colorSchema}
+                    {...currChart.chartProps}
+                    { ...props }
+                />}
         </Wrapper>,
         el,
         () => {
@@ -194,12 +201,17 @@ const Chart = ({ deferred, chartType, colorSchema, legendHeader, svgProps, chart
         ? currChart.colorScale(getLightThemeColors(colorSchema).voronoi.colorScale)
         : getLightThemeColors(colorSchema).voronoi.colorScale;
     useEffect(() => {
-        if (paths) {
+        if (paths || lines) {
             deferred.resolve();
         } else {
-            getChartData({ ...currChart, chartType }, { ...props, data: mappedData }, chartWrapperProps, setChart);
+            getChartData(
+                { ...currChart, chartType },
+                { ...props, data: mappedData, colorSchema },
+                { ...chartWrapperProps },
+                setChart
+            );
         }
-    }, [ paths ]);
+    }, [ paths, lines ]);
     return <View style={[
         appliedStyles.flexRow,
         {
@@ -217,7 +229,7 @@ const Chart = ({ deferred, chartType, colorSchema, legendHeader, svgProps, chart
             }) scale(${
                 (currChart.scale || 0.3) * (props.legend ? 1 : 2)
             })`}>
-                {lines?.map((line, key) => (<Line {...line} key={key}/>))}
+                {lines?.map((line, key) => (<Line {...line} key={key} />))}
                 {paths?.map((path, key) => <Path {...path} key={key} />)}
                 {texts?.map(({ text, style, coords, textAnchor }, key) => (
                     <Text fontSize={style['font-size']?.replace('px', '')}
