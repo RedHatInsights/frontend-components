@@ -9,7 +9,7 @@ const defaultEntitlements = {
     hybrid: { is_entitled: true },
     migrations: { is_entitled: true },
     ansible: { is_entitled: true },
-    cost_management: { is_entitled: true },
+    cost_management: { is_entitled: true }
 };
 
 function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlements, user, internal, identity: customIdentity }) {
