@@ -3,7 +3,7 @@
 exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -87,7 +87,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
 exports[`ConditionalFilter render should render correctly 1`] = `
 <Fragment>
   <div
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <Text
       aria-label="text input"
@@ -95,6 +95,7 @@ exports[`ConditionalFilter render should render correctly 1`] = `
       isDisabled={false}
       onChange={[Function]}
       onSubmit={[Function]}
+      useMobileLayout={true}
       value=""
       widget-type="InsightsInput"
     />
@@ -105,7 +106,7 @@ exports[`ConditionalFilter render should render correctly 1`] = `
 exports[`ConditionalFilter render should render correctly checkbox with value checkbox-filter 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -206,7 +207,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
 exports[`ConditionalFilter render should render correctly no value with value undefined 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -291,7 +292,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
 exports[`ConditionalFilter render should render correctly radio filter with value radio-filter 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -388,7 +389,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
 exports[`ConditionalFilter render should render correctly simple text 1 with value simple-text-1 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -473,7 +474,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
 exports[`ConditionalFilter render should render correctly simple text 2 with value simple-text-2 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -558,7 +559,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
 exports[`ConditionalFilter render should render correctly with config - each item as disabled 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -642,7 +643,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
 exports[`ConditionalFilter render should render correctly with config 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -726,7 +727,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
 exports[`ConditionalFilter render should render correctly with one filter 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem
       isFilled={true}
@@ -746,7 +747,7 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
 exports[`ConditionalFilter render should render correctly with with the active label hidden 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown

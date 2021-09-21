@@ -31,6 +31,7 @@ const services = ({ port, env, assets }) => ({
     },
     // Last since this depends on redis + postgres
     rbac: {
+        startMessage: 'Booting worker',
         dependsOn: [
             `rbac_redis`,
             `rbac_postgres`

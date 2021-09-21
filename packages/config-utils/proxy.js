@@ -2,6 +2,7 @@
 // Webpack proxy and express config for `useProxy: true` or `standalone: true`
 const { execSync } = require('child_process');
 const path = require('path');
+const HttpsProxyAgent = require('https-proxy-agent');
 const cookieTransform = require('./cookieTransform');
 const router = require('./standalone/helpers/router');
 const { getConfig, isGitUrl, getExposedPort, resolvePath } = require('./standalone/helpers/index');
@@ -19,6 +20,7 @@ module.exports = ({
     routes,
     routesPath,
     useProxy,
+    proxyURL = 'http://squid.corp.redhat.com:3128',
     standalone,
     port,
     reposDir = defaultReposDir,
@@ -26,15 +28,35 @@ module.exports = ({
     appUrl = [],
     publicPath,
     proxyVerbose,
-    useCloud = false
+    useCloud = false,
+    target = '',
+    registry = []
 }) => {
     const proxy = [];
-    const registry = [];
     const majorEnv = env.split('-')[0];
-    const minorEnv = majorEnv === 'prod' ? '' : `${majorEnv}.`;
-    const target = env === 'prod-stable'
-        ? `https://${useCloud ? 'cloud' : 'console'}.redhat.com/`
-        : `https://${minorEnv}${useCloud ? 'cloud' : 'console'}.redhat.com/`;
+    if (target === '') {
+        target += 'https://';
+        if (![ 'prod', 'stage' ].includes(majorEnv)) {
+            target += majorEnv + '.';
+        }
+
+        target += useCloud ? 'cloud' : 'console';
+        if (majorEnv === 'stage') {
+            target += '.stage';
+        }
+
+        target += '.redhat.com/';
+    }
+
+    let agent;
+    if (env.startsWith('stage')) {
+        // stage-stable / stage-beta branches don't exist in build repos
+        // Currently stage pulls from QA
+        env = env.replace('stage', 'qa');
+        // QA and stage are deployed with Akamai which requires a corporate proxy
+        agent = new HttpsProxyAgent(proxyURL);
+    }
+
     if (!Array.isArray(appUrl)) {
         appUrl = [ appUrl ];
     }
@@ -61,7 +83,8 @@ module.exports = ({
                     ws: true,
                     onProxyReq: cookieTransform,
                     ...(currTarget === 'PORTAL_BACKEND_MARKER' && { router }),
-                    ...typeof redirect === 'object' ? redirect : {}
+                    ...typeof redirect === 'object' ? redirect : {},
+                    ...(agent && { agent })
                 };
             })
         );
@@ -77,12 +100,13 @@ module.exports = ({
         // Create network for services.
         execSync(`docker network inspect ${NET} >/dev/null 2>&1 || docker network create ${NET}`);
 
-        // Clone repos
+        // Clone repos and resolve functions
         // If we manage the repos it's okay to overwrite the contents
         const overwrite = reposDir === defaultReposDir;
-        // Need to use for loop for `await`
-        for (const [ projName, proj ] of Object.entries(standaloneConfig)) {
-            const { services, path, assets, onProxyReq, keycloakUri, register, target, ...rest } = proj;
+
+        // Resolve config functions for cross-service references
+        for (const [ _projName, proj ] of Object.entries(standaloneConfig)) {
+            const { services, path, assets, register } = proj;
             if (typeof register === 'function') {
                 registry.push(register);
             }
@@ -106,8 +130,11 @@ module.exports = ({
             if (typeof services === 'function') {
                 proj.services = services({ env, port, assets });
             }
+        }
 
-            // Start standalone services.
+        // Start standalone services.
+        for (const [ projName, proj ] of Object.entries(standaloneConfig)) {
+            const { services, path, assets, onProxyReq, keycloakUri, register, target, ...rest } = proj;
             const serviceNames = [];
             for (let [ subServiceName, subService ] of Object.entries(proj.services || {})) {
                 const name = [ projName, subServiceName ].join('_');
@@ -117,11 +144,7 @@ module.exports = ({
                 console.log('Container', name, 'listening', port ? 'on' : '', port || '');
             }
 
-            process.on('SIGINT', () => {
-                console.log();
-                serviceNames.forEach(stopService);
-                process.exit();
-            });
+            process.on('SIGINT', () => serviceNames.forEach(stopService));
 
             if (target) {
                 proxy.push({
@@ -133,6 +156,8 @@ module.exports = ({
                 });
             }
         }
+
+        process.on('SIGINT', () => process.exit());
     }
 
     if (useProxy) {
@@ -144,14 +169,25 @@ module.exports = ({
             context: url => {
                 const shouldProxy = !appUrl.find(u => typeof u === 'string' ? url.startsWith(u) : u.test(url));
                 if (shouldProxy) {
-                    console.log('proxy', url);
+                    if (proxyVerbose) {
+                        console.log('proxy', url);
+                    }
+
                     return true;
                 }
 
                 return false;
             },
             target,
-            router: router(target, useCloud)
+            router: router(target, useCloud),
+            ...(agent && {
+                agent,
+                headers: {
+                    // Staging Akamai CORS gives 403s for non-GET requests from non-origin hosts
+                    Host: target.replace('https://', ''),
+                    Origin: target
+                }
+            })
         });
     }
 

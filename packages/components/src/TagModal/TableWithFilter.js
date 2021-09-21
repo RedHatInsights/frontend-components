@@ -34,7 +34,8 @@ const TableWithFilter = ({
     systemName,
     columns,
     tableProps,
-    entityName
+    entityName,
+    bulkSelect
 }) => {
     const onRowSelect = ({ isSelected, rowId }) => {
         const currRow = rows?.[rowId];
@@ -66,7 +67,8 @@ const TableWithFilter = ({
                                 title: `Select page (${ rows.length })`,
                                 onClick: () => onSelect(unique([ ...rows, ...selected ]))
                             } : {}
-                        }]
+                        }],
+                        ...bulkSelect || {}
                     }
                 }}
                 {...filters && {
@@ -151,7 +153,8 @@ TableWithFilter.propTypes = {
     calculateChecked: PropTypes.func,
     unique: PropTypes.func,
     onSelect: PropTypes.func,
-    onUpdateData: PropTypes.func
+    onUpdateData: PropTypes.func,
+    bulkSelect: PropTypes.any
 };
 
 TableWithFilter.defaultProps = {

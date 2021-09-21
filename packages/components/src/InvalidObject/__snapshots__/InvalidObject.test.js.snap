@@ -11,6 +11,9 @@ exports[`InvalidObject component should render 1`] = `
     >
       <h1
         className="pf-c-title pf-m-3xl"
+        data-ouia-component-id="OUIA-Generated-Title-1"
+        data-ouia-component-type="PF4/Title"
+        data-ouia-safe={true}
       >
         We lost that page
       </h1>
@@ -262,6 +265,9 @@ exports[`InvalidObject component should render 1`] = `
     >
       <h1
         className="pf-c-title pf-m-xl ins-c-text__sorry"
+        data-ouia-component-id="OUIA-Generated-Title-2"
+        data-ouia-component-type="PF4/Title"
+        data-ouia-safe={true}
       >
         Let's find you a new one. Try a new search or return home.
       </h1>
@@ -271,20 +277,27 @@ exports[`InvalidObject component should render 1`] = `
       href="http://localhost:5000"
       variant="link"
     >
-      <a
-        aria-disabled={false}
-        aria-label={null}
-        className="pf-c-button pf-m-link"
-        data-ouia-component-id="OUIA-Generated-Button-link-1"
-        data-ouia-component-type="PF4/Button"
-        data-ouia-safe={true}
-        disabled={null}
+      <ButtonBase
+        component="a"
         href="http://localhost:5000"
-        role={null}
-        type={null}
+        innerRef={null}
+        variant="link"
       >
-        Return to homepage
-      </a>
+        <a
+          aria-disabled={false}
+          aria-label={null}
+          className="pf-c-button pf-m-link"
+          data-ouia-component-id="OUIA-Generated-Button-link-1"
+          data-ouia-component-type="PF4/Button"
+          data-ouia-safe={true}
+          disabled={null}
+          href="http://localhost:5000"
+          role={null}
+          type={null}
+        >
+          Return to homepage
+        </a>
+      </ButtonBase>
     </Button>
   </section>
 </InvalidObject>

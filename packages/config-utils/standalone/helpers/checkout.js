@@ -8,7 +8,16 @@ function checkoutRepo({ repo, reposDir, overwrite }) {
     fs.mkdirSync(reposDir);
   }
 
-  const [remote, branch = 'master'] = repo.split('#');
+  let [remote, branch = 'master'] = repo.split('#');
+  /**
+   * Chrome does not have stage and stage beta branches.
+   * For stage env, the QA build is used.
+   * This is actually quite common for applications as well, we should definetly check other application as well and maybe apply this rule for every remote.
+   */
+  if(remote.includes('insights-chrome-build') && branch.includes('stage-')) {
+    branch = branch.replace('stage-', 'qa-')
+  }
+
   const split = remote.split('/');
   const toDir = split[split.length - 1];
   const repoPath = path.join(reposDir, toDir);

@@ -4,6 +4,31 @@
 
 This package exports components to show rules detail page.
 
+## !!!This package is deprecated!!!
+
+Do not use this package anymore, if you want to use advisor detail you can use federated modules provided by advisor team
+
+```JSX
+import React from 'react';
+import { useStore } from 'react-redux';
+import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
+
+const AdvisorTab = () => {
+    const store = useStore();
+    return <AsyncComponent
+        appName="advisor"
+        module="./SystemDetail"
+        store={store}
+        customItnl
+        intlProps={{
+            locale: navigator.language
+        }}
+    />;
+};
+
+export default AdvisorTab;
+```
+
 ## Installation
 With NPM
 ```bash

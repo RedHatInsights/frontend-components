@@ -9,6 +9,7 @@ exports[`BulkSelect should render correctly - no data 1`] = `
     isDisabled={false}
     isValid={true}
     onChange={[Function]}
+    ouiaSafe={true}
   />
 </Fragment>
 `;

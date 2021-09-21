@@ -1,3432 +1,1211 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Group - component API should call onChange when group is clicked 1`] = `
-<Group
-  filterBy=""
-  groups={
-    Array [
-      Object {
-        "items": Array [
-          Object {
-            "label": "First value",
-            "value": "first",
-          },
-          Object {
-            "label": "Second value",
-          },
-        ],
-        "label": "First value",
-      },
-      Object {
-        "items": Array [
-          Object {
-            "label": "First checkbox",
-          },
-          Object {
-            "isChecked": true,
-            "label": "Second checkbox",
-            "value": "some-value",
-          },
-        ],
-        "label": "Second value",
-        "type": "checkbox",
-        "value": "second",
-      },
-      Object {
-        "items": Array [
-          Object {
-            "label": "First radio",
-          },
-          Object {
-            "label": "Second radio",
-          },
-        ],
-        "label": "Third value",
-        "type": "radio",
-        "value": "third",
-      },
-      Object {
-        "groupSelectable": true,
-        "items": Array [
-          Object {
-            "label": "First value",
-            "value": "first",
-          },
-          Object {
-            "label": "Second value",
-          },
-        ],
-        "label": "Groupselectable value",
-      },
-    ]
-  }
-  isDisabled={false}
-  isFilterable={false}
-  onChange={[MockFunction]}
-  selected={Object {}}
-  showMoreTitle="Show more"
->
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={false}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText=""
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <GenerateId
-      prefix="pf-random-id-"
-    >
-      <div
-        className="pf-c-select"
-        data-ouia-component-id="OUIA-Generated-Select-single-4"
-        data-ouia-component-type="PF4/Select"
-        data-ouia-safe={true}
-      >
-        <SelectToggle
-          aria-label="Options menu"
-          aria-labelledby=" pf-select-toggle-id-13"
-          className=""
-          handleTypeaheadKeys={[Function]}
-          hasClearButton={true}
-          hasFooter={false}
-          id="pf-select-toggle-id-13"
-          isActive={false}
-          isDisabled={false}
-          isOpen={false}
-          isPlain={false}
-          menuRef={
-            Object {
-              "current": null,
-            }
-          }
-          onClickTypeaheadToggleButton={[Function]}
-          onClose={[Function]}
-          onEnter={[Function]}
-          onToggle={[Function]}
-          parentRef={
-            Object {
-              "current": <div
-                class="pf-c-select"
-                data-ouia-component-id="OUIA-Generated-Select-single-4"
-                data-ouia-component-type="PF4/Select"
-                data-ouia-safe="true"
-              >
-                <div
-                  class="pf-c-select__toggle pf-m-typeahead"
-                >
-                  <div
-                    class="pf-c-select__toggle-wrapper"
-                  >
-                    <span
-                      class="pf-c-select__toggle-text"
-                    />
-                  </div>
-                  <button
-                    aria-expanded="false"
-                    aria-haspopup="listbox"
-                    aria-label="Options menu"
-                    aria-labelledby=" pf-select-toggle-id-13"
-                    class="pf-c-button pf-c-select__toggle-button pf-m-plain"
-                    id="pf-select-toggle-id-13"
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="pf-c-select__toggle-arrow"
-                      fill="currentColor"
-                      height="1em"
-                      role="img"
-                      style="vertical-align: -0.125em;"
-                      viewBox="0 0 320 512"
-                      width="1em"
-                    >
-                      <path
-                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>,
-            }
-          }
-          type="button"
-          variant="single"
-        >
-          <div
-            className="pf-c-select__toggle pf-m-typeahead"
-            onClick={[Function]}
-            onKeyDown={[Function]}
-          >
-            <div
-              className="pf-c-select__toggle-wrapper"
-            >
-              <span
-                className="pf-c-select__toggle-text"
-              />
-            </div>
-            <button
-              aria-expanded={false}
-              aria-haspopup="listbox"
-              aria-label="Options menu"
-              aria-labelledby=" pf-select-toggle-id-13"
-              className="pf-c-button pf-c-select__toggle-button pf-m-plain"
-              disabled={false}
-              id="pf-select-toggle-id-13"
-              onClick={[Function]}
-              type="button"
-            >
-              <CaretDownIcon
-                className="pf-c-select__toggle-arrow"
-                color="currentColor"
-                noVerticalAlign={false}
-                size="sm"
-              >
-                <svg
-                  aria-hidden={true}
-                  aria-labelledby={null}
-                  className="pf-c-select__toggle-arrow"
-                  fill="currentColor"
-                  height="1em"
-                  role="img"
-                  style={
-                    Object {
-                      "verticalAlign": "-0.125em",
-                    }
-                  }
-                  viewBox="0 0 320 512"
-                  width="1em"
-                >
-                  <path
-                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                  />
-                </svg>
-              </CaretDownIcon>
-            </button>
-          </div>
-        </SelectToggle>
-      </div>
-    </GenerateId>
-  </Select>
-</Group>
-`;
-
 exports[`Group - component render should render correctly 1`] = `
-<Fragment>
-  <Text
-    aria-label="text input"
-    filterBy=""
-    groups={Array []}
-    isDisabled={false}
-    isFilterable={false}
-    onChange={[Function]}
-    onSubmit={[Function]}
-    selected={Object {}}
-    showMoreTitle="Show more"
-    value="[object Object]"
-  />
-</Fragment>
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
+    >
+      <MenuContent>
+        <MenuList>
+          <span
+            hidden={true}
+            value=""
+          />
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
+    />
+  }
+/>
 `;
 
 exports[`Group - component render should render correctly placeholder 1`] = `
-<Fragment>
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={false}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText="some placeholder"
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <div
-      className="ins-c-select__scrollable-section"
-      value=""
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
     >
-      <div
-        key="0"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-0"
-          label="First value"
-          value={0}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+      <MenuContent>
+        <MenuList>
+          <MenuGroup
             label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="second"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-second"
-          label="Second value"
-          value="second"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Checkbox
-              className=""
-              id="1-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First checkbox"
-              name="1-0"
-              onChange={[Function]}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="some-value"
-          >
-            <Checkbox
-              className=""
-              id="some-value"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second checkbox"
-              name="some-value"
-              onChange={[Function]}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="third"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-third"
-          label="Third value"
-          value="third"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First checkbox"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="some-value"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second checkbox"
+                name="some-value"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="some-value"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Radio
-              className=""
-              id="2-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First radio"
-              name="2-0"
-              onChange={[Function]}
-              value={0}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            <Radio
-              className=""
-              id="2-1"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second radio"
-              name="2-1"
-              onChange={[Function]}
-              value={1}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="3"
-        value=""
-      >
-        <SelectOption
-          className=""
-          component="button"
-          index={0}
-          inputId=""
-          isChecked={false}
-          isDisabled={false}
-          isFavorite={null}
-          isLoad={false}
-          isLoading={false}
-          isNoResultsOption={false}
-          isPlaceholder={false}
-          isSelected={false}
-          keyHandler={[Function]}
-          onClick={[Function]}
-          sendRef={[Function]}
-          value=""
-        >
-          <Checkbox
-            className=""
-            isChecked={false}
-            isDisabled={false}
-            isValid={true}
+            <MenuItem
+              itemId={0}
+            >
+              <Radio
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First radio"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              <Radio
+                className=""
+                id="1"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second radio"
+                name="1"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="1"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Groupselectable value"
-            onChange={[Function]}
+          >
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <span
+            hidden={true}
+            value=""
           />
-        </SelectOption>
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-3"
-          label={false}
-          value={3}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
-          >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-    </div>
-    <span
-      hidden={true}
-      value=""
-    />
-  </Select>
-</Fragment>
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
+    >
+      some placeholder
+    </MenuToggle>
+  }
+/>
 `;
 
 exports[`Group - component render should render correctly with items - isDisabled 1`] = `
-<Fragment>
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={true}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText=""
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <div
-      className="ins-c-select__scrollable-section"
-      value=""
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
     >
-      <div
-        key="0"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-0"
-          label="First value"
-          value={0}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+      <MenuContent>
+        <MenuList>
+          <MenuGroup
             label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="second"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-second"
-          label="Second value"
-          value="second"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Checkbox
-              className=""
-              id="1-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First checkbox"
-              name="1-0"
-              onChange={[Function]}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="some-value"
-          >
-            <Checkbox
-              className=""
-              id="some-value"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second checkbox"
-              name="some-value"
-              onChange={[Function]}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="third"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-third"
-          label="Third value"
-          value="third"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First checkbox"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="some-value"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second checkbox"
+                name="some-value"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="some-value"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Radio
-              className=""
-              id="2-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First radio"
-              name="2-0"
-              onChange={[Function]}
-              value={0}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            <Radio
-              className=""
-              id="2-1"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second radio"
-              name="2-1"
-              onChange={[Function]}
-              value={1}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="3"
-        value=""
-      >
-        <SelectOption
-          className=""
-          component="button"
-          index={0}
-          inputId=""
-          isChecked={false}
-          isDisabled={false}
-          isFavorite={null}
-          isLoad={false}
-          isLoading={false}
-          isNoResultsOption={false}
-          isPlaceholder={false}
-          isSelected={false}
-          keyHandler={[Function]}
-          onClick={[Function]}
-          sendRef={[Function]}
-          value=""
-        >
-          <Checkbox
-            className=""
-            isChecked={false}
-            isDisabled={false}
-            isValid={true}
+            <MenuItem
+              itemId={0}
+            >
+              <Radio
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First radio"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              <Radio
+                className=""
+                id="1"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second radio"
+                name="1"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="1"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Groupselectable value"
-            onChange={[Function]}
+          >
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <span
+            hidden={true}
+            value=""
           />
-        </SelectOption>
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-3"
-          label={false}
-          value={3}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
-          >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-    </div>
-    <span
-      hidden={true}
-      value=""
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
     />
-  </Select>
-</Fragment>
+  }
+/>
 `;
 
 exports[`Group - component render should render correctly with items 1`] = `
-<Fragment>
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={false}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText=""
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <div
-      className="ins-c-select__scrollable-section"
-      value=""
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
     >
-      <div
-        key="0"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-0"
-          label="First value"
-          value={0}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+      <MenuContent>
+        <MenuList>
+          <MenuGroup
             label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="second"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-second"
-          label="Second value"
-          value="second"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Checkbox
-              className=""
-              id="1-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First checkbox"
-              name="1-0"
-              onChange={[Function]}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="some-value"
-          >
-            <Checkbox
-              className=""
-              id="some-value"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second checkbox"
-              name="some-value"
-              onChange={[Function]}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="third"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-third"
-          label="Third value"
-          value="third"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First checkbox"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="some-value"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second checkbox"
+                name="some-value"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="some-value"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Radio
-              className=""
-              id="2-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First radio"
-              name="2-0"
-              onChange={[Function]}
-              value={0}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            <Radio
-              className=""
-              id="2-1"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second radio"
-              name="2-1"
-              onChange={[Function]}
-              value={1}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="3"
-        value=""
-      >
-        <SelectOption
-          className=""
-          component="button"
-          index={0}
-          inputId=""
-          isChecked={false}
-          isDisabled={false}
-          isFavorite={null}
-          isLoad={false}
-          isLoading={false}
-          isNoResultsOption={false}
-          isPlaceholder={false}
-          isSelected={false}
-          keyHandler={[Function]}
-          onClick={[Function]}
-          sendRef={[Function]}
-          value=""
-        >
-          <Checkbox
-            className=""
-            isChecked={false}
-            isDisabled={false}
-            isValid={true}
+            <MenuItem
+              itemId={0}
+            >
+              <Radio
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First radio"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              <Radio
+                className=""
+                id="1"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second radio"
+                name="1"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="1"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Groupselectable value"
-            onChange={[Function]}
+          >
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <span
+            hidden={true}
+            value=""
           />
-        </SelectOption>
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-3"
-          label={false}
-          value={3}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
-          >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-    </div>
-    <span
-      hidden={true}
-      value=""
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
     />
-  </Select>
-</Fragment>
+  }
+/>
 `;
 
 exports[`Group - component render should render correctly with items and default value 1`] = `
-<Fragment>
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={false}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText=""
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <div
-      className="ins-c-select__scrollable-section"
-      value=""
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
     >
-      <div
-        key="0"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-0"
-          label="First value"
-          value={0}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+      <MenuContent>
+        <MenuList>
+          <MenuGroup
             label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="second"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-second"
-          label="Second value"
-          value="second"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Checkbox
-              className=""
-              id="1-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First checkbox"
-              name="1-0"
-              onChange={[Function]}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="some-value"
-          >
-            <Checkbox
-              className=""
-              id="some-value"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second checkbox"
-              name="some-value"
-              onChange={[Function]}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="third"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-third"
-          label="Third value"
-          value="third"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First checkbox"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="some-value"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second checkbox"
+                name="some-value"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="some-value"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Radio
-              className=""
-              id="2-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First radio"
-              name="2-0"
-              onChange={[Function]}
-              value={0}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            <Radio
-              className=""
-              id="2-1"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second radio"
-              name="2-1"
-              onChange={[Function]}
-              value={1}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="3"
-        value=""
-      >
-        <SelectOption
-          className=""
-          component="button"
-          index={0}
-          inputId=""
-          isChecked={false}
-          isDisabled={false}
-          isFavorite={null}
-          isLoad={false}
-          isLoading={false}
-          isNoResultsOption={false}
-          isPlaceholder={false}
-          isSelected={false}
-          keyHandler={[Function]}
-          onClick={[Function]}
-          sendRef={[Function]}
-          value=""
-        >
-          <Checkbox
-            className=""
-            isChecked={false}
-            isDisabled={false}
-            isValid={true}
+            <MenuItem
+              itemId={0}
+            >
+              <Radio
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First radio"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              <Radio
+                className=""
+                id="1"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second radio"
+                name="1"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="1"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Groupselectable value"
-            onChange={[Function]}
+          >
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <span
+            hidden={true}
+            value=""
           />
-        </SelectOption>
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-3"
-          label={false}
-          value={3}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
-          >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-    </div>
-    <span
-      hidden={true}
-      value=""
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
     />
-  </Select>
-</Fragment>
+  }
+/>
 `;
 
 exports[`Group - component render should render correctly with items and selected value 1`] = `
-<Fragment>
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={false}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText=""
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <div
-      className="ins-c-select__scrollable-section"
-      value=""
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
     >
-      <div
-        key="0"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-0"
-          label="First value"
-          value={0}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+      <MenuContent>
+        <MenuList>
+          <MenuGroup
             label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="second"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-second"
-          label="Second value"
-          value="second"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Checkbox
-              className=""
-              id="1-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First checkbox"
-              name="1-0"
-              onChange={[Function]}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="some-value"
-          >
-            <Checkbox
-              className=""
-              id="some-value"
-              isChecked={true}
-              isDisabled={false}
-              isValid={true}
-              label="Second checkbox"
-              name="some-value"
-              onChange={[Function]}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="third"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-third"
-          label="Third value"
-          value="third"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First checkbox"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="some-value"
+                isChecked={true}
+                isDisabled={false}
+                isValid={true}
+                label="Second checkbox"
+                name="some-value"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="some-value"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Radio
-              className=""
-              id="2-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First radio"
-              name="2-0"
-              onChange={[Function]}
-              value={0}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            <Radio
-              className=""
-              id="2-1"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second radio"
-              name="2-1"
-              onChange={[Function]}
-              value={1}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="3"
-        value=""
-      >
-        <SelectOption
-          className=""
-          component="button"
-          index={0}
-          inputId=""
-          isChecked={false}
-          isDisabled={false}
-          isFavorite={null}
-          isLoad={false}
-          isLoading={false}
-          isNoResultsOption={false}
-          isPlaceholder={false}
-          isSelected={false}
-          keyHandler={[Function]}
-          onClick={[Function]}
-          sendRef={[Function]}
-          value=""
-        >
-          <Checkbox
-            className=""
-            isChecked={false}
-            isDisabled={false}
-            isValid={true}
+            <MenuItem
+              itemId={0}
+            >
+              <Radio
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First radio"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              <Radio
+                className=""
+                id="1"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second radio"
+                name="1"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="1"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Groupselectable value"
-            onChange={[Function]}
+          >
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <span
+            hidden={true}
+            value=""
           />
-        </SelectOption>
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-3"
-          label={false}
-          value={3}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
-          >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-    </div>
-    <span
-      hidden={true}
-      value=""
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
     />
-  </Select>
-</Fragment>
+  }
+/>
 `;
 
 exports[`Group - component render show more should render correctly with items and custom props 1`] = `
-<Fragment>
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={false}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText=""
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <div
-      className="ins-c-select__scrollable-section"
-      value=""
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
     >
-      <div
-        key="0"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-0"
-          label="First value"
-          value={0}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+      <MenuContent>
+        <MenuList>
+          <MenuGroup
             label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="second"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-second"
-          label="Second value"
-          value="second"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Checkbox
-              className=""
-              id="1-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First checkbox"
-              name="1-0"
-              onChange={[Function]}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="some-value"
-          >
-            <Checkbox
-              className=""
-              id="some-value"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second checkbox"
-              name="some-value"
-              onChange={[Function]}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="third"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-third"
-          label="Third value"
-          value="third"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First checkbox"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="some-value"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second checkbox"
+                name="some-value"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="some-value"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Radio
-              className=""
-              id="2-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First radio"
-              name="2-0"
-              onChange={[Function]}
-              value={0}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            <Radio
-              className=""
-              id="2-1"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second radio"
-              name="2-1"
-              onChange={[Function]}
-              value={1}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="3"
-        value=""
-      >
-        <SelectOption
-          className=""
-          component="button"
-          index={0}
-          inputId=""
-          isChecked={false}
-          isDisabled={false}
-          isFavorite={null}
-          isLoad={false}
-          isLoading={false}
-          isNoResultsOption={false}
-          isPlaceholder={false}
-          isSelected={false}
-          keyHandler={[Function]}
-          onClick={[Function]}
-          sendRef={[Function]}
-          value=""
-        >
-          <Checkbox
-            className=""
-            isChecked={false}
-            isDisabled={false}
-            isValid={true}
+            <MenuItem
+              itemId={0}
+            >
+              <Radio
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First radio"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              <Radio
+                className=""
+                id="1"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second radio"
+                name="1"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="1"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Groupselectable value"
-            onChange={[Function]}
+          >
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuItem
+            className="ins-c-menu__show--more"
+            itemId="loader"
+            onClick={[Function]}
+            props={
+              Object {
+                "className": "some-test-class",
+              }
+            }
           />
-        </SelectOption>
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-3"
-          label={false}
-          value={3}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
-          >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-    </div>
-    <SelectGroup
-      value=""
-    >
-      <Button
-        className="pf-c-select__menu-item"
-        label="Show more"
-        onClick={[Function]}
-        props={
-          Object {
-            "className": "some-test-class",
-          }
-        }
-        type="button"
-        value="Show more"
-        variant="link"
-      >
-        Show more
-      </Button>
-    </SelectGroup>
-  </Select>
-</Fragment>
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
+    />
+  }
+/>
 `;
 
 exports[`Group - component render show more should render correctly with items and custom text 1`] = `
-<Fragment>
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={false}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText=""
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <div
-      className="ins-c-select__scrollable-section"
-      value=""
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
     >
-      <div
-        key="0"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-0"
-          label="First value"
-          value={0}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+      <MenuContent>
+        <MenuList>
+          <MenuGroup
             label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="second"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-second"
-          label="Second value"
-          value="second"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Checkbox
-              className=""
-              id="1-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First checkbox"
-              name="1-0"
-              onChange={[Function]}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="some-value"
-          >
-            <Checkbox
-              className=""
-              id="some-value"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second checkbox"
-              name="some-value"
-              onChange={[Function]}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="third"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-third"
-          label="Third value"
-          value="third"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First checkbox"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="some-value"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second checkbox"
+                name="some-value"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="some-value"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Radio
-              className=""
-              id="2-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First radio"
-              name="2-0"
-              onChange={[Function]}
-              value={0}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            <Radio
-              className=""
-              id="2-1"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second radio"
-              name="2-1"
-              onChange={[Function]}
-              value={1}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="3"
-        value=""
-      >
-        <SelectOption
-          className=""
-          component="button"
-          index={0}
-          inputId=""
-          isChecked={false}
-          isDisabled={false}
-          isFavorite={null}
-          isLoad={false}
-          isLoading={false}
-          isNoResultsOption={false}
-          isPlaceholder={false}
-          isSelected={false}
-          keyHandler={[Function]}
-          onClick={[Function]}
-          sendRef={[Function]}
-          value=""
-        >
-          <Checkbox
-            className=""
-            isChecked={false}
-            isDisabled={false}
-            isValid={true}
+            <MenuItem
+              itemId={0}
+            >
+              <Radio
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First radio"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              <Radio
+                className=""
+                id="1"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second radio"
+                name="1"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="1"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Groupselectable value"
-            onChange={[Function]}
-          />
-        </SelectOption>
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-3"
-          label={false}
-          value={3}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Groupselectable value"
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuItem
+            className="ins-c-menu__show--more"
+            itemId="loader"
             onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
           >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-    </div>
-    <SelectGroup
-      value=""
-    >
-      <Button
-        className="pf-c-select__menu-item"
-        label="some title"
-        onClick={[Function]}
-        type="button"
-        value="Show more"
-        variant="link"
-      >
-        some title
-      </Button>
-    </SelectGroup>
-  </Select>
-</Fragment>
+            some title
+          </MenuItem>
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
+    />
+  }
+/>
 `;
 
 exports[`Group - component render show more should render correctly with items and default text 1`] = `
-<Fragment>
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={false}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText=""
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <div
-      className="ins-c-select__scrollable-section"
-      value=""
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
     >
-      <div
-        key="0"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-0"
-          label="First value"
-          value={0}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+      <MenuContent>
+        <MenuList>
+          <MenuGroup
             label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="second"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-second"
-          label="Second value"
-          value="second"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Checkbox
-              className=""
-              id="1-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First checkbox"
-              name="1-0"
-              onChange={[Function]}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="some-value"
-          >
-            <Checkbox
-              className=""
-              id="some-value"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second checkbox"
-              name="some-value"
-              onChange={[Function]}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="third"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-third"
-          label="Third value"
-          value="third"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First checkbox"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="some-value"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second checkbox"
+                name="some-value"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="some-value"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Radio
-              className=""
-              id="2-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First radio"
-              name="2-0"
-              onChange={[Function]}
-              value={0}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            <Radio
-              className=""
-              id="2-1"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second radio"
-              name="2-1"
-              onChange={[Function]}
-              value={1}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="3"
-        value=""
-      >
-        <SelectOption
-          className=""
-          component="button"
-          index={0}
-          inputId=""
-          isChecked={false}
-          isDisabled={false}
-          isFavorite={null}
-          isLoad={false}
-          isLoading={false}
-          isNoResultsOption={false}
-          isPlaceholder={false}
-          isSelected={false}
-          keyHandler={[Function]}
-          onClick={[Function]}
-          sendRef={[Function]}
-          value=""
-        >
-          <Checkbox
-            className=""
-            isChecked={false}
-            isDisabled={false}
-            isValid={true}
+            <MenuItem
+              itemId={0}
+            >
+              <Radio
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First radio"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              <Radio
+                className=""
+                id="1"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second radio"
+                name="1"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="1"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Groupselectable value"
-            onChange={[Function]}
+          >
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuItem
+            className="ins-c-menu__show--more"
+            itemId="loader"
+            onClick={[Function]}
           />
-        </SelectOption>
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-3"
-          label={false}
-          value={3}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
-          >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-    </div>
-    <SelectGroup
-      value=""
-    >
-      <Button
-        className="pf-c-select__menu-item"
-        label="Show more"
-        onClick={[Function]}
-        type="button"
-        value="Show more"
-        variant="link"
-      >
-        Show more
-      </Button>
-    </SelectGroup>
-  </Select>
-</Fragment>
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
+    />
+  }
+/>
 `;
 
 exports[`Group - component render show more should render correctly with items and different variant 1`] = `
-<Fragment>
-  <Select
-    aria-describedby=""
-    aria-invalid={false}
-    aria-label="Select Input"
-    aria-labelledby=""
-    chipGroupComponent={null}
-    className=""
-    clearSelectionsAriaLabel="Clear all"
-    createText="Create"
-    customBadgeText={null}
-    customContent={null}
-    direction="down"
-    favorites={Array []}
-    favoritesLabel="Favorites"
-    hasInlineFilter={false}
-    inlineFilterPlaceholderText={null}
-    inputIdPrefix=""
-    isCreatable={false}
-    isDisabled={false}
-    isGrouped={true}
-    isInputValuePersisted={false}
-    isOpen={false}
-    isPlain={false}
-    menuAppendTo="inline"
-    noResultsFoundText="No results found"
-    onClear={[Function]}
-    onCreateOption={[Function]}
-    onFilter={null}
-    onSelect={[Function]}
-    onToggle={[Function]}
-    onTypeaheadInputChanged={null}
-    ouiaSafe={true}
-    placeholderText=""
-    removeSelectionAriaLabel="Remove"
-    selections={null}
-    toggleAriaLabel="Options menu"
-    toggleIcon={null}
-    toggleId={null}
-    typeAheadAriaLabel=""
-    validated="default"
-    variant="single"
-    width=""
-  >
-    <div
-      className="ins-c-select__scrollable-section"
-      value=""
+<Popper
+  isVisible={false}
+  popper={
+    <Menu
+      className=""
     >
-      <div
-        key="0"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-0"
-          label="First value"
-          value={0}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+      <MenuContent>
+        <MenuList>
+          <MenuGroup
             label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
           >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="First value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="second"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-second"
-          label="Second value"
-          value="second"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Checkbox
-              className=""
-              id="1-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First checkbox"
-              name="1-0"
-              onChange={[Function]}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Second value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="some-value"
-          >
-            <Checkbox
-              className=""
-              id="some-value"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second checkbox"
-              name="some-value"
-              onChange={[Function]}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="third"
-        value=""
-      >
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-third"
-          label="Third value"
-          value="third"
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
+            <MenuItem
+              itemId={0}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First checkbox"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+              onClick={[Function]}
+            >
+              <Checkbox
+                className=""
+                id="some-value"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second checkbox"
+                name="some-value"
+                onChange={[Function]}
+                onClick={[Function]}
+                ouiaSafe={true}
+                value="some-value"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value=""
           >
-            <Radio
-              className=""
-              id="2-0"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="First radio"
-              name="2-0"
-              onChange={[Function]}
-              value={0}
-            />
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Third value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            <Radio
-              className=""
-              id="2-1"
-              isChecked={false}
-              isDisabled={false}
-              isValid={true}
-              label="Second radio"
-              name="2-1"
-              onChange={[Function]}
-              value={1}
-            />
-          </SelectOption>
-        </SelectGroup>
-      </div>
-      <div
-        key="3"
-        value=""
-      >
-        <SelectOption
-          className=""
-          component="button"
-          index={0}
-          inputId=""
-          isChecked={false}
-          isDisabled={false}
-          isFavorite={null}
-          isLoad={false}
-          isLoading={false}
-          isNoResultsOption={false}
-          isPlaceholder={false}
-          isSelected={false}
-          keyHandler={[Function]}
-          onClick={[Function]}
-          sendRef={[Function]}
-          value=""
-        >
-          <Checkbox
-            className=""
-            isChecked={false}
-            isDisabled={false}
-            isValid={true}
+            <MenuItem
+              itemId={0}
+            >
+              <Radio
+                className=""
+                id="0"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="First radio"
+                name="0"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="0"
+              />
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              <Radio
+                className=""
+                id="1"
+                isChecked={false}
+                isDisabled={false}
+                isValid={true}
+                label="Second radio"
+                name="1"
+                onChange={[Function]}
+                onClick={[Function]}
+                value="1"
+              />
+            </MenuItem>
+          </MenuGroup>
+          <MenuGroup
             label="Groupselectable value"
-            onChange={[Function]}
+          >
+            <MenuItem
+              itemId={0}
+            >
+              First value
+            </MenuItem>
+            <MenuItem
+              itemId={1}
+            >
+              Second value
+            </MenuItem>
+          </MenuGroup>
+          <MenuItem
+            className="ins-c-menu__show--more"
+            itemId="loader"
+            onClick={[Function]}
+            variant="default"
           />
-        </SelectOption>
-        <SelectGroup
-          className="pf-u-pl-sm"
-          id="group-3"
-          label={false}
-          value={3}
-        >
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="0"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="first"
-          >
-            First value
-          </SelectOption>
-          <SelectOption
-            className=""
-            component="button"
-            index={0}
-            inputId=""
-            isChecked={false}
-            isDisabled={false}
-            isFavorite={null}
-            isLoad={false}
-            isLoading={false}
-            isNoResultsOption={false}
-            isPlaceholder={false}
-            isSelected={false}
-            key="1"
-            keyHandler={[Function]}
-            label="Groupselectable value"
-            onClick={[Function]}
-            sendRef={[Function]}
-            value="1"
-          >
-            Second value
-          </SelectOption>
-        </SelectGroup>
-      </div>
-    </div>
-    <SelectGroup
-      value=""
-    >
-      <Button
-        className="pf-c-select__menu-item"
-        label="Show more"
-        onClick={[Function]}
-        type="button"
-        value="Show more"
-        variant="default"
-      >
-        Show more
-      </Button>
-    </SelectGroup>
-  </Select>
-</Fragment>
+        </MenuList>
+      </MenuContent>
+    </Menu>
+  }
+  trigger={
+    <MenuToggle
+      isExpanded={false}
+      onClick={[Function]}
+    />
+  }
+/>
 `;

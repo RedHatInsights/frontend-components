@@ -15,6 +15,9 @@ exports[`BasicInfo should render with data 1`] = `
       >
         <h3
           className="pf-c-title pf-m-xl"
+          data-ouia-component-id="OUIA-Generated-Title-2"
+          data-ouia-component-type="PF4/Title"
+          data-ouia-safe={true}
         >
           something
         </h3>
@@ -49,6 +52,9 @@ exports[`BasicInfo should render with no inv link 1`] = `
       >
         <h3
           className="pf-c-title pf-m-xl"
+          data-ouia-component-id="OUIA-Generated-Title-3"
+          data-ouia-component-type="PF4/Title"
+          data-ouia-safe={true}
         >
           something
         </h3>
@@ -73,6 +79,9 @@ exports[`BasicInfo should render with tags 1`] = `
       >
         <h3
           className="pf-c-title pf-m-xl"
+          data-ouia-component-id="OUIA-Generated-Title-4"
+          data-ouia-component-type="PF4/Title"
+          data-ouia-safe={true}
         >
           something
         </h3>
@@ -216,6 +225,9 @@ exports[`BasicInfo should render without data 1`] = `
       >
         <h3
           className="pf-c-title pf-m-xl"
+          data-ouia-component-id="OUIA-Generated-Title-1"
+          data-ouia-component-type="PF4/Title"
+          data-ouia-safe={true}
         />
       </div>
       <div

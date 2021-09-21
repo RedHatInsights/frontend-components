@@ -7,6 +7,7 @@ import { Button } from '@patternfly/react-core';
 const onActionClicked = jest.fn();
 const onActionSelect = jest.fn();
 const config = {
+    useMobileLayout: true,
     pagination: {
         itemCount: 100,
         page: 1,

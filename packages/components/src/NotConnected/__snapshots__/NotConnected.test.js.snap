@@ -2,9 +2,9 @@
 
 exports[`Not connected component should render 1`] = `
 <NotConnected
-  bodyText="Activate the Insights client for this system to get started."
-  buttonText="Learn about the Insights client"
-  titleText="This system is not yet connected to Insights"
+  bodyText="To get started, activate the Insights client for this system."
+  buttonText="Learn how to activate the Insights client"
+  titleText="This system isn’t connected to Insights yet"
 >
   <EmptyState>
     <div
@@ -50,15 +50,18 @@ exports[`Not connected component should render 1`] = `
         >
           <h5
             className="pf-c-title pf-m-lg"
+            data-ouia-component-id="OUIA-Generated-Title-1"
+            data-ouia-component-type="PF4/Title"
+            data-ouia-safe={true}
           >
-            This system is not yet connected to Insights
+            This system isn’t connected to Insights yet
           </h5>
         </Title>
         <EmptyStateBody>
           <div
             className="pf-c-empty-state__body"
           >
-            Activate the Insights client for this system to get started.
+            To get started, activate the Insights client for this system.
           </div>
         </EmptyStateBody>
         <Button
@@ -69,22 +72,32 @@ exports[`Not connected component should render 1`] = `
           target="_blank"
           variant="primary"
         >
-          <a
-            aria-disabled={false}
-            aria-label={null}
-            className="pf-c-button pf-m-primary pf-u-mt-lg"
-            data-ouia-component-id="OUIA-Generated-Button-primary-1"
-            data-ouia-component-type="PF4/Button"
-            data-ouia-safe={true}
-            disabled={null}
+          <ButtonBase
+            className="pf-u-mt-lg"
+            component="a"
             href="http://access.redhat.com/products/cloud_management_services_for_rhel#getstarted"
+            innerRef={null}
             rel="noopener noreferrer"
-            role={null}
             target="_blank"
-            type={null}
+            variant="primary"
           >
-            Learn about the Insights client
-          </a>
+            <a
+              aria-disabled={false}
+              aria-label={null}
+              className="pf-c-button pf-m-primary pf-u-mt-lg"
+              data-ouia-component-id="OUIA-Generated-Button-primary-1"
+              data-ouia-component-type="PF4/Button"
+              data-ouia-safe={true}
+              disabled={null}
+              href="http://access.redhat.com/products/cloud_management_services_for_rhel#getstarted"
+              rel="noopener noreferrer"
+              role={null}
+              target="_blank"
+              type={null}
+            >
+              Learn how to activate the Insights client
+            </a>
+          </ButtonBase>
         </Button>
       </div>
     </div>

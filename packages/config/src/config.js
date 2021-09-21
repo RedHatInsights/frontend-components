@@ -17,6 +17,7 @@ module.exports = ({
     sassPrefix,
     skipChrome2 = false,
     useProxy,
+    proxyURL,
     localChrome,
     customProxy,
     routes,
@@ -26,7 +27,9 @@ module.exports = ({
     reposDir,
     appUrl = [],
     proxyVerbose,
-    useCloud
+    useCloud,
+    target,
+    registry
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     if (betaEnv) {
@@ -124,13 +127,10 @@ module.exports = ({
                 ]
             }, {
                 test: /\.(woff(2)?|ttf|jpg|png|eot|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/'
-                    }
-                }]
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]'
+                }
             },
             {
                 test: /\.mjs$/,
@@ -185,12 +185,15 @@ module.exports = ({
                 routes,
                 routesPath,
                 useProxy,
+                proxyURL,
                 standalone,
                 port: devServerPort,
                 reposDir,
                 appUrl,
                 publicPath,
-                proxyVerbose
+                proxyVerbose,
+                target,
+                registry
             })
         }
     };

@@ -60,7 +60,7 @@ const useStyles = createUseStyles({
     }
 });
 
-const ExpandablePanel = ({ codeOnly, sourceCode, source }) => {
+const ExpandablePanel = ({ codeOnly, language, sourceCode, source }) => {
     const [ isOpen, setIsOpen ] = useState(!!codeOnly);
     const [ toast, setToast ] = useState(undefined);
     const handleClose = () => setToast(undefined);
@@ -124,7 +124,7 @@ const ExpandablePanel = ({ codeOnly, sourceCode, source }) => {
                 </ToolbarContent>
             </Toolbar>
             {isOpen && (
-                <CodeHighlight sourceCode={sourceCode} />
+                <CodeHighlight language={language} sourceCode={sourceCode} />
             )}
         </Fragment>
     );
@@ -133,7 +133,8 @@ const ExpandablePanel = ({ codeOnly, sourceCode, source }) => {
 ExpandablePanel.propTypes = {
     sourceCode: PropTypes.string.isRequired,
     source: PropTypes.string.isRequired,
-    codeOnly: PropTypes.bool
+    codeOnly: PropTypes.bool,
+    language: PropTypes.string
 };
 
 export default ExpandablePanel;

@@ -213,6 +213,9 @@ exports[`DetailWrapper DOM should render with data 1`] = `
                 >
                   <h3
                     className="pf-c-title pf-m-xl"
+                    data-ouia-component-id="OUIA-Generated-Title-1"
+                    data-ouia-component-type="PF4/Title"
+                    data-ouia-safe={true}
                   />
                 </div>
                 <div
@@ -287,6 +290,9 @@ exports[`DetailWrapper DOM should render with data 1`] = `
               >
                 <h4
                   className="pf-c-title pf-m-lg"
+                  data-ouia-component-id="OUIA-Generated-Title-2"
+                  data-ouia-component-type="PF4/Title"
+                  data-ouia-safe={true}
                 >
                   Top system issues
                 </h4>
