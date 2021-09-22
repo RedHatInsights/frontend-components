@@ -46,6 +46,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
     onSelect={[Function]}
     onToggle={[Function]}
     onTypeaheadInputChanged={null}
+    ouiaId="some placeholder"
     ouiaSafe={true}
     placeholderText="some placeholder"
     removeSelectionAriaLabel="Remove"

@@ -7,6 +7,7 @@ exports[`Actions - component should render actionObject as first action 1`] = `
   >
     <Button
       onClick={[MockFunction]}
+      ouiaId="Some title"
     >
       Some title
     </Button>
@@ -29,6 +30,7 @@ exports[`Actions - component should render actionObject as first action 1`] = `
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
+      ouiaId="Actions"
       toggle={
         <KebabToggle
           onToggle={[Function]}
@@ -126,6 +128,7 @@ exports[`Actions - component should render actions and overflow 1`] = `
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
+      ouiaId="Actions"
       toggle={
         <KebabToggle
           onToggle={[Function]}
@@ -181,6 +184,7 @@ exports[`Actions - component should render empty actions 1`] = `
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
+      ouiaId="Actions"
       toggle={
         <KebabToggle
           onToggle={[Function]}
@@ -243,6 +247,7 @@ exports[`Actions - component should render just actions 1`] = `
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
+      ouiaId="Actions"
       toggle={
         <KebabToggle
           onToggle={[Function]}
@@ -289,6 +294,7 @@ exports[`Actions - component should render one action 1`] = `
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
+      ouiaId="Actions"
       toggle={
         <KebabToggle
           onToggle={[Function]}
@@ -368,6 +374,7 @@ exports[`Actions - component should render one action and multiple overflow 1`] 
       isOpen={false}
       isPlain={true}
       onSelect={[Function]}
+      ouiaId="Actions"
       toggle={
         <KebabToggle
           onToggle={[Function]}

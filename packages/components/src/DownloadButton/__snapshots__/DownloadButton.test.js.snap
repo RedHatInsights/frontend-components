@@ -17,14 +17,14 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
         <DropdownItem
           component="button"
           onClick={[Function]}
-          ouiaId="download-csv"
+          ouiaId="DownloadCSV"
         >
           Export to CSV
         </DropdownItem>,
         <DropdownItem
           component="button"
           onClick={[Function]}
-          ouiaId="download-json"
+          ouiaId="DownloadJSON"
         >
           Export to JSON
         </DropdownItem>,
@@ -36,10 +36,11 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
     isOpen={true}
     isPlain={true}
     onSelect={[Function]}
+    ouiaId="Export"
     toggle={
       <DropdownToggle
         onToggle={[Function]}
-        ouiaId="toggle"
+        ouiaId="Export"
         toggleIndicator={null}
       >
         <ExportIcon
@@ -59,14 +60,14 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
           <DropdownItem
             component="button"
             onClick={[Function]}
-            ouiaId="download-csv"
+            ouiaId="DownloadCSV"
           >
             Export to CSV
           </DropdownItem>,
           <DropdownItem
             component="button"
             onClick={[Function]}
-            ouiaId="download-json"
+            ouiaId="DownloadJSON"
           >
             Export to JSON
           </DropdownItem>,
@@ -84,7 +85,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
       toggle={
         <DropdownToggle
           onToggle={[Function]}
-          ouiaId="toggle"
+          ouiaId="Export"
           toggleIndicator={null}
         >
           <ExportIcon
@@ -97,7 +98,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
     >
       <div
         className="pf-c-dropdown pf-m-expanded"
-        data-ouia-component-id="OUIA-Generated-Dropdown-1"
+        data-ouia-component-id="Export"
         data-ouia-component-type="PF4/Dropdown"
         data-ouia-safe={true}
       >
@@ -110,12 +111,12 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
           key=".0"
           onEnter={[Function]}
           onToggle={[Function]}
-          ouiaId="toggle"
+          ouiaId="Export"
           parentRef={
             Object {
               "current": <div
                 class="pf-c-dropdown pf-m-expanded"
-                data-ouia-component-id="OUIA-Generated-Dropdown-1"
+                data-ouia-component-id="Export"
                 data-ouia-component-type="PF4/Dropdown"
                 data-ouia-safe="true"
               >
@@ -123,7 +124,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   aria-expanded="true"
                   aria-haspopup="true"
                   class="pf-c-dropdown__toggle pf-m-plain"
-                  data-ouia-component-id="toggle"
+                  data-ouia-component-id="Export"
                   data-ouia-component-type="PF4/DropdownToggle"
                   data-ouia-safe="true"
                   id="pf-dropdown-toggle-id-1"
@@ -156,7 +157,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     <button
                       aria-disabled="false"
                       class="pf-c-dropdown__menu-item"
-                      data-ouia-component-id="download-csv"
+                      data-ouia-component-id="DownloadCSV"
                       data-ouia-component-type="PF4/DropdownItem"
                       data-ouia-safe="true"
                       tabindex="-1"
@@ -171,7 +172,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     <button
                       aria-disabled="false"
                       class="pf-c-dropdown__menu-item"
-                      data-ouia-component-id="download-json"
+                      data-ouia-component-id="DownloadJSON"
                       data-ouia-component-type="PF4/DropdownItem"
                       data-ouia-safe="true"
                       tabindex="-1"
@@ -203,7 +204,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
             aria-haspopup={true}
             bubbleEvent={false}
             className=""
-            data-ouia-component-id="toggle"
+            data-ouia-component-id="Export"
             data-ouia-component-type="PF4/DropdownToggle"
             data-ouia-safe={true}
             getMenuRef={[Function]}
@@ -220,7 +221,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               Object {
                 "current": <div
                   class="pf-c-dropdown pf-m-expanded"
-                  data-ouia-component-id="OUIA-Generated-Dropdown-1"
+                  data-ouia-component-id="Export"
                   data-ouia-component-type="PF4/Dropdown"
                   data-ouia-safe="true"
                 >
@@ -228,7 +229,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     aria-expanded="true"
                     aria-haspopup="true"
                     class="pf-c-dropdown__toggle pf-m-plain"
-                    data-ouia-component-id="toggle"
+                    data-ouia-component-id="Export"
                     data-ouia-component-type="PF4/DropdownToggle"
                     data-ouia-safe="true"
                     id="pf-dropdown-toggle-id-1"
@@ -261,7 +262,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       <button
                         aria-disabled="false"
                         class="pf-c-dropdown__menu-item"
-                        data-ouia-component-id="download-csv"
+                        data-ouia-component-id="DownloadCSV"
                         data-ouia-component-type="PF4/DropdownItem"
                         data-ouia-safe="true"
                         tabindex="-1"
@@ -276,7 +277,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                       <button
                         aria-disabled="false"
                         class="pf-c-dropdown__menu-item"
-                        data-ouia-component-id="download-json"
+                        data-ouia-component-id="DownloadJSON"
                         data-ouia-component-type="PF4/DropdownItem"
                         data-ouia-safe="true"
                         tabindex="-1"
@@ -307,7 +308,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               aria-expanded={true}
               aria-haspopup={true}
               className="pf-c-dropdown__toggle pf-m-plain"
-              data-ouia-component-id="toggle"
+              data-ouia-component-id="Export"
               data-ouia-component-type="PF4/DropdownToggle"
               data-ouia-safe={true}
               disabled={false}
@@ -370,7 +371,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               index={0}
               key=".$download-csv"
               onClick={[Function]}
-              ouiaId="download-csv"
+              ouiaId="DownloadCSV"
             >
               <InternalDropdownItem
                 className=""
@@ -381,7 +382,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "sendRef": [Function],
                   }
                 }
-                data-ouia-component-id="download-csv"
+                data-ouia-component-id="DownloadCSV"
                 data-ouia-component-type="PF4/DropdownItem"
                 data-ouia-safe={true}
                 description={null}
@@ -413,7 +414,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   <button
                     aria-disabled={false}
                     className="pf-c-dropdown__menu-item"
-                    data-ouia-component-id="download-csv"
+                    data-ouia-component-id="DownloadCSV"
                     data-ouia-component-type="PF4/DropdownItem"
                     data-ouia-safe={true}
                     tabIndex={-1}
@@ -429,7 +430,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
               index={1}
               key=".$download-json"
               onClick={[Function]}
-              ouiaId="download-json"
+              ouiaId="DownloadJSON"
             >
               <InternalDropdownItem
                 className=""
@@ -440,7 +441,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                     "sendRef": [Function],
                   }
                 }
-                data-ouia-component-id="download-json"
+                data-ouia-component-id="DownloadJSON"
                 data-ouia-component-type="PF4/DropdownItem"
                 data-ouia-safe={true}
                 description={null}
@@ -472,7 +473,7 @@ exports[`DownloadButton component API clicking should open dropdown 1`] = `
                   <button
                     aria-disabled={false}
                     className="pf-c-dropdown__menu-item"
-                    data-ouia-component-id="download-json"
+                    data-ouia-component-id="DownloadJSON"
                     data-ouia-component-type="PF4/DropdownItem"
                     data-ouia-safe={true}
                     tabIndex={-1}
@@ -554,14 +555,14 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
         <DropdownItem
           component="button"
           onClick={[Function]}
-          ouiaId="download-csv"
+          ouiaId="DownloadCSV"
         >
           Export to CSV
         </DropdownItem>,
         <DropdownItem
           component="button"
           onClick={[Function]}
-          ouiaId="download-json"
+          ouiaId="DownloadJSON"
         >
           Export to JSON
         </DropdownItem>,
@@ -570,10 +571,11 @@ exports[`DownloadButton component should render CSV and JSON by default 1`] = `
     isOpen={false}
     isPlain={true}
     onSelect={[Function]}
+    ouiaId="Export"
     toggle={
       <DropdownToggle
         onToggle={[Function]}
-        ouiaId="toggle"
+        ouiaId="Export"
         toggleIndicator={null}
       >
         <ExportIcon
@@ -595,14 +597,14 @@ exports[`DownloadButton component should render custom items 1`] = `
         <DropdownItem
           component="button"
           onClick={[Function]}
-          ouiaId="download-csv"
+          ouiaId="DownloadCSV"
         >
           Export to CSV
         </DropdownItem>,
         <DropdownItem
           component="button"
           onClick={[Function]}
-          ouiaId="download-json"
+          ouiaId="DownloadJSON"
         >
           Export to JSON
         </DropdownItem>,
@@ -614,10 +616,11 @@ exports[`DownloadButton component should render custom items 1`] = `
     isOpen={false}
     isPlain={true}
     onSelect={[Function]}
+    ouiaId="Export"
     toggle={
       <DropdownToggle
         onToggle={[Function]}
-        ouiaId="toggle"
+        ouiaId="Export"
         toggleIndicator={null}
       >
         <ExportIcon
@@ -640,7 +643,7 @@ exports[`DownloadButton component should render disabled 1`] = `
           component="button"
           isDisabled={true}
           onClick={[Function]}
-          ouiaId="download-csv"
+          ouiaId="DownloadCSV"
         >
           Export to CSV
         </DropdownItem>,
@@ -648,7 +651,7 @@ exports[`DownloadButton component should render disabled 1`] = `
           component="button"
           isDisabled={true}
           onClick={[Function]}
-          ouiaId="download-json"
+          ouiaId="DownloadJSON"
         >
           Export to JSON
         </DropdownItem>,
@@ -660,11 +663,12 @@ exports[`DownloadButton component should render disabled 1`] = `
     isOpen={false}
     isPlain={true}
     onSelect={[Function]}
+    ouiaId="Export"
     toggle={
       <DropdownToggle
         isDisabled={true}
         onToggle={[Function]}
-        ouiaId="toggle"
+        ouiaId="Export"
         toggleIndicator={null}
       >
         <ExportIcon
