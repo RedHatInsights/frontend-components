@@ -40,6 +40,6 @@
         "react-redux": "^7.2.4",
         "sass-loader": "^11.0.1",
         "webpack": "^5.36.2",
-        "webpack-dev-server": "^3.11.2"
+        "webpack-dev-server": "^4.2.1"
     }
 }
