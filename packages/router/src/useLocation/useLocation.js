@@ -5,7 +5,7 @@ import chromeRouterContext from '../chromeRouterContext';
 const useLocation = () => {
     const { removePathPrefix } = useContext(chromeRouterContext);
     const internalLocation = routerUseLocation();
-    let internalRemovePathPrefix = typeof removePathPrefix === 'function' ? removePathPrefix : (path => path);
+    let internalRemovePathPrefix = typeof removePathPrefix === 'function' ? removePathPrefix : path => path;
 
     let location = {
         ...internalLocation,
