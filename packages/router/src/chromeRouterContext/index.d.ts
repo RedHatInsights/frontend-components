@@ -1,7 +1,9 @@
 interface ChromeRouterContext {
     value: {
         basename: string,
-        prependPath: (prefix: string, path: string) => string
+        prependPath: (path?: string) => string,
+        removePathPrefix: (path?: string) => string,
+        prependTo: (to?: string | { pathname: string }) => string | { pathname: string }
     };
   }
   

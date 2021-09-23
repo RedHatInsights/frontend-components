@@ -22,12 +22,17 @@ function prependTo(prefix = '', to = '') {
     return internalTo;
 }
 
+function removePathPrefix(prefix = '', path = '') {
+    return path.replace(new RegExp(`^${prefix}/?`), '/');
+}
+
 const ChromeRouter = ({ basename = '/', children }) => (
     <ChromeRouterProvider
         value={{
             basename,
             prependPath: (...args) => prependPath(basename, ...args),
-            prependTo: (...args) => prependTo(basename, ...args)
+            prependTo: (...args) => prependTo(basename, ...args),
+            removePathPrefix: (...args) => removePathPrefix(basename, ...args)
         }}
     >
         {children}
