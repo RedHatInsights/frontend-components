@@ -5,7 +5,7 @@
     "main": "index.js",
     "private": true,
     "scripts": {
-        "start:dev": "webpack serve --hot --open"
+        "start:dev": "webpack serve --hot --open --history-api-fallback"
     },
     "repository": {
         "type": "git",
@@ -28,7 +28,8 @@
         "@redhat-cloud-services/frontend-components-notifications": "*",
         "@redhat-cloud-services/frontend-components-remediations": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
-        "@redhat-cloud-services/frontend-components-pdf-generator": "*"
+        "@redhat-cloud-services/frontend-components-pdf-generator": "*",
+        "@redhat-cloud-services/router": "*"
     },
     "devDependencies": {
         "babel-loader": "^8.2.2",

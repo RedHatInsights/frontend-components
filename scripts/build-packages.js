@@ -6,6 +6,7 @@ const root = process.cwd();
 
 const foldersBlackList = [ '__snapshots__', '__mocks__' ];
 const sourceFiles = glob.sync(`${root}/src/*/`).filter(item => !foldersBlackList.some(name => item.includes(name))).map(name => name.replace(/\/$/, ''));
+const indexTypings = glob.sync(`${root}/src/index.d.ts`);
 
 async function copyTypings(files, dest) {
     const cmds = [];
@@ -57,6 +58,9 @@ async function generatePackages(files) {
 async function run(files) {
     try {
         await generatePackages(files);
+        if (indexTypings.length === 1) {
+            copyTypings(indexTypings, root);
+        }
     } catch (error) {
         console.error(error);
         process.exit(1);
