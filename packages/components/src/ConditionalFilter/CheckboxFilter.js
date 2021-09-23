@@ -66,6 +66,7 @@ class CheckboxFilter extends Component {
                 selections={ this.calculateSelected() }
                 isOpen={ isExpanded }
                 placeholderText={ placeholder }
+                ouiaId={ placeholder }
             >
                 { items.map(({ value, onClick, label, id, ...item }, key) => (
                     <SelectOption

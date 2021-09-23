@@ -4,6 +4,7 @@ exports[`PrimaryToolbar should render custom className 1`] = `
 <Toolbar
   className="custom-classname ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
+  ouiaId="PrimaryToolbar"
 >
   <ToolbarContent
     isExpanded={false}
@@ -16,6 +17,7 @@ exports[`PrimaryToolbar should render custom id 1`] = `
 <Toolbar
   className=" ins-c-primary-toolbar"
   id="custom-id"
+  ouiaId="PrimaryToolbar"
 >
   <ToolbarContent
     isExpanded={false}
@@ -28,6 +30,7 @@ exports[`PrimaryToolbar should render elements instead of data 1`] = `
 <Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
+  ouiaId="PrimaryToolbar"
 >
   <ToolbarContent
     isExpanded={false}
@@ -85,6 +88,7 @@ exports[`PrimaryToolbar should render no data 1`] = `
 <Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
+  ouiaId="PrimaryToolbar"
 >
   <ToolbarContent
     isExpanded={false}
@@ -97,6 +101,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
 <Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
+  ouiaId="PrimaryToolbar"
 >
   <ToolbarContent
     isExpanded={false}
@@ -120,6 +125,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
             ]
           }
           onSelect={[MockFunction]}
+          ouiaId="BulkSelect"
           ouiaSafe={true}
         />
       </ToolbarItem>
@@ -232,6 +238,7 @@ exports[`PrimaryToolbar should render with data full config 1`] = `
         onPerPageSelect={[MockFunction]}
         onPreviousClick={[Function]}
         onSetPage={[MockFunction]}
+        ouiaId="CompactPagination"
         ouiaSafe={true}
         page={1}
         perPage={10}
@@ -321,6 +328,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
 <Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
+  ouiaId="PrimaryToolbar"
 >
   <ToolbarContent
     isExpanded={false}
@@ -344,6 +352,7 @@ exports[`PrimaryToolbar should render with data only - bulk select 1`] = `
             ]
           }
           onSelect={[MockFunction]}
+          ouiaId="BulkSelect"
           ouiaSafe={true}
         />
       </ToolbarItem>
@@ -356,6 +365,7 @@ exports[`PrimaryToolbar should render with data only - filterConfig 1`] = `
 <Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
+  ouiaId="PrimaryToolbar"
 >
   <ToolbarContent
     isExpanded={false}
@@ -403,6 +413,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
 <Toolbar
   className=" ins-c-primary-toolbar"
   id="ins-primary-data-toolbar"
+  ouiaId="PrimaryToolbar"
 >
   <ToolbarContent
     isExpanded={false}
@@ -426,6 +437,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
             ]
           }
           onSelect={[MockFunction]}
+          ouiaId="BulkSelect"
           ouiaSafe={true}
         />
       </ToolbarItem>
@@ -516,6 +528,7 @@ exports[`PrimaryToolbar should render wrong actionsConfig 1`] = `
         onPerPageSelect={[MockFunction]}
         onPreviousClick={[Function]}
         onSetPage={[MockFunction]}
+        ouiaId="CompactPagination"
         ouiaSafe={true}
         page={1}
         perPage={10}

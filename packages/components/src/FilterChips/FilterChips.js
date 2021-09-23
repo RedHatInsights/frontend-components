@@ -51,7 +51,7 @@ const FilterChips = ({ className, filters, onDelete, deleteTitle, showDeleteButt
                 </ChipGroup>
             )) }
             { (showDeleteButton === true || (showDeleteButton === undefined && filters.length > 0)) &&
-                <Button variant="link" onClick={ (event) => onDelete(event, filters, true) }>{deleteTitle}</Button> }
+                <Button variant="link" ouiaId="ClearFilters" onClick={ (event) => onDelete(event, filters, true) }>{deleteTitle}</Button> }
         </span>
     );
 };

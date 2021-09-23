@@ -53,6 +53,7 @@ class PrimaryToolbar extends Component {
                 className={`${className || ''} ins-c-primary-toolbar`}
                 toggleIsExpanded={toggleIsExpanded}
                 id={id || 'ins-primary-data-toolbar'}
+                ouiaId="PrimaryToolbar"
             >
                 <ToolbarContent>
                     {
@@ -70,6 +71,7 @@ class PrimaryToolbar extends Component {
                                                 variant="plain"
                                                 aria-label={`${expandAll.isAllExpanded ? 'Collapse' : 'Expand'} all`}
                                                 onClick={(e) => expandAll.onClick(e, !expandAll.isAllExpanded)}
+                                                ouiaId="ExpandCollapseAll"
                                             >
                                                 <ToolbarExpandIconWrapper>
                                                     {expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}
@@ -85,7 +87,7 @@ class PrimaryToolbar extends Component {
                                     {
                                         React.isValidElement(bulkSelect) ?
                                             bulkSelect :
-                                            <BulkSelect {...bulkSelect} />
+                                            <BulkSelect ouiaId="BulkSelect" {...bulkSelect} />
                                     }
                                 </ToolbarItem>
                             }
@@ -138,7 +140,7 @@ class PrimaryToolbar extends Component {
                             {
                                 React.isValidElement(pagination) ?
                                     pagination :
-                                    <Pagination isCompact {...pagination} />
+                                    <Pagination isCompact ouiaId="CompactPagination" {...pagination} />
                             }
                         </ToolbarItem>
                     }

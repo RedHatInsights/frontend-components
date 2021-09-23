@@ -120,11 +120,13 @@ class ConditionalFilter extends Component {
                                         className="ins-c-conditional-filter__group"
                                         onSelect={ () => this.dropdownToggle(false) }
                                         isOpen={ isOpen }
+                                        ouiaId="ConditionalFilter"
                                         toggle={
                                             <DropdownToggle
                                                 onToggle={ this.dropdownToggle }
                                                 isDisabled={ isDisabled }
-                                                className={ hideLabel ? 'ins-c-conditional-filter__no-label' : '' } >
+                                                className={ hideLabel ? 'ins-c-conditional-filter__no-label' : '' }
+                                                ouiaId="ConditionalFilter">
                                                 <FilterIcon size="sm" />
                                                 { !hideLabel &&
                                                     <span className="ins-c-conditional-filter__value-selector">
@@ -137,6 +139,7 @@ class ConditionalFilter extends Component {
                                             items.map((item, key) => <DropdownItem
                                                 key={ item.id ? `${item.id}-dropdown` : key }
                                                 component="button"
+                                                ouiaId={ item.label }
                                                 onClick={ e => onChangeCallback(e, item.value || key, item) }
                                                 isHovered={ activeItem.label === item.label }
                                             >

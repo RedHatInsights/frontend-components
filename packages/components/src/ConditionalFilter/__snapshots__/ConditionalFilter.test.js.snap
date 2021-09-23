@@ -14,6 +14,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -21,6 +22,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -28,6 +30,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -35,6 +38,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -42,6 +46,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -49,11 +54,13 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={true}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -117,6 +124,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -124,6 +132,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -131,6 +140,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -138,6 +148,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -145,6 +156,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -152,11 +164,13 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -218,6 +232,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -225,6 +240,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -232,6 +248,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -239,6 +256,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -246,6 +264,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -253,11 +272,13 @@ exports[`ConditionalFilter render should render correctly no value with value un
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -303,6 +324,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -310,6 +332,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -317,6 +340,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -324,6 +348,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -331,6 +356,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -338,11 +364,13 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -400,6 +428,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -407,6 +436,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -414,6 +444,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -421,6 +452,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -428,6 +460,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -435,11 +468,13 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -485,6 +520,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -492,6 +528,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -499,6 +536,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -506,6 +544,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -513,6 +552,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -520,11 +560,13 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -570,6 +612,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -577,6 +620,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -584,6 +628,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -591,6 +636,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -598,6 +644,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -605,11 +652,13 @@ exports[`ConditionalFilter render should render correctly with config - each ite
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -654,6 +703,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -661,6 +711,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -668,6 +719,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -675,6 +727,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -682,6 +735,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -689,11 +743,13 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -758,6 +814,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -765,6 +822,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -772,6 +830,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -779,6 +838,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -786,6 +846,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -793,11 +854,13 @@ exports[`ConditionalFilter render should render correctly with with the active l
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className="ins-c-conditional-filter__no-label"
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"

@@ -41,7 +41,7 @@ visible unless you update it.');
                         <DropdownToggle
                             { ...toggleProps }
                             isDisabled={ isDisabled }
-                            ouiaId={ `${ouiaFinalId}-toggle` }
+                            ouiaId={ ouiaFinalId }
                             splitButtonItems={ [
                                 <Fragment key="split-checkbox">
                                     {
@@ -50,14 +50,14 @@ visible unless you update it.');
                                             aria-label="Select all"
                                             onChange={ onSelect }
                                             checked={ checked }
-                                            ouiaId={ `${ouiaFinalId}-toggle-checkbox` }
+                                            ouiaId={ ouiaFinalId }
                                         /> :
                                             <DropdownToggleCheckbox
                                                 id={ id ? `${id}-toggle-checkbox` : 'toggle-checkbox' }
                                                 aria-label="Select all"
                                                 onChange={ onSelect }
                                                 isChecked={ checked }
-                                                ouiaId={ `${ouiaFinalId}-toggle-checkbox` }
+                                                ouiaId={ ouiaFinalId }
                                             >{ count ? `${count} selected` : '' }</DropdownToggleCheckbox>
                                     }
                                 </Fragment>
