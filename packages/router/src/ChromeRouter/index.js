@@ -1,2 +1,2 @@
-export { default } from './ChromeRouter';
 export * from './ChromeRouter';
+export { default } from './ChromeRouter';
