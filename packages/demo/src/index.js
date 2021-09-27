@@ -1,45 +1,47 @@
-/* eslint-disable rulesdir/disallow-fec-relative-imports */
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-    DownloadButton,
-    Section,
-    Column,
-    Battery,
-    InsightsLabel
-} from '@redhat-cloud-services/frontend-components-pdf-generator';
 
-class DemoApp extends Component {
-    state = {
-        cats: 35,
-        dogs: 55,
-        birds: 10
-    }
+import { Provider, useDispatch } from 'react-redux';
+import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
+import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
+import { notificationsReducer, notificationActions } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/ReducerRegistry';
 
-    render() {
-        const { cats, dogs, birds } = this.state;
-        return (
-            <div className="pf-m-redhat-font">
-                <DownloadButton title={[
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ',
-                    { title: 'Something bold ', fontWeight: 700, style: { color: 'red' } },
-                    'Nullam mauris massa, ullamcorper vitae magna non, laoreet facilisis orci. Maecenas fringilla neque velit, maximus lobortis ante mattis quis. Vestibulum interdum erat et dui lobortis, nec scelerisque leo ultricies. Maecenas vulputate urna in feugiat ornare. Donec nec bibendum metus'
-                ]}
-                asyncFunction={() => Promise.resolve([
-                    <Fragment key="first-section">
-                        <Section>
-                            <Column>
-                                <InsightsLabel variant={3} label="important"/>
-                            </Column>
-                            <Column>
-                                <Battery variant={'critical'} label="important"/>
-                            </Column>
-                        </Section>
-                    </Fragment>
-                ])}/>
+const App = () => {
+    const dispatch = useDispatch();
+    const handleClick = () => {
+        dispatch({ type: 'prd' });
+        dispatch(notificationActions.addNotification({
+            variant: 'success',
+            title: 'foo'
+        }));
+    };
 
-            </div>
-        );
-    }
-}
-ReactDOM.render(<DemoApp />, document.querySelector('.demo-app'));
+    return (
+        <button onClick={handleClick}>Click me</button>
+    );
+};
+
+const registry = new ReducerRegistry({}, [
+    notificationsMiddleware({
+        errorTitleKey: [ 'message' ],
+        errorDescriptionKey: [ 'errors', 'stack' ]
+    })
+]);
+
+registry.register({
+    notifications: notificationsReducer
+});
+
+const store = registry.getStore();
+
+const MyCmp = () => {
+    return (
+        <Provider store={store}>
+            <NotificationPortal />
+            <App />
+        </Provider>
+    );
+};
+
+ReactDOM.render(<MyCmp />, document.querySelector('.demo-app'));
