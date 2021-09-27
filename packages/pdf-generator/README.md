@@ -15,6 +15,12 @@ $ npm i -S @redhat-cloud-services/frontend-components-pdf-generator
 $ yarn add @redhat-cloud-services/frontend-components-pdf-generator
 ```
 
+## Limitations
+
+**This package is exporting each component as well, for local development however you should use relative imports `import { DownloadButton, Chart } from '@redhat-cloud-services/frontend-components-pdf-generator'`**
+
+This limitation is not present in deployed application, it is caused by federated modules not properly loading buffer, which is internal dependency of react-pdf-renderer.
+
 ## Usage
 This component allows multiple pages to be present in one report, just make sure that each page fits the paper size you are going to use.
 ```JSX
