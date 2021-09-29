@@ -83,8 +83,7 @@ module.exports = ({
                     ws: true,
                     onProxyReq: cookieTransform,
                     ...(currTarget === 'PORTAL_BACKEND_MARKER' && { router }),
-                    ...typeof redirect === 'object' ? redirect : {},
-                    ...(agent && { agent })
+                    ...typeof redirect === 'object' ? redirect : {}
                 };
             })
         );
