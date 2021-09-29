@@ -30,7 +30,8 @@ module.exports = ({
     proxyVerbose,
     useCloud,
     target,
-    registry
+    registry,
+    client = {}
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     if (betaEnv) {
@@ -182,6 +183,7 @@ module.exports = ({
             devMiddleware: {
                 writeToDisk: true
             },
+            client,
             ...proxy({
                 useCloud,
                 env,
