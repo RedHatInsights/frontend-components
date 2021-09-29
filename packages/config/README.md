@@ -54,6 +54,7 @@ const { config: webpackConfig, plugins } = config({
 |[useProxy](#useproxy)|`boolean`|Enables webpack proxy.|
 |[proxyURL](#proxyURL)|`string`|URL to proxy Akamai environment requests to.|
 |[localChrome](#localChrome)|`string`|Path to your local chrome build folder.|
+|[keycloakUri](#keycloakUri)|`string`|Uri to inject into proxied chrome assets.|
 |[registry](#registry)|`(({ app, server, compiler, standaloneConfig }) => void)[]`|Express middleware to register.|
 |[routes](#routes)|`object`|An object with additional routes.|
 |[routesPath](#routespath)|`string`|A path to an object with additional routes.|
@@ -81,6 +82,10 @@ INSIGHTS_CHROME=/Users/rvsiansk/insights-project/insights-chrome/build/
 ```
 
 To check what the proxy is doing with your local chrome settings you can set `proxyVerbose: true`.
+
+#### keycloakUri
+
+You can change which SSO URI insights-chrome uses. Useful when proxying to ephemeral environments. This will be overriden if using `standalone` by `standalone: { chrome: { keycloakUri } }`.
 
 #### Registry
 

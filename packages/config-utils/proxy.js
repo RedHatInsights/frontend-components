@@ -30,6 +30,7 @@ module.exports = ({
     proxyVerbose,
     useCloud = false,
     target = '',
+    keycloakUri = '',
     registry = []
 }) => {
     const proxy = [];
@@ -212,7 +213,10 @@ module.exports = ({
             app.enable('strict routing'); // trailing slashes are mean
             let chromePath = localChrome;
             if (standaloneConfig) {
-                chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
+                if (standaloneConfig.chrome) {
+                    chromePath = resolvePath(reposDir, standaloneConfig.chrome.path);
+                    keycloakUri = standaloneConfig.chrome.keycloakUri;
+                }
             } else if (!localChrome && useProxy) {
                 if (typeof defaultServices.chrome === 'function') {
                     defaultServices.chrome = defaultServices.chrome({});
@@ -229,7 +233,7 @@ module.exports = ({
                 registerChrome({
                     app,
                     chromePath,
-                    keycloakUri: (standaloneConfig && standaloneConfig.chrome) ? standaloneConfig.chrome.keycloakUri : null,
+                    keycloakUri,
                     https: Boolean(server.options.https),
                     proxyVerbose
                 });
