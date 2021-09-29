@@ -39,8 +39,10 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
     // Unfortunately we have to alter the contents of ALL text/html responses like akamai
     // This means modifying the response object directly.
     app.use((req, res, next) => {
-        const ext = path.extname(req.url);
+        const ext = path.extname(req.url.replace(/\?.*/, ''));
         if (req.method === 'GET' && ['', '.hmt', '.html'].includes(ext)) {
+            // We can't handle encoded responses without a big gzip/zip/br dependency
+            delete req.headers['accept-encoding'];
             function writeOrEnd(chunk, encoding, callback, oldFn) {
                 const ctype = res.getHeader('Content-Type');
                 if (ctype && ctype.includes('text/html') && !res.headersSent && !res.writableEnded) {
@@ -48,18 +50,23 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
                         chunk = chunk.toString();
                     }
                     if (typeof chunk === 'string') {
+                        let hasEsi = false;
                         chunk = chunk.replace(esiRegex, (_match, file) => {
                             file = file.split('/').pop();
                             const snippet = path.resolve(chromePath, 'snippets', file);
                             if (proxyVerbose) {
                                 console.log('esi', req.url, file);
                             }
+                            hasEsi = true;
                             return fs.readFileSync(snippet);
                         });
-                        res.setHeader('Content-Length', chunk.length);
+                        // Assumption: the response won't be chunked.
+                        if (hasEsi) {
+                            res.setHeader('Content-Length', chunk.length);
+                        }
                     }
                 }
-                oldFn(chunk, encoding, callback);
+                return oldFn(chunk, encoding, callback);
             };
             // https://nodejs.org/api/http.html#http_class_http_serverresponse
             const oldWrite = res.write.bind(res);

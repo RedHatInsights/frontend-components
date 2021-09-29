@@ -19,10 +19,3 @@ export const typeMapper = {
     custom: Fragment,
     group: Group
 };
-
-export const groupType = {
-    checkbox: 'checkbox',
-    radio: 'radio',
-    plain: 'plain'
-};
-

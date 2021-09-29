@@ -20,7 +20,7 @@ exports[`Shield component should render where impact value is 1 1`] = `
   <Tooltip
     content={
       <div>
-        This rating is given to all other issues that have a security         impact. These are the types of vulnerabilities that are believed to         require unlikely circumstances to be able to be exploited, or where         a successful exploit would give minimal consequences. 
+        This rating is given to all other issues that have a security         impact. These are the types of vulnerabilities that are believed to         require unlikely circumstances to be able to be exploited, or where         a successful exploit would give minimal consequences.
       </div>
     }
     position="bottom"
@@ -44,7 +44,7 @@ exports[`Shield component should render where impact value is 2 1`] = `
   <Tooltip
     content={
       <div>
-        This rating is given to flaws that may be more difficult to exploit         but could still lead to some compromise of the confidentiality,         integrity, or availability of resources, under certain circumstances.         These are the types of vulnerabilities that could have had a Critical         impact or Important impact but are less easily exploited based on a         technical evaluation of the flaw, or affect unlikely configurations. 
+        This rating is given to flaws that may be more difficult to exploit         but could still lead to some compromise of the confidentiality,         integrity, or availability of resources, under certain circumstances.         These are the types of vulnerabilities that could have had a Critical         impact or Important impact but are less easily exploited based on a         technical evaluation of the flaw, or affect unlikely configurations.
       </div>
     }
     position="bottom"
@@ -140,7 +140,7 @@ exports[`Shield component should render where impact value is Low 1`] = `
   <Tooltip
     content={
       <div>
-        This rating is given to all other issues that have a security         impact. These are the types of vulnerabilities that are believed to         require unlikely circumstances to be able to be exploited, or where         a successful exploit would give minimal consequences. 
+        This rating is given to all other issues that have a security         impact. These are the types of vulnerabilities that are believed to         require unlikely circumstances to be able to be exploited, or where         a successful exploit would give minimal consequences.
       </div>
     }
     position="bottom"
@@ -162,7 +162,11 @@ exports[`Shield component should render where impact value is Low 1`] = `
 exports[`Shield component should render where impact value is NonExist 1`] = `
 <span>
   <Tooltip
-    content={<div />}
+    content={
+      <div>
+        Red Hat Product Security has determined that this vulnerability does         not impact Red Hat products.
+      </div>
+    }
     position="bottom"
   >
     <span>
@@ -182,7 +186,11 @@ exports[`Shield component should render where impact value is NonExist 1`] = `
 exports[`Shield component should render where impact value is empty string 1`] = `
 <span>
   <Tooltip
-    content={<div />}
+    content={
+      <div>
+        Red Hat Product Security has determined that this vulnerability does         not impact Red Hat products.
+      </div>
+    }
     position="bottom"
   >
     <span>
@@ -202,7 +210,11 @@ exports[`Shield component should render where impact value is empty string 1`] =
 exports[`Shield component should render where impact value is undefined 1`] = `
 <span>
   <Tooltip
-    content={<div />}
+    content={
+      <div>
+        Red Hat Product Security has determined that this vulnerability does         not impact Red Hat products.
+      </div>
+    }
     position="bottom"
   >
     <span>
@@ -224,7 +236,7 @@ exports[`Shield component should render with label 1`] = `
   <Tooltip
     content={
       <div>
-        This rating is given to flaws that may be more difficult to exploit         but could still lead to some compromise of the confidentiality,         integrity, or availability of resources, under certain circumstances.         These are the types of vulnerabilities that could have had a Critical         impact or Important impact but are less easily exploited based on a         technical evaluation of the flaw, or affect unlikely configurations. 
+        This rating is given to flaws that may be more difficult to exploit         but could still lead to some compromise of the confidentiality,         integrity, or availability of resources, under certain circumstances.         These are the types of vulnerabilities that could have had a Critical         impact or Important impact but are less easily exploited based on a         technical evaluation of the flaw, or affect unlikely configurations.
       </div>
     }
     position="bottom"
@@ -247,7 +259,11 @@ exports[`Shield component should render with label 1`] = `
 exports[`Shield component should render without props 1`] = `
 <span>
   <Tooltip
-    content={<div />}
+    content={
+      <div>
+        Red Hat Product Security has determined that this vulnerability does         not impact Red Hat products.
+      </div>
+    }
     position="bottom"
   >
     <span>

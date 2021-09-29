@@ -22,7 +22,7 @@ module.exports = ({
             new SourceMapDevToolPlugin({
                 test: 'js',
                 exclude: /(node_modules|bower_components)/i,
-                filename: 'sourcemaps/[name].[hash].js.map'
+                filename: 'sourcemaps/[name].[contenthash].js.map'
             })
         ]
         : []),

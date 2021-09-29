@@ -12,6 +12,9 @@ exports[`CollectionCard should not render hasClient 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-4"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Collection information
@@ -106,6 +109,9 @@ exports[`CollectionCard should not render hasInsightsId 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-7"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Collection information
@@ -202,6 +208,9 @@ exports[`CollectionCard should not render hasLastCheckIn 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-5"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Collection information
@@ -298,6 +307,9 @@ exports[`CollectionCard should not render hasMachineId 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-9"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Collection information
@@ -394,6 +406,9 @@ exports[`CollectionCard should not render hasRegistered 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-6"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Collection information
@@ -490,6 +505,9 @@ exports[`CollectionCard should not render hasReporter 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-8"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Collection information
@@ -586,6 +604,9 @@ exports[`CollectionCard should render correctly - no data 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-1"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Collection information
@@ -716,6 +737,9 @@ exports[`CollectionCard should render correctly with data 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-2"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Collection information
@@ -824,6 +848,9 @@ exports[`CollectionCard should render extra 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-10"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         Collection information

@@ -44,7 +44,8 @@ class Actions extends Component {
                     <ToolbarItem className="ins-c-primary-toolbar__first-action pf-m-spacer-sm">
                         {
                             firstAction.label ?
-                                <Button { ...firstAction.props } onClick={ firstAction.onClick || (firstAction.props && firstAction.props.onClick) || undefined } >
+                                <Button ouiaId={ `${firstAction.label}` } { ...firstAction.props }
+                                    onClick={ firstAction.onClick || (firstAction.props && firstAction.props.onClick) || undefined } >
                                     { firstAction.label }
                                 </Button> :
                                 firstAction
@@ -70,6 +71,7 @@ class Actions extends Component {
                                 onSelect && onSelect(...props);
                                 this.toggleOpen(false);
                             } }
+                            ouiaId="Actions"
                             toggle={ <KebabToggle { ...kebabToggleProps } onToggle={ (isOpen) => this.toggleOpen(isOpen) } /> }
                             dropdownItems={ [
                                 ...firstAction ? [

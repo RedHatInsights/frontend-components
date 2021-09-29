@@ -108,6 +108,7 @@ exports[`FilterChips component should render 1`] = `
   </ChipGroup>
   <Button
     onClick={[Function]}
+    ouiaId="ClearFilters"
     variant="link"
   >
     Clear filters
@@ -217,6 +218,7 @@ exports[`FilterChips component should render group delete 1`] = `
   </ChipGroup>
   <Button
     onClick={[Function]}
+    ouiaId="ClearFilters"
     variant="link"
   >
     Clear filters
@@ -326,6 +328,7 @@ exports[`FilterChips component should render with custom delete message 1`] = `
   </ChipGroup>
   <Button
     onClick={[Function]}
+    ouiaId="ClearFilters"
     variant="link"
   >
     <div>

@@ -28,6 +28,7 @@ class PrimaryToolbar extends Component {
             children,
             exportConfig,
             expandAll,
+            useMobileLayout,
             ...props
         } = this.props;
         const overflowActions = [
@@ -52,6 +53,7 @@ class PrimaryToolbar extends Component {
                 className={`${className || ''} ins-c-primary-toolbar`}
                 toggleIsExpanded={toggleIsExpanded}
                 id={id || 'ins-primary-data-toolbar'}
+                ouiaId="PrimaryToolbar"
             >
                 <ToolbarContent>
                     {
@@ -69,6 +71,7 @@ class PrimaryToolbar extends Component {
                                                 variant="plain"
                                                 aria-label={`${expandAll.isAllExpanded ? 'Collapse' : 'Expand'} all`}
                                                 onClick={(e) => expandAll.onClick(e, !expandAll.isAllExpanded)}
+                                                ouiaId="ExpandCollapseAll"
                                             >
                                                 <ToolbarExpandIconWrapper>
                                                     {expandAll.isAllExpanded ? <AngleDownIcon /> : <AngleRightIcon />}
@@ -84,7 +87,7 @@ class PrimaryToolbar extends Component {
                                     {
                                         React.isValidElement(bulkSelect) ?
                                             bulkSelect :
-                                            <BulkSelect {...bulkSelect} />
+                                            <BulkSelect ouiaId="BulkSelect" {...bulkSelect} />
                                     }
                                 </ToolbarItem>
                             }
@@ -94,7 +97,7 @@ class PrimaryToolbar extends Component {
                                     {
                                         React.isValidElement(filterConfig) ?
                                             filterConfig :
-                                            <ConditionalFilter {...filterConfig} />
+                                            <ConditionalFilter useMobileLayout={useMobileLayout} {...filterConfig} />
                                     }
                                 </ToolbarItem>
                             }
@@ -137,7 +140,7 @@ class PrimaryToolbar extends Component {
                             {
                                 React.isValidElement(pagination) ?
                                     pagination :
-                                    <Pagination isCompact {...pagination} />
+                                    <Pagination isCompact ouiaId="CompactPagination" {...pagination} />
                             }
                         </ToolbarItem>
                     }
@@ -187,11 +190,9 @@ PrimaryToolbar.propTypes = {
             onClick: PropTypes.func,
             isAllExpanded: PropTypes.bool
         })
-    ])
-};
-
-PrimaryToolbar.defaultProps = {
-    toggleIsExpanded: Function
+    ]),
+    /** Use PF [toolbar toggle component for conditional filter](https://www.patternfly.org/v4/components/toolbar/react/component-managed-toggle-groups/) */
+    useMobileLayout: PropTypes.bool
 };
 
 export default PrimaryToolbar;

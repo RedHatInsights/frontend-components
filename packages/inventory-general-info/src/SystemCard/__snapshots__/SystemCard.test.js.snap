@@ -12,6 +12,9 @@ exports[`SystemCard should not render hasAnsibleHostname 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-16"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -210,6 +213,9 @@ exports[`SystemCard should not render hasCPUFlags 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-21"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -451,6 +457,9 @@ exports[`SystemCard should not render hasCPUs 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-18"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -692,6 +701,9 @@ exports[`SystemCard should not render hasCores 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-20"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -933,6 +945,9 @@ exports[`SystemCard should not render hasDisplayName 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-15"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -1131,6 +1146,9 @@ exports[`SystemCard should not render hasHostName 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-14"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -1347,6 +1365,9 @@ exports[`SystemCard should not render hasRAM 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-22"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -1588,6 +1609,9 @@ exports[`SystemCard should not render hasSAP 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-17"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -1829,6 +1853,9 @@ exports[`SystemCard should not render hasSockets 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-19"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -2070,6 +2097,9 @@ exports[`SystemCard should render correctly - no data 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-1"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -2323,6 +2353,9 @@ exports[`SystemCard should render correctly with SAP IDS 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-3"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -2580,6 +2613,9 @@ exports[`SystemCard should render correctly with data 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-2"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -2833,6 +2869,9 @@ exports[`SystemCard should render correctly with rhsm facts 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-4"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties
@@ -3086,6 +3125,9 @@ exports[`SystemCard should render extra 1`] = `
     >
       <h1
         class=""
+        data-ouia-component-id="OUIA-Generated-Text-23"
+        data-ouia-component-type="PF4/Text"
+        data-ouia-safe="true"
         data-pf-content="true"
       >
         System properties

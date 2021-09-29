@@ -8,12 +8,13 @@ const defaultEntitlements = {
     openshift: { is_entitled: true },
     hybrid: { is_entitled: true },
     migrations: { is_entitled: true },
-    ansible: { is_entitled: true }
+    ansible: { is_entitled: true },
+    cost_management: { is_entitled: true }
 };
 
 function cookieTransform(proxyReq, req, _res, { entitlements = defaultEntitlements, user, internal, identity: customIdentity }) {
     const cookie = req.headers.cookie;
-    const match = cookie && cookie.match(/cs_jwt=([^;]+);/);
+    const match = cookie && cookie.match(/cs_jwt=([^;]+)/);
     if (match) {
         const cs_jwt = match[1];
         const { payload } = jws.decode(cs_jwt);

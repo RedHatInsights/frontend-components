@@ -10,6 +10,7 @@ exports[`Text component render should render correctly - isDisabled 1`] = `
     isDisabled={true}
     onChange={[Function]}
     onKeyDown={[Function]}
+    ouiaId="ConditionalFilter"
     value=""
     widget-type="InsightsInput"
   />
@@ -32,6 +33,7 @@ exports[`Text component render should render correctly 1`] = `
     isDisabled={false}
     onChange={[Function]}
     onKeyDown={[Function]}
+    ouiaId="ConditionalFilter"
     value=""
     widget-type="InsightsInput"
   />
@@ -54,6 +56,7 @@ exports[`Text component render should render placeholder 1`] = `
     isDisabled={false}
     onChange={[Function]}
     onKeyDown={[Function]}
+    ouiaId="ConditionalFilter"
     placeholder="some-placeholder"
     value=""
     widget-type="InsightsInput"
@@ -77,6 +80,7 @@ exports[`Text component render should render value 1`] = `
     isDisabled={false}
     onChange={[Function]}
     onKeyDown={[Function]}
+    ouiaId="ConditionalFilter"
     value=""
     widget-type="InsightsInput"
   />

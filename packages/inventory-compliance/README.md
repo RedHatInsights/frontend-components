@@ -4,6 +4,26 @@
 
 This package exports components to show compliance detail page, it has dependency on graphql to query server.
 
+## !!!This package is deprecated!!!
+
+Do not use this package anymore, if you want to use compliance detail you can use federated modules provided by compliance team
+
+```JSX
+import React from 'react';
+import { useStore } from 'react-redux';
+import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
+
+const ComplianceTab = () => {
+    const store = useStore();
+    return <AsyncComponent
+        appName="compliance"
+        module="./SystemDetail"
+        store={store}
+    />;
+};
+
+export default ComplianceTab;
+```
 ## Installation
 With NPM
 ```bash

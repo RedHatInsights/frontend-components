@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-const AsyncInventory = React.lazy(() => import('./AsyncInventory'));
 import { ScalprumComponent } from '@scalprum/react-core';
 import { useHistory } from 'react-router-dom';
 import { useStore } from 'react-redux';
 import { Bullseye, Spinner } from '@patternfly/react-core';
+import InventoryLoadError from './InventoryLoadError';
 
 const BaseAppInfo = (props) => {
     const history = useHistory();
@@ -14,10 +14,10 @@ const BaseAppInfo = (props) => {
             <ScalprumComponent
                 history={history}
                 store={store}
-                appName="chrome"
+                appName="inventory"
                 module="./AppInfo"
-                scope="chrome"
-                ErrorComponent={<AsyncInventory component="AppInfo" {...props} />}
+                scope="inventory"
+                ErrorComponent={<InventoryLoadError component="InventoryDetailHead" history={history} store={store} {...props} />}
                 ref={props.innerRef}
                 {...props}
             />

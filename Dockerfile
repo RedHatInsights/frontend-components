@@ -3,8 +3,8 @@ USER root
 WORKDIR /docs
 COPY . .
 WORKDIR /docs/packages/docs
-RUN mv docker.package.json package.json
 RUN npm i
+RUN npx next telemetry disable
 RUN npm run build
 
 EXPOSE 3000

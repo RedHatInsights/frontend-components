@@ -46,6 +46,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
     onSelect={[Function]}
     onToggle={[Function]}
     onTypeaheadInputChanged={null}
+    ouiaId="some placeholder"
     ouiaSafe={true}
     placeholderText="some placeholder"
     removeSelectionAriaLabel="Remove"
@@ -66,6 +67,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -75,6 +77,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="some-value"
     >
       <Radio
@@ -101,6 +104,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -110,6 +114,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="another-value"
     >
       <Radio
@@ -132,6 +137,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -141,6 +147,7 @@ exports[`Radio render should render correctly placeholder 1`] = `
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="2"
     >
       <Radio
@@ -212,6 +219,7 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -221,6 +229,7 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="some-value"
     >
       <Radio
@@ -247,6 +256,7 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -256,6 +266,7 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="another-value"
     >
       <Radio
@@ -278,6 +289,7 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -287,6 +299,7 @@ exports[`Radio render should render correctly with items - isDisabled 1`] = `
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="2"
     >
       <Radio
@@ -358,6 +371,7 @@ exports[`Radio render should render correctly with items 1`] = `
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -367,6 +381,7 @@ exports[`Radio render should render correctly with items 1`] = `
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="some-value"
     >
       <Radio
@@ -393,6 +408,7 @@ exports[`Radio render should render correctly with items 1`] = `
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -402,6 +418,7 @@ exports[`Radio render should render correctly with items 1`] = `
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="another-value"
     >
       <Radio
@@ -424,6 +441,7 @@ exports[`Radio render should render correctly with items 1`] = `
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -433,6 +451,7 @@ exports[`Radio render should render correctly with items 1`] = `
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="2"
     >
       <Radio
@@ -504,6 +523,7 @@ exports[`Radio render should render correctly with items and default value 1`] =
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -513,6 +533,7 @@ exports[`Radio render should render correctly with items and default value 1`] =
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="some-value"
     >
       <Radio
@@ -539,6 +560,7 @@ exports[`Radio render should render correctly with items and default value 1`] =
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -548,6 +570,7 @@ exports[`Radio render should render correctly with items and default value 1`] =
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="another-value"
     >
       <Radio
@@ -570,6 +593,7 @@ exports[`Radio render should render correctly with items and default value 1`] =
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -579,6 +603,7 @@ exports[`Radio render should render correctly with items and default value 1`] =
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="2"
     >
       <Radio
@@ -650,6 +675,7 @@ exports[`Radio render should render correctly with items and selected value 1`] 
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -659,6 +685,7 @@ exports[`Radio render should render correctly with items and selected value 1`] 
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="some-value"
     >
       <Radio
@@ -685,6 +712,7 @@ exports[`Radio render should render correctly with items and selected value 1`] 
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -694,6 +722,7 @@ exports[`Radio render should render correctly with items and selected value 1`] 
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="another-value"
     >
       <Radio
@@ -716,6 +745,7 @@ exports[`Radio render should render correctly with items and selected value 1`] 
       isChecked={false}
       isDisabled={false}
       isFavorite={null}
+      isLastOptionBeforeFooter={[Function]}
       isLoad={false}
       isLoading={false}
       isNoResultsOption={false}
@@ -725,6 +755,7 @@ exports[`Radio render should render correctly with items and selected value 1`] 
       keyHandler={[Function]}
       onClick={[Function]}
       sendRef={[Function]}
+      setViewMoreNextIndex={[Function]}
       value="2"
     >
       <Radio

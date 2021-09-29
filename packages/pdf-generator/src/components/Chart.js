@@ -77,14 +77,21 @@ const calcRoundPerc = (data) => {
 
 class Chart extends React.Component {
     getChartData = (currChart) => {
-        const { data, chartType, colorSchema, ...props } = this.props;
-        const newData = calcRoundPerc(data);
+        let { data } = this.props;
+        const { chartType, colorSchema, ...props } = this.props;
+
+        if (chartType !== 'bar') {
+            let roundPercData = calcRoundPerc(data);
+            // fix sorting caused by rounding function, revert to the initial order
+            data = data.map(({ x, y, ...rest }) => ({ x, y: roundPercData.find(item => item.x === x).y, ...rest }));
+        }
+
         const Chart = currChart.component;
         const el = document.createElement('div');
         document.body.appendChild(el);
         el.style.display = 'none';
         ReactDOM.render(
-            <Chart data={newData.sort((a, b) => a.y < b.y ? 1 : -1) } {...currChart.chartProps} { ...props } />,
+            <Chart data={data} {...currChart.chartProps} { ...props } />,
             el
         );
 

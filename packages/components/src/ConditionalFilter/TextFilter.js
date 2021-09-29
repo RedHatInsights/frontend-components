@@ -32,6 +32,7 @@ class Text extends Component {
                     widget-type="InsightsInput"
                     onKeyDown={ e => e.key === 'Enter' && onSubmit(e, value || stateValue) }
                     data-ouia-component-type="PF4/TextInput"
+                    ouiaId="ConditionalFilter"
                 />
                 <Icon size="sm" className="ins-c-search-icon" />
             </Fragment>
