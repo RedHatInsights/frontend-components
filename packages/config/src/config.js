@@ -158,12 +158,14 @@ module.exports = ({
             }
         },
         devServer: {
-            contentBase: `${rootFolder || ''}/dist`,
+            static: {
+                directory: `${rootFolder || ''}/dist`
+            },
             port: devServerPort,
             https: https || Boolean(useProxy),
             host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
             hot: false, // Use livereload instead of HMR which is spotty with federated modules
-            disableHostCheck: true,
+            allowedHosts: 'all',
             // https://github.com/bripkens/connect-history-api-fallback
             historyApiFallback: {
                 // We should really implement the same logic as cloud-services-config
@@ -177,7 +179,9 @@ module.exports = ({
                 ],
                 verbose: Boolean(proxyVerbose)
             },
-            writeToDisk: true,
+            devMiddleware: {
+                writeToDisk: true
+            },
             ...proxy({
                 useCloud,
                 env,
