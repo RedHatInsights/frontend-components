@@ -1,7 +1,7 @@
 {
-    "name": "@redhat-cloud-services/router",
+    "name": "@redhat-cloud-services/frontend-components-router",
     "version": "0.0.1",
-    "description": "Routercomponents for Red Hat Cloud Services project.",
+    "description": "Router components for Red Hat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
     "types": "index.d.ts",
