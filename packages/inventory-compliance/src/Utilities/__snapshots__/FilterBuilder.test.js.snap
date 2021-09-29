@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`buildFilterString filter building returns a base filter for name when searching 1`] = `"name ~ Name"`;
-
-exports[`buildFilterString filter building returns a filter for compliant 1`] = `"compliant = true"`;
-
-exports[`buildFilterString filter building returns a filter for scores 1`] = `"compliance_score >= 0 and compliance_score <= 49 or compliance_score >= 50 and compliance_score <= 69"`;
-
-exports[`buildFilterString returns a filterstring 1`] = `"name ~ Name and compliant = true"`;

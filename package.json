@@ -15,7 +15,6 @@
         "packages/docs",
         "packages/eslint-config",
         "packages/inventory",
-        "packages/inventory-compliance",
         "packages/inventory-general-info",
         "packages/inventory-insights",
         "packages/notifications",
