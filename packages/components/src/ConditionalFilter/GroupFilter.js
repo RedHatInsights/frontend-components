@@ -79,9 +79,7 @@ const Group = ({
     const onToggleClick = ev => {
         ev.stopPropagation(); // Stop handleClickOutside from handling
         ev.persist();
-        if (!(isOpen && toggleRef.current.contains(ev.target))) {
-            setIsOpen(!isOpen);
-        }
+        setIsOpen(!isOpen);
     };
 
     const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelection(selected));
