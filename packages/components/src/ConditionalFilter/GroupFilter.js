@@ -199,10 +199,7 @@ const Group = ({
                             itemId="loader"
                             className="ins-c-menu__show--more"
                             {...showMoreOptions}
-                            onClick={(e) => {
-                                setIsOpen(false);
-                                onShowMore(e);
-                            }}
+                            onClick={(e) => onShowMore(e)}
                         >
                             {showMoreTitle}
                         </MenuItem>
