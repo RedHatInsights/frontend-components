@@ -71,14 +71,16 @@ describe('should create dummy config with no options', () => {
 
     test('devServer', () => {
         expect(devServer).toEqual({
-            before: expect.any(Function),
+            onBeforeSetupMiddleware: expect.any(Function),
             onListening: expect.any(Function),
-            contentBase: '/dist',
+            static: {
+                directory: '/dist'
+            },
             https: false,
             host: '0.0.0.0',
             port: 8002,
             hot: false,
-            disableHostCheck: true,
+            allowedHosts: 'all',
             historyApiFallback: {
                 rewrites: [
                     { from: /^\/api/, to: '/404.html' },
@@ -86,7 +88,10 @@ describe('should create dummy config with no options', () => {
                 ],
                 verbose: false
             },
-            writeToDisk: true
+            client: {},
+            devMiddleware: {
+                writeToDisk: true
+            }
         });
     });
 });
@@ -101,7 +106,7 @@ describe('rootFolder', () => {
     });
 
     test('devServer', () => {
-        expect(devServer.contentBase).toBe('/some/dist');
+        expect(devServer.static.directory).toBe('/some/dist');
     });
 });
 

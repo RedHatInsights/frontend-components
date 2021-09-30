@@ -209,7 +209,7 @@ module.exports = ({
                 console.log('\u001b[0m');
             }
         },
-        before(app, server, compiler) {
+        onBeforeSetupMiddleware({ app, compiler, options }) {
             app.enable('strict routing'); // trailing slashes are mean
             let chromePath = localChrome;
             if (standaloneConfig) {
@@ -234,14 +234,14 @@ module.exports = ({
                     app,
                     chromePath,
                     keycloakUri,
-                    https: Boolean(server.options.https),
+                    https: Boolean(options.https),
                     proxyVerbose
                 });
             }
 
             registry.forEach(cb => cb({
                 app,
-                server,
+                options,
                 compiler,
                 config: standaloneConfig
             }));
