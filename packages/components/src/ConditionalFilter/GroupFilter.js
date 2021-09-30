@@ -180,7 +180,7 @@ const Group = ({
     )} popper={(
         <Menu
             ref={menuRef}
-            className={classNames(className, { 'pf-m-expanded': isOpen })}
+            className={classNames('ins-c-menu__scrollable', className, { 'pf-m-expanded': isOpen })}
         >
             <MenuContent>
                 <MenuList>
