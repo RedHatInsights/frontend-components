@@ -71,7 +71,7 @@
 
 .pf-c-menu {
     &.ins-c-menu__scrollable {
-        height: 416px;
+        max-height: 416px;
         overflow-y: auto;
     }
     .ins-c-menu__show--more {
