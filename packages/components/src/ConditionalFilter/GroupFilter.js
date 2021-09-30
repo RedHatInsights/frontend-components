@@ -29,7 +29,8 @@ const Group = ({
     groups = [],
     onChange,
     selected,
-    isFilterable
+    isFilterable,
+    containerRef
 }) => {
     const [ stateSelected, setStateSelected ] = useState({});
     const [ searchString, setSearchString ] = useState('');
@@ -158,7 +159,7 @@ const Group = ({
         }
     </MenuItem>));
 
-    return <Popper trigger={(
+    return <Popper appendTo={containerRef} trigger={(
         <MenuToggle
             ref={toggleRef}
             onClick={onToggleClick}
@@ -248,7 +249,8 @@ Group.propTypes = {
         })
     ),
     onChange: PropTypes.func.isRequired,
-    selectedTags: PropTypes.shape({})
+    selectedTags: PropTypes.shape({}),
+    containerRef: PropTypes.element
 };
 
 export default Group;
