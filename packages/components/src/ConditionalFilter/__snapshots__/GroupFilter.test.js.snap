@@ -5,7 +5,7 @@ exports[`Group - component render should render correctly 1`] = `
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
@@ -31,7 +31,7 @@ exports[`Group - component render should render correctly placeholder 1`] = `
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
@@ -163,7 +163,7 @@ exports[`Group - component render should render correctly with items - isDisable
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
@@ -293,7 +293,7 @@ exports[`Group - component render should render correctly with items 1`] = `
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
@@ -423,7 +423,7 @@ exports[`Group - component render should render correctly with items and default
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
@@ -553,7 +553,7 @@ exports[`Group - component render should render correctly with items and selecte
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
@@ -683,7 +683,7 @@ exports[`Group - component render show more should render correctly with items a
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
@@ -819,7 +819,7 @@ exports[`Group - component render show more should render correctly with items a
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
@@ -952,7 +952,7 @@ exports[`Group - component render show more should render correctly with items a
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
@@ -1083,7 +1083,7 @@ exports[`Group - component render show more should render correctly with items a
   isVisible={false}
   popper={
     <Menu
-      className=""
+      className="ins-c-menu__scrollable"
     >
       <MenuContent>
         <MenuList>
