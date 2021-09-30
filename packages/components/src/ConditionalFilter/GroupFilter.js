@@ -29,7 +29,8 @@ const Group = ({
     groups = [],
     onChange,
     selected,
-    isFilterable
+    isFilterable,
+    containerRef
 }) => {
     const [ stateSelected, setStateSelected ] = useState({});
     const [ searchString, setSearchString ] = useState('');
@@ -158,7 +159,7 @@ const Group = ({
         }
     </MenuItem>));
 
-    return <Popper trigger={(
+    return <Popper appendTo={containerRef} trigger={(
         <MenuToggle
             ref={toggleRef}
             onClick={onToggleClick}
@@ -179,7 +180,7 @@ const Group = ({
     )} popper={(
         <Menu
             ref={menuRef}
-            className={classNames(className, { 'pf-m-expanded': isOpen })}
+            className={classNames('ins-c-menu__scrollable', className, { 'pf-m-expanded': isOpen })}
         >
             <MenuContent>
                 <MenuList>
@@ -198,10 +199,7 @@ const Group = ({
                             itemId="loader"
                             className="ins-c-menu__show--more"
                             {...showMoreOptions}
-                            onClick={(e) => {
-                                setIsOpen(false);
-                                onShowMore(e);
-                            }}
+                            onClick={(e) => onShowMore(e)}
                         >
                             {showMoreTitle}
                         </MenuItem>
@@ -248,7 +246,8 @@ Group.propTypes = {
         })
     ),
     onChange: PropTypes.func.isRequired,
-    selectedTags: PropTypes.shape({})
+    selectedTags: PropTypes.shape({}),
+    containerRef: PropTypes.element
 };
 
 export default Group;

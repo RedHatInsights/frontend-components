@@ -57,7 +57,7 @@ class ConditionalFilter extends Component {
     }
 
     render() {
-        const { items, value, onChange, placeholder, hideLabel, isDisabled, ...props } = this.props;
+        const { items, value, onChange, placeholder, hideLabel, isDisabled, containerRef, ...props } = this.props;
         const { isOpen, stateValue, isMobile } = this.state;
         const currentValue = onChange ? value : stateValue;
         const activeItem = items && items.length && (
@@ -160,6 +160,7 @@ class ConditionalFilter extends Component {
                                             }
                                                 }
                                                 { ...activeItem.filterValues }
+                                                containerRef={containerRef}
                                             />
                                         </SplitItem>
                                     }
