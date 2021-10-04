@@ -19,6 +19,7 @@ class ConditionalFilter extends Component {
 
         super(props);
         this.breakpointConstant = parseInt(globalBreakpointMd.value.replace('px', ''));
+        this.containerRef = React.createRef();
         this.state = {
             isOpen: false,
             stateValue: undefined,
@@ -57,7 +58,7 @@ class ConditionalFilter extends Component {
     }
 
     render() {
-        const { items, value, onChange, placeholder, hideLabel, isDisabled, containerRef, ...props } = this.props;
+        const { items, value, onChange, placeholder, hideLabel, isDisabled, ...props } = this.props;
         const { isOpen, stateValue, isMobile } = this.state;
         const currentValue = onChange ? value : stateValue;
         const activeItem = items && items.length && (
@@ -151,17 +152,18 @@ class ConditionalFilter extends Component {
                                     }
                                     {
                                         ActiveComponent && <SplitItem isFilled>
-                                            <ActiveComponent
-                                                {
-                                                    ...activeItem.type !== conditionalFilterType.custom &&
-                                            {
-                                                placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
-                                                id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
-                                            }
-                                                }
-                                                { ...activeItem.filterValues }
-                                                containerRef={containerRef}
-                                            />
+                                            <div ref={this.containerRef}>
+                                                <ActiveComponent
+                                                    {
+                                                        ...activeItem.type !== conditionalFilterType.custom && {
+                                                            placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
+                                                            id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
+                                                        }
+                                                    }
+                                                    { ...activeItem.filterValues }
+                                                    containerRef={this.containerRef.current}
+                                                />
+                                            </div>
                                         </SplitItem>
                                     }
                                 </Split>
