@@ -20,6 +20,7 @@
         "packages/notifications",
         "packages/pdf-generator",
         "packages/remediations",
+        "packages/router",
         "packages/rule-components",
         "packages/translations",
         "packages/utils"
