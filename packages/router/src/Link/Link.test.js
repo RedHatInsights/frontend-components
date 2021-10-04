@@ -23,6 +23,7 @@ const RouterWrapper = ({
 
 describe('Link', () => {
     it('should navigate as regular Link outside of ChromeRouter from "/foo" to "/bar"', (done) => {
+        expect.assertions(1);
         const RenderTrigger = () => {
             const location = useLocation();
             useEffect(() => {
@@ -46,6 +47,7 @@ describe('Link', () => {
     });
 
     it('should navigate from of ChromeRouter from "/foo" to "/foo/bar/baz"', (done) => {
+        expect.assertions(1);
         const RenderTrigger = () => {
             const location = useLocation();
             useEffect(() => {

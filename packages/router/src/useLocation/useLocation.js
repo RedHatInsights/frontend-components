@@ -13,7 +13,6 @@ const useLocation = () => {
     };
 
     return location;
-
 };
 
 export default useLocation;

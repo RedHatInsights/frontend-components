@@ -39,6 +39,7 @@ const MatchComponent = ({ pushParams, method, expectedHistory, done }) => {
 
 describe('useHistory', () => {
     it('should return original history object with original pathname', (done) => {
+        expect.assertions(1);
         const pathname = '/foo/bar/1';
         const expectedHistory = expect.objectContaining({
             location: {
@@ -65,6 +66,7 @@ describe('useHistory', () => {
     });
 
     it('should not prefix pathname when calling "push"', (done) => {
+        expect.assertions(1);
         const expectedHistory = expect.objectContaining({
             location: {
                 pathname: '/baz/quaxx',
@@ -86,6 +88,7 @@ describe('useHistory', () => {
     });
 
     it('should return history location pathname basename prefix', (done) => {
+        expect.assertions(1);
         const pathname = '/foo/bar/1';
         const expectedHistory = expect.objectContaining({
             location: {
@@ -112,6 +115,7 @@ describe('useHistory', () => {
     });
 
     it('should prefix pathname when calling "push" from within ChromeRouter', (done) => {
+        expect.assertions(1);
         const expectedHistory = expect.objectContaining({
             location: {
                 pathname: '/1',
@@ -138,6 +142,7 @@ describe('useHistory', () => {
     });
 
     it('should ignore prefix pathname when calling "push" from within ChromeRouter', (done) => {
+        expect.assertions(1);
         const expectedHistory = expect.objectContaining({
             location: {
                 pathname: '/1',
@@ -164,6 +169,7 @@ describe('useHistory', () => {
     });
 
     it('should not prefix pathname when calling "replace"', (done) => {
+        expect.assertions(1);
         const expectedHistory = expect.objectContaining({
             location: {
                 pathname: '/baz/quaxx',
@@ -185,6 +191,7 @@ describe('useHistory', () => {
     });
 
     it('should prefix pathname when calling "replace" from within ChromeRouter', (done) => {
+        expect.assertions(1);
         const expectedHistory = expect.objectContaining({
             location: {
                 pathname: '/1',
@@ -210,6 +217,7 @@ describe('useHistory', () => {
     });
 
     it('should ignore prefix pathname when calling "replace" from within ChromeRouter', (done) => {
+        expect.assertions(1);
         const expectedHistory = expect.objectContaining({
             location: {
                 pathname: '/1',

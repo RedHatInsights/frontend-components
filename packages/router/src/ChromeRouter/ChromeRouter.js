@@ -7,7 +7,6 @@ function prependPath(prefix = '', path = '') {
 }
 
 function prependTo(prefix = '', to = '') {
-    let internalTo = to;
     if (typeof to === 'string') {
         return prependPath(prefix, to).replace(/\/$/, '');
     }
@@ -19,7 +18,7 @@ function prependTo(prefix = '', to = '') {
         };
     }
 
-    return internalTo;
+    return to;
 }
 
 function removePathPrefix(prefix = '', path = '') {

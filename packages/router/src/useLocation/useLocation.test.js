@@ -23,6 +23,7 @@ const RouterWrapper = ({
 
 describe('useLocation', () => {
     it('should return original location values', (done) => {
+        expect.assertions(1);
         const pathname = '/foo/bar/1';
         const expectedLocation = expect.objectContaining({
             pathname
@@ -46,6 +47,7 @@ describe('useLocation', () => {
     });
 
     it('should return location pathname witouth basename', (done) => {
+        expect.assertions(1);
         const pathname = '/foo/bar/1';
         const expectedLocation = expect.objectContaining({
             pathname: '/1'

@@ -13,13 +13,9 @@ const useHistory = () => {
         pathname: internalRemovePathPrefix(internalHistory.location.pathname)
     };
 
-    const push = (path, state, ignoreBasename = false) => {
-        return internalHistory.push(ignoreBasename ? path : internalPrependTo(path), state);
-    };
+    const push = (path, state, ignoreBasename = false) => internalHistory.push(ignoreBasename ? path : internalPrependTo(path), state);
 
-    const replace = (path, state, ignoreBasename = false) => {
-        return internalHistory.replace(ignoreBasename ? path : internalPrependTo(path), state);
-    };
+    const replace = (path, state, ignoreBasename = false) => internalHistory.replace(ignoreBasename ? path : internalPrependTo(path), state);
 
     return {
         ...internalHistory,

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
 import chromeRouterContext from '../chromeRouterContext/chromeRouterContext';
 
@@ -13,8 +12,6 @@ const Link = ({ to, ...props }) => {
     return <RouterLink to={internalPrependTo(to)} {...props} />;
 };
 
-Link.propTypes = {
-    to: PropTypes.any.isRequired
-};
+Link.propTypes = RouterLink.propTypes;
 
 export default Link;

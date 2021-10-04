@@ -23,7 +23,6 @@ const useRouteMatch = (path = '/') => {
     }
 
     return match;
-
 };
 
 export default useRouteMatch;

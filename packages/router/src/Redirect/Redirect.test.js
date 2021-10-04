@@ -23,6 +23,7 @@ const RouterWrapper = ({
 
 describe('Redirect', () => {
     it('should redirect regularly outside of ChromeRouter to default route', (done) => {
+        expect.assertions(1);
         const RenderTrigger = () => {
             const location = useLocation();
             useEffect(() => {
@@ -48,6 +49,7 @@ describe('Redirect', () => {
     });
 
     it('should redirect inside ChromeRouter to route', (done) => {
+        expect.assertions(1);
         const RenderTrigger = () => {
             const location = useLocation();
             useEffect(() => {
