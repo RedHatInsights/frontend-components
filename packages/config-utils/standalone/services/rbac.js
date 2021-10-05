@@ -11,7 +11,7 @@ function getRbacConfigFolder(env) {
     return 'ci';
 }
 
-const rbacPort = 4012;
+const rbacPort = process.env['RBAC_PORT'] ? process.env['RBAC_PORT'] : 4012;
 
 const services = ({ port, env, assets }) => ({
     redis: {
