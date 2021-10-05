@@ -9,6 +9,9 @@ exports[`SystemIssues DOM should render correctly with data - closed 1`] = `
   >
     <h4
       className="pf-c-title pf-m-lg"
+      data-ouia-component-id="OUIA-Generated-Title-2"
+      data-ouia-component-type="PF4/Title"
+      data-ouia-safe={true}
     >
       Top system issues
     </h4>
@@ -219,6 +222,9 @@ exports[`SystemIssues DOM should render correctly with data - opened 1`] = `
   >
     <h4
       className="pf-c-title pf-m-lg"
+      data-ouia-component-id="OUIA-Generated-Title-3"
+      data-ouia-component-type="PF4/Title"
+      data-ouia-safe={true}
     >
       Top system issues
     </h4>
@@ -429,6 +435,9 @@ exports[`SystemIssues DOM should render correctly with no advisor 1`] = `
   >
     <h4
       className="pf-c-title pf-m-lg"
+      data-ouia-component-id="OUIA-Generated-Title-4"
+      data-ouia-component-type="PF4/Title"
+      data-ouia-safe={true}
     >
       Top system issues
     </h4>
@@ -639,6 +648,9 @@ exports[`SystemIssues DOM should render correctly with no compliance 1`] = `
   >
     <h4
       className="pf-c-title pf-m-lg"
+      data-ouia-component-id="OUIA-Generated-Title-7"
+      data-ouia-component-type="PF4/Title"
+      data-ouia-safe={true}
     >
       Top system issues
     </h4>
@@ -839,6 +851,9 @@ exports[`SystemIssues DOM should render correctly with no cve 1`] = `
   >
     <h4
       className="pf-c-title pf-m-lg"
+      data-ouia-component-id="OUIA-Generated-Title-6"
+      data-ouia-component-type="PF4/Title"
+      data-ouia-safe={true}
     >
       Top system issues
     </h4>
@@ -1049,6 +1064,9 @@ exports[`SystemIssues DOM should render correctly with no patch 1`] = `
   >
     <h4
       className="pf-c-title pf-m-lg"
+      data-ouia-component-id="OUIA-Generated-Title-5"
+      data-ouia-component-type="PF4/Title"
+      data-ouia-safe={true}
     >
       Top system issues
     </h4>
@@ -1256,6 +1274,9 @@ exports[`SystemIssues DOM should render without any data 1`] = `
   >
     <h4
       className="pf-c-title pf-m-lg"
+      data-ouia-component-id="OUIA-Generated-Title-1"
+      data-ouia-component-type="PF4/Title"
+      data-ouia-safe={true}
     >
       Top system issues
     </h4>

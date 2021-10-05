@@ -3,6 +3,47 @@
 
 This package is hot loaded via [insights-chrome](https://github.com/RedHatInsights/insights-chrome#readme) and exports new components for inventory table and detail. It also exports redux reducers and actions so usage is as simple as possible.
 
+## !!!Deprecated package!!!
+
+This package is deprecated, please do not use it anymore! We are no longer supporting this package because we moved it to inventory application and exporting inventory components trough federated modules.
+
+If you want to use inventory component, either use [Async inventory components](https://github.com/RedHatInsights/frontend-components/tree/master/packages/components/src/Inventory) or use directly [Async component](https://github.com/RedHatInsights/frontend-components/tree/master/packages/components/src/AsyncComponent)
+
+1) Usage with `Async inventory component`
+```JS
+import React from 'react';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
+
+const Cmp = () => <InventoryTable />;
+
+export default Cmp;
+```
+
+2) Usage with `Async component`
+```JS
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useStore } from 'react-redux';
+import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
+
+const Cmp = () => {
+  const store = useStore();
+  const history = useHistory();
+  return (
+    <AsyncComponent
+      store={store}
+      history={history}
+      appName="inventory"
+      module={`./InventoryTable`}
+      fallback="Loading"
+      ref={innerRef}
+      {...props}
+    />
+  );
+}
+
+export default Cmp;
+```
 ## Installation
 You shouldn't install this package directly to your project, but if you really have to install it either with npm
 ```bash

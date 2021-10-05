@@ -46,6 +46,7 @@ class Radio extends Component {
                     onSelect={ this.onSelect }
                     isOpen={ isExpanded }
                     placeholderText={ placeholder }
+                    ouiaId={ placeholder }
                 >
                     { items.map(({ value, isChecked, onChange, label, id, ...item }, key) => (
                         <SelectOption { ...item } key={ id || key } value={ value || '' + key }>

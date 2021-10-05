@@ -1,4 +1,4 @@
-export { default as DownloadButton } from './DownloadButton';
+export { default as DownloadButton, DownloadButtonWrapper } from './DownloadButton';
 export { default as RHLogo } from './components/Logo';
 export { default as Section } from './components/Section';
 export { default as Column } from './components/Column';

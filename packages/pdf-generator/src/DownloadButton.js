@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { PDFDownloadLink, PDFViewer, BlobProvider } from '@react-pdf/renderer';
 import { Button } from '@patternfly/react-core';
 import PDFDocument from './components/PDFDocument';
+import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 
-class DownloadButton extends React.Component {
+class DownloadButtonWrapper extends React.Component {
 
     constructor(props) {
         super(props);
@@ -96,7 +97,7 @@ class DownloadButton extends React.Component {
     }
 }
 
-DownloadButton.propTypes = {
+DownloadButtonWrapper.propTypes = {
     ...PDFDocument.propTypes,
     fileName: PropTypes.string,
     isPreview: PropTypes.bool,
@@ -108,7 +109,7 @@ DownloadButton.propTypes = {
     onError: PropTypes.func
 };
 
-DownloadButton.defaultProps = {
+DownloadButtonWrapper.defaultProps = {
     ...PDFDocument.defaultProps,
     fileName: '',
     label: 'Download PDF',
@@ -118,5 +119,15 @@ DownloadButton.defaultProps = {
     onError: () => undefined,
     onLoading: () => undefined
 };
+
+const DownloadButton = (props) => (
+    <AsyncComponent
+        appName="chrome"
+        module="./DownloadButton"
+        {...props}
+    />
+);
+
+export { DownloadButtonWrapper };
 
 export default DownloadButton;

@@ -3,7 +3,7 @@
 exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -14,6 +14,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -21,6 +22,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -28,6 +30,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -35,6 +38,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -42,6 +46,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -49,11 +54,13 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={true}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -72,13 +79,16 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
     <SplitItem
       isFilled={true}
     >
-      <Text
-        aria-label="text input"
-        isDisabled={false}
-        onSubmit={[Function]}
-        placeholder="Filter by no value"
-        value=""
-      />
+      <div>
+        <Text
+          aria-label="text input"
+          containerRef={null}
+          isDisabled={false}
+          onSubmit={[Function]}
+          placeholder="Filter by no value"
+          value=""
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>
@@ -87,7 +97,7 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
 exports[`ConditionalFilter render should render correctly 1`] = `
 <Fragment>
   <div
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <Text
       aria-label="text input"
@@ -95,6 +105,7 @@ exports[`ConditionalFilter render should render correctly 1`] = `
       isDisabled={false}
       onChange={[Function]}
       onSubmit={[Function]}
+      useMobileLayout={true}
       value=""
       widget-type="InsightsInput"
     />
@@ -105,7 +116,7 @@ exports[`ConditionalFilter render should render correctly 1`] = `
 exports[`ConditionalFilter render should render correctly checkbox with value checkbox-filter 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -116,6 +127,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -123,6 +135,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -130,6 +143,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -137,6 +151,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -144,6 +159,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -151,11 +167,13 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -174,30 +192,33 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
     <SplitItem
       isFilled={true}
     >
-      <CheckboxFilter
-        id="checkbox-filter"
-        isDisabled={false}
-        items={
-          Array [
-            Object {
-              "label": <div>
-                custom value
-              </div>,
-              "value": "some-value",
-            },
-            Object {
-              "label": "another",
-              "value": "another-value",
-            },
-            Object {
-              "label": "no value",
-            },
-          ]
-        }
-        onChange={[Function]}
-        placeholder="Filter by checkbox"
-        value={Array []}
-      />
+      <div>
+        <CheckboxFilter
+          containerRef={null}
+          id="checkbox-filter"
+          isDisabled={false}
+          items={
+            Array [
+              Object {
+                "label": <div>
+                  custom value
+                </div>,
+                "value": "some-value",
+              },
+              Object {
+                "label": "another",
+                "value": "another-value",
+              },
+              Object {
+                "label": "no value",
+              },
+            ]
+          }
+          onChange={[Function]}
+          placeholder="Filter by checkbox"
+          value={Array []}
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>
@@ -206,7 +227,7 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
 exports[`ConditionalFilter render should render correctly no value with value undefined 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -217,6 +238,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -224,6 +246,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -231,6 +254,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -238,6 +262,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -245,6 +270,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -252,11 +278,13 @@ exports[`ConditionalFilter render should render correctly no value with value un
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -275,14 +303,17 @@ exports[`ConditionalFilter render should render correctly no value with value un
     <SplitItem
       isFilled={true}
     >
-      <Text
-        aria-label="text input"
-        id=""
-        isDisabled={false}
-        onSubmit={[Function]}
-        placeholder="Filter by simple text 1"
-        value=""
-      />
+      <div>
+        <Text
+          aria-label="text input"
+          containerRef={null}
+          id=""
+          isDisabled={false}
+          onSubmit={[Function]}
+          placeholder="Filter by simple text 1"
+          value=""
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>
@@ -291,7 +322,7 @@ exports[`ConditionalFilter render should render correctly no value with value un
 exports[`ConditionalFilter render should render correctly radio filter with value radio-filter 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -302,6 +333,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -309,6 +341,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -316,6 +349,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -323,6 +357,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -330,6 +365,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -337,11 +373,13 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -360,26 +398,29 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
     <SplitItem
       isFilled={true}
     >
-      <Radio
-        id="radio-filter"
-        isDisabled={false}
-        items={
-          Array [
-            Object {
-              "label": <div>
-                custom value
-              </div>,
-              "value": "some-value",
-            },
-            Object {
-              "label": "another",
-              "value": "another-value",
-            },
-          ]
-        }
-        onChange={[Function]}
-        placeholder="Filter by radio filter"
-      />
+      <div>
+        <Radio
+          containerRef={null}
+          id="radio-filter"
+          isDisabled={false}
+          items={
+            Array [
+              Object {
+                "label": <div>
+                  custom value
+                </div>,
+                "value": "some-value",
+              },
+              Object {
+                "label": "another",
+                "value": "another-value",
+              },
+            ]
+          }
+          onChange={[Function]}
+          placeholder="Filter by radio filter"
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>
@@ -388,7 +429,7 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
 exports[`ConditionalFilter render should render correctly simple text 1 with value simple-text-1 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -399,6 +440,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -406,6 +448,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -413,6 +456,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -420,6 +464,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -427,6 +472,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -434,11 +480,13 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -457,14 +505,17 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
     <SplitItem
       isFilled={true}
     >
-      <Text
-        aria-label="text input"
-        id="simple-text-1"
-        isDisabled={false}
-        onSubmit={[Function]}
-        placeholder="Filter by simple text 1"
-        value=""
-      />
+      <div>
+        <Text
+          aria-label="text input"
+          containerRef={null}
+          id="simple-text-1"
+          isDisabled={false}
+          onSubmit={[Function]}
+          placeholder="Filter by simple text 1"
+          value=""
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>
@@ -473,7 +524,7 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
 exports[`ConditionalFilter render should render correctly simple text 2 with value simple-text-2 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -484,6 +535,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -491,6 +543,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -498,6 +551,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -505,6 +559,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -512,6 +567,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -519,11 +575,13 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -542,14 +600,17 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
     <SplitItem
       isFilled={true}
     >
-      <Text
-        aria-label="text input"
-        id="simple-text-2"
-        isDisabled={false}
-        onSubmit={[Function]}
-        placeholder="Filter by simple text 2"
-        value="some-value blaa"
-      />
+      <div>
+        <Text
+          aria-label="text input"
+          containerRef={null}
+          id="simple-text-2"
+          isDisabled={false}
+          onSubmit={[Function]}
+          placeholder="Filter by simple text 2"
+          value="some-value blaa"
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>
@@ -558,7 +619,7 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
 exports[`ConditionalFilter render should render correctly with config - each item as disabled 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -569,6 +630,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -576,6 +638,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -583,6 +646,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -590,6 +654,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -597,6 +662,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -604,11 +670,13 @@ exports[`ConditionalFilter render should render correctly with config - each ite
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -627,13 +695,16 @@ exports[`ConditionalFilter render should render correctly with config - each ite
     <SplitItem
       isFilled={true}
     >
-      <Text
-        aria-label="text input"
-        isDisabled={true}
-        onSubmit={[Function]}
-        placeholder="Filter by no value"
-        value=""
-      />
+      <div>
+        <Text
+          aria-label="text input"
+          containerRef={null}
+          isDisabled={true}
+          onSubmit={[Function]}
+          placeholder="Filter by no value"
+          value=""
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>
@@ -642,7 +713,7 @@ exports[`ConditionalFilter render should render correctly with config - each ite
 exports[`ConditionalFilter render should render correctly with config 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -653,6 +724,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -660,6 +732,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -667,6 +740,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -674,6 +748,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -681,6 +756,7 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -688,11 +764,13 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className=""
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -711,13 +789,16 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
     <SplitItem
       isFilled={true}
     >
-      <Text
-        aria-label="text input"
-        isDisabled={false}
-        onSubmit={[Function]}
-        placeholder="Filter by no value"
-        value=""
-      />
+      <div>
+        <Text
+          aria-label="text input"
+          containerRef={null}
+          isDisabled={false}
+          onSubmit={[Function]}
+          placeholder="Filter by no value"
+          value=""
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>
@@ -726,18 +807,21 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
 exports[`ConditionalFilter render should render correctly with one filter 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem
       isFilled={true}
     >
-      <Text
-        aria-label="text input"
-        isDisabled={false}
-        onSubmit={[Function]}
-        placeholder="Filter by simple text 1"
-        value=""
-      />
+      <div>
+        <Text
+          aria-label="text input"
+          containerRef={null}
+          isDisabled={false}
+          onSubmit={[Function]}
+          placeholder="Filter by simple text 1"
+          value=""
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>
@@ -746,7 +830,7 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
 exports[`ConditionalFilter render should render correctly with with the active label hidden 1`] = `
 <Fragment>
   <Split
-    className="ins-c-conditional-filter"
+    className="ins-c-conditional-filter desktop"
   >
     <SplitItem>
       <Dropdown
@@ -757,6 +841,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 1"
             >
               Simple text 1
             </DropdownItem>,
@@ -764,6 +849,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="simple text 2"
             >
               Simple text 2
             </DropdownItem>,
@@ -771,6 +857,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="checkbox"
             >
               Checkbox
             </DropdownItem>,
@@ -778,6 +865,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={false}
               onClick={[Function]}
+              ouiaId="radio filter"
             >
               Radio filter
             </DropdownItem>,
@@ -785,6 +873,7 @@ exports[`ConditionalFilter render should render correctly with with the active l
               component="button"
               isHovered={true}
               onClick={[Function]}
+              ouiaId="no value"
             >
               No value
             </DropdownItem>,
@@ -792,11 +881,13 @@ exports[`ConditionalFilter render should render correctly with with the active l
         }
         isOpen={false}
         onSelect={[Function]}
+        ouiaId="ConditionalFilter"
         toggle={
           <DropdownToggle
             className="ins-c-conditional-filter__no-label"
             isDisabled={false}
             onToggle={[Function]}
+            ouiaId="ConditionalFilter"
           >
             <FilterIcon
               color="currentColor"
@@ -810,13 +901,16 @@ exports[`ConditionalFilter render should render correctly with with the active l
     <SplitItem
       isFilled={true}
     >
-      <Text
-        aria-label="text input"
-        isDisabled={false}
-        onSubmit={[Function]}
-        placeholder="Filter by no value"
-        value=""
-      />
+      <div>
+        <Text
+          aria-label="text input"
+          containerRef={null}
+          isDisabled={false}
+          onSubmit={[Function]}
+          placeholder="Filter by no value"
+          value=""
+        />
+      </div>
     </SplitItem>
   </Split>
 </Fragment>

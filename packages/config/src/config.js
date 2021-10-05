@@ -17,7 +17,9 @@ module.exports = ({
     sassPrefix,
     skipChrome2 = false,
     useProxy,
+    proxyURL,
     localChrome,
+    keycloakUri,
     customProxy,
     routes,
     routesPath,
@@ -26,7 +28,10 @@ module.exports = ({
     reposDir,
     appUrl = [],
     proxyVerbose,
-    useCloud
+    useCloud,
+    target,
+    registry,
+    client = {}
 } = {}) => {
     const filenameMask = `js/[name]${useFileHash ? '.[chunkhash]' : ''}.js`;
     if (betaEnv) {
@@ -124,13 +129,10 @@ module.exports = ({
                 ]
             }, {
                 test: /\.(woff(2)?|ttf|jpg|png|eot|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/'
-                    }
-                }]
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]'
+                }
             },
             {
                 test: /\.mjs$/,
@@ -157,12 +159,14 @@ module.exports = ({
             }
         },
         devServer: {
-            contentBase: `${rootFolder || ''}/dist`,
+            static: {
+                directory: `${rootFolder || ''}/dist`
+            },
             port: devServerPort,
             https: https || Boolean(useProxy),
             host: '0.0.0.0', // This shares on local network. Needed for docker.host.internal
             hot: false, // Use livereload instead of HMR which is spotty with federated modules
-            disableHostCheck: true,
+            allowedHosts: 'all',
             // https://github.com/bripkens/connect-history-api-fallback
             historyApiFallback: {
                 // We should really implement the same logic as cloud-services-config
@@ -176,21 +180,28 @@ module.exports = ({
                 ],
                 verbose: Boolean(proxyVerbose)
             },
-            writeToDisk: true,
+            devMiddleware: {
+                writeToDisk: true
+            },
+            client,
             ...proxy({
                 useCloud,
                 env,
                 localChrome,
+                keycloakUri,
                 customProxy,
                 routes,
                 routesPath,
                 useProxy,
+                proxyURL,
                 standalone,
                 port: devServerPort,
                 reposDir,
                 appUrl,
                 publicPath,
-                proxyVerbose
+                proxyVerbose,
+                target,
+                registry
             })
         }
     };

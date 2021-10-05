@@ -1,6 +1,10 @@
 @import '~@redhat-cloud-services/frontend-components-utilities/styles/_all.scss';
 
 .ins-c-conditional-filter {
+    &.mobile {
+        display: none !important;
+        visibility: hidden !important;
+    }
     .pf-c-select__toggle-wrapper .pf-c-select__toggle-text {
         @include rem('max-width', 150px);
     }
@@ -55,12 +59,36 @@
     .pf-c-select__toggle-badge {
         display: none;
     }
+
+    .pf-c-menu-toggle {
+        padding: 0;
+        .pf-c-menu-toggle__text {
+            flex: 1;
+            input { border: none; }
+        }
+    }
 }
 
-@media only screen and (max-width: 406px) {
+.pf-c-menu {
+    &.ins-c-menu__scrollable {
+        max-height: 416px;
+        overflow-y: auto;
+    }
+    .ins-c-menu__show--more {
+        background: none;
+        .pf-c-menu__item-text{ color: var(--pf-global--active-color--100); }
+    }
+}
+
+@media only screen and (max-width: 768px) {
     .ins-c-conditional-filter {
-        .pf-c-select__toggle-wrapper .pf-c-select__toggle-text {
-            @include rem('max-width', 100px);
+        &.mobile {
+            visibility: visible !important;
+            display: grid !important;
+        }
+        &.desktop {
+            visibility: hidden;
+            display: none;
         }
     }
 }

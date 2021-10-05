@@ -13,12 +13,14 @@ const onRowClick = (event, key, { loaded, onRowClick: rowClick, noDetail }) => {
     if (loaded && !noDetail) {
         const isMetaKey = (event.ctrlKey || event.metaKey || event.which === 2);
         if (isMetaKey) {
-            const url = new URL(`./${key}`, location.href);
-            window.open(url.href);
+            return;
         } else if (rowClick) {
             rowClick(event, key, isMetaKey);
         }
     }
+
+    event.preventDefault();
+    event.stopPropagation();
 };
 
 /**
@@ -39,8 +41,6 @@ const TitleColumn = (data, id, item, props) => (
                     widget="col"
                     href={ `${location.pathname}${location.pathname.substr(-1) === '/' ? '' : '/'}${id}` }
                     onClick={ event => {
-                        event.preventDefault();
-                        event.stopPropagation();
                         onRowClick(event, id, props);
                     }}
                 >

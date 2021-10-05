@@ -11,7 +11,7 @@ import flatten from 'lodash/flatten';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import { calculateMeta, calculateActiveFilters, createRows } from './helpers';
-export { default as style } from './index.scss';
+import './index.scss';
 
 class RuleTable extends Component {
     state = {
@@ -242,9 +242,9 @@ RuleTable.propTypes = {
         disableSort: PropTypes.bool
     })),
     sort: PropTypes.string,
-    emptyStateTitle: PropTypes.string,
+    emptyStateTitle: PropTypes.node,
     emptyStateDescription: PropTypes.node,
-    emptyStateIcon: PropTypes.node,
+    emptyStateIcon: PropTypes.elementType,
     defaultFilters: PropTypes.arrayOf(PropTypes.shape({})),
     fetchData: PropTypes.func,
     detail: PropTypes.oneOfType([ PropTypes.func, PropTypes.node ]),

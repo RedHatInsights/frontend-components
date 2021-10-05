@@ -8,6 +8,7 @@ const include = {
     '@patternfly/react-table': {},
     '@patternfly/react-tokens': {},
     '@patternfly/react-icons': {},
+    '@patternfly/quickstarts': { singleton: true },
     '@redhat-cloud-services/frontend-components': {},
     '@redhat-cloud-services/frontend-components-utilities': {},
     '@redhat-cloud-services/frontend-components-notifications': {},
@@ -48,7 +49,7 @@ module.exports = ({
      * No application should be installing/interacting with scalprum directly.
      */
     if (dependencies['@redhat-cloud-services/frontend-components']) {
-        sharedDeps.push({ '@scalprum/react-core': { singleton: true } });
+        sharedDeps.push({ '@scalprum/react-core': { requiredVersion: '*', singleton: true } });
     }
 
     if (debug) {

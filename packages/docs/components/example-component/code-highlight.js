@@ -32,9 +32,13 @@ Pre.propTypes = {
     children: PropTypes.node
 };
 
-const CodeHighlight = ({ sourceCode, language = 'jsx' }) => {
+const CodeHighlight = ({ sourceCode, language }) => {
+    if (typeof sourceCode !== 'string') {
+        return <div>Loading</div>;
+    }
+
     return (
-        <Highlight {...defaultProps} theme={codeTheme} language={language} code={sourceCode.replace(/\n*$/, '')}>
+        <Highlight {...defaultProps} theme={language ? codeTheme : undefined} language={language} code={sourceCode.replace(/\n*$/, '')}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <Pre className={className} style={style}>
                     <React.Fragment>

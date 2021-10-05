@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-config",
-    "version": "4.2.7",
+    "version": "4.3.8",
     "description": "Config plugins and settings for RedHat Cloud Services project.",
     "main": "index.js",
     "publishConfig": {
@@ -17,18 +17,18 @@
     },
     "homepage": "https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#readme",
     "dependencies": {
-        "@redhat-cloud-services/frontend-components-config-utilities": "^1.3.2",
+        "@redhat-cloud-services/frontend-components-config-utilities": "^1.4.14",
         "assert": "^2.0.0",
         "babel-loader": "^8.2.2",
         "browserify-zlib": "^0.2.0",
         "buffer": "^6.0.3",
         "clean-webpack-plugin": "^3.0.0",
         "css-loader": "^5.2.6",
-        "file-loader": "^6.2.0",
         "git-revision-webpack-plugin": "^3.0.6",
         "glob": "^7.0.0",
         "html-replace-webpack-plugin": "^2.6.0",
         "html-webpack-plugin": "^5.3.1",
+        "https-proxy-agent": "^5.0.0",
         "mini-css-extract-plugin": "^1.6.0",
         "js-yaml": "^4.0.0",
         "jws": "^4.0.0",
@@ -41,9 +41,9 @@
         "ts-loader": "^8.0.11",
         "url": "^0.11.0",
         "util": "^0.12.4",
-        "webpack": "^5.38.1",
-        "webpack-cli": "^4.7.2",
-        "webpack-dev-server": "^3.11.2",
+        "webpack": "^5.55.1",
+        "webpack-cli": "^4.8.0",
+        "webpack-dev-server": "^4.3.0",
         "write-file-webpack-plugin": "^4.5.1"
     }
 }

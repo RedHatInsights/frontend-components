@@ -1,6 +1,6 @@
 {
     "name": "@redhat-cloud-services/frontend-components-inventory-insights",
-    "version": "3.1.3",
+    "version": "3.2.3",
     "description": "Advisor recommendation detail page for RedHat Cloud Services project.",
     "main": "index.js",
     "module": "esm/index.js",
@@ -34,7 +34,7 @@
         "react-dom": ">=16.14.0 || >=17.0.0",
         "react-content-loader": ">=3.4.1",
         "react-redux": ">=7.2.0",
-        "axios": ">=0.21.1"
+        "axios": ">=0.21.2"
     },
     "dependencies": {
         "@redhat-cloud-services/frontend-components": "^3.1.7",
