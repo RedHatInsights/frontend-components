@@ -8,6 +8,7 @@ const include = {
     '@patternfly/react-table': {},
     '@patternfly/react-tokens': {},
     '@patternfly/react-icons': {},
+    '@patternfly/quickstarts': { singleton: true },
     '@redhat-cloud-services/frontend-components': {},
     '@redhat-cloud-services/frontend-components-utilities': {},
     '@redhat-cloud-services/frontend-components-notifications': {},
