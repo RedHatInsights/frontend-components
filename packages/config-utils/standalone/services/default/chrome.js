@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
-const keycloakPort = 4001;
+const keycloakPort = process.env['KEYCLOAK_PORT'] ? process.env['KEYCLOAK_PORT'] : 4001;
 
 module.exports = ({ port }) => ({
     // Chrome handles its auth through keycloak
