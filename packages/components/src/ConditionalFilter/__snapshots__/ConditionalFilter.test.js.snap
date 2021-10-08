@@ -82,7 +82,6 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
       <div>
         <Text
           aria-label="text input"
-          containerRef={null}
           isDisabled={false}
           onSubmit={[Function]}
           placeholder="Filter by no value"
@@ -194,7 +193,6 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
     >
       <div>
         <CheckboxFilter
-          containerRef={null}
           id="checkbox-filter"
           isDisabled={false}
           items={
@@ -306,7 +304,6 @@ exports[`ConditionalFilter render should render correctly no value with value un
       <div>
         <Text
           aria-label="text input"
-          containerRef={null}
           id=""
           isDisabled={false}
           onSubmit={[Function]}
@@ -400,7 +397,6 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
     >
       <div>
         <Radio
-          containerRef={null}
           id="radio-filter"
           isDisabled={false}
           items={
@@ -508,7 +504,6 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
       <div>
         <Text
           aria-label="text input"
-          containerRef={null}
           id="simple-text-1"
           isDisabled={false}
           onSubmit={[Function]}
@@ -603,7 +598,6 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
       <div>
         <Text
           aria-label="text input"
-          containerRef={null}
           id="simple-text-2"
           isDisabled={false}
           onSubmit={[Function]}
@@ -698,7 +692,6 @@ exports[`ConditionalFilter render should render correctly with config - each ite
       <div>
         <Text
           aria-label="text input"
-          containerRef={null}
           isDisabled={true}
           onSubmit={[Function]}
           placeholder="Filter by no value"
@@ -792,7 +785,6 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
       <div>
         <Text
           aria-label="text input"
-          containerRef={null}
           isDisabled={false}
           onSubmit={[Function]}
           placeholder="Filter by no value"
@@ -815,7 +807,6 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
       <div>
         <Text
           aria-label="text input"
-          containerRef={null}
           isDisabled={false}
           onSubmit={[Function]}
           placeholder="Filter by simple text 1"
@@ -904,7 +895,6 @@ exports[`ConditionalFilter render should render correctly with with the active l
       <div>
         <Text
           aria-label="text input"
-          containerRef={null}
           isDisabled={false}
           onSubmit={[Function]}
           placeholder="Filter by no value"
