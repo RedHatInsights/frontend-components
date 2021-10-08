@@ -79,15 +79,13 @@ exports[`ConditionalFilter render should render correctly - isDisabled 1`] = `
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <Text
-          aria-label="text input"
-          isDisabled={false}
-          onSubmit={[Function]}
-          placeholder="Filter by no value"
-          value=""
-        />
-      </div>
+      <Text
+        aria-label="text input"
+        isDisabled={false}
+        onSubmit={[Function]}
+        placeholder="Filter by no value"
+        value=""
+      />
     </SplitItem>
   </Split>
 </Fragment>
@@ -191,32 +189,30 @@ exports[`ConditionalFilter render should render correctly checkbox with value ch
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <CheckboxFilter
-          id="checkbox-filter"
-          isDisabled={false}
-          items={
-            Array [
-              Object {
-                "label": <div>
-                  custom value
-                </div>,
-                "value": "some-value",
-              },
-              Object {
-                "label": "another",
-                "value": "another-value",
-              },
-              Object {
-                "label": "no value",
-              },
-            ]
-          }
-          onChange={[Function]}
-          placeholder="Filter by checkbox"
-          value={Array []}
-        />
-      </div>
+      <CheckboxFilter
+        id="checkbox-filter"
+        isDisabled={false}
+        items={
+          Array [
+            Object {
+              "label": <div>
+                custom value
+              </div>,
+              "value": "some-value",
+            },
+            Object {
+              "label": "another",
+              "value": "another-value",
+            },
+            Object {
+              "label": "no value",
+            },
+          ]
+        }
+        onChange={[Function]}
+        placeholder="Filter by checkbox"
+        value={Array []}
+      />
     </SplitItem>
   </Split>
 </Fragment>
@@ -301,16 +297,14 @@ exports[`ConditionalFilter render should render correctly no value with value un
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <Text
-          aria-label="text input"
-          id=""
-          isDisabled={false}
-          onSubmit={[Function]}
-          placeholder="Filter by simple text 1"
-          value=""
-        />
-      </div>
+      <Text
+        aria-label="text input"
+        id=""
+        isDisabled={false}
+        onSubmit={[Function]}
+        placeholder="Filter by simple text 1"
+        value=""
+      />
     </SplitItem>
   </Split>
 </Fragment>
@@ -395,28 +389,26 @@ exports[`ConditionalFilter render should render correctly radio filter with valu
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <Radio
-          id="radio-filter"
-          isDisabled={false}
-          items={
-            Array [
-              Object {
-                "label": <div>
-                  custom value
-                </div>,
-                "value": "some-value",
-              },
-              Object {
-                "label": "another",
-                "value": "another-value",
-              },
-            ]
-          }
-          onChange={[Function]}
-          placeholder="Filter by radio filter"
-        />
-      </div>
+      <Radio
+        id="radio-filter"
+        isDisabled={false}
+        items={
+          Array [
+            Object {
+              "label": <div>
+                custom value
+              </div>,
+              "value": "some-value",
+            },
+            Object {
+              "label": "another",
+              "value": "another-value",
+            },
+          ]
+        }
+        onChange={[Function]}
+        placeholder="Filter by radio filter"
+      />
     </SplitItem>
   </Split>
 </Fragment>
@@ -501,16 +493,14 @@ exports[`ConditionalFilter render should render correctly simple text 1 with val
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <Text
-          aria-label="text input"
-          id="simple-text-1"
-          isDisabled={false}
-          onSubmit={[Function]}
-          placeholder="Filter by simple text 1"
-          value=""
-        />
-      </div>
+      <Text
+        aria-label="text input"
+        id="simple-text-1"
+        isDisabled={false}
+        onSubmit={[Function]}
+        placeholder="Filter by simple text 1"
+        value=""
+      />
     </SplitItem>
   </Split>
 </Fragment>
@@ -595,16 +585,14 @@ exports[`ConditionalFilter render should render correctly simple text 2 with val
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <Text
-          aria-label="text input"
-          id="simple-text-2"
-          isDisabled={false}
-          onSubmit={[Function]}
-          placeholder="Filter by simple text 2"
-          value="some-value blaa"
-        />
-      </div>
+      <Text
+        aria-label="text input"
+        id="simple-text-2"
+        isDisabled={false}
+        onSubmit={[Function]}
+        placeholder="Filter by simple text 2"
+        value="some-value blaa"
+      />
     </SplitItem>
   </Split>
 </Fragment>
@@ -689,15 +677,13 @@ exports[`ConditionalFilter render should render correctly with config - each ite
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <Text
-          aria-label="text input"
-          isDisabled={true}
-          onSubmit={[Function]}
-          placeholder="Filter by no value"
-          value=""
-        />
-      </div>
+      <Text
+        aria-label="text input"
+        isDisabled={true}
+        onSubmit={[Function]}
+        placeholder="Filter by no value"
+        value=""
+      />
     </SplitItem>
   </Split>
 </Fragment>
@@ -782,15 +768,13 @@ exports[`ConditionalFilter render should render correctly with config 1`] = `
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <Text
-          aria-label="text input"
-          isDisabled={false}
-          onSubmit={[Function]}
-          placeholder="Filter by no value"
-          value=""
-        />
-      </div>
+      <Text
+        aria-label="text input"
+        isDisabled={false}
+        onSubmit={[Function]}
+        placeholder="Filter by no value"
+        value=""
+      />
     </SplitItem>
   </Split>
 </Fragment>
@@ -804,15 +788,13 @@ exports[`ConditionalFilter render should render correctly with one filter 1`] = 
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <Text
-          aria-label="text input"
-          isDisabled={false}
-          onSubmit={[Function]}
-          placeholder="Filter by simple text 1"
-          value=""
-        />
-      </div>
+      <Text
+        aria-label="text input"
+        isDisabled={false}
+        onSubmit={[Function]}
+        placeholder="Filter by simple text 1"
+        value=""
+      />
     </SplitItem>
   </Split>
 </Fragment>
@@ -892,15 +874,13 @@ exports[`ConditionalFilter render should render correctly with with the active l
     <SplitItem
       isFilled={true}
     >
-      <div>
-        <Text
-          aria-label="text input"
-          isDisabled={false}
-          onSubmit={[Function]}
-          placeholder="Filter by no value"
-          value=""
-        />
-      </div>
+      <Text
+        aria-label="text input"
+        isDisabled={false}
+        onSubmit={[Function]}
+        placeholder="Filter by no value"
+        value=""
+      />
     </SplitItem>
   </Split>
 </Fragment>

@@ -29,13 +29,13 @@ const Group = ({
     groups = [],
     onChange,
     selected,
-    isFilterable,
-    containerRef
+    isFilterable
 }) => {
     const [ stateSelected, setStateSelected ] = useState({});
     const [ searchString, setSearchString ] = useState('');
     const [ isOpen, setIsOpen ] = useState(false);
     const toggleRef = useRef();
+    const containerRef = useRef();
     const menuRef = useRef();
 
     useEffect(() => {
@@ -157,55 +157,58 @@ const Group = ({
         }
     </MenuItem>));
 
-    return <Popper appendTo={containerRef} trigger={(
-        <MenuToggle
-            ref={toggleRef}
-            onClick={onToggleClick}
-            isExpanded={isOpen}
-            className={className}
-        >
-            {(isFilterable || onFilter) ? <TextInput aria-label="input with dropdown and clear button"
-                placeholder={placeholder}
-                value={searchString}
-                tabIndex={0}
-                onChange={(value) => {
-                    setSearchString(value);
-                    onFilter?.(value);
-                }}
-                type="search"
-            /> : placeholder }
-        </MenuToggle>
-    )} popper={(
-        <Menu
-            ref={menuRef}
-            className={classNames('ins-c-menu__scrollable', className, { 'pf-m-expanded': isOpen })}
-        >
-            <MenuContent>
-                <MenuList>
-                    {menuItems.length > 0 && (
-                        <MenuGroup>
-                            {renderItems(items)}
-                        </MenuGroup>
-                    )}
-                    {groupMenuItems.map((group, groupKey) => (
-                        <MenuGroup label={group.label} key={`${group.label}-${groupKey}-group`}>
-                            {renderItems(group.items, group.type, group.value, group)}
-                        </MenuGroup>
-                    ))}
-                    { onShowMore ?
-                        <MenuItem
-                            itemId="loader"
-                            className="ins-c-menu__show--more"
-                            {...showMoreOptions}
-                            onClick={(e) => onShowMore(e)}
-                        >
-                            {showMoreTitle}
-                        </MenuItem>
-                        : <span hidden value=""></span>}
-                </MenuList>
-            </MenuContent>
-        </Menu>
-    )} isVisible={isOpen} />;
+    return (
+        <div ref={containerRef}>
+            <Popper appendTo={containerRef.current} trigger={(
+                <MenuToggle
+                    ref={toggleRef}
+                    onClick={onToggleClick}
+                    isExpanded={isOpen}
+                    className={className}
+                >
+                    {(isFilterable || onFilter) ? <TextInput aria-label="input with dropdown and clear button"
+                        placeholder={placeholder}
+                        value={searchString}
+                        tabIndex={0}
+                        onChange={(value) => {
+                            setSearchString(value);
+                            onFilter?.(value);
+                        }}
+                        type="search"
+                    /> : placeholder }
+                </MenuToggle>
+            )} popper={(
+                <Menu
+                    ref={menuRef}
+                    className={classNames('ins-c-menu__scrollable', className, { 'pf-m-expanded': isOpen })}
+                >
+                    <MenuContent>
+                        <MenuList>
+                            {menuItems.length > 0 && (
+                                <MenuGroup>
+                                    {renderItems(items)}
+                                </MenuGroup>
+                            )}
+                            {groupMenuItems.map((group, groupKey) => (
+                                <MenuGroup label={group.label} key={`${group.label}-${groupKey}-group`}>
+                                    {renderItems(group.items, group.type, group.value, group)}
+                                </MenuGroup>
+                            ))}
+                            { onShowMore ?
+                                <MenuItem
+                                    itemId="loader"
+                                    className="ins-c-menu__show--more"
+                                    {...showMoreOptions}
+                                    onClick={(e) => onShowMore(e)}
+                                >
+                                    {showMoreTitle}
+                                </MenuItem>
+                                : <span hidden value=""></span>}
+                        </MenuList>
+                    </MenuContent>
+                </Menu>
+            )} isVisible={isOpen} />
+        </div>);
 };
 
 Group.propTypes = {
@@ -244,8 +247,7 @@ Group.propTypes = {
         })
     ),
     onChange: PropTypes.func.isRequired,
-    selectedTags: PropTypes.shape({}),
-    containerRef: PropTypes.element
+    selectedTags: PropTypes.shape({})
 };
 
 export default Group;

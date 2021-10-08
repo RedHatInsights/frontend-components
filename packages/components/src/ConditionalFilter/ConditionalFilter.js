@@ -19,7 +19,6 @@ class ConditionalFilter extends Component {
 
         super(props);
         this.breakpointConstant = parseInt(globalBreakpointMd.value.replace('px', ''));
-        this.containerRef = React.createRef();
         this.state = {
             isOpen: false,
             stateValue: undefined,
@@ -152,18 +151,16 @@ class ConditionalFilter extends Component {
                                     }
                                     {
                                         ActiveComponent && <SplitItem isFilled>
-                                            <div ref={this.containerRef}>
-                                                <ActiveComponent
-                                                    {
-                                                        ...activeItem.type !== conditionalFilterType.custom && {
-                                                            placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
-                                                            id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
-                                                        }
+                                            <ActiveComponent
+                                                {
+                                                    ...activeItem.type !== conditionalFilterType.custom && {
+                                                        placeholder: placeholder || activeItem.placeholder || `Filter by ${activeItem.label}`,
+                                                        id: (activeItem.filterValues && activeItem.filterValues.id) || currentValue
                                                     }
-                                                    { ...activeItem.filterValues }
-                                                    { ...activeItem.type === conditionalFilterType.group && { containerRef: this.containerRef.current }}
-                                                />
-                                            </div>
+                                                }
+                                                { ...activeItem.filterValues }
+                                            />
+
                                         </SplitItem>
                                     }
                                 </Split>
