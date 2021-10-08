@@ -161,7 +161,7 @@ class ConditionalFilter extends Component {
                                                         }
                                                     }
                                                     { ...activeItem.filterValues }
-                                                    containerRef={this.containerRef.current}
+                                                    { ...activeItem.type === conditionalFilterType.group && { containerRef: this.containerRef.current }}
                                                 />
                                             </div>
                                         </SplitItem>
