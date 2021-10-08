@@ -370,58 +370,6 @@
 		]
 	},
 	{
-		"packageName": "inventory-compliance",
-		"groups": [
-			{
-				"group": "Compliance",
-				"items": [
-					"Compliance"
-				]
-			},
-			{
-				"group": "ComplianceEmptyState",
-				"items": [
-					"ComplianceEmptyState"
-				]
-			},
-			{
-				"group": "ComplianceRemediationButton",
-				"items": [
-					"ComplianceRemediationButton"
-				]
-			},
-			{
-				"group": "PresentationalComponents",
-				"items": [
-					"ConditionalLink",
-					"ErrorCard",
-					"RuleChildRow",
-					"RuleLoadingTable",
-					"RuleTitle",
-					"UnsupportedSSGVersion"
-				]
-			},
-			{
-				"group": "SystemPolicyCard",
-				"items": [
-					"SystemPolicyCard"
-				]
-			},
-			{
-				"group": "SystemPolicyCards",
-				"items": [
-					"SystemPolicyCards"
-				]
-			},
-			{
-				"group": "SystemRulesTable",
-				"items": [
-					"SystemRulesTable"
-				]
-			}
-		]
-	},
-	{
 		"packageName": "inventory-general-info",
 		"groups": [
 			{
@@ -510,6 +458,17 @@
 		]
 	},
 	{
+		"packageName": "notifications",
+		"groups": [
+			{
+				"group": "Portal",
+				"items": [
+					"Portal"
+				]
+			}
+		]
+	},
+	{
 		"packageName": "pdf-generator",
 		"groups": [
 			{
@@ -527,12 +486,6 @@
 					"Section",
 					"Table"
 				]
-			},
-			{
-				"group": "src",
-				"items": [
-					"DownloadButton"
-				]
 			}
 		]
 	},
@@ -542,31 +495,48 @@
 			{
 				"group": "common",
 				"items": [
-					"ProgressBar"
+					"RemediationLoadError"
+				]
+			}
+		]
+	},
+	{
+		"packageName": "router",
+		"groups": [
+			{
+				"group": "ChromeRouter",
+				"items": [
+					"ChromeRouter"
 				]
 			},
 			{
-				"group": "RemediationButton",
+				"group": "Link",
 				"items": [
-					"RemediationButton"
+					"Link"
 				]
 			},
 			{
-				"group": "RemediationWizard",
+				"group": "NavLink",
 				"items": [
-					"RemediationWizardHelper"
+					"NavLink"
 				]
 			},
 			{
-				"group": "steps",
+				"group": "Redirect",
 				"items": [
-					"fetchError",
-					"issueResolution",
-					"progress",
-					"review",
-					"reviewActions",
-					"reviewSystems",
-					"selectPlaybook"
+					"Redirect"
+				]
+			},
+			{
+				"group": "Route",
+				"items": [
+					"Route"
+				]
+			},
+			{
+				"group": "Switch",
+				"items": [
+					"Switch"
 				]
 			}
 		]

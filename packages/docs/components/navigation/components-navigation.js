@@ -1,10 +1,11 @@
+import { useEffect, useState } from 'react';
 import data from './components-navigation.json';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Nav, NavExpandable, NavGroup, NavItem, NavList } from '@patternfly/react-core';
 import classnames from 'classnames';
 import { createUseStyles } from 'react-jss';
+import AngleRightIcon from '@patternfly/react-icons/dist/js/icons/angle-right-icon';
 
 const useStyles = createUseStyles({
     capitalize: {
@@ -21,22 +22,20 @@ const useStyles = createUseStyles({
 const NavLink = ({ href, children }) => {
     const { pathname } = useRouter();
     return (
-        <NavItem
+        <li
             id={href}
             to={href}
             ouiaId={href}
-            component={({ children, ...props }) => (
-                <Link {...props}>
-                    <a className={classnames('pf-c-nav__link', {
-                        'pf-m-current': props.href === pathname
-                    })}>
-                        {children}
-                    </a>
-                </Link>
-            )}
+            className="pf-c-nav__item"
         >
-            {children}
-        </NavItem>
+            <Link href={href}>
+                <a className={classnames('pf-c-nav__link', {
+                    'pf-m-current': href === pathname
+                })}>
+                    {children}
+                </a>
+            </Link>
+        </li>
 
     );
 };
@@ -60,21 +59,26 @@ const NavigationGroup = ({ group, items, packageName }) => {
     }
 
     return (
-        <NavGroup
+        <section
             key={group}
             title={group}
-            className={classes.capitalize}
+            className={classnames('pf-c-nav__section', classes.capitalize)}
         >
-            {items.map(item => {
-                const title = typeof item === 'object' ? item.title : item;
-                const name = typeof item === 'object' ? item.name : item;
-                return (
-                    <NavLink key={name} href={`/fec/modules/${packageName}/${name}`}>
-                        {title}
-                    </NavLink>
-                );
-            })}
-        </NavGroup>
+            <h2 className="pf-c-nav__section-title">
+                {group}
+            </h2>
+            <ul className={classnames('pf-c-nav__list', classes.capitalize)}>
+                {items.map(item => {
+                    const title = typeof item === 'object' ? item.title : item;
+                    const name = typeof item === 'object' ? item.name : item;
+                    return (
+                        <NavLink key={name} href={`/fec/modules/${packageName}/${name}`}>
+                            {title}
+                        </NavLink>
+                    );
+                })}
+            </ul>
+        </section>
     );
 };
 
@@ -84,26 +88,49 @@ NavigationGroup.propTypes = {
     packageName: PropTypes.string.isRequired
 };
 
-const Navigation = () => {
+const ExpandableLink = ({ packageName, groups }) => {
     const { pathname } = useRouter();
+    const [ isExpanded, setIsExpandend ] = useState(() => pathname.includes(`/fec/modules/${packageName}`));
+    useEffect(() => {
+        setIsExpandend(pathname.includes(`/fec/modules/${packageName}`));
+    }, [ pathname ]);
     return (
-        <Nav ouiaId="docs-nav">
-            <NavList>
-                {data.map(({ packageName, groups }) => (
-                    <NavExpandable
-                        key={packageName}
-                        ouiaId={packageName}
-                        id={packageName}
-                        title={packageName.replace(/-/gm, ' ')}
-                        isExpanded={pathname.includes(`/fec/modules/${packageName}`)}
-                    >
-                        {groups.map(({ group, items }) => (
-                            <NavigationGroup key={group} group={group} items={items} packageName={packageName} />
-                        ))}
-                    </NavExpandable>
-                ))}
-            </NavList>
-        </Nav>
+        <li
+            className={classnames('pf-c-nav__item', 'pf-m-expandable', {
+                'pf-m-expanded': isExpanded
+            })}
+            key={packageName}
+            ouiaId={packageName}
+            id={packageName}
+            title={packageName.replace(/-/gm, ' ')}
+        >
+            <button className="pf-c-nav__link" onClick={() => setIsExpandend(prev => !prev)}>
+                {packageName.replace(/-/gm, ' ')}
+                <span className="pf-c-nav__toggle">
+                    <span className="pf-c-nav__toggle-icon">
+                        <AngleRightIcon />
+                    </span>
+                </span>
+            </button>
+            {isExpanded && groups.map(({ group, items }) => (
+                <NavigationGroup key={group} group={group} items={items} packageName={packageName} />
+            ))}
+        </li>
+    );
+};
+
+ExpandableLink.propTypes = {
+    packageName: PropTypes.string.isRequired,
+    groups: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+const Navigation = () => {
+    return (
+        <nav className="pf-c-nav" ouiaId="docs-nav">
+            <ul className="pf-c-nav__list">
+                {data.map(({ packageName, groups }) => <ExpandableLink key={packageName} packageName={packageName} groups={groups} />)}
+            </ul>
+        </nav>
     );
 };
 
