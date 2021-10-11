@@ -114,7 +114,7 @@ module.exports.registerChrome = ({ app, chromePath, keycloakUri, https, proxyVer
                     console.log('inject keycloak',  req.url);
                 }
                 fileString = fileString
-                  .replace(/http:\/\/sso.qa.redhat.com/gm, keycloakUri);
+                  .replace(/https?:\/\/sso.qa.redhat.com/gm, keycloakUri);
             }
             res.end(fileString);
         } else {
