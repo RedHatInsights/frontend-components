@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { ProvidePlugin } = require('webpack');
 const path = require('path');
 
 module.exports = (env) => ({
@@ -39,6 +40,18 @@ module.exports = (env) => ({
             }]
         }]
     },
+    resolve: {
+        fallback: {
+            path: require.resolve('path-browserify'),
+            stream: require.resolve('stream-browserify'),
+            zlib: require.resolve('browserify-zlib'),
+            assert: require.resolve('assert/'),
+            buffer: require.resolve('buffer/'),
+            url: require.resolve('url/'),
+            util: require.resolve('util/'),
+            process: 'process/browser.js'
+        }
+    },
     plugins: [
         new (require('webpack').HotModuleReplacementPlugin)(),
         new MiniCssExtractPlugin({
@@ -48,6 +61,10 @@ module.exports = (env) => ({
         new (require('html-webpack-plugin'))({
             title: 'Playground',
             template: path.resolve(__dirname, './src/index.html')
-        })
+        }),
+        new ProvidePlugin({
+            process: 'process/browser.js',
+            Buffer: [ 'buffer', 'Buffer' ]
+        }),
     ]
 });

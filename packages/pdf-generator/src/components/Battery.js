@@ -22,7 +22,7 @@ const batteryMapper = {
     critical: {
         svg: criticalSvg,
         color: appliedStyles.colorCrit.color,
-        title: 'Crititcal'
+        title: 'Critical'
     },
     high: {
         svg: highSvg,
