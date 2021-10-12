@@ -33,13 +33,13 @@ export default (style = {}) => StyleSheet.create({
     ...style,
     page: {
         fontWeight: 500,
-        // fontFamily: 'RedHatText',
+        fontFamily: 'RedHatText',
         height: '100%',
         padding: '20 50',
         lineHeight: 1.5
     },
     displayFont: {
-        // fontFamily: 'RedHatDisplay'
+        fontFamily: 'RedHatDisplay'
     },
     headerContainer: {
         display: 'flex',
