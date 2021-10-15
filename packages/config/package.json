@@ -3,6 +3,9 @@
     "version": "4.3.9",
     "description": "Config plugins and settings for RedHat Cloud Services project.",
     "main": "index.js",
+    "bin": {
+        "fec": "bin/fec.js"
+    },
     "publishConfig": {
         "access": "public"
     },
@@ -24,11 +27,13 @@
         "buffer": "^6.0.3",
         "clean-webpack-plugin": "^3.0.0",
         "css-loader": "^5.2.6",
+        "concurrently": "^6.3.0",
         "git-revision-webpack-plugin": "^3.0.6",
         "glob": "^7.0.0",
         "html-replace-webpack-plugin": "^2.6.0",
         "html-webpack-plugin": "^5.3.1",
         "https-proxy-agent": "^5.0.0",
+        "http-server": "^13.0.2",
         "mini-css-extract-plugin": "^1.6.0",
         "js-yaml": "^4.0.0",
         "jws": "^4.0.0",
@@ -44,6 +49,7 @@
         "webpack": "^5.55.1",
         "webpack-cli": "^4.8.0",
         "webpack-dev-server": "^4.3.0",
-        "write-file-webpack-plugin": "^4.5.1"
+        "write-file-webpack-plugin": "^4.5.1",
+        "yargs": "^17.2.1"
     }
 }
