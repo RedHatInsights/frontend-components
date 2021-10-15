@@ -7,7 +7,7 @@ const cwd = process.cwd();
 
 const argv = yargs
 .usage('Usage: $0 <command> [options]')
-.command('federate', 'Serve federated modules', (yargs) => {
+.command('static', 'Serve webpack output without the webpack server', (yargs) => {
     yargs.positional('config', {
         type: 'string',
         alias: 'c',
