@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const federate = require('@redhat-cloud-services/frontend-components-config-utilities/serve-federated');
 const yargs = require('yargs');
 
