@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const federate = require('@redhat-cloud-services/frontend-components-config-utilities/serve-federated');
+const static = require('@redhat-cloud-services/frontend-components-config-utilities/serve-federated');
 const yargs = require('yargs');
 
 const cwd = process.cwd();
@@ -23,7 +23,7 @@ const argv = yargs
 .argv;
 
 const scripts = {
-    federate
+    static
 };
 
 const args = [ argv, cwd ];

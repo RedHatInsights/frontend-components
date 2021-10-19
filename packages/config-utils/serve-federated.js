@@ -20,7 +20,7 @@ function federate(argv, cwd) {
 
         concurrently([
             `${WEBPACK_PATH} --config ${configPath} --watch --output-path ${path.join(outputPath, config.output.publicPath)}`,
-            `${HTTP_SERVER_PATH} ${outputPath} -p ${argv.port || 8003}`
+            `${HTTP_SERVER_PATH} ${outputPath} -p ${argv.port || 8003} -c-1`
         ]);
     } catch (error) {
         console.error(error);

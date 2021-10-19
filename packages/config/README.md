@@ -343,7 +343,7 @@ index f7513bb..d8c9008 100644
      "@babel/preset-react": "^7.14.5",
      "@babel/runtime": "^7.15.4",
 -    "@redhat-cloud-services/frontend-components-config": "^4.3.9",
-+    "@redhat-cloud-services/frontend-components-config": "^4.5.0",
++    "@redhat-cloud-services/frontend-components-config": "^4.4.0",
      "@testing-library/react": "^12.1.0",
      "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
      "abortcontroller-polyfill": "^1.7.3",
