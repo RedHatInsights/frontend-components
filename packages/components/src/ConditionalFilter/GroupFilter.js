@@ -12,10 +12,12 @@ import {
     Menu,
     MenuContent,
     Popper,
-    Radio
+    Radio,
+    TreeView
 } from '@patternfly/react-core';
-import { isChecked, calculateSelected, getGroupMenuItems, getMenuItems } from './groupFilterConstants';
+import { isChecked, calculateSelected, getGroupMenuItems, getMenuItems, convertTreeItem, mapTree, onTreeCheck } from './groupFilterConstants';
 import groupType from './groupType';
+import './group-filter.scss';
 
 const Group = ({
     placeholder,
@@ -80,80 +82,104 @@ const Group = ({
         setIsOpen(!isOpen);
     };
 
+    const menuItems = getMenuItems(
+        items?.map(item => item.type === groupType.treeView ? convertTreeItem(item) : item),
+        onChange,
+        calculateSelected(selected)
+    );
     const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelected(selected));
-    const menuItems = getMenuItems(items, onChange, calculateSelected(selected));
 
-    // eslint-disable-next-line react/prop-types
-    const renderItems = (items, type, groupKey = '') => items.map((item, key) => (<MenuItem
+    const renderItem = (item, key, type, groupKey) => <MenuItem
         itemId={key}
         key={`${item.value}-${key}-item`}
         className={item?.className}
-        onClick={item.onClick && (type || item.type) === groupType.checkbox ? (e) => {
-            item.onClick();
-            e.preventDefault();
-        } : undefined}
+        onClick={item.onClick && (
+            type || item.type) === groupType.checkbox ? (e) => {
+                item.onClick();
+                e.preventDefault();
+            } : undefined}
     >
         {
-            (type || item.type) === groupType.checkbox ?
-                <Checkbox
-                    {...item}
-                    label={item?.label}
-                    isChecked={
-                        item?.isChecked ||
-                        isChecked(
-                            groupKey,
-                            item?.value  || key,
-                            item?.id,
-                            item?.tagValue,
-                            stateSelected,
-                            selected
-                        ) ||
-                        false
-                    }
-                    onChange={(value, event) => {
-                        item?.onChange?.(value, event);
-                    }}
-                    onClick={item.onClick ? (e) => {
-                        item.onClick();
-                        e.stopPropagation();
-                    } : undefined}
-                    name={item?.name || item?.value || `${groupKey}-${key}`}
-                    id={item?.id || item?.value || `${groupKey}-${key}`}
-                /> :
-                (type || item.type) === groupType.radio ?
-                    <Radio {...item}
+            (type || item.type) === groupType.treeView  ? (
+                <TreeView
+                    data={[ mapTree(item, groupKey, stateSelected, selected) ]}
+                    onCheck={(e, value) => onTreeCheck(e, value, [ item ])}
+                    hasChecks
+                />
+            ) :
+                (type || item.type) === groupType.checkbox ?
+                    <Checkbox
+                        {...item}
+                        label={item?.label}
                         isChecked={
                             item?.isChecked ||
-                        isChecked(
-                            groups?.value || groupKey,
-                            item?.value || key,
-                            item?.id,
-                            item?.tagValue,
-                            stateSelected,
-                            selected
-                        ) ||
-                        false
+            isChecked(
+                groupKey,
+                item?.value  || key,
+                item?.id,
+                item?.tagValue,
+                stateSelected,
+                selected
+            ) ||
+            false
                         }
                         onChange={(value, event) => {
                             item?.onChange?.(value, event);
                         }}
-                        value={item?.value || key}
+                        onClick={item.onClick ? (e) => {
+                            item.onClick();
+                            e.stopPropagation();
+                        } : undefined}
                         name={item?.name || item?.value || `${groupKey}-${key}`}
-                        label={item?.label || ''}
                         id={item?.id || item?.value || `${groupKey}-${key}`}
                     /> :
-                    (type || item.type) === groupType.button ?
-                        <Button
-                            {...item}
-                            className={`pf-c-select__option-button ${item?.className || ''}`}
-                            variant={item?.variant}
-                            onClick={item.onClick}
-                        >
-                            {item?.label}
-                        </Button> :
-                        (item?.label || '')
+                    (type || item.type) === groupType.radio ?
+                        <Radio {...item}
+                            isChecked={
+                                item?.isChecked ||
+            isChecked(
+                groups?.value || groupKey,
+                item?.value || key,
+                item?.id,
+                item?.tagValue,
+                stateSelected,
+                selected
+            ) ||
+            false
+                            }
+                            onChange={(value, event) => {
+                                item?.onChange?.(value, event);
+                            }}
+                            value={item?.value || key}
+                            name={item?.name || item?.value || `${groupKey}-${key}`}
+                            label={item?.label || ''}
+                            id={item?.id || item?.value || `${groupKey}-${key}`}
+                        /> :
+                        (type || item.type) === groupType.button ?
+                            <Button
+                                {...item}
+                                className={`pf-c-select__option-button ${item?.className || ''}`}
+                                variant={item?.variant}
+                                onClick={item.onClick}
+                            >
+                                {item?.label}
+                            </Button> :
+                            (item?.label || '')
         }
-    </MenuItem>));
+    </MenuItem>;
+
+    const renderItems = (items, type, groupKey = '') => items.map((item, key) => (
+        (type || item.type) === groupType.treeView ?
+            <div
+                key={`${item.value}-${key}-item`}
+                className="ins-c-tree-view">
+                {
+                    renderItem(item, key, type, groupKey)
+                }
+            </div>
+            : renderItem(item, key, type, groupKey)
+    ))
+    ;
 
     return (
         <div ref={containerRef}>
@@ -184,11 +210,14 @@ const Group = ({
                         <MenuList>
                             {menuItems.length > 0 && (
                                 <MenuGroup>
-                                    {renderItems(items)}
+                                    {renderItems(menuItems)}
                                 </MenuGroup>
                             )}
                             {groupMenuItems.map((group, groupKey) => (
-                                <MenuGroup label={group.label} key={`${group.label}-${groupKey}-group`}>
+                                <MenuGroup
+                                    label={group.label}
+                                    key={`${group.label}-${groupKey}-group`}
+                                >
                                     {renderItems(group.items, group.type, group.value, group)}
                                 </MenuGroup>
                             ))}
