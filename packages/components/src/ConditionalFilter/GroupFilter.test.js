@@ -2,7 +2,6 @@ import React from 'react';
 import Group from './GroupFilter';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { act } from 'react-dom/test-utils';
 
 const config = {
     onChange: jest.fn(),
@@ -58,8 +57,60 @@ const config = {
                     label: 'Second value'
                 }
             ]
+        },
+        {
+            label: 'TreeView',
+            type: 'treeView',
+            items: [
+                {
+                    label: 'First level',
+                    value: 'firstLevel',
+                    hasCheck: false,
+                    type: 'treeView',
+                    children: [
+                        {
+                            label: 'Second level',
+                            value: 'secondLevel',
+                            children: [
+                                {
+                                    label: 'Item 1',
+                                    value: 'item1'
+                                },
+                                {
+                                    label: 'Item 2',
+                                    value: 'item2'
+                                }
+                            ]
+                        }
+                    ],
+                    defaultExpanded: true
+                }
+            ]
         }
-    ]
+    ],
+    items: [{
+        label: 'First level',
+        value: 'firstLevel2',
+        hasCheck: false,
+        type: 'treeView',
+        children: [
+            {
+                label: 'Second level',
+                value: 'secondLevel2',
+                children: [
+                    {
+                        label: 'Item 1',
+                        value: 'item12'
+                    },
+                    {
+                        label: 'Item 2',
+                        value: 'item22'
+                    }
+                ]
+            }
+        ],
+        defaultExpanded: true
+    }]
 };
 
 describe('Group - component', () => {
