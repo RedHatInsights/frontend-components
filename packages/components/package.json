@@ -43,8 +43,8 @@
     "dependencies": {
         "@redhat-cloud-services/frontend-components-utilities": ">=3.0.0",
         "sanitize-html": "^2.3.2",
-        "@scalprum/core": "^0.1.0",
-        "@scalprum/react-core": "^0.1.6"
+        "@scalprum/core": "^0.1.1",
+        "@scalprum/react-core": "^0.1.7"
     },
     "devDependencies": {
         "@patternfly/patternfly": ">=4.102.2",
