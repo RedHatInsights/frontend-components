@@ -139,5 +139,11 @@ export default (style = {}) => StyleSheet.create({
         paddingLeft: c_table_m_compact_cell_PaddingLeft.value,
         paddingBottom: c_table_m_compact_cell_PaddingBottom.value,
         paddingTop: c_table_m_compact_cell_PaddingTop.value
+    },
+    dt: {
+        flex: '1'
+    },
+    dd: {
+        flex: '2'
     }
 });
