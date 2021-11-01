@@ -20,6 +20,7 @@
         - [Using provided services](#Using-provided-services)
         - [Writing services](#Writing-services)
         - [Customizing default services](#Customizing-default-services)
+  - [fec node scripts](#fec-node-scripts)
 
 
 ## Webpack 5
@@ -302,4 +303,107 @@ defaultServices.chrome.path = '/path/to/my/insights-chrome';
 const { config: webpackConfig, plugins } = config({
   standalone: defaultServices
 });
+```
+
+# fec node scripts
+
+Executable nodejs scripts available after installing RedHat Cloud Services frontend components - webpack config
+
+## Usage
+
+Use binary in your `package.json` scripts section:
+```js
+{
+  "scripts": {
+    "script-name": "fec <script-name> [options]"
+  }
+}
+```
+
+## Static
+
+A script that will run webpack build and serve webpack output through `http-serve` server. **This is not supposed to replace webpack dev server!**
+
+This script was added due to circular dependency issues when proxying remote containers to another application.
+A remote containers can fail to initialize, which makes local development is impossible.
+
+### Inventory example
+
+This example will describe a scenario, when we proxy the inventory remote container (for example the inventory table), to compliance UI for local development purposes.
+
+### In inventory UI repository changes
+
+```diff
+diff --git a/package.json b/package.json
+index f7513bb..d8c9008 100644
+--- a/package.json
++++ b/package.json
+@@ -69,7 +69,7 @@
+     "@babel/preset-env": "^7.15.6",
+     "@babel/preset-react": "^7.14.5",
+     "@babel/runtime": "^7.15.4",
+-    "@redhat-cloud-services/frontend-components-config": "^4.3.9",
++    "@redhat-cloud-services/frontend-components-config": "^4.4.0",
+     "@testing-library/react": "^12.1.0",
+     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
+     "abortcontroller-polyfill": "^1.7.3",
+@@ -103,6 +103,7 @@
+     "prod": "NODE_ENV=production webpack serve --config config/dev.webpack.config.js",
+     "server:ctr": "node src/server/generateServerKey.js",
+     "start": "NODE_ENV=development webpack serve --config config/dev.webpack.config.js",
++    "start:federated": "fec static --config config/dev.webpack.config.js",
+     "start:proxy": "PROXY=true NODE_ENV=development webpack serve --config config/dev.webpack.config.js",
+     "travis:build": "NODE_ENV=production webpack --config config/prod.webpack.config.js",
+     "travis:verify": "npm-run-all travis:build lint test",
+diff --git a/src/components/InventoryTable/NoSystemsTable.js b/src/components/InventoryTable/NoSystemsTable.js
+index 75de937..4fc60ab 100644
+--- a/src/components/InventoryTable/NoSystemsTable.js
++++ b/src/components/InventoryTable/NoSystemsTable.js
+@@ -10,7 +10,7 @@ const NoSystemsTable = () => (
+         <Bullseye>
+             <EmptyState variant={ EmptyStateVariant.full }>
+                 <Title headingLevel="h5" size="lg">
+-                    No matching systems found
++                    Local change
+                 </Title>
+                 <EmptyStateBody>
+                     This filter criteria matches no systems. <br /> Try changing your filter settings.
+
+```
+
+### Compliance frontend setup
+
+Note: The `routesPath` was removed because it has higher priority than `routes` config. The proxy config could have also changed in `../config/spandx.config.js` file.
+
+```diff
+diff --git a/config/dev.webpack.config.js b/config/dev.webpack.config.js
+index 73eb14c..31f6554 100644
+--- a/config/dev.webpack.config.js
++++ b/config/dev.webpack.config.js
+@@ -32,10 +32,15 @@ const webpackProxy = {
+     proxyVerbose: true,
+     useCloud: (process.env?.USE_CLOUD === 'true'),
+     ...useLocalChrome(),
+-    routesPath: process.env.ROUTES_PATH || resolve(__dirname, '../config/spandx.config.js'),
+     routes: {
+         // Additional routes to the spandx config
+         // '/beta/config': { host: 'http://localhost:8003' }, // for local CSC config
++        '/apps/inventory': {
++            host: "http://localhost:8003"
++        },
++        '/beta/apps/inventory': {
++            host: "http://localhost:8003"
++        }
+     },
+ };
+
+```
+
+### Run servers
+
+```bash
+# in the inventory frontend
+BETA=true npm run start:federated
+# in compliance frontend
+BETA=true npm run start:proxy
 ```

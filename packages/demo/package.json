@@ -29,7 +29,7 @@
         "@redhat-cloud-services/frontend-components-remediations": "*",
         "@redhat-cloud-services/frontend-components-utilities": "*",
         "@redhat-cloud-services/frontend-components-pdf-generator": "*",
-        "@redhat-cloud-services/router": "*"
+        "@redhat-cloud-services/frontend-components-router": "*"
     },
     "devDependencies": {
         "babel-loader": "^8.2.2",

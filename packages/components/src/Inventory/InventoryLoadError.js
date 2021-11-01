@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const InventoryLoadError = ({ component, ...props }) => {
     useEffect(() => {
-        console.error(`Unable to load iventory component. Failed to load ${component}.`, props);
+        console.error(`Unable to load inventory component. Failed to load ${component}.`, props);
     }, []);
     return (
         <div>
