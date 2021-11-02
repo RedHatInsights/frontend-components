@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {
@@ -42,8 +42,6 @@ const Group = ({
         setStateSelected(selected);
     }, [ selected ]);
 
-    const calculateSelection = useCallback(calculateSelected, [ stateSelected ]);
-
     useEffect(() => {
         setSearchString(filterBy);
     }, [ filterBy ]);
@@ -82,8 +80,8 @@ const Group = ({
         setIsOpen(!isOpen);
     };
 
-    const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelection(selected));
-    const menuItems = getMenuItems(items, onChange, calculateSelection(selected));
+    const groupMenuItems = getGroupMenuItems(groups, onChange, calculateSelected(selected));
+    const menuItems = getMenuItems(items, onChange, calculateSelected(selected));
 
     // eslint-disable-next-line react/prop-types
     const renderItems = (items, type, groupKey = '') => items.map((item, key) => (<MenuItem
