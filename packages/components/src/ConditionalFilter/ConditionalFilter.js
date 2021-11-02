@@ -57,7 +57,7 @@ class ConditionalFilter extends Component {
     }
 
     render() {
-        const { items, value, onChange, placeholder, hideLabel, isDisabled, ...props } = this.props;
+        const { items, value, onChange, placeholder, hideLabel, isDisabled, useMobileLayout, ...props } = this.props;
         const { isOpen, stateValue, isMobile } = this.state;
         const currentValue = onChange ? value : stateValue;
         const activeItem = items && items.length && (
@@ -68,11 +68,11 @@ class ConditionalFilter extends Component {
         const ActiveComponent = activeItem && (typeMapper[activeItem.type] || typeMapper.text);
         const capitalize = (string) => string[0].toUpperCase() + string.substring(1);
 
-        const shouldRenderNewLayout = this.props.useMobileLayout && isMobile;
+        const shouldRenderNewLayout = useMobileLayout && isMobile;
         const Wrapper = this.getWrapper();
         return (
             <Wrapper>
-                {this.props.useMobileLayout && isMobile && (
+                {useMobileLayout && isMobile && (
                     <ToolbarGroup className="ins-c-conditional-filter mobile">
                         {items.map((activeItem, key) => {
                             const ActiveComponent = activeItem && (typeMapper[activeItem.type] || typeMapper.text);
@@ -102,7 +102,7 @@ class ConditionalFilter extends Component {
                         {
                             !items || (items && items.length <= 0) ?
                                 <div className={classNames('ins-c-conditional-filter', {
-                                    desktop: this.props.useMobileLayout
+                                    desktop: useMobileLayout
                                 })}>
                                     <Text { ...props }
                                         value={ currentValue }
@@ -112,7 +112,7 @@ class ConditionalFilter extends Component {
                                     />
                                 </div> :
                                 <Split className={classNames('ins-c-conditional-filter', {
-                                    desktop: this.props.useMobileLayout
+                                    desktop: useMobileLayout
                                 })}>
                                     { items.length > 1 &&
                                 <SplitItem>
