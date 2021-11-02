@@ -61,7 +61,6 @@
     }
 
     .pf-c-menu-toggle {
-        padding: 0;
         .pf-c-menu-toggle__text {
             flex: 1;
             input { border: none; }
@@ -73,6 +72,7 @@
     &.ins-c-menu__scrollable {
         max-height: 416px;
         overflow-y: auto;
+        min-width: initial;
     }
     .ins-c-menu__show--more {
         background: none;
