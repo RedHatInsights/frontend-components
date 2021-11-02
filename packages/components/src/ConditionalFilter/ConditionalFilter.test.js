@@ -2,6 +2,7 @@ import React from 'react';
 import ConditionalFilter from './ConditionalFilter';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { act } from 'react-dom/test-utils';
 
 const config = [{
     id: 'some',
@@ -140,6 +141,114 @@ describe('ConditionalFilter', () => {
             wrappper.update();
             wrappper.find('ul.pf-c-dropdown__menu button.pf-c-dropdown__menu-item').at(2).simulate('click');
             expect(wrappper.instance().state.stateValue).toBe('checkbox-filter');
+        });
+
+        it('should select group - RHEL case', async () => {
+            const onChange = jest.fn();
+
+            const items = [
+                {
+                    type: 'group',
+                    label: 'Operating system',
+                    id: 'operatingsystem',
+                    filterValues: {
+                        selected: undefined,
+                        onChange,
+                        groups: [
+                            {
+                                label: 'RHEL 7',
+                                value: '7',
+                                groupSelectable: true,
+                                items: [
+                                    {
+                                        label: 'RHEL 7.1',
+                                        value: '1',
+                                        type: 'checkbox'
+                                    },
+                                    {
+                                        label: 'RHEL 7.2',
+                                        value: '2',
+                                        type: 'checkbox'
+                                    },
+                                    {
+                                        label: 'RHEL 7.3',
+                                        value: '3',
+                                        type: 'checkbox'
+                                    },
+                                    {
+                                        label: 'RHEL 7.4',
+                                        value: '4',
+                                        type: 'checkbox'
+                                    },
+                                    {
+                                        label: 'RHEL 7.5',
+                                        value: '5',
+                                        type: 'checkbox'
+                                    },
+                                    {
+                                        label: 'RHEL 7.6',
+                                        value: '6',
+                                        type: 'checkbox'
+                                    },
+                                    {
+                                        label: 'RHEL 7.7',
+                                        value: '7',
+                                        type: 'checkbox'
+                                    },
+                                    {
+                                        label: 'RHEL 7.8',
+                                        value: '8',
+                                        type: 'checkbox'
+                                    },
+                                    {
+                                        label: 'RHEL 7.9',
+                                        value: '9',
+                                        type: 'checkbox'
+                                    }
+                                ],
+                                type: 'checkbox'
+                            }
+                        ]
+                    }
+                }
+
+            ];
+
+            const wrapper = mount(<ConditionalFilter {...initialProps} items={ items } />);
+
+            await act(async () => {
+                wrapper.find('button.pf-c-menu-toggle').simulate('click');
+            });
+            wrapper.update();
+
+            await act(async () => {
+                wrapper.find('button[role="menuitem"]').at(1).simulate('click');
+            });
+            wrapper.update();
+
+            expect(onChange).toHaveBeenCalledWith(
+                undefined,
+                { 7: { 2: true } },
+                {
+                    groupSelectable: true, id: undefined,
+                    items: [
+                        { label: 'RHEL 7.1', type: 'checkbox', value: '1' },
+                        { label: 'RHEL 7.2', type: 'checkbox', value: '2' },
+                        { label: 'RHEL 7.3', type: 'checkbox', value: '3' },
+                        { label: 'RHEL 7.4', type: 'checkbox', value: '4' },
+                        { label: 'RHEL 7.5', type: 'checkbox', value: '5' },
+                        { label: 'RHEL 7.6', type: 'checkbox', value: '6' },
+                        { label: 'RHEL 7.7', type: 'checkbox', value: '7' },
+                        { label: 'RHEL 7.8', type: 'checkbox', value: '8' },
+                        { label: 'RHEL 7.9', type: 'checkbox', value: '9' }
+                    ],
+                    label: 'RHEL 7',
+                    type: 'checkbox',
+                    value: '7' },
+                { label: 'RHEL 7.2', type: 'checkbox', value: '2' },
+                '7',
+                '2'
+            );
         });
     });
 });

@@ -5,6 +5,7 @@ import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 
 const config = {
+    onChange: jest.fn(),
     groups: [
         {
             label: 'First value',
@@ -64,7 +65,7 @@ const config = {
 describe('Group - component', () => {
     describe('render', () => {
         it('should render correctly', () => {
-            const wrapper = shallow(<Group />);
+            const wrapper = shallow(<Group onChange={jest.fn()} />);
             expect(toJson(wrapper)).toMatchSnapshot();
         });
 
@@ -125,9 +126,11 @@ describe('Group - component', () => {
     });
 
     describe('API', () => {
-        it('should open', () => {
+        it('should open', async () => {
             const wrapper = mount(<Group { ...config } />);
-            wrapper.find('button.pf-c-menu-toggle').simulate('click');
+            await act(async () => {
+                wrapper.find('button.pf-c-menu-toggle').simulate('click');
+            });
             wrapper.update();
             expect(wrapper.find('.pf-c-menu').length > 0).toBe(true);
         });
