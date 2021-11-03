@@ -102,7 +102,6 @@ exports[`ConditionalFilter render should render correctly 1`] = `
       isDisabled={false}
       onChange={[Function]}
       onSubmit={[Function]}
-      useMobileLayout={true}
       value=""
       widget-type="InsightsInput"
     />

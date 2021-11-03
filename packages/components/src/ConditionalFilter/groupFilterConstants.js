@@ -65,7 +65,7 @@ export const getGroupMenuItems = (groups, onChange, calculateSelected) => {
 };
 
 export const calculateSelected = (selectedTags) => (type, groupKey, itemKey) => {
-    const activeGroup = selectedTags[groupKey];
+    const activeGroup = selectedTags?.[groupKey];
     if (activeGroup) {
         if (type !== groupType.radio && (activeGroup[itemKey] instanceof Object ? activeGroup[itemKey].isSelected : Boolean(activeGroup[itemKey]))) {
             return {
