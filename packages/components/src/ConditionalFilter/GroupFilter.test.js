@@ -2,6 +2,7 @@ import React from 'react';
 import Group from './GroupFilter';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { act } from 'react-dom/test-utils';
 
 const config = {
     onChange: jest.fn(),

@@ -130,7 +130,7 @@ export const calculateSelected = (selectedTags) => (type, groupKey, value, check
     return itemKeys.reduce((acc, curr) => ({
         ...acc,
         [groupKey]: {
-            ...acc[groupKey],
+            ...acc?.[groupKey],
             [curr]: true
         }
     }), selectedTags);
